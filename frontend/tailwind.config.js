@@ -1,19 +1,18 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const forms = require('@tailwindcss/forms');
-
-const lineClamp = require('./lib/tailwind/line-clamp');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
-  purge: {
-    enabled: process.env.NODE_ENV !== 'development',
-    content: ['./**/*.ts', './**/*.tsx'],
-  },
-  darkMode: false, // or 'media' or 'class'
+  content: ['./**/*.ts', './**/*.tsx'],
   theme: {
-    extend: {},
+    extend: {
+      // This is needed for the upgrade to Tailwind CSS 3:
+      // https://tailwindcss.com/docs/upgrade-guide#removed-color-aliases
+      colors: {
+        green: colors.emerald,
+        yellow: colors.amber,
+        purple: colors.violet,
+      },
+    },
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [forms, lineClamp],
+  plugins: [forms],
 };
