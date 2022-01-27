@@ -45,6 +45,14 @@ module.exports = {
         agrosystems: '#E7C343',
       },
     },
+    boxShadow: {
+      sm: '0 1px 2px 0 rgb(233 233 233 / 0.25), 0 0 15px 0 rgb(223 215 206 / 0.3)',
+      DEFAULT: '0 4px 15px 0 rgb(220 220 220 / 0.5)',
+      lg: '0 4px 15px 0 rgb(176 176 176 / 0.25)',
+      // Useful for animations
+      transparent: '0 4px 15px 0 rgb(220 220 220 / 0)',
+      none: 'none',
+    },
   },
   plugins: [forms],
 };
