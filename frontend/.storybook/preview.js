@@ -24,7 +24,7 @@ export const decorators = [
   (Story) => {
     return (
       <OverlayProvider>
-        <div>{Story()}</div>
+        <div className="bg-background-light">{Story()}</div>
       </OverlayProvider>
     );
   },
