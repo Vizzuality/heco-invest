@@ -2,6 +2,7 @@ import React from 'react';
 
 import { themes } from '@storybook/theming';
 import { OverlayProvider } from '@react-aria/overlays';
+import '../styles/globals.css';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

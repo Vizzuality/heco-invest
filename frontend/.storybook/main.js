@@ -6,7 +6,18 @@ module.exports = {
     '../components/**/*.stories.@(js|jsx|ts|tsx)',
     '../containers/**/*.stories.@(js|jsx|ts|tsx)',
   ],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  staticDirs: ['../public'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', {
+    name: '@storybook/addon-postcss',
+    options: {
+      cssLoaderOptions: {
+        importLoaders: 1,
+      },
+      postcssLoaderOptions: {
+        implementation: require('postcss'),
+      },
+    },
+  },],
   /* nextjs -> no need to import React and can use alias modules */
   webpackFinal: async (config) => {
     // *************************
@@ -20,7 +31,7 @@ module.exports = {
     // Remove how storybook is handling the svgs. They are using file-loader
     // https://github.com/JetBrains/svg-sprite-loader/issues/267
     config.module.rules = config.module.rules.map((rule) => {
-      if (rule.test.toString().includes('svg')) {
+      if (rule.test?.toString().includes('svg')) {
         const test = rule.test.toString().replace('svg|', '').replace(/\//g, '');
         return { ...rule, test: new RegExp(test) };
       } else {

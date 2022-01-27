@@ -9,10 +9,8 @@
     "check-types": "tsc --noemit -p tsconfig.json",
     "lint": "eslint -c .eslintrc.js --ext .js,.jsx,.ts,.tsx --fix --ignore-path .eslintignore . && yarn check-types",
     "test": "yarn lint",
-    "storybook:styles:dev": "NODE_ENV=development tailwind build ./styles/globals.css -o ./public/styles/tailwind.storybook.css",
-    "storybook:styles:prod": "NODE_ENV=production tailwind build ./styles/globals.css -o ./public/styles/tailwind.storybook.css",
-    "storybook:dev": "yarn storybook:styles:dev && start-storybook -p 6006 -s ./public -c .storybook",
-    "storybook:build": "yarn storybook:styles:prod && build-storybook -s ./public -c .storybook",
+    "storybook:dev": "start-storybook -p 6006 -c .storybook",
+    "storybook:build": "build-storybook -c .storybook",
     "prepare": "cd .. && husky install frontend/.husky"
   },
   "dependencies": {
@@ -82,6 +80,7 @@
     "@storybook/addon-actions": "^6.4.14",
     "@storybook/addon-essentials": "^6.4.14",
     "@storybook/addon-links": "^6.4.14",
+    "@storybook/addon-postcss": "^2.0.0",
     "@types/axios": "^0.14.0",
     "@types/gtag.js": "^0.0.5",
     "@types/react": "^17.0.5",
