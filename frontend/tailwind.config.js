@@ -51,6 +51,7 @@ module.exports = {
       lg: '0 4px 15px 0 rgb(176 176 176 / 0.25)',
       // Useful for animations
       transparent: '0 4px 15px 0 rgb(220 220 220 / 0)',
+      menu: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05)',
       none: 'none',
     },
     extend: {
