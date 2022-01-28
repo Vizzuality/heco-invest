@@ -117,6 +117,11 @@ module.exports = {
             position: 'before',
           },
           {
+            pattern: 'helpers/**',
+            group: 'internal',
+            position: 'before',
+          },
+          {
             pattern: 'containers/**',
             group: 'internal',
             position: 'before',

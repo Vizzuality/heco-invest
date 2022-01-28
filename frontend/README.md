@@ -30,6 +30,7 @@ Below is a description of each of the keys.
 | NEXT_PUBLIC_API_URL | URL of the API supporting the platform |
 | NEXTAUTH_URL | URL of the service managing the authentication |
 | NEXT_PUBLIC_GOOGLE_ANALYTICS | Key of the Google Analytics account |
+| NEXT_PUBLIC_TRANSIFEX_API_KEY | Key of the Transifex account |
 
 ## Contribution rules
 

@@ -14,6 +14,16 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.liveSettings = {
+                api_key: '${process.env.NEXT_PUBLIC_TRANSIFEX_API_KEY}',
+              };
+            `,
+            }}
+          />
+          <script type="text/javascript" src="//cdn.transifex.com/live.js" async />
           {/* Global site tag (gtag.js) - Google Analytics */}
           {/* When re-enabling Google Analytics, please make it GDPR complient i.e. it can't be
           loaded until the user has approved the use of cookies for that purpose. */}
