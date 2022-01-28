@@ -245,7 +245,7 @@ export const Form = (): ReactNode => {
           </div>
 
           <div className="mt-10">
-            <Button theme="primary" size="base" type="submit">
+            <Button theme="primary-green" size="base" type="submit">
               Submit
             </Button>
           </div>

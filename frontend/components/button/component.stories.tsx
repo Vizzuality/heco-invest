@@ -1,47 +1,63 @@
-import { Story } from '@storybook/react/types-6-0';
+import React from 'react';
 
-import Button from './component';
-import { ButtonProps } from './types';
+import cx from 'classnames';
+
+import { Story, Meta } from '@storybook/react/types-6-0';
+
+import SearchIcon from 'svgs/search.svg';
+
+import Button, { ButtonProps } from '.';
 
 export default {
-  title: 'Components/Button',
   component: Button,
+  title: 'Components/Button',
   argTypes: {
-    size: {
-      control: {
-        type: 'select',
-        options: ['xs', 's', 'base', 'l', 'xl'],
-      },
-    },
-    theme: {
-      control: {
-        type: 'select',
-        options: ['primary', 'primary-alt', 'secondary', 'secondary-alt', 'white', 'danger'],
-      },
-    },
+    disabled: { control: 'boolean' },
   },
-};
+} as Meta;
 
-const Template: Story<ButtonProps> = ({ children, ...args }: ButtonProps) => (
-  <Button {...args}>{children}</Button>
+const Template: Story<ButtonProps> = ({ theme, ...rest }: ButtonProps) => (
+  <div
+    className={cx({
+      'p-4': true,
+      'bg-background-light': theme !== 'primary-white' && theme !== 'secondary-white',
+      'bg-green-dark': theme === 'primary-white' || theme === 'secondary-white',
+    })}
+  >
+    <Button className="inline-block" theme={theme} {...rest} />
+  </div>
 );
 
-export const Default = Template.bind({});
+export const Default: Story<ButtonProps> = Template.bind({});
 Default.args = {
-  children: 'Button',
-  disabled: false,
+  theme: 'primary-green',
+  size: 'base',
+  children: 'Search',
 };
 
-export const FullWidth = Template.bind({});
-FullWidth.args = {
-  children: 'Button',
-  disabled: false,
-  className: 'w-full',
+export const Link: Story<ButtonProps> = Template.bind({});
+Link.args = {
+  theme: 'primary-green',
+  size: 'base',
+  to: 'explore',
+  children: 'Learn more',
 };
 
-export const WithNextLinkProps = Template.bind({});
-WithNextLinkProps.args = {
-  anchorLinkProps: { shallow: true, as: 'next-link-anchor' },
-  children: 'Button',
-  href: '/',
+export const ExternalLink: Story<ButtonProps> = Template.bind({});
+ExternalLink.storyName = 'External link';
+ExternalLink.args = {
+  theme: 'primary-green',
+  size: 'base',
+  to: 'https://www.vizzuality.com/',
+  external: true,
+  children: 'About Vizzuality',
+};
+
+export const WithIcon: Story<ButtonProps> = Template.bind({});
+WithIcon.storyName = 'With icon';
+WithIcon.args = {
+  theme: 'primary-green',
+  size: 'base',
+  children: 'Search',
+  icon: SearchIcon,
 };

@@ -53,6 +53,11 @@ module.exports = {
       transparent: '0 4px 15px 0 rgb(220 220 220 / 0)',
       none: 'none',
     },
+    extend: {
+      spacing: {
+        4.5: '1.125rem',
+      },
+    },
   },
   plugins: [forms],
 };

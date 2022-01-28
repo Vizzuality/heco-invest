@@ -29,7 +29,7 @@ const Template: Story<ModalProps> = ({ ...args }: ModalProps) => {
 
   return (
     <>
-      <Button theme="primary" size="base" onClick={() => setOpen(true)}>
+      <Button theme="primary-green" size="base" onClick={() => setOpen(true)}>
         Open modal
       </Button>
       <Modal {...args} open={open} onDismiss={() => setOpen(false)} />

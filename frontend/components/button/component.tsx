@@ -1,112 +1,83 @@
-import { FC } from 'react';
+import React, { forwardRef } from 'react';
 
 import cx from 'classnames';
 
+import omit from 'lodash/omit';
+
 import Link from 'next/link';
 
-import { THEME, SIZE } from './constants';
-import type { ButtonProps, AnchorProps, Overload } from './types';
+import Icon from 'components/icon';
 
-// Guard to check if href exists in props
-const hasHref = (props: ButtonProps | AnchorProps): props is AnchorProps => 'href' in props;
+import { COMMON_CLASSES, COLOR_THEMES, SIZE_THEMES } from './constants';
+import { isAnchorButton } from './helpers';
+import { ButtonProps, HTMLButtonProps, HTMLAnchorProps } from './types';
 
-function buildClassName({ className, disabled, size, theme }) {
-  return cx({
-    'flex items-center justify-center rounded-3xl': true,
-    [THEME[theme]]: true,
-    [SIZE[size]]: true,
-    [className]: !!className,
-    'opacity-50 pointer-events-none': disabled,
+export const Inner: React.ForwardRefRenderFunction<any, ButtonProps> = (
+  { theme = 'primary-green', size = 'base', icon, children, ...rest }: ButtonProps,
+  ref
+) => {
+  const className = cx({
+    [COMMON_CLASSES]: true,
+    [COLOR_THEMES[theme]]: true,
+    [SIZE_THEMES[size]]: true,
+    [rest.className]: !!rest.className,
+    'font-medium': size === 'small' && theme !== 'naked',
+    'text-lg': size === 'base' && theme !== 'naked',
+    'text-sm': size === 'small' && theme !== 'naked',
   });
-}
 
-export const LinkAnchor: FC<AnchorProps> = ({
-  children,
-  theme = 'primary',
-  size = 'base',
-  className,
-  disabled,
-  href,
-  anchorLinkProps,
-  ...restProps
-}: AnchorProps) => (
-  <Link href={href} {...anchorLinkProps}>
-    <a
-      className={buildClassName({
-        className,
-        disabled,
-        size,
-        theme,
-      })}
-      {...restProps}
-    >
-      {children}
-    </a>
-  </Link>
-);
+  const iconClassName = cx({
+    'inline-block mr-2.5 align-text-bottom': true,
+    'w-6 h-6': size === 'base',
+    'w-4.5 h-4.5': size === 'small',
+  });
 
-export const Anchor: FC<AnchorProps> = ({
-  children,
-  theme = 'primary',
-  size = 'base',
-  className,
-  disabled,
-  href,
-  ...restProps
-}: AnchorProps) => {
-  // Anchor element doesn't support disabled attribute
-  // https://www.w3.org/TR/2014/REC-html5-20141028/disabled-elements.html
-  if (disabled) {
-    return <span {...restProps}>{children}</span>;
+  if (isAnchorButton(rest)) {
+    const elementProps = omit(
+      rest,
+      'children',
+      'theme',
+      'className',
+      'to',
+      'external'
+    ) as Partial<HTMLAnchorProps>;
+
+    if (rest.external) {
+      return (
+        <a
+          ref={ref}
+          href={rest.to}
+          rel="noopener noreferrer"
+          target="_blank"
+          className={className}
+          {...elementProps}
+        >
+          {icon && <Icon icon={icon} className={iconClassName} />}
+          {children}
+        </a>
+      );
+    }
+
+    return (
+      <Link href={rest.to}>
+        <a ref={ref} className={className} {...elementProps}>
+          {icon && <Icon icon={icon} className={iconClassName} />}
+          {children}
+        </a>
+      </Link>
+    );
   }
+
+  const elementProps = omit(rest, 'children', 'theme', 'className') as Partial<HTMLButtonProps>;
+
   return (
-    <a
-      href={href}
-      className={buildClassName({
-        className,
-        disabled,
-        size,
-        theme,
-      })}
-      {...restProps}
-    >
+    <button ref={ref} type="button" className={className} {...elementProps}>
+      {icon && <Icon icon={icon} className={iconClassName} />}
       {children}
-    </a>
+    </button>
   );
 };
 
-export const Button: FC<ButtonProps> = ({
-  children,
-  theme = 'primary',
-  size = 'base',
-  className,
-  disabled,
-  ...restProps
-}: ButtonProps) => (
-  <button
-    type="button"
-    className={buildClassName({
-      className,
-      disabled,
-      size,
-      theme,
-    })}
-    disabled={disabled}
-    {...restProps}
-  >
-    {children}
-  </button>
-);
+export const Button = forwardRef(Inner);
 
-export const LinkButton: Overload = (props: ButtonProps | AnchorProps) => {
-  // We consider a link button when href attribute exits
-  if (hasHref(props)) {
-    if (props.href.startsWith('http')) {
-      return <Anchor {...props} />;
-    }
-    return <LinkAnchor {...props} />;
-  }
-  return <Button {...props} />;
-};
-
-export default LinkButton;
+export default Button;

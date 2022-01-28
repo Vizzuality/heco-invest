@@ -144,6 +144,7 @@ module.exports = {
         pathGroupsExcludedImportTypes: ['react'],
       },
     ],
+    'import/prefer-default-export': 0,
   },
   settings: {
     react: {

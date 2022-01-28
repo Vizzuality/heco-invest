@@ -10,7 +10,7 @@ export const Icon: FC<IconProps> = ({ icon, className = 'w-5 h-5', style }: Icon
       'fill-current': true,
       [className]: className,
     })}
-    viewBox={icon?.viewBox || '0 0 32 32'}
+    viewBox={icon?.viewBox || '0 0 24 24'}
     style={style}
   >
     <use xlinkHref={`#${icon?.id || icon}`} />
