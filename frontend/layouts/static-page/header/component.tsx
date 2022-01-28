@@ -42,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({ props = {} }: HeaderProps) => {
   return (
     <header {...containerProps}>
       <LayoutContainer>
-        <div className="flex justify-between items-center pt-6 pb-4 lg:justify-start lg:space-x-10">
+        <div className="flex justify-between items-center pt-3 pb-3 md:pt-6 md:pb-4 lg:justify-start lg:space-x-10">
           <Link href="/">
             <a className="font-semibold">HeCo Invest</a>
           </Link>
