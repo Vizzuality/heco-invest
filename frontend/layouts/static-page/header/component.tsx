@@ -1,7 +1,11 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
+
+import cx from 'classnames';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+
+import { useWindowScrollPosition } from 'rooks';
 
 import Button from 'components/button';
 import Icon from 'components/icon';
@@ -13,17 +17,18 @@ import SearchIcon from 'svgs/search.svg?sprite';
 
 import { HeaderProps } from './types';
 
-export const Header: React.FC<HeaderProps> = ({ props = {} }: HeaderProps) => {
+export const Header: React.FC<HeaderProps> = ({
+  props: { transparent, className } = {},
+}: HeaderProps) => {
   const router = useRouter();
 
+  const { scrollY }: ReturnType<typeof useWindowScrollPosition> =
+    // The `window` check is required because the hook is not SSR-ready yet:
+    // https://github.com/imbhargav5/rooks/issues/559
+    typeof window === 'undefined' ? { scrollY: 0, scrollX: 0 } : useWindowScrollPosition();
+  const showBackground = !transparent || scrollY > 0;
+
   const [menuOpen, setMenuOpen] = useState(false);
-  const containerProps = useMemo(
-    () => ({
-      ...props,
-      className: `sticky top-0 bg-background-light/90 backdrop-blur-sm ${props.className}`,
-    }),
-    [props]
-  );
 
   const onClickMenuItem = useCallback(
     (key) => {
@@ -40,7 +45,14 @@ export const Header: React.FC<HeaderProps> = ({ props = {} }: HeaderProps) => {
   );
 
   return (
-    <header {...containerProps}>
+    <header
+      className={cx({
+        'fixed top-0 w-full z-10 transition-colors': true,
+        'text-white': !showBackground,
+        'bg-background-light/90 backdrop-blur-sm': showBackground,
+        [className]: !!className,
+      })}
+    >
       <LayoutContainer>
         <div className="flex justify-between items-center pt-3 pb-3 md:pt-6 md:pb-4 lg:justify-start lg:space-x-10">
           <Link href="/">
@@ -54,7 +66,7 @@ export const Header: React.FC<HeaderProps> = ({ props = {} }: HeaderProps) => {
               className="notranslate shrink-0"
               Trigger={
                 <Button
-                  theme="primary-green"
+                  theme={showBackground ? 'primary-green' : 'primary-white'}
                   size="small"
                   aria-expanded={menuOpen}
                   onClick={() => setMenuOpen(true)}
@@ -96,7 +108,12 @@ export const Header: React.FC<HeaderProps> = ({ props = {} }: HeaderProps) => {
               <div className="shrink-0">
                 <LanguageSelector />
               </div>
-              <Button size="small" className="shrink-0" disabled>
+              <Button
+                theme={showBackground ? 'primary-green' : 'primary-white'}
+                size="small"
+                className="shrink-0"
+                disabled
+              >
                 Sign in
               </Button>
             </div>

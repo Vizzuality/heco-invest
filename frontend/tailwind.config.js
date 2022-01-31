@@ -54,6 +54,7 @@ module.exports = {
       // Useful for animations
       transparent: '0 4px 15px 0 rgb(220 220 220 / 0)',
       menu: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05)',
+      search: '0 0 32px rgb(0 0 0 / 0.25)',
       none: 'none',
     },
     extend: {

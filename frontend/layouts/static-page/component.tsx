@@ -20,7 +20,7 @@ export const StaticPageLayout: React.FC<StaticPageLayoutProps> = ({
     <main
       {...omit(mainProps, 'className')}
       className={cx({
-        'mt-7 lg:mt-24': true,
+        'mt-28 lg:mt-44': true,
         [mainProps?.className]: !!mainProps?.className,
       })}
     >
