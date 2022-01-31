@@ -1,14 +1,11 @@
-import Head from 'next/head';
-
+import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 
 const Home: PageComponent<{}, StaticPageLayoutProps> = () => (
   <>
-    <Head>
-      <title>HeCo Invest</title>
-    </Head>
+    <Head />
     <LayoutContainer>
       <h1>Welcome to HeCo Invest!</h1>
       <p>Site map:</p>
