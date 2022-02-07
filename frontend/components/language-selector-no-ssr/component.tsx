@@ -51,7 +51,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = () => {
             <Button
               theme="naked"
               size="small"
-              className="focus-visible:outline-green-dark"
+              className="pl-4 pr-4 focus-visible:outline-green-dark"
               aria-label={translateText('Language: {language}', {
                 language: getSimplifiedLanguageName(
                   languages.find((language) => language.code === languageCode)?.name ?? ''

@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ props = {} }: FooterProps) => (
       <div className="xl:grid xl:grid-cols-3 xl:gap-8">
         <div className="xl:col-span-1">
           <p className="text-xs font-medium">HeCo Invest</p>
-          <p className="mt-2 max-w-xs font-serif font-semibold text-[1.5rem] leading-7">
+          <p className="mt-2 max-w-xs font-serif font-semibold text-xl leading-7">
             Be part of the biggest change in the colombian Amazon
           </p>
           <p className="mt-5 text-xs font-medium">Partnership between:</p>
@@ -149,7 +149,7 @@ export const Footer: React.FC<FooterProps> = ({ props = {} }: FooterProps) => (
           </div>
         </div>
       </div>
-      <div className="mt-10 border-t border-gray-200 pt-8">
+      <div className="mt-10 border-t border-gray-100 pt-8">
         <p className="xl:text-center">
           &copy; {new Date().getFullYear()} HeCo Invest. All rights reserved.
         </p>

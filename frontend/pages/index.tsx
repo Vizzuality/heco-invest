@@ -55,7 +55,7 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => (
         </p>
         <div className="mt-8 md:mt-0 md:px-8 xl:px-0 w-full max-w-5xl md:absolute left-1/2 bottom-0 md:-translate-x-1/2 md:translate-y-1/2">
           <div className="grid grid-rows-2 md:grid-rows-none md:grid-cols-2 gap-8">
-            <div className="p-3 md:p-5 lg:p-10 pt-[40%] md:pt-[40%] lg:pt-[40%] bg-white bg-top bg-contain bg-no-repeat bg-[url('/images/home-priority-geographies.jpg')] rounded-2xl shadow-home-card">
+            <div className="p-3 md:p-5 lg:p-10 pt-[40%] md:pt-[40%] lg:pt-[40%] bg-white bg-top bg-contain bg-no-repeat bg-[url('/images/home-priority-geographies.jpg')] rounded-2xl shadow-lg">
               <h3 className="font-medium text-xl uppercase">Geographies</h3>
               <p className="mt-2 md:mt-4 text-black/70 lg:leading-8">
                 The opportunities are located in geographies that are are unique due to of their
@@ -63,7 +63,7 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => (
                 projects will have the greatest impact for people and nature.
               </p>
             </div>
-            <div className="p-3 md:p-5 lg:p-10 pt-[40%] md:pt-[40%] lg:pt-[40%] bg-white bg-top bg-contain bg-no-repeat bg-[url('/images/home-priority-categories.jpg')] rounded-2xl shadow-home-card">
+            <div className="p-3 md:p-5 lg:p-10 pt-[40%] md:pt-[40%] lg:pt-[40%] bg-white bg-top bg-contain bg-no-repeat bg-[url('/images/home-priority-categories.jpg')] rounded-2xl shadow-lg">
               <h3 className="font-medium text-xl uppercase">Categories</h3>
               <p className="mt-2 md:mt-4 text-black/70 lg:leading-8">
                 You can choose from a variety of opportunities that range from sustainable landscape
@@ -106,7 +106,7 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => (
         </figure>
         <div className="mx-auto pt-16 pb-20 w-full max-w-7xl lg:h-full lg:flex items-center text-center lg:text-left">
           <div className="lg:ml-auto px-4 sm:px-8 xl:pl-28 lg:w-1/2 ">
-            <h3 className="text-2xl md:text-3xl font-serif font-semibold text-white">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-semibold text-white">
               Biodiversity
             </h3>
             <p className="mt-3 md:mt-6 mx-auto lg:mx-0 max-w-md text-base sm:text-lg md:text-xl text-white opacity-70">
@@ -135,7 +135,9 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => (
         </figure>
         <div className="mx-auto pt-16 pb-20 w-full max-w-7xl lg:h-full lg:flex items-center text-center lg:text-left">
           <div className="lg:ml-auto px-4 sm:px-8 xl:pl-28 lg:w-1/2 ">
-            <h3 className="text-2xl md:text-3xl font-serif font-semibold text-white">Climate</h3>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-semibold text-white">
+              Climate
+            </h3>
             <p className="mt-3 md:mt-6 mx-auto lg:mx-0 max-w-md text-base sm:text-lg md:text-xl text-white opacity-70">
               Contribute to climate solutions through investments that reduce CO2 emissions and
               conserve or restore forest-related carbon sinks.
@@ -164,7 +166,9 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => (
         </figure>
         <div className="mx-auto pt-16 pb-20 w-full max-w-7xl lg:h-full lg:flex items-center text-center lg:text-left">
           <div className="lg:ml-auto px-4 sm:px-8 xl:pl-28 lg:w-1/2 ">
-            <h3 className="text-2xl md:text-3xl font-serif font-semibold text-white">Community</h3>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-semibold text-white">
+              Community
+            </h3>
             <p className="mt-3 md:mt-6 mx-auto lg:mx-0 max-w-md text-base sm:text-lg md:text-xl text-white opacity-70">
               Contribute to improving the production systems and livelihoods of local communities
               and indigenous people, to ensure their basic needs are met, while enhancing their
@@ -195,7 +199,9 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => (
         </figure>
         <div className="mx-auto pt-16 pb-20 w-full max-w-7xl lg:h-full lg:flex items-center text-center lg:text-left">
           <div className="lg:ml-auto px-4 sm:px-8 xl:pl-28 lg:w-1/2 ">
-            <h3 className="text-2xl md:text-3xl font-serif font-semibold text-white">Water</h3>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-semibold text-white">
+              Water
+            </h3>
             <p className="mt-3 md:mt-6 mx-auto lg:mx-0 max-w-md text-base sm:text-lg md:text-xl text-white opacity-70">
               Support the protection of water availability and regulation. These approaches are
               vital for reducing risks such as floods and droughts, which in the face of climate
