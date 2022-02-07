@@ -232,6 +232,9 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    standard (1.6.0)
+      rubocop (= 1.24.1)
+      rubocop-performance (= 1.13.1)
     stimulus-rails (1.0.2)
       railties (>= 6.0.0)
     strscan (3.0.1)
@@ -281,6 +284,7 @@ DEPENDENCIES
   rubocop-performance
   simplecov
   sprockets-rails
+  standard
   stimulus-rails
   super_diff
   test-prof
