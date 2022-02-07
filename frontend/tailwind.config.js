@@ -23,6 +23,7 @@ module.exports = {
     colors: {
       background: {
         light: '#FFFDFA',
+        middle: '#FBF7F2',
         dark: '#EFEDE9',
       },
       gray: {
@@ -33,8 +34,8 @@ module.exports = {
         900: '#1D1D1B',
       },
       green: {
-        dark: '#316146',
         light: '#CFD762',
+        dark: '#316146',
       },
       red: '#BF3300',
       orange: '#F4A064',
@@ -60,6 +61,9 @@ module.exports = {
     extend: {
       spacing: {
         4.5: '1.125rem',
+      },
+      borderRadius: {
+        '4xl': '2rem',
       },
     },
   },

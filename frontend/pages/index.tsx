@@ -1,8 +1,15 @@
+import Link from 'next/link';
+
 import Button from 'components/button';
 import Head from 'components/head';
+import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
+
+import ConnectIcon from 'svgs/home/connect.svg?sprite';
+import ReportBackIcon from 'svgs/home/report-back.svg?sprite';
+import SearchFindIcon from 'svgs/home/search-find.svg?sprite';
 
 const Home: PageComponent<{}, StaticPageLayoutProps> = () => (
   <>
@@ -23,25 +30,188 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => (
         </div>
       </LayoutContainer>
     </div>
-    <LayoutContainer className="mt-16 md:mt-20">
-      <h1>Welcome to HeCo Invest!</h1>
-      <p>Site map:</p>
-      <ol>
-        <li>/</li>
-        <li>/investors</li>
-        <li>/project-developers</li>
-        <li>/about</li>
-        <li>/faq</li>
-        <li>/privacy-policy</li>
-        <li>/discover/:tab?</li>
-        <li>/project/:id</li>
-        <li>/project-developer/:id</li>
-        <li>/open-call/:id</li>
-        <li>/investor/:id</li>
-        <li>/500</li>
-        <li>/404</li>
-      </ol>
+
+    <LayoutContainer className="mt-24 lg:mt-28">
+      <h2 className="max-w-md sm:max-w-xl md:max-w-4xl mx-auto font-serif font-bold text-center text-2xl sm:text-3xl md:text-5xl text-green-dark">
+        Why use this platform
+      </h2>
+
+      <div className="relative mt-12 lg:mt-24 md:grid md:grid-cols-2 md:gap-3 lg:items-center">
+        <div className="mt-10 lg:mt-0 lg:pr-24">
+          <img
+            className="relative mx-auto"
+            width={490}
+            src="/images/home-investor-illustration.svg"
+            alt=""
+          />
+        </div>
+        <div className="relative mt-12 lg:mt-0">
+          <h3 className="text-xl lg:text-2xl font-semibold text-green-dark">
+            As an Investor / Funder
+          </h3>
+          <div className="mt-8">
+            <dl className="md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-16 space-y-10 md:space-y-0">
+              <div>
+                <dt className="text-base sm:text-lg md:text-xl font-semibold">Create open calls</dt>
+                <dd className="mt-1 text-black/70">
+                  <Link href="/discover/project-developer">
+                    <a className="text-green-dark font-bold underline">Call on our community</a>
+                  </Link>{' '}
+                  of project developers to identify opportunities in your preferred sectors and
+                  geographies.
+                </dd>
+              </div>
+              <div>
+                <dt className="text-base sm:text-lg md:text-xl font-semibold">
+                  Enable positive impact
+                </dt>
+                <dd className="mt-1 text-black/70">
+                  Find opportunities that have the greatest impact on challenges like biodiversity,
+                  climate, community and water.
+                </dd>
+              </div>
+              <div>
+                <dt className="text-base sm:text-lg md:text-xl font-semibold">
+                  In line with your priorities
+                </dt>
+                <dd className="mt-1 text-black/70">
+                  Set your priorities and HeCo Invest will connect you with the best opportunities.
+                </dd>
+              </div>
+              <div>
+                <dt className="text-base sm:text-lg md:text-xl font-semibold">
+                  Projects of all sizes
+                </dt>
+                <dd className="mt-1 text-black/70">
+                  Invest in small, medium or big project opportunities.
+                </dd>
+              </div>
+            </dl>
+          </div>
+          <Button
+            theme="secondary-green"
+            size="small"
+            to="/investors"
+            className="inline-block mt-12 md:mt-16"
+          >
+            Features for investors
+          </Button>
+        </div>
+      </div>
+
+      <div className="relative mt-20 lg:mt-52 md:grid md:grid-cols-2 md:gap-3 lg:items-center">
+        <div className="relative mt-12 lg:mt-0">
+          <h3 className="text-xl lg:text-2xl font-semibold text-green-dark">
+            As a Project Developer
+          </h3>
+          <div className="mt-8">
+            <dl className="md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-16 space-y-10 md:space-y-0">
+              <div>
+                <dt className="text-base sm:text-lg md:text-xl font-semibold">Guiding tools</dt>
+                <dd className="mt-1 text-black/70">
+                  Access user-friendly tools that help turn a good idea into a proposal ready to be
+                  reviewed by an investor or funder.
+                </dd>
+              </div>
+              <div>
+                <dt className="text-base sm:text-lg md:text-xl font-semibold">
+                  Create partnerships
+                </dt>
+                <dd className="mt-1 text-black/70">
+                  Find other people with similar interests. Join forces, secure more investment and
+                  create a greater impact.
+                </dd>
+              </div>
+              <div>
+                <dt className="text-base sm:text-lg md:text-xl font-semibold">Curated database</dt>
+                <dd className="mt-1 text-black/70">
+                  Explore our curated database featuring the contacts you need to take your project
+                  or business to the next level.
+                </dd>
+              </div>
+              <div>
+                <dt className="text-base sm:text-lg md:text-xl font-semibold">
+                  Apply to open calls
+                </dt>
+                <dd className="mt-1 text-black/70">
+                  <Link href="/discover/open-call">
+                    <a className="text-green-dark font-bold underline">Browse the open calls</a>
+                  </Link>{' '}
+                  posted by our investor community to identify new areas for project development.
+                </dd>
+              </div>
+            </dl>
+          </div>
+          <Button
+            theme="secondary-green"
+            size="small"
+            to="/investors"
+            className="inline-block mt-12 md:mt-16"
+          >
+            Features for project developers
+          </Button>
+        </div>
+        <div className="mt-10 lg:mt-0 lg:pl-24">
+          <img
+            className="relative mx-auto"
+            width={490}
+            src="/images/home-project-developer-illustration.svg"
+            alt=""
+          />
+        </div>
+      </div>
     </LayoutContainer>
+
+    <div className="mt-24 py-16 sm:py-28 bg-background-middle">
+      <LayoutContainer>
+        <h2 className="max-w-md sm:max-w-xl md:max-w-4xl mx-auto font-serif font-bold text-center text-2xl sm:text-3xl md:text-5xl">
+          How it works
+        </h2>
+        <p className="mt-4 md:mt-8 max-w-md sm:max-w-xl md:max-w-4xl mx-auto text-center text-base sm:text-lg md:text-xl">
+          Reach out for what you are looking for, from either{' '}
+          <span className="font-semibold">Investors</span> or{' '}
+          <span className="font-semibold">Project Developers</span> and{' '}
+          <span className="font-semibold">start the conversation</span>. Make sure to update us to
+          help us track your contribution to preserving the Amazon:{' '}
+          <span className="font-semibold">the future is in your hands too!</span>
+        </p>
+        <div className="mt-12 md:mt-20 grid grid-rows-3 md:grid-rows-none md:grid-cols-3 gap-6">
+          <div className="py-6 md:py-10 px-6 bg-green-light/20 rounded-4xl text-center">
+            <Icon
+              icon={SearchFindIcon}
+              className="mx-auto w-24 h-24 p-3 text-green-dark bg-white rounded-full"
+            />
+            <h3 className="mt-4 md:mt-14 font-medium text-xl uppercase">Search and find</h3>
+            <p className="mt-2 md:mt-2.5 text-black/70">
+              Use our Artificial Intellience tool powered by ARIES, to help you identify what best
+              fits your specific needs.
+            </p>
+          </div>
+          <div className="py-6 md:py-10 px-6 bg-green-light/20 rounded-4xl text-center">
+            <Icon
+              icon={ConnectIcon}
+              className="mx-auto w-24 h-24 p-3 text-green-dark bg-white rounded-full"
+            />
+            <h3 className="mt-4 md:mt-14 font-medium text-xl uppercase">Connect</h3>
+            <p className="mt-2 md:mt-2.5 text-black/70">
+              Start connecting with people to create impact. You can find investors, opportunities
+              to invest in and much much more...
+            </p>
+          </div>
+          <div className="py-6 md:py-10 px-6 bg-green-light/20 rounded-4xl text-center">
+            <Icon
+              icon={ReportBackIcon}
+              className="mx-auto w-24 h-24 p-3 text-green-dark bg-white rounded-full"
+            />
+            <h3 className="mt-4 md:mt-14 font-medium text-xl uppercase">Report back</h3>
+            <p className="mt-2 md:mt-2.5 text-black/70">
+              Inspire and educate other users by coming back to the platform and updating us on your
+              progress. We’ll be able to track the Amazon’s improvement thanks to your contribution!
+            </p>
+          </div>
+        </div>
+      </LayoutContainer>
+    </div>
 
     <LayoutContainer className="mt-14 md:pb-56">
       <div className="relative py-6 sm:py-12 px-4 sm:px-8 md:pt-20 md:pb-60 lg:pb-72 bg-green-dark rounded-3xl">
