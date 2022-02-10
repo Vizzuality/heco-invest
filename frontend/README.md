@@ -1,6 +1,18 @@
 # HeCo Invest - Front-end
 
-The front-end application of the HeCo Invest platform is built upon [Vizzuality's scaffold project](https://github.com/Vizzuality/front-end-scaffold).
+The front-end application of the HeCo Invest platform is built upon [Vizzuality's scaffold project](https://github.com/Vizzuality/front-end-scaffold) and use the following resources:
+- [React](https://reactjs.org/) as a UI library
+- [Next.js](https://nextjs.org/) as a framework
+- [Tailwind CSS](https://tailwindcss.com/) as a styles framework
+- [Storybook](https://storybook.js.org/) as a sandbox for the UI components
+- [React Aria](https://react-spectrum.adobe.com/react-aria/index.html) to facilitate the application's accessibility
+- [Rooks](https://react-hooks.org/) to provide reusable React hooks
+- [React Query](https://react-query.tanstack.com/) as a network layer
+- [Feather](https://feathericons.com/) as a icon provider
+
+The application's design files can be found here:
+- [Design system](https://www.figma.com/file/3epSYh4KQZBCyh4Y5OzmHw/HeCo---Design-System?node-id=2345%3A4760)
+- [Main file](https://www.figma.com/file/KC49uMR9t1YARmFR0Sr6aN/HeCo---Work-in-progress?node-id=0%3A1)
 
 ## Quick start
 
@@ -9,15 +21,13 @@ In order to start modifying the app, please make sure to correctly configure you
 1. Make sure you you have [Node.js](https://nodejs.org/en/) installed
 2. (Optional) Install [NVM](https://github.com/nvm-sh/nvm) to manage your different Node.js versions
 3. (Optional) Use [Visual Studio Code](https://code.visualstudio.com/) as a text editor to benefit from automatic type checking
-4. Configure your text editor with the [Prettier](https://prettier.io/), [ESLint](https://eslint.org/) and [EditorConfig](https://editorconfig.org/) plugins
+4. Configure your text editor with the [Prettier](https://prettier.io/), [ESLint](https://eslint.org/), [EditorConfig](https://editorconfig.org/), [Tailwind CSS](https://tailwindcss.com/docs/plugins) (recommended) and [Headwind](https://github.com/heybourn/headwind) (recommended) plugins
 5. Use the correct Node.js version for this app by running `nvm use`; if you didn't install NVM (step 2), then manually install the Node.js version described in `.nvmrc`
 6. Install the dependencies: `yarn`
 7. Create a `.env` file at the root of the project by copying `.env.sample` and giving a value for each of the variables (see next section for details)
 8. Run the server: `yarn dev`
 
 You can access a hot-reloaded version of the app on [http://localhost:3000](http://localhost:3000).
-
-The application is built using [React](https://reactjs.org/) and the framework [Next.js](https://nextjs.org/). The styles use the [Tailwind CSS](https://tailwindcss.com/) framework.
 
 ## Environment variables
 
