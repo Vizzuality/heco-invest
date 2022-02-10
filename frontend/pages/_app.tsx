@@ -4,6 +4,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import type { AppProps } from 'next/app';
 
 import { OverlayProvider } from '@react-aria/overlays';
+import { SSRProvider } from '@react-aria/ssr';
 import { Provider as AuthenticationProvider } from 'next-auth/client';
 import { Hydrate } from 'react-query/hydration';
 
@@ -48,11 +49,13 @@ const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
               keepAlive: 10 * 60, // Send keepAlive message every 10 minutes
             }}
           >
-            <OverlayProvider>
-              <Layout {...layoutProps}>
-                <Component {...pageProps} />
-              </Layout>
-            </OverlayProvider>
+            <SSRProvider>
+              <OverlayProvider>
+                <Layout {...layoutProps}>
+                  <Component {...pageProps} />
+                </Layout>
+              </OverlayProvider>
+            </SSRProvider>
           </AuthenticationProvider>
         </Hydrate>
       </QueryClientProvider>
