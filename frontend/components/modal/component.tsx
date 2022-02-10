@@ -1,4 +1,4 @@
-import { Children, FC, cloneElement, isValidElement, useRef } from 'react';
+import { FC, useRef } from 'react';
 
 import cx from 'classnames';
 
@@ -7,9 +7,10 @@ import { FocusScope } from '@react-aria/focus';
 import { useOverlay, usePreventScroll, useModal, OverlayContainer } from '@react-aria/overlays';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import Button from 'components/button';
 import Icon from 'components/icon';
 
-import CLOSE_SVG from 'svgs/ui/close.svg?sprite';
+import XIcon from 'svgs/x.svg?sprite';
 
 import { CONTENT_CLASSES, OVERLAY_CLASSES } from './constants';
 import type { ModalProps } from './types';
@@ -21,6 +22,7 @@ export const Modal: FC<ModalProps> = ({
   size = 'default',
   children,
   className,
+  scrollable = true,
   onDismiss,
 }: ModalProps) => {
   const containerRef = useRef();
@@ -91,26 +93,22 @@ export const Modal: FC<ModalProps> = ({
                 >
                   {dismissable && (
                     <div className="relative">
-                      <button
-                        type="button"
+                      <Button
+                        theme="naked"
                         onClick={onDismiss}
-                        className="absolute flex items-center px-4 py-4 text-sm text-gray-300 right-4 -top-4 focus:text-black hover:text-black"
+                        className="absolute top-0 text-gray-400 -translate-y-full md:top-4 -right-3 md:-right-4 focus:text-black hover:text-black group"
                       >
-                        <span className="text-xs">Close</span>
-                        <Icon icon={CLOSE_SVG} className="inline-block w-3 h-3 ml-2 text-black" />
-                      </button>
+                        <span className="sr-only">Close</span>
+                        <Icon
+                          icon={XIcon}
+                          className="inline-block w-6 h-6 transition-all fill-current group-hover:rotate-180 group-focus-within:rotate-180"
+                        />
+                      </Button>
                     </div>
                   )}
 
-                  {/* Children */}
-                  {Children.map(children, (child) => {
-                    if (isValidElement(child)) {
-                      return cloneElement(child, {
-                        onDismiss,
-                      });
-                    }
-                    return null;
-                  })}
+                  {!scrollable && children}
+                  {scrollable && <div className="overflow-y-auto flex-grow-1">{children}</div>}
                 </motion.div>
               </div>
             </FocusScope>

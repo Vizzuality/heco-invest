@@ -59,7 +59,7 @@ export const Popup: React.FC<PopupProps> = ({
           {...mergeProps(menuProps, domProps)}
           ref={ref}
           className={cx(
-            'z-30 absolute transform whitespace-nowrap bg-white shadow-menu rounded-md overflow-hidden',
+            'z-30 absolute transform whitespace-nowrap bg-white shadow-2xl rounded-md overflow-hidden',
             align === 'start' ? 'left-0' : 'right-0',
             direction === 'top' ? '-top-2 -translate-y-full' : '-bottom-2 translate-y-full'
           )}

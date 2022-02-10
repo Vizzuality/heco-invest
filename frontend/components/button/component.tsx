@@ -13,7 +13,7 @@ import { isAnchorButton } from './helpers';
 import { ButtonProps, HTMLButtonProps, HTMLAnchorProps } from './types';
 
 export const Inner: React.ForwardRefRenderFunction<any, ButtonProps> = (
-  { theme = 'primary-green', size = 'base', icon, children, ...rest }: ButtonProps,
+  { theme = 'primary-green', size = 'small', icon, children, ...rest }: ButtonProps,
   ref
 ) => {
   const className = cx({

@@ -9,8 +9,8 @@ import { useSearchFieldState } from '@react-stately/searchfield';
 
 import Icon from 'components/icon';
 
-import CLOSE_SVG from 'svgs/ui/close.svg?sprite'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import SEARCH_SVG from 'svgs/ui/search.svg?sprite';
+import xIcon from 'svgs/x.svg?sprite'; // eslint-disable-line @typescript-eslint/no-unused-vars
 
 import { SIZES, THEME } from './constants';
 import type { SearchProps } from './types';
@@ -63,7 +63,7 @@ export const Search: FC<SearchProps> = ({
           className="absolute z-10 flex items-center self-center justify-center w-5 h-5 right-3 r-2"
           type="button"
         >
-          <Icon icon={CLOSE_SVG} className="inline-block w-2 h-2" />
+          <Icon icon={xIcon} className="inline-block w-2 h-2" />
         </button>
       )}
     </div>

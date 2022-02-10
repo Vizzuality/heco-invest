@@ -6,7 +6,7 @@ import { motion, useAnimation } from 'framer-motion';
 
 import Icon from 'components/icon';
 
-import CLOSE_SVG from 'svgs/ui/close.svg?sprite';
+import xIcon from 'svgs/x.svg?sprite';
 
 import { THEME } from './constants';
 import type { ToastProps } from './types';
@@ -111,7 +111,7 @@ export const Toast: React.FC<ToastProps> = ({
             className="flex items-center justify-center flex-shrink-0 w-10 h-10 ml-5"
             onClick={handleDismiss}
           >
-            <Icon icon={CLOSE_SVG} className="w-3 h-3" />
+            <Icon icon={xIcon} className="w-3 h-3" />
           </button>
         </div>
       </div>
