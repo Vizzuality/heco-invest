@@ -13,7 +13,7 @@ import LanguageSelector from 'components/language-selector-no-ssr';
 import LayoutContainer from 'components/layout-container';
 import Menu, { MenuItem, MenuSection } from 'components/menu';
 
-import SearchIcon from 'svgs/search.svg?sprite';
+import SearchIcon from 'svgs/search.svg';
 
 import { HeaderProps } from './types';
 
@@ -34,6 +34,7 @@ export const Header: React.FC<HeaderProps> = ({
     (key) => {
       switch (key) {
         case 'sign-in':
+          // eslint-disable-next-line no-console
           console.warn('Sign in action not implemented yet!');
           break;
         default:
@@ -54,11 +55,11 @@ export const Header: React.FC<HeaderProps> = ({
       })}
     >
       <LayoutContainer>
-        <div className="flex justify-between items-center pt-3 pb-3 md:pt-6 md:pb-4 lg:justify-start lg:space-x-10">
+        <div className="flex items-center justify-between pt-3 pb-3 md:pt-6 md:pb-4 lg:justify-start lg:space-x-10">
           <Link href="/">
             <a className="font-semibold">HeCo Invest</a>
           </Link>
-          <div className="flex items-center lg:hidden space-x-2">
+          <div className="flex items-center space-x-2 lg:hidden">
             <div className="shrink-0">
               <LanguageSelector />
             </div>
@@ -104,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <a>About</a>
               </Link>
             </nav>
-            <div className="flex items-center md:ml-4 space-x-6">
+            <div className="flex items-center space-x-6 md:ml-4">
               <div className="shrink-0">
                 <LanguageSelector />
               </div>

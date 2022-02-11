@@ -6,8 +6,8 @@ import { useId } from '@react-aria/utils';
 
 import Icon from 'components/icon';
 
-import LEGEND_SVG from 'svgs/map/legend.svg?sprite';
-import ARROW_DOWN_SVG from 'svgs/ui/arrow-down.svg?sprite';
+import LEGEND_SVG from 'svgs/map/legend.svg';
+import ARROW_DOWN_SVG from 'svgs/ui/arrow-down.svg';
 
 import SortableList from './sortable/list';
 import type { LegendProps } from './types';

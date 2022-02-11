@@ -4,17 +4,15 @@ import cx from 'classnames';
 
 import type { IconProps } from './types';
 
-export const Icon: FC<IconProps> = ({ icon, className = 'w-5 h-5', style }: IconProps) => (
-  <svg
+export const Icon: FC<IconProps> = ({ icon: IconComponent, ...rest }: IconProps) => (
+  <IconComponent
+    {...rest}
     className={cx({
       'fill-current': true,
-      [className]: className,
+      'w-5 h-5': !rest.className,
+      [rest.className]: !!rest.className,
     })}
-    viewBox={icon?.viewBox || '0 0 24 24'}
-    style={style}
-  >
-    <use xlinkHref={`#${icon?.id || icon}`} />
-  </svg>
+  />
 );
 
 export default Icon;

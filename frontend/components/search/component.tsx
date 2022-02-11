@@ -9,8 +9,8 @@ import { useSearchFieldState } from '@react-stately/searchfield';
 
 import Icon from 'components/icon';
 
-import SEARCH_SVG from 'svgs/ui/search.svg?sprite';
-import xIcon from 'svgs/x.svg?sprite'; // eslint-disable-line @typescript-eslint/no-unused-vars
+import SEARCH_SVG from 'svgs/ui/search.svg';
+import xIcon from 'svgs/x.svg'; // eslint-disable-line @typescript-eslint/no-unused-vars
 
 import { SIZES, THEME } from './constants';
 import type { SearchProps } from './types';

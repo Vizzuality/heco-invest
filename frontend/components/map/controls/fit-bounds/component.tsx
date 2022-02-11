@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 import Icon from 'components/icon';
 
-import FIT_BOUNDS_SVG from 'svgs/map/fit-bounds.svg?sprite';
+import FIT_BOUNDS_SVG from 'svgs/map/fit-bounds.svg';
 
 import type { FitBoundsControlProps } from './types';
 
