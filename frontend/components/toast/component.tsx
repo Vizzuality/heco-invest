@@ -6,7 +6,7 @@ import { motion, useAnimation } from 'framer-motion';
 
 import Icon from 'components/icon';
 
-import xIcon from 'svgs/x.svg?sprite';
+import xIcon from 'svgs/x.svg';
 
 import { THEME } from './constants';
 import type { ToastProps } from './types';

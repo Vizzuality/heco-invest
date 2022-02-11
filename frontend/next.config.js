@@ -1,22 +1,25 @@
-/* eslint-disable */
-const withPlugins = require('next-compose-plugins');
-const withOptimizedImages = require('next-optimized-images');
-
-const nextConfig = {
-  webpack: (config) => {
-    config.node = {
-      fs: 'empty',
-    };
+module.exports = {
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.tsx?$/,
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            svgoConfig: {
+              plugins: [
+                {
+                  name: 'removeViewBox',
+                  active: false,
+                },
+              ],
+            },
+          },
+        },
+      ],
+    });
 
     return config;
   },
 };
-
-module.exports = withPlugins(
-  [
-    withOptimizedImages({
-      optimizeImages: false,
-    }),
-  ],
-  nextConfig
-);

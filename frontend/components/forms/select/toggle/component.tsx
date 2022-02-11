@@ -6,7 +6,7 @@ import THEME from 'components/forms/select/constants/theme';
 import { SelectToggleProps } from 'components/forms/select/types';
 import Icon from 'components/icon';
 
-import ARROW_DOWN_SVG from 'svgs/ui/arrow-down.svg?sprite';
+import ARROW_DOWN_SVG from 'svgs/ui/arrow-down.svg';
 
 export const SelectToggle: FC<SelectToggleProps> = ({
   options,

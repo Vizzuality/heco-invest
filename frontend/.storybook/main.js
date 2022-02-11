@@ -1,6 +1,9 @@
 const path = require('path');
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   stories: [
     '../layouts/**/*.stories.@(js|jsx|ts|tsx)',
     '../components/**/*.stories.@(js|jsx|ts|tsx)',
@@ -44,19 +47,16 @@ module.exports = {
       test: /\.svg$/,
       use: [
         {
-          loader: 'svg-sprite-loader',
+          loader: '@svgr/webpack',
           options: {
-            extract: false,
-          },
-        },
-        {
-          loader: 'svgo-loader',
-          options: {
-            plugins: [
-              { removeTitle: true },
-              { convertColors: { shorthex: false } },
-              { convertPathData: false },
-            ],
+            svgoConfig: {
+              plugins: [
+                {
+                  name: 'removeViewBox',
+                  active: false,
+                },
+              ],
+            },
           },
         },
       ],

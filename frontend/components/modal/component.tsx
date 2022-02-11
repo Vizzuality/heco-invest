@@ -11,7 +11,7 @@ import { useMediaMatch } from 'rooks';
 import Button from 'components/button';
 import Icon from 'components/icon';
 
-import XIcon from 'svgs/x.svg?sprite';
+import XIcon from 'svgs/x.svg';
 
 import { CONTENT_CLASSES, OVERLAY_CLASSES } from './constants';
 import type { ModalProps } from './types';

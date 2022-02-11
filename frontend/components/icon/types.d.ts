@@ -1,8 +1,3 @@
-export interface IconProps {
-  icon: {
-    id: string;
-    viewBox: string;
-  };
-  className?: string;
-  style?: unknown;
-}
+export type IconProps = React.SVGProps<SVGSVGElement> & {
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+};

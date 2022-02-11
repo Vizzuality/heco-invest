@@ -1,12 +1,11 @@
 import { ReactNode } from 'react';
 
+import { IconProps } from 'components/icon';
+
 export type Level = 'info' | 'success' | 'warning' | 'error';
 
 export interface ToastThemeOption {
-  icon: {
-    id: string;
-    viewBox: string;
-  };
+  icon: IconProps['icon'];
   bg: string;
   hoverBg: string;
 }

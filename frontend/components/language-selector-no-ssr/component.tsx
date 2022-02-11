@@ -6,7 +6,7 @@ import Button from 'components/button';
 import Icon from 'components/icon';
 import Menu, { MenuItem } from 'components/menu';
 
-import ChevronDownIcon from 'svgs/chevron-down.svg?sprite';
+import ChevronDownIcon from 'svgs/chevron-down.svg';
 
 import { getSimplifiedLanguageName, getSimplifiedLanguageCode } from './helpers';
 import { LanguageSelectorProps } from './types';
