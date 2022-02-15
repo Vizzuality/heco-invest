@@ -41,7 +41,6 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         env: "frontend-${{ inputs.env }}"
         ref: ${{ github.head_ref }}
-        log_args: true
 
     - name: Read .nvmrc
       id: nvm
@@ -88,4 +87,3 @@ jobs:
         status: ${{ job.status }}
         env_url: ${{ steps.vercel-deployment.outputs.preview-url }}
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-        log_args: true
