@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 
 import { useWindowScrollPosition } from 'rooks';
 
+import ActiveLink from 'components/active-link';
 import Button from 'components/button';
 import Icon from 'components/icon';
 import LanguageSelector from 'components/language-selector-no-ssr';
@@ -90,20 +91,20 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
           <div className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end">
             <nav className="flex space-x-8">
-              <Link href="/discover">
+              <ActiveLink href="/discover" activeClassName="font-semibold">
                 <a title="Search">
                   <Icon icon={SearchIcon} />
                 </a>
-              </Link>
-              <Link href="/investors">
+              </ActiveLink>
+              <ActiveLink href="/investors" activeClassName="font-semibold">
                 <a>For investors</a>
-              </Link>
-              <Link href="/project-developers">
+              </ActiveLink>
+              <ActiveLink href="/project-developers" activeClassName="font-semibold">
                 <a>For project developers</a>
-              </Link>
-              <Link href="/about">
+              </ActiveLink>
+              <ActiveLink href="/about" activeClassName="font-semibold">
                 <a>About</a>
-              </Link>
+              </ActiveLink>
             </nav>
             <div className="flex items-center space-x-6 md:ml-4">
               <div className="shrink-0">
