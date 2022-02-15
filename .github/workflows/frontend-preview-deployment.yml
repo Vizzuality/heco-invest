@@ -1,0 +1,19 @@
+name: Front-end preview deployment
+on:
+  pull_request:
+    paths:
+      - 'frontend/**'
+
+jobs:
+  deploy:
+    name: Deploy to preview
+    uses: ./.github/workflows/frontend-deployment.yml
+    with:
+      env: preview
+      github-comment: true
+    secrets:
+      vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      vercel-team-id: ${{ secrets.VERCEL_TEAM_ID }}
+      vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+      vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} 
+
