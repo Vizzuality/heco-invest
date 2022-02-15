@@ -40,6 +40,7 @@ jobs:
         step: start
         token: ${{ secrets.GITHUB_TOKEN }}
         env: "frontend-${{ inputs.env }}"
+        ref: ${{ github.head_ref }}
 
     - name: Read .nvmrc
       id: nvm
