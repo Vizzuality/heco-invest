@@ -42,6 +42,16 @@ Below is a description of each of the keys.
 | NEXT_PUBLIC_GOOGLE_ANALYTICS | Key of the Google Analytics account |
 | NEXT_PUBLIC_TRANSIFEX_API_KEY | Key of the Transifex account |
 
+## CI/CD
+
+When a pull request (PR) is created, a GitHub action runs the tests (`yarn test`) and then deploys the application to a development environment on Vercel. A comment will be automatically added to the PR with the link to the environment.
+
+When the PR is merged or commits are directly pushed to the `develop` branch (not recommended), the tests are also run and the application is deployed to the staging environment: https://heco-invest-frontend.vercel.app/.
+
+When a PR is merged to the `main` branch, the same process is also executed and the application is deployed to the production environment: TBD.
+
+It is recommended to mention the Jira task ID either in commits or the branch names so that the deployment information can be directly available in Jira.
+
 ## Contribution rules
 
 Please, **create a PR** for any improvement or feature you want to add. Use the `develop` branch for this.

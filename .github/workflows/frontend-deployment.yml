@@ -3,7 +3,7 @@ on:
   workflow_call:
     inputs:
       env:
-        description: 'The environment in which to deploy (preview, staging or production)'
+        description: 'The environment in which to deploy (development, staging or production)'
         default: 'staging'
         required: true
         type: string
