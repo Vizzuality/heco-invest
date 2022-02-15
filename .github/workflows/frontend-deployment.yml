@@ -1,0 +1,88 @@
+name: Reusable front-end deployment
+on:
+  workflow_call:
+    inputs:
+      env:
+        description: 'The environment in which to deploy (preview, staging or production)'
+        default: 'staging'
+        required: true
+        type: string
+      github-comment:
+        description: 'Whether to post a comment on GitHub with the URL of the deployment'
+        default: false
+        type: boolean
+    secrets:
+      vercel-token:
+        required: true
+      vercel-team-id:
+        required: true
+      vercel-org-id:
+        required: true
+      vercel-project-id:
+        required: true
+
+defaults:
+  run:
+    working-directory: frontend
+
+jobs:
+  deploy:
+    name: Front-end deployment
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Create deployment
+      uses: bobheadxi/deployments@v0.6.2
+      id: deployment
+      with:
+        step: start
+        token: ${{ secrets.GITHUB_TOKEN }}
+        env: "frontend-${{ inputs.env }}"
+
+    - name: Read .nvmrc
+      id: nvm
+      run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+
+    - name: Use Node.js (.nvmrc)
+      uses: actions/setup-node@v2
+      with:
+        node-version: "${{ steps.nvm.outputs.NVMRC }}"
+
+    - name: Cache node-modules
+      id: cache-node-modules
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: node-modules-${{ hashFiles('yarn.lock') }}
+
+    - name: Install Node.js dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: yarn install --frozen-lockfile
+
+    - name: Run tests
+      run: yarn test
+
+    - name: Vercel deployment
+      id: vercel-deployment
+      if: inputs.env != 'production'
+      uses: amondnet/vercel-action@v20
+      with:
+        vercel-token: ${{ secrets.vercel-token }}
+        github-token: ${{ secrets.GITHUB_TOKEN }} 
+        github-comment: ${{ inputs.github-comment }}
+        vercel-args: ${{ inputs.env == 'staging' && '--prod' || '' }}
+        scope: ${{ secrets.vercel-team-id }}
+        vercel-org-id: ${{ secrets.vercel-org-id}}
+        vercel-project-id: ${{ secrets.vercel-project-id}} 
+
+    - name: Update deployment status
+      uses: bobheadxi/deployments@v0.6.2
+      if: always()
+      with:
+        step: finish
+        token: ${{ secrets.GITHUB_TOKEN }}
+        status: ${{ job.status }}
+        env_url: ${{ steps.vercel-deployment.outputs.preview-url }}
+        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
