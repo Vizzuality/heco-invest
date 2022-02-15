@@ -3,7 +3,7 @@ on:
   workflow_call:
     inputs:
       env:
-        description: 'The environment in which to deploy (preview, staging or production)'
+        description: 'The environment in which to deploy (development, staging or production)'
         default: 'staging'
         required: true
         type: string
@@ -41,6 +41,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         env: "frontend-${{ inputs.env }}"
         ref: ${{ github.head_ref }}
+        log_args: true
 
     - name: Read .nvmrc
       id: nvm
@@ -87,3 +88,4 @@ jobs:
         status: ${{ job.status }}
         env_url: ${{ steps.vercel-deployment.outputs.preview-url }}
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+        log_args: true
