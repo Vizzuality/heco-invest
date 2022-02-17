@@ -41,6 +41,7 @@ Below is a description of each of the keys.
 | NEXTAUTH_URL | URL of the service managing the authentication |
 | NEXT_PUBLIC_GOOGLE_ANALYTICS | Key of the Google Analytics account |
 | NEXT_PUBLIC_TRANSIFEX_API_KEY | Key of the Transifex account |
+| NEXT_PUBLIC_DOMAIN | Complete domain from which the application is served (including https) and without a trailing slash (e.g. https://vizzuality.com)
 
 ## CI/CD
 

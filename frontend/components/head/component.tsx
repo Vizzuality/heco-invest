@@ -1,6 +1,7 @@
 import React from 'react';
 
 import NextHead from 'next/head';
+import { useRouter } from 'next/router';
 
 import { translateText } from 'helpers/transifex';
 
@@ -11,6 +12,8 @@ export const Head: React.FC<HeadProps> = ({
   description: customDescription,
   children,
 }: HeadProps) => {
+  const { locales, asPath } = useRouter();
+
   const title = customTitle ? `${customTitle} | Heco Invest` : 'Heco Invest';
   const description =
     customDescription ||
@@ -23,6 +26,21 @@ export const Head: React.FC<HeadProps> = ({
     <NextHead>
       <title key="title">{title}</title>
       <meta key="description" name="description" content={description} />
+
+      {locales.map((locale) => (
+        <link
+          key={locale}
+          rel="alternate"
+          hrefLang={locale}
+          href={`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${asPath}`}
+        />
+      ))}
+      <link
+        rel="alternate"
+        hrefLang="x-default"
+        href={`${process.env.NEXT_PUBLIC_DOMAIN}${asPath}`}
+      />
+
       {/* <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
