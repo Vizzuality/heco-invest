@@ -1,10 +1,14 @@
+import { useEffect } from 'react';
+
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 
 import { OverlayProvider } from '@react-aria/overlays';
 import { SSRProvider } from '@react-aria/ssr';
+import { tx } from '@transifex/native';
 import { Provider as AuthenticationProvider } from 'next-auth/client';
 import { Hydrate } from 'react-query/hydration';
 
@@ -22,7 +26,18 @@ type Props = AppProps & {
 
 const queryClient = new QueryClient();
 
+// Initialize Transifex
+tx.init({ token: process.env.NEXT_PUBLIC_TRANSIFEX_API_KEY });
+tx.setCurrentLocale('en'); // Default locale
+
 const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
+  const { locale } = useRouter();
+
+  // Update the Transifex' locale based on Next.js' one
+  useEffect(() => {
+    tx.setCurrentLocale(locale);
+  }, [locale]);
+
   // By getting the layout from the child component, we can prevent it from re-rendering when
   // navigating to a page with the same one
   // Source: https://github.com/vercel/next.js/issues/8193#issuecomment-590654825

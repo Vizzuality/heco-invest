@@ -10,7 +10,7 @@ import { useWindowScrollPosition } from 'rooks';
 import ActiveLink from 'components/active-link';
 import Button from 'components/button';
 import Icon from 'components/icon';
-import LanguageSelector from 'components/language-selector-no-ssr';
+import LanguageSelector from 'components/language-selector';
 import LayoutContainer from 'components/layout-container';
 import Menu, { MenuItem, MenuSection } from 'components/menu';
 
@@ -65,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({
               <LanguageSelector />
             </div>
             <Menu
-              className="notranslate shrink-0"
+              className="shrink-0"
               Trigger={
                 <Button
                   theme={showBackground ? 'primary-green' : 'primary-white'}

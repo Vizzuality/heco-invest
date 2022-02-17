@@ -1,6 +1,7 @@
 module.exports = {
   i18n: {
     locales: ['en', 'es', 'pt'],
+    // If you modify the default locale, modify `setCurrentLocale` in `pages/_app.tsx` as well
     defaultLocale: 'en',
   },
   webpack(config) {

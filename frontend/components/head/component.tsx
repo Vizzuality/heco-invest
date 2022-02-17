@@ -3,7 +3,7 @@ import React from 'react';
 import NextHead from 'next/head';
 import { useRouter } from 'next/router';
 
-import { translateText } from 'helpers/transifex';
+import { useT } from '@transifex/react';
 
 import { HeadProps } from './types';
 
@@ -13,12 +13,16 @@ export const Head: React.FC<HeadProps> = ({
   children,
 }: HeadProps) => {
   const { locales, asPath } = useRouter();
+  const t = useT();
 
   const title = customTitle ? `${customTitle} | Heco Invest` : 'Heco Invest';
   const description =
     customDescription ||
-    translateText(
-      'HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region.'
+    t(
+      'HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region.',
+      {
+        _comment: 'Description shown in search engines',
+      }
     );
   // const imageUrl = ''; // A complete URL is required by at least Twitter
 
