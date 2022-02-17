@@ -11,6 +11,7 @@
     "test": "yarn lint",
     "storybook:dev": "start-storybook -p 6006 -c .storybook",
     "storybook:build": "build-storybook -c .storybook",
+    "transifex:push": "txjs-cli push \"{components,containers,hoc,hooks,layouts,lib,pages,services,store}/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "cd .. && husky install frontend/.husky"
   },
   "dependencies": {

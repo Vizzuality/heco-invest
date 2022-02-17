@@ -20,6 +20,10 @@ on:
         required: true
       vercel-project-id:
         required: true
+      transifex-token:
+        required: true
+      transifex-secret:
+        required: true
 
 defaults:
   run:
@@ -61,6 +65,10 @@ jobs:
     - name: Install Node.js dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: yarn install --frozen-lockfile
+
+    - name: Push source strings to Transifex
+      if: inputs.env !== 'development'
+      run: TRANSIFEX_TOKEN=${{ secrets.transifex-token }} TRANSIFEX_SECRET=${{ secrets.transifex-secret }} yarn transifex:push
 
     - name: Run tests
       run: yarn test
