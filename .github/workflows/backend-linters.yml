@@ -1,0 +1,26 @@
+name: Backend Linters
+
+on:
+  push:
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend*'
+
+defaults:
+  run:
+    working-directory: backend
+
+jobs:
+  ruby_linter:
+    name: StandardRB/RuboCop
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          working-directory: backend
+          bundler-cache: true
+      - name: Run RuboCop
+        run: bin/rails standard

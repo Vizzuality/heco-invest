@@ -2,12 +2,12 @@ env:
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
 
-name: Backend
+name: Backend Tests
 on:
   push:
     paths:
       - 'backend/**'
-      - '.github/workflows/**'
+      - '.github/workflows/backend*'
 
 defaults:
   run:
