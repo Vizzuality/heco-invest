@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+foreman start -f Procfile.dev -m web=0,js=1,css=1
