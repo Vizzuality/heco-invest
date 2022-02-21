@@ -90,6 +90,7 @@ const AboutPage: PageComponent<{}, StaticPageLayoutProps> = () => {
               width={308}
               height={252}
               layout="intrinsic"
+              alt=""
             />
           </div>
         </div>
@@ -148,7 +149,7 @@ const AboutPage: PageComponent<{}, StaticPageLayoutProps> = () => {
             </div>
           </div>
           <div className="mt-8 md:mt-0">
-            <Image src="/images/about-intro.png" height={1209} width={1204} layout="responsive" />
+            <Image src="/images/about-intro.png" height={1209} width={1204} layout="responsive" alt="" />
           </div>
         </div>
       </LayoutContainer>
@@ -161,6 +162,7 @@ const AboutPage: PageComponent<{}, StaticPageLayoutProps> = () => {
               height={1096}
               width={1072}
               layout="responsive"
+              alt=""
             />
           </div>
           <div className="md:pl-6 xl:pl-16 xl:pr-16">
@@ -298,7 +300,7 @@ const AboutPage: PageComponent<{}, StaticPageLayoutProps> = () => {
             </p>
           </div>
           <div className="overflow-hidden lg:-mt-36 lg:pl-10 rounded-2xl md:rounded-none">
-            <Image src="/images/about-impact.png" height={1092} width={1092} layout="responsive" />
+            <Image src="/images/about-impact.png" height={1092} width={1092} layout="responsive" alt="" />
           </div>
         </div>
       </LayoutContainer>

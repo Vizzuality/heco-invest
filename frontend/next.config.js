@@ -4,6 +4,7 @@ module.exports = {
     // If you modify the default locale, modify `setCurrentLocale` in `pages/_app.tsx` as well
     defaultLocale: 'es',
   },
+  swcMinify: true,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
