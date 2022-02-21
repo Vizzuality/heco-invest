@@ -28,7 +28,7 @@ const queryClient = new QueryClient();
 
 // Initialize Transifex
 tx.init({ token: process.env.NEXT_PUBLIC_TRANSIFEX_API_KEY });
-tx.setCurrentLocale('en'); // Default locale
+tx.setCurrentLocale('es'); // Default locale
 
 const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
   const { locale } = useRouter();
