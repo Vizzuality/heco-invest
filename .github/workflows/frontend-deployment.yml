@@ -67,7 +67,7 @@ jobs:
       run: yarn install --frozen-lockfile
 
     - name: Push source strings to Transifex
-      if: inputs.env !== 'development'
+      if: inputs.env != 'development'
       run: TRANSIFEX_TOKEN=${{ secrets.transifex-token }} TRANSIFEX_SECRET=${{ secrets.transifex-secret }} yarn transifex:push
 
     - name: Run tests
