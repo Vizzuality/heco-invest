@@ -11,6 +11,7 @@
     "test": "yarn lint",
     "storybook:dev": "start-storybook -p 6006 -c .storybook",
     "storybook:build": "build-storybook -c .storybook",
+    "transifex:push": "txjs-cli push \"{components,containers,hoc,hooks,layouts,lib,pages,services,store}/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "cd .. && husky install frontend/.husky"
   },
   "dependencies": {
@@ -52,6 +53,9 @@
     "@storybook/react": "^6.4.14",
     "@tailwindcss/forms": "^0.4.0",
     "@tippyjs/react": "^4.2.5",
+    "@transifex/cli": "^2.3.1",
+    "@transifex/native": "^2.3.1",
+    "@transifex/react": "^2.3.1",
     "@vizzuality/layer-manager-layers-deckgl": "^1.0.0-alpha.3",
     "@vizzuality/layer-manager-plugin-mapboxgl": "^1.0.0-alpha.3",
     "@vizzuality/layer-manager-provider-carto": "^1.0.0-alpha.3",

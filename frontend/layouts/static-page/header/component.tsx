@@ -5,12 +5,13 @@ import cx from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { T, useT } from '@transifex/react';
 import { useWindowScrollPosition } from 'rooks';
 
 import ActiveLink from 'components/active-link';
 import Button from 'components/button';
 import Icon from 'components/icon';
-import LanguageSelector from 'components/language-selector-no-ssr';
+import LanguageSelector from 'components/language-selector';
 import LayoutContainer from 'components/layout-container';
 import Menu, { MenuItem, MenuSection } from 'components/menu';
 
@@ -22,6 +23,7 @@ export const Header: React.FC<HeaderProps> = ({
   props: { transparent, className } = {},
 }: HeaderProps) => {
   const router = useRouter();
+  const t = useT();
 
   const { scrollY }: ReturnType<typeof useWindowScrollPosition> =
     // The `window` check is required because the hook is not SSR-ready yet:
@@ -65,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({
               <LanguageSelector />
             </div>
             <Menu
-              className="notranslate shrink-0"
+              className="shrink-0"
               Trigger={
                 <Button
                   theme={showBackground ? 'primary-green' : 'primary-white'}
@@ -73,37 +75,53 @@ export const Header: React.FC<HeaderProps> = ({
                   aria-expanded={menuOpen}
                   onClick={() => setMenuOpen(true)}
                 >
-                  Menu
+                  <T _str="Menu" />
                 </Button>
               }
               disabledKeys={['sign-in']}
               align="end"
               onAction={onClickMenuItem}
             >
-              <MenuItem key="/discover">Search</MenuItem>
-              <MenuItem key="/investors">For investors</MenuItem>
-              <MenuItem key="/project-developers">For project developers</MenuItem>
-              <MenuItem key="/about">About</MenuItem>
-              <MenuSection key="user-section" title="User">
-                <MenuItem key="sign-in">Sign in</MenuItem>
+              <MenuItem key="/discover">
+                <T _str="Search" />
+              </MenuItem>
+              <MenuItem key="/investors">
+                <T _str="For investors" />
+              </MenuItem>
+              <MenuItem key="/project-developers">
+                <T _str="For project developers" />
+              </MenuItem>
+              <MenuItem key="/about">
+                <T _str="About" />
+              </MenuItem>
+              <MenuSection key="user-section" title={t('User')}>
+                <MenuItem key="sign-in">
+                  <T _str="Sign in" />
+                </MenuItem>
               </MenuSection>
             </Menu>
           </div>
           <div className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end">
             <nav className="flex space-x-8">
               <ActiveLink href="/discover" activeClassName="font-semibold">
-                <a title="Search">
+                <a title={t('Search')}>
                   <Icon icon={SearchIcon} />
                 </a>
               </ActiveLink>
               <ActiveLink href="/investors" activeClassName="font-semibold">
-                <a>For investors</a>
+                <a>
+                  <T _str="For investors" />
+                </a>
               </ActiveLink>
               <ActiveLink href="/project-developers" activeClassName="font-semibold">
-                <a>For project developers</a>
+                <a>
+                  <T _str="For project developers" />
+                </a>
               </ActiveLink>
               <ActiveLink href="/about" activeClassName="font-semibold">
-                <a>About</a>
+                <a>
+                  <T _str="About" />
+                </a>
               </ActiveLink>
             </nav>
             <div className="flex items-center space-x-6 md:ml-4">
@@ -116,7 +134,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="shrink-0"
                 disabled
               >
-                Sign in
+                <T _str="Sign in" />
               </Button>
             </div>
           </div>

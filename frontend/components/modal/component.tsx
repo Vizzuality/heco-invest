@@ -5,6 +5,7 @@ import cx from 'classnames';
 import { useDialog } from '@react-aria/dialog';
 import { FocusScope } from '@react-aria/focus';
 import { useOverlay, usePreventScroll, useModal, OverlayContainer } from '@react-aria/overlays';
+import { T } from '@transifex/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useMediaMatch } from 'rooks';
 
@@ -137,7 +138,9 @@ export const Modal: FC<ModalProps> = ({
                         onClick={onDismiss}
                         className="absolute top-0 text-gray-400 -translate-y-full md:top-4 -right-3 md:-right-4 focus:text-black hover:text-black group"
                       >
-                        <span className="sr-only">Close</span>
+                        <span className="sr-only">
+                          <T _str="Close" />
+                        </span>
                         <Icon
                           icon={XIcon}
                           className="inline-block w-6 h-6 transition-all fill-current group-hover:rotate-180 group-focus-within:rotate-180"
