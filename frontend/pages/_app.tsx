@@ -6,6 +6,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 
+import { I18nProvider } from '@react-aria/i18n';
 import { OverlayProvider } from '@react-aria/overlays';
 import { SSRProvider } from '@react-aria/ssr';
 import { tx } from '@transifex/native';
@@ -65,11 +66,13 @@ const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
             }}
           >
             <SSRProvider>
-              <OverlayProvider>
-                <Layout {...layoutProps}>
-                  <Component {...pageProps} />
-                </Layout>
-              </OverlayProvider>
+              <I18nProvider locale={locale}>
+                <OverlayProvider>
+                  <Layout {...layoutProps}>
+                    <Component {...pageProps} />
+                  </Layout>
+                </OverlayProvider>
+              </I18nProvider>
             </SSRProvider>
           </AuthenticationProvider>
         </Hydrate>
