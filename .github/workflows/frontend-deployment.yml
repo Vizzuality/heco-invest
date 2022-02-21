@@ -64,7 +64,7 @@ jobs:
 
     - name: Install Node.js dependencies
       if: steps.cache.outputs.cache-hit != 'true'
-      run: yarn install --frozen-lockfile
+      run: yarn install --immutable
 
     - name: Push source strings to Transifex
       if: inputs.env != 'development'

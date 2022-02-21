@@ -1,5 +1,6 @@
 import cx from 'classnames';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { T } from '@transifex/react';
@@ -61,8 +62,9 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => {
 
         <div className="relative mt-12 lg:mt-24 md:grid md:grid-cols-2 md:gap-3 lg:items-center">
           <div className="mt-10 lg:mt-0 lg:pr-24">
-            <img
+            <Image
               className="relative mx-auto"
+              height={544}
               width={490}
               src="/images/home-investor-illustration.svg"
               alt=""
@@ -188,8 +190,9 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => {
             </Button>
           </div>
           <div className="mt-10 lg:mt-0 lg:pl-24">
-            <img
+            <Image
               className="relative mx-auto"
+              height={520}
               width={490}
               src="/images/home-project-developer-illustration.svg"
               alt=""
@@ -338,9 +341,10 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => {
 
       <div className="mt-7 md:mt-16 lg:relative bg-green-dark">
         <figure className="relative w-full h-64 lg:w-1/2 sm:h-72 md:h-96 lg:h-screen lg:sticky lg:top-0 lg:left-0">
-          <img
+          <Image
             src="/images/home-biodiversity.jpg"
             alt=""
+            layout="fill"
             className="absolute inset-0 object-cover w-full h-full"
           />
           <figcaption className="absolute text-white left-4 md:left-6 bottom-3 md:bottom-6 text-2xs">
@@ -372,9 +376,10 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => {
             'opacity-100': inViewSlide2,
           })}
         >
-          <img
+          <Image
             src="/images/home-climate.jpg"
             alt=""
+            layout="fill"
             className="absolute inset-0 object-cover w-full h-full"
           />
           <figcaption className="absolute text-white left-4 md:left-6 bottom-3 md:bottom-6 text-2xs">
@@ -409,9 +414,10 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => {
             'opacity-100': inViewSlide3,
           })}
         >
-          <img
+          <Image
             src="/images/home-community.jpg"
             alt=""
+            layout="fill"
             className="absolute inset-0 object-cover w-full h-full"
           />
           <figcaption className="absolute text-white left-4 md:left-6 bottom-3 md:bottom-6 text-2xs">
@@ -448,9 +454,10 @@ const Home: PageComponent<{}, StaticPageLayoutProps> = () => {
             })}
           >
             {' '}
-            <img
+            <Image
               src="/images/home-water.jpg"
               alt=""
+              layout="fill"
               className="absolute inset-0 object-cover w-full h-full"
             />
             <figcaption className="absolute text-white left-4 md:left-6 bottom-3 md:bottom-6 text-2xs">

@@ -3,14 +3,14 @@ import { FC, useRef } from 'react';
 import cx from 'classnames';
 
 // react aria
-import { useButton } from '@react-aria/button'; // eslint-disable-line @typescript-eslint/no-unused-vars
+import { useButton } from '@react-aria/button';
 import { useSearchField } from '@react-aria/searchfield';
 import { useSearchFieldState } from '@react-stately/searchfield';
 
 import Icon from 'components/icon';
 
 import SEARCH_SVG from 'svgs/ui/search.svg';
-import xIcon from 'svgs/x.svg'; // eslint-disable-line @typescript-eslint/no-unused-vars
+import xIcon from 'svgs/x.svg';
 
 import { SIZES, THEME } from './constants';
 import type { SearchProps } from './types';
@@ -59,7 +59,6 @@ export const Search: FC<SearchProps> = ({
       {state.value !== '' && (
         <button
           {...buttonProps}
-          tabIndex="clear"
           className="absolute z-10 flex items-center self-center justify-center w-5 h-5 right-3 r-2"
           type="button"
         >
