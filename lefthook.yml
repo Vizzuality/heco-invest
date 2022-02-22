@@ -1,0 +1,18 @@
+pre-commit:
+  parallel: true
+  commands:
+    frontend-lint:
+      tags: frontend lint
+      root: "frontend/"
+      glob: "*.{js,jsx,ts,tsx}"
+      run: eslint --fix {staged_files}
+    frontend-types:
+      tags: frontend types
+      root: "frontend/"
+      glob: "**/*.{ts,tsx}"
+      run: echo {staged_files} >/dev/null && yarn check-types
+    backend-lint:
+      tags: backend lint
+      root: "backend/"
+      glob: "*.rb"
+      run: bundle exec rubocop --force-exclusion {staged_files}

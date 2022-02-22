@@ -1,3 +1,0 @@
-{
-  "*.rb": ["bundle exec rubocop --force-exclusion"]
-}
