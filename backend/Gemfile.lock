@@ -105,6 +105,8 @@ GEM
       reline (>= 0.3.0)
     jsbundling-rails (1.0.1)
       railties (>= 6.0.0)
+    jsonapi-serializer (2.2.0)
+      activesupport (>= 4.2)
     loofah (2.14.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -273,6 +275,7 @@ DEPENDENCIES
   debug
   factory_bot_rails
   jsbundling-rails
+  jsonapi-serializer
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.1)
