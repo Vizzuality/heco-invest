@@ -1,5 +1,5 @@
 class InstrumentType
-  include StaticModel
+  include EnumModel
 
   TYPES = %w[
     grant

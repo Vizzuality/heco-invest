@@ -1,5 +1,5 @@
 class Impact
-  include StaticModel
+  include EnumModel
 
   TYPES = %w[
     biodiversity

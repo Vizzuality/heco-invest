@@ -1,7 +1,7 @@
-module StaticModel
+module EnumModel
   extend ActiveSupport::Concern
 
-  attr_accessor :slug
+  attr_reader :slug
 
   def initialize(slug:)
     @slug = slug
@@ -11,6 +11,7 @@ module StaticModel
     I18n.t("name", scope: ["enums", translation_key, slug])
   end
   alias_method :to_s, :name
+  alias_method :id, :slug
 
   def translation_key
     self.class.name.underscore
@@ -19,6 +20,14 @@ module StaticModel
   class_methods do
     def all
       const_get(:TYPES).map { |slug| new(slug: slug) }
+    end
+
+    def find_many(slugs)
+      Array.wrap(slugs).map { |s| find(s) }
+    end
+
+    def find(slug)
+      all.find { |o| o.slug == slug }
     end
   end
 end

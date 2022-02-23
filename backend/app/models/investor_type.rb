@@ -1,5 +1,5 @@
 class InvestorType
-  include StaticModel
+  include EnumModel
 
   TYPES = %w[
     investor

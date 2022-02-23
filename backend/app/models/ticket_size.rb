@@ -1,5 +1,5 @@
 class TicketSize
-  include StaticModel
+  include EnumModel
 
   TYPES = %w[
     small_grants
