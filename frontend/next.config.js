@@ -5,6 +5,20 @@ module.exports = {
     defaultLocale: 'es',
   },
   swcMinify: true,
+  eslint: {
+    dirs: [
+      'components',
+      'containers',
+      'hoc',
+      'hooks',
+      'layouts',
+      'lib',
+      'pages',
+      'services',
+      'store',
+      'types',
+    ],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,

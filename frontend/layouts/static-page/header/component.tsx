@@ -28,6 +28,7 @@ export const Header: React.FC<HeaderProps> = ({
   const { scrollY }: ReturnType<typeof useWindowScrollPosition> =
     // The `window` check is required because the hook is not SSR-ready yet:
     // https://github.com/imbhargav5/rooks/issues/559
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     typeof window === 'undefined' ? { scrollY: 0, scrollX: 0 } : useWindowScrollPosition();
   const showBackground = !transparent || scrollY > 0;
 
