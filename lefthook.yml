@@ -5,14 +5,18 @@ pre-commit:
       tags: frontend lint
       root: "frontend/"
       glob: "*.{js,jsx,ts,tsx}"
-      run: eslint --fix {staged_files}
-    frontend-types:
-      tags: frontend types
-      root: "frontend/"
-      glob: "**/*.{ts,tsx}"
-      run: echo {staged_files} >/dev/null && yarn check-types
+      run: yarn lint . --dir svgs `for i in {staged_files}; do echo "--file ${i}"; done`
+
     backend-lint:
       tags: backend lint
       root: "backend/"
       glob: "*.rb"
       run: bundle exec rubocop --force-exclusion {staged_files}
+pre-push:
+  parallel: true
+  commands:
+    frontend-types:
+      tags: frontend types
+      root: "frontend/"
+      glob: "*.{ts,tsx}"
+      run: yarn check-types
