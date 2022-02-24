@@ -39,6 +39,7 @@ export const Menu: React.FC<MenuProps> = ({
           align={rest.align ?? 'start'}
           direction={rest.direction ?? 'bottom'}
           domProps={menuProps}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={state.focusStrategy}
           disabledKeys={disabledKeys}
           expandedKeys={expandedKeys}

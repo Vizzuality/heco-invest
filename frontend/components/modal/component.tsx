@@ -119,7 +119,12 @@ export const Modal: FC<ModalProps> = ({
             exit="exit"
             className={cx({ [OVERLAY_CLASSES]: true })}
           >
-            <FocusScope contain restoreFocus autoFocus>
+            <FocusScope
+              contain
+              restoreFocus
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
+            >
               <div {...overlayProps} {...dialogProps} {...modalProps} ref={containerRef}>
                 <motion.div
                   variants={contentFramerVariants}
