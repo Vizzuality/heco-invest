@@ -47,7 +47,12 @@ export const Footer: React.FC<FooterProps> = ({ props = {} }: FooterProps) => {
                   <T _str="Inter-American Development Bank" />
                 </span>
                 <div className="flex items-center justify-center w-10 h-10 bg-white rounded">
-                  <Image src="/images/footer-iadb.png" width={32} height={32} />
+                  <Image
+                    src="/images/footer-iadb.png"
+                    width={32}
+                    height={32}
+                    alt="Inter-American Development Bank"
+                  />
                 </div>
               </a>
               <a
@@ -61,7 +66,12 @@ export const Footer: React.FC<FooterProps> = ({ props = {} }: FooterProps) => {
                   <T _str="Inter-American Development Bank Lab" />
                 </span>
                 <div className="flex items-center justify-center w-10 h-10 bg-white rounded">
-                  <Image src="/images/footer-iadb-lab.png" width={32} height={32} />
+                  <Image
+                    src="/images/footer-iadb-lab.png"
+                    width={32}
+                    height={32}
+                    alt="Inter-American Development Bank Lab"
+                  />
                 </div>
               </a>
               <a
@@ -75,7 +85,7 @@ export const Footer: React.FC<FooterProps> = ({ props = {} }: FooterProps) => {
                   <T _str="WWF" />
                 </span>
                 <div className="flex items-center justify-center w-10 h-10 bg-white rounded">
-                  <Image src="/images/footer-wwf.png" width={32} height={32} />
+                  <Image src="/images/footer-wwf.png" width={32} height={32} alt="WWF" />
                 </div>
               </a>
               <a
@@ -89,7 +99,12 @@ export const Footer: React.FC<FooterProps> = ({ props = {} }: FooterProps) => {
                   <T _str="Paulson Institute" />
                 </span>
                 <div className="flex items-center justify-center w-10 h-10 bg-white rounded">
-                  <Image src="/images/footer-paulson-institute.png" width={32} height={32} />
+                  <Image
+                    src="/images/footer-paulson-institute.png"
+                    width={32}
+                    height={32}
+                    alt="Paulson Institute"
+                  />
                 </div>
               </a>
             </div>

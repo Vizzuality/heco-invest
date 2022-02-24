@@ -1,6 +1,23 @@
 {
-  "extends": ["next/core-web-vitals", "next", "prettier"],
+  "extends": ["next/core-web-vitals", "next", "prettier", "plugin:prettier/recommended", "plugin:jsx-a11y/recommended"],
+  "plugins": [
+    "prettier"
+  ],
   "rules": {
+    // This rule is necessary to fix some issues between jsx-a11y and Next.js:
+    // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/ea877c4cf4c8df7e735cafceefd591c203cca7d7/docs/rules/anchor-is-valid.md#case-i-use-nextjs-and-im-getting-this-error-inside-of-links
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "hrefLeft", "hrefRight" ],
+      "aspects": [ "invalidHref", "preferButton" ]
+    }],
+    "prettier/prettier": [
+      "error",
+      {},
+      {
+        "usePrettierrc": true
+      }
+    ],
     "import/no-anonymous-default-export": 0,
     "import/no-named-as-default": 0,
     "import/order": [

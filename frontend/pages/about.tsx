@@ -149,7 +149,13 @@ const AboutPage: PageComponent<{}, StaticPageLayoutProps> = () => {
             </div>
           </div>
           <div className="mt-8 md:mt-0">
-            <Image src="/images/about-intro.png" height={1209} width={1204} layout="responsive" alt="" />
+            <Image
+              src="/images/about-intro.png"
+              height={1209}
+              width={1204}
+              layout="responsive"
+              alt=""
+            />
           </div>
         </div>
       </LayoutContainer>
@@ -300,7 +306,13 @@ const AboutPage: PageComponent<{}, StaticPageLayoutProps> = () => {
             </p>
           </div>
           <div className="overflow-hidden lg:-mt-36 lg:pl-10 rounded-2xl md:rounded-none">
-            <Image src="/images/about-impact.png" height={1092} width={1092} layout="responsive" alt="" />
+            <Image
+              src="/images/about-impact.png"
+              height={1092}
+              width={1092}
+              layout="responsive"
+              alt=""
+            />
           </div>
         </div>
       </LayoutContainer>
