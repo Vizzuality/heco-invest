@@ -1,0 +1,22 @@
+pre-commit:
+  parallel: true
+  commands:
+    frontend-lint:
+      tags: frontend lint
+      root: "frontend/"
+      glob: "*.{js,jsx,ts,tsx}"
+      run: yarn lint . --fix --dir svgs `for i in {staged_files}; do echo "--file ${i}"; done` && git add {staged_files}
+
+    backend-lint:
+      tags: backend lint
+      root: "backend/"
+      glob: "*.rb"
+      run: bundle exec rubocop --force-exclusion {staged_files}
+pre-push:
+  parallel: true
+  commands:
+    frontend-types:
+      tags: frontend types
+      root: "frontend/"
+      glob: "*.{ts,tsx}"
+      run: yarn check-types
