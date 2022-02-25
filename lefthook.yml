@@ -5,7 +5,7 @@ pre-commit:
       tags: frontend lint
       root: "frontend/"
       glob: "*.{js,jsx,ts,tsx}"
-      run: yarn lint . --dir svgs `for i in {staged_files}; do echo "--file ${i}"; done`
+      run: yarn lint . --fix --dir svgs `for i in {staged_files}; do echo "--file ${i}"; done` && git add {staged_files}
 
     backend-lint:
       tags: backend lint
