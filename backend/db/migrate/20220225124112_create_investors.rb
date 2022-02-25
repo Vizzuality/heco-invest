@@ -3,6 +3,7 @@ class CreateInvestors < ActiveRecord::Migration[7.0]
     create_table :investors, id: :uuid do |t|
       t.belongs_to :account, foreign_key: {on_delete: :cascade}, type: :uuid, index: true
 
+      t.string :investor_type
       t.string :categories, array: true
       t.string :ticket_sizes, array: true
       t.string :instrument_types, array: true

@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_25_124112) do
 
   create_table "investors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "account_id"
+    t.string "investor_type"
     t.string "categories", array: true
     t.string "ticket_sizes", array: true
     t.string "instrument_types", array: true
