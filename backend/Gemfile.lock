@@ -95,6 +95,10 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
+    friendly_id (5.4.2)
+      activerecord (>= 4.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -247,6 +251,8 @@ GEM
     test-prof (1.0.7)
     thor (1.2.1)
     timeout (0.2.0)
+    traco (5.3.3)
+      activerecord (>= 4.2)
     turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
@@ -274,6 +280,8 @@ DEPENDENCIES
   cssbundling-rails
   debug
   factory_bot_rails
+  faker
+  friendly_id (~> 5.4.0)
   jsbundling-rails
   jsonapi-serializer
   pg (~> 1.1)
@@ -291,6 +299,7 @@ DEPENDENCIES
   stimulus-rails
   super_diff
   test-prof
+  traco
   turbo-rails
   tzinfo-data
   web-console

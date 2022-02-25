@@ -14,6 +14,9 @@ gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
 
+gem "friendly_id", "~> 5.4.0"
+gem "traco"
+
 # API
 gem "jsonapi-serializer"
 
@@ -23,6 +26,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "faker"
   gem "standard"
 end
 
