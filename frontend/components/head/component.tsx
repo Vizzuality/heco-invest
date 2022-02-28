@@ -1,9 +1,9 @@
 import React from 'react';
 
+import { useIntl } from 'react-intl';
+
 import NextHead from 'next/head';
 import { useRouter } from 'next/router';
-
-import { useT } from '@transifex/react';
 
 import { HeadProps } from './types';
 
@@ -13,17 +13,17 @@ export const Head: React.FC<HeadProps> = ({
   children,
 }: HeadProps) => {
   const { locales, asPath } = useRouter();
-  const t = useT();
+  const intl = useIntl();
 
   const title = customTitle ? `${customTitle} | Heco Invest` : 'Heco Invest';
   const description =
     customDescription ||
-    t(
-      'HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region.',
-      {
-        _comment: 'Description shown in search engines',
-      }
-    );
+    intl.formatMessage({
+      defaultMessage:
+        'HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region.',
+      id: 'HzKhBJ',
+      description: 'Description shown in search engines',
+    });
   // const imageUrl = ''; // A complete URL is required by at least Twitter
 
   return (

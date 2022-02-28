@@ -1,0 +1,19 @@
+{
+  "locales": [
+    {
+      "locale": "es",
+      "default": true,
+      "name": "Español"
+    },
+    {
+      "locale": "pt",
+      "default": false,
+      "name": "Português"
+    },
+    {
+      "locale": "en",
+      "default": false,
+      "name": "English"
+    }
+  ]
+}
