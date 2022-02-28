@@ -66,9 +66,15 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: yarn install --immutable
 
-    - name: Push source strings to Transifex
-      if: inputs.env != 'development'
-      run: TRANSIFEX_TOKEN=${{ secrets.transifex-token }} TRANSIFEX_SECRET=${{ secrets.transifex-secret }} yarn transifex:push
+    - name: Push source strings to and pull translated strings from Transifex
+      # IMPORTANT: To avoid conflicts between production and staging, the source strings should only
+      # pushed on staging. This should give enough time for translators before the content appears
+      # on production. On production and development, we should only pull translations.
+      run: |
+        curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+        echo '[https://www.transifex.com]\nrest_hostname = https://rest.api.transifex.com\ntoken = '"${{ TRANSIFEX_TOKEN }}" > .tx/.transifexrc
+        if ["${{ inputs.env }}" == 'staging']; then tx push fi
+        tx pull
 
     - name: Run tests
       run: yarn test

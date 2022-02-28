@@ -1,7 +1,8 @@
 {
   "extends": ["next/core-web-vitals", "next", "prettier", "plugin:prettier/recommended", "plugin:jsx-a11y/recommended"],
   "plugins": [
-    "prettier"
+    "prettier",
+    "formatjs"
   ],
   "rules": {
     // This rule is necessary to fix some issues between jsx-a11y and Next.js:
@@ -110,6 +111,16 @@
         "pathGroupsExcludedImportTypes": ["react"]
       }
     ],
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "formatjs/enforce-default-message": ["error", "literal"],
+    // Next.js' SWC doesn't support the formatjs plugin yet, so we force the developer to enter the
+    // ID in the code instead:
+    // https://github.com/vercel/next.js/discussions/30174#discussioncomment-1922431
+    "formatjs/enforce-id": [
+      "error",
+      {
+        "idInterpolationPattern": "[sha512:contenthash:base64:6]"
+      }
+    ]
   }
 }

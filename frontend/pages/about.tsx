@@ -4,6 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { T, useT } from '@transifex/react';
+import { InferGetStaticPropsType } from 'next';
+
+import { loadI18nMessages } from 'helpers/i18n';
 
 import Button from 'components/button';
 import Head from 'components/head';
@@ -12,7 +15,17 @@ import Modal from 'components/modal';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 
-const AboutPage: PageComponent<{}, StaticPageLayoutProps> = () => {
+export async function getStaticProps(ctx) {
+  return {
+    props: {
+      intlMessages: await loadI18nMessages(ctx),
+    },
+  };
+}
+
+type AboutPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+
+const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
   const t = useT();
 
   const [impactModalOpen, setImpactModalOpen] = useState(false);

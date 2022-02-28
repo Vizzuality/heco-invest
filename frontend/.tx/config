@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[o:heco-invest:p:heco-invest:r:front-end-application]
+file_filter  = lang/transifex/<lang>.json
+source_file  = lang/transifex/zu.json
+type         = STRUCTURED_JSON
+minimum_perc = 0
+

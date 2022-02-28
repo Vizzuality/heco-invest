@@ -1,10 +1,15 @@
+import { FormattedMessage } from 'react-intl';
+
 import cx from 'classnames';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { T } from '@transifex/react';
+import { InferGetStaticPropsType } from 'next';
 import { useInViewRef } from 'rooks';
+
+import { loadI18nMessages } from 'helpers/i18n';
 
 import Button from 'components/button';
 import Head from 'components/head';
@@ -17,7 +22,17 @@ import ConnectIcon from 'svgs/home/connect.svg';
 import ReportBackIcon from 'svgs/home/report-back.svg';
 import SearchFindIcon from 'svgs/home/search-find.svg';
 
-const Home: PageComponent<{}, StaticPageLayoutProps> = () => {
+export async function getStaticProps(ctx) {
+  return {
+    props: {
+      intlMessages: await loadI18nMessages(ctx),
+    },
+  };
+}
+
+type HomePageProps = InferGetStaticPropsType<typeof getStaticProps>;
+
+const Home: PageComponent<HomePageProps, StaticPageLayoutProps> = () => {
   const [slide2Ref, inViewSlide2] = useInViewRef(undefined, {
     root: null,
     rootMargin: '0px 0px 0px 0px',
