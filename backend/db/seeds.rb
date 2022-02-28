@@ -1,17 +1,11 @@
+require "factory_bot_rails"
+
 if Rails.env.development?
   Account.delete_all
   Investor.delete_all
 
   10.times do
-    investor_account = Account.create!(
-      name: Faker::Company.name,
-      about: Faker::Lorem.paragraph(sentence_count: 4),
-      instagram: Faker::Internet.url(host: "instagram.com"),
-      facebook: Faker::Internet.url(host: "facebook.com"),
-      linkedin: Faker::Internet.url(host: "linkedin.com"),
-      twitter: Faker::Internet.url(host: "twitter.com"),
-      website: Faker::Internet.url
-    )
+    investor_account = FactoryBot.create(:account)
     Investor.create!(
       account: investor_account,
       categories: Category::TYPES.shuffle.take((1..2).to_a.sample),

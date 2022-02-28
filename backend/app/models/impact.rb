@@ -2,8 +2,9 @@ class Impact
   include StaticModel
 
   TYPES = %w[
-    grant
-    loan
-    equity
+    biodiversity
+    climate
+    water
+    community
   ].freeze
 end
