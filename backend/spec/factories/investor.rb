@@ -8,6 +8,7 @@ FactoryBot.define do
     investor_type { "angel_investor" }
     instrument_types { %w[grant loan] }
     ticket_sizes { %w[validation scaling] }
+    review_status { "approved" }
 
     previously_invested { true }
     previously_invested_description { Faker::Lorem.paragraph(sentence_count: 4) }
