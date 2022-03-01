@@ -14,6 +14,9 @@
   "1B1DeU": {
     "string": "HeCo Invest relies on the <span>ARIES Artificial Intelligence</span> model to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four dimensions of interest based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10 as shown in the chart of impact."
   },
+  "208nF3": {
+    "string": "Peace, justice and strong institutions"
+  },
   "2aOaT4": {
     "string": "HeCo Invest is considered as a pilot effort. It will then scale to include all the signatory countries of the Pact."
   },
@@ -46,6 +49,9 @@
   },
   "6ukMW9": {
     "string": "Basque Centre for Climate Change"
+  },
+  "79BaYt": {
+    "string": "Decent work and economic growth"
   },
   "7KLSqh": {
     "string": "Contribute to the conservation and restoration of the most diverse terrestrial ecosystems on the planet. These ecosystems support countless endemic species and contribute to mitigate the impacts of the climate crisis."
@@ -85,6 +91,9 @@
   },
   "DQoGRx": {
     "string": "About the impact"
+  },
+  "Er1Y0M": {
+    "string": "Partnership for the goals"
   },
   "EwRIOm": {
     "string": "User"
@@ -138,6 +147,9 @@
   "KvhWhT": {
     "string": "The <span>IDB Lab</span>, the <span>Paulson Institute</span> and the <span>World Wildlife Fund</span> are working together to develop a digital platform that connects governments, investors, donors, and philanthropists with carefully identified investment opportunities in <span>high priority locations</span> identified by programs such as Herencia Colombia (HeCo)."
   },
+  "LgE1GN": {
+    "string": "Responsible consumption and production"
+  },
   "M1xKEI": {
     "string": "Language: {language}"
   },
@@ -164,6 +176,9 @@
   },
   "Obr4XP": {
     "string": "Guiding tools"
+  },
+  "Ojp3nv": {
+    "string": "Affordable and clean energy"
   },
   "PIZ1dD": {
     "string": "Search biodiversity"
@@ -231,6 +246,9 @@
   "aRIIAG": {
     "string": "<span>Climate:</span> wood and soil biomass, application of sustainable forest measures;"
   },
+  "az4T7S": {
+    "string": "Industry innovation and infrastructure"
+  },
   "bNpbHr": {
     "string": "Find other people with similar interests. Join forces, secure more investment and create a greater impact."
   },
@@ -270,6 +288,9 @@
   "i50XU3": {
     "string": "Features for investors"
   },
+  "iGr6CX": {
+    "string": "Gender equality"
+  },
   "jWOeHy": {
     "string": "<a>Call on our community</a> of project developers to identify opportunities in your preferred sectors and geographies."
   },
@@ -278,6 +299,9 @@
   },
   "kUPAU5": {
     "string": "Search climate"
+  },
+  "lRxEk5": {
+    "string": "Life on land"
   },
   "mbTJWV": {
     "string": "Biodiversity"
@@ -291,11 +315,20 @@
   "oiQKNY": {
     "string": "Search and find"
   },
+  "p0C0jy": {
+    "string": "Sustainable cities and communities"
+  },
   "p1NkQY": {
     "string": "Find opportunities that have the greatest impact on challenges like biodiversity, climate, community and water."
   },
+  "pd0DYm": {
+    "string": "Clean water and sanitation"
+  },
   "pgfBG8": {
     "string": "As a Project Developer"
+  },
+  "pv5N69": {
+    "string": "Zero hunger"
   },
   "qIvPIE": {
     "string": "FAQ’s"
@@ -315,8 +348,14 @@
   "tH/CDj": {
     "string": "© Luis Barreto / WWF-UK"
   },
+  "tHvMAr": {
+    "string": "No poverty"
+  },
   "tKMlOc": {
     "string": "Menu"
+  },
+  "tTUa21": {
+    "string": "Reduced inequalities"
   },
   "txaU6M": {
     "string": "Apply to open calls"
@@ -324,8 +363,17 @@
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
   },
+  "wZ3iaf": {
+    "string": "Climate action"
+  },
   "x/1DXz": {
     "string": "In the face of the economic and social crisis caused by the coronavirus pandemic, there is an urgent need to support the transition to a green, fair, and resilient economy that creates jobs, addresses inequality, and drives inclusive growth."
+  },
+  "xLg5he": {
+    "string": "Quality education"
+  },
+  "xNmmn5": {
+    "string": "Good health and well-being"
   },
   "xQ4XkB": {
     "string": "Only by understanding nature’s contributions to people and the economy can we push for policy-making where nature counts."
@@ -335,6 +383,9 @@
   },
   "xusigZ": {
     "string": "Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."
+  },
+  "y4v7zD": {
+    "string": "Life below water"
   },
   "yJVljq": {
     "string": "Through accessing <span>ARIES</span> (Artificial Intelligence for Environmental Sustainability) and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
