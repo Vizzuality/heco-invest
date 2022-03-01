@@ -1,8 +1,16 @@
 module API
   module V1
     class InvestorsController < BaseController
+      include API::Pagination
+
       def index
-        render json: InvestorSerializer.new(Investor.all).serializable_hash
+        investors = Investor.all.includes(:account)
+        pagy_object, investors = pagy(investors, page: current_page, items: per_page)
+        render json: InvestorSerializer.new(
+          investors,
+          links: pagination_links(:api_v1_investors_path, pagy_object),
+          meta: pagination_meta(pagy_object)
+        ).serializable_hash
       end
 
       def show

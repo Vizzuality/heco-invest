@@ -4,7 +4,7 @@ if Rails.env.development?
   Account.delete_all
   Investor.delete_all
 
-  10.times do
+  50.times do
     investor_account = FactoryBot.create(:account)
     Investor.create!(
       account: investor_account,

@@ -37,7 +37,8 @@
           5
         ],
         "previously_invested": true,
-        "previously_invested_description": "Ab et voluptatem. Placeat cupiditate et. Ut ut earum. Eaque similique aut."
+        "previously_invested_description": "Ab et voluptatem. Placeat cupiditate et. Ut ut earum. Eaque similique aut.",
+        "investor_type": "angel_investor"
       }
     },
     {
@@ -77,7 +78,8 @@
           5
         ],
         "previously_invested": true,
-        "previously_invested_description": "Aspernatur quasi reprehenderit. Ad tenetur delectus. Occaecati in ex. Qui est consequatur."
+        "previously_invested_description": "Aspernatur quasi reprehenderit. Ad tenetur delectus. Occaecati in ex. Qui est consequatur.",
+        "investor_type": "angel_investor"
       }
     },
     {
@@ -117,7 +119,8 @@
           5
         ],
         "previously_invested": true,
-        "previously_invested_description": "Earum hic maxime. Ab sit odio. Molestiae harum dolorum. Consequuntur ut iure."
+        "previously_invested_description": "Earum hic maxime. Ab sit odio. Molestiae harum dolorum. Consequuntur ut iure.",
+        "investor_type": "angel_investor"
       }
     },
     {
@@ -157,8 +160,22 @@
           5
         ],
         "previously_invested": true,
-        "previously_invested_description": "Laborum accusantium et. Ipsum nostrum esse. Sunt placeat omnis. Culpa voluptate facere."
+        "previously_invested_description": "Laborum accusantium et. Ipsum nostrum esse. Sunt placeat omnis. Culpa voluptate facere.",
+        "investor_type": "angel_investor"
       }
     }
-  ]
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 4,
+    "total": 4,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/investors?page%5Bsize%5D=10",
+    "self": "/api/v1/investors?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/investors?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
 }
