@@ -22,12 +22,15 @@ In order to start modifying the app, please make sure to correctly configure you
 2. (Optional) Install [NVM](https://github.com/nvm-sh/nvm) to manage your different Node.js versions
 3. (Optional) Use [Visual Studio Code](https://code.visualstudio.com/) as a text editor to benefit from automatic type checking
 4. Configure your text editor with the [Prettier](https://prettier.io/), [ESLint](https://eslint.org/), [EditorConfig](https://editorconfig.org/), [Tailwind CSS](https://tailwindcss.com/docs/plugins) (recommended) and [Headwind](https://github.com/heybourn/headwind) (recommended) plugins
-5. Use the correct Node.js version for this app by running `nvm use`; if you didn't install NVM (step 2), then manually install the Node.js version described in `.nvmrc`
-6. Install the dependencies: `yarn`
-7. Create a `.env` file at the root of the project by copying `.env.sample` and giving a value for each of the variables (see next section for details)
-8. Run the server: `yarn dev`
+5. (Optional) Configure your editor to “format [code] on save” with ESLint and Prettier **(1)**
+6. Use the correct Node.js version for this app by running `nvm use`; if you didn't install NVM (step 2), then manually install the Node.js version described in `.nvmrc`
+7. Install the dependencies: `yarn`
+8. Create a `.env` file at the root of the project by copying `.env.sample` and giving a value for each of the variables (see next section for details)
+9. Run the server: `yarn dev`
 
 You can access a hot-reloaded version of the app on [http://localhost:3000](http://localhost:3000).
+
+**(1)** The package `react-intl` used for translations (see below) requires ids for each source string. ESLint is configured to report an error if missing. With the “format on save” feature on, the ids are automatically generated for you when you save the document.
 
 ## Environment variables
 
