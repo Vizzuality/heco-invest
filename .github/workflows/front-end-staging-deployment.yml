@@ -5,6 +5,7 @@ on:
       - develop
     paths:
       - 'frontend/**'
+      - '.github/workflows/frontend-*'
 
 jobs:
   deploy:
