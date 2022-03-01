@@ -22,8 +22,6 @@ on:
         required: true
       transifex-token:
         required: true
-      transifex-secret:
-        required: true
 
 defaults:
   run:
@@ -66,9 +64,23 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: yarn install --immutable
 
-    - name: Push source strings to Transifex
-      if: inputs.env != 'development'
-      run: TRANSIFEX_TOKEN=${{ secrets.transifex-token }} TRANSIFEX_SECRET=${{ secrets.transifex-secret }} yarn transifex:push
+    - name: Push source strings to and pull translated strings from Transifex
+      env:
+        TRANSIFEX_TOKEN: ${{ secrets.transifex-token }}
+      # IMPORTANT: To avoid conflicts between production and staging, the source strings should only
+      # pushed on staging. This should give enough time for translators before the content appears
+      # on production. On production and development, we should only pull translations.
+      run: |
+        echo 'Installing the Transifex CLI…'
+        curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+        echo 'Creating the Transifex configuration file…'
+        echo -e "[https://www.transifex.com]\nrest_hostname = https://rest.api.transifex.com\ntoken = ${{ env.TRANSIFEX_TOKEN }}" > ~/.transifexrc
+        if ["${{ inputs.env }}" = 'staging']; then
+          echo 'Pushing the source strings…'
+          ./tx push
+        fi
+        echo 'Pulling the translations…'
+        ./tx pull
 
     - name: Run tests
       run: yarn test
@@ -84,7 +96,7 @@ jobs:
         vercel-args: ${{ inputs.env == 'staging' && '--prod' || '' }}
         scope: ${{ secrets.vercel-team-id }}
         vercel-org-id: ${{ secrets.vercel-org-id}}
-        vercel-project-id: ${{ secrets.vercel-project-id}} 
+        vercel-project-id: ${{ secrets.vercel-project-id}}
 
     - name: Update deployment status
       uses: bobheadxi/deployments@v0.6.2

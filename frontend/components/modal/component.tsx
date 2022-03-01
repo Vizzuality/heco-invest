@@ -1,11 +1,12 @@
 import { FC, useRef } from 'react';
 
+import { FormattedMessage } from 'react-intl';
+
 import cx from 'classnames';
 
 import { useDialog } from '@react-aria/dialog';
 import { FocusScope } from '@react-aria/focus';
 import { useOverlay, usePreventScroll, useModal, OverlayContainer } from '@react-aria/overlays';
-import { T } from '@transifex/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useMediaMatch } from 'rooks';
 
@@ -144,7 +145,7 @@ export const Modal: FC<ModalProps> = ({
                         className="absolute top-0 text-gray-400 -translate-y-full md:top-4 -right-3 md:-right-4 focus:text-black hover:text-black group"
                       >
                         <span className="sr-only">
-                          <T _str="Close" />
+                          <FormattedMessage defaultMessage="Close" id="rbrahO" />
                         </span>
                         <Icon
                           icon={XIcon}

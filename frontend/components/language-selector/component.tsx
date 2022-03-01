@@ -1,30 +1,25 @@
 import React, { useCallback, useMemo } from 'react';
 
-import { useRouter } from 'next/router';
+import { useIntl } from 'react-intl';
 
-import { useT, useLanguages } from '@transifex/react';
+import { useRouter } from 'next/router';
 
 import Button from 'components/button';
 import Icon from 'components/icon';
 import Menu, { MenuItem } from 'components/menu';
+import localesConfig from 'locales.config.json';
 
 import ChevronDownIcon from 'svgs/chevron-down.svg';
 
-import { getSimplifiedLanguageName, getSimplifiedLanguageCode } from './helpers';
 import { LanguageSelectorProps } from './types';
 
 export const LanguageSelector: React.FC<LanguageSelectorProps> = () => {
   const router = useRouter();
-  const languages = useLanguages();
-  const t = useT();
+  const intl = useIntl();
 
   const uiLanguages = useMemo(
-    () =>
-      languages
-        .filter((l) => l.code !== 'zu')
-        .map((l) => ({ ...l, name: getSimplifiedLanguageName(l.name) }))
-        .sort((a, b) => a.code.localeCompare(b.code)),
-    [languages]
+    () => localesConfig.locales.sort((a, b) => a.name.localeCompare(b.name)),
+    []
   );
 
   const onChangeLanguage = useCallback(
@@ -52,15 +47,17 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = () => {
           theme="naked"
           size="small"
           className="pl-4 pr-4 focus-visible:outline-green-dark"
-          aria-label={t('Language: {language}', {
-            language: getSimplifiedLanguageName(
-              uiLanguages.find((language) => language.code === router.locale)?.name ?? ''
-            ),
-          })}
+          aria-label={intl.formatMessage(
+            { defaultMessage: 'Language: {language}', id: 'M1xKEI' },
+            {
+              language:
+                uiLanguages.find((language) => language.locale === router.locale)?.name ?? '',
+            }
+          )}
         >
           <span>
-            {getSimplifiedLanguageCode(
-              uiLanguages.find((language) => language.code === router.locale)?.code ?? ''
+            {(
+              uiLanguages.find((language) => language.locale === router.locale)?.locale ?? ''
             ).toUpperCase()}
           </span>
           <Icon icon={ChevronDownIcon} className="inline-block w-4 h-4 ml-1 fill-current" />
@@ -70,8 +67,8 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = () => {
       onAction={(key) => onChangeLanguage(key as string)}
     >
       {uiLanguages.map((language) => (
-        <MenuItem key={language.code}>
-          {`${getSimplifiedLanguageCode(language.code).toUpperCase()} - ${language.name}`}
+        <MenuItem key={language.locale}>
+          {`${language.locale.toUpperCase()} - ${language.name}`}
         </MenuItem>
       ))}
     </Menu>

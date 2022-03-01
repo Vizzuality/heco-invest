@@ -6,6 +6,12 @@ pre-commit:
       root: "frontend/"
       glob: "*.{js,jsx,ts,tsx}"
       run: yarn lint . --fix --dir svgs `for i in {staged_files}; do echo "--file ${i}"; done` && git add {staged_files}
+    
+    frontend-i18n:
+      tags: frontend i18n
+      root: "frontend/"
+      glob: "*.{js,jsx,ts,tsx}"
+      run: yarn i18n:extract && git add lang/transifex/*
 
     backend-lint:
       tags: backend lint

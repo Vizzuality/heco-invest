@@ -1,11 +1,12 @@
 import React, { useState, useCallback } from 'react';
 
+import { FormattedMessage, useIntl } from 'react-intl';
+
 import cx from 'classnames';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { T, useT } from '@transifex/react';
 import { useWindowScrollPosition } from 'rooks';
 
 import ActiveLink from 'components/active-link';
@@ -23,7 +24,7 @@ export const Header: React.FC<HeaderProps> = ({
   props: { transparent, className } = {},
 }: HeaderProps) => {
   const router = useRouter();
-  const t = useT();
+  const intl = useIntl();
 
   const { scrollY }: ReturnType<typeof useWindowScrollPosition> =
     // The `window` check is required because the hook is not SSR-ready yet:
@@ -76,7 +77,7 @@ export const Header: React.FC<HeaderProps> = ({
                   aria-expanded={menuOpen}
                   onClick={() => setMenuOpen(true)}
                 >
-                  <T _str="Menu" />
+                  <FormattedMessage defaultMessage="Menu" id="tKMlOc" />
                 </Button>
               }
               disabledKeys={['sign-in']}
@@ -84,20 +85,23 @@ export const Header: React.FC<HeaderProps> = ({
               onAction={onClickMenuItem}
             >
               <MenuItem key="/discover">
-                <T _str="Search" />
+                <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
               </MenuItem>
               <MenuItem key="/investors">
-                <T _str="For investors" />
+                <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
               </MenuItem>
               <MenuItem key="/project-developers">
-                <T _str="For project developers" />
+                <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
               </MenuItem>
               <MenuItem key="/about">
-                <T _str="About" />
+                <FormattedMessage defaultMessage="About" id="g5pX+a" />
               </MenuItem>
-              <MenuSection key="user-section" title={t('User')}>
+              <MenuSection
+                key="user-section"
+                title={intl.formatMessage({ defaultMessage: 'User', id: 'EwRIOm' })}
+              >
                 <MenuItem key="sign-in">
-                  <T _str="Sign in" />
+                  <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
                 </MenuItem>
               </MenuSection>
             </Menu>
@@ -105,23 +109,23 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end">
             <nav className="flex space-x-8">
               <ActiveLink href="/discover" activeClassName="font-semibold">
-                <a title={t('Search')}>
+                <a title={intl.formatMessage({ defaultMessage: 'Search', id: 'xmcVZ0' })}>
                   <Icon icon={SearchIcon} />
                 </a>
               </ActiveLink>
               <ActiveLink href="/investors" activeClassName="font-semibold">
                 <a>
-                  <T _str="For investors" />
+                  <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
                 </a>
               </ActiveLink>
               <ActiveLink href="/project-developers" activeClassName="font-semibold">
                 <a>
-                  <T _str="For project developers" />
+                  <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
                 </a>
               </ActiveLink>
               <ActiveLink href="/about" activeClassName="font-semibold">
                 <a>
-                  <T _str="About" />
+                  <FormattedMessage defaultMessage="About" id="g5pX+a" />
                 </a>
               </ActiveLink>
             </nav>
@@ -135,7 +139,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="shrink-0"
                 disabled
               >
-                <T _str="Sign in" />
+                <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
               </Button>
             </div>
           </div>
