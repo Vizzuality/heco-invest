@@ -10,5 +10,6 @@ FactoryBot.define do
     linkedin { "https://linkedin.com/#{slug}" }
     facebook { "https://facebook.com/#{slug}" }
     website { "https://#{slug}.com" }
+    language { "en" }
   end
 end

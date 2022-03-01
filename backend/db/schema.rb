@@ -15,8 +15,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_25_155135) do
   enable_extension "plpgsql"
 
   create_table "accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.text "name"
-    t.text "slug"
+    t.text "name", null: false
+    t.text "slug", null: false
     t.text "about_en"
     t.text "about_es"
     t.text "about_pt"
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_25_155135) do
     t.text "facebook"
     t.text "twitter"
     t.text "instagram"
-    t.string "language"
+    t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_accounts_on_name", unique: true
@@ -72,8 +72,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_25_155135) do
   end
 
   create_table "investors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "account_id"
-    t.string "investor_type"
+    t.uuid "account_id", null: false
+    t.string "investor_type", null: false
     t.string "categories", array: true
     t.string "ticket_sizes", array: true
     t.string "instrument_types", array: true
@@ -88,13 +88,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_25_155135) do
     t.text "other_information_en"
     t.text "other_information_es"
     t.text "other_information_pt"
-    t.boolean "previously_invested", null: false
+    t.boolean "previously_invested", default: false, null: false
     t.text "previously_invested_description_en"
     t.text "previously_invested_description_es"
     t.text "previously_invested_description_pt"
-    t.integer "review_status"
+    t.integer "review_status", default: 0, null: false
     t.datetime "reviewed_at"
     t.text "review_message"
+    t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_investors_on_account_id"

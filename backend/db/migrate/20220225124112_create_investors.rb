@@ -1,9 +1,9 @@
 class CreateInvestors < ActiveRecord::Migration[7.0]
   def change
     create_table :investors, id: :uuid do |t|
-      t.belongs_to :account, foreign_key: {on_delete: :cascade}, type: :uuid, index: true
+      t.belongs_to :account, foreign_key: {on_delete: :cascade}, type: :uuid, null: false, index: true
 
-      t.string :investor_type
+      t.string :investor_type, null: false
       t.string :categories, array: true
       t.string :ticket_sizes, array: true
       t.string :instrument_types, array: true
@@ -20,14 +20,16 @@ class CreateInvestors < ActiveRecord::Migration[7.0]
       t.text :other_information_es
       t.text :other_information_pt
 
-      t.boolean :previously_invested, null: false
+      t.boolean :previously_invested, null: false, default: false
       t.text :previously_invested_description_en
       t.text :previously_invested_description_es
       t.text :previously_invested_description_pt
 
-      t.integer :review_status
+      t.integer :review_status, null: false, default: 0
       t.datetime :reviewed_at
       t.text :review_message
+
+      t.string :language, null: false
 
       t.timestamps
     end

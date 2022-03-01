@@ -15,5 +15,7 @@ FactoryBot.define do
     how_do_you_work { Faker::Lorem.paragraph(sentence_count: 4) }
     what_makes_the_difference { Faker::Lorem.paragraph(sentence_count: 4) }
     other_information { Faker::Lorem.paragraph(sentence_count: 4) }
+
+    language { "en" }
   end
 end
