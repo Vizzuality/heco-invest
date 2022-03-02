@@ -47,6 +47,3 @@ yarn-error.log*
 
 # Typescript
 tsconfig.tsbuildinfo
-
-# locales
-/lang/compiled/*.json
