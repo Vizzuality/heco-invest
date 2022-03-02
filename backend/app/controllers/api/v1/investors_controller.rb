@@ -22,14 +22,14 @@ module API
       private
 
       def fetch_investor
-        return Investor.find(params[:id]) if fetch_by_uuid?
+        return Investor.find(params[:id]) if fetching_by_uuid?
 
         account = Account.friendly.find(params[:id])
         Investor.find_by!(account_id: account.id)
       end
 
-      def fetch_by_uuid?
-        params[:id]&.length == SecureRandom.uuid.length
+      def fetching_by_uuid?
+        /\A[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\z/.match?(params[:id])
       end
     end
   end
