@@ -10,4 +10,9 @@ class Account < ApplicationRecord
   validates :twitter, url: true
   validates :facebook, url: true
   validates :instagram, url: true
+
+  def slug_preview
+    set_slug unless slug.present?
+    slug
+  end
 end
