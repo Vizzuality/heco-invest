@@ -15,4 +15,11 @@ RSpec.describe Account, type: :model do
     subject.name = "Taken"
     expect(subject).to have(1).errors_on(:name)
   end
+
+  %w[website instagram twitter facebook linkedin].each do |link_type|
+    it "should be invalid if #{link_type} is not a valid URL" do
+      subject.send("#{link_type}=", "not a valid url")
+      expect(subject).to have(1).errors_on(link_type)
+    end
+  end
 end
