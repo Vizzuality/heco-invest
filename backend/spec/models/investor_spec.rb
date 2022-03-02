@@ -11,9 +11,9 @@ RSpec.describe Investor, type: :model do
   end
 
   include_examples :static_relation_validations, attribute: :investor_type
-  include_examples :static_relation_validations, attribute: :impacts
+  include_examples :static_relation_validations, attribute: :impacts, presence: false
   include_examples :static_relation_validations, attribute: :instrument_types
   include_examples :static_relation_validations, attribute: :ticket_sizes
   include_examples :static_relation_validations, attribute: :categories
-  include_examples :static_relation_validations, attribute: :sdgs
+  include_examples :static_relation_validations, attribute: :sdgs, presence: false
 end
