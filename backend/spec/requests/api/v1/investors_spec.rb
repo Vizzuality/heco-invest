@@ -3,8 +3,10 @@ require "rails_helper"
 RSpec.describe "API V1 Investors", type: :request do
   before_all do
     @investor = create(:investor)
-    create_list(:investor, 3)
+    create_list(:investor, 6)
   end
+
+  include_examples :api_pagination, model: Investor, expected_total: 7
 
   describe "GET #index" do
     it "should return investors" do
