@@ -28,9 +28,12 @@ export const SDG: FC<SDGProps> = ({ id, size, selectable, ...rest }: SDGProps) =
         'relative text-[0] rounded transition-all': true,
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark':
           true,
-        [`w-[${SDGS_SIZES[size]}px] h-[${SDGS_SIZES[size]}px]`]: true,
         'cursor-pointer': selectable,
       })}
+      style={{
+        width: SDGS_SIZES[size],
+        height: SDGS_SIZES[size],
+      }}
       {...buttonProps}
     >
       <Image
