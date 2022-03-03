@@ -12145,6 +12145,7 @@ __metadata:
     rooks: ^5.10.0
     sharp: ^0.30.1
     start-server-and-test: ^1.12.1
+    storybook-react-intl: ^1.0.5
     tailwindcss: ^3.0.16
     typescript: ^4.5.5
     use-debounce: ^6.0.1
@@ -18668,6 +18669,49 @@ __metadata:
   version: 2.13.1
   resolution: "store2@npm:2.13.1"
   checksum: c5fa1ac7dbf8431d87ad4563d9838311bb421cc6e13696b668c772192942be2e07ef20d36104f7496acab6dc4d569a9b50d6c2299ceaddbcb86628f585323ff4
+  languageName: node
+  linkType: hard
+
+"storybook-i18n@npm:^1.0.11":
+  version: 1.0.11
+  resolution: "storybook-i18n@npm:1.0.11"
+  peerDependencies:
+    "@storybook/addons": ^6.4.17
+    "@storybook/api": ^6.4.17
+    "@storybook/components": ^6.4.17
+    "@storybook/core-events": ^6.4.17
+    "@storybook/theming": ^6.4.17
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 7cb18a50e23835bd47f73ca316a5eb0ec8885fa5e522fc2b49e142991c6e0edbb6bf1e9567a209fb42aac37ae2986f6177e8e9d12f2451d71524c0203e2fccb8
+  languageName: node
+  linkType: hard
+
+"storybook-react-intl@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "storybook-react-intl@npm:1.0.5"
+  dependencies:
+    storybook-i18n: ^1.0.11
+  peerDependencies:
+    "@storybook/addons": ^6.4.17
+    "@storybook/api": ^6.4.17
+    "@storybook/components": ^6.4.17
+    "@storybook/core-events": ^6.4.17
+    "@storybook/theming": ^6.4.17
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+    react-intl: ^5.24.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: e7b90e9c16c7b22545aa385ec0bee988e6344e0ce39cde13a58c592c1d9267f3779864c2eb531a7ccabe572522186273c3cea4d1c4ca5bf9f40a4397738710e3
   languageName: node
   linkType: hard
 

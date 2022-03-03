@@ -10,7 +10,7 @@ module.exports = {
     '../containers/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   staticDirs: ['../public'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', {
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', 'storybook-react-intl', {
     name: '@storybook/addon-postcss',
     options: {
       cssLoaderOptions: {
