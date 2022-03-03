@@ -14,8 +14,12 @@ gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
 
+gem "friendly_id", "~> 5.4.0"
+gem "traco"
+
 # API
 gem "jsonapi-serializer"
+gem "pagy"
 
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
@@ -23,6 +27,8 @@ gem "bootsnap", require: false
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "factory_bot_rails"
+  gem "faker"
   gem "standard"
 end
 
@@ -44,7 +50,6 @@ group :test do
   gem "rspec-collection_matchers"
   gem "rspec-rails", "~> 5.0.0"
   gem "rspec-request_snapshot"
-  gem "factory_bot_rails"
   gem "simplecov", require: false
   gem "super_diff"
   gem "test-prof"
