@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_25_155135) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_03_132723) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -101,7 +101,38 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_25_155135) do
     t.index ["account_id"], name: "index_investors_on_account_id"
   end
 
+  create_table "open_calls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "investor_id", null: false
+    t.text "name_en"
+    t.text "name_es"
+    t.text "name_pt"
+    t.text "slug"
+    t.text "description_en"
+    t.text "description_es"
+    t.text "description_pt"
+    t.text "money_distribution_en"
+    t.text "money_distribution_es"
+    t.text "money_distribution_pt"
+    t.text "impact_description_en"
+    t.text "impact_description_es"
+    t.text "impact_description_pt"
+    t.boolean "trusted", default: false, null: false
+    t.string "ticket_size", null: false
+    t.string "instrument_type", null: false
+    t.integer "sdgs", array: true
+    t.string "language", null: false
+    t.datetime "closing_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["investor_id", "name_en"], name: "index_open_calls_on_investor_id_and_name_en", unique: true
+    t.index ["investor_id", "name_es"], name: "index_open_calls_on_investor_id_and_name_es", unique: true
+    t.index ["investor_id", "name_pt"], name: "index_open_calls_on_investor_id_and_name_pt", unique: true
+    t.index ["investor_id"], name: "index_open_calls_on_investor_id"
+    t.index ["slug"], name: "index_open_calls_on_slug", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "investors", "accounts", on_delete: :cascade
+  add_foreign_key "open_calls", "investors", on_delete: :cascade
 end
