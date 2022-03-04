@@ -24,5 +24,15 @@ if Rails.env.development?
     (0..3).to_a.sample.times do
       FactoryBot.create(:open_call, investor: investor)
     end
+
+    project_developer_account = FactoryBot.create(:account)
+    ProjectDeveloper.create!(
+      account: project_developer_account,
+      project_developer_type: ProjectDeveloperType::TYPES.sample,
+      categories: Category::TYPES.shuffle.take((1..2).to_a.sample),
+      impacts: Impact::TYPES.shuffle.take((1..2).to_a.sample),
+      mission: Faker::Lorem.paragraph(sentence_count: 4),
+      language: investor_account.language
+    )
   end
 end

@@ -27,10 +27,6 @@ module API
         account = Account.friendly.find(params[:id])
         Investor.find_by!(account_id: account.id)
       end
-
-      def fetching_by_uuid?
-        /\A[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\z/.match?(params[:id])
-      end
     end
   end
 end

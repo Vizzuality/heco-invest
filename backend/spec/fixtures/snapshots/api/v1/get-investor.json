@@ -37,7 +37,8 @@
       ],
       "previously_invested": true,
       "previously_invested_description": "Ab et voluptatem. Placeat cupiditate et. Ut ut earum. Eaque similique aut.",
-      "investor_type": "angel_investor"
+      "investor_type": "angel_investor",
+      "language": "en"
     }
   }
 }

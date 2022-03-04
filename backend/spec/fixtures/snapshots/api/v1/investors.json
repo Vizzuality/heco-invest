@@ -38,7 +38,8 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Ab et voluptatem. Placeat cupiditate et. Ut ut earum. Eaque similique aut.",
-        "investor_type": "angel_investor"
+        "investor_type": "angel_investor",
+        "language": "en"
       }
     },
     {
@@ -79,7 +80,8 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Aspernatur quasi reprehenderit. Ad tenetur delectus. Occaecati in ex. Qui est consequatur.",
-        "investor_type": "angel_investor"
+        "investor_type": "angel_investor",
+        "language": "en"
       }
     },
     {
@@ -120,7 +122,8 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Earum hic maxime. Ab sit odio. Molestiae harum dolorum. Consequuntur ut iure.",
-        "investor_type": "angel_investor"
+        "investor_type": "angel_investor",
+        "language": "en"
       }
     },
     {
@@ -161,7 +164,8 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Laborum accusantium et. Ipsum nostrum esse. Sunt placeat omnis. Culpa voluptate facere.",
-        "investor_type": "angel_investor"
+        "investor_type": "angel_investor",
+        "language": "en"
       }
     },
     {
@@ -202,7 +206,8 @@
           5
         ],
         "previously_invested": true,
-        "previously_invested_description": "Eaque eos placeat. Maiores dolorum provident. Est error perspiciatis. Voluptate et nihil."
+        "previously_invested_description": "Eaque eos placeat. Maiores dolorum provident. Est error perspiciatis. Voluptate et nihil.",
+        "language": "en"
       }
     },
     {
@@ -243,7 +248,8 @@
           5
         ],
         "previously_invested": true,
-        "previously_invested_description": "Velit occaecati consequatur. Similique rerum dolorem. Possimus et non. Esse voluptatem accusamus."
+        "previously_invested_description": "Velit occaecati consequatur. Similique rerum dolorem. Possimus et non. Esse voluptatem accusamus.",
+        "language": "en"
       }
     },
     {
@@ -284,7 +290,8 @@
           5
         ],
         "previously_invested": true,
-        "previously_invested_description": "Nemo qui aliquam. Et laboriosam fugiat. Occaecati id porro. Natus fugit est."
+        "previously_invested_description": "Nemo qui aliquam. Et laboriosam fugiat. Occaecati id porro. Natus fugit est.",
+        "language": "en"
       }
     }
   ],
