@@ -8,6 +8,7 @@ module API
         pagy_object, project_developers = pagy(project_developers, page: current_page, items: per_page)
         render json: ProjectDeveloperSerializer.new(
           project_developers,
+          fields: sparse_fieldset,
           links: pagination_links(:api_v1_project_developers_path, pagy_object),
           meta: pagination_meta(pagy_object)
         ).serializable_hash
@@ -16,7 +17,10 @@ module API
       def show
         project_developer = fetch_project_developer
 
-        render json: ProjectDeveloperSerializer.new(project_developer).serializable_hash
+        render json: ProjectDeveloperSerializer.new(
+          project_developer,
+          fields: sparse_fieldset
+        ).serializable_hash
       end
 
       private

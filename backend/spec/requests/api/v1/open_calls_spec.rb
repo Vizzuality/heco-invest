@@ -15,6 +15,15 @@ RSpec.describe "API V1 Open Calls", type: :request do
       expect(response).to have_http_status(:ok)
       expect(response.body).to match_snapshot("api/v1/open_calls", dynamic_attributes: %w[closing_at])
     end
+
+    describe "sparse fieldset" do
+      it "should work" do
+        get "/api/v1/open_calls?fields[open_call]=name,description,nonexisting"
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to match_snapshot("api/v1/open-calls-sparse-fieldset")
+      end
+    end
   end
 
   describe "GET #show" do
@@ -38,6 +47,15 @@ RSpec.describe "API V1 Open Calls", type: :request do
 
         expect(response).to have_http_status(:not_found)
         expect(response.body).to match_snapshot("api/v1/get-open_call-not-found")
+      end
+    end
+
+    describe "sparse fieldset" do
+      it "should work" do
+        get "/api/v1/open_calls/#{@open_call.id}?fields[open_call]=name,description,nonexisting"
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to match_snapshot("api/v1/get-open-call-sparse-fieldset")
       end
     end
   end

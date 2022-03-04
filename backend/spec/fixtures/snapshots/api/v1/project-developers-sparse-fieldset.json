@@ -1,0 +1,73 @@
+{
+  "data": [
+    {
+      "id": "6e04d4ae-358a-46e2-a093-a80a43539f1b",
+      "type": "project_developer",
+      "attributes": {
+        "instagram": "https://instagram.com/kutch-spencer",
+        "facebook": "https://facebook.com/kutch-spencer"
+      }
+    },
+    {
+      "id": "7d6fd256-2a8f-4753-ab93-c75b82cb07f6",
+      "type": "project_developer",
+      "attributes": {
+        "instagram": "https://instagram.com/bartoletti-and-sons",
+        "facebook": "https://facebook.com/bartoletti-and-sons"
+      }
+    },
+    {
+      "id": "f19bcdf2-072f-45c7-b789-5dfca6b98c8f",
+      "type": "project_developer",
+      "attributes": {
+        "instagram": "https://instagram.com/hane-lehner-and-goyette",
+        "facebook": "https://facebook.com/hane-lehner-and-goyette"
+      }
+    },
+    {
+      "id": "79ee58fe-a6d0-45c6-aaa0-2fb6bc9bba2f",
+      "type": "project_developer",
+      "attributes": {
+        "instagram": "https://instagram.com/hilpert-waters-and-johnston",
+        "facebook": "https://facebook.com/hilpert-waters-and-johnston"
+      }
+    },
+    {
+      "id": "50b6de25-7e27-454b-a0c6-5948019fb14f",
+      "type": "project_developer",
+      "attributes": {
+        "instagram": "https://instagram.com/jacobson-fritsch-and-stanton",
+        "facebook": "https://facebook.com/jacobson-fritsch-and-stanton"
+      }
+    },
+    {
+      "id": "cd0c335e-9827-443f-972f-c202aa736ecc",
+      "type": "project_developer",
+      "attributes": {
+        "instagram": "https://instagram.com/keebler-kub-and-zemlak",
+        "facebook": "https://facebook.com/keebler-kub-and-zemlak"
+      }
+    },
+    {
+      "id": "32e7a50d-0aac-4004-b570-d7f005586b76",
+      "type": "project_developer",
+      "attributes": {
+        "instagram": "https://instagram.com/becker-llc",
+        "facebook": "https://facebook.com/becker-llc"
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 7,
+    "total": 7,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/project_developers?page%5Bsize%5D=10",
+    "self": "/api/v1/project_developers?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/project_developers?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}
