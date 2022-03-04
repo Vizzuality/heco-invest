@@ -15,6 +15,15 @@ RSpec.describe "API V1 Investors", type: :request do
       expect(response).to have_http_status(:ok)
       expect(response.body).to match_snapshot("api/v1/investors")
     end
+
+    describe "sparse fieldset" do
+      it "should work" do
+        get "/api/v1/investors?fields[investor]=instagram,facebook,nonexisting"
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to match_snapshot("api/v1/investors-sparse-fieldset")
+      end
+    end
   end
 
   describe "GET #show" do
@@ -38,6 +47,15 @@ RSpec.describe "API V1 Investors", type: :request do
 
         expect(response).to have_http_status(:not_found)
         expect(response.body).to match_snapshot("api/v1/get-investor-not-found")
+      end
+    end
+
+    describe "sparse fieldset" do
+      it "should work" do
+        get "/api/v1/investors/#{@investor.id}?fields[investor]=instagram,facebook,nonexisting"
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to match_snapshot("api/v1/get-investor-sparse-fieldset")
       end
     end
   end

@@ -6,6 +6,7 @@ module API
       include API::Errors
       include API::Authentication
       include API::Localization
+      include API::SparseFieldset
 
       protect_from_forgery with: :exception
 
