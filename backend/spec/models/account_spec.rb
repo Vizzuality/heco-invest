@@ -10,6 +10,16 @@ RSpec.describe Account, type: :model do
     expect(subject).to have(1).errors_on(:name)
   end
 
+  it "should not be valid with wrong language" do
+    subject.language = "fr"
+    expect(subject).to have(1).errors_on(:language)
+  end
+
+  it "should not be valid without language" do
+    subject.language = nil
+    expect(subject).to have(1).errors_on(:language)
+  end
+
   it "should not be valid if name is taken" do
     create(:account, name: "taken")
     subject.name = "Taken"

@@ -3,6 +3,8 @@ module API
     class OpenCallsController < BaseController
       include API::Pagination
 
+      before_action :fetch_open_call, only: [:show]
+
       def index
         open_calls = OpenCall.all.includes(:investor)
         pagy_object, open_calls = pagy(open_calls, page: current_page, items: per_page)
@@ -14,15 +16,13 @@ module API
       end
 
       def show
-        open_call = fetch_open_call
-
-        render json: OpenCallSerializer.new(open_call).serializable_hash
+        render json: OpenCallSerializer.new(@open_call).serializable_hash
       end
 
       private
 
       def fetch_open_call
-        OpenCall.friendly.find(params[:id])
+        @open_call = OpenCall.friendly.find(params[:id])
       end
     end
   end

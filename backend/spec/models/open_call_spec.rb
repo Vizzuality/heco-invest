@@ -15,6 +15,11 @@ RSpec.describe OpenCall, type: :model do
     expect(subject).to have(1).errors_on(:closing_at)
   end
 
+  it "should not be valid with wrong language" do
+    subject.language = "fr"
+    expect(subject).to have(1).errors_on(:language)
+  end
+
   it "should not be valid without language" do
     subject.language = nil
     expect(subject).to have(1).errors_on(:language)
