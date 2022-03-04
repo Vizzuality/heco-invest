@@ -12,15 +12,15 @@ module API
     end
 
     def render_error(exception)
-      render json: {errors: [{title: exception.message.downcase}]}, status: :bad_request
+      render json: {errors: [{title: exception.message}]}, status: :bad_request
     end
 
     def render_not_found_error(exception)
-      render json: {errors: [{title: exception.message.downcase}]}, status: :not_found
+      render json: {errors: [{title: exception.message}]}, status: :not_found
     end
 
     def render_unauthorized_error(exception)
-      render json: {errors: [{title: exception.message.downcase}]}, status: :unauthorized
+      render json: {errors: [{title: exception.message}]}, status: :unauthorized
     end
 
     def render_validation_errors(ex_or_record)

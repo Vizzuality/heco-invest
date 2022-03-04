@@ -4,9 +4,9 @@ if Rails.env.development?
   Account.delete_all
   Investor.delete_all
 
-  50.times do
+  5.times do
     investor_account = FactoryBot.create(:account)
-    Investor.create!(
+    investor = Investor.create!(
       account: investor_account,
       categories: Category::TYPES.shuffle.take((1..2).to_a.sample),
       sdgs: Sdg::TYPES.shuffle.take((1..10).to_a.sample),
@@ -21,5 +21,8 @@ if Rails.env.development?
       other_information: Faker::Lorem.paragraph(sentence_count: 4),
       language: investor_account.language
     )
+    (0..3).to_a.sample.times do
+      FactoryBot.create(:open_call, investor: investor)
+    end
   end
 end

@@ -1,0 +1,206 @@
+{
+  "data": [
+    {
+      "id": "0436adc8-9ec9-422c-9486-a44ce021eedf",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 1",
+        "slug": "kutch-spencer-open-call-1",
+        "description": "Voluptatem blanditiis autem. Iste voluptates rerum. Animi tempore iure. Inventore facere ad.",
+        "ticket_size": "scaling",
+        "instrument_type": "loan",
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "money_distribution": "Et dolorem assumenda. Praesentium magni totam. Dolorem minima et. Incidunt omnis error.",
+        "impact_description": "Voluptas molestiae est. Omnis asperiores quia. Dolorem autem corrupti. Totam nemo laborum.",
+        "closing_at": "2023-01-03T15:10:20.792Z"
+      },
+      "relationships": {
+        "investor": {
+          "data": {
+            "id": "6618f883-0d83-4b35-a476-9ca3dcc669bb",
+            "type": "investor"
+          }
+        }
+      }
+    },
+    {
+      "id": "4279690a-325c-4c53-8895-3fb27eda45f8",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 2",
+        "slug": "bartoletti-and-sons-open-call-2",
+        "description": "Molestias blanditiis voluptatibus. Temporibus eaque molestiae. Amet quia sit. Consequatur quas dicta.",
+        "ticket_size": "scaling",
+        "instrument_type": "loan",
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "money_distribution": "Placeat ut harum. Nihil autem non. Et debitis et. Itaque eum sit.",
+        "impact_description": "Quisquam ut ipsa. Eligendi aut aut. Aperiam aut odit. Minima delectus tenetur.",
+        "closing_at": "2023-01-03T15:10:20.829Z"
+      },
+      "relationships": {
+        "investor": {
+          "data": {
+            "id": "48c4d431-2e1d-4cd8-bffe-bbd6a7333feb",
+            "type": "investor"
+          }
+        }
+      }
+    },
+    {
+      "id": "a7a2167d-74f0-4687-90b4-68fa0f567895",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 3",
+        "slug": "hane-lehner-and-goyette-open-call-3",
+        "description": "Dolor dicta labore. Ab fugit excepturi. Iure maiores sint. Dolorem minus veniam.",
+        "ticket_size": "scaling",
+        "instrument_type": "loan",
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "money_distribution": "Ut impedit molestiae. Velit impedit fugiat. Itaque culpa tempora. Optio amet sunt.",
+        "impact_description": "Voluptate fugit ipsam. Sapiente asperiores ut. Eos voluptatem id. Illum qui adipisci.",
+        "closing_at": "2023-01-03T15:10:20.865Z"
+      },
+      "relationships": {
+        "investor": {
+          "data": {
+            "id": "5298f589-bb52-4d24-b594-d6da699510ab",
+            "type": "investor"
+          }
+        }
+      }
+    },
+    {
+      "id": "589c9e27-38ee-48f5-ae5e-6bf277fc4a70",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 4",
+        "slug": "hilpert-waters-and-johnston-open-call-4",
+        "description": "Vel quis ut. Eaque et illo. Eos eaque magni. At labore dignissimos.",
+        "ticket_size": "scaling",
+        "instrument_type": "loan",
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "money_distribution": "Praesentium vitae unde. Officiis veritatis temporibus. Magni molestias error. Est voluptas est.",
+        "impact_description": "Rerum optio iure. Aspernatur suscipit asperiores. Consequuntur ab molestiae. Ut sit nihil.",
+        "closing_at": "2023-01-03T15:10:20.902Z"
+      },
+      "relationships": {
+        "investor": {
+          "data": {
+            "id": "93709e67-79d9-493c-9b5d-78bb0204612b",
+            "type": "investor"
+          }
+        }
+      }
+    },
+    {
+      "id": "86695233-d889-4707-89ee-9b7b6201f381",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 5",
+        "slug": "jacobson-fritsch-and-stanton-open-call-5",
+        "description": "Laboriosam rem qui. Quia et est. Quos fugiat voluptatem. Iusto animi voluptatem.",
+        "ticket_size": "scaling",
+        "instrument_type": "loan",
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "money_distribution": "Labore est sit. Maxime amet dolores. Ut sint suscipit. Saepe minima dolores.",
+        "impact_description": "Non qui velit. Exercitationem adipisci delectus. Voluptate distinctio eos. A porro vero.",
+        "closing_at": "2023-01-03T15:10:20.940Z"
+      },
+      "relationships": {
+        "investor": {
+          "data": {
+            "id": "e32e1f8e-2fce-45c1-a12e-1d4b4300e5f4",
+            "type": "investor"
+          }
+        }
+      }
+    },
+    {
+      "id": "8492f44a-edc7-4ebd-b90b-848e9eb53de6",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 6",
+        "slug": "keebler-kub-and-zemlak-open-call-6",
+        "description": "Nesciunt modi architecto. Laudantium saepe molestiae. Vero porro nam. In eum numquam.",
+        "ticket_size": "scaling",
+        "instrument_type": "loan",
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "money_distribution": "Exercitationem earum placeat. Voluptas sapiente ut. Deleniti aut pariatur. Sint non eum.",
+        "impact_description": "Eos quia rem. Vitae minus laudantium. Ipsa quod quia. Voluptas et reiciendis.",
+        "closing_at": "2023-01-03T15:10:20.983Z"
+      },
+      "relationships": {
+        "investor": {
+          "data": {
+            "id": "7ef58183-8430-47ea-b697-bb8fd4b08d2e",
+            "type": "investor"
+          }
+        }
+      }
+    },
+    {
+      "id": "422af6d1-bf18-4ae6-ab0b-89eb5a89fad4",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 7",
+        "slug": "becker-llc-open-call-7",
+        "description": "Earum sequi iusto. Quas assumenda vitae. Quia quia repudiandae. Commodi nobis est.",
+        "ticket_size": "scaling",
+        "instrument_type": "loan",
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "money_distribution": "Temporibus incidunt non. Qui cum officiis. Voluptatem ducimus nam. Non dolores accusantium.",
+        "impact_description": "Assumenda quae excepturi. Possimus et facilis. Vitae rem quo. Aut omnis in.",
+        "closing_at": "2023-01-03T15:10:21.030Z"
+      },
+      "relationships": {
+        "investor": {
+          "data": {
+            "id": "3deb7095-fffb-4c26-a1a2-77890ca7d5c4",
+            "type": "investor"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 7,
+    "total": 7,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/open_calls?page%5Bsize%5D=10",
+    "self": "/api/v1/open_calls?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/open_calls?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}
