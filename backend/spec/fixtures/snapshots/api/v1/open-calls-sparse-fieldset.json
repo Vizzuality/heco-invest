@@ -1,0 +1,87 @@
+{
+  "data": [
+    {
+      "id": "9b9cda53-083a-4a83-9f68-59dc938ca0ed",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 1",
+        "description": "Voluptatem blanditiis autem. Iste voluptates rerum. Animi tempore iure. Inventore facere ad."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "44db5d4b-3e6b-42fe-8552-7beb9f6ccde0",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 2",
+        "description": "Molestias blanditiis voluptatibus. Temporibus eaque molestiae. Amet quia sit. Consequatur quas dicta."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "adfa5e3d-6d26-4602-aacb-b2bba5f74c37",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 3",
+        "description": "Dolor dicta labore. Ab fugit excepturi. Iure maiores sint. Dolorem minus veniam."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "e76d42c7-0efd-4d36-a283-503b197b28f2",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 4",
+        "description": "Vel quis ut. Eaque et illo. Eos eaque magni. At labore dignissimos."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "ac7afeee-8f57-4b81-bba6-243a514f07e3",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 5",
+        "description": "Laboriosam rem qui. Quia et est. Quos fugiat voluptatem. Iusto animi voluptatem."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "60d3c4f2-7fb9-49bb-b62b-228e0f670e3c",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 6",
+        "description": "Nesciunt modi architecto. Laudantium saepe molestiae. Vero porro nam. In eum numquam."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "7d404367-a350-49ce-a1af-54ff6d98de7d",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 7",
+        "description": "Earum sequi iusto. Quas assumenda vitae. Quia quia repudiandae. Commodi nobis est."
+      },
+      "relationships": {
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 7,
+    "total": 7,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/open_calls?page%5Bsize%5D=10",
+    "self": "/api/v1/open_calls?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/open_calls?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}

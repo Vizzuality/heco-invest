@@ -1,0 +1,73 @@
+{
+  "data": [
+    {
+      "id": "c9a30461-a0ab-4513-aba4-8700e838d972",
+      "type": "investor",
+      "attributes": {
+        "instagram": "https://instagram.com/kutch-spencer",
+        "facebook": "https://facebook.com/kutch-spencer"
+      }
+    },
+    {
+      "id": "c707a731-b1ca-49a6-ab53-d7a59fef752e",
+      "type": "investor",
+      "attributes": {
+        "instagram": "https://instagram.com/bartoletti-and-sons",
+        "facebook": "https://facebook.com/bartoletti-and-sons"
+      }
+    },
+    {
+      "id": "69cce555-3b54-40e7-ba8e-58518d0bc238",
+      "type": "investor",
+      "attributes": {
+        "instagram": "https://instagram.com/hane-lehner-and-goyette",
+        "facebook": "https://facebook.com/hane-lehner-and-goyette"
+      }
+    },
+    {
+      "id": "01008dd7-9b44-4621-b734-791f2ef5a2c7",
+      "type": "investor",
+      "attributes": {
+        "instagram": "https://instagram.com/hilpert-waters-and-johnston",
+        "facebook": "https://facebook.com/hilpert-waters-and-johnston"
+      }
+    },
+    {
+      "id": "2ce42988-6e27-4b43-8b76-dcc89e65e1d0",
+      "type": "investor",
+      "attributes": {
+        "instagram": "https://instagram.com/jacobson-fritsch-and-stanton",
+        "facebook": "https://facebook.com/jacobson-fritsch-and-stanton"
+      }
+    },
+    {
+      "id": "f01ccdcd-5e2b-4e4a-ac4c-33b32397e3f4",
+      "type": "investor",
+      "attributes": {
+        "instagram": "https://instagram.com/keebler-kub-and-zemlak",
+        "facebook": "https://facebook.com/keebler-kub-and-zemlak"
+      }
+    },
+    {
+      "id": "dcfd920b-b090-47fb-8a78-b89ba667851a",
+      "type": "investor",
+      "attributes": {
+        "instagram": "https://instagram.com/becker-llc",
+        "facebook": "https://facebook.com/becker-llc"
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 7,
+    "total": 7,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/investors?page%5Bsize%5D=10",
+    "self": "/api/v1/investors?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/investors?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}
