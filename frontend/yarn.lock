@@ -1611,6 +1611,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@deck.gl/extensions@npm:^8.4.16":
+  version: 8.7.0
+  resolution: "@deck.gl/extensions@npm:8.7.0"
+  dependencies:
+    "@luma.gl/shadertools": ^8.5.10
+  peerDependencies:
+    "@deck.gl/core": ^8.0.0
+    gl-matrix: ^3.0.0
+  checksum: 8af18f872771973d04c34591a4faa05b5f69991f274d6817078d29ac0a2bf07d6349bda3b4a438334569dfc12f979be52959a9295d81545163cc269882dbf404
+  languageName: node
+  linkType: hard
+
 "@deck.gl/geo-layers@npm:^8.4.16":
   version: 8.6.8
   resolution: "@deck.gl/geo-layers@npm:8.6.8"
@@ -12083,6 +12095,7 @@ __metadata:
   resolution: "heco-invest-frontend@workspace:."
   dependencies:
     "@deck.gl/core": ^8.4.16
+    "@deck.gl/extensions": ^8.4.16
     "@deck.gl/geo-layers": ^8.4.16
     "@deck.gl/layers": ^8.4.16
     "@deck.gl/mesh-layers": ^8.4.16
