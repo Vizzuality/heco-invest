@@ -64,7 +64,7 @@ The application is set up so that the source language is understood as being Zul
 The source and translated strings are located in the `/lang` folder:
 - `lang/transifex/zu.json` contains the list of source strings extracted from the code
 - `lang/transifex/*.json` contains the list of translated strings coming from Transifex (always empty)
-- `lang/compiled/*.json` contains the list of strings that will be shown in the application (not part of the repository)
+- `lang/compiled/*.json` contains the list of strings that will be shown in the application (always empty)
 
 The strings are extracted from the code and displayed in the production build by the [FormatJS](https://formatjs.io/) library, which contains the [react-intl](https://formatjs.io/docs/getting-started/installation) package that is used in React.
 
@@ -77,7 +77,7 @@ Here is a step-by-step explanation of how the strings are translated and display
 3. When the code is merged to the `develop` branch, a staging deployment is triggered via a GitHub action:
 	1. The extracted strings are pushed to Transifex
 	2. The translations are pulled: the `lang/transifex/*.json` files are updated (not saved in repository)
-	3. The translations are compiled: the `lang/compiled/*.json` files are created (not saved in repository)
+	3. The translations are compiled: the `lang/compiled/*.json` files are updated (not saved in repository)
 	4. The application is built with the compiled strings and deployed
 4. When the `develop` branch is merged in `main`, the same previous step is repeated, except strings are not pushed to Transifex
 
