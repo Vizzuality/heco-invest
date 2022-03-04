@@ -10,17 +10,23 @@ module.exports = {
     '../containers/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   staticDirs: ['../public'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', {
-    name: '@storybook/addon-postcss',
-    options: {
-      cssLoaderOptions: {
-        importLoaders: 1,
-      },
-      postcssLoaderOptions: {
-        implementation: require('postcss'),
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    'storybook-addon-next',
+    'storybook-react-intl',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        cssLoaderOptions: {
+          importLoaders: 1,
+        },
+        postcssLoaderOptions: {
+          implementation: require('postcss'),
+        },
       },
     },
-  },],
+  ],
   /* nextjs -> no need to import React and can use alias modules */
   webpackFinal: async (config) => {
     // *************************
