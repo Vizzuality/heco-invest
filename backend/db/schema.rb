@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_03_132723) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_04_095005) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -131,8 +131,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_03_132723) do
     t.index ["slug"], name: "index_open_calls_on_slug", unique: true
   end
 
+  create_table "project_developers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "account_id", null: false
+    t.string "project_developer_type", null: false
+    t.string "categories", array: true
+    t.string "impacts", array: true
+    t.text "mission_en"
+    t.text "mission_es"
+    t.text "mission_pt"
+    t.integer "review_status", default: 0, null: false
+    t.datetime "reviewed_at"
+    t.text "review_message"
+    t.string "language", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_project_developers_on_account_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "investors", "accounts", on_delete: :cascade
   add_foreign_key "open_calls", "investors", on_delete: :cascade
+  add_foreign_key "project_developers", "accounts", on_delete: :cascade
 end
