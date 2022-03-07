@@ -3,6 +3,7 @@ require "factory_bot_rails"
 if Rails.env.development?
   Account.delete_all
   Investor.delete_all
+  ProjectDeveloper.delete_all
 
   5.times do
     investor_account = FactoryBot.create(:account)
@@ -26,7 +27,7 @@ if Rails.env.development?
     end
 
     project_developer_account = FactoryBot.create(:account)
-    ProjectDeveloper.create!(
+    project_developer = ProjectDeveloper.create!(
       account: project_developer_account,
       project_developer_type: ProjectDeveloperType::TYPES.sample,
       categories: Category::TYPES.shuffle.take((1..2).to_a.sample),
@@ -34,5 +35,9 @@ if Rails.env.development?
       mission: Faker::Lorem.paragraph(sentence_count: 4),
       language: investor_account.language
     )
+
+    (0..3).to_a.sample.times do
+      FactoryBot.create(:project, project_developer: project_developer)
+    end
   end
 end

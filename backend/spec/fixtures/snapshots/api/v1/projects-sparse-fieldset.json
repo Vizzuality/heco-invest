@@ -1,0 +1,87 @@
+{
+  "data": [
+    {
+      "id": "c27e9ed7-dac7-4ce2-a193-9110952efef8",
+      "type": "project",
+      "attributes": {
+        "name": "Project 1",
+        "description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "7c60b022-40df-4f6e-bd9f-fff45c560bc1",
+      "type": "project",
+      "attributes": {
+        "name": "Project 2",
+        "description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "2ed01c95-6801-4816-846d-07fe102b53c0",
+      "type": "project",
+      "attributes": {
+        "name": "Project 3",
+        "description": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "5fdfc348-60ac-485e-832a-33d4e4edf0d1",
+      "type": "project",
+      "attributes": {
+        "name": "Project 4",
+        "description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "c5fd7ccd-5c91-413e-af30-8812d0ca834c",
+      "type": "project",
+      "attributes": {
+        "name": "Project 5",
+        "description": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "7654da0e-9795-435a-82ce-6cf3b64c2ee4",
+      "type": "project",
+      "attributes": {
+        "name": "Project 6",
+        "description": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "4b25c8b9-7a7d-4a9a-a45b-066992bf1f00",
+      "type": "project",
+      "attributes": {
+        "name": "Project 7",
+        "description": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut."
+      },
+      "relationships": {
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 7,
+    "total": 7,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/projects?page%5Bsize%5D=10",
+    "self": "/api/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}

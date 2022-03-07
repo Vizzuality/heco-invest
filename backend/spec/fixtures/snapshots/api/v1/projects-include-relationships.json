@@ -1,0 +1,299 @@
+{
+  "data": [
+    {
+      "id": "570e6d75-c900-446f-8ef4-06d03d4706a9",
+      "type": "project",
+      "attributes": {
+        "name": "Project 1"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "ae066257-243c-4e9f-a556-3151125ff0b9",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "e041e77b-4c5f-4b63-ac3e-2e2a57504ca7",
+      "type": "project",
+      "attributes": {
+        "name": "Project 2"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "b27d0dff-5983-4c67-b8b1-d47c4e2c803e",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "3f694548-f995-4bbf-b8c0-4c4a17b84036",
+      "type": "project",
+      "attributes": {
+        "name": "Project 3"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "ee268213-d8b8-49fa-a539-f5a0eb7c032f",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "24a70298-d5d9-4c3e-90e3-a47ac909dd01",
+      "type": "project",
+      "attributes": {
+        "name": "Project 4"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "324e0871-84bb-4429-8f94-b3fa33c46850",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "a34208f6-4bd4-48ed-8963-dc06b5eac193",
+      "type": "project",
+      "attributes": {
+        "name": "Project 5"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "e06a7b5c-fe50-42f7-a25a-b13bec787741",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "daa71346-9123-4d2a-a6c6-a965929733eb",
+      "type": "project",
+      "attributes": {
+        "name": "Project 6"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "f877d565-37fe-4efa-bdd9-ab9bdf994cfd",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "1f1b51da-adef-4bce-bf5b-7f4c7bc5be7c",
+      "type": "project",
+      "attributes": {
+        "name": "Project 7"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "f33c4ad5-dc74-4e9c-ba31-2b9a630eeb2b",
+            "type": "project_developer"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 7,
+    "total": 7,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/projects?page%5Bsize%5D=10",
+    "self": "/api/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  },
+  "included": [
+    {
+      "id": "ae066257-243c-4e9f-a556-3151125ff0b9",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Kutch-Spencer",
+        "slug": "kutch-spencer",
+        "about": "Enim voluptatem non. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "website": "https://kutch-spencer.com",
+        "instagram": "https://instagram.com/kutch-spencer",
+        "facebook": "https://facebook.com/kutch-spencer",
+        "linkedin": "https://linkedin.com/kutch-spencer",
+        "twitter": "https://twitter.com/kutch-spencer",
+        "mission": "Ab et voluptatem. Placeat cupiditate et. Ut ut earum. Eaque similique aut.",
+        "project_developer_type": "TBD",
+        "categories": [
+          "forestry_and_agroforestry",
+          "non_timber_forest_production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en"
+      }
+    },
+    {
+      "id": "b27d0dff-5983-4c67-b8b1-d47c4e2c803e",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Bartoletti and Sons",
+        "slug": "bartoletti-and-sons",
+        "about": "Ea consequatur autem. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "website": "https://bartoletti-and-sons.com",
+        "instagram": "https://instagram.com/bartoletti-and-sons",
+        "facebook": "https://facebook.com/bartoletti-and-sons",
+        "linkedin": "https://linkedin.com/bartoletti-and-sons",
+        "twitter": "https://twitter.com/bartoletti-and-sons",
+        "mission": "Aspernatur quasi reprehenderit. Ad tenetur delectus. Occaecati in ex. Qui est consequatur.",
+        "project_developer_type": "TBD",
+        "categories": [
+          "forestry_and_agroforestry",
+          "non_timber_forest_production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en"
+      }
+    },
+    {
+      "id": "ee268213-d8b8-49fa-a539-f5a0eb7c032f",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Hane, Lehner and Goyette",
+        "slug": "hane-lehner-and-goyette",
+        "about": "Et consequuntur natus. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
+        "website": "https://hane-lehner-and-goyette.com",
+        "instagram": "https://instagram.com/hane-lehner-and-goyette",
+        "facebook": "https://facebook.com/hane-lehner-and-goyette",
+        "linkedin": "https://linkedin.com/hane-lehner-and-goyette",
+        "twitter": "https://twitter.com/hane-lehner-and-goyette",
+        "mission": "Earum hic maxime. Ab sit odio. Molestiae harum dolorum. Consequuntur ut iure.",
+        "project_developer_type": "TBD",
+        "categories": [
+          "forestry_and_agroforestry",
+          "non_timber_forest_production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en"
+      }
+    },
+    {
+      "id": "324e0871-84bb-4429-8f94-b3fa33c46850",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Hilpert, Waters and Johnston",
+        "slug": "hilpert-waters-and-johnston",
+        "about": "Dolores voluptas nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "website": "https://hilpert-waters-and-johnston.com",
+        "instagram": "https://instagram.com/hilpert-waters-and-johnston",
+        "facebook": "https://facebook.com/hilpert-waters-and-johnston",
+        "linkedin": "https://linkedin.com/hilpert-waters-and-johnston",
+        "twitter": "https://twitter.com/hilpert-waters-and-johnston",
+        "mission": "Laborum accusantium et. Ipsum nostrum esse. Sunt placeat omnis. Culpa voluptate facere.",
+        "project_developer_type": "TBD",
+        "categories": [
+          "forestry_and_agroforestry",
+          "non_timber_forest_production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en"
+      }
+    },
+    {
+      "id": "e06a7b5c-fe50-42f7-a25a-b13bec787741",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Jacobson, Fritsch and Stanton",
+        "slug": "jacobson-fritsch-and-stanton",
+        "about": "Autem in et. Libero earum commodi. Repellat recusandae eum. Eius ex est.",
+        "website": "https://jacobson-fritsch-and-stanton.com",
+        "instagram": "https://instagram.com/jacobson-fritsch-and-stanton",
+        "facebook": "https://facebook.com/jacobson-fritsch-and-stanton",
+        "linkedin": "https://linkedin.com/jacobson-fritsch-and-stanton",
+        "twitter": "https://twitter.com/jacobson-fritsch-and-stanton",
+        "mission": "Eaque eos placeat. Maiores dolorum provident. Est error perspiciatis. Voluptate et nihil.",
+        "project_developer_type": "TBD",
+        "categories": [
+          "forestry_and_agroforestry",
+          "non_timber_forest_production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en"
+      }
+    },
+    {
+      "id": "f877d565-37fe-4efa-bdd9-ab9bdf994cfd",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Keebler, Kub and Zemlak",
+        "slug": "keebler-kub-and-zemlak",
+        "about": "Illo maiores qui. Vero error ducimus. Sit et recusandae. Et ut asperiores.",
+        "website": "https://keebler-kub-and-zemlak.com",
+        "instagram": "https://instagram.com/keebler-kub-and-zemlak",
+        "facebook": "https://facebook.com/keebler-kub-and-zemlak",
+        "linkedin": "https://linkedin.com/keebler-kub-and-zemlak",
+        "twitter": "https://twitter.com/keebler-kub-and-zemlak",
+        "mission": "Velit occaecati consequatur. Similique rerum dolorem. Possimus et non. Esse voluptatem accusamus.",
+        "project_developer_type": "TBD",
+        "categories": [
+          "forestry_and_agroforestry",
+          "non_timber_forest_production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en"
+      }
+    },
+    {
+      "id": "f33c4ad5-dc74-4e9c-ba31-2b9a630eeb2b",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Becker LLC",
+        "slug": "becker-llc",
+        "about": "Cum optio aspernatur. Asperiores illo maxime. Nostrum aut ab. Velit et officiis.",
+        "website": "https://becker-llc.com",
+        "instagram": "https://instagram.com/becker-llc",
+        "facebook": "https://facebook.com/becker-llc",
+        "linkedin": "https://linkedin.com/becker-llc",
+        "twitter": "https://twitter.com/becker-llc",
+        "mission": "Nemo qui aliquam. Et laboriosam fugiat. Occaecati id porro. Natus fugit est.",
+        "project_developer_type": "TBD",
+        "categories": [
+          "forestry_and_agroforestry",
+          "non_timber_forest_production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en"
+      }
+    }
+  ]
+}
