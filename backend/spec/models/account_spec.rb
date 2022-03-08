@@ -10,6 +10,11 @@ RSpec.describe Account, type: :model do
     expect(subject).to have(1).errors_on(:name)
   end
 
+  it "should not be valid without about" do
+    subject.about = nil
+    expect(subject).to have(1).errors_on(:about)
+  end
+
   it "should not be valid with wrong language" do
     subject.language = "fr"
     expect(subject).to have(1).errors_on(:language)

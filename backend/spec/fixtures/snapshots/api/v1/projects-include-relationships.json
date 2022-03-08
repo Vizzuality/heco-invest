@@ -1,7 +1,127 @@
 {
   "data": [
     {
-      "id": "976bd89d-0bb8-42d6-82b2-8a586b1556fd",
+      "id": "570e6d75-c900-446f-8ef4-06d03d4706a9",
+      "type": "project",
+      "attributes": {
+        "name": "Project 1"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "ae066257-243c-4e9f-a556-3151125ff0b9",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "e041e77b-4c5f-4b63-ac3e-2e2a57504ca7",
+      "type": "project",
+      "attributes": {
+        "name": "Project 2"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "b27d0dff-5983-4c67-b8b1-d47c4e2c803e",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "3f694548-f995-4bbf-b8c0-4c4a17b84036",
+      "type": "project",
+      "attributes": {
+        "name": "Project 3"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "ee268213-d8b8-49fa-a539-f5a0eb7c032f",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "24a70298-d5d9-4c3e-90e3-a47ac909dd01",
+      "type": "project",
+      "attributes": {
+        "name": "Project 4"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "324e0871-84bb-4429-8f94-b3fa33c46850",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "a34208f6-4bd4-48ed-8963-dc06b5eac193",
+      "type": "project",
+      "attributes": {
+        "name": "Project 5"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "e06a7b5c-fe50-42f7-a25a-b13bec787741",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "daa71346-9123-4d2a-a6c6-a965929733eb",
+      "type": "project",
+      "attributes": {
+        "name": "Project 6"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "f877d565-37fe-4efa-bdd9-ab9bdf994cfd",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "1f1b51da-adef-4bce-bf5b-7f4c7bc5be7c",
+      "type": "project",
+      "attributes": {
+        "name": "Project 7"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "f33c4ad5-dc74-4e9c-ba31-2b9a630eeb2b",
+            "type": "project_developer"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 7,
+    "total": 7,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/projects?page%5Bsize%5D=10",
+    "self": "/api/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  },
+  "included": [
+    {
+      "id": "ae066257-243c-4e9f-a556-3151125ff0b9",
       "type": "project_developer",
       "attributes": {
         "name": "Kutch-Spencer",
@@ -26,7 +146,7 @@
       }
     },
     {
-      "id": "e1d343eb-4269-4b5f-8dde-6cfc35dee6b2",
+      "id": "b27d0dff-5983-4c67-b8b1-d47c4e2c803e",
       "type": "project_developer",
       "attributes": {
         "name": "Bartoletti and Sons",
@@ -51,7 +171,7 @@
       }
     },
     {
-      "id": "b9deafa5-1ef3-490a-af95-057ba06a193b",
+      "id": "ee268213-d8b8-49fa-a539-f5a0eb7c032f",
       "type": "project_developer",
       "attributes": {
         "name": "Hane, Lehner and Goyette",
@@ -76,7 +196,7 @@
       }
     },
     {
-      "id": "47ab9afd-afee-40cc-b963-fddcc418972d",
+      "id": "324e0871-84bb-4429-8f94-b3fa33c46850",
       "type": "project_developer",
       "attributes": {
         "name": "Hilpert, Waters and Johnston",
@@ -101,7 +221,7 @@
       }
     },
     {
-      "id": "f1f92730-ec46-4bf9-88d8-2b3344feddcf",
+      "id": "e06a7b5c-fe50-42f7-a25a-b13bec787741",
       "type": "project_developer",
       "attributes": {
         "name": "Jacobson, Fritsch and Stanton",
@@ -126,7 +246,7 @@
       }
     },
     {
-      "id": "ce24224b-7c8d-48d4-9160-75ce375ab716",
+      "id": "f877d565-37fe-4efa-bdd9-ab9bdf994cfd",
       "type": "project_developer",
       "attributes": {
         "name": "Keebler, Kub and Zemlak",
@@ -151,7 +271,7 @@
       }
     },
     {
-      "id": "fa1301e5-eca7-4a87-bb73-6a4cb7954fb7",
+      "id": "f33c4ad5-dc74-4e9c-ba31-2b9a630eeb2b",
       "type": "project_developer",
       "attributes": {
         "name": "Becker LLC",
@@ -175,18 +295,5 @@
         "language": "en"
       }
     }
-  ],
-  "meta": {
-    "page": 1,
-    "per_page": 10,
-    "from": 1,
-    "to": 7,
-    "total": 7,
-    "pages": 1
-  },
-  "links": {
-    "first": "/api/v1/project_developers?page%5Bsize%5D=10",
-    "self": "/api/v1/project_developers?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-    "last": "/api/v1/project_developers?page%5Bnumber%5D=1&page%5Bsize%5D=10"
-  }
+  ]
 }

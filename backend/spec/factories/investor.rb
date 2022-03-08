@@ -11,10 +11,22 @@ FactoryBot.define do
     review_status { "approved" }
 
     previously_invested { true }
-    previously_invested_description { Faker::Lorem.paragraph(sentence_count: 4) }
-    how_do_you_work { Faker::Lorem.paragraph(sentence_count: 4) }
-    what_makes_the_difference { Faker::Lorem.paragraph(sentence_count: 4) }
-    other_information { Faker::Lorem.paragraph(sentence_count: 4) }
+    sequence(:previously_invested_description) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 4)
+    end
+    sequence(:how_do_you_work) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 4)
+    end
+    sequence(:what_makes_the_difference) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 4)
+    end
+    sequence(:other_information) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 4)
+    end
 
     language { "en" }
   end

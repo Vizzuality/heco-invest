@@ -6,7 +6,10 @@ FactoryBot.define do
     impacts { %w[climate water] }
     project_developer_type { "TBD" }
     review_status { "approved" }
-    mission { Faker::Lorem.paragraph(sentence_count: 4) }
+    sequence(:mission) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 4)
+    end
     language { "en" }
   end
 end

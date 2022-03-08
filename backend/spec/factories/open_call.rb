@@ -12,9 +12,18 @@ FactoryBot.define do
 
     trusted { false }
 
-    description { Faker::Lorem.paragraph(sentence_count: 4) }
-    money_distribution { Faker::Lorem.paragraph(sentence_count: 4) }
-    impact_description { Faker::Lorem.paragraph(sentence_count: 4) }
+    sequence(:description) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 4)
+    end
+    sequence(:money_distribution) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 4)
+    end
+    sequence(:impact_description) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 4)
+    end
 
     language { "en" }
 

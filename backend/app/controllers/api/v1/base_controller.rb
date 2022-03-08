@@ -6,7 +6,6 @@ module API
       include API::Errors
       include API::Authentication
       include API::Localization
-      include API::SparseFieldset
 
       protect_from_forgery with: :exception
 
@@ -15,6 +14,14 @@ module API
       before_action :require_json!
 
       private
+
+      def sparse_fieldset
+        (params[:fields]&.to_unsafe_h || {}).transform_values { |v| v.split(",") }
+      end
+
+      def included_relationships
+        params[:include]&.split(",")
+      end
 
       def require_json!
         return if request.get? || request.content_type.to_s.starts_with?("application/json")

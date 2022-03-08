@@ -1,70 +1,70 @@
 {
   "data": [
     {
-      "id": "9b9cda53-083a-4a83-9f68-59dc938ca0ed",
-      "type": "open_call",
+      "id": "c27e9ed7-dac7-4ce2-a193-9110952efef8",
+      "type": "project",
       "attributes": {
-        "name": "Open call 1",
+        "name": "Project 1",
         "description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo."
       },
       "relationships": {
       }
     },
     {
-      "id": "44db5d4b-3e6b-42fe-8552-7beb9f6ccde0",
-      "type": "open_call",
+      "id": "7c60b022-40df-4f6e-bd9f-fff45c560bc1",
+      "type": "project",
       "attributes": {
-        "name": "Open call 2",
+        "name": "Project 2",
         "description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti."
       },
       "relationships": {
       }
     },
     {
-      "id": "adfa5e3d-6d26-4602-aacb-b2bba5f74c37",
-      "type": "open_call",
+      "id": "2ed01c95-6801-4816-846d-07fe102b53c0",
+      "type": "project",
       "attributes": {
-        "name": "Open call 3",
+        "name": "Project 3",
         "description": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum."
       },
       "relationships": {
       }
     },
     {
-      "id": "e76d42c7-0efd-4d36-a283-503b197b28f2",
-      "type": "open_call",
+      "id": "5fdfc348-60ac-485e-832a-33d4e4edf0d1",
+      "type": "project",
       "attributes": {
-        "name": "Open call 4",
+        "name": "Project 4",
         "description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia."
       },
       "relationships": {
       }
     },
     {
-      "id": "ac7afeee-8f57-4b81-bba6-243a514f07e3",
-      "type": "open_call",
+      "id": "c5fd7ccd-5c91-413e-af30-8812d0ca834c",
+      "type": "project",
       "attributes": {
-        "name": "Open call 5",
+        "name": "Project 5",
         "description": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est."
       },
       "relationships": {
       }
     },
     {
-      "id": "60d3c4f2-7fb9-49bb-b62b-228e0f670e3c",
-      "type": "open_call",
+      "id": "7654da0e-9795-435a-82ce-6cf3b64c2ee4",
+      "type": "project",
       "attributes": {
-        "name": "Open call 6",
+        "name": "Project 6",
         "description": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia."
       },
       "relationships": {
       }
     },
     {
-      "id": "7d404367-a350-49ce-a1af-54ff6d98de7d",
-      "type": "open_call",
+      "id": "4b25c8b9-7a7d-4a9a-a45b-066992bf1f00",
+      "type": "project",
       "attributes": {
-        "name": "Open call 7",
+        "name": "Project 7",
         "description": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut."
       },
       "relationships": {
@@ -80,8 +80,8 @@
     "pages": 1
   },
   "links": {
-    "first": "/api/v1/open_calls?page%5Bsize%5D=10",
-    "self": "/api/v1/open_calls?page%5Bnumber%5D=1&page%5Bsize%5D=10",
-    "last": "/api/v1/open_calls?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+    "first": "/api/v1/projects?page%5Bsize%5D=10",
+    "self": "/api/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=10"
   }
 }

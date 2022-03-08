@@ -1,0 +1,44 @@
+{
+  "data": {
+    "id": "619438da-c6d0-41a9-bfc0-8447ace8bdd9",
+    "type": "project",
+    "attributes": {
+      "name": "Project 1"
+    },
+    "relationships": {
+      "project_developer": {
+        "data": {
+          "id": "2771ec7a-ab77-4281-9066-5f5bd7ee7ff8",
+          "type": "project_developer"
+        }
+      }
+    }
+  },
+  "included": [
+    {
+      "id": "052a1e2e-672f-4405-87cc-0400b0559529",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Kutch-Spencer",
+        "slug": "kutch-spencer",
+        "about": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "website": "https://kutch-spencer.com",
+        "instagram": "https://instagram.com/kutch-spencer",
+        "facebook": "https://facebook.com/kutch-spencer",
+        "linkedin": "https://linkedin.com/kutch-spencer",
+        "twitter": "https://twitter.com/kutch-spencer",
+        "mission": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "project_developer_type": "TBD",
+        "categories": [
+          "forestry_and_agroforestry",
+          "non_timber_forest_production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en"
+      }
+    }
+  ]
+}
