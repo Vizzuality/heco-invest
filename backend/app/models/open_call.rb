@@ -9,7 +9,9 @@ class OpenCall < ApplicationRecord
   validates :sdgs, array_inclusion: {in: Sdg::TYPES}
   validates :language, inclusion: {in: I18n.available_locales.map(&:to_s)}
 
-  validates_presence_of :closing_at
+  validates_presence_of :name, :description, :money_distribution, :impact_description, :closing_at
+
+  validates :trusted, inclusion: [true, false]
 
   translates :name, :description, :money_distribution, :impact_description
 

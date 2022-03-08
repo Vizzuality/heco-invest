@@ -10,7 +10,22 @@ RSpec.describe ProjectDeveloper, type: :model do
     expect(subject).to have(1).errors_on(:account)
   end
 
-  include_examples :static_relation_validations, attribute: :project_developer_type
+  it "should not be valid without mission" do
+    subject.mission = nil
+    expect(subject).to have(1).errors_on(:mission)
+  end
+
+  it "should not be valid with wrong language" do
+    subject.language = "fr"
+    expect(subject).to have(1).errors_on(:language)
+  end
+
+  it "should not be valid without language" do
+    subject.language = nil
+    expect(subject).to have(1).errors_on(:language)
+  end
+
+  include_examples :static_relation_validations, attribute: :project_developer_type, presence: true
   include_examples :static_relation_validations, attribute: :impacts, presence: false
-  include_examples :static_relation_validations, attribute: :categories
+  include_examples :static_relation_validations, attribute: :categories, presence: true
 end
