@@ -1,18 +1,14 @@
 // import { useRouter } from 'next/router';
-import { Heart as HeartIcon } from 'react-feather';
 import { useIntl } from 'react-intl';
 import { FormattedMessage } from 'react-intl';
 
-import Image from 'next/image';
-
 import { loadI18nMessages } from 'helpers/i18n';
 
-import ProfileAbout from 'containers/profile-about';
+import ProfileHeader from 'containers/profile-header';
 import SDGs, { SDGType } from 'containers/sdgs';
 import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 import { SocialType } from 'containers/website-social-contact';
 
-import Button from 'components/button';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
@@ -93,46 +89,17 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
     <>
       <Head title="Investor Profile" />
 
-      <LayoutContainer layout="narrow" className="mb-20">
-        <div className="relative mb-10 h-14">
-          <Image
-            className="mx-auto"
-            src={`/images/temp-placeholders/nesst-logo.png`}
-            alt={`NESst ${intl.formatMessage({ defaultMessage: 'logo', id: 'foSyCj' })}`}
-            layout="fill"
-            objectFit="contain"
-          />
-        </div>
+      <ProfileHeader
+        logo="/images/temp-placeholders/nesst-logo.png"
+        title="NESst"
+        subtitle="Non-VC Investment vehicle"
+        text={aboutInfo.text}
+        website={aboutInfo.website}
+        social={aboutInfo.social}
+        contact={aboutInfo.contact}
+      />
 
-        <div className="text-center">
-          <h1 id="profile-about" className="text-2xl font-semibold">
-            NESsT
-          </h1>
-          <p className="mt-2 text-xl text-gray-800">Non-VC Investment vehicle</p>
-        </div>
-
-        <h3 className="mb-3 text-xl font-semibold mt-14">About</h3>
-        <ProfileAbout
-          text={aboutInfo.text}
-          website={aboutInfo.website}
-          social={aboutInfo.social}
-          contact={aboutInfo.contact}
-          buttons={
-            <>
-              <Button theme="secondary-green" icon={HeartIcon}>
-                <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
-              </Button>
-              <Button theme="primary-green">
-                <FormattedMessage defaultMessage="Contact" id="zFegDD" />
-              </Button>
-            </>
-          }
-        />
-      </LayoutContainer>
-
-      <hr className="mb-24 -mt-2 md:-mt-5 md:mb-36" />
-
-      <LayoutContainer layout="narrow" className="mb-20">
+      <LayoutContainer layout="narrow" className="mt-24 mb-20 md:mt-40">
         <section aria-labelledby="profile-investment-info">
           <h2
             id="profile-investment-info"
@@ -211,6 +178,15 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
   );
 };
 
-InvestorPage.layout = {};
+InvestorPage.layout = {
+  props: {
+    headerProps: {
+      transparent: true,
+    },
+    mainProps: {
+      topMargin: false,
+    },
+  },
+};
 
 export default InvestorPage;
