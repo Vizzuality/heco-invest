@@ -18,9 +18,9 @@ export const StaticPageLayout: React.FC<StaticPageLayoutProps> = ({
   <div {...rest}>
     <Header props={headerProps} />
     <main
-      {...omit(mainProps, 'className')}
+      {...omit(mainProps, 'className', 'topMargin')}
       className={cx({
-        'mt-28 lg:mt-44': true,
+        'mt-28 lg:mt-44': mainProps?.topMargin !== false,
         [mainProps?.className]: !!mainProps?.className,
       })}
     >
