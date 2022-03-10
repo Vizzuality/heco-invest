@@ -11,7 +11,7 @@ class Account < ApplicationRecord
   validates :twitter, url: true
   validates :facebook, url: true
   validates :instagram, url: true
-  validates :language, inclusion: {in: I18n.available_locales.map(&:to_s)}
+  validates :language, inclusion: {in: (I18n.available_locales - [:zu]).map(&:to_s)}
 
   def slug_preview
     set_slug unless slug.present?

@@ -10,7 +10,7 @@ class Project < ApplicationRecord
   validates :instrument_types, array_inclusion: {in: InstrumentType::TYPES}, presence: true
   validates :ticket_size, inclusion: {in: TicketSize::TYPES}
   validates :sdgs, array_inclusion: {in: Sdg::TYPES}
-  validates :language, inclusion: {in: I18n.available_locales.map(&:to_s)}
+  validates :language, inclusion: {in: (I18n.available_locales - [:zu]).map(&:to_s)}
 
   validates_presence_of :name, :description, :problem, :solution, :business_model,
     :sustainability, :impact_description, :roi, :income_in_last_3_years, :number_of_employees

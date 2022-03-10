@@ -1,0 +1,69 @@
+zu:
+  enums:
+    category:
+      sustainable_agrosystems:
+        name: Sustainable Agrosystems
+      tourism_and_recreation:
+        name: Tourism and Recreation
+      forestry_and_agroforestry:
+        name: Forestry and Agroforestry
+      non_timber_forest_production:
+        name: Non Timber Forest Production
+    investor_type:
+      investor:
+        name: Investor
+      angel_investor:
+        name: Angel Investor
+      commercial_bank:
+        name: Commercial Bank
+      family_office:
+        name: Family Office
+      institutional_investor:
+        name: Institutional Investor
+      investment_bank:
+        name: Investment Bank
+      international_financial_institution:
+        name: International Financial Institution
+      micro_finance:
+        name: Micro Finance
+      non_VC_investment_vehicle:
+        name: Non VC Investment Vehicle
+      venture_capital_private_equity:
+        name: Venture Capital Private Equity
+      carbon_fund:
+        name: Carbon Fund
+      ngo:
+        name: NGO
+      foundation:
+        name: Foundation
+      corporate_foundation:
+        name: Corporate Foundation
+      philanthropy:
+        name: Philanthropy
+      hnwi_or_celebrity:
+        name: HNWI or Celebrity
+    ticket_size:
+      small_grants:
+        name: Small Grants
+      prototyping:
+        name: Prototyping
+      validation:
+        name: Validation
+      scaling:
+        name: Scaling
+    instrument_type:
+      grant:
+        name: Grant
+      loan:
+        name: Loan
+      equity:
+        name: Equity
+    impact:
+      biodiversity:
+        name: Biodiversity
+      climate:
+        name: Climate
+      water:
+        name: Water
+      community:
+        name: Community
