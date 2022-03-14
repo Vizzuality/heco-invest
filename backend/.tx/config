@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[o:heco-invest:p:heco-invest:r:back-end-application]
+file_filter  = config/locales/<lang>.yml
+source_file  = config/locales/zu.yml
+type         = YML
+minimum_perc = 0

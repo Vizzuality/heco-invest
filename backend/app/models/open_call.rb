@@ -7,7 +7,7 @@ class OpenCall < ApplicationRecord
   validates :instrument_type, inclusion: {in: InstrumentType::TYPES}
   validates :ticket_size, inclusion: {in: TicketSize::TYPES}
   validates :sdgs, array_inclusion: {in: Sdg::TYPES}
-  validates :language, inclusion: {in: I18n.available_locales.map(&:to_s)}
+  validates :language, inclusion: {in: Language::TYPES}
 
   validates_presence_of :name, :description, :money_distribution, :impact_description, :closing_at
 

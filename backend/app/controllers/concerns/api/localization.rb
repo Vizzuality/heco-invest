@@ -5,7 +5,7 @@ module API
     end
 
     def set_locale(&action)
-      locale = if params[:locale].present? && I18n.available_locales.map(&:to_s).include?(params[:locale])
+      locale = if params[:locale].present? && Language::TYPES.include?(params[:locale])
         params[:locale]
       else
         I18n.default_locale.to_s

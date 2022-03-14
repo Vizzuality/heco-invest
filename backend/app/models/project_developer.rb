@@ -7,7 +7,7 @@ class ProjectDeveloper < ApplicationRecord
   validates :categories, array_inclusion: {in: Category::TYPES}, presence: true
   validates :impacts, array_inclusion: {in: Impact::TYPES}
   validates :project_developer_type, inclusion: {in: ProjectDeveloperType::TYPES}
-  validates :language, inclusion: {in: I18n.available_locales.map(&:to_s)}
+  validates :language, inclusion: {in: Language::TYPES}
 
   validates_presence_of :mission
 
