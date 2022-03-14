@@ -48,7 +48,7 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
       { id: 'facebook', url: 'https://www.facebook.com' },
       { id: 'instagram', url: 'https://www.instagram.com' },
     ],
-    contact: 'LoÏc Comolli',
+    contact: 'Loïc Comolli',
   };
 
   const tagsGridRows: TagsGridRowType[] = [
