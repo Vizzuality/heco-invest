@@ -50,7 +50,7 @@
             "position": "after"
           },
           {
-            "pattern": "lodash/**",
+            "pattern": "lodash-es/**",
             "group": "builtin",
             "position": "after"
           },

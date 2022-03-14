@@ -4,10 +4,9 @@ import ReactMapGL, { FlyToInterpolator, TRANSITION_EVENTS } from 'react-map-gl';
 
 import cx from 'classnames';
 
-import isEmpty from 'lodash/isEmpty';
-
 import { fitBounds } from '@math.gl/web-mercator';
 import { easeCubic } from 'd3-ease';
+import { isEmpty } from 'lodash-es';
 import { useDebouncedCallback } from 'use-debounce';
 
 import { DEFAULT_VIEWPORT } from './constants';
