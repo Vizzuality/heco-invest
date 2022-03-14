@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get :health_check, to: ->(_env) { [204, {}, [""]] }
+
   namespace :api, format: "json" do
     namespace :v1 do
       resources :investors, only: [:index, :show]
