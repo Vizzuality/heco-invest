@@ -34,12 +34,18 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
   // const { id } = query;
 
   const aboutInfo: {
+    logo: string;
+    name: string;
+    description: string;
     text: string;
     website: string;
     social: SocialType[];
     contact: string;
   } = {
+    name: 'NESst',
+    description: 'Non-VC Investment vehicle',
     text: 'NESsT finances enterprises that generate dignified employment and sustain the planet. Since 1997, we have financed 200 enterprises that have sustained jobs for 70,000 individuals and improved 670,000 lives. We achieve our mission through an Incubator that provides pre-seed capital and business services to improve investment readiness; and the Enterprise Fund that deploys seed-state loans to enterprises seeking capital to scale',
+    logo: '/images/temp-placeholders/nesst-logo.png',
     website: 'https://www.site.com',
     social: [
       { id: 'linked-in', url: 'https://www.linkedin.com' },
@@ -86,12 +92,12 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
 
   return (
     <>
-      <Head title="Investor Profile" />
+      <Head title={`${aboutInfo.name} - ${aboutInfo.description}`} description={aboutInfo.text} />
 
       <ProfileHeader
-        logo="/images/temp-placeholders/nesst-logo.png"
-        title="NESst"
-        subtitle="Non-VC Investment vehicle"
+        logo={aboutInfo.logo}
+        title={aboutInfo.name}
+        subtitle={aboutInfo.description}
         text={aboutInfo.text}
         website={aboutInfo.website}
         social={aboutInfo.social}
