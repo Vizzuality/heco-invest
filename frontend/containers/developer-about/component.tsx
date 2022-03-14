@@ -26,7 +26,7 @@ export const DeveloperAbout: FC<DeveloperAboutProps> = ({
     <div
       className={cx({
         'flex flex-col gap-8 md:flex-row': true,
-        [className]: true,
+        [className]: !!className,
       })}
     >
       {developerPhoto && (

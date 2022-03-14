@@ -15,7 +15,7 @@ export const LayoutContainer: React.FC<LayoutContainerProps> = ({
       className: cx({
         'container mx-auto px-4 sm:px-6 lg:px-8': true,
         'max-w-md sm:max-w-xl md:max-w-5xl': layout === 'narrow',
-        [className]: true,
+        [className]: !!className,
       }),
     }),
     [className, layout, rest]
