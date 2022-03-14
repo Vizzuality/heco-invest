@@ -13,18 +13,11 @@ import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 
-export async function getStaticProps(ctx) {
+export async function getServerSideProps(ctx) {
   return {
     props: {
       intlMessages: await loadI18nMessages(ctx),
     },
-  };
-}
-
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: true,
   };
 }
 
