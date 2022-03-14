@@ -29,29 +29,27 @@ export const DeveloperAbout: FC<DeveloperAboutProps> = ({
         [className]: !!className,
       })}
     >
-      {developerPhoto && (
-        <div className="flex">
-          <div className="p-4 w-28 h-28">
-            <Image
-              className="mx-auto rounded-full w-28 h-28"
-              src={developerPhoto}
-              alt={intl.formatMessage(
-                {
-                  defaultMessage: 'Profile picture of {name}',
-                  id: 'XkF/qg',
-                },
-                {
-                  name: developerName,
-                }
-              )}
-              layout="responsive"
-              width="100%"
-              height="100%"
-              objectFit="contain"
-            />
-          </div>
+      <div className="flex">
+        <div className="p-4 w-28 h-28">
+          <Image
+            className="mx-auto rounded-full w-28 h-28"
+            src={developerPhoto ?? '/images/placeholders/profile-logo.png'}
+            alt={intl.formatMessage(
+              {
+                defaultMessage: 'Profile picture of {name}',
+                id: 'XkF/qg',
+              },
+              {
+                name: developerName,
+              }
+            )}
+            layout="responsive"
+            width="100%"
+            height="100%"
+            objectFit="contain"
+          />
         </div>
-      )}
+      </div>
 
       <div>
         <span className="mb-2 font-semibold">
