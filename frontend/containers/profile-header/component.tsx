@@ -3,9 +3,9 @@ import { FC } from 'react';
 import { Heart as HeartIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import Image from 'next/image';
-
 import { noop } from 'lodash-es/noop';
+
+import Image from 'next/image';
 
 import WebsiteSocialContact from 'containers/website-social-contact';
 
@@ -33,7 +33,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
 
   return (
     <div className={className}>
-      <div className="pt-24 pb-12 bg-center bg-cover sm:pt-40 md:pt-56 bg-radial-dark-green">
+      <div className="pt-24 pb-12 bg-center bg-cover sm:pt-40 md:pt-56 bg-radial-green-dark bg-green-dark">
         <LayoutContainer className="flex justify-between">
           <div className="flex flex-col items-center w-full gap-6 lg:items-end lg:flex-row lg:w-6/12">
             <div className="p-4 bg-white w-52 h-52 rounded-2xl">
