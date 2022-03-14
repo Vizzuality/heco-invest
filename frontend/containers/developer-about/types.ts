@@ -3,6 +3,8 @@ import { WebsiteSocialContactProps } from 'containers/website-social-contact';
 export type DeveloperAboutProps = {
   /** Classnames to apply to the container */
   className?: string;
+  /** Id of the developer (to be used to link to their profile) */
+  developerId: string;
   /** Name of the project developer */
   developerName: string;
   /** Path to a photo of the project developer */

@@ -13,6 +13,7 @@ import type { DeveloperAboutProps } from './types';
 
 export const DeveloperAbout: FC<DeveloperAboutProps> = ({
   className,
+  developerId,
   text,
   developerName,
   developerPhoto,
@@ -60,7 +61,7 @@ export const DeveloperAbout: FC<DeveloperAboutProps> = ({
           />
         </span>
         <p>{text}</p>
-        <Link href="/">
+        <Link href={`/project-developer/${developerId}`}>
           <a className="block mt-6 underline text-green-dark">
             <FormattedMessage defaultMessage="See project developer profile" id="wkkhPR" />
           </a>
