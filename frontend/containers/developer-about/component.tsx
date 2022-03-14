@@ -53,7 +53,11 @@ export const DeveloperAbout: FC<DeveloperAboutProps> = ({
 
       <div>
         <span className="mb-2 font-semibold">
-          <FormattedMessage defaultMessage="About" id="g5pX+a" /> {developerName}
+          <FormattedMessage
+            defaultMessage="About {name}"
+            values={{ name: developerName }}
+            id="+mzZak"
+          />
         </span>
         <p>{text}</p>
         <Link href="/">
