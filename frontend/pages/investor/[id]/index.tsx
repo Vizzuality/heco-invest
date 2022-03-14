@@ -1,6 +1,5 @@
 // import { useRouter } from 'next/router';
-import { useIntl } from 'react-intl';
-import { FormattedMessage } from 'react-intl';
+import { useIntl, FormattedMessage } from 'react-intl';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
