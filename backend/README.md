@@ -42,3 +42,13 @@ using foreman `bin/watch` and the server in the standard way in a separate termi
 To fix linter issues
 
 `bin/rails standard:fix`
+
+### Translations
+
+We use Transifex to provide the best UX for translators. The system is set up to use Zulu (zu) as the main language. This is a trick to enable translators to also update English translations (read more [here](https://github.com/Vizzuality/heco-invest/tree/develop/frontend#translations)).
+
+TODO: When adding docker, make sure fresh translations are pulled when creating the image in Dockerfile.
+
+Static content that needs to be translated has to be added only to `config/locales/zu.yml` file. To push new translations to Transifex use `tx push -s`.
+
+From time to time it will be useful to download already translated content into the repo `tx pull -m onlytranslated`.
