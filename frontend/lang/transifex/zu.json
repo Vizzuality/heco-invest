@@ -23,9 +23,6 @@
   "2inebt": {
     "string": "The opportunities are located in geographies that are are unique due to of their biodiversity, cultural heritages, and regulation of water systems. As such, these projects will have the greatest impact for people and nature."
   },
-  "2lUDKp": {
-    "string": "photo"
-  },
   "3l2y4U": {
     "string": "Person of contact"
   },
@@ -233,6 +230,9 @@
   },
   "XQuzr9": {
     "string": "Identified priorities by the HeCo program"
+  },
+  "XkF/qg": {
+    "string": "Profile picture of {name}"
   },
   "Y7/cBd": {
     "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and <span>start the conversation</span>. Make sure to update us to help us track your contribution to preserving the Amazon: <span>the future is in your hands too!</span>"

@@ -35,10 +35,15 @@ export const DeveloperAbout: FC<DeveloperAboutProps> = ({
             <Image
               className="mx-auto rounded-full w-28 h-28"
               src={developerPhoto}
-              alt={`${developerName} ${intl.formatMessage({
-                defaultMessage: 'photo',
-                id: '2lUDKp',
-              })}`}
+              alt={intl.formatMessage(
+                {
+                  defaultMessage: 'Profile picture of {name}',
+                  id: 'XkF/qg',
+                },
+                {
+                  name: developerName,
+                }
+              )}
               layout="responsive"
               width="100%"
               height="100%"
