@@ -68,7 +68,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
           <p>{text}</p>
         </div>
         <div className="p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0">
-          {numFunded && numNotFunded && (
+          {!isNaN(numFunded) && !isNaN(numNotFunded) && (
             <>
               <div className="flex">
                 <div className="flex flex-col items-center w-1/2 gap-2 text-center">
