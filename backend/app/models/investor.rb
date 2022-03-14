@@ -10,7 +10,7 @@ class Investor < ApplicationRecord
   validates :impacts, array_inclusion: {in: Impact::TYPES}
   validates :sdgs, array_inclusion: {in: Sdg::TYPES}
   validates :investor_type, inclusion: {in: InvestorType::TYPES}
-  validates :language, inclusion: {in: (I18n.available_locales - [:zu]).map(&:to_s)}
+  validates :language, inclusion: {in: Language::TYPES}
   validates :previously_invested, inclusion: {in: [true, false]}
 
   validates_presence_of :how_do_you_work, :other_information
