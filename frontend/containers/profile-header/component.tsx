@@ -40,7 +40,10 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
               <Image
                 className="mx-auto w-52 h-52"
                 src={logo}
-                alt={`${title} ${intl.formatMessage({ defaultMessage: 'logo', id: 'foSyCj' })}`}
+                alt={intl.formatMessage(
+                  { defaultMessage: '{organization} logo', id: 'in26xr' },
+                  { organization: title }
+                )}
                 layout="responsive"
                 width="100%"
                 height="100%"
