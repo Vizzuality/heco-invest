@@ -29,8 +29,8 @@ export const DeveloperAbout: FC<DeveloperAboutProps> = ({
         [className]: !!className,
       })}
     >
-      <div className="flex">
-        <div className="p-4 w-28 h-28">
+      <div className="flex items-center md:items-start">
+        <div className="w-20 h-20">
           <Image
             className="mx-auto rounded-full w-28 h-28"
             src={developerPhoto ?? '/images/placeholders/profile-logo.png'}
