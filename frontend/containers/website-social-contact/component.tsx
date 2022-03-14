@@ -20,7 +20,8 @@ export const WebsiteSocialContact: FC<WebsiteSocialContactProps> = ({
   return (
     <div
       className={cx({
-        'grid gap-y-3 gap-x-12 break-word grid-cols-1fr-auto md:grid-cols-auto-1fr': true,
+        'grid gap-y-0 sm:gap-y-3 gap-x-4 md:gap-x-12 break-word grid-cols-1 sm:grid-cols-1fr-auto md:grid-cols-auto-1fr':
+          true,
         [className]: !!className,
       })}
     >
@@ -35,10 +36,10 @@ export const WebsiteSocialContact: FC<WebsiteSocialContactProps> = ({
 
       {website && (
         <>
-          <span className="text-gray-800">
+          <span className="mt-4 text-gray-800 sm:mt-0">
             <FormattedMessage defaultMessage="Website" id="JkLHGw" />
           </span>
-          <span>
+          <span className="break-all md:break-normal">
             <Link href={website}>
               <a
                 className="transition-all rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
@@ -54,7 +55,7 @@ export const WebsiteSocialContact: FC<WebsiteSocialContactProps> = ({
 
       {social.length > 0 && (
         <>
-          <span className="text-gray-800 ">
+          <span className="mt-4 text-gray-800 sm:mt-0">
             <FormattedMessage defaultMessage="Social media" id="ZEEVQX" />
           </span>
           <span className="flex items-center gap-2">
