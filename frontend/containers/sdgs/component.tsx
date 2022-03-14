@@ -18,6 +18,7 @@ export const SDGs: FC<SDGsProps> = ({ className, size = 'small', sdgs = [] }: SD
               className="rounded"
               src={`/images/sdgs/${image}`}
               alt={title}
+              title={title}
               width={SDGS_SIZES[size]}
               height={SDGS_SIZES[size]}
               layout="fixed"
