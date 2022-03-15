@@ -1,6 +1,6 @@
 {
   "data": {
-    "id": "976bd89d-0bb8-42d6-82b2-8a586b1556fd",
+    "id": "7ab9a6ef-3b56-47ec-8b17-a6c176ea6299",
     "type": "project_developer",
     "attributes": {
       "name": "Kutch-Spencer",
@@ -14,8 +14,8 @@
       "mission": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
       "project_developer_type": "TBD",
       "categories": [
-        "forestry_and_agroforestry",
-        "non_timber_forest_production"
+        "forestry-and-agroforestry",
+        "non-timber-forest-production"
       ],
       "impacts": [
         "climate",

@@ -2,10 +2,10 @@ FactoryBot.define do
   factory :investor do
     account
 
-    categories { %w[forestry_and_agroforestry non_timber_forest_production] }
+    categories { %w[forestry-and-agroforestry non-timber-forest-production] }
     sdgs { [1, 4, 5] }
     impacts { %w[climate water] }
-    investor_type { "angel_investor" }
+    investor_type { "angel-investor" }
     instrument_types { %w[grant loan] }
     ticket_sizes { %w[validation scaling] }
     review_status { "approved" }

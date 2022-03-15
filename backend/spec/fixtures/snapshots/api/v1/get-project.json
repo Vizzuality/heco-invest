@@ -1,6 +1,6 @@
 {
   "data": {
-    "id": "c27e9ed7-dac7-4ce2-a193-9110952efef8",
+    "id": "8fee8b68-ebb3-487b-b2d0-4acabee2e0de",
     "type": "project",
     "attributes": {
       "name": "Project 1",
@@ -8,8 +8,8 @@
       "description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
       "ticket_size": "scaling",
       "categories": [
-        "forestry_and_agroforestry",
-        "non_timber_forest_production"
+        "forestry-and-agroforestry",
+        "non-timber-forest-production"
       ],
       "instrument_types": [
         "grant",
@@ -27,18 +27,18 @@
       "impact_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
       "sustainability": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
       "roi": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-      "language": "en",
       "income_in_last_3_years": "100K - 500K",
       "number_of_employees": 10,
       "number_of_employees_women": 6,
       "number_of_employees_young": 2,
       "number_of_employees_indigenous": 3,
-      "number_of_employees_migrants": 2
+      "number_of_employees_migrants": 2,
+      "language": "en"
     },
     "relationships": {
       "project_developer": {
         "data": {
-          "id": "0e7f3b67-b037-4b8e-85e9-2fe16c66652d",
+          "id": "8f4cea39-cf98-4554-a606-fd37c037626f",
           "type": "project_developer"
         }
       }

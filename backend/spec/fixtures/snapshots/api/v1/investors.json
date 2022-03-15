@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "id": "ae5bfbda-1d40-4ca6-9af5-c5bd41025e59",
+      "id": "5b9d430d-73d4-4401-93ca-d560c915ba5f",
       "type": "investor",
       "attributes": {
         "name": "Kutch-Spencer",
@@ -15,9 +15,10 @@
         "how_do_you_work": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
         "what_makes_the_difference": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
         "other_information": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "investor_type": "angel-investor",
         "categories": [
-          "forestry_and_agroforestry",
-          "non_timber_forest_production"
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
         ],
         "ticket_sizes": [
           "validation",
@@ -38,12 +39,11 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "investor_type": "angel_investor",
         "language": "en"
       }
     },
     {
-      "id": "ac63ddbc-b8af-40bc-9f7c-7aea8c7297df",
+      "id": "92669f73-0f15-4335-829f-813d482e3f5a",
       "type": "investor",
       "attributes": {
         "name": "Bartoletti and Sons",
@@ -57,9 +57,10 @@
         "how_do_you_work": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
         "what_makes_the_difference": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
         "other_information": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "investor_type": "angel-investor",
         "categories": [
-          "forestry_and_agroforestry",
-          "non_timber_forest_production"
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
         ],
         "ticket_sizes": [
           "validation",
@@ -80,12 +81,11 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "investor_type": "angel_investor",
         "language": "en"
       }
     },
     {
-      "id": "4bf2af50-c860-403e-9a71-d4c325205982",
+      "id": "857ae2a9-401e-4fb5-9fc2-fc617fb1e3e8",
       "type": "investor",
       "attributes": {
         "name": "Hane, Lehner and Goyette",
@@ -99,9 +99,10 @@
         "how_do_you_work": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
         "what_makes_the_difference": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
         "other_information": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
+        "investor_type": "angel-investor",
         "categories": [
-          "forestry_and_agroforestry",
-          "non_timber_forest_production"
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
         ],
         "ticket_sizes": [
           "validation",
@@ -122,12 +123,11 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "investor_type": "angel_investor",
         "language": "en"
       }
     },
     {
-      "id": "c3d594ba-6495-4145-a6b1-d5445412ff72",
+      "id": "8f8bf934-6ceb-41ae-adcd-ccccd709dbb3",
       "type": "investor",
       "attributes": {
         "name": "Hilpert, Waters and Johnston",
@@ -141,9 +141,10 @@
         "how_do_you_work": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
         "what_makes_the_difference": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
         "other_information": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "investor_type": "angel-investor",
         "categories": [
-          "forestry_and_agroforestry",
-          "non_timber_forest_production"
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
         ],
         "ticket_sizes": [
           "validation",
@@ -164,12 +165,11 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "investor_type": "angel_investor",
         "language": "en"
       }
     },
     {
-      "id": "6dad7a5e-3361-46a6-b02f-30a4b7eccf1e",
+      "id": "0ae34130-1a98-404a-b1a6-21afb90f0ce2",
       "type": "investor",
       "attributes": {
         "name": "Jacobson, Fritsch and Stanton",
@@ -183,10 +183,10 @@
         "how_do_you_work": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
         "what_makes_the_difference": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
         "other_information": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "investor_type": "angel_investor",
+        "investor_type": "angel-investor",
         "categories": [
-          "forestry_and_agroforestry",
-          "non_timber_forest_production"
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
         ],
         "ticket_sizes": [
           "validation",
@@ -211,7 +211,7 @@
       }
     },
     {
-      "id": "ac9dc940-6872-488e-9da5-93a7b89ded13",
+      "id": "4d272d04-6151-43fb-81a4-8b0bb8a2e0fa",
       "type": "investor",
       "attributes": {
         "name": "Keebler, Kub and Zemlak",
@@ -225,10 +225,10 @@
         "how_do_you_work": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
         "what_makes_the_difference": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
         "other_information": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "investor_type": "angel_investor",
+        "investor_type": "angel-investor",
         "categories": [
-          "forestry_and_agroforestry",
-          "non_timber_forest_production"
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
         ],
         "ticket_sizes": [
           "validation",
@@ -253,7 +253,7 @@
       }
     },
     {
-      "id": "4979ff7f-10af-4824-80f1-8ac2e686ed56",
+      "id": "c51fb028-582f-426e-8dd0-9fb4d525cdb1",
       "type": "investor",
       "attributes": {
         "name": "Becker LLC",
@@ -267,10 +267,10 @@
         "how_do_you_work": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
         "what_makes_the_difference": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
         "other_information": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
-        "investor_type": "angel_investor",
+        "investor_type": "angel-investor",
         "categories": [
-          "forestry_and_agroforestry",
-          "non_timber_forest_production"
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
         ],
         "ticket_sizes": [
           "validation",

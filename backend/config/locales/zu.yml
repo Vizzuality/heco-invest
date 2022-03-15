@@ -1,53 +1,53 @@
 zu:
   enums:
     category:
-      sustainable_agrosystems:
+      sustainable-agrosystems:
         name: Sustainable Agrosystems
         description: Sustainable and regenerative agriculture, fishing, and aquaculture  as well as manufacturing of derived subproducts.
-      tourism_and_recreation:
+      tourism-and-recreation:
         name: Tourism and Recreation
         description: Accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects.
-      forestry_and_agroforestry:
+      forestry-and-agroforestry:
         name: Forestry and Agroforestry
         description: Sustainable timber extraction and forest management practices, including reforestation and restoration.
-      non_timber_forest_production:
+      non-timber-forest-production:
         name: Non Timber Forest Production
         description: Production of health, wellness, and cosmetic products; art, clothing, and  handcrafted products; production of food and drinks.
     investor_type:
       investor:
         name: Investor
-      angel_investor:
+      angel-investor:
         name: Angel Investor
-      commercial_bank:
+      commercial-bank:
         name: Commercial Bank
-      family_office:
+      family-office:
         name: Family Office
-      institutional_investor:
+      institutional-investor:
         name: Institutional Investor
-      investment_bank:
+      investment-bank:
         name: Investment Bank
-      international_financial_institution:
+      international-financial-institution:
         name: International Financial Institution
-      micro_finance:
+      micro-finance:
         name: Micro Finance
-      non_VC_investment_vehicle:
+      non-VC-investment-vehicle:
         name: Non VC Investment Vehicle
-      venture_capital_private_equity:
+      venture-capital-private-equity:
         name: Venture Capital Private Equity
-      carbon_fund:
+      carbon-fund:
         name: Carbon Fund
       ngo:
         name: NGO
       foundation:
         name: Foundation
-      corporate_foundation:
+      corporate-foundation:
         name: Corporate Foundation
       philanthropy:
         name: Philanthropy
-      hnwi_or_celebrity:
+      hnwi-or-celebrity:
         name: HNWI or Celebrity
     ticket_size:
-      small_grants:
+      small-grants:
         name: Small Grants
         amount: "<US$25,000"
       prototyping:

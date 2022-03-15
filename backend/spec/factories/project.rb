@@ -6,7 +6,7 @@ FactoryBot.define do
       "Project #{n}"
     end
 
-    categories { %w[forestry_and_agroforestry non_timber_forest_production] }
+    categories { %w[forestry-and-agroforestry non-timber-forest-production] }
     sdgs { [1, 4, 5] }
     instrument_types { %w[grant loan] }
     ticket_size { "scaling" }
