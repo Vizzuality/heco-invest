@@ -9,3 +9,8 @@ export interface LayoutStaticProp<PageProps = {}, Props = {}> {
 export type PageComponent<PageProps = {}, LayoutProps = {}> = React.FC<PageProps> & {
   layout?: LayoutStaticProp<PageProps, LayoutProps>;
 };
+
+/**
+ * Type for Language
+ */
+export type LanguageType = 'en' | 'es' | 'pt';

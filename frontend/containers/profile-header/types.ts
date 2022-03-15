@@ -1,5 +1,7 @@
 import { WebsiteSocialContactProps } from 'containers/website-social-contact';
 
+import { LanguageType } from 'types';
+
 export type ProfileHeaderProps = {
   /** Classnames to apply to the container */
   className?: string;
@@ -12,7 +14,7 @@ export type ProfileHeaderProps = {
   /** Text to display */
   text: string;
   /** Original language in which the profile was written in */
-  originalLanguage?: string;
+  originalLanguage?: LanguageType;
   /** Num projects waiting funded */
   numNotFunded?: number;
   /** Num projects funded */
