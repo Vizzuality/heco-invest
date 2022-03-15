@@ -3,7 +3,7 @@ zu:
     category:
       sustainable-agrosystems:
         name: Sustainable Agrosystems
-        description: Sustainable and regenerative agriculture, fishing, and aquaculture  as well as manufacturing of derived subproducts.
+        description: Sustainable and regenerative agriculture, fishing, and aquaculture as well as manufacturing of derived subproducts.
       tourism-and-recreation:
         name: Tourism and Recreation
         description: Accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects.
@@ -12,7 +12,7 @@ zu:
         description: Sustainable timber extraction and forest management practices, including reforestation and restoration.
       non-timber-forest-production:
         name: Non Timber Forest Production
-        description: Production of health, wellness, and cosmetic products; art, clothing, and  handcrafted products; production of food and drinks.
+        description: Production of health, wellness, and cosmetic products; art, clothing, and handcrafted products; production of food and drinks.
     investor_type:
       investor:
         name: Investor
@@ -78,7 +78,7 @@ zu:
         description: Impact of projects that reduce carbon emissions from the land sector (deforestation/degradation), as wood and soil biomass as well as application of sustainable forest measures.
       water:
         name: Water
-        description: Impact of projects  managing water cycling, quality and availability as well as the management of associated risks.
+        description: Impact of projects managing water cycling, quality and availability as well as the management of associated risks.
       community:
         name: Community
         description: Impact of projects on ensuring and improving equal and inclusive physical, mental, economic, and spiritual health.

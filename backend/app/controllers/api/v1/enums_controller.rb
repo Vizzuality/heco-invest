@@ -7,7 +7,7 @@ module API
           Category.all,
           TicketSize.all,
           Impact.all,
-          ProjectDeveloperType.all,
+          # ProjectDeveloperType.all, wait for better definition
           InvestorType.all
         ].flatten
 
