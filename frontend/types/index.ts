@@ -1,3 +1,5 @@
+import { Languages } from 'enums';
+
 export interface LayoutStaticProp<PageProps = {}, Props = {}> {
   Component?: React.FC<Props>;
   props?: Props | ((props: PageProps) => Props);
@@ -13,4 +15,4 @@ export type PageComponent<PageProps = {}, LayoutProps = {}> = React.FC<PageProps
 /**
  * Type for Language
  */
-export type LanguageType = 'en' | 'es' | 'pt';
+export type LanguageType = `${Languages}`;
