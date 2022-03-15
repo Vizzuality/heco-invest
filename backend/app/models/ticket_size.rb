@@ -7,4 +7,8 @@ class TicketSize
     validation
     scaling
   ].freeze
+
+  def amount
+    read_attribute("amount")
+  end
 end

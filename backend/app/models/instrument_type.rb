@@ -6,4 +6,8 @@ class InstrumentType
     loan
     equity
   ].freeze
+
+  def description
+    read_attribute("description")
+  end
 end

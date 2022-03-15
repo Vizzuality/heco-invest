@@ -18,4 +18,8 @@ class Category
   def color
     COLORS[slug.to_sym]
   end
+
+  def description
+    read_attribute("description")
+  end
 end

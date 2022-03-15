@@ -8,10 +8,14 @@ module EnumModel
   end
 
   def name
-    I18n.t("name", scope: ["enums", translation_key, slug])
+    read_attribute("name")
   end
   alias_method :to_s, :name
   alias_method :id, :slug
+
+  def read_attribute(name)
+    I18n.t(name, scope: ["enums", translation_key, slug])
+  end
 
   def translation_key
     self.class.name.underscore

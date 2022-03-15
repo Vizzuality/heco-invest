@@ -4,7 +4,7 @@ module API
       class CategorySerializer
         include EnumSerializer
 
-        attribute :color
+        attribute :color, :description
       end
     end
   end

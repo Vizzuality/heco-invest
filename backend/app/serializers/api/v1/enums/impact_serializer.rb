@@ -3,6 +3,8 @@ module API
     module Enums
       class ImpactSerializer
         include EnumSerializer
+
+        attribute :description
       end
     end
   end
