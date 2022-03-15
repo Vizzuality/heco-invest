@@ -138,6 +138,9 @@
     "developer_comment": "Description shown in search engines",
     "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
   },
+  "IDzvCG": {
+    "string": "Impact shame of the {name} project"
+  },
   "IMe8OV": {
     "string": "Nature based solutions are estimated to compensate up to 30% of global emissions."
   },
@@ -344,6 +347,9 @@
   },
   "nBHzO6": {
     "string": "Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
+  },
+  "nkzdYe": {
+    "string": "Open {name} project"
   },
   "o+Vt3t": {
     "string": "Partnership between:"
