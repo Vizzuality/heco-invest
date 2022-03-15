@@ -1,0 +1,181 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/investors":
+    get:
+      summary: Returns list of the investors
+      tags:
+      - Investors
+      parameters:
+      - name: page[number]
+        in: query
+        description: 'Page number. Default: 1'
+        required: false
+        schema:
+          type: integer
+      - name: page[size]
+        in: query
+        description: 'Per page items. Default: 10'
+        required: false
+        schema:
+          type: integer
+      - name: fields[investor]
+        in: query
+        description: Get only required fields. Use comma to separate multiple fields
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/investor"
+                  meta:
+                    "$ref": "#/components/schemas/pagination_meta"
+                  links:
+                    "$ref": "#/components/schemas/pagination_links"
+  "/api/v1/investors/{id}":
+    get:
+      summary: Find investor by id or slug
+      tags:
+      - Investors
+      parameters:
+      - name: id
+        in: path
+        description: Use investor ID or account slug
+        required: true
+        schema:
+          type: string
+      - name: fields[investor]
+        in: query
+        description: Get only required fields. Use comma to separate multiple fields
+        required: false
+        schema:
+          type: string
+      responses:
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/errors"
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/investor"
+components:
+  securitySchemes: {}
+  schemas:
+    investor:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
+            slug:
+              type: string
+            about:
+              type: string
+            website:
+              type: string
+            instagram:
+              type: string
+            facebook:
+              type: string
+            linkedin:
+              type: string
+            twitter:
+              type: string
+            how_do_you_work:
+              type: string
+            what_makes_the_difference:
+              type: string
+            other_information:
+              type: string
+            investor_type:
+              type: string
+            categories:
+              type: array
+              items:
+                type: string
+            ticket_sizes:
+              type: array
+              items:
+                type: string
+            instrument_types:
+              type: array
+              items:
+                type: string
+            impacts:
+              type: array
+              items:
+                type: string
+            sdgs:
+              type: array
+              items:
+                type: integer
+            previously_invested:
+              type: boolean
+            previously_invested_description:
+              type: string
+            language:
+              type: string
+    pagination_meta:
+      type: object
+      properties:
+        page:
+          type: integer
+        per_page:
+          type: integer
+        from:
+          type: integer
+        to:
+          type: integer
+        total:
+          type: integer
+        pages:
+          type: integer
+    pagination_links:
+      type: object
+      properties:
+        first:
+          type: string
+        self:
+          type: string
+        last:
+          type: string
+    errors:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+servers:
+- url: "{scheme}://{host}"
+  variables:
+    scheme:
+      default: http
+    host:
+      default: localhost:4000
