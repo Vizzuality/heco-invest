@@ -1,6 +1,6 @@
 {
   "data": {
-    "id": "619438da-c6d0-41a9-bfc0-8447ace8bdd9",
+    "id": "8fee8b68-ebb3-487b-b2d0-4acabee2e0de",
     "type": "project",
     "attributes": {
       "name": "Project 1"
@@ -8,7 +8,7 @@
     "relationships": {
       "project_developer": {
         "data": {
-          "id": "2771ec7a-ab77-4281-9066-5f5bd7ee7ff8",
+          "id": "8f4cea39-cf98-4554-a606-fd37c037626f",
           "type": "project_developer"
         }
       }
@@ -16,7 +16,7 @@
   },
   "included": [
     {
-      "id": "052a1e2e-672f-4405-87cc-0400b0559529",
+      "id": "8f4cea39-cf98-4554-a606-fd37c037626f",
       "type": "project_developer",
       "attributes": {
         "name": "Kutch-Spencer",
@@ -30,8 +30,8 @@
         "mission": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
         "project_developer_type": "TBD",
         "categories": [
-          "forestry_and_agroforestry",
-          "non_timber_forest_production"
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
         ],
         "impacts": [
           "climate",

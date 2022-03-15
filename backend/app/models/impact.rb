@@ -1,5 +1,5 @@
 class Impact
-  include StaticModel
+  include EnumModel
 
   TYPES = %w[
     biodiversity
@@ -7,4 +7,8 @@ class Impact
     water
     community
   ].freeze
+
+  def description
+    read_attribute("description")
+  end
 end

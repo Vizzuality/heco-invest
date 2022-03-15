@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resources :open_calls, only: [:index, :show]
       resources :project_developers, only: [:index, :show]
       resources :projects, only: [:index, :show]
+
+      resources :enums, only: [:index]
     end
   end
 end

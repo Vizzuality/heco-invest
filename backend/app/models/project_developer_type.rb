@@ -1,5 +1,5 @@
 class ProjectDeveloperType
-  include StaticModel
+  include EnumModel
 
   TYPES = %w[
     TBD
