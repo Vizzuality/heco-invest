@@ -11,6 +11,7 @@ import WebsiteSocialContact from 'containers/website-social-contact';
 
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
+import { Languages } from 'enums';
 
 import type { ProfileHeaderProps } from './types';
 
@@ -62,10 +63,15 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
           {originalLanguage && (
             <span className="block mb-4 text-sm text-gray-400">
               <FormattedMessage
-                defaultMessage="Note: The content of this page was originally written in"
-                id="cOscDz"
+                defaultMessage="Note: The content of this page was originally written in <span>{language}</span>."
+                id="zXxFL9"
+                values={{
+                  language: Object.keys(Languages).find(
+                    (key) => Languages[key] === originalLanguage
+                  ),
+                  span: (chunks) => <span className="underline">{chunks}</span>,
+                }}
               />
-              <span> {originalLanguage}</span>
             </span>
           )}
           <p>{text}</p>

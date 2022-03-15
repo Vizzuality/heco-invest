@@ -267,9 +267,6 @@
   "cE4Hfw": {
     "string": "Discover"
   },
-  "cOscDz": {
-    "string": "Note: The content of this page was originally written in"
-  },
   "cPwv2c": {
     "string": "Privacy policy"
   },
@@ -392,6 +389,9 @@
   },
   "zFegDD": {
     "string": "Contact"
+  },
+  "zXxFL9": {
+    "string": "Note: The content of this page was originally written in <span>{language}</span>."
   },
   "zdIaHp": {
     "string": "Investors"
