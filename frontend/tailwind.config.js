@@ -35,6 +35,7 @@ module.exports = {
         light: '#CFD762',
         dark: '#316146',
       },
+      beige: '#E3DED6',
       red: '#BF3300',
       orange: '#F4A064',
       black: '#000000',

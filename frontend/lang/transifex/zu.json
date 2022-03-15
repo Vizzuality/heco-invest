@@ -168,6 +168,9 @@
   "M1xKEI": {
     "string": "Language: {language}"
   },
+  "MH3koz": {
+    "string": "Previous slide"
+  },
   "MfCYKW": {
     "string": "For investors"
   },
@@ -249,6 +252,9 @@
   "Y7/cBd": {
     "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and <span>start the conversation</span>. Make sure to update us to help us track your contribution to preserving the Amazon: <span>the future is in your hands too!</span>"
   },
+  "Y9bYKH": {
+    "string": "Next slide"
+  },
   "ZEEVQX": {
     "string": "Social media"
   },
@@ -287,6 +293,9 @@
   },
   "cvyJC+": {
     "string": "These investments will support the country’s ambitious climate, biodiversity, and sustainable development goals. They will create resilient landscapes that serve as spaces for inclusion and peacebuilding, with opportunities for improved human well-being and development."
+  },
+  "dPuc1g": {
+    "string": "Slide {slideNumber}"
   },
   "dkNQOz": {
     "string": "Projects of all sizes"
@@ -386,6 +395,9 @@
   },
   "xQ4XkB": {
     "string": "Only by understanding nature’s contributions to people and the economy can we push for policy-making where nature counts."
+  },
+  "xjBcRf": {
+    "string": "Slide {slide} out of {total}"
   },
   "xmcVZ0": {
     "string": "Search"
