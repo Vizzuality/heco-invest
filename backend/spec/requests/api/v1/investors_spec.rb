@@ -25,7 +25,7 @@ RSpec.describe "API V1 Investors", type: :request do
 
         run_test!
 
-        it "matches snapshot" do
+        it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/investors")
         end
 
@@ -58,7 +58,7 @@ RSpec.describe "API V1 Investors", type: :request do
 
         run_test!
 
-        it "matches snapshot" do
+        it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/get-investor")
         end
 

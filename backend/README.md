@@ -37,7 +37,7 @@ using foreman `bin/watch` and the server in the standard way in a separate termi
 
 ### Run rswag to generate API documentation
 
-`rake rswag:specs:swaggerize`
+`SWAGGER_DRY_RUN=0 rake rswag:specs:swaggerize`
 
 Documentation can be found at `/api-docs`.
 

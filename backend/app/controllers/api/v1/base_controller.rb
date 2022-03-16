@@ -20,7 +20,7 @@ module API
       end
 
       def included_relationships
-        params[:include]&.split(",")
+        params[:includes]&.split(",")
       end
 
       def require_json!

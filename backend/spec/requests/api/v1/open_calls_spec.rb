@@ -1,4 +1,4 @@
-require "rails_helper"
+require "swagger_helper"
 
 RSpec.describe "API V1 Open Calls", type: :request do
   before_all do
@@ -8,54 +8,75 @@ RSpec.describe "API V1 Open Calls", type: :request do
 
   include_examples :api_pagination, model: OpenCall, expected_total: 7
 
-  describe "GET #index" do
-    it "should return open_calls" do
-      get "/api/v1/open_calls"
+  path "/api/v1/open_calls" do
+    get "Returns list of the open calls" do
+      tags "Open Calls"
+      produces "application/json"
+      parameter name: "page[number]", in: :query, type: :integer, description: "Page number. Default: 1", required: false
+      parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
+      parameter name: "fields[open_call]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to match_snapshot("api/v1/open_calls", dynamic_attributes: %w[closing_at])
-    end
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {type: :array, items: {"$ref" => "#/components/schemas/open_call"}},
+          meta: {"$ref" => "#/components/schemas/pagination_meta"},
+          links: {"$ref" => "#/components/schemas/pagination_links"}
+        }
 
-    describe "sparse fieldset" do
-      it "should work" do
-        get "/api/v1/open_calls?fields[open_call]=name,description,nonexisting"
+        run_test!
 
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to match_snapshot("api/v1/open-calls-sparse-fieldset")
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/open_calls", dynamic_attributes: %w[closing_at])
+        end
+
+        context "with sparse fieldset" do
+          let("fields[open_call]") { "name,description,nonexisting" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/open-calls-sparse-fieldset")
+          end
+        end
       end
     end
   end
 
-  describe "GET #show" do
-    it "should return single open_call" do
-      get "/api/v1/open_calls/#{@open_call.id}"
+  path "/api/v1/open_calls/{id}" do
+    get "Find open call by id or slug" do
+      tags "Open Calls"
+      produces "application/json"
+      parameter name: :id, in: :path, type: :string, description: "Use open call ID or slug"
+      parameter name: "fields[open_call]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to match_snapshot("api/v1/get-open_call", dynamic_attributes: %w[closing_at])
-    end
+      let(:id) { @open_call.id }
 
-    it "should return open_call by slug" do
-      get "/api/v1/open_calls/#{@open_call.slug}"
+      it_behaves_like "with not found error"
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to match_snapshot("api/v1/get-open_call", dynamic_attributes: %w[closing_at])
-    end
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/open_call"}
+        }
 
-    describe "errors" do
-      it "displays not found error" do
-        get "/api/v1/open_calls/not-found"
+        run_test!
 
-        expect(response).to have_http_status(:not_found)
-        expect(response.body).to match_snapshot("api/v1/get-open_call-not-found")
-      end
-    end
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/get-open_call", dynamic_attributes: %w[closing_at])
+        end
 
-    describe "sparse fieldset" do
-      it "should work" do
-        get "/api/v1/open_calls/#{@open_call.id}?fields[open_call]=name,description,nonexisting"
+        context "when slug is used" do
+          let(:id) { @open_call.slug }
 
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to match_snapshot("api/v1/get-open-call-sparse-fieldset")
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/get-open_call", dynamic_attributes: %w[closing_at])
+          end
+        end
+
+        context "with sparse fieldset" do
+          let("fields[open_call]") { "name,description,nonexisting" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/get-open-call-sparse-fieldset")
+          end
+        end
       end
     end
   end
