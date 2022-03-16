@@ -176,6 +176,22 @@ RSpec.configure do |config|
             },
             required: %w[id type attributes]
           },
+          enum: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              type: {type: :string},
+              attributes: {
+                type: :object,
+                properties: {
+                  name: {type: :string},
+                  description: {type: :string}
+                },
+                required: %w[name]
+              }
+            },
+            required: %w[id type attributes]
+          },
           pagination_meta: {
             type: :object,
             properties: {

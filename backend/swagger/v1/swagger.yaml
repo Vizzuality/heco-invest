@@ -4,6 +4,186 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/v1/enums":
+    get:
+      summary: Returns list of the enums
+      tags:
+      - Enums
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              example:
+                data:
+                - id: grant
+                  type: instrument_type
+                  attributes:
+                    name: Grant
+                    description: Technical cooperation grants are resources provided
+                      by an entity to fulfill a well-defined purpose or objective.
+                      In general, they are non-reimbursable resources that are destined
+                      in particular to projects or enterprises in early stages of
+                      development.
+                - id: loan
+                  type: instrument_type
+                  attributes:
+                    name: Loan
+                    description: A loan is a transaction in which a financial institution
+                      grants a predefined amount of money to develop a particular
+                      project. The institution or business that receives the loan
+                      is obliged to repay it within a certain period of time and to
+                      pay the agreed commissions, expenses and interest.
+                - id: equity
+                  type: instrument_type
+                  attributes:
+                    name: Equity
+                    description: An equity investment consists of the acquisition,
+                      by an entity specialized in private equity, of a package of
+                      shares of a company or enterprise. The private equity firm thus
+                      becomes one of the owners of the company.
+                - id: sustainable-agrosystems
+                  type: category
+                  attributes:
+                    name: Sustainable Agrosystems
+                    color: "#E7C343"
+                    description: Sustainable and regenerative agriculture, fishing,
+                      and aquaculture as well as manufacturing of derived subproducts.
+                - id: tourism-and-recreation
+                  type: category
+                  attributes:
+                    name: Tourism and Recreation
+                    color: "#4492E5"
+                    description: Accommodation, travel, transportation, hospitality,
+                      visitor experiences and eco-tourism projects.
+                - id: forestry-and-agroforestry
+                  type: category
+                  attributes:
+                    name: Forestry and Agroforestry
+                    color: "#E57D57"
+                    description: Sustainable timber extraction and forest management
+                      practices, including reforestation and restoration.
+                - id: non-timber-forest-production
+                  type: category
+                  attributes:
+                    name: Non Timber Forest Production
+                    color: "#404B9A"
+                    description: Production of health, wellness, and cosmetic products;
+                      art, clothing, and handcrafted products; production of food
+                      and drinks.
+                - id: small_grants
+                  type: ticket_size
+                  attributes:
+                    name: 'translation missing: en.enums.ticket_size.small_grants.name'
+                - id: prototyping
+                  type: ticket_size
+                  attributes:
+                    name: Prototyping
+                - id: validation
+                  type: ticket_size
+                  attributes:
+                    name: Validation
+                - id: scaling
+                  type: ticket_size
+                  attributes:
+                    name: Scaling
+                - id: biodiversity
+                  type: impact
+                  attributes:
+                    name: Biodiversity
+                    description: Impact of projects on biodiversity conservation,
+                      calculated from indicators of endemism, land conservation/restoration,
+                      connectivity, and development of sustainable social projects.
+                - id: climate
+                  type: impact
+                  attributes:
+                    name: Climate
+                    description: Impact of projects that reduce carbon emissions from
+                      the land sector (deforestation/degradation), as wood and soil
+                      biomass as well as application of sustainable forest measures.
+                - id: water
+                  type: impact
+                  attributes:
+                    name: Water
+                    description: Impact of projects managing water cycling, quality
+                      and availability as well as the management of associated risks.
+                - id: community
+                  type: impact
+                  attributes:
+                    name: Community
+                    description: Impact of projects on ensuring and improving equal
+                      and inclusive physical, mental, economic, and spiritual health.
+                - id: investor
+                  type: investor_type
+                  attributes:
+                    name: Investor
+                - id: angel-investor
+                  type: investor_type
+                  attributes:
+                    name: Angel Investor
+                - id: commercial-bank
+                  type: investor_type
+                  attributes:
+                    name: Commercial Bank
+                - id: family-office
+                  type: investor_type
+                  attributes:
+                    name: Family Office
+                - id: institutional-investor
+                  type: investor_type
+                  attributes:
+                    name: Institutional Investor
+                - id: investment-bank
+                  type: investor_type
+                  attributes:
+                    name: Investment Bank
+                - id: international-financial-institution
+                  type: investor_type
+                  attributes:
+                    name: International Financial Institution
+                - id: micro-finance
+                  type: investor_type
+                  attributes:
+                    name: Micro Finance
+                - id: non-VC-investment-vehicle
+                  type: investor_type
+                  attributes:
+                    name: Non VC Investment Vehicle
+                - id: venture-capital-private-equity
+                  type: investor_type
+                  attributes:
+                    name: Venture Capital Private Equity
+                - id: carbon-fund
+                  type: investor_type
+                  attributes:
+                    name: Carbon Fund
+                - id: ngo
+                  type: investor_type
+                  attributes:
+                    name: NGO
+                - id: foundation
+                  type: investor_type
+                  attributes:
+                    name: Foundation
+                - id: corporate-foundation
+                  type: investor_type
+                  attributes:
+                    name: Corporate Foundation
+                - id: philanthropy
+                  type: investor_type
+                  attributes:
+                    name: Philanthropy
+                - id: hnwi-or-celebrity
+                  type: investor_type
+                  attributes:
+                    name: HNWI or Celebrity
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/enum"
   "/api/v1/investors":
     get:
       summary: Returns list of the investors
@@ -35,7 +215,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 3855b061-0e55-4b49-a022-8157f3b9ae1c
+                - id: b5439f9d-0594-4633-98d3-c9e50ec35a0d
                   type: investor
                   attributes:
                     name: Kutch-Spencer
@@ -53,10 +233,10 @@ paths:
                       eos. Libero tempora exercitationem. Qui dolorem quo.
                     other_information: Enim repellat pariatur. Earum modi eos. Libero
                       tempora exercitationem. Qui dolorem quo.
-                    investor_type: angel_investor
+                    investor_type: angel-investor
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     ticket_sizes:
                     - validation
                     - scaling
@@ -74,7 +254,7 @@ paths:
                     previously_invested_description: Enim repellat pariatur. Earum
                       modi eos. Libero tempora exercitationem. Qui dolorem quo.
                     language: en
-                - id: 0cb6cc70-e8ea-4689-b282-21aebdd34096
+                - id: e3c0029b-145f-4186-b715-3d139393fd46
                   type: investor
                   attributes:
                     name: Bartoletti and Sons
@@ -92,10 +272,10 @@ paths:
                       repellat. Sunt commodi tempore. Voluptatem et corrupti.
                     other_information: Placeat commodi libero. Quo recusandae repellat.
                       Sunt commodi tempore. Voluptatem et corrupti.
-                    investor_type: angel_investor
+                    investor_type: angel-investor
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     ticket_sizes:
                     - validation
                     - scaling
@@ -113,7 +293,7 @@ paths:
                     previously_invested_description: Placeat commodi libero. Quo recusandae
                       repellat. Sunt commodi tempore. Voluptatem et corrupti.
                     language: en
-                - id: 30625e0a-4b37-4d8c-b623-f9b5759f3da1
+                - id: e0ecb2a0-5ace-4c58-b661-826eac70ab0a
                   type: investor
                   attributes:
                     name: Hane, Lehner and Goyette
@@ -131,10 +311,10 @@ paths:
                       Quo nesciunt voluptas. Suscipit ex cum.
                     other_information: Et quaerat omnis. Harum voluptas atque. Quo
                       nesciunt voluptas. Suscipit ex cum.
-                    investor_type: angel_investor
+                    investor_type: angel-investor
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     ticket_sizes:
                     - validation
                     - scaling
@@ -152,7 +332,7 @@ paths:
                     previously_invested_description: Et quaerat omnis. Harum voluptas
                       atque. Quo nesciunt voluptas. Suscipit ex cum.
                     language: en
-                - id: bad0b24a-19ec-433d-9e66-e3fa3f4e4aa4
+                - id: 57f44f99-abbd-48eb-a180-49ac3ea0ab5e
                   type: investor
                   attributes:
                     name: Hilpert, Waters and Johnston
@@ -170,10 +350,10 @@ paths:
                       dolores. Sit neque eos. Expedita molestiae quia.
                     other_information: Dolores fugiat nesciunt. Ut laborum dolores.
                       Sit neque eos. Expedita molestiae quia.
-                    investor_type: angel_investor
+                    investor_type: angel-investor
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     ticket_sizes:
                     - validation
                     - scaling
@@ -191,7 +371,7 @@ paths:
                     previously_invested_description: Dolores fugiat nesciunt. Ut laborum
                       dolores. Sit neque eos. Expedita molestiae quia.
                     language: en
-                - id: 49491ef5-b57a-4be0-9b6c-7367ad5b9d58
+                - id: 3834b0a0-ef99-4e96-9ef9-4d68e0119de8
                   type: investor
                   attributes:
                     name: Jacobson, Fritsch and Stanton
@@ -209,10 +389,10 @@ paths:
                       Repellat recusandae eum. Eius ex est.
                     other_information: Autem et et. Voluptatem neque quibusdam. Repellat
                       recusandae eum. Eius ex est.
-                    investor_type: angel_investor
+                    investor_type: angel-investor
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     ticket_sizes:
                     - validation
                     - scaling
@@ -230,7 +410,7 @@ paths:
                     previously_invested_description: Autem et et. Voluptatem neque
                       quibusdam. Repellat recusandae eum. Eius ex est.
                     language: en
-                - id: 4598e6c4-833f-4b8e-bf3c-f9a37d7be254
+                - id: 4f7b0bc1-aadd-4231-a135-21f4fc6f2a0e
                   type: investor
                   attributes:
                     name: Keebler, Kub and Zemlak
@@ -248,10 +428,10 @@ paths:
                       Eligendi sapiente voluptatem. Quas rerum officia.
                     other_information: Porro soluta beatae. Quia ratione facilis.
                       Eligendi sapiente voluptatem. Quas rerum officia.
-                    investor_type: angel_investor
+                    investor_type: angel-investor
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     ticket_sizes:
                     - validation
                     - scaling
@@ -269,7 +449,7 @@ paths:
                     previously_invested_description: Porro soluta beatae. Quia ratione
                       facilis. Eligendi sapiente voluptatem. Quas rerum officia.
                     language: en
-                - id: 90d80277-1c9d-456c-a11e-56a40eda0865
+                - id: 6c02dff3-effd-4994-92b9-bb8237c376e5
                   type: investor
                   attributes:
                     name: Becker LLC
@@ -287,10 +467,10 @@ paths:
                       Et laudantium et. Sed recusandae aut.
                     other_information: Mollitia aut vel. Qui illum accusantium. Et
                       laudantium et. Sed recusandae aut.
-                    investor_type: angel_investor
+                    investor_type: angel-investor
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     ticket_sizes:
                     - validation
                     - scaling
@@ -361,7 +541,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 3855b061-0e55-4b49-a022-8157f3b9ae1c
+                  id: b5439f9d-0594-4633-98d3-c9e50ec35a0d
                   type: investor
                   attributes:
                     name: Kutch-Spencer
@@ -379,10 +559,10 @@ paths:
                       eos. Libero tempora exercitationem. Qui dolorem quo.
                     other_information: Enim repellat pariatur. Earum modi eos. Libero
                       tempora exercitationem. Qui dolorem quo.
-                    investor_type: angel_investor
+                    investor_type: angel-investor
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     ticket_sizes:
                     - validation
                     - scaling
@@ -436,7 +616,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 5c0c736c-a18a-4f74-bbb9-3601c419ac8e
+                - id: 4462ac24-0c74-400e-9509-53027c55089f
                   type: open_call
                   attributes:
                     name: Open call 1
@@ -453,14 +633,14 @@ paths:
                       tempora exercitationem. Qui dolorem quo.
                     impact_description: Enim repellat pariatur. Earum modi eos. Libero
                       tempora exercitationem. Qui dolorem quo.
-                    closing_at: '2023-01-16T09:22:12.967Z'
+                    closing_at: '2023-01-16T09:40:22.145Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 1bc59be7-6c64-4ec6-b6ad-b400877540ec
+                        id: 5c7bcc49-4419-4186-b621-fa21cd46f168
                         type: investor
-                - id: b4d44d2d-4783-49b8-a36a-ca8e77f02bce
+                - id: d69e651e-0f25-4591-a468-e5eb932c567d
                   type: open_call
                   attributes:
                     name: Open call 2
@@ -477,14 +657,14 @@ paths:
                       Sunt commodi tempore. Voluptatem et corrupti.
                     impact_description: Placeat commodi libero. Quo recusandae repellat.
                       Sunt commodi tempore. Voluptatem et corrupti.
-                    closing_at: '2023-01-16T09:22:13.003Z'
+                    closing_at: '2023-01-16T09:40:22.174Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 215b580f-f54e-4e34-97ec-e0a653b29cdc
+                        id: 60181d8f-3d60-49aa-98b3-853639b86821
                         type: investor
-                - id: 702f6a99-5cb6-4bf6-b9c7-22ca97f2fe83
+                - id: 95a23f24-01a4-4ead-98be-daa70a5553d4
                   type: open_call
                   attributes:
                     name: Open call 3
@@ -501,14 +681,14 @@ paths:
                       nesciunt voluptas. Suscipit ex cum.
                     impact_description: Et quaerat omnis. Harum voluptas atque. Quo
                       nesciunt voluptas. Suscipit ex cum.
-                    closing_at: '2023-01-16T09:22:13.033Z'
+                    closing_at: '2023-01-16T09:40:22.197Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: b0b2df0f-e153-4906-8d22-1baccd685b7e
+                        id: 80489957-2b8c-4be7-8765-53299b18ee81
                         type: investor
-                - id: b7859d66-cc46-48aa-8606-a0e808dd9f5d
+                - id: ea641d05-a24b-4f64-84f5-cf1b42c5569f
                   type: open_call
                   attributes:
                     name: Open call 4
@@ -525,14 +705,14 @@ paths:
                       Sit neque eos. Expedita molestiae quia.
                     impact_description: Dolores fugiat nesciunt. Ut laborum dolores.
                       Sit neque eos. Expedita molestiae quia.
-                    closing_at: '2023-01-16T09:22:13.062Z'
+                    closing_at: '2023-01-16T09:40:22.220Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 41efeb22-4c2b-4a80-8b80-300e5e96b58c
+                        id: 960a6cfa-1545-4b28-adcc-911193f679a1
                         type: investor
-                - id: b4f6c7b1-2e7d-4d4f-b60f-df293a7c3b10
+                - id: 5cd08286-8321-4300-a78d-38faf4eab712
                   type: open_call
                   attributes:
                     name: Open call 5
@@ -549,14 +729,14 @@ paths:
                       recusandae eum. Eius ex est.
                     impact_description: Autem et et. Voluptatem neque quibusdam. Repellat
                       recusandae eum. Eius ex est.
-                    closing_at: '2023-01-16T09:22:13.091Z'
+                    closing_at: '2023-01-16T09:40:22.242Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: a3db9486-f36d-48a4-ae6e-d135d0d45d30
+                        id: b8561d99-7c9d-426c-acdf-903b3365a4c1
                         type: investor
-                - id: b97092ff-e3b3-4f6e-b6fc-9be7539a5bc3
+                - id: ef766bfa-da2a-4e6a-8209-ad0312a43c57
                   type: open_call
                   attributes:
                     name: Open call 6
@@ -573,14 +753,14 @@ paths:
                       Eligendi sapiente voluptatem. Quas rerum officia.
                     impact_description: Porro soluta beatae. Quia ratione facilis.
                       Eligendi sapiente voluptatem. Quas rerum officia.
-                    closing_at: '2023-01-16T09:22:13.121Z'
+                    closing_at: '2023-01-16T09:40:22.264Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 1c74bdd2-f14e-4515-941e-e48f0470ba12
+                        id: 370179f0-3953-4df9-bd9b-ab6337938914
                         type: investor
-                - id: e384cd09-49ae-4446-a8c4-5044db2472a9
+                - id: c1cd5b53-d364-44ae-81e9-c7ee0e9aaf7d
                   type: open_call
                   attributes:
                     name: Open call 7
@@ -597,12 +777,12 @@ paths:
                       laudantium et. Sed recusandae aut.
                     impact_description: Mollitia aut vel. Qui illum accusantium. Et
                       laudantium et. Sed recusandae aut.
-                    closing_at: '2023-01-16T09:22:13.153Z'
+                    closing_at: '2023-01-16T09:40:22.288Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 8bcaada7-6acb-47a7-84e5-66bdbf2dd1b9
+                        id: c5fc86cb-275b-4d19-a367-3cf46151f9c1
                         type: investor
                 meta:
                   page: 1
@@ -657,7 +837,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 5c0c736c-a18a-4f74-bbb9-3601c419ac8e
+                  id: 4462ac24-0c74-400e-9509-53027c55089f
                   type: open_call
                   attributes:
                     name: Open call 1
@@ -674,12 +854,12 @@ paths:
                       tempora exercitationem. Qui dolorem quo.
                     impact_description: Enim repellat pariatur. Earum modi eos. Libero
                       tempora exercitationem. Qui dolorem quo.
-                    closing_at: '2023-01-16T09:22:12.967Z'
+                    closing_at: '2023-01-16T09:40:22.145Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 1bc59be7-6c64-4ec6-b6ad-b400877540ec
+                        id: 5c7bcc49-4419-4186-b621-fa21cd46f168
                         type: investor
               schema:
                 type: object
@@ -717,7 +897,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: e931318c-dbb5-4b5e-a015-c41e99a7f884
+                - id: 0ff4aeb7-3a05-45dd-a90d-3ba0c731a199
                   type: project_developer
                   attributes:
                     name: Kutch-Spencer
@@ -733,13 +913,13 @@ paths:
                       exercitationem. Qui dolorem quo.
                     project_developer_type: TBD
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     impacts:
                     - climate
                     - water
                     language: en
-                - id: 66e5fff7-6b29-47f0-8f67-ff7b52b8024e
+                - id: 54432fa4-fd9b-4bf6-aa3d-a6c513305299
                   type: project_developer
                   attributes:
                     name: Bartoletti and Sons
@@ -755,13 +935,13 @@ paths:
                       commodi tempore. Voluptatem et corrupti.
                     project_developer_type: TBD
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     impacts:
                     - climate
                     - water
                     language: en
-                - id: '042319cb-307b-43af-9808-5fe3e0843099'
+                - id: 6112b210-686d-44eb-8597-6b9f180ddb84
                   type: project_developer
                   attributes:
                     name: Hane, Lehner and Goyette
@@ -777,13 +957,13 @@ paths:
                       voluptas. Suscipit ex cum.
                     project_developer_type: TBD
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     impacts:
                     - climate
                     - water
                     language: en
-                - id: dbcf23f9-88ed-452f-a107-0d0e911c8939
+                - id: 690921f3-de10-4be8-9866-2b6b42847353
                   type: project_developer
                   attributes:
                     name: Hilpert, Waters and Johnston
@@ -799,13 +979,13 @@ paths:
                       eos. Expedita molestiae quia.
                     project_developer_type: TBD
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     impacts:
                     - climate
                     - water
                     language: en
-                - id: 4fcbecfe-f3a7-410a-b910-b902c870c543
+                - id: b2dfb2e1-a144-4f1d-aeea-a6dad3a809b5
                   type: project_developer
                   attributes:
                     name: Jacobson, Fritsch and Stanton
@@ -821,13 +1001,13 @@ paths:
                       eum. Eius ex est.
                     project_developer_type: TBD
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     impacts:
                     - climate
                     - water
                     language: en
-                - id: f2fb593c-7ce2-448f-a64e-7ee4ac1b2da9
+                - id: 070c077c-a711-4240-87e4-9455d5b1c77f
                   type: project_developer
                   attributes:
                     name: Keebler, Kub and Zemlak
@@ -843,13 +1023,13 @@ paths:
                       voluptatem. Quas rerum officia.
                     project_developer_type: TBD
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     impacts:
                     - climate
                     - water
                     language: en
-                - id: 8770f49e-39e2-4816-bd75-c81d2f1d83db
+                - id: f9c1a657-68fa-475a-a7ce-26c7cb16de3a
                   type: project_developer
                   attributes:
                     name: Becker LLC
@@ -865,8 +1045,8 @@ paths:
                       et. Sed recusandae aut.
                     project_developer_type: TBD
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     impacts:
                     - climate
                     - water
@@ -924,7 +1104,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: e931318c-dbb5-4b5e-a015-c41e99a7f884
+                  id: 0ff4aeb7-3a05-45dd-a90d-3ba0c731a199
                   type: project_developer
                   attributes:
                     name: Kutch-Spencer
@@ -940,8 +1120,8 @@ paths:
                       exercitationem. Qui dolorem quo.
                     project_developer_type: TBD
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     impacts:
                     - climate
                     - water
@@ -988,7 +1168,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: a16969c1-c952-4c7f-ae1c-ed4843a7d7b5
+                - id: 7db0ccb9-ab50-4938-a045-954efd6e90cf
                   type: project
                   attributes:
                     name: Project 1
@@ -997,8 +1177,8 @@ paths:
                       exercitationem. Qui dolorem quo.
                     ticket_size: scaling
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     instrument_types:
                     - grant
                     - loan
@@ -1030,9 +1210,9 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: f311f248-0de4-4f61-be46-bdac9edf714a
+                        id: eeb92ea8-25ac-417c-a967-25b29d984ebe
                         type: project_developer
-                - id: a760db70-ab0b-4b9f-899e-8316f3c9d2f9
+                - id: 1adc50fb-17e1-4ce4-b5ad-6b5687c4c683
                   type: project
                   attributes:
                     name: Project 2
@@ -1041,8 +1221,8 @@ paths:
                       Sunt commodi tempore. Voluptatem et corrupti.
                     ticket_size: scaling
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     instrument_types:
                     - grant
                     - loan
@@ -1074,9 +1254,9 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 536e797d-0d5c-4ae0-bbdb-428b1dcfaa6e
+                        id: 660a4f82-0813-49e0-ab31-54de5e7314e6
                         type: project_developer
-                - id: a7a0718f-0636-4b20-92be-9b5b19a27692
+                - id: 8b8e1359-276b-47c5-8028-68382ccf97d5
                   type: project
                   attributes:
                     name: Project 3
@@ -1085,8 +1265,8 @@ paths:
                       voluptas. Suscipit ex cum.
                     ticket_size: scaling
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     instrument_types:
                     - grant
                     - loan
@@ -1118,9 +1298,9 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 9d920952-aab3-4a03-a3b9-ea35a496c62d
+                        id: b9082702-fe3a-438b-983e-617cb76df9ea
                         type: project_developer
-                - id: 17f16ba7-8650-4bb6-9342-0a5c3c78d07e
+                - id: e602b4f4-2019-447a-b5a5-32f0707bcb2e
                   type: project
                   attributes:
                     name: Project 4
@@ -1129,8 +1309,8 @@ paths:
                       neque eos. Expedita molestiae quia.
                     ticket_size: scaling
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     instrument_types:
                     - grant
                     - loan
@@ -1162,9 +1342,9 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 23cacb60-8cca-4be6-9b8b-90c55386697d
+                        id: 86b2d092-a470-4b5c-b47b-a364329a472d
                         type: project_developer
-                - id: 144f80c4-380d-4f8b-9b87-fba0adccc8be
+                - id: 75dfcad0-ce78-47a4-888a-1875212d9e67
                   type: project
                   attributes:
                     name: Project 5
@@ -1173,8 +1353,8 @@ paths:
                       recusandae eum. Eius ex est.
                     ticket_size: scaling
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     instrument_types:
                     - grant
                     - loan
@@ -1206,9 +1386,9 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 57687968-c860-4f84-800a-04485a9e5e5e
+                        id: 9d03c7ca-cae2-4a31-ad7d-b89413981957
                         type: project_developer
-                - id: f2d1340f-6e5c-4b36-8436-b2d1288129b8
+                - id: efb02fab-ee4b-4b96-8a9e-453ced590235
                   type: project
                   attributes:
                     name: Project 6
@@ -1217,8 +1397,8 @@ paths:
                       sapiente voluptatem. Quas rerum officia.
                     ticket_size: scaling
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     instrument_types:
                     - grant
                     - loan
@@ -1250,9 +1430,9 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: '0927cb4b-d62c-45e6-9ac9-65e7f72e85d6'
+                        id: d11dd32a-c834-4db0-b594-e4f409fa9282
                         type: project_developer
-                - id: 5fe0f30c-af45-405b-b288-9dc000d359a5
+                - id: 3309d417-36d5-4d3f-a8fe-eb9b4e7f66e6
                   type: project
                   attributes:
                     name: Project 7
@@ -1261,8 +1441,8 @@ paths:
                       et. Sed recusandae aut.
                     ticket_size: scaling
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     instrument_types:
                     - grant
                     - loan
@@ -1294,7 +1474,7 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 0a4dea4d-80ce-4a68-ba14-2800f7e69830
+                        id: 35bcab24-7553-4e92-ba32-eb0c279f7e72
                         type: project_developer
                 meta:
                   page: 1
@@ -1355,7 +1535,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: a16969c1-c952-4c7f-ae1c-ed4843a7d7b5
+                  id: 7db0ccb9-ab50-4938-a045-954efd6e90cf
                   type: project
                   attributes:
                     name: Project 1
@@ -1364,8 +1544,8 @@ paths:
                       exercitationem. Qui dolorem quo.
                     ticket_size: scaling
                     categories:
-                    - forestry_and_agroforestry
-                    - non_timber_forest_production
+                    - forestry-and-agroforestry
+                    - non-timber-forest-production
                     instrument_types:
                     - grant
                     - loan
@@ -1397,7 +1577,7 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: f311f248-0de4-4f61-be46-bdac9edf714a
+                        id: eeb92ea8-25ac-417c-a967-25b29d984ebe
                         type: project_developer
               schema:
                 type: object
@@ -1663,6 +1843,26 @@ components:
                 type: string
             language:
               type: string
+      required:
+      - id
+      - type
+      - attributes
+    enum:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+          required:
+          - name
       required:
       - id
       - type
