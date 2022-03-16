@@ -15,17 +15,5 @@ const Template: Story<TagProps> = ({ children, ...args }: TagProps) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  children: 'Source name',
-};
-
-export const Yellow = Template.bind({});
-Yellow.args = {
-  children: 'Species',
-  className: 'text-black bg-yellow-300',
-};
-
-export const Blue = Template.bind({});
-Blue.args = {
-  children: 'Bioregional',
-  className: 'text-black bg-blue-500',
+  children: 'Biodiversity',
 };

@@ -67,6 +67,14 @@ module.exports = {
       borderRadius: {
         '4xl': '2rem',
       },
+      gridTemplateColumns: {
+        'auto-1fr': 'auto 1fr',
+        '1fr-auto': '1fr auto',
+      },
+      backgroundImage: {
+        'radial-green-dark':
+          'radial-gradient(63.59% 95.05% at 42.99% 35.35%, #316146 0%, #073525 100%)',
+      },
     },
   },
   plugins: [forms],

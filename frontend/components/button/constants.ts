@@ -1,7 +1,7 @@
 import { ButtonCommonProps } from './types';
 
 export const COMMON_CLASSES =
-  'rounded-full font-sans transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none';
+  'flex items-center rounded-full font-sans transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none';
 
 export const COLOR_THEMES: Record<NonNullable<ButtonCommonProps['theme']>, string> = {
   'primary-green': `bg-green-dark text-white hover:text-green-light focus-visible:outline-green-dark`,

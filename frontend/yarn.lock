@@ -12177,6 +12177,7 @@ __metadata:
     react: ^17.0.2
     react-aria: ^3.6.0
     react-dom: latest
+    react-feather: ^2.0.9
     react-final-form: ^6.5.3
     react-intl: ^5.24.6
     react-map-gl: ^6.1.15
@@ -12185,6 +12186,7 @@ __metadata:
     react-redux: ^7.2.4
     rooks: ^5.10.0
     sharp: ^0.30.1
+    slugify: ^1.6.5
     start-server-and-test: ^1.12.1
     storybook-addon-next: ^1.6.0
     storybook-react-intl: ^1.0.5
@@ -17218,6 +17220,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-feather@npm:^2.0.9":
+  version: 2.0.9
+  resolution: "react-feather@npm:2.0.9"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ^16.8.6 || ^17
+  checksum: 8535541c1041ba9ce02e1b6fe4425dc6857030ae2223d89fa2aa1faf82b04e542c863b267ee7ba5961d22fe3216f43241200a5807d8a8df48a96485ac8b68bf7
+  languageName: node
+  linkType: hard
+
 "react-final-form@npm:^6.5.3":
   version: 6.5.8
   resolution: "react-final-form@npm:6.5.8"
@@ -18501,6 +18514,13 @@ __metadata:
   version: 3.0.0
   resolution: "slash@npm:3.0.0"
   checksum: 94a93fff615f25a999ad4b83c9d5e257a7280c90a32a7cb8b4a87996e4babf322e469c42b7f649fd5796edd8687652f3fb452a86dc97a816f01113183393f11c
+  languageName: node
+  linkType: hard
+
+"slugify@npm:^1.6.5":
+  version: 1.6.5
+  resolution: "slugify@npm:1.6.5"
+  checksum: a955a1b600201030f4c1daa9bb74a17d4402a0693fc40978bbd17e44e64fd72dad3bac4037422aa8aed55b5170edd57f3f4cd8f59ba331f5cf0f10f1a7795609
   languageName: node
   linkType: hard
 

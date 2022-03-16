@@ -1,6 +1,12 @@
 {
+  "+mzZak": {
+    "string": "About {name}"
+  },
   "+vVZ/G": {
     "string": "Connect"
+  },
+  "/1WGZ8": {
+    "string": "Projects funded"
   },
   "/VnDMl": {
     "string": "Other"
@@ -20,6 +26,9 @@
   "2inebt": {
     "string": "The opportunities are located in geographies that are are unique due to of their biodiversity, cultural heritages, and regulation of water systems. As such, these projects will have the greatest impact for people and nature."
   },
+  "3l2y4U": {
+    "string": "Person of contact"
+  },
   "4CrCbD": {
     "string": "Community"
   },
@@ -31,6 +40,9 @@
   },
   "4bznpU": {
     "string": "HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the long-term sustainability of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
+  },
+  "5Hzwqs": {
+    "string": "Favorite"
   },
   "5hbC/K": {
     "string": "Start making an impact now!"
@@ -50,8 +62,14 @@
   "7KLSqh": {
     "string": "Contribute to the conservation and restoration of the most diverse terrestrial ecosystems on the planet. These ecosystems support countless endemic species and contribute to mitigate the impacts of the climate crisis."
   },
+  "7qgtEX": {
+    "string": "Invests in SDG's"
+  },
   "8R8Or7": {
     "string": "Search community"
+  },
+  "8WtyrD": {
+    "string": "Spanish"
   },
   "8i6S4q": {
     "string": "Connecting investors, donors and philanthropists with carefully identified investment opportunities."
@@ -64,6 +82,9 @@
   },
   "9pXx8c": {
     "string": "Promote your idea, project or business and connect it with investors and funding sources to generate impact in the Amazon region."
+  },
+  "A4UTjl": {
+    "string": "Portuguese"
   },
   "AC6emZ": {
     "string": "Inter-American Development Bank"
@@ -134,6 +155,12 @@
   },
   "JRfERD": {
     "string": "Paulson Institute"
+  },
+  "JkLHGw": {
+    "string": "Website"
+  },
+  "KtecFi": {
+    "string": "How do they work?"
   },
   "KvhWhT": {
     "string": "The <span>IDB Lab</span>, the <span>Paulson Institute</span> and the <span>World Wildlife Fund</span> are working together to develop a digital platform that connects governments, investors, donors, and philanthropists with carefully identified investment opportunities in <span>high priority locations</span> identified by programs such as Herencia Colombia (HeCo)."
@@ -207,14 +234,23 @@
   "W4Jolw": {
     "string": "IDB Lab is the innovation laboratory of the Inter-American Development Bank Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
   },
+  "WkrNSk": {
+    "string": "English"
+  },
   "XJqnLu": {
     "string": "Search water"
   },
   "XQuzr9": {
     "string": "Identified priorities by the HeCo program"
   },
+  "XkF/qg": {
+    "string": "Profile picture of {name}"
+  },
   "Y7/cBd": {
     "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and <span>start the conversation</span>. Make sure to update us to help us track your contribution to preserving the Amazon: <span>the future is in your hands too!</span>"
+  },
+  "ZEEVQX": {
+    "string": "Social media"
   },
   "ZMvQxR": {
     "string": "HeCo Invest manages a wide range of investment and financing opportunities in various sectors and priority geographies for the conservation and development of the Colombian Amazon region."
@@ -267,8 +303,14 @@
   "hiQOgT": {
     "string": "<span>Biodiversity:</span> endemism, conservation/restoration potential, landscape connectivity;"
   },
+  "hxIQ/8": {
+    "string": "Projects waiting funding"
+  },
   "i50XU3": {
     "string": "Features for investors"
+  },
+  "in26xr": {
+    "string": "{organization} logo"
   },
   "jWOeHy": {
     "string": "<a>Call on our community</a> of project developers to identify opportunities in your preferred sectors and geographies."
@@ -278,6 +320,15 @@
   },
   "kUPAU5": {
     "string": "Search climate"
+  },
+  "kX7oGR": {
+    "string": "Other information"
+  },
+  "lPkzC0": {
+    "string": "This makes a difference to them"
+  },
+  "m3Dnav": {
+    "string": "Investment info"
   },
   "mbTJWV": {
     "string": "Biodiversity"
@@ -324,6 +375,9 @@
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
   },
+  "wkkhPR": {
+    "string": "See project developer profile"
+  },
   "x/1DXz": {
     "string": "In the face of the economic and social crisis caused by the coronavirus pandemic, there is an urgent need to support the transition to a green, fair, and resilient economy that creates jobs, addresses inequality, and drives inclusive growth."
   },
@@ -344,6 +398,9 @@
   },
   "zFegDD": {
     "string": "Contact"
+  },
+  "zXxFL9": {
+    "string": "Note: The content of this page was originally written in <span>{language}</span>."
   },
   "zdIaHp": {
     "string": "Investors"
