@@ -7,11 +7,12 @@ import { noop } from 'lodash-es/noop';
 
 import Image from 'next/image';
 
+import { translatedLanguageNameForLocale } from 'helpers/intl';
+
 import WebsiteSocialContact from 'containers/website-social-contact';
 
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
-import { Languages } from 'enums';
 
 import type { ProfileHeaderProps } from './types';
 
@@ -66,9 +67,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                 defaultMessage="Note: The content of this page was originally written in <span>{language}</span>."
                 id="zXxFL9"
                 values={{
-                  language: Object.keys(Languages).find(
-                    (key) => Languages[key] === originalLanguage
-                  ),
+                  language: translatedLanguageNameForLocale(intl, originalLanguage),
                   span: (chunks) => <span className="underline">{chunks}</span>,
                 }}
               />
