@@ -1,5 +1,5 @@
 class TicketSize
-  include StaticModel
+  include EnumModel
 
   TYPES = %w[
     small_grants
@@ -7,4 +7,8 @@ class TicketSize
     validation
     scaling
   ].freeze
+
+  def amount
+    read_attribute("amount")
+  end
 end

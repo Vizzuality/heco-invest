@@ -1,6 +1,6 @@
 {
   "data": {
-    "id": "0436adc8-9ec9-422c-9486-a44ce021eedf",
+    "id": "ff46a8df-f1e2-4003-927c-db5bedb99bea",
     "type": "open_call",
     "attributes": {
       "name": "Open call 1",
@@ -15,13 +15,13 @@
       ],
       "money_distribution": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
       "impact_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-      "closing_at": "2023-01-03T15:10:20.792Z",
+      "closing_at": "2023-01-15T11:45:07.390Z",
       "language": "en"
     },
     "relationships": {
       "investor": {
         "data": {
-          "id": "6618f883-0d83-4b35-a476-9ca3dcc669bb",
+          "id": "8f018244-0512-4cfd-9afe-bc488bba2f1b",
           "type": "investor"
         }
       }

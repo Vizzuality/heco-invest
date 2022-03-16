@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :project_developer do
     account
 
-    categories { %w[forestry_and_agroforestry non_timber_forest_production] }
+    categories { %w[forestry-and-agroforestry non-timber-forest-production] }
     impacts { %w[climate water] }
     project_developer_type { "TBD" }
     review_status { "approved" }

@@ -8,6 +8,7 @@ module API
         pagy_object, investors = pagy(investors, page: current_page, items: per_page)
         render json: InvestorSerializer.new(
           investors,
+          include: included_relationships,
           fields: sparse_fieldset,
           links: pagination_links(:api_v1_investors_path, pagy_object),
           meta: pagination_meta(pagy_object)

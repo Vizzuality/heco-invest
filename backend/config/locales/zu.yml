@@ -1,69 +1,84 @@
 zu:
   enums:
     category:
-      sustainable_agrosystems:
+      sustainable-agrosystems:
         name: Sustainable Agrosystems
-      tourism_and_recreation:
+        description: Sustainable and regenerative agriculture, fishing, and aquaculture as well as manufacturing of derived subproducts.
+      tourism-and-recreation:
         name: Tourism and Recreation
-      forestry_and_agroforestry:
+        description: Accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects.
+      forestry-and-agroforestry:
         name: Forestry and Agroforestry
-      non_timber_forest_production:
+        description: Sustainable timber extraction and forest management practices, including reforestation and restoration.
+      non-timber-forest-production:
         name: Non Timber Forest Production
+        description: Production of health, wellness, and cosmetic products; art, clothing, and handcrafted products; production of food and drinks.
     investor_type:
       investor:
         name: Investor
-      angel_investor:
+      angel-investor:
         name: Angel Investor
-      commercial_bank:
+      commercial-bank:
         name: Commercial Bank
-      family_office:
+      family-office:
         name: Family Office
-      institutional_investor:
+      institutional-investor:
         name: Institutional Investor
-      investment_bank:
+      investment-bank:
         name: Investment Bank
-      international_financial_institution:
+      international-financial-institution:
         name: International Financial Institution
-      micro_finance:
+      micro-finance:
         name: Micro Finance
-      non_VC_investment_vehicle:
+      non-VC-investment-vehicle:
         name: Non VC Investment Vehicle
-      venture_capital_private_equity:
+      venture-capital-private-equity:
         name: Venture Capital Private Equity
-      carbon_fund:
+      carbon-fund:
         name: Carbon Fund
       ngo:
         name: NGO
       foundation:
         name: Foundation
-      corporate_foundation:
+      corporate-foundation:
         name: Corporate Foundation
       philanthropy:
         name: Philanthropy
-      hnwi_or_celebrity:
+      hnwi-or-celebrity:
         name: HNWI or Celebrity
     ticket_size:
-      small_grants:
+      small-grants:
         name: Small Grants
+        amount: "<US$25,000"
       prototyping:
         name: Prototyping
+        amount: US$25,000 - 150,000
       validation:
         name: Validation
+        amount: US$150,000 - 750,000
       scaling:
         name: Scaling
+        amount: ">US$750,000"
     instrument_type:
       grant:
         name: Grant
+        description: Technical cooperation grants are resources provided by an entity to fulfill a well-defined purpose or objective. In general, they are non-reimbursable resources that are destined in particular to projects or enterprises in early stages of development.
       loan:
         name: Loan
+        description: A loan is a transaction in which a financial institution grants a predefined amount of money to develop a particular project. The institution or business that receives the loan is obliged to repay it within a certain period of time and to pay the agreed commissions, expenses and interest.
       equity:
         name: Equity
+        description: An equity investment consists of the acquisition, by an entity specialized in private equity, of a package of shares of a company or enterprise. The private equity firm thus becomes one of the owners of the company.
     impact:
       biodiversity:
         name: Biodiversity
+        description: Impact of projects on biodiversity conservation, calculated from indicators of endemism, land conservation/restoration, connectivity, and development of sustainable social projects.
       climate:
         name: Climate
+        description: Impact of projects that reduce carbon emissions from the land sector (deforestation/degradation), as wood and soil biomass as well as application of sustainable forest measures.
       water:
         name: Water
+        description: Impact of projects managing water cycling, quality and availability as well as the management of associated risks.
       community:
         name: Community
+        description: Impact of projects on ensuring and improving equal and inclusive physical, mental, economic, and spiritual health.
