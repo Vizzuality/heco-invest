@@ -30,7 +30,7 @@ export const DeveloperAbout: FC<DeveloperAboutProps> = ({
         [className]: !!className,
       })}
     >
-      <div className="flex items-center md:items-start">
+      <div className="flex items-center justify-center md:items-start">
         <div className="w-20 h-20">
           <Image
             className="mx-auto rounded-full w-28 h-28"
