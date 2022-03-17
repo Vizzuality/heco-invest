@@ -103,7 +103,9 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           <div>
             {href && (
               <Link href={href}>
-                <a className="text-xl font-semibold leading-tight outline-none">{name}</a>
+                <a className="text-xl font-semibold leading-tight outline-none pointer-events-none">
+                  {name}
+                </a>
               </Link>
             )}
             {!href && onClick && (
