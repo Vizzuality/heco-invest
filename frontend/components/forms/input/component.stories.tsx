@@ -11,7 +11,10 @@ import Input, { InputProps } from '.';
 
 export default {
   component: Input,
-  title: 'forms/Input',
+  title: 'Components/Forms/Input',
+  argTypes: {
+    register: { control: { disable: true } },
+  },
 } as Meta;
 
 interface FormValues {
