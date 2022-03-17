@@ -11,4 +11,8 @@ export type ProjectCardProps = {
   instrument: string;
   /** Amount of money invested (in USD) */
   amount: number;
+  /** Link to follow when the user clicks on a card */
+  link?: string;
+  /** onClick callback */
+  onClick?: () => void;
 };

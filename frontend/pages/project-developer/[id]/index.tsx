@@ -139,6 +139,7 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
                   name={name}
                   instrument={instrument}
                   amount={amount}
+                  link={`/project/${id}`}
                 />
               ))}
             </Slide>

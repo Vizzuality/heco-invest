@@ -11,6 +11,9 @@
   "/VnDMl": {
     "string": "Other"
   },
+  "/plMvw": {
+    "string": "Project category"
+  },
   "0CAqpl": {
     "string": "About the partners"
   },
@@ -162,6 +165,9 @@
   "JRfERD": {
     "string": "Paulson Institute"
   },
+  "JWYapR": {
+    "string": "{name} project"
+  },
   "JkLHGw": {
     "string": "Website"
   },
@@ -305,6 +311,9 @@
   },
   "dPuc1g": {
     "string": "Slide {slideNumber}"
+  },
+  "dZYyPC": {
+    "string": "View {name} project details"
   },
   "dkNQOz": {
     "string": "Projects of all sizes"

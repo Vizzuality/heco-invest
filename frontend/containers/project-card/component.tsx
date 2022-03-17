@@ -21,6 +21,8 @@ export const ProjectCard: FC<ProjectCardProps> = ({
   name,
   instrument,
   amount,
+  link: href,
+  onClick,
 }: ProjectCardProps) => {
   const thresholdToRegisterPress = 60;
 
@@ -34,7 +36,11 @@ export const ProjectCard: FC<ProjectCardProps> = ({
   const { pressProps } = usePress({
     onPress: () => {
       if (Math.abs(pointerUpX - pointerDownX) >= thresholdToRegisterPress) return;
-      router.push(`/project/${id}`);
+      if (href) {
+        router.push(href);
+      } else {
+        onClick && onClick();
+      }
     },
   });
 
@@ -94,9 +100,32 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           >
             {category}
           </div>
-          <Link href={`/project/${id}`}>
-            <a className="text-xl font-semibold leading-tight outline-none">{name}</a>
-          </Link>
+          <div>
+            {href && (
+              <Link href={href}>
+                <a className="text-xl font-semibold leading-tight outline-none">{name}</a>
+              </Link>
+            )}
+            {!href && onClick && (
+              <button
+                className="text-xl font-semibold leading-tight outline-none"
+                aria-label={intl.formatMessage(
+                  {
+                    defaultMessage: 'View {name} project details',
+                    id: 'dZYyPC',
+                  },
+                  {
+                    name,
+                  }
+                )}
+              >
+                {name}
+              </button>
+            )}
+            {!href && !onClick && (
+              <span className="text-xl font-semibold leading-tight outline-none">{name}</span>
+            )}
+          </div>
           <div className="text-sm text-gray-400" title="Project financial instrument">
             {instrument}
             <span className="mx-2" aria-hidden={true}>
