@@ -1,4 +1,4 @@
-require "rails_helper"
+require "swagger_helper"
 
 RSpec.describe "API V1 Investors", type: :request do
   before_all do
@@ -8,54 +8,75 @@ RSpec.describe "API V1 Investors", type: :request do
 
   include_examples :api_pagination, model: Investor, expected_total: 7
 
-  describe "GET #index" do
-    it "should return investors" do
-      get "/api/v1/investors"
+  path "/api/v1/investors" do
+    get "Returns list of the investors" do
+      tags "Investors"
+      produces "application/json"
+      parameter name: "page[number]", in: :query, type: :integer, description: "Page number. Default: 1", required: false
+      parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
+      parameter name: "fields[investor]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to match_snapshot("api/v1/investors")
-    end
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {type: :array, items: {"$ref" => "#/components/schemas/investor"}},
+          meta: {"$ref" => "#/components/schemas/pagination_meta"},
+          links: {"$ref" => "#/components/schemas/pagination_links"}
+        }
 
-    describe "sparse fieldset" do
-      it "should work" do
-        get "/api/v1/investors?fields[investor]=instagram,facebook,nonexisting"
+        run_test!
 
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to match_snapshot("api/v1/investors-sparse-fieldset")
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/investors")
+        end
+
+        context "with sparse fieldset" do
+          let("fields[investor]") { "instagram,facebook,nonexisting" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/investors-sparse-fieldset")
+          end
+        end
       end
     end
   end
 
-  describe "GET #show" do
-    it "should return single investor" do
-      get "/api/v1/investors/#{@investor.id}"
+  path "/api/v1/investors/{id}" do
+    get "Find investor by id or slug" do
+      tags "Investors"
+      produces "application/json"
+      parameter name: :id, in: :path, type: :string, description: "Use investor ID or account slug"
+      parameter name: "fields[investor]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to match_snapshot("api/v1/get-investor")
-    end
+      let(:id) { @investor.id }
 
-    it "should return investor by account slug" do
-      get "/api/v1/investors/#{@investor.account.slug}"
+      it_behaves_like "with not found error"
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to match_snapshot("api/v1/get-investor")
-    end
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/investor"}
+        }
 
-    describe "errors" do
-      it "displays not found error" do
-        get "/api/v1/investors/not-found"
+        run_test!
 
-        expect(response).to have_http_status(:not_found)
-        expect(response.body).to match_snapshot("api/v1/get-investor-not-found")
-      end
-    end
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/get-investor")
+        end
 
-    describe "sparse fieldset" do
-      it "should work" do
-        get "/api/v1/investors/#{@investor.id}?fields[investor]=instagram,facebook,nonexisting"
+        context "when slug is used" do
+          let(:id) { @investor.account.slug }
 
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to match_snapshot("api/v1/get-investor-sparse-fieldset")
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/get-investor")
+          end
+        end
+
+        context "with sparse fieldset" do
+          let("fields[investor]") { "instagram,facebook,nonexisting" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/get-investor-sparse-fieldset")
+          end
+        end
       end
     end
   end

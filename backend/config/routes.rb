@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => "/api-docs"
+  mount Rswag::Api::Engine => "/api-docs"
+
   get :health_check, to: ->(_env) { [204, {}, [""]] }
 
   namespace :api, format: "json" do

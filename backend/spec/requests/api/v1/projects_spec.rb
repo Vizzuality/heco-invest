@@ -1,4 +1,4 @@
-require "rails_helper"
+require "swagger_helper"
 
 RSpec.describe "API V1 Projects", type: :request do
   before_all do
@@ -8,72 +8,95 @@ RSpec.describe "API V1 Projects", type: :request do
 
   include_examples :api_pagination, model: Project, expected_total: 7
 
-  describe "GET #index" do
-    it "should return projects" do
-      get "/api/v1/projects"
+  path "/api/v1/projects" do
+    get "Returns list of the projects" do
+      tags "Projects"
+      produces "application/json"
+      parameter name: "page[number]", in: :query, type: :integer, description: "Page number. Default: 1", required: false
+      parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
+      parameter name: "fields[project]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to match_snapshot("api/v1/projects")
-    end
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {type: :array, items: {"$ref" => "#/components/schemas/project"}},
+          meta: {"$ref" => "#/components/schemas/pagination_meta"},
+          links: {"$ref" => "#/components/schemas/pagination_links"}
+        }
 
-    describe "sparse fieldset" do
-      it "should work" do
-        get "/api/v1/projects?fields[project]=name,description,nonexisting"
+        run_test!
 
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to match_snapshot("api/v1/projects-sparse-fieldset")
-      end
-    end
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/projects")
+        end
 
-    describe "include relationships" do
-      it "should work" do
-        get "/api/v1/projects?fields[project]=name,project_developer&include=project_developer"
+        context "with sparse fieldset" do
+          let("fields[project]") { "name,description,nonexisting" }
 
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to match_snapshot("api/v1/projects-include-relationships")
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/projects-sparse-fieldset")
+          end
+        end
+
+        context "with relationships" do
+          let("fields[project]") { "name,project_developer" }
+          let(:includes) { "project_developer" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/projects-include-relationships")
+          end
+        end
       end
     end
   end
 
-  describe "GET #show" do
-    it "should return single project" do
-      get "/api/v1/projects/#{@project.id}"
+  path "/api/v1/projects/{id}" do
+    get "Find project by id or slug" do
+      tags "Projects"
+      produces "application/json"
+      parameter name: :id, in: :path, type: :string, description: "Use project ID or slug"
+      parameter name: "fields[project]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to match_snapshot("api/v1/get-project")
-    end
+      let(:id) { @project.id }
 
-    it "should return project by slug" do
-      get "/api/v1/projects/#{@project.slug}"
+      it_behaves_like "with not found error"
 
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to match_snapshot("api/v1/get-project")
-    end
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/project"}
+        }
 
-    describe "errors" do
-      it "displays not found error" do
-        get "/api/v1/projects/not-found"
+        run_test!
 
-        expect(response).to have_http_status(:not_found)
-        expect(response.body).to match_snapshot("api/v1/get-project-not-found")
-      end
-    end
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/get-project")
+        end
 
-    describe "sparse fieldset" do
-      it "should work" do
-        get "/api/v1/projects/#{@project.id}?fields[project]=name,description,nonexisting"
+        context "when slug is used" do
+          let(:id) { @project.slug }
 
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to match_snapshot("api/v1/get-project-sparse-fieldset")
-      end
-    end
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/get-project")
+          end
+        end
 
-    describe "include relationships" do
-      it "should work" do
-        get "/api/v1/projects/#{@project.id}?fields[project]=name,project_developer&include=project_developer"
+        context "with sparse fieldset" do
+          let("fields[project]") { "name,description,nonexisting" }
 
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to match_snapshot("api/v1/get-project-include-relationships")
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/get-project-sparse-fieldset")
+          end
+        end
+
+        context "with relationships" do
+          let("fields[project]") { "name,project_developer" }
+          let(:includes) { "project_developer" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/get-project-include-relationships")
+          end
+        end
       end
     end
   end
