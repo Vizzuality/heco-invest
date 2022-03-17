@@ -1,5 +1,3 @@
-const forms = require('@tailwindcss/forms');
-
 module.exports = {
   content: ['./**/*.ts', './**/*.tsx'],
   theme: {
@@ -41,6 +39,7 @@ module.exports = {
       orange: '#F4A064',
       black: '#000000',
       white: '#FFFFFF',
+      beige: '#E3DED6',
       category: {
         forestry: '#E57D57',
         tourism: '#4492E5',
@@ -77,5 +76,5 @@ module.exports = {
       },
     },
   },
-  plugins: [forms],
+  plugins: [],
 };
