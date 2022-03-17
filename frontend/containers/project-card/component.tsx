@@ -128,7 +128,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               <span className="text-xl font-semibold leading-tight outline-none">{name}</span>
             )}
           </div>
-          <div className="text-sm text-gray-400" title="Project financial instrument">
+          <div className="text-sm text-gray-600" title="Project financial instrument">
             {instrument}
             <span className="mx-2" aria-hidden={true}>
               &bull;
