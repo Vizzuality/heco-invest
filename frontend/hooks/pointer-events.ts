@@ -1,7 +1,7 @@
 import { useCallback, useRef, PointerEventHandler } from 'react';
 
 // Based on: https://github.com/adobe/react-spectrum/issues/2100#issuecomment-940937008
-export const usePropagablePointerEventHandler = <T>(
+export const usePropagableEventHandlers = <T>(
   eventType: 'pointerdown' | 'pointerup' | 'pointermove',
   onPointerEvent: PointerEventHandler<T> | undefined
 ) => {
