@@ -32,7 +32,7 @@ export const Input = <FormValues extends FieldValues>({
       aria-label={ariaLabel}
       type={type}
       className={cx({
-        'block w-full px-4 py-2 text-base text-gray-900 placeholder-gray-400 placeholder-opacity-100 border border-solid border-beige hover:shadow-sm focus:shadow-sm focus:border-green-dark outline-none bg-white rounded-lg disabled:opacity-60 transition-all':
+        'block w-full px-4 py-2 text-base text-gray-900 placeholder-gray-400 placeholder-opacity-100 border border-solid border-beige hover:shadow-sm focus:shadow-sm focus:border-green-dark outline-none bg-white rounded-lg disabled:opacity-60 transition':
           true,
         [className]: !!className,
         'invalid:border-red': invalid,
