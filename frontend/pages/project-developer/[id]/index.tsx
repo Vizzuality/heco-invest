@@ -121,30 +121,34 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
           <TagsGrid className="mt-10 md:mt-14" rows={tagsGridRows} />
         </section>
 
-        <hr className="mt-12 md:mt-20" />
+        {projects.length > 0 && (
+          <>
+            <hr className="mt-12 md:mt-20" />
 
-        <h2 className="mt-12 font-serif text-2xl font-semibold md:mt-20 sm:text-3xl text-green-dark">
-          <FormattedMessage defaultMessage="Projects" id="UxTJRa" />
-          <span className="ml-3">({projects.length})</span>
-        </h2>
+            <h2 className="mt-12 font-serif text-2xl font-semibold md:mt-20 sm:text-3xl text-green-dark">
+              <FormattedMessage defaultMessage="Projects" id="UxTJRa" />
+              <span className="ml-3">({projects.length})</span>
+            </h2>
 
-        <Carousel className="mt-12">
-          {chunk(projects, 3).map((projectsChunk, index) => (
-            <Slide key={`slide-${index}`} className="flex flex-col gap-2">
-              {projectsChunk.map(({ id, category, name, instrument, amount }) => (
-                <ProjectCard
-                  key={id}
-                  id={id}
-                  category={category}
-                  name={name}
-                  instrument={instrument}
-                  amount={amount}
-                  link={`/project/${id}`}
-                />
+            <Carousel className="mt-12">
+              {chunk(projects, 3).map((projectsChunk, index) => (
+                <Slide key={`slide-${index}`} className="flex flex-col gap-2">
+                  {projectsChunk.map(({ id, category, name, instrument, amount }) => (
+                    <ProjectCard
+                      key={id}
+                      id={id}
+                      category={category}
+                      name={name}
+                      instrument={instrument}
+                      amount={amount}
+                      link={`/project/${id}`}
+                    />
+                  ))}
+                </Slide>
               ))}
-            </Slide>
-          ))}
-        </Carousel>
+            </Carousel>
+          </>
+        )}
       </LayoutContainer>
     </>
   );
