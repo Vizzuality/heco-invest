@@ -75,6 +75,9 @@ module.exports = {
         'radial-green-dark':
           'radial-gradient(63.59% 95.05% at 42.99% 35.35%, #316146 0%, #073525 100%)',
       },
+      transitionProperty: {
+        width: 'width',
+      },
     },
   },
   plugins: [],

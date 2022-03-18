@@ -17,11 +17,17 @@
   "0CAqpl": {
     "string": "About the partners"
   },
+  "0cWjQP": {
+    "string": "{title} - page {currentPage} out of {numPages}"
+  },
   "0wBg9P": {
     "string": "Project developers"
   },
   "1B1DeU": {
     "string": "HeCo Invest relies on the <span>ARIES Artificial Intelligence</span> model to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four dimensions of interest based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10 as shown in the chart of impact."
+  },
+  "2O2sfp": {
+    "string": "Finish"
   },
   "2aOaT4": {
     "string": "HeCo Invest is considered as a pilot effort. It will then scale to include all the signatory countries of the Pact."
@@ -65,6 +71,9 @@
   "7KLSqh": {
     "string": "Contribute to the conservation and restoration of the most diverse terrestrial ecosystems on the planet. These ecosystems support countless endemic species and contribute to mitigate the impacts of the climate crisis."
   },
+  "7Rh11y": {
+    "string": "Setup investor profile"
+  },
   "7qgtEX": {
     "string": "Invests in SDG's"
   },
@@ -76,6 +85,9 @@
   },
   "8i6S4q": {
     "string": "Connecting investors, donors and philanthropists with carefully identified investment opportunities."
+  },
+  "9+Ddtu": {
+    "string": "Next"
   },
   "9Er2U2": {
     "string": "Investments in HeCo will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
@@ -222,6 +234,9 @@
   "SQJto2": {
     "string": "Sign in"
   },
+  "TH786p": {
+    "string": "See my profile"
+  },
   "URLNhk": {
     "string": "The Inter-American Development Bank (IDB) is the largest source of development financing for Latin America and the Caribbean. Established in 1959, the IDB supports Latin American and Caribbean economic development, social development and regional integration by lending to governments and government agencies, including State corporations."
   },
@@ -309,6 +324,9 @@
   "cvyJC+": {
     "string": "These investments will support the country’s ambitious climate, biodiversity, and sustainable development goals. They will create resilient landscapes that serve as spaces for inclusion and peacebuilding, with opportunities for improved human well-being and development."
   },
+  "cyR7Kh": {
+    "string": "Back"
+  },
   "dPuc1g": {
     "string": "Slide {slideNumber}"
   },
@@ -320,6 +338,9 @@
   },
   "eM7TKf": {
     "string": "About the platform"
+  },
+  "fnihsY": {
+    "string": "Leave"
   },
   "g5pX+a": {
     "string": "About"
@@ -407,6 +428,9 @@
   },
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
+  },
+  "wSZR47": {
+    "string": "Submit"
   },
   "wkkhPR": {
     "string": "See project developer profile"
