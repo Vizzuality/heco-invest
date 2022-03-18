@@ -14,9 +14,13 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
-import { debounce, times } from 'lodash-es';
+import { debounce } from 'lodash-es';
 
-import type { CarouselProps, SlideProps } from './types';
+import AriaLive from './aria-live';
+import Arrows from './arrows';
+import Paging from './paging';
+import { SlideProps } from './slide';
+import type { CarouselProps } from './types';
 
 export const Carousel: FC<CarouselProps> = ({ className, children }: CarouselProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -118,7 +122,7 @@ export const Carousel: FC<CarouselProps> = ({ className, children }: CarouselPro
               minHeight: `${slideHeight}px` || '0%',
             }}
           >
-            <SlideArrowButtons
+            <Arrows
               className="absolute top-0 left-0 items-center hidden w-full h-full md:flex"
               currentSlide={currentSlide}
               numSlides={numSlides}
@@ -153,120 +157,15 @@ export const Carousel: FC<CarouselProps> = ({ className, children }: CarouselPro
           </div>
         </div>
       </div>
-      <SlidePagingButtons
+      <Paging
         className="flex items-center justify-center gap-1.5 mt-6"
         currentSlide={currentSlide}
         numSlides={numSlides}
         onClick={setCurrentSlide}
       />
-      <SlideAriaLive currentSlide={currentSlide} numSlides={numSlides} />
+      <AriaLive currentSlide={currentSlide} numSlides={numSlides} />
     </div>
   );
 };
-
-const SlideAriaLive = ({ currentSlide, numSlides }) => {
-  const intl = useIntl();
-
-  return (
-    <div className="sr-only" aria-live="polite" aria-atomic="true">
-      <FormattedMessage
-        defaultMessage="Slide {slide} out of {total}"
-        values={{
-          slide: currentSlide + 1,
-          total: numSlides,
-        }}
-        id="xjBcRf"
-      />
-    </div>
-  );
-};
-
-const SlideArrowButtons = ({
-  className,
-  currentSlide,
-  numSlides,
-  onPreviousSlideClick,
-  onNextSlideClick,
-}) => {
-  const intl = useIntl();
-
-  return (
-    <div className={className}>
-      {currentSlide > 0 && (
-        <button
-          aria-label={intl.formatMessage({
-            defaultMessage: 'Previous slide',
-            id: 'MH3koz',
-          })}
-          className="absolute w-8 h-8 bg-white border rounded-full shadow cursor-pointer -left-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
-          onClick={onPreviousSlideClick}
-        >
-          &lt;
-        </button>
-      )}
-
-      {currentSlide < numSlides - 1 && (
-        <button
-          aria-label={intl.formatMessage({
-            defaultMessage: 'Next slide',
-            id: 'Y9bYKH',
-          })}
-          className="absolute w-8 h-8 bg-white border rounded-full shadow cursor-pointer -right-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
-          onClick={onNextSlideClick}
-        >
-          &gt;
-        </button>
-      )}
-    </div>
-  );
-};
-
-const SlidePagingButtons = ({ className, numSlides, currentSlide, onClick }) => {
-  const intl = useIntl();
-
-  return (
-    <div className={className}>
-      {times(numSlides, (slide) => (
-        <button
-          aria-label={intl.formatMessage(
-            {
-              defaultMessage: 'Slide {slideNumber}',
-              id: 'dPuc1g',
-            },
-            {
-              slideNumber: slide + 1,
-            }
-          )}
-          className={cx({
-            'block w-2 h-2 rounded-full cursor-pointer': true,
-            'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark':
-              true,
-            'bg-beige': slide !== currentSlide,
-            'bg-green-dark': slide === currentSlide,
-          })}
-          onClick={() => onClick(slide)}
-        />
-      ))}
-    </div>
-  );
-};
-
-export const Slide: FC<SlideProps> = ({
-  className,
-  width,
-  height,
-  onFocus,
-  children,
-}: SlideProps) => (
-  <li
-    className="inline-flex w-full transition-opacity duration-100 ease-in-out"
-    style={{ width, height }}
-    onFocus={onFocus}
-  >
-    <div className="w-full m-4">
-      <div className={className}>{children}</div>
-    </div>
-  </li>
-);
 
 export default Carousel;
