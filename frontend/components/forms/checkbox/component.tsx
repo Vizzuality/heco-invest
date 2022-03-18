@@ -13,7 +13,7 @@ import { CheckboxProps } from './types';
 export const Checkbox = <FormValues extends FieldValues>(props: CheckboxProps<FormValues>) => {
   const { register, registerOptions, labelText, labelClassName, checkboxClassName, ...rest } =
     props;
-  const { name, id } = rest;
+  const { name, id, 'aria-label': ariaLabel } = rest;
 
   const [invalid, setInvalid] = useState(false);
   const state = useToggleState(props);
@@ -32,22 +32,28 @@ export const Checkbox = <FormValues extends FieldValues>(props: CheckboxProps<Fo
     >
       <VisuallyHidden>
         <input
+          id={id}
+          aria-label={ariaLabel}
+          {...rest}
           {...inputProps}
           {...focusProps}
           {...register(name, {
             ...registerOptions,
-            onChange: toggle,
+            onChange: (e) => {
+              toggle();
+              if (invalid && e.currentTarget.checked) setInvalid(false);
+            },
           })}
           onInvalid={() => setInvalid(true)}
         />
       </VisuallyHidden>
       <div
         className={cx(
-          'mr-2 mt-0.5 inline-block w-4 h-4 rounded hover:border hover:border-green-dark hover:transition-all duration-500 ease-in-out px-0.5 py-[3px] font-sans text-sm text-gray-800 font-regular',
+          'mr-2 mt-0.5 inline-block w-4 h-4 rounded hover:border hover:border-green-dark hover:transition-all duration-500 ease-in-out px-0.5 py-[3px] border',
           {
-            'border border-green-dark bg-green-dark': isSelected,
-            'border border-bege': !isSelected,
-            'border border-red': invalid,
+            'border-beige': !isSelected && !invalid,
+            'border-green-dark bg-green-dark': isSelected && !invalid,
+            'border-red': !isSelected && invalid,
             'ring-green-dark ring-2 ring-offset-2 ring-offset-white': isFocusVisible,
             [checkboxClassName]: !!checkboxClassName,
           }
