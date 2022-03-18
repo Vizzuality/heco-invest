@@ -5,5 +5,6 @@ class LocationType
     state
     department
     municipality
+    region
   ].freeze
 end
