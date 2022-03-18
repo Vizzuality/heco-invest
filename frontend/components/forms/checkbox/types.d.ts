@@ -13,12 +13,8 @@ export type CheckboxProps<FormValues> = {
   register: UseFormRegister<FormValues>;
   /** Options for React Hook Form's `register` function */
   registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
-  /** Label text */
-  labelText: string | SX.Element;
-  /** class to change label text style */
-  labelClassName?: string;
   /** class to change checkbox element style */
-  checkboxClassName?: string;
+  className?: string;
 } & Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   keyof RegisterOptions<FormValues, FieldPath<FormValues>>

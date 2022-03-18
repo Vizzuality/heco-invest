@@ -51,11 +51,16 @@ const TemplateWithLabel: Story<CheckboxProps<FormValues>> = (args: CheckboxProps
 
   return (
     <div className="p-3">
-      <Checkbox
-        register={register}
-        {...args}
-        labelText="I agree with the Terms and Privacy Policy."
-      />
+      <label htmlFor="check">
+        <Checkbox
+          id="checkbox"
+          name="checkbox"
+          aria-label="checkbox"
+          register={register}
+          {...args}
+        />
+        I accept the Terms and Privacy Policy
+      </label>
     </div>
   );
 };
@@ -90,12 +95,17 @@ const TemplateWithForm: Story<CheckboxProps<FormValues>> = (args: CheckboxProps<
         noValidate
         onSubmit={handleSubmit(onSubmit)}
       >
-        <Checkbox
-          register={register}
-          aria-describedby="form-error"
-          {...args}
-          labelText="I agree with the Terms and Privacy Policy."
-        />
+        <label htmlFor="checkbox">
+          <Checkbox
+            id="checkbox"
+            name="checkbox"
+            aria-label="checkbox"
+            register={register}
+            aria-describedby="form-error"
+            {...args}
+          />
+          I accept the Terms and Privacy Policy
+        </label>
         {errors.accept?.message && (
           <p id="form-error" className="pl-2 mt-1 text-xs text-red">
             {errors.accept?.message}
