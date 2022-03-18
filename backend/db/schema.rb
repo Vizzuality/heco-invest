@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_07_165412) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_17_074221) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,6 +99,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_07_165412) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_investors_on_account_id"
+  end
+
+  create_table "locations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "parent_id"
+    t.string "location_type", null: false
+    t.text "name_en"
+    t.text "name_es"
+    t.text "name_pt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_type", "name_en"], name: "uniq_name_en_without_parent_id", unique: true, where: "(parent_id IS NULL)"
+    t.index ["location_type", "name_es"], name: "uniq_name_es_without_parent_id", unique: true, where: "(parent_id IS NULL)"
+    t.index ["location_type", "name_pt"], name: "uniq_name_pt_without_parent_id", unique: true, where: "(parent_id IS NULL)"
+    t.index ["location_type", "parent_id", "name_en"], name: "uniq_name_en_with_parent_id", unique: true, where: "(parent_id IS NOT NULL)"
+    t.index ["location_type", "parent_id", "name_es"], name: "uniq_name_es_with_parent_id", unique: true, where: "(parent_id IS NOT NULL)"
+    t.index ["location_type", "parent_id", "name_pt"], name: "uniq_name_pt_with_parent_id", unique: true, where: "(parent_id IS NOT NULL)"
+    t.index ["parent_id"], name: "index_locations_on_parent_id"
   end
 
   create_table "open_calls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -216,6 +233,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_07_165412) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "investors", "accounts", on_delete: :cascade
+  add_foreign_key "locations", "locations", column: "parent_id", on_delete: :cascade
   add_foreign_key "open_calls", "investors", on_delete: :cascade
   add_foreign_key "project_developers", "accounts", on_delete: :cascade
   add_foreign_key "projects", "project_developers", on_delete: :cascade
