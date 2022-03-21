@@ -34,6 +34,7 @@ RSpec.describe "API V1 Session", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/session")
+          expect(session["warden.user.api_v1_user.key"]).to be_present
         end
       end
 
@@ -71,6 +72,10 @@ RSpec.describe "API V1 Session", type: :request do
         before(:each) { sign_in @user }
 
         run_test!
+
+        it "removes user from session" do
+          expect(session["warden.user.api_v1_user.key"]).to be_nil
+        end
       end
 
       response "401", "Authentication failed" do

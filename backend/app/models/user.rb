@@ -19,8 +19,4 @@ class User < ApplicationRecord
 
     errors.add :password, "must include at least one lowercase letter, one uppercase letter, and one digit"
   end
-
-  def confirmation_required?
-    false
-  end
 end
