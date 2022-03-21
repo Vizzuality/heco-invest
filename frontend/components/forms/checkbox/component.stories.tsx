@@ -51,15 +51,9 @@ const TemplateWithLabel: Story<CheckboxProps<FormValues>> = (args: CheckboxProps
 
   return (
     <div className="p-3">
-      <label htmlFor="check">
-        <Checkbox
-          id="checkbox"
-          name="checkbox"
-          aria-label="checkbox"
-          register={register}
-          {...args}
-        />
-        I accept the Terms and Privacy Policy
+      <label htmlFor="story-check">
+        <Checkbox id="story-check" name="checkbox" register={register} {...args} />I accept the
+        Terms and Privacy Policy
       </label>
     </div>
   );
@@ -67,7 +61,7 @@ const TemplateWithLabel: Story<CheckboxProps<FormValues>> = (args: CheckboxProps
 
 export const WithLabel: Story<CheckboxProps<FormValues>> = TemplateWithLabel.bind({});
 WithLabel.args = {
-  id: 'form-accept',
+  id: 'story-check',
   name: 'accept',
   registerOptions: {
     disabled: false,
@@ -95,11 +89,10 @@ const TemplateWithForm: Story<CheckboxProps<FormValues>> = (args: CheckboxProps<
         noValidate
         onSubmit={handleSubmit(onSubmit)}
       >
-        <label htmlFor="checkbox">
+        <label htmlFor="story-check">
           <Checkbox
-            id="checkbox"
-            name="checkbox"
-            aria-label="checkbox"
+            id="story-check"
+            name="accept"
             register={register}
             aria-describedby="form-error"
             {...args}
@@ -125,7 +118,7 @@ const TemplateWithForm: Story<CheckboxProps<FormValues>> = (args: CheckboxProps<
 
 export const ErrorState: Story<CheckboxProps<FormValues>> = TemplateWithForm.bind({});
 ErrorState.args = {
-  id: 'form-accept',
+  id: 'story-check',
   name: 'accept',
   registerOptions: {
     disabled: false,
