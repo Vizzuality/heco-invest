@@ -1,0 +1,12 @@
+{
+  "data": {
+    "id": "67e7761f-6b34-427a-8ea0-d8236aa3aa15",
+    "type": "user",
+    "attributes": {
+      "first_name": "Jan",
+      "last_name": "Kowalski",
+      "email": "jankowalski@example.com",
+      "role": null
+    }
+  }
+}

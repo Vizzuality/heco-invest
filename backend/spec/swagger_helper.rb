@@ -22,6 +22,18 @@ RSpec.configure do |config|
       components: {
         securitySchemes: {},
         schemas: {
+          user: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              type: {type: :string},
+              attributes: {
+                first_name: {type: :string},
+                last_name: {type: :string},
+                email: {type: :string}
+              }
+            }
+          },
           investor: {
             type: :object,
             properties: {

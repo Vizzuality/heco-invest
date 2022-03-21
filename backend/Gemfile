@@ -16,6 +16,7 @@ gem "stimulus-rails"
 gem "turbo-rails"
 
 gem "friendly_id", "~> 5.4.0"
+gem "devise"
 gem "traco"
 
 # API
