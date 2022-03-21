@@ -40,4 +40,8 @@ if Rails.env.development?
       FactoryBot.create(:project, project_developer: project_developer)
     end
   end
+
+  Importers::Locations.new("Colombia",
+    departments_file_path: Rails.root.join("db/seeds/files/colombia_departments.csv"),
+    municipalities_file_path: Rails.root.join("db/seeds/files/colombia_municipalities.csv")).call
 end
