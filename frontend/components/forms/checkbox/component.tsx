@@ -21,11 +21,11 @@ export const Checkbox = <FormValues extends FieldValues>(props: CheckboxProps<Fo
 
   const ref = useRef();
   const { inputProps } = useCheckbox(rest, state, ref);
-
+  console.log(isFocusVisible);
   return (
     <input
       className={cx(
-        'appearance-none mr-2 mt-0.5 inline-block w-4 h-4 rounded hover:border hover:border-green-dark hover:transition-all duration-500 ease-in-out px-0.5 py-[3px] border bg-[url("/images/checkbox-checked.svg")] bg-no-repeat bg-center',
+        'appearance-none mr-2 mt-0.5 inline-block w-4 h-4 rounded hover:border hover:border-green-dark hover:transition-all outline-0 focus-visible:ring-green-dark focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white  duration-500 ease-in-out px-0.5 py-[3px] border bg-[url("/images/checkbox-checked.svg")] bg-no-repeat bg-center',
         {
           'border-beige': !isSelected && !invalid,
           'border-green-dark bg-green-dark': isSelected && !invalid,
