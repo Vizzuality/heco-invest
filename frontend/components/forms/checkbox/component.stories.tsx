@@ -122,6 +122,6 @@ ErrorState.args = {
   name: 'accept',
   registerOptions: {
     disabled: false,
-    required: 'Accept term and Privacy Policy is required.',
+    required: 'Accept Terms and Privacy Policy is required.',
   },
 };
