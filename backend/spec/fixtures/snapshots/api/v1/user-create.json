@@ -6,7 +6,8 @@
       "first_name": "Jan",
       "last_name": "Kowalski",
       "email": "jankowalski@example.com",
-      "role": null
+      "role": "light",
+      "confirmed": false
     }
   }
 }

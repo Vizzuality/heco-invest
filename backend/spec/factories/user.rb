@@ -10,6 +10,7 @@ FactoryBot.define do
     end
     email { Faker::Internet.safe_email(name: "#{first_name} #{last_name}") }
     password { "SuperSecret1234" }
+    role { "light" }
     ui_language { "en" }
     confirmed_at { 1.day.ago }
   end

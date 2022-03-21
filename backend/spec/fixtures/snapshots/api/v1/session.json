@@ -6,7 +6,8 @@
       "first_name": "Dawna",
       "last_name": "Block",
       "email": "user@example.com",
-      "role": null
+      "role": "light",
+      "confirmed": true
     }
   }
 }

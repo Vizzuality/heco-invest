@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :confirmable, :registerable,
     :recoverable, :rememberable, :validatable
 
+  enum role: {light: 0, investor: 1, project_developer: 2}, _default: :light
+
   validates :password,
     length: {minimum: 12, message: "must be at least 12 characters long"},
     allow_nil: true
@@ -16,14 +18,6 @@ class User < ApplicationRecord
     return if password.match?(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)./)
 
     errors.add :password, "must include at least one lowercase letter, one uppercase letter, and one digit"
-  end
-
-  def role
-    return nil if account.nil?
-    return "investor" if account.investor.present?
-    return "project_developer" if account.project_developer.present?
-
-    nil
   end
 
   def confirmation_required?
