@@ -15,7 +15,7 @@
     "i18n:compile": "formatjs compile-folder lang/transifex lang/compiled --format transifex"
   },
   "engines": {
-    "node": "~16.14"
+    "node": "~16.14 || ~14.19"
   },
   "dependencies": {
     "@deck.gl/core": "^8.4.16",
