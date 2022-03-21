@@ -57,7 +57,7 @@ module Importers
                    member_id: regions[region_name].first.id}
         end
       end
-      LocationMember.insert_all data
+      LocationMember.insert_all data if data.present?
     end
 
     def departments

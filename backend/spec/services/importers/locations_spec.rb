@@ -24,8 +24,8 @@ RSpec.describe Importers::Locations do
 
     it "inserts correct departments" do
       expect(departments.count).to eq(2)
-      expect(department_names).to include("Amazonas Department")
-      expect(department_names).to include("Antioquia Department")
+      expect(department_names).to include("Amazonas")
+      expect(department_names).to include("Antioquia")
     end
 
     it "assigns correct parent to departments" do
@@ -42,9 +42,9 @@ RSpec.describe Importers::Locations do
 
     it "assigns correct parents to municipalities" do
       expect(municipalities.where(name_en: ["Leticia", "Puerto Nariño"]).map { |r| r.parent.name_en }.uniq)
-        .to eq(["Amazonas Department"])
+        .to eq(["Amazonas"])
       expect(municipalities.where(name_en: ["Abejorral", "Abriaquí"]).map { |r| r.parent.name }.uniq)
-        .to eq(["Antioquia Department"])
+        .to eq(["Antioquia"])
     end
 
     it "inserts correct regions" do
