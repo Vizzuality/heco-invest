@@ -1,12 +1,12 @@
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
-import { FormattedMessage } from 'react-intl';
-
-import cx from 'classnames';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { InferGetStaticPropsType } from 'next';
+import validate from 'validate.js';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import Input from 'components/forms/input';
 import Icon from 'components/icon';
 import Loading from 'components/loading';
 import { StaticPageLayoutProps } from 'layouts/static-page';
@@ -15,7 +15,6 @@ import { SignupDto, SignupFormI } from 'types/signup';
 
 import { useSignup } from 'services/users/userService';
 
-import { validateEmail } from '../components/forms/rhf-validations';
 import WARNING_SGV from '../svgs/notifications/warning-outlined.svg';
 
 export async function getStaticProps(ctx) {
@@ -38,6 +37,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
     setFocus,
   } = useForm<SignupFormI>();
 
+  const intl = useIntl();
   const { mutateAsync, isSuccess, error, isLoading } = useSignup();
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {
@@ -57,6 +57,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
   };
 
   const onError: SubmitErrorHandler<SignupFormI> = (error) => {
+    console.log('error', error);
     const firstError = Object.keys(error)[0] as keyof SignupFormI;
     setFocus(firstError);
   };
@@ -70,7 +71,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
         <FormattedMessage defaultMessage="Please enter your details below." id="rfVDxL" />
       </p>
       <form onSubmit={handleSubmit(onSubmit, onError)}>
-        {!error && (
+        {error && (
           <div className="flex mt-6 p-4.5 rounded-lg bg-background-error" role="alert">
             <Icon icon={WARNING_SGV} className="w-5 h-5 text-red" />
             <p className="ml-2 font-sans text-sm leading-normal text-black">Server error message</p>
@@ -82,13 +83,19 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               <p className="mb-2.5 mt-4.5 font-sans text-sm font-semibold text-gray-800">
                 <FormattedMessage defaultMessage="First name" id="pONqz8" />
               </p>
-              <input
-                className={cx('w-full', { 'border-red': errors.firstName })}
+              <Input
                 type="text"
-                name="first-name"
+                name="firstName"
+                id="first-name"
                 placeholder="Insert your name"
                 aria-describedby="first-name-error"
-                {...register('firstName', { required: 'Please insert your first name' })}
+                register={register}
+                registerOptions={{
+                  required: intl.formatMessage({
+                    defaultMessage: 'You need to enter a name.',
+                    id: 'Pl5xI4',
+                  }),
+                }}
               />
             </label>
             {errors.firstName && (
@@ -96,7 +103,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 id="first-name-error"
                 className="mt-1 ml-2 font-sans text-xs text-red font-regular"
               >
-                <FormattedMessage defaultMessage="You need to enter a name." id="Pl5xI4" />
+                {errors.firstName.message}
               </p>
             )}
           </div>
@@ -105,18 +112,24 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               <p className="mb-2.5 mt-4.5 font-sans text-sm font-semibold text-gray-800">
                 <FormattedMessage defaultMessage="Last name" id="txUL0F" />
               </p>
-              <input
-                className={cx('w-full', { 'border-red': errors.lastName })}
+              <Input
                 type="text"
-                name="last-name"
+                name="lastName"
+                id="last-name"
                 placeholder="Insert your last name"
                 aria-describedby="last-name-error"
-                {...register('lastName', { required: true })}
+                register={register}
+                registerOptions={{
+                  required: intl.formatMessage({
+                    defaultMessage: 'You need to enter a last name.',
+                    id: 'zPMPr9',
+                  }),
+                }}
               />
             </label>
             {errors.lastName && (
               <p id="last-name-error" className="mt-1 ml-2 font-sans text-xs text-red font-regular">
-                <FormattedMessage defaultMessage="You need to enter a last name." id="zPMPr9" />
+                {errors.lastName.message}
               </p>
             )}
           </div>
@@ -126,27 +139,34 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             <p className="mb-2.5 mt-4.5 font-sans text-sm font-semibold text-gray-800">
               <FormattedMessage defaultMessage="Email" id="sy+pv5" />
             </p>
-            <input
-              className={cx('w-full', { 'border-red': errors.email })}
+            <Input
               type="email"
               name="email"
+              id="email"
               placeholder="Insert your email"
               aria-describedby="email-error"
-              {...register('email', {
-                required: {
-                  value: true,
-                  message: 'Please insert your email',
-                },
-                validate: (value) => value && validateEmail(value),
-              })}
+              register={register}
+              registerOptions={{
+                required: intl.formatMessage({
+                  defaultMessage: 'You need to enter your email',
+                  id: 'NioTuC',
+                }),
+                validate: (value) =>
+                  validate(
+                    { from: value },
+                    {
+                      from: {
+                        email: true,
+                      },
+                    }
+                  ),
+              }}
             />
           </label>
           {errors.email && (
             <p id="email-error" className="mt-1 ml-2 font-sans text-xs text-red font-regular">
-              {errors.email.type === 'validate' ? (
-                <FormattedMessage defaultMessage="Invalid email" id="ByuOj8" />
-              ) : (
-                <FormattedMessage defaultMessage="You need to enter your email" id="NioTuC" />
+              {errors.email.message || (
+                <FormattedMessage defaultMessage="Invalid email format" id="nc1IrM" />
               )}
             </p>
           )}
@@ -157,16 +177,26 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               <p className="mb-2.5 mt-4.5 font-sans text-sm font-semibold text-gray-800">
                 <FormattedMessage defaultMessage="Password" id="5sg7KC" />
               </p>
-              <input
-                className={cx('w-full', { 'border-red': errors.password })}
+              <Input
                 type="password"
                 placeholder="insert password"
                 name="password"
+                id="password"
                 aria-describedby="password-description password-error"
-                {...register('password', {
-                  required: true,
-                  minLength: 8,
-                })}
+                register={register}
+                registerOptions={{
+                  required: intl.formatMessage({
+                    defaultMessage: 'You need to enter a password.',
+                    id: 'zeCjLr',
+                  }),
+                  minLength: {
+                    value: 8,
+                    message: intl.formatMessage({
+                      defaultMessage: 'The password must have at least 8 characters.',
+                      id: 'TiXJ+4',
+                    }),
+                  },
+                }}
               />
             </label>
             <p
@@ -177,14 +207,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             </p>
             {errors.password && (
               <p id="password-error" className="mt-1 ml-2 font-sans text-xs text-red font-regular">
-                {errors.password.type === 'minLenth' ? (
-                  <FormattedMessage
-                    defaultMessage="The passwor must be at least 8 characters."
-                    id="PnUTcF"
-                  />
-                ) : (
-                  <FormattedMessage defaultMessage="You need to enter a password." id="zeCjLr" />
-                )}
+                {errors.password.message}
               </p>
             )}
           </div>
@@ -193,16 +216,20 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               <p className="mb-2.5 mt-4.5 font-sans text-sm font-semibold text-gray-800">
                 <FormattedMessage defaultMessage="Confirm password" id="8HimVK" />
               </p>
-              <input
+              <Input
                 type="password"
-                className={cx('w-full', { 'border-red': errors.confirmPassword })}
-                name="confirm-password"
+                id="confirm-password"
+                name="confirmPassword"
                 placeholder="insert password"
                 aria-describedby="confirm-password-error"
-                {...register('confirmPassword', {
-                  required: true,
+                register={register}
+                registerOptions={{
+                  required: intl.formatMessage({
+                    defaultMessage: 'You need to confirm the password',
+                    id: 'pPBoUU',
+                  }),
                   validate: (value) => value === getValues('password'),
-                })}
+                }}
               />
             </label>
             {errors.confirmPassword && (
@@ -210,22 +237,27 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 id="confirm-password-error"
                 className="mt-1 ml-2 font-sans text-xs text-red font-regular"
               >
-                {errors.confirmPassword.type === 'validate' ? (
+                {errors.confirmPassword.message || (
                   <FormattedMessage defaultMessage="The passwords don't match" id="eo4bnL" />
-                ) : (
-                  <FormattedMessage defaultMessage="You need to confirm the password" id="pPBoUU" />
                 )}
               </p>
             )}
           </div>
         </div>
         <div className="w-full mt-8">
-          <label htmlFor="acceptTerms">
-            <input
-              className={cx({ 'border-red': errors.acceptTerms })}
+          <label htmlFor="accept-terms">
+            <Input
+              name="acceptTerms"
+              id="accept-terms"
               aria-describedby="accept-terms-error"
               type="checkbox"
-              {...register('acceptTerms', { required: true })}
+              register={register}
+              registerOptions={{
+                required: intl.formatMessage({
+                  defaultMessage: 'You need to accept the Terms and Privacy Policy.',
+                  id: 'tkP6dd',
+                }),
+              }}
             />
             <span className="ml-2 font-sans text-sm text-gray-800 font-regular">
               <FormattedMessage
@@ -239,10 +271,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               id="accept-terms-error"
               className="mt-1 ml-2 font-sans text-xs text-red font-regular"
             >
-              <FormattedMessage
-                defaultMessage="You need to accept the Terms and Privacy Policy."
-                id="tkP6dd"
-              />
+              {errors.acceptTerms.message}
             </p>
           )}
         </div>
