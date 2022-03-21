@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Heart as HeartIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { noop } from 'lodash-es/noop';
+import noop from 'lodash-es/noop';
 
 import Image from 'next/image';
 
