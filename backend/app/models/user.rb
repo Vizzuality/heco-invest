@@ -25,4 +25,8 @@ class User < ApplicationRecord
 
     nil
   end
+
+  def confirmation_required?
+    false
+  end
 end

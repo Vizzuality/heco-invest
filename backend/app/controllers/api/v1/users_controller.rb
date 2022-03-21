@@ -5,6 +5,7 @@ module API
 
       def create
         user = User.create!(user_params)
+        sign_in user
         render json: UserSerializer.new(user)
       end
 
