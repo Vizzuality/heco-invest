@@ -125,3 +125,44 @@ ErrorState.args = {
     required: 'Accept Terms and Privacy Policy is required.',
   },
 };
+
+const TemplateDisabled: Story<CheckboxProps<FormValues>> = (args: CheckboxProps<FormValues>) => {
+  const {
+    register,
+    formState: { errors },
+  } = useForm<FormValues>({
+    // Using the native validation, we're able to style the inputs using the `valid` and `invalid`
+    // pseudo class
+    shouldUseNativeValidation: true,
+  });
+
+  return (
+    <div className="p-4">
+      <label htmlFor="story-check">
+        <Checkbox
+          id="story-check"
+          name="accept"
+          register={register}
+          aria-describedby="form-error"
+          {...args}
+        />
+        I accept the Terms and Privacy Policy
+      </label>
+      {errors.accept?.message && (
+        <p id="form-error" className="pl-2 mt-1 text-xs text-red">
+          {errors.accept?.message}
+        </p>
+      )}
+    </div>
+  );
+};
+
+export const Disabled: Story<CheckboxProps<FormValues>> = TemplateDisabled.bind({});
+Disabled.args = {
+  id: 'story-check',
+  name: 'accept',
+  registerOptions: {
+    disabled: true,
+    required: false,
+  },
+};

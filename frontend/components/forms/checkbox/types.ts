@@ -15,8 +15,6 @@ export type CheckboxProps<FormValues> = {
   registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
   /** class to change checkbox element style */
   className?: string;
-
-  disabled?: boolean;
 } & Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   keyof RegisterOptions<FormValues, FieldPath<FormValues>>
