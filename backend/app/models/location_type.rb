@@ -2,7 +2,7 @@ class LocationType
   include EnumModel
 
   TYPES = %w[
-    state
+    country
     department
     municipality
     region

@@ -18,8 +18,8 @@ RSpec.describe Importers::Locations do
 
     before { subject.call }
 
-    it "inserts correct state" do
-      expect(Location.where(name_en: "Colombia", location_type: "state")).to be_exists
+    it "inserts correct country" do
+      expect(Location.where(name_en: "Colombia", location_type: "country")).to be_exists
     end
 
     it "inserts correct departments" do

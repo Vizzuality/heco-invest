@@ -2,10 +2,10 @@ require "csv"
 
 module Importers
   class Locations
-    attr_accessor :state_name, :state, :departments_file_path, :municipalities_file_path, :regions_file_path
+    attr_accessor :country_name, :country, :departments_file_path, :municipalities_file_path, :regions_file_path
 
-    def initialize(state_name, departments_file_path:, municipalities_file_path:, regions_file_path:)
-      @state_name = state_name
+    def initialize(country_name, departments_file_path:, municipalities_file_path:, regions_file_path:)
+      @country_name = country_name
       @departments_file_path = departments_file_path
       @municipalities_file_path = municipalities_file_path
       @regions_file_path = regions_file_path
@@ -13,7 +13,7 @@ module Importers
 
     def call
       ActiveRecord::Base.transaction do
-        import_state!
+        import_country!
         import_departments!
         import_municipalities!
         import_regions!
@@ -23,13 +23,13 @@ module Importers
 
     private
 
-    def import_state!
-      @state = Location.find_or_create_by name_en: state_name, location_type: "state"
+    def import_country!
+      @country = Location.find_or_create_by name_en: country_name, location_type: "country"
     end
 
     def import_departments!
       data = CSV.parse(File.read(departments_file_path), headers: true, col_sep: ";").map do |row|
-        {name_en: row["name"], parent_id: state.id, location_type: "department"}
+        {name_en: row["name"], parent_id: country.id, location_type: "department"}
       end
       Location.insert_all data
     end
@@ -43,7 +43,7 @@ module Importers
 
     def import_regions!
       data = CSV.foreach(regions_file_path, col_sep: ";").first[1..].map do |header|
-        {name_en: header, parent_id: state.id, location_type: "region"}
+        {name_en: header, parent_id: country.id, location_type: "region"}
       end
       Location.insert_all data
     end
@@ -61,11 +61,11 @@ module Importers
     end
 
     def departments
-      @departments ||= minify Location.where(parent: state, location_type: "department")
+      @departments ||= minify Location.where(parent: country, location_type: "department")
     end
 
     def regions
-      @regions ||= minify Location.where(parent: state, location_type: "region")
+      @regions ||= minify Location.where(parent: country, location_type: "region")
     end
 
     def municipalities

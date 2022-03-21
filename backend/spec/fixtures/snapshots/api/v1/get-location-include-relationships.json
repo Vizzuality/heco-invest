@@ -1,0 +1,34 @@
+{
+  "data": {
+    "id": "4debca7f-9251-403f-b893-ff0e78bd6af4",
+    "type": "location",
+    "attributes": {
+      "name": "Hane, Lehner and Goyette"
+    },
+    "relationships": {
+      "parent": {
+        "data": {
+          "id": "5331a4ba-ef75-4b7f-8cdd-8ec39e692bbd",
+          "type": "location"
+        }
+      }
+    }
+  },
+  "included": [
+    {
+      "id": "5331a4ba-ef75-4b7f-8cdd-8ec39e692bbd",
+      "type": "location",
+      "attributes": {
+        "name": "Bartoletti and Sons"
+      },
+      "relationships": {
+        "parent": {
+          "data": {
+            "id": "b031e422-5eaf-4b34-86ab-ac4171830671",
+            "type": "location"
+          }
+        }
+      }
+    }
+  ]
+}
