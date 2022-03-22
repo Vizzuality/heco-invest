@@ -36,3 +36,8 @@ variable "storage_class" {
   default     = "STANDARD"
   description = "The storage class of the Storage Bucket to create"
 }
+
+variable "transifex_token" {
+  type = string
+  description = "Transifex API access token"
+}

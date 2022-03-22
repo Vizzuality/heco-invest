@@ -12,6 +12,13 @@ module "frontend_gcr" {
   name = "frontend"
 }
 
+
+locals {
+  frontend_docker_build_args = {
+      "TRANSIFEX_TOKEN" = var.transifex_token
+  }
+}
+
 module "frontend_build" {
   source = "./modules/cloudbuild"
   name = "frontend"
@@ -23,4 +30,5 @@ module "frontend_build" {
   image_name = "frontend"
   dockerfile_path = "./frontend/Dockerfile"
   docker_context_path = "./frontend"
+  docker_build_args = local.frontend_docker_build_args
 }
