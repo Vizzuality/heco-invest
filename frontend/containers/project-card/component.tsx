@@ -143,8 +143,8 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               src={'/images/temp-placeholders/impact-shape.png'}
               alt={intl.formatMessage(
                 {
-                  defaultMessage: 'Impact shame of the {name} project',
-                  id: 'IDzvCG',
+                  defaultMessage: 'Impact shape of the {name} project',
+                  id: 'cAtOAM',
                 },
                 {
                   name,
@@ -152,8 +152,8 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               )}
               title={intl.formatMessage(
                 {
-                  defaultMessage: 'Impact shame of the {name} project',
-                  id: 'IDzvCG',
+                  defaultMessage: 'Impact shape of the {name} project',
+                  id: 'cAtOAM',
                 },
                 {
                   name,
