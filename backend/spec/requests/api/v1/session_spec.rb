@@ -10,13 +10,13 @@ RSpec.describe "API V1 Session", type: :request do
       tags "Session"
       consumes "application/json"
       produces "application/json"
+      security [csrf: []]
       parameter name: :user_params, in: :body, type: :object,
         properties: {
           email: {type: :string},
           passsword: {type: :string}
         },
         required: ["email", "password"]
-      parameter name: "X-CSRF-TOKEN", in: :header, type: :string, description: "CSRF token"
 
       response "200", :success do
         schema type: :object, properties: {
@@ -80,11 +80,11 @@ RSpec.describe "API V1 Session", type: :request do
 
     delete "Logs out User" do
       tags "Session"
+      security [cookie_auth: [], csrf: []]
       consumes "application/json"
       produces "application/json"
-      parameter name: "X-CSRF-TOKEN", in: :header, type: :string, description: "CSRF token"
 
-      it_behaves_like "with not authorized error"
+      it_behaves_like "with not authorized error", csrf: true
 
       response "200", :success do
         schema type: :object, properties: {data: {}}

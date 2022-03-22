@@ -1,8 +1,8 @@
 require "swagger_helper"
 
-RSpec.shared_examples "with not authorized error" do
+RSpec.shared_examples "with not authorized error" do |csrf: false|
   response "401", "Authentication failed" do
-    let("X-CSRF-TOKEN") { get_csrf_token }
+    let("X-CSRF-TOKEN") { get_csrf_token } if csrf
 
     run_test!
 

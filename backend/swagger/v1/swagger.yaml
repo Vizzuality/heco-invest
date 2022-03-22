@@ -231,7 +231,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 1fe4d779-3d9d-4588-90d4-6d723f810e3d
+                - id: fe371bb4-bbf8-476c-a93d-36733ddf94a0
                   type: investor
                   attributes:
                     name: Kutch-Spencer
@@ -270,7 +270,7 @@ paths:
                     previously_invested_description: Enim repellat pariatur. Earum
                       modi eos. Libero tempora exercitationem. Qui dolorem quo.
                     language: en
-                - id: a0af888c-91ce-4bdc-b686-25d19ff146aa
+                - id: 7b38fb41-d3bd-48d5-a84f-812ec016a1ad
                   type: investor
                   attributes:
                     name: Bartoletti and Sons
@@ -309,7 +309,7 @@ paths:
                     previously_invested_description: Placeat commodi libero. Quo recusandae
                       repellat. Sunt commodi tempore. Voluptatem et corrupti.
                     language: en
-                - id: dce41165-8e6a-44f4-a5c7-96af75d0c1bc
+                - id: da2a8365-f9da-4bac-93df-eb00f7b2954b
                   type: investor
                   attributes:
                     name: Hane, Lehner and Goyette
@@ -348,7 +348,7 @@ paths:
                     previously_invested_description: Et quaerat omnis. Harum voluptas
                       atque. Quo nesciunt voluptas. Suscipit ex cum.
                     language: en
-                - id: 876a4a70-c065-448f-a55f-76004276a2fd
+                - id: 0d3436d4-c49d-41ab-b912-cffffd3afea4
                   type: investor
                   attributes:
                     name: Hilpert, Waters and Johnston
@@ -387,7 +387,7 @@ paths:
                     previously_invested_description: Dolores fugiat nesciunt. Ut laborum
                       dolores. Sit neque eos. Expedita molestiae quia.
                     language: en
-                - id: e62b5ba4-f32f-4c8b-a506-193b84af1c70
+                - id: fe5d0b23-15bf-468a-9b04-8e0106b86f1a
                   type: investor
                   attributes:
                     name: Jacobson, Fritsch and Stanton
@@ -426,7 +426,7 @@ paths:
                     previously_invested_description: Autem et et. Voluptatem neque
                       quibusdam. Repellat recusandae eum. Eius ex est.
                     language: en
-                - id: b354d214-d3ca-4600-bcbf-459ad65e2803
+                - id: d34408ff-7da9-4efc-98b6-78d7816f463b
                   type: investor
                   attributes:
                     name: Keebler, Kub and Zemlak
@@ -465,7 +465,7 @@ paths:
                     previously_invested_description: Porro soluta beatae. Quia ratione
                       facilis. Eligendi sapiente voluptatem. Quas rerum officia.
                     language: en
-                - id: f3d92bcb-e071-4ac8-aa3b-5c4b26467395
+                - id: f02bbe89-3bf9-46be-85c1-9068c84afb61
                   type: investor
                   attributes:
                     name: Becker LLC
@@ -557,7 +557,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 1fe4d779-3d9d-4588-90d4-6d723f810e3d
+                  id: fe371bb4-bbf8-476c-a93d-36733ddf94a0
                   type: investor
                   attributes:
                     name: Kutch-Spencer
@@ -643,7 +643,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: e35b2cbc-d870-44d0-bedf-b3e015c43e83
+                - id: 57243f50-fef8-453c-bc2f-520d0b2f9c7b
                   type: location
                   attributes:
                     name: Kutch-Spencer
@@ -653,7 +653,7 @@ paths:
                       data:
                     regions:
                       data: []
-                - id: bb9724c0-3411-439b-aaf5-a59ec8acf9a5
+                - id: 6c6367d4-e9e2-470b-bfe8-58a868660e8d
                   type: location
                   attributes:
                     name: Bartoletti and Sons
@@ -661,11 +661,11 @@ paths:
                   relationships:
                     parent:
                       data:
-                        id: e35b2cbc-d870-44d0-bedf-b3e015c43e83
+                        id: 57243f50-fef8-453c-bc2f-520d0b2f9c7b
                         type: location
                     regions:
                       data: []
-                - id: bbd14cbb-f59b-42b4-8632-ed6eb10e5d86
+                - id: 959a06f1-e25d-4576-b420-3b749bf75966
                   type: location
                   attributes:
                     name: Hane, Lehner and Goyette
@@ -673,13 +673,13 @@ paths:
                   relationships:
                     parent:
                       data:
-                        id: bb9724c0-3411-439b-aaf5-a59ec8acf9a5
+                        id: 6c6367d4-e9e2-470b-bfe8-58a868660e8d
                         type: location
                     regions:
                       data:
-                      - id: 363cd3c5-ef3a-44fb-857f-61c9792d1d1c
+                      - id: e7bdc65c-7ed4-4f62-866a-ddd700b41262
                         type: location
-                - id: 363cd3c5-ef3a-44fb-857f-61c9792d1d1c
+                - id: e7bdc65c-7ed4-4f62-866a-ddd700b41262
                   type: location
                   attributes:
                     name: Hilpert, Waters and Johnston
@@ -689,7 +689,7 @@ paths:
                       data:
                     regions:
                       data: []
-                - id: 5b0741c0-80dc-4771-aa65-63353f0b1189
+                - id: 494327df-bac6-42e4-a43d-8946bdf26a3b
                   type: location
                   attributes:
                     name: Jacobson, Fritsch and Stanton
@@ -697,13 +697,13 @@ paths:
                   relationships:
                     parent:
                       data:
-                        id: bb9724c0-3411-439b-aaf5-a59ec8acf9a5
+                        id: 6c6367d4-e9e2-470b-bfe8-58a868660e8d
                         type: location
                     regions:
                       data:
-                      - id: a8b0ce0b-fdb8-4b0c-9dbe-1b0e42526f90
+                      - id: '0890362b-b132-423b-8ee4-3b3491035395'
                         type: location
-                - id: a8b0ce0b-fdb8-4b0c-9dbe-1b0e42526f90
+                - id: '0890362b-b132-423b-8ee4-3b3491035395'
                   type: location
                   attributes:
                     name: Keebler, Kub and Zemlak
@@ -713,7 +713,7 @@ paths:
                       data:
                     regions:
                       data: []
-                - id: b8df8649-84e2-45a2-a3b5-6a2f0a2be66f
+                - id: c85fccda-d79d-4552-86b0-1a2200a97407
                   type: location
                   attributes:
                     name: Becker LLC
@@ -721,13 +721,13 @@ paths:
                   relationships:
                     parent:
                       data:
-                        id: bb9724c0-3411-439b-aaf5-a59ec8acf9a5
+                        id: 6c6367d4-e9e2-470b-bfe8-58a868660e8d
                         type: location
                     regions:
                       data:
-                      - id: 24a3a8c1-c741-46af-aecc-186779db0cff
+                      - id: 95f225e6-bd48-483d-bf29-41ed5148b31e
                         type: location
-                - id: 24a3a8c1-c741-46af-aecc-186779db0cff
+                - id: 95f225e6-bd48-483d-bf29-41ed5148b31e
                   type: location
                   attributes:
                     name: Runolfsson and Sons
@@ -781,7 +781,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: bbd14cbb-f59b-42b4-8632-ed6eb10e5d86
+                  id: 959a06f1-e25d-4576-b420-3b749bf75966
                   type: location
                   attributes:
                     name: Hane, Lehner and Goyette
@@ -789,11 +789,11 @@ paths:
                   relationships:
                     parent:
                       data:
-                        id: bb9724c0-3411-439b-aaf5-a59ec8acf9a5
+                        id: 6c6367d4-e9e2-470b-bfe8-58a868660e8d
                         type: location
                     regions:
                       data:
-                      - id: 363cd3c5-ef3a-44fb-857f-61c9792d1d1c
+                      - id: e7bdc65c-7ed4-4f62-866a-ddd700b41262
                         type: location
               schema:
                 type: object
@@ -831,7 +831,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 0f2215de-d0c6-4c16-8307-130b33e339fe
+                - id: 2b1783e5-116a-4e8f-8461-e84c132a5ba6
                   type: open_call
                   attributes:
                     name: Open call 1
@@ -848,14 +848,14 @@ paths:
                       tempora exercitationem. Qui dolorem quo.
                     impact_description: Enim repellat pariatur. Earum modi eos. Libero
                       tempora exercitationem. Qui dolorem quo.
-                    closing_at: '2023-01-22T13:53:18.999Z'
+                    closing_at: '2023-01-22T16:17:24.710Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 0dc5a1f3-921d-4869-8af0-5a052dc427c2
+                        id: 14107447-500c-4445-9204-b1e6f1255a90
                         type: investor
-                - id: d3b5a10e-e626-4678-819d-fc78dbda9115
+                - id: aabcbb73-1fd1-448c-a0c3-87de3ddc515e
                   type: open_call
                   attributes:
                     name: Open call 2
@@ -872,14 +872,14 @@ paths:
                       Sunt commodi tempore. Voluptatem et corrupti.
                     impact_description: Placeat commodi libero. Quo recusandae repellat.
                       Sunt commodi tempore. Voluptatem et corrupti.
-                    closing_at: '2023-01-22T13:53:19.022Z'
+                    closing_at: '2023-01-22T16:17:24.732Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 1c8cc326-d8b0-42f3-b724-323bd43d8b41
+                        id: 8f217807-42c7-43e9-8741-8dee6ac0e2ab
                         type: investor
-                - id: 7643ad14-883e-485c-b91b-7bd9decbeced
+                - id: 606927c8-9080-4ab5-9184-44cc9d698863
                   type: open_call
                   attributes:
                     name: Open call 3
@@ -896,14 +896,14 @@ paths:
                       nesciunt voluptas. Suscipit ex cum.
                     impact_description: Et quaerat omnis. Harum voluptas atque. Quo
                       nesciunt voluptas. Suscipit ex cum.
-                    closing_at: '2023-01-22T13:53:19.041Z'
+                    closing_at: '2023-01-22T16:17:24.752Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 7b466b04-4347-4af7-a58e-91f0d2a47361
+                        id: 03bf7f1a-c956-4098-970c-228f4d18f3cf
                         type: investor
-                - id: 51924f59-49d8-4391-b388-c82d0c955447
+                - id: d5a73ecf-3362-46f2-964d-0f1fba2c945a
                   type: open_call
                   attributes:
                     name: Open call 4
@@ -920,14 +920,14 @@ paths:
                       Sit neque eos. Expedita molestiae quia.
                     impact_description: Dolores fugiat nesciunt. Ut laborum dolores.
                       Sit neque eos. Expedita molestiae quia.
-                    closing_at: '2023-01-22T13:53:19.061Z'
+                    closing_at: '2023-01-22T16:17:24.772Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 25406969-b220-4c9c-92b8-0ba0e364c875
+                        id: daef1c1a-49e2-4f74-949d-a2e2b861e625
                         type: investor
-                - id: e03596be-a917-48a1-91a1-73d836c953cb
+                - id: 7f133db5-1af5-4ebe-b063-fa92355a44db
                   type: open_call
                   attributes:
                     name: Open call 5
@@ -944,14 +944,14 @@ paths:
                       recusandae eum. Eius ex est.
                     impact_description: Autem et et. Voluptatem neque quibusdam. Repellat
                       recusandae eum. Eius ex est.
-                    closing_at: '2023-01-22T13:53:19.080Z'
+                    closing_at: '2023-01-22T16:17:24.793Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 8b8e4ea4-df84-474c-b3bf-7c8c7426314b
+                        id: 364da1b7-01d6-4956-a41c-b7fd2824b0ee
                         type: investor
-                - id: c62bd44b-95e4-4858-abd5-7a2640e0253a
+                - id: 15c981da-ee7c-470f-9d08-d5b1f60fcac7
                   type: open_call
                   attributes:
                     name: Open call 6
@@ -968,14 +968,14 @@ paths:
                       Eligendi sapiente voluptatem. Quas rerum officia.
                     impact_description: Porro soluta beatae. Quia ratione facilis.
                       Eligendi sapiente voluptatem. Quas rerum officia.
-                    closing_at: '2023-01-22T13:53:19.100Z'
+                    closing_at: '2023-01-22T16:17:24.812Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 78c8bd17-3eb5-41c1-b7b0-cf20ac15b818
+                        id: c365a75b-b94a-4ec1-b1a0-388cb5f5dc0a
                         type: investor
-                - id: acf08046-8c7e-43d2-818f-28384bf4e9e6
+                - id: 9db20137-76e7-4633-9d04-ad245b288862
                   type: open_call
                   attributes:
                     name: Open call 7
@@ -992,12 +992,12 @@ paths:
                       laudantium et. Sed recusandae aut.
                     impact_description: Mollitia aut vel. Qui illum accusantium. Et
                       laudantium et. Sed recusandae aut.
-                    closing_at: '2023-01-22T13:53:19.118Z'
+                    closing_at: '2023-01-22T16:17:24.830Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 1ee27d56-2792-499f-9a0f-1209e489cd9c
+                        id: 1ae9fe80-7686-463e-b04a-0b962d3e7e5e
                         type: investor
                 meta:
                   page: 1
@@ -1052,7 +1052,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 0f2215de-d0c6-4c16-8307-130b33e339fe
+                  id: 2b1783e5-116a-4e8f-8461-e84c132a5ba6
                   type: open_call
                   attributes:
                     name: Open call 1
@@ -1069,12 +1069,12 @@ paths:
                       tempora exercitationem. Qui dolorem quo.
                     impact_description: Enim repellat pariatur. Earum modi eos. Libero
                       tempora exercitationem. Qui dolorem quo.
-                    closing_at: '2023-01-22T13:53:18.999Z'
+                    closing_at: '2023-01-22T16:17:24.710Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 0dc5a1f3-921d-4869-8af0-5a052dc427c2
+                        id: 14107447-500c-4445-9204-b1e6f1255a90
                         type: investor
               schema:
                 type: object
@@ -1112,7 +1112,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: cf80db94-5302-49a5-925e-895dcca8cfa4
+                - id: 8a672ab3-731a-4b98-9c9c-7c205da37590
                   type: project_developer
                   attributes:
                     name: Kutch-Spencer
@@ -1134,7 +1134,7 @@ paths:
                     - climate
                     - water
                     language: en
-                - id: 671329fc-418a-48c2-8c37-1100dd93257d
+                - id: ec97da0f-7589-488a-92b2-865bf0119550
                   type: project_developer
                   attributes:
                     name: Bartoletti and Sons
@@ -1156,7 +1156,7 @@ paths:
                     - climate
                     - water
                     language: en
-                - id: a0b5a59c-519c-4234-b589-019ae3608cdf
+                - id: 01d06f1f-b928-430a-bbc9-895c0a9268c5
                   type: project_developer
                   attributes:
                     name: Hane, Lehner and Goyette
@@ -1178,7 +1178,7 @@ paths:
                     - climate
                     - water
                     language: en
-                - id: 589a4b56-0a76-4bb3-8c21-190133314103
+                - id: 82bc71d1-4e76-4eb7-8935-19c5f3699add
                   type: project_developer
                   attributes:
                     name: Hilpert, Waters and Johnston
@@ -1200,7 +1200,7 @@ paths:
                     - climate
                     - water
                     language: en
-                - id: 756a942c-ae81-4dfd-b2b3-a49cd889751a
+                - id: 030c9f22-8ba7-4338-826d-3b5527514389
                   type: project_developer
                   attributes:
                     name: Jacobson, Fritsch and Stanton
@@ -1222,7 +1222,7 @@ paths:
                     - climate
                     - water
                     language: en
-                - id: fd9759e7-f811-4657-bc4a-e5cf3e9175d4
+                - id: 789962bd-889f-4353-bf2e-d1cb25146f04
                   type: project_developer
                   attributes:
                     name: Keebler, Kub and Zemlak
@@ -1244,7 +1244,7 @@ paths:
                     - climate
                     - water
                     language: en
-                - id: 57277a22-4d16-4656-bd56-012819895eb0
+                - id: 4eaa311c-83a1-4c96-a056-8e399f6ffa19
                   type: project_developer
                   attributes:
                     name: Becker LLC
@@ -1319,7 +1319,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: cf80db94-5302-49a5-925e-895dcca8cfa4
+                  id: 8a672ab3-731a-4b98-9c9c-7c205da37590
                   type: project_developer
                   attributes:
                     name: Kutch-Spencer
@@ -1383,7 +1383,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 73a9630e-168a-425e-abb3-2269499c0611
+                - id: 65057fa4-6921-401d-97db-3917e496cc67
                   type: project
                   attributes:
                     name: Project 1
@@ -1425,9 +1425,9 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: bf64654d-4083-4ca4-a448-3122bb5b86c3
+                        id: 9a639077-5e7c-4c94-ba98-85f78c0b6db5
                         type: project_developer
-                - id: ab6c65a6-8369-4fdc-a9b7-794e3b6dfdbb
+                - id: 3c6c6518-aa84-41c9-8cfb-c3c656086caa
                   type: project
                   attributes:
                     name: Project 2
@@ -1469,9 +1469,9 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 82c3e741-a767-492d-8dec-edeceb33996f
+                        id: 73ec0f10-35ca-4e10-8e1d-663f022d7687
                         type: project_developer
-                - id: 36b05907-fbe6-4c08-857d-23412d173bd1
+                - id: 983c344a-99de-40aa-ae03-537d0c2a4fdf
                   type: project
                   attributes:
                     name: Project 3
@@ -1513,9 +1513,9 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: d129f860-3fb9-4bd8-b638-b3202278b312
+                        id: 49aa8736-aecd-427c-8965-357a72933d7a
                         type: project_developer
-                - id: '02759eba-2259-4307-93b0-7386ca0e8acc'
+                - id: 8aee9417-5b7c-49b4-a65e-4a6a64bf7a91
                   type: project
                   attributes:
                     name: Project 4
@@ -1557,9 +1557,9 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 47dc7a51-716a-4a9f-8a4a-5239c5237daa
+                        id: 9a9964c9-9f05-4cf3-9af2-31c311d56803
                         type: project_developer
-                - id: ed8ec71d-404f-473f-b986-ff3ae7e68ded
+                - id: 4fdb4d88-1690-439e-8e99-06ac2499a952
                   type: project
                   attributes:
                     name: Project 5
@@ -1601,9 +1601,9 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 00dcd6c9-6bf7-4815-9091-e69f41e37c45
+                        id: 4af2e576-de8d-44db-8d90-1aa4dacb9fea
                         type: project_developer
-                - id: 0d20a17d-79e8-41d5-a411-1dc15459e599
+                - id: 69cd4197-a76e-4d5e-bee4-ecf7d6d935ea
                   type: project
                   attributes:
                     name: Project 6
@@ -1645,9 +1645,9 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 5839cff9-4e41-4076-80cb-f5cf7205a394
+                        id: cca5e492-f00e-4d79-b290-912babf20b37
                         type: project_developer
-                - id: fb59be47-3328-4337-8a6c-6d39cd6f45bd
+                - id: 213967f6-e2d1-4d93-8070-661c8fd35cdf
                   type: project
                   attributes:
                     name: Project 7
@@ -1689,7 +1689,7 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: a23df436-18b0-42cb-81ad-6ea36a88ac0d
+                        id: ea0a985c-8bf4-46c9-951f-f01805a1b3c1
                         type: project_developer
                 meta:
                   page: 1
@@ -1750,7 +1750,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 73a9630e-168a-425e-abb3-2269499c0611
+                  id: 65057fa4-6921-401d-97db-3917e496cc67
                   type: project
                   attributes:
                     name: Project 1
@@ -1792,7 +1792,7 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: bf64654d-4083-4ca4-a448-3122bb5b86c3
+                        id: 9a639077-5e7c-4c94-ba98-85f78c0b6db5
                         type: project_developer
               schema:
                 type: object
@@ -1804,12 +1804,9 @@ paths:
       summary: Creates User Session/Logs In
       tags:
       - Session
-      parameters:
-      - name: X-CSRF-TOKEN
-        in: header
-        description: CSRF token
-        schema:
-          type: string
+      security:
+      - csrf: []
+      parameters: []
       responses:
         '200':
           description: success
@@ -1817,7 +1814,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: '085f459e-f9dc-4f28-9179-6ce43c55a6f9'
+                  id: cee1d419-3dd3-467c-beec-585e237580ca
                   type: user
                   attributes:
                     first_name: Dawna
@@ -1860,12 +1857,9 @@ paths:
       summary: Logs out User
       tags:
       - Session
-      parameters:
-      - name: X-CSRF-TOKEN
-        in: header
-        description: CSRF token
-        schema:
-          type: string
+      security:
+      - cookie_auth: []
+        csrf: []
       responses:
         '401':
           description: Authentication failed
@@ -1888,12 +1882,9 @@ paths:
       summary: Creates/Registers user
       tags:
       - User
-      parameters:
-      - name: X-CSRF-TOKEN
-        in: header
-        description: CSRF token
-        schema:
-          type: string
+      security:
+      - csrf: []
+      parameters: []
       responses:
         '200':
           description: success
@@ -1901,7 +1892,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: ab4bd400-0b2f-470f-8169-d55b38d1bcac
+                  id: 45333dfc-cd78-4042-aaa6-70ae68fa6b46
                   type: user
                   attributes:
                     first_name: Jan
@@ -1940,6 +1931,8 @@ paths:
       summary: Returns logged in user
       tags:
       - User
+      security:
+      - cookie_auth: []
       responses:
         '401':
           description: Authentication failed
@@ -1955,7 +1948,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 591041fc-ad49-4451-9e2e-4c1fa4859c1a
+                  id: ead6028b-108b-423a-a6eb-fe335950633e
                   type: user
                   attributes:
                     first_name: Dawna
@@ -1969,7 +1962,15 @@ paths:
                   data:
                     "$ref": "#/components/schemas/user"
 components:
-  securitySchemes: {}
+  securitySchemes:
+    csrf:
+      type: apiKey
+      name: X-CSRF-TOKEN
+      in: header
+    cookie_auth:
+      type: apiKey
+      name: _backend_session
+      in: cookie
   schemas:
     user:
       type: object

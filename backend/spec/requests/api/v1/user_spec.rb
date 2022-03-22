@@ -10,6 +10,7 @@ RSpec.describe "API V1 User", type: :request do
       tags "User"
       consumes "application/json"
       produces "application/json"
+      security [csrf: []]
       parameter name: :user_params, in: :body, type: :object,
         properties: {
           first_name: {type: :string},
@@ -19,7 +20,6 @@ RSpec.describe "API V1 User", type: :request do
           ui_language: {type: :string}
         },
         required: ["first_name", "last_name", "email", "password"]
-      parameter name: "X-CSRF-TOKEN", in: :header, type: :string, description: "CSRF token"
 
       response "200", :success do
         schema type: :object, properties: {
@@ -78,8 +78,9 @@ RSpec.describe "API V1 User", type: :request do
     get "Returns logged in user" do
       tags "User"
       produces "application/json"
+      security [cookie_auth: []]
 
-      it_behaves_like "with not authorized error"
+      it_behaves_like "with not authorized error", csrf: false
 
       response "200", :success do
         schema type: :object, properties: {
