@@ -12,13 +12,13 @@ module API
           sign_in user
           render json: UserSerializer.new(user).serializable_hash
         else
-          raise API::UnprocessableEntityError, "Invalid email or password"
+          raise API::UnprocessableEntityError, I18n.t("devise.failure.invalid", authentication_keys: :email)
         end
       end
 
       def destroy
         sign_out current_user
-        render json: {data: nil}
+        head :ok
       end
     end
   end

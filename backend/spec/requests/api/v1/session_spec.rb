@@ -11,12 +11,14 @@ RSpec.describe "API V1 Session", type: :request do
       consumes "application/json"
       produces "application/json"
       security [csrf: []]
-      parameter name: :user_params, in: :body, type: :object,
+      parameter name: :user_params, in: :body, schema: {
+        type: :object,
         properties: {
           email: {type: :string},
           passsword: {type: :string}
         },
         required: ["email", "password"]
+      }
 
       response "200", :success do
         schema type: :object, properties: {
@@ -73,7 +75,7 @@ RSpec.describe "API V1 Session", type: :request do
         run_test!
 
         it "returns correct error", generate_swagger_example: true do
-          expect(response_json["errors"][0]["title"]).to eq("Invalid email or password")
+          expect(response_json["errors"][0]["title"]).to eq("Invalid email or password.")
         end
       end
     end
@@ -87,7 +89,6 @@ RSpec.describe "API V1 Session", type: :request do
       it_behaves_like "with not authorized error", csrf: true
 
       response "200", :success do
-        schema type: :object, properties: {data: {}}
         let("X-CSRF-TOKEN") { get_csrf_token }
 
         before(:each) { sign_in @user }

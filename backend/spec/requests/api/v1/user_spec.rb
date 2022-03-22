@@ -11,7 +11,8 @@ RSpec.describe "API V1 User", type: :request do
       consumes "application/json"
       produces "application/json"
       security [csrf: []]
-      parameter name: :user_params, in: :body, type: :object,
+      parameter name: :user_params, in: :body, schema: {
+        type: :object,
         properties: {
           first_name: {type: :string},
           last_name: {type: :string},
@@ -20,6 +21,7 @@ RSpec.describe "API V1 User", type: :request do
           ui_language: {type: :string}
         },
         required: ["first_name", "last_name", "email", "password"]
+      }
 
       response "200", :success do
         schema type: :object, properties: {
