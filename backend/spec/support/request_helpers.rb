@@ -4,7 +4,7 @@ module RequestHelpers
   end
 
   def get_csrf_token
-    get "/api/v1/user"
-    cookies[:csrf_token]
+    get "/api/v1/csrf"
+    response_json["token"]
   end
 end

@@ -7,6 +7,7 @@ module API
     def self.included(base)
       base.rescue_from StandardError, with: :render_standard_error unless Rails.env.test? || Rails.env.development?
       base.rescue_from API::Error, with: :render_error
+      base.rescue_from ActionController::InvalidAuthenticityToken, with: :render_error
       base.rescue_from API::UnauthorizedError, with: :render_unauthorized_error
       base.rescue_from API::UnprocessableEntityError, with: :render_unprocessable_entity_error
       base.rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_error

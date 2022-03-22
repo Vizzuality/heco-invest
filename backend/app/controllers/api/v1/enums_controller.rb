@@ -1,6 +1,6 @@
 module API
   module V1
-    class EnumsController < ApplicationController
+    class EnumsController < BaseController
       def index
         data = [
           InstrumentType.all,

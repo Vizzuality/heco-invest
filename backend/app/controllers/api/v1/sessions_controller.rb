@@ -1,7 +1,7 @@
 module API
   module V1
     class SessionsController < BaseController
-      before_action :require_user!, only: [:destroy]
+      before_action :authenticate_user!, only: [:destroy]
 
       def create
         user = User.find_by_email(params[:email])

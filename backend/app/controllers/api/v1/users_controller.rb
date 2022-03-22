@@ -1,7 +1,7 @@
 module API
   module V1
     class UsersController < BaseController
-      before_action :require_user!, only: [:show]
+      before_action :authenticate_user!, only: [:show]
 
       def create
         user = User.create!(user_params)

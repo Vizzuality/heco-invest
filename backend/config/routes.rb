@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api, format: "json" do
     namespace :v1 do
-      devise_for :users, only: [:confirmations] # otherwise it fails, we won't use devisecontroller for api
+      devise_for :users, singular: :user, only: [:confirmations]
 
       resource :session, only: [:create, :destroy]
       resource :user, only: [:create, :show]
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       resources :projects, only: [:index, :show]
 
       resources :enums, only: [:index]
+
+      get :csrf, to: "csrf#show"
     end
   end
 end
