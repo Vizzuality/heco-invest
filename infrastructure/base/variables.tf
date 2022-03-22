@@ -1,3 +1,13 @@
+variable "github_org" {
+  type        = string
+  description = "Github organization"
+}
+
+variable "github_project" {
+  type        = string
+  description = "Github project name"
+}
+
 # define GCP region
 variable "gcp_region" {
   type        = string
@@ -7,7 +17,7 @@ variable "gcp_region" {
 # define GCP project id
 variable "gcp_project_id" {
   type        = string
-  description = "GCP project name"
+  description = "GCP project id"
 }
 
 variable "bucket_name" {
