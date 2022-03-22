@@ -1,0 +1,141 @@
+{
+  "data": [
+    {
+      "id": "a74413c8-d1f0-479f-a0b9-50cfd7194358",
+      "type": "location",
+      "attributes": {
+        "name": "Kutch-Spencer"
+      },
+      "relationships": {
+        "parent": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "28150e8d-b428-45e7-9a3e-97ddd9eba267",
+      "type": "location",
+      "attributes": {
+        "name": "Bartoletti and Sons"
+      },
+      "relationships": {
+        "parent": {
+          "data": {
+            "id": "a74413c8-d1f0-479f-a0b9-50cfd7194358",
+            "type": "location"
+          }
+        }
+      }
+    },
+    {
+      "id": "8868aa8c-2f5d-4e5d-a95a-f9cbde9e6458",
+      "type": "location",
+      "attributes": {
+        "name": "Hane, Lehner and Goyette"
+      },
+      "relationships": {
+        "parent": {
+          "data": {
+            "id": "28150e8d-b428-45e7-9a3e-97ddd9eba267",
+            "type": "location"
+          }
+        }
+      }
+    },
+    {
+      "id": "33041b37-2885-4789-863e-1b3065217cb6",
+      "type": "location",
+      "attributes": {
+        "name": "Hilpert, Waters and Johnston"
+      },
+      "relationships": {
+        "parent": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "15a5d5ac-66c2-451c-951d-7ed2dfa43f45",
+      "type": "location",
+      "attributes": {
+        "name": "Jacobson, Fritsch and Stanton"
+      },
+      "relationships": {
+        "parent": {
+          "data": {
+            "id": "28150e8d-b428-45e7-9a3e-97ddd9eba267",
+            "type": "location"
+          }
+        }
+      }
+    },
+    {
+      "id": "4e9d9bd2-adbb-4e14-b1fe-353191d806d1",
+      "type": "location",
+      "attributes": {
+        "name": "Keebler, Kub and Zemlak"
+      },
+      "relationships": {
+        "parent": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "435fa71f-a803-44dd-a9f7-981d37d96f9b",
+      "type": "location",
+      "attributes": {
+        "name": "Becker LLC"
+      },
+      "relationships": {
+        "parent": {
+          "data": {
+            "id": "28150e8d-b428-45e7-9a3e-97ddd9eba267",
+            "type": "location"
+          }
+        }
+      }
+    },
+    {
+      "id": "9cff335c-3f37-4c28-bf57-b82df46d3903",
+      "type": "location",
+      "attributes": {
+        "name": "Runolfsson and Sons"
+      },
+      "relationships": {
+        "parent": {
+          "data": null
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": "a74413c8-d1f0-479f-a0b9-50cfd7194358",
+      "type": "location",
+      "attributes": {
+        "name": "Kutch-Spencer"
+      },
+      "relationships": {
+        "parent": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "28150e8d-b428-45e7-9a3e-97ddd9eba267",
+      "type": "location",
+      "attributes": {
+        "name": "Bartoletti and Sons"
+      },
+      "relationships": {
+        "parent": {
+          "data": {
+            "id": "a74413c8-d1f0-479f-a0b9-50cfd7194358",
+            "type": "location"
+          }
+        }
+      }
+    }
+  ]
+}

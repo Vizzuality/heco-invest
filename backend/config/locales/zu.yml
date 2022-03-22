@@ -82,3 +82,12 @@ zu:
       community:
         name: Community
         description: Impact of projects on ensuring and improving equal and inclusive physical, mental, economic, and spiritual health.
+    location_type:
+      country:
+        name: Country
+      department:
+        name: Department
+      municipality:
+        name: Municipality
+      region:
+        name: Region

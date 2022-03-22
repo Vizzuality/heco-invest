@@ -55,6 +55,58 @@ RSpec.configure do |config|
             },
             required: %w[id type attributes]
           },
+          location: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              type: {type: :string},
+              attributes: {
+                type: :object,
+                properties: {
+                  name: {type: :string},
+                  location_type: {type: :string, enum: LocationType::TYPES}
+                }
+              },
+              relationships: {
+                type: :object,
+                properties: {
+                  parent: {
+                    type: :object,
+                    properties: {
+                      data: {
+                        type: :object,
+                        nullable: true,
+                        properties: {
+                          id: {type: :string},
+                          type: {type: :string}
+                        },
+                        required: %w[id type]
+                      },
+                      required: %w[data]
+                    }
+                  },
+                  regions: {
+                    type: :object,
+                    properties: {
+                      data: {
+                        type: :array,
+                        items: {
+                          object: :object,
+                          properties: {
+                            id: {type: :string},
+                            type: {type: :string}
+                          },
+                          required: %w[id type]
+                        }
+                      }
+                    },
+                    required: %w[data]
+                  }
+                }
+              }
+            },
+            required: %w[id type attributes relationships]
+          },
           open_call: {
             type: :object,
             properties: {
