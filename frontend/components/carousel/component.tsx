@@ -7,10 +7,7 @@ import {
   useEffect,
   useRef,
   useCallback,
-  useLayoutEffect,
 } from 'react';
-
-import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
@@ -97,7 +94,7 @@ export const Carousel: FC<CarouselProps> = ({ className, children }: CarouselPro
     setSlideHeight(slidesWrapperRef?.current?.offsetHeight || '100%');
   }, [currentSlide, numSlides]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (pointerDown || offset === 0) return;
     setOffset(0);
   }, [pointerDown, offset]);
