@@ -128,7 +128,13 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               <span className="text-xl font-semibold leading-tight outline-none">{name}</span>
             )}
           </div>
-          <div className="text-sm text-gray-600" title="Project financial instrument">
+          <div
+            className="text-sm text-gray-600"
+            title={intl.formatMessage({
+              defaultMessage: 'Project financial instrument',
+              id: 'hLG9bm',
+            })}
+          >
             {instrument}
             <span className="mx-2" aria-hidden={true}>
               &bull;
