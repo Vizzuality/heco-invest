@@ -1,7 +1,14 @@
 import { FC, LabelHTMLAttributes, useState } from 'react';
 
 import { ArrowLeft, Info } from 'react-feather';
-import { SubmitErrorHandler, SubmitHandler, useForm, UseFormRegister } from 'react-hook-form';
+import {
+  FieldPath,
+  RegisterOptions,
+  SubmitErrorHandler,
+  SubmitHandler,
+  useForm,
+  UseFormRegister,
+} from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import Image from 'next/image';
@@ -19,6 +26,7 @@ import {
   ProjectDeveloperSetupForm,
   ProjectDeveloperSetupFormOnline,
 } from 'types/projectDeveloperSetup';
+
 const languages = [
   { name: 'Spanish', code: 'es' },
   { name: 'English', code: 'en' },
@@ -46,7 +54,7 @@ type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Label: FC<LabelHTMLAttributes<HTMLLabelElement>> = (props) => {
   return (
-    <label className="block font-sans font-semibold text-sm color-gray-800" htmlFor={props.htmlFor}>
+    <label className="block font-sans text-sm font-semibold color-gray-800" htmlFor={props.htmlFor}>
       {props.children}
     </label>
   );
@@ -55,15 +63,19 @@ const Label: FC<LabelHTMLAttributes<HTMLLabelElement>> = (props) => {
 const Interests = ({
   items,
   register,
+  registerOptions,
   title,
   name,
   id,
+  errorMessage,
 }: {
   items: string[];
   register: UseFormRegister<ProjectDeveloperSetupForm>;
+  registerOptions?: RegisterOptions;
   title: string;
   name: any;
   id: string;
+  errorMessage?: string;
 }) => {
   const intl = useIntl();
 
@@ -75,30 +87,27 @@ const Interests = ({
       </p>
       <div className="flex gap-4 mb-4">
         {items.map((item, index) => (
-          <label
-            htmlFor={`${id}-${index}`}
-            key={item}
-            // className="border border-beige text-center py-2 px-4 rounded cursor-pointer"
-          >
-            <input
-              {...register(name, {
-                required: intl.formatMessage({
-                  defaultMessage: 'Select at least one option',
-                  id: 'wn4QQy',
-                }),
-              })}
-              id={`${id}-${index}`}
-              // className="appearance-none checked:w-5 checked:h-5 checked:bg-green-dark"
-              name={name}
-              type="checkbox"
-              value={index}
-            />
-            {item}
-          </label>
+          <div key={item}>
+            <label
+              htmlFor={`${id}-${index}`}
+              // className="px-4 py-2 text-center border rounded cursor-pointer border-beige"
+            >
+              <input
+                {...register(name, registerOptions)}
+                id={`${id}-${index}`}
+                // className="appearance-none checked:w-5 checked:h-5 checked:bg-green-dark"
+                name={name}
+                type="checkbox"
+                value={index}
+              />
+              {item}
+            </label>
+            {errorMessage}
+          </div>
         ))}
       </div>
       <label htmlFor={id}>
-        <span className="font-sans text-green-dark text-sm underline cursor-pointer">
+        <span className="font-sans text-sm underline cursor-pointer text-green-dark">
           {intl.formatMessage({ defaultMessage: 'Select all', id: '94Fg25' })}
         </span>
         <input id={id} type="checkbox" className="appearance-none" value={items} />
@@ -108,22 +117,28 @@ const Interests = ({
 };
 
 const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutProps> = () => {
-  const { register, trigger, handleSubmit, getValues } = useForm<ProjectDeveloperSetupForm>();
+  const {
+    register,
+    trigger,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+  } = useForm<ProjectDeveloperSetupForm>();
   const [section, setSection] = useState(0);
 
   const intl = useIntl();
 
-  const handleNext = () => {
-    trigger();
+  // const handleNext = () => {
+  //   trigger();
+  // };
+
+  const onSubmit: SubmitHandler<ProjectDeveloperSetupForm> = (values) => {
+    console.log(values);
     if (section === 2) {
       console.log('submit', getValues());
     } else {
       setSection(section + 1);
     }
-  };
-
-  const onSubmit: SubmitHandler<ProjectDeveloperSetupForm> = (values) => {
-    console.log(values);
   };
 
   const onError: SubmitErrorHandler<ProjectDeveloperSetupForm> = (error) => {
@@ -134,7 +149,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
     return (
       <div>
         <Label htmlFor={item}>
-          <span className="text-gray-800 font-semibold text-primary text-sm">
+          <span className="text-sm font-semibold text-gray-800 text-primary">
             {item} (optional)
           </span>
           <Input
@@ -182,13 +197,14 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                 );
               })}
             </div>
+            {errors.language && <p>{errors.language.message}</p>}
           </div>
         );
       case 1:
         return (
           <div>
             <div className="mb-6.5">
-              <p className="text-gray-800 font-semibold text-primary text-sm mb-4">Picture</p>
+              <p className="mb-4 text-sm font-semibold text-gray-800 text-primary">Picture</p>
               <div className="flex gap-x-4">
                 <Image src="/images/avatar.svg" width={48} height={48} alt="profile image" />
                 <Label htmlFor="picture">
@@ -198,16 +214,17 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                     name="picture"
                     type="file"
                     {...register('picture', {
-                      required: true,
+                      required: 'This field is required',
                     })}
                   />
                 </Label>
               </div>
+              {errors.picture && <p>{errors.picture.message}</p>}
             </div>
             <div className="flex gap-x-6 mb-6.5">
               <div className="w-1/2">
                 <Label htmlFor="profile">
-                  <span className="text-gray-800 font-semibold text-primary text-sm">
+                  <span className="text-sm font-semibold text-gray-800 text-primary">
                     Profile name
                   </span>
                   <Input
@@ -216,14 +233,15 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                     id="profile"
                     type="text"
                     register={register}
-                    registerOptions={{ required: true }}
+                    registerOptions={{ required: 'This field is required' }}
                     placeholder="insert the profile name"
                   />
                 </Label>
+                {errors.profile && <p>{errors.profile.message}</p>}
               </div>
               <div className="w-1/2">
                 <Label htmlFor="profile">
-                  <span className="text-gray-800 font-semibold text-primary text-sm">
+                  <span className="text-sm font-semibold text-gray-800 text-primary">
                     Project developer type
                   </span>
                   <Input
@@ -232,43 +250,46 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                     className="mt-2.5"
                     type="text"
                     register={register}
-                    registerOptions={{ required: true }}
+                    registerOptions={{ required: 'This field is required' }}
                     placeholder="select the type"
                   />
                 </Label>
+                {errors.projectDeveloperType && <p>{errors.projectDeveloperType.message}</p>}
               </div>
             </div>
             <div className="mb-6.5">
               <Label htmlFor="about">
-                <span className="text-gray-800 font-semibold text-primary text-sm">About </span>
+                <span className="text-sm font-semibold text-gray-800 text-primary">About </span>
                 <TextArea
                   name="about"
                   className="mt-2.5"
                   id="about"
                   register={register}
-                  registerOptions={{ required: true }}
+                  registerOptions={{ required: 'This field is required' }}
                   placeholder="Type a short description about what interests you"
                 />
               </Label>
+              {errors.about && <p>{errors.about.message}</p>}
             </div>
             <div className="mb-6.5">
               <Label htmlFor="mission">
-                <span className="text-gray-800 font-semibold text-primary text-sm">Mission</span>
+                <span className="text-sm font-semibold text-gray-800 text-primary">Mission</span>
                 <TextArea
                   name="mission"
                   className="mt-2.5"
                   id="mission"
                   register={register}
-                  registerOptions={{ required: true }}
+                  registerOptions={{ required: 'This field is required' }}
                   placeholder="Type a short description about what interests you"
                 />
               </Label>
+              {errors.mission && <p>{errors.mission.message}</p>}
             </div>
             <div>
               <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
                 Online presence
               </p>
-              <div className="grid grid-cols-2 gap-x-6 w-full">
+              <div className="grid w-full grid-cols-2 gap-x-6">
                 {onlinePresence.map((item) => (
                   <OnlinePresenceItem
                     key={item}
@@ -283,18 +304,26 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
         return (
           <div>
             <div className="mb-6">
-              <h1 className="text-3xl font-semibold font-serif">Your work</h1>
-              <p className="font-sans text-gray-600 text-base">Tell us what interests you</p>
+              <h1 className="font-serif text-3xl font-semibold">Your work</h1>
+              <p className="font-sans text-base text-gray-600">Tell us what interests you</p>
             </div>
             <Interests
               register={register}
+              registerOptions={{
+                required: intl.formatMessage({
+                  defaultMessage: 'Select at least one category',
+                  id: 'btRcQU',
+                }),
+              }}
               title="Select the categories that interests you"
               name="categories"
               id="categories"
               items={categories}
+              errorMessage={errors.categories && errors.categories.join('')}
             />
             <Interests
               register={register}
+              registerOptions={{ required: false }}
               title="Areas you will be working on (optional)"
               name="mosaic"
               id="mosaic"
@@ -302,10 +331,17 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
             />
             <Interests
               register={register}
+              registerOptions={{
+                required: intl.formatMessage({
+                  defaultMessage: 'Select at least one impact',
+                  id: 'eoF9Hy',
+                }),
+              }}
               title="Expect to have impact"
               name="impacts"
               id="impacts"
               items={impacts}
+              errorMessage={errors.impact && errors.impact.join('')}
             />
           </div>
         );
@@ -314,12 +350,9 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
 
   return (
     <div>
-      <form
-        onSubmit={handleSubmit(onSubmit, onError)}
-        onChange={(e) => console.log('form-value', e.currentTarget.value)}
-      >
+      <form onSubmit={handleSubmit(onSubmit, onError)}>
         <FormSection />
-        <div className="flex justify-between align-middle py-4 px-20 border-t border-t-gray-400">
+        <div className="flex justify-between px-20 py-4 align-middle border-t border-t-gray-400">
           <div>
             {section !== 0 && (
               <Button theme="primary-white" onClick={() => setSection(section - 1)}>
@@ -340,7 +373,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
             ))}
           </div>
           <div>
-            <Button className="block" onClick={handleNext}>
+            <Button type="submit" className="block">
               {section === 2 ? 'Submit' : 'Next'}
             </Button>
           </div>
