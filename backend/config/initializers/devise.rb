@@ -11,7 +11,7 @@
 class CustomFailureApp < Devise::FailureApp
   def http_auth_body
     {
-      errors: [{title: i18n_message}]
+      errors: [{title: i18n_message, code: warden_message}]
     }.to_json
   end
 end

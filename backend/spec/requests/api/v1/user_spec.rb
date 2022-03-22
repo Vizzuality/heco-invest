@@ -41,6 +41,12 @@ RSpec.describe "API V1 User", type: :request do
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/user-create")
         end
+
+        it "sends confirmation email" do
+          mail = ActionMailer::Base.deliveries.last
+          expect(mail.subject).to eq("Confirmation instructions")
+          expect(mail.to.first).to eq("jankowalski@example.com")
+        end
       end
 
       response "422", "Invalid form" do

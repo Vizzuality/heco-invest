@@ -7,8 +7,9 @@ module API
         user = User.find_by_email(params[:email])
 
         if user&.valid_password?(params[:password])
-          sign_in user # warden checks devise options like confirmable
-
+          # warden checks devise options like confirmable
+          # if not confirmed then throws an error that is handled by failure_app
+          sign_in user
           render json: UserSerializer.new(user).serializable_hash
         else
           raise API::UnprocessableEntityError, "Invalid email or password"

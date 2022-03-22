@@ -10,6 +10,11 @@ RSpec.describe User, type: :model do
     expect(subject).to have(1).errors_on(:email)
   end
 
+  it "should be invalid with invalid email" do
+    subject.email = "invalidemail"
+    expect(subject).to have(1).errors_on(:email)
+  end
+
   it "should be invalid without first name" do
     subject.first_name = nil
     expect(subject).to have(1).errors_on(:first_name)

@@ -4,7 +4,8 @@ module RequestHelpers
   end
 
   def get_csrf_token
-    get "/api/v1/csrf"
+    headers = {"ACCEPT" => "application/json"}
+    get "/api/v1/csrf", headers: headers
     response_json["token"]
   end
 end

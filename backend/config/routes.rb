@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
       resources :enums, only: [:index]
 
-      get :csrf, to: "csrf#show"
+      get :csrf, to: "csrf#show" if Rails.env.test?
     end
   end
 end

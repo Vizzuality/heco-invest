@@ -38,6 +38,25 @@ RSpec.describe "API V1 Session", type: :request do
         end
       end
 
+      response "401", "Authentication failed - not confirmed user" do
+        before(:each) { create(:user, :unconfirmed, email: "unconfirmed@example.com", password: "SuperSecret1234") }
+
+        let("X-CSRF-TOKEN") { get_csrf_token }
+        let(:user_params) do
+          {
+            email: "unconfirmed@example.com",
+            password: "SuperSecret1234"
+          }
+        end
+
+        run_test!
+
+        it "returns correct error", generate_swagger_example: true do
+          expect(response_json["errors"][0]["title"]).to eq("You have to confirm your email address before continuing.")
+          expect(response_json["errors"][0]["code"]).to eq("unconfirmed")
+        end
+      end
+
       response "422", "Invalid credentials" do
         schema type: :object, properties: {
           data: {"$ref" => "#/components/schemas/user"}
@@ -67,18 +86,18 @@ RSpec.describe "API V1 Session", type: :request do
 
       it_behaves_like "with not authorized error"
 
-      # response "200", :success do
-      #   schema type: :object, properties: {data: {}}
-      #   let("X-CSRF-TOKEN") { get_csrf_token }
+      response "200", :success do
+        schema type: :object, properties: {data: {}}
+        let("X-CSRF-TOKEN") { get_csrf_token }
 
-      #   before(:each) { sign_in @user }
+        before(:each) { sign_in @user }
 
-      #   run_test!
+        run_test!
 
-      #   it "removes user from session" do
-      #     expect(session["warden.user.user.key"]).to be_nil
-      #   end
-      # end
+        it "removes user from session" do
+          expect(session["warden.user.user.key"]).to be_nil
+        end
+      end
     end
   end
 end
