@@ -1,5 +1,5 @@
 resource "google_cloudbuild_trigger" "build_trigger" {
-  name = "heco-${var.name}"
+  name        = "heco-${var.name}"
   description = "Build frontend Docker image"
 
   github {
@@ -14,8 +14,11 @@ resource "google_cloudbuild_trigger" "build_trigger" {
     step {
       name = "gcr.io/cloud-builders/docker"
       args = [
-        "build", "-t", "gcr.io/${var.project_id}/${var.image_name}", "-t",
-        "gcr.io/${var.project_id}/${var.image_name}:latest", "."
+        "build",
+        "-f", var.dockerfile_path,
+        "-t", "gcr.io/${var.project_id}/${var.image_name}",
+        "-t", "gcr.io/${var.project_id}/${var.image_name}:latest",
+        var.docker_context_path
       ]
     }
   }

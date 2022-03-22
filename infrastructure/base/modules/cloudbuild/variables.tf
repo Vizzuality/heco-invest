@@ -30,3 +30,15 @@ variable "github_project" {
   type        = string
   description = "Github project name"
 }
+
+variable "dockerfile_path" {
+  type        = string
+  description = "Path within the repo for the Dockerfile to build"
+  default = "./Dockerfile"
+}
+
+variable "docker_context_path" {
+  type        = string
+  description = "Path within the repo for the Docker context to build"
+  default = "."
+}

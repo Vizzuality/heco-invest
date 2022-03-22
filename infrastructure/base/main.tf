@@ -17,8 +17,10 @@ module "frontend_build" {
   name = "frontend"
   region = var.gcp_region
   project_id = var.gcp_project_id
-  github_branch = "infrastructure-basics"
+  github_branch = "frontend-dockerfile"
   github_org = var.github_org
   github_project = var.github_project
   image_name = "frontend"
+  dockerfile_path = "./frontend/Dockerfile"
+  docker_context_path = "./frontend"
 }
