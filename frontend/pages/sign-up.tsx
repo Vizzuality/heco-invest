@@ -1,11 +1,14 @@
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import { useRouter } from 'next/router';
+
 import { InferGetStaticPropsType } from 'next';
 import validate from 'validate.js';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import Checkbox from 'components/forms/checkbox';
 import Input from 'components/forms/input';
 import Icon from 'components/icon';
 import Loading from 'components/loading';
@@ -37,6 +40,8 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
     setFocus,
   } = useForm<SignupFormI>();
 
+  const { locale } = useRouter();
+
   const intl = useIntl();
   const { mutateAsync, isSuccess, error, isLoading } = useSignup();
 
@@ -47,8 +52,9 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
       lastName,
       email,
       password,
-      locale: 'ES',
+      locale,
     };
+    console.log(newUser);
     await mutateAsync(newUser);
     if (isSuccess) {
       reset();
@@ -246,7 +252,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
         </div>
         <div className="w-full mt-8">
           <label htmlFor="accept-terms">
-            <Input
+            <Checkbox
               name="acceptTerms"
               id="accept-terms"
               aria-describedby="accept-terms-error"
@@ -275,7 +281,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             </p>
           )}
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-14">
           <button
             className="flex px-5 py-2 font-sans text-sm text-white opacity-75 font-regular rounded-5xl leadign-6 bg-green-dark"
             type="submit"
