@@ -28,6 +28,8 @@ ENV NEXT_TELEMETRY_DISABLED 1
 ARG TRANSIFEX_TOKEN
 ENV TX_TOKEN $TRANSIFEX_TOKEN
 
+RUN apk add curl bash
+
 # Prior to yarn 3, this 2nd call to "yarn install" would not be needed
 # However, stuff breaks without it. We do carry over the cache from the previous step,
 # so it is faster than a cold install
