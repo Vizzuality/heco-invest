@@ -24,6 +24,7 @@ export const Paging: FC<PagingProps> = ({ className, numSlides, currentSlide, on
               slideNumber: slide + 1,
             }
           )}
+          aria-current={slide === currentSlide ? 'step' : false}
           className={cx({
             'block w-2 h-2 rounded-full cursor-pointer': true,
             'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark':
