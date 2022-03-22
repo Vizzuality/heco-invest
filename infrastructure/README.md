@@ -17,7 +17,7 @@ will skip over the basics, and assume you are conformable using all of them.
 - [Google Cloud Platform](https://cloud.google.com)
 - [Terraform](https://www.terraform.io/)
 - [Docker](https://www.docker.com/)
-- [Github Actions](https://github.com/features/actions)
+- [Github](https://github.com) account and permissions to integrate with [GCP Cloud Build](https://cloud.google.com/build/docs/automating-builds/build-repos-from-github)
 - DNS management 
 - A purchased domain
 
@@ -38,6 +38,11 @@ Contains multiple GCP resources needed for running HeCo on GCP.
 
 These resources include, but are not limited to:
 - <TBD>
+
+These are the GCP APIs that have to be enabled for this project to successfully deploy:
+- GCR
+- Cloud Build
+- Secret Manager
 
 The output values include access data for some of the resources above.
 
