@@ -38,12 +38,18 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
   // const { id } = query;
 
   const aboutInfo: {
+    logo: string;
+    name: string;
+    description: string;
     text: string;
     website: string;
     social: SocialType[];
     contact: string;
   } = {
+    name: 'Herencia Columbia',
+    description: 'Non Governamental Agency',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis gravida auctor enim, id nisl nisl sem tristique. Rhoncus vestibulum vitae diam dignissim imperdiet. Lacus, morbi non cras maecenas cras scelerisque eget. Rutrum tincidunt sed elit rhoncus nunc nisl pulvinar consectetur tincidunt. Nunc quisque potenti velit suscipit volutpat tellus',
+    logo: '/images/placeholders/profile-logo.png',
     website: 'https://www.site.com',
     social: [
       { id: 'linked-in', url: 'https://www.linkedin.com' },
@@ -85,12 +91,12 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
 
   return (
     <>
-      <Head title="Investor Profile" />
+      <Head title={`${aboutInfo.name} - ${aboutInfo.description}`} description={aboutInfo.text} />
 
       <ProfileHeader
-        logo="/images/temp-placeholders/nesst-logo.png"
-        title="Herencia Columbia"
-        subtitle="Non Governamental Agency"
+        logo={aboutInfo.logo}
+        title={aboutInfo.name}
+        subtitle={aboutInfo.description}
         text={aboutInfo.text}
         website={aboutInfo.website}
         social={aboutInfo.social}
