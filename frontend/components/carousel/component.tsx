@@ -120,7 +120,7 @@ export const Carousel: FC<CarouselProps> = ({ className, children }: CarouselPro
             }}
           >
             <Arrows
-              className="absolute top-0 left-0 items-center hidden w-full h-full md:flex"
+              className="absolute flex items-center m-8 left-4 right-4 -bottom-11 md:top-0 md:bottom-auto md:left-0 md:right-0 md:h-full md:m-0"
               currentSlide={currentSlide}
               numSlides={numSlides}
               onPreviousSlideClick={previousSlide}
