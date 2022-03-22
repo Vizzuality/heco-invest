@@ -69,7 +69,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
   };
 
   return (
-    <div className="w-full max-w-xl h-screen m-auto">
+    <div className="w-full max-w-xl h-screen m-auto px-4">
       <h1 className="mb-2.5 font-serif text-4xl font-semibold text-green-dark">
         <FormattedMessage defaultMessage="Sign up" id="8HJxXG" />
       </h1>
