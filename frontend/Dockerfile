@@ -25,11 +25,18 @@ RUN corepack enable
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
 
+ARG TRANSIFEX_TOKEN
+ENV TX_TOKEN $TRANSIFEX_TOKEN
+
 # Prior to yarn 3, this 2nd call to "yarn install" would not be needed
 # However, stuff breaks without it. We do carry over the cache from the previous step,
 # so it is faster than a cold install
 # TODO: figure out how to not have to run "yarn install" a 2nd time
 RUN yarn install --immutable
+
+RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
+RUN ./tx pull
+
 RUN yarn build
 
 # Production image, copy all the files and run next
