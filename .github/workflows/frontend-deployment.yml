@@ -73,15 +73,13 @@ jobs:
       # on production. On production and development, we should only pull translations.
       run: |
         echo 'Installing the Transifex CLI…'
-        curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
-        echo 'Creating the Transifex configuration file…'
-        echo -e "[https://www.transifex.com]\nrest_hostname = https://rest.api.transifex.com\ntoken = ${{ env.TRANSIFEX_TOKEN }}" > ~/.transifexrc
+        curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
         if [[ "${{ env.ENV }}" == "staging" ]]; then
           echo 'Pushing the source strings…'
-          ./tx push
+          TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx push
         fi
         echo 'Pulling the translations…'
-        ./tx pull
+        TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx pull
 
     - name: Run tests
       run: yarn test
@@ -92,7 +90,7 @@ jobs:
       uses: amondnet/vercel-action@v20
       with:
         vercel-token: ${{ secrets.vercel-token }}
-        github-token: ${{ secrets.GITHUB_TOKEN }} 
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         github-comment: ${{ inputs.github-comment }}
         vercel-args: ${{ inputs.env == 'staging' && '--prod' || '' }}
         scope: ${{ secrets.vercel-team-id }}
