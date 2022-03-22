@@ -43,6 +43,7 @@ These are the GCP APIs that have to be enabled for this project to successfully 
 - GCR
 - Cloud Build
 - Secret Manager
+- Cloud Run
 
 The output values include access data for some of the resources above.
 

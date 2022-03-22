@@ -32,3 +32,11 @@ module "frontend_build" {
   docker_context_path = "./frontend"
   docker_build_args = local.frontend_docker_build_args
 }
+
+module "frontend_cloudrun" {
+  source = "./modules/cloudrun"
+  name = "frontend"
+  region = var.gcp_region
+  project_id = var.gcp_project_id
+  image_name = "frontend"
+}
