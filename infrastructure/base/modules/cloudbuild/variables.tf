@@ -42,3 +42,8 @@ variable "docker_context_path" {
   description = "Path within the repo for the Docker context to build"
   default = "."
 }
+
+variable "docker_build_args" {
+  description = "Key-value pairs of env vars and their values"
+  default = {}
+}

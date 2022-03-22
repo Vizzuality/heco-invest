@@ -11,15 +11,27 @@ resource "google_cloudbuild_trigger" "build_trigger" {
   }
 
   build {
+    timeout = "900s"
+
     step {
       name = "gcr.io/cloud-builders/docker"
-      args = [
-        "build",
-        "-f", var.dockerfile_path,
-        "-t", "gcr.io/${var.project_id}/${var.image_name}",
-        "-t", "gcr.io/${var.project_id}/${var.image_name}:latest",
-        var.docker_context_path
-      ]
+      timeout = "900s"
+      args = concat(
+        [
+          "build",
+          "-f", var.dockerfile_path,
+          "-t", "gcr.io/${var.project_id}/${var.image_name}",
+          "-t", "gcr.io/${var.project_id}/${var.image_name}:latest",
+        ],
+        [for key, value in var.docker_build_args : "--build-arg=${key}=$_${key}"],
+        [
+          var.docker_context_path
+        ]
+      )
     }
+
+    images = ["gcr.io/${var.project_id}/${var.image_name}", "gcr.io/${var.project_id}/${var.image_name}:latest"]
   }
+
+  substitutions = {for key, value in var.docker_build_args : "_${key}" => value}
 }
