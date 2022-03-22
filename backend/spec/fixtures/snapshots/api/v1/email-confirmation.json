@@ -1,0 +1,13 @@
+{
+  "data": {
+    "id": "0eb20bcb-ec1e-4832-9995-cdb5a683f381",
+    "type": "user",
+    "attributes": {
+      "first_name": "Dawna",
+      "last_name": "Block",
+      "email": "user@example.com",
+      "role": "light",
+      "confirmed": true
+    }
+  }
+}
