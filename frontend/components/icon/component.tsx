@@ -8,7 +8,6 @@ export const Icon: FC<IconProps> = ({ icon: IconComponent, ...rest }: IconProps)
   <IconComponent
     {...rest}
     className={cx({
-      'fill-current': true,
       'w-5 h-5': !rest.className,
       [rest.className]: !!rest.className,
     })}
