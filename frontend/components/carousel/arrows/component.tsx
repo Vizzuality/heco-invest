@@ -1,6 +1,9 @@
 import { FC } from 'react';
 
+import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from 'react-feather';
 import { useIntl } from 'react-intl';
+
+import Icon from 'components/icon';
 
 import { ArrowsProps } from './types';
 
@@ -21,10 +24,10 @@ export const Arrows: FC<ArrowsProps> = ({
             defaultMessage: 'Previous slide',
             id: 'MH3koz',
           })}
-          className="absolute w-8 h-8 bg-white border rounded-full shadow cursor-pointer -left-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
+          className="absolute flex items-center justify-center w-8 h-8 bg-white border rounded-full shadow cursor-pointer -left-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
           onClick={onPreviousSlideClick}
         >
-          &lt;
+          <Icon className="w-4 h-4 -ml-0.5" icon={ChevronLeftIcon} />
         </button>
       )}
 
@@ -34,10 +37,10 @@ export const Arrows: FC<ArrowsProps> = ({
             defaultMessage: 'Next slide',
             id: 'Y9bYKH',
           })}
-          className="absolute w-8 h-8 bg-white border rounded-full shadow cursor-pointer -right-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
+          className="absolute flex items-center justify-center w-8 h-8 bg-white border rounded-full shadow cursor-pointer -right-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
           onClick={onNextSlideClick}
         >
-          &gt;
+          <Icon className="w-4 h-4 -mr-0.5" icon={ChevronRightIcon} />
         </button>
       )}
     </div>
