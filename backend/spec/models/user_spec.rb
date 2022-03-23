@@ -34,4 +34,25 @@ RSpec.describe User, type: :model do
     subject.password = "verysimplepassword"
     expect(subject.errors_on(:password)).to include("must include at least one lowercase letter, one uppercase letter, and one digit")
   end
+
+  context "confirmation email rate limit" do
+    it "should send only one email within limited period" do
+      user = create(:user)
+      user.update!(confirmed_at: nil)
+      travel_to(2.minutes.from_now) { user.send_confirmation_instructions }
+      travel_to(3.minutes.from_now) { user.send_confirmation_instructions }
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+    end
+
+    it "should send another email after limited period" do
+      user = create(:user) # send
+      user.update!(confirmed_at: nil)
+      travel_to(2.minutes.from_now) { user.send_confirmation_instructions } # do not send
+      travel_to(11.minutes.from_now) { user.send_confirmation_instructions } # send
+      travel_to(13.minutes.from_now) { user.send_confirmation_instructions } # do not send
+      travel_to(22.minutes.from_now) { user.send_confirmation_instructions } # send
+      travel_to(23.minutes.from_now) { user.send_confirmation_instructions } # do not send
+      expect(ActionMailer::Base.deliveries.count).to eq(3)
+    end
+  end
 end
