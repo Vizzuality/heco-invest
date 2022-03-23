@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult } from 'react-query';
 
-import { AxiosResponse } from 'axios';
+import { AxiosResponse, AxiosError } from 'axios';
 
 import { SignupDto } from 'types/signup';
 
@@ -8,16 +8,12 @@ import USERS from '.';
 
 export function useSignup(): UseMutationResult<
   AxiosResponse<SignupDto>,
-  unknown,
+  AxiosError,
   SignupDto,
   unknown
 > {
   const signup = async (dto: SignupDto): Promise<AxiosResponse<SignupDto>> => {
-    try {
-      return await USERS.post('/signup', dto);
-    } catch (message) {
-      console.log('response error');
-    }
+    return await USERS.post('/signup', dto);
   };
   return useMutation(signup);
 }

@@ -23,7 +23,6 @@ module.exports = {
         light: '#FFFDFA',
         middle: '#FBF7F2',
         dark: '#EFEDE9',
-        error: '#BF33001A',
       },
       gray: {
         200: '#E5E7EB',
