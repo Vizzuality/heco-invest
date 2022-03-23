@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   content: ['./**/*.ts', './**/*.tsx'],
   theme: {
@@ -36,7 +38,7 @@ module.exports = {
         dark: '#316146',
       },
       beige: '#E3DED6',
-      red: '#BF3300',
+      red: colors.red,
       orange: '#F4A064',
       black: '#000000',
       white: '#FFFFFF',

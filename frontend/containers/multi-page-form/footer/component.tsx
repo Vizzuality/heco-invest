@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 import { ArrowLeft as ArrowLeftIcon } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
@@ -11,9 +11,10 @@ import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
 import Loading from 'components/loading';
 
+import MultiPageFormFooterPaging from './paging';
 import { MultiPageFormFooterProps } from './types';
 
-export const MultiPageFormFooter: React.FC<MultiPageFormFooterProps> = ({
+export const MultiPageFormFooter: FC<MultiPageFormFooterProps> = ({
   className,
   isSubmitting = false,
   isComplete = false,
@@ -21,10 +22,12 @@ export const MultiPageFormFooter: React.FC<MultiPageFormFooterProps> = ({
   numPages,
   currPage,
   completeButtonText,
+  pagesWithErrors = [],
   onPreviousClick = noop,
   onNextClick = noop,
   onSubmitClick = noop,
   onCompleteClick = noop,
+  onPageClick = noop,
 }: MultiPageFormFooterProps) => {
   const isLastPage = currPage === numPages - 1;
 
@@ -52,7 +55,7 @@ export const MultiPageFormFooter: React.FC<MultiPageFormFooterProps> = ({
                   className="px-3 py-2 leading-none md:px-8 md:py-4"
                   size="base"
                   onClick={onSubmitClick}
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || pagesWithErrors.length > 0}
                 >
                   <Loading className="w-5 h-5 mr-3 -ml-5" visible={isSubmitting} />
                   <FormattedMessage defaultMessage="Submit" id="wSZR47" />
@@ -81,15 +84,15 @@ export const MultiPageFormFooter: React.FC<MultiPageFormFooterProps> = ({
             )}
           </div>
           <div>
-            <span>
-              {!isComplete && (
-                <>
-                  {currPage + 1}
-                  <span className="mx-1.5 text-gray-400">of</span>
-                  {numPages}
-                </>
-              )}
-            </span>
+            {!isComplete && (
+              <MultiPageFormFooterPaging
+                currPage={currPage}
+                numPages={numPages}
+                pagesWithErrors={pagesWithErrors}
+                isSubmitting={isSubmitting}
+                onPageClick={onPageClick}
+              />
+            )}
           </div>
           <div className="flex justify-start flex-1">
             {currPage > 0 && !isComplete && (

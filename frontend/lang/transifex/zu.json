@@ -17,6 +17,9 @@
   "0CAqpl": {
     "string": "About the partners"
   },
+  "0SKBlf": {
+    "string": "Go to page {pageNumber}"
+  },
   "0cWjQP": {
     "string": "{title} - page {currentPage} out of {numPages}"
   },

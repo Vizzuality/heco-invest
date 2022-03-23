@@ -38,6 +38,14 @@ export const MultiPageForm: FC<MultiPageFormProps> = ({
 
   const numPages = Children.count(FormPages);
 
+  const pagesWithErrors: number[] = FormPages.reduce<number[]>(
+    (acc: number[], page: React.ReactElement<any>, index: number) => {
+      if (page.props?.hasErrors === true) acc.push(index);
+      return acc;
+    },
+    []
+  );
+
   const handlePreviousClick = () => {
     if (currPage === 0) return;
     setCurrPage(currPage - 1);
@@ -46,6 +54,10 @@ export const MultiPageForm: FC<MultiPageFormProps> = ({
   const handleNextClick = () => {
     if (!(currPage < numPages - 1)) return;
     setCurrPage(currPage + 1);
+  };
+
+  const handleOnPageClick = (page: number) => {
+    setCurrPage(page);
   };
 
   return (
@@ -64,10 +76,12 @@ export const MultiPageForm: FC<MultiPageFormProps> = ({
         isSubmitting={isSubmitting}
         isComplete={isComplete}
         completeButtonText={completeButtonText}
+        pagesWithErrors={pagesWithErrors}
         onPreviousClick={handlePreviousClick}
         onNextClick={handleNextClick}
         onSubmitClick={onSubmitClick}
         onCompleteClick={onCompleteClick}
+        onPageClick={handleOnPageClick}
       />
     </div>
   );
