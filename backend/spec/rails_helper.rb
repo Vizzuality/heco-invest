@@ -23,6 +23,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.request_snapshots_dir = "spec/fixtures/snapshots"
 
+  config.include ActiveSupport::Testing::TimeHelpers
   config.include FactoryBot::Syntax::Methods
   config.include Rails.application.routes.url_helpers, type: :request
   config.include RequestHelpers, type: :request
