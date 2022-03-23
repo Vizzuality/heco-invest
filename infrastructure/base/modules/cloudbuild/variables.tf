@@ -47,3 +47,8 @@ variable "docker_build_args" {
   description = "Key-value pairs of env vars and their values"
   default = {}
 }
+
+variable "cloud_run_service_name" {
+  description = "The name of the Cloud Run service"
+  type = string
+}

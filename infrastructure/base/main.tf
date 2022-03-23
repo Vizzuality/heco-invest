@@ -31,6 +31,7 @@ module "frontend_build" {
   dockerfile_path = "./frontend/Dockerfile"
   docker_context_path = "./frontend"
   docker_build_args = local.frontend_docker_build_args
+  cloud_run_service_name = "frontend"
 }
 
 module "frontend_cloudrun" {

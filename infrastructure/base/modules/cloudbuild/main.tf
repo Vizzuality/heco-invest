@@ -30,6 +30,17 @@ resource "google_cloudbuild_trigger" "build_trigger" {
       )
     }
 
+    step {
+      name = "gcr.io/cloud-builders/docker"
+      args = ['push', '-a', 'gcr.io/${var.project_id}/${var.image_name}']
+    }
+
+    step {
+      name = "gcr.io/google.com/cloudsdktool/cloud-sdk"
+      entrypoint = "gcloud"
+      args = ['run', 'deploy', var.cloud_run_service_name, '--image', 'gcr.io/${var.project_id}/${var.image_name}', '--region', var.region]
+    }
+
     images = ["gcr.io/${var.project_id}/${var.image_name}", "gcr.io/${var.project_id}/${var.image_name}:latest"]
   }
 

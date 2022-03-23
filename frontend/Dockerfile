@@ -15,17 +15,18 @@ RUN adduser --system --uid 1001 nextjs
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat curl bash
 WORKDIR /app
-
-COPY --chown=nextjs:nextjs . .
+RUN chown nextjs:nextjs /app
 
 RUN corepack enable
+
+USER nextjs
+
+COPY --chown=nextjs:nextjs . .
 
 RUN yarn install --immutable
 
 RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
 RUN ./tx pull
-
-USER nextjs
 
 RUN yarn build
 
