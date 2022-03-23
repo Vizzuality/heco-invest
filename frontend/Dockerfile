@@ -9,24 +9,25 @@ ENV NODE_ENV production
 ARG TRANSIFEX_TOKEN
 ENV TX_TOKEN $TRANSIFEX_TOKEN
 
-RUN addgroup --system --gid 1001 nodejs
+RUN addgroup --system --gid 1001 nextjs
 RUN adduser --system --uid 1001 nextjs
 
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat curl bash
 WORKDIR /app
 
-COPY . .
+COPY --chown=nextjs:nextjs . .
 
 RUN corepack enable
+
 RUN yarn install --immutable
 
 RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
 RUN ./tx pull
 
-RUN yarn build
-
 USER nextjs
+
+RUN yarn build
 
 EXPOSE 3000
 
