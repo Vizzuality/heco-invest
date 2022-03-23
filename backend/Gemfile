@@ -8,6 +8,9 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem "redis", "~> 4.0"
 gem "rswag"
+gem 'rswag-api'
+gem 'rswag-ui'
+
 gem "active_storage_validations"
 gem "rspec-rails", "~> 5.0.0"
 
@@ -53,8 +56,10 @@ group :development do
 end
 
 group :test do
+  gem "rspec-rails", "~> 5.0.0"
   gem "rspec-collection_matchers"
   gem "rspec-request_snapshot"
+  gem 'rswag-specs'
   gem "simplecov", require: false
   gem "super_diff"
   gem "test-prof"
