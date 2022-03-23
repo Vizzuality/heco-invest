@@ -9,6 +9,7 @@ gem "puma", "~> 5.0"
 gem "redis", "~> 4.0"
 gem "rswag"
 gem "active_storage_validations"
+gem "rspec-rails", "~> 5.0.0"
 
 gem "cssbundling-rails"
 gem "jsbundling-rails"
@@ -53,7 +54,6 @@ end
 
 group :test do
   gem "rspec-collection_matchers"
-  gem "rspec-rails", "~> 5.0.0"
   gem "rspec-request_snapshot"
   gem "simplecov", require: false
   gem "super_diff"

@@ -3,7 +3,7 @@
 ## Dependencies:
 
 - Ruby v3.1
-- Rails v7
+- Bundler v2.3.3
 - PostgreSQL v14
 
 ## Local installation
