@@ -18,7 +18,9 @@ RUN apk update && \
 #      imagemagick-dev \
 #      shared-mime-info \
     && rm -rf /var/cache/apk/*
-
+RUN apk update \
+    && apk add build-base \
+       tzdata
 RUN echo 'gem: -N' >> ~/.gemrc
 RUN gem --version
 RUN gem install bundler -v $BUNDLER_VERSION
