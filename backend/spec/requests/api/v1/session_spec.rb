@@ -85,6 +85,7 @@ RSpec.describe "API V1 Session", type: :request do
       security [cookie_auth: [], csrf: []]
       consumes "application/json"
       produces "application/json"
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
 
       it_behaves_like "with not authorized error", csrf: true
 
