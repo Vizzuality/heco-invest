@@ -11,6 +11,9 @@
   "/VnDMl": {
     "string": "Other"
   },
+  "/plMvw": {
+    "string": "Project category"
+  },
   "0CAqpl": {
     "string": "About the partners"
   },
@@ -82,6 +85,9 @@
   },
   "9pXx8c": {
     "string": "Promote your idea, project or business and connect it with investors and funding sources to generate impact in the Amazon region."
+  },
+  "9uOFF3": {
+    "string": "Overview"
   },
   "A4UTjl": {
     "string": "Portuguese"
@@ -156,6 +162,9 @@
   "JRfERD": {
     "string": "Paulson Institute"
   },
+  "JWYapR": {
+    "string": "{name} project"
+  },
   "JkLHGw": {
     "string": "Website"
   },
@@ -167,6 +176,9 @@
   },
   "M1xKEI": {
     "string": "Language: {language}"
+  },
+  "MH3koz": {
+    "string": "Previous slide"
   },
   "MfCYKW": {
     "string": "For investors"
@@ -200,6 +212,9 @@
   },
   "QDj3j7": {
     "string": "Inter-American Development Bank Lab"
+  },
+  "RXoqkD": {
+    "string": "Mission"
   },
   "RczAkW": {
     "string": "Report back"
@@ -249,6 +264,9 @@
   "Y7/cBd": {
     "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and <span>start the conversation</span>. Make sure to update us to help us track your contribution to preserving the Amazon: <span>the future is in your hands too!</span>"
   },
+  "Y9bYKH": {
+    "string": "Next slide"
+  },
   "ZEEVQX": {
     "string": "Social media"
   },
@@ -273,6 +291,9 @@
   "btdgGc": {
     "string": "<a>Browse the open calls</a> posted by our investor community to identify new areas for project development."
   },
+  "cAtOAM": {
+    "string": "Impact shape of the {name} project"
+  },
   "cE4Hfw": {
     "string": "Discover"
   },
@@ -288,6 +309,12 @@
   "cvyJC+": {
     "string": "These investments will support the country’s ambitious climate, biodiversity, and sustainable development goals. They will create resilient landscapes that serve as spaces for inclusion and peacebuilding, with opportunities for improved human well-being and development."
   },
+  "dPuc1g": {
+    "string": "Slide {slideNumber}"
+  },
+  "dZYyPC": {
+    "string": "View {name} project details"
+  },
   "dkNQOz": {
     "string": "Projects of all sizes"
   },
@@ -299,6 +326,9 @@
   },
   "ghj0+t": {
     "string": "Geographies"
+  },
+  "hLG9bm": {
+    "string": "Project financial instrument"
   },
   "hiQOgT": {
     "string": "<span>Biodiversity:</span> endemism, conservation/restoration potential, landscape connectivity;"
@@ -386,6 +416,9 @@
   },
   "xQ4XkB": {
     "string": "Only by understanding nature’s contributions to people and the economy can we push for policy-making where nature counts."
+  },
+  "xjBcRf": {
+    "string": "Slide {slide} out of {total}"
   },
   "xmcVZ0": {
     "string": "Search"
