@@ -2,6 +2,11 @@ class Account < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  has_many :users
+
+  has_one :investor
+  has_one :project_developer
+
   translates :about
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}

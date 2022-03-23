@@ -16,6 +16,8 @@ gem "stimulus-rails"
 gem "turbo-rails"
 
 gem "friendly_id", "~> 5.4.0"
+gem "devise"
+gem "devise-i18n"
 gem "traco"
 
 # API
@@ -35,12 +37,13 @@ end
 
 group :development do
   gem "annotate"
+
   gem "brakeman", require: false
   gem "bundler-audit", require: false
+  gem "letter_opener_web"
   gem "rubocop"
   gem "rubocop-performance"
   gem "web-console"
-
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]

@@ -4,9 +4,11 @@ if Rails.env.development?
   Account.delete_all
   Investor.delete_all
   ProjectDeveloper.delete_all
+  User.delete_all
 
   5.times do
     investor_account = FactoryBot.create(:account)
+    FactoryBot.create(:user, account: investor_account)
     investor = Investor.create!(
       account: investor_account,
       categories: Category::TYPES.shuffle.take((1..2).to_a.sample),
@@ -27,6 +29,7 @@ if Rails.env.development?
     end
 
     project_developer_account = FactoryBot.create(:account)
+    FactoryBot.create(:user, account: project_developer_account)
     project_developer = ProjectDeveloper.create!(
       account: project_developer_account,
       project_developer_type: ProjectDeveloperType::TYPES.sample,

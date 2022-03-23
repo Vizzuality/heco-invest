@@ -20,8 +20,31 @@ RSpec.configure do |config|
       },
       paths: {},
       components: {
-        securitySchemes: {},
+        securitySchemes: {
+          csrf: {
+            type: :apiKey,
+            name: "X-CSRF-TOKEN",
+            in: :header
+          },
+          cookie_auth: {
+            type: :apiKey,
+            name: "_backend_session",
+            in: :cookie
+          }
+        },
         schemas: {
+          user: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              type: {type: :string},
+              attributes: {
+                first_name: {type: :string},
+                last_name: {type: :string},
+                email: {type: :string}
+              }
+            }
+          },
           investor: {
             type: :object,
             properties: {
