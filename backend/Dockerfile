@@ -29,7 +29,7 @@ WORKDIR /usr/src/app
 
 COPY Gemfile.lock Gemfile /usr/src/app/
 
-RUN bundle config set --local without 'development test'
+RUN bundle config set --local --without development test
 RUN bundle install --jobs 20 --retry 5
 
 COPY . /usr/src/app
