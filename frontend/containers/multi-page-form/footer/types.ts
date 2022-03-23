@@ -15,6 +15,8 @@ export interface MultiPageFormFooterProps {
   completeButtonText?: string;
   /** Array of indexes of the pages that have errors. Defaults to `[]` */
   pagesWithErrors?: number[];
+  /** Alert to display right above the footer */
+  alert?: string;
   /** Previous Button click callback */
   onPreviousClick?: () => void;
   /** Next Button click callback */

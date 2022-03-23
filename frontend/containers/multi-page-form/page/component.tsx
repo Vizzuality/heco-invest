@@ -8,7 +8,6 @@ import { MultiPageFormPageProps } from './types';
 
 export const MultiPageFormPage: FC<MultiPageFormPageProps> = ({
   className,
-  hasErrors = false,
   children,
 }: MultiPageFormPageProps) => {
   const mainRef = useRef<HTMLLIElement>(null);

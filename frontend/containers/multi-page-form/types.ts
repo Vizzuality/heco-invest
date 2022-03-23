@@ -15,6 +15,7 @@ export type MultiPageFormProps = PropsWithChildren<
     Pick<MultiPageFormHeaderProps, 'title' | 'onCloseClick'> &
     Pick<
       MultiPageFormFooterProps,
+      | 'alert'
       | 'showProgressBar'
       | 'isSubmitting'
       | 'onSubmitClick'

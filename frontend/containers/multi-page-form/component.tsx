@@ -19,6 +19,7 @@ export const MultiPageForm: FC<MultiPageFormProps> = ({
   isSubmitting = false,
   isComplete = false,
   completeButtonText,
+  alert,
   children,
   onCloseClick,
   onSubmitClick,
@@ -77,6 +78,7 @@ export const MultiPageForm: FC<MultiPageFormProps> = ({
         isComplete={isComplete}
         completeButtonText={completeButtonText}
         pagesWithErrors={pagesWithErrors}
+        alert={alert}
         onPreviousClick={handlePreviousClick}
         onNextClick={handleNextClick}
         onSubmitClick={onSubmitClick}

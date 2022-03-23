@@ -7,6 +7,7 @@ import cx from 'classnames';
 
 import { noop } from 'lodash-es';
 
+import Alert from 'components/alert';
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
 import Loading from 'components/loading';
@@ -23,6 +24,7 @@ export const MultiPageFormFooter: FC<MultiPageFormFooterProps> = ({
   currPage,
   completeButtonText,
   pagesWithErrors = [],
+  alert,
   onPreviousClick = noop,
   onNextClick = noop,
   onSubmitClick = noop,
@@ -45,6 +47,11 @@ export const MultiPageFormFooter: FC<MultiPageFormFooterProps> = ({
             width: `${(currPage * 100) / numPages}%`,
           }}
         />
+      )}
+      {alert && !isComplete && (
+        <div className="absolute top-0 w-full -translate-y-full">
+          <Alert withLayoutContainer={true}>{alert}</Alert>
+        </div>
       )}
       <LayoutContainer>
         <div className="flex flex-row-reverse items-center justify-between w-full h-20 gap-x-8 md:gap-x-16">
