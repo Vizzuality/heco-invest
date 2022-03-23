@@ -1,24 +1,24 @@
+import { useCallback } from 'react';
+
+import { AlertTriangle } from 'react-feather';
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
 import { InferGetStaticPropsType } from 'next';
-import validate from 'validate.js';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Checkbox from 'components/forms/checkbox';
 import Input from 'components/forms/input';
-import Icon from 'components/icon';
+import { useSignupResolver } from 'components/forms/validation';
 import Loading from 'components/loading';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 import { SignupDto, SignupFormI } from 'types/signup';
 
 import { useSignup } from 'services/users/userService';
-
-import WARNING_SGV from '../svgs/notifications/warning-outlined.svg';
 
 export async function getStaticProps(ctx) {
   return {
@@ -31,45 +31,35 @@ export async function getStaticProps(ctx) {
 type AboutPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
+  const { locale } = useRouter();
+  const intl = useIntl();
+  const signUp = useSignup();
+  const resolver = useSignupResolver();
   const {
     register,
     formState: { errors },
-    getValues,
     handleSubmit,
-    reset,
     setFocus,
-  } = useForm<SignupFormI>();
+  } = useForm<SignupFormI>({ resolver });
 
-  const { locale } = useRouter();
-
-  const intl = useIntl();
-  const { mutateAsync, isSuccess, error, isLoading } = useSignup();
+  const handleSignUp = useCallback((data: SignupDto) => signUp.mutate(data), [signUp]);
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {
-    const { firstName, lastName, email, password } = values;
+    const { confirmPassword, acceptTerms, ...rest } = values;
     const newUser: SignupDto = {
-      firstName,
-      lastName,
-      email,
-      password,
+      ...rest,
       locale,
     };
-    console.log(newUser);
-    await mutateAsync(newUser);
-    if (isSuccess) {
-      reset();
-      console.log('sucess');
-    }
+    handleSignUp(newUser);
   };
 
   const onError: SubmitErrorHandler<SignupFormI> = (error) => {
-    console.log('error', error);
     const firstError = Object.keys(error)[0] as keyof SignupFormI;
     setFocus(firstError);
   };
 
   return (
-    <div className="w-full max-w-xl h-screen m-auto px-4">
+    <div className="w-full h-screen max-w-xl px-4 m-auto">
       <h1 className="mb-2.5 font-serif text-4xl font-semibold text-green-dark">
         <FormattedMessage defaultMessage="Sign up" id="8HJxXG" />
       </h1>
@@ -77,10 +67,17 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
         <FormattedMessage defaultMessage="Please enter your details below." id="rfVDxL" />
       </p>
       <form onSubmit={handleSubmit(onSubmit, onError)}>
-        {error && (
-          <div className="flex mt-6 p-4.5 rounded-lg bg-background-error" role="alert">
-            <Icon icon={WARNING_SGV} className="w-5 h-5 text-red" />
-            <p className="ml-2 font-sans text-sm leading-normal text-black">Server error message</p>
+        {signUp.isError && (
+          <div className="flex mt-6 p-4.5 rounded-lg bg-red/10" role="alert">
+            <AlertTriangle className="w-5 h-5 text-red" />
+            <p className="ml-2 font-sans text-sm leading-normal text-black">
+              {signUp.error.message || (
+                <FormattedMessage
+                  defaultMessage="Something went wrong while submitting your form."
+                  id="ylNQY0"
+                />
+              )}
+            </p>
           </div>
         )}
         <div className="flex gap-4">
@@ -93,15 +90,12 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 type="text"
                 name="firstName"
                 id="first-name"
-                placeholder="Insert your name"
+                placeholder={intl.formatMessage({
+                  defaultMessage: 'Insert your name',
+                  id: 'Q1Q4rT',
+                })}
                 aria-describedby="first-name-error"
                 register={register}
-                registerOptions={{
-                  required: intl.formatMessage({
-                    defaultMessage: 'You need to enter a name.',
-                    id: 'Pl5xI4',
-                  }),
-                }}
               />
             </label>
             {errors.firstName && (
@@ -122,15 +116,12 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 type="text"
                 name="lastName"
                 id="last-name"
-                placeholder="Insert your last name"
+                placeholder={intl.formatMessage({
+                  defaultMessage: 'Insert your last name',
+                  id: 'GYkIYE',
+                })}
                 aria-describedby="last-name-error"
                 register={register}
-                registerOptions={{
-                  required: intl.formatMessage({
-                    defaultMessage: 'You need to enter a last name.',
-                    id: 'zPMPr9',
-                  }),
-                }}
               />
             </label>
             {errors.lastName && (
@@ -149,31 +140,17 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               type="email"
               name="email"
               id="email"
-              placeholder="Insert your email"
+              placeholder={intl.formatMessage({
+                defaultMessage: 'Insert your email',
+                id: 'ErIkUS',
+              })}
               aria-describedby="email-error"
               register={register}
-              registerOptions={{
-                required: intl.formatMessage({
-                  defaultMessage: 'You need to enter your email',
-                  id: 'NioTuC',
-                }),
-                validate: (value) =>
-                  validate(
-                    { from: value },
-                    {
-                      from: {
-                        email: true,
-                      },
-                    }
-                  ),
-              }}
             />
           </label>
           {errors.email && (
             <p id="email-error" className="mt-1 ml-2 font-sans text-xs text-red font-regular">
-              {errors.email.message || (
-                <FormattedMessage defaultMessage="Invalid email format" id="nc1IrM" />
-              )}
+              {errors.email.message}
             </p>
           )}
         </div>
@@ -185,24 +162,14 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               </p>
               <Input
                 type="password"
-                placeholder="insert password"
+                placeholder={intl.formatMessage({
+                  defaultMessage: 'Insert password',
+                  id: 'HnG9/3',
+                })}
                 name="password"
                 id="password"
                 aria-describedby="password-description password-error"
                 register={register}
-                registerOptions={{
-                  required: intl.formatMessage({
-                    defaultMessage: 'You need to enter a password.',
-                    id: 'zeCjLr',
-                  }),
-                  minLength: {
-                    value: 8,
-                    message: intl.formatMessage({
-                      defaultMessage: 'The password must have at least 8 characters.',
-                      id: 'TiXJ+4',
-                    }),
-                  },
-                }}
               />
             </label>
             <p
@@ -226,16 +193,12 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 type="password"
                 id="confirm-password"
                 name="confirmPassword"
-                placeholder="insert password"
+                placeholder={intl.formatMessage({
+                  defaultMessage: 'Insert password',
+                  id: 'HnG9/3',
+                })}
                 aria-describedby="confirm-password-error"
                 register={register}
-                registerOptions={{
-                  required: intl.formatMessage({
-                    defaultMessage: 'You need to confirm the password',
-                    id: 'pPBoUU',
-                  }),
-                  validate: (value) => value === getValues('password'),
-                }}
               />
             </label>
             {errors.confirmPassword && (
@@ -243,9 +206,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 id="confirm-password-error"
                 className="mt-1 ml-2 font-sans text-xs text-red font-regular"
               >
-                {errors.confirmPassword.message || (
-                  <FormattedMessage defaultMessage="The passwords don't match" id="eo4bnL" />
-                )}
+                {errors.confirmPassword.message}
               </p>
             )}
           </div>
@@ -256,14 +217,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               name="acceptTerms"
               id="accept-terms"
               aria-describedby="accept-terms-error"
-              type="checkbox"
               register={register}
-              registerOptions={{
-                required: intl.formatMessage({
-                  defaultMessage: 'You need to accept the Terms and Privacy Policy.',
-                  id: 'tkP6dd',
-                }),
-              }}
             />
             <span className="ml-2 font-sans text-sm text-gray-800 font-regular">
               <FormattedMessage
@@ -285,9 +239,9 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
           <button
             className="flex px-5 py-2 font-sans text-sm text-white opacity-75 font-regular rounded-5xl leadign-6 bg-green-dark"
             type="submit"
-            disabled={isLoading}
+            disabled={signUp.isLoading}
           >
-            <Loading visible={isLoading} className="mr-2.5" />
+            <Loading visible={signUp.isLoading} className="mr-2.5" />
             <FormattedMessage defaultMessage="Sign up" id="8HJxXG" />
           </button>
         </div>
