@@ -4,6 +4,49 @@ RSpec.describe "API V1 Email Confirmation", type: :request do
   let(:unconfirmed_user) { create(:user, :unconfirmed, email: "user@example.com", password: "SuperSecret1234") }
 
   path "/api/v1/email_confirmation" do
+    post "Sends an email with confirmation token" do
+      tags "Email Confirmation"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: []]
+      parameter name: :params, in: :body, schema: {
+        type: :object,
+        properties: {
+          email: {type: :string}
+        },
+        required: ["email"]
+      }
+
+      response "200", :success do
+        let(:params) { {email: unconfirmed_user.email} }
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        run_test!
+
+        it "sends email" do
+          mail = ActionMailer::Base.deliveries.last
+          expect(mail.subject).to eq("Confirmation instructions")
+          expect(mail.to.first).to eq("user@example.com")
+        end
+
+        context "invalid email" do
+          let(:params) { {email: "invalid"} }
+
+          it "returns 200" do
+            expect(response).to have_http_status(:ok)
+          end
+        end
+
+        context "non existing user" do
+          let(:params) { {email: "valid@example.com"} }
+
+          it "returns 200" do
+            expect(response).to have_http_status(:ok)
+          end
+        end
+      end
+    end
+
     get "Confirms User Email" do
       tags "Email Confirmation"
       consumes "application/json"
