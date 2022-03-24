@@ -2049,7 +2049,7 @@ paths:
               properties:
                 email:
                   type: string
-                passsword:
+                password:
                   type: string
               required:
               - email
@@ -2134,7 +2134,7 @@ paths:
                   type: string
                 email:
                   type: string
-                passsword:
+                password:
                   type: string
                 ui_language:
                   type: string
