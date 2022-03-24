@@ -11,5 +11,13 @@ FactoryBot.define do
       Faker::Lorem.paragraph(sentence_count: 4)
     end
     language { "en" }
+    entity_legal_registration_number { "564823570" }
+
+    trait :with_locations do
+      locations do
+        [create(:location, location_type: "region"),
+         create(:location, location_type: "region")]
+      end
+    end
   end
 end

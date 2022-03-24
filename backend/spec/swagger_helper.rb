@@ -55,6 +55,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
+                  picture_url: {type: :string},
                   about: {type: :string, nullable: true},
                   website: {type: :string, nullable: true},
                   instagram: {type: :string, nullable: true},
@@ -235,6 +236,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
+                  picture_url: {type: :string},
                   about: {type: :string, nullable: true},
                   website: {type: :string, nullable: true},
                   instagram: {type: :string, nullable: true},
@@ -245,11 +247,34 @@ RSpec.configure do |config|
                   project_developer_type: {type: :string, nullable: true},
                   categories: {type: :array, items: {type: :string}},
                   impacts: {type: :array, items: {type: :string}},
-                  language: {type: :string}
+                  language: {type: :string},
+                  entity_legal_registration_number: {type: :string}
+                }
+              },
+              relationships: {
+                type: :object,
+                properties: {
+                  locations: {
+                    type: :object,
+                    properties: {
+                      data: {
+                        type: :array,
+                        items: {
+                          object: :object,
+                          properties: {
+                            id: {type: :string},
+                            type: {type: :string}
+                          },
+                          required: %w[id type]
+                        }
+                      }
+                    },
+                    required: %w[data]
+                  }
                 }
               }
             },
-            required: %w[id type attributes]
+            required: %w[id type attributes relationships]
           },
           enum: {
             type: :object,

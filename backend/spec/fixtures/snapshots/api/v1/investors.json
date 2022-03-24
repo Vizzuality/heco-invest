@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "id": "5b9d430d-73d4-4401-93ca-d560c915ba5f",
+      "id": "b18d7f21-d009-46c0-87cd-a7cdcc9d3834",
       "type": "investor",
       "attributes": {
         "name": "Kutch-Spencer",
@@ -39,11 +39,12 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "language": "en"
+        "language": "en",
+        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5T1RVMk5qSXhNaTA0T1ROakxUUXhNekV0WVRrellTMWlaalJpTVRVNU5UZzBZMlVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--5ea267cbfc59b4c4face609da3059588c594f18d/picture.jpg"
       }
     },
     {
-      "id": "92669f73-0f15-4335-829f-813d482e3f5a",
+      "id": "939d1ea9-3346-4eea-9439-bb547de7c5b9",
       "type": "investor",
       "attributes": {
         "name": "Bartoletti and Sons",
@@ -81,11 +82,12 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "language": "en"
+        "language": "en",
+        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1T0dFMU4yUXlZUzFrTmpsa0xUUTBPREF0T1RZek5TMWxaV1U0WW1Oak9UTmpZMklHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--6d08c7881bc3c80996f29175613447873048b553/picture.jpg"
       }
     },
     {
-      "id": "857ae2a9-401e-4fb5-9fc2-fc617fb1e3e8",
+      "id": "1d8cd612-f6e5-433a-b0e7-1b27def15614",
       "type": "investor",
       "attributes": {
         "name": "Hane, Lehner and Goyette",
@@ -123,11 +125,12 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "language": "en"
+        "language": "en",
+        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTnpnNFltSm1aQzFrTW1NekxUUmpaall0T0RSbU5pMDNaV1kwTlRBeFpHUXlNekFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--fd431406a076b72867e078a5d444b4c44fd5325d/picture.jpg"
       }
     },
     {
-      "id": "8f8bf934-6ceb-41ae-adcd-ccccd709dbb3",
+      "id": "3c6218fa-c167-4c6e-b217-eb613c3880df",
       "type": "investor",
       "attributes": {
         "name": "Hilpert, Waters and Johnston",
@@ -165,11 +168,12 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "language": "en"
+        "language": "en",
+        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6TkdFMFpUQXhaaTB4TmpVNUxUUmxaRGN0WVRBelpTMHlNamt5TnpBMk4yWXhPRGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--fc6d48bf272985f74543bc587191e320dd6c585c/picture.jpg"
       }
     },
     {
-      "id": "0ae34130-1a98-404a-b1a6-21afb90f0ce2",
+      "id": "c11bbffb-081a-4ee6-9c3c-a566124c13f6",
       "type": "investor",
       "attributes": {
         "name": "Jacobson, Fritsch and Stanton",
@@ -207,11 +211,12 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "language": "en"
+        "language": "en",
+        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxoWW1aaU4yVm1NQzB4TjJRNExUUmxZelF0T0daaE55MWlabUl6TW1KbU5tSmtNek1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--6fd5ae52eb767d30ab5dc2514756b10dab2d5701/picture.jpg"
       }
     },
     {
-      "id": "4d272d04-6151-43fb-81a4-8b0bb8a2e0fa",
+      "id": "9f6272c9-82e0-4b0c-a554-399144c2c18c",
       "type": "investor",
       "attributes": {
         "name": "Keebler, Kub and Zemlak",
@@ -249,11 +254,12 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "language": "en"
+        "language": "en",
+        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxpWWpBNU5qRTRaUzA1TWpnM0xUUmpNalV0WWpVNVl5MHhaVEJsWlRjMVkySmlPVFVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--179cd38ad34b0f96c029e1fe7266042faee971e9/picture.jpg"
       }
     },
     {
-      "id": "c51fb028-582f-426e-8dd0-9fb4d525cdb1",
+      "id": "57284efa-d006-482b-a35b-1877772a8e65",
       "type": "investor",
       "attributes": {
         "name": "Becker LLC",
@@ -291,7 +297,8 @@
         ],
         "previously_invested": true,
         "previously_invested_description": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
-        "language": "en"
+        "language": "en",
+        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWkdGbFpETXhaUzFpTkRrM0xUUXlNVE10WWpjMU9DMWtPRGN5WVdabVlqVTNNeklHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--77faaf7c28a9c1ce637874019ee153696972c09e/picture.jpg"
       }
     }
   ],

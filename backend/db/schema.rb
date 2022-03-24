@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_21_094956) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_24_100316) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -158,6 +158,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_21_094956) do
     t.index ["slug"], name: "index_open_calls_on_slug", unique: true
   end
 
+  create_table "project_developer_locations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "location_id", null: false
+    t.uuid "project_developer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id", "project_developer_id"], name: "uniq_index_project_developer_id_on_location_id", unique: true
+    t.index ["location_id"], name: "index_project_developer_locations_on_location_id"
+    t.index ["project_developer_id"], name: "index_project_developer_locations_on_project_developer_id"
+  end
+
   create_table "project_developers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "account_id", null: false
     t.string "project_developer_type", null: false
@@ -172,6 +182,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_21_094956) do
     t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "entity_legal_registration_number", null: false
     t.index ["account_id"], name: "index_project_developers_on_account_id"
   end
 
@@ -270,6 +281,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_21_094956) do
   add_foreign_key "location_members", "locations", on_delete: :cascade
   add_foreign_key "locations", "locations", column: "parent_id", on_delete: :cascade
   add_foreign_key "open_calls", "investors", on_delete: :cascade
+  add_foreign_key "project_developer_locations", "locations", on_delete: :cascade
+  add_foreign_key "project_developer_locations", "project_developers", on_delete: :cascade
   add_foreign_key "project_developers", "accounts", on_delete: :cascade
   add_foreign_key "projects", "project_developers", on_delete: :cascade
   add_foreign_key "users", "accounts", on_delete: :cascade
