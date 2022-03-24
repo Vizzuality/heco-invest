@@ -10,6 +10,8 @@
 
 These are the steps to run the project locally:
 
+See ENV VARS documented in ENV_VARS.md
+
 ### Installing ruby dependencies
 
 On the project's root run `bundle install`.
