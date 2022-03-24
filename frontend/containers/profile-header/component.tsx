@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Heart as HeartIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { noop } from 'lodash-es/noop';
+import noop from 'lodash-es/noop';
 
 import Image from 'next/image';
 
@@ -38,7 +38,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
       <div className="pt-24 pb-12 bg-center bg-cover sm:pt-40 md:pt-56 bg-radial-green-dark bg-green-dark">
         <LayoutContainer className="flex justify-between">
           <div className="flex flex-col items-center w-full gap-6 lg:items-end lg:flex-row lg:w-6/12">
-            <div className="p-4 bg-white w-52 h-52 rounded-2xl">
+            <div className="overflow-hidden bg-white w-52 h-52 rounded-2xl">
               <Image
                 className="mx-auto w-52 h-52"
                 src={logo}

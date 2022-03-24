@@ -1,34 +1,34 @@
-import { FC } from 'react';
+import React, { useState } from 'react';
+
+import { FieldValues } from 'react-hook-form';
 
 import cx from 'classnames';
 
-import useStatus from '../utils';
+import { CheckboxProps } from './types';
 
-import { THEME } from './constants';
-import type { CheckboxProps } from './types';
+export const Checkbox = <FormValues extends FieldValues>(props: CheckboxProps<FormValues>) => {
+  const { register, registerOptions, ...rest } = props;
+  const { name, id, 'aria-label': ariaLabel, className } = rest;
 
-export const Checkbox: FC<CheckboxProps> = ({
-  theme = 'dark',
-  input,
-  meta = {},
-  disabled = false,
-  className,
-  ...props
-}: CheckboxProps) => {
-  const st = useStatus({ meta, disabled });
+  const [invalid, setInvalid] = useState(false);
 
   return (
     <input
-      {...input}
-      {...props}
       type="checkbox"
-      disabled={disabled}
-      className={cx({
-        'form-checkbox': true,
-        [THEME[theme].base]: true,
-        [THEME[theme].status[st]]: true,
-        [className]: !!className,
+      className={cx(
+        'appearance-none inline-block w-4 h-4 mr-2 mt-0.5 px-0.5 py-[3px] border border-beige rounded hover:border hover:border-green-dark outline-none focus-visible:ring-green-dark focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white  checked:border-green-dark checked:bg-green-dark checked:bg-[url("/images/checkbox-checked.svg")] bg-no-repeat bg-center disabled:opacity-60 disabled:hover:border-beige transition',
+        {
+          'invalid:border-red': invalid,
+          [className]: !!className,
+        }
+      )}
+      id={id}
+      aria-label={ariaLabel}
+      {...rest}
+      {...register(name, {
+        ...registerOptions,
       })}
+      onInvalid={() => setInvalid(true)}
     />
   );
 };

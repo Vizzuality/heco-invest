@@ -1,6 +1,5 @@
 {
   "name": "heco-invest-frontend",
-  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,6 +12,9 @@
     "storybook:build": "build-storybook -c .storybook",
     "i18n:extract": "formatjs extract \"{components,containers,helpers,hoc,hooks,layouts,lib,pages,services,store}/**/*.{js,jsx,ts,tsx}\" --ignore \"**/*.d.ts\" --out-file lang/transifex/zu.json --format transifex",
     "i18n:compile": "formatjs compile-folder lang/transifex lang/compiled --format transifex"
+  },
+  "engines": {
+    "node": "~16.14 || ~14.19"
   },
   "dependencies": {
     "@deck.gl/core": "^8.4.16",
@@ -82,6 +84,7 @@
     "react-popper": "^2.2.5",
     "react-query": "^3.16.0",
     "react-redux": "^7.2.4",
+    "react-stately": "^3.12.2",
     "rooks": "^5.10.0",
     "sharp": "^0.30.1",
     "slugify": "^1.6.5",
