@@ -4,6 +4,16 @@
 # I'm leaving this module here, unused, as a POC/work so far, in hopes that one day it can replace the
 # privacy-loose implementation that relies on the Google integration
 
+resource "google_project_service" "cloud_run_api" {
+  service    = "cloudbuild.googleapis.com"
+  disable_on_destroy = false
+}
+
+resource "google_project_service" "secret_manager_api" {
+  service    = "secretmanager.googleapis.com"
+  disable_on_destroy = false
+}
+
 locals {
   secret_key = random_password.secret_key.result
 }

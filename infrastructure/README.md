@@ -39,11 +39,12 @@ Contains multiple GCP resources needed for running HeCo on GCP.
 These resources include, but are not limited to:
 - <TBD>
 
-These are the GCP APIs that have to be enabled for this project to successfully deploy:
-- GCR
-- Cloud Build
-- Secret Manager
-- Cloud Run
+To apply this project, you will need the following GCP permissions:
+- "Editor" role
+- "Secret Manager Admin" role
+- "Cloud Run Admin" role
+- "resourcemanager.projects.setIamPolicy"
+
 
 The output values include access data for some of the resources above.
 
