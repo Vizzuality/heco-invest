@@ -84,8 +84,8 @@ WithAlert.args = {
     'Something went wrong while submitting your form. Please correct the errors before submitting again.',
 };
 
-export const Complete: Story<MultiPageLayoutProps> = Template.bind({});
-Complete.args = {
+export const Outro: Story<MultiPageLayoutProps> = Template.bind({});
+Outro.args = {
   showOutro: true,
 };
 

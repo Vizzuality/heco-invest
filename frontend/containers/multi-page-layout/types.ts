@@ -11,6 +11,8 @@ export type MultiPageLayoutProps = PropsWithChildren<
     className?: string;
     /** Whether to show the outro page */
     showOutro?: boolean;
+    /** Whether to show the footer on the outro page. Defaults to `false` */
+    showOutroFooter?: boolean;
     /** Whether the Layout should auto handle navigation (Previous, Next, Page numbers click). Defaults to `true` */
     autoNavigation?: boolean;
     /** Current page to display */

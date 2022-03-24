@@ -20,6 +20,7 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
   showProgressBar = true,
   isSubmitting = false,
   showOutro = false,
+  showOutroFooter = false,
   previousButtonText,
   nextButtonText,
   leaveButtonText,
@@ -104,24 +105,26 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
         onCloseClick={onCloseClick}
       />
       <LayoutContainer layout={layout}>{CurrentPage}</LayoutContainer>
-      <MultiPageLayoutFooter
-        numPages={numPages}
-        currentPage={autoNavigation ? currentPage : pageProp}
-        showProgressBar={showProgressBar}
-        isSubmitting={isSubmitting}
-        showOutro={showOutro}
-        previousButtonText={previousButtonText}
-        nextButtonText={nextButtonText}
-        submitButtonText={submitButtonText}
-        outroButtonText={outroButtonText}
-        pagesWithErrors={pagesWithErrors}
-        alert={alert}
-        onPreviousClick={handlePreviousClick}
-        onNextClick={handleNextClick}
-        onSubmitClick={onSubmitClick}
-        onCompleteClick={onCompleteClick}
-        onPageClick={handleOnPageClick}
-      />
+      {(!showOutro || (showOutro && showOutroFooter)) && (
+        <MultiPageLayoutFooter
+          numPages={numPages}
+          currentPage={autoNavigation ? currentPage : pageProp}
+          showProgressBar={showProgressBar}
+          isSubmitting={isSubmitting}
+          showOutro={showOutro}
+          previousButtonText={previousButtonText}
+          nextButtonText={nextButtonText}
+          submitButtonText={submitButtonText}
+          outroButtonText={outroButtonText}
+          pagesWithErrors={pagesWithErrors}
+          alert={alert}
+          onPreviousClick={handlePreviousClick}
+          onNextClick={handleNextClick}
+          onSubmitClick={onSubmitClick}
+          onCompleteClick={onCompleteClick}
+          onPageClick={handleOnPageClick}
+        />
+      )}
     </div>
   );
 };
