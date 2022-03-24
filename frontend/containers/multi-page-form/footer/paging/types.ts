@@ -4,7 +4,7 @@ export type MultiPageFormFooterPagingProps = {
   /** Number of total pages */
   numPages: number;
   /** Current page */
-  currPage: number;
+  currentPage: number;
   /** Array of indexes of the pages that have errors. Defaults to `[]` */
   pagesWithErrors?: number[];
   /** Whether the form is being submitted */

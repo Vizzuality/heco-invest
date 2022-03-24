@@ -21,7 +21,7 @@ export const MultiPageFormFooter: FC<MultiPageFormFooterProps> = ({
   isComplete = false,
   showProgressBar = true,
   numPages,
-  currPage,
+  currentPage,
   completeButtonText,
   pagesWithErrors = [],
   alert,
@@ -31,7 +31,7 @@ export const MultiPageFormFooter: FC<MultiPageFormFooterProps> = ({
   onCompleteClick = noop,
   onPageClick = noop,
 }: MultiPageFormFooterProps) => {
-  const isLastPage = currPage === numPages - 1;
+  const isLastPage = currentPage === numPages - 1;
 
   return (
     <footer
@@ -44,7 +44,7 @@ export const MultiPageFormFooter: FC<MultiPageFormFooterProps> = ({
         <span
           className="absolute top-0 left-0 h-1 duration-300 -translate-y-1/2 rounded bg-green-light transition-width"
           style={{
-            width: `${(currPage * 100) / numPages}%`,
+            width: `${(currentPage * 100) / numPages}%`,
           }}
         />
       )}
@@ -93,7 +93,7 @@ export const MultiPageFormFooter: FC<MultiPageFormFooterProps> = ({
           <div>
             {!isComplete && (
               <MultiPageFormFooterPaging
-                currPage={currPage}
+                currentPage={currentPage}
                 numPages={numPages}
                 pagesWithErrors={pagesWithErrors}
                 isSubmitting={isSubmitting}
@@ -102,7 +102,7 @@ export const MultiPageFormFooter: FC<MultiPageFormFooterProps> = ({
             )}
           </div>
           <div className="flex justify-start flex-1">
-            {currPage > 0 && !isComplete && (
+            {currentPage > 0 && !isComplete && (
               <Button
                 className="px-0 leading-none dark-green md:px-8"
                 size="base"

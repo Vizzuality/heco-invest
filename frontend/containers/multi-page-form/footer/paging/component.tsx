@@ -10,7 +10,7 @@ import { MultiPageFormFooterPagingProps } from './types';
 
 export const MultiPageFormFooterPaging: FC<MultiPageFormFooterPagingProps> = ({
   className,
-  currPage,
+  currentPage,
   numPages,
   pagesWithErrors = [],
   isSubmitting,
@@ -29,9 +29,9 @@ export const MultiPageFormFooterPaging: FC<MultiPageFormFooterPagingProps> = ({
 
         {times(numPages, (page) => {
           const hasErrors = pagesWithErrors.includes(page);
-          const isCurrentPage = page === currPage;
-          const isBeforeCurrent = page < currPage;
-          const isAfterCurrent = page > currPage;
+          const isCurrentPage = page === currentPage;
+          const isBeforeCurrent = page < currentPage;
+          const isAfterCurrent = page > currentPage;
 
           return (
             <button

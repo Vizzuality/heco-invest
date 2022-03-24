@@ -10,7 +10,7 @@ export interface MultiPageFormFooterProps {
   /** Number of total pages */
   numPages: number;
   /** Current page */
-  currPage: number;
+  currentPage: number;
   /** Text to display on the final page button */
   completeButtonText?: string;
   /** Array of indexes of the pages that have errors. Defaults to `[]` */

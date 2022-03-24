@@ -2,6 +2,8 @@ import React, { FC, Children, useState } from 'react';
 
 import cx from 'classnames';
 
+import { noop } from 'lodash-es';
+
 import LayoutContainer from 'components/layout-container';
 
 import MultiPageFormAriaLive from './aria-live';
@@ -20,12 +22,17 @@ export const MultiPageForm: FC<MultiPageFormProps> = ({
   isComplete = false,
   completeButtonText,
   alert,
+  page: pageProp,
   children,
+  autoNavigation = true,
+  onPreviousClick = noop,
+  onNextClick = noop,
+  onPageClick = noop,
   onCloseClick,
   onSubmitClick,
   onCompleteClick,
 }: MultiPageFormProps) => {
-  const [currPage, setCurrPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const FormPages = Children.toArray(children).filter(
     (child: React.ReactElement<any>) => child.type === MultiPageFormPage
@@ -35,7 +42,10 @@ export const MultiPageForm: FC<MultiPageFormProps> = ({
     (child: React.ReactElement<any>) => child.type === MultiPageFormCompletePage
   );
 
-  const CurrentPage = FormCompletePage && isComplete ? FormCompletePage : FormPages[currPage];
+  const CurrentPage =
+    FormCompletePage && isComplete
+      ? FormCompletePage
+      : FormPages[autoNavigation ? currentPage : pageProp];
 
   const numPages = Children.count(FormPages);
 
@@ -48,17 +58,31 @@ export const MultiPageForm: FC<MultiPageFormProps> = ({
   );
 
   const handlePreviousClick = () => {
-    if (currPage === 0) return;
-    setCurrPage(currPage - 1);
+    const previousPage = (autoNavigation ? currentPage : pageProp) - 1;
+    if (previousPage < 0) return;
+    if (autoNavigation) {
+      setCurrentPage(previousPage);
+    } else {
+      onPreviousClick(previousPage);
+    }
   };
 
   const handleNextClick = () => {
-    if (!(currPage < numPages - 1)) return;
-    setCurrPage(currPage + 1);
+    const nextPage = (autoNavigation ? currentPage : pageProp) + 1;
+    if (nextPage > numPages) return;
+    if (autoNavigation) {
+      setCurrentPage(nextPage);
+    } else {
+      onNextClick(nextPage);
+    }
   };
 
   const handleOnPageClick = (page: number) => {
-    setCurrPage(page);
+    if (autoNavigation) {
+      setCurrentPage(page);
+    } else {
+      onPageClick(page);
+    }
   };
 
   return (
@@ -67,12 +91,16 @@ export const MultiPageForm: FC<MultiPageFormProps> = ({
         [className]: !!className,
       })}
     >
-      <MultiPageFormAriaLive title={title} currPage={currPage} numPages={numPages} />
+      <MultiPageFormAriaLive
+        title={title}
+        currentPage={autoNavigation ? currentPage : pageProp}
+        numPages={numPages}
+      />
       <MultiPageFormHeader title={title} onCloseClick={onCloseClick} />
       <LayoutContainer layout={layout}>{CurrentPage}</LayoutContainer>
       <MultiPageFormFooter
         numPages={numPages}
-        currPage={currPage}
+        currentPage={autoNavigation ? currentPage : pageProp}
         showProgressBar={showProgressBar}
         isSubmitting={isSubmitting}
         isComplete={isComplete}

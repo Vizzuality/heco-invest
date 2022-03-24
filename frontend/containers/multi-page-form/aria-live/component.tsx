@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { MultiPageFormAriaLiveProps } from './types';
 
 export const MultiPageFormAriaLive: React.FC<MultiPageFormAriaLiveProps> = ({
-  currPage,
+  currentPage,
   numPages,
   title,
 }: MultiPageFormAriaLiveProps) => (
@@ -14,7 +14,7 @@ export const MultiPageFormAriaLive: React.FC<MultiPageFormAriaLiveProps> = ({
       defaultMessage="{title} - page {currentPage} out of {numPages}"
       values={{
         title: title,
-        currentPage: currPage + 1,
+        currentPage: currentPage + 1,
         numPages: numPages,
       }}
       id="0cWjQP"
