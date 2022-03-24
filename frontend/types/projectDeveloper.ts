@@ -12,27 +12,22 @@ export type ProjectDeveloperSetupForm = ProjectDeveloperSetupFormOnline & {
   projectDeveloperType: string;
   about: string;
   mission: string;
-  categories: string[];
-  mosaics: string[];
-  impact?: string[];
+  categories: Category[];
+  mosaics: Mosaic[];
+  impact?: Impact[];
   language: string;
 };
 
-export enum category {
-  sustainable_agrosystems = 0,
-  tourism_and_recreation = 1,
-  forestry_and_agroforestry = 2,
-  non_timber_forest_production = 3,
-}
+export type Category =
+  | 'sustainable_agrosystems'
+  | 'tourism_and_recreation'
+  | 'forestry_and_agroforestry'
+  | 'non_timber_forest_production'
+  | 'human_capital_and_inclusion';
 
-export enum impact {
-  biodiversity = 0,
-  climate = 1,
-  water = 2,
-  community = 3,
-}
+export type Impact = 'biodiversity' | 'climate' | 'water' | 'community';
 
 export type Mosaic =
   | 'Piedemonte Amazónico Macizo'
   | 'Heart of Amazonia'
-  | 'Andean Amazonian Piedmont'[];
+  | 'Andean Amazonian Piedmont';

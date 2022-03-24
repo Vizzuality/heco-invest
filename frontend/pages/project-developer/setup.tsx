@@ -22,15 +22,12 @@ import Input from 'components/forms/input';
 import TextArea from 'components/forms/textarea';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
-import {
-  ProjectDeveloperSetupForm,
-  ProjectDeveloperSetupFormOnline,
-} from 'types/projectDeveloperSetup';
+import { ProjectDeveloperSetupForm, ProjectDeveloperSetupFormOnline } from 'types/projectDeveloper';
 
 const languages = [
-  { name: 'Spanish', code: 'es' },
-  { name: 'English', code: 'en' },
-  { name: 'Portuguese', code: 'pt' },
+  { name: 'Spanish', nativeName: 'Español', code: 'es' },
+  { name: 'English', nativeName: 'English', code: 'en' },
+  { name: 'Portuguese', nativeName: 'Português', code: 'pt' },
 ];
 const onlinePresence = ['website', 'facebook', 'linkedin', 'instagram', 'twitter'];
 const categories = [
@@ -54,7 +51,7 @@ type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Label: FC<LabelHTMLAttributes<HTMLLabelElement>> = (props) => {
   return (
-    <label className="block font-sans text-sm font-semibold color-gray-800" htmlFor={props.htmlFor}>
+    <label className="block font-sans text-sm font-semibold text-gray-800" htmlFor={props.htmlFor}>
       {props.children}
     </label>
   );
@@ -170,16 +167,22 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
       case 0:
         return (
           <div>
-            <h1>I want to write my content in</h1>
-            <p id="language-description">
+            <h1 className="mb-6 font-serif text-3xl font-semibold text-green-dark">
+              I want to write my content in
+            </h1>
+            <p id="language-description" className="mb-20 font-sans text-base">
               Select the account laguage in which you want to write the content of this account.
               This will avoid mixed content in the platform.
             </p>
-            <div className="flex gap-x-6">
+            <div className="flex justify-center mt-2 gap-x-6">
               {languages.map((lang) => {
-                const { name, code } = lang;
+                const { name, code, nativeName } = lang;
                 return (
-                  <Label key={code} htmlFor={code} className="inline">
+                  <label
+                    key={code}
+                    htmlFor={code}
+                    className="justify-center block w-64 text-center border rounded-lg py-7 border-beige"
+                  >
                     <input
                       name={name}
                       id={code}
@@ -192,8 +195,9 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                         }),
                       })}
                     />
-                    {name}
-                  </Label>
+                    <span className="block">{name}</span>
+                    <span>({nativeName})</span>
+                  </label>
                 );
               })}
             </div>
@@ -203,21 +207,31 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
       case 1:
         return (
           <div>
+            <div className="mb-6">
+              <h1 className="mb-2 font-serif text-3xl font-semibold">
+                Project developer information
+              </h1>
+              <p className="font-sans text-base text-gray-600">
+                This information will be visible in the profile for other users.
+              </p>
+            </div>
+
             <div className="mb-6.5">
+              <p className="font-sans font-medium text-base text-gray-600 mb-4.5">General</p>
               <p className="mb-4 text-sm font-semibold text-gray-800 text-primary">Picture</p>
               <div className="flex gap-x-4">
                 <Image src="/images/avatar.svg" width={48} height={48} alt="profile image" />
-                <Label htmlFor="picture">
+                <label htmlFor="picture" className="bg-green-dark rounded-3xl pt-2.5">
                   <input
                     id="picture"
-                    className="mt-2.5"
+                    className="appearance-none"
                     name="picture"
                     type="file"
                     {...register('picture', {
                       required: 'This field is required',
                     })}
                   />
-                </Label>
+                </label>
               </div>
               {errors.picture && <p>{errors.picture.message}</p>}
             </div>
@@ -349,11 +363,13 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit, onError)}>
-        <FormSection />
-        <div className="flex justify-between px-20 py-4 align-middle border-t border-t-gray-400">
-          <div>
+    <div className="w-full min-h-screen m-auto">
+      <form onSubmit={handleSubmit(onSubmit, onError)} className="flex flex-col justify-between">
+        <div className="max-w-screen-lg m-auto">
+          <FormSection />
+        </div>
+        <div className="flex justify-between h-full px-20 py-4 my-10 align-middle border-t border-t-gray-400">
+          <div className="min-w-20 min-h-1">
             {section !== 0 && (
               <Button theme="primary-white" onClick={() => setSection(section - 1)}>
                 <ArrowLeft size={16} className="mr-3" />
@@ -361,7 +377,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
               </Button>
             )}
           </div>
-          <div className="flex gap-x-4">
+          <div className="flex align-middle gap-x-4">
             {[0, 1, 2].map((item) => (
               <Button
                 className="w-6 h-6 px-1.75 text-center round"
