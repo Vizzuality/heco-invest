@@ -80,7 +80,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             </p>
           </div>
         )}
-        <div className="flex gap-4">
+        <div className="md:flex md:gap-4">
           <div className="w-full">
             <label htmlFor="first-name">
               <p className="mb-2.5 mt-4.5 font-sans text-sm font-semibold text-gray-800">
@@ -154,7 +154,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             </p>
           )}
         </div>
-        <div className="flex gap-4">
+        <div className="md:gap-4 md:flex">
           <div className="w-full">
             <label htmlFor="password">
               <p className="mb-2.5 mt-4.5 font-sans text-sm font-semibold text-gray-800">
