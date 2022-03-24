@@ -22,6 +22,9 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
   showProgressBar = true,
   numPages,
   currentPage,
+  previousButtonText,
+  nextButtonText,
+  submitButtonText,
   completeButtonText,
   pagesWithErrors = [],
   alert,
@@ -65,7 +68,11 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
                   disabled={isSubmitting || pagesWithErrors.length > 0}
                 >
                   <Loading className="w-5 h-5 mr-3 -ml-5" visible={isSubmitting} />
-                  <FormattedMessage defaultMessage="Submit" id="wSZR47" />
+                  {submitButtonText ? (
+                    submitButtonText
+                  ) : (
+                    <FormattedMessage defaultMessage="Submit" id="wSZR47" />
+                  )}
                 </Button>
               ) : (
                 <Button
@@ -73,7 +80,11 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
                   size="base"
                   onClick={onNextClick}
                 >
-                  <FormattedMessage defaultMessage="Next" id="9+Ddtu" />
+                  {nextButtonText ? (
+                    nextButtonText
+                  ) : (
+                    <FormattedMessage defaultMessage="Next" id="9+Ddtu" />
+                  )}
                 </Button>
               ))}
             {isComplete && (
@@ -104,7 +115,7 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
           <div className="flex justify-start flex-1">
             {currentPage > 0 && !isComplete && (
               <Button
-                className="px-0 leading-none dark-green md:px-8"
+                className="px-0 leading-none dark-green md:px-8 text-green-dark hover:text-green-light active:text-green-light"
                 size="base"
                 theme="naked"
                 icon={ArrowLeftIcon}
@@ -112,7 +123,11 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
                 disabled={isSubmitting}
               >
                 <span className="hidden md:inline-block">
-                  <FormattedMessage defaultMessage="Back" id="cyR7Kh" />
+                  {previousButtonText ? (
+                    previousButtonText
+                  ) : (
+                    <FormattedMessage defaultMessage="Back" id="cyR7Kh" />
+                  )}
                 </span>
               </Button>
             )}

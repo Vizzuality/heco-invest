@@ -17,6 +17,7 @@ import { MultiPageLayoutHeaderProps } from './types';
 export const MultiPageLayoutHeader: React.FC<MultiPageLayoutHeaderProps> = ({
   className,
   title,
+  leaveButtonText,
   onCloseClick = noop,
 }: MultiPageLayoutHeaderProps) => {
   const intl = useIntl();
@@ -48,7 +49,11 @@ export const MultiPageLayoutHeader: React.FC<MultiPageLayoutHeaderProps> = ({
             >
               <XCircleIcon className="w-10 h-10 stroke-1" />
               <span className="hidden ml-2 md:inline">
-                <FormattedMessage defaultMessage="Leave" id="fnihsY" />
+                {leaveButtonText ? (
+                  leaveButtonText
+                ) : (
+                  <FormattedMessage defaultMessage="Leave" id="fnihsY" />
+                )}
               </span>
             </Button>
           </div>

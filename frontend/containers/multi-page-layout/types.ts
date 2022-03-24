@@ -22,7 +22,7 @@ export type MultiPageLayoutProps = PropsWithChildren<
     /** Callback when a page number button is clicked */
     onPageClick?: (page: number) => void;
   } & Pick<LayoutContainerProps, 'layout'> &
-    Pick<MultiPageLayoutHeaderProps, 'title' | 'onCloseClick'> &
+    Pick<MultiPageLayoutHeaderProps, 'title' | 'onCloseClick' | 'leaveButtonText'> &
     Pick<
       MultiPageLayoutFooterProps,
       | 'alert'
@@ -30,6 +30,9 @@ export type MultiPageLayoutProps = PropsWithChildren<
       | 'isSubmitting'
       | 'onSubmitClick'
       | 'onCompleteClick'
+      | 'nextButtonText'
+      | 'previousButtonText'
+      | 'submitButtonText'
       | 'completeButtonText'
     >
 >;

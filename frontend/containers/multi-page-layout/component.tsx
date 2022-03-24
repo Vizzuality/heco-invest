@@ -20,6 +20,10 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
   showProgressBar = true,
   isSubmitting = false,
   isComplete = false,
+  previousButtonText,
+  nextButtonText,
+  leaveButtonText,
+  submitButtonText,
   completeButtonText,
   alert,
   page: pageProp,
@@ -94,7 +98,11 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
         currentPage={autoNavigation ? currentPage : pageProp}
         numPages={numPages}
       />
-      <MultiPageLayoutHeader title={title} onCloseClick={onCloseClick} />
+      <MultiPageLayoutHeader
+        title={title}
+        leaveButtonText={leaveButtonText}
+        onCloseClick={onCloseClick}
+      />
       <LayoutContainer layout={layout}>{CurrentPage}</LayoutContainer>
       <MultiPageLayoutFooter
         numPages={numPages}
@@ -102,6 +110,9 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
         showProgressBar={showProgressBar}
         isSubmitting={isSubmitting}
         isComplete={isComplete}
+        previousButtonText={previousButtonText}
+        nextButtonText={nextButtonText}
+        submitButtonText={submitButtonText}
         completeButtonText={completeButtonText}
         pagesWithErrors={pagesWithErrors}
         alert={alert}
