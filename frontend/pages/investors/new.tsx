@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
-import MultiPageLayout, { Page, CompletePage } from 'containers/multi-page-layout';
+import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
 
 import Head from 'components/head';
 import NakedLayout, { NakedLayoutProps } from 'layouts/naked-page';
@@ -62,7 +62,7 @@ const NewInvestorPage: PageComponent<{}, NakedLayoutProps> = (props) => {
         layout="narrow"
         title={intl.formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })}
         autoNavigation={false}
-        completeButtonText={intl.formatMessage({
+        outroButtonText={intl.formatMessage({
           defaultMessage: 'See my profile',
           id: 'TH786p',
         })}
@@ -77,7 +77,7 @@ const NewInvestorPage: PageComponent<{}, NakedLayoutProps> = (props) => {
             : null
         }
         isSubmitting={false}
-        isComplete={isFormComplete}
+        showOutro={isFormComplete}
         onNextClick={handleNextClick}
         onPreviousClick={handlePreviousClick}
         onPageClick={handlePageClick}
@@ -180,11 +180,11 @@ const NewInvestorPage: PageComponent<{}, NakedLayoutProps> = (props) => {
           </p>
         </Page>
 
-        <CompletePage>
+        <OutroPage>
           <h1 className="font-serif text-2xl font-light sm:text-3xl">
             What would you like to do next?
           </h1>
-        </CompletePage>
+        </OutroPage>
       </MultiPageLayout>
     </>
   );

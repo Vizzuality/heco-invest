@@ -9,8 +9,8 @@ export type MultiPageLayoutProps = PropsWithChildren<
   {
     /** Classnames to apply to the container */
     className?: string;
-    /** Whether the form has been completed successfully */
-    isComplete?: boolean;
+    /** Whether to show the outro page */
+    showOutro?: boolean;
     /** Whether the Layout should auto handle navigation (Previous, Next, Page numbers click). Defaults to `true` */
     autoNavigation?: boolean;
     /** Current page to display */
@@ -33,6 +33,6 @@ export type MultiPageLayoutProps = PropsWithChildren<
       | 'nextButtonText'
       | 'previousButtonText'
       | 'submitButtonText'
-      | 'completeButtonText'
+      | 'outroButtonText'
     >
 >;

@@ -7,9 +7,9 @@ import { noop } from 'lodash-es';
 import LayoutContainer from 'components/layout-container';
 
 import MultiPageLayoutAriaLive from './aria-live';
-import MultiPageLayoutCompletePage from './complete-page';
 import MultiPageLayoutFooter from './footer';
 import MultiPageLayoutHeader from './header';
+import MultiPageLayoutOutroPage from './outro-page';
 import MultiPageLayoutPage from './page';
 import type { MultiPageLayoutProps } from './types';
 
@@ -19,12 +19,12 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
   title,
   showProgressBar = true,
   isSubmitting = false,
-  isComplete = false,
+  showOutro = false,
   previousButtonText,
   nextButtonText,
   leaveButtonText,
   submitButtonText,
-  completeButtonText,
+  outroButtonText,
   alert,
   page: pageProp,
   children,
@@ -42,12 +42,12 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
     (child: React.ReactElement<any>) => child.type === MultiPageLayoutPage
   );
 
-  const CompletePage = Children.toArray(children).filter(
-    (child: React.ReactElement<any>) => child.type === MultiPageLayoutCompletePage
+  const OutroPage = Children.toArray(children).filter(
+    (child: React.ReactElement<any>) => child.type === MultiPageLayoutOutroPage
   );
 
   const CurrentPage =
-    CompletePage && isComplete ? CompletePage : Pages[autoNavigation ? currentPage : pageProp];
+    OutroPage && showOutro ? OutroPage : Pages[autoNavigation ? currentPage : pageProp];
 
   const numPages = Children.count(Pages);
 
@@ -109,11 +109,11 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
         currentPage={autoNavigation ? currentPage : pageProp}
         showProgressBar={showProgressBar}
         isSubmitting={isSubmitting}
-        isComplete={isComplete}
+        showOutro={showOutro}
         previousButtonText={previousButtonText}
         nextButtonText={nextButtonText}
         submitButtonText={submitButtonText}
-        completeButtonText={completeButtonText}
+        outroButtonText={outroButtonText}
         pagesWithErrors={pagesWithErrors}
         alert={alert}
         onPreviousClick={handlePreviousClick}

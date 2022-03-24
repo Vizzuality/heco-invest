@@ -18,14 +18,14 @@ import { MultiPageLayoutFooterProps } from './types';
 export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
   className,
   isSubmitting = false,
-  isComplete = false,
+  showOutro = false,
   showProgressBar = true,
   numPages,
   currentPage,
   previousButtonText,
   nextButtonText,
   submitButtonText,
-  completeButtonText,
+  outroButtonText,
   pagesWithErrors = [],
   alert,
   onPreviousClick = noop,
@@ -43,7 +43,7 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
         [className]: !!className,
       })}
     >
-      {showProgressBar && !isComplete && (
+      {showProgressBar && !showOutro && (
         <span
           className="absolute top-0 left-0 h-1 duration-300 -translate-y-1/2 rounded bg-green-light transition-width"
           style={{
@@ -51,7 +51,7 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
           }}
         />
       )}
-      {alert && !isComplete && (
+      {alert && !showOutro && (
         <div className="absolute top-0 w-full -translate-y-full">
           <Alert withLayoutContainer={true}>{alert}</Alert>
         </div>
@@ -59,7 +59,7 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
       <LayoutContainer>
         <div className="flex flex-row-reverse items-center justify-between w-full h-20 gap-x-8 md:gap-x-16">
           <div className="flex justify-end flex-1">
-            {!isComplete &&
+            {!showOutro &&
               (isLastPage ? (
                 <Button
                   className="px-3 py-2 leading-none md:px-8 md:py-4"
@@ -87,14 +87,14 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
                   )}
                 </Button>
               ))}
-            {isComplete && (
+            {showOutro && (
               <Button
                 className="px-3 py-2 leading-none md:px-8 md:py-4"
                 size="base"
                 onClick={onCompleteClick}
               >
-                {completeButtonText ? (
-                  completeButtonText
+                {outroButtonText ? (
+                  outroButtonText
                 ) : (
                   <FormattedMessage defaultMessage="Finish" id="2O2sfp" />
                 )}
@@ -102,7 +102,7 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
             )}
           </div>
           <div>
-            {!isComplete && (
+            {!showOutro && (
               <MultiPageLayoutFooterPaging
                 currentPage={currentPage}
                 numPages={numPages}
@@ -113,7 +113,7 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
             )}
           </div>
           <div className="flex justify-start flex-1">
-            {currentPage > 0 && !isComplete && (
+            {currentPage > 0 && !showOutro && (
               <Button
                 className="px-0 leading-none dark-green md:px-8 text-green-dark hover:text-green-light active:text-green-light"
                 size="base"

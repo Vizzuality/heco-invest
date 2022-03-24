@@ -4,12 +4,12 @@ import cx from 'classnames';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { MultiPageLayoutCompletePageProps } from './types';
+import { MultiPageLayoutOutroPageProps } from './types';
 
-export const MultiPageLayoutCompletePage: React.FC<MultiPageLayoutCompletePageProps> = ({
+export const MultiPageLayoutOutroPage: React.FC<MultiPageLayoutOutroPageProps> = ({
   className,
   children,
-}: MultiPageLayoutCompletePageProps) => {
+}: MultiPageLayoutOutroPageProps) => {
   const variants = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
@@ -37,4 +37,4 @@ export const MultiPageLayoutCompletePage: React.FC<MultiPageLayoutCompletePagePr
   );
 };
 
-export default MultiPageLayoutCompletePage;
+export default MultiPageLayoutOutroPage;

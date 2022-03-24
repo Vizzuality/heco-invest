@@ -3,8 +3,8 @@ export interface MultiPageLayoutFooterProps {
   className?: string;
   /** Whether the layout/form is being submitted */
   isSubmitting?: boolean;
-  /** Whether the layout/form has been completed successfully */
-  isComplete?: boolean;
+  /** Whether to show the outro page */
+  showOutro?: boolean;
   /** Whether to display a progress bar. Defaults to `true` */
   showProgressBar?: boolean;
   /** Number of total pages */
@@ -13,8 +13,8 @@ export interface MultiPageLayoutFooterProps {
   currentPage: number;
   /** Text to display on the submit page button. Defaults to `Submit` */
   submitButtonText?: string;
-  /** Text to display on the final page button. Defaults to `Finish` */
-  completeButtonText?: string;
+  /** Text to display on the outro page button. Defaults to `Finish` */
+  outroButtonText?: string;
   /** Text to display for the "next" button. Defaults to `Next` */
   nextButtonText?: string;
   /** Text to display for the "previous" button. Defaults to `Back` */

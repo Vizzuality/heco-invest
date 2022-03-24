@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 
-export type MultiPageLayoutCompletePageProps = PropsWithChildren<{
+export type MultiPageLayoutOutroPageProps = PropsWithChildren<{
   /** Classnames to apply to container */
   className?: string;
 }>;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import MultiPageLayout, { MultiPageLayoutProps, Page, CompletePage } from './';
+import MultiPageLayout, { MultiPageLayoutProps, Page, OutroPage } from './';
 
 export default {
   component: MultiPageLayout,
@@ -38,10 +38,10 @@ const Template: Story<MultiPageLayoutProps> = (args: MultiPageLayoutProps) => {
           <h1 className="text-2xl">Fourth Page</h1>
           <p className="mt-5">{loremIpsum[3]}</p>
         </Page>
-        <CompletePage>
-          <h1 className="text-2xl">Final page</h1>
+        <OutroPage>
+          <h1 className="text-2xl">Outro page</h1>
           <p className="mt-5">{loremIpsum[4]}</p>
-        </CompletePage>
+        </OutroPage>
       </MultiPageLayout>
     </>
   );
@@ -86,7 +86,7 @@ WithAlert.args = {
 
 export const Complete: Story<MultiPageLayoutProps> = Template.bind({});
 Complete.args = {
-  isComplete: true,
+  showOutro: true,
 };
 
 export const NoProgress: Story<MultiPageLayoutProps> = Template.bind({});
@@ -101,5 +101,5 @@ CustomButtons.args = {
   previousButtonText: 'Go back',
   nextButtonText: 'Go forward',
   submitButtonText: 'Submit form',
-  completeButtonText: 'Take me to another page',
+  outroButtonText: 'Take me to another page',
 };
