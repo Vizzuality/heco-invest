@@ -5,12 +5,15 @@ default: &default
 
 development:
   <<: *default
-  url: <%= ENV.fetch("DATABASE_URL", "postgres://postgres@localhost/heco_development") %>
+  database: <%= ENV.fetch("DATABASE_NAME", "heco_development") %>
+  username: <%= ENV.fetch("DATABASE_USER", "postgres") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", "") %>
+  host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
 
 test:
   <<: *default
-  url: <%= ENV.fetch("DATABASE_URL", "postgres://postgres@localhost/heco_test") %>
+  database: <%= ENV.fetch("DATABASE_NAME", "heco_test") %>
 
 production:
   <<: *default
-  url: <%= Rails.application.credentials.dig(:database, :url) %>
+  database: <%= ENV.fetch("DATABASE_NAME", "heco") %>

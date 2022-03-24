@@ -3,7 +3,10 @@ RAILS_ENV (I prefer to separate staging / production, but maybe that’s just an
 RACK_ENV
 RAILS_MAX_THREADS (say 10)
 SECRET_KEY_BASE (generated with rake secret)
-DATABASE_URL (postgres://{user}:{password}@{hostname}:{port}/{database-name})
+DATABASE_NAME
+DATABASE_USER
+DATABASE_PASSWORD
+DATABASE_HOST
 
 Next, the email settings, for which we’ll use sendgrid and I guess we’ll need the smtp connection settings:
 SMTP_USERNAME
