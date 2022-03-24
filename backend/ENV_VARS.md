@@ -15,6 +15,9 @@ And some more mailer settings:
 MAILER_DEFAULT_HOST (for links in emails)
 MAILER_DEFAULT_FROM (sender email address)
 
+Transifex:
+TX_TOKEN
+
 if we want http auth:
 HTTP_AUTH_USERNAME
 HTTP_AUTH_PASSWORD

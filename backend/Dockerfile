@@ -3,6 +3,9 @@ FROM ruby:3.1.0-alpine3.15
 ENV BUNDLER_VERSION 2.3.3
 ENV RAILS_ENV production
 
+ARG TRANSIFEX_TOKEN
+ENV TX_TOKEN $TRANSIFEX_TOKEN
+
 # Install dependencies
 RUN apk update && \
     apk upgrade && \
@@ -33,6 +36,9 @@ COPY Gemfile.lock Gemfile /usr/src/app/
 
 RUN bundle config set --local --without development test
 RUN bundle install --jobs 20 --retry 5
+
+RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
+RUN ./tx pull
 
 COPY . /usr/src/app
 
