@@ -1,4 +1,4 @@
-export type MultiPageFormAriaLiveProps = {
+export type MultiPageLayoutAriaLiveProps = {
   /** Number of total pages */
   numPages: number;
   /** Current page */

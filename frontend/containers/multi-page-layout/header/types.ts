@@ -1,4 +1,4 @@
-export interface MultiPageFormHeaderProps {
+export interface MultiPageLayoutHeaderProps {
   /** Classnames to apply to container */
   className?: string;
   /** Title to display at the top of the page */

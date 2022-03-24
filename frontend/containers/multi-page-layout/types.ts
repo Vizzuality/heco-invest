@@ -2,10 +2,10 @@ import { PropsWithChildren } from 'react';
 
 import { LayoutContainerProps } from 'components/layout-container';
 
-import { MultiPageFormFooterProps } from './footer';
-import { MultiPageFormHeaderProps } from './header';
+import { MultiPageLayoutFooterProps } from './footer';
+import { MultiPageLayoutHeaderProps } from './header';
 
-export type MultiPageFormProps = PropsWithChildren<
+export type MultiPageLayoutProps = PropsWithChildren<
   {
     /** Classnames to apply to the container */
     className?: string;
@@ -22,9 +22,9 @@ export type MultiPageFormProps = PropsWithChildren<
     /** Callback when a page number button is clicked */
     onPageClick?: (page: number) => void;
   } & Pick<LayoutContainerProps, 'layout'> &
-    Pick<MultiPageFormHeaderProps, 'title' | 'onCloseClick'> &
+    Pick<MultiPageLayoutHeaderProps, 'title' | 'onCloseClick'> &
     Pick<
-      MultiPageFormFooterProps,
+      MultiPageLayoutFooterProps,
       | 'alert'
       | 'showProgressBar'
       | 'isSubmitting'

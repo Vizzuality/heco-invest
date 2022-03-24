@@ -4,12 +4,12 @@ import cx from 'classnames';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { MultiPageFormPageProps } from './types';
+import { MultiPageLayoutPageProps } from './types';
 
-export const MultiPageFormPage: FC<MultiPageFormPageProps> = ({
+export const MultiPageLayoutPage: FC<MultiPageLayoutPageProps> = ({
   className,
   children,
-}: MultiPageFormPageProps) => {
+}: MultiPageLayoutPageProps) => {
   const mainRef = useRef<HTMLLIElement>(null);
 
   const variants = {
@@ -47,4 +47,4 @@ export const MultiPageFormPage: FC<MultiPageFormPageProps> = ({
   );
 };
 
-export default MultiPageFormPage;
+export default MultiPageLayoutPage;

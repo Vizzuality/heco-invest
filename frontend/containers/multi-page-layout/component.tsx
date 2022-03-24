@@ -6,14 +6,14 @@ import { noop } from 'lodash-es';
 
 import LayoutContainer from 'components/layout-container';
 
-import MultiPageFormAriaLive from './aria-live';
-import MultiPageFormCompletePage from './complete-page';
-import MultiPageFormFooter from './footer';
-import MultiPageFormHeader from './header';
-import MultiPageFormPage from './page';
-import type { MultiPageFormProps } from './types';
+import MultiPageLayoutAriaLive from './aria-live';
+import MultiPageLayoutCompletePage from './complete-page';
+import MultiPageLayoutFooter from './footer';
+import MultiPageLayoutHeader from './header';
+import MultiPageLayoutPage from './page';
+import type { MultiPageLayoutProps } from './types';
 
-export const MultiPageForm: FC<MultiPageFormProps> = ({
+export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
   className,
   layout,
   title,
@@ -31,25 +31,23 @@ export const MultiPageForm: FC<MultiPageFormProps> = ({
   onCloseClick,
   onSubmitClick,
   onCompleteClick,
-}: MultiPageFormProps) => {
+}: MultiPageLayoutProps) => {
   const [currentPage, setCurrentPage] = useState(0);
 
-  const FormPages = Children.toArray(children).filter(
-    (child: React.ReactElement<any>) => child.type === MultiPageFormPage
+  const Pages = Children.toArray(children).filter(
+    (child: React.ReactElement<any>) => child.type === MultiPageLayoutPage
   );
 
-  const FormCompletePage = Children.toArray(children).filter(
-    (child: React.ReactElement<any>) => child.type === MultiPageFormCompletePage
+  const CompletePage = Children.toArray(children).filter(
+    (child: React.ReactElement<any>) => child.type === MultiPageLayoutCompletePage
   );
 
   const CurrentPage =
-    FormCompletePage && isComplete
-      ? FormCompletePage
-      : FormPages[autoNavigation ? currentPage : pageProp];
+    CompletePage && isComplete ? CompletePage : Pages[autoNavigation ? currentPage : pageProp];
 
-  const numPages = Children.count(FormPages);
+  const numPages = Children.count(Pages);
 
-  const pagesWithErrors: number[] = FormPages.reduce<number[]>(
+  const pagesWithErrors: number[] = Pages.reduce<number[]>(
     (acc: number[], page: React.ReactElement<any>, index: number) => {
       if (page.props?.hasErrors === true) acc.push(index);
       return acc;
@@ -91,14 +89,14 @@ export const MultiPageForm: FC<MultiPageFormProps> = ({
         [className]: !!className,
       })}
     >
-      <MultiPageFormAriaLive
+      <MultiPageLayoutAriaLive
         title={title}
         currentPage={autoNavigation ? currentPage : pageProp}
         numPages={numPages}
       />
-      <MultiPageFormHeader title={title} onCloseClick={onCloseClick} />
+      <MultiPageLayoutHeader title={title} onCloseClick={onCloseClick} />
       <LayoutContainer layout={layout}>{CurrentPage}</LayoutContainer>
-      <MultiPageFormFooter
+      <MultiPageLayoutFooter
         numPages={numPages}
         currentPage={autoNavigation ? currentPage : pageProp}
         showProgressBar={showProgressBar}
@@ -117,4 +115,4 @@ export const MultiPageForm: FC<MultiPageFormProps> = ({
   );
 };
 
-export default MultiPageForm;
+export default MultiPageLayout;

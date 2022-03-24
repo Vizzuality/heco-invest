@@ -1,4 +1,4 @@
-export type MultiPageFormFooterPagingProps = {
+export type MultiPageLayoutFooterPagingProps = {
   /** Classnames to apply to the container */
   className?: string;
   /** Number of total pages */

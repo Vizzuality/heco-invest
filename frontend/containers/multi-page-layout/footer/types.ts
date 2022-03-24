@@ -1,9 +1,9 @@
-export interface MultiPageFormFooterProps {
+export interface MultiPageLayoutFooterProps {
   /** Classnames to apply to container */
   className?: string;
-  /** Whether the form is being submitted */
+  /** Whether the layout/form is being submitted */
   isSubmitting?: boolean;
-  /** Whether the form has been completed successfully */
+  /** Whether the layout/form has been completed successfully */
   isComplete?: boolean;
   /** Whether to display a progress bar. Defaults to `true` */
   showProgressBar?: boolean;

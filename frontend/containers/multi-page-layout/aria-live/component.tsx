@@ -2,13 +2,13 @@ import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
-import { MultiPageFormAriaLiveProps } from './types';
+import { MultiPageLayoutAriaLiveProps } from './types';
 
-export const MultiPageFormAriaLive: React.FC<MultiPageFormAriaLiveProps> = ({
+export const MultiPageLayoutAriaLive: React.FC<MultiPageLayoutAriaLiveProps> = ({
   currentPage,
   numPages,
   title,
-}: MultiPageFormAriaLiveProps) => (
+}: MultiPageLayoutAriaLiveProps) => (
   <span className="sr-only" aria-live="polite" aria-atomic="true">
     <FormattedMessage
       defaultMessage="{title} - page {currentPage} out of {numPages}"
@@ -22,4 +22,4 @@ export const MultiPageFormAriaLive: React.FC<MultiPageFormAriaLiveProps> = ({
   </span>
 );
 
-export default MultiPageFormAriaLive;
+export default MultiPageLayoutAriaLive;

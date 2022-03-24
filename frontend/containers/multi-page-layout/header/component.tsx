@@ -12,13 +12,13 @@ import { noop } from 'lodash-es';
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
 
-import { MultiPageFormHeaderProps } from './types';
+import { MultiPageLayoutHeaderProps } from './types';
 
-export const MultiPageFormHeader: React.FC<MultiPageFormHeaderProps> = ({
+export const MultiPageLayoutHeader: React.FC<MultiPageLayoutHeaderProps> = ({
   className,
   title,
   onCloseClick = noop,
-}: MultiPageFormHeaderProps) => {
+}: MultiPageLayoutHeaderProps) => {
   const intl = useIntl();
 
   return (
@@ -58,4 +58,4 @@ export const MultiPageFormHeader: React.FC<MultiPageFormHeaderProps> = ({
   );
 };
 
-export default MultiPageFormHeader;
+export default MultiPageLayoutHeader;

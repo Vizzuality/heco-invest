@@ -12,10 +12,10 @@ import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
 import Loading from 'components/loading';
 
-import MultiPageFormFooterPaging from './paging';
-import { MultiPageFormFooterProps } from './types';
+import MultiPageLayoutFooterPaging from './paging';
+import { MultiPageLayoutFooterProps } from './types';
 
-export const MultiPageFormFooter: FC<MultiPageFormFooterProps> = ({
+export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
   className,
   isSubmitting = false,
   isComplete = false,
@@ -30,7 +30,7 @@ export const MultiPageFormFooter: FC<MultiPageFormFooterProps> = ({
   onSubmitClick = noop,
   onCompleteClick = noop,
   onPageClick = noop,
-}: MultiPageFormFooterProps) => {
+}: MultiPageLayoutFooterProps) => {
   const isLastPage = currentPage === numPages - 1;
 
   return (
@@ -92,7 +92,7 @@ export const MultiPageFormFooter: FC<MultiPageFormFooterProps> = ({
           </div>
           <div>
             {!isComplete && (
-              <MultiPageFormFooterPaging
+              <MultiPageLayoutFooterPaging
                 currentPage={currentPage}
                 numPages={numPages}
                 pagesWithErrors={pagesWithErrors}
@@ -123,4 +123,4 @@ export const MultiPageFormFooter: FC<MultiPageFormFooterProps> = ({
   );
 };
 
-export default MultiPageFormFooter;
+export default MultiPageLayoutFooter;

@@ -6,16 +6,16 @@ import cx from 'classnames';
 
 import { times } from 'lodash-es';
 
-import { MultiPageFormFooterPagingProps } from './types';
+import { MultiPageLayoutFooterPagingProps } from './types';
 
-export const MultiPageFormFooterPaging: FC<MultiPageFormFooterPagingProps> = ({
+export const MultiPageLayoutFooterPaging: FC<MultiPageLayoutFooterPagingProps> = ({
   className,
   currentPage,
   numPages,
   pagesWithErrors = [],
   isSubmitting,
   onPageClick,
-}: MultiPageFormFooterPagingProps) => {
+}: MultiPageLayoutFooterPagingProps) => {
   const intl = useIntl();
 
   return (
@@ -72,4 +72,4 @@ export const MultiPageFormFooterPaging: FC<MultiPageFormFooterPagingProps> = ({
   );
 };
 
-export default MultiPageFormFooterPaging;
+export default MultiPageLayoutFooterPaging;
