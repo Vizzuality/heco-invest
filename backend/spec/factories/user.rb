@@ -17,5 +17,9 @@ FactoryBot.define do
     trait :unconfirmed do
       confirmed_at { nil }
     end
+
+    after(:build) do |u|
+      u.skip_confirmation_notification!
+    end
   end
 end

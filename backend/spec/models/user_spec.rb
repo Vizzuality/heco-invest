@@ -37,22 +37,35 @@ RSpec.describe User, type: :model do
 
   context "confirmation email rate limit" do
     it "should send only one email within limited period" do
-      user = create(:user)
-      user.update!(confirmed_at: nil)
-      travel_to(2.minutes.from_now) { user.send_confirmation_instructions }
-      travel_to(3.minutes.from_now) { user.send_confirmation_instructions }
+      user = create(:user, :unconfirmed)
+      user.send_confirmation_instructions # first send
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+      travel_to((limit_period - 3.minutes).from_now) { user.send_confirmation_instructions }
+      travel_to((limit_period - 2.minutes).from_now) { user.send_confirmation_instructions }
       expect(ActionMailer::Base.deliveries.count).to eq(1)
     end
 
     it "should send another email after limited period" do
-      user = create(:user) # send
-      user.update!(confirmed_at: nil)
-      travel_to(2.minutes.from_now) { user.send_confirmation_instructions } # do not send
-      travel_to(11.minutes.from_now) { user.send_confirmation_instructions } # send
-      travel_to(13.minutes.from_now) { user.send_confirmation_instructions } # do not send
-      travel_to(22.minutes.from_now) { user.send_confirmation_instructions } # send
-      travel_to(23.minutes.from_now) { user.send_confirmation_instructions } # do not send
+      user = create(:user, :unconfirmed)
+
+      user.send_confirmation_instructions # first send
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+      travel_to((limit_period - 3.minutes).from_now) { user.send_confirmation_instructions } # do not send
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+      second_send_time = (limit_period + 1.minute).from_now
+      travel_to(second_send_time) { user.send_confirmation_instructions } # send
+      expect(ActionMailer::Base.deliveries.count).to eq(2)
+      travel_to(second_send_time + (limit_period - 3.minutes)) { user.send_confirmation_instructions } # do not send
+      expect(ActionMailer::Base.deliveries.count).to eq(2)
+      third_send_time = second_send_time + (limit_period + 1.minute)
+      travel_to(third_send_time) { user.send_confirmation_instructions } # send
       expect(ActionMailer::Base.deliveries.count).to eq(3)
+      travel_to(third_send_time + 2.minutes) { user.send_confirmation_instructions } # do not send
+      expect(ActionMailer::Base.deliveries.count).to eq(3)
+    end
+
+    def limit_period
+      User::EMAIL_CONFIRMATION_LIMIT_PERIOD
     end
   end
 end
