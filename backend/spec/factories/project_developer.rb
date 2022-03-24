@@ -16,7 +16,7 @@ FactoryBot.define do
     trait :with_locations do
       locations do
         [create(:location, location_type: "region"),
-         create(:location, location_type: "region")]
+          create(:location, location_type: "region")]
       end
     end
   end

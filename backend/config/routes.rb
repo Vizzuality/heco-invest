@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :investors, only: [:index, :show]
       resources :locations, only: [:index, :show]
       resources :open_calls, only: [:index, :show]
-      resources :project_developers, only: [:index, :show]
+      resources :project_developers, only: [:index, :show, :create]
       resources :projects, only: [:index, :show]
 
       resources :enums, only: [:index]
