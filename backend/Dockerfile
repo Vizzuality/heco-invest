@@ -10,6 +10,7 @@ ENV TX_TOKEN $TRANSIFEX_TOKEN
 RUN apk update && \
     apk upgrade && \
     apk add --update --no-cache \
+      curl bash \
       build-base \
       bash \
       git \
