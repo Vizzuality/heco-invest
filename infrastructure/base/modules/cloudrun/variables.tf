@@ -29,7 +29,13 @@ variable "container_port" {
 }
 
 variable "env_vars" {
+  type = list(object({
+    name = string
+    value = string
+  }))
   description = "Key-value pairs of env vars to make available to the container"
+  default = []
+
 }
 
 variable "secrets" {
