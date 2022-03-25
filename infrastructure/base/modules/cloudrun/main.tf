@@ -2,7 +2,7 @@ data "google_project" "project" {
 }
 
 resource "google_project_service" "cloud_run_api" {
-  service    = "run.googleapis.com"
+  service            = "run.googleapis.com"
   disable_on_destroy = false
 }
 
@@ -22,29 +22,27 @@ resource "google_cloud_run_service" "cloud_run" {
     spec {
       containers {
         image = "gcr.io/${var.project_id}/${var.image_name}:latest"
-        args = [var.start_command]
+        args  = [var.start_command]
         ports {
           container_port = var.container_port
         }
 
         dynamic "env" {
-          for_each = var.secrets
+          for_each = concat(var.env_vars, var.secrets)
           content {
             name = env.value["name"]
-            value_from {
-              secret_key_ref {
-                key  = "latest"
-                name = env.value["secret_name"]
-              }
-            }
-          }
-        }
+            dynamic "value_from" {
+              for_each = lookup(env.value, "secret_name", null) != null ? [1] : []
+              content {
+                secret_key_ref {
 
-        dynamic "env" {
-          for_each = var.env_vars
-          content {
-            name = env.key
-            value = env.value
+                  key  = "latest"
+                  name = env.value["secret_name"]
+                }
+              }
+
+            }
+            value = lookup(env.value, "value", null) != null ? env.value["value"] : null
           }
         }
       }
@@ -54,11 +52,11 @@ resource "google_cloud_run_service" "cloud_run" {
   metadata {
     annotations = {
       # Limit scale up to prevent any cost blow outs!
-      "autoscaling.knative.dev/maxScale" = "5"
+      "autoscaling.knative.dev/maxScale"        = "5"
       # Use the VPC Connector
       "run.googleapis.com/vpc-access-connector" = var.vpc_connector_name
       # all egress from the service should go through the VPC Connector
-      "run.googleapis.com/vpc-access-egress" = "all"
+      "run.googleapis.com/vpc-access-egress"    = "all"
     }
   }
 
@@ -72,7 +70,7 @@ resource "google_cloud_run_service" "cloud_run" {
 
 data "google_iam_policy" "noauth" {
   binding {
-    role = "roles/run.invoker"
+    role    = "roles/run.invoker"
     members = [
       "allUsers",
     ]
@@ -80,9 +78,9 @@ data "google_iam_policy" "noauth" {
 }
 
 resource "google_cloud_run_service_iam_policy" "noauth" {
-  location    = google_cloud_run_service.cloud_run.location
-  project     = google_cloud_run_service.cloud_run.project
-  service     = google_cloud_run_service.cloud_run.name
+  location = google_cloud_run_service.cloud_run.location
+  project  = google_cloud_run_service.cloud_run.project
+  service  = google_cloud_run_service.cloud_run.name
 
   policy_data = data.google_iam_policy.noauth.policy_data
 }

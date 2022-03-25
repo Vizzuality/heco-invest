@@ -85,7 +85,6 @@ module "frontend_cloudrun" {
   container_port     = 3000
   start_command      = "start:prod"
   vpc_connector_name = module.network.vpc_access_connector_name
-  env_vars           = {}
 }
 
 module "backend_cloudrun" {
@@ -106,11 +105,20 @@ module "backend_cloudrun" {
       secret_name = module.postgres_application_user_password.secret_name
     }
   ]
-  env_vars = {
-    "DATABASE_NAME" = "heco"
-    DATABASE_USER = "heco"
-    DATABASE_HOST = module.database.database_host
-  }
+  env_vars = [
+    {
+      name  = "DATABASE_NAME"
+      value = "heco"
+    },
+    {
+      name  = "DATABASE_USER"
+      value = "heco"
+    },
+    {
+      name  = "DATABASE_HOST"
+      value = module.database.database_host
+    }
+  ]
 }
 
 module "database" {
