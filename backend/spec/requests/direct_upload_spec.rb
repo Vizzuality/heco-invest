@@ -7,13 +7,18 @@ RSpec.describe "Direct Upload", type: :request do
       security [csrf: []]
       produces "application/json"
       consumes "application/json"
-      parameter name: "params", in: :body, schema: {
+      parameter name: :direct_upload_params, in: :body, schema: {
         type: :object,
         properties: {
-          byte_size: {type: :integer},
-          checksum: {type: :string},
-          content_type: {type: :string},
-          filename: {type: :string}
+          blob: {
+            type: :object,
+            properties: {
+              byte_size: {type: :integer},
+              checksum: {type: :string},
+              content_type: {type: :string},
+              filename: {type: :string}
+            }
+          }
         },
         required: %w[byte_size checksum content_type filename]
       }
@@ -22,7 +27,7 @@ RSpec.describe "Direct Upload", type: :request do
         schema "$ref" => "#/components/schemas/direct_upload"
 
         let("X-CSRF-TOKEN") { get_csrf_token }
-        let(:params) do
+        let(:direct_upload_params) do
           {
             blob: {
               byte_size: 32_326,
