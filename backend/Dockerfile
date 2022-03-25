@@ -38,10 +38,10 @@ COPY Gemfile.lock Gemfile /usr/src/app/
 RUN bundle config set --local --without development test
 RUN bundle install --jobs 20 --retry 5
 
+COPY . /usr/src/app
+
 RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
 RUN ./tx pull
-
-COPY . /usr/src/app
 
 EXPOSE 3000
 ENTRYPOINT ["./entrypoint.sh"]
