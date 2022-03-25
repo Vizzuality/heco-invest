@@ -4,7 +4,7 @@ module API
       include API::Pagination
 
       def index
-        investors = Investor.all.includes(:account)
+        investors = Investor.all.includes(account: {picture_attachment: :blob})
         pagy_object, investors = pagy(investors, page: current_page, items: per_page)
         render json: InvestorSerializer.new(
           investors,

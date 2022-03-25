@@ -4,7 +4,7 @@ module API
       include API::Pagination
 
       def index
-        project_developers = ProjectDeveloper.all.includes(:account)
+        project_developers = ProjectDeveloper.all.includes(account: {picture_attachment: :blob})
         pagy_object, project_developers = pagy(project_developers, page: current_page, items: per_page)
         render json: ProjectDeveloperSerializer.new(
           project_developers,
