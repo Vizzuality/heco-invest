@@ -1,6 +1,6 @@
 [
-  { "name": "Biodiversity", "id": 0 },
-  { "name": "Clime", "id": 1 },
-  { "name": "Water", "id": 2 },
-  { "name": "Community", "id": 3 }
+  { "name": "Biodiversity", "id": "biodiversity" },
+  { "name": "Clime", "id": "climate" },
+  { "name": "Water", "id": "water" },
+  { "name": "Community", "id": "community" }
 ]

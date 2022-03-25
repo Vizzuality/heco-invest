@@ -1,5 +1,5 @@
 [
-  { "name": "Heart of Amazonia", "id": 0 },
-  { "name": "Andean Amazonian Piedmont", "id": 1 },
-  { "name": "Orinoquía transition", "id": 2 }
+  { "name": "Heart of Amazonia", "id": "heart" },
+  { "name": "Andean Amazonian Piedmont", "id": "andean" },
+  { "name": "Orinoquía transition", "id": "orinoquia" }
 ]

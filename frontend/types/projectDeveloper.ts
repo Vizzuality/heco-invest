@@ -10,11 +10,12 @@ export type ProjectDeveloperSetupForm = ProjectDeveloperSetupFormOnline & {
   picture: string;
   profile: string;
   projectDeveloperType: string;
+  entityLegalRegistrationNumber: string;
   about: string;
   mission: string;
   categories: Category[];
-  mosaics: Mosaic[];
-  impact?: Impact[];
+  mosaics?: Mosaic[];
+  impacts: Impact[];
   language: string;
 };
 

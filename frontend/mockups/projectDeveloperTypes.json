@@ -1,5 +1,6 @@
 [
-  { "name": "Heart of Amazonia", "id": 0 },
-  { "name": "Andean Amazonian Piedmont", "id": 1 },
-  { "name": "Orinoquía transition", "id": 2 }
+  { "name": "Academic", "id": "academic" },
+  { "name": "Cooperative", "id": "cooperative" },
+  { "name": "SME and MSME", "id": "sme_msme" },
+  { "name": "Start-up", "id": "start_up" }
 ]
