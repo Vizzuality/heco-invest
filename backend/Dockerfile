@@ -44,5 +44,8 @@ RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh |
 RUN ./tx pull
 
 EXPOSE 3000
+
+ENV PORT 3000
+
 ENTRYPOINT ["./entrypoint.sh"]
 
