@@ -43,7 +43,9 @@ locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN = var.transifex_token
   }
-  backend_docker_build_args = {}
+  backend_docker_build_args = {
+    TRANSIFEX_TOKEN = var.transifex_token
+  }
 }
 
 module "frontend_build" {
