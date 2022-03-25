@@ -15,6 +15,10 @@ variable "database_version" {
   description = "Version SQL server instance"
 }
 
+variable "network_id" {
+  description = "The GCP network id in which the database will be available"
+}
+
 variable "region" {
   type        = string
   description = "GCP region"

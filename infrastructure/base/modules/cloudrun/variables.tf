@@ -29,11 +29,7 @@ variable "container_port" {
 }
 
 variable "env_vars" {
-  type = list(object({
-    name = string
-    value = string
-  }))
-  description = "List of env vars to make available to the container"
+  description = "Key-value pairs of env vars to make available to the container"
 }
 
 variable "secrets" {
@@ -42,4 +38,10 @@ variable "secrets" {
     secret_name = string
   }))
   description = "List of secrets to make available to the container"
+  default = []
+}
+
+variable "vpc_connector_name" {
+  type = string
+  description = "Name of the VPC Access Connector"
 }

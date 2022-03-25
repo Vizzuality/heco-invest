@@ -43,11 +43,22 @@ resource "google_cloud_run_service" "cloud_run" {
         dynamic "env" {
           for_each = var.env_vars
           content {
-            name = env.value["name"]
-            value = env.value["value"]
+            name = env.key
+            value = env.value
           }
         }
       }
+    }
+  }
+
+  metadata {
+    annotations = {
+      # Limit scale up to prevent any cost blow outs!
+      "autoscaling.knative.dev/maxScale" = "5"
+      # Use the VPC Connector
+      "run.googleapis.com/vpc-access-connector" = var.vpc_connector_name
+      # all egress from the service should go through the VPC Connector
+      "run.googleapis.com/vpc-access-egress" = "all"
     }
   }
 
