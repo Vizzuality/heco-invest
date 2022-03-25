@@ -292,6 +292,35 @@ RSpec.configure do |config|
             },
             required: %w[id type attributes]
           },
+          direct_upload: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              key: {type: :string},
+              filename: {type: :string},
+              content_type: {type: :string},
+              metadata: {type: :object},
+              byte_size: {type: :integer},
+              checksum: {type: :string},
+              created_at: {type: :string},
+              service_name: {type: :string},
+              signed_id: {type: :string},
+              attachable_sgid: {type: :string},
+              direct_upload: {
+                type: :object,
+                properties: {
+                  url: {type: :string},
+                  headers: {
+                    type: :object,
+                    properties: {
+                      'Content-Type': {type: :string}
+                    }
+                  }
+                }
+              }
+            },
+            required: %w[id key filename content_type metadata byte_size checksum created_at service_name signed_id attachable_sgid direct_upload]
+          },
           pagination_meta: {
             type: :object,
             properties: {
