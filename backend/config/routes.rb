@@ -6,7 +6,13 @@ Rails.application.routes.draw do
 
   namespace :api, format: "json" do
     namespace :v1 do
-      devise_for :users, singular: :user, only: [:confirmations]
+      devise_for :users, singular: :user, path: "", only: [:confirmations],
+        controllers: {
+          confirmations: "api/v1/email_confirmations"
+        },
+        path_names: {
+          confirmation: "email_confirmation"
+        }
 
       resource :session, only: [:create, :destroy]
       resource :user, only: [:create, :show]
