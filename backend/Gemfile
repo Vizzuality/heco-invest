@@ -52,7 +52,7 @@ end
 
 group :test do
   gem "rspec-collection_matchers"
-  gem "rspec-rails", "~> 5.0.0"
+  gem "rspec-rails", "~> 5.1.1"
   gem "rspec-request_snapshot"
   gem "simplecov", require: false
   gem "super_diff"
