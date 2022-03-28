@@ -1,12 +1,22 @@
-variable "sql-database-instance-tier" {
-  description = "Cloud SQL database instance (server) tier"
-  type = string
-  default = "db-f1-micro"
+variable "region" {
+  type        = string
+  description = "GCP region"
+}
+
+variable "project_id" {
+  type        = string
+  description = "GCP project id"
 }
 
 variable "name" {
   type = string
   description = "Name of the SQL server instance"
+}
+
+variable "sql-database-instance-tier" {
+  description = "Cloud SQL database instance (server) tier"
+  type = string
+  default = "db-f1-micro"
 }
 
 variable "database_version" {
@@ -17,11 +27,6 @@ variable "database_version" {
 
 variable "network_id" {
   description = "The GCP network id in which the database will be available"
-}
-
-variable "region" {
-  type        = string
-  description = "GCP region"
 }
 
 variable "database_name" {

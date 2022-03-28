@@ -25,8 +25,7 @@ if we want http auth:
 HTTP_AUTH_USERNAME
 HTTP_AUTH_PASSWORD
 
-This next bit I’m not entirely sure about, has to do with accessing GCP services, in particular the background jobs. I’m following here the config for the cloudtasker gem:
-GCP_LOCATION_ID
-GCP_PROJECT_ID
-GCP_QUEUE_PREFIX
-PROCESSOR_HOST (I’m not sure about this, possibly url of the cloud run instance for tasks)
+# Pub/Sub vars for https://github.com/googleapis/google-cloud-ruby/tree/main/google-cloud-pubsub
+# These are test values, we'll have different ones once we know actual topics/subscribers
+TEST_PUBSUB_TOPIC
+TEST_PUBSUB_SUBSCRIPTION
