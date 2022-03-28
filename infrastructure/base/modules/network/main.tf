@@ -1,11 +1,13 @@
-resource "google_project_service" "compute_api" {
-  service  = "compute.googleapis.com"
-  disable_on_destroy = false
-}
-
 resource "google_project_service" "vpcaccess_api" {
   service  = "vpcaccess.googleapis.com"
   disable_on_destroy = false
+}
+
+resource "google_project_service" "compute_api" {
+  service  = "compute.googleapis.com"
+  disable_on_destroy = false
+
+  depends_on = [google_project_service.vpcaccess_api]
 }
 
 resource "google_project_service" "servicenetwork_api" {
@@ -43,7 +45,7 @@ resource "google_compute_router_nat" "router_nat" {
 }
 
 resource "google_compute_firewall" "web_ingress" {
-  name    = "allow-web-ingress"
+  name    = "${var.name}-allow-web-ingress"
   network = google_compute_network.network.name
 
   direction = "INGRESS"
@@ -56,7 +58,7 @@ resource "google_compute_firewall" "web_ingress" {
 }
 
 resource "google_vpc_access_connector" "connector" {
-  name          = "vpc-conn"
+  name          = "${var.name}-vpc-conn"
   provider      = google-beta
   region        = var.region
   ip_cidr_range = "10.0.16.0/28"
@@ -67,7 +69,7 @@ resource "google_vpc_access_connector" "connector" {
 resource "google_compute_global_address" "private_ip_address" {
   provider = google-beta
 
-  name          = "redis-ip-address"
+  name          = "${var.name}-private-ip-address"
   purpose       = "VPC_PEERING"
   address_type  = "INTERNAL"
   prefix_length = 16

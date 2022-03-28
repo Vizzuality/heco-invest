@@ -15,5 +15,5 @@ lefthook-local.yml
 !.yarn/sdks
 !.yarn/versions
 .terraform
+terraform.tfstate.*
 terraform.tfstate
-terraform.tfstate.backup
