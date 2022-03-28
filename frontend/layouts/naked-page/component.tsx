@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { NakedLayoutProps } from './types';
+import { NakedPageLayoutProps } from './types';
 
-export const NakedLayout: React.FC<NakedLayoutProps> = ({
+export const NakedPageLayout: React.FC<NakedPageLayoutProps> = ({
   children,
   ...rest
-}: NakedLayoutProps) => <div {...rest}>{children}</div>;
+}: NakedPageLayoutProps) => <div {...rest}>{children}</div>;
 
-export default NakedLayout;
+export default NakedPageLayout;

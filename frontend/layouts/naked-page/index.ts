@@ -1,2 +1,2 @@
-export type { NakedLayoutProps } from './types';
+export type { NakedPageLayoutProps } from './types';
 export { default } from './component';
