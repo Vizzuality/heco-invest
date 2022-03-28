@@ -51,6 +51,7 @@ const Label: FC<LabelHTMLAttributes<HTMLLabelElement>> = (props) => {
 const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutProps> = () => {
   const [section, setSection] = useState(0);
   const [imagePreview, setImagePreview] = useState('');
+  const [imageBase64, setImageBase64] = useState('');
   const { formatMessage } = useIntl();
   const resolver = useProjectDeveloperValidation(section);
   const {
@@ -59,10 +60,11 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
     formState: { errors },
     setValue,
     setFocus,
+    getValues,
     trigger,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
-    defaultValues: { language: '', categories: [], mosaics: [], impacts: [] },
+    defaultValues: { language: '', picture: '' },
     shouldUseNativeValidation: true,
     shouldFocusError: true,
   });
@@ -99,7 +101,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
   ];
 
   const onSubmit: SubmitHandler<ProjectDeveloperSetupForm> = (values) => {
-    console.log(values);
+    console.log('submit', values);
     if (section === 2) {
       // Go to Pending approval page
     } else {
@@ -108,10 +110,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
   };
 
   const onError: SubmitErrorHandler<ProjectDeveloperSetupForm> = (error) => {
-    console.log(error);
+    console.log('error', error);
     const firstError = Object.keys(error)[0] as keyof ProjectDeveloperSetupForm;
     console.log(firstError);
-    setFocus(firstError);
+    // setFocus(firstError);
   };
 
   const handleSelectAll = (e: ChangeEvent<HTMLInputElement>) => {
@@ -120,6 +122,20 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
       const parsedValue = value.split(',') as Category[] | Mosaic[] | Impact[];
       setValue(name as keyof ProjectDeveloperSetupForm, parsedValue);
       trigger(name as keyof ProjectDeveloperSetupForm);
+    }
+  };
+
+  const handleUploadImage = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.currentTarget.files?.length) {
+      const file = e.currentTarget.files[0];
+      const src = URL.createObjectURL(file);
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setValue('picture', reader.result.toString());
+        setImageBase64(reader.result.toString());
+      };
+      setImagePreview(src);
     }
   };
 
@@ -151,7 +167,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                       id={code}
                       type="radio"
                       value={code}
-                      {...register('language')}
+                      {...register('language', { required: 'required field' })}
                     />
                     <span className="block">{name}</span>
                     <span>({nativeName})</span>
@@ -159,7 +175,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                 );
               })}
             </div>
-            {errors.language && <p>{errors.language.message}</p>}
+            {errors.language && <p className="text-red">{errors.language.message}</p>}
           </div>
         );
       case 1:
@@ -202,13 +218,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                     type="file"
                     {...register('picture', { required: true })}
                     accept="image/png, image/jpeg"
-                    onChange={(e) => {
-                      if (e.currentTarget.files?.length) {
-                        const file = e.currentTarget.files[0];
-                        const src = URL.createObjectURL(file);
-                        setImagePreview(src);
-                      }
-                    }}
+                    onChange={handleUploadImage}
+                    // value={imageBase64}
                   />
                 </label>
               </div>
@@ -367,7 +378,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                     <div key={item.id}>
                       <label htmlFor={item.id}>
                         <input
-                          {...register(name, { required })}
+                          {...register(name)}
                           id={item.id}
                           name={name}
                           type="checkbox"
@@ -393,7 +404,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                     type="checkbox"
                     className="appearance-none"
                     value={items.map(({ id }) => id)}
-                    {...register(name)}
+                    {...register(name, { required: 'message' })}
                     onChange={handleSelectAll}
                   />
                 </label>
@@ -431,7 +442,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
             ))}
           </div>
           <div>
-            <Button type="submit" className="block">
+            <Button onClick={() => console.log(getValues())} type="submit" className="block">
               {section === 2 ? 'Submit' : 'Next'}
             </Button>
           </div>

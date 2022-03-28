@@ -40,7 +40,7 @@ export default (section: number) => {
   });
 
   const secondSchema = object().shape({
-    picture: array(),
+    picture: string().min(10, messages.picture.format).required(messages.picture.required),
     profile: string().required(messages.profile),
     projectDeveloperType: string().required(messages.projectDeveloperType),
     entityLegalRegistrationNumber: string().required(messages.entityLegalRegistrationNumber),
