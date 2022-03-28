@@ -17,7 +17,7 @@ RSpec.describe "API V1 User", type: :request do
           first_name: {type: :string},
           last_name: {type: :string},
           email: {type: :string},
-          passsword: {type: :string},
+          password: {type: :string},
           ui_language: {type: :string}
         },
         required: ["first_name", "last_name", "email", "password"]

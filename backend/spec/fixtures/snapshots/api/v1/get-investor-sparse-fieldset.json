@@ -1,10 +1,12 @@
 {
   "data": {
-    "id": "5b9d430d-73d4-4401-93ca-d560c915ba5f",
+    "id": "69fce1fd-caec-4e2b-b342-c8392ab9009d",
     "type": "investor",
     "attributes": {
       "instagram": "https://instagram.com/kutch-spencer",
       "facebook": "https://facebook.com/kutch-spencer"
+    },
+    "relationships": {
     }
   }
 }

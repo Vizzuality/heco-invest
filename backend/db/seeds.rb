@@ -36,7 +36,8 @@ if Rails.env.development?
       categories: Category::TYPES.shuffle.take((1..2).to_a.sample),
       impacts: Impact::TYPES.shuffle.take((1..2).to_a.sample),
       mission: Faker::Lorem.paragraph(sentence_count: 4),
-      language: investor_account.language
+      language: investor_account.language,
+      entity_legal_registration_number: "564823570"
     )
 
     (0..3).to_a.sample.times do

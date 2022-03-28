@@ -5,6 +5,11 @@ RSpec.describe Account, type: :model do
 
   it { is_expected.to be_valid }
 
+  it "should not be valid without owner" do
+    subject.owner = nil
+    expect(subject).to have(1).errors_on(:owner)
+  end
+
   it "should not be valid without name" do
     subject.name = nil
     expect(subject).to have(1).errors_on(:name)
@@ -29,6 +34,16 @@ RSpec.describe Account, type: :model do
     create(:account, name: "taken")
     subject.name = "Taken"
     expect(subject).to have(1).errors_on(:name)
+  end
+
+  it "should not be valid without picture" do
+    subject.picture = nil
+    expect(subject).to have(1).errors_on(:picture)
+  end
+
+  it "should not be valid when picture is not image" do
+    subject.picture.attach fixture_file_upload("text_file.txt")
+    expect(subject).to have(1).errors_on(:picture)
   end
 
   %w[website instagram twitter facebook linkedin].each do |link_type|

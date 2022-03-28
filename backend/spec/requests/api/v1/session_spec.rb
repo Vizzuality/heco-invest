@@ -15,7 +15,7 @@ RSpec.describe "API V1 Session", type: :request do
         type: :object,
         properties: {
           email: {type: :string},
-          passsword: {type: :string}
+          password: {type: :string}
         },
         required: ["email", "password"]
       }
