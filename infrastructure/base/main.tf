@@ -142,6 +142,14 @@ module "backend_cloudrun" {
     {
       name = "BACKEND_URL"
       value = "https://${var.domain}/backend"
+    },
+    {
+      name = "TEST_PUBSUB_TOPIC"
+      value = module.test_pubsub.topic_name
+    },
+    {
+      name = "TEST_PUBSUB_SUBSCRIPTION"
+      value = module.test_pubsub.subscription_name
     }
   ]
 }
@@ -157,11 +165,19 @@ module "backend_storage" {
 module "database" {
   source            = "./modules/sql"
   name              = "heco"
+  project_id        = var.gcp_project_id
   region            = var.gcp_region
   database_name     = "heco"
   database_user     = "heco"
   database_password = module.postgres_application_user_password.secret_value
   network_id        = module.network.network_id
+}
+
+module "test_pubsub" {
+  source = "./modules/pubsub"
+  name              = "test-heco"
+  project_id        = var.gcp_project_id
+  region            = var.gcp_region
 }
 
 module "dns" {

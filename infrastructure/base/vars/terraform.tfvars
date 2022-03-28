@@ -1,4 +1,5 @@
 gcp_region     = "europe-west1"
+gcp_zone     = "europe-west1-b"
 #gcp_project_id = "heco-342801"
 #bucket_name    = "heco-tf-state"
 github_org     = "Vizzuality"

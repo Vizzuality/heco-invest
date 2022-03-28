@@ -21,6 +21,7 @@ resource "google_sql_database_instance" "db-main" {
   name             = var.name
   database_version = var.database_version
   region           = var.region
+  project  = var.project_id
 
   settings {
     tier = var.sql-database-instance-tier
