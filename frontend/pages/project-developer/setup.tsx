@@ -8,8 +8,6 @@ import Image from 'next/image';
 
 import { InferGetStaticPropsType } from 'next';
 
-import useProjectDeveloperValidation from 'hooks/forms/useProjectDeveloperValidation';
-
 import { loadI18nMessages } from 'helpers/i18n';
 import { languages, onlinePresence } from 'helpers/projectDevelopersConstants';
 
@@ -29,6 +27,7 @@ import {
   ProjectDeveloperSetupForm,
   ProjectDeveloperSetupFormOnline,
 } from 'types/projectDeveloper';
+import useProjectDeveloperValidation from 'validations/projectDeveloper';
 
 export async function getStaticProps(ctx) {
   return {
@@ -59,7 +58,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
     handleSubmit,
     formState: { errors },
     setValue,
-    setFocus,
     getValues,
     trigger,
   } = useForm<ProjectDeveloperSetupForm>({
@@ -109,13 +107,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
     }
   };
 
-  const onError: SubmitErrorHandler<ProjectDeveloperSetupForm> = (error) => {
-    console.log('error', error);
-    const firstError = Object.keys(error)[0] as keyof ProjectDeveloperSetupForm;
-    console.log(firstError);
-    // setFocus(firstError);
-  };
-
   const handleSelectAll = (e: ChangeEvent<HTMLInputElement>) => {
     const { checked, value, name } = e.currentTarget;
     if (checked) {
@@ -139,287 +130,281 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
     }
   };
 
-  const FormSection = () => {
-    switch (section) {
-      case 0:
-        return (
-          <div>
-            <h1 className="mb-6 font-serif text-3xl font-semibold text-green-dark">
-              <FormattedMessage defaultMessage="I want to write my content in" id="APjPYs" />
-            </h1>
-            <p id="language-description" className="mb-20 font-sans text-base">
-              <FormattedMessage
-                defaultMessage="Select the account laguage in which you want to write the content of this account. This will avoid mixed content in the platform."
-                id="/MHYS4"
-              />
-            </p>
-            <div className="flex justify-center mt-2 gap-x-6">
-              {languages.map((lang) => {
-                const { name, code, nativeName } = lang;
-                return (
-                  <label
-                    key={code}
-                    htmlFor={code}
-                    className="justify-center block w-64 text-center border rounded-lg py-7 border-beige"
-                  >
-                    <input
-                      name={name}
-                      id={code}
-                      type="radio"
-                      value={code}
-                      {...register('language', { required: 'required field' })}
-                    />
-                    <span className="block">{name}</span>
-                    <span>({nativeName})</span>
-                  </label>
-                );
-              })}
-            </div>
-            {errors.language && <p className="text-red">{errors.language.message}</p>}
-          </div>
-        );
-      case 1:
-        return (
-          <div>
-            <div className="mb-6">
-              <h1 className="mb-2 font-serif text-3xl font-semibold">
-                <FormattedMessage defaultMessage="Project developer information" id="n2WWAj" />
+  return (
+    <div className="w-full min-h-screen m-auto">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-between" noValidate>
+        <div className="max-w-screen-lg m-auto">
+          {section === 0 && (
+            <div>
+              <h1 className="mb-6 font-serif text-3xl font-semibold text-green-dark">
+                <FormattedMessage defaultMessage="I want to write my content in" id="APjPYs" />
               </h1>
-              <p className="font-sans text-base text-gray-600">
+              <p id="language-description" className="mb-20 font-sans text-base">
                 <FormattedMessage
-                  defaultMessage="General information about the account profile."
-                  id="aplkMy"
+                  defaultMessage="Select the account laguage in which you want to write the content of this account. This will avoid mixed content in the platform."
+                  id="/MHYS4"
                 />
               </p>
-            </div>
-
-            <div className="mb-6.5">
-              <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
-                <FormattedMessage defaultMessage="General" id="1iEPTM" />
-              </p>
-              <p className="mb-4 text-sm font-semibold text-gray-800 text-primary">
-                <FormattedMessage defaultMessage="Picture" id="wvoA3H" />
-              </p>
-              <div className="flex gap-x-4">
-                <Image
-                  src={imagePreview || '/images/avatar.svg'}
-                  width={48}
-                  height={48}
-                  alt="profile image"
-                />
-                <label htmlFor="picture" className="bg-green-dark rounded-3xl pt-2.5 px-6">
-                  <span className="text-white">
-                    <FormattedMessage defaultMessage="Upload image" id="vMUomP" />
-                  </span>
-                  <input
-                    id="picture"
-                    className="w-0 h-0 opacity-0"
-                    name="picture"
-                    type="file"
-                    {...register('picture', { required: true })}
-                    accept="image/png, image/jpeg"
-                    onChange={handleUploadImage}
-                    // value={imageBase64}
-                  />
-                </label>
+              <div className="flex justify-center mt-2 gap-x-6">
+                {languages.map((lang) => {
+                  const { name, code, nativeName } = lang;
+                  return (
+                    <label
+                      key={code}
+                      htmlFor={code}
+                      className="justify-center block w-64 text-center border rounded-lg py-7 border-beige"
+                    >
+                      <input
+                        name={name}
+                        id={code}
+                        type="radio"
+                        value={code}
+                        {...register('language', { required: 'required field' })}
+                      />
+                      <span className="block">{name}</span>
+                      <span>({nativeName})</span>
+                    </label>
+                  );
+                })}
               </div>
-              {errors.picture && <p>{errors.picture.message}</p>}
+              {errors.language && <p className="text-red">{errors.language.message}</p>}
             </div>
-            <div className="flex gap-x-6 mb-6.5">
-              <div className="md:w-1/2">
-                <Label htmlFor="profile">
+          )}
+          {section === 1 && (
+            <div>
+              <div className="mb-6">
+                <h1 className="mb-2 font-serif text-3xl font-semibold">
+                  <FormattedMessage defaultMessage="Project developer information" id="n2WWAj" />
+                </h1>
+                <p className="font-sans text-base text-gray-600">
+                  <FormattedMessage
+                    defaultMessage="General information about the account profile."
+                    id="aplkMy"
+                  />
+                </p>
+              </div>
+
+              <div className="mb-6.5">
+                <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
+                  <FormattedMessage defaultMessage="General" id="1iEPTM" />
+                </p>
+                <p className="mb-4 text-sm font-semibold text-gray-800 text-primary">
+                  <FormattedMessage defaultMessage="Picture" id="wvoA3H" />
+                </p>
+                <div className="flex gap-x-4">
+                  <Image
+                    src={imagePreview || '/images/avatar.svg'}
+                    width={48}
+                    height={48}
+                    alt="profile image"
+                  />
+                  <label htmlFor="picture" className="bg-green-dark rounded-3xl pt-2.5 px-6">
+                    <span className="text-white">
+                      <FormattedMessage defaultMessage="Upload image" id="vMUomP" />
+                    </span>
+                    <input
+                      id="picture"
+                      className="w-0 h-0 opacity-0"
+                      name="picture"
+                      type="file"
+                      {...register('picture')}
+                      accept="image/png, image/jpeg"
+                      onChange={handleUploadImage}
+                      // value={imageBase64}
+                    />
+                  </label>
+                </div>
+                {errors.picture && <p>{errors.picture.message}</p>}
+              </div>
+              <div className="flex gap-x-6 mb-6.5">
+                <div className="md:w-1/2">
+                  <Label htmlFor="profile">
+                    <span className="text-sm font-semibold text-gray-800 text-primary">
+                      <FormattedMessage defaultMessage="Profile name" id="s+n2ku" />
+                    </span>
+                    <Input
+                      name="profile"
+                      className="mt-2.5"
+                      id="profile"
+                      type="text"
+                      register={register}
+                      placeholder={formatMessage({
+                        defaultMessage: 'insert the profile name',
+                        id: '0WHWA/',
+                      })}
+                    />
+                  </Label>
+                  {errors.profile && <p>{errors.profile.message}</p>}
+                </div>
+                <div className="md:w-1/2">
+                  <Label htmlFor="profile">
+                    <span className="text-sm font-semibold text-gray-800 text-primary">
+                      <FormattedMessage defaultMessage="Type" id="+U6ozc" />
+                    </span>
+                    <select
+                      name="projectDeveloperType"
+                      id="profile"
+                      className="mt-2.5 w-full h-10 border border-beige rounded-lg px-4"
+                      {...register('projectDeveloperType')}
+                      placeholder={formatMessage({
+                        defaultMessage: 'select the project developer type',
+                        id: 'N9+9Fi',
+                      })}
+                    >
+                      {projectDeveloperTypes.map(({ name, id }) => (
+                        <option value={id} key={id}>
+                          {name}
+                        </option>
+                      ))}
+                    </select>
+                  </Label>
+                  {errors.projectDeveloperType && <p>{errors.projectDeveloperType.message}</p>}
+                </div>
+              </div>
+              <div className="mb-6.5">
+                <Label htmlFor="entity-legal-registration">
                   <span className="text-sm font-semibold text-gray-800 text-primary">
-                    <FormattedMessage defaultMessage="Profile name" id="s+n2ku" />
+                    <FormattedMessage
+                      defaultMessage="Entity legal registration number (NIT or RUT)"
+                      id="AiagLY"
+                    />
                   </span>
                   <Input
-                    name="profile"
-                    className="mt-2.5"
-                    id="profile"
                     type="text"
+                    id="entity-legal-registration"
+                    register={register}
+                    name="entityLegalRegistrationNumber"
+                    placeholder={formatMessage({
+                      defaultMessage: 'insert the number',
+                      id: 'tS6cAK',
+                    })}
+                  />
+                </Label>
+                {errors.entityLegalRegistrationNumber && (
+                  <p>{errors.entityLegalRegistrationNumber.message}</p>
+                )}
+              </div>
+              <div className="mb-6.5">
+                <Label htmlFor="about">
+                  <span className="text-sm font-semibold text-gray-800 text-primary">
+                    <FormattedMessage defaultMessage="About" id="g5pX+a" />
+                  </span>
+                  <TextArea
+                    name="about"
+                    className="mt-2.5"
+                    id="about"
+                    register={register}
+                    placeholder={formatMessage({
+                      defaultMessage: 'insert your answer (max 500 characters)',
+                      id: 'rBoq14',
+                    })}
+                  />
+                </Label>
+                {errors.about && <p>{errors.about.message}</p>}
+              </div>
+              <div className="mb-6.5">
+                <Label htmlFor="mission">
+                  <span className="text-sm font-semibold text-gray-800 text-primary">
+                    <FormattedMessage defaultMessage="What's your mission?" id="vaWFzs" />
+                  </span>
+                  <TextArea
+                    name="mission"
+                    className="mt-2.5"
+                    id="mission"
                     register={register}
                     registerOptions={{ required: true }}
                     placeholder={formatMessage({
-                      defaultMessage: 'insert the profile name',
-                      id: '0WHWA/',
+                      defaultMessage: 'insert your answer (max 500 characters)',
+                      id: 'rBoq14',
                     })}
                   />
                 </Label>
-                {errors.profile && <p>{errors.profile.message}</p>}
+                {errors.mission && <p>{errors.mission.message}</p>}
               </div>
-              <div className="md:w-1/2">
-                <Label htmlFor="profile">
-                  <span className="text-sm font-semibold text-gray-800 text-primary">
-                    <FormattedMessage defaultMessage="Type" id="+U6ozc" />
-                  </span>
-                  <select
-                    name="projectDeveloperType"
-                    id="profile"
-                    className="mt-2.5 w-full h-10 border border-beige rounded-lg px-4"
-                    {...register('projectDeveloperType', { required: true })}
-                    placeholder={formatMessage({
-                      defaultMessage: 'select the project developer type',
-                      id: 'N9+9Fi',
-                    })}
-                  >
-                    {projectDeveloperTypes.map(({ name, id }) => (
-                      <option value={id} key={id}>
-                        {name}
-                      </option>
-                    ))}
-                  </select>
-                </Label>
-                {errors.projectDeveloperType && <p>{errors.projectDeveloperType.message}</p>}
-              </div>
-            </div>
-            <div>
-              <Label htmlFor="entity-legal-registration">
-                <span className="text-sm font-semibold text-gray-800 text-primary">
-                  <FormattedMessage
-                    defaultMessage="Entity legal registration number (NIT or RUT)"
-                    id="AiagLY"
-                  />
-                </span>
-                <Input
-                  type="text"
-                  id="entity-legal-registration"
-                  register={register}
-                  registerOptions={{ required: true }}
-                  name="entityLegalRegistrationNumber"
-                  placeholder={formatMessage({ defaultMessage: 'insert the number', id: 'tS6cAK' })}
-                />
-              </Label>
-              {errors.entityLegalRegistrationNumber && (
-                <p>{errors.entityLegalRegistrationNumber.message}</p>
-              )}
-            </div>
-            <div className="mb-6.5">
-              <Label htmlFor="about">
-                <span className="text-sm font-semibold text-gray-800 text-primary">
-                  <FormattedMessage defaultMessage="About" id="g5pX+a" />
-                </span>
-                <TextArea
-                  name="about"
-                  className="mt-2.5"
-                  id="about"
-                  register={register}
-                  registerOptions={{ required: true }}
-                  placeholder={formatMessage({
-                    defaultMessage: 'insert your answer (max 500 characters)',
-                    id: 'rBoq14',
-                  })}
-                />
-              </Label>
-              {errors.about && <p>{errors.about.message}</p>}
-            </div>
-            <div className="mb-6.5">
-              <Label htmlFor="mission">
-                <span className="text-sm font-semibold text-gray-800 text-primary">
-                  <FormattedMessage defaultMessage="What's your mission?" id="vaWFzs" />
-                </span>
-                <TextArea
-                  name="mission"
-                  className="mt-2.5"
-                  id="mission"
-                  register={register}
-                  registerOptions={{ required: true }}
-                  placeholder={formatMessage({
-                    defaultMessage: 'insert your answer (max 500 characters)',
-                    id: 'rBoq14',
-                  })}
-                />
-              </Label>
-              {errors.mission && <p>{errors.mission.message}</p>}
-            </div>
-            <div>
-              <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
-                <FormattedMessage defaultMessage="Online presence" id="NjKSap" />
-              </p>
-              <div className="grid w-full grid-cols-2 gap-x-6">
-                {onlinePresence.map((item: keyof ProjectDeveloperSetupFormOnline) => (
-                  <div key={item}>
-                    <Label htmlFor={item}>
-                      <span className="text-sm font-semibold text-gray-800 text-primary">
-                        {item} (<FormattedMessage defaultMessage="optional" id="V4KNjk" />)
-                      </span>
-                      <Input
-                        className="mt-2.5"
-                        name={item}
-                        id={item}
-                        type="text"
-                        register={register}
-                        placeholder={formatMessage({ defaultMessage: 'insert URL', id: 'et2m37' })}
-                      />
-                    </Label>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        );
-      case 2:
-        return (
-          <div>
-            <div className="mb-6">
-              <h1 className="font-serif text-3xl font-semibold">
-                <FormattedMessage defaultMessage="About your work" id="kEXoaQ" />
-              </h1>
-              <p className="font-sans text-base text-gray-600">
-                <FormattedMessage defaultMessage="Tell us about your work." id="Y6xIpg" />
-              </p>
-            </div>
-            {interests.map(({ name, title, items, required }) => (
-              <div key={name} className="mb-7">
-                <p className="font-sans font-semibold text-sm text-gray-800 mb-4.5">
-                  {title}
-                  <Info className="inline ml-2.5 cursor-pointer" size={14.67} />
+              <div>
+                <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
+                  <FormattedMessage defaultMessage="Online presence" id="NjKSap" />
                 </p>
-                <div className="flex gap-4 mb-4">
-                  {items.map((item) => (
-                    <div key={item.id}>
-                      <label htmlFor={item.id}>
-                        <input
-                          {...register(name)}
-                          id={item.id}
-                          name={name}
-                          type="checkbox"
-                          value={item.id}
+                <div className="grid w-full grid-cols-2 gap-x-6">
+                  {onlinePresence.map((item: keyof ProjectDeveloperSetupFormOnline) => (
+                    <div key={item}>
+                      <Label htmlFor={item}>
+                        <span className="text-sm font-semibold text-gray-800 text-primary">
+                          {item} (<FormattedMessage defaultMessage="optional" id="V4KNjk" />)
+                        </span>
+                        <Input
+                          className="mt-2.5"
+                          name={item}
+                          id={item}
+                          type="text"
+                          register={register}
+                          placeholder={formatMessage({
+                            defaultMessage: 'insert URL',
+                            id: 'et2m37',
+                          })}
                         />
-                        {item.name}
-                      </label>
+                      </Label>
                     </div>
                   ))}
                 </div>
-                {errors[name] && (
-                  <p className="mt-2 font-sans text-xs text-red">
-                    {(errors[name] as FieldError).message}
-                  </p>
-                )}
-                <label htmlFor={`select-all-${name}`}>
-                  <span className="font-sans text-sm underline cursor-pointer text-green-dark">
-                    {formatMessage({ defaultMessage: 'Select all', id: '94Fg25' })}
-                  </span>
-                  <input
-                    name={name}
-                    id={`select-all-${name}`}
-                    type="checkbox"
-                    className="appearance-none"
-                    value={items.map(({ id }) => id)}
-                    {...register(name, { required: 'message' })}
-                    onChange={handleSelectAll}
-                  />
-                </label>
               </div>
-            ))}
-          </div>
-        );
-    }
-  };
-
-  return (
-    <div className="w-full min-h-screen m-auto">
-      <form onSubmit={handleSubmit(onSubmit, onError)} className="flex flex-col justify-between">
-        <div className="max-w-screen-lg m-auto">
-          <FormSection />
+            </div>
+          )}
+          {section === 2 && (
+            <div>
+              <div className="mb-6">
+                <h1 className="font-serif text-3xl font-semibold">
+                  <FormattedMessage defaultMessage="About your work" id="kEXoaQ" />
+                </h1>
+                <p className="font-sans text-base text-gray-600">
+                  <FormattedMessage defaultMessage="Tell us about your work." id="Y6xIpg" />
+                </p>
+              </div>
+              {interests.map(({ name, title, items, required }) => (
+                <div key={name} className="mb-7">
+                  <p className="font-sans font-semibold text-sm text-gray-800 mb-4.5">
+                    {title}
+                    <Info className="inline ml-2.5 cursor-pointer" size={14.67} />
+                  </p>
+                  <div className="flex gap-4 mb-4">
+                    {items.map((item) => (
+                      <div key={item.id}>
+                        <label htmlFor={item.id}>
+                          <input
+                            {...register(name)}
+                            id={item.id}
+                            name={name}
+                            type="checkbox"
+                            value={item.id}
+                          />
+                          {item.name}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                  {errors[name] && (
+                    <p className="mt-2 font-sans text-xs text-red">
+                      {(errors[name] as FieldError).message}
+                    </p>
+                  )}
+                  <label htmlFor={`select-all-${name}`}>
+                    <span className="font-sans text-sm underline cursor-pointer text-green-dark">
+                      {formatMessage({ defaultMessage: 'Select all', id: '94Fg25' })}
+                    </span>
+                    <input
+                      name={name}
+                      id={`select-all-${name}`}
+                      type="checkbox"
+                      className="appearance-none"
+                      value={items.map(({ id }) => id)}
+                      {...register(name)}
+                      onChange={handleSelectAll}
+                    />
+                  </label>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className="flex justify-between h-full px-20 py-4 my-10 align-middle border-t border-t-gray-400">
           <div className="min-w-20 min-h-1">

@@ -1,9 +1,8 @@
 import { useIntl } from 'react-intl';
 
-import { yupResolver } from '@hookform/resolvers/yup';
 import { object, string, array } from 'yup';
 
-export default (section: number) => {
+export default (page: number) => {
   const { formatMessage } = useIntl();
   const messages = {
     picture: {
@@ -35,11 +34,11 @@ export default (section: number) => {
     language: formatMessage({ defaultMessage: 'You need to select a language', id: 'Cise0r' }),
   };
 
-  const firstSchema = object().shape({
+  const firstPageSchema = object().shape({
     language: string().required(messages.language),
   });
 
-  const secondSchema = object().shape({
+  const secondPageSchema = object().shape({
     picture: string().min(10, messages.picture.format).required(messages.picture.required),
     profile: string().required(messages.profile),
     projectDeveloperType: string().required(messages.projectDeveloperType),
@@ -53,15 +52,11 @@ export default (section: number) => {
     twitter: string(),
   });
 
-  const thirdSchema = object().shape({
+  const thirdPageSchema = object().shape({
     categories: array().of(string()).min(1, messages.categories),
     mosaics: array().of(string()),
     impacts: array().of(string()).min(1, messages.impacts),
   });
 
-  const schemas = [firstSchema, secondSchema, thirdSchema];
-
-  return yupResolver(schemas[section]);
+  return [firstPageSchema, secondPageSchema, thirdPageSchema][page];
 };
-
-// /(?:[A-Za-z\d+/]{4})*(?:[A-Za-z\d+/]{3}=|[A-Za-z\d+/]{2}==)?/
