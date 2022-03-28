@@ -25,6 +25,11 @@ RSpec.describe ProjectDeveloper, type: :model do
     expect(subject).to have(1).errors_on(:language)
   end
 
+  it "should not be valid without entity_legal_registration_number" do
+    subject.entity_legal_registration_number = nil
+    expect(subject).to have(1).errors_on(:entity_legal_registration_number)
+  end
+
   include_examples :static_relation_validations, attribute: :project_developer_type, presence: true
   include_examples :static_relation_validations, attribute: :impacts, presence: false
   include_examples :static_relation_validations, attribute: :categories, presence: true

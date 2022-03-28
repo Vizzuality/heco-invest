@@ -3,12 +3,14 @@
 ## Dependencies:
 
 - Ruby v3.1
-- Rails v7
+- Bundler v2.3.3
 - PostgreSQL v14
 
 ## Local installation
 
 These are the steps to run the project locally:
+
+See ENV VARS documented in ENV_VARS.md
 
 ### Installing ruby dependencies
 

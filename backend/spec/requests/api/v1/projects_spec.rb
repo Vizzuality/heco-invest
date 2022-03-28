@@ -43,7 +43,7 @@ RSpec.describe "API V1 Projects", type: :request do
           let(:includes) { "project_developer" }
 
           it "matches snapshot" do
-            expect(response.body).to match_snapshot("api/v1/projects-include-relationships")
+            expect(response.body).to match_snapshot("api/v1/projects-include-relationships", dynamic_attributes: %w[small medium original])
           end
         end
       end
@@ -94,7 +94,7 @@ RSpec.describe "API V1 Projects", type: :request do
           let(:includes) { "project_developer" }
 
           it "matches snapshot" do
-            expect(response.body).to match_snapshot("api/v1/get-project-include-relationships")
+            expect(response.body).to match_snapshot("api/v1/get-project-include-relationships", dynamic_attributes: %w[small medium original])
           end
         end
       end

@@ -4,9 +4,11 @@ if Rails.env.development?
   Account.delete_all
   Investor.delete_all
   ProjectDeveloper.delete_all
+  User.delete_all
 
   5.times do
     investor_account = FactoryBot.create(:account)
+    FactoryBot.create(:user, account: investor_account)
     investor = Investor.create!(
       account: investor_account,
       categories: Category::TYPES.shuffle.take((1..2).to_a.sample),
@@ -27,13 +29,15 @@ if Rails.env.development?
     end
 
     project_developer_account = FactoryBot.create(:account)
+    FactoryBot.create(:user, account: project_developer_account)
     project_developer = ProjectDeveloper.create!(
       account: project_developer_account,
       project_developer_type: ProjectDeveloperType::TYPES.sample,
       categories: Category::TYPES.shuffle.take((1..2).to_a.sample),
       impacts: Impact::TYPES.shuffle.take((1..2).to_a.sample),
       mission: Faker::Lorem.paragraph(sentence_count: 4),
-      language: investor_account.language
+      language: investor_account.language,
+      entity_legal_registration_number: "564823570"
     )
 
     (0..3).to_a.sample.times do
@@ -43,5 +47,6 @@ if Rails.env.development?
 
   Importers::Locations.new("Colombia",
     departments_file_path: Rails.root.join("db/seeds/files/colombia_departments.csv"),
-    municipalities_file_path: Rails.root.join("db/seeds/files/colombia_municipalities.csv")).call
+    municipalities_file_path: Rails.root.join("db/seeds/files/colombia_municipalities.csv"),
+    regions_file_path: Rails.root.join("db/seeds/files/colombia_regions.csv")).call
 end

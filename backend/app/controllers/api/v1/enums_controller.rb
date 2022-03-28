@@ -1,6 +1,6 @@
 module API
   module V1
-    class EnumsController < ApplicationController
+    class EnumsController < BaseController
       def index
         data = [
           InstrumentType.all,
@@ -8,7 +8,8 @@ module API
           TicketSize.all,
           Impact.all,
           # ProjectDeveloperType.all, wait for better definition
-          InvestorType.all
+          InvestorType.all,
+          LocationType.all
         ].flatten
 
         serialized_enums = data.map do |d|

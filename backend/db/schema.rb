@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_17_074221) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_28_102306) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,7 +28,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_17_074221) do
     t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "owner_id", null: false
     t.index ["name"], name: "index_accounts_on_name", unique: true
+    t.index ["owner_id"], name: "index_accounts_on_owner_id"
     t.index ["slug"], name: "index_accounts_on_slug", unique: true
   end
 
@@ -101,6 +103,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_17_074221) do
     t.index ["account_id"], name: "index_investors_on_account_id"
   end
 
+  create_table "location_members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "location_id", null: false
+    t.uuid "member_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id", "member_id"], name: "index_location_members_on_location_id_and_member_id", unique: true
+    t.index ["location_id"], name: "index_location_members_on_location_id"
+    t.index ["member_id"], name: "index_location_members_on_member_id"
+  end
+
   create_table "locations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "parent_id"
     t.string "location_type", null: false
@@ -148,6 +160,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_17_074221) do
     t.index ["slug"], name: "index_open_calls_on_slug", unique: true
   end
 
+  create_table "project_developer_locations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "location_id", null: false
+    t.uuid "project_developer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id", "project_developer_id"], name: "uniq_index_project_developer_id_on_location_id", unique: true
+    t.index ["location_id"], name: "index_project_developer_locations_on_location_id"
+    t.index ["project_developer_id"], name: "index_project_developer_locations_on_project_developer_id"
+  end
+
   create_table "project_developers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "account_id", null: false
     t.string "project_developer_type", null: false
@@ -162,6 +184,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_17_074221) do
     t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "entity_legal_registration_number", null: false
     t.index ["account_id"], name: "index_project_developers_on_account_id"
   end
 
@@ -230,11 +253,41 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_17_074221) do
     t.index ["slug"], name: "index_projects_on_slug", unique: true
   end
 
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "account_id"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "ui_language", null: false
+    t.integer "role", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "last_confirmation_sent_at"
+    t.index ["account_id"], name: "index_users_on_account_id"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "accounts", "users", column: "owner_id", on_delete: :cascade
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "investors", "accounts", on_delete: :cascade
+  add_foreign_key "location_members", "locations", column: "member_id", on_delete: :cascade
+  add_foreign_key "location_members", "locations", on_delete: :cascade
   add_foreign_key "locations", "locations", column: "parent_id", on_delete: :cascade
   add_foreign_key "open_calls", "investors", on_delete: :cascade
+  add_foreign_key "project_developer_locations", "locations", on_delete: :cascade
+  add_foreign_key "project_developer_locations", "project_developers", on_delete: :cascade
   add_foreign_key "project_developers", "accounts", on_delete: :cascade
   add_foreign_key "projects", "project_developers", on_delete: :cascade
+  add_foreign_key "users", "accounts", on_delete: :cascade
 end

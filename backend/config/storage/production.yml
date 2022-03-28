@@ -1,0 +1,5 @@
+google:
+  service: GCS
+  project: <%= ENV["GCP_PROJECT"] %>
+  iam: true
+  bucket: <%= ENV["GCP_STORAGE_BUCKET"] %>

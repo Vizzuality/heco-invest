@@ -2,6 +2,15 @@ class Account < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  belongs_to :owner, class_name: "User"
+
+  has_many :users
+
+  has_one :investor
+  has_one :project_developer
+
+  has_one_attached :picture
+
   translates :about
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
@@ -12,6 +21,7 @@ class Account < ApplicationRecord
   validates :facebook, url: true
   validates :instagram, url: true
   validates :language, inclusion: {in: Language::TYPES}
+  validates :picture, attached: true, content_type: /\Aimage\/.*\z/
 
   def slug_preview
     set_slug unless slug.present?

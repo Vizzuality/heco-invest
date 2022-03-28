@@ -1,4 +1,9 @@
 zu:
+  errors:
+    messages:
+      password_length: must be at least %{count} characters long
+      password_complexity: must include at least one lowercase letter, one uppercase letter, and one digit
+      user_multiple_accounts: User already have account!
   enums:
     category:
       sustainable-agrosystems:
@@ -82,3 +87,12 @@ zu:
       community:
         name: Community
         description: Impact of projects on ensuring and improving equal and inclusive physical, mental, economic, and spiritual health.
+    location_type:
+      country:
+        name: Country
+      department:
+        name: Department
+      municipality:
+        name: Municipality
+      region:
+        name: Region

@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   content: ['./**/*.ts', './**/*.tsx'],
   theme: {
@@ -35,7 +37,8 @@ module.exports = {
         light: '#CFD762',
         dark: '#316146',
       },
-      red: '#BF3300',
+      beige: '#E3DED6',
+      red: colors.red,
       orange: '#F4A064',
       black: '#000000',
       white: '#FFFFFF',
@@ -76,6 +79,9 @@ module.exports = {
       backgroundImage: {
         'radial-green-dark':
           'radial-gradient(63.59% 95.05% at 42.99% 35.35%, #316146 0%, #073525 100%)',
+      },
+      transitionProperty: {
+        width: 'width',
       },
     },
   },

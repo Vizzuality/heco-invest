@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "id": "fc1aace7-f1ee-488a-820f-cd5d017663d5",
+      "type": "location",
+      "attributes": {
+        "name": "Bartoletti and Sons",
+        "location_type": "department"
+      },
+      "relationships": {
+        "parent": {
+          "data": {
+            "id": "e0688667-b935-43ed-80f1-226d66a03902",
+            "type": "location"
+          }
+        },
+        "regions": {
+          "data": [
+
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,10 +1,12 @@
 {
   "data": {
-    "id": "7ab9a6ef-3b56-47ec-8b17-a6c176ea6299",
+    "id": "638a3352-70a7-46fe-9ccd-2a49f5012098",
     "type": "project_developer",
     "attributes": {
       "instagram": "https://instagram.com/kutch-spencer",
       "facebook": "https://facebook.com/kutch-spencer"
+    },
+    "relationships": {
     }
   }
 }

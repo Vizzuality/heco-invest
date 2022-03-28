@@ -2,15 +2,19 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: <%= ENV.fetch("DATABASE_NAME", "heco") %>
+  username: <%= ENV.fetch("DATABASE_USER", "postgres") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", "") %>
+  host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
 
 development:
   <<: *default
-  url: <%= ENV.fetch("DATABASE_URL", "postgres://postgres@localhost/heco_development") %>
+  database: <%= ENV.fetch("DATABASE_NAME", "heco_development") %>
 
 test:
   <<: *default
-  url: <%= ENV.fetch("DATABASE_URL", "postgres://postgres@localhost/heco_test") %>
+  database: <%= ENV.fetch("DATABASE_NAME", "heco_test") %>
 
 production:
   <<: *default
-  url: <%= Rails.application.credentials.dig(:database, :url) %>
+  database: <%= ENV.fetch("DATABASE_NAME", "heco") %>

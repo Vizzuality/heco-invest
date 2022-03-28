@@ -20,8 +20,31 @@ RSpec.configure do |config|
       },
       paths: {},
       components: {
-        securitySchemes: {},
+        securitySchemes: {
+          csrf: {
+            type: :apiKey,
+            name: "X-CSRF-TOKEN",
+            in: :header
+          },
+          cookie_auth: {
+            type: :apiKey,
+            name: "_backend_session",
+            in: :cookie
+          }
+        },
         schemas: {
+          user: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              type: {type: :string},
+              attributes: {
+                first_name: {type: :string},
+                last_name: {type: :string},
+                email: {type: :string}
+              }
+            }
+          },
           investor: {
             type: :object,
             properties: {
@@ -32,6 +55,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
+                  picture_url: {type: :string},
                   about: {type: :string, nullable: true},
                   website: {type: :string, nullable: true},
                   instagram: {type: :string, nullable: true},
@@ -51,9 +75,51 @@ RSpec.configure do |config|
                   previously_invested_description: {type: :string, nullable: true},
                   language: {type: :string}
                 }
+              },
+              relationships: {
+                type: :object,
+                properties: {
+                  owner: {"$ref" => "#/components/schemas/response_relation"}
+                }
               }
             },
-            required: %w[id type attributes]
+            required: %w[id type attributes relationships]
+          },
+          location: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              type: {type: :string},
+              attributes: {
+                type: :object,
+                properties: {
+                  name: {type: :string},
+                  location_type: {type: :string, enum: LocationType::TYPES}
+                }
+              },
+              relationships: {
+                type: :object,
+                properties: {
+                  parent: {
+                    type: :object,
+                    properties: {
+                      data: {
+                        type: :object,
+                        nullable: true,
+                        properties: {
+                          id: {type: :string},
+                          type: {type: :string}
+                        },
+                        required: %w[id type]
+                      },
+                      required: %w[data]
+                    }
+                  },
+                  regions: {"$ref" => "#/components/schemas/response_relations"}
+                }
+              }
+            },
+            required: %w[id type attributes relationships]
           },
           open_call: {
             type: :object,
@@ -78,20 +144,7 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  investor: {
-                    type: :object,
-                    properties: {
-                      data: {
-                        type: :object,
-                        properties: {
-                          id: {type: :string},
-                          type: {type: :string}
-                        },
-                        required: %w[id type]
-                      },
-                      required: %w[data]
-                    }
-                  }
+                  investor: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }
             },
@@ -131,20 +184,7 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  project_developer: {
-                    type: :object,
-                    properties: {
-                      data: {
-                        type: :object,
-                        properties: {
-                          id: {type: :string},
-                          type: {type: :string}
-                        },
-                        required: %w[id type]
-                      },
-                      required: %w[data]
-                    }
-                  }
+                  project_developer: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }
             },
@@ -160,6 +200,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
+                  picture_url: {type: :string},
                   about: {type: :string, nullable: true},
                   website: {type: :string, nullable: true},
                   instagram: {type: :string, nullable: true},
@@ -170,11 +211,19 @@ RSpec.configure do |config|
                   project_developer_type: {type: :string, nullable: true},
                   categories: {type: :array, items: {type: :string}},
                   impacts: {type: :array, items: {type: :string}},
-                  language: {type: :string}
+                  language: {type: :string},
+                  entity_legal_registration_number: {type: :string}
+                }
+              },
+              relationships: {
+                type: :object,
+                properties: {
+                  locations: {"$ref" => "#/components/schemas/response_relations"},
+                  owner: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }
             },
-            required: %w[id type attributes]
+            required: %w[id type attributes relationships]
           },
           enum: {
             type: :object,
@@ -191,6 +240,35 @@ RSpec.configure do |config|
               }
             },
             required: %w[id type attributes]
+          },
+          direct_upload: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              key: {type: :string},
+              filename: {type: :string},
+              content_type: {type: :string},
+              metadata: {type: :object},
+              byte_size: {type: :integer},
+              checksum: {type: :string},
+              created_at: {type: :string},
+              service_name: {type: :string},
+              signed_id: {type: :string},
+              attachable_sgid: {type: :string},
+              direct_upload: {
+                type: :object,
+                properties: {
+                  url: {type: :string},
+                  headers: {
+                    type: :object,
+                    properties: {
+                      'Content-Type': {type: :string}
+                    }
+                  }
+                }
+              }
+            },
+            required: %w[id key filename content_type metadata byte_size checksum created_at service_name signed_id attachable_sgid direct_upload]
           },
           pagination_meta: {
             type: :object,
@@ -212,6 +290,37 @@ RSpec.configure do |config|
               last: {type: :string}
             },
             required: %w[first self last]
+          },
+          response_relation: {
+            type: :object,
+            properties: {
+              data: {
+                type: :object,
+                properties: {
+                  id: {type: :string},
+                  type: {type: :string}
+                },
+                required: %w[id type]
+              }
+            },
+            required: %w[data]
+          },
+          response_relations: {
+            type: :object,
+            properties: {
+              data: {
+                type: :array,
+                items: {
+                  object: :object,
+                  properties: {
+                    id: {type: :string},
+                    type: {type: :string}
+                  },
+                  required: %w[id type]
+                }
+              }
+            },
+            required: %w[data]
           },
           errors: {
             type: :object,

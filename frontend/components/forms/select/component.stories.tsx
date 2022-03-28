@@ -1,79 +1,195 @@
-import { Story } from '@storybook/react/types-6-0';
+import React from 'react';
 
-import Select from './component';
-import type { SelectProps } from './types';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
+import { action } from '@storybook/addon-actions';
+import { Story, Meta } from '@storybook/react/types-6-0';
+
+import Button from 'components/button';
+
+import Select, { SelectProps, Option } from '.';
 
 export default {
-  title: 'Components/Forms/Select',
   component: Select,
-  parameters: { actions: { argTypesRegex: '^on.*' } },
+  title: 'Components/Forms/Select',
   argTypes: {
-    theme: {
-      control: {
-        type: 'select',
-        options: ['dark', 'light'],
-      },
-    },
-    state: {
-      control: {
-        type: 'select',
-        options: ['valid', 'error', 'none'],
-      },
-    },
-    onSelect: {
-      table: {
-        disable: true,
-      },
-    },
-    initialValues: {
-      table: {
-        disable: true,
-      },
-    },
+    register: { control: { disable: true } },
+  },
+} as Meta;
+
+interface FormValues {
+  sdg: string;
+}
+
+const OPTIONS = [
+  { key: 'no-poverty', label: 'No poverty' },
+  { key: 'zero-hunger', label: 'Zero hunger' },
+  { key: 'good-health-and-well-being', label: 'Good health and well-being' },
+  { key: 'quality-education', label: 'Quality education' },
+  { key: 'gender-equality', label: 'Gender equality' },
+  { key: 'clean-water-and-sanitation', label: 'Clean water and sanitation' },
+  { key: 'affordable-and-clean-energy', label: 'Affordable and clean energy' },
+  { key: 'decent-work-and-economic-growth', label: 'Decent work and economic growth' },
+  {
+    key: 'industry-innovation-and-infrastructure',
+    label: 'Industry, innovation and infrastructure',
+  },
+  { key: 'reduced-inequalities', label: 'Reduced inequalities' },
+  { key: 'sustainable-cities-and-communities', label: 'Sustainable cities and communities' },
+  {
+    key: 'responsible-consumption-and-production',
+    label: 'Responsible consumption and production',
+  },
+  { key: 'climate-action', label: 'Climate action' },
+  { key: 'life-below-water', label: 'Life below water' },
+  { key: 'life-on-land', label: 'Life on land' },
+  { key: 'peace-justice-and-strong-institutions', label: 'Peace, justice and strong institutions' },
+  { key: 'partnerships-for-the-goals', label: 'Partnerships for the goals' },
+];
+
+const Template: Story<SelectProps<FormValues, {}>> = (args: SelectProps<FormValues, {}>) => {
+  const { control } = useForm<FormValues>();
+
+  return (
+    <>
+      <Select control={control} {...args}>
+        {OPTIONS.map(({ key, label }) => (
+          <Option key={key}>{label}</Option>
+        ))}
+      </Select>
+      <p className="mt-2 text-xs text-gray-50">
+        This select is not accessible. Either define <code>aria-label</code> or associate a label
+        (see the “With Label” story).
+      </p>
+    </>
+  );
+};
+
+export const Default: Story<SelectProps<FormValues, {}>> = Template.bind({});
+Default.args = {
+  id: 'form-sdg',
+  name: 'sdg',
+  placeholder: 'Sustainable tourism',
+  controlOptions: {
+    disabled: false,
   },
 };
 
-const Template: Story<SelectProps> = (args) => (
-  <div className="relative">
-    <Select {...args} />
-  </div>
-);
+export const DefaultValue: Story<SelectProps<FormValues, {}>> = Template.bind({});
+DefaultValue.args = {
+  id: 'form-sdg',
+  name: 'sdg',
+  placeholder: 'Sustainable tourism',
+  controlOptions: {
+    value: 'clean-water-and-sanitation',
+    disabled: false,
+  },
+};
 
-export const Default = Template.bind({});
-Default.args = {
-  theme: 'dark',
-  size: 'base',
-  maxHeight: 300,
-  status: 'none',
-  prefix: 'FILTER BY:',
-  placeholder: 'Select Scenario',
-  options: [
-    { label: 'Scenario 1', value: 'scenario-1' },
-    { label: 'Scenario 2', value: 'scenario-2' },
-    { label: 'Scenario 3', value: 'scenario-3', disabled: true },
-    { label: 'Scenario 4', value: 'scenario-4' },
-    { label: 'Scenario 5', value: 'scenario-5' },
-    { label: 'Scenario 6', value: 'scenario-6' },
-    { label: 'Scenario 7', value: 'scenario-7' },
-    { label: 'Scenario 8', value: 'scenario-8' },
-    { label: 'Scenario 9', value: 'scenario-9' },
-    { label: 'Scenario 10', value: 'scenario-10' },
-    { label: 'Scenario 11', value: 'scenario-11' },
-    { label: 'Scenario 12', value: 'scenario-12' },
-    { label: 'Scenario 13', value: 'scenario-13' },
-    { label: 'Scenario 14', value: 'scenario-14' },
-    { label: 'Scenario 15', value: 'scenario-15' },
-    { label: 'Scenario 16', value: 'scenario-16' },
-    { label: 'Scenario 17', value: 'scenario-17' },
-    { label: 'Scenario 18', value: 'scenario-18' },
-  ],
-  initialSelected: ['scenario-1', 'scenario-2', 'scenario-4'],
-  disabled: false,
-  multiple: true,
-  searchable: false,
-  clearSelectionActive: true,
-  clearSelectionLabel: 'Clear Selection',
-  batchSelectionActive: true,
-  batchSelectionLabel: 'Select all',
-  onChange: (option) => console.info(option),
+export const DisabledOptions: Story<SelectProps<FormValues, {}>> = Template.bind({});
+DisabledOptions.args = {
+  id: 'form-sdg',
+  name: 'sdg',
+  placeholder: 'Sustainable tourism',
+  disabledKeys: ['industry-innovation-and-infrastructure', 'climate-action', 'life-on-land'],
+  controlOptions: {
+    disabled: false,
+  },
+};
+
+export const OpenOnTop: Story<SelectProps<FormValues, {}>> = Template.bind({});
+OpenOnTop.args = {
+  id: 'form-sdg',
+  name: 'sdg',
+  placeholder: 'Sustainable tourism',
+  className: 'mt-80',
+  direction: 'top',
+  controlOptions: {
+    disabled: false,
+  },
+};
+
+const TemplateWithLabel: Story<SelectProps<FormValues, {}>> = (
+  args: SelectProps<FormValues, {}>
+) => {
+  const { control } = useForm<FormValues>();
+
+  return (
+    <>
+      <label htmlFor={args.id} className="mb-2">
+        Sustainable Development Goal
+      </label>
+      <Select control={control} {...args}>
+        {OPTIONS.map(({ key, label }) => (
+          <Option key={key}>{label}</Option>
+        ))}
+      </Select>
+    </>
+  );
+};
+
+export const WithLabel: Story<SelectProps<FormValues, {}>> = TemplateWithLabel.bind({});
+WithLabel.args = {
+  id: 'form-sdg',
+  name: 'sdg',
+  placeholder: 'Sustainable tourism',
+  controlOptions: {
+    disabled: false,
+  },
+};
+
+const TemplateWithForm: Story<SelectProps<FormValues, {}>> = (
+  args: SelectProps<FormValues, {}>
+) => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
+    // Using the native validation, we're able to style the inputs using the `valid` and `invalid`
+    // pseudo class
+    shouldUseNativeValidation: true,
+  });
+  const onSubmit: SubmitHandler<FormValues> = (data) => action('onSubmit')(data);
+
+  return (
+    <form
+      // `noValidate` here prevents the browser from not submitting the form if there's a validation
+      // error. We absolutely want the form to be submitted so that React Hook Form is made aware of
+      // the validation errors and we can display errors below inputs.
+      noValidate
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <label htmlFor={args.id} className="mb-2">
+        Sustainable Development Goal
+      </label>
+      <Select control={control} aria-describedby="form-error" {...args}>
+        {OPTIONS.map(({ key, label }) => (
+          <Option key={key}>{label}</Option>
+        ))}
+      </Select>
+      {errors.sdg?.message && (
+        <p id="form-error" className="pl-2 mt-1 text-xs text-red">
+          {errors.sdg?.message}
+        </p>
+      )}
+      <Button type="submit" className="mt-2">
+        Submit
+      </Button>
+      <p className="mt-2 text-xs text-gray-50">
+        Submit the form to see the {"select's"} error state (the select is required).
+      </p>
+    </form>
+  );
+};
+
+export const ErrorState: Story<SelectProps<FormValues, {}>> = TemplateWithForm.bind({});
+ErrorState.args = {
+  id: 'form-sdg',
+  name: 'sdg',
+  placeholder: 'Sustainable tourism',
+  controlOptions: {
+    disabled: false,
+    required: 'A SDG is required.',
+  },
 };

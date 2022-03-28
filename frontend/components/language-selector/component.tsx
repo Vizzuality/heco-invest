@@ -60,7 +60,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = () => {
               uiLanguages.find((language) => language.locale === router.locale)?.locale ?? ''
             ).toUpperCase()}
           </span>
-          <Icon icon={ChevronDownIcon} className="inline-block w-4 h-4 ml-1 fill-current" />
+          <Icon icon={ChevronDownIcon} className="inline-block w-4 h-4 ml-1" />
         </Button>
       }
       align="end"

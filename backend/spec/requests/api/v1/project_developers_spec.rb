@@ -2,7 +2,7 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Project Developers", type: :request do
   before_all do
-    @project_developer = create(:project_developer)
+    @project_developer = create(:project_developer, :with_locations)
     create_list(:project_developer, 6)
   end
 
@@ -26,7 +26,7 @@ RSpec.describe "API V1 Project Developers", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/project_developers")
+          expect(response.body).to match_snapshot("api/v1/project_developers", dynamic_attributes: %w[small medium original])
         end
 
         context "with sparse fieldset" do
@@ -59,14 +59,14 @@ RSpec.describe "API V1 Project Developers", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/get-project-developer")
+          expect(response.body).to match_snapshot("api/v1/get-project-developer", dynamic_attributes: %w[small medium original])
         end
 
         context "when slug is used" do
           let(:id) { @project_developer.account.slug }
 
           it "matches snapshot" do
-            expect(response.body).to match_snapshot("api/v1/get-project-developer")
+            expect(response.body).to match_snapshot("api/v1/get-project-developer", dynamic_attributes: %w[small medium original])
           end
         end
 

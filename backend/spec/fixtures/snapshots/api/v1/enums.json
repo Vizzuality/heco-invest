@@ -231,6 +231,34 @@
       "attributes": {
         "name": "HNWI or Celebrity"
       }
+    },
+    {
+      "id": "country",
+      "type": "location_type",
+      "attributes": {
+        "name": "Country"
+      }
+    },
+    {
+      "id": "department",
+      "type": "location_type",
+      "attributes": {
+        "name": "Department"
+      }
+    },
+    {
+      "id": "municipality",
+      "type": "location_type",
+      "attributes": {
+        "name": "Municipality"
+      }
+    },
+    {
+      "id": "region",
+      "type": "location_type",
+      "attributes": {
+        "name": "Region"
+      }
     }
   ]
 }
