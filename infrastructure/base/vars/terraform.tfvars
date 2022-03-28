@@ -8,5 +8,7 @@ github_project = "heco-invest"
 gcp_project_id = "heco-sandbox"
 bucket_name    = "heco-sandbox-tf-state"
 
+project_name = "heco"
+
 domain = "heco.vizzuality.com"
 google_analytics_key = "changeMe"

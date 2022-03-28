@@ -14,14 +14,14 @@ resource "google_project_service" "servicenetwork_api" {
 }
 
 resource "google_compute_network" "network" {
-  name                    = "heco-network"
+  name                    = "${var.name}-network"
   auto_create_subnetworks = "false"
 
   depends_on = [google_project_service.compute_api]
 }
 
 resource "google_compute_subnetwork" "private" {
-  name                       = "heco-private-subnet"
+  name                       = "${var.name}-private-subnet"
   ip_cidr_range              = "10.0.0.0/20"
   network                    = google_compute_network.network.self_link
   region                     = var.region
@@ -29,13 +29,13 @@ resource "google_compute_subnetwork" "private" {
 }
 
 resource "google_compute_router" "router" {
-  name     = "heco-cloud-router"
+  name     = "${var.name}-cloud-router"
   region   = var.region
   network  = google_compute_network.network.id
 }
 
 resource "google_compute_router_nat" "router_nat" {
-  name                               = "heco-nat-gateway"
+  name                               = "${var.name}-nat-gateway"
   region                             = var.region
   router                             = google_compute_router.router.name
   source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
