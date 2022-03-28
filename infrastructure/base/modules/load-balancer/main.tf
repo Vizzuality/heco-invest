@@ -1,6 +1,6 @@
 // IP address
 resource "google_compute_global_address" "ip_address" {
-  name         = "${var.name}-load-balancer"
+  name         = "${var.name}-lb"
   ip_version   = "IPV4"
   address_type = "EXTERNAL"
 }
@@ -11,7 +11,7 @@ resource "google_compute_global_address" "ip_address" {
 
 # HTTPS + certificate handling
 resource "google_compute_global_forwarding_rule" "load-balancer-forwarding-rule-https" {
-  name                  = "load-balancer-forwarding-rule-https"
+  name                  = "${var.name}-lb-forwarding-rule-https"
   target                = google_compute_target_https_proxy.load-balancer-https-proxy.id
   port_range            = "443"
   load_balancing_scheme = "EXTERNAL"
@@ -19,13 +19,13 @@ resource "google_compute_global_forwarding_rule" "load-balancer-forwarding-rule-
 }
 
 resource "google_compute_target_https_proxy" "load-balancer-https-proxy" {
-  name             = "load-balancer-https-proxy"
+  name             = "${var.name}-lb-https-proxy"
   url_map          = google_compute_url_map.load-balancer-url-map.id
   ssl_certificates = [google_compute_managed_ssl_certificate.load-balancer-certificate.id]
 }
 
 resource "google_compute_managed_ssl_certificate" "load-balancer-certificate" {
-  name = "load-balancer-certificate"
+  name = "${var.name}-lb-cert"
 
   managed {
     domains = [var.domain]
@@ -34,7 +34,7 @@ resource "google_compute_managed_ssl_certificate" "load-balancer-certificate" {
 
 # HTTP redirection to HTTPS
 resource "google_compute_url_map" "http-redirect" {
-  name = "http-redirect"
+  name = "${var.name}-http-redirect"
 
   default_url_redirect {
     redirect_response_code = "MOVED_PERMANENTLY_DEFAULT"  // 301 redirect
@@ -44,12 +44,12 @@ resource "google_compute_url_map" "http-redirect" {
 }
 
 resource "google_compute_target_http_proxy" "http-redirect" {
-  name    = "http-redirect"
+  name    = "${var.name}-http-redirect"
   url_map = google_compute_url_map.http-redirect.self_link
 }
 
 resource "google_compute_global_forwarding_rule" "http-redirect" {
-  name       = "http-redirect"
+  name       = "${var.name}-http-redirect"
   target     = google_compute_target_http_proxy.http-redirect.self_link
   ip_address = google_compute_global_address.ip_address.address
   port_range = "80"
@@ -59,7 +59,7 @@ resource "google_compute_global_forwarding_rule" "http-redirect" {
 # Load balancer core (URL mapping)
 # ------------------------------------------------------------------------------
 resource "google_compute_url_map" "load-balancer-url-map" {
-  name            = "${var.name}-load-balancer"
+  name            = "${var.name}-lb"
   description     = "Load balancer for ${var.name}"
   default_service = google_compute_backend_service.frontend_service.id
 
@@ -101,8 +101,8 @@ resource "google_compute_region_network_endpoint_group" "cloudrun_frontend_neg" 
 }
 
 resource "google_compute_backend_service" "backend_service" {
-  name        = "backend-service"
-  description = "Backend service"
+  name        = "${var.name}-backend-service"
+  description = "${var.name} backend service"
 
   backend {
     group = google_compute_region_network_endpoint_group.cloudrun_backend_neg.id
@@ -111,8 +111,8 @@ resource "google_compute_backend_service" "backend_service" {
 }
 
 resource "google_compute_backend_service" "frontend_service" {
-  name        = "frontend-service"
-  description = "Frontend service"
+  name        = "${var.name}-frontend-service"
+  description = "${var.name} frontend service"
 
   backend {
     group = google_compute_region_network_endpoint_group.cloudrun_frontend_neg.id
