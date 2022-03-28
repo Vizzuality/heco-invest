@@ -1,6 +1,6 @@
 module API
   module V1
-    module Users
+    module Accounts
       class ProjectDevelopersController < BaseController
         skip_before_action :require_json!, only: :create
         before_action :authenticate_user!

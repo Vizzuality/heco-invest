@@ -1,7 +1,7 @@
 require "swagger_helper"
 
 RSpec.describe "API V1 User Project Developers", type: :request do
-  path "/api/v1/user/project_developer" do
+  path "/api/v1/account/project_developer" do
     post "Create new Project Developer for User" do
       tags "Project Developers"
       consumes "multipart/form-data"

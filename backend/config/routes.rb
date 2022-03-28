@@ -15,11 +15,7 @@ Rails.application.routes.draw do
         }
 
       resource :session, only: [:create, :destroy]
-      resource :user, only: [:create, :show] do
-        scope module: "users" do
-          resource :project_developer, only: :create
-        end
-      end
+      resource :user, only: [:create, :show]
 
       resources :investors, only: [:index, :show]
       resources :locations, only: [:index, :show]
@@ -28,6 +24,10 @@ Rails.application.routes.draw do
       resources :projects, only: [:index, :show]
 
       resources :enums, only: [:index]
+
+      scope "account", module: "accounts" do
+        resource :project_developer, only: :create
+      end
     end
   end
 end
