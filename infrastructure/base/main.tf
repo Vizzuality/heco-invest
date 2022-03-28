@@ -42,6 +42,7 @@ module "postgres_application_user_password" {
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN = var.transifex_token
+    NEXTAUTH_URL = "https://${var.domain}"
   }
   backend_docker_build_args = {
     TRANSIFEX_TOKEN = var.transifex_token
@@ -87,6 +88,20 @@ module "frontend_cloudrun" {
   container_port     = 3000
   start_command      = "start:prod"
   vpc_connector_name = module.network.vpc_access_connector_name
+  env_vars = [
+    {
+      name  = "NEXT_PUBLIC_API_URL"
+      value = "https://api.${var.domain}"
+    },
+    {
+      name  = "NEXT_PUBLIC_GOOGLE_ANALYTICS"
+      value = var.google_analytics_key
+    },
+    {
+      name  = "NEXT_PUBLIC_DOMAIN"
+      value = "https://${var.domain}"
+    }
+  ]
 }
 
 module "backend_cloudrun" {
@@ -95,7 +110,7 @@ module "backend_cloudrun" {
   region             = var.gcp_region
   project_id         = var.gcp_project_id
   image_name         = "backend"
-  container_port     = 3000
+  container_port     = 4000
   start_command      = "start"
   vpc_connector_name = module.network.vpc_access_connector_name
   secrets            = [
@@ -131,4 +146,21 @@ module "database" {
   database_user     = "heco"
   database_password = module.postgres_application_user_password.secret_value
   network_id        = module.network.network_id
+}
+
+module "dns" {
+  source = "./modules/dns"
+  domain = var.domain
+  name   = "heco"
+}
+
+module "load_balancer" {
+  source                  = "./modules/load-balancer"
+  region                  = var.gcp_region
+  project                 = var.gcp_project_id
+  name                    = "heco"
+  backend_cloud_run_name  = module.backend_cloudrun.name
+  frontend_cloud_run_name = module.frontend_cloudrun.name
+  domain                  = var.domain
+  dns_managed_zone_name   = module.dns.dns_zone_name
 }

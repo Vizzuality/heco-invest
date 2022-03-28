@@ -47,16 +47,15 @@ resource "google_cloud_run_service" "cloud_run" {
         }
       }
     }
-  }
-
-  metadata {
-    annotations = {
-      # Limit scale up to prevent any cost blow outs!
-      "autoscaling.knative.dev/maxScale"        = "5"
-      # Use the VPC Connector
-      "run.googleapis.com/vpc-access-connector" = var.vpc_connector_name
-      # all egress from the service should go through the VPC Connector
-      "run.googleapis.com/vpc-access-egress"    = "all"
+    metadata {
+      annotations = {
+        # Limit scale up to prevent any cost blow outs!
+        "autoscaling.knative.dev/maxScale"        = "5"
+        # Use the VPC Connector
+        "run.googleapis.com/vpc-access-connector" = var.vpc_connector_name
+        # all egress from the service should go through the VPC Connector
+        "run.googleapis.com/vpc-access-egress"    = "all"
+      }
     }
   }
 
@@ -64,6 +63,8 @@ resource "google_cloud_run_service" "cloud_run" {
     percent         = 100
     latest_revision = true
   }
+
+  autogenerate_revision_name = true
 
   depends_on = [google_secret_manager_secret_iam_member.secret_access]
 }
