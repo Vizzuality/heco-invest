@@ -12,11 +12,11 @@ import { loadI18nMessages } from 'helpers/i18n';
 
 import Checkbox from 'components/forms/checkbox';
 import Input from 'components/forms/input';
-import { useSignupResolver } from 'components/forms/validation';
 import Loading from 'components/loading';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 import { SignupDto, SignupFormI } from 'types/signup';
+import { useSignupResolver } from 'validations/signup';
 
 import { useSignup } from 'services/users/userService';
 
@@ -40,7 +40,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
     formState: { errors },
     handleSubmit,
     setFocus,
-  } = useForm<SignupFormI>({ resolver });
+  } = useForm<SignupFormI>({ resolver, shouldUseNativeValidation: true });
 
   const handleSignUp = useCallback((data: SignupDto) => signUp.mutate(data), [signUp]);
 
@@ -66,10 +66,10 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
       <p className="mb-1.5 font-sans text-base text-gray-600">
         <FormattedMessage defaultMessage="Please enter your details below." id="rfVDxL" />
       </p>
-      <form onSubmit={handleSubmit(onSubmit, onError)}>
+      <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
         {signUp.isError && (
           <div className="flex mt-6 p-4.5 rounded-lg bg-red/10" role="alert">
-            <AlertTriangle className="w-5 h-5 text-red" />
+            <AlertTriangle className="w-5 h-5 text-red" aria-hidden="true" />
             <p className="ml-2 font-sans text-sm leading-normal text-black">
               {signUp.error.message || (
                 <FormattedMessage
