@@ -1,7 +1,11 @@
 [
-  { "name": "Sustainable agrosystems", "id": "sustainable_agrosystems" },
-  { "name": "Tourism and recreation", "id": "tourism_and_recreation" },
-  { "name": "Forestry and agroforestry", "id": "forestry_and_agroforestry" },
-  { "name": "Non-timber forest production", "id": "non_timber_forest_production" },
-  { "name": "Human capital and inclusion", "id": "human_capital_and_inclusion" }
+  { "name": "Tourism and recreation", "id": "tourism_and_recreation", "color": "tourism" },
+  { "name": "Forestry and agroforestry", "id": "forestry_and_agroforestry", "color": "forestry" },
+  { "name": "Sustainable agrosystems", "id": "sustainable_agrosystems", "color": "agrosystems" },
+  {
+    "name": "Non-timber forest production",
+    "id": "non_timber_forest_production",
+    "color": "production"
+  },
+  { "name": "Human capital and inclusion", "id": "human_capital_and_inclusion", "color": "human" }
 ]

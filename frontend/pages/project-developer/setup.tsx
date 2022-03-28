@@ -1,8 +1,10 @@
-import { ChangeEvent, FC, LabelHTMLAttributes, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
-import { ArrowLeft, Info } from 'react-feather';
+import { Info } from 'react-feather';
 import { SubmitErrorHandler, SubmitHandler, useForm, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+
+import cx from 'classnames';
 
 import Image from 'next/image';
 
@@ -11,10 +13,14 @@ import { InferGetStaticPropsType } from 'next';
 import { loadI18nMessages } from 'helpers/i18n';
 import { languages, onlinePresence } from 'helpers/projectDevelopersConstants';
 
-import Button from 'components/button';
+import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
+
+import ErrorMessage from 'components/forms/errorMessage/component';
 import Input from 'components/forms/input';
+import Label from 'components/forms/label';
 import TextArea from 'components/forms/textarea';
-import { StaticPageLayoutProps } from 'layouts/static-page';
+import Head from 'components/head';
+import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
 import categories from 'mockups/categories.json';
 import impacts from 'mockups/impacts.json';
 import mosaics from 'mockups/mosaics.json';
@@ -39,30 +45,23 @@ export async function getStaticProps(ctx) {
 
 type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Label: FC<LabelHTMLAttributes<HTMLLabelElement>> = (props) => {
-  return (
-    <label className="block font-sans text-sm font-semibold text-gray-800" htmlFor={props.htmlFor}>
-      {props.children}
-    </label>
-  );
-};
-
-const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutProps> = () => {
-  const [section, setSection] = useState(0);
+const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () => {
+  const [currentPage, setCurrentPage] = useState(0);
   const [imagePreview, setImagePreview] = useState('');
   const [imageBase64, setImageBase64] = useState('');
+  const [hasErrors, setHasErrors] = useState(false);
+  const [isFormComplete, setIsFormComplete] = useState(false);
   const { formatMessage } = useIntl();
-  const resolver = useProjectDeveloperValidation(section);
+  const resolver = useProjectDeveloperValidation(currentPage);
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
-    getValues,
     trigger,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
-    defaultValues: { language: '', picture: '' },
+    defaultValues: { language: '', picture: '', categories: [], impacts: [], mosaics: [] },
     shouldUseNativeValidation: true,
     shouldFocusError: true,
   });
@@ -70,8 +69,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
   const interests: {
     name: keyof ProjectDeveloperSetupForm;
     title: string;
-    items: { name: string; id: string }[];
-    required?: boolean;
+    items: { name: string; id: string; color?: string }[];
   }[] = [
     {
       title: formatMessage({
@@ -80,13 +78,11 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
       }),
       name: 'categories',
       items: categories,
-      required: true,
     },
     {
-      title: formatMessage({ defaultMessage: 'Expect to have mpact', id: 'vzQrlh' }),
+      title: formatMessage({ defaultMessage: 'Expect to have impact on', id: 'YB8bt5' }),
       name: 'impacts',
       items: impacts,
-      required: true,
     },
     {
       title: formatMessage({
@@ -99,12 +95,15 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
   ];
 
   const onSubmit: SubmitHandler<ProjectDeveloperSetupForm> = (values) => {
-    console.log('submit', values);
-    if (section === 2) {
-      // Go to Pending approval page
+    if (currentPage === 2) {
+      setIsFormComplete(true);
     } else {
-      setSection(section + 1);
+      setCurrentPage(currentPage + 1);
     }
+  };
+
+  const onError: SubmitErrorHandler<ProjectDeveloperSetupForm> = (error) => {
+    // handle errors
   };
 
   const handleSelectAll = (e: ChangeEvent<HTMLInputElement>) => {
@@ -131,10 +130,47 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
   };
 
   return (
-    <div className="w-full min-h-screen m-auto">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-between" noValidate>
-        <div className="max-w-screen-lg m-auto">
-          {section === 0 && (
+    <>
+      <Head title={formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })} />
+      <form
+        onSubmit={handleSubmit(onSubmit, onError)}
+        className="flex flex-col justify-between"
+        noValidate
+      >
+        <MultiPageLayout
+          layout="narrow"
+          title={formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })}
+          autoNavigation={false}
+          outroButtonText={formatMessage({
+            defaultMessage: 'See my profile',
+            id: 'TH786p',
+          })}
+          page={currentPage}
+          alert={
+            hasErrors
+              ? formatMessage({
+                  defaultMessage:
+                    'Something went wrong while submitting your form. Please correct the errors before submitting again.',
+                  id: 'WTuVeL',
+                })
+              : null
+          }
+          isSubmitting={false}
+          showOutro={isFormComplete}
+          onNextClick={async () => {
+            console.log(errors);
+            if (!errors) {
+              setCurrentPage(currentPage + 1);
+            }
+          }}
+          onPreviousClick={() => setCurrentPage(currentPage - 1)}
+          showProgressBar
+          // onPageClick={handlePageClick}
+          // onCloseClick={handleCloseClick}
+          // onSubmitClick={handleSubmitClick}
+          // onCompleteClick={handleCompleteClick}
+        >
+          <Page hasErrors={!!errors?.language}>
             <div>
               <h1 className="mb-6 font-serif text-3xl font-semibold text-green-dark">
                 <FormattedMessage defaultMessage="I want to write my content in" id="APjPYs" />
@@ -149,7 +185,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                 {languages.map((lang) => {
                   const { name, code, nativeName } = lang;
                   return (
-                    <label
+                    <Label
                       key={code}
                       htmlFor={code}
                       className="justify-center block w-64 text-center border rounded-lg py-7 border-beige"
@@ -160,17 +196,20 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                         type="radio"
                         value={code}
                         {...register('language', { required: 'required field' })}
+                        aria-describedby="language-error"
                       />
                       <span className="block">{name}</span>
                       <span>({nativeName})</span>
-                    </label>
+                    </Label>
                   );
                 })}
               </div>
-              {errors.language && <p className="text-red">{errors.language.message}</p>}
+              <p className="text-red">
+                <ErrorMessage id="language-error" errorText={errors?.language?.message} />
+              </p>
             </div>
-          )}
-          {section === 1 && (
+          </Page>
+          <Page>
             <div>
               <div className="mb-6">
                 <h1 className="mb-2 font-serif text-3xl font-semibold">
@@ -210,37 +249,36 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                       {...register('picture')}
                       accept="image/png, image/jpeg"
                       onChange={handleUploadImage}
+                      aria-describedby="picture-error"
                       // value={imageBase64}
                     />
                   </label>
                 </div>
-                {errors.picture && <p>{errors.picture.message}</p>}
+                <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
               </div>
               <div className="flex gap-x-6 mb-6.5">
                 <div className="md:w-1/2">
                   <Label htmlFor="profile">
-                    <span className="text-sm font-semibold text-gray-800 text-primary">
-                      <FormattedMessage defaultMessage="Profile name" id="s+n2ku" />
-                    </span>
+                    <FormattedMessage defaultMessage="Profile name" id="s+n2ku" />
                     <Input
                       name="profile"
                       className="mt-2.5"
                       id="profile"
                       type="text"
                       register={register}
+                      registerOptions={{ required: 'required' }}
                       placeholder={formatMessage({
                         defaultMessage: 'insert the profile name',
                         id: '0WHWA/',
                       })}
+                      aria-describedby="profile-error"
                     />
                   </Label>
-                  {errors.profile && <p>{errors.profile.message}</p>}
+                  <ErrorMessage id="profile-error" errorText={errors?.profile?.message} />
                 </div>
                 <div className="md:w-1/2">
                   <Label htmlFor="profile">
-                    <span className="text-sm font-semibold text-gray-800 text-primary">
-                      <FormattedMessage defaultMessage="Type" id="+U6ozc" />
-                    </span>
+                    <FormattedMessage defaultMessage="Type" id="+U6ozc" />
                     <select
                       name="projectDeveloperType"
                       id="profile"
@@ -250,6 +288,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                         defaultMessage: 'select the project developer type',
                         id: 'N9+9Fi',
                       })}
+                      aria-describedby="project-developer-type-error"
                     >
                       {projectDeveloperTypes.map(({ name, id }) => (
                         <option value={id} key={id}>
@@ -258,37 +297,39 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                       ))}
                     </select>
                   </Label>
-                  {errors.projectDeveloperType && <p>{errors.projectDeveloperType.message}</p>}
+                  <ErrorMessage
+                    errorText={errors?.projectDeveloperType?.message}
+                    id="project-developer-type-error"
+                  />
                 </div>
               </div>
               <div className="mb-6.5">
                 <Label htmlFor="entity-legal-registration">
-                  <span className="text-sm font-semibold text-gray-800 text-primary">
-                    <FormattedMessage
-                      defaultMessage="Entity legal registration number (NIT or RUT)"
-                      id="AiagLY"
-                    />
-                  </span>
+                  <FormattedMessage
+                    defaultMessage="Entity legal registration number (NIT or RUT)"
+                    id="AiagLY"
+                  />
                   <Input
                     type="text"
                     id="entity-legal-registration"
+                    className="mt-2.5"
                     register={register}
                     name="entityLegalRegistrationNumber"
                     placeholder={formatMessage({
                       defaultMessage: 'insert the number',
                       id: 'tS6cAK',
                     })}
+                    aria-describedby="entity-legal-registration-error"
                   />
                 </Label>
-                {errors.entityLegalRegistrationNumber && (
-                  <p>{errors.entityLegalRegistrationNumber.message}</p>
-                )}
+                <ErrorMessage
+                  id="entity-legal-registration-error"
+                  errorText={errors?.entityLegalRegistrationNumber?.message}
+                />
               </div>
               <div className="mb-6.5">
                 <Label htmlFor="about">
-                  <span className="text-sm font-semibold text-gray-800 text-primary">
-                    <FormattedMessage defaultMessage="About" id="g5pX+a" />
-                  </span>
+                  <FormattedMessage defaultMessage="About" id="g5pX+a" />
                   <TextArea
                     name="about"
                     className="mt-2.5"
@@ -298,15 +339,14 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                       defaultMessage: 'insert your answer (max 500 characters)',
                       id: 'rBoq14',
                     })}
+                    aria-describedby="about-error"
                   />
                 </Label>
-                {errors.about && <p>{errors.about.message}</p>}
+                <ErrorMessage errorText={errors?.about?.message} id="about-error" />
               </div>
               <div className="mb-6.5">
                 <Label htmlFor="mission">
-                  <span className="text-sm font-semibold text-gray-800 text-primary">
-                    <FormattedMessage defaultMessage="What's your mission?" id="vaWFzs" />
-                  </span>
+                  <FormattedMessage defaultMessage="What's your mission?" id="vaWFzs" />
                   <TextArea
                     name="mission"
                     className="mt-2.5"
@@ -317,9 +357,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                       defaultMessage: 'insert your answer (max 500 characters)',
                       id: 'rBoq14',
                     })}
+                    aria-describedby="mission-error"
                   />
                 </Label>
-                {errors.mission && <p>{errors.mission.message}</p>}
+                <ErrorMessage errorText={errors?.mission?.message} id="mission-error" />
               </div>
               <div>
                 <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
@@ -329,11 +370,9 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                   {onlinePresence.map((item: keyof ProjectDeveloperSetupFormOnline) => (
                     <div key={item}>
                       <Label htmlFor={item}>
-                        <span className="text-sm font-semibold text-gray-800 text-primary">
-                          {item} (<FormattedMessage defaultMessage="optional" id="V4KNjk" />)
-                        </span>
+                        {item} (<FormattedMessage defaultMessage="optional" id="V4KNjk" />)
                         <Input
-                          className="mt-2.5"
+                          className="mt-2.5 mb-4.5"
                           name={item}
                           id={item}
                           type="text"
@@ -349,8 +388,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                 </div>
               </div>
             </div>
-          )}
-          {section === 2 && (
+          </Page>
+          <Page>
             <div>
               <div className="mb-6">
                 <h1 className="font-serif text-3xl font-semibold">
@@ -360,33 +399,40 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                   <FormattedMessage defaultMessage="Tell us about your work." id="Y6xIpg" />
                 </p>
               </div>
-              {interests.map(({ name, title, items, required }) => (
+              {interests.map(({ name, title, items }) => (
                 <div key={name} className="mb-7">
                   <p className="font-sans font-semibold text-sm text-gray-800 mb-4.5">
                     {title}
                     <Info className="inline ml-2.5 cursor-pointer" size={14.67} />
                   </p>
-                  <div className="flex gap-4 mb-4">
+                  <div className="mb-4">
                     {items.map((item) => (
-                      <div key={item.id}>
-                        <label htmlFor={item.id}>
+                      <div
+                        key={item.id}
+                        className="inline-block px-4 py-2 mb-4 mr-4 border rounded-lg border-beige"
+                      >
+                        <Label htmlFor={item.id} className="flex align-middle">
                           <input
+                            className={cx('appearance-none', {
+                              [`w-4 h-4 mr-4 bg-category-${item.color} rounded-full`]:
+                                name === 'categories',
+                            })}
                             {...register(name)}
                             id={item.id}
                             name={name}
                             type="checkbox"
                             value={item.id}
+                            aria-describedby={`${name}-error`}
                           />
-                          {item.name}
-                        </label>
+                          <span>{item.name}</span>
+                        </Label>
                       </div>
                     ))}
                   </div>
-                  {errors[name] && (
-                    <p className="mt-2 font-sans text-xs text-red">
-                      {(errors[name] as FieldError).message}
-                    </p>
-                  )}
+                  <ErrorMessage
+                    id={`${name}-error`}
+                    errorText={(errors[name] as FieldError)?.message}
+                  />
                   <label htmlFor={`select-all-${name}`}>
                     <span className="font-sans text-sm underline cursor-pointer text-green-dark">
                       {formatMessage({ defaultMessage: 'Select all', id: '94Fg25' })}
@@ -404,37 +450,20 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, StaticPageLayoutPro
                 </div>
               ))}
             </div>
-          )}
-        </div>
-        <div className="flex justify-between h-full px-20 py-4 my-10 align-middle border-t border-t-gray-400">
-          <div className="min-w-20 min-h-1">
-            {section !== 0 && (
-              <Button theme="primary-white" onClick={() => setSection(section - 1)}>
-                <ArrowLeft size={16} className="mr-3" />
-                Back
-              </Button>
-            )}
-          </div>
-          <div className="flex align-middle gap-x-4">
-            {[0, 1, 2].map((item) => (
-              <Button
-                className="w-6 h-6 px-1.75 text-center round"
-                key={item}
-                theme={item < section ? 'primary-green' : 'secondary-green'}
-              >
-                {item + 1}
-              </Button>
-            ))}
-          </div>
-          <div>
-            <Button onClick={() => console.log(getValues())} type="submit" className="block">
-              {section === 2 ? 'Submit' : 'Next'}
-            </Button>
-          </div>
-        </div>
+          </Page>
+          <OutroPage>
+            <h1 className="font-serif text-2xl font-light sm:text-3xl">
+              What would you like to do next?
+            </h1>
+          </OutroPage>
+        </MultiPageLayout>
       </form>
-    </div>
+    </>
   );
+};
+
+ProjectDeveloper.layout = {
+  Component: NakedPageLayout,
 };
 
 export default ProjectDeveloper;

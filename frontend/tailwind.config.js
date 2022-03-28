@@ -48,6 +48,7 @@ module.exports = {
         tourism: '#4492E5',
         production: '#404B9A',
         agrosystems: '#E7C343',
+        human: '#A0616A',
       },
       current: 'currentColor',
     },
@@ -83,6 +84,9 @@ module.exports = {
       transitionProperty: {
         width: 'width',
       },
+    },
+    minWidth: {
+      max: 'max-content',
     },
   },
   plugins: [],
