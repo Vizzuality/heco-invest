@@ -79,7 +79,7 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  owner: { "$ref" => "#/components/schemas/response_relation" }
+                  owner: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }
             },
@@ -115,7 +115,7 @@ RSpec.configure do |config|
                       required: %w[data]
                     }
                   },
-                  regions: { "$ref" => "#/components/schemas/response_relations" }
+                  regions: {"$ref" => "#/components/schemas/response_relations"}
                 }
               }
             },
@@ -144,7 +144,7 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  investor: { "$ref" => "#/components/schemas/response_relation" }
+                  investor: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }
             },
@@ -184,7 +184,7 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  project_developer: { "$ref" => "#/components/schemas/response_relation" }
+                  project_developer: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }
             },
@@ -218,8 +218,8 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  locations: { "$ref" => "#/components/schemas/response_relations" },
-                  owner: { "$ref" => "#/components/schemas/response_relation" }
+                  locations: {"$ref" => "#/components/schemas/response_relations"},
+                  owner: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }
             },
