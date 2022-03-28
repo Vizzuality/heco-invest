@@ -8,6 +8,11 @@ variable "github_project" {
   description = "Github project name"
 }
 
+variable "project_name" {
+  type        = string
+  description = "Name of the project"
+}
+
 # define GCP region
 variable "gcp_region" {
   type        = string

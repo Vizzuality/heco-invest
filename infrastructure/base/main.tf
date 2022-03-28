@@ -9,6 +9,7 @@ module "network" {
   source     = "./modules/network"
   project_id = var.gcp_project_id
   region     = var.gcp_region
+  name       = var.project_name
 }
 
 module "frontend_gcr" {
@@ -51,7 +52,8 @@ locals {
 
 module "frontend_build" {
   source                 = "./modules/cloudbuild"
-  name                   = "frontend"
+  project_name           = var.project_name
+  deployment_name        = "frontend"
   region                 = var.gcp_region
   project_id             = var.gcp_project_id
   github_branch          = "infrastructure-basics"
@@ -66,7 +68,8 @@ module "frontend_build" {
 
 module "backend_build" {
   source                 = "./modules/cloudbuild"
-  name                   = "backend"
+  project_name           = var.project_name
+  deployment_name        = "backend"
   region                 = var.gcp_region
   project_id             = var.gcp_project_id
   github_branch          = "infrastructure-basics"
@@ -159,12 +162,12 @@ module "backend_storage" {
   region                = var.gcp_region
   project_id            = var.gcp_project_id
   service_account_email = module.backend_cloudrun.service_account_email
-  name                  = "heco-site-storage"
+  name                  = "${var.project_name}-site-storage"
 }
 
 module "database" {
   source            = "./modules/sql"
-  name              = "heco"
+  name              = var.project_name
   project_id        = var.gcp_project_id
   region            = var.gcp_region
   database_name     = "heco"
@@ -183,14 +186,14 @@ module "test_pubsub" {
 module "dns" {
   source = "./modules/dns"
   domain = var.domain
-  name   = "heco"
+  name   = var.project_name
 }
 
 module "load_balancer" {
   source                  = "./modules/load-balancer"
   region                  = var.gcp_region
   project                 = var.gcp_project_id
-  name                    = "heco"
+  name                    = var.project_name
   backend_cloud_run_name  = module.backend_cloudrun.name
   frontend_cloud_run_name = module.frontend_cloudrun.name
   domain                  = var.domain
