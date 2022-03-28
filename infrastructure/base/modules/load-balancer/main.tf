@@ -28,7 +28,7 @@ resource "google_compute_managed_ssl_certificate" "load-balancer-certificate" {
   name = "load-balancer-certificate"
 
   managed {
-    domains = [var.domain, "api.${var.domain}"]
+    domains = [var.domain]
   }
 }
 
@@ -64,13 +64,19 @@ resource "google_compute_url_map" "load-balancer-url-map" {
   default_service = google_compute_backend_service.frontend_service.id
 
   host_rule {
-    hosts        = ["api.${var.domain}"]
-    path_matcher = "api"
+    hosts        = [var.domain]
+    path_matcher = "site"
   }
 
   path_matcher {
-    name            = "api"
-    default_service = google_compute_backend_service.backend_service.id
+    name            = "site"
+    default_service = google_compute_backend_service.frontend_service.id
+
+    path_rule {
+      paths   = ["/backend/*"]
+      service = google_compute_backend_service.backend_service.id
+    }
+
   }
 }
 
@@ -114,17 +120,7 @@ resource "google_compute_backend_service" "frontend_service" {
 
 }
 
-# DNS config for the API
-resource "google_dns_record_set" "api-dns-record-set" {
-  project      = var.project
-  name         = "api.${var.domain}."
-  type         = "A"
-  ttl          = 3600
-  managed_zone = var.dns_managed_zone_name
-  rrdatas      = [google_compute_global_address.ip_address.address]
-}
-
-# DNS config for the Frontend
+# DNS record
 resource "google_dns_record_set" "frontend-dns-record-set" {
   project      = var.project
   name         = "${var.domain}."

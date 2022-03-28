@@ -6,12 +6,19 @@ resource "google_project_service" "cloud_run_api" {
   disable_on_destroy = false
 }
 
+resource "google_service_account" "service_account" {
+  account_id   = "${var.name}-cloudrun-sa"
+  display_name = "${var.name} Service Account"
+}
+
 resource "google_secret_manager_secret_iam_member" "secret_access" {
   count = length(var.secrets)
 
   secret_id = var.secrets[count.index]["secret_name"]
   role      = "roles/secretmanager.secretAccessor"
-  member    = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
+  member    = "serviceAccount:${google_service_account.service_account.email}"
+
+  depends_on = [google_service_account.service_account]
 }
 
 resource "google_cloud_run_service" "cloud_run" {
@@ -20,6 +27,8 @@ resource "google_cloud_run_service" "cloud_run" {
 
   template {
     spec {
+      service_account_name = google_service_account.service_account.email
+
       containers {
         image = "gcr.io/${var.project_id}/${var.image_name}:latest"
         args  = [var.start_command]

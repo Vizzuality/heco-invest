@@ -18,3 +18,8 @@ variable "storage_class" {
   default     = "STANDARD"
   description = "The storage class of the Storage Bucket to create"
 }
+
+variable "service_account_email" {
+  type        = string
+  description = "Email address of the service account to grant read/write permissions to"
+}
