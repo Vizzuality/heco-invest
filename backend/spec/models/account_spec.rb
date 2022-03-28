@@ -5,6 +5,11 @@ RSpec.describe Account, type: :model do
 
   it { is_expected.to be_valid }
 
+  it "should not be valid without owner" do
+    subject.owner = nil
+    expect(subject).to have(1).errors_on(:owner)
+  end
+
   it "should not be valid without name" do
     subject.name = nil
     expect(subject).to have(1).errors_on(:name)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_24_100316) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_28_102306) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,7 +28,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_24_100316) do
     t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "owner_id", null: false
     t.index ["name"], name: "index_accounts_on_name", unique: true
+    t.index ["owner_id"], name: "index_accounts_on_owner_id"
     t.index ["slug"], name: "index_accounts_on_slug", unique: true
   end
 
@@ -275,6 +277,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_24_100316) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accounts", "users", column: "owner_id", on_delete: :cascade
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "investors", "accounts", on_delete: :cascade

@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :account do
+    owner factory: :user
     sequence(:name) do |n|
       Faker::Config.random = Random.new(n)
       Faker::Company.name

@@ -5,7 +5,10 @@ module API
       include BlobSerializer
 
       attributes :name, :slug, :about, :website, :instagram, :facebook, :linkedin, :twitter,
-        :mission, :project_developer_type, :categories, :impacts, :language, :entity_legal_registration_number
+        :mission, :project_developer_type, :categories, :impacts, :language, :entity_legal_registration_number,
+        :review_status
+
+      belongs_to :owner, serializer: :user
 
       has_many :locations
 

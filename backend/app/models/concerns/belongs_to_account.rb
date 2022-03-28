@@ -4,6 +4,6 @@ module BelongsToAccount
   included do
     belongs_to :account
 
-    delegate :name, :slug, :picture, :about, :website, :instagram, :facebook, :linkedin, :twitter, to: :account
+    delegate :name, :slug, :owner_id, :picture, :about, :website, :instagram, :facebook, :linkedin, :twitter, to: :account
   end
 end

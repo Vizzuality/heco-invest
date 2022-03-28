@@ -75,9 +75,28 @@ RSpec.configure do |config|
                   previously_invested_description: {type: :string, nullable: true},
                   language: {type: :string}
                 }
+              },
+              relationships: {
+                type: :object,
+                properties: {
+                  owner: {
+                    type: :object,
+                    properties: {
+                      data: {
+                        type: :object,
+                        properties: {
+                          id: {type: :string},
+                          type: {type: :string}
+                        },
+                        required: %w[id type]
+                      },
+                      required: %w[data]
+                    }
+                  }
+                }
               }
             },
-            required: %w[id type attributes]
+            required: %w[id type attributes relationships]
           },
           location: {
             type: :object,
@@ -270,6 +289,20 @@ RSpec.configure do |config|
                       }
                     },
                     required: %w[data]
+                  },
+                  owner: {
+                    type: :object,
+                    properties: {
+                      data: {
+                        type: :object,
+                        properties: {
+                          id: {type: :string},
+                          type: {type: :string}
+                        },
+                        required: %w[id type]
+                      },
+                      required: %w[data]
+                    }
                   }
                 }
               }
