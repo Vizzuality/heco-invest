@@ -8,6 +8,11 @@ resource "google_project_service" "vpcaccess_api" {
   disable_on_destroy = false
 }
 
+resource "google_project_service" "servicenetwork_api" {
+  service  = "servicenetworking.googleapis.com"
+  disable_on_destroy = false
+}
+
 resource "google_compute_network" "network" {
   name                    = "heco-network"
   auto_create_subnetworks = "false"
@@ -47,22 +52,6 @@ resource "google_compute_firewall" "web_ingress" {
   allow {
     protocol = "tcp"
     ports    = ["80", "443"]
-  }
-}
-
-
-resource "google_compute_firewall" "block_egress" {
-  name    = "block-egress"
-  network = google_compute_network.network.name
-
-  direction = "EGRESS"
-
-  deny {
-    protocol = "tcp"
-  }
-
-  deny {
-    protocol = "udp"
   }
 }
 

@@ -41,3 +41,13 @@ variable "transifex_token" {
   type = string
   description = "Transifex API access token"
 }
+
+variable "google_analytics_key" {
+  type = string
+  description = "Google Analytics key"
+}
+
+variable "domain" {
+  type = string
+  description = "Base domain for the DNS zone"
+}

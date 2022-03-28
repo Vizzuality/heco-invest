@@ -38,3 +38,9 @@ variable "database_password" {
   type = string
   description = "Password for the database user"
 }
+
+variable "enable_backups" {
+  type = bool
+  default = true
+  description = "If database backups should be enabled"
+}

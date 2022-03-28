@@ -53,6 +53,15 @@ resource "google_sql_database_instance" "db-main" {
       ipv4_enabled    = false
       private_network = var.network_id
     }
+
+    backup_configuration {
+      enabled = var.enable_backups
+      start_time = "05:00"
+
+      backup_retention_settings {
+        retained_backups = 30
+      }
+    }
   }
 
   depends_on = [google_project_service.sql_api, google_service_networking_connection.private_vpc_connection]
