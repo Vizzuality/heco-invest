@@ -301,9 +301,9 @@ RSpec.configure do |config|
                   type: {type: :string}
                 },
                 required: %w[id type]
-              },
-              required: %w[data]
-            }
+              }
+            },
+            required: %w[data]
           },
           response_relations: {
             type: :object,
