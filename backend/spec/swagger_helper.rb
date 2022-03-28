@@ -79,20 +79,7 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  owner: {
-                    type: :object,
-                    properties: {
-                      data: {
-                        type: :object,
-                        properties: {
-                          id: {type: :string},
-                          type: {type: :string}
-                        },
-                        required: %w[id type]
-                      },
-                      required: %w[data]
-                    }
-                  }
+                  owner: { "$ref" => "#/components/schemas/response_relation" }
                 }
               }
             },
@@ -128,23 +115,7 @@ RSpec.configure do |config|
                       required: %w[data]
                     }
                   },
-                  regions: {
-                    type: :object,
-                    properties: {
-                      data: {
-                        type: :array,
-                        items: {
-                          object: :object,
-                          properties: {
-                            id: {type: :string},
-                            type: {type: :string}
-                          },
-                          required: %w[id type]
-                        }
-                      }
-                    },
-                    required: %w[data]
-                  }
+                  regions: { "$ref" => "#/components/schemas/response_relations" }
                 }
               }
             },
@@ -173,20 +144,7 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  investor: {
-                    type: :object,
-                    properties: {
-                      data: {
-                        type: :object,
-                        properties: {
-                          id: {type: :string},
-                          type: {type: :string}
-                        },
-                        required: %w[id type]
-                      },
-                      required: %w[data]
-                    }
-                  }
+                  investor: { "$ref" => "#/components/schemas/response_relation" }
                 }
               }
             },
@@ -226,20 +184,7 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  project_developer: {
-                    type: :object,
-                    properties: {
-                      data: {
-                        type: :object,
-                        properties: {
-                          id: {type: :string},
-                          type: {type: :string}
-                        },
-                        required: %w[id type]
-                      },
-                      required: %w[data]
-                    }
-                  }
+                  project_developer: { "$ref" => "#/components/schemas/response_relation" }
                 }
               }
             },
@@ -273,37 +218,8 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  locations: {
-                    type: :object,
-                    properties: {
-                      data: {
-                        type: :array,
-                        items: {
-                          object: :object,
-                          properties: {
-                            id: {type: :string},
-                            type: {type: :string}
-                          },
-                          required: %w[id type]
-                        }
-                      }
-                    },
-                    required: %w[data]
-                  },
-                  owner: {
-                    type: :object,
-                    properties: {
-                      data: {
-                        type: :object,
-                        properties: {
-                          id: {type: :string},
-                          type: {type: :string}
-                        },
-                        required: %w[id type]
-                      },
-                      required: %w[data]
-                    }
-                  }
+                  locations: { "$ref" => "#/components/schemas/response_relations" },
+                  owner: { "$ref" => "#/components/schemas/response_relation" }
                 }
               }
             },
@@ -374,6 +290,37 @@ RSpec.configure do |config|
               last: {type: :string}
             },
             required: %w[first self last]
+          },
+          response_relation: {
+            type: :object,
+            properties: {
+              data: {
+                type: :object,
+                properties: {
+                  id: {type: :string},
+                  type: {type: :string}
+                },
+                required: %w[id type]
+              },
+              required: %w[data]
+            }
+          },
+          response_relations: {
+            type: :object,
+            properties: {
+              data: {
+                type: :array,
+                items: {
+                  object: :object,
+                  properties: {
+                    id: {type: :string},
+                    type: {type: :string}
+                  },
+                  required: %w[id type]
+                }
+              }
+            },
+            required: %w[data]
           },
           errors: {
             type: :object,
