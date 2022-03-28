@@ -17,7 +17,6 @@ variable "image_name" {
   description = "Docker image name"
 }
 
-
 variable "start_command" {
   type        = string
   description = "Docker image start command"

@@ -42,7 +42,7 @@ module "postgres_application_user_password" {
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN = var.transifex_token
-    NEXTAUTH_URL = "https://${var.domain}"
+    NEXTAUTH_URL    = "https://${var.domain}"
   }
   backend_docker_build_args = {
     TRANSIFEX_TOKEN = var.transifex_token
@@ -88,10 +88,10 @@ module "frontend_cloudrun" {
   container_port     = 3000
   start_command      = "start:prod"
   vpc_connector_name = module.network.vpc_access_connector_name
-  env_vars = [
+  env_vars           = [
     {
       name  = "NEXT_PUBLIC_API_URL"
-      value = "https://api.${var.domain}"
+      value = "https://${var.domain}/backend"
     },
     {
       name  = "NEXT_PUBLIC_GOOGLE_ANALYTICS"
@@ -134,8 +134,24 @@ module "backend_cloudrun" {
     {
       name  = "DATABASE_HOST"
       value = module.database.database_host
+    },
+    {
+      name = "GCP_STORAGE_BUCKET"
+      value = module.backend_storage.bucket_name
+    },
+    {
+      name = "BACKEND_URL"
+      value = "https://${var.domain}/backend"
     }
   ]
+}
+
+module "backend_storage" {
+  source                = "./modules/storage"
+  region                = var.gcp_region
+  project_id            = var.gcp_project_id
+  service_account_email = module.backend_cloudrun.service_account_email
+  name                  = "heco-site-storage"
 }
 
 module "database" {

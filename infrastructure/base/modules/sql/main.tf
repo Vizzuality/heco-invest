@@ -10,31 +10,6 @@ resource "google_project_service" "compute_engine_api" {
   disable_on_destroy = false
 }
 
-resource "google_project_service" "service_networking_api" {
-  service  = "servicenetworking.googleapis.com"
-  disable_on_destroy = false
-}
-
-resource "google_compute_global_address" "private_ip_address" {
-  provider = google-beta
-
-  name          = "private-ip-address"
-  purpose       = "VPC_PEERING"
-  address_type  = "INTERNAL"
-  prefix_length = 16
-  network       = var.network_id
-}
-
-resource "google_service_networking_connection" "private_vpc_connection" {
-  provider = google-beta
-
-  network                 = var.network_id
-  service                 = "servicenetworking.googleapis.com"
-  reserved_peering_ranges = [google_compute_global_address.private_ip_address.name]
-
-  depends_on = [google_project_service.service_networking_api]
-}
-
 locals {
   postgres_user = var.database_user
   postgres_database = var.database_name
@@ -63,8 +38,6 @@ resource "google_sql_database_instance" "db-main" {
       }
     }
   }
-
-  depends_on = [google_project_service.sql_api, google_service_networking_connection.private_vpc_connection]
 }
 
 resource "google_sql_database" "database" {
