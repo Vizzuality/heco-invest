@@ -38,12 +38,12 @@ The application (and API) is configured via environment variables stored in a `.
 
 Below is a description of each of the keys.
 
-| Variable | Description |
-|---|---|
-| NEXT_PUBLIC_API_URL | URL of the API supporting the platform |
-| NEXTAUTH_URL | URL of the service managing the authentication |
-| NEXT_PUBLIC_GOOGLE_ANALYTICS | Key of the Google Analytics account |
-| NEXT_PUBLIC_DOMAIN | Complete domain from which the application is served (including https) and without a trailing slash (e.g. https://vizzuality.com)
+| Variable                     | Description                                                                                                                       |
+|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| NEXT_PUBLIC_API_URL          | URL of the API supporting the platform                                                                                            |
+| NEXTAUTH_URL                 | URL of the service managing the authentication                                                                                    |
+| NEXT_PUBLIC_GOOGLE_ANALYTICS | Key of the Google Analytics account                                                                                               |
+| NEXT_PUBLIC_DOMAIN           | Complete domain from which the application is served (including https) and without a trailing slash (e.g. https://vizzuality.com) |
 
 ## CI/CD
 
