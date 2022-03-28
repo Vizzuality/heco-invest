@@ -216,8 +216,14 @@
   "OBhULP": {
     "string": "Open calls"
   },
+  "OChccW": {
+    "string": "Investor / Funder"
+  },
   "Obr4XP": {
     "string": "Guiding tools"
+  },
+  "Ow9MS8": {
+    "string": "I want to find the right investment for my projects"
   },
   "PIZ1dD": {
     "string": "Search biodiversity"
@@ -228,6 +234,9 @@
   "QDj3j7": {
     "string": "Inter-American Development Bank Lab"
   },
+  "QTsX3C": {
+    "string": "Drawing of a person looking at tree"
+  },
   "RXoqkD": {
     "string": "Mission"
   },
@@ -236,6 +245,9 @@
   },
   "SQJto2": {
     "string": "Sign in"
+  },
+  "Swj4mJ": {
+    "string": "Select the {name} account"
   },
   "TH786p": {
     "string": "See my profile"
@@ -263,6 +275,9 @@
   },
   "Vge+RX": {
     "string": "Footer"
+  },
+  "Vxcu91": {
+    "string": "{name} account"
   },
   "W4Jolw": {
     "string": "IDB Lab is the innovation laboratory of the Inter-American Development Bank Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
@@ -393,6 +408,9 @@
   "nBHzO6": {
     "string": "Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
   },
+  "nhAnF3": {
+    "string": "I want to find opportunities to invest / donate"
+  },
   "o+Vt3t": {
     "string": "Partnership between:"
   },
@@ -435,6 +453,9 @@
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
   },
+  "vqeK8j": {
+    "string": "Drawing of a person looking at a list of card"
+  },
   "wSZR47": {
     "string": "Submit"
   },
@@ -455,6 +476,9 @@
   },
   "xusigZ": {
     "string": "Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."
+  },
+  "yF82he": {
+    "string": "Project developer"
   },
   "yJVljq": {
     "string": "Through accessing <span>ARIES</span> (Artificial Intelligence for Environmental Sustainability) and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
