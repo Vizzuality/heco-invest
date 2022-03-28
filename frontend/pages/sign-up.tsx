@@ -39,7 +39,6 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
     register,
     formState: { errors },
     handleSubmit,
-    setFocus,
   } = useForm<SignupFormI>({ resolver, shouldUseNativeValidation: true });
 
   const handleSignUp = useCallback((data: SignupDto) => signUp.mutate(data), [signUp]);
@@ -53,11 +52,6 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
     handleSignUp(newUser);
   };
 
-  const onError: SubmitErrorHandler<SignupFormI> = (error) => {
-    const firstError = Object.keys(error)[0] as keyof SignupFormI;
-    setFocus(firstError);
-  };
-
   return (
     <div className="w-full h-screen max-w-xl px-4 m-auto">
       <h1 className="mb-2.5 font-serif text-4xl font-semibold text-green-dark">
@@ -66,7 +60,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
       <p className="mb-1.5 font-sans text-base text-gray-600">
         <FormattedMessage defaultMessage="Please enter your details below." id="rfVDxL" />
       </p>
-      <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signUp.isError && (
           <div className="flex mt-6 p-4.5 rounded-lg bg-red/10" role="alert">
             <AlertTriangle className="w-5 h-5 text-red" aria-hidden="true" />
