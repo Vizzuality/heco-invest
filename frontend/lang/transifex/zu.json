@@ -23,6 +23,9 @@
   "0cWjQP": {
     "string": "{title} - page {currentPage} out of {numPages}"
   },
+  "0hzVw6": {
+    "string": "How accounts work?"
+  },
   "0wBg9P": {
     "string": "Project developers"
   },
@@ -195,6 +198,9 @@
   "MH3koz": {
     "string": "Previous slide"
   },
+  "MZl85Y": {
+    "string": "One more step to go"
+  },
   "MfCYKW": {
     "string": "For investors"
   },
@@ -360,6 +366,9 @@
   "eM7TKf": {
     "string": "About the platform"
   },
+  "eSLLyC": {
+    "string": "To complete you registration and make full use of the platform, please select which account you would like to create."
+  },
   "fnihsY": {
     "string": "Leave"
   },
@@ -413,6 +422,9 @@
   },
   "o+Vt3t": {
     "string": "Partnership between:"
+  },
+  "oMC3r1": {
+    "string": "Choose your account type"
   },
   "oiQKNY": {
     "string": "Search and find"
