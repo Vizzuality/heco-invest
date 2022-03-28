@@ -26,7 +26,7 @@ RSpec.describe "API V1 Investors", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/investors", dynamic_attributes: %w[picture_url])
+          expect(response.body).to match_snapshot("api/v1/investors", dynamic_attributes: %w[small medium original])
         end
 
         context "with sparse fieldset" do
@@ -59,14 +59,14 @@ RSpec.describe "API V1 Investors", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/get-investor", dynamic_attributes: %w[picture_url])
+          expect(response.body).to match_snapshot("api/v1/get-investor", dynamic_attributes: %w[small medium original])
         end
 
         context "when slug is used" do
           let(:id) { @investor.account.slug }
 
           it "matches snapshot" do
-            expect(response.body).to match_snapshot("api/v1/get-investor", dynamic_attributes: %w[picture_url])
+            expect(response.body).to match_snapshot("api/v1/get-investor", dynamic_attributes: %w[small medium original])
           end
         end
 

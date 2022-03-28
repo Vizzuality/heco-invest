@@ -2,12 +2,16 @@ module API
   module V1
     class ProjectDeveloperSerializer
       include JSONAPI::Serializer
+      include BlobSerializer
 
       attributes :name, :slug, :about, :website, :instagram, :facebook, :linkedin, :twitter,
-        :mission, :project_developer_type, :categories, :impacts, :language, :picture_url,
-        :entity_legal_registration_number
+        :mission, :project_developer_type, :categories, :impacts, :language, :entity_legal_registration_number
 
       has_many :locations
+
+      attribute :picture do |object|
+        image_links_for object.picture
+      end
     end
   end
 end

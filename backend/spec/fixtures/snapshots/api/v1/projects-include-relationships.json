@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "id": "aefde31f-acfb-41a1-9524-0ebf6d893887",
+      "id": "49910f91-9834-46d1-803b-99b0f21ab331",
       "type": "project",
       "attributes": {
         "name": "Project 1"
@@ -9,14 +9,14 @@
       "relationships": {
         "project_developer": {
           "data": {
-            "id": "b356d5a2-4228-4728-ae43-755a4e2bf9aa",
+            "id": "f55a2e29-f131-43db-9100-3537812851f2",
             "type": "project_developer"
           }
         }
       }
     },
     {
-      "id": "4ed1a908-784e-405f-94c9-4dc459c1b8ca",
+      "id": "e779ec1a-23ae-411f-9905-90acc12b6525",
       "type": "project",
       "attributes": {
         "name": "Project 2"
@@ -24,14 +24,14 @@
       "relationships": {
         "project_developer": {
           "data": {
-            "id": "4f018d7f-271b-4339-9daa-b65a2ba95365",
+            "id": "f747cecd-1c7e-49e5-9aa5-b2f9dd221870",
             "type": "project_developer"
           }
         }
       }
     },
     {
-      "id": "a1c888d8-06eb-4fc9-bc63-07e82a23fabe",
+      "id": "28077c42-e608-42f9-8806-49486f2e4d78",
       "type": "project",
       "attributes": {
         "name": "Project 3"
@@ -39,14 +39,14 @@
       "relationships": {
         "project_developer": {
           "data": {
-            "id": "40087e96-8072-4dab-b6c1-aaaa89ef29ff",
+            "id": "f42ad93b-5a31-4762-a45c-94b855898cf8",
             "type": "project_developer"
           }
         }
       }
     },
     {
-      "id": "2b722583-d1b3-4c1b-b183-31c72c862e81",
+      "id": "f3508a1e-3f10-4730-bbc0-f5e94cbad0c5",
       "type": "project",
       "attributes": {
         "name": "Project 4"
@@ -54,14 +54,14 @@
       "relationships": {
         "project_developer": {
           "data": {
-            "id": "0d20cfe4-1fd1-4579-8253-901f84640bef",
+            "id": "ac5fab12-26e3-4489-8afe-0f06aad6b9c8",
             "type": "project_developer"
           }
         }
       }
     },
     {
-      "id": "6a2b8c88-fc6e-45d4-81cf-3f4604ed08e4",
+      "id": "e38adad3-a5d8-4b0b-b00c-4ac992bf5d8e",
       "type": "project",
       "attributes": {
         "name": "Project 5"
@@ -69,14 +69,14 @@
       "relationships": {
         "project_developer": {
           "data": {
-            "id": "a01913d6-1342-4cdf-98d5-d8d5d1662430",
+            "id": "b64e85c3-a5ff-4939-8b40-2f937ae4e9fd",
             "type": "project_developer"
           }
         }
       }
     },
     {
-      "id": "3ac28226-74e5-4af6-9cc1-a98261f351e5",
+      "id": "2b554488-0415-4bd4-84f0-380564d7938b",
       "type": "project",
       "attributes": {
         "name": "Project 6"
@@ -84,14 +84,14 @@
       "relationships": {
         "project_developer": {
           "data": {
-            "id": "15027c64-3f49-4d80-a0c5-eb4a55826bc3",
+            "id": "a5f1e7bf-7157-4f74-ad99-5359bfe58efd",
             "type": "project_developer"
           }
         }
       }
     },
     {
-      "id": "736fd798-ec47-4057-9804-0176993117f7",
+      "id": "34d945c2-a21f-4295-8a2e-f27077337eda",
       "type": "project",
       "attributes": {
         "name": "Project 7"
@@ -99,7 +99,7 @@
       "relationships": {
         "project_developer": {
           "data": {
-            "id": "f634b5b4-ed63-4853-b99e-61c2c0dee002",
+            "id": "63dc8c2d-8b63-40f4-9bca-4dcf8639d9b9",
             "type": "project_developer"
           }
         }
@@ -108,7 +108,7 @@
   ],
   "included": [
     {
-      "id": "b356d5a2-4228-4728-ae43-755a4e2bf9aa",
+      "id": "f55a2e29-f131-43db-9100-3537812851f2",
       "type": "project_developer",
       "attributes": {
         "name": "Kutch-Spencer",
@@ -130,8 +130,11 @@
           "water"
         ],
         "language": "en",
-        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6WldRM1lUTmtNQzB6TVRBeExUUTNPVGd0T0RJeVppMDFOREF5WXpKbU5qazVaamdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--77f37bd738503b473f1fb39c13d4557b9aebfa7a/picture.jpg",
-        "entity_legal_registration_number": "564823570"
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWWpjd04yTmxNaTFqWXprekxUUmlaall0T1RreU5TMDNObVEzTW1KaE5qUXdNVFVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--84a87fb06d45259da12125b90213d3574d0bc7e1/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWWpjd04yTmxNaTFqWXprekxUUmlaall0T1RreU5TMDNObVEzTW1KaE5qUXdNVFVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--84a87fb06d45259da12125b90213d3574d0bc7e1/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWWpjd04yTmxNaTFqWXprekxUUmlaall0T1RreU5TMDNObVEzTW1KaE5qUXdNVFVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--84a87fb06d45259da12125b90213d3574d0bc7e1/picture.jpg"
+        }
       },
       "relationships": {
         "locations": {
@@ -142,7 +145,7 @@
       }
     },
     {
-      "id": "4f018d7f-271b-4339-9daa-b65a2ba95365",
+      "id": "f747cecd-1c7e-49e5-9aa5-b2f9dd221870",
       "type": "project_developer",
       "attributes": {
         "name": "Bartoletti and Sons",
@@ -164,8 +167,11 @@
           "water"
         ],
         "language": "en",
-        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswWm1OaE1tWm1OeTAxTTJNeExUUmtaREl0T1RWbFlpMHpOelE1WWpVek1tVmpOMlVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c966055d4b70d6bd64df21b5981a29865a392ffe/picture.jpg",
-        "entity_legal_registration_number": "564823570"
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TnprMlpHVTJNUzB3TWpobExUUmxZalV0WVRFeU1DMHlZekJpTURneE9HUXdaallHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--67e8e9a83c3d7d950a9f737ea08e22c3541c4df5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TnprMlpHVTJNUzB3TWpobExUUmxZalV0WVRFeU1DMHlZekJpTURneE9HUXdaallHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--67e8e9a83c3d7d950a9f737ea08e22c3541c4df5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TnprMlpHVTJNUzB3TWpobExUUmxZalV0WVRFeU1DMHlZekJpTURneE9HUXdaallHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--67e8e9a83c3d7d950a9f737ea08e22c3541c4df5/picture.jpg"
+        }
       },
       "relationships": {
         "locations": {
@@ -176,7 +182,7 @@
       }
     },
     {
-      "id": "40087e96-8072-4dab-b6c1-aaaa89ef29ff",
+      "id": "f42ad93b-5a31-4762-a45c-94b855898cf8",
       "type": "project_developer",
       "attributes": {
         "name": "Hane, Lehner and Goyette",
@@ -198,8 +204,11 @@
           "water"
         ],
         "language": "en",
-        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxtWlRNNFl6RXlaQzAxTWpWaExUUmhNREV0WWpnMk1pMWhNamMyTVRGbVlURmtNRElHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--9550eb7358c7a9faac19fc6c04128c346792b563/picture.jpg",
-        "entity_legal_registration_number": "564823570"
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxoTURVMFlUWm1aQzFpWm1VekxUUmxabUV0T0dOaVpTMWxOV1JqWmpCaU9EVTFOV01HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--b85d7bd34a62b011095d345f079a933dd7a47c20/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxoTURVMFlUWm1aQzFpWm1VekxUUmxabUV0T0dOaVpTMWxOV1JqWmpCaU9EVTFOV01HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--b85d7bd34a62b011095d345f079a933dd7a47c20/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxoTURVMFlUWm1aQzFpWm1VekxUUmxabUV0T0dOaVpTMWxOV1JqWmpCaU9EVTFOV01HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--b85d7bd34a62b011095d345f079a933dd7a47c20/picture.jpg"
+        }
       },
       "relationships": {
         "locations": {
@@ -210,7 +219,7 @@
       }
     },
     {
-      "id": "0d20cfe4-1fd1-4579-8253-901f84640bef",
+      "id": "ac5fab12-26e3-4489-8afe-0f06aad6b9c8",
       "type": "project_developer",
       "attributes": {
         "name": "Hilpert, Waters and Johnston",
@@ -232,8 +241,11 @@
           "water"
         ],
         "language": "en",
-        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxpWm1SbE9EaGpZaTAxT0RjekxUUTJZMk10T0RneVpDMWhZamxqWkRaak1HVmpaREFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--a664f1583a650df926d79f3778b692050f4eba36/picture.jpg",
-        "entity_legal_registration_number": "564823570"
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxrT0Rrek1tTXlZUzAxTmpRNExUUTBZbVV0WW1RNE1pMWpNVEE0WWpZM01tWTFaamdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--b8571b7948f6a837ea669bf75cf1617a1e552387/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxrT0Rrek1tTXlZUzAxTmpRNExUUTBZbVV0WW1RNE1pMWpNVEE0WWpZM01tWTFaamdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--b8571b7948f6a837ea669bf75cf1617a1e552387/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxrT0Rrek1tTXlZUzAxTmpRNExUUTBZbVV0WW1RNE1pMWpNVEE0WWpZM01tWTFaamdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--b8571b7948f6a837ea669bf75cf1617a1e552387/picture.jpg"
+        }
       },
       "relationships": {
         "locations": {
@@ -244,7 +256,7 @@
       }
     },
     {
-      "id": "a01913d6-1342-4cdf-98d5-d8d5d1662430",
+      "id": "b64e85c3-a5ff-4939-8b40-2f937ae4e9fd",
       "type": "project_developer",
       "attributes": {
         "name": "Jacobson, Fritsch and Stanton",
@@ -266,8 +278,11 @@
           "water"
         ],
         "language": "en",
-        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1Wm1KbU9Ea3hOUzFtT0RRM0xUUXpZV010WVdVNE9DMWxORFJpWmpFeVlUVTFZemdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--88bd891688034d1acffc7e9982bc8fea271acc7d/picture.jpg",
-        "entity_legal_registration_number": "564823570"
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxrTXpnMU9URmpNQzAzWmpBNUxUUTFOemN0WVRFME9TMDFOV1ZsTlRrMk4yUTBOR0VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--841c7dd2f147f8b7220fdf7dc138d0ee1be0905d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxrTXpnMU9URmpNQzAzWmpBNUxUUTFOemN0WVRFME9TMDFOV1ZsTlRrMk4yUTBOR0VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--841c7dd2f147f8b7220fdf7dc138d0ee1be0905d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxrTXpnMU9URmpNQzAzWmpBNUxUUTFOemN0WVRFME9TMDFOV1ZsTlRrMk4yUTBOR0VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--841c7dd2f147f8b7220fdf7dc138d0ee1be0905d/picture.jpg"
+        }
       },
       "relationships": {
         "locations": {
@@ -278,7 +293,7 @@
       }
     },
     {
-      "id": "15027c64-3f49-4d80-a0c5-eb4a55826bc3",
+      "id": "a5f1e7bf-7157-4f74-ad99-5359bfe58efd",
       "type": "project_developer",
       "attributes": {
         "name": "Keebler, Kub and Zemlak",
@@ -300,8 +315,11 @@
           "water"
         ],
         "language": "en",
-        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6WW1Vek9UazROUzAzWlRrNUxUUmlOVFl0T0RVNFlpMDJORGczWkRWalpXTmpOR0lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--3506094c3eb23afb8b0397807ed18439547a3731/picture.jpg",
-        "entity_legal_registration_number": "564823570"
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswTVdVMllXTXdZUzAyTW1SbExUUXdORE10T1dRek5pMHpNMkU1WlROak4yWXpNamtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--0494f955b7b0de1faaaeb2ea6d326fadf924b94b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswTVdVMllXTXdZUzAyTW1SbExUUXdORE10T1dRek5pMHpNMkU1WlROak4yWXpNamtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--0494f955b7b0de1faaaeb2ea6d326fadf924b94b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswTVdVMllXTXdZUzAyTW1SbExUUXdORE10T1dRek5pMHpNMkU1WlROak4yWXpNamtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--0494f955b7b0de1faaaeb2ea6d326fadf924b94b/picture.jpg"
+        }
       },
       "relationships": {
         "locations": {
@@ -312,7 +330,7 @@
       }
     },
     {
-      "id": "f634b5b4-ed63-4853-b99e-61c2c0dee002",
+      "id": "63dc8c2d-8b63-40f4-9bca-4dcf8639d9b9",
       "type": "project_developer",
       "attributes": {
         "name": "Becker LLC",
@@ -334,8 +352,11 @@
           "water"
         ],
         "language": "en",
-        "picture_url": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6TXpSbE1USXpNaTB6WVRSbUxUUXdZemN0T0RreVlpMHlOVGMyTnpnMlptVmtNRFVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--2b39c84156b67b759bd78b4bb61ed3d0a56480ac/picture.jpg",
-        "entity_legal_registration_number": "564823570"
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswTVRnM09HUmtZeTFsTnpsaExUUmlOVEV0T1dWaE1DMWtPVGcwT0dJek1tUTRaRFFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--86d09fddab337ef49c71b2884af895ec027bb4a2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswTVRnM09HUmtZeTFsTnpsaExUUmlOVEV0T1dWaE1DMWtPVGcwT0dJek1tUTRaRFFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--86d09fddab337ef49c71b2884af895ec027bb4a2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswTVRnM09HUmtZeTFsTnpsaExUUmlOVEV0T1dWaE1DMWtPVGcwT0dJek1tUTRaRFFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--86d09fddab337ef49c71b2884af895ec027bb4a2/picture.jpg"
+        }
       },
       "relationships": {
         "locations": {
