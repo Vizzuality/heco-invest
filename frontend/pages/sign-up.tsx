@@ -14,7 +14,7 @@ import Checkbox from 'components/forms/checkbox';
 import FieldError from 'components/forms/field-error';
 import Input from 'components/forms/input';
 import Loading from 'components/loading';
-import { StaticPageLayoutProps } from 'layouts/static-page';
+import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
 import { SignupDto, SignupFormI } from 'types/signup';
 import { useSignupResolver } from 'validations/signup';
@@ -31,7 +31,7 @@ export async function getStaticProps(ctx) {
 
 type AboutPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
+const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
   const { locale } = useRouter();
   const intl = useIntl();
   const signUp = useSignup();
@@ -54,7 +54,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
   };
 
   return (
-    <div className="w-full h-screen max-w-xl px-4 m-auto">
+    <div>
       <h1 className="mb-2.5 font-serif text-4xl font-semibold text-green-dark">
         <FormattedMessage defaultMessage="Sign up" id="8HJxXG" />
       </h1>
@@ -217,6 +217,18 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
       </form>
     </div>
   );
+};
+
+SignUp.layout = {
+  Component: AuthPageLayout,
+  props: {
+    headerProps: {
+      pageType: 'sign-up',
+    },
+    asideProps: {
+      photo: 'side-02',
+    },
+  },
 };
 
 export default SignUp;
