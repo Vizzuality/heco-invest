@@ -64,6 +64,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     defaultValues: { language: '', picture: '', categories: [], impacts: [], mosaics: [] },
     shouldUseNativeValidation: true,
     shouldFocusError: true,
+    reValidateMode: 'onChange',
   });
 
   const interests: {
@@ -132,45 +133,42 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
   return (
     <>
       <Head title={formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })} />
-      <form
-        onSubmit={handleSubmit(onSubmit, onError)}
-        className="flex flex-col justify-between"
-        noValidate
-      >
-        <MultiPageLayout
-          layout="narrow"
-          title={formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })}
-          autoNavigation={false}
-          outroButtonText={formatMessage({
-            defaultMessage: 'See my profile',
-            id: 'TH786p',
-          })}
-          page={currentPage}
-          alert={
-            hasErrors
-              ? formatMessage({
-                  defaultMessage:
-                    'Something went wrong while submitting your form. Please correct the errors before submitting again.',
-                  id: 'WTuVeL',
-                })
-              : null
+
+      <MultiPageLayout
+        layout="narrow"
+        title={formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })}
+        autoNavigation={false}
+        outroButtonText={formatMessage({
+          defaultMessage: 'See my profile',
+          id: 'TH786p',
+        })}
+        page={currentPage}
+        alert={
+          hasErrors
+            ? formatMessage({
+                defaultMessage:
+                  'Something went wrong while submitting your form. Please correct the errors before submitting again.',
+                id: 'WTuVeL',
+              })
+            : null
+        }
+        isSubmitting={false}
+        showOutro={isFormComplete}
+        onNextClick={async () => {
+          await handleSubmit(onSubmit, onError)();
+          if (!errors) {
+            setCurrentPage(currentPage + 1);
           }
-          isSubmitting={false}
-          showOutro={isFormComplete}
-          onNextClick={async () => {
-            console.log(errors);
-            if (!errors) {
-              setCurrentPage(currentPage + 1);
-            }
-          }}
-          onPreviousClick={() => setCurrentPage(currentPage - 1)}
-          showProgressBar
-          // onPageClick={handlePageClick}
-          // onCloseClick={handleCloseClick}
-          // onSubmitClick={handleSubmitClick}
-          // onCompleteClick={handleCompleteClick}
-        >
-          <Page hasErrors={!!errors?.language}>
+        }}
+        onPreviousClick={() => setCurrentPage(currentPage - 1)}
+        showProgressBar
+        // onPageClick={handlePageClick}
+        // onCloseClick={handleCloseClick}
+        onSubmitClick={handleSubmit(onSubmit, onError)}
+        // onCompleteClick={handleCompleteClick}
+      >
+        <Page hasErrors={!!errors?.language}>
+          <form className="flex flex-col justify-between" noValidate>
             <div>
               <h1 className="mb-6 font-serif text-3xl font-semibold text-green-dark">
                 <FormattedMessage defaultMessage="I want to write my content in" id="APjPYs" />
@@ -195,7 +193,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                         id={code}
                         type="radio"
                         value={code}
-                        {...register('language', { required: 'required field' })}
+                        {...register('language')}
                         aria-describedby="language-error"
                       />
                       <span className="block">{name}</span>
@@ -208,8 +206,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 <ErrorMessage id="language-error" errorText={errors?.language?.message} />
               </p>
             </div>
-          </Page>
-          <Page>
+          </form>
+        </Page>
+        <Page>
+          <form className="flex flex-col justify-between" noValidate>
             <div>
               <div className="mb-6">
                 <h1 className="mb-2 font-serif text-3xl font-semibold">
@@ -266,7 +266,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                       id="profile"
                       type="text"
                       register={register}
-                      registerOptions={{ required: 'required' }}
                       placeholder={formatMessage({
                         defaultMessage: 'insert the profile name',
                         id: '0WHWA/',
@@ -352,7 +351,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     className="mt-2.5"
                     id="mission"
                     register={register}
-                    registerOptions={{ required: true }}
                     placeholder={formatMessage({
                       defaultMessage: 'insert your answer (max 500 characters)',
                       id: 'rBoq14',
@@ -388,8 +386,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 </div>
               </div>
             </div>
-          </Page>
-          <Page>
+          </form>
+        </Page>
+        <Page>
+          <form className="flex flex-col justify-between" noValidate>
             <div>
               <div className="mb-6">
                 <h1 className="font-serif text-3xl font-semibold">
@@ -450,14 +450,14 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 </div>
               ))}
             </div>
-          </Page>
-          <OutroPage>
-            <h1 className="font-serif text-2xl font-light sm:text-3xl">
-              What would you like to do next?
-            </h1>
-          </OutroPage>
-        </MultiPageLayout>
-      </form>
+          </form>
+        </Page>
+        <OutroPage>
+          <h1 className="font-serif text-2xl font-light sm:text-3xl">
+            What would you like to do next?
+          </h1>
+        </OutroPage>
+      </MultiPageLayout>
     </>
   );
 };
