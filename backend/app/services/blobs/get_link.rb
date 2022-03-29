@@ -8,7 +8,7 @@ module Blobs
     end
 
     def call
-      return if original_blob.blank?
+      return if original_blob.blank? || !original_blob.validated?
 
       Rails.application.routes.url_helpers.url_for modify(original_blob)
     end
