@@ -6,11 +6,13 @@ Rails.application.routes.draw do
 
   namespace :api, format: "json" do
     namespace :v1 do
-      devise_for :users, singular: :user, path: "", only: [:confirmations],
+      devise_for :users, singular: :user, path: "", only: [:confirmations, :passwords],
         controllers: {
+          passwords: "api/v1/reset_passwords",
           confirmations: "api/v1/email_confirmations"
         },
         path_names: {
+          password: "reset_password",
           confirmation: "email_confirmation"
         }
 
