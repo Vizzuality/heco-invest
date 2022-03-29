@@ -3,7 +3,6 @@ services:
   backend:
     build: .
     command: test
-    env_file: .env
     environment:
       - DATABASE_NAME=heco-test
       - DATABASE_USER=heco-test
