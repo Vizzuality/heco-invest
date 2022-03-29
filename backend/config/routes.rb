@@ -4,20 +4,14 @@ Rails.application.routes.draw do
 
   get :health_check, to: ->(_env) { [204, {}, [""]] }
 
+  devise_for :users, path: "api/v1", skip: :all
+
   namespace :api, format: "json" do
     namespace :v1 do
-      devise_for :users, singular: :user, path: "", only: [:confirmations, :passwords],
-        controllers: {
-          passwords: "api/v1/reset_passwords",
-          confirmations: "api/v1/email_confirmations"
-        },
-        path_names: {
-          password: "reset_password",
-          confirmation: "email_confirmation"
-        }
-
       resource :session, only: [:create, :destroy]
       resource :user, only: [:create, :show]
+      resource :email_confirmation, only: [:create, :show]
+      resource :reset_password, only: [:create, :update]
 
       resources :investors, only: [:index, :show]
       resources :locations, only: [:index, :show]
