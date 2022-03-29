@@ -44,6 +44,33 @@ resource "google_cloudbuild_trigger" "build_trigger" {
     timeout = "1200s"
 
     step {
+      name = "gcr.io/${var.project_id}/docker-compose"
+      timeout = "1200s"
+      args = concat(
+        [
+          "build",
+          "-f", "docker-compose-test.yml",
+        ],
+        [for key, value in var.docker_build_args : "--build-arg ${key}=$_${key}"],
+        [
+          var.docker_context_path
+        ]
+      )
+    }
+
+    step {
+      name = "gcr.io/${var.project_id}/docker-compose"
+      timeout = "1200s"
+      args = concat(
+        [
+          "run",
+          "-f", "docker-compose-test.yml",
+          var.test_container_name
+        ]
+      )
+    }
+
+    step {
       name = "gcr.io/cloud-builders/docker"
       timeout = "1200s"
       args = concat(

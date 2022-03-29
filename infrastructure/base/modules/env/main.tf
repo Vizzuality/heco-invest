@@ -57,6 +57,7 @@ module "frontend_build" {
   docker_context_path    = "./frontend"
   docker_build_args      = local.frontend_docker_build_args
   cloud_run_service_name = "${var.project_name}-frontend"
+  test_container_name    = "frontend"
 }
 
 module "backend_build" {
@@ -73,6 +74,7 @@ module "backend_build" {
   docker_context_path    = "./backend"
   docker_build_args      = local.backend_docker_build_args
   cloud_run_service_name = "${var.project_name}-backend"
+  test_container_name    = "backend"
 }
 
 module "frontend_cloudrun" {
