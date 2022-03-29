@@ -34,7 +34,7 @@ export const Aside: FC<AsideProps> = ({ props = {} }: AsideProps) => {
     <aside
       {...omit(props, ['className', 'photo'])}
       className={cx({
-        'relative my-10 lg:my-0 lg:w-5/12': true,
+        'relative my-10 lg:my-0 lg:w-6/12 2xl:w-5/12': true,
         [className]: !!className,
       })}
     >
