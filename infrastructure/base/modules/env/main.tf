@@ -53,10 +53,10 @@ module "frontend_build" {
   github_org             = var.github_org
   github_project         = var.github_project
   image_name             = "frontend"
-  dockerfile_path        = "../frontend/Dockerfile"
-  docker_context_path    = "../frontend"
+  dockerfile_path        = "./frontend/Dockerfile"
+  docker_context_path    = "./frontend"
   docker_build_args      = local.frontend_docker_build_args
-  cloud_run_service_name = "frontend"
+  cloud_run_service_name = "${var.project_name}-frontend"
 }
 
 module "backend_build" {
@@ -69,10 +69,10 @@ module "backend_build" {
   github_org             = var.github_org
   github_project         = var.github_project
   image_name             = "backend"
-  dockerfile_path        = "../backend/Dockerfile"
-  docker_context_path    = "../backend"
+  dockerfile_path        = "./backend/Dockerfile"
+  docker_context_path    = "./backend"
   docker_build_args      = local.backend_docker_build_args
-  cloud_run_service_name = "backend"
+  cloud_run_service_name = "${var.project_name}-backend"
 }
 
 module "frontend_cloudrun" {
@@ -84,6 +84,7 @@ module "frontend_cloudrun" {
   container_port     = 3000
   start_command      = "start:prod"
   vpc_connector_name = module.network.vpc_access_connector_name
+  database           = module.database.database
   env_vars           = [
     {
       name  = "NEXT_PUBLIC_API_URL"
@@ -109,6 +110,7 @@ module "backend_cloudrun" {
   container_port     = 4000
   start_command      = "start"
   vpc_connector_name = module.network.vpc_access_connector_name
+  database           = module.database.database
   secrets            = [
     {
       name        = "SECRET_KEY_BASE"
@@ -132,19 +134,19 @@ module "backend_cloudrun" {
       value = module.database.database_host
     },
     {
-      name = "GCP_STORAGE_BUCKET"
+      name  = "GCP_STORAGE_BUCKET"
       value = module.backend_storage.bucket_name
     },
     {
-      name = "BACKEND_URL"
+      name  = "BACKEND_URL"
       value = "https://${var.domain}/backend"
     },
     {
-      name = "TEST_PUBSUB_TOPIC"
+      name  = "TEST_PUBSUB_TOPIC"
       value = module.test_pubsub.topic_name
     },
     {
-      name = "TEST_PUBSUB_SUBSCRIPTION"
+      name  = "TEST_PUBSUB_SUBSCRIPTION"
       value = module.test_pubsub.subscription_name
     }
   ]
@@ -170,10 +172,10 @@ module "database" {
 }
 
 module "test_pubsub" {
-  source = "../pubsub"
-  name              = "${var.project_name}-test"
-  project_id        = var.gcp_project_id
-  region            = var.gcp_region
+  source     = "../pubsub"
+  name       = "${var.project_name}-test"
+  project_id = var.gcp_project_id
+  region     = var.gcp_region
 }
 
 module "dns" {

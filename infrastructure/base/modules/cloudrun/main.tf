@@ -75,7 +75,7 @@ resource "google_cloud_run_service" "cloud_run" {
 
   autogenerate_revision_name = true
 
-  depends_on = [google_secret_manager_secret_iam_member.secret_access]
+  depends_on = [google_secret_manager_secret_iam_member.secret_access, var.database]
 }
 
 data "google_iam_policy" "noauth" {
