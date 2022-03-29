@@ -41,11 +41,11 @@ resource "google_cloudbuild_trigger" "build_trigger" {
   }
 
   build {
-    timeout = "3600s"
+    timeout = "6000s"
 
     step {
       name = "docker/compose:1.29.2"
-      timeout = "600s"
+      timeout = "1200s"
       args = concat(
         [
           "-f", "${var.docker_context_path}/docker-compose-test.yml",
