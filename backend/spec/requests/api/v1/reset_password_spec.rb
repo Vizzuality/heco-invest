@@ -23,6 +23,7 @@ RSpec.describe "API V1 Reset Password", type: :request do
 
         run_test!
 
+        # head ok so no generate example
         it "sends email" do
           mail = ActionMailer::Base.deliveries.last
           expect(mail.subject).to eq("Reset password instructions")
@@ -82,7 +83,7 @@ RSpec.describe "API V1 Reset Password", type: :request do
 
         run_test!
 
-        it "changes user password and signs in user" do
+        it "changes user password and signs in user", generate_swagger_example: true do
           user.reload
           expect(user.valid_password?("NewPassword1234")).to eq(true)
           expect(user.reset_password_token).to be_nil
@@ -104,7 +105,7 @@ RSpec.describe "API V1 Reset Password", type: :request do
         context "no token" do
           let(:params) { {} }
 
-          it "returns correct error", generate_swagger_example: true do
+          it "returns correct error" do
             expect(response_json["errors"][0]["title"]).to eq("Reset password token can't be blank")
           end
         end
@@ -117,7 +118,7 @@ RSpec.describe "API V1 Reset Password", type: :request do
           end
           let(:params) { {password: "NewPassword1234", reset_password_token: token} }
 
-          it "returns correct error", generate_swagger_example: true do
+          it "returns correct error" do
             expect(response_json["errors"][0]["title"]).to eq("Reset password token has expired, please request a new one")
           end
         end
@@ -128,7 +129,7 @@ RSpec.describe "API V1 Reset Password", type: :request do
           }
           let(:params) { {password: "secret", reset_password_token: token} }
 
-          it "returns correct error", generate_swagger_example: true do
+          it "returns correct error" do
             expect(response_json["errors"].map { |e| e["title"] }).to include(
               "Password must be at least 12 characters long",
               "Password must include at least one lowercase letter, one uppercase letter, and one digit"
