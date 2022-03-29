@@ -12,7 +12,7 @@ module "staging" {
   gcp_region           = var.gcp_region
   github_org           = var.github_org
   github_project       = var.github_project
-  github_branch        = "staging"
+  github_branch        = "develop"
   google_analytics_key = var.google_analytics_key
   project_name         = var.staging_project_name
   transifex_token      = var.transifex_token
