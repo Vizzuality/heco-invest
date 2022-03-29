@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 
-import { AlertTriangle } from 'react-feather';
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -10,6 +9,7 @@ import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import Alert from 'components/alert';
 import Checkbox from 'components/forms/checkbox';
 import Input from 'components/forms/input';
 import Loading from 'components/loading';
@@ -62,17 +62,14 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
       </p>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signUp.isError && (
-          <div className="flex mt-6 p-4.5 rounded-lg bg-red/10" role="alert">
-            <AlertTriangle className="w-5 h-5 text-red" aria-hidden="true" />
-            <p className="ml-2 font-sans text-sm leading-normal text-black">
-              {signUp.error.message || (
-                <FormattedMessage
-                  defaultMessage="Something went wrong while submitting your form."
-                  id="ylNQY0"
-                />
-              )}
-            </p>
-          </div>
+          <Alert className="mt-6">
+            {signUp.error.message || (
+              <FormattedMessage
+                defaultMessage="Something went wrong while submitting your form."
+                id="ylNQY0"
+              />
+            )}
+          </Alert>
         )}
         <div className="md:flex md:gap-4">
           <div className="w-full">
