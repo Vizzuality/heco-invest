@@ -84,7 +84,7 @@ export const Select = <FormValues extends FieldValues, T extends object>({
           'text-gray-900': state.selectedItem,
           'text-gray-400': !state.selectedItem,
           'border-green-dark': !invalid && state.isOpen,
-          'border-red-600': invalid,
+          'border-red-700': invalid,
         })}
       >
         <span {...valueProps}>

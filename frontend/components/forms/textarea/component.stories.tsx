@@ -94,7 +94,7 @@ const TemplateWithForm: Story<TextareaProps<FormValues>> = (args: TextareaProps<
       </label>
       <Textarea register={register} aria-describedby="form-error" {...args} />
       {errors.details?.message && (
-        <p id="form-error" className="pl-2 mt-1 text-xs text-red">
+        <p id="form-error" className="pl-2 mt-1 text-xs text-red-700">
           {errors.details?.message}
         </p>
       )}

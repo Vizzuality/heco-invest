@@ -18,7 +18,7 @@ export const Checkbox = <FormValues extends FieldValues>(props: CheckboxProps<Fo
       className={cx(
         'appearance-none inline-block w-4 h-4 mr-2 mt-0.5 px-0.5 py-[3px] border border-beige rounded hover:border hover:border-green-dark outline-none focus-visible:ring-green-dark focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white  checked:border-green-dark checked:bg-green-dark checked:bg-[url("/images/checkbox-checked.svg")] bg-no-repeat bg-center disabled:opacity-60 disabled:hover:border-beige transition',
         {
-          'invalid:border-red': invalid,
+          'invalid:border-red-700': invalid,
           [className]: !!className,
         }
       )}
