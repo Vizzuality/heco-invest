@@ -1,5 +1,6 @@
 For starters, we’ll need these:
 RAILS_ENV (I prefer to separate staging / production, but maybe that’s just an old habit no longer needed)
+RAILS_RELATIVE_URL_ROOT (if running backend application in sub url, like /backend)
 RACK_ENV
 RAILS_MAX_THREADS (say 10)
 SECRET_KEY_BASE (generated with rake secret)
