@@ -1,4 +1,8 @@
-variable "name" {
+variable "project_name" {
+  type = string
+}
+
+variable "deployment_name" {
   type = string
 }
 

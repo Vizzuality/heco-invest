@@ -29,8 +29,8 @@ resource "google_project_iam_member" "cloudrun_developer" {
 }
 
 resource "google_cloudbuild_trigger" "build_trigger" {
-  name        = "heco-${var.name}"
-  description = "Build ${var.name} Docker image"
+  name        = "${var.project_name}-${var.deployment_name}"
+  description = "Build ${var.project_name} ${var.deployment_name} Docker image"
 
   github {
     owner = var.github_org

@@ -27,6 +27,10 @@ variable "container_port" {
   description = "Port in which the running service is running"
 }
 
+variable "database" {
+  description = "The database object to use with depends_on"
+}
+
 variable "env_vars" {
   type = list(object({
     name = string
@@ -34,7 +38,6 @@ variable "env_vars" {
   }))
   description = "Key-value pairs of env vars to make available to the container"
   default = []
-
 }
 
 variable "secrets" {

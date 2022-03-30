@@ -5,7 +5,7 @@ import cx from 'classnames';
 import type { ArrowProps } from './types';
 
 export const Arrow: FC<ArrowProps> = (props: ArrowProps) => {
-  const { 'data-placement': placement } = props;
+  const { 'data-placement': placement, className } = props;
 
   return (
     <div
@@ -20,6 +20,7 @@ export const Arrow: FC<ArrowProps> = (props: ArrowProps) => {
       <div
         className={cx({
           'w-2 h-2 bg-white transform rotate-45': true,
+          [className]: !!className,
         })}
       />
     </div>

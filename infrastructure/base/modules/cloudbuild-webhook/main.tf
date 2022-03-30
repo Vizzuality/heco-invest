@@ -61,8 +61,8 @@ resource "google_secret_manager_secret_iam_policy" "policy" {
 
 
 resource "google_cloudbuild_trigger" "build_trigger" {
-  name = "heco-${var.name}"
-  description = "Build frontend Docker image"
+  name = "${var.project_name}-${var.deployment_name}"
+  description = "Build ${var.project_name} ${var.deployment_name} Docker image"
 
   webhook_config {
     secret = google_secret_manager_secret_version.webhook_trigger_secret_key_data.id

@@ -32,3 +32,13 @@ export type Mosaic =
   | 'Piedemonte Amazónico Macizo'
   | 'Heart of Amazonia'
   | 'Andean Amazonian Piedmont';
+
+export type InterestItem = { name: string; id: string; color?: string; infoText?: string };
+
+export type Interest = {
+  name: keyof ProjectDeveloperSetupForm;
+  title: string;
+  items: InterestItem[];
+  infoText?: string;
+  required?: boolean;
+};
