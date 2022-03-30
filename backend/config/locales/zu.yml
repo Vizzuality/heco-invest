@@ -3,7 +3,9 @@ zu:
     messages:
       password_length: must be at least %{count} characters long
       password_complexity: must include at least one lowercase letter, one uppercase letter, and one digit
-      user_multiple_accounts: User already have account!
+      user:
+        multiple_accounts: User already have account!
+        no_project_developer: User is not project developer!
   enums:
     category:
       sustainable-agrosystems:
