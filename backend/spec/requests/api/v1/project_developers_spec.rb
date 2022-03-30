@@ -26,7 +26,7 @@ RSpec.describe "API V1 Project Developers", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/project_developers", dynamic_attributes: %w[small medium original])
+          expect(response.body).to match_snapshot("api/v1/project_developers")
         end
 
         context "with sparse fieldset" do
@@ -59,14 +59,14 @@ RSpec.describe "API V1 Project Developers", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/get-project-developer", dynamic_attributes: %w[small medium original])
+          expect(response.body).to match_snapshot("api/v1/get-project-developer")
         end
 
         context "when slug is used" do
           let(:id) { @project_developer.account.slug }
 
           it "matches snapshot" do
-            expect(response.body).to match_snapshot("api/v1/get-project-developer", dynamic_attributes: %w[small medium original])
+            expect(response.body).to match_snapshot("api/v1/get-project-developer")
           end
         end
 
@@ -75,6 +75,17 @@ RSpec.describe "API V1 Project Developers", type: :request do
 
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/get-project-developer-sparse-fieldset")
+          end
+        end
+
+        context "with analyzed picture" do
+          before do |example|
+            ActiveStorage::AnalyzeJob.perform_now @project_developer.account.picture
+            submit_request example.metadata
+          end
+
+          it "contains picture" do
+            expect(response_json["data"]["attributes"]["picture"]["original"]).not_to be_nil
           end
         end
       end

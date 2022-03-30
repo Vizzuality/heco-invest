@@ -1,0 +1,50 @@
+{
+  "data": {
+    "id": "a1b546bc-0e07-4102-85b9-7f6c33ed1a31",
+    "type": "project_developer",
+    "attributes": {
+      "name": "Name",
+      "slug": "name",
+      "about": "About",
+      "website": "http://website.com",
+      "instagram": "http://instagram.com",
+      "facebook": "http://facebook.com",
+      "linkedin": "http://linkedin.com",
+      "twitter": "http://twitter.com",
+      "mission": "Mision",
+      "project_developer_type": "TBD",
+      "categories": [
+        "sustainable-agrosystems",
+        "tourism-and-recreation"
+      ],
+      "impacts": [
+        "biodiversity",
+        "climate"
+      ],
+      "language": "en",
+      "entity_legal_registration_number": "564823570",
+      "review_status": "unapproved",
+      "picture": {
+        "small": null,
+        "medium": null,
+        "original": null
+      }
+    },
+    "relationships": {
+      "owner": {
+        "data": {
+          "id": "0df20abe-df39-4b9f-9bc0-612509f29188",
+          "type": "user"
+        }
+      },
+      "locations": {
+        "data": [
+          {
+            "id": "ee9c7f56-552d-4313-9bcd-e1fc08be69bc",
+            "type": "location"
+          }
+        ]
+      }
+    }
+  }
+}

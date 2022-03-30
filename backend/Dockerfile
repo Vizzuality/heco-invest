@@ -3,9 +3,6 @@ FROM ruby:3.1.0-alpine3.15
 ENV BUNDLER_VERSION 2.3.3
 ENV RAILS_ENV production
 
-ARG TRANSIFEX_TOKEN
-ENV TX_TOKEN $TRANSIFEX_TOKEN
-
 # Install dependencies
 RUN apk update && \
     apk upgrade && \
@@ -16,6 +13,7 @@ RUN apk update && \
       git \
       tzdata \
       postgresql-dev \
+      imagemagick \
     && rm -rf /var/cache/apk/*
 
 RUN echo 'gem: -N' >> ~/.gemrc
@@ -34,9 +32,7 @@ RUN bundle install --jobs 20 --retry 5
 COPY . /usr/src/app
 
 RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
-RUN ./tx pull
 
 EXPOSE 3000
 
 ENTRYPOINT ["./entrypoint.sh"]
-

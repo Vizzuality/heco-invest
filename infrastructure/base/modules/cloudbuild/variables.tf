@@ -56,3 +56,8 @@ variable "cloud_run_service_name" {
   description = "The name of the Cloud Run service"
   type = string
 }
+
+variable "test_container_name" {
+  description = "The name of the test container to run"
+  type = string
+}
