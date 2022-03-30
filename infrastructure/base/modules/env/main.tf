@@ -144,6 +144,10 @@ module "backend_cloudrun" {
       value = "https://${var.domain}/backend"
     },
     {
+      name  = "RAILS_RELATIVE_URL_ROOT"
+      value = "/backend"
+    },
+    {
       name  = "TEST_PUBSUB_TOPIC"
       value = module.test_pubsub.topic_name
     },
