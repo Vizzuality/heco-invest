@@ -4,7 +4,7 @@ class Project < ApplicationRecord
 
   belongs_to :project_developer
 
-  enum status: {draft: 1, published: 2, closed: 3}, _default: :draft
+  enum status: {draft: 0, published: 1, closed: 2}, _default: :draft
 
   validates :categories, array_inclusion: {in: Category::TYPES}, presence: true
   validates :instrument_types, array_inclusion: {in: InstrumentType::TYPES}, presence: true
