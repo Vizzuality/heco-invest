@@ -52,38 +52,4 @@ RSpec.describe Account, type: :model do
       expect(subject).to have(1).errors_on(link_type)
     end
   end
-
-  describe "#validate_image" do
-    context "when picture is already validated" do
-      before do
-        subject.picture.blob.update! validated: true
-      end
-
-      it "does not create background job to validate image" do
-        expect {
-          subject.update! name: "NEW ACCOUNT NAME"
-        }.not_to have_enqueued_job(ActiveStorage::ValidateImageJob)
-      end
-    end
-
-    context "when picture is not validated yet" do
-      context "when image is tempfile" do
-        it "creates background job to validate image" do
-          expect {
-            subject.update! picture: fixture_file_upload("picture.jpg")
-          }.to have_enqueued_job ActiveStorage::ValidateImageJob
-        end
-      end
-
-      context "when image is signed id" do
-        let(:blob) { ActiveStorage::Blob.create_and_upload! io: fixture_file_upload("picture.jpg"), filename: "test" }
-
-        it "creates background job to validate image" do
-          expect {
-            subject.update! picture: blob.signed_id
-          }.to have_enqueued_job ActiveStorage::ValidateImageJob
-        end
-      end
-    end
-  end
 end

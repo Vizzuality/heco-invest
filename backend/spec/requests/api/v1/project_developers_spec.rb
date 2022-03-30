@@ -78,9 +78,9 @@ RSpec.describe "API V1 Project Developers", type: :request do
           end
         end
 
-        context "with validated picture" do
+        context "with analyzed picture" do
           before do |example|
-            @project_developer.account.picture.blob.update! validated: true
+            ActiveStorage::AnalyzeJob.perform_now @project_developer.account.picture
             submit_request example.metadata
           end
 

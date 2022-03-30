@@ -23,16 +23,8 @@ class Account < ApplicationRecord
   validates :language, inclusion: {in: Language::TYPES}
   validates :picture, attached: true, content_type: /\Aimage\/.*\z/
 
-  after_save :validate_image, unless: ->(account) { account.picture.blob.validated? }
-
   def slug_preview
     set_slug unless slug.present?
     slug
-  end
-
-  private
-
-  def validate_image
-    ActiveStorage::ValidateImageJob.perform_later picture.blob
   end
 end
