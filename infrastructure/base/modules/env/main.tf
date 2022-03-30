@@ -33,13 +33,18 @@ module "postgres_application_user_password" {
   use_random_value = true
 }
 
+module "transifex_api_key" {
+  source           = "../secret_value"
+  region           = var.gcp_region
+  key              = "${var.project_name}_transifex_api_key"
+  value            = var.transifex_token
+  use_random_value = false
+}
+
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN = var.transifex_token
     NEXTAUTH_URL    = "https://${var.domain}"
-  }
-  backend_docker_build_args = {
-    TRANSIFEX_TOKEN = var.transifex_token
   }
 }
 
@@ -72,7 +77,6 @@ module "backend_build" {
   image_name             = "backend"
   dockerfile_path        = "./backend/Dockerfile"
   docker_context_path    = "./backend"
-  docker_build_args      = local.backend_docker_build_args
   cloud_run_service_name = "${var.project_name}-backend"
   test_container_name    = "backend"
 }
@@ -120,6 +124,9 @@ module "backend_cloudrun" {
     }, {
       name        = "DATABASE_PASSWORD"
       secret_name = module.postgres_application_user_password.secret_name
+    }, {
+      name        = "TX_TOKEN"
+      secret_name = module.transifex_api_key.secret_name
     }
   ]
   env_vars = [
