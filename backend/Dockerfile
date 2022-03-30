@@ -35,9 +35,8 @@ RUN bundle install --jobs 20 --retry 5
 COPY . /usr/src/app
 
 RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
-RUN ./tx pull
+RUN ./tx pull -m onlytranslated
 
 EXPOSE 3000
 
 ENTRYPOINT ["./entrypoint.sh"]
-
