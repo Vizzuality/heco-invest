@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
-import noop from 'lodash-es';
+import { noop } from 'lodash-es';
 
 import AccountTypeItem, { AccountTypeItemProps } from './account-type-item';
 import { AccountTypeSelectorProps } from './types';
@@ -26,8 +26,8 @@ export const AccountTypeSelector: FC<AccountTypeSelectorProps> = ({
         }),
         imageSrc: '/images/account-types/investor.svg',
         imageTitle: intl.formatMessage({
-          defaultMessage: 'Drawing of a person looking at a list of card',
-          id: 'vqeK8j',
+          defaultMessage: 'Illustration of a person looking at a list of cards',
+          id: 'n0nU+Y',
         }),
       },
       {
@@ -39,8 +39,8 @@ export const AccountTypeSelector: FC<AccountTypeSelectorProps> = ({
         }),
         imageSrc: '/images/account-types/project-developer.svg',
         imageTitle: intl.formatMessage({
-          defaultMessage: 'Drawing of a person looking at tree',
-          id: 'QTsX3C',
+          defaultMessage: 'Illustration of a person looking at a tree',
+          id: '7xE2Vv',
         }),
       },
     ],
