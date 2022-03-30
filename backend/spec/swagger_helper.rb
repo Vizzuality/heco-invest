@@ -342,6 +342,9 @@ RSpec.configure do |config|
       },
       servers: [
         {
+          url: "/backend"
+        },
+        {
           url: "{scheme}://{host}",
           variables: {
             scheme: {
