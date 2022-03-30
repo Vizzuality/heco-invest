@@ -32,6 +32,9 @@ gem "bootsnap", require: false
 
 gem "google-cloud-storage", "~> 1.11", require: false
 
+# waiting for sendgrid
+gem "letter_opener_web"
+
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "factory_bot_rails"
@@ -45,7 +48,6 @@ group :development do
 
   gem "brakeman", require: false
   gem "bundler-audit", require: false
-  gem "letter_opener_web"
   gem "rubocop"
   gem "rubocop-performance"
   gem "web-console"
