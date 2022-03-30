@@ -2,6 +2,10 @@
 set -e
 
 case "$1" in
+    test)
+        echo "Running test"
+        exec yarn test
+        ;;
     develop)
         echo "Running web application in development mode"
         exec yarn dev
@@ -15,7 +19,7 @@ case "$1" in
         exec yarn start
         ;;
     *)
-        echo "Usage: entrypoint.sh {develop|build|start:prod}" >&2
+        echo "Usage: entrypoint.sh {test|develop|build|start:prod}" >&2
         exit 1
         ;;
 esac
