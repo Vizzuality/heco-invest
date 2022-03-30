@@ -153,16 +153,27 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           expect(response.body).to match_snapshot("api/v1/project-developer-update", dynamic_attributes: %w[small medium original])
         end
 
-        context "when picture is empty" do
+        context "when updating just some attributes" do
           let(:project_developer_params) do
             {
-              picture: "",
               name: "Updated Name"
             }
           end
 
           it "allows to update project developer name" do
             expect(response_json["data"]["attributes"]["name"]).to eq("Updated Name")
+          end
+        end
+
+        context "when trying to update language" do
+          let(:project_developer_params) do
+            {
+              language: "pt"
+            }
+          end
+
+          it "keeps old language" do
+            expect(response_json["data"]["attributes"]["language"]).to eq("en")
           end
         end
       end

@@ -3,6 +3,7 @@ module API
     module Accounts
       class ProjectDevelopersController < BaseController
         skip_before_action :require_json!, only: %i[create update]
+        before_action :require_project_developer!, except: :create
 
         def create
           current_user.with_lock do
@@ -16,10 +17,6 @@ module API
         end
 
         def update
-          if current_user.role.to_sym != :project_developer
-            raise API::UnprocessableEntityError, I18n.t("errors.messages.user.no_project_developer")
-          end
-
           current_user.account.update! account_params.except(:language)
           current_user.account.project_developer.update! project_developer_params.except(:language)
           render json: ProjectDeveloperSerializer.new(current_user.account.project_developer).serializable_hash
@@ -27,11 +24,15 @@ module API
 
         private
 
+        def require_project_developer!
+          return if current_user.project_developer?
+
+          raise API::UnprocessableEntityError, I18n.t("errors.messages.user.no_project_developer")
+        end
+
         def account_params
-          data = params.fetch(:project_developer_params, params)
+          params.fetch(:project_developer_params, params)
             .permit :language, :picture, :name, :website, :linkedin, :facebook, :twitter, :instagram, :about
-          data = data.except(:picture) if data[:picture].blank?
-          data
         end
 
         def project_developer_params
