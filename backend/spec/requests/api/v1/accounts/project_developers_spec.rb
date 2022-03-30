@@ -64,7 +64,7 @@ RSpec.describe "API V1 User Project Developers", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/create-project-developer", dynamic_attributes: %w[small medium original])
+          expect(response.body).to match_snapshot("api/v1/create-project-developer")
         end
       end
 

@@ -193,6 +193,7 @@ GEM
     marcel (1.0.2)
     memoist (0.16.2)
     method_source (1.0.0)
+    mini_magick (4.11.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
     msgpack (1.4.5)
@@ -407,6 +408,7 @@ DEPENDENCIES
   jsbundling-rails
   jsonapi-serializer
   letter_opener_web
+  mini_magick
   pagy
   pg (~> 1.1)
   puma (~> 5.0)
