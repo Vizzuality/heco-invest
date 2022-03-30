@@ -86,6 +86,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
       create.mutate(data, {
         onError: (error) => {
           setHasErrors(true);
+          // handle service errors
         },
         onSuccess: () => {
           setHasErrors(false);
@@ -109,7 +110,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
 
   const handleNextClick = async () => {
     await handleSubmit(onSubmit, onError)();
-    console.log(getValues());
     if (!errors) {
       setCurrentPage(currentPage + 1);
     }
@@ -126,7 +126,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
 
   const handleUploadImage = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.files?.length) {
-      console.log(e.currentTarget.value);
       const file = e.currentTarget.files[0];
       const src = URL.createObjectURL(file);
       const reader = new FileReader();
@@ -342,10 +341,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   <Combobox
                     control={control}
                     controlOptions={{ disabled: false }}
+                    aria-required
                     name="projectDeveloperType"
                     id="project-developer-type"
                     className="mt-2.5 w-full h-10 border border-beige rounded-lg px-4"
-                    {...register('projectDeveloperType')}
                     placeholder={formatMessage({
                       defaultMessage: 'select the project developer type',
                       id: 'N9+9Fi',
@@ -406,6 +405,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   className="mt-2.5"
                   id="about"
                   register={register}
+                  aria-required
                   placeholder={formatMessage({
                     defaultMessage: 'insert your answer (max 500 characters)',
                     id: 'rBoq14',
@@ -422,6 +422,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   name="mission"
                   className="mt-2.5"
                   id="mission"
+                  aria-required
                   register={register}
                   placeholder={formatMessage({
                     defaultMessage: 'insert your answer (max 500 characters)',

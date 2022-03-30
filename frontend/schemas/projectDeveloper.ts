@@ -76,8 +76,8 @@ export default (page: number) => {
 
   const thirdPageSchema = object().shape({
     categories: array().of(string()).min(1, messages.categories),
-    mosaics: array().of(string()),
     impacts: array().of(string()).min(1, messages.impacts),
+    mosaics: array().of(string()),
   });
 
   return [firstPageSchema, secondPageSchema, thirdPageSchema][page];
