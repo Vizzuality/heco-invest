@@ -8,7 +8,7 @@ module Blobs
     end
 
     def call
-      return if original_blob.blank?
+      return if original_blob.blank? || !validated?
 
       Rails.application.routes.url_helpers.url_for modify(original_blob)
     end
@@ -17,6 +17,10 @@ module Blobs
 
     def modify(original_blob)
       options.present? ? original_blob.variant(options) : original_blob
+    end
+
+    def validated?
+      original_blob.analyzed? && original_blob.metadata[:width] && original_blob.metadata[:height]
     end
   end
 end
