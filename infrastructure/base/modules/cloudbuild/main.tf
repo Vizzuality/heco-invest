@@ -29,8 +29,8 @@ resource "google_project_iam_member" "cloudrun_developer" {
 }
 
 resource "google_cloudbuild_trigger" "build_trigger" {
-  name        = "heco-${var.name}"
-  description = "Build ${var.name} Docker image"
+  name        = "${var.project_name}-${var.deployment_name}"
+  description = "Build ${var.project_name} ${var.deployment_name} Docker image"
 
   github {
     owner = var.github_org
@@ -41,7 +41,23 @@ resource "google_cloudbuild_trigger" "build_trigger" {
   }
 
   build {
-    timeout = "1200s"
+    timeout = "6000s"
+
+    step {
+      name = "docker/compose:1.29.2"
+      timeout = "1200s"
+      args = concat(
+        [
+          "-f", "${var.docker_context_path}/docker-compose-test.yml",
+          "up",
+          "--build",
+          "--exit-code-from",
+          var.test_container_name,
+          var.test_container_name
+        ]
+      )
+      env = [for key, value in var.docker_build_args : "${key}=${value}"]
+    }
 
     step {
       name = "gcr.io/cloud-builders/docker"

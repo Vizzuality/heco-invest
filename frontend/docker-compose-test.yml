@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  frontend:
+    build:
+      context: .
+      args:
+        - TRANSIFEX_TOKEN=${TRANSIFEX_TOKEN}
+    command: test

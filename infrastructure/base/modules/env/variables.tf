@@ -8,14 +8,14 @@ variable "github_project" {
   description = "Github project name"
 }
 
-variable "staging_project_name" {
+variable "github_branch" {
   type        = string
-  description = "Name of the staging project"
+  description = "Github project branch"
 }
 
-variable "production_project_name" {
+variable "project_name" {
   type        = string
-  description = "Name of the production project"
+  description = "Name of the project"
 }
 
 # define GCP region
@@ -24,16 +24,16 @@ variable "gcp_region" {
   description = "GCP region"
 }
 
-# define GCP zone
-variable "gcp_zone" {
-  type        = string
-  description = "GCP zone"
-}
-
 # define GCP project id
 variable "gcp_project_id" {
   type        = string
   description = "GCP project id"
+}
+
+variable "tf_state_prefix" {
+  type        = string
+  default     = "state"
+  description = "The prefix for the TF state in the Google Storage Bucket"
 }
 
 variable "transifex_token" {
