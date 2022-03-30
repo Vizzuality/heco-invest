@@ -490,7 +490,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                           })}
                           {...register(name)}
                           id={item.id}
-                          required={required}
                           name={name}
                           type="checkbox"
                           value={item.id}
