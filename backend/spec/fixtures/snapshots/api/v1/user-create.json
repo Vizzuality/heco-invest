@@ -7,7 +7,7 @@
       "last_name": "Kowalski",
       "email": "jankowalski@example.com",
       "role": "light",
-      "confirmed": false
+      "confirmed": true
     }
   }
 }
