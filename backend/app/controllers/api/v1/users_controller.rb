@@ -4,7 +4,10 @@ module API
       before_action :authenticate_user!, only: [:show]
 
       def create
-        user = User.create!(user_params)
+        user = User.new(user_params)
+        user.skip_confirmation!
+        user.save!
+        sign_in user
         render json: UserSerializer.new(user)
       end
 
