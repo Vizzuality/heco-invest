@@ -11,8 +11,14 @@ import LayoutContainer from 'components/layout-container';
 
 import { FooterProps } from './types';
 
-export const Footer: React.FC<FooterProps> = ({ props = {} }: FooterProps) => {
+export const Footer: React.FC<FooterProps> = ({
+  props = {
+    hidden: false,
+  },
+}: FooterProps) => {
   const intl = useIntl();
+
+  if (props.hidden) return null;
 
   return (
     <footer

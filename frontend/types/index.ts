@@ -16,3 +16,9 @@ export type PageComponent<PageProps = {}, LayoutProps = {}> = React.FC<PageProps
  * Type for Language
  */
 export type LanguageType = `${Languages}`;
+
+/**
+ * Type for Account Type
+ */
+
+export type AccountType = 'investor' | 'project-developer';
