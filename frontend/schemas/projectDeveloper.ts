@@ -54,13 +54,12 @@ export default (page: number) => {
   });
 
   const secondPageSchema = object().shape({
-    picture: string()
-      .ensure()
-      // .matches(base64Regex, { message: messages.picture.format })
-      .required(messages.picture.required),
+    picture: string().ensure(),
+    // .matches(base64Regex, { message: messages.picture.format })
+    // .required(messages.picture.required),
     profile: string().required(messages.profile),
-    projectDeveloperType: string().required(messages.projectDeveloperType),
-    entityLegalRegistrationNumber: number()
+    project_developer_type: string().required(messages.projectDeveloperType),
+    entity_legal_registration_number: number()
       .typeError(messages.entityLegalRegistrationNumber.invalidFormat)
       .min(Math.pow(10, 9), messages.entityLegalRegistrationNumber.invalidFormat)
       .max(Math.pow(10, 12), messages.entityLegalRegistrationNumber.invalidFormat)

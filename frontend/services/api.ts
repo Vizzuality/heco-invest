@@ -26,6 +26,9 @@ const onResponseError = (error) => {
   if (error.response.status === 401) {
     signOut();
   }
+  if (error.response.data?.errors?.length > 0) {
+    return Promise.reject(new Error(error.response.data.errors[0].title));
+  }
   // Do something with response error
   return Promise.reject(error);
 };

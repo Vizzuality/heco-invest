@@ -2,30 +2,28 @@ import { ChangeEvent, useState, useCallback } from 'react';
 
 import { SubmitErrorHandler, SubmitHandler, useForm, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useMutation } from 'react-query';
 
 import cx from 'classnames';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
-import { languages, onlinePresence } from 'helpers/projectDevelopersConstants';
 
-import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
+import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 
-import Button from 'components/button';
 import Combobox, { Option } from 'components/forms/combobox';
-import ErrorMessage from 'components/forms/errorMessage/component';
+import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/fieldInfo';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
+import SocialMediaImputs from 'components/forms/social-media-inputs/component';
 import TextArea from 'components/forms/textarea';
 import Head from 'components/head';
 import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
+import languages from 'locales.config.json';
 import categories from 'mockups/categories.json';
 import impacts from 'mockups/impacts.json';
 import mosaics from 'mockups/mosaics.json';
@@ -42,7 +40,7 @@ import {
 } from 'types/projectDeveloper';
 import useProjectDeveloperValidation, { formPageInputs } from 'validations/projectDeveloper';
 
-import { createProjectDeveloper } from 'services/projectDeveloper';
+import { useCreateProjectDeveloper } from 'services/account';
 
 export async function getStaticProps(ctx) {
   return {
@@ -54,15 +52,28 @@ export async function getStaticProps(ctx) {
 
 type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
+const getItemsInfoText = (items: InterestItem[]) => {
+  return (
+    <ul>
+      {items.map(({ name, infoText }) => (
+        <li key={name}>
+          <p className="font-sans text-sm font-semibold text-white">{name}</p>
+          <p className="mb-4 font-sans text-sm font-normal text-white">{infoText}</p>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [imagePreview, setImagePreview] = useState('');
   const [imageBase64, setImageBase64] = useState('');
   const [hasErrors, setHasErrors] = useState(false);
-  const [isFormComplete, setIsFormComplete] = useState(false);
   const { formatMessage } = useIntl();
   const resolver = useProjectDeveloperValidation(currentPage);
   const { push } = useRouter();
+  const createProjectDeveloper = useCreateProjectDeveloper();
   const {
     register,
     handleSubmit,
@@ -70,30 +81,26 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     setValue,
     trigger,
     control,
-    getValues,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
-    defaultValues: { language: '', picture: '', categories: [], impacts: [], mosaics: [] },
+    defaultValues: { picture: '', categories: [], impacts: [], mosaics: [] },
     shouldUseNativeValidation: true,
     shouldFocusError: true,
     reValidateMode: 'onChange',
   });
 
-  const create = useMutation(createProjectDeveloper);
-
   const handleCreate = useCallback(
     (data: ProjectDeveloperSetupForm) =>
-      create.mutate(data, {
+      createProjectDeveloper.mutate(data, {
         onError: (error) => {
           setHasErrors(true);
           // handle service errors
         },
         onSuccess: () => {
-          setHasErrors(false);
-          setIsFormComplete(true);
+          push('/project-developer/pending');
         },
       }),
-    [create]
+    [createProjectDeveloper, push]
   );
 
   const onSubmit: SubmitHandler<ProjectDeveloperSetupForm> = (values) => {
@@ -131,8 +138,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-        // setValue('picture', reader.result.toString(), { shouldValidate: true });
         setImageBase64(reader.result.toString());
+        // send image to api
         setImagePreview(src);
       };
     }
@@ -173,19 +180,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     },
   ];
 
-  const getItemsInfoText = (items: InterestItem[]) => {
-    return (
-      <ul>
-        {items.map(({ name, infoText }) => (
-          <li key={name}>
-            <p className="font-sans text-sm font-semibold text-white">{name}</p>
-            <p className="mb-4 font-sans text-sm font-normal text-white">{infoText}</p>
-          </li>
-        ))}
-      </ul>
-    );
-  };
-
   return (
     <>
       <Head
@@ -195,29 +189,24 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
         layout="narrow"
         title={formatMessage({ defaultMessage: 'Setup project developer’s account', id: 'bhxvPM' })}
         autoNavigation={false}
-        outroButtonText={formatMessage({
-          defaultMessage: 'See my profile',
-          id: 'TH786p',
-        })}
         page={currentPage}
         alert={
           hasErrors
-            ? formatMessage({
+            ? createProjectDeveloper.error.message ||
+              formatMessage({
                 defaultMessage:
                   'Something went wrong while submitting your form. Please correct the errors before submitting again.',
                 id: 'WTuVeL',
               })
             : null
         }
-        isSubmitting={create.isLoading}
-        showOutro={isFormComplete}
+        isSubmitting={createProjectDeveloper.isLoading}
+        showOutro={false}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
-        // onPageClick={handlePageClick}
         onCloseClick={() => push('/')}
         onSubmitClick={handleSubmit(onSubmit, onError)}
-        // onCompleteClick={handleCompleteClick}
       >
         <Page hasErrors={!!errors?.language}>
           <form className="flex flex-col justify-between" noValidate>
@@ -231,26 +220,25 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               />
             </p>
             <div className="flex justify-center mt-2 gap-x-6">
-              {languages.map((lang) => {
-                const { name, code, nativeName } = lang;
+              {languages.locales.map((lang) => {
+                const { name, locale } = lang;
                 return (
                   <Label
-                    key={code}
-                    htmlFor={code}
+                    key={locale}
+                    htmlFor={locale}
                     className="justify-center block w-full text-center border rounded-lg py-7 border-beige"
                   >
                     <input
                       // className="appearance-none"
                       name={name}
                       required
-                      id={code}
+                      id={locale}
                       type="radio"
-                      value={code}
+                      value={locale}
                       {...register('language')}
                       aria-describedby="language-error"
                     />
                     <span className="block">{name}</span>
-                    <span>({nativeName})</span>
                   </Label>
                 );
               })}
@@ -315,8 +303,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               </div>
               <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
             </div>
-            <div className="flex gap-x-6 mb-6.5">
-              <div className="md:w-1/2">
+            <div className="md:flex gap-x-6 mb-6.5">
+              <div className="md:w-1/2 mb-6.5 md:m-0">
                 <Label htmlFor="profile">
                   <FormattedMessage defaultMessage="Profile name" id="s+n2ku" />
                   <Input
@@ -342,7 +330,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     control={control}
                     controlOptions={{ disabled: false }}
                     aria-required
-                    name="projectDeveloperType"
+                    name="project_developer_type"
                     id="project-developer-type"
                     className="mt-2.5 w-full h-10 border border-beige rounded-lg px-4"
                     placeholder={formatMessage({
@@ -358,7 +346,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   </Combobox>
                 </Label>
                 <ErrorMessage
-                  errorText={errors?.projectDeveloperType?.message}
+                  errorText={errors?.project_developer_type?.message}
                   id="project-developer-type-error"
                 />
               </div>
@@ -384,7 +372,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   className="mt-2.5"
                   register={register}
                   aria-required
-                  name="entityLegalRegistrationNumber"
+                  name="entity_legal_registration_number"
                   placeholder={formatMessage({
                     defaultMessage: 'insert the number',
                     id: 'tS6cAK',
@@ -394,7 +382,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               </Label>
               <ErrorMessage
                 id="entity-legal-registration-error"
-                errorText={errors?.entityLegalRegistrationNumber?.message}
+                errorText={errors?.entity_legal_registration_number?.message}
               />
             </div>
             <div className="mb-6.5">
@@ -437,27 +425,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
                 <FormattedMessage defaultMessage="Online presence" id="NjKSap" />
               </p>
-              <div className="grid w-full grid-cols-2 gap-x-6">
-                {onlinePresence.map((item: keyof ProjectDeveloperSetupFormOnline) => (
-                  <div key={item}>
-                    <Label htmlFor={item}>
-                      {item} (<FormattedMessage defaultMessage="optional" id="V4KNjk" />)
-                      <Input
-                        className="mt-2.5 mb-4.5"
-                        name={item}
-                        id={item}
-                        type="text"
-                        register={register}
-                        placeholder={formatMessage({
-                          defaultMessage: 'insert URL',
-                          id: 'et2m37',
-                        })}
-                      />
-                    </Label>
-                  </div>
-                ))}
-              </div>
             </div>
+            <SocialMediaImputs register={register} />
           </form>
         </Page>
         <Page hasErrors={getPageErrors(2)}>
@@ -522,47 +491,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
             ))}
           </form>
         </Page>
-        <OutroPage>
-          <div className="flex flex-col items-center max-w-xl m-auto text-center">
-            <Image
-              width={178}
-              height={178}
-              aria-hidden="true"
-              src="/images/pending-approval.png"
-              alt=""
-            />
-            <h1 className="mt-6 font-serif text-3xl font-semibold text-green-dark">
-              <FormattedMessage defaultMessage="Pending approval" id="/CaREm" />
-            </h1>
-            <p className="my-6">
-              <FormattedMessage
-                defaultMessage="Your account was successfully created, but you steel need to be approved by our platform administrators."
-                id="rR0tQV"
-              />
-            </p>
-            <p>
-              <FormattedMessage
-                defaultMessage="Until approval you can continue exploring our database."
-                id="adPUXO"
-              />
-            </p>
-            <Button className="mt-6 mb-12">
-              <FormattedMessage defaultMessage="Explore" id="7JlauX" />
-            </Button>
-            <Link href="/FAQ#profile" passHref>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-sans text-gray-600 underline"
-              >
-                <FormattedMessage
-                  defaultMessage="Why is my profile pending approval?"
-                  id="Ftj+/t"
-                />
-              </a>
-            </Link>
-          </div>
-        </OutroPage>
       </MultiPageLayout>
     </>
   );

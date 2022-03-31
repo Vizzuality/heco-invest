@@ -9,24 +9,36 @@ export type ProjectDeveloperSetupFormOnline = {
 export type ProjectDeveloperSetupForm = ProjectDeveloperSetupFormOnline & {
   picture: string;
   profile: string;
-  projectDeveloperType: string;
-  entityLegalRegistrationNumber: string;
+  project_developer_type: string;
+  entity_legal_registration_number: string;
   about: string;
   mission: string;
   categories: Category[];
   mosaics?: Mosaic[];
   impacts: Impact[];
-  language: string;
+  language: Language;
 };
 
-export type Category =
-  | 'sustainable_agrosystems'
-  | 'tourism_and_recreation'
-  | 'forestry_and_agroforestry'
-  | 'non_timber_forest_production'
-  | 'human_capital_and_inclusion';
+export enum Language {
+  'en',
+  'es',
+  'pt',
+}
 
-export type Impact = 'biodiversity' | 'climate' | 'water' | 'community';
+export enum Category {
+  'sustainable-agrosystems',
+  'tourism-and-recreation',
+  'forestry-and-agroforestry',
+  'non-timber-forest-production',
+  'human-capital-and-inclusion',
+}
+
+export enum Impact {
+  'biodiversity',
+  'climate',
+  'water',
+  'community',
+}
 
 export type Mosaic =
   | 'Piedemonte Amazónico Macizo'

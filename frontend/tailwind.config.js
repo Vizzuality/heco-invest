@@ -86,9 +86,6 @@ module.exports = {
         width: 'width',
       },
     },
-    minWidth: {
-      max: 'max-content',
-    },
   },
   plugins: [],
 };

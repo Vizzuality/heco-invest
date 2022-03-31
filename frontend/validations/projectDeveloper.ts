@@ -11,8 +11,8 @@ export const formPageInputs = [
   [
     'picture',
     'profile',
-    'projectDeveloperType',
-    'entityLegalRegistrationNumber',
+    'project-developer-type',
+    'entity-legal-registration-number',
     'about',
     'mission',
     'website',
