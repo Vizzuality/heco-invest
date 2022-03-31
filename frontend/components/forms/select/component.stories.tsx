@@ -169,7 +169,7 @@ const TemplateWithForm: Story<SelectProps<FormValues, {}>> = (
         ))}
       </Select>
       {errors.sdg?.message && (
-        <p id="form-error" className="pl-2 mt-1 text-xs text-red">
+        <p id="form-error" className="pl-2 mt-1 text-xs text-red-700">
           {errors.sdg?.message}
         </p>
       )}

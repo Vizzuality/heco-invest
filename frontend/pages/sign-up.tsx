@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 
-import { AlertTriangle } from 'react-feather';
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -10,10 +9,12 @@ import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import Alert from 'components/alert';
 import Checkbox from 'components/forms/checkbox';
+import FieldError from 'components/forms/field-error';
 import Input from 'components/forms/input';
 import Loading from 'components/loading';
-import { StaticPageLayoutProps } from 'layouts/static-page';
+import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
 import { SignupDto, SignupFormI } from 'types/signup';
 import { useSignupResolver } from 'validations/signup';
@@ -30,7 +31,7 @@ export async function getStaticProps(ctx) {
 
 type AboutPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
+const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
   const { locale } = useRouter();
   const intl = useIntl();
   const signUp = useSignup();
@@ -53,7 +54,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
   };
 
   return (
-    <div className="w-full h-screen max-w-xl px-4 m-auto">
+    <div>
       <h1 className="mb-2.5 font-serif text-4xl font-semibold text-green-dark">
         <FormattedMessage defaultMessage="Sign up" id="8HJxXG" />
       </h1>
@@ -62,17 +63,14 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
       </p>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signUp.isError && (
-          <div className="flex mt-6 p-4.5 rounded-lg bg-red/10" role="alert">
-            <AlertTriangle className="w-5 h-5 text-red" aria-hidden="true" />
-            <p className="ml-2 font-sans text-sm leading-normal text-black">
-              {signUp.error.message || (
-                <FormattedMessage
-                  defaultMessage="Something went wrong while submitting your form."
-                  id="ylNQY0"
-                />
-              )}
-            </p>
-          </div>
+          <Alert className="mt-6">
+            {signUp.error.message || (
+              <FormattedMessage
+                defaultMessage="Something went wrong while submitting your form."
+                id="ylNQY0"
+              />
+            )}
+          </Alert>
         )}
         <div className="md:flex md:gap-4">
           <div className="w-full">
@@ -93,12 +91,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               />
             </label>
             {errors.firstName && (
-              <p
-                id="first-name-error"
-                className="mt-1 ml-2 font-sans text-xs text-red font-regular"
-              >
-                {errors.firstName.message}
-              </p>
+              <FieldError id="first-name-error">{errors.firstName.message}</FieldError>
             )}
           </div>
           <div className="w-full">
@@ -119,9 +112,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               />
             </label>
             {errors.lastName && (
-              <p id="last-name-error" className="mt-1 ml-2 font-sans text-xs text-red font-regular">
-                {errors.lastName.message}
-              </p>
+              <FieldError id="last-name-error">{errors.lastName.message}</FieldError>
             )}
           </div>
         </div>
@@ -142,11 +133,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               register={register}
             />
           </label>
-          {errors.email && (
-            <p id="email-error" className="mt-1 ml-2 font-sans text-xs text-red font-regular">
-              {errors.email.message}
-            </p>
-          )}
+          {errors.email && <FieldError id="email-error">{errors.email.message}</FieldError>}
         </div>
         <div className="md:gap-4 md:flex">
           <div className="w-full">
@@ -173,9 +160,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               <FormattedMessage defaultMessage="Use at least 8 characters." id="BvrO01" />
             </p>
             {errors.password && (
-              <p id="password-error" className="mt-1 ml-2 font-sans text-xs text-red font-regular">
-                {errors.password.message}
-              </p>
+              <FieldError id="password-error">{errors.password.message}</FieldError>
             )}
           </div>
           <div className="w-full">
@@ -196,12 +181,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               />
             </label>
             {errors.confirmPassword && (
-              <p
-                id="confirm-password-error"
-                className="mt-1 ml-2 font-sans text-xs text-red font-regular"
-              >
-                {errors.confirmPassword.message}
-              </p>
+              <FieldError id="confirm-password-error">{errors.confirmPassword.message}</FieldError>
             )}
           </div>
         </div>
@@ -221,12 +201,7 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             </span>
           </label>
           {errors.acceptTerms && (
-            <p
-              id="accept-terms-error"
-              className="mt-1 ml-2 font-sans text-xs text-red font-regular"
-            >
-              {errors.acceptTerms.message}
-            </p>
+            <FieldError id="accept-terms-error">{errors.acceptTerms.message}</FieldError>
           )}
         </div>
         <div className="flex justify-center mt-14">
@@ -242,6 +217,18 @@ const SignUp: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
       </form>
     </div>
   );
+};
+
+SignUp.layout = {
+  Component: AuthPageLayout,
+  props: {
+    headerProps: {
+      pageType: 'sign-up',
+    },
+    asideProps: {
+      photo: 'side-02',
+    },
+  },
 };
 
 export default SignUp;

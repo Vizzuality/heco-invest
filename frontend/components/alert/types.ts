@@ -6,5 +6,5 @@ export type AlertProps = PropsWithChildren<{
   /** Alert type. Defaults to `warning` */
   type?: 'warning' | 'success';
   /** Whether to wrap the alert in a LayoutContainer. Defaults to `false` */
-  withLayoutContainer: boolean;
+  withLayoutContainer?: boolean;
 }>;
