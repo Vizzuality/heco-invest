@@ -4,9 +4,17 @@ import { signOut } from 'next-auth/client';
 
 const dataFormatter = new Jsona();
 
+const isServer = typeof window === 'undefined';
+const baseUrl = isServer
+  ? process.env.NEXT_PUBLIC_BACKEND_HOST + process.env.NEXT_PUBLIC_API_URL
+  : process.env.NEXT_PUBLIC_API_URL;
+
 const USERS = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_API_URL || process.env.STORYBOOK_API_URL}/api/v1/users`,
+  baseURL: `${baseUrl}/users`,
   headers: { 'Content-Type': 'application/json' },
+  withCredentials: true,
+  xsrfCookieName: 'csrf_token',
+  xsrfHeaderName: 'X-CSRF-TOKEN',
   transformResponse: (data) => {
     try {
       const parsedData = JSON.parse(data);

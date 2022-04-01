@@ -8,12 +8,12 @@ import USERS from '.';
 
 export function useSignup(): UseMutationResult<
   AxiosResponse<SignupDto>,
-  AxiosError,
+  AxiosError<{ title: string }[]>,
   SignupDto,
   unknown
 > {
   const signup = async (dto: SignupDto): Promise<AxiosResponse<SignupDto>> => {
-    return await USERS.post('/signup', dto);
+    return await USERS.post('', dto);
   };
   return useMutation(signup);
 }

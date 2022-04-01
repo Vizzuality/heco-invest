@@ -45,10 +45,10 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
   const handleSignUp = useCallback((data: SignupDto) => signUp.mutate(data), [signUp]);
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {
-    const { confirmPassword, acceptTerms, ...rest } = values;
+    const { confirm_password, accept_terms, ...rest } = values;
     const newUser: SignupDto = {
       ...rest,
-      locale,
+      ui_language: locale,
     };
     handleSignUp(newUser);
   };
@@ -63,13 +63,21 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
       </p>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signUp.isError && (
-          <Alert className="mt-6">
-            {signUp.error.message || (
-              <FormattedMessage
-                defaultMessage="Something went wrong while submitting your form."
-                id="ylNQY0"
-              />
-            )}
+          <Alert withLayoutContainer className="mt-6">
+            {
+              signUp.error.message
+              // || (
+              //   <ul>
+              //     {signUp.error.map(() => (
+              //       <li>{<FormattedMessage
+              //         defaultMessage="Something went wrong while submitting your form."
+              //         id="ylNQY0"
+              //       />}</li>
+              //     ))}
+              //   </ul>
+
+              // )
+            }
           </Alert>
         )}
         <div className="md:flex md:gap-4">
@@ -80,7 +88,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               </p>
               <Input
                 type="text"
-                name="firstName"
+                name="first_name"
                 id="first-name"
                 placeholder={intl.formatMessage({
                   defaultMessage: 'Insert your name',
@@ -90,8 +98,8 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
                 register={register}
               />
             </label>
-            {errors.firstName && (
-              <FieldError id="first-name-error">{errors.firstName.message}</FieldError>
+            {errors.first_name && (
+              <FieldError id="first-name-error">{errors.first_name.message}</FieldError>
             )}
           </div>
           <div className="w-full">
@@ -101,7 +109,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               </p>
               <Input
                 type="text"
-                name="lastName"
+                name="last_name"
                 id="last-name"
                 placeholder={intl.formatMessage({
                   defaultMessage: 'Insert your last name',
@@ -111,8 +119,8 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
                 register={register}
               />
             </label>
-            {errors.lastName && (
-              <FieldError id="last-name-error">{errors.lastName.message}</FieldError>
+            {errors.last_name && (
+              <FieldError id="last-name-error">{errors.last_name.message}</FieldError>
             )}
           </div>
         </div>
@@ -171,7 +179,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               <Input
                 type="password"
                 id="confirm-password"
-                name="confirmPassword"
+                name="confirm_password"
                 placeholder={intl.formatMessage({
                   defaultMessage: 'Insert password',
                   id: 'HnG9/3',
@@ -180,15 +188,15 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
                 register={register}
               />
             </label>
-            {errors.confirmPassword && (
-              <FieldError id="confirm-password-error">{errors.confirmPassword.message}</FieldError>
+            {errors.confirm_password && (
+              <FieldError id="confirm-password-error">{errors.confirm_password.message}</FieldError>
             )}
           </div>
         </div>
         <div className="w-full mt-8">
           <label htmlFor="accept-terms">
             <Checkbox
-              name="acceptTerms"
+              name="accept_terms"
               id="accept-terms"
               aria-describedby="accept-terms-error"
               register={register}
@@ -200,8 +208,8 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               />
             </span>
           </label>
-          {errors.acceptTerms && (
-            <FieldError id="accept-terms-error">{errors.acceptTerms.message}</FieldError>
+          {errors.accept_terms && (
+            <FieldError id="accept-terms-error">{errors.accept_terms.message}</FieldError>
           )}
         </div>
         <div className="flex justify-center mt-14">

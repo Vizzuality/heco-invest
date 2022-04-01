@@ -43,4 +43,16 @@ module.exports = {
 
     return config;
   },
+  async rewrites() {
+    if (process.env.PROXY_BACKEND !== 'true') return [];
+
+    const backend = process.env.NEXT_PUBLIC_BACKEND_HOST;
+
+    return [
+      {
+        source: '/backend/:path*',
+        destination: `${backend}/backend/:path*`,
+      },
+    ];
+  },
 };
