@@ -53,3 +53,15 @@ variable "vpc_connector_name" {
   type = string
   description = "Name of the VPC Access Connector"
 }
+
+variable "min_scale" {
+  type = number
+  description = "Minimum number of app instances to deploy"
+  default = 0
+}
+
+variable "max_scale" {
+  type = number
+  description = "Maximum number of app instances to deploy"
+  default = 5
+}
