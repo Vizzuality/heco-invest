@@ -91,6 +91,8 @@ module "frontend_cloudrun" {
   start_command      = "start:prod"
   vpc_connector_name = module.network.vpc_access_connector_name
   database           = module.database.database
+  min_scale          = var.frontend_min_scale
+  max_scale          = var.frontend_max_scale
   env_vars           = [
     {
       name  = "NEXT_PUBLIC_API_URL"
@@ -117,6 +119,8 @@ module "backend_cloudrun" {
   start_command      = "start"
   vpc_connector_name = module.network.vpc_access_connector_name
   database           = module.database.database
+  min_scale          = var.backend_min_scale
+  max_scale          = var.backend_max_scale
   secrets            = [
     {
       name        = "SECRET_KEY_BASE"
@@ -185,9 +189,9 @@ module "database" {
 }
 
 module "bastion" {
-  source = "../bastion"
-  name = var.project_name
-  project_id        = var.gcp_project_id
+  source          = "../bastion"
+  name            = var.project_name
+  project_id      = var.gcp_project_id
   subnetwork_name = module.network.subnetwork_name
 }
 
