@@ -32,7 +32,7 @@ export async function getStaticProps(ctx) {
 type AboutPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
-  const { locale } = useRouter();
+  const { locale, push } = useRouter();
   const intl = useIntl();
   const signUp = useSignup();
   const resolver = useSignupResolver();
@@ -42,7 +42,13 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
     handleSubmit,
   } = useForm<SignupFormI>({ resolver, shouldUseNativeValidation: true });
 
-  const handleSignUp = useCallback((data: SignupDto) => signUp.mutate(data), [signUp]);
+  const handleSignUp = useCallback(
+    (data: SignupDto) =>
+      signUp.mutate(data, {
+        onSuccess: () => push('/sign-up/account-type'),
+      }),
+    [signUp, push]
+  );
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {
     const { confirm_password, accept_terms, ...rest } = values;
