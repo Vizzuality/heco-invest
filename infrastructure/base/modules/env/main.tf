@@ -184,6 +184,13 @@ module "database" {
   network_id        = module.network.network_id
 }
 
+module "bastion" {
+  source = "../bastion"
+  name = var.project_name
+  project_id        = var.gcp_project_id
+  subnetwork_name = module.network.subnetwork_name
+}
+
 module "test_pubsub" {
   source     = "../pubsub"
   name       = "${var.project_name}-test"

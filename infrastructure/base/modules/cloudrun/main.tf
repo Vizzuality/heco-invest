@@ -8,7 +8,7 @@ resource "google_project_service" "cloud_run_api" {
 
 resource "google_service_account" "service_account" {
   account_id   = "${var.name}-cr-sa"
-  display_name = "${var.name} Service Account"
+  display_name = "${var.name} Cloud Run Service Account"
 }
 
 resource "google_secret_manager_secret_iam_member" "secret_access" {
