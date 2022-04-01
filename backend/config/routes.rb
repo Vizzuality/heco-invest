@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   namespace :api, format: "json" do
     namespace :v1 do
-      resource :session, only: [:create, :destroy]
+      resource :session, only: [:create, :destroy] do
+        post :two_factor_auth
+      end
       resource :user, only: [:create, :show]
       resource :email_confirmation, only: [:create, :show]
       resource :reset_password, only: [:create, :update]

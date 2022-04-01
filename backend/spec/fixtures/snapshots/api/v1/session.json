@@ -1,11 +1,11 @@
 {
   "data": {
-    "id": "2599af27-8fe4-4e02-9acb-fe521e576718",
+    "id": "be101888-0fae-4909-8a17-015ef3132d1e",
     "type": "user",
     "attributes": {
       "first_name": "Dawna",
       "last_name": "Block",
-      "email": "user@example.com",
+      "email": "two_factor_user@example.com",
       "role": "light",
       "confirmed": true
     }

@@ -20,6 +20,7 @@ gem "turbo-rails"
 gem "friendly_id", "~> 5.4.0"
 gem "devise"
 gem "devise-i18n"
+gem "devise-two-factor", git: "https://github.com/cybersecuricy/devise-two-factor.git", branch: "securicy-fixes-rails-7"
 gem "traco"
 
 # API

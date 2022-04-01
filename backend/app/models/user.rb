@@ -3,8 +3,7 @@ class User < ApplicationRecord
 
   belongs_to :account, optional: true
 
-  devise :database_authenticatable, :confirmable, :registerable,
-    :recoverable, :rememberable, :validatable
+  devise :two_factor_authenticatable, :confirmable, :registerable, :recoverable, :rememberable, :validatable
 
   enum role: {light: 0, investor: 1, project_developer: 2}, _default: :light
 
