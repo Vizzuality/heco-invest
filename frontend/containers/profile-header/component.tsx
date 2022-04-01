@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 import { translatedLanguageNameForLocale } from 'helpers/intl';
 
-import WebsiteSocialContact from 'containers/website-social-contact';
+import WebsiteSocialContact from 'containers/social-contact/website-social-contact';
 
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';

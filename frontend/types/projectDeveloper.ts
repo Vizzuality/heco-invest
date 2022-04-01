@@ -1,12 +1,6 @@
-export type ProjectDeveloperSetupFormOnline = {
-  website?: string;
-  facebook?: string;
-  linkedin?: string;
-  instagram?: string;
-  twitter?: string;
-};
+import { SocialContactInputs } from 'containers/social-contact/inputs-social-contact/types';
 
-export type ProjectDeveloperSetupForm = ProjectDeveloperSetupFormOnline & {
+export type ProjectDeveloperSetupForm = SocialContactInputs & {
   picture: string;
   profile: string;
   project_developer_type: string;

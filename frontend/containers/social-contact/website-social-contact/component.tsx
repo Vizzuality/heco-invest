@@ -8,7 +8,8 @@ import Link from 'next/link';
 
 import Icon from 'components/icon';
 
-import { SOCIAL_DATA } from './constants';
+import { SOCIAL_DATA } from '../constants';
+
 import type { WebsiteSocialContactProps, SocialType } from './types';
 
 export const WebsiteSocialContact: FC<WebsiteSocialContactProps> = ({

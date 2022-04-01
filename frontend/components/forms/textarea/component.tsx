@@ -36,11 +36,7 @@ export const Textarea = <FormValues extends FieldValues>({
           true,
         [resize]: true,
         [className]: !!className,
-<<<<<<< HEAD
-        'invalid:border-red-600': invalid,
-=======
         'invalid:border-red-700': invalid,
->>>>>>> develop
       })}
       rows={rows}
       {...register(name, registerOptions)}

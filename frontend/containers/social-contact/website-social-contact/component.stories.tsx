@@ -1,6 +1,8 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import WebsiteSocialContact, { WebsiteSocialContactProps } from '.';
+import { WebsiteSocialContactProps } from './types';
+
+import WebsiteSocialContact from '.';
 
 export default {
   component: WebsiteSocialContact,

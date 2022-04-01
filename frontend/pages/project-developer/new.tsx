@@ -13,13 +13,13 @@ import { InferGetStaticPropsType } from 'next';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
+import SocialMediaImputs from 'containers/social-contact/inputs-social-contact/component';
 
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/fieldInfo';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
-import SocialMediaImputs from 'components/forms/social-media-inputs/component';
 import TextArea from 'components/forms/textarea';
 import Head from 'components/head';
 import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
@@ -36,7 +36,6 @@ import {
   InterestItem,
   Mosaic,
   ProjectDeveloperSetupForm,
-  ProjectDeveloperSetupFormOnline,
 } from 'types/projectDeveloper';
 import useProjectDeveloperValidation, { formPageInputs } from 'validations/projectDeveloper';
 

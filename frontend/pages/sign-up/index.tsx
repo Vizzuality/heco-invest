@@ -11,7 +11,7 @@ import { loadI18nMessages } from 'helpers/i18n';
 
 import Alert from 'components/alert';
 import Checkbox from 'components/forms/checkbox';
-import FieldError from 'components/forms/field-error';
+import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Loading from 'components/loading';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
@@ -91,7 +91,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               />
             </label>
             {errors.firstName && (
-              <FieldError id="first-name-error">{errors.firstName.message}</FieldError>
+              <ErrorMessage id="first-name-error">{errors.firstName.message}</ErrorMessage>
             )}
           </div>
           <div className="w-full">
@@ -112,7 +112,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               />
             </label>
             {errors.lastName && (
-              <FieldError id="last-name-error">{errors.lastName.message}</FieldError>
+              <ErrorMessage id="last-name-error">{errors.lastName.message}</ErrorMessage>
             )}
           </div>
         </div>
@@ -133,7 +133,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               register={register}
             />
           </label>
-          {errors.email && <FieldError id="email-error">{errors.email.message}</FieldError>}
+          {errors.email && <ErrorMessage id="email-error">{errors.email.message}</ErrorMessage>}
         </div>
         <div className="md:gap-4 md:flex">
           <div className="w-full">
@@ -160,7 +160,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               <FormattedMessage defaultMessage="Use at least 8 characters." id="BvrO01" />
             </p>
             {errors.password && (
-              <FieldError id="password-error">{errors.password.message}</FieldError>
+              <ErrorMessage id="password-error">{errors.password.message}</ErrorMessage>
             )}
           </div>
           <div className="w-full">
@@ -181,7 +181,9 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               />
             </label>
             {errors.confirmPassword && (
-              <FieldError id="confirm-password-error">{errors.confirmPassword.message}</FieldError>
+              <ErrorMessage id="confirm-password-error">
+                {errors.confirmPassword.message}
+              </ErrorMessage>
             )}
           </div>
         </div>
@@ -201,7 +203,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
             </span>
           </label>
           {errors.acceptTerms && (
-            <FieldError id="accept-terms-error">{errors.acceptTerms.message}</FieldError>
+            <ErrorMessage id="accept-terms-error">{errors.acceptTerms.message}</ErrorMessage>
           )}
         </div>
         <div className="flex justify-center mt-14">

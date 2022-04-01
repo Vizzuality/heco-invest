@@ -49,11 +49,4 @@ apiService.interceptors.response.use(
 
 apiService.interceptors.request.use(onResponseSuccess, onResponseError);
 
-// Use this endpoint when JSON API spec is not needed
-// or the response doesn't follow this format
-export const apiRawService = axios.create(defaultConfig);
-
-apiRawService.interceptors.response.use((response) => response, onResponseError);
-apiRawService.interceptors.request.use(onResponseSuccess, onResponseError);
-
 export default apiService;

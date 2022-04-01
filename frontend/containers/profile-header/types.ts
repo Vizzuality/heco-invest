@@ -1,4 +1,4 @@
-import { WebsiteSocialContactProps } from 'containers/website-social-contact';
+import { WebsiteSocialContactProps } from 'containers/social-contact/website-social-contact';
 
 import { LanguageType } from 'types';
 
