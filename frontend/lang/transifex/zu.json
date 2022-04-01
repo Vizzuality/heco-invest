@@ -8,6 +8,9 @@
   "/1WGZ8": {
     "string": "Projects funded"
   },
+  "/L6T3E": {
+    "string": "Get connected"
+  },
   "/VnDMl": {
     "string": "Other"
   },
@@ -23,11 +26,17 @@
   "0cWjQP": {
     "string": "{title} - page {currentPage} out of {numPages}"
   },
+  "0hzVw6": {
+    "string": "How accounts work?"
+  },
   "0wBg9P": {
     "string": "Project developers"
   },
   "1B1DeU": {
     "string": "HeCo Invest relies on the <span>ARIES Artificial Intelligence</span> model to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four dimensions of interest based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10 as shown in the chart of impact."
+  },
+  "25WwxF": {
+    "string": "Don't have an account?"
   },
   "2O2sfp": {
     "string": "Finish"
@@ -37,6 +46,9 @@
   },
   "2inebt": {
     "string": "The opportunities are located in geographies that are are unique due to of their biodiversity, cultural heritages, and regulation of water systems. As such, these projects will have the greatest impact for people and nature."
+  },
+  "39AHJm": {
+    "string": "Sign Up"
   },
   "3l2y4U": {
     "string": "Person of contact"
@@ -62,6 +74,9 @@
   "5l/FHl": {
     "string": "You can choose from a variety of opportunities that range from sustainable landscape management tools and solutions, to forest-friendly products and business models. From social welfare solutions, to climate solutions and sustainable businesses."
   },
+  "5sg7KC": {
+    "string": "Password"
+  },
   "5zAKQ7": {
     "string": "About HeCo"
   },
@@ -80,6 +95,15 @@
   "7qgtEX": {
     "string": "Invests in SDG's"
   },
+  "7xE2Vv": {
+    "string": "Illustration of a person looking at a tree"
+  },
+  "8HJxXG": {
+    "string": "Sign up"
+  },
+  "8HimVK": {
+    "string": "Confirm password"
+  },
   "8R8Or7": {
     "string": "Search community"
   },
@@ -94,6 +118,9 @@
   },
   "9Er2U2": {
     "string": "Investments in HeCo will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
+  },
+  "9VLFbQ": {
+    "string": "Landscape photo"
   },
   "9cE0nR": {
     "string": "How is the impact calculated?"
@@ -113,6 +140,9 @@
   "BAC0rl": {
     "string": "<span>Community:</span> income, sustainable projects;"
   },
+  "BvrO01": {
+    "string": "Use at least 8 characters."
+  },
   "CYTiug": {
     "string": "HeCo Invest will benefit poor and vulnerable people living in HeCo priority landscapes."
   },
@@ -128,6 +158,9 @@
   "DQoGRx": {
     "string": "About the impact"
   },
+  "ErIkUS": {
+    "string": "Insert your email"
+  },
   "EwRIOm": {
     "string": "User"
   },
@@ -140,8 +173,14 @@
   "GKDt/J": {
     "string": "Find projects, start-ups or create an open call to locate opportunities for investment that make an impact."
   },
+  "GKONs7": {
+    "string": "Start having impact now."
+  },
   "GOg6XJ": {
     "string": "Be part of the biggest change in the colombian Amazon"
+  },
+  "GYkIYE": {
+    "string": "Insert your last name"
   },
   "HK3ph8": {
     "string": "How it works"
@@ -154,6 +193,9 @@
   },
   "HmDmU1": {
     "string": "Support the protection of water availability and regulation. These approaches are vital for reducing risks such as floods and droughts, which in the face of climate change can become more frequent and larger in magnitude."
+  },
+  "HnG9/3": {
+    "string": "Insert password"
   },
   "HzKhBJ": {
     "developer_comment": "Description shown in search engines",
@@ -195,6 +237,9 @@
   "MH3koz": {
     "string": "Previous slide"
   },
+  "MZl85Y": {
+    "string": "One more step to go"
+  },
   "MfCYKW": {
     "string": "For investors"
   },
@@ -216,14 +261,26 @@
   "OBhULP": {
     "string": "Open calls"
   },
+  "OChccW": {
+    "string": "Investor / Funder"
+  },
   "Obr4XP": {
     "string": "Guiding tools"
+  },
+  "Ow9MS8": {
+    "string": "I want to find the right investment for my projects"
+  },
+  "P4T4Ib": {
+    "string": "Discover projects that have impact in the Amazon region and get connected with investors and project developers."
   },
   "PIZ1dD": {
     "string": "Search biodiversity"
   },
   "PTr6+3": {
     "string": "Contribute to climate solutions through investments that reduce CO2 emissions and conserve or restore forest-related carbon sinks."
+  },
+  "Q1Q4rT": {
+    "string": "Insert your name"
   },
   "QDj3j7": {
     "string": "Inter-American Development Bank Lab"
@@ -237,6 +294,9 @@
   "SQJto2": {
     "string": "Sign in"
   },
+  "Swj4mJ": {
+    "string": "Select the {name} account"
+  },
   "TH786p": {
     "string": "See my profile"
   },
@@ -245,6 +305,9 @@
   },
   "URdlN+": {
     "string": "Invest in small, medium or big project opportunities."
+  },
+  "Ub+AGc": {
+    "string": "Sign In"
   },
   "UxTJRa": {
     "string": "Projects"
@@ -264,6 +327,9 @@
   "Vge+RX": {
     "string": "Footer"
   },
+  "Vxcu91": {
+    "string": "{name} account"
+  },
   "W4Jolw": {
     "string": "IDB Lab is the innovation laboratory of the Inter-American Development Bank Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
   },
@@ -272,6 +338,9 @@
   },
   "WkrNSk": {
     "string": "English"
+  },
+  "X0E3iC": {
+    "string": "I agree with the Terms and Privacy Policy."
   },
   "XJqnLu": {
     "string": "Search water"
@@ -345,6 +414,9 @@
   "eM7TKf": {
     "string": "About the platform"
   },
+  "eSLLyC": {
+    "string": "To complete you registration and make full use of the platform, please select which account you would like to create."
+  },
   "fnihsY": {
     "string": "Leave"
   },
@@ -390,17 +462,29 @@
   "mbTJWV": {
     "string": "Biodiversity"
   },
+  "n0nU+Y": {
+    "string": "Illustration of a person looking at a list of cards"
+  },
   "nBHzO6": {
     "string": "Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
   },
+  "nhAnF3": {
+    "string": "I want to find opportunities to invest / donate"
+  },
   "o+Vt3t": {
     "string": "Partnership between:"
+  },
+  "oMC3r1": {
+    "string": "Choose your account type"
   },
   "oiQKNY": {
     "string": "Search and find"
   },
   "p1NkQY": {
     "string": "Find opportunities that have the greatest impact on challenges like biodiversity, climate, community and water."
+  },
+  "pONqz8": {
+    "string": "First name"
   },
   "pgfBG8": {
     "string": "As a Project Developer"
@@ -414,8 +498,14 @@
   "rbrahO": {
     "string": "Close"
   },
+  "rfVDxL": {
+    "string": "Please enter your details below."
+  },
   "sMWFoV": {
     "string": "As an Investor / Funder"
+  },
+  "sy+pv5": {
+    "string": "Email"
   },
   "t7YvMF": {
     "string": "Water"
@@ -429,8 +519,14 @@
   "tKMlOc": {
     "string": "Menu"
   },
+  "txUL0F": {
+    "string": "Last name"
+  },
   "txaU6M": {
     "string": "Apply to open calls"
+  },
+  "uCk8r+": {
+    "string": "Already have an account?"
   },
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
@@ -456,11 +552,17 @@
   "xusigZ": {
     "string": "Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."
   },
+  "yF82he": {
+    "string": "Project developer"
+  },
   "yJVljq": {
     "string": "Through accessing <span>ARIES</span> (Artificial Intelligence for Environmental Sustainability) and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
   },
   "yXFDuu": {
     "string": "Use our Artificial Intellience tool powered by ARIES, to help you identify what best fits your specific needs."
+  },
+  "ylNQY0": {
+    "string": "Something went wrong while submitting your form."
   },
   "zFegDD": {
     "string": "Contact"

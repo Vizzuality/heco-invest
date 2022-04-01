@@ -95,7 +95,7 @@ const TemplateWithForm: Story<InputProps<FormValues>> = (args: InputProps<FormVa
       </label>
       <Input register={register} aria-describedby="form-error" {...args} />
       {errors.name?.message && (
-        <p id="form-error" className="pl-2 mt-1 text-xs text-red">
+        <p id="form-error" className="pl-2 mt-1 text-xs text-red-700">
           {errors.name?.message}
         </p>
       )}

@@ -50,8 +50,8 @@ export const MultiPageLayoutFooterPaging: FC<MultiPageLayoutFooterPagingProps> =
                 'block w-6 h-6 rounded-full cursor-pointer text-sm z-10 transition-colors': true,
                 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark':
                   true,
-                'text-red-600 bg-red-50 border hover:border-red-600': hasErrors && !isSubmitting,
-                'border-red-600': hasErrors && isCurrentPage && !isSubmitting,
+                'text-red-700 bg-red-50 border hover:border-red-700': hasErrors && !isSubmitting,
+                'border-red-700': hasErrors && isCurrentPage && !isSubmitting,
                 'border-red-50': hasErrors && !isCurrentPage && !isSubmitting,
                 'bg-background-light text-green-dark border border-green-dark':
                   isCurrentPage && !hasErrors && !isSubmitting,

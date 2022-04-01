@@ -5,7 +5,7 @@ export const THEME = {
     status: {
       none: 'border-gray-800',
       valid: 'border-green-800',
-      error: 'border-red-500',
+      error: 'border-red-700',
       disabled: 'border-gray-800 opacity-50',
     },
   },
@@ -14,7 +14,7 @@ export const THEME = {
     status: {
       none: 'border-gray-800',
       valid: 'border-green-800',
-      error: 'border-red-500 focus:border-red-500',
+      error: 'border-red-700 focus:border-red-700',
       disabled: 'border-gray-800 opacity-50',
     },
   },

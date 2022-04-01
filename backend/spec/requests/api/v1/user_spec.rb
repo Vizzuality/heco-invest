@@ -44,10 +44,15 @@ RSpec.describe "API V1 User", type: :request do
           expect(response.body).to match_snapshot("api/v1/user-create")
         end
 
-        it "sends confirmation email" do
-          mail = ActionMailer::Base.deliveries.last
-          expect(mail.subject).to eq("Confirmation instructions")
-          expect(mail.to.first).to eq("jankowalski@example.com")
+        # it "sends confirmation email" do
+        #   mail = ActionMailer::Base.deliveries.last
+        #   expect(mail.subject).to eq("Confirmation instructions")
+        #   expect(mail.to.first).to eq("jankowalski@example.com")
+        # end
+
+        it "does not send confirmation email and signs user in" do
+          expect(ActionMailer::Base.deliveries.count).to eq(0)
+          expect(session["warden.user.user.key"]).to be_present
         end
       end
 

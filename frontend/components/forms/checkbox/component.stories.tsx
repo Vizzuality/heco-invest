@@ -100,7 +100,7 @@ const TemplateWithForm: Story<CheckboxProps<FormValues>> = (args: CheckboxProps<
           I accept the Terms and Privacy Policy
         </label>
         {errors.accept?.message && (
-          <p id="form-error" className="pl-2 mt-1 text-xs text-red">
+          <p id="form-error" className="pl-2 mt-1 text-xs text-red-700">
             {errors.accept?.message}
           </p>
         )}
@@ -149,7 +149,7 @@ const TemplateDisabled: Story<CheckboxProps<FormValues>> = (args: CheckboxProps<
         I accept the Terms and Privacy Policy
       </label>
       {errors.accept?.message && (
-        <p id="form-error" className="pl-2 mt-1 text-xs text-red">
+        <p id="form-error" className="pl-2 mt-1 text-xs text-red-700">
           {errors.accept?.message}
         </p>
       )}
