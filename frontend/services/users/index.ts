@@ -1,6 +1,5 @@
 import axios from 'axios';
 import Jsona from 'jsona';
-import { signOut } from 'next-auth/client';
 
 const dataFormatter = new Jsona();
 
@@ -10,7 +9,7 @@ const baseUrl = isServer
   : process.env.NEXT_PUBLIC_API_URL;
 
 const USERS = axios.create({
-  baseURL: `${baseUrl}/users`,
+  baseURL: `${baseUrl}/user`,
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true,
   xsrfCookieName: 'csrf_token',
@@ -28,14 +27,18 @@ const USERS = axios.create({
   },
 });
 
-const onResponseSuccess = (response) => response;
+const onResponseSuccess = (response) => {
+  return response;
+};
 
 const onResponseError = (error) => {
-  // Any status codes that falls outside the range of 2xx cause this function to trigger
-  if (error.response.status === 401) {
-    signOut();
+  if (error.response.data?.errors?.length > 0) {
+    return Promise.reject(new Error(error.response.data.errors));
   }
-  // Do something with response error
+  if (error.response.request?.response) {
+    const message = JSON.parse(error.response.request.response)?.errors;
+    return Promise.reject({ message });
+  }
   return Promise.reject(error);
 };
 

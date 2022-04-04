@@ -26,7 +26,7 @@ const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = (props) 
 
   const handleAccountTypeSelected = (accountType: AccountType) => {
     // TODO: Handle account type selected
-    if (accountType === 'project-developer') push('/project-developer/new');
+    if (accountType === 'project-developer') push('/project-developers/new');
   };
 
   return (

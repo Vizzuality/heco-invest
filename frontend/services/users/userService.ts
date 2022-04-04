@@ -8,7 +8,7 @@ import USERS from '.';
 
 export function useSignup(): UseMutationResult<
   AxiosResponse<SignupDto>,
-  AxiosError<{ title: string }[]>,
+  AxiosError,
   SignupDto,
   unknown
 > {

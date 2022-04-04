@@ -68,24 +68,21 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
         <FormattedMessage defaultMessage="Please enter your details below." id="rfVDxL" />
       </p>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        {signUp.isError && (
-          <Alert withLayoutContainer className="mt-6">
-            {
-              signUp.error.message
-              // || (
-              //   <ul>
-              //     {signUp.error.map(() => (
-              //       <li>{<FormattedMessage
-              //         defaultMessage="Something went wrong while submitting your form."
-              //         id="ylNQY0"
-              //       />}</li>
-              //     ))}
-              //   </ul>
-
-              // )
-            }
-          </Alert>
-        )}
+        {signUp.isError && signUp.error.message ? (
+          Array.isArray(signUp.error.message) ? (
+            <ul>
+              {signUp.error.message.map((err: any) => (
+                <Alert key={err.title} withLayoutContainer className="mt-6">
+                  <li key={err.title}>{err.title}</li>
+                </Alert>
+              ))}
+            </ul>
+          ) : (
+            <Alert withLayoutContainer className="mt-6">
+              {signUp.error.message}
+            </Alert>
+          )
+        ) : null}
         <div className="md:flex md:gap-4">
           <div className="w-full">
             <label htmlFor="first-name">
