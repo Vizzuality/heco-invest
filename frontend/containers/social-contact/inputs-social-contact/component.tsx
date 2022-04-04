@@ -18,7 +18,7 @@ export const InputsSocialContact = <FormValues extends FieldValues>({
   return (
     <div className="w-full md:grid md:grid-cols-2 md:gap-x-6">
       <div key="website">
-        <Label htmlFor="wibsite">
+        <Label htmlFor="website">
           {formatMessage({ defaultMessage: 'Website', id: 'JkLHGw' })}{' '}
           {!registerOptions?.required &&
             `(${formatMessage({ defaultMessage: 'optional', id: 'V4KNjk' })})`}
