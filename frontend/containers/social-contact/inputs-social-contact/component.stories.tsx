@@ -27,7 +27,7 @@ const Template: Story<InputSocialContactProps<SocialContactInputs>> = ({ ...rest
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <InputsSocialContact {...rest} register={register} />
         <Button type="submit">submit</Button>
-        {Object.keys(errors).length > 0 && 'Something whent wrong'}
+        {Object.keys(errors).length > 0 && 'Something went wrong'}
       </form>
     </div>
   );
