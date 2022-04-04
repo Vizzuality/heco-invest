@@ -6,6 +6,11 @@ zu:
       user:
         multiple_accounts: User already have account!
         no_project_developer: User is not project developer!
+  mailers:
+    user:
+      send_otp_code:
+        subject: Your 2FAuthentication Code
+        body_html: "To finalize your login to HeCo Invest Platform, please enter the following validation code: <strong>%{code}</strong>."
   enums:
     category:
       sustainable-agrosystems:
