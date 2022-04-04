@@ -40,7 +40,7 @@ const Pending: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () =
         </h1>
         <p className="my-6">
           <FormattedMessage
-            defaultMessage="Your account was successfully created, but you steel need to be approved by our platform administrators."
+            defaultMessage="Your account was successfully created, but you still need to be approved by our platform administrators."
             id="rR0tQV"
           />
         </p>
