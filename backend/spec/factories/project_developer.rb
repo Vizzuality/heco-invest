@@ -4,7 +4,7 @@ FactoryBot.define do
 
     categories { %w[forestry-and-agroforestry non-timber-forest-production] }
     impacts { %w[climate water] }
-    project_developer_type { "TBD" }
+    project_developer_type { "ngo" }
     review_status { "approved" }
     sequence(:mission) do |n|
       Faker::Config.random = Random.new(n)
