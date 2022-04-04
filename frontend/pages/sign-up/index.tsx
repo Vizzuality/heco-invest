@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';

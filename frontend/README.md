@@ -1,6 +1,7 @@
 # HeCo Invest - Front-end
 
 The front-end application of the HeCo Invest platform is built upon [Vizzuality's scaffold project](https://github.com/Vizzuality/front-end-scaffold) and use the following resources:
+
 - [React](https://reactjs.org/) as a UI library
 - [Next.js](https://nextjs.org/) as a framework
 - [Tailwind CSS](https://tailwindcss.com/) as a styles framework
@@ -11,6 +12,7 @@ The front-end application of the HeCo Invest platform is built upon [Vizzuality'
 - [Feather](https://feathericons.com/) as a icon provider
 
 The application's design files can be found here:
+
 - [Design system](https://www.figma.com/file/3epSYh4KQZBCyh4Y5OzmHw/HeCo---Design-System?node-id=2345%3A4760)
 - [Main file](https://www.figma.com/file/KC49uMR9t1YARmFR0Sr6aN/HeCo---Work-in-progress?node-id=0%3A1)
 
@@ -39,9 +41,12 @@ The application (and API) is configured via environment variables stored in a `.
 Below is a description of each of the keys.
 
 | Variable                     | Description                                                                                                                       |
-|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | NEXT_PUBLIC_API_URL          | URL of the API supporting the platform                                                                                            |
-| NEXTAUTH_URL                 | URL of the service managing the authentication                                                                                    |
+| NEXT_PUBLIC_BACKEND_HOST     | URL of the backend service supporting the platform   |
+   
+| PROXY_BACKEND                | Indicates if the API is being served by a backend proxy     |
+
 | NEXT_PUBLIC_GOOGLE_ANALYTICS | Key of the Google Analytics account                                                                                               |
 | NEXT_PUBLIC_DOMAIN           | Complete domain from which the application is served (including https) and without a trailing slash (e.g. https://vizzuality.com) |
 
@@ -62,6 +67,7 @@ It is recommended to mention the Jira task ID either in commits or the branch na
 The application is set up so that the source language is understood as being Zulu (zu). Doing so, the source strings can not only be translated to Spanish and Portuguese, but their English version (the source) can also be modified.
 
 The source and translated strings are located in the `/lang` folder:
+
 - `lang/transifex/zu.json` contains the list of source strings extracted from the code
 - `lang/transifex/*.json` contains the list of translated strings coming from Transifex (always empty)
 - `lang/compiled/*.json` contains the list of strings that will be shown in the application (always empty)
@@ -75,10 +81,10 @@ Here is a step-by-step explanation of how the strings are translated and display
 1. New strings are added to the application using the `react-intl` hooks or components
 2. When a commit is created, the pre-commit hook (see `../lefthook.yml`) executes a command that extracts them in the `lang/transifex/zu.json` file
 3. When the code is merged to the `develop` branch, a staging deployment is triggered via a GitHub action:
-	1. The extracted strings are pushed to Transifex
-	2. The translations are pulled: the `lang/transifex/*.json` files are updated (not saved in repository)
-	3. The translations are compiled: the `lang/compiled/*.json` files are updated (not saved in repository)
-	4. The application is built with the compiled strings and deployed
+   1. The extracted strings are pushed to Transifex
+   2. The translations are pulled: the `lang/transifex/*.json` files are updated (not saved in repository)
+   3. The translations are compiled: the `lang/compiled/*.json` files are updated (not saved in repository)
+   4. The application is built with the compiled strings and deployed
 4. When the `develop` branch is merged in `main`, the same previous step is repeated, except strings are not pushed to Transifex
 
 This pipeline enables the translations to be server-side rendered (SSR-ed) and so it improves the SEO of the application.
@@ -97,13 +103,13 @@ Here's a step by step guide on how to address vulnerabilities found in productio
 
 1. Go to the [Dependabot alerts page](https://github.com/Vizzuality/heco-invest/security/dependabot) and locate the front-end vulnerability to address
 2. Identify if the vulnerability affects production code:
-	- To do so run `yarn npm audit --recursive --environment production`
-	- If the dependency is _not_ listed by this command, then the vulnerability only affects development code. You can dismiss the alert on GitHub as “Vulnerable code is not actually used” in the top right corner of the vulnerability page.
-	- If the dependency _is_ listed, follow the steps below.
+   - To do so run `yarn npm audit --recursive --environment production`
+   - If the dependency is _not_ listed by this command, then the vulnerability only affects development code. You can dismiss the alert on GitHub as “Vulnerable code is not actually used” in the top right corner of the vulnerability page.
+   - If the dependency _is_ listed, follow the steps below.
 3. On the vulnerability page, click the “Create Dependabot security update” button
-	- This will create a Pull Request with a fix for the vulnerability. If GitHub can generate this PR, then you can merge and the security alert will disappear.
-	- If the vulnerability can't be patched automatically, follow the steps below.
+   - This will create a Pull Request with a fix for the vulnerability. If GitHub can generate this PR, then you can merge and the security alert will disappear.
+   - If the vulnerability can't be patched automatically, follow the steps below.
 4. If the action fails, then you can semi-automatically update the vulnerable dependency by running `npm_config_yes=true npx yarn-audit-fix --only prod`
-	- `yarn-audit-fix` (see [repository](https://github.com/antongolub/yarn-audit-fix)) is a tool that applies the fixes from `npm audit fix` to Yarn installations
-	- The tool might also not be able to fix the vulnerability. If so, continue with the steps below.
+   - `yarn-audit-fix` (see [repository](https://github.com/antongolub/yarn-audit-fix)) is a tool that applies the fixes from `npm audit fix` to Yarn installations
+   - The tool might also not be able to fix the vulnerability. If so, continue with the steps below.
 5. If the action fails, then you will have to manually update the dependencies until the vulnerability is solved

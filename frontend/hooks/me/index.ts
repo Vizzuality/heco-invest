@@ -2,15 +2,15 @@ import { useMemo } from 'react';
 
 import { useQuery } from 'react-query';
 
-import USERS from 'services/users';
+import API from 'services/api';
 
 export default function useMe() {
   const query = useQuery(
     'user',
     () =>
-      USERS.request({
+      API.request({
         method: 'GET',
-        url: '/',
+        url: '/user',
       }).then((response) => response.data),
     {
       retry: 1,

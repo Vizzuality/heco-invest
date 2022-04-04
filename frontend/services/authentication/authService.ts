@@ -6,14 +6,14 @@ import { AxiosResponse, AxiosError } from 'axios';
 
 import { SignInDto } from 'types/signin';
 
-import AUTHENTICATION from '.';
+import API from '../api';
 
 export function signIn() {}
 
 export async function signOut() {
-  await AUTHENTICATION.request({
+  await API.request({
     method: 'DELETE',
-    url: '/',
+    url: '/session',
   });
 
   Router.push('/sign-in');
@@ -28,7 +28,7 @@ export function useSignIn(): UseMutationResult<
   const queryClient = useQueryClient();
   const router = useRouter();
   const signIn = async (dto: SignInDto): Promise<AxiosResponse<SignInDto>> => {
-    const user = await AUTHENTICATION.post('/', dto);
+    const user = await API.post('/session', dto);
     queryClient.setQueryData('me', user);
     router.push((router.query.callbackUrl as string) || '/');
     return user;
