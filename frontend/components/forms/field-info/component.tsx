@@ -6,20 +6,22 @@ import Tooltip from 'components/tooltip';
 
 import { FieldInfoProps } from './types';
 
-const FieldInfo = ({ infoText }: FieldInfoProps) => {
+export const FieldInfo = ({ infoText }: FieldInfoProps) => {
   return (
     <Tooltip
       placement="right"
       arrow
       arrowClassName="bg-black"
-      className="max-w-md"
       content={
         <div className="max-w-md p-2 font-sans text-sm font-normal text-white bg-black rounded-sm">
           {infoText}
         </div>
       }
     >
-      <Info className="inline cursor-pointer" size={14.67} />
+      <Info
+        className="inline rounded cursor-pointer focus:border focus:border-green-dark focus:outline-none"
+        size={14.67}
+      />
     </Tooltip>
   );
 };

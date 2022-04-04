@@ -58,7 +58,7 @@ export default (page: number) => {
     // .matches(base64Regex, { message: messages.picture.format })
     // .required(messages.picture.required),
     profile: string().required(messages.profile),
-    project_developer_type: string().required(messages.projectDeveloperType),
+    project_developer_type: string().ensure().required(messages.projectDeveloperType),
     entity_legal_registration_number: number()
       .typeError(messages.entityLegalRegistrationNumber.invalidFormat)
       .min(Math.pow(10, 9), messages.entityLegalRegistrationNumber.invalidFormat)

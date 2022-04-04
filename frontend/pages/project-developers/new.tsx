@@ -3,8 +3,6 @@ import { ChangeEvent, useState, useCallback } from 'react';
 import { SubmitErrorHandler, SubmitHandler, useForm, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import cx from 'classnames';
-
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
@@ -17,7 +15,7 @@ import SocialMediaImputs from 'containers/social-contact/inputs-social-contact/c
 
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
-import FieldInfo from 'components/forms/fieldInfo';
+import FieldInfo from 'components/forms/field-info';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import TextArea from 'components/forms/textarea';
@@ -29,17 +27,12 @@ import impacts from 'mockups/impacts.json';
 import mosaics from 'mockups/mosaics.json';
 import projectDeveloperTypes from 'mockups/projectDeveloperTypes.json';
 import { PageComponent } from 'types';
-import {
-  Category,
-  Impact,
-  Interest,
-  InterestItem,
-  Mosaic,
-  ProjectDeveloperSetupForm,
-} from 'types/projectDeveloper';
+import { Interest, InterestItem, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 import useProjectDeveloperValidation, { formPageInputs } from 'validations/projectDeveloper';
 
 import { useCreateProjectDeveloper } from 'services/account';
+
+import { languagesDefault } from '../../helpers/projectDevelopersConstants';
 
 export async function getStaticProps(ctx) {
   return {
@@ -77,8 +70,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
-    trigger,
     control,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
@@ -118,15 +109,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     await handleSubmit(onSubmit, onError)();
     if (!errors) {
       setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handleSelectAll = (e: ChangeEvent<HTMLInputElement>) => {
-    const { checked, value, name } = e.currentTarget;
-    if (checked) {
-      const parsedValue = value.split(',') as Category[] | Mosaic[] | Impact[];
-      setValue(name as keyof ProjectDeveloperSetupForm, parsedValue);
-      trigger(name as keyof ProjectDeveloperSetupForm);
     }
   };
 
@@ -212,35 +194,42 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
             <h1 className="mb-6 font-serif text-3xl font-semibold text-green-dark">
               <FormattedMessage defaultMessage="I want to write my content in" id="APjPYs" />
             </h1>
-            <p id="language-description" className="mb-20 font-sans text-base">
-              <FormattedMessage
-                defaultMessage="Select the account laguage in which you want to write the content of this account. This will avoid mixed content in the platform."
-                id="/MHYS4"
-              />
-            </p>
-            <div className="flex justify-center mt-2 gap-x-6">
-              {languages.locales.map((lang) => {
-                const { name, locale } = lang;
-                return (
-                  <Label
-                    key={locale}
-                    htmlFor={locale}
-                    className="justify-center block w-full text-center border rounded-lg py-7 border-beige"
-                  >
-                    <input
-                      // className="appearance-none"
-                      name={name}
-                      required
-                      id={locale}
-                      type="radio"
-                      value={locale}
-                      {...register('language')}
-                      aria-describedby="language-error"
+
+            <div>
+              <fieldset className="flex justify-center mt-2 gap-x-6">
+                <legend>
+                  <p id="language-description" className="mb-20 font-sans text-base">
+                    <FormattedMessage
+                      defaultMessage="Select the account laguage in which you want to write the content of this account. This will avoid mixed content in the platform."
+                      id="/MHYS4"
                     />
-                    <span className="block">{name}</span>
-                  </Label>
-                );
-              })}
+                  </p>
+                </legend>
+                {languages.locales.map((lang) => {
+                  const { name, locale } = lang;
+                  return (
+                    <Label
+                      key={locale}
+                      htmlFor={locale}
+                      className="justify-center block w-full text-center border rounded-lg py-7 border-beige"
+                    >
+                      <input
+                        name={name}
+                        required
+                        id={locale}
+                        type="radio"
+                        value={locale}
+                        {...register('language')}
+                        aria-describedby="language-error"
+                      />
+                      <span className="block font-sans text-lg font-semibold text-green-dark">
+                        {name}
+                      </span>
+                      <span className="block font-normal">({languagesDefault[locale]})</span>
+                    </Label>
+                  );
+                })}
+              </fieldset>
             </div>
             <p className="text-red">
               <ErrorMessage id="language-error" errorText={errors?.language?.message} />
@@ -265,16 +254,21 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
                 <FormattedMessage defaultMessage="General" id="1iEPTM" />
               </p>
-              <p className="inline-block mb-4 mr-2.5 text-sm font-semibold text-gray-800 text-primary">
-                <FormattedMessage defaultMessage="Picture" id="wvoA3H" />
-              </p>
-              <FieldInfo
-                infoText={formatMessage({
-                  defaultMessage: 'Add your logo or a picture that indentifies the account.',
-                  id: 'bjubNC',
-                })}
-              />
-              <div className="flex gap-x-4">
+              <div>
+                <label
+                  htmlFor="picture"
+                  className="inline-block mb-4 mr-2.5 text-sm font-semibold text-gray-800 text-primary"
+                >
+                  <FormattedMessage defaultMessage="Picture" id="wvoA3H" />
+                </label>
+                <FieldInfo
+                  infoText={formatMessage({
+                    defaultMessage: 'Add your logo or a picture that indentifies the account.',
+                    id: 'bjubNC',
+                  })}
+                />
+              </div>
+              <div className="flex items-center justify-start">
                 <Image
                   src={imagePreview || '/images/avatar.svg'}
                   width={48}
@@ -282,23 +276,18 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   className="rounded-full"
                   alt="profile image"
                 />
-                <label htmlFor="picture" className="bg-green-dark rounded-3xl pt-2.5 px-6">
-                  <span className="text-white">
-                    <FormattedMessage defaultMessage="Upload image" id="vMUomP" />
-                  </span>
-                  <input
-                    id="picture"
-                    className="w-0 h-0 opacity-0"
-                    name="picture"
-                    type="file"
-                    accept="image/png, image/jpeg"
-                    required
-                    {...register('picture')}
-                    onChange={handleUploadImage}
-                    aria-describedby="picture-error"
-                    // value={imageName}
-                  />
-                </label>
+                <input
+                  id="picture"
+                  className="ml-5"
+                  name="picture"
+                  type="file"
+                  accept="image/png, image/jpeg"
+                  required
+                  {...register('picture')}
+                  onChange={handleUploadImage}
+                  aria-describedby="picture-error"
+                  // value={imageName}
+                />
               </div>
               <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
             </div>
@@ -438,54 +427,38 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 <FormattedMessage defaultMessage="Tell us about your work." id="Y6xIpg" />
               </p>
             </div>
-            {interests.map(({ name, title, items, infoText, required }) => (
+            {interests.map(({ name, title, items, infoText }) => (
               <div key={name} className="mb-7">
-                <p className="font-sans font-semibold text-sm text-gray-800 mb-4.5 mr-2.5 inline-block">
-                  {title}
-                </p>
-                <FieldInfo infoText={infoText || getItemsInfoText(items)} />
-                <div className="mb-4">
-                  {items.map((item) => (
-                    <div
-                      key={item.id}
-                      className="inline-block px-4 py-2 mb-4 mr-4 border rounded-lg border-beige"
-                    >
-                      <Label htmlFor={item.id} className="flex align-middle">
-                        <input
-                          className={cx('appearance-none', {
-                            [`w-4 h-4 mr-4 bg-category-${item.color} rounded-full`]:
-                              name === 'categories',
-                          })}
-                          {...register(name)}
-                          id={item.id}
-                          name={name}
-                          type="checkbox"
-                          value={item.id}
-                          aria-describedby={`${name}-error`}
-                        />
-                        <span>{item.name}</span>
-                      </Label>
-                    </div>
-                  ))}
-                </div>
+                <fieldset name={name}>
+                  <legend className="inline font-sans font-semibold text-sm text-gray-800 mb-4.5">
+                    <span className="mr-2.5">{title}</span>
+                    <FieldInfo infoText={infoText || getItemsInfoText(items)} />
+                  </legend>
+                  <div className="mb-4">
+                    {items.map((item) => (
+                      <div
+                        key={item.id}
+                        className="inline-block px-4 py-2 mb-4 mr-4 border rounded-lg border-beige"
+                      >
+                        <Label htmlFor={item.id} className="flex items-center">
+                          <input
+                            {...register(name)}
+                            id={item.id}
+                            name={name}
+                            type="checkbox"
+                            value={item.id}
+                            aria-describedby={`${name}-error`}
+                          />
+                          <span className="ml-1">{item.name}</span>
+                        </Label>
+                      </div>
+                    ))}
+                  </div>
+                </fieldset>
                 <ErrorMessage
                   id={`${name}-error`}
                   errorText={(errors[name] as FieldError)?.message}
                 />
-                <label htmlFor={`select-all-${name}`}>
-                  <span className="font-sans text-sm underline cursor-pointer text-green-dark">
-                    {formatMessage({ defaultMessage: 'Select all', id: '94Fg25' })}
-                  </span>
-                  <input
-                    name={name}
-                    id={`select-all-${name}`}
-                    type="checkbox"
-                    className="appearance-none"
-                    value={items.map(({ id }) => id)}
-                    {...register(name)}
-                    onChange={handleSelectAll}
-                  />
-                </label>
               </div>
             ))}
           </form>

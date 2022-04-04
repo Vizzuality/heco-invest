@@ -1,1 +1,5 @@
-export const onlinePresence = ['website', 'facebook', 'linkedin', 'instagram', 'twitter'];
+export const languagesDefault = {
+  en: 'English',
+  es: 'Spanish',
+  pt: 'Portuguese',
+};

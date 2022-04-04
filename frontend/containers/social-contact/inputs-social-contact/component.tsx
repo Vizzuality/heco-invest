@@ -9,7 +9,7 @@ import { SOCIAL_DATA } from '../constants';
 
 import { InputSocialContactProps } from './types';
 
-const InputsSocialContact = <FormValues extends FieldValues>({
+export const InputsSocialContact = <FormValues extends FieldValues>({
   register,
   registerOptions,
 }: InputSocialContactProps<FormValues>) => {

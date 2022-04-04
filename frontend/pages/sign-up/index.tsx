@@ -90,9 +90,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
                 register={register}
               />
             </label>
-            {errors.firstName && (
-              <ErrorMessage id="first-name-error">{errors.firstName.message}</ErrorMessage>
-            )}
+            <ErrorMessage id="first-name-error" errorText={errors.firstName?.message} />
           </div>
           <div className="w-full">
             <label htmlFor="last-name">
@@ -111,9 +109,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
                 register={register}
               />
             </label>
-            {errors.lastName && (
-              <ErrorMessage id="last-name-error">{errors.lastName.message}</ErrorMessage>
-            )}
+            <ErrorMessage id="last-name-error" errorText={errors.lastName?.message} />
           </div>
         </div>
         <div className="w-full">
@@ -133,7 +129,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               register={register}
             />
           </label>
-          {errors.email && <ErrorMessage id="email-error">{errors.email.message}</ErrorMessage>}
+          <ErrorMessage id="email-error" errorText={errors.email?.message} />
         </div>
         <div className="md:gap-4 md:flex">
           <div className="w-full">
@@ -159,9 +155,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
             >
               <FormattedMessage defaultMessage="Use at least 8 characters." id="BvrO01" />
             </p>
-            {errors.password && (
-              <ErrorMessage id="password-error">{errors.password.message}</ErrorMessage>
-            )}
+            <ErrorMessage id="password-error" errorText={errors.password?.message} />
           </div>
           <div className="w-full">
             <label htmlFor="confirm-password">
@@ -180,11 +174,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
                 register={register}
               />
             </label>
-            {errors.confirmPassword && (
-              <ErrorMessage id="confirm-password-error">
-                {errors.confirmPassword.message}
-              </ErrorMessage>
-            )}
+            <ErrorMessage id="confirm-password-error" errorText={errors.confirmPassword?.message} />
           </div>
         </div>
         <div className="w-full mt-8">
@@ -202,9 +192,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               />
             </span>
           </label>
-          {errors.acceptTerms && (
-            <ErrorMessage id="accept-terms-error">{errors.acceptTerms.message}</ErrorMessage>
-          )}
+          <ErrorMessage id="accept-terms-error" errorText={errors.acceptTerms?.message} />
         </div>
         <div className="flex justify-center mt-14">
           <button
