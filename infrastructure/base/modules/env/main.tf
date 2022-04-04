@@ -175,6 +175,7 @@ module "backend_storage" {
   project_id            = var.gcp_project_id
   service_account_email = module.backend_cloudrun.service_account_email
   name                  = "${var.project_name}-site-storage"
+  domain                = var.domain
 }
 
 module "database" {
