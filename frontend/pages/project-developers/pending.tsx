@@ -32,7 +32,7 @@ const Pending: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () =
           width={178}
           height={170}
           aria-hidden="true"
-          src="/images/pending-approval.png"
+          src="/images/pending-approval.svg"
           alt=""
         />
         <h1 className="mt-6 font-serif text-3xl font-semibold text-green-dark">
