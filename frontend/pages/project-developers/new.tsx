@@ -1,6 +1,6 @@
 import { ChangeEvent, useState, useCallback } from 'react';
 
-import { SubmitErrorHandler, SubmitHandler, useForm, FieldError } from 'react-hook-form';
+import { SubmitHandler, useForm, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import Image from 'next/image';
@@ -101,12 +101,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     }
   };
 
-  const onError: SubmitErrorHandler<ProjectDeveloperSetupForm> = (error) => {
-    // handle errors
-  };
-
   const handleNextClick = async () => {
-    await handleSubmit(onSubmit, onError)();
+    await handleSubmit(onSubmit)();
     if (!errors) {
       setCurrentPage(currentPage + 1);
     }
@@ -187,7 +183,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
         onCloseClick={() => push('/')}
-        onSubmitClick={handleSubmit(onSubmit, onError)}
+        onSubmitClick={handleSubmit(onSubmit)}
       >
         <Page hasErrors={!!errors?.language}>
           <form className="flex flex-col justify-between" noValidate>
@@ -200,8 +196,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 <legend>
                   <p id="language-description" className="mb-20 font-sans text-base">
                     <FormattedMessage
-                      defaultMessage="Select the account laguage in which you want to write the content of this account. This will avoid mixed content in the platform."
-                      id="/MHYS4"
+                      defaultMessage="Select the account language in which you want to write the content of this account. This will avoid mixed content in the platform."
+                      id="5GLwZF"
                     />
                   </p>
                 </legend>
@@ -274,7 +270,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   width={48}
                   height={48}
                   className="rounded-full"
-                  alt="profile image"
+                  alt={formatMessage({ defaultMessage: 'profile image', id: 'OX08fr' })}
                 />
                 <input
                   id="picture"
