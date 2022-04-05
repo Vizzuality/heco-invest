@@ -52,7 +52,10 @@ module "sendgrid_api_key" {
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN = var.transifex_token
-    NEXTAUTH_URL    = "https://${var.domain}"
+    NEXT_PUBLIC_FRONTEND_URL = "https://${var.domain}"
+    NEXT_PUBLIC_BACKEND_URL = "https://${var.domain}/backend"
+    NEXT_PUBLIC_GOOGLE_ANALYTICS = var.google_analytics_key
+    NEXT_PUBLIC_PROXY_BACKEND = "false"
   }
 }
 
@@ -101,20 +104,6 @@ module "frontend_cloudrun" {
   database           = module.database.database
   min_scale          = var.frontend_min_scale
   max_scale          = var.frontend_max_scale
-  env_vars           = [
-    {
-      name  = "NEXT_PUBLIC_API_URL"
-      value = "https://${var.domain}/backend"
-    },
-    {
-      name  = "NEXT_PUBLIC_GOOGLE_ANALYTICS"
-      value = var.google_analytics_key
-    },
-    {
-      name  = "NEXT_PUBLIC_DOMAIN"
-      value = "https://${var.domain}"
-    }
-  ]
 }
 
 module "backend_cloudrun" {
