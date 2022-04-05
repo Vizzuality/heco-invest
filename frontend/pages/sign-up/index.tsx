@@ -7,6 +7,8 @@ import { useRouter } from 'next/router';
 
 import { InferGetStaticPropsType } from 'next';
 
+import useMe from 'hooks/me';
+
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Alert from 'components/alert';
@@ -29,13 +31,15 @@ export async function getStaticProps(ctx) {
   };
 }
 
-type AboutPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+type SIgnUpPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
+const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
   const { locale, push } = useRouter();
   const intl = useIntl();
   const signUp = useSignup();
   const resolver = useSignupResolver();
+  const { refetch } = useMe();
+
   const {
     register,
     formState: { errors },
@@ -45,9 +49,12 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
   const handleSignUp = useCallback(
     (data: SignupDto) =>
       signUp.mutate(data, {
-        onSuccess: () => push('/sign-up/account-type'),
+        onSuccess: () => {
+          push('/sign-up/account-type');
+          refetch();
+        },
       }),
-    [signUp, push]
+    [signUp, push, refetch]
   );
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {
