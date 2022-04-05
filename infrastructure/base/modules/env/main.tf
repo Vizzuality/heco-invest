@@ -41,6 +41,14 @@ module "transifex_api_key" {
   use_random_value = false
 }
 
+module "sendgrid_api_key" {
+  source           = "../secret_value"
+  region           = var.gcp_region
+  key              = "${var.project_name}_sendgrid_api_key"
+  value            = var.sendgrid_api_key
+  use_random_value = false
+}
+
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN = var.transifex_token
@@ -131,6 +139,9 @@ module "backend_cloudrun" {
     }, {
       name        = "TX_TOKEN"
       secret_name = module.transifex_api_key.secret_name
+    }, {
+      name        = "SMTP_PASSWORD"
+      secret_name = module.sendgrid_api_key.secret_name
     }
   ]
   env_vars = [
@@ -165,6 +176,26 @@ module "backend_cloudrun" {
     {
       name  = "TEST_PUBSUB_SUBSCRIPTION"
       value = module.test_pubsub.subscription_name
+    },
+    {
+      name  = "SMTP_USERNAME"
+      value = "apikey"
+    },
+    {
+      name  = "SMTP_HOST"
+      value = "smtp.sendgrid.net"
+    },
+    {
+      name  = "SMTP_PORT"
+      value = 587
+    },
+    {
+      name  = "MAILER_DEFAULT_HOST"
+      value = var.domain
+    },
+    {
+      name  = "MAILER_DEFAULT_FROM"
+      value = "agnieszka.figiel@vizzuality.com"
     }
   ]
 }
