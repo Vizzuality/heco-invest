@@ -32,8 +32,6 @@ import useProjectDeveloperValidation, { formPageInputs } from 'validations/proje
 
 import { useCreateProjectDeveloper } from 'services/account';
 
-import { languagesDefault } from '../../helpers/projectDevelopersConstants';
-
 export async function getStaticProps(ctx) {
   return {
     props: {
@@ -219,9 +217,17 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                         aria-describedby="language-error"
                       />
                       <span className="block font-sans text-lg font-semibold text-green-dark">
-                        {name}
+                        {locale === 'es' && (
+                          <FormattedMessage defaultMessage="Spanish" id="8WtyrD" />
+                        )}
+                        {locale === 'pt' && (
+                          <FormattedMessage defaultMessage="Portuguese" id="A4UTjl" />
+                        )}
+                        {locale === 'en' && (
+                          <FormattedMessage defaultMessage="English" id="WkrNSk" />
+                        )}
                       </span>
-                      <span className="block font-normal">({languagesDefault[locale]})</span>
+                      <span className="block font-normal">({name})</span>
                     </Label>
                   );
                 })}
