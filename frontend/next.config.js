@@ -44,7 +44,7 @@ module.exports = {
     return config;
   },
   async rewrites() {
-    if (process.env.PROXY_BACKEND !== 'true') return [];
+    if (process.env.NEXT_PUBLIC_PROXY_BACKEND !== 'true') return [];
 
     return [
       {

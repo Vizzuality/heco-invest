@@ -44,7 +44,7 @@ Below is a description of each of the keys.
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | NEXT_PUBLIC_FRONTEND_URL     | Complete URL from which the front-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com) |
 | NEXT_PUBLIC_BACKEND_URL      | Complete URL from which the back-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com)  |
-| PROXY_BACKEND                | Indicates whether the back-end application is proxied through the front-end application                                                  |
+| NEXT_PUBLIC_PROXY_BACKEND    | Indicates whether the back-end application is proxied through the front-end application                                                  |
 | NEXT_PUBLIC_GOOGLE_ANALYTICS | Key of the Google Analytics account                                                                                                      |
 
 ## CI/CD

@@ -4,7 +4,7 @@ import Jsona from 'jsona';
 const dataFormatter = new Jsona();
 
 const baseUrl =
-  process.env.PROXY_BACKEND === 'true'
+  process.env.NEXT_PUBLIC_PROXY_BACKEND === 'true'
     ? // This path must correspond to the one stored in `next.config.json` in the `rewrites`
       // function
       `${process.env.NEXT_PUBLIC_FRONTEND_URL}/backend`
