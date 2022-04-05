@@ -50,10 +50,8 @@ const Pending: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () =
             id="adPUXO"
           />
         </p>
-        <Button className="mt-6 mb-12">
-          <Link href="/discover" passHref>
-            <FormattedMessage defaultMessage="Explore" id="7JlauX" />
-          </Link>
+        <Button className="mt-6 mb-12" to="/discover">
+          <FormattedMessage defaultMessage="Explore" id="7JlauX" />
         </Button>
         <Link href="/faq#pending-approval" passHref>
           <a
