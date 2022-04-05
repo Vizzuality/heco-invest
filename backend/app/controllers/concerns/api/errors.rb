@@ -35,9 +35,14 @@ module API
       render json: {errors: [{title: exception.message}]}, status: :unprocessable_entity
     end
 
-    def render_standard_error(_exception)
-      # add error logging
+    def render_standard_error(exception)
+      log_error(exception)
       render json: {errors: [{title: "Unexpected error"}]}, status: :internal_server_error
+    end
+
+    def log_error(exception)
+      Rails.logger.error(exception)
+      Rails.logger.error(Rails.backtrace_cleaner.clean(exception.backtrace).join("\n"))
     end
   end
 end

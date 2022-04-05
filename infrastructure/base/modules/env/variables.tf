@@ -41,6 +41,11 @@ variable "transifex_token" {
   description = "Transifex API access token"
 }
 
+variable "sendgrid_api_key" {
+  type = string
+  description = "SendGrid API key"
+}
+
 variable "google_analytics_key" {
   type = string
   description = "Google Analytics key"
@@ -49,4 +54,28 @@ variable "google_analytics_key" {
 variable "domain" {
   type = string
   description = "Base domain for the DNS zone"
+}
+
+variable "frontend_min_scale" {
+  type = number
+  description = "Minimum number of frontend app instances to deploy"
+  default = 0
+}
+
+variable "frontend_max_scale" {
+  type = number
+  description = "Maximum number of frontend app instances to deploy"
+  default = 5
+}
+
+variable "backend_min_scale" {
+  type = number
+  description = "Minimum number of backend app instances to deploy"
+  default = 0
+}
+
+variable "backend_max_scale" {
+  type = number
+  description = "Maximum number of backend app instances to deploy"
+  default = 5
 }
