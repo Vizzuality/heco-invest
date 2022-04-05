@@ -18,6 +18,7 @@ module "backend_gcr" {
   region     = var.gcp_region
   name       = "${var.project_name}-backend"
 }
+
 module "rails_secret_key_base" {
   source              = "../secret_value"
   region              = var.gcp_region
