@@ -18,6 +18,7 @@ module "staging" {
   google_analytics_key = var.google_analytics_key
   project_name         = var.staging_project_name
   transifex_token      = var.transifex_token
+  sendgrid_api_key     = var.sendgrid_api_key
 }
 
 module "production" {
@@ -31,6 +32,7 @@ module "production" {
   google_analytics_key = var.google_analytics_key
   project_name         = var.production_project_name
   transifex_token      = var.transifex_token
+  sendgrid_api_key     = var.sendgrid_api_key
   frontend_min_scale   = 1
   backend_min_scale    = 1
 }

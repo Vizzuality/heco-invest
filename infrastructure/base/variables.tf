@@ -41,6 +41,11 @@ variable "transifex_token" {
   description = "Transifex API access token"
 }
 
+variable "sendgrid_api_key" {
+  type = string
+  description = "SendGrid API key"
+}
+
 variable "google_analytics_key" {
   type = string
   description = "Google Analytics key"

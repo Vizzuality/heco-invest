@@ -1,16 +1,16 @@
 export interface SignupFormI {
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   email: string;
   password: string;
-  confirmPassword: string;
-  acceptTerms: boolean;
+  confirm_password: string;
+  accept_terms: boolean;
 }
 
 export interface SignupDto {
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   email: string;
   password: string;
-  locale: string;
+  ui_language: string;
 }
