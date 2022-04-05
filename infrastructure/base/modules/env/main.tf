@@ -170,10 +170,6 @@ module "backend_cloudrun" {
       value = "/backend"
     },
     {
-      name  = "RAILS_LOG_TO_STDOUT"
-      value = "true"
-    },
-    {
       name  = "TEST_PUBSUB_TOPIC"
       value = module.test_pubsub.topic_name
     },

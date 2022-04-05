@@ -6,7 +6,6 @@ SECRET_KEY_BASE (generated with rake secret)
 
 BACKEND_URL (without protocol)
 RAILS_RELATIVE_URL_ROOT (if running backend application in sub url, like /backend)
-RAILS_LOG_TO_STDOUT
 
 DATABASE_NAME
 DATABASE_USER
