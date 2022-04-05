@@ -9,7 +9,7 @@ export function withProtection() {
     const queryClient = new QueryClient();
     // remember to proxy cookies
     await queryClient.prefetchQuery('user', () =>
-      API.get('/', {
+      API.get('/api/v1/', {
         headers: {
           Cookie: context.req.headers.cookie || '',
         },

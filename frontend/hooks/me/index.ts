@@ -10,7 +10,7 @@ export default function useMe() {
     () =>
       API.request({
         method: 'GET',
-        url: '/user',
+        url: '/api/v1/user',
       }).then((response) => response.data),
     {
       retry: 1,

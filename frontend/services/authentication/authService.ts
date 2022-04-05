@@ -13,7 +13,7 @@ export function signIn() {}
 export async function signOut() {
   await API.request({
     method: 'DELETE',
-    url: '/session',
+    url: '/api/v1/session',
   });
 
   Router.push('/sign-in');
@@ -28,7 +28,7 @@ export function useSignIn(): UseMutationResult<
   const queryClient = useQueryClient();
   const router = useRouter();
   const signIn = async (dto: SignInDto): Promise<AxiosResponse<SignInDto>> => {
-    const user = await API.post('/session', dto);
+    const user = await API.post('/api/v1/session', dto);
     queryClient.setQueryData('me', user);
     router.push((router.query.callbackUrl as string) || '/');
     return user;

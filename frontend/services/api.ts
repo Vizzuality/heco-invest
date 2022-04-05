@@ -3,10 +3,12 @@ import Jsona from 'jsona';
 
 const dataFormatter = new Jsona();
 
-const isServer = typeof window === 'undefined';
-const baseUrl = isServer
-  ? process.env.NEXT_PUBLIC_BACKEND_DOMAIN + process.env.NEXT_PUBLIC_API_PATH
-  : process.env.NEXT_PUBLIC_API_PATH;
+const baseUrl =
+  process.env.PROXY_BACKEND === 'true'
+    ? // This path must correspond to the one stored in `next.config.json` in the `rewrites`
+      // function
+      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/backend`
+    : process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const API = axios.create({
   baseURL: baseUrl,

@@ -13,7 +13,7 @@ export function useSignup(): UseMutationResult<
   unknown
 > {
   const signup = async (dto: SignupDto): Promise<AxiosResponse<SignupDto>> => {
-    return await API.post('/user', dto);
+    return await API.post('/api/v1/user', dto);
   };
   return useMutation(signup);
 }
