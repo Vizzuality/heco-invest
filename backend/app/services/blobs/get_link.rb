@@ -20,7 +20,9 @@ module Blobs
     end
 
     def validated?
-      original_blob.analyzed? && original_blob.metadata[:width] && original_blob.metadata[:height]
+      # TODO: enable this when background jobs ready
+      # original_blob.analyzed? && original_blob.metadata[:width] && original_blob.metadata[:height]
+      true
     end
   end
 end
