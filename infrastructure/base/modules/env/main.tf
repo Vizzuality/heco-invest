@@ -56,7 +56,6 @@ locals {
     NEXT_PUBLIC_FRONTEND_URL = "https://${var.domain}"
     NEXT_PUBLIC_BACKEND_URL = "https://${var.domain}/backend"
     NEXT_PUBLIC_GOOGLE_ANALYTICS = var.google_analytics_key
-    NEXT_PUBLIC_PROXY_BACKEND = "false"
   }
 }
 
