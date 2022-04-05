@@ -40,15 +40,13 @@ The application (and API) is configured via environment variables stored in a `.
 
 Below is a description of each of the keys.
 
-| Variable                     | Description                                                                                                                       |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| NEXT_PUBLIC_API_URL          | URL of the API supporting the platform                                                                                            |
-| NEXT_PUBLIC_BACKEND_HOST     | URL of the backend service supporting the platform   |
-   
-| PROXY_BACKEND                | Indicates if the API is being served by a backend proxy     |
-
-| NEXT_PUBLIC_GOOGLE_ANALYTICS | Key of the Google Analytics account                                                                                               |
-| NEXT_PUBLIC_DOMAIN           | Complete domain from which the application is served (including https) and without a trailing slash (e.g. https://vizzuality.com) |
+| Variable                     | Description                                                                                                                                 |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| NEXT_PUBLIC_DOMAIN           | Complete domain from which the front-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com) |
+| NEXT_PUBLIC_BACKEND_DOMAIN   | Complete domain from which the back-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com)  |
+| NEXT_PUBLIC_API_PATH         | Path of the API (relative to `NEXT_PUBLIC_BACKEND_DOMAIN`)                                                                                  |
+| PROXY_BACKEND                | Indicates whether the back-end application is proxied through the front-end application                                                     |
+| NEXT_PUBLIC_GOOGLE_ANALYTICS | Key of the Google Analytics account                                                                                                         |
 
 ## CI/CD
 

@@ -5,8 +5,8 @@ const dataFormatter = new Jsona();
 
 const isServer = typeof window === 'undefined';
 const baseUrl = isServer
-  ? process.env.NEXT_PUBLIC_BACKEND_HOST + process.env.NEXT_PUBLIC_API_URL
-  : process.env.NEXT_PUBLIC_API_URL;
+  ? process.env.NEXT_PUBLIC_BACKEND_DOMAIN + process.env.NEXT_PUBLIC_API_PATH
+  : process.env.NEXT_PUBLIC_API_PATH;
 
 const API = axios.create({
   baseURL: baseUrl,
