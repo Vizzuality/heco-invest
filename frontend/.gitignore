@@ -21,6 +21,9 @@
 # tailwind styles
 /public/styles/
 
+# languages
+/lang/compiled
+
 # misc
 .DS_Store
 *.pem

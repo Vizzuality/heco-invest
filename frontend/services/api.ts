@@ -1,52 +1,45 @@
 import axios from 'axios';
 import Jsona from 'jsona';
-import { getSession, signOut } from 'next-auth/client';
-
-/**
- * API service require to be authenticated.
- * Then, by default all the request are sending the authorization header.
- */
 
 const dataFormatter = new Jsona();
 
-const defaultConfig = {
-  baseURL: `${process.env.NEXT_PUBLIC_API_URL || process.env.STORYBOOK_API_URL}/api/v1/`,
+const baseUrl =
+  process.env.NEXT_PUBLIC_PROXY_BACKEND === 'true'
+    ? // This path must correspond to the one stored in `next.config.json` in the `rewrites`
+      // function
+      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/backend`
+    : process.env.NEXT_PUBLIC_BACKEND_URL;
+
+const API = axios.create({
+  baseURL: baseUrl,
   headers: { 'Content-Type': 'application/json' },
+  withCredentials: true,
+  xsrfCookieName: 'csrf_token',
+  xsrfHeaderName: 'X-CSRF-TOKEN',
+});
+
+const onResponseSuccess = (response) => {
+  try {
+    const parsedData = JSON.parse(response);
+    return {
+      data: dataFormatter.deserialize(parsedData),
+      meta: parsedData.meta,
+    };
+  } catch (error) {
+    return response;
+  }
 };
 
-// const authorizedRequest = async (config) => {
-//   const { accessToken } = await getSession();
-//   config.headers['Authorization'] = `Bearer ${accessToken}`;
-//   return config;
-// };
-const onResponseSuccess = (response) => response;
-
 const onResponseError = (error) => {
-  // Any status codes that falls outside the range of 2xx cause this function to trigger
-  if (error.response.status === 401) {
-    signOut();
-  }
   if (error.response.data?.errors?.length > 0) {
-    return Promise.reject(new Error(error.response.data.errors[0].title));
+    return Promise.reject<{ message: { title: string }[] }>({
+      message: error.response.data.errors,
+    });
   }
-  // Do something with response error
+
   return Promise.reject(error);
 };
 
-// This endpoint by default will deserialize the data
-export const apiService = axios.create(defaultConfig);
+API.interceptors.response.use(onResponseSuccess, onResponseError);
 
-apiService.interceptors.response.use(
-  (response) => ({
-    ...response,
-    data: {
-      ...response.data,
-      data: !!response.data && dataFormatter.deserialize(response.data), // JSON API deserialize
-    },
-  }),
-  onResponseError
-);
-
-apiService.interceptors.request.use(onResponseSuccess, onResponseError);
-
-export default apiService;
+export default API;

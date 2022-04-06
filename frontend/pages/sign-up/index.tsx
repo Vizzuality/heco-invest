@@ -1,11 +1,13 @@
 import { useCallback } from 'react';
 
-import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
 import { InferGetStaticPropsType } from 'next';
+
+import useMe from 'hooks/me';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
@@ -29,26 +31,37 @@ export async function getStaticProps(ctx) {
   };
 }
 
-type AboutPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+type SIgnUpPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
-  const { locale } = useRouter();
+const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
+  const { locale, push } = useRouter();
   const intl = useIntl();
   const signUp = useSignup();
   const resolver = useSignupResolver();
+  const { refetch } = useMe();
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<SignupFormI>({ resolver, shouldUseNativeValidation: true });
 
-  const handleSignUp = useCallback((data: SignupDto) => signUp.mutate(data), [signUp]);
+  const handleSignUp = useCallback(
+    (data: SignupDto) =>
+      signUp.mutate(data, {
+        onSuccess: () => {
+          push('/sign-up/account-type');
+          refetch();
+        },
+      }),
+    [signUp, push, refetch]
+  );
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {
-    const { confirmPassword, acceptTerms, ...rest } = values;
+    const { confirm_password, accept_terms, ...rest } = values;
     const newUser: SignupDto = {
       ...rest,
-      locale,
+      ui_language: locale,
     };
     handleSignUp(newUser);
   };
@@ -62,16 +75,21 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
         <FormattedMessage defaultMessage="Please enter your details below." id="rfVDxL" />
       </p>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        {signUp.isError && (
-          <Alert className="mt-6">
-            {signUp.error.message || (
-              <FormattedMessage
-                defaultMessage="Something went wrong while submitting your form."
-                id="ylNQY0"
-              />
-            )}
-          </Alert>
-        )}
+        {signUp.isError && signUp.error.message ? (
+          Array.isArray(signUp.error.message) ? (
+            <ul>
+              {signUp.error.message.map((err: any) => (
+                <Alert key={err.title} withLayoutContainer className="mt-6">
+                  <li key={err.title}>{err.title}</li>
+                </Alert>
+              ))}
+            </ul>
+          ) : (
+            <Alert withLayoutContainer className="mt-6">
+              {signUp.error.message}
+            </Alert>
+          )
+        ) : null}
         <div className="md:flex md:gap-4">
           <div className="w-full">
             <label htmlFor="first-name">
@@ -80,7 +98,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               </p>
               <Input
                 type="text"
-                name="firstName"
+                name="first_name"
                 id="first-name"
                 placeholder={intl.formatMessage({
                   defaultMessage: 'Insert your name',
@@ -90,7 +108,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
                 register={register}
               />
             </label>
-            <ErrorMessage id="first-name-error" errorText={errors.firstName?.message} />
+            <ErrorMessage id="first-name-error" errorText={errors.first_name?.message} />
           </div>
           <div className="w-full">
             <label htmlFor="last-name">
@@ -99,7 +117,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               </p>
               <Input
                 type="text"
-                name="lastName"
+                name="last_name"
                 id="last-name"
                 placeholder={intl.formatMessage({
                   defaultMessage: 'Insert your last name',
@@ -109,7 +127,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
                 register={register}
               />
             </label>
-            <ErrorMessage id="last-name-error" errorText={errors.lastName?.message} />
+            <ErrorMessage id="last-name-error" errorText={errors.last_name?.message} />
           </div>
         </div>
         <div className="w-full">
@@ -153,7 +171,10 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               className="mt-1 font-sans text-xs text-gray-400 font-regular"
               id="password-description"
             >
-              <FormattedMessage defaultMessage="Use at least 8 characters." id="BvrO01" />
+              <FormattedMessage
+                defaultMessage="Use at least 12 characters, one uppercase letter, one lowercase letter and one number."
+                id="MF4b8Z"
+              />
             </p>
             <ErrorMessage id="password-error" errorText={errors.password?.message} />
           </div>
@@ -165,7 +186,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               <Input
                 type="password"
                 id="confirm-password"
-                name="confirmPassword"
+                name="confirm_password"
                 placeholder={intl.formatMessage({
                   defaultMessage: 'Insert password',
                   id: 'HnG9/3',
@@ -174,13 +195,16 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
                 register={register}
               />
             </label>
-            <ErrorMessage id="confirm-password-error" errorText={errors.confirmPassword?.message} />
+            <ErrorMessage
+              id="confirm-password-error"
+              errorText={errors.confirm_password?.message}
+            />
           </div>
         </div>
         <div className="w-full mt-8">
           <label htmlFor="accept-terms">
             <Checkbox
-              name="acceptTerms"
+              name="accept_terms"
               id="accept-terms"
               aria-describedby="accept-terms-error"
               register={register}
@@ -192,7 +216,7 @@ const SignUp: PageComponent<AboutPageProps, AuthPageLayoutProps> = () => {
               />
             </span>
           </label>
-          <ErrorMessage id="accept-terms-error" errorText={errors.acceptTerms?.message} />
+          <ErrorMessage id="accept-terms-error" errorText={errors.accept_terms?.message} />
         </div>
         <div className="flex justify-center mt-14">
           <button

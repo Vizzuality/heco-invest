@@ -8,7 +8,6 @@ import { useRouter } from 'next/router';
 import { I18nProvider } from '@react-aria/i18n';
 import { OverlayProvider } from '@react-aria/overlays';
 import { SSRProvider } from '@react-aria/ssr';
-import { Provider as AuthenticationProvider } from 'next-auth/client';
 import { Hydrate } from 'react-query/hydration';
 
 import StaticPageLayout from 'layouts/static-page';
@@ -63,23 +62,15 @@ const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
       <ReduxProvider store={store}>
         <QueryClientProvider client={queryClient}>
           <Hydrate state={pageProps.dehydratedState}>
-            <AuthenticationProvider
-              session={pageProps.session}
-              options={{
-                clientMaxAge: 5 * 60, // Re-fetch session if cache is older than 60 seconds
-                keepAlive: 10 * 60, // Send keepAlive message every 10 minutes
-              }}
-            >
-              <SSRProvider>
-                <I18nProvider locale={locale}>
-                  <OverlayProvider>
-                    <Layout {...layoutProps}>
-                      <Component {...pageProps} />
-                    </Layout>
-                  </OverlayProvider>
-                </I18nProvider>
-              </SSRProvider>
-            </AuthenticationProvider>
+            <SSRProvider>
+              <I18nProvider locale={locale}>
+                <OverlayProvider>
+                  <Layout {...layoutProps}>
+                    <Component {...pageProps} />
+                  </Layout>
+                </OverlayProvider>
+              </I18nProvider>
+            </SSRProvider>
           </Hydrate>
         </QueryClientProvider>
       </ReduxProvider>

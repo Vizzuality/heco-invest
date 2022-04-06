@@ -53,7 +53,17 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
       )}
       {alert && !showOutro && (
         <div className="absolute top-0 w-full -translate-y-full">
-          <Alert withLayoutContainer={true}>{alert}</Alert>
+          {Array.isArray(alert) ? (
+            <ul>
+              {alert.map((a: string) => (
+                <li key={a}>
+                  <Alert withLayoutContainer={true}>{a}</Alert>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <Alert withLayoutContainer={true}>{alert}</Alert>
+          )}
         </div>
       )}
       <LayoutContainer>

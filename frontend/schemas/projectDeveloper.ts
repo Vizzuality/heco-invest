@@ -1,10 +1,6 @@
 import { useIntl } from 'react-intl';
 
-import { object, string, array, number, setLocale } from 'yup';
-
-// const base64Regex = new RegExp(/src=\"data:image\/([a-zA-Z]*);base64,([^\"]*)\"/);
-
-// const pictureName = new RegExp(/\.(jpg|png)$/i);
+import { object, string, array, number, mixed } from 'yup';
 
 export default (page: number) => {
   const { formatMessage } = useIntl();
@@ -16,7 +12,7 @@ export default (page: number) => {
       }),
       format: 'The profile picture must be an image',
     },
-    profile: formatMessage({ defaultMessage: 'You need to enter a profile name', id: 'X9irAo' }),
+    name: formatMessage({ defaultMessage: 'You need to enter a profile name', id: 'X9irAo' }),
     projectDeveloperType: formatMessage({
       defaultMessage: 'You need to select a project developer type',
       id: 'l2C1SN',
@@ -47,6 +43,8 @@ export default (page: number) => {
       defaultMessage: 'It must have a maximum of 500 characters',
       id: 'iS0axe',
     }),
+    website: formatMessage({ defaultMessage: 'Website must be a valid URL', id: 'Dm4fJl' }),
+    social_medias: formatMessage({ defaultMessage: 'It should be a valid account', id: 'mOUwuv' }),
   };
 
   const firstPageSchema = object().shape({
@@ -54,10 +52,15 @@ export default (page: number) => {
   });
 
   const secondPageSchema = object().shape({
-    picture: string().ensure(),
-    // .matches(base64Regex, { message: messages.picture.format })
-    // .required(messages.picture.required),
-    profile: string().required(messages.profile),
+    picture: mixed()
+      .required(messages.picture.required)
+      .test('haveOneFile', messages.picture.required, (value) => value?.length === 1)
+      .test(
+        'fileFormat',
+        messages.picture.format,
+        (value: FileList) => value.length && !!value[0].type.match(/image\/*/gi)
+      ),
+    name: string().required(messages.name),
     project_developer_type: string().ensure().required(messages.projectDeveloperType),
     entity_legal_registration_number: number()
       .typeError(messages.entityLegalRegistrationNumber.invalidFormat)
@@ -66,11 +69,27 @@ export default (page: number) => {
       .required(messages.entityLegalRegistrationNumber.required),
     about: string().max(500, messages.maxTextLength).required(messages.about),
     mission: string().max(500, messages.maxTextLength).required(messages.mission),
-    website: string(),
-    facebook: string(),
-    linkedin: string(),
-    instagram: string(),
-    twitter: string(),
+    website: string().url(messages.website),
+    facebook: string().test(
+      'isSocialMediaLink',
+      messages.social_medias,
+      (value) => !value || !!value.match(/https:\/\/facebook.com\/.*/)
+    ),
+    linkedin: string().test(
+      'isSocialMediaLink',
+      messages.social_medias,
+      (value) => !value || !!value.match(/https:\/\/linkedin.com\/.*/)
+    ),
+    instagram: string().test(
+      'isSocialMediaLink',
+      messages.social_medias,
+      (value) => !value || !!value.match(/https:\/\/instagram.com\/.*/)
+    ),
+    twitter: string().test(
+      'isSocialMediaLink',
+      messages.social_medias,
+      (value) => !value || !!value.match(/https:\/\/twitter.com\/.*/)
+    ),
   });
 
   const thirdPageSchema = object().shape({

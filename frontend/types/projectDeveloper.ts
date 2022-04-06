@@ -1,16 +1,17 @@
 import { SocialContactInputs } from 'containers/social-contact/inputs-social-contact/types';
+import { Enum } from './enums';
 
 export type ProjectDeveloperSetupForm = SocialContactInputs & {
-  picture: string;
-  profile: string;
+  language: Language;
+  picture: File;
+  name: string;
   project_developer_type: string;
   entity_legal_registration_number: string;
   about: string;
   mission: string;
   categories: Category[];
-  mosaics?: Mosaic[];
   impacts: Impact[];
-  language: Language;
+  mosaics?: Mosaic[];
 };
 
 export enum Language {
@@ -44,7 +45,7 @@ export type InterestItem = { name: string; id: string; color?: string; infoText?
 export type Interest = {
   name: keyof ProjectDeveloperSetupForm;
   title: string;
-  items: InterestItem[];
+  items: Enum[];
   infoText?: string;
   required?: boolean;
 };
