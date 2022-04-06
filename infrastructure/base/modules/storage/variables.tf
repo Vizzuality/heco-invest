@@ -23,3 +23,8 @@ variable "service_account_email" {
   type        = string
   description = "Email address of the service account to grant read/write permissions to"
 }
+
+variable "domain" {
+  type = string
+  description = "Domain for CORS config"
+}

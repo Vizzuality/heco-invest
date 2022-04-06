@@ -1,0 +1,79 @@
+[
+  {
+    "id": "academic",
+    "type": "project_developer_type",
+    "attributes": {
+      "name": "Academic"
+    }
+  },
+  {
+    "id": "business-cooperative",
+    "type": "project_developer_type",
+    "attributes": {
+      "name": "Business - Cooperative"
+    }
+  },
+  {
+    "id": "business-large-enterprise-corporation",
+    "type": "project_developer_type",
+    "attributes": {
+      "name": "Business - Large enterprise corporation"
+    }
+  },
+  {
+    "id": "business-sme-and-msme",
+    "type": "project_developer_type",
+    "attributes": {
+      "name": "Business - SME and MSME"
+    }
+  },
+  {
+    "id": "business-start-up-entrepreneur",
+    "type": "project_developer_type",
+    "attributes": {
+      "name": "Business - Start-up entrepreneur"
+    }
+  },
+  {
+    "id": "business-trade-or-business-association",
+    "type": "project_developer_type",
+    "attributes": {
+      "name": "Business - Trade or business association"
+    }
+  },
+  {
+    "id": "government-national",
+    "type": "project_developer_type",
+    "attributes": {
+      "name": "Government - National"
+    }
+  },
+  {
+    "id": "government-sub-national",
+    "type": "project_developer_type",
+    "attributes": {
+      "name": "Government - Sub-national"
+    }
+  },
+  {
+    "id": "public-private-organization-or-program",
+    "type": "project_developer_type",
+    "attributes": {
+      "name": "Public-private organization or program"
+    }
+  },
+  {
+    "id": "ngo",
+    "type": "project_developer_type",
+    "attributes": {
+      "name": "NGO"
+    }
+  },
+  {
+    "id": "iplc-organization",
+    "type": "project_developer_type",
+    "attributes": {
+      "name": "IPLC organization"
+    }
+  }
+]

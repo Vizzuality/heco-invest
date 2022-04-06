@@ -1,0 +1,34 @@
+[
+  {
+    "id": "biodiversity",
+    "type": "impact",
+    "attributes": {
+      "name": "Biodiversity",
+      "description": "Impact of projects on biodiversity conservation, calculated from indicators of endemism, land conservation/restoration, connectivity, and development of sustainable social projects."
+    }
+  },
+  {
+    "id": "climate",
+    "type": "impact",
+    "attributes": {
+      "name": "Climate",
+      "description": "Impact of projects that reduce carbon emissions from the land sector (deforestation/degradation), as wood and soil biomass as well as application of sustainable forest measures."
+    }
+  },
+  {
+    "id": "water",
+    "type": "impact",
+    "attributes": {
+      "name": "Water",
+      "description": "Impact of projects managing water cycling, quality and availability as well as the management of associated risks."
+    }
+  },
+  {
+    "id": "community",
+    "type": "impact",
+    "attributes": {
+      "name": "Community",
+      "description": "Impact of projects on ensuring and improving equal and inclusive physical, mental, economic, and spiritual health."
+    }
+  }
+]
