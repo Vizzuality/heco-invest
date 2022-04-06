@@ -20,6 +20,29 @@ zu:
       non-timber-forest-production:
         name: Non Timber Forest Production
         description: Production of health, wellness, and cosmetic products; art, clothing, and handcrafted products; production of food and drinks.
+    project_developer_type:
+      academic:
+        name: Academic
+      business-cooperative:
+        name: Business - Cooperative
+      business-large-enterprise-corporation:
+        name: Business - Large enterprise corporation
+      business-sme-and-msme:
+        name: Business - SME and MSME
+      business-start-up-entrepreneur:
+        name: Business - Start-up entrepreneur
+      business-trade-or-business-association:
+        name: Business - Trade or business association
+      government-national:
+        name: Government - National
+      government-sub-national:
+        name: Government - Sub-national
+      public-private-organization-or-program:
+        name: Public-private organization or program
+      ngo:
+        name: NGO
+      iplc-organization:
+        name: IPLC organization
     investor_type:
       investor:
         name: Investor

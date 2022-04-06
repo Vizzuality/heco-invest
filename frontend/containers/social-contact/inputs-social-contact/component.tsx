@@ -1,8 +1,9 @@
-import ErrorMessage from 'components/forms/error-message';
 import React from 'react';
 
 import { FieldValues, Path } from 'react-hook-form';
 import { useIntl } from 'react-intl';
+
+import ErrorMessage from 'components/forms/error-message';
 
 import Input from '../../../components/forms/input';
 import Label from '../../../components/forms/label';

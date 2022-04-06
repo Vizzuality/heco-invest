@@ -1,33 +1,33 @@
-name
-Amazonas
-Antioquia
-Arauca
-Atlántico
-Bolívar
-Boyacá
-Caldas
-Caquetá
-Casanare
-Cauca
-Cesar
-Chocó
-Córdoba
-Cundinamarca
-Guainía
-Guaviare
-Huila
-La Guajira
-Magdalena
-Meta
-Nariño
-Norte De Santander
-Putumayo
-Quindío
-Risaralda
-San Andrés Providencia Y Santa Catalina
-Santander
-Sucre
-Tolima
-Valle Del Cauca
-Vaupés
-Vichada
+name;code
+Nariño;52
+Putumayo;86
+Tolima;73
+Meta;50
+Cundinamarca;25
+Valle Del Cauca;76
+Quindío;63
+Vaupés;97
+Huila;41
+Cauca;19
+Guaviare;95
+Caquetá;18
+Guainía;94
+Antioquia;05
+Boyacá;15
+Caldas;17
+Casanare;85
+Chocó;27
+Risaralda;66
+Amazonas;91
+Vichada;99
+Santander;68
+Norte De Santander;54
+Sucre;70
+Bolívar;13
+Córdoba;23
+Magdalena;47
+Cesar;20
+Arauca;81
+Atlántico;08
+La Guajira;44
+San Andrés Providencia Y Santa Catalina;88

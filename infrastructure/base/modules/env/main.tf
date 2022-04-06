@@ -18,6 +18,7 @@ module "backend_gcr" {
   region     = var.gcp_region
   name       = "${var.project_name}-backend"
 }
+
 module "rails_secret_key_base" {
   source              = "../secret_value"
   region              = var.gcp_region
@@ -41,10 +42,21 @@ module "transifex_api_key" {
   use_random_value = false
 }
 
+module "sendgrid_api_key" {
+  source           = "../secret_value"
+  region           = var.gcp_region
+  key              = "${var.project_name}_sendgrid_api_key"
+  value            = var.sendgrid_api_key
+  use_random_value = false
+}
+
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN = var.transifex_token
-    NEXTAUTH_URL    = "https://${var.domain}"
+    NEXT_PUBLIC_FRONTEND_URL = "https://${var.domain}"
+    NEXT_PUBLIC_BACKEND_URL = "https://${var.domain}/backend"
+    NEXT_PUBLIC_GOOGLE_ANALYTICS = var.google_analytics_key
+    NEXT_PUBLIC_PROXY_BACKEND = "false"
   }
 }
 
@@ -91,20 +103,8 @@ module "frontend_cloudrun" {
   start_command      = "start:prod"
   vpc_connector_name = module.network.vpc_access_connector_name
   database           = module.database.database
-  env_vars           = [
-    {
-      name  = "NEXT_PUBLIC_API_URL"
-      value = "https://${var.domain}/backend"
-    },
-    {
-      name  = "NEXT_PUBLIC_GOOGLE_ANALYTICS"
-      value = var.google_analytics_key
-    },
-    {
-      name  = "NEXT_PUBLIC_DOMAIN"
-      value = "https://${var.domain}"
-    }
-  ]
+  min_scale          = var.frontend_min_scale
+  max_scale          = var.frontend_max_scale
 }
 
 module "backend_cloudrun" {
@@ -117,6 +117,8 @@ module "backend_cloudrun" {
   start_command      = "start"
   vpc_connector_name = module.network.vpc_access_connector_name
   database           = module.database.database
+  min_scale          = var.backend_min_scale
+  max_scale          = var.backend_max_scale
   secrets            = [
     {
       name        = "SECRET_KEY_BASE"
@@ -127,6 +129,9 @@ module "backend_cloudrun" {
     }, {
       name        = "TX_TOKEN"
       secret_name = module.transifex_api_key.secret_name
+    }, {
+      name        = "SMTP_PASSWORD"
+      secret_name = module.sendgrid_api_key.secret_name
     }
   ]
   env_vars = [
@@ -161,6 +166,26 @@ module "backend_cloudrun" {
     {
       name  = "TEST_PUBSUB_SUBSCRIPTION"
       value = module.test_pubsub.subscription_name
+    },
+    {
+      name  = "SMTP_USERNAME"
+      value = "apikey"
+    },
+    {
+      name  = "SMTP_HOST"
+      value = "smtp.sendgrid.net"
+    },
+    {
+      name  = "SMTP_PORT"
+      value = 587
+    },
+    {
+      name  = "MAILER_DEFAULT_HOST"
+      value = var.domain
+    },
+    {
+      name  = "MAILER_DEFAULT_FROM"
+      value = "agnieszka.figiel@vizzuality.com"
     }
   ]
 }
@@ -182,6 +207,13 @@ module "database" {
   database_user     = "heco"
   database_password = module.postgres_application_user_password.secret_value
   network_id        = module.network.network_id
+}
+
+module "bastion" {
+  source          = "../bastion"
+  name            = var.project_name
+  project_id      = var.gcp_project_id
+  subnetwork_name = module.network.subnetwork_name
 }
 
 module "test_pubsub" {

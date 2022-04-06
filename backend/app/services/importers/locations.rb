@@ -29,14 +29,14 @@ module Importers
 
     def import_departments!
       data = CSV.parse(File.read(departments_file_path), headers: true, col_sep: ";").map do |row|
-        {name_en: row["name"], parent_id: country.id, location_type: "department"}
+        {name_en: row["name"], parent_id: country.id, code: row["code"], location_type: "department"}
       end
       Location.insert_all data
     end
 
     def import_municipalities!
       data = CSV.parse(File.read(municipalities_file_path), headers: true, col_sep: ";").map do |row|
-        {name_en: row["name"], parent_id: departments[row["department"]].first.id, location_type: "municipality"}
+        {name_en: row["name"], parent_id: departments[row["department"]].first.id, code: row["code"], location_type: "municipality"}
       end
       Location.insert_all data
     end

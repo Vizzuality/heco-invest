@@ -1,4 +1,5 @@
 import { SocialContactInputs } from 'containers/social-contact/inputs-social-contact/types';
+
 import { Enum } from './enums';
 
 export type ProjectDeveloperSetupForm = SocialContactInputs & {
