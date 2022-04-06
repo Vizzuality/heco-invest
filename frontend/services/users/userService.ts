@@ -4,7 +4,7 @@ import { AxiosResponse, AxiosError } from 'axios';
 
 import { SignupDto } from 'types/signup';
 
-import USERS from '.';
+import API from '../api';
 
 export function useSignup(): UseMutationResult<
   AxiosResponse<SignupDto>,
@@ -13,7 +13,7 @@ export function useSignup(): UseMutationResult<
   unknown
 > {
   const signup = async (dto: SignupDto): Promise<AxiosResponse<SignupDto>> => {
-    return await USERS.post('/signup', dto);
+    return await API.post('/api/v1/user', dto);
   };
   return useMutation(signup);
 }

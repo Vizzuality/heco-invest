@@ -1,133 +1,45 @@
 import { QueryClient } from 'react-query';
 
-import type { GetServerSidePropsContext } from 'next';
-import { getSession } from 'next-auth/client';
 import { dehydrate } from 'react-query/hydration';
 
-import USERS from 'services/users';
+import API from 'services/api';
 
-type AuthProps = {
-  // TO-DO: change to a better type definition using Next types
-  redirect?: {
-    destination: string;
-    permanent: boolean;
-  };
-  props?: Record<string, unknown>;
-};
-
-type AuthHOC = (context: GetServerSidePropsContext, session?: unknown) => Promise<AuthProps>;
-
-export function withProtection(getServerSidePropsFunc?: AuthHOC) {
-  return async (context: GetServerSidePropsContext): Promise<AuthProps> => {
-    const session = await getSession(context);
+export function withProtection() {
+  return async (context: any) => {
+    const queryClient = new QueryClient();
+    // remember to proxy cookies
+    await queryClient.prefetchQuery('user', () =>
+      API.get('/api/v1/', {
+        headers: {
+          Cookie: context.req.headers.cookie || '',
+        },
+      })
+        .then((response) => {
+          context.res.setHeader('set-cookie', response.headers['set-cookie']);
+          return response.data;
+        })
+        .catch((error) => {
+          if (error.response.headers['set-cookie']) {
+            context.res.setHeader('set-cookie', error.response.headers['set-cookie']);
+          }
+        })
+    );
+    const user = queryClient.getQueryData('user');
     const { resolvedUrl } = context;
 
-    if (!session) {
+    if (!user) {
       return {
         redirect: {
-          destination: `/auth/sign-in?callbackUrl=${resolvedUrl}`, // referer url, path from node
+          destination: `/sign-in?callbackUrl=${resolvedUrl}`, // I know missing language
           permanent: false,
         },
       };
     }
 
-    if (getServerSidePropsFunc) {
-      const SSPF = await getServerSidePropsFunc(context, session);
-
-      return {
-        props: {
-          session,
-          ...SSPF.props,
-        },
-      };
-    }
-
     return {
       props: {
-        session,
-      },
-    };
-  };
-}
-
-export function withUser(getServerSidePropsFunc?: AuthHOC) {
-  return async (context: GetServerSidePropsContext): Promise<AuthProps> => {
-    const session = await getSession(context);
-
-    if (!session) {
-      if (getServerSidePropsFunc) {
-        const SSPF = (await getServerSidePropsFunc(context)) || {};
-
-        return {
-          props: {
-            ...SSPF.props,
-          },
-        };
-      }
-
-      return {
-        props: {},
-      };
-    }
-
-    const queryClient = new QueryClient();
-
-    await queryClient.prefetchQuery('me', () =>
-      USERS.request({
-        method: 'GET',
-        url: '/me',
-        headers: {
-          Authorization: `Bearer ${session.accessToken}`,
-        },
-      }).then((response) => response.data)
-    );
-
-    if (getServerSidePropsFunc) {
-      const SSPF = (await getServerSidePropsFunc(context)) || {};
-
-      return {
-        props: {
-          session,
-          dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
-          ...SSPF.props,
-        },
-      };
-    }
-
-    return {
-      props: {
-        session,
         dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
       },
-    };
-  };
-}
-
-export function withoutProtection(getServerSidePropsFunc?: AuthHOC) {
-  return async (context: GetServerSidePropsContext): Promise<AuthProps> => {
-    const session = await getSession(context);
-
-    if (session) {
-      return {
-        redirect: {
-          destination: '/projects',
-          permanent: false,
-        },
-      };
-    }
-
-    if (getServerSidePropsFunc) {
-      const SSPF = await getServerSidePropsFunc(context);
-
-      return {
-        props: {
-          ...SSPF.props,
-        },
-      };
-    }
-
-    return {
-      props: {},
     };
   };
 }

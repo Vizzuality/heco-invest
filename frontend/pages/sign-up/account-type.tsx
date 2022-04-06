@@ -1,6 +1,7 @@
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
@@ -21,9 +22,11 @@ export async function getServerSideProps(ctx) {
 
 const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
   const intl = useIntl();
+  const { push } = useRouter();
 
   const handleAccountTypeSelected = (accountType: AccountType) => {
     // TODO: Handle account type selected
+    if (accountType === 'project-developer') push('/project-developers/new');
   };
 
   return (

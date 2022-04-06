@@ -39,12 +39,13 @@ Contains multiple GCP resources needed for running HeCo on GCP.
 These resources include, but are not limited to:
 - <TBD>
 
-To apply this project, you will need the following GCP permissions:
+To apply this project, you will need the following GCP permissions. These could probably be further fleshed out to a
+more restrictive set of permissions/roles, but this combination is know to work:
 - "Editor" role
 - "Secret Manager Admin" role
 - "Cloud Run Admin" role
-- "resourcemanager.projects.setIamPolicy"
-
+- "Compute Network Admin" role
+- "Security Admin" role
 
 The output values include access data for some of the resources above.
 
@@ -62,6 +63,21 @@ Secrets with the corresponding values:
 Deploying the included Terraform project is done in steps:
 - Terraform `apply` the `Remote State` project.
 - Terraform `apply` the `Base` project.
-- <TBD>
 
+
+## Maintenance
+
+### Connecting to the Cloud SQL databases
+
+In case you need to access the Postgres database for the app, running in Cloud SQL, you can follow these steps.
+This is a slimmed down version of [this guide](https://medium.com/google-cloud/cloud-sql-with-private-ip-only-the-good-the-bad-and-the-ugly-de4ac23ce98a)
+
+- (one time per user) Run `gcloud compute ssh staging-heco-bastion` to SSH into the bastion host
+- (one time per bastion host) Inside the bastion host, download the [Cloud SQL Auth proxy](https://cloud.google.com/sql/docs/postgres/sql-proxy), 
+apply `chmod a+x` and make sure it's in an executable path.
+- (when connecting) Run `gcloud compute start-iap-tunnel <bastion instance name> 22   --local-host-port=localhost:4226` 
+locally. This will start a tunnel, which you must keep open for the duration of your access to the SQL database 
+- (when connecting) Run `ssh -L 3306:localhost:3306 -i ~/.ssh/google_compute_engine -p 4226 localhost -- cloud_sql_proxy -instances=<sql instance connection name>=tcp:3306`
+  locally. This will start a 2nd tunnel, which you must also keep open for the duration of your access to the SQL database
+- The remote Postgres database is now reachable on `localhost:3006`
 

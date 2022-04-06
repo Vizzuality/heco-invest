@@ -43,4 +43,14 @@ module.exports = {
 
     return config;
   },
+  async rewrites() {
+    if (process.env.NEXT_PUBLIC_PROXY_BACKEND !== 'true') return [];
+
+    return [
+      {
+        source: '/backend/:path*',
+        destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/:path*`,
+      },
+    ];
+  },
 };

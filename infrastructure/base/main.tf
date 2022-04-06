@@ -1,7 +1,9 @@
 terraform {
   backend "gcs" {
-    bucket = "heco-tf-state" // TF does not allow vars here. Use the value from var.bucket_name from the remote-state project
-    prefix = "state" // TF does not allow vars here. Use the value from var.tf_state_prefix
+    // TF does not allow vars here. Use the value from var.bucket_name from the remote-state project
+    bucket = "heco-tf-state"
+    // TF does not allow vars here. Use the value from var.tf_state_prefix
+    prefix = "state"
   }
 }
 
@@ -16,6 +18,7 @@ module "staging" {
   google_analytics_key = var.google_analytics_key
   project_name         = var.staging_project_name
   transifex_token      = var.transifex_token
+  sendgrid_api_key     = var.sendgrid_api_key
 }
 
 module "production" {
@@ -29,4 +32,7 @@ module "production" {
   google_analytics_key = var.google_analytics_key
   project_name         = var.production_project_name
   transifex_token      = var.transifex_token
+  sendgrid_api_key     = var.sendgrid_api_key
+  frontend_min_scale   = 1
+  backend_min_scale    = 1
 }

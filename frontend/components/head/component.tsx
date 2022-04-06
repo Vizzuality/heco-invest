@@ -36,13 +36,13 @@ export const Head: React.FC<HeadProps> = ({
           key={locale}
           rel="alternate"
           hrefLang={locale}
-          href={`${process.env.NEXT_PUBLIC_DOMAIN}/${locale}${asPath}`}
+          href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${locale}${asPath}`}
         />
       ))}
       <link
         rel="alternate"
         hrefLang="x-default"
-        href={`${process.env.NEXT_PUBLIC_DOMAIN}${asPath}`}
+        href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}${asPath}`}
       />
 
       {/* <meta name="twitter:card" content="summary" />

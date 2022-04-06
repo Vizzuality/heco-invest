@@ -1,5 +1,5 @@
-name;department
-Leticia;Amazonas
-Puerto Nariño;Amazonas
-Abejorral;Antioquia
-Abriaquí;Antioquia
+name;department;code
+Leticia;Amazonas;100
+Puerto Nariño;Amazonas;200
+Abejorral;Antioquia;300
+Abriaquí;Antioquia;400

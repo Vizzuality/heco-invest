@@ -121,6 +121,83 @@
       }
     },
     {
+      "id": "IGNORED",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Academic"
+      }
+    },
+    {
+      "id": "IGNORED",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Cooperative"
+      }
+    },
+    {
+      "id": "IGNORED",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Large enterprise corporation"
+      }
+    },
+    {
+      "id": "IGNORED",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - SME and MSME"
+      }
+    },
+    {
+      "id": "IGNORED",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Start-up entrepreneur"
+      }
+    },
+    {
+      "id": "IGNORED",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Trade or business association"
+      }
+    },
+    {
+      "id": "IGNORED",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Government - National"
+      }
+    },
+    {
+      "id": "IGNORED",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Government - Sub-national"
+      }
+    },
+    {
+      "id": "IGNORED",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Public-private organization or program"
+      }
+    },
+    {
+      "id": "IGNORED",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "NGO"
+      }
+    },
+    {
+      "id": "IGNORED",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "IPLC organization"
+      }
+    },
+    {
       "id": "investor",
       "type": "investor_type",
       "attributes": {
