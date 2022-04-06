@@ -12,6 +12,7 @@ export const Tooltip: FC<TooltipProps> = ({
   content,
   arrow,
   maxWidth,
+  arrowClassName,
   ...props
 }: TooltipProps) => {
   const springConfig: SpringOptions = { damping: 15, stiffness: 300 };
@@ -43,7 +44,7 @@ export const Tooltip: FC<TooltipProps> = ({
           <div className="relative">
             {content}
 
-            {arrow && <Arrow data-popper-arrow="" {...attrs} />}
+            {arrow && <Arrow className={arrowClassName} data-popper-arrow="" {...attrs} />}
           </div>
         </motion.div>
       )}

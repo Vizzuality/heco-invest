@@ -6,7 +6,7 @@ import { loadI18nMessages } from 'helpers/i18n';
 import ProfileHeader from 'containers/profile-header';
 import SDGs, { SDGType } from 'containers/sdgs';
 import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
-import { SocialType } from 'containers/website-social-contact';
+import { SocialType } from 'containers/social-contact/website-social-contact';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';

@@ -35,6 +35,7 @@ export const MultiPageLayoutFooterPaging: FC<MultiPageLayoutFooterPagingProps> =
 
           return (
             <button
+              key={page}
               aria-label={intl.formatMessage(
                 {
                   defaultMessage: 'Go to page {pageNumber}',

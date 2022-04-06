@@ -8,7 +8,8 @@ import Link from 'next/link';
 
 import Icon from 'components/icon';
 
-import { SOCIAL_DATA } from './constants';
+import { SOCIAL_DATA } from '../constants';
+
 import type { WebsiteSocialContactProps, SocialType } from './types';
 
 export const WebsiteSocialContact: FC<WebsiteSocialContactProps> = ({
@@ -61,8 +62,8 @@ export const WebsiteSocialContact: FC<WebsiteSocialContactProps> = ({
           <span className="flex items-center gap-2">
             {social.map(({ id, url }: SocialType) => {
               const socialItem = SOCIAL_DATA.find((sd) => sd.id === id);
-              const { icon, title } = socialItem;
               if (!socialItem) return null;
+              const { icon, title } = socialItem;
               return (
                 <Link key={id} href={url}>
                   <a

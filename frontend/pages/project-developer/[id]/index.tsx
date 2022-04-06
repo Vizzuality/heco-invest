@@ -8,8 +8,8 @@ import { loadI18nMessages } from 'helpers/i18n';
 
 import ProfileHeader from 'containers/profile-header';
 import ProjectCard from 'containers/project-card';
+import { SocialType } from 'containers/social-contact/website-social-contact';
 import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
-import { SocialType } from 'containers/website-social-contact';
 
 import Carousel, { Slide } from 'components/carousel';
 import Head from 'components/head';

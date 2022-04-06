@@ -1,6 +1,6 @@
 export interface LabelProps {
   htmlFor?: string;
-  theme?: 'dark' | 'light';
+  id?: string;
   children: React.ReactNode;
   className?: string;
 }

@@ -7,7 +7,7 @@ import cx from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import WebsiteSocialContact from 'containers/website-social-contact';
+import WebsiteSocialContact from 'containers/social-contact/website-social-contact';
 
 import type { DeveloperAboutProps } from './types';
 

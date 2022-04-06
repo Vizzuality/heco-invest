@@ -5,8 +5,6 @@ import {
   Instagram as InstagramIcon,
 } from 'react-feather';
 
-import { SocialType } from './types';
-
 export const SOCIAL_DATA = [
   {
     id: 'twitter',
@@ -19,7 +17,7 @@ export const SOCIAL_DATA = [
     icon: FacebookIcon,
   },
   {
-    id: 'linked-in',
+    id: 'linkedin',
     title: 'LinkedIn',
     icon: LinkedinIcon,
   },

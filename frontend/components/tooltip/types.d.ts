@@ -4,4 +4,5 @@ import { TippyProps } from '@tippyjs/react/headless';
 
 export interface TooltipProps extends TippyProps {
   children: ReactElement;
+  arrowClassName?: string;
 }

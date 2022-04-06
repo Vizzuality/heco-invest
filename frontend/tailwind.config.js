@@ -48,6 +48,7 @@ module.exports = {
         tourism: '#4492E5',
         production: '#404B9A',
         agrosystems: '#E7C343',
+        human: '#A0616A',
       },
       current: 'currentColor',
     },
@@ -64,7 +65,10 @@ module.exports = {
     },
     extend: {
       spacing: {
+        1.75: '0.4375rem',
         4.5: '1.125rem',
+        6.5: '1.625rem',
+        64: '16rem',
       },
       borderRadius: {
         '4xl': '2rem',

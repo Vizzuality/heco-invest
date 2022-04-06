@@ -1,0 +1,12 @@
+[
+  { "name": "Tourism and recreation", "id": "tourism_and_recreation", "color": "tourism", "infoText": "Accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects." },
+  { "name": "Forestry and agroforestry", "id": "forestry_and_agroforestry", "color": "forestry", "infoText": "Sustainable timber extraction and forest management practices, including reforestation and restoration." },
+  { "name": "Sustainable agrosystems", "id": "sustainable_agrosystems", "color": "agrosystems", "infoText": "Sustainable and regenerative agriculture, fishing, and aquaculture  as well as manufacturing of derived subproducts." },
+  {
+    "name": "Non-timber forest production",
+    "id": "non_timber_forest_production",
+    "color": "production",
+    "infoText": "Production of health, wellness, and cosmetic products; art, clothing, and  handcrafted products; production of food and drinks."
+  },
+  { "name": "Human capital and inclusion", "id": "human_capital_and_inclusion", "color": "human", "infoText": "Pending" }
+]

@@ -1,0 +1,6 @@
+[
+  { "name": "Academic", "id": "academic" },
+  { "name": "Cooperative", "id": "cooperative" },
+  { "name": "SME and MSME", "id": "sme_msme" },
+  { "name": "Start-up", "id": "start_up" }
+]

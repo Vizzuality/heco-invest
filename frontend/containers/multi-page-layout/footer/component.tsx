@@ -78,6 +78,7 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
                 <Button
                   className="px-3 py-2 leading-none md:px-8 md:py-4"
                   size="base"
+                  type="submit"
                   onClick={onNextClick}
                 >
                   {nextButtonText ? (
