@@ -36,7 +36,7 @@ resource "google_cloudbuild_trigger" "build_trigger" {
     owner = var.github_org
     name  = var.github_project
     push {
-      branch = var.github_branch
+      branch = "^${var.github_branch}$"
     }
   }
 
