@@ -99,7 +99,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               if (!errorPages.includes(index)) {
                 errorPages.push(index);
               }
-              console.log(field);
               setError(field, { message: errorMessage, type: 'onChange' });
             }
           });
