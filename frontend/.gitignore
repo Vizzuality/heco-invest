@@ -15,9 +15,6 @@
 # production
 /build
 
-# compiled languages
-/languages/compiled
-
 # tailwind styles
 /public/styles/
 
