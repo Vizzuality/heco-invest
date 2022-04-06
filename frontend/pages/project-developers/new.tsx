@@ -30,7 +30,7 @@ import languages from 'locales.config.json';
 import mosaic from 'mockups/mosaics.json';
 import { PageComponent } from 'types';
 import { Enum } from 'types/enums';
-import { Interest, InterestItem, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
+import { ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 import useProjectDeveloperValidation, { formPageInputs } from 'validations/projectDeveloper';
 
 import { useCreateProjectDeveloper } from 'services/account';
@@ -52,7 +52,7 @@ type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 const getItemsInfoText = (items: Enum[]) => {
   return (
     <ul>
-      {items.map(({ attributes: { name, description }, id }) => (
+      {items?.map(({ attributes: { name, description }, id }) => (
         <li key={id}>
           <p className="font-sans text-sm font-semibold text-white">{name}</p>
           <p className="mb-4 font-sans text-sm font-normal text-white">{description}</p>
@@ -70,7 +70,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
   const { push } = useRouter();
   const createProjectDeveloper = useCreateProjectDeveloper();
   const enums = useQuery('enums', getEnums);
-  const { category, impact, project_developer_type } = useGroupedEnums(enums.data);
+  const { category, impact, project_developer_type } = useGroupedEnums(enums?.data);
   const interests = useInterests(category, impact, mosaic);
   const {
     register,

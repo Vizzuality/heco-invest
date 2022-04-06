@@ -3,7 +3,6 @@ import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
 import { Enum } from 'types/enums';
-import { Interest } from 'types/projectDeveloper';
 
 const useInterests = (category: Enum[], impact: Enum[], mosaic: Enum[]) => {
   const { formatMessage } = useIntl();
