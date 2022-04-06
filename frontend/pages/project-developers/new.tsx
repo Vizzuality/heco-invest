@@ -161,6 +161,25 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     return formPageInputs[page].some((input) => errors.hasOwnProperty(input));
   };
 
+  const getAlert = () => {
+    if (createProjectDeveloper.error) {
+      return Array.isArray(createProjectDeveloper.error?.message)
+        ? createProjectDeveloper.error.message.map(({ title }: { title: string }) => title)
+        : formatMessage({
+            defaultMessage:
+              'Something went wrong while submitting your form. Please correct the errors before submitting again.',
+            id: 'WTuVeL',
+          });
+    }
+    // if (enums.error) {
+    //   return formatMessage({
+    //     defaultMessage:
+    //       'Something went wrong while submitting your form. Please correct the errors before submitting again.',
+    //     id: 'WTuVeL',
+    //   });
+    // }
+  };
+
   return (
     <>
       <Head
@@ -171,17 +190,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
         title={formatMessage({ defaultMessage: 'Setup project developer’s account', id: 'bhxvPM' })}
         autoNavigation={false}
         page={currentPage}
-        alert={
-          createProjectDeveloper.error
-            ? Array.isArray(createProjectDeveloper.error?.message)
-              ? createProjectDeveloper.error.message.map(({ title }: { title: string }) => title)
-              : formatMessage({
-                  defaultMessage:
-                    'Something went wrong while submitting your form. Please correct the errors before submitting again.',
-                  id: 'WTuVeL',
-                })
-            : null
-        }
+        alert={getAlert()}
         isSubmitting={createProjectDeveloper.isLoading}
         showOutro={false}
         onNextClick={handleNextClick}

@@ -19,7 +19,7 @@
 /public/styles/
 
 # languages
-/lang/compiled
+/lang/compiled/
 
 # misc
 .DS_Store
