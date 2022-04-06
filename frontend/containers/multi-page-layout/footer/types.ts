@@ -1,5 +1,3 @@
-import { string } from 'yup/lib/locale';
-
 export interface MultiPageLayoutFooterProps {
   /** Classnames to apply to container */
   className?: string;

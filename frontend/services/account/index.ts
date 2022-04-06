@@ -27,7 +27,7 @@ export function useCreateProjectDeveloper(): UseMutationResult<
 
     const config: AxiosRequestConfig = {
       method: 'POST',
-      url: 'api/v1/account/project_developer',
+      url: '/api/v1/account/project_developer',
       headers: {
         'Content-Type': 'multipart/form-data',
       },
