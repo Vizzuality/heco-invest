@@ -14,6 +14,12 @@ resource "google_storage_bucket" "storage_bucket" {
   force_destroy = true
   storage_class = var.storage_class
 
+  cors {
+    origin          = ["https://${var.domain}"]
+    method          = ["GET", "HEAD", "PUT", "POST"]
+    response_header = ["*"]
+    max_age_seconds = 3600
+  }
   versioning {
     enabled = true
   }
