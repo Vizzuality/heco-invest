@@ -1,4 +1,4 @@
-import { UseFormRegister, RegisterOptions, FieldPath } from 'react-hook-form';
+import { UseFormRegister, RegisterOptions, FieldPath, FormState } from 'react-hook-form';
 
 export type SocialContactInputs = {
   website: string;
@@ -13,4 +13,6 @@ export interface InputSocialContactProps<FormValues> {
   register: UseFormRegister<FormValues>;
   /** Options for React Hook Form's `register` function */
   registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
+  /** Form validation errors */
+  errors?: FormState<FormValues>['errors'];
 }

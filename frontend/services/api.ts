@@ -31,7 +31,9 @@ const onResponseSuccess = (response) => {
 
 const onResponseError = (error) => {
   if (error.response.data?.errors?.length > 0) {
-    return Promise.reject({ message: error.response.data.errors });
+    return Promise.reject<{ message: { title: string }[] }>({
+      message: error.response.data.errors,
+    });
   }
 
   return Promise.reject(error);

@@ -6,6 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+import { AxiosError } from 'axios';
 import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -27,6 +28,7 @@ import impacts from 'mockups/impacts.json';
 import mosaics from 'mockups/mosaics.json';
 import projectDeveloperTypes from 'mockups/projectDeveloperTypes.json';
 import { PageComponent } from 'types';
+import { Enum } from 'types/enums';
 import { Interest, InterestItem, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 import useProjectDeveloperValidation, { formPageInputs } from 'validations/projectDeveloper';
 
@@ -42,13 +44,13 @@ export async function getStaticProps(ctx) {
 
 type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const getItemsInfoText = (items: InterestItem[]) => {
+const getItemsInfoText = (items: Enum[]) => {
   return (
     <ul>
-      {items.map(({ name, infoText }) => (
-        <li key={name}>
+      {items.map(({ attributes: { name, description }, id }) => (
+        <li key={id}>
           <p className="font-sans text-sm font-semibold text-white">{name}</p>
-          <p className="mb-4 font-sans text-sm font-normal text-white">{infoText}</p>
+          <p className="mb-4 font-sans text-sm font-normal text-white">{description}</p>
         </li>
       ))}
     </ul>
@@ -58,8 +60,6 @@ const getItemsInfoText = (items: InterestItem[]) => {
 const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [imagePreview, setImagePreview] = useState('');
-  const [imageBase64, setImageBase64] = useState('');
-  const [hasErrors, setHasErrors] = useState(false);
   const { formatMessage } = useIntl();
   const resolver = useProjectDeveloperValidation(currentPage);
   const { push } = useRouter();
@@ -69,26 +69,57 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     handleSubmit,
     formState: { errors },
     control,
+    setError,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
-    defaultValues: { picture: '', categories: [], impacts: [], mosaics: [] },
+    defaultValues: { categories: [], impacts: [], mosaics: [] },
     shouldUseNativeValidation: true,
     shouldFocusError: true,
     reValidateMode: 'onChange',
   });
 
+  const handleServiceErrors = useCallback(
+    (
+      error: AxiosError<{
+        message: {
+          title: string;
+        }[];
+      }>
+    ) => {
+      const errors: string[] = Array.isArray(error.message)
+        ? error.message.map(({ title }) => title)
+        : [error.message];
+      let errorPages: number[] = [];
+      errors.forEach((errorMessage) => {
+        formPageInputs.forEach((fields, index) => {
+          return fields.forEach((field: any) => {
+            const transformedFieldName = field.replace('_', ' ');
+
+            if (errorMessage.toLowerCase().includes(transformedFieldName)) {
+              if (!errorPages.includes(index)) {
+                errorPages.push(index);
+              }
+              setError(field, { message: errorMessage, type: 'onChange' });
+            }
+          });
+        });
+      });
+      if (errorPages.length) {
+        setCurrentPage(errorPages[0]);
+      }
+    },
+    [setError]
+  );
+
   const handleCreate = useCallback(
     (data: ProjectDeveloperSetupForm) =>
       createProjectDeveloper.mutate(data, {
-        onError: (error) => {
-          setHasErrors(true);
-          // handle service errors
-        },
+        onError: handleServiceErrors,
         onSuccess: () => {
-          push('/project-developer/pending');
+          push('/project-developers/pending');
         },
       }),
-    [createProjectDeveloper, push]
+    [createProjectDeveloper, push, handleServiceErrors]
   );
 
   const onSubmit: SubmitHandler<ProjectDeveloperSetupForm> = (values) => {
@@ -113,8 +144,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-        setImageBase64(reader.result.toString());
-        // send image to api
         setImagePreview(src);
       };
     }
@@ -166,13 +195,14 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
         autoNavigation={false}
         page={currentPage}
         alert={
-          hasErrors
-            ? createProjectDeveloper.error.message ||
-              formatMessage({
-                defaultMessage:
-                  'Something went wrong while submitting your form. Please correct the errors before submitting again.',
-                id: 'WTuVeL',
-              })
+          createProjectDeveloper.error
+            ? Array.isArray(createProjectDeveloper.error?.message)
+              ? createProjectDeveloper.error.message.map(({ title }: { title: string }) => title)
+              : formatMessage({
+                  defaultMessage:
+                    'Something went wrong while submitting your form. Please correct the errors before submitting again.',
+                  id: 'WTuVeL',
+                })
             : null
         }
         isSubmitting={createProjectDeveloper.isLoading}
@@ -284,7 +314,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   name="picture"
                   type="file"
                   accept="image/png, image/jpeg"
-                  required
                   {...register('picture')}
                   onChange={handleUploadImage}
                   aria-describedby="picture-error"
@@ -298,7 +327,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 <Label htmlFor="profile">
                   <FormattedMessage defaultMessage="Profile name" id="s+n2ku" />
                   <Input
-                    name="profile"
+                    name="name"
                     className="mt-2.5"
                     aria-required
                     id="profile"
@@ -311,7 +340,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     aria-describedby="profile-error"
                   />
                 </Label>
-                <ErrorMessage id="profile-error" errorText={errors?.profile?.message} />
+                <ErrorMessage id="profile-error" errorText={errors?.name?.message} />
               </div>
               <div className="md:w-1/2">
                 <Label htmlFor="project-developer-type" id="project-developer-type-label">
@@ -330,7 +359,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     aria-describedby="project-developer-type-error"
                     aria-labelledby="project-developer-type-label"
                   >
-                    {projectDeveloperTypes.map(({ name, id }) => (
+                    {projectDeveloperTypes.map(({ attributes: { name }, id }) => (
                       <Option key={id}>{name}</Option>
                     ))}
                   </Combobox>
@@ -416,7 +445,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 <FormattedMessage defaultMessage="Online presence" id="NjKSap" />
               </p>
             </div>
-            <SocialMediaImputs register={register} />
+            <SocialMediaImputs errors={errors} register={register} />
           </form>
         </Page>
         <Page hasErrors={getPageErrors(2)}>
@@ -451,7 +480,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                             value={item.id}
                             aria-describedby={`${name}-error`}
                           />
-                          <span className="ml-1">{item.name}</span>
+                          <span className="ml-1">{item.attributes.name}</span>
                         </Label>
                       </div>
                     ))}

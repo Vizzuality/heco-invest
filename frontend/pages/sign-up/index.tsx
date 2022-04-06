@@ -108,9 +108,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
                 register={register}
               />
             </label>
-            {errors.first_name && (
-              <ErrorMessage id="first-name-error">{errors.first_name.message}</ErrorMessage>
-            )}
+            <ErrorMessage id="first-name-error" errorText={errors.first_name?.message} />
           </div>
           <div className="w-full">
             <label htmlFor="last-name">
@@ -129,9 +127,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
                 register={register}
               />
             </label>
-            {errors.last_name && (
-              <ErrorMessage id="last-name-error">{errors.last_name.message}</ErrorMessage>
-            )}
+            <ErrorMessage id="last-name-error" errorText={errors.last_name?.message} />
           </div>
         </div>
         <div className="w-full">
@@ -175,7 +171,10 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
               className="mt-1 font-sans text-xs text-gray-400 font-regular"
               id="password-description"
             >
-              <FormattedMessage defaultMessage="Use at least 8 characters." id="BvrO01" />
+              <FormattedMessage
+                defaultMessage="Use at least 12 characters, one uppercase letter, one lowercase letter and one number."
+                id="MF4b8Z"
+              />
             </p>
             <ErrorMessage id="password-error" errorText={errors.password?.message} />
           </div>
@@ -196,11 +195,10 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
                 register={register}
               />
             </label>
-            {errors.confirm_password && (
-              <ErrorMessage id="confirm-password-error">
-                {errors.confirm_password.message}
-              </ErrorMessage>
-            )}
+            <ErrorMessage
+              id="confirm-password-error"
+              errorText={errors.confirm_password?.message}
+            />
           </div>
         </div>
         <div className="w-full mt-8">
@@ -218,9 +216,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
               />
             </span>
           </label>
-          {errors.accept_terms && (
-            <ErrorMessage id="accept-terms-error">{errors.accept_terms.message}</ErrorMessage>
-          )}
+          <ErrorMessage id="accept-terms-error" errorText={errors.accept_terms?.message} />
         </div>
         <div className="flex justify-center mt-14">
           <button

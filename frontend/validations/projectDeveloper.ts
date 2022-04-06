@@ -10,7 +10,7 @@ export const formPageInputs = [
   ['languages'],
   [
     'picture',
-    'profile',
+    'name',
     'project-developer-type',
     'entity-legal-registration-number',
     'about',
