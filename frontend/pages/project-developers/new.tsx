@@ -171,14 +171,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
             id: 'WTuVeL',
           });
     }
-    // if (enums.error) {
-    //   return formatMessage({
-    //     defaultMessage:
-    //       'Something went wrong while submitting your form. Please correct the errors before submitting again.',
-    //     id: 'WTuVeL',
-    //   });
-    // }
   };
+
+  const enumError =
+    enums.isError && formatMessage({ defaultMessage: 'Unable to load the data', id: 'zniaka' });
 
   return (
     <>
@@ -204,7 +200,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
             <h1 className="mb-6 font-serif text-3xl font-semibold text-green-dark">
               <FormattedMessage defaultMessage="I want to write my content in" id="APjPYs" />
             </h1>
-
             <div>
               <fieldset className="flex justify-center mt-2 gap-x-6">
                 <legend>
@@ -267,7 +262,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 />
               </p>
             </div>
-
             <div className="mb-6.5">
               <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
                 <FormattedMessage defaultMessage="General" id="1iEPTM" />
@@ -303,7 +297,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   {...register('picture')}
                   onChange={handleUploadImage}
                   aria-describedby="picture-error"
-                  // value={imageName}
                 />
               </div>
               <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
@@ -351,7 +344,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   </Combobox>
                 </Label>
                 <ErrorMessage
-                  errorText={errors?.project_developer_type?.message}
+                  errorText={enumError || errors?.project_developer_type?.message}
                   id="project-developer-type-error"
                 />
               </div>
@@ -474,7 +467,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 </fieldset>
                 <ErrorMessage
                   id={`${name}-error`}
-                  errorText={(errors[name] as FieldError)?.message}
+                  errorText={enumError || (errors[name] as FieldError)?.message}
                 />
               </div>
             ))}
