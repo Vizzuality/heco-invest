@@ -16,9 +16,10 @@ import Checkbox from 'components/forms/checkbox';
 import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Loading from 'components/loading';
+import { Paths } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
-import { SignupDto, SignupFormI } from 'types/signup';
+import { SignupDto, SignupFormI } from 'types/user';
 import { useSignupResolver } from 'validations/signup';
 
 import { useSignup } from 'services/users/userService';
@@ -50,7 +51,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
     (data: SignupDto) =>
       signUp.mutate(data, {
         onSuccess: () => {
-          push('/sign-up/account-type');
+          push(Paths.accountType);
           refetch();
         },
       }),

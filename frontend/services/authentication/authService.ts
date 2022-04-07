@@ -1,10 +1,10 @@
 import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
 
-import Router, { useRouter } from 'next/router';
+import Router from 'next/router';
 
 import { AxiosResponse, AxiosError } from 'axios';
 
-import { SignInDto } from 'types/signin';
+import { SignIn } from 'types/sign-in';
 
 import API from '../api';
 
@@ -19,18 +19,11 @@ export async function signOut() {
   Router.push('/sign-in');
 }
 
-export function useSignIn(): UseMutationResult<
-  AxiosResponse<SignInDto>,
-  AxiosError,
-  SignInDto,
-  unknown
-> {
+export function useSignIn(): UseMutationResult<AxiosResponse<SignIn>, AxiosError, SignIn> {
   const queryClient = useQueryClient();
-  const router = useRouter();
-  const signIn = async (dto: SignInDto): Promise<AxiosResponse<SignInDto>> => {
+  const signIn = async (dto: SignIn): Promise<AxiosResponse<SignIn>> => {
     const user = await API.post('/api/v1/session', dto);
     queryClient.setQueryData('me', user);
-    router.push((router.query.callbackUrl as string) || '/');
     return user;
   };
   return useMutation(signIn);
