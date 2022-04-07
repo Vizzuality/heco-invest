@@ -11,7 +11,7 @@ import { AxiosError } from 'axios';
 import { InferGetStaticPropsType } from 'next';
 
 import useGroupedEnums from 'hooks/getEnums';
-import useInterests from 'hooks/useInterests';
+import useInterests, { InterestNames } from 'hooks/useInterests';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
@@ -27,18 +27,20 @@ import TextArea from 'components/forms/textarea';
 import Head from 'components/head';
 import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
 import languages from 'locales.config.json';
-import mosaic from 'mockups/mosaics.json';
 import { PageComponent } from 'types';
 import { Enum } from 'types/enums';
+import { Locations } from 'types/locations';
 import { ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 import useProjectDeveloperValidation, { formPageInputs } from 'validations/projectDeveloper';
 
 import { useCreateProjectDeveloper } from 'services/account';
 import { getEnums } from 'services/enums/enumService';
+import { getMosaics } from 'services/locations/localtionsService';
 
 export async function getStaticProps(ctx) {
   const queryClient = new QueryClient();
   queryClient.prefetchQuery('enum', getEnums);
+  queryClient.prefetchQuery('mosaics', getMosaics);
   return {
     props: {
       intlMessages: await loadI18nMessages(ctx),
@@ -70,8 +72,9 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
   const { push } = useRouter();
   const createProjectDeveloper = useCreateProjectDeveloper();
   const enums = useQuery('enums', getEnums);
+  const mosaics = useQuery('mosaics', getMosaics);
   const { category, impact, project_developer_type } = useGroupedEnums(enums?.data);
-  const interests = useInterests(category, impact, mosaic);
+  const interests = useInterests({ category, impact, mosaics: mosaics.data });
   const {
     register,
     handleSubmit,
@@ -173,8 +176,17 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     }
   };
 
-  const enumError =
-    enums.isError && formatMessage({ defaultMessage: 'Unable to load the data', id: 'zniaka' });
+  const fetchError = formatMessage({ defaultMessage: 'Unable to load the data', id: 'zniaka' });
+
+  const getInterestsErrorText = (interestName: InterestNames) => {
+    if (interestName === InterestNames.mosaics && mosaics.isError) {
+      return fetchError;
+    }
+    if (enums.isError) {
+      return fetchError;
+    }
+    return (errors[interestName] as unknown as FieldError)?.message;
+  };
 
   return (
     <>
@@ -344,7 +356,9 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   </Combobox>
                 </Label>
                 <ErrorMessage
-                  errorText={enumError || errors?.project_developer_type?.message}
+                  errorText={
+                    (enums.isError && fetchError) || errors?.project_developer_type?.message
+                  }
                   id="project-developer-type-error"
                 />
               </div>
@@ -445,7 +459,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     <FieldInfo infoText={infoText || getItemsInfoText(items)} />
                   </legend>
                   <div className="mb-4">
-                    {items?.map((item) => (
+                    {items?.map((item: Enum | Locations) => (
                       <div
                         key={item.id}
                         className="inline-block px-4 py-2 mb-4 mr-4 border rounded-lg border-beige"
@@ -465,10 +479,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     ))}
                   </div>
                 </fieldset>
-                <ErrorMessage
-                  id={`${name}-error`}
-                  errorText={enumError || (errors[name] as FieldError)?.message}
-                />
+                <ErrorMessage id={`${name}-error`} errorText={getInterestsErrorText(name)} />
               </div>
             ))}
           </form>
