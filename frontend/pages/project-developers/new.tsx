@@ -15,6 +15,7 @@ import useInterests, { InterestNames } from 'hooks/useInterests';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import { CategoryTagDot } from 'containers/category-tag';
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 import SocialMediaImputs from 'containers/social-contact/inputs-social-contact/component';
 
@@ -23,6 +24,8 @@ import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
+import Tag from 'components/forms/tag';
+import TagGroup from 'components/forms/tag-group';
 import TextArea from 'components/forms/textarea';
 import Head from 'components/head';
 import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
@@ -81,6 +84,9 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     formState: { errors },
     control,
     setError,
+    setValue,
+    clearErrors,
+    watch,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
     defaultValues: { categories: [], impacts: [], mosaics: [] },
@@ -458,26 +464,21 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     <span className="mr-2.5">{title}</span>
                     <FieldInfo infoText={infoText || getItemsInfoText(items)} />
                   </legend>
-                  <div className="mb-4">
+                  <TagGroup name={name} setValue={setValue} watch={watch} clearErrors={clearErrors}>
                     {items?.map((item: Enum | Locations) => (
-                      <div
+                      <Tag
                         key={item.id}
-                        className="inline-block px-4 py-2 mb-4 mr-4 border rounded-lg border-beige"
+                        id={item.id}
+                        name={name}
+                        value={item.id}
+                        aria-describedby={`${name}-error`}
+                        register={register}
                       >
-                        <Label htmlFor={item.id} className="flex items-center">
-                          <input
-                            {...register(name as keyof ProjectDeveloperSetupForm)}
-                            id={item.id}
-                            name={name}
-                            type="checkbox"
-                            value={item.id}
-                            aria-describedby={`${name}-error`}
-                          />
-                          <span className="ml-1">{item.attributes.name}</span>
-                        </Label>
-                      </div>
+                        {item.type === 'category' && <CategoryTagDot category={item.id} />}
+                        {item.attributes.name}
+                      </Tag>
                     ))}
-                  </div>
+                  </TagGroup>
                 </fieldset>
                 <ErrorMessage id={`${name}-error`} errorText={getInterestsErrorText(name)} />
               </div>
