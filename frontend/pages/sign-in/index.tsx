@@ -52,7 +52,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
     (data: SignIn) =>
       signIn.mutate(data, {
         onSuccess: () => {
-          if (user.attributes.role === UserRole.light) {
+          if (user?.attributes.role === UserRole.light) {
             push(Paths.accountType);
           } else {
             push(Paths.dashboard);
@@ -78,7 +78,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signIn.error?.message && (
           <Alert className="mb-4.5" withLayoutContainer>
-            {Array.isArray(signIn.error.message)
+            {Array.isArray(signIn.error?.message)
               ? signIn.error.message[0].title
               : signIn.error.message}
           </Alert>

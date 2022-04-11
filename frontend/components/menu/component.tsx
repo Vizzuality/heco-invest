@@ -16,6 +16,7 @@ export const Menu: React.FC<MenuProps> = ({
   disabledKeys = [],
   expandedKeys = [],
   onAction,
+  header,
   ...rest
 }: MenuProps) => {
   const triggerRef = React.useRef(null);
@@ -45,6 +46,7 @@ export const Menu: React.FC<MenuProps> = ({
           expandedKeys={expandedKeys}
           onClose={() => state.close()}
           onAction={onAction}
+          header={header}
         >
           {children}
         </Popup>

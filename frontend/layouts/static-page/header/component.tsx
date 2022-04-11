@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
+import { ChevronDown } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -9,12 +10,15 @@ import { useRouter } from 'next/router';
 
 import { useWindowScrollPosition } from 'rooks';
 
+import useMe from 'hooks/me';
+
 import ActiveLink from 'components/active-link';
 import Button from 'components/button';
 import Icon from 'components/icon';
 import LanguageSelector from 'components/language-selector';
 import LayoutContainer from 'components/layout-container';
 import Menu, { MenuItem, MenuSection } from 'components/menu';
+import { Paths } from 'enums';
 
 import SearchIcon from 'svgs/search.svg';
 
@@ -25,6 +29,7 @@ export const Header: React.FC<HeaderProps> = ({
 }: HeaderProps) => {
   const router = useRouter();
   const intl = useIntl();
+  const { user } = useMe();
 
   const { scrollY }: ReturnType<typeof useWindowScrollPosition> =
     // The `window` check is required because the hook is not SSR-ready yet:
@@ -38,10 +43,6 @@ export const Header: React.FC<HeaderProps> = ({
   const onClickMenuItem = useCallback(
     (key) => {
       switch (key) {
-        case 'sign-in':
-          // eslint-disable-next-line no-console
-          console.warn('Sign in action not implemented yet!');
-          break;
         default:
           router.push(key);
           break;
@@ -80,7 +81,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <FormattedMessage defaultMessage="Menu" id="tKMlOc" />
                 </Button>
               }
-              disabledKeys={['sign-in']}
+              // disabledKeys={['sign-in']}
               align="end"
               onAction={onClickMenuItem}
             >
@@ -100,7 +101,7 @@ export const Header: React.FC<HeaderProps> = ({
                 key="user-section"
                 title={intl.formatMessage({ defaultMessage: 'User', id: 'EwRIOm' })}
               >
-                <MenuItem key="sign-in">
+                <MenuItem key={Paths.signin}>
                   <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
                 </MenuItem>
               </MenuSection>
@@ -133,14 +134,77 @@ export const Header: React.FC<HeaderProps> = ({
               <div className="shrink-0">
                 <LanguageSelector />
               </div>
-              <Button
-                theme={showBackground ? 'primary-green' : 'primary-white'}
-                size="small"
-                className="shrink-0"
-                disabled
-              >
-                <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
-              </Button>
+              {user ? (
+                <Menu
+                  Trigger={
+                    <Button
+                      theme="naked"
+                      size="small"
+                      aria-expanded={menuOpen}
+                      onClick={() => setMenuOpen(true)}
+                    >
+                      <div
+                        className={cx('w-8 h-8 rounded-full flex justify-center items-center', {
+                          'bg-green-dark text-white': showBackground,
+                          'text-green-dark bg-white': !showBackground,
+                        })}
+                      >
+                        {user.attributes.first_name.substring(0, 1)}
+                        {user.attributes.last_name.substring(0, 1)}
+                      </div>
+                      <ChevronDown className="inline-block w-4 h-4 ml-1" />
+                    </Button>
+                  }
+                  onAction={onClickMenuItem}
+                  align="end"
+                  direction="bottom"
+                  className="p-4"
+                  header={
+                    <div className="flex">
+                      <div
+                        className={cx(
+                          'w-12 h-12 rounded-full flex justify-center items-center mr-2',
+                          {
+                            'bg-green-dark text-white': showBackground,
+                            'text-green-dark bg-white': !showBackground,
+                          }
+                        )}
+                      >
+                        {user.attributes.first_name.substring(0, 1)}
+                        {user.attributes.last_name.substring(0, 1)}
+                      </div>
+                      <div className="pb-2 pl-2 pr-2 border-b border-bg-dark">
+                        <span className="text-green-dark">
+                          {user.attributes.first_name} {user.attributes.last_name}
+                        </span>
+                        <span className="block text-gray-400">{user.attributes.email}</span>
+                      </div>
+                    </div>
+                  }
+                  // disabledKeys={}
+                >
+                  <MenuSection>
+                    <MenuItem key="/dashboard">
+                      <FormattedMessage defaultMessage="NESsT account" id="fb24lj" />
+                    </MenuItem>
+                    <MenuItem key="/settings">
+                      <FormattedMessage defaultMessage="My preferences" id="CEQo2w" />
+                    </MenuItem>
+                    <MenuItem key="/sign-out">
+                      <FormattedMessage defaultMessage="Sign out" id="xXbJso" />
+                    </MenuItem>
+                  </MenuSection>
+                </Menu>
+              ) : (
+                <Button
+                  theme={showBackground ? 'primary-green' : 'primary-white'}
+                  size="small"
+                  className="shrink-0"
+                  to={Paths.signin}
+                >
+                  <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
+                </Button>
+              )}
             </div>
           </div>
         </div>
