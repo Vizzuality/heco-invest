@@ -31,4 +31,6 @@ Default.args = {
   ),
   expandedKeys: ['cut'],
   onAction: action('onAction'),
+  align: 'start',
+  direction: 'bottom',
 };
