@@ -12,6 +12,8 @@ import { useWindowScrollPosition } from 'rooks';
 
 import useMe from 'hooks/me';
 
+import getUserInitials from 'helpers/getUserInitials';
+
 import ActiveLink from 'components/active-link';
 import Button from 'components/button';
 import Icon from 'components/icon';
@@ -149,8 +151,7 @@ export const Header: React.FC<HeaderProps> = ({
                           'text-green-dark bg-white': !showBackground,
                         })}
                       >
-                        {user.attributes.first_name.substring(0, 1)}
-                        {user.attributes.last_name.substring(0, 1)}
+                        {getUserInitials(user)}
                       </div>
                       <ChevronDown className="inline-block w-4 h-4 ml-1" />
                     </Button>
@@ -161,17 +162,8 @@ export const Header: React.FC<HeaderProps> = ({
                   className="p-4"
                   header={
                     <div className="flex">
-                      <div
-                        className={cx(
-                          'w-12 h-12 rounded-full flex justify-center items-center mr-2',
-                          {
-                            'bg-green-dark text-white': showBackground,
-                            'text-green-dark bg-white': !showBackground,
-                          }
-                        )}
-                      >
-                        {user.attributes.first_name.substring(0, 1)}
-                        {user.attributes.last_name.substring(0, 1)}
+                      <div className="flex items-center justify-center w-12 h-12 mr-2 text-white rounded-full bg-green-dark">
+                        {getUserInitials(user)}
                       </div>
                       <div className="pb-2 pl-2 pr-2 border-b border-bg-dark">
                         <span className="text-green-dark">
