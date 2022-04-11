@@ -20,6 +20,6 @@ export function useSignup(): UseMutationResult<
 }
 
 export function useResetPassword(): UseMutationResult<AxiosResponse, AxiosError, ResetPassword> {
-  const resetPassword = async (dto: ResetPassword) => await API.post('api/v1/reset_password', dto);
+  const resetPassword = async (dto: ResetPassword) => await API.post('/api/v1/reset_password', dto);
   return useMutation(resetPassword);
 }

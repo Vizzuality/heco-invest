@@ -107,13 +107,13 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
               <Label htmlFor="password">
                 <FormattedMessage defaultMessage="Password" id="5sg7KC" />
               </Label>
-              <Link href={Paths.forgotPassword} passHref>
-                <span
+              <Link href={Paths.forgotPassword}>
+                <a
                   id="password-description"
                   className="font-sans text-sm font-normal cursor-pointer text-green-dark"
                 >
                   <FormattedMessage defaultMessage="Forgot password?" id="V/JHlm" />
-                </span>
+                </a>
               </Link>
             </div>
             <Input
@@ -131,14 +131,13 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
           </div>
         </div>
         <div className="flex justify-center mt-15">
-          <button
-            className="flex px-5 py-2 font-sans text-sm text-white opacity-75 font-regular rounded-5xl leadign-6 bg-green-dark"
+          <Button
             type="submit"
             disabled={signIn.isLoading}
           >
             <Loading visible={signIn.isLoading} className="mr-2.5" />
             <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
-          </button>
+          </Button>
         </div>
       </form>
     </div>

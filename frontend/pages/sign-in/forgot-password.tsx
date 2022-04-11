@@ -93,14 +93,13 @@ const ForgotPassword: PageComponent<ForgotPasswordPageProps, AuthPageLayoutProps
         </div>
 
         <div className="flex justify-center mt-15">
-          <button
-            className="flex px-5 py-2 font-sans text-sm text-white opacity-75 font-regular rounded-5xl leadign-6 bg-green-dark"
+          <Button
             type="submit"
             disabled={resetPassword.isLoading}
           >
             <Loading visible={resetPassword.isLoading} className="mr-2.5" />
             <FormattedMessage defaultMessage="Send email" id="sZIoMy" />
-          </button>
+          </Button>
         </div>
       </form>
     </div>
