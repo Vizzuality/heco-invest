@@ -10,6 +10,7 @@ import { InferGetStaticPropsType } from 'next';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Alert from 'components/alert';
+import Button from 'components/button';
 import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
@@ -93,10 +94,7 @@ const ForgotPassword: PageComponent<ForgotPasswordPageProps, AuthPageLayoutProps
         </div>
 
         <div className="flex justify-center mt-15">
-          <Button
-            type="submit"
-            disabled={resetPassword.isLoading}
-          >
+          <Button type="submit" disabled={resetPassword.isLoading}>
             <Loading visible={resetPassword.isLoading} className="mr-2.5" />
             <FormattedMessage defaultMessage="Send email" id="sZIoMy" />
           </Button>

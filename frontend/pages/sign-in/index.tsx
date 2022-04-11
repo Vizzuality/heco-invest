@@ -13,6 +13,7 @@ import useMe from 'hooks/me';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Alert from 'components/alert';
+import Button from 'components/button';
 import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
@@ -52,10 +53,10 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
     (data: SignIn) =>
       signIn.mutate(data, {
         onSuccess: () => {
-          if (user.attributes.role === UserRole.light) {
-            push(Paths.accountType);
+          if (user.attributes.role === UserRole.LIGHT) {
+            push(Paths.ACCOUNT_TYPE);
           } else {
-            push(Paths.dashboard);
+            push(Paths.DASHBOARD);
           }
         },
       }),
@@ -107,7 +108,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
               <Label htmlFor="password">
                 <FormattedMessage defaultMessage="Password" id="5sg7KC" />
               </Label>
-              <Link href={Paths.forgotPassword}>
+              <Link href={Paths.FORGOT_PASSWORD}>
                 <a
                   id="password-description"
                   className="font-sans text-sm font-normal cursor-pointer text-green-dark"
@@ -131,10 +132,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
           </div>
         </div>
         <div className="flex justify-center mt-15">
-          <Button
-            type="submit"
-            disabled={signIn.isLoading}
-          >
+          <Button type="submit" disabled={signIn.isLoading}>
             <Loading visible={signIn.isLoading} className="mr-2.5" />
             <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
           </Button>

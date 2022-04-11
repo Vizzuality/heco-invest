@@ -51,7 +51,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
     (data: SignupDto) =>
       signUp.mutate(data, {
         onSuccess: () => {
-          push(Paths.accountType);
+          push(Paths.ACCOUNT_TYPE);
           refetch();
         },
       }),
