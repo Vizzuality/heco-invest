@@ -53,10 +53,10 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
     (data: SignIn) =>
       signIn.mutate(data, {
         onSuccess: () => {
-          if (user.attributes.role === UserRole.LIGHT) {
-            push(Paths.ACCOUNT_TYPE);
+          if (user?.attributes.role === UserRole.LIGHT) {
+            push(Paths.accountType);
           } else {
-            push(Paths.DASHBOARD);
+            push(Paths.dashboard);
           }
         },
       }),
@@ -79,7 +79,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signIn.error?.message && (
           <Alert className="mb-4.5" withLayoutContainer>
-            {Array.isArray(signIn.error.message)
+            {Array.isArray(signIn.error?.message)
               ? signIn.error.message[0].title
               : signIn.error.message}
           </Alert>
@@ -108,7 +108,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
               <Label htmlFor="password">
                 <FormattedMessage defaultMessage="Password" id="5sg7KC" />
               </Label>
-              <Link href={Paths.FORGOT_PASSWORD}>
+              <Link href={Paths.forgotPassword}>
                 <a
                   id="password-description"
                   className="font-sans text-sm font-normal cursor-pointer text-green-dark"

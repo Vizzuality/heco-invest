@@ -17,4 +17,5 @@ export type MenuProps = MenuTriggerProps & {
   expandedKeys?: React.Key[];
   /** Callback executed when the user clicks on a menu's item */
   onAction: PopupProps['onAction'];
+  header?: JSX.Element;
 };

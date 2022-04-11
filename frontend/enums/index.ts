@@ -5,9 +5,10 @@ export enum Languages {
 }
 
 export enum Paths {
-  SIGNUP = '/sign-up',
-  ACCOUNT_TYPE = '/sign-up/account-type',
-  FORGOT_PASSWORD = 'sign-in/forgot-password',
-  DASHBOARD = '/dashboard',
-  FAQ = '/faq',
+  signup = '/sign-up',
+  signin = '/sign-in',
+  accountType = '/sign-up/account-type',
+  forgotPassword = 'sign-in/forgot-password',
+  dashboard = '/dashboard',
+  faq = '/faq',
 }
