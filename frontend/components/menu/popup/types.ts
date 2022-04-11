@@ -26,4 +26,6 @@ export interface PopupProps {
   onClose: ItemProps['onClose'];
   /** Callback executed when the user clicks on a menu's item */
   onAction: ItemProps['onAction'];
+  /** Menu Popup Header */
+  header?: JSX.Element;
 }
