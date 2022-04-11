@@ -107,13 +107,13 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
               <Label htmlFor="password">
                 <FormattedMessage defaultMessage="Password" id="5sg7KC" />
               </Label>
-              <Link href={Paths.forgotPassword} passHref>
-                <span
+              <Link href={Paths.forgotPassword}>
+                <a
                   id="password-description"
                   className="font-sans text-sm font-normal cursor-pointer text-green-dark"
                 >
                   <FormattedMessage defaultMessage="Forgot password?" id="V/JHlm" />
-                </span>
+                </a>
               </Link>
             </div>
             <Input
