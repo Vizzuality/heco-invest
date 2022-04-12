@@ -30,6 +30,21 @@ RSpec.describe Project, type: :model do
     expect(subject).to have(1).errors_on(:description)
   end
 
+  it "should not be valid without country" do
+    subject.country = nil
+    expect(subject).to have(1).errors_on(:country)
+  end
+
+  it "should not be valid without municipality" do
+    subject.municipality = nil
+    expect(subject).to have(1).errors_on(:municipality)
+  end
+
+  it "should not be valid without department" do
+    subject.department = nil
+    expect(subject).to have(1).errors_on(:department)
+  end
+
   it "should not be valid without received funding" do
     subject.received_funding = nil
     expect(subject).to have(1).errors_on(:received_funding)
@@ -45,34 +60,24 @@ RSpec.describe Project, type: :model do
     expect(subject).to have(1).errors_on(:solution)
   end
 
-  it "should not be valid without business model" do
-    subject.business_model = nil
-    expect(subject).to have(1).errors_on(:business_model)
-  end
-
   it "should not be valid without sustainability" do
     subject.sustainability = nil
     expect(subject).to have(1).errors_on(:sustainability)
   end
 
-  it "should not be valid without impact description" do
-    subject.impact_description = nil
-    expect(subject).to have(1).errors_on(:impact_description)
+  it "should not be valid without replicability" do
+    subject.replicability = nil
+    expect(subject).to have(1).errors_on(:replicability)
   end
 
-  it "should not be valid without roi" do
-    subject.roi = nil
-    expect(subject).to have(1).errors_on(:roi)
+  it "should not be valid without expected impact" do
+    subject.expected_impact = nil
+    expect(subject).to have(1).errors_on(:expected_impact)
   end
 
-  it "should not be valid without income in last 3 years" do
-    subject.income_in_last_3_years = nil
-    expect(subject).to have(1).errors_on(:income_in_last_3_years)
-  end
-
-  it "should not be valid without number of employees" do
-    subject.number_of_employees = nil
-    expect(subject).to have(1).errors_on(:number_of_employees)
+  it "should not be valid without progress_impact_tracking" do
+    subject.progress_impact_tracking = nil
+    expect(subject).to have(1).errors_on(:progress_impact_tracking)
   end
 
   it "should not be valid without trusted" do
@@ -80,8 +85,25 @@ RSpec.describe Project, type: :model do
     expect(subject).to have(1).errors_on(:trusted)
   end
 
+  it "should not be valid without received funding" do
+    subject.received_funding = nil
+    expect(subject).to have(1).errors_on(:received_funding)
+  end
+
+  it "should not be valid without looking for funding" do
+    subject.looking_for_funding = nil
+    expect(subject).to have(1).errors_on(:looking_for_funding)
+  end
+
+  it "should not be valid without funding plan" do
+    subject.funding_plan = nil
+    expect(subject).to have(1).errors_on(:funding_plan)
+  end
+
   include_examples :static_relation_validations, attribute: :categories, presence: true
   include_examples :static_relation_validations, attribute: :instrument_types, presence: true
   include_examples :static_relation_validations, attribute: :ticket_size, presence: true
-  include_examples :static_relation_validations, attribute: :sdgs, presence: false
+  include_examples :static_relation_validations, attribute: :sdgs, presence: true
+  include_examples :static_relation_validations, attribute: :target_groups, presence: true
+  include_examples :static_relation_validations, attribute: :impact_areas, presence: true
 end
