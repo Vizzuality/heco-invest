@@ -26,7 +26,7 @@ class Project < ApplicationRecord
     :replicability,
     :progress_impact_tracking
 
-  validates :estimated_duration_in_months, numericality: {only_integer: true}, presence: true
+  validates :estimated_duration_in_months, numericality: {only_integer: true, greater_than: 0}, presence: true
   validates :trusted, inclusion: [true, false]
   validates :received_funding, inclusion: [true, false]
   validates :looking_for_funding, inclusion: [true, false]
