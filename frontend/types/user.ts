@@ -14,3 +14,21 @@ export interface SignupDto {
   password: string;
   ui_language: string;
 }
+
+export interface User {
+  id: string;
+  type: 'user';
+  attributes: {
+    first_name: string;
+    last_name: string;
+    email: string;
+    role: UserRole;
+    confirmed: boolean;
+  };
+}
+
+export enum UserRole {
+  LIGHT = 'light',
+  INVESTOR = 'investor',
+  PROJECT_DEVELOPER = 'project_developer',
+}

@@ -1,9 +1,8 @@
-export interface SignInFormI {
+export type SignIn = {
   email: string;
   password: string;
-}
+};
 
-export interface SignInDto {
+export type ResetPassword = {
   email: string;
-  password: string;
-}
+};

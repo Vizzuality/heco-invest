@@ -9,6 +9,7 @@ import AccountTypeSelector from 'containers/account-type-selector';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
+import { Paths } from 'enums';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { AccountType, PageComponent } from 'types';
 
@@ -20,7 +21,7 @@ export async function getServerSideProps(ctx) {
   };
 }
 
-const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
+const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = () => {
   const intl = useIntl();
   const { push } = useRouter();
 
@@ -55,13 +56,11 @@ const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = (props) 
                 />
               </p>
             </div>
-
             <AccountTypeSelector
               className="max-w-3xl mt-6"
               onAccountTypeSelected={handleAccountTypeSelected}
             />
-
-            <Link href="/faq">
+            <Link href={Paths.FAQ}>
               <a className="mt-6 text-gray-600 underline transition-colors hover:text-green-dark active:text-green-dark outline-green-dark outline-rounded">
                 <FormattedMessage defaultMessage="How accounts work?" id="0hzVw6" />
               </a>

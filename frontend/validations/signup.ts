@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SchemaOf, object, string, boolean, ref } from 'yup';
 
-import { SignupFormI } from 'types/signup';
+import { SignupFormI } from 'types/user';
 
 export const useSignupResolver = () => {
   const { formatMessage } = useIntl();
