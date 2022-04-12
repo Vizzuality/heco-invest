@@ -31,6 +31,7 @@ import Head from 'components/head';
 import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
 import languages from 'locales.config.json';
 import { PageComponent } from 'types';
+import { CategoryType } from 'types/category';
 import { Enum } from 'types/enums';
 import { Locations } from 'types/locations';
 import { ProjectDeveloperSetupForm } from 'types/projectDeveloper';
@@ -474,7 +475,9 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                         aria-describedby={`${name}-error`}
                         register={register}
                       >
-                        {item.type === 'category' && <CategoryTagDot category={item.id} />}
+                        {item.type === 'category' && (
+                          <CategoryTagDot category={item.id as CategoryType} />
+                        )}
                         {item.attributes.name}
                       </Tag>
                     ))}

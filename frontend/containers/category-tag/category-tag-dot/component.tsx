@@ -2,6 +2,8 @@ import { FC } from 'react';
 
 import cx from 'classnames';
 
+import { CategoryType } from 'types/category';
+
 import type { CategoryTagDotProps } from './types';
 
 export const CategoryTagDot: FC<CategoryTagDotProps> = ({ category }: CategoryTagDotProps) => (

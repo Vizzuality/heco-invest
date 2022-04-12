@@ -312,6 +312,9 @@
   "Ow9MS8": {
     "string": "I want to find the right investment for my projects"
   },
+  "P+9ug1": {
+    "string": "We’ll help you reset it and get back on track."
+  },
   "P4T4Ib": {
     "string": "Discover projects that have impact in the Amazon region and get connected with investors and project developers."
   },
@@ -353,6 +356,9 @@
   },
   "UxTJRa": {
     "string": "Projects"
+  },
+  "V/JHlm": {
+    "string": "Forgot password?"
   },
   "V4KNjk": {
     "string": "optional"
@@ -420,6 +426,9 @@
   "ZiErTG": {
     "string": "Be part of the biggest change in the Colombian Amazon"
   },
+  "ZjA6uH": {
+    "string": "Welcome to HeCo Invest. Please enter your details below."
+  },
   "aDn1WM": {
     "string": "Curated database"
   },
@@ -467,6 +476,9 @@
   },
   "cyR7Kh": {
     "string": "Back"
+  },
+  "cyRU1N": {
+    "string": "Forgot your password?"
   },
   "dPuc1g": {
     "string": "Slide {slideNumber}"
@@ -591,6 +603,9 @@
   "sMWFoV": {
     "string": "As an Investor / Funder"
   },
+  "sZIoMy": {
+    "string": "Send email"
+  },
   "sy+pv5": {
     "string": "Email"
   },
@@ -671,5 +686,8 @@
   },
   "zkonnO": {
     "string": "World Wildlife Fund (WWF) is the largest international conservation organization in the world, with more than 50 offices implementing conservation projects across more than 100 countries and has a membership of almost five million people. WWF has extensive experience working in the Amazon region, with offices in all seven signatory countries of the Leticia Pact. In Colombia, WWF has been working in partnership with the government and a consortium of civil society organizations on Heritage Colombia since 2015."
+  },
+  "zniaka": {
+    "string": "Unable to load the data"
   }
 }
