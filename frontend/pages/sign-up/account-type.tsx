@@ -60,7 +60,7 @@ const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = () => {
               className="max-w-3xl mt-6"
               onAccountTypeSelected={handleAccountTypeSelected}
             />
-            <Link href={Paths.faq}>
+            <Link href={Paths.FAQ}>
               <a className="mt-6 text-gray-600 underline transition-colors hover:text-green-dark active:text-green-dark outline-green-dark outline-rounded">
                 <FormattedMessage defaultMessage="How accounts work?" id="0hzVw6" />
               </a>

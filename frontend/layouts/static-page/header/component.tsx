@@ -22,6 +22,8 @@ import LayoutContainer from 'components/layout-container';
 import Menu, { MenuItem, MenuSection } from 'components/menu';
 import { Paths } from 'enums';
 
+import { useAccount } from 'services/account';
+
 import SearchIcon from 'svgs/search.svg';
 
 import { HeaderProps } from './types';
@@ -30,8 +32,9 @@ export const Header: React.FC<HeaderProps> = ({
   props: { transparent, className } = {},
 }: HeaderProps) => {
   const router = useRouter();
-  const intl = useIntl();
+  const { formatMessage } = useIntl();
   const { user } = useMe();
+  const { account } = useAccount(user);
 
   const { scrollY }: ReturnType<typeof useWindowScrollPosition> =
     // The `window` check is required because the hook is not SSR-ready yet:
@@ -41,6 +44,7 @@ export const Header: React.FC<HeaderProps> = ({
   const showBackground = !transparent || scrollY > 0;
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   const onClickMenuItem = useCallback(
     (key) => {
@@ -99,20 +103,22 @@ export const Header: React.FC<HeaderProps> = ({
               <MenuItem key="/about">
                 <FormattedMessage defaultMessage="About" id="g5pX+a" />
               </MenuItem>
-              <MenuSection
-                key="user-section"
-                title={intl.formatMessage({ defaultMessage: 'User', id: 'EwRIOm' })}
-              >
-                <MenuItem key={Paths.signin}>
-                  <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
-                </MenuItem>
-              </MenuSection>
+              {!user && (
+                <MenuSection
+                  key="user-section"
+                  title={formatMessage({ defaultMessage: 'User', id: 'EwRIOm' })}
+                >
+                  <MenuItem key={Paths.signin}>
+                    <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
+                  </MenuItem>
+                </MenuSection>
+              )}
             </Menu>
           </div>
           <div className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end">
             <nav className="flex space-x-8">
               <ActiveLink href="/discover" activeClassName="font-semibold">
-                <a title={intl.formatMessage({ defaultMessage: 'Search', id: 'xmcVZ0' })}>
+                <a title={formatMessage({ defaultMessage: 'Search', id: 'xmcVZ0' })}>
                   <Icon icon={SearchIcon} />
                 </a>
               </ActiveLink>
@@ -140,10 +146,11 @@ export const Header: React.FC<HeaderProps> = ({
                 <Menu
                   Trigger={
                     <Button
+                      className="pl-4 pr-4 focus-visible:outline-green-dark"
                       theme="naked"
                       size="small"
-                      aria-expanded={menuOpen}
-                      onClick={() => setMenuOpen(true)}
+                      aria-expanded={userMenuOpen}
+                      onClick={() => setUserMenuOpen(true)}
                     >
                       <div
                         className={cx('w-8 h-8 rounded-full flex justify-center items-center', {
@@ -173,17 +180,24 @@ export const Header: React.FC<HeaderProps> = ({
                       </div>
                     </div>
                   }
-                  // disabledKeys={}
                 >
                   <MenuSection>
-                    <MenuItem key="/dashboard">
-                      <FormattedMessage defaultMessage="NESsT account" id="fb24lj" />
+                    {account && (
+                      <MenuItem
+                        key={Paths.dashboard}
+                        textValue={`${account.name} ${formatMessage({
+                          defaultMessage: 'account',
+                          id: 'ESAHMx',
+                        })}`}
+                      >
+                        {account.name} {formatMessage({ defaultMessage: 'account', id: 'ESAHMx' })}
+                      </MenuItem>
+                    )}
+                    <MenuItem key={Paths.SETTINGS}>
+                      {formatMessage({ defaultMessage: 'My preferences', id: 'CEQo2w' })}
                     </MenuItem>
-                    <MenuItem key="/settings">
-                      <FormattedMessage defaultMessage="My preferences" id="CEQo2w" />
-                    </MenuItem>
-                    <MenuItem key="/sign-out">
-                      <FormattedMessage defaultMessage="Sign out" id="xXbJso" />
+                    <MenuItem key={Paths.SING_OUT}>
+                      {formatMessage({ defaultMessage: 'Sign out', id: 'xXbJso' })}
                     </MenuItem>
                   </MenuSection>
                 </Menu>
