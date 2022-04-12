@@ -36,7 +36,7 @@ module API
 
         def account_params
           params.fetch(:project_developer_params, params)
-            .permit :language, :picture, :name, :website, :linkedin, :facebook, :twitter, :instagram, :about
+            .permit :language, :picture, :name, :website, :linkedin, :facebook, :twitter, :instagram, :about, :contact_email, :contact_phone
         end
 
         def project_developer_params

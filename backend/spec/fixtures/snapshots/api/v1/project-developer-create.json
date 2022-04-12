@@ -11,7 +11,7 @@
       "facebook": "http://facebook.com",
       "linkedin": "http://linkedin.com",
       "twitter": "http://twitter.com",
-      "mission": "Mision",
+      "mission": "Mission",
       "project_developer_type": "ngo",
       "categories": [
         "sustainable-agrosystems",
@@ -28,7 +28,9 @@
         "small": null,
         "medium": null,
         "original": null
-      }
+      },
+      "contact_email": "contact@example.com",
+      "contact_phone": null
     },
     "relationships": {
       "owner": {

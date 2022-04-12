@@ -22,6 +22,7 @@ class Account < ApplicationRecord
   validates :instagram, url: true
   validates :language, inclusion: {in: Language::TYPES}
   validates :picture, attached: true, content_type: /\Aimage\/.*\z/
+  validates :contact_email, presence: true
 
   def slug_preview
     set_slug unless slug.present?
