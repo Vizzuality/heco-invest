@@ -22,6 +22,10 @@ module API
           render json: ProjectDeveloperSerializer.new(current_user.account.project_developer).serializable_hash
         end
 
+        def show
+          render json: ProjectDeveloperSerializer.new(current_user.account.project_developer).serializable_hash
+        end
+
         private
 
         def require_project_developer!
