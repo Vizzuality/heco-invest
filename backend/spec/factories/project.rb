@@ -32,10 +32,6 @@ FactoryBot.define do
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)
     end
-    sequence(:funding_plan) do |n|
-      Faker::Config.random = Random.new(n)
-      Faker::Lorem.paragraph(sentence_count: 4)
-    end
     sequence(:sustainability) do |n|
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)
@@ -56,6 +52,10 @@ FactoryBot.define do
     looking_for_funding { true }
     instrument_types { %w[grant loan] }
     ticket_size { "scaling" }
+    sequence(:funding_plan) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 4)
+    end
 
     received_funding { true }
     received_funding_amount_usd { 3000 }
