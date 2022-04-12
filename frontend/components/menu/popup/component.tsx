@@ -81,7 +81,6 @@ export const Popup: React.FC<PopupProps> = ({
                   />
                 );
               }
-
               return (
                 <Item
                   key={item.key}

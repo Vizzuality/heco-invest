@@ -1,11 +1,15 @@
-import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
+import { useMemo } from 'react';
+
+import { useMutation, UseMutationResult, useQuery, useQueryClient } from 'react-query';
 
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 
-import { ApiError } from 'types/api';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
+import { User, UserAccount, UserRole } from 'types/user';
 
 import API from 'services/api';
+import { getProjectDeveloper } from 'services/project-developers/projectDevelopersService';
+import { ErrorResponse } from 'services/types';
 
 const createProjectDeveloper = async (
   data: ProjectDeveloperSetupForm
@@ -35,7 +39,7 @@ const createProjectDeveloper = async (
 
 export function useCreateProjectDeveloper(): UseMutationResult<
   AxiosResponse<ProjectDeveloper>,
-  AxiosError<ApiError>,
+  AxiosError<ErrorResponse>,
   ProjectDeveloperSetupForm
 > {
   const queryClient = useQueryClient();
@@ -45,4 +49,30 @@ export function useCreateProjectDeveloper(): UseMutationResult<
       queryClient.setQueryData('project_developer', result.data);
     },
   });
+}
+
+export function useAccount(user: User) {
+  const getAccount = async (account_id: string): Promise<UserAccount> => {
+    switch (user?.attributes.role) {
+      case UserRole.PROJECT_DEVELOPER:
+        return await getProjectDeveloper(account_id, 'name,slug');
+      case UserRole.INVESTOR:
+        // Change to get investor function
+        return await getProjectDeveloper(account_id, 'name,slug');
+      default:
+        return null;
+    }
+  };
+
+  const query = useQuery(['account', user], () =>
+    getAccount('9271bfb2-a68e-4a05-8c7a-af0003a66ead')
+  );
+
+  return useMemo(
+    () => ({
+      ...query,
+      account: query?.data?.attributes,
+    }),
+    [query]
+  );
 }
