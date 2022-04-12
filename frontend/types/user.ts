@@ -32,3 +32,13 @@ export enum UserRole {
   INVESTOR = 'investor',
   PROJECT_DEVELOPER = 'project_developer',
 }
+
+export type UserAccount = {
+  attributes: {
+    name: string;
+    slug: string;
+  };
+  id: string;
+  relationships: {};
+  type: 'project_developer' | 'investor';
+};

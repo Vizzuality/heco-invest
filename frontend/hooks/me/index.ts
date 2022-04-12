@@ -2,13 +2,14 @@ import { useMemo } from 'react';
 
 import { useQuery } from 'react-query';
 
+import { QUERIES } from 'enums';
 import { User } from 'types/user';
 
 import API from 'services/api';
 
 export default function useMe() {
   const query = useQuery<User>(
-    'user',
+    QUERIES.USER,
     () =>
       API.request({
         method: 'GET',
