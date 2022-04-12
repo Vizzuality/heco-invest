@@ -1,7 +1,7 @@
 export enum Languages {
-  English = 'en',
-  Spanish = 'es',
-  Portuguese = 'pt',
+  ENGLISH = 'en',
+  SPANISH = 'es',
+  PORTUGUESE = 'pt',
 }
 
 export enum Paths {
@@ -33,4 +33,9 @@ export enum QUERIES {
 
   /** User account name and slug */
   ACCOUNT = 'account',
+  SIGNUP = '/sign-up',
+  ACCOUNT_TYPE = '/sign-up/account-type',
+  FORGOT_PASSWORD = 'sign-in/forgot-password',
+  DASHBOARD = '/dashboard',
+  FAQ = '/faq',
 }

@@ -15,14 +15,11 @@
 # production
 /build
 
-# compiled languages
-/languages/compiled
-
 # tailwind styles
 /public/styles/
 
 # languages
-/lang/compiled
+/lang/compiled/
 
 # misc
 .DS_Store

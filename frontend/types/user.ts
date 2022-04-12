@@ -28,9 +28,9 @@ export interface User {
 }
 
 export enum UserRole {
-  light = 'light',
-  investor = 'investor',
-  project_developer = 'project_developer',
+  LIGHT = 'light',
+  INVESTOR = 'investor',
+  PROJECT_DEVELOPER = 'project_developer',
 }
 
 export type UserAccount = {

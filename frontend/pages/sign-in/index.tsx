@@ -13,6 +13,7 @@ import useMe from 'hooks/me';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Alert from 'components/alert';
+import Button from 'components/button';
 import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
@@ -55,7 +56,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
           if (user?.attributes.role === UserRole.light) {
             push(Paths.accountType);
           } else {
-            push(Paths.dashboard);
+            push(Paths.DASHBOARD);
           }
         },
       }),
@@ -107,13 +108,13 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
               <Label htmlFor="password">
                 <FormattedMessage defaultMessage="Password" id="5sg7KC" />
               </Label>
-              <Link href={Paths.forgotPassword} passHref>
-                <span
+              <Link href={Paths.FORGOT_PASSWORD}>
+                <a
                   id="password-description"
                   className="font-sans text-sm font-normal cursor-pointer text-green-dark"
                 >
                   <FormattedMessage defaultMessage="Forgot password?" id="V/JHlm" />
-                </span>
+                </a>
               </Link>
             </div>
             <Input
@@ -131,14 +132,10 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
           </div>
         </div>
         <div className="flex justify-center mt-15">
-          <button
-            className="flex px-5 py-2 font-sans text-sm text-white opacity-75 font-regular rounded-5xl leadign-6 bg-green-dark"
-            type="submit"
-            disabled={signIn.isLoading}
-          >
+          <Button type="submit" disabled={signIn.isLoading}>
             <Loading visible={signIn.isLoading} className="mr-2.5" />
             <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
-          </button>
+          </Button>
         </div>
       </form>
     </div>

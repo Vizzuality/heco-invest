@@ -2,12 +2,16 @@ import { ChangeEvent, useState, useCallback } from 'react';
 
 import { SubmitHandler, useForm, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { dehydrate, QueryClient, useQuery } from 'react-query';
 
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
 import { InferGetStaticPropsType } from 'next';
+
+import useGroupedEnums from 'hooks/getEnums';
+import useInterests, { InterestNames } from 'hooks/useInterests';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
@@ -23,21 +27,24 @@ import TextArea from 'components/forms/textarea';
 import Head from 'components/head';
 import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
 import languages from 'locales.config.json';
-import categories from 'mockups/categories.json';
-import impacts from 'mockups/impacts.json';
-import mosaics from 'mockups/mosaics.json';
-import projectDeveloperTypes from 'mockups/projectDeveloperTypes.json';
 import { PageComponent } from 'types';
 import { Enum } from 'types/enums';
-import { Interest, InterestItem, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
+import { Locations } from 'types/locations';
+import { ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 import useProjectDeveloperValidation, { formPageInputs } from 'validations/projectDeveloper';
 
 import { useCreateProjectDeveloper } from 'services/account';
+import { getEnums } from 'services/enums/enumService';
+import { getMosaics } from 'services/locations/localtionsService';
 
 export async function getStaticProps(ctx) {
+  const queryClient = new QueryClient();
+  queryClient.prefetchQuery('enum', getEnums);
+  queryClient.prefetchQuery('mosaics', getMosaics);
   return {
     props: {
       intlMessages: await loadI18nMessages(ctx),
+      dehydratedState: dehydrate(queryClient),
     },
   };
 }
@@ -47,7 +54,7 @@ type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 const getItemsInfoText = (items: Enum[]) => {
   return (
     <ul>
-      {items.map(({ attributes: { name, description }, id }) => (
+      {items?.map(({ attributes: { name, description }, id }) => (
         <li key={id}>
           <p className="font-sans text-sm font-semibold text-white">{name}</p>
           <p className="mb-4 font-sans text-sm font-normal text-white">{description}</p>
@@ -64,6 +71,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
   const resolver = useProjectDeveloperValidation(currentPage);
   const { push } = useRouter();
   const createProjectDeveloper = useCreateProjectDeveloper();
+  const enums = useQuery('enums', getEnums);
+  const mosaics = useQuery('mosaics', getMosaics);
+  const { category, impact, project_developer_type } = useGroupedEnums(enums?.data);
+  const interests = useInterests({ category, impact, mosaics: mosaics.data });
   const {
     register,
     handleSubmit,
@@ -153,36 +164,29 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     return formPageInputs[page].some((input) => errors.hasOwnProperty(input));
   };
 
-  const interests: Interest[] = [
-    {
-      title: formatMessage({
-        defaultMessage: 'Select the categories that interests you',
-        id: 'k5KxPA',
-      }),
-      name: 'categories',
-      items: categories,
-      required: true,
-    },
-    {
-      title: formatMessage({ defaultMessage: 'Expect to have impact on', id: 'YB8bt5' }),
-      name: 'impacts',
-      items: impacts,
-      required: true,
-    },
-    {
-      title: formatMessage({
-        defaultMessage: 'Select HeCo priority landscapes on which you will have impact (optional)',
-        id: 'piBsTx',
-      }),
-      name: 'mosaics',
-      items: mosaics,
-      infoText: formatMessage({
-        defaultMessage:
-          'Geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystem services.',
-        id: 'whbx7G',
-      }),
-    },
-  ];
+  const getAlert = () => {
+    if (createProjectDeveloper.error) {
+      return Array.isArray(createProjectDeveloper.error?.message)
+        ? createProjectDeveloper.error.message.map(({ title }: { title: string }) => title)
+        : formatMessage({
+            defaultMessage:
+              'Something went wrong while submitting your form. Please correct the errors before submitting again.',
+            id: 'WTuVeL',
+          });
+    }
+  };
+
+  const fetchError = formatMessage({ defaultMessage: 'Unable to load the data', id: 'zniaka' });
+
+  const getInterestsErrorText = (interestName: InterestNames) => {
+    if (interestName === InterestNames.mosaics && mosaics.isError) {
+      return fetchError;
+    }
+    if (enums.isError) {
+      return fetchError;
+    }
+    return (errors[interestName] as unknown as FieldError)?.message;
+  };
 
   return (
     <>
@@ -194,17 +198,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
         title={formatMessage({ defaultMessage: 'Setup project developer’s account', id: 'bhxvPM' })}
         autoNavigation={false}
         page={currentPage}
-        alert={
-          createProjectDeveloper.error
-            ? Array.isArray(createProjectDeveloper.error?.message)
-              ? createProjectDeveloper.error.message.map(({ title }: { title: string }) => title)
-              : formatMessage({
-                  defaultMessage:
-                    'Something went wrong while submitting your form. Please correct the errors before submitting again.',
-                  id: 'WTuVeL',
-                })
-            : null
-        }
+        alert={getAlert()}
         isSubmitting={createProjectDeveloper.isLoading}
         showOutro={false}
         onNextClick={handleNextClick}
@@ -218,7 +212,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
             <h1 className="mb-6 font-serif text-3xl font-semibold text-green-dark">
               <FormattedMessage defaultMessage="I want to write my content in" id="APjPYs" />
             </h1>
-
             <div>
               <fieldset className="flex justify-center mt-2 gap-x-6">
                 <legend>
@@ -281,7 +274,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 />
               </p>
             </div>
-
             <div className="mb-6.5">
               <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
                 <FormattedMessage defaultMessage="General" id="1iEPTM" />
@@ -317,7 +309,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   {...register('picture')}
                   onChange={handleUploadImage}
                   aria-describedby="picture-error"
-                  // value={imageName}
                 />
               </div>
               <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
@@ -359,13 +350,15 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     aria-describedby="project-developer-type-error"
                     aria-labelledby="project-developer-type-label"
                   >
-                    {projectDeveloperTypes.map(({ attributes: { name }, id }) => (
+                    {project_developer_type?.map(({ attributes: { name }, id }) => (
                       <Option key={id}>{name}</Option>
                     ))}
                   </Combobox>
                 </Label>
                 <ErrorMessage
-                  errorText={errors?.project_developer_type?.message}
+                  errorText={
+                    (enums.isError && fetchError) || errors?.project_developer_type?.message
+                  }
                   id="project-developer-type-error"
                 />
               </div>
@@ -466,14 +459,14 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     <FieldInfo infoText={infoText || getItemsInfoText(items)} />
                   </legend>
                   <div className="mb-4">
-                    {items.map((item) => (
+                    {items?.map((item: Enum | Locations) => (
                       <div
                         key={item.id}
                         className="inline-block px-4 py-2 mb-4 mr-4 border rounded-lg border-beige"
                       >
                         <Label htmlFor={item.id} className="flex items-center">
                           <input
-                            {...register(name)}
+                            {...register(name as keyof ProjectDeveloperSetupForm)}
                             id={item.id}
                             name={name}
                             type="checkbox"
@@ -486,10 +479,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     ))}
                   </div>
                 </fieldset>
-                <ErrorMessage
-                  id={`${name}-error`}
-                  errorText={(errors[name] as FieldError)?.message}
-                />
+                <ErrorMessage id={`${name}-error`} errorText={getInterestsErrorText(name)} />
               </div>
             ))}
           </form>
