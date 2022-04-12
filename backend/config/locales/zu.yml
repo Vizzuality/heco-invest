@@ -121,3 +121,61 @@ zu:
         name: Municipality
       region:
         name: Region
+    project_development_stage:
+      incipient:
+        name: Incipient
+        description: idea to be developed from scratch
+      consolidaton:
+        name: Consolidaton
+        description: project or solution already in implementation that seeks to be strengthened and consolidated
+      scaling-up:
+        name: Scaling up
+        description: consolidated, demonstrated project or solution that seeks to be scaled or replicated in other contexts and/or geographies
+    project_target_group:
+      entrepreneurs-and-innovators-startups:
+        name: Enterpreneurs and innovators - startups
+      small-and-medium-businesses:
+        name: Small and medium businesses
+      urban-populations:
+        name: Urban populations
+      indigenous-peoples:
+        name: Indigenous peoples
+      afro-desendant-peoples:
+        name: Afro-desendant peoples
+      peasants-and-traditional-inhabitants:
+        name: Peasants and traditional inhabitants
+      migrants-and-displaced-groups:
+        name: Migrants and displaced groups
+      groups-with-disabilities:
+        name: Groups with disabilities
+      lgtbq-plus-groups:
+        name: LGTBQ+ groups
+      other:
+        name: Other
+    impact_area:
+      conservation:
+        name: Conservation
+      restoration:
+        name: Restoration
+      pollutants-reduction:
+        name: Pollutants reduction
+      carbon-emission-reduction:
+        name: Carbon emission reduction
+      energy-efficiency:
+        name: Energy efficiency
+      renewable-energy:
+        name: Renewable energy
+      carbon-storage-or-sequestration:
+        name: Carbon storage or sequestration
+      water-capacity:
+        name: Water capacity
+      water-efficiency:
+        name: Water efficiency
+      sustainable-food:
+        name: Sustainable food
+      gender-equality-jobs:
+        name: Gender equality jobs
+      indigenous-or-ethic-jobs:
+        name: Indigenous or ethic jobs
+      community-empowerment:
+        name: Community empowerment
