@@ -1,6 +1,4 @@
-export type CategoryType = 'tourism' | 'production' | 'agrosystems' | 'forestry';
+import { CategoryTagDotProps } from './category-tag-dot';
 
-export type CategoryTagProps = React.PropsWithChildren<{
-  /** Identifier of the investment type so that the corresponding colored dot is displayed */
-  category: CategoryType;
-}>;
+export type CategoryType = 'tourism' | 'production' | 'agrosystems' | 'forestry';
+export type CategoryTagProps = React.PropsWithChildren<CategoryTagDotProps>;
