@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       resources :enums, only: [:index]
 
       scope "account", module: "accounts" do
-        resource :project_developer, only: [:create, :update]
+        resource :project_developer, only: [:create, :update, :show]
       end
     end
   end

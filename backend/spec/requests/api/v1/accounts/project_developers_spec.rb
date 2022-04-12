@@ -2,6 +2,34 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Account Project Developers", type: :request do
   path "/api/v1/account/project_developer" do
+    get "Get current Project Developer" do
+      tags "Project Developers"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+
+      let(:project_developer) { create :project_developer, :with_locations }
+      let(:user) { create :user }
+
+      it_behaves_like "with not authorized error", csrf: true
+
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/project_developer"}
+        }
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before(:each) do
+          user.update! account: project_developer.account, role: :project_developer
+          sign_in user
+        end
+
+        run_test!
+
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/get-project-developer")
+        end
+      end
+    end
     post "Create new Project Developer for User" do
       tags "Project Developers"
       consumes "multipart/form-data"
