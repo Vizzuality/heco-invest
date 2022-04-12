@@ -46,3 +46,29 @@ export function useCreateProjectDeveloper(): UseMutationResult<
     },
   });
 }
+
+export function useAccount(user: User) {
+  const getAccount = async (account_id: string): Promise<UserAccount> => {
+    switch (user?.attributes.role) {
+      case UserRole.project_developer:
+        return await getProjectDeveloper(account_id, 'name,slug');
+      case UserRole.investor:
+        // Change to get investor function
+        return await getProjectDeveloper(account_id, 'name,slug');
+      default:
+        return null;
+    }
+  };
+
+  const query = useQuery(['account', user], () =>
+    getAccount('9271bfb2-a68e-4a05-8c7a-af0003a66ead')
+  );
+
+  return useMemo(
+    () => ({
+      ...query,
+      account: query?.data?.attributes,
+    }),
+    [query]
+  );
+}
