@@ -49,7 +49,7 @@ export const TagGroup = ({
 
       {showSelectAllButton && (
         <button
-          className="mt-4 text-sm font-light underline cursor-pointer text-green-dark"
+          className="mt-6 text-sm font-light underline cursor-pointer text-green-dark"
           type="button"
           onClick={handleSelectAllClick}
         >
