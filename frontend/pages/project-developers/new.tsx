@@ -438,6 +438,51 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               </Label>
               <ErrorMessage errorText={errors?.mission?.message} id="mission-error" />
             </div>
+            <div className="mb-10">
+              <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
+                <FormattedMessage defaultMessage="Contact information" id="ITdmlJ" />
+              </p>
+              <div className="md:flex gap-x-6">
+                <div className="md:w-1/2">
+                  <Label>
+                    <FormattedMessage defaultMessage="Email" id="sy+pv5" />
+                    <Input
+                      name="contact_email"
+                      type="email"
+                      id="email"
+                      register={register}
+                      aria-required
+                      placeholder={formatMessage({
+                        defaultMessage: 'insert email',
+                        id: 'DkjIbR',
+                      })}
+                      className="mt-2.5"
+                      aria-describedby="email-error"
+                    />
+                  </Label>
+                  <ErrorMessage id="email-error" errorText={errors.contact_email?.message} />
+                </div>
+                <div className="md:w-1/2">
+                  <Label>
+                    <FormattedMessage defaultMessage="Phone number (optional)" id="JNTB42" />
+                    <Input
+                      name="contact_phone"
+                      type="tel"
+                      id="phone-number"
+                      register={register}
+                      aria-required
+                      placeholder={formatMessage({
+                        defaultMessage: 'insert phone number',
+                        id: 'iiVhlC',
+                      })}
+                      className="mt-2.5"
+                      aria-describedby="phone-number-error"
+                    />
+                  </Label>
+                  <ErrorMessage id="phone-number-error" errorText={errors.contact_phone?.message} />
+                </div>
+              </div>
+            </div>
             <div>
               <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
                 <FormattedMessage defaultMessage="Online presence" id="NjKSap" />

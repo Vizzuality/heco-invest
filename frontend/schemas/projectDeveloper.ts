@@ -30,6 +30,17 @@ export default (page: number) => {
     },
     about: formatMessage({ defaultMessage: 'You need enter a "about" text', id: 'tzSubd' }),
     mission: formatMessage({ defaultMessage: 'You need to enter a "mission" text', id: 'laO/jL' }),
+    contactEmail: {
+      required: formatMessage({
+        defaultMessage: 'You need to enter an email',
+        id: 'GkDTfx',
+      }),
+      isValid: formatMessage({
+        defaultMessage: 'Invalid email format.',
+        id: '05q+7T',
+      }),
+    },
+    contactPhone: formatMessage({ defaultMessage: 'Invalid phone number', id: 'HhjmvS' }),
     categories: formatMessage({
       defaultMessage: 'You need to select one or more categories',
       id: 'ora/x9',
@@ -69,7 +80,14 @@ export default (page: number) => {
       .required(messages.entityLegalRegistrationNumber.required),
     about: string().max(500, messages.maxTextLength).required(messages.about),
     mission: string().max(500, messages.maxTextLength).required(messages.mission),
-    website: string().url(messages.website),
+    contact_email: string()
+      .email(messages.contactEmail.isValid)
+      .required(messages.contactEmail.required),
+    contact_phone: string().test(
+      'isValid',
+      messages.contactPhone,
+      (value) => !value || !!value.match(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
+    ),
     facebook: string().test(
       'isSocialMediaLink',
       messages.social_medias,
