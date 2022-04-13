@@ -17,4 +17,8 @@ export type MenuProps = MenuTriggerProps & {
   expandedKeys?: React.Key[];
   /** Callback executed when the user clicks on a menu's item */
   onAction: PopupProps['onAction'];
+  /** Header (not menu items) of menu */
+  header?: JSX.Element;
+  /** List of sections whith sizes to hide */
+  hiddenSections?: { [key: React.Key]: 'all' | 'sm' | 'md' | 'lg' };
 };

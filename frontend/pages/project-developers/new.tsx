@@ -2,7 +2,7 @@ import { ChangeEvent, useState, useCallback } from 'react';
 
 import { SubmitHandler, useForm, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { dehydrate, QueryClient, useQuery } from 'react-query';
+import { dehydrate, QueryClient } from 'react-query';
 
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -10,7 +10,6 @@ import { useRouter } from 'next/router';
 import { AxiosError } from 'axios';
 import { InferGetStaticPropsType } from 'next';
 
-import useGroupedEnums from 'hooks/getEnums';
 import useInterests, { InterestNames } from 'hooks/useInterests';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -35,8 +34,8 @@ import { ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 import useProjectDeveloperValidation, { formPageInputs } from 'validations/projectDeveloper';
 
 import { useCreateProjectDeveloper } from 'services/account';
-import { getEnums } from 'services/enums/enumService';
-import { getMosaics } from 'services/locations/localtionsService';
+import { getEnums, useEnums } from 'services/enums/enumService';
+import { getMosaics, useMosaics } from 'services/locations/localtionsService';
 
 export async function getStaticProps(ctx) {
   const queryClient = new QueryClient();
@@ -52,13 +51,13 @@ export async function getStaticProps(ctx) {
 
 type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const getItemsInfoText = (items: Enum[]) => {
+const getItemsInfoText = (items: Enum[] | Locations[]) => {
   return (
     <ul>
-      {items?.map(({ attributes: { name, description }, id }) => (
+      {items?.map(({ attributes, id }) => (
         <li key={id}>
-          <p className="font-sans text-sm font-semibold text-white">{name}</p>
-          <p className="mb-4 font-sans text-sm font-normal text-white">{description}</p>
+          <p className="font-sans text-sm font-semibold text-white">{attributes.name}</p>
+          <p className="mb-4 font-sans text-sm font-normal text-white">{attributes.description}</p>
         </li>
       ))}
     </ul>
@@ -72,9 +71,9 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
   const resolver = useProjectDeveloperValidation(currentPage);
   const { push } = useRouter();
   const createProjectDeveloper = useCreateProjectDeveloper();
-  const enums = useQuery('enums', getEnums);
-  const mosaics = useQuery('mosaics', getMosaics);
-  const { category, impact, project_developer_type } = useGroupedEnums(enums?.data);
+  const enums = useEnums();
+  const { category, impact, project_developer_type } = enums?.data;
+  const mosaics = useMosaics();
   const interests = useInterests({ category, impact, mosaics: mosaics.data });
   const {
     register,

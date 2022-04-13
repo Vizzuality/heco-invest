@@ -18,11 +18,10 @@ import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import Loading from 'components/loading';
-import { Paths } from 'enums';
+import { Paths, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
 import { SignIn } from 'types/sign-in';
-import { UserRole } from 'types/user';
 import { useSignInResolver } from 'validations/sign-in';
 
 import { useSignIn } from 'services/authentication/authService';
@@ -53,10 +52,10 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
     (data: SignIn) =>
       signIn.mutate(data, {
         onSuccess: () => {
-          if (user.attributes.role === UserRole.LIGHT) {
-            push(Paths.ACCOUNT_TYPE);
+          if (user?.attributes.role === UserRoles.Ligth) {
+            push(Paths.AccountType);
           } else {
-            push(Paths.DASHBOARD);
+            push(Paths.Dashboard);
           }
         },
       }),
@@ -79,7 +78,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signIn.error?.message && (
           <Alert className="mb-4.5" withLayoutContainer>
-            {Array.isArray(signIn.error.message)
+            {Array.isArray(signIn.error?.message)
               ? signIn.error.message[0].title
               : signIn.error.message}
           </Alert>
@@ -108,7 +107,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
               <Label htmlFor="password">
                 <FormattedMessage defaultMessage="Password" id="5sg7KC" />
               </Label>
-              <Link href={Paths.FORGOT_PASSWORD}>
+              <Link href={Paths.ForgotPassword}>
                 <a
                   id="password-description"
                   className="font-sans text-sm font-normal cursor-pointer text-green-dark"

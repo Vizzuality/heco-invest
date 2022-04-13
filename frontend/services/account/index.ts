@@ -1,12 +1,16 @@
-import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
+import { useMemo } from 'react';
+
+import { useMutation, UseMutationResult, useQuery, useQueryClient } from 'react-query';
 
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 
-import { Queries } from 'enums';
+import { Queries, UserRoles } from 'enums';
 import { ApiError } from 'types/api';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
+import { User, UserAccount } from 'types/user';
 
 import API from 'services/api';
+import { getProjectDeveloper } from 'services/project-developers/projectDevelopersService';
 
 const createProjectDeveloper = async (
   data: ProjectDeveloperSetupForm
@@ -46,4 +50,30 @@ export function useCreateProjectDeveloper(): UseMutationResult<
       queryClient.setQueryData(Queries.ProjectDeveloper, result.data);
     },
   });
+}
+
+export function useAccount(user?: User) {
+  const getAccount = async (): Promise<UserAccount> => {
+    switch (user.attributes.role) {
+      case UserRoles.ProjectDeveloper:
+        return await getProjectDeveloper('9271bfb2-a68e-4a05-8c7a-af0003a66ead', 'name,slug');
+      case UserRoles.Investor:
+        // Change to get investor function
+        return await getProjectDeveloper('9271bfb2-a68e-4a05-8c7a-af0003a66ead', 'name,slug');
+      default:
+        return null;
+    }
+  };
+
+  const query = useQuery([Queries.Account, user], getAccount, {
+    enabled: !!user?.attributes?.role,
+  });
+
+  return useMemo(
+    () => ({
+      ...query,
+      account: query?.data?.attributes,
+    }),
+    [query]
+  );
 }

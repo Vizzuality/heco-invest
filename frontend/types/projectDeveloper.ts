@@ -7,6 +7,11 @@ import { Enum } from './enums';
 type ProjectDeveloperBase = SocialContactInputs & {
   name: string;
   about: string;
+  website?: string;
+  instagram?: string;
+  facebook?: string;
+  linkedin?: string;
+  twitter?: string;
   mission: string;
   project_developer_type: string;
   contact_email: string;
