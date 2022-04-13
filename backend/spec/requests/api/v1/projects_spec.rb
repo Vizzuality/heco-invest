@@ -2,7 +2,7 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Projects", type: :request do
   before_all do
-    @project = create(:project)
+    @project = create(:project, :with_involved_project_developers)
     create_list(:project, 6)
   end
 

@@ -65,5 +65,10 @@ FactoryBot.define do
     end
 
     language { "en" }
+
+    trait :with_involved_project_developers do
+      involved_project_developers { create_list(:project_developer, 2) }
+      involved_project_developer_not_listed { true }
+    end
   end
 end

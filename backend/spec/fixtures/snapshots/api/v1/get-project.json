@@ -41,7 +41,8 @@
       "received_funding": true,
       "received_funding_amount_usd": "3000.0",
       "received_funding_investor": "Kutch-Spencer",
-      "relevant_links": null
+      "relevant_links": null,
+      "involved_project_developer_not_listed": true
     },
     "relationships": {
       "project_developer": {
@@ -49,6 +50,18 @@
           "id": "8f4cea39-cf98-4554-a606-fd37c037626f",
           "type": "project_developer"
         }
+      },
+      "involved_project_developers": {
+        "data": [
+          {
+            "id": "831b446e-8c4d-46d8-8f00-402bbe42f1a7",
+            "type": "project_developer"
+          },
+          {
+            "id": "f112dba7-58b2-4b2c-9f52-ad854773ce62",
+            "type": "project_developer"
+          }
+        ]
       }
     }
   }

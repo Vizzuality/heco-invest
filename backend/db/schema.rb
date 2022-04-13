@@ -246,6 +246,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_133916) do
     t.string "target_groups", null: false, array: true
     t.string "impact_areas", null: false, array: true
     t.boolean "looking_for_funding", default: false, null: false
+    t.boolean "involved_project_developer_not_listed", default: false, null: false
     t.text "funding_plan_en"
     t.text "funding_plan_es"
     t.text "funding_plan_pt"
