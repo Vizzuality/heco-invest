@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 import { ChevronDown, Menu as MenuIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
