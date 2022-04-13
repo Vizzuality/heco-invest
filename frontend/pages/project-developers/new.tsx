@@ -25,6 +25,7 @@ import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import TextArea from 'components/forms/textarea';
 import Head from 'components/head';
+import { Queries } from 'enums';
 import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
 import languages from 'locales.config.json';
 import { PageComponent } from 'types';
@@ -39,8 +40,8 @@ import { getMosaics } from 'services/locations/localtionsService';
 
 export async function getStaticProps(ctx) {
   const queryClient = new QueryClient();
-  queryClient.prefetchQuery('enum', getEnums);
-  queryClient.prefetchQuery('mosaics', getMosaics);
+  queryClient.prefetchQuery(Queries.EnumList, getEnums);
+  queryClient.prefetchQuery(Queries.Mosaics, getMosaics);
   return {
     props: {
       intlMessages: await loadI18nMessages(ctx),
