@@ -12,6 +12,7 @@ module API
         :impact_areas,
         :categories,
         :sdgs,
+        :involved_project_developer_not_listed,
         :problem,
         :solution,
         :expected_impact,
@@ -28,6 +29,7 @@ module API
         :language
 
       belongs_to :project_developer
+      has_many :involved_project_developers, serializer: ProjectDeveloperSerializer
     end
   end
 end

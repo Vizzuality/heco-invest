@@ -12,6 +12,7 @@ class ChangesForProjects < ActiveRecord::Migration[7.0]
     add_column :projects, :target_groups, :string, array: true, null: false
     add_column :projects, :impact_areas, :string, array: true, null: false
     add_column :projects, :looking_for_funding, :boolean, null: false, default: false
+    add_column :projects, :involved_project_developer_not_listed, :boolean, null: false, default: false
     add_column :projects, :funding_plan_en, :text
     add_column :projects, :funding_plan_es, :text
     add_column :projects, :funding_plan_pt, :text
