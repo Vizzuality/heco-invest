@@ -1,5 +1,7 @@
 import React from 'react';
 
+import cx from 'classnames';
+
 import { useMenuSection } from '@react-aria/menu';
 import { useSeparator } from '@react-aria/separator';
 
@@ -12,6 +14,7 @@ export const Section: React.FC<SectionProps> = ({
   state,
   onAction,
   onClose,
+  hidden,
 }: SectionProps) => {
   const { itemProps, groupProps } = useMenuSection({
     heading: section.rendered,
@@ -27,7 +30,15 @@ export const Section: React.FC<SectionProps> = ({
       {section.key !== state.collection.getFirstKey() && (
         <li {...separatorProps} className="h-px mx-2.5 bg-background-dark" />
       )}
-      <li {...itemProps}>
+      <li
+        {...itemProps}
+        className={
+          hidden &&
+          cx({
+            [hidden === 'all' ? 'hidden' : `${hidden}:hidden`]: !!hidden,
+          })
+        }
+      >
         <ul {...groupProps}>
           {Array.from(section.childNodes).map((item) => (
             <Item key={item.key} item={item} state={state} onAction={onAction} onClose={onClose} />

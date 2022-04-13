@@ -1,9 +1,4 @@
-export enum LocationsTypes {
-  country = 'country',
-  department = 'department',
-  municipality = 'municipality',
-  region = 'region',
-}
+import { LocationsTypes } from 'enums';
 
 export type LocationsParams = {
   location_type?: LocationsTypes;
@@ -27,7 +22,7 @@ export type Locations = {
       };
     };
     regions: {
-      data: [];
+      data: { id: string; type: 'location' }[];
     };
   };
 };

@@ -1,16 +1,8 @@
-export enum EnumTypes {
-  'category',
-  'instrument_type',
-  'ticket_size',
-  'impact',
-  'project_developer_type',
-  'investor_type',
-  'location_type',
-}
+import { EnumTypes } from 'enums';
 
 export type Enum = {
   id: string;
-  type: string;
+  type: EnumTypes;
   attributes: {
     name: string;
     color?: string;
