@@ -2,21 +2,23 @@ import { useMemo } from 'react';
 
 import { useQuery } from 'react-query';
 
-import { QUERIES } from 'enums';
+import { Queries } from 'enums';
 import { User } from 'types/user';
 
 import API from 'services/api';
 
 export default function useMe() {
   const query = useQuery<User>(
-    QUERIES.USER,
+    Queries.User,
     () =>
       API.request({
         method: 'GET',
         url: '/api/v1/user',
       }).then((response) => response.data.data),
     {
-      retry: 1,
+      retry: 0,
+      staleTime: Infinity,
+      refetchOnMount: false,
     }
   );
 
