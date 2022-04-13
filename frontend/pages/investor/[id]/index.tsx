@@ -5,8 +5,8 @@ import { loadI18nMessages } from 'helpers/i18n';
 
 import ProfileHeader from 'containers/profile-header';
 import SDGs, { SDGType } from 'containers/sdgs';
-import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 import { SocialType } from 'containers/social-contact/website-social-contact';
+import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
@@ -54,10 +54,10 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
       title: 'Invests in',
       type: 'category',
       tags: [
-        { id: 'tourism', title: 'Tourism & Recreation' },
-        { id: 'production', title: 'Non-timber forest production' },
-        { id: 'agrosystems', title: 'Sustainable agrosystems' },
-        { id: 'forestry', title: 'Forestry & agroforestry' },
+        { id: 'tourism-and-recreation', title: 'Tourism & Recreation' },
+        { id: 'non-timber-forest-production', title: 'Non-timber forest production' },
+        { id: 'sustainable-agrosystems', title: 'Sustainable agrosystems' },
+        { id: 'forestry-and-agroforestry', title: 'Forestry & agroforestry' },
       ],
     },
     {

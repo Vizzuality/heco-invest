@@ -65,8 +65,8 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
       title: 'Categories of interest',
       type: 'category',
       tags: [
-        { id: 'tourism', title: 'Tourism & Recreation' },
-        { id: 'production', title: 'Non-timber forest production' },
+        { id: 'tourism-and-recreation', title: 'Tourism & Recreation' },
+        { id: 'non-timber-forest-production', title: 'Non-timber forest production' },
       ],
     },
     {
