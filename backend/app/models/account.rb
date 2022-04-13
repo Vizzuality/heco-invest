@@ -23,6 +23,7 @@ class Account < ApplicationRecord
   validates :language, inclusion: {in: Language::TYPES}
   validates :picture, attached: true, content_type: /\Aimage\/.*\z/
   validates :contact_email, presence: true
+  validates :contact_email, format: {with: Devise.email_regexp}, unless: -> { contact_email.blank? }
 
   def slug_preview
     set_slug unless slug.present?
