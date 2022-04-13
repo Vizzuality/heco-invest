@@ -47,22 +47,22 @@ export function useCreateProjectDeveloper(): UseMutationResult<
   });
 }
 
-export function useAccount(user: User) {
-  const getAccount = async (account_id: string): Promise<UserAccount> => {
-    switch (user?.attributes.role) {
-      case UserRole.project_developer:
-        return await getProjectDeveloper(account_id, 'name,slug');
-      case UserRole.investor:
+export function useAccount(user?: User) {
+  const getAccount = async (): Promise<UserAccount> => {
+    switch (user.attributes.role) {
+      case UserRoles.ProjectDeveloper:
+        return await getProjectDeveloper('9271bfb2-a68e-4a05-8c7a-af0003a66ead', 'name,slug');
+      case UserRoles.Investor:
         // Change to get investor function
-        return await getProjectDeveloper(account_id, 'name,slug');
+        return await getProjectDeveloper('9271bfb2-a68e-4a05-8c7a-af0003a66ead', 'name,slug');
       default:
         return null;
     }
   };
 
-  const query = useQuery(['account', user], () =>
-    getAccount('9271bfb2-a68e-4a05-8c7a-af0003a66ead')
-  );
+  const query = useQuery([Queries.Account, user], getAccount, {
+    enabled: !!user?.attributes?.role,
+  });
 
   return useMemo(
     () => ({
