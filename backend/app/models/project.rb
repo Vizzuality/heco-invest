@@ -8,6 +8,8 @@ class Project < ApplicationRecord
   belongs_to :municipality, class_name: "Location"
   belongs_to :department, class_name: "Location"
 
+  has_and_belongs_to_many :involved_project_developers, join_table: "project_involvements", class_name: "ProjectDeveloper"
+
   enum status: {draft: 0, published: 1, closed: 2}, _default: :draft
 
   validates :development_stage, inclusion: {in: ProjectDevelopmentStage::TYPES}
