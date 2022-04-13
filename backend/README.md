@@ -43,6 +43,18 @@ using foreman `bin/watch` and the server in the standard way in a separate termi
 
 Documentation can be found at `/api-docs`.
 
+### Replace snapshot files
+
+On the first run, the `match_snapshot` matcher will always return success and it will store a snapshot file. On the next runs, it will compare the response with the file content.
+
+If you need to replace snapshots, run the specs with:
+
+`REPLACE_SNAPSHOTS=true bundle exec rspec`
+
+If you only need to add, remove or replace data without replacing the whole snapshot:
+
+`CONSERVATIVE_UPDATE_SNAPSHOTS=true bundle exec rspec`
+
 ### Run linters
 
 `bin/rails standard`

@@ -16,5 +16,7 @@ FactoryBot.define do
     facebook { "https://facebook.com/#{slug_preview}" }
     website { "https://#{slug_preview}.com" }
     language { "en" }
+    contact_email { "contact@example.com" }
+    contact_phone { "+57-1-xxx-xx-xx" }
   end
 end

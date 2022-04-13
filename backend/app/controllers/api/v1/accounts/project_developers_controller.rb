@@ -22,6 +22,10 @@ module API
           render json: ProjectDeveloperSerializer.new(current_user.account.project_developer).serializable_hash
         end
 
+        def show
+          render json: ProjectDeveloperSerializer.new(current_user.account.project_developer).serializable_hash
+        end
+
         private
 
         def require_project_developer!
@@ -32,7 +36,7 @@ module API
 
         def account_params
           params.fetch(:project_developer_params, params)
-            .permit :language, :picture, :name, :website, :linkedin, :facebook, :twitter, :instagram, :about
+            .permit :language, :picture, :name, :website, :linkedin, :facebook, :twitter, :instagram, :about, :contact_email, :contact_phone
         end
 
         def project_developer_params

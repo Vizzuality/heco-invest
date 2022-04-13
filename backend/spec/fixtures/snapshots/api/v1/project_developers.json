@@ -29,7 +29,9 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
       },
       "relationships": {
         "owner": {
@@ -81,7 +83,9 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
       },
       "relationships": {
         "owner": {
@@ -126,7 +130,9 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
       },
       "relationships": {
         "owner": {
@@ -171,7 +177,9 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
       },
       "relationships": {
         "owner": {
@@ -216,7 +224,9 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
       },
       "relationships": {
         "owner": {
@@ -261,7 +271,9 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
       },
       "relationships": {
         "owner": {
@@ -306,7 +318,9 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
       },
       "relationships": {
         "owner": {
