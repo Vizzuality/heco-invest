@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_31_104516) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_12_133916) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_104516) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "owner_id", null: false
+    t.text "contact_email", null: false
+    t.text "contact_phone"
     t.index ["name"], name: "index_accounts_on_name", unique: true
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
     t.index ["slug"], name: "index_accounts_on_slug", unique: true
@@ -189,6 +191,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_104516) do
     t.index ["account_id"], name: "index_project_developers_on_account_id"
   end
 
+  create_table "project_involvements", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "project_id", null: false
+    t.uuid "project_developer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_developer_id"], name: "index_project_involvements_on_project_developer_id"
+    t.index ["project_id", "project_developer_id"], name: "index_project_inv_on_project_id_and_project_developer_id", unique: true
+    t.index ["project_id"], name: "index_project_involvements_on_project_id"
+  end
+
   create_table "projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "project_developer_id", null: false
     t.text "name_en"
@@ -203,17 +215,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_104516) do
     t.string "ticket_size", null: false
     t.string "instrument_types", null: false, array: true
     t.integer "sdgs", array: true
-    t.integer "number_of_partners"
-    t.integer "number_of_employees", null: false
-    t.integer "number_of_employees_women"
-    t.integer "number_of_employees_young"
-    t.integer "number_of_employees_indigenous"
-    t.integer "number_of_employees_migrants"
     t.boolean "received_funding", null: false
-    t.text "received_funding_description_en"
-    t.text "received_funding_description_es"
-    t.text "received_funding_description_pt"
-    t.text "income_in_last_3_years", null: false
     t.text "description_en"
     t.text "description_es"
     t.text "description_pt"
@@ -223,21 +225,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_104516) do
     t.text "solution_en"
     t.text "solution_es"
     t.text "solution_pt"
-    t.text "business_model_en"
-    t.text "business_model_es"
-    t.text "business_model_pt"
-    t.text "roi_en"
-    t.text "roi_es"
-    t.text "roi_pt"
     t.text "sustainability_en"
     t.text "sustainability_es"
     t.text "sustainability_pt"
-    t.text "impact_description_en"
-    t.text "impact_description_es"
-    t.text "impact_description_pt"
-    t.text "other_information_en"
-    t.text "other_information_es"
-    t.text "other_information_pt"
     t.boolean "trusted", default: false, null: false
     t.text "website"
     t.text "linkedin"
@@ -247,6 +237,35 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_104516) do
     t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "country_id", null: false
+    t.uuid "department_id", null: false
+    t.uuid "municipality_id", null: false
+    t.string "development_stage", null: false
+    t.integer "estimated_duration_in_months", null: false
+    t.text "expected_impact_en"
+    t.text "expected_impact_es"
+    t.text "expected_impact_pt"
+    t.string "target_groups", null: false, array: true
+    t.string "impact_areas", null: false, array: true
+    t.boolean "looking_for_funding", default: false, null: false
+    t.boolean "involved_project_developer_not_listed", default: false, null: false
+    t.text "funding_plan_en"
+    t.text "funding_plan_es"
+    t.text "funding_plan_pt"
+    t.text "replicability_en"
+    t.text "replicability_es"
+    t.text "replicability_pt"
+    t.text "progress_impact_tracking_en"
+    t.text "progress_impact_tracking_es"
+    t.text "progress_impact_tracking_pt"
+    t.decimal "received_funding_amount_usd"
+    t.text "received_funding_investor"
+    t.text "relevant_links_en"
+    t.text "relevant_links_es"
+    t.text "relevant_links_pt"
+    t.index ["country_id"], name: "index_projects_on_country_id"
+    t.index ["department_id"], name: "index_projects_on_department_id"
+    t.index ["municipality_id"], name: "index_projects_on_municipality_id"
     t.index ["project_developer_id", "name_en"], name: "index_projects_on_project_developer_id_and_name_en", unique: true
     t.index ["project_developer_id", "name_es"], name: "index_projects_on_project_developer_id_and_name_es", unique: true
     t.index ["project_developer_id", "name_pt"], name: "index_projects_on_project_developer_id_and_name_pt", unique: true
@@ -289,6 +308,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_104516) do
   add_foreign_key "project_developer_locations", "locations", on_delete: :cascade
   add_foreign_key "project_developer_locations", "project_developers", on_delete: :cascade
   add_foreign_key "project_developers", "accounts", on_delete: :cascade
+  add_foreign_key "project_involvements", "project_developers", on_delete: :cascade
+  add_foreign_key "project_involvements", "projects", on_delete: :cascade
+  add_foreign_key "projects", "locations", column: "country_id"
+  add_foreign_key "projects", "locations", column: "department_id"
+  add_foreign_key "projects", "locations", column: "municipality_id"
   add_foreign_key "projects", "project_developers", on_delete: :cascade
   add_foreign_key "users", "accounts", on_delete: :cascade
 end

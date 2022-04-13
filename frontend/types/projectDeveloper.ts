@@ -2,16 +2,13 @@ import { SocialContactInputs } from 'containers/social-contact/inputs-social-con
 
 import { Languages } from 'enums';
 
+import { CategoryType } from './category';
+
 import { Enum } from './enums';
 
-type ProjectDeveloperBase = {
+type ProjectDeveloperBase = SocialContactInputs & {
   name: string;
   about: string;
-  website?: string;
-  instagram?: string;
-  facebook?: string;
-  linkedin?: string;
-  twitter?: string;
   mission: string;
   project_developer_type: string;
   categories: Category[];
@@ -48,8 +45,7 @@ export type ProjectDeveloper = {
   };
 };
 
-export type ProjectDeveloperSetupForm = SocialContactInputs &
-  ProjectDeveloperBase & {
+export type ProjectDeveloperSetupForm = ProjectDeveloperBase & {
     picture: File;
     mosaics?: Mosaic[];
   };

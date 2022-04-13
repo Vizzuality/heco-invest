@@ -136,7 +136,9 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
       },
       "relationships": {
         "owner": {
@@ -154,96 +156,6 @@
     },
     {
       "id": "e9948299-f3b3-410b-ae2d-40e30d708869",
-      "type": "project_developer",
-      "attributes": {
-        "name": "Bartoletti and Sons",
-        "slug": "bartoletti-and-sons",
-        "about": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "website": "https://bartoletti-and-sons.com",
-        "instagram": "https://instagram.com/bartoletti-and-sons",
-        "facebook": "https://facebook.com/bartoletti-and-sons",
-        "linkedin": "https://linkedin.com/bartoletti-and-sons",
-        "twitter": "https://twitter.com/bartoletti-and-sons",
-        "mission": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "project_developer_type": "ngo",
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
-        "impacts": [
-          "climate",
-          "water"
-        ],
-        "language": "en",
-        "entity_legal_registration_number": "564823570",
-        "review_status": "approved",
-        "picture": {
-          "small": null,
-          "medium": null,
-          "original": null
-        }
-      },
-      "relationships": {
-        "owner": {
-          "data": {
-            "id": "d73a27bd-2711-4e2a-aed7-c0b213b5edd4",
-            "type": "user"
-          }
-        },
-        "locations": {
-          "data": [
-
-          ]
-        }
-      }
-    },
-    {
-      "id": "ea42b75f-0452-4bee-a105-e1eb78cda9da",
-      "type": "project_developer",
-      "attributes": {
-        "name": "Hane, Lehner and Goyette",
-        "slug": "hane-lehner-and-goyette",
-        "about": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "website": "https://hane-lehner-and-goyette.com",
-        "instagram": "https://instagram.com/hane-lehner-and-goyette",
-        "facebook": "https://facebook.com/hane-lehner-and-goyette",
-        "linkedin": "https://linkedin.com/hane-lehner-and-goyette",
-        "twitter": "https://twitter.com/hane-lehner-and-goyette",
-        "mission": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "project_developer_type": "ngo",
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
-        "impacts": [
-          "climate",
-          "water"
-        ],
-        "language": "en",
-        "entity_legal_registration_number": "564823570",
-        "review_status": "approved",
-        "picture": {
-          "small": null,
-          "medium": null,
-          "original": null
-        }
-      },
-      "relationships": {
-        "owner": {
-          "data": {
-            "id": "eef547af-a71d-4d74-99bd-5d0442a2a772",
-            "type": "user"
-          }
-        },
-        "locations": {
-          "data": [
-
-          ]
-        }
-      }
-    },
-    {
-      "id": "ff17bed6-9f18-4032-b827-e6d9f495a013",
       "type": "project_developer",
       "attributes": {
         "name": "Hilpert, Waters and Johnston",
@@ -271,12 +183,14 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
       },
       "relationships": {
         "owner": {
           "data": {
-            "id": "e8a79fc3-c89b-4799-af09-a13344a8d811",
+            "id": "d73a27bd-2711-4e2a-aed7-c0b213b5edd4",
             "type": "user"
           }
         },
@@ -288,7 +202,7 @@
       }
     },
     {
-      "id": "a8baafbe-f0cc-49ef-9a57-da8ca7a6990f",
+      "id": "ea42b75f-0452-4bee-a105-e1eb78cda9da",
       "type": "project_developer",
       "attributes": {
         "name": "Jacobson, Fritsch and Stanton",
@@ -316,12 +230,14 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
       },
       "relationships": {
         "owner": {
           "data": {
-            "id": "5b2a15f1-ec59-4057-b6a7-509e8251b7dc",
+            "id": "eef547af-a71d-4d74-99bd-5d0442a2a772",
             "type": "user"
           }
         },
@@ -333,7 +249,7 @@
       }
     },
     {
-      "id": "4d6b5ffc-325f-42ee-8cc1-2d788eb82391",
+      "id": "ff17bed6-9f18-4032-b827-e6d9f495a013",
       "type": "project_developer",
       "attributes": {
         "name": "Keebler, Kub and Zemlak",
@@ -361,12 +277,14 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
       },
       "relationships": {
         "owner": {
           "data": {
-            "id": "8e7f6981-b9d1-402f-975e-5e1d1c9b2f04",
+            "id": "e8a79fc3-c89b-4799-af09-a13344a8d811",
             "type": "user"
           }
         },
@@ -378,7 +296,7 @@
       }
     },
     {
-      "id": "0572d8d2-e4f2-4b13-83f9-6b8f348a6a35",
+      "id": "a8baafbe-f0cc-49ef-9a57-da8ca7a6990f",
       "type": "project_developer",
       "attributes": {
         "name": "Becker LLC",
@@ -406,7 +324,103 @@
           "small": null,
           "medium": null,
           "original": null
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
+      },
+      "relationships": {
+        "owner": {
+          "data": {
+            "id": "5b2a15f1-ec59-4057-b6a7-509e8251b7dc",
+            "type": "user"
+          }
+        },
+        "locations": {
+          "data": [
+
+          ]
         }
+      }
+    },
+    {
+      "id": "4d6b5ffc-325f-42ee-8cc1-2d788eb82391",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Runolfsson and Sons",
+        "slug": "runolfsson-and-sons",
+        "about": "Est vero minus. Tenetur tempora animi. Aliquid error vitae. Ipsam omnis aut.",
+        "website": "https://runolfsson-and-sons.com",
+        "instagram": "https://instagram.com/runolfsson-and-sons",
+        "facebook": "https://facebook.com/runolfsson-and-sons",
+        "linkedin": "https://linkedin.com/runolfsson-and-sons",
+        "twitter": "https://twitter.com/runolfsson-and-sons",
+        "mission": "Est vero minus. Tenetur tempora animi. Aliquid error vitae. Ipsam omnis aut.",
+        "project_developer_type": "ngo",
+        "categories": [
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en",
+        "entity_legal_registration_number": "564823570",
+        "review_status": "approved",
+        "picture": {
+          "small": null,
+          "medium": null,
+          "original": null
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
+      },
+      "relationships": {
+        "owner": {
+          "data": {
+            "id": "8e7f6981-b9d1-402f-975e-5e1d1c9b2f04",
+            "type": "user"
+          }
+        },
+        "locations": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "0572d8d2-e4f2-4b13-83f9-6b8f348a6a35",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Ritchie, Glover and Ward",
+        "slug": "ritchie-glover-and-ward",
+        "about": "Impedit animi eveniet. Quia illum aut. Dolore quia officiis. Non aut sit.",
+        "website": "https://ritchie-glover-and-ward.com",
+        "instagram": "https://instagram.com/ritchie-glover-and-ward",
+        "facebook": "https://facebook.com/ritchie-glover-and-ward",
+        "linkedin": "https://linkedin.com/ritchie-glover-and-ward",
+        "twitter": "https://twitter.com/ritchie-glover-and-ward",
+        "mission": "Impedit animi eveniet. Quia illum aut. Dolore quia officiis. Non aut sit.",
+        "project_developer_type": "ngo",
+        "categories": [
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en",
+        "entity_legal_registration_number": "564823570",
+        "review_status": "approved",
+        "picture": {
+          "small": null,
+          "medium": null,
+          "original": null
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx"
       },
       "relationships": {
         "owner": {

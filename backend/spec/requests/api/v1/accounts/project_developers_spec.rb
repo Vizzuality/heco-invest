@@ -2,6 +2,34 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Account Project Developers", type: :request do
   path "/api/v1/account/project_developer" do
+    get "Get current Project Developer" do
+      tags "Project Developers"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+
+      let(:project_developer) { create :project_developer, :with_locations }
+      let(:user) { create :user }
+
+      it_behaves_like "with not authorized error", csrf: true
+
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/project_developer"}
+        }
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before(:each) do
+          user.update! account: project_developer.account, role: :project_developer
+          sign_in user
+        end
+
+        run_test!
+
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/get-project-developer")
+        end
+      end
+    end
     post "Create new Project Developer for User" do
       tags "Project Developers"
       consumes "multipart/form-data"
@@ -22,11 +50,13 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           project_developer_type: {type: :string, enum: ProjectDeveloperType::TYPES},
           entity_legal_registration_number: {type: :string},
           mission: {type: :string},
+          contact_email: {type: :string},
+          contact_phone: {type: :string},
           "categories[]": {type: :array, items: {type: :string, enum: Category::TYPES}, collectionFormat: :multi},
           "impacts[]": {type: :array, items: {type: :string, enum: Impact::TYPES}, collectionFormat: :multi},
           "location_ids[]": {type: :array, items: {type: :string}, collectionFormat: :multi}
         },
-        required: %w[language picture name about project_developer_type entity_legal_registration_number mission categories[] impacts[]]
+        required: %w[language picture name about project_developer_type entity_legal_registration_number mission contact_email categories[] impacts[]]
       }
 
       let(:location) { create :location }
@@ -44,7 +74,8 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           instagram: "http://instagram.com",
           project_developer_type: "ngo",
           entity_legal_registration_number: "564823570",
-          mission: "Mision",
+          mission: "Mission",
+          contact_email: "contact@example.com",
           categories: ["sustainable-agrosystems", "tourism-and-recreation"],
           impacts: ["biodiversity", "climate"],
           location_ids: [location.id]
@@ -106,6 +137,8 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           project_developer_type: {type: :string, enum: ProjectDeveloperType::TYPES},
           entity_legal_registration_number: {type: :string},
           mission: {type: :string},
+          contact_email: {type: :string},
+          contact_phone: {type: :string},
           "categories[]": {type: :array, items: {type: :string, enum: Category::TYPES}, collectionFormat: :multi},
           "impacts[]": {type: :array, items: {type: :string, enum: Impact::TYPES}, collectionFormat: :multi},
           "location_ids[]": {type: :array, items: {type: :string}, collectionFormat: :multi}
@@ -127,7 +160,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           instagram: "http://instagram.com",
           project_developer_type: "ngo",
           entity_legal_registration_number: "564823570",
-          mission: "Mision",
+          mission: "Mission",
           categories: ["sustainable-agrosystems", "tourism-and-recreation"],
           impacts: ["biodiversity", "climate"],
           location_ids: [location.id]
