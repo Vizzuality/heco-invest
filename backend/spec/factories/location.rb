@@ -1,10 +1,10 @@
 FactoryBot.define do
-  factory :location do
+  factory :location, aliases: [:country] do
     location_type { "country" }
 
     sequence(:name) do |n|
       Faker::Config.random = Random.new(n)
-      Faker::Company.name
+      Faker::Address.country
     end
 
     parent { nil }
@@ -26,6 +26,23 @@ FactoryBot.define do
       after(:create) do |location|
         region = create :location, location_type: "region"
         create :location_member, location: location, member: region
+      end
+    end
+
+    factory :department do
+      location_type { "department" }
+
+      sequence(:name) do |n|
+        Faker::Config.random = Random.new(n)
+        Faker::Address.state
+      end
+    end
+
+    factory :municipality do
+      location_type { "municipality" }
+
+      sequence(:name) do |n|
+        "Municipality #{n}"
       end
     end
   end

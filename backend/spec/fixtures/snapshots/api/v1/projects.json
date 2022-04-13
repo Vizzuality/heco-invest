@@ -23,18 +23,27 @@
         ],
         "problem": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
         "solution": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "business_model": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "other_information": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "impact_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
         "sustainability": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "roi": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "income_in_last_3_years": "100K - 500K",
-        "number_of_employees": 10,
-        "number_of_employees_women": 6,
-        "number_of_employees_young": 2,
-        "number_of_employees_indigenous": 3,
-        "number_of_employees_migrants": 2,
-        "language": "en"
+        "language": "en",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "expected_impact": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "looking_for_funding": true,
+        "replicability": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "progress_impact_tracking": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Kutch-Spencer",
+        "relevant_links": null,
+        "involved_project_developer_not_listed": true
       },
       "relationships": {
         "project_developer": {
@@ -42,6 +51,18 @@
             "id": "8f4cea39-cf98-4554-a606-fd37c037626f",
             "type": "project_developer"
           }
+        },
+        "involved_project_developers": {
+          "data": [
+            {
+              "id": "831b446e-8c4d-46d8-8f00-402bbe42f1a7",
+              "type": "project_developer"
+            },
+            {
+              "id": "f112dba7-58b2-4b2c-9f52-ad854773ce62",
+              "type": "project_developer"
+            }
+          ]
         }
       }
     },
@@ -50,7 +71,7 @@
       "type": "project",
       "attributes": {
         "name": "Project 2",
-        "slug": "bartoletti-and-sons-project-2",
+        "slug": "hilpert-waters-and-johnston-project-2",
         "description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
         "ticket_size": "scaling",
         "categories": [
@@ -68,18 +89,27 @@
         ],
         "problem": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
         "solution": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "business_model": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "other_information": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "impact_description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
         "sustainability": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "roi": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "income_in_last_3_years": "100K - 500K",
-        "number_of_employees": 10,
-        "number_of_employees_women": 6,
-        "number_of_employees_young": 2,
-        "number_of_employees_indigenous": 3,
-        "number_of_employees_migrants": 2,
-        "language": "en"
+        "language": "en",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "expected_impact": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "looking_for_funding": true,
+        "replicability": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "progress_impact_tracking": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Bartoletti and Sons",
+        "relevant_links": null,
+        "involved_project_developer_not_listed": false
       },
       "relationships": {
         "project_developer": {
@@ -87,6 +117,11 @@
             "id": "205eb4a9-bb7f-4071-8a92-5d8165803199",
             "type": "project_developer"
           }
+        },
+        "involved_project_developers": {
+          "data": [
+
+          ]
         }
       }
     },
@@ -95,7 +130,7 @@
       "type": "project",
       "attributes": {
         "name": "Project 3",
-        "slug": "hane-lehner-and-goyette-project-3",
+        "slug": "jacobson-fritsch-and-stanton-project-3",
         "description": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
         "ticket_size": "scaling",
         "categories": [
@@ -113,18 +148,27 @@
         ],
         "problem": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
         "solution": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "business_model": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "other_information": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "impact_description": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
         "sustainability": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "roi": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "income_in_last_3_years": "100K - 500K",
-        "number_of_employees": 10,
-        "number_of_employees_women": 6,
-        "number_of_employees_young": 2,
-        "number_of_employees_indigenous": 3,
-        "number_of_employees_migrants": 2,
-        "language": "en"
+        "language": "en",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "expected_impact": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
+        "looking_for_funding": true,
+        "replicability": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
+        "progress_impact_tracking": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Hane, Lehner and Goyette",
+        "relevant_links": null,
+        "involved_project_developer_not_listed": false
       },
       "relationships": {
         "project_developer": {
@@ -132,6 +176,11 @@
             "id": "1ce36e88-28ab-4639-aac3-adc44d409782",
             "type": "project_developer"
           }
+        },
+        "involved_project_developers": {
+          "data": [
+
+          ]
         }
       }
     },
@@ -140,7 +189,7 @@
       "type": "project",
       "attributes": {
         "name": "Project 4",
-        "slug": "hilpert-waters-and-johnston-project-4",
+        "slug": "keebler-kub-and-zemlak-project-4",
         "description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
         "ticket_size": "scaling",
         "categories": [
@@ -158,18 +207,27 @@
         ],
         "problem": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
         "solution": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "business_model": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "other_information": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "impact_description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
         "sustainability": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "roi": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "income_in_last_3_years": "100K - 500K",
-        "number_of_employees": 10,
-        "number_of_employees_women": 6,
-        "number_of_employees_young": 2,
-        "number_of_employees_indigenous": 3,
-        "number_of_employees_migrants": 2,
-        "language": "en"
+        "language": "en",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "expected_impact": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "looking_for_funding": true,
+        "replicability": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "progress_impact_tracking": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Hilpert, Waters and Johnston",
+        "relevant_links": null,
+        "involved_project_developer_not_listed": false
       },
       "relationships": {
         "project_developer": {
@@ -177,6 +235,11 @@
             "id": "7931a314-56cd-408f-bca7-f0c1ee0a1dc2",
             "type": "project_developer"
           }
+        },
+        "involved_project_developers": {
+          "data": [
+
+          ]
         }
       }
     },
@@ -185,7 +248,7 @@
       "type": "project",
       "attributes": {
         "name": "Project 5",
-        "slug": "jacobson-fritsch-and-stanton-project-5",
+        "slug": "becker-llc-project-5",
         "description": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
         "ticket_size": "scaling",
         "categories": [
@@ -203,18 +266,27 @@
         ],
         "problem": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
         "solution": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "business_model": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "other_information": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "impact_description": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
         "sustainability": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "roi": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "income_in_last_3_years": "100K - 500K",
-        "number_of_employees": 10,
-        "number_of_employees_women": 6,
-        "number_of_employees_young": 2,
-        "number_of_employees_indigenous": 3,
-        "number_of_employees_migrants": 2,
-        "language": "en"
+        "language": "en",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "expected_impact": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
+        "looking_for_funding": true,
+        "replicability": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
+        "progress_impact_tracking": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Jacobson, Fritsch and Stanton",
+        "relevant_links": null,
+        "involved_project_developer_not_listed": false
       },
       "relationships": {
         "project_developer": {
@@ -222,6 +294,11 @@
             "id": "01b8dc61-7e5d-4385-89f9-668c0f6ac087",
             "type": "project_developer"
           }
+        },
+        "involved_project_developers": {
+          "data": [
+
+          ]
         }
       }
     },
@@ -230,7 +307,7 @@
       "type": "project",
       "attributes": {
         "name": "Project 6",
-        "slug": "keebler-kub-and-zemlak-project-6",
+        "slug": "runolfsson-and-sons-project-6",
         "description": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
         "ticket_size": "scaling",
         "categories": [
@@ -248,18 +325,27 @@
         ],
         "problem": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
         "solution": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "business_model": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "other_information": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "impact_description": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
         "sustainability": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "roi": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "income_in_last_3_years": "100K - 500K",
-        "number_of_employees": 10,
-        "number_of_employees_women": 6,
-        "number_of_employees_young": 2,
-        "number_of_employees_indigenous": 3,
-        "number_of_employees_migrants": 2,
-        "language": "en"
+        "language": "en",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "expected_impact": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
+        "looking_for_funding": true,
+        "replicability": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
+        "progress_impact_tracking": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Keebler, Kub and Zemlak",
+        "relevant_links": null,
+        "involved_project_developer_not_listed": false
       },
       "relationships": {
         "project_developer": {
@@ -267,6 +353,11 @@
             "id": "44dbfd7b-e7df-4270-a857-22b39c5117fc",
             "type": "project_developer"
           }
+        },
+        "involved_project_developers": {
+          "data": [
+
+          ]
         }
       }
     },
@@ -275,7 +366,7 @@
       "type": "project",
       "attributes": {
         "name": "Project 7",
-        "slug": "becker-llc-project-7",
+        "slug": "ritchie-glover-and-ward-project-7",
         "description": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
         "ticket_size": "scaling",
         "categories": [
@@ -293,18 +384,27 @@
         ],
         "problem": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
         "solution": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
-        "business_model": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
-        "other_information": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
-        "impact_description": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
         "sustainability": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
-        "roi": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
-        "income_in_last_3_years": "100K - 500K",
-        "number_of_employees": 10,
-        "number_of_employees_women": 6,
-        "number_of_employees_young": 2,
-        "number_of_employees_indigenous": 3,
-        "number_of_employees_migrants": 2,
-        "language": "en"
+        "language": "en",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "expected_impact": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
+        "looking_for_funding": true,
+        "replicability": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
+        "progress_impact_tracking": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Becker LLC",
+        "relevant_links": null,
+        "involved_project_developer_not_listed": false
       },
       "relationships": {
         "project_developer": {
@@ -312,6 +412,11 @@
             "id": "f97297b2-83d5-4387-8e50-5ac49f9a4ea9",
             "type": "project_developer"
           }
+        },
+        "involved_project_developers": {
+          "data": [
+
+          ]
         }
       }
     }

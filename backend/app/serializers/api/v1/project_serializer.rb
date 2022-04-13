@@ -3,16 +3,33 @@ module API
     class ProjectSerializer
       include JSONAPI::Serializer
 
-      attributes :name, :slug, :description,
-        :ticket_size, :categories, :instrument_types, :sdgs,
-        :problem, :solution, :business_model, :other_information,
-        :impact_description, :sustainability, :roi,
-        :income_in_last_3_years,
-        :number_of_employees, :number_of_employees_women, :number_of_employees_young,
-        :number_of_employees_indigenous, :number_of_employees_migrants,
+      attributes :name,
+        :slug,
+        :description,
+        :development_stage,
+        :estimated_duration_in_months,
+        :target_groups,
+        :impact_areas,
+        :categories,
+        :sdgs,
+        :involved_project_developer_not_listed,
+        :problem,
+        :solution,
+        :expected_impact,
+        :looking_for_funding,
+        :ticket_size,
+        :instrument_types,
+        :sustainability,
+        :replicability,
+        :progress_impact_tracking,
+        :received_funding,
+        :received_funding_amount_usd,
+        :received_funding_investor,
+        :relevant_links,
         :language
 
       belongs_to :project_developer
+      has_many :involved_project_developers, serializer: ProjectDeveloperSerializer
     end
   end
 end
