@@ -1,2 +1,3 @@
 export { default } from './component';
-export type { CategoryTagProps, CategoryType } from './types';
+export { default as CategoryTagDot } from './category-tag-dot';
+export type { CategoryTagProps } from './types';

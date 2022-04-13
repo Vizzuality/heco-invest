@@ -1,5 +1,6 @@
 import { SocialContactInputs } from 'containers/social-contact/inputs-social-contact/types';
 
+import { CategoryType } from './category';
 import { Enum } from './enums';
 
 export type ProjectDeveloperSetupForm = SocialContactInputs & {
@@ -10,7 +11,7 @@ export type ProjectDeveloperSetupForm = SocialContactInputs & {
   entity_legal_registration_number: string;
   about: string;
   mission: string;
-  categories: Category[];
+  categories: CategoryType[];
   impacts: Impact[];
   mosaics?: Mosaic[];
 };
@@ -19,14 +20,6 @@ export enum Language {
   'en',
   'es',
   'pt',
-}
-
-export enum Category {
-  'sustainable-agrosystems',
-  'tourism-and-recreation',
-  'forestry-and-agroforestry',
-  'non-timber-forest-production',
-  'human-capital-and-inclusion',
 }
 
 export enum Impact {
