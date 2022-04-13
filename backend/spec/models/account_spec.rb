@@ -52,4 +52,14 @@ RSpec.describe Account, type: :model do
       expect(subject).to have(1).errors_on(link_type)
     end
   end
+
+  it "should not be valid without contact email" do
+    subject.contact_email = nil
+    expect(subject).to have(1).errors_on(:contact_email)
+  end
+
+  it "should not be valid with malformed contact email" do
+    subject.contact_email = "derp"
+    expect(subject).to have(1).errors_on(:contact_email)
+  end
 end

@@ -50,11 +50,13 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           project_developer_type: {type: :string, enum: ProjectDeveloperType::TYPES},
           entity_legal_registration_number: {type: :string},
           mission: {type: :string},
+          contact_email: {type: :string},
+          contact_phone: {type: :string},
           "categories[]": {type: :array, items: {type: :string, enum: Category::TYPES}, collectionFormat: :multi},
           "impacts[]": {type: :array, items: {type: :string, enum: Impact::TYPES}, collectionFormat: :multi},
           "location_ids[]": {type: :array, items: {type: :string}, collectionFormat: :multi}
         },
-        required: %w[language picture name about project_developer_type entity_legal_registration_number mission categories[] impacts[]]
+        required: %w[language picture name about project_developer_type entity_legal_registration_number mission contact_email categories[] impacts[]]
       }
 
       let(:location) { create :location }
@@ -72,7 +74,8 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           instagram: "http://instagram.com",
           project_developer_type: "ngo",
           entity_legal_registration_number: "564823570",
-          mission: "Mision",
+          mission: "Mission",
+          contact_email: "contact@example.com",
           categories: ["sustainable-agrosystems", "tourism-and-recreation"],
           impacts: ["biodiversity", "climate"],
           location_ids: [location.id]
@@ -134,6 +137,8 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           project_developer_type: {type: :string, enum: ProjectDeveloperType::TYPES},
           entity_legal_registration_number: {type: :string},
           mission: {type: :string},
+          contact_email: {type: :string},
+          contact_phone: {type: :string},
           "categories[]": {type: :array, items: {type: :string, enum: Category::TYPES}, collectionFormat: :multi},
           "impacts[]": {type: :array, items: {type: :string, enum: Impact::TYPES}, collectionFormat: :multi},
           "location_ids[]": {type: :array, items: {type: :string}, collectionFormat: :multi}
@@ -155,7 +160,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           instagram: "http://instagram.com",
           project_developer_type: "ngo",
           entity_legal_registration_number: "564823570",
-          mission: "Mision",
+          mission: "Mission",
           categories: ["sustainable-agrosystems", "tourism-and-recreation"],
           impacts: ["biodiversity", "climate"],
           location_ids: [location.id]
