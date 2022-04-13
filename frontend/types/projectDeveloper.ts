@@ -2,6 +2,7 @@ import { SocialContactInputs } from 'containers/social-contact/inputs-social-con
 
 import { Languages } from 'enums';
 
+import { CategoryType } from './category';
 import { Enum } from './enums';
 
 type ProjectDeveloperBase = {
@@ -14,8 +15,8 @@ type ProjectDeveloperBase = {
   twitter?: string;
   mission: string;
   project_developer_type: string;
-  categories: Category[];
-  impacts: Impact[];
+  categories: CategoryType[];
+  impacts: string[];
   language: Languages;
   entity_legal_registration_number: string;
 };
@@ -48,20 +49,10 @@ export type ProjectDeveloper = {
   };
 };
 
-export type ProjectDeveloperSetupForm = SocialContactInputs &
-  ProjectDeveloperBase & {
-    picture: File;
-    mosaics?: string[];
-  };
-
-export type Category =
-  | 'sustainable-agrosystems'
-  | 'tourism-and-recreation'
-  | 'forestry-and-agroforestry'
-  | 'non-timber-forest-production'
-  | 'human-capital-and-inclusion';
-
-export type Impact = 'biodiversity' | 'climate' | 'water' | 'community';
+export type ProjectDeveloperSetupForm = ProjectDeveloperBase & {
+  picture: File;
+  mosaics?: string[];
+};
 
 export type InterestItem = { name: string; id: string; color?: string; infoText?: string };
 
