@@ -25,6 +25,7 @@ export const Popup: React.FC<PopupProps> = ({
   onClose,
   onAction,
   header,
+  hiddenSections = {},
 }: PopupProps) => {
   const ref = React.useRef(null);
   const overlayRef = React.useRef(null);
@@ -78,6 +79,7 @@ export const Popup: React.FC<PopupProps> = ({
                     state={state}
                     onAction={onAction}
                     onClose={onClose}
+                    hidden={hiddenSections[item.key]}
                   />
                 );
               }

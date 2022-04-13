@@ -1,4 +1,9 @@
-import { Locations, LocationsParams, LocationsTypes } from 'types/locations';
+import { useMemo } from 'react';
+
+import { useQuery, UseQueryResult } from 'react-query';
+
+import { Queries, LocationsTypes } from 'enums';
+import { Locations, LocationsParams } from 'types/locations';
 
 import API from 'services/api';
 
@@ -7,6 +12,18 @@ export const getLocations = async (params: LocationsParams): Promise<Locations[]
   return locations.data.data;
 };
 
-export const getMosaics = async (): Promise<Locations[]> => {
-  return getLocations({ location_type: LocationsTypes.region });
+export const getMosaics = async () => {
+  return await getLocations({ location_type: LocationsTypes.Region });
+};
+
+export const useMosaics = (): UseQueryResult<Locations[]> => {
+  const query = useQuery([Queries.Mosaics], getMosaics);
+
+  return useMemo(
+    () => ({
+      ...query,
+      mosaic: query.data,
+    }),
+    [query]
+  );
 };

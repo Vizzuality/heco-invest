@@ -10,4 +10,6 @@ export interface SectionProps {
   onClose: () => void;
   /** Callback executed when the user clicks on a menu's item */
   onAction: (key: string | number) => void;
+  /** Hide section when true */
+  hidden?: 'all' | 'sm' | 'md' | 'lg';
 }

@@ -1,3 +1,5 @@
+import { UserRoles } from 'enums';
+
 export interface SignupFormI {
   first_name: string;
   last_name: string;
@@ -22,15 +24,9 @@ export interface User {
     first_name: string;
     last_name: string;
     email: string;
-    role: UserRole;
+    role: UserRoles;
     confirmed: boolean;
   };
-}
-
-export enum UserRole {
-  LIGHT = 'light',
-  INVESTOR = 'investor',
-  PROJECT_DEVELOPER = 'project_developer',
 }
 
 export type UserAccount = {
