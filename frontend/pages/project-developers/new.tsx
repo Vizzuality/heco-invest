@@ -15,7 +15,7 @@ import useInterests, { InterestNames } from 'hooks/useInterests';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
-import SocialMediaImputs from 'containers/social-contact/inputs-social-contact/component';
+import SocialMediaInputs from 'containers/social-contact/inputs-social-contact/component';
 
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
@@ -415,7 +415,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               </Label>
               <ErrorMessage errorText={errors?.about?.message} id="about-error" />
             </div>
-            <div className="mb-6.5">
+            <div className="mb-10">
               <Label htmlFor="mission">
                 <FormattedMessage defaultMessage="What's your mission?" id="vaWFzs" />
                 <TextArea
@@ -438,42 +438,59 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 <FormattedMessage defaultMessage="Contact information" id="ITdmlJ" />
               </p>
               <div className="md:flex gap-x-6">
-                <div className="md:w-1/2">
-                  <Label>
+                <div className="md:w-1/2 mb-6.5 md:m-0">
+                  <Label htmlFor="email">
                     <FormattedMessage defaultMessage="Email" id="sy+pv5" />
-                    <Input
-                      name="contact_email"
-                      type="email"
-                      id="email"
-                      register={register}
-                      aria-required
-                      placeholder={formatMessage({
-                        defaultMessage: 'insert email',
-                        id: 'DkjIbR',
-                      })}
-                      className="mt-2.5"
-                      aria-describedby="email-error"
-                    />
+                    <span className="ml-2.5">
+                      <FieldInfo
+                        infoText={formatMessage({
+                          defaultMessage: 'Insert the email to receive the contact messages.',
+                          id: 'Qmlx+T',
+                        })}
+                      />
+                    </span>
                   </Label>
+                  <Input
+                    name="contact_email"
+                    type="email"
+                    id="email"
+                    register={register}
+                    aria-required
+                    placeholder={formatMessage({
+                      defaultMessage: 'insert email',
+                      id: 'DkjIbR',
+                    })}
+                    className="mt-2.5"
+                    aria-describedby="email-error"
+                  />
                   <ErrorMessage id="email-error" errorText={errors.contact_email?.message} />
                 </div>
                 <div className="md:w-1/2">
-                  <Label>
+                  <Label htmlFor="phone-number">
                     <FormattedMessage defaultMessage="Phone number (optional)" id="JNTB42" />
-                    <Input
-                      name="contact_phone"
-                      type="tel"
-                      id="phone-number"
-                      register={register}
-                      aria-required
-                      placeholder={formatMessage({
-                        defaultMessage: 'insert phone number',
-                        id: 'iiVhlC',
-                      })}
-                      className="mt-2.5"
-                      aria-describedby="phone-number-error"
-                    />
+                    <span className="ml-2.5">
+                      <FieldInfo
+                        infoText={formatMessage({
+                          defaultMessage:
+                            'Insert the phone number in case you would like to be contacted by phone.',
+                          id: 'VkljLs',
+                        })}
+                      />
+                    </span>
                   </Label>
+                  <Input
+                    name="contact_phone"
+                    type="tel"
+                    id="phone-number"
+                    register={register}
+                    aria-required
+                    placeholder={formatMessage({
+                      defaultMessage: 'insert phone number',
+                      id: 'iiVhlC',
+                    })}
+                    className="mt-2.5"
+                    aria-describedby="phone-number-error"
+                  />
                   <ErrorMessage id="phone-number-error" errorText={errors.contact_phone?.message} />
                 </div>
               </div>
@@ -483,13 +500,13 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 <FormattedMessage defaultMessage="Online presence" id="NjKSap" />
               </p>
             </div>
-            <SocialMediaImputs errors={errors} register={register} />
+            <SocialMediaInputs errors={errors} register={register} />
           </form>
         </Page>
         <Page hasErrors={getPageErrors(2)}>
           <form className="flex flex-col justify-between" noValidate>
-            <div className="mb-6">
-              <h1 className="font-serif text-3xl font-semibold">
+            <div className="mb-10">
+              <h1 className="mb-2 font-serif text-3xl font-semibold">
                 <FormattedMessage defaultMessage="About your work" id="kEXoaQ" />
               </h1>
               <p className="font-sans text-base text-gray-600">
