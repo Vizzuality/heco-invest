@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 
 import { MenuTriggerProps } from '@react-types/menu';
 import { Alignment, FocusStrategy, CollectionChildren } from '@react-types/shared';
@@ -28,4 +28,6 @@ export interface PopupProps {
   onAction: ItemProps['onAction'];
   /** Menu Popup Header */
   header?: JSX.Element;
+  /** List of sections whith sizes to hide */
+  hiddenSections?: { [key: React.Key]: 'all' | 'sm' | 'md' | 'lg' };
 }

@@ -5,7 +5,7 @@ import { UseQueryResult, useQuery } from 'react-query';
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { stringify } from 'query-string';
 
-import { QUERIES } from 'enums';
+import { Queries } from 'enums';
 
 import API from 'services/api';
 import { PagedResponse, ErrorResponse, PagedRequest } from 'services/types';
@@ -23,7 +23,7 @@ export function useInvestorsList(
     return await API.request(config).then((response) => response.data.data);
   };
 
-  return useQuery([QUERIES.INVESTORS, params], () => getInvestors(params));
+  return useQuery([Queries.InvestorList, params], () => getInvestors(params));
 }
 
 /** Get a Investor using an id and, optionally, the wanted fields */
@@ -38,7 +38,7 @@ export const getInvestor = async (id: string, fields?: string): Promise<any> => 
 
 /** Use query for a single Investor */
 export function useInvestor(id: string) {
-  const query = useQuery([QUERIES.INVESTOR, id], () => getInvestor(id));
+  const query = useQuery([Queries.Investor, id], () => getInvestor(id));
 
   return useMemo(
     () => ({

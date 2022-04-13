@@ -1,41 +1,61 @@
 export enum Languages {
-  ENGLISH = 'en',
-  SPANISH = 'es',
-  PORTUGUESE = 'pt',
+  English = 'en',
+  Spanish = 'es',
+  Portuguese = 'pt',
 }
 
 export enum Paths {
-  signup = '/sign-up',
-  signin = '/sign-in',
-  accountType = '/sign-up/account-type',
-  forgotPassword = '/sign-in/forgot-password',
-  dashboard = '/dashboard',
+  SignUp = '/sign-up',
+  SignIn = '/sign-in',
+  AccountType = '/sign-up/account-type',
+  ForgotPassword = '/sign-in/forgot-password',
+  Dashboard = '/dashboard',
   FAQ = '/faq',
-  SING_OUT = '/sign-out',
-  SETTINGS = '/settings',
+  SignOut = '/sign-out',
+  Settings = '/settings',
 }
 
-export enum QUERIES {
+export enum UserRoles {
+  Ligth = 'light',
+  Investor = 'investor',
+  ProjectDeveloper = 'project_developer',
+}
+
+/** React Query Queries */
+export enum Queries {
   /** Session user */
-  USER = 'user',
-
+  User = 'user',
   /** List of project developers */
-  PROJECT_DEVELOPERS = 'project_developers',
-
+  ProjectDeveloperList = 'project_developers',
   /** Single project developer */
-  PROJECT_DEVELOPER = 'project_developer',
-
+  ProjectDeveloper = 'project_developer',
   /** List of investors */
-  INVESTORS = 'investors',
-
+  InvestorList = 'investors',
   /** Single investor  */
-  INVESTOR = 'investor',
-
+  Investor = 'investor',
   /** User account name and slug */
-  ACCOUNT = 'account',
-  SIGNUP = '/sign-up',
-  ACCOUNT_TYPE = '/sign-up/account-type',
-  FORGOT_PASSWORD = 'sign-in/forgot-password',
-  DASHBOARD = '/dashboard',
-  FAQ = '/faq',
+  Account = 'account',
+  /** Mosaics (Region Locations) */
+  Mosaics = 'mosaics',
+  /** DB Enums */
+  EnumList = 'enum_list',
+}
+
+/** Location endpoint param location_type */
+export enum LocationsTypes {
+  Country = 'country',
+  Department = 'department',
+  Municipality = 'municipality',
+  Region = 'region',
+}
+
+/** Enum types returned on 'enums' service endpoint */
+export enum EnumTypes {
+  Category = 'category',
+  InstrumentType = 'instrument_type',
+  TicketSize = 'ticket_size',
+  Impact = 'impact',
+  ProjectDeveloperType = 'project_developer_type',
+  InvestorType = 'investor_type',
+  LocationType = 'location_type',
 }
