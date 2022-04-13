@@ -407,8 +407,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   register={register}
                   aria-required
                   placeholder={formatMessage({
-                    defaultMessage: 'insert your answer (max 500 characters)',
-                    id: 'rBoq14',
+                    defaultMessage: 'insert your answer (max 600 characters)',
+                    id: 'hPsrc0',
                   })}
                   aria-describedby="about-error"
                 />
@@ -425,8 +425,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   aria-required
                   register={register}
                   placeholder={formatMessage({
-                    defaultMessage: 'insert your answer (max 500 characters)',
-                    id: 'rBoq14',
+                    defaultMessage: 'insert your answer (max 600 characters)',
+                    id: 'hPsrc0',
                   })}
                   aria-describedby="mission-error"
                 />

@@ -1,13 +1,5 @@
 import { UseFormRegister, RegisterOptions, FieldPath, FormState } from 'react-hook-form';
 
-export type SocialContactInputs = {
-  website: string;
-  twitter: string;
-  facebook: string;
-  linkedin: string;
-  instagram: string;
-};
-
 export interface InputSocialContactProps<FormValues> {
   /** React Hook Form's `register` function */
   register: UseFormRegister<FormValues>;

@@ -4,8 +4,9 @@ import { action } from '@storybook/addon-actions';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Button from 'components/button';
+import { SocialContactInputs } from 'types/projectDeveloper';
 
-import { InputSocialContactProps, SocialContactInputs } from './types';
+import { InputSocialContactProps } from './types';
 
 import InputsSocialContact from '.';
 

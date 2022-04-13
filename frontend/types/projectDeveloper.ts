@@ -1,17 +1,18 @@
-import { SocialContactInputs } from 'containers/social-contact/inputs-social-contact/types';
-
 import { Languages } from 'enums';
 
 import { Enum } from './enums';
 
+export type SocialContactInputs = {
+  website?: string;
+  twitter?: string;
+  facebook?: string;
+  linkedin?: string;
+  instagram?: string;
+};
+
 type ProjectDeveloperBase = SocialContactInputs & {
   name: string;
   about: string;
-  website?: string;
-  instagram?: string;
-  facebook?: string;
-  linkedin?: string;
-  twitter?: string;
   mission: string;
   project_developer_type: string;
   contact_email: string;
