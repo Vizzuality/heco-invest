@@ -29,10 +29,10 @@ const Template: Story<TagProps<FormValues>> = (args: TagProps<FormValues>) => {
   return (
     <div className="p-4">
       <Tag register={register} {...args}>
-        Category
+        Tourism & Recreation
       </Tag>
       <p className="mt-2 text-xs text-gray-50">
-        This input is not accessible. Define <code>aria-label</code>.
+        This input is not fully accessible. Wrap it in a <code>fieldset</code> tag.
       </p>
     </div>
   );
@@ -40,6 +40,30 @@ const Template: Story<TagProps<FormValues>> = (args: TagProps<FormValues>) => {
 
 export const Default: Story<TagProps<FormValues>> = Template.bind({});
 Default.args = {
+  id: 'form-tag',
+  name: 'category',
+  registerOptions: {
+    disabled: false,
+  },
+};
+
+const TemplateWithFieldset: Story<TagProps<FormValues>> = (args: TagProps<FormValues>) => {
+  const { register } = useForm<FormValues>();
+
+  return (
+    <div className="p-4">
+      <fieldset>
+        <legend className="mb-2 font-sans font-semibold text-gray-800">Category</legend>
+        <Tag register={register} {...args}>
+          Tourism & Recreation
+        </Tag>
+      </fieldset>
+    </div>
+  );
+};
+
+export const WithFieldset: Story<TagProps<FormValues>> = TemplateWithFieldset.bind({});
+WithFieldset.args = {
   id: 'form-tag',
   name: 'category',
   registerOptions: {
@@ -68,20 +92,23 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
         noValidate
         onSubmit={handleSubmit(onSubmit)}
       >
-        <Tag
-          id="story-check"
-          name="category"
-          register={register}
-          aria-describedby="form-error"
-          {...args}
-        >
-          Category
-        </Tag>
-        {errors.category?.message && (
-          <p id="form-error" className="pl-2 mt-1 text-xs text-red-700">
-            {errors.category?.message}
-          </p>
-        )}
+        <fieldset>
+          <legend className="mb-2 font-sans font-semibold text-gray-800">Category</legend>
+          <Tag
+            id="story-check"
+            name="category"
+            register={register}
+            aria-describedby="form-error"
+            {...args}
+          >
+            Tourism & Recreation
+          </Tag>
+          {errors.category?.message && (
+            <p id="form-error" className="pl-2 mt-1 text-xs text-red-700">
+              {errors.category?.message}
+            </p>
+          )}
+        </fieldset>
 
         <Button type="submit" className="mt-2">
           Submit
@@ -116,20 +143,23 @@ const TemplateDisabled: Story<TagProps<FormValues>> = (args: TagProps<FormValues
 
   return (
     <div className="p-4">
-      <Tag
-        id="story-tag"
-        name="category"
-        register={register}
-        aria-describedby="form-error"
-        {...args}
-      >
-        Category
-      </Tag>
-      {errors.category?.message && (
-        <p id="form-error" className="pl-2 mt-1 text-xs text-red-700">
-          {errors.category?.message}
-        </p>
-      )}
+      <fieldset>
+        <legend className="mb-2 font-sans font-semibold text-gray-800">Category</legend>
+        <Tag
+          id="story-tag"
+          name="category"
+          register={register}
+          aria-describedby="form-error"
+          {...args}
+        >
+          Tourism & Recreation
+        </Tag>
+        {errors.category?.message && (
+          <p id="form-error" className="pl-2 mt-1 text-xs text-red-700">
+            {errors.category?.message}
+          </p>
+        )}
+      </fieldset>
     </div>
   );
 };
