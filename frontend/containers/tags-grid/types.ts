@@ -1,4 +1,4 @@
-import type { CategoryType } from 'containers/category-tag';
+import type { CategoryType } from 'types/category';
 
 export type TagsGridRowType = {
   /** Label for the tags list */

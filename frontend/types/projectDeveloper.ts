@@ -1,5 +1,6 @@
 import { Languages } from 'enums';
 
+import { CategoryType } from './category';
 import { Enum } from './enums';
 
 export type SocialContactInputs = {
@@ -27,6 +28,19 @@ export type ProjectDeveloperSetupForm = ProjectDeveloperBase & {
   picture: File;
   mosaics?: string[];
 };
+
+export enum Language {
+  'en',
+  'es',
+  'pt',
+}
+
+export enum Impact {
+  'biodiversity',
+  'climate',
+  'water',
+  'community',
+}
 
 export type ProjectDeveloper = {
   id: string;

@@ -33,7 +33,11 @@ export const MultiPageLayoutPage: FC<MultiPageLayoutPageProps> = ({
         })}
       >
         <main
-          tabIndex={-1}
+          // TODO: tabIndex was meant to make it so that when changing pages, focus would go
+          // directly to the form. However, using it causes react-aria's `useFocusRing` in the
+          // form tags components to misbehave. A possible alternative may pass through setting
+          // focus on the first child automatically.
+          // tabIndex={-1}
           ref={mainRef}
           className={cx({
             'outline-none': true,
