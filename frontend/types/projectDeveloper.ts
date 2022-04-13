@@ -3,7 +3,6 @@ import { SocialContactInputs } from 'containers/social-contact/inputs-social-con
 import { Languages } from 'enums';
 
 import { CategoryType } from './category';
-
 import { Enum } from './enums';
 
 type ProjectDeveloperBase = SocialContactInputs & {
@@ -11,8 +10,8 @@ type ProjectDeveloperBase = SocialContactInputs & {
   about: string;
   mission: string;
   project_developer_type: string;
-  categories: Category[];
-  impacts: Impact[];
+  categories: CategoryType[];
+  impacts: string[];
   language: Languages;
   entity_legal_registration_number: string;
 };
@@ -46,23 +45,9 @@ export type ProjectDeveloper = {
 };
 
 export type ProjectDeveloperSetupForm = ProjectDeveloperBase & {
-    picture: File;
-    mosaics?: Mosaic[];
-  };
-
-export type Category =
-  | 'sustainable-agrosystems'
-  | 'tourism-and-recreation'
-  | 'forestry-and-agroforestry'
-  | 'non-timber-forest-production'
-  | 'human-capital-and-inclusion';
-
-export type Impact = 'biodiversity' | 'climate' | 'water' | 'community';
-
-export type Mosaic =
-  | 'Piedemonte Amazónico Macizo'
-  | 'Heart of Amazonia'
-  | 'Andean Amazonian Piedmont';
+  picture: File;
+  mosaics?: string[];
+};
 
 export type InterestItem = { name: string; id: string; color?: string; infoText?: string };
 
