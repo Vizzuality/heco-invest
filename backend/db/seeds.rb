@@ -7,8 +7,11 @@ if Rails.env.development?
   User.delete_all
 
   5.times do
-    investor_account = FactoryBot.create(:account)
-    FactoryBot.create(:user, account: investor_account)
+    user = FactoryBot.create(:user)
+    investor_account = FactoryBot.create(:account, owner: user)
+    user.update!(account: investor_account, role: "investor")
+
+    investor_account.update!(owner: user)
     investor = Investor.create!(
       account: investor_account,
       categories: Category::TYPES.shuffle.take((1..2).to_a.sample),
@@ -28,8 +31,11 @@ if Rails.env.development?
       FactoryBot.create(:open_call, investor: investor)
     end
 
-    project_developer_account = FactoryBot.create(:account)
-    FactoryBot.create(:user, account: project_developer_account)
+    user = FactoryBot.create(:user)
+    project_developer_account = FactoryBot.create(:account, owner: user)
+    user.update!(account: project_developer_account, role: "project_developer")
+
+    project_developer_account.update!(owner: user)
     project_developer = ProjectDeveloper.create!(
       account: project_developer_account,
       project_developer_type: ProjectDeveloperType::TYPES.sample,

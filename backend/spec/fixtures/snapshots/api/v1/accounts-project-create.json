@@ -1,0 +1,67 @@
+{
+  "data": {
+    "id": "f8a6fc25-7d4b-4786-aa6b-e03018042718",
+    "type": "project",
+    "attributes": {
+      "name": "Project Name",
+      "slug": "kutch-spencer-project-name",
+      "description": "Short project description",
+      "development_stage": "consolidaton",
+      "estimated_duration_in_months": 12,
+      "target_groups": [
+        "urban-populations",
+        "indigenous-peoples"
+      ],
+      "impact_areas": [
+        "restoration",
+        "pollutants-reduction"
+      ],
+      "categories": [
+        "sustainable-agrosystems",
+        "tourism-and-recreation"
+      ],
+      "sdgs": [
+        2,
+        4,
+        5
+      ],
+      "involved_project_developer_not_listed": true,
+      "problem": "Problem description",
+      "solution": "Solution description",
+      "expected_impact": "Expected impact description",
+      "looking_for_funding": true,
+      "ticket_size": "prototyping",
+      "instrument_types": [
+        "grant"
+      ],
+      "sustainability": "Sustainability desc",
+      "replicability": "Replicability desc",
+      "progress_impact_tracking": "Progress impact tracking desc",
+      "received_funding": true,
+      "received_funding_amount_usd": "1000000.0",
+      "received_funding_investor": "Some Investor name",
+      "relevant_links": "Here relevant links",
+      "language": "en"
+    },
+    "relationships": {
+      "project_developer": {
+        "data": {
+          "id": "da24ca6b-363b-4ce6-9024-693fccc7d032",
+          "type": "project_developer"
+        }
+      },
+      "involved_project_developers": {
+        "data": [
+          {
+            "id": "5172a13c-eda3-4ef7-bb0c-74ad7e2aed75",
+            "type": "project_developer"
+          },
+          {
+            "id": "a819a099-7853-4290-8864-a275997c0232",
+            "type": "project_developer"
+          }
+        ]
+      }
+    }
+  }
+}

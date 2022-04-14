@@ -18,5 +18,9 @@ FactoryBot.define do
     language { "en" }
     contact_email { "contact@example.com" }
     contact_phone { "+57-1-xxx-xx-xx" }
+
+    factory :account_project_developer do
+      project_developer
+    end
   end
 end

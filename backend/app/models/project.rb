@@ -10,6 +10,17 @@ class Project < ApplicationRecord
 
   has_and_belongs_to_many :involved_project_developers, join_table: "project_involvements", class_name: "ProjectDeveloper"
 
+  translates :name,
+    :description,
+    :expected_impact,
+    :problem,
+    :solution,
+    :sustainability,
+    :replicability,
+    :funding_plan,
+    :progress_impact_tracking,
+    :relevant_links
+
   enum status: {draft: 0, published: 1, closed: 2}, _default: :draft
 
   validates :development_stage, inclusion: {in: ProjectDevelopmentStage::TYPES}
@@ -43,16 +54,7 @@ class Project < ApplicationRecord
     validates_presence_of :received_funding_amount_usd, :received_funding_investor
   end
 
-  translates :name,
-    :description,
-    :expected_impact,
-    :problem,
-    :solution,
-    :sustainability,
-    :replicability,
-    :funding_plan,
-    :progress_impact_tracking,
-    :relevant_links
+  validates_uniqueness_of [*locale_columns(:name)], scope: [:project_developer_id], case_sensitive: false, allow_blank: true
 
   before_validation :clear_funding_fields, unless: -> { looking_for_funding? }
   before_validation :clear_received_funding_fields, unless: -> { received_funding? }
