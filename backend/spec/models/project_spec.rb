@@ -171,4 +171,21 @@ RSpec.describe Project, type: :model do
       expect(subject).to be_valid
     end
   end
+
+  context "locations" do
+    it "should not be valid if mismatched location type for country" do
+      subject.country = create(:department)
+      expect(subject).to have(1).errors_on(:country)
+    end
+
+    it "should not be valid if mismatched location type for department" do
+      subject.department = create(:country)
+      expect(subject).to have(1).errors_on(:department)
+    end
+
+    it "should not be valid if mismatched location type for municipality" do
+      subject.municipality = create(:department)
+      expect(subject).to have(1).errors_on(:municipality)
+    end
+  end
 end

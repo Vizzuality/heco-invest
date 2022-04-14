@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
       scope "account", module: "accounts" do
         resource :project_developer, only: [:create, :update, :show]
-        resources :projects
+        resources :projects, only: [:create]
       end
     end
   end

@@ -55,6 +55,7 @@ class Project < ApplicationRecord
   end
 
   validates_uniqueness_of [*locale_columns(:name)], scope: [:project_developer_id], case_sensitive: false, allow_blank: true
+  validate :location_types
 
   before_validation :clear_funding_fields, unless: -> { looking_for_funding? }
   before_validation :clear_received_funding_fields, unless: -> { received_funding? }
@@ -81,5 +82,11 @@ class Project < ApplicationRecord
   def clear_received_funding_fields
     self.received_funding_amount_usd = nil
     self.received_funding_investor = nil
+  end
+
+  def location_types
+    errors.add :country, :location_type_mismatch if country && country.location_type != "country"
+    errors.add :municipality, :location_type_mismatch if municipality && municipality.location_type != "municipality"
+    errors.add :department, :location_type_mismatch if department && department.location_type != "department"
   end
 end
