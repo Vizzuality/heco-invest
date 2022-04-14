@@ -1,34 +1,34 @@
 {
   "data": [
     {
-      "id": "grant",
+      "id": "sustainable-agrosystems",
       "type": "category",
       "attributes": {
         "name": "Sustainable Agrosystems",
-        "description": "Sustainable and regenerative agriculture, fishing, and aquaculture as well as manufacturing of derived subproducts.",
-        "color": "#E7C343"
+        "color": "#E7C343",
+        "description": "Sustainable and regenerative agriculture, fishing, and aquaculture as well as manufacturing of derived subproducts."
       }
     },
     {
-      "id": "loan",
+      "id": "tourism-and-recreation",
       "type": "category",
       "attributes": {
         "name": "Tourism and Recreation",
-        "description": "Accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects.",
-        "color": "#4492E5"
+        "color": "#4492E5",
+        "description": "Accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects."
       }
     },
     {
-      "id": "equity",
+      "id": "forestry-and-agroforestry",
       "type": "category",
       "attributes": {
         "name": "Forestry and Agroforestry",
-        "description": "Sustainable timber extraction and forest management practices, including reforestation and restoration.",
-        "color": "#E57D57"
+        "color": "#E57D57",
+        "description": "Sustainable timber extraction and forest management practices, including reforestation and restoration."
       }
     },
     {
-      "id": "sustainable-agrosystems",
+      "id": "non-timber-forest-production",
       "type": "category",
       "attributes": {
         "name": "Non Timber Forest Production",
@@ -37,7 +37,16 @@
       }
     },
     {
-      "id": "tourism-and-recreation",
+      "id": "human-capital-and-inclusion",
+      "type": "category",
+      "attributes": {
+        "name": "Human capital and inclusion",
+        "color": "#A0616A",
+        "description": "Human capital and inclusion description"
+      }
+    },
+    {
+      "id": "biodiversity",
       "type": "impact",
       "attributes": {
         "name": "Biodiversity",
@@ -45,7 +54,7 @@
       }
     },
     {
-      "id": "forestry-and-agroforestry",
+      "id": "climate",
       "type": "impact",
       "attributes": {
         "name": "Climate",
@@ -53,7 +62,7 @@
       }
     },
     {
-      "id": "non-timber-forest-production",
+      "id": "water",
       "type": "impact",
       "attributes": {
         "name": "Water",
@@ -61,7 +70,7 @@
       }
     },
     {
-      "id": "small_grants",
+      "id": "community",
       "type": "impact",
       "attributes": {
         "name": "Community",
@@ -69,98 +78,98 @@
       }
     },
     {
-      "id": "prototyping",
+      "id": "conservation",
       "type": "impact_area",
       "attributes": {
         "name": "Conservation"
       }
     },
     {
-      "id": "validation",
+      "id": "restoration",
       "type": "impact_area",
       "attributes": {
         "name": "Restoration"
       }
     },
     {
-      "id": "scaling",
+      "id": "pollutants-reduction",
       "type": "impact_area",
       "attributes": {
         "name": "Pollutants reduction"
       }
     },
     {
-      "id": "biodiversity",
+      "id": "carbon-emission-reduction",
       "type": "impact_area",
       "attributes": {
         "name": "Carbon emission reduction"
       }
     },
     {
-      "id": "climate",
+      "id": "energy-efficiency",
       "type": "impact_area",
       "attributes": {
         "name": "Energy efficiency"
       }
     },
     {
-      "id": "water",
+      "id": "renewable-energy",
       "type": "impact_area",
       "attributes": {
         "name": "Renewable energy"
       }
     },
     {
-      "id": "community",
+      "id": "carbon-storage-or-sequestration",
       "type": "impact_area",
       "attributes": {
         "name": "Carbon storage or sequestration"
       }
     },
     {
-      "id": "IGNORED",
+      "id": "water-capacity",
       "type": "impact_area",
       "attributes": {
         "name": "Water capacity"
       }
     },
     {
-      "id": "IGNORED",
+      "id": "water-efficiency",
       "type": "impact_area",
       "attributes": {
         "name": "Water efficiency"
       }
     },
     {
-      "id": "IGNORED",
+      "id": "sustainable-food",
       "type": "impact_area",
       "attributes": {
         "name": "Sustainable food"
       }
     },
     {
-      "id": "IGNORED",
+      "id": "gender-equality-jobs",
       "type": "impact_area",
       "attributes": {
         "name": "Gender equality jobs"
       }
     },
     {
-      "id": "IGNORED",
+      "id": "indigenous-or-ethic-jobs",
       "type": "impact_area",
       "attributes": {
         "name": "Indigenous or ethic jobs"
       }
     },
     {
-      "id": "IGNORED",
+      "id": "community-empowerment",
       "type": "impact_area",
       "attributes": {
         "name": "Community empowerment"
       }
     },
     {
-      "id": "IGNORED",
+      "id": "grant",
       "type": "instrument_type",
       "attributes": {
         "name": "Grant",
@@ -168,7 +177,7 @@
       }
     },
     {
-      "id": "IGNORED",
+      "id": "loan",
       "type": "instrument_type",
       "attributes": {
         "name": "Loan",
@@ -176,7 +185,7 @@
       }
     },
     {
-      "id": "IGNORED",
+      "id": "equity",
       "type": "instrument_type",
       "attributes": {
         "name": "Equity",
@@ -184,154 +193,154 @@
       }
     },
     {
-      "id": "IGNORED",
+      "id": "investor",
       "type": "investor_type",
       "attributes": {
         "name": "Investor"
       }
     },
     {
-      "id": "IGNORED",
+      "id": "angel-investor",
       "type": "investor_type",
       "attributes": {
         "name": "Angel Investor"
       }
     },
     {
-      "id": "investor",
+      "id": "commercial-bank",
       "type": "investor_type",
       "attributes": {
         "name": "Commercial Bank"
       }
     },
     {
-      "id": "angel-investor",
+      "id": "family-office",
       "type": "investor_type",
       "attributes": {
         "name": "Family Office"
       }
     },
     {
-      "id": "commercial-bank",
+      "id": "institutional-investor",
       "type": "investor_type",
       "attributes": {
         "name": "Institutional Investor"
       }
     },
     {
-      "id": "family-office",
+      "id": "investment-bank",
       "type": "investor_type",
       "attributes": {
         "name": "Investment Bank"
       }
     },
     {
-      "id": "institutional-investor",
+      "id": "international-financial-institution",
       "type": "investor_type",
       "attributes": {
         "name": "International Financial Institution"
       }
     },
     {
-      "id": "investment-bank",
+      "id": "micro-finance",
       "type": "investor_type",
       "attributes": {
         "name": "Micro Finance"
       }
     },
     {
-      "id": "international-financial-institution",
+      "id": "non-VC-investment-vehicle",
       "type": "investor_type",
       "attributes": {
         "name": "Non VC Investment Vehicle"
       }
     },
     {
-      "id": "micro-finance",
+      "id": "venture-capital-private-equity",
       "type": "investor_type",
       "attributes": {
         "name": "Venture Capital Private Equity"
       }
     },
     {
-      "id": "non-VC-investment-vehicle",
+      "id": "carbon-fund",
       "type": "investor_type",
       "attributes": {
         "name": "Carbon Fund"
       }
     },
     {
-      "id": "venture-capital-private-equity",
+      "id": "ngo",
       "type": "investor_type",
       "attributes": {
         "name": "NGO"
       }
     },
     {
-      "id": "carbon-fund",
+      "id": "foundation",
       "type": "investor_type",
       "attributes": {
         "name": "Foundation"
       }
     },
     {
-      "id": "ngo",
+      "id": "corporate-foundation",
       "type": "investor_type",
       "attributes": {
         "name": "Corporate Foundation"
       }
     },
     {
-      "id": "foundation",
+      "id": "philanthropy",
       "type": "investor_type",
       "attributes": {
         "name": "Philanthropy"
       }
     },
     {
-      "id": "corporate-foundation",
+      "id": "hnwi-or-celebrity",
       "type": "investor_type",
       "attributes": {
         "name": "HNWI or Celebrity"
       }
     },
     {
-      "id": "philanthropy",
+      "id": "country",
       "type": "location_type",
       "attributes": {
         "name": "Country"
       }
     },
     {
-      "id": "hnwi-or-celebrity",
+      "id": "department",
       "type": "location_type",
       "attributes": {
         "name": "Department"
       }
     },
     {
-      "id": "country",
+      "id": "municipality",
       "type": "location_type",
       "attributes": {
         "name": "Municipality"
       }
     },
     {
-      "id": "department",
+      "id": "region",
       "type": "location_type",
       "attributes": {
         "name": "Region"
       }
     },
     {
-      "id": "municipality",
+      "id": "academic",
       "type": "project_developer_type",
       "attributes": {
         "name": "Academic"
       }
     },
     {
-      "id": "region",
+      "id": "business-cooperative",
       "type": "project_developer_type",
       "attributes": {
         "name": "Business - Cooperative"

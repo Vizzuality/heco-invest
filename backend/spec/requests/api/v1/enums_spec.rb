@@ -14,7 +14,7 @@ RSpec.describe "API V1 Enums", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/enums")
+          expect(response.body).to match_snapshot("api/v1/enums", dynamic_attributes: [])
         end
       end
     end
