@@ -167,7 +167,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
         }
       end
 
-      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
 
       response "200", :success do
         schema type: :object, properties: {
@@ -208,23 +208,6 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           it "keeps old language" do
             expect(response_json["data"]["attributes"]["language"]).to eq("en")
           end
-        end
-      end
-
-      response "422", "User is not Project Developer" do
-        schema type: :object, properties: {
-          data: {"$ref" => "#/components/schemas/error"}
-        }
-        let("X-CSRF-TOKEN") { get_csrf_token }
-
-        before(:each) do
-          sign_in user
-        end
-
-        run_test!
-
-        it "returns correct error", generate_swagger_example: true do
-          expect(response_json["errors"][0]["title"]).to eq(I18n.t("errors.messages.user.no_project_developer"))
         end
       end
     end

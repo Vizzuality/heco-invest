@@ -28,12 +28,6 @@ module API
 
         private
 
-        def require_project_developer!
-          return if current_user.project_developer?
-
-          raise API::UnprocessableEntityError, I18n.t("errors.messages.user.no_project_developer")
-        end
-
         def account_params
           params.fetch(:project_developer_params, params)
             .permit :language, :picture, :name, :website, :linkedin, :facebook, :twitter, :instagram, :about, :contact_email, :contact_phone

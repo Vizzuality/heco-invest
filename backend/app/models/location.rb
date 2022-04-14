@@ -7,6 +7,10 @@ class Location < ApplicationRecord
   has_many :project_developer_locations, dependent: :destroy
   has_many :project_developers, through: :project_developer_locations
 
+  LocationType::TYPES.each do |location_type|
+    scope location_type, -> { where(location_type: location_type) }
+  end
+
   validates :location_type, inclusion: {in: LocationType::TYPES}
   validates_presence_of :name
 

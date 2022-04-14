@@ -8,7 +8,7 @@ if Rails.env.development?
 
   5.times do
     investor_account = FactoryBot.create(:account)
-    FactoryBot.create(:user, account: investor_account)
+    investor_account.owner.update!(role: "investor")
     investor = Investor.create!(
       account: investor_account,
       categories: Category::TYPES.shuffle.take((1..2).to_a.sample),
@@ -29,7 +29,7 @@ if Rails.env.development?
     end
 
     project_developer_account = FactoryBot.create(:account)
-    FactoryBot.create(:user, account: project_developer_account)
+    project_developer_account.owner.update!(role: "project_developer")
     project_developer = ProjectDeveloper.create!(
       account: project_developer_account,
       project_developer_type: ProjectDeveloperType::TYPES.sample,

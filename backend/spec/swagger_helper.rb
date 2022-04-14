@@ -160,31 +160,38 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
-                  description: {type: :string},
-                  ticket_size: {type: :string},
-                  categories: {type: :array, items: {type: :string}},
-                  instrument_types: {type: :array, items: {type: :string}},
-                  sdgs: {type: :array, items: {type: :integer}},
+                  country_id: {type: :string},
+                  municipality_id: {type: :string},
+                  department_id: {type: :string},
+                  development_stage: {type: :string, enum: ProjectDevelopmentStage::TYPES},
+                  estimated_duration_in_months: {type: :integer},
+                  involved_project_developer_not_listed: {type: :boolean},
                   problem: {type: :string},
                   solution: {type: :string},
-                  business_model: {type: :string},
-                  other_information: {type: :string},
-                  impact_description: {type: :string},
+                  expected_impact: {type: :string},
+                  looking_for_funding: {type: :boolean},
+                  funding_plan: {type: :string, nullable: true},
+                  received_funding: {type: :boolean},
+                  received_funding_amount_usd: {type: :string, nullable: true},
+                  received_funding_investor: {type: :string, nullable: true},
+                  replicability: {type: :string},
                   sustainability: {type: :string},
-                  roi: {type: :string},
-                  language: {type: :string},
-                  income_in_last_3_years: {type: :string},
-                  number_of_employees: {type: :integer},
-                  number_of_employees_women: {type: :integer},
-                  number_of_employees_young: {type: :integer},
-                  number_of_employees_indigenous: {type: :integer},
-                  number_of_employees_migrants: {type: :integer}
+                  progress_impact_tracking: {type: :string},
+                  description: {type: :string},
+                  relevant_links: {type: :string, nullable: true},
+                  ticket_size: {type: :string, enum: TicketSize::TYPES, nullable: true},
+                  categories: {type: :array, items: {type: :string}},
+                  target_groups: {type: :array, items: {type: :string}},
+                  impact_areas: {type: :array, items: {type: :string}},
+                  instrument_types: {type: :array, items: {type: :string}},
+                  sdgs: {type: :array, items: {type: :integer}},
+                  language: {type: :string}
                 }
               },
               relationships: {
                 type: :object,
                 properties: {
-                  project_developer: {"$ref" => "#/components/schemas/response_relation"}
+                  involved_project_developer: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }
             },

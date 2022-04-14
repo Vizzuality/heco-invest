@@ -21,5 +21,11 @@ FactoryBot.define do
     after(:build) do |u|
       u.skip_confirmation_notification!
     end
+
+    factory :user_project_developer do
+      role { "project_developer" }
+
+      account factory: :account_project_developer
+    end
   end
 end
