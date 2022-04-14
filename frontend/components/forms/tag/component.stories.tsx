@@ -76,28 +76,19 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({
-    // Using the native validation, we're able to style the inputs using the `valid` and `invalid`
-    // pseudo class
-    shouldUseNativeValidation: true,
-  });
+  } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = (data) => action('onSubmit')(data);
 
   return (
     <div className="p-4">
-      <form
-        // `noValidate` here prevents the browser from not submitting the form if there's a validation
-        // error. We absolutely want the form to be submitted so that React Hook Form is made aware of
-        // the validation errors and we can display errors below inputs.
-        noValidate
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form onSubmit={handleSubmit(onSubmit)}>
         <fieldset>
           <legend className="mb-2 font-sans font-semibold text-gray-800">Category</legend>
           <Tag
             id="story-check"
             name="category"
             register={register}
+            invalid={!!errors.category}
             aria-describedby="form-error"
             {...args}
           >
@@ -135,11 +126,7 @@ const TemplateDisabled: Story<TagProps<FormValues>> = (args: TagProps<FormValues
   const {
     register,
     formState: { errors },
-  } = useForm<FormValues>({
-    // Using the native validation, we're able to style the inputs using the `valid` and `invalid`
-    // pseudo class
-    shouldUseNativeValidation: true,
-  });
+  } = useForm<FormValues>();
 
   return (
     <div className="p-4">

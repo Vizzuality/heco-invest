@@ -45,7 +45,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<SignupFormI>({ resolver, shouldUseNativeValidation: true });
+  } = useForm<SignupFormI>({ resolver });
 
   const handleSignUp = useCallback(
     (data: SignupDto) =>
@@ -75,7 +75,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
       <p className="mb-1.5 font-sans text-base text-gray-600">
         <FormattedMessage defaultMessage="Please enter your details below." id="rfVDxL" />
       </p>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form onSubmit={handleSubmit(onSubmit)}>
         {signUp.isError && signUp.error.message ? (
           Array.isArray(signUp.error.message) ? (
             <ul>
@@ -107,6 +107,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
                 })}
                 aria-describedby="first-name-error"
                 register={register}
+                invalid={!!errors.first_name}
               />
             </label>
             <ErrorMessage id="first-name-error" errorText={errors.first_name?.message} />
@@ -126,6 +127,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
                 })}
                 aria-describedby="last-name-error"
                 register={register}
+                invalid={!!errors.last_name}
               />
             </label>
             <ErrorMessage id="last-name-error" errorText={errors.last_name?.message} />
@@ -146,6 +148,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
               })}
               aria-describedby="email-error"
               register={register}
+              invalid={!!errors.email}
             />
           </label>
           <ErrorMessage id="email-error" errorText={errors.email?.message} />
@@ -166,6 +169,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
                 id="password"
                 aria-describedby="password-description password-error"
                 register={register}
+                invalid={!!errors.password}
               />
             </label>
             <p
@@ -194,6 +198,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
                 })}
                 aria-describedby="confirm-password-error"
                 register={register}
+                invalid={!!errors.confirm_password}
               />
             </label>
             <ErrorMessage
@@ -209,6 +214,7 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
               id="accept-terms"
               aria-describedby="accept-terms-error"
               register={register}
+              invalid={!!errors.accept_terms}
             />
             <span className="ml-2 font-sans text-sm text-gray-800 font-regular">
               <FormattedMessage

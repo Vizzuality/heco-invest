@@ -15,6 +15,8 @@ export type TagProps<FormValues> = {
   register: (name, RegisterOptions) => UseFormRegisterReturn;
   /** Options for React Hook Form's `register` callback */
   registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
+  /** Whether the input has an invalid state. Defaults to `false`. */
+  invalid?: boolean;
   /** Classes to apply to the container */
   className?: string;
 } & Omit<

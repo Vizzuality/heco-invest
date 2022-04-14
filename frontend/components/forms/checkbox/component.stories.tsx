@@ -16,6 +16,7 @@ export default {
   title: 'Components/Forms/Checkbox',
   argTypes: {
     register: { control: { disable: true } },
+    invalid: { control: { disable: true } },
   },
 } as Meta;
 
@@ -73,27 +74,18 @@ const TemplateWithForm: Story<CheckboxProps<FormValues>> = (args: CheckboxProps<
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({
-    // Using the native validation, we're able to style the inputs using the `valid` and `invalid`
-    // pseudo class
-    shouldUseNativeValidation: true,
-  });
+  } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = (data) => action('onSubmit')(data);
 
   return (
     <div className="p-4">
-      <form
-        // `noValidate` here prevents the browser from not submitting the form if there's a validation
-        // error. We absolutely want the form to be submitted so that React Hook Form is made aware of
-        // the validation errors and we can display errors below inputs.
-        noValidate
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="story-check">
           <Checkbox
             id="story-check"
             name="accept"
             register={register}
+            invalid={!!errors.accept}
             aria-describedby="form-error"
             {...args}
           />
@@ -130,11 +122,7 @@ const TemplateDisabled: Story<CheckboxProps<FormValues>> = (args: CheckboxProps<
   const {
     register,
     formState: { errors },
-  } = useForm<FormValues>({
-    // Using the native validation, we're able to style the inputs using the `valid` and `invalid`
-    // pseudo class
-    shouldUseNativeValidation: true,
-  });
+  } = useForm<FormValues>();
 
   return (
     <div className="p-4">
@@ -143,6 +131,7 @@ const TemplateDisabled: Story<CheckboxProps<FormValues>> = (args: CheckboxProps<
           id="story-check"
           name="accept"
           register={register}
+          invalid={!!errors.accept}
           aria-describedby="form-error"
           {...args}
         />

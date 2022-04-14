@@ -24,6 +24,8 @@ export type TextareaProps<FormValues> = {
   register: UseFormRegister<FormValues>;
   /** Options for React Hook Form's `register` function */
   registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
+  /** Whether the input has an invalid state. Defaults to `false`. */
+  invalid?: boolean;
 } & Omit<
   React.TextareaHTMLAttributes<HTMLTextAreaElement>,
   keyof RegisterOptions<FormValues, FieldPath<FormValues>>

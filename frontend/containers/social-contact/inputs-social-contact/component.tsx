@@ -4,9 +4,9 @@ import { FieldValues, Path } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
 import ErrorMessage from 'components/forms/error-message';
+import Input from 'components/forms/input';
+import Label from 'components/forms/label';
 
-import Input from '../../../components/forms/input';
-import Label from '../../../components/forms/label';
 import { SOCIAL_DATA } from '../constants';
 
 import { InputSocialContactProps } from './types';
@@ -33,15 +33,15 @@ export const InputsSocialContact = <FormValues extends FieldValues>({
               type="text"
               register={register}
               registerOptions={registerOptions}
+              invalid={!!errors?.[id]}
               placeholder={formatMessage({
                 defaultMessage: 'insert URL',
                 id: 'et2m37',
               })}
+              aria-describedby={`${id}-error`}
             />
           </Label>
-          {errors && errors[id] && (
-            <ErrorMessage id={`${id}-error`} errorText={errors[id].message} />
-          )}
+          {errors?.[id] && <ErrorMessage id={`${id}-error`} errorText={errors[id].message} />}
         </div>
       ))}
     </div>

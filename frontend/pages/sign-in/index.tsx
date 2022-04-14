@@ -46,7 +46,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<SignIn>({ resolver, shouldUseNativeValidation: true });
+  } = useForm<SignIn>({ resolver });
   const { user } = useMe();
 
   const handleSignIn = useCallback(
@@ -76,7 +76,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
           id="ZjA6uH"
         />
       </p>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form onSubmit={handleSubmit(onSubmit)}>
         {signIn.error?.message && (
           <Alert className="mb-4.5" withLayoutContainer>
             {Array.isArray(signIn.error.message)
@@ -97,6 +97,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
               })}
               aria-describedby="email-error"
               register={register}
+              invalid={!!errors.email}
               className="mt-2.5"
             />
           </Label>
@@ -127,6 +128,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
               id="password"
               aria-describedby="password-description password-error"
               register={register}
+              invalid={!!errors.password}
             />
             <ErrorMessage id="password-error" errorText={errors.password?.message} />
           </div>

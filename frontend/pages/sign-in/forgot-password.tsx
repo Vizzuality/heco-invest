@@ -40,7 +40,7 @@ const ForgotPassword: PageComponent<ForgotPasswordPageProps, AuthPageLayoutProps
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<ResetPassword>({ resolver, shouldUseNativeValidation: true });
+  } = useForm<ResetPassword>({ resolver });
   const { push } = useRouter();
 
   const handleResetPassword = useCallback(
@@ -66,7 +66,7 @@ const ForgotPassword: PageComponent<ForgotPasswordPageProps, AuthPageLayoutProps
           id="P+9ug1"
         />
       </p>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form onSubmit={handleSubmit(onSubmit)}>
         {resetPassword.isError && (
           <Alert className="mb-4.5" withLayoutContainer>
             {Array.isArray(resetPassword.error.message)
@@ -87,6 +87,7 @@ const ForgotPassword: PageComponent<ForgotPasswordPageProps, AuthPageLayoutProps
               })}
               aria-describedby="email-error"
               register={register}
+              invalid={!!errors.email}
               className="mt-2.5 mb-4.5"
             />
           </Label>

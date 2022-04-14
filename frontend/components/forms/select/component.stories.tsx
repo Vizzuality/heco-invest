@@ -145,21 +145,11 @@ const TemplateWithForm: Story<SelectProps<FormValues, {}>> = (
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({
-    // Using the native validation, we're able to style the inputs using the `valid` and `invalid`
-    // pseudo class
-    shouldUseNativeValidation: true,
-  });
+  } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = (data) => action('onSubmit')(data);
 
   return (
-    <form
-      // `noValidate` here prevents the browser from not submitting the form if there's a validation
-      // error. We absolutely want the form to be submitted so that React Hook Form is made aware of
-      // the validation errors and we can display errors below inputs.
-      noValidate
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor={args.id} className="mb-2">
         Sustainable Development Goal
       </label>

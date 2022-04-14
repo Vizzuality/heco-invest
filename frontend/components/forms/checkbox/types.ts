@@ -13,6 +13,8 @@ export type CheckboxProps<FormValues> = {
   register: UseFormRegister<FormValues>;
   /** Options for React Hook Form's `register` function */
   registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
+  /** Whether the input has an invalid state. Defaults to `false`. */
+  invalid?: boolean;
   /** class to change checkbox element style */
   className?: string;
 } & Omit<

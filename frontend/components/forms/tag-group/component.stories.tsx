@@ -83,23 +83,12 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
     setValue,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({
-    // We don't want to use the native validation here; the validation is specific to the group
-    // and not each tag individually, so we don't want the inputs to have the `valid` or `invalid`
-    // pseudo classes
-    shouldUseNativeValidation: false,
-  });
+  } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = (data) => action('onSubmit')(data);
 
   return (
     <div className="p-4">
-      <form
-        // `noValidate` here prevents the browser from not submitting the form if there's a validation
-        // error. We absolutely want the form to be submitted so that React Hook Form is made aware of
-        // the validation errors and we can display errors below inputs.
-        noValidate
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form onSubmit={handleSubmit(onSubmit)}>
         <fieldset>
           <legend className="mb-2 font-sans font-semibold text-gray-800">Category</legend>
           <TagGroup name={args.name} setValue={setValue}>
@@ -108,6 +97,7 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
               value="first-category"
               aria-describedby="form-error"
               register={register}
+              invalid={!!errors.categories}
               {...args}
             >
               First category
@@ -117,6 +107,7 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
               value="second-category"
               aria-describedby="form-error"
               register={register}
+              invalid={!!errors.categories}
               {...args}
             >
               Second category
@@ -126,6 +117,7 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
               value="third-category"
               aria-describedby="form-error"
               register={register}
+              invalid={!!errors.categories}
               {...args}
             >
               Third category
@@ -135,6 +127,7 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
               value="fourth-category"
               aria-describedby="form-error"
               register={register}
+              invalid={!!errors.categories}
               {...args}
             >
               Four category

@@ -17,7 +17,7 @@ import { loadI18nMessages } from 'helpers/i18n';
 
 import { CategoryTagDot } from 'containers/category-tag';
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
-import SocialMediaImputs from 'containers/social-contact/inputs-social-contact/component';
+import SocialMediaInputs from 'containers/social-contact/inputs-social-contact';
 
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
@@ -89,7 +89,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
     defaultValues: { categories: [], impacts: [], mosaics: [] },
-    shouldUseNativeValidation: true,
     shouldFocusError: true,
     reValidateMode: 'onChange',
   });
@@ -213,7 +212,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
         onSubmitClick={handleSubmit(onSubmit)}
       >
         <Page hasErrors={!!errors?.language}>
-          <form className="flex flex-col justify-between" noValidate>
+          <form className="flex flex-col justify-between">
             <h1 className="mb-6 font-serif text-3xl font-semibold text-green-dark">
               <FormattedMessage defaultMessage="I want to write my content in" id="APjPYs" />
             </h1>
@@ -267,7 +266,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
           </form>
         </Page>
         <Page hasErrors={getPageErrors(1)}>
-          <form className="flex flex-col justify-between" noValidate>
+          <form className="flex flex-col justify-between">
             <div className="mb-10">
               <h1 className="mb-2 font-serif text-3xl font-semibold">
                 <FormattedMessage defaultMessage="Project developer information" id="n2WWAj" />
@@ -329,6 +328,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     id="profile"
                     type="text"
                     register={register}
+                    invalid={!!errors.name}
                     placeholder={formatMessage({
                       defaultMessage: 'insert the profile name',
                       id: '0WHWA/',
@@ -388,6 +388,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   id="entity-legal-registration"
                   className="mt-2.5"
                   register={register}
+                  invalid={!!errors.entity_legal_registration_number}
                   aria-required
                   name="entity_legal_registration_number"
                   placeholder={formatMessage({
@@ -410,6 +411,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   className="mt-2.5"
                   id="about"
                   register={register}
+                  invalid={!!errors.about}
                   aria-required
                   placeholder={formatMessage({
                     defaultMessage: 'insert your answer (max 500 characters)',
@@ -429,6 +431,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   id="mission"
                   aria-required
                   register={register}
+                  invalid={!!errors.mission}
                   placeholder={formatMessage({
                     defaultMessage: 'insert your answer (max 500 characters)',
                     id: 'rBoq14',
@@ -443,11 +446,11 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 <FormattedMessage defaultMessage="Online presence" id="NjKSap" />
               </p>
             </div>
-            <SocialMediaImputs errors={errors} register={register} />
+            <SocialMediaInputs errors={errors} register={register} />
           </form>
         </Page>
         <Page hasErrors={getPageErrors(2)}>
-          <form className="flex flex-col justify-between" noValidate>
+          <form className="flex flex-col justify-between">
             <div className="mb-6">
               <h1 className="font-serif text-3xl font-semibold">
                 <FormattedMessage defaultMessage="About your work" id="kEXoaQ" />
@@ -472,6 +475,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                         value={item.id}
                         aria-describedby={`${name}-error`}
                         register={register}
+                        invalid={!!errors?.[name]}
                       >
                         {item.type === 'category' && (
                           <CategoryTagDot category={item.id as CategoryType} />
