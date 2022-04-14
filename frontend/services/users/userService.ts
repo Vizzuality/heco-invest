@@ -2,6 +2,7 @@ import { useMutation, UseMutationResult } from 'react-query';
 
 import { AxiosResponse, AxiosError } from 'axios';
 
+import { ApiError } from 'types/api';
 import { ResetPassword } from 'types/sign-in';
 import { SignupDto } from 'types/user';
 
@@ -9,7 +10,7 @@ import API from '../api';
 
 export function useSignup(): UseMutationResult<
   AxiosResponse<SignupDto>,
-  AxiosError,
+  AxiosError<ApiError>,
   SignupDto,
   unknown
 > {

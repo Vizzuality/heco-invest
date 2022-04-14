@@ -1,4 +1,3 @@
 export type ApiError = {
-  message: { title: string }[];
-  code?: number;
+  message: { title: string; code?: number }[];
 };

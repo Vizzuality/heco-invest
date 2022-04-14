@@ -1,39 +1,48 @@
-import { useMutation, UseMutationResult } from 'react-query';
+import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
 
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 
-import { ProjectDeveloperSetupForm } from 'types/projectDeveloper';
+import { ApiError } from 'types/api';
+import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 
-import api from 'services/api';
+import API from 'services/api';
+
+const createProjectDeveloper = async (
+  data: ProjectDeveloperSetupForm
+): Promise<AxiosResponse<ProjectDeveloper>> => {
+  const formData = new FormData();
+
+  const { picture, ...rest } = data;
+  formData.append('picture', data.picture[0]);
+  Object.entries(rest).forEach(([key, value]) => {
+    if (Array.isArray(value)) {
+      value.forEach((v) => formData.append(`${key}[]`, v));
+    } else {
+      formData.append(key, value);
+    }
+  });
+
+  const config: AxiosRequestConfig = {
+    method: 'POST',
+    url: '/api/v1/account/project_developer',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData,
+  };
+  return await API(config);
+};
 
 export function useCreateProjectDeveloper(): UseMutationResult<
-  AxiosResponse<ProjectDeveloperSetupForm>,
-  AxiosError<{ message: { title: string }[] }>,
-  ProjectDeveloperSetupForm,
-  unknown
+  AxiosResponse<ProjectDeveloper>,
+  AxiosError<ApiError>,
+  ProjectDeveloperSetupForm
 > {
-  const createProjectDeveloper = async (data: ProjectDeveloperSetupForm) => {
-    const formData = new FormData();
+  const queryClient = useQueryClient();
 
-    const { picture, ...rest } = data;
-    formData.append('picture', data.picture[0]);
-    Object.entries(rest).forEach(([key, value]) => {
-      if (Array.isArray(value)) {
-        value.forEach((v) => formData.append(`${key}[]`, v));
-      } else {
-        formData.append(key, value);
-      }
-    });
-
-    const config: AxiosRequestConfig = {
-      method: 'POST',
-      url: '/api/v1/account/project_developer',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-      data: formData,
-    };
-    return await api(config);
-  };
-  return useMutation(createProjectDeveloper);
+  return useMutation(createProjectDeveloper, {
+    onSuccess: (result) => {
+      queryClient.setQueryData('project_developer', result.data);
+    },
+  });
 }
