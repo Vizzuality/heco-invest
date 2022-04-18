@@ -5,11 +5,12 @@ import { UseQueryResult, useQuery } from 'react-query';
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { stringify } from 'query-string';
 
-import { Queries } from 'enums';
+import { Queries, UserRoles } from 'enums';
 import { ProjectDeveloper } from 'types/projectDeveloper';
+import { User } from 'types/user';
 
 import API from 'services/api';
-import { PagedResponse, ErrorResponse, PagedRequest } from 'services/types';
+import { PagedResponse, ErrorResponse, PagedRequest, ResponseData } from 'services/types';
 
 /** Use query for the Project Developers list */
 export function useProjectDevelopersList(
@@ -52,3 +53,21 @@ export function useProjectDeveloper(id: string) {
     [query]
   );
 }
+
+/** Get the Current Project Developer if the UserRole is project_developer */
+export const useCurrentProjectDeveloper = (user: User): UseQueryResult<ProjectDeveloper> => {
+  const getCurrentProjectDeveloper = async (): Promise<ProjectDeveloper> =>
+    await API.get('/api/v1/account/project_developer').then(
+      (response: AxiosResponse<ResponseData<ProjectDeveloper>>) => response.data.data
+    );
+
+  const query = useQuery([Queries.Account, user], getCurrentProjectDeveloper, {
+    // Creates the conditional to only fetch the data if the user is a project developer user
+    enabled: user?.attributes?.role === UserRoles.ProjectDeveloper,
+    refetchInterval: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+  });
+
+  return useMemo(() => query, [query]);
+};

@@ -14,6 +14,8 @@ type ProjectDeveloperBase = {
   linkedin?: string;
   twitter?: string;
   mission: string;
+  contact_email: string;
+  contact_phone?: string;
   project_developer_type: string;
   categories: CategoryType[];
   impacts: string[];
