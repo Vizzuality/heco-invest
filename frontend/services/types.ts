@@ -4,6 +4,10 @@ export type PagedRequest = {
   'fields[]': string;
 };
 
+export type ResponseData<Data> = {
+  data: Data;
+};
+
 export type PagedResponse<ResponseData> = {
   data: ResponseData[];
   meta: {
