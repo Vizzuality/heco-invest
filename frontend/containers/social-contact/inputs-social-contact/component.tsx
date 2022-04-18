@@ -20,8 +20,8 @@ export const InputsSocialContact = <FormValues extends FieldValues>({
 
   return (
     <div className="w-full md:grid md:grid-cols-2 md:gap-x-6">
-      {[{ id: 'website', title: 'Website' }, ...SOCIAL_DATA].map(({ id, title }) => (
-        <div key={id}>
+      {[{ id: 'website', title: 'Website' }, ...SOCIAL_DATA].map(({ id, title }, index) => (
+        <div key={id} className={index === 0 ? 'md:col-span-2' : ''}>
           <Label htmlFor={id}>
             {title}{' '}
             {!registerOptions?.required &&
