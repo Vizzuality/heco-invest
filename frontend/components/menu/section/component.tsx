@@ -32,12 +32,12 @@ export const Section: React.FC<SectionProps> = ({
       )}
       <li
         {...itemProps}
-        className={cx({
-          hidden: hidden === 'all',
-          'sm:hidden': hidden === 'sm',
-          'md:hidden': hidden === 'md',
-          'lg:hidden': hidden === 'lg',
-        })}
+        className={
+          hidden &&
+          cx({
+            [hidden === 'all' ? 'hidden' : `${hidden}:hidden`]: !!hidden,
+          })
+        }
       >
         <ul {...groupProps}>
           {Array.from(section.childNodes).map((item) => (

@@ -58,8 +58,6 @@ export const Popup: React.FC<PopupProps> = ({
       <div {...overlayProps} ref={overlayRef}>
         <DismissButton onDismiss={onClose} />
         <div
-          {...mergeProps(menuProps, domProps)}
-          ref={ref}
           className={cx(
             'z-30 absolute transform whitespace-nowrap bg-white shadow-2xl rounded-md overflow-hidden',
             align === 'start' ? 'left-0' : 'right-0',
@@ -67,12 +65,12 @@ export const Popup: React.FC<PopupProps> = ({
           )}
           aria-labelledby="popup-header"
         >
-          {header && (
-            <div id="popup-header" className="p-4 pb-0">
-              {header}
-            </div>
-          )}
-          <ul className={cx({ 'pl-16 pr-4 pb-4': !!header })}>
+          {header && <div className="p-4 pb-0">{header}</div>}
+          <ul
+            {...mergeProps(menuProps, domProps)}
+            ref={ref}
+            className={cx({ 'pl-16 pr-4 pb-4': !!header })}
+          >
             {Array.from(state.collection).map((item) => {
               if (item.type === 'section') {
                 return (
@@ -82,7 +80,7 @@ export const Popup: React.FC<PopupProps> = ({
                     state={state}
                     onAction={onAction}
                     onClose={onClose}
-                    hidden={hiddenSections?.[item.key]}
+                    hidden={hiddenSections[item.key]}
                   />
                 );
               }

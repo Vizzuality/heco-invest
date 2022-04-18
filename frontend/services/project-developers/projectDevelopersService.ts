@@ -5,12 +5,20 @@ import { UseQueryResult, useQuery } from 'react-query';
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { stringify } from 'query-string';
 
+<<<<<<< HEAD
 import { Queries, UserRoles } from 'enums';
 import { ProjectDeveloper } from 'types/projectDeveloper';
 import { User } from 'types/user';
 
 import API from 'services/api';
 import { PagedResponse, ErrorResponse, PagedRequest, ResponseData } from 'services/types';
+=======
+import { Queries } from 'enums';
+import { ProjectDeveloper } from 'types/projectDeveloper';
+
+import API from 'services/api';
+import { PagedResponse, ErrorResponse, PagedRequest } from 'services/types';
+>>>>>>> 6fb14f66ec5cfef3c1a90406b0affe67f946ca57
 
 /** Use query for the Project Developers list */
 export function useProjectDevelopersList(
