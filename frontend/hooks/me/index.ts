@@ -19,6 +19,8 @@ export default function useMe() {
       retry: 0,
       staleTime: Infinity,
       refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      refetchInterval: Infinity,
     }
   );
 

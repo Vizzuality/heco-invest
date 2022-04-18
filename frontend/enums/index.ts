@@ -16,7 +16,7 @@ export enum Paths {
 }
 
 export enum UserRoles {
-  Ligth = 'light',
+  Light = 'light',
   Investor = 'investor',
   ProjectDeveloper = 'project_developer',
 }
@@ -29,6 +29,8 @@ export enum Queries {
   ProjectDeveloperList = 'project_developers',
   /** Single project developer */
   ProjectDeveloper = 'project_developer',
+  /** The current user Project Developer */
+  CurrentProjectDeveloper = 'current_project_developer',
   /** List of investors */
   InvestorList = 'investors',
   /** Single investor  */

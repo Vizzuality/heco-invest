@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { ChevronDown, Menu as MenuIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -12,7 +12,7 @@ import { useWindowScrollPosition } from 'rooks';
 
 import useMe from 'hooks/me';
 
-import getUserInitials from 'helpers/getUserInitials';
+import { getUserInitials } from 'helpers/user';
 
 import ActiveLink from 'components/active-link';
 import Button from 'components/button';
@@ -22,7 +22,7 @@ import LayoutContainer from 'components/layout-container';
 import Menu, { MenuItem, MenuSection } from 'components/menu';
 import { Paths } from 'enums';
 
-import { useAccount } from 'services/account';
+import { useCurrentProjectDeveloper } from 'services/project-developers/projectDevelopersService';
 
 import SearchIcon from 'svgs/search.svg';
 
@@ -34,7 +34,11 @@ export const Header: React.FC<HeaderProps> = ({
   const router = useRouter();
   const { formatMessage } = useIntl();
   const { user } = useMe();
-  const { account } = useAccount(user);
+  const projectDeveloper = useCurrentProjectDeveloper(user);
+  const investor = undefined;
+  // Important!!! Include the current investor when available
+
+  const account = projectDeveloper.data?.attributes || investor;
 
   const { scrollY }: ReturnType<typeof useWindowScrollPosition> =
     // The `window` check is required because the hook is not SSR-ready yet:
