@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { FieldValues } from 'react-hook-form';
 
@@ -14,9 +14,18 @@ export const Tag = <FormValues extends FieldValues>({
   register,
   registerOptions,
   children,
+  invalid: invalidProp = false,
   ...rest
 }: TagProps<FormValues>) => {
-  const [invalid, setInvalid] = useState(false);
+  const [invalid, setInvalid] = useState(invalidProp);
+
+  // This is mainly needed for when the Tag is part of a group of tags wrapped in a TagGroup component.
+  // TagGroup will be checking if the field has errors (by name), and passing `invalid` as either
+  // `true` or `false`. This is because the tag itself may be valid/not having errors, while the group
+  // as a whole may not be valid.
+  useEffect(() => {
+    setInvalid(invalidProp);
+  }, [invalidProp]);
 
   return (
     <div className={className}>
@@ -24,12 +33,10 @@ export const Tag = <FormValues extends FieldValues>({
         id={id}
         type="checkbox"
         className="sr-only peer"
-        {...rest}
-        {...register(name, {
-          ...registerOptions,
-        })}
         value={value}
         onInvalid={() => setInvalid(true)}
+        {...register(name, registerOptions)}
+        {...rest}
       />
       <label
         htmlFor={id}

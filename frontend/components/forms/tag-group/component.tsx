@@ -1,6 +1,6 @@
 import { ReactElement, Children, useMemo, cloneElement } from 'react';
 
-import { UseFormSetValue } from 'react-hook-form';
+import { UseFormSetValue, FieldValues, UseFormClearErrors } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
@@ -9,14 +9,16 @@ import { noop } from 'lodash-es';
 
 import { TagGroupProps } from './types';
 
-export const TagGroup = ({
+export const TagGroup = <FormValues extends FieldValues>({
   className,
   name,
   thresholdToShowSelectAll = 4,
   children,
+  errors,
+  clearErrors = noop as UseFormClearErrors<any>,
   setValue = noop as UseFormSetValue<any>,
-  setValueOptions = { shouldDirty: true, shouldValidate: true },
-}: TagGroupProps) => {
+  setValueOptions = { shouldDirty: true },
+}: TagGroupProps<FormValues>) => {
   const numChildren = useMemo(() => Children.count(children), [children]);
 
   const allValues = useMemo(
@@ -25,11 +27,15 @@ export const TagGroup = ({
   );
 
   const handleSelectAllClick = () => {
-    setValue(name, allValues, setValueOptions);
+    setValue(name, allValues, setValueOptions); // Set the values on react-hook-form
+    // Setting `shouldValidate` in `setValueOptions` will trigger a whole form validation
+    // which we don't want. Since we're simply selecting all values, we can clear
+    // the errors manually
+    clearErrors(name);
   };
 
   const tags = Children.map(children, (child: ReactElement) => {
-    return cloneElement(child, { name });
+    return cloneElement(child, { name, invalid: errors && errors[name] });
   });
 
   const showSelectAllButton = numChildren >= thresholdToShowSelectAll;

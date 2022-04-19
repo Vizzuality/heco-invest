@@ -17,6 +17,8 @@ export type TagProps<FormValues> = {
   registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
   /** Classes to apply to the container */
   className?: string;
+  /** Whether the input is invalid. Defaults to `false`. */
+  invalid?: boolean;
 } & Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   keyof RegisterOptions<FormValues, FieldPath<FormValues>>
