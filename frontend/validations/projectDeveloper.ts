@@ -15,6 +15,8 @@ export const formPageInputs = [
     'entity-legal-registration-number',
     'about',
     'mission',
+    'contact_phone',
+    'contact_email',
     'website',
     'facebook',
     'linkedin',

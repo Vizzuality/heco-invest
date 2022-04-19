@@ -51,8 +51,8 @@ export default (page: number) => {
     }),
     language: formatMessage({ defaultMessage: 'You need to select a language', id: 'Cise0r' }),
     maxTextLength: formatMessage({
-      defaultMessage: 'It must have a maximum of 500 characters',
-      id: 'iS0axe',
+      defaultMessage: 'It must have a maximum of 600 characters',
+      id: 'frm1UB',
     }),
     website: formatMessage({ defaultMessage: 'Website must be a valid URL', id: 'Dm4fJl' }),
     social_medias: formatMessage({ defaultMessage: 'It should be a valid account', id: 'mOUwuv' }),
@@ -78,8 +78,8 @@ export default (page: number) => {
       .min(Math.pow(10, 9), messages.entityLegalRegistrationNumber.invalidFormat)
       .max(Math.pow(10, 12), messages.entityLegalRegistrationNumber.invalidFormat)
       .required(messages.entityLegalRegistrationNumber.required),
-    about: string().max(500, messages.maxTextLength).required(messages.about),
-    mission: string().max(500, messages.maxTextLength).required(messages.mission),
+    about: string().max(600, messages.maxTextLength).required(messages.about),
+    mission: string().max(600, messages.maxTextLength).required(messages.mission),
     contact_email: string()
       .email(messages.contactEmail.isValid)
       .required(messages.contactEmail.required),

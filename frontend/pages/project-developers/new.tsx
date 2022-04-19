@@ -420,7 +420,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               </Label>
               <ErrorMessage errorText={errors?.about?.message} id="about-error" />
             </div>
-            <div className="mb-6.5">
+            <div className="mb-10">
               <Label htmlFor="mission">
                 <FormattedMessage defaultMessage="What's your mission?" id="vaWFzs" />
                 <TextArea
@@ -430,8 +430,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   aria-required
                   register={register}
                   placeholder={formatMessage({
-                    defaultMessage: 'insert your answer (max 500 characters)',
-                    id: 'rBoq14',
+                    defaultMessage: 'insert your answer (max 600 characters)',
+                    id: 'hPsrc0',
                   })}
                   aria-describedby="mission-error"
                 />
@@ -442,10 +442,18 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
                 <FormattedMessage defaultMessage="Contact information" id="ITdmlJ" />
               </p>
-              <div className="md:flex gap-x-6">
-                <div className="md:w-1/2">
-                  <Label>
+              <div className="md:flex md:gap-x-6">
+                <div className="mb-4.5 md:w-1/2 md:mb-0">
+                  <Label htmlFor="email">
                     <FormattedMessage defaultMessage="Email" id="sy+pv5" />
+                    <span className="ml-2.5">
+                      <FieldInfo
+                        infoText={formatMessage({
+                          defaultMessage: 'Insert the email to receive the contact messages.',
+                          id: 'Qmlx+T',
+                        })}
+                      />
+                    </span>
                     <Input
                       name="contact_email"
                       type="email"
@@ -463,8 +471,17 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   <ErrorMessage id="email-error" errorText={errors.contact_email?.message} />
                 </div>
                 <div className="md:w-1/2">
-                  <Label>
+                  <Label htmlFor="phone-number">
                     <FormattedMessage defaultMessage="Phone number (optional)" id="JNTB42" />
+                    <span className="ml-2.5">
+                      <FieldInfo
+                        infoText={formatMessage({
+                          defaultMessage:
+                            'Insert the phone number in case you would like to be contacted by phone.',
+                          id: 'VkljLs',
+                        })}
+                      />
+                    </span>
                     <Input
                       name="contact_phone"
                       type="tel"
@@ -493,8 +510,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
         </Page>
         <Page hasErrors={getPageErrors(2)}>
           <form className="flex flex-col justify-between" noValidate>
-            <div className="mb-6">
-              <h1 className="font-serif text-3xl font-semibold">
+            <div className="mb-10">
+              <h1 className="mb-2 font-serif text-3xl font-semibold">
                 <FormattedMessage defaultMessage="About your work" id="kEXoaQ" />
               </h1>
               <p className="font-sans text-base text-gray-600">
