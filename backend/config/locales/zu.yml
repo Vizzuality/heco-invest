@@ -21,6 +21,9 @@ zu:
       non-timber-forest-production:
         name: Non Timber Forest Production
         description: Production of health, wellness, and cosmetic products; art, clothing, and handcrafted products; production of food and drinks.
+      human-capital-and-inclusion:
+        name: Human capital and inclusion
+        description: Human capital and inclusion description
     project_developer_type:
       academic:
         name: Academic
