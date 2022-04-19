@@ -525,12 +525,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     <span className="mr-2.5">{title}</span>
                     <FieldInfo infoText={infoText || getItemsInfoText(items)} />
                   </legend>
-                  <TagGroup
-                    name={name}
-                    setValue={setValue}
-                    setValueOptions={{ shouldValidate: false }}
-                    // ShouldValidate disabled for not forcing the premature validation of the other fields of the page
-                  >
+                  <TagGroup name={name} setValue={setValue}>
                     {items?.map((item: Enum | Locations) => (
                       <Tag
                         key={item.id}
