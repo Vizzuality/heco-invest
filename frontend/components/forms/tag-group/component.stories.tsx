@@ -27,6 +27,7 @@ const Template: Story<TagProps<FormValues>> = (args: TagProps<FormValues>) => {
     register,
     setValue,
     clearErrors,
+    watch,
     formState: { errors },
   } = useForm<FormValues>();
 
@@ -34,7 +35,13 @@ const Template: Story<TagProps<FormValues>> = (args: TagProps<FormValues>) => {
     <div className="p-4">
       <fieldset>
         <legend className="mb-2 font-sans font-semibold text-gray-800">Category</legend>
-        <TagGroup name={args.name} setValue={setValue} clearErrors={clearErrors} errors={errors}>
+        <TagGroup
+          name={args.name}
+          setValue={setValue}
+          clearErrors={clearErrors}
+          watch={watch}
+          errors={errors}
+        >
           <Tag
             id="first-category"
             value="first-category"
@@ -88,6 +95,7 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
     setValue,
     handleSubmit,
     clearErrors,
+    watch,
     formState: { errors },
   } = useForm<FormValues>({
     shouldUseNativeValidation: true,
@@ -108,7 +116,13 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
       >
         <fieldset name={args.name}>
           <legend className="mb-2 font-sans font-semibold text-gray-800">Category</legend>
-          <TagGroup name={args.name} setValue={setValue} errors={errors} clearErrors={clearErrors}>
+          <TagGroup
+            name={args.name}
+            setValue={setValue}
+            errors={errors}
+            clearErrors={clearErrors}
+            watch={watch}
+          >
             <Tag
               id="first-category"
               value="first-category"

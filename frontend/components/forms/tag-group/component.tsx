@@ -1,11 +1,9 @@
 import { ReactElement, Children, useMemo, cloneElement } from 'react';
 
-import { UseFormSetValue, FieldValues, UseFormClearErrors } from 'react-hook-form';
+import { FieldValues } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
-
-import { noop } from 'lodash-es';
 
 import { TagGroupProps } from './types';
 
@@ -15,8 +13,9 @@ export const TagGroup = <FormValues extends FieldValues>({
   thresholdToShowSelectAll = 4,
   children,
   errors,
-  clearErrors = noop as UseFormClearErrors<any>,
-  setValue = noop as UseFormSetValue<any>,
+  watch,
+  clearErrors,
+  setValue,
   setValueOptions = { shouldDirty: true },
 }: TagGroupProps<FormValues>) => {
   const numChildren = useMemo(() => Children.count(children), [children]);
@@ -35,7 +34,7 @@ export const TagGroup = <FormValues extends FieldValues>({
   };
 
   const tags = Children.map(children, (child: ReactElement) => {
-    return cloneElement(child, { name, invalid: errors && errors[name] });
+    return cloneElement(child, { name, watch, invalid: errors && errors[name] });
   });
 
   const showSelectAllButton = numChildren >= thresholdToShowSelectAll;
