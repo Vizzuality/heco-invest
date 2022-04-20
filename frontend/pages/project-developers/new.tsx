@@ -16,9 +16,11 @@ import useInterests, { InterestNames } from 'hooks/useInterests';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import { CategoryTagDot } from 'containers/category-tag';
+import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 import SocialMediaImputs from 'containers/social-contact/inputs-social-contact/component';
 
+import Button from 'components/button';
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
@@ -28,6 +30,7 @@ import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
 import TextArea from 'components/forms/textarea';
 import Head from 'components/head';
+import Modal from 'components/modal';
 import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
 import languages from 'locales.config.json';
 import { PageComponent } from 'types';
@@ -71,6 +74,7 @@ const getItemsInfoText = (items: Enum[]) => {
 const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [imagePreview, setImagePreview] = useState('');
+  const [showLeave, setShowLeave] = useState(false);
   const { formatMessage } = useIntl();
   const resolver = useProjectDeveloperValidation(currentPage);
   const { push } = useRouter();
@@ -209,7 +213,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
-        onCloseClick={() => push('/')}
+        onCloseClick={() => setShowLeave(true)}
         onSubmitClick={handleSubmit(onSubmit)}
       >
         <Page hasErrors={!!errors?.language}>
@@ -549,6 +553,12 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
           </form>
         </Page>
       </MultiPageLayout>
+      <LeaveFormModal
+        title={formatMessage({ defaultMessage: 'Leave create project develop', id: 'jQfYef' })}
+        isOpen={showLeave}
+        handleLeave={() => push('/')}
+        close={() => setShowLeave(false)}
+      />
     </>
   );
 };
