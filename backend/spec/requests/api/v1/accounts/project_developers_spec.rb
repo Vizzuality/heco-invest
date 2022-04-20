@@ -95,13 +95,13 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/project-developer-create")
+          expect(response.body).to match_snapshot("api/v1/accounts-project-developer-create")
         end
       end
 
       response "422", "User already have account" do
         schema type: :object, properties: {
-          data: {"$ref" => "#/components/schemas/error"}
+          data: {"$ref" => "#/components/schemas/errors"}
         }
         let("X-CSRF-TOKEN") { get_csrf_token }
 
@@ -183,7 +183,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/project-developer-update", dynamic_attributes: %w[small medium original])
+          expect(response.body).to match_snapshot("api/v1/accounts-project-developer-update")
         end
 
         context "when updating just some attributes" do

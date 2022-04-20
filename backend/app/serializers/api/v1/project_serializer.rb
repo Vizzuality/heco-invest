@@ -30,6 +30,7 @@ module API
 
       belongs_to :project_developer
       has_many :involved_project_developers, serializer: ProjectDeveloperSerializer
+      has_many :project_images
     end
   end
 end
