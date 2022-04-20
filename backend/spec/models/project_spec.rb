@@ -116,7 +116,7 @@ RSpec.describe Project, type: :model do
 
   it "should not be valid with more than 6 project images" do
     subject.project_images = 7.times.map { build(:project_image) }
-    expect(subject).to have(2).errors_on(:project_images)
+    expect(subject).to have(1).errors_on(:project_images)
   end
 
   include_examples :static_relation_validations, attribute: :development_stage, presence: true
