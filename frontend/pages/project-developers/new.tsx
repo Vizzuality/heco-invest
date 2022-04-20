@@ -90,6 +90,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     control,
     setError,
     setValue,
+    clearErrors,
+    watch,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
     defaultValues: { categories: [], impacts: [], mosaics: [] },
@@ -529,7 +531,13 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     <span className="mr-2.5">{title}</span>
                     <FieldInfo infoText={infoText || getItemsInfoText(items)} />
                   </legend>
-                  <TagGroup name={name} setValue={setValue}>
+                  <TagGroup
+                    name={name}
+                    watch={watch}
+                    setValue={setValue}
+                    errors={errors}
+                    clearErrors={clearErrors}
+                  >
                     {items?.map((item: Enum | Locations) => (
                       <Tag
                         key={item.id}
