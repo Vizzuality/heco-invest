@@ -1,18 +1,15 @@
 import { PropsWithChildren } from 'react';
 
-import {
-  UseFormSetValue,
-  UseFormClearErrors,
-  UseFormWatch,
-  SetValueConfig,
-  FieldErrors,
-} from 'react-hook-form';
+import { UseFormSetValue, UseFormClearErrors, SetValueConfig, FieldErrors } from 'react-hook-form';
 
 export type TagGroupProps<FormValues> = PropsWithChildren<{
   /** Classes to apply to the container */
   className?: string;
-  /** Name of the tag group (will be assigned to each individual `<Tag />`) */
-  name: string;
+  /**
+   * Name of the tag group (will be assigned to each individual `<Tag />`)
+   * Defaults to inferring it from the first Tag's name.
+   **/
+  name?: string;
   /**
    * Type of tags to use.
    * Defaults to inferring it from the first Tag's type. If none set, defaults to `checkbox`.
