@@ -43,4 +43,14 @@ RSpec.configure do |config|
       ActiveJob::Base.queue_adapter.performed_jobs.clear
     end
   end
+
+  config.before :each, jobs_routes: true do |_example|
+    stub_const("ENV", {"JOBS_INSTANCE" => true})
+    Backend::Application.reload_routes!
+  end
+
+  config.after :each, jobs_routes: true do |_example|
+    stub_const("ENV", {"JOBS_INSTANCE" => false})
+    Backend::Application.reload_routes!
+  end
 end
