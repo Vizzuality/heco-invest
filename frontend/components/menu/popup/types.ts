@@ -29,7 +29,8 @@ export interface PopupProps {
   onAction: ItemProps['onAction'];
   /** Menu Popup Header */
   header?: JSX.Element;
-  /** For each section, breakpoint starting from which it is hidden */ hiddenSections?: {
+  /** For each section, breakpoint starting from which it is hidden */
+  hiddenSections?: {
     [key: React.Key]: SectionProps['hidden'];
   };
 }

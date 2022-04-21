@@ -3,7 +3,6 @@ import { useMemo } from 'react';
 import { UseQueryResult, useQuery } from 'react-query';
 
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
-import { stringify } from 'query-string';
 
 import { Queries, UserRoles } from 'enums';
 import { ProjectDeveloper } from 'types/projectDeveloper';
@@ -17,10 +16,10 @@ export function useProjectDevelopersList(
   params: PagedRequest
 ): UseQueryResult<AxiosResponse<PagedResponse<ProjectDeveloper>>, AxiosError<ErrorResponse>> {
   const getProjectDevelopers = async (params: PagedRequest) => {
-    const parameters = stringify({ params });
     const config: AxiosRequestConfig = {
-      url: `/api/v1/project_developers?${parameters}`,
+      url: '/api/v1/project_developers',
       method: 'GET',
+      params,
     };
     return await API.request(config).then((response) => response.data.data);
   };
@@ -29,13 +28,9 @@ export function useProjectDevelopersList(
 }
 
 /** Get a Project Developer using an id and, optionally, the wanted fields */
-export const getProjectDeveloper = async (
-  id: string,
-  fields?: string
-): Promise<ProjectDeveloper> => {
-  const params = stringify({ 'fields[project_developer]': fields });
+export const getProjectDeveloper = async (id: string): Promise<ProjectDeveloper> => {
   const config: AxiosRequestConfig = {
-    url: `/api/v1/project_developers/${id}${params ? '?' + params : ''}`,
+    url: `/api/v1/project_developers/${id}`,
     method: 'GET',
   };
   return await API.request(config).then((response) => response.data.data);
@@ -55,7 +50,7 @@ export function useProjectDeveloper(id: string) {
 }
 
 /** Get the Current Project Developer if the UserRole is project_developer */
-export const useCurrentProjectDeveloper = (user: User): UseQueryResult<ProjectDeveloper> => {
+export const useCurrentProjectDeveloper = (user: User) => {
   const getCurrentProjectDeveloper = async (): Promise<ProjectDeveloper> =>
     await API.get('/api/v1/account/project_developer').then(
       (response: AxiosResponse<ResponseData<ProjectDeveloper>>) => response.data.data
@@ -69,5 +64,11 @@ export const useCurrentProjectDeveloper = (user: User): UseQueryResult<ProjectDe
     refetchOnWindowFocus: false,
   });
 
-  return useMemo(() => query, [query]);
+  return useMemo(
+    () => ({
+      ...query,
+      projectDeveloper: query.data,
+    }),
+    [query]
+  );
 };

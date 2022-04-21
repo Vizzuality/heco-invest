@@ -39,7 +39,7 @@ import useProjectDeveloperValidation, { formPageInputs } from 'validations/proje
 
 import { useCreateProjectDeveloper } from 'services/account';
 import { getEnums, useEnums } from 'services/enums/enumService';
-import { getMosaics, useMosaics } from 'services/locations/localtionsService';
+import { getMosaics, useMosaics } from 'services/locations/locations';
 
 export async function getStaticProps(ctx) {
   const queryClient = new QueryClient();

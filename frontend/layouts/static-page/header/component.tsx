@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { ChevronDown, Menu as MenuIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -34,11 +34,11 @@ export const Header: React.FC<HeaderProps> = ({
   const router = useRouter();
   const { formatMessage } = useIntl();
   const { user } = useMe();
-  const projectDeveloper = useCurrentProjectDeveloper(user);
+  const { projectDeveloper } = useCurrentProjectDeveloper(user);
   const investor = undefined;
   // Important!!! Include the current investor when available
 
-  const account = projectDeveloper.data?.attributes || investor;
+  const account = projectDeveloper?.attributes || investor;
 
   const { scrollY }: ReturnType<typeof useWindowScrollPosition> =
     // The `window` check is required because the hook is not SSR-ready yet:
@@ -73,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
       <LayoutContainer>
         <div className="flex items-center justify-between pt-3 pb-3 md:pt-6 md:pb-4 lg:space-x-10">
           <Link href="/">
-            <a className="font-semibold ">HeCo Invest</a>
+            <a className="font-semibold">HeCo Invest</a>
           </Link>
           <div className="flex">
             {/* NAVIGATION MENU LG */}
@@ -109,24 +109,25 @@ export const Header: React.FC<HeaderProps> = ({
 
             {/* USER MENU (MD/LG)*/}
             <div className="items-center hidden sm:flex">
-              {user ? (
+              {!!user ? (
                 <Menu
                   Trigger={
                     <Button
+                      aria-label={formatMessage({ defaultMessage: 'User menu', id: '6b2CRH' })}
                       className="px-2 sm:px-4 focus-visible:outline-green-dark"
                       theme="naked"
                       size="small"
                       aria-expanded={userMenuOpen}
                       onClick={() => setUserMenuOpen(true)}
                     >
-                      <div
+                      <span
                         className={cx('w-8 h-8 rounded-full flex justify-center items-center', {
                           'bg-green-dark text-white': showBackground,
                           'text-green-dark bg-white': !showBackground,
                         })}
                       >
                         {getUserInitials(user)}
-                      </div>
+                      </span>
                       <ChevronDown className="inline-block w-4 h-4 ml-1" />
                     </Button>
                   }
@@ -149,22 +150,31 @@ export const Header: React.FC<HeaderProps> = ({
                   }
                 >
                   <MenuSection>
-                    {account && (
+                    {!!account && (
                       <MenuItem
                         key={Paths.Dashboard}
-                        textValue={`${account.name} ${formatMessage({
-                          defaultMessage: 'account',
-                          id: 'ESAHMx',
-                        })}`}
+                        textValue={formatMessage(
+                          {
+                            defaultMessage: '{accountName} account',
+                            id: 'YE6fVO',
+                          },
+                          { accountName: account.name }
+                        )}
                       >
-                        {account.name} {formatMessage({ defaultMessage: 'account', id: 'ESAHMx' })}
+                        <FormattedMessage
+                          defaultMessage="{accountName} account"
+                          id="YE6fVO"
+                          values={{
+                            accountName: account.name,
+                          }}
+                        />
                       </MenuItem>
                     )}
                     <MenuItem key={Paths.Settings}>
-                      {formatMessage({ defaultMessage: 'My preferences', id: 'CEQo2w' })}
+                      <FormattedMessage defaultMessage="My preferences" id="CEQo2w" />{' '}
                     </MenuItem>
                     <MenuItem key={Paths.SignOut}>
-                      {formatMessage({ defaultMessage: 'Sign out', id: 'xXbJso' })}
+                      <FormattedMessage defaultMessage="Sign out" id="xXbJso" />
                     </MenuItem>
                   </MenuSection>
                 </Menu>
@@ -184,28 +194,20 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="flex items-center lg:hidden">
               <Menu
                 Trigger={
-                  <div className="sm:py-2">
-                    {/* Button md */}
-                    <Button
-                      theme={showBackground ? 'primary-green' : 'primary-white'}
-                      size="small"
-                      aria-expanded={menuOpen}
-                      onClick={() => setMenuOpen(true)}
-                      className="hidden sm:inline"
-                    >
+                  <Button
+                    theme={showBackground ? 'primary-green' : 'primary-white'}
+                    size="small"
+                    aria-expanded={menuOpen}
+                    onClick={() => setMenuOpen(true)}
+                    className="sm:py-2"
+                  >
+                    <span className="hidden sm:inline">
                       <FormattedMessage defaultMessage="Menu" id="tKMlOc" />
-                    </Button>
-                    {/* Button sm */}
-                    <Button
-                      theme="naked"
-                      size="small"
-                      aria-expanded={menuOpen}
-                      className="inline px-2 sm:hidden"
-                      onClick={() => setMenuOpen(true)}
-                    >
-                      <MenuIcon />
-                    </Button>
-                  </div>
+                    </span>
+                    <span className="inline sm:hidden">
+                      <MenuIcon height={20} />
+                    </span>
+                  </Button>
                 }
                 align="end"
                 onAction={onClickMenuItem}
@@ -225,9 +227,9 @@ export const Header: React.FC<HeaderProps> = ({
                     <FormattedMessage defaultMessage="About" id="g5pX+a" />
                   </MenuItem>
                 </MenuSection>
-                {user ? (
+                {!!user ? (
                   <MenuSection key="user-section">
-                    {account && (
+                    {!!account && (
                       <MenuItem
                         key={Paths.Dashboard}
                         textValue={`${account.name} ${formatMessage({
@@ -235,14 +237,18 @@ export const Header: React.FC<HeaderProps> = ({
                           id: 'ESAHMx',
                         })}`}
                       >
-                        {account.name} {formatMessage({ defaultMessage: 'account', id: 'ESAHMx' })}
+                        <FormattedMessage
+                          defaultMessage="{accountName} account"
+                          id="YE6fVO"
+                          values={{ accountName: account.name }}
+                        />
                       </MenuItem>
                     )}
                     <MenuItem key={Paths.Settings}>
-                      {formatMessage({ defaultMessage: 'My preferences', id: 'CEQo2w' })}
+                      <FormattedMessage defaultMessage="My preferences" id="CEQo2w" />
                     </MenuItem>
                     <MenuItem key={Paths.SignOut}>
-                      {formatMessage({ defaultMessage: 'Sign out', id: 'xXbJso' })}
+                      <FormattedMessage defaultMessage="Sign out" id="xXbJso" />
                     </MenuItem>
                   </MenuSection>
                 ) : (

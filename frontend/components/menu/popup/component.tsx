@@ -65,7 +65,6 @@ export const Popup: React.FC<PopupProps> = ({
             align === 'start' ? 'left-0' : 'right-0',
             direction === 'top' ? '-top-2 -translate-y-full' : '-bottom-2 translate-y-full'
           )}
-          aria-labelledby="popup-header"
         >
           {header && (
             <div id="popup-header" className="p-4 pb-0">
