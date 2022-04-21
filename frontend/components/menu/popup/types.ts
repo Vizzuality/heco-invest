@@ -1,9 +1,10 @@
-import { HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 
 import { MenuTriggerProps } from '@react-types/menu';
 import { Alignment, FocusStrategy, CollectionChildren } from '@react-types/shared';
 
 import { ItemProps } from '../item';
+import { SectionProps } from '../section';
 
 export interface PopupProps {
   /** Reference to the popup's trigger element */
@@ -26,4 +27,10 @@ export interface PopupProps {
   onClose: ItemProps['onClose'];
   /** Callback executed when the user clicks on a menu's item */
   onAction: ItemProps['onAction'];
+  /** Menu Popup Header */
+  header?: JSX.Element;
+  /** For each section, breakpoint starting from which it is hidden */
+  hiddenSections?: {
+    [key: React.Key]: SectionProps['hidden'];
+  };
 }

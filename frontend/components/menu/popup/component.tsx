@@ -24,6 +24,8 @@ export const Popup: React.FC<PopupProps> = ({
   expandedKeys,
   onClose,
   onAction,
+  header,
+  hiddenSections = {},
 }: PopupProps) => {
   const ref = React.useRef(null);
   const overlayRef = React.useRef(null);
@@ -55,7 +57,7 @@ export const Popup: React.FC<PopupProps> = ({
     <FocusScope restoreFocus>
       <div {...overlayProps} ref={overlayRef}>
         <DismissButton onDismiss={onClose} />
-        <ul
+        <div
           {...mergeProps(menuProps, domProps)}
           ref={ref}
           className={cx(
@@ -64,30 +66,37 @@ export const Popup: React.FC<PopupProps> = ({
             direction === 'top' ? '-top-2 -translate-y-full' : '-bottom-2 translate-y-full'
           )}
         >
-          {Array.from(state.collection).map((item) => {
-            if (item.type === 'section') {
+          {header && (
+            <div id="popup-header" className="p-4 pb-0">
+              {header}
+            </div>
+          )}
+          <ul className={cx({ 'pl-16 pr-4 pb-4': !!header })}>
+            {Array.from(state.collection).map((item) => {
+              if (item.type === 'section') {
+                return (
+                  <Section
+                    key={item.key}
+                    section={item}
+                    state={state}
+                    onAction={onAction}
+                    onClose={onClose}
+                    hidden={hiddenSections?.[item.key]}
+                  />
+                );
+              }
               return (
-                <Section
+                <Item
                   key={item.key}
-                  section={item}
+                  item={item}
                   state={state}
                   onAction={onAction}
                   onClose={onClose}
                 />
               );
-            }
-
-            return (
-              <Item
-                key={item.key}
-                item={item}
-                state={state}
-                onAction={onAction}
-                onClose={onClose}
-              />
-            );
-          })}
-        </ul>
+            })}
+          </ul>
+        </div>
         <DismissButton onDismiss={onClose} />
       </div>
     </FocusScope>

@@ -39,7 +39,7 @@ export const LeaveFormModal = ({
         </div>
         {showSignupLink && (
           <div className="mt-6">
-            <Link href={Paths.SIGNUP} passHref>
+            <Link href={Paths.SignUp} passHref>
               <a className="underline text-green-dark">
                 <FormattedMessage defaultMessage="Already a member? Log in" id="Wo0Pmr" />
               </a>
