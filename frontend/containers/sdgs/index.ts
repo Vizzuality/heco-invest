@@ -1,2 +1,2 @@
 export { default } from './component';
-export type { SDGsProps, SDGType } from './types';
+export type { SDGsProps } from './types';

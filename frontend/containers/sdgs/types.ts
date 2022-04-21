@@ -1,11 +1,6 @@
-import { SDGS_SIZES } from './constants';
+import type { Enum } from 'types/enums';
 
-export type SDGType = {
-  /** Identifier */
-  id: string;
-  /** Title */
-  title: string;
-};
+import { SDGS_SIZES } from './constants';
 
 export type SDGsProps = {
   /** Classnames to apply to the wrapper */
@@ -13,5 +8,5 @@ export type SDGsProps = {
   /** SDGs size `small` | `large`. Defaults to `small` */
   size?: keyof typeof SDGS_SIZES;
   /** Array of SDGType items to display */
-  sdgs?: SDGType[];
+  sdgs?: Enum[];
 };
