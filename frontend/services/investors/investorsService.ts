@@ -3,7 +3,6 @@ import { useMemo } from 'react';
 import { UseQueryResult, useQuery } from 'react-query';
 
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
-import { stringify } from 'query-string';
 
 import { Queries } from 'enums';
 
@@ -15,10 +14,10 @@ export function useInvestorsList(
   params: PagedRequest
 ): UseQueryResult<AxiosResponse<PagedResponse<any>>, AxiosError<ErrorResponse>> {
   const getInvestors = async (params: PagedRequest) => {
-    const parameters = stringify({ params });
     const config: AxiosRequestConfig = {
-      url: `/api/v1/investors?${parameters}`,
+      url: '/api/v1/investors',
       method: 'GET',
+      params,
     };
     return await API.request(config).then((response) => response.data.data);
   };
@@ -27,10 +26,9 @@ export function useInvestorsList(
 }
 
 /** Get a Investor using an id and, optionally, the wanted fields */
-export const getInvestor = async (id: string, fields?: string): Promise<any> => {
-  const params = stringify({ 'fields[project_developer]': fields });
+export const getInvestor = async (id: string): Promise<any> => {
   const config: AxiosRequestConfig = {
-    url: `/api/v1/project_developers/${id}${params ? '?' + params : ''}`,
+    url: `/api/v1/project_developers/${id}`,
     method: 'GET',
   };
   return await API.request(config).then((response) => response.data.data);
