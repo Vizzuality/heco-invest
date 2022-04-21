@@ -3,6 +3,7 @@ import React from 'react';
 import { MenuTriggerProps } from '@react-types/menu';
 
 import { PopupProps } from './popup';
+import { SectionProps } from './section';
 
 export type MenuProps = MenuTriggerProps & {
   /** Classes to apply to the menu */
@@ -17,4 +18,8 @@ export type MenuProps = MenuTriggerProps & {
   expandedKeys?: React.Key[];
   /** Callback executed when the user clicks on a menu's item */
   onAction: PopupProps['onAction'];
+  /** Header displayed at the top of the menu */
+  header?: PopupProps['header'];
+  /** For each section (if any), breakpoint starting from which it is hidden */
+  hiddenSections?: PopupProps['hiddenSections'];
 };

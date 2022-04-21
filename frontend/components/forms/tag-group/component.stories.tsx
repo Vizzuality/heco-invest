@@ -23,13 +23,25 @@ interface FormValues {
 }
 
 const Template: Story<TagProps<FormValues>> = (args: TagProps<FormValues>) => {
-  const { register, setValue } = useForm<FormValues>();
+  const {
+    register,
+    setValue,
+    clearErrors,
+    watch,
+    formState: { errors },
+  } = useForm<FormValues>();
 
   return (
     <div className="p-4">
       <fieldset>
         <legend className="mb-2 font-sans font-semibold text-gray-800">Category</legend>
-        <TagGroup name={args.name} setValue={setValue}>
+        <TagGroup
+          name={args.name}
+          setValue={setValue}
+          clearErrors={clearErrors}
+          watch={watch}
+          errors={errors}
+        >
           <Tag
             id="first-category"
             value="first-category"
@@ -82,13 +94,15 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
     register,
     setValue,
     handleSubmit,
+    clearErrors,
+    watch,
     formState: { errors },
   } = useForm<FormValues>({
-    // We don't want to use the native validation here; the validation is specific to the group
-    // and not each tag individually, so we don't want the inputs to have the `valid` or `invalid`
-    // pseudo classes
-    shouldUseNativeValidation: false,
+    shouldUseNativeValidation: true,
+    shouldFocusError: true,
+    reValidateMode: 'onChange',
   });
+
   const onSubmit: SubmitHandler<FormValues> = (data) => action('onSubmit')(data);
 
   return (
@@ -100,9 +114,15 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
         noValidate
         onSubmit={handleSubmit(onSubmit)}
       >
-        <fieldset>
+        <fieldset name={args.name}>
           <legend className="mb-2 font-sans font-semibold text-gray-800">Category</legend>
-          <TagGroup name={args.name} setValue={setValue}>
+          <TagGroup
+            name={args.name}
+            setValue={setValue}
+            errors={errors}
+            clearErrors={clearErrors}
+            watch={watch}
+          >
             <Tag
               id="first-category"
               value="first-category"
@@ -159,6 +179,17 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
 };
 
 export const ErrorState: Story<TagProps<FormValues>> = TemplateWithForm.bind({});
+
+// Issue: https://github.com/react-hook-form/react-hook-form/issues/4449
+// Workaround: https://github.com/storybookjs/storybook/issues/12747
+ErrorState.parameters = {
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
+};
+
 ErrorState.args = {
   name: 'categories',
   registerOptions: {

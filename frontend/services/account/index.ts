@@ -2,10 +2,10 @@ import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
 
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 
-import { ApiError } from 'types/api';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 
 import API from 'services/api';
+import { ErrorResponse } from 'services/types';
 
 const createProjectDeveloper = async (
   data: ProjectDeveloperSetupForm
@@ -35,7 +35,7 @@ const createProjectDeveloper = async (
 
 export function useCreateProjectDeveloper(): UseMutationResult<
   AxiosResponse<ProjectDeveloper>,
-  AxiosError<ApiError>,
+  AxiosError<ErrorResponse>,
   ProjectDeveloperSetupForm
 > {
   const queryClient = useQueryClient();

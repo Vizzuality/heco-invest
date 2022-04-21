@@ -2,19 +2,19 @@ import { useState, useCallback } from 'react';
 
 import { SubmitHandler, useForm, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { dehydrate, QueryClient, useQuery } from 'react-query';
+import { dehydrate, QueryClient } from 'react-query';
 
 import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
 import { InferGetStaticPropsType } from 'next';
 
-import useGroupedEnums from 'hooks/getEnums';
 import useInterests, { InterestNames } from 'hooks/useInterests';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
 import { CategoryTagDot } from 'containers/category-tag';
+import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 import SocialMediaImputs from 'containers/social-contact/inputs-social-contact/component';
 
@@ -28,6 +28,7 @@ import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
 import TextArea from 'components/forms/textarea';
 import Head from 'components/head';
+import { Queries } from 'enums';
 import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
 import languages from 'locales.config.json';
 import { PageComponent } from 'types';
@@ -38,13 +39,13 @@ import { ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 import useProjectDeveloperValidation, { formPageInputs } from 'validations/projectDeveloper';
 
 import { useCreateProjectDeveloper } from 'services/account';
-import { getEnums } from 'services/enums/enumService';
-import { getMosaics } from 'services/locations/localtionsService';
+import { getEnums, useEnums } from 'services/enums/enumService';
+import { getMosaics, useMosaics } from 'services/locations/locations';
 
 export async function getStaticProps(ctx) {
   const queryClient = new QueryClient();
-  queryClient.prefetchQuery('enum', getEnums);
-  queryClient.prefetchQuery('mosaics', getMosaics);
+  queryClient.prefetchQuery(Queries.EnumList, getEnums);
+  queryClient.prefetchQuery(Queries.Mosaics, getMosaics);
   return {
     props: {
       intlMessages: await loadI18nMessages(ctx),
@@ -55,13 +56,13 @@ export async function getStaticProps(ctx) {
 
 type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const getItemsInfoText = (items: Enum[]) => {
+const getItemsInfoText = (items: Enum[] | Locations[]) => {
   return (
     <ul>
-      {items?.map(({ attributes: { name, description }, id }) => (
+      {items?.map(({ attributes, id }) => (
         <li key={id}>
-          <p className="font-sans text-sm font-semibold text-white">{name}</p>
-          <p className="mb-4 font-sans text-sm font-normal text-white">{description}</p>
+          <p className="font-sans text-sm font-semibold text-white">{attributes.name}</p>
+          <p className="mb-4 font-sans text-sm font-normal text-white">{attributes.description}</p>
         </li>
       ))}
     </ul>
@@ -70,13 +71,15 @@ const getItemsInfoText = (items: Enum[]) => {
 
 const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [imagePreview, setImagePreview] = useState('');
+  const [showLeave, setShowLeave] = useState(false);
   const { formatMessage } = useIntl();
   const resolver = useProjectDeveloperValidation(currentPage);
   const { push } = useRouter();
   const createProjectDeveloper = useCreateProjectDeveloper();
-  const enums = useQuery('enums', getEnums);
-  const mosaics = useQuery('mosaics', getMosaics);
-  const { category, impact, project_developer_type } = useGroupedEnums(enums?.data);
+  const enums = useEnums();
+  const { category, impact, project_developer_type } = enums?.data;
+  const mosaics = useMosaics();
   const interests = useInterests({ category, impact, mosaics: mosaics.data });
   const {
     register,
@@ -86,6 +89,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     setError,
     setValue,
     clearErrors,
+    watch,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
     defaultValues: { categories: [], impacts: [], mosaics: [] },
@@ -172,7 +176,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
   const fetchError = formatMessage({ defaultMessage: 'Unable to load the data', id: 'zniaka' });
 
   const getInterestsErrorText = (interestName: InterestNames) => {
-    if (interestName === InterestNames.mosaics && mosaics.isError) {
+    if (interestName === InterestNames.Mosaics && mosaics.isError) {
       return fetchError;
     }
     if (enums.isError) {
@@ -197,7 +201,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
-        onCloseClick={() => push('/')}
+        onCloseClick={() => setShowLeave(true)}
         onSubmitClick={handleSubmit(onSubmit)}
       >
         <Page hasErrors={!!errors?.language}>
@@ -506,7 +510,13 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     <span className="mr-2.5">{title}</span>
                     <FieldInfo infoText={infoText || getItemsInfoText(items)} />
                   </legend>
-                  <TagGroup name={name} setValue={setValue}>
+                  <TagGroup
+                    name={name}
+                    watch={watch}
+                    setValue={setValue}
+                    errors={errors}
+                    clearErrors={clearErrors}
+                  >
                     {items?.map((item: Enum | Locations) => (
                       <Tag
                         key={item.id}
@@ -530,6 +540,12 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
           </form>
         </Page>
       </MultiPageLayout>
+      <LeaveFormModal
+        title={formatMessage({ defaultMessage: 'Leave create project develop', id: 'jQfYef' })}
+        isOpen={showLeave}
+        handleLeave={() => push('/')}
+        close={() => setShowLeave(false)}
+      />
     </>
   );
 };
