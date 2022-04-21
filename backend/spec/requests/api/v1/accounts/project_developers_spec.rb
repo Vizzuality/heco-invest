@@ -7,7 +7,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
       produces "application/json"
       security [csrf: [], cookie_auth: []]
 
-      let(:project_developer) { create :project_developer, :with_locations }
+      let(:project_developer) { create :project_developer }
       let(:user) { create :user }
 
       it_behaves_like "with not authorized error", csrf: true
@@ -54,7 +54,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           contact_phone: {type: :string},
           "categories[]": {type: :array, items: {type: :string, enum: Category::TYPES}, collectionFormat: :multi},
           "impacts[]": {type: :array, items: {type: :string, enum: Impact::TYPES}, collectionFormat: :multi},
-          "location_ids[]": {type: :array, items: {type: :string}, collectionFormat: :multi}
+          "mosaics[]": {type: :array, items: {type: :string, enum: Mosaic::TYPES}, collectionFormat: :multi}
         },
         required: %w[language picture name about project_developer_type entity_legal_registration_number mission contact_email categories[] impacts[]]
       }
@@ -78,7 +78,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           contact_email: "contact@example.com",
           categories: ["sustainable-agrosystems", "tourism-and-recreation"],
           impacts: ["biodiversity", "climate"],
-          location_ids: [location.id]
+          mosaics: ["amazon-heart"]
         }
       end
 
@@ -141,12 +141,12 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           contact_phone: {type: :string},
           "categories[]": {type: :array, items: {type: :string, enum: Category::TYPES}, collectionFormat: :multi},
           "impacts[]": {type: :array, items: {type: :string, enum: Impact::TYPES}, collectionFormat: :multi},
-          "location_ids[]": {type: :array, items: {type: :string}, collectionFormat: :multi}
+          "mosaics[]": {type: :array, items: {type: :string, enum: Mosaic::TYPES}, collectionFormat: :multi}
         }
       }
 
       let(:location) { create :location }
-      let(:project_developer) { create :project_developer, :with_locations }
+      let(:project_developer) { create :project_developer }
       let(:user) { create :user }
       let(:project_developer_params) do
         {
@@ -163,7 +163,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           mission: "Mission",
           categories: ["sustainable-agrosystems", "tourism-and-recreation"],
           impacts: ["biodiversity", "climate"],
-          location_ids: [location.id]
+          mosaics: ["amazon-heart"]
         }
       end
 
