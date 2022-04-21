@@ -3084,15 +3084,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/activestorage@npm:^6.1.5":
-  version: 6.1.5
-  resolution: "@rails/activestorage@npm:6.1.5"
-  dependencies:
-    spark-md5: ^3.0.0
-  checksum: 25b749161b6584dfe605d1ad1111f5da8bf5410a7c90a055098090f977d6c84fc599f257f95e6be4aa49762280a99be81367b2fc862a1d8d029180e3cd9a76df
-  languageName: node
-  linkType: hard
-
 "@react-aria/breadcrumbs@npm:^3.1.7":
   version: 3.1.7
   resolution: "@react-aria/breadcrumbs@npm:3.1.7"
@@ -12406,7 +12397,6 @@ __metadata:
     "@math.gl/web-mercator": ^3.4.2
     "@next/eslint-plugin-next": ^12.1.0
     "@popperjs/core": ^2.9.2
-    "@rails/activestorage": ^6.1.5
     "@react-aria/button": ^3.3.2
     "@react-aria/dialog": ^3.1.3
     "@react-aria/focus": ^3.3.0
@@ -18828,13 +18818,6 @@ __metadata:
   version: 1.1.5
   resolution: "space-separated-tokens@npm:1.1.5"
   checksum: 8ef68f1cfa8ccad316b7f8d0df0919d0f1f6d32101e8faeee34ea3a923ce8509c1ad562f57388585ee4951e92d27afa211ed0a077d3d5995b5ba9180331be708
-  languageName: node
-  linkType: hard
-
-"spark-md5@npm:^3.0.0":
-  version: 3.0.2
-  resolution: "spark-md5@npm:3.0.2"
-  checksum: 5feebff0bfabcecf56ba03af3e38fdb068272ed41fbf0a94ff9ef65b9bb9cb1dd69be3684db6542e62497b1eac3ae324c07ac4dcb606465dc36ca048177077bf
   languageName: node
   linkType: hard
 

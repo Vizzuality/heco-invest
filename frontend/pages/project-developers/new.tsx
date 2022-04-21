@@ -71,7 +71,6 @@ const getItemsInfoText = (items: Enum[] | Locations[]) => {
 
 const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [imagePreview, setImagePreview] = useState('');
   const [showLeave, setShowLeave] = useState(false);
   const { formatMessage } = useIntl();
   const resolver = useProjectDeveloperValidation(currentPage);
@@ -290,16 +289,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 name="picture"
                 register={register}
                 preview
-                handleChangeImage={(id: string) => {
-                  clearErrors('picture');
-                }}
-                handleError={() =>
-                  setError(
-                    'picture',
-                    { message: 'Something went wrong with the image upload' },
-                    { shouldFocus: true }
-                  )
-                }
+                handleChangeImage={() => clearErrors(['picture'])}
               />
               <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
             </div>

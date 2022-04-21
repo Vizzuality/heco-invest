@@ -5,6 +5,5 @@ export type ImageUploaderProps<FormValues> = {
   register: UseFormRegister<FormValues>;
   preview?: boolean;
   text?: string;
-  handleChangeImage: (id: string) => void;
-  handleError: (error: any) => void;
+  handleChangeImage: () => void;
 };
