@@ -1,10 +1,9 @@
-import { ChangeEvent, useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 import { SubmitHandler, useForm, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { dehydrate, QueryClient, useQuery } from 'react-query';
 
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
@@ -22,6 +21,7 @@ import SocialMediaImputs from 'containers/social-contact/inputs-social-contact/c
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
+import ImageUploader from 'components/forms/image-uploader/component';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import Tag from 'components/forms/tag';
@@ -70,7 +70,6 @@ const getItemsInfoText = (items: Enum[]) => {
 
 const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [imagePreview, setImagePreview] = useState('');
   const { formatMessage } = useIntl();
   const resolver = useProjectDeveloperValidation(currentPage);
   const { push } = useRouter();
@@ -86,6 +85,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     control,
     setError,
     setValue,
+    clearErrors,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
     defaultValues: { categories: [], impacts: [], mosaics: [] },
@@ -150,18 +150,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     await handleSubmit(onSubmit)();
     if (!errors) {
       setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handleUploadImage = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.currentTarget.files?.length) {
-      const file = e.currentTarget.files[0];
-      const src = URL.createObjectURL(file);
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        setImagePreview(src);
-      };
     }
   };
 
@@ -283,13 +271,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               <p className="font-sans font-medium text-base text-gray-600 mb-4.5">
                 <FormattedMessage defaultMessage="General" id="1iEPTM" />
               </p>
-              <div>
-                <label
-                  htmlFor="picture"
-                  className="inline-block mb-4 mr-2.5 text-sm font-semibold text-gray-800 text-primary"
-                >
+              <div className="mb-3">
+                <Label htmlFor="picture" className="mr-2.5">
                   <FormattedMessage defaultMessage="Picture" id="wvoA3H" />
-                </label>
+                </Label>
                 <FieldInfo
                   infoText={formatMessage({
                     defaultMessage: 'Add your logo or a picture that indentifies the account.',
@@ -297,25 +282,21 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   })}
                 />
               </div>
-              <div className="flex items-center justify-start">
-                <Image
-                  src={imagePreview || '/images/avatar.svg'}
-                  width={48}
-                  height={48}
-                  className="rounded-full"
-                  alt={formatMessage({ defaultMessage: 'profile image', id: 'OX08fr' })}
-                />
-                <input
-                  id="picture"
-                  className="ml-5"
-                  name="picture"
-                  type="file"
-                  accept="image/png, image/jpeg"
-                  {...register('picture')}
-                  onChange={handleUploadImage}
-                  aria-describedby="picture-error"
-                />
-              </div>
+              <ImageUploader
+                name="picture"
+                register={register}
+                preview
+                handleChangeImage={(id: string) => {
+                  clearErrors('picture');
+                }}
+                handleError={() =>
+                  setError(
+                    'picture',
+                    { message: 'Something went wrong with the image upload' },
+                    { shouldFocus: true }
+                  )
+                }
+              />
               <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
             </div>
             <div className="md:flex gap-x-6 mb-6.5">

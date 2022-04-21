@@ -11,3 +11,7 @@ export enum Paths {
   DASHBOARD = '/dashboard',
   FAQ = '/faq',
 }
+
+export enum Queries {
+  UploadedFile = 'uploaded-file',
+}
