@@ -10,6 +10,7 @@ import { TagProps } from './types';
 
 export const Tag = <FormValues extends FieldValues>({
   className,
+  type = 'checkbox',
   id,
   name,
   value,
@@ -47,7 +48,7 @@ export const Tag = <FormValues extends FieldValues>({
     <div className={className}>
       <input
         id={id}
-        type="checkbox"
+        type={type}
         className="sr-only peer"
         value={value}
         onInvalid={() => setInvalid(true)}
