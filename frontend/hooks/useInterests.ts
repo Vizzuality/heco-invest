@@ -23,8 +23,8 @@ const useInterests = ({ category, impact, mosaics }: InterestItems) => {
     () => [
       {
         title: formatMessage({
-          defaultMessage: 'Select the categories that interests you',
-          id: 'k5KxPA',
+          defaultMessage: 'Select the topics/sector categories that you work on',
+          id: 'LmHPHR',
         }),
         name: InterestNames.Categories,
         items: category,
