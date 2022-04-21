@@ -10,6 +10,7 @@ import { TagGroupProps } from './types';
 export const TagGroup = <FormValues extends FieldValues>({
   className,
   name,
+  type: typeProp,
   thresholdToShowSelectAll = 4,
   children,
   errors,
@@ -25,7 +26,14 @@ export const TagGroup = <FormValues extends FieldValues>({
     [children]
   );
 
+  // Determining the tag type (checkbox or radio). If one has been passed, we'll use it
+  // and set all the children to it. If not, we'll try to infer it from the first tag's/child's
+  // props. If none set, default to checkbox.
+  const tagType =
+    typeProp || (Children.toArray(children)[0] as ReactElement)?.props.type || 'checkbox';
+
   const handleSelectAllClick = () => {
+    if (tagType !== 'checkbox') return;
     setValue(name, allValues, setValueOptions); // Set the values on react-hook-form
     // Setting `shouldValidate` in `setValueOptions` will trigger a whole form validation
     // which we don't want. Since we're simply selecting all values, we can clear
@@ -34,10 +42,10 @@ export const TagGroup = <FormValues extends FieldValues>({
   };
 
   const tags = Children.map(children, (child: ReactElement) => {
-    return cloneElement(child, { name, watch, invalid: errors && errors[name] });
+    return cloneElement(child, { name, type: tagType, watch, invalid: errors && errors[name] });
   });
 
-  const showSelectAllButton = numChildren >= thresholdToShowSelectAll;
+  const showSelectAllButton = tagType === 'checkbox' && numChildren >= thresholdToShowSelectAll;
 
   return (
     <div

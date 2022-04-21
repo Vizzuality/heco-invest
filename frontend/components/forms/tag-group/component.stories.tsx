@@ -89,6 +89,12 @@ Default.args = {
   name: 'categories',
 };
 
+export const Radio: Story<TagProps<FormValues>> = Template.bind({});
+Radio.args = {
+  name: 'categories',
+  type: 'radio',
+};
+
 const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues>) => {
   const {
     register,

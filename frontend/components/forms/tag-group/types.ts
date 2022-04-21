@@ -13,6 +13,11 @@ export type TagGroupProps<FormValues> = PropsWithChildren<{
   className?: string;
   /** Name of the tag group (will be assigned to each individual `<Tag />`) */
   name: string;
+  /**
+   * Type of tags to use.
+   * Defaults to inferring it from the first Tag's type. If none set, defaults to `checkbox`.
+   **/
+  type?: 'checkbox' | 'radio';
   /** Number of tags required to show the “Select All” button. Defaults to `4`. */
   thresholdToShowSelectAll?: number;
   /** ReactHook Form's `watch` callback */
