@@ -15,6 +15,7 @@ import useInterests, { InterestNames } from 'hooks/useInterests';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import { CategoryTagDot } from 'containers/category-tag';
+import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 import SocialMediaImputs from 'containers/social-contact/inputs-social-contact/component';
 
@@ -71,6 +72,7 @@ const getItemsInfoText = (items: Enum[] | Locations[]) => {
 const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [imagePreview, setImagePreview] = useState('');
+  const [showLeave, setShowLeave] = useState(false);
   const { formatMessage } = useIntl();
   const resolver = useProjectDeveloperValidation(currentPage);
   const { push } = useRouter();
@@ -86,6 +88,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     control,
     setError,
     setValue,
+    clearErrors,
+    watch,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
     defaultValues: { categories: [], impacts: [], mosaics: [] },
@@ -209,7 +213,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
-        onCloseClick={() => push('/')}
+        onCloseClick={() => setShowLeave(true)}
         onSubmitClick={handleSubmit(onSubmit)}
       >
         <Page hasErrors={!!errors?.language}>
@@ -525,7 +529,13 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     <span className="mr-2.5">{title}</span>
                     <FieldInfo infoText={infoText || getItemsInfoText(items)} />
                   </legend>
-                  <TagGroup name={name} setValue={setValue}>
+                  <TagGroup
+                    name={name}
+                    watch={watch}
+                    setValue={setValue}
+                    errors={errors}
+                    clearErrors={clearErrors}
+                  >
                     {items?.map((item: Enum | Locations) => (
                       <Tag
                         key={item.id}
@@ -549,6 +559,12 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
           </form>
         </Page>
       </MultiPageLayout>
+      <LeaveFormModal
+        title={formatMessage({ defaultMessage: 'Leave create project develop', id: 'jQfYef' })}
+        isOpen={showLeave}
+        handleLeave={() => push('/')}
+        close={() => setShowLeave(false)}
+      />
     </>
   );
 };
