@@ -43,10 +43,10 @@ RSpec.describe "API V1 Account Projects", type: :request do
           type: :object,
           properties: {
             file: {type: :file},
-            is_cover: {type: :boolean},
+            cover: {type: :boolean},
             _destroy: {type: :string}
           },
-          required: %w[file is_cover]
+          required: %w[file cover]
         },
         collectionFormat: :multi
       },
@@ -98,8 +98,8 @@ RSpec.describe "API V1 Account Projects", type: :request do
           sdgs: [2, 4, 5],
           instrument_types: %w[grant],
           project_images_attributes: [
-            {file: fixture_file_upload("picture.jpg"), is_cover: true},
-            {file: fixture_file_upload("picture.jpg"), is_cover: false}
+            {file: fixture_file_upload("picture.jpg"), cover: true},
+            {file: fixture_file_upload("picture.jpg"), cover: false}
           ],
           includes: "project_images"
         }

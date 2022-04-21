@@ -51,7 +51,7 @@ module API
               impact_areas: [],
               sdgs: [],
               instrument_types: [],
-              project_images_attributes: %i[id file is_cover _destroy]
+              project_images_attributes: %i[id file cover _destroy]
             )
         end
       end

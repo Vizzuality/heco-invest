@@ -20,8 +20,8 @@ RSpec.describe ProjectImage, type: :model do
     expect(subject).to have(1).errors_on(:file)
   end
 
-  it "should not be valid without is_cover" do
-    subject.is_cover = nil
-    expect(subject).to have(1).errors_on(:is_cover)
+  it "should not be valid without cover" do
+    subject.cover = nil
+    expect(subject).to have(1).errors_on(:cover)
   end
 end

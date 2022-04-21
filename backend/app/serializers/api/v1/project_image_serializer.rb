@@ -4,7 +4,7 @@ module API
       include JSONAPI::Serializer
       include BlobSerializer
 
-      attributes :is_cover
+      attributes :cover
 
       attribute :file do |object|
         image_links_for object.file

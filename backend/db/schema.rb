@@ -193,7 +193,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_071536) do
 
   create_table "project_images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "project_id", null: false
-    t.boolean "is_cover", default: false, null: false
+    t.boolean "cover", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_project_images_on_project_id"
