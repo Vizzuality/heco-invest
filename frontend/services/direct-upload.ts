@@ -1,7 +1,8 @@
 import API from './api';
 
 // This is just for testing! I will create additional configurations to deal with the server side, because it is creating an error when importing the 'activestorage' library
-const DirectUpload = typeof window !== 'undefined' ? require('activestorage').DirectUpload : null;
+const DirectUpload =
+  typeof window !== 'undefined' ? require('@rails/activestorage').DirectUpload : null;
 
 export const directUpload = (name: string, file: File) => {
   // name is a string, the_attachment is a File object
