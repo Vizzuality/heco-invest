@@ -21,7 +21,7 @@ import SocialMediaImputs from 'containers/social-contact/inputs-social-contact/c
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
-import ImageUploader from 'components/forms/image-uploader/component';
+import ImageUploader from 'components/forms/image-uploader';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import Tag from 'components/forms/tag';
@@ -287,6 +287,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               </div>
               <ImageUploader
                 name="picture"
+                id="picture"
                 register={register}
                 preview
                 handleChangeImage={() => clearErrors(['picture'])}

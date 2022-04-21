@@ -10,12 +10,15 @@ import Loading from 'components/loading';
 
 import { ImageUploaderProps } from './types';
 
-const ImageUploader = <FormValues extends FieldValues>({
+export const ImageUploader = <FormValues extends FieldValues>({
   preview,
   register,
   name,
+  id,
   text,
   handleChangeImage,
+  registerOptions,
+  ...rest
 }: ImageUploaderProps<FormValues>) => {
   const { formatMessage } = useIntl();
   const [imagePreview, setImagePreview] = useState<string>();
@@ -46,13 +49,13 @@ const ImageUploader = <FormValues extends FieldValues>({
         <Loading className="inline mr-4" />
         {text || formatMessage({ defaultMessage: 'Upload Image', id: 'MntrZe' })}
         <input
-          id="picture"
+          id={id}
           className="absolute opacity-0"
           type="file"
           accept="image/png, image/jpeg"
-          {...register(name)}
+          {...rest}
+          {...register(name, { ...registerOptions })}
           onChange={handleUploadImage}
-          aria-describedby="picture-error"
         />
       </Button>
     </div>
