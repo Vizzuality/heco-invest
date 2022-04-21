@@ -61,3 +61,16 @@ export enum EnumTypes {
   InvestorType = 'investor_type',
   LocationType = 'location_type',
 }
+
+export enum DevelopmentStages {
+  Incipient = 'incipient',
+  Consolidaton = 'consolidaton',
+  ScalingUp = 'scaling-up',
+}
+
+export enum TicketSizes {
+  SmallGrants = 'small-grants',
+  Prototyping = 'prototyping',
+  Validation = 'validation',
+  Scaling = 'scaling',
+}
