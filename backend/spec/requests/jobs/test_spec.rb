@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Test Jobs Routes", type: :request, jobs_routes: true do
+RSpec.describe "Test Jobs Routes", type: :request do
   describe "POST #jobs/test" do
     before { post "/jobs/test" }
 

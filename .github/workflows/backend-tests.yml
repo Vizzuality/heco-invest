@@ -61,6 +61,8 @@ jobs:
           PGHOST: localhost
           PGUSER: ${{ env.POSTGRES_USER }}
           PGPASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          IS_API_INSTANCE: true
+          IS_JOBS_INSTANCE: true
         run: bundle exec rspec spec
       - uses: actions/upload-artifact@v2
         if: failure()
