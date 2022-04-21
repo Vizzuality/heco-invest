@@ -89,7 +89,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     setError,
     setValue,
     clearErrors,
-    watch,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
     defaultValues: { categories: [], impacts: [], mosaics: [] },
@@ -531,7 +530,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   </legend>
                   <TagGroup
                     name={name}
-                    watch={watch}
                     setValue={setValue}
                     errors={errors}
                     clearErrors={clearErrors}
