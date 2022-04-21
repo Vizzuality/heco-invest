@@ -61,7 +61,3 @@ export enum EnumTypes {
   InvestorType = 'investor_type',
   LocationType = 'location_type',
 }
-
-export enum Queries {
-  UploadedFile = 'uploaded-file',
-}
