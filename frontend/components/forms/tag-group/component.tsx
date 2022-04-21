@@ -14,7 +14,6 @@ export const TagGroup = <FormValues extends FieldValues>({
   thresholdToShowSelectAll = 4,
   children,
   errors,
-  watch,
   clearErrors,
   setValue,
   setValueOptions = { shouldDirty: true },
@@ -49,7 +48,6 @@ export const TagGroup = <FormValues extends FieldValues>({
     return cloneElement(child, {
       name: tagName,
       type: tagType,
-      watch,
       invalid: errors && errors[tagName],
     });
   });

@@ -17,8 +17,6 @@ export type TagGroupProps<FormValues> = PropsWithChildren<{
   type?: 'checkbox' | 'radio';
   /** Number of tags required to show the “Select All” button. Defaults to `4`. */
   thresholdToShowSelectAll?: number;
-  /** ReactHook Form's `watch` callback */
-  watch: UseFormWatch<any>;
   /** React Hook Form's `setValue` function */
   setValue: UseFormSetValue<any>;
   /** Options for `setValue` function. Defaults to `{ shouldDirty: true }`. */
