@@ -232,10 +232,13 @@ export const Header: React.FC<HeaderProps> = ({
                     {!!account && (
                       <MenuItem
                         key={Paths.Dashboard}
-                        textValue={`${account.name} ${formatMessage({
-                          defaultMessage: 'account',
-                          id: 'ESAHMx',
-                        })}`}
+                        textValue={formatMessage(
+                          {
+                            defaultMessage: '{accountName} account',
+                            id: 'YE6fVO',
+                          },
+                          { accountName: account.name }
+                        )}
                       >
                         <FormattedMessage
                           defaultMessage="{accountName} account"
