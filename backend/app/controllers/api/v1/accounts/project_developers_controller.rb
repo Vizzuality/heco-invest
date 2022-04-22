@@ -36,7 +36,7 @@ module API
         def project_developer_params
           params.fetch(:project_developer_params, params)
             .permit :language, :project_developer_type, :entity_legal_registration_number, :mission,
-              categories: [], impacts: [], location_ids: []
+              categories: [], impacts: [], mosaics: []
         end
       end
     end
