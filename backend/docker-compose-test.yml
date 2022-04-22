@@ -8,6 +8,8 @@ services:
       - DATABASE_USER=heco-test
       - DATABASE_PASSWORD=heco-test
       - DATABASE_HOST=db
+      - IS_API_INSTANCE=true
+      - IS_JOBS_INSTANCE=true
     depends_on:
       - db
   db:
