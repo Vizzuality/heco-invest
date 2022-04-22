@@ -12,7 +12,10 @@ module API
               language: current_user.account.language
             )
           )
-          render json: ProjectSerializer.new(project).serializable_hash
+          render json: ProjectSerializer.new(
+            project,
+            include: included_relationships(parameters: params.fetch(:project_params, params))
+          ).serializable_hash
         end
 
         private
@@ -47,7 +50,8 @@ module API
               target_groups: [],
               impact_areas: [],
               sdgs: [],
-              instrument_types: []
+              instrument_types: [],
+              project_images_attributes: %i[id file cover _destroy]
             )
         end
       end

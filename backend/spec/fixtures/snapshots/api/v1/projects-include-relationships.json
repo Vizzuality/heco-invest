@@ -138,7 +138,11 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -146,11 +150,6 @@
             "id": "56c9473b-b640-41ad-aa09-205e91293e98",
             "type": "user"
           }
-        },
-        "locations": {
-          "data": [
-
-          ]
         }
       }
     },
@@ -185,7 +184,11 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -193,11 +196,6 @@
             "id": "d73a27bd-2711-4e2a-aed7-c0b213b5edd4",
             "type": "user"
           }
-        },
-        "locations": {
-          "data": [
-
-          ]
         }
       }
     },
@@ -232,7 +230,11 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -240,11 +242,6 @@
             "id": "eef547af-a71d-4d74-99bd-5d0442a2a772",
             "type": "user"
           }
-        },
-        "locations": {
-          "data": [
-
-          ]
         }
       }
     },
@@ -279,7 +276,11 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -287,11 +288,6 @@
             "id": "e8a79fc3-c89b-4799-af09-a13344a8d811",
             "type": "user"
           }
-        },
-        "locations": {
-          "data": [
-
-          ]
         }
       }
     },
@@ -326,7 +322,11 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -334,11 +334,6 @@
             "id": "5b2a15f1-ec59-4057-b6a7-509e8251b7dc",
             "type": "user"
           }
-        },
-        "locations": {
-          "data": [
-
-          ]
         }
       }
     },
@@ -373,7 +368,11 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -381,11 +380,6 @@
             "id": "8e7f6981-b9d1-402f-975e-5e1d1c9b2f04",
             "type": "user"
           }
-        },
-        "locations": {
-          "data": [
-
-          ]
         }
       }
     },
@@ -420,7 +414,11 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -428,11 +426,6 @@
             "id": "375673a4-63c2-462c-b9da-7f8f98a4b2dd",
             "type": "user"
           }
-        },
-        "locations": {
-          "data": [
-
-          ]
         }
       }
     }

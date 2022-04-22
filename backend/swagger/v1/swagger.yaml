@@ -27,7 +27,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 660f8da7-fcd6-4c52-a3be-70c868cfe2ad
+                  id: 42858d33-f8b3-4aa9-b38f-541a7c9cef6c
                   type: project_developer
                   attributes:
                     name: Kutch-Spencer
@@ -53,21 +53,18 @@ paths:
                     review_status: approved
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
+                    mosaics:
+                    - amazon-heart
+                    - amazonian-piedmont-massif
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsWmpnNU5EZ3paUzFtT1dReExUUXpZVGd0T0dFeE1pMDRaV0kzWmpJek1EZzBORElHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--487ea72aa8c0a7b0a398725daf896ae7cb95a949/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsWmpnNU5EZ3paUzFtT1dReExUUXpZVGd0T0dFeE1pMDRaV0kzWmpJek1EZzBORElHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--487ea72aa8c0a7b0a398725daf896ae7cb95a949/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsWmpnNU5EZ3paUzFtT1dReExUUXpZVGd0T0dFeE1pMDRaV0kzWmpJek1EZzBORElHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--487ea72aa8c0a7b0a398725daf896ae7cb95a949/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxtWVRJMVpUZG1ZaTFsWVRBd0xUUXlaak10T1ROak5pMHdNak01TVRJMk0yTm1aR1FHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--87114a9ad7c5631993067d727c24b64414b69fb6/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxtWVRJMVpUZG1ZaTFsWVRBd0xUUXlaak10T1ROak5pMHdNak01TVRJMk0yTm1aR1FHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--87114a9ad7c5631993067d727c24b64414b69fb6/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxtWVRJMVpUZG1ZaTFsWVRBd0xUUXlaak10T1ROak5pMHdNak01TVRJMk0yTm1aR1FHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--87114a9ad7c5631993067d727c24b64414b69fb6/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: b4e1ca07-8fe4-4a1d-aa19-c09bea019a2f
+                        id: 408c8535-da53-4cd8-a874-5b36efb703c8
                         type: user
-                    locations:
-                      data:
-                      - id: bda40f55-dd67-45cc-b25c-0040d3fd0dcd
-                        type: location
-                      - id: c8cc63c0-1f7d-4f7f-b9d7-77fc6ca26b82
-                        type: location
               schema:
                 type: object
                 properties:
@@ -96,7 +93,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 30db3c4f-2f7e-44a8-8182-df488bb01191
+                  id: 7f80cc6a-2c29-4949-9356-49d30e681da8
                   type: project_developer
                   attributes:
                     name: Name
@@ -120,19 +117,17 @@ paths:
                     review_status: unapproved
                     contact_email: contact@example.com
                     contact_phone:
+                    mosaics:
+                    - amazon-heart
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTldReFpHTTFPQzB6TmpGa0xUUXhNVEV0WVRrNU5pMW1NV1F5T0RGbE9XRmxOV1FHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--3101b10b512cc4d039d307c03c4823bcd7515bd8/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTldReFpHTTFPQzB6TmpGa0xUUXhNVEV0WVRrNU5pMW1NV1F5T0RGbE9XRmxOV1FHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--3101b10b512cc4d039d307c03c4823bcd7515bd8/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTldReFpHTTFPQzB6TmpGa0xUUXhNVEV0WVRrNU5pMW1NV1F5T0RGbE9XRmxOV1FHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--3101b10b512cc4d039d307c03c4823bcd7515bd8/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4WmpSaVlqUXhPQzA1WkRabExUUXdNekl0WWpJMVpDMW1NakExTURBd1pUTmtNakFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--119ee73820aa98bef330a697fe55429437661f8b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4WmpSaVlqUXhPQzA1WkRabExUUXdNekl0WWpJMVpDMW1NakExTURBd1pUTmtNakFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--119ee73820aa98bef330a697fe55429437661f8b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4WmpSaVlqUXhPQzA1WkRabExUUXdNekl0WWpJMVpDMW1NakExTURBd1pUTmtNakFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--119ee73820aa98bef330a697fe55429437661f8b/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: c1bfae44-b88f-40f4-b86c-76ac85e8442b
+                        id: '08982d59-c205-4c09-a0af-05d9de5123d7'
                         type: user
-                    locations:
-                      data:
-                      - id: bba2416e-ecb2-44a8-85f4-5546b86f6e62
-                        type: location
               schema:
                 type: object
                 properties:
@@ -149,7 +144,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    "$ref": "#/components/schemas/error"
+                    "$ref": "#/components/schemas/errors"
       requestBody:
         content:
           multipart/form-data:
@@ -209,6 +204,7 @@ paths:
                     - tourism-and-recreation
                     - forestry-and-agroforestry
                     - non-timber-forest-production
+                    - human-capital-and-inclusion
                   collectionFormat: multi
                 impacts[]:
                   type: array
@@ -220,10 +216,15 @@ paths:
                     - water
                     - community
                   collectionFormat: multi
-                location_ids[]:
+                mosaics[]:
                   type: array
                   items:
                     type: string
+                    enum:
+                    - amazon-heart
+                    - amazonian-piedmont-massif
+                    - orinoquia-transition
+                    - orinoquia
                   collectionFormat: multi
               required:
               - language
@@ -259,7 +260,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 0e689c59-16d0-48fa-9f90-8ee9ada2bcc5
+                  id: f750503f-314e-4ba3-b5f5-97266426b5ec
                   type: project_developer
                   attributes:
                     name: Name
@@ -283,19 +284,17 @@ paths:
                     review_status: approved
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
+                    mosaics:
+                    - amazon-heart
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1TkRWallUZGxaaTB6T0RReExUUTNaamt0WVRWaFpTMHpOVGsxWVRjNE1EaGhNR1VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f9e5fd2097ba219a713b2c518f9fc88b553189a4/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1TkRWallUZGxaaTB6T0RReExUUTNaamt0WVRWaFpTMHpOVGsxWVRjNE1EaGhNR1VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f9e5fd2097ba219a713b2c518f9fc88b553189a4/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1TkRWallUZGxaaTB6T0RReExUUTNaamt0WVRWaFpTMHpOVGsxWVRjNE1EaGhNR1VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f9e5fd2097ba219a713b2c518f9fc88b553189a4/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTnpnM01EQXdPQzFpT1RGakxUUXpOV0l0T0RZeVlTMHdaak0zT1dGak56UTNOVEVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--0b61e2ff96e9e8663d6fe762768bb3f7cbb57b13/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTnpnM01EQXdPQzFpT1RGakxUUXpOV0l0T0RZeVlTMHdaak0zT1dGak56UTNOVEVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--0b61e2ff96e9e8663d6fe762768bb3f7cbb57b13/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTnpnM01EQXdPQzFpT1RGakxUUXpOV0l0T0RZeVlTMHdaak0zT1dGak56UTNOVEVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--0b61e2ff96e9e8663d6fe762768bb3f7cbb57b13/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 7e76bdbc-48ca-4065-9e15-00809cb373a9
+                        id: e2ab3e6d-eaad-4977-9e63-0f68a0675a2a
                         type: user
-                    locations:
-                      data:
-                      - id: 2a5679e9-321f-44c5-8eac-a591e309fcfd
-                        type: location
               schema:
                 type: object
                 properties:
@@ -354,6 +353,7 @@ paths:
                     - tourism-and-recreation
                     - forestry-and-agroforestry
                     - non-timber-forest-production
+                    - human-capital-and-inclusion
                   collectionFormat: multi
                 impacts[]:
                   type: array
@@ -365,10 +365,15 @@ paths:
                     - water
                     - community
                   collectionFormat: multi
-                location_ids[]:
+                mosaics[]:
                   type: array
                   items:
                     type: string
+                    enum:
+                    - amazon-heart
+                    - amazonian-piedmont-massif
+                    - orinoquia-transition
+                    - orinoquia
                   collectionFormat: multi
   "/api/v1/account/projects":
     post:
@@ -394,7 +399,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 0aab4633-7874-4f10-8cda-65dbc0d5809f
+                  id: e2cb0791-3f51-44f8-87dc-bf57ee90c773
                   type: project
                   attributes:
                     name: Project Name
@@ -434,14 +439,37 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 12b8173d-0296-405b-b30c-ebc6fd6d7f3c
+                        id: 29ee1643-2ceb-4a74-a000-61a69983ab54
                         type: project_developer
                     involved_project_developers:
                       data:
-                      - id: f2ffe761-df98-4622-9233-a8301c80bba4
+                      - id: a4001d26-2b3e-462b-9579-241ca3a596c8
                         type: project_developer
-                      - id: 5a518625-6ae2-449b-88d1-70f938df08e5
+                      - id: ca4d62d2-077e-43c8-8924-b6a0f29bfe5e
                         type: project_developer
+                    project_images:
+                      data:
+                      - id: 5f0de3df-c615-4291-8520-ff632d7d779c
+                        type: project_image
+                      - id: fa79a900-8095-4367-818d-8bb09668108c
+                        type: project_image
+                included:
+                - id: 5f0de3df-c615-4291-8520-ff632d7d779c
+                  type: project_image
+                  attributes:
+                    cover: true
+                    file:
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1T1RNM05qYzBNeTFrWkRkbExUUXlOall0WVRoaE1TMWhabVE1T0RKbU4yUTRaRGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--74dbb03795cd0eea3d0939ff0f128b5909bb78a0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1T1RNM05qYzBNeTFrWkRkbExUUXlOall0WVRoaE1TMWhabVE1T0RKbU4yUTRaRGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--74dbb03795cd0eea3d0939ff0f128b5909bb78a0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1T1RNM05qYzBNeTFrWkRkbExUUXlOall0WVRoaE1TMWhabVE1T0RKbU4yUTRaRGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--74dbb03795cd0eea3d0939ff0f128b5909bb78a0/picture.jpg
+                - id: fa79a900-8095-4367-818d-8bb09668108c
+                  type: project_image
+                  attributes:
+                    cover: false
+                    file:
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszWldJMVkySm1ZUzAwTVRnMExUUXlZMll0T0dZMU55MDNaRFEwT0RReU56WTVabVVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f00f4faaeb78fa64acc6dbb47e892507a5699362/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszWldJMVkySm1ZUzAwTVRnMExUUXlZMll0T0dZMU55MDNaRFEwT0RReU56WTVabVVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f00f4faaeb78fa64acc6dbb47e892507a5699362/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszWldJMVkySm1ZUzAwTVRnMExUUXlZMll0T0dZMU55MDNaRFEwT0RReU56WTVabVVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f00f4faaeb78fa64acc6dbb47e892507a5699362/picture.jpg
               schema:
                 type: object
                 properties:
@@ -458,7 +486,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    "$ref": "#/components/schemas/error"
+                    "$ref": "#/components/schemas/errors"
       requestBody:
         content:
           multipart/form-data:
@@ -530,6 +558,7 @@ paths:
                     - tourism-and-recreation
                     - forestry-and-agroforestry
                     - non-timber-forest-production
+                    - human-capital-and-inclusion
                   collectionFormat: multi
                 target_groups[]:
                   type: array
@@ -598,6 +627,23 @@ paths:
                     - loan
                     - equity
                   collectionFormat: multi
+                project_images_attributes[]:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      file:
+                        type: file
+                      cover:
+                        type: boolean
+                      _destroy:
+                        type: string
+                    required:
+                    - file
+                    - cover
+                  collectionFormat: multi
+                includes:
+                  type: string
               required:
               - name
               - country_id
@@ -656,7 +702,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 97f09c69-d2a4-40a7-a4be-550c3b686b1d
+                  id: d36adcc7-8a4f-4c07-a66c-a451bc1a54a5
                   type: user
                   attributes:
                     first_name: Dawna
@@ -717,6 +763,12 @@ paths:
                     description: Production of health, wellness, and cosmetic products;
                       art, clothing, and handcrafted products; production of food
                       and drinks.
+                - id: human-capital-and-inclusion
+                  type: category
+                  attributes:
+                    name: Human capital and inclusion
+                    color: "#A0616A"
+                    description: Human capital and inclusion description
                 - id: biodiversity
                   type: impact
                   attributes:
@@ -1018,6 +1070,22 @@ paths:
                   type: ticket_size
                   attributes:
                     name: Scaling
+                - id: amazon-heart
+                  type: mosaic
+                  attributes:
+                    name: Amazon Heart
+                - id: amazonian-piedmont-massif
+                  type: mosaic
+                  attributes:
+                    name: Amazonian Piedmont Massif
+                - id: orinoquia-transition
+                  type: mosaic
+                  attributes:
+                    name: Orinoquía Transition
+                - id: orinoquia
+                  type: mosaic
+                  attributes:
+                    name: Orinoquía
               schema:
                 type: object
                 properties:
@@ -1056,7 +1124,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: b7fcd7cc-ed60-4794-b9ec-a00fcfa337f0
+                - id: c9e02fe6-d41a-4f31-9671-00b4b53c9a98
                   type: investor
                   attributes:
                     name: Kutch-Spencer
@@ -1099,15 +1167,15 @@ paths:
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqTXpOaFl6UTJZUzAxWkRBeExUUmtZV1l0WVRNMU1DMDVNVGd3WldGa1pUZ3dZakFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--5a6866aec4c34a5209d2b1efdd3d35231bd4a0fc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqTXpOaFl6UTJZUzAxWkRBeExUUmtZV1l0WVRNMU1DMDVNVGd3WldGa1pUZ3dZakFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--5a6866aec4c34a5209d2b1efdd3d35231bd4a0fc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqTXpOaFl6UTJZUzAxWkRBeExUUmtZV1l0WVRNMU1DMDVNVGd3WldGa1pUZ3dZakFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--5a6866aec4c34a5209d2b1efdd3d35231bd4a0fc/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6WVRjellqZzVaaTFoT0RZNExUUm1ORFF0WVRFNU15MWpNak5qWXpKaFpUazRaREFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f7cb68783c988adec501b1aaafe7c86673339d1f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6WVRjellqZzVaaTFoT0RZNExUUm1ORFF0WVRFNU15MWpNak5qWXpKaFpUazRaREFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f7cb68783c988adec501b1aaafe7c86673339d1f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6WVRjellqZzVaaTFoT0RZNExUUm1ORFF0WVRFNU15MWpNak5qWXpKaFpUazRaREFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f7cb68783c988adec501b1aaafe7c86673339d1f/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 8e9c5d16-982d-4c44-8d50-cbdf66a1b08e
+                        id: fe027b33-427a-410a-a80a-07356f3850e8
                         type: user
-                - id: 75d1a591-a927-44d8-a9ea-42e5428513eb
+                - id: 2f34b82d-a364-4f12-a5d0-cf5d566663c9
                   type: investor
                   attributes:
                     name: Bartoletti and Sons
@@ -1150,15 +1218,15 @@ paths:
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6Wm1Fek5EUTFNQzB3TWpjM0xUUXhZMkl0T1RjMllTMHhNelJrTlRoak56TTNNbVVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--05f4bcbbaa0405f92220bd60fa3b06cb41049419/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6Wm1Fek5EUTFNQzB3TWpjM0xUUXhZMkl0T1RjMllTMHhNelJrTlRoak56TTNNbVVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--05f4bcbbaa0405f92220bd60fa3b06cb41049419/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6Wm1Fek5EUTFNQzB3TWpjM0xUUXhZMkl0T1RjMllTMHhNelJrTlRoak56TTNNbVVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--05f4bcbbaa0405f92220bd60fa3b06cb41049419/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4WVdFMVpXVXlNUzFtTVdVeUxUUTVNREV0WWprM05pMWlNbVZrWmpsa00yVTJaV0lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--d8983bdd5b2bbbb554781c6654c44ba3c7403fb3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4WVdFMVpXVXlNUzFtTVdVeUxUUTVNREV0WWprM05pMWlNbVZrWmpsa00yVTJaV0lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--d8983bdd5b2bbbb554781c6654c44ba3c7403fb3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4WVdFMVpXVXlNUzFtTVdVeUxUUTVNREV0WWprM05pMWlNbVZrWmpsa00yVTJaV0lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--d8983bdd5b2bbbb554781c6654c44ba3c7403fb3/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 8cce06c8-8307-4bbc-8004-624804b3e586
+                        id: 2e25e9fe-251c-4853-97b3-f2f0b211b79e
                         type: user
-                - id: f2a931c4-6c2a-4bc1-ae52-2415c3232532
+                - id: 5e3f43a5-6558-4ff4-84ca-25268c3e0484
                   type: investor
                   attributes:
                     name: Hane, Lehner and Goyette
@@ -1201,15 +1269,15 @@ paths:
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWm1RMVptVmhPUzAxTWpkaExUUTBOV1F0T1Rnd05DMDNNemhsTjJNMFlqTTNNbUlHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--0e852d1548cc0e961e51a63b211e5451db62d253/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWm1RMVptVmhPUzAxTWpkaExUUTBOV1F0T1Rnd05DMDNNemhsTjJNMFlqTTNNbUlHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--0e852d1548cc0e961e51a63b211e5451db62d253/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWm1RMVptVmhPUzAxTWpkaExUUTBOV1F0T1Rnd05DMDNNemhsTjJNMFlqTTNNbUlHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--0e852d1548cc0e961e51a63b211e5451db62d253/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTlRNd04yWXlZUzAxTm1JMUxUUTBaRFF0T1RBMFpTMHpaREl6TUdVMFltTTFaV1FHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--20806c00b535506314ae001a389dbe8e13ab32ba/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTlRNd04yWXlZUzAxTm1JMUxUUTBaRFF0T1RBMFpTMHpaREl6TUdVMFltTTFaV1FHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--20806c00b535506314ae001a389dbe8e13ab32ba/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTlRNd04yWXlZUzAxTm1JMUxUUTBaRFF0T1RBMFpTMHpaREl6TUdVMFltTTFaV1FHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--20806c00b535506314ae001a389dbe8e13ab32ba/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 6e565c86-fda5-42f2-a7c2-e46cb6128175
+                        id: 65ae5d21-b341-4a5d-a9c8-d47cdcafc25f
                         type: user
-                - id: 6fe036c9-8243-48f0-92ad-fd1d58d0e828
+                - id: 13926794-2eeb-4c6e-9c40-5c34a4e58759
                   type: investor
                   attributes:
                     name: Hilpert, Waters and Johnston
@@ -1252,15 +1320,15 @@ paths:
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxtTldRd056bGlPUzFqT0dWaUxUUTJZalV0WVRWbFlpMWpPR00yTmpobVlXTmxabU1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--770205107fef7fee2d7a0f10d367d2a9de18eb0f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxtTldRd056bGlPUzFqT0dWaUxUUTJZalV0WVRWbFlpMWpPR00yTmpobVlXTmxabU1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--770205107fef7fee2d7a0f10d367d2a9de18eb0f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxtTldRd056bGlPUzFqT0dWaUxUUTJZalV0WVRWbFlpMWpPR00yTmpobVlXTmxabU1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--770205107fef7fee2d7a0f10d367d2a9de18eb0f/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswWlRjeFltRTRPUzAxWkRGaExUUm1OMkV0WVdRMFlpMHpZVE0wTVdWaU1XRTFZakVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--63741a965c521e63411db15fdbe2204296923a33/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswWlRjeFltRTRPUzAxWkRGaExUUm1OMkV0WVdRMFlpMHpZVE0wTVdWaU1XRTFZakVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--63741a965c521e63411db15fdbe2204296923a33/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswWlRjeFltRTRPUzAxWkRGaExUUm1OMkV0WVdRMFlpMHpZVE0wTVdWaU1XRTFZakVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--63741a965c521e63411db15fdbe2204296923a33/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 06f32f3e-61e5-491c-be4c-6a1a70dca77f
+                        id: 4646a2b9-6487-426d-89dc-70ed8f787d66
                         type: user
-                - id: 3ad28103-dee6-480c-b196-d3ff86cba2f0
+                - id: 3078174e-46eb-4e94-a16f-e157487fc254
                   type: investor
                   attributes:
                     name: Jacobson, Fritsch and Stanton
@@ -1303,15 +1371,15 @@ paths:
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0T1RBeVlqVXhPQzB3TldJeExUUmhNMll0WVRGbFlpMHlZall4TkRCbVpURTVabVFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--8d417448ca192aaa04391c31cf514960f5602e27/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0T1RBeVlqVXhPQzB3TldJeExUUmhNMll0WVRGbFlpMHlZall4TkRCbVpURTVabVFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--8d417448ca192aaa04391c31cf514960f5602e27/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0T1RBeVlqVXhPQzB3TldJeExUUmhNMll0WVRGbFlpMHlZall4TkRCbVpURTVabVFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--8d417448ca192aaa04391c31cf514960f5602e27/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxpTXpObU9EUm1OaTB5TkdNekxUUXpZV0l0T0RkaVl5MDNNak0yTnpNNE1XRXlNVGdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--cfe9558eece3348dbb4c4c0c04f65fe9e2ff8504/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxpTXpObU9EUm1OaTB5TkdNekxUUXpZV0l0T0RkaVl5MDNNak0yTnpNNE1XRXlNVGdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--cfe9558eece3348dbb4c4c0c04f65fe9e2ff8504/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxpTXpObU9EUm1OaTB5TkdNekxUUXpZV0l0T0RkaVl5MDNNak0yTnpNNE1XRXlNVGdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--cfe9558eece3348dbb4c4c0c04f65fe9e2ff8504/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 58f93843-0a45-4427-9c59-d4392830d496
+                        id: 32174c9d-983a-43ee-b6c9-8af8b5dc4d58
                         type: user
-                - id: 705adcf8-2fc1-4080-8552-74e75ff86057
+                - id: c11b9684-2666-4fbe-9917-c292608c8981
                   type: investor
                   attributes:
                     name: Keebler, Kub and Zemlak
@@ -1354,15 +1422,15 @@ paths:
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTVdRM1lUbGlPQzFoTWpObExUUTJNek10T1dVMFpTMDJOVEUxTnpoa09HVXlNVGdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--8ae7f84a49d0e6577fd8a14d0aefd43bcdad7b9f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTVdRM1lUbGlPQzFoTWpObExUUTJNek10T1dVMFpTMDJOVEUxTnpoa09HVXlNVGdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--8ae7f84a49d0e6577fd8a14d0aefd43bcdad7b9f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTVdRM1lUbGlPQzFoTWpObExUUTJNek10T1dVMFpTMDJOVEUxTnpoa09HVXlNVGdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--8ae7f84a49d0e6577fd8a14d0aefd43bcdad7b9f/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWXpBMVptVTJOeTAwTW1RMkxUUmhPVFF0WVRRNVppMW1aVFZpWldSak9EWmtPVFlHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--7b48872b2a72ced0be264a501dda68b86cda4e4a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWXpBMVptVTJOeTAwTW1RMkxUUmhPVFF0WVRRNVppMW1aVFZpWldSak9EWmtPVFlHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--7b48872b2a72ced0be264a501dda68b86cda4e4a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWXpBMVptVTJOeTAwTW1RMkxUUmhPVFF0WVRRNVppMW1aVFZpWldSak9EWmtPVFlHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--7b48872b2a72ced0be264a501dda68b86cda4e4a/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: b132609a-c25f-4219-9f21-524f35dab0e7
+                        id: 33b22eb6-d575-4097-8b88-5eb1057483c5
                         type: user
-                - id: 417f6dea-d387-47e1-a8a4-22685026c4df
+                - id: ca821e23-caa8-45b3-b30e-ba2ae4b46547
                   type: investor
                   attributes:
                     name: Becker LLC
@@ -1405,13 +1473,13 @@ paths:
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0T1dVeVkyUTVNeTAwTlRZMkxUUXdaR1F0WVRJNVppMWhOekF3TW1KbE56YzRZVE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--246d5709f47718abf06e1fc052ea5a0c2d09343c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0T1dVeVkyUTVNeTAwTlRZMkxUUXdaR1F0WVRJNVppMWhOekF3TW1KbE56YzRZVE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--246d5709f47718abf06e1fc052ea5a0c2d09343c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0T1dVeVkyUTVNeTAwTlRZMkxUUXdaR1F0WVRJNVppMWhOekF3TW1KbE56YzRZVE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--246d5709f47718abf06e1fc052ea5a0c2d09343c/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTUdGak1UZzFOaTB5TWpkbUxUUTFZekV0WVRFMFlTMDJNR0ZpTjJSbE16bGtaVE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--65e825d58d5f2ac3c68d6a88e5b4f32ceb1d4566/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTUdGak1UZzFOaTB5TWpkbUxUUTFZekV0WVRFMFlTMDJNR0ZpTjJSbE16bGtaVE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--65e825d58d5f2ac3c68d6a88e5b4f32ceb1d4566/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTUdGak1UZzFOaTB5TWpkbUxUUTFZekV0WVRFMFlTMDJNR0ZpTjJSbE16bGtaVE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--65e825d58d5f2ac3c68d6a88e5b4f32ceb1d4566/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: '02239c78-4fe9-42f4-8ba1-f433971dc7e7'
+                        id: a60f61b8-4f05-4d99-a6eb-20f242991406
                         type: user
                 meta:
                   page: 1
@@ -1466,7 +1534,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: b7fcd7cc-ed60-4794-b9ec-a00fcfa337f0
+                  id: c9e02fe6-d41a-4f31-9671-00b4b53c9a98
                   type: investor
                   attributes:
                     name: Kutch-Spencer
@@ -1509,13 +1577,13 @@ paths:
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqTXpOaFl6UTJZUzAxWkRBeExUUmtZV1l0WVRNMU1DMDVNVGd3WldGa1pUZ3dZakFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--5a6866aec4c34a5209d2b1efdd3d35231bd4a0fc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqTXpOaFl6UTJZUzAxWkRBeExUUmtZV1l0WVRNMU1DMDVNVGd3WldGa1pUZ3dZakFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--5a6866aec4c34a5209d2b1efdd3d35231bd4a0fc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqTXpOaFl6UTJZUzAxWkRBeExUUmtZV1l0WVRNMU1DMDVNVGd3WldGa1pUZ3dZakFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--5a6866aec4c34a5209d2b1efdd3d35231bd4a0fc/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6WVRjellqZzVaaTFoT0RZNExUUm1ORFF0WVRFNU15MWpNak5qWXpKaFpUazRaREFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f7cb68783c988adec501b1aaafe7c86673339d1f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6WVRjellqZzVaaTFoT0RZNExUUm1ORFF0WVRFNU15MWpNak5qWXpKaFpUazRaREFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f7cb68783c988adec501b1aaafe7c86673339d1f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt6WVRjellqZzVaaTFoT0RZNExUUm1ORFF0WVRFNU15MWpNak5qWXpKaFpUazRaREFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f7cb68783c988adec501b1aaafe7c86673339d1f/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 8e9c5d16-982d-4c44-8d50-cbdf66a1b08e
+                        id: fe027b33-427a-410a-a80a-07356f3850e8
                         type: user
               schema:
                 type: object
@@ -1564,7 +1632,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: fefede72-fa96-4f2f-bac2-43baccdfc744
+                - id: 2fcb3f86-62cd-42a4-8518-ef0219993a71
                   type: location
                   attributes:
                     name: Canada
@@ -1574,7 +1642,7 @@ paths:
                       data:
                     regions:
                       data: []
-                - id: e79e0286-ff11-4408-bf1b-000030519bb9
+                - id: 583ece06-8bc0-4808-b5a2-30bfe7fd858d
                   type: location
                   attributes:
                     name: Papua New Guinea
@@ -1582,11 +1650,11 @@ paths:
                   relationships:
                     parent:
                       data:
-                        id: fefede72-fa96-4f2f-bac2-43baccdfc744
+                        id: 2fcb3f86-62cd-42a4-8518-ef0219993a71
                         type: location
                     regions:
                       data: []
-                - id: b6780fbf-3bcd-48a3-90c2-52654bcc4b79
+                - id: 1b7f582c-b5dd-4e64-9990-24796d3fd6fc
                   type: location
                   attributes:
                     name: Jamaica
@@ -1594,13 +1662,13 @@ paths:
                   relationships:
                     parent:
                       data:
-                        id: e79e0286-ff11-4408-bf1b-000030519bb9
+                        id: 583ece06-8bc0-4808-b5a2-30bfe7fd858d
                         type: location
                     regions:
                       data:
-                      - id: 741b5c5f-8fe5-481f-8741-8847329295fb
+                      - id: d5dd8bc0-ae55-48c5-ae75-3279ccf88942
                         type: location
-                - id: 741b5c5f-8fe5-481f-8741-8847329295fb
+                - id: d5dd8bc0-ae55-48c5-ae75-3279ccf88942
                   type: location
                   attributes:
                     name: Libyan Arab Jamahiriya
@@ -1610,7 +1678,7 @@ paths:
                       data:
                     regions:
                       data: []
-                - id: 2406cd87-7f57-4bb9-a0bf-15b0a0fdb5fd
+                - id: 154694ce-3e00-4ff2-b71b-ae755e66104c
                   type: location
                   attributes:
                     name: India
@@ -1618,13 +1686,13 @@ paths:
                   relationships:
                     parent:
                       data:
-                        id: e79e0286-ff11-4408-bf1b-000030519bb9
+                        id: 583ece06-8bc0-4808-b5a2-30bfe7fd858d
                         type: location
                     regions:
                       data:
-                      - id: bcb05141-dc0a-49df-9eec-eb16c6444b3f
+                      - id: 81e3c4b1-bcf1-4288-be5d-b36de40c7966
                         type: location
-                - id: bcb05141-dc0a-49df-9eec-eb16c6444b3f
+                - id: 81e3c4b1-bcf1-4288-be5d-b36de40c7966
                   type: location
                   attributes:
                     name: Mayotte
@@ -1634,7 +1702,7 @@ paths:
                       data:
                     regions:
                       data: []
-                - id: 53c7edd1-250f-4df5-88d7-a778767499e4
+                - id: dd1462ec-1226-461f-8e99-090add5aab55
                   type: location
                   attributes:
                     name: Puerto Rico
@@ -1642,13 +1710,13 @@ paths:
                   relationships:
                     parent:
                       data:
-                        id: e79e0286-ff11-4408-bf1b-000030519bb9
+                        id: 583ece06-8bc0-4808-b5a2-30bfe7fd858d
                         type: location
                     regions:
                       data:
-                      - id: 3a10977f-388a-4285-a576-cd615e36f83e
+                      - id: b9b8b87e-5557-4cac-9a60-848ccccbe6f6
                         type: location
-                - id: 3a10977f-388a-4285-a576-cd615e36f83e
+                - id: b9b8b87e-5557-4cac-9a60-848ccccbe6f6
                   type: location
                   attributes:
                     name: Sierra Leone
@@ -1702,7 +1770,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: b6780fbf-3bcd-48a3-90c2-52654bcc4b79
+                  id: 1b7f582c-b5dd-4e64-9990-24796d3fd6fc
                   type: location
                   attributes:
                     name: Jamaica
@@ -1710,11 +1778,11 @@ paths:
                   relationships:
                     parent:
                       data:
-                        id: e79e0286-ff11-4408-bf1b-000030519bb9
+                        id: 583ece06-8bc0-4808-b5a2-30bfe7fd858d
                         type: location
                     regions:
                       data:
-                      - id: 741b5c5f-8fe5-481f-8741-8847329295fb
+                      - id: d5dd8bc0-ae55-48c5-ae75-3279ccf88942
                         type: location
               schema:
                 type: object
@@ -1752,7 +1820,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: e5dfc0f8-5698-4e63-9dc1-2279a1108a6b
+                - id: 72f465f8-45a5-4cd8-9542-a744d31ef4af
                   type: open_call
                   attributes:
                     name: Open call 1
@@ -1769,14 +1837,14 @@ paths:
                       tempora exercitationem. Qui dolorem quo.
                     impact_description: Enim repellat pariatur. Earum modi eos. Libero
                       tempora exercitationem. Qui dolorem quo.
-                    closing_at: '2023-02-14T09:33:57.010Z'
+                    closing_at: '2023-02-22T06:54:58.784Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: fcebfe92-abf6-4a98-8cfd-3a5fdf4d7926
+                        id: 8c62a94d-3c55-403a-912e-2b727e0ce865
                         type: investor
-                - id: 010ad86d-3c16-47a9-90db-a431f5780b4d
+                - id: 9769ca91-9c6c-4eb3-b978-686a4a1555af
                   type: open_call
                   attributes:
                     name: Open call 2
@@ -1793,14 +1861,14 @@ paths:
                       Sunt commodi tempore. Voluptatem et corrupti.
                     impact_description: Placeat commodi libero. Quo recusandae repellat.
                       Sunt commodi tempore. Voluptatem et corrupti.
-                    closing_at: '2023-02-14T09:33:57.048Z'
+                    closing_at: '2023-02-22T06:54:58.829Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 95a79899-7076-4cb5-b016-d224dcc0aa41
+                        id: bf7d4ed5-862d-417b-8732-18749d117ad7
                         type: investor
-                - id: 14e2ba69-c1c0-4588-9d39-b9de21c29086
+                - id: 78d6ae71-5504-40fb-ba5b-53e572755ae6
                   type: open_call
                   attributes:
                     name: Open call 3
@@ -1817,14 +1885,14 @@ paths:
                       nesciunt voluptas. Suscipit ex cum.
                     impact_description: Et quaerat omnis. Harum voluptas atque. Quo
                       nesciunt voluptas. Suscipit ex cum.
-                    closing_at: '2023-02-14T09:33:57.083Z'
+                    closing_at: '2023-02-22T06:54:58.879Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 2a3df16b-ca62-42d8-9ed3-13697f6ab7be
+                        id: 23e9c766-bae8-4989-bab9-23da5fc3a156
                         type: investor
-                - id: eb0b6fba-870a-4fc1-b846-b4b7ba755ce7
+                - id: d35e45ea-3bff-429a-938d-6a93e77c8971
                   type: open_call
                   attributes:
                     name: Open call 4
@@ -1841,14 +1909,14 @@ paths:
                       Sit neque eos. Expedita molestiae quia.
                     impact_description: Dolores fugiat nesciunt. Ut laborum dolores.
                       Sit neque eos. Expedita molestiae quia.
-                    closing_at: '2023-02-14T09:33:57.120Z'
+                    closing_at: '2023-02-22T06:54:58.929Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: dc102ca0-5c30-4f72-9b83-38074f08c19d
+                        id: 632019af-63ec-4c4d-9d49-e43c0c0d8754
                         type: investor
-                - id: c7ca70b5-98d0-402d-98dc-914c4249bc28
+                - id: 1caef1d1-f316-467a-a155-a9976d40635c
                   type: open_call
                   attributes:
                     name: Open call 5
@@ -1865,14 +1933,14 @@ paths:
                       recusandae eum. Eius ex est.
                     impact_description: Autem et et. Voluptatem neque quibusdam. Repellat
                       recusandae eum. Eius ex est.
-                    closing_at: '2023-02-14T09:33:57.161Z'
+                    closing_at: '2023-02-22T06:54:58.985Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 8730cfe4-5a40-4034-b5a2-7f015a7db0e5
+                        id: 9948d905-4ebf-405e-858c-d016d9342c0f
                         type: investor
-                - id: 9233a149-ef93-41a0-aac8-8f064b3b4bad
+                - id: c0800904-49a5-49ad-8851-45a27648cad0
                   type: open_call
                   attributes:
                     name: Open call 6
@@ -1889,14 +1957,14 @@ paths:
                       Eligendi sapiente voluptatem. Quas rerum officia.
                     impact_description: Porro soluta beatae. Quia ratione facilis.
                       Eligendi sapiente voluptatem. Quas rerum officia.
-                    closing_at: '2023-02-14T09:33:57.197Z'
+                    closing_at: '2023-02-22T06:54:59.039Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 487db81f-1132-4e7c-8fe5-969b3c2d5a67
+                        id: d162b13b-1b3c-47aa-8dcf-7800427086b0
                         type: investor
-                - id: 20b27196-e9d6-4611-a3f0-4e94ac267c68
+                - id: 7ec75ea2-d9a1-4770-9710-80bdc55aca18
                   type: open_call
                   attributes:
                     name: Open call 7
@@ -1913,12 +1981,12 @@ paths:
                       laudantium et. Sed recusandae aut.
                     impact_description: Mollitia aut vel. Qui illum accusantium. Et
                       laudantium et. Sed recusandae aut.
-                    closing_at: '2023-02-14T09:33:57.234Z'
+                    closing_at: '2023-02-22T06:54:59.081Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: 2e357f1d-4db2-4e09-8e26-52af53a3fec7
+                        id: 26bafe44-5ddb-4f01-977c-a1f01daa188e
                         type: investor
                 meta:
                   page: 1
@@ -1973,7 +2041,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: e5dfc0f8-5698-4e63-9dc1-2279a1108a6b
+                  id: 72f465f8-45a5-4cd8-9542-a744d31ef4af
                   type: open_call
                   attributes:
                     name: Open call 1
@@ -1990,12 +2058,12 @@ paths:
                       tempora exercitationem. Qui dolorem quo.
                     impact_description: Enim repellat pariatur. Earum modi eos. Libero
                       tempora exercitationem. Qui dolorem quo.
-                    closing_at: '2023-02-14T09:33:57.010Z'
+                    closing_at: '2023-02-22T06:54:58.784Z'
                     language: en
                   relationships:
                     investor:
                       data:
-                        id: fcebfe92-abf6-4a98-8cfd-3a5fdf4d7926
+                        id: 8c62a94d-3c55-403a-912e-2b727e0ce865
                         type: investor
               schema:
                 type: object
@@ -2033,7 +2101,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 398915ea-2e90-4360-9e49-9bf4cbbd08b0
+                - id: 6ff206af-3a0f-41e8-b171-fc6b3175a6ad
                   type: project_developer
                   attributes:
                     name: Kutch-Spencer
@@ -2059,22 +2127,19 @@ paths:
                     review_status: approved
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
+                    mosaics:
+                    - amazon-heart
+                    - amazonian-piedmont-massif
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsWmpJeE5UVmlNaTB6TVdRNExUUm1aVGd0WWpFMVl5MW1aVFZsT0RVMVptRXpPREVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--81a6411572958914d7286546ecbf5720f5685766/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsWmpJeE5UVmlNaTB6TVdRNExUUm1aVGd0WWpFMVl5MW1aVFZsT0RVMVptRXpPREVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--81a6411572958914d7286546ecbf5720f5685766/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsWmpJeE5UVmlNaTB6TVdRNExUUm1aVGd0WWpFMVl5MW1aVFZsT0RVMVptRXpPREVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--81a6411572958914d7286546ecbf5720f5685766/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWkRVMk1qVmlZUzB3TldZMkxUUTROekF0T0RKalpDMWhOakJtTkRKbVpEZGxNamtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c5e06a1351bc9ca543c1c05029ee04135a17660f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWkRVMk1qVmlZUzB3TldZMkxUUTROekF0T0RKalpDMWhOakJtTkRKbVpEZGxNamtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c5e06a1351bc9ca543c1c05029ee04135a17660f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWkRVMk1qVmlZUzB3TldZMkxUUTROekF0T0RKalpDMWhOakJtTkRKbVpEZGxNamtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c5e06a1351bc9ca543c1c05029ee04135a17660f/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: a87dc5c9-3c1b-46f3-86b7-04e5d84ca842
+                        id: e5db61ed-e263-440f-9d8c-6652d50f78cb
                         type: user
-                    locations:
-                      data:
-                      - id: 94138e92-21ff-4cf7-9c13-ee103db6e93d
-                        type: location
-                      - id: e47c9e52-1560-480d-8fa9-bd44a332895e
-                        type: location
-                - id: 5a182fdb-2a86-4aa9-990f-d1f4ffa1991d
+                - id: cff5330c-33b3-4787-acd0-aaae8677fd1f
                   type: project_developer
                   attributes:
                     name: Bartoletti and Sons
@@ -2100,18 +2165,19 @@ paths:
                     review_status: approved
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
+                    mosaics:
+                    - amazon-heart
+                    - amazonian-piedmont-massif
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1WmpNME0yTmhOeTFoT1dRd0xUUTVZbVF0T1RBd09TMDFaakJtWW1WbE1qZzRZallHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--2102d8862eba6934a0b87fbd500bd0811835318a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1WmpNME0yTmhOeTFoT1dRd0xUUTVZbVF0T1RBd09TMDFaakJtWW1WbE1qZzRZallHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--2102d8862eba6934a0b87fbd500bd0811835318a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1WmpNME0yTmhOeTFoT1dRd0xUUTVZbVF0T1RBd09TMDFaakJtWW1WbE1qZzRZallHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--2102d8862eba6934a0b87fbd500bd0811835318a/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4TlRGbE9HTmtaaTA0TTJOaUxUUXhOelF0WVRRMFppMWlZak13TVRFNU5UVmpObUlHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--7e51f42b0d499acc18581efad5548e1e467894f1/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4TlRGbE9HTmtaaTA0TTJOaUxUUXhOelF0WVRRMFppMWlZak13TVRFNU5UVmpObUlHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--7e51f42b0d499acc18581efad5548e1e467894f1/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4TlRGbE9HTmtaaTA0TTJOaUxUUXhOelF0WVRRMFppMWlZak13TVRFNU5UVmpObUlHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--7e51f42b0d499acc18581efad5548e1e467894f1/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 63c04e5a-479a-412b-b296-ec29c9d84536
+                        id: c071a381-fb57-49bc-9081-0407f2c9842f
                         type: user
-                    locations:
-                      data: []
-                - id: fb05f481-b09a-4607-bbb1-4b65290b270f
+                - id: 53da376e-a370-4cc2-b1f6-976928262af2
                   type: project_developer
                   attributes:
                     name: Hane, Lehner and Goyette
@@ -2137,18 +2203,19 @@ paths:
                     review_status: approved
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
+                    mosaics:
+                    - amazon-heart
+                    - amazonian-piedmont-massif
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3TnpVeE1qTTNZaTAwWVRSbUxUUXhOV1V0WVdNek1DMDVaR1JqWVRReE5XSmhaRGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c2146b4c4fe9de2c52525fcfa8e36002c85e7b7f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3TnpVeE1qTTNZaTAwWVRSbUxUUXhOV1V0WVdNek1DMDVaR1JqWVRReE5XSmhaRGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c2146b4c4fe9de2c52525fcfa8e36002c85e7b7f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3TnpVeE1qTTNZaTAwWVRSbUxUUXhOV1V0WVdNek1DMDVaR1JqWVRReE5XSmhaRGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c2146b4c4fe9de2c52525fcfa8e36002c85e7b7f/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3WTJOaE16Wm1OeTFtWmpOaUxUUTNOR0V0T1RrMVl5MDRNelk1TldObVlUTmhabVVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--afad72728e767c35539de363568dd3f82b9158d3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3WTJOaE16Wm1OeTFtWmpOaUxUUTNOR0V0T1RrMVl5MDRNelk1TldObVlUTmhabVVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--afad72728e767c35539de363568dd3f82b9158d3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3WTJOaE16Wm1OeTFtWmpOaUxUUTNOR0V0T1RrMVl5MDRNelk1TldObVlUTmhabVVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--afad72728e767c35539de363568dd3f82b9158d3/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 2e2314c6-c567-42ad-9c6d-ff42604ec727
+                        id: '06768bc2-367c-4a81-bab0-b48825fbc2f7'
                         type: user
-                    locations:
-                      data: []
-                - id: 174955d7-39a8-44de-9994-6d2e0836ed78
+                - id: 9255fcde-cd6c-4b8e-8416-ff1f9addea04
                   type: project_developer
                   attributes:
                     name: Hilpert, Waters and Johnston
@@ -2174,18 +2241,19 @@ paths:
                     review_status: approved
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
+                    mosaics:
+                    - amazon-heart
+                    - amazonian-piedmont-massif
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3TTJabE5EbGhOeTFsTWpVMkxUUTNPVEl0T1daa055MDFZV1U0WVRkaFpXRTVNRFVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--1ea77ed5f625e6a4474e0e7913ef63c1f40bea34/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3TTJabE5EbGhOeTFsTWpVMkxUUTNPVEl0T1daa055MDFZV1U0WVRkaFpXRTVNRFVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--1ea77ed5f625e6a4474e0e7913ef63c1f40bea34/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3TTJabE5EbGhOeTFsTWpVMkxUUTNPVEl0T1daa055MDFZV1U0WVRkaFpXRTVNRFVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--1ea77ed5f625e6a4474e0e7913ef63c1f40bea34/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTVRVek9UUTROaTFoWVdRM0xUUXpZelF0WVRnek15MW1OMlJtT0RFMVpqVXdOMk1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--77fd0a74f114cf7d7f17a81f1767cbd75239a5dc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTVRVek9UUTROaTFoWVdRM0xUUXpZelF0WVRnek15MW1OMlJtT0RFMVpqVXdOMk1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--77fd0a74f114cf7d7f17a81f1767cbd75239a5dc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTVRVek9UUTROaTFoWVdRM0xUUXpZelF0WVRnek15MW1OMlJtT0RFMVpqVXdOMk1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--77fd0a74f114cf7d7f17a81f1767cbd75239a5dc/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 5514941d-2ff9-4e66-b2ee-830910a6d760
+                        id: 1d4cd4eb-9eea-4e96-a616-add4eba2ddaf
                         type: user
-                    locations:
-                      data: []
-                - id: 0e94c20e-be3d-478d-a364-2112087560f2
+                - id: ac5ec141-ba41-47c1-8ac4-ee187859f8ae
                   type: project_developer
                   attributes:
                     name: Jacobson, Fritsch and Stanton
@@ -2211,18 +2279,19 @@ paths:
                     review_status: approved
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
+                    mosaics:
+                    - amazon-heart
+                    - amazonian-piedmont-massif
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5TVRZMU5UWTRaUzAxWVRreUxUUmhZelF0T0dGallTMHdZMlJrWkRGaVpXSXdNVGtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--225fa27bfa095875126193adb717783669c9f062/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5TVRZMU5UWTRaUzAxWVRreUxUUmhZelF0T0dGallTMHdZMlJrWkRGaVpXSXdNVGtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--225fa27bfa095875126193adb717783669c9f062/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5TVRZMU5UWTRaUzAxWVRreUxUUmhZelF0T0dGallTMHdZMlJrWkRGaVpXSXdNVGtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--225fa27bfa095875126193adb717783669c9f062/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszT0daaE1tWTBPQzAwTW1JMkxUUmtObUV0WW1Vd1ppMW1NR1k1WW1NeE5tVmlOV1lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--25919207677813a934eaa0d19a5e494923789a64/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszT0daaE1tWTBPQzAwTW1JMkxUUmtObUV0WW1Vd1ppMW1NR1k1WW1NeE5tVmlOV1lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--25919207677813a934eaa0d19a5e494923789a64/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszT0daaE1tWTBPQzAwTW1JMkxUUmtObUV0WW1Vd1ppMW1NR1k1WW1NeE5tVmlOV1lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--25919207677813a934eaa0d19a5e494923789a64/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 488065e8-3147-40d5-8434-5c7c6e6fdf1e
+                        id: 5655c8c6-382b-4e75-af32-66b185db63c8
                         type: user
-                    locations:
-                      data: []
-                - id: 0fda21ab-7904-47f6-8c56-00c42a88e662
+                - id: e08fe814-6ca0-4db3-ad36-b977c1529b39
                   type: project_developer
                   attributes:
                     name: Keebler, Kub and Zemlak
@@ -2248,18 +2317,19 @@ paths:
                     review_status: approved
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
+                    mosaics:
+                    - amazon-heart
+                    - amazonian-piedmont-massif
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqTmpFM1lUbG1PUzB5TVRoa0xUUmhZMkV0T1dSbE15MHdOVGs0TXpBNE1HWmxOMklHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--770fd8922d0bef71f9e741ea487612ffa08ee901/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqTmpFM1lUbG1PUzB5TVRoa0xUUmhZMkV0T1dSbE15MHdOVGs0TXpBNE1HWmxOMklHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--770fd8922d0bef71f9e741ea487612ffa08ee901/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqTmpFM1lUbG1PUzB5TVRoa0xUUmhZMkV0T1dSbE15MHdOVGs0TXpBNE1HWmxOMklHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--770fd8922d0bef71f9e741ea487612ffa08ee901/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxpTnpjeFpXTmhOUzFpWTJGa0xUUmtNbVV0T0RFM1pDMDJaVFl5WkdRMU16WXhNR01HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--df4008c336c1b540f39339dc4b8c53aba31f7eaa/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxpTnpjeFpXTmhOUzFpWTJGa0xUUmtNbVV0T0RFM1pDMDJaVFl5WkdRMU16WXhNR01HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--df4008c336c1b540f39339dc4b8c53aba31f7eaa/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxpTnpjeFpXTmhOUzFpWTJGa0xUUmtNbVV0T0RFM1pDMDJaVFl5WkdRMU16WXhNR01HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--df4008c336c1b540f39339dc4b8c53aba31f7eaa/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 22095696-6321-4b79-8379-675d9c46ecce
+                        id: a6df2af9-c6a4-4f22-8fc1-fddabf9f0b7d
                         type: user
-                    locations:
-                      data: []
-                - id: 31bb8d71-5f7f-476f-8871-6f93697f00a1
+                - id: 8c53d1f6-156e-4a3c-a3f5-c61b0786646a
                   type: project_developer
                   attributes:
                     name: Becker LLC
@@ -2285,17 +2355,18 @@ paths:
                     review_status: approved
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
+                    mosaics:
+                    - amazon-heart
+                    - amazonian-piedmont-massif
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3WVdRM1lUWTJOeTB6TURJNExUUTROMkl0T1RJNU1DMHpOVEl3WW1FNE16SXlZaklHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f06b539f9f28ef091e11d156bb7fab97fd7585e4/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3WVdRM1lUWTJOeTB6TURJNExUUTROMkl0T1RJNU1DMHpOVEl3WW1FNE16SXlZaklHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f06b539f9f28ef091e11d156bb7fab97fd7585e4/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3WVdRM1lUWTJOeTB6TURJNExUUTROMkl0T1RJNU1DMHpOVEl3WW1FNE16SXlZaklHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f06b539f9f28ef091e11d156bb7fab97fd7585e4/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5WmpBMU56SXpPQzB3TWpFekxUUTVZMlV0WWpFeU1pMHdOR0ZpWVdSak0yTTVNamdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--ec11047b6f9371fca60c83380be1aeb3149e4e42/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5WmpBMU56SXpPQzB3TWpFekxUUTVZMlV0WWpFeU1pMHdOR0ZpWVdSak0yTTVNamdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--ec11047b6f9371fca60c83380be1aeb3149e4e42/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt5WmpBMU56SXpPQzB3TWpFekxUUTVZMlV0WWpFeU1pMHdOR0ZpWVdSak0yTTVNamdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--ec11047b6f9371fca60c83380be1aeb3149e4e42/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: 136d4727-1f68-4f47-bf97-40140e83cc71
+                        id: 2c325786-b8d4-4619-85c7-96312487150b
                         type: user
-                    locations:
-                      data: []
                 meta:
                   page: 1
                   per_page: 10
@@ -2349,7 +2420,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 398915ea-2e90-4360-9e49-9bf4cbbd08b0
+                  id: 6ff206af-3a0f-41e8-b171-fc6b3175a6ad
                   type: project_developer
                   attributes:
                     name: Kutch-Spencer
@@ -2375,21 +2446,18 @@ paths:
                     review_status: approved
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
+                    mosaics:
+                    - amazon-heart
+                    - amazonian-piedmont-massif
                     picture:
-                      small: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsWmpJeE5UVmlNaTB6TVdRNExUUm1aVGd0WWpFMVl5MW1aVFZsT0RVMVptRXpPREVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--81a6411572958914d7286546ecbf5720f5685766/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--96b337d1307fd4042b07ebef4a07893f6d60932e/picture.jpg
-                      medium: http://localhost:4000/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsWmpJeE5UVmlNaTB6TVdRNExUUm1aVGd0WWpFMVl5MW1aVFZsT0RVMVptRXpPREVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--81a6411572958914d7286546ecbf5720f5685766/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--66d527003bf8febbe8b79a46a890042194c62b71/picture.jpg
-                      original: http://localhost:4000/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsWmpJeE5UVmlNaTB6TVdRNExUUm1aVGd0WWpFMVl5MW1aVFZsT0RVMVptRXpPREVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--81a6411572958914d7286546ecbf5720f5685766/picture.jpg
+                      small: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWkRVMk1qVmlZUzB3TldZMkxUUTROekF0T0RKalpDMWhOakJtTkRKbVpEZGxNamtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c5e06a1351bc9ca543c1c05029ee04135a17660f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg
+                      medium: http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWkRVMk1qVmlZUzB3TldZMkxUUTROekF0T0RKalpDMWhOakJtTkRKbVpEZGxNamtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c5e06a1351bc9ca543c1c05029ee04135a17660f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg
+                      original: http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWkRVMk1qVmlZUzB3TldZMkxUUTROekF0T0RKalpDMWhOakJtTkRKbVpEZGxNamtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c5e06a1351bc9ca543c1c05029ee04135a17660f/picture.jpg
                   relationships:
                     owner:
                       data:
-                        id: a87dc5c9-3c1b-46f3-86b7-04e5d84ca842
+                        id: e5db61ed-e263-440f-9d8c-6652d50f78cb
                         type: user
-                    locations:
-                      data:
-                      - id: 94138e92-21ff-4cf7-9c13-ee103db6e93d
-                        type: location
-                      - id: e47c9e52-1560-480d-8fa9-bd44a332895e
-                        type: location
               schema:
                 type: object
                 properties:
@@ -2432,7 +2500,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 8dbfc1f8-0e53-494a-aeec-1e482f6b5a85
+                - id: 34ff7eeb-f905-4255-9406-36bee1e11858
                   type: project
                   attributes:
                     name: Project 1
@@ -2480,15 +2548,21 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 361f6502-ab2f-4252-8faf-259d1c88889f
+                        id: 384774ff-0c90-434b-8114-9a77ca382fe3
                         type: project_developer
                     involved_project_developers:
                       data:
-                      - id: caf98f13-9169-4a61-bd37-8c507ece3f73
+                      - id: 7562fa1d-f60f-4981-bc82-e4f784e63726
                         type: project_developer
-                      - id: 1866e2e4-91b4-40cf-b954-f0bef161d343
+                      - id: fba81945-0696-497f-9e1d-60680bc43ae9
                         type: project_developer
-                - id: 35abd3ec-4166-4be4-942d-d38ba30eba1b
+                    project_images:
+                      data:
+                      - id: a05c4b34-b018-4c23-885d-59195959819e
+                        type: project_image
+                      - id: 468fd625-f76c-4b14-83f6-4db7aa9ed1a6
+                        type: project_image
+                - id: 73940282-db0f-49c0-9e1f-d1d1c5fd5a5d
                   type: project
                   attributes:
                     name: Project 2
@@ -2536,11 +2610,13 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 8e5ede21-efdf-4106-a803-7ddf45729444
+                        id: 4ae84a24-d52b-4322-b350-ff14def2b2b2
                         type: project_developer
                     involved_project_developers:
                       data: []
-                - id: d13db686-4857-40c8-b680-8ad226653fac
+                    project_images:
+                      data: []
+                - id: dab60d0e-5552-41e0-bc3f-3e5693b97ec1
                   type: project
                   attributes:
                     name: Project 3
@@ -2588,11 +2664,13 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: ccaac6a4-fd26-4dea-ba8a-0eca98d496c1
+                        id: 1d3105c6-2d1d-4967-9198-75a4ac1a860f
                         type: project_developer
                     involved_project_developers:
                       data: []
-                - id: b89fb1b8-84f2-40ee-88c0-efa646c0b969
+                    project_images:
+                      data: []
+                - id: c3504a3e-2917-4370-9987-705e1d0d7eb4
                   type: project
                   attributes:
                     name: Project 4
@@ -2640,11 +2718,13 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 295c6ab1-75db-4cfe-84be-6955a2fadbfe
+                        id: 9368c94e-e69e-4c9e-9390-c62a985d4374
                         type: project_developer
                     involved_project_developers:
                       data: []
-                - id: 17f1698b-bfb7-4fbe-9f9e-43b23728f41d
+                    project_images:
+                      data: []
+                - id: '09aa0134-8183-4108-a651-7bce3c1f4240'
                   type: project
                   attributes:
                     name: Project 5
@@ -2692,11 +2772,13 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: f0d6a0da-7acc-418c-b2eb-14a968f43f26
+                        id: 9db0723a-3abe-4d8d-811d-2ce8a474a88c
                         type: project_developer
                     involved_project_developers:
                       data: []
-                - id: 229cfa4f-5b39-46a4-b424-cda043282d9c
+                    project_images:
+                      data: []
+                - id: c413e9e2-dd4a-404d-8863-a381ce33c03f
                   type: project
                   attributes:
                     name: Project 6
@@ -2744,11 +2826,13 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 4cf17f0c-5480-4700-b551-6ab5ad3ea7c8
+                        id: 1bb41dc7-791e-4dfe-a182-701b43f70eb6
                         type: project_developer
                     involved_project_developers:
                       data: []
-                - id: ee48d3c8-3859-40c9-97ab-281c6372629d
+                    project_images:
+                      data: []
+                - id: cb5b2fbd-61c3-4ee9-abd2-f51085ebda0d
                   type: project
                   attributes:
                     name: Project 7
@@ -2796,9 +2880,11 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: b1ae9840-91c1-4960-8fe2-705e695b297a
+                        id: 3f86eba0-732c-40c9-87da-753e3ceb4f81
                         type: project_developer
                     involved_project_developers:
+                      data: []
+                    project_images:
                       data: []
                 meta:
                   page: 1
@@ -2859,7 +2945,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 8dbfc1f8-0e53-494a-aeec-1e482f6b5a85
+                  id: 34ff7eeb-f905-4255-9406-36bee1e11858
                   type: project
                   attributes:
                     name: Project 1
@@ -2907,14 +2993,20 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 361f6502-ab2f-4252-8faf-259d1c88889f
+                        id: 384774ff-0c90-434b-8114-9a77ca382fe3
                         type: project_developer
                     involved_project_developers:
                       data:
-                      - id: caf98f13-9169-4a61-bd37-8c507ece3f73
+                      - id: 7562fa1d-f60f-4981-bc82-e4f784e63726
                         type: project_developer
-                      - id: 1866e2e4-91b4-40cf-b954-f0bef161d343
+                      - id: fba81945-0696-497f-9e1d-60680bc43ae9
                         type: project_developer
+                    project_images:
+                      data:
+                      - id: a05c4b34-b018-4c23-885d-59195959819e
+                        type: project_image
+                      - id: 468fd625-f76c-4b14-83f6-4db7aa9ed1a6
+                        type: project_image
               schema:
                 type: object
                 properties:
@@ -2955,7 +3047,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 68b618b9-5f67-4c82-b160-5407b0ed0366
+                  id: a7ab1785-003c-4c59-8c2b-f5a65f48a98d
                   type: user
                   attributes:
                     first_name: Dawna
@@ -3003,7 +3095,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 8b16c63a-0f11-431f-a0c2-3dc8ce3289bc
+                  id: e2b256fb-ce56-4ab8-b60c-7b406c6257f5
                   type: user
                   attributes:
                     first_name: Dawna
@@ -3088,7 +3180,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 9d035cb1-85d6-4de6-99de-da7b1ca9f00c
+                  id: 4ed830be-dc6b-4b06-8845-745fd3a55a16
                   type: user
                   attributes:
                     first_name: Jan
@@ -3159,7 +3251,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 854c0249-12d5-4dec-8eab-3deb1a8a25bf
+                  id: 8f467ee0-c3b2-4ca0-84fb-d5294025bb8c
                   type: user
                   attributes:
                     first_name: Dawna
@@ -3186,19 +3278,19 @@ paths:
           content:
             application/json:
               example:
-                id: 49e81469-c31e-47d8-88a4-468dd4df42c7
-                key: ymedpxg2sbzwo9d4wrkc7dw519g9
+                id: 19b9947d-9221-4018-9968-4e614e980503
+                key: fh8n1nnb1pjvb4h11xk8vy81ettl
                 filename: test.jpg
                 content_type: image/jpeg
                 metadata: {}
                 service_name: test
                 byte_size: 32326
                 checksum: QYeLAwqIj9HrwITqtTYaEw==
-                created_at: '2022-04-14T09:34:00.019Z'
-                signed_id: eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswT1dVNE1UUTJPUzFqTXpGbExUUTNaRGd0T0RoaE5DMDBOamhrWkRSa1pqUXlZemNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--8f46af25151af4ffbcd4c27041db18f6b106f10c
-                attachable_sgid: BAh7CEkiCGdpZAY6BkVUSSJWZ2lkOi8vYmFja2VuZC9BY3RpdmVTdG9yYWdlOjpCbG9iLzQ5ZTgxNDY5LWMzMWUtNDdkOC04OGE0LTQ2OGRkNGRmNDJjNz9leHBpcmVzX2luBjsAVEkiDHB1cnBvc2UGOwBUSSIPYXR0YWNoYWJsZQY7AFRJIg9leHBpcmVzX2F0BjsAVDA=--c4b03a72ac421c0a886cf34f458c3b1447b73d38
+                created_at: '2022-04-22T06:55:02.378Z'
+                signed_id: eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4T1dJNU9UUTNaQzA1TWpJeExUUXdNVGd0T1RrMk9DMDBaVFl4TkdVNU9EQTFNRE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--299987610ffd79d82a1052fec3d11df98713ea29
+                attachable_sgid: BAh7CEkiCGdpZAY6BkVUSSJWZ2lkOi8vYmFja2VuZC9BY3RpdmVTdG9yYWdlOjpCbG9iLzE5Yjk5NDdkLTkyMjEtNDAxOC05OTY4LTRlNjE0ZTk4MDUwMz9leHBpcmVzX2luBjsAVEkiDHB1cnBvc2UGOwBUSSIPYXR0YWNoYWJsZQY7AFRJIg9leHBpcmVzX2F0BjsAVDA=--56680d34d3eba80fdc3b57622b181cb553438e2f
                 direct_upload:
-                  url: http://www.example.com/backend/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDam9JYTJWNVNTSWhlVzFsWkhCNFp6SnpZbnAzYnpsa05IZHlhMk0zWkhjMU1UbG5PUVk2QmtWVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9UWTI5dWRHVnVkRjlzWlc1bmRHaHBBa1orT2cxamFHVmphM04xYlVraUhWRlpaVXhCZDNGSmFqbEljbmRKVkhGMFZGbGhSWGM5UFFZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvSmRHVnpkQT09IiwiZXhwIjoiMjAyMi0wNC0xNFQwOTozOTowMC4wMjhaIiwicHVyIjoiYmxvYl90b2tlbiJ9fQ==--700557b7489664b4139118f5b3eb83691b09bd25
+                  url: http://www.example.com/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDam9JYTJWNVNTSWhabWc0YmpGdWJtSXhjR3AyWWpSb01URjRhemgyZVRneFpYUjBiQVk2QmtWVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9UWTI5dWRHVnVkRjlzWlc1bmRHaHBBa1orT2cxamFHVmphM04xYlVraUhWRlpaVXhCZDNGSmFqbEljbmRKVkhGMFZGbGhSWGM5UFFZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvSmRHVnpkQT09IiwiZXhwIjoiMjAyMi0wNC0yMlQwNzowMDowMi4zODFaIiwicHVyIjoiYmxvYl90b2tlbiJ9fQ==--8929d205885d11a0d65c1f8d72f4973c51adc93c
                   headers:
                     Content-Type: image/jpeg
               schema:
@@ -3510,8 +3602,12 @@ components:
         relationships:
           type: object
           properties:
+            project_developer:
+              "$ref": "#/components/schemas/response_relation"
             involved_project_developer:
               "$ref": "#/components/schemas/response_relation"
+            project_images:
+              "$ref": "#/components/schemas/response_relations"
       required:
       - id
       - type
@@ -3565,6 +3661,10 @@ components:
               type: array
               items:
                 type: string
+            mosaics:
+              type: array
+              items:
+                type: string
             language:
               type: string
             entity_legal_registration_number:
@@ -3572,8 +3672,6 @@ components:
         relationships:
           type: object
           properties:
-            locations:
-              "$ref": "#/components/schemas/response_relations"
             owner:
               "$ref": "#/components/schemas/response_relation"
       required:
