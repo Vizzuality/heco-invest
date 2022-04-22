@@ -4,7 +4,7 @@ RSpec.describe "Direct Upload", type: :request do
   path "/rails/active_storage/direct_uploads" do
     post "Create blob record - obtain data for direct upload to storage" do
       tags "Direct Upload"
-      security [csrf: []]
+      security [csrf: [], cookie_auth: []]
       produces "application/json"
       consumes "application/json"
       parameter name: :direct_upload_params, in: :body, schema: {
