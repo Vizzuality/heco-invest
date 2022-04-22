@@ -3,6 +3,8 @@ mount Rswag::Api::Engine => "/api-docs"
 
 devise_for :users, path: "api/v1", skip: :all
 
+post "/rails/active_storage/direct_uploads", to: "api/v1/direct_uploads#create"
+
 namespace :api, format: "json" do
   namespace :v1 do
     resource :session, only: [:create, :destroy]

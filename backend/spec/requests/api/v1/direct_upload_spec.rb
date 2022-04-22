@@ -23,20 +23,26 @@ RSpec.describe "Direct Upload", type: :request do
         required: %w[byte_size checksum content_type filename]
       }
 
+      let(:user) { create :user }
+      let(:direct_upload_params) do
+        {
+          blob: {
+            byte_size: 32_326,
+            checksum: "QYeLAwqIj9HrwITqtTYaEw==",
+            content_type: "image/jpeg",
+            filename: "test.jpg"
+          }
+        }
+      end
+
+      it_behaves_like "with not authorized error", csrf: true
+
       response "200", :success do
         schema "$ref" => "#/components/schemas/direct_upload"
 
         let("X-CSRF-TOKEN") { get_csrf_token }
-        let(:direct_upload_params) do
-          {
-            blob: {
-              byte_size: 32_326,
-              checksum: "QYeLAwqIj9HrwITqtTYaEw==",
-              content_type: "image/jpeg",
-              filename: "test.jpg"
-            }
-          }
-        end
+
+        before { sign_in user }
 
         run_test!
 
