@@ -9,7 +9,7 @@ import { loadI18nMessages } from 'helpers/i18n';
 import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
 
 import Head from 'components/head';
-import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
+import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import { PageComponent } from 'types';
 
 export async function getServerSideProps(ctx) {
@@ -20,7 +20,7 @@ export async function getServerSideProps(ctx) {
   };
 }
 
-const NewInvestorPage: PageComponent<{}, NakedPageLayoutProps> = (props) => {
+const NewInvestorPage: PageComponent<{}, FormPageLayoutProps> = (props) => {
   const intl = useIntl();
   const router = useRouter();
 
@@ -191,7 +191,7 @@ const NewInvestorPage: PageComponent<{}, NakedPageLayoutProps> = (props) => {
 };
 
 NewInvestorPage.layout = {
-  Component: NakedPageLayout,
+  Component: FormPageLayout,
 };
 
 export default NewInvestorPage;
