@@ -6,7 +6,7 @@ module API
       before_action :fetch_project, only: [:show]
 
       def index
-        projects = Project.all.includes(:project_developer)
+        projects = Project.all.includes(:project_developer, :involved_project_developers, project_images: {file_attachment: :blob})
         pagy_object, projects = pagy(projects, page: current_page, items: per_page)
         render json: ProjectSerializer.new(
           projects,

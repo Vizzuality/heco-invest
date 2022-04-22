@@ -70,5 +70,9 @@ FactoryBot.define do
       involved_project_developers { create_list(:project_developer, 2) }
       involved_project_developer_not_listed { true }
     end
+
+    trait :with_project_images do
+      project_images { [build(:project_image, project: nil), build(:project_image, project: nil)] }
+    end
   end
 end
