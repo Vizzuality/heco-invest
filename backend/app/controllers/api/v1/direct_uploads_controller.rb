@@ -1,6 +1,8 @@
 module API
   module V1
     class DirectUploadsController < BaseController
+      include ActiveStorage::SetCurrent
+
       before_action :authenticate_user!
 
       def create
