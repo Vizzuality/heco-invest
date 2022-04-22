@@ -120,7 +120,7 @@ RSpec.describe Project, type: :model do
   end
 
   include_examples :static_relation_validations, attribute: :development_stage, presence: true
-  include_examples :static_relation_validations, attribute: :categories, presence: true
+  include_examples :static_relation_validations, attribute: :category, presence: true
   include_examples :static_relation_validations, attribute: :instrument_types, presence: true
   include_examples :static_relation_validations, attribute: :ticket_size, presence: true
   include_examples :static_relation_validations, attribute: :sdgs, presence: true

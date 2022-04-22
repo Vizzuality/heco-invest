@@ -17,10 +17,7 @@
           "pollutants-reduction",
           "carbon-emission-reduction"
         ],
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
+        "category": "forestry-and-agroforestry",
         "sdgs": [
           1,
           4,
@@ -95,10 +92,7 @@
           "pollutants-reduction",
           "carbon-emission-reduction"
         ],
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
+        "category": "forestry-and-agroforestry",
         "sdgs": [
           1,
           4,
@@ -159,10 +153,7 @@
           "pollutants-reduction",
           "carbon-emission-reduction"
         ],
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
+        "category": "forestry-and-agroforestry",
         "sdgs": [
           1,
           4,
@@ -223,10 +214,7 @@
           "pollutants-reduction",
           "carbon-emission-reduction"
         ],
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
+        "category": "forestry-and-agroforestry",
         "sdgs": [
           1,
           4,
@@ -287,10 +275,7 @@
           "pollutants-reduction",
           "carbon-emission-reduction"
         ],
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
+        "category": "forestry-and-agroforestry",
         "sdgs": [
           1,
           4,
@@ -351,10 +336,7 @@
           "pollutants-reduction",
           "carbon-emission-reduction"
         ],
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
+        "category": "forestry-and-agroforestry",
         "sdgs": [
           1,
           4,
@@ -415,10 +397,7 @@
           "pollutants-reduction",
           "carbon-emission-reduction"
         ],
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
+        "category": "forestry-and-agroforestry",
         "sdgs": [
           1,
           4,
