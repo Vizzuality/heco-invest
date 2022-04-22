@@ -8,11 +8,13 @@ export type ImageUploaderProps<FormValues> = {
   /** React Hook Form's `register` function */
   register: UseFormRegister<FormValues>;
   /** Options for React Hook Form's `register` function */
-  registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
+  registerOptions?: Omit<RegisterOptions<FormValues, FieldPath<FormValues>>, 'onChange'>;
   /** show preview image when uploaded */
   preview?: boolean;
+  /** className of the preview component */
+  previewClassName?: string;
   /** text showed on the button. Default id 'Upload Image' with translation  */
-  text?: string;
+  buttonText?: string;
   /** callback called when input changes (the image is uploaded) */
-  handleChangeImage: () => void;
+  onChangeImage?: () => void;
 };

@@ -285,13 +285,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   })}
                 />
               </div>
-              <ImageUploader
-                name="picture"
-                id="picture"
-                register={register}
-                preview
-                handleChangeImage={() => clearErrors(['picture'])}
-              />
+              <ImageUploader name="picture" id="picture" register={register} preview />
               <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
             </div>
             <div className="md:flex gap-x-6 mb-6.5">

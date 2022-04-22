@@ -3,20 +3,20 @@ import React, { ChangeEvent, useState } from 'react';
 import { FieldValues } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
-import Image from 'next/image';
+import cx from 'classnames';
 
-import Button from 'components/button';
-import Loading from 'components/loading';
+import Image from 'next/image';
 
 import { ImageUploaderProps } from './types';
 
 export const ImageUploader = <FormValues extends FieldValues>({
   preview,
+  previewClassName,
   register,
   name,
   id,
-  text,
-  handleChangeImage,
+  buttonText,
+  onChangeImage,
   registerOptions,
   ...rest
 }: ImageUploaderProps<FormValues>) => {
@@ -28,36 +28,37 @@ export const ImageUploader = <FormValues extends FieldValues>({
       const file = e.currentTarget.files[0];
       const src = URL.createObjectURL(file);
       setImagePreview(src);
-      handleChangeImage();
+      onChangeImage?.();
+    } else {
+      setImagePreview(null);
     }
   };
 
   return (
     <div className="flex items-center justify-start">
       {preview && (
-        <div className="mr-5">
+        <div
+          className={cx('relative overflow-hidden', {
+            'mr-5 w-16 h-16 rounded-full': !previewClassName,
+            [previewClassName]: !!previewClassName,
+          })}
+        >
           <Image
             src={imagePreview || '/images/avatar.svg'}
-            width={48}
-            height={48}
-            className="rounded-full"
-            alt={formatMessage({ defaultMessage: 'profile image', id: 'OX08fr' })}
+            alt={formatMessage({ defaultMessage: 'Preview', id: 'TJo5E6' })}
+            layout="fill"
+            objectFit="cover"
           />
         </div>
       )}
-      <Button>
-        <Loading className="inline mr-4" />
-        {text || formatMessage({ defaultMessage: 'Upload Image', id: 'MntrZe' })}
-        <input
-          id={id}
-          className="absolute opacity-0"
-          type="file"
-          accept="image/png, image/jpeg"
-          {...rest}
-          {...register(name, { ...registerOptions })}
-          onChange={handleUploadImage}
-        />
-      </Button>
+      <input
+        id={id}
+        className="transition-all rounded-full file:mr-4 file:px-6 file:py-2 file:rounded-full file:bg-green-dark file:text-white file:hover:text-green-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
+        type="file"
+        accept="image/png, image/jpeg"
+        {...rest}
+        {...register(name, { ...registerOptions, onChange: handleUploadImage })}
+      />
     </div>
   );
 };

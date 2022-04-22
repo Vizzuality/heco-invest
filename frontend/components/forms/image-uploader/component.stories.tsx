@@ -77,12 +77,7 @@ const TemplateWithForm: Story<ImageUploaderProps<FormValues>> = (
       <label htmlFor={args.id} className="mb-2">
         Profile image
       </label>
-      <ImageUploader
-        register={register}
-        registerOptions={{ required: 'The profile image is required' }}
-        aria-describedby="form-error"
-        {...args}
-      />
+      <ImageUploader register={register} aria-describedby="form-error" {...args} />
       {errors.picture?.message && (
         <p id="form-error" className="pl-2 mt-1 text-xs text-red-700">
           {errors.picture?.message}
@@ -103,4 +98,5 @@ ErrorState.args = {
   id: 'picture',
   name: 'picture',
   preview: true,
+  registerOptions: { required: 'The profile image is required' },
 };
