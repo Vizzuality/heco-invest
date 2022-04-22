@@ -10,7 +10,7 @@ import { InferGetStaticPropsType } from 'next';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Button from 'components/button';
-import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
+import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import Header from 'layouts/static-page/header';
 import { PageComponent } from 'types';
 export async function getStaticProps(ctx) {
@@ -23,7 +23,7 @@ export async function getStaticProps(ctx) {
 
 type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Pending: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () => {
+const Pending: PageComponent<ProjectDeveloperProps, FormPageLayoutProps> = () => {
   return (
     <div className="flex items-center justify-center h-screen md:p-4">
       <Header />
@@ -68,7 +68,7 @@ const Pending: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () =
 };
 
 Pending.layout = {
-  Component: NakedPageLayout,
+  Component: FormPageLayout,
 };
 
 export default Pending;

@@ -29,7 +29,7 @@ import TagGroup from 'components/forms/tag-group';
 import TextArea from 'components/forms/textarea';
 import Head from 'components/head';
 import { Queries } from 'enums';
-import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
+import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import languages from 'locales.config.json';
 import { PageComponent } from 'types';
 import { CategoryType } from 'types/category';
@@ -69,7 +69,7 @@ const getItemsInfoText = (items: Enum[] | Locations[]) => {
   );
 };
 
-const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () => {
+const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps> = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [imagePreview, setImagePreview] = useState('');
   const [showLeave, setShowLeave] = useState(false);
@@ -568,7 +568,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
 };
 
 ProjectDeveloper.layout = {
-  Component: NakedPageLayout,
+  Component: FormPageLayout,
 };
 
 export default ProjectDeveloper;
