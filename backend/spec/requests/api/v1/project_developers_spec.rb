@@ -15,6 +15,7 @@ RSpec.describe "API V1 Project Developers", type: :request do
       parameter name: "page[number]", in: :query, type: :integer, description: "Page number. Default: 1", required: false
       parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
       parameter name: "fields[project_developer]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
 
       response "200", :success do
         schema type: :object, properties: {
@@ -36,6 +37,15 @@ RSpec.describe "API V1 Project Developers", type: :request do
             expect(response.body).to match_snapshot("api/v1/project-developers-sparse-fieldset")
           end
         end
+
+        context "with relationships" do
+          let("fields[project_developer]") { "name,involved_projects" }
+          let(:includes) { "involved_projects" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/project-developers-include-relationships")
+          end
+        end
       end
     end
   end
@@ -46,6 +56,7 @@ RSpec.describe "API V1 Project Developers", type: :request do
       produces "application/json"
       parameter name: :id, in: :path, type: :string, description: "Use project developer ID or account slug"
       parameter name: "fields[project_developer]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
 
       let(:id) { @project_developer.id }
 
@@ -75,6 +86,15 @@ RSpec.describe "API V1 Project Developers", type: :request do
 
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/get-project-developer-sparse-fieldset")
+          end
+        end
+
+        context "with relationships" do
+          let("fields[project_developer]") { "name,involved_projects" }
+          let(:includes) { "involved_projects" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/get-project-developer-include-relationships")
           end
         end
 
