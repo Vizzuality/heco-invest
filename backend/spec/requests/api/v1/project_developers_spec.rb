@@ -2,11 +2,11 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Project Developers", type: :request do
   before_all do
-    @project_developer = create(:project_developer)
+    @project_developer = create(:project_developer, :with_involved_projects, number_of_projects: 2)
     create_list(:project_developer, 6)
   end
 
-  include_examples :api_pagination, model: ProjectDeveloper, expected_total: 7
+  include_examples :api_pagination, model: ProjectDeveloper, expected_total: 9
 
   path "/api/v1/project_developers" do
     get "Returns list of the project developers" do
