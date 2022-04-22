@@ -182,6 +182,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_093358) do
     t.index ["account_id"], name: "index_project_developers_on_account_id"
   end
 
+  create_table "project_images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "project_id", null: false
+    t.boolean "cover", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_images_on_project_id"
+  end
+
   create_table "project_involvements", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "project_id", null: false
     t.uuid "project_developer_id", null: false
@@ -297,6 +305,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_093358) do
   add_foreign_key "locations", "locations", column: "parent_id", on_delete: :cascade
   add_foreign_key "open_calls", "investors", on_delete: :cascade
   add_foreign_key "project_developers", "accounts", on_delete: :cascade
+  add_foreign_key "project_images", "projects", on_delete: :cascade
   add_foreign_key "project_involvements", "project_developers", on_delete: :cascade
   add_foreign_key "project_involvements", "projects", on_delete: :cascade
   add_foreign_key "projects", "locations", column: "country_id"

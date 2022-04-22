@@ -10,6 +10,8 @@ class Project < ApplicationRecord
 
   has_and_belongs_to_many :involved_project_developers, join_table: "project_involvements", class_name: "ProjectDeveloper"
 
+  has_many :project_images
+
   translates :name,
     :description,
     :expected_impact,
@@ -43,6 +45,7 @@ class Project < ApplicationRecord
   validates :trusted, inclusion: [true, false]
   validates :received_funding, inclusion: [true, false]
   validates :looking_for_funding, inclusion: [true, false]
+  validates :project_images, length: {maximum: 6}
 
   with_options if: -> { looking_for_funding? } do
     validates :instrument_types, array_inclusion: {in: InstrumentType::TYPES}, presence: true
@@ -59,6 +62,8 @@ class Project < ApplicationRecord
 
   before_validation :clear_funding_fields, unless: -> { looking_for_funding? }
   before_validation :clear_received_funding_fields, unless: -> { received_funding? }
+
+  accepts_nested_attributes_for :project_images, reject_if: :all_blank, allow_destroy: true
 
   def project_developer_prefixed_name
     "#{project_developer&.name} #{original_name}"

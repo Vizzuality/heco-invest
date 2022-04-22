@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Jsona from 'jsona';
 
-import { ApiError } from 'types/api';
+import { ErrorResponse } from './types';
 
 const dataFormatter = new Jsona();
 
@@ -33,7 +33,7 @@ const onResponseSuccess = (response) => {
 
 const onResponseError = (error) => {
   if (error.response.data?.errors?.length > 0) {
-    return Promise.reject<ApiError>({
+    return Promise.reject<ErrorResponse>({
       message: error.response.data.errors,
     });
   }

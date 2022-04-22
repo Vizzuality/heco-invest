@@ -168,6 +168,14 @@ module "backend_cloudrun" {
       value = module.test_pubsub.subscription_name
     },
     {
+      name  = "IS_API_INSTANCE"
+      value = true
+    },
+    {
+      name  = "IS_JOBS_INSTANCE"
+      value = false
+    },
+    {
       name  = "SMTP_USERNAME"
       value = "apikey"
     },

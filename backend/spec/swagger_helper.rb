@@ -191,7 +191,9 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  involved_project_developer: {"$ref" => "#/components/schemas/response_relation"}
+                  project_developer: {"$ref" => "#/components/schemas/response_relation"},
+                  involved_project_developer: {"$ref" => "#/components/schemas/response_relation"},
+                  project_images: {"$ref" => "#/components/schemas/response_relations"}
                 }
               }
             },

@@ -47,6 +47,16 @@ Default.args = {
   },
 };
 
+export const Radio: Story<TagProps<FormValues>> = Template.bind({});
+Radio.args = {
+  id: 'form-tag',
+  name: 'category',
+  type: 'radio',
+  registerOptions: {
+    disabled: false,
+  },
+};
+
 const TemplateWithFieldset: Story<TagProps<FormValues>> = (args: TagProps<FormValues>) => {
   const { register } = useForm<FormValues>();
 

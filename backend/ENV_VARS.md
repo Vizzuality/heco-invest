@@ -4,6 +4,10 @@ RACK_ENV
 RAILS_MAX_THREADS (say 10)
 SECRET_KEY_BASE (generated with rake secret)
 
+Control which routes are available for Rails instance
+IS_API_INSTANCE
+IS_JOBS_INSTANCE
+
 BACKEND_URL (without protocol)
 RAILS_RELATIVE_URL_ROOT (if running backend application in sub url, like /backend)
 

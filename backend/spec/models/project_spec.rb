@@ -114,6 +114,11 @@ RSpec.describe Project, type: :model do
     expect(subject).to have(1).errors_on(:funding_plan)
   end
 
+  it "should not be valid with more than 6 project images" do
+    subject.project_images = 7.times.map { build(:project_image) }
+    expect(subject).to have(1).errors_on(:project_images)
+  end
+
   include_examples :static_relation_validations, attribute: :development_stage, presence: true
   include_examples :static_relation_validations, attribute: :categories, presence: true
   include_examples :static_relation_validations, attribute: :instrument_types, presence: true

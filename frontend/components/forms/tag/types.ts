@@ -18,8 +18,6 @@ export type TagProps<FormValues> = {
    * Value of the input. Set this if there are multiple tags with the same name (multiple choices).
    */
   value?: string;
-  /** ReactHook Form's `watch` callback */
-  watch?: UseFormWatch<FieldValues>;
   /** React Hook Form's `register` callback */
   register: (name, RegisterOptions) => UseFormRegisterReturn;
   /** Options for React Hook Form's `register` callback */

@@ -27,7 +27,6 @@ const Template: Story<TagProps<FormValues>> = (args: TagProps<FormValues>) => {
     register,
     setValue,
     clearErrors,
-    watch,
     formState: { errors },
   } = useForm<FormValues>();
 
@@ -35,13 +34,7 @@ const Template: Story<TagProps<FormValues>> = (args: TagProps<FormValues>) => {
     <div className="p-4">
       <fieldset>
         <legend className="mb-2 font-sans font-semibold text-gray-800">Category</legend>
-        <TagGroup
-          name={args.name}
-          setValue={setValue}
-          clearErrors={clearErrors}
-          watch={watch}
-          errors={errors}
-        >
+        <TagGroup name={args.name} setValue={setValue} clearErrors={clearErrors} errors={errors}>
           <Tag
             id="first-category"
             value="first-category"
@@ -89,13 +82,18 @@ Default.args = {
   name: 'categories',
 };
 
+export const Radio: Story<TagProps<FormValues>> = Template.bind({});
+Radio.args = {
+  name: 'categories',
+  type: 'radio',
+};
+
 const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues>) => {
   const {
     register,
     setValue,
     handleSubmit,
     clearErrors,
-    watch,
     formState: { errors },
   } = useForm<FormValues>({
     shouldUseNativeValidation: true,
@@ -116,13 +114,7 @@ const TemplateWithForm: Story<TagProps<FormValues>> = (args: TagProps<FormValues
       >
         <fieldset name={args.name}>
           <legend className="mb-2 font-sans font-semibold text-gray-800">Category</legend>
-          <TagGroup
-            name={args.name}
-            setValue={setValue}
-            errors={errors}
-            clearErrors={clearErrors}
-            watch={watch}
-          >
+          <TagGroup name={args.name} setValue={setValue} errors={errors} clearErrors={clearErrors}>
             <Tag
               id="first-category"
               value="first-category"

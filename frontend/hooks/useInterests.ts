@@ -6,15 +6,15 @@ import { Enum } from 'types/enums';
 import { Locations } from 'types/locations';
 
 interface InterestItems {
-  category: Enum[];
-  impact: Enum[];
-  mosaics: Locations[];
+  category?: Enum[];
+  impact?: Enum[];
+  mosaics?: Locations[];
 }
 
 export enum InterestNames {
-  categories = 'categories',
-  impacts = 'impacts',
-  mosaics = 'mosaics',
+  Categories = 'categories',
+  Impacts = 'impacts',
+  Mosaics = 'mosaics',
 }
 
 const useInterests = ({ category, impact, mosaics }: InterestItems) => {
@@ -26,17 +26,15 @@ const useInterests = ({ category, impact, mosaics }: InterestItems) => {
           defaultMessage: 'Select the categories that interests you',
           id: 'k5KxPA',
         }),
-        name: InterestNames.categories,
+        name: InterestNames.Categories,
         items: category,
         required: true,
-        infoText: undefined,
       },
       {
         title: formatMessage({ defaultMessage: 'Expect to have impact on', id: 'YB8bt5' }),
-        name: InterestNames.impacts,
+        name: InterestNames.Impacts,
         items: impact,
         required: true,
-        infoText: undefined,
       },
       {
         title: formatMessage({
@@ -44,7 +42,7 @@ const useInterests = ({ category, impact, mosaics }: InterestItems) => {
             'Select HeCo priority landscapes on which you will have impact (optional)',
           id: 'piBsTx',
         }),
-        name: InterestNames.mosaics,
+        name: InterestNames.Mosaics,
         items: mosaics,
         infoText: formatMessage({
           defaultMessage:
