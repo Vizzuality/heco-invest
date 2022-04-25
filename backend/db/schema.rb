@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_21_093358) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_21_142923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -210,7 +210,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_093358) do
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
     t.text "address"
-    t.string "categories", array: true
     t.string "ticket_size", null: false
     t.string "instrument_types", null: false, array: true
     t.integer "sdgs", array: true
@@ -262,6 +261,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_093358) do
     t.text "relevant_links_en"
     t.text "relevant_links_es"
     t.text "relevant_links_pt"
+    t.string "category", null: false
     t.index ["country_id"], name: "index_projects_on_country_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
     t.index ["municipality_id"], name: "index_projects_on_municipality_id"
