@@ -205,6 +205,7 @@ module "backend_storage" {
   service_account_email = module.backend_cloudrun.service_account_email
   name                  = "${var.project_name}-site-storage"
   domain                = var.domain
+  cors_origin           = var.cors_origin
 }
 
 module "database" {
