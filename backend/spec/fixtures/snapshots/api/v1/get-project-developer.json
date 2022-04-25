@@ -42,6 +42,23 @@
           "id": "b8d88cc9-2f87-4c3d-a957-47fa06e18b4c",
           "type": "user"
         }
+      },
+      "projects": {
+        "data": [
+
+        ]
+      },
+      "involved_projects": {
+        "data": [
+          {
+            "id": "a6a57414-859d-4925-b61c-bce1cc6eb5ba",
+            "type": "project"
+          },
+          {
+            "id": "d2069de5-7362-4e30-82a8-840a5213f6b3",
+            "type": "project"
+          }
+        ]
       }
     }
   }

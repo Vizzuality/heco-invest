@@ -58,6 +58,19 @@
             "id": "56c9473b-b640-41ad-aa09-205e91293e98",
             "type": "user"
           }
+        },
+        "projects": {
+          "data": [
+            {
+              "id": "f25fd3bc-71b5-4217-8636-e61e3285ee48",
+              "type": "project"
+            }
+          ]
+        },
+        "involved_projects": {
+          "data": [
+
+          ]
         }
       }
     }

@@ -7,7 +7,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
       produces "application/json"
       security [csrf: [], cookie_auth: []]
 
-      let(:project_developer) { create :project_developer }
+      let(:project_developer) { create :project_developer, :with_involved_projects }
       let(:user) { create :user }
 
       it_behaves_like "with not authorized error", csrf: true

@@ -10,6 +10,9 @@ module API
 
       belongs_to :owner, serializer: :user
 
+      has_many :projects
+      has_many :involved_projects, serializer: :project
+
       attribute :picture do |object|
         image_links_for object.picture
       end
