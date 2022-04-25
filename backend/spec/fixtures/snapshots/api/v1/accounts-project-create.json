@@ -16,10 +16,7 @@
         "restoration",
         "pollutants-reduction"
       ],
-      "categories": [
-        "sustainable-agrosystems",
-        "tourism-and-recreation"
-      ],
+      "category": "sustainable-agrosystems",
       "sdgs": [
         2,
         4,

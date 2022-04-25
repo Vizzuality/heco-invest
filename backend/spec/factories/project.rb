@@ -7,7 +7,7 @@ FactoryBot.define do
     end
 
     development_stage { "scaling-up" }
-    categories { %w[forestry-and-agroforestry non-timber-forest-production] }
+    category { "forestry-and-agroforestry" }
     sdgs { [1, 4, 5] }
     target_groups { %w[urban-populations indigenous-peoples] }
     impact_areas { %w[pollutants-reduction carbon-emission-reduction] }

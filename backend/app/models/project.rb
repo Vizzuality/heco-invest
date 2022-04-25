@@ -26,7 +26,7 @@ class Project < ApplicationRecord
   enum status: {draft: 0, published: 1, closed: 2}, _default: :draft
 
   validates :development_stage, inclusion: {in: ProjectDevelopmentStage::TYPES}
-  validates :categories, array_inclusion: {in: Category::TYPES}, presence: true
+  validates :category, inclusion: {in: Category::TYPES}
   validates :sdgs, array_inclusion: {in: Sdg::TYPES}, presence: true
   validates :language, inclusion: {in: Language::TYPES}
   validates :target_groups, array_inclusion: {in: ProjectTargetGroup::TYPES}, presence: true
