@@ -1,0 +1,153 @@
+{
+  "data": {
+    "id": "2b4be194-0707-4bae-947a-0ceffd2687de",
+    "type": "project_developer",
+    "attributes": {
+      "name": "Kutch-Spencer"
+    },
+    "relationships": {
+      "involved_projects": {
+        "data": [
+          {
+            "id": "cc873ec3-bf64-4b87-815b-4199a4fd28df",
+            "type": "project"
+          },
+          {
+            "id": "ca86f3ba-e61f-4a7c-90eb-013287d12deb",
+            "type": "project"
+          }
+        ]
+      }
+    }
+  },
+  "included": [
+    {
+      "id": "cc873ec3-bf64-4b87-815b-4199a4fd28df",
+      "type": "project",
+      "attributes": {
+        "name": "Project 1",
+        "slug": "bartoletti-and-sons-project-1",
+        "description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "involved_project_developer_not_listed": false,
+        "problem": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "solution": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "expected_impact": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "looking_for_funding": true,
+        "ticket_size": "scaling",
+        "instrument_types": [
+          "grant",
+          "loan"
+        ],
+        "sustainability": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "replicability": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "progress_impact_tracking": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Kutch-Spencer",
+        "relevant_links": null,
+        "language": "en",
+        "category": "forestry-and-agroforestry"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "681ab814-6afd-45c7-bd6c-06be7c98b6c3",
+            "type": "project_developer"
+          }
+        },
+        "involved_project_developers": {
+          "data": [
+            {
+              "id": "2b4be194-0707-4bae-947a-0ceffd2687de",
+              "type": "project_developer"
+            }
+          ]
+        },
+        "project_images": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "ca86f3ba-e61f-4a7c-90eb-013287d12deb",
+      "type": "project",
+      "attributes": {
+        "name": "Project 2",
+        "slug": "hane-lehner-and-goyette-project-2",
+        "description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "involved_project_developer_not_listed": false,
+        "problem": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "solution": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "expected_impact": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "looking_for_funding": true,
+        "ticket_size": "scaling",
+        "instrument_types": [
+          "grant",
+          "loan"
+        ],
+        "sustainability": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "replicability": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "progress_impact_tracking": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Bartoletti and Sons",
+        "relevant_links": null,
+        "language": "en",
+        "category": "forestry-and-agroforestry"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "f3909f1b-47b4-4d58-bd59-b8129fd24a0a",
+            "type": "project_developer"
+          }
+        },
+        "involved_project_developers": {
+          "data": [
+            {
+              "id": "2b4be194-0707-4bae-947a-0ceffd2687de",
+              "type": "project_developer"
+            }
+          ]
+        },
+        "project_images": {
+          "data": [
+
+          ]
+        }
+      }
+    }
+  ]
+}

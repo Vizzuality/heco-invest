@@ -13,5 +13,12 @@ FactoryBot.define do
     end
     language { "en" }
     entity_legal_registration_number { "564823570" }
+
+    trait :with_involved_projects do
+      transient do
+        number_of_projects { 2 }
+      end
+      involved_projects { create_list(:project, number_of_projects) }
+    end
   end
 end
