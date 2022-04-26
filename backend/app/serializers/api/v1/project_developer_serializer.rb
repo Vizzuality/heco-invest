@@ -16,6 +16,12 @@ module API
       attribute :picture do |object|
         image_links_for object.picture
       end
+
+      attribute :favourite do |object, params|
+        next false if params[:current_user].blank?
+
+        object.id.in? params[:current_user].project_developer_ids
+      end
     end
   end
 end

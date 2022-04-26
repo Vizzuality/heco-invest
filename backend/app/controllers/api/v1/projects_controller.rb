@@ -13,7 +13,8 @@ module API
           include: included_relationships,
           fields: sparse_fieldset,
           links: pagination_links(:api_v1_projects_path, pagy_object),
-          meta: pagination_meta(pagy_object)
+          meta: pagination_meta(pagy_object),
+          params: {current_user: current_user}
         ).serializable_hash
       end
 
@@ -21,7 +22,8 @@ module API
         render json: ProjectSerializer.new(
           @project,
           include: included_relationships,
-          fields: sparse_fieldset
+          fields: sparse_fieldset,
+          params: {current_user: current_user}
         ).serializable_hash
       end
 

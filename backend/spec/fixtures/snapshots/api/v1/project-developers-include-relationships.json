@@ -175,7 +175,8 @@
         "received_funding_investor": "Kutch-Spencer",
         "relevant_links": null,
         "language": "en",
-        "category": "forestry-and-agroforestry"
+        "category": "forestry-and-agroforestry",
+        "favourite": false
       },
       "relationships": {
         "project_developer": {
@@ -239,7 +240,8 @@
         "received_funding_investor": "Bartoletti and Sons",
         "relevant_links": null,
         "language": "en",
-        "category": "forestry-and-agroforestry"
+        "category": "forestry-and-agroforestry",
+        "favourite": false
       },
       "relationships": {
         "project_developer": {
