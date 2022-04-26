@@ -57,7 +57,7 @@ export const SDGs = <FormValues extends FieldValues>({
       </div>
 
       <button
-        className="mt-6 text-sm font-light underline cursor-pointer text-green-dark"
+        className="mt-6 text-sm font-light underline rounded cursor-pointer text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
         type="button"
         onClick={handleSelectAllClick}
       >
