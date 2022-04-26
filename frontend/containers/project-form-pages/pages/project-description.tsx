@@ -1,7 +1,7 @@
 import React from 'react';
 
+import { FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useQueryClient } from 'react-query';
 
 import { CategoryTagDot } from 'containers/category-tag';
 
@@ -13,21 +13,16 @@ import Label from 'components/forms/label';
 import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
 import Textarea from 'components/forms/textarea';
-import { Queries } from 'enums';
 import { CategoryType } from 'types/category';
-import { Enum, GroupedEnums } from 'types/enums';
+import { Enum } from 'types/enums';
 import { ProjectForm } from 'types/project';
-
-import { useEnums } from 'services/enums/enumService';
 
 import { ProjectFormPagesProps } from '..';
 
 export type ProjectDescriptionProps = ProjectFormPagesProps<ProjectForm> & {
-  // project_development_stage: Enum[];
-  // category: Enum[];
-  // target_group: Enum[];
-  setValue;
-  clearErrors;
+  project_development_stage: Enum[];
+  category: Enum[];
+  target_group: Enum[];
 };
 
 const ProjectDescription = ({
@@ -36,13 +31,11 @@ const ProjectDescription = ({
   control,
   setValue,
   clearErrors,
-}: // project_development_stage,
-// category,
-// target_group,
-ProjectDescriptionProps) => {
+  project_development_stage,
+  category,
+  target_group,
+}: ProjectDescriptionProps) => {
   const { formatMessage } = useIntl();
-  const { data } = useEnums();
-  const { category, project_development_stage, project_target_group } = data;
 
   return (
     <div>
@@ -234,7 +227,7 @@ ProjectDescriptionProps) => {
               errors={errors}
               clearErrors={clearErrors}
             >
-              {project_target_group?.map((item) => (
+              {target_group?.map((item) => (
                 <Tag
                   key={item.id}
                   id={item.id}
@@ -248,7 +241,10 @@ ProjectDescriptionProps) => {
               ))}
             </TagGroup>
           </fieldset>
-          {/* <ErrorMessage id="target-groups-error" errorText={errors?.target_groups?.message} /> */}
+          <ErrorMessage
+            id="target-groups-error"
+            errorText={(errors?.target_groups as unknown as FieldError)?.message}
+          />
         </div>
         <div className="mb-6.5">
           <Label htmlFor="expected-impact">

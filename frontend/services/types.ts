@@ -2,7 +2,7 @@
 export type PagedRequest = {
   'page[number]'?: number;
   'page[size]'?: number;
-  'fields[]'?: string;
+  fields?: string[];
 };
 
 /** Default API single item response structure */

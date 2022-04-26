@@ -16,10 +16,11 @@ import { PagedResponse, ErrorResponse, PagedRequest, ResponseData } from 'servic
 const getProjectDevelopers = async (
   params?: PagedRequest
 ): Promise<PagedResponse<ProjectDeveloper>> => {
+  const { fields, ...rest } = params;
   const config: AxiosRequestConfig = {
     url: '/api/v1/project_developers',
     method: 'GET',
-    params,
+    params: { ...rest, 'fields[project_developer]': params.fields.join(',') },
   };
   return await API.request(config).then((result) => result.data);
 };

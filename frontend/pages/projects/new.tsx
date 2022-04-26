@@ -17,6 +17,8 @@ import { PageComponent } from 'types';
 import { ProjectForm } from 'types/project';
 import useProjectValidation from 'validations/project';
 
+import { useEnums } from 'services/enums/enumService';
+
 export async function getStaticProps(ctx) {
   const queryClient = new QueryClient();
 
@@ -38,7 +40,8 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
   const resolver = useProjectValidation(currentPage);
   //To use with handleCreate
   // const { push } = useRouter();
-
+  const { data } = useEnums();
+  const { category, project_development_stage, project_target_group } = data;
   const {
     register,
     handleSubmit,
@@ -116,6 +119,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
           <GeneralInformation
             register={register}
             control={control}
+            controlOptions={{ disabled: false }}
             errors={errors}
             getValues={getValues}
           />
@@ -124,12 +128,13 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
           <ProjectDescription
             register={register}
             control={control}
+            controlOptions={{ disabled: false }}
             setValue={setValue}
             errors={errors}
             clearErrors={clearErrors}
-            // category={category}
-            // project_development_stage={project_development_stage}
-            // target_group={target_group}
+            category={category}
+            project_development_stage={project_development_stage}
+            target_group={project_target_group}
           />
         </Page>
         <Page>page</Page>

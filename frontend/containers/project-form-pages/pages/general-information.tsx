@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 
 import { FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -10,6 +10,7 @@ import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
+import MultiCombobox from 'components/forms/multi-combobox';
 import { ProjectForm } from 'types/project';
 
 import { useGroupedLocations } from 'services/locations/locations';
@@ -27,14 +28,19 @@ const GeneralInformation = ({
   const { formatMessage } = useIntl();
   const { locations } = useGroupedLocations();
   // I don't know if there is a better way to get all items, since the default page size is 10. I'm assuming that there will not be more than 1000 locations.
-  const { projectDevelopers } = useProjectDevelopersList({ 'page[size]': 1000 });
+  const { projectDevelopers } = useProjectDevelopersList({
+    'page[size]': 1000,
+    fields: ['name'],
+  });
 
   useEffect(() => {
     // This is just for when the user get back to this page (the page mounts), it shows the select if there is any value selected
-    if (getValues('involved_project_developer')) {
-      setShowInvolvedProjectDevelopers(true);
-    }
+    setShowInvolvedProjectDevelopers(getValues('involved_project_developer'));
   }, [getValues]);
+
+  const handleChangeInvolvedProjectDeveloper = (e: ChangeEvent<HTMLInputElement>) => {
+    setShowInvolvedProjectDevelopers(!!Number(e.target.value));
+  };
 
   return (
     <div>
@@ -47,7 +53,7 @@ const GeneralInformation = ({
           id="avVMND"
         />
       </p>
-      <form>
+      <form noValidate>
         <div className="mb-6.5">
           <Label htmlFor="name">
             <span className="mr-2.5">
@@ -98,9 +104,9 @@ const GeneralInformation = ({
           <ErrorMessage id="name" errorText={errors?.project_gallery?.message} />
         </div>
         <div className="mb-6.5">
-          <p className="mb-2.5 text-gray-600">
+          <h2 className="mb-2.5 text-gray-600">
             <FormattedMessage defaultMessage="Location" id="rvirM2" />
-          </p>
+          </h2>
           <div className="gap-8 md:flex">
             <div className="w-full">
               <Label htmlFor="country">
@@ -185,9 +191,9 @@ const GeneralInformation = ({
           <ErrorMessage id="name" errorText={errors?.location?.message} />
         </div>
         <div className="mb-6.5">
-          <p className="mb-2.5 text-gray-600">
+          <h2 className="mb-2.5 text-gray-600">
             <FormattedMessage defaultMessage="Project developers" id="0wBg9P" />
-          </p>
+          </h2>
           <div>
             {/* This fieldset is not a part of the form, it is just to control the visibility of the project developers select. It will be removed from the payload */}
             <fieldset name="involved_project_developer">
@@ -205,25 +211,26 @@ const GeneralInformation = ({
                   })}
                 />
               </legend>
-              <Label className="block font-normal">
+              <Label id="involved-project-developer-yes" className="block font-normal">
                 <input
-                  id="involved-project-developer"
+                  id="involved-project-developer-yes"
                   type="radio"
                   value={1}
                   className="mr-2"
-                  {...register('involved_project_developer')}
-                  onChange={() => setShowInvolvedProjectDevelopers(true)}
+                  {...register('involved_project_developer', {
+                    onChange: handleChangeInvolvedProjectDeveloper,
+                  })}
                 />
                 <FormattedMessage defaultMessage="Yes" id="a5msuh" />
               </Label>
-              <Label className="block mt-4 font-normal">
+              <Label htmlFor="involved-project-developer-no" className="block mt-4 font-normal">
                 <input
-                  id="involved-project-developer"
+                  id="involved-project-developer-no"
                   type="radio"
                   value={0}
                   className="mr-2"
                   {...register('involved_project_developer', {
-                    onChange: () => setShowInvolvedProjectDevelopers(false),
+                    onChange: handleChangeInvolvedProjectDeveloper,
                   })}
                 />
                 <FormattedMessage defaultMessage="No" id="oUWADl" />
@@ -239,7 +246,7 @@ const GeneralInformation = ({
                 hidden: !showInvolvedProjectDevelopers,
               })}
             >
-              <Combobox
+              <MultiCombobox
                 id="involved-project-developer-ids"
                 aria-label={formatMessage({
                   defaultMessage: 'Project developers involved in the project',
@@ -258,14 +265,24 @@ const GeneralInformation = ({
                 {[
                   ...projectDevelopers,
                   // The hardcoded option Not Listed
-                  { id: 'not-listed', attributes: { name: 'not listed' } },
+                  {
+                    id: 'not-listed',
+                    attributes: {
+                      name: formatMessage({ defaultMessage: 'Not listed', id: '8rAlFa' }),
+                    },
+                  },
                 ]?.map(({ id, attributes: { name } }) => (
                   <Option key={id}>{name}</Option>
                 ))}
-              </Combobox>
+              </MultiCombobox>
+              <ErrorMessage
+                id="name"
+                errorText={
+                  (errors?.involved_project_developer_ids as unknown as FieldError)?.message
+                }
+              />
             </div>
           </div>
-          <ErrorMessage id="name" errorText={errors?.involved_project_developer_ids?.[0].message} />
         </div>
       </form>
     </div>
