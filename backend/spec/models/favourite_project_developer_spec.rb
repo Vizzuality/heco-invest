@@ -14,4 +14,10 @@ RSpec.describe FavouriteProjectDeveloper, type: :model do
     subject.project_developer = nil
     expect(subject).to have(1).errors_on(:project_developer)
   end
+
+  it "should not be valid when project_developer is already favourite" do
+    favourite_project_developer = create :favourite_project_developer
+    subject.assign_attributes favourite_project_developer.attributes
+    expect(subject).to have(1).errors_on(:project_developer)
+  end
 end

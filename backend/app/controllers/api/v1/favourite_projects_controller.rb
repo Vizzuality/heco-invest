@@ -5,7 +5,7 @@ module API
       before_action :fetch_projects
 
       def create
-        @project.favourite_projects.create! user: current_user
+        @project.favourite_projects.create user: current_user
         render json: ProjectSerializer.new(@project, params: {current_user: current_user}).serializable_hash
       end
 

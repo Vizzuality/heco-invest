@@ -5,7 +5,7 @@ module API
       before_action :fetch_project_developers
 
       def create
-        @project_developer.favourite_project_developers.create! user: current_user
+        @project_developer.favourite_project_developers.create user: current_user
         render json: ProjectDeveloperSerializer.new(
           @project_developer,
           params: {current_user: current_user}
