@@ -228,6 +228,8 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
+                  projects: {"$ref" => "#/components/schemas/response_relations"},
+                  involved_projects: {"$ref" => "#/components/schemas/response_relations"},
                   owner: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }

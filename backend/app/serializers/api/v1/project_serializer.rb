@@ -10,7 +10,7 @@ module API
         :estimated_duration_in_months,
         :target_groups,
         :impact_areas,
-        :categories,
+        :category,
         :sdgs,
         :involved_project_developer_not_listed,
         :problem,
