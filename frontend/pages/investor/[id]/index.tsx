@@ -4,14 +4,16 @@ import { useIntl, FormattedMessage } from 'react-intl';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import ProfileHeader from 'containers/profile-header';
-import SDGs, { SDGType } from 'containers/sdgs';
+import SDGs from 'containers/sdgs';
 import { SocialType } from 'containers/social-contact/website-social-contact';
 import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
+import sdgsMock from 'mockups/sdgs.json';
 import { PageComponent } from 'types';
+import { Enum } from 'types/enums';
 
 export async function getServerSideProps(ctx) {
   return {
@@ -74,13 +76,13 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
     },
   ];
 
-  const sdgsItems: SDGType[] = [
-    { id: 'no-poverty', title: 'No poverty' },
-    { id: 'gender-equality', title: 'Gender equality' },
-    { id: 'decent-work', title: 'Decent work and economic growth' },
-    { id: 'reduced-inequalities', title: 'Reduced inequalities' },
-    { id: 'climate-action', title: 'Climate action' },
-    { id: 'life-on-land', title: 'Life on land' },
+  const sdgsItems = [
+    sdgsMock[0],
+    sdgsMock[4],
+    sdgsMock[7],
+    sdgsMock[9],
+    sdgsMock[12],
+    sdgsMock[14],
   ];
 
   return (
@@ -111,7 +113,7 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
           <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
             <FormattedMessage defaultMessage="Invests in SDG's" id="7qgtEX" />
           </h3>
-          <SDGs className="my-3" sdgs={sdgsItems} />
+          <SDGs className="my-3" sdgs={sdgsItems as Enum[]} />
 
           <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
             <FormattedMessage defaultMessage="How do they work?" id="KtecFi" />

@@ -60,4 +60,5 @@ export enum EnumTypes {
   ProjectDeveloperType = 'project_developer_type',
   InvestorType = 'investor_type',
   LocationType = 'location_type',
+  SDGType = 'sdg',
 }
