@@ -42,17 +42,27 @@ export function useProjectDevelopersList(
 }
 
 /** Get a Project Developer using an id and, optionally, the wanted fields */
-export const getProjectDeveloper = async (id: string): Promise<ProjectDeveloper> => {
+export const getProjectDeveloper = async (
+  id: string,
+  params?: {
+    fields?: string;
+    includes?: string;
+  }
+): Promise<{
+  data: ProjectDeveloper;
+  included: any[]; // TODO: Project[] | User[]
+}> => {
   const config: AxiosRequestConfig = {
     url: `/api/v1/project_developers/${id}`,
     method: 'GET',
+    params: params,
   };
-  return await API.request(config).then((response) => response.data.data);
+  return await API.request(config).then((response) => response.data);
 };
 
 /** Use query for a single Project Developer */
-export function useProjectDeveloper(id: string) {
-  const query = useQuery([Queries.ProjectDeveloper, id], () => getProjectDeveloper(id));
+export function useProjectDeveloper(id: string, params) {
+  const query = useQuery([Queries.ProjectDeveloper, id], () => getProjectDeveloper(id, params));
 
   return useMemo(
     () => ({

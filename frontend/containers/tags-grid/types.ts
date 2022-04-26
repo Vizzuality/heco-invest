@@ -1,12 +1,10 @@
-import type { CategoryType } from 'types/category';
-
 export type TagsGridRowType = {
   /** Label for the tags list */
   title: string;
   /** Type of tags to display. Defaults to `default` */
   type?: 'default' | 'category';
   /** Array of strings for `default` tags, or array of { id, title } for `category` tags */
-  tags: string[] | { id: CategoryType; name: string }[];
+  tags: string[] | { id: string; name: string }[];
 };
 
 export type TagsGridProps = {
