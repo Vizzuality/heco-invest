@@ -10,7 +10,7 @@ module API
         :estimated_duration_in_months,
         :target_groups,
         :impact_areas,
-        :categories,
+        :category,
         :sdgs,
         :involved_project_developer_not_listed,
         :problem,
@@ -30,6 +30,7 @@ module API
 
       belongs_to :project_developer
       has_many :involved_project_developers, serializer: ProjectDeveloperSerializer
+      has_many :project_images
     end
   end
 end

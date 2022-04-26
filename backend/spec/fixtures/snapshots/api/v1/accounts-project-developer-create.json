@@ -30,7 +30,10 @@
         "original": null
       },
       "contact_email": "contact@example.com",
-      "contact_phone": null
+      "contact_phone": null,
+      "mosaics": [
+        "amazon-heart"
+      ]
     },
     "relationships": {
       "owner": {
@@ -39,12 +42,14 @@
           "type": "user"
         }
       },
-      "locations": {
+      "projects": {
         "data": [
-          {
-            "id": "ee9c7f56-552d-4313-9bcd-e1fc08be69bc",
-            "type": "location"
-          }
+
+        ]
+      },
+      "involved_projects": {
+        "data": [
+
         ]
       }
     }

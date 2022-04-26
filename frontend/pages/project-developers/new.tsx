@@ -29,7 +29,7 @@ import TagGroup from 'components/forms/tag-group';
 import TextArea from 'components/forms/textarea';
 import Head from 'components/head';
 import { Queries } from 'enums';
-import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
+import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import languages from 'locales.config.json';
 import { PageComponent } from 'types';
 import { CategoryType } from 'types/category';
@@ -69,7 +69,7 @@ const getItemsInfoText = (items: Enum[] | Locations[]) => {
   );
 };
 
-const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProps> = () => {
+const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps> = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [showLeave, setShowLeave] = useState(false);
   const { formatMessage } = useIntl();
@@ -88,7 +88,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
     setError,
     setValue,
     clearErrors,
-    watch,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
     defaultValues: { categories: [], impacts: [], mosaics: [] },
@@ -261,12 +260,12 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
           <form className="flex flex-col justify-between" noValidate>
             <div className="mb-10">
               <h1 className="mb-2 font-serif text-3xl font-semibold">
-                <FormattedMessage defaultMessage="Project developer information" id="n2WWAj" />
+                <FormattedMessage defaultMessage="Project developer profile" id="twK/jv" />
               </h1>
               <p className="font-sans text-base text-gray-600">
                 <FormattedMessage
-                  defaultMessage="General information about the account profile."
-                  id="aplkMy"
+                  defaultMessage="General information about the the project developer."
+                  id="CiBvks"
                 />
               </p>
             </div>
@@ -291,7 +290,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
             <div className="md:flex gap-x-6 mb-6.5">
               <div className="md:w-1/2 mb-6.5 md:m-0">
                 <Label htmlFor="profile">
-                  <FormattedMessage defaultMessage="Profile name" id="s+n2ku" />
+                  <FormattedMessage defaultMessage="Project developer name" id="Sv/Mtz" />
                   <Input
                     name="name"
                     className="mt-2.5"
@@ -300,8 +299,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                     type="text"
                     register={register}
                     placeholder={formatMessage({
-                      defaultMessage: 'insert the profile name',
-                      id: '0WHWA/',
+                      defaultMessage: 'insert the name',
+                      id: 'WAr33U',
                     })}
                     aria-describedby="profile-error"
                   />
@@ -310,7 +309,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
               </div>
               <div className="md:w-1/2">
                 <Label htmlFor="project-developer-type" id="project-developer-type-label">
-                  <FormattedMessage defaultMessage="Type" id="+U6ozc" />
+                  <FormattedMessage defaultMessage="Project developer type" id="3tWxy0" />
                   <Combobox
                     control={control}
                     controlOptions={{ disabled: false }}
@@ -382,8 +381,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   register={register}
                   aria-required
                   placeholder={formatMessage({
-                    defaultMessage: 'insert your answer (max 500 characters)',
-                    id: 'rBoq14',
+                    defaultMessage: 'insert your answer (max 600 characters)',
+                    id: 'hPsrc0',
                   })}
                   aria-describedby="about-error"
                 />
@@ -485,7 +484,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                 <FormattedMessage defaultMessage="About your work" id="kEXoaQ" />
               </h1>
               <p className="font-sans text-base text-gray-600">
-                <FormattedMessage defaultMessage="Tell us about your work." id="Y6xIpg" />
+                <FormattedMessage
+                  defaultMessage="Tell us about your work and impact priorities."
+                  id="ViF88C"
+                />
               </p>
             </div>
             {interests.map(({ name, title, items, infoText }) => (
@@ -497,7 +499,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
                   </legend>
                   <TagGroup
                     name={name}
-                    watch={watch}
                     setValue={setValue}
                     errors={errors}
                     clearErrors={clearErrors}
@@ -536,7 +537,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, NakedPageLayoutProp
 };
 
 ProjectDeveloper.layout = {
-  Component: NakedPageLayout,
+  Component: FormPageLayout,
 };
 
 export default ProjectDeveloper;

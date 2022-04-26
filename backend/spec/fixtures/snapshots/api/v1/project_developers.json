@@ -4,60 +4,6 @@
       "id": "e77a6842-1039-421c-bb14-72ac4cb1a271",
       "type": "project_developer",
       "attributes": {
-        "name": "Kutch-Spencer",
-        "slug": "kutch-spencer",
-        "about": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "website": "https://kutch-spencer.com",
-        "instagram": "https://instagram.com/kutch-spencer",
-        "facebook": "https://facebook.com/kutch-spencer",
-        "linkedin": "https://linkedin.com/kutch-spencer",
-        "twitter": "https://twitter.com/kutch-spencer",
-        "mission": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "project_developer_type": "ngo",
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
-        "impacts": [
-          "climate",
-          "water"
-        ],
-        "language": "en",
-        "entity_legal_registration_number": "564823570",
-        "review_status": "approved",
-        "picture": {
-          "small": null,
-          "medium": null,
-          "original": null
-        },
-        "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
-      },
-      "relationships": {
-        "owner": {
-          "data": {
-            "id": "b8d88cc9-2f87-4c3d-a957-47fa06e18b4c",
-            "type": "user"
-          }
-        },
-        "locations": {
-          "data": [
-            {
-              "id": "f9d1804c-3767-403b-8477-fe62d8324426",
-              "type": "location"
-            },
-            {
-              "id": "7f727927-2705-4342-813c-f003cc26e360",
-              "type": "location"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "id": "800ae5d4-90f2-4945-ab30-fb2615335ac1",
-      "type": "project_developer",
-      "attributes": {
         "name": "Bartoletti and Sons",
         "slug": "bartoletti-and-sons",
         "about": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
@@ -85,16 +31,28 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
           "data": {
-            "id": "70e89f31-f94f-42fa-bab7-0d700616dc71",
+            "id": "b8d88cc9-2f87-4c3d-a957-47fa06e18b4c",
             "type": "user"
           }
         },
-        "locations": {
+        "projects": {
+          "data": [
+            {
+              "id": "431b302d-dd94-41e0-b020-824be568db16",
+              "type": "project"
+            }
+          ]
+        },
+        "involved_projects": {
           "data": [
 
           ]
@@ -102,7 +60,7 @@
       }
     },
     {
-      "id": "43524765-d458-49d5-bfd4-ee3a1c1fdc55",
+      "id": "800ae5d4-90f2-4945-ab30-fb2615335ac1",
       "type": "project_developer",
       "attributes": {
         "name": "Hane, Lehner and Goyette",
@@ -132,7 +90,70 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
+      },
+      "relationships": {
+        "owner": {
+          "data": {
+            "id": "70e89f31-f94f-42fa-bab7-0d700616dc71",
+            "type": "user"
+          }
+        },
+        "projects": {
+          "data": [
+            {
+              "id": "cbf5525d-6706-4b5c-9471-75105c460a99",
+              "type": "project"
+            }
+          ]
+        },
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "43524765-d458-49d5-bfd4-ee3a1c1fdc55",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Kutch-Spencer",
+        "slug": "kutch-spencer",
+        "about": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "website": "https://kutch-spencer.com",
+        "instagram": "https://instagram.com/kutch-spencer",
+        "facebook": "https://facebook.com/kutch-spencer",
+        "linkedin": "https://linkedin.com/kutch-spencer",
+        "twitter": "https://twitter.com/kutch-spencer",
+        "mission": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "project_developer_type": "ngo",
+        "categories": [
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en",
+        "entity_legal_registration_number": "564823570",
+        "review_status": "approved",
+        "picture": {
+          "small": null,
+          "medium": null,
+          "original": null
+        },
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -141,9 +162,21 @@
             "type": "user"
           }
         },
-        "locations": {
+        "projects": {
           "data": [
 
+          ]
+        },
+        "involved_projects": {
+          "data": [
+            {
+              "id": "431b302d-dd94-41e0-b020-824be568db16",
+              "type": "project"
+            },
+            {
+              "id": "cbf5525d-6706-4b5c-9471-75105c460a99",
+              "type": "project"
+            }
           ]
         }
       }
@@ -179,7 +212,11 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -188,7 +225,12 @@
             "type": "user"
           }
         },
-        "locations": {
+        "projects": {
+          "data": [
+
+          ]
+        },
+        "involved_projects": {
           "data": [
 
           ]
@@ -226,7 +268,11 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -235,7 +281,12 @@
             "type": "user"
           }
         },
-        "locations": {
+        "projects": {
+          "data": [
+
+          ]
+        },
+        "involved_projects": {
           "data": [
 
           ]
@@ -273,7 +324,11 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -282,7 +337,12 @@
             "type": "user"
           }
         },
-        "locations": {
+        "projects": {
+          "data": [
+
+          ]
+        },
+        "involved_projects": {
           "data": [
 
           ]
@@ -320,7 +380,11 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -329,7 +393,124 @@
             "type": "user"
           }
         },
-        "locations": {
+        "projects": {
+          "data": [
+
+          ]
+        },
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "52f768fc-f856-4250-b5fd-179a17b4954e",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Runolfsson and Sons",
+        "slug": "runolfsson-and-sons",
+        "about": "Est vero minus. Tenetur tempora animi. Aliquid error vitae. Ipsam omnis aut.",
+        "website": "https://runolfsson-and-sons.com",
+        "instagram": "https://instagram.com/runolfsson-and-sons",
+        "facebook": "https://facebook.com/runolfsson-and-sons",
+        "linkedin": "https://linkedin.com/runolfsson-and-sons",
+        "twitter": "https://twitter.com/runolfsson-and-sons",
+        "mission": "Est vero minus. Tenetur tempora animi. Aliquid error vitae. Ipsam omnis aut.",
+        "project_developer_type": "ngo",
+        "categories": [
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en",
+        "entity_legal_registration_number": "564823570",
+        "review_status": "approved",
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ],
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TmpZMk5qa3hNeTFpTVRsbUxUUmxZakl0WWpBME5pMDFOamcxWlRkbU1UTTNOakVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c3656d0f3e3a002b6a1ffd468fc7b13e1e089c2b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TmpZMk5qa3hNeTFpTVRsbUxUUmxZakl0WWpBME5pMDFOamcxWlRkbU1UTTNOakVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c3656d0f3e3a002b6a1ffd468fc7b13e1e089c2b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TmpZMk5qa3hNeTFpTVRsbUxUUmxZakl0WWpBME5pMDFOamcxWlRkbU1UTTNOakVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c3656d0f3e3a002b6a1ffd468fc7b13e1e089c2b/picture.jpg"
+        }
+      },
+      "relationships": {
+        "owner": {
+          "data": {
+            "id": "e2e59041-3d31-4d48-ae84-d8595f137563",
+            "type": "user"
+          }
+        },
+        "projects": {
+          "data": [
+
+          ]
+        },
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "011be9a9-7fe7-4c66-b558-b51a98105d7a",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Ritchie, Glover and Ward",
+        "slug": "ritchie-glover-and-ward",
+        "about": "Impedit animi eveniet. Quia illum aut. Dolore quia officiis. Non aut sit.",
+        "website": "https://ritchie-glover-and-ward.com",
+        "instagram": "https://instagram.com/ritchie-glover-and-ward",
+        "facebook": "https://facebook.com/ritchie-glover-and-ward",
+        "linkedin": "https://linkedin.com/ritchie-glover-and-ward",
+        "twitter": "https://twitter.com/ritchie-glover-and-ward",
+        "mission": "Impedit animi eveniet. Quia illum aut. Dolore quia officiis. Non aut sit.",
+        "project_developer_type": "ngo",
+        "categories": [
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "language": "en",
+        "entity_legal_registration_number": "564823570",
+        "review_status": "approved",
+        "contact_email": "contact@example.com",
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ],
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1TldZMlpHSmpPQzB6T0dRMExUUTNaalV0WWpjeFlTMDNNMlUwWXpWaFlXTmtNMllHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--7986533e2ac9b0526c13d30519052a32459a9999/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1TldZMlpHSmpPQzB6T0dRMExUUTNaalV0WWpjeFlTMDNNMlUwWXpWaFlXTmtNMllHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--7986533e2ac9b0526c13d30519052a32459a9999/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1TldZMlpHSmpPQzB6T0dRMExUUTNaalV0WWpjeFlTMDNNMlUwWXpWaFlXTmtNMllHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--7986533e2ac9b0526c13d30519052a32459a9999/picture.jpg"
+        }
+      },
+      "relationships": {
+        "owner": {
+          "data": {
+            "id": "4a22974c-95a6-484e-a642-f6647c3948b4",
+            "type": "user"
+          }
+        },
+        "projects": {
+          "data": [
+
+          ]
+        },
+        "involved_projects": {
           "data": [
 
           ]
@@ -341,8 +522,8 @@
     "page": 1,
     "per_page": 10,
     "from": 1,
-    "to": 7,
-    "total": 7,
+    "to": 9,
+    "total": 9,
     "pages": 1
   },
   "links": {

@@ -7,7 +7,7 @@ FactoryBot.define do
     end
 
     development_stage { "scaling-up" }
-    categories { %w[forestry-and-agroforestry non-timber-forest-production] }
+    category { "forestry-and-agroforestry" }
     sdgs { [1, 4, 5] }
     target_groups { %w[urban-populations indigenous-peoples] }
     impact_areas { %w[pollutants-reduction carbon-emission-reduction] }
@@ -69,6 +69,10 @@ FactoryBot.define do
     trait :with_involved_project_developers do
       involved_project_developers { create_list(:project_developer, 2) }
       involved_project_developer_not_listed { true }
+    end
+
+    trait :with_project_images do
+      project_images { [build(:project_image, project: nil), build(:project_image, project: nil)] }
     end
   end
 end

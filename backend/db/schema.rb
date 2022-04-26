@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_12_133916) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_21_142923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -163,16 +163,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_133916) do
     t.index ["slug"], name: "index_open_calls_on_slug", unique: true
   end
 
-  create_table "project_developer_locations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "location_id", null: false
-    t.uuid "project_developer_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["location_id", "project_developer_id"], name: "uniq_index_project_developer_id_on_location_id", unique: true
-    t.index ["location_id"], name: "index_project_developer_locations_on_location_id"
-    t.index ["project_developer_id"], name: "index_project_developer_locations_on_project_developer_id"
-  end
-
   create_table "project_developers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "account_id", null: false
     t.string "project_developer_type", null: false
@@ -188,7 +178,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_133916) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "entity_legal_registration_number", null: false
+    t.string "mosaics", array: true
     t.index ["account_id"], name: "index_project_developers_on_account_id"
+  end
+
+  create_table "project_images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "project_id", null: false
+    t.boolean "cover", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_images_on_project_id"
   end
 
   create_table "project_involvements", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -211,7 +210,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_133916) do
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
     t.text "address"
-    t.string "categories", array: true
     t.string "ticket_size", null: false
     t.string "instrument_types", null: false, array: true
     t.integer "sdgs", array: true
@@ -263,6 +261,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_133916) do
     t.text "relevant_links_en"
     t.text "relevant_links_es"
     t.text "relevant_links_pt"
+    t.string "category", null: false
     t.index ["country_id"], name: "index_projects_on_country_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
     t.index ["municipality_id"], name: "index_projects_on_municipality_id"
@@ -305,9 +304,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_133916) do
   add_foreign_key "location_members", "locations", on_delete: :cascade
   add_foreign_key "locations", "locations", column: "parent_id", on_delete: :cascade
   add_foreign_key "open_calls", "investors", on_delete: :cascade
-  add_foreign_key "project_developer_locations", "locations", on_delete: :cascade
-  add_foreign_key "project_developer_locations", "project_developers", on_delete: :cascade
   add_foreign_key "project_developers", "accounts", on_delete: :cascade
+  add_foreign_key "project_images", "projects", on_delete: :cascade
   add_foreign_key "project_involvements", "project_developers", on_delete: :cascade
   add_foreign_key "project_involvements", "projects", on_delete: :cascade
   add_foreign_key "projects", "locations", column: "country_id"

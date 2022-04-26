@@ -12,7 +12,10 @@ module API
               language: current_user.account.language
             )
           )
-          render json: ProjectSerializer.new(project).serializable_hash
+          render json: ProjectSerializer.new(
+            project,
+            include: included_relationships(parameters: params.fetch(:project_params, params))
+          ).serializable_hash
         end
 
         private
@@ -33,6 +36,7 @@ module API
               :expected_impact,
               :looking_for_funding,
               :funding_plan,
+              :category,
               :ticket_size,
               :received_funding,
               :received_funding_amount_usd,
@@ -43,11 +47,11 @@ module API
               :description,
               :relevant_links,
               involved_project_developer_ids: [],
-              categories: [],
               target_groups: [],
               impact_areas: [],
               sdgs: [],
-              instrument_types: []
+              instrument_types: [],
+              project_images_attributes: %i[id file cover _destroy]
             )
         end
       end

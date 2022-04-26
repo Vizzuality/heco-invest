@@ -191,7 +191,9 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  involved_project_developer: {"$ref" => "#/components/schemas/response_relation"}
+                  project_developer: {"$ref" => "#/components/schemas/response_relation"},
+                  involved_project_developer: {"$ref" => "#/components/schemas/response_relation"},
+                  project_images: {"$ref" => "#/components/schemas/response_relations"}
                 }
               }
             },
@@ -218,6 +220,7 @@ RSpec.configure do |config|
                   project_developer_type: {type: :string, nullable: true},
                   categories: {type: :array, items: {type: :string}},
                   impacts: {type: :array, items: {type: :string}},
+                  mosaics: {type: :array, items: {type: :string}},
                   language: {type: :string},
                   entity_legal_registration_number: {type: :string}
                 }
@@ -225,7 +228,8 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  locations: {"$ref" => "#/components/schemas/response_relations"},
+                  projects: {"$ref" => "#/components/schemas/response_relations"},
+                  involved_projects: {"$ref" => "#/components/schemas/response_relations"},
                   owner: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }

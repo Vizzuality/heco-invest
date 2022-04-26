@@ -4,10 +4,13 @@ module API
       include API::Pagination
 
       def index
-        project_developers = ProjectDeveloper.all.includes(:locations, account: [:owner, {picture_attachment: :blob}])
+        project_developers = ProjectDeveloper.all.includes(
+          :projects, :involved_projects, account: [:owner, {picture_attachment: :blob}]
+        )
         pagy_object, project_developers = pagy(project_developers, page: current_page, items: per_page)
         render json: ProjectDeveloperSerializer.new(
           project_developers,
+          include: included_relationships,
           fields: sparse_fieldset,
           links: pagination_links(:api_v1_project_developers_path, pagy_object),
           meta: pagination_meta(pagy_object)
@@ -19,6 +22,7 @@ module API
 
         render json: ProjectDeveloperSerializer.new(
           project_developer,
+          include: included_relationships,
           fields: sparse_fieldset
         ).serializable_hash
       end

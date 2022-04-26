@@ -32,11 +32,25 @@ RSpec.describe "API V1 Account Projects", type: :request do
       progress_impact_tracking: {type: :string},
       description: {type: :string},
       relevant_links: {type: :string},
-      "categories[]": {type: :array, items: {type: :string, enum: Category::TYPES}, collectionFormat: :multi},
+      category: {type: :string, enum: Category::TYPES},
       "target_groups[]": {type: :array, items: {type: :string, enum: ProjectTargetGroup::TYPES}, collectionFormat: :multi},
       "impact_areas[]": {type: :array, items: {type: :string, enum: ImpactArea::TYPES}, collectionFormat: :multi},
       "sdgs[]": {type: :array, items: {type: :integer, enum: Sdg::TYPES}, collectionFormat: :multi},
-      "instrument_types[]": {type: :array, items: {type: :string, enum: InstrumentType::TYPES}, collectionFormat: :multi}
+      "instrument_types[]": {type: :array, items: {type: :string, enum: InstrumentType::TYPES}, collectionFormat: :multi},
+      "project_images_attributes[]": {
+        type: :array,
+        items: {
+          type: :object,
+          properties: {
+            file: {type: :file},
+            cover: {type: :boolean},
+            _destroy: {type: :string}
+          },
+          required: %w[file cover]
+        },
+        collectionFormat: :multi
+      },
+      includes: {type: :string}
     },
     required: %w[
       name country_id municipality_id department_id
@@ -78,11 +92,16 @@ RSpec.describe "API V1 Account Projects", type: :request do
           relevant_links: "Here relevant links",
           involved_project_developer_ids: project_developers.map(&:id),
           involved_project_developer_not_listed: true,
-          categories: %w[sustainable-agrosystems tourism-and-recreation],
+          category: "sustainable-agrosystems",
           target_groups: %w[urban-populations indigenous-peoples],
           impact_areas: %w[restoration pollutants-reduction],
           sdgs: [2, 4, 5],
-          instrument_types: %w[grant]
+          instrument_types: %w[grant],
+          project_images_attributes: [
+            {file: fixture_file_upload("picture.jpg"), cover: true},
+            {file: fixture_file_upload("picture.jpg"), cover: false}
+          ],
+          includes: "project_images"
         }
       end
 
@@ -105,7 +124,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
 
       response "422", "Validation errors" do
         schema type: :object, properties: {
-          data: {"$ref" => "#/components/schemas/error"}
+          data: {"$ref" => "#/components/schemas/errors"}
         }
         let("X-CSRF-TOKEN") { get_csrf_token }
 

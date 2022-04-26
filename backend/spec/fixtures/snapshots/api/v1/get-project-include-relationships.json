@@ -46,7 +46,11 @@
           "original": null
         },
         "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx"
+        "contact_phone": "+57-1-xxx-xx-xx",
+        "mosaics": [
+          "amazon-heart",
+          "amazonian-piedmont-massif"
+        ]
       },
       "relationships": {
         "owner": {
@@ -55,7 +59,15 @@
             "type": "user"
           }
         },
-        "locations": {
+        "projects": {
+          "data": [
+            {
+              "id": "f25fd3bc-71b5-4217-8636-e61e3285ee48",
+              "type": "project"
+            }
+          ]
+        },
+        "involved_projects": {
           "data": [
 
           ]

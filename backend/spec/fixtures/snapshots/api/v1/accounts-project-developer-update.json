@@ -30,7 +30,10 @@
         "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyT1RGbU1tUmhNQzB6TXpJMExUUXhaak10T1Rnd1ppMHpPVFprWlRBell6RmtNVEVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--05ff4a71a0f11d5230c17c96e1c5237c307a282a/picture.jpg"
       },
       "contact_email": "contact@example.com",
-      "contact_phone": "+57-1-xxx-xx-xx"
+      "contact_phone": "+57-1-xxx-xx-xx",
+      "mosaics": [
+        "amazon-heart"
+      ]
     },
     "relationships": {
       "owner": {
@@ -39,12 +42,14 @@
           "type": "user"
         }
       },
-      "locations": {
+      "projects": {
         "data": [
-          {
-            "id": "9068294f-9398-4323-83c2-e3de979dae0d",
-            "type": "location"
-          }
+
+        ]
+      },
+      "involved_projects": {
+        "data": [
+
         ]
       }
     }
