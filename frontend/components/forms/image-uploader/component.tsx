@@ -16,7 +16,6 @@ export const ImageUploader = <FormValues extends FieldValues>({
   name,
   id,
   buttonText,
-  onChangeImage,
   registerOptions,
   ...rest
 }: ImageUploaderProps<FormValues>) => {
@@ -28,7 +27,6 @@ export const ImageUploader = <FormValues extends FieldValues>({
       const file = e.currentTarget.files[0];
       const src = URL.createObjectURL(file);
       setImagePreview(src);
-      onChangeImage?.();
     } else {
       setImagePreview(null);
     }
@@ -54,7 +52,6 @@ export const ImageUploader = <FormValues extends FieldValues>({
       <input
         id={id}
         className="p-1 font-sans outline-none file:transition-all file:mr-4 file:px-6 file:font-medium file:text-sm file file:py-2 file:rounded-full file:border-0 file:bg-green-dark file:text-white file:hover:text-green-light file:hover:disabled:text-white disabled:opacity-60 file:cursor-pointer file:disabled:pointer-events-none file:focus-visible:outline file:focus-visible:outline-2 file:focus-visible:outline-offset-2 file:focus-visible:outline-green-dark"
-
         type="file"
         accept="image/png, image/jpeg"
         {...rest}

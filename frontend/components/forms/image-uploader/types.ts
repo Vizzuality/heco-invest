@@ -15,6 +15,4 @@ export type ImageUploaderProps<FormValues> = {
   previewClassName?: string;
   /** text showed on the button. Default id 'Upload Image' with translation  */
   buttonText?: string;
-  /** callback called when input changes (the image is uploaded) */
-  onChangeImage?: () => void;
 };
