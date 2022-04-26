@@ -12,7 +12,7 @@ import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 import { GeneralInformation } from 'containers/project-form-pages';
 
 import Head from 'components/head';
-import NakedPageLayout, { NakedPageLayoutProps } from 'layouts/naked-page';
+import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import { PageComponent } from 'types';
 import { ProjectForm } from 'types/project';
 import useProjectValidation from 'validations/project';
@@ -30,7 +30,7 @@ export async function getStaticProps(ctx) {
 
 type ProjectProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Project: PageComponent<ProjectProps, NakedPageLayoutProps> = () => {
+const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
   const [currentPage, setCurrentPage] = useState(0);
   // To use with the confirm leave modal
   const [showLeave, setShowLeave] = useState(false);
@@ -125,7 +125,7 @@ const Project: PageComponent<ProjectProps, NakedPageLayoutProps> = () => {
 };
 
 Project.layout = {
-  Component: NakedPageLayout,
+  Component: FormPageLayout,
 };
 
 export default Project;
