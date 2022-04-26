@@ -9,7 +9,7 @@ import { InferGetStaticPropsType } from 'next';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
-import { GeneralInformation } from 'containers/project-form-pages';
+import { GeneralInformation, ProjectDescription } from 'containers/project-form-pages';
 
 import Head from 'components/head';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
@@ -45,6 +45,8 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
     formState: { errors },
     control,
     getValues,
+    setValue,
+    clearErrors,
   } = useForm<ProjectForm>({
     resolver,
     shouldUseNativeValidation: true,
@@ -116,6 +118,18 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             control={control}
             errors={errors}
             getValues={getValues}
+          />
+        </Page>
+        <Page key="project-description">
+          <ProjectDescription
+            register={register}
+            control={control}
+            setValue={setValue}
+            errors={errors}
+            clearErrors={clearErrors}
+            // category={category}
+            // project_development_stage={project_development_stage}
+            // target_group={target_group}
           />
         </Page>
         <Page>page</Page>
