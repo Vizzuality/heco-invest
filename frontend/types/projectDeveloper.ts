@@ -5,7 +5,9 @@ import { Languages } from 'enums';
 import { CategoryType } from './category';
 import { Enum } from './enums';
 
-type ProjectDeveloperBase = {
+export type ProjectDeveloper = {
+  id: string;
+  type: 'project_developer';
   name: string;
   about: string;
   website?: string;
@@ -23,35 +25,7 @@ type ProjectDeveloperBase = {
   entity_legal_registration_number: string;
 };
 
-export type ProjectDeveloper = {
-  id: string;
-  type: 'project_developer';
-  attributes: ProjectDeveloperBase & {
-    slug: string;
-    review_status: 'approved';
-    picture: {
-      small: string;
-      medium: string;
-      original: string;
-    };
-  };
-  relationships: {
-    owner: {
-      data: {
-        id: string;
-        type: 'user';
-      };
-    };
-    locations: {
-      data: {
-        id: string;
-        type: 'location';
-      }[];
-    };
-  };
-};
-
-export type ProjectDeveloperSetupForm = ProjectDeveloperBase & {
+export type ProjectDeveloperSetupForm = ProjectDeveloper & {
   picture: File;
   mosaics?: string[];
 };

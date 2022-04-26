@@ -51,7 +51,7 @@ export const useGroupedLocations = (
     staticDataQueryOptions
   );
 
-  const locations = groupBy(query.data, 'attributes.location_type') as {
+  const locations = groupBy(query.data, 'location_type') as {
     [key in LocationsTypes]: Locations[];
   };
 

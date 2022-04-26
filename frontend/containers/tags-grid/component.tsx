@@ -39,7 +39,7 @@ export const TagsGrid: FC<TagsGridProps> = ({ className, rows }: TagsGridProps) 
               {type === 'category' &&
                 tags.map((tag) => (
                   <CategoryTag key={tag.id} category={tag.id}>
-                    {tag.title}
+                    {tag.name}
                   </CategoryTag>
                 ))}
             </span>

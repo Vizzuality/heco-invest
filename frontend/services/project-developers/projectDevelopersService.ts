@@ -72,7 +72,7 @@ export const useCurrentProjectDeveloper = (user: User) => {
 
   const query = useQuery([Queries.Account, user], getCurrentProjectDeveloper, {
     // Creates the conditional to only fetch the data if the user is a project developer user
-    enabled: user?.attributes?.role === UserRoles.ProjectDeveloper,
+    enabled: user?.role === UserRoles.ProjectDeveloper,
     ...staticDataQueryOptions,
   });
 

@@ -10,19 +10,6 @@ export type LocationsParams = {
 export type Locations = {
   id: string;
   type: 'location';
-  attributes: {
-    name: string;
-    location_type: LocationsTypes;
-  };
-  relationships: {
-    parent: {
-      data: {
-        id: string;
-        type: 'location';
-      };
-    };
-    regions: {
-      data: { id: string; type: 'location' }[];
-    };
-  };
+  name: string;
+  location_type: LocationsTypes;
 };
