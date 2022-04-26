@@ -1,0 +1,138 @@
+[
+  {
+    "id": "no-poverty",
+    "type": "sdg",
+    "attributes": {
+      "name": "No poverty",
+      "image": "/images/sdgs/1-no-poverty.png"
+    }
+  },
+  {
+    "id": "zero-hunger",
+    "type": "sdg",
+    "attributes": {
+      "name": "Zero hunger",
+      "image": "/images/sdgs/2-zero-hunger.png"
+    }
+  },
+  {
+    "id": "good-health",
+    "type": "sdg",
+    "attributes": {
+      "name": "Good health and well-being",
+      "image": "/images/sdgs/3-good-health.png"
+    }
+  },
+  {
+    "id": "quality-education",
+    "type": "sdg",
+    "attributes": {
+      "name": "Quality education",
+      "image": "/images/sdgs/4-quality-education.png"
+    }
+  },
+  {
+    "id": "gender-equality",
+    "type": "sdg",
+    "attributes": {
+      "name": "Gender equality",
+      "image": "/images/sdgs/5-gender-equality.png"
+    }
+  },
+  {
+    "id": "clean-water",
+    "type": "sdg",
+    "attributes": {
+      "name": "Clean water and sanitation",
+      "image": "/images/sdgs/6-clean-water.png"
+    }
+  },
+  {
+    "id": "clean-energy",
+    "type": "sdg",
+    "attributes": {
+      "name": "Affordable and clean energy",
+      "image": "/images/sdgs/7-clean-energy.png"
+    }
+  },
+  {
+    "id": "decent-work",
+    "type": "sdg",
+    "attributes": {
+      "name": "Decent work and economic growth",
+      "image": "/images/sdgs/8-decent-work.png"
+    }
+  },
+  {
+    "id": "industry-innovation",
+    "type": "sdg",
+    "attributes": {
+      "name": "Industry innovation and infrastructure",
+      "image": "/images/sdgs/9-industry-innovation.png"
+    }
+  },
+  {
+    "id": "reduced-inequalities",
+    "type": "sdg",
+    "attributes": {
+      "name": "Reduced inequalities",
+      "image": "/images/sdgs/10-reduced-inequalities.png"
+    }
+  },
+  {
+    "id": "sustainable-cities",
+    "type": "sdg",
+    "attributes": {
+      "name": "Sustainable cities and communities",
+      "image": "/images/sdgs/11-sustainable-cities.png"
+    }
+  },
+  {
+    "id": "responsible-consumption",
+    "type": "sdg",
+    "attributes": {
+      "name": "Responsible consumption and production",
+      "image": "/images/sdgs/12-responsible-consumption.png"
+    }
+  },
+  {
+    "id": "climate-action",
+    "type": "sdg",
+    "attributes": {
+      "name": "Climate action",
+      "image": "/images/sdgs/13-climate-action.png"
+    }
+  },
+  {
+    "id": "life-below-water",
+    "type": "sdg",
+    "attributes": {
+      "name": "Life below water",
+      "image": "/images/sdgs/14-life-below-water.png"
+    }
+  },
+  {
+    "id": "life-on-land",
+    "type": "sdg",
+    "attributes": {
+      "name": "Life on land",
+      "image": "/images/sdgs/15-life-on-land.png"
+    }
+  },
+  {
+    "id": "peace-justice",
+    "type": "sdg",
+    "attributes": {
+      "name": "Peace, justice and strong institutions",
+      "image": "/images/sdgs/16-peace-justice.png"
+    }
+  },
+  {
+    "id": "partnership",
+    "type": "sdg",
+    "attributes": {
+      "name": "Partnerships for the goals",
+      "image": "/images/sdgs/17-partnership.png"
+    }
+  }
+]

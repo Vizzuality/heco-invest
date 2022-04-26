@@ -79,4 +79,5 @@ export enum TicketSizes {
   Prototyping = 'prototyping',
   Validation = 'validation',
   Scaling = 'scaling',
+  SDGType = 'sdg',
 }

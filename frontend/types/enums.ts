@@ -7,6 +7,7 @@ export type Enum = {
     name: string;
     color?: string;
     description?: string;
+    image?: string;
   };
 };
 
