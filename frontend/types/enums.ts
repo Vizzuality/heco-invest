@@ -9,3 +9,7 @@ export type Enum = {
     description?: string;
   };
 };
+
+export type GroupedEnums = {
+  [key in EnumTypes]: Enum[];
+};

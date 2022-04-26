@@ -41,6 +41,8 @@ export enum Queries {
   Mosaics = 'mosaics',
   /** DB Enums */
   EnumList = 'enum_list',
+  /** Locations */
+  Locations = 'locations',
 }
 
 /** Location endpoint param location_type */
@@ -60,14 +62,18 @@ export enum EnumTypes {
   ProjectDeveloperType = 'project_developer_type',
   InvestorType = 'investor_type',
   LocationType = 'location_type',
+  ProjectDevelopmentStage = 'project_development_stage',
+  TargetGroup = 'project_target_group',
 }
 
+/** Project development stages */
 export enum DevelopmentStages {
   Incipient = 'incipient',
   Consolidaton = 'consolidaton',
   ScalingUp = 'scaling-up',
 }
 
+/** Project ticket sizes */
 export enum TicketSizes {
   SmallGrants = 'small-grants',
   Prototyping = 'prototyping',

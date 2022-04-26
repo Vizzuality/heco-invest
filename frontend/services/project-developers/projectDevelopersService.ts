@@ -2,29 +2,42 @@ import { useMemo } from 'react';
 
 import { UseQueryResult, useQuery } from 'react-query';
 
-import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
+import { AxiosResponse, AxiosRequestConfig } from 'axios';
 
 import { Queries, UserRoles } from 'enums';
 import { ProjectDeveloper } from 'types/projectDeveloper';
 import { User } from 'types/user';
 
 import API from 'services/api';
+import { staticDataQueryOptions } from 'services/helpers';
 import { PagedResponse, ErrorResponse, PagedRequest, ResponseData } from 'services/types';
 
-/** Use query for the Project Developers list */
-export function useProjectDevelopersList(
-  params: PagedRequest
-): UseQueryResult<AxiosResponse<PagedResponse<ProjectDeveloper>>, AxiosError<ErrorResponse>> {
-  const getProjectDevelopers = async (params: PagedRequest) => {
-    const config: AxiosRequestConfig = {
-      url: '/api/v1/project_developers',
-      method: 'GET',
-      params,
-    };
-    return await API.request(config).then((response) => response.data.data);
+/** Get a paged list of project developers */
+const getProjectDevelopers = async (
+  params?: PagedRequest
+): Promise<PagedResponse<ProjectDeveloper>> => {
+  const config: AxiosRequestConfig = {
+    url: '/api/v1/project_developers',
+    method: 'GET',
+    params,
   };
+  return await API.request(config).then((result) => result.data);
+};
 
-  return useQuery([Queries.ProjectDeveloperList, params], () => getProjectDevelopers(params));
+/** Hook to use the the Project Developers list */
+export function useProjectDevelopersList(
+  params?: PagedRequest
+): UseQueryResult<PagedResponse<ProjectDeveloper>> & { projectDevelopers: ProjectDeveloper[] } {
+  const query = useQuery([Queries.ProjectDeveloperList, params], () =>
+    getProjectDevelopers(params)
+  );
+  return useMemo(
+    () => ({
+      ...query,
+      projectDevelopers: query?.data?.data || [],
+    }),
+    [query]
+  );
 }
 
 /** Get a Project Developer using an id and, optionally, the wanted fields */
@@ -59,9 +72,7 @@ export const useCurrentProjectDeveloper = (user: User) => {
   const query = useQuery([Queries.Account, user], getCurrentProjectDeveloper, {
     // Creates the conditional to only fetch the data if the user is a project developer user
     enabled: user?.attributes?.role === UserRoles.ProjectDeveloper,
-    refetchInterval: Infinity,
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
+    ...staticDataQueryOptions,
   });
 
   return useMemo(

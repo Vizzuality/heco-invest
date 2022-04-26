@@ -4,47 +4,50 @@ import { object, string, array, number, mixed, boolean } from 'yup';
 
 export default (page: number) => {
   const { formatMessage } = useIntl();
+
+  const messages = {
+    project_gallery: {
+      min_lenth: formatMessage({ defaultMessage: 'Upload at least one picture', id: 'BG1UW6' }),
+      max_length: formatMessage({ defaultMessage: 'Upload a maximum of six images', id: 'U6/vVg' }),
+      max_pitcure_size: formatMessage({
+        defaultMessage: 'The pictures must have a maximun size of 5 Mbs',
+        id: 'SMuTS1',
+      }),
+    },
+    involved_project_developer: formatMessage({
+      defaultMessage: 'Select if there are other project developers involved on the project',
+      id: '2RaCKb',
+    }),
+  };
+
   const schemas = [
     object().shape({
       name: string().required(),
       country_id: string().required(),
       municipality_id: string().required(),
       department_id: string().required(),
-      project_gallery: mixed(),
+      project_gallery: mixed<FileList>()
+        .test('min_lenth', messages.project_gallery.min_lenth, (value) => value?.length > 0)
+        .test('max_lenth', messages.project_gallery.max_length, (value) => value?.length <= 6)
+        .test('max_picture_size', messages.project_gallery.max_pitcure_size, (value) => {
+          let oversize = false;
+          for (let i = 0; i < value.length; i++) {
+            if (value[i].size > 5 * 1024 * 1024) {
+              oversize = true;
+            }
+          }
+          return !oversize;
+        }),
       location: mixed(),
+      involved_project_developer: number()
+        .min(0)
+        .max(1)
+        .required(messages.involved_project_developer)
+        .typeError(messages.involved_project_developer),
       involved_project_developer_ids: array().of(string()).nullable(),
+      involved_project_developer_not_listed: boolean(),
     }),
-    object().shape({
-      development_stage: string().required(),
-      estimated_duration_in_months: number().min(1).required(),
-      categories: string().required(),
-      problem: string().max(600),
-      solution: string().max(600),
-      target_groups: array().of(string()).required(),
-      expected_impact: string().max(600),
-    }),
-    object().shape({
-      impact_areas: array().of(string()).required(),
-      sdgs: array().of(number().min(1)),
-    }),
-    object().shape({
-      looking_for_funding: boolean(),
-      ticket_size: string(),
-      instrument_types: array().of(string()).required(),
-      funding_plan: string().max(600).required(),
-      received_funding: boolean(),
-      received_funding_amount_usd: number().min(0),
-      received_funding_investor: string(),
-    }),
-    object().shape({
-      replicability: string().max(600),
-      sustainability: string().max(600),
-      progress_impact_tracking: string().max(600),
-    }),
-    object().shape({
-      description: string().max(600),
-      relevant_links: string(),
-    }),
+    // ADD THE OTHER PAGES
   ];
   return schemas[page];
 };

@@ -1,30 +1,32 @@
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
+/** Common Project types */
 export type ProjectBase = {
-  ticket_size?: TicketSizes;
+  categories: string;
+  description: string;
+  development_stage: DevelopmentStages;
+  estimated_duration_in_months: number;
+  expected_impact: string;
+  impact_areas: string[];
+  instrument_types: string[];
+  involved_project_developer_not_listed: boolean;
+  looking_for_funding: boolean;
+  name: string;
+  problem: string;
+  progress_impact_tracking: string;
   received_funding: boolean;
   received_funding_amount_usd?: number;
   received_funding_investor?: string;
-  replicability: string;
-  sustainability: string;
-  progress_impact_tracking: string;
-  description: string;
   relevant_links?: string;
-  categories: string;
-  target_groups: string[];
-  impact_areas: string[];
+  replicability: string;
   sdgs: number[];
-  instrument_types: string[];
-  name: string;
-  development_stage: DevelopmentStages;
-  estimated_duration_in_months: number;
-  involved_project_developer_not_listed: boolean;
-  problem: string;
   solution: string;
-  expected_impact: string;
-  looking_for_funding: boolean;
+  sustainability: string;
+  target_groups: string[];
+  ticket_size?: TicketSizes;
 };
 
+/** Project entity structure */
 export type Project = {
   id: string;
   type: 'project';
@@ -48,14 +50,17 @@ export type Project = {
   };
 };
 
+/** Project Form inputs */
 export type ProjectForm = ProjectBase & {
   country_id: string;
-  municipality_id: string;
   department_id: string;
-  involved_project_developer_ids: string[];
   funding_plan: string;
+  involved_project_developer_ids: string[];
+  municipality_id: string;
 
-  /** Not part of the payload */
+  // Not part of the payload
+  involved_project_developer: boolean;
   project_gallery?: FileList;
+  // TO UPDATE LATER
   location: File;
 };
