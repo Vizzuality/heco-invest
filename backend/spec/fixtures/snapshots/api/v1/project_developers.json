@@ -36,7 +36,7 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": false
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -96,7 +96,7 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": false
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -156,7 +156,7 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": false
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -220,7 +220,7 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": false
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -277,7 +277,7 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": false
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -334,7 +334,7 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": false
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -391,7 +391,7 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": false
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -448,7 +448,7 @@
           "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TmpZMk5qa3hNeTFpTVRsbUxUUmxZakl0WWpBME5pMDFOamcxWlRkbU1UTTNOakVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c3656d0f3e3a002b6a1ffd468fc7b13e1e089c2b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
           "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TmpZMk5qa3hNeTFpTVRsbUxUUmxZakl0WWpBME5pMDFOamcxWlRkbU1UTTNOakVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--c3656d0f3e3a002b6a1ffd468fc7b13e1e089c2b/picture.jpg"
         },
-        "favourite": false
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -505,7 +505,7 @@
           "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1TldZMlpHSmpPQzB6T0dRMExUUTNaalV0WWpjeFlTMDNNMlUwWXpWaFlXTmtNMllHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--7986533e2ac9b0526c13d30519052a32459a9999/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
           "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1TldZMlpHSmpPQzB6T0dRMExUUTNaalV0WWpjeFlTMDNNMlUwWXpWaFlXTmtNMllHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--7986533e2ac9b0526c13d30519052a32459a9999/picture.jpg"
         },
-        "favourite": false
+        "favourite": null
       },
       "relationships": {
         "owner": {

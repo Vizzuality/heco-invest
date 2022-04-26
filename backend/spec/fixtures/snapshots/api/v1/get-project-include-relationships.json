@@ -51,7 +51,7 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": false
+        "favourite": null
       },
       "relationships": {
         "owner": {

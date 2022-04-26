@@ -33,7 +33,7 @@ module API
       has_many :project_images
 
       attribute :favourite do |object, params|
-        next false if params[:current_user].blank?
+        next if params[:current_user].blank?
 
         object.id.in? params[:current_user].project_ids
       end

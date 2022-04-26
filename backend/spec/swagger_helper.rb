@@ -186,7 +186,7 @@ RSpec.configure do |config|
                   instrument_types: {type: :array, items: {type: :string}},
                   sdgs: {type: :array, items: {type: :integer}},
                   language: {type: :string},
-                  favourite: {type: :boolean}
+                  favourite: {type: :boolean, nullable: true}
                 }
               },
               relationships: {
@@ -224,7 +224,7 @@ RSpec.configure do |config|
                   mosaics: {type: :array, items: {type: :string}},
                   language: {type: :string},
                   entity_legal_registration_number: {type: :string},
-                  favourite: {type: :boolean}
+                  favourite: {type: :boolean, nullable: true}
                 }
               },
               relationships: {

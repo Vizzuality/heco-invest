@@ -2,7 +2,7 @@ module API
   module V1
     class FavouriteProjectsController < BaseController
       before_action :authenticate_user!
-      before_action :fetch_projects
+      before_action :fetch_project
 
       def create
         @project.favourite_projects.create user: current_user
@@ -16,7 +16,7 @@ module API
 
       private
 
-      def fetch_projects
+      def fetch_project
         @project = Project.find params[:project_id]
       end
     end

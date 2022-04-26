@@ -62,7 +62,7 @@
         "relevant_links": null,
         "language": "en",
         "category": "forestry-and-agroforestry",
-        "favourite": false
+        "favourite": null
       },
       "relationships": {
         "project_developer": {
@@ -127,7 +127,7 @@
         "relevant_links": null,
         "language": "en",
         "category": "forestry-and-agroforestry",
-        "favourite": false
+        "favourite": null
       },
       "relationships": {
         "project_developer": {
