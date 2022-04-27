@@ -10,3 +10,7 @@ export type Enum = {
     image?: string;
   };
 };
+
+export type GroupedEnums = {
+  [key in EnumTypes]: Enum[];
+};
