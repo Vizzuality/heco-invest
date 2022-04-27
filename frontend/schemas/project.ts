@@ -24,7 +24,7 @@ export default (page: number) => {
     project_gallery: {
       min_lenth: formatMessage({ defaultMessage: 'Upload at least one picture', id: 'BG1UW6' }),
       max_length: formatMessage({ defaultMessage: 'Upload a maximum of six images', id: 'U6/vVg' }),
-      max_pitcure_size: formatMessage({
+      max_picture_size: formatMessage({
         defaultMessage: 'The pictures must have a maximum size of 5 MB',
         id: 'TfAnzZ',
       }),
@@ -102,7 +102,7 @@ export default (page: number) => {
       municipality_id: string().required(messages.municipality_id),
       project_gallery: mixed<FileList>()
         .test('max_length', messages.project_gallery.max_length, (value) => value?.length <= 6)
-        .test('max_picture_size', messages.project_gallery.max_pitcure_size, (value) => {
+        .test('max_picture_size', messages.project_gallery.max_picture_size, (value) => {
           let oversize = false;
           for (let i = 0; i < value.length; i++) {
             if (value[i].size > 5 * 1024 * 1024) {
