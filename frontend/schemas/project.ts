@@ -71,6 +71,11 @@ export default (page: number) => {
       defaultMessage: 'You need to enter a text for the expected impact',
       id: 'Vddg/J',
     }),
+    impact_areas: formatMessage({
+      defaultMessage: 'Select at least one impact area',
+      id: 'gFz7AV',
+    }),
+    sdgs: formatMessage({ defaultMessage: 'Select at least one SDG', id: 'Oh6Jeq' }),
   };
 
   const schemas = [
@@ -116,15 +121,12 @@ export default (page: number) => {
       categories: string().ensure().required(messages.categories),
       problem: string().min(1, messages.problem).max(600, maxTextLength),
       solution: string().min(1, messages.solution).max(600, maxTextLength),
-      target_groups: array()
-        .of(string())
-        .min(1, messages.target_groups)
-        .required(messages.target_groups),
+      target_groups: array().ensure().of(string()).min(1, messages.target_groups),
       expected_impact: string().min(1, messages.expected_impact).max(600, maxTextLength),
     }),
     object().shape({
-      impact_areas: array().of(string()).required(),
-      sdgs: array().of(number().min(1)),
+      impact_areas: array().ensure().of(string()).min(1, messages.impact_areas),
+      sdgs: array().ensure().of(string()).min(1, messages.sdgs),
     }),
     object().shape({
       looking_for_funding: boolean(),

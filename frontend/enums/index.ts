@@ -59,6 +59,7 @@ export enum EnumTypes {
   InstrumentType = 'instrument_type',
   TicketSize = 'ticket_size',
   Impact = 'impact',
+  ImpactAreas = 'impact_area',
   ProjectDeveloperType = 'project_developer_type',
   InvestorType = 'investor_type',
   LocationType = 'location_type',

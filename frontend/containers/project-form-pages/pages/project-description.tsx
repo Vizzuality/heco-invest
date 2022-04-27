@@ -14,16 +14,8 @@ import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
 import Textarea from 'components/forms/textarea';
 import { CategoryType } from 'types/category';
-import { Enum } from 'types/enums';
-import { ProjectForm } from 'types/project';
 
-import { ProjectFormPagesProps } from '..';
-
-export type ProjectDescriptionProps = ProjectFormPagesProps<ProjectForm> & {
-  project_development_stage: Enum[];
-  category: Enum[];
-  target_group: Enum[];
-};
+import { ProjectDescriptionProps } from '../types';
 
 const ProjectDescription = ({
   errors,
@@ -124,7 +116,7 @@ const ProjectDescription = ({
               />
             </div>
           </div>
-          <div className="mb-6.5 mt-2">
+          <div className="mt-4 mb-8">
             <fieldset name="categories">
               <legend className="inline font-sans font-semibold text-sm text-gray-800 mb-4.5">
                 <span className="mr-2.5">
@@ -149,6 +141,7 @@ const ProjectDescription = ({
                     value={item.id}
                     aria-describedby="target-groups-error"
                     register={register}
+                    type="radio"
                   >
                     <CategoryTagDot category={item.id as CategoryType} />
                     {item.attributes.name}
@@ -243,7 +236,11 @@ const ProjectDescription = ({
           </fieldset>
           <ErrorMessage
             id="target-groups-error"
-            errorText={(errors?.target_groups as unknown as FieldError)?.message}
+            errorText={
+              Array.isArray(errors?.target_groups)
+                ? errors?.target_groups[0].message
+                : (errors?.target_groups as unknown as FieldError)?.message
+            }
           />
         </div>
         <div className="mb-6.5">
