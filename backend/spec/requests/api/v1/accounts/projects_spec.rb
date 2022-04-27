@@ -32,6 +32,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
       progress_impact_tracking: {type: :string},
       description: {type: :string},
       relevant_links: {type: :string},
+      geometry: {type: :object},
       category: {type: :string, enum: Category::TYPES},
       "target_groups[]": {type: :array, items: {type: :string, enum: ProjectTargetGroup::TYPES}, collectionFormat: :multi},
       "impact_areas[]": {type: :array, items: {type: :string, enum: ImpactArea::TYPES}, collectionFormat: :multi},
@@ -56,7 +57,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
       name country_id municipality_id department_id
       development_stage estimated_duration_in_months problem solution expected_impact
       looking_for_funding received_funding replicability sustainability progress_impact_tracking description
-      categories[] target_groups[] impact_areas[] sdgs[]
+      category target_groups[] impact_areas[] sdgs[]
     ]
   }
 
@@ -92,6 +93,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
           relevant_links: "Here relevant links",
           involved_project_developer_ids: project_developers.map(&:id),
           involved_project_developer_not_listed: true,
+          geometry: {type: "Point", coordinates: [1, 2]},
           category: "sustainable-agrosystems",
           target_groups: %w[urban-populations indigenous-peoples],
           impact_areas: %w[restoration pollutants-reduction],

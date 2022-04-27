@@ -281,6 +281,9 @@ GEM
       railties (>= 5.0)
     retriable (3.1.2)
     rexml (3.2.5)
+    rgeo (2.4.0)
+    rgeo-geojson (2.1.1)
+      rgeo (>= 1.0.0)
     rspec (3.11.0)
       rspec-core (~> 3.11.0)
       rspec-expectations (~> 3.11.0)
@@ -421,6 +424,8 @@ DEPENDENCIES
   puma (~> 5.6)
   rails (~> 7.0.1)
   redis (~> 4.0)
+  rgeo
+  rgeo-geojson
   rspec-collection_matchers
   rspec-rails (~> 5.0.0)
   rspec-request_snapshot

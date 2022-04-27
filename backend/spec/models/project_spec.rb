@@ -119,6 +119,16 @@ RSpec.describe Project, type: :model do
     expect(subject).to have(1).errors_on(:project_images)
   end
 
+  it "should not be valid with non-json geometry" do
+    subject.geometry = "wrong-geometry"
+    expect(subject).to have(1).errors_on(:geometry)
+  end
+
+  it "should not be valid with non-geojson geometry" do
+    subject.geometry = {geojson: false}
+    expect(subject).to have(1).errors_on(:geometry)
+  end
+
   include_examples :static_relation_validations, attribute: :development_stage, presence: true
   include_examples :static_relation_validations, attribute: :category, presence: true
   include_examples :static_relation_validations, attribute: :instrument_types, presence: true

@@ -39,7 +39,14 @@
       "received_funding_investor": "Some Investor name",
       "relevant_links": "Here relevant links",
       "language": "en",
-      "favourite": false
+      "favourite": false,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.0,
+          2.0
+        ]
+      }
     },
     "relationships": {
       "project_developer": {
