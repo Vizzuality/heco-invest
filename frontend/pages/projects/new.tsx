@@ -9,7 +9,7 @@ import { InferGetStaticPropsType } from 'next';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
-import { GeneralInformation, ProjectDescription } from 'containers/project-form-pages';
+import { GeneralInformation } from 'containers/project-form-pages';
 
 import Head from 'components/head';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
@@ -122,19 +122,6 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             controlOptions={{ disabled: false }}
             errors={errors}
             getValues={getValues}
-          />
-        </Page>
-        <Page key="project-description">
-          <ProjectDescription
-            register={register}
-            control={control}
-            controlOptions={{ disabled: false }}
-            setValue={setValue}
-            errors={errors}
-            clearErrors={clearErrors}
-            category={category}
-            project_development_stage={project_development_stage}
-            target_group={project_target_group}
           />
         </Page>
         <Page>page</Page>
