@@ -24,7 +24,7 @@ const onResponseSuccess = (response) => {
     return {
       data: {
         // Deserialized data
-        data: !!response.data && dataFormatter.deserialize(response.data),
+        data: response.data ? dataFormatter.deserialize(response.data) : null,
         // Metadata (pagination) if any
         ...(response.data.meta ? { meta: response.data.meta } : {}),
       },
