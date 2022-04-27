@@ -94,6 +94,7 @@ const GeneralInformation = ({
             />
           </Label>
           <input
+            id="project-gallery"
             {...register('project_gallery')}
             className="block"
             type="file"
@@ -113,42 +114,42 @@ const GeneralInformation = ({
                 <span className="mr-2.5">
                   <FormattedMessage defaultMessage="Country" id="vONi+O" />
                 </span>
-                <Combobox
-                  id="country"
-                  name="country_id"
-                  control={control}
-                  controlOptions={{ disabled: false }}
-                  className="mt-2.5"
-                  placeholder={formatMessage({ defaultMessage: 'select', id: 'J4SQjQ' })}
-                >
-                  {locations?.country?.map(({ id, attributes: { name } }) => (
-                    <Option key={id}>{name}</Option>
-                  ))}
-                </Combobox>
-                {/* https://vizzuality.atlassian.net/browse/LET-347 */}
-                <ErrorMessage id="name" errorText={errors?.country_id?.message} />
               </Label>
+              <Combobox
+                id="country"
+                name="country_id"
+                control={control}
+                controlOptions={{ disabled: false }}
+                className="mt-2.5"
+                placeholder={formatMessage({ defaultMessage: 'select', id: 'J4SQjQ' })}
+              >
+                {locations?.country?.map(({ id, attributes: { name } }) => (
+                  <Option key={id}>{name}</Option>
+                ))}
+              </Combobox>
+              {/* https://vizzuality.atlassian.net/browse/LET-347 */}
+              <ErrorMessage id="name" errorText={errors?.country_id?.message} />
             </div>
             <div className="w-full">
               <Label htmlFor="department">
                 <span className="mr-2.5">
                   <FormattedMessage defaultMessage="State" id="ku+mDU" />
                 </span>
-                <Combobox
-                  id="department"
-                  name="department_id"
-                  control={control}
-                  controlOptions={{ disabled: false }}
-                  className="mt-2.5"
-                  placeholder={formatMessage({ defaultMessage: 'select', id: 'J4SQjQ' })}
-                >
-                  {locations?.department?.map(({ id, attributes: { name } }) => (
-                    <Option key={id}>{name}</Option>
-                  ))}
-                </Combobox>
-                {/* https://vizzuality.atlassian.net/browse/LET-347 */}
-                <ErrorMessage id="name" errorText={errors?.department_id?.message} />
               </Label>
+              <Combobox
+                id="department"
+                name="department_id"
+                control={control}
+                controlOptions={{ disabled: false }}
+                className="mt-2.5"
+                placeholder={formatMessage({ defaultMessage: 'select', id: 'J4SQjQ' })}
+              >
+                {locations?.department?.map(({ id, attributes: { name } }) => (
+                  <Option key={id}>{name}</Option>
+                ))}
+              </Combobox>
+              {/* https://vizzuality.atlassian.net/browse/LET-347 */}
+              <ErrorMessage id="name" errorText={errors?.department_id?.message} />
             </div>
             <div className="w-full">
               <Label htmlFor="municipality">
