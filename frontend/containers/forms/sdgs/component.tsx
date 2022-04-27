@@ -41,13 +41,13 @@ export const SDGs = <FormValues extends FieldValues>({
     >
       <div role="group">
         <div className="flex flex-wrap items-center gap-2">
-          {sdgs.map(({ id, attributes }) => (
+          {sdgs.map(({ id, name: title, image }) => (
             <SDG
               key={id}
               id={id}
               name={name}
-              image={attributes.image}
-              title={attributes.name}
+              image={image}
+              title={title}
               register={register}
               registerOptions={registerOptions}
               invalid={errors && errors[name]}

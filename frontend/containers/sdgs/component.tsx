@@ -13,15 +13,15 @@ export const SDGs: FC<SDGsProps> = ({ className, size = 'small', sdgs = [] }: SD
   return (
     <div className={cx('flex flex-wrap items-center gap-2', className)}>
       {sdgs.map(({ id }) => {
-        const { attributes } = sdgsData.find((sdg) => sdg.id === id);
+        const { name, image } = sdgsData.find((sdg) => sdg.id === id);
 
         return (
           <span key={id}>
             <Image
               className="rounded"
-              src={attributes.image}
-              alt={attributes.name}
-              title={attributes.name}
+              src={image}
+              alt={name}
+              title={name}
               width={SDGS_SIZES[size]}
               height={SDGS_SIZES[size]}
               layout="fixed"
