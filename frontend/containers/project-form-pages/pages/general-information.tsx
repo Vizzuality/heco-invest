@@ -42,8 +42,6 @@ const GeneralInformation = ({
     setShowInvolvedProjectDevelopers(!!Number(e.target.value));
   };
 
-  console.log(locations);
-
   return (
     <div>
       <h1 className="font-serif text-3xl font-semibold mb-2.5">
