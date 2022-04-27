@@ -35,4 +35,5 @@ module "production" {
   sendgrid_api_key     = var.sendgrid_api_key
   frontend_min_scale   = 1
   backend_min_scale    = 1
+  cors_origin          = "https://${var.domain}"
 }

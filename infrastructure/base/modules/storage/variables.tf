@@ -28,3 +28,9 @@ variable "domain" {
   type = string
   description = "Domain for CORS config"
 }
+
+variable "cors_origin" {
+  type = string
+  description = "Origin for CORS config"
+  default = "*"
+}
