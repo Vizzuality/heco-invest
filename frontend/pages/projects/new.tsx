@@ -4,9 +4,12 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 import { QueryClient, dehydrate } from 'react-query';
 
+import { useRouter } from 'next/router';
+
 import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
+import { getServiceErrors, useGetAlert } from 'helpers/pages';
 
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 import {
@@ -14,14 +17,18 @@ import {
   ProjectDescription,
   Impact,
   Funding,
+  ProjectGrow,
+  OtherInformation,
 } from 'containers/project-form-pages';
 
 import Head from 'components/head';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import { PageComponent } from 'types';
-import { ProjectForm } from 'types/project';
+import { ProjectCreationPayload, ProjectForm } from 'types/project';
 import useProjectValidation from 'validations/project';
+import { formPageInputs } from 'validations/project';
 
+import { useCreateProject } from 'services/account';
 import { useEnums } from 'services/enums/enumService';
 
 export async function getStaticProps(ctx) {
@@ -43,8 +50,8 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
   const [showLeave, setShowLeave] = useState(false);
   const { formatMessage } = useIntl();
   const resolver = useProjectValidation(currentPage);
-  //To use with handleCreate
-  // const { push } = useRouter();
+  const createProject = useCreateProject();
+  const { push } = useRouter();
   const { data } = useEnums();
   const {
     category,
@@ -63,6 +70,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
     getValues,
     setValue,
     clearErrors,
+    setError,
   } = useForm<ProjectForm>({
     resolver,
     shouldUseNativeValidation: true,
@@ -72,20 +80,24 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
   });
 
   const handleCreate = useCallback(
-    (data: ProjectForm) =>
-      // TO DO!
-      // createProject.mutate(data, {
-      //   onError: handleServiceErrors,
-      //   onSuccess: () => {
-      //     push('/project-developers/pending');
-      //   },
-      // }),
-      console.log(data),
-    []
+    (data: ProjectCreationPayload) =>
+      createProject.mutate(data, {
+        onError: (error) => {
+          const { errorPages, fieldErrors } = getServiceErrors<ProjectForm>(error, formPageInputs);
+          console.log(error, errorPages, fieldErrors);
+          fieldErrors.forEach((field) => setError(field, { message: '' }));
+          setCurrentPage(errorPages[0]);
+        },
+        onSuccess: () => {
+          push('/projects/pending');
+        },
+      }),
+    [createProject, push, setError]
   );
 
-  const onSubmit: SubmitHandler<ProjectForm> = (values) => {
-    if (currentPage === 6) {
+  const onSubmit: SubmitHandler<ProjectForm> = (values: ProjectForm) => {
+    if (currentPage === 5) {
+      const { involved_project_developer, project_gallery, location, ...rest } = values;
       // set involved_project_developer_not_listed to true if not listed is selected and removes this value from the involved_project_developer_ids
       const involved_project_developer_not_listed =
         !!values.involved_project_developer_ids.includes('not-listed');
@@ -93,7 +105,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
         (id) => id !== 'not-listed'
       );
       handleCreate({
-        ...values,
+        ...rest,
         involved_project_developer_not_listed,
         involved_project_developer_ids,
       });
@@ -119,8 +131,8 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
         title={formatMessage({ defaultMessage: 'Setup project developer’s account', id: 'bhxvPM' })}
         autoNavigation={false}
         page={currentPage}
-        // alert={getAlert()}
-        // isSubmitting={createProject.isLoading}
+        alert={useGetAlert(createProject.error)}
+        isSubmitting={createProject.isLoading}
         showOutro={false}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
@@ -162,7 +174,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             clearErrors={clearErrors}
           />
         </Page>
-        <Page key="impact">
+        <Page key="funding">
           <Funding
             register={register}
             control={control}
@@ -175,7 +187,22 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             instrument_type={instrument_type}
           />
         </Page>
-        <Page>page</Page>
+        <Page key="project-grow">
+          <ProjectGrow
+            register={register}
+            control={control}
+            controlOptions={{ disabled: false }}
+            errors={errors}
+          />
+        </Page>
+        <Page key="other">
+          <OtherInformation
+            register={register}
+            control={control}
+            controlOptions={{ disabled: false }}
+            errors={errors}
+          />
+        </Page>
       </MultiPageLayout>
     </>
   );

@@ -55,7 +55,7 @@ export default (page: number) => {
         id: '9+IpyL',
       }),
     },
-    categories: formatMessage({
+    category: formatMessage({
       defaultMessage: 'You need to select the project category',
       id: 'rsKPyl',
     }),
@@ -91,6 +91,22 @@ export default (page: number) => {
     funding_plan: formatMessage({
       defaultMessage: 'You need to enter a text for the funding plan',
       id: 'dOO/qA',
+    }),
+    replicability: formatMessage({
+      defaultMessage: 'You need to enter a text for the replicability of the project',
+      id: 'lr5x1P',
+    }),
+    sustainability: formatMessage({
+      defaultMessage: 'You need to enter a text for the sustainability of the project',
+      id: 'TCb/DD',
+    }),
+    progress_impact_tracking: formatMessage({
+      defaultMessage: 'You need to enter a text for the progress and impact tracking',
+      id: '0dbfpr',
+    }),
+    description: formatMessage({
+      defaultMessage: 'You need to enter a text with a short description of your project',
+      id: 'GC4Ve3',
     }),
   };
 
@@ -134,7 +150,7 @@ export default (page: number) => {
         .min(1, messages.estimated_duration_in_months.min)
         .max(24, messages.estimated_duration_in_months.max)
         .required(messages.estimated_duration_in_months.required),
-      categories: string().ensure().required(messages.categories),
+      category: string().ensure().required(messages.category),
       problem: string().min(1, messages.problem).max(600, maxTextLength),
       solution: string().min(1, messages.solution).max(600, maxTextLength),
       target_groups: array().ensure().of(string()).min(1, messages.target_groups),
@@ -172,12 +188,14 @@ export default (page: number) => {
       received_funding_investor: string().max(600, maxTextLength),
     }),
     object().shape({
-      replicability: string().max(600, maxTextLength),
-      sustainability: string().max(600, maxTextLength),
-      progress_impact_tracking: string().max(600, maxTextLength),
+      replicability: string().max(600, maxTextLength).required(messages.replicability),
+      sustainability: string().max(600, maxTextLength).required(messages.sustainability),
+      progress_impact_tracking: string()
+        .max(600, maxTextLength)
+        .required(messages.progress_impact_tracking),
     }),
     object().shape({
-      description: string().max(600, maxTextLength),
+      description: string().max(600, maxTextLength).required(messages.description),
       relevant_links: string(),
     }),
   ];

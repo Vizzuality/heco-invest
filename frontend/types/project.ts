@@ -4,7 +4,7 @@ import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 export type ProjectBase = {
   id: string;
   type: 'project';
-  categories: string;
+  category: string;
   description: string;
   development_stage: DevelopmentStages;
   estimated_duration_in_months: number;
@@ -48,3 +48,8 @@ export type ProjectForm = ProjectBase & {
   // TO UPDATE LATER
   location: File;
 };
+
+export type ProjectCreationPayload = Omit<
+  ProjectForm,
+  'involved_project_developer' | 'project_gallery' | 'location'
+>;

@@ -128,7 +128,7 @@ const ProjectDescription = ({
                 <FieldInfo infoText="MISSING" />
               </legend>
               <TagGroup
-                name="categories"
+                name="category"
                 setValue={setValue}
                 errors={errors}
                 clearErrors={clearErrors}
@@ -137,7 +137,7 @@ const ProjectDescription = ({
                   <Tag
                     key={item.id}
                     id={item.id}
-                    name="categories"
+                    name="category"
                     value={item.id}
                     aria-describedby="target-groups-error"
                     register={register}
@@ -149,7 +149,7 @@ const ProjectDescription = ({
                 ))}
               </TagGroup>
             </fieldset>
-            <ErrorMessage id="categories-error" errorText={errors?.categories?.message} />
+            <ErrorMessage id="categories-error" errorText={errors?.category?.message} />
           </div>
         </div>
         <div className="mb-6.5">
