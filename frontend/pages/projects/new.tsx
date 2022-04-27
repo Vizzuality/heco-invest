@@ -9,8 +9,12 @@ import { InferGetStaticPropsType } from 'next';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
-import { GeneralInformation, ProjectDescription } from 'containers/project-form-pages';
-import Impact from 'containers/project-form-pages/pages/impact';
+import {
+  GeneralInformation,
+  ProjectDescription,
+  Impact,
+  Funding,
+} from 'containers/project-form-pages';
 
 import Head from 'components/head';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
@@ -19,7 +23,6 @@ import { ProjectForm } from 'types/project';
 import useProjectValidation from 'validations/project';
 
 import { useEnums } from 'services/enums/enumService';
-import Funding from 'containers/project-form-pages/pages/funding';
 
 export async function getStaticProps(ctx) {
   const queryClient = new QueryClient();
@@ -102,7 +105,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
   const handleNextClick = async () => {
     await handleSubmit(onSubmit)();
     // if (!errors) {
-      setCurrentPage(currentPage + 1);
+    setCurrentPage(currentPage + 1);
     // }
   };
 

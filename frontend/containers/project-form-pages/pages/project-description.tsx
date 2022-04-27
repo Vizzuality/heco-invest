@@ -117,7 +117,7 @@ const ProjectDescription = ({
             </div>
           </div>
           <div className="mt-4 mb-8">
-            <fieldset name="categories">
+            <fieldset>
               <legend className="inline font-sans font-semibold text-sm text-gray-800 mb-4.5">
                 <span className="mr-2.5">
                   <FormattedMessage
@@ -201,7 +201,7 @@ const ProjectDescription = ({
           <ErrorMessage id="solution-error" errorText={errors?.solution?.message} />
         </div>
         <div className="mb-6.5">
-          <fieldset name="target_groups">
+          <fieldset>
             <legend className="inline font-sans font-semibold text-sm text-gray-800 mb-4.5">
               <span className="mr-2.5">
                 <FormattedMessage defaultMessage="Target group" id="0L/mZC" />

@@ -26,7 +26,7 @@ export const Impact = ({ register, errors, impacts, setValue, clearErrors }: Imp
       </p>
       <form noValidate>
         <div className="mb-6.5">
-          <fieldset name="impact_areas">
+          <fieldset>
             <legend className="inline font-sans font-semibold text-sm text-gray-800 mb-4.5">
               <span className="mr-2.5">
                 <FormattedMessage
@@ -71,7 +71,7 @@ export const Impact = ({ register, errors, impacts, setValue, clearErrors }: Imp
           />
         </div>
         <div className="mb-6.5">
-          <fieldset name="sdgs">
+          <fieldset>
             <legend className="inline font-sans font-semibold text-sm text-gray-800 mb-4.5">
               <span className="mr-2.5">
                 <FormattedMessage

@@ -8,6 +8,10 @@ export default (page: number) => {
     defaultMessage: 'It must have a maximum of 600 characters',
     id: 'frm1UB',
   });
+  const booleanField = formatMessage({
+    defaultMessage: 'Yo need to select an option',
+    id: 'OT1u1/',
+  });
 
   const messages = {
     name: formatMessage({ defaultMessage: 'You need to insert a name', id: 'XvwE2r' }),
@@ -76,6 +80,18 @@ export default (page: number) => {
       id: 'gFz7AV',
     }),
     sdgs: formatMessage({ defaultMessage: 'Select at least one SDG', id: 'Oh6Jeq' }),
+    ticket_size: formatMessage({
+      defaultMessage: 'You need to select the amount of money you need for the project',
+      id: 'rtG8sS',
+    }),
+    instrument_types: formatMessage({
+      defaultMessage: 'You need to select what type of financing are you looking for',
+      id: 'zBO3fW',
+    }),
+    funding_plan: formatMessage({
+      defaultMessage: 'You need to enter a text for the funding plan',
+      id: 'dOO/qA',
+    }),
   };
 
   const schemas = [
@@ -107,7 +123,7 @@ export default (page: number) => {
         .when('involved_project_developer', {
           is: 1,
           then: array().required(messages.involved_project_developer_ids),
-          otherwise: array().notRequired(),
+          otherwise: array().notRequired().nullable(),
         }),
       involved_project_developer_not_listed: boolean(),
     }),
@@ -129,21 +145,39 @@ export default (page: number) => {
       sdgs: array().ensure().of(string()).min(1, messages.sdgs),
     }),
     object().shape({
-      looking_for_funding: boolean(),
-      ticket_size: string(),
-      instrument_types: array().of(string()).required(),
-      funding_plan: string().max(600).required(),
-      received_funding: boolean(),
+      looking_for_funding: number().typeError(booleanField).required(booleanField),
+      ticket_size: string()
+        .ensure()
+        .when('looking_for_funding', {
+          is: 1,
+          then: string().required(messages.ticket_size),
+        }),
+      instrument_types: array().when('looking_for_funding', {
+        is: 1,
+        then: array()
+          .typeError(messages.instrument_types)
+          .of(string())
+          .min(1, messages.instrument_types),
+        otherwise: array().nullable(),
+      }),
+      funding_plan: string().when('looking_for_funding', {
+        is: 1,
+        then: string()
+          .min(1, messages.funding_plan)
+          .max(600, maxTextLength)
+          .required(messages.funding_plan),
+      }),
+      received_funding: number().typeError(booleanField).required(booleanField),
       received_funding_amount_usd: number().min(0),
-      received_funding_investor: string(),
+      received_funding_investor: string().max(600, maxTextLength),
     }),
     object().shape({
-      replicability: string().max(600),
-      sustainability: string().max(600),
-      progress_impact_tracking: string().max(600),
+      replicability: string().max(600, maxTextLength),
+      sustainability: string().max(600, maxTextLength),
+      progress_impact_tracking: string().max(600, maxTextLength),
     }),
     object().shape({
-      description: string().max(600),
+      description: string().max(600, maxTextLength),
       relevant_links: string(),
     }),
   ];
