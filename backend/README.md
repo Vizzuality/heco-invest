@@ -33,6 +33,10 @@ You can use `docker-compose.yml` to run postgres service.
 If you want to debug rails app, running it through foreman could be not the best idea. In that case you can run css and js bundling
 using foreman `bin/watch` and the server in the standard way in a separate terminal tab.
 
+### Run background jobs
+
+We use `cloudtasker` gem to schedule ad-hoc background jobs. In development, you need `redis-server` running and a `cloudtasker` process.
+
 ### Run the tests
 
 `bundle exec rspec`
