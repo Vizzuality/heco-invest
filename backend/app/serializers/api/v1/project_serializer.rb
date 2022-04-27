@@ -31,6 +31,12 @@ module API
       belongs_to :project_developer
       has_many :involved_project_developers, serializer: ProjectDeveloperSerializer
       has_many :project_images
+
+      attribute :favourite do |object, params|
+        next if params[:current_user].blank?
+
+        object.id.in? params[:current_user].project_ids
+      end
     end
   end
 end

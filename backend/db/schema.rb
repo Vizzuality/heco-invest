@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_21_142923) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_26_073933) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_142923) do
     t.uuid "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "favourite_project_developers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "project_developer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_developer_id"], name: "index_favourite_project_developers_on_project_developer_id"
+    t.index ["user_id", "project_developer_id"], name: "favourite_project_developer_id_on_user_id", unique: true
+    t.index ["user_id"], name: "index_favourite_project_developers_on_user_id"
+  end
+
+  create_table "favourite_projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_favourite_projects_on_project_id"
+    t.index ["user_id", "project_id"], name: "index_favourite_projects_on_user_id_and_project_id", unique: true
+    t.index ["user_id"], name: "index_favourite_projects_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -299,6 +319,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_142923) do
   add_foreign_key "accounts", "users", column: "owner_id", on_delete: :cascade
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favourite_project_developers", "project_developers", on_delete: :cascade
+  add_foreign_key "favourite_project_developers", "users", on_delete: :cascade
+  add_foreign_key "favourite_projects", "projects", on_delete: :cascade
+  add_foreign_key "favourite_projects", "users", on_delete: :cascade
   add_foreign_key "investors", "accounts", on_delete: :cascade
   add_foreign_key "location_members", "locations", column: "member_id", on_delete: :cascade
   add_foreign_key "location_members", "locations", on_delete: :cascade

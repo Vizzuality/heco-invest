@@ -39,7 +39,8 @@
       "received_funding_amount_usd": "3000.0",
       "received_funding_investor": "Kutch-Spencer",
       "relevant_links": null,
-      "language": "en"
+      "language": "en",
+      "favourite": null
     },
     "relationships": {
       "project_developer": {

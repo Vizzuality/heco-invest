@@ -14,7 +14,8 @@ module API
           )
           render json: ProjectSerializer.new(
             project,
-            include: included_relationships(parameters: params.fetch(:project_params, params))
+            include: included_relationships(parameters: params.fetch(:project_params, params)),
+            params: {current_user: current_user}
           ).serializable_hash
         end
 

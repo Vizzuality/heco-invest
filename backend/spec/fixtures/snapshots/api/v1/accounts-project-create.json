@@ -38,7 +38,8 @@
       "received_funding_amount_usd": "1000000.0",
       "received_funding_investor": "Some Investor name",
       "relevant_links": "Here relevant links",
-      "language": "en"
+      "language": "en",
+      "favourite": false
     },
     "relationships": {
       "project_developer": {
