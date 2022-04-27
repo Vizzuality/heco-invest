@@ -12,18 +12,27 @@ module API
             account = Account.create! account_params.merge(owner: current_user)
             current_user.update! account: account, role: :project_developer
             project_developer = ProjectDeveloper.create! project_developer_params.merge(account: account)
-            render json: ProjectDeveloperSerializer.new(project_developer).serializable_hash
+            render json: ProjectDeveloperSerializer.new(
+              project_developer,
+              params: {current_user: current_user}
+            ).serializable_hash
           end
         end
 
         def update
           current_user.account.update! account_params.except(:language)
           current_user.account.project_developer.update! project_developer_params.except(:language)
-          render json: ProjectDeveloperSerializer.new(current_user.account.project_developer).serializable_hash
+          render json: ProjectDeveloperSerializer.new(
+            current_user.account.project_developer,
+            params: {current_user: current_user}
+          ).serializable_hash
         end
 
         def show
-          render json: ProjectDeveloperSerializer.new(current_user.account.project_developer).serializable_hash
+          render json: ProjectDeveloperSerializer.new(
+            current_user.account.project_developer,
+            params: {current_user: current_user}
+          ).serializable_hash
         end
 
         private

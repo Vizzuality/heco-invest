@@ -180,12 +180,13 @@ RSpec.configure do |config|
                   description: {type: :string},
                   relevant_links: {type: :string, nullable: true},
                   ticket_size: {type: :string, enum: TicketSize::TYPES, nullable: true},
-                  categories: {type: :array, items: {type: :string}},
+                  category: {type: :string},
                   target_groups: {type: :array, items: {type: :string}},
                   impact_areas: {type: :array, items: {type: :string}},
                   instrument_types: {type: :array, items: {type: :string}},
                   sdgs: {type: :array, items: {type: :integer}},
-                  language: {type: :string}
+                  language: {type: :string},
+                  favourite: {type: :boolean, nullable: true}
                 }
               },
               relationships: {
@@ -222,7 +223,8 @@ RSpec.configure do |config|
                   impacts: {type: :array, items: {type: :string}},
                   mosaics: {type: :array, items: {type: :string}},
                   language: {type: :string},
-                  entity_legal_registration_number: {type: :string}
+                  entity_legal_registration_number: {type: :string},
+                  favourite: {type: :boolean, nullable: true}
                 }
               },
               relationships: {

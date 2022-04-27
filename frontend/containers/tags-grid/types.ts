@@ -6,7 +6,7 @@ export type TagsGridRowType = {
   /** Type of tags to display. Defaults to `default` */
   type?: 'default' | 'category';
   /** Array of strings for `default` tags, or array of { id, title } for `category` tags */
-  tags: string[] | { id: CategoryType; title: string }[];
+  tags: string[] | { id: CategoryType; name: string }[];
 };
 
 export type TagsGridProps = {

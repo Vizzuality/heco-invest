@@ -142,8 +142,8 @@ const Funding = ({
                       type="radio"
                       flexLabel
                     >
-                      <span className="block">{item.attributes.description}</span>
-                      <span className="block text-gray-600">{item.attributes.name}</span>
+                      <span className="block">{item.description}</span>
+                      <span className="block text-gray-600">{item.name}</span>
                     </Tag>
                   ))}
                 </TagGroup>
@@ -181,7 +181,7 @@ const Funding = ({
                       register={register}
                       type="checkbox"
                     >
-                      {item.attributes.name}
+                      {item.name}
                     </Tag>
                   ))}
                 </TagGroup>

@@ -3,6 +3,11 @@ class User < ApplicationRecord
 
   belongs_to :account, optional: true
 
+  has_many :favourite_projects, dependent: :destroy
+  has_many :projects, through: :favourite_projects
+  has_many :favourite_project_developers, dependent: :destroy
+  has_many :project_developers, through: :favourite_project_developers
+
   devise :database_authenticatable, :confirmable, :registerable,
     :recoverable, :rememberable, :validatable
 

@@ -56,10 +56,10 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
       title: 'Invests in',
       type: 'category',
       tags: [
-        { id: 'tourism-and-recreation', title: 'Tourism & Recreation' },
-        { id: 'non-timber-forest-production', title: 'Non-timber forest production' },
-        { id: 'sustainable-agrosystems', title: 'Sustainable agrosystems' },
-        { id: 'forestry-and-agroforestry', title: 'Forestry & agroforestry' },
+        { id: 'tourism-and-recreation', name: 'Tourism & Recreation' },
+        { id: 'non-timber-forest-production', name: 'Non-timber forest production' },
+        { id: 'sustainable-agrosystems', name: 'Sustainable agrosystems' },
+        { id: 'forestry-and-agroforestry', name: 'Forestry & agroforestry' },
       ],
     },
     {

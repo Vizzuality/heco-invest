@@ -33,7 +33,8 @@
       "contact_phone": "+57-1-xxx-xx-xx",
       "mosaics": [
         "amazon-heart"
-      ]
+      ],
+      "favourite": false
     },
     "relationships": {
       "owner": {

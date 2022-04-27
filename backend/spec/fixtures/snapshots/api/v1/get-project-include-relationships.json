@@ -50,7 +50,8 @@
         "mosaics": [
           "amazon-heart",
           "amazonian-piedmont-massif"
-        ]
+        ],
+        "favourite": null
       },
       "relationships": {
         "owner": {

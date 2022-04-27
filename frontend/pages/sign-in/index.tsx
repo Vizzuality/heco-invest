@@ -52,7 +52,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
     (data: SignIn) =>
       signIn.mutate(data, {
         onSuccess: () => {
-          if (user?.attributes.role === UserRoles.Light) {
+          if (user?.role === UserRoles.Light) {
             push(Paths.AccountType);
           } else {
             push(Paths.Dashboard);

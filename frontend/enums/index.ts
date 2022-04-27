@@ -13,6 +13,7 @@ export enum Paths {
   FAQ = '/faq',
   SignOut = '/sign-out',
   Settings = '/settings',
+  Project = '/project',
 }
 
 export enum UserRoles {
@@ -81,4 +82,5 @@ export enum TicketSizes {
   Validation = 'validation',
   Scaling = 'scaling',
   SDGType = 'sdg',
+  Mosaic = 'mosaic',
 }

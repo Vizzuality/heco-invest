@@ -2,6 +2,8 @@ import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
 /** Common Project types */
 export type ProjectBase = {
+  id: string;
+  type: 'project';
   categories: string;
   description: string;
   development_stage: DevelopmentStages;
@@ -27,27 +29,9 @@ export type ProjectBase = {
 };
 
 /** Project entity structure */
-export type Project = {
-  id: string;
-  type: 'project';
-  attributes: ProjectBase & {
-    slug: string;
-    language: Languages;
-  };
-  relationships: {
-    project_developer: {
-      data: {
-        id: string;
-        type: 'project_developer';
-      };
-    };
-    involved_project_developers: {
-      data: {
-        id: string;
-        type: 'project_developer';
-      }[];
-    };
-  };
+export type Project = ProjectBase & {
+  slug: string;
+  language: Languages;
 };
 
 /** Project Form inputs */

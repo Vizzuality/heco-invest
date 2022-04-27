@@ -98,6 +98,9 @@
   "5Hzwqs": {
     "string": "Favorite"
   },
+  "5c08Qp": {
+    "string": "Project information"
+  },
   "5hbC/K": {
     "string": "Start making an impact now!"
   },
@@ -128,6 +131,9 @@
   "7Rh11y": {
     "string": "Setup investor profile"
   },
+  "7aTDQM": {
+    "string": "Project gallery (optional)"
+  },
   "7qgtEX": {
     "string": "Invests in SDG's"
   },
@@ -149,6 +155,9 @@
   "8i6S4q": {
     "string": "Connecting investors, donors and philanthropists with carefully identified investment opportunities."
   },
+  "8rAlFa": {
+    "string": "Not listed"
+  },
   "9+Ddtu": {
     "string": "Next"
   },
@@ -157,6 +166,9 @@
   },
   "9Er2U2": {
     "string": "Investments in HeCo will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
+  },
+  "9I1zvK": {
+    "string": "Municipality"
   },
   "9VLFbQ": {
     "string": "Landscape photo"
@@ -199,6 +211,9 @@
   },
   "Cra78t": {
     "string": "© {date} HeCo Invest. All rights reserved."
+  },
+  "D5RCKi": {
+    "string": "Project name"
   },
   "DAJK4J": {
     "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure 20 million hectares of sustainable landscape over the next 20 years, through investments in conservation and sustainable development."
@@ -270,6 +285,9 @@
   "IbrSk1": {
     "string": "Learn"
   },
+  "J4SQjQ": {
+    "string": "select"
+  },
   "J4w7T/": {
     "string": "Enable positive impact"
   },
@@ -318,6 +336,9 @@
   "MH3koz": {
     "string": "Previous slide"
   },
+  "MHwpc4": {
+    "string": "Draw or upload your location"
+  },
   "MZl85Y": {
     "string": "One more step to go"
   },
@@ -351,9 +372,6 @@
   "OChccW": {
     "string": "Investor / Funder"
   },
-  "OX08fr": {
-    "string": "profile image"
-  },
   "Obr4XP": {
     "string": "Guiding tools"
   },
@@ -378,6 +396,9 @@
   "QDj3j7": {
     "string": "Inter-American Development Bank Lab"
   },
+  "QESbGa": {
+    "string": "select project developers"
+  },
   "Qmlx+T": {
     "string": "Insert the email to receive the contact messages."
   },
@@ -396,6 +417,9 @@
   "SQJto2": {
     "string": "Sign in"
   },
+  "SYPx2d": {
+    "string": "Project developers involved in the project"
+  },
   "Sv/Mtz": {
     "string": "Project developer name"
   },
@@ -404,6 +428,9 @@
   },
   "TH786p": {
     "string": "See my profile"
+  },
+  "TJo5E6": {
+    "string": "Preview"
   },
   "U1OBY8": {
     "string": "options {options}, selected."
@@ -474,6 +501,9 @@
   "XQuzr9": {
     "string": "Identified priorities by the HeCo program"
   },
+  "Xk8qys": {
+    "string": "Are there other Project developers involved in the project?"
+  },
   "XkF/qg": {
     "string": "Profile picture of {name}"
   },
@@ -488,6 +518,9 @@
   },
   "YE6fVO": {
     "string": "{accountName} account"
+  },
+  "YEYmEz": {
+    "string": "Draw on the map or upload a file with the geographical area your project will have an impact on."
   },
   "ZEEVQX": {
     "string": "Social media"
@@ -507,6 +540,9 @@
   "ZjA6uH": {
     "string": "Welcome to HeCo Invest. Please enter your details below."
   },
+  "a5msuh": {
+    "string": "Yes"
+  },
   "aDn1WM": {
     "string": "Curated database"
   },
@@ -515,6 +551,9 @@
   },
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
+  },
+  "avVMND": {
+    "string": "This information will be visible in the project page when you launch it."
   },
   "bNpbHr": {
     "string": "Find other people with similar interests. Join forces, secure more investment and create a greater impact."
@@ -527,6 +566,9 @@
   },
   "btdgGc": {
     "string": "<a>Browse the open calls</a> posted by our investor community to identify new areas for project development."
+  },
+  "c1m3Q7": {
+    "string": "The project gallery will be the first thing other users will see on you page, it will help you to showcase you project."
   },
   "c6KUQu": {
     "string": "Your account was successfully created, but you still need to be approved by our platform administrators."
@@ -597,11 +639,17 @@
   "hkIfkj": {
     "string": "disabled"
   },
+  "hl9bd4": {
+    "string": "Cover"
+  },
   "hxIQ/8": {
     "string": "Projects waiting funding"
   },
   "i50XU3": {
     "string": "Features for investors"
+  },
+  "iD2hRt": {
+    "string": "insert the project name"
   },
   "iiVhlC": {
     "string": "insert phone number"
@@ -627,6 +675,9 @@
   "kX7oGR": {
     "string": "Other information"
   },
+  "ku+mDU": {
+    "string": "State"
+  },
   "lPkzC0": {
     "string": "This makes a difference to them"
   },
@@ -645,6 +696,9 @@
   "nBHzO6": {
     "string": "Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
   },
+  "nbqoY2": {
+    "string": "Do you have a partnership with someone else?"
+  },
   "nhAnF3": {
     "string": "I want to find opportunities to invest / donate"
   },
@@ -653,6 +707,9 @@
   },
   "oMC3r1": {
     "string": "Choose your account type"
+  },
+  "oUWADl": {
+    "string": "No"
   },
   "oYPIc/": {
     "string": "By leaving you will lose your current progress"
@@ -678,6 +735,9 @@
   "qPKAOa": {
     "string": "Paulson Institute: The Paulson Institute (PI) is a non-partisan, independent “think and do tank” delivering solutions that contribute to a more resilient and sustainable world. PI operates at the intersection of economics, financial markets, and environmental protection by promoting market-based solutions to ensure green economic growth. Under their Financing Nature initiative, they are working to identify and implement innovative mechanisms that can rapidly mobilize substantial amounts of funding for nature conservation."
   },
+  "rPwaWt": {
+    "string": "A great name is short, crisp, and easily understood."
+  },
   "rbrahO": {
     "string": "Close"
   },
@@ -686,6 +746,9 @@
   },
   "rhAEk6": {
     "string": "option {optionName}, deselected."
+  },
+  "rvirM2": {
+    "string": "Location"
   },
   "sMWFoV": {
     "string": "As an Investor / Funder"
@@ -725,6 +788,9 @@
   },
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
+  },
+  "vONi+O": {
+    "string": "Country"
   },
   "vaWFzs": {
     "string": "What's your mission?"

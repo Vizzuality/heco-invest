@@ -13,8 +13,12 @@ namespace :api, format: "json" do
     resources :investors, only: [:index, :show]
     resources :locations, only: [:index, :show]
     resources :open_calls, only: [:index, :show]
-    resources :project_developers, only: [:index, :show]
-    resources :projects, only: [:index, :show]
+    resources :project_developers, only: [:index, :show] do
+      resource :favourite_project_developer, only: [:create, :destroy]
+    end
+    resources :projects, only: [:index, :show] do
+      resource :favourite_project, only: [:create, :destroy]
+    end
 
     resources :enums, only: [:index]
 

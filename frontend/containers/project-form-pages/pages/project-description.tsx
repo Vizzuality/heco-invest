@@ -73,7 +73,7 @@ const ProjectDescription = ({
                 aria-labelledby="development-stage-label"
                 className="mt-2.5"
               >
-                {project_development_stage?.map(({ id, attributes: { name } }) => (
+                {project_development_stage?.map(({ id, name }) => (
                   <Option key={id}>{name}</Option>
                 ))}
               </Combobox>
@@ -144,7 +144,7 @@ const ProjectDescription = ({
                     type="radio"
                   >
                     <CategoryTagDot category={item.id as CategoryType} />
-                    {item.attributes.name}
+                    {item.name}
                   </Tag>
                 ))}
               </TagGroup>
@@ -229,7 +229,7 @@ const ProjectDescription = ({
                   aria-describedby="target-groups-error"
                   register={register}
                 >
-                  {item.attributes.name}
+                  {item.name}
                 </Tag>
               ))}
             </TagGroup>

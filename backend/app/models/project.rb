@@ -10,7 +10,8 @@ class Project < ApplicationRecord
 
   has_and_belongs_to_many :involved_project_developers, join_table: "project_involvements", class_name: "ProjectDeveloper"
 
-  has_many :project_images
+  has_many :project_images, dependent: :destroy
+  has_many :favourite_projects, dependent: :destroy
 
   translates :name,
     :description,

@@ -56,13 +56,13 @@ export async function getStaticProps(ctx) {
 
 type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const getItemsInfoText = (items: Enum[] | Locations[]) => {
+const getItemsInfoText = (items) => {
   return (
     <ul>
-      {items?.map(({ attributes, id }) => (
+      {items?.map(({ id, name, description }) => (
         <li key={id}>
-          <p className="font-sans text-sm font-semibold text-white">{attributes.name}</p>
-          <p className="mb-4 font-sans text-sm font-normal text-white">{attributes.description}</p>
+          <p className="font-sans text-sm font-semibold text-white">{name}</p>
+          <p className="mb-4 font-sans text-sm font-normal text-white">{description}</p>
         </li>
       ))}
     </ul>
@@ -324,7 +324,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
                     aria-describedby="project-developer-type-error"
                     aria-labelledby="project-developer-type-label"
                   >
-                    {project_developer_type?.map(({ attributes: { name }, id }) => (
+                    {project_developer_type?.map(({ id, name }) => (
                       <Option key={id}>{name}</Option>
                     ))}
                   </Combobox>
@@ -515,7 +515,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
                         {item.type === 'category' && (
                           <CategoryTagDot category={item.id as CategoryType} />
                         )}
-                        {item.attributes.name}
+                        {item.name}
                       </Tag>
                     ))}
                   </TagGroup>

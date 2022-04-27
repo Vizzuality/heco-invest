@@ -26,7 +26,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/get-project-developer")
+          expect(response.body).to match_snapshot("api/v1/accounts-project-developer")
         end
       end
     end

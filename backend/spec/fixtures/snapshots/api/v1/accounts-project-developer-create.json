@@ -33,7 +33,8 @@
       "contact_phone": null,
       "mosaics": [
         "amazon-heart"
-      ]
+      ],
+      "favourite": false
     },
     "relationships": {
       "owner": {

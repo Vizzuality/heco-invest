@@ -56,7 +56,7 @@ export const Impact = ({ register, errors, impacts, setValue, clearErrors }: Imp
                   aria-describedby="impact-areas-error"
                   register={register}
                 >
-                  {item.attributes.name}
+                  {item.name}
                 </Tag>
               ))}
             </TagGroup>

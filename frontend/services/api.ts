@@ -21,12 +21,16 @@ const API = axios.create({
 
 const onResponseSuccess = (response) => {
   try {
-    const parsedData = JSON.parse(response);
     return {
-      data: dataFormatter.deserialize(parsedData),
-      meta: parsedData.meta,
+      data: {
+        // Deserialized data
+        data: response.data ? dataFormatter.deserialize(response.data) : null,
+        // Metadata (pagination) if any
+        ...(response.data.meta ? { meta: response.data.meta } : {}),
+      },
     };
   } catch (error) {
+    console.error('API deserialization error', error);
     return response;
   }
 };

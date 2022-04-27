@@ -71,20 +71,20 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
     defaultValues: { target_groups: [] },
   });
 
-  const handleCreate = useCallback((data: ProjectForm) =>
-    // TO DO!
-    // createProject.mutate(data, {
-    //   onError: handleServiceErrors,
-    //   onSuccess: () => {
-    //     push('/project-developers/pending');
-    //   },
-    // }),
-    {
-      console.log(data);
-    }, []);
+  const handleCreate = useCallback(
+    (data: ProjectForm) =>
+      // TO DO!
+      // createProject.mutate(data, {
+      //   onError: handleServiceErrors,
+      //   onSuccess: () => {
+      //     push('/project-developers/pending');
+      //   },
+      // }),
+      console.log(data),
+    []
+  );
 
   const onSubmit: SubmitHandler<ProjectForm> = (values) => {
-    console.log(values);
     if (currentPage === 6) {
       // set involved_project_developer_not_listed to true if not listed is selected and removes this value from the involved_project_developer_ids
       const involved_project_developer_not_listed =

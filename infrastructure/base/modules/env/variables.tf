@@ -79,3 +79,9 @@ variable "backend_max_scale" {
   description = "Maximum number of backend app instances to deploy"
   default = 5
 }
+
+variable "cors_origin" {
+  type = string
+  description = "Origin for CORS config"
+  default = "*"
+}
