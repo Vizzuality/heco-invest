@@ -104,9 +104,9 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
 
   const handleNextClick = async () => {
     await handleSubmit(onSubmit)();
-    // if (!errors) {
-    setCurrentPage(currentPage + 1);
-    // }
+    if (!errors) {
+      setCurrentPage(currentPage + 1);
+    }
   };
 
   return (
