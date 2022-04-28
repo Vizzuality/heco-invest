@@ -111,17 +111,19 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
         description={projectDeveloper.about}
       />
 
-      <ProfileHeader
-        logo={projectDeveloper.picture.medium}
-        title={projectDeveloper.name}
-        subtitle={projectDeveloperTypeName}
-        text={projectDeveloper.about}
-        website={projectDeveloper.website}
-        social={social}
-        numNotFunded={funding.funded}
-        numFunded={funding.notFunded}
-        originalLanguage={projectDeveloper.language}
-      />
+      <LayoutContainer className="-mt-10 lg:-mt-16">
+        <ProfileHeader
+          logo={projectDeveloper.picture.medium}
+          title={projectDeveloper.name}
+          subtitle={projectDeveloperTypeName}
+          text={projectDeveloper.about}
+          website={projectDeveloper.website}
+          social={social}
+          numNotFunded={funding.funded}
+          numFunded={funding.notFunded}
+          originalLanguage={projectDeveloper.language}
+        />
+      </LayoutContainer>
 
       <LayoutContainer layout="narrow" className="mt-24 mb-20 md:mt-40">
         <section aria-labelledby="project-developer-overview">
@@ -173,15 +175,6 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
   );
 };
 
-ProjectDeveloperPage.layout = {
-  props: {
-    headerProps: {
-      transparent: true,
-    },
-    mainProps: {
-      topMargin: false,
-    },
-  },
-};
+ProjectDeveloperPage.layout = {};
 
 export default ProjectDeveloperPage;
