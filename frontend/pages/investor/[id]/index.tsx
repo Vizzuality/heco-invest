@@ -97,6 +97,7 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
         website={aboutInfo.website}
         social={aboutInfo.social}
         contact={aboutInfo.contact}
+        originalLanguage="en"
       />
 
       <LayoutContainer layout="narrow" className="mt-24 mb-20 md:mt-40">

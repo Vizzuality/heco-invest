@@ -1,10 +1,11 @@
-import { DevelopmentStages, Languages, TicketSizes } from 'enums';
+import { DevelopmentStages, TicketSizes } from 'enums';
 
 /** Project entity structure */
 export type Project = {
   id: string;
   type: 'project';
-  categories: string;
+  slug: string;
+  category: string;
   description: string;
   development_stage: DevelopmentStages;
   estimated_duration_in_months: number;

@@ -14,6 +14,9 @@ export const TagsGrid: FC<TagsGridProps> = ({ className, rows }: TagsGridProps) 
   const gridCells = rows.reduce((arr, { title, type, tags }) => {
     const id = slugify(title);
 
+    // Do not display grid rows that have no tags
+    if (!tags?.length) return arr;
+
     return [
       ...arr,
       { cellType: 'title', key: `title-${id}`, id, title },
@@ -35,11 +38,12 @@ export const TagsGrid: FC<TagsGridProps> = ({ className, rows }: TagsGridProps) 
         if (cellType === 'tags') {
           return (
             <span key={key} aria-labelledby={id} className="flex flex-wrap gap-x-4 gap-y-2">
-              {type === 'default' && tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+              {type === 'default' &&
+                tags.map((tag) => <Tag key={tag?.id || tag}>{tag?.name || tag}</Tag>)}
               {type === 'category' &&
-                tags.map((tag) => (
-                  <CategoryTag key={tag.id} category={tag.id}>
-                    {tag.name}
+                tags.map(({ id, name }) => (
+                  <CategoryTag key={id} category={id}>
+                    {name}
                   </CategoryTag>
                 ))}
             </span>

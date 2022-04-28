@@ -14,7 +14,7 @@ export type ProfileHeaderProps = {
   /** Text to display */
   text: string;
   /** Original language in which the profile was written in */
-  originalLanguage?: LanguageType;
+  originalLanguage: LanguageType;
   /** Num projects waiting funded */
   numNotFunded?: number;
   /** Num projects funded */

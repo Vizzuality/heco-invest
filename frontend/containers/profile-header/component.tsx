@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 
 import { Heart as HeartIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -18,7 +18,7 @@ import type { ProfileHeaderProps } from './types';
 
 export const ProfileHeader: FC<ProfileHeaderProps> = ({
   className,
-  logo,
+  logo: logoProp,
   title,
   subtitle,
   text,
@@ -32,6 +32,12 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
   onContactClick = () => noop,
 }: ProfileHeaderProps) => {
   const intl = useIntl();
+
+  const [logo, setLogo] = useState<string>(logoProp);
+
+  useEffect(() => {
+    setLogo(logoProp);
+  }, [logoProp]);
 
   return (
     <div className={className}>
@@ -49,7 +55,8 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                 layout="responsive"
                 width="100%"
                 height="100%"
-                objectFit="contain"
+                objectFit="cover"
+                onError={() => setLogo('/images/placeholders/profile-logo.png')}
               />
             </div>
             <div className="mb-4 text-center lg:text-left">
