@@ -61,7 +61,7 @@ export function useCreateProject(): UseMutationResult<
 
   return useMutation(createProject, {
     onSuccess: (result) => {
-      queryClient.setQueryData(Queries.Project, result.data);
+      queryClient.setQueryData(Queries.ProjectQuery, result.data);
     },
   });
 }
