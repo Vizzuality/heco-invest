@@ -40,7 +40,7 @@ const ProjectDescription = ({
           id="/m/QYW"
         />
       </p>
-      <form>
+      <form noValidate>
         <div>
           <p className="mb-2.5 text-gray-600 text-base font-medium">
             <FormattedMessage defaultMessage="Development of the project" id="ztd20l" />
@@ -125,7 +125,20 @@ const ProjectDescription = ({
                     id="i2AgQl"
                   />
                 </span>
-                <FieldInfo infoText="MISSING" />
+                <FieldInfo
+                  infoText={
+                    <ul>
+                      {category?.map(({ id, name, description }) => (
+                        <li key={id}>
+                          <p className="font-sans text-sm font-semibold text-white">{name}</p>
+                          <p className="mb-4 font-sans text-sm font-normal text-white">
+                            {description}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  }
+                />
               </legend>
               <TagGroup
                 name="category"
@@ -139,7 +152,7 @@ const ProjectDescription = ({
                     id={item.id}
                     name="category"
                     value={item.id}
-                    aria-describedby="target-groups-error"
+                    aria-describedby="categories-error"
                     register={register}
                     type="radio"
                   >
@@ -168,6 +181,8 @@ const ProjectDescription = ({
           <Textarea
             className="mt-2.5"
             name="problem"
+            id="problem"
+            aria-describedby="problem-error"
             placeholder={formatMessage({
               defaultMessage: 'insert your answer (max 600 characters)',
               id: 'hPsrc0',
@@ -192,6 +207,8 @@ const ProjectDescription = ({
           <Textarea
             className="mt-2.5"
             name="solution"
+            id="solution"
+            aria-describedby="solution-error"
             placeholder={formatMessage({
               defaultMessage: 'insert your answer (max 600 characters)',
               id: 'hPsrc0',
@@ -259,12 +276,15 @@ const ProjectDescription = ({
           <Textarea
             className="mt-2.5"
             name="expected_impact"
+            id="expected-impact"
+            aria-describedby="expected-impact-error"
             placeholder={formatMessage({
               defaultMessage: 'insert your answer (max 600 characters)',
               id: 'hPsrc0',
             })}
             register={register}
           />
+          <ErrorMessage id="expected-impact-error" errorText={errors?.expected_impact?.message} />
         </div>
       </form>
     </div>

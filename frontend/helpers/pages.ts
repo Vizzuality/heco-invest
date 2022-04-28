@@ -1,10 +1,11 @@
 import { Path } from 'react-hook-form';
+import { useIntl } from 'react-intl';
 
 import { AxiosError } from 'axios';
 
 import { ErrorResponse } from 'services/types';
-import { useIntl } from 'react-intl';
 
+/** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
 export function getServiceErrors<FormValues>(
   error: AxiosError<ErrorResponse>,
   inputs: Path<FormValues>[][]

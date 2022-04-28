@@ -41,7 +41,7 @@ export const ProjectGrow = ({ register, errors }: ProjectFormPagesProps<ProjectF
               defaultMessage: 'insert your answer (max 600 characters)',
               id: 'hPsrc0',
             })}
-            id="freplicability"
+            id="replicability"
             name="replicability"
             register={register}
             aria-describedby="replicability-error"

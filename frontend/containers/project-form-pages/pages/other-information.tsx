@@ -19,8 +19,8 @@ const OtherInformation = ({ register, errors }: ProjectFormPagesProps<ProjectFor
       </h1>
       <p className="mb-10 text-gray-600">
         <FormattedMessage
-          defaultMessage="This description should sumarise your project in a few words."
-          id="VuOSv4"
+          defaultMessage="This description should sumarize your project in a few words."
+          id="BcZVZW"
         />
       </p>
       <form noValidate>

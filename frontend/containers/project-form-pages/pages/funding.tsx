@@ -52,7 +52,7 @@ const Funding = ({
           id="pcRRCK"
         />
       </p>
-      <form>
+      <form noValidate>
         <div>
           <div>
             <fieldset>
@@ -81,6 +81,7 @@ const Funding = ({
                     type="radio"
                     value={1}
                     className="mr-2"
+                    aria-describedby="looking-forfunding-error"
                     {...register('looking_for_funding', {
                       onChange: handleChangeLookingForFunding,
                     })}
@@ -96,6 +97,7 @@ const Funding = ({
                     type="radio"
                     value={0}
                     className="mr-2"
+                    aria-describedby="looking-forfunding-error"
                     {...register('looking_for_funding', {
                       onChange: handleChangeLookingForFunding,
                     })}
@@ -105,7 +107,7 @@ const Funding = ({
               </div>
               <div>
                 <ErrorMessage
-                  id="looking_for_funding-error"
+                  id="looking-forfunding-error"
                   errorText={errors?.looking_for_funding?.message}
                 />
               </div>
@@ -281,45 +283,58 @@ const Funding = ({
           </div>
           <div
             className={cx(
-              'z-1 transition-all bg-background-middle px-4 py-4.5 mt-4.5 rounded-md flex gap-6',
+              'z-1 transition-all bg-background-middle px-4 py-4.5 mt-4.5 rounded-md sm:flex gap-6',
               {
-                'h-0 opacity-0': !showReceivedFundedFields,
+                'h-0 opacity-0 hidden': !showReceivedFundedFields,
                 'opacity-100 h-auto': showReceivedFundedFields,
               }
             )}
           >
-            <div className="w-full">
+            <div className="sm:w-full">
               <Label htmlFor="received-funding-amount">
                 <FormattedMessage
-                  defaultMessage="How much money did the project received or raised?"
-                  id="Nqe54a"
-                />
-                <Input
-                  type="number"
-                  placeholder={formatMessage({
-                    defaultMessage: 'insert the amount of money',
-                    id: 'bWygLM',
-                  })}
-                  name="received_funding_amount_usd"
-                  id="received-funding-amount"
-                  register={register}
+                  defaultMessage="How much money did the project received or raised? (optional)"
+                  id="VsNoGp"
                 />
               </Label>
+              <Input
+                type="number"
+                placeholder={formatMessage({
+                  defaultMessage: 'insert the amount of money',
+                  id: 'bWygLM',
+                })}
+                name="received_funding_amount_usd"
+                id="received-funding-amount"
+                aria-describedby="received-funding-amount-error"
+                register={register}
+              />
+              <ErrorMessage
+                id="received-funding-amount-error"
+                errorText={errors?.received_funding_amount_usd?.message}
+              />
             </div>
-            <div className="w-full">
+            <div className="sm:w-full">
               <Label htmlFor="received-funding-investor">
-                <FormattedMessage defaultMessage="From which investor or funder?" id="SXKvVa" />
-                <Input
-                  placeholder={formatMessage({
-                    defaultMessage: 'insert the name of the investor/funder',
-                    id: 'e0c9xF',
-                  })}
-                  type="text"
-                  name="received_funding_investor"
-                  id="received-funding-investor"
-                  register={register}
+                <FormattedMessage
+                  defaultMessage="From which investor or funder? (optional)"
+                  id="I9iCt5"
                 />
               </Label>
+              <Input
+                placeholder={formatMessage({
+                  defaultMessage: 'insert the name of the investor/funder',
+                  id: 'e0c9xF',
+                })}
+                type="text"
+                name="received_funding_investor"
+                id="received-funding-investor"
+                aria-describedby="received-funding-investor-error"
+                register={register}
+              />
+              <ErrorMessage
+                id="received-funding-investor-error"
+                errorText={errors?.received_funding_investor?.message}
+              />
             </div>
           </div>
         </div>

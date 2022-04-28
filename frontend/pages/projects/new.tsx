@@ -11,6 +11,7 @@ import { InferGetStaticPropsType } from 'next';
 import { loadI18nMessages } from 'helpers/i18n';
 import { getServiceErrors, useGetAlert } from 'helpers/pages';
 
+import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 import {
   GeneralInformation,
@@ -83,15 +84,15 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
     (data: ProjectCreationPayload) =>
       createProject.mutate(data, {
         onError: (error) => {
-          const { errorPages, fieldErrors } = getServiceErrors<ProjectForm>(error, formPageInputs);
-          fieldErrors.forEach((field) => setError(field, { message: '' }));
-          setCurrentPage(errorPages[0]);
+          const { errorPages } = getServiceErrors<ProjectForm>(error, formPageInputs);
+          // fieldErrors.forEach((field) => setError(field, { message: '' }));
+          errorPages.length && setCurrentPage(errorPages[0]);
         },
         onSuccess: (result) => {
           push({ pathname: '/projects/pending/', search: `project=${result.data.slug}` });
         },
       }),
-    [createProject, push, setError]
+    [createProject, push]
   );
 
   const onSubmit: SubmitHandler<ProjectForm> = (values: ProjectForm) => {
@@ -203,6 +204,12 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
           />
         </Page>
       </MultiPageLayout>
+      <LeaveFormModal
+        isOpen={showLeave}
+        close={() => setShowLeave(false)}
+        handleLeave={() => push('/')}
+        title={formatMessage({ defaultMessage: 'Leave project creation form', id: 'vygPIS' })}
+      />
     </>
   );
 };

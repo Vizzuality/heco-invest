@@ -9,8 +9,8 @@ export default (page: number) => {
     id: 'frm1UB',
   });
   const booleanField = formatMessage({
-    defaultMessage: 'Yo need to select an option',
-    id: 'OT1u1/',
+    defaultMessage: 'You need to select an option',
+    id: 'm4AGCI',
   });
 
   const messages = {
@@ -22,7 +22,6 @@ export default (page: number) => {
       id: '+m/R6q',
     }),
     project_gallery: {
-      min_lenth: formatMessage({ defaultMessage: 'Upload at least one picture', id: 'BG1UW6' }),
       max_length: formatMessage({ defaultMessage: 'Upload a maximum of six images', id: 'U6/vVg' }),
       max_picture_size: formatMessage({
         defaultMessage: 'The pictures must have a maximum size of 5 MB',
@@ -92,6 +91,10 @@ export default (page: number) => {
       defaultMessage: 'You need to enter a text for the funding plan',
       id: 'dOO/qA',
     }),
+    received_funding_amount_usd: formatMessage({
+      defaultMessage: 'The received amount must be greater than 0',
+      id: '/i6bRr',
+    }),
     replicability: formatMessage({
       defaultMessage: 'You need to enter a text for the replicability of the project',
       id: 'lr5x1P',
@@ -157,8 +160,11 @@ export default (page: number) => {
       expected_impact: string().min(1, messages.expected_impact).max(600, maxTextLength),
     }),
     object().shape({
-      impact_areas: array().ensure().of(string()).min(1, messages.impact_areas),
-      sdgs: array().ensure().of(string()).min(1, messages.sdgs),
+      impact_areas: array()
+        .typeError(messages.impact_areas)
+        .of(string())
+        .min(1, messages.impact_areas),
+      sdgs: array().typeError(messages.sdgs).of(string()).min(1, messages.sdgs),
     }),
     object().shape({
       looking_for_funding: number().typeError(booleanField).required(booleanField),
@@ -184,7 +190,11 @@ export default (page: number) => {
           .required(messages.funding_plan),
       }),
       received_funding: number().typeError(booleanField).required(booleanField),
-      received_funding_amount_usd: number().min(0),
+      received_funding_amount_usd: mixed().test(
+        'is-number',
+        messages.received_funding_amount_usd,
+        (value) => !value || Number(value) > 0
+      ),
       received_funding_investor: string().max(600, maxTextLength),
     }),
     object().shape({
