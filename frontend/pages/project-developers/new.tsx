@@ -14,9 +14,9 @@ import useInterests, { InterestNames } from 'hooks/useInterests';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import { CategoryTagDot } from 'containers/category-tag';
+import WebsiteSocial from 'containers/forms/website-social';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
-import SocialMediaImputs from 'containers/social-contact/inputs-social-contact/component';
 
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
@@ -474,7 +474,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
                 <FormattedMessage defaultMessage="Online presence" id="NjKSap" />
               </p>
             </div>
-            <SocialMediaImputs errors={errors} register={register} />
+            <WebsiteSocial errors={errors} register={register} />
           </form>
         </Page>
         <Page hasErrors={getPageErrors(2)}>
