@@ -42,9 +42,9 @@ const ProjectDescription = ({
       </p>
       <form>
         <div>
-          <p className="mb-2.5 text-gray-600 text-base font-medium">
+          <h2 className="mb-2.5 text-gray-600 text-base font-medium">
             <FormattedMessage defaultMessage="Development of the project" id="ztd20l" />
-          </p>
+          </h2>
           <div className="md:flex md:gap-6">
             <div className="w-full">
               <Label htmlFor="development-stage" id="development-stage-label">
