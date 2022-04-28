@@ -123,7 +123,7 @@ const GeneralInformation = ({
                 className="mt-2.5"
                 placeholder={formatMessage({ defaultMessage: 'select', id: 'J4SQjQ' })}
               >
-                {locations?.country?.map(({ id, attributes: { name } }) => (
+                {locations?.country?.map(({ id, name }) => (
                   <Option key={id}>{name}</Option>
                 ))}
               </Combobox>
@@ -144,7 +144,7 @@ const GeneralInformation = ({
                 className="mt-2.5"
                 placeholder={formatMessage({ defaultMessage: 'select', id: 'J4SQjQ' })}
               >
-                {locations?.department?.map(({ id, attributes: { name } }) => (
+                {locations?.department?.map(({ id, name }) => (
                   <Option key={id}>{name}</Option>
                 ))}
               </Combobox>
@@ -165,7 +165,7 @@ const GeneralInformation = ({
                 className="mt-2.5"
                 placeholder={formatMessage({ defaultMessage: 'select', id: 'J4SQjQ' })}
               >
-                {locations?.municipality?.map(({ id, attributes: { name } }) => (
+                {locations?.municipality?.map(({ id, name }) => (
                   <Option key={id}>{name}</Option>
                 ))}
               </Combobox>
@@ -268,11 +268,9 @@ const GeneralInformation = ({
                   // The hardcoded option Not Listed
                   {
                     id: 'not-listed',
-                    attributes: {
-                      name: formatMessage({ defaultMessage: 'Not listed', id: '8rAlFa' }),
-                    },
+                    name: formatMessage({ defaultMessage: 'Not listed', id: '8rAlFa' }),
                   },
-                ]?.map(({ id, attributes: { name } }) => (
+                ]?.map(({ id, name }) => (
                   <Option key={id}>{name}</Option>
                 ))}
               </MultiCombobox>

@@ -8,7 +8,7 @@ class TicketSize
     scaling
   ].freeze
 
-  def amount
-    read_attribute("amount")
+  def description
+    read_attribute("description")
   end
 end

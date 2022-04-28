@@ -3,6 +3,8 @@ module API
     module Enums
       class TicketSizeSerializer
         include EnumSerializer
+
+        attribute :description
       end
     end
   end

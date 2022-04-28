@@ -20,21 +20,16 @@ export interface SignupDto {
 export interface User {
   id: string;
   type: 'user';
-  attributes: {
-    first_name: string;
-    last_name: string;
-    email: string;
-    role: UserRoles;
-    confirmed: boolean;
-  };
+  first_name: string;
+  last_name: string;
+  email: string;
+  role: UserRoles;
+  confirmed: boolean;
 }
 
 export type UserAccount = {
-  attributes: {
-    name: string;
-    slug: string;
-  };
   id: string;
-  relationships: {};
+  name: string;
+  slug: string;
   type: 'project_developer' | 'investor';
 };

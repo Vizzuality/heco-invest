@@ -85,16 +85,16 @@ zu:
     ticket_size:
       small-grants:
         name: Small Grants
-        amount: "<US$25,000"
+        description: "<US$25,000"
       prototyping:
         name: Prototyping
-        amount: US$25,000 - 150,000
+        description: US$25,000 - 150,000
       validation:
         name: Validation
-        amount: US$150,000 - 750,000
+        description: US$150,000 - 750,000
       scaling:
         name: Scaling
-        amount: ">US$750,000"
+        description: ">US$750,000"
     instrument_type:
       grant:
         name: Grant

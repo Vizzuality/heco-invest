@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({
   const investor = undefined;
   // Important!!! Include the current investor when available
 
-  const account = projectDeveloper?.attributes || investor;
+  const account = projectDeveloper || investor;
 
   const { scrollY }: ReturnType<typeof useWindowScrollPosition> =
     // The `window` check is required because the hook is not SSR-ready yet:
@@ -142,9 +142,9 @@ export const Header: React.FC<HeaderProps> = ({
                       </div>
                       <div className="pb-2 pl-2 pr-2 border-b border-bg-dark">
                         <span className="text-green-dark">
-                          {user.attributes.first_name} {user.attributes.last_name}
+                          {user.first_name} {user.last_name}
                         </span>
-                        <span className="block text-gray-400">{user.attributes.email}</span>
+                        <span className="block text-gray-400">{user.email}</span>
                       </div>
                     </div>
                   }
