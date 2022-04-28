@@ -1,5 +1,3 @@
-import { SocialContactInputs } from 'containers/social-contact/inputs-social-contact/types';
-
 import { Languages } from 'enums';
 
 import { CategoryType } from './category';
