@@ -44,6 +44,8 @@ export enum Queries {
   EnumList = 'enum_list',
   /** Locations */
   Locations = 'locations',
+  /** Single Project */
+  Project = 'project',
 }
 
 /** Location endpoint param location_type */

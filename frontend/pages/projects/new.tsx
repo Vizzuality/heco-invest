@@ -84,12 +84,11 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
       createProject.mutate(data, {
         onError: (error) => {
           const { errorPages, fieldErrors } = getServiceErrors<ProjectForm>(error, formPageInputs);
-          console.log(error, errorPages, fieldErrors);
           fieldErrors.forEach((field) => setError(field, { message: '' }));
           setCurrentPage(errorPages[0]);
         },
-        onSuccess: () => {
-          push('/projects/pending');
+        onSuccess: (result) => {
+          push({ pathname: '/projects/pending/', search: `project=${result.data.slug}` });
         },
       }),
     [createProject, push, setError]
@@ -100,8 +99,8 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
       const { involved_project_developer, project_gallery, location, ...rest } = values;
       // set involved_project_developer_not_listed to true if not listed is selected and removes this value from the involved_project_developer_ids
       const involved_project_developer_not_listed =
-        !!values.involved_project_developer_ids.includes('not-listed');
-      const involved_project_developer_ids = values.involved_project_developer_ids.filter(
+        !!values.involved_project_developer_ids?.includes('not-listed');
+      const involved_project_developer_ids = values.involved_project_developer_ids?.filter(
         (id) => id !== 'not-listed'
       );
       handleCreate({

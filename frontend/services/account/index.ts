@@ -2,11 +2,12 @@ import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
 
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 
+import { Queries } from 'enums';
 import { Project, ProjectCreationPayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 
 import API from 'services/api';
-import { ErrorResponse } from 'services/types';
+import { ErrorResponse, ResponseData } from 'services/types';
 
 const createProjectDeveloper = async (
   data: ProjectDeveloperSetupForm
@@ -43,7 +44,7 @@ export function useCreateProjectDeveloper(): UseMutationResult<
 
   return useMutation(createProjectDeveloper, {
     onSuccess: (result) => {
-      queryClient.setQueryData('project_developer', result.data);
+      queryClient.setQueryData(Queries.ProjectDeveloper, result.data);
     },
   });
 }
@@ -53,8 +54,14 @@ export function useCreateProject(): UseMutationResult<
   AxiosError<ErrorResponse>,
   ProjectCreationPayload
 > {
-  const createProject = async (data: ProjectCreationPayload) =>
-    API.post('/api/v1/account/projects', data);
+  const createProject = async (data: ProjectCreationPayload): Promise<AxiosResponse<Project>> =>
+    API.post('/api/v1/account/projects', data).then((response) => response.data);
 
-  return useMutation(createProject);
+  const queryClient = useQueryClient();
+
+  return useMutation(createProject, {
+    onSuccess: (result) => {
+      queryClient.setQueryData(Queries.Project, result.data);
+    },
+  });
 }
