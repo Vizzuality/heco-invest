@@ -16,9 +16,9 @@ RSpec.describe "API V1 Project Developers", type: :request do
       parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
       parameter name: "fields[project_developer]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
       parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
-      parameter name: "search[category]", in: :query, type: :string, required: false
-      parameter name: "search[impact]", in: :query, type: :string, required: false
-      parameter name: "search[only_verified]", in: :query, type: :boolean, required: false
+      parameter name: "filter[category]", in: :query, type: :string, required: false
+      parameter name: "filter[impact]", in: :query, type: :string, required: false
+      parameter name: "filter[only_verified]", in: :query, type: :boolean, required: false
 
       response "200", :success do
         schema type: :object, properties: {
@@ -50,10 +50,10 @@ RSpec.describe "API V1 Project Developers", type: :request do
           end
         end
 
-        context "when searching is used" do
-          let("search[category]") { @project_developer.categories.first }
+        context "when filtering is used" do
+          let("filter[category]") { @project_developer.categories.first }
 
-          it "includes searched project developer" do
+          it "includes filtered project developer" do
             expect(response_json["data"].pluck("id")).to eq([@project_developer.id])
           end
         end

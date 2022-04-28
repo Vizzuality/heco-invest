@@ -15,9 +15,9 @@ RSpec.describe "API V1 Open Calls", type: :request do
       parameter name: "page[number]", in: :query, type: :integer, description: "Page number. Default: 1", required: false
       parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
       parameter name: "fields[open_call]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
-      parameter name: "search[sdg]", in: :query, type: :integer, required: false
-      parameter name: "search[instrument_type]", in: :query, type: :string, required: false
-      parameter name: "search[ticket_size]", in: :query, type: :string, required: false
+      parameter name: "filter[sdg]", in: :query, type: :integer, required: false
+      parameter name: "filter[instrument_type]", in: :query, type: :string, required: false
+      parameter name: "filter[ticket_size]", in: :query, type: :string, required: false
 
       response "200", :success do
         schema type: :object, properties: {
@@ -40,10 +40,10 @@ RSpec.describe "API V1 Open Calls", type: :request do
           end
         end
 
-        context "when searching is used" do
-          let("search[instrument_type]") { @open_call.instrument_type }
+        context "when filtering is used" do
+          let("filter[instrument_type]") { @open_call.instrument_type }
 
-          it "includes searched open call" do
+          it "includes filtered open call" do
             expect(response_json["data"].pluck("id")).to eq([@open_call.id])
           end
         end

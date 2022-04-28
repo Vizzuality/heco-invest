@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe API::Searcher do
+RSpec.describe API::Filterer do
   subject { described_class.new(query, filters) }
 
   describe "#call" do
@@ -16,7 +16,7 @@ RSpec.describe API::Searcher do
     describe "used with Project query" do
       let(:query) { Project.all }
 
-      context "when searched by enum filters" do
+      context "when filtered by enum filters" do
         let!(:correct_project) do
           create :project, category: "sustainable-agrosystems", sdgs: [1, 2], instrument_types: ["loan"], ticket_size: "scaling"
         end
@@ -34,7 +34,7 @@ RSpec.describe API::Searcher do
     describe "used with Project Developer query" do
       let(:query) { ProjectDeveloper.all }
 
-      context "when searched by enum filters" do
+      context "when filtered by enum filters" do
         let!(:correct_project_developer) do
           create :project_developer, categories: ["sustainable-agrosystems"], impacts: ["climate"]
         end
@@ -46,7 +46,7 @@ RSpec.describe API::Searcher do
         end
       end
 
-      context "when searched by only verified flag" do
+      context "when filtered by only verified flag" do
         let(:filters) { {only_verified: true} }
         let!(:verified_project_developer) { create :project_developer, review_status: :approved }
         let!(:unverified_project_developer) { create :project_developer, review_status: :unapproved }
@@ -60,7 +60,7 @@ RSpec.describe API::Searcher do
     describe "used with Open Call query" do
       let(:query) { OpenCall.all }
 
-      context "when searched by enum filters" do
+      context "when filtered by enum filters" do
         let!(:correct_open_call) do
           create :open_call, sdgs: [1, 2], instrument_type: "loan", ticket_size: "scaling"
         end
@@ -77,7 +77,7 @@ RSpec.describe API::Searcher do
     describe "used with Investor query" do
       let(:query) { Investor.all }
 
-      context "when searched by enum filters" do
+      context "when filtered by enum filters" do
         let!(:correct_investor) do
           create :investor, categories: ["sustainable-agrosystems"], sdgs: [1, 2], instrument_types: ["loan"],
             ticket_sizes: ["scaling"], impacts: ["climate"]
@@ -93,7 +93,7 @@ RSpec.describe API::Searcher do
         end
       end
 
-      context "when searched by only verified flag" do
+      context "when filtered by only verified flag" do
         let(:filters) { {only_verified: true} }
         let!(:verified_investor) { create :investor, review_status: :approved }
         let!(:unverified_investor) { create :investor, review_status: :unapproved }

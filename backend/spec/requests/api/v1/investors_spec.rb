@@ -15,12 +15,12 @@ RSpec.describe "API V1 Investors", type: :request do
       parameter name: "page[number]", in: :query, type: :integer, description: "Page number. Default: 1", required: false
       parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
       parameter name: "fields[investor]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
-      parameter name: "search[category]", in: :query, type: :string, required: false
-      parameter name: "search[impact]", in: :query, type: :string, required: false
-      parameter name: "search[sdg]", in: :query, type: :integer, required: false
-      parameter name: "search[instrument_type]", in: :query, type: :string, required: false
-      parameter name: "search[ticket_size]", in: :query, type: :string, required: false
-      parameter name: "search[only_verified]", in: :query, type: :boolean, required: false
+      parameter name: "filter[category]", in: :query, type: :string, required: false
+      parameter name: "filter[impact]", in: :query, type: :string, required: false
+      parameter name: "filter[sdg]", in: :query, type: :integer, required: false
+      parameter name: "filter[instrument_type]", in: :query, type: :string, required: false
+      parameter name: "filter[ticket_size]", in: :query, type: :string, required: false
+      parameter name: "filter[only_verified]", in: :query, type: :boolean, required: false
 
       response "200", :success do
         schema type: :object, properties: {
@@ -43,10 +43,10 @@ RSpec.describe "API V1 Investors", type: :request do
           end
         end
 
-        context "when searching is used" do
-          let("search[sdg]") { @investor.sdgs.first }
+        context "when filtering is used" do
+          let("filter[sdg]") { @investor.sdgs.first }
 
-          it "includes searched investor" do
+          it "includes filtered investor" do
             expect(response_json["data"].pluck("id")).to eq([@investor.id])
           end
         end

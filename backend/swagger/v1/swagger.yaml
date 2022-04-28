@@ -1237,32 +1237,32 @@ paths:
         required: false
         schema:
           type: string
-      - name: search[category]
+      - name: filter[category]
         in: query
         required: false
         schema:
           type: string
-      - name: search[impact]
+      - name: filter[impact]
         in: query
         required: false
         schema:
           type: string
-      - name: search[sdg]
+      - name: filter[sdg]
         in: query
         required: false
         schema:
           type: integer
-      - name: search[instrument_type]
+      - name: filter[instrument_type]
         in: query
         required: false
         schema:
           type: string
-      - name: search[ticket_size]
+      - name: filter[ticket_size]
         in: query
         required: false
         schema:
           type: string
-      - name: search[only_verified]
+      - name: filter[only_verified]
         in: query
         required: false
         schema:
@@ -1961,17 +1961,17 @@ paths:
         required: false
         schema:
           type: string
-      - name: search[sdg]
+      - name: filter[sdg]
         in: query
         required: false
         schema:
           type: integer
-      - name: search[instrument_type]
+      - name: filter[instrument_type]
         in: query
         required: false
         schema:
           type: string
-      - name: search[ticket_size]
+      - name: filter[ticket_size]
         in: query
         required: false
         schema:
@@ -2263,17 +2263,17 @@ paths:
         required: false
         schema:
           type: string
-      - name: search[category]
+      - name: filter[category]
         in: query
         required: false
         schema:
           type: string
-      - name: search[impact]
+      - name: filter[impact]
         in: query
         required: false
         schema:
           type: string
-      - name: search[only_verified]
+      - name: filter[only_verified]
         in: query
         required: false
         schema:
@@ -2819,22 +2819,22 @@ paths:
         required: false
         schema:
           type: string
-      - name: search[category]
+      - name: filter[category]
         in: query
         required: false
         schema:
           type: string
-      - name: search[sdg]
+      - name: filter[sdg]
         in: query
         required: false
         schema:
           type: integer
-      - name: search[instrument_type]
+      - name: filter[instrument_type]
         in: query
         required: false
         schema:
           type: string
-      - name: search[ticket_size]
+      - name: filter[ticket_size]
         in: query
         required: false
         schema:
