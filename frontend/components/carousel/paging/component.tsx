@@ -15,6 +15,7 @@ export const Paging: FC<PagingProps> = ({ className, numSlides, currentSlide, on
     <div className={className}>
       {times(numSlides, (slide) => (
         <button
+          key={`slide-${slide}`}
           aria-label={intl.formatMessage(
             {
               defaultMessage: 'Slide {slideNumber}',

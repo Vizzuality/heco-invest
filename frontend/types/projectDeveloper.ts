@@ -4,6 +4,13 @@ import { Languages } from 'enums';
 
 import { CategoryType } from './category';
 import { Enum } from './enums';
+import { Project } from './project';
+
+export type ProjectDeveloperPicture = {
+  small: string;
+  medium: string;
+  large: string;
+};
 
 export type ProjectDeveloper = {
   id: string;
@@ -21,8 +28,11 @@ export type ProjectDeveloper = {
   project_developer_type: string;
   categories: CategoryType[];
   impacts: string[];
+  mosaics: string[];
   language: Languages;
+  picture: ProjectDeveloperPicture;
   entity_legal_registration_number: string;
+  projects?: Project[];
 };
 
 export type ProjectDeveloperSetupForm = ProjectDeveloper & {

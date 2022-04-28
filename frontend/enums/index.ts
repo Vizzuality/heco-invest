@@ -68,6 +68,7 @@ export enum EnumTypes {
   LocationType = 'location_type',
   ProjectDevelopmentStage = 'project_development_stage',
   TargetGroup = 'project_target_group',
+  Mosaic = 'mosaic',
 }
 
 /** Project development stages */

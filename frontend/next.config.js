@@ -5,6 +5,9 @@ module.exports = {
     locales: locales.map(({ locale }) => locale),
     defaultLocale: locales.find((locale) => locale.default).locale,
   },
+  images: {
+    domains: ['heco.vizzuality.com', 'staging.heco.vizzuality.com'],
+  },
   swcMinify: true,
   eslint: {
     dirs: [

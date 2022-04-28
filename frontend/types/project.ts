@@ -4,6 +4,7 @@ import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 export type ProjectBase = {
   id: string;
   type: 'project';
+  slug: string;
   category: string;
   description: string;
   development_stage: DevelopmentStages;
@@ -51,5 +52,5 @@ export type ProjectForm = ProjectBase & {
 
 export type ProjectCreationPayload = Omit<
   ProjectForm,
-  'involved_project_developer' | 'project_gallery' | 'location'
+  'involved_project_developer' | 'project_gallery' | 'location' | 'slug'
 >;
