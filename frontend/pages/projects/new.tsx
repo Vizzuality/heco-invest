@@ -47,7 +47,6 @@ type ProjectProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  // To use with the confirm leave modal
   const [showLeave, setShowLeave] = useState(false);
   const { formatMessage } = useIntl();
   const resolver = useProjectValidation(currentPage);
