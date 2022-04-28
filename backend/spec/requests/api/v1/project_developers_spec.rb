@@ -2,8 +2,8 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Project Developers", type: :request do
   before_all do
-    @project_developer = create(:project_developer, :with_involved_projects, number_of_projects: 2)
-    create_list(:project_developer, 6)
+    @project_developer = create(:project_developer, :with_involved_projects, number_of_projects: 2, categories: ["tourism-and-recreation"])
+    create_list(:project_developer, 6, categories: %w[forestry-and-agroforestry non-timber-forest-production])
   end
 
   include_examples :api_pagination, model: ProjectDeveloper, expected_total: 9
@@ -16,6 +16,9 @@ RSpec.describe "API V1 Project Developers", type: :request do
       parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
       parameter name: "fields[project_developer]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
       parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
+      parameter name: "search[category]", in: :query, type: :string, required: false
+      parameter name: "search[impact]", in: :query, type: :string, required: false
+      parameter name: "search[only_verified]", in: :query, type: :boolean, required: false
 
       response "200", :success do
         schema type: :object, properties: {
@@ -44,6 +47,14 @@ RSpec.describe "API V1 Project Developers", type: :request do
 
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/project-developers-include-relationships")
+          end
+        end
+
+        context "when searching is used" do
+          let("search[category]") { @project_developer.categories.first }
+
+          it "includes searched project developer" do
+            expect(response_json["data"].pluck("id")).to eq([@project_developer.id])
           end
         end
       end

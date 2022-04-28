@@ -7,6 +7,7 @@ module API
         project_developers = ProjectDeveloper.all.includes(
           :projects, :involved_projects, account: [:owner, {picture_attachment: :blob}]
         )
+        project_developers = API::Filterer.new(project_developers, search_params.to_h).call
         pagy_object, project_developers = pagy(project_developers, page: current_page, items: per_page)
         render json: ProjectDeveloperSerializer.new(
           project_developers,
@@ -36,6 +37,11 @@ module API
 
         account = Account.friendly.find(params[:id])
         ProjectDeveloper.find_by!(account_id: account.id)
+      end
+
+      def search_params
+        params.fetch(:search, {})
+          .permit :category, :impact, :only_verified, category: [], impact: []
       end
     end
   end

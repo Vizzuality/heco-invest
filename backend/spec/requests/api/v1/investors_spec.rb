@@ -2,8 +2,8 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Investors", type: :request do
   before_all do
-    @investor = create(:investor)
-    create_list(:investor, 6)
+    @investor = create(:investor, sdgs: [3, 4])
+    create_list(:investor, 6, sdgs: [1, 4, 5])
   end
 
   include_examples :api_pagination, model: Investor, expected_total: 7
@@ -15,6 +15,12 @@ RSpec.describe "API V1 Investors", type: :request do
       parameter name: "page[number]", in: :query, type: :integer, description: "Page number. Default: 1", required: false
       parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
       parameter name: "fields[investor]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
+      parameter name: "search[category]", in: :query, type: :string, required: false
+      parameter name: "search[impact]", in: :query, type: :string, required: false
+      parameter name: "search[sdg]", in: :query, type: :integer, required: false
+      parameter name: "search[instrument_type]", in: :query, type: :string, required: false
+      parameter name: "search[ticket_size]", in: :query, type: :string, required: false
+      parameter name: "search[only_verified]", in: :query, type: :boolean, required: false
 
       response "200", :success do
         schema type: :object, properties: {
@@ -34,6 +40,14 @@ RSpec.describe "API V1 Investors", type: :request do
 
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/investors-sparse-fieldset")
+          end
+        end
+
+        context "when searching is used" do
+          let("search[sdg]") { @investor.sdgs.first }
+
+          it "includes searched investor" do
+            expect(response_json["data"].pluck("id")).to eq([@investor.id])
           end
         end
       end

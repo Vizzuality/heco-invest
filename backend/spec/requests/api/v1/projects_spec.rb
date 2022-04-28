@@ -2,8 +2,8 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Projects", type: :request do
   before_all do
-    @project = create(:project, :with_involved_project_developers, :with_project_images)
-    create_list(:project, 6)
+    @project = create(:project, :with_involved_project_developers, :with_project_images, category: "non-timber-forest-production")
+    create_list(:project, 6, category: "forestry-and-agroforestry")
   end
 
   include_examples :api_pagination, model: Project, expected_total: 7
@@ -16,6 +16,10 @@ RSpec.describe "API V1 Projects", type: :request do
       parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
       parameter name: "fields[project]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
       parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
+      parameter name: "search[category]", in: :query, type: :string, required: false
+      parameter name: "search[sdg]", in: :query, type: :integer, required: false
+      parameter name: "search[instrument_type]", in: :query, type: :string, required: false
+      parameter name: "search[ticket_size]", in: :query, type: :string, required: false
 
       response "200", :success do
         schema type: :object, properties: {
@@ -44,6 +48,14 @@ RSpec.describe "API V1 Projects", type: :request do
 
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/projects-include-relationships")
+          end
+        end
+
+        context "when searching is used" do
+          let("search[category]") { @project.category }
+
+          it "includes searched project" do
+            expect(response_json["data"].pluck("id")).to eq([@project.id])
           end
         end
       end

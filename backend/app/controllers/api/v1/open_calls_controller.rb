@@ -7,6 +7,7 @@ module API
 
       def index
         open_calls = OpenCall.all.includes(:investor)
+        open_calls = API::Filterer.new(open_calls, search_params.to_h).call
         pagy_object, open_calls = pagy(open_calls, page: current_page, items: per_page)
         render json: OpenCallSerializer.new(
           open_calls,
@@ -27,6 +28,11 @@ module API
 
       def fetch_open_call
         @open_call = OpenCall.friendly.find(params[:id])
+      end
+
+      def search_params
+        params.fetch(:search, {})
+          .permit :sdg, :instrument_type, :ticket_size, sdg: [], instrument_type: [], ticket_size: []
       end
     end
   end
