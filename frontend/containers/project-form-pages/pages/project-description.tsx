@@ -42,9 +42,9 @@ const ProjectDescription = ({
       </p>
       <form noValidate>
         <div>
-          <p className="mb-2.5 text-gray-600 text-base font-medium">
+          <h2 className="mb-2.5 text-gray-600 text-base font-medium">
             <FormattedMessage defaultMessage="Development of the project" id="ztd20l" />
-          </p>
+          </h2>
           <div className="md:flex md:gap-6">
             <div className="w-full">
               <Label htmlFor="development-stage" id="development-stage-label">
@@ -121,7 +121,7 @@ const ProjectDescription = ({
               <legend className="inline font-sans font-semibold text-sm text-gray-800 mb-4.5">
                 <span className="mr-2.5">
                   <FormattedMessage
-                    defaultMessage="Which of these topics/sector categories better describe your project?"
+                    defaultMessage="Which of these topic/sector categories better describe your project?"
                     id="i2AgQl"
                   />
                 </span>
