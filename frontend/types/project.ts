@@ -2,6 +2,15 @@ import { ValidGeometryType } from 'containers/forms/geometry/types';
 
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
+export type ProjectImageType = {
+  cover: boolean;
+  file: {
+    small: string;
+    medium: string;
+    large: string;
+  };
+};
+
 /** Common Project types */
 export type ProjectBase = {
   id: string;
@@ -29,6 +38,9 @@ export type ProjectBase = {
   sustainability: string;
   target_groups: string[];
   ticket_size?: TicketSizes;
+  language: Languages;
+  project_images: ProjectImageType[];
+  verified: boolean;
 };
 
 /** Project entity structure */

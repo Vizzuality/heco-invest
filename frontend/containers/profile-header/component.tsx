@@ -85,8 +85,8 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
         <div className="lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0">
           {typeof numFunded === 'number' && typeof numNotFunded === 'number' && (
             <>
-              <div className="flex flex-col md:flex-row">
-                <div className="flex flex-col items-center w-full gap-2 text-center md:w-1/2">
+              <div className="flex flex-col gap-8 md:flex-row">
+                <div className="flex flex-col items-center w-full gap-2 text-center md:min-w-1/2">
                   <span id="num-projects-waiting-funding" className="text-2xl font-semibold">
                     {numNotFunded}
                   </span>
@@ -94,7 +94,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                     <FormattedMessage defaultMessage="Projects waiting funding" id="hxIQ/8" />
                   </span>
                 </div>
-                <div className="flex flex-col items-center w-full gap-2 text-center md:w-1/2">
+                <div className="flex flex-col items-center w-full gap-2 text-center md:min-w-1/2">
                   <span id="num-projects-waiting-funding" className="text-2xl font-semibold">
                     {numFunded}
                   </span>

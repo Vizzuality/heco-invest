@@ -3,6 +3,7 @@ import { groupBy } from 'lodash-es';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Breadcrumbs from 'containers/breadcrumbs';
+import ProjectHeader from 'containers/project-header';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
@@ -20,7 +21,7 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
   // If getting the project fails, it's most likely because the record has
   // not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    ({ data: project } = await getProject(id));
+    ({ data: project } = await getProject(id, { includes: 'project_images' }));
   } catch (e) {
     return { notFound: true };
   }
@@ -56,7 +57,7 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
             id: { name: project.name },
           }}
         />
-        {/*<ProjectHeader/>*/} ProjectHeader
+        <ProjectHeader className="mt-6" project={project} />
       </LayoutContainer>
 
       <LayoutContainer className="mb-20 mt-18">

@@ -636,8 +636,14 @@
   "YWQkk+": {
     "string": "Short description of the project"
   },
+  "Z8971h": {
+    "string": "Verified"
+  },
   "ZEEVQX": {
     "string": "Social media"
+  },
+  "ZKsAVY": {
+    "string": "This project isn’t currently looking for funding."
   },
   "ZMvQxR": {
     "string": "HeCo Invest manages a wide range of investment and financing opportunities in various sectors and priority geographies for the conservation and development of the Colombian Amazon region."
@@ -753,6 +759,9 @@
   "et2m37": {
     "string": "insert URL"
   },
+  "fDd10o": {
+    "string": "Instrument type"
+  },
   "fnihsY": {
     "string": "Leave"
   },
@@ -839,6 +848,9 @@
   },
   "lfvUqs": {
     "string": "Do you want to leave?"
+  },
+  "lfx6Nc": {
+    "string": "Ticket size"
   },
   "m3Dnav": {
     "string": "Investment info"
@@ -977,6 +989,9 @@
   },
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
+  },
+  "vIKTZ9": {
+    "string": "If you have interest in this project contact the project developer to know how you can work together."
   },
   "vONi+O": {
     "string": "Country"
