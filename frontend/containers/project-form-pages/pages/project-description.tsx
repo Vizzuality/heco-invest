@@ -122,7 +122,7 @@ const ProjectDescription = ({
                 <span className="mr-2.5">
                   <FormattedMessage
                     defaultMessage="Which of these topic/sector categories better describe your project?"
-                    id="i2AgQl"
+                    id="p+Qmws"
                   />
                 </span>
                 <FieldInfo
