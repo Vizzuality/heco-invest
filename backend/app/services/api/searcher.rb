@@ -1,5 +1,5 @@
 module API
-  class Filterer
+  class Searcher
     attr_accessor :query, :filters
 
     ENUM_FILTERS = %i[category impact sdg instrument_type ticket_size]

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe API::Filterer do
+RSpec.describe API::Searcher do
   subject { described_class.new(query, filters) }
 
   describe "#call" do
