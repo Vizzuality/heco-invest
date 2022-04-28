@@ -121,7 +121,7 @@ const ProjectDescription = ({
               <legend className="inline font-sans font-semibold text-sm text-gray-800 mb-4.5">
                 <span className="mr-2.5">
                   <FormattedMessage
-                    defaultMessage="Which of these topics/sector categories better describe your project?"
+                    defaultMessage="Which of these topic/sector categories better describe your project?"
                     id="i2AgQl"
                   />
                 </span>
