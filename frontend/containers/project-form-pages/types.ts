@@ -10,6 +10,9 @@ import {
   UseFormSetValue,
 } from 'react-hook-form';
 
+import { Enum } from 'types/enums';
+import { ProjectForm } from 'types/project';
+
 export type ProjectFormPagesProps<FormValues> = {
   /** React Hook Form's `register` function */
   register: UseFormRegister<FormValues>;
@@ -28,4 +31,19 @@ export type ProjectFormPagesProps<FormValues> = {
   setValue?: UseFormSetValue<FormValues>;
   /** React-hook-form useForm clearErrors */
   clearErrors?: UseFormClearErrors<FormValues>;
+};
+
+export type ProjectDescriptionProps = ProjectFormPagesProps<ProjectForm> & {
+  project_development_stage: Enum[];
+  category: Enum[];
+  target_group: Enum[];
+};
+
+export type ImpactProps = ProjectFormPagesProps<ProjectForm> & {
+  impacts: Enum[];
+};
+
+export type FundingProps = ProjectFormPagesProps<ProjectForm> & {
+  ticket_sizes: Enum[];
+  instrument_type: Enum[];
 };

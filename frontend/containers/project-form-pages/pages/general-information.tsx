@@ -35,7 +35,7 @@ const GeneralInformation = ({
 
   useEffect(() => {
     // This is just for when the user get back to this page (the page mounts), it shows the select if there is any value selected
-    setShowInvolvedProjectDevelopers(getValues('involved_project_developer'));
+    setShowInvolvedProjectDevelopers(!!Number(getValues('involved_project_developer')));
   }, [getValues]);
 
   const handleChangeInvolvedProjectDeveloper = (e: ChangeEvent<HTMLInputElement>) => {
@@ -277,7 +277,9 @@ const GeneralInformation = ({
               <ErrorMessage
                 id="name"
                 errorText={
-                  (errors?.involved_project_developer_ids as unknown as FieldError)?.message
+                  Array.isArray(errors?.involved_project_developer_ids)
+                    ? errors?.involved_project_developer_ids[0].message
+                    : (errors?.involved_project_developer_ids as FieldError)?.message
                 }
               />
             </div>

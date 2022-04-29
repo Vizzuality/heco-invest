@@ -46,6 +46,8 @@ export enum Queries {
   EnumList = 'enum_list',
   /** Locations */
   Locations = 'locations',
+  /** Single Project */
+  ProjectQuery = 'project',
 }
 
 /** Location endpoint param location_type */
@@ -62,6 +64,7 @@ export enum EnumTypes {
   InstrumentType = 'instrument_type',
   TicketSize = 'ticket_size',
   Impact = 'impact',
+  ImpactAreas = 'impact_area',
   ProjectDeveloperType = 'project_developer_type',
   InvestorType = 'investor_type',
   LocationType = 'location_type',

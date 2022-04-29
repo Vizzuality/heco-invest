@@ -1,7 +1,7 @@
-import { DevelopmentStages, TicketSizes } from 'enums';
+import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
-/** Project entity structure */
-export type Project = {
+/** Common Project types */
+export type ProjectBase = {
   id: string;
   type: 'project';
   slug: string;
@@ -29,8 +29,14 @@ export type Project = {
   ticket_size?: TicketSizes;
 };
 
+/** Project entity structure */
+export type Project = ProjectBase & {
+  slug: string;
+  language: Languages;
+};
+
 /** Project Form inputs */
-export type ProjectForm = Project & {
+export type ProjectForm = ProjectBase & {
   country_id: string;
   department_id: string;
   funding_plan: string;
@@ -43,3 +49,8 @@ export type ProjectForm = Project & {
   // TO UPDATE LATER
   location: File;
 };
+
+export type ProjectCreationPayload = Omit<
+  ProjectForm,
+  'involved_project_developer' | 'project_gallery' | 'location' | 'slug'
+>;
