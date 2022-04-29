@@ -7,7 +7,7 @@ RSpec.describe API::Filterer do
     let(:filters) do
       {category: "sustainable-agrosystems",
        impacts: "climate",
-       sdg: [2, 3],
+       sdg: "2,3",
        instrument_type: "loan",
        ticket_size: "scaling",
        only_verified: false}
@@ -29,6 +29,16 @@ RSpec.describe API::Filterer do
           expect(subject.call).to eq([correct_project])
         end
       end
+
+      context "when filtered by only verified flag" do
+        let(:filters) { {only_verified: true} }
+        let!(:verified_project) { create :project, trusted: true }
+        let!(:unverified_project) { create :project, trusted: false }
+
+        it "#returns only verified records" do
+          expect(subject.call).to eq([verified_project])
+        end
+      end
     end
 
     describe "used with Project Developer query" do
@@ -43,16 +53,6 @@ RSpec.describe API::Filterer do
 
         it "#returns only correct project developers" do
           expect(subject.call).to eq([correct_project_developer])
-        end
-      end
-
-      context "when filtered by only verified flag" do
-        let(:filters) { {only_verified: true} }
-        let!(:verified_project_developer) { create :project_developer, review_status: :approved }
-        let!(:unverified_project_developer) { create :project_developer, review_status: :unapproved }
-
-        it "#returns only verified records" do
-          expect(subject.call).to eq([verified_project_developer])
         end
       end
     end
@@ -70,6 +70,16 @@ RSpec.describe API::Filterer do
 
         it "#returns only correct open calls" do
           expect(subject.call).to eq([correct_open_call])
+        end
+      end
+
+      context "when filtered by only verified flag" do
+        let(:filters) { {only_verified: true} }
+        let!(:verified_open_call) { create :open_call, trusted: true }
+        let!(:unverified_open_call) { create :open_call, trusted: false }
+
+        it "#returns only verified records" do
+          expect(subject.call).to eq([verified_open_call])
         end
       end
     end
@@ -90,16 +100,6 @@ RSpec.describe API::Filterer do
 
         it "#returns only correct investors" do
           expect(subject.call).to eq([correct_investor])
-        end
-      end
-
-      context "when filtered by only verified flag" do
-        let(:filters) { {only_verified: true} }
-        let!(:verified_investor) { create :investor, review_status: :approved }
-        let!(:unverified_investor) { create :investor, review_status: :unapproved }
-
-        it "#returns only verified records" do
-          expect(subject.call).to eq([verified_investor])
         end
       end
     end

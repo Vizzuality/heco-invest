@@ -4,7 +4,7 @@ module API
       include API::Pagination
 
       def index
-        project_developers = ProjectDeveloper.all.includes(
+        project_developers = ProjectDeveloper.approved.includes(
           :projects, :involved_projects, account: [:owner, {picture_attachment: :blob}]
         )
         project_developers = API::Filterer.new(project_developers, filter_params.to_h).call
@@ -40,8 +40,7 @@ module API
       end
 
       def filter_params
-        params.fetch(:filter, {})
-          .permit :category, :impact, :only_verified, category: [], impact: []
+        params.fetch(:filter, {}).permit :category, :impact
       end
     end
   end

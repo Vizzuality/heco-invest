@@ -19,15 +19,15 @@ module API
 
     def filter_by_enums
       pluralize(filters.slice(*ENUM_FILTERS)).slice(*column_names).each do |filter_key, filter_value|
-        sql = ActiveRecord::Base.sanitize_sql ["ARRAY[#{filter_key}]::text[] && ARRAY[?]::text[]", Array.wrap(filter_value)]
+        sql = ActiveRecord::Base.sanitize_sql ["ARRAY[#{filter_key}]::text[] && ARRAY[?]::text[]", filter_value.split(",")]
         self.query = query.where sql
       end
     end
 
     def filter_by_only_verified
-      return unless filters[:only_verified] && column_names.include?("review_status")
+      return unless filters[:only_verified] && column_names.include?("trusted")
 
-      self.query = query.where review_status: :approved
+      self.query = query.where trusted: true
     end
 
     def pluralize(hash)

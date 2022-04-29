@@ -16,10 +16,11 @@ RSpec.describe "API V1 Projects", type: :request do
       parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
       parameter name: "fields[project]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
       parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
-      parameter name: "filter[category]", in: :query, type: :string, required: false
-      parameter name: "filter[sdg]", in: :query, type: :integer, required: false
-      parameter name: "filter[instrument_type]", in: :query, type: :string, required: false
-      parameter name: "filter[ticket_size]", in: :query, type: :string, required: false
+      parameter name: "filter[category]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
+      parameter name: "filter[sdg]", in: :query, type: :integer, required: false, description: "Filter records. Use comma to separate multiple filter options."
+      parameter name: "filter[instrument_type]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
+      parameter name: "filter[ticket_size]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
+      parameter name: "filter[only_verified]", in: :query, type: :boolean, required: false, description: "Filter records."
 
       response "200", :success do
         schema type: :object, properties: {
