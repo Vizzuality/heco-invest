@@ -47,6 +47,8 @@ module API
               :progress_impact_tracking,
               :description,
               :relevant_links,
+              :geometry,
+              geometry: {},
               involved_project_developer_ids: [],
               target_groups: [],
               impact_areas: [],

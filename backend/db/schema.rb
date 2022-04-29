@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_26_073933) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_27_090407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -282,6 +282,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_073933) do
     t.text "relevant_links_es"
     t.text "relevant_links_pt"
     t.string "category", null: false
+    t.jsonb "geometry", default: {}
     t.index ["country_id"], name: "index_projects_on_country_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
     t.index ["municipality_id"], name: "index_projects_on_municipality_id"
