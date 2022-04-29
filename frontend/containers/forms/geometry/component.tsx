@@ -1,8 +1,9 @@
-import { useRef, useCallback, ChangeEventHandler, useState } from 'react';
+import { useRef, useCallback, ChangeEventHandler, useState, useEffect } from 'react';
 
-import { Upload as UploadIcon } from 'react-feather';
+import { Upload as UploadIcon, Edit2 as PenIcon } from 'react-feather';
 import { FieldValues, Path, PathValue, UnpackNestedValue, useController } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { Editor, DrawPolygonMode } from 'react-map-gl-draw';
 
 import bbox from '@turf/bbox';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
@@ -31,6 +32,7 @@ export const GeometryInput = <FormValues extends FieldValues>({
 }: GeometryInputProps<FormValues>) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const mapContainerRef = useRef(null);
+  const editorRef = useRef<Editor>(null);
   const intl = useIntl();
 
   const [internalError, setInternalError] = useState('');
@@ -39,6 +41,8 @@ export const GeometryInput = <FormValues extends FieldValues>({
     bbox: [-81.99, -4.35, -65.69, 12.54],
     options: { padding: 0 },
   });
+  const [drawMode, setDrawMode] = useState(new DrawPolygonMode());
+  const [drawing, setDrawing] = useState(false);
 
   const {
     field: { ref, value, onChange, onBlur },
@@ -85,6 +89,35 @@ export const GeometryInput = <FormValues extends FieldValues>({
     [viewport]
   );
 
+  const onClickDraw = useCallback(() => setDrawing(true), []);
+
+  const onClickCancel = useCallback(() => {
+    setDrawing(false);
+
+    // This line makes sure to reset the editor's internal state
+    setDrawMode(new DrawPolygonMode());
+  }, []);
+
+  const onUpdateDrawing = useCallback(
+    ({ editType, data }) => {
+      if (editType === 'addFeature') {
+        const geojson = {
+          type: 'FeatureCollection',
+          features: data,
+        };
+
+        onChange({
+          type: 'change',
+          target: { name, value: geojson },
+        });
+        setInternalError('');
+
+        setDrawing(false);
+      }
+    },
+    [name, onChange]
+  );
+
   return (
     <div className={className}>
       <div className="flex flex-col items-end">
@@ -115,10 +148,46 @@ export const GeometryInput = <FormValues extends FieldValues>({
       <div className="p-2 mt-2 bg-white border border-solid h-80 border-beige rounded-2xl">
         <div className="w-full h-full overflow-hidden rounded-lg">
           <div ref={mapContainerRef} className="relative w-full h-full bg-white">
-            <Map bounds={bounds} viewport={viewport} onMapViewportChange={(v) => setViewport(v)}>
+            <Map
+              bounds={bounds}
+              viewport={viewport}
+              onMapViewportChange={(v) => setViewport(v)}
+              getCursor={({ isHovering, isDragging }) => {
+                if (drawing) {
+                  return 'crosshair';
+                } else if (isHovering) {
+                  return 'pointer';
+                } else if (isDragging) {
+                  return 'grabbing';
+                }
+
+                return 'grab';
+              }}
+            >
               {(map) => (
                 <LayerManager map={map} plugin={PluginMapboxGl}>
-                  {!!value && (
+                  {drawing && (
+                    <Editor
+                      ref={editorRef}
+                      mode={drawMode}
+                      clickRadius={7}
+                      editHandleShape="circle"
+                      featureStyle={{
+                        stroke: '#316146',
+                        strokeWidth: '2',
+                        fill: 'none',
+                      }}
+                      editHandleStyle={({ index }) => ({
+                        stroke: '#316146',
+                        strokeWidth: 2,
+                        fill: '#CFD762',
+                        fillOpacity: 0.2,
+                        r: index === 0 ? '6px' : '0px',
+                      })}
+                      onUpdate={onUpdateDrawing}
+                    />
+                  )}
+                  {!!value && !drawing && (
                     <Layer
                       id="geojson"
                       type="geojson"
@@ -152,6 +221,24 @@ export const GeometryInput = <FormValues extends FieldValues>({
             </Controls>
             <Controls className="absolute top-2 right-2">
               <FullscreenControl mapRef={mapContainerRef} />
+            </Controls>
+            <Controls className="absolute -translate-x-1/2 bottom-2 left-1/2">
+              {!drawing && (
+                <Button type="button" onClick={onClickDraw}>
+                  <>
+                    <Icon className="inline-block w-5 h-5 mr-2" icon={PenIcon} aria-hidden />
+                    <FormattedMessage defaultMessage="Start drawing" id="aT5Ajq" />
+                  </>
+                </Button>
+              )}
+              {drawing && (
+                <Button type="button" onClick={onClickCancel}>
+                  <>
+                    <Icon className="inline-block w-5 h-5 mr-2" icon={PenIcon} aria-hidden />
+                    <FormattedMessage defaultMessage="Cancel" id="47FYwb" />
+                  </>
+                </Button>
+              )}
             </Controls>
           </div>
         </div>
