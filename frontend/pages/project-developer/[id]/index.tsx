@@ -1,109 +1,129 @@
-// import { useRouter } from 'next/router';
-import { useIntl } from 'react-intl';
+import { useMemo } from 'react';
+
 import { FormattedMessage } from 'react-intl';
 
-import { chunk } from 'lodash-es';
+import { decycle } from 'cycle';
+import { chunk, groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
 import ProfileHeader from 'containers/profile-header';
 import ProjectCard from 'containers/project-card';
-import { SocialType } from 'containers/social-contact/website-social-contact';
+import { SOCIAL_DATA } from 'containers/social-contact/constants';
 import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 
 import Carousel, { Slide } from 'components/carousel';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
+import { EnumTypes, Paths } from 'enums';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
+import { CategoryType } from 'types/category';
+import { GroupedEnums as GroupedEnumsType } from 'types/enums';
+import { ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
 
-export async function getStaticProps(ctx) {
+import { getEnums } from 'services/enums/enumService';
+import { getProjectDeveloper } from 'services/project-developers/projectDevelopersService';
+
+export const getServerSideProps = async ({ params: { id }, locale }) => {
+  let projectDeveloper;
+
+  // If getting the project developer fails, it's most likely because the record has
+  // not been found. Let's return a 404. Anything else will trigger a 500 by default.
+  try {
+    ({ data: projectDeveloper } = await getProjectDeveloper(id, { includes: 'projects' }));
+  } catch (e) {
+    return { notFound: true };
+  }
+
+  const enums = await getEnums();
+
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
+      enums: groupBy(enums, 'type'),
+      // Fixing issues with circular references (caused by the inclusion of projects)
+      // https://github.com/vercel/next.js/discussions/10992#discussioncomment-59574
+      projectDeveloper: decycle(projectDeveloper),
     },
   };
-}
+};
 
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: true,
-  };
-}
+type ProjectDeveloperPageProps = {
+  projectDeveloper: ProjectDeveloperType;
+  enums: GroupedEnumsType;
+};
 
-const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
-  const intl = useIntl();
-  // const { query } = useRouter();
-  // const { id } = query;
+const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageLayoutProps> = ({
+  projectDeveloper,
+  enums,
+}) => {
+  const projectDeveloperTypeName = enums[EnumTypes.ProjectDeveloperType].find(
+    ({ id }) => id === projectDeveloper.project_developer_type
+  )?.name;
 
-  const aboutInfo: {
-    logo: string;
-    name: string;
-    description: string;
-    text: string;
-    website: string;
-    social: SocialType[];
-    contact: string;
-  } = {
-    name: 'Herencia Columbia',
-    description: 'Non Governamental Agency',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis gravida auctor enim, id nisl nisl sem tristique. Rhoncus vestibulum vitae diam dignissim imperdiet. Lacus, morbi non cras maecenas cras scelerisque eget. Rutrum tincidunt sed elit rhoncus nunc nisl pulvinar consectetur tincidunt. Nunc quisque potenti velit suscipit volutpat tellus',
-    logo: '/images/placeholders/profile-logo.png',
-    website: 'https://www.site.com',
-    social: [
-      { id: 'linked-in', url: 'https://www.linkedin.com' },
-      { id: 'twitter', url: 'https://www.twitter.com' },
-      { id: 'facebook', url: 'https://www.facebook.com' },
-      { id: 'instagram', url: 'https://www.instagram.com' },
-    ],
-    contact: 'Joel Bean',
+  const funding = {
+    funded: projectDeveloper.projects.filter(({ received_funding }) => received_funding === true)
+      .length,
+    notFunded: projectDeveloper.projects.filter(
+      ({ looking_for_funding }) => looking_for_funding === true
+    ).length,
   };
 
-  const tagsGridRows: TagsGridRowType[] = [
+  const social = SOCIAL_DATA.map((item) => item.id)
+    .reduce((acc, social) => [...acc, { id: social, url: projectDeveloper[social] }], [])
+    .filter((social) => social.url);
+
+  const tagsRows: TagsGridRowType[] = [
     {
       title: 'Categories of interest',
       type: 'category',
-      tags: [
-        { id: 'tourism-and-recreation', name: 'Tourism & Recreation' },
-        { id: 'non-timber-forest-production', name: 'Non-timber forest production' },
-      ],
+      tags: enums[EnumTypes.Category].filter(({ id }) =>
+        projectDeveloper.categories?.includes(id as CategoryType)
+      ),
     },
     {
       title: 'Areas of work',
-      tags: ['Corazón Amazonía'],
+      tags: enums[EnumTypes.Mosaic].filter(({ id }) => projectDeveloper.mosaics?.includes(id)),
     },
     {
       title: 'Impact',
-      tags: ['Biodiversity', 'Social'],
+      tags: enums[EnumTypes.Impact].filter(({ id }) => projectDeveloper.impacts?.includes(id)),
     },
   ];
 
-  const projects = [...Array(6)].map((_, index) => {
-    return {
-      id: `project-${index}`,
-      name: `Circulo de Creaciones Cidaticas Circreadi ${index}`,
-      category: 'Tourism & recreation',
-      instrument: 'Grant',
-      amount: 25000,
-    };
-  });
+  const projects = projectDeveloper.projects.map((project) => ({
+    id: `project-${project.id}`,
+    slug: project.slug,
+    name: project.name,
+    category: enums[EnumTypes.Category].find(({ id }) => id === project.category)?.name,
+    instrument: enums[EnumTypes.InstrumentType]
+      .filter(({ id }) => projectDeveloper.projects[0].instrument_types?.includes(id))
+      .reduce((acc, instrument) => [...acc, instrument.name], [])
+      .join(', '),
+    amount: project.received_funding_amount_usd || 0,
+  }));
 
   return (
     <>
-      <Head title={`${aboutInfo.name} - ${aboutInfo.description}`} description={aboutInfo.text} />
-
-      <ProfileHeader
-        logo={aboutInfo.logo}
-        title={aboutInfo.name}
-        subtitle={aboutInfo.description}
-        text={aboutInfo.text}
-        website={aboutInfo.website}
-        social={aboutInfo.social}
-        contact={aboutInfo.contact}
-        numNotFunded={10}
-        numFunded={3}
+      <Head
+        title={`${projectDeveloper.name} - ${projectDeveloperTypeName}`}
+        description={projectDeveloper.about}
       />
+
+      <LayoutContainer className="-mt-10 lg:-mt-16">
+        <ProfileHeader
+          logo={projectDeveloper.picture.medium}
+          title={projectDeveloper.name}
+          subtitle={projectDeveloperTypeName}
+          text={projectDeveloper.about}
+          website={projectDeveloper.website}
+          social={social}
+          numNotFunded={funding.funded}
+          numFunded={funding.notFunded}
+          originalLanguage={projectDeveloper.language}
+        />
+      </LayoutContainer>
 
       <LayoutContainer layout="narrow" className="mt-24 mb-20 md:mt-40">
         <section aria-labelledby="project-developer-overview">
@@ -117,14 +137,9 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
           <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
             <FormattedMessage defaultMessage="Mission" id="RXoqkD" />
           </h3>
-          <p className="my-3">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt enim pharetra velit
-            tortor mauris aenean. Adipiscing sed ornare at ipsum pellentesque.Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit. Tincidunt enim pharetra velit tortor mauris aenean.
-            Adipiscing sed ornare at ipsum pellentesque.
-          </p>
+          <p className="my-3">{projectDeveloper.mission}</p>
 
-          <TagsGrid className="mt-10 md:mt-14" rows={tagsGridRows} />
+          <TagsGrid className="mt-10 md:mt-14" rows={tagsRows} />
         </section>
 
         {projects.length > 0 && (
@@ -139,7 +154,7 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
             <Carousel className="mt-12">
               {chunk(projects, 3).map((projectsChunk, index) => (
                 <Slide key={`slide-${index}`} className="flex flex-col gap-2">
-                  {projectsChunk.map(({ id, category, name, instrument, amount }) => (
+                  {projectsChunk.map(({ id, slug, category, name, instrument, amount }) => (
                     <ProjectCard
                       key={id}
                       id={id}
@@ -147,7 +162,7 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
                       name={name}
                       instrument={instrument}
                       amount={amount}
-                      link={`/project/${id}`}
+                      link={`${Paths.Project}/${slug}`}
                     />
                   ))}
                 </Slide>
@@ -160,15 +175,6 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
   );
 };
 
-InvestorPage.layout = {
-  props: {
-    headerProps: {
-      transparent: true,
-    },
-    mainProps: {
-      topMargin: false,
-    },
-  },
-};
+ProjectDeveloperPage.layout = {};
 
-export default InvestorPage;
+export default ProjectDeveloperPage;

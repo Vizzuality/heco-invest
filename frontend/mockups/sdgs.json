@@ -1,102 +1,102 @@
 [
   {
-    "id": "no-poverty",
+    "id": "1",
     "type": "sdg",
     "name": "No poverty",
     "image": "/images/sdgs/1-no-poverty.png"
   },
   {
-    "id": "zero-hunger",
+    "id": "2",
     "type": "sdg",
     "name": "Zero hunger",
     "image": "/images/sdgs/2-zero-hunger.png"
   },
   {
-    "id": "good-health",
+    "id": "3",
     "type": "sdg",
     "name": "Good health and well-being",
     "image": "/images/sdgs/3-good-health.png"
   },
   {
-    "id": "quality-education",
+    "id": "4",
     "type": "sdg",
     "name": "Quality education",
     "image": "/images/sdgs/4-quality-education.png"
   },
   {
-    "id": "gender-equality",
+    "id": "5",
     "type": "sdg",
     "name": "Gender equality",
     "image": "/images/sdgs/5-gender-equality.png"
   },
   {
-    "id": "clean-water",
+    "id": "6",
     "type": "sdg",
     "name": "Clean water and sanitation",
     "image": "/images/sdgs/6-clean-water.png"
   },
   {
-    "id": "clean-energy",
+    "id": "7",
     "type": "sdg",
     "name": "Affordable and clean energy",
     "image": "/images/sdgs/7-clean-energy.png"
   },
   {
-    "id": "decent-work",
+    "id": "8",
     "type": "sdg",
     "name": "Decent work and economic growth",
     "image": "/images/sdgs/8-decent-work.png"
   },
   {
-    "id": "industry-innovation",
+    "id": "9",
     "type": "sdg",
     "name": "Industry innovation and infrastructure",
     "image": "/images/sdgs/9-industry-innovation.png"
   },
   {
-    "id": "reduced-inequalities",
+    "id": "10",
     "type": "sdg",
     "name": "Reduced inequalities",
     "image": "/images/sdgs/10-reduced-inequalities.png"
   },
   {
-    "id": "sustainable-cities",
+    "id": "11",
     "type": "sdg",
     "name": "Sustainable cities and communities",
     "image": "/images/sdgs/11-sustainable-cities.png"
   },
   {
-    "id": "responsible-consumption",
+    "id": "12",
     "type": "sdg",
     "name": "Responsible consumption and production",
     "image": "/images/sdgs/12-responsible-consumption.png"
   },
   {
-    "id": "climate-action",
+    "id": "13",
     "type": "sdg",
     "name": "Climate action",
     "image": "/images/sdgs/13-climate-action.png"
   },
   {
-    "id": "life-below-water",
+    "id": "14",
     "type": "sdg",
     "name": "Life below water",
     "image": "/images/sdgs/14-life-below-water.png"
   },
   {
-    "id": "life-on-land",
+    "id": "15",
     "type": "sdg",
     "name": "Life on land",
     "image": "/images/sdgs/15-life-on-land.png"
   },
   {
-    "id": "peace-justice",
+    "id": "16",
     "type": "sdg",
     "name": "Peace, justice and strong institutions",
     "image": "/images/sdgs/16-peace-justice.png"
   },
   {
-    "id": "partnership",
+    "id": "17",
     "type": "sdg",
     "name": "Partnerships for the goals",
     "image": "/images/sdgs/17-partnership.png"

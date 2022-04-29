@@ -239,6 +239,9 @@
   "FJfVJJ": {
     "string": "Access user-friendly tools that help turn a good idea into a proposal ready to be reviewed by an investor or funder."
   },
+  "FN+0yY": {
+    "string": "Unable to parse the file. Please try uploading a different format."
+  },
   "Ftj+/t": {
     "string": "Why is my profile pending approval?"
   },
@@ -390,6 +393,9 @@
   "PTr6+3": {
     "string": "Contribute to climate solutions through investments that reduce CO2 emissions and conserve or restore forest-related carbon sinks."
   },
+  "PgGfZr": {
+    "string": "Upload shapefile / KML file"
+  },
   "Q1Q4rT": {
     "string": "Insert your name"
   },
@@ -498,6 +504,9 @@
   "XJqnLu": {
     "string": "Search water"
   },
+  "XO0Kon": {
+    "string": "This file is not supported. Please try uploading a different format."
+  },
   "XQuzr9": {
     "string": "Identified priorities by the HeCo program"
   },
@@ -584,6 +593,9 @@
   },
   "cT6b2H": {
     "string": "WWF"
+  },
+  "cqoaMq": {
+    "string": "Shapefile / KML"
   },
   "ctfKNN": {
     "string": "Set your priorities and HeCo Invest will connect you with the best opportunities."
@@ -836,6 +848,9 @@
   },
   "yXFDuu": {
     "string": "Use our Artificial Intellience tool powered by ARIES, to help you identify what best fits your specific needs."
+  },
+  "z3yOZn": {
+    "string": "This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues."
   },
   "zFegDD": {
     "string": "Contact"

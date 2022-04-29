@@ -17,6 +17,7 @@ export const Tag = <FormValues extends FieldValues>({
   register,
   registerOptions,
   children,
+  flexLabel,
   invalid: invalidProp = false,
   ...rest
 }: TagProps<FormValues>) => {
@@ -50,6 +51,7 @@ export const Tag = <FormValues extends FieldValues>({
             true,
           'ring-2 ring-green-dark ring-offset-2': isFocusVisible,
           'peer-invalid:border-red-700': invalid,
+          'flex flex-col items-start': flexLabel,
         })}
       >
         {children}

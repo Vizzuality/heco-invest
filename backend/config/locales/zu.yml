@@ -4,6 +4,8 @@ zu:
       password_length: must be at least %{count} characters long
       password_complexity: must include at least one lowercase letter, one uppercase letter, and one digit
       location_type_mismatch: location type mismatch
+      not_json: is not json
+      not_geojson: is not geojson
       user:
         multiple_accounts: User already have account!
         no_project_developer: User is not project developer!

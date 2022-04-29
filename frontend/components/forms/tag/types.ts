@@ -26,6 +26,8 @@ export type TagProps<FormValues> = {
   className?: string;
   /** Whether the input is invalid. Defaults to `false`. */
   invalid?: boolean;
+  /** label className change to flex for labels with rows */
+  flexLabel?: boolean;
 } & Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   keyof RegisterOptions<FormValues, FieldPath<FormValues>>

@@ -180,6 +180,7 @@ RSpec.configure do |config|
                   description: {type: :string},
                   relevant_links: {type: :string, nullable: true},
                   ticket_size: {type: :string, enum: TicketSize::TYPES, nullable: true},
+                  geometry: {type: :object, nullable: true},
                   category: {type: :string},
                   target_groups: {type: :array, items: {type: :string}},
                   impact_areas: {type: :array, items: {type: :string}},

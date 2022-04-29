@@ -5,27 +5,27 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Button from 'components/button';
 
-import { InputSocialContactProps, SocialContactInputs } from './types';
+import { WebsiteSocialProps, WebsiteSocialInputTypes } from './types';
 
-import InputsSocialContact from '.';
+import SocialContact from '.';
 
 export default {
-  component: InputsSocialContact,
-  title: 'Containers/InputsSocialContact',
+  component: SocialContact,
+  title: 'Containers/Forms/WebsiteSocial',
   argTypes: {},
 } as Meta;
 
-const Template: Story<InputSocialContactProps<SocialContactInputs>> = ({ ...rest }) => {
+const Template: Story<WebsiteSocialProps<WebsiteSocialInputTypes>> = ({ ...rest }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SocialContactInputs>({ shouldUseNativeValidation: true });
+  } = useForm<WebsiteSocialInputTypes>({ shouldUseNativeValidation: true });
   const onSubmit: SubmitHandler<any> = (data) => action('onSubmit')(data);
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <InputsSocialContact {...rest} register={register} />
+        <SocialContact {...rest} register={register} />
         <Button type="submit">submit</Button>
         {Object.keys(errors).length > 0 && 'Something went wrong'}
       </form>
@@ -33,12 +33,12 @@ const Template: Story<InputSocialContactProps<SocialContactInputs>> = ({ ...rest
   );
 };
 
-export const Default: Story<InputSocialContactProps<SocialContactInputs>> = Template.bind({});
+export const Default: Story<WebsiteSocialProps<WebsiteSocialInputTypes>> = Template.bind({});
 Default.args = {
   registerOptions: { required: false },
 };
 
-export const Required: Story<InputSocialContactProps<SocialContactInputs>> = Template.bind({});
+export const Required: Story<WebsiteSocialProps<WebsiteSocialInputTypes>> = Template.bind({});
 Required.args = {
   registerOptions: { required: 'This field is required' },
 };

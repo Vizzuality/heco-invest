@@ -41,7 +41,14 @@
         "received_funding_investor": "Kutch-Spencer",
         "relevant_links": null,
         "language": "en",
-        "favourite": null
+        "favourite": null,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        }
       },
       "relationships": {
         "project_developer": {
@@ -117,7 +124,14 @@
         "received_funding_investor": "Bartoletti and Sons",
         "relevant_links": null,
         "language": "en",
-        "favourite": null
+        "favourite": null,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        }
       },
       "relationships": {
         "project_developer": {
@@ -179,7 +193,14 @@
         "received_funding_investor": "Hane, Lehner and Goyette",
         "relevant_links": null,
         "language": "en",
-        "favourite": null
+        "favourite": null,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        }
       },
       "relationships": {
         "project_developer": {
@@ -241,7 +262,14 @@
         "received_funding_investor": "Hilpert, Waters and Johnston",
         "relevant_links": null,
         "language": "en",
-        "favourite": null
+        "favourite": null,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        }
       },
       "relationships": {
         "project_developer": {
@@ -303,7 +331,14 @@
         "received_funding_investor": "Jacobson, Fritsch and Stanton",
         "relevant_links": null,
         "language": "en",
-        "favourite": null
+        "favourite": null,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        }
       },
       "relationships": {
         "project_developer": {
@@ -365,7 +400,14 @@
         "received_funding_investor": "Keebler, Kub and Zemlak",
         "relevant_links": null,
         "language": "en",
-        "favourite": null
+        "favourite": null,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        }
       },
       "relationships": {
         "project_developer": {
@@ -427,7 +469,14 @@
         "received_funding_investor": "Becker LLC",
         "relevant_links": null,
         "language": "en",
-        "favourite": null
+        "favourite": null,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        }
       },
       "relationships": {
         "project_developer": {

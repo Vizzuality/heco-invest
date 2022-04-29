@@ -1,12 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import projectSchema from 'schemas/project';
+import { ProjectForm } from 'types/project';
 
 export default (section: number) => {
   return yupResolver(projectSchema(section));
 };
 
-export const formPageInputs = [
+export const formPageInputs: (keyof ProjectForm)[][] = [
   [
     'name',
     'country_id',
@@ -19,7 +20,7 @@ export const formPageInputs = [
   [
     'development_stage',
     'estimated_duration_in_months',
-    'categories',
+    'category',
     'problem',
     'solution',
     'target_groups',

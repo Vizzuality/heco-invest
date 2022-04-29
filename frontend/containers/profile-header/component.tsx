@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 
 import { Heart as HeartIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -18,7 +18,7 @@ import type { ProfileHeaderProps } from './types';
 
 export const ProfileHeader: FC<ProfileHeaderProps> = ({
   className,
-  logo,
+  logo: logoProp,
   title,
   subtitle,
   text,
@@ -33,9 +33,15 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
 }: ProfileHeaderProps) => {
   const intl = useIntl();
 
+  const [logo, setLogo] = useState<string>(logoProp);
+
+  useEffect(() => {
+    setLogo(logoProp);
+  }, [logoProp]);
+
   return (
     <div className={className}>
-      <div className="pt-24 pb-12 bg-center bg-cover sm:pt-40 md:pt-56 bg-radial-green-dark bg-green-dark">
+      <div className="py-10 mx-4 bg-center bg-cover lg:mx-0 lg:px-4 lg:py-18 rounded-2xl bg-radial-green-dark bg-green-dark">
         <LayoutContainer className="flex justify-between">
           <div className="flex flex-col items-center w-full gap-6 lg:items-end lg:flex-row lg:w-6/12">
             <div className="overflow-hidden bg-white w-52 h-52 rounded-2xl">
@@ -49,10 +55,11 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                 layout="responsive"
                 width="100%"
                 height="100%"
-                objectFit="contain"
+                objectFit="cover"
+                onError={() => setLogo('/images/placeholders/profile-logo.png')}
               />
             </div>
-            <div className="mb-4 text-center lg:text-left">
+            <div className="-mb-2 text-center lg:mb-4 lg:text-left">
               <h1 className="font-serif text-3xl text-white">{title}</h1>
               <p className="mt-2 text-xl text-gray-400">{subtitle}</p>
             </div>
@@ -75,11 +82,11 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
           )}
           <p>{text}</p>
         </div>
-        <div className="p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0">
+        <div className="lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0">
           {typeof numFunded === 'number' && typeof numNotFunded === 'number' && (
             <>
-              <div className="flex">
-                <div className="flex flex-col items-center w-1/2 gap-2 text-center">
+              <div className="flex flex-col md:flex-row">
+                <div className="flex flex-col items-center w-full gap-2 text-center md:w-1/2">
                   <span id="num-projects-waiting-funding" className="text-2xl font-semibold">
                     {numNotFunded}
                   </span>
@@ -87,7 +94,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                     <FormattedMessage defaultMessage="Projects waiting funding" id="hxIQ/8" />
                   </span>
                 </div>
-                <div className="flex flex-col items-center w-1/2 gap-2 text-center">
+                <div className="flex flex-col items-center w-full gap-2 text-center md:w-1/2">
                   <span id="num-projects-waiting-funding" className="text-2xl font-semibold">
                     {numFunded}
                   </span>
@@ -108,12 +115,17 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
             contact={contact}
           />
 
-          <div className="flex justify-between gap-4 mt-8">
-            <Button theme="secondary-green" icon={HeartIcon} onClick={onFavoriteClick}>
+          <div className="flex flex-col justify-between gap-4 mt-8 lg:flex-row">
+            <Button
+              className="justify-center"
+              theme="secondary-green"
+              icon={HeartIcon}
+              onClick={onFavoriteClick}
+            >
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </Button>
             <Button
-              className="w-full max-w-[200px] justify-center"
+              className="w-full lg:max-w-[200px] justify-center"
               theme="primary-green"
               onClick={onContactClick}
             >

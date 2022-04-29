@@ -32,6 +32,8 @@ export enum Queries {
   ProjectDeveloper = 'project_developer',
   /** The current user Project Developer */
   CurrentProjectDeveloper = 'current_project_developer',
+  /** Single project */
+  Project = 'project',
   /** List of investors */
   InvestorList = 'investors',
   /** Single investor  */
@@ -44,6 +46,8 @@ export enum Queries {
   EnumList = 'enum_list',
   /** Locations */
   Locations = 'locations',
+  /** Single Project */
+  ProjectQuery = 'project',
 }
 
 /** Location endpoint param location_type */
@@ -60,11 +64,13 @@ export enum EnumTypes {
   InstrumentType = 'instrument_type',
   TicketSize = 'ticket_size',
   Impact = 'impact',
+  ImpactAreas = 'impact_area',
   ProjectDeveloperType = 'project_developer_type',
   InvestorType = 'investor_type',
   LocationType = 'location_type',
   ProjectDevelopmentStage = 'project_development_stage',
   TargetGroup = 'project_target_group',
+  Mosaic = 'mosaic',
 }
 
 /** Project development stages */

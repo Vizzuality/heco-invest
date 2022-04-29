@@ -3,19 +3,19 @@ import React from 'react';
 import { FieldValues, Path } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
+import { SOCIAL_DATA } from 'containers/social-contact/constants';
+
 import ErrorMessage from 'components/forms/error-message';
+import Input from 'components/forms/input';
+import Label from 'components/forms/label';
 
-import Input from '../../../components/forms/input';
-import Label from '../../../components/forms/label';
-import { SOCIAL_DATA } from '../constants';
+import { WebsiteSocialProps } from './types';
 
-import { InputSocialContactProps } from './types';
-
-export const InputsSocialContact = <FormValues extends FieldValues>({
+export const WebsiteSocial = <FormValues extends FieldValues>({
   register,
   registerOptions,
   errors,
-}: InputSocialContactProps<FormValues>) => {
+}: WebsiteSocialProps<FormValues>) => {
   const { formatMessage } = useIntl();
 
   return (
@@ -48,4 +48,4 @@ export const InputsSocialContact = <FormValues extends FieldValues>({
   );
 };
 
-export default InputsSocialContact;
+export default WebsiteSocial;

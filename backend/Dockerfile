@@ -14,6 +14,7 @@ RUN apk update && \
       tzdata \
       postgresql-dev \
       imagemagick \
+      libgeos-dev \
     && rm -rf /var/cache/apk/*
 
 RUN echo 'gem: -N' >> ~/.gemrc

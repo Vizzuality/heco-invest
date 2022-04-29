@@ -89,15 +89,18 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
     <>
       <Head title={`${aboutInfo.name} - ${aboutInfo.description}`} description={aboutInfo.text} />
 
-      <ProfileHeader
-        logo={aboutInfo.logo}
-        title={aboutInfo.name}
-        subtitle={aboutInfo.description}
-        text={aboutInfo.text}
-        website={aboutInfo.website}
-        social={aboutInfo.social}
-        contact={aboutInfo.contact}
-      />
+      <LayoutContainer className="-mt-10 lg:-mt-16">
+        <ProfileHeader
+          logo={aboutInfo.logo}
+          title={aboutInfo.name}
+          subtitle={aboutInfo.description}
+          text={aboutInfo.text}
+          website={aboutInfo.website}
+          social={aboutInfo.social}
+          contact={aboutInfo.contact}
+          originalLanguage="en"
+        />
+      </LayoutContainer>
 
       <LayoutContainer layout="narrow" className="mt-24 mb-20 md:mt-40">
         <section aria-labelledby="profile-investment-info">
@@ -178,15 +181,6 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
   );
 };
 
-InvestorPage.layout = {
-  props: {
-    headerProps: {
-      transparent: true,
-    },
-    mainProps: {
-      topMargin: false,
-    },
-  },
-};
+InvestorPage.layout = {};
 
 export default InvestorPage;
