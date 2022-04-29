@@ -4,11 +4,18 @@ import { Upload as UploadIcon } from 'react-feather';
 import { FieldValues, Path, PathValue, UnpackNestedValue, useController } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import bbox from '@turf/bbox';
+import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
+import { LayerManager, Layer } from '@vizzuality/layer-manager-react';
+
 import { mergeRefs } from 'helpers/refs';
 
 import Button from 'components/button';
 import ErrorMessage from 'components/forms/error-message';
 import Icon from 'components/icon';
+import Map from 'components/map';
+import Controls from 'components/map/controls';
+import ZoomControl from 'components/map/controls/zoom';
 
 import { convertFilesToGeojson, supportedFileformats } from './helpers';
 import { GeometryInputProps } from './types';
@@ -23,7 +30,13 @@ export const GeometryInput = <FormValues extends FieldValues>({
 }: GeometryInputProps<FormValues>) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const intl = useIntl();
+
   const [internalError, setInternalError] = useState('');
+  const [viewport, setViewport] = useState({});
+  const [bounds, setBounds] = useState({
+    bbox: [-81.99, -4.35, -65.69, 12.54],
+    options: { padding: 0 },
+  });
 
   const {
     field: { ref, value, onChange, onBlur },
@@ -42,17 +55,32 @@ export const GeometryInput = <FormValues extends FieldValues>({
       const { files } = e.currentTarget;
 
       try {
+        const geojson = await convertFilesToGeojson(Array.from(files), intl);
+
         onChange({
           type: 'change',
-          target: { name, value: await convertFilesToGeojson(Array.from(files), intl) },
+          target: { name, value: geojson },
         });
         setInternalError('');
+
+        setBounds({ bbox: bbox(geojson), options: { padding: 20 } });
       } catch (errorMessage) {
         onChange({ type: 'change', target: { name, value: null } });
         setInternalError(errorMessage);
       }
     },
     [intl, name, onChange]
+  );
+
+  const onZoomChange = useCallback(
+    (zoom) => {
+      setViewport({
+        ...viewport,
+        zoom,
+        transitionDuration: 300,
+      });
+    },
+    [viewport]
   );
 
   return (
@@ -82,7 +110,45 @@ export const GeometryInput = <FormValues extends FieldValues>({
         </Button>
         <ErrorMessage id={`${name}-internal-error`} errorText={internalError} />
       </div>
-      <div className="p-2 mt-2 bg-white border border-solid h-80 border-beige rounded-2xl" />
+      <div className="p-2 mt-2 bg-white border border-solid h-80 border-beige rounded-2xl">
+        <div className="relative w-full h-full overflow-hidden rounded-lg">
+          <Map bounds={bounds} viewport={viewport} onMapViewportChange={(v) => setViewport(v)}>
+            {(map) => (
+              <LayerManager map={map} plugin={PluginMapboxGl}>
+                {!!value && (
+                  <Layer
+                    id="geojson"
+                    type="geojson"
+                    source={{ type: 'geojson', data: value }}
+                    render={{
+                      layers: [
+                        {
+                          type: 'fill',
+                          paint: {
+                            'fill-color': '#CFD762',
+                            'fill-opacity': 0.2,
+                          },
+                        },
+                        {
+                          type: 'line',
+                          paint: {
+                            'line-color': '#316146',
+                            'line-opacity': 1,
+                            'line-width': 2,
+                          },
+                        },
+                      ],
+                    }}
+                  />
+                )}
+              </LayerManager>
+            )}
+          </Map>
+          <Controls className="absolute left-2 bottom-2">
+            <ZoomControl viewport={{ ...viewport }} onZoomChange={onZoomChange} />
+          </Controls>
+        </div>
+      </div>
     </div>
   );
 };

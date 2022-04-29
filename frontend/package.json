@@ -59,6 +59,7 @@
     "@react-types/shared": "^3.10.1",
     "@reduxjs/toolkit": "^1.5.1",
     "@tippyjs/react": "^4.2.5",
+    "@turf/bbox": "^6.5.0",
     "@turf/turf": "^6.5.0",
     "@types/lodash-es": "^4.17.6",
     "@vizzuality/layer-manager-layers-deckgl": "^1.0.0-alpha.3",
