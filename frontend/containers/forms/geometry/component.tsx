@@ -5,6 +5,8 @@ import { FieldValues, Path, PathValue, UnpackNestedValue, useController } from '
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Editor, DrawPolygonMode } from 'react-map-gl-draw';
 
+import cx from 'classnames';
+
 import bbox from '@turf/bbox';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { LayerManager, Layer } from '@vizzuality/layer-manager-react';
@@ -128,7 +130,9 @@ export const GeometryInput = <FormValues extends FieldValues>({
           type="file"
           accept={supportedFileformats.map((ext) => `.${ext}`).join(',')}
           multiple
+          aria-label={ariaLabel}
           aria-describedby={`${name}-internal-error`}
+          onBlur={onBlur}
           onChange={onChangeInput}
         />
         <Button
@@ -145,7 +149,13 @@ export const GeometryInput = <FormValues extends FieldValues>({
         </Button>
         <ErrorMessage id={`${name}-internal-error`} errorText={internalError} />
       </div>
-      <div className="p-2 mt-2 bg-white border border-solid h-80 border-beige rounded-2xl">
+      <div
+        className={cx({
+          'p-2 mt-2 bg-white border border-solid h-80 rounded-2xl': true,
+          'border-beige': !invalid,
+          'border-red-700': invalid,
+        })}
+      >
         <div className="w-full h-full overflow-hidden rounded-lg">
           <div ref={mapContainerRef} className="relative w-full h-full bg-white">
             <Map
