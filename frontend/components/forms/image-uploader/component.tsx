@@ -19,17 +19,34 @@ export const ImageUploader = <FormValues extends FieldValues>({
   id,
   buttonText,
   registerOptions,
+  setError,
+  setValue,
   ...rest
 }: ImageUploaderProps<FormValues>) => {
   const { formatMessage } = useIntl();
   const [imagePreview, setImagePreview] = useState<string>();
 
-  const handleUploadImage = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleUploadImage = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.files?.length) {
       const file = e.currentTarget.files[0];
       const src = URL.createObjectURL(file);
-      setImagePreview(src);
-      directUpload(file);
+      await directUpload(file)
+        .then(({ signed_id }) => {
+          setImagePreview(src);
+          setValue(name, signed_id as any, { shouldValidate: true });
+        })
+        .catch((error: Error) => {
+          setValue(name, undefined);
+          setError(name, {
+            message:
+              error.message ||
+              formatMessage({
+                defaultMessage: 'Something went wrong with the picture upload',
+                id: 'F++AYx',
+              }),
+          });
+          setImagePreview(null);
+        });
     } else {
       setImagePreview(null);
     }

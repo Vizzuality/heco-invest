@@ -33,8 +33,8 @@ export type ProjectDeveloper = {
   projects?: Project[];
 };
 
-export type ProjectDeveloperSetupForm = ProjectDeveloper & {
-  picture: File;
+export type ProjectDeveloperSetupForm = Omit<ProjectDeveloper, 'picture' | 'id' | 'type'> & {
+  picture: string;
   mosaics?: string[];
 };
 
