@@ -18,6 +18,7 @@ import WebsiteSocial from 'containers/forms/website-social';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 
+import Button from 'components/button';
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
@@ -494,14 +495,16 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
                       <FieldInfo infoText={infoText || getItemsInfoText(items)} />
                     </legend>
                     {name === InterestNames.Mosaics && (
-                      <a
-                        className="text-green-dark font-normal text-small underline"
-                        href="https://www.patrimonionatural.org.co/wp-content/uploads/mosaico_ventanas.jpg"
+                      <Button
+                        theme="naked"
+                        className="py-0 px-0 text-green-dark font-normal text-small underline inline !items-start"
+                        href="/images/mosaics.png"
                         target="_blank"
-                        rel="noreferrer"
+                        size="small"
+                        onClick={() => window.open('/images/mosaics.png', '_blank')}
                       >
                         <FormattedMessage defaultMessage="Landscapes location" id="4HIQfn" />
-                      </a>
+                      </Button>
                     )}
                   </div>
                   <TagGroup
