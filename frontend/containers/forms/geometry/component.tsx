@@ -15,6 +15,7 @@ import ErrorMessage from 'components/forms/error-message';
 import Icon from 'components/icon';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
+import FullscreenControl from 'components/map/controls/fullscreen';
 import ZoomControl from 'components/map/controls/zoom';
 
 import { convertFilesToGeojson, supportedFileformats } from './helpers';
@@ -29,6 +30,7 @@ export const GeometryInput = <FormValues extends FieldValues>({
   className,
 }: GeometryInputProps<FormValues>) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const mapContainerRef = useRef(null);
   const intl = useIntl();
 
   const [internalError, setInternalError] = useState('');
@@ -111,42 +113,47 @@ export const GeometryInput = <FormValues extends FieldValues>({
         <ErrorMessage id={`${name}-internal-error`} errorText={internalError} />
       </div>
       <div className="p-2 mt-2 bg-white border border-solid h-80 border-beige rounded-2xl">
-        <div className="relative w-full h-full overflow-hidden rounded-lg">
-          <Map bounds={bounds} viewport={viewport} onMapViewportChange={(v) => setViewport(v)}>
-            {(map) => (
-              <LayerManager map={map} plugin={PluginMapboxGl}>
-                {!!value && (
-                  <Layer
-                    id="geojson"
-                    type="geojson"
-                    source={{ type: 'geojson', data: value }}
-                    render={{
-                      layers: [
-                        {
-                          type: 'fill',
-                          paint: {
-                            'fill-color': '#CFD762',
-                            'fill-opacity': 0.2,
+        <div className="w-full h-full overflow-hidden rounded-lg">
+          <div ref={mapContainerRef} className="relative w-full h-full bg-white">
+            <Map bounds={bounds} viewport={viewport} onMapViewportChange={(v) => setViewport(v)}>
+              {(map) => (
+                <LayerManager map={map} plugin={PluginMapboxGl}>
+                  {!!value && (
+                    <Layer
+                      id="geojson"
+                      type="geojson"
+                      source={{ type: 'geojson', data: value }}
+                      render={{
+                        layers: [
+                          {
+                            type: 'fill',
+                            paint: {
+                              'fill-color': '#CFD762',
+                              'fill-opacity': 0.2,
+                            },
                           },
-                        },
-                        {
-                          type: 'line',
-                          paint: {
-                            'line-color': '#316146',
-                            'line-opacity': 1,
-                            'line-width': 2,
+                          {
+                            type: 'line',
+                            paint: {
+                              'line-color': '#316146',
+                              'line-opacity': 1,
+                              'line-width': 2,
+                            },
                           },
-                        },
-                      ],
-                    }}
-                  />
-                )}
-              </LayerManager>
-            )}
-          </Map>
-          <Controls className="absolute left-2 bottom-2">
-            <ZoomControl viewport={{ ...viewport }} onZoomChange={onZoomChange} />
-          </Controls>
+                        ],
+                      }}
+                    />
+                  )}
+                </LayerManager>
+              )}
+            </Map>
+            <Controls className="absolute bottom-2 left-2">
+              <ZoomControl viewport={{ ...viewport }} onZoomChange={onZoomChange} />
+            </Controls>
+            <Controls className="absolute top-2 right-2">
+              <FullscreenControl mapRef={mapContainerRef} />
+            </Controls>
+          </div>
         </div>
       </div>
     </div>
