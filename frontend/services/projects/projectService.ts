@@ -30,7 +30,7 @@ export const getProject = async (
 
 /** Use query for a single Project */
 export function useProject(id: string, params) {
-  const query = useQuery([Queries.Project, id], () => getProject(id, params));
+  const query = useQuery([Queries.ProjectQuery, id], () => getProject(id, params));
 
   return useMemo(
     () => ({

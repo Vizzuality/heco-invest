@@ -7,6 +7,8 @@ import cx from 'classnames';
 
 import Image from 'next/image';
 
+import { directUpload } from 'services/direct-upload/directUpload';
+
 import { ImageUploaderProps } from './types';
 
 export const ImageUploader = <FormValues extends FieldValues>({
@@ -27,6 +29,7 @@ export const ImageUploader = <FormValues extends FieldValues>({
       const file = e.currentTarget.files[0];
       const src = URL.createObjectURL(file);
       setImagePreview(src);
+      directUpload(file);
     } else {
       setImagePreview(null);
     }
