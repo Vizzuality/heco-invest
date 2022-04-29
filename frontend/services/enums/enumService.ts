@@ -16,7 +16,11 @@ export const getEnums = async (): Promise<Enum[]> => {
 };
 
 export const useEnums = () => {
-  const query = useQuery<Enum[], ErrorResponse>(Queries.EnumList, getEnums);
+  const query = useQuery<Enum[], ErrorResponse>(Queries.EnumList, getEnums, {
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    staleTime: Infinity,
+  });
 
   /** Enums grouped by type property */
   const enumsGroupedByTypes = groupBy(query?.data, 'type') as {
