@@ -17,28 +17,6 @@ export const getLocations = async (params?: LocationsParams): Promise<Locations[
   return locations.data.data;
 };
 
-/** Get the locations with location_type = region */
-export const getMosaics = async () => {
-  return await getLocations({ location_type: LocationsTypes.Region });
-};
-
-/** Hook to use the locations with location_type = region */
-export const useMosaics = (): UseQueryResult<Locations[], ErrorResponse> => {
-  const query = useQuery<Locations[], ErrorResponse>(
-    [Queries.Mosaics],
-    getMosaics,
-    staticDataQueryOptions
-  );
-
-  return useMemo(
-    () => ({
-      ...query,
-      mosaic: query.data,
-    }),
-    [query]
-  );
-};
-
 /** Hook to use the locations grouped by location_type */
 export const useGroupedLocations = (
   includes?: string
