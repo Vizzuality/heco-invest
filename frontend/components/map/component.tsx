@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef, useCallback, FC } from 'react';
 
 import ReactMapGL, { FlyToInterpolator, TRANSITION_EVENTS } from 'react-map-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 
 import cx from 'classnames';
 
@@ -9,7 +10,7 @@ import { easeCubic } from 'd3-ease';
 import { isEmpty } from 'lodash-es';
 import { useDebouncedCallback } from 'use-debounce';
 
-import { DEFAULT_VIEWPORT } from './constants';
+import { DEFAULT_VIEWPORT, MAP_STYLE } from './constants';
 import type { MapProps } from './types';
 
 export const Map: FC<MapProps> = ({
@@ -166,6 +167,7 @@ export const Map: FC<MapProps> = ({
           }
         }}
         mapboxApiAccessToken={mapboxApiAccessToken}
+        mapStyle={MAP_STYLE}
         // CUSTOM PROPS FROM REACT MAPBOX API
         {...mapboxProps}
         // VIEWPORT

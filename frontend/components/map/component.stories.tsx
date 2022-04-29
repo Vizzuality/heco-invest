@@ -56,8 +56,6 @@ export default {
 
 const Template: Story<MapProps> = (args: MapProps) => {
   const { bounds: aBounds } = args;
-  const minZoom = 2;
-  const maxZoom = 10;
   const [viewport, setViewport] = useState({});
   const [bounds, setBounds] = useState(aBounds);
 
@@ -82,15 +80,7 @@ const Template: Story<MapProps> = (args: MapProps) => {
 
   return (
     <div className="relative w-full h-96">
-      <Map
-        bounds={bounds}
-        minZoom={minZoom}
-        maxZoom={maxZoom}
-        viewport={viewport}
-        mapboxApiAccessToken={process.env.STORYBOOK_MAPBOX_API_TOKEN}
-        // mapStyle="mapbox://styles/marxan/ckn4fr7d71qg817kgd9vuom4s"
-        onMapViewportChange={handleViewportChange}
-      >
+      <Map bounds={bounds} viewport={viewport} onMapViewportChange={handleViewportChange}>
         {(map) => (
           <LayerManager
             map={map}
@@ -107,16 +97,10 @@ const Template: Story<MapProps> = (args: MapProps) => {
       </Map>
 
       <Controls>
-        <ZoomControl
-          viewport={{
-            ...viewport,
-            minZoom,
-            maxZoom,
-          }}
-          onZoomChange={handleZoomChange}
-        />
+        <ZoomControl viewport={{ ...viewport }} onZoomChange={handleZoomChange} />
 
         <FitBoundsControl
+          className="mt-3"
           bounds={{
             ...bounds,
             viewportOptions: {
@@ -135,7 +119,7 @@ Default.args = {
   className: '',
   viewport: {},
   bounds: {
-    bbox: [10.5194091796875, 43.6499881760459, 10.9588623046875, 44.01257086123085],
+    bbox: [-81.99, -4.35, -65.69, 12.54],
     options: {
       padding: 50,
     },

@@ -17,6 +17,9 @@
   "/PlWea": {
     "string": "Use up and down to choose options, press escape to exit the menu, press tab to select the option and exit the menu."
   },
+  "/UnJ3S": {
+    "string": "Zoom out"
+  },
   "/VnDMl": {
     "string": "Other"
   },
@@ -798,6 +801,9 @@
   "jwimQJ": {
     "string": "Ok"
   },
+  "k62/kN": {
+    "string": "Fit bounds"
+  },
   "kEXoaQ": {
     "string": "About your work"
   },
@@ -992,6 +998,9 @@
   },
   "xXbJso": {
     "string": "Sign out"
+  },
+  "xbi38c": {
+    "string": "Zoom in"
   },
   "xjBcRf": {
     "string": "Slide {slide} out of {total}"
