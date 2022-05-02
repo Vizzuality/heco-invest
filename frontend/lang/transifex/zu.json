@@ -314,9 +314,6 @@
   "GOg6XJ": {
     "string": "Be part of the biggest change in the colombian Amazon"
   },
-  "GUFvP3": {
-    "string": "Your project is awaiting verification. This means that the project is visible in the platform but without the <b>Verification badge<b>."
-  },
   "GYkIYE": {
     "string": "Insert your last name"
   },
@@ -1028,6 +1025,9 @@
   },
   "yb3Bot": {
     "string": "How do you plan to measure the progress and impact of the project or solution? What would be the key indicators to be used for these measurements?"
+  },
+  "ygAxHr": {
+    "string": "Your project is awaiting verification. This means that the project is visible in the platform but without the <b>Verification badge</b>."
   },
   "yqJ5XD": {
     "string": "Select the amount of money that you need"
