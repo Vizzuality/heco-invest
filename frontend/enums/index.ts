@@ -14,6 +14,7 @@ export enum Paths {
   SignOut = '/sign-out',
   Settings = '/settings',
   Project = '/project',
+  ProjectCreation = '/projects/new',
 }
 
 export enum UserRoles {

@@ -23,6 +23,7 @@ import {
 } from 'containers/project-form-pages';
 
 import Head from 'components/head';
+import { Paths } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import { PageComponent } from 'types';
 import { ProjectCreationPayload, ProjectForm } from 'types/project';
@@ -206,7 +207,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
       <LeaveFormModal
         isOpen={showLeave}
         close={() => setShowLeave(false)}
-        handleLeave={() => push('/')}
+        handleLeave={() => push(Paths.Dashboard)}
         title={formatMessage({ defaultMessage: 'Leave project creation form', id: 'vygPIS' })}
       />
     </>
