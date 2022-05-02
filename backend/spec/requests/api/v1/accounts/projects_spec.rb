@@ -122,6 +122,13 @@ RSpec.describe "API V1 Account Projects", type: :request do
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/accounts-project-create")
         end
+
+        it "queues translation job" do
+          job = ActiveJob::Base.queue_adapter.enqueued_jobs.find do |j|
+            j[:job] == Translations::TranslateProjectJob
+          end
+          expect(job).not_to be_nil
+        end
       end
 
       response "422", "Validation errors" do

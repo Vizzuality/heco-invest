@@ -12,6 +12,8 @@ module API
               language: current_user.account.language
             )
           )
+          Translations::TranslateProjectJob.perform_later(project.id)
+
           render json: ProjectSerializer.new(
             project,
             include: included_relationships(parameters: params.fetch(:project_params, params)),

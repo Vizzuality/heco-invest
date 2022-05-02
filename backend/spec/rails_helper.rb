@@ -43,4 +43,13 @@ RSpec.configure do |config|
       ActiveJob::Base.queue_adapter.performed_jobs.clear
     end
   end
+
+  config.before do
+    # this is so we don't hit the Translation API in tests, don't know of a civilised way to disable it
+    @translate_content_double = instance_double(Translations::TranslateContent)
+    client_double = instance_double(Google::Cloud::Translate)
+    allow(@translate_content_double).to receive(:client).and_return(client_double)
+    allow(Translations::TranslateContent).to receive(:new).and_return(@translate_content_double)
+    allow(@translate_content_double).to receive(:call).with(any_args).and_return([])
+  end
 end
