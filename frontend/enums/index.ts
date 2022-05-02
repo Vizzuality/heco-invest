@@ -40,8 +40,6 @@ export enum Queries {
   Investor = 'investor',
   /** User account name and slug */
   Account = 'account',
-  /** Mosaics (Region Locations) */
-  Mosaics = 'mosaics',
   /** DB Enums */
   EnumList = 'enum_list',
   /** Locations */
