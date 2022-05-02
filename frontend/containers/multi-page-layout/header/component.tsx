@@ -32,9 +32,7 @@ export const MultiPageLayoutHeader: React.FC<MultiPageLayoutHeaderProps> = ({
       <LayoutContainer>
         <div className="flex items-center justify-between h-20 gap-x-8 md:gap-x-16">
           <div className="flex justify-start flex-1 md:flex-none">
-            <Link href="/">
-              <a className="font-semibold">HeCo Invest</a>
-            </Link>
+            <span className="font-semibold">HeCo Invest</span>
           </div>
           <div className="md:flex-1">{title}</div>
           <div className="flex justify-end flex-1 md:flex-none">
