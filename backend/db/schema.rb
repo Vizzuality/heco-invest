@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_27_090407) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_02_081603) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -230,8 +230,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_27_090407) do
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
     t.text "address"
-    t.string "ticket_size", null: false
-    t.string "instrument_types", null: false, array: true
+    t.string "ticket_size"
+    t.string "instrument_types", array: true
     t.integer "sdgs", array: true
     t.boolean "received_funding", null: false
     t.text "description_en"

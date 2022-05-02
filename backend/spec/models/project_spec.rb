@@ -176,6 +176,11 @@ RSpec.describe Project, type: :model do
       expect(subject).to be_valid
     end
 
+    it "should save correctly without ticket size" do
+      subject.ticket_size = nil
+      expect { subject.save! }.not_to raise_error
+    end
+
     it "should be valid without instrument types" do
       subject.instrument_types = nil
       expect(subject).to be_valid
