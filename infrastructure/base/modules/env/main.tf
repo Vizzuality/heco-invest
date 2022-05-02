@@ -160,6 +160,30 @@ module "backend_cloudrun" {
       value = "/backend"
     },
     {
+      name  = "CLOUDTASKER_PROCESSOR_HOST"
+      value = "TODO: THIS AUTOMAGICKED INTERNAL JOBS INSTANCE URL"
+    },
+    {
+      name  = "CLOUDTASKER_PROCESSOR_PATH"
+      value = "/backend/cloudtasker/run"
+    },
+    {
+      name  = "GCP_REGION"
+      value = module.cloud_tasks.region
+    },
+    {
+      name  = "GCP_PROJECT_ID"
+      value = module.cloud_tasks.project_id
+    },
+    {
+      name  = "GCP_QUEUE_PREFIX"
+      value = module.cloud_tasks.queue_prefix
+    },
+    {
+      name  = "TEST_PUBSUB_SUBSCRIPTION"
+      value = module.test_pubsub.subscription_name
+    },
+    {
       name  = "TEST_PUBSUB_TOPIC"
       value = module.test_pubsub.topic_name
     },
@@ -224,6 +248,13 @@ module "bastion" {
   name            = var.project_name
   project_id      = var.gcp_project_id
   subnetwork_name = module.network.subnetwork_name
+}
+
+module "cloud_tasks" {
+  source      = "../cloud_tasks"
+  queue_prefix = var.project_name
+  project_id  = var.gcp_project_id
+  region      = var.gcp_region
 }
 
 module "test_pubsub" {

@@ -12,6 +12,10 @@ BACKEND_URL (without protocol)
 RAILS_RELATIVE_URL_ROOT (if running backend application in sub url, like /backend)
 
 Cloud Tasks configuration
+GCP_REGION=
+GCP_PROJECT_ID=
+GCP_QUEUE_PREFIX=heco
+
 CLOUDTASKER_PROCESSOR_HOST - with protocol, as available from within the platform, e.g. http://localhost:4000
 CLOUDTASKER_PROCESSOR_PATH - /backend/cloudtasker/run
 
