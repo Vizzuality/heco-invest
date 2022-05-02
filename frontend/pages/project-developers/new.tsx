@@ -498,10 +498,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
                       <Button
                         theme="naked"
                         className="py-0 px-0 text-green-dark font-normal text-small underline inline !items-start"
-                        href="/images/mosaics.png"
+                        to="/images/mosaics.png"
                         target="_blank"
                         size="small"
-                        onClick={() => window.open('/images/mosaics.png', '_blank')}
+                        external
                       >
                         <FormattedMessage defaultMessage="Landscapes location" id="4HIQfn" />
                       </Button>
