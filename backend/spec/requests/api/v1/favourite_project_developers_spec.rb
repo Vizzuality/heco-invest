@@ -13,6 +13,7 @@ RSpec.describe "API V1 Favourite Project Developer", type: :request do
       produces "application/json"
       security [csrf: [], cookie_auth: []]
       parameter name: :project_developer_id, in: :path, type: :string
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
 
       let(:project_developer_id) { @project_developer.id }
 
@@ -37,6 +38,7 @@ RSpec.describe "API V1 Favourite Project Developer", type: :request do
       produces "application/json"
       security [csrf: [], cookie_auth: []]
       parameter name: :project_developer_id, in: :path, type: :string
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
 
       let(:project_developer_id) { @project_developer.id }
 
