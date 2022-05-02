@@ -4,9 +4,10 @@ module API
       include API::Pagination
 
       def index
-        project_developers = ProjectDeveloper.all.includes(
+        project_developers = ProjectDeveloper.approved.includes(
           :projects, :involved_projects, account: [:owner, {picture_attachment: :blob}]
         )
+        project_developers = API::Filterer.new(project_developers, filter_params.to_h).call
         pagy_object, project_developers = pagy(project_developers, page: current_page, items: per_page)
         render json: ProjectDeveloperSerializer.new(
           project_developers,
@@ -36,6 +37,10 @@ module API
 
         account = Account.friendly.find(params[:id])
         ProjectDeveloper.find_by!(account_id: account.id)
+      end
+
+      def filter_params
+        params.fetch(:filter, {}).permit :category, :impact
       end
     end
   end

@@ -9,8 +9,8 @@ RSpec.describe "API V1 Locations", type: :request do
     get "Returns list of the locations" do
       tags "Locations"
       produces "application/json"
-      parameter name: :location_type, in: :query, type: :string, enum: LocationType::TYPES, description: "Filter locations based on location type", required: false
-      parameter name: :parent_id, in: :query, type: :string, description: "Filter locations based on its closest parent", required: false
+      parameter name: "filter[location_type]", in: :query, type: :string, enum: LocationType::TYPES, description: "Filter locations based on location type", required: false
+      parameter name: "filter[parent_id]", in: :query, type: :string, description: "Filter locations based on its closest parent", required: false
       parameter name: "fields[location]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
       parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
 
@@ -43,7 +43,7 @@ RSpec.describe "API V1 Locations", type: :request do
         end
 
         context "when filter by location type is used" do
-          let(:location_type) { "country" }
+          let("filter[location_type]") { "country" }
 
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/locations-filter-by-location-type")
@@ -51,7 +51,7 @@ RSpec.describe "API V1 Locations", type: :request do
         end
 
         context "when filter by parent id is used" do
-          let(:parent_id) { @country.id }
+          let("filter[parent_id]") { @country.id }
 
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/locations-filter-by-parent-id")

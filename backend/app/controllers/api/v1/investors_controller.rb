@@ -4,7 +4,8 @@ module API
       include API::Pagination
 
       def index
-        investors = Investor.all.includes(account: [:owner, {picture_attachment: :blob}])
+        investors = Investor.approved.includes(account: [:owner, {picture_attachment: :blob}])
+        investors = API::Filterer.new(investors, filter_params.to_h).call
         pagy_object, investors = pagy(investors, page: current_page, items: per_page)
         render json: InvestorSerializer.new(
           investors,
@@ -31,6 +32,10 @@ module API
 
         account = Account.friendly.find(params[:id])
         Investor.find_by!(account_id: account.id)
+      end
+
+      def filter_params
+        params.fetch(:filter, {}).permit :category, :impact, :sdg, :instrument_type, :ticket_size
       end
     end
   end

@@ -23,13 +23,17 @@ module API
       private
 
       def apply_filter_for(query)
-        query = query.where location_type: params[:location_type] if params[:location_type].present?
-        query = query.where parent_id: params[:parent_id] if params[:parent_id].present?
+        query = query.where location_type: filter_params[:location_type] if filter_params[:location_type].present?
+        query = query.where parent_id: filter_params[:parent_id] if filter_params[:parent_id].present?
         query
       end
 
       def fetch_location
         @location = Location.find(params[:id])
+      end
+
+      def filter_params
+        params.fetch(:filter, {}).permit :location_type, :parent_id
       end
     end
   end

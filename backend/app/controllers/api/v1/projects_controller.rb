@@ -7,6 +7,7 @@ module API
 
       def index
         projects = Project.all.includes(:project_developer, :involved_project_developers, project_images: {file_attachment: :blob})
+        projects = API::Filterer.new(projects, filter_params.to_h).call
         pagy_object, projects = pagy(projects, page: current_page, items: per_page)
         render json: ProjectSerializer.new(
           projects,
@@ -31,6 +32,10 @@ module API
 
       def fetch_project
         @project = Project.friendly.find(params[:id])
+      end
+
+      def filter_params
+        params.fetch(:filter, {}).permit :category, :sdg, :instrument_type, :ticket_size, :only_verified
       end
     end
   end
