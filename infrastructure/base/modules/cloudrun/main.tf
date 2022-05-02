@@ -96,3 +96,12 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
 
   policy_data = data.google_iam_policy.noauth.policy_data
 }
+
+resource "google_service_account_iam_binding" "admin-account-iam" {
+  service_account_id = google_service_account.service_account.name
+  role               = "roles/iam.serviceAccountTokenCreator"
+
+  members = [
+    "serviceAccount:${google_service_account.service_account.email}",
+  ]
+}
