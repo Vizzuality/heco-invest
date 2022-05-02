@@ -1,8 +1,8 @@
 import { LocationsTypes } from 'enums';
 
 export type LocationsParams = {
-  location_type?: LocationsTypes;
-  parent_id?: string;
+  'filter[location_type]'?: LocationsTypes;
+  'filter[parent_id]'?: string;
   fields?: string;
   includes?: string;
 };

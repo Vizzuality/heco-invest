@@ -20,11 +20,17 @@
   "/VnDMl": {
     "string": "Other"
   },
+  "/m/QYW": {
+    "string": "Tell us what is the project about the problem and the solution to solve it"
+  },
   "/plMvw": {
     "string": "Project category"
   },
   "0CAqpl": {
     "string": "About the partners"
+  },
+  "0L/mZC": {
+    "string": "Target group"
   },
   "0SKBlf": {
     "string": "Go to page {pageNumber}"
@@ -50,6 +56,9 @@
   "1iEPTM": {
     "string": "General"
   },
+  "1t1fGY": {
+    "string": "How will the money be used?"
+  },
   "25WwxF": {
     "string": "Don't have an account?"
   },
@@ -62,11 +71,17 @@
   "2inebt": {
     "string": "The opportunities are located in geographies that are are unique due to of their biodiversity, cultural heritages, and regulation of water systems. As such, these projects will have the greatest impact for people and nature."
   },
+  "35YoEI": {
+    "string": "Description of the project"
+  },
   "39AHJm": {
     "string": "Sign Up"
   },
   "3dEg+E": {
     "string": "{start} of {end}"
+  },
+  "3hV8r4": {
+    "string": "Select the stage of development of the project or solution at the time of submitting this pitch"
   },
   "3l2y4U": {
     "string": "Person of contact"
@@ -85,6 +100,9 @@
   },
   "4EYbNW": {
     "string": "Create open calls"
+  },
+  "4JFhNG": {
+    "string": "Describe briefly the impact that the project is expected to generate to the identified users/beneficiaries. Try to explain how the solution or project will achieve this impact. Also try to give some estimates of the number of people impacted, at least to get an initial idea."
   },
   "4bznpU": {
     "string": "HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the long-term sustainability of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
@@ -107,6 +125,9 @@
   "5l/FHl": {
     "string": "You can choose from a variety of opportunities that range from sustainable landscape management tools and solutions, to forest-friendly products and business models. From social welfare solutions, to climate solutions and sustainable businesses."
   },
+  "5mkG4O": {
+    "string": "This description should succently explain your project. It should be a catching text since it's the first thing investors will read."
+  },
   "5sg7KC": {
     "string": "Password"
   },
@@ -116,11 +137,17 @@
   "60xeYL": {
     "string": "Contribute to improving the production systems and livelihoods of local communities and indigenous people, to ensure their basic needs are met, while enhancing their adaptation to climate change."
   },
+  "6MoU6D": {
+    "string": "Explain how the solution or project can be replicated in other contexts and geographies. Think practically about the existing opportunities, the partners and allies needed as well as the barriers that this replication effort may face such as climate issues, regulations and legal frameworks, land tenure, institutional capacity, etc."
+  },
   "6b2CRH": {
     "string": "User menu"
   },
   "6ukMW9": {
     "string": "Basque Centre for Climate Change"
+  },
+  "6xBvFx": {
+    "string": "Describe the problem or market need that your project or solution seeks to address. It should be a very specific problem, not a macro global issue like \"climate change\" or \"poverty\". Make sure that your showing that the problem is addressing a specific demand (is real) and it affects the poor and vulnerable population and/or the environment. We recommend using numbers to give a dimension of the problem."
   },
   "7JlauX": {
     "string": "Explore"
@@ -134,6 +161,9 @@
   "7aTDQM": {
     "string": "Project gallery (optional)"
   },
+  "7eO+k/": {
+    "string": "Enter the estimated implementation duration for the project. MAX 24 months."
+  },
   "7qgtEX": {
     "string": "Invests in SDG's"
   },
@@ -145,6 +175,9 @@
   },
   "8HimVK": {
     "string": "Confirm password"
+  },
+  "8MAKwj": {
+    "string": "Sustainability of the project"
   },
   "8R8Or7": {
     "string": "Search community"
@@ -188,6 +221,9 @@
   "AC6emZ": {
     "string": "Inter-American Development Bank"
   },
+  "ADBj6Y": {
+    "string": "What type of financing are you looking for to implement your project or solution?"
+  },
   "APjPYs": {
     "string": "I want to write my content in"
   },
@@ -197,8 +233,20 @@
   "BAC0rl": {
     "string": "<span>Community:</span> income, sustainable projects;"
   },
+  "BcZVZW": {
+    "string": "This description should sumarize your project in a few words."
+  },
+  "BkLlj6": {
+    "string": "What’s the impact of your project and what do you want to achieve"
+  },
+  "C0sD76": {
+    "string": "insert number (max 24)"
+  },
   "CEQo2w": {
     "string": "My preferences"
+  },
+  "CPO6eS": {
+    "string": "Select in which SDG’s your project will have impact"
   },
   "CYTiug": {
     "string": "HeCo Invest will benefit poor and vulnerable people living in HeCo priority landscapes."
@@ -227,6 +275,12 @@
   "DkjIbR": {
     "string": "insert email"
   },
+  "E/YxHp": {
+    "string": "When will the project have the Verification badge?"
+  },
+  "Ec0M9T": {
+    "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
+  },
   "ErIkUS": {
     "string": "Insert your email"
   },
@@ -254,8 +308,14 @@
   "GOg6XJ": {
     "string": "Be part of the biggest change in the colombian Amazon"
   },
+  "GUFvP3": {
+    "string": "Your project is awaiting verification. This means that the project is visible in the platform but without the <b>Verification badge<b>."
+  },
   "GYkIYE": {
     "string": "Insert your last name"
+  },
+  "GdS9Mk": {
+    "string": "Has this project been funded before?"
   },
   "HK3ph8": {
     "string": "How it works"
@@ -275,6 +335,9 @@
   "HzKhBJ": {
     "developer_comment": "Description shown in search engines",
     "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
+  },
+  "I9iCt5": {
+    "string": "From which investor or funder? (optional)"
   },
   "IMe8OV": {
     "string": "Nature based solutions are estimated to compensate up to 30% of global emissions."
@@ -299,6 +362,9 @@
   },
   "JIehAU": {
     "string": "This is why ARIES is developing a 'Wikipedia-like' platform, that is collaborative, open-source and enables interoperable models and data. For the first time, this generates new knowledge through integrating the existing platform with the ultimate scope of building a more sustainable and resilient future for all."
+  },
+  "JJQfhh": {
+    "string": "Progress and impact tracking"
   },
   "JNTB42": {
     "string": "Phone number (optional)"
@@ -375,6 +441,12 @@
   "OChccW": {
     "string": "Investor / Funder"
   },
+  "OSAxiC": {
+    "string": "The solution or opportunity proposed"
+  },
+  "OWnChd": {
+    "string": "If you are not looking for funding and just want to publish your project, select No."
+  },
   "Obr4XP": {
     "string": "Guiding tools"
   },
@@ -419,6 +491,9 @@
   },
   "RczAkW": {
     "string": "Report back"
+  },
+  "SNBzCW": {
+    "string": "Tell us what how do you expect to grow your project , how will you measure progress and impact."
   },
   "SQJto2": {
     "string": "Sign in"
@@ -480,8 +555,14 @@
   "VkljLs": {
     "string": "Insert the phone number in case you would like to be contacted by phone."
   },
+  "VsNoGp": {
+    "string": "How much money did the project received or raised? (optional)"
+  },
   "Vxcu91": {
     "string": "{name} account"
+  },
+  "W2JBdp": {
+    "string": "Impact"
   },
   "W4Jolw": {
     "string": "IDB Lab is the innovation laboratory of the Inter-American Development Bank Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
@@ -510,6 +591,9 @@
   "XQuzr9": {
     "string": "Identified priorities by the HeCo program"
   },
+  "XgaRPC": {
+    "string": "Expected impact"
+  },
   "Xk8qys": {
     "string": "Are there other Project developers involved in the project?"
   },
@@ -531,6 +615,9 @@
   "YEYmEz": {
     "string": "Draw on the map or upload a file with the geographical area your project will have an impact on."
   },
+  "YWQkk+": {
+    "string": "Short description of the project"
+  },
   "ZEEVQX": {
     "string": "Social media"
   },
@@ -542,6 +629,9 @@
   },
   "ZaT/7W": {
     "string": "option {optionName}, selected."
+  },
+  "Zht65f": {
+    "string": "Identify the target group(s) of this solution. Try to be very specific and do not cover an unrealistic range of beneficiaries or clients."
   },
   "ZiErTG": {
     "string": "Be part of the biggest change in the Colombian Amazon"
@@ -566,6 +656,9 @@
   },
   "bNpbHr": {
     "string": "Find other people with similar interests. Join forces, secure more investment and create a greater impact."
+  },
+  "bWygLM": {
+    "string": "insert the amount of money"
   },
   "bhxvPM": {
     "string": "Setup project developer’s account"
@@ -618,11 +711,23 @@
   "dkNQOz": {
     "string": "Projects of all sizes"
   },
+  "e0c9xF": {
+    "string": "insert the name of the investor/funder"
+  },
   "eM7TKf": {
     "string": "About the platform"
   },
   "eSLLyC": {
     "string": "To complete you registration and make full use of the platform, please select which account you would like to create."
+  },
+  "eTuDrh": {
+    "string": "This will help us measure the impact of your project"
+  },
+  "eXDHt0": {
+    "string": "Describe the project or solution and describe clearly why you consider it is innovative, different from others and how it can generate an important change and impact towards the target groups. Highlight the characteristics that may attract partners, clients, or investors."
+  },
+  "efZTBX": {
+    "string": "Use this space to share links to documents, videos and websites that support your pitch."
   },
   "et2m37": {
     "string": "insert URL"
@@ -644,6 +749,12 @@
   },
   "hPsrc0": {
     "string": "insert your answer (max 600 characters)"
+  },
+  "hWhIuU": {
+    "string": "Select the intrument type(s)"
+  },
+  "hg7Mex": {
+    "string": "Select which areas your project will have an impact on"
   },
   "hiQOgT": {
     "string": "<span>Biodiversity:</span> endemism, conservation/restoration potential, landscape connectivity;"
@@ -669,8 +780,14 @@
   "in26xr": {
     "string": "{organization} logo"
   },
+  "jKdvln": {
+    "string": "Relevant links (optional)"
+  },
   "jQfYef": {
     "string": "Leave create project develop"
+  },
+  "jUgR7w": {
+    "string": "Stage of development or maturity of the project"
   },
   "jWOeHy": {
     "string": "<a>Call on our community</a> of project developers to identify opportunities in your preferred sectors and geographies."
@@ -690,6 +807,9 @@
   "ku+mDU": {
     "string": "State"
   },
+  "l2HvdU": {
+    "string": "Estimated duration for project in months"
+  },
   "lPkzC0": {
     "string": "This makes a difference to them"
   },
@@ -699,11 +819,20 @@
   "m3Dnav": {
     "string": "Investment info"
   },
+  "mEYG82": {
+    "string": "Funding information"
+  },
+  "mMReor": {
+    "string": "Go to project page"
+  },
   "mbTJWV": {
     "string": "Biodiversity"
   },
   "n0nU+Y": {
     "string": "Illustration of a person looking at a list of cards"
+  },
+  "n6KNWj": {
+    "string": "Pending verification"
   },
   "nBHzO6": {
     "string": "Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
@@ -720,6 +849,9 @@
   "oMC3r1": {
     "string": "Choose your account type"
   },
+  "oN8abW": {
+    "string": "Explain how the impact of the solution or project will be maintained after funding. Try to be specific and not too vague. Is the solution or project will be financially viable? How? What are the key elements to ensure sustainability (business model, partners, partnerships with governments, etc.)?"
+  },
   "oUWADl": {
     "string": "No"
   },
@@ -729,11 +861,17 @@
   "oiQKNY": {
     "string": "Search and find"
   },
+  "p+Qmws": {
+    "string": "Which of these topic/sector categories better describe your project?"
+  },
   "p1NkQY": {
     "string": "Find opportunities that have the greatest impact on challenges like biodiversity, climate, community and water."
   },
   "pONqz8": {
     "string": "First name"
+  },
+  "pcRRCK": {
+    "string": "Financial information about your project and what are the needs"
   },
   "pgfBG8": {
     "string": "As a Project Developer"
@@ -746,6 +884,12 @@
   },
   "qPKAOa": {
     "string": "Paulson Institute: The Paulson Institute (PI) is a non-partisan, independent “think and do tank” delivering solutions that contribute to a more resilient and sustainable world. PI operates at the intersection of economics, financial markets, and environmental protection by promoting market-based solutions to ensure green economic growth. Under their Financing Nature initiative, they are working to identify and implement innovative mechanisms that can rapidly mobilize substantial amounts of funding for nature conservation."
+  },
+  "qZPjW2": {
+    "string": "What is a verification badge?"
+  },
+  "qoImFc": {
+    "string": "Replicability of the project"
   },
   "rPwaWt": {
     "string": "A great name is short, crisp, and easily understood."
@@ -767,6 +911,9 @@
   },
   "sZIoMy": {
     "string": "Send email"
+  },
+  "saBdZ2": {
+    "string": "select option"
   },
   "sy+pv5": {
     "string": "Email"
@@ -795,6 +942,12 @@
   "txaU6M": {
     "string": "Apply to open calls"
   },
+  "u/E7xG": {
+    "string": "Are you currently looking for funding?"
+  },
+  "u87XOB": {
+    "string": "How your project will grow"
+  },
   "uCk8r+": {
     "string": "Already have an account?"
   },
@@ -806,6 +959,9 @@
   },
   "vaWFzs": {
     "string": "What's your mission?"
+  },
+  "vygPIS": {
+    "string": "Leave project creation form"
   },
   "wSZR47": {
     "string": "Submit"
@@ -824,6 +980,9 @@
   },
   "x6wKw3": {
     "string": "All selected options have been cleared."
+  },
+  "xBZz+E": {
+    "string": "Problem you are solving"
   },
   "xQ4XkB": {
     "string": "Only by understanding nature’s contributions to people and the economy can we push for policy-making where nature counts."
@@ -849,6 +1008,12 @@
   "yXFDuu": {
     "string": "Use our Artificial Intellience tool powered by ARIES, to help you identify what best fits your specific needs."
   },
+  "yb3Bot": {
+    "string": "How do you plan to measure the progress and impact of the project or solution? What would be the key indicators to be used for these measurements?"
+  },
+  "yqJ5XD": {
+    "string": "Select the amount of money that you need"
+  },
   "z3yOZn": {
     "string": "This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues."
   },
@@ -866,5 +1031,8 @@
   },
   "zniaka": {
     "string": "Unable to load the data"
+  },
+  "ztd20l": {
+    "string": "Development of the project"
   }
 }

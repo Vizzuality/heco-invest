@@ -19,7 +19,7 @@ export const getLocations = async (params?: LocationsParams): Promise<Locations[
 
 /** Get the locations with location_type = region */
 export const getMosaics = async () => {
-  return await getLocations({ location_type: LocationsTypes.Region });
+  return await getLocations({ 'filter[location_type]': LocationsTypes.Region });
 };
 
 /** Hook to use the locations with location_type = region */
