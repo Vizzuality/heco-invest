@@ -25,5 +25,8 @@ module Backend
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Use cloudtasker as the ActiveJob backend:
+    config.active_job.queue_adapter = :cloudtasker
   end
 end

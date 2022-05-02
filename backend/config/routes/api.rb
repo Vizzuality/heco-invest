@@ -26,5 +26,9 @@ namespace :api, format: "json" do
       resource :project_developer, only: [:create, :update, :show]
       resources :projects, only: [:create]
     end
+    resources :test_jobs, only: [] do
+      post :test_sync, on: :collection
+      post :test_async, on: :collection
+    end
   end
 end
