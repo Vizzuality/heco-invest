@@ -148,6 +148,10 @@ module "backend_cloudrun" {
       value = module.database.database_host
     },
     {
+      name  = "GCP_PROJECT_ID"
+      value = var.gcp_project_id
+    },
+    {
       name  = "GCP_STORAGE_BUCKET"
       value = module.backend_storage.bucket_name
     },
@@ -248,4 +252,8 @@ module "load_balancer" {
   frontend_cloud_run_name = module.frontend_cloudrun.name
   domain                  = var.domain
   dns_managed_zone_name   = module.dns.dns_zone_name
+}
+
+module "translation" {
+  source                  = "../translation"
 }
