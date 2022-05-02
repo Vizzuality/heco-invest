@@ -3,12 +3,11 @@ import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
 import { Enum } from 'types/enums';
-import { Locations } from 'types/locations';
 
 interface InterestItems {
   category?: Enum[];
   impact?: Enum[];
-  mosaics?: Locations[];
+  mosaic?: Enum[];
 }
 
 export enum InterestNames {
@@ -17,7 +16,7 @@ export enum InterestNames {
   Mosaics = 'mosaics',
 }
 
-const useInterests = ({ category, impact, mosaics }: InterestItems) => {
+const useInterests = ({ category, impact, mosaic }: InterestItems) => {
   const { formatMessage } = useIntl();
   return useMemo(
     () => [
@@ -43,7 +42,7 @@ const useInterests = ({ category, impact, mosaics }: InterestItems) => {
           id: 'piBsTx',
         }),
         name: InterestNames.Mosaics,
-        items: mosaics,
+        items: mosaic,
         infoText: formatMessage({
           defaultMessage:
             'Geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystem services.',
@@ -52,7 +51,7 @@ const useInterests = ({ category, impact, mosaics }: InterestItems) => {
         required: false,
       },
     ],
-    [category, impact, mosaics, formatMessage]
+    [category, impact, mosaic, formatMessage]
   );
 };
 

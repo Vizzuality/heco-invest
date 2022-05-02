@@ -18,6 +18,7 @@ import WebsiteSocial from 'containers/forms/website-social';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 
+import Button from 'components/button';
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
@@ -40,12 +41,10 @@ import useProjectDeveloperValidation, { formPageInputs } from 'validations/proje
 
 import { useCreateProjectDeveloper } from 'services/account';
 import { getEnums, useEnums } from 'services/enums/enumService';
-import { getMosaics, useMosaics } from 'services/locations/locations';
 
 export async function getStaticProps(ctx) {
   const queryClient = new QueryClient();
   queryClient.prefetchQuery(Queries.EnumList, getEnums);
-  queryClient.prefetchQuery(Queries.Mosaics, getMosaics);
   return {
     props: {
       intlMessages: await loadI18nMessages(ctx),
@@ -77,9 +76,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
   const { push } = useRouter();
   const createProjectDeveloper = useCreateProjectDeveloper();
   const enums = useEnums();
-  const { category, impact, project_developer_type } = enums?.data;
-  const mosaics = useMosaics();
-  const interests = useInterests({ category, impact, mosaics: mosaics.data });
+  const { category, impact, project_developer_type, mosaic } = enums?.data;
+  const interests = useInterests({ category, impact, mosaic });
   const {
     register,
     handleSubmit,
@@ -174,9 +172,6 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
   const fetchError = formatMessage({ defaultMessage: 'Unable to load the data', id: 'zniaka' });
 
   const getInterestsErrorText = (interestName: InterestNames) => {
-    if (interestName === InterestNames.Mosaics && mosaics.isError) {
-      return fetchError;
-    }
     if (enums.isError) {
       return fetchError;
     }
@@ -493,10 +488,25 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
             {interests.map(({ name, title, items, infoText }) => (
               <div key={name} className="mb-7">
                 <fieldset name={name}>
-                  <legend className="inline font-sans font-semibold text-sm text-gray-800 mb-4.5">
-                    <span className="mr-2.5">{title}</span>
-                    <FieldInfo infoText={infoText || getItemsInfoText(items)} />
-                  </legend>
+                  <div className="flex justify-between">
+                    <legend className="font-sans font-semibold text-sm text-gray-800 mb-4.5">
+                      <span className="mr-2.5">{title}</span>
+
+                      <FieldInfo infoText={infoText || getItemsInfoText(items)} />
+                    </legend>
+                    {name === InterestNames.Mosaics && (
+                      <Button
+                        theme="naked"
+                        className="py-0 px-0 text-green-dark font-normal text-small underline inline !items-start"
+                        to="/images/mosaics.png"
+                        target="_blank"
+                        size="small"
+                        external
+                      >
+                        <FormattedMessage defaultMessage="Landscapes location" id="4HIQfn" />
+                      </Button>
+                    )}
+                  </div>
                   <TagGroup
                     name={name}
                     setValue={setValue}
