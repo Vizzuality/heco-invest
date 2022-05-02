@@ -14,7 +14,7 @@ export const formPageInputs: (keyof ProjectForm)[][] = [
     'municipality_id',
     'department_id',
     'project_gallery',
-    'location',
+    'geometry',
     'involved_project_developer_ids',
   ],
   [

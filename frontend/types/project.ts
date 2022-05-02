@@ -1,3 +1,5 @@
+import { ValidGeometryType } from 'containers/forms/geometry/types';
+
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
 /** Common Project types */
@@ -42,15 +44,14 @@ export type ProjectForm = ProjectBase & {
   funding_plan: string;
   involved_project_developer_ids: string[];
   municipality_id: string;
+  geometry: ValidGeometryType;
 
   // Not part of the payload
   involved_project_developer: boolean;
   project_gallery?: FileList;
-  // TO UPDATE LATER
-  location: File;
 };
 
 export type ProjectCreationPayload = Omit<
   ProjectForm,
-  'involved_project_developer' | 'project_gallery' | 'location' | 'slug'
+  'involved_project_developer' | 'project_gallery' | 'slug'
 >;

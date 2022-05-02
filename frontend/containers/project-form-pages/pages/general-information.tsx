@@ -5,6 +5,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
+import GeometryInput from 'containers/forms/geometry';
+
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
@@ -104,7 +106,7 @@ const GeneralInformation = ({
           {/* https://vizzuality.atlassian.net/browse/LET-345 */}
           <ErrorMessage id="name" errorText={errors?.project_gallery?.message} />
         </div>
-        <div className="mb-6.5">
+        <div className="mb-8">
           <h2 className="mb-2.5 text-gray-600">
             <FormattedMessage defaultMessage="Location" id="rvirM2" />
           </h2>
@@ -175,7 +177,7 @@ const GeneralInformation = ({
           </div>
         </div>
         <div className="mb-6.5">
-          <Label htmlFor="location">
+          <Label htmlFor="geometry">
             <span className="mr-2.5">
               <FormattedMessage defaultMessage="Draw or upload your location" id="MHwpc4" />
             </span>
@@ -187,9 +189,18 @@ const GeneralInformation = ({
               })}
             />
           </Label>
-          {/* Shapefile button - location */}
-          {/* Map - location */}
-          <ErrorMessage id="name" errorText={errors?.location?.message} />
+          <GeometryInput
+            id="geometry"
+            name="geometry"
+            control={control}
+            controlOptions={{ disabled: false }}
+            aria-describedby="geometry-error"
+            className="-mt-7"
+          />
+          <ErrorMessage
+            id="geometry-error"
+            errorText={(errors?.geometry as unknown as FieldError)?.message}
+          />
         </div>
         <div className="mb-6.5">
           <h2 className="mb-2.5 text-gray-600">

@@ -97,7 +97,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
 
   const onSubmit: SubmitHandler<ProjectForm> = (values: ProjectForm) => {
     if (currentPage === 5) {
-      const { involved_project_developer, project_gallery, location, ...rest } = values;
+      const { involved_project_developer, project_gallery, ...rest } = values;
       // set involved_project_developer_not_listed to true if not listed is selected and removes this value from the involved_project_developer_ids
       const involved_project_developer_not_listed =
         !!values.involved_project_developer_ids?.includes('not-listed');

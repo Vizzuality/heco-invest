@@ -45,10 +45,10 @@ const Pending: PageComponent<PendingProjectProps, FormPageLayoutProps> = () => {
         </h1>
         <p className="my-6">
           <FormattedMessage
-            defaultMessage="Your project is awaiting verification. This means that the project is visible in the platform but without the <b>Verification badge<b>."
-            id="GUFvP3"
+            defaultMessage="Your project is awaiting verification. This means that the project is visible in the platform but without the <b>Verification badge</b>."
+            id="ygAxHr"
             values={{
-              b: (chunks: string) => <span className="font-bold">{chunks}</span>,
+              b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
             }}
           />
         </p>
