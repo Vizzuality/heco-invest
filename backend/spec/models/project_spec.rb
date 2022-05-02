@@ -3,6 +3,8 @@ require "rails_helper"
 RSpec.describe Project, type: :model do
   subject { build(:project) }
 
+  it_behaves_like :searchable
+
   it { is_expected.to be_valid }
 
   it "should not be valid without project developer" do

@@ -3,6 +3,8 @@ require "rails_helper"
 RSpec.describe OpenCall, type: :model do
   subject { build(:open_call) }
 
+  it_behaves_like :searchable
+
   it { is_expected.to be_valid }
 
   it "should not be valid without investor" do
