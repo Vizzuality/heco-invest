@@ -38,6 +38,7 @@
     "language": "en",
     "geometry": {},
     "favourite": null,
+    "verified": true,
     "project_developer": {
         "type": "project_developer",
         "id": "3117d9f4-6dff-4fb0-9510-eb8b0e6e77da",

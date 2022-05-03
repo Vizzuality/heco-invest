@@ -17,5 +17,5 @@ const Template: Story<ProjectHeaderProps> = ({ ...args }: ProjectHeaderProps) =>
 
 export const Default: Story<ProjectHeaderProps> = Template.bind({});
 Default.args = {
-  project: projectMockup as ProjectType,
+  project: projectMockup as any, // Not ideal, but it's a quick so we don't have to keep updating the mock.
 };

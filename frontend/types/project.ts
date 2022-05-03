@@ -9,7 +9,7 @@ export type ProjectImageType = {
   file: {
     small: string;
     medium: string;
-    large: string;
+    original: string;
   };
 };
 
@@ -42,8 +42,8 @@ export type ProjectBase = {
   ticket_size?: TicketSizes;
   language: Languages;
   project_images: ProjectImageType[];
-  verified: boolean;
-  project_developer: ProjectDeveloperType;
+  verified?: boolean;
+  project_developer?: any; // Cannot use ProjectDeveloperType because linting will complain about circular references
 };
 
 /** Project entity structure */

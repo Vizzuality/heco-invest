@@ -16,6 +16,7 @@ import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
 import Tag from 'components/tag';
 import { CategoryType } from 'types/category';
+import { ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
 
 import { useEnums } from 'services/enums/enumService';
 
@@ -36,7 +37,7 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
     },
   } = useEnums();
 
-  const { project_developer: projectDeveloper } = project;
+  const projectDeveloper: ProjectDeveloperType = project.project_developer;
 
   const category = useMemo(
     () => allCategories?.find(({ id }) => id === project.category),
