@@ -30,7 +30,7 @@ const GeneralInformation = ({
 }: ProjectFormPagesProps<ProjectForm>) => {
   const [showInvolvedProjectDevelopers, setShowInvolvedProjectDevelopers] = useState(false);
   const [locationsFilter, setLocationsFilter] =
-    useState<{ country?: string; department?: string }>();
+    useState<{ country: string; department: string }>({ country: undefined, department: undefined });
   const { formatMessage } = useIntl();
   const { locations } = useGroupedLocations();
 
