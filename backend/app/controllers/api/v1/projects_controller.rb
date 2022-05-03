@@ -35,7 +35,7 @@ module API
       end
 
       def filter_params
-        params.fetch(:filter, {}).permit :category, :sdg, :instrument_type, :ticket_size, :only_verified
+        params.fetch(:filter, {}).permit :category, :sdg, :instrument_type, :ticket_size, :only_verified, :full_text
       end
     end
   end

@@ -25,7 +25,7 @@ RSpec.describe API::Filterer do
         let!(:different_instrument_type_project) { create :project, instrument_types: ["grant"] }
         let!(:different_ticket_size_project) { create :project, ticket_size: "prototyping" }
 
-        it "#returns only correct projects" do
+        it "returns only correct projects" do
           expect(subject.call).to eq([correct_project])
         end
       end
@@ -35,8 +35,19 @@ RSpec.describe API::Filterer do
         let!(:verified_project) { create :project, trusted: true }
         let!(:unverified_project) { create :project, trusted: false }
 
-        it "#returns only verified records" do
+        it "returns only verified records" do
           expect(subject.call).to eq([verified_project])
+        end
+      end
+
+      context "when filtered by full_text param" do
+        let(:filters) { {full_text: "TEST", language: :en} }
+        let!(:correct_project) { create :project, name_en: "TEST" }
+        let!(:different_language_project) { create :project, name_es: "TEST" }
+        let!(:different_text_project) { create :project, name_en: "DIFFERENT" }
+
+        it "returns only records with correct text at correct language" do
+          expect(subject.call).to eq([correct_project])
         end
       end
     end
@@ -51,7 +62,18 @@ RSpec.describe API::Filterer do
         let!(:different_category_project_developer) { create :project_developer, categories: ["tourism-and-recreation"] }
         let!(:different_impact_project_developer) { create :project_developer, impacts: ["water"] }
 
-        it "#returns only correct project developers" do
+        it "returns only correct project developers" do
+          expect(subject.call).to eq([correct_project_developer])
+        end
+      end
+
+      context "when filtered by full_text param" do
+        let(:filters) { {full_text: "TEST", language: :en} }
+        let!(:correct_project_developer) { create :project_developer, mission_en: "TEST" }
+        let!(:different_language_project_developer) { create :project_developer, mission_es: "TEST" }
+        let!(:different_text_project_developer) { create :project_developer, mission_en: "DIFFERENT" }
+
+        it "returns only records with correct text at correct language" do
           expect(subject.call).to eq([correct_project_developer])
         end
       end
@@ -68,7 +90,7 @@ RSpec.describe API::Filterer do
         let!(:different_instrument_type_open_call) { create :open_call, instrument_type: "grant" }
         let!(:different_ticket_size_open_call) { create :open_call, ticket_size: "prototyping" }
 
-        it "#returns only correct open calls" do
+        it "returns only correct open calls" do
           expect(subject.call).to eq([correct_open_call])
         end
       end
@@ -78,8 +100,20 @@ RSpec.describe API::Filterer do
         let!(:verified_open_call) { create :open_call, trusted: true }
         let!(:unverified_open_call) { create :open_call, trusted: false }
 
-        it "#returns only verified records" do
+        it "returns only verified records" do
           expect(subject.call).to eq([verified_open_call])
+        end
+      end
+
+      context "when filtered by full_text param" do
+        let(:filters) { {full_text: "TEST", language: :en} }
+        let!(:correct_open_call) { create :open_call, description_en: "TEST" }
+        let!(:different_language_open_call) { create :open_call, description_es: "TEST" }
+        let!(:different_text_open_call) { create :open_call, description_en: "DIFFERENT" }
+        let!(:ignored_collumn_open_call) { create :open_call, money_distribution_en: "TEST" }
+
+        it "returns only records with correct text at correct language" do
+          expect(subject.call).to eq([correct_open_call])
         end
       end
     end
@@ -98,8 +132,17 @@ RSpec.describe API::Filterer do
         let!(:different_ticket_size_investor) { create :investor, ticket_sizes: ["prototyping"] }
         let!(:different_ticket_size_investor) { create :investor, impacts: ["water"] }
 
-        it "#returns only correct investors" do
+        it "returns only correct investors" do
           expect(subject.call).to eq([correct_investor])
+        end
+      end
+
+      context "when filtered by full_text param" do
+        let(:filters) { {full_text: "TEST", language: :en} }
+        let!(:any_investor) { create :investor }
+
+        it "does not influence filter at all" do
+          expect(subject.call).to eq([any_investor])
         end
       end
     end

@@ -19,6 +19,7 @@ RSpec.describe "API V1 Project Developers", type: :request do
       parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
       parameter name: "filter[category]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[impact]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
+      parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
 
       response "200", :success do
         schema type: :object, properties: {
@@ -58,6 +59,14 @@ RSpec.describe "API V1 Project Developers", type: :request do
           let("filter[category]") { @project_developer.categories.join(",") }
 
           it "includes filtered project developer" do
+            expect(response_json["data"].pluck("id")).to eq([@project_developer.id])
+          end
+        end
+
+        context "when filtered by searched text" do
+          let("filter[full_text]") { @project_developer.mission }
+
+          it "contains only correct records" do
             expect(response_json["data"].pluck("id")).to eq([@project_developer.id])
           end
         end
