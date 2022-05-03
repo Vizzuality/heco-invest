@@ -1,8 +1,6 @@
-import { DirectUpload } from '@rails/activestorage';
-
 import API from 'services/api';
 
-import { Blob } from './helper';
+import { DirectUpload, Blob } from './helper';
 
 const csrfToken = () => document.cookie.match(/csrf_token.*(;|$)/)[0].replace('csrf_token=', '');
 
