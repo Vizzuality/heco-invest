@@ -20,6 +20,8 @@ class User < ApplicationRecord
   validates :ui_language, inclusion: {in: Language::TYPES}
   validates_presence_of :first_name, :last_name
 
+  delegate :approved?, to: :account, allow_nil: true
+
   def send_confirmation_instructions
     return if confirmation_sent_within_limited_period?
 

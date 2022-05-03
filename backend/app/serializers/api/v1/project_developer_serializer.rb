@@ -1,12 +1,13 @@
 module API
   module V1
-    class ProjectDeveloperSerializer
-      include JSONAPI::Serializer
+    class ProjectDeveloperSerializer < BaseSerializer
       include BlobSerializer
 
       attributes :name, :slug, :about, :website, :instagram, :facebook, :linkedin, :twitter,
         :mission, :project_developer_type, :categories, :impacts, :language, :entity_legal_registration_number,
-        :review_status, :contact_email, :contact_phone, :mosaics
+        :review_status, :mosaics
+
+      account_approved_attributes :contact_email, :contact_phone
 
       belongs_to :owner, serializer: :user
 

@@ -1,7 +1,6 @@
 module API
   module V1
-    class InvestorSerializer
-      include JSONAPI::Serializer
+    class InvestorSerializer < BaseSerializer
       include BlobSerializer
 
       attributes :name, :slug, :about, :website, :instagram, :facebook, :linkedin, :twitter,

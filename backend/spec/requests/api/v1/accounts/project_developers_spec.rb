@@ -30,6 +30,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
         end
       end
     end
+
     post "Create new Project Developer for User" do
       tags "Project Developers"
       consumes "multipart/form-data"

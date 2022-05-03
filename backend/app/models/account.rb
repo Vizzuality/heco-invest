@@ -29,4 +29,8 @@ class Account < ApplicationRecord
     set_slug unless slug.present?
     slug
   end
+
+  def approved?
+    investor&.approved? || project_developer&.approved?
+  end
 end
