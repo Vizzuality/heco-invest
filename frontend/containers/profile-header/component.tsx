@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 import { translatedLanguageNameForLocale } from 'helpers/intl';
 
-import WebsiteSocialContact from 'containers/social-contact/website-social-contact';
+import WebsiteSocial from 'containers/social-contact/website-social';
 
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
@@ -108,12 +108,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
             </>
           )}
 
-          <WebsiteSocialContact
-            className="max-w-md mt-2 mb-8"
-            website={website}
-            social={social}
-            contact={contact}
-          />
+          <WebsiteSocial className="max-w-md mt-2 mb-8" website={website} social={social} />
 
           <div className="flex flex-col justify-between gap-4 mt-8 lg:flex-row">
             <Button

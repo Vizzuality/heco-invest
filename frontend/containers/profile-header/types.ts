@@ -1,4 +1,4 @@
-import { WebsiteSocialContactProps } from 'containers/social-contact/website-social-contact';
+import { WebsiteSocialProps } from 'containers/social-contact/website-social';
 
 import { LanguageType } from 'types';
 
@@ -23,4 +23,4 @@ export type ProfileHeaderProps = {
   onFavoriteClick?: () => void;
   /** Callback for when the contact button is clicked */
   onContactClick?: () => void;
-} & Pick<WebsiteSocialContactProps, 'website' | 'social' | 'contact'>;
+} & Pick<WebsiteSocialProps, 'website' | 'social'>;

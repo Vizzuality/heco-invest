@@ -10,14 +10,13 @@ import Icon from 'components/icon';
 
 import { SOCIAL_DATA } from '../constants';
 
-import type { WebsiteSocialContactProps, SocialType } from './types';
+import type { WebsiteSocialProps, SocialType } from './types';
 
-export const WebsiteSocialContact: FC<WebsiteSocialContactProps> = ({
+export const WebsiteSocial: FC<WebsiteSocialProps> = ({
   className,
   website,
   social = [],
-  contact,
-}: WebsiteSocialContactProps) => {
+}: WebsiteSocialProps) => {
   return (
     <div
       className={cx({
@@ -26,15 +25,6 @@ export const WebsiteSocialContact: FC<WebsiteSocialContactProps> = ({
         [className]: !!className,
       })}
     >
-      {contact && (
-        <>
-          <span className="text-gray-800">
-            <FormattedMessage defaultMessage="Person of contact" id="3l2y4U" />
-          </span>
-          <span>{contact}</span>
-        </>
-      )}
-
       {website && (
         <>
           <span className="mt-4 text-gray-800 sm:mt-0">
@@ -96,4 +86,4 @@ export const WebsiteSocialContact: FC<WebsiteSocialContactProps> = ({
   );
 };
 
-export default WebsiteSocialContact;
+export default WebsiteSocial;
