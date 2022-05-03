@@ -1,3 +1,4 @@
+import { ContactInformationType } from 'containers/social-contact/contact-information-modal';
 import { WebsiteSocialProps } from 'containers/social-contact/website-social';
 
 import { LanguageType } from 'types';
@@ -19,6 +20,8 @@ export type ProfileHeaderProps = {
   numNotFunded?: number;
   /** Num projects funded */
   numFunded?: number;
+  /** Contact information for the project developer */
+  contact?: ContactInformationType;
   /** Callback for when the favorite button is clicked */
   onFavoriteClick?: () => void;
   /** Callback for when the contact button is clicked */

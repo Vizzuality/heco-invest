@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC, useMemo, useState } from 'react';
 
 import { Heart as HeartIcon, CheckCircle as CheckCircleIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -8,6 +8,9 @@ import cx from 'classnames';
 import { translatedLanguageNameForLocale } from 'helpers/intl';
 
 import CategoryTag from 'containers/category-tag';
+import ContactInformationModal, {
+  ContactInformationType,
+} from 'containers/social-contact/contact-information-modal';
 
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
@@ -23,6 +26,7 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
   project,
 }: ProjectHeaderProps) => {
   const intl = useIntl();
+  const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
 
   const {
     data: {
@@ -31,6 +35,8 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
       category: allCategories,
     },
   } = useEnums();
+
+  const { project_developer: projectDeveloper } = project;
 
   const category = useMemo(
     () => allCategories?.find(({ id }) => id === project.category),
@@ -48,6 +54,11 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
     [project.project_images]
   );
 
+  const contact: ContactInformationType = {
+    email: projectDeveloper.contact_email,
+    phone: projectDeveloper.contact_phone,
+  };
+
   const ticketSizeStr = useMemo(
     () => allTicketSizes?.find(({ id }) => project.ticket_size === id)?.description,
     [allTicketSizes, project.ticket_size]
@@ -63,7 +74,6 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
   );
 
   const handleFavoriteClick = () => {};
-  const handleContactClick = () => {};
 
   return (
     <div className={className}>
@@ -180,15 +190,21 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </Button>
             <Button
+              disabled={!contact?.phone && !contact?.email}
               className="w-full lg:max-w-[200px] justify-center"
               theme="primary-green"
-              onClick={handleContactClick}
+              onClick={() => setIsContactInfoModalOpen(true)}
             >
               <FormattedMessage defaultMessage="Contact" id="zFegDD" />
             </Button>
           </div>
         </div>
       </LayoutContainer>
+      <ContactInformationModal
+        isOpen={isContactInfoModalOpen}
+        onDismiss={() => setIsContactInfoModalOpen(false)}
+        contact={contact}
+      />
     </div>
   );
 };

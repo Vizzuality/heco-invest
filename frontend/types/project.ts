@@ -2,6 +2,8 @@ import { ValidGeometryType } from 'containers/forms/geometry/types';
 
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
+import { ProjectDeveloper as ProjectDeveloperType } from './projectDeveloper';
+
 export type ProjectImageType = {
   cover: boolean;
   file: {
@@ -41,6 +43,7 @@ export type ProjectBase = {
   language: Languages;
   project_images: ProjectImageType[];
   verified: boolean;
+  project_developer: ProjectDeveloperType;
 };
 
 /** Project entity structure */

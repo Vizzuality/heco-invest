@@ -9,6 +9,7 @@ import Breadcrumbs from 'containers/breadcrumbs';
 import ProfileHeader from 'containers/profile-header';
 import ProjectCard from 'containers/project-card';
 import { SOCIAL_DATA } from 'containers/social-contact/constants';
+import { ContactInformationType } from 'containers/social-contact/contact-information-modal';
 import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 
 import Carousel, { Slide } from 'components/carousel';
@@ -73,6 +74,11 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     .reduce((acc, social) => [...acc, { id: social, url: projectDeveloper[social] }], [])
     .filter((social) => social.url);
 
+  const contact: ContactInformationType = {
+    email: projectDeveloper.contact_email,
+    phone: projectDeveloper.contact_phone,
+  };
+
   const tagsRows: TagsGridRowType[] = [
     {
       title: 'Categories of interest',
@@ -125,6 +131,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           text={projectDeveloper.about}
           website={projectDeveloper.website}
           social={social}
+          contact={contact}
           numNotFunded={funding.funded}
           numFunded={funding.notFunded}
           originalLanguage={projectDeveloper.language}

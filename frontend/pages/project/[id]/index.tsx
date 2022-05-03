@@ -1,3 +1,4 @@
+import { decycle } from 'cycle';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -21,7 +22,7 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
   // If getting the project fails, it's most likely because the record has
   // not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    ({ data: project } = await getProject(id, { includes: 'project_images' }));
+    ({ data: project } = await getProject(id, { includes: 'project_images,project_developer' }));
   } catch (e) {
     return { notFound: true };
   }
@@ -32,7 +33,7 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
       enums: groupBy(enums, 'type'),
-      project: project,
+      project: decycle(project),
     },
   };
 };

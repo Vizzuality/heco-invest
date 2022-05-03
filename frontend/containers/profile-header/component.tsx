@@ -9,6 +9,7 @@ import Image from 'next/image';
 
 import { translatedLanguageNameForLocale } from 'helpers/intl';
 
+import ContactInformationModal from 'containers/social-contact/contact-information-modal';
 import WebsiteSocial from 'containers/social-contact/website-social';
 
 import Button from 'components/button';
@@ -29,10 +30,10 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
   social,
   contact,
   onFavoriteClick = () => noop,
-  onContactClick = () => noop,
 }: ProfileHeaderProps) => {
   const intl = useIntl();
 
+  const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
   const [logo, setLogo] = useState<string>(logoProp);
 
   useEffect(() => {
@@ -122,13 +123,19 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
             <Button
               className="w-full lg:max-w-[200px] justify-center"
               theme="primary-green"
-              onClick={onContactClick}
+              disabled={!contact?.phone && !contact?.email}
+              onClick={() => setIsContactInfoModalOpen(true)}
             >
               <FormattedMessage defaultMessage="Contact" id="zFegDD" />
             </Button>
           </div>
         </div>
       </LayoutContainer>
+      <ContactInformationModal
+        isOpen={isContactInfoModalOpen}
+        onDismiss={() => setIsContactInfoModalOpen(false)}
+        contact={contact}
+      />
     </div>
   );
 };
