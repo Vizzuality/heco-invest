@@ -33,7 +33,7 @@ export const ImageUploader = <FormValues extends FieldValues>({
       await directUpload(file)
         .then(({ signed_id }) => {
           setImagePreview(src);
-          setValue(name, signed_id as any, { shouldValidate: true });
+          setValue(name, signed_id as any);
         })
         .catch((error: Error) => {
           setValue(name, undefined);
