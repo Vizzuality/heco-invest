@@ -1,13 +1,14 @@
 import { useMemo } from 'react';
 
-import { useQuery, UseQueryResult } from 'react-query';
+import { useQuery } from 'react-query';
 
 import { groupBy } from 'lodash-es';
 
 import { Queries, EnumTypes } from 'enums';
-import { Enum, GroupedEnums } from 'types/enums';
+import { Enum } from 'types/enums';
 
 import API from 'services/api';
+import { staticDataQueryOptions } from 'services/helpers';
 import { ErrorResponse } from 'services/types';
 
 export const getEnums = async (): Promise<Enum[]> => {
@@ -16,11 +17,7 @@ export const getEnums = async (): Promise<Enum[]> => {
 };
 
 export const useEnums = () => {
-  const query = useQuery<Enum[], ErrorResponse>(Queries.EnumList, getEnums, {
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
-    staleTime: Infinity,
-  });
+  const query = useQuery<Enum[], ErrorResponse>(Queries.EnumList, getEnums, staticDataQueryOptions);
 
   /** Enums grouped by type property */
   const enumsGroupedByTypes = groupBy(query?.data, 'type') as {

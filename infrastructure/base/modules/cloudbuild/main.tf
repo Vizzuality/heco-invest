@@ -41,11 +41,11 @@ resource "google_cloudbuild_trigger" "build_trigger" {
   }
 
   build {
-    timeout = "6000s"
+    timeout = "9000s"
 
     step {
       name = "docker/compose:1.29.2"
-      timeout = "1200s"
+      timeout = "1800s"
       args = concat(
         [
           "-f", "${var.docker_context_path}/docker-compose-test.yml",
@@ -61,7 +61,7 @@ resource "google_cloudbuild_trigger" "build_trigger" {
 
     step {
       name = "gcr.io/cloud-builders/docker"
-      timeout = "1200s"
+      timeout = "1800s"
       args = concat(
         [
           "build",
@@ -88,6 +88,10 @@ resource "google_cloudbuild_trigger" "build_trigger" {
     }
 
     images = ["gcr.io/${var.project_id}/${var.image_name}", "gcr.io/${var.project_id}/${var.image_name}:latest"]
+
+    options {
+      machine_type = "E2_HIGHCPU_8"
+    }
   }
 
   substitutions = {for key, value in var.docker_build_args : "_${key}" => value}
