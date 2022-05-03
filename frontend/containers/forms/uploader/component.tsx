@@ -1,21 +1,33 @@
 import { useMemo, useEffect, useState, useCallback } from 'react';
 
-import { FILE_UPLOADER_MAX_SIZE } from 'constants/file-uploader-size-limits';
+// import { FILE_UPLOADER_MAX_SIZE } from 'constants/file-uploader-size-limits';
+
 import { useDropzone } from 'react-dropzone';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import classNames from 'classnames';
 
 import Image from 'next/image';
 
-import { bytesToMegabytes } from 'utils/units';
+// import { bytesToMegabytes } from 'utils/units';
 
-import Alerts, { AlertsItemProps } from 'components/alert';
+import Alerts, { AlertProps } from 'components/alert';
 
 import apiService from 'services/api';
 
 import { UploaderProps } from './types';
 
-const Uploader: React.FC<UploaderProps> = ({
+/**
+ * @param bytes Bytes to convert to Megabytes.
+ * @returns Megabytes
+ */
+export const bytesToMegabytes = (bytes: number): number => {
+  return bytes / 1000000;
+};
+
+export const FILE_UPLOADER_MAX_SIZE = 1500000;
+
+export const Uploader: React.FC<UploaderProps> = ({
   header,
   footer,
   key = 'file',
@@ -34,7 +46,8 @@ const Uploader: React.FC<UploaderProps> = ({
 }: UploaderProps) => {
   const [files, setFiles] = useState<File[]>([]);
   const [isUploading, setIsUploading] = useState<boolean>(false);
-  const [alert, setAlert] = useState<AlertsItemProps>(null);
+  const [alert, setAlert] = useState<AlertProps>(null);
+  const { formatMessage } = useIntl();
 
   // TODO: consider replace by a hook
   const uploadFiles = useCallback(
@@ -59,7 +72,7 @@ const Uploader: React.FC<UploaderProps> = ({
           if (showAlerts) {
             setAlert({
               type: 'success',
-              title: 'Your file was successfully uploaded.',
+              children: 'Your file was successfully uploaded.',
             });
           }
         })
@@ -70,14 +83,14 @@ const Uploader: React.FC<UploaderProps> = ({
               const errors = JSON.parse(request.response).errors.map(({ title }) => title);
 
               setAlert({
-                type: 'error',
-                title: errorAlertTitle(errors),
-                messages: errors,
+                type: 'warning',
+                children: errorAlertTitle(errors),
+                // messages: errors,
               });
             } catch {
               setAlert({
-                type: 'error',
-                title: 'There was an error uploading your file. Please try again.',
+                type: 'warning',
+                children: 'There was an error uploading your file. Please try again.',
               });
             }
           }
@@ -126,15 +139,15 @@ const Uploader: React.FC<UploaderProps> = ({
       });
 
       setAlert({
-        type: 'error',
-        title: errorAlertTitle(errors),
-        messages: errors,
+        type: 'warning',
+        children: errorAlertTitle(errors),
+        // messages: errors,
       });
     }
   };
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: fileTypes && fileTypes.map((f) => '.' + f),
+    // accept: !!fileTypes && fileTypes.map((f) => ({ [f]: '.' + f })),
     disabled: disabled || !!isUploading,
     maxSize,
     maxFiles,
@@ -168,22 +181,32 @@ const Uploader: React.FC<UploaderProps> = ({
       >
         <input {...getInputProps()} />
         <Image src="/images/image-placeholder.svg" width="38" height="39" alt="Upload file" />
-        <p className="mt-1">
-          {files.length > 0 ? (
-            files.map((file) => file.name).join(', ')
-          ) : (
-            <>
-              <span className="text-green-700">Upload a file</span> or drag and drop
-            </>
-          )}
-        </p>
-        <p className="text-gray-500 text-xs mt-1">
-          {isUploading ? 'Uploading file...' : `${fileTypesString} ${bytesToMegabytes(maxSize)}MB`}
-        </p>
+        {!isUploading ? (
+          <div>
+            <p>
+              <FormattedMessage
+                defaultMessage="Browse or drag and drop"
+                id="8dGhWP"
+                values={{ a: <span className="text-green-dark">a</span> }}
+              />
+            </p>
+            <p>
+              <FormattedMessage defaultMessage="PNG, JPG up to 2MB" id="KIhyKh" />
+            </p>
+          </div>
+        ) : (
+          <p>
+            <FormattedMessage
+              defaultMessage="Uploading {l} files..."
+              id="j+TAPL"
+              values={{ l: 3 }}
+            />
+          </p>
+        )}
       </div>
       {footer && <div className="text-sm mt-3">{footer}</div>}
 
-      <Alerts className="-mb-4" items={alert} />
+      <Alerts className="-mb-4" {...alert} />
     </div>
   );
 };

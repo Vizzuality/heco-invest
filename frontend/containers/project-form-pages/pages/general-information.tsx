@@ -6,6 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import cx from 'classnames';
 
 import GeometryInput from 'containers/forms/geometry';
+import Uploader from 'containers/forms/uploader';
 
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
@@ -95,14 +96,15 @@ const GeneralInformation = ({
               })}
             />
           </Label>
-          <input
+          {/* <input
             id="project-gallery"
             {...register('project_gallery')}
             className="block"
             type="file"
             accept="image/png,image/jpg"
             multiple
-          />
+          /> */}
+          <Uploader onUpload={console.log} />
           {/* https://vizzuality.atlassian.net/browse/LET-345 */}
           <ErrorMessage id="name" errorText={errors?.project_gallery?.message} />
         </div>
