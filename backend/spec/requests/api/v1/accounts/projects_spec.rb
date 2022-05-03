@@ -124,9 +124,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
         end
 
         it "queues translation job" do
-          job = ActiveJob::Base.queue_adapter.enqueued_jobs.find do |j|
-            j[:job] == Translations::TranslateProjectJob
-          end
+          job = ActiveJob::Base.queue_adapter.enqueued_jobs.find { |j| j[:job] == TranslateJob }
           expect(job).not_to be_nil
         end
       end
