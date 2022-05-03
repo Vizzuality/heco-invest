@@ -21,7 +21,7 @@ const Template: Story<ControlsProps> = (args) => {
   });
 
   return (
-    <div className="relative h-24">
+    <div className="relative h-56">
       <Controls {...args}>
         <ZoomControl
           viewport={viewport}
@@ -34,6 +34,7 @@ const Template: Story<ControlsProps> = (args) => {
         />
 
         <FitBoundsControl
+          className="mt-3"
           bounds={{
             bbox: [10.5194091796875, 43.6499881760459, 10.9588623046875, 44.01257086123085],
             options: {

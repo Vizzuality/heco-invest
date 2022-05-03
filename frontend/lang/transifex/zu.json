@@ -17,6 +17,9 @@
   "/PlWea": {
     "string": "Use up and down to choose options, press escape to exit the menu, press tab to select the option and exit the menu."
   },
+  "/UnJ3S": {
+    "string": "Zoom out"
+  },
   "/VnDMl": {
     "string": "Other"
   },
@@ -311,9 +314,6 @@
   "GOg6XJ": {
     "string": "Be part of the biggest change in the colombian Amazon"
   },
-  "GUFvP3": {
-    "string": "Your project is awaiting verification. This means that the project is visible in the platform but without the <b>Verification badge<b>."
-  },
   "GYkIYE": {
     "string": "Insert your last name"
   },
@@ -549,6 +549,9 @@
   "VR21hO": {
     "string": "The climate crisis is where short-term thinking and long-term consequences collide. How to think long-term in a short-term world?"
   },
+  "VUN1K7": {
+    "string": "Create project"
+  },
   "Vge+RX": {
     "string": "Footer"
   },
@@ -593,6 +596,9 @@
   },
   "XQuzr9": {
     "string": "Identified priorities by the HeCo program"
+  },
+  "Xf3dpi": {
+    "string": "Toggle fullscreen mode"
   },
   "XgaRPC": {
     "string": "Expected impact"
@@ -650,6 +656,9 @@
   },
   "aRIIAG": {
     "string": "<span>Climate:</span> wood and soil biomass, application of sustainable forest measures;"
+  },
+  "aT5Ajq": {
+    "string": "Start drawing"
   },
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
@@ -797,6 +806,9 @@
   },
   "jwimQJ": {
     "string": "Ok"
+  },
+  "k62/kN": {
+    "string": "Fit bounds"
   },
   "kEXoaQ": {
     "string": "About your work"
@@ -993,6 +1005,9 @@
   "xXbJso": {
     "string": "Sign out"
   },
+  "xbi38c": {
+    "string": "Zoom in"
+  },
   "xjBcRf": {
     "string": "Slide {slide} out of {total}"
   },
@@ -1013,6 +1028,9 @@
   },
   "yb3Bot": {
     "string": "How do you plan to measure the progress and impact of the project or solution? What would be the key indicators to be used for these measurements?"
+  },
+  "ygAxHr": {
+    "string": "Your project is awaiting verification. This means that the project is visible in the platform but without the <b>Verification badge</b>."
   },
   "yqJ5XD": {
     "string": "Select the amount of money that you need"

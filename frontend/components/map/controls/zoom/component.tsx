@@ -1,20 +1,20 @@
 import { FC, useCallback } from 'react';
 
+import { ZoomIn as ZoomInIcon, ZoomOut as ZoomOutIcon } from 'react-feather';
+import { useIntl } from 'react-intl';
+
 import cx from 'classnames';
 
 import Icon from 'components/icon';
-
-import ZOOM_IN_SVG from 'svgs/map/zoom-in.svg';
-import ZOOM_OUT_SVG from 'svgs/map/zoom-out.svg';
 
 import type { ZoomControlProps } from './types';
 
 export const ZoomControl: FC<ZoomControlProps> = ({
   className,
-  viewport,
+  viewport: { zoom, maxZoom, minZoom },
   onZoomChange,
 }: ZoomControlProps) => {
-  const { zoom, maxZoom, minZoom } = viewport;
+  const intl = useIntl();
 
   const increaseZoom = useCallback(
     (e) => {
@@ -46,30 +46,22 @@ export const ZoomControl: FC<ZoomControlProps> = ({
       })}
     >
       <button
-        className={cx({
-          'mb-0.5 p-0.5 rounded-t-3xl text-white bg-black': true,
-          'hover:bg-gray-700 active:bg-gray-600': zoom !== maxZoom,
-          'opacity-50 cursor-default': zoom === maxZoom,
-        })}
-        aria-label="Zoom in"
+        className="p-2 mb-1 text-gray-800 transition-all bg-white rounded shadow-sm focus-visible:outline-green-dark hover:text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:text-opacity-60 disabled:pointer-events-none"
+        title={intl.formatMessage({ defaultMessage: 'Zoom in', id: 'xbi38c' })}
         type="button"
         disabled={zoom === maxZoom}
         onClick={increaseZoom}
       >
-        <Icon icon={ZOOM_IN_SVG} />
+        <Icon icon={ZoomInIcon} />
       </button>
       <button
-        className={cx({
-          'p-0.5 rounded-b-3xl text-white bg-black': true,
-          'hover:bg-gray-700 active:bg-gray-600': zoom !== minZoom,
-          'opacity-50 cursor-default': zoom === minZoom,
-        })}
-        aria-label="Zoom out"
+        className="p-2 text-gray-800 transition-all bg-white rounded shadow-sm focus-visible:outline-green-dark hover:text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:text-opacity-60 disabled:pointer-events-none"
+        title={intl.formatMessage({ defaultMessage: 'Zoom out', id: '/UnJ3S' })}
         type="button"
         disabled={zoom === minZoom}
         onClick={decreaseZoom}
       >
-        <Icon icon={ZOOM_OUT_SVG} />
+        <Icon icon={ZoomOutIcon} />
       </button>
     </div>
   );

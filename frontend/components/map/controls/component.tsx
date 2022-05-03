@@ -1,4 +1,4 @@
-import { Children, FC } from 'react';
+import { FC } from 'react';
 
 import cx from 'classnames';
 
@@ -10,19 +10,10 @@ export const Controls: FC<ControlsProps> = ({
 }: ControlsProps) => (
   <div
     className={cx({
-      'w-10': true,
       [className]: !!className,
     })}
   >
-    {Children.map(children, (child, i) => (
-      <div
-        className={cx({
-          'mt-2': i !== 0,
-        })}
-      >
-        {child}
-      </div>
-    ))}
+    {children}
   </div>
 );
 

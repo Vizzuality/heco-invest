@@ -21,6 +21,10 @@ export default (page: number) => {
       defaultMessage: 'You need to select a municipality',
       id: '+m/R6q',
     }),
+    geometry: formatMessage({
+      defaultMessage: 'Upload a geometry or draw on the map',
+      id: '1+wwRC',
+    }),
     project_gallery: {
       max_length: formatMessage({ defaultMessage: 'Upload a maximum of six images', id: 'U6/vVg' }),
       max_picture_size: formatMessage({
@@ -130,7 +134,7 @@ export default (page: number) => {
           }
           return !oversize;
         }),
-      location: mixed(),
+      geometry: mixed().required(messages.geometry),
       involved_project_developer: number()
         .min(0)
         .max(1)
