@@ -15,9 +15,6 @@ const createProjectDeveloper = async (
   const config: AxiosRequestConfig = {
     method: 'POST',
     url: '/api/v1/account/project_developer',
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
     data,
   };
   return await API(config);
