@@ -8,6 +8,7 @@ import {
   UseFormGetValues,
   UseFormClearErrors,
   UseFormSetValue,
+  UseFormResetField,
 } from 'react-hook-form';
 
 import { Enum } from 'types/enums';
@@ -31,6 +32,8 @@ export type ProjectFormPagesProps<FormValues> = {
   setValue?: UseFormSetValue<FormValues>;
   /** React-hook-form useForm clearErrors */
   clearErrors?: UseFormClearErrors<FormValues>;
+  /** React-hook-form useForm resetField */
+  resetField?: UseFormResetField<FormValues>;
 };
 
 export type ProjectDescriptionProps = ProjectFormPagesProps<ProjectForm> & {
