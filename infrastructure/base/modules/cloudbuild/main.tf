@@ -88,6 +88,10 @@ resource "google_cloudbuild_trigger" "build_trigger" {
     }
 
     images = ["gcr.io/${var.project_id}/${var.image_name}", "gcr.io/${var.project_id}/${var.image_name}:latest"]
+
+    options {
+      machine_type = "E2_HIGHCPU_8"
+    }
   }
 
   substitutions = {for key, value in var.docker_build_args : "_${key}" => value}

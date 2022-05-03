@@ -30,7 +30,6 @@ export const Head: React.FC<HeadProps> = ({
     <NextHead>
       <title key="title">{title}</title>
       <meta key="description" name="description" content={description} />
-
       {locales.map((locale) => (
         <link
           key={locale}

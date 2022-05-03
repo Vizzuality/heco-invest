@@ -23,7 +23,7 @@ import {
 } from 'containers/project-form-pages';
 
 import Head from 'components/head';
-import { Paths } from 'enums';
+import { Paths, Queries } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import { PageComponent } from 'types';
 import { ProjectCreationPayload, ProjectForm } from 'types/project';
@@ -31,11 +31,14 @@ import useProjectValidation from 'validations/project';
 import { formPageInputs } from 'validations/project';
 
 import { useCreateProject } from 'services/account';
-import { useEnums } from 'services/enums/enumService';
+import { getEnums, useEnums } from 'services/enums/enumService';
+import { getLocations } from 'services/locations/locations';
 
 export async function getStaticProps(ctx) {
   const queryClient = new QueryClient();
-
+  // prefetch static data - enums and locations
+  queryClient.prefetchQuery(Queries.EnumList, getEnums);
+  queryClient.prefetchQuery(Queries.Locations, () => getLocations());
   return {
     props: {
       intlMessages: await loadI18nMessages(ctx),
@@ -71,7 +74,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
     getValues,
     setValue,
     clearErrors,
-    setError,
+    resetField,
   } = useForm<ProjectForm>({
     resolver,
     shouldUseNativeValidation: true,
@@ -147,6 +150,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             controlOptions={{ disabled: false }}
             errors={errors}
             getValues={getValues}
+            resetField={resetField}
           />
         </Page>
         <Page key="project-description">

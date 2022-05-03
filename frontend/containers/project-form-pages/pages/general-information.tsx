@@ -14,6 +14,7 @@ import FieldInfo from 'components/forms/field-info';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import MultiCombobox from 'components/forms/multi-combobox';
+import { LocationsTypes } from 'enums';
 import { ProjectForm } from 'types/project';
 
 import { useGroupedLocations } from 'services/locations/locations';
@@ -26,11 +27,16 @@ const GeneralInformation = ({
   errors,
   control,
   getValues,
+  resetField,
 }: ProjectFormPagesProps<ProjectForm>) => {
   const [showInvolvedProjectDevelopers, setShowInvolvedProjectDevelopers] = useState(false);
+  const [locationsFilter, setLocationsFilter] = useState<{ country: string; department: string }>({
+    country: undefined,
+    department: undefined,
+  });
   const { formatMessage } = useIntl();
   const { locations } = useGroupedLocations();
-  // I don't know if there is a better way to get all items, since the default page size is 10. I'm assuming that there will not be more than 1000 locations.
+
   const { projectDevelopers } = useProjectDevelopersList({
     'page[size]': 1000,
     fields: ['name'],
@@ -43,6 +49,37 @@ const GeneralInformation = ({
 
   const handleChangeInvolvedProjectDeveloper = (e: ChangeEvent<HTMLInputElement>) => {
     setShowInvolvedProjectDevelopers(!!Number(e.target.value));
+  };
+
+  const getOptions = (locationType: LocationsTypes, filter: 'department' | 'country') => {
+    let filteredLocations = [];
+    if (locations) {
+      // If there is data on locations
+      filteredLocations = locations[locationType];
+      // If there is a filter for the field
+      if (locationsFilter && locationsFilter[filter]) {
+        filteredLocations = filteredLocations?.filter(
+          (location) => !locationsFilter[filter] || location.parent.id === locationsFilter[filter]
+        );
+      }
+    }
+
+    return filteredLocations?.map(({ id, name }) => <Option key={id}>{name}</Option>);
+  };
+
+  const handleChangeLocation = (locationType: LocationsTypes, e: any) => {
+    const { value } = e.target;
+    // The Combobox component responds to onChange even if the value is the same as before, but the field is reseted only if the value changes
+    if (!locationsFilter || value !== locationsFilter[locationType]) {
+      // if the country changes, the department and the municipality are reseted (clear field error and set value to undefined) and their options are filtered.
+      // if the departmnet changes, only the municipality is affected
+      setLocationsFilter({
+        country: locationType === LocationsTypes.Country ? value : locationsFilter.country,
+        department: locationType === LocationsTypes.Department ? value : undefined,
+      });
+      if (locationType === LocationsTypes.Country) resetField('department_id');
+      resetField('municipality_id');
+    }
   };
 
   return (
@@ -123,7 +160,10 @@ const GeneralInformation = ({
                 id="country"
                 name="country_id"
                 control={control}
-                controlOptions={{ disabled: false }}
+                controlOptions={{
+                  disabled: false,
+                  onChange: (e) => handleChangeLocation(LocationsTypes.Country, e),
+                }}
                 className="mt-2.5"
                 placeholder={formatMessage({ defaultMessage: 'select', id: 'J4SQjQ' })}
               >
@@ -131,7 +171,6 @@ const GeneralInformation = ({
                   <Option key={id}>{name}</Option>
                 ))}
               </Combobox>
-              {/* https://vizzuality.atlassian.net/browse/LET-347 */}
               <ErrorMessage id="name" errorText={errors?.country_id?.message} />
             </div>
             <div className="w-full">
@@ -144,15 +183,15 @@ const GeneralInformation = ({
                 id="department"
                 name="department_id"
                 control={control}
-                controlOptions={{ disabled: false }}
+                controlOptions={{
+                  disabled: false,
+                  onChange: (e) => handleChangeLocation(LocationsTypes.Department, e),
+                }}
                 className="mt-2.5"
                 placeholder={formatMessage({ defaultMessage: 'select', id: 'J4SQjQ' })}
               >
-                {locations?.department?.map(({ id, name }) => (
-                  <Option key={id}>{name}</Option>
-                ))}
+                {getOptions(LocationsTypes.Department, LocationsTypes.Country)}
               </Combobox>
-              {/* https://vizzuality.atlassian.net/browse/LET-347 */}
               <ErrorMessage id="name" errorText={errors?.department_id?.message} />
             </div>
             <div className="w-full">
@@ -165,15 +204,14 @@ const GeneralInformation = ({
                 id="municipality"
                 name="municipality_id"
                 control={control}
-                controlOptions={{ disabled: false }}
+                controlOptions={{
+                  disabled: false,
+                }}
                 className="mt-2.5"
                 placeholder={formatMessage({ defaultMessage: 'select', id: 'J4SQjQ' })}
               >
-                {locations?.municipality?.map(({ id, name }) => (
-                  <Option key={id}>{name}</Option>
-                ))}
+                {getOptions(LocationsTypes.Municipality, LocationsTypes.Department)}
               </Combobox>
-              {/* https://vizzuality.atlassian.net/browse/LET-347 */}
               <ErrorMessage id="name" errorText={errors?.municipality_id?.message} />
             </div>
           </div>

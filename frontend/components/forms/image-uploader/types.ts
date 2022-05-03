@@ -1,4 +1,11 @@
-import { FieldPath, Path, RegisterOptions, UseFormRegister } from 'react-hook-form';
+import {
+  FieldPath,
+  Path,
+  RegisterOptions,
+  UseFormRegister,
+  UseFormSetError,
+  UseFormSetValue,
+} from 'react-hook-form';
 
 export type ImageUploaderProps<FormValues> = {
   /** name of the input */
@@ -15,4 +22,8 @@ export type ImageUploaderProps<FormValues> = {
   previewClassName?: string;
   /** text showed on the button. Default id 'Upload Image' with translation  */
   buttonText?: string;
+  /** React Hook Form's 'setValue' function */
+  setValue: UseFormSetValue<FormValues>;
+  /** React Hook Form's 'setError' function */
+  setError: UseFormSetError<FormValues>;
 };
