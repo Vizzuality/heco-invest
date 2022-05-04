@@ -20,6 +20,9 @@ RSpec.describe "API V1 Project Developers", type: :request do
       parameter name: "filter[category]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[impact]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
+      parameter name: :sorting, in: :query, type: :string, enum: ["name asc", "name desc", "created_at asc", "created_at desc"], required: false, description: "Sort records."
+
+      let(:sorting) { "name asc" }
 
       response "200", :success do
         schema type: :object, properties: {

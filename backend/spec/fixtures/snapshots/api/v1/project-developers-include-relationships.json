@@ -18,7 +18,7 @@
       "id": "f3909f1b-47b4-4d58-bd59-b8129fd24a0a",
       "type": "project_developer",
       "attributes": {
-        "name": "Hane, Lehner and Goyette"
+        "name": "Becker LLC"
       },
       "relationships": {
         "involved_projects": {
@@ -32,19 +32,12 @@
       "id": "2b4be194-0707-4bae-947a-0ceffd2687de",
       "type": "project_developer",
       "attributes": {
-        "name": "Kutch-Spencer"
+        "name": "Hane, Lehner and Goyette"
       },
       "relationships": {
         "involved_projects": {
           "data": [
-            {
-              "id": "cc873ec3-bf64-4b87-815b-4199a4fd28df",
-              "type": "project"
-            },
-            {
-              "id": "ca86f3ba-e61f-4a7c-90eb-013287d12deb",
-              "type": "project"
-            }
+
           ]
         }
       }
@@ -95,12 +88,19 @@
       "id": "e4b01e59-2c44-45a9-b2f3-c472abea33c3",
       "type": "project_developer",
       "attributes": {
-        "name": "Becker LLC"
+        "name": "Kutch-Spencer"
       },
       "relationships": {
         "involved_projects": {
           "data": [
-
+            {
+              "id": "3f8cff93-7d8b-4ce0-ac24-602a4bc6dfb7",
+              "type": "project"
+            },
+            {
+              "id": "de3bb7e5-2e8c-4bc4-bc0f-75441aef16c8",
+              "type": "project"
+            }
           ]
         }
       }
@@ -109,7 +109,7 @@
       "id": "18faa574-82a3-432f-ab64-b43bdefc2cef",
       "type": "project_developer",
       "attributes": {
-        "name": "Runolfsson and Sons"
+        "name": "Ritchie, Glover and Ward"
       },
       "relationships": {
         "involved_projects": {
@@ -123,7 +123,7 @@
       "id": "ac36741f-0a10-4b3b-a5ba-49c85e4421d6",
       "type": "project_developer",
       "attributes": {
-        "name": "Ritchie, Glover and Ward"
+        "name": "Runolfsson and Sons"
       },
       "relationships": {
         "involved_projects": {

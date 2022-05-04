@@ -6,6 +6,7 @@ module API
       def index
         investors = Investor.approved.includes(account: [:owner, {picture_attachment: :blob}])
         investors = API::Filterer.new(investors, filter_params.to_h).call
+        investors = API::Sorter.new(investors, sorting_by: params[:sorting]).call
         pagy_object, investors = pagy(investors, page: current_page, items: per_page)
         render json: InvestorSerializer.new(
           investors,
