@@ -2,6 +2,8 @@ import { FC } from 'react';
 
 import { useIntl } from 'react-intl';
 
+import cx from 'classnames';
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -83,26 +85,38 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
   }, []);
 
   return (
-    <div className={className}>
-      <div className="flex gap-3 text-sm text-gray-400">
+    <nav
+      className={className}
+      aria-label={intl.formatMessage({ defaultMessage: 'Breadcrumbs', id: 'ByoZDD' })}
+    >
+      <ol className="flex gap-3 text-sm text-gray-400">
         {breadcrumbs.map(({ name, link }, index) => {
           const isLastBreadcrumb = index === breadcrumbs.length - 1;
 
-          return isLastBreadcrumb ? (
-            <span key={`separator-${index}`} className="text-black">
-              {name}
-            </span>
-          ) : (
-            <>
+          return (
+            <li key={name}>
               <Link key={link} href={link}>
-                <a>{name}</a>
+                <a
+                  className={cx({
+                    'transition-all rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark':
+                      true,
+                    'text-black cursor-pointer': isLastBreadcrumb,
+                  })}
+                  aria-current={isLastBreadcrumb ? 'location' : false}
+                >
+                  {name}
+                </a>
               </Link>
-              <span>/</span>
-            </>
+              {!isLastBreadcrumb && (
+                <span aria-hidden="true" className="ml-3">
+                  /
+                </span>
+              )}
+            </li>
           );
         })}
-      </div>
-    </div>
+      </ol>
+    </nav>
   );
 };
 
