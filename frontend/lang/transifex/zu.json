@@ -1,4 +1,7 @@
 {
+  "+K9fF0": {
+    "string": "Project Developers"
+  },
   "+mzZak": {
     "string": "About {name}"
   },
@@ -292,6 +295,9 @@
   },
   "EwRIOm": {
     "string": "User"
+  },
+  "F++AYx": {
+    "string": "Something went wrong with the picture upload"
   },
   "F1+h/t": {
     "string": "For project developers"
@@ -986,6 +992,9 @@
   },
   "wkkhPR": {
     "string": "See project developer profile"
+  },
+  "wpyHb9": {
+    "string": "Open Calls"
   },
   "wvoA3H": {
     "string": "Picture"
