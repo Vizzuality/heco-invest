@@ -1,4 +1,5 @@
 import { ValidGeometryType } from 'containers/forms/geometry/types';
+import { ProjectGalleryImageType } from 'containers/forms/project-gallery/project-gallery-image/types';
 
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
@@ -45,13 +46,22 @@ export type ProjectForm = ProjectBase & {
   involved_project_developer_ids: string[];
   municipality_id: string;
   geometry: ValidGeometryType;
+  project_images_attributes: ProjectImagesAttributes[];
+  project_images_attributes_cover: string;
 
   // Not part of the payload
   involved_project_developer: boolean;
   project_gallery?: FileList;
 };
 
+export type ProjectImagesAttributes = {
+  file: File | string;
+  cover: boolean;
+};
+
 export type ProjectCreationPayload = Omit<
   ProjectForm,
-  'involved_project_developer' | 'project_gallery' | 'slug'
+  'involved_project_developer' | 'project_gallery' | 'slug' | 'project_images_attributes_cover'
 >;
+
+export type ProjectImageGallery = ProjectImagesAttributes & ProjectGalleryImageType;

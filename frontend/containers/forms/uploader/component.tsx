@@ -1,8 +1,9 @@
-import { useMemo, useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 // import { FILE_UPLOADER_MAX_SIZE } from 'constants/file-uploader-size-limits';
 
 import { useDropzone } from 'react-dropzone';
+import { FieldValues, Path } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import classNames from 'classnames';
@@ -11,100 +12,69 @@ import Image from 'next/image';
 
 // import { bytesToMegabytes } from 'utils/units';
 
-import Alerts, { AlertProps } from 'components/alert';
+import { chunk } from 'lodash-es';
 
-import apiService from 'services/api';
+import Alerts, { AlertProps } from 'components/alert';
+import { ProjectImageGallery } from 'types/project';
+
+import { directUpload } from 'services/direct-upload/directUpload';
 
 import { UploaderProps } from './types';
 
-/**
- * @param bytes Bytes to convert to Megabytes.
- * @returns Megabytes
- */
 export const bytesToMegabytes = (bytes: number): number => {
   return bytes / 1000000;
 };
 
 export const FILE_UPLOADER_MAX_SIZE = 1500000;
 
-export const Uploader: React.FC<UploaderProps> = ({
-  header,
-  footer,
-  key = 'file',
-  url,
+export const Uploader = <FormValues extends FieldValues>({
   fileTypes,
   maxFiles = 1,
   maxSize = FILE_UPLOADER_MAX_SIZE,
-  autoUpload = false,
   showAlerts = true,
   disabled = false,
-  onSelected,
-  onRejected,
-  onUploading,
+  register,
   onUpload,
-  onError,
-}: UploaderProps) => {
-  const [files, setFiles] = useState<File[]>([]);
+}: UploaderProps<FormValues>) => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
+  const [filesLength, setFilesLength] = useState<number>(0);
   const [alert, setAlert] = useState<AlertProps>(null);
   const { formatMessage } = useIntl();
 
-  // TODO: consider replace by a hook
   const uploadFiles = useCallback(
-    (files: File[]) => {
-      if (!(files.length > 0)) return;
-      if (!url) return;
-
+    async (files: File[]) => {
+      if (!files.length) return;
+      setFilesLength(files.length);
       setIsUploading(true);
-      onUploading && onUploading(isUploading);
 
-      const formData = new FormData();
-      files.forEach((file) => formData.append(key, file));
-
-      apiService
-        .request({
-          method: 'POST',
-          url: url,
-          data: formData,
-        })
-        .then((response) => {
-          onUpload && onUpload(response);
-          if (showAlerts) {
+      const uploadedFiles: ProjectImageGallery[] = await Promise.all(
+        files.map(async (file, index) => {
+          try {
+            const { signed_id, filename, direct_upload } = await directUpload(file);
+            console.log(direct_upload?.url);
+            return {
+              id: signed_id,
+              file: signed_id,
+              cover: false,
+              src: direct_upload?.url || URL.createObjectURL(file),
+              title: filename,
+            };
+          } catch (error) {
+            console.log(error);
             setAlert({
-              type: 'success',
-              children: 'Your file was successfully uploaded.',
+              type: 'warning',
+              children: errorAlertTitle(error),
+              // messages: errors,
             });
           }
         })
-        .catch(({ request }) => {
-          onError && onError(request);
-          if (showAlerts) {
-            try {
-              const errors = JSON.parse(request.response).errors.map(({ title }) => title);
-
-              setAlert({
-                type: 'warning',
-                children: errorAlertTitle(errors),
-                // messages: errors,
-              });
-            } catch {
-              setAlert({
-                type: 'warning',
-                children: 'There was an error uploading your file. Please try again.',
-              });
-            }
-          }
-        })
-        .finally(() => {
-          setIsUploading(false);
-        });
+      );
+      onUpload(uploadedFiles);
+      setIsUploading(false);
+      setFilesLength(0);
     },
-    [isUploading, key, onError, onUpload, onUploading, showAlerts, url]
+    [onUpload]
   );
-
-  const fileTypesString = useMemo(() => {
-    return (fileTypes || []).map((fileType) => fileType.toUpperCase()).join(', ');
-  }, [fileTypes]);
 
   const errorAlertTitle = (errors) => {
     return `There was ${errors.length} error${
@@ -114,21 +84,12 @@ export const Uploader: React.FC<UploaderProps> = ({
 
   const onDropAccepted = async (files: File[]) => {
     setAlert(null);
-    setFiles(files);
-    onSelected && onSelected(files, { upload: uploadFiles });
-    if (autoUpload) {
-      uploadFiles(files);
-    }
+    uploadFiles(files);
   };
 
   const onDropRejected = async (dropErrors) => {
     setIsUploading(false);
-    onRejected && onRejected(dropErrors);
-
     if (showAlerts) {
-      // TODO: handle all the files errors.
-      //       Currently we're only dealing with the first file's errors.
-      //       It suits our existing use case but it may not, in the future.
       const errors = dropErrors[0].errors.map((error) => {
         switch (error.code) {
           case 'file-too-large':
@@ -147,7 +108,7 @@ export const Uploader: React.FC<UploaderProps> = ({
   };
 
   const { getRootProps, getInputProps } = useDropzone({
-    // accept: !!fileTypes && fileTypes.map((f) => ({ [f]: '.' + f })),
+    accept: fileTypes,
     disabled: disabled || !!isUploading,
     maxSize,
     maxFiles,
@@ -160,18 +121,11 @@ export const Uploader: React.FC<UploaderProps> = ({
     if (isUploading) setAlert(null);
   }, [isUploading]);
 
-  useEffect(() => {
-    if (!(files.length > 0)) return;
-    if (!autoUpload) return;
-    uploadFiles(files);
-  }, [autoUpload, files, uploadFiles]);
-
   return (
-    <div>
-      {header && <div className="text-sm mb-3">{header}</div>}
+    <div className="h-full">
       <div
         className={classNames(
-          'rounded-md border-2 border-dashed py-10 px-4 text-center text-sm focus:outline-green-700',
+          'h-full rounded-md border-2 border-dashed  border-beige py-10 px-4 text-center text-sm focus:outline-green-700',
           {
             'cursor-pointer': !disabled,
             'opacity-50': disabled,
@@ -180,14 +134,22 @@ export const Uploader: React.FC<UploaderProps> = ({
         {...getRootProps()}
       >
         <input {...getInputProps()} />
-        <Image src="/images/image-placeholder.svg" width="38" height="39" alt="Upload file" />
+        <input
+          className="hidden"
+          name="project_images_attributes"
+          onProgress={console.log}
+          {...register('project_images_attributes' as Path<FormValues>)}
+        />
+        <Image src="/images/upload-gallery.svg" width="38" height="39" alt="Upload file" />
         {!isUploading ? (
           <div>
-            <p>
+            <p className="text-gray-800 font-normal text-sm">
               <FormattedMessage
-                defaultMessage="Browse or drag and drop"
-                id="8dGhWP"
-                values={{ a: <span className="text-green-dark">a</span> }}
+                defaultMessage="<a>Browse</a> or drag and drop"
+                id="hpOE0K"
+                values={{
+                  a: (chunks) => <span className="text-green-dark font-medium">{chunks}</span>,
+                }}
               />
             </p>
             <p>
@@ -199,14 +161,12 @@ export const Uploader: React.FC<UploaderProps> = ({
             <FormattedMessage
               defaultMessage="Uploading {l} files..."
               id="j+TAPL"
-              values={{ l: 3 }}
+              values={{ l: filesLength }}
             />
           </p>
         )}
       </div>
-      {footer && <div className="text-sm mt-3">{footer}</div>}
-
-      <Alerts className="-mb-4" {...alert} />
+      {alert && <Alerts className="mt-4" {...alert} />}
     </div>
   );
 };

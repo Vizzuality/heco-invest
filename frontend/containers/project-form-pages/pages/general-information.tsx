@@ -5,8 +5,12 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
+import dynamic from 'next/dynamic';
+
 import GeometryInput from 'containers/forms/geometry';
-import Uploader from 'containers/forms/uploader';
+import ProjectGallery from 'containers/forms/project-gallery';
+import { ProjectGalleryImageType } from 'containers/forms/project-gallery/project-gallery-image';
+// import Uploader from 'containers/forms/uploader';
 
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
@@ -15,12 +19,14 @@ import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import MultiCombobox from 'components/forms/multi-combobox';
 import { LocationsTypes } from 'enums';
-import { ProjectForm } from 'types/project';
+import { ProjectForm, ProjectImageGallery } from 'types/project';
 
 import { useGroupedLocations } from 'services/locations/locations';
 import { useProjectDevelopersList } from 'services/project-developers/projectDevelopersService';
 
 import { ProjectFormPagesProps } from '..';
+
+const Uploader = dynamic(() => import('containers/forms/uploader'), { ssr: false });
 
 const GeneralInformation = ({
   register,
@@ -28,12 +34,16 @@ const GeneralInformation = ({
   control,
   getValues,
   resetField,
+  setValue,
+  clearErrors,
 }: ProjectFormPagesProps<ProjectForm>) => {
   const [showInvolvedProjectDevelopers, setShowInvolvedProjectDevelopers] = useState(false);
   const [locationsFilter, setLocationsFilter] = useState<{ country: string; department: string }>({
     country: undefined,
     department: undefined,
   });
+  const [previewImages, setPreviewImages] = useState<ProjectGalleryImageType[]>([]);
+
   const { formatMessage } = useIntl();
   const { locations } = useGroupedLocations();
 
@@ -82,6 +92,38 @@ const GeneralInformation = ({
     }
   };
 
+  const handleUploadImages = (uploadedImages: ProjectImageGallery[]) => {
+    // current project_images_attributes input value
+    const imageAttibutes = getValues('project_images_attributes');
+    const newPreviewImages: ProjectGalleryImageType[] = [];
+    const newImageAttr: ProjectForm['project_images_attributes'] = [];
+
+    uploadedImages.forEach(({ src, id, title, file }) => {
+      newPreviewImages.push({
+        src,
+        id,
+        title,
+      });
+      newImageAttr.push({
+        file,
+        cover: false,
+      });
+    });
+
+    setPreviewImages([...previewImages, ...newPreviewImages]);
+    setValue('project_images_attributes', [...imageAttibutes, ...newImageAttr]);
+  };
+
+  const handleDeleteImage = (imageId: string) => {
+    const imageAttibutes = getValues('project_images_attributes');
+
+    setValue(
+      'project_images_attributes',
+      imageAttibutes.filter(({ file }) => file !== imageId)
+    );
+    setPreviewImages(previewImages?.filter(({ id }) => id !== imageId));
+  };
+
   return (
     <div>
       <h1 className="font-serif text-3xl font-semibold mb-2.5">
@@ -110,6 +152,7 @@ const GeneralInformation = ({
             register={register}
             name="name"
             id="name"
+            aria-describedby="name-error"
             type="text"
             className="mt-2.5"
             placeholder={formatMessage({
@@ -117,7 +160,7 @@ const GeneralInformation = ({
               id: 'iD2hRt',
             })}
           />
-          <ErrorMessage id="name" errorText={errors?.name?.message} />
+          <ErrorMessage id="name-error" errorText={errors?.name?.message} />
         </div>
         {/* Project gallery. The input will be replaced later. It is not a part of the form. It should be a direct upload */}
         <div className="mb-6.5">
@@ -133,17 +176,43 @@ const GeneralInformation = ({
               })}
             />
           </Label>
-          {/* <input
-            id="project-gallery"
-            {...register('project_gallery')}
-            className="block"
-            type="file"
-            accept="image/png,image/jpg"
-            multiple
-          /> */}
-          <Uploader onUpload={console.log} />
-          {/* https://vizzuality.atlassian.net/browse/LET-345 */}
-          <ErrorMessage id="name" errorText={errors?.project_gallery?.message} />
+          <div className="flex gap-4 h-[176px]">
+            <div className="w-full h-full">
+              <Uploader
+                id="project-images-attributes"
+                aria-describedby="project-images-attributes-error"
+                name="project_images_attributes"
+                register={register}
+                fileTypes={{
+                  'image/png': ['.png'],
+                  'image/jpeg': ['.jpeg'],
+                  'image/jpg': ['.jpg'],
+                }}
+                maxFiles={6}
+                onUpload={handleUploadImages}
+              />
+            </div>
+            <div className="w-full h-full">
+              <ProjectGallery
+                images={previewImages}
+                name="project_images_attributes_cover"
+                register={register}
+                setValue={setValue}
+                clearErrors={clearErrors}
+                errors={errors}
+                className="h-full"
+                onDeleteImage={handleDeleteImage}
+              />
+            </div>
+          </div>
+          <ErrorMessage
+            id="project-images-attributes-error"
+            errorText={
+              Array.isArray(errors?.project_images_attributes)
+                ? errors?.project_images_attributes[0].cover?.message
+                : (errors?.project_images_attributes as FieldError)?.message
+            }
+          />
         </div>
         <div className="mb-8">
           <h2 className="mb-2.5 text-gray-600">
@@ -159,6 +228,7 @@ const GeneralInformation = ({
               <Combobox
                 id="country"
                 name="country_id"
+                aria-describedby="country-error"
                 control={control}
                 controlOptions={{
                   disabled: false,
@@ -171,7 +241,7 @@ const GeneralInformation = ({
                   <Option key={id}>{name}</Option>
                 ))}
               </Combobox>
-              <ErrorMessage id="name" errorText={errors?.country_id?.message} />
+              <ErrorMessage id="country-error" errorText={errors?.country_id?.message} />
             </div>
             <div className="w-full">
               <Label htmlFor="department">
@@ -181,6 +251,7 @@ const GeneralInformation = ({
               </Label>
               <Combobox
                 id="department"
+                aria-describedby="department-error"
                 name="department_id"
                 control={control}
                 controlOptions={{
@@ -192,7 +263,7 @@ const GeneralInformation = ({
               >
                 {getOptions(LocationsTypes.Department, LocationsTypes.Country)}
               </Combobox>
-              <ErrorMessage id="name" errorText={errors?.department_id?.message} />
+              <ErrorMessage id="department-error" errorText={errors?.department_id?.message} />
             </div>
             <div className="w-full">
               <Label htmlFor="municipality">
@@ -203,6 +274,7 @@ const GeneralInformation = ({
               <Combobox
                 id="municipality"
                 name="municipality_id"
+                aria-describedby="municipality-error"
                 control={control}
                 controlOptions={{
                   disabled: false,
@@ -212,7 +284,7 @@ const GeneralInformation = ({
               >
                 {getOptions(LocationsTypes.Municipality, LocationsTypes.Department)}
               </Combobox>
-              <ErrorMessage id="name" errorText={errors?.municipality_id?.message} />
+              <ErrorMessage id="municipality-error" errorText={errors?.municipality_id?.message} />
             </div>
           </div>
         </div>
@@ -313,6 +385,7 @@ const GeneralInformation = ({
                   defaultMessage: 'select project developers',
                   id: 'QESbGa',
                 })}
+                aria-describedby="involved-project-developer-ids-error"
               >
                 {[
                   ...projectDevelopers,
@@ -326,7 +399,7 @@ const GeneralInformation = ({
                 ))}
               </MultiCombobox>
               <ErrorMessage
-                id="name"
+                id="involved-project-developer-ids-error"
                 errorText={
                   Array.isArray(errors?.involved_project_developer_ids)
                     ? errors?.involved_project_developer_ids[0].message

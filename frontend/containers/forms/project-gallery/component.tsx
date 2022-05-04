@@ -14,6 +14,7 @@ export const ProjectGallery = <FormValues extends FieldValues>({
   register,
   registerOptions,
   errors,
+  onDeleteImage,
 }: ProjectGalleryProps<FormValues>) => {
   // Number of images to display. If not enough images are supplied, placeholders will be generated.
   const numImages = 6;
@@ -26,7 +27,7 @@ export const ProjectGallery = <FormValues extends FieldValues>({
   return (
     <div className={className}>
       <div className="grid flex-grow h-full grid-cols-3 auto-rows-fr gap-x-2 gap-y-4" role="group">
-        {images.map((image) => (
+        {images?.map((image) => (
           <ProjectGalleryImage
             key={image.id}
             name={name}
@@ -35,6 +36,7 @@ export const ProjectGallery = <FormValues extends FieldValues>({
             registerOptions={registerOptions}
             invalid={errors && errors[name]}
             defaultSelected={image.id === defaultSelected}
+            onDeleteImage={() => onDeleteImage(image.id)}
           />
         ))}
         {[...Array(numPlaceholders)].map((_, index) => (

@@ -27,4 +27,6 @@ export type ProjectGalleryImageProps<FormValues> = {
   registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
   /** Whether the input is invalid. Defaults to `false`. */
   invalid?: boolean;
+  /** handle remove an an image from images array */
+  onDeleteImage: () => void;
 };

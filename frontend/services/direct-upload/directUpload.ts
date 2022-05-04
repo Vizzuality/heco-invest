@@ -1,11 +1,13 @@
-import API from 'services/api';
+import { DirectUpload } from '@rails/activestorage';
 
-import { DirectUpload, Blob } from './helper';
+import { DirectUploadBlob } from 'types/direct-upload';
+
+import API from 'services/api';
 
 const csrfToken = () => document.cookie.match(/csrf_token.*(;|$)/)[0].replace('csrf_token=', '');
 
 /** Upload file using the rails activestorage.DirectUpload library. Returns the singed_id used to identify the file */
-export const directUpload = async (file: File): Promise<Blob> => {
+export const directUpload = async (file: File): Promise<DirectUploadBlob> => {
   const upload = new DirectUpload(
     file,
     API.defaults.baseURL + '/rails/active_storage/direct_uploads',
@@ -18,12 +20,12 @@ export const directUpload = async (file: File): Promise<Blob> => {
   );
 
   return await new Promise((resolve, reject) =>
-    upload.create((error: Error, blob: Blob) => {
+    upload.create((error, blob) => {
       if (error) {
         reject(error);
       } else {
         // blob.signed_id, a String, is the key piece of data that lets Rails identify the file we are referring to
-        return resolve(blob);
+        return resolve(blob as DirectUploadBlob);
       }
     })
   );

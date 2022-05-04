@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 
+import { Trash2 } from 'react-feather';
 import { FieldValues } from 'react-hook-form';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
 import Image from 'next/image';
 
 import { useFocusRing } from '@react-aria/focus';
+
+import Button from 'components/button';
 
 import type { ProjectGalleryImageProps } from './types';
 
@@ -18,11 +21,13 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
   registerOptions,
   invalid: invalidProp = false,
   defaultSelected = false,
+  onDeleteImage,
   ...rest
 }: ProjectGalleryImageProps<FormValues>) => {
   const [invalid, setInvalid] = useState<boolean>(invalidProp);
   const { isFocusVisible, focusProps } = useFocusRing();
   const { id, title, src } = image;
+  const { formatMessage } = useIntl();
 
   useEffect(() => {
     setInvalid(invalidProp);
@@ -30,6 +35,14 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
 
   return (
     <div className="relative rounded">
+      <Button
+        theme="primary-white"
+        className="z-10 absolute overflow-hidden my-2 mx-2 right-0 w-6 h-6 py-0 px-0 text-red-600 items-center"
+        title={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
+        onClick={onDeleteImage}
+      >
+        <Trash2 width={16} />
+      </Button>
       <input
         id={id}
         type="radio"
@@ -45,7 +58,7 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
         <span className="sr-only">{image.title}</span>
         <Image
           aria-hidden={true}
-          className="rounded"
+          className="rounded z-0"
           src={src}
           title={title}
           alt={title}
@@ -53,6 +66,7 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
           objectFit="cover"
         />
       </label>
+
       <span
         aria-hidden={true}
         className={cx({
