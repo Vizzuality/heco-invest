@@ -63,14 +63,15 @@ export default (page: number) => {
   });
 
   const secondPageSchema = object().shape({
-    picture: mixed()
-      .required(messages.picture.required)
-      .test('haveOneFile', messages.picture.required, (value) => value?.length === 1)
-      .test(
-        'fileFormat',
-        messages.picture.format,
-        (value: FileList) => value.length && !!value[0].type.match(/image\/*/gi)
-      ),
+    picture: string().required(messages.picture.required),
+    // mixed()
+    //   .required(messages.picture.required)
+    //   .test('haveOneFile', messages.picture.required, (value) => value?.length === 1)
+    //   .test(
+    //     'fileFormat',
+    //     messages.picture.format,
+    //     (value: FileList) => value.length && !!value[0].type.match(/image\/*/gi)
+    //   ),
     name: string().required(messages.name),
     project_developer_type: string().ensure().required(messages.projectDeveloperType),
     entity_legal_registration_number: number()
