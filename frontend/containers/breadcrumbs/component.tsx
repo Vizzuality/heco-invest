@@ -39,50 +39,55 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
     },
   };
 
-  const routeSegments = route.split('/').slice(1);
-  const pathSegments = asPath.split('/').slice(1);
+  const routeSegments: string[] = route.split('/').slice(1);
+  const pathSegments: string[] = asPath.split('/').slice(1);
 
-  const nameFromPathname = (text: string) =>
+  const nameFromPathname = (text: string): string =>
     text
       .replace(/(-|_)/, ' ') // Change Dashes and Underscores into spaces
       .split(' ') // Split into an array of words
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Uppercase words' first letters
       .join(' '); // Join back into a string
 
-  const breadcrumbs = routeSegments.reduce((acc, segment, index) => {
-    // Detect whether a route/path segment is for a dynamic route and extract the [param].
-    const match = /^\[(.*)\]$/.exec(segment);
-    const query = match && match[1];
+  const breadcrumbs: {
+    name: string;
+    link: string;
+  }[] = routeSegments
+    .reduce((acc, segment, index) => {
+      // Detect whether a route/path segment is for a dynamic route and extract the [param].
+      const match: RegExpExecArray = /^\[(.*)\]$/.exec(segment);
+      const query: string = match && match[1];
 
-    // Figuring out the name to display on the breadcrumb
-    const name =
-      // Name passed as a substitution via prop
-      propSubstitutions[query]?.name ||
-      propSubstitutions[segment]?.name ||
-      // or name defined in the internal substitutions
-      substitutions[segment]?.name ||
-      // or as a fallback, we'll use the query or, if none, the route segment itself
-      nameFromPathname(query || segment);
+      // Figuring out the name to display on the breadcrumb
+      const name: string =
+        // Name passed as a substitution via prop
+        propSubstitutions[query]?.name ||
+        propSubstitutions[segment]?.name ||
+        // or name defined in the internal substitutions
+        substitutions[segment]?.name ||
+        // or as a fallback, we'll use the query or, if none, the route segment itself
+        nameFromPathname(query || segment);
 
-    // path is only used in this reducer to automatically build links
-    const lastPath = acc.length ? acc[acc.length - 1].path : '';
-    const path = `${lastPath}/${pathSegments[index]}`;
+      // path is only used in this reducer to automatically build links
+      const lastPath: string = acc.length ? acc[acc.length - 1].path : '';
+      const path: string = `${lastPath}/${pathSegments[index]}`;
 
-    // Use the path as a link unless a link unless one has been specified in the substitutions
-    // Figuring out the link the breadcrumb should link to
-    const link =
-      // Link passed as a substitution via prop
-      propSubstitutions[query]?.link ||
-      propSubstitutions[segment]?.link ||
-      // or link defined in the internal substitutions
-      substitutions[segment]?.link ||
-      // or as a fallback, we'll use the path
-      path;
+      // Use the path as a link unless a link unless one has been specified in the substitutions
+      // Figuring out the link the breadcrumb should link to
+      const link: string =
+        // Link passed as a substitution via prop
+        propSubstitutions[query]?.link ||
+        propSubstitutions[segment]?.link ||
+        // or link defined in the internal substitutions
+        substitutions[segment]?.link ||
+        // or as a fallback, we'll use the path
+        path;
 
-    acc.push({ name, path, link });
+      acc.push({ name, path, link });
 
-    return acc;
-  }, []);
+      return acc;
+    }, [])
+    .map(({ name, link }) => ({ name, link }));
 
   return (
     <nav
