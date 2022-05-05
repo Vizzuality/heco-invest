@@ -89,14 +89,24 @@
       },
       "relationships": {
       }
+    },
+    {
+      "id": "f1029bdf-df59-4c15-a36c-24c81143fe88",
+      "type": "project_developer",
+      "attributes": {
+        "instagram": "https://instagram.com/gleichner-bartoletti",
+        "facebook": "https://facebook.com/gleichner-bartoletti"
+      },
+      "relationships": {
+      }
     }
   ],
   "meta": {
     "page": 1,
     "per_page": 10,
     "from": 1,
-    "to": 9,
-    "total": 9,
+    "to": 10,
+    "total": 10,
     "pages": 1
   },
   "links": {
