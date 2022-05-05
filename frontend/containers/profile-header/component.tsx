@@ -28,6 +28,8 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
   website,
   social,
   contact,
+  isFavorite,
+  favoriteLoading,
   onFavoriteClick = () => noop,
   onContactClick = () => noop,
 }: ProfileHeaderProps) => {
@@ -119,10 +121,15 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
             <Button
               className="justify-center"
               theme="secondary-green"
-              icon={HeartIcon}
+              icon={!isFavorite && HeartIcon}
               onClick={onFavoriteClick}
+              disabled={favoriteLoading}
             >
-              <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
+              {isFavorite ? (
+                <FormattedMessage defaultMessage="Unfavorite" id="Mjq//Y" />
+              ) : (
+                <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
+              )}
             </Button>
             <Button
               className="w-full lg:max-w-[200px] justify-center"

@@ -31,9 +31,13 @@ export type ProjectDeveloper = {
   picture: ProjectDeveloperPicture;
   entity_legal_registration_number: string;
   projects?: Project[];
+  favourite: boolean;
 };
 
-export type ProjectDeveloperSetupForm = Omit<ProjectDeveloper, 'picture' | 'id' | 'type'> & {
+export type ProjectDeveloperSetupForm = Omit<
+  ProjectDeveloper,
+  'picture' | 'id' | 'type' | 'favorite'
+> & {
   picture: string;
   mosaics?: string[];
 };

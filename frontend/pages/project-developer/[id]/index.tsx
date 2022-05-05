@@ -1,7 +1,8 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
+import { AxiosResponse } from 'axios';
 import { decycle } from 'cycle';
 import { chunk, groupBy } from 'lodash-es';
 
@@ -20,10 +21,13 @@ import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 import { CategoryType } from 'types/category';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
-import { ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
+import { ProjectDeveloper, ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
 
 import { getEnums } from 'services/enums/enumService';
-import { getProjectDeveloper } from 'services/project-developers/projectDevelopersService';
+import {
+  getProjectDeveloper,
+  useFavoriteProjectDeveloper,
+} from 'services/project-developers/projectDevelopersService';
 
 export const getServerSideProps = async ({ params: { id }, locale }) => {
   let projectDeveloper;
@@ -104,6 +108,29 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     amount: project.received_funding_amount_usd || 0,
   }));
 
+  const favoriteProjectDeveloper = useFavoriteProjectDeveloper();
+
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleFavoriteClick = () => {
+    const { id } = projectDeveloper;
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    favoriteProjectDeveloper.mutate(
+      { id, isFavorite },
+      {
+        onSuccess: (response) => {
+          // The response is the project-developer data, so I am using it to change the 'isFavorite' state without having to make a GET request for the project-developer
+          setIsFavorite(response.data.data.favourite);
+        },
+      }
+    );
+  };
+
+  useEffect(() => {
+    // Set the isFavorite with the project-developer 'favourite' value that cames from the server-side props
+    setIsFavorite(projectDeveloper.favourite);
+  }, [projectDeveloper]);
+
   return (
     <>
       <Head
@@ -122,6 +149,9 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           numNotFunded={funding.funded}
           numFunded={funding.notFunded}
           originalLanguage={projectDeveloper.language}
+          isFavorite={isFavorite}
+          onFavoriteClick={handleFavoriteClick}
+          favoriteLoading={favoriteProjectDeveloper.isLoading}
         />
       </LayoutContainer>
 

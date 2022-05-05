@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { UseQueryResult, useQuery } from 'react-query';
+import { UseQueryResult, useQuery, useMutation } from 'react-query';
 
 import { AxiosResponse, AxiosRequestConfig } from 'axios';
 
@@ -95,5 +95,24 @@ export const useCurrentProjectDeveloper = (user: User) => {
       projectDeveloper: query.data,
     }),
     [query]
+  );
+};
+
+/** Hook with mutation that handle favorite state. If favorite is false, creates a POST request to set favorite to true, and if favorite is true, creates a DELETE request that set favorite to false. */
+export const useFavoriteProjectDeveloper = () => {
+  const favoriteOrUnfavoriteProjectDeveloper = (
+    projectDeveloperId: string,
+    isFavorite: boolean
+  ): Promise<AxiosResponse<ResponseData<ProjectDeveloper>>> => {
+    const config: AxiosRequestConfig = {
+      method: isFavorite ? 'DELETE' : 'POST',
+      url: `/api/v1/project_developers/${projectDeveloperId}/favourite_project_developer`,
+      data: { project_developer_id: projectDeveloperId },
+    };
+
+    return API.request(config);
+  };
+  return useMutation(({ id, isFavorite }: { id: string; isFavorite: boolean }) =>
+    favoriteOrUnfavoriteProjectDeveloper(id, isFavorite)
   );
 };
