@@ -4,7 +4,7 @@ module API
       include API::Pagination
 
       def index
-        project_developers = ProjectDeveloper.approved.includes(
+        project_developers = ProjectDeveloper.includes(
           :projects, :involved_projects, account: [:owner, {picture_attachment: :blob}]
         )
         project_developers = API::Filterer.new(project_developers, filter_params.to_h).call

@@ -4,7 +4,7 @@ module API
       include API::Pagination
 
       def index
-        investors = Investor.approved.includes(account: [:owner, {picture_attachment: :blob}])
+        investors = Investor.includes(account: [:owner, {picture_attachment: :blob}])
         investors = API::Filterer.new(investors, filter_params.to_h).call
         investors = investors.order(:created_at)
         pagy_object, investors = pagy(investors, page: current_page, items: per_page)
