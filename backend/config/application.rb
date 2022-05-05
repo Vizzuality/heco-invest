@@ -27,6 +27,6 @@ module Backend
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Use cloudtasker as the ActiveJob backend:
-    config.active_job.queue_adapter = :cloudtasker
+    # config.active_job.queue_adapter = :cloudtasker
   end
 end
