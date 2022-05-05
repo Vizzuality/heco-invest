@@ -34,10 +34,10 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
   }, [invalidProp]);
 
   return (
-    <div className="relative rounded">
+    <div className="relative rounded group">
       <Button
         theme="primary-white"
-        className="z-10 absolute overflow-hidden my-2 mx-2 right-0 w-6 h-6 py-0 px-0 text-red-600 items-center"
+        className="absolute right-0 z-10 justify-center w-6 h-6 px-0 py-0 mx-2 my-2 overflow-hidden text-red-600 transition-opacity ease-in opacity-0 group-hover:opacity-100 group-hover:text-red-600"
         title={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
         onClick={onDeleteImage}
       >
@@ -58,7 +58,7 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
         <span className="sr-only">{image.title}</span>
         <Image
           aria-hidden={true}
-          className="rounded z-0"
+          className="z-0 rounded"
           src={src}
           title={title}
           alt={title}

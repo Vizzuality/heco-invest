@@ -1,20 +1,13 @@
 import { useEffect, useState, useCallback } from 'react';
 
-// import { FILE_UPLOADER_MAX_SIZE } from 'constants/file-uploader-size-limits';
-
-import { useDropzone } from 'react-dropzone';
+import { FileRejection, useDropzone } from 'react-dropzone';
 import { FieldValues, Path } from 'react-hook-form';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import classNames from 'classnames';
 
 import Image from 'next/image';
 
-// import { bytesToMegabytes } from 'utils/units';
-
-import { chunk } from 'lodash-es';
-
-import Alerts, { AlertProps } from 'components/alert';
 import { ProjectImageGallery } from 'types/project';
 
 import { directUpload } from 'services/direct-upload/directUpload';
@@ -31,15 +24,32 @@ export const Uploader = <FormValues extends FieldValues>({
   fileTypes,
   maxFiles = 1,
   maxSize = FILE_UPLOADER_MAX_SIZE,
-  showAlerts = true,
   disabled = false,
   register,
   onUpload,
+  setError,
+  clearErrors,
 }: UploaderProps<FormValues>) => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [filesLength, setFilesLength] = useState<number>(0);
-  const [alert, setAlert] = useState<AlertProps>(null);
-  const { formatMessage } = useIntl();
+
+  const setMaxSizeError = useCallback(
+    (file: File) => {
+      setError('project_images_attributes', {
+        message: (
+          <FormattedMessage
+            defaultMessage="File {fileName} is larger than {fileSize}MB"
+            id="v9GdgG"
+            values={{
+              fileName: file.name,
+              fileSize: bytesToMegabytes(maxSize),
+            }}
+          />
+        ) as any,
+      });
+    },
+    [maxSize, setError]
+  );
 
   const uploadFiles = useCallback(
     async (files: File[]) => {
@@ -47,64 +57,62 @@ export const Uploader = <FormValues extends FieldValues>({
       setFilesLength(files.length);
       setIsUploading(true);
 
-      const uploadedFiles: ProjectImageGallery[] = await Promise.all(
-        files.map(async (file, index) => {
-          try {
-            const { signed_id, filename, direct_upload } = await directUpload(file);
-            console.log(direct_upload?.url);
-            return {
-              id: signed_id,
-              file: signed_id,
-              cover: false,
-              src: direct_upload?.url || URL.createObjectURL(file),
-              title: filename,
-            };
-          } catch (error) {
-            console.log(error);
-            setAlert({
-              type: 'warning',
-              children: errorAlertTitle(error),
-              // messages: errors,
-            });
+      const uploadedFiles: ProjectImageGallery[] = [];
+
+      await Promise.all(
+        files.map(async (file) => {
+          if (file.size > maxSize) {
+            setMaxSizeError(file);
+          } else {
+            try {
+              const { signed_id, filename, direct_upload } = await directUpload(file);
+              uploadedFiles.push({
+                id: signed_id,
+                file: signed_id,
+                cover: false,
+                src: direct_upload?.url || URL.createObjectURL(file),
+                title: filename,
+              });
+            } catch (error) {
+              setError('project_images_attributes' as Path<FormValues>, {
+                message: error?.message || (
+                  <FormattedMessage
+                    defaultMessage="Something went wrong with the file upload"
+                    id="qpDURb"
+                  />
+                ),
+              });
+              setIsUploading(false);
+            }
           }
         })
       );
+
       onUpload(uploadedFiles);
       setIsUploading(false);
       setFilesLength(0);
     },
-    [onUpload]
+    [maxSize, onUpload, setError, setMaxSizeError]
   );
 
-  const errorAlertTitle = (errors) => {
-    return `There was ${errors.length} error${
-      errors.length > 1 ? 's' : ''
-    } with your file. Please correct ${errors.length > 1 ? 'them' : 'it'} and try again.`;
-  };
-
   const onDropAccepted = async (files: File[]) => {
-    setAlert(null);
+    clearErrors('project_images_attributes');
     uploadFiles(files);
   };
 
-  const onDropRejected = async (dropErrors) => {
+  const onDropRejected = async (fileRejections: FileRejection[]) => {
     setIsUploading(false);
-    if (showAlerts) {
-      const errors = dropErrors[0].errors.map((error) => {
+    fileRejections.forEach((rejection) => {
+      rejection.errors.forEach((error) => {
         switch (error.code) {
           case 'file-too-large':
-            return `File is larger than ${bytesToMegabytes(maxSize)}MB`;
+            setMaxSizeError(rejection.file);
+            break;
           default:
-            return error.message;
+            setError('project_images_attributes' as Path<FormValues>, { message: error.message });
         }
       });
-
-      setAlert({
-        type: 'warning',
-        children: errorAlertTitle(errors),
-        // messages: errors,
-      });
-    }
+    });
   };
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -118,8 +126,8 @@ export const Uploader = <FormValues extends FieldValues>({
   });
 
   useEffect(() => {
-    if (isUploading) setAlert(null);
-  }, [isUploading]);
+    if (isUploading) clearErrors('project_images_attributes');
+  }, [clearErrors, isUploading]);
 
   return (
     <div className="h-full">
@@ -142,18 +150,20 @@ export const Uploader = <FormValues extends FieldValues>({
         />
         <Image src="/images/upload-gallery.svg" width="38" height="39" alt="Upload file" />
         {!isUploading ? (
-          <div>
-            <p className="text-gray-800 font-normal text-sm">
+          <div className="mt-6">
+            <p className="text-sm font-normal text-gray-800">
               <FormattedMessage
                 defaultMessage="<a>Browse</a> or drag and drop"
                 id="hpOE0K"
                 values={{
-                  a: (chunks) => <span className="text-green-dark font-medium">{chunks}</span>,
+                  a: (chunks: string) => (
+                    <span className="font-medium text-green-dark">{chunks}</span>
+                  ),
                 }}
               />
             </p>
-            <p>
-              <FormattedMessage defaultMessage="PNG, JPG up to 2MB" id="KIhyKh" />
+            <p className="text-gray-600">
+              <FormattedMessage defaultMessage="PNG, JPG up to 5MB" id="BHrBCl" />
             </p>
           </div>
         ) : (
@@ -166,7 +176,6 @@ export const Uploader = <FormValues extends FieldValues>({
           </p>
         )}
       </div>
-      {alert && <Alerts className="mt-4" {...alert} />}
     </div>
   );
 };

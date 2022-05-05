@@ -75,6 +75,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
     setValue,
     clearErrors,
     resetField,
+    setError,
   } = useForm<ProjectForm>({
     resolver,
     shouldUseNativeValidation: true,
@@ -167,6 +168,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             resetField={resetField}
             setValue={setValue}
             clearErrors={clearErrors}
+            setError={setError}
           />
         </Page>
         <Page key="project-description">

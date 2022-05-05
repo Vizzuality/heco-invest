@@ -40,20 +40,7 @@ export function useCreateProject(): UseMutationResult<
   ProjectCreationPayload
 > {
   const createProject = async (data: ProjectCreationPayload): Promise<AxiosResponse<Project>> => {
-    // const formData = new FormData();
-    // const { project_images_attributes, ...rest } = data;
-    // formData.append('picture', data.picture[0]);
-
-    // Object.entries(data).forEach(([key, value]: any) => {
-    //   if (Array.isArray(value)) {
-    //     value.forEach((v) => formData.append(`${key}[]`, v));
-    //   } else {
-    //     formData.append(key, value);
-    //   }
-    // });
-    return API.post('/api/v1/account/projects', data, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }).then((response) => response.data);
+    return API.post('/api/v1/account/projects', data).then((response) => response.data);
   };
 
   const queryClient = useQueryClient();

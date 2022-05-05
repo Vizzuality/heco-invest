@@ -10,7 +10,6 @@ import dynamic from 'next/dynamic';
 import GeometryInput from 'containers/forms/geometry';
 import ProjectGallery from 'containers/forms/project-gallery';
 import { ProjectGalleryImageType } from 'containers/forms/project-gallery/project-gallery-image';
-// import Uploader from 'containers/forms/uploader';
 
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
@@ -26,6 +25,7 @@ import { useProjectDevelopersList } from 'services/project-developers/projectDev
 
 import { ProjectFormPagesProps } from '..';
 
+// Import the uploader component only if is on th client because DirectUpload is not supported on server
 const Uploader = dynamic(() => import('containers/forms/uploader'), { ssr: false });
 
 const GeneralInformation = ({
@@ -36,6 +36,7 @@ const GeneralInformation = ({
   resetField,
   setValue,
   clearErrors,
+  setError,
 }: ProjectFormPagesProps<ProjectForm>) => {
   const [showInvolvedProjectDevelopers, setShowInvolvedProjectDevelopers] = useState(false);
   const [locationsFilter, setLocationsFilter] = useState<{ country: string; department: string }>({
@@ -176,12 +177,14 @@ const GeneralInformation = ({
               })}
             />
           </Label>
-          <div className="flex gap-4 h-[176px]">
+          <div className="flex flex-col sm:flex-row gap-4 sm:h-[176px]">
             <div className="w-full h-full">
               <Uploader
                 id="project-images-attributes"
                 aria-describedby="project-images-attributes-error"
                 name="project_images_attributes"
+                setError={setError}
+                clearErrors={clearErrors}
                 register={register}
                 fileTypes={{
                   'image/png': ['.png'],
@@ -189,10 +192,11 @@ const GeneralInformation = ({
                   'image/jpg': ['.jpg'],
                 }}
                 maxFiles={6}
+                maxSize={5000000}
                 onUpload={handleUploadImages}
               />
             </div>
-            <div className="w-full h-full">
+            <div className="w-full h-[176px]">
               <ProjectGallery
                 images={previewImages}
                 name="project_images_attributes_cover"

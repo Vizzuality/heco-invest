@@ -1,5 +1,12 @@
 import { Accept } from 'react-dropzone';
-import { Path, RegisterOptions, FieldPath, UseFormRegisterReturn } from 'react-hook-form';
+import {
+  Path,
+  RegisterOptions,
+  FieldPath,
+  UseFormRegisterReturn,
+  UseFormSetError,
+  UseFormClearErrors,
+} from 'react-hook-form';
 
 import { ProjectImageGallery } from 'types/project';
 
@@ -22,6 +29,10 @@ export type UploaderProps<FormValues> = {
   register: (name: Path<FormValues>, options?: RegisterOptions) => UseFormRegisterReturn;
   /** Options for React Hook Form's `register` function */
   registerOptions?: Omit<RegisterOptions<FormValues, FieldPath<FormValues>>, 'onChange'>;
+  /** React Hook Form's `setError` function */
+  setError: UseFormSetError<any>;
+  /** ReactHook Form's `clearErrors` callback */
+  clearErrors: UseFormClearErrors<any>;
   /** Handle the uploaded files */
   onUpload: (uploadedImages: ProjectImageGallery[]) => void;
 };
