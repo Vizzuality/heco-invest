@@ -1,6 +1,5 @@
 class Investor < ApplicationRecord
   include BelongsToAccount
-  include Reviewable
   include Searchable
 
   has_many :open_calls, dependent: :destroy

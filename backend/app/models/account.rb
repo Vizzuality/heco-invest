@@ -13,6 +13,8 @@ class Account < ApplicationRecord
 
   translates :about
 
+  enum review_status: {unapproved: 0, approved: 1, rejected: 2}, _default: :unapproved
+
   validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :about, presence: true
   validates :website, url: true

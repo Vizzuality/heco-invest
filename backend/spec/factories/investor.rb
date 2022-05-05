@@ -8,7 +8,6 @@ FactoryBot.define do
     investor_type { "angel-investor" }
     instrument_types { %w[grant loan] }
     ticket_sizes { %w[validation scaling] }
-    review_status { "approved" }
 
     previously_invested { true }
     sequence(:previously_invested_description) do |n|

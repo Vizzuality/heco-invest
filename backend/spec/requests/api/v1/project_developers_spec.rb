@@ -4,7 +4,8 @@ RSpec.describe "API V1 Project Developers", type: :request do
   before_all do
     @project_developer = create(:project_developer, :with_involved_projects, number_of_projects: 2, categories: ["tourism-and-recreation"])
     create_list(:project_developer, 6, categories: %w[forestry-and-agroforestry non-timber-forest-production])
-    @unapproved_project_developer = create(:project_developer, review_status: :unapproved)
+    @unapproved_project_developer = create(:project_developer, account: create(:account, review_status: :unapproved))
+    @approved_account = create(:account, review_status: :approved, users: [create(:user)])
   end
 
   include_examples :api_pagination, model: ProjectDeveloper, expected_total: 9
@@ -130,6 +131,16 @@ RSpec.describe "API V1 Project Developers", type: :request do
 
           it "contains picture" do
             expect(response_json["data"]["attributes"]["picture"]["original"]).not_to be_nil
+          end
+        end
+
+        context "when approved account checks project developer" do
+          before { sign_in @approved_account.users.first }
+
+          run_test!
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/get-project-developer-approved-account")
           end
         end
       end
