@@ -16,9 +16,10 @@ class MoveReviewStatusToAccounts < ActiveRecord::Migration[7.0]
 
   def migrate_old_date!
     (ProjectDeveloper.all + Investor.all).each do |record|
-      record.account.update! review_status: record.review_status,
+      record.account.assign_attributes review_status: record.review_status,
         reviewed_at: record.reviewed_at,
         review_message: record.review_message
+      record.account.save validate: false
     end
   end
 
