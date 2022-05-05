@@ -100,7 +100,6 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
   );
 
   const onSubmit: SubmitHandler<ProjectForm> = (values: ProjectForm) => {
-    console.log(values);
     if (currentPage === 5) {
       const {
         involved_project_developer,
