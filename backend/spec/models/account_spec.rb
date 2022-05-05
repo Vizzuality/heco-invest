@@ -62,30 +62,4 @@ RSpec.describe Account, type: :model do
     subject.contact_email = "derp"
     expect(subject).to have(1).errors_on(:contact_email)
   end
-
-  describe "#approved?" do
-    context "when user is approved investor" do
-      let(:investor) { create :investor, review_status: :approved }
-
-      it "is truthy" do
-        expect(investor.account).to be_approved
-      end
-    end
-
-    context "when user is approved project developer" do
-      let(:project_developer) { create :project_developer, review_status: :approved }
-
-      it "is truthy" do
-        expect(project_developer.account).to be_approved
-      end
-    end
-
-    context "when user is not approved" do
-      let(:account) { create :account }
-
-      it "is falsey" do
-        expect(account).not_to be_approved
-      end
-    end
-  end
 end

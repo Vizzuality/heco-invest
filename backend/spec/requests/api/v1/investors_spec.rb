@@ -4,7 +4,7 @@ RSpec.describe "API V1 Investors", type: :request do
   before_all do
     @investor = create(:investor, sdgs: [3, 4])
     create_list(:investor, 6, sdgs: [1, 5])
-    @unapproved_investor = create(:investor, review_status: :unapproved)
+    @unapproved_investor = create(:investor, account: create(:account, review_status: :unapproved))
   end
 
   include_examples :api_pagination, model: Investor, expected_total: 7

@@ -13,6 +13,8 @@ class Account < ApplicationRecord
 
   translates :about
 
+  enum review_status: {unapproved: 0, approved: 1, rejected: 2}, _default: :unapproved
+
   validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :about, presence: true
   validates :website, url: true
@@ -28,9 +30,5 @@ class Account < ApplicationRecord
   def slug_preview
     set_slug unless slug.present?
     slug
-  end
-
-  def approved?
-    investor&.approved? || project_developer&.approved?
   end
 end
