@@ -2,7 +2,6 @@ module API
   module V1
     module Accounts
       class ProjectDevelopersController < BaseController
-        skip_before_action :require_json!, only: %i[create update]
         before_action :require_project_developer!, except: :create
 
         def create
@@ -38,14 +37,13 @@ module API
         private
 
         def account_params
-          params.fetch(:project_developer_params, params)
-            .permit :language, :picture, :name, :website, :linkedin, :facebook, :twitter, :instagram, :about, :contact_email, :contact_phone
+          params.permit :language, :picture, :name, :website, :linkedin, :facebook, :twitter, :instagram, :about,
+            :contact_email, :contact_phone
         end
 
         def project_developer_params
-          params.fetch(:project_developer_params, params)
-            .permit :language, :project_developer_type, :entity_legal_registration_number, :mission,
-              categories: [], impacts: [], mosaics: []
+          params.permit :language, :project_developer_type, :entity_legal_registration_number, :mission,
+            categories: [], impacts: [], mosaics: []
         end
       end
     end
