@@ -5,7 +5,7 @@ module API
 
       def index
         project_developers = ProjectDeveloper.approved.includes(
-          :projects, :involved_projects, account: [:owner, :investor, :project_developer, {picture_attachment: :blob}]
+          :projects, :involved_projects, account: [:owner, {picture_attachment: :blob}]
         )
         project_developers = API::Filterer.new(project_developers, filter_params.to_h).call
         pagy_object, project_developers = pagy(project_developers, page: current_page, items: per_page)
