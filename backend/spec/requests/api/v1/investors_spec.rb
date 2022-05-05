@@ -5,6 +5,7 @@ RSpec.describe "API V1 Investors", type: :request do
     @investor = create(:investor, sdgs: [3, 4])
     create_list(:investor, 6, sdgs: [1, 5])
     @unapproved_investor = create(:investor, account: create(:account, review_status: :unapproved))
+    @approved_account = create(:account, review_status: :approved, users: [create(:user)])
   end
 
   include_examples :api_pagination, model: Investor, expected_total: 7
@@ -93,6 +94,16 @@ RSpec.describe "API V1 Investors", type: :request do
 
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/get-investor-sparse-fieldset")
+          end
+        end
+
+        context "when approved account checks investor" do
+          before { sign_in @approved_account.users.first }
+
+          run_test!
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/get-investor-approved-account")
           end
         end
       end
