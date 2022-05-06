@@ -8,6 +8,7 @@ module API
       def index
         projects = Project.all.includes(:project_developer, :involved_project_developers, project_images: {file_attachment: :blob})
         projects = API::Filterer.new(projects, filter_params.to_h).call
+        projects = API::Sorter.new(projects, sorting_by: params[:sorting]).call
         pagy_object, projects = pagy(projects, page: current_page, items: per_page)
         render json: ProjectSerializer.new(
           projects,

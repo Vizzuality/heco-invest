@@ -1,13 +1,13 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
-import { AxiosResponse } from 'axios';
 import { decycle } from 'cycle';
 import { chunk, groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import Breadcrumbs from 'containers/breadcrumbs';
 import ProfileHeader from 'containers/profile-header';
 import ProjectCard from 'containers/project-card';
 import { SOCIAL_DATA } from 'containers/social-contact/constants';
@@ -21,7 +21,7 @@ import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 import { CategoryType } from 'types/category';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
-import { ProjectDeveloper, ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
+import { ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
 
 import { getEnums } from 'services/enums/enumService';
 import {
@@ -138,8 +138,15 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
         description={projectDeveloper.about}
       />
 
-      <LayoutContainer className="-mt-10 lg:-mt-16">
+      <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
+        <Breadcrumbs
+          className="px-4 sm:px-6 lg:px-8"
+          substitutions={{
+            id: { name: projectDeveloper.name },
+          }}
+        />
         <ProfileHeader
+          className="mt-6"
           logo={projectDeveloper.picture.medium}
           title={projectDeveloper.name}
           subtitle={projectDeveloperTypeName}

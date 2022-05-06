@@ -3,6 +3,7 @@ import { useIntl, FormattedMessage } from 'react-intl';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import Breadcrumbs from 'containers/breadcrumbs';
 import ProfileHeader from 'containers/profile-header';
 import SDGs from 'containers/sdgs';
 import { SocialType } from 'containers/social-contact/website-social-contact';
@@ -89,8 +90,16 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
     <>
       <Head title={`${aboutInfo.name} - ${aboutInfo.description}`} description={aboutInfo.text} />
 
-      <LayoutContainer className="-mt-10 lg:-mt-16">
+      <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
+        <Breadcrumbs
+          className="px-4 sm:px-6 lg:px-8"
+          substitutions={{
+            id: { name: aboutInfo.name },
+          }}
+        />
+
         <ProfileHeader
+          className="mt-6"
           logo={aboutInfo.logo}
           title={aboutInfo.name}
           subtitle={aboutInfo.description}
