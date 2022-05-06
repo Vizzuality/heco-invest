@@ -75,6 +75,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
     setValue,
     clearErrors,
     resetField,
+    setError,
   } = useForm<ProjectForm>({
     resolver,
     shouldUseNativeValidation: true,
@@ -87,15 +88,15 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
     (data: ProjectCreationPayload) =>
       createProject.mutate(data, {
         onError: (error) => {
-          const { errorPages } = getServiceErrors<ProjectForm>(error, formPageInputs);
-          // fieldErrors.forEach((field) => setError(field, { message: '' }));
+          const { errorPages, fieldErrors } = getServiceErrors<ProjectForm>(error, formPageInputs);
+          fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
           errorPages.length && setCurrentPage(errorPages[0]);
         },
         onSuccess: (result) => {
           push({ pathname: '/projects/pending/', search: `project=${result.data.slug}` });
         },
       }),
-    [createProject, push]
+    [createProject, push, setError]
   );
 
   const onSubmit: SubmitHandler<ProjectForm> = (values: ProjectForm) => {
