@@ -18,7 +18,7 @@ export const bytesToMegabytes = (bytes: number): number => {
   return bytes / (1024 * 1024);
 };
 
-export const FILE_UPLOADER_MAX_SIZE = 1500000;
+export const FILE_UPLOADER_MAX_SIZE = 1.5 * 1024 *1024;
 
 export const Uploader = <FormValues extends FieldValues>({
   fileTypes,
