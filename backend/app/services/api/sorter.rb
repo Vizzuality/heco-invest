@@ -4,11 +4,7 @@ module API
 
     SORTING_DIRECTIONS = %i[asc desc]
     SORTING_OPTIONS = {
-      name: {
-        localized: true,
-        specific: {ProjectDeveloper => {relation: :account, localized: false},
-                   Investor => {relation: :account, localized: false}}
-      },
+      name: {ProjectDeveloper => :account, Investor => :account},
       created_at: {}
     }
 
@@ -20,9 +16,16 @@ module API
 
     def call
       self.query = query.joins(sort_joins).order(sort_query => sort_direction)
+      add_secondary_default_sorting
     end
 
     private
+
+    def add_secondary_default_sorting
+      return query if sorting_query_param == :created_at
+
+      self.query = query.order(created_at: :desc)
+    end
 
     def sort_query
       @sort_query ||= begin
@@ -36,16 +39,12 @@ module API
     end
 
     def sort_joins
-      @sort_joins ||= SORTING_OPTIONS.dig(sorting_query_param, :specific, query.klass, :relation)
+      @sort_joins ||= SORTING_OPTIONS.dig(sorting_query_param, query.klass)
     end
 
     def add_locale(param)
-      relation_localization = SORTING_OPTIONS.dig(param, :specific, query.klass, :localized)
-      if relation_localization.nil?
-        SORTING_OPTIONS.dig(param, :localized).blank? ? param : "#{param}_#{language}"
-      else
-        relation_localization.blank? ? param : "#{param}_#{language}"
-      end
+      klass = sort_joins.present? ? sort_joins.to_s.classify.constantize : query.klass
+      param.in?(klass.translatable_attributes) ? "#{param}_#{language}" : param
     end
 
     def add_root_table(param)

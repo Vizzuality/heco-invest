@@ -40,6 +40,15 @@ RSpec.describe API::Sorter do
           expect(subject.call.to_a).to eq([project_1, project_2])
         end
       end
+
+      context "when names are same and default sorting is used" do
+        let(:sort_param) { "name desc" }
+        let!(:project_2) { create :project, name: project_1.name, created_at: 1.days.from_now }
+
+        it "returns correct order of records" do
+          expect(subject.call.to_a).to eq([project_1, project_2])
+        end
+      end
     end
 
     describe "used with Project Developer query" do
