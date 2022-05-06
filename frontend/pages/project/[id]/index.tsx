@@ -2,6 +2,8 @@ import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import Breadcrumbs from 'containers/breadcrumbs';
+
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
@@ -47,7 +49,13 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
     <>
       <Head title={project.name} description={project.description} />
 
-      <LayoutContainer className="-mt-10 lg:-mt-16">
+      <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
+        <Breadcrumbs
+          className="px-4 sm:px-6 lg:px-8"
+          substitutions={{
+            id: { name: project.name },
+          }}
+        />
         {/*<ProjectHeader/>*/} ProjectHeader
       </LayoutContainer>
 
