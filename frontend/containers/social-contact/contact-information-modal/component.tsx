@@ -21,7 +21,14 @@ export const ContactInformationModal: FC<ContactInformationModalProps> = ({
   const intl = useIntl();
 
   return (
-    <Modal open={isOpen} title={'Contact information'} onDismiss={onDismiss}>
+    <Modal
+      open={isOpen}
+      title={intl.formatMessage({
+        defaultMessage: 'Contact information',
+        id: 'ITdmlJ',
+      })}
+      onDismiss={onDismiss}
+    >
       <h1 className="font-serif text-2xl md:text-3xl text-green-dark">
         <FormattedMessage defaultMessage="Contact information" id="ITdmlJ" />
       </h1>
