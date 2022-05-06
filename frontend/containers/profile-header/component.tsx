@@ -3,6 +3,8 @@ import { FC, useState, useEffect } from 'react';
 import { Heart as HeartIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import cx from 'classnames';
+
 import noop from 'lodash-es/noop';
 
 import Image from 'next/image';
@@ -121,15 +123,18 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
             <Button
               className="justify-center"
               theme="secondary-green"
-              icon={!isFavorite && HeartIcon}
+              // icon={isFavorite && HeartIcon}
               onClick={onFavoriteClick}
               disabled={favoriteLoading}
+              aria-label={
+                isFavorite
+                  ? intl.formatMessage({ defaultMessage: 'Remove from favorites', id: 'eG1C0k' })
+                  : intl.formatMessage({ defaultMessage: 'Add to favorites', id: 'tWX1j9' })
+              }
             >
-              {isFavorite ? (
-                <FormattedMessage defaultMessage="Unfavorite" id="Mjq//Y" />
-              ) : (
-                <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
-              )}
+              <HeartIcon className={cx('w-4 mr-3', { 'fill-green-dark': isFavorite })} />
+
+              <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </Button>
             <Button
               className="w-full lg:max-w-[200px] justify-center"
