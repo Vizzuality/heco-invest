@@ -11,9 +11,9 @@ import Image from 'next/image';
 import { useFocusRing } from '@react-aria/focus';
 
 import Button from 'components/button';
+import Icon from 'components/icon';
 
 import type { ProjectGalleryImageProps } from './types';
-import Icon from 'components/icon';
 
 export const ProjectGalleryImage = <FormValues extends FieldValues>({
   name,
@@ -38,9 +38,10 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
     <div className="relative rounded group">
       <Button
         theme="primary-white"
-        className="absolute right-0 z-10 justify-center w-6 h-6 px-0 py-0 mx-2 my-2 overflow-hidden text-red-600 transition-opacity ease-in opacity-0 group-hover:opacity-100 group-hover:text-red-600"
+        className="absolute right-0 z-10 justify-center w-6 h-6 px-0 py-0 mx-2 my-2 overflow-hidden text-red-600 transition-opacity ease-in opacity-0 group-hover:opacity-100 group-hover:text-red-600 focus-visible:ring-2 focus-visible:ring-green-dark focus-visible:opacity-100 focus-visible:ring-offset-2"
         title={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
         onClick={onDeleteImage}
+        aria-label={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
       >
         <Icon icon={Trash2} className="w-4" />
       </Button>

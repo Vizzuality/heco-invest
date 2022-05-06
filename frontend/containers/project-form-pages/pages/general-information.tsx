@@ -44,6 +44,7 @@ const GeneralInformation = ({
     department: undefined,
   });
   const [previewImages, setPreviewImages] = useState<ProjectGalleryImageType[]>([]);
+  const [coverImage, setCoverImage] = useState<string>();
 
   const { formatMessage } = useIntl();
   const { locations } = useGroupedLocations();
@@ -56,6 +57,15 @@ const GeneralInformation = ({
   useEffect(() => {
     // This is just for when the user get back to this page (the page mounts), it shows the select if there is any value selected
     setShowInvolvedProjectDevelopers(!!Number(getValues('involved_project_developer')));
+    // Get the uploaded images src from the involved_project_developer input values
+    setPreviewImages(
+      getValues('project_images_attributes')?.map(({ id, title, src }) => ({
+        id,
+        title,
+        src,
+      })) || []
+    );
+    setCoverImage(getValues('project_images_attributes_cover'));
   }, [getValues]);
 
   const handleChangeInvolvedProjectDeveloper = (e: ChangeEvent<HTMLInputElement>) => {
@@ -93,35 +103,35 @@ const GeneralInformation = ({
     }
   };
 
-  const handleUploadImages = (uploadedImages: ProjectImageGallery[]) => {
+  const handleUploadImages = (newUploadedImages: ProjectImageGallery[]) => {
     // current project_images_attributes input value
-    const imageAttibutes = getValues('project_images_attributes');
-    const newPreviewImages: ProjectGalleryImageType[] = [];
-    const newImageAttr: ProjectForm['project_images_attributes'] = [];
+    const uploadedImages = getValues('project_images_attributes') || [];
 
-    uploadedImages.forEach(({ src, id, title, file }) => {
-      newPreviewImages.push({
-        src,
-        id,
-        title,
-      });
-      newImageAttr.push({
-        file,
-        cover: false,
-      });
-    });
+    const newPreviewImages = newUploadedImages?.map(({ src, id, title }) => ({
+      src,
+      id,
+      title,
+    }));
 
+    if (!coverImage) setCoverImage(newUploadedImages[0].id);
     setPreviewImages([...previewImages, ...newPreviewImages]);
-    setValue('project_images_attributes', [...imageAttibutes, ...newImageAttr]);
+    setValue('project_images_attributes', [...uploadedImages, ...newUploadedImages]);
   };
 
   const handleDeleteImage = (imageId: string) => {
-    const imageAttibutes = getValues('project_images_attributes');
-
-    setValue(
-      'project_images_attributes',
-      imageAttibutes.filter(({ file }) => file !== imageId)
+    // Get the images and remove the deleted one
+    const filteredImageAttr = getValues('project_images_attributes')?.filter(
+      ({ file }) => file !== imageId
     );
+    // Set images with the new images array
+    setValue('project_images_attributes', filteredImageAttr);
+    // If the deleted image was the cover, set new cover to the first image left
+    if (coverImage === imageId) {
+      const newCoverImage = filteredImageAttr[0].id;
+      setCoverImage(newCoverImage);
+      setValue('project_images_attributes_cover', newCoverImage);
+    }
+    // Remove the deleted image from preview images
     setPreviewImages(previewImages?.filter(({ id }) => id !== imageId));
   };
 
@@ -186,13 +196,14 @@ const GeneralInformation = ({
                 setError={setError}
                 clearErrors={clearErrors}
                 register={register}
+                registerOptions={{ disabled: false }}
                 fileTypes={{
                   'image/png': ['.png'],
                   'image/jpeg': ['.jpeg'],
                   'image/jpg': ['.jpg'],
                 }}
                 maxFiles={6}
-                maxSize={5000000}
+                maxSize={5 * 1024 * 1025}
                 onUpload={handleUploadImages}
               />
             </div>
@@ -201,11 +212,13 @@ const GeneralInformation = ({
                 images={previewImages}
                 name="project_images_attributes_cover"
                 register={register}
+                registerOptions={{}}
                 setValue={setValue}
                 clearErrors={clearErrors}
                 errors={errors}
                 className="h-full"
                 onDeleteImage={handleDeleteImage}
+                defaultSelected={coverImage}
               />
             </div>
           </div>

@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 
 import { FileRejection, useDropzone } from 'react-dropzone';
 import { FieldValues, Path } from 'react-hook-form';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import classNames from 'classnames';
 
@@ -18,7 +18,7 @@ export const bytesToMegabytes = (bytes: number): number => {
   return bytes / (1024 * 1024);
 };
 
-export const FILE_UPLOADER_MAX_SIZE = 1.5 * 1024 *1024;
+export const FILE_UPLOADER_MAX_SIZE = 1.5 * 1024 * 1024;
 
 export const Uploader = <FormValues extends FieldValues>({
   fileTypes,
@@ -26,29 +26,28 @@ export const Uploader = <FormValues extends FieldValues>({
   maxSize = FILE_UPLOADER_MAX_SIZE,
   disabled = false,
   register,
+  registerOptions,
   onUpload,
   setError,
   clearErrors,
 }: UploaderProps<FormValues>) => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [filesLength, setFilesLength] = useState<number>(0);
+  const { formatMessage } = useIntl();
 
   const setMaxSizeError = useCallback(
     (file: File) => {
       setError('project_images_attributes', {
-        message: (
-          <FormattedMessage
-            defaultMessage="File {fileName} is larger than {fileSize}MB"
-            id="v9GdgG"
-            values={{
-              fileName: file.name,
-              fileSize: bytesToMegabytes(maxSize),
-            }}
-          />
-        ) as any,
+        message: formatMessage(
+          { defaultMessage: 'File {fileName} is larger than {fileSize}MB', id: 'v9GdgG' },
+          {
+            fileName: file.name,
+            fileSize: bytesToMegabytes(maxSize).toFixed(0),
+          }
+        ),
       });
     },
-    [maxSize, setError]
+    [formatMessage, maxSize, setError]
   );
 
   const uploadFiles = useCallback(
@@ -75,12 +74,12 @@ export const Uploader = <FormValues extends FieldValues>({
               });
             } catch (error) {
               setError('project_images_attributes' as Path<FormValues>, {
-                message: error?.message || (
-                  <FormattedMessage
-                    defaultMessage="Something went wrong with the file upload"
-                    id="qpDURb"
-                  />
-                ),
+                message:
+                  error?.message ||
+                  formatMessage({
+                    defaultMessage: 'Something went wrong with the file upload',
+                    id: 'qpDURb',
+                  }),
               });
             }
           }
@@ -91,7 +90,7 @@ export const Uploader = <FormValues extends FieldValues>({
       setIsUploading(false);
       setFilesLength(0);
     },
-    [maxSize, onUpload, setError, setMaxSizeError]
+    [maxSize, onUpload, setError, setMaxSizeError, formatMessage]
   );
 
   const onDropAccepted = async (files: File[]) => {
@@ -104,11 +103,28 @@ export const Uploader = <FormValues extends FieldValues>({
     fileRejections.forEach((rejection) => {
       rejection.errors.forEach((error) => {
         switch (error.code) {
-          case 'file-too-large':
+          case UploadErrorCode.FileTooLarge:
             setMaxSizeError(rejection.file);
             break;
+          case UploadErrorCode.TooManyFiles:
+            setError('project_images_attributes', {
+              message: formatMessage({
+                defaultMessage: 'You can upload a maximum of 6 files',
+                id: 'Ag6vys',
+              }),
+            });
+          case UploadErrorCode.FileInvalidType:
+            setError('project_images_attributes', {
+              message: formatMessage(
+                {
+                  defaultMessage: 'File {fileName} has an invalid format',
+                  id: 'cKaiI0',
+                },
+                { fileName: rejection.file.name }
+              ),
+            });
           default:
-            setError('project_images_attributes' as Path<FormValues>, { message: error.message });
+            setError('project_images_attributes', { message: error.message });
         }
       });
     });
@@ -116,7 +132,7 @@ export const Uploader = <FormValues extends FieldValues>({
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: fileTypes,
-    disabled: disabled || !!isUploading,
+    disabled: registerOptions.disabled || !!isUploading,
     maxSize,
     maxFiles,
     multiple: maxFiles > 1,
@@ -132,10 +148,10 @@ export const Uploader = <FormValues extends FieldValues>({
     <div className="h-full">
       <div
         className={classNames(
-          'h-full rounded-md border-2 border-dashed  border-beige py-10 px-4 text-center text-sm focus:outline-green-700',
+          'h-full rounded-md border-2 border-dashed  border-beige py-10 px-4 text-center text-sm focus:outline-green-700 focus-visible:ring-green-dark focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-0',
           {
             'cursor-pointer': !disabled,
-            'opacity-50': disabled,
+            'opacity-60': disabled,
           }
         )}
         {...getRootProps()}
@@ -144,7 +160,6 @@ export const Uploader = <FormValues extends FieldValues>({
         <input
           className="hidden"
           name="project_images_attributes"
-          onProgress={console.log}
           {...register('project_images_attributes' as Path<FormValues>)}
         />
         <Image src="/images/upload-gallery.svg" width="38" height="39" alt="Upload file" />
@@ -168,9 +183,9 @@ export const Uploader = <FormValues extends FieldValues>({
         ) : (
           <p>
             <FormattedMessage
-              defaultMessage="Uploading {l} files..."
-              id="j+TAPL"
-              values={{ l: filesLength }}
+              defaultMessage="Uploading {filesCount} files..."
+              id="uHyJI7"
+              values={{ filesCount: filesLength }}
             />
           </p>
         )}
