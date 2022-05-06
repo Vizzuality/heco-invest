@@ -550,8 +550,8 @@
         "language": "en",
         "entity_legal_registration_number": "564823570",
         "review_status": "unapproved",
-        "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx",
+        "contact_email": null,
+        "contact_phone": null,
         "mosaics": [
           "amazon-heart",
           "amazonian-piedmont-massif"
