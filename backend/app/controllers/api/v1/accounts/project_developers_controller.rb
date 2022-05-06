@@ -19,12 +19,14 @@ module API
         end
 
         def update
-          current_user.account.update! account_params.except(:language)
-          current_user.account.project_developer.update! project_developer_params.except(:language)
-          render json: ProjectDeveloperSerializer.new(
-            current_user.account.project_developer,
-            params: {current_user: current_user}
-          ).serializable_hash
+          current_user.with_lock do
+            current_user.account.update! account_params.except(:language)
+            current_user.account.project_developer.update! project_developer_params.except(:language)
+            render json: ProjectDeveloperSerializer.new(
+              current_user.account.project_developer,
+              params: {current_user: current_user}
+            ).serializable_hash
+          end
         end
 
         def show
