@@ -24,8 +24,8 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
   subtitle,
   text,
   originalLanguage,
-  numNotFunded,
-  numFunded,
+  projectsWaitingFunding,
+  totalProjects,
   website,
   social,
   contact,
@@ -84,23 +84,23 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
           <p>{text}</p>
         </div>
         <div className="lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0">
-          {typeof numFunded === 'number' && typeof numNotFunded === 'number' && (
+          {typeof totalProjects === 'number' && typeof projectsWaitingFunding === 'number' && (
             <>
               <div className="flex flex-col gap-8 md:flex-row">
                 <div className="flex flex-col items-center w-full gap-2 text-center md:min-w-1/2">
-                  <span id="num-projects-waiting-funding" className="text-2xl font-semibold">
-                    {numNotFunded}
+                  <span id="total-of-projects" className="text-2xl font-semibold">
+                    {totalProjects}
                   </span>
-                  <span aria-labelledby="num-projects-waiting-funding" className="text-gray-400">
-                    <FormattedMessage defaultMessage="Projects waiting funding" id="hxIQ/8" />
+                  <span aria-labelledby="total-of-projects" className="text-gray-400">
+                    <FormattedMessage defaultMessage="Total of projects" id="KGREXT" />
                   </span>
                 </div>
                 <div className="flex flex-col items-center w-full gap-2 text-center md:min-w-1/2">
                   <span id="num-projects-waiting-funding" className="text-2xl font-semibold">
-                    {numFunded}
+                    {projectsWaitingFunding}
                   </span>
-                  <span aria-labelledby="num-projects-funded" className="text-gray-400">
-                    <FormattedMessage defaultMessage="Projects funded" id="/1WGZ8" />
+                  <span aria-labelledby="num-projects-waiting-funding" className="text-gray-400">
+                    <FormattedMessage defaultMessage="Projects waiting funding" id="hxIQ/8" />
                   </span>
                 </div>
               </div>

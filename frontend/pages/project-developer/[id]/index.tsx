@@ -62,10 +62,9 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     ({ id }) => id === projectDeveloper.project_developer_type
   )?.name;
 
-  const funding = {
-    funded: projectDeveloper.projects.filter(({ received_funding }) => received_funding === true)
-      .length,
-    notFunded: projectDeveloper.projects.filter(
+  const stats = {
+    totalProjects: projectDeveloper.projects.length,
+    projectsWaitingFunding: projectDeveloper.projects.filter(
       ({ looking_for_funding }) => looking_for_funding === true
     ).length,
   };
@@ -132,8 +131,8 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           website={projectDeveloper.website}
           social={social}
           contact={contact}
-          numNotFunded={funding.funded}
-          numFunded={funding.notFunded}
+          projectsWaitingFunding={stats.projectsWaitingFunding}
+          totalProjects={stats.totalProjects}
           originalLanguage={projectDeveloper.language}
         />
       </LayoutContainer>

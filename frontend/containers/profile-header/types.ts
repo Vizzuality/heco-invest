@@ -16,10 +16,10 @@ export type ProfileHeaderProps = {
   text: string;
   /** Original language in which the profile was written in */
   originalLanguage: LanguageType;
-  /** Num projects waiting funded */
-  numNotFunded?: number;
-  /** Num projects funded */
-  numFunded?: number;
+  /** Number of projects waiting funding */
+  projectsWaitingFunding?: number;
+  /** Number of projects */
+  totalProjects?: number;
   /** Contact information for the project developer */
   contact?: ContactInformationType;
   /** Callback for when the favorite button is clicked */

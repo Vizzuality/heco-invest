@@ -8,9 +8,6 @@
   "+vVZ/G": {
     "string": "Connect"
   },
-  "/1WGZ8": {
-    "string": "Projects funded"
-  },
   "/CaREm": {
     "string": "Pending approval"
   },
@@ -398,6 +395,9 @@
   },
   "Jwjqn/": {
     "string": "focused"
+  },
+  "KGREXT": {
+    "string": "Total of projects"
   },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
