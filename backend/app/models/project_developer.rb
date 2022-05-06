@@ -1,6 +1,5 @@
 class ProjectDeveloper < ApplicationRecord
   include BelongsToAccount
-  include Reviewable
   include Searchable
 
   has_many :projects, dependent: :destroy

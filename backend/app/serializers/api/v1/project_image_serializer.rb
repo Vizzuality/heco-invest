@@ -1,7 +1,6 @@
 module API
   module V1
-    class ProjectImageSerializer
-      include JSONAPI::Serializer
+    class ProjectImageSerializer < BaseSerializer
       include BlobSerializer
 
       attributes :cover

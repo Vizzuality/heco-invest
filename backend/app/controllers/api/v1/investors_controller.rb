@@ -4,7 +4,7 @@ module API
       include API::Pagination
 
       def index
-        investors = Investor.approved.includes(account: [:owner, {picture_attachment: :blob}])
+        investors = Investor.includes(account: [:owner, {picture_attachment: :blob}])
         investors = API::Filterer.new(investors, filter_params.to_h).call
         investors = API::Sorter.new(investors, sorting_by: params[:sorting]).call
         pagy_object, investors = pagy(investors, page: current_page, items: per_page)
@@ -13,7 +13,8 @@ module API
           include: included_relationships,
           fields: sparse_fieldset,
           links: pagination_links(:api_v1_investors_path, pagy_object),
-          meta: pagination_meta(pagy_object)
+          meta: pagination_meta(pagy_object),
+          params: {current_user: current_user}
         ).serializable_hash
       end
 
@@ -22,7 +23,8 @@ module API
 
         render json: InvestorSerializer.new(
           investor,
-          fields: sparse_fieldset
+          fields: sparse_fieldset,
+          params: {current_user: current_user}
         ).serializable_hash
       end
 

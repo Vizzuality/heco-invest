@@ -45,8 +45,8 @@
           "medium": null,
           "original": null
         },
-        "contact_email": "contact@example.com",
-        "contact_phone": "+57-1-xxx-xx-xx",
+        "contact_email": null,
+        "contact_phone": null,
         "mosaics": [
           "amazon-heart",
           "amazonian-piedmont-massif"
