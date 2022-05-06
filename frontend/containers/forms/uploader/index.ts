@@ -1,2 +1,2 @@
 export { default } from './component';
-export type { UploaderProps } from './types';
+export type { UploaderProps, UploadErrorCode } from './types';

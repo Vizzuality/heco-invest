@@ -36,3 +36,10 @@ export type UploaderProps<FormValues> = {
   /** Handle the uploaded files */
   onUpload: (uploadedImages: ProjectImageGallery[]) => void;
 };
+
+export enum UploadErrorCode {
+  FileInvalidType = 'file-invalid-type',
+  FileTooLarge = 'file-too-large',
+  FileTooSmall = 'file-too-small',
+  TooManyFiles = 'too-many-files',
+}

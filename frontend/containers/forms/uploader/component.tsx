@@ -12,7 +12,7 @@ import { ProjectImageGallery } from 'types/project';
 
 import { directUpload } from 'services/direct-upload/directUpload';
 
-import { UploaderProps } from './types';
+import { UploaderProps, UploadErrorCode } from './types';
 
 export const bytesToMegabytes = (bytes: number): number => {
   return bytes / 1000000;
@@ -82,7 +82,6 @@ export const Uploader = <FormValues extends FieldValues>({
                   />
                 ),
               });
-              setIsUploading(false);
             }
           }
         })

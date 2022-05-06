@@ -13,6 +13,7 @@ import { useFocusRing } from '@react-aria/focus';
 import Button from 'components/button';
 
 import type { ProjectGalleryImageProps } from './types';
+import Icon from 'components/icon';
 
 export const ProjectGalleryImage = <FormValues extends FieldValues>({
   name,
@@ -41,7 +42,7 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
         title={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
         onClick={onDeleteImage}
       >
-        <Trash2 width={16} />
+        <Icon icon={Trash2} className="w-4" />
       </Button>
       <input
         id={id}
