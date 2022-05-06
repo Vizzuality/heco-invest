@@ -19,12 +19,12 @@ export type ProfileHeaderProps = {
   numNotFunded?: number;
   /** Num projects funded */
   numFunded?: number;
-  /** If the project Developer is Favorite */
-  isFavorite: boolean;
+  /** If the entity is favorite */
+  isFavorite?: boolean;
   /** Callback for when the favorite button is clicked */
   onFavoriteClick?: () => void;
   /** If the favorite Button shoulb be on loading state */
-  favoriteLoading: boolean;
+  favoriteLoading?: boolean;
   /** Callback for when the contact button is clicked */
   onContactClick?: () => void;
 } & Pick<WebsiteSocialContactProps, 'website' | 'social' | 'contact'>;

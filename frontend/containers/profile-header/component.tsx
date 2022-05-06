@@ -123,7 +123,6 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
             <Button
               className="justify-center"
               theme="secondary-green"
-              // icon={isFavorite && HeartIcon}
               onClick={onFavoriteClick}
               disabled={favoriteLoading}
               aria-label={
@@ -133,7 +132,6 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
               }
             >
               <HeartIcon className={cx('w-4 mr-3', { 'fill-green-dark': isFavorite })} />
-
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </Button>
             <Button
