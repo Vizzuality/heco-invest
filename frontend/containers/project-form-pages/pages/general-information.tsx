@@ -113,7 +113,7 @@ const GeneralInformation = ({
       title,
     }));
 
-    if (!coverImage) setCoverImage(newUploadedImages[0].id);
+    if (!coverImage && newUploadedImages[0]) setCoverImage(newUploadedImages[0].id);
     setPreviewImages([...previewImages, ...newPreviewImages]);
     setValue('project_images_attributes', [...uploadedImages, ...newUploadedImages]);
   };
