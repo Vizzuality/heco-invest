@@ -2,7 +2,7 @@ module API
   class Filterer
     attr_accessor :query, :filters, :language
 
-    FULL_TEXT_FILTERS = %i[name description about mission problem solution]
+    FULL_TEXT_FILTERS = %i[name description about mission problem solution expected_impact]
     ENUM_FILTERS = %i[category impact sdg instrument_type ticket_size]
 
     def initialize(query, filters, language: I18n.locale)
