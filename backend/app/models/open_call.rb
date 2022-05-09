@@ -1,6 +1,7 @@
 class OpenCall < ApplicationRecord
   extend FriendlyId
   include Translatable
+  include Searchable
 
   friendly_id :investor_prefixed_name, use: :slugged
 

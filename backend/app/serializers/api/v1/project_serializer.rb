@@ -1,8 +1,6 @@
 module API
   module V1
-    class ProjectSerializer
-      include JSONAPI::Serializer
-
+    class ProjectSerializer < BaseSerializer
       attributes :name,
         :slug,
         :description,

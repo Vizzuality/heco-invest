@@ -6,6 +6,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
   let(:department) { create(:department) }
   let(:user) { create(:user_project_developer, first_name: "User", last_name: "Example") }
   let(:project_developers) { create_list(:project_developer, 2) }
+  let(:blob) { ActiveStorage::Blob.create_and_upload! io: fixture_file_upload("picture.jpg"), filename: "test" }
 
   project_params_schema = {
     type: :object,
@@ -17,7 +18,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
       development_stage: {type: :string, enum: ProjectDevelopmentStage::TYPES},
       estimated_duration_in_months: {type: :integer},
       involved_project_developer_not_listed: {type: :boolean},
-      "involved_project_developer_ids[]": {type: :array, items: {type: :string}, collectionFormat: :multi},
+      involved_project_developer_ids: {type: :array, items: {type: :string}},
       problem: {type: :string},
       solution: {type: :string},
       expected_impact: {type: :string},
@@ -34,22 +35,21 @@ RSpec.describe "API V1 Account Projects", type: :request do
       relevant_links: {type: :string},
       geometry: {type: :object},
       category: {type: :string, enum: Category::TYPES},
-      "target_groups[]": {type: :array, items: {type: :string, enum: ProjectTargetGroup::TYPES}, collectionFormat: :multi},
-      "impact_areas[]": {type: :array, items: {type: :string, enum: ImpactArea::TYPES}, collectionFormat: :multi},
-      "sdgs[]": {type: :array, items: {type: :integer, enum: Sdg::TYPES}, collectionFormat: :multi},
-      "instrument_types[]": {type: :array, items: {type: :string, enum: InstrumentType::TYPES}, collectionFormat: :multi},
-      "project_images_attributes[]": {
+      target_groups: {type: :array, items: {type: :string, enum: ProjectTargetGroup::TYPES}},
+      impact_areas: {type: :array, items: {type: :string, enum: ImpactArea::TYPES}},
+      sdgs: {type: :array, items: {type: :integer, enum: Sdg::TYPES}},
+      instrument_types: {type: :array, items: {type: :string, enum: InstrumentType::TYPES}},
+      project_images_attributes: {
         type: :array,
         items: {
           type: :object,
           properties: {
-            file: {type: :file},
+            file: {type: :string},
             cover: {type: :boolean},
             _destroy: {type: :string}
           },
           required: %w[file cover]
-        },
-        collectionFormat: :multi
+        }
       },
       includes: {type: :string}
     },
@@ -57,17 +57,17 @@ RSpec.describe "API V1 Account Projects", type: :request do
       name country_id municipality_id department_id
       development_stage estimated_duration_in_months problem solution expected_impact
       looking_for_funding received_funding replicability sustainability progress_impact_tracking description
-      category target_groups[] impact_areas[] sdgs[]
+      category target_groups impact_areas sdgs
     ]
   }
 
   path "/api/v1/account/projects" do
     post "Create new Projects for User" do
       tags "Projects"
-      consumes "multipart/form-data"
+      consumes "application/json"
       produces "application/json"
       security [csrf: [], cookie_auth: []]
-      parameter name: :project_params, in: :formData, schema: project_params_schema
+      parameter name: :project_params, in: :body, schema: project_params_schema
 
       let(:project_params) do
         {
@@ -100,8 +100,8 @@ RSpec.describe "API V1 Account Projects", type: :request do
           sdgs: [2, 4, 5],
           instrument_types: %w[grant],
           project_images_attributes: [
-            {file: fixture_file_upload("picture.jpg"), cover: true},
-            {file: fixture_file_upload("picture.jpg"), cover: false}
+            {file: blob.signed_id, cover: true},
+            {file: blob.signed_id, cover: false}
           ],
           includes: "project_images"
         }

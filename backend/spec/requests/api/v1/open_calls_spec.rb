@@ -19,6 +19,10 @@ RSpec.describe "API V1 Open Calls", type: :request do
       parameter name: "filter[instrument_type]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[ticket_size]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[only_verified]", in: :query, type: :boolean, required: false, description: "Filter records."
+      parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
+      parameter name: :sorting, in: :query, type: :string, enum: ["name asc", "name desc", "created_at asc", "created_at desc"], required: false, description: "Sort records."
+
+      let(:sorting) { "name asc" }
 
       response "200", :success do
         schema type: :object, properties: {
@@ -45,6 +49,14 @@ RSpec.describe "API V1 Open Calls", type: :request do
           let("filter[instrument_type]") { @open_call.instrument_type }
 
           it "includes filtered open call" do
+            expect(response_json["data"].pluck("id")).to eq([@open_call.id])
+          end
+        end
+
+        context "when filtered by searched text" do
+          let("filter[full_text]") { @open_call.name }
+
+          it "contains only correct records" do
             expect(response_json["data"].pluck("id")).to eq([@open_call.id])
           end
         end

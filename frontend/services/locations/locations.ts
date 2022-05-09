@@ -19,13 +19,13 @@ export const getLocations = async (params?: LocationsParams): Promise<Locations[
 
 /** Hook to use the locations grouped by location_type */
 export const useGroupedLocations = (
-  includes?: string
+  params?: LocationsParams
 ): UseQueryResult<Locations[], ErrorResponse> & {
   locations?: { [key in LocationsTypes]: Locations[] };
 } => {
   const query = useQuery<Locations[], ErrorResponse>(
-    [Queries.Locations, includes],
-    () => getLocations({ includes }),
+    [Queries.Locations, params],
+    () => getLocations(params),
     staticDataQueryOptions
   );
 

@@ -15,7 +15,7 @@ export function getServiceErrors<FormValues>(
     : [error.message];
 
   let errorPages: number[] = [];
-  const fieldErrors: Path<FormValues>[] = [];
+  const fieldErrors: { fieldName: Path<FormValues>; message: string }[] = [];
 
   errors.forEach((errorMessage) => {
     inputs.forEach((fields, index) => {
@@ -26,7 +26,7 @@ export function getServiceErrors<FormValues>(
           if (!errorPages.includes(index)) {
             errorPages.push(index);
           }
-          fieldErrors.push(field);
+          fieldErrors.push({ fieldName: field, message: errorMessage });
         }
       });
     });

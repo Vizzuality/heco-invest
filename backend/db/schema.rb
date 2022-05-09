@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_02_081603) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_05_100023) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_02_081603) do
     t.uuid "owner_id", null: false
     t.text "contact_email", null: false
     t.text "contact_phone"
+    t.integer "review_status", default: 0, null: false
+    t.datetime "reviewed_at"
+    t.text "review_message"
     t.index ["name"], name: "index_accounts_on_name", unique: true
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
     t.index ["slug"], name: "index_accounts_on_slug", unique: true
@@ -116,9 +119,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_02_081603) do
     t.text "previously_invested_description_en"
     t.text "previously_invested_description_es"
     t.text "previously_invested_description_pt"
-    t.integer "review_status", default: 0, null: false
-    t.datetime "reviewed_at"
-    t.text "review_message"
     t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -191,9 +191,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_02_081603) do
     t.text "mission_en"
     t.text "mission_es"
     t.text "mission_pt"
-    t.integer "review_status", default: 0, null: false
-    t.datetime "reviewed_at"
-    t.text "review_message"
     t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

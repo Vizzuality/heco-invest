@@ -29,9 +29,12 @@ const getProjectDevelopers = async (
 export function useProjectDevelopersList(
   params?: PagedRequest
 ): UseQueryResult<PagedResponse<ProjectDeveloper>> & { projectDevelopers: ProjectDeveloper[] } {
-  const query = useQuery([Queries.ProjectDeveloperList, params], () =>
-    getProjectDevelopers(params)
+  const query = useQuery(
+    [Queries.ProjectDeveloperList, params],
+    () => getProjectDevelopers(params),
+    staticDataQueryOptions
   );
+
   return useMemo(
     () => ({
       ...query,

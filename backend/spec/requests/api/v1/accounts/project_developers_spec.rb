@@ -1,6 +1,8 @@
 require "swagger_helper"
 
 RSpec.describe "API V1 Account Project Developers", type: :request do
+  let(:blob) { ActiveStorage::Blob.create_and_upload! io: fixture_file_upload("picture.jpg"), filename: "test" }
+
   path "/api/v1/account/project_developer" do
     get "Get current Project Developer" do
       tags "Project Developers"
@@ -10,7 +12,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
       let(:project_developer) { create :project_developer, :with_involved_projects }
       let(:user) { create :user }
 
-      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
 
       response "200", :success do
         schema type: :object, properties: {
@@ -30,16 +32,17 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
         end
       end
     end
+
     post "Create new Project Developer for User" do
       tags "Project Developers"
-      consumes "multipart/form-data"
+      consumes "application/json"
       produces "application/json"
       security [csrf: [], cookie_auth: []]
-      parameter name: :project_developer_params, in: :formData, schema: {
+      parameter name: :project_developer_params, in: :body, schema: {
         type: :object,
         properties: {
           language: {type: :string, enum: Language::TYPES},
-          picture: {type: :file},
+          picture: {type: :string},
           name: {type: :string},
           about: {type: :string},
           website: {type: :string},
@@ -52,19 +55,18 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           mission: {type: :string},
           contact_email: {type: :string},
           contact_phone: {type: :string},
-          "categories[]": {type: :array, items: {type: :string, enum: Category::TYPES}, collectionFormat: :multi},
-          "impacts[]": {type: :array, items: {type: :string, enum: Impact::TYPES}, collectionFormat: :multi},
-          "mosaics[]": {type: :array, items: {type: :string, enum: Mosaic::TYPES}, collectionFormat: :multi}
+          categories: {type: :array, items: {type: :string, enum: Category::TYPES}},
+          impacts: {type: :array, items: {type: :string, enum: Impact::TYPES}},
+          mosaics: {type: :array, items: {type: :string, enum: Mosaic::TYPES}}
         },
-        required: %w[language picture name about project_developer_type entity_legal_registration_number mission contact_email categories[] impacts[]]
+        required: %w[language picture name about project_developer_type entity_legal_registration_number mission contact_email categories impacts]
       }
 
-      let(:location) { create :location }
       let(:user) { create :user }
       let(:project_developer_params) do
         {
           language: "en",
-          picture: fixture_file_upload("picture.jpg"),
+          picture: blob.signed_id,
           name: "Name",
           about: "About",
           website: "http://website.com",
@@ -120,13 +122,13 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
 
     put "Update existing Project Developer" do
       tags "Project Developers"
-      consumes "multipart/form-data"
+      consumes "application/json"
       produces "application/json"
       security [csrf: [], cookie_auth: []]
-      parameter name: :project_developer_params, in: :formData, schema: {
+      parameter name: :project_developer_params, in: :body, schema: {
         type: :object,
         properties: {
-          picture: {type: :file},
+          picture: {type: :string},
           name: {type: :string},
           about: {type: :string},
           website: {type: :string},
@@ -139,18 +141,17 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           mission: {type: :string},
           contact_email: {type: :string},
           contact_phone: {type: :string},
-          "categories[]": {type: :array, items: {type: :string, enum: Category::TYPES}, collectionFormat: :multi},
-          "impacts[]": {type: :array, items: {type: :string, enum: Impact::TYPES}, collectionFormat: :multi},
-          "mosaics[]": {type: :array, items: {type: :string, enum: Mosaic::TYPES}, collectionFormat: :multi}
+          categories: {type: :array, items: {type: :string, enum: Category::TYPES}},
+          impacts: {type: :array, items: {type: :string, enum: Impact::TYPES}},
+          mosaics: {type: :array, items: {type: :string, enum: Mosaic::TYPES}}
         }
       }
 
-      let(:location) { create :location }
       let(:project_developer) { create :project_developer }
       let(:user) { create :user }
       let(:project_developer_params) do
         {
-          picture: fixture_file_upload("picture.jpg"),
+          picture: blob.signed_id,
           name: "Name",
           about: "About",
           website: "http://website.com",

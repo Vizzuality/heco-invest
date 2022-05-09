@@ -1,21 +1,32 @@
 module API
   class Filterer
-    attr_accessor :query, :filters
+    attr_accessor :query, :filters, :language
 
+    FULL_TEXT_FILTERS = %i[name description about mission problem solution]
     ENUM_FILTERS = %i[category impact sdg instrument_type ticket_size]
 
-    def initialize(query, filters)
+    def initialize(query, filters, language: I18n.locale)
       @query = query
       @filters = filters
+      @language = language
     end
 
     def call
+      apply_full_text_filter
       filter_by_enums
       filter_by_only_verified
       query
     end
 
     private
+
+    def apply_full_text_filter
+      return if filters[:full_text].blank?
+
+      columns = (query.klass.translatable_attributes & FULL_TEXT_FILTERS).map { |key| "#{key}_#{language}" }
+      columns &= column_names
+      self.query = query.dynamic_search columns, filters[:full_text] if columns.present?
+    end
 
     def filter_by_enums
       pluralize(filters.slice(*ENUM_FILTERS)).slice(*column_names).each do |filter_key, filter_value|
