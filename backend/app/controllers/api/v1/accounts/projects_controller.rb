@@ -12,7 +12,6 @@ module API
               language: current_user.account.language
             )
           )
-          TranslateJob.perform_later(project)
 
           render json: ProjectSerializer.new(
             project,

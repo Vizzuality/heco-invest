@@ -8,6 +8,7 @@ module Translations
 
     def call
       assign_translation_for Language::TYPES - [source_language_code]
+      resource.skip_translation = true
       resource.save!
     end
 
