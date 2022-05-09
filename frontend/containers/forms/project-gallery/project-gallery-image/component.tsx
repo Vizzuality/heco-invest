@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
 
+import { Trash2 } from 'react-feather';
 import { FieldValues } from 'react-hook-form';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
 import Image from 'next/image';
 
 import { useFocusRing } from '@react-aria/focus';
+
+import Button from 'components/button';
+import Icon from 'components/icon';
 
 import type { ProjectGalleryImageProps } from './types';
 
@@ -18,18 +22,29 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
   registerOptions,
   invalid: invalidProp = false,
   defaultSelected = false,
+  onDeleteImage,
   ...rest
 }: ProjectGalleryImageProps<FormValues>) => {
   const [invalid, setInvalid] = useState<boolean>(invalidProp);
   const { isFocusVisible, focusProps } = useFocusRing();
   const { id, title, src } = image;
+  const { formatMessage } = useIntl();
 
   useEffect(() => {
     setInvalid(invalidProp);
   }, [invalidProp]);
 
   return (
-    <div className="relative rounded">
+    <div className="relative rounded group">
+      <Button
+        theme="primary-white"
+        className="absolute right-0 z-10 justify-center w-6 h-6 px-0 py-0 mx-2 my-2 overflow-hidden text-red-600 transition-opacity ease-in opacity-0 group-hover:opacity-100 group-hover:text-red-600 focus-visible:opacity-100"
+        title={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
+        onClick={onDeleteImage}
+        aria-label={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
+      >
+        <Icon icon={Trash2} className="w-4" />
+      </Button>
       <input
         id={id}
         type="radio"
@@ -45,7 +60,7 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
         <span className="sr-only">{image.title}</span>
         <Image
           aria-hidden={true}
-          className="rounded"
+          className="z-0 rounded"
           src={src}
           title={title}
           alt={title}
@@ -53,6 +68,7 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
           objectFit="cover"
         />
       </label>
+
       <span
         aria-hidden={true}
         className={cx({
