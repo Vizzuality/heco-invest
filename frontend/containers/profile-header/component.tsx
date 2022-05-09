@@ -45,7 +45,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
       <div className="py-10 mx-4 bg-center bg-cover lg:mx-0 lg:px-4 lg:py-18 rounded-2xl bg-radial-green-dark bg-green-dark">
         <LayoutContainer className="flex justify-between">
           <div className="flex flex-col items-center w-full gap-6 lg:items-end lg:flex-row lg:w-6/12">
-            <div className="overflow-hidden bg-white w-52 h-52 rounded-2xl">
+            <div className="relative overflow-hidden bg-white w-52 h-52 rounded-2xl">
               <Image
                 className="mx-auto w-52 h-52"
                 src={logo}
@@ -53,9 +53,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                   { defaultMessage: '{organization} logo', id: 'in26xr' },
                   { organization: title }
                 )}
-                layout="responsive"
-                width="100%"
-                height="100%"
+                layout="fill"
                 objectFit="cover"
                 onError={() => setLogo('/images/placeholders/profile-logo.png')}
               />
