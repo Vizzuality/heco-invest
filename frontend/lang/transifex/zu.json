@@ -143,6 +143,9 @@
   "60xeYL": {
     "string": "Contribute to improving the production systems and livelihoods of local communities and indigenous people, to ensure their basic needs are met, while enhancing their adaptation to climate change."
   },
+  "6JknYY": {
+    "string": "Goto first page"
+  },
   "6MoU6D": {
     "string": "Explain how the solution or project can be replicated in other contexts and geographies. Think practically about the existing opportunities, the partners and allies needed as well as the barriers that this replication effort may face such as climate issues, regulations and legal frameworks, land tenure, institutional capacity, etc."
   },
@@ -347,6 +350,9 @@
   "HnG9/3": {
     "string": "Insert password"
   },
+  "HyAD0J": {
+    "string": "{numItems} of {totalItems} entries"
+  },
   "HzKhBJ": {
     "developer_comment": "Description shown in search engines",
     "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
@@ -410,6 +416,12 @@
   },
   "KvhWhT": {
     "string": "The <span>IDB Lab</span>, the <span>Paulson Institute</span> and the <span>World Wildlife Fund</span> are working together to develop a digital platform that connects governments, investors, donors, and philanthropists with carefully identified investment opportunities in <span>high priority locations</span> identified by programs such as Herencia Colombia (HeCo)."
+  },
+  "LKIG+a": {
+    "string": "Goto last page"
+  },
+  "LOFIuA": {
+    "string": "Goto page {page}"
   },
   "LmHPHR": {
     "string": "Select the topics/sector categories that you work on"
@@ -482,6 +494,9 @@
   },
   "PIZ1dD": {
     "string": "Search biodiversity"
+  },
+  "PNhgnM": {
+    "string": "Goto previous page"
   },
   "PTr6+3": {
     "string": "Contribute to climate solutions through investments that reduce CO2 emissions and conserve or restore forest-related carbon sinks."
@@ -647,6 +662,9 @@
   },
   "Z8971h": {
     "string": "Verified"
+  },
+  "ZATT08": {
+    "string": "Pagination"
   },
   "ZEEVQX": {
     "string": "Social media"
@@ -1091,6 +1109,9 @@
   },
   "yqJ5XD": {
     "string": "Select the amount of money that you need"
+  },
+  "yv7uMQ": {
+    "string": "Goto next page"
   },
   "z3yOZn": {
     "string": "This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues."
