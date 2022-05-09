@@ -363,6 +363,9 @@
   "I9iCt5": {
     "string": "From which investor or funder? (optional)"
   },
+  "IBlTCs": {
+    "string": "The image is larger than {maxSize}MB"
+  },
   "IMe8OV": {
     "string": "Nature based solutions are estimated to compensate up to 30% of global emissions."
   },
