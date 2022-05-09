@@ -19,8 +19,6 @@ export type UploaderProps<FormValues> = {
   maxSize?: number;
   /** Whether the uploader should show error messages, warnings, successful upload messages. Defaults to `true` */
   showAlerts?: boolean;
-  /** Whether the uploader should be disabled (both for drop and click).  Defaults to `false`. */
-  disabled?: boolean;
   /** name of the input */
   name: Path<FormValues>;
   /** id of the input */
@@ -28,7 +26,7 @@ export type UploaderProps<FormValues> = {
   /** React Hook Form's `register` function */
   register: (name: Path<FormValues>, options?: RegisterOptions) => UseFormRegisterReturn;
   /** Options for React Hook Form's `register` function */
-  registerOptions?: Omit<RegisterOptions<FormValues, FieldPath<FormValues>>, 'onChange'>;
+  registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
   /** React Hook Form's `setError` function */
   setError: UseFormSetError<any>;
   /** ReactHook Form's `clearErrors` callback */

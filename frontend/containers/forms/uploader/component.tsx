@@ -24,7 +24,6 @@ export const Uploader = <FormValues extends FieldValues>({
   fileTypes,
   maxFiles = 1,
   maxSize = FILE_UPLOADER_MAX_SIZE,
-  disabled = false,
   register,
   registerOptions,
   onUpload,
@@ -108,10 +107,13 @@ export const Uploader = <FormValues extends FieldValues>({
             break;
           case UploadErrorCode.TooManyFiles:
             setError('project_images_attributes', {
-              message: formatMessage({
-                defaultMessage: 'You can upload a maximum of 6 files',
-                id: 'Ag6vys',
-              }),
+              message: formatMessage(
+                {
+                  defaultMessage: 'You can upload a maximum of {maxFiles} files',
+                  id: 'yQ7bY1',
+                },
+                { maxFiles }
+              ),
             });
           case UploadErrorCode.FileInvalidType:
             setError('project_images_attributes', {
@@ -150,8 +152,8 @@ export const Uploader = <FormValues extends FieldValues>({
         className={classNames(
           'h-full rounded-md border-2 border-dashed  border-beige py-10 px-4 text-center text-sm focus:outline-green-700 focus-visible:ring-green-dark focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-0',
           {
-            'cursor-pointer': !disabled,
-            'opacity-60': disabled,
+            'cursor-pointer': !registerOptions.disabled,
+            'opacity-60': registerOptions.disabled,
           }
         )}
         {...getRootProps()}
@@ -160,7 +162,7 @@ export const Uploader = <FormValues extends FieldValues>({
         <input
           className="hidden"
           name="project_images_attributes"
-          {...register('project_images_attributes' as Path<FormValues>)}
+          {...register('project_images_attributes' as Path<FormValues>, registerOptions)}
         />
         <Image src="/images/upload-gallery.svg" width="38" height="39" alt="Upload file" />
         {!isUploading ? (
