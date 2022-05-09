@@ -1,37 +1,12 @@
 import { Languages } from 'enums';
-
-export type Investor = {
-  id: string;
-  type: 'investor';
-  // name: string;
-  slug: string;
-  picture_url: string;
-  // about?: string;
-  // website?: string;
-  // instagram?: string;
-  // facebook?: string;
-  // linkedin?: string;
-  // twitter?: string;
-  // how_do_you_work: string;
-  // what_makes_the_difference?: string;
-  // other_information: string;
-  // investor_type: string;
-  categories: string[];
-  ticket_sizes: string[];
-  instrument_types: string[];
-  impacts: string[];
-  sdgs: number[];
-  review_status: string;
-  // previously_invested: boolean;
-  // previously_invested_description?: string;
-  // language: Languages;
-};
+import { Picture } from 'types';
 
 export type InvestorForm = {
   language: Languages;
   picture: string;
   name: string;
   about?: string;
+  mission?: string;
   website?: string;
   linkedin?: string;
   facebook?: string;
@@ -45,9 +20,25 @@ export type InvestorForm = {
   previously_invested_description?: string;
   contact_email: string;
   contact_phone: string;
-  categories: string[];
+  categories?: string[];
   ticket_sizes: string[];
   instrument_types: string[];
   impacts: string[];
   sdgs: number[];
+};
+
+export type Investor = InvestorForm & {
+  id: string;
+  type: 'investor';
+  slug: string;
+  picture: Picture;
+  review_status: string;
+  relationships: {
+    owner: {
+      data: {
+        id: string;
+        type: string;
+      };
+    };
+  };
 };

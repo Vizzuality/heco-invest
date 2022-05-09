@@ -13,7 +13,7 @@ export type ImageUploaderProps<FormValues> = {
   /** id of the input */
   id: string;
   /** React Hook Form's `register` function */
-  register: UseFormRegister<FormValues>;
+  register: UseFormRegister<any>;
   /** Options for React Hook Form's `register` function */
   registerOptions?: Omit<RegisterOptions<FormValues, FieldPath<FormValues>>, 'onChange'>;
   /** show preview image when uploaded */
@@ -23,7 +23,7 @@ export type ImageUploaderProps<FormValues> = {
   /** text showed on the button. Default id 'Upload Image' with translation  */
   buttonText?: string;
   /** React Hook Form's 'setValue' function */
-  setValue: UseFormSetValue<FormValues>;
+  setValue: UseFormSetValue<any>;
   /** React Hook Form's 'setError' function */
-  setError: UseFormSetError<FormValues>;
+  setError: UseFormSetError<any>;
 };

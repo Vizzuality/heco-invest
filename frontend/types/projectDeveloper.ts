@@ -1,14 +1,9 @@
 import { Languages } from 'enums';
+import { Picture } from 'types';
 
 import { CategoryType } from './category';
 import { Enum } from './enums';
 import { Project } from './project';
-
-export type ProjectDeveloperPicture = {
-  small: string;
-  medium: string;
-  large: string;
-};
 
 export type ProjectDeveloper = {
   id: string;
@@ -28,7 +23,7 @@ export type ProjectDeveloper = {
   impacts: string[];
   mosaics: string[];
   language: Languages;
-  picture: ProjectDeveloperPicture;
+  picture: Picture;
   entity_legal_registration_number: string;
   projects?: Project[];
 };
