@@ -9,6 +9,7 @@ zu:
       user:
         multiple_accounts: User already have account!
         no_project_developer: User is not project developer!
+        no_investor: User is not investor!
   enums:
     category:
       sustainable-agrosystems:
