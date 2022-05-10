@@ -18,6 +18,7 @@ import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
 
 import type { ProfileHeaderProps } from './types';
+import Icon from 'components/icon';
 
 export const ProfileHeader: FC<ProfileHeaderProps> = ({
   className,
@@ -125,7 +126,10 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                   : intl.formatMessage({ defaultMessage: 'Add to favorites', id: 'tWX1j9' })
               }
             >
-              <HeartIcon className={cx('w-4 mr-3', { 'fill-green-dark': isFavorite })} />
+              <Icon
+                icon={HeartIcon}
+                className={cx('w-4 mr-3', { 'fill-green-dark': isFavorite })}
+              />
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </Button>
             <Button
