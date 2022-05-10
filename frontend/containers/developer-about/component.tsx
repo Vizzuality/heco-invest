@@ -7,7 +7,7 @@ import cx from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import WebsiteSocialContact from 'containers/social-contact/website-social-contact';
+import WebsiteSocial from 'containers/social-contact/website-social';
 
 import type { DeveloperAboutProps } from './types';
 
@@ -69,7 +69,7 @@ export const DeveloperAbout: FC<DeveloperAboutProps> = ({
       </div>
 
       <div className="gap-2 min-w-fit">
-        <WebsiteSocialContact website={website} social={social} />
+        <WebsiteSocial website={website} social={social} />
         <div className="flex justify-start gap-4 mt-10 md:justify-end md:text-right">{buttons}</div>
       </div>
     </div>

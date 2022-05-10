@@ -11,6 +11,7 @@ import Breadcrumbs from 'containers/breadcrumbs';
 import ProfileHeader from 'containers/profile-header';
 import ProjectCard from 'containers/project-card';
 import { SOCIAL_DATA } from 'containers/social-contact/constants';
+import { ContactInformationType } from 'containers/social-contact/contact-information-modal';
 import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 
 import Carousel, { Slide } from 'components/carousel';
@@ -66,10 +67,9 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     ({ id }) => id === projectDeveloper.project_developer_type
   )?.name;
 
-  const funding = {
-    funded: projectDeveloper.projects.filter(({ received_funding }) => received_funding === true)
-      .length,
-    notFunded: projectDeveloper.projects.filter(
+  const stats = {
+    totalProjects: projectDeveloper.projects.length,
+    projectsWaitingFunding: projectDeveloper.projects.filter(
       ({ looking_for_funding }) => looking_for_funding === true
     ).length,
   };
@@ -77,6 +77,11 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
   const social = SOCIAL_DATA.map((item) => item.id)
     .reduce((acc, social) => [...acc, { id: social, url: projectDeveloper[social] }], [])
     .filter((social) => social.url);
+
+  const contact: ContactInformationType = {
+    email: projectDeveloper.contact_email,
+    phone: projectDeveloper.contact_phone,
+  };
 
   const tagsRows: TagsGridRowType[] = [
     {
@@ -153,8 +158,9 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           text={projectDeveloper.about}
           website={projectDeveloper.website}
           social={social}
-          numNotFunded={funding.funded}
-          numFunded={funding.notFunded}
+          contact={contact}
+          projectsWaitingFunding={stats.projectsWaitingFunding}
+          totalProjects={stats.totalProjects}
           originalLanguage={projectDeveloper.language}
           isFavorite={isFavorite}
           onFavoriteClick={handleFavoriteClick}

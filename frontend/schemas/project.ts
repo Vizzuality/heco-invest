@@ -25,7 +25,7 @@ export default (page: number) => {
       defaultMessage: 'Upload a geometry or draw on the map',
       id: '1+wwRC',
     }),
-    project_gallery: {
+    project_images_attributes: {
       max_length: formatMessage({ defaultMessage: 'Upload a maximum of six images', id: 'U6/vVg' }),
       max_picture_size: formatMessage({
         defaultMessage: 'The pictures must have a maximum size of 5 MB',
@@ -123,17 +123,11 @@ export default (page: number) => {
       country_id: string().required(messages.country_id),
       department_id: string().required(messages.department_id),
       municipality_id: string().required(messages.municipality_id),
-      project_gallery: mixed<FileList>()
-        .test('max_length', messages.project_gallery.max_length, (value) => value?.length <= 6)
-        .test('max_picture_size', messages.project_gallery.max_picture_size, (value) => {
-          let oversize = false;
-          for (let i = 0; i < value.length; i++) {
-            if (value[i].size > 5 * 1024 * 1024) {
-              oversize = true;
-            }
-          }
-          return !oversize;
-        }),
+      project_images_attributes: array()
+        .ensure()
+        .of(object({ file: string(), cover: boolean() }))
+        .max(6, messages.project_images_attributes.max_length),
+      project_images_attributes_cover: string().nullable(),
       geometry: mixed().required(messages.geometry),
       involved_project_developer: number()
         .min(0)
@@ -171,7 +165,7 @@ export default (page: number) => {
       sdgs: array().typeError(messages.sdgs).of(string()).min(1, messages.sdgs),
     }),
     object().shape({
-      looking_for_funding: number().typeError(booleanField).required(booleanField),
+      looking_for_funding: boolean().typeError(booleanField).required(booleanField),
       ticket_size: string()
         .ensure()
         .when('looking_for_funding', {
@@ -193,7 +187,7 @@ export default (page: number) => {
           .max(600, maxTextLength)
           .required(messages.funding_plan),
       }),
-      received_funding: number().typeError(booleanField).required(booleanField),
+      received_funding: boolean().typeError(booleanField).required(booleanField),
       received_funding_amount_usd: mixed().test(
         'is-number',
         messages.received_funding_amount_usd,

@@ -1,6 +1,18 @@
 import { ValidGeometryType } from 'containers/forms/geometry/types';
+import { ProjectGalleryImageType } from 'containers/forms/project-gallery/project-gallery-image/types';
 
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
+
+import { ProjectDeveloper as ProjectDeveloperType } from './projectDeveloper';
+
+export type ProjectImageType = {
+  cover: boolean;
+  file: {
+    small: string;
+    medium: string;
+    original: string;
+  };
+};
 
 /** Common Project types */
 export type ProjectBase = {
@@ -29,6 +41,10 @@ export type ProjectBase = {
   sustainability: string;
   target_groups: string[];
   ticket_size?: TicketSizes;
+  language: Languages;
+  project_images: ProjectImageType[];
+  verified?: boolean;
+  project_developer?: any; // Cannot use ProjectDeveloperType because linting will complain about circular references
 };
 
 /** Project entity structure */
@@ -45,13 +61,24 @@ export type ProjectForm = ProjectBase & {
   involved_project_developer_ids: string[];
   municipality_id: string;
   geometry: ValidGeometryType;
+  project_images_attributes: ProjectImageGallery[];
+  project_images_attributes_cover: string;
 
   // Not part of the payload
   involved_project_developer: boolean;
   project_gallery?: FileList;
 };
 
+export type ProjectImagesAttributes = {
+  file: File | string;
+  cover: boolean;
+};
+
 export type ProjectCreationPayload = Omit<
   ProjectForm,
-  'involved_project_developer' | 'project_gallery' | 'slug'
->;
+  'involved_project_developer' | 'project_gallery' | 'slug' | 'project_images_attributes_cover'
+> & {
+  project_images_attributes: ProjectImagesAttributes[];
+};
+
+export type ProjectImageGallery = ProjectImagesAttributes & ProjectGalleryImageType;

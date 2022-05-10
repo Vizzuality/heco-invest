@@ -1,20 +1,20 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { WebsiteSocialContactProps } from './types';
+import { WebsiteSocialProps } from './types';
 
-import WebsiteSocialContact from '.';
+import WebsiteSocial from '.';
 
 export default {
-  component: WebsiteSocialContact,
-  title: 'Containers/WebsiteSocialContact',
+  component: WebsiteSocial,
+  title: 'Containers/WebsiteSocial',
   argTypes: {},
 } as Meta;
 
-const Template: Story<WebsiteSocialContactProps> = ({ ...rest }: WebsiteSocialContactProps) => (
-  <WebsiteSocialContact {...rest} />
+const Template: Story<WebsiteSocialProps> = ({ ...rest }: WebsiteSocialProps) => (
+  <WebsiteSocial {...rest} />
 );
 
-export const Default: Story<WebsiteSocialContactProps> = Template.bind({});
+export const Default: Story<WebsiteSocialProps> = Template.bind({});
 Default.args = {
   website: 'https://www.example.com',
   social: [
@@ -23,5 +23,4 @@ Default.args = {
     { id: 'instagram', url: 'https://www.instagram.com' },
     { id: 'linked-in', url: 'https://www.linkedin.com' },
   ],
-  contact: 'John Doe',
 };

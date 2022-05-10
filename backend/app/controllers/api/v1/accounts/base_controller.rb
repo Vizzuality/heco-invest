@@ -11,6 +11,12 @@ module API
 
           raise API::UnauthorizedError, I18n.t("errors.messages.user.no_project_developer")
         end
+
+        def require_investor!
+          return if current_user.investor?
+
+          raise API::UnauthorizedError, I18n.t("errors.messages.user.no_investor")
+        end
       end
     end
   end

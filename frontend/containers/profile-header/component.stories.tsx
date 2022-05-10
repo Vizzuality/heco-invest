@@ -25,5 +25,8 @@ Default.args = {
     { id: 'facebook', url: 'https://www.facebook.com' },
     { id: 'instagram', url: 'https://www.instagram.com' },
   ],
-  contact: 'Loïc Comolli',
+  contact: {
+    email: 'user@example.com',
+    phone: '3519233424234',
+  },
 };

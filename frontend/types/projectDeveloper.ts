@@ -2,12 +2,11 @@ import { Languages } from 'enums';
 
 import { CategoryType } from './category';
 import { Enum } from './enums';
-import { Project } from './project';
 
 export type ProjectDeveloperPicture = {
   small: string;
   medium: string;
-  large: string;
+  original: string;
 };
 
 export type ProjectDeveloper = {
@@ -30,8 +29,8 @@ export type ProjectDeveloper = {
   language: Languages;
   picture: ProjectDeveloperPicture;
   entity_legal_registration_number: string;
-  projects?: Project[];
   favourite: boolean;
+  projects?: any[]; // Cannot use ProjectType because linting will complain about circular references
 };
 
 export type ProjectDeveloperSetupForm = Omit<

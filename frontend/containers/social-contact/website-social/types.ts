@@ -3,13 +3,11 @@ export type SocialType = {
   url: string;
 };
 
-export type WebsiteSocialContactProps = {
+export type WebsiteSocialProps = {
   /** Classnames to apply to the wrapper */
   className?: string;
   /** Website url */
   website?: string;
   /** Array of SocialType's `id` and `url` to link to */
   social?: SocialType[];
-  /** Contact name */
-  contact?: string;
 };

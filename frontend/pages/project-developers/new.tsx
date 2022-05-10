@@ -4,6 +4,7 @@ import { SubmitHandler, useForm, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { dehydrate, QueryClient } from 'react-query';
 
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
@@ -22,7 +23,6 @@ import Button from 'components/button';
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
-import ImageUploader from 'components/forms/image-uploader';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import Tag from 'components/forms/tag';
@@ -41,6 +41,9 @@ import useProjectDeveloperValidation, { formPageInputs } from 'validations/proje
 
 import { useCreateProjectDeveloper } from 'services/account';
 import { getEnums, useEnums } from 'services/enums/enumService';
+
+// Import the uploader component only if is on th client because DirectUpload is not supported on server
+const ImageUploader = dynamic(() => import('components/forms/image-uploader'), { ssr: false });
 
 export async function getStaticProps(ctx) {
   const queryClient = new QueryClient();

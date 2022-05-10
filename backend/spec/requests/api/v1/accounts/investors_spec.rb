@@ -1,44 +1,44 @@
 require "swagger_helper"
 
-RSpec.describe "API V1 Account Project Developers", type: :request do
+RSpec.describe "API V1 Account Investors", type: :request do
   let(:blob) { ActiveStorage::Blob.create_and_upload! io: fixture_file_upload("picture.jpg"), filename: "test" }
 
-  path "/api/v1/account/project_developer" do
-    get "Get current Project Developer" do
-      tags "Project Developers"
+  path "/api/v1/account/investor" do
+    get "Get current Investor" do
+      tags "Investors"
       produces "application/json"
       security [csrf: [], cookie_auth: []]
 
-      let(:project_developer) { create :project_developer, :with_involved_projects }
+      let(:investor) { create :investor }
       let(:user) { create :user }
 
-      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+      it_behaves_like "with not authorized error", csrf: true, require_investor: true
 
       response "200", :success do
         schema type: :object, properties: {
-          data: {"$ref" => "#/components/schemas/project_developer"}
+          data: {"$ref" => "#/components/schemas/investor"}
         }
         let("X-CSRF-TOKEN") { get_csrf_token }
 
         before(:each) do
-          user.update! account: project_developer.account, role: :project_developer
+          user.update! account: investor.account, role: :investor
           sign_in user
         end
 
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/accounts-project-developer")
+          expect(response.body).to match_snapshot("api/v1/accounts-investor")
         end
       end
     end
 
-    post "Create new Project Developer for User" do
-      tags "Project Developers"
+    post "Create new Investor for User" do
+      tags "Investors"
       consumes "application/json"
       produces "application/json"
       security [csrf: [], cookie_auth: []]
-      parameter name: :project_developer_params, in: :body, schema: {
+      parameter name: :investor_params, in: :body, schema: {
         type: :object,
         properties: {
           language: {type: :string, enum: Language::TYPES},
@@ -50,20 +50,25 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           facebook: {type: :string},
           twitter: {type: :string},
           instagram: {type: :string},
-          project_developer_type: {type: :string, enum: ProjectDeveloperType::TYPES},
-          entity_legal_registration_number: {type: :string},
-          mission: {type: :string},
+          investor_type: {type: :string, enum: InvestorType::TYPES},
+          how_do_you_work: {type: :string},
+          what_makes_the_difference: {type: :string},
+          other_information: {type: :string},
+          previously_invested: {type: :boolean},
+          previously_invested_description: {type: :string},
           contact_email: {type: :string},
           contact_phone: {type: :string},
           categories: {type: :array, items: {type: :string, enum: Category::TYPES}},
+          ticket_sizes: {type: :array, items: {type: :string, enum: TicketSize::TYPES}},
+          instrument_types: {type: :array, items: {type: :string, enum: InstrumentType::TYPES}},
           impacts: {type: :array, items: {type: :string, enum: Impact::TYPES}},
-          mosaics: {type: :array, items: {type: :string, enum: Mosaic::TYPES}}
+          sdgs: {type: :array, items: {type: :integer, enum: Sdg::TYPES}}
         },
-        required: %w[language picture name about project_developer_type entity_legal_registration_number mission contact_email categories impacts]
+        required: %w[language picture name about investor_type how_do_you_work other_information contact_email categories instrument_types ticket_sizes]
       }
 
       let(:user) { create :user }
-      let(:project_developer_params) do
+      let(:investor_params) do
         {
           language: "en",
           picture: blob.signed_id,
@@ -74,13 +79,19 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           facebook: "http://facebook.com",
           twitter: "http://twitter.com",
           instagram: "http://instagram.com",
-          project_developer_type: "ngo",
-          entity_legal_registration_number: "564823570",
-          mission: "Mission",
+          investor_type: "investor",
+          how_do_you_work: "How Do You Work",
+          what_makes_the_difference: "What Makes The Difference",
+          other_information: "Other Information",
+          previously_invested: true,
+          previously_invested_description: "Previously Invested Description",
           contact_email: "contact@example.com",
+          contact_phone: "123456789",
           categories: ["sustainable-agrosystems", "tourism-and-recreation"],
           impacts: ["biodiversity", "climate"],
-          mosaics: ["amazon-heart"]
+          ticket_sizes: ["small-grants"],
+          instrument_types: ["grant"],
+          sdgs: [1, 2, 5]
         }
       end
 
@@ -88,7 +99,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
 
       response "200", :success do
         schema type: :object, properties: {
-          data: {"$ref" => "#/components/schemas/project_developer"}
+          data: {"$ref" => "#/components/schemas/investor"}
         }
         let("X-CSRF-TOKEN") { get_csrf_token }
 
@@ -97,7 +108,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/accounts-project-developer-create")
+          expect(response.body).to match_snapshot("api/v1/accounts-investor-create")
         end
       end
 
@@ -120,12 +131,12 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
       end
     end
 
-    put "Update existing Project Developer" do
-      tags "Project Developers"
+    put "Update existing Investor" do
+      tags "Investors"
       consumes "application/json"
       produces "application/json"
       security [csrf: [], cookie_auth: []]
-      parameter name: :project_developer_params, in: :body, schema: {
+      parameter name: :investor_params, in: :body, schema: {
         type: :object,
         properties: {
           picture: {type: :string},
@@ -136,20 +147,25 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           facebook: {type: :string},
           twitter: {type: :string},
           instagram: {type: :string},
-          project_developer_type: {type: :string, enum: ProjectDeveloperType::TYPES},
-          entity_legal_registration_number: {type: :string},
-          mission: {type: :string},
+          investor_type: {type: :string, enum: InvestorType::TYPES},
+          how_do_you_work: {type: :string},
+          what_makes_the_difference: {type: :string},
+          other_information: {type: :string},
+          previously_invested: {type: :boolean},
+          previously_invested_description: {type: :string},
           contact_email: {type: :string},
           contact_phone: {type: :string},
           categories: {type: :array, items: {type: :string, enum: Category::TYPES}},
+          ticket_sizes: {type: :array, items: {type: :string, enum: TicketSize::TYPES}},
+          instrument_types: {type: :array, items: {type: :string, enum: InstrumentType::TYPES}},
           impacts: {type: :array, items: {type: :string, enum: Impact::TYPES}},
-          mosaics: {type: :array, items: {type: :string, enum: Mosaic::TYPES}}
+          sdgs: {type: :array, items: {type: :integer, enum: Sdg::TYPES}}
         }
       }
 
-      let(:project_developer) { create :project_developer }
+      let(:investor) { create :investor }
       let(:user) { create :user }
-      let(:project_developer_params) do
+      let(:investor_params) do
         {
           picture: blob.signed_id,
           name: "Name",
@@ -159,48 +175,55 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           facebook: "http://facebook.com",
           twitter: "http://twitter.com",
           instagram: "http://instagram.com",
-          project_developer_type: "ngo",
-          entity_legal_registration_number: "564823570",
-          mission: "Mission",
+          investor_type: "investor",
+          how_do_you_work: "How Do You Work",
+          what_makes_the_difference: "What Makes The Difference",
+          other_information: "Other Information",
+          previously_invested: true,
+          previously_invested_description: "Previously Invested Description",
+          contact_email: "contact@example.com",
+          contact_phone: "123456789",
           categories: ["sustainable-agrosystems", "tourism-and-recreation"],
           impacts: ["biodiversity", "climate"],
-          mosaics: ["amazon-heart"]
+          ticket_sizes: ["small-grants"],
+          instrument_types: ["grant"],
+          sdgs: [1, 2, 5]
         }
       end
 
-      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+      it_behaves_like "with not authorized error", csrf: true, require_investor: true
 
       response "200", :success do
         schema type: :object, properties: {
-          data: {"$ref" => "#/components/schemas/project_developer"}
+          data: {"$ref" => "#/components/schemas/investor"}
         }
         let("X-CSRF-TOKEN") { get_csrf_token }
 
         before(:each) do
-          user.update! account: project_developer.account, role: :project_developer
+          user.update! account: investor.account, role: :investor
           sign_in user
         end
 
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/accounts-project-developer-update")
+          expect(response.body).to match_snapshot("api/v1/accounts-investor-update")
         end
 
         context "when updating just some attributes" do
-          let(:project_developer_params) do
+          let(:investor_params) do
             {
               name: "Updated Name"
             }
           end
 
-          it "allows to update project developer name" do
+          it "allows to update investor name" do
             expect(response_json["data"]["attributes"]["name"]).to eq("Updated Name")
           end
         end
 
         context "when trying to update language" do
-          let(:project_developer_params) do
+          let(:investor_params) do
             {
               language: "pt"
             }
