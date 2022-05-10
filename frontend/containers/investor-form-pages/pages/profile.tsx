@@ -70,7 +70,7 @@ export const Profile: FC<ProfileProps> = ({
       <div className="md:flex gap-x-6 mb-6.5">
         <div className="md:w-1/2 mb-6.5 md:m-0">
           <Label htmlFor="name">
-            <FormattedMessage defaultMessage="Project developer name" id="Sv/Mtz" />
+            <FormattedMessage defaultMessage="Investor/Funder name" id="6MEtAZ" />
             <Input
               name="name"
               className="mt-2.5"
@@ -88,21 +88,21 @@ export const Profile: FC<ProfileProps> = ({
           <ErrorMessage id="name-error" errorText={errors?.name?.message} />
         </div>
         <div className="md:w-1/2">
-          <Label htmlFor="project-developer-type" id="project-developer-type-label">
-            <FormattedMessage defaultMessage="Project developer type" id="3tWxy0" />
+          <Label htmlFor="investor-type" id="investor-type-label">
+            <FormattedMessage defaultMessage="Investor/Funder type" id="RDclSN" />
             <Combobox
               control={control}
               controlOptions={{ disabled: false }}
               aria-required
               name="investor_type"
-              id="project-developer-type"
+              id="investor-type"
               className="mt-2.5 w-full h-10 border border-beige rounded-lg px-4"
               placeholder={formatMessage({
-                defaultMessage: 'select the project developer type',
-                id: 'N9+9Fi',
+                defaultMessage: 'select investor/funder type',
+                id: 'r/AN6W',
               })}
-              aria-describedby="project-developer-type-error"
-              aria-labelledby="project-developer-type-label"
+              aria-describedby="investor-type-error"
+              aria-labelledby="investor-type-label"
             >
               {investorTypes?.map(({ id, name }) => (
                 <Option key={id}>{name}</Option>
@@ -115,7 +115,7 @@ export const Profile: FC<ProfileProps> = ({
                 ? errors?.instrument_types[0].message
                 : (errors?.instrument_types as FieldError)?.message
             }
-            id="project-developer-type-error"
+            id="investor-type-error"
           />
         </div>
       </div>
