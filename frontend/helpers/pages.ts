@@ -48,3 +48,11 @@ export function useGetAlert(error?: AxiosError<ErrorResponse>): string[] {
         ];
   }
 }
+
+/** Function to convert bytes in megabites */
+export const bytesToMegabytes = (bytes: number): number => {
+  return bytes / (1024 * 1024);
+};
+
+/** Constant to define the default max allowed file size to upload */
+export const FILE_UPLOADER_MAX_SIZE = 5 * 1024 * 1024;
