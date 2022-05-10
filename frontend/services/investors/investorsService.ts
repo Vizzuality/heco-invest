@@ -28,10 +28,12 @@ export function useInvestorsList(
 /** Get a Investor using an id and, optionally, the wanted fields */
 export const getInvestor = async (id: string): Promise<any> => {
   const config: AxiosRequestConfig = {
-    url: `/api/v1/project_developers/${id}`,
+    url: `/api/v1/investors/${id}`,
     method: 'GET',
   };
-  return await API.request(config).then((response) => response.data.data);
+  return await API.request(config).then((response) => {
+    return response.data;
+  });
 };
 
 /** Use query for a single Investor */
