@@ -3,6 +3,17 @@ import { ProjectGalleryImageType } from 'containers/forms/project-gallery/projec
 
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
+import { ProjectDeveloper as ProjectDeveloperType } from './projectDeveloper';
+
+export type ProjectImageType = {
+  cover: boolean;
+  file: {
+    small: string;
+    medium: string;
+    original: string;
+  };
+};
+
 /** Common Project types */
 export type ProjectBase = {
   id: string;
@@ -30,6 +41,10 @@ export type ProjectBase = {
   sustainability: string;
   target_groups: string[];
   ticket_size?: TicketSizes;
+  language: Languages;
+  project_images: ProjectImageType[];
+  verified?: boolean;
+  project_developer?: any; // Cannot use ProjectDeveloperType because linting will complain about circular references
 };
 
 /** Project entity structure */

@@ -8,9 +8,6 @@
   "+vVZ/G": {
     "string": "Connect"
   },
-  "/1WGZ8": {
-    "string": "Projects funded"
-  },
   "/CaREm": {
     "string": "Pending approval"
   },
@@ -68,6 +65,9 @@
   "25WwxF": {
     "string": "Don't have an account?"
   },
+  "2CtPQ/": {
+    "string": "Contact phone"
+  },
   "2O2sfp": {
     "string": "Finish"
   },
@@ -88,9 +88,6 @@
   },
   "3hV8r4": {
     "string": "Select the stage of development of the project or solution at the time of submitting this pitch"
-  },
-  "3l2y4U": {
-    "string": "Person of contact"
   },
   "3tWxy0": {
     "string": "Project developer type"
@@ -281,6 +278,9 @@
   "DQoGRx": {
     "string": "About the impact"
   },
+  "DR+23P": {
+    "string": "Contact email"
+  },
   "DWQSFT": {
     "string": "Use left and right to toggle between focused values, press backspace to remove the currently focused value"
   },
@@ -369,6 +369,9 @@
   "J4w7T/": {
     "string": "Enable positive impact"
   },
+  "JFkvlB": {
+    "string": "Please use the contacts below to reach the project developer."
+  },
   "JI99E2": {
     "string": "HeCo Invest was created following the Leticia Pact, and the commitment of the seven Heads of State to increase capital flows for sustainable development in the <span>Amazon</span>."
   },
@@ -392,6 +395,9 @@
   },
   "Jwjqn/": {
     "string": "focused"
+  },
+  "KGREXT": {
+    "string": "Total of projects"
   },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
@@ -636,8 +642,14 @@
   "YWQkk+": {
     "string": "Short description of the project"
   },
+  "Z8971h": {
+    "string": "Verified"
+  },
   "ZEEVQX": {
     "string": "Social media"
+  },
+  "ZKsAVY": {
+    "string": "This project isn’t currently looking for funding."
   },
   "ZMvQxR": {
     "string": "HeCo Invest manages a wide range of investment and financing opportunities in various sectors and priority geographies for the conservation and development of the Colombian Amazon region."
@@ -753,6 +765,9 @@
   "et2m37": {
     "string": "insert URL"
   },
+  "fDd10o": {
+    "string": "Instrument type"
+  },
   "fnihsY": {
     "string": "Leave"
   },
@@ -839,6 +854,9 @@
   },
   "lfvUqs": {
     "string": "Do you want to leave?"
+  },
+  "lfx6Nc": {
+    "string": "Ticket size"
   },
   "m3Dnav": {
     "string": "Investment info"
@@ -977,6 +995,9 @@
   },
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
+  },
+  "vIKTZ9": {
+    "string": "If you have interest in this project contact the project developer to know how you can work together."
   },
   "vONi+O": {
     "string": "Country"

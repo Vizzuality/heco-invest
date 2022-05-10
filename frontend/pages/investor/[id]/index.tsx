@@ -6,7 +6,8 @@ import { loadI18nMessages } from 'helpers/i18n';
 import Breadcrumbs from 'containers/breadcrumbs';
 import ProfileHeader from 'containers/profile-header';
 import SDGs from 'containers/sdgs';
-import { SocialType } from 'containers/social-contact/website-social-contact';
+import { ContactInformationType } from 'containers/social-contact/contact-information-modal';
+import { SocialType } from 'containers/social-contact/website-social';
 import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 
 import Head from 'components/head';
@@ -36,7 +37,7 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
     text: string;
     website: string;
     social: SocialType[];
-    contact: string;
+    contact: ContactInformationType;
   } = {
     name: 'NESst',
     description: 'Non-VC Investment vehicle',
@@ -49,7 +50,10 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
       { id: 'facebook', url: 'https://www.facebook.com' },
       { id: 'instagram', url: 'https://www.instagram.com' },
     ],
-    contact: 'Loïc Comolli',
+    contact: {
+      email: 'user@example.com',
+      phone: '251912343242342',
+    },
   };
 
   const tagsGridRows: TagsGridRowType[] = [
