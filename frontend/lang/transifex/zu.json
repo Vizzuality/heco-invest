@@ -239,6 +239,9 @@
   "BAC0rl": {
     "string": "<span>Community:</span> income, sustainable projects;"
   },
+  "BHrBCl": {
+    "string": "PNG, JPG up to 5MB"
+  },
   "BcZVZW": {
     "string": "This description should sumarize your project in a few words."
   },
@@ -714,6 +717,9 @@
   "cE4Hfw": {
     "string": "Discover"
   },
+  "cKaiI0": {
+    "string": "File {fileName} has an invalid format"
+  },
   "cPwv2c": {
     "string": "Privacy policy"
   },
@@ -800,6 +806,9 @@
   },
   "hl9bd4": {
     "string": "Cover"
+  },
+  "hpOE0K": {
+    "string": "<a>Browse</a> or drag and drop"
   },
   "hxIQ/8": {
     "string": "Projects waiting funding"
@@ -912,6 +921,9 @@
   "pONqz8": {
     "string": "First name"
   },
+  "pWwsxm": {
+    "string": "Delete image"
+  },
   "pcRRCK": {
     "string": "Financial information about your project and what are the needs"
   },
@@ -932,6 +944,9 @@
   },
   "qoImFc": {
     "string": "Replicability of the project"
+  },
+  "qpDURb": {
+    "string": "Something went wrong with the file upload"
   },
   "rPwaWt": {
     "string": "A great name is short, crisp, and easily understood."
@@ -993,8 +1008,14 @@
   "uCk8r+": {
     "string": "Already have an account?"
   },
+  "uHyJI7": {
+    "string": "Uploading {filesCount} files..."
+  },
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
+  },
+  "v9GdgG": {
+    "string": "File {fileName} is larger than {fileSize}MB"
   },
   "vIKTZ9": {
     "string": "If you have interest in this project contact the project developer to know how you can work together."
@@ -1055,6 +1076,9 @@
   },
   "yJVljq": {
     "string": "Through accessing <span>ARIES</span> (Artificial Intelligence for Environmental Sustainability) and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
+  },
+  "yQ7bY1": {
+    "string": "You can upload a maximum of {maxFiles} files"
   },
   "yXFDuu": {
     "string": "Use our Artificial Intellience tool powered by ARIES, to help you identify what best fits your specific needs."
