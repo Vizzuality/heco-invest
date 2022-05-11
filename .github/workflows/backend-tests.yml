@@ -38,7 +38,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
+          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev libgeos-dev
       - name: Cache Node Modules
         id: cache-node-modules
         uses: actions/cache@v2
