@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe GeoJsons::CenterFinder do
+RSpec.describe GeoJsons::ToCentroid do
   subject { described_class.new(RGeo::GeoJSON.decode(geo_json.to_json)) }
 
   describe "#call" do

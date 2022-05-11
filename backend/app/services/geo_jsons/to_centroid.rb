@@ -3,7 +3,7 @@ module GeoJsons
 
   class NoSupportedGeometry < StandardError; end
 
-  class CenterFinder
+  class ToCentroid
     attr_accessor :geo_json
 
     def initialize(geo_json)

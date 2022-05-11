@@ -10,11 +10,11 @@ class ProjectGeometryValidator < ActiveModel::Validator
   def run_validations
     return if @project.geometry.blank? || !@project.geometry_changed?
 
-    decoded_geometry = validate_geo_json
-    validate_type_of decoded_geometry
+    decoded_geo_json = decode_geo_json
+    validation_of decoded_geo_json
   end
 
-  def validate_geo_json
+  def decode_geo_json
     geometry = @project.geometry.is_a?(String) ? @project.geometry : @project.geometry.to_json
     decoded_geometry, @project.geometry = geo_json_for geometry
     @project.errors.add :geometry, :not_geojson if decoded_geometry.blank?
@@ -24,10 +24,10 @@ class ProjectGeometryValidator < ActiveModel::Validator
     nil
   end
 
-  def validate_type_of(geometry)
+  def validation_of(geometry)
     return if geometry.blank?
 
-    center = GeoJsons::CenterFinder.new(geometry).call
+    center = GeoJsons::ToCentroid.new(geometry).call
     @project.latitude, @project.longitude = [center.y, center.x]
   rescue GeoJsons::NoGeometry
     @project.errors.add :geometry, :missing_geometry
