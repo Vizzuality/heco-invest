@@ -120,11 +120,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
               theme="secondary-green"
               onClick={onFavoriteClick}
               disabled={favoriteLoading}
-              aria-label={
-                isFavorite
-                  ? intl.formatMessage({ defaultMessage: 'Remove from favorites', id: 'eG1C0k' })
-                  : intl.formatMessage({ defaultMessage: 'Add to favorites', id: 'tWX1j9' })
-              }
+              aria-pressed={isFavorite}
             >
               <Icon
                 icon={HeartIcon}
