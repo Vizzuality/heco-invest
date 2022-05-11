@@ -100,8 +100,8 @@ const Pagination: React.FC<PaginationProps> = ({
                 size="smallest"
                 theme="primary-white"
                 aria-label={intl.formatMessage({
-                  defaultMessage: 'Goto first page',
-                  id: '6JknYY',
+                  defaultMessage: 'Go to first page',
+                  id: 'F4dsUN',
                 })}
                 disabled={pagination.currentPage <= 1}
                 onClick={handleFirstClick}
@@ -115,8 +115,8 @@ const Pagination: React.FC<PaginationProps> = ({
                 size="smallest"
                 theme="primary-white"
                 aria-label={intl.formatMessage({
-                  defaultMessage: 'Goto previous page',
-                  id: 'PNhgnM',
+                  defaultMessage: 'Go to previous page',
+                  id: 'NYErt1',
                 })}
                 disabled={pagination.currentPage <= 1}
                 onClick={handlePreviousClick}
@@ -135,8 +135,8 @@ const Pagination: React.FC<PaginationProps> = ({
                     theme={theme}
                     aria-label={intl.formatMessage(
                       {
-                        defaultMessage: 'Goto page {page}',
-                        id: 'LOFIuA',
+                        defaultMessage: 'Go to page {page}',
+                        id: 'wQteLO',
                       },
                       { page: buttonNumber }
                     )}
@@ -157,8 +157,8 @@ const Pagination: React.FC<PaginationProps> = ({
                 size="smallest"
                 theme="primary-white"
                 aria-label={intl.formatMessage({
-                  defaultMessage: 'Goto next page',
-                  id: 'yv7uMQ',
+                  defaultMessage: 'Go to next page',
+                  id: 'nkDaFL',
                 })}
                 disabled={pagination.currentPage >= pagination.totalPages}
                 onClick={handleNextClick}
@@ -172,8 +172,8 @@ const Pagination: React.FC<PaginationProps> = ({
                 size="smallest"
                 theme="primary-white"
                 aria-label={intl.formatMessage({
-                  defaultMessage: 'Goto last page',
-                  id: 'LKIG+a',
+                  defaultMessage: 'Go to last page',
+                  id: 'fMrPOR',
                 })}
                 disabled={pagination.currentPage >= pagination.totalPages}
                 onClick={handleLastClick}
