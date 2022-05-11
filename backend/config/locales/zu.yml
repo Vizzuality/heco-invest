@@ -6,6 +6,8 @@ zu:
       location_type_mismatch: location type mismatch
       not_json: is not json
       not_geojson: is not geojson
+      unsupported_geometry: shape is not supported
+      missing_geometry: inside geojson is empty
       user:
         multiple_accounts: User already have account!
         no_project_developer: User is not project developer!
