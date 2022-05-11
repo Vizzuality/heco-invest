@@ -29,10 +29,14 @@ export type ProjectDeveloper = {
   language: Languages;
   picture: ProjectDeveloperPicture;
   entity_legal_registration_number: string;
+  favourite: boolean;
   projects?: any[]; // Cannot use ProjectType because linting will complain about circular references
 };
 
-export type ProjectDeveloperSetupForm = Omit<ProjectDeveloper, 'picture' | 'id' | 'type'> & {
+export type ProjectDeveloperSetupForm = Omit<
+  ProjectDeveloper,
+  'picture' | 'id' | 'type' | 'favorite'
+> & {
   picture: string;
   mosaics?: string[];
 };
