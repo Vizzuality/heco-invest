@@ -8,6 +8,7 @@ import cx from 'classnames';
 import { translatedLanguageNameForLocale } from 'helpers/intl';
 
 import CategoryTag from 'containers/category-tag';
+import ImageGallery from 'containers/image-gallery';
 import ContactInformationModal, {
   ContactItemType,
 } from 'containers/social-contact/contact-information-modal';
@@ -28,7 +29,7 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
 }: ProjectHeaderProps) => {
   const intl = useIntl();
   const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
-
+  console.log(project);
   const {
     data: {
       instrument_type: allInstrumentTypes,
@@ -47,9 +48,11 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
   const coverImage = useMemo(
     () =>
       // First we try to find the image with `cover: true`
-      project.project_images.find(({ cover = false }) => cover === true)?.file.medium ||
+      project.project_images
+        .find(({ cover = false }) => cover === true)
+        ?.file.medium.replace('/backend', '') || //REMOVE THIS LATER
       // If none found, we use the first image as cover
-      project.project_images[0]?.file.medium ||
+      project.project_images[0]?.file.medium.replace('/backend', '') || //REMOVE THIS LATER
       // No images to use as cover image.
       null,
     [project.project_images]
@@ -95,6 +98,7 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
             <span className="absolute top-0 bottom-0 left-0 right-0 bg-gray-900 opacity-40" />
           </span>
         )}
+
         <LayoutContainer className="flex flex-col justify-between lg:min-h-[18rem]">
           <div className="flex justify-center gap-2 mb-4 lg:justify-start">
             {project.trusted && (
