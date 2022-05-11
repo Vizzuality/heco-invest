@@ -15,10 +15,10 @@ import ContactInformationModal from 'containers/social-contact/contact-informati
 import WebsiteSocial from 'containers/social-contact/website-social';
 
 import Button from 'components/button';
+import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 
 import type { ProfileHeaderProps } from './types';
-import Icon from 'components/icon';
 
 export const ProfileHeader: FC<ProfileHeaderProps> = ({
   className,

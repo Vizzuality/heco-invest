@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
-import { decycle } from 'cycle';
 import { chunk, groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -28,6 +27,7 @@ import { getEnums } from 'services/enums/enumService';
 import {
   getProjectDeveloper,
   useFavoriteProjectDeveloper,
+  useProjectDeveloper,
 } from 'services/project-developers/projectDevelopersService';
 
 export const getServerSideProps = async ({ params: { id }, locale }) => {
@@ -36,7 +36,7 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
   // If getting the project developer fails, it's most likely because the record has
   // not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    ({ data: projectDeveloper } = await getProjectDeveloper(id, { includes: 'projects' }));
+    projectDeveloper = await getProjectDeveloper(id, { includes: 'projects' });
   } catch (e) {
     return { notFound: true };
   }
@@ -47,29 +47,42 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
       enums: groupBy(enums, 'type'),
-      // Fixing issues with circular references (caused by the inclusion of projects)
-      // https://github.com/vercel/next.js/discussions/10992#discussioncomment-59574
-      projectDeveloper: decycle(projectDeveloper),
+      initialProjectDeveloper: projectDeveloper,
     },
   };
 };
 
 type ProjectDeveloperPageProps = {
-  projectDeveloper: ProjectDeveloperType;
+  initialProjectDeveloper: ProjectDeveloperType;
   enums: GroupedEnumsType;
 };
 
 const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageLayoutProps> = ({
-  projectDeveloper,
+  initialProjectDeveloper,
   enums,
 }) => {
+  const { projectDeveloper } = useProjectDeveloper(
+    initialProjectDeveloper.id,
+    {
+      includes: 'projects',
+    },
+    initialProjectDeveloper
+  );
+
+  const [isFavourite, setIsFavourite] = useState(projectDeveloper.favourite);
+
+  useEffect(() => {
+    // this useEffect is needed because the initial PD can be different from the current
+    setIsFavourite(projectDeveloper.favourite);
+  }, [projectDeveloper]);
+
   const projectDeveloperTypeName = enums[EnumTypes.ProjectDeveloperType].find(
     ({ id }) => id === projectDeveloper.project_developer_type
   )?.name;
 
   const stats = {
-    totalProjects: projectDeveloper.projects.length,
-    projectsWaitingFunding: projectDeveloper.projects.filter(
+    totalProjects: projectDeveloper.projects?.length,
+    projectsWaitingFunding: projectDeveloper.projects?.filter(
       ({ looking_for_funding }) => looking_for_funding === true
     ).length,
   };
@@ -101,7 +114,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     },
   ];
 
-  const projects = projectDeveloper.projects.map((project) => ({
+  const projects = projectDeveloper.projects?.map((project) => ({
     id: `project-${project.id}`,
     slug: project.slug,
     name: project.name,
@@ -115,26 +128,16 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
 
   const favoriteProjectDeveloper = useFavoriteProjectDeveloper();
 
-  const [isFavorite, setIsFavorite] = useState(false);
-
   const handleFavoriteClick = () => {
     const { id } = projectDeveloper;
     // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
     favoriteProjectDeveloper.mutate(
-      { id, isFavorite },
+      { id, isFavourite },
       {
-        onSuccess: (response) => {
-          // The response is the project-developer data, so I am using it to change the 'isFavorite' state without having to make a GET request for the project-developer
-          setIsFavorite(response.data.data.favourite);
-        },
+        onSuccess: (data) => setIsFavourite(data.favourite),
       }
     );
   };
-
-  useEffect(() => {
-    // Set the isFavorite with the project-developer 'favourite' value that cames from the server-side props
-    setIsFavorite(projectDeveloper.favourite);
-  }, [projectDeveloper]);
 
   return (
     <>
@@ -152,7 +155,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
         />
         <ProfileHeader
           className="mt-6"
-          logo={projectDeveloper.picture.medium}
+          logo={projectDeveloper.picture?.medium}
           title={projectDeveloper.name}
           subtitle={projectDeveloperTypeName}
           text={projectDeveloper.about}
@@ -162,7 +165,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           projectsWaitingFunding={stats.projectsWaitingFunding}
           totalProjects={stats.totalProjects}
           originalLanguage={projectDeveloper.language}
-          isFavorite={isFavorite}
+          isFavorite={isFavourite}
           onFavoriteClick={handleFavoriteClick}
           favoriteLoading={favoriteProjectDeveloper.isLoading}
         />
@@ -185,7 +188,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           <TagsGrid className="mt-10 md:mt-14" rows={tagsRows} />
         </section>
 
-        {projects.length > 0 && (
+        {projects?.length > 0 && (
           <>
             <hr className="mt-12 md:mt-20" />
 
