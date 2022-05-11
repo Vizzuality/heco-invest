@@ -30,15 +30,15 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev libgeos-dev
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           working-directory: backend
           bundler-cache: true
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev libgeos-dev
       - name: Cache Node Modules
         id: cache-node-modules
         uses: actions/cache@v2
