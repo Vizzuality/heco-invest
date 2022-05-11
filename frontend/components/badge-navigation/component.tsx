@@ -19,7 +19,7 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
 
   return (
     <div className={className}>
-      <nav aria-label={intl.formatMessage({ defaultMessage: 'Navigation', id: 'fBg+7V' })}>
+      <nav>
         <ol className="flex gap-2 border rounded-full whitespace-nowrap border-beige">
           {items.map(({ id, name, link, number }) => {
             const isActive = id === activeId;
