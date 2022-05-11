@@ -72,8 +72,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
   const [isFavourite, setIsFavourite] = useState(projectDeveloper.favourite);
 
   useEffect(() => {
-    // this useEffect is needed because the initial PD can be different from the current
-    setIsFavourite(projectDeveloper.favourite);
+    // On the server, when we fetch the PD, we don't send the session cookie so the endpoint doesn't tell us if the PD is in the favourites. When the hook executes on the client, we do send the token and thus projectDeveloper.favourite has a different value.;
   }, [projectDeveloper]);
 
   const projectDeveloperTypeName = enums[EnumTypes.ProjectDeveloperType].find(
