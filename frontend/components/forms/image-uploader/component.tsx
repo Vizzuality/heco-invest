@@ -36,7 +36,6 @@ export const ImageUploader = <FormValues extends FieldValues>({
       id: 'F++AYx',
     })
   ) => {
-    console.log('error');
     setImagePreview(null);
     setValue(name, undefined);
     setError(name, {
