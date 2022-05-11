@@ -93,10 +93,10 @@ const Pagination: React.FC<PaginationProps> = ({
         })}
       >
         <nav aria-label={intl.formatMessage({ defaultMessage: 'Pagination', id: 'ZATT08' })}>
-          <ol className="flex flex-wrap items-center justify-center gap-2 py-2">
+          <ol className="flex flex-wrap items-center justify-center gap-2 py-3">
             <li>
               <Button
-                className="justify-center w-10 h-10"
+                className="justify-center w-10 h-10 focus-visible:!outline-green-dark"
                 size="smallest"
                 theme="primary-white"
                 aria-label={intl.formatMessage({
@@ -111,7 +111,7 @@ const Pagination: React.FC<PaginationProps> = ({
             </li>
             <li>
               <Button
-                className="justify-center w-10 h-10"
+                className="justify-center w-10 h-10 focus-visible:!outline-green-dark"
                 size="smallest"
                 theme="primary-white"
                 aria-label={intl.formatMessage({
@@ -130,7 +130,7 @@ const Pagination: React.FC<PaginationProps> = ({
               return (
                 <li key={buttonNumber} aria-current={isCurrent}>
                   <Button
-                    className="justify-center w-10 h-10"
+                    className="justify-center w-10 h-10 focus-visible:!outline-green-dark"
                     size="smallest"
                     theme={theme}
                     aria-label={intl.formatMessage(
@@ -153,7 +153,7 @@ const Pagination: React.FC<PaginationProps> = ({
             })}
             <li>
               <Button
-                className="justify-center w-10 h-10"
+                className="justify-center w-10 h-10 focus-visible:!outline-green-dark"
                 size="smallest"
                 theme="primary-white"
                 aria-label={intl.formatMessage({
@@ -168,7 +168,7 @@ const Pagination: React.FC<PaginationProps> = ({
             </li>
             <li>
               <Button
-                className="justify-center w-10 h-10"
+                className="justify-center w-10 h-10 focus-visible:!outline-green-dark"
                 size="smallest"
                 theme="primary-white"
                 aria-label={intl.formatMessage({
