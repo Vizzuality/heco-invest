@@ -96,17 +96,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     },
   ];
 
-  const projects = projectDeveloper.projects.map((project) => ({
-    id: `project-${project.id}`,
-    slug: project.slug,
-    name: project.name,
-    category: enums[EnumTypes.Category].find(({ id }) => id === project.category)?.name,
-    instrument: enums[EnumTypes.InstrumentType]
-      .filter(({ id }) => projectDeveloper.projects[0].instrument_types?.includes(id))
-      .reduce((acc, instrument) => [...acc, instrument.name], [])
-      .join(', '),
-    amount: project.received_funding_amount_usd || 0,
-  }));
+  const { projects } = projectDeveloper;
 
   return (
     <>
@@ -166,16 +156,8 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
             <Carousel className="mt-12">
               {chunk(projects, 3).map((projectsChunk, index) => (
                 <Slide key={`slide-${index}`} className="flex flex-col gap-2">
-                  {projectsChunk.map(({ id, slug, category, name, instrument, amount }) => (
-                    <ProjectCard
-                      key={id}
-                      id={id}
-                      category={category}
-                      name={name}
-                      instrument={instrument}
-                      amount={amount}
-                      link={`${Paths.Project}/${slug}`}
-                    />
+                  {projectsChunk.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
                   ))}
                 </Slide>
               ))}
