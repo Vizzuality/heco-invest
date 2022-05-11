@@ -115,7 +115,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
 
   const favoriteProjectDeveloper = useFavoriteProjectDeveloper();
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(projectDeveloper.favourite);
 
   const handleFavoriteClick = () => {
     const { id } = projectDeveloper;
