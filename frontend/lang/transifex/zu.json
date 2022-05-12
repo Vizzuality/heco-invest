@@ -311,6 +311,9 @@
   "F1+h/t": {
     "string": "For project developers"
   },
+  "F4dsUN": {
+    "string": "Go to first page"
+  },
   "FJfVJJ": {
     "string": "Access user-friendly tools that help turn a good idea into a proposal ready to be reviewed by an investor or funder."
   },
@@ -349,6 +352,9 @@
   },
   "HnG9/3": {
     "string": "Insert password"
+  },
+  "HyAD0J": {
+    "string": "{numItems} of {totalItems} entries"
   },
   "HzKhBJ": {
     "developer_comment": "Description shown in search engines",
@@ -446,6 +452,9 @@
   },
   "NIQVjS": {
     "string": "Support the consolidation of their lands governance structures and capacities for sound management."
+  },
+  "NYErt1": {
+    "string": "Go to previous page"
   },
   "NjKSap": {
     "string": "Online presence"
@@ -651,6 +660,9 @@
   "Z8971h": {
     "string": "Verified"
   },
+  "ZATT08": {
+    "string": "Pagination"
+  },
   "ZEEVQX": {
     "string": "Social media"
   },
@@ -777,6 +789,9 @@
   "fDd10o": {
     "string": "Instrument type"
   },
+  "fMrPOR": {
+    "string": "Go to last page"
+  },
   "fnihsY": {
     "string": "Leave"
   },
@@ -896,6 +911,9 @@
   },
   "nhAnF3": {
     "string": "I want to find opportunities to invest / donate"
+  },
+  "nkDaFL": {
+    "string": "Go to next page"
   },
   "o+Vt3t": {
     "string": "Partnership between:"
@@ -1031,6 +1049,9 @@
   },
   "vygPIS": {
     "string": "Leave project creation form"
+  },
+  "wQteLO": {
+    "string": "Go to page {page}"
   },
   "wSZR47": {
     "string": "Submit"

@@ -14,4 +14,5 @@ export const COLOR_THEMES: Record<NonNullable<ButtonCommonProps['theme']>, strin
 export const SIZE_THEMES: Record<NonNullable<ButtonCommonProps['size']>, string> = {
   base: `px-10 py-4`,
   small: `px-6 py-2`,
+  smallest: `px-0 py-0`,
 };
