@@ -153,7 +153,7 @@ module "backend_cloudrun" {
     },
     {
       name  = "BACKEND_URL"
-      value = "https://${var.domain}/backend"
+      value = "https://${var.domain}"
     },
     {
       name  = "RAILS_RELATIVE_URL_ROOT"
