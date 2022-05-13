@@ -29,7 +29,6 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
 }: ProjectHeaderProps) => {
   const intl = useIntl();
   const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
-  console.log(project);
   const {
     data: {
       instrument_type: allInstrumentTypes,
@@ -99,20 +98,27 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
         )}
 
         <LayoutContainer className="flex flex-col justify-between lg:min-h-[18rem]">
-          <div className="flex justify-center gap-2 mb-4 lg:justify-start">
-            {project.trusted && (
-              <Tag className="bg-white text-green-dark">
-                <CheckCircleIcon className="w-4 h-4 mr-3" />
-                <FormattedMessage defaultMessage="Verified" id="Z8971h" />
-              </Tag>
-            )}
-            {category && (
-              <CategoryTag
-                className="bg-white text-green-dark"
-                category={category.id as CategoryType}
-              >
-                {category.name}
-              </CategoryTag>
+          <div className="flex justify-center gap-2 mb-4 lg:justify-between">
+            <div className="flex justify-center gap-2 mb-4 lg:justify-start">
+              {project.trusted && (
+                <Tag className="bg-white text-green-dark">
+                  <CheckCircleIcon className="w-4 h-4 mr-3" />
+                  <FormattedMessage defaultMessage="Verified" id="Z8971h" />
+                </Tag>
+              )}
+              {category && (
+                <CategoryTag
+                  className="bg-white text-green-dark"
+                  category={category.id as CategoryType}
+                >
+                  {category.name}
+                </CategoryTag>
+              )}
+            </div>
+            {!!project.project_images.length && (
+              <div className="">
+                <ImageGallery images={project.project_images} />
+              </div>
             )}
           </div>
           <div className="text-center lg:mb-4 lg:text-left">

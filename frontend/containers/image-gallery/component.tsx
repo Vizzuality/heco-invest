@@ -46,19 +46,21 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ images }) => {
         open={typeof active === 'number'}
         dismissable={true}
         size="wide"
-        className="h-1/2"
+        scrollable={false}
       >
-        <Carousel defaultSlide={active} className="max-w-3xl m-12 h-fit">
+        <Carousel defaultSlide={active} className="h-full sm:mx-12">
           {images.map(({ file: { original, medium } }) => (
-            <Slide key={original} className="w-full h-full text-center">
-              <Image
-                src={medium.replace('/backend', '')}
-                alt=""
-                // layout="fill"
-                width={300}
-                height={300}
-                objectFit="contain"
-              />
+            <Slide key={original} className="flex items-center justify-center w-full h-full">
+              <div className="w-full">
+                <Image
+                  src={medium.replace('/backend', '')}
+                  alt=""
+                  layout="responsive"
+                  width={300}
+                  height={200}
+                  objectFit="contain"
+                />
+              </div>
             </Slide>
           ))}
         </Carousel>
