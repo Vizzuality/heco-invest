@@ -68,7 +68,7 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
   const instrumentTypesStr = useMemo(
     () =>
       allInstrumentTypes
-        ?.filter(({ id }) => project.instrument_types.includes(id))
+        ?.filter(({ id }) => project.instrument_types?.includes(id))
         .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase()))
         .join(', '),
     [allInstrumentTypes, project.instrument_types]
@@ -96,7 +96,7 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
         )}
         <LayoutContainer className="flex flex-col justify-between lg:min-h-[18rem]">
           <div className="flex justify-center gap-2 mb-4 lg:justify-start">
-            {project.verified && (
+            {project.trusted && (
               <Tag className="bg-white text-green-dark">
                 <CheckCircleIcon className="w-4 h-4 mr-3" />
                 <FormattedMessage defaultMessage="Verified" id="Z8971h" />

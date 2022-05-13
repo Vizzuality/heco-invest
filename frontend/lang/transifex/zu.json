@@ -293,6 +293,9 @@
   "E/YxHp": {
     "string": "When will the project have the Verification badge?"
   },
+  "E1kj21": {
+    "string": "Project verification"
+  },
   "Ec0M9T": {
     "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
   },
@@ -307,6 +310,9 @@
   },
   "F1+h/t": {
     "string": "For project developers"
+  },
+  "F4dsUN": {
+    "string": "Go to first page"
   },
   "FJfVJJ": {
     "string": "Access user-friendly tools that help turn a good idea into a proposal ready to be reviewed by an investor or funder."
@@ -346,6 +352,9 @@
   },
   "HnG9/3": {
     "string": "Insert password"
+  },
+  "HyAD0J": {
+    "string": "{numItems} of {totalItems} entries"
   },
   "HzKhBJ": {
     "developer_comment": "Description shown in search engines",
@@ -443,6 +452,9 @@
   },
   "NIQVjS": {
     "string": "Support the consolidation of their lands governance structures and capacities for sound management."
+  },
+  "NYErt1": {
+    "string": "Go to previous page"
   },
   "NjKSap": {
     "string": "Online presence"
@@ -648,6 +660,9 @@
   "Z8971h": {
     "string": "Verified"
   },
+  "ZATT08": {
+    "string": "Pagination"
+  },
   "ZEEVQX": {
     "string": "Social media"
   },
@@ -774,6 +789,9 @@
   "fDd10o": {
     "string": "Instrument type"
   },
+  "fMrPOR": {
+    "string": "Go to last page"
+  },
   "fnihsY": {
     "string": "Leave"
   },
@@ -893,6 +911,9 @@
   },
   "nhAnF3": {
     "string": "I want to find opportunities to invest / donate"
+  },
+  "nkDaFL": {
+    "string": "Go to next page"
   },
   "o+Vt3t": {
     "string": "Partnership between:"
@@ -1029,6 +1050,9 @@
   "vygPIS": {
     "string": "Leave project creation form"
   },
+  "wQteLO": {
+    "string": "Go to page {page}"
+  },
   "wSZR47": {
     "string": "Submit"
   },
@@ -1046,6 +1070,9 @@
   },
   "x/1DXz": {
     "string": "In the face of the economic and social crisis caused by the coronavirus pandemic, there is an urgent need to support the transition to a green, fair, and resilient economy that creates jobs, addresses inequality, and drives inclusive growth."
+  },
+  "x/AykP": {
+    "string": "Project ticket size"
   },
   "x6wKw3": {
     "string": "All selected options have been cleared."
