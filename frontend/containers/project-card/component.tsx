@@ -1,6 +1,7 @@
-import { FC, PointerEvent, useState } from 'react';
+import { FC, PointerEvent, useState, useMemo } from 'react';
 
-import { FormattedNumber, useIntl } from 'react-intl';
+import { CheckCircle as CheckCircleIcon } from 'react-feather';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
@@ -12,22 +13,47 @@ import { usePress, useFocusWithin } from '@react-aria/interactions';
 
 import { usePropagableEventHandlers } from 'hooks/pointer-events';
 
+import { Paths } from 'enums';
+
+import { useEnums } from 'services/enums/enumService';
+
 import type { ProjectCardProps } from './types';
 
 export const ProjectCard: FC<ProjectCardProps> = ({
   className,
-  id,
-  category,
-  name,
-  instrument,
-  amount,
-  link: href,
+  project,
   onClick,
 }: ProjectCardProps) => {
   const thresholdToRegisterPress = 60;
 
   const intl = useIntl();
   const router = useRouter();
+
+  const {
+    data: {
+      instrument_type: allInstrumentTypes,
+      ticket_size: allTicketSizes,
+      category: allCategories,
+    },
+  } = useEnums();
+
+  const { id, slug, name, trusted } = project;
+  const category = allCategories?.find(({ id }) => id === project.category)?.name;
+  const link = `${Paths.Project}/${slug}`;
+
+  const ticketSizeStr = useMemo(
+    () => allTicketSizes?.find(({ id }) => project.ticket_size === id)?.description,
+    [allTicketSizes, project.ticket_size]
+  );
+
+  const instrumentTypesStr = useMemo(
+    () =>
+      allInstrumentTypes
+        ?.filter(({ id }) => project.instrument_types?.includes(id))
+        .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase()))
+        .join(', '),
+    [allInstrumentTypes, project.instrument_types]
+  );
 
   const [isFocusWithin, setIsFocusWithin] = useState<boolean>(false);
   const [pointerDownX, setPointerDownX] = useState<number>(0);
@@ -36,10 +62,10 @@ export const ProjectCard: FC<ProjectCardProps> = ({
   const { pressProps } = usePress({
     onPress: () => {
       if (Math.abs(pointerUpX - pointerDownX) >= thresholdToRegisterPress) return;
-      if (href) {
-        router.push(href);
+      if (onClick) {
+        onClick(id);
       } else {
-        onClick && onClick();
+        router.push(link);
       }
     },
   });
@@ -78,7 +104,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
       role="group"
       className={cx({
         [className]: !!className,
-        'cursor-pointer rounded-2xl': true,
+        'cursor-pointer transition rounded-2xl': true,
         'hover:ring-1 hover:ring-green-dark': true,
         'ring-2 ring-green-dark': isFocusWithin,
       })}
@@ -88,27 +114,36 @@ export const ProjectCard: FC<ProjectCardProps> = ({
     >
       <div
         className={cx({
-          'relative flex flex-col sm:flex-row p-6 bg-white border shadow rounded-2xl gap-y-2 sm:gap-x-4':
+          'relative flex flex-col sm:flex-row p-4 bg-white border shadow rounded-2xl gap-y-2 sm:gap-x-4':
             true,
           'rounded-2xl overflow-hidden': true,
         })}
       >
         <div className="flex flex-col flex-grow gap-2">
-          <div
-            className="text-sm"
-            title={intl.formatMessage({ defaultMessage: 'Project category', id: '/plMvw' })}
-          >
-            {category}
+          <div className="flex text-sm">
+            {trusted && (
+              <>
+                <span
+                  className="flex items-center text-green-dark"
+                  title={intl.formatMessage({
+                    defaultMessage: 'Project verification',
+                    id: 'E1kj21',
+                  })}
+                >
+                  <CheckCircleIcon className="w-4 h-4 mr-1" aria-hidden={true} />
+                  <FormattedMessage defaultMessage="Verified" id="Z8971h" />
+                </span>
+                <span className="mx-2" aria-hidden={true}>
+                  &bull;
+                </span>
+              </>
+            )}
+            <div title={intl.formatMessage({ defaultMessage: 'Project category', id: '/plMvw' })}>
+              {category}
+            </div>
           </div>
           <div>
-            {href && (
-              <Link href={href}>
-                <a className="text-xl font-semibold leading-tight outline-none pointer-events-none">
-                  {name}
-                </a>
-              </Link>
-            )}
-            {!href && onClick && (
+            {onClick ? (
               <button
                 className="text-xl font-semibold leading-tight outline-none"
                 aria-label={intl.formatMessage(
@@ -123,23 +158,43 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               >
                 {name}
               </button>
+            ) : (
+              <Link href={link}>
+                <a className="text-xl font-semibold leading-tight outline-none pointer-events-none">
+                  {name}
+                </a>
+              </Link>
             )}
-            {!href && !onClick && (
+            {!onClick && !link && (
               <span className="text-xl font-semibold leading-tight outline-none">{name}</span>
             )}
           </div>
-          <div
-            className="text-sm text-gray-600"
-            title={intl.formatMessage({
-              defaultMessage: 'Project financial instrument',
-              id: 'hLG9bm',
-            })}
-          >
-            {instrument}
-            <span className="mx-2" aria-hidden={true}>
-              &bull;
-            </span>
-            <FormattedNumber value={amount} style="currency" currency="USD" />
+          <div className="flex items-center h-5 text-sm text-gray-600 min-h-fit">
+            {instrumentTypesStr && (
+              <div
+                title={intl.formatMessage({
+                  defaultMessage: 'Project financial instrument',
+                  id: 'hLG9bm',
+                })}
+              >
+                {instrumentTypesStr}
+              </div>
+            )}
+            {instrumentTypesStr && ticketSizeStr && (
+              <span className="mx-2" aria-hidden={true}>
+                &bull;
+              </span>
+            )}
+            {ticketSizeStr && (
+              <div
+                title={intl.formatMessage({
+                  defaultMessage: 'Project ticket size',
+                  id: 'x/AykP',
+                })}
+              >
+                {ticketSizeStr}
+              </div>
+            )}
           </div>
         </div>
         <div>

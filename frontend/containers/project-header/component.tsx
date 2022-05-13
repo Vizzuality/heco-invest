@@ -99,24 +99,21 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
         )}
 
         <LayoutContainer className="flex flex-col justify-between lg:min-h-[18rem]">
-          <div className="flex justify-center gap-2 mb-4 lg:justify-between">
-            <div className="flex gap-2">
-              {project.verified && (
-                <Tag className="bg-white text-green-dark">
-                  <CheckCircleIcon className="w-4 h-4 mr-3" />
-                  <FormattedMessage defaultMessage="Verified" id="Z8971h" />
-                </Tag>
-              )}
-              {category && (
-                <CategoryTag
-                  className="bg-white text-green-dark"
-                  category={category.id as CategoryType}
-                >
-                  {category.name}
-                </CategoryTag>
-              )}
-            </div>
-            {project.project_images?.length && <ImageGallery images={project.project_images} />}
+          <div className="flex justify-center gap-2 mb-4 lg:justify-start">
+            {project.trusted && (
+              <Tag className="bg-white text-green-dark">
+                <CheckCircleIcon className="w-4 h-4 mr-3" />
+                <FormattedMessage defaultMessage="Verified" id="Z8971h" />
+              </Tag>
+            )}
+            {category && (
+              <CategoryTag
+                className="bg-white text-green-dark"
+                category={category.id as CategoryType}
+              >
+                {category.name}
+              </CategoryTag>
+            )}
           </div>
           <div className="text-center lg:mb-4 lg:text-left">
             <div className="lg:w-6/12">
