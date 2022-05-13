@@ -1,0 +1,109 @@
+{
+  "data": [
+    {
+      "id": "51428731-e670-4e07-86a9-27f6a647f26b",
+      "type": "project_map",
+      "attributes": {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        },
+        "latitude": null,
+        "longitude": null
+      }
+    },
+    {
+      "id": "70a28893-0188-4bc4-96ab-3eb1279181fc",
+      "type": "project_map",
+      "attributes": {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        },
+        "latitude": null,
+        "longitude": null
+      }
+    },
+    {
+      "id": "fc9d0266-7737-42ba-90ee-928aac757b5d",
+      "type": "project_map",
+      "attributes": {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        },
+        "latitude": null,
+        "longitude": null
+      }
+    },
+    {
+      "id": "ac961ad7-53df-4aa2-8054-9decf058b72e",
+      "type": "project_map",
+      "attributes": {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        },
+        "latitude": null,
+        "longitude": null
+      }
+    },
+    {
+      "id": "c25db8c5-ef83-4e1e-864a-8b2675163629",
+      "type": "project_map",
+      "attributes": {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        },
+        "latitude": null,
+        "longitude": null
+      }
+    },
+    {
+      "id": "109bc052-94d5-4e3f-8c97-46838e9103ef",
+      "type": "project_map",
+      "attributes": {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        },
+        "latitude": null,
+        "longitude": null
+      }
+    },
+    {
+      "id": "208f6fa5-e19d-475a-b19a-6b73962adc7d",
+      "type": "project_map",
+      "attributes": {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        },
+        "latitude": null,
+        "longitude": null
+      }
+    }
+  ]
+}
