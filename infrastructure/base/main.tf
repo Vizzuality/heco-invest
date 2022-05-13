@@ -16,6 +16,7 @@ module "staging" {
   github_project       = var.github_project
   github_branch        = "develop"
   google_analytics_key = var.google_analytics_key
+  google_maps_api_key  = var.google_maps_api_key
   project_name         = var.staging_project_name
   transifex_token      = var.transifex_token
   sendgrid_api_key     = var.sendgrid_api_key
@@ -30,6 +31,7 @@ module "production" {
   github_project       = var.github_project
   github_branch        = "main"
   google_analytics_key = var.google_analytics_key
+  google_maps_api_key  = var.google_maps_api_key
   project_name         = var.production_project_name
   transifex_token      = var.transifex_token
   sendgrid_api_key     = var.sendgrid_api_key
