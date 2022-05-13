@@ -6,8 +6,8 @@ import cx from 'classnames';
 
 import Link from 'next/link';
 
-import LanguageSelector from 'components/language-selector';
 import LayoutContainer from 'components/layout-container';
+import LanguageSelector from 'layouts/shared/language-selector';
 
 import { HeaderProps } from './types';
 

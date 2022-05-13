@@ -13,8 +13,8 @@ import useMe from 'hooks/me';
 
 import ActiveLink from 'components/active-link';
 import Icon from 'components/icon';
-import LanguageSelector from 'components/language-selector';
 import LayoutContainer from 'components/layout-container';
+import LanguageSelector from 'layouts/shared/language-selector';
 import NavigationMenuButton from 'layouts/shared/navigation-menu-button';
 import UserMenu from 'layouts/shared/user-menu';
 
