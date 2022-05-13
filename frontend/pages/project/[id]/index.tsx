@@ -7,6 +7,7 @@ import Breadcrumbs from 'containers/breadcrumbs';
 import ProjectHeader from 'containers/project-header';
 
 import Head from 'components/head';
+import ImpactChart from 'components/impact-chart';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
@@ -19,8 +20,7 @@ import { getProject } from 'services/projects/projectService';
 export const getServerSideProps = async ({ params: { id }, locale }) => {
   let project;
 
-  // If getting the project fails, it's most likely because the record has
-  // not been found. Let's return a 404. Anything else will trigger a 500 by default.
+  // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
     ({ data: project } = await getProject(id, { includes: 'project_images,project_developer' }));
   } catch (e) {
@@ -47,6 +47,11 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
   project,
   enums,
 }) => {
+  const { category: categories, impact: impacts } = enums;
+  const impactChartColor = categories.find(({ id }) => id === project.category)?.color;
+
+  const impactChartLabels = impacts.map(({ name }) => name);
+
   return (
     <>
       <Head title={project.name} description={project.description} />
@@ -63,7 +68,18 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
 
       <LayoutContainer className="mb-20 mt-18">
         <section>Overview</section>
-        <section>Impact</section>
+        <section>
+          Impact
+          <div className="flex justify-between h-[470px]">
+            <div className="z-0 w-[470px] h-full">
+              <ImpactChart
+                labels={impactChartLabels}
+                color={impactChartColor}
+                impact={[30, 25, 60, 40]}
+              />
+            </div>
+          </div>
+        </section>
         <section>Funding &amp; Development</section>
       </LayoutContainer>
 

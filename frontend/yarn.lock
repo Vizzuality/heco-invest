@@ -8303,6 +8303,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-vis@npm:^1.11.11":
+  version: 1.11.11
+  resolution: "@types/react-vis@npm:1.11.11"
+  dependencies:
+    "@types/react": "*"
+  checksum: 82683c5a8510636d182e4cac23de8cce03eebaa0f0a743b4af3599c3667a9e02e9d80416ce29218df02a9b59da4e60266089c85ad4d4ac420ce9f851b1108a05
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:*, @types/react@npm:16 || 17, @types/react@npm:^17.0.5":
   version: 17.0.39
   resolution: "@types/react@npm:17.0.39"
@@ -10659,6 +10668,13 @@ __metadata:
   version: 0.2.0
   resolution: "charcodes@npm:0.2.0"
   checksum: 972443ed359d54382e721b9db0a298eb95c4c454386f7e98886586f433e1e6686225416114e6f6bb2e6ef3facc9ba3b4ab9946a56a180fe64ef67816a05d4fe4
+  languageName: node
+  linkType: hard
+
+"chart.js@npm:^3.7.1":
+  version: 3.7.1
+  resolution: "chart.js@npm:3.7.1"
+  checksum: f9d118d3b7dd3c36b6da7a8d71ac9e5d9673b81095cc66c3f61ff91674e20020c6700f8c9c6f93713fa8474eb471ded106114346ccc6afa88b4a7d0eb73dcea4
   languageName: node
   linkType: hard
 
@@ -14190,6 +14206,7 @@ __metadata:
     "@types/lodash-es": ^4.17.6
     "@types/rails__activestorage": ^7.0.1
     "@types/react": ^17.0.5
+    "@types/react-vis": ^1.11.11
     "@typescript-eslint/eslint-plugin": ^5.10.1
     "@typescript-eslint/parser": ^5.10.1
     "@vizzuality/layer-manager-layers-deckgl": ^1.0.0-alpha.3
@@ -14198,6 +14215,7 @@ __metadata:
     "@vizzuality/layer-manager-react": ^1.0.0-alpha.3
     autoprefixer: ^10.4.2
     axios: ^0.21.1
+    chart.js: ^3.7.1
     classnames: ^2.3.1
     cycle: ^1.0.3
     d3-ease: ^2.0.0
@@ -14221,6 +14239,7 @@ __metadata:
     query-string: ^7.1.1
     react: ^17.0.2
     react-aria: ^3.6.0
+    react-chartjs-2: ^4.1.0
     react-dom: latest
     react-dropzone: ^14.2.0
     react-feather: ^2.0.9
@@ -19179,6 +19198,16 @@ __metadata:
     react: ^16.8.0 || ^17.0.0-rc.1
     react-dom: ^16.8.0 || ^17.0.0-rc.1
   checksum: ae5f2e42372d6f924c1a9e0551ffbaa121796d872c0f69c1383ded7e62e569b1a3c0fb7858817f842b3235b302eb28aa7628fd6852dd1ab635c43d990dab4117
+  languageName: node
+  linkType: hard
+
+"react-chartjs-2@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "react-chartjs-2@npm:4.1.0"
+  peerDependencies:
+    chart.js: ^3.5.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: fe01bdaf80c8a806af36e772719f420862e15e393a32c4c15b0e5fb8167143648e3f465b1b3ee8c4889f9531fff6ad6d34832606029ebf7d2751729198eb6121
   languageName: node
   linkType: hard
 

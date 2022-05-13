@@ -95,3 +95,10 @@ export enum TicketSizes {
   SDGType = 'sdg',
   Mosaic = 'mosaic',
 }
+
+export enum Impacts {
+  Biodiversity = 'biodiversity',
+  Climate = 'climate',
+  Water = 'water',
+  Community = 'community',
+}
