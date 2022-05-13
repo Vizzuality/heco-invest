@@ -22,6 +22,8 @@ namespace :api, format: "json" do
 
     resources :enums, only: [:index]
 
+    resources :background_job_events, only: [:index]
+
     scope "account", module: "accounts" do
       resource :project_developer, only: [:create, :update, :show]
       resource :investor, only: [:create, :update, :show]
