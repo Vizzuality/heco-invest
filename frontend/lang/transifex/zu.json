@@ -293,6 +293,9 @@
   "E/YxHp": {
     "string": "When will the project have the Verification badge?"
   },
+  "E1kj21": {
+    "string": "Project verification"
+  },
   "Ec0M9T": {
     "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
   },
@@ -1067,6 +1070,9 @@
   },
   "x/1DXz": {
     "string": "In the face of the economic and social crisis caused by the coronavirus pandemic, there is an urgent need to support the transition to a green, fair, and resilient economy that creates jobs, addresses inequality, and drives inclusive growth."
+  },
+  "x/AykP": {
+    "string": "Project ticket size"
   },
   "x6wKw3": {
     "string": "All selected options have been cleared."

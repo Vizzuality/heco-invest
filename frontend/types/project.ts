@@ -43,7 +43,7 @@ export type ProjectBase = {
   ticket_size?: TicketSizes;
   language: Languages;
   project_images: ProjectImageType[];
-  verified?: boolean;
+  trusted?: boolean;
   project_developer?: any; // Cannot use ProjectDeveloperType because linting will complain about circular references
 };
 
