@@ -15,6 +15,7 @@ import ActiveLink from 'components/active-link';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import LanguageSelector from 'layouts/shared/language-selector';
+import Logo from 'layouts/shared/logo';
 import NavigationMenuButton from 'layouts/shared/navigation-menu-button';
 import UserMenu from 'layouts/shared/user-menu';
 
@@ -54,9 +55,7 @@ export const Header: React.FC<HeaderProps> = ({
     >
       <LayoutContainer>
         <div className="flex items-center justify-between pt-3 pb-3 md:pt-6 md:pb-4 lg:space-x-10">
-          <Link href="/">
-            <a className="font-semibold">HeCo Invest</a>
-          </Link>
+          <Logo />
           <div className="flex">
             {/* NAVIGATION MENU LG */}
             <div className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end lg:mr-4">

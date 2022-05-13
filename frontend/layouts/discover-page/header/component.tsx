@@ -1,8 +1,7 @@
 import { FC } from 'react';
 
-import Link from 'next/link';
-
 import LayoutContainer from 'components/layout-container';
+import Logo from 'layouts/shared/logo';
 import NavigationMenuButton from 'layouts/shared/navigation-menu-button';
 import UserMenu from 'layouts/shared/user-menu';
 
@@ -14,9 +13,7 @@ export const Header: FC<HeaderProps> = ({}: HeaderProps) => {
       <header className="fixed top-0 z-10 w-full text-white border-b bg-green-dark backdrop-blur-sm">
         <LayoutContainer>
           <div className="flex items-center justify-between h-18">
-            <Link href="/">
-              <a className="font-semibold">HeCo Invest</a>
-            </Link>
+            <Logo />
             {/* Making space for the Search container in the layout, just in case */}
             <span className="max-w-3xl" />
             <div className="flex items-center gap-2 lg:gap-4">
