@@ -1,5 +1,7 @@
+import { Enum } from 'types/enums';
+
 export type ImpactChartProps = {
-  impact: number[];
-  labels: JSX.Element[] | string[];
+  impact?: number[];
+  impacts: Enum[];
   color: string;
 };

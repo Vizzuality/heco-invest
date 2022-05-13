@@ -49,8 +49,7 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
 }) => {
   const { category: categories, impact: impacts } = enums;
   const impactChartColor = categories.find(({ id }) => id === project.category)?.color;
-
-  const impactChartLabels = impacts.map(({ name }) => name);
+  const projectImpact = [3, 2.5, 6, 4];
 
   return (
     <>
@@ -66,17 +65,16 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
         <ProjectHeader className="mt-6" project={project} />
       </LayoutContainer>
 
-      <LayoutContainer className="mb-20 mt-18">
+      <LayoutContainer className="mb-20 mt-18 ">
         <section>Overview</section>
         <section>
           Impact
-          <div className="flex justify-between h-[470px]">
-            <div className="z-0 w-[470px] h-full">
-              <ImpactChart
-                labels={impactChartLabels}
-                color={impactChartColor}
-                impact={[30, 25, 60, 40]}
-              />
+          <div className="justify-between px-12 py-20 lg:flex bg-background-greenLight rounded-2xl">
+            <div className="w-1/3">
+              <h2>Estimated Impact</h2>
+            </div>
+            <div className="px-32 py-18">
+              <ImpactChart impacts={impacts} color={impactChartColor} impact={projectImpact} />
             </div>
           </div>
         </section>
