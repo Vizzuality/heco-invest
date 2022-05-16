@@ -41,7 +41,8 @@ class Project < ApplicationRecord
     :expected_impact,
     :sustainability,
     :replicability,
-    :progress_impact_tracking
+    :progress_impact_tracking,
+    :geometry
 
   validates :estimated_duration_in_months, numericality: {only_integer: true, greater_than: 0}, presence: true
   validates :trusted, inclusion: [true, false]
@@ -61,7 +62,7 @@ class Project < ApplicationRecord
 
   validates_uniqueness_of [*locale_columns(:name)], scope: [:project_developer_id], case_sensitive: false, allow_blank: true
   validate :location_types
-  validate :geometry_geojson
+  validates_with ProjectGeometryValidator
 
   before_validation :clear_funding_fields, unless: -> { looking_for_funding? }
   before_validation :clear_received_funding_fields, unless: -> { received_funding? }
@@ -96,15 +97,5 @@ class Project < ApplicationRecord
     errors.add :country, :location_type_mismatch if country && country.location_type != "country"
     errors.add :municipality, :location_type_mismatch if municipality && municipality.location_type != "municipality"
     errors.add :department, :location_type_mismatch if department && department.location_type != "department"
-  end
-
-  def geometry_geojson
-    return if geometry.blank? || !geometry_changed?
-
-    self.geometry = geometry.to_json unless geometry.is_a? String
-    self.geometry = RGeo::GeoJSON.encode(RGeo::GeoJSON.decode(geometry))
-    errors.add :geometry, :not_geojson if geometry.blank?
-  rescue JSON::ParserError
-    errors.add :geometry, :not_json
   end
 end

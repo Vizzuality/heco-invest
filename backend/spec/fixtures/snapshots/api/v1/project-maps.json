@@ -1,66 +1,66 @@
 {
   "data": [
     {
-      "id": "936f729d-4d36-4763-80bd-8cfd0c174d50",
+      "id": "2882f74f-3f5c-4569-b1d2-77074f87360c",
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": null,
-        "longitude": null
+        "latitude": "2.0",
+        "longitude": "1.0"
       }
     },
     {
-      "id": "72895ebc-c906-4e70-ad2b-16f037cd979b",
+      "id": "de68d9b0-fdb4-4f48-ad06-0932752f3c14",
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": null,
-        "longitude": null
+        "latitude": "2.0",
+        "longitude": "1.0"
       }
     },
     {
-      "id": "f171b56b-67f5-45e9-8bfc-6f4f00ce4184",
+      "id": "bf9f46b2-ab46-4e5d-ba44-b388117bd6ed",
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": null,
-        "longitude": null
+        "latitude": "2.0",
+        "longitude": "1.0"
       }
     },
     {
-      "id": "55fbf908-7f37-4dc1-be34-d8a4911adfd6",
+      "id": "654cbc02-2e70-4c0f-9c4f-78200c476494",
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": null,
-        "longitude": null
+        "latitude": "2.0",
+        "longitude": "1.0"
       }
     },
     {
-      "id": "de2a7979-3842-41a7-8b4e-093c91f51f4e",
+      "id": "c431c8d6-2bc2-4500-a105-9a6b8bd34150",
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": null,
-        "longitude": null
+        "latitude": "2.0",
+        "longitude": "1.0"
       }
     },
     {
-      "id": "72b8a80c-28e3-49f6-99bc-cfa7591353f5",
+      "id": "b521f30f-5d66-4158-bdc8-6b3bd2c7da3d",
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": null,
-        "longitude": null
+        "latitude": "2.0",
+        "longitude": "1.0"
       }
     },
     {
-      "id": "79661bbc-7a2e-4dad-9a7e-eea7f3ef35f6",
+      "id": "1925c723-6e4f-4c8a-9e91-93535cbbbbe6",
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": null,
-        "longitude": null
+        "latitude": "2.0",
+        "longitude": "1.0"
       }
     }
   ]
