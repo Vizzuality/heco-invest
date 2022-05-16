@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 
 import cx from 'classnames';
 
@@ -21,6 +21,11 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 }: DiscoverPageLayoutProps) => {
   const router = useRouter();
   const { query } = router;
+
+  // This shouldn't be needed, but due to CSS positioning / z-index issues we need to have the DiscoverSearch
+  // components both in the header and in this layout; which one is visible depends on the screen resolution.
+  // These states are here to keep both DiscoverSearch in sync, in case the user resizes their screen.
+  const [searchInputValue, setSearchInputValue] = useState('');
 
   const queryParams = useMemo(
     () => ({
@@ -54,10 +59,20 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     // if (router.pathname.startsWith(Paths.OpenCalls)) return openCalls;
   }, [isFetchingProjects, isLoadingProjects, projects, router.pathname]) || { data: [], meta: [] };
 
+  useEffect(() => {
+    setSearchInputValue(queryParams.search);
+  }, [queryParams.search]);
+
   const handleSearch = (searchText: string) => {
     router.push({ query: { ...queryParams, page: 1, search: searchText } }, undefined, {
       shallow: true,
     });
+  };
+
+  const discoverSearchProps = {
+    searchText: searchInputValue,
+    onSearch: handleSearch,
+    onSearchChange: setSearchInputValue,
   };
 
   const childrenWithProps = React.Children.map(children, (child) => {
@@ -72,12 +87,11 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     <div className="fixed top-0 bottom-0 left-0 right-0 h-screen bg-background-dark">
       <div className="flex flex-col h-screen">
         <div>
-          <Header />
-          <LayoutContainer className="z-10 flex justify-center pt-1 mt-20 mb-2 pointer-events-none xl:mb-6 xl:mt-0 xl:left-0 xl:right-0 xl:h-20 xl:fixed xl:top-3">
+          <Header {...discoverSearchProps} />
+          <LayoutContainer className="z-10 flex justify-center pt-1 mt-20 mb-2 pointer-events-none xl:hidden xl:mb-6 xl:mt-0 xl:left-0 xl:right-0 xl:h-20 xl:fixed xl:top-3">
             <DiscoverSearch
               className="w-full max-w-3xl pointer-events-auto"
-              defaultValue={queryParams.search}
-              onSearch={handleSearch}
+              {...discoverSearchProps}
             />
           </LayoutContainer>
         </div>
