@@ -14241,6 +14241,7 @@ __metadata:
     storybook-react-intl: ^1.0.5
     tailwindcss: ^3.0.23
     typescript: ^4.5.5
+    url-search-params-polyfill: ^8.1.1
     use-debounce: ^6.0.1
     webpack: ^5.68.0
     yup: ^0.32.11
@@ -22326,6 +22327,13 @@ __metadata:
     file-loader:
       optional: true
   checksum: c1122a992c6cff70a7e56dfc2b7474534d48eb40b2cc75467cde0c6972e7597faf8e43acb4f45f93c2473645dfd803bcbc20960b57544dd1e4c96e77f72ba6fd
+  languageName: node
+  linkType: hard
+
+"url-search-params-polyfill@npm:^8.1.1":
+  version: 8.1.1
+  resolution: "url-search-params-polyfill@npm:8.1.1"
+  checksum: c63169a8a70a256e73203c4404acf4fdbb38075f3f888ea38f92b09dc896190180cc9c072c927d7bb995c5a35e7729be8c4f7e876f83f8f8ab6fac263c971725
   languageName: node
   linkType: hard
 
