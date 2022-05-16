@@ -22,6 +22,16 @@ FactoryBot.define do
       end
     end
 
+    trait :with_geometry do
+      transient do
+        geometry { RGeo::GeoJSON.decode({type: "Polygon", coordinates: [[[0, 0], [1, 0], [1, 1], [0, 1]]]}.to_json) }
+      end
+
+      after(:create) do |location, evaluator|
+        create :location_geometry, location: location, geometry: evaluator.geometry
+      end
+    end
+
     factory :department do
       location_type { "department" }
 

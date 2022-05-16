@@ -9,8 +9,11 @@ RSpec.describe Importers::GeoJsons::Municipalities do
     context "when files does not exists at provided path" do
       let(:path) { "WRONG_PATH" }
 
+<<<<<<< HEAD
       before { allow(subject).to receive(:puts).with("GeoJSON at #{path} with location data was not found. Skipping location import!") }
 
+=======
+>>>>>>> feat: Services for importing data from geojsons
       it "return nil" do
         expect(subject.call).to be_nil
       end
@@ -34,6 +37,7 @@ RSpec.describe Importers::GeoJsons::Municipalities do
         expect(municipalities.pluck(:name_en)).to include("Abejorral")
       end
 
+<<<<<<< HEAD
       it "creates geometries records" do
         expect(LocationGeometry.count).to eq(municipalities.count)
         expect(municipalities.find_by(name_en: "Medellín").location_geometry.geometry)
@@ -41,6 +45,10 @@ RSpec.describe Importers::GeoJsons::Municipalities do
       end
 
       it "assign all impact related attributes" do
+=======
+      it "assign all impact related attributes" do
+        expect(municipalities.first.geometry).not_to be_nil
+>>>>>>> feat: Services for importing data from geojsons
         expect(municipalities.first.biodiversity).not_to be_nil
         expect(municipalities.first.biodiversity_demand).not_to be_nil
         expect(municipalities.first.climate).not_to be_nil
