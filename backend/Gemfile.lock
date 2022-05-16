@@ -59,6 +59,9 @@ GEM
     activerecord (7.0.2.4)
       activemodel (= 7.0.2.4)
       activesupport (= 7.0.2.4)
+    activerecord-postgis-adapter (8.0.0)
+      activerecord (~> 7.0.0)
+      rgeo-activerecord (~> 7.0.0)
     activestorage (7.0.2.4)
       actionpack (= 7.0.2.4)
       activejob (= 7.0.2.4)
@@ -381,6 +384,9 @@ GEM
     retriable (3.1.2)
     rexml (3.2.5)
     rgeo (2.4.0)
+    rgeo-activerecord (7.0.1)
+      activerecord (>= 5.0)
+      rgeo (>= 1.0.0)
     rgeo-geojson (2.1.1)
       rgeo (>= 1.0.0)
     rspec (3.11.0)
@@ -506,6 +512,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_storage_validations
+  activerecord-postgis-adapter
   annotate
   bootsnap
   brakeman

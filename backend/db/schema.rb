@@ -13,6 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.text "name", null: false
@@ -152,6 +153,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "code"
+    t.geometry "geometry", limit: {:srid=>0, :type=>"geometry"}
+    t.decimal "biodiversity", precision: 25, scale: 20
+    t.decimal "biodiversity_demand", precision: 25, scale: 20
+    t.decimal "climate", precision: 25, scale: 20
+    t.decimal "climate_demand", precision: 25, scale: 20
+    t.decimal "community", precision: 25, scale: 20
+    t.decimal "community_demand", precision: 25, scale: 20
+    t.decimal "water", precision: 25, scale: 20
+    t.decimal "water_demand", precision: 25, scale: 20
     t.index ["location_type", "name_en"], name: "uniq_name_en_without_parent_id", unique: true, where: "(parent_id IS NULL)"
     t.index ["location_type", "name_es"], name: "uniq_name_es_without_parent_id", unique: true, where: "(parent_id IS NULL)"
     t.index ["location_type", "name_pt"], name: "uniq_name_pt_without_parent_id", unique: true, where: "(parent_id IS NULL)"

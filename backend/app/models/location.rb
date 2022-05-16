@@ -3,9 +3,12 @@ class Location < ApplicationRecord
 
   has_many :locations, class_name: "Location", foreign_key: "parent_id", dependent: :destroy
   has_many :location_members, dependent: :destroy
-  has_many :regions, through: :location_members, source: :member
-  has_many :project_developer_locations, dependent: :destroy
-  has_many :project_developers, through: :project_developer_locations
+  has_many :regions, -> { where(location_type: :region) }, through: :location_members, source: :member
+  has_many :basins, -> { where(location_type: :basin) }, through: :location_members, source: :member
+
+  has_many :country_projects, class_name: "Project", foreign_key: "country_id", dependent: :destroy
+  has_many :municipality_projects, class_name: "Project", foreign_key: "municipality_id", dependent: :destroy
+  has_many :department_projects, class_name: "Project", foreign_key: "department_id", dependent: :destroy
 
   LocationType::TYPES.each do |location_type|
     scope location_type, -> { where(location_type: location_type) }
