@@ -41,7 +41,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     data: projects,
     isLoading: isLoadingProjects,
     isFetching: isFetchingProjects,
-  } = useProjectsList(queryParams, queryOptions);
+  } = useProjectsList({ ...queryParams, includes: ['project_developer'] }, queryOptions);
 
   const stats = {
     projects: projects?.meta?.total,

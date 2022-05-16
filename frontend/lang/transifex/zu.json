@@ -173,6 +173,9 @@
   "7eO+k/": {
     "string": "Enter the estimated implementation duration for the project. MAX 24 months."
   },
+  "7gMEKc": {
+    "string": "Project details"
+  },
   "7qgtEX": {
     "string": "Invests in SDG's"
   },
@@ -423,6 +426,9 @@
   "JkLHGw": {
     "string": "Website"
   },
+  "Jl9QMO": {
+    "string": "Estimated impact"
+  },
   "Jwjqn/": {
     "string": "focused"
   },
@@ -449,6 +455,9 @@
   },
   "MF4b8Z": {
     "string": "Use at least 12 characters, one uppercase letter, one lowercase letter and one number."
+  },
+  "MFPJ9u": {
+    "string": "In the municipality the project has higher impact on <b>{impactOn}</b> and has an <b>impact score</b> of {score}."
   },
   "MH3koz": {
     "string": "Previous slide"
@@ -659,6 +668,9 @@
   },
   "XkF/qg": {
     "string": "Profile picture of {name}"
+  },
+  "XyKb4V": {
+    "string": "In the municipality the the project has higher impact on <b>{impactOn}</b> and has an impact score of <b>{score}</b>."
   },
   "Y7/cBd": {
     "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and <span>start the conversation</span>. Make sure to update us to help us track your contribution to preserving the Amazon: <span>the future is in your hands too!</span>"

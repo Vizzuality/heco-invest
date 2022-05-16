@@ -17,7 +17,12 @@ const getProjects = async (params?: PagedRequest): Promise<PagedResponse<Project
   const config: AxiosRequestConfig = {
     url: '/api/v1/projects',
     method: 'GET',
-    params: { ...rest, 'filter[full_text]': params.search, 'page[number]': params.page },
+    params: {
+      ...rest,
+      includes: params.includes.join(','),
+      'filter[full_text]': params.search,
+      'page[number]': params.page,
+    },
   };
   return await API.request(config).then((result) => result.data);
 };

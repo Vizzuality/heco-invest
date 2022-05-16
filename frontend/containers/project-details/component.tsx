@@ -12,6 +12,7 @@ import CategoryTag from 'containers/category-tag';
 import SDGs from 'containers/sdgs';
 
 import Button from 'components/button';
+import ImpactChart from 'components/impact-chart';
 import Tag from 'components/tag';
 import { Paths } from 'enums';
 import sdgsMock from 'mockups/sdgs.json';
@@ -173,14 +174,30 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
           <span>{projectDeveloper.name}</span>
         </div>
         <FavoriteContact className="mt-10 mb-6" project={project} />
-        {/*
+        {/* TODO: Add impact values */}
         <div className="my-2 text-gray-900" aria-describedby="estimated-impact">
           <h2 id="estimated-impact" className="text-xl font-semibold">
             <FormattedMessage defaultMessage="Estimated impact" id="Jl9QMO" />
           </h2>
-          TODO: Show estimated impact
+          <p className="mt-3">
+            <FormattedMessage
+              defaultMessage="In the municipality the project has higher impact on <b>{impactOn}</b> and has an <b>impact score</b>
+            of {score}."
+              values={{
+                impactOn: 'Water',
+                score: 30,
+                b: (chunks) => <span className="font-semibold">{chunks}</span>,
+              }}
+              id="MFPJ9u"
+            />
+          </p>
+          <ImpactChart
+            className="my-4"
+            category="forestry-and-agroforestry"
+            impact={[3, 5, 6, 5]}
+          />
         </div>
-        */}
+        {/* /TODO: Add impact values */}
         <div className="mt-4 text-gray-900" aria-describedby="sdgs">
           <h2 id="sdgs" className="text-xl font-semibold">
             <FormattedMessage defaultMessage="SDGs" id="JQjEP9" />

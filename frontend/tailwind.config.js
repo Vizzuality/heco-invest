@@ -81,6 +81,9 @@ module.exports = {
         'auto-1fr': 'auto 1fr',
         '1fr-auto': '1fr auto',
       },
+      inset: {
+        '5/12': '41.666667%',
+      },
       backgroundImage: {
         'radial-green-dark':
           'radial-gradient(63.59% 95.05% at 42.99% 35.35%, #316146 0%, #073525 100%)',
