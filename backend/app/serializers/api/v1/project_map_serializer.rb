@@ -1,7 +1,7 @@
 module API
   module V1
     class ProjectMapSerializer < BaseSerializer
-      attributes :geometry, :latitude, :longitude
+      attributes :trusted, :latitude, :longitude
     end
   end
 end

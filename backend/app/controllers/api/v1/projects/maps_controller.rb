@@ -3,7 +3,7 @@ module API
     module Projects
       class MapsController < BaseController
         def show
-          projects = Project.select(:id, :geometry, :latitude, :longitude)
+          projects = Project.select(:id, :trusted, :latitude, :longitude)
           projects = API::Filterer.new(projects, filter_params.to_h).call
           render json: ProjectMapSerializer.new(projects).serializable_hash
         end

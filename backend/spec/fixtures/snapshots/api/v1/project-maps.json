@@ -1,106 +1,64 @@
 {
   "data": [
     {
-      "id": "51428731-e670-4e07-86a9-27f6a647f26b",
+      "id": "936f729d-4d36-4763-80bd-8cfd0c174d50",
       "type": "project_map",
       "attributes": {
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            1.0,
-            2.0
-          ]
-        },
+        "trusted": false,
         "latitude": null,
         "longitude": null
       }
     },
     {
-      "id": "70a28893-0188-4bc4-96ab-3eb1279181fc",
+      "id": "72895ebc-c906-4e70-ad2b-16f037cd979b",
       "type": "project_map",
       "attributes": {
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            1.0,
-            2.0
-          ]
-        },
+        "trusted": false,
         "latitude": null,
         "longitude": null
       }
     },
     {
-      "id": "fc9d0266-7737-42ba-90ee-928aac757b5d",
+      "id": "f171b56b-67f5-45e9-8bfc-6f4f00ce4184",
       "type": "project_map",
       "attributes": {
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            1.0,
-            2.0
-          ]
-        },
+        "trusted": false,
         "latitude": null,
         "longitude": null
       }
     },
     {
-      "id": "ac961ad7-53df-4aa2-8054-9decf058b72e",
+      "id": "55fbf908-7f37-4dc1-be34-d8a4911adfd6",
       "type": "project_map",
       "attributes": {
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            1.0,
-            2.0
-          ]
-        },
+        "trusted": false,
         "latitude": null,
         "longitude": null
       }
     },
     {
-      "id": "c25db8c5-ef83-4e1e-864a-8b2675163629",
+      "id": "de2a7979-3842-41a7-8b4e-093c91f51f4e",
       "type": "project_map",
       "attributes": {
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            1.0,
-            2.0
-          ]
-        },
+        "trusted": false,
         "latitude": null,
         "longitude": null
       }
     },
     {
-      "id": "109bc052-94d5-4e3f-8c97-46838e9103ef",
+      "id": "72b8a80c-28e3-49f6-99bc-cfa7591353f5",
       "type": "project_map",
       "attributes": {
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            1.0,
-            2.0
-          ]
-        },
+        "trusted": false,
         "latitude": null,
         "longitude": null
       }
     },
     {
-      "id": "208f6fa5-e19d-475a-b19a-6b73962adc7d",
+      "id": "79661bbc-7a2e-4dad-9a7e-eea7f3ef35f6",
       "type": "project_map",
       "attributes": {
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            1.0,
-            2.0
-          ]
-        },
+        "trusted": false,
         "latitude": null,
         "longitude": null
       }
