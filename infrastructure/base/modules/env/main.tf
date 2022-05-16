@@ -148,10 +148,6 @@ module "backend_cloudrun" {
       value = module.database.database_host
     },
     {
-      name  = "GCP_PROJECT_ID"
-      value = var.gcp_project_id
-    },
-    {
       name  = "GCP_STORAGE_BUCKET"
       value = module.backend_storage.bucket_name
     },

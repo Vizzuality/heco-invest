@@ -1,6 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Translations::Translate do
+  before do
+    credentials = double(Google::Auth::UserRefreshCredentials)
+    allow(credentials).to receive(:quota_project_id).and_return("heco")
+    allow(Google::Auth).to receive(:get_application_default).and_return(credentials)
+  end
   subject { described_class.new resource }
 
   describe "#call" do

@@ -4,6 +4,8 @@ module Translations
 
     def initialize(resource)
       @resource = resource
+      # try to obtain project id automatically
+      @project_id = Google::Auth.get_application_default.quota_project_id
     end
 
     def call
@@ -27,7 +29,7 @@ module Translations
       response = client.translate_text contents: translatable_content,
         source_language_code: source_language_code,
         target_language_code: language,
-        parent: "#{resource.table_name}/#{ENV["GCP_PROJECT_ID"]}/locations/global",
+        parent: "#{resource.table_name}/#{@project_id}/locations/global",
         mime_type: "text/plain"
       response.translations.map(&:translated_text)
     rescue Google::Cloud::Error => exception

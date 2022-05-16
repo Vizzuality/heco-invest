@@ -15,9 +15,6 @@ Cloud Tasks configuration
 CLOUDTASKER_PROCESSOR_HOST - with protocol, as available from within the platform, e.g. http://localhost:4000
 CLOUDTASKER_PROCESSOR_PATH - /backend/cloudtasker/run
 
-For Translation API
-GCP_PROJECT_ID=
-
 DATABASE_NAME
 DATABASE_USER
 DATABASE_PASSWORD
