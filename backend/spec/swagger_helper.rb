@@ -241,6 +241,27 @@ RSpec.configure do |config|
             },
             required: %w[id type attributes relationships]
           },
+          background_job_event: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              type: {type: :string},
+              attributes: {
+                type: :object,
+                properties: {
+                  status: {type: :string},
+                  arguments: {type: :array},
+                  queue_name: {type: :string},
+                  priority: {type: :string, nullable: true},
+                  executions: {type: :integer},
+                  message: {type: :object, nullable: true},
+                  created_at: {type: :string},
+                  updated_at: {type: :string}
+                }
+              }
+            },
+            required: %w[id type attributes]
+          },
           enum: {
             type: :object,
             properties: {

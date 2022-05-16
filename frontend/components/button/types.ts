@@ -12,7 +12,7 @@ export interface ButtonCommonProps {
     | 'secondary-white'
     | 'naked';
   /** Size of the button */
-  size?: 'base' | 'small';
+  size?: 'base' | 'small' | 'smallest';
   /** Icon of the button */
   icon?: IconProps['icon'];
 }
