@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { FC, useMemo } from 'react';
 
 import cx from 'classnames';
 
@@ -22,10 +22,6 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   const router = useRouter();
   const { query } = router;
 
-  // We're keeping data in a state so that, while we're fetching new data,
-  // we can keep the existing one visible in the screen (and add a loading spinner).
-  const [projects, setProjects] = useState({ data: undefined, meta: undefined });
-
   const queryParams = useMemo(
     () => ({
       page: parseInt(query.page as string) || 1,
@@ -34,16 +30,13 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     [query]
   );
 
-  const {
-    data: projectsData,
-    isFetching: isFetchingProjects,
-    isLoading: isLoadingProjects,
-  } = useProjectsList(queryParams);
+  const queryOptions = { keepPreviousData: true };
 
-  useEffect(() => {
-    if (isFetchingProjects) return;
-    setProjects(projectsData);
-  }, [isFetchingProjects, projectsData]);
+  const {
+    data: projects,
+    isLoading: isLoadingProjects,
+    isFetching: isFetchingProjects,
+  } = useProjectsList(queryParams, queryOptions);
 
   const stats = {
     projects: projects?.meta?.total,
@@ -55,11 +48,11 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   const { data, meta, loading } = useMemo(() => {
     // TODO: Find a way to improve this.
     if (router.pathname.startsWith(Paths.Projects))
-      return { ...projects, loading: isLoadingProjects };
+      return { ...projects, loading: isLoadingProjects || isFetchingProjects };
     // if (router.pathname.startsWith(Paths.ProjectDevelopers)) return projectDevelopers;
     // if (router.pathname.startsWith(Paths.Investors)) return investors;
     // if (router.pathname.startsWith(Paths.OpenCalls)) return openCalls;
-  }, [isLoadingProjects, projects, router.pathname]) || { data: [], meta: [] };
+  }, [isFetchingProjects, isLoadingProjects, projects, router.pathname]) || { data: [], meta: [] };
 
   const handleSearch = (searchText: string) => {
     router.push({ query: { ...queryParams, page: 1, search: searchText } }, undefined, {
