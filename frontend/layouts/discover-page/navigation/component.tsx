@@ -11,36 +11,52 @@ import { NavigationProps } from './types';
 
 export const Navigation: FC<NavigationProps> = ({ stats }: NavigationProps) => {
   const intl = useIntl();
-  const { asPath } = useRouter();
+  const { asPath, query } = useRouter();
+
+  // Pick the query params we want to preserve in the navigation links (search, filters, sorting)
+  const queryParams = {
+    ...(query.search && { search: query.search as string }),
+    // TODO: Filters
+    // TODO: Sorting
+  };
+
+  // Build a query string to append to each link
+  const queryString = Object.keys(queryParams).length
+    ? `?${new URLSearchParams(queryParams).toString()}`
+    : '';
 
   const navigationItems = [
     {
       id: 'projects',
       name: intl.formatMessage({ defaultMessage: 'Projects', id: 'UxTJRa' }),
-      link: Paths.Projects,
+      path: Paths.Projects,
+      link: `${Paths.Projects}${queryString}`,
       number: stats?.projects,
     },
     {
       id: 'open-calls',
       name: intl.formatMessage({ defaultMessage: 'Open Calls', id: 'wpyHb9' }),
-      link: Paths.OpenCalls,
+      path: Paths.OpenCalls,
+      link: `${Paths.OpenCalls}${queryString}`,
       number: stats?.openCalls,
     },
     {
       id: 'project-developers',
       name: intl.formatMessage({ defaultMessage: 'Project Developers', id: '+K9fF0' }),
-      link: Paths.ProjectDevelopers,
+      path: Paths.ProjectDevelopers,
+      link: `${Paths.ProjectDevelopers}${queryString}`,
       number: stats?.projectDevelopers,
     },
     {
       id: 'investors',
       name: intl.formatMessage({ defaultMessage: 'Investors', id: 'zdIaHp' }),
-      link: Paths.Investors,
+      path: Paths.Investors,
+      link: `${Paths.Investors}${queryString}`,
       number: stats?.investors,
     },
   ];
 
-  const activeId = navigationItems.find(({ id, link }) => asPath.startsWith(link))?.id;
+  const activeId = navigationItems.find(({ path }) => asPath.startsWith(path))?.id;
 
   return (
     <div className="flex items-center w-full pb-3 -mb-3 overflow-x-scroll">
