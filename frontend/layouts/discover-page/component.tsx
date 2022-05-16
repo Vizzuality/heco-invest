@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 import { useRouter } from 'next/router';
 
-import DiscoverSearch from 'containers/discover-search';
+import DiscoverSearch from 'containers/layouts/discover-search';
 
 import LayoutContainer from 'components/layout-container';
 import { Paths } from 'enums';
