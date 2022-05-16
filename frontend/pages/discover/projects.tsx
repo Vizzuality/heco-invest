@@ -2,6 +2,8 @@ import { useRef } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
+import cx from 'classnames';
+
 import { useScrollOnQuery } from 'hooks/use-scroll-on-query';
 import { usePagination } from 'hooks/usePagination';
 
@@ -47,10 +49,14 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
       <div className="relative flex flex-col w-full lg:overflow-hidden lg:w-5/12">
         <div
           ref={projectsContainerRef}
-          className="relative flex-grow lg:pr-2.5 lg:overflow-y-scroll"
+          className={cx({
+            'relative flex-grow lg:pr-2.5': true,
+            'lg:overflow-y-scroll': !loading,
+            'lg:pointer-events-none lg:overflow-hidden': loading,
+          })}
         >
           {loading && (
-            <span className="absolute z-20 flex items-center justify-center bg-gray-600 bg-opacity-20 top-1 bottom-1 left-1 right-2 rounded-2xl">
+            <span className="absolute bottom-0 z-20 flex items-center justify-center bg-gray-600 bg-opacity-20 top-1 left-1 right-3 rounded-2xl">
               <Loading visible={loading} iconClassName="w-10 h-10" />
             </span>
           )}
