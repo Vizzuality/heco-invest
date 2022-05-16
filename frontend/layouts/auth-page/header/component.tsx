@@ -6,9 +6,10 @@ import cx from 'classnames';
 
 import Link from 'next/link';
 
+import LanguageSelector from 'containers/layouts/language-selector';
+import Logo from 'containers/layouts/logo';
+
 import LayoutContainer from 'components/layout-container';
-import LanguageSelector from 'layouts/shared/language-selector';
-import Logo from 'layouts/shared/logo';
 
 import { HeaderProps } from './types';
 

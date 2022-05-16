@@ -4,12 +4,13 @@ import cx from 'classnames';
 
 import { useWindowScrollPosition } from 'rooks';
 
+import LanguageSelector from 'containers/layouts/language-selector';
+import Logo from 'containers/layouts/logo';
+import Navigation from 'containers/layouts/navigation';
+import NavigationMenuButton from 'containers/layouts/navigation-menu-button';
+import UserMenu from 'containers/layouts/user-menu';
+
 import LayoutContainer from 'components/layout-container';
-import LanguageSelector from 'layouts/shared/language-selector';
-import Logo from 'layouts/shared/logo';
-import Navigation from 'layouts/shared/navigation';
-import NavigationMenuButton from 'layouts/shared/navigation-menu-button';
-import UserMenu from 'layouts/shared/user-menu';
 
 import { HeaderProps } from './types';
 

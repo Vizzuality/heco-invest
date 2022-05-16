@@ -1,9 +1,10 @@
 import { FC } from 'react';
 
+import Logo from 'containers/layouts/logo';
+import NavigationMenuButton from 'containers/layouts/navigation-menu-button';
+import UserMenu from 'containers/layouts/user-menu';
+
 import LayoutContainer from 'components/layout-container';
-import Logo from 'layouts/shared/logo';
-import NavigationMenuButton from 'layouts/shared/navigation-menu-button';
-import UserMenu from 'layouts/shared/user-menu';
 
 import { HeaderProps } from './types';
 
