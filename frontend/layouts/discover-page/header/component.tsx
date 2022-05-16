@@ -22,7 +22,7 @@ export const Header: FC<HeaderProps> = ({ ...discoverSearchProps }: HeaderProps)
               <DiscoverSearch {...discoverSearchProps} />
             </span>
             <span className="flex items-center justify-end flex-1 gap-2 lg:gap-4">
-              <UserMenu />
+              <UserMenu className="hidden sm:flex" />
               <NavigationMenuButton />
             </span>
           </div>
