@@ -29,7 +29,7 @@ module Translations
       response = client.translate_text contents: translatable_content,
         source_language_code: source_language_code,
         target_language_code: language,
-        parent: "#{resource.table_name}/#{@project_id}/locations/global",
+        parent: "#{resource.class.table_name}/#{@project_id}/locations/global",
         mime_type: "text/plain"
       response.translations.map(&:translated_text)
     rescue Google::Cloud::Error => exception
