@@ -62,7 +62,9 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   }, [isLoadingProjects, projects, router.pathname]) || { data: [], meta: [] };
 
   const handleSearch = (searchText: string) => {
-    router.push({ query: { ...queryParams, page: 1, search: searchText } });
+    router.push({ query: { ...queryParams, page: 1, search: searchText } }, undefined, {
+      shallow: true,
+    });
   };
 
   const childrenWithProps = React.Children.map(children, (child) => {
