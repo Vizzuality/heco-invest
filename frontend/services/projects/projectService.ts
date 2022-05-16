@@ -11,7 +11,7 @@ import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
 import { PagedResponse, ErrorResponse, PagedRequest, ResponseData } from 'services/types';
 
-/** Get a paged list of project developers */
+/** Get a paged list of projects */
 const getProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
   const { search, page, ...rest } = params;
   const config: AxiosRequestConfig = {
@@ -22,7 +22,7 @@ const getProjects = async (params?: PagedRequest): Promise<PagedResponse<Project
   return await API.request(config).then((result) => result.data);
 };
 
-/** Hook to use the the Project Developers list */
+/** Hook to use the the projects list */
 export function useProjectsList(
   params?: PagedRequest
 ): UseQueryResult<PagedResponse<Project>> & { projects: Project[] } {
