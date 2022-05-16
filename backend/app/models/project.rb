@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
   extend FriendlyId
+  include Translatable
   include Searchable
+
   friendly_id :project_developer_prefixed_name, use: :slugged
 
   belongs_to :project_developer

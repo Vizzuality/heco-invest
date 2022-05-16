@@ -1,5 +1,7 @@
 class Account < ApplicationRecord
   extend FriendlyId
+  include Translatable
+
   friendly_id :name, use: :slugged
 
   belongs_to :owner, class_name: "User"

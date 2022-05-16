@@ -4,6 +4,7 @@ RSpec.describe Project, type: :model do
   subject { build(:project) }
 
   it_behaves_like :searchable
+  it_behaves_like :translatable
 
   it { is_expected.to be_valid }
 

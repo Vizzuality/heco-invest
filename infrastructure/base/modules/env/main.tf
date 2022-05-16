@@ -251,3 +251,7 @@ module "load_balancer" {
   domain                  = var.domain
   dns_managed_zone_name   = module.dns.dns_zone_name
 }
+
+module "translation" {
+  source                  = "../translation"
+}
