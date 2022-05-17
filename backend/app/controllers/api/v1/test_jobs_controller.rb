@@ -1,6 +1,8 @@
 module API
   module V1
     class TestJobsController < BaseController
+      skip_forgery_protection
+
       def test_sync
         TestJob.perform_now(params[:email])
         head :ok
