@@ -65,16 +65,16 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
           hiddenSections={{ 'user-section': 'sm' }}
         >
           <MenuSection>
-            <MenuItem key="/discover">
+            <MenuItem key={Paths.Projects}>
               <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
             </MenuItem>
-            <MenuItem key="/investors">
+            <MenuItem key={Paths.Investors}>
               <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
             </MenuItem>
-            <MenuItem key="/project-developers">
+            <MenuItem key={Paths.ProjectDevelopers}>
               <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
             </MenuItem>
-            <MenuItem key="/about">
+            <MenuItem key={Paths.About}>
               <FormattedMessage defaultMessage="About" id="g5pX+a" />
             </MenuItem>
           </MenuSection>
