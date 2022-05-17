@@ -10,14 +10,6 @@ module Importers
           geometry: feature.geometry
         }
       end
-
-      def find_correct_record_for(feature)
-        data.find { |record| record.name == titleize_of(feature.properties["nombre_ent"]) }
-      end
-
-      def query
-        @query ||= Location.where(location_type: :country).to_a
-      end
     end
   end
 end

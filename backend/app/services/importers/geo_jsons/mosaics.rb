@@ -19,10 +19,6 @@ module Importers
           water_demand: feature.properties["water_demand"]
         }
       end
-
-      def query
-        @query ||= Location.where(parent_id: country.id, location_type: :region).to_a
-      end
     end
   end
 end

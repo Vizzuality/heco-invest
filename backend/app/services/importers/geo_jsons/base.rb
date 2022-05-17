@@ -11,8 +11,7 @@ module Importers
       def call
         Location.transaction do
           attrs = RGeo::GeoJSON.decode(File.read(path)).to_a.map { |feature| attributes_of_record_for feature }
-          Location.where(id: query.pluck(:id)).upsert_all attrs, unique_by: uniq_key_for(attrs)
-          Location.where(id: query.pluck(:id), geometry: nil).destroy_all
+          Location.upsert_all attrs, unique_by: uniq_key_for(attrs)
         end
       rescue Errno::ENOENT
         # pass
@@ -21,10 +20,6 @@ module Importers
       private
 
       def attributes_of_record_for(feature)
-        raise NotImplementedError
-      end
-
-      def query
         raise NotImplementedError
       end
 

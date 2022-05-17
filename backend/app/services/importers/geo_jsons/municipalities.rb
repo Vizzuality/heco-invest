@@ -22,22 +22,18 @@ module Importers
       end
 
       def find_correct_department_for(feature)
-        departments.find { |record| record.name == titleize_of(feature.properties["departamen"]) } || create_department_from(feature)
+        departments[titleize_of(feature.properties["departamen"])]&.first || create_department_from(feature)
       end
 
       def create_department_from(feature)
         new_record = Location.create! location_type: :department, parent_id: country.id,
           name: titleize_of(feature.properties["departamen"]), code: feature.properties["cod_depart"]
-        departments << new_record
+        departments[titleize_of(feature.properties["departamen"])] = [new_record]
         new_record
       end
 
-      def query
-        @query ||= Location.where(parent_id: departments.pluck(:id), location_type: :municipality).to_a
-      end
-
       def departments
-        @departments ||= Location.where(parent_id: country.id, location_type: :department).to_a
+        @departments ||= Location.where(parent_id: country.id, location_type: :department).group_by(&:name)
       end
     end
   end
