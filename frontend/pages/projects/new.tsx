@@ -8,6 +8,8 @@ import { useRouter } from 'next/router';
 
 import { InferGetStaticPropsType } from 'next';
 
+import useMe from 'hooks/me';
+
 import { loadI18nMessages } from 'helpers/i18n';
 import { getServiceErrors, useGetAlert } from 'helpers/pages';
 
@@ -23,7 +25,7 @@ import {
 } from 'containers/project-form-pages';
 
 import Head from 'components/head';
-import { Paths, Queries } from 'enums';
+import { Paths, Queries, UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import { PageComponent } from 'types';
 import { ProjectCreationPayload, ProjectForm } from 'types/project';
@@ -50,6 +52,9 @@ export async function getStaticProps(ctx) {
 type ProjectProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
+  // Get the user and redirect if it it's not signed in or doesn't have the permissions
+  useMe({ protectedPage: true, roles: [UserRoles.ProjectDeveloper] });
+
   const [currentPage, setCurrentPage] = useState(0);
   const [showLeave, setShowLeave] = useState(false);
   const { formatMessage } = useIntl();
