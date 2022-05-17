@@ -5,6 +5,7 @@ export enum Languages {
 }
 
 export enum Paths {
+  Home = '/',
   SignUp = '/sign-up',
   SignIn = '/sign-in',
   SignOut = '/sign-out',
