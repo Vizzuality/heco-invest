@@ -15,18 +15,26 @@ import {
 
 import FieldInfo from 'components/forms/field-info';
 
+import { useEnums } from 'services/enums/enumService';
+
 import { ImpactChartProps } from './types';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip);
 
-export const ImpactChart: FC<ImpactChartProps> = ({ color, impact = [], impacts }) => {
-  const isPlaceholder = false;
+export const ImpactChart: FC<ImpactChartProps> = ({ category, impact = [] }) => {
+  const {
+    data: { impact: impacts, category: categories },
+  } = useEnums();
+
+  const color = categories?.find(({ id }) => id === category)?.color;
+
+  const isPlaceholder = !impact?.length;
 
   const data: ChartData<'radar'> = {
     labels: ['', '', '', ''],
     datasets: [
       {
-        data: [3, 5, 6, 4],
+        data: impact,
         backgroundColor: color,
         borderColor: color,
         borderJoinStyle: 'round',
@@ -48,7 +56,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({ color, impact = [], impacts 
         pointLabels: { font: { family: 'Work Sans', weight: '600', size: 14 }, display: false },
         grid: {
           circular: true,
-          color: isPlaceholder ? 'rgba(227, 222, 214, 0.7)' : 'rgba(227, 222, 214, 1)',
+          color: isPlaceholder ? 'rgba(227, 222, 214, 0.5)' : 'rgba(227, 222, 214, 1)',
           borderDash: isPlaceholder ? [2, 2] : [],
         },
         beginAtZero: true,
@@ -75,30 +83,37 @@ export const ImpactChart: FC<ImpactChartProps> = ({ color, impact = [], impacts 
     },
   };
 
+  // [470px]
+
   return (
-    <div className="flex justify-between h-[470px]">
-      <div className="z-1 m-2 absolute w-[453px] h-[453px] flex flex-col justify-between items-center  bg-background-light rounded-full">
-        <div className="absolute w-1/2 rounded-full top-[25%] bg-white h-1/2"></div>
-        <div className="translate-y-[-140%]">
-          <span className="mr-2">{impacts[0].name}</span>
-          <FieldInfo infoText={impacts[0].description} />
-        </div>
-        <div className="flex justify-between w-full">
-          <div className="translate-x-[-140%]">
-            <span className="mr-2">{impacts[1].name}</span>
-            <FieldInfo infoText={impacts[1].description} />
+    <div className="flex justify-between w-[250px] h-[250px] sm:w-[470px] sm:h-[470px]">
+      {/* This is a background and labels for the chart. Since the library doen't allow using elements as labels, this is an alternative way to add labels with incons and tooltips */}
+      {impacts?.length && (
+        <div className="z-1 m-2 absolute w-[232px] h-[232px] sm:w-[453px] sm:h-[453px] flex flex-col justify-between items-center  bg-background-middle rounded-full">
+          {!isPlaceholder && (
+            <div className="absolute w-1/2 rounded-full top-[25%] bg-white h-1/2" />
+          )}
+          <div className="translate-y-[-140%]">
+            <span className="mr-2">{impacts[0].name}</span>
+            <FieldInfo infoText={impacts[0].description} />
           </div>
-          <div className="translate-x-[140%]">
-            <span className="mr-2">{impacts[2].name}</span>
-            <FieldInfo infoText={impacts[2].description} />
+          <div className="flex justify-between w-full">
+            <div className="translate-x-[-140%]">
+              <span className="mr-2">{impacts[1].name}</span>
+              <FieldInfo infoText={impacts[1].description} />
+            </div>
+            <div className="translate-x-[140%]">
+              <span className="mr-2">{impacts[2].name}</span>
+              <FieldInfo infoText={impacts[2].description} />
+            </div>
+          </div>
+          <div className="translate-y-[140%]">
+            <span className="mr-2">{impacts[3].name}</span>
+            <FieldInfo infoText={impacts[3].description} />
           </div>
         </div>
-        <div className="translate-y-[140%]">
-          <span className="mr-2">{impacts[3].name}</span>
-          <FieldInfo infoText={impacts[3].description} />
-        </div>
-      </div>
-      <div className="z-0 w-[470px] h-full">
+      )}
+      <div className="z-0 w-full h-full">
         <Radar width="100%" height="100%" data={data} options={options} />
       </div>
     </div>
