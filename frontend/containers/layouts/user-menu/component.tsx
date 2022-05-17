@@ -1,0 +1,131 @@
+import { FC, useState, useCallback } from 'react';
+
+import { ChevronDown as ChevronDownIcon } from 'react-feather';
+import { FormattedMessage, useIntl } from 'react-intl';
+
+import cx from 'classnames';
+
+import { useRouter } from 'next/router';
+
+import useMe from 'hooks/me';
+
+import { getUserInitials } from 'helpers/user';
+
+import Button from 'components/button';
+import Menu, { MenuItem, MenuSection } from 'components/menu';
+import { Paths } from 'enums';
+
+import { useCurrentProjectDeveloper } from 'services/project-developers/projectDevelopersService';
+
+import { UserMenuProps } from './types';
+
+export const UserMenu: FC<UserMenuProps> = ({
+  className,
+  theme = 'primary-white',
+}: UserMenuProps) => {
+  const router = useRouter();
+  const intl = useIntl();
+  const { user } = useMe();
+  const { projectDeveloper } = useCurrentProjectDeveloper(user);
+  const investor = undefined; // Important!!! Include the current investor when available
+
+  const showBackground = false;
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const onClickMenuItem = useCallback(
+    (key) => {
+      switch (key) {
+        default:
+          router.push(key);
+          break;
+      }
+    },
+    [router]
+  );
+
+  const account = projectDeveloper || investor;
+
+  return (
+    <div className={className}>
+      <div className="items-center">
+        {!!user ? (
+          <Menu
+            Trigger={
+              <Button
+                aria-label={intl.formatMessage({ defaultMessage: 'User menu', id: '6b2CRH' })}
+                className="px-0 focus-visible:outline-green-dark"
+                theme="naked"
+                size="small"
+                aria-expanded={menuOpen}
+                onClick={() => setMenuOpen(true)}
+              >
+                <span
+                  className={cx('w-8 h-8 rounded-full flex justify-center items-center', {
+                    'bg-green-dark text-white': showBackground,
+                    'text-green-dark bg-white': !showBackground,
+                  })}
+                >
+                  {getUserInitials(user)}
+                </span>
+                <ChevronDownIcon className="inline-block w-4 h-4 ml-1" />
+              </Button>
+            }
+            onAction={onClickMenuItem}
+            align="end"
+            direction="bottom"
+            className="md:p-4 md:py-1 lg:pr-0"
+            header={
+              <div className="flex">
+                <div className="flex items-center justify-center w-12 h-12 mr-2 text-white rounded-full bg-green-dark">
+                  {getUserInitials(user)}
+                </div>
+                <div className="pb-2 pl-2 pr-2 border-b border-bg-dark">
+                  <span className="text-green-dark">
+                    {user.first_name} {user.last_name}
+                  </span>
+                  <span className="block text-gray-400">{user.email}</span>
+                </div>
+              </div>
+            }
+          >
+            <MenuSection>
+              {!!account && (
+                <MenuItem
+                  key={Paths.Dashboard}
+                  textValue={intl.formatMessage(
+                    {
+                      defaultMessage: '{accountName} account',
+                      id: 'YE6fVO',
+                    },
+                    { accountName: account.name }
+                  )}
+                >
+                  <FormattedMessage
+                    defaultMessage="{accountName} account"
+                    id="YE6fVO"
+                    values={{
+                      accountName: account.name,
+                    }}
+                  />
+                </MenuItem>
+              )}
+              <MenuItem key={Paths.Settings}>
+                <FormattedMessage defaultMessage="My preferences" id="CEQo2w" />{' '}
+              </MenuItem>
+              <MenuItem key={Paths.SignOut}>
+                <FormattedMessage defaultMessage="Sign out" id="xXbJso" />
+              </MenuItem>
+            </MenuSection>
+          </Menu>
+        ) : (
+          <Button theme={theme} size="small" className="hidden lg:block" to={Paths.SignIn}>
+            <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default UserMenu;
