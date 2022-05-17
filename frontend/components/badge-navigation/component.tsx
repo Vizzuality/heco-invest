@@ -26,7 +26,7 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
             const isActive = id === activeId;
 
             return (
-              <li key={link} className="z-10 transition-all">
+              <li key={link} className="transition-all">
                 <Link href={link}>
                   <a
                     className="flex rounded-full focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2"

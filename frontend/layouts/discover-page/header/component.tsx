@@ -1,48 +1,30 @@
 import { FC } from 'react';
 
-import { useIntl } from 'react-intl';
+import DiscoverSearch from 'containers/layouts/discover-search';
+import Logo from 'containers/layouts/logo';
+import NavigationMenuButton from 'containers/layouts/navigation-menu-button';
+import UserMenu from 'containers/layouts/user-menu';
 
-import NextHead from 'next/head';
-import Link from 'next/link';
-
-import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
-import Menu, { MenuItem } from 'components/menu';
 
 import { HeaderProps } from './types';
 
-export const Header: FC<HeaderProps> = ({}: HeaderProps) => {
-  const intl = useIntl();
-
+export const Header: FC<HeaderProps> = ({ ...discoverSearchProps }: HeaderProps) => {
   return (
     <>
       <header className="fixed top-0 z-10 w-full text-white border-b bg-green-dark backdrop-blur-sm">
         <LayoutContainer>
           <div className="flex items-center justify-between h-18">
-            <Link href="/">
-              <a className="font-semibold">HeCo Invest</a>
-            </Link>
-            {/* Making space for the Search container in the layout, just in case */}
-            <span className="max-w-3xl" />
-            <Menu
-              Trigger={
-                <Button
-                  type="button"
-                  size="small"
-                  theme="primary-white"
-                  aria-label={intl.formatMessage({ defaultMessage: 'Menu', id: 'tKMlOc' })}
-                >
-                  Menu
-                </Button>
-              }
-              align="end"
-              direction="bottom"
-              onAction={() => {}}
-            >
-              <MenuItem key="menu-item-1">Item 1</MenuItem>
-              <MenuItem key="menu-item-2">Item 2</MenuItem>
-              <MenuItem key="menu-item-3">Item 3</MenuItem>
-            </Menu>
+            <span className="justify-start flex-1">
+              <Logo />
+            </span>
+            <span className="justify-end hidden w-full max-w-3xl mt-10 xl:block">
+              <DiscoverSearch {...discoverSearchProps} />
+            </span>
+            <span className="flex items-center justify-end flex-1 gap-2 lg:gap-4">
+              <UserMenu className="hidden sm:flex" />
+              <NavigationMenuButton />
+            </span>
           </div>
         </LayoutContainer>
       </header>

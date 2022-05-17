@@ -6,7 +6,9 @@ import cx from 'classnames';
 
 import Link from 'next/link';
 
-import LanguageSelector from 'components/language-selector';
+import LanguageSelector from 'containers/layouts/language-selector';
+import Logo from 'containers/layouts/logo';
+
 import LayoutContainer from 'components/layout-container';
 
 import { HeaderProps } from './types';
@@ -24,9 +26,7 @@ export const Header: FC<HeaderProps> = ({
     >
       <LayoutContainer>
         <div className="flex items-center justify-between h-16 md:h-20 gap-x-8 md:gap-x-16">
-          <Link href="/">
-            <a className="font-semibold">HeCo Invest</a>
-          </Link>
+          <Logo />
           <div className="flex items-center justify-end flex-1">
             <div className="mr-4">
               {pageType === 'sign-up' && (
