@@ -16,6 +16,10 @@ namespace :api, format: "json" do
     resources :project_developers, only: [:index, :show] do
       resource :favourite_project_developer, only: [:create, :destroy]
     end
+
+    namespace :projects do
+      resource :map, only: [:show]
+    end
     resources :projects, only: [:index, :show] do
       resource :favourite_project, only: [:create, :destroy]
     end

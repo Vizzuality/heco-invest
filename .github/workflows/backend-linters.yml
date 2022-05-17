@@ -17,10 +17,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -yqq install libgeos-dev
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           working-directory: backend
           bundler-cache: true
+          cache-version: 2
       - name: Run RuboCop
         run: bin/rails standard

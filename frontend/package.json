@@ -106,6 +106,7 @@
     "sharp": "^0.30.1",
     "slugify": "^1.6.5",
     "tailwindcss": "^3.0.23",
+    "url-search-params-polyfill": "^8.1.1",
     "use-debounce": "^6.0.1",
     "yup": "^0.32.11"
   },

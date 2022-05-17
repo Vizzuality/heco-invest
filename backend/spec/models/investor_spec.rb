@@ -4,6 +4,7 @@ RSpec.describe Investor, type: :model do
   subject { build(:investor) }
 
   it_behaves_like :searchable
+  it_behaves_like :translatable
 
   it { is_expected.to be_valid }
 

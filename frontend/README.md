@@ -40,12 +40,13 @@ The application (and API) is configured via environment variables stored in a `.
 
 Below is a description of each of the keys.
 
-| Variable                     | Description                                                                                                                              |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| NEXT_PUBLIC_FRONTEND_URL     | Complete URL from which the front-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com) |
-| NEXT_PUBLIC_BACKEND_URL      | Complete URL from which the back-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com)  |
-| NEXT_PUBLIC_PROXY_BACKEND    | Indicates whether the back-end application is proxied through the front-end application                                                  |
-| NEXT_PUBLIC_GOOGLE_ANALYTICS | Key of the Google Analytics account                                                                                                      |
+| Variable                        | Description                                                                                                                              |
+|---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| NEXT_PUBLIC_FRONTEND_URL        | Complete URL from which the front-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com) |
+| NEXT_PUBLIC_BACKEND_URL         | Complete URL from which the back-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com)  |
+| NEXT_PUBLIC_PROXY_BACKEND       | Indicates whether the back-end application is proxied through the front-end application                                                  |
+| NEXT_PUBLIC_GOOGLE_ANALYTICS    | Key of the Google Analytics account                                                                                                      |
+| NEXT_PUBLIC_GOOGLE_MAPS_API_KEY | Key for Google Maps - Places API                                                                                                         |
 
 ## CI/CD
 
