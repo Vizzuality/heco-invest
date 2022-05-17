@@ -11,7 +11,12 @@ module Backend
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-    Rails.application.routes.default_url_options[:host] = ENV.fetch("BACKEND_URL", "http://localhost:4000")
+    backend_url = URI.parse ENV.fetch("BACKEND_URL", "http://localhost:4000")
+    Rails.application.routes.default_url_options = {
+      host: backend_url.host,
+      port: backend_url.port,
+      protocol: backend_url.scheme
+    }
 
     config.generators.test_framework = :rspec
 
