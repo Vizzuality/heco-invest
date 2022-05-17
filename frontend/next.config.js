@@ -8,7 +8,7 @@ module.exports = {
   images: {
     domains: ['heco.vizzuality.com', 'staging.heco.vizzuality.com'],
   },
-  swcMinify: true,
+  swcMinify: false,
   eslint: {
     dirs: [
       'components',
