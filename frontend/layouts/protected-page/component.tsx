@@ -4,9 +4,10 @@ import { useRouter } from 'next/router';
 
 import useMe from 'hooks/me';
 
+import { Paths } from 'enums';
 import { ProtectedProps } from 'layouts/protected-page/types';
 
-const Protected: React.FC<ProtectedProps> = ({ children, ...rest }) => {
+const Protected: React.FC<ProtectedProps> = ({ permissions, children, ...rest }) => {
   const router = useRouter();
   const { user, isLoading } = useMe();
 
@@ -14,8 +15,13 @@ const Protected: React.FC<ProtectedProps> = ({ children, ...rest }) => {
   if (isLoading) return null;
 
   // Redirect when session doesn't exist
-  if (!isLoading && !user) {
-    router.push(`/sign-in?callbackUrl=${window.location.origin}${router.asPath}`);
+  if (!user) {
+    router.push(Paths.SignIn);
+    return null;
+  }
+
+  if (!permissions.includes(user.role)) {
+    router.back();
     return null;
   }
 

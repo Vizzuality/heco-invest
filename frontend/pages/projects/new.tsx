@@ -8,8 +8,6 @@ import { useRouter } from 'next/router';
 
 import { InferGetStaticPropsType } from 'next';
 
-import useMe from 'hooks/me';
-
 import { loadI18nMessages } from 'helpers/i18n';
 import { getServiceErrors, useGetAlert } from 'helpers/pages';
 
@@ -27,6 +25,7 @@ import {
 import Head from 'components/head';
 import { Paths, Queries, UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
+import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 import { ProjectCreationPayload, ProjectForm } from 'types/project';
 import useProjectValidation from 'validations/project';
@@ -52,9 +51,6 @@ export async function getStaticProps(ctx) {
 type ProjectProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
-  // Get the user and redirect if it it's not signed in or doesn't have the permissions
-  useMe({ protectedPage: true, roles: [UserRoles.ProjectDeveloper] });
-
   const [currentPage, setCurrentPage] = useState(0);
   const [showLeave, setShowLeave] = useState(false);
   const { formatMessage } = useIntl();
@@ -143,7 +139,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
   };
 
   return (
-    <>
+    <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
       <Head
         title={formatMessage({ defaultMessage: 'Setup project developer’s account', id: 'bhxvPM' })}
       />
@@ -235,7 +231,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
         handleLeave={() => push(Paths.Dashboard)}
         title={formatMessage({ defaultMessage: 'Leave project creation form', id: 'vygPIS' })}
       />
-    </>
+    </ProtectedPage>
   );
 };
 
