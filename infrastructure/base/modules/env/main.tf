@@ -162,12 +162,20 @@ module "backend_cloudrun" {
       value = "/backend"
     },
     {
-      name  = "TEST_PUBSUB_TOPIC"
-      value = module.test_pubsub.topic_name
+      name  = "CLOUDTASKER_PROCESSOR_HOST"
+      value = "https://${var.domain}"
     },
     {
-      name  = "TEST_PUBSUB_SUBSCRIPTION"
-      value = module.test_pubsub.subscription_name
+      name  = "CLOUDTASKER_PROCESSOR_PATH"
+      value = var.project_name
+    },
+    {
+      name  = "CLOUD_TASKS_QUEUE_PREFIX"
+      value = var.project_name
+    },
+    {
+      name  = "CLOUD_TASKS_TEST_QUEUE_NAME"
+      value = "email-test"
     },
     {
       name  = "IS_API_INSTANCE"
@@ -228,11 +236,14 @@ module "bastion" {
   subnetwork_name = module.network.subnetwork_name
 }
 
-module "test_pubsub" {
-  source     = "../pubsub"
-  name       = "${var.project_name}-test"
+
+module "test_cloud_tasks" {
+  source     = "../cloud-tasks"
+  name       = "email-test"
+  prefix     = var.project_name
   project_id = var.gcp_project_id
   region     = var.gcp_region
+  service_account_email = module.backend_cloudrun.service_account_email
 }
 
 module "dns" {

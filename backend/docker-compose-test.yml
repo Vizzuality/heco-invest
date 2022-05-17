@@ -8,6 +8,7 @@ services:
       - DATABASE_USER=heco-test
       - DATABASE_PASSWORD=heco-test
       - DATABASE_HOST=db
+      - CLOUD_TASKS_TEST_QUEUE_NAME=test
       - IS_API_INSTANCE=true
       - IS_JOBS_INSTANCE=true
     depends_on:
