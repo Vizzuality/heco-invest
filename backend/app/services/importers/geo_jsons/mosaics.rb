@@ -5,7 +5,7 @@ module Importers
 
       def attributes_of_record_for(feature)
         {
-          name: feature.properties["mosaico"],
+          name_en: feature.properties["mosaico"],
           location_type: :region,
           parent_id: country.id,
           geometry: feature.geometry,
@@ -20,12 +20,8 @@ module Importers
         }
       end
 
-      def find_correct_record_for(feature)
-        data.find { |record| record.name == feature.properties["mosaico"] }
-      end
-
-      def data
-        @data ||= Location.where(parent_id: country.id, location_type: :region).to_a
+      def query
+        @query ||= Location.where(parent_id: country.id, location_type: :region).to_a
       end
     end
   end

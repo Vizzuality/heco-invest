@@ -10,8 +10,9 @@ module Importers
 
       def call
         Location.transaction do
-          RGeo::GeoJSON.decode(File.read(path)).to_a.each { |feature| process_line feature }
-          Location.where(id: data.pluck(:id), geometry: nil).destroy_all
+          attrs = RGeo::GeoJSON.decode(File.read(path)).to_a.map { |feature| attributes_of_record_for feature }
+          Location.where(id: query.pluck(:id)).upsert_all attrs, unique_by: uniq_key_for(attrs)
+          Location.where(id: query.pluck(:id), geometry: nil).destroy_all
         end
       rescue Errno::ENOENT
         # pass
@@ -19,18 +20,18 @@ module Importers
 
       private
 
-      def process_line(feature)
-        record = find_correct_record_for(feature) || Location.new
-        record.assign_attributes attributes_of_record_for(feature)
-        record.save!
-      end
-
       def attributes_of_record_for(feature)
         raise NotImplementedError
       end
 
-      def find_correct_record_for(feature)
+      def query
         raise NotImplementedError
+      end
+
+      def uniq_key_for(attrs)
+        return [:location_type, :parent_id, :name_en] if attrs.first.key? :parent_id
+
+        [:location_type, :name_en]
       end
 
       def titleize_of(name)

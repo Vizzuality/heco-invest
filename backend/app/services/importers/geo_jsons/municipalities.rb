@@ -5,10 +5,10 @@ module Importers
 
       def attributes_of_record_for(feature)
         {
-          name: titleize_of(feature.properties["nombre_ent"]),
+          name_en: titleize_of(feature.properties["nombre_ent"]),
           code: feature.properties["cod_munici"],
           location_type: :municipality,
-          parent: find_correct_department_for(feature),
+          parent_id: find_correct_department_for(feature).id,
           geometry: feature.geometry,
           biodiversity: feature.properties["biodiversity"],
           biodiversity_demand: feature.properties["biodiversity_demand"],
@@ -19,10 +19,6 @@ module Importers
           water: feature.properties["water"],
           water_demand: feature.properties["water_demand"]
         }
-      end
-
-      def find_correct_record_for(feature)
-        data.find { |record| record.name == titleize_of(feature.properties["nombre_ent"]) }
       end
 
       def find_correct_department_for(feature)
@@ -36,8 +32,8 @@ module Importers
         new_record
       end
 
-      def data
-        @data ||= Location.where(parent_id: departments.pluck(:id), location_type: :municipality).to_a
+      def query
+        @query ||= Location.where(parent_id: departments.pluck(:id), location_type: :municipality).to_a
       end
 
       def departments
