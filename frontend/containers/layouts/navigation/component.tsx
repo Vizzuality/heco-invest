@@ -4,6 +4,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import ActiveLink from 'components/active-link';
 import Icon from 'components/icon';
+import { Paths } from 'enums';
 
 import SearchIcon from 'svgs/search.svg';
 
@@ -15,22 +16,22 @@ export const Navigation: FC<NavigationProps> = ({ className }: NavigationProps) 
   return (
     <div className={className}>
       <nav className="flex space-x-8">
-        <ActiveLink href="/discover" activeClassName="font-semibold">
+        <ActiveLink href={Paths.Discover} activeClassName="font-semibold">
           <a title={intl.formatMessage({ defaultMessage: 'Search', id: 'xmcVZ0' })}>
             <Icon icon={SearchIcon} />
           </a>
         </ActiveLink>
-        <ActiveLink href="/investors" activeClassName="font-semibold">
+        <ActiveLink href={Paths.Investors} activeClassName="font-semibold">
           <a>
             <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
           </a>
         </ActiveLink>
-        <ActiveLink href="/project-developers" activeClassName="font-semibold">
+        <ActiveLink href={Paths.ProjectDevelopers} activeClassName="font-semibold">
           <a>
             <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
           </a>
         </ActiveLink>
-        <ActiveLink href="/about" activeClassName="font-semibold">
+        <ActiveLink href={Paths.About} activeClassName="font-semibold">
           <a>
             <FormattedMessage defaultMessage="About" id="g5pX+a" />
           </a>
