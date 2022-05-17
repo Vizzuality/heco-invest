@@ -16,7 +16,6 @@ const Template: Story<ImpactChartProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  impact: [30, 45, 60, 55],
-  labels: ['Biodiversity', 'Climate', 'Community', 'Water'],
-  color: 'rgba(229, 125, 87, 0.8)',
+  impact: [3, 5, 6, 5],
+  category: 'tourism-and-recreation',
 };
