@@ -43,7 +43,7 @@ Cloudtasker.configure do |config|
   # Specific queues can be created in Cloud Tasks using the gcloud SDK or
   # via the `rake cloudtasker:setup_queue name=<queue_name>` task.
   #
-  # config.gcp_queue_prefix = ENV["GCP_QUEUE_PREFIX"]
+  config.gcp_queue_prefix = ENV["CLOUD_TASKS_QUEUE_PREFIX"]
 
   #
   # Specify the mode of operation:
@@ -53,6 +53,7 @@ Cloudtasker.configure do |config|
   # Defaults to :development unless CLOUDTASKER_ENV or RAILS_ENV or RACK_ENV is set to something else.
   #
   # config.mode = Rails.env.production? || Rails.env.my_other_env? ? :production : :development
+  config.mode = config.mode = Rails.env.production? ? :production : :development
 
   #
   # Specify the logger to use
