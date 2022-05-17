@@ -5,23 +5,26 @@ export enum Languages {
 }
 
 export enum Paths {
+  Home = '/',
   SignUp = '/sign-up',
   SignIn = '/sign-in',
+  SignOut = '/sign-out',
   AccountType = '/sign-up/account-type',
   ForgotPassword = '/sign-in/forgot-password',
-  Dashboard = '/dashboard',
+  About = '/about',
   FAQ = '/faq',
-  SignOut = '/sign-out',
+  Discover = '/discover',
+  Dashboard = '/dashboard',
   Settings = '/settings',
   Project = '/project',
-  Projects = '/search/projects',
+  Projects = '/discover/projects',
   ProjectCreation = '/projects/new',
   ProjectDeveloper = '/project-developer',
-  ProjectDevelopers = '/search/project-developers',
+  ProjectDevelopers = '/discover/project-developers',
   OpenCall = '/open-call',
-  OpenCalls = '/search/open-calls',
+  OpenCalls = '/discover/open-calls',
   Investor = '/investor',
-  Investors = '/search/investors',
+  Investors = '/discover/investors',
 }
 
 export enum UserRoles {

@@ -1,10 +1,13 @@
 require "simplecov"
+require "webmock/rspec"
 
 SimpleCov.start do
   add_filter "/spec/"
   add_filter "/lib/tasks/"
   add_filter "/lib/timed_logger.rb"
 end
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

@@ -16,6 +16,9 @@ import { LayoutStaticProp } from 'types';
 
 import 'styles/globals.css';
 
+// Polyfills
+import 'url-search-params-polyfill';
+
 type Props = AppProps & {
   Component: {
     layout?: LayoutStaticProp;

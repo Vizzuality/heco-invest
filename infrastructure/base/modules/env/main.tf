@@ -50,6 +50,7 @@ module "sendgrid_api_key" {
   use_random_value = false
 }
 
+
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN = var.transifex_token
@@ -57,6 +58,7 @@ locals {
     NEXT_PUBLIC_BACKEND_URL = "https://${var.domain}/backend"
     NEXT_PUBLIC_GOOGLE_ANALYTICS = var.google_analytics_key
     NEXT_PUBLIC_PROXY_BACKEND = "false"
+    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY = var.google_maps_api_key
   }
 }
 
@@ -248,4 +250,8 @@ module "load_balancer" {
   frontend_cloud_run_name = module.frontend_cloudrun.name
   domain                  = var.domain
   dns_managed_zone_name   = module.dns.dns_zone_name
+}
+
+module "translation" {
+  source                  = "../translation"
 }

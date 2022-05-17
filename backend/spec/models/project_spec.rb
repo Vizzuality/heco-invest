@@ -4,6 +4,7 @@ RSpec.describe Project, type: :model do
   subject { build(:project) }
 
   it_behaves_like :searchable
+  it_behaves_like :translatable
 
   it { is_expected.to be_valid }
 
@@ -121,6 +122,11 @@ RSpec.describe Project, type: :model do
     expect(subject).to have(1).errors_on(:project_images)
   end
 
+  it "should not be valid without geometry" do
+    subject.geometry = nil
+    expect(subject).to have(1).errors_on(:geometry)
+  end
+
   it "should not be valid with non-json geometry" do
     subject.geometry = "wrong-geometry"
     expect(subject).to have(1).errors_on(:geometry)
@@ -128,6 +134,23 @@ RSpec.describe Project, type: :model do
 
   it "should not be valid with non-geojson geometry" do
     subject.geometry = {geojson: false}
+    expect(subject).to have(1).errors_on(:geometry)
+  end
+
+  it "should assign latitude/longitude attributes with valid geometry" do
+    subject.geometry = {type: "Point", coordinates: [100.0, 0.0]}
+    expect(subject).to be_valid
+    expect(subject.latitude).to eq(0.0)
+    expect(subject.longitude).to eq(100.0)
+  end
+
+  it "should not be valid for unsupported geometry type" do
+    subject.geometry = {type: "LineString", coordinates: [[100.0, 0.0], [101.0, 1.0]]}
+    expect(subject).to have(1).errors_on(:geometry)
+  end
+
+  it "should not be valid for empty geometry" do
+    subject.geometry = {type: "FeatureCollection", features: []}
     expect(subject).to have(1).errors_on(:geometry)
   end
 

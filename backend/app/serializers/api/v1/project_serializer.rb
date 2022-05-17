@@ -25,7 +25,9 @@ module API
         :received_funding_investor,
         :relevant_links,
         :language,
-        :geometry
+        :geometry,
+        :latitude,
+        :longitude
 
       belongs_to :project_developer
       has_many :involved_project_developers, serializer: ProjectDeveloperSerializer
