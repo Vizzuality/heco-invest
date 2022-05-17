@@ -63,4 +63,13 @@ module.exports = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/discover',
+        destination: '/discover/projects',
+        permanent: true,
+      },
+    ];
+  },
 };

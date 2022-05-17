@@ -14,14 +14,14 @@ export enum Paths {
   SignOut = '/sign-out',
   Settings = '/settings',
   Project = '/project',
-  Projects = '/search/projects',
+  Projects = '/discover/projects',
   ProjectCreation = '/projects/new',
   ProjectDeveloper = '/project-developer',
-  ProjectDevelopers = '/search/project-developers',
+  ProjectDevelopers = '/discover/project-developers',
   OpenCall = '/open-call',
-  OpenCalls = '/search/open-calls',
+  OpenCalls = '/discover/open-calls',
   Investor = '/investor',
-  Investors = '/search/investors',
+  Investors = '/discover/investors',
 }
 
 export enum UserRoles {
