@@ -274,3 +274,7 @@ module "load_balancer" {
 module "translation" {
   source                  = "../translation"
 }
+
+module "error_reporting" {
+  source = "../error-reporting"
+}
