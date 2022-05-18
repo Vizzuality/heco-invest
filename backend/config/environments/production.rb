@@ -41,6 +41,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :google
+  config.active_storage.queue = ENV["CLOUD_TASKS_TEST_QUEUE_NAME"].to_sym
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
