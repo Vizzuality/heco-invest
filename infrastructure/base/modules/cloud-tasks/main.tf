@@ -8,8 +8,8 @@ resource "google_cloud_tasks_queue" "cloud_task" {
   location = var.region
 }
 
-resource "google_project_iam_member" "cloud_tasks_queue_admin" {
+resource "google_project_iam_member" "cloud_tasks_admin" {
   project = var.project_id
-  role    = "roles/cloudtasks.queueAdmin"
+  role    = "roles/cloudtasks.admin"
   member = "serviceAccount:${var.service_account_email}"
 }

@@ -167,7 +167,7 @@ module "backend_cloudrun" {
     },
     {
       name  = "CLOUDTASKER_PROCESSOR_PATH"
-      value = var.project_name
+      value = "/backend/cloudtasker/run"
     },
     {
       name  = "CLOUD_TASKS_QUEUE_PREFIX"
