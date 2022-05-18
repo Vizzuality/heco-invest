@@ -11,6 +11,10 @@ IS_JOBS_INSTANCE
 BACKEND_URL (without protocol)
 RAILS_RELATIVE_URL_ROOT (if running backend application in sub url, like /backend)
 
+GCP services config
+GCP_PROJECT_ID - Id of the GCP project
+GCP_REGION - GCP region where the project's GCP resources are hosted 
+
 Cloud Tasks configuration
 CLOUDTASKER_PROCESSOR_HOST - with protocol, as available from outside the platform, e.g. https://your-public-domain.com
 CLOUDTASKER_PROCESSOR_PATH - path in the domain above where the task runner is available. Defaults to /cloudtasker/run

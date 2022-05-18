@@ -23,8 +23,8 @@ Cloudtasker.configure do |config|
   #
   # This not required in development using the Cloudtasker local server.
   #
-  # config.gcp_location_id = ENV["GCP_REGION"] # defaults to 'us-east1'
-  # config.gcp_project_id = ENV["GCP_PROJECT_ID"]
+  config.gcp_location_id = ENV["GCP_REGION"] # defaults to 'us-east1'
+  config.gcp_project_id = ENV["GCP_PROJECT_ID"]
 
   #
   # Specify the namespace for your Cloud Task queues.

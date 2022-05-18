@@ -204,6 +204,14 @@ module "backend_cloudrun" {
     {
       name  = "MAILER_DEFAULT_FROM"
       value = "agnieszka.figiel@vizzuality.com"
+    },
+    {
+      name  = "GCP_PROJECT_ID"
+      value = var.gcp_project_id
+    },
+    {
+      name  = "GCP_REGION"
+      value = var.gcp_region
     }
   ]
 }
