@@ -25,6 +25,7 @@ module.exports = {
         light: '#FFFDFA',
         middle: '#FBF7F2',
         dark: '#EFEDE9',
+        greenLight: 'rgba(207, 215, 98, 0.2)',
       },
       gray: {
         200: '#E5E7EB',

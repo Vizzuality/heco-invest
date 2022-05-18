@@ -3,6 +3,8 @@ import { useIntl } from 'react-intl';
 
 import { AxiosError } from 'axios';
 
+import { Impacts } from 'enums';
+
 import { ErrorResponse } from 'services/types';
 
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
