@@ -5,7 +5,7 @@ module Translations
     def initialize(resource)
       @resource = resource
       # try to obtain project id automatically
-      @project_id = Google::Auth.get_application_default.quota_project_id
+      @project_id = ENV["GCP_PROJECT_ID"]
     end
 
     def call
