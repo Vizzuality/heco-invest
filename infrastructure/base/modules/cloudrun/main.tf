@@ -105,12 +105,3 @@ resource "google_service_account_iam_binding" "admin-account-iam" {
     "serviceAccount:${google_service_account.service_account.email}",
   ]
 }
-
-resource "google_service_account_iam_binding" "translation-user" {
-  service_account_id = google_service_account.service_account.name
-  role               = "roles/cloudtranslate.generalModels.batchPredict"
-
-  members = [
-    "serviceAccount:${google_service_account.service_account.email}",
-  ]
-}
