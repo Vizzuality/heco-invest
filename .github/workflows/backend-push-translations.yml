@@ -2,7 +2,7 @@ name: Push backend translations to Transifex
 on:
   push:
     branches:
-      - staging
+      - develop
     paths:
       - 'backend/**'
       - '.github/workflows/backend*'
