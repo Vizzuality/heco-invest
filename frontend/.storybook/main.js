@@ -15,6 +15,7 @@ module.exports = {
     '@storybook/addon-essentials',
     'storybook-addon-next',
     'storybook-react-intl',
+    'storybook-addon-mock/register',
     {
       name: '@storybook/addon-postcss',
       options: {
