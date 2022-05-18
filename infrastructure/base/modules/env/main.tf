@@ -53,11 +53,11 @@ module "sendgrid_api_key" {
 
 locals {
   frontend_docker_build_args = {
-    TRANSIFEX_TOKEN = var.transifex_token
-    NEXT_PUBLIC_FRONTEND_URL = "https://${var.domain}"
-    NEXT_PUBLIC_BACKEND_URL = "https://${var.domain}/backend"
-    NEXT_PUBLIC_GOOGLE_ANALYTICS = var.google_analytics_key
-    NEXT_PUBLIC_PROXY_BACKEND = "false"
+    TRANSIFEX_TOKEN                 = var.transifex_token
+    NEXT_PUBLIC_FRONTEND_URL        = "https://${var.domain}"
+    NEXT_PUBLIC_BACKEND_URL         = "https://${var.domain}/backend"
+    NEXT_PUBLIC_GOOGLE_ANALYTICS    = var.google_analytics_key
+    NEXT_PUBLIC_PROXY_BACKEND       = "false"
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY = var.google_maps_api_key
   }
 }
@@ -246,11 +246,11 @@ module "bastion" {
 
 
 module "test_cloud_tasks" {
-  source     = "../cloud-tasks"
-  name       = "email-test"
-  prefix     = var.project_name
-  project_id = var.gcp_project_id
-  region     = var.gcp_region
+  source                = "../cloud-tasks"
+  name                  = "email-test"
+  prefix                = var.project_name
+  project_id            = var.gcp_project_id
+  region                = var.gcp_region
   service_account_email = module.backend_cloudrun.service_account_email
 }
 
@@ -272,9 +272,11 @@ module "load_balancer" {
 }
 
 module "translation" {
-  source                  = "../translation"
+  source = "../translation"
 }
 
 module "error_reporting" {
-  source = "../error-reporting"
+  source                = "../error-reporting"
+  project_id            = var.gcp_project_id
+  service_account_email = module.backend_cloudrun.service_account_email
 }
