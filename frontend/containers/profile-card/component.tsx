@@ -63,12 +63,14 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 
   const tags = allImpacts?.filter((impact) => impacts?.includes(impact.id)).map(({ name }) => name);
 
+  const cardAriaLabel =
+    profileType === 'project-developer'
+      ? intl.formatMessage({ defaultMessage: `{name} project developer`, id: 'jXqlWP' }, { name })
+      : intl.formatMessage({ defaultMessage: `{name} investor`, id: '9WcWke' }, { name });
+
   return (
     <div
-      aria-label={intl.formatMessage(
-        { defaultMessage: '{name} project developer', id: 'jXqlWP' },
-        { name }
-      )}
+      aria-label={cardAriaLabel}
       role="group"
       className={cx({
         [className]: !!className,
