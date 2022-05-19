@@ -13,9 +13,9 @@ RSpec.describe Investor, type: :model do
     expect(subject).to have(1).errors_on(:account)
   end
 
-  it "should not be valid without how do you work" do
-    subject.how_do_you_work = nil
-    expect(subject).to have(1).errors_on(:how_do_you_work)
+  it "should not be valid without mission" do
+    subject.mission = nil
+    expect(subject).to have(1).errors_on(:mission)
   end
 
   it "should not be valid without other information" do
@@ -39,9 +39,9 @@ RSpec.describe Investor, type: :model do
   end
 
   include_examples :static_relation_validations, attribute: :investor_type, presence: true
-  include_examples :static_relation_validations, attribute: :impacts, presence: false
+  include_examples :static_relation_validations, attribute: :impacts, presence: true
   include_examples :static_relation_validations, attribute: :instrument_types, presence: true
   include_examples :static_relation_validations, attribute: :ticket_sizes, presence: true
-  include_examples :static_relation_validations, attribute: :categories, presence: true
+  include_examples :static_relation_validations, attribute: :categories, presence: false
   include_examples :static_relation_validations, attribute: :sdgs, presence: false
 end
