@@ -9,6 +9,7 @@ import DiscoverSearch from 'containers/layouts/discover-search';
 import LayoutContainer from 'components/layout-container';
 import { Paths } from 'enums';
 
+import { useProjectDevelopersList } from 'services/project-developers/projectDevelopersService';
 import { useProjectsList } from 'services/projects/projectService';
 
 import Header from './header';
@@ -35,7 +36,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     [query]
   );
 
-  const queryOptions = { keepPreviousData: true };
+  const queryOptions = { keepPreviousData: false };
 
   const {
     data: projects,
@@ -43,9 +44,15 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     isFetching: isFetchingProjects,
   } = useProjectsList({ ...queryParams, includes: ['project_developer'] }, queryOptions);
 
+  const {
+    data: projectDevelopers,
+    isLoading: isLoadingProjectDevelopers,
+    isFetching: isFetchingProjectDevelopers,
+  } = useProjectDevelopersList({ ...queryParams, perPage: 9 }, queryOptions);
+
   const stats = {
     projects: projects?.meta?.total,
-    projectDevelopers: 0,
+    projectDevelopers: projectDevelopers?.meta?.total,
     investors: 0,
     openCalls: 0,
   };
@@ -54,10 +61,23 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     // TODO: Find a way to improve this.
     if (router.pathname.startsWith(Paths.Projects))
       return { ...projects, loading: isLoadingProjects || isFetchingProjects };
-    // if (router.pathname.startsWith(Paths.ProjectDevelopers)) return projectDevelopers;
+    if (router.pathname.startsWith(Paths.ProjectDevelopers)) {
+      return {
+        ...projectDevelopers,
+        loading: isLoadingProjectDevelopers || isFetchingProjectDevelopers,
+      };
+    }
     // if (router.pathname.startsWith(Paths.Investors)) return investors;
     // if (router.pathname.startsWith(Paths.OpenCalls)) return openCalls;
-  }, [isFetchingProjects, isLoadingProjects, projects, router.pathname]) || { data: [], meta: [] };
+  }, [
+    isFetchingProjectDevelopers,
+    isFetchingProjects,
+    isLoadingProjectDevelopers,
+    isLoadingProjects,
+    projectDevelopers,
+    projects,
+    router.pathname,
+  ]) || { data: [], meta: [] };
 
   useEffect(() => {
     setSearchInputValue(queryParams.search);
