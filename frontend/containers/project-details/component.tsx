@@ -72,11 +72,11 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
 
   return (
     <div className={className}>
-      <div className="relative p-10">
+      <div className="absolute top-0 right-0 z-10 w-full h-full overflow-hidden pointer-events-none">
         <Button
           size="smallest"
           theme="naked"
-          className="absolute text-gray-400 right-4 top-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
+          className="absolute text-gray-400 pointer-events-auto right-4 top-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
           aria-label={intl.formatMessage({
             defaultMessage: 'Close project details card',
             id: 'hmK5Jb',
@@ -90,6 +90,8 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
             <FormattedMessage defaultMessage="Looking for funding" id="Czc5vB" />
           </span>
         )}
+      </div>
+      <div className="relative p-10">
         <div className="flex gap-2 text-sm">
           {project.trusted && (
             <>
