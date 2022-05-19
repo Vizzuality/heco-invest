@@ -10,15 +10,11 @@ FactoryBot.define do
     ticket_sizes { %w[validation scaling] }
 
     previously_invested { true }
-    sequence(:previously_invested_description) do |n|
+    sequence(:mission) do |n|
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)
     end
-    sequence(:how_do_you_work) do |n|
-      Faker::Config.random = Random.new(n)
-      Faker::Lorem.paragraph(sentence_count: 4)
-    end
-    sequence(:what_makes_the_difference) do |n|
+    sequence(:prioritized_projects_description) do |n|
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)
     end

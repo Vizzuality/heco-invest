@@ -62,8 +62,8 @@ RSpec.configure do |config|
                   facebook: {type: :string, nullable: true},
                   linkedin: {type: :string, nullable: true},
                   twitter: {type: :string, nullable: true},
-                  how_do_you_work: {type: :string},
-                  what_makes_the_difference: {type: :string, nullable: true},
+                  mission: {type: :string},
+                  prioritized_projects_description: {type: :string, nullable: true},
                   other_information: {type: :string},
                   investor_type: {type: :string},
                   categories: {type: :array, items: {type: :string}},
@@ -72,7 +72,6 @@ RSpec.configure do |config|
                   impacts: {type: :array, items: {type: :string}},
                   sdgs: {type: :array, items: {type: :integer}},
                   previously_invested: {type: :boolean},
-                  previously_invested_description: {type: :string, nullable: true},
                   language: {type: :string}
                 }
               },

@@ -139,10 +139,12 @@ RSpec.describe API::Filterer do
 
       context "when filtered by full_text param" do
         let(:filters) { {full_text: "TEST", language: :en} }
-        let!(:any_investor) { create :investor }
+        let!(:correct_investor) { create :investor, mission_en: "TEST" }
+        let!(:different_language_investor) { create :investor, mission_es: "TEST" }
+        let!(:different_text_investor) { create :investor, mission_en: "DIFFERENT" }
 
-        it "does not influence filter at all" do
-          expect(subject.call).to eq([any_investor])
+        it "returns only records with correct text at correct language" do
+          expect(subject.call).to eq([correct_investor])
         end
       end
     end
