@@ -14,16 +14,19 @@ namespace :import_geojsons do
 
     ######### RUN DELETION OF RECORDS WITHOUT GEOMETRIES ##########
     puts "Deleting mosaics without geometries"
-    Location.where(parent_id: country.id, location_type: :region, geometry: nil).destroy_all
+    Location.left_joins(:location_geometry)
+      .where(parent_id: country.id, location_type: :region, location_geometries: {geometry: nil}).destroy_all
     puts "Deleting municipalities without geometries"
-    Location.where(parent: Location.where(parent_id: country.id, location_type: :department))
-      .where(location_type: :municipality, geometry: nil).destroy_all
+    Location.left_joins(:location_geometry)
+      .where(parent: Location.where(parent_id: country.id, location_type: :department))
+      .where(location_type: :municipality, location_geometries: {geometry: nil}).destroy_all
     puts "Deleting departments without municipalities"
     Location.where(parent_id: country.id, location_type: :department)
       .where.not(id: Location.where(location_type: :municipality).pluck(:parent_id)).destroy_all
     puts "Deleting basins without geometries"
-    Location.where(parent: Location.where(parent_id: country.id, location_type: :basins_category))
-      .where(location_type: :basin, geometry: nil).destroy_all
+    Location.left_joins(:location_geometry)
+      .where(parent: Location.where(parent_id: country.id, location_type: :basins_category))
+      .where(location_type: :basin, location_geometries: {geometry: nil}).destroy_all
     puts "Deleting basins categories without basins"
     Location.where(parent_id: country.id, location_type: :basins_category)
       .where.not(id: Location.where(location_type: :basin).pluck(:parent_id)).destroy_all

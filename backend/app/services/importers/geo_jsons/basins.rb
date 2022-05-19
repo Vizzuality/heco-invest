@@ -7,7 +7,7 @@ module Importers
         {
           name_en: feature.properties["sub_name"],
           code: feature.properties["sub_bas"].to_s,
-          location_type: :basin,
+          location_type: "basin",
           parent_id: find_correct_basins_category_for(feature).id,
           geometry: feature.geometry,
           biodiversity: feature.properties["biodiversity"],
@@ -26,7 +26,7 @@ module Importers
       end
 
       def create_basins_category_from(feature)
-        new_record = Location.create! location_type: :basins_category, parent_id: country.id,
+        new_record = Location.create! location_type: "basins_category", parent_id: country.id,
           name: feature.properties["maj_name"], code: feature.properties["maj_bas"].to_s
         basins_categories[feature.properties["maj_bas"].to_s] = [new_record]
         new_record

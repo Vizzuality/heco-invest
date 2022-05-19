@@ -41,4 +41,10 @@
 
 /config/credentials/production.key
 
+# Location GeoJSON
+/db/seeds/files/colombia.geojson
+/db/seeds/files/basins.geojson
+/db/seeds/files/mosaics.geojson
+/db/seeds/files/municipalities.geojson
+
 dump.rdb

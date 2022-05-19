@@ -9,6 +9,8 @@ RSpec.describe Importers::GeoJsons::Basins do
     context "when files does not exists at provided path" do
       let(:path) { "WRONG_PATH" }
 
+      before { allow(subject).to receive(:puts).with("GeoJSON at #{path} with location data was not found. Skipping location import!") }
+
       it "return nil" do
         expect(subject.call).to be_nil
       end
@@ -32,8 +34,13 @@ RSpec.describe Importers::GeoJsons::Basins do
         expect(basins.pluck(:name_en)).to include("Guasare")
       end
 
+      it "creates geometries records" do
+        expect(LocationGeometry.count).to eq(basins.count)
+        expect(basins.find_by(name_en: "Guasare").location_geometry.geometry)
+          .to eq(RGeo::GeoJSON.decode({type: "MultiPolygon", coordinates: [[[105.0, 0.0], [106.0, 0.0], [106.0, 1.0], [105.0, 1.0], [105.0, 0.0]]]}.to_json))
+      end
+
       it "assign all impact related attributes" do
-        expect(basins.first.geometry).not_to be_nil
         expect(basins.first.biodiversity).not_to be_nil
         expect(basins.first.biodiversity_demand).not_to be_nil
         expect(basins.first.climate).not_to be_nil

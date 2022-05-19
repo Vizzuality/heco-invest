@@ -6,7 +6,7 @@ module Importers
       def attributes_of_record_for(feature)
         {
           name_en: titleize_of(feature.properties["nombre_ent"]),
-          location_type: :country,
+          location_type: "country",
           geometry: feature.geometry
         }
       end

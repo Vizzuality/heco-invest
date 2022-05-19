@@ -1,7 +1,6 @@
-class AddGeometryToLocations < ActiveRecord::Migration[7.0]
+class AddImpactDemandsToLocations < ActiveRecord::Migration[7.0]
   def change
     enable_extension "postgis"
-    add_column :locations, :geometry, :geometry
     add_column :locations, :biodiversity, :decimal, precision: 25, scale: 20
     add_column :locations, :biodiversity_demand, :decimal, precision: 25, scale: 20
     add_column :locations, :climate, :decimal, precision: 25, scale: 20

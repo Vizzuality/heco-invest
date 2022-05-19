@@ -7,7 +7,7 @@ module Importers
         {
           name_en: titleize_of(feature.properties["nombre_ent"]),
           code: feature.properties["cod_munici"],
-          location_type: :municipality,
+          location_type: "municipality",
           parent_id: find_correct_department_for(feature).id,
           geometry: feature.geometry,
           biodiversity: feature.properties["biodiversity"],
@@ -26,7 +26,7 @@ module Importers
       end
 
       def create_department_from(feature)
-        new_record = Location.create! location_type: :department, parent_id: country.id,
+        new_record = Location.create! location_type: "department", parent_id: country.id,
           name: titleize_of(feature.properties["departamen"]), code: feature.properties["cod_depart"]
         departments[titleize_of(feature.properties["departamen"])] = [new_record]
         new_record

@@ -6,7 +6,7 @@ module Importers
       def attributes_of_record_for(feature)
         {
           name_en: feature.properties["mosaico"],
-          location_type: :region,
+          location_type: "region",
           parent_id: country.id,
           geometry: feature.geometry,
           biodiversity: feature.properties["biodiversity"],

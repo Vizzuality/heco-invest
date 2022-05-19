@@ -11,13 +11,29 @@ module Importers
       def call
         Location.transaction do
           attrs = RGeo::GeoJSON.decode(File.read(path)).to_a.map { |feature| attributes_of_record_for feature }
-          Location.upsert_all attrs, unique_by: uniq_key_for(attrs)
+          store_locations_with! attrs
+          add_location_ids_to attrs
+          store_geometries_with! attrs
         end
       rescue Errno::ENOENT
-        # pass
+        puts "GeoJSON at #{path} with location data was not found. Skipping location import!"
       end
 
       private
+
+      def store_locations_with!(attrs)
+        Location.upsert_all attrs.map { |attr| attr.except(:geometry) }, unique_by: uniq_key_for(attrs)
+      end
+
+      def store_geometries_with!(attrs)
+        LocationGeometry.upsert_all attrs.map { |attr| attr.slice(:geometry, :location_id) }, unique_by: :location_id
+      end
+
+      def add_location_ids_to(attrs)
+        keys = uniq_key_for attrs
+        locations = Location.select(keys + [:id]).group_by { |r| keys.map { |attr| r.read_attribute attr } }
+        attrs.each { |attr| attr[:location_id] = locations[attr.values_at(*keys)].first.id }
+      end
 
       def attributes_of_record_for(feature)
         raise NotImplementedError
