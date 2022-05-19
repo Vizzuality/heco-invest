@@ -142,16 +142,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.index ["location_id"], name: "index_location_geometries_on_location_id", unique: true
   end
 
-  create_table "location_members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "location_id", null: false
-    t.uuid "member_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["location_id", "member_id"], name: "index_location_members_on_location_id_and_member_id", unique: true
-    t.index ["location_id"], name: "index_location_members_on_location_id"
-    t.index ["member_id"], name: "index_location_members_on_member_id"
-  end
-
   create_table "locations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "parent_id"
     t.string "location_type", null: false
@@ -348,8 +338,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
   add_foreign_key "favourite_projects", "users", on_delete: :cascade
   add_foreign_key "investors", "accounts", on_delete: :cascade
   add_foreign_key "location_geometries", "locations", on_delete: :cascade
-  add_foreign_key "location_members", "locations", column: "member_id", on_delete: :cascade
-  add_foreign_key "location_members", "locations", on_delete: :cascade
   add_foreign_key "locations", "locations", column: "parent_id", on_delete: :cascade
   add_foreign_key "open_calls", "investors", on_delete: :cascade
   add_foreign_key "project_developers", "accounts", on_delete: :cascade

@@ -54,9 +54,4 @@ if Rails.env.development?
       )
     end
   end
-
-  Importers::Locations.new("Colombia",
-    departments_file_path: Rails.root.join("db/seeds/files/colombia_departments.csv"),
-    municipalities_file_path: Rails.root.join("db/seeds/files/colombia_municipalities.csv"),
-    regions_file_path: Rails.root.join("db/seeds/files/colombia_regions.csv")).call
 end

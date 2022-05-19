@@ -17,15 +17,8 @@ FactoryBot.define do
       after(:create) do |location, evaluator|
         department = create :location, parent: location, location_type: "department"
         evaluator.municipalities_count.times do
-          create :location, :with_region, parent: department, location_type: "municipality"
+          create :location, parent: department, location_type: "municipality"
         end
-      end
-    end
-
-    trait :with_region do
-      after(:create) do |location|
-        region = create :location, location_type: "region"
-        create :location_member, location: location, member: region
       end
     end
 

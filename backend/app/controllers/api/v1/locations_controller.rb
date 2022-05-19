@@ -4,7 +4,7 @@ module API
       before_action :fetch_location, only: :show
 
       def index
-        locations = apply_filter_for Location.all.includes(:regions, parent: :parent)
+        locations = apply_filter_for Location.all.includes(parent: :parent)
         render json: LocationSerializer.new(
           locations,
           include: included_relationships,
