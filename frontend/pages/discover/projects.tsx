@@ -61,6 +61,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
   // Close the project details card when the user clicks outside of the
   // DetailsCard & Projects list
   useOutsideClick(projectsListAndDetailsContainerRef, () => {
+    if (!breakpoint('lg')) return;
     setSelectedProject(null);
   });
 

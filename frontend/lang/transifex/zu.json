@@ -125,6 +125,9 @@
   "5Hzwqs": {
     "string": "Favorite"
   },
+  "5Ueq8c": {
+    "string": "In the municipality the project has higher impact on <b>{impactOn}</b> and has an impact score of <b>{score}</b>."
+  },
   "5c08Qp": {
     "string": "Project information"
   },
@@ -668,9 +671,6 @@
   },
   "XkF/qg": {
     "string": "Profile picture of {name}"
-  },
-  "XyKb4V": {
-    "string": "In the municipality the the project has higher impact on <b>{impactOn}</b> and has an impact score of <b>{score}</b>."
   },
   "Y7/cBd": {
     "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and <span>start the conversation</span>. Make sure to update us to help us track your contribution to preserving the Amazon: <span>the future is in your hands too!</span>"
