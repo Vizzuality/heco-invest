@@ -263,6 +263,9 @@
   "C0sD76": {
     "string": "insert number (max 24)"
   },
+  "C23He5": {
+    "string": "Sort in ascending order"
+  },
   "CEQo2w": {
     "string": "My preferences"
   },
@@ -289,6 +292,9 @@
   },
   "DAJK4J": {
     "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure 20 million hectares of sustainable landscape over the next 20 years, through investments in conservation and sustainable development."
+  },
+  "DCAMZh": {
+    "string": "Choose the field to sort by"
   },
   "DQoGRx": {
     "string": "About the impact"
@@ -825,6 +831,9 @@
   "fnihsY": {
     "string": "Leave"
   },
+  "fwSVTQ": {
+    "string": "Sort in descending order"
+  },
   "g5pX+a": {
     "string": "About"
   },
@@ -833,6 +842,9 @@
   },
   "gpTOIc": {
     "string": "{message} for search term {term}"
+  },
+  "hDI+JM": {
+    "string": "Sort by"
   },
   "hLG9bm": {
     "string": "Project financial instrument"
