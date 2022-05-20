@@ -82,6 +82,24 @@
             "type": "project_image"
           }
         ]
+      },
+      "country": {
+        "data": {
+          "id": "0c9b5ac1-ca8d-47f0-bc02-3348e28a097a",
+          "type": "location"
+        }
+      },
+      "municipality": {
+        "data": {
+          "id": "2b61bf4b-e6dc-47ae-86ed-d184fe59470e",
+          "type": "location"
+        }
+      },
+      "department": {
+        "data": {
+          "id": "87db8112-04d2-49b6-9a5e-379606416596",
+          "type": "location"
+        }
       }
     }
   },

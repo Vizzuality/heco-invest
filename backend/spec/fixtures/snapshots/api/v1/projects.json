@@ -84,6 +84,24 @@
               "type": "project_image"
             }
           ]
+        },
+        "country": {
+          "data": {
+            "id": "95db18bb-7a80-4b51-8a47-4d030b8aa3cb",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "d5c295ec-a93e-4f50-a097-145b2be05cee",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "db028313-e3e2-4299-814b-70b5e7387095",
+            "type": "location"
+          }
         }
       }
     },
@@ -157,6 +175,24 @@
           "data": [
 
           ]
+        },
+        "country": {
+          "data": {
+            "id": "624c2826-b064-4c97-b285-a43ee9fb1e63",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "0876cb03-f8b3-4fb4-baec-66efcf3ee299",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "de4ca973-c250-4bff-955f-001db07b012e",
+            "type": "location"
+          }
         }
       }
     },
@@ -230,6 +266,24 @@
           "data": [
 
           ]
+        },
+        "country": {
+          "data": {
+            "id": "41a88216-fbc9-4776-87d3-b7d71630a5f1",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "36563423-ab37-4dd1-b6eb-26e47badc9b4",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "f160f22c-997a-4911-b24a-5e94b812a42a",
+            "type": "location"
+          }
         }
       }
     },
@@ -303,6 +357,24 @@
           "data": [
 
           ]
+        },
+        "country": {
+          "data": {
+            "id": "5a68e08f-5aaf-4cf4-9547-bd48dde16172",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "dfa20a92-f688-4f23-a03f-7deebb3ded81",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "852861af-8c1d-42e2-afe6-a69d36631ec6",
+            "type": "location"
+          }
         }
       }
     },
@@ -376,6 +448,24 @@
           "data": [
 
           ]
+        },
+        "country": {
+          "data": {
+            "id": "1469a293-9fd4-4f24-a602-45c437689398",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "e42fa6a4-b8d8-4140-a5ae-444196085d79",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "ffa8061e-f451-431e-bb65-d9a169819d55",
+            "type": "location"
+          }
         }
       }
     },
@@ -449,6 +539,24 @@
           "data": [
 
           ]
+        },
+        "country": {
+          "data": {
+            "id": "9ba0dcd9-ae13-492a-9f88-18f22cf54df4",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "49bd82dc-c095-4e43-9163-c495e61b23c5",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "fac0ac08-6ca4-4354-ab9e-881d7472fb80",
+            "type": "location"
+          }
         }
       }
     },
@@ -522,6 +630,24 @@
           "data": [
 
           ]
+        },
+        "country": {
+          "data": {
+            "id": "16055df4-7935-4e65-94ff-b55cc90dc794",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "c8f6d7a7-3c7b-4a19-8622-b1d96730bc2a",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "dbe13ff8-016e-4d94-b428-654f03bffb85",
+            "type": "location"
+          }
         }
       }
     }
