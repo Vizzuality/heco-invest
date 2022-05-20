@@ -1,5 +1,9 @@
+import { useMemo } from 'react';
+
 import { Path } from 'react-hook-form';
 import { useIntl } from 'react-intl';
+
+import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
 
@@ -58,3 +62,17 @@ export const bytesToMegabytes = (bytes: number): number => {
 
 /** Constant to define the default max allowed file size to upload */
 export const FILE_UPLOADER_MAX_SIZE = 5 * 1024 * 1024;
+
+// Hook to get the query params of the discover pages
+export const useQueryParams = () => {
+  const { query } = useRouter();
+  return useMemo(() => {
+    const { page, search, sorting, ...filters } = query;
+    return {
+      page: parseInt(page as string) || 1,
+      search: (search as string) || '',
+      sorting: (sorting as string) || '',
+      ...filters,
+    };
+  }, [query]);
+};

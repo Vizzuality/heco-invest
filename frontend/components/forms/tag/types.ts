@@ -24,6 +24,8 @@ export type TagProps<FormValues> = {
   registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
   /** Classes to apply to the container */
   className?: string;
+  /** Classes to apply to the label */
+  filterTags?: boolean;
   /** Whether the input is invalid. Defaults to `false`. */
   invalid?: boolean;
   /** label className change to flex for labels with rows */

@@ -6,6 +6,10 @@ import cx from 'classnames';
 
 import { useRouter } from 'next/router';
 
+import { UseQueryOptions } from 'react-query/types/react';
+
+import { useQueryParams } from 'helpers/pages';
+
 import DiscoverSearch from 'containers/layouts/discover-search';
 
 import LayoutContainer from 'components/layout-container';
@@ -15,6 +19,7 @@ import { Paths } from 'enums';
 import { useInvestorsList } from 'services/investors/investorsService';
 import { useProjectDevelopersList } from 'services/project-developers/projectDevelopersService';
 import { useProjectsList } from 'services/projects/projectService';
+import { PagedResponse } from 'services/types';
 
 import Header from './header';
 import Navigation from './navigation';
@@ -26,7 +31,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 }: DiscoverPageLayoutProps) => {
   const intl = useIntl();
   const router = useRouter();
-  const { query } = router;
+  const { push, pathname } = useRouter();
 
   const sortingOptions = [
     { key: 'name', label: intl.formatMessage({ defaultMessage: 'Name', id: 'HAlOn1' }) },
@@ -49,18 +54,9 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 
   // http://localhost:3000/discover/projects?page=2&search=sar&sorting=name+asc
 
-  const queryParams = useMemo(
-    () => ({
-      page: parseInt(query.page as string) || 1,
-      search: (query.search as string) || '',
-      sorting:
-        // No need to decode URI component, next/router does it automatically
-        (query.sorting as string) || `${sorting.sortBy} ${sorting.sortOrder}`,
-    }),
-    [sorting, query]
-  );
+  const queryParams = useQueryParams();
 
-  const queryOptions = { keepPreviousData: false };
+  const queryOptions: UseQueryOptions<PagedResponse<any>> = { keepPreviousData: false };
 
   const {
     data: projects,
@@ -92,17 +88,17 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 
   const { data, meta, loading } = useMemo(() => {
     // TODO: Find a way to improve this.
-    if (router.pathname.startsWith(Paths.Projects))
+    if (pathname.startsWith(Paths.Projects))
       return { ...projects, loading: isLoadingProjects || isFetchingProjects };
 
-    if (router.pathname.startsWith(Paths.ProjectDevelopers)) {
+    if (pathname.startsWith(Paths.ProjectDevelopers)) {
       return {
         ...projectDevelopers,
         loading: isLoadingProjectDevelopers || isFetchingProjectDevelopers,
       };
     }
 
-    if (router.pathname.startsWith(Paths.Investors)) {
+    if (pathname.startsWith(Paths.Investors)) {
       return {
         ...investors,
         loading: isLoadingInvestors || isFetchingInvestors,
@@ -120,12 +116,13 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     isLoadingProjects,
     projectDevelopers,
     projects,
-    router.pathname,
+    pathname,
   ]) || { data: [], meta: [] };
 
   useEffect(() => {
-    setSearchInputValue(queryParams.search);
-  }, [queryParams.search]);
+    const { search } = queryParams;
+    setSearchInputValue(search);
+  }, [queryParams]);
 
   useEffect(() => {
     const [sortBy, sortOrder] = queryParams.sorting.split(' ');
@@ -133,7 +130,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   }, [defaultSorting, queryParams.sorting]);
 
   const handleSearch = (searchText: string) => {
-    router.push({ query: { ...queryParams, page: 1, search: searchText } }, undefined, {
+    push({ query: { ...queryParams, page: 1, search: searchText } }, undefined, {
       shallow: true,
     });
   };
@@ -176,8 +173,8 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 h-screen bg-background-dark">
-      <div className="flex flex-col h-screen">
-        <div>
+      <div className="flex flex-col h-screen overflow-auto">
+        <div className="z-10">
           <Header {...discoverSearchProps} />
           <LayoutContainer className="z-10 flex justify-center pt-1 mt-20 mb-2 pointer-events-none xl:hidden xl:mb-6 xl:mt-0 xl:left-0 xl:right-0 xl:h-20 xl:fixed xl:top-3">
             <DiscoverSearch
@@ -186,7 +183,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
             />
           </LayoutContainer>
         </div>
-        <main className="flex flex-col flex-grow h-screen overflow-y-scroll">
+        <main className="z-0 flex flex-col flex-grow h-screen overflow-y-scroll">
           <LayoutContainer className="xl:mt-28">
             <div className="flex flex-col items-center gap-2 mt-4 mb-4 lg:mt-2 lg:gap-6 lg:flex-row space-between">
               <SortingButtons className="flex-1" {...sortingButtonsProps} />
