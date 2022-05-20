@@ -1,10 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 
-import { ChevronDown } from 'react-feather';
+import { ChevronDown, ChevronUp } from 'react-feather';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-
-import cx from 'classnames';
 
 import { useRouter } from 'next/router';
 
@@ -42,16 +40,15 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
   } = useForm<FilterForm>();
 
   const {
-    data: { category, ticket_size, instrument_type, impact },
+    data: { category, ticket_size, instrument_type },
   } = useEnums();
 
-  const filters = [instrument_type, ticket_size, category, impact, sdg];
+  const filters = [instrument_type, ticket_size, category, sdg];
 
   const legends = [
     formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
     formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
     formatMessage({ defaultMessage: 'Category', id: 'ccXLVi' }),
-    formatMessage({ defaultMessage: 'Impact', id: 'W2JBdp' }),
     formatMessage({ defaultMessage: 'SDG', id: 'JUqdD1' }),
   ];
 
@@ -170,7 +167,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
             className="px-0 py-0 font-sans text-base font-medium text-black"
           >
             <FormattedMessage defaultMessage="More filters" id="vdJRZj" />
-            <Icon icon={ChevronDown} />
+            <Icon className="w-5 h-5 ml-1" icon={showMoreFilters ? ChevronUp : ChevronDown} />
           </Button>
         </div>
 
@@ -180,21 +177,13 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
               {filters.map((filter, index) => {
                 const filterName = filter[0].type as keyof FilterForm;
                 return (
-                  <div
-                    key={filterName}
-                    className={cx('mb-4 sm:mb-0', {
-                      'sm:col-span-3': index < 2,
-                      'sm:col-span-2': index >= 2,
-                    })}
-                  >
+                  <div key={filterName} className="mb-4 sm:mb-0 sm:col-span-3">
                     <Label
                       className="block mb-2 font-semibold text-gray-800 text-small"
                       htmlFor={filterName}
                     >
                       <span className="mr-2">{legends[index]}</span>
-                      {(filterName === 'category' ||
-                        filterName === 'instrument_type' ||
-                        filterName === 'impact') && (
+                      {(filterName === 'category' || filterName === 'instrument_type') && (
                         <FieldInfo
                           infoText={
                             <ul>
