@@ -4,12 +4,18 @@ import cx from 'classnames';
 
 import { useRouter } from 'next/router';
 
+import { UseQueryOptions } from 'react-query/types/react';
+
+import { useQueryParams } from 'helpers/pages';
+
 import DiscoverSearch from 'containers/layouts/discover-search';
 
 import LayoutContainer from 'components/layout-container';
 import { Paths } from 'enums';
+import { Project } from 'types/project';
 
 import { useProjectsList } from 'services/projects/projectService';
+import { PagedResponse } from 'services/types';
 
 import Header from './header';
 import Navigation from './navigation';
@@ -19,23 +25,16 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   screenHeightLg = false,
   children,
 }: DiscoverPageLayoutProps) => {
-  const router = useRouter();
-  const { query } = router;
+  const { push, pathname } = useRouter();
 
   // This shouldn't be needed, but due to CSS positioning / z-index issues we need to have the DiscoverSearch
   // components both in the header and in this layout; which one is visible depends on the screen resolution.
   // These states are here to keep both DiscoverSearch in sync, in case the user resizes their screen.
   const [searchInputValue, setSearchInputValue] = useState('');
 
-  const queryParams = useMemo(
-    () => ({
-      page: parseInt(query.page as string) || 1,
-      search: (query.search as string) || '',
-    }),
-    [query]
-  );
+  const queryParams = useQueryParams();
 
-  const queryOptions = { keepPreviousData: true };
+  const queryOptions: UseQueryOptions<PagedResponse<Project>> = { keepPreviousData: true };
 
   const {
     data: projects,
@@ -52,19 +51,20 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 
   const { data, meta, loading } = useMemo(() => {
     // TODO: Find a way to improve this.
-    if (router.pathname.startsWith(Paths.Projects))
+    if (pathname.startsWith(Paths.Projects))
       return { ...projects, loading: isLoadingProjects || isFetchingProjects };
     // if (router.pathname.startsWith(Paths.ProjectDevelopers)) return projectDevelopers;
     // if (router.pathname.startsWith(Paths.Investors)) return investors;
     // if (router.pathname.startsWith(Paths.OpenCalls)) return openCalls;
-  }, [isFetchingProjects, isLoadingProjects, projects, router.pathname]) || { data: [], meta: [] };
+  }, [isFetchingProjects, isLoadingProjects, projects, pathname]) || { data: [], meta: [] };
 
   useEffect(() => {
-    setSearchInputValue(queryParams.search);
-  }, [queryParams.search]);
+    const { search } = queryParams;
+    setSearchInputValue(search);
+  }, [queryParams]);
 
   const handleSearch = (searchText: string) => {
-    router.push({ query: { ...queryParams, page: 1, search: searchText } }, undefined, {
+    push({ query: { ...queryParams, page: 1, search: searchText } }, undefined, {
       shallow: true,
     });
   };
@@ -85,8 +85,8 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 h-screen bg-background-dark">
-      <div className="flex flex-col h-screen">
-        <div>
+      <div className="flex flex-col h-screen overflow-auto">
+        <div className="z-10">
           <Header {...discoverSearchProps} />
           <LayoutContainer className="z-10 flex justify-center pt-1 mt-20 mb-2 pointer-events-none xl:hidden xl:mb-6 xl:mt-0 xl:left-0 xl:right-0 xl:h-20 xl:fixed xl:top-3">
             <DiscoverSearch
@@ -95,7 +95,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
             />
           </LayoutContainer>
         </div>
-        <main className="flex flex-col flex-grow h-screen overflow-y-scroll">
+        <main className="z-0 flex flex-col flex-grow h-screen overflow-y-scroll">
           <LayoutContainer className="xl:mt-28">
             <div className="flex items-center gap-6 mt-2 mb-4 space-between">
               {/*<div>Sort</div>*/}
