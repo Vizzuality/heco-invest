@@ -48,7 +48,9 @@
         ]
       },
       "latitude": "2.0",
-      "longitude": "1.0"
+      "longitude": "1.0",
+      "funding_plan": "Funding plan description",
+      "trusted": false
     },
     "relationships": {
       "project_developer": {
