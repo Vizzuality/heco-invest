@@ -6,10 +6,6 @@ FactoryBot.define do
     impacts { %w[climate water] }
     project_developer_type { "ngo" }
     mosaics { %w[amazon-heart amazonian-piedmont-massif] }
-    sequence(:mission) do |n|
-      Faker::Config.random = Random.new(n)
-      Faker::Lorem.paragraph(sentence_count: 4)
-    end
     language { "en" }
     entity_legal_registration_number { "564823570" }
 

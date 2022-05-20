@@ -1,7 +1,5 @@
 class ProjectDeveloper < ApplicationRecord
   include BelongsToAccount
-  include Translatable
-  include Searchable
 
   has_many :projects, dependent: :destroy
   has_many :favourite_project_developers, dependent: :destroy
@@ -13,8 +11,7 @@ class ProjectDeveloper < ApplicationRecord
   validates :project_developer_type, inclusion: {in: ProjectDeveloperType::TYPES}
   validates :mosaics, array_inclusion: {in: Mosaic::TYPES}
   validates :language, inclusion: {in: Language::TYPES}
+  validates :entity_legal_registration_number, presence: true
 
-  validates_presence_of :mission, :entity_legal_registration_number
-
-  translates :mission
+  translates *[] # we depend on presence of translatable_attributes in a few places (filterer, sorter)
 end

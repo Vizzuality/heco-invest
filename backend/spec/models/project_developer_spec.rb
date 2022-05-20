@@ -3,19 +3,11 @@ require "rails_helper"
 RSpec.describe ProjectDeveloper, type: :model do
   subject { build(:project_developer) }
 
-  it_behaves_like :searchable
-  it_behaves_like :translatable
-
   it { is_expected.to be_valid }
 
   it "should not be valid without account" do
     subject.account = nil
     expect(subject).to have(1).errors_on(:account)
-  end
-
-  it "should not be valid without mission" do
-    subject.mission = nil
-    expect(subject).to have(1).errors_on(:mission)
   end
 
   it "should not be valid with wrong language" do

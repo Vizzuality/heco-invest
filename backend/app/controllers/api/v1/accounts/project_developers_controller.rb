@@ -40,11 +40,11 @@ module API
 
         def account_params
           params.permit :language, :picture, :name, :website, :linkedin, :facebook, :twitter, :instagram, :about,
-            :contact_email, :contact_phone
+            :contact_email, :contact_phone, :mission
         end
 
         def project_developer_params
-          params.permit :language, :project_developer_type, :entity_legal_registration_number, :mission,
+          params.permit :language, :project_developer_type, :entity_legal_registration_number,
             categories: [], impacts: [], mosaics: []
         end
       end

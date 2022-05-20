@@ -21,7 +21,7 @@ module API
     private
 
     def apply_full_text_filter
-      return if filters[:full_text].blank?
+      return if filters[:full_text].blank? || !query.klass.respond_to?(:translatable_attributes)
 
       columns = (query.klass.translatable_attributes & FULL_TEXT_FILTERS).map { |key| "#{key}_#{language}" }
       columns &= column_names

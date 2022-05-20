@@ -69,9 +69,12 @@ RSpec.describe API::Filterer do
 
       context "when filtered by full_text param" do
         let(:filters) { {full_text: "TEST", language: :en} }
-        let!(:correct_project_developer) { create :project_developer, mission_en: "TEST" }
-        let!(:different_language_project_developer) { create :project_developer, mission_es: "TEST" }
-        let!(:different_text_project_developer) { create :project_developer, mission_en: "DIFFERENT" }
+        let(:correct_account) { create :account, mission_en: "TEST" }
+        let(:different_language_account) { create :account, mission_es: "TEST" }
+        let(:different_account) { create :account, mission_en: "DIFFERENT" }
+        let!(:correct_project_developer) { create :project_developer, account: correct_account }
+        let!(:different_language_project_developer) { create :project_developer, account: different_language_account }
+        let!(:different_text_project_developer) { create :project_developer, account: different_account}
 
         it "returns only records with correct text at correct language" do
           expect(subject.call).to eq([correct_project_developer])
@@ -139,9 +142,12 @@ RSpec.describe API::Filterer do
 
       context "when filtered by full_text param" do
         let(:filters) { {full_text: "TEST", language: :en} }
-        let!(:correct_investor) { create :investor, mission_en: "TEST" }
-        let!(:different_language_investor) { create :investor, mission_es: "TEST" }
-        let!(:different_text_investor) { create :investor, mission_en: "DIFFERENT" }
+        let(:correct_account) { create :account, mission_en: "TEST" }
+        let(:different_language_account) { create :account, mission_es: "TEST" }
+        let(:different_account) { create :account, mission_en: "DIFFERENT" }
+        let!(:correct_investor) { create :investor, account: correct_account}
+        let!(:different_language_investor) { create :investor, account: different_language_account }
+        let!(:different_text_investor) { create :investor, account: different_account }
 
         it "returns only records with correct text at correct language" do
           expect(subject.call).to eq([correct_investor])

@@ -39,11 +39,12 @@ module API
         private
 
         def account_params
-          params.permit :language, :picture, :name, :website, :linkedin, :facebook, :twitter, :instagram, :about, :contact_email, :contact_phone
+          params.permit :language, :picture, :name, :website, :linkedin, :facebook, :twitter, :instagram, :about,
+            :contact_email, :contact_phone, :mission
         end
 
         def investor_params
-          params.permit :language, :investor_type, :mission, :prioritized_projects_description, :other_information,
+          params.permit :language, :investor_type, :prioritized_projects_description, :other_information,
             :previously_invested, categories: [], ticket_sizes: [], instrument_types: [], impacts: [], sdgs: []
         end
       end

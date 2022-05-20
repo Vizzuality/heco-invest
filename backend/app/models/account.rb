@@ -13,7 +13,7 @@ class Account < ApplicationRecord
 
   has_one_attached :picture
 
-  translates :about
+  translates :about, :mission
 
   enum review_status: {unapproved: 0, approved: 1, rejected: 2}, _default: :unapproved
 
@@ -28,6 +28,7 @@ class Account < ApplicationRecord
   validates :picture, attached: true, content_type: /\Aimage\/.*\z/
   validates :contact_email, presence: true
   validates :contact_email, format: {with: Devise.email_regexp}, unless: -> { contact_email.blank? }
+  validates :mission, presence: true
 
   def slug_preview
     set_slug unless slug.present?

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_19_172649) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.integer "review_status", default: 0, null: false
     t.datetime "reviewed_at"
     t.text "review_message"
+    t.text "mission_en"
+    t.text "mission_es"
+    t.text "mission_pt"
     t.index ["name"], name: "index_accounts_on_name", unique: true
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
     t.index ["slug"], name: "index_accounts_on_slug", unique: true
@@ -124,9 +127,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "mission_en"
-    t.string "mission_es"
-    t.string "mission_pt"
     t.string "prioritized_projects_description_en"
     t.string "prioritized_projects_description_es"
     t.string "prioritized_projects_description_pt"
@@ -196,9 +196,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.string "project_developer_type", null: false
     t.string "categories", array: true
     t.string "impacts", array: true
-    t.text "mission_en"
-    t.text "mission_es"
-    t.text "mission_pt"
     t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

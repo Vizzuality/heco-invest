@@ -13,8 +13,7 @@ class Investor < ApplicationRecord
   validates :investor_type, inclusion: {in: InvestorType::TYPES}
   validates :language, inclusion: {in: Language::TYPES}
   validates :previously_invested, inclusion: {in: [true, false]}
+  validates :other_information, presence: true
 
-  validates_presence_of :mission, :other_information
-
-  translates :mission, :prioritized_projects_description, :other_information
+  translates :prioritized_projects_description, :other_information
 end

@@ -22,6 +22,11 @@ RSpec.describe Account, type: :model do
     expect(subject).to have(1).errors_on(:about)
   end
 
+  it "should not be valid without mission" do
+    subject.mission = nil
+    expect(subject).to have(1).errors_on(:mission)
+  end
+
   it "should not be valid with wrong language" do
     subject.language = "fr"
     expect(subject).to have(1).errors_on(:language)

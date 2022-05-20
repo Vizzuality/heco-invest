@@ -13,11 +13,6 @@ RSpec.describe Investor, type: :model do
     expect(subject).to have(1).errors_on(:account)
   end
 
-  it "should not be valid without mission" do
-    subject.mission = nil
-    expect(subject).to have(1).errors_on(:mission)
-  end
-
   it "should not be valid without other information" do
     subject.other_information = nil
     expect(subject).to have(1).errors_on(:other_information)
