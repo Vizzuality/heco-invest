@@ -27,7 +27,7 @@ class ProjectGeometryValidator < ActiveModel::Validator
   def validation_of(geometry)
     return if geometry.blank?
 
-    @project.center = GeoJsons::ToCentroid.new(geometry).call
+    @project.centroid = GeoJsons::ToCentroid.new(geometry).call
   rescue GeoJsons::NoGeometry
     @project.errors.add :geometry, :missing_geometry
   rescue GeoJsons::NoSupportedGeometry

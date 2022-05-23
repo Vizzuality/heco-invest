@@ -46,6 +46,7 @@ RSpec.describe Impacts::CalculateForProject do
       expect(project.municipality_climate_impact).to eq(0)
       expect(project.municipality_water_impact.round(10)).to eq(0.8655555556)
       expect(project.municipality_community_impact.round(10)).to eq(0.9822222222)
+      expect(project.municipality_total_impact.round(10)).to eq(0.4619444444)
     end
 
     it "computes correct basin impacts" do
@@ -54,6 +55,7 @@ RSpec.describe Impacts::CalculateForProject do
       expect(project.hydrobasin_climate_impact).to eq(0)
       expect(project.hydrobasin_water_impact).to eq(0)
       expect(project.hydrobasin_community_impact.round(10)).to eq(0.7822222222)
+      expect(project.hydrobasin_total_impact.round(10)).to eq(0.1955555556)
     end
 
     it "computes correct mosaic impacts" do
@@ -62,11 +64,7 @@ RSpec.describe Impacts::CalculateForProject do
       expect(project.priority_landscape_climate_impact).to eq(0)
       expect(project.priority_landscape_water_impact.round(10)).to eq(0)
       expect(project.priority_landscape_community_impact.round(10)).to eq(0.8888888889)
-    end
-
-    it "computes correct total impact" do
-      project.reload
-      expect(project.total_impact.round(10)).to eq(0.2932407407)
+      expect(project.priority_landscape_total_impact.round(10)).to eq(0.2222222222)
     end
 
     context "when no intersect locations are found" do
@@ -82,15 +80,17 @@ RSpec.describe Impacts::CalculateForProject do
         expect(project.municipality_climate_impact).to be_nil
         expect(project.municipality_water_impact).to be_nil
         expect(project.municipality_community_impact).to be_nil
+        expect(project.municipality_total_impact).to be_nil
         expect(project.hydrobasin_biodiversity_impact).to be_nil
         expect(project.hydrobasin_climate_impact).to be_nil
         expect(project.hydrobasin_water_impact).to be_nil
         expect(project.hydrobasin_community_impact).to be_nil
+        expect(project.hydrobasin_total_impact).to be_nil
         expect(project.priority_landscape_biodiversity_impact).to be_nil
         expect(project.priority_landscape_climate_impact).to be_nil
         expect(project.priority_landscape_water_impact).to be_nil
         expect(project.priority_landscape_community_impact).to be_nil
-        expect(project.total_impact).to be_nil
+        expect(project.priority_landscape_total_impact).to be_nil
       end
     end
 
@@ -110,6 +110,7 @@ RSpec.describe Impacts::CalculateForProject do
         expect(project.municipality_climate_impact).to eq(0)
         expect(project.municipality_water_impact).to eq(0)
         expect(project.municipality_community_impact).to eq(0)
+        expect(project.municipality_total_impact).to eq(0)
       end
     end
   end

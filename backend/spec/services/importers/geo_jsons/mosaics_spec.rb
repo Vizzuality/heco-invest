@@ -9,11 +9,8 @@ RSpec.describe Importers::GeoJsons::Mosaics do
     context "when files does not exists at provided path" do
       let(:path) { "WRONG_PATH" }
 
-<<<<<<< HEAD
       before { allow(subject).to receive(:puts).with("GeoJSON at #{path} with location data was not found. Skipping location import!") }
 
-=======
->>>>>>> feat: Services for importing data from geojsons
       it "return nil" do
         expect(subject.call).to be_nil
       end
@@ -31,7 +28,6 @@ RSpec.describe Importers::GeoJsons::Mosaics do
         expect(mosaics.pluck(:name_en)).to include("Piedemonte Amazónico - Macizo")
       end
 
-<<<<<<< HEAD
       it "creates geometries records" do
         expect(LocationGeometry.count).to eq(mosaics.count)
         expect(mosaics.find_by(name_en: "Piedemonte Amazónico - Macizo").location_geometry.geometry)
@@ -39,10 +35,6 @@ RSpec.describe Importers::GeoJsons::Mosaics do
       end
 
       it "assign all impact related attributes" do
-=======
-      it "assign all impact related attributes" do
-        expect(mosaics.first.geometry).not_to be_nil
->>>>>>> feat: Services for importing data from geojsons
         expect(mosaics.first.biodiversity).not_to be_nil
         expect(mosaics.first.biodiversity_demand).not_to be_nil
         expect(mosaics.first.climate).not_to be_nil

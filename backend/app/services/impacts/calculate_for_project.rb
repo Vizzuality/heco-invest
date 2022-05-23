@@ -32,7 +32,7 @@ module Impacts
     end
 
     def call
-      return if project.center.blank?
+      return if project.centroid.blank?
 
       calculate_impacts
       store_impacts!
@@ -48,21 +48,21 @@ module Impacts
 
     def store_impacts!
       project.assign_attributes impacts
-      project.total_impact = impacts.values.sum / impacts.size unless impacts.blank?
       project.save!
     end
 
     def assign_impacts_for(location, impact_type:)
       return if location.blank?
 
-      CALCULATION_SETUP.each do |impact, impact_areas|
-        demand = location.public_send("#{impact}_demand")
-        impacts["#{impact_type}_#{impact}_impact"] = impact_value_for impact_areas, demand
+      values = CALCULATION_SETUP.map do |impact, impact_areas|
+        demand = location.public_send "#{impact}_demand"
+        impact_value_for(impact_areas, demand).tap { |value| impacts["#{impact_type}_#{impact}_impact"] = value }
       end
+      impacts["#{impact_type}_total_impact"] = values.sum / values.size
     end
 
     def impact_value_for(impact_areas, demand)
-      return 0 if (project.impact_areas & impact_areas.keys) == impact_areas.keys || demand.nil?
+      return 0 if (project.impact_areas & impact_areas.keys) == impact_areas.keys || demand.nil? # return zero if all impact areas of appropriate type are selected
 
       supply = supply_value_for impact_areas, demand
       supply.zero? ? 0 : -((supply - demand)**2) + 1
@@ -81,7 +81,7 @@ module Impacts
 
     def location_intersection_for(location_type)
       LocationGeometry.joins(:location).where(locations: {location_type: location_type})
-        .intersection_with(project.center).first&.location
+        .intersection_with(project.centroid).first&.location
     end
   end
 end

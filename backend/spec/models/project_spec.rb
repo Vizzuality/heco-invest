@@ -139,11 +139,11 @@ RSpec.describe Project, type: :model do
     expect(subject).to have(1).errors_on(:geometry)
   end
 
-  it "should precompute center with valid geometry" do
+  it "should precompute centroid with valid geometry" do
     subject.geometry = {type: "Point", coordinates: [100.0, 0.0]}
     expect(subject).to be_valid
-    expect(subject.center.y).to eq(0.0)
-    expect(subject.center.x).to eq(100.0)
+    expect(subject.centroid.y).to eq(0.0)
+    expect(subject.centroid.x).to eq(100.0)
   end
 
   it "should not be valid for unsupported geometry type" do

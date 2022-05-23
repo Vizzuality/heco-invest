@@ -239,8 +239,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.text "name_pt"
     t.text "slug", null: false
     t.integer "status", default: 0, null: false
-    t.decimal "latitude", precision: 10, scale: 6
-    t.decimal "longitude", precision: 10, scale: 6
     t.text "address"
     t.string "ticket_size"
     t.string "instrument_types", array: true
@@ -295,6 +293,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.text "relevant_links_pt"
     t.string "category", null: false
     t.jsonb "geometry", default: {}
+    t.decimal "municipality_biodiversity_impact", precision: 25, scale: 20
+    t.decimal "municipality_climate_impact", precision: 25, scale: 20
+    t.decimal "municipality_water_impact", precision: 25, scale: 20
+    t.decimal "municipality_community_impact", precision: 25, scale: 20
+    t.decimal "municipality_total_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_biodiversity_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_climate_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_water_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_community_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_total_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_biodiversity_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_climate_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_water_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_community_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_total_impact", precision: 25, scale: 20
+    t.geometry "centroid", limit: {:srid=>0, :type=>"st_point"}
     t.index ["country_id"], name: "index_projects_on_country_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
     t.index ["municipality_id"], name: "index_projects_on_municipality_id"

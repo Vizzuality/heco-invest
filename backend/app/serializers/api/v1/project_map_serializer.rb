@@ -4,11 +4,11 @@ module API
       attributes :trusted
 
       attribute :latitude do |object, _params|
-        object.center&.y
+        object.centroid&.y
       end
 
       attribute :longitude do |object, _params|
-        object.center&.x
+        object.centroid&.x
       end
     end
   end

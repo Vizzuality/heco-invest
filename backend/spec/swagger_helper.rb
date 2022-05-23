@@ -192,15 +192,17 @@ RSpec.configure do |config|
                   municipality_climate_impact: {type: :number, nullable: true},
                   municipality_water_impact: {type: :number, nullable: true},
                   municipality_community_impact: {type: :number, nullable: true},
+                  municipality_total_impact: {type: :number, nullable: true},
                   hydrobasin_biodiversity_impact: {type: :number, nullable: true},
                   hydrobasin_climate_impact: {type: :number, nullable: true},
                   hydrobasin_water_impact: {type: :number, nullable: true},
                   hydrobasin_community_impact: {type: :number, nullable: true},
+                  hydrobasin_total_impact: {type: :number, nullable: true},
                   priority_landscape_biodiversity_impact: {type: :number, nullable: true},
                   priority_landscape_climate_impact: {type: :number, nullable: true},
                   priority_landscape_water_impact: {type: :number, nullable: true},
                   priority_landscape_community_impact: {type: :number, nullable: true},
-                  total_impact: {type: :number, nullable: true}
+                  priority_landscape_total_impact: {type: :number, nullable: true}
                 }
               },
               relationships: {

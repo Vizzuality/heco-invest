@@ -5,6 +5,11 @@ module API
     SORTING_DIRECTIONS = %i[asc desc]
     SORTING_OPTIONS = {
       name: {ProjectDeveloper => :account, Investor => :account},
+      municipality_biodiversity_impact: {},
+      municipality_climate_impact: {},
+      municipality_water_impact: {},
+      municipality_community_impact: {},
+      municipality_total_impact: {},
       created_at: {}
     }
 
@@ -15,7 +20,7 @@ module API
     end
 
     def call
-      self.query = query.joins(sort_joins).order(sort_query => sort_direction)
+      self.query = query.joins(sort_joins).order(sort_query => sort_direction) if sorting_column_exists?
       add_secondary_default_sorting
     end
 
@@ -53,8 +58,9 @@ module API
       "#{sort_joins.to_s.pluralize}.#{param}"
     end
 
-    def column_names
-      @column_names ||= query.klass.column_names
+    def sorting_column_exists?
+      table, attr = sort_query.to_s.split(".")
+      table.classify.constantize.column_names.include? attr.to_s
     end
   end
 end
