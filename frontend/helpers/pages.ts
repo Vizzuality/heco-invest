@@ -3,6 +3,8 @@ import { useIntl } from 'react-intl';
 
 import { AxiosError } from 'axios';
 
+import { Impacts } from 'enums';
+
 import { ErrorResponse } from 'services/types';
 
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
@@ -48,3 +50,11 @@ export function useGetAlert(error?: AxiosError<ErrorResponse>): string[] {
         ];
   }
 }
+
+/** Function to convert bytes in megabites */
+export const bytesToMegabytes = (bytes: number): number => {
+  return bytes / (1024 * 1024);
+};
+
+/** Constant to define the default max allowed file size to upload */
+export const FILE_UPLOADER_MAX_SIZE = 5 * 1024 * 1024;

@@ -51,6 +51,11 @@ variable "google_analytics_key" {
   description = "Google Analytics key"
 }
 
+variable "google_maps_api_key" {
+  type = string
+  description = "Google Maps API key"
+}
+
 variable "domain" {
   type = string
   description = "Base domain for the DNS zone"

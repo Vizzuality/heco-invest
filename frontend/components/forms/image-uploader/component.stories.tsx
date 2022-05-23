@@ -22,9 +22,17 @@ interface FormValues {
 }
 
 const Template: Story<ImageUploaderProps<FormValues>> = (args: ImageUploaderProps<FormValues>) => {
-  const { register } = useForm<FormValues>();
+  const { register, clearErrors, setError, setValue } = useForm<FormValues>();
 
-  return <ImageUploader register={register} {...args} />;
+  return (
+    <ImageUploader
+      clearError={clearErrors}
+      setError={setError}
+      setValue={setValue}
+      register={register}
+      {...args}
+    />
+  );
 };
 
 export const Default: Story<ImageUploaderProps<FormValues>> = Template.bind({});
@@ -36,14 +44,20 @@ Default.args = {
 const TemplateWithLabel: Story<ImageUploaderProps<FormValues>> = (
   args: ImageUploaderProps<FormValues>
 ) => {
-  const { register } = useForm<FormValues>();
+  const { register, clearErrors, setError, setValue } = useForm<FormValues>();
 
   return (
     <>
       <label htmlFor={args.id} className="mb-2">
         Profile picture
       </label>
-      <ImageUploader register={register} {...args} />
+      <ImageUploader
+        clearError={clearErrors}
+        setError={setError}
+        setValue={setValue}
+        register={register}
+        {...args}
+      />
     </>
   );
 };
@@ -62,6 +76,9 @@ const TemplateWithForm: Story<ImageUploaderProps<FormValues>> = (
     register,
     handleSubmit,
     formState: { errors },
+    clearErrors,
+    setError,
+    setValue,
   } = useForm<FormValues>({
     // Using the native validation, we're able to style the inputs using the `valid` and `invalid` pseudo class
     shouldUseNativeValidation: true,
@@ -77,7 +94,14 @@ const TemplateWithForm: Story<ImageUploaderProps<FormValues>> = (
       <label htmlFor={args.id} className="mb-2">
         Profile image
       </label>
-      <ImageUploader register={register} aria-describedby="form-error" {...args} />
+      <ImageUploader
+        clearError={clearErrors}
+        setError={setError}
+        setValue={setValue}
+        register={register}
+        {...args}
+        aria-describedby="form-error"
+      />
       {errors.picture?.message && (
         <p id="form-error" className="pl-2 mt-1 text-xs text-red-700">
           {errors.picture?.message}

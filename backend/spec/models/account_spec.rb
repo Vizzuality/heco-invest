@@ -3,6 +3,8 @@ require "rails_helper"
 RSpec.describe Account, type: :model do
   subject { build(:account) }
 
+  it_behaves_like :translatable
+
   it { is_expected.to be_valid }
 
   it "should not be valid without owner" do

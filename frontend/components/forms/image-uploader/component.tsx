@@ -7,6 +7,8 @@ import cx from 'classnames';
 
 import Image from 'next/image';
 
+import { FILE_UPLOADER_MAX_SIZE, bytesToMegabytes } from 'helpers/pages';
+
 import { directUpload } from 'services/direct-upload/directUpload';
 
 import { ImageUploaderProps } from './types';
@@ -21,34 +23,56 @@ export const ImageUploader = <FormValues extends FieldValues>({
   registerOptions,
   setError,
   setValue,
+  maxSize = FILE_UPLOADER_MAX_SIZE,
+  clearError,
   ...rest
 }: ImageUploaderProps<FormValues>) => {
   const { formatMessage } = useIntl();
   const [imagePreview, setImagePreview] = useState<string>();
 
+  const setInputError = (
+    message: string = formatMessage({
+      defaultMessage: 'Something went wrong with the picture upload',
+      id: 'F++AYx',
+    })
+  ) => {
+    setImagePreview(null);
+    setValue(name, undefined);
+    setError(name, {
+      message,
+    });
+  };
+
   const handleUploadImage = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.files?.length) {
+      clearError(name);
       const file = e.currentTarget.files[0];
+      if (maxSize && file.size >= maxSize) {
+        setInputError(
+          formatMessage(
+            {
+              defaultMessage: 'The image is larger than {maxSize}MB',
+              id: 'IBlTCs',
+            },
+            {
+              maxSize: bytesToMegabytes(maxSize).toFixed(0),
+            }
+          )
+        );
+        return;
+      }
+
       const src = URL.createObjectURL(file);
       await directUpload(file)
         .then(({ signed_id }) => {
           setImagePreview(src);
           setValue(name, signed_id as any);
         })
-        .catch((error: Error) => {
-          setValue(name, undefined);
-          setError(name, {
-            message:
-              error.message ||
-              formatMessage({
-                defaultMessage: 'Something went wrong with the picture upload',
-                id: 'F++AYx',
-              }),
-          });
-          setImagePreview(null);
+        .catch(() => {
+          setInputError();
         });
     } else {
-      setImagePreview(null);
+      setInputError();
     }
   };
 

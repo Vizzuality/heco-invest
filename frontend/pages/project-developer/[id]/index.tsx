@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
+
 import { FormattedMessage } from 'react-intl';
 
-import { decycle } from 'cycle';
 import { chunk, groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -23,7 +24,11 @@ import { GroupedEnums as GroupedEnumsType } from 'types/enums';
 import { ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
 
 import { getEnums } from 'services/enums/enumService';
-import { getProjectDeveloper } from 'services/project-developers/projectDevelopersService';
+import {
+  getProjectDeveloper,
+  useFavoriteProjectDeveloper,
+  useProjectDeveloper,
+} from 'services/project-developers/projectDevelopersService';
 
 export const getServerSideProps = async ({ params: { id }, locale }) => {
   let projectDeveloper;
@@ -31,7 +36,7 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
   // If getting the project developer fails, it's most likely because the record has
   // not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    ({ data: projectDeveloper } = await getProjectDeveloper(id, { includes: 'projects' }));
+    projectDeveloper = await getProjectDeveloper(id, { includes: 'projects' });
   } catch (e) {
     return { notFound: true };
   }
@@ -42,29 +47,42 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
       enums: groupBy(enums, 'type'),
-      // Fixing issues with circular references (caused by the inclusion of projects)
-      // https://github.com/vercel/next.js/discussions/10992#discussioncomment-59574
-      projectDeveloper: decycle(projectDeveloper),
+      initialProjectDeveloper: projectDeveloper,
     },
   };
 };
 
 type ProjectDeveloperPageProps = {
-  projectDeveloper: ProjectDeveloperType;
+  initialProjectDeveloper: ProjectDeveloperType;
   enums: GroupedEnumsType;
 };
 
 const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageLayoutProps> = ({
-  projectDeveloper,
+  initialProjectDeveloper,
   enums,
 }) => {
+  const { projectDeveloper } = useProjectDeveloper(
+    initialProjectDeveloper.id,
+    {
+      includes: 'projects',
+    },
+    initialProjectDeveloper
+  );
+
+  const [isFavourite, setIsFavourite] = useState(projectDeveloper.favourite);
+
+  useEffect(() => {
+    // this useEffect is needed because the initial PD can be different from the current. On the server, when we fetch the PD, we don't send the session cookie so the endpoint doesn't tell us if the PD is in the favourites. When the hook executes on the client (the browser), we do send the token and thus projectDeveloper.favourite has a different value.
+    setIsFavourite(projectDeveloper.favourite);
+  }, [projectDeveloper]);
+
   const projectDeveloperTypeName = enums[EnumTypes.ProjectDeveloperType].find(
     ({ id }) => id === projectDeveloper.project_developer_type
   )?.name;
 
   const stats = {
-    totalProjects: projectDeveloper.projects.length,
-    projectsWaitingFunding: projectDeveloper.projects.filter(
+    totalProjects: projectDeveloper.projects?.length,
+    projectsWaitingFunding: projectDeveloper.projects?.filter(
       ({ looking_for_funding }) => looking_for_funding === true
     ).length,
   };
@@ -96,17 +114,20 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     },
   ];
 
-  const projects = projectDeveloper.projects.map((project) => ({
-    id: `project-${project.id}`,
-    slug: project.slug,
-    name: project.name,
-    category: enums[EnumTypes.Category].find(({ id }) => id === project.category)?.name,
-    instrument: enums[EnumTypes.InstrumentType]
-      .filter(({ id }) => projectDeveloper.projects[0].instrument_types?.includes(id))
-      .reduce((acc, instrument) => [...acc, instrument.name], [])
-      .join(', '),
-    amount: project.received_funding_amount_usd || 0,
-  }));
+  const { projects } = projectDeveloper;
+
+  const favoriteProjectDeveloper = useFavoriteProjectDeveloper();
+
+  const handleFavoriteClick = () => {
+    const { id } = projectDeveloper;
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    favoriteProjectDeveloper.mutate(
+      { id, isFavourite },
+      {
+        onSuccess: (data) => setIsFavourite(data.favourite),
+      }
+    );
+  };
 
   return (
     <>
@@ -124,7 +145,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
         />
         <ProfileHeader
           className="mt-6"
-          logo={projectDeveloper.picture.medium}
+          logo={projectDeveloper.picture?.medium}
           title={projectDeveloper.name}
           subtitle={projectDeveloperTypeName}
           text={projectDeveloper.about}
@@ -134,6 +155,9 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           projectsWaitingFunding={stats.projectsWaitingFunding}
           totalProjects={stats.totalProjects}
           originalLanguage={projectDeveloper.language}
+          isFavorite={isFavourite}
+          onFavoriteClick={handleFavoriteClick}
+          favoriteLoading={favoriteProjectDeveloper.isLoading}
         />
       </LayoutContainer>
 
@@ -154,7 +178,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           <TagsGrid className="mt-10 md:mt-14" rows={tagsRows} />
         </section>
 
-        {projects.length > 0 && (
+        {projects?.length > 0 && (
           <>
             <hr className="mt-12 md:mt-20" />
 
@@ -166,16 +190,8 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
             <Carousel className="mt-12">
               {chunk(projects, 3).map((projectsChunk, index) => (
                 <Slide key={`slide-${index}`} className="flex flex-col gap-2">
-                  {projectsChunk.map(({ id, slug, category, name, instrument, amount }) => (
-                    <ProjectCard
-                      key={id}
-                      id={id}
-                      category={category}
-                      name={name}
-                      instrument={instrument}
-                      amount={amount}
-                      link={`${Paths.Project}/${slug}`}
-                    />
+                  {projectsChunk.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
                   ))}
                 </Slide>
               ))}

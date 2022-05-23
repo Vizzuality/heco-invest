@@ -9,7 +9,9 @@ import { loadI18nMessages } from 'helpers/i18n';
 import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
 
 import Head from 'components/head';
+import { UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
+import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 
 export async function getServerSideProps(ctx) {
@@ -53,7 +55,7 @@ const NewInvestorPage: PageComponent<{}, FormPageLayoutProps> = (props) => {
   };
 
   return (
-    <>
+    <ProtectedPage permissions={[UserRoles.Light]}>
       <Head
         title={intl.formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })}
       />
@@ -186,7 +188,7 @@ const NewInvestorPage: PageComponent<{}, FormPageLayoutProps> = (props) => {
           </h1>
         </OutroPage>
       </MultiPageLayout>
-    </>
+    </ProtectedPage>
   );
 };
 

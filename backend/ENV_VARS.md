@@ -11,9 +11,15 @@ IS_JOBS_INSTANCE
 BACKEND_URL (without protocol)
 RAILS_RELATIVE_URL_ROOT (if running backend application in sub url, like /backend)
 
+GCP services config
+GCP_PROJECT_ID - Id of the GCP project
+GCP_REGION - GCP region where the project's GCP resources are hosted 
+
 Cloud Tasks configuration
-CLOUDTASKER_PROCESSOR_HOST - with protocol, as available from within the platform, e.g. http://localhost:4000
-CLOUDTASKER_PROCESSOR_PATH - /backend/cloudtasker/run
+CLOUDTASKER_PROCESSOR_HOST - with protocol, as available from outside the platform, e.g. https://your-public-domain.com
+CLOUDTASKER_PROCESSOR_PATH - path in the domain above where the task runner is available. Defaults to /cloudtasker/run
+CLOUD_TASKS_QUEUE_PREFIX  - Queue name prefix
+CLOUD_TASKS_TEST_QUEUE_NAME - Test queue name after prefix
 
 DATABASE_NAME
 DATABASE_USER
@@ -36,8 +42,3 @@ TX_TOKEN
 if we want http auth:
 HTTP_AUTH_USERNAME
 HTTP_AUTH_PASSWORD
-
-# Pub/Sub vars for https://github.com/googleapis/google-cloud-ruby/tree/main/google-cloud-pubsub
-# These are test values, we'll have different ones once we know actual topics/subscribers
-TEST_PUBSUB_TOPIC
-TEST_PUBSUB_SUBSCRIPTION

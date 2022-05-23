@@ -11,6 +11,7 @@ module API
               language: current_user.account.language
             )
           )
+
           render json: ProjectSerializer.new(
             project,
             include: included_relationships(parameters: params.fetch(:project_params, params)),

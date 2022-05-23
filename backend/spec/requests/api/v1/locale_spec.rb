@@ -7,9 +7,9 @@ RSpec.describe "API V1 Locale Param", type: :request do
       other_information_en: "Other Information en",
       other_information_es: nil,
       other_information_pt: nil,
-      how_do_you_work_en: "How do you work en",
-      how_do_you_work_es: "How do you work es",
-      how_do_you_work_pt: "How do you work pt"
+      mission_en: "Mission en",
+      mission_es: "Mission es",
+      mission_pt: "Mission pt"
     )
   }
 
@@ -18,7 +18,7 @@ RSpec.describe "API V1 Locale Param", type: :request do
 
     it "should return default locale" do
       expect(response).to have_http_status(:ok)
-      expect(response_json["data"]["attributes"]["how_do_you_work"]).to eq("How do you work en")
+      expect(response_json["data"]["attributes"]["mission"]).to eq("Mission en")
     end
   end
 
@@ -27,7 +27,7 @@ RSpec.describe "API V1 Locale Param", type: :request do
 
     it "should return attributes properly translated" do
       expect(response).to have_http_status(:ok)
-      expect(response_json["data"]["attributes"]["how_do_you_work"]).to eq("How do you work es")
+      expect(response_json["data"]["attributes"]["mission"]).to eq("Mission es")
     end
 
     it "attribute without translations fallback to default locale" do
@@ -41,7 +41,7 @@ RSpec.describe "API V1 Locale Param", type: :request do
 
     it "should return default locale" do
       expect(response).to have_http_status(:ok)
-      expect(response_json["data"]["attributes"]["how_do_you_work"]).to eq("How do you work en")
+      expect(response_json["data"]["attributes"]["mission"]).to eq("Mission en")
     end
   end
 end

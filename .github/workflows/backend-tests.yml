@@ -30,15 +30,16 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev libgeos-dev
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           working-directory: backend
           bundler-cache: true
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
+          cache-version: 2
       - name: Cache Node Modules
         id: cache-node-modules
         uses: actions/cache@v2
@@ -54,6 +55,7 @@ jobs:
           PGHOST: localhost
           PGUSER: ${{ env.POSTGRES_USER }}
           PGPASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          CLOUD_TASKS_TEST_QUEUE_NAME: test
         run: |
           bin/rails db:drop db:create db:schema:load
       - name: Run tests
@@ -62,6 +64,7 @@ jobs:
           PGHOST: localhost
           PGUSER: ${{ env.POSTGRES_USER }}
           PGPASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          CLOUD_TASKS_TEST_QUEUE_NAME: test
           IS_API_INSTANCE: true
           IS_JOBS_INSTANCE: true
         run: bundle exec rspec spec

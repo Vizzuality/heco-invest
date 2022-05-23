@@ -23,8 +23,9 @@ import {
 } from 'containers/project-form-pages';
 
 import Head from 'components/head';
-import { Paths, Queries } from 'enums';
+import { Paths, Queries, UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
+import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 import { ProjectCreationPayload, ProjectForm } from 'types/project';
 import useProjectValidation from 'validations/project';
@@ -138,7 +139,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
   };
 
   return (
-    <>
+    <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
       <Head
         title={formatMessage({ defaultMessage: 'Setup project developer’s account', id: 'bhxvPM' })}
       />
@@ -230,7 +231,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
         handleLeave={() => push(Paths.Dashboard)}
         title={formatMessage({ defaultMessage: 'Leave project creation form', id: 'vygPIS' })}
       />
-    </>
+    </ProtectedPage>
   );
 };
 

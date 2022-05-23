@@ -8,17 +8,13 @@ import classNames from 'classnames';
 
 import Image from 'next/image';
 
+import { FILE_UPLOADER_MAX_SIZE, bytesToMegabytes } from 'helpers/pages';
+
 import { ProjectImageGallery } from 'types/project';
 
 import { directUpload } from 'services/direct-upload/directUpload';
 
 import { UploaderProps, UploadErrorCode } from './types';
-
-export const bytesToMegabytes = (bytes: number): number => {
-  return bytes / (1024 * 1024);
-};
-
-export const FILE_UPLOADER_MAX_SIZE = 1.5 * 1024 * 1024;
 
 export const Uploader = <FormValues extends FieldValues>({
   fileTypes,

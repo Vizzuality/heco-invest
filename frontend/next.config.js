@@ -8,7 +8,7 @@ module.exports = {
   images: {
     domains: ['heco.vizzuality.com', 'staging.heco.vizzuality.com'],
   },
-  swcMinify: true,
+  swcMinify: false,
   eslint: {
     dirs: [
       'components',
@@ -60,6 +60,15 @@ module.exports = {
       {
         source: '/backend/:path*',
         destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/:path*`,
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/discover',
+        destination: '/discover/projects',
+        permanent: true,
       },
     ];
   },

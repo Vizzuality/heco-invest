@@ -16,11 +16,17 @@ namespace :api, format: "json" do
     resources :project_developers, only: [:index, :show] do
       resource :favourite_project_developer, only: [:create, :destroy]
     end
+
+    namespace :projects do
+      resource :map, only: [:show]
+    end
     resources :projects, only: [:index, :show] do
       resource :favourite_project, only: [:create, :destroy]
     end
 
     resources :enums, only: [:index]
+
+    resources :background_job_events, only: [:index]
 
     scope "account", module: "accounts" do
       resource :project_developer, only: [:create, :update, :show]
@@ -30,6 +36,9 @@ namespace :api, format: "json" do
     resources :test_jobs, only: [] do
       post :test_sync, on: :collection
       post :test_async, on: :collection
+    end
+    resource :goes, only: [] do
+      post :boom, on: :collection
     end
   end
 end

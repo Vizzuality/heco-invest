@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_05_100023) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +67,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_100023) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "background_job_events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.jsonb "arguments", default: []
+    t.string "queue_name"
+    t.string "priority"
+    t.integer "executions", default: 0, null: false
+    t.jsonb "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favourite_project_developers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "project_developer_id", null: false
@@ -106,22 +117,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_100023) do
     t.string "instrument_types", array: true
     t.string "impacts", array: true
     t.integer "sdgs", array: true
-    t.text "how_do_you_work_en"
-    t.text "how_do_you_work_es"
-    t.text "how_do_you_work_pt"
-    t.text "what_makes_the_difference_en"
-    t.text "what_makes_the_difference_es"
-    t.text "what_makes_the_difference_pt"
     t.text "other_information_en"
     t.text "other_information_es"
     t.text "other_information_pt"
     t.boolean "previously_invested", default: false, null: false
-    t.text "previously_invested_description_en"
-    t.text "previously_invested_description_es"
-    t.text "previously_invested_description_pt"
     t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "mission_en"
+    t.string "mission_es"
+    t.string "mission_pt"
+    t.string "prioritized_projects_description_en"
+    t.string "prioritized_projects_description_es"
+    t.string "prioritized_projects_description_pt"
     t.index ["account_id"], name: "index_investors_on_account_id"
   end
 
