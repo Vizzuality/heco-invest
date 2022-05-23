@@ -22,7 +22,7 @@ import type { CarouselProps } from './types';
 export const Carousel: FC<CarouselProps> = ({
   className,
   children,
-  defaultSlide,
+  defaultSlide = 0,
 }: CarouselProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const slidesWrapperContainerRef = useRef<HTMLDivElement>();
