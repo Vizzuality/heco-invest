@@ -1,6 +1,7 @@
 class Account < ApplicationRecord
   extend FriendlyId
   include Translatable
+  include Searchable
 
   friendly_id :name, use: :slugged
 
