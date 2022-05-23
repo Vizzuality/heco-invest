@@ -47,11 +47,9 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
   const coverImage = useMemo(
     () =>
       // First we try to find the image with `cover: true`
-      project.project_images
-        .find(({ cover = false }) => cover === true)
-        ?.file.medium.replace('/backend', '') || //REMOVE THIS LATER
+      project.project_images.find(({ cover = false }) => cover === true)?.file.medium ||
       // If none found, we use the first image as cover
-      project.project_images[0]?.file.medium.replace('/backend', '') || //REMOVE THIS LATER
+      project.project_images[0]?.file.medium ||
       // No images to use as cover image.
       null,
     [project.project_images]

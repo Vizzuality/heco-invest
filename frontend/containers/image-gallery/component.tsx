@@ -28,13 +28,7 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ images }) => {
                 })}
                 onClick={() => setActive(index)}
               >
-                <Image
-                  src={small.replace('/backend', '')}
-                  alt=""
-                  width={32}
-                  height={32}
-                  objectFit="cover"
-                />
+                <Image src={small} alt="" width={32} height={32} objectFit="cover" />
               </Button>
             </li>
           );
@@ -53,7 +47,7 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ images }) => {
             <Slide key={original} className="flex items-center justify-center w-full h-full">
               <div className="w-full">
                 <Image
-                  src={medium.replace('/backend', '')}
+                  src={medium}
                   alt=""
                   layout="responsive"
                   width={300}
