@@ -25,6 +25,7 @@ export const Profile: FC<ProfileProps> = ({
   investorTypes,
   setValue,
   setError,
+  clearErrors,
 }) => {
   const { formatMessage } = useIntl();
 
@@ -62,6 +63,7 @@ export const Profile: FC<ProfileProps> = ({
           id="picture"
           setValue={setValue}
           register={register}
+          clearErrors={clearErrors}
           preview
           aria-describedby="picture-error"
         />
@@ -71,44 +73,44 @@ export const Profile: FC<ProfileProps> = ({
         <div className="md:w-1/2 mb-6.5 md:m-0">
           <Label htmlFor="name">
             <FormattedMessage defaultMessage="Investor/Funder name" id="6MEtAZ" />
-            <Input
-              name="name"
-              className="mt-2.5"
-              aria-required
-              id="name"
-              type="text"
-              register={register}
-              placeholder={formatMessage({
-                defaultMessage: 'insert the name',
-                id: 'WAr33U',
-              })}
-              aria-describedby="name-error"
-            />
           </Label>
+          <Input
+            name="name"
+            className="mt-2.5"
+            aria-required
+            id="name"
+            type="text"
+            register={register}
+            placeholder={formatMessage({
+              defaultMessage: 'insert the name',
+              id: 'WAr33U',
+            })}
+            aria-describedby="name-error"
+          />
           <ErrorMessage id="name-error" errorText={errors?.name?.message} />
         </div>
         <div className="md:w-1/2">
           <Label htmlFor="investor-type" id="investor-type-label">
             <FormattedMessage defaultMessage="Investor/Funder type" id="RDclSN" />
-            <Combobox
-              control={control}
-              controlOptions={{ disabled: false }}
-              aria-required
-              name="investor_type"
-              id="investor-type"
-              className="mt-2.5 w-full h-10 border border-beige rounded-lg px-4"
-              placeholder={formatMessage({
-                defaultMessage: 'select investor/funder type',
-                id: 'r/AN6W',
-              })}
-              aria-describedby="investor-type-error"
-              aria-labelledby="investor-type-label"
-            >
-              {investorTypes?.map(({ id, name }) => (
-                <Option key={id}>{name}</Option>
-              ))}
-            </Combobox>
           </Label>
+          <Combobox
+            control={control}
+            controlOptions={{ disabled: false }}
+            aria-required
+            name="investor_type"
+            id="investor-type"
+            className="mt-2.5 w-full h-10 border border-beige rounded-lg px-4"
+            placeholder={formatMessage({
+              defaultMessage: 'select investor/funder type',
+              id: 'r/AN6W',
+            })}
+            aria-describedby="investor-type-error"
+            aria-labelledby="investor-type-label"
+          >
+            {investorTypes?.map(({ id, name }) => (
+              <Option key={id}>{name}</Option>
+            ))}
+          </Combobox>
           <ErrorMessage
             errorText={
               Array.isArray(errors?.instrument_types)
@@ -122,37 +124,37 @@ export const Profile: FC<ProfileProps> = ({
       <div className="mb-6.5">
         <Label htmlFor="about">
           <FormattedMessage defaultMessage="About" id="g5pX+a" />
-          <TextArea
-            name="about"
-            className="mt-2.5"
-            id="about"
-            register={register}
-            aria-required
-            placeholder={formatMessage({
-              defaultMessage: 'insert your answer (max 600 characters)',
-              id: 'hPsrc0',
-            })}
-            aria-describedby="about-error"
-          />
         </Label>
+        <TextArea
+          name="about"
+          className="mt-2.5"
+          id="about"
+          register={register}
+          aria-required
+          placeholder={formatMessage({
+            defaultMessage: 'insert your answer (max 600 characters)',
+            id: 'hPsrc0',
+          })}
+          aria-describedby="about-error"
+        />
         <ErrorMessage errorText={errors?.about?.message} id="about-error" />
       </div>
       <div className="mb-10">
         <Label htmlFor="mission">
           <FormattedMessage defaultMessage="What's your mission?" id="vaWFzs" />
-          <TextArea
-            name="mission"
-            className="mt-2.5"
-            id="mission"
-            aria-required
-            register={register}
-            placeholder={formatMessage({
-              defaultMessage: 'insert your answer (max 600 characters)',
-              id: 'hPsrc0',
-            })}
-            aria-describedby="mission-error"
-          />
         </Label>
+        <TextArea
+          name="mission"
+          className="mt-2.5"
+          id="mission"
+          aria-required
+          register={register}
+          placeholder={formatMessage({
+            defaultMessage: 'insert your answer (max 600 characters)',
+            id: 'hPsrc0',
+          })}
+          aria-describedby="mission-error"
+        />
         <ErrorMessage errorText={errors?.mission?.message} id="mission-error" />
       </div>
       <div className="mb-10">
@@ -171,20 +173,20 @@ export const Profile: FC<ProfileProps> = ({
                   })}
                 />
               </span>
-              <Input
-                name="contact_email"
-                type="email"
-                id="email"
-                register={register}
-                aria-required
-                placeholder={formatMessage({
-                  defaultMessage: 'insert email',
-                  id: 'DkjIbR',
-                })}
-                className="mt-2.5"
-                aria-describedby="email-error"
-              />
             </Label>
+            <Input
+              name="contact_email"
+              type="email"
+              id="email"
+              register={register}
+              aria-required
+              placeholder={formatMessage({
+                defaultMessage: 'insert email',
+                id: 'DkjIbR',
+              })}
+              className="mt-2.5"
+              aria-describedby="email-error"
+            />
             <ErrorMessage id="email-error" errorText={errors.contact_email?.message} />
           </div>
           <div className="md:w-1/2">
@@ -199,20 +201,20 @@ export const Profile: FC<ProfileProps> = ({
                   })}
                 />
               </span>
-              <Input
-                name="contact_phone"
-                type="tel"
-                id="phone-number"
-                register={register}
-                aria-required
-                placeholder={formatMessage({
-                  defaultMessage: 'insert phone number',
-                  id: 'iiVhlC',
-                })}
-                className="mt-2.5"
-                aria-describedby="phone-number-error"
-              />
             </Label>
+            <Input
+              name="contact_phone"
+              type="tel"
+              id="phone-number"
+              register={register}
+              aria-required
+              placeholder={formatMessage({
+                defaultMessage: 'insert phone number',
+                id: 'iiVhlC',
+              })}
+              className="mt-2.5"
+              aria-describedby="phone-number-error"
+            />
             <ErrorMessage id="phone-number-error" errorText={errors.contact_phone?.message} />
           </div>
         </div>

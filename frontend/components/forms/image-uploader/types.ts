@@ -28,7 +28,7 @@ export type ImageUploaderProps<FormValues> = {
   /** React Hook Form's 'setError' function */
   setError: UseFormSetError<any>;
   /** React Hook Form's 'clearError' function */
-  clearError: UseFormClearErrors<any>;
+  clearErrors: UseFormClearErrors<any>;
   /** Max image size in bytes */
   maxSize?: number;
 };

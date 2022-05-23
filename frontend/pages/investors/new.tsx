@@ -11,8 +11,8 @@ import { loadI18nMessages } from 'helpers/i18n';
 import { getServiceErrors, useGetAlert } from 'helpers/pages';
 
 import {
-  Profile,
   SelectLanguage,
+  Profile,
   InvestmentInformation,
   Impacts,
   Priority,
@@ -82,8 +82,8 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
           fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
           errorPages.length && setCurrentPage(errorPages[0]);
         },
-        onSuccess: (result) => {
-          push({ pathname: '/investors/pending/', search: `investor=${result.data.data.slug}` });
+        onSuccess: () => {
+          push({ pathname: '/investors/pending/' });
         },
       }),
     [createInvestor, push, setError]
@@ -139,6 +139,7 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
             setValue={setValue}
             errors={errors}
             investorTypes={enums?.investor_type}
+            clearErrors={clearErrors}
           />
         </Page>
         <Page hasErrors={getPageErrors(2)}>

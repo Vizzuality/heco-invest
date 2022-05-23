@@ -8,26 +8,19 @@ export default (page: number) => {
     defaultMessage: 'It must have a maximum of 600 characters',
     id: 'frm1UB',
   });
-  const booleanField = formatMessage({
-    defaultMessage: 'You need to select an option',
-    id: 'm4AGCI',
-  });
 
   const messages = {
     language: formatMessage({ defaultMessage: 'You need to select a language', id: 'Cise0r' }),
-    picture: {
-      required: formatMessage({
-        defaultMessage: 'You need to upload a profile picture',
-        id: 'gLT/Md',
-      }),
-      format: 'The profile picture must be an image',
-    },
+    picture: formatMessage({
+      defaultMessage: 'You need to upload a profile picture',
+      id: 'gLT/Md',
+    }),
     name: formatMessage({ defaultMessage: 'You need to insert a name', id: 'XvwE2r' }),
     investor_type: formatMessage({
       defaultMessage: 'You need to select the investor/funder type',
       id: 'iTkO2x',
     }),
-    about: formatMessage({ defaultMessage: 'You need enter a "about" text', id: 'tzSubd' }),
+    about: formatMessage({ defaultMessage: 'You need enter an "about" text', id: 'DffEkP' }),
     mission: formatMessage({ defaultMessage: 'You need to enter a "mission" text', id: 'laO/jL' }),
     contactEmail: {
       required: formatMessage({
@@ -47,8 +40,8 @@ export default (page: number) => {
       id: 'khRkg/',
     }),
     instrument_types: formatMessage({
-      defaultMessage: 'You need to select what type of financing are you can provide',
-      id: 's/TSlR',
+      defaultMessage: 'You need to select the type of financing are you can provide',
+      id: 'hRZo+X',
     }),
     previously_invested: formatMessage({
       defaultMessage: 'You need to select if you have previously invested in impact',
@@ -69,7 +62,7 @@ export default (page: number) => {
       language: string().ensure().required(messages.language),
     }),
     object().shape({
-      picture: string().required(messages.picture.required),
+      picture: string().required(messages.picture),
       name: string().required(messages.name),
       investor_type: string().typeError(messages.investor_type).required(messages.investor_type),
       about: string().max(600, maxTextLength).required(messages.about),
@@ -123,7 +116,7 @@ export default (page: number) => {
       sdgs: array().of(string()).ensure(),
     }),
     object().shape({
-      what_makes_the_difference: string().max(600, maxTextLength),
+      prioritized_projects_description: string().max(600, maxTextLength),
     }),
     object().shape({
       other_information: string().max(600, maxTextLength).required(messages.other_information),

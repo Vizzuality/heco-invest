@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import { FieldError } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import { CategoryTagDot } from 'containers/category-tag';
@@ -8,11 +9,9 @@ import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
 import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
-import Textarea from 'components/forms/textarea';
 import { CategoryType } from 'types/category';
 
 import { InvestmentInformationProps } from '../types';
-import { FieldError } from 'react-hook-form';
 
 const InvestmentInformation: FC<InvestmentInformationProps> = ({
   errors,
@@ -65,6 +64,7 @@ const InvestmentInformation: FC<InvestmentInformationProps> = ({
                 setValue={setValue}
                 errors={errors}
                 clearErrors={clearErrors}
+                type="checkbox"
               >
                 {categories?.map((item) => (
                   <Tag
@@ -101,6 +101,7 @@ const InvestmentInformation: FC<InvestmentInformationProps> = ({
                 setValue={setValue}
                 errors={errors}
                 clearErrors={clearErrors}
+                type="checkbox"
               >
                 {ticketSizes?.map((item) => (
                   <Tag
@@ -158,6 +159,7 @@ const InvestmentInformation: FC<InvestmentInformationProps> = ({
                 setValue={setValue}
                 errors={errors}
                 clearErrors={clearErrors}
+                type="checkbox"
               >
                 {instrumemntTypes?.map((item) => (
                   <Tag

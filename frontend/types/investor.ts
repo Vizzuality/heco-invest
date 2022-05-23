@@ -5,26 +5,28 @@ export type InvestorForm = {
   language: Languages;
   picture: string;
   name: string;
-  about?: string;
-  mission?: string;
+  contact_email: string;
+  contact_phone: string;
+  investor_type: string;
   website?: string;
   linkedin?: string;
   facebook?: string;
   twitter?: string;
   instagram?: string;
-  investor_type: string;
-  how_do_you_work: string;
-  what_makes_the_difference?: string;
-  other_information: string;
+  about?: string;
+  mission?: string;
   previously_invested: boolean;
-  previously_invested_description?: string;
-  contact_email: string;
-  contact_phone: string;
   categories?: string[];
+  impacts: string[];
+  sdgs?: number[];
   ticket_sizes: string[];
   instrument_types: string[];
-  impacts: string[];
-  sdgs: number[];
+  prioritized_projects_description: string;
+  other_information: string;
+
+  // how_do_you_work: string;
+  // what_makes_the_difference?: string;
+  // previously_invested_description?: string;
 };
 
 export type Investor = InvestorForm & {

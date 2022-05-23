@@ -25,6 +25,6 @@ export const formPageInputs: (keyof InvestorForm)[][] = [
   ],
   ['categories', 'ticket_sizes', 'instrument_types'],
   ['previously_invested', 'impacts', 'sdgs'],
-  ['what_makes_the_difference'],
+  ['prioritized_projects_description'],
   ['other_information'],
 ];

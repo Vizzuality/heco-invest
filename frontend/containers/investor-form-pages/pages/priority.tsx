@@ -22,7 +22,7 @@ export const Priority: FC<PriorityProps> = ({ register, errors }) => {
       <form noValidate>
         <div>
           <Label
-            htmlFor="what-makes-the-difference"
+            htmlFor="prioritized-projects-description"
             className="block mb-2 text-base font-normal text-gray-600"
           >
             <FormattedMessage
@@ -31,9 +31,9 @@ export const Priority: FC<PriorityProps> = ({ register, errors }) => {
             />
           </Label>
           <Textarea
-            id="what-makes-the-difference"
-            name="what_makes_the_difference"
-            aria-describedby="what-makes-the-difference-error"
+            id="prioritized-projects-description"
+            name="prioritized_projects_description"
+            aria-describedby="prioritized-projects-description-error"
             register={register}
             placeholder={formatMessage({
               defaultMessage: 'insert your answer (max 600 characters)',
@@ -42,8 +42,8 @@ export const Priority: FC<PriorityProps> = ({ register, errors }) => {
             className="min-h-[240px]"
           />
           <ErrorMessage
-            id="what-makes-the-difference-error"
-            errorText={errors?.what_makes_the_difference?.message}
+            id="prioritized-projects-description-error"
+            errorText={errors?.prioritized_projects_description?.message}
           />
         </div>
       </form>

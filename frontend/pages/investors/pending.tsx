@@ -4,7 +4,6 @@ import { FormattedMessage } from 'react-intl';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 import { InferGetStaticPropsType } from 'next';
 
@@ -27,8 +26,6 @@ export async function getStaticProps(ctx) {
 type PendingProjectProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Pending: PageComponent<PendingProjectProps, FormPageLayoutProps> = () => {
-  const { query } = useRouter();
-
   return (
     <div className="flex items-center justify-center h-screen md:p-4">
       <Header />
@@ -41,19 +38,22 @@ const Pending: PageComponent<PendingProjectProps, FormPageLayoutProps> = () => {
           alt=""
         />
         <h1 className="mt-6 font-serif text-3xl font-semibold text-green-dark">
-          <FormattedMessage defaultMessage="Pending verification" id="n6KNWj" />
+          <FormattedMessage defaultMessage="Pending approval" id="/CaREm" />
         </h1>
         <p className="my-6">
           <FormattedMessage
-            defaultMessage="Your project is awaiting verification. This means that the project is visible in the platform but without the <b>Verification badge</b>."
-            id="ygAxHr"
-            values={{
-              b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
-            }}
+            defaultMessage="Your account was successfully created, but you still need to be approved by our platform administrators."
+            id="c6KUQu"
           />
         </p>
-        <Button className="mt-6 mb-12" to={`${Paths.Project}/${query.project}`}>
-          <FormattedMessage defaultMessage="Go to project page" id="mMReor" />
+        <p className="my-6">
+          <FormattedMessage
+            defaultMessage="Until approval you can continue exploring our database."
+            id="adPUXO"
+          />
+        </p>
+        <Button className="mt-6 mb-12" to={`${Paths.Discover}`}>
+          <FormattedMessage defaultMessage="Explore" id="7JlauX" />
         </Button>
         <Link href="/faq#pending-approval" passHref>
           <a
@@ -61,19 +61,7 @@ const Pending: PageComponent<PendingProjectProps, FormPageLayoutProps> = () => {
             rel="noopener noreferrer"
             className="font-sans text-gray-600 underline"
           >
-            <FormattedMessage defaultMessage="What is a verification badge?" id="qZPjW2" />
-          </a>
-        </Link>
-        <Link href="/faq#pending-approval" passHref>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 font-sans text-gray-600 underline"
-          >
-            <FormattedMessage
-              defaultMessage="When will the project have the Verification badge?"
-              id="E/YxHp"
-            />
+            <FormattedMessage defaultMessage="Why is my account pending approval?" id="I2yxwP" />
           </a>
         </Link>
       </div>
