@@ -70,12 +70,10 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     sdgs,
     about,
     mission,
-    what_makes_the_difference,
-    how_do_you_work,
     investor_type,
     other_information,
     language,
-    slug,
+    prioritized_projects_description,
   } = investor;
   const { category, ticket_size, instrument_type, impact } = enums;
 
@@ -160,13 +158,12 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
           <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
             <FormattedMessage defaultMessage="Mission" id="RXoqkD" />
           </h3>
-          {/* CHANGE TO MISSION??? */}
-          <p className="my-3">{how_do_you_work}</p>
+          <p className="my-3">{mission}</p>
 
           <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
             <FormattedMessage defaultMessage="Type of prioritized projects" id="5y6ZTQ" />
           </h3>
-          <p className="my-3">{what_makes_the_difference}</p>
+          <p className="my-3">{prioritized_projects_description}</p>
           <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
             <FormattedMessage defaultMessage="Other information" id="kX7oGR" />
           </h3>
