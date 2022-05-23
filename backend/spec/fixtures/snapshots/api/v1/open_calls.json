@@ -17,7 +17,8 @@
         "money_distribution": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
         "impact_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
         "closing_at": "2023-01-15T11:45:07.390Z",
-        "language": "en"
+        "language": "en",
+        "trusted": false
       },
       "relationships": {
         "investor": {
@@ -45,7 +46,8 @@
         "money_distribution": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
         "impact_description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
         "closing_at": "2023-01-15T11:45:07.428Z",
-        "language": "en"
+        "language": "en",
+        "trusted": false
       },
       "relationships": {
         "investor": {
@@ -73,7 +75,8 @@
         "money_distribution": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
         "impact_description": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
         "closing_at": "2023-01-15T11:45:07.450Z",
-        "language": "en"
+        "language": "en",
+        "trusted": false
       },
       "relationships": {
         "investor": {
@@ -101,7 +104,8 @@
         "money_distribution": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
         "impact_description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
         "closing_at": "2023-01-15T11:45:07.474Z",
-        "language": "en"
+        "language": "en",
+        "trusted": false
       },
       "relationships": {
         "investor": {
@@ -129,7 +133,8 @@
         "money_distribution": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
         "impact_description": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
         "closing_at": "2023-01-15T11:45:07.500Z",
-        "language": "en"
+        "language": "en",
+        "trusted": false
       },
       "relationships": {
         "investor": {
@@ -157,7 +162,8 @@
         "money_distribution": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
         "impact_description": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
         "closing_at": "2023-01-15T11:45:07.522Z",
-        "language": "en"
+        "language": "en",
+        "trusted": false
       },
       "relationships": {
         "investor": {
@@ -185,7 +191,8 @@
         "money_distribution": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
         "impact_description": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
         "closing_at": "2023-01-15T11:45:07.546Z",
-        "language": "en"
+        "language": "en",
+        "trusted": false
       },
       "relationships": {
         "investor": {

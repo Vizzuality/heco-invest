@@ -1,10 +1,11 @@
-import React, { cloneElement } from 'react';
+import React, { cloneElement, useEffect } from 'react';
 
 import cx from 'classnames';
 
 import { useButton } from '@react-aria/button';
 import { useMenuTrigger } from '@react-aria/menu';
 import { useMenuTriggerState } from '@react-stately/menu';
+import { noop } from 'lodash-es';
 
 import Popup from './popup';
 import { MenuProps } from './types';
@@ -18,6 +19,8 @@ export const Menu: React.FC<MenuProps> = ({
   onAction,
   header,
   hiddenSections,
+  onOpen = noop,
+  onClose = noop,
   ...rest
 }: MenuProps) => {
   const triggerRef = React.useRef(null);
@@ -31,6 +34,14 @@ export const Menu: React.FC<MenuProps> = ({
     },
     triggerRef
   );
+
+  useEffect(() => {
+    if (state.isOpen) {
+      onOpen();
+    } else {
+      onClose();
+    }
+  }, [onClose, onOpen, state.isOpen]);
 
   return (
     <div className={cx('relative', className)}>

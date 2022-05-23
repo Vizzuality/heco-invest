@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { UseQueryResult, useQuery, useMutation, QueryClient } from 'react-query';
+import { UseQueryResult, useQuery, useMutation, QueryClient, UseQueryOptions } from 'react-query';
 
 import { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { decycle } from 'cycle';
@@ -17,23 +17,35 @@ import { PagedResponse, PagedRequest, ResponseData } from 'services/types';
 const getProjectDevelopers = async (
   params?: PagedRequest
 ): Promise<PagedResponse<ProjectDeveloper>> => {
-  const { fields, ...rest } = params;
+  const { fields, search, page, perPage, ...rest } = params || {};
+
   const config: AxiosRequestConfig = {
     url: '/api/v1/project_developers',
     method: 'GET',
-    params: { ...rest, 'fields[project_developer]': params.fields.join(',') },
+    params: {
+      ...rest,
+      'fields[project_developer]': fields?.join(','),
+      'filter[full_text]': search,
+      'page[number]': page,
+      'page[size]': perPage,
+    },
   };
+
   return await API.request(config).then((result) => result.data);
 };
 
 /** Hook to use the the Project Developers list */
 export function useProjectDevelopersList(
-  params?: PagedRequest
+  params?: PagedRequest,
+  options?: UseQueryOptions<PagedResponse<ProjectDeveloper>>
 ): UseQueryResult<PagedResponse<ProjectDeveloper>> & { projectDevelopers: ProjectDeveloper[] } {
   const query = useQuery(
     [Queries.ProjectDeveloperList, params],
     () => getProjectDevelopers(params),
-    staticDataQueryOptions
+    {
+      ...staticDataQueryOptions,
+      ...options,
+    }
   );
 
   return useMemo(
