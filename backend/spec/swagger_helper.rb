@@ -187,7 +187,20 @@ RSpec.configure do |config|
                   instrument_types: {type: :array, items: {type: :string}},
                   sdgs: {type: :array, items: {type: :integer}},
                   language: {type: :string},
-                  favourite: {type: :boolean, nullable: true}
+                  favourite: {type: :boolean, nullable: true},
+                  municipality_biodiversity_impact: {type: :number, nullable: true},
+                  municipality_climate_impact: {type: :number, nullable: true},
+                  municipality_water_impact: {type: :number, nullable: true},
+                  municipality_community_impact: {type: :number, nullable: true},
+                  hydrobasin_biodiversity_impact: {type: :number, nullable: true},
+                  hydrobasin_climate_impact: {type: :number, nullable: true},
+                  hydrobasin_water_impact: {type: :number, nullable: true},
+                  hydrobasin_community_impact: {type: :number, nullable: true},
+                  priority_landscape_biodiversity_impact: {type: :number, nullable: true},
+                  priority_landscape_climate_impact: {type: :number, nullable: true},
+                  priority_landscape_water_impact: {type: :number, nullable: true},
+                  priority_landscape_community_impact: {type: :number, nullable: true},
+                  total_impact: {type: :number, nullable: true}
                 }
               },
               relationships: {
