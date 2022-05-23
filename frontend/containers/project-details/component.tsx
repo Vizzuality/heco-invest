@@ -193,11 +193,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
               id="MFPJ9u"
             />
           </p>
-          <ImpactChart
-            className="my-4"
-            category="forestry-and-agroforestry"
-            impact={[3, 5, 6, 5]}
-          />
+          <ImpactChart className="my-4" category={category.id} impact={[3, 5, 6, 5]} />
         </div>
         {/* /TODO: Add impact values */}
         <div className="mt-4 text-gray-900" aria-describedby="sdgs">
