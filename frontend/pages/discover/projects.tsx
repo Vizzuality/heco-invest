@@ -6,6 +6,7 @@ import cx from 'classnames';
 
 import { useRouter } from 'next/router';
 
+import { FocusScope } from '@react-aria/focus';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useOutsideClick } from 'rooks';
 
@@ -121,19 +122,29 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
         {breakpoint('lg') ? (
           <AnimatePresence>
             {selectedProject && (
-              <motion.div
-                className="z-10"
-                transition={{ duration: 0.15 }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+              <FocusScope
+                contain
+                restoreFocus
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus
               >
-                <aside className="absolute top-0 z-10 w-7/12 xl:w-5/12 mt-1 mb-0 -ml-2.5 -bottom-4 left-5/12 rounded-t-2xl">
-                  <div className="max-h-full overflow-y-scroll bg-white border rounded-2xl">
-                    <ProjectDetails project={selectedProject} onClose={handleProjectDetailsClose} />
-                  </div>
-                </aside>
-              </motion.div>
+                <motion.div
+                  className="z-10"
+                  transition={{ duration: 0.15 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <aside className="absolute top-0 z-10 w-7/12 xl:w-5/12 mt-1 mb-0 -ml-2.5 -bottom-4 left-5/12 rounded-t-2xl">
+                    <div className="max-h-full overflow-y-scroll bg-white border rounded-2xl">
+                      <ProjectDetails
+                        project={selectedProject}
+                        onClose={handleProjectDetailsClose}
+                      />
+                    </div>
+                  </aside>
+                </motion.div>
+              </FocusScope>
             )}
           </AnimatePresence>
         ) : (
