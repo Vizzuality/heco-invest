@@ -289,7 +289,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
                 id="picture"
                 register={register}
                 preview
-                clearError={clearErrors}
+                clearErrors={clearErrors}
               />
               <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
             </div>
