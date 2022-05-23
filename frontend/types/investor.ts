@@ -6,27 +6,23 @@ export type InvestorForm = {
   picture: string;
   name: string;
   contact_email: string;
-  contact_phone: string;
+  contact_phone?: string;
   investor_type: string;
   website?: string;
   linkedin?: string;
   facebook?: string;
   twitter?: string;
   instagram?: string;
-  about?: string;
-  mission?: string;
+  about: string;
+  mission: string;
   previously_invested: boolean;
   categories?: string[];
   impacts: string[];
   sdgs?: number[];
   ticket_sizes: string[];
   instrument_types: string[];
-  prioritized_projects_description: string;
+  prioritized_projects_description?: string;
   other_information: string;
-
-  // how_do_you_work: string;
-  // what_makes_the_difference?: string;
-  // previously_invested_description?: string;
 };
 
 export type Investor = InvestorForm & {

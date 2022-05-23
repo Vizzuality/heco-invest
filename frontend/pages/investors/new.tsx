@@ -98,7 +98,7 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
   };
 
   const handleNextClick = async () => {
-    await handleSubmit(onSubmit, console.log)();
+    await handleSubmit(onSubmit)();
     if (!errors) {
       setCurrentPage(currentPage + 1);
     }
@@ -110,13 +110,11 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
 
   return (
     <ProtectedPage permissions={[UserRoles.Light]}>
-      <Head
-        title={intl.formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })}
-      />
+      <Head title={formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })} />
 
       <MultiPageLayout
         layout="narrow"
-        title={formatMessage({ defaultMessage: 'Setup project developer’s account', id: 'bhxvPM' })}
+        title={formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })}
         autoNavigation={false}
         page={currentPage}
         alert={useGetAlert(createInvestor.error)}
@@ -149,8 +147,8 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
             setValue={setValue}
             errors={errors}
             categories={enums?.category}
-            instrumemntTypes={enums?.instrument_type}
-            ticketSizes={enums?.ticket_size}
+            instrument_types={enums?.instrument_type}
+            ticket_sizes={enums?.ticket_size}
             clearErrors={clearErrors}
           />
         </Page>
@@ -174,7 +172,7 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
         isOpen={showLeave}
         close={() => setShowLeave(true)}
         handleLeave={() => push(Paths.Dashboard)}
-        title={formatMessage({ defaultMessage: 'Leave project creation form', id: 'vygPIS' })}
+        title={formatMessage({ defaultMessage: 'Leave investor creation form', id: 'QqpgJo' })}
       />
     </ProtectedPage>
   );

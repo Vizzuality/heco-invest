@@ -27,7 +27,7 @@ export const Impact: FC<ImpactProps> = ({ register, errors, impacts, setValue, c
       </p>
       <form noValidate>
         <div className="mb-6.5">
-          <fieldset className="flex" aria-describedby="previously-invested-error">
+          <fieldset className="flex">
             <div className="flex items-center">
               <legend className="font-sans text-sm font-semibold text-gray-800">
                 <FormattedMessage
@@ -41,6 +41,7 @@ export const Impact: FC<ImpactProps> = ({ register, errors, impacts, setValue, c
                   type="radio"
                   value={1}
                   {...register('previously_invested')}
+                  aria-describedby="previously-invested-error"
                 />
                 <Label htmlFor="previously-invested-yes" className="ml-1 font-normal">
                   <FormattedMessage defaultMessage="Yes" id="a5msuh" />
@@ -52,6 +53,7 @@ export const Impact: FC<ImpactProps> = ({ register, errors, impacts, setValue, c
                   type="radio"
                   value={0}
                   {...register('previously_invested')}
+                  aria-describedby="previously-invested-error"
                 />
                 <Label htmlFor="previously-invested-no" className="ml-1 font-normal">
                   <FormattedMessage defaultMessage="No" id="oUWADl" />

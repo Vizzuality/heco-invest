@@ -67,8 +67,8 @@ export type ProfileProps = InvestorFormPagesProps & {
 
 export type InvestmentInformationProps = Omit<InvestorFormPagesProps, 'control'> & {
   categories: Enum[];
-  ticketSizes: Enum[];
-  instrumemntTypes: Enum[];
+  ticket_sizes: Enum[];
+  instrument_types: Enum[];
 };
 
 export type PriorityProps = {

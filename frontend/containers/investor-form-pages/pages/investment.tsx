@@ -19,8 +19,8 @@ const InvestmentInformation: FC<InvestmentInformationProps> = ({
   setValue,
   clearErrors,
   categories,
-  ticketSizes,
-  instrumemntTypes,
+  ticket_sizes,
+  instrument_types,
 }: InvestmentInformationProps) => {
   return (
     <div>
@@ -29,8 +29,8 @@ const InvestmentInformation: FC<InvestmentInformationProps> = ({
       </h1>
       <p className="mb-10 text-gray-600">
         <FormattedMessage
-          defaultMessage="This information will help us understand what you are insterested in invest or funding."
-          id="WK+j9+"
+          defaultMessage="This information will help us understand what you are interested in invest or funding."
+          id="M7261y"
         />
       </p>
       <form noValidate>
@@ -103,7 +103,7 @@ const InvestmentInformation: FC<InvestmentInformationProps> = ({
                 clearErrors={clearErrors}
                 type="checkbox"
               >
-                {ticketSizes?.map((item) => (
+                {ticket_sizes?.map((item) => (
                   <Tag
                     key={item.id}
                     id={item.id}
@@ -142,7 +142,7 @@ const InvestmentInformation: FC<InvestmentInformationProps> = ({
                 <FieldInfo
                   infoText={
                     <ul>
-                      {instrumemntTypes?.map(({ id, name, description }) => (
+                      {instrument_types?.map(({ id, name, description }) => (
                         <li key={id}>
                           <p className="font-sans text-sm font-semibold text-white">{name}</p>
                           <p className="mb-4 font-sans text-sm font-normal text-white">
@@ -161,7 +161,7 @@ const InvestmentInformation: FC<InvestmentInformationProps> = ({
                 clearErrors={clearErrors}
                 type="checkbox"
               >
-                {instrumemntTypes?.map((item) => (
+                {instrument_types?.map((item) => (
                   <Tag
                     key={item.id}
                     id={item.id}

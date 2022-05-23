@@ -52,8 +52,8 @@ export const Profile: FC<ProfileProps> = ({
           </Label>
           <FieldInfo
             infoText={formatMessage({
-              defaultMessage: 'Add your logo or a picture that indentifies the account.',
-              id: 'bjubNC',
+              defaultMessage: 'Add your logo or a picture that identifies the account.',
+              id: '2Cbk6h',
             })}
           />
         </div>
