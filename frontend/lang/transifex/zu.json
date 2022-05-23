@@ -1,4 +1,7 @@
 {
+  "+JVDMC": {
+    "string": "Know more"
+  },
   "+K9fF0": {
     "string": "Project Developers"
   },
@@ -170,6 +173,9 @@
   "7eO+k/": {
     "string": "Enter the estimated implementation duration for the project. MAX 24 months."
   },
+  "7gMEKc": {
+    "string": "Project details"
+  },
   "7qgtEX": {
     "string": "Invests in SDG's"
   },
@@ -242,6 +248,9 @@
   "BHrBCl": {
     "string": "PNG, JPG up to 5MB"
   },
+  "BZkcBV": {
+    "string": "Project developer photo"
+  },
   "BcZVZW": {
     "string": "This description should sumarize your project in a few words."
   },
@@ -271,6 +280,9 @@
   },
   "Cra78t": {
     "string": "© {date} HeCo Invest. All rights reserved."
+  },
+  "Czc5vB": {
+    "string": "Looking for funding"
   },
   "D5RCKi": {
     "string": "Project name"
@@ -347,6 +359,9 @@
   "HVQtvr": {
     "string": "BC3's mission is to generate valuable knowledge for policy and decision making, integrating the environmental, socio-economic and ethical dimensions of climate change. Through the production of collaborative and open-source tools such as ARIES, which can track and forecast progress towards sustainable environmental and economic goals, BC3 plays a key role in enhancing regional, national and international economic development."
   },
+  "Hb+Idf": {
+    "string": "Project description"
+  },
   "HmDmU1": {
     "string": "Support the protection of water availability and regulation. These approaches are vital for reducing risks such as floods and droughts, which in the face of climate change can become more frequent and larger in magnitude."
   },
@@ -399,6 +414,9 @@
   "JNTB42": {
     "string": "Phone number (optional)"
   },
+  "JQjEP9": {
+    "string": "SDGs"
+  },
   "JRfERD": {
     "string": "Paulson Institute"
   },
@@ -407,6 +425,9 @@
   },
   "JkLHGw": {
     "string": "Website"
+  },
+  "Jl9QMO": {
+    "string": "Estimated impact"
   },
   "Jwjqn/": {
     "string": "focused"
@@ -434,6 +455,9 @@
   },
   "MF4b8Z": {
     "string": "Use at least 12 characters, one uppercase letter, one lowercase letter and one number."
+  },
+  "MFPJ9u": {
+    "string": "In the municipality the project has higher impact on <b>{impactOn}</b> and has an <b>impact score</b> of {score}."
   },
   "MH3koz": {
     "string": "Previous slide"
@@ -830,6 +854,9 @@
   },
   "hl9bd4": {
     "string": "Cover"
+  },
+  "hmK5Jb": {
+    "string": "Close project details card"
   },
   "hpOE0K": {
     "string": "<a>Browse</a> or drag and drop"

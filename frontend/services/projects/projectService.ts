@@ -13,12 +13,19 @@ import { PagedResponse, PagedRequest } from 'services/types';
 
 /** Get a paged list of projects */
 const getProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
-  const { search, page, ...rest } = params;
+  const { search, page, includes, ...rest } = params || {};
+
   const config: AxiosRequestConfig = {
     url: '/api/v1/projects',
     method: 'GET',
-    params: { ...rest, 'filter[full_text]': params.search, 'page[number]': params.page },
+    params: {
+      ...rest,
+      includes: includes?.join(','),
+      'filter[full_text]': search,
+      'page[number]': page,
+    },
   };
+
   return await API.request(config).then((result) => result.data);
 };
 

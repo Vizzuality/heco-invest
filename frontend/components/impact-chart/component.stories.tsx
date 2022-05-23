@@ -9,7 +9,7 @@ export default {
 };
 
 const Template: Story<ImpactChartProps> = (args) => (
-  <div className="w-[500px] h-[500px]">
+  <div className="w-96">
     <ImpactChart {...args} />
   </div>
 );

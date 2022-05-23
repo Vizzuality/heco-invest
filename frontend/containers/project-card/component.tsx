@@ -21,6 +21,7 @@ import type { ProjectCardProps } from './types';
 
 export const ProjectCard: FC<ProjectCardProps> = ({
   className,
+  active = false,
   project,
   onClick,
 }: ProjectCardProps) => {
@@ -105,8 +106,8 @@ export const ProjectCard: FC<ProjectCardProps> = ({
       className={cx({
         [className]: !!className,
         'cursor-pointer transition rounded-2xl': true,
-        'hover:ring-1 hover:ring-green-dark': true,
-        'ring-2 ring-green-dark': isFocusWithin,
+        'hover:ring-1 hover:ring-green-dark': !active,
+        'ring-2 ring-green-dark': isFocusWithin || active,
       })}
       {...pressProps}
       {...focusWithinProps}
