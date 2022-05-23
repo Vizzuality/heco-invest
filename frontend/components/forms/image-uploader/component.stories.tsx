@@ -26,7 +26,7 @@ const Template: Story<ImageUploaderProps<FormValues>> = (args: ImageUploaderProp
 
   return (
     <ImageUploader
-      clearError={clearErrors}
+      clearErrors={clearErrors}
       setError={setError}
       setValue={setValue}
       register={register}
@@ -52,7 +52,7 @@ const TemplateWithLabel: Story<ImageUploaderProps<FormValues>> = (
         Profile picture
       </label>
       <ImageUploader
-        clearError={clearErrors}
+        clearErrors={clearErrors}
         setError={setError}
         setValue={setValue}
         register={register}
@@ -95,7 +95,7 @@ const TemplateWithForm: Story<ImageUploaderProps<FormValues>> = (
         Profile image
       </label>
       <ImageUploader
-        clearError={clearErrors}
+        clearErrors={clearErrors}
         setError={setError}
         setValue={setValue}
         register={register}
