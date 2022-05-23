@@ -17,18 +17,20 @@ import { PagedResponse, PagedRequest, ResponseData } from 'services/types';
 const getProjectDevelopers = async (
   params?: PagedRequest
 ): Promise<PagedResponse<ProjectDeveloper>> => {
-  const { fields, search, page, ...rest } = params;
+  const { fields, search, page, perPage, ...rest } = params || {};
+
   const config: AxiosRequestConfig = {
     url: '/api/v1/project_developers',
     method: 'GET',
     params: {
       ...rest,
-      'fields[project_developer]': params.fields?.join(','),
-      'filter[full_text]': params.search,
-      'page[number]': params.page,
-      'page[size]': params.perPage,
+      'fields[project_developer]': fields?.join(','),
+      'filter[full_text]': search,
+      'page[number]': page,
+      'page[size]': perPage,
     },
   };
+
   return await API.request(config).then((result) => result.data);
 };
 
