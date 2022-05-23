@@ -130,6 +130,10 @@ zu:
         name: Municipality
       region:
         name: Region
+      basin:
+        name: Basin
+      basins_category:
+        name: Basins Category
     project_development_stage:
       incipient:
         name: Incipient

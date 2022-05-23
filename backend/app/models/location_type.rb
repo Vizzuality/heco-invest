@@ -6,5 +6,7 @@ class LocationType
     department
     municipality
     region
+    basins_category
+    basin
   ].freeze
 end

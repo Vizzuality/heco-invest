@@ -334,83 +334,97 @@
     },
     {
       "id": "academic",
-      "type": "project_developer_type",
+      "type": "location_type",
       "attributes": {
-        "name": "Academic"
+        "name": "Basins Category"
       }
     },
     {
       "id": "business-cooperative",
-      "type": "project_developer_type",
+      "type": "location_type",
       "attributes": {
-        "name": "Business - Cooperative"
+        "name": "Basin"
       }
     },
     {
       "id": "business-large-enterprise-corporation",
       "type": "project_developer_type",
       "attributes": {
-        "name": "Business - Large enterprise corporation"
+        "name": "Academic"
       }
     },
     {
       "id": "business-sme-and-msme",
       "type": "project_developer_type",
       "attributes": {
-        "name": "Business - SME and MSME"
+        "name": "Business - Cooperative"
       }
     },
     {
       "id": "business-start-up-entrepreneur",
       "type": "project_developer_type",
       "attributes": {
-        "name": "Business - Start-up entrepreneur"
+        "name": "Business - Large enterprise corporation"
       }
     },
     {
       "id": "business-trade-or-business-association",
       "type": "project_developer_type",
       "attributes": {
-        "name": "Business - Trade or business association"
+        "name": "Business - SME and MSME"
       }
     },
     {
       "id": "government-national",
       "type": "project_developer_type",
       "attributes": {
-        "name": "Government - National"
+        "name": "Business - Start-up entrepreneur"
       }
     },
     {
       "id": "government-sub-national",
       "type": "project_developer_type",
       "attributes": {
-        "name": "Government - Sub-national"
+        "name": "Business - Trade or business association"
       }
     },
     {
       "id": "public-private-organization-or-program",
       "type": "project_developer_type",
       "attributes": {
-        "name": "Public-private organization or program"
+        "name": "Government - National"
       }
     },
     {
       "id": "ngo",
       "type": "project_developer_type",
       "attributes": {
-        "name": "NGO"
+        "name": "Government - Sub-national"
       }
     },
     {
       "id": "iplc-organization",
       "type": "project_developer_type",
       "attributes": {
-        "name": "IPLC organization"
+        "name": "Public-private organization or program"
       }
     },
     {
       "id": "incipient",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "NGO"
+      }
+    },
+    {
+      "id": "consolidaton",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "IPLC organization"
+      }
+    },
+    {
+      "id": "scaling-up",
       "type": "project_development_stage",
       "attributes": {
         "name": "Incipient",
@@ -418,7 +432,7 @@
       }
     },
     {
-      "id": "consolidaton",
+      "id": "entrepreneurs-and-innovators-startups",
       "type": "project_development_stage",
       "attributes": {
         "name": "Consolidaton",
@@ -426,7 +440,7 @@
       }
     },
     {
-      "id": "scaling-up",
+      "id": "small-and-medium-businesses",
       "type": "project_development_stage",
       "attributes": {
         "name": "Scaling up",
@@ -434,77 +448,77 @@
       }
     },
     {
-      "id": "entrepreneurs-and-innovators-startups",
+      "id": "urban-populations",
       "type": "project_target_group",
       "attributes": {
         "name": "Enterpreneurs and innovators - startups"
       }
     },
     {
-      "id": "small-and-medium-businesses",
+      "id": "indigenous-peoples",
       "type": "project_target_group",
       "attributes": {
         "name": "Small and medium businesses"
       }
     },
     {
-      "id": "urban-populations",
+      "id": "afro-desendant-peoples",
       "type": "project_target_group",
       "attributes": {
         "name": "Urban populations"
       }
     },
     {
-      "id": "indigenous-peoples",
+      "id": "peasants-and-traditional-inhabitants",
       "type": "project_target_group",
       "attributes": {
         "name": "Indigenous peoples"
       }
     },
     {
-      "id": "afro-desendant-peoples",
+      "id": "migrants-and-displaced-groups",
       "type": "project_target_group",
       "attributes": {
         "name": "Afro-desendant peoples"
       }
     },
     {
-      "id": "peasants-and-traditional-inhabitants",
+      "id": "groups-with-disabilities",
       "type": "project_target_group",
       "attributes": {
         "name": "Peasants and traditional inhabitants"
       }
     },
     {
-      "id": "migrants-and-displaced-groups",
+      "id": "lgtbq-plus-groups",
       "type": "project_target_group",
       "attributes": {
         "name": "Migrants and displaced groups"
       }
     },
     {
-      "id": "groups-with-disabilities",
+      "id": "other",
       "type": "project_target_group",
       "attributes": {
         "name": "Groups with disabilities"
       }
     },
     {
-      "id": "lgtbq-plus-groups",
+      "id": "small-grants",
       "type": "project_target_group",
       "attributes": {
         "name": "LGTBQ+ groups"
       }
     },
     {
-      "id": "other",
+      "id": "prototyping",
       "type": "project_target_group",
       "attributes": {
         "name": "Other"
       }
     },
     {
-      "id": "small-grants",
+      "id": "validation",
       "type": "ticket_size",
       "attributes": {
         "name": "Small Grants",
@@ -512,7 +526,7 @@
       }
     },
     {
-      "id": "prototyping",
+      "id": "scaling",
       "type": "ticket_size",
       "attributes": {
         "name": "Prototyping",
@@ -520,7 +534,7 @@
       }
     },
     {
-      "id": "validation",
+      "id": "amazon-heart",
       "type": "ticket_size",
       "attributes": {
         "name": "Validation",
@@ -528,7 +542,7 @@
       }
     },
     {
-      "id": "scaling",
+      "id": "amazonian-piedmont-massif",
       "type": "ticket_size",
       "attributes": {
         "name": "Scaling",
@@ -536,14 +550,14 @@
       }
     },
     {
-      "id": "amazon-heart",
+      "id": "orinoquia-transition",
       "type": "mosaic",
       "attributes": {
         "name": "Amazon Heart"
       }
     },
     {
-      "id": "amazonian-piedmont-massif",
+      "id": "orinoquia",
       "type": "mosaic",
       "attributes": {
         "name": "Amazonian Piedmont Massif"

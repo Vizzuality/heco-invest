@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "mosaico": "Cordillera Oriental", "area_ha": 2571762.9885499999, "biodiversity": 0.58310329914093018, "biodiversity_demand": 0.41689670085906982, "climate": 0.68400442600250244, "climate_demand": 0.31599557399749756, "community": 0.67351418733596802, "community_demand": 0.32648581266403198, "water": 0.77027356624603271, "water_demand": 0.22972643375396729 },
+    "geometry": { "type": "Polygon", "coordinates": [ [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ] ] } },
+{ "type": "Feature", "properties": { "mosaico": "Piedemonte Amazónico - Macizo", "area_ha": 1926857.3402100001, "biodiversity": 0.67559266090393066, "biodiversity_demand": 0.32440733909606934, "climate": 0.85117757320404053, "climate_demand": 0.14882242679595947, "community": 0.67559981346130371, "community_demand": 0.32440018653869629, "water": 0.86674690246582031, "water_demand": 0.13325309753417969 },
+    "geometry": { "type": "Polygon", "coordinates": [ [ [105.0, 0.0], [106.0, 0.0], [106.0, 1.0], [105.0, 1.0], [105.0, 0.0] ] ] } }
+]
+}
