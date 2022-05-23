@@ -50,13 +50,15 @@ module "sendgrid_api_key" {
   use_random_value = false
 }
 
+
 locals {
   frontend_docker_build_args = {
-    TRANSIFEX_TOKEN = var.transifex_token
-    NEXT_PUBLIC_FRONTEND_URL = "https://${var.domain}"
-    NEXT_PUBLIC_BACKEND_URL = "https://${var.domain}/backend"
-    NEXT_PUBLIC_GOOGLE_ANALYTICS = var.google_analytics_key
-    NEXT_PUBLIC_PROXY_BACKEND = "false"
+    TRANSIFEX_TOKEN                 = var.transifex_token
+    NEXT_PUBLIC_FRONTEND_URL        = "https://${var.domain}"
+    NEXT_PUBLIC_BACKEND_URL         = "https://${var.domain}/backend"
+    NEXT_PUBLIC_GOOGLE_ANALYTICS    = var.google_analytics_key
+    NEXT_PUBLIC_PROXY_BACKEND       = "false"
+    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY = var.google_maps_api_key
   }
 }
 
@@ -160,12 +162,20 @@ module "backend_cloudrun" {
       value = "/backend"
     },
     {
-      name  = "TEST_PUBSUB_TOPIC"
-      value = module.test_pubsub.topic_name
+      name  = "CLOUDTASKER_PROCESSOR_HOST"
+      value = "https://${var.domain}"
     },
     {
-      name  = "TEST_PUBSUB_SUBSCRIPTION"
-      value = module.test_pubsub.subscription_name
+      name  = "CLOUDTASKER_PROCESSOR_PATH"
+      value = "/backend/cloudtasker/run"
+    },
+    {
+      name  = "CLOUD_TASKS_QUEUE_PREFIX"
+      value = var.project_name
+    },
+    {
+      name  = "CLOUD_TASKS_TEST_QUEUE_NAME"
+      value = "email-test"
     },
     {
       name  = "IS_API_INSTANCE"
@@ -194,6 +204,14 @@ module "backend_cloudrun" {
     {
       name  = "MAILER_DEFAULT_FROM"
       value = "agnieszka.figiel@vizzuality.com"
+    },
+    {
+      name  = "GCP_PROJECT_ID"
+      value = var.gcp_project_id
+    },
+    {
+      name  = "GCP_REGION"
+      value = var.gcp_region
     }
   ]
 }
@@ -226,11 +244,14 @@ module "bastion" {
   subnetwork_name = module.network.subnetwork_name
 }
 
-module "test_pubsub" {
-  source     = "../pubsub"
-  name       = "${var.project_name}-test"
-  project_id = var.gcp_project_id
-  region     = var.gcp_region
+
+module "test_cloud_tasks" {
+  source                = "../cloud-tasks"
+  name                  = "email-test"
+  prefix                = var.project_name
+  project_id            = var.gcp_project_id
+  region                = var.gcp_region
+  service_account_email = module.backend_cloudrun.service_account_email
 }
 
 module "dns" {
@@ -248,4 +269,16 @@ module "load_balancer" {
   frontend_cloud_run_name = module.frontend_cloudrun.name
   domain                  = var.domain
   dns_managed_zone_name   = module.dns.dns_zone_name
+}
+
+module "translation" {
+  source = "../translation"
+  project_id            = var.gcp_project_id
+  service_account_email = module.backend_cloudrun.service_account_email
+}
+
+module "error_reporting" {
+  source                = "../error-reporting"
+  project_id            = var.gcp_project_id
+  service_account_email = module.backend_cloudrun.service_account_email
 }

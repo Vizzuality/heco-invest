@@ -23,7 +23,9 @@ import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 
 import Head from 'components/head';
 import { Paths } from 'enums';
+import { UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
+import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 import { GroupedEnums } from 'types/enums';
 import { InvestorForm } from 'types/investor';
@@ -107,7 +109,7 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
   };
 
   return (
-    <>
+    <ProtectedPage permissions={[UserRoles.Light]}>
       <Head
         title={intl.formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })}
       />
@@ -173,7 +175,7 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
         handleLeave={() => push(Paths.Dashboard)}
         title={formatMessage({ defaultMessage: 'Leave project creation form', id: 'vygPIS' })}
       />
-    </>
+    </ProtectedPage>
   );
 };
 

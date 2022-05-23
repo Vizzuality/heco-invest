@@ -46,7 +46,9 @@
           1.0,
           2.0
         ]
-      }
+      },
+      "latitude": "2.0",
+      "longitude": "1.0"
     },
     "relationships": {
       "project_developer": {

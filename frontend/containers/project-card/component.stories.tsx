@@ -1,4 +1,8 @@
+import { action } from '@storybook/addon-actions';
 import { Story, Meta } from '@storybook/react/types-6-0';
+
+import projectMock from 'mockups/project.json';
+import { Project as ProjectType } from 'types/project';
 
 import ProjectCard, { ProjectCardProps } from '.';
 
@@ -8,33 +12,17 @@ export default {
   argTypes: {},
 } as Meta;
 
-const Template: Story<ProjectCardProps> = ({
-  id,
-  category,
-  name,
-  instrument,
-  amount,
-  link: href,
-  onClick,
-}: ProjectCardProps) => (
-  <ProjectCard
-    key={id}
-    id={id}
-    category={category}
-    name={name}
-    instrument={instrument}
-    amount={amount}
-    link={`/project/${id}`}
-    onClick={onClick}
-  />
-);
+const Template: Story<ProjectCardProps> = ({ project }: ProjectCardProps) => {
+  const onClick = (projectId: string) => action('onClick')(projectId);
+  return <ProjectCard project={project} onClick={onClick} />;
+};
 
 export const Default: Story<ProjectCardProps> = Template.bind({});
 Default.args = {
-  id: 'project-id',
-  category: 'Tourism & recreation',
-  name: 'Circulo de Creaciones Cidaticas Circreadi',
-  instrument: 'Grant',
-  amount: 25000,
-  link: '/project/circulo-creaciones',
+  project: { ...projectMock, trusted: false } as ProjectType,
+};
+
+export const Verified: Story<ProjectCardProps> = Template.bind({});
+Verified.args = {
+  project: projectMock as ProjectType,
 };

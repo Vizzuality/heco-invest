@@ -33,6 +33,8 @@ gem "bootsnap", require: false
 
 gem "cloudtasker", "~> 0.13.0"
 gem "google-cloud-storage", "~> 1.36.1", require: false
+gem "google-cloud-translate"
+gem "google-cloud-error_reporting"
 gem "image_processing", ">= 1.2"
 gem "mini_magick"
 
@@ -69,4 +71,5 @@ group :test do
   gem "simplecov", require: false
   gem "super_diff"
   gem "test-prof"
+  gem "webmock"
 end

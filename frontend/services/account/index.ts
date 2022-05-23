@@ -40,8 +40,9 @@ export function useCreateProject(): UseMutationResult<
   AxiosError<ErrorResponse>,
   ProjectCreationPayload
 > {
-  const createProject = async (data: ProjectCreationPayload): Promise<AxiosResponse<Project>> =>
-    API.post('/api/v1/account/projects', data).then((response) => response.data);
+  const createProject = async (data: ProjectCreationPayload): Promise<AxiosResponse<Project>> => {
+    return API.post('/api/v1/account/projects', data).then((response) => response.data);
+  };
 
   const queryClient = useQueryClient();
 

@@ -62,8 +62,8 @@ RSpec.configure do |config|
                   facebook: {type: :string, nullable: true},
                   linkedin: {type: :string, nullable: true},
                   twitter: {type: :string, nullable: true},
-                  how_do_you_work: {type: :string},
-                  what_makes_the_difference: {type: :string, nullable: true},
+                  mission: {type: :string},
+                  prioritized_projects_description: {type: :string, nullable: true},
                   other_information: {type: :string},
                   investor_type: {type: :string},
                   categories: {type: :array, items: {type: :string}},
@@ -72,7 +72,6 @@ RSpec.configure do |config|
                   impacts: {type: :array, items: {type: :string}},
                   sdgs: {type: :array, items: {type: :integer}},
                   previously_invested: {type: :boolean},
-                  previously_invested_description: {type: :string, nullable: true},
                   language: {type: :string}
                 }
               },
@@ -180,7 +179,9 @@ RSpec.configure do |config|
                   description: {type: :string},
                   relevant_links: {type: :string, nullable: true},
                   ticket_size: {type: :string, enum: TicketSize::TYPES, nullable: true},
-                  geometry: {type: :object, nullable: true},
+                  geometry: {type: :object},
+                  latitude: {type: :string},
+                  longitude: {type: :string},
                   category: {type: :string},
                   target_groups: {type: :array, items: {type: :string}},
                   impact_areas: {type: :array, items: {type: :string}},
@@ -238,6 +239,27 @@ RSpec.configure do |config|
               }
             },
             required: %w[id type attributes relationships]
+          },
+          background_job_event: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              type: {type: :string},
+              attributes: {
+                type: :object,
+                properties: {
+                  status: {type: :string},
+                  arguments: {type: :array},
+                  queue_name: {type: :string},
+                  priority: {type: :string, nullable: true},
+                  executions: {type: :integer},
+                  message: {type: :object, nullable: true},
+                  created_at: {type: :string},
+                  updated_at: {type: :string}
+                }
+              }
+            },
+            required: %w[id type attributes]
           },
           enum: {
             type: :object,

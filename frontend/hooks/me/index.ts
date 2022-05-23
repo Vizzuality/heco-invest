@@ -2,25 +2,20 @@ import { useMemo } from 'react';
 
 import { useQuery } from 'react-query';
 
-import { AxiosError } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 
 import { Queries } from 'enums';
 import { User } from 'types/user';
 
-import API from 'services/api';
-import { ErrorResponse } from 'services/types';
+import { ErrorResponse, ResponseData } from 'services/types';
+import { getCurrentUser } from 'services/users/userService';
 
 export default function useMe() {
-  const query = useQuery<User, AxiosError<ErrorResponse>>(
+  const query = useQuery<AxiosResponse<ResponseData<User>>, AxiosError<ErrorResponse>>(
     Queries.User,
-    () =>
-      API.request({
-        method: 'GET',
-        url: '/api/v1/user',
-      }).then((response) => response.data.data),
+    getCurrentUser,
     {
-      // If the user is not signed in, it will no retry, else (other error causes), it will retry 2 times.
-      retry: (count, error) => error.code !== '401' && count < 3,
+      retry: 1,
       staleTime: Infinity,
       refetchOnMount: false,
       refetchOnWindowFocus: false,
@@ -33,7 +28,7 @@ export default function useMe() {
   return useMemo(
     () => ({
       ...query,
-      user: data,
+      user: data?.data?.data,
     }),
     [query, data]
   );

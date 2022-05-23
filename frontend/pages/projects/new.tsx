@@ -23,8 +23,9 @@ import {
 } from 'containers/project-form-pages';
 
 import Head from 'components/head';
-import { Paths, Queries } from 'enums';
+import { Paths, Queries, UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
+import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 import { ProjectCreationPayload, ProjectForm } from 'types/project';
 import useProjectValidation from 'validations/project';
@@ -101,17 +102,29 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
 
   const onSubmit: SubmitHandler<ProjectForm> = (values: ProjectForm) => {
     if (currentPage === 5) {
-      const { involved_project_developer, project_gallery, ...rest } = values;
+      const {
+        involved_project_developer,
+        project_gallery,
+        project_images_attributes_cover,
+        ...rest
+      } = values;
+
+      // set image_attributes cover from the project_images_attributes_cover value
+      const project_images_attributes = values.project_images_attributes.map((image) =>
+        image.file === project_images_attributes_cover ? { ...image, cover: true } : image
+      );
       // set involved_project_developer_not_listed to true if not listed is selected and removes this value from the involved_project_developer_ids
       const involved_project_developer_not_listed =
         !!values.involved_project_developer_ids?.includes('not-listed');
       const involved_project_developer_ids = values.involved_project_developer_ids?.filter(
         (id) => id !== 'not-listed'
       );
+
       handleCreate({
         ...rest,
         involved_project_developer_not_listed,
         involved_project_developer_ids,
+        project_images_attributes,
       });
     } else {
       setCurrentPage(currentPage + 1);
@@ -126,7 +139,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
   };
 
   return (
-    <>
+    <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
       <Head
         title={formatMessage({ defaultMessage: 'Setup project developer’s account', id: 'bhxvPM' })}
       />
@@ -152,6 +165,9 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             errors={errors}
             getValues={getValues}
             resetField={resetField}
+            setValue={setValue}
+            clearErrors={clearErrors}
+            setError={setError}
           />
         </Page>
         <Page key="project-description">
@@ -215,7 +231,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
         handleLeave={() => push(Paths.Dashboard)}
         title={formatMessage({ defaultMessage: 'Leave project creation form', id: 'vygPIS' })}
       />
-    </>
+    </ProtectedPage>
   );
 };
 

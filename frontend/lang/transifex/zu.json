@@ -8,9 +8,6 @@
   "+vVZ/G": {
     "string": "Connect"
   },
-  "/1WGZ8": {
-    "string": "Projects funded"
-  },
   "/CaREm": {
     "string": "Pending approval"
   },
@@ -68,6 +65,9 @@
   "25WwxF": {
     "string": "Don't have an account?"
   },
+  "2CtPQ/": {
+    "string": "Contact phone"
+  },
   "2O2sfp": {
     "string": "Finish"
   },
@@ -88,9 +88,6 @@
   },
   "3hV8r4": {
     "string": "Select the stage of development of the project or solution at the time of submitting this pitch"
-  },
-  "3l2y4U": {
-    "string": "Person of contact"
   },
   "3tWxy0": {
     "string": "Project developer type"
@@ -242,6 +239,9 @@
   "BAC0rl": {
     "string": "<span>Community:</span> income, sustainable projects;"
   },
+  "BHrBCl": {
+    "string": "PNG, JPG up to 5MB"
+  },
   "BcZVZW": {
     "string": "This description should sumarize your project in a few words."
   },
@@ -281,6 +281,9 @@
   "DQoGRx": {
     "string": "About the impact"
   },
+  "DR+23P": {
+    "string": "Contact email"
+  },
   "DWQSFT": {
     "string": "Use left and right to toggle between focused values, press backspace to remove the currently focused value"
   },
@@ -289,6 +292,9 @@
   },
   "E/YxHp": {
     "string": "When will the project have the Verification badge?"
+  },
+  "E1kj21": {
+    "string": "Project verification"
   },
   "Ec0M9T": {
     "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
@@ -304,6 +310,9 @@
   },
   "F1+h/t": {
     "string": "For project developers"
+  },
+  "F4dsUN": {
+    "string": "Go to first page"
   },
   "FJfVJJ": {
     "string": "Access user-friendly tools that help turn a good idea into a proposal ready to be reviewed by an investor or funder."
@@ -344,12 +353,18 @@
   "HnG9/3": {
     "string": "Insert password"
   },
+  "HyAD0J": {
+    "string": "{numItems} of {totalItems} entries"
+  },
   "HzKhBJ": {
     "developer_comment": "Description shown in search engines",
     "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
   },
   "I9iCt5": {
     "string": "From which investor or funder? (optional)"
+  },
+  "IBlTCs": {
+    "string": "The image is larger than {maxSize}MB"
   },
   "IMe8OV": {
     "string": "Nature based solutions are estimated to compensate up to 30% of global emissions."
@@ -368,6 +383,9 @@
   },
   "J4w7T/": {
     "string": "Enable positive impact"
+  },
+  "JFkvlB": {
+    "string": "Please use the contacts below to reach the project developer."
   },
   "JI99E2": {
     "string": "HeCo Invest was created following the Leticia Pact, and the commitment of the seven Heads of State to increase capital flows for sustainable development in the <span>Amazon</span>."
@@ -392,6 +410,9 @@
   },
   "Jwjqn/": {
     "string": "focused"
+  },
+  "KGREXT": {
+    "string": "Total of projects"
   },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
@@ -434,6 +455,9 @@
   },
   "NIQVjS": {
     "string": "Support the consolidation of their lands governance structures and capacities for sound management."
+  },
+  "NYErt1": {
+    "string": "Go to previous page"
   },
   "NjKSap": {
     "string": "Online presence"
@@ -524,6 +548,9 @@
   },
   "TJo5E6": {
     "string": "Preview"
+  },
+  "TfXhCr": {
+    "string": "No projects"
   },
   "U1OBY8": {
     "string": "options {options}, selected."
@@ -636,8 +663,17 @@
   "YWQkk+": {
     "string": "Short description of the project"
   },
+  "Z8971h": {
+    "string": "Verified"
+  },
+  "ZATT08": {
+    "string": "Pagination"
+  },
   "ZEEVQX": {
     "string": "Social media"
+  },
+  "ZKsAVY": {
+    "string": "This project isn’t currently looking for funding."
   },
   "ZMvQxR": {
     "string": "HeCo Invest manages a wide range of investment and financing opportunities in various sectors and priority geographies for the conservation and development of the Colombian Amazon region."
@@ -702,6 +738,9 @@
   "cE4Hfw": {
     "string": "Discover"
   },
+  "cKaiI0": {
+    "string": "File {fileName} has an invalid format"
+  },
   "cPwv2c": {
     "string": "Privacy policy"
   },
@@ -753,6 +792,12 @@
   "et2m37": {
     "string": "insert URL"
   },
+  "fDd10o": {
+    "string": "Instrument type"
+  },
+  "fMrPOR": {
+    "string": "Go to last page"
+  },
   "fnihsY": {
     "string": "Leave"
   },
@@ -785,6 +830,9 @@
   },
   "hl9bd4": {
     "string": "Cover"
+  },
+  "hpOE0K": {
+    "string": "<a>Browse</a> or drag and drop"
   },
   "hxIQ/8": {
     "string": "Projects waiting funding"
@@ -840,6 +888,9 @@
   "lfvUqs": {
     "string": "Do you want to leave?"
   },
+  "lfx6Nc": {
+    "string": "Ticket size"
+  },
   "m3Dnav": {
     "string": "Investment info"
   },
@@ -866,6 +917,9 @@
   },
   "nhAnF3": {
     "string": "I want to find opportunities to invest / donate"
+  },
+  "nkDaFL": {
+    "string": "Go to next page"
   },
   "o+Vt3t": {
     "string": "Partnership between:"
@@ -894,6 +948,9 @@
   "pONqz8": {
     "string": "First name"
   },
+  "pWwsxm": {
+    "string": "Delete image"
+  },
   "pcRRCK": {
     "string": "Financial information about your project and what are the needs"
   },
@@ -914,6 +971,9 @@
   },
   "qoImFc": {
     "string": "Replicability of the project"
+  },
+  "qpDURb": {
+    "string": "Something went wrong with the file upload"
   },
   "rPwaWt": {
     "string": "A great name is short, crisp, and easily understood."
@@ -975,8 +1035,17 @@
   "uCk8r+": {
     "string": "Already have an account?"
   },
+  "uHyJI7": {
+    "string": "Uploading {filesCount} files..."
+  },
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
+  },
+  "v9GdgG": {
+    "string": "File {fileName} is larger than {fileSize}MB"
+  },
+  "vIKTZ9": {
+    "string": "If you have interest in this project contact the project developer to know how you can work together."
   },
   "vONi+O": {
     "string": "Country"
@@ -986,6 +1055,9 @@
   },
   "vygPIS": {
     "string": "Leave project creation form"
+  },
+  "wQteLO": {
+    "string": "Go to page {page}"
   },
   "wSZR47": {
     "string": "Submit"
@@ -1004,6 +1076,9 @@
   },
   "x/1DXz": {
     "string": "In the face of the economic and social crisis caused by the coronavirus pandemic, there is an urgent need to support the transition to a green, fair, and resilient economy that creates jobs, addresses inequality, and drives inclusive growth."
+  },
+  "x/AykP": {
+    "string": "Project ticket size"
   },
   "x6wKw3": {
     "string": "All selected options have been cleared."
@@ -1034,6 +1109,9 @@
   },
   "yJVljq": {
     "string": "Through accessing <span>ARIES</span> (Artificial Intelligence for Environmental Sustainability) and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
+  },
+  "yQ7bY1": {
+    "string": "You can upload a maximum of {maxFiles} files"
   },
   "yXFDuu": {
     "string": "Use our Artificial Intellience tool powered by ARIES, to help you identify what best fits your specific needs."

@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -37,7 +37,7 @@ export async function getStaticProps(ctx) {
 type SignInPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
-  const { push } = useRouter();
+  const { push, query } = useRouter();
   const intl = useIntl();
   const signIn = useSignIn();
   const resolver = useSignInResolver();
@@ -48,19 +48,17 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
   } = useForm<SignIn>({ resolver, shouldUseNativeValidation: true });
   const { user } = useMe();
 
-  const handleSignIn = useCallback(
-    (data: SignIn) =>
-      signIn.mutate(data, {
-        onSuccess: () => {
-          if (user?.role === UserRoles.Light) {
-            push(Paths.AccountType);
-          } else {
-            push(Paths.Dashboard);
-          }
-        },
-      }),
-    [signIn, push, user]
-  );
+  useEffect(() => {
+    if (user) {
+      if (user?.role === UserRoles.Light) {
+        push(Paths.AccountType);
+      } else {
+        push(Paths.Dashboard);
+      }
+    }
+  }, [push, query.callbackUrl, user]);
+
+  const handleSignIn = useCallback((data: SignIn) => signIn.mutate(data), [signIn]);
 
   const onSubmit: SubmitHandler<SignIn> = handleSignIn;
 

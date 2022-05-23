@@ -8303,6 +8303,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-vis@npm:^1.11.11":
+  version: 1.11.11
+  resolution: "@types/react-vis@npm:1.11.11"
+  dependencies:
+    "@types/react": "*"
+  checksum: 82683c5a8510636d182e4cac23de8cce03eebaa0f0a743b4af3599c3667a9e02e9d80416ce29218df02a9b59da4e60266089c85ad4d4ac420ce9f851b1108a05
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:*, @types/react@npm:16 || 17, @types/react@npm:^17.0.5":
   version: 17.0.39
   resolution: "@types/react@npm:17.0.39"
@@ -9709,6 +9718,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"attr-accept@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "attr-accept@npm:2.2.2"
+  checksum: 496f7249354ab53e522510c1dc8f67a1887382187adde4dc205507d2f014836a247073b05e9d9ea51e2e9c7f71b0d2aa21730af80efa9af2d68303e5f0565c4d
+  languageName: node
+  linkType: hard
+
 "autoprefixer@npm:^10.4.2":
   version: 10.4.2
   resolution: "autoprefixer@npm:10.4.2"
@@ -10652,6 +10668,13 @@ __metadata:
   version: 0.2.0
   resolution: "charcodes@npm:0.2.0"
   checksum: 972443ed359d54382e721b9db0a298eb95c4c454386f7e98886586f433e1e6686225416114e6f6bb2e6ef3facc9ba3b4ab9946a56a180fe64ef67816a05d4fe4
+  languageName: node
+  linkType: hard
+
+"chart.js@npm:^3.7.1":
+  version: 3.7.1
+  resolution: "chart.js@npm:3.7.1"
+  checksum: f9d118d3b7dd3c36b6da7a8d71ac9e5d9673b81095cc66c3f61ff91674e20020c6700f8c9c6f93713fa8474eb471ded106114346ccc6afa88b4a7d0eb73dcea4
   languageName: node
   linkType: hard
 
@@ -13053,6 +13076,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"file-selector@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "file-selector@npm:0.6.0"
+  dependencies:
+    tslib: ^2.4.0
+  checksum: 7d051b6e5d793f3c6e2ab287ba5e7c2c6a0971bccc9d56e044c8047ba483e18f60fc0b5771c951dc707c0d15f4f36ccb4f1f1aaf385d21ec8f7700dadf8325ba
+  languageName: node
+  linkType: hard
+
 "file-system-cache@npm:^1.0.5":
   version: 1.0.5
   resolution: "file-system-cache@npm:1.0.5"
@@ -14174,6 +14206,7 @@ __metadata:
     "@types/lodash-es": ^4.17.6
     "@types/rails__activestorage": ^7.0.1
     "@types/react": ^17.0.5
+    "@types/react-vis": ^1.11.11
     "@typescript-eslint/eslint-plugin": ^5.10.1
     "@typescript-eslint/parser": ^5.10.1
     "@vizzuality/layer-manager-layers-deckgl": ^1.0.0-alpha.3
@@ -14182,6 +14215,7 @@ __metadata:
     "@vizzuality/layer-manager-react": ^1.0.0-alpha.3
     autoprefixer: ^10.4.2
     axios: ^0.21.1
+    chart.js: ^3.7.1
     classnames: ^2.3.1
     cycle: ^1.0.3
     d3-ease: ^2.0.0
@@ -14205,7 +14239,9 @@ __metadata:
     query-string: ^7.1.1
     react: ^17.0.2
     react-aria: ^3.6.0
+    react-chartjs-2: ^4.1.0
     react-dom: latest
+    react-dropzone: ^14.2.0
     react-feather: ^2.0.9
     react-final-form: ^6.5.3
     react-hook-form: ^7.28.0
@@ -14224,6 +14260,7 @@ __metadata:
     storybook-react-intl: ^1.0.5
     tailwindcss: ^3.0.23
     typescript: ^4.5.5
+    url-search-params-polyfill: ^8.1.1
     use-debounce: ^6.0.1
     webpack: ^5.68.0
     yup: ^0.32.11
@@ -18817,7 +18854,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.0.0, prop-types@npm:^15.5.8, prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
+"prop-types@npm:^15.0.0, prop-types@npm:^15.5.8, prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -19165,6 +19202,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-chartjs-2@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "react-chartjs-2@npm:4.1.0"
+  peerDependencies:
+    chart.js: ^3.5.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: fe01bdaf80c8a806af36e772719f420862e15e393a32c4c15b0e5fb8167143648e3f465b1b3ee8c4889f9531fff6ad6d34832606029ebf7d2751729198eb6121
+  languageName: node
+  linkType: hard
+
 "react-colorful@npm:^5.1.2":
   version: 5.5.1
   resolution: "react-colorful@npm:5.5.1"
@@ -19227,6 +19274,19 @@ __metadata:
     react: ">= 16.3.0"
     react-dom: ">= 16.3.0"
   checksum: b8258a58938c261a79f1b9ffd67774283c1ac732423c1c9c9f5fe4d17a06886edd659891e445ba089828ca59f1885e5b909262e24cf60640b8ed05c8499c88bb
+  languageName: node
+  linkType: hard
+
+"react-dropzone@npm:^14.2.0":
+  version: 14.2.0
+  resolution: "react-dropzone@npm:14.2.0"
+  dependencies:
+    attr-accept: ^2.2.2
+    file-selector: ^0.6.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ">= 16.8 || 18.0.0"
+  checksum: 3be42de217ea1345b064814c037dbe45377b9dc7aed7cb72a1630440acfcf75a53697930d1594d1441e32579088b8d15648ecff2153e9e1e7a1209ba681502b9
   languageName: node
   linkType: hard
 
@@ -21889,6 +21949,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "tslib@npm:2.4.0"
+  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
+  languageName: node
+  linkType: hard
+
 "tsutils@npm:^3.21.0":
   version: 3.21.0
   resolution: "tsutils@npm:3.21.0"
@@ -22289,6 +22356,13 @@ __metadata:
     file-loader:
       optional: true
   checksum: c1122a992c6cff70a7e56dfc2b7474534d48eb40b2cc75467cde0c6972e7597faf8e43acb4f45f93c2473645dfd803bcbc20960b57544dd1e4c96e77f72ba6fd
+  languageName: node
+  linkType: hard
+
+"url-search-params-polyfill@npm:^8.1.1":
+  version: 8.1.1
+  resolution: "url-search-params-polyfill@npm:8.1.1"
+  checksum: c63169a8a70a256e73203c4404acf4fdbb38075f3f888ea38f92b09dc896190180cc9c072c927d7bb995c5a35e7729be8c4f7e876f83f8f8ab6fac263c971725
   languageName: node
   linkType: hard
 

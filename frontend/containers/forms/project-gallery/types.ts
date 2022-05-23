@@ -31,4 +31,6 @@ export type ProjectGalleryProps<FormValues> = {
   registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
   /** Form validation errors */
   errors: FieldErrors<FormValues>;
+  /** Callback to handle delete image */
+  onDeleteImage: (imageId: string) => void;
 };

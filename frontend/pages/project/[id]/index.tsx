@@ -1,10 +1,13 @@
+import { decycle } from 'cycle';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Breadcrumbs from 'containers/breadcrumbs';
+import ProjectHeader from 'containers/project-header';
 
 import Head from 'components/head';
+import ImpactChart from 'components/impact-chart';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
@@ -17,10 +20,9 @@ import { getProject } from 'services/projects/projectService';
 export const getServerSideProps = async ({ params: { id }, locale }) => {
   let project;
 
-  // If getting the project fails, it's most likely because the record has
-  // not been found. Let's return a 404. Anything else will trigger a 500 by default.
+  // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    ({ data: project } = await getProject(id));
+    ({ data: project } = await getProject(id, { includes: 'project_images,project_developer' }));
   } catch (e) {
     return { notFound: true };
   }
@@ -31,7 +33,7 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
       enums: groupBy(enums, 'type'),
-      project: project,
+      project: decycle(project),
     },
   };
 };
@@ -45,6 +47,9 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
   project,
   enums,
 }) => {
+  // Change for real project attibute
+  const projectImpact = [4, 6, 8, 3];
+
   return (
     <>
       <Head title={project.name} description={project.description} />
@@ -56,12 +61,22 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
             id: { name: project.name },
           }}
         />
-        {/*<ProjectHeader/>*/} ProjectHeader
+        <ProjectHeader className="mt-6" project={project} />
       </LayoutContainer>
 
-      <LayoutContainer className="mb-20 mt-18">
+      <LayoutContainer className="mb-20 mt-18 ">
         <section>Overview</section>
-        <section>Impact</section>
+        <section>
+          Impact
+          <div className="lg:justify-between px-2 py-16 sm:px-12 sm:py-20 lg:flex bg-background-greenLight rounded-2xl">
+            <div>
+              <h2>Estimated Impact</h2>
+            </div>
+            <div className="pl-28 pr-24 py-10">
+              <ImpactChart category={project.category} impact={projectImpact} />
+            </div>
+          </div>
+        </section>
         <section>Funding &amp; Development</section>
       </LayoutContainer>
 

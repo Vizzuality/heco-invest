@@ -6,6 +6,7 @@ services:
       - 5432:5432
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
+      - CLOUD_TASKS_TEST_QUEUE_NAME=test
     volumes:
       - db:/var/lib/postgresql/data
 

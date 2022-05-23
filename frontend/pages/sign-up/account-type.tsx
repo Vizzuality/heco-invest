@@ -26,8 +26,8 @@ const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = () => {
   const { push } = useRouter();
 
   const handleAccountTypeSelected = (accountType: AccountType) => {
-    // TODO: Handle account type selected
-    if (accountType === 'project-developer') push('/project-developers/new');
+    if (accountType === 'project-developer') push(Paths.NewProjectDeveloper);
+    if (accountType === 'investor') push(Paths.NewInvestor);
   };
 
   return (

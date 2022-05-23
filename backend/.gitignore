@@ -40,3 +40,5 @@
 /coverage
 
 /config/credentials/production.key
+
+dump.rdb

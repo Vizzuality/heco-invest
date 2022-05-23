@@ -18,9 +18,8 @@ if Rails.env.development?
       ticket_sizes: TicketSize::TYPES.shuffle.take((1..2).to_a.sample),
       impacts: Impact::TYPES.shuffle.take((1..2).to_a.sample),
       previously_invested: true,
-      previously_invested_description: Faker::Lorem.paragraph(sentence_count: 4),
-      how_do_you_work: Faker::Lorem.paragraph(sentence_count: 4),
-      what_makes_the_difference: Faker::Lorem.paragraph(sentence_count: 4),
+      mission: Faker::Lorem.paragraph(sentence_count: 4),
+      prioritized_projects_description: Faker::Lorem.paragraph(sentence_count: 4),
       other_information: Faker::Lorem.paragraph(sentence_count: 4),
       language: investor_account.language
     )
