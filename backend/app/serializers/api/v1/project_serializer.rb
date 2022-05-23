@@ -17,6 +17,7 @@ module API
         :looking_for_funding,
         :ticket_size,
         :instrument_types,
+        :funding_plan,
         :sustainability,
         :replicability,
         :progress_impact_tracking,
@@ -27,9 +28,13 @@ module API
         :language,
         :geometry,
         :latitude,
-        :longitude
+        :longitude,
+        :trusted
 
       belongs_to :project_developer
+      belongs_to :country, serializer: LocationSerializer
+      belongs_to :municipality, serializer: LocationSerializer
+      belongs_to :department, serializer: LocationSerializer
       has_many :involved_project_developers, serializer: ProjectDeveloperSerializer
       has_many :project_images
 

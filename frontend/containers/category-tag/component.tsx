@@ -8,10 +8,11 @@ import type { CategoryTagProps } from './types';
 export const CategoryTag: FC<CategoryTagProps> = ({
   className,
   category,
+  size = 'small',
   children,
 }: CategoryTagProps) => (
-  <Tag className={className}>
-    <CategoryTagDot category={category} />
+  <Tag size={size} className={className}>
+    <CategoryTagDot size={size} category={category} />
     {children}
   </Tag>
 );

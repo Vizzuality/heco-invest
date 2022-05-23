@@ -58,10 +58,6 @@ class Project < ApplicationRecord
     validates_presence_of :funding_plan
   end
 
-  with_options if: -> { received_funding? } do
-    validates_presence_of :received_funding_amount_usd, :received_funding_investor
-  end
-
   validates_uniqueness_of [*locale_columns(:name)], scope: [:project_developer_id], case_sensitive: false, allow_blank: true
   validate :location_types
   validates_with ProjectGeometryValidator

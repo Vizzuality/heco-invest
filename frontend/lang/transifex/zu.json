@@ -1,4 +1,7 @@
 {
+  "+JVDMC": {
+    "string": "Know more"
+  },
   "+K9fF0": {
     "string": "Project Developers"
   },
@@ -182,6 +185,9 @@
   "7eO+k/": {
     "string": "Enter the estimated implementation duration for the project. MAX 24 months."
   },
+  "7gMEKc": {
+    "string": "Project details"
+  },
   "7qgtEX": {
     "string": "Invests in SDG's"
   },
@@ -227,6 +233,9 @@
   "9VLFbQ": {
     "string": "Landscape photo"
   },
+  "9WcWke": {
+    "string": "{name} investor"
+  },
   "9cE0nR": {
     "string": "How is the impact calculated?"
   },
@@ -260,6 +269,9 @@
   "BHrBCl": {
     "string": "PNG, JPG up to 5MB"
   },
+  "BZkcBV": {
+    "string": "Project developer photo"
+  },
   "BcZVZW": {
     "string": "This description should sumarize your project in a few words."
   },
@@ -271,6 +283,9 @@
   },
   "C0sD76": {
     "string": "insert number (max 24)"
+  },
+  "C23He5": {
+    "string": "Sort in ascending order"
   },
   "CEQo2w": {
     "string": "My preferences"
@@ -290,11 +305,17 @@
   "Cra78t": {
     "string": "© {date} HeCo Invest. All rights reserved."
   },
+  "Czc5vB": {
+    "string": "Looking for funding"
+  },
   "D5RCKi": {
     "string": "Project name"
   },
   "DAJK4J": {
     "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure 20 million hectares of sustainable landscape over the next 20 years, through investments in conservation and sustainable development."
+  },
+  "DCAMZh": {
+    "string": "Choose the field to sort by"
   },
   "DQoGRx": {
     "string": "About the impact"
@@ -359,6 +380,9 @@
   "GdS9Mk": {
     "string": "Has this project been funded before?"
   },
+  "HAlOn1": {
+    "string": "Name"
+  },
   "HK3ph8": {
     "string": "How it works"
   },
@@ -367,6 +391,9 @@
   },
   "HVQtvr": {
     "string": "BC3's mission is to generate valuable knowledge for policy and decision making, integrating the environmental, socio-economic and ethical dimensions of climate change. Through the production of collaborative and open-source tools such as ARIES, which can track and forecast progress towards sustainable environmental and economic goals, BC3 plays a key role in enhancing regional, national and international economic development."
+  },
+  "Hb+Idf": {
+    "string": "Project description"
   },
   "HmDmU1": {
     "string": "Support the protection of water availability and regulation. These approaches are vital for reducing risks such as floods and droughts, which in the face of climate change can become more frequent and larger in magnitude."
@@ -426,6 +453,9 @@
   "JNTB42": {
     "string": "Phone number (optional)"
   },
+  "JQjEP9": {
+    "string": "SDGs"
+  },
   "JRfERD": {
     "string": "Paulson Institute"
   },
@@ -434,6 +464,9 @@
   },
   "JkLHGw": {
     "string": "Website"
+  },
+  "Jl9QMO": {
+    "string": "Estimated impact"
   },
   "Jwjqn/": {
     "string": "focused"
@@ -464,6 +497,9 @@
   },
   "MF4b8Z": {
     "string": "Use at least 12 characters, one uppercase letter, one lowercase letter and one number."
+  },
+  "MFPJ9u": {
+    "string": "In the municipality the project has higher impact on <b>{impactOn}</b> and has an <b>impact score</b> of {score}."
   },
   "MH3koz": {
     "string": "Previous slide"
@@ -525,6 +561,9 @@
   "P4T4Ib": {
     "string": "Discover projects that have impact in the Amazon region and get connected with investors and project developers."
   },
+  "P7PLVj": {
+    "string": "Date"
+  },
   "PIZ1dD": {
     "string": "Search biodiversity"
   },
@@ -536,6 +575,9 @@
   },
   "Q1Q4rT": {
     "string": "Insert your name"
+  },
+  "Q8Qw5B": {
+    "string": "Description"
   },
   "QDj3j7": {
     "string": "Inter-American Development Bank Lab"
@@ -681,6 +723,9 @@
   "XkF/qg": {
     "string": "Profile picture of {name}"
   },
+  "Y2zB+b": {
+    "string": "No project developers"
+  },
   "Y7/cBd": {
     "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and <span>start the conversation</span>. Make sure to update us to help us track your contribution to preserving the Amazon: <span>the future is in your hands too!</span>"
   },
@@ -698,6 +743,9 @@
   },
   "YWQkk+": {
     "string": "Short description of the project"
+  },
+  "YYMUK5": {
+    "string": "Expects to have impact on"
   },
   "Z8971h": {
     "string": "Verified"
@@ -843,6 +891,9 @@
   "fnihsY": {
     "string": "Leave"
   },
+  "fwSVTQ": {
+    "string": "Sort in descending order"
+  },
   "g5pX+a": {
     "string": "About"
   },
@@ -854,6 +905,9 @@
   },
   "gpTOIc": {
     "string": "{message} for search term {term}"
+  },
+  "hDI+JM": {
+    "string": "Sort by"
   },
   "hLG9bm": {
     "string": "Project financial instrument"
@@ -875,6 +929,9 @@
   },
   "hl9bd4": {
     "string": "Cover"
+  },
+  "hmK5Jb": {
+    "string": "Close project details card"
   },
   "hpOE0K": {
     "string": "<a>Browse</a> or drag and drop"
@@ -905,6 +962,9 @@
   },
   "jWOeHy": {
     "string": "<a>Call on our community</a> of project developers to identify opportunities in your preferred sectors and geographies."
+  },
+  "jXqlWP": {
+    "string": "{name} project developer"
   },
   "jwimQJ": {
     "string": "Ok"
@@ -1024,7 +1084,10 @@
     "string": "Something went wrong with the file upload"
   },
   "r/AN6W": {
-    "string": "select investor/funder type"
+    "string": "select investor/funder type",
+  },
+  "rLzWx9": {
+    "string": "{name} picture"
   },
   "rPwaWt": {
     "string": "A great name is short, crisp, and easily understood."
