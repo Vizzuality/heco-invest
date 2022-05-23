@@ -63,7 +63,8 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "backend_production"
-  config.active_job.queue_adapter = :inline # TMP
+  config.active_job.queue_adapter = :cloudtasker
+  config.active_job.default_queue_name = ENV["CLOUD_TASKS_TEST_QUEUE_NAME"].to_sym
 
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp

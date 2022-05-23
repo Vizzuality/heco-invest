@@ -1,5 +1,5 @@
 class TranslateJob < ApplicationJob
-  queue_as :default
+  queue_as ENV["CLOUD_TASKS_TEST_QUEUE_NAME"].to_sym
 
   rescue_from(ActiveRecord::RecordNotFound) do |exception|
     Rails.logger.error(exception)

@@ -55,6 +55,7 @@ jobs:
           PGHOST: localhost
           PGUSER: ${{ env.POSTGRES_USER }}
           PGPASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          CLOUD_TASKS_TEST_QUEUE_NAME: test
         run: |
           bin/rails db:drop db:create db:schema:load
       - name: Run tests
@@ -63,6 +64,7 @@ jobs:
           PGHOST: localhost
           PGUSER: ${{ env.POSTGRES_USER }}
           PGPASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          CLOUD_TASKS_TEST_QUEUE_NAME: test
           IS_API_INSTANCE: true
           IS_JOBS_INSTANCE: true
         run: bundle exec rspec spec

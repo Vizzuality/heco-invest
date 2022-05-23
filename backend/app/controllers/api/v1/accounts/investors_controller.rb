@@ -43,9 +43,8 @@ module API
         end
 
         def investor_params
-          params.permit :language, :investor_type, :how_do_you_work, :what_makes_the_difference, :other_information,
-            :previously_invested, :previously_invested_description, categories: [], ticket_sizes: [], instrument_types: [],
-            impacts: [], sdgs: []
+          params.permit :language, :investor_type, :mission, :prioritized_projects_description, :other_information,
+            :previously_invested, categories: [], ticket_sizes: [], instrument_types: [], impacts: [], sdgs: []
         end
       end
     end
