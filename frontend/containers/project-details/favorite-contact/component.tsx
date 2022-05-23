@@ -1,14 +1,19 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 
 import { Heart as HeartIcon } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
+
+import cx from 'classnames';
 
 import Link from 'next/link';
 
 import ContactInformationModal from 'containers/social-contact/contact-information-modal';
 
 import Button from 'components/button';
+import Icon from 'components/icon';
 import { Paths } from 'enums';
+
+import { useFavoriteProjectDeveloper } from 'services/project-developers/projectDevelopersService';
 
 import { FavoriteContactProps } from './types';
 
@@ -18,7 +23,22 @@ export const FavoriteContact: FC<FavoriteContactProps> = ({
 }: FavoriteContactProps) => {
   const [contactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
 
-  const handleFavoriteClick = () => {};
+  const favoriteProjectDeveloper = useFavoriteProjectDeveloper();
+
+  const handleFavoriteClick = () => {
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    favoriteProjectDeveloper.mutate(
+      {
+        id: project.project_developer.id,
+        isFavourite: project.project_developer.favourite,
+      },
+      {
+        onSuccess: (data) => {
+          project.project_developer = data;
+        },
+      }
+    );
+  };
 
   const contacts = [project?.project_developer, ...project?.involved_project_developers]
     .map((developer) => {
@@ -46,10 +66,14 @@ export const FavoriteContact: FC<FavoriteContactProps> = ({
         </Button>
         <Button
           className="justify-start"
+          disabled={favoriteProjectDeveloper.isLoading}
           theme="secondary-green"
-          icon={HeartIcon}
           onClick={handleFavoriteClick}
         >
+          <Icon
+            icon={HeartIcon}
+            className={cx('w-4 mr-3', { 'fill-green-dark': project.project_developer.favourite })}
+          />
           <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
         </Button>
         <Link href={`${Paths.Project}/${project.slug}`}>
