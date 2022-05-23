@@ -34,7 +34,7 @@ export function useProjectsList(
   params?: PagedRequest,
   options?: UseQueryOptions<PagedResponse<Project>>
 ): UseQueryResult<PagedResponse<Project>> & { projects: Project[] } {
-  const query = useQuery([Queries.ProjectDeveloperList, params], () => getProjects(params), {
+  const query = useQuery([Queries.ProjectList, params], () => getProjects(params), {
     ...staticDataQueryOptions,
     ...options,
   });

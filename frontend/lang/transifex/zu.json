@@ -218,6 +218,9 @@
   "9VLFbQ": {
     "string": "Landscape photo"
   },
+  "9WcWke": {
+    "string": "{name} investor"
+  },
   "9cE0nR": {
     "string": "How is the impact calculated?"
   },
@@ -531,6 +534,9 @@
   "Q1Q4rT": {
     "string": "Insert your name"
   },
+  "Q8Qw5B": {
+    "string": "Description"
+  },
   "QDj3j7": {
     "string": "Inter-American Development Bank Lab"
   },
@@ -669,6 +675,9 @@
   "XkF/qg": {
     "string": "Profile picture of {name}"
   },
+  "Y2zB+b": {
+    "string": "No project developers"
+  },
   "Y7/cBd": {
     "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and <span>start the conversation</span>. Make sure to update us to help us track your contribution to preserving the Amazon: <span>the future is in your hands too!</span>"
   },
@@ -686,6 +695,9 @@
   },
   "YWQkk+": {
     "string": "Short description of the project"
+  },
+  "YYMUK5": {
+    "string": "Expects to have impact on"
   },
   "Z8971h": {
     "string": "Verified"
@@ -888,6 +900,9 @@
   "jWOeHy": {
     "string": "<a>Call on our community</a> of project developers to identify opportunities in your preferred sectors and geographies."
   },
+  "jXqlWP": {
+    "string": "{name} project developer"
+  },
   "jwimQJ": {
     "string": "Ok"
   },
@@ -1001,6 +1016,9 @@
   },
   "qpDURb": {
     "string": "Something went wrong with the file upload"
+  },
+  "rLzWx9": {
+    "string": "{name} picture"
   },
   "rPwaWt": {
     "string": "A great name is short, crisp, and easily understood."
