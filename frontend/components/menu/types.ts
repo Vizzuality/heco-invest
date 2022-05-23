@@ -22,4 +22,8 @@ export type MenuProps = MenuTriggerProps & {
   header?: PopupProps['header'];
   /** For each section (if any), breakpoint starting from which it is hidden */
   hiddenSections?: PopupProps['hiddenSections'];
+  /** Callback executed when the menu opens */
+  onOpen?: () => void;
+  /** Callback executed when the menu closes */
+  onClose?: () => void;
 };

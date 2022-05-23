@@ -266,6 +266,9 @@
   "C0sD76": {
     "string": "insert number (max 24)"
   },
+  "C23He5": {
+    "string": "Sort in ascending order"
+  },
   "CEQo2w": {
     "string": "My preferences"
   },
@@ -292,6 +295,9 @@
   },
   "DAJK4J": {
     "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure 20 million hectares of sustainable landscape over the next 20 years, through investments in conservation and sustainable development."
+  },
+  "DCAMZh": {
+    "string": "Choose the field to sort by"
   },
   "DQoGRx": {
     "string": "About the impact"
@@ -352,6 +358,9 @@
   },
   "GdS9Mk": {
     "string": "Has this project been funded before?"
+  },
+  "HAlOn1": {
+    "string": "Name"
   },
   "HK3ph8": {
     "string": "How it works"
@@ -521,6 +530,9 @@
   },
   "P4T4Ib": {
     "string": "Discover projects that have impact in the Amazon region and get connected with investors and project developers."
+  },
+  "P7PLVj": {
+    "string": "Date"
   },
   "PIZ1dD": {
     "string": "Search biodiversity"
@@ -837,6 +849,9 @@
   "fnihsY": {
     "string": "Leave"
   },
+  "fwSVTQ": {
+    "string": "Sort in descending order"
+  },
   "g5pX+a": {
     "string": "About"
   },
@@ -845,6 +860,9 @@
   },
   "gpTOIc": {
     "string": "{message} for search term {term}"
+  },
+  "hDI+JM": {
+    "string": "Sort by"
   },
   "hLG9bm": {
     "string": "Project financial instrument"
