@@ -20,6 +20,7 @@ import { useProjectsList } from 'services/projects/projectService';
 import Header from './header';
 import Navigation from './navigation';
 import { DiscoverPageLayoutProps } from './types';
+import FilterTags from 'containers/filter-tags';
 
 export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   screenHeightLg = false,
@@ -47,9 +48,8 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   const [searchInputValue, setSearchInputValue] = useState<string>('');
   const [sorting, setSorting] = useState<{ sortBy: string; sortOrder: string }>(defaultSorting);
 
-  // http://localhost:3000/discover/projects?page=2&search=sar&sorting=name+asc
-
   // Hook to use 'search', 'filter', 'page' and 'sorting' query params
+  // http://localhost:3000/discover/projects?page=2&search=sar&sorting=name+asc
   const queryParams = useQueryParams(sorting);
 
   const queryOptions = { keepPreviousData: false };
@@ -161,6 +161,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
         </div>
         <main className="z-0 flex flex-col flex-grow h-screen overflow-y-scroll">
           <LayoutContainer className="xl:mt-28">
+            <FilterTags />
             <div className="flex flex-col items-center gap-2 mt-4 mb-4 lg:mt-2 lg:gap-6 lg:flex-row space-between">
               <SortingButtons className="flex-1" {...sortingButtonsProps} />
               <div className="flex justify-center w-full">

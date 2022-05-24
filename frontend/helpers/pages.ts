@@ -7,8 +7,6 @@ import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
 
-import { Impacts } from 'enums';
-
 import { ErrorResponse } from 'services/types';
 
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
@@ -63,15 +61,18 @@ export const bytesToMegabytes = (bytes: number): number => {
 /** Constant to define the default max allowed file size to upload */
 export const FILE_UPLOADER_MAX_SIZE = 5 * 1024 * 1024;
 
-// Hook to get the query params of the discover pages
-export const useQueryParams = () => {
+/** Hook to get the query params of the discover pages */
+export const useQueryParams = (sortingState?: { sortBy: string; sortOrder: string }) => {
   const { query } = useRouter();
   return useMemo(() => {
-    const { page, search, ...filters } = query;
+    const { page, search, sorting, ...filters } = query;
     return {
       page: parseInt(query.page as string) || 1,
       search: (query.search as string) || '',
+      sorting:
+        // No need to decode URI component, next/router does it automatically
+        (sorting as string) || `${sortingState?.sortBy} ${sortingState?.sortOrder}`,
       ...filters,
     };
-  }, [query]);
+  }, [query, sortingState]);
 };

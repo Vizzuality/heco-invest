@@ -10,7 +10,7 @@ import { TagProps } from './types';
 
 export const Tag = <FormValues extends FieldValues>({
   className,
-  filterTags,
+  isfilterTag = false,
   type = 'checkbox',
   id,
   name,
@@ -53,8 +53,8 @@ export const Tag = <FormValues extends FieldValues>({
           'ring-2 ring-green-dark ring-offset-2': isFocusVisible,
           'peer-invalid:border-red-700': invalid,
           'flex flex-col items-start': flexLabel,
-          'px-3 py-2 text-gray-600 peer-checked:text-green-dark rounded-full text-sm': filterTags,
-          'rounded-lg': !filterTags,
+          'px-3 py-2 text-gray-600 peer-checked:text-green-dark rounded-full text-sm': isfilterTag,
+          'rounded-lg': !isfilterTag,
         })}
       >
         {children}
