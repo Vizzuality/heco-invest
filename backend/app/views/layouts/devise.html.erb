@@ -1,0 +1,19 @@
+<% content_for :content do %>
+  <main class="flex w.full bg-green-dark">
+    <div class="min-h-screen container mx-auto flex flex-col">
+      <div class="row p-3">
+        <%#= render "flash_messages" %>
+      </div>
+
+      <div class="grow">
+        <div class="col-sm-10 col-md-8 col-lg-6 mx-auto table h-full">
+          <div class="table-cell align-middle">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+<% end %>
+
+<%= render template: "layouts/application" %>
