@@ -1,5 +1,7 @@
 import { FC, useState } from 'react';
 
+import { useIntl } from 'react-intl';
+
 import cx from 'classnames';
 
 import Image from 'next/image';
@@ -11,10 +13,12 @@ import Modal from 'components/modal';
 import { ImageGalleryProps } from '.';
 
 export const ImageGallery: FC<ImageGalleryProps> = ({ images }) => {
+  // Sets the index of the image displayed on carousel. The default is undefined for not displaing any image.
   const [active, setActive] = useState<number>();
+  const { formatMessage } = useIntl();
 
   return (
-    <div aria-hidden>
+    <div>
       <ul className="flex gap-1">
         {images.map(({ file: { small } }, index) => {
           const selected = active === index;
@@ -27,6 +31,7 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ images }) => {
                   'brightness-75': !selected,
                 })}
                 onClick={() => setActive(index)}
+                title={formatMessage({ defaultMessage: 'Open image', id: 'TLn/wq' })}
               >
                 <Image src={small} alt="" width={32} height={32} objectFit="cover" />
               </Button>
@@ -36,7 +41,7 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ images }) => {
       </ul>
       <Modal
         onDismiss={() => setActive(undefined)}
-        title="Open image"
+        title={formatMessage({ defaultMessage: 'Image gallery', id: 'K+Q04b' })}
         open={typeof active === 'number'}
         dismissable={true}
         size="wide"

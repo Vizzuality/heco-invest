@@ -96,8 +96,8 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
         )}
 
         <LayoutContainer className="flex flex-col justify-between lg:min-h-[18rem]">
-          <div className="flex justify-center gap-2 mb-4 lg:justify-between">
-            <div className="flex justify-center gap-2 mb-4 lg:justify-start">
+          <div className="flex flex-col justify-center gap-2 mb-4 sm:flex-row sm:justify-between">
+            <div className="flex justify-center order-last gap-2 mb-4 lg:justify-start sm:order-first">
               {project.trusted && (
                 <Tag className="bg-white text-green-dark">
                   <CheckCircleIcon className="w-4 h-4 mr-3" />
@@ -114,7 +114,7 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
               )}
             </div>
             {!!project.project_images.length && (
-              <div className="">
+              <div className="self-end order-first sm:self-start sm:order-last">
                 <ImageGallery images={project.project_images} />
               </div>
             )}
