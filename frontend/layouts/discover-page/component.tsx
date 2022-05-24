@@ -12,6 +12,7 @@ import LayoutContainer from 'components/layout-container';
 import SortingButtons, { SortingOrderType } from 'components/sorting-buttons';
 import { Paths } from 'enums';
 
+import { useInvestorsList } from 'services/investors/investorsService';
 import { useProjectDevelopersList } from 'services/project-developers/projectDevelopersService';
 import { useProjectsList } from 'services/projects/projectService';
 
@@ -73,10 +74,16 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     isFetching: isFetchingProjectDevelopers,
   } = useProjectDevelopersList({ ...queryParams, perPage: 9 }, queryOptions);
 
+  const {
+    data: investors,
+    isLoading: isLoadingInvestors,
+    isFetching: isFetchingInvestors,
+  } = useInvestorsList({ ...queryParams, perPage: 9 }, queryOptions);
+
   const stats = {
     projects: projects?.meta?.total,
     projectDevelopers: projectDevelopers?.meta?.total,
-    investors: 0,
+    investors: investors?.meta?.total,
     openCalls: 0,
   };
 
@@ -84,17 +91,28 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     // TODO: Find a way to improve this.
     if (router.pathname.startsWith(Paths.Projects))
       return { ...projects, loading: isLoadingProjects || isFetchingProjects };
+
     if (router.pathname.startsWith(Paths.ProjectDevelopers)) {
       return {
         ...projectDevelopers,
         loading: isLoadingProjectDevelopers || isFetchingProjectDevelopers,
       };
     }
-    // if (router.pathname.startsWith(Paths.Investors)) return investors;
+
+    if (router.pathname.startsWith(Paths.Investors)) {
+      return {
+        ...investors,
+        loading: isLoadingInvestors || isFetchingInvestors,
+      };
+    }
+
     // if (router.pathname.startsWith(Paths.OpenCalls)) return openCalls;
   }, [
+    investors,
+    isFetchingInvestors,
     isFetchingProjectDevelopers,
     isFetchingProjects,
+    isLoadingInvestors,
     isLoadingProjectDevelopers,
     isLoadingProjects,
     projectDevelopers,
