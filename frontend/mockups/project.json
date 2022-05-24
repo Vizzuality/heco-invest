@@ -6,6 +6,21 @@
     "description": "Project description",
     "development_stage": "incipient",
     "estimated_duration_in_months": 10,
+    "country": {
+        "id": "c1VNu",
+        "location_type": "country",
+        "name": "Colombia"
+    },
+    "municipality": {
+        "id": "c1GHuX",
+        "location_type": "municipality",
+        "name": "Orito",
+        "parent": {
+            "id": "cONi",
+            "location_type": "department",
+            "name": "Putumayo"
+        }
+    },
     "target_groups": [
         "entrepreneurs-and-innovators-startups",
         "small-and-medium-businesses"
