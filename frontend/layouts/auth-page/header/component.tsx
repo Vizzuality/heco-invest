@@ -19,7 +19,7 @@ export const Header: FC<HeaderProps> = ({
   return (
     <header
       className={cx({
-        'fixed top-0 w-full h-16 lg:h-20 z-10 transition-colors': true,
+        'fixed top-0 w-full h-16 lg:h-20 z-20 transition-colors': true,
         'bg-background-light/90 backdrop-blur-sm': true,
         [className]: !!className,
       })}

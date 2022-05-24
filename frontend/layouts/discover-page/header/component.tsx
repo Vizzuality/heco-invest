@@ -12,7 +12,7 @@ import { HeaderProps } from './types';
 export const Header: FC<HeaderProps> = ({ ...discoverSearchProps }: HeaderProps) => {
   return (
     <>
-      <header className="fixed top-0 z-10 w-full text-white border-b bg-green-dark backdrop-blur-sm">
+      <header className="fixed top-0 z-20 w-full text-white border-b bg-green-dark backdrop-blur-sm">
         <LayoutContainer>
           <div className="flex items-center justify-between h-18">
             <span className="justify-start flex-1">
