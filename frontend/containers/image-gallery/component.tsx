@@ -18,7 +18,7 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ images }) => {
   const { formatMessage } = useIntl();
 
   return (
-    <div>
+    <div area-hidden>
       <ul className="flex gap-1">
         {images.map(({ file: { small } }, index) => {
           const selected = active === index;
@@ -33,7 +33,7 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ images }) => {
                 onClick={() => setActive(index)}
                 title={formatMessage({ defaultMessage: 'Open image', id: 'TLn/wq' })}
               >
-                <Image src={small} alt="" width={32} height={32} objectFit="cover" />
+                <Image src={small} alt="project image" width={32} height={32} objectFit="cover" />
               </Button>
             </li>
           );
