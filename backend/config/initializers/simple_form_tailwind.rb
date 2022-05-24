@@ -30,9 +30,9 @@ SimpleForm.setup do |config|
   config.error_method = :to_sentence
 
   # add validation classes to `input_field`
-  config.input_field_error_class = "border-red-500"
+  config.input_field_error_class = "border-red-700"
   config.input_field_valid_class = "border-green-400"
-  config.label_class = "text-sm font-medium text-gray-800"
+  config.label_class = "font-sans text-gray-800 font-semibold text-sm"
 
   # vertical forms
   #
@@ -46,7 +46,7 @@ SimpleForm.setup do |config|
     b.optional :min_max
     b.optional :readonly
     b.use :label, class: "block", error_class: "text-red-500"
-    b.use :input, class: "border border-solid -beige rounded-lg w-full py-2 px-4 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out", error_class: "border-red-500", valid_class: "border-green-400"
+    b.use :input, class: "border border-solid -beige rounded-lg w-full py-2 px-4 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out", error_class: "invalid:border-red-700", valid_class: "border-green-400"
     b.use :full_error, wrap_with: {tag: "p", class: "mt-2 text-red-500 text-xs italic"}
     b.use :hint, wrap_with: {tag: "p", class: "mt-2 text-grey-700 text-xs italic"}
   end
