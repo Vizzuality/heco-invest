@@ -1,3 +1,5 @@
+import { FormattedMessage } from 'react-intl';
+
 import { decycle } from 'cycle';
 import { groupBy } from 'lodash-es';
 
@@ -7,9 +9,10 @@ import Breadcrumbs from 'containers/breadcrumbs';
 import ProjectHeader from 'containers/project-header';
 
 import Head from 'components/head';
-import ImpactChart from 'components/impact-chart';
 import LayoutContainer from 'components/layout-container';
+import ProjectDevelopers from 'layouts/project-page/developers/component';
 import Funding from 'layouts/project-page/funding/component';
+import Impact from 'layouts/project-page/impact/component';
 import Overview from 'layouts/project-page/overview/component';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
@@ -51,9 +54,6 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
   project,
   enums,
 }) => {
-  // Change for real project attibute
-  const projectImpact = [4, 6, 8, 3];
-
   return (
     <>
       <Head title={project.name} description={project.description} />
@@ -68,27 +68,10 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
         <ProjectHeader className="mt-6" project={project} />
       </LayoutContainer>
 
-      <LayoutContainer className="mb-20 mt-18 ">
-        {project && <Overview project={project} />}
-        <section>
-          Impact
-          <div className="px-2 py-16 lg:justify-between sm:px-12 sm:py-20 lg:flex bg-background-greenLight rounded-2xl">
-            <div>
-              <h2>Estimated Impact</h2>
-            </div>
-            <div className="py-10 pr-24 pl-28">
-              <ImpactChart category={project.category} impact={projectImpact} />
-            </div>
-          </div>
-        </section>
-        {project && <Funding project={project} />}
-      </LayoutContainer>
-
-      <div className="bg-background-middle">
-        <LayoutContainer className="py-18">
-          <section>Project developers</section>
-        </LayoutContainer>
-      </div>
+      <Overview project={project} />
+      <Impact project={project} />
+      <Funding project={project} />
+      <ProjectDevelopers project={project} />
     </>
   );
 };
