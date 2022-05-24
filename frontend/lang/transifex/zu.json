@@ -131,6 +131,9 @@
   "5hbC/K": {
     "string": "Start making an impact now!"
   },
+  "5kZ+j+": {
+    "string": "Duration of the project"
+  },
   "5l/FHl": {
     "string": "You can choose from a variety of opportunities that range from sustainable landscape management tools and solutions, to forest-friendly products and business models. From social welfare solutions, to climate solutions and sustainable businesses."
   },
@@ -359,6 +362,9 @@
   "GdS9Mk": {
     "string": "Has this project been funded before?"
   },
+  "GufXy5": {
+    "string": "Value"
+  },
   "HAlOn1": {
     "string": "Name"
   },
@@ -404,6 +410,9 @@
   },
   "IbrSk1": {
     "string": "Learn"
+  },
+  "IkUX0b": {
+    "string": "How the money will be used"
   },
   "J4SQjQ": {
     "string": "select"
@@ -578,6 +587,9 @@
   },
   "SYPx2d": {
     "string": "Project developers involved in the project"
+  },
+  "Scnx6A": {
+    "string": "Maturity / stage of development"
   },
   "Sv/Mtz": {
     "string": "Project developer name"
@@ -1023,6 +1035,9 @@
   "piBsTx": {
     "string": "Select HeCo priority landscapes on which you will have impact (optional)"
   },
+  "psXhQO": {
+    "string": "Funding & development"
+  },
   "qIvPIE": {
     "string": "FAQ’s"
   },
@@ -1058,6 +1073,9 @@
   },
   "sMWFoV": {
     "string": "As an Investor / Funder"
+  },
+  "sV+3z0": {
+    "string": "Currently looking for"
   },
   "sZIoMy": {
     "string": "Send email"
