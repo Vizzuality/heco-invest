@@ -69,7 +69,10 @@ group :development do
 end
 
 group :test do
+  gem "capybara", ">= 3.26"
+  gem "cuprite"
   gem "rspec-collection_matchers"
+  gem "rspec-retry"
   gem "rspec-request_snapshot"
   gem "rswag-specs"
   gem "simplecov", require: false

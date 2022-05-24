@@ -1,7 +1,6 @@
 devise_for :admins, path: "backoffice"
 
-namespace :backoffice do
-  resource :dashboard, only: [:show]
+get "/backoffice", to: "backoffice/dashboards#show", as: :admin_root
 
-  root "dashboards#show"
+namespace :backoffice do
 end
