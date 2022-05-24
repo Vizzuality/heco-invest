@@ -38,7 +38,7 @@ module API
       end
 
       def filter_params
-        params.fetch(:filter, {}).permit :category, :impact, :sdg, :instrument_type, :ticket_size
+        params.fetch(:filter, {}).permit :category, :impact, :sdg, :instrument_type, :ticket_size, :full_text
       end
     end
   end
