@@ -15,6 +15,7 @@ RUN apk update && \
       postgresql-dev \
       imagemagick \
       geos-dev \
+      yarn \
     && rm -rf /var/cache/apk/*
 
 RUN echo 'gem: -N' >> ~/.gemrc
@@ -29,6 +30,9 @@ COPY Gemfile.lock Gemfile /usr/src/app/
 
 RUN bundle config set --local --without development test
 RUN bundle install --jobs 20 --retry 5
+
+COPY package.json yarn.lock /usr/src/app/
+RUN yarn install
 
 COPY . /usr/src/app
 
