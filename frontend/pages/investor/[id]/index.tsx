@@ -75,7 +75,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     language,
     prioritized_projects_description,
   } = investor;
-  const { category, ticket_size, instrument_type, impact } = enums;
+  const { category, ticket_size, instrument_type, impact, investor_type: investor_types } = enums;
 
   const getSocialInfo = () => {
     const social: SocialType[] = [
@@ -114,6 +114,8 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     },
   ];
 
+  const investorTypeName = investor_types?.find(({ id }) => id === investor_type)?.name;
+
   return (
     <>
       <Head title={name} description={about} />
@@ -130,7 +132,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
           className="mt-6"
           logo={logo}
           title={name}
-          subtitle={investor_type}
+          subtitle={investorTypeName}
           text={about}
           website={website}
           social={getSocialInfo()}
