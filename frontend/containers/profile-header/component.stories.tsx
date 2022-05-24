@@ -26,6 +26,7 @@ Default.args = {
     { id: 'instagram', url: 'https://www.instagram.com' },
   ],
   contact: {
+    name: 'User name',
     email: 'user@example.com',
     phone: '3519233424234',
   },
