@@ -498,6 +498,9 @@
   "Jwjqn/": {
     "string": "focused"
   },
+  "K+Q04b": {
+    "string": "Image gallery"
+  },
   "KGREXT": {
     "string": "Total of projects"
   },
@@ -659,6 +662,9 @@
   },
   "TJo5E6": {
     "string": "Preview"
+  },
+  "TLn/wq": {
+    "string": "Open image"
   },
   "TUFmRM": {
     "string": "Climate impact"
@@ -1163,6 +1169,9 @@
   },
   "rvirM2": {
     "string": "Location"
+  },
+  "s07dAT": {
+    "string": "Project image"
   },
   "sFn7MX": {
     "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
