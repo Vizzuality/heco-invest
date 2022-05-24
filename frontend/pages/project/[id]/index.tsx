@@ -9,6 +9,7 @@ import ProjectHeader from 'containers/project-header';
 import Head from 'components/head';
 import ImpactChart from 'components/impact-chart';
 import LayoutContainer from 'components/layout-container';
+import Funding from 'layouts/project-page/funding/component';
 import Overview from 'layouts/project-page/overview/component';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
@@ -68,7 +69,7 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
       </LayoutContainer>
 
       <LayoutContainer className="mb-20 mt-18 ">
-        <Overview project={project} />
+        {project && <Overview project={project} />}
         <section>
           Impact
           <div className="px-2 py-16 lg:justify-between sm:px-12 sm:py-20 lg:flex bg-background-greenLight rounded-2xl">
@@ -80,7 +81,7 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
             </div>
           </div>
         </section>
-        <section>Funding &amp; Development</section>
+        {project && <Funding project={project} />}
       </LayoutContainer>
 
       <div className="bg-background-middle">
