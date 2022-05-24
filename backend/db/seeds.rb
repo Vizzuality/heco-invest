@@ -1,13 +1,14 @@
 require "factory_bot_rails"
 
 if Rails.env.development?
-  Admin.create!(first_name: "Admin", last_name: "Example", password: "SuperSecret1234", email: "admin@example.com")
-
   Account.delete_all
   Investor.delete_all
   ProjectDeveloper.delete_all
   User.delete_all
   Location.delete_all
+  Admin.delete_all
+
+  Admin.create!(first_name: "Admin", last_name: "Example", password: "SuperSecret1234", email: "admin@example.com", ui_language: "en")
 
   Rake::Task["import_geojsons:colombia"].invoke
 

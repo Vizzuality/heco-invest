@@ -10,5 +10,6 @@ FactoryBot.define do
     end
     sequence(:email) { |n| "admin#{n}@example.com" }
     password { "SuperSecret1234" }
+    ui_language { "en" }
   end
 end
