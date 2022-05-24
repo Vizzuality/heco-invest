@@ -1,12 +1,13 @@
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 
-import { Search as SearchIcon } from 'react-feather';
+import { Crosshair, Search as SearchIcon } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
 import { noop } from 'lodash-es';
 
+import FilterTags from 'containers/filter-tags';
 import Filters from 'containers/forms/filters';
 
 import Button from 'components/button';
@@ -52,7 +53,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
             className="items-center justify-between w-full h-full gap-3 sm:flex"
             onSubmit={handleSubmit}
           >
-            <div className="w-full">
+            <div className="">
               <label htmlFor="header-search" className="sr-only">
                 <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
               </label>
@@ -64,23 +65,33 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
                 onChange={handleChange}
               />
             </div>
-            <div className="flex">
-              <Button
-                theme="primary-green"
-                className="font-normal bg-white text-green-dark"
-                onClick={() => setOpenFilters(!openFilters)}
-              >
-                <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
-              </Button>
+            <div className="flex gap-2 justify-self-end">
+              {/* Filters accordion header https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html */}
+              <h3>
+                <Button
+                  className="font-normal bg-white text-green-dark "
+                  id="filters-button"
+                  theme="primary-green"
+                  onClick={() => setOpenFilters(!openFilters)}
+                  aria-expanded={openFilters}
+                  aria-controls="filters"
+                >
+                  <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
+                </Button>
+              </h3>
               <Button type="submit" className="h-full font-normal" theme="primary-orange">
                 <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
               </Button>
             </div>
           </form>
         </div>
+        {/* Filters accordion pannel */}
         <div
+          id="filters"
+          role="region"
+          aria-labelledby="filters-button"
           className={cx('h-0 w-full bg-white rounded-b-4xl drop-shadow-xl transition-all ease-in', {
-            'h-fit border-t-gray-200 border-t-2': openFilters,
+            'h-fit border-t-gray-200 border-t-2 overflow-hidden': openFilters,
           })}
         >
           {openFilters && <Filters closeFilters={() => setOpenFilters(false)} />}
