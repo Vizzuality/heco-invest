@@ -40,6 +40,6 @@ RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh |
 
 EXPOSE 3000
 
-RUN bundle exec rake assets:precompile
+RUN bundle exec rake assets:precompile SECRET_KEY_BASE=secret-key-base
 
 ENTRYPOINT ["./entrypoint.sh"]
