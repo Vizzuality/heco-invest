@@ -9,6 +9,7 @@ import ProjectHeader from 'containers/project-header';
 import Head from 'components/head';
 import ImpactChart from 'components/impact-chart';
 import LayoutContainer from 'components/layout-container';
+import Overview from 'layouts/project-page/overview/component';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
@@ -22,7 +23,9 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
 
   // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    ({ data: project } = await getProject(id, { includes: 'project_images,project_developer' }));
+    ({ data: project } = await getProject(id, {
+      includes: 'project_images,project_developer,country,municipality,department',
+    }));
   } catch (e) {
     return { notFound: true };
   }
@@ -65,7 +68,7 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
       </LayoutContainer>
 
       <LayoutContainer className="mb-20 mt-18 ">
-        <section>Overview</section>
+        <Overview project={project} />
         <section>
           Impact
           <div className="px-2 py-16 lg:justify-between sm:px-12 sm:py-20 lg:flex bg-background-greenLight rounded-2xl">

@@ -20,6 +20,11 @@ export type ProjectBase = {
   type: 'project';
   slug: string;
   category: string;
+  country: {
+    id: string;
+    location_type: 'country';
+    name: string;
+  };
   description: string;
   development_stage: DevelopmentStages;
   estimated_duration_in_months: number;
@@ -42,6 +47,16 @@ export type ProjectBase = {
   target_groups: string[];
   ticket_size?: TicketSizes;
   language: Languages;
+  municipality: {
+    id: string;
+    location_type: 'municipality';
+    name: string;
+    parent: {
+      id: string;
+      location_type: 'depatment';
+      name: string;
+    };
+  };
   project_images: ProjectImageType[];
   trusted?: boolean;
   project_developer?: any; // Cannot use ProjectDeveloperType because linting will complain about circular references
