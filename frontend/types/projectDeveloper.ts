@@ -1,4 +1,5 @@
 import { Languages } from 'enums';
+import { Picture } from 'types';
 
 import { CategoryType } from './category';
 import { Enum } from './enums';
@@ -28,7 +29,7 @@ export type ProjectDeveloper = {
   impacts: string[];
   mosaics: string[];
   language: Languages;
-  picture: ProjectDeveloperPicture;
+  picture: Picture;
   entity_legal_registration_number: string;
   favourite: boolean;
   projects?: any[]; // Cannot use ProjectType because linting will complain about circular references

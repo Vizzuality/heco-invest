@@ -14,7 +14,7 @@ services:
     depends_on:
       - db
   db:
-    image: postgres:14.2
+    image: postgis/postgis:14-3.2-alpine
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
       - POSTGRES_DB=heco-test

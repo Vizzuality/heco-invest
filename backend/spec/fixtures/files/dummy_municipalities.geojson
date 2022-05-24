@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "nombre_ent": "MEDELLÍN", "categoria": "M", "departamen": "ANTIOQUIA", "cod_depart": "05", "cod_munici": "001", "area_km": 372.89793369, "biodiversity": 0.52142041921615601, "biodiversity_demand": 0.47857958078384399, "climate": 0.72569787502288818, "climate_demand": 0.27430212497711182, "community": 0.69176644086837769, "community_demand": 0.30823355913162231, "water": 0.67204642295837402, "water_demand": 0.32795357704162598 },
+    "geometry": { "type": "Polygon", "coordinates": [ [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ] ] } },
+{ "type": "Feature", "properties": { "nombre_ent": "ABEJORRAL", "categoria": "M", "departamen": "ANTIOQUIA", "cod_depart": "05", "cod_munici": "002", "area_km": 510.59394924999998, "biodiversity": 0.51438617706298828, "biodiversity_demand": 0.48561382293701172, "climate": 0.69457918405532837, "climate_demand": 0.30542081594467163, "community": 0.66631168127059937, "community_demand": 0.33368831872940063, "water": 0.74877804517745972, "water_demand": 0.25122195482254028 },
+    "geometry": { "type": "Polygon", "coordinates": [ [ [105.0, 0.0], [106.0, 0.0], [106.0, 1.0], [105.0, 1.0], [105.0, 0.0] ] ] } }
+]
+}

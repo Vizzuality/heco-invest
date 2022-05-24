@@ -35,6 +35,9 @@
   "0CAqpl": {
     "string": "About the partners"
   },
+  "0DNR+D": {
+    "string": "Tell us what you value in the projects you invest in / what will make you invest in projects"
+  },
   "0L/mZC": {
     "string": "Target group"
   },
@@ -67,6 +70,9 @@
   },
   "25WwxF": {
     "string": "Don't have an account?"
+  },
+  "2Cbk6h": {
+    "string": "Add your logo or a picture that identifies the account."
   },
   "2CtPQ/": {
     "string": "Contact phone"
@@ -146,6 +152,9 @@
   "60xeYL": {
     "string": "Contribute to improving the production systems and livelihoods of local communities and indigenous people, to ensure their basic needs are met, while enhancing their adaptation to climate change."
   },
+  "6MEtAZ": {
+    "string": "Investor/Funder name"
+  },
   "6MoU6D": {
     "string": "Explain how the solution or project can be replicated in other contexts and geographies. Think practically about the existing opportunities, the partners and allies needed as well as the barriers that this replication effort may face such as climate issues, regulations and legal frameworks, land tenure, institutional capacity, etc."
   },
@@ -157,6 +166,9 @@
   },
   "6xBvFx": {
     "string": "Describe the problem or market need that your project or solution seeks to address. It should be a very specific problem, not a macro global issue like \"climate change\" or \"poverty\". Make sure that your showing that the problem is addressing a specific demand (is real) and it affects the poor and vulnerable population and/or the environment. We recommend using numbers to give a dimension of the problem."
+  },
+  "770IIS": {
+    "string": "Investment information"
   },
   "7JlauX": {
     "string": "Explore"
@@ -196,6 +208,9 @@
   },
   "8WtyrD": {
     "string": "Spanish"
+  },
+  "8XJceA": {
+    "string": "Have you previously invested in impact?"
   },
   "8i6S4q": {
     "string": "Connecting investors, donors and philanthropists with carefully identified investment opportunities."
@@ -247,6 +262,9 @@
   },
   "BAC0rl": {
     "string": "<span>Community:</span> income, sustainable projects;"
+  },
+  "BHJZyR": {
+    "string": "Investor/Funder profile"
   },
   "BHrBCl": {
     "string": "PNG, JPG up to 5MB"
@@ -344,6 +362,9 @@
   "Ftj+/t": {
     "string": "Why is my profile pending approval?"
   },
+  "G6tmT0": {
+    "string": "Select the ticket size(s) that you provide"
+  },
   "GKDt/J": {
     "string": "Find projects, start-ups or create an open call to locate opportunities for investment that make an impact."
   },
@@ -386,6 +407,12 @@
   "HzKhBJ": {
     "developer_comment": "Description shown in search engines",
     "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
+  },
+  "I2VJMv": {
+    "string": "Complete your profile with relevant information to make your relationship with project developers as precise as possible. For example the very particular topics you are interested in or the activities and items you definitely do not finance or invest in."
+  },
+  "I2yxwP": {
+    "string": "Why is my account pending approval?"
   },
   "I9iCt5": {
     "string": "From which investor or funder? (optional)"
@@ -464,6 +491,9 @@
   },
   "M1xKEI": {
     "string": "Language: {language}"
+  },
+  "M7261y": {
+    "string": "This information will help us understand what you are interested in invest or funding."
   },
   "MF4b8Z": {
     "string": "Use at least 12 characters, one uppercase letter, one lowercase letter and one number."
@@ -561,8 +591,14 @@
   "QncmS+": {
     "string": "Use up and down to choose options, press Enter to select the currently focused option, press escape to exit the menu, press tab to select the option and exit the menu."
   },
+  "QqpgJo": {
+    "string": "Leave investor creation form"
+  },
   "RDCAd6": {
     "string": "value {optionName} focused, {pagination}."
+  },
+  "RDclSN": {
+    "string": "Investor/Funder type"
   },
   "RXoqkD": {
     "string": "Mission"
@@ -584,9 +620,6 @@
   },
   "Swj4mJ": {
     "string": "Select the {name} account"
-  },
-  "TH786p": {
-    "string": "See my profile"
   },
   "TJo5E6": {
     "string": "Preview"
@@ -666,6 +699,9 @@
   "X0E3iC": {
     "string": "I agree with the Terms and Privacy Policy."
   },
+  "XDC7Vp": {
+    "string": "Select the intrument type(s) you provide"
+  },
   "XJqnLu": {
     "string": "Search water"
   },
@@ -737,6 +773,9 @@
   },
   "ZiErTG": {
     "string": "Be part of the biggest change in the Colombian Amazon"
+  },
+  "ZikI+j": {
+    "string": "Select the topics/sector categories that interests you"
   },
   "ZjA6uH": {
     "string": "Welcome to HeCo Invest. Please enter your details below."
@@ -834,6 +873,9 @@
   "eXDHt0": {
     "string": "Describe the project or solution and describe clearly why you consider it is innovative, different from others and how it can generate an important change and impact towards the target groups. Highlight the characteristics that may attract partners, clients, or investors."
   },
+  "ee3r6Y": {
+    "string": "Other relevant information"
+  },
   "efZTBX": {
     "string": "Use this space to share links to documents, videos and websites that support your pitch."
   },
@@ -857,6 +899,9 @@
   },
   "ghj0+t": {
     "string": "Geographies"
+  },
+  "gjBW8J": {
+    "string": "General information about the investor/funder."
   },
   "gpTOIc": {
     "string": "{message} for search term {term}"
@@ -1020,6 +1065,9 @@
   "piBsTx": {
     "string": "Select HeCo priority landscapes on which you will have impact (optional)"
   },
+  "puek63": {
+    "string": "This information will help us understand what is the impact you want to have."
+  },
   "qIvPIE": {
     "string": "FAQ’s"
   },
@@ -1035,6 +1083,9 @@
   "qpDURb": {
     "string": "Something went wrong with the file upload"
   },
+  "r/AN6W": {
+    "string": "select investor/funder type"
+  },
   "rLzWx9": {
     "string": "{name} picture"
   },
@@ -1046,6 +1097,9 @@
   },
   "rfVDxL": {
     "string": "Please enter your details below."
+  },
+  "rginRA": {
+    "string": "Project categories"
   },
   "rhAEk6": {
     "string": "option {optionName}, deselected."
@@ -1061,6 +1115,9 @@
   },
   "saBdZ2": {
     "string": "select option"
+  },
+  "stKKFV": {
+    "string": "What type of projects are you prioritizing?"
   },
   "sy+pv5": {
     "string": "Email"
@@ -1103,6 +1160,9 @@
   },
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
+  },
+  "uyxTSu": {
+    "string": "Select the impacts that you prioritize"
   },
   "v9GdgG": {
     "string": "File {fileName} is larger than {fileSize}MB"
