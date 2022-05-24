@@ -12,6 +12,7 @@ export type ProjectDeveloperPicture = {
 
 export type ProjectDeveloper = {
   id: string;
+  slug: string;
   type: 'project_developer';
   name: string;
   about: string;

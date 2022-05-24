@@ -68,11 +68,11 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
         <section>Overview</section>
         <section>
           Impact
-          <div className="lg:justify-between px-2 py-16 sm:px-12 sm:py-20 lg:flex bg-background-greenLight rounded-2xl">
+          <div className="px-2 py-16 lg:justify-between sm:px-12 sm:py-20 lg:flex bg-background-greenLight rounded-2xl">
             <div>
               <h2>Estimated Impact</h2>
             </div>
-            <div className="pl-28 pr-24 py-10">
+            <div className="py-10 pr-24 pl-28">
               <ImpactChart category={project.category} impact={projectImpact} />
             </div>
           </div>

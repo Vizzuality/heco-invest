@@ -60,8 +60,7 @@ export function useCreateInvestor(): UseMutationResult<
 > {
   const createInvestor = async (
     data: InvestorForm
-  ): Promise<AxiosResponse<ResponseData<Investor>>> =>
-    API.post('/api/v1/account/investor', { ...data, how_do_you_work: 'test' });
+  ): Promise<AxiosResponse<ResponseData<Investor>>> => API.post('/api/v1/account/investor', data);
 
   const queryClient = useQueryClient();
 

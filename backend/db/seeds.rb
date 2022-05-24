@@ -5,6 +5,12 @@ if Rails.env.development?
   Investor.delete_all
   ProjectDeveloper.delete_all
   User.delete_all
+  Location.delete_all
+  Admin.delete_all
+
+  Admin.create!(first_name: "Admin", last_name: "Example", password: "SuperSecret1234", email: "admin@example.com", ui_language: "en")
+
+  Rake::Task["import_geojsons:colombia"].invoke
 
   5.times do
     investor_account = FactoryBot.create(:account)
@@ -40,12 +46,15 @@ if Rails.env.development?
     )
 
     (0..3).to_a.sample.times do
-      FactoryBot.create(:project, project_developer: project_developer)
+      municipality = Location.where(location_type: :municipality).order("RANDOM()").first ||
+        FactoryBot.create(:municipality, parent: FactoryBot.create(:department, parent: FactoryBot.create(:location)))
+      FactoryBot.create(
+        :project,
+        project_developer: project_developer,
+        municipality: municipality,
+        department: municipality.parent,
+        country: municipality.parent.parent
+      )
     end
   end
-
-  Importers::Locations.new("Colombia",
-    departments_file_path: Rails.root.join("db/seeds/files/colombia_departments.csv"),
-    municipalities_file_path: Rails.root.join("db/seeds/files/colombia_municipalities.csv"),
-    regions_file_path: Rails.root.join("db/seeds/files/colombia_regions.csv")).call
 end

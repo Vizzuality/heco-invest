@@ -113,8 +113,7 @@ RSpec.configure do |config|
                       },
                       required: %w[data]
                     }
-                  },
-                  regions: {"$ref" => "#/components/schemas/response_relations"}
+                  }
                 }
               }
             },

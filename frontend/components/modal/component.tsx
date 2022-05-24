@@ -15,7 +15,7 @@ import Icon from 'components/icon';
 
 import XIcon from 'svgs/x.svg';
 
-import { CONTENT_CLASSES, OVERLAY_CLASSES } from './constants';
+import { CONTENT_CLASSES, OVERLAY_CLASSES, THEME_CLASSES } from './constants';
 import type { ModalProps } from './types';
 
 export const Modal: FC<ModalProps> = ({
@@ -23,6 +23,7 @@ export const Modal: FC<ModalProps> = ({
   open,
   dismissable = true,
   size = 'default',
+  theme = 'default',
   children,
   className,
   scrollable = true,
@@ -132,12 +133,16 @@ export const Modal: FC<ModalProps> = ({
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className={cx({ [CONTENT_CLASSES[size]]: true, [className]: !!className })}
+                  className={cx({
+                    [CONTENT_CLASSES[size]]: true,
+                    [THEME_CLASSES[theme]]: true,
+                    [className]: !!className,
+                  })}
                   style={{
                     maxHeight: '90%',
                   }}
                 >
-                  {dismissable && (
+                  {dismissable && theme !== 'naked' && (
                     <div className="relative">
                       <Button
                         theme="naked"

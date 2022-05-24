@@ -27,7 +27,7 @@ export const Impact: FC<ImpactProps> = ({ register, errors, impacts, setValue, c
       </p>
       <form noValidate>
         <div className="mb-6.5">
-          <fieldset className="flex" aria-describedby="previously-invested-error">
+          <fieldset className="flex">
             <div className="flex items-center">
               <legend className="font-sans text-sm font-semibold text-gray-800">
                 <FormattedMessage

@@ -4,7 +4,7 @@ module API
       attributes :name, :slug, :description,
         :ticket_size, :instrument_type, :sdgs,
         :money_distribution, :impact_description,
-        :closing_at, :language
+        :closing_at, :language, :trusted
 
       belongs_to :investor
     end

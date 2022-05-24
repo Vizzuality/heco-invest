@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "id": "e0688667-b935-43ed-80f1-226d66a03902",
+      "id": "341c5a47-56e5-465b-84a7-6f5ecbbc6e69",
       "type": "location",
       "attributes": {
         "name": "Canada",
@@ -10,11 +10,6 @@
       "relationships": {
         "parent": {
           "data": null
-        },
-        "regions": {
-          "data": [
-
-          ]
         }
       }
     }

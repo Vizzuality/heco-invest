@@ -31,6 +31,7 @@ module.exports = {
         200: '#E5E7EB',
         400: '#B5B5B5',
         600: '#999999',
+        700: '#757575',
         800: '#585858',
         900: '#1D1D1B',
       },
@@ -80,6 +81,9 @@ module.exports = {
       gridTemplateColumns: {
         'auto-1fr': 'auto 1fr',
         '1fr-auto': '1fr auto',
+      },
+      inset: {
+        '5/12': '41.666667%',
       },
       backgroundImage: {
         'radial-green-dark':

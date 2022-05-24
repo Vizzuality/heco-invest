@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_24_115625) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.text "name", null: false
@@ -65,6 +66,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.uuid "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "admins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "ui_language", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
   create_table "background_job_events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -133,14 +149,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.index ["account_id"], name: "index_investors_on_account_id"
   end
 
-  create_table "location_members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "location_geometries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "location_id", null: false
-    t.uuid "member_id", null: false
+    t.geometry "geometry", limit: {:srid=>0, :type=>"geometry"}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["location_id", "member_id"], name: "index_location_members_on_location_id_and_member_id", unique: true
-    t.index ["location_id"], name: "index_location_members_on_location_id"
-    t.index ["member_id"], name: "index_location_members_on_member_id"
+    t.index ["location_id"], name: "index_location_geometries_on_location_id", unique: true
   end
 
   create_table "locations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -152,6 +166,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "code"
+    t.decimal "biodiversity", precision: 25, scale: 20
+    t.decimal "biodiversity_demand", precision: 25, scale: 20
+    t.decimal "climate", precision: 25, scale: 20
+    t.decimal "climate_demand", precision: 25, scale: 20
+    t.decimal "community", precision: 25, scale: 20
+    t.decimal "community_demand", precision: 25, scale: 20
+    t.decimal "water", precision: 25, scale: 20
+    t.decimal "water_demand", precision: 25, scale: 20
     t.index ["location_type", "name_en"], name: "uniq_name_en_without_parent_id", unique: true, where: "(parent_id IS NULL)"
     t.index ["location_type", "name_es"], name: "uniq_name_es_without_parent_id", unique: true, where: "(parent_id IS NULL)"
     t.index ["location_type", "name_pt"], name: "uniq_name_pt_without_parent_id", unique: true, where: "(parent_id IS NULL)"
@@ -330,8 +352,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
   add_foreign_key "favourite_projects", "projects", on_delete: :cascade
   add_foreign_key "favourite_projects", "users", on_delete: :cascade
   add_foreign_key "investors", "accounts", on_delete: :cascade
-  add_foreign_key "location_members", "locations", column: "member_id", on_delete: :cascade
-  add_foreign_key "location_members", "locations", on_delete: :cascade
+  add_foreign_key "location_geometries", "locations", on_delete: :cascade
   add_foreign_key "locations", "locations", column: "parent_id", on_delete: :cascade
   add_foreign_key "open_calls", "investors", on_delete: :cascade
   add_foreign_key "project_developers", "accounts", on_delete: :cascade

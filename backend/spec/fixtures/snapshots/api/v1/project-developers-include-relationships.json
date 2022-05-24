@@ -199,7 +199,9 @@
         },
         "favourite": null,
         "latitude": "2.0",
-        "longitude": "1.0"
+        "longitude": "1.0",
+        "funding_plan": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "trusted": false
       },
       "relationships": {
         "project_developer": {
@@ -220,6 +222,24 @@
           "data": [
 
           ]
+        },
+        "country": {
+          "data": {
+            "id": "bd3fc33b-28e0-44ca-90c7-501b06796251",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "7312e65c-de64-41b1-ac1d-a59ade3f9bff",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "9bb163fb-33cf-466e-bd05-8eb70c775055",
+            "type": "location"
+          }
         }
       }
     },
@@ -273,7 +293,9 @@
         },
         "favourite": null,
         "latitude": "2.0",
-        "longitude": "1.0"
+        "longitude": "1.0",
+        "funding_plan": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "trusted": false
       },
       "relationships": {
         "project_developer": {
@@ -294,6 +316,24 @@
           "data": [
 
           ]
+        },
+        "country": {
+          "data": {
+            "id": "e20b6b1c-99d5-42d7-a024-15bff2c0c6f9",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "42b10237-ddc0-4c95-9ad8-0d42a8fe2484",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "5d9e5da2-16a5-4365-944a-1b69b61c726e",
+            "type": "location"
+          }
         }
       }
     }
