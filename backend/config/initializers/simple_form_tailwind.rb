@@ -45,8 +45,8 @@ SimpleForm.setup do |config|
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-    b.use :label, class: "block", error_class: "text-red-500"
-    b.use :input, class: "border border-solid -beige rounded-lg w-full py-2 px-4 bg-white focus:outline-none focus:ring-0 focus:border-blue-500 text-gray-400 leading-6 transition-colors duration-200 ease-in-out", error_class: "invalid:border-red-700", valid_class: "border-green-400"
+    b.use :label, class: "block", error_class: "text-red-700"
+    b.use :input, class: "block w-full px-4 py-2 text-base text-gray-900 placeholder-gray-400 placeholder-opacity-100 border border-solid border-beige hover:shadow-sm focus:shadow-sm focus:border-green-dark outline-none bg-white rounded-lg disabled:opacity-60 transition", error_class: "invalid:border-red-700", valid_class: "border-green-400"
     b.use :full_error, wrap_with: {tag: "p", class: "mt-2 text-red-500 text-xs italic"}
     b.use :hint, wrap_with: {tag: "p", class: "mt-2 text-grey-700 text-xs italic"}
   end

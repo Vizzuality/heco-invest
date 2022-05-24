@@ -4,8 +4,14 @@
   <p class="my-6 text-gray-600">Please enter your details below.</p>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= f.input :email %>
-    <%= f.input :password %>
+    <% flash.each do |type, message| %>
+      <div class="mb-4 bg-red-50 text-black text-sm px-4 py-4">
+        <%= message %>
+      </div>
+    <% end %>
+
+    <%= f.input :email, required: true %>
+    <%= f.input :password, required: true %>
 
     <% if devise_mapping.rememberable? %>
       <%= f.input :remember_me, as: :boolean %>
