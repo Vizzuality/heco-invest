@@ -2,16 +2,20 @@ import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
+import Map from 'components/map';
 import { OverviewProps } from 'layouts/project-page/overview/types';
 
 export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) => {
-  console.log({ project });
   const { country, municipality } = project;
 
   return (
-    <section className="p-16 font-serif text-white lg:justify-between lg:flex bg-green-dark rounded-2xl">
-      <div className="grid w-full grid-cols-2 gap-12">
-        <div className="flex flex-col col-start-2 mb-16 space-y-4">
+    <section className="p-16 mt-48 font-serif text-white bg-green-dark rounded-2xl">
+      <div className="relative grid w-full grid-cols-2 gap-12">
+        <Map
+          className="absolute z-10 -mb-32 border-8 border-white h-96 -top-44 lg:overflow-hidden rounded-xl"
+          onMapViewportChange={() => {}}
+        />
+        <div className="flex flex-col col-start-2 space-y-4">
           <h2 className="text-3xl">Location</h2>
           <div className="flex flex-col space-y-1">
             <div className="flex space-x-2 font-sans text-base">
