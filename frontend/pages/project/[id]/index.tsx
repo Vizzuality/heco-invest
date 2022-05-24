@@ -1,3 +1,5 @@
+import { FormattedMessage } from 'react-intl';
+
 import { decycle } from 'cycle';
 import { groupBy } from 'lodash-es';
 
