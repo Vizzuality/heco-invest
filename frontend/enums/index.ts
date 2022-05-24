@@ -20,10 +20,12 @@ export enum Paths {
   Projects = '/discover/projects',
   ProjectCreation = '/projects/new',
   ProjectDeveloper = '/project-developer',
+  NewProjectDeveloper = '/project-developers/new',
   ProjectDevelopers = '/discover/project-developers',
   OpenCall = '/open-call',
   OpenCalls = '/discover/open-calls',
   Investor = '/investor',
+  NewInvestor = '/investors/new',
   Investors = '/discover/investors',
 }
 
@@ -43,6 +45,8 @@ export enum Queries {
   ProjectDeveloper = 'project_developer',
   /** The current user Project Developer */
   CurrentProjectDeveloper = 'current_project_developer',
+  /** List of projects */
+  ProjectList = 'projects',
   /** Single project */
   Project = 'project',
   /** List of investors */

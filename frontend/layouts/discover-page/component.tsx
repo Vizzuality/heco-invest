@@ -1,21 +1,21 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
 
+import { useIntl } from 'react-intl';
+
 import cx from 'classnames';
 
 import { useRouter } from 'next/router';
-
-import { UseQueryOptions } from 'react-query/types/react';
 
 import { useQueryParams } from 'helpers/pages';
 
 import DiscoverSearch from 'containers/layouts/discover-search';
 
 import LayoutContainer from 'components/layout-container';
+import SortingButtons, { SortingOrderType } from 'components/sorting-buttons';
 import { Paths } from 'enums';
-import { Project } from 'types/project';
 
+import { useProjectDevelopersList } from 'services/project-developers/projectDevelopersService';
 import { useProjectsList } from 'services/projects/projectService';
-import { PagedResponse } from 'services/types';
 
 import Header from './header';
 import Navigation from './navigation';
@@ -26,25 +26,49 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   children,
 }: DiscoverPageLayoutProps) => {
   const { push, pathname } = useRouter();
+  const intl = useIntl();
+
+  const sortingOptions = [
+    { key: 'name', label: intl.formatMessage({ defaultMessage: 'Name', id: 'HAlOn1' }) },
+    { key: 'created_at', label: intl.formatMessage({ defaultMessage: 'Date', id: 'P7PLVj' }) },
+  ];
+
+  const defaultSorting = useMemo(
+    () => ({
+      sortBy: 'created_at',
+      sortOrder: 'desc' as SortingOrderType,
+    }),
+    []
+  );
 
   // This shouldn't be needed, but due to CSS positioning / z-index issues we need to have the DiscoverSearch
   // components both in the header and in this layout; which one is visible depends on the screen resolution.
   // These states are here to keep both DiscoverSearch in sync, in case the user resizes their screen.
-  const [searchInputValue, setSearchInputValue] = useState('');
+  const [searchInputValue, setSearchInputValue] = useState<string>('');
+  const [sorting, setSorting] = useState<{ sortBy: string; sortOrder: string }>(defaultSorting);
 
-  const queryParams = useQueryParams();
+  // http://localhost:3000/discover/projects?page=2&search=sar&sorting=name+asc
 
-  const queryOptions: UseQueryOptions<PagedResponse<Project>> = { keepPreviousData: true };
+  // Hook to use 'search', 'filter', 'page' and 'sorting' query params
+  const queryParams = useQueryParams(sorting);
+
+  const queryOptions = { keepPreviousData: false };
 
   const {
     data: projects,
     isLoading: isLoadingProjects,
     isFetching: isFetchingProjects,
-  } = useProjectsList(queryParams, queryOptions);
+  } = useProjectsList({ ...queryParams, includes: ['project_developer'] }, queryOptions);
+
+  const {
+    data: projectDevelopers,
+    isLoading: isLoadingProjectDevelopers,
+    isFetching: isFetchingProjectDevelopers,
+  } = useProjectDevelopersList({ ...queryParams, perPage: 9 }, queryOptions);
 
   const stats = {
     projects: projects?.meta?.total,
-    projectDevelopers: 0,
+    projectDevelopers: projectDevelopers?.meta?.total,
     investors: 0,
     openCalls: 0,
   };
@@ -53,15 +77,33 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     // TODO: Find a way to improve this.
     if (pathname.startsWith(Paths.Projects))
       return { ...projects, loading: isLoadingProjects || isFetchingProjects };
-    // if (router.pathname.startsWith(Paths.ProjectDevelopers)) return projectDevelopers;
-    // if (router.pathname.startsWith(Paths.Investors)) return investors;
-    // if (router.pathname.startsWith(Paths.OpenCalls)) return openCalls;
-  }, [isFetchingProjects, isLoadingProjects, projects, pathname]) || { data: [], meta: [] };
+    if (pathname.startsWith(Paths.ProjectDevelopers)) {
+      return {
+        ...projectDevelopers,
+        loading: isLoadingProjectDevelopers || isFetchingProjectDevelopers,
+      };
+    }
+    // if (pathname.startsWith(Paths.Investors)) return investors;
+    // if (pathname.startsWith(Paths.OpenCalls)) return openCalls;
+  }, [
+    isFetchingProjectDevelopers,
+    isFetchingProjects,
+    isLoadingProjectDevelopers,
+    isLoadingProjects,
+    projectDevelopers,
+    projects,
+    pathname,
+  ]) || { data: [], meta: [] };
 
   useEffect(() => {
     const { search } = queryParams;
     setSearchInputValue(search);
   }, [queryParams]);
+
+  useEffect(() => {
+    const [sortBy, sortOrder] = queryParams.sorting.split(' ');
+    setSorting(sortBy && sortOrder ? { sortBy, sortOrder } : defaultSorting);
+  }, [defaultSorting, queryParams.sorting]);
 
   const handleSearch = (searchText: string) => {
     push({ query: { ...queryParams, page: 1, search: searchText } }, undefined, {
@@ -69,10 +111,32 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     });
   };
 
+  const handleSorting = ({
+    sortBy,
+    sortOrder,
+  }: {
+    sortBy: string;
+    sortOrder: SortingOrderType;
+  }) => {
+    push({
+      query: {
+        ...queryParams,
+        sorting: `${sortBy || sorting.sortBy} ${sortOrder || sorting.sortOrder}`,
+      },
+    });
+  };
+
   const discoverSearchProps = {
     searchText: searchInputValue,
     onSearch: handleSearch,
     onSearchChange: setSearchInputValue,
+  };
+
+  const sortingButtonsProps = {
+    sortBy: sorting.sortBy,
+    sortOrder: sorting.sortOrder as SortingOrderType,
+    options: sortingOptions,
+    onChange: handleSorting,
   };
 
   const childrenWithProps = React.Children.map(children, (child) => {
@@ -97,10 +161,12 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
         </div>
         <main className="z-0 flex flex-col flex-grow h-screen overflow-y-scroll">
           <LayoutContainer className="xl:mt-28">
-            <div className="flex items-center gap-6 mt-2 mb-4 space-between">
-              {/*<div>Sort</div>*/}
-              <Navigation stats={stats} />
-              {/*<div>Share</div>*/}
+            <div className="flex flex-col items-center gap-2 mt-4 mb-4 lg:mt-2 lg:gap-6 lg:flex-row space-between">
+              <SortingButtons className="flex-1" {...sortingButtonsProps} />
+              <div className="flex justify-center w-full">
+                <Navigation stats={stats} />
+              </div>
+              <div className="flex-1">{/*Share*/}</div>
             </div>
           </LayoutContainer>
           <LayoutContainer

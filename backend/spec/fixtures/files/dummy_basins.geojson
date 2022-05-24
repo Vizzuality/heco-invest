@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "maj_name": "Caribbean Coast", "maj_bas": 3001, "sub_name": "Archipielago de San Blas Coast", "sub_bas": 1002, "biodiversity": 0.59762847423553467, "biodiversity_demand": 0.40237152576446533, "climate": 0.74054944515228271, "climate_demand": 0.25945055484771729, "community": 0.63256716728210449, "community_demand": 0.36743283271789551, "water": 0.79727321863174438, "water_demand": 0.20272678136825562 },
+    "geometry": { "type": "MultiPolygon", "coordinates": [ [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ] ] } },
+{ "type": "Feature", "properties": { "maj_name": "Caribbean Coast", "maj_bas": 3001, "sub_name": "Guasare", "sub_bas": 1011, "biodiversity": 0.44183126091957092, "biodiversity_demand": 0.55816873908042908, "climate": 0.46065834164619446, "climate_demand": 0.53934165835380554, "community": 0.71542733907699585, "community_demand": 0.28457266092300415, "water": 0.88979458808898926, "water_demand": 0.11020541191101074 },
+    "geometry": { "type": "MultiPolygon", "coordinates": [ [ [105.0, 0.0], [106.0, 0.0], [106.0, 1.0], [105.0, 1.0], [105.0, 0.0] ] ] } }
+]
+}

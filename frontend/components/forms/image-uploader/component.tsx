@@ -24,7 +24,7 @@ export const ImageUploader = <FormValues extends FieldValues>({
   setError,
   setValue,
   maxSize = FILE_UPLOADER_MAX_SIZE,
-  clearError,
+  clearErrors,
   ...rest
 }: ImageUploaderProps<FormValues>) => {
   const { formatMessage } = useIntl();
@@ -45,7 +45,7 @@ export const ImageUploader = <FormValues extends FieldValues>({
 
   const handleUploadImage = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.currentTarget.files?.length) {
-      clearError(name);
+      clearErrors(name);
       const file = e.currentTarget.files[0];
       if (maxSize && file.size >= maxSize) {
         setInputError(

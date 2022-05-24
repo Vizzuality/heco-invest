@@ -64,6 +64,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "backend_production"
   config.active_job.queue_adapter = :cloudtasker
+  config.active_job.default_queue_name = ENV["CLOUD_TASKS_TEST_QUEUE_NAME"].to_sym
 
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp

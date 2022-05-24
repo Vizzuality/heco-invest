@@ -37,5 +37,8 @@ namespace :api, format: "json" do
       post :test_sync, on: :collection
       post :test_async, on: :collection
     end
+    resource :goes, only: [] do
+      post :boom, on: :collection
+    end
   end
 end

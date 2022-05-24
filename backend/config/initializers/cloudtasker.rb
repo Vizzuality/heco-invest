@@ -53,7 +53,7 @@ Cloudtasker.configure do |config|
   # Defaults to :development unless CLOUDTASKER_ENV or RAILS_ENV or RACK_ENV is set to something else.
   #
   # config.mode = Rails.env.production? || Rails.env.my_other_env? ? :production : :development
-  config.mode = config.mode = Rails.env.production? ? :production : :development
+  config.mode = Rails.env.production? ? :production : :development
 
   #
   # Specify the logger to use

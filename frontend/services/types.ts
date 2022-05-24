@@ -2,9 +2,11 @@
 export type PagedRequest = {
   'page[number]'?: number;
   'page[size]'?: number;
+  includes?: string[];
   fields?: string[];
   search?: string;
   page?: number;
+  perPage?: number;
 };
 
 /** Default API single item response structure */

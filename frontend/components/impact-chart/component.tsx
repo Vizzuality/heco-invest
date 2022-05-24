@@ -21,7 +21,7 @@ import { ImpactChartProps } from './types';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip);
 
-export const ImpactChart: FC<ImpactChartProps> = ({ category, impact = [] }) => {
+export const ImpactChart: FC<ImpactChartProps> = ({ className, category, impact = [] }) => {
   const {
     data: { impact: impacts, category: categories },
   } = useEnums();
@@ -83,38 +83,48 @@ export const ImpactChart: FC<ImpactChartProps> = ({ category, impact = [] }) => 
     },
   };
 
-  // [470px]
-
   return (
-    <div className="flex justify-between w-[250px] h-[250px] sm:w-[470px] sm:h-[470px]">
-      {/* This is a background and labels for the chart. Since the library doen't allow using elements as labels, this is an alternative way to add labels with incons and tooltips */}
-      {impacts?.length && (
-        <div className="z-1 m-2 absolute w-[232px] h-[232px] sm:w-[453px] sm:h-[453px] flex flex-col justify-between items-center  bg-background-middle rounded-full">
-          {!isPlaceholder && (
-            <div className="absolute w-1/2 rounded-full top-[25%] bg-white h-1/2" />
+    <div className={className}>
+      <div className="flex justify-between w-full">
+        <div className="z-0 flex flex-col w-full h-full gap-2">
+          {impacts?.length && (
+            <span className="flex items-center justify-center w-full">
+              <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
+                {impacts[0].name}
+              </span>
+              <FieldInfo infoText={impacts[0].description} />
+            </span>
           )}
-          <div className="translate-y-[-140%]">
-            <span className="mr-2">{impacts[0].name}</span>
-            <FieldInfo infoText={impacts[0].description} />
-          </div>
-          <div className="flex justify-between w-full">
-            <div className="translate-x-[-140%]">
-              <span className="mr-2">{impacts[1].name}</span>
-              <FieldInfo infoText={impacts[1].description} />
-            </div>
-            <div className="translate-x-[140%]">
-              <span className="mr-2">{impacts[2].name}</span>
-              <FieldInfo infoText={impacts[2].description} />
-            </div>
-          </div>
-          <div className="translate-y-[140%]">
-            <span className="mr-2">{impacts[3].name}</span>
-            <FieldInfo infoText={impacts[3].description} />
-          </div>
+          <span className="flex w-full">
+            {impacts?.length && (
+              <span className="flex items-center justify-end mr-2">
+                <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
+                  {impacts[2].name}
+                </span>
+                <FieldInfo infoText={impacts[2].description} />
+              </span>
+            )}
+            <span className="flex items-center w-full overflow-x-scroll aspect-square">
+              <Radar data={data} options={options} />
+            </span>
+            {impacts?.length && (
+              <span className="flex items-center justify-start ml-2">
+                <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
+                  {impacts[1].name}
+                </span>
+                <FieldInfo infoText={impacts[1].description} />
+              </span>
+            )}
+          </span>
+          {impacts?.length && (
+            <span className="flex items-center justify-center w-full">
+              <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
+                {impacts[3].name}
+              </span>
+              <FieldInfo infoText={impacts[3].description} />
+            </span>
+          )}
         </div>
-      )}
-      <div className="z-0 w-full h-full">
-        <Radar width="100%" height="100%" data={data} options={options} />
       </div>
     </div>
   );
