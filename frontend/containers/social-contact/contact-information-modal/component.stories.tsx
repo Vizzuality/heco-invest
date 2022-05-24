@@ -26,7 +26,8 @@ const Template: Story<ContactInformationModalProps> = (args: ContactInformationM
 export const Default: Story<ContactInformationModalProps> = Template.bind({});
 
 Default.args = {
-  contact: {
+  contacts: {
+    name: 'User name',
     email: 'user@example.com',
     phone: '+351919238420',
   },
