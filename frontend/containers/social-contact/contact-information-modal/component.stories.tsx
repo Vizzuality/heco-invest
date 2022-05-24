@@ -23,9 +23,39 @@ const Template: Story<ContactInformationModalProps> = (args: ContactInformationM
   );
 };
 
-export const Default: Story<ContactInformationModalProps> = Template.bind({});
+export const SingleContact: Story<ContactInformationModalProps> = Template.bind({});
 
-Default.args = {
+SingleContact.args = {
+  contacts: {
+    name: 'User name',
+    email: 'user@example.com',
+    phone: '+351919238420',
+    picture: 'https://placekitten.com/408/300',
+  },
+};
+
+export const MultipleContacts: Story<ContactInformationModalProps> = Template.bind({});
+
+MultipleContacts.args = {
+  contacts: [
+    {
+      name: 'First contact name',
+      email: 'first@example.com',
+      phone: '+351919238420',
+      picture: 'https://placekitten.com/408/287',
+    },
+    {
+      name: 'Second contact name',
+      email: 'second@example.com',
+      phone: '+351324234234234',
+      picture: 'https://placekitten.com/408/230',
+    },
+  ],
+};
+
+export const PlaceholderPicture: Story<ContactInformationModalProps> = Template.bind({});
+
+PlaceholderPicture.args = {
   contacts: {
     name: 'User name',
     email: 'user@example.com',
