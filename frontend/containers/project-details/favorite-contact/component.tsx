@@ -42,7 +42,7 @@ export const FavoriteContact: FC<FavoriteContactProps> = ({
         >
           <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
         </Button>
-        <Link href={`${Paths.Project}/${project.id}`}>
+        <Link href={`${Paths.Project}/${project.slug}`}>
           <a className="px-1 text-sm transition-all text-green-dark hover:text-green-light rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark">
             <FormattedMessage defaultMessage="Know more" id="+JVDMC" />
           </a>
