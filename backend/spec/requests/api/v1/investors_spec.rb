@@ -22,6 +22,7 @@ RSpec.describe "API V1 Investors", type: :request do
       parameter name: "filter[sdg]", in: :query, type: :integer, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[instrument_type]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[ticket_size]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
+      parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
       parameter name: :sorting, in: :query, type: :string, enum: ["name asc", "name desc", "created_at asc", "created_at desc"], required: false, description: "Sort records."
 
       let(:sorting) { "name asc" }
@@ -59,6 +60,14 @@ RSpec.describe "API V1 Investors", type: :request do
           it "includes filtered investor" do
             # TODO: fix when approved filter restored
             expect(response_json["data"].pluck("id")).to eq([@investor.id, @unapproved_investor.id])
+          end
+        end
+
+        context "when filtered by searched text" do
+          let("filter[full_text]") { @investor.name }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([@investor.id])
           end
         end
       end
