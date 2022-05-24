@@ -3,6 +3,7 @@ import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 
 import { Queries } from 'enums';
+import { Investor, InvestorForm } from 'types/investor';
 import { Project, ProjectCreationPayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 
@@ -48,6 +49,24 @@ export function useCreateProject(): UseMutationResult<
   return useMutation(createProject, {
     onSuccess: (result) => {
       queryClient.setQueryData(Queries.ProjectQuery, result.data);
+    },
+  });
+}
+
+export function useCreateInvestor(): UseMutationResult<
+  AxiosResponse<ResponseData<Investor>>,
+  AxiosError<ErrorResponse>,
+  InvestorForm
+> {
+  const createInvestor = async (
+    data: InvestorForm
+  ): Promise<AxiosResponse<ResponseData<Investor>>> => API.post('/api/v1/account/investor', data);
+
+  const queryClient = useQueryClient();
+
+  return useMutation(createInvestor, {
+    onSuccess: (result) => {
+      queryClient.setQueryData(Queries.Investor, result.data.data);
     },
   });
 }
