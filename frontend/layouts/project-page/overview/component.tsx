@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { OverviewProps } from 'layouts/project-page/overview/types';
 
 export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) => {
+  console.log({ project });
   const { country, municipality } = project;
 
   return (
