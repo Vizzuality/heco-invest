@@ -11,8 +11,8 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
   const projectImpact = [4, 6, 8, 3];
   return (
     <section>
-      <LayoutContainer className="mb-20 mt-18 space-y-36">
-        <h2 className="pl-16 mb-16 font-serif text-3xl text-black">
+      <LayoutContainer className="mb-20 space-y-6 mt-36">
+        <h2 className="pl-16 font-serif text-3xl text-black">
           <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
         </h2>
         <div className="px-2 py-16 lg:justify-between sm:px-12 sm:py-20 lg:flex bg-background-greenLight rounded-2xl">

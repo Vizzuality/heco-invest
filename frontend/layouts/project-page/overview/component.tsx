@@ -14,7 +14,7 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
       <section className="p-16 mt-48 font-serif text-white bg-green-dark rounded-2xl">
         <div className="relative grid w-full grid-cols-2 gap-12">
           <Map
-            className="absolute z-10 -mb-32 border-8 border-white h-96 -top-44 lg:overflow-hidden rounded-xl"
+            className="absolute z-10 -mb-32 border-8 border-white drop-shadow-xl h-96 -top-44 lg:overflow-hidden rounded-xl"
             onMapViewportChange={() => console.log('onMapViewportChange')}
           />
           <div className="flex flex-col col-start-2 space-y-4">
