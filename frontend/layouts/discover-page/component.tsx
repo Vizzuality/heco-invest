@@ -8,19 +8,20 @@ import { useRouter } from 'next/router';
 
 import { useQueryParams } from 'helpers/pages';
 
+import FilterTags from 'containers/filter-tags';
 import DiscoverSearch from 'containers/layouts/discover-search';
 
 import LayoutContainer from 'components/layout-container';
 import SortingButtons, { SortingOrderType } from 'components/sorting-buttons';
 import { Paths } from 'enums';
 
+import { useInvestorsList } from 'services/investors/investorsService';
 import { useProjectDevelopersList } from 'services/project-developers/projectDevelopersService';
 import { useProjectsList } from 'services/projects/projectService';
 
 import Header from './header';
 import Navigation from './navigation';
 import { DiscoverPageLayoutProps } from './types';
-import FilterTags from 'containers/filter-tags';
 
 export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   screenHeightLg = false,
@@ -66,10 +67,16 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     isFetching: isFetchingProjectDevelopers,
   } = useProjectDevelopersList({ ...queryParams, perPage: 9 }, queryOptions);
 
+  const {
+    data: investors,
+    isLoading: isLoadingInvestors,
+    isFetching: isFetchingInvestors,
+  } = useInvestorsList({ ...queryParams, perPage: 9 }, queryOptions);
+
   const stats = {
     projects: projects?.meta?.total,
     projectDevelopers: projectDevelopers?.meta?.total,
-    investors: 0,
+    investors: investors?.meta?.total,
     openCalls: 0,
   };
 
@@ -83,11 +90,21 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
         loading: isLoadingProjectDevelopers || isFetchingProjectDevelopers,
       };
     }
-    // if (pathname.startsWith(Paths.Investors)) return investors;
-    // if (pathname.startsWith(Paths.OpenCalls)) return openCalls;
+
+    if (pathname.startsWith(Paths.Investors)) {
+      return {
+        ...investors,
+        loading: isLoadingInvestors || isFetchingInvestors,
+      };
+    }
+
+    // if (router.pathname.startsWith(Paths.OpenCalls)) return openCalls;
   }, [
+    investors,
+    isFetchingInvestors,
     isFetchingProjectDevelopers,
     isFetchingProjects,
+    isLoadingInvestors,
     isLoadingProjectDevelopers,
     isLoadingProjects,
     projectDevelopers,

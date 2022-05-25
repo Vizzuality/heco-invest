@@ -16,11 +16,11 @@ import { usePagination } from 'hooks/usePagination';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import DiscoverMap from 'containers/discover-map';
 import ProjectCard from 'containers/project-card';
 import ProjectDetails from 'containers/project-details';
 
 import Loading from 'components/loading';
-import Map from 'components/map';
 import Modal from 'components/modal';
 import Pagination from 'components/pagination';
 import DiscoverPageLayout, { DiscoverPageLayoutProps } from 'layouts/discover-page';
@@ -162,7 +162,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
         )}
       </div>
       <aside className="flex-grow min-h-full p-2 m-1 bg-white rounded-2xl lg:min-h-0 lg:absolute lg:right-0 lg:w-7/12 lg:bottom-1 lg:top-1">
-        <Map className="lg:overflow-hidden rounded-xl" onMapViewportChange={() => {}} />
+        <DiscoverMap />
       </aside>
     </div>
   );

@@ -22,7 +22,10 @@ RSpec.describe "API V1 Projects", type: :request do
       parameter name: "filter[ticket_size]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[only_verified]", in: :query, type: :boolean, required: false, description: "Filter records."
       parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
-      parameter name: :sorting, in: :query, type: :string, enum: ["name asc", "name desc", "created_at asc", "created_at desc"], required: false, description: "Sort records."
+      parameter name: :sorting, in: :query, type: :string, required: false, description: "Sort records.",
+        enum: ["name asc", "name desc", "created_at asc", "created_at desc",
+          "municipality_biodiversity_impact asc", "municipality_climate_impact asc", "municipality_water_impact asc", "municipality_community_impact asc", "municipality_total_impact asc",
+          "municipality_biodiversity_impact desc", "municipality_climate_impact desc", "municipality_water_impact desc", "municipality_community_impact desc", "municipality_total_impact desc"]
 
       let(:sorting) { "name asc" }
 

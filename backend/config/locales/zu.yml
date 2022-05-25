@@ -180,10 +180,10 @@ zu:
         name: Renewable energy
       carbon-storage-or-sequestration:
         name: Carbon storage or sequestration
-      water-capacity:
-        name: Water capacity
-      water-efficiency:
-        name: Water efficiency
+      water-capacity-or-efficiency:
+        name: Water capacity or efficiency
+      hydrometerological-risk-reduction:
+        name: Hydrometerological risk reduction
       sustainable-food:
         name: Sustainable food
       gender-equality-jobs:

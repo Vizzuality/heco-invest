@@ -27,8 +27,6 @@ module API
         :relevant_links,
         :language,
         :geometry,
-        :latitude,
-        :longitude,
         :trusted
 
       belongs_to :project_developer
@@ -37,6 +35,14 @@ module API
       belongs_to :department, serializer: LocationSerializer
       has_many :involved_project_developers, serializer: ProjectDeveloperSerializer
       has_many :project_images
+
+      attribute :latitude do |object, _params|
+        object.centroid&.y
+      end
+
+      attribute :longitude do |object, _params|
+        object.centroid&.x
+      end
 
       attribute :favourite do |object, params|
         next if params[:current_user].blank?
