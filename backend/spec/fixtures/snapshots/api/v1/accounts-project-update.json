@@ -1,0 +1,102 @@
+{
+  "data": {
+    "id": "ad141d8c-bb82-4c05-9aa9-d324b48e2884",
+    "type": "project",
+    "attributes": {
+      "name": "Updated Project Name",
+      "slug": "bartoletti-and-sons-project-2",
+      "description": "Updated Short project description",
+      "development_stage": "consolidaton",
+      "estimated_duration_in_months": 12,
+      "target_groups": [
+        "urban-populations",
+        "indigenous-peoples"
+      ],
+      "impact_areas": [
+        "restoration",
+        "pollutants-reduction"
+      ],
+      "category": "sustainable-agrosystems",
+      "sdgs": [
+        2,
+        4,
+        5
+      ],
+      "involved_project_developer_not_listed": true,
+      "problem": "Updated Problem description",
+      "solution": "Updated Solution description",
+      "expected_impact": "Updated Expected impact description",
+      "looking_for_funding": true,
+      "ticket_size": "prototyping",
+      "instrument_types": [
+        "grant"
+      ],
+      "funding_plan": "Updated Funding plan description",
+      "sustainability": "Updated Sustainability desc",
+      "replicability": "Updated Replicability desc",
+      "progress_impact_tracking": "Updated Progress impact tracking desc",
+      "received_funding": true,
+      "received_funding_amount_usd": "1000000.0",
+      "received_funding_investor": "Updated Some Investor name",
+      "relevant_links": "Updated Here relevant links",
+      "language": "en",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1,
+          2
+        ]
+      },
+      "trusted": false,
+      "latitude": 2.0,
+      "longitude": 1.0,
+      "favourite": false
+    },
+    "relationships": {
+      "project_developer": {
+        "data": {
+          "id": "35e3249e-659d-4f6c-9fb5-956def2f4bc1",
+          "type": "project_developer"
+        }
+      },
+      "country": {
+        "data": {
+          "id": "91824a83-d51d-4b46-ad26-3dadaff3256a",
+          "type": "location"
+        }
+      },
+      "municipality": {
+        "data": {
+          "id": "0c96c62c-f664-4a47-870b-4bc7ce7942e5",
+          "type": "location"
+        }
+      },
+      "department": {
+        "data": {
+          "id": "35b4bd77-579a-4078-b801-61c00dd6e80c",
+          "type": "location"
+        }
+      },
+      "involved_project_developers": {
+        "data": [
+          {
+            "id": "da23e68e-3e60-4b1c-a210-7e2a98d8d747",
+            "type": "project_developer"
+          },
+          {
+            "id": "9346b9a9-aadb-4ad4-a1fa-ac06495f4f4a",
+            "type": "project_developer"
+          }
+        ]
+      },
+      "project_images": {
+        "data": [
+          {
+            "id": "0ced63f3-5a7b-45e9-bac4-e4a4a09e38b0",
+            "type": "project_image"
+          }
+        ]
+      }
+    }
+  }
+}
