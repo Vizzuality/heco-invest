@@ -12,7 +12,9 @@ case "$1" in
     test)
         echo "Running tests"
         RAILS_ENV=test rake db:migrate
-        RAILS_ENV=test bundle exec rspec
+        # exclude system specs until we fix testing with chromium, or try to install chrome on alpine
+        # We still have GH actions to run the whole suite
+        RAILS_ENV=test bundle exec rspec --exclude-pattern "**/system/**/*_spec.rb"
         ;;
     *)
         exec "$@"
