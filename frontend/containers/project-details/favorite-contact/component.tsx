@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState } from 'react';
 
 import { Heart as HeartIcon } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
@@ -6,6 +6,8 @@ import { FormattedMessage } from 'react-intl';
 import cx from 'classnames';
 
 import Link from 'next/link';
+
+import useMe from 'hooks/me';
 
 import ContactInformationModal from 'containers/social-contact/contact-information-modal';
 
@@ -23,6 +25,7 @@ export const FavoriteContact: FC<FavoriteContactProps> = ({
 }: FavoriteContactProps) => {
   const [contactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
 
+  const { user } = useMe();
   const favoriteProjectDeveloper = useFavoriteProjectDeveloper();
 
   const handleFavoriteClick = () => {
@@ -53,29 +56,33 @@ export const FavoriteContact: FC<FavoriteContactProps> = ({
     })
     .filter((developer) => !!developer);
 
+  const hasContacts = !contacts.length;
+
   return (
     <div className={className}>
       <div className="flex flex-col items-start gap-4 mt-5 xl:items-center xl:flex-row">
         <Button
-          disabled={!contacts.length}
+          disabled={!user || hasContacts}
           className="justify-start"
           theme="primary-green"
           onClick={() => setIsContactInfoModalOpen(true)}
         >
           <FormattedMessage defaultMessage="Contact" id="zFegDD" />
         </Button>
-        <Button
-          className="justify-start"
-          disabled={favoriteProjectDeveloper.isLoading}
-          theme="secondary-green"
-          onClick={handleFavoriteClick}
-        >
-          <Icon
-            icon={HeartIcon}
-            className={cx('w-4 mr-3', { 'fill-green-dark': project.project_developer.favourite })}
-          />
-          <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
-        </Button>
+        {!!user && (
+          <Button
+            className="justify-start"
+            disabled={favoriteProjectDeveloper.isLoading}
+            theme="secondary-green"
+            onClick={handleFavoriteClick}
+          >
+            <Icon
+              icon={HeartIcon}
+              className={cx('w-4 mr-3', { 'fill-green-dark': project.project_developer.favourite })}
+            />
+            <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
+          </Button>
+        )}
         <Link href={`${Paths.Project}/${project.slug}`}>
           <a className="px-1 text-sm transition-all text-green-dark hover:text-green-light rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark">
             <FormattedMessage defaultMessage="Know more" id="+JVDMC" />
