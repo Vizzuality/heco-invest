@@ -1,0 +1,43 @@
+<h1 class="h3 mb-3 me-2 d-inline-block">Project Developers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Account owner
+      </th>
+      <th>
+        Account users
+      </th>
+      <th>
+        Projects
+      </th>
+      <th>
+        Language
+      </th>
+      <th>
+        Status
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @project_developers.each do |pd| %>
+      <tr>
+        <td><%= pd.name %></td>
+        <td><%= pd.account.owner.full_name %></td>
+        <td><%= pd.account.users.count + 1 %></td>
+        <td><%= pd.account.users.count + 1 %></td>
+        <td><%= pd.projects.count %></td>
+        <td><%= pd.language %></td>
+        <td><%= pd.account.review_status %></td>
+        <td class="text-end">
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
