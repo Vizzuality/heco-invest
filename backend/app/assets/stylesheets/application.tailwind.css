@@ -20,7 +20,7 @@
   }
 
   .backoffice-table th {
-    @apply text-left p-4
+    @apply text-left text-sm p-4
   }
 
   .backoffice-table td {

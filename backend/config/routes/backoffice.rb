@@ -1,7 +1,7 @@
 devise_for :admins, path: "backoffice"
 
 # admin_root_path is useful for devise
-get "/backoffice", to: "backoffice/project_developers#index", as: :admin_root
+get "/backoffice", to: redirect("backoffice/project_developers"), as: :admin_root
 
 namespace :backoffice do
   resources :accounts, only: [] do
