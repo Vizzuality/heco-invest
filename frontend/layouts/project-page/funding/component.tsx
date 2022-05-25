@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
