@@ -10,8 +10,8 @@ import { ProjectDevelopersProps } from 'layouts/project-page/developers/types';
 export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
   project,
 }: ProjectDevelopersProps) => {
-  console.log({ project: project.project_developer });
-  const numberOfDevelopers = project.project_developer.length || 1;
+  const NUMBER_DEVELOPERS = project.project_developer.length || 1;
+
   const {
     project_developer: { about, name, picture, project_developer_type },
   } = project;
@@ -22,7 +22,13 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
           <h2 className="font-serif text-3xl text-black ">
             <FormattedMessage defaultMessage="Project Developers" id="+K9fF0" />
           </h2>
-          <p className="text-gray-800">{`This project has ${numberOfDevelopers} project developer`}</p>
+          <p className="text-gray-800">
+            <FormattedMessage
+              defaultMessage="This project has {numDevelopers} project developer{noun}"
+              id="CcFPkO"
+              values={{ numDevelopers: NUMBER_DEVELOPERS, noun: NUMBER_DEVELOPERS > 1 ? 's' : '' }}
+            />
+          </p>
         </div>
         <div className="w-2/3 p-6 space-y-8 font-sans bg-white border rounded-2xl border-beige">
           <div className="flex items-center space-x-4">
