@@ -31,11 +31,12 @@
         <td><%= pd.name %></td>
         <td><%= pd.account.owner.full_name %></td>
         <td><%= pd.account.users.count + 1 %></td>
-        <td><%= pd.account.users.count + 1 %></td>
         <td><%= pd.projects.count %></td>
         <td><%= pd.language %></td>
         <td><%= pd.account.review_status %></td>
-        <td class="text-end">
+        <td>
+          <%= button_to "Approve", approve_backoffice_account_path(pd.account.id), method: :post unless pd.account.approved? %>
+          <%= button_to "Reject", reject_backoffice_account_path(pd.account.id), method: :post unless pd.account.rejected? %>
         </td>
       </tr>
     <% end %>
