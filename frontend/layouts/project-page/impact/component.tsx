@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
+import ImpactModal from 'containers/modals/impact';
 import SDGs from 'containers/sdgs/component';
 
 import Combobox, { Option } from 'components/forms/combobox';
@@ -15,20 +16,24 @@ import sdgsMock from 'mockups/sdgs.json';
 import { Enum } from 'types/enums';
 
 export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
-  const [impactLocation, setImpactLocation] = useState('Municipality');
-  console.log(impactLocation);
+  const [impactLocation, setImpactLocation] = useState<string>('Municipality');
+  const [impactModalOpen, setImpactModalOpen] = useState<boolean>(false);
+  const { control } = useForm();
+
   // TODO: Change for real project attibute
   const projectImpact = [4, 6, 8, 3];
-  console.log({ project });
+
   const { target_groups: tags, expected_impact: expected } = project;
+
   const sdgs = sdgsMock.filter(({ id }) => project.sdgs.includes(parseInt(id)));
+
   const formatCapitalizeDashedString = (s) => {
     return s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, ' ');
   };
+
   const formatDashedString = (s) => {
     return s.replace(/-/g, ' ');
   };
-  const { control } = useForm();
 
   const OPTIONS = [
     { key: 'municipality', label: 'Municipality' },
@@ -106,6 +111,7 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
                   />
                 </p>
                 <button
+                  onClick={() => setImpactModalOpen(true)}
                   type="button"
                   className="underline hover:no-underline text-green-dark pointer"
                 >
@@ -151,6 +157,7 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
           </div>
         </div>
       </LayoutContainer>
+      <ImpactModal impactModalOpen={impactModalOpen} setImpactModalOpen={setImpactModalOpen} />
     </section>
   );
 };

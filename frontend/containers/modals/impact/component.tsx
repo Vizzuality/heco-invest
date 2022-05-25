@@ -86,7 +86,7 @@ export const ImpactModal: React.FC<ImpactModalProps> = ({
           />
         </div>
       </div>
-      <div className="flex justify-center mt-5 text-center md:mt-12">
+      <div className="mt-5 text-center md:mt-12">
         <Button theme="primary-green" onClick={() => setImpactModalOpen(false)}>
           <FormattedMessage defaultMessage="Ok" id="jwimQJ" />
         </Button>
