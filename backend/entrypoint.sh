@@ -7,7 +7,7 @@ case "$1" in
         ./tx pull -m onlytranslated
         echo "Running Start"
         RAILS_ENV=production rake db:migrate
-        RAILS_ENV=production bin/dev
+        RAILS_ENV=production bin/prod
         ;;
     test)
         echo "Running tests"
