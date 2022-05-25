@@ -2,6 +2,7 @@ FROM ruby:3.1.0-alpine3.15
 
 ENV BUNDLER_VERSION 2.3.3
 ENV RAILS_ENV production
+ENV RAILS_SERVE_STATIC_FILES true
 
 # Install dependencies
 RUN apk update && \
