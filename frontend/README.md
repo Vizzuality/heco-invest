@@ -47,6 +47,7 @@ Below is a description of each of the keys.
 | NEXT_PUBLIC_PROXY_BACKEND       | Indicates whether the back-end application is proxied through the front-end application                                                  |
 | NEXT_PUBLIC_GOOGLE_ANALYTICS    | Key of the Google Analytics account                                                                                                      |
 | NEXT_PUBLIC_GOOGLE_MAPS_API_KEY | Key for Google Maps - Places API                                                                                                         |
+| NEXT_PUBLIC_MAPBOX_API_TOKEN | Mapbox's account API access token                                                                                                         |
 
 ## CI/CD
 
