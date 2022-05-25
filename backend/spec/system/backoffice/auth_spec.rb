@@ -34,7 +34,7 @@ RSpec.describe "Backoffice: Auth", type: :system do
       visit "/backoffice"
       expect(page).to have_text("Project developers")
 
-      click_on "Sign Out"
+      click_on "Sign out"
 
       expect(page).to have_text("Signed out successfully.")
       expect(page).to have_current_path(new_admin_session_path)
