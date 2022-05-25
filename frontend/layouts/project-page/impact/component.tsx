@@ -93,6 +93,7 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
                     aria-describedby="country-error"
                     control={control}
                     controlOptions={{
+                      value: impactLocation,
                       disabled: false,
                       onChange: (e) => setImpactLocation(e.target.value),
                     }}
