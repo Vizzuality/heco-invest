@@ -1,7 +1,7 @@
 require "system_helper"
 
 RSpec.describe "Backoffice: Project Developers", type: :system do
-  let_it_be(:admin) { create(:admin, email: "admin@example.com", password: "SuperSecret6", first_name: "Admin", last_name: "Example") }
+  let(:admin) { create(:admin, email: "admin@example.com", password: "SuperSecret6", first_name: "Admin", last_name: "Example") }
   let(:approved_pd_owner) { create(:user, :project_developer, first_name: "Tom", last_name: "Higgs") }
   let(:unapproved_pd_owner) { create(:user, :project_developer, first_name: "John", last_name: "Levis") }
   let!(:approved_pd) { create(:project_developer, account: build(:account, :approved, name: "Super PD Enterprise", owner: approved_pd_owner)) }
