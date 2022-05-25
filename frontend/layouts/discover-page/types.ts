@@ -7,3 +7,10 @@ export type DiscoverPageLayoutProps = PropsWithChildren<{
    **/
   screenHeightLg: boolean;
 }>;
+
+export type Stats = {
+  projects: number;
+  projectDevelopers: number;
+  investors: number;
+  oppenCalls: number;
+};

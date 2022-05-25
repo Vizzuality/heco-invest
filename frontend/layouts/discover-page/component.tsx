@@ -18,10 +18,18 @@ import { Paths } from 'enums';
 import { useInvestorsList } from 'services/investors/investorsService';
 import { useProjectDevelopersList } from 'services/project-developers/projectDevelopersService';
 import { useProjectsList } from 'services/projects/projectService';
+import { PagedResponse } from 'services/types';
 
 import Header from './header';
 import Navigation from './navigation';
-import { DiscoverPageLayoutProps } from './types';
+import { DiscoverPageLayoutProps, Stats } from './types';
+
+const initialStats = {
+  projects: 0,
+  projectDevelopers: 0,
+  investors: 0,
+  oppenCalls: 0,
+};
 
 export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   screenHeightLg = false,
@@ -43,62 +51,70 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     []
   );
 
-  // This shouldn't be needed, but due to CSS positioning / z-index issues we need to have the DiscoverSearch
-  // components both in the header and in this layout; which one is visible depends on the screen resolution.
+  // This shouldn't be needed, but due to CSS positioning / z-index issues we need to have the  DiscoverSearch components both in the header and in this layout; which one is visible depends on the screen resolution.
   // These states are here to keep both DiscoverSearch in sync, in case the user resizes their screen.
   const [searchInputValue, setSearchInputValue] = useState<string>('');
   const [sorting, setSorting] = useState<{ sortBy: string; sortOrder: string }>(defaultSorting);
+  // This state is to trigger the fetch of all entities on mount, to get the stats
+  const [isFirstTime, setIsFirstTime] = useState(true);
+  // The total number of entries for each entity
+  const [stats, setStats] = useState(initialStats);
 
   // Hook to use 'search', 'filter', 'page' and 'sorting' query params
   // http://localhost:3000/discover/projects?page=2&search=sar&sorting=name+asc
   const queryParams = useQueryParams(sorting);
 
-  const queryOptions = { keepPreviousData: false };
+  const getQueryOptions = (path: Paths, dataType: keyof Stats) => ({
+    keepPreviousData: false,
+    // Enable all the queries when mounting to get the total, then just when is on the query page
+    enabled: isFirstTime || pathname === path,
+    // Update the stats (number of entries)
+    onSucess: (data: PagedResponse<unknown>) => setStats({ ...stats, [dataType]: data.meta.total }),
+  });
 
   const {
     data: projects,
     isLoading: isLoadingProjects,
     isFetching: isFetchingProjects,
-  } = useProjectsList({ ...queryParams, includes: ['project_developer'] }, queryOptions);
+  } = useProjectsList(
+    { ...queryParams, includes: ['project_developer'] },
+    getQueryOptions(Paths.Project, 'projects')
+  );
 
   const {
     data: projectDevelopers,
     isLoading: isLoadingProjectDevelopers,
     isFetching: isFetchingProjectDevelopers,
-  } = useProjectDevelopersList({ ...queryParams, perPage: 9 }, queryOptions);
+  } = useProjectDevelopersList(
+    { ...queryParams, perPage: 9 },
+    getQueryOptions(Paths.ProjectDevelopers, 'projectDevelopers')
+  );
 
   const {
     data: investors,
     isLoading: isLoadingInvestors,
     isFetching: isFetchingInvestors,
-  } = useInvestorsList({ ...queryParams, perPage: 9 }, queryOptions);
-
-  const stats = {
-    projects: projects?.meta?.total,
-    projectDevelopers: projectDevelopers?.meta?.total,
-    investors: investors?.meta?.total,
-    openCalls: 0,
-  };
+  } = useInvestorsList(
+    { ...queryParams, perPage: 9 },
+    getQueryOptions(Paths.Investors, 'investors')
+  );
 
   const { data, meta, loading } = useMemo(() => {
-    // TODO: Find a way to improve this.
-    if (pathname.startsWith(Paths.Projects))
-      return { ...projects, loading: isLoadingProjects || isFetchingProjects };
-    if (pathname.startsWith(Paths.ProjectDevelopers)) {
-      return {
-        ...projectDevelopers,
-        loading: isLoadingProjectDevelopers || isFetchingProjectDevelopers,
-      };
+    // Return the data corresponding to the pathname
+    switch (pathname) {
+      case Paths.Projects:
+        return { ...projects, loading: isLoadingProjects || isFetchingProjects };
+      case Paths.ProjectDevelopers:
+        return {
+          ...projectDevelopers,
+          loading: isLoadingProjectDevelopers || isFetchingProjectDevelopers,
+        };
+      case Paths.Investors:
+        return {
+          ...investors,
+          loading: isLoadingInvestors || isFetchingInvestors,
+        };
     }
-
-    if (pathname.startsWith(Paths.Investors)) {
-      return {
-        ...investors,
-        loading: isLoadingInvestors || isFetchingInvestors,
-      };
-    }
-
-    // if (router.pathname.startsWith(Paths.OpenCalls)) return openCalls;
   }, [
     investors,
     isFetchingInvestors,
@@ -121,6 +137,10 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     const [sortBy, sortOrder] = queryParams.sorting.split(' ');
     setSorting(sortBy && sortOrder ? { sortBy, sortOrder } : defaultSorting);
   }, [defaultSorting, queryParams.sorting]);
+
+  useEffect(() => {
+    setIsFirstTime(false);
+  }, []);
 
   const handleSearch = (searchText: string) => {
     push({ query: { ...queryParams, page: 1, search: searchText } }, undefined, {
