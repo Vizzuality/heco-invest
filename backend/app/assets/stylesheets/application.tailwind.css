@@ -15,23 +15,23 @@
     @apply bg-green-dark text-white hover:text-green-light focus-visible:outline-green-dark
   }
 
-  .table {
+  .backoffice-table {
     @apply w-full bg-white text-base rounded-xl
   }
 
-  .table th {
+  .backoffice-table th {
     @apply text-left p-4
   }
 
-  .table td {
+  .backoffice-table td {
     @apply text-left p-4
   }
 
-  .table tr, .table th {
+  .backoffice-table tr, .backoffice-table th {
     @apply border-b-[1px] border-gray-200
   }
 
-  .table tr:last-child {
+  .backoffice-table tr:last-child {
     @apply border-b-0;
   }
 }
