@@ -224,6 +224,9 @@
   "8rAlFa": {
     "string": "Not listed"
   },
+  "8rIwwr": {
+    "string": "Expected Impact"
+  },
   "9+Ddtu": {
     "string": "Next"
   },
@@ -906,6 +909,9 @@
   "eTuDrh": {
     "string": "This will help us measure the impact of your project"
   },
+  "eVJMyI": {
+    "string": "In the {impactLocation} the the project has higher impact on Water and has an impact score of 30."
+  },
   "eXDHt0": {
     "string": "Describe the project or solution and describe clearly why you consider it is innovative, different from others and how it can generate an important change and impact towards the target groups. Highlight the characteristics that may attract partners, clients, or investors."
   },
@@ -983,6 +989,9 @@
   },
   "iiVhlC": {
     "string": "insert phone number"
+  },
+  "ilgFAX": {
+    "string": "Target group(s)"
   },
   "in26xr": {
     "string": "{organization} logo"
@@ -1209,6 +1218,9 @@
   "uyxTSu": {
     "string": "Select the impacts that you prioritize"
   },
+  "ufxVRM": {
+    "string": "Display impact on"
+  },
   "v9GdgG": {
     "string": "File {fileName} is larger than {fileSize}MB"
   },
@@ -1217,6 +1229,9 @@
   },
   "vONi+O": {
     "string": "Country"
+  },
+  "vTJ8GJ": {
+    "string": "SDG'S"
   },
   "vaWFzs": {
     "string": "What's your mission?"
