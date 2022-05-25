@@ -44,13 +44,6 @@ module.exports = {
       ],
     });
 
-    // Needed by react-map-gl 6.1 to use MapLibre instead of Mapbox GL JS:
-    // https://github.com/visgl/react-map-gl/blob/6.1-release/docs/get-started/get-started.md#using-with-a-mapbox-gl-fork
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      'mapbox-gl': 'maplibre-gl',
-    };
-
     return config;
   },
   async rewrites() {
