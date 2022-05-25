@@ -33,7 +33,13 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ images }) => {
                 onClick={() => setActive(index)}
                 title={formatMessage({ defaultMessage: 'Open image', id: 'TLn/wq' })}
               >
-                <Image src={small} alt="project image" width={32} height={32} objectFit="cover" />
+                <Image
+                  src={small}
+                  alt={formatMessage({ defaultMessage: 'Project image', id: 's07dAT' })}
+                  width={32}
+                  height={32}
+                  objectFit="cover"
+                />
               </Button>
             </li>
           );
