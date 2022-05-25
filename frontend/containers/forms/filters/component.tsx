@@ -16,6 +16,7 @@ import Label from 'components/forms/label';
 import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
 import Icon from 'components/icon';
+import Loading from 'components/loading';
 import sdg from 'mockups/sdgs.json';
 
 import { useEnums } from 'services/enums/enumService';
@@ -28,6 +29,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
   const { page, search, sorting, ...initialFilters } = useQueryParams();
 
   const [showMoreFilters, setShowMoreFilters] = useState(false);
+  const [filtersState, setFiltersState] = useState<Partial<FilterForm>>({});
 
   const {
     register,
@@ -41,6 +43,8 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
 
   const {
     data: { category, ticket_size, instrument_type },
+    isError,
+    isLoading,
   } = useEnums();
 
   const filters = [instrument_type, ticket_size, category, sdg];
@@ -94,7 +98,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
   };
 
   useEffect(() => {
-    // If I have the search params when the component mouts, I set the for values according to them.
+    // If I have the search params when the component mounts, I set the for values according to them.
     Object.entries(initialFilters as unknown as FilterParams).forEach(([key, value]) => {
       // Change the filter param name to the form input name
       const filterName = key.replace('filter[', '').replace(']', '');
@@ -102,16 +106,31 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
       const filterValue: boolean | string =
         filterName === 'only_verified' ? JSON.parse(value) : value;
       setValue(filterName as keyof FilterForm, filterValue);
+      setFiltersState((initialFilterState) => ({
+        ...initialFilterState,
+        [filterName]: filterValue,
+      }));
     });
-  }, [initialFilters, setValue]);
+    // The dependencies are empty because we just need it to run on mounting and to avoid a infinit loop
+  }, []);
 
   const onChange = (ev: any) => {
-    // The imputs that are both on the tags and comboboxes need to be controled.
-    const { value, name } = ev.target;
+    // The imputs that are both on the tags and comboboxes need to be controled
+    const { id, value, name } = ev.target;
+    if (id?.includes('tag')) {
+      if (filtersState[name] === value) {
+        setValue(name, undefined);
+        setFiltersState({ ...filtersState, [name]: undefined });
+        return;
+      }
+    }
+    setFiltersState({ ...filtersState, [name]: value });
     setValue(name, value);
   };
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="p-6">
       <Button
         theme="naked"
@@ -154,6 +173,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
                             }}
                             type="radio"
                             isfilterTag
+                            onClick={onChange}
                           >
                             <span className="block">{name}</span>
                           </Tag>
@@ -166,18 +186,24 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
           </div>
 
           <div className="flex">
-            <Button
-              onClick={() => setShowMoreFilters(!showMoreFilters)}
-              theme="naked"
-              className="px-0 py-0 font-sans text-base font-medium text-black"
-            >
-              <FormattedMessage defaultMessage="More filters" id="vdJRZj" />
-              <Icon className="w-5 h-5 ml-1" icon={showMoreFilters ? ChevronUp : ChevronDown} />
-            </Button>
+            {/* More filters accordion header https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html */}
+            <h3>
+              <Button
+                onClick={() => setShowMoreFilters(!showMoreFilters)}
+                theme="naked"
+                className="px-0 py-0 font-sans text-base font-medium text-black"
+                id="more-filters-button"
+                aria-expanded={showMoreFilters}
+                aria-controls="more-filters"
+              >
+                <FormattedMessage defaultMessage="More filters" id="vdJRZj" />
+                <Icon className="w-5 h-5 ml-1" icon={showMoreFilters ? ChevronUp : ChevronDown} />
+              </Button>
+            </h3>
           </div>
-
+          {/* More filters accordion pannel */}
           {showMoreFilters && (
-            <div>
+            <div id="more-filters" role="region" aria-labelledby="more-filters-button">
               <div className="w-full grid-cols-6 gap-4 sm:grid">
                 {filters.map((filter, index) => {
                   const filterName = filter[0].type as keyof FilterForm;
@@ -207,6 +233,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
                         id={filterName}
                         name={filterName}
                         control={control}
+                        clearable
                         controlOptions={{
                           disabled: false,
                           onChange,

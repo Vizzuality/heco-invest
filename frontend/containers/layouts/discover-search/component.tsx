@@ -1,6 +1,6 @@
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 
-import { Crosshair, Search as SearchIcon } from 'react-feather';
+import { Search as SearchIcon } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
