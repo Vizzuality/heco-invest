@@ -2,22 +2,22 @@
   <thead>
     <tr>
       <th>
-        Name
+        <%= t("backoffice.name") %>
       </th>
       <th>
-        Account owner
+        <%= t("backoffice.account_owner") %>
       </th>
       <th>
-        Account users
+        <%= t("backoffice.account_users") %>
       </th>
       <th>
-        Projects
+        <%= t("backoffice.projects") %>
       </th>
       <th>
-        Language
+        <%= t("backoffice.language") %>
       </th>
       <th>
-        Status
+        <%= t("backoffice.status") %>
       </th>
       <th>
       </th>
@@ -33,8 +33,8 @@
         <td><%= pd.language %></td>
         <td><%= pd.account.review_status %></td>
         <td>
-          <%= button_to "Approve", approve_backoffice_account_path(pd.account.id), class: "link-button", method: :post unless pd.account.approved? %>
-          <%= button_to "Reject", reject_backoffice_account_path(pd.account.id), class: "link-button", method: :post unless pd.account.rejected? %>
+          <%= button_to t("backoffice.approve"), approve_backoffice_account_path(pd.account.id), class: "link-button", method: :post unless pd.account.approved? %>
+          <%= button_to t("backoffice.reject"), reject_backoffice_account_path(pd.account.id), class: "link-button", method: :post unless pd.account.rejected? %>
         </td>
       </tr>
     <% end %>

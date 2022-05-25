@@ -4,17 +4,17 @@
       <div class="flex items-center justify-between h-16 md:h-20 gap-x-8 md:gap-x-16">
         <div>
           <a class="font-semibold" href="/">HeCo Invest</a>
-          <span class="font-light">Backoffice</span>
+          <span class="font-light"><%= t("backoffice.backoffice") %></span>
         </div>
         <div class="flex items-center justify-end flex-1">
           <%= current_admin.email %>
-          <%= button_to "Sign Out", destroy_admin_session_path, class: "ml-2", method: :delete %>
+          <%= button_to t("backoffice.sign_out"), destroy_admin_session_path, class: "ml-2", method: :delete %>
         </div>
       </div>
     </div>
     <div class="container mx-auto">
       <nav class="flex gap-4.5 py-3">
-        <%= nav_link_to "Project developers", backoffice_project_developers_path %>
+        <%= nav_link_to t("backoffice.project_developers"), backoffice_project_developers_path %>
       </nav>
     </div>
   </header>
