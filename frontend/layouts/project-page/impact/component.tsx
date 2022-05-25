@@ -9,6 +9,7 @@ import Combobox, { Option } from 'components/forms/combobox';
 import ImpactChart from 'components/impact-chart';
 import LayoutContainer from 'components/layout-container';
 import Tag from 'components/tag';
+import Tooltip from 'components/tooltip';
 import { ImpactProps } from 'layouts/project-page/impact/types';
 import sdgsMock from 'mockups/sdgs.json';
 import { Enum } from 'types/enums';
@@ -119,12 +120,27 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
                   <p className="text-base text-gray-800">
                     <FormattedMessage defaultMessage="Impact score" id="2GBpne" />
                   </p>
-                  <button
-                    type="button"
-                    className="box-border flex items-center justify-center w-4 h-4 text-gray-800 border border-gray-800 rounded-full pointer"
+
+                  <Tooltip
+                    placement="right"
+                    arrow
+                    arrowClassName="bg-black"
+                    content={
+                      <div className="max-w-md p-2 font-sans text-sm font-normal text-white bg-black rounded-sm w-72">
+                        <FormattedMessage
+                          defaultMessage="Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
+                          id="sFn7MX"
+                        />
+                      </div>
+                    }
                   >
-                    <p className="text-xs">i</p>
-                  </button>
+                    <button
+                      type="button"
+                      className="box-border flex items-center justify-center w-4 h-4 text-gray-800 border border-gray-800 rounded-full pointer"
+                    >
+                      <p className="text-xs">i</p>
+                    </button>
+                  </Tooltip>
                 </div>
               </div>
               {/* TODO: Add Impact Modal (previously should be componentizated) */}
