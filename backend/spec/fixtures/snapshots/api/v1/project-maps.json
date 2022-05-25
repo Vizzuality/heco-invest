@@ -5,8 +5,8 @@
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "category": "non-timber-forest-production"
       }
     },
@@ -15,8 +15,8 @@
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "category": "forestry-and-agroforestry"
       }
     },
@@ -25,8 +25,8 @@
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "category": "forestry-and-agroforestry"
       }
     },
@@ -35,8 +35,8 @@
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "category": "forestry-and-agroforestry"
       }
     },
@@ -45,8 +45,8 @@
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "category": "forestry-and-agroforestry"
       }
     },
@@ -55,8 +55,8 @@
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "category": "forestry-and-agroforestry"
       }
     },
@@ -65,8 +65,8 @@
       "type": "project_map",
       "attributes": {
         "trusted": false,
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "category": "forestry-and-agroforestry"
       }
     }
