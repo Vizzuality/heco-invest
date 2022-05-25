@@ -22,14 +22,14 @@ import { GroupedEnums } from 'types/enums';
 import { Investor } from 'types/investor';
 
 import { getEnums } from 'services/enums/enumService';
-import { getInvestor } from 'services/investors/investorsService';
+import { getInvestor, useInvestor } from 'services/investors/investorsService';
 
 export const getServerSideProps = async ({ params: { id }, locale }) => {
   let investor = null;
 
   // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    ({ data: investor } = await getInvestor(id));
+    investor = await getInvestor(id);
   } catch (e) {
     return { notFound: true };
   }
@@ -55,28 +55,37 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
   enums,
 }) => {
   const {
-    name,
-    website,
-    twitter,
-    facebook,
-    linkedin,
-    instagram,
-    contact_email,
-    contact_phone,
-    categories,
-    picture,
-    ticket_sizes,
-    instrument_types,
-    impacts,
-    sdgs,
-    about,
-    mission,
-    investor_type,
-    other_information,
-    language,
-    prioritized_projects_description,
-  } = investor;
-  const { category, ticket_size, instrument_type, impact, investor_type: investor_types } = enums;
+    investor: {
+      name,
+      website,
+      twitter,
+      facebook,
+      linkedin,
+      instagram,
+      contact_email,
+      contact_phone,
+      categories,
+      picture,
+      ticket_sizes,
+      instrument_types,
+      impacts,
+      sdgs,
+      about,
+      mission,
+      investor_type,
+      other_information,
+      language,
+      prioritized_projects_description,
+    },
+  } = useInvestor(investor.id, investor);
+
+  const {
+    category: allCategories,
+    ticket_size: allTicketSizes,
+    instrument_type: allInstrumentTypes,
+    impact: allImpacts,
+    investor_type: allInvestorTypes,
+  } = enums;
 
   const getSocialInfo = () => {
     const social: SocialType[] = [
@@ -94,29 +103,29 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     name,
   };
 
-  const logo = picture.small;
+  const logo = picture?.small || '/images/avatar.svg';
 
   const tagsGridRows: TagsGridRowType[] = [
     {
       title: 'Invests in',
       type: 'category',
-      tags: category.filter(({ id }) => categories.includes(id)),
+      tags: allCategories.filter(({ id }) => categories?.includes(id)),
     },
     {
       title: 'Ticket size',
-      tags: ticket_size.filter(({ id }) => ticket_sizes.includes(id)),
+      tags: allTicketSizes.filter(({ id }) => ticket_sizes?.includes(id)),
     },
     {
       title: 'Instrument size',
-      tags: instrument_type.filter(({ id }) => instrument_types.includes(id)),
+      tags: allInstrumentTypes.filter(({ id }) => instrument_types?.includes(id)),
     },
     {
       title: 'Impact they invest on',
-      tags: impact.filter(({ id }) => impacts.includes(id)),
+      tags: allImpacts.filter(({ id }) => impacts?.includes(id)),
     },
   ];
 
-  const investorTypeName = investor_types?.find(({ id }) => id === investor_type)?.name;
+  const investorTypeName = allInvestorTypes?.find(({ id }) => id === investor_type)?.name;
 
   return (
     <>
@@ -157,7 +166,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
           <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
             <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
           </h3>
-          <SDGs className="my-3" sdgs={sdgsMock.filter(({ id }) => sdgs.includes(Number(id)))} />
+          <SDGs className="my-3" sdgs={sdgsMock.filter(({ id }) => sdgs?.includes(Number(id)))} />
 
           <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
             <FormattedMessage defaultMessage="Mission" id="RXoqkD" />
