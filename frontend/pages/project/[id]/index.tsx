@@ -1,5 +1,3 @@
-import { FormattedMessage } from 'react-intl';
-
 import { decycle } from 'cycle';
 import { groupBy } from 'lodash-es';
 
@@ -10,6 +8,7 @@ import ProjectHeader from 'containers/project-header';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
+import Contact from 'layouts/project-page/contact/component';
 import ProjectDevelopers from 'layouts/project-page/developers/component';
 import Funding from 'layouts/project-page/funding/component';
 import Impact from 'layouts/project-page/impact/component';
@@ -72,6 +71,7 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
       <Impact project={project} />
       <Funding project={project} />
       <ProjectDevelopers project={project} />
+      <Contact project={project} />
     </>
   );
 };

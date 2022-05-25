@@ -305,6 +305,9 @@
   "CYTiug": {
     "string": "HeCo Invest will benefit poor and vulnerable people living in HeCo priority landscapes."
   },
+  "CcFPkO": {
+    "string": "This project has {numDevelopers} project developer{noun}"
+  },
   "CiBvks": {
     "string": "General information about the the project developer."
   },
@@ -334,6 +337,9 @@
   },
   "DWQSFT": {
     "string": "Use left and right to toggle between focused values, press backspace to remove the currently focused value"
+  },
+  "DeOyLr": {
+    "string": "Want to know more about this project?"
   },
   "DkjIbR": {
     "string": "insert email"
@@ -728,6 +734,9 @@
   },
   "XDC7Vp": {
     "string": "Select the intrument type(s) you provide"
+  },
+  "X2YMUl": {
+    "string": "Contact the project developers to know more about the project."
   },
   "XJqnLu": {
     "string": "Search water"

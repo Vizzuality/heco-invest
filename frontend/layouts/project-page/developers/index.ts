@@ -1,2 +1,2 @@
-export type { OverviewProps } from 'layouts/project-page/overview/types';
+export type { ProjectDevelopersProps } from 'layouts/project-page/developers/types';
 export { default } from './component';
