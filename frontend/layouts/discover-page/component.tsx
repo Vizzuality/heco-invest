@@ -66,7 +66,10 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     data: projects,
     isLoading: isLoadingProjects,
     isFetching: isFetchingProjects,
-  } = useProjectsList({ ...queryParams, includes: ['project_developer'] }, queryOptions);
+  } = useProjectsList(
+    { ...queryParams, includes: ['project_developer', 'involved_project_developers'] },
+    queryOptions
+  );
 
   const {
     data: projectDevelopers,
