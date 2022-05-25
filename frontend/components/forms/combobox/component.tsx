@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 import { useComboBox, useFilter, useButton } from 'react-aria';
-import { ChevronDown as ChevronDownIcon } from 'react-feather';
+import { ChevronDown as ChevronDownIcon, X } from 'react-feather';
 import { FieldValues, Path, PathValue, UnpackNestedValue, useController } from 'react-hook-form';
 import { useComboBoxState } from 'react-stately';
 
@@ -25,6 +25,7 @@ export const Combobox = <FormValues extends FieldValues, T extends object>({
   direction = 'bottom',
   control,
   controlOptions,
+  clearable = false,
   ...rest
 }: ComboboxProps<FormValues, T>) => {
   const {
@@ -54,6 +55,7 @@ export const Combobox = <FormValues extends FieldValues, T extends object>({
   const state = useComboBoxState({ ...ariaComboboxProps, defaultFilter: contains });
 
   const triggerRef = useRef(null);
+  const clearRef = useRef(null);
   const inputRef = React.useRef(null);
   const listboxRef = React.useRef(null);
   const popoverRef = React.useRef(null);
@@ -66,10 +68,23 @@ export const Combobox = <FormValues extends FieldValues, T extends object>({
     state
   );
 
+  const { buttonProps: clearButtonProps } = useButton(
+    {
+      elementType: 'button',
+      isDisabled: controlOptions.disabled,
+    },
+    clearRef
+  );
+
   const { buttonProps } = useButton(
     { ...triggerProps, isDisabled: controlOptions.disabled },
     triggerRef
   );
+
+  const onClear = () => {
+    state.setInputValue('');
+    controlOptions.onChange({ target: { value: undefined, name } });
+  };
 
   return (
     <div
@@ -92,6 +107,18 @@ export const Combobox = <FormValues extends FieldValues, T extends object>({
         name={name}
         className="outline-none grow"
       />
+      {clearable && !!state.inputValue && (
+        <button {...clearButtonProps} ref={clearRef} className="shrink-0" onClick={onClear}>
+          <Icon
+            aria-hidden={true}
+            icon={X}
+            className={cx({
+              'inline-block w-5 h-5 ml-2 text-gray-600 shrink-0 transition': true,
+              'rotate-180': state.isOpen,
+            })}
+          />
+        </button>
+      )}
       <button {...buttonProps} ref={triggerRef} className="shrink-0">
         <Icon
           aria-hidden={true}

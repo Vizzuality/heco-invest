@@ -1,4 +1,11 @@
-import { Path, Control, RegisterOptions, FieldPath, UseControllerProps } from 'react-hook-form';
+import {
+  Path,
+  Control,
+  RegisterOptions,
+  FieldPath,
+  UseControllerProps,
+  UseFormResetField,
+} from 'react-hook-form';
 
 import type { ComboBoxProps } from '@react-types/combobox';
 
@@ -13,6 +20,8 @@ export type ComboboxProps<FormValues, T extends object> = {
   direction?: 'bottom' | 'top';
   /** String to attach to the input */
   className?: string;
+  /** If the component will display the clear button */
+  clearable?: boolean;
   /** React Hook Form's `control` function */
   control: Control<FormValues, FieldPath<FormValues>>;
   /** Options for React Hook Form's `control` function */
