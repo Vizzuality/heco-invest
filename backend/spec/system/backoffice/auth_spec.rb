@@ -12,7 +12,7 @@ RSpec.describe "Backoffice: Auth", type: :system do
 
       click_on "Sign in"
 
-      expect(page).to have_text("Back office dashboard")
+      expect(page).to have_text("Project developers")
     end
 
     context "when wrong credentials" do
@@ -32,7 +32,7 @@ RSpec.describe "Backoffice: Auth", type: :system do
 
     it "works well" do
       visit "/backoffice"
-      expect(page).to have_text("Back office dashboard")
+      expect(page).to have_text("Project developers")
 
       click_on "Sign Out"
 
