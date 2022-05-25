@@ -2,8 +2,6 @@ import { FC } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { slugify } from 'helpers/slugify';
-
 import Button from 'components/button';
 import Modal from 'components/modal';
 
@@ -38,7 +36,7 @@ export const ContactInformationModal: FC<ContactInformationModalProps> = ({
         />
       </p>
       {contacts.map((contact) => (
-        <ContactItem key={slugify(contact.name)} {...contact} />
+        <ContactItem key={contact.name} {...contact} />
       ))}
 
       <div className="flex justify-center mt-6">
