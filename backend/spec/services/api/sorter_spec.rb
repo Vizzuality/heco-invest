@@ -6,8 +6,8 @@ RSpec.describe API::Sorter do
   describe "#call" do
     describe "used with Project query" do
       let(:query) { Project.all }
-      let!(:project_1) { create :project, name: "AAAAA", created_at: 10.days.from_now }
-      let!(:project_2) { create :project, name: "BBBBB", created_at: 1.days.from_now }
+      let!(:project_1) { create :project, name: "AAAAA", municipality_total_impact: 0.1, created_at: 10.days.from_now }
+      let!(:project_2) { create :project, name: "BBBBB", municipality_total_impact: 0.2, created_at: 1.days.from_now }
 
       context "when sorted by name" do
         let(:sort_param) { "name desc" }
@@ -19,6 +19,14 @@ RSpec.describe API::Sorter do
 
       context "when sorted by created_at" do
         let(:sort_param) { "created_at asc" }
+
+        it "returns correct order of records" do
+          expect(subject.call.to_a).to eq([project_2, project_1])
+        end
+      end
+
+      context "when sorted by municipality_total_impact" do
+        let(:sort_param) { "municipality_total_impact desc" }
 
         it "returns correct order of records" do
           expect(subject.call.to_a).to eq([project_2, project_1])
@@ -76,6 +84,14 @@ RSpec.describe API::Sorter do
 
       context "when sorting_by is empty" do
         let(:sort_param) { nil }
+
+        it "keeps default records order" do
+          expect(subject.call.to_a).to eq([project_developer_1, project_developer_2])
+        end
+      end
+
+      context "when sorted by attribute which is supported by sorter but it is missing at appropriate table" do
+        let(:sort_param) { "municipality_total_impact desc" }
 
         it "keeps default records order" do
           expect(subject.call.to_a).to eq([project_developer_1, project_developer_2])

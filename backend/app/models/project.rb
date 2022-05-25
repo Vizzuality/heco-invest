@@ -64,6 +64,7 @@ class Project < ApplicationRecord
 
   before_validation :clear_funding_fields, unless: -> { looking_for_funding? }
   before_validation :clear_received_funding_fields, unless: -> { received_funding? }
+  after_save :calculate_impacts, if: -> { saved_change_to_geometry? || saved_change_to_impact_areas? }
 
   accepts_nested_attributes_for :project_images, reject_if: :all_blank, allow_destroy: true
 
@@ -95,5 +96,9 @@ class Project < ApplicationRecord
     errors.add :country, :location_type_mismatch if country && country.location_type != "country"
     errors.add :municipality, :location_type_mismatch if municipality && municipality.location_type != "municipality"
     errors.add :department, :location_type_mismatch if department && department.location_type != "department"
+  end
+
+  def calculate_impacts
+    ImpactCalculationJob.perform_later self
   end
 end

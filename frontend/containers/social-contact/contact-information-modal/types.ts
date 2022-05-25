@@ -1,15 +1,10 @@
-export type ContactInformationType = {
-  /** Email to display */
-  email?: string;
-  /** Phone number to display */
-  phone?: string;
-};
+import type { ContactItemType } from './contact-item';
 
 export type ContactInformationModalProps = {
   /** Whether the modal should be open */
   isOpen?: boolean;
   /** Callback for when the modal is dismissed */
   onDismiss?: () => void;
-  /** Contact information */
-  contact?: ContactInformationType;
+  /** Contacts information */
+  contacts: ContactItemType | ContactItemType[];
 };

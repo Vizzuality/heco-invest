@@ -9,6 +9,7 @@ import { loadI18nMessages } from 'helpers/i18n';
 import Breadcrumbs from 'containers/breadcrumbs';
 import ProfileHeader from 'containers/profile-header';
 import SDGs from 'containers/sdgs';
+import { ContactItemType } from 'containers/social-contact/contact-information-modal';
 import { SocialType } from 'containers/social-contact/website-social';
 import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 
@@ -87,9 +88,10 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     return social.filter(({ url }) => !!url);
   };
 
-  const contact = {
+  const contact: ContactItemType = {
     email: contact_email,
     phone: contact_phone,
+    name,
   };
 
   const logo = picture.small;

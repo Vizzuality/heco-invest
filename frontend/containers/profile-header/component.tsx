@@ -142,7 +142,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
       <ContactInformationModal
         isOpen={isContactInfoModalOpen}
         onDismiss={() => setIsContactInfoModalOpen(false)}
-        contact={contact}
+        contacts={contact}
       />
     </div>
   );

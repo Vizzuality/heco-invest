@@ -1,7 +1,15 @@
 module API
   module V1
     class ProjectMapSerializer < BaseSerializer
-      attributes :trusted, :latitude, :longitude, :category
+      attributes :trusted, :category
+
+      attribute :latitude do |object, _params|
+        object.centroid&.y
+      end
+
+      attribute :longitude do |object, _params|
+        object.centroid&.x
+      end
     end
   end
 end

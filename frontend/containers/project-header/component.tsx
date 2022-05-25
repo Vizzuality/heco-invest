@@ -9,7 +9,7 @@ import { translatedLanguageNameForLocale } from 'helpers/intl';
 
 import CategoryTag from 'containers/category-tag';
 import ContactInformationModal, {
-  ContactInformationType,
+  ContactItemType,
 } from 'containers/social-contact/contact-information-modal';
 
 import Button from 'components/button';
@@ -55,7 +55,8 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
     [project.project_images]
   );
 
-  const contact: ContactInformationType = {
+  const contact: ContactItemType = {
+    name: projectDeveloper.name,
     email: projectDeveloper.contact_email,
     phone: projectDeveloper.contact_phone,
   };
@@ -204,7 +205,7 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
       <ContactInformationModal
         isOpen={isContactInfoModalOpen}
         onDismiss={() => setIsContactInfoModalOpen(false)}
-        contact={contact}
+        contacts={contact}
       />
     </div>
   );
