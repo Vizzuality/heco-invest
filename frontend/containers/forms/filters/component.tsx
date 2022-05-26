@@ -277,14 +277,23 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
               </fieldset>
             </div>
           )}
-
-          <div className="flex justify-end gap-4">
-            <Button theme="secondary-green" onClick={handleClear}>
-              <FormattedMessage defaultMessage="Clear filters" id="F4gyn3" />
-            </Button>
-            <Button theme="primary-green" type="submit">
-              <FormattedMessage defaultMessage="Apply" id="EWw/tK" />
-            </Button>
+          <div className="flex justify-between items-center text-sm text-gray-600">
+            <div>
+              <p>
+                <FormattedMessage
+                  defaultMessage="Note: Some filters not apply to all tabs"
+                  id="j4lBL7"
+                />
+              </p>
+            </div>
+            <div className="flex justify-end gap-4">
+              <Button theme="secondary-green" onClick={handleClear}>
+                <FormattedMessage defaultMessage="Clear filters" id="F4gyn3" />
+              </Button>
+              <Button theme="primary-green" type="submit">
+                <FormattedMessage defaultMessage="Apply" id="EWw/tK" />
+              </Button>
+            </div>
           </div>
         </div>
       </form>
