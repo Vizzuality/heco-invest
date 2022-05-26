@@ -112,9 +112,11 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
             </>
           )}
 
-          <WebsiteSocial className="max-w-md mt-2 mb-8" website={website} social={social} />
+          {(!!website || !!social?.length) && (
+            <WebsiteSocial className="max-w-md mt-2 mb-10" website={website} social={social} />
+          )}
 
-          <div className="flex flex-col justify-between gap-4 mt-8 lg:flex-row">
+          <div className="flex flex-col justify-between gap-4 lg:flex-row">
             <Button
               className="justify-center"
               theme="secondary-green"

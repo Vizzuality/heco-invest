@@ -8,5 +8,5 @@ export type SDGsProps = {
   /** SDGs size `small` | `large`. Defaults to `small` */
   size?: keyof typeof SDGS_SIZES;
   /** Array of SDGType items to display */
-  sdgs?: Enum[];
+  sdgs?: Omit<Enum, 'type'>[];
 };
