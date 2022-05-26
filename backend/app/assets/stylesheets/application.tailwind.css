@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .button {
+    @apply flex items-center rounded-full font-sans transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none px-6 py-2
+  }
+
+  .button-primary-green {
+    @apply bg-green-dark text-white hover:text-green-light focus-visible:outline-green-dark
+  }
+}
