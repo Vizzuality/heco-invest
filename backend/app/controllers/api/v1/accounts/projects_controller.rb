@@ -3,6 +3,7 @@ module API
     module Accounts
       class ProjectsController < BaseController
         before_action :require_project_developer!
+        before_action :fetch_project, only: [:update]
 
         def create
           project = Project.create!(
@@ -14,7 +15,16 @@ module API
 
           render json: ProjectSerializer.new(
             project,
-            include: included_relationships(parameters: params.fetch(:project_params, params)),
+            include: included_relationships,
+            params: {current_user: current_user}
+          ).serializable_hash
+        end
+
+        def update
+          @project.update! project_params
+          render json: ProjectSerializer.new(
+            @project,
+            include: included_relationships,
             params: {current_user: current_user}
           ).serializable_hash
         end
@@ -54,6 +64,11 @@ module API
             instrument_types: [],
             project_images_attributes: %i[id file cover _destroy]
           )
+        end
+
+        def fetch_project
+          @project = Project.friendly.find(params[:id])
+          raise API::Forbidden unless current_user.account_id == @project.project_developer.account_id
         end
       end
     end

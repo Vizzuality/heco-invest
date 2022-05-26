@@ -1,0 +1,22 @@
+<% content_for :content do %>
+  <header class="w-full h-16 lg:h-20 z-10 bg-green-dark text-beige">
+    <div class="container mx-auto">
+      <div class="flex items-center justify-between h-16 md:h-20 gap-x-8 md:gap-x-16">
+        <div>
+          <a class="font-semibold" href="/">HeCo Invest</a>
+          <span class="font-light">Backoffice</span>
+        </div>
+        <div class="flex items-center justify-end flex-1">
+          <%= current_admin.email %>
+          <%= button_to "Sign Out", destroy_admin_session_path, class: "ml-2", method: :delete %>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto py-6">
+    <%= yield %>
+  </main>
+<% end %>
+
+<%= render template: "layouts/application" %>
