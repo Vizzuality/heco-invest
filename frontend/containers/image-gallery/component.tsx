@@ -26,10 +26,13 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ images }) => {
             <li key={small} className="inline">
               <Button
                 theme={selected ? 'secondary-green' : 'naked'}
-                className={cx('block w-8 h-8 px-0 py-0 rounded-none  transition-all', {
-                  'brightness-125': selected,
-                  'brightness-75': !selected,
-                })}
+                className={cx(
+                  'block w-8 h-8 px-0 py-0 rounded-none  transition-all focus-visible:outline-green-dark focus-visible:rounded-sm',
+                  {
+                    'brightness-125': selected,
+                    'brightness-75': !selected,
+                  }
+                )}
                 onClick={() => setActive(index)}
                 title={formatMessage({ defaultMessage: 'Open image', id: 'TLn/wq' })}
               >
@@ -64,6 +67,7 @@ export const ImageGallery: FC<ImageGalleryProps> = ({ images }) => {
                   width={300}
                   height={200}
                   objectFit="contain"
+                  priority
                 />
               </div>
             </Slide>
