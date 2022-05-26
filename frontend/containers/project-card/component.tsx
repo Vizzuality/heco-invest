@@ -5,7 +5,6 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -13,6 +12,7 @@ import { usePress, useFocusWithin } from '@react-aria/interactions';
 
 import { usePropagableEventHandlers } from 'hooks/pointer-events';
 
+import ImpactChart from 'components/impact-chart';
 import { Paths } from 'enums';
 
 import { useEnums } from 'services/enums/enumService';
@@ -39,7 +39,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
   } = useEnums();
 
   const { id, slug, name, trusted } = project;
-  const category = allCategories?.find(({ id }) => id === project.category)?.name;
+  const category = allCategories?.find(({ id }) => id === project.category);
   const link = `${Paths.Project}/${slug}`;
 
   const ticketSizeStr = useMemo(
@@ -140,7 +140,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               </>
             )}
             <div title={intl.formatMessage({ defaultMessage: 'Project category', id: '/plMvw' })}>
-              {category}
+              {category.name}
             </div>
           </div>
           <div>
@@ -199,33 +199,8 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           </div>
         </div>
         <div>
-          <div className="w-16 h-10 mx-auto">
-            <Image
-              className="mx-auto rounded-full"
-              src={'/images/temp-placeholders/impact-shape.png'}
-              alt={intl.formatMessage(
-                {
-                  defaultMessage: 'Impact shape of the {name} project',
-                  id: 'cAtOAM',
-                },
-                {
-                  name,
-                }
-              )}
-              title={intl.formatMessage(
-                {
-                  defaultMessage: 'Impact shape of the {name} project',
-                  id: 'cAtOAM',
-                },
-                {
-                  name,
-                }
-              )}
-              layout="responsive"
-              width="100%"
-              height="100%"
-              objectFit="contain"
-            />
+          <div className="w-20 h-20 aspect-square mx-auto">
+            <ImpactChart compactMode={true} category={category.id} impact={[]} />
           </div>
         </div>
       </div>
