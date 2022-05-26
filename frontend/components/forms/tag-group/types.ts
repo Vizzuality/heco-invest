@@ -25,4 +25,6 @@ export type TagGroupProps<FormValues> = PropsWithChildren<{
   clearErrors: UseFormClearErrors<any>;
   /** Form validation errors */
   errors: FieldErrors<FormValues>;
+  /** If is a tag group of the filter */
+  isFilterTag?: boolean;
 }>;

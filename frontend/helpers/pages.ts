@@ -71,7 +71,11 @@ export const useQueryParams = (sortingState?: { sortBy: string; sortOrder: strin
       search: (query.search as string) || '',
       sorting:
         // No need to decode URI component, next/router does it automatically
-        (sorting as string) || `${sortingState?.sortBy} ${sortingState?.sortOrder}`,
+        sorting
+          ? (sorting as string)
+          : sortingState?.sortBy
+          ? `${sortingState?.sortBy} ${sortingState?.sortOrder}`
+          : '',
       ...filters,
     };
   }, [query, sortingState]);

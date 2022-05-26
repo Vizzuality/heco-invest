@@ -11,4 +11,6 @@ export type DiscoverSearchProps = {
   onSearchChange?: (searchText: string) => void;
   /** Filters as children */
   children?: JSX.Element;
+  /** Number of filters applied */
+  filtersQuantity?: number;
 };
