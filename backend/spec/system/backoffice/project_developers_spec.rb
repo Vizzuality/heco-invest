@@ -23,23 +23,23 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
       end
     end
 
-    context "Approve" do
-      it "approves selected project developer" do
+    context "when approving project developer" do
+      it "flips the status to approved" do
         within_row("Unapproved PD Enterprise") do
           expect(page).to have_text("John Levis")
           expect(page).to have_text("unapproved")
-          click_on "Approve"
+          click_on t("backoffice.common.approve")
           expect(page).to have_text("approved")
         end
       end
     end
 
-    context "Reject" do
-      it "rejects selected project developer" do
+    context "when rejecting project developer" do
+      it "flips status to rejected" do
         within_row("Super PD Enterprise") do
           expect(page).to have_text("Tom Higgs")
           expect(page).to have_text("approved")
-          click_on "Reject"
+          click_on t("backoffice.common.reject")
           expect(page).to have_text("rejected")
         end
       end

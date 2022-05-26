@@ -1,19 +1,24 @@
 zu:
   backoffice:
-    backoffice: Backoffice
-    welcome: Welcome to HeCO Invest backoffice.
-    enter_details_below: Please enter your details below.
-    sign_out: Sign out
-    sign_in: Sign in
-    name: Name
-    account_owner: Account owner
-    account_users: Account users
-    projects: Projects
-    language: Language
-    status: Status
-    approve: Approve
-    reject: Reject
-    project_developers: Project developers
+    common:
+      name: Name
+      status: Status
+      language: Language
+      approve: Approve
+      reject: Reject
+    sign_in:
+      welcome: Welcome to HeCO Invest backoffice.
+      enter_details_below: Please enter your details below.
+      sign_in: Sign in
+    project_developers:
+      index:
+        account_owner: Account owner
+        account_users: Account users
+        projects: Projects
+    layout:
+      header: Backoffice
+      sign_out: Sign out
+      project_developers: Project developers
   errors:
     messages:
       password_length: must be at least %{count} characters long
