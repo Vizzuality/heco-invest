@@ -65,4 +65,14 @@ RSpec.describe Account, type: :model do
     subject.contact_email = "derp"
     expect(subject).to have(1).errors_on(:contact_email)
   end
+
+  context "when changing review_status" do
+    subject { create(:account, :unapproved) }
+
+    it "should set reviewed_at timestamp" do
+      expect(subject.reviewed_at).to be_nil
+      subject.approved!
+      expect(subject.reviewed_at).to be_present
+    end
+  end
 end
