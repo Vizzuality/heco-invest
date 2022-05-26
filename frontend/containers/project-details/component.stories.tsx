@@ -34,7 +34,7 @@ export const Default: Story<ProjectDetailsProps> = Template.bind({});
 
 Default.args = {
   project: {
-    ...(projectMock as ProjectType),
+    ...(projectMock as unknown as ProjectType),
     trusted: false,
     looking_for_funding: false,
   },
@@ -48,7 +48,7 @@ export const Verified: Story<ProjectDetailsProps> = Template.bind({});
 
 Verified.args = {
   project: {
-    ...(projectMock as ProjectType),
+    ...(projectMock as unknown as ProjectType),
     trusted: true,
     looking_for_funding: false,
   },
@@ -62,7 +62,7 @@ export const LookingForFunding: Story<ProjectDetailsProps> = Template.bind({});
 
 LookingForFunding.args = {
   project: {
-    ...(projectMock as ProjectType),
+    ...(projectMock as unknown as ProjectType),
     trusted: false,
     looking_for_funding: true,
   },
