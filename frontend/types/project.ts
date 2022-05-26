@@ -3,8 +3,7 @@ import { ProjectGalleryImageType } from 'containers/forms/project-gallery/projec
 
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
-import { ProjectDeveloper as ProjectDeveloperType } from './projectDeveloper';
-
+/** Project images on responses */
 export type ProjectImageType = {
   cover: boolean;
   file: {
@@ -16,14 +15,12 @@ export type ProjectImageType = {
 
 /** Common Project types */
 export type ProjectBase = {
-  id: string;
-  type: 'project';
-  slug: string;
   category: string;
   description: string;
   development_stage: DevelopmentStages;
   estimated_duration_in_months: number;
   expected_impact: string;
+  geometry: ValidGeometryType;
   impact_areas: string[];
   instrument_types: string[];
   involved_project_developer_not_listed: boolean;
@@ -42,17 +39,41 @@ export type ProjectBase = {
   target_groups: string[];
   ticket_size?: TicketSizes;
   language: Languages;
-  project_images: ProjectImageType[];
-  trusted?: boolean;
   project_developer?: any; // Cannot use ProjectDeveloperType because linting will complain about circular references
   involved_project_developers?: any[]; // Cannot use ProjectDeveloperType because linting will complain about circular references
 };
 
-/** Project entity structure */
-export type Project = ProjectBase & {
-  slug: string;
-  language: Languages;
+/** Project impact properties  */
+export type ProjectImpacts = {
+  municipality_biodiversity_impact?: number;
+  municipality_climate_impact?: number;
+  municipality_water_impact?: number;
+  municipality_community_impact?: number;
+  municipality_total_impact?: number;
+  hydrobasin_biodiversity_impact?: number;
+  hydrobasin_climate_impact?: number;
+  hydrobasin_water_impact?: number;
+  hydrobasin_community_impact?: number;
+  hydrobasin_total_impact?: number;
+  priority_landscape_biodiversity_impact?: number;
+  priority_landscape_climate_impact?: number;
+  priority_landscape_water_impact?: number;
+  priority_landscape_community_impact?: number;
+  priority_landscape_total_impact?: number;
 };
+
+/** Project entity structure, received on get requests */
+export type Project = ProjectBase &
+  ProjectImpacts & {
+    // Properties especific form Project(s) responses
+    id: string;
+    latitude: number;
+    longitude: number;
+    project_images: ProjectImageType[];
+    slug: string;
+    trusted?: boolean;
+    type: 'project';
+  };
 
 /** Project Form inputs */
 export type ProjectForm = ProjectBase & {
@@ -61,7 +82,6 @@ export type ProjectForm = ProjectBase & {
   funding_plan: string;
   involved_project_developer_ids: string[];
   municipality_id: string;
-  geometry: ValidGeometryType;
   project_images_attributes: ProjectImageGallery[];
   project_images_attributes_cover: string;
 
@@ -70,11 +90,13 @@ export type ProjectForm = ProjectBase & {
   project_gallery?: FileList;
 };
 
+/** Project images for creation/edition */
 export type ProjectImagesAttributes = {
   file: File | string;
   cover: boolean;
 };
 
+/** Project creation/edition payload */
 export type ProjectCreationPayload = Omit<
   ProjectForm,
   'involved_project_developer' | 'project_gallery' | 'slug' | 'project_images_attributes_cover'
