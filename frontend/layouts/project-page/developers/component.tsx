@@ -10,7 +10,7 @@ import { ProjectDevelopersProps } from 'layouts/project-page/developers/types';
 export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
   project,
 }: ProjectDevelopersProps) => {
-  const NUMBER_DEVELOPERS = project.project_developer.length || 1;
+  const NUMBER_DEVELOPERS = project?.involved_project_developers.length;
 
   const {
     project_developer: { about, name, picture, project_developer_type },
@@ -26,29 +26,34 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
             <FormattedMessage
               defaultMessage="This project has {numDevelopers} project developer{noun}"
               id="CcFPkO"
-              values={{ numDevelopers: NUMBER_DEVELOPERS, noun: NUMBER_DEVELOPERS > 1 ? 's' : '' }}
+              values={{
+                numDevelopers: NUMBER_DEVELOPERS,
+                noun: NUMBER_DEVELOPERS === 1 ? '' : 's',
+              }}
             />
           </p>
         </div>
-        <div className="w-2/3 p-6 space-y-8 font-sans bg-white border rounded-2xl border-beige">
-          <div className="flex items-center space-x-4">
-            <Image
-              alt={name}
-              className="rounded-full"
-              height={72}
-              src={picture.small}
-              title={name}
-              width={72}
-            />
+        {!!NUMBER_DEVELOPERS && (
+          <div className="w-2/3 p-6 space-y-8 font-sans bg-white border rounded-2xl border-beige">
+            <div className="flex items-center space-x-4">
+              <Image
+                alt={name}
+                className="rounded-full"
+                height={72}
+                src={picture.small}
+                title={name}
+                width={72}
+              />
+              <div>
+                <h6 className="text-xl font-semibold">{name}</h6>
+                <p className="text-gray-800 uppercase">{project_developer_type}</p>
+              </div>
+            </div>
             <div>
-              <h6 className="text-xl font-semibold">{name}</h6>
-              <p className="text-gray-800 uppercase">{project_developer_type}</p>
+              <p>{about}</p>
             </div>
           </div>
-          <div>
-            <p>{about}</p>
-          </div>
-        </div>
+        )}
       </LayoutContainer>
     </section>
   );
