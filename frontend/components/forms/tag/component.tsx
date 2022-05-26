@@ -53,7 +53,8 @@ export const Tag = <FormValues extends FieldValues>({
           'ring-2 ring-green-dark ring-offset-2': isFocusVisible,
           'peer-invalid:border-red-700': invalid,
           'flex flex-col items-start': flexLabel,
-          'px-3 py-2 text-gray-600 peer-checked:text-green-dark rounded-full text-sm': isfilterTag,
+          'px-2 py-1 border-green-dark text-green-dark peer-checked:bg-green-light peer-checked:bg-opacity-30 rounded-full text-sm':
+            isfilterTag,
           'rounded-lg': !isfilterTag,
         })}
       >

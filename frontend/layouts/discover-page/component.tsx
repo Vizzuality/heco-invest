@@ -8,8 +8,7 @@ import { useRouter } from 'next/router';
 
 import { useQueryParams } from 'helpers/pages';
 
-import FilterTags from 'containers/filter-tags';
-import DiscoverSearch from 'containers/layouts/discover-search';
+import DiscoverSearch, { DiscoverSearchProps } from 'containers/layouts/discover-search';
 
 import LayoutContainer from 'components/layout-container';
 import SortingButtons, { SortingOrderType } from 'components/sorting-buttons';
@@ -146,10 +145,16 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     });
   };
 
-  const discoverSearchProps = {
+  const getFiltersQuantity = () => {
+    const { page, search, sorting, ...filters } = queryParams;
+    return Object.keys(filters)?.length;
+  };
+
+  const discoverSearchProps: DiscoverSearchProps = {
     searchText: searchInputValue,
     onSearch: handleSearch,
     onSearchChange: setSearchInputValue,
+    filtersQuantity: getFiltersQuantity(),
   };
 
   const sortingButtonsProps = {
@@ -181,7 +186,6 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
         </div>
         <main className="z-0 flex flex-col flex-grow h-screen overflow-y-scroll">
           <LayoutContainer className="xl:mt-28">
-            <FilterTags />
             <div className="flex flex-col items-center gap-2 mt-4 mb-4 lg:mt-2 lg:gap-6 lg:flex-row space-between">
               <SortingButtons className="flex-1" {...sortingButtonsProps} />
               <div className="flex justify-center w-full">

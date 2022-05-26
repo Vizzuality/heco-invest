@@ -4,19 +4,20 @@ import { ChevronDown, ChevronUp, X as CloseIcon } from 'react-feather';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import cx from 'classnames';
+
 import { useRouter } from 'next/router';
 
 import { useQueryParams } from 'helpers/pages';
 
 import Button from 'components/button';
 import Checkbox from 'components/forms/checkbox';
-import Combobox, { Option } from 'components/forms/combobox';
 import FieldInfo from 'components/forms/field-info';
-import Label from 'components/forms/label';
 import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
 import Icon from 'components/icon';
 import Loading from 'components/loading';
+import { EnumTypes } from 'enums';
 import sdg from 'mockups/sdgs.json';
 
 import { useEnums } from 'services/enums/enumService';
@@ -34,7 +35,6 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
   const {
     register,
     reset,
-    control,
     handleSubmit,
     setValue,
     clearErrors,
@@ -42,18 +42,17 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
   } = useForm<FilterForm>();
 
   const {
-    data: { category, ticket_size, instrument_type },
-    isError,
+    data: { category, ticket_size, instrument_type, impact },
     isLoading,
   } = useEnums();
 
-  const filters = [instrument_type, ticket_size, category, sdg];
+  const filters = [category, impact, ticket_size, instrument_type];
 
   const legends = [
-    formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
-    formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
     formatMessage({ defaultMessage: 'Category', id: 'ccXLVi' }),
-    formatMessage({ defaultMessage: 'SDG', id: 'JUqdD1' }),
+    formatMessage({ defaultMessage: 'Impact', id: 'W2JBdp' }),
+    formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
+    formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
   ];
 
   const handleFilter = (filterParams?: FilterParams) => {
@@ -139,53 +138,82 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
         onClick={closeFilters}
       />
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-4">
-          <div>
-            <fieldset>
-              <legend className="inline font-sans text-base font-medium text-black mb-4.5">
-                <FormattedMessage defaultMessage="Suggested searches" id="ELAH/f" />
-              </legend>
-
-              <div className="flex flex-wrap gap-4">
-                {!!category &&
-                  !!instrument_type &&
-                  [category, instrument_type].map((item) => {
-                    return (
-                      <TagGroup
-                        key={item[0].type}
-                        name={item[0].type}
-                        type="radio"
-                        clearErrors={clearErrors}
-                        setValue={setValue}
-                        errors={errors}
-                        thresholdToShowSelectAll={Infinity}
-                      >
-                        {item.map(({ name, id, type }) => (
-                          <Tag
-                            key={id}
-                            id={`${id}-tag`}
-                            name={type}
-                            value={id}
-                            register={register}
-                            registerOptions={{
-                              disabled: false,
-                              onChange,
-                            }}
-                            type="radio"
-                            isfilterTag
-                            onClick={onChange}
-                          >
-                            <span className="block">{name}</span>
-                          </Tag>
-                        ))}
-                      </TagGroup>
-                    );
-                  })}
-              </div>
-            </fieldset>
+        <div>
+          <div className="flex items-center mb-4">
+            <Checkbox id="verified" name="only_verified" register={register} />
+            <label htmlFor="verified" className="mt-1 text-sm font-normal text-gray-800">
+              <FormattedMessage defaultMessage="Show verified content only" id="i9eK6b" />
+            </label>
           </div>
 
-          <div className="flex">
+          <div className="flex flex-wrap gap-y-4">
+            {filters?.map((item, index) => {
+              const fieldName = item[0].type;
+              return (
+                <div
+                  key={fieldName}
+                  className={cx('w-1/3', {
+                    'w-2/3 pr-4': index % 2 === 0,
+                  })}
+                >
+                  <fieldset>
+                    <legend className="inline font-sans text-base font-medium text-black mb-3">
+                      <span className="mr-2 font-sans font-semibold text-sm text-gray-800">
+                        {legends[index]}
+                      </span>
+                      <FieldInfo
+                        infoText={
+                          <ul>
+                            {item.map(({ name, id, description }) => (
+                              <li key={id} className="mb-2">
+                                <p className="font-bold ">{name}</p>
+                                <p>{description}</p>
+                              </li>
+                            ))}
+                          </ul>
+                        }
+                      />
+                    </legend>
+
+                    <TagGroup
+                      key={fieldName}
+                      name={fieldName}
+                      type="radio"
+                      clearErrors={clearErrors}
+                      setValue={setValue}
+                      errors={errors}
+                      thresholdToShowSelectAll={Infinity}
+                      className="flex flex-wrap gap-2"
+                      isFilterTag
+                    >
+                      {item.map(({ name, id, type, description }) => (
+                        <Tag
+                          key={id}
+                          id={`${id}-tag`}
+                          name={type}
+                          value={id}
+                          register={register}
+                          registerOptions={{
+                            disabled: false,
+                            onChange,
+                          }}
+                          type="radio"
+                          isfilterTag
+                          onClick={onChange}
+                        >
+                          <span className="block">
+                            {type === EnumTypes.TicketSize ? description : name}
+                          </span>
+                        </Tag>
+                      ))}
+                    </TagGroup>
+                  </fieldset>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="flex my-4">
             {/* More filters accordion header https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html */}
             <h3>
               <Button
@@ -201,62 +229,51 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
               </Button>
             </h3>
           </div>
+
           {/* More filters accordion pannel */}
           {showMoreFilters && (
-            <div id="more-filters" role="region" aria-labelledby="more-filters-button">
-              <div className="w-full grid-cols-6 gap-4 sm:grid">
-                {filters.map((filter, index) => {
-                  const filterName = filter[0].type as keyof FilterForm;
-                  return (
-                    <div key={filterName} className="mb-4 sm:mb-0 sm:col-span-3">
-                      <Label
-                        className="block mb-2 font-semibold text-gray-800 text-small"
-                        htmlFor={filterName}
-                      >
-                        <span className="mr-2">{legends[index]}</span>
-                        {(filterName === 'category' || filterName === 'instrument_type') && (
-                          <FieldInfo
-                            infoText={
-                              <ul>
-                                {filter.map((item) => (
-                                  <li key={item.id}>
-                                    <p className="mb-0.5 font-semibold">{item.name}</p>
-                                    <p className="mb-4">{item.description}</p>
-                                  </li>
-                                ))}
-                              </ul>
-                            }
-                          />
-                        )}
-                      </Label>
-                      <Combobox
-                        id={filterName}
-                        name={filterName}
-                        control={control}
-                        clearable
-                        controlOptions={{
+            <div
+              id="more-filters"
+              role="region"
+              aria-labelledby="more-filters-button"
+              className="mb-4"
+            >
+              <fieldset>
+                <legend className="inline font-sans text-base font-medium text-black mb-3">
+                  <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
+                </legend>
+
+                <div className="flex flex-wrap gap-4">
+                  <TagGroup
+                    name="filter[sdgs]"
+                    type="radio"
+                    clearErrors={clearErrors}
+                    setValue={setValue}
+                    errors={errors}
+                    thresholdToShowSelectAll={Infinity}
+                    isFilterTag
+                  >
+                    {sdg.map(({ name, type, id }) => (
+                      <Tag
+                        key={id}
+                        id={`${id}-tag`}
+                        name={type}
+                        value={id}
+                        register={register}
+                        registerOptions={{
                           disabled: false,
                           onChange,
                         }}
-                        className="w-full"
-                        placeholder={formatMessage({ defaultMessage: 'Select', id: 'kQAf2d' })}
+                        type="radio"
+                        isfilterTag
+                        onClick={onChange}
                       >
-                        {filter.map(({ id, name, type, ...rest }) => (
-                          <Option key={id}>
-                            {type === 'ticket_size' ? `${rest.description} (${name})` : name}
-                          </Option>
-                        ))}
-                      </Combobox>
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="flex items-center mt-4">
-                <Checkbox id="verified" name="only_verified" register={register} />
-                <label htmlFor="verified" className="mt-1 text-sm font-normal text-gray-800">
-                  <FormattedMessage defaultMessage="Only show verified content" id="Ju/JXa" />
-                </label>
-              </div>
+                        <span className="block">{name}</span>
+                      </Tag>
+                    ))}
+                  </TagGroup>
+                </div>
+              </fieldset>
             </div>
           )}
 
