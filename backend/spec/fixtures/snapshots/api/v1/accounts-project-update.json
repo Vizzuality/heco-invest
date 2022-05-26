@@ -1,0 +1,117 @@
+{
+  "data": {
+    "id": "88e98718-7b20-4ab9-ae2b-cd674e83eaaa",
+    "type": "project",
+    "attributes": {
+      "name": "Updated Project Name",
+      "slug": "bartoletti-and-sons-project-2",
+      "description": "Updated Short project description",
+      "development_stage": "consolidaton",
+      "estimated_duration_in_months": 12,
+      "target_groups": [
+        "urban-populations",
+        "indigenous-peoples"
+      ],
+      "impact_areas": [
+        "restoration",
+        "pollutants-reduction"
+      ],
+      "category": "sustainable-agrosystems",
+      "sdgs": [
+        2,
+        4,
+        5
+      ],
+      "involved_project_developer_not_listed": true,
+      "problem": "Updated Problem description",
+      "solution": "Updated Solution description",
+      "expected_impact": "Updated Expected impact description",
+      "looking_for_funding": true,
+      "ticket_size": "prototyping",
+      "instrument_types": [
+        "grant"
+      ],
+      "funding_plan": "Updated Funding plan description",
+      "sustainability": "Updated Sustainability desc",
+      "replicability": "Updated Replicability desc",
+      "progress_impact_tracking": "Updated Progress impact tracking desc",
+      "received_funding": true,
+      "received_funding_amount_usd": "1000000.0",
+      "received_funding_investor": "Updated Some Investor name",
+      "relevant_links": "Updated Here relevant links",
+      "language": "en",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1,
+          2
+        ]
+      },
+      "trusted": false,
+      "municipality_biodiversity_impact": null,
+      "municipality_climate_impact": null,
+      "municipality_water_impact": null,
+      "municipality_community_impact": null,
+      "municipality_total_impact": null,
+      "hydrobasin_biodiversity_impact": null,
+      "hydrobasin_climate_impact": null,
+      "hydrobasin_water_impact": null,
+      "hydrobasin_community_impact": null,
+      "hydrobasin_total_impact": null,
+      "priority_landscape_biodiversity_impact": null,
+      "priority_landscape_climate_impact": null,
+      "priority_landscape_water_impact": null,
+      "priority_landscape_community_impact": null,
+      "priority_landscape_total_impact": null,
+      "latitude": 2.0,
+      "longitude": 1.0,
+      "favourite": false
+    },
+    "relationships": {
+      "project_developer": {
+        "data": {
+          "id": "6d8dda53-cb02-4365-a1ca-4c9921ed4480",
+          "type": "project_developer"
+        }
+      },
+      "country": {
+        "data": {
+          "id": "5630b024-f344-4873-82a8-002eb195fe59",
+          "type": "location"
+        }
+      },
+      "municipality": {
+        "data": {
+          "id": "12090cff-cac8-4edd-8c1d-91c9e21aecd8",
+          "type": "location"
+        }
+      },
+      "department": {
+        "data": {
+          "id": "28de033d-2753-4acf-a7d9-2bf67659155f",
+          "type": "location"
+        }
+      },
+      "involved_project_developers": {
+        "data": [
+          {
+            "id": "11e68a50-7a7f-4033-abe1-982c6589fb8e",
+            "type": "project_developer"
+          },
+          {
+            "id": "77bd97e9-f2b5-4425-b260-73f19ecf3e3b",
+            "type": "project_developer"
+          }
+        ]
+      },
+      "project_images": {
+        "data": [
+          {
+            "id": "654baab7-800a-4eee-933b-20b50aaa64cc",
+            "type": "project_image"
+          }
+        ]
+      }
+    }
+  }
+}

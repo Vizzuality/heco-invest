@@ -19,8 +19,8 @@ module API
         (params[:fields]&.to_unsafe_h || {}).transform_values { |v| v.split(",") }
       end
 
-      def included_relationships(parameters: params)
-        parameters[:includes]&.split(",")
+      def included_relationships
+        params[:includes]&.split(",")
       end
 
       def require_json!
