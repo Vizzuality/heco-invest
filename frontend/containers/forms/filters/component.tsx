@@ -4,7 +4,7 @@ import { ChevronDown, ChevronUp, X as CloseIcon } from 'react-feather';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import cx from 'classnames';
+// import cx from 'classnames';  Use when add impacts
 
 import { useRouter } from 'next/router';
 
@@ -46,11 +46,11 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
     isLoading,
   } = useEnums();
 
-  const filters = [category, impact, ticket_size, instrument_type];
+  const filters = [category, ticket_size, instrument_type]; // Add impacts laterﬂ
 
   const legends = [
     formatMessage({ defaultMessage: 'Category', id: 'ccXLVi' }),
-    formatMessage({ defaultMessage: 'Impact', id: 'W2JBdp' }),
+    // formatMessage({ defaultMessage: 'Impact', id: 'W2JBdp' }), Use when add impacts
     formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
     formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
   ];
@@ -152,9 +152,10 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
               return (
                 <div
                   key={fieldName}
-                  className={cx('w-1/3', {
-                    'w-2/3 pr-4': index % 2 === 0,
-                  })}
+                  // Use when add impacts
+                  // className={cx('w-1/3', {
+                  //   'w-2/3 pr-4': index % 2 === 0,
+                  // })}
                 >
                   <fieldset>
                     <legend className="inline font-sans text-base font-medium text-black mb-3">
