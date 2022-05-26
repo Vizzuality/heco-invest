@@ -30,6 +30,10 @@ class User < ApplicationRecord
     super
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   private
 
   def confirmation_sent_within_limited_period?

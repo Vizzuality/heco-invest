@@ -23,5 +23,17 @@ FactoryBot.define do
     factory :account_project_developer do
       project_developer
     end
+
+    trait :unapproved do
+      review_status { "unapproved" }
+    end
+
+    trait :approved do
+      review_status { "approved" }
+    end
+
+    trait :rejected do
+      review_status { "rejected" }
+    end
   end
 end

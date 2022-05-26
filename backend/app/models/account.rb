@@ -30,8 +30,16 @@ class Account < ApplicationRecord
   validates :contact_email, presence: true
   validates :contact_email, format: {with: Devise.email_regexp}, unless: -> { contact_email.blank? }
 
+  before_update :set_reviewed_at, if: :review_status_changed?
+
   def slug_preview
     set_slug unless slug.present?
     slug
+  end
+
+  private
+
+  def set_reviewed_at
+    self.reviewed_at = Time.now
   end
 end

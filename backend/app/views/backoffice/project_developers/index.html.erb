@@ -1,0 +1,42 @@
+<table class="backoffice-table">
+  <thead>
+    <tr>
+      <th>
+        <%= t("backoffice.common.name") %>
+      </th>
+      <th>
+        <%= t(".account_owner") %>
+      </th>
+      <th>
+        <%= t(".account_users") %>
+      </th>
+      <th>
+        <%= t(".projects") %>
+      </th>
+      <th>
+        <%= t("backoffice.common.language") %>
+      </th>
+      <th>
+        <%= t("backoffice.common.status") %>
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @project_developers.each do |pd| %>
+      <tr>
+        <td><%= pd.name %></td>
+        <td><%= pd.account.owner.full_name %></td>
+        <td><%= pd.account.users.count + 1 %></td>
+        <td><%= pd.projects.count %></td>
+        <td><%= pd.language %></td>
+        <td><%= pd.account.review_status %></td>
+        <td>
+          <%= button_to t("backoffice.common.approve"), approve_backoffice_account_path(pd.account.id), class: "link-button", method: :post unless pd.account.approved? %>
+          <%= button_to t("backoffice.common.reject"), reject_backoffice_account_path(pd.account.id), class: "link-button", method: :post unless pd.account.rejected? %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
