@@ -145,8 +145,8 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
           title={name}
           subtitle={investorTypeName}
           text={about}
-          website={website}
-          social={getSocialInfo()}
+          // website={website}
+          // social={getSocialInfo()}
           contact={contact}
           originalLanguage={language}
         />
@@ -163,20 +163,35 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
 
           <TagsGrid className="mt-10 md:mt-14" rows={tagsGridRows} />
 
-          <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
-            <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
-          </h3>
-          <SDGs className="my-3" sdgs={sdgsMock.filter(({ id }) => sdgs?.includes(Number(id)))} />
+          {!!sdgs && (
+            <>
+              <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
+                <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
+              </h3>
+              <SDGs
+                className="my-3"
+                sdgs={sdgsMock.filter(({ id }) => sdgs?.includes(Number(id)))}
+              />
+            </>
+          )}
 
-          <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
-            <FormattedMessage defaultMessage="Mission" id="RXoqkD" />
-          </h3>
-          <p className="my-3">{mission}</p>
+          {!!mission && (
+            <>
+              <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
+                <FormattedMessage defaultMessage="Mission" id="RXoqkD" />
+              </h3>
+              <p className="my-3">{mission}</p>
+            </>
+          )}
 
-          <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
-            <FormattedMessage defaultMessage="Type of prioritized projects" id="5y6ZTQ" />
-          </h3>
-          <p className="my-3">{prioritized_projects_description}</p>
+          {!!prioritized_projects_description && (
+            <>
+              <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
+                <FormattedMessage defaultMessage="Type of prioritized projects" id="5y6ZTQ" />
+              </h3>
+              <p className="my-3">{prioritized_projects_description}</p>
+            </>
+          )}
           <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
             <FormattedMessage defaultMessage="Other information" id="kX7oGR" />
           </h3>
