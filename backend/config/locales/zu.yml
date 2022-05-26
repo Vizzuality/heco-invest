@@ -221,3 +221,38 @@ zu:
         name: Orinoquía Transition
       orinoquia:
         name: Orinoquía
+    sdg:
+      1:
+        name: No poverty
+      2:
+        name: Zero hunger
+      3:
+        name: Good health and well-being
+      4:
+        name: Quality education
+      5:
+        name: Gender equality
+      6:
+        name: Clean water and sanitation
+      7:
+        name: Affordable and clean energy
+      8:
+        name: Decent work and economic growth
+      9:
+        name: Industry, innovation and infrastructure
+      10:
+        name: Reduced inequalities
+      11:
+        name: Sustainable cities and communities
+      12:
+        name: Responsible consumption and production
+      13:
+        name: Climate action
+      14:
+        name: Life below water
+      15:
+        name: Life on land
+      16:
+        name: Peace, justice and strong institutions
+      17:
+        name: Partnerships for the goals
