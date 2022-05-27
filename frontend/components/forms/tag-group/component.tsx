@@ -62,7 +62,7 @@ export const TagGroup = <FormValues extends FieldValues>({
       })}
     >
       <div role="group">
-        <div className={cx('flex flex-wrap', { 'gap-2': isFilterTag })}>{tags}</div>
+        <div className={cx('flex flex-wrap gap-4', { 'gap-2': isFilterTag })}>{tags}</div>
       </div>
 
       {showSelectAllButton && (
