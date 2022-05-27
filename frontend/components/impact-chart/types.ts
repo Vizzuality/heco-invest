@@ -3,4 +3,6 @@ export type ImpactChartProps = {
   className?: string;
   impact?: number[];
   category: string;
+  /** Whether to display the chart in compact mode. Defaults to `false` */
+  compactMode?: boolean;
 };
