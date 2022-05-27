@@ -93,6 +93,14 @@ module "backend_build" {
   docker_context_path    = "./backend"
   cloud_run_service_name = "${var.project_name}-backend"
   test_container_name    = "backend"
+  additional_steps       = [{
+    name       = "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint = "gcloud"
+    args       = [
+      "run", "deploy", "${var.project_name}-jobs", "--image", "gcr.io/${var.gcp_project_id}/backend:latest",
+      "--region", var.gcp_region
+    ]
+  }]
 }
 
 module "frontend_cloudrun" {
@@ -184,6 +192,113 @@ module "backend_cloudrun" {
     {
       name  = "IS_JOBS_INSTANCE"
       value = false
+    },
+    {
+      name  = "SMTP_USERNAME"
+      value = "apikey"
+    },
+    {
+      name  = "SMTP_HOST"
+      value = "smtp.sendgrid.net"
+    },
+    {
+      name  = "SMTP_PORT"
+      value = 587
+    },
+    {
+      name  = "MAILER_DEFAULT_HOST"
+      value = var.domain
+    },
+    {
+      name  = "MAILER_DEFAULT_FROM"
+      value = "agnieszka.figiel@vizzuality.com"
+    },
+    {
+      name  = "GCP_PROJECT_ID"
+      value = var.gcp_project_id
+    },
+    {
+      name  = "GCP_REGION"
+      value = var.gcp_region
+    }
+  ]
+}
+
+module "jobs_cloudrun" {
+  source             = "../cloudrun"
+  name               = "${var.project_name}-jobs"
+  region             = var.gcp_region
+  project_id         = var.gcp_project_id
+  image_name         = "backend"
+  container_port     = 4000
+  start_command      = "start"
+  vpc_connector_name = module.network.vpc_access_connector_name
+  database           = module.database.database
+  min_scale          = var.backend_min_scale
+  max_scale          = var.backend_max_scale
+  secrets            = [
+    {
+      name        = "SECRET_KEY_BASE"
+      secret_name = module.rails_secret_key_base.secret_name
+    }, {
+      name        = "DATABASE_PASSWORD"
+      secret_name = module.postgres_application_user_password.secret_name
+    }, {
+      name        = "TX_TOKEN"
+      secret_name = module.transifex_api_key.secret_name
+    }, {
+      name        = "SMTP_PASSWORD"
+      secret_name = module.sendgrid_api_key.secret_name
+    }
+  ]
+  env_vars = [
+    {
+      name  = "DATABASE_NAME"
+      value = "heco"
+    },
+    {
+      name  = "DATABASE_USER"
+      value = "heco"
+    },
+    {
+      name  = "DATABASE_HOST"
+      value = module.database.database_host
+    },
+    {
+      name  = "GCP_STORAGE_BUCKET"
+      value = module.backend_storage.bucket_name
+    },
+    {
+      name  = "BACKEND_URL"
+      value = "https://${var.domain}/backend"
+    },
+    {
+      name  = "RAILS_RELATIVE_URL_ROOT"
+      value = "/backend"
+    },
+    {
+      name  = "CLOUDTASKER_PROCESSOR_HOST"
+      value = "https://${var.domain}"
+    },
+    {
+      name  = "CLOUDTASKER_PROCESSOR_PATH"
+      value = "/backend/cloudtasker/run"
+    },
+    {
+      name  = "CLOUD_TASKS_QUEUE_PREFIX"
+      value = var.project_name
+    },
+    {
+      name  = "CLOUD_TASKS_TEST_QUEUE_NAME"
+      value = "email-test"
+    },
+    {
+      name  = "IS_API_INSTANCE"
+      value = false
+    },
+    {
+      name  = "IS_JOBS_INSTANCE"
+      value = true
     },
     {
       name  = "SMTP_USERNAME"

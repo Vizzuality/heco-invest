@@ -9,7 +9,7 @@ import { Investor } from 'types/investor';
 
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
-import { PagedResponse, PagedRequest } from 'services/types';
+import { PagedResponse, PagedRequest, ResponseData } from 'services/types';
 
 const getInvestors = async (params?: PagedRequest) => {
   const { fields, search, page, perPage, ...rest } = params || {};
@@ -49,17 +49,16 @@ export function useInvestorsList(
 }
 
 /** Get a Investor using an id and, optionally, the wanted fields */
-export const getInvestor = async (id: string): Promise<any> => {
-  const config: AxiosRequestConfig = {
-    url: `/api/v1/project_developers/${id}`,
-    method: 'GET',
-  };
-  return await API.request(config).then((response) => response.data.data);
+export const getInvestor = async (id: string): Promise<Investor> => {
+  const response = await API.get<ResponseData<Investor>>(`/api/v1/investors/${id}`);
+  return response.data.data;
 };
 
 /** Use query for a single Investor */
-export function useInvestor(id: string) {
-  const query = useQuery([Queries.Investor, id], () => getInvestor(id));
+export function useInvestor(id: string, initialData?: Investor) {
+  const query = useQuery([Queries.Investor, id], () => getInvestor(id), {
+    initialData,
+  });
 
   return useMemo(
     () => ({

@@ -7,7 +7,7 @@
         "trusted": false,
         "latitude": 2.0,
         "longitude": 1.0,
-        "category": "non-timber-forest-production"
+        "category": "forestry-and-agroforestry"
       }
     },
     {
@@ -67,7 +67,7 @@
         "trusted": false,
         "latitude": 2.0,
         "longitude": 1.0,
-        "category": "forestry-and-agroforestry"
+        "category": "non-timber-forest-production"
       }
     }
   ]

@@ -52,6 +52,11 @@ variable "docker_build_args" {
   default = {}
 }
 
+variable "additional_steps" {
+  description = "Array of"
+  default = []
+}
+
 variable "cloud_run_service_name" {
   description = "The name of the Cloud Run service"
   type = string

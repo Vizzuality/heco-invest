@@ -1,4 +1,8 @@
 module PageHelpers
+  def t(...)
+    I18n.t(...)
+  end
+
   def last(selector)
     all(selector).last
   end
