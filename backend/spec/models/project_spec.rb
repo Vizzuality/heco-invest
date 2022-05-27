@@ -266,4 +266,28 @@ RSpec.describe Project, type: :model do
       end
     end
   end
+
+  describe "#assign_priority_landscape" do
+    let(:project) { create :project, geometry: geometry }
+    let!(:location) do
+      create :location, :with_geometry, location_type: :region,
+        geometry: RGeo::GeoJSON.decode({type: "Polygon", coordinates: [[[-10, -10], [10, -10], [10, 10], [-10, 10]]]}.to_json)
+    end
+
+    context "when geometry of project is inside defined priority landscape" do
+      let(:geometry) { {type: "Polygon", coordinates: [[[0, 0], [1, 0], [1, 1], [0, 1]]]} }
+
+      it "assigns correct priority landscape to project" do
+        expect(project.priority_landscape).to eq(location)
+      end
+    end
+
+    context "when geometry of project is outside of defined priority landscape" do
+      let(:geometry) { {type: "Polygon", coordinates: [[[-100, -100], [-99, -100], [-99, -99], [-100, -99]]]} }
+
+      it "does not assign any priority landscape to project" do
+        expect(project.priority_landscape).to be_nil
+      end
+    end
+  end
 end

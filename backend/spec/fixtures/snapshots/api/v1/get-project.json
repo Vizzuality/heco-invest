@@ -116,6 +116,9 @@
           "id": "db028313-e3e2-4299-814b-70b5e7387095",
           "type": "location"
         }
+      },
+      "priority_landscape": {
+        "data": null
       }
     }
   }

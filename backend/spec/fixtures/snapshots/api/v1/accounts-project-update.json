@@ -111,6 +111,9 @@
             "type": "project_image"
           }
         ]
+      },
+      "priority_landscape": {
+        "data": null
       }
     }
   }

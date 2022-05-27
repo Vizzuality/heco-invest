@@ -99,21 +99,7 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  parent: {
-                    type: :object,
-                    properties: {
-                      data: {
-                        type: :object,
-                        nullable: true,
-                        properties: {
-                          id: {type: :string},
-                          type: {type: :string}
-                        },
-                        required: %w[id type]
-                      },
-                      required: %w[data]
-                    }
-                  }
+                  parent: {"$ref" => "#/components/schemas/nullable_response_relation"}
                 }
               }
             },
@@ -209,6 +195,10 @@ RSpec.configure do |config|
                 type: :object,
                 properties: {
                   project_developer: {"$ref" => "#/components/schemas/response_relation"},
+                  country: {"$ref" => "#/components/schemas/response_relation"},
+                  municipality: {"$ref" => "#/components/schemas/response_relation"},
+                  department: {"$ref" => "#/components/schemas/response_relation"},
+                  priority_landscape: {"$ref" => "#/components/schemas/nullable_response_relation"},
                   involved_project_developer: {"$ref" => "#/components/schemas/response_relation"},
                   project_images: {"$ref" => "#/components/schemas/response_relations"}
                 }
@@ -340,6 +330,21 @@ RSpec.configure do |config|
               last: {type: :string}
             },
             required: %w[first self last]
+          },
+          nullable_response_relation: {
+            type: :object,
+            properties: {
+              data: {
+                type: :object,
+                nullable: true,
+                properties: {
+                  id: {type: :string},
+                  type: {type: :string}
+                },
+                required: %w[id type]
+              }
+            },
+            required: %w[data]
           },
           response_relation: {
             type: :object,
