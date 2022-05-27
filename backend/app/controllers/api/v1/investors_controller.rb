@@ -5,7 +5,6 @@ module API
 
       before_action :fetch_investor, only: :show
       load_and_authorize_resource
-      skip_load_resource only: :show
 
       def index
         investors = @investors.includes(account: [:owner, {picture_attachment: :blob}])

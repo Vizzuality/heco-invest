@@ -5,7 +5,6 @@ module API
 
       before_action :fetch_project_developer, only: :show
       load_and_authorize_resource
-      skip_load_resource only: :show
 
       def index
         project_developers = @project_developers.includes(

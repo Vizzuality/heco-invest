@@ -4,6 +4,8 @@ RSpec.describe "API V1 Open Calls", type: :request do
   before_all do
     @open_call = create(:open_call, instrument_type: "grant")
     create_list(:open_call, 6, instrument_type: "loan")
+    @unapproved_open_call = create(:open_call, investor: create(:investor, account: create(:account, :unapproved, users: [create(:user)])))
+    @approved_account = create(:account, review_status: :approved, users: [create(:user)])
   end
 
   include_examples :api_pagination, model: OpenCall, expected_total: 7
@@ -35,6 +37,10 @@ RSpec.describe "API V1 Open Calls", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/open_calls", dynamic_attributes: %w[closing_at])
+        end
+
+        it "ignores unapproved record" do
+          expect(response_json["data"].pluck("id")).not_to include(@unapproved_open_call.id)
         end
 
         context "with sparse fieldset" do
@@ -100,6 +106,28 @@ RSpec.describe "API V1 Open Calls", type: :request do
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/get-open-call-sparse-fieldset")
           end
+        end
+
+        context "when unapproved investor shows its own open call" do
+          let(:id) { @unapproved_open_call.id }
+
+          before { sign_in @unapproved_open_call.investor.account.users.first }
+
+          run_test!
+        end
+      end
+
+      response "403", :forbidden do
+        schema "$ref" => "#/components/schemas/errors"
+
+        let(:id) { @unapproved_open_call.id }
+
+        run_test!
+
+        context "when logged in user tries to see open call of unapproved investor" do
+          before { sign_in @approved_account.users.first }
+
+          run_test!
         end
       end
     end
