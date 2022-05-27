@@ -4,11 +4,11 @@ RSpec.describe "API V1 Investors", type: :request do
   before_all do
     @investor = create(:investor, sdgs: [3, 4])
     create_list(:investor, 6, sdgs: [1, 5])
-    @unapproved_investor = create(:investor, account: create(:account, review_status: :unapproved))
+    @unapproved_investor = create(:investor, account: create(:account, review_status: :unapproved, users: [create(:user)]))
     @approved_account = create(:account, review_status: :approved, users: [create(:user)])
   end
 
-  include_examples :api_pagination, model: Investor, expected_total: 8 # TODO: back to 7 when approved filter restored
+  include_examples :api_pagination, model: Investor, expected_total: 7
 
   path "/api/v1/investors" do
     get "Returns list of the investors" do
@@ -40,10 +40,8 @@ RSpec.describe "API V1 Investors", type: :request do
           expect(response.body).to match_snapshot("api/v1/investors")
         end
 
-        pending("fix when approved filter restored") do
-          it "ignores unapproved record" do
-            expect(response_json["data"].pluck("id")).not_to include(@unapproved_investor.id)
-          end
+        it "ignores unapproved record" do
+          expect(response_json["data"].pluck("id")).not_to include(@unapproved_investor.id)
         end
 
         context "with sparse fieldset" do
@@ -58,8 +56,7 @@ RSpec.describe "API V1 Investors", type: :request do
           let("filter[sdg]") { @investor.sdgs.join(",") }
 
           it "includes filtered investor" do
-            # TODO: fix when approved filter restored
-            expect(response_json["data"].pluck("id")).to eq([@investor.id, @unapproved_investor.id])
+            expect(response_json["data"].pluck("id")).to eq([@investor.id])
           end
         end
 
@@ -120,6 +117,28 @@ RSpec.describe "API V1 Investors", type: :request do
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/get-investor-approved-account")
           end
+        end
+
+        context "when account user checks its own unapproved investor" do
+          let(:id) { @unapproved_investor.id }
+
+          before { sign_in @unapproved_investor.account.users.first }
+
+          run_test!
+        end
+      end
+
+      response "403", :forbidden do
+        schema "$ref" => "#/components/schemas/errors"
+
+        let(:id) { @unapproved_investor.id }
+
+        run_test!
+
+        context "when logged in user tries to see unapproved investor" do
+          before { sign_in @approved_account.users.first }
+
+          run_test!
         end
       end
     end

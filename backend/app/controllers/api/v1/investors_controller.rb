@@ -3,8 +3,12 @@ module API
     class InvestorsController < BaseController
       include API::Pagination
 
+      before_action :fetch_investor, only: :show
+      load_and_authorize_resource
+      skip_load_resource only: :show
+
       def index
-        investors = Investor.includes(account: [:owner, {picture_attachment: :blob}])
+        investors = @investors.includes(account: [:owner, {picture_attachment: :blob}])
         investors = API::Filterer.new(investors, filter_params.to_h).call
         investors = API::Sorter.new(investors, sorting_by: params[:sorting]).call
         pagy_object, investors = pagy(investors, page: current_page, items: per_page)
@@ -19,10 +23,8 @@ module API
       end
 
       def show
-        investor = fetch_investor
-
         render json: InvestorSerializer.new(
-          investor,
+          @investor,
           fields: sparse_fieldset,
           params: {current_user: current_user}
         ).serializable_hash
@@ -31,10 +33,10 @@ module API
       private
 
       def fetch_investor
-        return Investor.find(params[:id]) if fetching_by_uuid?
+        return @investor = Investor.find(params[:id]) if fetching_by_uuid?
 
         account = Account.friendly.find(params[:id])
-        Investor.find_by!(account_id: account.id)
+        @investor = Investor.find_by!(account_id: account.id)
       end
 
       def filter_params
