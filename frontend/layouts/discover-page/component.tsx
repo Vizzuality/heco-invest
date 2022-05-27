@@ -1,7 +1,5 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
 
-import { useIntl } from 'react-intl';
-
 import cx from 'classnames';
 
 import { useRouter } from 'next/router';
@@ -10,6 +8,7 @@ import DiscoverSearch from 'containers/layouts/discover-search';
 
 import LayoutContainer from 'components/layout-container';
 import SortingButtons, { SortingOrderType } from 'components/sorting-buttons';
+import { SortingOptionKey } from 'components/sorting-buttons/types';
 import { Paths } from 'enums';
 
 import { useInvestorsList } from 'services/investors/investorsService';
@@ -17,6 +16,7 @@ import { useProjectDevelopersList } from 'services/project-developers/projectDev
 import { useProjectsList } from 'services/projects/projectService';
 
 import Header from './header';
+import { useSortingByOptions } from './helpers';
 import Navigation from './navigation';
 import { DiscoverPageLayoutProps } from './types';
 
@@ -24,18 +24,13 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   screenHeightLg = false,
   children,
 }: DiscoverPageLayoutProps) => {
-  const intl = useIntl();
   const router = useRouter();
   const { query } = router;
-
-  const sortingOptions = [
-    { key: 'name', label: intl.formatMessage({ defaultMessage: 'Name', id: 'HAlOn1' }) },
-    { key: 'created_at', label: intl.formatMessage({ defaultMessage: 'Date', id: 'P7PLVj' }) },
-  ];
+  const sortingOptions = useSortingByOptions();
 
   const defaultSorting = useMemo(
     () => ({
-      sortBy: 'created_at',
+      sortBy: 'created_at' as SortingOptionKey,
       sortOrder: 'desc' as SortingOrderType,
     }),
     []
@@ -45,7 +40,8 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   // components both in the header and in this layout; which one is visible depends on the screen resolution.
   // These states are here to keep both DiscoverSearch in sync, in case the user resizes their screen.
   const [searchInputValue, setSearchInputValue] = useState<string>('');
-  const [sorting, setSorting] = useState<{ sortBy: string; sortOrder: string }>(defaultSorting);
+  const [sorting, setSorting] =
+    useState<{ sortBy: SortingOptionKey; sortOrder: SortingOrderType }>(defaultSorting);
 
   // http://localhost:3000/discover/projects?page=2&search=sar&sorting=name+asc
 
@@ -128,7 +124,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   }, [queryParams.search]);
 
   useEffect(() => {
-    const [sortBy, sortOrder] = queryParams.sorting.split(' ');
+    const [sortBy, sortOrder]: any = queryParams.sorting.split(' ');
     setSorting(sortBy && sortOrder ? { sortBy, sortOrder } : defaultSorting);
   }, [defaultSorting, queryParams.sorting]);
 
@@ -159,10 +155,20 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     onSearchChange: setSearchInputValue,
   };
 
+  const getSortingOptions = () => {
+    // return all the sorting types for projects pages
+    if (router.pathname === Paths.Projects) return sortingOptions;
+    // reaturn just name and data sorting types for the other pages
+    if (sorting.sortBy !== 'name' && sorting.sortBy !== 'created_at') {
+      setSorting({ ...sorting, sortBy: 'name' });
+    }
+    return sortingOptions.slice(0, 2);
+  };
+
   const sortingButtonsProps = {
     sortBy: sorting.sortBy,
     sortOrder: sorting.sortOrder as SortingOrderType,
-    options: sortingOptions,
+    options: getSortingOptions(),
     onChange: handleSorting,
   };
 
