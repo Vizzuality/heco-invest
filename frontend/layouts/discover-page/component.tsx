@@ -29,9 +29,8 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   screenHeightLg = false,
   children,
 }: DiscoverPageLayoutProps) => {
-  const intl = useIntl();
-  const router = useRouter();
   const { push, pathname } = useRouter();
+  const intl = useIntl();
 
   const sortingOptions = [
     { key: 'name', label: intl.formatMessage({ defaultMessage: 'Name', id: 'HAlOn1' }) },
@@ -56,7 +55,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   // http://localhost:3000/discover/projects?page=2&search=sar&sorting=name+asc
   const queryParams = useQueryParams(sorting);
 
-  const queryOptions: UseQueryOptions<PagedResponse<any>> = { keepPreviousData: false };
+  const queryOptions = { keepPreviousData: false };
 
   const {
     data: projects,
@@ -90,7 +89,6 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     // TODO: Find a way to improve this.
     if (pathname.startsWith(Paths.Projects))
       return { ...projects, loading: isLoadingProjects || isFetchingProjects };
-
     if (pathname.startsWith(Paths.ProjectDevelopers)) {
       return {
         ...projectDevelopers,
@@ -142,7 +140,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     sortBy: string;
     sortOrder: SortingOrderType;
   }) => {
-    router.push({
+    push({
       query: {
         ...queryParams,
         sorting: `${sortBy || sorting.sortBy} ${sortOrder || sorting.sortOrder}`,
