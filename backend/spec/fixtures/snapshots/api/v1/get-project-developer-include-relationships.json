@@ -127,6 +127,9 @@
             "id": "9bb163fb-33cf-466e-bd05-8eb70c775055",
             "type": "location"
           }
+        },
+        "priority_landscape": {
+          "data": null
         }
       }
     },
@@ -236,6 +239,9 @@
             "id": "5d9e5da2-16a5-4365-944a-1b69b61c726e",
             "type": "location"
           }
+        },
+        "priority_landscape": {
+          "data": null
         }
       }
     }

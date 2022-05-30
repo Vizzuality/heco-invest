@@ -80,8 +80,7 @@ module Impacts
     end
 
     def location_intersection_for(location_type)
-      LocationGeometry.joins(:location).where(locations: {location_type: location_type})
-        .intersection_with(project.centroid).first&.location
+      LocationGeometry.of_type(location_type).intersection_with(project.centroid).first&.location
     end
   end
 end

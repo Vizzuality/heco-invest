@@ -10,9 +10,9 @@ RSpec.describe "Backoffice: Auth", type: :system do
       fill_in :admin_email, with: "admin@example.com"
       fill_in :admin_password, with: "SuperSecret6"
 
-      click_on "Sign in"
+      click_on t("backoffice.sign_in.sign_in")
 
-      expect(page).to have_text("Back office dashboard")
+      expect(page).to have_text(t("backoffice.layout.project_developers"))
     end
 
     context "when wrong credentials" do
@@ -20,9 +20,9 @@ RSpec.describe "Backoffice: Auth", type: :system do
         fill_in :admin_email, with: "admin@example.com"
         fill_in :admin_password, with: "secret3"
 
-        click_on "Sign in"
+        click_on t("backoffice.sign_in.sign_in")
 
-        expect(page).to have_text("Invalid Email or password")
+        expect(page).to have_text(t("devise.failure.invalid", authentication_keys: "Email"))
       end
     end
   end
@@ -32,11 +32,11 @@ RSpec.describe "Backoffice: Auth", type: :system do
 
     it "works well" do
       visit "/backoffice"
-      expect(page).to have_text("Back office dashboard")
+      expect(page).to have_text(t("backoffice.layout.project_developers"))
 
-      click_on "Sign Out"
+      click_on t("backoffice.layout.sign_out")
 
-      expect(page).to have_text("Signed out successfully.")
+      expect(page).to have_text(t("devise.sessions.signed_out"))
       expect(page).to have_current_path(new_admin_session_path)
     end
   end
