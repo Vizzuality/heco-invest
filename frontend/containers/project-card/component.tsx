@@ -12,6 +12,8 @@ import { usePress, useFocusWithin } from '@react-aria/interactions';
 
 import { usePropagableEventHandlers } from 'hooks/pointer-events';
 
+import { projectImpact } from 'helpers/project';
+
 import ImpactChart from 'components/impact-chart';
 import { Paths } from 'enums';
 
@@ -40,6 +42,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
 
   const { id, slug, name, trusted } = project;
   const category = allCategories?.find(({ id }) => id === project.category);
+  const impact = useMemo(() => projectImpact(project)['municipality'], [project]);
   const link = `${Paths.Project}/${slug}`;
 
   const ticketSizeStr = useMemo(
@@ -199,8 +202,8 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           </div>
         </div>
         <div>
-          <div className="w-20 h-20 aspect-square mx-auto">
-            <ImpactChart compactMode={true} category={category.id} impact={[]} />
+          <div className="w-20 h-20 mx-auto aspect-square">
+            <ImpactChart compactMode={true} category={category.id} impact={impact} />
           </div>
         </div>
       </div>
