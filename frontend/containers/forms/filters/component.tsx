@@ -114,17 +114,16 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
   }, []);
 
   const onChange = (ev: any) => {
-    // The imputs that are both on the tags and comboboxes need to be controled
-    const { id, value, name } = ev.target;
-    if (id?.includes('tag')) {
-      if (filtersState[name] === value) {
-        setValue(name, undefined);
-        setFiltersState({ ...filtersState, [name]: undefined });
-        return;
-      }
+    const { value, name } = ev.target;
+    // Remove check when clicking on a ckecked tag
+    if (filtersState[name] === value) {
+      // setValue(name, undefined);
+      setFiltersState({ ...filtersState, [name]: undefined });
+      return;
     }
+
     setFiltersState({ ...filtersState, [name]: value });
-    setValue(name, value);
+    // setValue(name, value);
   };
 
   return isLoading ? (
@@ -246,7 +245,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
 
                 <div className="flex flex-wrap gap-4">
                   <TagGroup
-                    name="filter[sdgs]"
+                    name="sdgs"
                     type="radio"
                     clearErrors={clearErrors}
                     setValue={setValue}

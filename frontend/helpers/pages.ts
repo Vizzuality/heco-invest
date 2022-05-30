@@ -80,3 +80,21 @@ export const useQueryParams = (sortingState?: { sortBy: string; sortOrder: strin
     };
   }, [query, sortingState]);
 };
+
+/** Hook that returns the search queries on string format */
+export const useQueryString = () => {
+  const { query } = useRouter();
+  const queries = Object.entries(query);
+  if (queries.length) {
+    const queryString = new URLSearchParams();
+    queries.forEach(([key, value]) => {
+      let queryValue = value;
+      if (Array.isArray(value)) {
+        queryValue = value.join(',');
+      }
+      queryString.append(key, queryValue as string);
+    });
+    return `?${queryString}`;
+  }
+  return '';
+};
