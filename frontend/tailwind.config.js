@@ -31,6 +31,7 @@ module.exports = {
         200: '#E5E7EB',
         400: '#B5B5B5',
         600: '#999999',
+        700: '#757575',
         800: '#585858',
         900: '#1D1D1B',
       },
@@ -87,6 +88,7 @@ module.exports = {
       backgroundImage: {
         'radial-green-dark':
           'radial-gradient(63.59% 95.05% at 42.99% 35.35%, #316146 0%, #073525 100%)',
+        'radial-beige': 'radial-gradient(63.59% 95.05% at 42.99% 35.35%, #EFEDE9 0%, #FFFDFA 100%)',
       },
       transitionProperty: {
         width: 'width',

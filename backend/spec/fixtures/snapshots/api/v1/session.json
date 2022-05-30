@@ -7,7 +7,8 @@
       "last_name": "Block",
       "email": "user@example.com",
       "role": "light",
-      "confirmed": true
+      "confirmed": true,
+      "approved": null
     }
   }
 }

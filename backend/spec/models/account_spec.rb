@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe Account, type: :model do
   subject { build(:account) }
 
+  it_behaves_like :searchable
   it_behaves_like :translatable
 
   it { is_expected.to be_valid }
@@ -63,5 +64,15 @@ RSpec.describe Account, type: :model do
   it "should not be valid with malformed contact email" do
     subject.contact_email = "derp"
     expect(subject).to have(1).errors_on(:contact_email)
+  end
+
+  context "when changing review_status" do
+    subject { create(:account, :unapproved) }
+
+    it "should set reviewed_at timestamp" do
+      expect(subject.reviewed_at).to be_nil
+      subject.approved!
+      expect(subject.reviewed_at).to be_present
+    end
   end
 end

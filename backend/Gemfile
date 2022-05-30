@@ -13,11 +13,14 @@ gem "rswag"
 gem "active_storage_validations"
 gem "rspec-rails", "~> 5.0.0"
 
+# BackOffice
 gem "cssbundling-rails"
 gem "jsbundling-rails"
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
+gem "simple_form"
+gem "simple_form-tailwind"
 
 gem "friendly_id", "~> 5.4.0"
 gem "devise"
@@ -66,7 +69,10 @@ group :development do
 end
 
 group :test do
+  gem "capybara", ">= 3.26"
+  gem "cuprite"
   gem "rspec-collection_matchers"
+  gem "rspec-retry"
   gem "rspec-request_snapshot"
   gem "rswag-specs"
   gem "simplecov", require: false

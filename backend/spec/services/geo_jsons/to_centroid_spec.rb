@@ -15,7 +15,7 @@ RSpec.describe GeoJsons::ToCentroid do
     context "when geo_json is point" do
       let(:geo_json) { {type: "Point", coordinates: [100.0, 0.0]} }
 
-      it "returns correct center" do
+      it "returns correct centroid" do
         expect(subject.call.x).to eq(100.0)
         expect(subject.call.y).to eq(0.0)
       end
@@ -24,7 +24,7 @@ RSpec.describe GeoJsons::ToCentroid do
     context "when geo_json is polygon" do
       let(:geo_json) { {type: "Polygon", coordinates: [[[100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0]]]} }
 
-      it "returns correct center" do
+      it "returns correct centroid" do
         expect(subject.call.x).to eq(100.5)
         expect(subject.call.y).to eq(0.5)
       end
@@ -33,7 +33,7 @@ RSpec.describe GeoJsons::ToCentroid do
     context "when geo_json is feature" do
       let(:geo_json) { {type: "Feature", geometry: {type: "Point", coordinates: [100.0, 0.0]}} }
 
-      it "returns correct center" do
+      it "returns correct centroid" do
         expect(subject.call.x).to eq(100.0)
         expect(subject.call.y).to eq(0.0)
       end
@@ -42,7 +42,7 @@ RSpec.describe GeoJsons::ToCentroid do
     context "when geo_json is list of features" do
       let(:geo_json) { {type: "FeatureCollection", features: [{type: "Feature", geometry: {type: "Point", coordinates: [100.0, 0.0]}}]} }
 
-      it "returns correct center" do
+      it "returns correct centroid" do
         expect(subject.call.x).to eq(100.0)
         expect(subject.call.y).to eq(0.0)
       end

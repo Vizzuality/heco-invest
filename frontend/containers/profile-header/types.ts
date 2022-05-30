@@ -1,4 +1,4 @@
-import { ContactInformationType } from 'containers/social-contact/contact-information-modal';
+import { ContactItemType } from 'containers/social-contact/contact-information-modal';
 import { WebsiteSocialProps } from 'containers/social-contact/website-social';
 
 import { LanguageType } from 'types';
@@ -23,7 +23,7 @@ export type ProfileHeaderProps = {
   /** Number of projects */
   totalProjects?: number;
   /** Contact information for the project developer */
-  contact?: ContactInformationType;
+  contact?: ContactItemType;
   /** Callback for when the favorite button is clicked */
   onFavoriteClick?: () => void;
   /** If the favorite Button shoulb be on loading state */

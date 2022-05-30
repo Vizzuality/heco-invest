@@ -13,7 +13,7 @@ module GeoJsons
     def call
       return if geo_json.blank?
 
-      compute_center_for unwrap_features_of(geo_json)
+      compute_centroid_for unwrap_features_of(geo_json)
     end
 
     private
@@ -25,7 +25,7 @@ module GeoJsons
       geo_json
     end
 
-    def compute_center_for(geometry)
+    def compute_centroid_for(geometry)
       raise NoGeometry if geometry.blank?
 
       case geometry.geometry_type

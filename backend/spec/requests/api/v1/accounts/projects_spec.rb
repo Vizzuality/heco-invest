@@ -148,4 +148,101 @@ RSpec.describe "API V1 Account Projects", type: :request do
       end
     end
   end
+
+  path "/api/v1/account/projects/{id}" do
+    put "Update existing Project of User" do
+      tags "Projects"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :id, in: :path, type: :string, description: "Use project ID or slug"
+      parameter name: :project_params, in: :body, schema: project_params_schema
+
+      let(:project_image) { create :project_image }
+      let(:project) { create :project, project_images: [project_image] }
+      let(:id) { project.id }
+      let(:project_params) do
+        {
+          name: "Updated Project Name",
+          country_id: country.id,
+          municipality_id: municipality.id,
+          department_id: department.id,
+          development_stage: "consolidaton",
+          estimated_duration_in_months: 12,
+          problem: "Updated Problem description",
+          solution: "Updated Solution description",
+          expected_impact: "Updated Expected impact description",
+          looking_for_funding: true,
+          funding_plan: "Updated Funding plan description",
+          ticket_size: "prototyping",
+          received_funding: true,
+          received_funding_amount_usd: 1_000_000,
+          received_funding_investor: "Updated Some Investor name",
+          replicability: "Updated Replicability desc",
+          sustainability: "Updated Sustainability desc",
+          progress_impact_tracking: "Updated Progress impact tracking desc",
+          description: "Updated Short project description",
+          relevant_links: "Updated Here relevant links",
+          involved_project_developer_ids: project_developers.map(&:id),
+          involved_project_developer_not_listed: true,
+          geometry: {type: "Point", coordinates: [1, 2]},
+          category: "sustainable-agrosystems",
+          target_groups: %w[urban-populations indigenous-peoples],
+          impact_areas: %w[restoration pollutants-reduction],
+          sdgs: [2, 4, 5],
+          instrument_types: %w[grant]
+        }
+      end
+
+      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+      it_behaves_like "with not found error", csrf: true, require_project_developer: true
+      it_behaves_like "with forbidden error", csrf: true, require_project_developer: true
+
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/project"}
+        }
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before do
+          project.project_developer.account.users << user
+          sign_in user
+        end
+
+        run_test!
+
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/accounts-project-update")
+        end
+
+        context "when slug is used" do
+          let(:id) { project.slug }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/accounts-project-update")
+          end
+        end
+
+        context "when adding new project image" do
+          let(:project_params) do
+            {project_images_attributes: [{file: blob.signed_id, cover: true}]}
+          end
+
+          it "adds new image" do
+            expect(response_json["data"]["relationships"]["project_images"]["data"].count).to eq(2)
+          end
+        end
+
+        context "when removing existing project image" do
+          let(:project_params) do
+            {project_images_attributes: [{id: project_image.id, _destroy: "1"}]}
+          end
+
+          it "removes image" do
+            expect(response_json["data"]["relationships"]["project_images"]["data"].count).to eq(0)
+          end
+        end
+      end
+    end
+  end
 end

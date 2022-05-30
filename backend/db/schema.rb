@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_26_092240) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -66,6 +66,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.uuid "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "admins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "ui_language", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
   create_table "background_job_events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -239,8 +254,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.text "name_pt"
     t.text "slug", null: false
     t.integer "status", default: 0, null: false
-    t.decimal "latitude", precision: 10, scale: 6
-    t.decimal "longitude", precision: 10, scale: 6
     t.text "address"
     t.string "ticket_size"
     t.string "instrument_types", array: true
@@ -295,9 +308,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
     t.text "relevant_links_pt"
     t.string "category", null: false
     t.jsonb "geometry", default: {}
+    t.decimal "municipality_biodiversity_impact", precision: 25, scale: 20
+    t.decimal "municipality_climate_impact", precision: 25, scale: 20
+    t.decimal "municipality_water_impact", precision: 25, scale: 20
+    t.decimal "municipality_community_impact", precision: 25, scale: 20
+    t.decimal "municipality_total_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_biodiversity_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_climate_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_water_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_community_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_total_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_biodiversity_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_climate_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_water_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_community_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_total_impact", precision: 25, scale: 20
+    t.geometry "centroid", limit: {:srid=>0, :type=>"st_point"}
+    t.uuid "priority_landscape_id"
     t.index ["country_id"], name: "index_projects_on_country_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
     t.index ["municipality_id"], name: "index_projects_on_municipality_id"
+    t.index ["priority_landscape_id"], name: "index_projects_on_priority_landscape_id"
     t.index ["project_developer_id", "name_en"], name: "index_projects_on_project_developer_id_and_name_en", unique: true
     t.index ["project_developer_id", "name_es"], name: "index_projects_on_project_developer_id_and_name_es", unique: true
     t.index ["project_developer_id", "name_pt"], name: "index_projects_on_project_developer_id_and_name_pt", unique: true
@@ -347,6 +378,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_160921) do
   add_foreign_key "projects", "locations", column: "country_id"
   add_foreign_key "projects", "locations", column: "department_id"
   add_foreign_key "projects", "locations", column: "municipality_id"
+  add_foreign_key "projects", "locations", column: "priority_landscape_id"
   add_foreign_key "projects", "project_developers", on_delete: :cascade
   add_foreign_key "users", "accounts", on_delete: :cascade
 end

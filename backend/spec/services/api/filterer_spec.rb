@@ -77,6 +77,16 @@ RSpec.describe API::Filterer do
           expect(subject.call).to eq([correct_project_developer])
         end
       end
+
+      context "when filtered by full_text param which is at different table" do
+        let(:filters) { {full_text: "TEST", language: :en} }
+        let!(:correct_project_developer) { create :project_developer, account: (create :account, name: "TEST") }
+        let!(:different_text_project_developer) { create :project_developer, account: (create :account, name: "DIFFERENT") }
+
+        it "returns only correct project developers" do
+          expect(subject.call).to eq([correct_project_developer])
+        end
+      end
     end
 
     describe "used with Open Call query" do
@@ -144,6 +154,16 @@ RSpec.describe API::Filterer do
         let!(:different_text_investor) { create :investor, mission_en: "DIFFERENT" }
 
         it "returns only records with correct text at correct language" do
+          expect(subject.call).to eq([correct_investor])
+        end
+      end
+
+      context "when filtered by full_text param which is at different table" do
+        let(:filters) { {full_text: "TEST", language: :en} }
+        let!(:correct_investor) { create :investor, account: (create :account, name: "TEST") }
+        let!(:different_text_project_developer) { create :investor, account: (create :account, name: "DIFFERENT") }
+
+        it "returns only correct project developers" do
           expect(subject.call).to eq([correct_investor])
         end
       end

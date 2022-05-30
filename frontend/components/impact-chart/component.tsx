@@ -21,11 +21,17 @@ import { ImpactChartProps } from './types';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip);
 
-export const ImpactChart: FC<ImpactChartProps> = ({ className, category, impact = [] }) => {
+export const ImpactChart: FC<ImpactChartProps> = ({
+  className,
+  category,
+  impact = [],
+  compactMode = false,
+}) => {
   const {
     data: { impact: impacts, category: categories },
   } = useEnums();
 
+  //const impact = [];
   const color = categories?.find(({ id }) => id === category)?.color;
 
   const isPlaceholder = !impact?.length;
@@ -49,6 +55,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({ className, category, impact 
   const options: ChartOptions<'radar'> = {
     scales: {
       r: {
+        display: !compactMode,
         angleLines: {
           color: 'rgba(227, 222, 214, 0.5)',
           display: !isPlaceholder,
@@ -71,21 +78,35 @@ export const ImpactChart: FC<ImpactChartProps> = ({ className, category, impact 
       },
     },
     plugins: {
-      tooltip: {
-        backgroundColor: 'white',
-        bodyColor: 'rgba(88, 88, 88, 1)',
-        titleColor: 'rgba(88, 88, 88, 1)',
-        titleFont: { weight: '400', size: 10 },
-        mode: 'nearest',
-        borderColor: 'rgba(88, 88, 88, 1)',
-        displayColors: false,
-      },
+      ...(!compactMode && {
+        tooltip: {
+          backgroundColor: 'white',
+          bodyColor: 'rgba(88, 88, 88, 1)',
+          titleColor: 'rgba(88, 88, 88, 1)',
+          titleFont: { weight: '400', size: 10 },
+          mode: 'nearest',
+          borderColor: 'rgba(88, 88, 88, 1)',
+          displayColors: false,
+        },
+      }),
     },
   };
 
+  if (compactMode) {
+    return (
+      <div className={className}>
+        {isPlaceholder ? (
+          <div className="w-full aspect-square border border-dashed rounded-full bg-background-middle border-background-dark bg-radial-beige" />
+        ) : (
+          <Radar data={data} options={options} />
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className={className}>
-      <div className="flex justify-between w-full">
+      <div className="flex justify-between w-full ">
         <div className="z-0 flex flex-col w-full h-full gap-2">
           {impacts?.length && (
             <span className="flex items-center justify-center w-full">
@@ -104,8 +125,10 @@ export const ImpactChart: FC<ImpactChartProps> = ({ className, category, impact 
                 <FieldInfo infoText={impacts[2].description} />
               </span>
             )}
-            <span className="flex items-center w-full overflow-x-scroll aspect-square">
-              <Radar data={data} options={options} />
+            <span className="relative flex items-center w-full overflow-x-scroll aspect-square">
+              <span className="absolute top-2 right-2 bottom-2 left-2 bg-background-middle rounded-full opacity-50" />
+              <span className="absolute top-2 right-2 bottom-2 left-2 bg-background-middle rounded-full opacity-60 scale-50" />
+              <Radar className="z-10" data={data} options={options} />
             </span>
             {impacts?.length && (
               <span className="flex items-center justify-start ml-2">
