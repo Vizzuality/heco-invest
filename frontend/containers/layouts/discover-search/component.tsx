@@ -46,14 +46,18 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
           'rounded-t-4xl': openFilters,
         })}
       >
-        <div className="flex items-center justify-between gap-4 py-3 pl-6 pr-4">
-          <Icon aria-hidden={true} icon={SearchIcon} className="w-8 h-8 text-green-dark" />
+        <div className="flex items-center justify-between sm:gap-4 py-3 px-6">
           <form
             role="search"
-            className="sm:items-center items-end sm:justify-between w-full h-full gap-3 flex sm:flex-row flex-col justify-end"
+            className="items-center sm:justify-between w-full h-full gap-1 sm:gap-3 flex sm:flex-row flex-col justify-end"
             onSubmit={handleSubmit}
           >
-            <div className="w-full">
+            <div className="w-full flex gap-2 items-center">
+              <Icon
+                aria-hidden={true}
+                icon={SearchIcon}
+                className="w-6 h-6 sm:w-8 sm:h-8 mr-2 text-green-dark"
+              />
               <label htmlFor="header-search" className="sr-only">
                 <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
               </label>
@@ -61,11 +65,11 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
                 id="header-search"
                 type="search"
                 value={searchText}
-                className="w-full h-full px-2 text-lg rounded-full outline-none autofill:bg-transparent"
+                className="w-full h-full text-lg rounded-full outline-none autofill:bg-transparent"
                 onChange={handleChange}
               />
             </div>
-            <div className="flex gap-6 sm:justify-self-end">
+            <div className="flex gap-4 sm:gap-6 sm:justify-self-end items-center">
               {/* Filters accordion header https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html */}
               <h3>
                 <Button

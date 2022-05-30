@@ -236,7 +236,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
               id="more-filters"
               role="region"
               aria-labelledby="more-filters-button"
-              className="mb-4"
+              className="mb-6"
             >
               <fieldset>
                 <legend className="inline font-sans text-base font-medium text-black mb-3">
@@ -276,8 +276,8 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
               </fieldset>
             </div>
           )}
-          <div className="flex justify-between items-center text-sm text-gray-600">
-            <div>
+          <div className="sm:flex justify-between items-center text-sm text-gray-600">
+            <div className="mb-4 sm:mb-0">
               <p>
                 <FormattedMessage
                   defaultMessage="Note: Some filters not apply to all tabs"
