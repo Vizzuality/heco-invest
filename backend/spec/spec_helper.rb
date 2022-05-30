@@ -1,5 +1,6 @@
 require "simplecov"
 require "webmock/rspec"
+require "rspec/retry"
 
 SimpleCov.start do
   add_filter "/spec/"
@@ -24,6 +25,21 @@ RSpec.configure do |config|
   # end of the spec run, to help surface which specs are running
   # particularly slow.
   # config.profile_examples = 10
+
+  # show retry status in spec process
+  config.verbose_retry = true
+  # show exception that triggers a retry if verbose_retry is set to true
+  config.display_try_failure_messages = true
+
+  # run retry only on system specs
+  config.around :each, type: :system do |ex|
+    ex.run_with_retry retry: 3
+  end
+
+  # callback to be run between retries
+  config.retry_callback = proc do |ex|
+    Capybara.reset! if ex.metadata[:type] == :system
+  end
 
   config.order = :random
   Kernel.srand config.seed

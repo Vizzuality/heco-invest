@@ -49,10 +49,25 @@
             2.0
           ]
         },
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "funding_plan": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "trusted": false
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null
       },
       "relationships": {
         "project_developer": {
@@ -102,6 +117,9 @@
             "id": "db028313-e3e2-4299-814b-70b5e7387095",
             "type": "location"
           }
+        },
+        "priority_landscape": {
+          "data": null
         }
       }
     },
@@ -154,10 +172,25 @@
             2.0
           ]
         },
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "funding_plan": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "trusted": false
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null
       },
       "relationships": {
         "project_developer": {
@@ -193,6 +226,9 @@
             "id": "de4ca973-c250-4bff-955f-001db07b012e",
             "type": "location"
           }
+        },
+        "priority_landscape": {
+          "data": null
         }
       }
     },
@@ -245,10 +281,25 @@
             2.0
           ]
         },
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "funding_plan": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "trusted": false
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null
       },
       "relationships": {
         "project_developer": {
@@ -284,6 +335,9 @@
             "id": "f160f22c-997a-4911-b24a-5e94b812a42a",
             "type": "location"
           }
+        },
+        "priority_landscape": {
+          "data": null
         }
       }
     },
@@ -336,10 +390,25 @@
             2.0
           ]
         },
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "funding_plan": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "trusted": false
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null
       },
       "relationships": {
         "project_developer": {
@@ -375,6 +444,9 @@
             "id": "852861af-8c1d-42e2-afe6-a69d36631ec6",
             "type": "location"
           }
+        },
+        "priority_landscape": {
+          "data": null
         }
       }
     },
@@ -427,10 +499,25 @@
             2.0
           ]
         },
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "funding_plan": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "trusted": false
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null
       },
       "relationships": {
         "project_developer": {
@@ -466,6 +553,9 @@
             "id": "ffa8061e-f451-431e-bb65-d9a169819d55",
             "type": "location"
           }
+        },
+        "priority_landscape": {
+          "data": null
         }
       }
     },
@@ -518,10 +608,25 @@
             2.0
           ]
         },
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "funding_plan": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "trusted": false
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null
       },
       "relationships": {
         "project_developer": {
@@ -557,6 +662,9 @@
             "id": "fac0ac08-6ca4-4354-ab9e-881d7472fb80",
             "type": "location"
           }
+        },
+        "priority_landscape": {
+          "data": null
         }
       }
     },
@@ -609,10 +717,25 @@
             2.0
           ]
         },
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "funding_plan": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
-        "trusted": false
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null
       },
       "relationships": {
         "project_developer": {
@@ -648,6 +771,9 @@
             "id": "dbe13ff8-016e-4d94-b428-654f03bffb85",
             "type": "location"
           }
+        },
+        "priority_landscape": {
+          "data": null
         }
       }
     }

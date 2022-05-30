@@ -1,0 +1,22 @@
+<div class="bg-white p-6 rounded-2xl shadow-lg min-w-[600px]">
+  <h2 class="text-green-dark font-bold text-lg"><%= t("backoffice.sign_in.welcome") %></h2>
+
+  <p class="my-6 text-gray-600"><%= t("backoffice.sign_in.enter_details_below") %></p>
+
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <% flash.each do |type, message| %>
+      <div class="mb-4 bg-red-50 text-black text-sm px-4 py-4">
+        <%= message %>
+      </div>
+    <% end %>
+
+    <%= f.input :email, required: true %>
+    <%= f.input :password, required: true %>
+
+    <% if devise_mapping.rememberable? %>
+      <%= f.input :remember_me, as: :boolean %>
+    <% end%>
+
+    <%= f.submit t("backoffice.sign_in.sign_in"), class: "button button-primary-green mx-auto" %>
+  <% end %>
+</div>

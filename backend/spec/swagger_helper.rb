@@ -99,21 +99,7 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  parent: {
-                    type: :object,
-                    properties: {
-                      data: {
-                        type: :object,
-                        nullable: true,
-                        properties: {
-                          id: {type: :string},
-                          type: {type: :string}
-                        },
-                        required: %w[id type]
-                      },
-                      required: %w[data]
-                    }
-                  }
+                  parent: {"$ref" => "#/components/schemas/nullable_response_relation"}
                 }
               }
             },
@@ -179,21 +165,40 @@ RSpec.configure do |config|
                   relevant_links: {type: :string, nullable: true},
                   ticket_size: {type: :string, enum: TicketSize::TYPES, nullable: true},
                   geometry: {type: :object},
-                  latitude: {type: :string},
-                  longitude: {type: :string},
+                  latitude: {type: :number},
+                  longitude: {type: :number},
                   category: {type: :string},
                   target_groups: {type: :array, items: {type: :string}},
                   impact_areas: {type: :array, items: {type: :string}},
                   instrument_types: {type: :array, items: {type: :string}},
                   sdgs: {type: :array, items: {type: :integer}},
                   language: {type: :string},
-                  favourite: {type: :boolean, nullable: true}
+                  favourite: {type: :boolean, nullable: true},
+                  municipality_biodiversity_impact: {type: :number, nullable: true},
+                  municipality_climate_impact: {type: :number, nullable: true},
+                  municipality_water_impact: {type: :number, nullable: true},
+                  municipality_community_impact: {type: :number, nullable: true},
+                  municipality_total_impact: {type: :number, nullable: true},
+                  hydrobasin_biodiversity_impact: {type: :number, nullable: true},
+                  hydrobasin_climate_impact: {type: :number, nullable: true},
+                  hydrobasin_water_impact: {type: :number, nullable: true},
+                  hydrobasin_community_impact: {type: :number, nullable: true},
+                  hydrobasin_total_impact: {type: :number, nullable: true},
+                  priority_landscape_biodiversity_impact: {type: :number, nullable: true},
+                  priority_landscape_climate_impact: {type: :number, nullable: true},
+                  priority_landscape_water_impact: {type: :number, nullable: true},
+                  priority_landscape_community_impact: {type: :number, nullable: true},
+                  priority_landscape_total_impact: {type: :number, nullable: true}
                 }
               },
               relationships: {
                 type: :object,
                 properties: {
                   project_developer: {"$ref" => "#/components/schemas/response_relation"},
+                  country: {"$ref" => "#/components/schemas/response_relation"},
+                  municipality: {"$ref" => "#/components/schemas/response_relation"},
+                  department: {"$ref" => "#/components/schemas/response_relation"},
+                  priority_landscape: {"$ref" => "#/components/schemas/nullable_response_relation"},
                   involved_project_developer: {"$ref" => "#/components/schemas/response_relation"},
                   project_images: {"$ref" => "#/components/schemas/response_relations"}
                 }
@@ -325,6 +330,21 @@ RSpec.configure do |config|
               last: {type: :string}
             },
             required: %w[first self last]
+          },
+          nullable_response_relation: {
+            type: :object,
+            properties: {
+              data: {
+                type: :object,
+                nullable: true,
+                properties: {
+                  id: {type: :string},
+                  type: {type: :string}
+                },
+                required: %w[id type]
+              }
+            },
+            required: %w[data]
           },
           response_relation: {
             type: :object,

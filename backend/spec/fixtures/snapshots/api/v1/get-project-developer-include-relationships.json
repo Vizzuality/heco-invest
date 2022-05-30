@@ -70,10 +70,25 @@
             2.0
           ]
         },
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "funding_plan": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "trusted": false
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null
       },
       "relationships": {
         "project_developer": {
@@ -112,6 +127,9 @@
             "id": "9bb163fb-33cf-466e-bd05-8eb70c775055",
             "type": "location"
           }
+        },
+        "priority_landscape": {
+          "data": null
         }
       }
     },
@@ -164,10 +182,25 @@
             2.0
           ]
         },
-        "latitude": "2.0",
-        "longitude": "1.0",
+        "latitude": 2.0,
+        "longitude": 1.0,
         "funding_plan": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "trusted": false
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null
       },
       "relationships": {
         "project_developer": {
@@ -206,6 +239,9 @@
             "id": "5d9e5da2-16a5-4365-944a-1b69b61c726e",
             "type": "location"
           }
+        },
+        "priority_landscape": {
+          "data": null
         }
       }
     }

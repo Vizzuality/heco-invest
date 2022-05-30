@@ -9,8 +9,8 @@ class ImpactArea
     energy-efficiency
     renewable-energy
     carbon-storage-or-sequestration
-    water-capacity
-    water-efficiency
+    water-capacity-or-efficiency
+    hydrometerological-risk-reduction
     sustainable-food
     gender-equality-jobs
     indigenous-or-ethic-jobs

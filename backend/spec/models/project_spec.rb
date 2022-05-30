@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Project, type: :model do
+  include ActiveJob::TestHelper
+
   subject { build(:project) }
 
   it_behaves_like :searchable
@@ -137,11 +139,11 @@ RSpec.describe Project, type: :model do
     expect(subject).to have(1).errors_on(:geometry)
   end
 
-  it "should assign latitude/longitude attributes with valid geometry" do
+  it "should precompute centroid with valid geometry" do
     subject.geometry = {type: "Point", coordinates: [100.0, 0.0]}
     expect(subject).to be_valid
-    expect(subject.latitude).to eq(0.0)
-    expect(subject.longitude).to eq(100.0)
+    expect(subject.centroid.y).to eq(0.0)
+    expect(subject.centroid.x).to eq(100.0)
   end
 
   it "should not be valid for unsupported geometry type" do
@@ -231,6 +233,61 @@ RSpec.describe Project, type: :model do
     it "should not be valid if mismatched location type for municipality" do
       subject.municipality = create(:department)
       expect(subject).to have(1).errors_on(:municipality)
+    end
+  end
+
+  describe "#calculate_impacts" do
+    let!(:project) { create :project }
+
+    context "when geometry changes" do
+      it "enqueues impact calculation job" do
+        assert_enqueued_with job: ImpactCalculationJob, args: [project] do
+          project.geometry = {type: "Polygon", coordinates: [[[0.3, 0.3], [1.3, 0.3], [1.3, 1.3], [0.3, 1.3]]]}
+          project.save!
+        end
+      end
+    end
+
+    context "when impact areas" do
+      it "enqueues impact calculation job" do
+        assert_enqueued_with job: ImpactCalculationJob, args: [project] do
+          project.impact_areas = ["hydrometerological-risk-reduction"]
+          project.save!
+        end
+      end
+    end
+
+    context "when any other attribute changes" do
+      it "does not enqueue impact calculation job" do
+        assert_no_enqueued_jobs only: ImpactCalculationJob do
+          project.name = "NEW NAME"
+          project.save!
+        end
+      end
+    end
+  end
+
+  describe "#assign_priority_landscape" do
+    let(:project) { create :project, geometry: geometry }
+    let!(:location) do
+      create :location, :with_geometry, location_type: :region,
+        geometry: RGeo::GeoJSON.decode({type: "Polygon", coordinates: [[[-10, -10], [10, -10], [10, 10], [-10, 10]]]}.to_json)
+    end
+
+    context "when geometry of project is inside defined priority landscape" do
+      let(:geometry) { {type: "Polygon", coordinates: [[[0, 0], [1, 0], [1, 1], [0, 1]]]} }
+
+      it "assigns correct priority landscape to project" do
+        expect(project.priority_landscape).to eq(location)
+      end
+    end
+
+    context "when geometry of project is outside of defined priority landscape" do
+      let(:geometry) { {type: "Polygon", coordinates: [[[-100, -100], [-99, -100], [-99, -99], [-100, -99]]]} }
+
+      it "does not assign any priority landscape to project" do
+        expect(project.priority_landscape).to be_nil
+      end
     end
   end
 end

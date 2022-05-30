@@ -1,0 +1,28 @@
+<% content_for :content do %>
+  <header class="w-full bg-green-dark text-beige">
+    <div class="container mx-auto">
+      <div class="flex items-center justify-between h-16 md:h-20 gap-x-8 md:gap-x-16">
+        <div>
+          <a class="font-semibold" href="/">HeCo Invest</a>
+          <span class="font-light"><%= t("backoffice.layout.header") %></span>
+        </div>
+        <div class="flex items-center justify-end flex-1">
+          <%= current_admin.email %>
+          <%= button_to t("backoffice.layout.sign_out"), destroy_admin_session_path, class: "ml-2", method: :delete %>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto">
+      <nav class="flex gap-4.5 py-3">
+        <%= nav_link_to t("backoffice.layout.investors"), backoffice_investors_path %>
+        <%= nav_link_to t("backoffice.layout.project_developers"), backoffice_project_developers_path %>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto py-6">
+    <%= yield %>
+  </main>
+<% end %>
+
+<%= render template: "layouts/application" %>

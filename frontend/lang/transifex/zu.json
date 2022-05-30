@@ -146,6 +146,9 @@
   "5sg7KC": {
     "string": "Password"
   },
+  "5y6ZTQ": {
+    "string": "Type of prioritized projects"
+  },
   "5zAKQ7": {
     "string": "About HeCo"
   },
@@ -187,9 +190,6 @@
   },
   "7gMEKc": {
     "string": "Project details"
-  },
-  "7qgtEX": {
-    "string": "Invests in SDG's"
   },
   "7xE2Vv": {
     "string": "Illustration of a person looking at a tree"
@@ -476,9 +476,6 @@
   },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
-  },
-  "KtecFi": {
-    "string": "How do they work?"
   },
   "KvhWhT": {
     "string": "The <span>IDB Lab</span>, the <span>Paulson Institute</span> and the <span>World Wildlife Fund</span> are working together to develop a digital platform that connects governments, investors, donors, and philanthropists with carefully identified investment opportunities in <span>high priority locations</span> identified by programs such as Herencia Colombia (HeCo)."
@@ -819,9 +816,6 @@
   "c6KUQu": {
     "string": "Your account was successfully created, but you still need to be approved by our platform administrators."
   },
-  "cAtOAM": {
-    "string": "Impact shape of the {name} project"
-  },
   "cE4Hfw": {
     "string": "Discover"
   },
@@ -848,6 +842,9 @@
   },
   "cyRU1N": {
     "string": "Forgot your password?"
+  },
+  "d3TPmn": {
+    "string": "SDG's"
   },
   "dPuc1g": {
     "string": "Slide {slideNumber}"
@@ -963,6 +960,9 @@
   "jWOeHy": {
     "string": "<a>Call on our community</a> of project developers to identify opportunities in your preferred sectors and geographies."
   },
+  "jX0V8C": {
+    "string": "No investors"
+  },
   "jXqlWP": {
     "string": "{name} project developer"
   },
@@ -986,9 +986,6 @@
   },
   "l2HvdU": {
     "string": "Estimated duration for project in months"
-  },
-  "lPkzC0": {
-    "string": "This makes a difference to them"
   },
   "lfvUqs": {
     "string": "Do you want to leave?"

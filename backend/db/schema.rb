@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_24_115625) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_26_092240) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -254,8 +254,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_24_115625) do
     t.text "name_pt"
     t.text "slug", null: false
     t.integer "status", default: 0, null: false
-    t.decimal "latitude", precision: 10, scale: 6
-    t.decimal "longitude", precision: 10, scale: 6
     t.text "address"
     t.string "ticket_size"
     t.string "instrument_types", array: true
@@ -310,9 +308,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_24_115625) do
     t.text "relevant_links_pt"
     t.string "category", null: false
     t.jsonb "geometry", default: {}
+    t.decimal "municipality_biodiversity_impact", precision: 25, scale: 20
+    t.decimal "municipality_climate_impact", precision: 25, scale: 20
+    t.decimal "municipality_water_impact", precision: 25, scale: 20
+    t.decimal "municipality_community_impact", precision: 25, scale: 20
+    t.decimal "municipality_total_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_biodiversity_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_climate_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_water_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_community_impact", precision: 25, scale: 20
+    t.decimal "hydrobasin_total_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_biodiversity_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_climate_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_water_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_community_impact", precision: 25, scale: 20
+    t.decimal "priority_landscape_total_impact", precision: 25, scale: 20
+    t.geometry "centroid", limit: {:srid=>0, :type=>"st_point"}
+    t.uuid "priority_landscape_id"
     t.index ["country_id"], name: "index_projects_on_country_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
     t.index ["municipality_id"], name: "index_projects_on_municipality_id"
+    t.index ["priority_landscape_id"], name: "index_projects_on_priority_landscape_id"
     t.index ["project_developer_id", "name_en"], name: "index_projects_on_project_developer_id_and_name_en", unique: true
     t.index ["project_developer_id", "name_es"], name: "index_projects_on_project_developer_id_and_name_es", unique: true
     t.index ["project_developer_id", "name_pt"], name: "index_projects_on_project_developer_id_and_name_pt", unique: true
@@ -362,6 +378,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_24_115625) do
   add_foreign_key "projects", "locations", column: "country_id"
   add_foreign_key "projects", "locations", column: "department_id"
   add_foreign_key "projects", "locations", column: "municipality_id"
+  add_foreign_key "projects", "locations", column: "priority_landscape_id"
   add_foreign_key "projects", "project_developers", on_delete: :cascade
   add_foreign_key "users", "accounts", on_delete: :cascade
 end
