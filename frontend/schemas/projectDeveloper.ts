@@ -1,3 +1,4 @@
+import { getSocialMediaLinksRegex } from 'helpers/pages';
 import { useIntl } from 'react-intl';
 
 import { object, string, array, number, mixed } from 'yup';
@@ -62,6 +63,8 @@ export default (page: number) => {
     language: string().ensure().required(messages.language).length(2),
   });
 
+  const { linkedin, facebook, instagram, twitter } = getSocialMediaLinksRegex();
+
   const secondPageSchema = object().shape({
     picture: string().required(messages.picture.required),
     // mixed()
@@ -92,22 +95,22 @@ export default (page: number) => {
     facebook: string().test(
       'isSocialMediaLink',
       messages.social_medias,
-      (value) => !value || !!value.match(/https?:\/\/(www.)?facebook.com\/.+/)
+      (value) => !value || !!value.match(facebook)
     ),
     linkedin: string().test(
       'isSocialMediaLink',
       messages.social_medias,
-      (value) => !value || !!value.match(/https?:\/\/(www.)?linkedin.com\/.+/)
+      (value) => !value || !!value.match(linkedin)
     ),
     instagram: string().test(
       'isSocialMediaLink',
       messages.social_medias,
-      (value) => !value || !!value.match(/https?:\/\/(www.)?instagram.com\/.+/)
+      (value) => !value || !!value.match(instagram)
     ),
     twitter: string().test(
       'isSocialMediaLink',
       messages.social_medias,
-      (value) => !value || !!value.match(/https?:\/\/(www.)?twitter.com\/.+/)
+      (value) => !value || !!value.match(twitter)
     ),
   });
 
