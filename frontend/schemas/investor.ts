@@ -79,22 +79,22 @@ export default (page: number) => {
       facebook: string().test(
         'isSocialMediaLink',
         messages.social_medias,
-        (value) => !value || !!value.match(/https:\/\/www.facebook.com\/.*/)
+        (value) => !value || !!value.match(/https?:\/\/(www.)?facebook.com\/.*/)
       ),
       linkedin: string().test(
         'isSocialMediaLink',
         messages.social_medias,
-        (value) => !value || !!value.match(/https:\/\/www.linkedin.com\/.*/)
+        (value) => !value || !!value.match(/https?:\/\/(www.)?linkedin.com\/.+/)
       ),
       instagram: string().test(
         'isSocialMediaLink',
         messages.social_medias,
-        (value) => !value || !!value.match(/https:\/\/www.instagram.com\/.*/)
+        (value) => !value || !!value.match(/https?:\/\/(www.)?instagram.com\/.+/)
       ),
       twitter: string().test(
         'isSocialMediaLink',
         messages.social_medias,
-        (value) => !value || !!value.match(/https:\/\/twitter.com\/.*/)
+        (value) => !value || !!value.match(/https?:\/\/(www.)?twitter.com\/.+/)
       ),
     }),
     object().shape({
