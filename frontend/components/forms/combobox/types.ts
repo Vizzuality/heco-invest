@@ -20,7 +20,7 @@ export type ComboboxProps<FormValues, T extends object> = {
   direction?: 'bottom' | 'top';
   /** String to attach to the input */
   className?: string;
-  /** If the component will display the clear button */
+  /** If the component will display the clear button. Default to `false`. */
   clearable?: boolean;
   /** React Hook Form's `control` function */
   control: Control<FormValues, FieldPath<FormValues>>;
