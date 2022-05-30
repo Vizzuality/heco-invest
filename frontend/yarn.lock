@@ -10944,7 +10944,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2.5, classnames@npm:^2.3.1":
+"classnames@npm:^2.3.1":
   version: 2.3.1
   resolution: "classnames@npm:2.3.1"
   checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
@@ -14392,7 +14392,6 @@ __metadata:
     jsonwebtoken: ^8.5.1
     lodash-es: ^4.17.21
     maplibre-gl: ">=1.15.2"
-    material-ui-chip-input: ^1.1.0
     next: ^12.1.0
     popmotion: ^9.3.6
     postcss: ^8.4.5
@@ -16930,20 +16929,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"material-ui-chip-input@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "material-ui-chip-input@npm:1.1.0"
-  dependencies:
-    classnames: ^2.2.5
-    prop-types: ^15.6.1
-  peerDependencies:
-    "@material-ui/core": ^1.0.0 || ^3.1.0
-    react: ^16.3.0
-    react-dom: ^16.3.0
-  checksum: 7a2de88607dffe8dde065d502d8e7b250a8ec3830b52c7542a62be1952b34868f2a6aea72bf7480f1a292bf41a3b079a62f04a0c50717deced88d871d2b1be68
-  languageName: node
-  linkType: hard
-
 "math.gl@npm:^3.4.2, math.gl@npm:^3.5.4, math.gl@npm:^3.5.6":
   version: 3.5.7
   resolution: "math.gl@npm:3.5.7"
@@ -19044,7 +19029,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.0.0, prop-types@npm:^15.5.8, prop-types@npm:^15.6.0, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.0.0, prop-types@npm:^15.5.8, prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
