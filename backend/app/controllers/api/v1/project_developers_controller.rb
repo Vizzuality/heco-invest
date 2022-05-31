@@ -3,8 +3,11 @@ module API
     class ProjectDevelopersController < BaseController
       include API::Pagination
 
+      before_action :fetch_project_developer, only: :show
+      load_and_authorize_resource
+
       def index
-        project_developers = ProjectDeveloper.includes(
+        project_developers = @project_developers.includes(
           :projects, :involved_projects, account: [:owner, {picture_attachment: :blob}]
         )
         project_developers = API::Filterer.new(project_developers, filter_params.to_h).call
@@ -21,10 +24,8 @@ module API
       end
 
       def show
-        project_developer = fetch_project_developer
-
         render json: ProjectDeveloperSerializer.new(
-          project_developer,
+          @project_developer,
           include: included_relationships,
           fields: sparse_fieldset,
           params: {current_user: current_user}
@@ -34,10 +35,10 @@ module API
       private
 
       def fetch_project_developer
-        return ProjectDeveloper.find(params[:id]) if fetching_by_uuid?
+        return @project_developer = ProjectDeveloper.find(params[:id]) if fetching_by_uuid?
 
         account = Account.friendly.find(params[:id])
-        ProjectDeveloper.find_by!(account_id: account.id)
+        @project_developer = ProjectDeveloper.find_by!(account_id: account.id)
       end
 
       def filter_params
