@@ -4,7 +4,6 @@ import {
   ChevronDown as ChevronDownIcon,
   List as ListIcon,
   ArrowDown as ArrowDownIcon,
-  Check,
 } from 'react-feather';
 import { useIntl, FormattedMessage } from 'react-intl';
 
@@ -13,7 +12,6 @@ import cx from 'classnames';
 import { noop } from 'lodash-es';
 
 import Button from 'components/button';
-import Icon from 'components/icon';
 import Menu, { MenuItem, MenuSection } from 'components/menu';
 
 import { SortingButtonsProps } from './types';
@@ -68,23 +66,12 @@ export const SortingButtons: FC<SortingButtonsProps> = ({
           onOpen={() => setSortByMenuOpen(true)}
           onClose={() => setSortByMenuOpen(false)}
           className="min-w-fit"
+          expandedKeys={[selectedSortByOption.key]}
         >
           <MenuSection>
-            {options.map(({ key, label }) => {
-              const isSelected = selectedSortByOption.key === key;
-              return (
-                <MenuItem key={key}>
-                  <span
-                    className={cx({
-                      'text-green-dark': isSelected,
-                    })}
-                  >
-                    {label}
-                    {isSelected && <Icon width={18} className="inline ml-2" icon={Check} />}
-                  </span>
-                </MenuItem>
-              );
-            })}
+            {options.map(({ key, label }) => (
+              <MenuItem key={key}>{label}</MenuItem>
+            ))}
           </MenuSection>
         </Menu>
         <Button
