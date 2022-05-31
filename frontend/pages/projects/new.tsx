@@ -140,12 +140,10 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
-      <Head
-        title={formatMessage({ defaultMessage: 'Setup project developer’s account', id: 'bhxvPM' })}
-      />
+      <Head title={formatMessage({ defaultMessage: 'Create project', id: 'VUN1K7' })} />
       <MultiPageLayout
         layout="narrow"
-        title={formatMessage({ defaultMessage: 'Setup project developer’s account', id: 'bhxvPM' })}
+        title={formatMessage({ defaultMessage: 'Create project', id: 'VUN1K7' })}
         autoNavigation={false}
         page={currentPage}
         alert={useGetAlert(createProject.error)}
