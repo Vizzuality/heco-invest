@@ -4,19 +4,17 @@
     <li>
       <% if pagy.prev %>
         <%== link.call(pagy.prev, t("backoffice.common.navigation.prev"), 'aria-label="previous"') %>
-      <% else %>
-        <%== link.call(pagy.prev, t("backoffice.common.navigation.prev"), 'aria-label="previous" class="disabled"') %>
       <% end %>
     </li>
 
-    <% pagy.series.each do |item| # series example: [1, :gap, 7, 8, "9", 10, 11, :gap, 36] %>
+    <% pagy.series.each do |item| %>
     <li>
       <% if item.is_a?(Integer) %>
         <%== link.call(item) %>
       <% elsif item.is_a?(String) %>
-        <%= link_to item, "#", class: "active disabled" %>
+        <span class="active"><%== item %></span>
       <% elsif item == :gap %>
-        <%= link_to t("backoffice.common.navigation.gap"), "#", class: "disabled" %>
+        <%== t("backoffice.common.navigation.gap") %>
       <% end %>
     </li>
     <% end %>
@@ -24,8 +22,6 @@
     <li>
       <% if pagy.next %>
         <%== link.call(pagy.next, t("backoffice.common.navigation.next"), 'aria-label="next"') %>
-      <% else %>
-        <%== link.call(pagy.prev, t("backoffice.common.navigation.next"), 'aria-label="next" class="disabled"') %>
       <% end %>
     </li>
   </ol>
