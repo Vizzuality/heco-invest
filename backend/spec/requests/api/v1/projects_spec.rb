@@ -4,6 +4,8 @@ RSpec.describe "API V1 Projects", type: :request do
   before_all do
     @project = create(:project, :with_involved_project_developers, :with_project_images, category: "non-timber-forest-production")
     create_list(:project, 6, category: "forestry-and-agroforestry")
+    @unapproved_project = create(:project, project_developer: create(:project_developer, account: create(:account, :unapproved, users: [create(:user)])))
+    @approved_account = create(:account, review_status: :approved, users: [create(:user)])
   end
 
   include_examples :api_pagination, model: Project, expected_total: 7
@@ -40,6 +42,10 @@ RSpec.describe "API V1 Projects", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/projects")
+        end
+
+        it "ignores unapproved record" do
+          expect(response_json["data"].pluck("id")).not_to include(@unapproved_project.id)
         end
 
         context "with sparse fieldset" do
@@ -124,6 +130,28 @@ RSpec.describe "API V1 Projects", type: :request do
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/get-project-include-relationships")
           end
+        end
+
+        context "when unapproved project developer shows its own project" do
+          let(:id) { @unapproved_project.id }
+
+          before { sign_in @unapproved_project.project_developer.account.users.first }
+
+          run_test!
+        end
+      end
+
+      response "403", :forbidden do
+        schema "$ref" => "#/components/schemas/errors"
+
+        let(:id) { @unapproved_project.id }
+
+        run_test!
+
+        context "when logged in user tries to see project of unapproved project developer" do
+          before { sign_in @approved_account.users.first }
+
+          run_test!
         end
       end
     end
