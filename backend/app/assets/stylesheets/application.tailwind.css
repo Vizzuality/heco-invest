@@ -34,4 +34,24 @@
   .backoffice-table tr:last-child {
     @apply border-b-0;
   }
+
+  .pagination {
+    @apply flex items-center flex-col-reverse
+  }
+
+  .pagination ol {
+    @apply flex flex-wrap items-center justify-center gap-2 py-3
+  }
+
+  .pagination li a {
+    @apply flex items-center rounded-full font-sans transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-white text-green-dark hover:text-green-light shadow-transparent hover:shadow-lg focus-visible:outline-white px-0 py-0 justify-center w-10 h-10 focus-visible:!outline-green-dark
+  }
+
+  .pagination li a.disabled {
+    @apply opacity-60 pointer-events-none
+  }
+
+  .pagination li a.active {
+    @apply bg-green-dark text-white
+  }
 }

@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def nav_link_to(text, path)
     is_active = current_page?(path)
     classnames = {
