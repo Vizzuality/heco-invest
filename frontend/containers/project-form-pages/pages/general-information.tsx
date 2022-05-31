@@ -198,9 +198,7 @@ const GeneralInformation = ({
                 register={register}
                 registerOptions={{ disabled: false }}
                 fileTypes={{
-                  'image/png': ['.png'],
-                  'image/jpeg': ['.jpeg'],
-                  'image/jpg': ['.jpg'],
+                  'image/*': ['.png', '.jpeg', '.JPEG', '.jpg'],
                 }}
                 maxFiles={6}
                 maxSize={5 * 1024 * 1025}

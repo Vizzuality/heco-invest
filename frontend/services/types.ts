@@ -37,3 +37,12 @@ export type PagedResponse<ResponseData> = {
 export type ErrorResponse = {
   message: { title: string; code?: string }[];
 };
+
+export type ProjectsMap = {
+  id: string;
+  type: string;
+  trusted: boolean;
+  category: string;
+  latitude: number;
+  longitude: number;
+};

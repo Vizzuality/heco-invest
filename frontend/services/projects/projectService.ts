@@ -9,7 +9,7 @@ import { Project } from 'types/project';
 
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
-import { PagedResponse, PagedRequest } from 'services/types';
+import { PagedResponse, PagedRequest, ProjectsMap, ResponseData } from 'services/types';
 
 /** Get a paged list of projects */
 const getProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
@@ -79,3 +79,19 @@ export function useProject(id: string, params) {
     [query]
   );
 }
+
+const getProjectsMap = (params) =>
+  API.get<ResponseData<ProjectsMap>>('/api/v1/projects/map', { params });
+
+/** Hook to use the projects map locations */
+export const useProjectsMap = (params) => {
+  const query = useQuery([Queries.ProjectQuery], () => getProjectsMap(params));
+
+  return useMemo(
+    () => ({
+      ...query,
+      projectsMap: query.data?.data?.data,
+    }),
+    [query]
+  );
+};
