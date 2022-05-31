@@ -93,7 +93,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
           relevant_links: "Here relevant links",
           involved_project_developer_ids: project_developers.map(&:id),
           involved_project_developer_not_listed: true,
-          geometry: {type: "Point", coordinates: [1, 2]},
+          geometry: {type: "FeatureCollection", features: [{type: "Feature", properties: {}, geometry: {type: "Polygon", coordinates: [[[-77.84036872266269, 1.5274297752414188], [-77.1591467371437, 0.4940264211830182], [-76.4661795449776, 0.8933333719051408], [-77.2531083903186, 1.7974555737018534], [-77.84036872266269, 1.5274297752414188]]]}}]},
           category: "sustainable-agrosystems",
           target_groups: %w[urban-populations indigenous-peoples],
           impact_areas: %w[restoration pollutants-reduction],

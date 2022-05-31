@@ -57,15 +57,13 @@ module API
             :progress_impact_tracking,
             :description,
             :relevant_links,
-            :geometry,
-            geometry: {},
             involved_project_developer_ids: [],
             target_groups: [],
             impact_areas: [],
             sdgs: [],
             instrument_types: [],
             project_images_attributes: %i[id file cover _destroy]
-          )
+          ).tap { |r| r[:geometry] = params[:geometry].permit! if params[:geometry].present? }
         end
 
         def fetch_project
