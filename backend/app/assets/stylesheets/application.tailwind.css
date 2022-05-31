@@ -16,7 +16,7 @@
   }
 
   .backoffice-table {
-    @apply w-full bg-white text-base rounded-xl
+    @apply w-full bg-white text-base rounded-t-xl
   }
 
   .backoffice-table th {
@@ -36,7 +36,7 @@
   }
 
   .pagination {
-    @apply flex items-center flex-col-reverse
+    @apply flex items-center flex-col-reverse w-full bg-white rounded-b-xl border-t-[1px] border-gray-200
   }
 
   .pagination ol {
