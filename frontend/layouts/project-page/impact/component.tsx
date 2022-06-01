@@ -44,7 +44,7 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
   return (
     <section>
       <LayoutContainer className="mb-20 space-y-6 mt-36">
-        <h2 className="pl-16 font-serif text-3xl text-black">
+        <h2 className="pl-6 font-serif text-3xl text-black md:pl-16">
           <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
         </h2>
         <div className="flex-col px-2 py-16 space-y-24 font-sans lg:justify-between sm:px-12 sm:py-20 lg:flex bg-background-greenLight rounded-2xl">
