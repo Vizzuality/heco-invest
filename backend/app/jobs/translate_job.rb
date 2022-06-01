@@ -4,7 +4,7 @@ class TranslateJob < ApplicationJob
   rescue_from(ActiveRecord::RecordNotFound) do |exception|
     Rails.logger.error(exception)
     Rails.logger.error(Rails.backtrace_cleaner.clean(exception.backtrace).join("\n"))
-    # TODO: handle exception tracking
+    Google::Cloud::ErrorReporting.report exception
   end
 
   def perform(resource)

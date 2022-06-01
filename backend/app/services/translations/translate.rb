@@ -39,7 +39,7 @@ module Translations
     def handle_exception(error)
       Rails.logger.error(error)
       Rails.logger.error(Rails.backtrace_cleaner.clean(error.backtrace).join("\n"))
-      # TODO: handle exception tracking
+      Google::Cloud::ErrorReporting.report exception
     end
 
     def present_translatable_attributes
