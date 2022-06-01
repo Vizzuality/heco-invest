@@ -221,6 +221,9 @@
   "8i6S4q": {
     "string": "Connecting investors, donors and philanthropists with carefully identified investment opportunities."
   },
+  "8j91Nj": {
+    "string": "In the {area} the project has higher impact on <b>{impact}</b> and has an <b>impact score</b> of {score}."
+  },
   "8rAlFa": {
     "string": "Not listed"
   },
@@ -355,6 +358,9 @@
   },
   "E1kj21": {
     "string": "Project verification"
+  },
+  "EVKdUn": {
+    "string": "Priority Landscape"
   },
   "EWw/tK": {
     "string": "Apply"
@@ -713,6 +719,9 @@
   },
   "VUN1K7": {
     "string": "Create project"
+  },
+  "VVlH2M": {
+    "string": "Hydrobasin"
   },
   "Vge+RX": {
     "string": "Footer"
@@ -1322,6 +1331,9 @@
   },
   "xmcVZ0": {
     "string": "Search"
+  },
+  "xnQiBM": {
+    "string": "The impact of this project isn’t available. Impact calculations may take some time to be available."
   },
   "xusigZ": {
     "string": "Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."
