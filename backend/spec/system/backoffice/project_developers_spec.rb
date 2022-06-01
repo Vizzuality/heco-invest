@@ -12,6 +12,8 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
   describe "Index" do
     before { visit "/backoffice/project_developers" }
 
+    it_behaves_like "with table pagination"
+
     it "shows project developers list" do
       within_row("Super PD Enterprise") do
         expect(page).to have_text("Tom Higgs")

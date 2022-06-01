@@ -4,24 +4,19 @@ module API
       class ProjectsController < BaseController
         before_action :require_project_developer!
         before_action :fetch_project, only: [:update]
+        load_and_authorize_resource
 
         def create
-          project = Project.create!(
-            project_params.merge(
-              project_developer_id: current_user.account.project_developer.id,
-              language: current_user.account.language
-            )
-          )
-
+          @project.save!
           render json: ProjectSerializer.new(
-            project,
+            @project,
             include: included_relationships,
             params: {current_user: current_user}
           ).serializable_hash
         end
 
         def update
-          @project.update! project_params
+          @project.update! update_params
           render json: ProjectSerializer.new(
             @project,
             include: included_relationships,
@@ -31,7 +26,14 @@ module API
 
         private
 
-        def project_params
+        def create_params
+          update_params.merge(
+            project_developer_id: current_user.account.project_developer.id,
+            language: current_user.account.language
+          )
+        end
+
+        def update_params
           params.permit(
             :name,
             :country_id,
@@ -55,20 +57,17 @@ module API
             :progress_impact_tracking,
             :description,
             :relevant_links,
-            :geometry,
-            geometry: {},
             involved_project_developer_ids: [],
             target_groups: [],
             impact_areas: [],
             sdgs: [],
             instrument_types: [],
             project_images_attributes: %i[id file cover _destroy]
-          )
+          ).tap { |r| r[:geometry] = params[:geometry].permit! if params[:geometry].present? }
         end
 
         def fetch_project
           @project = Project.friendly.find(params[:id])
-          raise API::Forbidden unless current_user.account_id == @project.project_developer.account_id
         end
       end
     end
