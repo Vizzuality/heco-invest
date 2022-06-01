@@ -65,6 +65,8 @@ export const SortingButtons: FC<SortingButtonsProps> = ({
           onAction={(key: string) => onChange({ sortBy: key })}
           onOpen={() => setSortByMenuOpen(true)}
           onClose={() => setSortByMenuOpen(false)}
+          className="min-w-fit"
+          expandedKeys={[selectedSortByOption.key]}
         >
           <MenuSection>
             {options.map(({ key, label }) => (
