@@ -59,10 +59,10 @@ export const Funding: React.FC<FundingProps> = ({ project }: FundingProps) => {
   return (
     <section>
       <LayoutContainer className="mb-20 mt-36">
-        <h2 className="pl-16 mb-6 font-serif text-3xl text-black">
+        <h2 className="pl-6 mb-6 font-serif text-3xl text-black md:pl-16">
           <FormattedMessage defaultMessage="Funding & development" id="psXhQO" />
         </h2>
-        <div className="flex p-16 space-x-10 text-white bg-green-dark rounded-2xl">
+        <div className="flex flex-col p-16 text-white md:space-x-10 md:flex-row bg-green-dark rounded-2xl">
           <div className="flex flex-col w-1/3 pr-10 space-y-8 border-r-2 border-white">
             <h3 className="font-serif text-3xl">
               <FormattedMessage defaultMessage="Currently looking for" id="sV+3z0" />
@@ -82,7 +82,7 @@ export const Funding: React.FC<FundingProps> = ({ project }: FundingProps) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-2/3 space-y-4">
+          <div className="flex flex-col md:space-y-4 md:w-2/3">
             <h3 className="font-serif text-3xl">
               <FormattedMessage defaultMessage="How the money will be used" id="IkUX0b" />
             </h3>
@@ -98,8 +98,8 @@ export const Funding: React.FC<FundingProps> = ({ project }: FundingProps) => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col my-24 space-y-16 mx-44">
-          <div className="flex space-x-24">
+        <div className="flex flex-col my-24 space-y-16 md:mx-44">
+          <div className="flex space-x-12 md:space-x-24">
             <div>
               <Icon icon={CLOCK_SVG} className="w-16 h-16" />
             </div>
@@ -119,7 +119,7 @@ export const Funding: React.FC<FundingProps> = ({ project }: FundingProps) => {
             </div>
           </div>
           {FUNDING_CONTENT.map((item, index) => (
-            <div key={index} className="flex space-x-24">
+            <div key={index} className="flex space-x-12 md:space-x-24">
               <div>
                 <Icon icon={item.icon} className="w-16 h-16" />
               </div>
