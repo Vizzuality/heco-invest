@@ -390,6 +390,10 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    ransack (3.2.1)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     redis (4.6.0)
     regexp_parser (2.3.1)
     reline (0.3.1)
@@ -572,6 +576,7 @@ DEPENDENCIES
   pg_search
   puma (~> 5.6)
   rails (~> 7.0.1)
+  ransack
   redis (~> 4.0)
   rgeo
   rgeo-geojson
