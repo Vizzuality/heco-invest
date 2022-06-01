@@ -5,14 +5,14 @@ import { loadI18nMessages } from 'helpers/i18n';
 
 import Breadcrumbs from 'containers/breadcrumbs';
 import ProjectHeader from 'containers/project-header';
+import Contact from 'containers/project-page/contact/component';
+import ProjectDevelopers from 'containers/project-page/developers/component';
+import Funding from 'containers/project-page/funding/component';
+import Impact from 'containers/project-page/impact/component';
+import Overview from 'containers/project-page/overview/component';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
-import Contact from 'layouts/project-page/contact/component';
-import ProjectDevelopers from 'layouts/project-page/developers/component';
-import Funding from 'layouts/project-page/funding/component';
-import Impact from 'layouts/project-page/impact/component';
-import Overview from 'layouts/project-page/overview/component';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';

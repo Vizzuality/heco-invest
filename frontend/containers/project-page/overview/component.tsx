@@ -2,9 +2,10 @@ import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
+import { OverviewProps } from 'containers/project-page/overview/types';
+
 import LayoutContainer from 'components/layout-container';
 import Map from 'components/map';
-import { OverviewProps } from 'layouts/project-page/overview/types';
 
 export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) => {
   const { country, municipality } = project;

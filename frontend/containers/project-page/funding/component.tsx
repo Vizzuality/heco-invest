@@ -2,9 +2,10 @@ import React from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import { FundingProps } from 'containers/project-page/funding/types';
+
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
-import { FundingProps } from 'layouts/project-page/funding/types';
 
 import CHECKLIST_SVG from 'svgs/project/funding/checklist-pen.svg';
 import MONEY_SVG from 'svgs/project/funding/monetization-approve.svg';

@@ -4,8 +4,9 @@ import { useRouter } from 'next/router';
 
 import useMe from 'hooks/me';
 
+import { ProjectProps } from 'containers/project-page/types';
+
 import { Paths, UserRoles } from 'enums';
-import { ProjectProps } from 'layouts/project-page/types';
 
 const Project: React.FC<ProjectProps> = ({ permissions, children, ...rest }) => {
   const router = useRouter();
