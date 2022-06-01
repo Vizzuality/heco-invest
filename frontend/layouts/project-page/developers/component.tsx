@@ -12,12 +12,12 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
 }: ProjectDevelopersProps) => {
   const { involved_project_developers: developers } = project;
   const NUMBER_DEVELOPERS = developers.length;
-  console.log({ developers });
+
   return (
     <section className="bg-background-middle py-18">
-      <LayoutContainer className="flex space-x-28">
-        <div className="flex flex-col pl-16 space-y-1">
-          <h2 className="font-serif text-3xl text-black ">
+      <LayoutContainer className="flex flex-col md:flex-row space-y-28 md:space-y-0 md:space-x-28">
+        <div className="flex flex-col pl-6 space-y-1 md:pl-16">
+          <h2 className="font-serif text-3xl text-black">
             <FormattedMessage defaultMessage="Project Developers" id="+K9fF0" />
           </h2>
           <p className="text-gray-800">
@@ -33,12 +33,11 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
         </div>
         {!!NUMBER_DEVELOPERS &&
           developers.map((developer) => {
-            console.log({ developer });
             const { about, name, picture, project_developer_type, id } = developer;
             return (
               <div
                 key={id}
-                className="w-2/3 p-6 space-y-8 font-sans bg-white border rounded-2xl border-beige"
+                className="p-6 space-y-8 font-sans bg-white border md:w-2/3 rounded-2xl border-beige"
               >
                 <div className="flex items-center space-x-4">
                   <Image
