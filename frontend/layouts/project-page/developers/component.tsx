@@ -17,7 +17,7 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
     <section className="bg-background-middle py-18">
       <LayoutContainer className="flex flex-col lg:flex-row space-y-28 lg:space-y-0 lg:space-x-28">
         <div className="flex flex-col pl-6 space-y-1 lg:pl-16">
-          <h2 className="font-serif text-3xl text-black">
+          <h2 className="font-serif text-2xl text-black lg:text-3xl">
             <FormattedMessage defaultMessage="Project Developers" id="+K9fF0" />
           </h2>
           <p className="text-gray-800">
@@ -49,8 +49,10 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
                     width={72}
                   />
                   <div>
-                    <h6 className="text-xl font-semibold">{name}</h6>
-                    <p className="text-gray-800 uppercase">{project_developer_type}</p>
+                    <h6 className="text-lg font-semibold lg:text-xl">{name}</h6>
+                    <p className="text-sm text-gray-800 uppercase lg:text-base">
+                      {project_developer_type}
+                    </p>
                   </div>
                 </div>
                 <div>
