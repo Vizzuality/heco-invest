@@ -43,13 +43,13 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
 
   return (
     <section>
-      <LayoutContainer className="mb-20 space-y-6 mt-36">
-        <h2 className="pl-6 font-serif text-3xl text-black md:pl-16">
+      <LayoutContainer className="mb-20 space-y-6 lg:mt-36">
+        <h2 className="pl-6 font-serif text-3xl text-black lg:pl-16">
           <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
         </h2>
-        <div className="flex-col px-2 py-16 space-y-24 font-sans lg:justify-between sm:px-12 sm:py-20 lg:flex bg-background-greenLight rounded-2xl">
-          <div className="flex justify-between space-x-4">
-            <div className="flex flex-col w-1/2 space-y-6">
+        <div className="flex-col p-6 space-y-24 font-sanslg:py-16 lg:px-2 lg:justify-between lg:flex bg-background-greenLight rounded-2xl">
+          <div className="flex flex-col justify-between space-y-6 lg:space-y-0 lg:space-x-4 lg:flex-row">
+            <div className="flex flex-col space-y-6 lg:w-1/2">
               <div className="flex flex-col space-y-6">
                 <h3 className="text-xl font-semibold">
                   <FormattedMessage defaultMessage="Target group(s)" id="ilgFAX" />
@@ -62,14 +62,14 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col soace-y-6">
+              <div className="flex flex-col space-y-6">
                 <h3 className="text-xl font-semibold">
                   <FormattedMessage defaultMessage="Expected Impact" id="8rIwwr" />
                 </h3>
                 <p className="text-base">{expected}</p>
               </div>
             </div>
-            <div className="flex flex-col w-1/2 space-y-6">
+            <div className="flex flex-col space-y-6 lg:w-1/2">
               <h3 className="text-xl font-semibold">
                 <FormattedMessage defaultMessage="SDG'S" id="vTJ8GJ" />
               </h3>
@@ -77,9 +77,9 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
             </div>
           </div>
 
-          <div className="flex justify-between h-full">
+          <div className="flex flex-col justify-between h-full lg:flex-row">
             <div className="flex flex-col justify-between">
-              <div className="flex flex-col items-start w-3/4 pr-24 space-y-6">
+              <div className="flex flex-col items-start space-y-6 lg:w-3/4 md:pr-24">
                 <h3 className="text-xl font-semibold">
                   <FormattedMessage defaultMessage="Estimated Impact" id="PheCRL" />
                 </h3>
@@ -119,7 +119,8 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
                   <FormattedMessage defaultMessage="How is the impact calculated?" id="9cE0nR" />
                 </button>
               </div>
-              <div className="flex flex-col items-center p-6 font-semibold bg-white w-52 rounded-xl">
+              {/* DESKTOP */}
+              <div className="flex-col items-center hidden p-6 font-semibold bg-white lg:flex w-52 rounded-xl">
                 <p className=" text-green-dark">
                   <span className="text-2xl">30</span>/ 100
                 </p>
@@ -150,10 +151,41 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
                   </Tooltip>
                 </div>
               </div>
-              {/* TODO: Add Impact Modal (previously should be componentizated) */}
             </div>
-            <div className="w-1/2 my-24">
+            <div className="my-24 lg:w-1/2">
               <ImpactChart category={project.category} impact={projectImpact} />
+            </div>
+            {/* MOBILE */}
+            <div className="flex flex-col items-center p-6 font-semibold bg-white lg:hidden w-52 rounded-xl">
+              <p className="text-green-dark">
+                <span className="text-2xl">30</span>/ 100
+              </p>
+              <div className="flex items-center space-x-2">
+                <p className="text-base text-gray-800">
+                  <FormattedMessage defaultMessage="Impact score" id="2GBpne" />
+                </p>
+
+                <Tooltip
+                  placement="right"
+                  arrow
+                  arrowClassName="bg-black"
+                  content={
+                    <div className="max-w-md p-2 font-sans text-sm font-normal text-white bg-black rounded-sm w-72">
+                      <FormattedMessage
+                        defaultMessage="Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
+                        id="sFn7MX"
+                      />
+                    </div>
+                  }
+                >
+                  <button
+                    type="button"
+                    className="box-border flex items-center justify-center w-4 h-4 text-gray-800 border border-gray-800 rounded-full pointer"
+                  >
+                    <p className="text-xs">i</p>
+                  </button>
+                </Tooltip>
+              </div>
             </div>
           </div>
         </div>
