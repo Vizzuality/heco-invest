@@ -8,6 +8,7 @@ import cx from 'classnames';
 import { translatedLanguageNameForLocale } from 'helpers/intl';
 
 import CategoryTag from 'containers/category-tag';
+import ImageGallery from 'containers/image-gallery';
 import ContactInformationModal, {
   ContactItemType,
 } from 'containers/social-contact/contact-information-modal';
@@ -28,7 +29,6 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
 }: ProjectHeaderProps) => {
   const intl = useIntl();
   const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
-
   const {
     data: {
       instrument_type: allInstrumentTypes,
@@ -95,21 +95,29 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
             <span className="absolute top-0 bottom-0 left-0 right-0 bg-gray-900 opacity-40" />
           </span>
         )}
+
         <LayoutContainer className="flex flex-col justify-between lg:min-h-[18rem]">
-          <div className="flex justify-center gap-2 mb-4 lg:justify-start">
-            {project.trusted && (
-              <Tag className="bg-white text-green-dark">
-                <CheckCircleIcon className="w-4 h-4 mr-3" />
-                <FormattedMessage defaultMessage="Verified" id="Z8971h" />
-              </Tag>
-            )}
-            {category && (
-              <CategoryTag
-                className="bg-white text-green-dark"
-                category={category.id as CategoryType}
-              >
-                {category.name}
-              </CategoryTag>
+          <div className="flex flex-col justify-center gap-2 mb-4 sm:flex-row sm:justify-between">
+            <div className="flex justify-center order-last gap-2 mb-4 lg:justify-start sm:order-first">
+              {project.trusted && (
+                <Tag className="bg-white text-green-dark">
+                  <CheckCircleIcon className="w-4 h-4 mr-3" />
+                  <FormattedMessage defaultMessage="Verified" id="Z8971h" />
+                </Tag>
+              )}
+              {category && (
+                <CategoryTag
+                  className="bg-white text-green-dark"
+                  category={category.id as CategoryType}
+                >
+                  {category.name}
+                </CategoryTag>
+              )}
+            </div>
+            {!!project.project_images.length && (
+              <div className="self-end order-first sm:self-start sm:order-last">
+                <ImageGallery images={project.project_images} />
+              </div>
             )}
           </div>
           <div className="text-center lg:mb-4 lg:text-left">

@@ -14,7 +14,7 @@ export const Slide: FC<SlideProps> = ({
     style={{ width, height }}
     onFocus={onFocus}
   >
-    <div className="w-full m-4">
+    <div className="w-full m-0 sm:m-4">
       <div className={className}>{children}</div>
     </div>
   </li>
