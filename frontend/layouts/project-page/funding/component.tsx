@@ -59,23 +59,23 @@ export const Funding: React.FC<FundingProps> = ({ project }: FundingProps) => {
   return (
     <section>
       <LayoutContainer className="mb-20 mt-36">
-        <h2 className="pl-6 mb-6 font-serif text-3xl text-black lg:pl-16">
+        <h2 className="pl-6 mb-6 font-serif text-2xl text-black lg:text-3xl lg:pl-16">
           <FormattedMessage defaultMessage="Funding & development" id="psXhQO" />
         </h2>
         <div className="flex flex-col p-6 text-white lg:p-16 lg:space-x-10 lg:flex-row bg-green-dark rounded-2xl">
           <div className="flex flex-col pb-6 pr-10 space-y-8 border-b-2 border-white lg:border-b-0 lg:pb-0 lg:w-1/3 lg:border-r-2">
-            <h3 className="font-serif text-3xl">
+            <h3 className="font-serif text-2xl lg:text-3xl">
               <FormattedMessage defaultMessage="Currently looking for" id="sV+3z0" />
             </h3>
-            <div className="flex space-x-20 font-sans">
+            <div className="flex flex-col font-sans lg:space-x-20 lg:flex-row">
               <div className="flex flex-col space-y-1">
-                <p className="text-2xl font-semibold">$ 24000</p>
+                <p className="text-xl font-semibold lg:text-2xl">$ 24000</p>
                 <p className="text-base">
                   <FormattedMessage defaultMessage="Value" id="GufXy5" />
                 </p>
               </div>
               <div className="flex flex-col space-y-1">
-                <p className="text-2xl font-semibold">Loan</p>
+                <p className="text-xl font-semibold lg:text-2xl">Loan</p>
                 <p className="text-base">
                   <FormattedMessage defaultMessage="Instrument type" id="fDd10o" />
                 </p>
@@ -83,10 +83,10 @@ export const Funding: React.FC<FundingProps> = ({ project }: FundingProps) => {
             </div>
           </div>
           <div className="flex flex-col mt-12 space-y-4 lg:mt-0 lg:w-2/3">
-            <h3 className="font-serif text-3xl">
+            <h3 className="font-serif text-2xl lg:text-3xl">
               <FormattedMessage defaultMessage="How the money will be used" id="IkUX0b" />
             </h3>
-            <p>
+            <p className="text-base">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis amet ullamcorper
               faucibus lacus in. Erat amet, interdum erat in porttitor sed eleifend rutrum lorem.
               Purus lorem amet, eget venenatis ac arcu. Fusce in odio iaculis eget sed. Tristique
@@ -127,7 +127,7 @@ export const Funding: React.FC<FundingProps> = ({ project }: FundingProps) => {
                 <Icon icon={item.icon} className="w-16 h-16" />
               </div>
               <div className="flex flex-col space-y-4">
-                <h3 className="font-serif text-3xl">{item.title}</h3>
+                <h3 className="font-serif text-2xl lg:text-3xl">{item.title}</h3>
                 <p className="font-sans text-base">{item.description}</p>
               </div>
             </div>

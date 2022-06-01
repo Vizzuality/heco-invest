@@ -18,7 +18,7 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
             onMapViewportChange={() => console.log('onMapViewportChange')}
           />
           <div className="flex flex-col space-y-4 lg:col-start-2">
-            <h2 className="text-3xl">
+            <h2 className="text-2xl lg:text-3xl">
               <FormattedMessage defaultMessage="Country" id="vONi+O" />
             </h2>
             <div className="flex flex-col space-y-1">
@@ -34,8 +34,8 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
                 </h3>
                 <p>{municipality.name}</p>
               </div>
-              <div className="flex space-x-2 font-sans text-base">
-                <h3 className="font-semibold">
+              <div className="flex flex-wrap font-sans text-base sm:space-x-2 sm:flex-nowrap">
+                <h3 className="font-semibold whitespace-pre">
                   <FormattedMessage defaultMessage="HeCo priority landscape" id="kPq9Kx" />
                 </h3>
                 <p>{municipality.parent.name}</p>
@@ -43,7 +43,9 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
             </div>
           </div>
           <div className="flex flex-col space-y-4">
-            <h2 className="text-3xl">The problem we are solving</h2>
+            <h2 className="text-2xl lg:text-3xl">
+              <FormattedMessage defaultMessage="The problem we are solving" id="MXykbb" />
+            </h2>
             <p className="font-sans text-base">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis amet ullamcorper
               faucibus lacus in. Erat amet, interdum erat in porttitor sed eleifend rutrum lorem.
@@ -58,7 +60,9 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
             </p>
           </div>
           <div className="flex flex-col space-y-4">
-            <h2 className="text-3xl">The solution proposed</h2>
+            <h2 className="text-2xl lg:text-3xl">
+              <FormattedMessage defaultMessage="The solution proposed" id="9CDBQg" />
+            </h2>
             <p className="font-sans text-base">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis amet ullamcorper
               faucibus lacus in. Erat amet, interdum erat in porttitor sed eleifend rutrum lorem.

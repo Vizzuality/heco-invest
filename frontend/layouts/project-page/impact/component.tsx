@@ -44,7 +44,7 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
   return (
     <section>
       <LayoutContainer className="mb-20 space-y-6 lg:mt-36">
-        <h2 className="pl-6 font-serif text-3xl text-black lg:pl-16">
+        <h2 className="pl-6 font-serif text-2xl text-black lg:text-3xl lg:pl-16">
           <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
         </h2>
         <div className="flex-col p-6 space-y-24 font-sans lg:p-16 lg:justify-between lg:flex bg-background-greenLight rounded-2xl">
@@ -56,7 +56,11 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
                 </h3>
                 <div>
                   {tags.map((tag) => (
-                    <Tag key={tag} className="mb-2 mr-2 text-sm text-black bg-white" size="small">
+                    <Tag
+                      key={tag}
+                      className="mb-2 mr-2 text-xs text-black bg-white lg:text-sm"
+                      size="small"
+                    >
                       {formatCapitalizeDashedString(tag)}
                     </Tag>
                   ))}
