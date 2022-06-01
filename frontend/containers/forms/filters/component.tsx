@@ -117,13 +117,13 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
     const { value, name } = ev.target;
     // Remove check when clicking on a ckecked tag
     if (filtersState[name] === value) {
-      // setValue(name, undefined);
+      setValue(name, undefined);
       setFiltersState({ ...filtersState, [name]: undefined });
       return;
     }
 
+    setValue(name, value);
     setFiltersState({ ...filtersState, [name]: value });
-    // setValue(name, value);
   };
 
   return isLoading ? (
