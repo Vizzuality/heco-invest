@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
+import { ContactProps } from 'containers/project-page/contact/types';
+
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
-import { ContactProps } from 'layouts/project-page/contact/types';
 
 export const Contact: React.FC<ContactProps> = ({ project }: ContactProps) => {
   const { contact_email: email, contact_phone: phone } = project?.project_developer;

@@ -4,8 +4,9 @@ import { FormattedMessage } from 'react-intl';
 
 import Image from 'next/image';
 
+import { ProjectDevelopersProps } from 'containers/project-page/developers/types';
+
 import LayoutContainer from 'components/layout-container';
-import { ProjectDevelopersProps } from 'layouts/project-page/developers/types';
 
 export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
   project,
