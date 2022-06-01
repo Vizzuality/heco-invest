@@ -735,11 +735,11 @@
   "X0E3iC": {
     "string": "I agree with the Terms and Privacy Policy."
   },
-  "XDC7Vp": {
-    "string": "Select the intrument type(s) you provide"
-  },
   "X2YMUl": {
     "string": "Contact the project developers to know more about the project."
+  },
+  "XDC7Vp": {
+    "string": "Select the intrument type(s) you provide"
   },
   "XJqnLu": {
     "string": "Search water"
@@ -1113,11 +1113,11 @@
   "piBsTx": {
     "string": "Select HeCo priority landscapes on which you will have impact (optional)"
   },
-  "puek63": {
-    "string": "This information will help us understand what is the impact you want to have."
-  },
   "psXhQO": {
     "string": "Funding & development"
+  },
+  "puek63": {
+    "string": "This information will help us understand what is the impact you want to have."
   },
   "qIvPIE": {
     "string": "FAQ’s"
@@ -1218,11 +1218,11 @@
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
   },
-  "uyxTSu": {
-    "string": "Select the impacts that you prioritize"
-  },
   "ufxVRM": {
     "string": "Display impact on"
+  },
+  "uyxTSu": {
+    "string": "Select the impacts that you prioritize"
   },
   "v9GdgG": {
     "string": "File {fileName} is larger than {fileSize}MB"
