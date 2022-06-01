@@ -15,8 +15,8 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
 
   return (
     <section className="bg-background-middle py-18">
-      <LayoutContainer className="flex flex-col md:flex-row space-y-28 md:space-y-0 md:space-x-28">
-        <div className="flex flex-col pl-6 space-y-1 md:pl-16">
+      <LayoutContainer className="flex flex-col lg:flex-row space-y-28 lg:space-y-0 lg:space-x-28">
+        <div className="flex flex-col pl-6 space-y-1 lg:pl-16">
           <h2 className="font-serif text-3xl text-black">
             <FormattedMessage defaultMessage="Project Developers" id="+K9fF0" />
           </h2>
