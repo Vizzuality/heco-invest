@@ -11,7 +11,6 @@ import { Paths } from 'enums';
 export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
   project,
 }: ProjectDevelopersProps) => {
-  console.log({ project });
   const { project_developer: mainDeveloper, involved_project_developers: developers } = project;
   const NUMBER_DEVELOPERS = developers.length;
 
