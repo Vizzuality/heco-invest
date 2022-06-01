@@ -51,9 +51,55 @@
     "received_funding_investor": null,
     "relevant_links": null,
     "language": "en",
-    "geometry": {},
+    "geometry": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -76.31616777205625,
+                  6.940364371812214
+                ],
+                [
+                  -75.69712582904225,
+                  2.2858401148705783
+                ],
+                [
+                  -71.87032109040962,
+                  5.933786157040901
+                ],
+                [
+                  -76.31616777205625,
+                  6.940364371812214
+                ]
+              ]
+            ]
+          },
+          "properties": {}
+        }
+      ]
+    },
     "favourite": null,
     "trusted": true,
+    "municipality_biodiversity_impact": 0.22,
+    "municipality_climate_impact": 0.7,
+    "municipality_water_impact": 0.4,
+    "municipality_community_impact": 0.7,
+    "municipality_total_impact": 0.22,
+    "hydrobasin_biodiversity_impact": 0.5,
+    "hydrobasin_climate_impact": 0.2,
+    "hydrobasin_water_impact": 0.8,
+    "hydrobasin_community_impact": 0.2,
+    "hydrobasin_total_impact": 0.17,
+    "priority_landscape_biodiversity_impact": 0.8,
+    "priority_landscape_climate_impact": 0.3,
+    "priority_landscape_water_impact": 0.6,
+    "priority_landscape_community_impact": 0.3,
+    "priority_landscape_total_impact": 2,
     "project_developer": {
         "type": "project_developer",
         "id": "3117d9f4-6dff-4fb0-9510-eb8b0e6e77da",
