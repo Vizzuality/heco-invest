@@ -86,8 +86,19 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
   });
 
   const handleCreate = useCallback(
-    (data: ProjectCreationPayload) =>
-      createProject.mutate(data, {
+    (formData: ProjectCreationPayload) => {
+      const data = {
+        ...formData,
+        // Endpoint only expects `file` and `cover`. If for instance an `id` is passed, it'll
+        // return an error. However, the frontend needs extra properties such as the `id` during
+        // the form creation, so we're cleaning up the form data before POST'ing it to the endpoint.
+        project_images_attributes: formData.project_images_attributes?.map(({ file, cover }) => ({
+          file,
+          cover,
+        })),
+      } as ProjectCreationPayload;
+
+      return createProject.mutate(data, {
         onError: (error) => {
           const { errorPages, fieldErrors } = getServiceErrors<ProjectForm>(error, formPageInputs);
           fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
@@ -96,7 +107,8 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
         onSuccess: (result) => {
           push({ pathname: '/projects/pending/', search: `project=${result.data.slug}` });
         },
-      }),
+      });
+    },
     [createProject, push, setError]
   );
 
