@@ -1,5 +1,7 @@
 module Backoffice
   class BaseController < ApplicationController
+    include Pagy::Backend
+
     layout "backoffice"
 
     before_action :authenticate_admin!

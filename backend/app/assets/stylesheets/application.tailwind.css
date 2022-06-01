@@ -16,7 +16,7 @@
   }
 
   .backoffice-table {
-    @apply w-full bg-white text-base rounded-xl
+    @apply w-full bg-white text-base rounded-t-xl
   }
 
   .backoffice-table th {
@@ -33,5 +33,25 @@
 
   .backoffice-table tr:last-child {
     @apply border-b-0;
+  }
+
+  .pagination {
+    @apply flex items-center flex-col-reverse w-full bg-white rounded-b-xl border-t-[1px] border-gray-200
+  }
+
+  .pagination ol {
+    @apply flex flex-wrap items-center justify-center gap-2 py-3
+  }
+
+  .pagination li {
+    @apply flex items-center font-sans px-1 py-1 justify-center text-gray-600 text-sm
+  }
+
+  .pagination li a {
+    @apply hover:text-green-dark
+  }
+
+  .pagination li .active {
+    @apply text-green-dark
   }
 }
