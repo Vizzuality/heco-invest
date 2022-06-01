@@ -32,7 +32,6 @@ export type ProjectBase = {
   impact_areas: string[];
   instrument_types: string[];
   involved_project_developer_not_listed: boolean;
-  involved_project_developers: string[];
   looking_for_funding: boolean;
   name: string;
   problem: string;
