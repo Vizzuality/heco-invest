@@ -10,7 +10,7 @@ import ImpactChart from './component';
 import { ImpactChartProps } from './types';
 
 export default {
-  title: 'Components/ImpactChart',
+  title: 'Containers/ImpactChart',
   component: ImpactChart,
 };
 

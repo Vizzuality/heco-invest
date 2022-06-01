@@ -11,11 +11,11 @@ import { noop } from 'lodash-es';
 import { projectImpact } from 'helpers/project';
 
 import CategoryTag from 'containers/category-tag';
+import ImpactChart from 'containers/impact-chart';
 import ImpactText from 'containers/impact-text';
 import SDGs from 'containers/sdgs';
 
 import Button from 'components/button';
-import ImpactChart from 'components/impact-chart';
 import Tag from 'components/tag';
 import { ImpactAreas } from 'enums';
 import { Paths } from 'enums';

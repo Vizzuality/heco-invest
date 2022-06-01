@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
+import ImpactChart from 'containers/impact-chart';
 import ImpactModal from 'containers/modals/impact';
 import { ImpactProps } from 'containers/project-page/impact/types';
 import SDGs from 'containers/sdgs/component';
 
 import Combobox, { Option } from 'components/forms/combobox';
-import ImpactChart from 'components/impact-chart';
 import LayoutContainer from 'components/layout-container';
 import Tag from 'components/tag';
 import Tooltip from 'components/tooltip';

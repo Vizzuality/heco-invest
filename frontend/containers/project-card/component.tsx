@@ -14,7 +14,8 @@ import { usePropagableEventHandlers } from 'hooks/pointer-events';
 
 import { projectImpact } from 'helpers/project';
 
-import ImpactChart from 'components/impact-chart';
+import ImpactChart from 'containers/impact-chart';
+
 import { Paths } from 'enums';
 
 import { useEnums } from 'services/enums/enumService';

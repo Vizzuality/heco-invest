@@ -7,6 +7,7 @@ import { loadI18nMessages } from 'helpers/i18n';
 import { projectImpact } from 'helpers/project';
 
 import Breadcrumbs from 'containers/breadcrumbs';
+import ImpactChart from 'containers/impact-chart';
 import ImpactText from 'containers/impact-text';
 import ProjectHeader from 'containers/project-header';
 import Contact from 'containers/project-page/contact/component';
