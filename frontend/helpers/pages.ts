@@ -61,7 +61,6 @@ export const bytesToMegabytes = (bytes: number): number => {
 /** Constant to define the default max allowed file size to upload */
 export const FILE_UPLOADER_MAX_SIZE = 5 * 1024 * 1024;
 
-
 /** Hook to get the query params of the discover pages */
 export const useQueryParams = (sortingState?: { sortBy: string; sortOrder: string }) => {
   const { query } = useRouter();
@@ -98,7 +97,8 @@ export const useQueryString = () => {
     return `?${queryString}`;
   }
   return '';
- 
+};
+
 export const getSocialMediaLinksRegex = () => {
   const getRegex = (media: string) => new RegExp(`^https?:\/\/(www.)?${media}.com\/.*$`);
   return {
