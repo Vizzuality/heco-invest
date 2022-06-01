@@ -110,3 +110,9 @@ export enum Impacts {
   Water = 'water',
   Community = 'community',
 }
+
+export enum ImpactAreas {
+  Municipality = 'municipality',
+  Hydrobasin = 'hydrobasin',
+  PriorityLandscape = 'priority_landscape',
+}
