@@ -30,7 +30,9 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
         within_row("Unapproved PD Enterprise") do
           expect(page).to have_text("John Levis")
           expect(page).to have_text("unapproved")
-          click_on t("backoffice.common.approve")
+          expect {
+            click_on t("backoffice.common.approve")
+          }.to have_enqueued_mail(UserMailer, :approved).with(unapproved_pd_owner).once
           expect(page).to have_text("approved")
         end
       end
@@ -41,7 +43,9 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
         within_row("Super PD Enterprise") do
           expect(page).to have_text("Tom Higgs")
           expect(page).to have_text("approved")
-          click_on t("backoffice.common.reject")
+          expect {
+            click_on t("backoffice.common.reject")
+          }.to have_enqueued_mail(UserMailer, :rejected).with(approved_pd_owner).once
           expect(page).to have_text("rejected")
         end
       end

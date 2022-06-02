@@ -306,7 +306,7 @@ GEM
       letter_opener (~> 1.7)
       railties (>= 5.2)
       rexml
-    loofah (2.17.0)
+    loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -423,14 +423,14 @@ GEM
     rspec-mocks (3.11.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.11.0)
-    rspec-rails (5.0.3)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
-      railties (>= 5.2)
-      rspec-core (~> 3.10)
-      rspec-expectations (~> 3.10)
-      rspec-mocks (~> 3.10)
-      rspec-support (~> 3.10)
+    rspec-rails (6.0.0.rc1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.11)
+      rspec-expectations (~> 3.11)
+      rspec-mocks (~> 3.11)
+      rspec-support (~> 3.11)
     rspec-request_snapshot (0.7.3)
       rspec (~> 3.0)
     rspec-retry (0.6.2)
@@ -576,7 +576,7 @@ DEPENDENCIES
   rgeo
   rgeo-geojson
   rspec-collection_matchers
-  rspec-rails (~> 5.0.0)
+  rspec-rails (= 6.0.0.rc1)
   rspec-request_snapshot
   rspec-retry
   rswag

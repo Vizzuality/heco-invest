@@ -40,6 +40,15 @@ zu:
         multiple_accounts: User already have account!
         no_project_developer: User is not project developer!
         no_investor: User is not investor!
+  user_mailer:
+    greetings: Dear %{full_name},
+    farewell_html: Best Regards,<br />Your HeCo Team
+    approved:
+      subject: Your account was approved!
+      content: We are happy to inform you that your account at HeCo platform was approved.
+    rejected:
+      subject: Your account was rejected!
+      content_html: We would like to inform you that your account at HeCo platform was rejected. One of our platform administrators should reach you shortly, but feel free to contact us at %{contact_url}.
   enums:
     category:
       sustainable-agrosystems:
