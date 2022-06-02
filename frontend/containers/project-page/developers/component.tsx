@@ -2,12 +2,11 @@ import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
-import Image from 'next/image';
-
 import ProfileCard from 'containers/profile-card/component';
 import { ProjectDevelopersProps } from 'containers/project-page/developers/types';
 
 import LayoutContainer from 'components/layout-container';
+import { Paths } from 'enums';
 
 export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
   project,
@@ -39,7 +38,7 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
             <ProfileCard
               className="w-full"
               key={mainDeveloper.id}
-              link="/developers/[id]"
+              link={`${Paths.ProjectDeveloper}/${mainDeveloper.slug}`}
               picture={mainDeveloper.picture.small}
               name={mainDeveloper.name}
               description={mainDeveloper.about}
@@ -49,12 +48,12 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
           )}
           {!!NUMBER_DEVELOPERS &&
             developers.map((developer) => {
-              const { about, name, picture, project_developer_type, id } = developer;
+              const { about, name, picture, project_developer_type, id, slug } = developer;
               return (
                 <ProfileCard
                   className="w-full"
                   key={id}
-                  link="/developers/[id]"
+                  link={`${Paths.ProjectDeveloper}/${slug}`}
                   picture={picture.small}
                   name={name}
                   description={about}
