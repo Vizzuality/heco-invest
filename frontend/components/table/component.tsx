@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-import { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 
-import { useTable, useFlexLayout, useSortBy } from 'react-table';
+import { useFlexLayout, usePagination, useSortBy, useTable } from 'react-table';
 
 import cx from 'classnames';
 
@@ -10,9 +9,18 @@ import Loading from 'components/loading';
 
 import SORT_SVG from 'svgs/ui/sort.svg';
 
+import Pagination from './pagination';
 import type { TableProps } from './types';
 
-export const Table: FC<TableProps> = ({ data, columns, loading, onSortChange }: TableProps) => {
+export const Table: FC<TableProps> = ({
+  data,
+  meta,
+  columns,
+  initialState,
+  loading,
+  onSortChange,
+  onPageChange,
+}: TableProps) => {
   const DEFAULT_COLUMN = React.useMemo(
     () => ({
       // When using the useFlexLayout:
@@ -30,6 +38,13 @@ export const Table: FC<TableProps> = ({ data, columns, loading, onSortChange }: 
     // rows
     rows,
     prepareRow,
+    // pagination
+    canPreviousPage,
+    canNextPage,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
     // state
     state,
   } = useTable(
@@ -37,31 +52,45 @@ export const Table: FC<TableProps> = ({ data, columns, loading, onSortChange }: 
       columns,
       defaultColumn: DEFAULT_COLUMN,
       data,
+      // paginaion
+      manualPagination: true,
+      pageCount: meta?.totalPages || 0,
       // sorting
       manualSortBy: true,
       disableMultiSort: true,
+
+      initialState: {
+        ...initialState,
+        pageIndex: meta?.page ? meta.page - 1 : 0,
+        pageSize: meta?.size || 10,
+      },
     },
     useFlexLayout,
-    useSortBy
+    useSortBy,
+    usePagination
   );
 
   useEffect(() => {
-    const { sortBy } = state;
+    const { pageIndex, sortBy } = state;
 
     const [sortSelected] = sortBy;
+
+    if (onPageChange) {
+      onPageChange(pageIndex + 1);
+    }
 
     if (onSortChange && sortSelected) {
       const { id, desc } = sortSelected;
       onSortChange(id, desc ? 'desc' : 'asc');
     }
-  }, [state, onSortChange]);
+  }, [state, onPageChange, onSortChange]);
 
   const { sortBy } = state;
   const [sortSelected] = sortBy;
 
   return (
     <div className="relative overflow-x-scroll md:overflow-hidden rounded-2xl">
-      <div {...getTableProps()} className="relative w-full mb-2 bg-white rounded-t-3xl">
+      <div {...getTableProps()} className="relative w-full bg-white rounded-t-3xl">
         <div>
           {headerGroups.map((headerGroup) => {
             const { key: headerGroupKey, ...restHeaderGroupProps } =
@@ -145,6 +174,15 @@ export const Table: FC<TableProps> = ({ data, columns, loading, onSortChange }: 
           </div>
         </div>
       </div>
+      <Pagination
+        pageIndex={state.pageIndex}
+        canPreviousPage={canPreviousPage}
+        canNextPage={canNextPage}
+        pageCount={pageCount}
+        gotoPage={gotoPage}
+        nextPage={nextPage}
+        previousPage={previousPage}
+      />
     </div>
   );
 };

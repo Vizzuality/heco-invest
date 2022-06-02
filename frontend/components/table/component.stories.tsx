@@ -46,6 +46,18 @@ Default.args = {
       width: 100,
     },
   ],
+  meta: {
+    page: 1,
+    size: 25,
+    totalItems: 83,
+    totalPages: 4,
+  },
+  initialState: [
+    {
+      pageIndex: 0,
+      sortBy: [{ id: 'displayName', desc: false }],
+    },
+  ],
   data: [
     {
       displayName: 'Dorothy Campbell',
