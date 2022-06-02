@@ -176,49 +176,49 @@ export default [
     },
   },
 
-  // VECTOR LAYER PROVIDER CARTO
-  {
-    params: {
-      color: '#00BBFF',
-    },
-    id: 'protected-areas',
-    type: 'vector',
-    source: {
-      type: 'vector',
-      provider: {
-        type: 'carto',
-        account: 'wri-01',
-        layers: [
-          {
-            options: {
-              cartocss: '#wdpa_protected_areas {  polygon-opacity: 1.0; polygon-fill: #704489 }',
-              cartocss_version: '2.3.0',
-              sql: 'SELECT * FROM wdpa_protected_areas',
-            },
-            type: 'cartodb',
-          },
-        ],
-      },
-    },
-    render: {
-      layers: [
-        {
-          type: 'fill',
-          'source-layer': 'layer0',
-          paint: {
-            'fill-color': '{color}',
-            'fill-opacity': 1,
-          },
-        },
-        {
-          type: 'line',
-          'source-layer': 'layer0',
-          paint: {
-            'line-color': '#000000',
-            'line-opacity': 0.1,
-          },
-        },
-      ],
-    },
-  },
+  // // VECTOR LAYER PROVIDER CARTO
+  // {
+  //   params: {
+  //     color: '#00BBFF',
+  //   },
+  //   id: 'protected-areas',
+  //   type: 'vector',
+  //   source: {
+  //     type: 'vector',
+  //     provider: {
+  //       type: 'carto',
+  //       account: 'wri-01',
+  //       layers: [
+  //         {
+  //           options: {
+  //             cartocss: '#wdpa_protected_areas {  polygon-opacity: 1.0; polygon-fill: #704489 }',
+  //             cartocss_version: '2.3.0',
+  //             sql: 'SELECT * FROM wdpa_protected_areas',
+  //           },
+  //           type: 'cartodb',
+  //         },
+  //       ],
+  //     },
+  //   },
+  //   render: {
+  //     layers: [
+  //       {
+  //         type: 'fill',
+  //         'source-layer': 'layer0',
+  //         paint: {
+  //           'fill-color': '{color}',
+  //           'fill-opacity': 1,
+  //         },
+  //       },
+  //       {
+  //         type: 'line',
+  //         'source-layer': 'layer0',
+  //         paint: {
+  //           'line-color': '#000000',
+  //           'line-opacity': 0.1,
+  //         },
+  //       },
+  //     ],
+  //   },
+  // },
 ];
