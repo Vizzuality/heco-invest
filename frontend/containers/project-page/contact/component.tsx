@@ -11,6 +11,7 @@ export const Contact: React.FC<ContactProps> = ({ project }: ContactProps) => {
   const { contact_email: email, contact_phone: phone } = project?.project_developer;
   const [contactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
   // TODO: add contactInfoModal component when set contactInfoModalOpen to true
+  // TODO: User should also have permissions to see contact info
   return (
     (!!phone || !!email) && (
       <section className="text-white bg-green-dark py-18">
