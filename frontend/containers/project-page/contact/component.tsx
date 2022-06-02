@@ -3,15 +3,23 @@ import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { ContactProps } from 'containers/project-page/contact/types';
+import { ContactItemType } from 'containers/social-contact/contact-information-modal';
+import ContactInformationModal from 'containers/social-contact/contact-information-modal/component';
 
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
 
 export const Contact: React.FC<ContactProps> = ({ project }: ContactProps) => {
+  console.log({ project });
   const { contact_email: email, contact_phone: phone } = project?.project_developer;
-  const [contactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
-  // TODO: add contactInfoModal component when set contactInfoModalOpen to true
+  const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
+  const contact: ContactItemType = {
+    name: project?.project_developer.name,
+    email: email,
+    phone: phone,
+  };
   // TODO: User should also have permissions to see contact info
+
   return (
     (!!phone || !!email) && (
       <section className="text-white bg-green-dark py-18">
@@ -40,6 +48,11 @@ export const Contact: React.FC<ContactProps> = ({ project }: ContactProps) => {
             <FormattedMessage defaultMessage="Contact" id="zFegDD" />
           </Button>
         </LayoutContainer>
+        <ContactInformationModal
+          isOpen={isContactInfoModalOpen}
+          onDismiss={() => setIsContactInfoModalOpen(false)}
+          contacts={contact}
+        />
       </section>
     )
   );
