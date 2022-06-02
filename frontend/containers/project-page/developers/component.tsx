@@ -12,7 +12,8 @@ import LayoutContainer from 'components/layout-container';
 export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
   project,
 }: ProjectDevelopersProps) => {
-  const { involved_project_developers: developers } = project;
+  console.log({ project });
+  const { project_developer: mainDeveloper, involved_project_developers: developers } = project;
   const NUMBER_DEVELOPERS = developers.length;
 
   return (
@@ -33,22 +34,36 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
             />
           </p>
         </div>
-        {!!NUMBER_DEVELOPERS &&
-          developers.map((developer) => {
-            const { about, name, picture, project_developer_type, id } = developer;
-            return (
-              <ProfileCard
-                className="w-full"
-                key={id}
-                link="/developers/[id]"
-                picture={picture.small}
-                name={name}
-                description={about}
-                type={project_developer_type}
-                profileType="project-developer"
-              />
-            );
-          })}
+        <div className="flex flex-col space-y-6">
+          {!!mainDeveloper && (
+            <ProfileCard
+              className="w-full"
+              key={mainDeveloper.id}
+              link="/developers/[id]"
+              picture={mainDeveloper.picture.small}
+              name={mainDeveloper.name}
+              description={mainDeveloper.about}
+              type={mainDeveloper.project_developer_type}
+              profileType="project-developer"
+            />
+          )}
+          {!!NUMBER_DEVELOPERS &&
+            developers.map((developer) => {
+              const { about, name, picture, project_developer_type, id } = developer;
+              return (
+                <ProfileCard
+                  className="w-full"
+                  key={id}
+                  link="/developers/[id]"
+                  picture={picture.small}
+                  name={name}
+                  description={about}
+                  type={project_developer_type}
+                  profileType="project-developer"
+                />
+              );
+            })}
+        </div>
       </LayoutContainer>
     </section>
   );

@@ -39,8 +39,6 @@ export const ProfileCard: FC<ProfileCardProps> = ({
     },
   } = useEnums();
 
-  console.log('allProjectDeveloperTypes', allProjectDeveloperTypes);
-
   const [isFocusWithin, setIsFocusWithin] = useState<boolean>(false);
 
   const { pressProps } = usePress({
