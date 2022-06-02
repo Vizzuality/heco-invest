@@ -10,6 +10,7 @@ import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
 
 export const Contact: React.FC<ContactProps> = ({ project }: ContactProps) => {
+  console.log({ project });
   const { contact_email: email, contact_phone: phone } = project?.project_developer;
   const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
   const contact: ContactItemType = {

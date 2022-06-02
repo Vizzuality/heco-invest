@@ -27,7 +27,6 @@ export const ProfileCard: FC<ProfileCardProps> = ({
   link,
   picture: pictureProp = undefined,
 }: ProfileCardProps) => {
-  console.log(type, 'type');
   const intl = useIntl();
   const router = useRouter();
   const [picture, setPicture] = useState<string>(pictureProp);
@@ -39,6 +38,8 @@ export const ProfileCard: FC<ProfileCardProps> = ({
       investor_type: allInvestorTypes,
     },
   } = useEnums();
+
+  console.log('allProjectDeveloperTypes', allProjectDeveloperTypes);
 
   const [isFocusWithin, setIsFocusWithin] = useState<boolean>(false);
 
