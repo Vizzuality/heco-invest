@@ -27,6 +27,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
   link,
   picture: pictureProp = undefined,
 }: ProfileCardProps) => {
+  console.log(type, 'type');
   const intl = useIntl();
   const router = useRouter();
   const [picture, setPicture] = useState<string>(pictureProp);
