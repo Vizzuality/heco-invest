@@ -81,17 +81,46 @@ export function useProject(id: string, params) {
 }
 
 const getProjectsMap = (params) =>
-  API.get<ResponseData<ProjectsMap>>('/api/v1/projects/map', { params });
+  API.get<ResponseData<ProjectsMap[]>>('/api/v1/projects/map', { params }).then(
+    (resp) => resp.data
+  );
 
 /** Hook to use the projects map locations */
 export const useProjectsMap = (params) => {
-  const query = useQuery([Queries.ProjectQuery], () => getProjectsMap(params));
+  const query = useQuery([Queries.ProjectQuery], () => getProjectsMap(params), {
+    placeholderData: {
+      data: [],
+    },
+  });
 
-  return useMemo(
-    () => ({
+  return useMemo(() => {
+    const projectsMap = query.data.data
+      .map(({ latitude, longitude, ...rest }) => {
+        if (
+          typeof longitude === 'number' &&
+          typeof latitude === 'number' &&
+          longitude > -180 &&
+          longitude < 180 &&
+          latitude > -90 &&
+          latitude < 90
+        ) {
+          return {
+            type: 'Feature',
+            id: rest.id,
+            geometry: {
+              type: 'Point',
+              coordinates: [longitude, latitude],
+            },
+            properties: rest,
+          };
+        }
+        return null;
+      })
+      .filter((f) => f);
+
+    return {
       ...query,
-      projectsMap: query.data?.data?.data,
-    }),
-    [query]
-  );
+      projectsMap: { type: 'FeatureCollection', features: projectsMap },
+    };
+  }, [query]);
 };
