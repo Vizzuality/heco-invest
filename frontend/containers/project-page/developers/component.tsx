@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 import Image from 'next/image';
 
+import ProfileCard from 'containers/profile-card/component';
 import { ProjectDevelopersProps } from 'containers/project-page/developers/types';
 
 import LayoutContainer from 'components/layout-container';
@@ -36,30 +37,16 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
           developers.map((developer) => {
             const { about, name, picture, project_developer_type, id } = developer;
             return (
-              <div
+              <ProfileCard
+                className="w-full"
                 key={id}
-                className="p-6 space-y-8 font-sans bg-white border md:w-2/3 rounded-2xl border-beige"
-              >
-                <div className="flex items-center space-x-4">
-                  <Image
-                    alt={name}
-                    className="rounded-full"
-                    height={72}
-                    src={picture.original}
-                    title={name}
-                    width={72}
-                  />
-                  <div>
-                    <h6 className="text-lg font-semibold lg:text-xl">{name}</h6>
-                    <p className="text-sm text-gray-800 uppercase lg:text-base">
-                      {project_developer_type}
-                    </p>
-                  </div>
-                </div>
-                <div>
-                  <p>{about}</p>
-                </div>
-              </div>
+                link="/developers/[id]"
+                picture={picture.small}
+                name={name}
+                description={about}
+                type={project_developer_type}
+                profileType="project-developer"
+              />
             );
           })}
       </LayoutContainer>
