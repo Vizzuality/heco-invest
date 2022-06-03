@@ -1,44 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 import { useForm } from 'react-hook-form';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
+
+import { projectImpact } from 'helpers/project';
 
 import ImpactChart from 'containers/impact-chart';
+import ImpactText from 'containers/impact-text';
 import ImpactModal from 'containers/modals/impact';
 import { ImpactProps } from 'containers/project-page/impact/types';
 import SDGs from 'containers/sdgs/component';
 
-import Combobox, { Option } from 'components/forms/combobox';
+import Select, { Option } from 'components/forms/select';
 import LayoutContainer from 'components/layout-container';
 import Tag from 'components/tag';
 import Tooltip from 'components/tooltip';
+import { ImpactAreas } from 'enums';
 import sdgsMock from 'mockups/sdgs.json';
 import { Enum } from 'types/enums';
 
 export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
-  const [impactLocation, setImpactLocation] = useState<string>('Municipality');
+  const [impactLocation, setImpactLocation] = useState<ImpactAreas>(ImpactAreas.Municipality);
   const [impactModalOpen, setImpactModalOpen] = useState<boolean>(false);
   const { control } = useForm();
-
-  // TODO: Change for real project attibute
-  const projectImpact = [4, 6, 8, 3];
+  const intl = useIntl();
 
   const { target_groups: tags, expected_impact: expected } = project;
 
+  const impact = useMemo(() => projectImpact(project)[impactLocation], [impactLocation, project]);
   const sdgs = sdgsMock.filter(({ id }) => project.sdgs.includes(parseInt(id)));
 
   const formatCapitalizeDashedString = (s) => {
     return s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, ' ');
   };
 
-  const formatDashedString = (s) => {
-    return s.replace(/-/g, ' ');
-  };
-
   const OPTIONS = [
-    { key: 'municipality', label: 'Municipality' },
-    { key: 'hydrobasin', label: 'Hydrobasin' },
-    { key: 'heco-priority-landscape', label: 'HeCo priority landscape' },
+    {
+      key: ImpactAreas.Municipality,
+      label: intl.formatMessage({ defaultMessage: 'Municipality', id: '9I1zvK' }),
+    },
+    {
+      key: ImpactAreas.Hydrobasin,
+      label: intl.formatMessage({ defaultMessage: 'Hydrobasin', id: 'VVlH2M' }),
+    },
+    {
+      key: ImpactAreas.PriorityLandscape,
+      label: intl.formatMessage({ defaultMessage: 'HeCo priority landscape', id: 'kPq9Kx' }),
+    },
   ];
 
   return (
@@ -91,7 +99,7 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
                   <label htmlFor="impact-location" className="text-sm text-gray-800">
                     <FormattedMessage defaultMessage="Display impact on" id="ufxVRM" />
                   </label>
-                  <Combobox
+                  <Select
                     id="impact-location"
                     name="impact-location"
                     aria-describedby="country-error"
@@ -105,16 +113,9 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
                     {OPTIONS.map(({ key, label }) => (
                       <Option key={key}>{label}</Option>
                     ))}
-                  </Combobox>
+                  </Select>
                 </div>
-                <p className="py-4">
-                  <FormattedMessage
-                    defaultMessage="In the {impactLocation} the the project has higher impact on Water
-                    and has an impact score of 30."
-                    id="eVJMyI"
-                    values={{ impactLocation: formatDashedString(impactLocation), score: 30 }}
-                  />
-                </p>
+                <ImpactText className="my-4" area={impactLocation as ImpactAreas} impact={impact} />
                 <button
                   onClick={() => setImpactModalOpen(true)}
                   type="button"
@@ -157,7 +158,7 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
               </div>
             </div>
             <div className="my-24 lg:w-1/2">
-              <ImpactChart category={project.category} impact={projectImpact} />
+              <ImpactChart category={project.category} impact={impact} />
             </div>
             {/* MOBILE */}
             <div className="flex flex-col items-center p-6 font-semibold bg-white lg:hidden w-52 rounded-xl">
