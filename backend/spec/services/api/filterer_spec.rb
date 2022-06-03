@@ -50,6 +50,21 @@ RSpec.describe API::Filterer do
           expect(subject.call).to eq([correct_project])
         end
       end
+
+      context "when filtered by impact" do
+        let(:filters) { {impact: "climate,water"} }
+        let!(:project_with_water_impact) { create :project, municipality_water_impact: 0.2 }
+        let!(:project_with_climate_impact) { create :project, municipality_climate_impact: 0.4 }
+        let!(:project_with_biodiversity_impact) { create :project, municipality_biodiversity_impact: 0.4 }
+        let!(:project_without_municipality_impact) { create :project, priority_landscape_climate_impact: 0.2 }
+
+        it "returns only records with correct impact values" do
+          expect(subject.call).to include(project_with_water_impact)
+          expect(subject.call).to include(project_with_climate_impact)
+          expect(subject.call).not_to include(project_with_biodiversity_impact)
+          expect(subject.call).not_to include(project_without_municipality_impact)
+        end
+      end
     end
 
     describe "used with Project Developer query" do
