@@ -140,6 +140,9 @@
   "5hbC/K": {
     "string": "Start making an impact now!"
   },
+  "5kZ+j+": {
+    "string": "Duration of the project"
+  },
   "5l/FHl": {
     "string": "You can choose from a variety of opportunities that range from sustainable landscape management tools and solutions, to forest-friendly products and business models. From social welfare solutions, to climate solutions and sustainable businesses."
   },
@@ -221,11 +224,17 @@
   "8rAlFa": {
     "string": "Not listed"
   },
+  "8rIwwr": {
+    "string": "Expected Impact"
+  },
   "9+Ddtu": {
     "string": "Next"
   },
   "94Fg25": {
     "string": "Select all"
+  },
+  "9CDBQg": {
+    "string": "The solution proposed"
   },
   "9Er2U2": {
     "string": "Investments in HeCo will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
@@ -302,6 +311,9 @@
   "CYTiug": {
     "string": "HeCo Invest will benefit poor and vulnerable people living in HeCo priority landscapes."
   },
+  "CcFPkO": {
+    "string": "This project has {numDevelopers} project developer{noun}"
+  },
   "CiBvks": {
     "string": "General information about the the project developer."
   },
@@ -331,6 +343,9 @@
   },
   "DWQSFT": {
     "string": "Use left and right to toggle between focused values, press backspace to remove the currently focused value"
+  },
+  "DeOyLr": {
+    "string": "Want to know more about this project?"
   },
   "DkjIbR": {
     "string": "insert email"
@@ -386,6 +401,9 @@
   "GdS9Mk": {
     "string": "Has this project been funded before?"
   },
+  "GufXy5": {
+    "string": "Value"
+  },
   "HAlOn1": {
     "string": "Name"
   },
@@ -438,6 +456,9 @@
   "IbrSk1": {
     "string": "Learn"
   },
+  "IkUX0b": {
+    "string": "How the money will be used"
+  },
   "J4SQjQ": {
     "string": "select"
   },
@@ -477,6 +498,9 @@
   "Jwjqn/": {
     "string": "focused"
   },
+  "K+Q04b": {
+    "string": "Image gallery"
+  },
   "KGREXT": {
     "string": "Total of projects"
   },
@@ -509,6 +533,9 @@
   },
   "MHwpc4": {
     "string": "Draw or upload your location"
+  },
+  "MXykbb": {
+    "string": "The problem we are solving"
   },
   "MZl85Y": {
     "string": "One more step to go"
@@ -579,6 +606,9 @@
   "PgGfZr": {
     "string": "Upload shapefile / KML file"
   },
+  "PheCRL": {
+    "string": "Estimated Impact"
+  },
   "Q1Q4rT": {
     "string": "Insert your name"
   },
@@ -621,6 +651,9 @@
   "SYPx2d": {
     "string": "Project developers involved in the project"
   },
+  "Scnx6A": {
+    "string": "Maturity / stage of development"
+  },
   "Sv/Mtz": {
     "string": "Project developer name"
   },
@@ -629,6 +662,9 @@
   },
   "TJo5E6": {
     "string": "Preview"
+  },
+  "TLn/wq": {
+    "string": "Open image"
   },
   "TUFmRM": {
     "string": "Climate impact"
@@ -710,6 +746,9 @@
   },
   "X0E3iC": {
     "string": "I agree with the Terms and Privacy Policy."
+  },
+  "X2YMUl": {
+    "string": "Contact the project developers to know more about the project."
   },
   "XDC7Vp": {
     "string": "Select the intrument type(s) you provide"
@@ -882,6 +921,9 @@
   "eTuDrh": {
     "string": "This will help us measure the impact of your project"
   },
+  "eVJMyI": {
+    "string": "In the {impactLocation} the the project has higher impact on Water and has an impact score of 30."
+  },
   "eXDHt0": {
     "string": "Describe the project or solution and describe clearly why you consider it is innovative, different from others and how it can generate an important change and impact towards the target groups. Highlight the characteristics that may attract partners, clients, or investors."
   },
@@ -960,6 +1002,9 @@
   "iiVhlC": {
     "string": "insert phone number"
   },
+  "ilgFAX": {
+    "string": "Target group(s)"
+  },
   "in26xr": {
     "string": "{organization} logo"
   },
@@ -989,6 +1034,9 @@
   },
   "kEXoaQ": {
     "string": "About your work"
+  },
+  "kPq9Kx": {
+    "string": "HeCo priority landscape"
   },
   "kUPAU5": {
     "string": "Search climate"
@@ -1077,6 +1125,9 @@
   "piBsTx": {
     "string": "Select HeCo priority landscapes on which you will have impact (optional)"
   },
+  "psXhQO": {
+    "string": "Funding & development"
+  },
   "puek63": {
     "string": "This information will help us understand what is the impact you want to have."
   },
@@ -1119,8 +1170,17 @@
   "rvirM2": {
     "string": "Location"
   },
+  "s07dAT": {
+    "string": "Project image"
+  },
+  "sFn7MX": {
+    "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
+  },
   "sMWFoV": {
     "string": "As an Investor / Funder"
+  },
+  "sV+3z0": {
+    "string": "Currently looking for"
   },
   "sZIoMy": {
     "string": "Send email"
@@ -1173,6 +1233,9 @@
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
   },
+  "ufxVRM": {
+    "string": "Display impact on"
+  },
   "uyxTSu": {
     "string": "Select the impacts that you prioritize"
   },
@@ -1184,6 +1247,9 @@
   },
   "vONi+O": {
     "string": "Country"
+  },
+  "vTJ8GJ": {
+    "string": "SDG'S"
   },
   "vaWFzs": {
     "string": "What's your mission?"
