@@ -1,0 +1,32 @@
+<table class="backoffice-table">
+  <thead>
+    <tr>
+      <th>
+        <%= sort_link @q, "name_#{I18n.locale}", t("backoffice.common.project_name") %>
+      </th>
+      <th>
+        <%= sort_link @q, :project_developer_account_name, t("backoffice.common.project_developer") %>
+      </th>
+      <th>
+        <%= sort_link @q, :category, t("backoffice.common.category") %>
+      </th>
+      <th>
+        <%= sort_link @q, :priority_landscape_name, t("backoffice.common.mosaic") %>
+      </th>
+      <th>
+        <%= sort_link @q, :status, t("backoffice.common.status") %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |p| %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.project_developer.name %></td>
+        <td><%= Category.find(p.category).name %></td>
+        <td><%= p.priority_landscape&.name %></td>
+        <td><%= p.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

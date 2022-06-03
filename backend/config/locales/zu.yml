@@ -8,6 +8,10 @@ zu:
       status: Status
       approve: Approve
       reject: Reject
+      project_name: Project name
+      project_developer: Project developer
+      category: Category
+      mosaic: Mosaic
       navigation:
         prev: "←"
         next: "→"
@@ -27,6 +31,7 @@ zu:
       sign_out: Sign out
       project_developers: Project developers
       investors: Investors
+      projects: Projects
   errors:
     messages:
       password_length: must be at least %{count} characters long

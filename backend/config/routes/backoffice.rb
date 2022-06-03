@@ -12,4 +12,5 @@ namespace :backoffice do
   end
   resources :investors, only: [:index]
   resources :project_developers, only: [:index]
+  resources :projects, only: [:index]
 end
