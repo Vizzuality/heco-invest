@@ -1,5 +1,7 @@
 import { FC, useCallback, useState } from 'react';
 
+import { useRouter } from 'next/router';
+
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { LayerManager } from '@vizzuality/layer-manager-react';
 
@@ -7,6 +9,7 @@ import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ClusterLayer from 'components/map/layers/cluster';
 import ProjectLegend from 'components/map/project-legend';
+import { ProjectMapParams } from 'types/project';
 
 import { useProjectsMap } from 'services/projects/projectService';
 
@@ -21,7 +24,9 @@ export const DiscoverMap: FC<DiscoverMapProps> = () => {
     options: { padding: 0 },
   });
 
-  const { projectsMap } = useProjectsMap({});
+  const { query } = useRouter();
+
+  const { projectsMap } = useProjectsMap(query as ProjectMapParams);
 
   const handleViewportChange = useCallback((vw) => {
     setViewport(vw);

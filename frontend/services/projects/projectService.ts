@@ -5,11 +5,11 @@ import { UseQueryResult, useQuery, UseQueryOptions } from 'react-query';
 import { AxiosRequestConfig } from 'axios';
 
 import { Queries } from 'enums';
-import { Project } from 'types/project';
+import { Project, ProjectMapParams, ProjectsMap } from 'types/project';
 
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
-import { PagedResponse, PagedRequest, ProjectsMap, ResponseData } from 'services/types';
+import { PagedResponse, PagedRequest, ResponseData } from 'services/types';
 
 /** Get a paged list of projects */
 const getProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
@@ -86,7 +86,7 @@ const getProjectsMap = (params) =>
   );
 
 /** Hook to use the projects map locations */
-export const useProjectsMap = (params) => {
+export const useProjectsMap = (params: ProjectMapParams) => {
   const query = useQuery([Queries.ProjectQuery], () => getProjectsMap(params), {
     placeholderData: {
       data: [],

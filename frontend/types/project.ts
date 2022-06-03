@@ -2,6 +2,7 @@ import { ValidGeometryType } from 'containers/forms/geometry/types';
 import { ProjectGalleryImageType } from 'containers/forms/project-gallery/project-gallery-image/types';
 
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
+import { string } from 'yup';
 
 import { ProjectDeveloper as ProjectDeveloperType } from './projectDeveloper';
 
@@ -83,3 +84,21 @@ export type ProjectCreationPayload = Omit<
 };
 
 export type ProjectImageGallery = ProjectImagesAttributes & ProjectGalleryImageType;
+
+export type ProjectsMap = {
+  id: string;
+  type: string;
+  trusted: boolean;
+  category: string;
+  latitude: number;
+  longitude: number;
+};
+
+export type ProjectMapParams = {
+  'filter[category]'?: string;
+  'filter[sdg]'?: number;
+  'filter[instrument_type]'?: string;
+  'filter[ticket_size]'?: string;
+  'filter[only_verified]'?: string;
+  'filter[full_text]'?: string;
+};

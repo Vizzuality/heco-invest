@@ -25,20 +25,20 @@ export const MapPinCluster: FC<MapPinClusterProps> = (props) => {
         data: dataValues,
         backgroundColor: colors,
         borderWidth: 2,
-        spacing: 2,
+        spacing: 1,
       },
     ],
   };
 
   const options = {
-    cutout: 14,
+    cutout: 13,
     plugins: {
       tooltip: { enabled: false },
     },
   };
 
   return (
-    <div className="bg-white rounded-full flex justify-center items-center w-12 h-12">
+    <div className="bg-white rounded-full flex justify-center items-center w-10 h-10">
       <Doughnut data={data} options={options} />
       <span className="font-semibold text-sm absolute">{point_count}</span>
     </div>

@@ -1,9 +1,15 @@
 import { values } from 'lodash-es';
 import Supercluster from 'supercluster';
 
-import { PROJECT_CATEGORY_COLORS } from 'helpers/project';
-
 import { ProjectsMap } from 'services/types';
+
+export const PROJECT_CATEGORY_COLORS = {
+  'sustainable-agrosystems': '#E7C343',
+  'tourism-and-recreation': '#4492E5',
+  'forestry-and-agroforestry': '#E57D57',
+  'non-timber-forest-production': '#404B9A',
+  'human-capital-and-inclusion': '#A0616A',
+};
 
 export const getClusterData = (
   superclusterInstance: Supercluster<ProjectsMap, Supercluster.AnyProps>,
