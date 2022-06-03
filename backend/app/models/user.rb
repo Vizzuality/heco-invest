@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :projects, through: :favourite_projects
   has_many :favourite_project_developers, dependent: :destroy
   has_many :project_developers, through: :favourite_project_developers
+  has_many :favourite_investors, dependent: :destroy
+  has_many :investors, through: :favourite_investors
 
   devise :database_authenticatable, :confirmable, :registerable,
     :recoverable, :rememberable, :validatable

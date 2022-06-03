@@ -2,22 +2,18 @@ module API
   module V1
     class FavouriteProjectsController < BaseController
       before_action :authenticate_user!
-      before_action :fetch_project
+
+      load_and_authorize_resource :project
+      load_and_authorize_resource :favourite_project, through: :project, shallow: true
 
       def create
-        @project.favourite_projects.create user: current_user
+        @favourite_project.save!
         render json: ProjectSerializer.new(@project, params: {current_user: current_user}).serializable_hash
       end
 
       def destroy
-        FavouriteProject.find_by(user: current_user, project: @project)&.destroy!
+        @favourite_projects.map(&:destroy!)
         render json: ProjectSerializer.new(@project, params: {current_user: current_user}).serializable_hash
-      end
-
-      private
-
-      def fetch_project
-        @project = Project.find params[:project_id]
       end
     end
   end

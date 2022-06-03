@@ -1,11 +1,6 @@
 require "swagger_helper"
 
 RSpec.describe "API V1 Favourite Project Developer", type: :request do
-  before_all do
-    @user = create :user
-    @project_developer = create :project_developer
-  end
-
   path "/api/v1/project_developers/{project_developer_id}/favourite_project_developer" do
     post "Mark Project Developer as favourite" do
       tags "Project Developers"
@@ -15,14 +10,17 @@ RSpec.describe "API V1 Favourite Project Developer", type: :request do
       parameter name: :project_developer_id, in: :path, type: :string
       parameter name: :empty, in: :body, schema: {type: :object}, required: false
 
-      let(:project_developer_id) { @project_developer.id }
+      let(:project_developer) { create :project_developer }
+      let(:project_developer_id) { project_developer.id }
+      let(:user) { create :user, account: create(:account, :approved) }
 
       it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true
 
       response "200", :success do
         let("X-CSRF-TOKEN") { get_csrf_token }
 
-        before { sign_in @user }
+        before { sign_in user }
 
         run_test!
 
@@ -40,16 +38,19 @@ RSpec.describe "API V1 Favourite Project Developer", type: :request do
       parameter name: :project_developer_id, in: :path, type: :string
       parameter name: :empty, in: :body, schema: {type: :object}, required: false
 
-      let(:project_developer_id) { @project_developer.id }
+      let(:project_developer) { create :project_developer }
+      let(:project_developer_id) { project_developer.id }
+      let(:user) { create :user, account: create(:account, :approved) }
 
       it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true
 
       response "200", :success do
         let("X-CSRF-TOKEN") { get_csrf_token }
 
         before do
-          create :favourite_project_developer, user: @user, project_developer: @project_developer
-          sign_in @user
+          create :favourite_project_developer, user: user, project_developer: project_developer
+          sign_in user
         end
 
         run_test!

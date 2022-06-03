@@ -1,17 +1,17 @@
 require "swagger_helper"
 
-RSpec.describe "API V1 Favourite Project", type: :request do
-  path "/api/v1/projects/{project_id}/favourite_project" do
-    post "Mark Project as favourite" do
-      tags "Projects"
+RSpec.describe "API V1 Favourite Investor", type: :request do
+  path "/api/v1/investors/{investor_id}/favourite_investor" do
+    post "Mark Investor as favourite" do
+      tags "Investors"
       consumes "application/json"
       produces "application/json"
       security [csrf: [], cookie_auth: []]
-      parameter name: :project_id, in: :path, type: :string
+      parameter name: :investor_id, in: :path, type: :string
       parameter name: :empty, in: :body, schema: {type: :object}, required: false
 
-      let(:project) { create :project }
-      let(:project_id) { project.id }
+      let(:investor) { create :investor }
+      let(:investor_id) { investor.id }
       let(:user) { create :user, account: create(:account, :approved) }
 
       it_behaves_like "with not authorized error", csrf: true
@@ -24,22 +24,22 @@ RSpec.describe "API V1 Favourite Project", type: :request do
 
         run_test!
 
-        it "favourite of project is truthy" do
+        it "favourite of investor is truthy" do
           expect(response_json["data"]["attributes"]["favourite"]).to be_truthy
         end
       end
     end
 
-    delete "Mark Project as non-favourite" do
-      tags "Projects"
+    delete "Mark Investor as non-favourite" do
+      tags "Investors"
       consumes "application/json"
       produces "application/json"
       security [csrf: [], cookie_auth: []]
-      parameter name: :project_id, in: :path, type: :string
+      parameter name: :investor_id, in: :path, type: :string
       parameter name: :empty, in: :body, schema: {type: :object}, required: false
 
-      let(:project) { create :project }
-      let(:project_id) { project.id }
+      let(:investor) { create :investor }
+      let(:investor_id) { investor.id }
       let(:user) { create :user, account: create(:account, :approved) }
 
       it_behaves_like "with not authorized error", csrf: true
@@ -49,13 +49,13 @@ RSpec.describe "API V1 Favourite Project", type: :request do
         let("X-CSRF-TOKEN") { get_csrf_token }
 
         before do
-          create :favourite_project, user: user, project: project
+          create :favourite_investor, user: user, investor: investor
           sign_in user
         end
 
         run_test!
 
-        it "favourite of project is falsey" do
+        it "favourite of investor is falsey" do
           expect(response_json["data"]["attributes"]["favourite"]).to be_falsey
         end
       end

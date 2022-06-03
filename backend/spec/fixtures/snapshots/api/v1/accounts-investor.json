@@ -45,7 +45,8 @@
         "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs1WkRrMFl6WmxOaTAyWW1KakxUUXhaamt0WVRsalpTMW1ORGhoWlRKak1HSmpOemdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--759c7c40f82d5bebfdfee347711cc008723333b2/picture.jpg"
       },
       "mission": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-      "prioritized_projects_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo."
+      "prioritized_projects_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+      "favourite": false
     },
     "relationships": {
       "owner": {

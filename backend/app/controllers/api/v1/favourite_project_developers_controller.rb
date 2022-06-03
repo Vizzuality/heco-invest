@@ -2,10 +2,12 @@ module API
   module V1
     class FavouriteProjectDevelopersController < BaseController
       before_action :authenticate_user!
-      before_action :fetch_project_developer
+
+      load_and_authorize_resource :project_developer
+      load_and_authorize_resource :favourite_project_developer, through: :project_developer, shallow: true
 
       def create
-        @project_developer.favourite_project_developers.create user: current_user
+        @favourite_project_developer.save!
         render json: ProjectDeveloperSerializer.new(
           @project_developer,
           params: {current_user: current_user}
@@ -13,17 +15,11 @@ module API
       end
 
       def destroy
-        FavouriteProjectDeveloper.find_by(user: current_user, project_developer: @project_developer)&.destroy!
+        @favourite_project_developers.map(&:destroy!)
         render json: ProjectDeveloperSerializer.new(
           @project_developer,
           params: {current_user: current_user}
         ).serializable_hash
-      end
-
-      private
-
-      def fetch_project_developer
-        @project_developer = ProjectDeveloper.find params[:project_developer_id]
       end
     end
   end
