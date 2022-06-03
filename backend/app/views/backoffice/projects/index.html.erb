@@ -14,7 +14,7 @@
         <%= sort_link @q, :priority_landscape_name, t("backoffice.common.mosaic") %>
       </th>
       <th>
-        <%= t("backoffice.common.status") %>
+        <%= sort_link @q, :trusted, t("backoffice.common.status") %>
       </th>
     </tr>
   </thead>
@@ -25,7 +25,10 @@
         <td><%= p.project_developer.name %></td>
         <td><%= Category.find(p.category).name %></td>
         <td><%= p.priority_landscape&.name %></td>
-        <td><%= p.status %></td>
+        <td>
+          <%= status_tag :verified, t('backoffice.common.verified') if p.trusted?  %>
+          <%= status_tag :unverified, t('backoffice.common.unverified') unless p.trusted?  %>
+        </td>
       </tr>
     <% end %>
   </tbody>

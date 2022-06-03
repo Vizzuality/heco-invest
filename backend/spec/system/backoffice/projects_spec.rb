@@ -6,7 +6,8 @@ RSpec.describe "Backoffice: Projects", type: :system do
     project = create(
       :project,
       name: "Project ultra name",
-      project_developer: create(:project_developer, account: create(:account, name: "Ultra project developer name"))
+      project_developer: create(:project_developer, account: create(:account, name: "Ultra project developer name")),
+      trusted: true
     )
     project.update(priority_landscape: create(:location, location_type: "region", name: "Test mosaic"))
     project
@@ -23,7 +24,8 @@ RSpec.describe "Backoffice: Projects", type: :system do
       I18n.t("backoffice.common.project_name"),
       I18n.t("backoffice.common.project_developer"),
       I18n.t("backoffice.common.category"),
-      I18n.t("backoffice.common.mosaic")
+      I18n.t("backoffice.common.mosaic"),
+      I18n.t("backoffice.common.status")
     ]
 
     it "shows projects list" do
@@ -32,7 +34,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
         expect(page).to have_text("Ultra project developer name")
         expect(page).to have_text(Category.find(project.category).name)
         expect(page).to have_text("Test mosaic")
-        expect(page).to have_text("draft")
+        expect(page).to have_text(I18n.t("backoffice.common.verified"))
       end
     end
   end

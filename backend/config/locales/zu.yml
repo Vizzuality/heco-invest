@@ -12,6 +12,8 @@ zu:
       project_developer: Project developer
       category: Category
       mosaic: Mosaic
+      verified: Verified
+      unverified: Unverified
       navigation:
         prev: "←"
         next: "→"
