@@ -27,7 +27,7 @@ export const TablePagination: FC<TablePaginationProps> = ({
   if (pageCount === 0) return null;
 
   return (
-    <div className="sticky bottom-0 py-5 bg-white border rounded-b-3xl border-t-1">
+    <div className="sticky bottom-0 py-5 bg-white border-t rounded-b-3xl border-t-1">
       <div className="absolute top-0 left-0 z-0 w-full h-full transform rotate-180 pointer-events-none" />
 
       <div className="flex items-center justify-center">
