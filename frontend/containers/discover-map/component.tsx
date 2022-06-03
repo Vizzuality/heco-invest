@@ -40,7 +40,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = () => {
             <LayerManager map={map} plugin={PluginMapboxGl}></LayerManager>
 
             <ClusterLayer
-              data={projectsMap as any}
+              data={projectsMap}
               map={map}
               MarkerComponent={<MapPin />}
               ClusterComponent={<MapPinCluster />}

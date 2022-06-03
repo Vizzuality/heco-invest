@@ -1,2 +1,2 @@
-export type { MapPinProps } from './types';
+export type { MapPinClusterProps } from './types';
 export { default } from './component';

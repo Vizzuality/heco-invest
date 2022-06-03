@@ -1,8 +1,10 @@
+import { PointFeature } from 'supercluster';
+import { string } from 'yup';
+
 import { ValidGeometryType } from 'containers/forms/geometry/types';
 import { ProjectGalleryImageType } from 'containers/forms/project-gallery/project-gallery-image/types';
 
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
-import { string } from 'yup';
 
 /** Project images on responses */
 export type ProjectImageType = {
@@ -106,6 +108,24 @@ export type ProjectCreationPayload = Omit<
 };
 
 export type ProjectImageGallery = ProjectImagesAttributes & ProjectGalleryImageType;
+
+export type ProjectsMapGeojson = {
+  type: 'FeatureCollection';
+  features: {
+    type: 'Feature';
+    id: string;
+    geometry: {
+      type: 'Point';
+      coordinates: number[];
+    };
+    properties: {
+      id: string;
+      type: string;
+      trusted: boolean;
+      category: string;
+    };
+  }[];
+};
 
 export type ProjectsMap = {
   id: string;

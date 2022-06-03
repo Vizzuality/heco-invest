@@ -1,6 +1,6 @@
 import Supercluster from 'supercluster';
 
-import { ProjectsMap } from 'services/types';
+import { ProjectsMap } from 'types/project';
 
 export interface MapPinClusterProps {
   cluster?: boolean;

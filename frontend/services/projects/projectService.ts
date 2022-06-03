@@ -5,11 +5,15 @@ import { UseQueryResult, useQuery, UseQueryOptions } from 'react-query';
 import { AxiosRequestConfig } from 'axios';
 
 import { Queries } from 'enums';
-import { Project, ProjectMapParams, ProjectsMap } from 'types/project';
+import { Project, ProjectMapParams, ProjectsMap, ProjectsMapGeojson } from 'types/project';
 
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
 import { PagedResponse, PagedRequest, ResponseData } from 'services/types';
+
+const FeatureCollection: 'FeatureCollection' = 'FeatureCollection';
+const Feature: 'Feature' = 'Feature';
+const Point: 'Point' = 'Point';
 
 /** Get a paged list of projects */
 const getProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
@@ -80,13 +84,16 @@ export function useProject(id: string, params) {
   );
 }
 
+/** Functon to get the projects locations using the paramns */
 const getProjectsMap = (params) =>
   API.get<ResponseData<ProjectsMap[]>>('/api/v1/projects/map', { params }).then(
     (resp) => resp.data
   );
 
 /** Hook to use the projects map locations */
-export const useProjectsMap = (params: ProjectMapParams) => {
+export const useProjectsMap = (
+  params: ProjectMapParams
+): UseQueryResult<ResponseData<ProjectsMap[]>, unknown> & { projectsMap: ProjectsMapGeojson } => {
   const query = useQuery([Queries.ProjectQuery], () => getProjectsMap(params), {
     placeholderData: {
       data: [],
@@ -94,33 +101,44 @@ export const useProjectsMap = (params: ProjectMapParams) => {
   });
 
   return useMemo(() => {
-    const projectsMap = query.data.data
-      .map(({ latitude, longitude, ...rest }) => {
-        if (
-          typeof longitude === 'number' &&
-          typeof latitude === 'number' &&
-          longitude > -180 &&
-          longitude < 180 &&
-          latitude > -90 &&
-          latitude < 90
-        ) {
-          return {
-            type: 'Feature',
-            id: rest.id,
-            geometry: {
-              type: 'Point',
-              coordinates: [longitude, latitude],
-            },
-            properties: rest,
-          };
-        }
-        return null;
-      })
-      .filter((f) => f);
+    // Parse the response to a geojson
+    const projectsMapFeatures: ProjectsMapGeojson['features'] = [];
+    query.data.data.forEach(({ latitude, longitude, category, id, trusted, type }) => {
+      // Valid longitude and latitude values
+      if (
+        typeof longitude === 'number' &&
+        typeof latitude === 'number' &&
+        longitude > -180 &&
+        longitude < 180 &&
+        latitude > -90 &&
+        latitude < 90
+      ) {
+        const feature = {
+          type: Feature,
+          id: id,
+          geometry: {
+            type: Point,
+            coordinates: [longitude, latitude],
+          },
+          properties: {
+            category,
+            id,
+            trusted,
+            type,
+          },
+        };
+        projectsMapFeatures.push(feature);
+      }
+    });
+
+    const projectsMap: ProjectsMapGeojson = {
+      type: FeatureCollection,
+      features: projectsMapFeatures,
+    };
 
     return {
       ...query,
-      projectsMap: { type: 'FeatureCollection', features: projectsMap },
+      projectsMap,
     };
   }, [query]);
 };
