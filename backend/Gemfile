@@ -75,7 +75,7 @@ group :test do
   gem "cuprite"
   gem "rspec-collection_matchers"
   gem "rspec-retry"
-  gem "rspec-request_snapshot"
+  gem "rspec-request_snapshot", github: "tsubik/rspec-request_snapshot", branch: "fix/ignore-order"
   gem "rswag-specs"
   gem "simplecov", require: false
   gem "super_diff"
