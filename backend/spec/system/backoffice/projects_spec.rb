@@ -25,6 +25,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
     ]
 
     it "shows projects list" do
+      expect(page).to have_xpath(".//tbody/tr", count: 5)
       within_row("Project ultra name") do
         expect(page).to have_text("Ultra project developer name")
         expect(page).to have_text(Category.find(project.category).name)
