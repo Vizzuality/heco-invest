@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 import { useComboBox, useFilter, useButton } from 'react-aria';
-import { ChevronDown as ChevronDownIcon } from 'react-feather';
+import { ChevronDown as ChevronDownIcon, X } from 'react-feather';
 import { FieldValues, Path, PathValue, UnpackNestedValue, useController } from 'react-hook-form';
 import { useComboBoxState } from 'react-stately';
 
@@ -54,6 +54,7 @@ export const Combobox = <FormValues extends FieldValues, T extends object>({
   const state = useComboBoxState({ ...ariaComboboxProps, defaultFilter: contains });
 
   const triggerRef = useRef(null);
+  const clearRef = useRef(null);
   const inputRef = React.useRef(null);
   const listboxRef = React.useRef(null);
   const popoverRef = React.useRef(null);

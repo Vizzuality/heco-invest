@@ -4,6 +4,8 @@ import { useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
+import { useQueryString } from 'helpers/pages';
+
 import BadgeNavigation from 'components/badge-navigation';
 import { Paths } from 'enums';
 
@@ -11,19 +13,10 @@ import { NavigationProps } from './types';
 
 export const Navigation: FC<NavigationProps> = ({ stats }: NavigationProps) => {
   const intl = useIntl();
-  const { asPath, query } = useRouter();
+  const { asPath } = useRouter();
 
   // Pick the query params we want to preserve in the navigation links (search, filters, sorting)
-  const queryParams = {
-    ...(query.search && { search: query.search as string }),
-    // TODO: Filters
-    // TODO: Sorting
-  };
-
-  // Build a query string to append to each link
-  const queryString = Object.keys(queryParams).length
-    ? `?${new URLSearchParams(queryParams).toString()}`
-    : '';
+  const queryString = useQueryString();
 
   const navigationItems = [
     {

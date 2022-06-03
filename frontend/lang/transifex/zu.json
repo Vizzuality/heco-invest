@@ -356,6 +356,9 @@
   "E1kj21": {
     "string": "Project verification"
   },
+  "EWw/tK": {
+    "string": "Apply"
+  },
   "Ec0M9T": {
     "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
   },
@@ -373,6 +376,9 @@
   },
   "F4dsUN": {
     "string": "Go to first page"
+  },
+  "F4gyn3": {
+    "string": "Clear filters"
   },
   "FJfVJJ": {
     "string": "Access user-friendly tools that help turn a good idea into a proposal ready to be reviewed by an investor or funder."
@@ -882,6 +888,9 @@
   "cT6b2H": {
     "string": "WWF"
   },
+  "ccXLVi": {
+    "string": "Category"
+  },
   "cqoaMq": {
     "string": "Shapefile / KML"
   },
@@ -996,6 +1005,9 @@
   "i50XU3": {
     "string": "Features for investors"
   },
+  "i9eK6b": {
+    "string": "Show verified content only"
+  },
   "iD2hRt": {
     "string": "insert the project name"
   },
@@ -1007,6 +1019,9 @@
   },
   "in26xr": {
     "string": "{organization} logo"
+  },
+  "j4lBL7": {
+    "string": "Note: Some filters not apply to all tabs"
   },
   "jKdvln": {
     "string": "Relevant links (optional)"
@@ -1254,6 +1269,9 @@
   "vaWFzs": {
     "string": "What's your mission?"
   },
+  "vdJRZj": {
+    "string": "More filters"
+  },
   "vygPIS": {
     "string": "Leave project creation form"
   },
@@ -1262,6 +1280,9 @@
   },
   "wSZR47": {
     "string": "Submit"
+  },
+  "wduJme": {
+    "string": "Instrument"
   },
   "whbx7G": {
     "string": "Geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystem services."
@@ -1331,6 +1352,9 @@
   },
   "zFegDD": {
     "string": "Contact"
+  },
+  "zSOvI0": {
+    "string": "Filters"
   },
   "zXxFL9": {
     "string": "Note: The content of this page was originally written in <span>{language}</span>."
