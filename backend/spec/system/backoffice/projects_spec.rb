@@ -21,8 +21,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
       I18n.t("backoffice.common.project_name"),
       I18n.t("backoffice.common.project_developer"),
       I18n.t("backoffice.common.category"),
-      I18n.t("backoffice.common.mosaic"),
-      I18n.t("backoffice.common.status")
+      I18n.t("backoffice.common.mosaic")
     ]
 
     it "shows projects list" do
