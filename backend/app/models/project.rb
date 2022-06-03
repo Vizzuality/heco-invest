@@ -81,6 +81,10 @@ class Project < ApplicationRecord
     name
   end
 
+  ransacker :category_index do
+    Arel.sql(Category.select_index_sql)
+  end
+
   private
 
   def clear_funding_fields

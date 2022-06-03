@@ -33,5 +33,14 @@ module EnumModel
     def find(slug)
       new(slug: slug)
     end
+
+    def select_index_sql(column_name = name.underscore)
+      sql = ["CASE"]
+      all.sort_by(&:name).each_with_index do |enum, index|
+        sql << "WHEN #{column_name} ='#{enum.slug}' THEN #{index}"
+      end
+      sql << "END"
+      sql.join(" ")
+    end
   end
 end
