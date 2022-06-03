@@ -15,11 +15,17 @@ module API
       end
 
       def destroy
-        @favourite_project_developers.map(&:destroy!)
+        @favourite_project_developers.find_by(user: current_user)&.destroy!
         render json: ProjectDeveloperSerializer.new(
           @project_developer,
           params: {current_user: current_user}
         ).serializable_hash
+      end
+
+      private
+
+      def favourite_project_developer_params
+        {user: current_user}
       end
     end
   end

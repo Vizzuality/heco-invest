@@ -12,8 +12,14 @@ module API
       end
 
       def destroy
-        @favourite_investors.map(&:destroy!)
+        @favourite_investors.find_by(user: current_user)&.destroy!
         render json: InvestorSerializer.new(@investor, params: {current_user: current_user}).serializable_hash
+      end
+
+      private
+
+      def favourite_investor_params
+        {user: current_user}
       end
     end
   end
