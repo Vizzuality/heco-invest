@@ -32,14 +32,6 @@ module Translations
         parent: "projects/#{@project_id}/locations/global",
         mime_type: "text/plain"
       response.translations.map(&:translated_text)
-    rescue Google::Cloud::Error => exception
-      handle_exception exception
-    end
-
-    def handle_exception(error)
-      Rails.logger.error(error)
-      Rails.logger.error(Rails.backtrace_cleaner.clean(error.backtrace).join("\n"))
-      # TODO: handle exception tracking
     end
 
     def present_translatable_attributes

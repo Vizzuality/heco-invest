@@ -1,0 +1,26 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 70,
+      "fingerprint": "38a76f3931f1d8a01c3591d2feee5d17502f144b78bf2123c46d896f800f119b",
+      "check_name": "MassAssignment",
+      "message": "Specify exact keys allowed for mass assignment instead of using `permit!` which allows any keys",
+      "file": "app/controllers/api/v1/accounts/projects_controller.rb",
+      "line": 66,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params[:geometry].permit!",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "API::V1::Accounts::ProjectsController",
+        "method": "update_params"
+      },
+      "user_input": null,
+      "confidence": "Medium",
+      "note": ""
+    }
+  ],
+  "updated": "2022-05-31 16:40:51 +0200",
+  "brakeman_version": "5.2.2"
+}

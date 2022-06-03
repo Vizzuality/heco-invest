@@ -12,6 +12,16 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
   describe "Index" do
     before { visit "/backoffice/project_developers" }
 
+    it_behaves_like "with table pagination"
+    it_behaves_like "with table sorting", columns: [
+      I18n.t("backoffice.common.name"),
+      I18n.t("backoffice.common.account_owner"),
+      I18n.t("backoffice.common.account_users"),
+      I18n.t("backoffice.project_developers.index.projects"),
+      I18n.t("backoffice.common.language"),
+      I18n.t("backoffice.common.status")
+    ]
+
     it "shows project developers list" do
       within_row("Super PD Enterprise") do
         expect(page).to have_text("Tom Higgs")

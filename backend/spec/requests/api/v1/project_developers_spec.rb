@@ -4,11 +4,11 @@ RSpec.describe "API V1 Project Developers", type: :request do
   before_all do
     @project_developer = create(:project_developer, :with_involved_projects, number_of_projects: 2, categories: ["tourism-and-recreation"])
     create_list(:project_developer, 6, categories: %w[forestry-and-agroforestry non-timber-forest-production])
-    @unapproved_project_developer = create(:project_developer, account: create(:account, review_status: :unapproved))
+    @unapproved_project_developer = create(:project_developer, account: create(:account, review_status: :unapproved, users: [create(:user)]))
     @approved_account = create(:account, review_status: :approved, users: [create(:user)])
   end
 
-  include_examples :api_pagination, model: ProjectDeveloper, expected_total: 10 # TODO: back to 9 when approved filter restored
+  include_examples :api_pagination, model: ProjectDeveloper, expected_total: 9
 
   path "/api/v1/project_developers" do
     get "Returns list of the project developers" do
@@ -38,10 +38,8 @@ RSpec.describe "API V1 Project Developers", type: :request do
           expect(response.body).to match_snapshot("api/v1/project_developers")
         end
 
-        pending("fix when approved filter restored") do
-          it "ignores unapproved record" do
-            expect(response_json["data"].pluck("id")).not_to include(@unapproved_project_developer.id)
-          end
+        it "ignores unapproved record" do
+          expect(response_json["data"].pluck("id")).not_to include(@unapproved_project_developer.id)
         end
 
         context "with sparse fieldset" do
@@ -147,6 +145,28 @@ RSpec.describe "API V1 Project Developers", type: :request do
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/get-project-developer-approved-account")
           end
+        end
+
+        context "when account user checks its own unapproved project developer" do
+          let(:id) { @unapproved_project_developer.id }
+
+          before { sign_in @unapproved_project_developer.account.users.first }
+
+          run_test!
+        end
+      end
+
+      response "403", :forbidden do
+        schema "$ref" => "#/components/schemas/errors"
+
+        let(:id) { @unapproved_project_developer.id }
+
+        run_test!
+
+        context "when logged in user tries to see unapproved project developer" do
+          before { sign_in @approved_account.users.first }
+
+          run_test!
         end
       end
     end

@@ -56,6 +56,11 @@ variable "google_maps_api_key" {
   description = "Google Maps API key"
 }
 
+variable "mapbox_api_key" {
+  type = string
+  description = "Mapbox API key"
+}
+
 variable "domain" {
   type = string
   description = "Base domain for the DNS zone"

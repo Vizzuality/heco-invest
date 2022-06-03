@@ -19,12 +19,16 @@ import Paging from './paging';
 import { SlideProps } from './slide';
 import type { CarouselProps } from './types';
 
-export const Carousel: FC<CarouselProps> = ({ className, children }: CarouselProps) => {
+export const Carousel: FC<CarouselProps> = ({
+  className,
+  children,
+  defaultSlide = 0,
+}: CarouselProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const slidesWrapperContainerRef = useRef<HTMLDivElement>();
   const slidesWrapperRef = useRef<HTMLDivElement>(null);
 
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [currentSlide, setCurrentSlide] = useState<number>(defaultSlide);
   const [slideHeight, setSlideHeight] = useState<unknown>(0);
 
   const [pointerDown, setPointerDown] = useState<boolean>(false);

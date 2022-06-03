@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   EMAIL_CONFIRMATION_LIMIT_PERIOD = 10.minutes
 
-  belongs_to :account, optional: true
+  belongs_to :account, optional: true, counter_cache: true
 
   has_many :favourite_projects, dependent: :destroy
   has_many :projects, through: :favourite_projects
@@ -21,6 +21,10 @@ class User < ApplicationRecord
   validates_presence_of :first_name, :last_name
 
   delegate :approved?, to: :account, allow_nil: true
+
+  ransacker :full_name do
+    Arel.sql("CONCAT_WS(' ', users.first_name, users.last_name)")
+  end
 
   def send_confirmation_instructions
     return if confirmation_sent_within_limited_period?

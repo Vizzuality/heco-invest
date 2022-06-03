@@ -1,4 +1,7 @@
 module ApplicationHelper
+  include Pagy::Frontend
+  include Ransack::Helpers::FormHelper
+
   def nav_link_to(text, path)
     is_active = current_page?(path)
     classnames = {
