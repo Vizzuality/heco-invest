@@ -19,20 +19,17 @@ import { ImpactAreas } from 'enums';
 import sdgsMock from 'mockups/sdgs.json';
 import { Enum } from 'types/enums';
 
-export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
+export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) => {
   const [impactLocation, setImpactLocation] = useState<ImpactAreas>(ImpactAreas.Municipality);
   const [impactModalOpen, setImpactModalOpen] = useState<boolean>(false);
   const { control } = useForm();
   const intl = useIntl();
 
-  const { target_groups: tags, expected_impact: expected } = project;
-
   const impact = useMemo(() => projectImpact(project)[impactLocation], [impactLocation, project]);
   const sdgs = sdgsMock.filter(({ id }) => project.sdgs.includes(parseInt(id)));
-
-  const formatCapitalizeDashedString = (s) => {
-    return s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, ' ');
-  };
+  const targetGroups = enums?.project_target_group?.filter((targetGroup) =>
+    project.target_groups?.includes(targetGroup.id)
+  );
 
   const OPTIONS = [
     {
@@ -63,13 +60,13 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
                   <FormattedMessage defaultMessage="Target group(s)" id="ilgFAX" />
                 </h3>
                 <div>
-                  {tags.map((tag) => (
+                  {targetGroups?.map(({ id, name }) => (
                     <Tag
-                      key={tag}
+                      key={id}
                       className="mb-2 mr-2 text-xs text-black bg-white lg:text-sm"
                       size="small"
                     >
-                      {formatCapitalizeDashedString(tag)}
+                      {name}
                     </Tag>
                   ))}
                 </div>
@@ -78,7 +75,7 @@ export const Impact: React.FC<ImpactProps> = ({ project }: ImpactProps) => {
                 <h3 className="text-xl font-semibold">
                   <FormattedMessage defaultMessage="Expected Impact" id="8rIwwr" />
                 </h3>
-                <p className="text-base">{expected}</p>
+                <p className="text-base">{project.expected_impact}</p>
               </div>
             </div>
             <div className="flex flex-col space-y-6 lg:w-1/2">

@@ -1177,7 +1177,7 @@
     "string": "Select HeCo priority landscapes on which you will have impact (optional)"
   },
   "psXhQO": {
-    "string": "Funding & development"
+    "string": "Funding &amp; development"
   },
   "puek63": {
     "string": "This information will help us understand what is the impact you want to have."
@@ -1193,6 +1193,9 @@
   },
   "qZPjW2": {
     "string": "What is a verification badge?"
+  },
+  "qcsPS9": {
+    "string": "{duration} months"
   },
   "qoImFc": {
     "string": "Replicability of the project"
