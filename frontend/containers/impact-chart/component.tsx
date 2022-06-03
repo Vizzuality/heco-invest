@@ -113,17 +113,16 @@ export const ImpactChart: FC<ImpactChartProps> = ({
       },
     },
     plugins: {
-      ...(!compactMode && {
-        tooltip: {
-          backgroundColor: 'white',
-          bodyColor: 'rgba(88, 88, 88, 1)',
-          titleColor: 'rgba(88, 88, 88, 1)',
-          titleFont: { weight: '400', size: 10 },
-          mode: 'nearest',
-          borderColor: 'rgba(88, 88, 88, 1)',
-          displayColors: false,
-        },
-      }),
+      tooltip: {
+        backgroundColor: 'white',
+        bodyColor: 'rgba(88, 88, 88, 1)',
+        titleColor: 'rgba(88, 88, 88, 1)',
+        titleFont: { weight: '400', size: 10 },
+        mode: 'nearest',
+        borderColor: 'rgba(88, 88, 88, 1)',
+        displayColors: false,
+        enabled: !compactMode,
+      },
     },
   };
 
