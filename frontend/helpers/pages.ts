@@ -58,13 +58,3 @@ export const bytesToMegabytes = (bytes: number): number => {
 
 /** Constant to define the default max allowed file size to upload */
 export const FILE_UPLOADER_MAX_SIZE = 5 * 1024 * 1024;
-
-export const getSocialMediaLinksRegex = () => {
-  const getRegex = (media: string) => new RegExp(`^https?:\/\/(www.)?${media}.com\/.*$`);
-  return {
-    twitter: getRegex('twitter'),
-    facebook: getRegex('facebook'),
-    linkedin: getRegex('linkedin'),
-    instagram: getRegex('instagram'),
-  };
-};

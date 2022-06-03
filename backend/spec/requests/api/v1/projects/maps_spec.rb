@@ -4,7 +4,6 @@ RSpec.describe "API V1 Project Maps", type: :request do
   before_all do
     @project = create(:project, category: "non-timber-forest-production")
     create_list(:project, 6, category: "forestry-and-agroforestry")
-    @unapproved_project = create(:project, project_developer: create(:project_developer, account: create(:account, :unapproved, users: [create(:user)])))
   end
 
   path "/api/v1/projects/map" do
@@ -43,10 +42,6 @@ RSpec.describe "API V1 Project Maps", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/project-maps")
-        end
-
-        it "ignores unapproved record" do
-          expect(response_json["data"].pluck("id")).not_to include(@unapproved_project.id)
         end
 
         context "when filtering is used" do

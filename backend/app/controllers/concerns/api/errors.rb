@@ -11,7 +11,6 @@ module API
       base.rescue_from ActionController::InvalidAuthenticityToken, with: :render_error
       base.rescue_from API::UnauthorizedError, with: :render_unauthorized_error
       base.rescue_from API::Forbidden, with: :render_forbidden_error
-      base.rescue_from CanCan::AccessDenied, with: :render_forbidden_error
       base.rescue_from API::UnprocessableEntityError, with: :render_unprocessable_entity_error
       base.rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_error
       base.rescue_from ActiveRecord::RecordInvalid, with: :render_validation_errors
@@ -50,7 +49,6 @@ module API
     def log_error(exception)
       Rails.logger.error(exception)
       Rails.logger.error(Rails.backtrace_cleaner.clean(exception.backtrace).join("\n"))
-      Google::Cloud::ErrorReporting.report exception
     end
   end
 end

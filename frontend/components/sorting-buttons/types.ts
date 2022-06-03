@@ -1,15 +1,6 @@
-export type SortingOptionKey =
-  | 'name'
-  | 'created_at'
-  | 'total_impact'
-  | 'biodiversity_impact'
-  | 'climate_impact'
-  | 'water_impact'
-  | 'community_impact';
-
 export type SortingOptionType = {
   /** Option key */
-  key: SortingOptionKey;
+  key: string;
   /** Option label */
   label: string;
 };

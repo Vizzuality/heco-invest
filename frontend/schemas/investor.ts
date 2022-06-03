@@ -1,4 +1,3 @@
-import { getSocialMediaLinksRegex } from 'helpers/pages';
 import { useIntl } from 'react-intl';
 
 import { object, string, array, boolean } from 'yup';
@@ -58,8 +57,6 @@ export default (page: number) => {
     }),
   };
 
-  const { linkedin, facebook, instagram, twitter } = getSocialMediaLinksRegex();
-
   const schemas = [
     object().shape({
       language: string().ensure().required(messages.language),
@@ -82,22 +79,22 @@ export default (page: number) => {
       facebook: string().test(
         'isSocialMediaLink',
         messages.social_medias,
-        (value) => !value || !!value.match(facebook)
+        (value) => !value || !!value.match(/https:\/\/facebook.com\/.*/)
       ),
       linkedin: string().test(
         'isSocialMediaLink',
         messages.social_medias,
-        (value) => !value || !!value.match(linkedin)
+        (value) => !value || !!value.match(/https:\/\/linkedin.com\/.*/)
       ),
       instagram: string().test(
         'isSocialMediaLink',
         messages.social_medias,
-        (value) => !value || !!value.match(instagram)
+        (value) => !value || !!value.match(/https:\/\/instagram.com\/.*/)
       ),
       twitter: string().test(
         'isSocialMediaLink',
         messages.social_medias,
-        (value) => !value || !!value.match(twitter)
+        (value) => !value || !!value.match(/https:\/\/twitter.com\/.*/)
       ),
     }),
     object().shape({

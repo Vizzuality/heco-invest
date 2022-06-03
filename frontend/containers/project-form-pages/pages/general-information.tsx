@@ -197,9 +197,11 @@ const GeneralInformation = ({
                 clearErrors={clearErrors}
                 register={register}
                 registerOptions={{ disabled: false }}
-                // See: Browser limitations section
-                // https://react-dropzone.org/#section-accepting-specific-file-types
-                fileTypes={{ 'image/*': ['.png', '.jpg', '.jpeg'] }}
+                fileTypes={{
+                  'image/png': ['.png'],
+                  'image/jpeg': ['.jpeg'],
+                  'image/jpg': ['.jpg'],
+                }}
                 maxFiles={6}
                 maxSize={5 * 1024 * 1025}
                 onUpload={handleUploadImages}

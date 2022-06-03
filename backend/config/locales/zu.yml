@@ -8,10 +8,6 @@ zu:
       status: Status
       approve: Approve
       reject: Reject
-      navigation:
-        prev: "←"
-        next: "→"
-        gap: "..."
     sign_in:
       welcome: Welcome to HeCO Invest backoffice.
       enter_details_below: Please enter your details below.

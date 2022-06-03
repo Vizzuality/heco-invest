@@ -19,10 +19,10 @@ const Template: Story<ProjectCardProps> = ({ project }: ProjectCardProps) => {
 
 export const Default: Story<ProjectCardProps> = Template.bind({});
 Default.args = {
-  project: { ...projectMock, trusted: false } as unknown as ProjectType,
+  project: { ...projectMock, trusted: false } as ProjectType,
 };
 
 export const Verified: Story<ProjectCardProps> = Template.bind({});
 Verified.args = {
-  project: projectMock as unknown as ProjectType,
+  project: projectMock as ProjectType,
 };

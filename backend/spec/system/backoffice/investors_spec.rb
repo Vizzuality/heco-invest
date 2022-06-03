@@ -16,16 +16,6 @@ RSpec.describe "Backoffice: Investors", type: :system do
   describe "Index" do
     before { visit "/backoffice/investors" }
 
-    it_behaves_like "with table pagination"
-    it_behaves_like "with table sorting", columns: [
-      I18n.t("backoffice.common.name"),
-      I18n.t("backoffice.common.account_owner"),
-      I18n.t("backoffice.common.account_users"),
-      I18n.t("backoffice.investors.index.open_calls"),
-      I18n.t("backoffice.common.language"),
-      I18n.t("backoffice.common.status")
-    ]
-
     it "shows investors list" do
       within_row("Super Investor Enterprise") do
         expect(page).to have_text("Tom Higgs")

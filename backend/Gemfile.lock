@@ -98,7 +98,6 @@ GEM
     bundler-audit (0.9.0.1)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
-    cancancan (3.3.0)
     capybara (3.37.1)
       addressable
       matrix
@@ -367,7 +366,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.0)
-    rack (2.2.3.1)
+    rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.2.4)
@@ -557,7 +556,6 @@ DEPENDENCIES
   bootsnap
   brakeman
   bundler-audit
-  cancancan
   capybara (>= 3.26)
   cloudtasker (~> 0.13.0)
   cssbundling-rails

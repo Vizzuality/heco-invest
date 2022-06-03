@@ -41,44 +41,14 @@
       "language": "en",
       "favourite": false,
       "geometry": {
-        "type": "FeatureCollection",
-        "features": [
-          {
-            "type": "Feature",
-            "geometry": {
-              "type": "Polygon",
-              "coordinates": [
-                [
-                  [
-                    -77.84036872266269,
-                    1.5274297752414188
-                  ],
-                  [
-                    -77.1591467371437,
-                    0.4940264211830182
-                  ],
-                  [
-                    -76.4661795449776,
-                    0.8933333719051408
-                  ],
-                  [
-                    -77.2531083903186,
-                    1.7974555737018534
-                  ],
-                  [
-                    -77.84036872266269,
-                    1.5274297752414188
-                  ]
-                ]
-              ]
-            },
-            "properties": {
-            }
-          }
+        "type": "Point",
+        "coordinates": [
+          1.0,
+          2.0
         ]
       },
-      "latitude": 1.1581373021971106,
-      "longitude": -77.16867902747148,
+      "latitude": 2.0,
+      "longitude": 1.0,
       "funding_plan": "Funding plan description",
       "trusted": false,
       "municipality_biodiversity_impact": null,

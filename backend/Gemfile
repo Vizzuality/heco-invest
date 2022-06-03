@@ -12,7 +12,6 @@ gem "redis", "~> 4.0"
 gem "rswag"
 gem "active_storage_validations"
 gem "rspec-rails", "~> 5.0.0"
-gem "cancancan"
 
 # BackOffice
 gem "cssbundling-rails"

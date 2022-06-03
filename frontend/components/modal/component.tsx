@@ -147,7 +147,7 @@ export const Modal: FC<ModalProps> = ({
                       <Button
                         theme="naked"
                         onClick={onDismiss}
-                        className="absolute text-gray-400 -translate-y-full -top-2 -right-8 sm:top-0 md:top-4 sm:-right-3 md:-right-4 focus:text-black hover:text-black group"
+                        className="absolute top-0 text-gray-400 -translate-y-full md:top-4 -right-3 md:-right-4 focus:text-black hover:text-black group"
                       >
                         <span className="sr-only">
                           <FormattedMessage defaultMessage="Close" id="rbrahO" />

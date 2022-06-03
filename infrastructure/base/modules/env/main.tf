@@ -59,7 +59,6 @@ locals {
     NEXT_PUBLIC_GOOGLE_ANALYTICS    = var.google_analytics_key
     NEXT_PUBLIC_PROXY_BACKEND       = "false"
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY = var.google_maps_api_key
-    NEXT_PUBLIC_MAPBOX_API_TOKEN    = var.mapbox_api_key
   }
 }
 
