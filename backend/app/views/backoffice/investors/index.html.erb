@@ -2,22 +2,22 @@
   <thead>
     <tr>
       <th>
-        <%= t("backoffice.common.name") %>
+        <%= sort_link @q, :account_name, t("backoffice.common.name") %>
       </th>
       <th>
-        <%= t("backoffice.common.account_owner") %>
+        <%= sort_link @q, :account_owner_full_name, t("backoffice.common.account_owner") %>
       </th>
       <th>
-        <%= t("backoffice.common.account_users") %>
+        <%= sort_link @q, :account_users_count, t("backoffice.common.account_users") %>
       </th>
       <th>
-        <%= t(".open_calls") %>
+        <%= sort_link @q, :open_calls_count, t(".open_calls") %>
       </th>
       <th>
-        <%= t("backoffice.common.language") %>
+        <%= sort_link @q, :language, t("backoffice.common.language") %>
       </th>
       <th>
-        <%= t("backoffice.common.status") %>
+        <%= sort_link @q, :account_review_status, t("backoffice.common.status") %>
       </th>
       <th>
       </th>
@@ -28,8 +28,8 @@
       <tr>
         <td><%= investor.name %></td>
         <td><%= investor.account.owner.full_name %></td>
-        <td><%= investor.account.users.count + 1 %></td>
-        <td><%= investor.open_calls.count %></td>
+        <td><%= investor.account.users_count %></td>
+        <td><%= investor.open_calls_count %></td>
         <td><%= investor.language %></td>
         <td><%= investor.account.review_status %></td>
         <td>

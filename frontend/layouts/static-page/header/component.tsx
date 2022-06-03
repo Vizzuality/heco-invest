@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header
       className={cx({
-        'fixed top-0 w-full z-10 transition-colors': true,
+        'fixed top-0 w-full z-20 transition-colors': true,
         'text-white': !showBackground,
         'bg-background-light/90 backdrop-blur-sm': showBackground,
         [className]: !!className,

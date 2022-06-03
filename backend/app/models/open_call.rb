@@ -5,7 +5,7 @@ class OpenCall < ApplicationRecord
 
   friendly_id :investor_prefixed_name, use: :slugged
 
-  belongs_to :investor
+  belongs_to :investor, counter_cache: true
 
   validates :instrument_type, inclusion: {in: InstrumentType::TYPES}
   validates :ticket_size, inclusion: {in: TicketSize::TYPES}

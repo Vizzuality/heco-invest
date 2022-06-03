@@ -25,7 +25,7 @@ export const MultiPageLayoutHeader: React.FC<MultiPageLayoutHeaderProps> = ({
   return (
     <header
       className={cx({
-        'fixed top-0 w-full z-10 bg-background-light/90 backdrop-blur-sm border-b': true,
+        'fixed top-0 w-full z-20 bg-background-light/90 backdrop-blur-sm border-b': true,
         [className]: !!className,
       })}
     >

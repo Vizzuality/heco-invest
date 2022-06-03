@@ -50,6 +50,7 @@ module API
     def log_error(exception)
       Rails.logger.error(exception)
       Rails.logger.error(Rails.backtrace_cleaner.clean(exception.backtrace).join("\n"))
+      Google::Cloud::ErrorReporting.report exception
     end
   end
 end
