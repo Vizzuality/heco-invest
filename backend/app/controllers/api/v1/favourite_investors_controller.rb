@@ -7,7 +7,7 @@ module API
       load_and_authorize_resource :favourite_investor, through: :investor, shallow: true
 
       def create
-        @favourite_investor.save!
+        @favourite_investor.save
         render json: InvestorSerializer.new(@investor, params: {current_user: current_user}).serializable_hash
       end
 
