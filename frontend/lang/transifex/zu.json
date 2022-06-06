@@ -41,6 +41,9 @@
   "0L/mZC": {
     "string": "Target group"
   },
+  "0PnfDn": {
+    "string": "View public profile"
+  },
   "0SKBlf": {
     "string": "Go to page {pageNumber}"
   },
@@ -328,6 +331,9 @@
   },
   "Czc5vB": {
     "string": "Looking for funding"
+  },
+  "CzsYIe": {
+    "string": "Account information"
   },
   "D5RCKi": {
     "string": "Project name"
@@ -654,6 +660,9 @@
   "RczAkW": {
     "string": "Report back"
   },
+  "SMrXWc": {
+    "string": "Favorites"
+  },
   "SNBzCW": {
     "string": "Tell us what how do you expect to grow your project , how will you measure progress and impact."
   },
@@ -801,6 +810,9 @@
   "YB8bt5": {
     "string": "Expect to have impact on"
   },
+  "YDMrKK": {
+    "string": "Users"
+  },
   "YE6fVO": {
     "string": "{accountName} account"
   },
@@ -923,6 +935,9 @@
   },
   "dZYyPC": {
     "string": "View {name} project details"
+  },
+  "daUTdN": {
+    "string": "Open call applications"
   },
   "dkNQOz": {
     "string": "Projects of all sizes"
