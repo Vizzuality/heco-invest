@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_01_092750) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_03_080408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -93,6 +93,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_01_092750) do
     t.jsonb "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favourite_investors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "investor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["investor_id"], name: "index_favourite_investors_on_investor_id"
+    t.index ["user_id", "investor_id"], name: "index_favourite_investors_on_user_id_and_investor_id", unique: true
+    t.index ["user_id"], name: "index_favourite_investors_on_user_id"
   end
 
   create_table "favourite_project_developers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -366,6 +376,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_01_092750) do
   add_foreign_key "accounts", "users", column: "owner_id", on_delete: :cascade
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favourite_investors", "investors", on_delete: :cascade
+  add_foreign_key "favourite_investors", "users", on_delete: :cascade
   add_foreign_key "favourite_project_developers", "project_developers", on_delete: :cascade
   add_foreign_key "favourite_project_developers", "users", on_delete: :cascade
   add_foreign_key "favourite_projects", "projects", on_delete: :cascade

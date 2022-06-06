@@ -10,7 +10,9 @@ namespace :api, format: "json" do
     resource :email_confirmation, only: [:create, :show]
     resource :reset_password, only: [:create, :update]
 
-    resources :investors, only: [:index, :show]
+    resources :investors, only: [:index, :show] do
+      resource :favourite_investor, only: [:create, :destroy]
+    end
     resources :locations, only: [:index, :show]
     resources :open_calls, only: [:index, :show]
     resources :project_developers, only: [:index, :show] do

@@ -7,7 +7,10 @@ class Ability
     @user = user
 
     default_rights
-    user_rights if user.present?
+    return if user.blank?
+
+    user_rights
+    approved_user_rights if user.approved?
   end
 
   private
@@ -31,5 +34,11 @@ class Ability
     can %i[show], Investor, account_id: user.account_id
     can %i[show], Project, project_developer: {account_id: user.account_id}
     can %i[show], OpenCall, investor: {account_id: user.account_id}
+  end
+
+  def approved_user_rights
+    can :manage, FavouriteProject, user_id: user.id
+    can :manage, FavouriteProjectDeveloper, user_id: user.id
+    can :manage, FavouriteInvestor, user_id: user.id
   end
 end

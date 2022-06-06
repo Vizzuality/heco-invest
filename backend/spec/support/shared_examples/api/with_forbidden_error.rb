@@ -1,15 +1,11 @@
 require "swagger_helper"
 
-RSpec.shared_examples "with forbidden error" do |csrf: false, require_project_developer: false|
+RSpec.shared_examples "with forbidden error" do |csrf: false, user: nil|
   response "403", "Forbidden" do
     let("X-CSRF-TOKEN") { get_csrf_token } if csrf
 
     before do
-      if require_project_developer
-        sign_in create(:user_project_developer)
-      else
-        sign_in create(:user)
-      end
+      sign_in instance_exec(&user) if user.present?
     end
 
     schema "$ref" => "#/components/schemas/errors"

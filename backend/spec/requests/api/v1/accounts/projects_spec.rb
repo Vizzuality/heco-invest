@@ -195,8 +195,8 @@ RSpec.describe "API V1 Account Projects", type: :request do
       end
 
       it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
-      it_behaves_like "with not found error", csrf: true, require_project_developer: true
-      it_behaves_like "with forbidden error", csrf: true, require_project_developer: true
+      it_behaves_like "with not found error", csrf: true, user: -> { create(:user_project_developer) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
 
       response "200", :success do
         schema type: :object, properties: {
