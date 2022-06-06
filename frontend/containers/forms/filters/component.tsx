@@ -122,8 +122,8 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
       return;
     }
 
-    setFiltersState({ ...filtersState, [name]: value });
     setValue(name, value);
+    setFiltersState({ ...filtersState, [name]: value });
   };
 
   return isLoading ? (

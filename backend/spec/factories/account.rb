@@ -35,5 +35,9 @@ FactoryBot.define do
     trait :rejected do
       review_status { "rejected" }
     end
+
+    after :create do |account|
+      account.users << account.owner
+    end
   end
 end

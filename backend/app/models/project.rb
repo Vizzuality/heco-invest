@@ -5,7 +5,7 @@ class Project < ApplicationRecord
 
   friendly_id :project_developer_prefixed_name, use: :slugged
 
-  belongs_to :project_developer
+  belongs_to :project_developer, counter_cache: true
 
   belongs_to :country, class_name: "Location"
   belongs_to :municipality, class_name: "Location"
