@@ -55,27 +55,37 @@ export const Navigation: FC<NavigationProps> = ({ className, userRole }: Navigat
 
   return (
     <div className={className}>
-      <div className="flex flex-wrap font-normal gap-y-2 gap-x-8">
-        {links.map(({ id, name, restricted }) => {
-          const roles = (Array.isArray(restricted) ? restricted : [restricted]).filter(
-            (role) => !!role
-          );
+      <nav>
+        <ol className="flex flex-wrap -mx-2 gap-y-2 gap-x-4 whitespace-nowrap">
+          {links.map(({ id, name, restricted }) => {
+            const roles = (Array.isArray(restricted) ? restricted : [restricted]).filter(
+              (role) => !!role
+            );
 
-          if (roles.length && !roles.includes(userRole)) return;
+            if (roles.length && !roles.includes(userRole)) return;
 
-          return (
-            <Link key={id} href={id}>
-              <a
-                className={cx({
-                  'font-semibold': id === activeLinkId,
-                })}
-              >
-                {name}
-              </a>
-            </Link>
-          );
-        })}
-      </div>
+            const isActive = id === activeLinkId;
+
+            return (
+              <li key={id} className="transition-all">
+                <Link key={id} href={id}>
+                  <a
+                    className={cx({
+                      'px-2 rounded-full transition-all': true,
+                      'focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2':
+                        true,
+                      'font-semibold': isActive,
+                    })}
+                    aria-current={isActive ? 'location' : false}
+                  >
+                    {name}
+                  </a>
+                </Link>
+              </li>
+            );
+          })}
+        </ol>
+      </nav>
     </div>
   );
 };
