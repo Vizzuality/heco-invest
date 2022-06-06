@@ -110,3 +110,7 @@ export enum Impacts {
   Water = 'water',
   Community = 'community',
 }
+
+export enum ReviewStatus {
+  Approved = 'approved',
+}

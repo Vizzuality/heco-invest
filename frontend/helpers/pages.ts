@@ -7,6 +7,8 @@ import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
 
+import { ProjectDeveloper } from 'types/projectDeveloper';
+
 import { ErrorResponse } from 'services/types';
 
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
@@ -106,5 +108,46 @@ export const getSocialMediaLinksRegex = () => {
     facebook: getRegex('facebook'),
     linkedin: getRegex('linkedin'),
     instagram: getRegex('instagram'),
+  };
+};
+
+export const getProjectDeveloperFormItems = (projectDeveloper: ProjectDeveloper) => {
+  const {
+    picture,
+    name,
+    about,
+    website,
+    linkedin,
+    facebook,
+    twitter,
+    instagram,
+    project_developer_type,
+    entity_legal_registration_number,
+    mission,
+    contact_email,
+    contact_phone,
+    categories,
+    impacts,
+    mosaics,
+    language,
+  } = projectDeveloper;
+  return {
+    picture,
+    name,
+    about,
+    website,
+    linkedin,
+    facebook,
+    twitter,
+    instagram,
+    project_developer_type,
+    entity_legal_registration_number,
+    mission,
+    contact_email,
+    contact_phone,
+    categories,
+    impacts,
+    mosaics,
+    language,
   };
 };

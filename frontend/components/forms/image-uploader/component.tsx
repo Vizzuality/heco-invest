@@ -25,6 +25,7 @@ export const ImageUploader = <FormValues extends FieldValues>({
   setValue,
   maxSize = FILE_UPLOADER_MAX_SIZE,
   clearErrors,
+  defaultImage,
   ...rest
 }: ImageUploaderProps<FormValues>) => {
   const { formatMessage } = useIntl();
@@ -86,7 +87,7 @@ export const ImageUploader = <FormValues extends FieldValues>({
           })}
         >
           <Image
-            src={imagePreview || '/images/avatar.svg'}
+            src={imagePreview || defaultImage || '/images/avatar.svg'}
             alt={formatMessage({ defaultMessage: 'Preview', id: 'TJo5E6' })}
             layout="fill"
             objectFit="cover"

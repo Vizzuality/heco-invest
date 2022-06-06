@@ -31,4 +31,6 @@ export type ImageUploaderProps<FormValues> = {
   clearErrors: UseFormClearErrors<any>;
   /** Max image size in bytes */
   maxSize?: number;
+  /** Default image url to show */
+  defaultImage?: string;
 };

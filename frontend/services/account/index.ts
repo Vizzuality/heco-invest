@@ -10,6 +10,7 @@ import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDevelo
 import API from 'services/api';
 import { ErrorResponse, ResponseData } from 'services/types';
 
+// Create PD
 const createProjectDeveloper = async (
   data: ProjectDeveloperSetupForm
 ): Promise<AxiosResponse<ProjectDeveloper>> => {
@@ -35,6 +36,33 @@ export function useCreateProjectDeveloper(): UseMutationResult<
   });
 }
 
+// Update PD
+const updateProjectDeveloper = async (
+  data: ProjectDeveloperSetupForm
+): Promise<AxiosResponse<ProjectDeveloper>> => {
+  const config: AxiosRequestConfig = {
+    method: 'PUT',
+    url: `/api/v1/account/project_developer`,
+    data,
+  };
+  return await API(config);
+};
+
+export function useUpdateProjectDeveloper(): UseMutationResult<
+  AxiosResponse<ProjectDeveloper>,
+  AxiosError<ErrorResponse>,
+  ProjectDeveloperSetupForm
+> {
+  const queryClient = useQueryClient();
+
+  return useMutation(updateProjectDeveloper, {
+    onSuccess: (result) => {
+      queryClient.setQueryData(Queries.ProjectDeveloper, result.data);
+    },
+  });
+}
+
+// Create Project
 export function useCreateProject(): UseMutationResult<
   AxiosResponse<Project>,
   AxiosError<ErrorResponse>,
@@ -53,6 +81,7 @@ export function useCreateProject(): UseMutationResult<
   });
 }
 
+// Create Investor
 export function useCreateInvestor(): UseMutationResult<
   AxiosResponse<ResponseData<Investor>>,
   AxiosError<ErrorResponse>,
