@@ -1,6 +1,9 @@
-import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
+import { useMemo } from 'react';
+
+import { useQuery, useMutation, UseMutationResult, useQueryClient } from 'react-query';
 
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
+import { decycle } from 'cycle';
 
 import { Queries } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
@@ -9,6 +12,28 @@ import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDevelo
 
 import API from 'services/api';
 import { ErrorResponse, ResponseData } from 'services/types';
+
+const getProjectDeveloper = async (): Promise<ProjectDeveloper> => {
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/project_developer`,
+    method: 'GET',
+  };
+  return await API.request(config).then((response) => decycle(response.data.data));
+};
+
+export function useProjectDeveloper() {
+  const query = useQuery([Queries.ProjectDeveloper], () => getProjectDeveloper(), {
+    refetchOnWindowFocus: false,
+  });
+
+  return useMemo(
+    () => ({
+      ...query,
+      projectDeveloper: query.data,
+    }),
+    [query]
+  );
+}
 
 const createProjectDeveloper = async (
   data: ProjectDeveloperSetupForm
@@ -51,6 +76,28 @@ export function useCreateProject(): UseMutationResult<
       queryClient.setQueryData(Queries.ProjectQuery, result.data);
     },
   });
+}
+
+const getInvestor = async (): Promise<Investor> => {
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/investor`,
+    method: 'GET',
+  };
+  return await API.request(config).then((response) => decycle(response.data.data));
+};
+
+export function useInvestor() {
+  const query = useQuery([Queries.Investor], () => getInvestor(), {
+    refetchOnWindowFocus: false,
+  });
+
+  return useMemo(
+    () => ({
+      ...query,
+      investor: query.data,
+    }),
+    [query]
+  );
 }
 
 export function useCreateInvestor(): UseMutationResult<
