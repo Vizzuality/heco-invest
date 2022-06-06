@@ -1,23 +1,25 @@
-<%= simple_form_for [:backoffice, project_developer] do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="w-full bg-white rounded-t-xl p-6">
+  <%= simple_form_for [:backoffice, project_developer] do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= render "backoffice/shared/account_fields", f: f %>
+    <%= render "backoffice/shared/account_fields", f: f %>
 
-  <%= f.input :entity_legal_registration_number %>
+    <%= f.input :entity_legal_registration_number %>
 
-  <%= f.input :project_developer_type, collection: ProjectDeveloperType.all %>
+    <%= f.input :project_developer_type, collection: ProjectDeveloperType.all %>
 
-  <%= f.input :categories, as: :check_boxes, collection: Category.all %>
-  <%= f.input :impacts, as: :check_boxes, collection: Impact.all %>
-  <%= f.input :mosaics, as: :check_boxes, collection: Mosaic.all %>
+    <%= f.input :categories, as: :check_boxes, collection: Category.all %>
+    <%= f.input :impacts, as: :check_boxes, collection: Impact.all %>
+    <%= f.input :mosaics, as: :check_boxes, collection: Mosaic.all %>
 
-  <%= f.input :mission_en %>
-  <%= f.input :mission_es %>
-  <%= f.input :mission_pt %>
+    <%= f.input :mission_en %>
+    <%= f.input :mission_es %>
+    <%= f.input :mission_pt %>
 
-  <div class="form-actions mt-3">
-    <%= f.button :submit, class: 'button button-primary-green' %>
-    <%= link_to 'Cancel', :back, class: 'button' %>
-  </div>
-<% end %>
+    <div class="mt-3 flex justify-end gap-3">
+      <%= link_to t("backoffice.common.cancel"), :back, class: "button button-secondary-green" %>
+      <%= f.button :submit, t("backoffice.common.save"), class: "button button-primary-green" %>
+    </div>
+  <% end %>
+</div>
