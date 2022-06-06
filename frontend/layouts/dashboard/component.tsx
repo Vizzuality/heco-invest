@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
 import useMe from 'hooks/me';
-import { useBreakpoint } from 'hooks/use-breakpoint';
 
 import LayoutContainer from 'components/layout-container';
 import { UserRoles } from 'enums';
@@ -20,7 +19,6 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
   buttons,
 }: DashboardLayoutProps) => {
   const { user } = useMe();
-  const breakpoint = useBreakpoint();
 
   // We can't use hooks conditionally, even though we do know which role the user has.
   // We'll fetch both, and then assign the correct one to the `accountData` variable.
@@ -44,10 +42,10 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
                   </div>
                   <div className="flex flex-col justify-end pb-2 mt-5 lg:mt-0">
                     <AccountInfo userRole={user?.role} account={accountData} />
-                    {breakpoint('lg') && <Navigation userRole={user?.role} />}
+                    <Navigation className="hidden lg:flex" userRole={user?.role} />
                   </div>
                 </div>
-                {!breakpoint('lg') && <Navigation className="mt-2" userRole={user?.role} />}
+                <Navigation className="flex mt-2 lg:hidden" userRole={user?.role} />
                 <div className="flex items-end justify-center">
                   <div className="flex gap-2 my-4 lg:my-0 lg:translate-y-5">{buttons}</div>
                 </div>
