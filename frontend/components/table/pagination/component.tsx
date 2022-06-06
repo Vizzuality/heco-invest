@@ -11,11 +11,9 @@ import { TablePaginationProps } from './types';
 export const TablePagination: FC<TablePaginationProps> = ({
   pageIndex,
   pageCount,
-  canPreviousPage,
   canNextPage,
   gotoPage,
   nextPage,
-  previousPage,
 }: TablePaginationProps) => {
   const handlePageClick = useCallback(
     ({ selected }) => {
@@ -36,11 +34,12 @@ export const TablePagination: FC<TablePaginationProps> = ({
           previousClassName="hidden"
           nextClassName="hidden"
           pageClassName="text-sm px-1.5 py-0.5 rounded-md"
-          activeClassName="bg-gray-100"
+          activeClassName="text-green-500"
+          activeLinkClassName="text-green-500"
           breakLabel="..."
           pageCount={pageCount}
           forcePage={pageIndex}
-          pageRangeDisplayed={3}
+          pageRangeDisplayed={2}
           marginPagesDisplayed={2}
           onPageChange={handlePageClick}
         />

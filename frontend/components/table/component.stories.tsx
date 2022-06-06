@@ -48,9 +48,9 @@ Default.args = {
   ],
   meta: {
     page: 1,
-    size: 25,
-    totalItems: 83,
-    totalPages: 4,
+    size: 4,
+    totalItems: 8,
+    totalPages: 8,
   },
   initialState: [
     {
@@ -59,6 +59,34 @@ Default.args = {
     },
   ],
   data: [
+    {
+      displayName: 'Dorothy Campbell',
+      email: 'dorothy.campbell@nesst.com',
+      id: 'cba6a23c-d100-46aa-b691-352eeec200cd',
+      role: 'Owner',
+      isAccepted: 'Accepted',
+    },
+    {
+      displayName: 'Savannah Nguyen',
+      email: 'savannah.nguyen@nesst.com',
+      id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+      role: 'User',
+      isAccepted: 'Waiting',
+    },
+    {
+      displayName: 'Robert Fox',
+      email: 'robert.fox@nesst.com',
+      id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+      role: 'User',
+      isAccepted: 'Accepted',
+    },
+    {
+      displayName: 'Cameron Williamson',
+      email: 'cameron.williamson@nesst.com',
+      id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+      role: 'User',
+      isAccepted: 'Accepted',
+    },
     {
       displayName: 'Dorothy Campbell',
       email: 'dorothy.campbell@nesst.com',
