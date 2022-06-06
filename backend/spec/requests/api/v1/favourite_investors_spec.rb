@@ -15,7 +15,7 @@ RSpec.describe "API V1 Favourite Investor", type: :request do
       let(:user) { create :user, account: create(:account, :approved) }
 
       it_behaves_like "with not authorized error", csrf: true
-      it_behaves_like "with forbidden error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user, account: create(:account, :unapproved)) }
 
       response "200", :success do
         let("X-CSRF-TOKEN") { get_csrf_token }
@@ -43,7 +43,7 @@ RSpec.describe "API V1 Favourite Investor", type: :request do
       let(:user) { create :user, account: create(:account, :approved) }
 
       it_behaves_like "with not authorized error", csrf: true
-      it_behaves_like "with forbidden error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user, account: create(:account, :unapproved)) }
 
       response "200", :success do
         let("X-CSRF-TOKEN") { get_csrf_token }
