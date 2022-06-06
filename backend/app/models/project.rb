@@ -70,6 +70,10 @@ class Project < ApplicationRecord
 
   accepts_nested_attributes_for :project_images, reject_if: :all_blank, allow_destroy: true
 
+  ransacker :category_index do
+    Arel.sql(Category.select_index_sql)
+  end
+
   def project_developer_prefixed_name
     "#{project_developer&.name} #{original_name}"
   end
@@ -79,10 +83,6 @@ class Project < ApplicationRecord
     # to prevent crashing validations because of setting slug, fallback just to current locale name
   rescue I18n::InvalidLocale
     name
-  end
-
-  ransacker :category_index do
-    Arel.sql(Category.select_index_sql)
   end
 
   private

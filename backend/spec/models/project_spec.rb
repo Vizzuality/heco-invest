@@ -290,4 +290,28 @@ RSpec.describe Project, type: :model do
       end
     end
   end
+
+  describe "ransacker" do
+    describe "#category_index" do
+      before do
+        create(:project, category: "sustainable-agrosystems")
+        create(:project, category: "tourism-and-recreation")
+        create(:project, category: "forestry-and-agroforestry")
+      end
+
+      context "sort" do
+        it "correctly by category name asc" do
+          q = Project.ransack
+          q.sorts = "category_index asc"
+          expect(q.result.pluck(:category)).to eq(["forestry-and-agroforestry", "sustainable-agrosystems", "tourism-and-recreation"])
+        end
+
+        it "correctly by category name desc" do
+          q = Project.ransack
+          q.sorts = "category_index desc"
+          expect(q.result.pluck(:category)).to eq(["tourism-and-recreation", "sustainable-agrosystems", "forestry-and-agroforestry"])
+        end
+      end
+    end
+  end
 end
