@@ -1,55 +1,32 @@
-import { values } from 'lodash-es';
+import { entries, groupBy } from 'lodash-es';
 import Supercluster from 'supercluster';
 
+import tw from 'tailwind.config';
 import { ProjectsMap } from 'types/project';
-
-export const PROJECT_CATEGORY_COLORS = {
-  'sustainable-agrosystems': '#E7C343',
-  'tourism-and-recreation': '#4492E5',
-  'forestry-and-agroforestry': '#E57D57',
-  'non-timber-forest-production': '#404B9A',
-  'human-capital-and-inclusion': '#A0616A',
-};
 
 /** Function to extract all the map points data inside a cluster */
 export const getClusterData = (
   superclusterInstance: Supercluster<ProjectsMap, Supercluster.AnyProps>,
   cluster_id: number
 ) => {
-  const clustered = superclusterInstance.getChildren(cluster_id);
+  // Get all points (features) inside a cluster
+  const data = superclusterInstance.getLeaves(cluster_id, Infinity);
+  // Points grouped by category
+  const groupedData = groupBy(data, 'properties.category');
 
-  // {
-  //   color: string (got by the category name),
-  //   count: number (the number of features with this category/color)
-  // }
-  const clusterData: { [key: string]: { color: string; count: number } } = {};
+  // Key and value of the colors of each category on tailwind.config
+  const categoryColors = entries(tw.theme.colors.category);
+  // Array of colors of each category
+  const colors: string[] = [];
+  // Array of the number of points in each actegory
+  const dataValues: number[] = [];
 
-  // Adds properties to 'clusterData' recursively
-  // The clustered element can be a feature (the project location) or another cluster. If it is a cluster I get it's childrens recursively until find the features.
-  const createData = (clusteredElements) => {
-    clusteredElements.forEach((clustereElement) => {
-      if (clustereElement.properties.cluster) {
-        const clusterChild = superclusterInstance.getChildren(
-          clustereElement.properties.cluster_id
-        );
-        createData(clusterChild);
-      } else {
-        const { category } = clustereElement.properties;
-        if (!category) return;
-        if (!clusterData[category]) {
-          clusterData[category] = { color: PROJECT_CATEGORY_COLORS[category], count: 1 };
-        } else {
-          clusterData[category].count++;
-        }
-      }
-    });
-  };
+  entries(groupedData).forEach(([category, points]) => {
+    // Get the color if the name of the color is a part of the category name
+    colors.push(categoryColors.find(([key]) => category.includes(key))[1]);
+    // The count of points of a category is the length of the grouped points
+    dataValues.push(points.length);
+  });
 
-  createData(clustered);
-
-  const colors = values(clusterData).map(({ color }) => color);
-  const dataValues = values(clusterData).reduce((prev, curr, index) => {
-    return index > 0 ? [...prev, prev[index - 1] + curr.count] : [curr.count];
-  }, []);
   return { colors, dataValues };
 };
