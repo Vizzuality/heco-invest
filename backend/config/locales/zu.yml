@@ -18,6 +18,8 @@ zu:
         prev: "←"
         next: "→"
         gap: "..."
+    messages:
+      success_update: "%{model} was successfully updated"
     sign_in:
       welcome: Welcome to HeCO Invest backoffice.
       enter_details_below: Please enter your details below.
