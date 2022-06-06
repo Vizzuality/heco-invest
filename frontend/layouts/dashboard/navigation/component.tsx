@@ -11,7 +11,7 @@ import { Paths, UserRoles } from 'enums';
 
 import { NavigationProps } from './types';
 
-export const Navigation: FC<NavigationProps> = ({ userRole }: NavigationProps) => {
+export const Navigation: FC<NavigationProps> = ({ className, userRole }: NavigationProps) => {
   const intl = useIntl();
   const { asPath } = useRouter();
 
@@ -54,26 +54,28 @@ export const Navigation: FC<NavigationProps> = ({ userRole }: NavigationProps) =
   );
 
   return (
-    <div className="flex gap-8 font-normal">
-      {links.map(({ id, name, restricted }) => {
-        const roles = (Array.isArray(restricted) ? restricted : [restricted]).filter(
-          (role) => !!role
-        );
+    <div className={className}>
+      <div className="flex flex-wrap font-normal gap-y-2 gap-x-8">
+        {links.map(({ id, name, restricted }) => {
+          const roles = (Array.isArray(restricted) ? restricted : [restricted]).filter(
+            (role) => !!role
+          );
 
-        if (roles.length && !roles.includes(userRole)) return;
+          if (roles.length && !roles.includes(userRole)) return;
 
-        return (
-          <Link key={id} href={id}>
-            <a
-              className={cx({
-                'font-semibold': id === activeLinkId,
-              })}
-            >
-              {name}
-            </a>
-          </Link>
-        );
-      })}
+          return (
+            <Link key={id} href={id}>
+              <a
+                className={cx({
+                  'font-semibold': id === activeLinkId,
+                })}
+              >
+                {name}
+              </a>
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 };

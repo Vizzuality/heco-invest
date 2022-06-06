@@ -15,7 +15,7 @@ export const AccountInfo: FC<AccountInfoProps> = ({ userRole, account }: Account
   }/${account?.slug}`;
 
   return (
-    <div className="flex items-center gap-4 my-2 text-sm">
+    <div className="flex flex-col gap-2 my-2 text-sm lg:gap-4 lg:flex-row lg:items-center">
       <span className="text-gray-600">{account?.name}</span>
       <Link href={publicProfileLink}>
         <a className="flex gap-2 text-green-light" target="_blank">
