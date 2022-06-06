@@ -52,6 +52,8 @@ export enum Queries {
   ProjectDeveloper = 'project_developer',
   /** The current user Project Developer */
   CurrentProjectDeveloper = 'current_project_developer',
+  /** The current user Investor */
+  CurrentInvestor = 'current_investor',
   /** List of projects */
   ProjectList = 'projects',
   /** Single project */

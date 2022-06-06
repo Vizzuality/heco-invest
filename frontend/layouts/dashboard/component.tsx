@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-import { useRouter } from 'next/router';
-
 import useMe from 'hooks/me';
 import { useBreakpoint } from 'hooks/use-breakpoint';
 

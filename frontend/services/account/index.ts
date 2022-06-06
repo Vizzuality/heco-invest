@@ -22,7 +22,7 @@ const getProjectDeveloper = async (): Promise<ProjectDeveloper> => {
 };
 
 export function useProjectDeveloper() {
-  const query = useQuery([Queries.ProjectDeveloper], () => getProjectDeveloper(), {
+  const query = useQuery([Queries.CurrentProjectDeveloper], () => getProjectDeveloper(), {
     refetchOnWindowFocus: false,
   });
 
@@ -87,7 +87,7 @@ const getInvestor = async (): Promise<Investor> => {
 };
 
 export function useInvestor() {
-  const query = useQuery([Queries.Investor], () => getInvestor(), {
+  const query = useQuery([Queries.CurrentInvestor], () => getInvestor(), {
     refetchOnWindowFocus: false,
   });
 
