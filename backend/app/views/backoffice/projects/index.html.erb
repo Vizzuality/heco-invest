@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>
-        <%= sort_link @q, "name_#{I18n.locale}", t("backoffice.common.project_name") %>
+        <%= localized_sort_link @q, :name, t("backoffice.common.project_name") %>
       </th>
       <th>
         <%= sort_link @q, :project_developer_account_name, t("backoffice.common.project_developer") %>

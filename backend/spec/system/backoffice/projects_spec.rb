@@ -2,15 +2,16 @@ require "system_helper"
 
 RSpec.describe "Backoffice: Projects", type: :system do
   let(:admin) { create(:admin, email: "admin@example.com", password: "SuperSecret6", first_name: "Admin", last_name: "Example") }
+  let(:geometry) { {type: "Polygon", coordinates: [[[0, 0], [1, 0], [1, 1], [0, 1]]]} }
+  let!(:mosaic) { create(:location, :with_geometry, geometry: RGeo::GeoJSON.decode(geometry.to_json), location_type: "region", name: "Test mosaic") }
   let!(:project) {
-    project = create(
+    create(
       :project,
       name: "Project ultra name",
       project_developer: create(:project_developer, account: create(:account, name: "Ultra project developer name")),
+      geometry: geometry,
       trusted: true
     )
-    project.update(priority_landscape: create(:location, location_type: "region", name: "Test mosaic"))
-    project
   }
   let!(:projects) { create_list(:project, 4) }
 

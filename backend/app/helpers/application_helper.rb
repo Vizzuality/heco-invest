@@ -17,6 +17,10 @@ module ApplicationHelper
     link_to text, path, class: classnames
   end
 
+  def localized_sort_link(q, key, *args, &block)
+    sort_link q, "#{key}_#{I18n.locale}", *args, &block
+  end
+
   def status_tag(key, text)
     return if text.blank?
 
