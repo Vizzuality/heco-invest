@@ -8504,6 +8504,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/supercluster@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@types/supercluster@npm:7.1.0"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: 029aba15871ac16855c8813bde35ca773f20996448647567b62f103f58a5979d852fb79066d895cb642913d28cb72ebbed6149bcca8c7f4b8b162062998fd640
+  languageName: node
+  linkType: hard
+
 "@types/tapable@npm:^1, @types/tapable@npm:^1.0.5":
   version: 1.0.8
   resolution: "@types/tapable@npm:1.0.8"
@@ -14367,6 +14376,7 @@ __metadata:
     "@types/rails__activestorage": ^7.0.1
     "@types/react": ^17.0.5
     "@types/react-vis": ^1.11.11
+    "@types/supercluster": ^7.1.0
     "@typescript-eslint/eslint-plugin": ^5.10.1
     "@typescript-eslint/parser": ^5.10.1
     "@vizzuality/layer-manager-layers-deckgl": ^1.0.0-alpha.3
@@ -14419,6 +14429,7 @@ __metadata:
     storybook-addon-mock: ^2.3.2
     storybook-addon-next: ^1.6.2
     storybook-react-intl: ^1.0.5
+    supercluster: ^7.1.5
     tailwindcss: ^3.0.23
     typescript: ^4.5.5
     url-search-params-polyfill: ^8.1.1
@@ -21575,6 +21586,15 @@ __metadata:
   dependencies:
     kdbush: ^3.0.0
   checksum: ebecd1965ea92a8be5ce80fdeb40d29ea80a633d1457b8b392cd6884663c6c136a432f3fafd0af9f4f8578c591cf7a6d020c86c7830b0ca8dac15fe280c3b2c4
+  languageName: node
+  linkType: hard
+
+"supercluster@npm:^7.1.5":
+  version: 7.1.5
+  resolution: "supercluster@npm:7.1.5"
+  dependencies:
+    kdbush: ^3.0.0
+  checksum: 69863238870093b96617135884721b6343746e14f396b2d67d6b55c52c362ec0516c5e386aa21815e75a9cef2054e831ac34023d0d8b600091d28cea0794f027
   languageName: node
   linkType: hard
 

@@ -16,7 +16,6 @@ import { Paths } from 'enums';
 import { useInvestorsList } from 'services/investors/investorsService';
 import { useProjectDevelopersList } from 'services/project-developers/projectDevelopersService';
 import { useProjectsList } from 'services/projects/projectService';
-import { PagedResponse } from 'services/types';
 
 import Header from './header';
 import { useSortingByOptions } from './helpers';

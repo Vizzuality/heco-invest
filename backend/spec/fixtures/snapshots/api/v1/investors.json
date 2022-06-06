@@ -45,7 +45,8 @@
           "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxtTVRZME1UZ3hZUzB4TjJNM0xUUTFOV1V0T0RNME15MWlZMlprTVdNMVpESTNNemNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--6cead2219cc355a8b2924bd60c55bd8e10cc9a4c/picture.jpg"
         },
         "mission": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "prioritized_projects_description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti."
+        "prioritized_projects_description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -101,7 +102,8 @@
           "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxpTWpoa09UWmtaaTB6WWpVeExUUXpNVE10T1dNNE5TMWhaREU1WkdVNU16VXlOREVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--e5e343ce5bf40ed8702f38678b6350dcce327671/picture.jpg"
         },
         "mission": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
-        "prioritized_projects_description": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut."
+        "prioritized_projects_description": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -157,7 +159,8 @@
           "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqWVRaa05HWTRaaTFoWkRjeUxUUmpaV010WVdRM01DMDBZbUZtWVdaak1tRmtPR0VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--56f5aa3480b82e0be51d911e00847c21879592ec/picture.jpg"
         },
         "mission": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "prioritized_projects_description": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum."
+        "prioritized_projects_description": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -213,7 +216,8 @@
           "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszT1Rrd05ERTNNaTFpTlRrMkxUUTFOall0WWpnNFl5MDVZamN5TmpjNFlUTXpZamtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f3d76d78a2392a39670d17d421d6f6f98fa10779/picture.jpg"
         },
         "mission": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "prioritized_projects_description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia."
+        "prioritized_projects_description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -269,7 +273,8 @@
           "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxoTXpBM01qZG1aQzFtWm1Rd0xUUm1ObVF0WVRCa05TMWxaR0V6TVdVeFlXRXpaRGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--af4a312b64ccf5531db3831f5091be666f15cae4/picture.jpg"
         },
         "mission": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "prioritized_projects_description": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est."
+        "prioritized_projects_description": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -325,7 +330,8 @@
           "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxqT1RRNVpqWTBPUzB3TURjM0xUUXpOR1l0T1RNek1DMWlNR016WlRNeFpqbGpPR01HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--8d8f77e6b40afb716b08e041611c9a4629abbe5e/picture.jpg"
         },
         "mission": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "prioritized_projects_description": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia."
+        "prioritized_projects_description": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
+        "favourite": null
       },
       "relationships": {
         "owner": {
@@ -381,7 +387,8 @@
           "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxpTTJOaU5UQm1NaTB5WVdJMUxUUTFaV1V0WW1KaVpTMHdNR1JtTVRKa1pUWTJNV0VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--54a1eaabd4d3cda3bcb13e9f8d4015047108d2e6/picture.jpg"
         },
         "mission": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "prioritized_projects_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo."
+        "prioritized_projects_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "favourite": null
       },
       "relationships": {
         "owner": {

@@ -118,12 +118,13 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
         involved_project_developer,
         project_gallery,
         project_images_attributes_cover,
+        geometry,
         ...rest
       } = values;
 
       // set image_attributes cover from the project_images_attributes_cover value
-      const project_images_attributes = values.project_images_attributes.map((image) =>
-        image.file === project_images_attributes_cover ? { ...image, cover: true } : image
+      const project_images_attributes: any = values.project_images_attributes.map(({ file }) =>
+        file === project_images_attributes_cover ? { file, cover: true } : { file, cover: false }
       );
       // set involved_project_developer_not_listed to true if not listed is selected and removes this value from the involved_project_developer_ids
       const involved_project_developer_not_listed =
@@ -137,6 +138,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
         involved_project_developer_not_listed,
         involved_project_developer_ids,
         project_images_attributes,
+        geometry,
       });
     } else {
       setCurrentPage(currentPage + 1);

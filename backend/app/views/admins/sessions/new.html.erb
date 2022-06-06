@@ -3,7 +3,7 @@
 
   <p class="my-6 text-gray-600"><%= t("backoffice.sign_in.enter_details_below") %></p>
 
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {"data-turbo": false}) do |f| %>
     <% flash.each do |type, message| %>
       <div class="mb-4 bg-red-50 text-black text-sm px-4 py-4">
         <%= message %>

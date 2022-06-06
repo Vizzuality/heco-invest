@@ -12,7 +12,7 @@ if Rails.env.development?
 
   Rake::Task["import_geojsons:colombia"].invoke
 
-  5.times do
+  15.times do
     investor_account = FactoryBot.create(:account)
     investor_account.owner.update!(role: "investor")
     investor = Investor.create!(
@@ -29,7 +29,7 @@ if Rails.env.development?
       other_information: Faker::Lorem.paragraph(sentence_count: 4),
       language: investor_account.language
     )
-    (0..3).to_a.sample.times do
+    (0..5).to_a.sample.times do
       FactoryBot.create(:open_call, investor: investor)
     end
 
@@ -45,11 +45,14 @@ if Rails.env.development?
       entity_legal_registration_number: "564823570"
     )
 
-    (0..3).to_a.sample.times do
+    (0..5).to_a.sample.times do
       municipality = Location.where(location_type: :municipality).order("RANDOM()").first ||
         FactoryBot.create(:municipality, parent: FactoryBot.create(:department, parent: FactoryBot.create(:location)))
       FactoryBot.create(
         :project,
+        trusted: [true, false].sample,
+        name: "#{Faker::Lorem.sentence} #{SecureRandom.hex(4)}",
+        category: Category::TYPES.sample,
         project_developer: project_developer,
         municipality: municipality,
         department: municipality.parent,

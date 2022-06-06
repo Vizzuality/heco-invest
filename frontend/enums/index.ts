@@ -61,6 +61,8 @@ export enum Queries {
   Locations = 'locations',
   /** Single Project */
   ProjectQuery = 'project',
+  /** Projects Map location */
+  ProjectsMap = 'projects_map',
 }
 
 /** Location endpoint param location_type */
@@ -113,4 +115,10 @@ export enum Impacts {
 
 export enum ReviewStatus {
   Approved = 'approved',
+}
+
+export enum ImpactAreas {
+  Municipality = 'municipality',
+  Hydrobasin = 'hydrobasin',
+  PriorityLandscape = 'priority_landscape',
 }

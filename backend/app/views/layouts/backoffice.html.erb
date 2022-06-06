@@ -8,12 +8,13 @@
         </div>
         <div class="flex items-center justify-end flex-1">
           <%= current_admin.email %>
-          <%= button_to t("backoffice.layout.sign_out"), destroy_admin_session_path, class: "ml-2", method: :delete %>
+          <%= button_to t("backoffice.layout.sign_out"), destroy_admin_session_path, data: {turbo: false}, class: "ml-2", method: :delete %>
         </div>
       </div>
     </div>
     <div class="container mx-auto">
       <nav class="flex gap-4.5 py-3">
+        <%= nav_link_to t("backoffice.layout.projects"), backoffice_projects_path %>
         <%= nav_link_to t("backoffice.layout.investors"), backoffice_investors_path %>
         <%= nav_link_to t("backoffice.layout.project_developers"), backoffice_project_developers_path %>
       </nav>
