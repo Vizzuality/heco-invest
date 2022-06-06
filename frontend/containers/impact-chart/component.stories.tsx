@@ -1,10 +1,16 @@
 import { Story } from '@storybook/react/types-6-0';
 
+import { projectImpact } from 'helpers/project';
+
+import { ImpactAreas } from 'enums';
+import projectMock from 'mockups/project.json';
+import { Project as ProjectType } from 'types/project';
+
 import ImpactChart from './component';
 import { ImpactChartProps } from './types';
 
 export default {
-  title: 'Components/ImpactChart',
+  title: 'Containers/ImpactChart',
   component: ImpactChart,
 };
 
@@ -22,26 +28,24 @@ const CompactTemplate: Story<ImpactChartProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  impact: [3, 5, 6, 5],
+  impact: projectImpact(projectMock as unknown as ProjectType)[ImpactAreas.Municipality],
   category: 'tourism-and-recreation',
 };
 
 export const Placeholder = Template.bind({});
 Placeholder.args = {
-  impact: [],
   category: 'tourism-and-recreation',
 };
 
 export const Compact = CompactTemplate.bind({});
 Compact.args = {
   compactMode: true,
-  impact: [3, 5, 6, 5],
+  impact: projectImpact(projectMock as unknown as ProjectType)[ImpactAreas.Municipality],
   category: 'tourism-and-recreation',
 };
 
 export const CompactPlaceholder = CompactTemplate.bind({});
 CompactPlaceholder.args = {
   compactMode: true,
-  impact: [],
   category: 'tourism-and-recreation',
 };
