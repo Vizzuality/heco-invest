@@ -11,7 +11,7 @@
     </ul>
   </aside>
   <div class="w-full h-full bg-white rounded-xl p-6">
-    <% section_name = %w[language profile status].include?(params[:section].downcase) ? params[:section].downcase : "profile" %>
+    <% section_name = %w[language profile status].include?(params[:section]&.downcase) ? params[:section].downcase : "profile" %>
     <%= render "section_#{section_name}" %>
   </div>
 </div>

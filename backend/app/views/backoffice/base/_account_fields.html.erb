@@ -1,14 +1,8 @@
 <%= f.simple_fields_for :account do |ff|  %>
   <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">About</h2>
 
-  <%= ff.input :about_en %>
-  <%= ff.input :about_es %>
-  <%= ff.input :about_pt %>
-
-  <%= f.input :mission_en %>
-  <%= f.input :mission_es %>
-  <%= f.input :mission_pt %>
-
+  <%= ff.input [:about, content_language].join('_'), label: t("simple_form.labels.account.about"), as: :text %>
+  <%= f.input [:mission, content_language].join('_'), label: t("simple_form.labels.defaults.mission"), as: :text %>
   <%= ff.input :website, as: :string %>
 
   <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">Contact information</h2>

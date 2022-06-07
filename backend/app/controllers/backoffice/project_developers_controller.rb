@@ -3,6 +3,8 @@ module Backoffice
     before_action :fetch_project_developer, only: [:edit, :update]
     before_action :set_breadcrumbs, only: [:edit, :update]
 
+    helper_method :content_language
+
     def index
       @q = ProjectDeveloper.ransack params[:q]
       @pagy_object, @project_developers = pagy @q.result.includes(account: [:owner]), pagy_defaults
@@ -59,6 +61,10 @@ module Backoffice
     def set_breadcrumbs
       add_breadcrumb(I18n.t("backoffice.layout.project_developers"), backoffice_project_developers_path)
       add_breadcrumb(@project_developer.name)
+    end
+
+    def content_language
+      Language::TYPES.map(&:to_s).include?(params[:content_lang]) ? params[:content_lang] : @project_developer.language
     end
   end
 end

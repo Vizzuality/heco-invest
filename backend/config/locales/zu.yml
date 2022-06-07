@@ -41,6 +41,7 @@ zu:
       edit: Edit
       save: Save
       cancel: Cancel
+      view_content_in: View content in
       navigation:
         prev: "←"
         next: "→"
