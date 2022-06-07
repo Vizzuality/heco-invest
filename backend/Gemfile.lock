@@ -513,6 +513,10 @@ GEM
       attr_extras (>= 6.2.4)
       diff-lcs
       patience_diff
+    tailwindcss-rails (2.0.8-x86_64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.8-x86_64-linux)
+      railties (>= 6.0.0)
     test-prof (1.0.8)
     thor (1.2.1)
     timeout (0.2.0)
@@ -601,6 +605,7 @@ DEPENDENCIES
   standard
   stimulus-rails
   super_diff
+  tailwindcss-rails (~> 2.0)
   test-prof
   traco
   turbo-rails

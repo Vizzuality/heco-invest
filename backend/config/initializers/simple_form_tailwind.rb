@@ -32,7 +32,7 @@ SimpleForm.setup do |config|
   # add validation classes to `input_field`
   config.input_field_error_class = "border-red-700"
   config.input_field_valid_class = "border-green-400"
-  config.label_class = "font-sans text-gray-800 font-semibold text-sm"
+  config.label_class = "font-sans text-gray-800 font-semibold text-sm mb-2"
 
   # vertical forms
   #
@@ -66,15 +66,20 @@ SimpleForm.setup do |config|
   end
 
   # vertical input for radio buttons and check boxes
-  config.wrappers :vertical_collection, item_wrapper_class: "flex items-center", item_label_class: "my-1 ml-3 block text-sm font-medium text-gray-400", tag: "div", class: "my-4" do |b|
+  config.wrappers :horizontal_collection, item_wrapper_class: "flex items-center", item_label_class: "font-sans text-black text-base", tag: "div", class: "my-4" do |b|
     b.use :html5
     b.optional :readonly
-    b.wrapper :legend_tag, tag: "legend", class: "text-sm font-medium text-gray-600", error_class: "text-red-500" do |ba|
+    b.wrapper :legend_tag, tag: "legend", class: "font-sans text-gray-800 font-semibold text-sm", error_class: "text-red-500" do |ba|
       ba.use :label_text
     end
-    b.use :input, class: "focus:ring-2 focus:ring-indigo-500 ring-offset-2 h-4 w-4 text-indigo-600 border-gray-300 rounded", error_class: "text-red-500", valid_class: "text-green-400"
-    b.use :full_error, wrap_with: {tag: "p", class: "block mt-2 text-red-500 text-xs italic"}
-    b.use :hint, wrap_with: {tag: "p", class: "mt-2 text-grey-700 text-xs italic"}
+    b.wrapper tag: "div", class: "flex gap-4.5 mt-2" do |bb|
+      bb.use :input,
+        class: "appearance-none inline-block w-4 h-4 mr-2 mt-0.5 px-0.5 py-[3px] border border-beige rounded hover:border hover:border-green-dark outline-none focus-visible:ring-green-dark focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white  checked:border-green-dark checked:bg-green-dark checked:bg-checkbox-checked bg-no-repeat bg-center disabled:opacity-60 disabled:hover:border-beige transition",
+        error_class: "invalid:border-red-700",
+        valid_class: "text-green-400"
+      bb.use :full_error, wrap_with: {tag: "p", class: "block mt-2 text-red-500 text-xs italic"}
+      bb.use :hint, wrap_with: {tag: "p", class: "mt-2 text-grey-700 text-xs italic"}
+    end
   end
 
   # vertical file input
@@ -126,11 +131,11 @@ SimpleForm.setup do |config|
   # type as key and the wrapper that will be used for all inputs with specified type.
   config.wrapper_mappings = {
     boolean: :vertical_boolean,
-    check_boxes: :vertical_collection,
+    check_boxes: :horizontal_collection,
     date: :vertical_multi_select,
     datetime: :vertical_multi_select,
     file: :vertical_file,
-    radio_buttons: :vertical_collection,
+    radio_buttons: :horizontal_collection,
     range: :vertical_range,
     time: :vertical_multi_select
   }

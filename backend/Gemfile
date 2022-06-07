@@ -16,6 +16,7 @@ gem "cancancan"
 
 # BackOffice
 gem "cssbundling-rails"
+gem "tailwindcss-rails", "~> 2.0"
 gem "jsbundling-rails"
 gem "sprockets-rails"
 gem "stimulus-rails"
