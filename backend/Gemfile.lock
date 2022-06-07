@@ -122,8 +122,6 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
-    cssbundling-rails (1.1.0)
-      railties (>= 6.0.0)
     cuprite (0.13)
       capybara (>= 2.1, < 4)
       ferrum (~> 0.11.0)
@@ -564,7 +562,6 @@ DEPENDENCIES
   cancancan
   capybara (>= 3.26)
   cloudtasker (~> 0.13.0)
-  cssbundling-rails
   cuprite
   debug
   devise
