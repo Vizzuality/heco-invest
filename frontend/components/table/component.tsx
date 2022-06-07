@@ -172,10 +172,6 @@ export const Table: FC<TableProps> = ({
               </div>
             );
           })}
-
-          <div className="absolute bottom-0 left-0 flex items-center justify-center w-full h-full">
-            <Loading visible={loading} className="mr-2.5" />
-          </div>
         </div>
       </div>
       <Pagination
@@ -187,6 +183,11 @@ export const Table: FC<TableProps> = ({
         nextPage={nextPage}
         previousPage={previousPage}
       />
+      {loading && (
+        <div className="absolute bottom-0 left-0 flex items-center justify-center w-full h-full">
+          <Loading className="mr-2.5" />
+        </div>
+      )}
     </div>
   );
 };

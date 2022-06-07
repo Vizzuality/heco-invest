@@ -14,7 +14,7 @@ export const DashboardTable = () => {
       columns={[
         {
           Header: 'User',
-          className: 'capitalize text-sm',
+          className: 'capitalize text-sm break-all',
           defaultCanSort: true,
           sortDescFirst: true,
           Cell: User,
