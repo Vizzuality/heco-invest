@@ -1,6 +1,7 @@
 module Backoffice
   class ProjectDevelopersController < BaseController
     before_action :fetch_project_developer, only: [:edit, :update]
+    before_action :set_breadcrumbs, only: [:edit, :update]
 
     def index
       @q = ProjectDeveloper.ransack params[:q]
@@ -52,6 +53,11 @@ module Backoffice
 
     def fetch_project_developer
       @project_developer = ProjectDeveloper.find(params[:id])
+    end
+
+    def set_breadcrumbs
+      add_breadcrumb(I18n.t("backoffice.layout.project_developers"), backoffice_project_developers_path)
+      add_breadcrumb(@project_developer.name)
     end
   end
 end

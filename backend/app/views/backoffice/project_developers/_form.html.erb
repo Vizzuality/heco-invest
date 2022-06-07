@@ -3,7 +3,7 @@
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-    <%= render "backoffice/shared/account_fields", f: f %>
+    <%= render "account_fields", f: f %>
 
     <%= f.input :entity_legal_registration_number %>
 
