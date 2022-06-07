@@ -22,8 +22,10 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
 
   // We can't use hooks conditionally, even though we do know which role the user has.
   // We'll fetch both, and then assign the correct one to the `accountData` variable.
-  const { data: projectDeveloperData } = useProjectDeveloper();
-  const { data: investorData } = useInvestor();
+  const { data: projectDeveloperData } = useProjectDeveloper(
+    user?.role === UserRoles.ProjectDeveloper
+  );
+  const { data: investorData } = useInvestor(user?.role === UserRoles.Investor);
 
   const accountData =
     user?.role === UserRoles.ProjectDeveloper ? projectDeveloperData : investorData;

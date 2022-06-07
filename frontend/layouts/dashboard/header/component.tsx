@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import cx from 'classnames';
 
-import { useWindowScrollPosition } from 'rooks';
+import { useScrollY } from 'hooks/use-scroll-y';
 
 import LanguageSelector from 'containers/layouts/language-selector';
 import Logo from 'containers/layouts/logo';
@@ -15,21 +15,15 @@ import LayoutContainer from 'components/layout-container';
 import { HeaderProps } from './types';
 
 export const Header: FC<HeaderProps> = ({}: HeaderProps) => {
-  const { scrollY }: ReturnType<typeof useWindowScrollPosition> =
-    // The `window` check is required because the hook is not SSR-ready yet:
-    // https://github.com/imbhargav5/rooks/issues/559
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    typeof window === 'undefined' ? { scrollY: 0, scrollX: 0 } : useWindowScrollPosition();
-
-  const showBackground = scrollY > 0;
+  const { isScrolledY } = useScrollY();
 
   return (
     <>
       <header
         className={cx({
           'top-0 w-full lg:relative transition-colors fixed z-20': true,
-          'text-white': !showBackground,
-          'bg-background-light/90 backdrop-blur-sm': showBackground,
+          'text-white': !isScrolledY,
+          'bg-background-light/90 backdrop-blur-sm': isScrolledY,
         })}
       >
         <LayoutContainer>
