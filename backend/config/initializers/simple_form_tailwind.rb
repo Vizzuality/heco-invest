@@ -72,7 +72,7 @@ SimpleForm.setup do |config|
     b.wrapper :legend_tag, tag: "legend", class: "font-sans text-gray-800 font-semibold text-sm", error_class: "text-red-500" do |ba|
       ba.use :label_text
     end
-    b.wrapper tag: "div", class: "flex gap-4.5 mt-2" do |bb|
+    b.wrapper tag: "div", class: "flex flex-wrap gap-4.5 mt-2" do |bb|
       bb.use :input,
         class: "appearance-none inline-block w-4 h-4 mr-2 mt-0.5 px-0.5 py-[3px] border border-beige rounded hover:border hover:border-green-dark outline-none focus-visible:ring-green-dark focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white  checked:border-green-dark checked:bg-green-dark checked:bg-checkbox-checked bg-no-repeat bg-center disabled:opacity-60 disabled:hover:border-beige transition",
         error_class: "invalid:border-red-700",

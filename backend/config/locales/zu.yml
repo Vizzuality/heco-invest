@@ -77,6 +77,20 @@ zu:
         no_project_developer: User is not project developer!
         no_investor: User is not investor!
   enums:
+    review_status:
+      approved:
+        name: Approved
+      unapproved:
+        name: Unapproved
+      rejected:
+        name: Rejected
+    language:
+      en:
+        name: English
+      es:
+        name: Spanish
+      pt:
+        name: Portugal
     category:
       sustainable-agrosystems:
         name: Sustainable Agrosystems

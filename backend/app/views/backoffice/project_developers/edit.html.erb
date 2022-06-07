@@ -1,1 +1,16 @@
-<%= render 'form', project_developer: @project_developer %>
+<div class="flex">
+  <aside class="w-2/6">
+    <h1 class="font-semibold text-xl text-black mb-8">
+      <%= @project_developer.name %>
+    </h1>
+
+    <ul class="flex flex-col gap-8">
+      <li><%= link_to "Account language", edit_backoffice_project_developer_path(section: "language") %></li>
+      <li><%= link_to "Profile", edit_backoffice_project_developer_path(section: "profile") %></li>
+      <li><%= link_to "Approval status", edit_backoffice_project_developer_path(section: "status") %></li>
+    </ul>
+  </aside>
+  <div class="w-full h-full bg-white rounded-xl p-6">
+    <%= render "section_#{params.fetch(:section, 'profile').downcase}" %>
+  </div>
+</div>
