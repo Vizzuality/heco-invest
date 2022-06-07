@@ -3,6 +3,7 @@ import React from 'react';
 import Table from 'components/table';
 import DOROTHY_CAMPBELL_PNG from 'public/images/mock/dorothy-campbell.png';
 
+import Invitation from './cells/invitation';
 import User from './cells/user';
 
 export const DashboardTable = () => {
@@ -40,6 +41,7 @@ export const DashboardTable = () => {
           defaultCanSort: true,
           sortDescFirst: true,
           width: 100,
+          Cell: Invitation,
         },
       ]}
       meta={{
