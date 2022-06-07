@@ -1,4 +1,16 @@
 zu:
+  activerecord:
+    attributes:
+      account:
+        review_statuses:
+          unapproved: Unapproved
+          approved: Approved
+          rejected: Rejected
+      project:
+        statuses:
+          draft: Unverified
+          published: Published
+          closed: Closed
   backoffice:
     common:
       account_owner: Account owner
@@ -15,6 +27,7 @@ zu:
       verified: Verified
       unverified: Unverified
       search_placeholder: Search
+      apply: Apply
       navigation:
         prev: "←"
         next: "→"

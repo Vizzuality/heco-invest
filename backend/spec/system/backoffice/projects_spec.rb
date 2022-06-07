@@ -38,5 +38,29 @@ RSpec.describe "Backoffice: Projects", type: :system do
         expect(page).to have_text(I18n.t("backoffice.common.verified"))
       end
     end
+
+    context "when searching" do
+      it "shows only found projects" do
+        expect(page).to have_text(project.name)
+        projects.each { |p| expect(page).to have_text(p.name) }
+        fill_in :q_filter_full_text, with: project.name
+        find("form.project_search button").click
+        expect(page).to have_text(project.name)
+        projects.each { |p| expect(page).not_to have_text(p.name) }
+      end
+    end
+
+    context "when searching by ransack filter" do
+      before { project.published! }
+
+      it "returns records at correct state" do
+        expect(page).to have_text(project.name)
+        projects.each { |p| expect(page).to have_text(p.name) }
+        select t("activerecord.attributes.project.statuses.published"), from: :q_status_eq
+        click_on t("backoffice.common.apply")
+        expect(page).to have_text(project.name)
+        projects.each { |p| expect(page).not_to have_text(p.name) }
+      end
+    end
   end
 end

@@ -38,7 +38,8 @@ module API
       associated_columns = Array.wrap(FULL_TEXT_EXTRA_TABLES[query.klass]).each_with_object({}) do |relation, res|
         res[relation] = localized_columns_for relation.to_s.classify.constantize
       end
-      self.query = query.where id: query.dynamic_search(localized_columns_for(query.klass), filters[:full_text], associated_columns).pluck(:id)
+      ids = query.klass.dynamic_search(localized_columns_for(query.klass), filters[:full_text], associated_columns).pluck(:id)
+      self.query = query.where id: ids
     end
 
     def apply_numerical_filter
