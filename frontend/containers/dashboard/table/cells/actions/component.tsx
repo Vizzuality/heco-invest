@@ -36,7 +36,7 @@ export const CellActions = ({ row }: CellActionsProps) => {
         onDismiss={() => setConfirmDelete(false)}
         onRefuse={() => setConfirmDelete(false)}
         title="Delete user?"
-        description="Are you sure you want to delete this user?"
+        description="Are you sure you want to delete <b>“User name”</b>?. <br/>You can’t undo this action."
       />
     </div>
   );

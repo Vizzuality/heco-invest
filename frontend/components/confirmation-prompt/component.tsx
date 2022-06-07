@@ -18,12 +18,13 @@ export const ConfirmationPrompt: FC<ConfirmationPromptProps> = ({
   onAccept,
   onRefuse,
 }: ConfirmationPromptProps) => (
-  <Modal open={open} title={title} size="narrow" dismissable={dismissible} onDismiss={onDismiss}>
-    <div className="px-8 py-4">
-      <div className="mt-8 text-xl font-medium text-gray-800 leading-1 sm:mt-0 sm:pr-32 font-heading">
-        {title}
-      </div>
-      <p className="mt-4 text-sm text-gray-400 sm:pr-32">{description}</p>
+  <Modal open={open} title={title} size="default" dismissable={dismissible} onDismiss={onDismiss}>
+    <div className="flex flex-col items-center px-8 py-4">
+      <div className="font-serif text-3xl font-semibold text-center text-black">{title}</div>
+      <p
+        dangerouslySetInnerHTML={{ __html: description }}
+        className="mt-4 font-sans text-base text-center text-black"
+      />
       <div
         className={classnames({
           'flex justify-start items-end': true,
@@ -35,19 +36,19 @@ export const ConfirmationPrompt: FC<ConfirmationPromptProps> = ({
       >
         <Button
           theme="secondary-green"
-          size="base"
+          size="small"
           className="flex-shrink-0 mr-5"
           onClick={onRefuse}
         >
-          No
+          Cancel
         </Button>
         <Button
-          theme="primary-green"
-          size="base"
+          theme="primary-red"
+          size="small"
           className="flex-shrink-0 sm:mr-5"
           onClick={onAccept}
         >
-          Yes
+          Delete
         </Button>
 
         {icon && (
