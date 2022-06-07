@@ -4,7 +4,7 @@ import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 
 import { Queries } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
-import { Project, ProjectCreationPayload } from 'types/project';
+import { Project, ProjectCreationPayload, ProjectUpdatePayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 
 import API from 'services/api';
@@ -51,6 +51,18 @@ export function useCreateProject(): UseMutationResult<
       queryClient.setQueryData(Queries.ProjectQuery, result.data);
     },
   });
+}
+
+export function useUpdateProject(): UseMutationResult<
+  AxiosResponse<Project>,
+  AxiosError<ErrorResponse>,
+  ProjectUpdatePayload
+> {
+  const updateProject = async (project: ProjectUpdatePayload): Promise<AxiosResponse<Project>> => {
+    return API.put(`/api/v1/account/projects/${project.id}`, project);
+  };
+
+  return useMutation(updateProject);
 }
 
 export function useCreateInvestor(): UseMutationResult<

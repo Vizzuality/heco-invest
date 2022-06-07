@@ -134,14 +134,14 @@ export default (page: number) => {
         .max(1)
         .required(messages.involved_project_developer)
         .typeError(messages.involved_project_developer),
-      involved_project_developer_ids: array()
-        .of(string())
-        .min(1, messages.involved_project_developer_ids)
-        .when('involved_project_developer', {
-          is: 1,
-          then: array().required(messages.involved_project_developer_ids),
-          otherwise: array().notRequired().nullable(),
-        }),
+      involved_project_developer_ids: array().when('involved_project_developer', {
+        is: 1,
+        then: array()
+          .of(string())
+          .min(1, messages.involved_project_developer_ids)
+          .required(messages.involved_project_developer_ids),
+        otherwise: array().notRequired().nullable(),
+      }),
       involved_project_developer_not_listed: boolean(),
     }),
     object().shape({
@@ -166,22 +166,20 @@ export default (page: number) => {
     }),
     object().shape({
       looking_for_funding: boolean().typeError(booleanField).required(booleanField),
-      ticket_size: string()
-        .ensure()
-        .when('looking_for_funding', {
-          is: 1,
-          then: string().required(messages.ticket_size),
-        }),
+      ticket_size: string().when('looking_for_funding', {
+        is: true,
+        then: string().required(messages.ticket_size),
+      }),
       instrument_types: array().when('looking_for_funding', {
-        is: 1,
+        is: true,
         then: array()
+          .required()
           .typeError(messages.instrument_types)
-          .of(string())
           .min(1, messages.instrument_types),
         otherwise: array().nullable(),
       }),
       funding_plan: string().when('looking_for_funding', {
-        is: 1,
+        is: true,
         then: string()
           .min(1, messages.funding_plan)
           .max(600, maxTextLength)
@@ -193,7 +191,7 @@ export default (page: number) => {
         messages.received_funding_amount_usd,
         (value) => !value || Number(value) > 0
       ),
-      received_funding_investor: string().max(600, maxTextLength),
+      received_funding_investor: string().nullable().max(600, maxTextLength),
     }),
     object().shape({
       replicability: string().max(600, maxTextLength).required(messages.replicability),

@@ -19,6 +19,7 @@ export const SDGs = <FormValues extends FieldValues>({
   setValue,
   clearErrors,
   setValueOptions = { shouldDirty: true },
+  defaultValues = [],
 }: SDGsProps<FormValues>) => {
   // Casting as any as a workaround for the following issue:
   // https://github.com/react-hook-form/react-hook-form/discussions/7246
@@ -44,10 +45,11 @@ export const SDGs = <FormValues extends FieldValues>({
           {sdgs.map(({ id, name: title, image }) => (
             <SDG
               key={id}
-              id={id}
+              id={id.toString()}
               name={name}
               image={image}
               title={title}
+              defaultChecked={defaultValues && defaultValues.includes(id)}
               register={register}
               registerOptions={registerOptions}
               invalid={errors && errors[name]}

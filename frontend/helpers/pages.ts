@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { Path } from 'react-hook-form';
+import { FormState, Path } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
@@ -107,4 +107,8 @@ export const getSocialMediaLinksRegex = () => {
     linkedin: getRegex('linkedin'),
     instagram: getRegex('instagram'),
   };
+};
+
+export const getPageErrors = (formPageInputs: string[], errors: FormState<any>['errors']) => {
+  return formPageInputs.some((input) => errors.hasOwnProperty(input));
 };

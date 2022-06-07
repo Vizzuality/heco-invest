@@ -8,6 +8,7 @@ import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
 /** Project images on responses */
 export type ProjectImageType = {
+  id?: string;
   cover: boolean;
   file: {
     small: string;
@@ -53,7 +54,7 @@ export type ProjectBase = {
     name: string;
     parent: {
       id: string;
-      location_type: 'depatment';
+      location_type: 'department';
       name: string;
     };
   };
@@ -106,22 +107,30 @@ export type ProjectForm = ProjectBase & {
   project_images_attributes_cover: string;
 
   // Not part of the payload
-  involved_project_developer: boolean;
+  involved_project_developer: number;
   project_gallery?: FileList;
 };
 
 /** Project images for creation/edition */
 export type ProjectImagesAttributes = {
-  file: File | string;
+  file?: File | string;
   cover: boolean;
 };
 
 /** Project creation/edition payload */
 export type ProjectCreationPayload = Omit<
   ProjectForm,
-  'involved_project_developer' | 'project_gallery' | 'slug' | 'project_images_attributes_cover'
+  | 'involved_project_developer'
+  | 'project_gallery'
+  | 'slug'
+  | 'project_images_attributes_cover'
+  | 'project_images_attributes'
 > & {
   project_images_attributes: ProjectImagesAttributes[];
+};
+
+export type ProjectUpdatePayload = ProjectCreationPayload & {
+  id: string;
 };
 
 export type ProjectImageGallery = ProjectImagesAttributes & ProjectGalleryImageType;

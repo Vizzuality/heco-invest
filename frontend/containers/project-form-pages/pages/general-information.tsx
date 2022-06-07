@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 
-import { FieldError } from 'react-hook-form';
+import { Controller, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -38,7 +38,7 @@ const GeneralInformation = ({
   clearErrors,
   setError,
 }: ProjectFormPagesProps<ProjectForm>) => {
-  const [showInvolvedProjectDevelopers, setShowInvolvedProjectDevelopers] = useState(false);
+  const [defaultInvolvedProjectDeveloper, setDefaultInvolvedProjectDeveloper] = useState<boolean>();
   const [locationsFilter, setLocationsFilter] = useState<{ country: string; department: string }>({
     country: undefined,
     department: undefined,
@@ -55,11 +55,15 @@ const GeneralInformation = ({
   });
 
   useEffect(() => {
-    // This is just for when the user get back to this page (the page mounts), it shows the select if there is any value selected
-    setShowInvolvedProjectDevelopers(!!Number(getValues('involved_project_developer')));
-    // Get the uploaded images src from the involved_project_developer input values
+    const involved_project_developer = getValues('involved_project_developer');
+
+    // If there is a value for involved_project_developer, it checks the corresponding radio button
+    if (typeof involved_project_developer === 'number') {
+      setDefaultInvolvedProjectDeveloper(!!Number(involved_project_developer));
+    }
+    // Get the uploaded images src from the project_images_attributes input values
     setPreviewImages(
-      getValues('project_images_attributes')?.map(({ id, title, src }) => ({
+      (getValues('project_images_attributes') || [])?.map(({ id, title, src }) => ({
         id,
         title,
         src,
@@ -69,7 +73,8 @@ const GeneralInformation = ({
   }, [getValues]);
 
   const handleChangeInvolvedProjectDeveloper = (e: ChangeEvent<HTMLInputElement>) => {
-    setShowInvolvedProjectDevelopers(!!Number(e.target.value));
+    setDefaultInvolvedProjectDeveloper(!!Number(e.target.value));
+    setValue('involved_project_developer', Number(e.target.value));
   };
 
   const getOptions = (locationType: LocationsTypes, filter: 'department' | 'country') => {
@@ -351,26 +356,40 @@ const GeneralInformation = ({
                 />
               </legend>
               <Label id="involved-project-developer-yes" className="block font-normal">
-                <input
-                  id="involved-project-developer-yes"
-                  type="radio"
-                  value={1}
-                  className="mr-2"
-                  {...register('involved_project_developer', {
-                    onChange: handleChangeInvolvedProjectDeveloper,
-                  })}
+                <Controller
+                  control={control}
+                  name="involved_project_developer"
+                  render={(field) => (
+                    <input
+                      {...field}
+                      id="involved-project-developer-yes"
+                      type="radio"
+                      value={1}
+                      checked={defaultInvolvedProjectDeveloper}
+                      className="mr-2"
+                      name="involved_project_developer"
+                      onChange={handleChangeInvolvedProjectDeveloper}
+                    />
+                  )}
                 />
                 <FormattedMessage defaultMessage="Yes" id="a5msuh" />
               </Label>
               <Label htmlFor="involved-project-developer-no" className="block mt-4 font-normal">
-                <input
-                  id="involved-project-developer-no"
-                  type="radio"
-                  value={0}
-                  className="mr-2"
-                  {...register('involved_project_developer', {
-                    onChange: handleChangeInvolvedProjectDeveloper,
-                  })}
+                <Controller
+                  control={control}
+                  name="involved_project_developer"
+                  render={(field) => (
+                    <input
+                      {...field}
+                      id="involved-project-developer-no"
+                      type="radio"
+                      value={0}
+                      checked={defaultInvolvedProjectDeveloper === false}
+                      className="mr-2"
+                      name="involved_project_developer"
+                      onChange={handleChangeInvolvedProjectDeveloper}
+                    />
+                  )}
                 />
                 <FormattedMessage defaultMessage="No" id="oUWADl" />
               </Label>
@@ -382,7 +401,7 @@ const GeneralInformation = ({
             {/* Project developers selector */}
             <div
               className={cx('relative top-[-66px] left-16 w-[360px]', {
-                hidden: !showInvolvedProjectDevelopers,
+                hidden: !defaultInvolvedProjectDeveloper,
               })}
             >
               <MultiCombobox
