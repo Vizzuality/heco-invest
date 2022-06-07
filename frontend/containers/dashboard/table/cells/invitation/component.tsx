@@ -10,12 +10,20 @@ export const CellInvitation = ({ value }: CellInvitationProps) => {
   return (
     <div
       className={cx({
-        'items-center inline-block px-4 border opacity-20 rounded-2xl': true,
-        'bg-green-light  border-green-light': value === 'Accepted',
-        'bg-red-400  border-red-400': value === 'Waiting',
+        'items-center inline-block px-2.5 py-0.5 bg-opacity-20 rounded-2xl': true,
+        'bg-green-light': value === 'Accepted',
+        'bg-orange ml-2': value === 'Waiting',
       })}
     >
-      <p>{value}</p>
+      <p
+        className={cx({
+          'text-sm': true,
+          'text-green-dark': value === 'Accepted',
+          'text-orange': value === 'Waiting',
+        })}
+      >
+        {value}
+      </p>
     </div>
   );
 };

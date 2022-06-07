@@ -40,7 +40,7 @@ export const DashboardTable = () => {
           className: 'text-sm',
           defaultCanSort: true,
           sortDescFirst: true,
-          width: 100,
+          width: 80,
           Cell: Invitation,
         },
       ]}
