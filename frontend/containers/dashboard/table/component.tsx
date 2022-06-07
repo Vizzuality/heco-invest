@@ -3,6 +3,7 @@ import React from 'react';
 import Table from 'components/table';
 import DOROTHY_CAMPBELL_PNG from 'public/images/mock/dorothy-campbell.png';
 
+import Actions from './cells/actions';
 import Invitation from './cells/invitation';
 import User from './cells/user';
 
@@ -42,6 +43,15 @@ export const DashboardTable = () => {
           sortDescFirst: true,
           width: 80,
           Cell: Invitation,
+        },
+        {
+          Header: 'Actions',
+          accessor: (row) => row,
+          className: 'capitalize text-sm',
+          defaultCanSort: true,
+          sortDescFirst: true,
+          Cell: Actions,
+          hideHeader: true,
         },
       ]}
       meta={{

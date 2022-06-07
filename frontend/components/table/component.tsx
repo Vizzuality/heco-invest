@@ -103,6 +103,7 @@ export const Table: FC<TableProps> = ({
                 className="sticky top-0 z-10 px-10"
               >
                 {headerGroup.headers.map((column) => {
+                  console.log(column.Header);
                   const { id, canSort, sortDescFirst, toggleSortBy } = column;
 
                   const { key: headerKey, ...restHeaderProps } = column.getHeaderProps();
@@ -129,11 +130,15 @@ export const Table: FC<TableProps> = ({
                         },
                       })}
                     >
-                      <span>{column.render('Header')}</span>
-                      <div className="flex flex-col">
-                        <Icon icon={SORT_SVG} className="w-2 h-2 text-black" />
-                        <Icon icon={SORT_SVG} className="w-2 h-2 text-black rotate-180" />
-                      </div>
+                      {column.hideHeader ? null : (
+                        <>
+                          <span>{column.render('Header')}</span>
+                          <div className="flex flex-col">
+                            <Icon icon={SORT_SVG} className="w-2 h-2 text-black" />
+                            <Icon icon={SORT_SVG} className="w-2 h-2 text-black rotate-180" />
+                          </div>
+                        </>
+                      )}
                     </div>
                   );
                 })}
