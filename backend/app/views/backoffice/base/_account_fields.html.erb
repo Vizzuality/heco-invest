@@ -1,13 +1,28 @@
 <%= f.simple_fields_for :account do |ff|  %>
-  <%= ff.input :name %>
+  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">About</h2>
+
   <%= ff.input :about_en %>
   <%= ff.input :about_es %>
   <%= ff.input :about_pt %>
-  <%= ff.input :website %>
-  <%= ff.input :linkedin %>
-  <%= ff.input :facebook %>
-  <%= ff.input :twitter %>
-  <%= ff.input :instagram %>
-  <%= ff.input :contact_email %>
-  <%= ff.input :contact_phone %>
+
+  <%= f.input :mission_en %>
+  <%= f.input :mission_es %>
+  <%= f.input :mission_pt %>
+
+  <%= ff.input :website, as: :string %>
+
+  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">Contact information</h2>
+  <div class="grid grid-cols-2 gap-4">
+    <%= ff.input :contact_email, as: :string %>
+    <%= ff.input :contact_phone, as: :string %>
+  </div>
+  <h3 class="mb-4 mt-6 text-gray-600 font-medium">Online presence</h3>
+  <div class="grid grid-cols-2 gap-4">
+    <%= ff.input :linkedin, as: :string %>
+    <%= ff.input :instagram, as: :string %>
+  </div>
+  <div class="grid grid-cols-2 gap-4">
+    <%= ff.input :facebook, as: :string %>
+    <%= ff.input :twitter, as: :string %>
+  </div>
 <% end %>

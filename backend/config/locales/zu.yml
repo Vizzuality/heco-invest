@@ -19,10 +19,10 @@ zu:
         project_developer_type: Project developer type
         entity_legal_registration_number: Entity legal registration number (NIT or RUT)
       defaults:
-        categories: Categories
-        impacts: Impacts
-        mission: Mission
-        mosaics: Mosaics
+        categories: Select the categories that you work on
+        impacts: Expect to have impact on
+        mission: What's your mission?
+        mosaics: Select HeCo priority landscapes on which you will have impact (optional)
   backoffice:
     common:
       account_owner: Account owner

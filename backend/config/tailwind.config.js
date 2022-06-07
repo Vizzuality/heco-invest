@@ -48,13 +48,6 @@ module.exports = {
       orange: '#F4A064',
       black: '#000000',
       white: '#FFFFFF',
-      category: {
-        forestry: '#E57D57',
-        tourism: '#4492E5',
-        production: '#404B9A',
-        agrosystems: '#E7C343',
-        human: '#A0616A',
-      },
       current: 'currentColor',
     },
     boxShadow: {
