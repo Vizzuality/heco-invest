@@ -40,7 +40,7 @@ module.exports = {
         900: '#1D1D1B',
       },
       green: {
-        light: '#CFD762',
+        light: '#E7E7CA',
         dark: '#316146',
       },
       beige: '#E3DED6',

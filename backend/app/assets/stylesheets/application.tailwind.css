@@ -58,4 +58,20 @@
   .pagination li .active {
     @apply text-green-dark
   }
+
+  .alert {
+    @apply text-sm text-black rounded-lg p-4 mb-4
+  }
+
+  .alert-success {
+    @apply bg-green-light
+  }
+
+  .alert-danger {
+    @apply bg-red-50
+  }
+
+  .alert-info {
+    @apply bg-beige
+  }
 }

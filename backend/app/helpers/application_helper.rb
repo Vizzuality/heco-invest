@@ -7,6 +7,18 @@ module ApplicationHelper
     "verified" => "text-green-dark bg-green-light/20"
   }
 
+  FLASH_CLASSES = {
+    notice: "alert-success",
+    success: "alert-success",
+    info: "alert-info",
+    error: "alert-danger",
+    alert: "alert-danger"
+  }.freeze
+
+  def flash_class_for(type)
+    FLASH_CLASSES.fetch(type.to_sym, type.to_s)
+  end
+
   def nav_link_to(text, path)
     is_active = current_page?(path)
     classnames = {

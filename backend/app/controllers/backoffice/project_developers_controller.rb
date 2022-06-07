@@ -13,8 +13,7 @@ module Backoffice
 
     def update
       if @project_developer.update(update_params)
-        redirect_to backoffice_project_developers_url,
-          notice: t("backoffice.messages.success_update", model: t("backoffice.common.project_developer"))
+        redirect_to url_for, notice: t("backoffice.messages.success_update", model: t("backoffice.common.project_developer"))
       else
         render :edit, status: :unprocessable_entity
       end
@@ -34,6 +33,8 @@ module Backoffice
         account_attributes: [
           :id,
           :name,
+          :language,
+          :review_status,
           :about_en,
           :about_es,
           :about_pt,
