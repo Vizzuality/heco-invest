@@ -5,6 +5,8 @@ import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import Table from 'containers/dashboard/table';
+
 import Button from 'components/button';
 import Head from 'components/head';
 import Icon from 'components/icon';
@@ -41,7 +43,9 @@ export const DashboardPage: PageComponent<DashboardPageProps, DashboardLayoutPro
           </div>
         </LayoutContainer>
       </div>
-      <LayoutContainer className="py-64">Dashboard</LayoutContainer>
+      <LayoutContainer className="py-20">
+        <Table />
+      </LayoutContainer>
     </>
   );
 };
