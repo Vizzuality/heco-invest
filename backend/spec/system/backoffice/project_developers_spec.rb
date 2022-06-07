@@ -55,4 +55,25 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
       end
     end
   end
+
+  describe "Edit" do
+    before do
+      visit "/backoffice/project_developers"
+      within_row("Super PD Enterprise") do
+        click_on t("backoffice.common.edit")
+      end
+    end
+
+    context "account language section" do
+      before { within_sidebar { click_on "Account language" } }
+
+      it "can update account language" do
+        expect(page).to have_select("Language", selected: "English")
+        select "Spanish", from: "Language"
+        click_on "Save"
+        expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.project_developer")))
+        expect(approved_pd.account.reload.language).to eq("es")
+      end
+    end
+  end
 end

@@ -15,7 +15,10 @@ module Backoffice
 
     def update
       if @project_developer.update(update_params)
-        redirect_to url_for, notice: t("backoffice.messages.success_update", model: t("backoffice.common.project_developer"))
+        redirect_back(
+          fallback_location: edit_backoffice_project_developer_path(@project_developer.id),
+          notice: t("backoffice.messages.success_update", model: t("backoffice.common.project_developer"))
+        )
       else
         render :edit, status: :unprocessable_entity
       end
