@@ -39,6 +39,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     Rails.application.load_tasks
     `yarn build`
+    Rake::Task["tailwindcss:build"].execute
     Rake::Task["assets:precompile"].execute
   end
 end

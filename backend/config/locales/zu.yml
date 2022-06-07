@@ -1,4 +1,28 @@
 zu:
+  simple_form:
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      account:
+        name: Profile name
+        about: About
+        website: Website
+        contact_phone: Contact phone
+        contact_email: Contact email
+      project_developer:
+        project_developer_type: Project developer type
+        entity_legal_registration_number: Entity legal registration number (NIT or RUT)
+      defaults:
+        categories: Categories
+        impacts: Impacts
+        mission: Mission
+        mosaics: Mosaics
   backoffice:
     common:
       account_owner: Account owner
