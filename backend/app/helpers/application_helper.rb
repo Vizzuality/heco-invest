@@ -17,6 +17,16 @@ module ApplicationHelper
     link_to text, path, class: classnames
   end
 
+  def section_link_to(text, section, default: false)
+    is_active = (params[:section].blank? && default) || params[:section] == section.to_s
+    classnames = {
+      "text-black hover:text-gray-600": true,
+      "text-green-dark": is_active
+    }.reject { |_k, v| v == false }.keys
+
+    link_to text, url_for(section: section), class: classnames
+  end
+
   def localized_sort_link(q, key, *args, &block)
     sort_link q, "#{key}_#{I18n.locale}", *args, &block
   end

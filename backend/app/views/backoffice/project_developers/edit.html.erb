@@ -5,9 +5,9 @@
     </h1>
 
     <ul class="flex flex-col gap-8">
-      <li><%= link_to "Account language", edit_backoffice_project_developer_path(section: "language") %></li>
-      <li><%= link_to "Profile", edit_backoffice_project_developer_path(section: "profile") %></li>
-      <li><%= link_to "Approval status", edit_backoffice_project_developer_path(section: "status") %></li>
+      <li><%= section_link_to "Account language", :language %></li>
+      <li><%= section_link_to "Profile", :profile, default: true %></li>
+      <li><%= section_link_to "Approval status", :status %></li>
     </ul>
   </aside>
   <div class="w-full h-full bg-white rounded-xl p-6">
