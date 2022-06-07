@@ -9,7 +9,7 @@
   <% end %>
 
   <div class="mt-3 flex justify-end gap-3">
-    <%= link_to t("backoffice.common.cancel"), :back, class: "button button-secondary-green" %>
+    <%= link_to t("backoffice.common.cancel"), backoffice_project_developers_path, class: "button button-secondary-green" %>
     <%= f.button :submit, t("backoffice.common.save"), class: "button button-primary-green" %>
   </div>
 <% end %>
