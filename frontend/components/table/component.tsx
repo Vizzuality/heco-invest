@@ -103,7 +103,6 @@ export const Table: FC<TableProps> = ({
                 className="sticky top-0 z-10 px-10"
               >
                 {headerGroup.headers.map((column) => {
-                  console.log(column.Header);
                   const { id, canSort, sortDescFirst, toggleSortBy } = column;
 
                   const { key: headerKey, ...restHeaderProps } = column.getHeaderProps();

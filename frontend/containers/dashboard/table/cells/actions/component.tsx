@@ -13,7 +13,7 @@ export const CellActions = ({ value }: CellActionsProps) => {
     <div className="flex space-x-2">
       <a
         href={`mailto:${email}`}
-        className="flex items-center justify-center w-8 h-8 border rounded-full border-green-dark"
+        className="flex items-center justify-center w-8 h-8 border rounded-full pointer border-green-dark"
       >
         <Icon className="w-5 h-5 text-green-dark" icon={MailIcon} />
       </a>
@@ -21,7 +21,7 @@ export const CellActions = ({ value }: CellActionsProps) => {
       <button
         type="button"
         onClick={() => console.log(`Delete ${id} user`)}
-        className="flex items-center justify-center w-8 h-8 border rounded-full border-green-dark"
+        className="flex items-center justify-center w-8 h-8 border rounded-full pointer border-green-dark"
       >
         <Icon className="w-5 h-5 text-green-dark" icon={TrashIcon} />
       </button>

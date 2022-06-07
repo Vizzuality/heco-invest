@@ -26,6 +26,7 @@ export const DashboardTable = () => {
           className: 'text-sm',
           defaultCanSort: true,
           sortDescFirst: true,
+          width: 160,
         },
         {
           Header: 'Role',
@@ -50,8 +51,9 @@ export const DashboardTable = () => {
           className: 'capitalize text-sm',
           defaultCanSort: true,
           sortDescFirst: true,
-          Cell: Actions,
+          width: 60,
           hideHeader: true,
+          Cell: Actions,
         },
       ]}
       meta={{
