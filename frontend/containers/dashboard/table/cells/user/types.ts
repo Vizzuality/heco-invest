@@ -1,6 +1,8 @@
 export interface CellUserProps {
-  value: {
-    displayName: string;
-    image: string;
+  row: {
+    original: {
+      displayName: string;
+      image: string;
+    };
   };
 }

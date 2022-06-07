@@ -1,6 +1,8 @@
 export interface CellActionsProps {
-  value: {
-    id: string;
-    email: string;
+  row: {
+    original: {
+      id: string;
+      email: string;
+    };
   };
 }

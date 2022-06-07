@@ -14,7 +14,6 @@ export const DashboardTable = () => {
       columns={[
         {
           Header: 'User',
-          accessor: (row) => row,
           className: 'capitalize text-sm',
           defaultCanSort: true,
           sortDescFirst: true,
@@ -23,7 +22,7 @@ export const DashboardTable = () => {
         {
           Header: 'Email',
           accessor: 'email',
-          className: 'text-sm',
+          className: 'text-sm break-all',
           defaultCanSort: true,
           sortDescFirst: true,
           width: 160,
@@ -47,7 +46,6 @@ export const DashboardTable = () => {
         },
         {
           Header: 'Actions',
-          accessor: (row) => row,
           className: 'capitalize text-sm',
           defaultCanSort: true,
           sortDescFirst: true,
