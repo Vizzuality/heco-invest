@@ -287,6 +287,9 @@
   "APjPYs": {
     "string": "I want to write my content in"
   },
+  "AdAi3x": {
+    "string": "Emails"
+  },
   "AiagLY": {
     "string": "Entity legal registration number (NIT or RUT)"
   },
@@ -660,6 +663,9 @@
   "QqpgJo": {
     "string": "Leave investor creation form"
   },
+  "R+1DVQ": {
+    "string": "Invite users"
+  },
   "RDCAd6": {
     "string": "value {optionName} focused, {pagination}."
   },
@@ -1014,6 +1020,9 @@
   "hWhIuU": {
     "string": "Select the intrument type(s)"
   },
+  "hbFTZN": {
+    "string": "Users will receive an email to sign up into the platform and join NEEsT’s account."
+  },
   "hg7Mex": {
     "string": "Select which areas your project will have an impact on"
   },
@@ -1139,6 +1148,9 @@
   },
   "o+Vt3t": {
     "string": "Partnership between:"
+  },
+  "oBB4L4": {
+    "string": "Send invite"
   },
   "oMC3r1": {
     "string": "Choose your account type"
