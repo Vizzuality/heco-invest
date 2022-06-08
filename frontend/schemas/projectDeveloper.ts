@@ -80,11 +80,13 @@ export default (page: number) => {
     contact_email: string()
       .email(messages.contactEmail.isValid)
       .required(messages.contactEmail.required),
-    contact_phone: string().test(
-      'isValid',
-      messages.contactPhone,
-      (value) => !value || !!value.match(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
-    ),
+    contact_phone: string()
+      .nullable()
+      .test(
+        'isValid',
+        messages.contactPhone,
+        (value) => !value || !!value.match(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
+      ),
     facebook: string().test(
       'isSocialMediaLink',
       messages.social_medias,
