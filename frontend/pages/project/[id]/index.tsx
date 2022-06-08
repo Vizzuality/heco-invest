@@ -9,10 +9,10 @@ import { projectImpact } from 'helpers/project';
 import Breadcrumbs from 'containers/breadcrumbs';
 import ImpactChart from 'containers/impact-chart';
 import ImpactText from 'containers/impact-text';
-import ProjectHeader from 'containers/project-header';
 import Contact from 'containers/project-page/contact/component';
 import ProjectDevelopers from 'containers/project-page/developers/component';
 import Funding from 'containers/project-page/funding/component';
+import Header from 'containers/project-page/header';
 import Impact from 'containers/project-page/impact/component';
 import Overview from 'containers/project-page/overview/component';
 
@@ -71,7 +71,7 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
             id: { name: project.name },
           }}
         />
-        <ProjectHeader className="mt-6" project={project} />
+        <Header className="mt-6" project={project} />
       </LayoutContainer>
 
       <Overview project={project} />
