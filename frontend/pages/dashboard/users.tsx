@@ -5,6 +5,8 @@ import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import UsersTable from 'containers/dashboard/table';
+
 import Button from 'components/button';
 import Head from 'components/head';
 import Icon from 'components/icon';
@@ -38,7 +40,7 @@ export const UsersPage: PageComponent<UsersPageProps, DashboardLayoutProps> = ()
           </Button>
         }
       >
-        Users page
+        <UsersTable />
       </DashboardLayout>
     </ProtectedPage>
   );
