@@ -314,9 +314,6 @@
   "CYTiug": {
     "string": "HeCo Invest will benefit poor and vulnerable people living in HeCo priority landscapes."
   },
-  "CcFPkO": {
-    "string": "This project has {numDevelopers} project developer{noun}"
-  },
   "CiBvks": {
     "string": "General information about the the project developer."
   },
@@ -872,6 +869,9 @@
   },
   "bjubNC": {
     "string": "Add your logo or a picture that indentifies the account."
+  },
+  "bmLThI": {
+    "string": "This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}"
   },
   "btdgGc": {
     "string": "<a>Browse the open calls</a> posted by our investor community to identify new areas for project development."
