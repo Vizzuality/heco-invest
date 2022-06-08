@@ -1,24 +1,18 @@
-import { useMemo, useState } from 'react';
-
 import { decycle } from 'cycle';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
-import { projectImpact } from 'helpers/project';
 
 import Breadcrumbs from 'containers/breadcrumbs';
-import ImpactChart from 'containers/impact-chart';
-import ImpactText from 'containers/impact-text';
-import Contact from 'containers/project-page/contact/component';
-import ProjectDevelopers from 'containers/project-page/developers/component';
-import Funding from 'containers/project-page/funding/component';
+import Contact from 'containers/project-page/contact';
+import ProjectDevelopers from 'containers/project-page/developers';
+import Funding from 'containers/project-page/funding';
 import Header from 'containers/project-page/header';
-import Impact from 'containers/project-page/impact/component';
-import Overview from 'containers/project-page/overview/component';
+import Impact from 'containers/project-page/impact';
+import Overview from 'containers/project-page/overview';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
-import { ImpactAreas } from 'enums';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
