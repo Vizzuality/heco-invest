@@ -23,10 +23,9 @@ export const Table: FC<TableProps> = ({
 }: TableProps) => {
   const DEFAULT_COLUMN = React.useMemo(
     () => ({
-      // When using the useFlexLayout:
-      minWidth: 30, // minWidth is only used as a limit for resizing
-      width: 150, // width is used for both the flex-basis and flex-grow
-      maxWidth: 200, // maxWidth is only used as a limit for resizing
+      minWidth: 30,
+      width: 150,
+      maxWidth: 200,
     }),
     []
   );
@@ -52,7 +51,7 @@ export const Table: FC<TableProps> = ({
       columns,
       defaultColumn: DEFAULT_COLUMN,
       data,
-      // paginaion
+      // pagination
       manualPagination: true,
       pageCount: meta?.totalPages || 0,
       // sorting
@@ -62,7 +61,7 @@ export const Table: FC<TableProps> = ({
       initialState: {
         ...initialState,
         pageIndex: meta?.page ? meta.page - 1 : 0,
-        pageSize: meta?.size || 10,
+        pageSize: meta?.size || 8,
       },
     },
     useFlexLayout,

@@ -1,8 +1,9 @@
 export interface CellUserProps {
   row: {
     original: {
-      displayName: string;
-      image: string;
+      first_name: string;
+      last_name: string;
+      picture: string;
     };
   };
 }

@@ -7,12 +7,12 @@ import { CellUserProps } from './types';
 export const CellUser = ({ row }: CellUserProps) => {
   if (!row) return null;
   const {
-    original: { displayName, image },
+    original: { first_name, last_name, picture },
   } = row;
   return (
     <div className="flex items-center space-x-6">
-      <Image src={image} alt={displayName} width={32} height={32} className="rounded-full" />
-      <p>{displayName}</p>
+      <Image src={picture} alt={first_name} width={32} height={32} className="rounded-full" />
+      <p>{`${first_name} ${last_name}`}</p>
     </div>
   );
 };

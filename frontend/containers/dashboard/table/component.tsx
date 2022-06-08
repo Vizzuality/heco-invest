@@ -6,52 +6,54 @@ import { useDebouncedCallback } from 'use-debounce';
 
 import Search from 'components/search';
 import Table from 'components/table';
-import DOROTHY_CAMPBELL_PNG from 'public/images/mock/dorothy-campbell.png';
+
+import { useUsersInvitedList } from 'services/users/userService';
 
 import Actions from './cells/actions';
 import Invitation from './cells/invitation';
 import User from './cells/user';
 
-const MOCK_DATA = [
+const COLUMNS = [
   {
-    displayName: 'Dorothy Campbell',
-    image: DOROTHY_CAMPBELL_PNG,
-    email: 'dorothy.campbell@nesst.com',
-    id: 'cba6a23c-d100-46aa-b691-352eeec200cd',
-    role: 'Owner',
-    isAccepted: 'Accepted',
+    Header: 'User',
+    className: 'capitalize text-sm break-all',
+    defaultCanSort: true,
+    sortDescFirst: true,
+    Cell: User,
   },
   {
-    displayName: 'Savannah Nguyen',
-    image: DOROTHY_CAMPBELL_PNG,
-    email: 'savannah.nguyen@nesst.com',
-    id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
-    role: 'User',
-    isAccepted: 'Waiting',
+    Header: 'Email',
+    accessor: 'email',
+    className: 'text-sm break-all',
+    defaultCanSort: true,
+    sortDescFirst: true,
+    width: 160,
   },
   {
-    displayName: 'Robert Fox',
-    image: DOROTHY_CAMPBELL_PNG,
-    email: 'robert.fox@nesst.com',
-    id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
-    role: 'User',
-    isAccepted: 'Accepted',
+    Header: 'Role',
+    accessor: 'role',
+    className: 'text-sm',
+    defaultCanSort: true,
+    sortDescFirst: true,
+    width: 100,
   },
   {
-    displayName: 'Cameron Williamson',
-    image: DOROTHY_CAMPBELL_PNG,
-    email: 'cameron.williamson@nesst.com',
-    id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
-    role: 'User',
-    isAccepted: 'Accepted',
+    Header: 'Invitation',
+    accessor: 'confirmed',
+    className: 'text-sm',
+    defaultCanSort: true,
+    sortDescFirst: true,
+    width: 80,
+    Cell: Invitation,
   },
   {
-    displayName: 'Dorothy Campbell',
-    image: DOROTHY_CAMPBELL_PNG,
-    email: 'dorothy.campbell@nesst.com',
-    id: 'cba6a23c-d100-46aa-b691-352eeec200cd',
-    role: 'Owner',
-    isAccepted: 'Accepted',
+    Header: 'Actions',
+    className: 'capitalize text-sm',
+    defaultCanSort: true,
+    sortDescFirst: true,
+    width: 60,
+    hideHeader: true,
+    Cell: Actions,
   },
 ];
 
@@ -59,6 +61,13 @@ export const DashboardTable = () => {
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState({ id: 'name', direction: 'desc' });
   const [page, setPage] = useState(1);
+
+  const { data, isFetching } = useUsersInvitedList({
+    search,
+    page,
+    perPage: 4,
+  });
+  const { data: users, meta } = data || {};
 
   const onSearch = useDebouncedCallback((v) => {
     setSearch(v);
@@ -78,16 +87,15 @@ export const DashboardTable = () => {
   );
 
   const onPageChange = useCallback((p) => {
-    console.log('p', p);
     setPage(p);
   }, []);
 
-  // const onSortChange = useCallback((id, direction) => {
-  //   setSort({
-  //     id,
-  //     direction,
-  //   });
-  // }, []);
+  const onSortChange = useCallback((id, direction) => {
+    setSort({
+      id,
+      direction,
+    });
+  }, []);
 
   return (
     <div>
@@ -104,71 +112,28 @@ export const DashboardTable = () => {
           />
         </div>
         <div className="font-sans text-sm break-all">
-          <FormattedMessage
-            defaultMessage="Total of {total} users"
-            values={{
-              total: <b>{MOCK_DATA.length}</b>,
-            }}
-            id="rwcive"
-          />
+          {users && (
+            <FormattedMessage
+              defaultMessage="Total of {total} users"
+              values={{
+                total: <b>{users?.length || 0}</b>,
+              }}
+              id="rwcive"
+            />
+          )}
         </div>
       </div>
-
-      <Table
-        columns={[
-          {
-            Header: 'User',
-            className: 'capitalize text-sm break-all',
-            defaultCanSort: true,
-            sortDescFirst: true,
-            Cell: User,
-          },
-          {
-            Header: 'Email',
-            accessor: 'email',
-            className: 'text-sm break-all',
-            defaultCanSort: true,
-            sortDescFirst: true,
-            width: 160,
-          },
-          {
-            Header: 'Role',
-            accessor: 'role',
-            className: 'text-sm',
-            defaultCanSort: true,
-            sortDescFirst: true,
-            width: 100,
-          },
-          {
-            Header: 'Invitation',
-            accessor: 'isAccepted',
-            className: 'text-sm',
-            defaultCanSort: true,
-            sortDescFirst: true,
-            width: 80,
-            Cell: Invitation,
-          },
-          {
-            Header: 'Actions',
-            className: 'capitalize text-sm',
-            defaultCanSort: true,
-            sortDescFirst: true,
-            width: 60,
-            hideHeader: true,
-            Cell: Actions,
-          },
-        ]}
-        meta={{
-          page: 1,
-          size: 4,
-          totalItems: 8,
-          totalPages: 8,
-        }}
-        data={MOCK_DATA}
-        loading={false}
-        initialState={initialState}
-        onPageChange={onPageChange}
-      />
+      {users && meta && (
+        <Table
+          columns={COLUMNS}
+          meta={meta}
+          data={users}
+          loading={isFetching}
+          initialState={initialState}
+          onPageChange={onPageChange}
+          onSortChange={onSortChange}
+        />
+      )}
     </div>
   );
 };
