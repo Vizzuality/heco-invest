@@ -42,6 +42,9 @@ zu:
     investors:
       index:
         open_calls: Open calls
+    projects:
+      index:
+        priority_landscape: Priority Landscape
     layout:
       header: Backoffice
       sign_out: Sign out
