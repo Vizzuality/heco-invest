@@ -1,6 +1,5 @@
 import React, { FC, useEffect } from 'react';
 
-import { FormattedMessage } from 'react-intl';
 import { useFlexLayout, usePagination, useSortBy, useTable } from 'react-table';
 
 import cx from 'classnames';
@@ -91,18 +90,6 @@ export const Table: FC<TableProps> = ({
 
   return (
     <div>
-      <div className="flex justify-between mb-6">
-        <div>Search</div>
-        <div className="font-sans text-sm">
-          <FormattedMessage
-            defaultMessage="Total of {total} users"
-            values={{
-              total: <b>{data.length}</b>,
-            }}
-            id="rwcive"
-          />
-        </div>
-      </div>
       <div className="relative overflow-x-scroll md:overflow-hidden rounded-2xl">
         <div {...getTableProps()} className="relative w-full bg-white rounded-t-3xl">
           <div>
