@@ -20,15 +20,18 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
 }: DashboardLayoutProps) => {
   const { user } = useMe();
 
-  // We can't use hooks conditionally, even though we do know which role the user has.
-  // We'll fetch both, and then assign the correct one to the `accountData` variable.
-  const { data: projectDeveloperData } = useProjectDeveloper(
-    user?.role === UserRoles.ProjectDeveloper
-  );
-  const { data: investorData } = useInvestor(user?.role === UserRoles.Investor);
+  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
+  const isInvestor = user?.role === UserRoles.Investor;
 
-  const accountData =
-    user?.role === UserRoles.ProjectDeveloper ? projectDeveloperData : investorData;
+  const { data: projectDeveloperData } = useProjectDeveloper({
+    enabled: isProjectDeveloper,
+  });
+
+  const { data: investorData } = useInvestor({
+    enabled: isInvestor,
+  });
+
+  const accountData = isProjectDeveloper ? projectDeveloperData : investorData;
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
