@@ -11,8 +11,7 @@ import { Paths } from 'enums';
 export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
   project,
 }: ProjectDevelopersProps) => {
-  const { project_developer: mainDeveloper, involved_project_developers: developers } = project;
-  const NUMBER_DEVELOPERS = developers.length;
+  const allDevelopers = [project.project_developer, ...project.involved_project_developers];
 
   return (
     <section className="bg-background-middle py-18">
@@ -23,44 +22,27 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
           </h2>
           <p className="text-gray-800">
             <FormattedMessage
-              defaultMessage="This project has {numDevelopers} project developer{noun}"
-              id="CcFPkO"
+              defaultMessage="This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}"
+              id="bmLThI"
               values={{
-                numDevelopers: NUMBER_DEVELOPERS,
-                noun: NUMBER_DEVELOPERS === 1 ? '' : 's',
+                numDevelopers: allDevelopers.length,
               }}
             />
           </p>
         </div>
-        <div className="flex flex-col space-y-6">
-          {!!mainDeveloper && (
+        <div className="flex flex-col flex-1 space-y-6">
+          {allDevelopers.map(({ about, name, picture, project_developer_type, id, slug }) => (
             <ProfileCard
               className="w-full"
-              key={mainDeveloper.id}
-              link={`${Paths.ProjectDeveloper}/${mainDeveloper.slug}`}
-              picture={mainDeveloper.picture.small}
-              name={mainDeveloper.name}
-              description={mainDeveloper.about}
-              type={mainDeveloper.project_developer_type}
+              key={id}
+              link={`${Paths.ProjectDeveloper}/${slug}`}
+              picture={picture.small}
+              name={name}
+              description={about}
+              type={project_developer_type}
               profileType="project-developer"
             />
-          )}
-          {!!NUMBER_DEVELOPERS &&
-            developers.map((developer) => {
-              const { about, name, picture, project_developer_type, id, slug } = developer;
-              return (
-                <ProfileCard
-                  className="w-full"
-                  key={id}
-                  link={`${Paths.ProjectDeveloper}/${slug}`}
-                  picture={picture.small}
-                  name={name}
-                  description={about}
-                  type={project_developer_type}
-                  profileType="project-developer"
-                />
-              );
-            })}
+          ))}
         </div>
       </LayoutContainer>
     </section>
