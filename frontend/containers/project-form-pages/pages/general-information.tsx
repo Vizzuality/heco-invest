@@ -9,7 +9,6 @@ import dynamic from 'next/dynamic';
 
 import GeometryInput from 'containers/forms/geometry';
 import ProjectGallery from 'containers/forms/project-gallery';
-import { ProjectGalleryImageType } from 'containers/forms/project-gallery/project-gallery-image';
 
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
@@ -43,7 +42,7 @@ const GeneralInformation = ({
     country: undefined,
     department: undefined,
   });
-  const [previewImages, setPreviewImages] = useState<ProjectGalleryImageType[]>([]);
+  const [images, setImages] = useState<ProjectImageGallery[]>([]);
   const [coverImage, setCoverImage] = useState<string>();
 
   const { formatMessage } = useIntl();
@@ -55,21 +54,20 @@ const GeneralInformation = ({
   });
 
   useEffect(() => {
-    const involved_project_developer = getValues('involved_project_developer');
+    const defaultImages = getValues('project_images_attributes');
+    setImages(defaultImages || []);
 
-    // If there is a value for involved_project_developer, it checks the corresponding radio button
-    if (typeof involved_project_developer === 'number') {
-      setDefaultInvolvedProjectDeveloper(!!Number(involved_project_developer));
-    }
-    // Get the uploaded images src from the project_images_attributes input values
-    setPreviewImages(
-      (getValues('project_images_attributes') || [])?.map(({ id, title, src }) => ({
-        id,
-        title,
-        src,
-      })) || []
+    setCoverImage(
+      getValues('project_images_attributes_cover') || defaultImages?.length
+        ? defaultImages[0]?.id
+        : undefined
     );
-    setCoverImage(getValues('project_images_attributes_cover'));
+
+    const involvedProjectDeveloper = getValues('involved_project_developer');
+    // If there is a value for involved_project_developer, it checks the corresponding radio button
+    if (typeof involvedProjectDeveloper === 'number') {
+      setDefaultInvolvedProjectDeveloper(!!Number(involvedProjectDeveloper));
+    }
   }, [getValues]);
 
   const handleChangeInvolvedProjectDeveloper = (e: ChangeEvent<HTMLInputElement>) => {
@@ -110,34 +108,31 @@ const GeneralInformation = ({
 
   const handleUploadImages = (newUploadedImages: ProjectImageGallery[]) => {
     // current project_images_attributes input value
-    const uploadedImages = getValues('project_images_attributes') || [];
+    console.log(coverImage);
+    if (!coverImage && newUploadedImages[0]) {
+      setValue('project_images_attributes_cover', newUploadedImages[0].id);
+      setCoverImage(newUploadedImages[0].id);
+    }
+    setValue('project_images_attributes', [...images, ...newUploadedImages]);
+    setImages([...images, ...newUploadedImages]);
+  };
 
-    const newPreviewImages = newUploadedImages?.map(({ src, id, title }) => ({
-      src,
-      id,
-      title,
-    }));
-
-    if (!coverImage && newUploadedImages[0]) setCoverImage(newUploadedImages[0].id);
-    setPreviewImages([...previewImages, ...newPreviewImages]);
-    setValue('project_images_attributes', [...uploadedImages, ...newUploadedImages]);
+  const handleSelectCover = (imageId: string) => {
+    setValue('project_images_attributes_cover', imageId);
+    setCoverImage(imageId);
   };
 
   const handleDeleteImage = (imageId: string) => {
     // Get the images and remove the deleted one
-    const filteredImageAttr = getValues('project_images_attributes')?.filter(
-      ({ file }) => file !== imageId
-    );
+    const filteredImageAttr = images?.filter(({ file }) => file !== imageId);
     // Set images with the new images array
     setValue('project_images_attributes', filteredImageAttr);
+    setImages(filteredImageAttr);
     // If the deleted image was the cover, set new cover to the first image left
     if (coverImage === imageId) {
-      const newCoverImage = filteredImageAttr[0].id;
-      setCoverImage(newCoverImage);
-      setValue('project_images_attributes_cover', newCoverImage);
+      const newCoverImage = filteredImageAttr.length ? filteredImageAttr[0].id : undefined;
+      handleSelectCover(newCoverImage);
     }
-    // Remove the deleted image from preview images
-    setPreviewImages(previewImages?.filter(({ id }) => id !== imageId));
   };
 
   return (
@@ -200,8 +195,8 @@ const GeneralInformation = ({
                 name="project_images_attributes"
                 setError={setError}
                 clearErrors={clearErrors}
-                register={register}
-                registerOptions={{ disabled: false }}
+                controlOptions={{ disabled: false }}
+                control={control}
                 // See: Browser limitations section
                 // https://react-dropzone.org/#section-accepting-specific-file-types
                 fileTypes={{ 'image/*': ['.png', '.jpg', '.jpeg'] }}
@@ -212,16 +207,16 @@ const GeneralInformation = ({
             </div>
             <div className="w-full h-[176px]">
               <ProjectGallery
-                images={previewImages}
+                images={images}
                 name="project_images_attributes_cover"
-                register={register}
-                registerOptions={{}}
                 setValue={setValue}
                 clearErrors={clearErrors}
                 errors={errors}
                 className="h-full"
                 onDeleteImage={handleDeleteImage}
+                onSelectCover={handleSelectCover}
                 defaultSelected={coverImage}
+                control={control}
               />
             </div>
           </div>

@@ -50,8 +50,6 @@ const Funding = ({
     setValue('received_funding', !!Number(e.target.value));
   };
 
-  console.log(getValues('looking_for_funding'));
-
   return (
     <div>
       <h1 className="font-serif text-3xl font-semibold mb-2.5">

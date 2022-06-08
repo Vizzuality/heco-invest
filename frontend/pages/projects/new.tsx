@@ -34,7 +34,6 @@ import { formPageInputs } from 'validations/project';
 import { useCreateProject } from 'services/account';
 import { getEnums, useEnums } from 'services/enums/enumService';
 import { getLocations } from 'services/locations/locations';
-import { keys } from 'lodash-es';
 
 export async function getStaticProps(ctx) {
   const queryClient = new QueryClient();

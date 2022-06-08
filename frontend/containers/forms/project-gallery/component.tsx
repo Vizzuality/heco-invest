@@ -11,13 +11,14 @@ export const ProjectGallery = <FormValues extends FieldValues>({
   name,
   images,
   defaultSelected,
-  register,
-  registerOptions,
+  control,
   errors,
   onDeleteImage,
+  onSelectCover,
 }: ProjectGalleryProps<FormValues>) => {
   // Number of images to display. If not enough images are supplied, placeholders will be generated.
   const numImages = 6;
+  // const images: ProjectGalleryImageType[] = getValues(name as unknown as Path<FormValues>);
 
   const numPlaceholders = useMemo(
     () => numImages - (images?.length || 0),
@@ -27,18 +28,20 @@ export const ProjectGallery = <FormValues extends FieldValues>({
   return (
     <div className={className}>
       <div className="grid flex-grow h-full grid-cols-3 auto-rows-fr gap-x-2 gap-y-4" role="group">
-        {images?.map((image, index) => (
-          <ProjectGalleryImage
-            key={image.id}
-            name={name}
-            image={image}
-            register={register}
-            registerOptions={registerOptions}
-            invalid={errors && errors[name]}
-            defaultSelected={image.id === defaultSelected || index === 0}
-            onDeleteImage={() => onDeleteImage(image.id)}
-          />
-        ))}
+        {images?.map((image) => {
+          return (
+            <ProjectGalleryImage
+              key={image.id}
+              name={name}
+              image={image}
+              control={control}
+              invalid={errors && errors[name]}
+              defaultSelected={image.id === defaultSelected}
+              onDeleteImage={() => onDeleteImage(image.id)}
+              onSelectCover={() => onSelectCover(image.id)}
+            />
+          );
+        })}
         {[...Array(numPlaceholders)].map((_, index) => (
           <div
             key={index}

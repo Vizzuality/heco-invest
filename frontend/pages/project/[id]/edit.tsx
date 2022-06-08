@@ -28,12 +28,7 @@ import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
-import {
-  Project as ProjectType,
-  ProjectCreationPayload,
-  ProjectForm,
-  ProjectUpdatePayload,
-} from 'types/project';
+import { Project as ProjectType, ProjectForm, ProjectUpdatePayload } from 'types/project';
 import useProjectValidation, { formPageInputs } from 'validations/project';
 
 import { useUpdateProject } from 'services/account';
@@ -94,13 +89,19 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
       municipality_id: project.municipality?.id,
       department_id: project.municipality.parent.id,
       country_id: project.country?.id,
-      project_images_attributes: project.project_images?.map(({ cover, id, file }) => ({
-        file: file.original.split('redirect/')[1].split('/')[0],
-        cover,
-        id,
-        title: 'title',
-        src: file.original,
-      })),
+      project_images_attributes: project.project_images?.map(({ cover, file }, index) => {
+        const imageId = file.original.split('redirect/')[1].split('/')[0];
+        return {
+          file: imageId,
+          cover,
+          id: imageId,
+          title: formatMessage(
+            { defaultMessage: 'Project image {index}.', id: 'jj4ae3' },
+            { index: index }
+          ),
+          src: file.original,
+        };
+      }),
       involved_project_developer: !!project.involved_project_developers.length ? 1 : 0,
       involved_project_developer_ids: project.involved_project_developers.map(({ id }) => id),
       involved_project_developer_not_listed: project.involved_project_developer_not_listed,
@@ -176,7 +177,6 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
       const involved_project_developer_ids = values.involved_project_developer_ids?.filter(
         (id) => id !== 'not-listed'
       );
-      console.log(project?.id);
       handleCreate({
         ...rest,
         involved_project_developer_not_listed,
@@ -191,7 +191,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
   };
 
   const handleNextClick = async () => {
-    await handleSubmit(onSubmit, console.log)();
+    await handleSubmit(onSubmit)();
   };
 
   return (
