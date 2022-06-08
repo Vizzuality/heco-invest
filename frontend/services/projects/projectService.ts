@@ -57,16 +57,21 @@ export const getProject = async (
   id: string,
   params?: {
     fields?: string;
-    includes?: string;
+    includes?: string[];
   }
 ): Promise<{
   data: Project;
   included: any[]; // TODO
 }> => {
+  const { includes, ...rest } = params || {};
+
   const config: AxiosRequestConfig = {
     url: `/api/v1/projects/${id}`,
     method: 'GET',
-    params: params,
+    params: {
+      includes: includes?.join(','),
+      ...rest,
+    },
   };
   return await API.request(config).then((response) => response.data);
 };
