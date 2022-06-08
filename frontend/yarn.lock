@@ -14428,7 +14428,7 @@ __metadata:
     rooks: ^5.10.0
     sharp: ^0.30.1
     slugify: ^1.6.5
-    storybook-addon-mock: ^2.3.2
+    storybook-addon-mock: ^2.4.1
     storybook-addon-next: ^1.6.2
     storybook-react-intl: ^1.0.5
     supercluster: ^7.1.5
@@ -21223,9 +21223,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook-addon-mock@npm:^2.3.2":
-  version: 2.3.2
-  resolution: "storybook-addon-mock@npm:2.3.2"
+"storybook-addon-mock@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "storybook-addon-mock@npm:2.4.1"
   dependencies:
     "@storybook/addons": ^6.2.9
     "@storybook/api": ^6.2.9
@@ -21236,7 +21236,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: ea9abe7409b6a878235127686f382353876d28b6240a1351245726b4c20277417f27b9a768b5eadfb93b7a62d0b36108c11327686b84206e6f5c51a21d5d7408
+  checksum: 7a8c4e6c2fada845f4c56f6f848bf0dfb7f9ab4375fb443dab064b4ed883356e12547f9a5174cefbae8a8b8809f3934c23ff72018a0293c8bcec453357b16d32
   languageName: node
   linkType: hard
 

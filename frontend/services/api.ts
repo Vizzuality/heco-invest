@@ -5,14 +5,14 @@ import { ErrorResponse } from './types';
 
 const dataFormatter = new Jsona();
 
-const baseUrl =
+export const apiBaseUrl =
   process.env.NEXT_PUBLIC_PROXY_BACKEND === 'true'
     ? // This path must correspond to the one stored in `next.config.js` in the `rewrites` function
       `${process.env.NEXT_PUBLIC_FRONTEND_URL}/backend`
     : process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const API = axios.create({
-  baseURL: baseUrl,
+  baseURL: apiBaseUrl,
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true,
   xsrfCookieName: 'csrf_token',
