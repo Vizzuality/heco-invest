@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -57,13 +57,40 @@ const MOCK_DATA = [
 
 export const DashboardTable = () => {
   const [search, setSearch] = useState('');
+  const [sort, setSort] = useState({ id: 'name', direction: 'desc' });
+  const [page, setPage] = useState(1);
 
   const onSearch = useDebouncedCallback((v) => {
     setSearch(v);
   }, 250);
 
+  const initialState = useMemo(
+    () => ({
+      pageIndex: page - 1,
+      sortBy: [
+        {
+          id: sort.id,
+          desc: sort.direction === 'desc',
+        },
+      ],
+    }),
+    [page, sort]
+  );
+
+  const onPageChange = useCallback((p) => {
+    console.log('p', p);
+    setPage(p);
+  }, []);
+
+  // const onSortChange = useCallback((id, direction) => {
+  //   setSort({
+  //     id,
+  //     direction,
+  //   });
+  // }, []);
+
   return (
-    <div className="">
+    <div>
       <div className="flex items-center justify-between mb-6">
         <div className="w-2/3">
           <Search
@@ -88,7 +115,6 @@ export const DashboardTable = () => {
       </div>
 
       <Table
-        loading={false}
         columns={[
           {
             Header: 'User',
@@ -138,13 +164,10 @@ export const DashboardTable = () => {
           totalItems: 8,
           totalPages: 8,
         }}
-        initialState={[
-          {
-            pageIndex: 0,
-            sortBy: [{ id: 'displayName', desc: false }],
-          },
-        ]}
         data={MOCK_DATA}
+        loading={false}
+        initialState={initialState}
+        onPageChange={onPageChange}
       />
     </div>
   );
