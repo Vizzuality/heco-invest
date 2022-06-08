@@ -33,6 +33,7 @@ export type ProjectBase = {
   instrument_types: string[];
   involved_project_developer_not_listed: boolean;
   looking_for_funding: boolean;
+  funding_plan: string;
   name: string;
   problem: string;
   progress_impact_tracking: string;
@@ -99,7 +100,6 @@ export type Project = ProjectBase &
 export type ProjectForm = ProjectBase & {
   country_id: string;
   department_id: string;
-  funding_plan: string;
   involved_project_developer_ids: string[];
   municipality_id: string;
   project_images_attributes: ProjectImageGallery[];
