@@ -10,6 +10,7 @@ zu:
       default_message: "Please review the problems below:"
     labels:
       account:
+        picture: picture
         name: Profile name
         about: About
         website: Website
@@ -24,7 +25,7 @@ zu:
         categories: Select the categories that you work on
         impacts: Expect to have impact on
         mission: What's your mission?
-        mosaics: Select HeCo priority landscapes on which you will have impact (optional)
+        mosaics: Select HeCo priority landscapes on which you will have impact
   backoffice:
     common:
       account_owner: Account owner
@@ -50,7 +51,9 @@ zu:
         gap: "..."
     account:
       account_language: Account language
+      account_language_description: This is the default language in which all the content is created by the account users.
       approval_status: Approval status
+      approval_status_description: Carefully revise the profile information and set the status.
       profile: Profile
       about: About
       contact_information: Contact Information

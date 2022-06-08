@@ -1,14 +1,14 @@
 <div>
-  <div class="flex items-center gap-3">
-    <label><%= t("backoffice.common.view_content_in") %></label>
-    <%= select_tag :content_lang, options_from_collection_for_select(Language.all, "id", "name", content_language),
-       class: "block px-4 py-2 text-base text-gray-900 placeholder-gray-400 placeholder-opacity-100 border border-solid border-beige hover:shadow-sm focus:shadow-sm focus:border-green-dark outline-none bg-white rounded-lg disabled:opacity-60 transition border-green-400 select",
-       onchange: "
-         url = new window.URL(window.location);
-         url.searchParams.set('content_lang', event.target.value);
-         Turbo.visit(url.toString());
-       "
-    %>
-  </div>
+    <label class="flex items-center gap-3">
+      <%= t("backoffice.common.view_content_in") %>
+      <%= select_tag :content_lang, options_from_collection_for_select(Language.all, "id", "name", content_language),
+         class: "block px-4 py-2 text-base text-gray-900 placeholder-gray-400 placeholder-opacity-100 border border-solid border-beige hover:shadow-sm focus:shadow-sm focus:border-green-dark outline-none bg-white rounded-lg disabled:opacity-60 transition border-green-400 select",
+         onchange: "
+           url = new window.URL(window.location);
+           url.searchParams.set('content_lang', event.target.value);
+           Turbo.visit(url.toString());
+         "
+      %>
+    </label>
 </div>
 <%= render 'form', project_developer: @project_developer %>

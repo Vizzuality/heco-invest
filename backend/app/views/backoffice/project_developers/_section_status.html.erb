@@ -2,9 +2,12 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
+  <h2 class="mb-2 text-gray-900 font-semibold">
     <%= t("backoffice.account.approval_status") %>
   </h2>
+  <p class="mb-8 text-gray-600">
+    <%= t("backoffice.account.approval_status_description") %>
+  </p>
 
   <%= f.simple_fields_for :account do |ff|  %>
     <%= ff.input :review_status, collection: ReviewStatus.all, include_blank: false %>

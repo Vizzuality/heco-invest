@@ -108,6 +108,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
     context "profile section" do
       context "when content is correct" do
         it "can update profile information" do
+          attach_file t("simple_form.labels.account.picture"), Rails.root.join("spec/fixtures/files/picture_2.jpg")
           fill_in t("simple_form.labels.account.name"), with: "New profile name"
           select t("enums.project_developer_type.academic.name"), from: t("simple_form.labels.project_developer.project_developer_type")
           fill_in t("simple_form.labels.project_developer.entity_legal_registration_number"), with: "1111111111"
@@ -130,6 +131,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
 
           expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.project_developer")))
           approved_pd.reload
+          expect(approved_pd.account.picture.filename.to_s).to eq("picture_2.jpg")
           expect(approved_pd.account.name).to eq("New profile name")
           expect(approved_pd.project_developer_type).to eq("academic")
           expect(approved_pd.entity_legal_registration_number).to eq("1111111111")
@@ -148,11 +150,32 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
         end
       end
 
-      # context "when content is incorrect" do
-      #   it "shows validation errors" do
+      context "when content is incorrect" do
+        it "shows validation errors" do
+          fill_in t("simple_form.labels.account.name"), with: ""
+          fill_in t("simple_form.labels.project_developer.entity_legal_registration_number"), with: ""
+          click_on t("backoffice.common.save")
 
-      #   end
-      # end
+          expect(page).to have_text(t("simple_form.error_notification.default_message"))
+          expect(page).to have_text("Name can't be blank")
+          expect(page).to have_text("Entity legal registration number can't be blank")
+        end
+      end
+
+      context "when changing translations" do
+        it "saves translated content" do
+          select "Spanish", from: t("backoffice.common.view_content_in")
+          sleep 1 # have to wait as dunno why it does not wait for turbo to reload page
+          fill_in t("simple_form.labels.account.about"), with: "New about description - Spanish"
+          fill_in t("simple_form.labels.defaults.mission"), with: "New mission - Spanish"
+          click_on t("backoffice.common.save")
+
+          expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.project_developer")))
+          approved_pd.reload
+          expect(approved_pd.account.about_es).to eq("New about description - Spanish")
+          expect(approved_pd.mission_es).to eq("New mission - Spanish")
+        end
+      end
     end
   end
 end

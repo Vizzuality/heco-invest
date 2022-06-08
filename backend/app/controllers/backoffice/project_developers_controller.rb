@@ -38,6 +38,7 @@ module Backoffice
         :mission_pt,
         account_attributes: [
           :id,
+          :picture,
           :name,
           :language,
           :review_status,

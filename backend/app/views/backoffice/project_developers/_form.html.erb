@@ -13,7 +13,7 @@
     <%= f.simple_fields_for :account do |ff|  %>
       <%= ff.input :name, as: :string %>
     <% end %>
-    <%= f.input :project_developer_type, collection: ProjectDeveloperType.all %>
+    <%= f.input :project_developer_type, collection: ProjectDeveloperType.all, include_blank: false %>
   </div>
   <%= f.input :entity_legal_registration_number %>
 
