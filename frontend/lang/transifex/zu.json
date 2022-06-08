@@ -537,9 +537,6 @@
   "MF4b8Z": {
     "string": "Use at least 12 characters, one uppercase letter, one lowercase letter and one number."
   },
-  "MFPJ9u": {
-    "string": "In the municipality the project has higher impact on <b>{impactOn}</b> and has an <b>impact score</b> of {score}."
-  },
   "MH3koz": {
     "string": "Previous slide"
   },
@@ -938,9 +935,6 @@
   },
   "eTuDrh": {
     "string": "This will help us measure the impact of your project"
-  },
-  "eVJMyI": {
-    "string": "In the {impactLocation} the the project has higher impact on Water and has an impact score of 30."
   },
   "eXDHt0": {
     "string": "Describe the project or solution and describe clearly why you consider it is innovative, different from others and how it can generate an important change and impact towards the target groups. Highlight the characteristics that may attract partners, clients, or investors."
