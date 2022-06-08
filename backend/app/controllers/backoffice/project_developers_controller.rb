@@ -4,6 +4,7 @@ module Backoffice
     before_action :set_breadcrumbs, only: [:edit, :update]
 
     helper_method :content_language
+    helper_method :section_partial
 
     def index
       @q = ProjectDeveloper.ransack params[:q]
@@ -67,7 +68,15 @@ module Backoffice
     end
 
     def content_language
-      Language::TYPES.map(&:to_s).include?(params[:content_lang]) ? params[:content_lang] : @project_developer.language
+      Language::TYPES.map(&:to_s).include?(params[:content_lang]&.downcase) ? params[:content_lang].downcase : @project_developer.language
+    end
+
+    def section_partial
+      "section_#{section_key}"
+    end
+
+    def section_key
+      %w[language profile status].include?(params[:section]&.downcase) ? params[:section].downcase : "profile"
     end
   end
 end

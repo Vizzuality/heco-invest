@@ -5,13 +5,12 @@
     </h1>
 
     <ul class="flex flex-col gap-8">
-      <li><%= section_link_to "Account language", :language %></li>
-      <li><%= section_link_to "Profile", :profile, default: true %></li>
-      <li><%= section_link_to "Approval status", :status %></li>
+      <li><%= section_link_to t("backoffice.account.account_language"), :language %></li>
+      <li><%= section_link_to t("backoffice.account.profile"), :profile, default: true %></li>
+      <li><%= section_link_to t("backoffice.account.approval_status"), :status %></li>
     </ul>
   </aside>
   <div class="w-full h-full bg-white rounded-xl p-6">
-    <% section_name = %w[language profile status].include?(params[:section]&.downcase) ? params[:section].downcase : "profile" %>
-    <%= render "section_#{section_name}" %>
+    <%= render section_partial %>
   </div>
 </div>

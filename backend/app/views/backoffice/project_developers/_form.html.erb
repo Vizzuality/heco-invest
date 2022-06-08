@@ -2,7 +2,9 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">General</h2>
+  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
+    <%= t(".general") %>
+  </h2>
 
   <%= f.simple_fields_for :account do |ff|  %>
     <%= ff.input :picture %>
@@ -17,7 +19,9 @@
 
   <%= render "account_fields", f: f %>
 
-  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">About the work</h2>
+  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
+    <%= t(".about_the_work") %>
+  </h2>
 
   <%= f.input :categories, as: :check_boxes, collection: Category.all %>
   <%= f.input :impacts, as: :check_boxes, collection: Impact.all %>

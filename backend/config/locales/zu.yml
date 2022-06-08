@@ -15,6 +15,8 @@ zu:
         website: Website
         contact_phone: Contact phone
         contact_email: Contact email
+        language: Language
+        review_status: Review status
       project_developer:
         project_developer_type: Project developer type
         entity_legal_registration_number: Entity legal registration number (NIT or RUT)
@@ -46,6 +48,13 @@ zu:
         prev: "←"
         next: "→"
         gap: "..."
+    account:
+      account_language: Account language
+      approval_status: Approval status
+      profile: Profile
+      about: About
+      contact_information: Contact Information
+      online_presence: Online presence
     messages:
       success_update: "%{model} was successfully updated"
     sign_in:
@@ -55,6 +64,9 @@ zu:
     project_developers:
       index:
         projects: Projects
+      edit:
+        general: General
+        about_the_work: About the work
     investors:
       index:
         open_calls: Open calls

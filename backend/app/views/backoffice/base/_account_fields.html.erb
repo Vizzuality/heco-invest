@@ -1,16 +1,22 @@
 <%= f.simple_fields_for :account do |ff|  %>
-  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">About</h2>
+  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
+    <%= t("backoffice.account.about") %>
+  </h2>
 
   <%= ff.input [:about, content_language].join('_'), label: t("simple_form.labels.account.about"), as: :text %>
   <%= f.input [:mission, content_language].join('_'), label: t("simple_form.labels.defaults.mission"), as: :text %>
   <%= ff.input :website, as: :string %>
 
-  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">Contact information</h2>
+  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
+    <%= t("backoffice.account.contact_information") %>
+  </h2>
   <div class="grid grid-cols-2 gap-4">
     <%= ff.input :contact_email, as: :string %>
     <%= ff.input :contact_phone, as: :string %>
   </div>
-  <h3 class="mb-4 mt-6 text-gray-600 font-medium">Online presence</h3>
+  <h3 class="mb-4 mt-6 text-gray-600 font-medium">
+    <%= t("backoffice.account.online_presence") %>
+  </h3>
   <div class="grid grid-cols-2 gap-4">
     <%= ff.input :linkedin, as: :string %>
     <%= ff.input :instagram, as: :string %>
