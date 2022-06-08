@@ -30,10 +30,10 @@ class Project < ApplicationRecord
 
   enum status: {draft: 0, published: 1, closed: 2}, _default: :draft
 
-  validates :development_stage, inclusion: {in: ProjectDevelopmentStage::TYPES}
-  validates :category, inclusion: {in: Category::TYPES}
+  validates :development_stage, inclusion: {in: ProjectDevelopmentStage::TYPES, allow_blank: true}, presence: true
+  validates :category, inclusion: {in: Category::TYPES, allow_blank: true}, presence: true
   validates :sdgs, array_inclusion: {in: Sdg::TYPES}, presence: true
-  validates :language, inclusion: {in: Language::TYPES}
+  validates :language, inclusion: {in: Language::TYPES, allow_blank: true}, presence: true
   validates :target_groups, array_inclusion: {in: ProjectTargetGroup::TYPES}, presence: true
   validates :impact_areas, array_inclusion: {in: ImpactArea::TYPES}, presence: true
 
@@ -55,7 +55,7 @@ class Project < ApplicationRecord
 
   with_options if: -> { looking_for_funding? } do
     validates :instrument_types, array_inclusion: {in: InstrumentType::TYPES}, presence: true
-    validates :ticket_size, inclusion: {in: TicketSize::TYPES}
+    validates :ticket_size, inclusion: {in: TicketSize::TYPES, allow_blank: true}, presence: true
     validates_presence_of :funding_plan
   end
 

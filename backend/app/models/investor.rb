@@ -11,8 +11,8 @@ class Investor < ApplicationRecord
   validates :ticket_sizes, array_inclusion: {in: TicketSize::TYPES}, presence: true
   validates :impacts, array_inclusion: {in: Impact::TYPES}, presence: true
   validates :sdgs, array_inclusion: {in: Sdg::TYPES}
-  validates :investor_type, inclusion: {in: InvestorType::TYPES}
-  validates :language, inclusion: {in: Language::TYPES}
+  validates :investor_type, inclusion: {in: InvestorType::TYPES, allow_blank: true}, presence: true
+  validates :language, inclusion: {in: Language::TYPES, allow_blank: true}, presence: true
   validates :previously_invested, inclusion: {in: [true, false]}
 
   validates_presence_of :mission, :other_information

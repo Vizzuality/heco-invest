@@ -25,7 +25,7 @@ class Account < ApplicationRecord
   validates :twitter, url: true
   validates :facebook, url: true
   validates :instagram, url: true
-  validates :language, inclusion: {in: Language::TYPES}
+  validates :language, inclusion: {in: Language::TYPES, allow_blank: true}, presence: true
   validates :picture, attached: true, content_type: /\Aimage\/.*\z/
   validates :contact_email, presence: true
   validates :contact_email, format: {with: Devise.email_regexp}, unless: -> { contact_email.blank? }

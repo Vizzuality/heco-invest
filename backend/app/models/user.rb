@@ -19,7 +19,7 @@ class User < ApplicationRecord
     length: {minimum: 12, message: :password_length},
     allow_nil: true
   validate :password_complexity
-  validates :ui_language, inclusion: {in: Language::TYPES}
+  validates :ui_language, inclusion: {in: Language::TYPES, allow_blank: true}, presence: true
   validates_presence_of :first_name, :last_name
 
   delegate :approved?, to: :account, allow_nil: true
