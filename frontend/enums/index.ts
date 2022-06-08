@@ -15,6 +15,12 @@ export enum Paths {
   FAQ = '/faq',
   Discover = '/discover',
   Dashboard = '/dashboard',
+  DashboardProjects = '/dashboard/projects',
+  DashboardFavorites = '/dashboard/favorites',
+  DashboardOpenCalls = '/dashboard/open-calls',
+  DashboardOpenCallApplications = '/dashboard/open-call-applications',
+  DashboardUsers = '/dashboard/users',
+  DashboardAccountInfo = '/dashboard/account-information',
   Settings = '/settings',
   Project = '/project',
   Projects = '/discover/projects',
@@ -24,6 +30,7 @@ export enum Paths {
   ProjectDevelopers = '/discover/project-developers',
   OpenCall = '/open-call',
   OpenCalls = '/discover/open-calls',
+  OpenCallCreation = '/open-calls/new',
   Investor = '/investor',
   NewInvestor = '/investors/new',
   Investors = '/discover/investors',
@@ -45,6 +52,8 @@ export enum Queries {
   ProjectDeveloper = 'project_developer',
   /** The current user Project Developer */
   CurrentProjectDeveloper = 'current_project_developer',
+  /** The current user Investor */
+  CurrentInvestor = 'current_investor',
   /** List of projects */
   ProjectList = 'projects',
   /** Single project */
