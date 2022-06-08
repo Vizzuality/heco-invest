@@ -57,7 +57,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
         it "returns records at correct state" do
           expect(page).to have_text(project.name)
           projects.each { |p| expect(page).to have_text(p.name) }
-          select t("activerecord.attributes.project.statuses.published"), from: :q_status_eq
+          select t("enums.project_status.published.name"), from: :q_status_eq
           click_on t("backoffice.common.apply")
           expect(page).to have_text(project.name)
           projects.each { |p| expect(page).not_to have_text(p.name) }

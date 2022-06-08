@@ -6,11 +6,6 @@ zu:
           unapproved: Unapproved
           approved: Approved
           rejected: Rejected
-      project:
-        statuses:
-          draft: Unverified
-          published: Published
-          closed: Closed
   backoffice:
     common:
       account_owner: Account owner
@@ -27,7 +22,8 @@ zu:
       verified: Verified
       unverified: Unverified
       search_placeholder: Search
-      apply: Apply
+      apply: Apply filters
+      reset: Reset filters
       navigation:
         prev: "←"
         next: "→"
@@ -288,3 +284,10 @@ zu:
         name: Peace, justice and strong institutions
       17:
         name: Partnerships for the goals
+    project_status:
+      draft:
+        name: Unverified
+      published:
+        name: Published
+      closed:
+        name: Closed

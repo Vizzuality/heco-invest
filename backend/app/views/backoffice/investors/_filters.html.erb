@@ -1,5 +1,5 @@
-<%= render "backoffice/shared/filters", q: @q do |f| %>
-  <%= render partial: "backoffice/shared/full_text_filter", locals: { f: f } %>
+<%= render "backoffice/base/filters", q: @q do |f| %>
+  <%= render partial: "backoffice/base/full_text_filter", locals: { f: f } %>
   <div class="w-30 inline-block mx-3">
     <%= f.input :account_review_status_eq, as: :select, required: false, label: false, prompt: I18n.t("backoffice.common.status"),
                 collection: Account.review_statuses.map { |k, v| [I18n.t("activerecord.attributes.account.review_statuses.#{k}"), v] } %>

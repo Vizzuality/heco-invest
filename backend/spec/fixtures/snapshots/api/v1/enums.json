@@ -695,6 +695,27 @@
       "attributes": {
         "name": "Partnerships for the goals"
       }
+    },
+    {
+      "id": "draft",
+      "type": "project_status",
+      "attributes": {
+        "name": "Unverified"
+      }
+    },
+    {
+      "id": "published",
+      "type": "project_status",
+      "attributes": {
+        "name": "Published"
+      }
+    },
+    {
+      "id": "closed",
+      "type": "project_status",
+      "attributes": {
+        "name": "Closed"
+      }
     }
   ]
 }
