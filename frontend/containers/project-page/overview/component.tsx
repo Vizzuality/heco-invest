@@ -47,35 +47,13 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
             <h2 className="text-2xl lg:text-3xl">
               <FormattedMessage defaultMessage="The problem we are solving" id="MXykbb" />
             </h2>
-            <p className="font-sans text-base">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis amet ullamcorper
-              faucibus lacus in. Erat amet, interdum erat in porttitor sed eleifend rutrum lorem.
-              Purus lorem amet, eget venenatis ac arcu.
-            </p>
-            <p className="font-sans text-base">
-              Fusce in odio iaculis eget sed. Tristique gravida sem nunc vitae convallis sit sit
-              tempor. Augue massa facilisis aliquet massa libero quam eget mi. Lectus tellus a
-              bibendum purus vulputate quisque massa lacus at. Nisi, mattis amet eu enim turpis.
-              Massa nulla non eu sit commodo. Arcu amet, aliquet mattis quis sodales tincidunt purus
-              commodo. Non condimentum a rhoncus tellus aenean iaculis.
-            </p>
+            <p className="font-sans text-base">{project.problem}</p>
           </div>
           <div className="flex flex-col space-y-4">
             <h2 className="text-2xl lg:text-3xl">
               <FormattedMessage defaultMessage="The solution proposed" id="9CDBQg" />
             </h2>
-            <p className="font-sans text-base">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis amet ullamcorper
-              faucibus lacus in. Erat amet, interdum erat in porttitor sed eleifend rutrum lorem.
-              Purus lorem amet, eget venenatis ac arcu.
-            </p>
-            <p className="font-sans text-base">
-              Fusce in odio iaculis eget sed. Tristique gravida sem nunc vitae convallis sit sit
-              tempor. Augue massa facilisis aliquet massa libero quam eget mi. Lectus tellus a
-              bibendum purus vulputate quisque massa lacus at. Nisi, mattis amet eu enim turpis.
-              Massa nulla non eu sit commodo. Arcu amet, aliquet mattis quis sodales tincidunt purus
-              commodo. Non condimentum a rhoncus tellus aenean iaculis.
-            </p>
+            <p className="font-sans text-base">{project.solution}</p>
           </div>
         </div>
       </section>
