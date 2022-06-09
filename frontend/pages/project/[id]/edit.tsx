@@ -33,7 +33,10 @@ import useProjectValidation, { formPageInputs } from 'validations/project';
 
 import { useUpdateProject } from 'services/account';
 import { getEnums, useEnums } from 'services/enums/enumService';
-import { getProject, useProject } from 'services/projects/projectService';
+import { getProject } from 'services/projects/projectService';
+import { Investor } from 'types/investor';
+import { ProjectDeveloper } from 'types/projectDeveloper';
+import { User } from 'types/user';
 
 export const getServerSideProps = async ({ params: { id }, locale }) => {
   let project;
@@ -194,8 +197,20 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
     await handleSubmit(onSubmit)();
   };
 
+  const getIsOwner = (user: User, userAccount: ProjectDeveloper | Investor) => {
+    // The user must be a the creator of the project to be allowed to edit it.
+    return project.project_developer.id === userAccount.id;
+  };
+
   return (
-    <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
+    <ProtectedPage
+      allowConfirmed
+      ownership={{
+        allowOwner: true,
+        getIsOwner,
+      }}
+      permissions={[UserRoles.ProjectDeveloper]}
+    >
       <Head title={formatMessage({ defaultMessage: 'Create project', id: 'VUN1K7' })} />
       <MultiPageLayout
         layout="narrow"
