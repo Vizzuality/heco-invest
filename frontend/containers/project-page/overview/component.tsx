@@ -35,12 +35,14 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
                 </h3>
                 <p>{municipality.name}</p>
               </div>
+              {/*
               <div className="flex flex-wrap font-sans text-base sm:space-x-2 sm:flex-nowrap">
                 <h3 className="font-semibold whitespace-pre">
                   <FormattedMessage defaultMessage="HeCo priority landscape" id="kPq9Kx" />
                 </h3>
-                <p>{municipality.parent.name}</p>
+                <p>Corazón Amazonía</p>
               </div>
+              */}
             </div>
           </div>
           <div className="flex flex-col space-y-4">
