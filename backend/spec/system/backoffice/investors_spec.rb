@@ -16,7 +16,7 @@ RSpec.describe "Backoffice: Investors", type: :system do
   describe "Index" do
     before { visit "/backoffice/investors" }
 
-    it_behaves_like "with table pagination"
+    it_behaves_like "with table pagination", expected_total: 2
     it_behaves_like "with table sorting", columns: [
       I18n.t("backoffice.common.name"),
       I18n.t("backoffice.common.account_owner"),

@@ -1,4 +1,7 @@
-<%= render partial: "filters", locals: {q: @q} %>
+<div class="flex">
+  <%= render partial: "filters", locals: {q: @q} %>
+  <%= render partial: "backoffice/base/total_records" %>
+</div>
 
 <table class="backoffice-table">
   <thead>

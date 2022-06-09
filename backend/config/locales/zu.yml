@@ -22,8 +22,9 @@ zu:
       verified: Verified
       unverified: Unverified
       search_placeholder: Search
-      apply: Apply filters
-      reset: Reset filters
+      apply: Apply
+      reset: Reset
+      total: Total
       navigation:
         prev: "←"
         next: "→"
