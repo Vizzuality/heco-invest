@@ -16,7 +16,8 @@ class Account < ApplicationRecord
 
   translates :about
 
-  enum review_status: {unapproved: 0, approved: 1, rejected: 2}, _default: :unapproved
+  enum review_status: ReviewStatus::TYPES_WITH_CODE, _default: :unapproved
+  ransacker :review_status, formatter: proc { |v| review_statuses[v] }
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :about, presence: true

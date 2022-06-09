@@ -29,6 +29,7 @@ class Project < ApplicationRecord
     :relevant_links
 
   enum status: ProjectStatus::TYPES_WITH_CODE, _default: :draft
+  ransacker :status, formatter: proc { |v| statuses[v] }
 
   validates :development_stage, inclusion: {in: ProjectDevelopmentStage::TYPES, allow_blank: true}, presence: true
   validates :category, inclusion: {in: Category::TYPES, allow_blank: true}, presence: true

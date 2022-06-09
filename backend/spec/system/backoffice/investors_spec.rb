@@ -29,11 +29,11 @@ RSpec.describe "Backoffice: Investors", type: :system do
     it "shows investors list" do
       within_row("Super Investor Enterprise") do
         expect(page).to have_text("Tom Higgs")
-        expect(page).to have_text("approved")
+        expect(page).to have_text(ReviewStatus.find("approved").name)
       end
       within_row("Unapproved Investor Enterprise") do
         expect(page).to have_text("John Levis")
-        expect(page).to have_text("unapproved")
+        expect(page).to have_text(ReviewStatus.find("unapproved").name)
       end
     end
 
@@ -41,11 +41,11 @@ RSpec.describe "Backoffice: Investors", type: :system do
       it "flips the status to approved" do
         within_row("Unapproved Investor Enterprise") do
           expect(page).to have_text("John Levis")
-          expect(page).to have_text("unapproved")
+          expect(page).to have_text(ReviewStatus.find("unapproved").name)
           expect {
             click_on t("backoffice.common.approve")
           }.to have_enqueued_mail(UserMailer, :approved).with(unapproved_investor_owner).once
-          expect(page).to have_text("approved")
+          expect(page).to have_text(ReviewStatus.find("approved").name)
         end
       end
     end
@@ -54,11 +54,11 @@ RSpec.describe "Backoffice: Investors", type: :system do
       it "flips status to rejected" do
         within_row("Super Investor Enterprise") do
           expect(page).to have_text("Tom Higgs")
-          expect(page).to have_text("approved")
+          expect(page).to have_text(ReviewStatus.find("approved").name)
           expect {
             click_on t("backoffice.common.reject")
           }.to have_enqueued_mail(UserMailer, :rejected).with(approved_investor_owner).once
-          expect(page).to have_text("rejected")
+          expect(page).to have_text(ReviewStatus.find("rejected").name)
         end
       end
     end
@@ -78,7 +78,7 @@ RSpec.describe "Backoffice: Investors", type: :system do
       it "returns records at correct state" do
         expect(page).to have_text(approved_investor.name)
         expect(page).to have_text(unapproved_investor.name)
-        select t("activerecord.attributes.account.review_statuses.approved"), from: :q_account_review_status_eq
+        select ReviewStatus.find("approved").name, from: :q_account_review_status_eq
         click_on t("backoffice.common.apply")
         expect(page).to have_text(approved_investor.name)
         expect(page).not_to have_text(unapproved_investor.name)

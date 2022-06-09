@@ -42,11 +42,11 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
     it "shows project developers list" do
       within_row("Super PD Enterprise") do
         expect(page).to have_text("Tom Higgs")
-        expect(page).to have_text("approved")
+        expect(page).to have_text(ReviewStatus.find("approved").name)
       end
       within_row("Unapproved PD Enterprise") do
         expect(page).to have_text("John Levis")
-        expect(page).to have_text("unapproved")
+        expect(page).to have_text(ReviewStatus.find("unapproved").name)
       end
     end
 
@@ -54,11 +54,11 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
       it "flips the status to approved" do
         within_row("Unapproved PD Enterprise") do
           expect(page).to have_text("John Levis")
-          expect(page).to have_text("unapproved")
+          expect(page).to have_text(ReviewStatus.find("unapproved").name)
           expect {
             click_on t("backoffice.common.approve")
           }.to have_enqueued_mail(UserMailer, :approved).with(unapproved_pd_owner).once
-          expect(page).to have_text("approved")
+          expect(page).to have_text(ReviewStatus.find("approved").name)
         end
       end
     end
@@ -67,11 +67,11 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
       it "flips status to rejected" do
         within_row("Super PD Enterprise") do
           expect(page).to have_text("Tom Higgs")
-          expect(page).to have_text("approved")
+          expect(page).to have_text(ReviewStatus.find("approved").name)
           expect {
             click_on t("backoffice.common.reject")
           }.to have_enqueued_mail(UserMailer, :rejected).with(approved_pd_owner).once
-          expect(page).to have_text("rejected")
+          expect(page).to have_text(ReviewStatus.find("rejected").name)
         end
       end
     end
@@ -91,7 +91,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
       it "returns records at correct state" do
         expect(page).to have_text(approved_pd.name)
         expect(page).to have_text(unapproved_pd.name)
-        select t("activerecord.attributes.account.review_statuses.approved"), from: :q_account_review_status_eq
+        select ReviewStatus.find("approved").name, from: :q_account_review_status_eq
         click_on t("backoffice.common.apply")
         expect(page).to have_text(approved_pd.name)
         expect(page).not_to have_text(unapproved_pd.name)
@@ -123,7 +123,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
       before { within_sidebar { click_on t("backoffice.account.approval_status") } }
 
       it "can update approval status" do
-        expect(page).to have_select(t("simple_form.labels.account.review_status"), selected: "Approved")
+        expect(page).to have_select(t("simple_form.labels.account.review_status"), selected: ReviewStatus.find("approved").name)
         select "Unapproved", from: t("simple_form.labels.account.review_status")
         click_on t("backoffice.common.save")
         expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.project_developer")))

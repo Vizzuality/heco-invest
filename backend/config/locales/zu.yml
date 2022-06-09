@@ -26,13 +26,6 @@ zu:
         impacts: Expect to have impact on
         mission: What's your mission?
         mosaics: Select HeCo priority landscapes on which you will have impact
-  activerecord:
-    attributes:
-      account:
-        review_statuses:
-          unapproved: Unapproved
-          approved: Approved
-          rejected: Rejected
   backoffice:
     common:
       account_owner: Account owner
