@@ -23,11 +23,11 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
           </h2>
           <p className="text-gray-800">
             <FormattedMessage
-              defaultMessage="This project has {numDevelopers} project developer{noun}"
-              id="CcFPkO"
+              defaultMessage="This project has {numDevelopers} {noun}"
+              id="I7L4wz"
               values={{
                 numDevelopers: NUMBER_DEVELOPERS,
-                noun: NUMBER_DEVELOPERS === 1 ? '' : 's',
+                noun: NUMBER_DEVELOPERS === 1 ? 'project developer' : 'project developers',
               }}
             />
           </p>

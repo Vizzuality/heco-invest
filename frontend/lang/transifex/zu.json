@@ -227,6 +227,9 @@
   "8R8Or7": {
     "string": "Search community"
   },
+  "8SayhS": {
+    "string": "{placeholder}"
+  },
   "8WtyrD": {
     "string": "Spanish"
   },
@@ -331,9 +334,6 @@
   },
   "CYTiug": {
     "string": "HeCo Invest will benefit poor and vulnerable people living in HeCo priority landscapes."
-  },
-  "CcFPkO": {
-    "string": "This project has {numDevelopers} project developer{noun}"
   },
   "CiBvks": {
     "string": "General information about the the project developer."
@@ -473,6 +473,9 @@
   },
   "I2yxwP": {
     "string": "Why is my account pending approval?"
+  },
+  "I7L4wz": {
+    "string": "This project has {numDevelopers} {noun}"
   },
   "I9iCt5": {
     "string": "From which investor or funder? (optional)"
@@ -713,9 +716,6 @@
   },
   "U1OBY8": {
     "string": "options {options}, selected."
-  },
-  "UQMsiR": {
-    "string": "separate emails by comma"
   },
   "URLNhk": {
     "string": "The Inter-American Development Bank (IDB) is the largest source of development financing for Latin America and the Caribbean. Established in 1959, the IDB supports Latin American and Caribbean economic development, social development and regional integration by lending to governments and government agencies, including State corporations."

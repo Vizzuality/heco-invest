@@ -1,13 +1,15 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 
+import { X as CloseIcon } from 'react-feather';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
 import Button from 'components/button';
+import Input from 'components/forms/input';
 import Label from 'components/forms/label';
-import Textarea from 'components/forms/textarea';
+import Icon from 'components/icon';
 import Modal from 'components/modal';
 import { UsersInvitationForm } from 'types/user';
 
@@ -23,6 +25,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
 
   const {
     register,
+    resetField,
     formState: { errors },
     getValues,
   } = useForm<UsersInvitationForm>({
@@ -32,12 +35,23 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
 
   const handleKeyDown = useCallback(
     (e) => {
-      if (e.key === ',') {
+      if (['Enter', 'Tab', ','].includes(e.key)) {
         const emails = getValues('emails').split(',');
+
+        resetField('emails');
         setEmailChips(emails);
       }
     },
-    [getValues]
+    [getValues, resetField]
+  );
+
+  const removeEmail = useCallback(
+    (email) => {
+      const restEmails = [...emailChips];
+      restEmails.splice(emailChips.indexOf(email), 1);
+      setEmailChips(restEmails);
+    },
+    [emailChips]
   );
 
   return (
@@ -63,21 +77,40 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
       <Label htmlFor="emails-users-invitation" className="mb-2 font-sans text-base text-gray-800">
         <FormattedMessage defaultMessage="Emails" id="AdAi3x" />
       </Label>
-      <Textarea
-        id="emails-users-invitation"
-        name="emails"
-        aria-describedby="emails-users-invitation-error"
-        register={register}
-        placeholder={formatMessage({
-          defaultMessage: 'separate emails by comma',
-          id: 'UQMsiR',
-        })}
-        className={cx({
-          'min-h-[95px] text-gray-400': true,
-          // 'border border-red-500': ,
-        })}
-        onKeyDown={handleKeyDown}
-      />
+      <div className="p-2 focus-within:border-green-dark min-h-[95px] border border-beige rounded-lg">
+        <div className="flex space-x-1">
+          <div className="flex space-x-2">
+            {emailChips?.map((email, i) => (
+              <div className="flex px-4 py-1 bg-beige rounded-2xl" key={i}>
+                <p className="text-sm text-green-dark">{email}</p>
+                <button type="button" onClick={() => removeEmail(email)}>
+                  <Icon icon={CloseIcon} className={cx('w-4 ml-3 text-green-dark')} />
+                </button>
+              </div>
+            ))}
+          </div>
+          <Input
+            type="text"
+            id="emails-users-invitation"
+            name="emails"
+            aria-describedby="emails-users-invitation-error"
+            register={register}
+            placeholder={formatMessage(
+              {
+                defaultMessage: '{placeholder}',
+                id: '8SayhS',
+              },
+              {
+                placeholder: emailChips?.length > 0 ? '' : 'separate emails by comma',
+              }
+            )}
+            className="px-0 py-0 mx-0 leading-3 text-gray-400 border-none focus:shadow-none hover:shadow-none"
+            onKeyDown={handleKeyDown}
+            contentEditable
+          />
+        </div>
+      </div>
+
       <div className="flex justify-end mt-8">
         <Button
           theme="secondary-green"

@@ -20,6 +20,7 @@ export type TextareaProps<FormValues> = {
   resize?: TextareaResize;
   /** Name of the textarea */
   name: Path<FormValues>;
+  contentEditable?: boolean;
   /** React Hook Form's `register` function */
   register: UseFormRegister<FormValues>;
   /** Options for React Hook Form's `register` function */
