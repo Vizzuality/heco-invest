@@ -700,7 +700,7 @@
       "id": "draft",
       "type": "project_status",
       "attributes": {
-        "name": "Unverified"
+        "name": "Draft"
       }
     },
     {
