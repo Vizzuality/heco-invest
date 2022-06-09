@@ -33,3 +33,10 @@ export type UserAccount = {
   slug: string;
   type: 'project_developer' | 'investor';
 };
+
+export type UsersInvitationForm = {
+  emails: {
+    email: string;
+    split: (string) => void;
+  };
+};

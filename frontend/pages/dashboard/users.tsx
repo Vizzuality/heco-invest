@@ -7,12 +7,11 @@ import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import InviteUsersModal from 'containers/users/invite-users-modal';
+
 import Button from 'components/button';
-import Label from 'components/forms/label';
-import Textarea from 'components/forms/textarea';
 import Head from 'components/head';
 import Icon from 'components/icon';
-import Modal from 'components/modal';
 import { UserRoles } from 'enums';
 import DashboardLayout, { DashboardLayoutProps } from 'layouts/dashboard';
 import NakedLayout from 'layouts/naked';
@@ -50,61 +49,10 @@ export const UsersPage: PageComponent<UsersPageProps, DashboardLayoutProps> = ()
       >
         Users page
       </DashboardLayout>
-      <Modal
-        onDismiss={() => setOpenInvitationModal(false)}
-        title={intl.formatMessage({ defaultMessage: 'Invite users', id: 'R+1DVQ' })}
-        open={openInvitationModal}
-        dismissable={true}
-        size="default"
-        scrollable={false}
-      >
-        <p>
-          <FormattedMessage defaultMessage="Invite users" id="R+1DVQ" />
-        </p>
-
-        <p>
-          <FormattedMessage
-            defaultMessage="Users will receive an email to sign up into the platform and join NEEsT’s account."
-            id="hbFTZN"
-          />
-        </p>
-
-        <Label
-          htmlFor="emails-users-invitation"
-          className="block mb-2 text-base font-normal text-gray-600"
-        >
-          <FormattedMessage defaultMessage="Emails" id="AdAi3x" />
-        </Label>
-        {/* <Textarea
-          id="prioritized-projects-description"
-          name="prioritized_projects_description"
-          aria-describedby="prioritized-projects-description-error"
-          register={register}
-          placeholder={intl.formatMessage({
-            defaultMessage: 'separate emails by comma',
-            id: 'UQMsiR',
-          })}
-          className="min-h-[240px]"
-        /> */}
-        <div className="flex justify-end">
-          <Button
-            theme="secondary-green"
-            size="small"
-            className="flex-shrink-0 mr-5"
-            onClick={() => console.log('Cancel')}
-          >
-            <FormattedMessage defaultMessage="Cancel" id="47FYwb" />
-          </Button>
-          <Button
-            theme="primary-green"
-            size="small"
-            className="flex-shrink-0 mr-5"
-            onClick={() => console.log('Invite')}
-          >
-            <FormattedMessage defaultMessage="Send invite" id="oBB4L4" />
-          </Button>
-        </div>
-      </Modal>
+      <InviteUsersModal
+        openInvitationModal={openInvitationModal}
+        setOpenInvitationModal={setOpenInvitationModal}
+      />
     </ProtectedPage>
   );
 };
