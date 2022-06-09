@@ -16,6 +16,8 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
     it_behaves_like "with table sorting", columns: [
       I18n.t("backoffice.common.name"),
       I18n.t("backoffice.common.account_owner"),
+      I18n.t("backoffice.common.contact_email"),
+      I18n.t("backoffice.common.contact_phone"),
       I18n.t("backoffice.common.account_users"),
       I18n.t("backoffice.project_developers.index.projects"),
       I18n.t("backoffice.common.language"),
@@ -26,6 +28,8 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
       within_row("Super PD Enterprise") do
         expect(page).to have_text("Tom Higgs")
         expect(page).to have_text("approved")
+        expect(page).to have_text(approved_pd.contact_email)
+        expect(page).to have_text(approved_pd.contact_phone)
       end
       within_row("Unapproved PD Enterprise") do
         expect(page).to have_text("John Levis")
