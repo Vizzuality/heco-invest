@@ -1,0 +1,9 @@
+<div class="w-full">
+  <%= search_form_for [:backoffice, q], builder: SimpleForm::FormBuilder do |f| %>
+    <%= yield(f) if yield(f).present? %>
+    <div class="inline-block">
+      <%= f.button :submit, value: I18n.t("backoffice.common.apply"), class: "inline-block bg-beige text-green-dark border border-solid border-green-dark hover:text-green-dark" %>
+      <%= link_to I18n.t("backoffice.common.reset"), url_for(only_path: false), class: "inline-block button bg-beige text-green-dark border border-solid border-green-dark hover:text-green-dark" %>
+    </div>
+  <% end %>
+</div>
