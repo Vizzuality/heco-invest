@@ -1,10 +1,12 @@
 module Backoffice
   class ProjectDevelopersController < BaseController
+    include Sections
+    include ContentLanguage
+
     before_action :fetch_project_developer, only: [:edit, :update]
     before_action :set_breadcrumbs, only: [:edit, :update]
-
-    helper_method :content_language
-    helper_method :section_partial
+    before_action :set_sections, only: [:edit, :update]
+    before_action :set_content_language_default, only: [:edit, :update]
 
     def index
       @q = ProjectDeveloper.ransack params[:q]
@@ -69,16 +71,12 @@ module Backoffice
       add_breadcrumb(@project_developer.name)
     end
 
-    def content_language
-      Language::TYPES.map(&:to_s).include?(params[:content_lang]&.downcase) ? params[:content_lang].downcase : @project_developer.language
+    def set_sections
+      sections %w[language profile status], default: "profile"
     end
 
-    def section_partial
-      "section_#{section_key}"
-    end
-
-    def section_key
-      %w[language profile status].include?(params[:section]&.downcase) ? params[:section].downcase : "profile"
+    def set_content_language_default
+      @content_language_default = @project_developer.language
     end
   end
 end
