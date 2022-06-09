@@ -73,7 +73,7 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
 
   return (
     <section>
-      <LayoutContainer className="mb-20 mt-36">
+      <LayoutContainer className="mb-20 mt-14 lg:mt-36">
         <h2 className="pl-6 mb-6 font-serif text-2xl text-black lg:text-4xl lg:pl-16 lg:mb-16">
           <FormattedMessage defaultMessage="Funding &amp; development" id="psXhQO" />
         </h2>
@@ -129,7 +129,7 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
             )}
           </div>
         </div>
-        <div className="flex flex-col my-24 space-y-16 lg:mx-44">
+        <div className="flex flex-col my-12 space-y-16 lg:my-24 lg:mx-44">
           <div className="flex flex-col items-center space-y-12 lg:space-y-0 lg:items-stretch lg:flex-row lg:space-x-24">
             <div>
               <Icon icon={CLOCK_SVG} className="w-16 h-16" />
