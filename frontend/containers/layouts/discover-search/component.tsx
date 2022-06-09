@@ -19,7 +19,6 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
   className,
   searchText: searchTextProp = '',
   onSearch = noop,
-  onSearchChange = noop,
   filtersQuantity,
 }: DiscoverSearchProps) => {
   const [searchText, setSearchText] = useState<string>(searchTextProp);
@@ -37,7 +36,6 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
 
   const handleChange = (e: SyntheticEvent<HTMLInputElement>) => {
     setSearchText(e.currentTarget.value);
-    onSearchChange(e.currentTarget.value);
   };
 
   return (
@@ -104,9 +102,8 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
         </div>
         {/* Filters accordion pannel */}
         <div
-          id="filters"
+          id="filter-suggestions"
           role="region"
-          aria-labelledby="filters-button"
           className={cx(
             'h-0 w-full bg-white -mt-1 rounded-b-4xl drop-shadow-xl transition-all ease-in',
             {
@@ -118,7 +115,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
         </div>
         {!openFilters && (
           <SearchAutoSuggestion
-            onCangeOpenSuggestion={setOpenSuggestions}
+            onChangeOpenSuggestion={setOpenSuggestions}
             searchText={searchText}
           />
         )}

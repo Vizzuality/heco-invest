@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -6,25 +6,20 @@ import cx from 'classnames';
 
 import { useRouter } from 'next/router';
 
-import { omit, pickBy, values } from 'lodash-es';
+import { omit } from 'lodash-es';
 
 import { useFilterNames, useQueryParams } from 'helpers/pages';
 
 import Button from 'components/button';
-import { EnumTypes } from 'enums';
 import { Enum } from 'types/enums';
 
 import { useEnums } from 'services/enums/enumService';
 
 import { SeachAutoSuggestionProps } from './types';
 
-type Filters = Partial<{
-  [key in EnumTypes]: Enum;
-}>;
-
 export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
   searchText,
-  onCangeOpenSuggestion,
+  onChangeOpenSuggestion,
 }) => {
   const [autoSuggestions, setAutoSuggestions] = useState<Enum[]>();
   const { data, isLoading } = useEnums();
@@ -32,33 +27,40 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
   const { push } = useRouter();
   const filterNames = useFilterNames();
 
-  const filters: Filters = useMemo(() => {
+  const filters: Enum[] = useMemo(() => {
     if (!isLoading) {
       const { category, ticket_size, instrument_type, impact, sdg } = data;
-      return [category, ticket_size, instrument_type, impact, sdg].flat().reduce((prev, curr) => {
-        return { ...prev, [curr.name.toLowerCase()]: curr };
-      }, {});
+      return [category, ticket_size, instrument_type, impact, sdg].flat();
     }
   }, [data, isLoading]);
 
-  const closeSuggestions = () => {
-    onCangeOpenSuggestion(false);
+  const closeSuggestions = useCallback(() => {
+    onChangeOpenSuggestion(false);
     setAutoSuggestions(undefined);
-  };
+  }, [onChangeOpenSuggestion]);
 
   useEffect(() => {
     if (searchText.length > 1) {
-      const isFilter = pickBy(filters, (v, key) => key.includes(searchText.toLowerCase()));
-      const filtersToSuggest = values(isFilter);
-      if (filtersToSuggest.length) {
-        onCangeOpenSuggestion(true);
+      console.log('filter');
+
+      const filtersToSuggest = filters
+        ?.filter(({ name }) => name.toLowerCase().includes(searchText.toLowerCase()))
+        .sort((a) => {
+          // Return the ones that match the beginning of the search text first
+          return a.name.toLowerCase().startsWith(searchText.toLowerCase()) ||
+            a.id[0] === searchText.toLowerCase()[0]
+            ? -1
+            : 1;
+        });
+      if (filtersToSuggest?.length) {
+        onChangeOpenSuggestion(true);
         setAutoSuggestions(filtersToSuggest);
         return;
       }
       closeSuggestions();
     }
     closeSuggestions();
-  }, [searchText]);
+  }, [closeSuggestions, filters, onChangeOpenSuggestion, searchText]);
 
   const handleFilter = (filter: Enum) => {
     const filterKey = `filter[${filter.type}]`;
