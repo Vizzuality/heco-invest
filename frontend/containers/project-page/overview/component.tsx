@@ -11,11 +11,11 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
   const { country, municipality } = project;
 
   return (
-    <LayoutContainer className="mb-20 mt-18 space-y-36">
-      <section className="p-6 mt-48 font-serif text-white lg:p-16 bg-green-dark rounded-2xl">
+    <LayoutContainer className="mb-14 lg:mb-20 mt-18 space-y-36">
+      <section className="p-6 mt-32 font-serif text-white lg:mt-48 lg:p-16 bg-green-dark rounded-2xl">
         <div className="relative grid w-full grid-cols-1 gap-12 lg:grid-cols-2">
           <Map
-            className="absolute z-10 -mb-32 border-8 border-white drop-shadow-xl h-96 -top-44 lg:overflow-hidden rounded-xl"
+            className="absolute z-10 -mb-20 border-8 border-white lg:-mb-32 drop-shadow-xl h-96 -top-24 lg:-top-44 lg:overflow-hidden rounded-xl"
             onMapViewportChange={() => console.log('onMapViewportChange')}
           />
           <div className="flex flex-col space-y-4 lg:col-start-2">
