@@ -78,34 +78,59 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
           <FormattedMessage defaultMessage="Funding &amp; development" id="psXhQO" />
         </h2>
         <div className="flex flex-col p-6 text-white lg:p-16 lg:space-x-10 lg:flex-row bg-green-dark rounded-2xl">
-          <div className="flex flex-col pb-6 pr-10 space-y-8 border-b-2 border-white lg:border-b-0 lg:pb-0 lg:w-1/3 lg:border-r-2">
+          <div className="flex flex-col pb-12 pr-10 space-y-8 border-b-2 border-white lg:pb-6 pb:10 lg:border-b-0 lg:w-1/3 lg:border-r-2">
             <h3 className="font-serif text-2xl lg:text-3xl">
-              <FormattedMessage defaultMessage="Currently looking for" id="sV+3z0" />
+              {project.looking_for_funding ? (
+                <FormattedMessage defaultMessage="Currently looking for" id="sV+3z0" />
+              ) : (
+                <FormattedMessage defaultMessage="Currently not looking for funding" id="Ll72W/" />
+              )}
             </h3>
-            <div className="flex flex-col font-sans lg:space-x-20 lg:flex-row">
-              <div className="flex flex-col space-y-1">
-                <p className="text-xl font-semibold lg:text-2xl">{ticketSizeStr}</p>
-                <p className="text-base">
-                  <FormattedMessage defaultMessage="Value" id="GufXy5" />
-                </p>
+            {project.looking_for_funding && (
+              <div className="flex flex-col gap-4 font-sans lg:gap-0 lg:space-x-20 lg:flex-row">
+                <div className="flex flex-col justify-end space-y-1">
+                  <p className="text-xl font-semibold lg:text-2xl">{ticketSizeStr}</p>
+                  <p className="text-base whitespace-nowrap">
+                    <FormattedMessage defaultMessage="Value" id="GufXy5" />
+                  </p>
+                </div>
+                <div className="flex flex-col justify-end space-y-1">
+                  <p className="text-xl font-semibold lg:text-2xl">{instrumentTypesStr}</p>
+                  <p className="text-base whitespace-nowrap">
+                    <FormattedMessage defaultMessage="Instrument type" id="fDd10o" />
+                  </p>
+                </div>
               </div>
-              <div className="flex flex-col space-y-1">
-                <p className="text-xl font-semibold lg:text-2xl">{instrumentTypesStr}</p>
-                <p className="text-base">
-                  <FormattedMessage defaultMessage="Instrument type" id="fDd10o" />
-                </p>
-              </div>
-            </div>
+            )}
           </div>
           <div className="flex flex-col mt-12 space-y-4 lg:mt-0 lg:w-2/3">
-            <h3 className="font-serif text-2xl lg:text-3xl">
-              <FormattedMessage defaultMessage="How the money will be used" id="IkUX0b" />
-            </h3>
-            <p className="text-base">{project.funding_plan}</p>
+            {project.looking_for_funding ? (
+              <>
+                <h3 className="font-serif text-2xl lg:text-3xl">
+                  <FormattedMessage defaultMessage="How the money will be used" id="IkUX0b" />
+                </h3>
+                <p className="text-base">{project.funding_plan}</p>
+              </>
+            ) : (
+              <>
+                <p className="text-base">
+                  <FormattedMessage
+                    defaultMessage="This project isn’t currently looking for funding at this moment."
+                    id="8xsdU1"
+                  />
+                </p>
+                <p className="text-base">
+                  <FormattedMessage
+                    defaultMessage="If you have interest in this project contact the project developer to know how you can work together."
+                    id="vIKTZ9"
+                  />
+                </p>
+              </>
+            )}
           </div>
         </div>
         <div className="flex flex-col my-24 space-y-16 lg:mx-44">
-          <div className="flex flex-col items-center space-y-12 lg:space-y-0 lg:items-strech lg:flex-row lg:space-x-24">
+          <div className="flex flex-col items-center space-y-12 lg:space-y-0 lg:items-stretch lg:flex-row lg:space-x-24">
             <div>
               <Icon icon={CLOCK_SVG} className="w-16 h-16" />
             </div>
