@@ -23,7 +23,7 @@
 
   <main class="container mx-auto py-6">
     <%= yield %>
-    <%== render partial: "backoffice/shared/navigation", locals: {pagy: @pagy_object} if defined? @pagy_object %>
+    <%== render partial: "backoffice/base/navigation", locals: {pagy: @pagy_object} if defined? @pagy_object %>
   </main>
 <% end %>
 

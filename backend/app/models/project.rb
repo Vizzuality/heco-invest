@@ -28,7 +28,7 @@ class Project < ApplicationRecord
     :progress_impact_tracking,
     :relevant_links
 
-  enum status: {draft: 0, published: 1, closed: 2}, _default: :draft
+  enum status: ProjectStatus::TYPES_WITH_CODE, _default: :draft
 
   validates :development_stage, inclusion: {in: ProjectDevelopmentStage::TYPES}
   validates :category, inclusion: {in: Category::TYPES}
