@@ -1,102 +1,102 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "type": "sdg",
     "name": "No poverty",
     "image": "/images/sdgs/1-no-poverty.png"
   },
   {
-    "id": 2,
+    "id": "2",
     "type": "sdg",
     "name": "Zero hunger",
     "image": "/images/sdgs/2-zero-hunger.png"
   },
   {
-    "id": 3,
+    "id": "3",
     "type": "sdg",
     "name": "Good health and well-being",
     "image": "/images/sdgs/3-good-health.png"
   },
   {
-    "id": 4,
+    "id": "4",
     "type": "sdg",
     "name": "Quality education",
     "image": "/images/sdgs/4-quality-education.png"
   },
   {
-    "id": 5,
+    "id": "5",
     "type": "sdg",
     "name": "Gender equality",
     "image": "/images/sdgs/5-gender-equality.png"
   },
   {
-    "id": 6,
+    "id": "6",
     "type": "sdg",
     "name": "Clean water and sanitation",
     "image": "/images/sdgs/6-clean-water.png"
   },
   {
-    "id": 7,
+    "id": "7",
     "type": "sdg",
     "name": "Affordable and clean energy",
     "image": "/images/sdgs/7-clean-energy.png"
   },
   {
-    "id": 8,
+    "id": "8",
     "type": "sdg",
     "name": "Decent work and economic growth",
     "image": "/images/sdgs/8-decent-work.png"
   },
   {
-    "id": 9,
+    "id": "9",
     "type": "sdg",
     "name": "Industry innovation and infrastructure",
     "image": "/images/sdgs/9-industry-innovation.png"
   },
   {
-    "id": 10,
+    "id": "10",
     "type": "sdg",
     "name": "Reduced inequalities",
     "image": "/images/sdgs/10-reduced-inequalities.png"
   },
   {
-    "id": 11,
+    "id": "11",
     "type": "sdg",
     "name": "Sustainable cities and communities",
     "image": "/images/sdgs/11-sustainable-cities.png"
   },
   {
-    "id": 12,
+    "id": "12",
     "type": "sdg",
     "name": "Responsible consumption and production",
     "image": "/images/sdgs/12-responsible-consumption.png"
   },
   {
-    "id": 13,
+    "id": "13",
     "type": "sdg",
     "name": "Climate action",
     "image": "/images/sdgs/13-climate-action.png"
   },
   {
-    "id": 14,
+    "id": "14",
     "type": "sdg",
     "name": "Life below water",
     "image": "/images/sdgs/14-life-below-water.png"
   },
   {
-    "id": 15,
+    "id": "15",
     "type": "sdg",
     "name": "Life on land",
     "image": "/images/sdgs/15-life-on-land.png"
   },
   {
-    "id": 16,
+    "id": "16",
     "type": "sdg",
     "name": "Peace, justice and strong institutions",
     "image": "/images/sdgs/16-peace-justice.png"
   },
   {
-    "id": 17,
+    "id": "17",
     "type": "sdg",
     "name": "Partnerships for the goals",
     "image": "/images/sdgs/17-partnership.png"
