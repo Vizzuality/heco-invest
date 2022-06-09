@@ -40,11 +40,15 @@ module.exports = {
         900: '#1D1D1B',
       },
       green: {
-        light: '#E7E7CA',
+        light: '#CFD762',
+        lighter: '#E7E7CA',
         dark: '#316146',
       },
       beige: '#E3DED6',
-      red: colors.red,
+      red: {
+        ...colors.red,
+        dark: '#BF3300'
+      },
       orange: '#F4A064',
       black: '#000000',
       white: '#FFFFFF',

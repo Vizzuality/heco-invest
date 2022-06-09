@@ -33,7 +33,7 @@
         <td><%= investor.account.users_count %></td>
         <td><%= investor.open_calls_count %></td>
         <td><%= investor.language %></td>
-        <td><%= investor.account.review_status %></td>
+        <td><%= status_tag investor.account.review_status, ReviewStatus.new(slug: investor.account.review_status).name %></td>
         <td>
           <%= button_to t("backoffice.common.approve"), approve_backoffice_account_path(investor.account.id), class: "link-button", method: :post unless investor.account.approved? %>
           <%= button_to t("backoffice.common.reject"), reject_backoffice_account_path(investor.account.id), class: "link-button", method: :post unless investor.account.rejected? %>

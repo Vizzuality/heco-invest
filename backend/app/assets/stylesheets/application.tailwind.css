@@ -12,11 +12,11 @@
   }
 
   .button-primary-green {
-    @apply bg-green-dark text-white hover:text-green-light focus-visible:outline-green-dark
+    @apply bg-green-dark text-white hover:text-green-lighter focus-visible:outline-green-dark
   }
 
   .button-secondary-green {
-    @apply bg-green-light/0 border border-green-dark text-green-dark hover:bg-green-light focus-visible:outline-green-dark
+    @apply bg-green-lighter/0 border border-green-dark text-green-dark hover:bg-green-light focus-visible:outline-green-dark
   }
 
   .backoffice-table {
@@ -64,7 +64,7 @@
   }
 
   .alert-success {
-    @apply bg-green-light
+    @apply bg-green-lighter
   }
 
   .alert-danger {

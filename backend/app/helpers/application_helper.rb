@@ -3,6 +3,9 @@ module ApplicationHelper
   include Ransack::Helpers::FormHelper
 
   STATUS_TAG_CLASSES = {
+    "unapproved" => "text-gray-800 bg-gray-800/20",
+    "approved" => "text-green-dark bg-green-light/20",
+    "rejected" => "text-red-dark bg-red-dark/20",
     "unverified" => "text-gray-800 bg-gray-800/20",
     "verified" => "text-green-dark bg-green-light/20"
   }
@@ -49,7 +52,7 @@ module ApplicationHelper
     content_tag(
       :span,
       text,
-      class: "text-sm font-sans px-2 py-0.5 rounded-full #{STATUS_TAG_CLASSES[key.to_s]}"
+      class: "text-sm font-sans px-2 py-1 rounded-full #{STATUS_TAG_CLASSES[key.to_s]}"
     )
   end
 end
