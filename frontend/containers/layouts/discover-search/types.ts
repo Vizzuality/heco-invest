@@ -5,6 +5,8 @@ export type DiscoverSearchProps = {
   searchText?: string;
   /** Callback for when a search is submitted */
   onSearch?: (searchText: string) => void;
+  /** Callback for when the search text changes */
+  onSearchChange?: (searchText: string) => void;
   /** Filters as children */
   children?: JSX.Element;
   /** Number of filters applied */

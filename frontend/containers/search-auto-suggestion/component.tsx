@@ -32,7 +32,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
       const { category, ticket_size, instrument_type, impact, sdg } = data;
       return [category, ticket_size, instrument_type, impact, sdg].flat();
     }
-  }, [data, isLoading]);
+  }, [isLoading]);
 
   const closeSuggestions = useCallback(() => {
     onChangeOpenSuggestion(false);
@@ -41,8 +41,6 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
 
   useEffect(() => {
     if (searchText.length > 1) {
-      console.log('filter');
-
       const filtersToSuggest = filters
         ?.filter(({ name }) => name.toLowerCase().includes(searchText.toLowerCase()))
         .sort((a) => {
@@ -80,6 +78,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
         shallow: true,
       }
     );
+    closeSuggestions();
   };
 
   const handleSearch = () => {

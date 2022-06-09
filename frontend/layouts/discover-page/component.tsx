@@ -150,6 +150,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   const discoverSearchProps: DiscoverSearchProps = {
     searchText: searchInputValue,
     onSearch: handleSearch,
+    onSearchChange: setSearchInputValue,
     filtersQuantity: getFiltersQuantity(),
   };
 
