@@ -113,8 +113,10 @@ export type ProjectForm = ProjectBase & {
 
 /** Project images for creation/edition */
 export type ProjectImagesAttributes = {
-  file?: File | string;
+  file?: string;
   cover: boolean;
+  id?: string;
+  _destroy?: boolean;
 };
 
 /** Project creation/edition payload */

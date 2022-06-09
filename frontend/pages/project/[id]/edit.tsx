@@ -85,19 +85,19 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
 
   const projectFormKeys = formPageInputs.flat();
 
-  const getDefaultValues = (): Partial<ProjectForm> => {
+  const getDefaultValues = useCallback((): Partial<ProjectForm> => {
     const general = pickBy(project, (value, key: any) => projectFormKeys.includes(key));
     return {
       ...general,
       municipality_id: project.municipality?.id,
       department_id: project.municipality.parent.id,
       country_id: project.country?.id,
-      project_images_attributes: project.project_images?.map(({ cover, file }, index) => {
+      project_images_attributes: project.project_images?.map(({ cover, file, id }, index) => {
         const imageId = file.original.split('redirect/')[1].split('/')[0];
         return {
           file: imageId,
           cover,
-          id: imageId,
+          id,
           title: formatMessage(
             { defaultMessage: 'Project image {index}.', id: 'jj4ae3' },
             { index: index }
@@ -109,7 +109,8 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
       involved_project_developer_ids: project.involved_project_developers.map(({ id }) => id),
       involved_project_developer_not_listed: project.involved_project_developer_not_listed,
     };
-  };
+  }, [formatMessage, project, projectFormKeys]);
+
   const defaultValues = getDefaultValues();
 
   const {
@@ -132,18 +133,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
 
   const handleCreate = useCallback(
     (formData: ProjectUpdatePayload) => {
-      const data: ProjectUpdatePayload = {
-        ...formData,
-        // Endpoint only expects `file` and `cover`. If for instance an `id` is passed, it'll
-        // return an error. However, the frontend needs extra properties such as the `id` during
-        // the form creation, so we're cleaning up the form data before POST'ing it to the endpoint.
-        project_images_attributes: formData.project_images_attributes?.map(({ file, cover }) => ({
-          file,
-          cover,
-        })),
-      };
-
-      return updateProject.mutate(data, {
+      return updateProject.mutate(formData, {
         onError: (error) => {
           const { errorPages, fieldErrors } = getServiceErrors<ProjectForm>(error, formPageInputs);
           fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
@@ -171,8 +161,15 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
       } = values;
 
       // set image_attributes cover from the project_images_attributes_cover value
-      const project_images_attributes: any = values.project_images_attributes.map(({ file }) =>
-        file === project_images_attributes_cover ? { file, cover: true } : { file, cover: false }
+      const project_images_attributes: any = values.project_images_attributes.map(
+        ({ file, id, _destroy }) => {
+          // If is an old image, send the image id, if is a new one, send the image file (direct-upload signed_id)
+          if (id) {
+            return { file, id, cover: file === project_images_attributes_cover, _destroy };
+          } else {
+            return { file, cover: file === project_images_attributes_cover };
+          }
+        }
       );
       // set involved_project_developer_not_listed to true if not listed is selected and removes this value from the involved_project_developer_ids
       const involved_project_developer_not_listed =

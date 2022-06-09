@@ -27,7 +27,7 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
 }: ProjectGalleryImageProps<FormValues>) => {
   const [invalid, setInvalid] = useState<boolean>(invalidProp);
   const { isFocusVisible, focusProps } = useFocusRing();
-  const { id, title, src } = image;
+  const { file, title, src } = image;
   const { formatMessage } = useIntl();
 
   useEffect(() => {
@@ -60,10 +60,10 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
           <input
             {...field}
             name={name}
-            id={id}
+            id={file}
             type="radio"
             className="sr-only peer"
-            value={id}
+            value={file}
             onInvalid={() => setInvalid(true)}
             checked={defaultSelected}
             {...focusProps}
@@ -75,7 +75,7 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
       />
       <label
         id="select-cover-input"
-        htmlFor={id}
+        htmlFor={file}
         className="overflow-hidden rounded cursor-pointer"
       >
         <span className="sr-only">{image.title}</span>

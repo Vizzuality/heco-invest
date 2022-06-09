@@ -55,11 +55,12 @@ const GeneralInformation = ({
 
   useEffect(() => {
     const defaultImages = getValues('project_images_attributes');
+    console.log(defaultImages);
     setImages(defaultImages || []);
 
     setCoverImage(
       getValues('project_images_attributes_cover') || defaultImages?.length
-        ? defaultImages[0]?.id
+        ? defaultImages[0]?.file
         : undefined
     );
 
@@ -108,9 +109,8 @@ const GeneralInformation = ({
 
   const handleUploadImages = (newUploadedImages: ProjectImageGallery[]) => {
     // current project_images_attributes input value
-    console.log(coverImage);
     if (!coverImage && newUploadedImages[0]) {
-      setValue('project_images_attributes_cover', newUploadedImages[0].id);
+      setValue('project_images_attributes_cover', newUploadedImages[0].file);
       setCoverImage(newUploadedImages[0].id);
     }
     setValue('project_images_attributes', [...images, ...newUploadedImages]);
@@ -124,13 +124,16 @@ const GeneralInformation = ({
 
   const handleDeleteImage = (imageId: string) => {
     // Get the images and remove the deleted one
-    const filteredImageAttr = images?.filter(({ file }) => file !== imageId);
+    const imagesWithDeleted = images?.map((image) =>
+      image.file === imageId ? { ...image, _destroy: true } : image
+    );
     // Set images with the new images array
-    setValue('project_images_attributes', filteredImageAttr);
-    setImages(filteredImageAttr);
+    setValue('project_images_attributes', imagesWithDeleted);
+    setImages(imagesWithDeleted);
     // If the deleted image was the cover, set new cover to the first image left
     if (coverImage === imageId) {
-      const newCoverImage = filteredImageAttr.length ? filteredImageAttr[0].id : undefined;
+      const filteredImageAttr = imagesWithDeleted?.filter((image) => !image._destroy);
+      const newCoverImage = filteredImageAttr.length ? filteredImageAttr[0].file : undefined;
       handleSelectCover(newCoverImage);
     }
   };

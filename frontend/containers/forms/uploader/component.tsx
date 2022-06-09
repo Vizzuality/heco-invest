@@ -62,7 +62,7 @@ export const Uploader = <FormValues extends FieldValues>({
             try {
               const { signed_id, filename, direct_upload } = await directUpload(file);
               uploadedFiles.push({
-                id: signed_id,
+                id: undefined,
                 file: signed_id,
                 cover: false,
                 src: direct_upload?.url || URL.createObjectURL(file),

@@ -125,8 +125,11 @@ export default (page: number) => {
       municipality_id: string().required(messages.municipality_id),
       project_images_attributes: array()
         .ensure()
-        .of(object({ file: string(), cover: boolean() }))
-        .max(6, messages.project_images_attributes.max_length),
+        .test(
+          'have six or less valid images',
+          { message: messages.project_images_attributes.max_length },
+          (images) => images.filter((image) => !image._destroy).length <= 6
+        ),
       project_images_attributes_cover: string().nullable(),
       geometry: mixed().required(messages.geometry),
       involved_project_developer: number()

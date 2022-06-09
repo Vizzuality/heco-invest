@@ -20,25 +20,27 @@ export const ProjectGallery = <FormValues extends FieldValues>({
   const numImages = 6;
   // const images: ProjectGalleryImageType[] = getValues(name as unknown as Path<FormValues>);
 
+  const imagesToShow = images?.filter(({ _destroy }) => !_destroy) || [];
+
   const numPlaceholders = useMemo(
-    () => numImages - (images?.length || 0),
-    [images?.length, numImages]
+    () => numImages - (imagesToShow?.length || 0),
+    [imagesToShow?.length, numImages]
   );
 
   return (
     <div className={className}>
       <div className="grid flex-grow h-full grid-cols-3 auto-rows-fr gap-x-2 gap-y-4" role="group">
-        {images?.map((image) => {
+        {imagesToShow.map((image) => {
           return (
             <ProjectGalleryImage
-              key={image.id}
+              key={image.file}
               name={name}
               image={image}
               control={control}
               invalid={errors && errors[name]}
-              defaultSelected={image.id === defaultSelected}
-              onDeleteImage={() => onDeleteImage(image.id)}
-              onSelectCover={() => onSelectCover(image.id)}
+              defaultSelected={image.file === defaultSelected}
+              onDeleteImage={() => onDeleteImage(image.file)}
+              onSelectCover={() => onSelectCover(image.file)}
             />
           );
         })}

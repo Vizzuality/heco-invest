@@ -1,5 +1,7 @@
 import { Control, Path } from 'react-hook-form';
 
+import { ProjectImageGallery } from 'types/project';
+
 export type ProjectGalleryImageType = {
   /** Image ID */
   id: string;
@@ -13,7 +15,7 @@ export type ProjectGalleryImageProps<FormValues> = {
   /** Classes to apply to the container */
   className?: string;
   /** Image to display */
-  image: ProjectGalleryImageType;
+  image: ProjectImageGallery;
   /** Whether the image is the default checked one in the group. Defaults to `false` */
   defaultSelected?: boolean;
   /**
@@ -22,7 +24,7 @@ export type ProjectGalleryImageProps<FormValues> = {
    **/
   name?: Path<FormValues>;
   /** React Hook Form's control */
-  control: Control<FormValues>;
+  control: Control<any>;
   /** Whether the input is invalid. Defaults to `false`. */
   invalid?: boolean;
   /** handle remove an an image from images array */
