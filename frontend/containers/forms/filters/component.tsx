@@ -245,7 +245,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
 
                 <div className="flex flex-wrap gap-4">
                   <TagGroup
-                    name="sdgs"
+                    name="sdg"
                     type="radio"
                     clearErrors={clearErrors}
                     setValue={setValue}
