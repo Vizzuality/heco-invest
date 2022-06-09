@@ -51,13 +51,13 @@ RSpec.describe "Backoffice: Projects", type: :system do
     end
 
     context "when searching by ransack filter" do
-      context "when filtered by state" do
-        before { project.published! }
+      context "when filtered by trusted flag" do
+        before { project.update! trusted: true }
 
         it "returns records at correct state" do
           expect(page).to have_text(project.name)
           projects.each { |p| expect(page).to have_text(p.name) }
-          select t("enums.project_status.published.name"), from: :q_status_eq
+          select t("backoffice.common.verified"), from: :q_trusted_eq
           click_on t("backoffice.common.apply")
           expect(page).to have_text(project.name)
           projects.each { |p| expect(page).not_to have_text(p.name) }

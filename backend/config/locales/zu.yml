@@ -286,7 +286,7 @@ zu:
         name: Partnerships for the goals
     project_status:
       draft:
-        name: Unverified
+        name: Draft
       published:
         name: Published
       closed:
