@@ -1,9 +1,11 @@
+import { useMemo } from 'react';
+
 import { Path } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
-import { AxiosError } from 'axios';
+import { useRouter } from 'next/router';
 
-import { Impacts } from 'enums';
+import { AxiosError } from 'axios';
 
 import { ErrorResponse } from 'services/types';
 
@@ -58,6 +60,44 @@ export const bytesToMegabytes = (bytes: number): number => {
 
 /** Constant to define the default max allowed file size to upload */
 export const FILE_UPLOADER_MAX_SIZE = 5 * 1024 * 1024;
+
+/** Hook to get the query params of the discover pages */
+export const useQueryParams = (sortingState?: { sortBy: string; sortOrder: string }) => {
+  const { query } = useRouter();
+  return useMemo(() => {
+    const { page, search, sorting, ...filters } = query;
+    return {
+      page: parseInt(query.page as string) || 1,
+      search: (query.search as string) || '',
+      sorting:
+        // No need to decode URI component, next/router does it automatically
+        sorting
+          ? (sorting as string)
+          : sortingState?.sortBy
+          ? `${sortingState?.sortBy} ${sortingState?.sortOrder}`
+          : '',
+      ...filters,
+    };
+  }, [query, sortingState]);
+};
+
+/** Hook that returns the search queries on string format */
+export const useQueryString = () => {
+  const { query } = useRouter();
+  const queries = Object.entries(query);
+  if (queries.length) {
+    const queryString = new URLSearchParams();
+    queries.forEach(([key, value]) => {
+      let queryValue = value;
+      if (Array.isArray(value)) {
+        queryValue = value.join(',');
+      }
+      queryString.append(key, queryValue as string);
+    });
+    return `?${queryString}`;
+  }
+  return '';
+};
 
 export const getSocialMediaLinksRegex = () => {
   const getRegex = (media: string) => new RegExp(`^https?:\/\/(www.)?${media}.com\/.*$`);

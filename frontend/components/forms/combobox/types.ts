@@ -1,4 +1,11 @@
-import { Path, Control, RegisterOptions, FieldPath, UseControllerProps } from 'react-hook-form';
+import {
+  Path,
+  Control,
+  RegisterOptions,
+  FieldPath,
+  UseControllerProps,
+  UseFormResetField,
+} from 'react-hook-form';
 
 import type { ComboBoxProps } from '@react-types/combobox';
 

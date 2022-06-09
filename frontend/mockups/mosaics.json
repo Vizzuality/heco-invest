@@ -1,5 +1,0 @@
-[
-  { "type": "mosaic", "attributes": { "name": "Heart of Amazonia" }, "id": "heart" },
-  { "type": "mosaic", "attributes": { "name": "Andean Amazonian Piedmont" }, "id": "andean" },
-  { "type": "mosaic", "attributes": { "name": "Orinoquía transition" }, "id": "orinoquia" }
-]

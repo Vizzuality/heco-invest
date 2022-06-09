@@ -43,7 +43,8 @@
         "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszTmpZME5tUTJZeTAwTjJWakxUUXdaR0V0WVdOaVlpMWxPREUwWmpsaVpEaGlOR1VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f8653bf0819b4c5896289095e56660319b1e07d1/test"
       },
       "mission": "Mission",
-      "prioritized_projects_description": "What type of projects are you prioritizing?"
+      "prioritized_projects_description": "What type of projects are you prioritizing?",
+      "favourite": false
     },
     "relationships": {
       "owner": {

@@ -17,6 +17,14 @@ RSpec.describe "Backoffice: Investors", type: :system do
     before { visit "/backoffice/investors" }
 
     it_behaves_like "with table pagination"
+    it_behaves_like "with table sorting", columns: [
+      I18n.t("backoffice.common.name"),
+      I18n.t("backoffice.common.account_owner"),
+      I18n.t("backoffice.common.account_users"),
+      I18n.t("backoffice.investors.index.open_calls"),
+      I18n.t("backoffice.common.language"),
+      I18n.t("backoffice.common.status")
+    ]
 
     it "shows investors list" do
       within_row("Super Investor Enterprise") do
@@ -52,6 +60,17 @@ RSpec.describe "Backoffice: Investors", type: :system do
           }.to have_enqueued_mail(UserMailer, :rejected).with(approved_investor_owner).once
           expect(page).to have_text("rejected")
         end
+      end
+    end
+
+    context "when searching" do
+      it "shows only found investors" do
+        expect(page).to have_text("Super Investor Enterprise")
+        expect(page).to have_text("Unapproved Investor Enterprise")
+        fill_in :filter_full_text, with: "Super Investor Enterprise"
+        find("form.simple_form.filter button").click
+        expect(page).to have_text("Super Investor Enterprise")
+        expect(page).not_to have_text("Unapproved Investor Enterprise")
       end
     end
   end

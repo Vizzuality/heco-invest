@@ -1,3 +1,6 @@
+import { PointFeature } from 'supercluster';
+import { string } from 'yup';
+
 import { ValidGeometryType } from 'containers/forms/geometry/types';
 import { ProjectGalleryImageType } from 'containers/forms/project-gallery/project-gallery-image/types';
 
@@ -16,6 +19,11 @@ export type ProjectImageType = {
 /** Common Project types */
 export type ProjectBase = {
   category: string;
+  country: {
+    id: string;
+    location_type: 'country';
+    name: string;
+  };
   description: string;
   development_stage: DevelopmentStages;
   estimated_duration_in_months: number;
@@ -39,6 +47,18 @@ export type ProjectBase = {
   target_groups: string[];
   ticket_size?: TicketSizes;
   language: Languages;
+  municipality: {
+    id: string;
+    location_type: 'municipality';
+    name: string;
+    parent: {
+      id: string;
+      location_type: 'depatment';
+      name: string;
+    };
+  };
+  project_images: ProjectImageType[];
+  trusted?: boolean;
   project_developer?: any; // Cannot use ProjectDeveloperType because linting will complain about circular references
   involved_project_developers?: any[]; // Cannot use ProjectDeveloperType because linting will complain about circular references
 };
@@ -105,3 +125,39 @@ export type ProjectCreationPayload = Omit<
 };
 
 export type ProjectImageGallery = ProjectImagesAttributes & ProjectGalleryImageType;
+
+export type ProjectsMapGeojson = {
+  type: 'FeatureCollection';
+  features: {
+    type: 'Feature';
+    id: string;
+    geometry: {
+      type: 'Point';
+      coordinates: number[];
+    };
+    properties: {
+      id: string;
+      type: string;
+      trusted: boolean;
+      category: string;
+    };
+  }[];
+};
+
+export type ProjectsMap = {
+  id: string;
+  type: string;
+  trusted: boolean;
+  category: string;
+  latitude: number;
+  longitude: number;
+};
+
+export type ProjectMapParams = {
+  'filter[category]'?: string;
+  'filter[sdg]'?: number;
+  'filter[instrument_type]'?: string;
+  'filter[ticket_size]'?: string;
+  'filter[only_verified]'?: string;
+  'filter[full_text]'?: string;
+};

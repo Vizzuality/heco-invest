@@ -17,6 +17,7 @@ export const TagGroup = <FormValues extends FieldValues>({
   clearErrors,
   setValue,
   setValueOptions = { shouldDirty: true },
+  isFilterTag = false,
 }: TagGroupProps<FormValues>) => {
   const numChildren = useMemo(() => Children.count(children), [children]);
 
@@ -61,7 +62,9 @@ export const TagGroup = <FormValues extends FieldValues>({
       })}
     >
       <div role="group">
-        <div className="flex flex-wrap gap-4">{tags}</div>
+        <div className={cx('flex flex-wrap', { 'gap-2': isFilterTag, 'gap-4': !isFilterTag })}>
+          {tags}
+        </div>
       </div>
 
       {showSelectAllButton && (

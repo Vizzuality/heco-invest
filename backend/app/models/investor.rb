@@ -4,6 +4,7 @@ class Investor < ApplicationRecord
   include Searchable
 
   has_many :open_calls, dependent: :destroy
+  has_many :favourite_investors, dependent: :destroy
 
   validates :categories, array_inclusion: {in: Category::TYPES}
   validates :instrument_types, array_inclusion: {in: InstrumentType::TYPES}, presence: true

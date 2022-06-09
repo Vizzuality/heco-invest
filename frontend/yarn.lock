@@ -8504,6 +8504,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/supercluster@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@types/supercluster@npm:7.1.0"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: 029aba15871ac16855c8813bde35ca773f20996448647567b62f103f58a5979d852fb79066d895cb642913d28cb72ebbed6149bcca8c7f4b8b162062998fd640
+  languageName: node
+  linkType: hard
+
 "@types/tapable@npm:^1, @types/tapable@npm:^1.0.5":
   version: 1.0.8
   resolution: "@types/tapable@npm:1.0.8"
@@ -14367,6 +14376,7 @@ __metadata:
     "@types/rails__activestorage": ^7.0.1
     "@types/react": ^17.0.5
     "@types/react-vis": ^1.11.11
+    "@types/supercluster": ^7.1.0
     "@typescript-eslint/eslint-plugin": ^5.10.1
     "@typescript-eslint/parser": ^5.10.1
     "@vizzuality/layer-manager-layers-deckgl": ^1.0.0-alpha.3
@@ -14416,9 +14426,10 @@ __metadata:
     rooks: ^5.10.0
     sharp: ^0.30.1
     slugify: ^1.6.5
-    storybook-addon-mock: ^2.3.2
+    storybook-addon-mock: ^2.4.1
     storybook-addon-next: ^1.6.2
     storybook-react-intl: ^1.0.5
+    supercluster: ^7.1.5
     tailwindcss: ^3.0.23
     typescript: ^4.5.5
     url-search-params-polyfill: ^8.1.1
@@ -21190,9 +21201,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook-addon-mock@npm:^2.3.2":
-  version: 2.3.2
-  resolution: "storybook-addon-mock@npm:2.3.2"
+"storybook-addon-mock@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "storybook-addon-mock@npm:2.4.1"
   dependencies:
     "@storybook/addons": ^6.2.9
     "@storybook/api": ^6.2.9
@@ -21203,7 +21214,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: ea9abe7409b6a878235127686f382353876d28b6240a1351245726b4c20277417f27b9a768b5eadfb93b7a62d0b36108c11327686b84206e6f5c51a21d5d7408
+  checksum: 7a8c4e6c2fada845f4c56f6f848bf0dfb7f9ab4375fb443dab064b4ed883356e12547f9a5174cefbae8a8b8809f3934c23ff72018a0293c8bcec453357b16d32
   languageName: node
   linkType: hard
 
@@ -21575,6 +21586,15 @@ __metadata:
   dependencies:
     kdbush: ^3.0.0
   checksum: ebecd1965ea92a8be5ce80fdeb40d29ea80a633d1457b8b392cd6884663c6c136a432f3fafd0af9f4f8578c591cf7a6d020c86c7830b0ca8dac15fe280c3b2c4
+  languageName: node
+  linkType: hard
+
+"supercluster@npm:^7.1.5":
+  version: 7.1.5
+  resolution: "supercluster@npm:7.1.5"
+  dependencies:
+    kdbush: ^3.0.0
+  checksum: 69863238870093b96617135884721b6343746e14f396b2d67d6b55c52c362ec0516c5e386aa21815e75a9cef2054e831ac34023d0d8b600091d28cea0794f027
   languageName: node
   linkType: hard
 

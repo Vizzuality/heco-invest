@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_26_092240) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_03_080408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_092240) do
     t.integer "review_status", default: 0, null: false
     t.datetime "reviewed_at"
     t.text "review_message"
+    t.integer "users_count", default: 0, null: false
     t.index ["name"], name: "index_accounts_on_name", unique: true
     t.index ["owner_id"], name: "index_accounts_on_owner_id"
     t.index ["slug"], name: "index_accounts_on_slug", unique: true
@@ -94,6 +95,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_092240) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "favourite_investors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "investor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["investor_id"], name: "index_favourite_investors_on_investor_id"
+    t.index ["user_id", "investor_id"], name: "index_favourite_investors_on_user_id_and_investor_id", unique: true
+    t.index ["user_id"], name: "index_favourite_investors_on_user_id"
+  end
+
   create_table "favourite_project_developers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "project_developer_id", null: false
@@ -146,6 +157,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_092240) do
     t.string "prioritized_projects_description_en"
     t.string "prioritized_projects_description_es"
     t.string "prioritized_projects_description_pt"
+    t.integer "open_calls_count", default: 0, null: false
     t.index ["account_id"], name: "index_investors_on_account_id"
   end
 
@@ -226,6 +238,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_092240) do
     t.datetime "updated_at", null: false
     t.string "entity_legal_registration_number", null: false
     t.string "mosaics", array: true
+    t.integer "projects_count", default: 0, null: false
     t.index ["account_id"], name: "index_project_developers_on_account_id"
   end
 
@@ -363,6 +376,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_092240) do
   add_foreign_key "accounts", "users", column: "owner_id", on_delete: :cascade
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favourite_investors", "investors", on_delete: :cascade
+  add_foreign_key "favourite_investors", "users", on_delete: :cascade
   add_foreign_key "favourite_project_developers", "project_developers", on_delete: :cascade
   add_foreign_key "favourite_project_developers", "users", on_delete: :cascade
   add_foreign_key "favourite_projects", "projects", on_delete: :cascade

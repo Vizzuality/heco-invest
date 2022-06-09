@@ -13,6 +13,14 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
     before { visit "/backoffice/project_developers" }
 
     it_behaves_like "with table pagination"
+    it_behaves_like "with table sorting", columns: [
+      I18n.t("backoffice.common.name"),
+      I18n.t("backoffice.common.account_owner"),
+      I18n.t("backoffice.common.account_users"),
+      I18n.t("backoffice.project_developers.index.projects"),
+      I18n.t("backoffice.common.language"),
+      I18n.t("backoffice.common.status")
+    ]
 
     it "shows project developers list" do
       within_row("Super PD Enterprise") do
@@ -48,6 +56,17 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
           }.to have_enqueued_mail(UserMailer, :rejected).with(approved_pd_owner).once
           expect(page).to have_text("rejected")
         end
+      end
+    end
+
+    context "when searching" do
+      it "shows only found project developers" do
+        expect(page).to have_text("Super PD Enterprise")
+        expect(page).to have_text("Unapproved PD Enterprise")
+        fill_in :filter_full_text, with: "Super PD Enterprise"
+        find("form.simple_form.filter button").click
+        expect(page).to have_text("Super PD Enterprise")
+        expect(page).not_to have_text("Unapproved PD Enterprise")
       end
     end
   end

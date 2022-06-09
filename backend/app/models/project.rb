@@ -5,7 +5,7 @@ class Project < ApplicationRecord
 
   friendly_id :project_developer_prefixed_name, use: :slugged
 
-  belongs_to :project_developer
+  belongs_to :project_developer, counter_cache: true
 
   belongs_to :country, class_name: "Location"
   belongs_to :municipality, class_name: "Location"
@@ -69,6 +69,10 @@ class Project < ApplicationRecord
   after_save :calculate_impacts, if: -> { saved_change_to_geometry? || saved_change_to_impact_areas? }
 
   accepts_nested_attributes_for :project_images, reject_if: :all_blank, allow_destroy: true
+
+  ransacker :category_index do
+    Arel.sql(Category.select_index_sql)
+  end
 
   def project_developer_prefixed_name
     "#{project_developer&.name} #{original_name}"

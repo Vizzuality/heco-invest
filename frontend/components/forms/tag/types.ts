@@ -24,6 +24,8 @@ export type TagProps<FormValues> = {
   registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
   /** Classes to apply to the container */
   className?: string;
+  /** If is a discover page filter tag. Default to `false` */
+  isfilterTag?: boolean;
   /** Whether the input is invalid. Defaults to `false`. */
   invalid?: boolean;
   /** label className change to flex for labels with rows */

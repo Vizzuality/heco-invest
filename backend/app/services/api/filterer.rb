@@ -7,16 +7,20 @@ module API
       ProjectDeveloper => :account,
       Investor => :account
     }
+    NUMERICAL_FILTERS = %i[municipality_biodiversity_impact municipality_climate_impact municipality_water_impact municipality_community_impact]
     ENUM_FILTERS = %i[category impact sdg instrument_type ticket_size]
 
     def initialize(query, filters, language: I18n.locale)
       @query = query
       @filters = filters
       @language = language
+
+      expand_filters
     end
 
     def call
       apply_full_text_filter
+      apply_numerical_filter
       filter_by_enums
       filter_by_only_verified
       query
@@ -24,13 +28,24 @@ module API
 
     private
 
+    def expand_filters
+      filters[:impact].to_s.split(",").each { |i| filters["municipality_#{i}_impact"] = 0 }
+    end
+
     def apply_full_text_filter
       return query if filters[:full_text].blank?
 
-      extra_ids = Array.wrap(FULL_TEXT_EXTRA_TABLES[query.klass]).map do |relation|
-        full_text_record_ids_for relation.to_s.classify.constantize, attr: "#{relation}_id"
-      end.flatten
-      self.query = query.where(id: extra_ids + full_text_record_ids_for(query.klass))
+      associated_columns = Array.wrap(FULL_TEXT_EXTRA_TABLES[query.klass]).each_with_object({}) do |relation, res|
+        res[relation] = localized_columns_for relation.to_s.classify.constantize
+      end
+      self.query = query.where id: query.dynamic_search(localized_columns_for(query.klass), filters[:full_text], associated_columns).pluck(:id)
+    end
+
+    def apply_numerical_filter
+      sql_fragments = filters.slice(*NUMERICAL_FILTERS.map(&:to_s)).slice(*column_names).map do |filter_key, filter_value|
+        ActiveRecord::Base.sanitize_sql ["#{filter_key} > ?", filter_value]
+      end
+      self.query = query.where sql_fragments.join(" OR ") if sql_fragments.present?
     end
 
     def filter_by_enums
@@ -46,12 +61,9 @@ module API
       self.query = query.where trusted: true
     end
 
-    def full_text_record_ids_for(klass, attr: "id")
+    def localized_columns_for(klass)
       columns = (klass.translatable_attributes & FULL_TEXT_FILTERS).map { |key| "#{key}_#{language}" }
-      columns = (columns + FULL_TEXT_FILTERS.map(&:to_s)) & klass.column_names
-      return [] if columns.blank?
-
-      query.klass.where(attr => klass.dynamic_search(columns, filters[:full_text]).pluck(:id)).pluck(:id)
+      (columns + FULL_TEXT_FILTERS.map(&:to_s)) & klass.column_names
     end
 
     def pluralize(hash)
