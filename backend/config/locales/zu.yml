@@ -35,6 +35,8 @@ zu:
       status: Status
       approve: Approve
       reject: Reject
+      contact_email: Email
+      contact_phone: Phone
       project_name: Project name
       project_developer: Project developer
       category: Category

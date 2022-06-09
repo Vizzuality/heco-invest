@@ -10,6 +10,12 @@
         <%= sort_link @q, :account_owner_full_name, t("backoffice.common.account_owner") %>
       </th>
       <th>
+        <%= sort_link @q, :account_contact_email, t("backoffice.common.contact_email") %>
+      </th>
+      <th>
+        <%= sort_link @q, :account_contact_phone, t("backoffice.common.contact_phone") %>
+      </th>
+      <th>
         <%= sort_link @q, :account_users_count, t("backoffice.common.account_users") %>
       </th>
       <th>
@@ -30,6 +36,8 @@
       <tr>
         <td><%= investor.name %></td>
         <td><%= investor.account.owner.full_name %></td>
+        <td><%= investor.contact_email %></td>
+        <td><%= investor.contact_phone %></td>
         <td><%= investor.account.users_count %></td>
         <td><%= investor.open_calls_count %></td>
         <td><%= investor.language %></td>

@@ -20,6 +20,8 @@ RSpec.describe "Backoffice: Investors", type: :system do
     it_behaves_like "with table sorting", columns: [
       I18n.t("backoffice.common.name"),
       I18n.t("backoffice.common.account_owner"),
+      I18n.t("backoffice.common.contact_email"),
+      I18n.t("backoffice.common.contact_phone"),
       I18n.t("backoffice.common.account_users"),
       I18n.t("backoffice.investors.index.open_calls"),
       I18n.t("backoffice.common.language"),
@@ -30,6 +32,8 @@ RSpec.describe "Backoffice: Investors", type: :system do
       within_row("Super Investor Enterprise") do
         expect(page).to have_text("Tom Higgs")
         expect(page).to have_text(ReviewStatus.find("approved").name)
+        expect(page).to have_text(approved_investor.contact_email)
+        expect(page).to have_text(approved_investor.contact_phone)
       end
       within_row("Unapproved Investor Enterprise") do
         expect(page).to have_text("John Levis")
