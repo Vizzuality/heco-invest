@@ -74,7 +74,7 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
   return (
     <section>
       <LayoutContainer className="mb-20 mt-36">
-        <h2 className="pl-6 mb-6 font-serif text-2xl text-black lg:text-3xl lg:pl-16">
+        <h2 className="pl-6 mb-6 font-serif text-2xl text-black lg:text-4xl lg:pl-16 lg:mb-16">
           <FormattedMessage defaultMessage="Funding &amp; development" id="psXhQO" />
         </h2>
         <div className="flex flex-col p-6 text-white lg:p-16 lg:space-x-10 lg:flex-row bg-green-dark rounded-2xl">

@@ -22,13 +22,13 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
     <section className="bg-background-middle py-18">
       <LayoutContainer className="flex flex-col lg:flex-row space-y-28 lg:space-y-0 lg:space-x-28">
         <div className="flex flex-col pl-6 space-y-1 lg:pl-16">
-          <h2 className="font-serif text-2xl text-black lg:text-3xl">
+          <h2 className="font-serif text-2xl text-black lg:text-4xl lg:mb-4">
             <FormattedMessage defaultMessage="Project Developers" id="+K9fF0" />
           </h2>
           <p className="text-gray-800">
             <FormattedMessage
-              defaultMessage="This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}"
-              id="bmLThI"
+              defaultMessage="This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}."
+              id="MM4RqT"
               values={{
                 numDevelopers: allDevelopers.length,
               }}

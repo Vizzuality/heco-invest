@@ -230,6 +230,9 @@
   "8rIwwr": {
     "string": "Expected Impact"
   },
+  "8xsdU1": {
+    "string": "This project isn’t currently looking for funding at this moment."
+  },
   "9+Ddtu": {
     "string": "Next"
   },
@@ -519,6 +522,9 @@
   "KvhWhT": {
     "string": "The <span>IDB Lab</span>, the <span>Paulson Institute</span> and the <span>World Wildlife Fund</span> are working together to develop a digital platform that connects governments, investors, donors, and philanthropists with carefully identified investment opportunities in <span>high priority locations</span> identified by programs such as Herencia Colombia (HeCo)."
   },
+  "Ll72W/": {
+    "string": "Currently not looking for funding"
+  },
   "LmHPHR": {
     "string": "Select the topics/sector categories that you work on"
   },
@@ -539,6 +545,9 @@
   },
   "MHwpc4": {
     "string": "Draw or upload your location"
+  },
+  "MM4RqT": {
+    "string": "This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}."
   },
   "MXykbb": {
     "string": "The problem we are solving"
@@ -869,9 +878,6 @@
   },
   "bjubNC": {
     "string": "Add your logo or a picture that indentifies the account."
-  },
-  "bmLThI": {
-    "string": "This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}"
   },
   "btdgGc": {
     "string": "<a>Browse the open calls</a> posted by our investor community to identify new areas for project development."
