@@ -8,6 +8,7 @@ import cx from 'classnames';
 import { noop } from 'lodash-es';
 
 import Filters from 'containers/forms/filters';
+import SearchAutoSuggestion from 'containers/search-auto-suggestion';
 
 import Button from 'components/button';
 import Icon from 'components/icon';
@@ -23,6 +24,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
 }: DiscoverSearchProps) => {
   const [searchText, setSearchText] = useState<string>(searchTextProp);
   const [openFilters, setOpenFilters] = useState(false);
+  const [openSuggestions, setOpenSuggestions] = useState(false);
 
   useEffect(() => {
     setSearchText(searchTextProp);
@@ -42,8 +44,8 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
     <div className={className}>
       <div
         className={cx('z-10 w-full sm:h-16 text-black bg-white border drop-shadow-xl', {
-          'rounded-full': !openFilters,
-          'rounded-t-4xl': openFilters,
+          'rounded-full': !openFilters && !openSuggestions,
+          'rounded-t-4xl': openFilters || openSuggestions,
         })}
       >
         <div className="flex items-center justify-between sm:gap-4 py-3 px-6">
@@ -114,6 +116,12 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
         >
           {openFilters && <Filters closeFilters={() => setOpenFilters(false)} />}
         </div>
+        {!openFilters && (
+          <SearchAutoSuggestion
+            onCangeOpenSuggestion={setOpenSuggestions}
+            searchText={searchText}
+          />
+        )}
       </div>
     </div>
   );

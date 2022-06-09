@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import { AxiosError } from 'axios';
 
 import { ErrorResponse } from 'services/types';
+import { EnumTypes } from 'enums';
 
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
 export function getServiceErrors<FormValues>(
@@ -106,5 +107,16 @@ export const getSocialMediaLinksRegex = () => {
     facebook: getRegex('facebook'),
     linkedin: getRegex('linkedin'),
     instagram: getRegex('instagram'),
+  };
+};
+
+export const useFilterNames = () => {
+  const { formatMessage } = useIntl();
+  return {
+    [EnumTypes.Category]: formatMessage({ defaultMessage: 'Category', id: 'ccXLVi' }),
+    [EnumTypes.Impact]: formatMessage({ defaultMessage: 'Impact', id: 'W2JBdp' }),
+    [EnumTypes.TicketSize]: formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
+    [EnumTypes.InstrumentType]: formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
+    [EnumTypes.SDGs]: formatMessage({ defaultMessage: 'SDGs', id: 'JQjEP9' }),
   };
 };

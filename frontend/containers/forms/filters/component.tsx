@@ -18,7 +18,6 @@ import TagGroup from 'components/forms/tag-group';
 import Icon from 'components/icon';
 import Loading from 'components/loading';
 import { EnumTypes } from 'enums';
-import sdg from 'mockups/sdgs.json';
 
 import { useEnums } from 'services/enums/enumService';
 
@@ -42,7 +41,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
   } = useForm<FilterForm>();
 
   const {
-    data: { category, ticket_size, instrument_type, impact },
+    data: { category, ticket_size, instrument_type, impact, sdg },
     isLoading,
   } = useEnums();
 
@@ -245,7 +244,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
 
                 <div className="flex flex-wrap gap-4">
                   <TagGroup
-                    name="sdgs"
+                    name="sdg"
                     type="radio"
                     clearErrors={clearErrors}
                     setValue={setValue}

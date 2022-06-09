@@ -26,11 +26,10 @@ export const useEnums = () => {
     [key in EnumTypes]: Enum[];
   };
 
-  return useMemo(
-    () => ({
+  return useMemo(() => {
+    return {
       ...query,
       data: enumsGroupedByTypes,
-    }),
-    [query, enumsGroupedByTypes]
-  );
+    };
+  }, []);
 };
