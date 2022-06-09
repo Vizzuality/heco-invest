@@ -56,6 +56,9 @@
   "0hzVw6": {
     "string": "How accounts work?"
   },
+  "0iaD3T": {
+    "string": "Total <span>{numProjects}</span> {numProjects, plural, one {project} other {projects}}"
+  },
   "0wBg9P": {
     "string": "Project developers"
   },
@@ -1061,6 +1064,9 @@
   },
   "in26xr": {
     "string": "{organization} logo"
+  },
+  "itfsqC": {
+    "string": "Currently you don’t have any <b>Projects</b>."
   },
   "j4lBL7": {
     "string": "Note: Some filters not apply to all tabs"
