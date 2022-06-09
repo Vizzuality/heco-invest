@@ -172,7 +172,7 @@ module "backend_cloudrun" {
     },
     {
       name  = "CLOUDTASKER_PROCESSOR_HOST"
-      value = "https://${var.domain}"
+      value = module.jobs_cloudrun.cloudrun_service_url
     },
     {
       name  = "CLOUDTASKER_PROCESSOR_PATH"
