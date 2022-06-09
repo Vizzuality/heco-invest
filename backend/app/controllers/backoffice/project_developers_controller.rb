@@ -8,7 +8,8 @@ module Backoffice
 
     def index
       @q = ProjectDeveloper.ransack params[:q]
-      @pagy_object, @project_developers = pagy @q.result.includes(account: [:owner]), pagy_defaults
+      @project_developers = API::Filterer.new(@q.result, {full_text: params.dig(:q, :filter_full_text)}).call
+      @pagy_object, @project_developers = pagy @project_developers.includes(account: [:owner]), pagy_defaults
     end
 
     def edit

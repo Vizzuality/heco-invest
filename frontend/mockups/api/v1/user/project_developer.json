@@ -1,0 +1,14 @@
+{
+  "data": {
+    "id": "bf77c5a8-3577-4fb7-be3c-63ec78233060",
+    "type": "user",
+    "attributes": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@vizzuality.com",
+      "role": "project_developer",
+      "confirmed": true,
+      "approved": true
+    }
+  }
+}

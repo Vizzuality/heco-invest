@@ -4,11 +4,13 @@ module Backoffice
 
     def approve
       @account.approved!
+      UserMailer.approved(@account.owner).deliver_later
       redirect_back(fallback_location: admin_root_path)
     end
 
     def reject
       @account.rejected!
+      UserMailer.rejected(@account.owner).deliver_later
       redirect_back(fallback_location: admin_root_path)
     end
 

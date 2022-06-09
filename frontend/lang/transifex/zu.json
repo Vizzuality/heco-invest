@@ -11,6 +11,9 @@
   "+vVZ/G": {
     "string": "Connect"
   },
+  "/4GN+O": {
+    "string": "Invite user"
+  },
   "/CaREm": {
     "string": "Pending approval"
   },
@@ -40,6 +43,9 @@
   },
   "0L/mZC": {
     "string": "Target group"
+  },
+  "0PnfDn": {
+    "string": "View public profile"
   },
   "0SKBlf": {
     "string": "Go to page {pageNumber}"
@@ -128,6 +134,9 @@
   "4vn+6A": {
     "string": "{inputName} is focused, type to refine list, press down to open the menu, press left to focus selected values"
   },
+  "50bxrQ": {
+    "string": "My favorites"
+  },
   "5GLwZF": {
     "string": "Select the account language in which you want to write the content of this account. This will avoid mixed content in the platform."
   },
@@ -160,6 +169,9 @@
   },
   "60xeYL": {
     "string": "Contribute to improving the production systems and livelihoods of local communities and indigenous people, to ensure their basic needs are met, while enhancing their adaptation to climate change."
+  },
+  "6EYInP": {
+    "string": "My open call applications"
   },
   "6MEtAZ": {
     "string": "Investor/Funder name"
@@ -208,6 +220,9 @@
   },
   "8MAKwj": {
     "string": "Sustainability of the project"
+  },
+  "8Qmt9j": {
+    "string": "My open calls"
   },
   "8R8Or7": {
     "string": "Search community"
@@ -329,6 +344,9 @@
   "Czc5vB": {
     "string": "Looking for funding"
   },
+  "CzsYIe": {
+    "string": "Account information"
+  },
   "D5RCKi": {
     "string": "Project name"
   },
@@ -337,6 +355,9 @@
   },
   "DCAMZh": {
     "string": "Choose the field to sort by"
+  },
+  "DIA26W": {
+    "string": "Create open call"
   },
   "DQoGRx": {
     "string": "About the impact"
@@ -537,9 +558,6 @@
   "MF4b8Z": {
     "string": "Use at least 12 characters, one uppercase letter, one lowercase letter and one number."
   },
-  "MFPJ9u": {
-    "string": "In the municipality the project has higher impact on <b>{impactOn}</b> and has an <b>impact score</b> of {score}."
-  },
   "MH3koz": {
     "string": "Previous slide"
   },
@@ -653,6 +671,9 @@
   },
   "RczAkW": {
     "string": "Report back"
+  },
+  "SMrXWc": {
+    "string": "Favorites"
   },
   "SNBzCW": {
     "string": "Tell us what how do you expect to grow your project , how will you measure progress and impact."
@@ -801,6 +822,9 @@
   "YB8bt5": {
     "string": "Expect to have impact on"
   },
+  "YDMrKK": {
+    "string": "Users"
+  },
   "YE6fVO": {
     "string": "{accountName} account"
   },
@@ -924,6 +948,9 @@
   "dZYyPC": {
     "string": "View {name} project details"
   },
+  "daUTdN": {
+    "string": "Open call applications"
+  },
   "dkNQOz": {
     "string": "Projects of all sizes"
   },
@@ -938,9 +965,6 @@
   },
   "eTuDrh": {
     "string": "This will help us measure the impact of your project"
-  },
-  "eVJMyI": {
-    "string": "In the {impactLocation} the the project has higher impact on Water and has an impact score of 30."
   },
   "eXDHt0": {
     "string": "Describe the project or solution and describe clearly why you consider it is innovative, different from others and how it can generate an important change and impact towards the target groups. Highlight the characteristics that may attract partners, clients, or investors."
@@ -1074,6 +1098,9 @@
   "l2HvdU": {
     "string": "Estimated duration for project in months"
   },
+  "lda5xz": {
+    "string": "My users"
+  },
   "lfvUqs": {
     "string": "Do you want to leave?"
   },
@@ -1154,6 +1181,9 @@
   },
   "puek63": {
     "string": "This information will help us understand what is the impact you want to have."
+  },
+  "qFZuSl": {
+    "string": "My projects"
   },
   "qIvPIE": {
     "string": "FAQ’s"
