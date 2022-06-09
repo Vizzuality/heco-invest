@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { useRouter } from 'next/router';
 
@@ -14,6 +14,7 @@ const Protected: React.FC<ProtectedProps> = ({
   permissions,
   ownership = {
     allowOwner: false,
+    getIsOwner: () => false,
   },
   allowConfirmed = false,
   children,
@@ -21,9 +22,13 @@ const Protected: React.FC<ProtectedProps> = ({
 }) => {
   const router = useRouter();
   const { user, isLoading, isError } = useMe();
-  const { projectDeveloper } = useCurrentProjectDeveloper(user);
-  const { investor } = useCurrentInvestor(user);
-  const userAccount = projectDeveloper || investor;
+  const projectDeveloper = useCurrentProjectDeveloper(user);
+  const investor = useCurrentInvestor(user);
+  const { data: userAccount, isLoading: userAccountIsLoading } = projectDeveloper || investor;
+  const isOwner = useMemo(
+    () => ownership?.getIsOwner(user, userAccount),
+    [ownership, user, userAccount]
+  );
 
   // Not display anything when me request is on progress
   if (isLoading) return null;
@@ -55,8 +60,7 @@ const Protected: React.FC<ProtectedProps> = ({
       return null;
     }
     // If the ownership of the entity is needed and the user don't have it
-    if (ownership?.allowOwner) {
-      const isOwner = ownership.getIsOwner(user, userAccount);
+    if (ownership?.allowOwner && !userAccountIsLoading) {
       if (!isOwner) {
         // Redirect to dashboard
         router.push(Paths.Dashboard);

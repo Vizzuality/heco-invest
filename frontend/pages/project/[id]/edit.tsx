@@ -28,15 +28,15 @@ import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
+import { Investor } from 'types/investor';
 import { Project as ProjectType, ProjectForm, ProjectUpdatePayload } from 'types/project';
+import { ProjectDeveloper } from 'types/projectDeveloper';
+import { User } from 'types/user';
 import useProjectValidation, { formPageInputs } from 'validations/project';
 
 import { useUpdateProject } from 'services/account';
 import { getEnums, useEnums } from 'services/enums/enumService';
 import { getProject } from 'services/projects/projectService';
-import { Investor } from 'types/investor';
-import { ProjectDeveloper } from 'types/projectDeveloper';
-import { User } from 'types/user';
 
 export const getServerSideProps = async ({ params: { id }, locale }) => {
   let project;
@@ -199,7 +199,11 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
 
   const getIsOwner = (user: User, userAccount: ProjectDeveloper | Investor) => {
     // The user must be a the creator of the project to be allowed to edit it.
-    return project.project_developer.id === userAccount.id;
+    return (
+      project?.project_developer?.id &&
+      userAccount?.id &&
+      project.project_developer.id === userAccount.id
+    );
   };
 
   return (
