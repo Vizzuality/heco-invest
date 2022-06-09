@@ -20,6 +20,7 @@ import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDevelo
 import API from 'services/api';
 import { ErrorResponse, ResponseData } from 'services/types';
 
+// Create PD
 const getProjectDeveloper = async (): Promise<ProjectDeveloper> => {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/project_developer`,
@@ -107,6 +108,8 @@ export function useCreateProject(): UseMutationResult<
     },
   });
 }
+
+// Create Investor
 
 const getInvestor = async (): Promise<Investor> => {
   const config: AxiosRequestConfig = {
