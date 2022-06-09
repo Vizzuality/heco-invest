@@ -144,7 +144,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               </>
             )}
             <div title={intl.formatMessage({ defaultMessage: 'Project category', id: '/plMvw' })}>
-              {category.name}
+              {category?.name}
             </div>
           </div>
           <div>
@@ -204,7 +204,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
         </div>
         <div>
           <div className="w-20 h-20 mx-auto aspect-square">
-            <ImpactChart compactMode={true} category={category.id} impact={impact} />
+            <ImpactChart compactMode={true} category={category?.id} impact={impact} />
           </div>
         </div>
       </div>

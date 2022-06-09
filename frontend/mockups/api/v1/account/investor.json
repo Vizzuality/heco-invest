@@ -1,0 +1,69 @@
+{
+  "data": {
+    "id": "7b74c5ac-74c0-427b-9d60-2ee3842d7a93",
+    "type": "investor",
+    "attributes": {
+      "name": "Investor test 1",
+      "slug": "investor-test-1",
+      "about": "About investor test 1.",
+      "website": "https://www.vizzuality.com/",
+      "instagram": "https://instagram.com/investorapprovedtest2",
+      "facebook": "https://facebook.com/investorapprovedtest1",
+      "linkedin": "https://linkedin.com/investorapprovedtest1",
+      "twitter": "https://twitter.com/investorapprovedtest1",
+      "mission": "Mission investor test 1.",
+      "prioritized_projects_description": "Projects for investor test1:\n- example 1\n- example 2\n- example 3\n- example 4\n- example 5\n",
+      "other_information": "Relevant information investor test 1. ",
+      "investor_type": "institutional-investor",
+      "categories": [
+        "sustainable-agrosystems",
+        "non-timber-forest-production",
+        "human-capital-and-inclusion"
+      ],
+      "ticket_sizes": [
+        "small-grants",
+        "prototyping",
+        "validation",
+        "scaling"
+      ],
+      "instrument_types": [
+        "grant",
+        "loan",
+        "equity"
+      ],
+      "impacts": [
+        "biodiversity",
+        "climate",
+        "water",
+        "community"
+      ],
+      "sdgs": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        14,
+        15
+      ],
+      "previously_invested": true,
+      "language": "en",
+      "review_status": "approved",
+      "contact_email": "susana.romao+investorapproved@vizzuality.com",
+      "contact_phone": "00321456321789",
+      "picture": {
+        "small": "https://staging.heco.vizzuality.com/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszTTJFME0ySTNaaTA0TnpNeUxUUTVZbVV0WVdNek9DMDRaR1EwTTJJelpHRTROV0lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--0e9d37316819d17ff1664f34cd2106d46cc667ca/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--613d7825484c0af8c1d8a1a35415c4b9a8d71667/4.png",
+        "medium": "https://staging.heco.vizzuality.com/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszTTJFME0ySTNaaTA0TnpNeUxUUTVZbVV0WVdNek9DMDRaR1EwTTJJelpHRTROV0lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--0e9d37316819d17ff1664f34cd2106d46cc667ca/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--4927c1153546553f05cc4ccb5cb2edeb2bebf0a9/4.png",
+        "original": "https://staging.heco.vizzuality.com/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszTTJFME0ySTNaaTA0TnpNeUxUUTVZbVV0WVdNek9DMDRaR1EwTTJJelpHRTROV0lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--0e9d37316819d17ff1664f34cd2106d46cc667ca/4.png"
+      }
+    },
+    "relationships": {
+      "owner": {
+        "data": {
+          "id": "8252bc0f-558c-4dfd-adbe-ab3cf7f947c0",
+          "type": "user"
+        }
+      }
+    }
+  }
+}

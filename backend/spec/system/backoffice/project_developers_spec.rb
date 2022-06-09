@@ -38,7 +38,9 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
         within_row("Unapproved PD Enterprise") do
           expect(page).to have_text("John Levis")
           expect(page).to have_text("unapproved")
-          click_on t("backoffice.common.approve")
+          expect {
+            click_on t("backoffice.common.approve")
+          }.to have_enqueued_mail(UserMailer, :approved).with(unapproved_pd_owner).once
           expect(page).to have_text("approved")
         end
       end
@@ -49,9 +51,33 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
         within_row("Super PD Enterprise") do
           expect(page).to have_text("Tom Higgs")
           expect(page).to have_text("approved")
-          click_on t("backoffice.common.reject")
+          expect {
+            click_on t("backoffice.common.reject")
+          }.to have_enqueued_mail(UserMailer, :rejected).with(approved_pd_owner).once
           expect(page).to have_text("rejected")
         end
+      end
+    end
+
+    context "when searching" do
+      it "shows only found project developers" do
+        expect(page).to have_text("Super PD Enterprise")
+        expect(page).to have_text("Unapproved PD Enterprise")
+        fill_in :q_filter_full_text, with: "Super PD Enterprise"
+        find("form.project_developer_search button").click
+        expect(page).to have_text("Super PD Enterprise")
+        expect(page).not_to have_text("Unapproved PD Enterprise")
+      end
+    end
+
+    context "when searching by ransack filter" do
+      it "returns records at correct state" do
+        expect(page).to have_text(approved_pd.name)
+        expect(page).to have_text(unapproved_pd.name)
+        select t("activerecord.attributes.account.review_statuses.approved"), from: :q_account_review_status_eq
+        click_on t("backoffice.common.apply")
+        expect(page).to have_text(approved_pd.name)
+        expect(page).not_to have_text(unapproved_pd.name)
       end
     end
   end
