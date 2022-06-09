@@ -4,10 +4,10 @@ RSpec.describe "Backoffice: Investors", type: :system do
   let(:admin) { create(:admin, email: "admin@example.com", password: "SuperSecret6", first_name: "Admin", last_name: "Example") }
   let(:approved_investor_owner) { create(:user, :investor, first_name: "Tom", last_name: "Higgs") }
   let(:unapproved_investor_owner) { create(:user, :investor, first_name: "John", last_name: "Levis") }
-  let!(:approved_pd) {
+  let!(:approved_investor) {
     create(:investor, account: build(:account, :approved, name: "Super Investor Enterprise", owner: approved_investor_owner))
   }
-  let!(:unapproved_pd) {
+  let!(:unapproved_investor) {
     create(:investor, account: build(:account, :unapproved, name: "Unapproved Investor Enterprise", owner: unapproved_investor_owner))
   }
 
@@ -42,7 +42,9 @@ RSpec.describe "Backoffice: Investors", type: :system do
         within_row("Unapproved Investor Enterprise") do
           expect(page).to have_text("John Levis")
           expect(page).to have_text("unapproved")
-          click_on t("backoffice.common.approve")
+          expect {
+            click_on t("backoffice.common.approve")
+          }.to have_enqueued_mail(UserMailer, :approved).with(unapproved_investor_owner).once
           expect(page).to have_text("approved")
         end
       end
@@ -53,7 +55,9 @@ RSpec.describe "Backoffice: Investors", type: :system do
         within_row("Super Investor Enterprise") do
           expect(page).to have_text("Tom Higgs")
           expect(page).to have_text("approved")
-          click_on t("backoffice.common.reject")
+          expect {
+            click_on t("backoffice.common.reject")
+          }.to have_enqueued_mail(UserMailer, :rejected).with(approved_investor_owner).once
           expect(page).to have_text("rejected")
         end
       end
@@ -63,10 +67,21 @@ RSpec.describe "Backoffice: Investors", type: :system do
       it "shows only found investors" do
         expect(page).to have_text("Super Investor Enterprise")
         expect(page).to have_text("Unapproved Investor Enterprise")
-        fill_in :filter_full_text, with: "Super Investor Enterprise"
-        find("form.simple_form.filter button").click
+        fill_in :q_filter_full_text, with: "Super Investor Enterprise"
+        find("form.investor_search button").click
         expect(page).to have_text("Super Investor Enterprise")
         expect(page).not_to have_text("Unapproved Investor Enterprise")
+      end
+    end
+
+    context "when searching by ransack filter" do
+      it "returns records at correct state" do
+        expect(page).to have_text(approved_investor.name)
+        expect(page).to have_text(unapproved_investor.name)
+        select t("activerecord.attributes.account.review_statuses.approved"), from: :q_account_review_status_eq
+        click_on t("backoffice.common.apply")
+        expect(page).to have_text(approved_investor.name)
+        expect(page).not_to have_text(unapproved_investor.name)
       end
     end
   end

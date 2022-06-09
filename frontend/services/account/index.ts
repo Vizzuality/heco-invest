@@ -1,6 +1,16 @@
-import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
+import { useMemo } from 'react';
+
+import {
+  useQuery,
+  useMutation,
+  UseMutationResult,
+  useQueryClient,
+  UseQueryResult,
+  UseQueryOptions,
+} from 'react-query';
 
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
+import { decycle } from 'cycle';
 
 import { Queries } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
@@ -9,6 +19,24 @@ import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDevelo
 
 import API from 'services/api';
 import { ErrorResponse, ResponseData } from 'services/types';
+
+const getProjectDeveloper = async (): Promise<ProjectDeveloper> => {
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/project_developer`,
+    method: 'GET',
+  };
+  return await API.request(config).then((response) => decycle(response.data.data));
+};
+
+export function useProjectDeveloper(
+  options: UseQueryOptions<ProjectDeveloper>
+): UseQueryResult<ProjectDeveloper> & { projectDeveloper: ProjectDeveloper } {
+  const query = useQuery([Queries.CurrentProjectDeveloper], () => getProjectDeveloper(), {
+    refetchOnWindowFocus: false,
+    ...options,
+  });
+  return useMemo(() => ({ ...query, projectDeveloper: query.data }), [query]);
+}
 
 const createProjectDeveloper = async (
   data: ProjectDeveloperSetupForm
@@ -63,6 +91,22 @@ export function useUpdateProject(): UseMutationResult<
   };
 
   return useMutation(updateProject);
+}
+
+const getInvestor = async (): Promise<Investor> => {
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/investor`,
+    method: 'GET',
+  };
+  return await API.request(config).then((response) => decycle(response.data.data));
+};
+
+export function useInvestor(options: UseQueryOptions<Investor>) {
+  const query = useQuery([Queries.CurrentInvestor], () => getInvestor(), {
+    refetchOnWindowFocus: false,
+    ...options,
+  });
+  return useMemo(() => ({ ...query, investor: query.data }), [query]);
 }
 
 export function useCreateInvestor(): UseMutationResult<
