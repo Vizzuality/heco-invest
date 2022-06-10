@@ -2,5 +2,6 @@
   <div class="text-gray-800">
     <span class="mr-1"><%= t("backoffice.common.total") %></span>
     <span class="font-semibold"><%= @pagy_object.count %></span>
+    <div class="text-xs text-center"><%= link_to t("backoffice.common.export_csv"), request.query_parameters.merge(format: :csv) %></div>
   </div>
 </div>

@@ -27,6 +27,7 @@ RSpec.describe "Backoffice: Investors", type: :system do
       I18n.t("backoffice.common.language"),
       I18n.t("backoffice.common.status")
     ]
+    it_behaves_like "with csv export", file_name: "investors.csv"
 
     it "shows investors list" do
       within_row("Super Investor Enterprise") do
