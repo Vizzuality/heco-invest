@@ -20,7 +20,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
   describe "Index" do
     before { visit "/backoffice/projects" }
 
-    it_behaves_like "with table pagination"
+    it_behaves_like "with table pagination", expected_total: 5
     it_behaves_like "with table sorting", columns: [
       I18n.t("backoffice.common.project_name"),
       I18n.t("backoffice.common.project_developer"),
