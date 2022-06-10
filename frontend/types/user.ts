@@ -35,8 +35,5 @@ export type UserAccount = {
 };
 
 export type UsersInvitationForm = {
-  emails: {
-    email: string;
-    split: (string) => void;
-  };
+  email: string;
 };

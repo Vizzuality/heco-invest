@@ -474,9 +474,6 @@
   "I2yxwP": {
     "string": "Why is my account pending approval?"
   },
-  "I7L4wz": {
-    "string": "This project has {numDevelopers} {noun}"
-  },
   "I9iCt5": {
     "string": "From which investor or funder? (optional)"
   },
@@ -569,6 +566,9 @@
   },
   "MHwpc4": {
     "string": "Draw or upload your location"
+  },
+  "MM4RqT": {
+    "string": "This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}."
   },
   "MXykbb": {
     "string": "The problem we are solving"
