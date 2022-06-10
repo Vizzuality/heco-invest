@@ -11,6 +11,6 @@ namespace :backoffice do
     end
   end
   resources :investors, only: [:index]
-  resources :project_developers, only: [:index]
+  resources :project_developers, only: [:index, :edit, :update]
   resources :projects, only: [:index]
 end

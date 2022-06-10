@@ -10,9 +10,9 @@ class ProjectDeveloper < ApplicationRecord
 
   validates :categories, array_inclusion: {in: Category::TYPES}, presence: true
   validates :impacts, array_inclusion: {in: Impact::TYPES}
-  validates :project_developer_type, inclusion: {in: ProjectDeveloperType::TYPES}
+  validates :project_developer_type, inclusion: {in: ProjectDeveloperType::TYPES, allow_blank: true}, presence: true
   validates :mosaics, array_inclusion: {in: Mosaic::TYPES}
-  validates :language, inclusion: {in: Language::TYPES}
+  validates :language, inclusion: {in: Language::TYPES, allow_blank: true}, presence: true
 
   validates_presence_of :mission, :entity_legal_registration_number
 

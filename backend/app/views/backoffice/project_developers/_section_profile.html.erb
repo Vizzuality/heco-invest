@@ -1,0 +1,14 @@
+<div>
+    <label class="flex items-center gap-3">
+      <%= t("backoffice.common.view_content_in") %>
+      <%= select_tag :content_lang, options_from_collection_for_select(Language.all, "id", "name", content_language),
+         class: "select-input",
+         onchange: "
+           url = new window.URL(window.location);
+           url.searchParams.set('content_lang', event.target.value);
+           Turbo.visit(url.toString());
+         "
+      %>
+    </label>
+</div>
+<%= render 'form', project_developer: @project_developer %>
