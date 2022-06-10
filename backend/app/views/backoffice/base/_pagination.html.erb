@@ -1,4 +1,5 @@
 <% link = pagy_link_proc(pagy) -%>
+
 <nav aria-label="Pagination" class="pagination">
   <ol>
     <li>
@@ -8,15 +9,15 @@
     </li>
 
     <% pagy.series.each do |item| %>
-    <li>
-      <% if item.is_a?(Integer) %>
-        <%== link.call(item) %>
-      <% elsif item.is_a?(String) %>
-        <span class="active"><%== item %></span>
-      <% elsif item == :gap %>
-        <%== t("backoffice.common.navigation.gap") %>
-      <% end %>
-    </li>
+      <li>
+        <% if item.is_a?(Integer) %>
+          <%== link.call(item) %>
+        <% elsif item.is_a?(String) %>
+          <span class="active"><%== item %></span>
+        <% elsif item == :gap %>
+          <%== t("backoffice.common.navigation.gap") %>
+        <% end %>
+      </li>
     <% end %>
 
     <li>

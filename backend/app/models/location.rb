@@ -12,7 +12,7 @@ class Location < ApplicationRecord
     scope location_type, -> { where(location_type: location_type) }
   end
 
-  validates :location_type, inclusion: {in: LocationType::TYPES}
+  validates :location_type, inclusion: {in: LocationType::TYPES, allow_blank: true}, presence: true
   validates_presence_of :name
 
   validates_uniqueness_of :name_en, scope: :location_type, if: -> { parent_id.blank? }

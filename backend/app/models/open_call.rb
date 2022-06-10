@@ -7,10 +7,10 @@ class OpenCall < ApplicationRecord
 
   belongs_to :investor, counter_cache: true
 
-  validates :instrument_type, inclusion: {in: InstrumentType::TYPES}
-  validates :ticket_size, inclusion: {in: TicketSize::TYPES}
+  validates :instrument_type, inclusion: {in: InstrumentType::TYPES, allow_blank: true}, presence: true
+  validates :ticket_size, inclusion: {in: TicketSize::TYPES, allow_blank: true}, presence: true
   validates :sdgs, array_inclusion: {in: Sdg::TYPES}
-  validates :language, inclusion: {in: Language::TYPES}
+  validates :language, inclusion: {in: Language::TYPES, allow_blank: true}, presence: true
 
   validates_presence_of :name, :description, :money_distribution, :impact_description, :closing_at
 

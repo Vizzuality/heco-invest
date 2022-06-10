@@ -1,3 +1,8 @@
+<div class="flex">
+  <%= render partial: "filters", locals: {q: @q} %>
+  <%= render partial: "backoffice/base/total_records" %>
+</div>
+
 <table class="backoffice-table">
   <thead>
     <tr>
@@ -11,7 +16,7 @@
         <%= sort_link @q, :category_index, t("backoffice.common.category") %>
       </th>
       <th>
-        <%= sort_link @q, :priority_landscape_name, t("backoffice.common.mosaic") %>
+        <%= localized_sort_link @q, :priority_landscape_name, t("backoffice.projects.index.priority_landscape") %>
       </th>
       <th>
         <%= sort_link @q, :trusted, t("backoffice.common.status") %>
