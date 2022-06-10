@@ -20,7 +20,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
   setOpenInvitationModal,
 }: InviteUsersModalProps) => {
   const { formatMessage } = useIntl();
-  const [emailChips, setEmailChips] = useState(null);
+  const [emailChips, setEmailChips] = useState([]);
   console.log('emails', emailChips);
 
   const {
@@ -36,13 +36,13 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
   const handleKeyDown = useCallback(
     (e) => {
       if (['Enter', 'Tab', ','].includes(e.key)) {
-        const emails = getValues('emails').split(',');
-
+        const newEmail = getValues('emails').split(',');
+        //TODO: Remove last comma
         resetField('emails');
-        setEmailChips(emails);
+        setEmailChips([...emailChips, newEmail]);
       }
     },
-    [getValues, resetField]
+    [getValues, resetField, emailChips]
   );
 
   const removeEmail = useCallback(
@@ -77,11 +77,11 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
       <Label htmlFor="emails-users-invitation" className="mb-2 font-sans text-base text-gray-800">
         <FormattedMessage defaultMessage="Emails" id="AdAi3x" />
       </Label>
-      <div className="p-2 focus-within:border-green-dark min-h-[95px] border border-beige rounded-lg">
-        <div className="flex space-x-1">
-          <div className="flex space-x-2">
+      <div className="inline-block p-2 focus-within:border-green-dark min-h-[95px] border border-beige rounded-lg">
+        <div className="flex flex-wrap space-x-1">
+          <div className="flex flex-wrap">
             {emailChips?.map((email, i) => (
-              <div className="flex px-4 py-1 bg-beige rounded-2xl" key={i}>
+              <div className="flex px-4 py-1 mb-1 mr-1 bg-beige rounded-2xl" key={i}>
                 <p className="text-sm text-green-dark">{email}</p>
                 <button type="button" onClick={() => removeEmail(email)}>
                   <Icon icon={CloseIcon} className={cx('w-4 ml-3 text-green-dark')} />
@@ -104,7 +104,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
                 placeholder: emailChips?.length > 0 ? '' : 'separate emails by comma',
               }
             )}
-            className="px-0 py-0 mx-0 leading-3 text-gray-400 border-none focus:shadow-none hover:shadow-none"
+            className="px-0 py-0 mx-0 leading-3 min-w-[90px] text-gray-400 border-none focus:shadow-none hover:shadow-none"
             onKeyDown={handleKeyDown}
             contentEditable
           />
