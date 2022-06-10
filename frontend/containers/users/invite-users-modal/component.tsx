@@ -37,7 +37,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
     (e) => {
       if (['Enter', 'Tab', ','].includes(e.key)) {
         const newEmail = getValues('emails').split(',');
-        //TODO: Remove last comma
+        //TODO: Remove last comma + validate email
         resetField('emails');
         setEmailChips([...emailChips, newEmail]);
       }
@@ -104,7 +104,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
                 placeholder: emailChips?.length > 0 ? '' : 'separate emails by comma',
               }
             )}
-            className="px-0 py-0 mx-0 leading-3 min-w-[90px] text-gray-400 border-none focus:shadow-none hover:shadow-none"
+            className="px-1 py-0 mx-0 leading-3 min-w-[90px] min-h-[20px] text-gray-400 border-none focus:shadow-none hover:shadow-none"
             onKeyDown={handleKeyDown}
             contentEditable
           />
