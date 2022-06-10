@@ -12,7 +12,11 @@
   }
 
   .button-primary-green {
-    @apply bg-green-dark text-white hover:text-green-light focus-visible:outline-green-dark
+    @apply bg-green-dark text-white hover:text-green-lighter focus-visible:outline-green-dark
+  }
+
+  .button-secondary-green {
+    @apply bg-green-lighter/0 border border-green-dark text-green-dark hover:bg-green-light focus-visible:outline-green-dark
   }
 
   .backoffice-table {
@@ -53,5 +57,25 @@
 
   .pagination li .active {
     @apply text-green-dark
+  }
+
+  .alert {
+    @apply text-sm text-black rounded-lg p-4 mb-4
+  }
+
+  .alert-success {
+    @apply bg-green-lighter
+  }
+
+  .alert-danger {
+    @apply bg-red-50
+  }
+
+  .alert-info {
+    @apply bg-beige
+  }
+
+  .select-input {
+    @apply block px-4 py-2 text-base text-gray-900 placeholder-gray-400 placeholder-opacity-100 border border-solid border-beige hover:shadow-sm focus:shadow-sm focus:border-green-dark outline-none bg-white rounded-lg disabled:opacity-60 transition
   }
 }

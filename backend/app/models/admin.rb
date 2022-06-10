@@ -6,7 +6,7 @@ class Admin < ApplicationRecord
     allow_nil: true
   validate :password_complexity
   validates_presence_of :first_name, :last_name
-  validates :ui_language, inclusion: {in: Language::TYPES}
+  validates :ui_language, inclusion: {in: Language::TYPES, allow_blank: true}, presence: true
 
   private
 

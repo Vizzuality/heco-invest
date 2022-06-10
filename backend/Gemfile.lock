@@ -122,8 +122,6 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
-    cssbundling-rails (1.1.0)
-      railties (>= 6.0.0)
     cuprite (0.13)
       capybara (>= 2.1, < 4)
       ferrum (~> 0.11.0)
@@ -314,7 +312,7 @@ GEM
       letter_opener (~> 1.7)
       railties (>= 5.2)
       rexml
-    loofah (2.17.0)
+    loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -435,14 +433,14 @@ GEM
     rspec-mocks (3.11.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.11.0)
-    rspec-rails (5.0.3)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
-      railties (>= 5.2)
-      rspec-core (~> 3.10)
-      rspec-expectations (~> 3.10)
-      rspec-mocks (~> 3.10)
-      rspec-support (~> 3.10)
+    rspec-rails (6.0.0.rc1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.11)
+      rspec-expectations (~> 3.11)
+      rspec-mocks (~> 3.11)
+      rspec-support (~> 3.11)
     rspec-retry (0.6.2)
       rspec-core (> 3.3)
     rspec-support (3.11.0)
@@ -513,6 +511,10 @@ GEM
       attr_extras (>= 6.2.4)
       diff-lcs
       patience_diff
+    tailwindcss-rails (2.0.8-x86_64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.8-x86_64-linux)
+      railties (>= 6.0.0)
     test-prof (1.0.8)
     thor (1.2.1)
     timeout (0.2.0)
@@ -560,7 +562,6 @@ DEPENDENCIES
   cancancan
   capybara (>= 3.26)
   cloudtasker (~> 0.13.0)
-  cssbundling-rails
   cuprite
   debug
   devise
@@ -587,7 +588,7 @@ DEPENDENCIES
   rgeo
   rgeo-geojson
   rspec-collection_matchers
-  rspec-rails (~> 5.0.0)
+  rspec-rails (= 6.0.0.rc1)
   rspec-request_snapshot!
   rspec-retry
   rswag
@@ -601,6 +602,7 @@ DEPENDENCIES
   standard
   stimulus-rails
   super_diff
+  tailwindcss-rails (~> 2.0)
   test-prof
   traco
   turbo-rails

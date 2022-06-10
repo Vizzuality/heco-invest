@@ -1,6 +1,7 @@
 module Backoffice
   class BaseController < ApplicationController
     include Pagy::Backend
+    include Breadcrumbs
 
     layout "backoffice"
 
