@@ -398,7 +398,7 @@ module "load_balancer" {
 module "translation" {
   source = "../translation"
   project_id            = var.gcp_project_id
-  service_account_email = module.backend_cloudrun.service_account_email
+  service_account_email = module.jobs_cloudrun.service_account_email
 }
 
 module "error_reporting" {
