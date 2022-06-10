@@ -278,6 +278,10 @@ module "jobs_cloudrun" {
       value = "https://${var.domain}/backend"
     },
     {
+      name  = "FRONTEND_URL"
+      value = "https://${var.domain}"
+    },
+    {
       name  = "RAILS_RELATIVE_URL_ROOT"
       value = "/backend"
     },
