@@ -11,8 +11,15 @@ import { Paths } from 'enums';
 export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
   project,
 }: ProjectDevelopersProps) => {
-  const { project_developer: mainDeveloper, involved_project_developers: developers } = project;
-  const NUMBER_DEVELOPERS = developers.length;
+  const { project_developer: mainDeveloper, involved_project_developers } = project;
+  // If the involved_project_developers have just the project_developer (same id), the JSONA parsing returns a reference of the project_developer, so it doesn't have propoerties.
+  //   involved_project_developers: [{
+  //     "$ref": "$[\"project_developer\"]"
+  // }]
+  // So  we have to filter the involved_project_developers that have properties to have the ones that are not the main project developer.
+  const developers = involved_project_developers?.filter(({ id }) => id);
+  // The involved_projectDevelpers + the  project_developer
+  const NUMBER_DEVELOPERS = developers.length + 1;
 
   return (
     <section className="bg-background-middle py-18">
@@ -46,14 +53,14 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
             />
           )}
           {!!NUMBER_DEVELOPERS &&
-            developers.map((developer) => {
+            developers?.map((developer) => {
               const { about, name, picture, project_developer_type, id, slug } = developer;
               return (
                 <ProfileCard
                   className="w-full"
                   key={id}
                   link={`${Paths.ProjectDeveloper}/${slug}`}
-                  picture={picture.small}
+                  picture={picture?.small || ''}
                   name={name}
                   description={about}
                   type={project_developer_type}
