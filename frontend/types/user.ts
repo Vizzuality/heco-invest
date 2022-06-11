@@ -37,3 +37,7 @@ export type UserAccount = {
 export type UsersInvitationForm = {
   email: string;
 };
+
+export type InviteUsersDto = {
+  emails: string[];
+};

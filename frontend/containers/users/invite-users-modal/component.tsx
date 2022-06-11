@@ -6,6 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
+import Alert from 'components/alert';
 import Button from 'components/button';
 import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
@@ -13,6 +14,9 @@ import Label from 'components/forms/label';
 import Icon from 'components/icon';
 import Modal from 'components/modal';
 import { UsersInvitationForm } from 'types/user';
+import { InviteUsersDto } from 'types/user';
+
+import { useInviteUsers } from 'services/users/userService';
 
 import type { InviteUsersModalProps } from './types';
 
@@ -21,6 +25,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
   setOpenInvitationModal,
 }: InviteUsersModalProps) => {
   const { formatMessage } = useIntl();
+  const inviteUsers = useInviteUsers();
   const [emailChips, setEmailChips] = useState([]);
 
   const {
@@ -41,7 +46,21 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
     setEmailChips([]);
   }, [setOpenInvitationModal]);
 
-  const onSubmit = () => console.log({ data: emailChips });
+  const handleSendInvite = useCallback(
+    (data: InviteUsersDto) =>
+      inviteUsers.mutate(data, {
+        onError: (error) => {
+          console.log('error', error);
+          setError('email', { message: 'Please, enter a valid email.', type: 'manual' });
+        },
+        onSuccess: () => {
+          setOpenInvitationModal(false);
+        },
+      }),
+    [inviteUsers, setOpenInvitationModal, setError]
+  );
+
+  const onSubmit = () => handleSendInvite({ emails: emailChips });
 
   const handleKeyDown = useCallback(
     (e) => {
@@ -131,6 +150,14 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
         <div>
           <ErrorMessage id="emails-error" errorText={errors?.email?.message} />
         </div>
+
+        {inviteUsers.isError && (
+          <Alert className="my-4" withLayoutContainer>
+            {Array.isArray(inviteUsers.error.message)
+              ? inviteUsers.error.message[0].title
+              : inviteUsers.error.message}
+          </Alert>
+        )}
 
         <div className="flex justify-end mt-8">
           <Button
