@@ -48,7 +48,7 @@ class Project < ApplicationRecord
     :progress_impact_tracking,
     :geometry
 
-  validates :estimated_duration_in_months, numericality: {only_integer: true, greater_than: 0}, presence: true
+  validates :estimated_duration_in_months, numericality: {only_integer: true, greater_than: 0, less_than: 37}, presence: true
   validates :trusted, inclusion: [true, false]
   validates :received_funding, inclusion: [true, false]
   validates :looking_for_funding, inclusion: [true, false]
