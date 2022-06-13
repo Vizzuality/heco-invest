@@ -96,17 +96,17 @@ export function useProjectDeveloper(
   );
 }
 
+const getCurrentProjectDeveloper = async (): Promise<ProjectDeveloper> =>
+  await API.get('/api/v1/account/project_developer').then(
+    (response: AxiosResponse<ResponseData<ProjectDeveloper>>) => response.data.data
+  );
 /** Get the Current Project Developer if the UserRole is project_developer */
-export const useCurrentProjectDeveloper = (user?: User) => {
-  const getCurrentProjectDeveloper = async (): Promise<ProjectDeveloper> =>
-    await API.get('/api/v1/account/project_developer').then(
-      (response: AxiosResponse<ResponseData<ProjectDeveloper>>) => response.data.data
-    );
-
+export const useCurrentProjectDeveloper = (user?: User, useQueryOptions?: UseQueryOptions) => {
   const query = useQuery([Queries.Account, user], getCurrentProjectDeveloper, {
     // Creates the conditional to only fetch the data if the user is a project developer user
-    enabled: !user || user?.role === UserRoles.ProjectDeveloper,
+    enabled: user ? user?.role === UserRoles.ProjectDeveloper : useQueryOptions?.enabled,
     ...staticDataQueryOptions,
+    ...useQueryOptions,
   });
 
   return useMemo(

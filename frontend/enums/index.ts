@@ -27,6 +27,7 @@ export enum Paths {
   ProjectCreation = '/projects/new',
   ProjectDeveloper = '/project-developer',
   NewProjectDeveloper = '/project-developers/new',
+  PendingProjectDeveloper = '/project-developers/pending',
   ProjectDevelopers = '/discover/project-developers',
   OpenCall = '/open-call',
   OpenCalls = '/discover/open-calls',
