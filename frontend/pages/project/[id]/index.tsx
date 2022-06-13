@@ -75,7 +75,7 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
       </LayoutContainer>
 
       <Overview project={project} />
-      <Impact project={project} />
+      <Impact project={project} enums={enums} />
       <Funding project={project} />
       <ProjectDevelopers project={project} />
       <Contact project={project} />
