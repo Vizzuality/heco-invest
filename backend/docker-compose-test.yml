@@ -1,7 +1,10 @@
 version: "3.8"
 services:
   backend:
-    build: .
+    build:
+      context: .
+      args:
+        - RAILS_RELATIVE_URL_ROOT=${RAILS_RELATIVE_URL_ROOT}
     command: test
     environment:
       - DATABASE_NAME=heco-test
