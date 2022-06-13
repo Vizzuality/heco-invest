@@ -40,6 +40,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
       I18n.t("backoffice.common.language"),
       I18n.t("backoffice.common.status")
     ]
+    it_behaves_like "with csv export", file_name: "project_developers.csv"
 
     it "shows project developers list" do
       within_row("Super PD Enterprise") do

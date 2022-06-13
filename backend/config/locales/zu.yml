@@ -51,6 +51,7 @@ zu:
       apply: Apply
       reset: Reset
       total: Total
+      export_csv: export csv
       navigation:
         prev: "←"
         next: "→"
