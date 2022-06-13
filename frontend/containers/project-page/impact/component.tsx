@@ -16,8 +16,6 @@ import LayoutContainer from 'components/layout-container';
 import Tag from 'components/tag';
 import Tooltip from 'components/tooltip';
 import { ImpactAreas } from 'enums';
-import sdgsMock from 'mockups/sdgs.json';
-import { Enum } from 'types/enums';
 
 export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) => {
   const [impactLocation, setImpactLocation] = useState<ImpactAreas>(ImpactAreas.Municipality);
@@ -26,10 +24,14 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
   const intl = useIntl();
 
   const impact = useMemo(() => projectImpact(project)[impactLocation], [impactLocation, project]);
-  const sdgs = sdgsMock.filter(({ id }) => project.sdgs.includes(parseInt(id)));
   const targetGroups = enums?.project_target_group?.filter((targetGroup) =>
     project.target_groups?.includes(targetGroup.id)
   );
+  const sdgs = enums.sdg.filter(({ id }) => project.sdgs.includes(parseInt(id)));
+
+  const formatCapitalizeDashedString = (s) => {
+    return s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, ' ');
+  };
 
   const OPTIONS = [
     {
@@ -82,7 +84,7 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
               <h3 className="text-xl font-semibold">
                 <FormattedMessage defaultMessage="SDG'S" id="vTJ8GJ" />
               </h3>
-              <SDGs sdgs={sdgs as Enum[]} size="large" />
+              <SDGs sdgs={sdgs} size="large" />
             </div>
           </div>
 
