@@ -10,7 +10,7 @@ module Backoffice
           @pagy_object, @investors = pagy @investors, pagy_defaults
         end
         format.csv do
-          send_data Backoffice::Csv::InvestorExporter.new(@investors).call,
+          send_data Backoffice::CSV::InvestorExporter.new(@investors).call,
             filename: "investors.csv",
             type: "text/csv; charset=utf-8"
         end

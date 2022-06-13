@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Backoffice::Csv::ProjectDeveloperExporter do
+RSpec.describe Backoffice::CSV::ProjectDeveloperExporter do
   subject { described_class.new(query) }
 
   let(:query) { create_list :project_developer, 4 }

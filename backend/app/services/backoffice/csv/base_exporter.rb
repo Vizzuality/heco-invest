@@ -1,7 +1,7 @@
 require "csv"
 
 module Backoffice
-  module Csv
+  module CSV
     class BaseExporter
       attr_accessor :query, :columns
 
@@ -19,7 +19,7 @@ module Backoffice
         self.columns = []
         yield
 
-        CSV.generate do |csv|
+        ::CSV.generate do |csv|
           csv << columns.map { |column| column[:name] }
           query.each do |record|
             csv << columns.map { |column| column[:block].call record }

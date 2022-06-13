@@ -18,7 +18,7 @@ module Backoffice
           @pagy_object, @project_developers = pagy @project_developers, pagy_defaults
         end
         format.csv do
-          send_data Backoffice::Csv::ProjectDeveloperExporter.new(@project_developers).call,
+          send_data Backoffice::CSV::ProjectDeveloperExporter.new(@project_developers).call,
             filename: "project_developers.csv",
             type: "text/csv; charset=utf-8"
         end

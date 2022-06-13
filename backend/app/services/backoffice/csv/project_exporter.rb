@@ -1,5 +1,5 @@
 module Backoffice
-  module Csv
+  module CSV
     class ProjectExporter < BaseExporter
       def call
         generate_csv do
