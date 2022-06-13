@@ -14,7 +14,8 @@ module API
           ProjectTargetGroup.all,
           TicketSize.all,
           Mosaic.all,
-          Sdg.all
+          Sdg.all,
+          ProjectStatus.all
         ].flatten
 
         serialized_enums = data.map do |d|

@@ -6,6 +6,8 @@ import { ProjectGalleryImageType } from 'containers/forms/project-gallery/projec
 
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
+import { Locations } from './locations';
+
 /** Project images on responses */
 export type ProjectImageType = {
   cover: boolean;
@@ -19,11 +21,7 @@ export type ProjectImageType = {
 /** Common Project types */
 export type ProjectBase = {
   category: string;
-  country: {
-    id: string;
-    location_type: 'country';
-    name: string;
-  };
+  country: Locations;
   description: string;
   development_stage: DevelopmentStages;
   estimated_duration_in_months: number;
@@ -48,16 +46,7 @@ export type ProjectBase = {
   target_groups: string[];
   ticket_size?: TicketSizes;
   language: Languages;
-  municipality: {
-    id: string;
-    location_type: 'municipality';
-    name: string;
-    parent: {
-      id: string;
-      location_type: 'depatment';
-      name: string;
-    };
-  };
+  municipality: Locations;
   project_images: ProjectImageType[];
   trusted?: boolean;
   project_developer?: any; // Cannot use ProjectDeveloperType because linting will complain about circular references
@@ -94,6 +83,7 @@ export type Project = ProjectBase &
     slug: string;
     trusted?: boolean;
     type: 'project';
+    priority_landscape: Locations;
   };
 
 /** Project Form inputs */

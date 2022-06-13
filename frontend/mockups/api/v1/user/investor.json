@@ -1,0 +1,14 @@
+{
+  "data": {
+    "id": "bf77c5a8-3577-4fb7-be3c-63ec78233061",
+    "type": "user",
+    "attributes": {
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "email": "jane.doe@vizzuality.com",
+      "role": "investor",
+      "confirmed": true,
+      "approved": true
+    }
+  }
+}

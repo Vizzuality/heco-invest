@@ -1,0 +1,33 @@
+<%= simple_form_for [:backoffice, project_developer] do |f| %>
+  <%= f.error_notification %>
+
+  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
+    <%= t(".general") %>
+  </h2>
+
+  <%= f.simple_fields_for :account do |ff|  %>
+    <%= ff.input :picture %>
+  <% end %>
+  <div class="grid grid-cols-2 gap-4">
+    <%= f.simple_fields_for :account do |ff|  %>
+      <%= ff.input :name, as: :string %>
+    <% end %>
+    <%= f.input :project_developer_type, collection: ProjectDeveloperType.all, include_blank: false %>
+  </div>
+  <%= f.input :entity_legal_registration_number %>
+
+  <%= render "backoffice/accounts/common_fields", f: f %>
+
+  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
+    <%= t(".about_the_work") %>
+  </h2>
+
+  <%= f.input :categories, as: :check_boxes, collection: Category.all %>
+  <%= f.input :impacts, as: :check_boxes, collection: Impact.all %>
+  <%= f.input :mosaics, as: :check_boxes, collection: Mosaic.all %>
+
+  <div class="mt-3 flex justify-end gap-3">
+    <%= link_to t("backoffice.common.cancel"), backoffice_project_developers_path, class: "button button-secondary-green" %>
+    <%= f.button :submit, t("backoffice.common.save"), class: "button button-primary-green" %>
+  </div>
+<% end %>

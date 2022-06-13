@@ -2826,7 +2826,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mapbox/mapbox-gl-supported@npm:^2.0.0, @mapbox/mapbox-gl-supported@npm:^2.0.1":
+"@mapbox/mapbox-gl-supported@npm:^2.0.0":
   version: 2.0.1
   resolution: "@mapbox/mapbox-gl-supported@npm:2.0.1"
   checksum: 1dffc96baacc56e34b09f2ae6ac4b2b8f10ad51a9d7c4946dc2057f456deeacd5d0729e340120857b3204a14d9961266f3218d26e101d46e81717954f1c129af
@@ -2854,7 +2854,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mapbox/tiny-sdf@npm:^2.0.2, @mapbox/tiny-sdf@npm:^2.0.4":
+"@mapbox/tiny-sdf@npm:^2.0.2":
   version: 2.0.5
   resolution: "@mapbox/tiny-sdf@npm:2.0.5"
   checksum: 23fd158ea795592cf1f825fcac20d48230c54a6985a931f609af8b4e69cd99f1c798dc893baec63f4fd6f42ffc3e7292b39f4126966412edd4606eb3dbf86b54
@@ -2865,13 +2865,6 @@ __metadata:
   version: 0.0.0
   resolution: "@mapbox/unitbezier@npm:0.0.0"
   checksum: 22ae6d56f743570fb222a5b0d323398e342007f689ae6445b6238d60a2faaa312b41c1de1fb2553bca4ccdb2d3f7006af04d94457c54b44a6454ce0198eebf9e
-  languageName: node
-  linkType: hard
-
-"@mapbox/unitbezier@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "@mapbox/unitbezier@npm:0.0.1"
-  checksum: bf104c85dbff37bf47d3217d9457a3abbf23714f78fefadea64e56bdc7c538491b626166809ef28db134f09baccd6ca3df6988a6422df90d8d0c9a23b0686043
   languageName: node
   linkType: hard
 
@@ -8102,7 +8095,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/geojson@npm:*, @types/geojson@npm:7946.0.8, @types/geojson@npm:^7946.0.7, @types/geojson@npm:^7946.0.8":
+"@types/geojson@npm:*, @types/geojson@npm:7946.0.8, @types/geojson@npm:^7946.0.7":
   version: 7946.0.8
   resolution: "@types/geojson@npm:7946.0.8"
   checksum: 6049a39b025cfe323d5cf87333d87c133ec963cdbd349c49295bee779827ee4b46a3041fd8bd2e7a4b02d6d1e26f3002968875928941bbed08477bfd5f6f9284
@@ -8272,24 +8265,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mapbox__point-geometry@npm:*, @types/mapbox__point-geometry@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "@types/mapbox__point-geometry@npm:0.1.2"
-  checksum: 6e495e5d7e1fae986ab28ee26b5443b9e6ba54ad97c9df051832ab6e2aafc65fe63d4dd80101c922372fa01423b6947fdcfd253f298b3154418c17e7d3a8aa47
-  languageName: node
-  linkType: hard
-
-"@types/mapbox__vector-tile@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "@types/mapbox__vector-tile@npm:1.3.0"
-  dependencies:
-    "@types/geojson": "*"
-    "@types/mapbox__point-geometry": "*"
-    "@types/pbf": "*"
-  checksum: 42fbeba625b6cb3bad47ea79b947aea2a1e32d0620b2f2e17a45cc075ca3be2990697115dd4896d84f11df7c0a9a3533ee76414745b8fd29cb311677b1c6832f
-  languageName: node
-  linkType: hard
-
 "@types/mdast@npm:^3.0.0":
   version: 3.0.10
   resolution: "@types/mdast@npm:3.0.10"
@@ -8369,13 +8344,6 @@ __metadata:
   version: 5.0.3
   resolution: "@types/parse5@npm:5.0.3"
   checksum: d6b7495cb1850f9f2e9c5e103ede9f2d30a5320669707b105c403868adc9e4bf8d3a7ff314cc23f67826bbbbbc0e6147346ce9062ab429f099dba7a01f463919
-  languageName: node
-  linkType: hard
-
-"@types/pbf@npm:*, @types/pbf@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "@types/pbf@npm:3.0.2"
-  checksum: f71ba1facd44a43bd32d4391177099cab69b2ae8381a260382287a4f7f255565d39fa0cf5da27fd2820fc923ead245d50a668824aaa423f908838813802d47f5
   languageName: node
   linkType: hard
 
@@ -13901,7 +13869,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gl-matrix@npm:^3.0.0, gl-matrix@npm:^3.2.0, gl-matrix@npm:^3.3.0, gl-matrix@npm:^3.4.3":
+"gl-matrix@npm:^3.0.0, gl-matrix@npm:^3.2.0, gl-matrix@npm:^3.3.0":
   version: 3.4.3
   resolution: "gl-matrix@npm:3.4.3"
   checksum: c47830ba727f3d0fab635c48135af96aef66274079a3e0afd6f68b68c98eae9fc1bcfdc7312fe2301e4fd22dd24c5e0f1b5d025960a208e50d07101ed8d940f9
@@ -14401,7 +14369,6 @@ __metadata:
     jsona: ^1.9.2
     jsonwebtoken: ^8.5.1
     lodash-es: ^4.17.21
-    maplibre-gl: ">=1.15.2"
     next: ^12.1.0
     popmotion: ^9.3.6
     postcss: ^8.4.5
@@ -14426,7 +14393,7 @@ __metadata:
     rooks: ^5.10.0
     sharp: ^0.30.1
     slugify: ^1.6.5
-    storybook-addon-mock: ^2.3.2
+    storybook-addon-mock: ^2.4.1
     storybook-addon-next: ^1.6.2
     storybook-react-intl: ^1.0.5
     supercluster: ^7.1.5
@@ -16883,37 +16850,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"maplibre-gl@npm:>=1.15.2":
-  version: 2.1.9
-  resolution: "maplibre-gl@npm:2.1.9"
-  dependencies:
-    "@mapbox/geojson-rewind": ^0.5.1
-    "@mapbox/jsonlint-lines-primitives": ^2.0.2
-    "@mapbox/mapbox-gl-supported": ^2.0.1
-    "@mapbox/point-geometry": ^0.1.0
-    "@mapbox/tiny-sdf": ^2.0.4
-    "@mapbox/unitbezier": ^0.0.1
-    "@mapbox/vector-tile": ^1.3.1
-    "@mapbox/whoots-js": ^3.1.0
-    "@types/geojson": ^7946.0.8
-    "@types/mapbox__point-geometry": ^0.1.2
-    "@types/mapbox__vector-tile": ^1.3.0
-    "@types/pbf": ^3.0.2
-    csscolorparser: ~1.0.3
-    earcut: ^2.2.3
-    geojson-vt: ^3.2.1
-    gl-matrix: ^3.4.3
-    murmurhash-js: ^1.0.0
-    pbf: ^3.2.1
-    potpack: ^1.0.2
-    quickselect: ^2.0.0
-    supercluster: ^7.1.4
-    tinyqueue: ^2.0.3
-    vt-pbf: ^3.1.3
-  checksum: 0e52921bce765cc4de80a8b9aa3b8c6602d8c856b9d7e7b34da8f2a37b9bccfc03bf51668740181a27544388983a9939f19c358f33321e2bcad7bdff4bbe3c45
-  languageName: node
-  linkType: hard
-
 "markdown-escapes@npm:^1.0.0":
   version: 1.0.4
   resolution: "markdown-escapes@npm:1.0.4"
@@ -18829,7 +18765,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"potpack@npm:^1.0.1, potpack@npm:^1.0.2":
+"potpack@npm:^1.0.1":
   version: 1.0.2
   resolution: "potpack@npm:1.0.2"
   checksum: 9dfdbbce012ce80842249abcdd89e20222eb8ae96beba8d578b7e41e78feefc7e33b5c72d46fb8dd3a1e382cb4da9c34574764d88aa8849ab36f542fd2088b42
@@ -21201,9 +21137,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook-addon-mock@npm:^2.3.2":
-  version: 2.3.2
-  resolution: "storybook-addon-mock@npm:2.3.2"
+"storybook-addon-mock@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "storybook-addon-mock@npm:2.4.1"
   dependencies:
     "@storybook/addons": ^6.2.9
     "@storybook/api": ^6.2.9
@@ -21214,7 +21150,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: ea9abe7409b6a878235127686f382353876d28b6240a1351245726b4c20277417f27b9a768b5eadfb93b7a62d0b36108c11327686b84206e6f5c51a21d5d7408
+  checksum: 7a8c4e6c2fada845f4c56f6f848bf0dfb7f9ab4375fb443dab064b4ed883356e12547f9a5174cefbae8a8b8809f3934c23ff72018a0293c8bcec453357b16d32
   languageName: node
   linkType: hard
 

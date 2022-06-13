@@ -2,7 +2,7 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
   content: [
-    './app/views/**/*.html.erb',
+    './app/views/**/*',
     './app/helpers/**/*.rb',
     './config/initializers/simple_form_tailwind.rb',
     './app/javascript/**/*.js'
@@ -41,20 +41,17 @@ module.exports = {
       },
       green: {
         light: '#CFD762',
+        lighter: '#E7E7CA',
         dark: '#316146',
       },
       beige: '#E3DED6',
-      red: colors.red,
+      red: {
+        ...colors.red,
+        dark: '#BF3300'
+      },
       orange: '#F4A064',
       black: '#000000',
       white: '#FFFFFF',
-      category: {
-        forestry: '#E57D57',
-        tourism: '#4492E5',
-        production: '#404B9A',
-        agrosystems: '#E7C343',
-        human: '#A0616A',
-      },
       current: 'currentColor',
     },
     boxShadow: {
@@ -90,6 +87,7 @@ module.exports = {
         '5/12': '41.666667%',
       },
       backgroundImage: {
+        'checkbox-checked': 'url("checkbox-checked.svg")',
         'radial-green-dark':
           'radial-gradient(63.59% 95.05% at 42.99% 35.35%, #316146 0%, #073525 100%)',
       },

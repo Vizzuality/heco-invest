@@ -1,7 +1,10 @@
 version: "3.8"
 services:
   backend:
-    build: .
+    build:
+      context: .
+      args:
+        - RAILS_RELATIVE_URL_ROOT=${RAILS_RELATIVE_URL_ROOT}
     command: test
     environment:
       - DATABASE_NAME=heco-test
@@ -9,6 +12,7 @@ services:
       - DATABASE_PASSWORD=heco-test
       - DATABASE_HOST=db
       - CLOUD_TASKS_TEST_QUEUE_NAME=test
+      - FRONTEND_URL=http://localhost:4000
       - IS_API_INSTANCE=true
       - IS_JOBS_INSTANCE=true
     depends_on:

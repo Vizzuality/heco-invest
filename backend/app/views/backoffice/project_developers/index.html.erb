@@ -1,4 +1,7 @@
-<%= render partial: "backoffice/shared/full_text_filter", locals: { resource_url: backoffice_project_developers_path } %>
+<div class="flex">
+  <%= render partial: "filters", locals: {q: @q} %>
+  <%= render partial: "backoffice/base/total_records" %>
+</div>
 
 <table class="backoffice-table">
   <thead>
@@ -8,6 +11,12 @@
       </th>
       <th>
         <%= sort_link @q, :account_owner_full_name, t("backoffice.common.account_owner") %>
+      </th>
+      <th>
+        <%= sort_link @q, :account_contact_email, t("backoffice.common.contact_email") %>
+      </th>
+      <th>
+        <%= sort_link @q, :account_contact_phone, t("backoffice.common.contact_phone") %>
       </th>
       <th>
         <%= sort_link @q, :account_users_count, t("backoffice.common.account_users") %>
@@ -23,6 +32,8 @@
       </th>
       <th>
       </th>
+      <th>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -30,10 +41,13 @@
       <tr>
         <td><%= pd.name %></td>
         <td><%= pd.account.owner.full_name %></td>
+        <td><%= pd.contact_email %></td>
+        <td><%= pd.contact_phone %></td>
         <td><%= pd.account.users_count %></td>
         <td><%= pd.projects_count %></td>
         <td><%= pd.language %></td>
-        <td><%= pd.account.review_status %></td>
+        <td><%= status_tag pd.account.review_status, ReviewStatus.find(pd.account.review_status).name %></td>
+        <td><%= link_to t("backoffice.common.edit"), edit_backoffice_project_developer_path(pd.id), class: "link-button" %></td>
         <td>
           <%= button_to t("backoffice.common.approve"), approve_backoffice_account_path(pd.account.id), class: "link-button", method: :post unless pd.account.approved? %>
           <%= button_to t("backoffice.common.reject"), reject_backoffice_account_path(pd.account.id), class: "link-button", method: :post unless pd.account.rejected? %>

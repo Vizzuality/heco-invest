@@ -1,0 +1,23 @@
+<nav aria-label="breadcrumb">
+  <ol class="flex gap-3 py-3 items-center text-white">
+    <li>
+      <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.02022 0.979943C6.21548 1.1752 6.21548 1.49179 6.02022 1.68705L2.20711 5.50016L13 5.50016C13.2761 5.50016 13.5 5.72402 13.5 6.00016C13.5 6.2763 13.2761 6.50016 13 6.50016L2.20711 6.50016L6.02022 10.3133C6.21548 10.5085 6.21548 10.8251 6.02022 11.0204C5.82496 11.2156 5.50838 11.2156 5.31311 11.0204L0.646447 6.35372C0.451184 6.15845 0.451184 5.84187 0.646447 5.64661L5.31311 0.979943C5.50838 0.784681 5.82496 0.784681 6.02022 0.979943Z" fill="white"/>
+      </svg>
+    </li>
+    <% breadcrumbs.each do |crumb| %>
+      <% last_one = crumb == breadcrumbs.last %>
+
+      <li class="<%= last_one ? 'text-gray-400' : '' %>" <%= last_one ? "aria-current='page'" : "" %>>
+        <% if crumb.link? %>
+          <%= link_to crumb.title, crumb.path %>
+        <% else %>
+          <%= crumb.title %>
+        <% end %>
+      </li>
+      <% unless last_one %>
+        <%= "/" %>
+      <% end %>
+    <% end %>
+  </ol>
+</nav>

@@ -19,7 +19,7 @@ import { GroupedEnums as GroupedEnumsType } from 'types/enums';
 import { Project as ProjectType } from 'types/project';
 
 import { getEnums } from 'services/enums/enumService';
-import { getProject } from 'services/projects/projectService';
+import { getProject, useProject } from 'services/projects/projectService';
 
 export const getServerSideProps = async ({ params: { id }, locale }) => {
   let project;
@@ -57,9 +57,27 @@ type ProjectPageProps = {
 };
 
 const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
-  project,
+  project: defaultProject,
   enums,
 }) => {
+  const {
+    project: { data: project },
+  } = useProject(
+    defaultProject.id,
+    {
+      includes: [
+        'project_images',
+        'project_developer',
+        'involved_project_developers',
+        'country',
+        'municipality',
+        'department',
+        'priority_landscape',
+      ],
+    },
+    defaultProject
+  );
+
   return (
     <>
       <Head title={project.name} description={project.description} />

@@ -1,58 +1,39 @@
-import { PlusCircle as PlusCircleIcon } from 'react-feather';
-import { FormattedMessage } from 'react-intl';
+import { useEffect } from 'react';
 
-import { InferGetStaticPropsType } from 'next';
+import { useRouter } from 'next/router';
 
-import { loadI18nMessages } from 'helpers/i18n';
+import useMe from 'hooks/me';
 
-import Button from 'components/button';
-import Head from 'components/head';
-import Icon from 'components/icon';
-import LayoutContainer from 'components/layout-container';
-import { Paths } from 'enums';
-import DashboardLayout, { DashboardLayoutProps } from 'layouts/dashboard';
-import { PageComponent } from 'types';
+import { UserRoles, Paths } from 'enums';
+import DashboardLayout from 'layouts/dashboard';
+import NakedLayout from 'layouts/naked';
 
-export async function getStaticProps(ctx) {
-  return {
-    props: {
-      intlMessages: await loadI18nMessages(ctx),
-    },
-  };
-}
+export const DashboardPage = () => {
+  const router = useRouter();
+  const { user, isLoading } = useMe();
 
-type DashboardPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+  useEffect(() => {
+    if (isLoading) return;
 
-export const DashboardPage: PageComponent<DashboardPageProps, DashboardLayoutProps> = () => {
-  return (
-    <>
-      <Head />
-      <div className="pt-20 bg-green-dark">
-        <LayoutContainer className="h-20">
-          <div className="relative h-full">
-            <Button
-              theme="primary-white"
-              to={Paths.ProjectCreation}
-              className="absolute right-0 -translate-y-1/2 top-full"
-            >
-              <Icon icon={PlusCircleIcon} className="w-5 h-5 mr-2" aria-hidden />
-              <FormattedMessage defaultMessage="Create project" id="VUN1K7" />
-            </Button>
-          </div>
-        </LayoutContainer>
-      </div>
-      <LayoutContainer className="py-64">Dashboard</LayoutContainer>
-    </>
-  );
+    switch (user?.role) {
+      case UserRoles.ProjectDeveloper:
+        router.replace(Paths.DashboardProjects);
+        break;
+      case UserRoles.Investor:
+        router.replace(Paths.DashboardOpenCalls);
+        break;
+      default:
+      // Do nothing. There isn't an user, and `ProtectedPage`'s logic will kick in and
+      // redirect the user to the Sign in page.
+    }
+  }, [isLoading, router, user]);
+
+  // We're returning an empty Layout to minimize flickering/an empty page.
+  return <DashboardLayout />;
 };
 
 DashboardPage.layout = {
-  Component: DashboardLayout,
-  props: {
-    headerProps: {
-      transparent: true,
-    },
-  },
+  Component: NakedLayout,
 };
 
 export default DashboardPage;

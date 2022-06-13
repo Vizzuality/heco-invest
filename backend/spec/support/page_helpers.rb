@@ -25,6 +25,10 @@ module PageHelpers
     within(:xpath, ".//div[contains(normalize-space(.), '#{text}')]", &block)
   end
 
+  def within_sidebar(&block)
+    within(:xpath, ".//aside", &block)
+  end
+
   def find_row(text)
     find(:xpath, ".//tr[contains(normalize-space(.), '#{text}')]")
   end

@@ -77,8 +77,11 @@ export const getProject = async (
 };
 
 /** Use query for a single Project */
-export function useProject(id: string, params) {
-  const query = useQuery([Queries.ProjectQuery, id], () => getProject(id, params));
+export function useProject(id: string, params, initialData?: Project) {
+  const query = useQuery([Queries.ProjectQuery, id], () => getProject(id, params), {
+    refetchOnWindowFocus: false,
+    initialData: { data: initialData, included: [] },
+  });
 
   return useMemo(
     () => ({

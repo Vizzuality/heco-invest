@@ -11,11 +11,11 @@ gem "puma", "~> 5.6"
 gem "redis", "~> 4.0"
 gem "rswag"
 gem "active_storage_validations"
-gem "rspec-rails", "~> 5.0.0"
+gem "rspec-rails", "6.0.0.rc1"
 gem "cancancan"
 
 # BackOffice
-gem "cssbundling-rails"
+gem "tailwindcss-rails", "~> 2.0"
 gem "jsbundling-rails"
 gem "sprockets-rails"
 gem "stimulus-rails"
