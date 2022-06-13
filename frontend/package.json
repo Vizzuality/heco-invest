@@ -82,6 +82,7 @@
     "jsona": "^1.9.2",
     "jsonwebtoken": "^8.5.1",
     "lodash-es": "^4.17.21",
+    "maplibre-gl": ">=1.15.2",
     "next": "^12.1.0",
     "popmotion": "^9.3.6",
     "postcss": "^8.4.5",
