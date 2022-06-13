@@ -43,7 +43,6 @@ module Backoffice
 
     def update_params
       params.require(:project_developer).permit(
-        :language,
         :project_developer_type,
         :entity_legal_registration_number,
         :mission_en,

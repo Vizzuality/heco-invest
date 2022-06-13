@@ -43,7 +43,6 @@ module Backoffice
 
     def update_params
       params.require(:investor).permit(
-        :language,
         :investor_type,
         :previously_invested,
         :mission_en,

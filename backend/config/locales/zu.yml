@@ -10,7 +10,7 @@ zu:
       default_message: "Please review the problems below:"
     labels:
       account:
-        picture: picture
+        picture: Picture
         name: Profile name
         about: About
         website: Website
@@ -23,6 +23,7 @@ zu:
         project_developer_type: Project developer type
         entity_legal_registration_number: Entity legal registration number (NIT or RUT)
       investor:
+        investor_type: Investor/Funder type
         previously_invested: Have you previously invested in impact?
         impacts: Select the impacts that you prioritize
         sdgs: Select the SDG's you are interested in
@@ -45,6 +46,7 @@ zu:
       contact_phone: Phone
       project_name: Project name
       project_developer: Project developer
+      investor: Investor
       category: Category
       mosaic: Mosaic
       verified: Verified
