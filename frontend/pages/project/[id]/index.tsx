@@ -34,6 +34,7 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
         'country',
         'municipality',
         'department',
+        'priority_landscape',
       ],
     }));
   } catch (e) {
