@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 
 import { X as CloseIcon } from 'react-feather';
 import { useForm } from 'react-hook-form';
@@ -26,67 +26,79 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
 }: InviteUsersModalProps) => {
   const { formatMessage } = useIntl();
   const inviteUsers = useInviteUsers();
-  const [emailChips, setEmailChips] = useState([]);
 
   const {
     clearErrors,
-    formState: { errors },
+    formState,
     getValues,
     handleSubmit,
     register,
     resetField,
     setError,
+    setValue,
+    reset,
   } = useForm<UsersInvitationForm>({
     shouldFocusError: true,
     shouldUseNativeValidation: true,
     reValidateMode: 'onChange',
+    defaultValues: { emails: [] },
   });
 
   useEffect(() => {
-    setEmailChips([]);
-  }, [setOpenInvitationModal]);
+    reset();
+    clearErrors();
+  }, [clearErrors, reset, setOpenInvitationModal]);
 
   const handleSendInvite = useCallback(
     (data: InviteUsersDto) =>
       inviteUsers.mutate(data, {
         onError: (error) => {
           console.log('error', error);
-          setError('email', { message: 'Please, enter a valid email.', type: 'manual' });
         },
         onSuccess: () => {
           setOpenInvitationModal(false);
         },
       }),
-    [inviteUsers, setOpenInvitationModal, setError]
+    [inviteUsers, setOpenInvitationModal]
   );
 
-  const onSubmit = () => handleSendInvite({ emails: emailChips });
+  const onSubmit = (values) => {
+    if (values.emails.length) {
+      if (!('email' in formState.errors)) {
+        handleSendInvite({ data: values.emails });
+      } else {
+        setError('email', { message: 'Please, enter valid emails.', type: 'manual' });
+      }
+    }
+  };
 
   const handleKeyDown = useCallback(
-    (e) => {
+    (e?, type?: 'submiting') => {
+      const oldEmails = getValues('emails');
       const newEmail = getValues('email');
-      if (['Enter', 'Tab', ','].includes(e.key)) {
-        clearErrors('email');
+      if (type == 'submiting' || ['Enter', 'Tab'].includes(e.key)) {
         const isValid = /\S+@\S+\.\S+/.test(newEmail);
         if (isValid) {
+          setValue('emails', oldEmails.concat(newEmail));
           resetField('email');
-          setEmailChips(emailChips.concat(newEmail));
         } else {
+          console.log('error');
           setError('email', { message: 'Please, enter a valid email.', type: 'manual' });
         }
       }
     },
-    [clearErrors, emailChips, getValues, resetField, setError]
+    [getValues, resetField, setError, setValue]
   );
 
   const removeEmail = useCallback(
     (email) => {
-      const restEmails = [...emailChips];
-      restEmails.splice(emailChips.indexOf(email), 1);
-      setEmailChips(restEmails);
+      const oldEmails = getValues('emails');
+      const restEmails = [...oldEmails];
+      restEmails.splice(oldEmails.indexOf(email), 1);
+      setValue('emails', restEmails);
       resetField('email');
     },
-    [emailChips, resetField]
+    [getValues, resetField, setValue]
   );
 
   return (
@@ -98,7 +110,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
       size="default"
       scrollable={false}
     >
-      <form className="flex flex-col" noValidate onSubmit={handleSubmit(onSubmit)}>
+      <form className="flex flex-col" noValidate>
         <p className="mb-2 font-serif text-3xl text-green-dark">
           <FormattedMessage defaultMessage="Invite users" id="R+1DVQ" />
         </p>
@@ -116,7 +128,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
         <div className="inline-block p-2 focus-within:border-green-dark min-h-[95px] border border-beige rounded-lg">
           <div className="flex flex-wrap space-x-1">
             <div className="flex flex-wrap">
-              {emailChips?.map((email, i) => (
+              {getValues('emails')?.map((email, i) => (
                 <div className="flex px-4 py-1 mb-1 mr-1 bg-beige rounded-2xl" key={i}>
                   <p className="text-sm text-green-dark">{email}</p>
                   <button type="button" onClick={() => removeEmail(email)}>
@@ -127,9 +139,9 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
             </div>
             <Input
               type="text"
-              id="emails-users-invitation"
+              id="email"
               name="email"
-              aria-describedby="emails-error"
+              aria-describedby="email-error"
               register={register}
               placeholder={formatMessage(
                 {
@@ -137,18 +149,38 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
                   id: '8SayhS',
                 },
                 {
-                  placeholder: emailChips?.length > 0 ? '' : 'separate emails by comma',
+                  placeholder: getValues('emails')?.length > 0 ? '' : 'separate emails by enter',
                 }
               )}
               className="px-1 py-0 mx-0 max-w-[240px] leading-8 h-7 text-gray-400 border-none focus:shadow-none hover:shadow-none"
               onKeyDown={handleKeyDown}
               contentEditable
             />
+            <Input
+              className="hidden border-none focus:shadow-none hover:shadow-none"
+              name="emails"
+              id="emails"
+              type="text"
+              aria-describedby="emails-error"
+              register={register}
+              registerOptions={{
+                required: formatMessage({
+                  defaultMessage: 'Please, enter valid email.',
+                  id: 'oAIvoH',
+                }),
+                minLength: 1,
+              }}
+            />
           </div>
         </div>
-
         <div>
-          <ErrorMessage id="emails-error" errorText={errors?.email?.message} />
+          <ErrorMessage
+            id="email-error"
+            errorText={formState.errors?.emails?.length && formState.errors?.emails[0]?.message}
+          />
+        </div>
+        <div>
+          <ErrorMessage id="email-error" errorText={formState.errors?.email?.message} />
         </div>
 
         {inviteUsers.isError && (
@@ -168,7 +200,12 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
           >
             <FormattedMessage defaultMessage="Cancel" id="47FYwb" />
           </Button>
-          <Button type="submit" theme="primary-green" size="small" className="flex-shrink-0 mr-5">
+          <Button
+            onClick={handleSubmit(onSubmit, console.log)}
+            theme="primary-green"
+            size="small"
+            className="flex-shrink-0 mr-5"
+          >
             <FormattedMessage defaultMessage="Send invite" id="oBB4L4" />
           </Button>
         </div>

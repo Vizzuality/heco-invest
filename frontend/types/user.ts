@@ -36,8 +36,9 @@ export type UserAccount = {
 
 export type UsersInvitationForm = {
   email: string;
+  emails: string[];
 };
 
 export type InviteUsersDto = {
-  emails: string[];
+  data: string[];
 };
