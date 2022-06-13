@@ -61,6 +61,9 @@ locals {
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY = var.google_maps_api_key
     NEXT_PUBLIC_MAPBOX_API_TOKEN    = var.mapbox_api_key
   }
+  backend_docker_build_args = {
+    RAILS_RELATIVE_URL_ROOT = "/backend"
+  }
 }
 
 module "frontend_build" {
@@ -92,6 +95,7 @@ module "backend_build" {
   image_name             = "backend"
   dockerfile_path        = "./backend/Dockerfile"
   docker_context_path    = "./backend"
+  docker_build_args      = local.backend_docker_build_args
   cloud_run_service_name = "${var.project_name}-backend"
   test_container_name    = "backend"
   additional_steps       = [{
