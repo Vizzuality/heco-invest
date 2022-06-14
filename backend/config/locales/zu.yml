@@ -73,6 +73,7 @@ zu:
       about: About
       contact_information: Contact Information
       online_presence: Online presence
+      delete: Delete account
     messages:
       delete_confirmation: Are you sure you want to delete this %{model}?
       success_update: "%{model} was successfully updated"

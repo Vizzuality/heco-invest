@@ -9,7 +9,7 @@
       <li><%= section_link_to t("backoffice.account.profile"), :profile, default: true %></li>
       <li><%= section_link_to t("backoffice.account.approval_status"), :status %></li>
     </ul>
-    <%= link_to "Delete account",
+    <%= link_to t("backoffice.account.delete"),
        backoffice_project_developer_path(@project_developer.id),
        data: {
          turbo_method: :delete,
