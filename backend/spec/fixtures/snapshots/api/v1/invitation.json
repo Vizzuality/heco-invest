@@ -1,0 +1,14 @@
+{
+  "data": {
+    "id": "affd1410-d41e-4859-840e-59a1fee93544",
+    "type": "user",
+    "attributes": {
+      "first_name": "Jan",
+      "last_name": "Kowalski",
+      "email": "user@example.com",
+      "role": "light",
+      "confirmed": true,
+      "approved": true
+    }
+  }
+}

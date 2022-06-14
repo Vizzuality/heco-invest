@@ -10,6 +10,7 @@ class Ability
     return if user.blank?
 
     user_rights
+    owner_rights if user.owner_accounts.exists?
     approved_user_rights if user.approved?
   end
 
@@ -34,6 +35,10 @@ class Ability
     can %i[show], Investor, account_id: user.account_id
     can %i[show], Project, project_developer: {account_id: user.account_id}
     can %i[show], OpenCall, investor: {account_id: user.account_id}
+  end
+
+  def owner_rights
+    can %i[invite], User, account_id: nil
   end
 
   def approved_user_rights
