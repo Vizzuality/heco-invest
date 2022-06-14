@@ -3,7 +3,7 @@ module Backoffice
     include Sections
     include ContentLanguage
 
-    before_action :fetch_project_developer, only: [:edit, :update]
+    before_action :fetch_project_developer, only: [:edit, :update, :destroy]
     before_action :set_breadcrumbs, only: [:edit, :update]
     before_action :set_sections, only: [:edit, :update]
     before_action :set_content_language_default, only: [:edit, :update]
@@ -37,6 +37,13 @@ module Backoffice
       else
         render :edit, status: :unprocessable_entity
       end
+    end
+
+    def destroy
+      @project_developer.destroy!
+
+      redirect_to backoffice_project_developers_path, status: :see_other,
+        notice: t("backoffice.messages.success_delete", model: t("backoffice.common.project_developer"))
     end
 
     private
