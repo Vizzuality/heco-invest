@@ -1,8 +1,10 @@
-import { FC } from 'react';
+import { FC, useRef } from 'react';
 
 import useMe from 'hooks/me';
+import { useScrollOnQuery } from 'hooks/use-scroll-on-query';
 
 import LayoutContainer from 'components/layout-container';
+import Loading from 'components/loading';
 import { UserRoles } from 'enums';
 import ProtectedPage from 'layouts/protected-page';
 
@@ -15,13 +17,18 @@ import Navigation from './navigation';
 import { DashboardLayoutProps } from './types';
 
 export const DashboardLayout: FC<DashboardLayoutProps> = ({
+  scrollOnQuery = true,
+  isLoading = false,
   children,
   buttons,
 }: DashboardLayoutProps) => {
+  const mainContainerRef = useRef(null);
   const { user } = useMe();
 
   const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
   const isInvestor = user?.role === UserRoles.Investor;
+
+  useScrollOnQuery({ ref: mainContainerRef, autoScroll: scrollOnQuery });
 
   const { data: projectDeveloperData } = useProjectDeveloper({
     enabled: isProjectDeveloper,
@@ -57,8 +64,14 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
               </div>
             </LayoutContainer>
           </div>
-          <main className="h-full overflow-y-scroll bg-background-dark">
-            <LayoutContainer className="py-8">{children}</LayoutContainer>
+          <main ref={mainContainerRef} className="h-full overflow-y-scroll bg-background-dark">
+            {isLoading ? (
+              <div className="absolute flex items-center justify-center bg-background-dark top-px bottom-px left-px bg-opacity-20 right-px rounded-2xl backdrop-blur-sm">
+                <Loading visible={true} iconClassName="w-10 h-10" />
+              </div>
+            ) : (
+              <LayoutContainer className="py-8">{children}</LayoutContainer>
+            )}
           </main>
         </div>
       </div>
