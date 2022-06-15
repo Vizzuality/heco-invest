@@ -41,7 +41,11 @@ RSpec.configure do |config|
               attributes: {
                 first_name: {type: :string},
                 last_name: {type: :string},
-                email: {type: :string}
+                email: {type: :string},
+                role: {type: :string},
+                confirmed: {type: :boolean},
+                approved: {type: :boolean},
+                invitation: {type: :string, enum: %i[completed waiting], nullable: true}
               }
             }
           },

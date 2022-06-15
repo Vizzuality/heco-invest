@@ -10,13 +10,14 @@ class Ability
     return if user.blank?
 
     user_rights
-    owner_rights if user.owner_accounts.exists?
+    owner_rights if user.owner_accounts.exists? && user.owner_accounts.first.approved?
     approved_user_rights if user.approved?
   end
 
   private
 
   def default_rights
+    can :create, User
     # only data from approved users are visible
     can %i[index show], ProjectDeveloper, account: {review_status: :approved}
     can %i[index show], Investor, account: {review_status: :approved}
@@ -25,6 +26,9 @@ class Ability
   end
 
   def user_rights
+    can :manage, User, id: user.id
+    can %i[index show], User, account_id: user.account_id
+
     can %i[create update], Investor, account_id: user.account_id
     can %i[create update], ProjectDeveloper, account_id: user.account_id
     can %i[create update], Project, project_developer: {account_id: user.account_id}
@@ -39,6 +43,7 @@ class Ability
 
   def owner_rights
     can %i[invite], User, account_id: nil
+    can %i[index show], User, invited_by_id: user.id, invited_by_type: "User"
   end
 
   def approved_user_rights

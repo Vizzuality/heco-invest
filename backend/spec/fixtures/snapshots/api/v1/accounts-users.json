@@ -1,0 +1,56 @@
+{
+  "data": [
+    {
+      "id": "cce7b023-7088-4154-8a19-d32479272033",
+      "type": "user",
+      "attributes": {
+        "first_name": "Dawna",
+        "last_name": "Block",
+        "email": "dawna.block@example.org",
+        "role": "light",
+        "confirmed": true,
+        "approved": true,
+        "invitation": null
+      }
+    },
+    {
+      "id": "b0e9202c-178e-4c6b-aea4-d6f3a2736da9",
+      "type": "user",
+      "attributes": {
+        "first_name": "Desmond",
+        "last_name": "Herzog",
+        "email": "desmond_herzog@example.org",
+        "role": "light",
+        "confirmed": true,
+        "approved": true,
+        "invitation": "completed"
+      }
+    },
+    {
+      "id": "fdbe66bc-a961-4072-9748-99bc0c91f03d",
+      "type": "user",
+      "attributes": {
+        "first_name": "Raymon",
+        "last_name": "Runte",
+        "email": "runte_raymon@example.org",
+        "role": "light",
+        "confirmed": true,
+        "approved": null,
+        "invitation": "waiting"
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 3,
+    "total": 3,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/account/users?page%5Bsize%5D=10",
+    "self": "/api/v1/account/users?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/account/users?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}

@@ -31,10 +31,11 @@ namespace :api, format: "json" do
 
     resources :background_job_events, only: [:index]
 
-    scope "account", module: "accounts" do
+    namespace :account, module: :accounts do
       resource :project_developer, only: [:create, :update, :show]
       resource :investor, only: [:create, :update, :show]
       resources :projects, only: [:create, :update]
+      resources :users, only: [:index]
     end
     resources :test_jobs, only: [] do
       post :test_sync, on: :collection

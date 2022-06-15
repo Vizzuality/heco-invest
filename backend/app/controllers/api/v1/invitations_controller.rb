@@ -16,7 +16,7 @@ module API
       def update
         @user.with_lock do
           @user.assign_attributes params.permit(:password, :first_name, :last_name, :ui_language)
-          @user.assign_attributes @user.invited_by&.attributes&.slice("role", "account_id") if @user.invited_by.present?
+          @user.assign_attributes @user.invited_by.attributes.slice("role", "account_id")
           @user.save!
           @user.accept_invitation!
           render json: UserSerializer.new(@user)
@@ -36,7 +36,7 @@ module API
 
       def fetch_user_by_token
         @user = User.find_by_invitation_token(params[:invitation_token], true)
-        raise ActiveRecord::RecordNotFound if @user.blank?
+        raise ActiveRecord::RecordNotFound if @user.blank? || @user.invited_by.blank?
       end
     end
   end
