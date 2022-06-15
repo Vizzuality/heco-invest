@@ -37,7 +37,7 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
       <div className="min-h-screen bg-background-dark">
         <div className="flex flex-col lg:h-screen ">
-          <div className="flex flex-col bg-radial-green-dark bg-green-dark lg:backdrop-blur-sm">
+          <div className="z-10 flex flex-col bg-radial-green-dark bg-green-dark lg:backdrop-blur-sm">
             <Header />
             <LayoutContainer className="mt-18 lg:mt-0">
               <div className="flex flex-col w-full text-white lg:flex-row">
