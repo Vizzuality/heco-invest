@@ -39,8 +39,8 @@ RSpec.configure do |config|
               id: {type: :string},
               type: {type: :string},
               attributes: {
-                first_name: {type: :string},
-                last_name: {type: :string},
+                first_name: {type: :string, nullable: true},
+                last_name: {type: :string, nullable: true},
                 email: {type: :string},
                 role: {type: :string},
                 confirmed: {type: :boolean},
