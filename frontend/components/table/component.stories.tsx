@@ -3,17 +3,7 @@ import { Story } from '@storybook/react/types-6-0';
 import Table from './component';
 import { TableProps } from './types';
 
-export default {
-  title: 'Components/Table',
-  component: Table,
-  argTypes: {},
-};
-
-const Template: Story<TableProps> = ({ ...args }: TableProps) => <Table {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  loading: false,
+const mock = {
   columns: [
     {
       Header: 'User',
@@ -44,18 +34,6 @@ Default.args = {
       defaultCanSort: true,
       sortDescFirst: true,
       width: 100,
-    },
-  ],
-  meta: {
-    page: 1,
-    size: 4,
-    totalItems: 8,
-    totalPages: 8,
-  },
-  initialState: [
-    {
-      pageIndex: 0,
-      sortBy: [{ id: 'displayName', desc: false }],
     },
   ],
   data: [
@@ -116,4 +94,39 @@ Default.args = {
       confirmed: 'Accepted',
     },
   ],
+};
+
+export default {
+  title: 'Components/Table',
+  component: Table,
+  argTypes: {},
+};
+
+const Template: Story<TableProps> = ({ ...args }: TableProps) => <Table {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  loading: false,
+  columns: mock.columns,
+  data: mock.data,
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  loading: true,
+  columns: mock.columns,
+  data: mock.data,
+};
+
+export const Pagination = Template.bind({});
+Pagination.args = {
+  loading: false,
+  columns: mock.columns,
+  data: mock.data,
+  pagination: {
+    numItems: 10,
+    totalItems: 80,
+    currentPage: 3,
+    totalPages: 8,
+  },
 };
