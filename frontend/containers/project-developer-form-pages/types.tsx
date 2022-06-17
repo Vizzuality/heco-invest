@@ -5,6 +5,7 @@ import {
   UseFormSetError,
   FormState,
   Control,
+  FieldPath,
 } from 'react-hook-form';
 
 import { Enum } from 'types/enums';
@@ -22,9 +23,9 @@ export type ProfileProps = {
   /**  React-hook-form state - errors */
   errors: FormState<ProjectDeveloperSetupForm>['errors'];
   /**  React-hook-form control function */
-  control: Control<ProjectDeveloperSetupForm>;
+  control: Control<ProjectDeveloperSetupForm, any>;
   /**  Project developers enums */
-  project_developer_type: Enum[];
+  projectDeveloperTypeEnums: Enum[];
   /**  If there is some error on enum query */
   enumsIsError: boolean;
   /**  PD picture small url */

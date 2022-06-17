@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import projectDeveloperSchema from 'schemas/projectDeveloper';
+import projectDeveloperSchema from 'schemas/project-developer';
 
 export default (section: number) => {
   return yupResolver(projectDeveloperSchema(section));
@@ -11,8 +11,8 @@ export const formPageInputs = [
   [
     'picture',
     'name',
-    'project-developer-type',
-    'entity-legal-registration-number',
+    'project_developer_type',
+    'entity_legal_registration_number',
     'about',
     'mission',
     'contact_phone',

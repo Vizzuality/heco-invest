@@ -24,7 +24,7 @@ export const Profile: FC<ProfileProps> = ({
   clearErrors,
   errors,
   control,
-  project_developer_type,
+  projectDeveloperTypeEnums,
   enumsIsError,
   picture,
   fetchError,
@@ -64,7 +64,7 @@ export const Profile: FC<ProfileProps> = ({
           setValue={setValue}
           name="picture"
           id="picture"
-          register={register}
+          control={control}
           preview
           clearErrors={clearErrors}
           defaultImage={picture}
@@ -75,44 +75,44 @@ export const Profile: FC<ProfileProps> = ({
         <div className="md:w-1/2 mb-6.5 md:m-0">
           <Label htmlFor="profile">
             <FormattedMessage defaultMessage="Project developer name" id="Sv/Mtz" />
-            <Input
-              name="name"
-              className="mt-2.5"
-              aria-required
-              id="profile"
-              type="text"
-              register={register}
-              placeholder={formatMessage({
-                defaultMessage: 'insert the name',
-                id: 'WAr33U',
-              })}
-              aria-describedby="profile-error"
-            />
           </Label>
+          <Input
+            name="name"
+            className="mt-2.5"
+            aria-required
+            id="profile"
+            type="text"
+            register={register}
+            placeholder={formatMessage({
+              defaultMessage: 'insert the name',
+              id: 'WAr33U',
+            })}
+            aria-describedby="profile-error"
+          />
           <ErrorMessage id="profile-error" errorText={errors?.name?.message} />
         </div>
         <div className="md:w-1/2">
           <Label htmlFor="project-developer-type" id="project-developer-type-label">
             <FormattedMessage defaultMessage="Project developer type" id="3tWxy0" />
-            <Combobox
-              control={control}
-              controlOptions={{ disabled: false }}
-              aria-required
-              name="project_developer_type"
-              id="project-developer-type"
-              className="mt-2.5 w-full h-10 border border-beige rounded-lg px-4"
-              placeholder={formatMessage({
-                defaultMessage: 'select the project developer type',
-                id: 'N9+9Fi',
-              })}
-              aria-describedby="project-developer-type-error"
-              aria-labelledby="project-developer-type-label"
-            >
-              {project_developer_type?.map(({ id, name }) => (
-                <Option key={id}>{name}</Option>
-              ))}
-            </Combobox>
           </Label>
+          <Combobox
+            control={control}
+            controlOptions={{ disabled: false }}
+            aria-required
+            name="project_developer_type"
+            id="project-developer-type"
+            className="mt-2.5 w-full h-10 border border-beige rounded-lg px-4"
+            placeholder={formatMessage({
+              defaultMessage: 'select the project developer type',
+              id: 'N9+9Fi',
+            })}
+            aria-describedby="project-developer-type-error"
+            aria-labelledby="project-developer-type-label"
+          >
+            {projectDeveloperTypeEnums?.map(({ id, name }) => (
+              <Option key={id}>{name}</Option>
+            ))}
+          </Combobox>
           <ErrorMessage
             errorText={(enumsIsError && fetchError) || errors?.project_developer_type?.message}
             id="project-developer-type-error"

@@ -1,6 +1,6 @@
 import { useIntl } from 'react-intl';
 
-import { object, string, array, number, mixed } from 'yup';
+import { object, string, array, number } from 'yup';
 
 import { getSocialMediaLinksRegex } from 'helpers/pages';
 

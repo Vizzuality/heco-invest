@@ -12,6 +12,12 @@ export const SelectLanguageForm = <FormValues extends FieldValues>({
   register,
   fieldName,
 }: SelectLanguageFormProps<FormValues>) => {
+  const text = {
+    es: <FormattedMessage defaultMessage="Spanish" id="8WtyrD" />,
+    pt: <FormattedMessage defaultMessage="Portuguese" id="A4UTjl" />,
+    en: <FormattedMessage defaultMessage="English" id="WkrNSk" />,
+  };
+
   return (
     <form className="flex flex-col justify-between" noValidate>
       <h1 className="mb-6 font-serif text-3xl font-semibold text-green-dark">
@@ -30,27 +36,27 @@ export const SelectLanguageForm = <FormValues extends FieldValues>({
           {languages.locales.map((lang) => {
             const { name, locale } = lang;
             return (
-              <Label
-                key={locale}
-                htmlFor={locale}
-                className="justify-center block w-full text-center border rounded-lg py-7 border-beige"
-              >
+              <div key={locale} className="flex flex-col justify-center w-full text-center">
                 <input
                   name={name}
                   required
                   id={locale}
                   type="radio"
+                  className="appearance-none peer"
                   value={locale}
                   {...register(fieldName)}
                   aria-describedby="language-error"
                 />
-                <span className="block font-sans text-lg font-semibold text-green-dark">
-                  {locale === 'es' && <FormattedMessage defaultMessage="Spanish" id="8WtyrD" />}
-                  {locale === 'pt' && <FormattedMessage defaultMessage="Portuguese" id="A4UTjl" />}
-                  {locale === 'en' && <FormattedMessage defaultMessage="English" id="WkrNSk" />}
-                </span>
-                <span className="block font-normal">({name})</span>
-              </Label>
+                <Label
+                  htmlFor={locale}
+                  className="flex flex-col justify-center w-full text-center border rounded-lg py-7 border-beige peer-checked:border-green-dark"
+                >
+                  <span className="block font-sans text-lg font-semibold text-green-dark">
+                    {text[locale]}
+                  </span>
+                  <span className="block font-normal">({name})</span>
+                </Label>
+              </div>
             );
           })}
         </fieldset>

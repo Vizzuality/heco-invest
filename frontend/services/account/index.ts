@@ -68,12 +68,7 @@ export function useCreateProjectDeveloper(): UseMutationResult<
 const updateProjectDeveloper = async (
   data: ProjectDeveloperSetupForm
 ): Promise<AxiosResponse<ProjectDeveloper>> => {
-  const config: AxiosRequestConfig = {
-    method: 'PUT',
-    url: `/api/v1/account/project_developer`,
-    data,
-  };
-  return await API(config);
+  return await API.put('/api/v1/account/project_developer', data);
 };
 
 export function useUpdateProjectDeveloper(): UseMutationResult<
@@ -81,13 +76,7 @@ export function useUpdateProjectDeveloper(): UseMutationResult<
   AxiosError<ErrorResponse>,
   ProjectDeveloperSetupForm
 > {
-  const queryClient = useQueryClient();
-
-  return useMutation(updateProjectDeveloper, {
-    onSuccess: (result) => {
-      queryClient.setQueryData(Queries.ProjectDeveloper, result.data);
-    },
-  });
+  return useMutation(updateProjectDeveloper);
 }
 
 // Create Project
