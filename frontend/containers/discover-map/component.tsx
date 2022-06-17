@@ -21,7 +21,8 @@ import { DiscoverMapProps } from './types';
 export const DiscoverMap: FC<DiscoverMapProps> = () => {
   const [viewport, setViewport] = useState({});
   const [bounds, setBounds] = useState({
-    bbox: [-81.99, -4.35, -65.69, 12.54],
+    // bbox: [-81.99, -4.35, -65.69, 12.54],
+    bbox: [-3.5249115, 40.5638447, -3.8341618, 40.3120639],
     options: { padding: 0 },
   });
 

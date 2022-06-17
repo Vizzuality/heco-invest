@@ -8,6 +8,10 @@ import { LocationSearcherProps } from './types';
 
 export const LocationSearcher: FC<LocationSearcherProps> = () => {
   const [address, setAddress] = useState('');
+  const [searchBounds, setSearchBounds] = useState({
+    bbox: null,
+    options: { padding: 0 },
+  });
 
   const handleChangeAddress = (newAddress) => {
     setAddress(newAddress);
@@ -16,10 +20,25 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
   const handleSelectAddress = (newAddress) => {
     setAddress(newAddress);
     geocodeByAddress(newAddress)
-      .then((results) => getLatLng(results[0]))
-      .then((latLng) => console.log('Success', latLng))
+      .then((results) => {
+        getLatLng(results[0]);
+        const { bounds } = results[0].geometry;
+        const NELat = bounds.getNorthEast().lat();
+        const NELng = bounds.getNorthEast().lng();
+        const SWLat = bounds.getSouthWest().lat();
+        const SWLng = bounds.getSouthWest().lng();
+        setSearchBounds({
+          ...searchBounds,
+          bbox: [NELng, NELat, SWLng, SWLat],
+        });
+      })
       .catch((error) => console.error('Error', error));
   };
+
+  const searchOptions = {
+    types: ['locality', 'sublocality'],
+  };
+
   return (
     <>
       <Script
@@ -30,6 +49,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
       />
       <PlacesAutocomplete
         value={address}
+        searchOptions={searchOptions}
         onChange={handleChangeAddress}
         onSelect={handleSelectAddress}
       >
@@ -62,36 +82,6 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
                   </div>
                 );
               })}
-              {/* {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
-            <input
-              {...getInputProps({
-                placeholder: 'Find location',
-                className: 'w-32 border border-red-500 absolute top-0 left-0 z-20',
-              })}
-              type="text"
-            />
-            <div className="absolute left-0 z-20 border top-6 border-green-light h-30">
-              {loading && <div>Loading...</div>}
-              {console.log('suggestions', suggestions)}
-              {/* {suggestions.map((suggestion, i) => {
-                const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
-                // inline style for demonstration purpose
-                const style = suggestion.active
-                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                return (
-                  <div
-                    key={i}
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style,
-                    })}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })} */}
             </div>
           </div>
         )}
