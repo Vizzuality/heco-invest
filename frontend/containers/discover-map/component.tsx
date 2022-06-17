@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
@@ -32,12 +32,6 @@ export const DiscoverMap: FC<DiscoverMapProps> = () => {
 
   const { projectsMap } = useProjectsMap(query as ProjectMapParams);
 
-  useEffect(() => {
-    <Script
-      src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
-    />;
-  }, []);
-
   const handleViewportChange = useCallback((vw) => {
     setViewport(vw);
   }, []);
@@ -55,17 +49,21 @@ export const DiscoverMap: FC<DiscoverMapProps> = () => {
 
   return (
     <>
-      {/* <PlacesAutocomplete value={addressLocation} onChange={handleChange} onSelect={handleSelect}>
+      <Script
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+      />
+      <PlacesAutocomplete value={addressLocation} onChange={handleChange} onSelect={handleSelect}>
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
             <input
               {...getInputProps({
-                placeholder: 'Search Places ...',
-                className: 'location-search-input',
+                placeholder: 'Find location',
+                className: 'w-32 border border-red-500',
               })}
             />
-            <div className="autocomplete-dropdown-container">
+            <div className="border border-green-light">
               {loading && <div>Loading...</div>}
+              {console.log('suggestions', suggestions)}
               {suggestions.map((suggestion, i) => {
                 const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
                 // inline style for demonstration purpose
@@ -87,7 +85,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = () => {
             </div>
           </div>
         )}
-      </PlacesAutocomplete> */}
+      </PlacesAutocomplete>
       <div className="relative w-full h-full">
         <Map bounds={bounds} viewport={viewport} onMapViewportChange={handleViewportChange}>
           {(map) => (
