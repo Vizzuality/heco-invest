@@ -1,9 +1,6 @@
 import { FC, useCallback, useState } from 'react';
 
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-
 import { useRouter } from 'next/router';
-import Script from 'next/script';
 
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { LayerManager } from '@vizzuality/layer-manager-react';
@@ -16,13 +13,13 @@ import { ProjectMapParams } from 'types/project';
 
 import { useProjectsMap } from 'services/projects/projectService';
 
+import LocationSearcher from './location-searcher';
 import MapPin from './pin';
 import MapPinCluster from './pin-cluster';
 import { DiscoverMapProps } from './types';
 
 export const DiscoverMap: FC<DiscoverMapProps> = () => {
   const [viewport, setViewport] = useState({});
-  const [addressLocation, setAddressLocation] = useState('');
   const [bounds, setBounds] = useState({
     bbox: [-81.99, -4.35, -65.69, 12.54],
     options: { padding: 0 },
@@ -36,68 +33,13 @@ export const DiscoverMap: FC<DiscoverMapProps> = () => {
     setViewport(vw);
   }, []);
 
-  const handleChange = (address) => {
-    // setAddressLocation({ address });
-  };
-
-  const handleSelect = (address) => {
-    geocodeByAddress(address)
-      .then((results) => getLatLng(results[0]))
-      .then((latLng) => console.log('Success', latLng))
-      .catch((error) => console.error('Error', error));
-  };
-
   return (
     <>
-      <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
-      />
-      <PlacesAutocomplete value={addressLocation} onChange={handleChange} onSelect={handleSelect}>
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
-            <input
-              {...getInputProps({
-                placeholder: 'Find location',
-                className: 'w-32 border border-red-500',
-              })}
-            />
-            <div className="border border-green-light">
-              {loading && <div>Loading...</div>}
-              {console.log('suggestions', suggestions)}
-              {suggestions.map((suggestion, i) => {
-                const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
-                // inline style for demonstration purpose
-                const style = suggestion.active
-                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                return (
-                  <div
-                    key={i}
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style,
-                    })}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </PlacesAutocomplete>
       <div className="relative w-full h-full">
+        <LocationSearcher />
         <Map bounds={bounds} viewport={viewport} onMapViewportChange={handleViewportChange}>
           {(map) => (
             <>
-              {/* <label htmlFor="map-search" className="absolute flex left-5 top-5">
-              <input
-                id="map-search"
-                placeholder="Find location"
-                name="bbox"
-                value={bounds.bbox.join(',')}
-              />
-            </label> */}
               <LayerManager map={map} plugin={PluginMapboxGl}></LayerManager>
 
               <ClusterLayer
