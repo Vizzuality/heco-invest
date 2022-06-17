@@ -1,8 +1,11 @@
 import { FC, useState } from 'react';
 
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Script from 'next/script';
+
+import { setBbox } from 'store/projects';
 
 import { LocationSearcherProps } from './types';
 
@@ -11,7 +14,14 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
   const [searchBounds, setSearchBounds] = useState({
     bbox: null,
     options: { padding: 0 },
+    viewportOptions: { transitionDuration: 1000 },
   });
+
+  const dispatch = useDispatch();
+
+  const { bbox } = useSelector((state) => state['/projects']);
+
+  console.log('BBOX--->', bbox);
 
   const handleChangeAddress = (newAddress) => {
     setAddress(newAddress);
@@ -27,6 +37,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
         const NELng = bounds.getNorthEast().lng();
         const SWLat = bounds.getSouthWest().lat();
         const SWLng = bounds.getSouthWest().lng();
+        dispatch(setBbox([NELng, NELat, SWLng, SWLat]));
         setSearchBounds({
           ...searchBounds,
           bbox: [NELng, NELat, SWLng, SWLat],
