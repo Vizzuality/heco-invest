@@ -7,28 +7,62 @@ import Script from 'next/script';
 import { LocationSearcherProps } from './types';
 
 export const LocationSearcher: FC<LocationSearcherProps> = () => {
-  const [addressLocation, setAddressLocation] = useState('');
+  const [address, setAddress] = useState('');
 
-  const handleChange = (address) => {
-    console.log('address', { address });
-    setAddressLocation(address);
+  const handleChangeAddress = (newAddress) => {
+    setAddress(newAddress);
   };
 
-  const handleSelect = (address) => {
-    geocodeByAddress(address)
+  const handleSelectAddress = (newAddress) => {
+    setAddress(newAddress);
+    geocodeByAddress(newAddress)
       .then((results) => getLatLng(results[0]))
       .then((latLng) => console.log('Success', latLng))
       .catch((error) => console.error('Error', error));
   };
-
   return (
     <>
       <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+        // TODO: Activate key and remove mock one
+        // src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
         strategy="beforeInteractive"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwcOSQ6hnqoqiXX_1D1ykHOBAZZ2UorHE&libraries=places"
       />
-      <PlacesAutocomplete value={addressLocation} onChange={handleChange} onSelect={handleSelect}>
+      <PlacesAutocomplete
+        value={address}
+        onChange={handleChangeAddress}
+        onSelect={handleSelectAddress}
+      >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+          <div>
+            <input
+              {...getInputProps({
+                placeholder: 'Search Places ...',
+                className: 'location-search-input',
+              })}
+            />
+            <div className="autocomplete-dropdown-container">
+              {loading && <div>Loading...</div>}
+              {suggestions.map((suggestion) => {
+                const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
+                // inline style for demonstration purpose
+                const style = suggestion.active
+                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                console.log(suggestion);
+                return (
+                  <div
+                    key={suggestion.placeId}
+                    {...getSuggestionItemProps(suggestion, {
+                      className,
+                      style,
+                    })}
+                  >
+                    <span>{suggestion.description}</span>
+                  </div>
+                );
+              })}
+              {/* {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
             <input
               {...getInputProps({
