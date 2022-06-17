@@ -1,4 +1,7 @@
-<%= render partial: "filters", locals: {q: @q} %>
+<div class="flex">
+  <%= render partial: "filters", locals: {q: @q} %>
+  <%= render partial: "backoffice/base/total_records" %>
+</div>
 
 <table class="backoffice-table">
   <thead>
@@ -8,6 +11,12 @@
       </th>
       <th>
         <%= sort_link @q, :account_owner_full_name, t("backoffice.common.account_owner") %>
+      </th>
+      <th>
+        <%= sort_link @q, :account_contact_email, t("backoffice.common.contact_email") %>
+      </th>
+      <th>
+        <%= sort_link @q, :account_contact_phone, t("backoffice.common.contact_phone") %>
       </th>
       <th>
         <%= sort_link @q, :account_users_count, t("backoffice.common.account_users") %>
@@ -30,10 +39,12 @@
       <tr>
         <td><%= investor.name %></td>
         <td><%= investor.account.owner.full_name %></td>
+        <td><%= investor.contact_email %></td>
+        <td><%= investor.contact_phone %></td>
         <td><%= investor.account.users_count %></td>
         <td><%= investor.open_calls_count %></td>
         <td><%= investor.language %></td>
-        <td><%= investor.account.review_status %></td>
+        <td><%= status_tag investor.account.review_status, ReviewStatus.find(investor.account.review_status).name %></td>
         <td>
           <%= button_to t("backoffice.common.approve"), approve_backoffice_account_path(investor.account.id), class: "link-button", method: :post unless investor.account.approved? %>
           <%= button_to t("backoffice.common.reject"), reject_backoffice_account_path(investor.account.id), class: "link-button", method: :post unless investor.account.rejected? %>

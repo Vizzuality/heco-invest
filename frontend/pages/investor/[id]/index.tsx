@@ -16,7 +16,6 @@ import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
-import sdgsMock from 'mockups/sdgs.json';
 import { PageComponent } from 'types';
 import { GroupedEnums } from 'types/enums';
 import { Investor } from 'types/investor';
@@ -85,6 +84,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     instrument_type: allInstrumentTypes,
     impact: allImpacts,
     investor_type: allInvestorTypes,
+    sdg: allSdgs,
   } = enums;
 
   const getSocialInfo = () => {
@@ -170,7 +170,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
               </h3>
               <SDGs
                 className="my-3"
-                sdgs={sdgsMock.filter(({ id }) => sdgs?.includes(Number(id)))}
+                sdgs={allSdgs.filter(({ id }) => sdgs?.includes(Number(id)))}
               />
             </>
           )}

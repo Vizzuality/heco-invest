@@ -29,11 +29,12 @@ class Project < ApplicationRecord
     :relevant_links
 
   enum status: ProjectStatus::TYPES_WITH_CODE, _default: :draft
+  ransacker :status, formatter: proc { |v| statuses[v] }
 
-  validates :development_stage, inclusion: {in: ProjectDevelopmentStage::TYPES}
-  validates :category, inclusion: {in: Category::TYPES}
+  validates :development_stage, inclusion: {in: ProjectDevelopmentStage::TYPES, allow_blank: true}, presence: true
+  validates :category, inclusion: {in: Category::TYPES, allow_blank: true}, presence: true
   validates :sdgs, array_inclusion: {in: Sdg::TYPES}, presence: true
-  validates :language, inclusion: {in: Language::TYPES}
+  validates :language, inclusion: {in: Language::TYPES, allow_blank: true}, presence: true
   validates :target_groups, array_inclusion: {in: ProjectTargetGroup::TYPES}, presence: true
   validates :impact_areas, array_inclusion: {in: ImpactArea::TYPES}, presence: true
 
@@ -47,7 +48,7 @@ class Project < ApplicationRecord
     :progress_impact_tracking,
     :geometry
 
-  validates :estimated_duration_in_months, numericality: {only_integer: true, greater_than: 0}, presence: true
+  validates :estimated_duration_in_months, numericality: {only_integer: true, greater_than: 0, less_than: 37}, presence: true
   validates :trusted, inclusion: [true, false]
   validates :received_funding, inclusion: [true, false]
   validates :looking_for_funding, inclusion: [true, false]
@@ -55,7 +56,7 @@ class Project < ApplicationRecord
 
   with_options if: -> { looking_for_funding? } do
     validates :instrument_types, array_inclusion: {in: InstrumentType::TYPES}, presence: true
-    validates :ticket_size, inclusion: {in: TicketSize::TYPES}
+    validates :ticket_size, inclusion: {in: TicketSize::TYPES, allow_blank: true}, presence: true
     validates_presence_of :funding_plan
   end
 

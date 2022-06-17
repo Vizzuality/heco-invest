@@ -1,11 +1,31 @@
 zu:
-  activerecord:
-    attributes:
+  simple_form:
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
       account:
-        review_statuses:
-          unapproved: Unapproved
-          approved: Approved
-          rejected: Rejected
+        picture: picture
+        name: Profile name
+        about: About
+        website: Website
+        contact_phone: Contact phone
+        contact_email: Contact email
+        language: Language
+        review_status: Review status
+      project_developer:
+        project_developer_type: Project developer type
+        entity_legal_registration_number: Entity legal registration number (NIT or RUT)
+      defaults:
+        categories: Select the categories that you work on
+        impacts: Expect to have impact on
+        mission: What's your mission?
+        mosaics: Select HeCo priority landscapes on which you will have impact
   backoffice:
     common:
       account_owner: Account owner
@@ -15,19 +35,38 @@ zu:
       status: Status
       approve: Approve
       reject: Reject
+      contact_email: Email
+      contact_phone: Phone
       project_name: Project name
       project_developer: Project developer
       category: Category
       mosaic: Mosaic
       verified: Verified
       unverified: Unverified
+      edit: Edit
+      save: Save
+      cancel: Cancel
+      view_content_in: View content in
       search_placeholder: Search
-      apply: Apply filters
-      reset: Reset filters
+      apply: Apply
+      reset: Reset
+      total: Total
+      export_csv: export csv
       navigation:
         prev: "←"
         next: "→"
         gap: "..."
+    account:
+      account_language: Account language
+      account_language_description: This is the default language in which all the content is created by the account users.
+      approval_status: Approval status
+      approval_status_description: Carefully revise the profile information and set the status.
+      profile: Profile
+      about: About
+      contact_information: Contact Information
+      online_presence: Online presence
+    messages:
+      success_update: "%{model} was successfully updated"
     sign_in:
       welcome: Welcome to HeCO Invest backoffice.
       enter_details_below: Please enter your details below.
@@ -35,6 +74,9 @@ zu:
     project_developers:
       index:
         projects: Projects
+      edit:
+        general: General
+        about_the_work: About the work
     investors:
       index:
         open_calls: Open calls
@@ -70,6 +112,20 @@ zu:
       subject: Your account was rejected!
       content_html: We would like to inform you that your account at HeCo platform was rejected. One of our platform administrators should reach you shortly, but feel free to contact us at %{contact_url}.
   enums:
+    review_status:
+      approved:
+        name: Approved
+      unapproved:
+        name: Unapproved
+      rejected:
+        name: Rejected
+    language:
+      en:
+        name: English
+      es:
+        name: Spanish
+      pt:
+        name: Portugal
     category:
       sustainable-agrosystems:
         name: Sustainable Agrosystems

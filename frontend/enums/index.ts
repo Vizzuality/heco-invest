@@ -97,6 +97,7 @@ export enum EnumTypes {
   TargetGroup = 'project_target_group',
   Mosaic = 'mosaic',
   Images = 'image',
+  Sdg = 'sdg',
 }
 
 /** Project development stages */

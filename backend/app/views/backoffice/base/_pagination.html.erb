@@ -1,0 +1,29 @@
+<% link = pagy_link_proc(pagy) -%>
+
+<nav aria-label="Pagination" class="pagination">
+  <ol>
+    <li>
+      <% if pagy.prev %>
+        <%== link.call(pagy.prev, t("backoffice.common.navigation.prev"), 'aria-label="previous"') %>
+      <% end %>
+    </li>
+
+    <% pagy.series.each do |item| %>
+      <li>
+        <% if item.is_a?(Integer) %>
+          <%== link.call(item) %>
+        <% elsif item.is_a?(String) %>
+          <span class="active"><%== item %></span>
+        <% elsif item == :gap %>
+          <%== t("backoffice.common.navigation.gap") %>
+        <% end %>
+      </li>
+    <% end %>
+
+    <li>
+      <% if pagy.next %>
+        <%== link.call(pagy.next, t("backoffice.common.navigation.next"), 'aria-label="next"') %>
+      <% end %>
+    </li>
+  </ol>
+</nav>

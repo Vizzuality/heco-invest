@@ -11,8 +11,9 @@ Capybara.register_driver(:cuprite) do |app|
     browser_options: {
       "no-sandbox": nil
     },
+    timeout: 15,
     # Increase Chrome startup wait time (required for stable CI builds)
-    process_timeout: 15,
+    process_timeout: 30,
     inspector: true,
     headless: ENV["HEADLESS"] != "false"
   )
@@ -39,7 +40,12 @@ RSpec.configure do |config|
   config.before(:suite) do
     Rails.application.load_tasks
     `yarn build`
-    `yarn build:css`
+    Rake::Task["tailwindcss:build"].execute
     Rake::Task["assets:precompile"].execute
+  end
+
+  config.after(:suite) do
+    Rails.application.load_tasks
+    Rake::Task["assets:clobber"].execute
   end
 end

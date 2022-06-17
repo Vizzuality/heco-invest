@@ -1,4 +1,4 @@
-<div class="inline-block relative w-60">
+<div class="inline-block relative w-60 mr-3">
   <%= f.input :filter_full_text, placeholder: I18n.t("backoffice.common.search_placeholder"), required: false, label: false, input_html: { class:"z-20 pr-15", value: params.dig(:q, :filter_full_text) } %>
   <%= button_tag type: :submit, class: "absolute top-0 right-0 p-2.5 text-white bg-green-dark rounded-r-lg border border-solid border-beige" do %>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
