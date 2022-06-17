@@ -1,7 +1,9 @@
 import { FC, useState } from 'react';
 
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
+import cx from 'classnames';
 
 import Script from 'next/script';
 
@@ -11,17 +13,8 @@ import { LocationSearcherProps } from './types';
 
 export const LocationSearcher: FC<LocationSearcherProps> = () => {
   const [address, setAddress] = useState('');
-  const [searchBounds, setSearchBounds] = useState({
-    bbox: null,
-    options: { padding: 0 },
-    viewportOptions: { transitionDuration: 1000 },
-  });
 
   const dispatch = useDispatch();
-
-  const { bbox } = useSelector((state) => state['/projects']);
-
-  console.log('BBOX--->', bbox);
 
   const handleChangeAddress = (newAddress) => {
     setAddress(newAddress);
@@ -38,10 +31,6 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
         const SWLat = bounds.getSouthWest().lat();
         const SWLng = bounds.getSouthWest().lng();
         dispatch(setBbox([NELng, NELat, SWLng, SWLat]));
-        setSearchBounds({
-          ...searchBounds,
-          bbox: [NELng, NELat, SWLng, SWLat],
-        });
       })
       .catch((error) => console.error('Error', error));
   };
@@ -65,28 +54,27 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
         onSelect={handleSelectAddress}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
+          <div className="absolute top-0 left-0 z-10 w-32">
             <input
               {...getInputProps({
-                placeholder: 'Search Places ...',
-                className: 'location-search-input',
+                placeholder: 'Find location ...',
+                className:
+                  'rounded shadow-sm block w-full px-2 text-base text-gray-900 placeholder-gray-400 py-1 placeholder-opacity-100 border border-solid border-beige focus:border-green-dark outline-none bg-white transition',
               })}
             />
             <div className="autocomplete-dropdown-container">
               {loading && <div>Loading...</div>}
               {suggestions.map((suggestion) => {
-                const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
-                // inline style for demonstration purpose
-                const style = suggestion.active
-                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                console.log(suggestion);
+                const className = cx({
+                  'bg-white cursor-pointer': true,
+                  'text-red-600': suggestion.active,
+                  'text-yellow-600 bg-red-600': !suggestion.active,
+                });
                 return (
                   <div
                     key={suggestion.placeId}
                     {...getSuggestionItemProps(suggestion, {
                       className,
-                      style,
                     })}
                   >
                     <span>{suggestion.description}</span>

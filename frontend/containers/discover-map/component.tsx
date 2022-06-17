@@ -1,4 +1,6 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
+
+import { useSelector } from 'react-redux';
 
 import { useRouter } from 'next/router';
 
@@ -20,11 +22,18 @@ import { DiscoverMapProps } from './types';
 
 export const DiscoverMap: FC<DiscoverMapProps> = () => {
   const [viewport, setViewport] = useState({});
-  const [bounds, setBounds] = useState({
-    // bbox: [-81.99, -4.35, -65.69, 12.54],
-    bbox: [-3.5249115, 40.5638447, -3.8341618, 40.3120639],
-    options: { padding: 0 },
-  });
+
+  const { bbox } = useSelector((state) => state['/projects']);
+
+  const [bounds, setBounds] = useState(null);
+
+  useEffect(() => {
+    setBounds({
+      bbox: bbox,
+      options: { padding: 0 },
+      viewportOptions: { transitionDuration: 1000 },
+    });
+  }, [bbox]);
 
   const { query } = useRouter();
 
