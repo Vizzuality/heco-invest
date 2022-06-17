@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
 import { Enum } from 'types/enums';
+import { Interest } from 'types/projectDeveloper';
 
 interface InterestItems {
   categoryEnums?: Enum[];
@@ -16,7 +17,7 @@ export enum InterestNames {
   Mosaics = 'mosaics',
 }
 
-const useInterests = ({ categoryEnums, impactEnums, mosaicEnums }: InterestItems) => {
+const useInterests = ({ categoryEnums, impactEnums, mosaicEnums }: InterestItems): Interest[] => {
   const { formatMessage } = useIntl();
   return useMemo(
     () => [
@@ -28,12 +29,14 @@ const useInterests = ({ categoryEnums, impactEnums, mosaicEnums }: InterestItems
         name: InterestNames.Categories,
         items: categoryEnums,
         required: true,
+        infoText: '',
       },
       {
         title: formatMessage({ defaultMessage: 'Expect to have impact on', id: 'YB8bt5' }),
         name: InterestNames.Impacts,
         items: impactEnums,
         required: true,
+        infoText: '',
       },
       {
         title: formatMessage({

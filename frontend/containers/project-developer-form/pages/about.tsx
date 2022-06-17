@@ -1,5 +1,7 @@
+import { FC } from 'react';
+
 import { FieldError } from 'react-hook-form';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { InterestNames } from 'hooks/useInterests';
 
@@ -14,18 +16,21 @@ import { CategoryType } from 'types/category';
 import { Enum } from 'types/enums';
 import { Locations } from 'types/locations';
 
-export const About = ({
+import { AboutProps } from '../types';
+
+export const About: FC<AboutProps> = ({
   interests,
   enumsIsError,
   register,
   setValue,
   errors,
   clearErrors,
-  fetchError,
 }) => {
-  const getInterestsErrorText = (interestName: InterestNames) => {
+  const { formatMessage } = useIntl();
+
+  const getInterestsErrorText = (interestName: string) => {
     if (enumsIsError) {
-      return fetchError;
+      return formatMessage({ defaultMessage: 'Unable to load the data', id: 'zniaka' });
     }
     return (errors[interestName] as unknown as FieldError)?.message;
   };

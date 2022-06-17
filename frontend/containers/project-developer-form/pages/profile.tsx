@@ -27,7 +27,6 @@ export const Profile: FC<ProfileProps> = ({
   projectDeveloperTypeEnums,
   enumsIsError,
   picture,
-  fetchError,
 }) => {
   const { formatMessage } = useIntl();
 
@@ -114,7 +113,11 @@ export const Profile: FC<ProfileProps> = ({
             ))}
           </Combobox>
           <ErrorMessage
-            errorText={(enumsIsError && fetchError) || errors?.project_developer_type?.message}
+            errorText={
+              (enumsIsError &&
+                formatMessage({ defaultMessage: 'Unable to load the data', id: 'zniaka' })) ||
+              errors?.project_developer_type?.message
+            }
             id="project-developer-type-error"
           />
         </div>

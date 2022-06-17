@@ -11,12 +11,11 @@ import { entries, pick } from 'lodash-es';
 
 import useInterests from 'hooks/useInterests';
 
-import { getServiceErrors } from 'helpers/pages';
+import { getServiceErrors, useGetAlert } from 'helpers/pages';
 
 import SelectLanguageForm from 'containers/forms/select-language-form';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
-import { About, Profile, ProjectDeveloperOutro } from 'containers/project-developer-form-pages';
 
 import Head from 'components/head';
 import { Paths } from 'enums';
@@ -25,6 +24,9 @@ import useProjectDeveloperValidation, { formPageInputs } from 'validations/proje
 
 import { useEnums } from 'services/enums/enumService';
 
+import About from './pages/about';
+import Profile from './pages/profile';
+import { ProjectDeveloperOutro } from './pages/project-developer-outro';
 import { ProjectDeveloperFormProps } from './types';
 
 export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
@@ -64,6 +66,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
     shouldFocusError: true,
     reValidateMode: 'onChange',
   });
+  const alert = useGetAlert(mutation.error);
 
   const handleServiceErrors = useCallback(
     (
@@ -104,20 +107,6 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
     return formPageInputs[page].some((input) => errors.hasOwnProperty(input));
   };
 
-  const getAlert = () => {
-    if (mutation.error) {
-      return Array.isArray(mutation.error?.message)
-        ? mutation.error.message.map(({ title }: { title: string }) => title)
-        : formatMessage({
-            defaultMessage:
-              'Something went wrong while submitting your form. Please correct the errors before submitting again.',
-            id: 'WTuVeL',
-          });
-    }
-  };
-
-  const fetchError = formatMessage({ defaultMessage: 'Unable to load the data', id: 'zniaka' });
-
   useEffect(() => {
     if (initialValues) {
       const { picture, ...rest } = pick(initialValues, formPageInputs.flat());
@@ -137,7 +126,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
         title={title}
         autoNavigation={false}
         page={currentPage}
-        alert={getAlert()}
+        alert={alert}
         isSubmitting={mutation.isLoading}
         showOutro={currentPage === totalPages}
         onNextClick={handleNextClick}
@@ -161,7 +150,6 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
             control={control}
             projectDeveloperTypeEnums={projectDeveloperTypeEnums}
             enumsIsError={enums?.isError}
-            fetchError={fetchError}
             picture={initialValues?.picture?.original}
           />
         </Page>
@@ -173,7 +161,6 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
             setValue={setValue}
             errors={errors}
             clearErrors={clearErrors}
-            fetchError={fetchError}
           />
         </Page>
         {isCreateForm && (
