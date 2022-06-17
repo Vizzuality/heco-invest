@@ -14418,6 +14418,7 @@ __metadata:
     react-intl: ^5.24.6
     react-map-gl: ^6.1.15
     react-map-gl-draw: ^1.0.2
+    react-places-autocomplete: ^7.3.0
     react-popper: ^2.2.5
     react-query: ^3.16.0
     react-redux: ^7.2.4
@@ -19653,6 +19654,18 @@ __metadata:
   peerDependencies:
     react: ">=16.3.0"
   checksum: 7094de00e02521c24d13499c78865ab13a5e013f19dc154cdf8070f77b15374124b623e9ef988f53e9b5cf0fc0d5291e8f462007372b92e452e501560e81e7d8
+  languageName: node
+  linkType: hard
+
+"react-places-autocomplete@npm:^7.3.0":
+  version: 7.3.0
+  resolution: "react-places-autocomplete@npm:7.3.0"
+  dependencies:
+    lodash.debounce: ^4.0.8
+    prop-types: ^15.5.8
+  peerDependencies:
+    react: ">=0.14.7"
+  checksum: b507fedc60129a7def162c0a82ef1eb17f856dc63e4547edc5123f41b32f0e47542682d4e2a86a3c63eba8ba91c68d3a00d71ded02363f1ded194dd78f04d29f
   languageName: node
   linkType: hard
 
