@@ -4,7 +4,7 @@ import { AxiosResponse, AxiosError } from 'axios';
 
 import { Queries } from 'enums';
 import { ResetPassword } from 'types/sign-in';
-import { SignupDto, User, InviteUsersDto } from 'types/user';
+import { SignupDto, User, InviteUsersDto, InvitedUser } from 'types/user';
 
 import { ErrorResponse, ResponseData } from 'services/types';
 
@@ -53,3 +53,17 @@ export function useInviteUsers(): UseMutationResult<
     },
   });
 }
+
+export const getInvitedUser = async (token: string): Promise<InvitedUser> => {
+  // const response = await API.get<ResponseData<InvitedUser>>('/api/v1/user/invitation', {
+  //   params: token,
+  // });
+  // return response.data.data;
+  console.log('get invited user token =' + token);
+  return Promise.resolve({
+    id: '1234ewfqwfe',
+    email: 'email@gmail.com',
+    signed_up: false,
+    account_name: 'Project developer account',
+  });
+};

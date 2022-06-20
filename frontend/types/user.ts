@@ -42,3 +42,10 @@ export type UsersInvitationForm = {
 export type InviteUsersDto = {
   data: string[];
 };
+
+export type InvitedUser = {
+  id: string;
+  email: string;
+  signed_up: boolean;
+  account_name: string;
+};

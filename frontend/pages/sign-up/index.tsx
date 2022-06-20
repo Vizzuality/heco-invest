@@ -5,8 +5,6 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
-import { InferGetStaticPropsType } from 'next';
-
 import useMe from 'hooks/me';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -19,22 +17,36 @@ import Loading from 'components/loading';
 import { Paths } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
-import { SignupDto, SignupFormI } from 'types/user';
+import { InvitedUser, SignupDto, SignupFormI } from 'types/user';
 import { useSignupResolver } from 'validations/signup';
 
-import { useSignup } from 'services/users/userService';
+import { getInvitedUser, useSignup } from 'services/users/userService';
 
-export async function getStaticProps(ctx) {
+export const getServerSideProps = async ({ locale, query }) => {
+  let invitedUser = null;
+
+  // If it is an invitation redirect
+  if (query?.token) {
+    try {
+      invitedUser = await getInvitedUser(query.token as string);
+    } catch (e) {
+      return { notFound: true };
+    }
+  }
+
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
+      invitedUser,
     },
   };
-}
+};
 
-type SIgnUpPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+type SIgnUpPageProps = {
+  invitedUser: InvitedUser;
+};
 
-const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
+const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = ({ invitedUser }) => {
   const { locale, push } = useRouter();
   const intl = useIntl();
   const signUp = useSignup();
@@ -45,7 +57,11 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<SignupFormI>({ resolver, shouldUseNativeValidation: true });
+  } = useForm<SignupFormI>({
+    resolver,
+    shouldUseNativeValidation: true,
+    defaultValues: { email: invitedUser?.email },
+  });
 
   const handleSignUp = useCallback(
     (data: SignupDto) =>
@@ -75,6 +91,24 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
       <p className="mb-1.5 font-sans text-base text-gray-600">
         <FormattedMessage defaultMessage="Please enter your details below." id="rfVDxL" />
       </p>
+
+      {!!invitedUser && (
+        <div className="w-full p-4 rounded-lg bg-beige">
+          <FormattedMessage
+            defaultMessage="By signing up you will be automatically added to {accountName} account. <a>How accounts work?</a>"
+            id="cWqW+j"
+            values={{
+              accountName: invitedUser.account_name,
+              a: (chunks) => (
+                <a className="underline" href={Paths.FAQ}>
+                  {chunks}
+                </a>
+              ),
+            }}
+          />
+        </div>
+      )}
+
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signUp.isError && signUp.error.message ? (
           Array.isArray(signUp.error.message) ? (

@@ -6,8 +6,6 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { InferGetStaticPropsType } from 'next';
-
 import useMe from 'hooks/me';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -22,21 +20,37 @@ import { Paths, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
 import { SignIn } from 'types/sign-in';
+import { InvitedUser } from 'types/user';
 import { useSignInResolver } from 'validations/sign-in';
 
 import { useSignIn } from 'services/authentication/authService';
+import { getInvitedUser } from 'services/users/userService';
 
-export async function getStaticProps(ctx) {
+export const getServerSideProps = async ({ locale, query }) => {
+  let invitedUser = null;
+
+  // If it is an invitation redirect
+  if (query?.token) {
+    try {
+      invitedUser = await getInvitedUser(query.token as string);
+    } catch (e) {
+      return { notFound: true };
+    }
+  }
+
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
+      invitedUser,
     },
   };
-}
+};
 
-type SignInPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+type SignInPageProps = {
+  invitedUser: InvitedUser;
+};
 
-const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
+const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = ({ invitedUser }) => {
   const { push, query } = useRouter();
   const intl = useIntl();
   const signIn = useSignIn();
@@ -45,7 +59,11 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<SignIn>({ resolver, shouldUseNativeValidation: true });
+  } = useForm<SignIn>({
+    resolver,
+    shouldUseNativeValidation: true,
+    defaultValues: { email: invitedUser?.email },
+  });
   const { user } = useMe();
 
   useEffect(() => {
@@ -73,6 +91,17 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
           id="ZjA6uH"
         />
       </p>
+
+      {!!invitedUser && (
+        <div className="w-full bg-background-middle">
+          <FormattedMessage
+            defaultMessage="By signing up you will be automatically added to {accountName} account. How account’s work?"
+            id="ZgpBay"
+            values={{ accountName: invitedUser.account_name }}
+          />
+        </div>
+      )}
+
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signIn.error?.message && (
           <Alert className="mb-4.5" withLayoutContainer>

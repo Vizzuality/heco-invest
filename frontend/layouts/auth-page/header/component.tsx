@@ -5,17 +5,25 @@ import { FormattedMessage } from 'react-intl';
 import cx from 'classnames';
 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import LanguageSelector from 'containers/layouts/language-selector';
 import Logo from 'containers/layouts/logo';
 
 import LayoutContainer from 'components/layout-container';
+import { Paths } from 'enums';
 
 import { HeaderProps } from './types';
 
 export const Header: FC<HeaderProps> = ({
   props: { className, pageType = 'sign-in' } = {},
 }: HeaderProps) => {
+  const { query } = useRouter();
+
+  const href =
+    (pageType === 'sign-in' || pageType === 'forgot-password' ? Paths.SignUp : Paths.SignIn) +
+    (query.token && '?token=' + query.token);
+
   return (
     <header
       className={cx({
@@ -29,30 +37,22 @@ export const Header: FC<HeaderProps> = ({
           <Logo />
           <div className="flex items-center justify-end flex-1">
             <div className="mr-4">
-              {pageType === 'sign-up' && (
-                <>
-                  <span className="mr-2 text-sm text-gray-600">
-                    <FormattedMessage defaultMessage="Already have an account?" id="uCk8r+" />
-                  </span>
-                  <Link href="/sign-in">
-                    <a className="text-sm font-medium text-green-dark">
-                      <FormattedMessage defaultMessage="Sign In" id="Ub+AGc" />
-                    </a>
-                  </Link>
-                </>
-              )}
-              {(pageType === 'sign-in' || pageType === 'forgot-password') && (
-                <>
-                  <span className="mr-2 text-sm text-gray-600">
-                    <FormattedMessage defaultMessage="Don't have an account?" id="25WwxF" />
-                  </span>
-                  <Link href="/sign-up">
-                    <a className="text-sm font-medium text-green-dark">
-                      <FormattedMessage defaultMessage="Sign Up" id="39AHJm" />
-                    </a>
-                  </Link>
-                </>
-              )}
+              <span className="mr-2 text-sm text-gray-600">
+                {pageType === 'sign-in' ? (
+                  <FormattedMessage defaultMessage="Don't have an account?" id="25WwxF" />
+                ) : (
+                  <FormattedMessage defaultMessage="Already have an account?" id="uCk8r+" />
+                )}
+              </span>
+              <Link href={href} passHref>
+                <a className="text-sm font-medium text-green-dark">
+                  {pageType === 'sign-in' ? (
+                    <FormattedMessage defaultMessage="Sign Up" id="39AHJm" />
+                  ) : (
+                    <FormattedMessage defaultMessage="Sign In" id="Ub+AGc" />
+                  )}
+                </a>
+              </Link>
             </div>
             <LanguageSelector />
           </div>
