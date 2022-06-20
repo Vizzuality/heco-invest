@@ -1,14 +1,15 @@
 import { useMemo } from 'react';
 
-import { Path } from 'react-hook-form';
+import { FormState, Path } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
 
-import { ErrorResponse } from 'services/types';
 import { EnumTypes } from 'enums';
+
+import { ErrorResponse } from 'services/types';
 
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
 export function getServiceErrors<FormValues>(
@@ -108,6 +109,10 @@ export const getSocialMediaLinksRegex = () => {
     linkedin: getRegex('linkedin'),
     instagram: getRegex('instagram'),
   };
+};
+
+export const getPageErrors = (formPageInputs: string[], errors: FormState<any>['errors']) => {
+  return formPageInputs.some((input) => errors.hasOwnProperty(input));
 };
 
 export const useFilterNames = () => {

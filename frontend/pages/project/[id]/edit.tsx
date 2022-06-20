@@ -1,15 +1,15 @@
-import { useCallback, useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
-import { QueryClient, dehydrate } from 'react-query';
 
 import { useRouter } from 'next/router';
 
-import { InferGetStaticPropsType } from 'next';
+import { decycle } from 'cycle';
+import { groupBy, pickBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
-import { getPageErrors, getServiceErrors, useGetAlert } from 'helpers/pages';
+import { getServiceErrors, useGetAlert } from 'helpers/pages';
 
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
@@ -23,39 +23,55 @@ import {
 } from 'containers/project-form-pages';
 
 import Head from 'components/head';
-import { Paths, Queries, UserRoles } from 'enums';
+import { Paths, UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
-import { ProjectCreationPayload, ProjectForm } from 'types/project';
-import useProjectValidation from 'validations/project';
-import { formPageInputs } from 'validations/project';
+import { GroupedEnums as GroupedEnumsType } from 'types/enums';
+import { Investor } from 'types/investor';
+import { Project as ProjectType, ProjectForm, ProjectUpdatePayload } from 'types/project';
+import { ProjectDeveloper } from 'types/projectDeveloper';
+import { User } from 'types/user';
+import useProjectValidation, { formPageInputs } from 'validations/project';
 
-import { useCreateProject } from 'services/account';
+import { useUpdateProject } from 'services/account';
 import { getEnums, useEnums } from 'services/enums/enumService';
-import { getLocations } from 'services/locations/locations';
+import { getProject } from 'services/projects/projectService';
 
-export async function getStaticProps(ctx) {
-  const queryClient = new QueryClient();
-  // prefetch static data - enums and locations
-  queryClient.prefetchQuery(Queries.EnumList, getEnums);
-  queryClient.prefetchQuery(Queries.Locations, () => getLocations());
+export const getServerSideProps = async ({ params: { id }, locale }) => {
+  let project;
+
+  // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
+  try {
+    ({ data: project } = await getProject(id, {
+      includes: 'project_images,country,municipality,department,involved_project_developers',
+    }));
+  } catch (e) {
+    return { notFound: true };
+  }
+
+  const enums = await getEnums();
+
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
-      dehydratedState: dehydrate(queryClient),
+      intlMessages: await loadI18nMessages({ locale }),
+      enums: groupBy(enums, 'type'),
+      project: decycle(project),
     },
   };
-}
+};
 
-type ProjectProps = InferGetStaticPropsType<typeof getStaticProps>;
+type EditProjectProps = {
+  project: ProjectType;
+  enums: GroupedEnumsType;
+};
 
-const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
+const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ project }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [showLeave, setShowLeave] = useState(false);
   const { formatMessage } = useIntl();
   const resolver = useProjectValidation(currentPage);
-  const createProject = useCreateProject();
+  const updateProject = useUpdateProject();
   const { push } = useRouter();
   const { data } = useEnums();
   const {
@@ -66,6 +82,36 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
     ticket_size,
     instrument_type,
   } = data;
+
+  const projectFormKeys = formPageInputs.flat();
+
+  const getDefaultValues = useCallback((): Partial<ProjectForm> => {
+    const general = pickBy(project, (value, key: any) => projectFormKeys.includes(key));
+    return {
+      ...general,
+      municipality_id: project.municipality?.id,
+      department_id: project.municipality.parent.id,
+      country_id: project.country?.id,
+      project_images_attributes: project.project_images?.map(({ cover, file, id }, index) => {
+        const imageId = file.original.split('redirect/')[1].split('/')[0];
+        return {
+          file: imageId,
+          cover,
+          id,
+          title: formatMessage(
+            { defaultMessage: 'Project image {index}.', id: 'jj4ae3' },
+            { index: index }
+          ),
+          src: file.original,
+        };
+      }),
+      involved_project_developer: !!project.involved_project_developers.length ? 1 : 0,
+      involved_project_developer_ids: project.involved_project_developers.map(({ id }) => id),
+      involved_project_developer_not_listed: project.involved_project_developer_not_listed,
+    };
+  }, [formatMessage, project, projectFormKeys]);
+
+  const defaultValues = getDefaultValues();
 
   const {
     register,
@@ -82,34 +128,26 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
     shouldUseNativeValidation: true,
     shouldFocusError: true,
     reValidateMode: 'onChange',
-    defaultValues: { target_groups: [] },
+    defaultValues,
   });
 
   const handleCreate = useCallback(
-    (formData: ProjectCreationPayload) => {
-      const data = {
-        ...formData,
-        // Endpoint only expects `file` and `cover`. If for instance an `id` is passed, it'll
-        // return an error. However, the frontend needs extra properties such as the `id` during
-        // the form creation, so we're cleaning up the form data before POST'ing it to the endpoint.
-        project_images_attributes: formData.project_images_attributes?.map(({ file, cover }) => ({
-          file,
-          cover,
-        })),
-      } as ProjectCreationPayload;
-
-      return createProject.mutate(data, {
+    (formData: ProjectUpdatePayload) => {
+      return updateProject.mutate(formData, {
         onError: (error) => {
           const { errorPages, fieldErrors } = getServiceErrors<ProjectForm>(error, formPageInputs);
           fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
           errorPages.length && setCurrentPage(errorPages[0]);
         },
         onSuccess: (result) => {
-          push({ pathname: '/projects/pending/', search: `project=${result.data.slug}` });
+          push({
+            pathname: `${Paths.Project}/${project?.slug}`,
+            search: `project=${result.data.slug}`,
+          });
         },
       });
     },
-    [createProject, push, setError]
+    [updateProject, setError, push, project?.slug]
   );
 
   const onSubmit: SubmitHandler<ProjectForm> = (values: ProjectForm) => {
@@ -123,8 +161,15 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
       } = values;
 
       // set image_attributes cover from the project_images_attributes_cover value
-      const project_images_attributes: any = values.project_images_attributes.map(({ file }) =>
-        file === project_images_attributes_cover ? { file, cover: true } : { file, cover: false }
+      const project_images_attributes: any = values.project_images_attributes.map(
+        ({ file, id, _destroy }) => {
+          // If is an old image, send the image id, if is a new one, send the image file (direct-upload signed_id)
+          if (id) {
+            return { file, id, cover: file === project_images_attributes_cover, _destroy };
+          } else {
+            return { file, cover: file === project_images_attributes_cover };
+          }
+        }
       );
       // set involved_project_developer_not_listed to true if not listed is selected and removes this value from the involved_project_developer_ids
       const involved_project_developer_not_listed =
@@ -132,13 +177,13 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
       const involved_project_developer_ids = values.involved_project_developer_ids?.filter(
         (id) => id !== 'not-listed'
       );
-
       handleCreate({
         ...rest,
         involved_project_developer_not_listed,
         involved_project_developer_ids,
         project_images_attributes,
         geometry,
+        id: project?.id,
       });
     } else {
       setCurrentPage(currentPage + 1);
@@ -149,18 +194,32 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
     await handleSubmit(onSubmit)();
   };
 
-  const getPageError = (page: number) => getPageErrors(formPageInputs[page], errors);
+  const getIsOwner = (user: User, userAccount: ProjectDeveloper | Investor) => {
+    // The user must be a the creator of the project to be allowed to edit it.
+    return (
+      project?.project_developer?.id &&
+      userAccount?.id &&
+      project.project_developer.id === userAccount.id
+    );
+  };
 
   return (
-    <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
+    <ProtectedPage
+      allowConfirmed
+      ownership={{
+        allowOwner: true,
+        getIsOwner,
+      }}
+      permissions={[UserRoles.ProjectDeveloper]}
+    >
       <Head title={formatMessage({ defaultMessage: 'Create project', id: 'VUN1K7' })} />
       <MultiPageLayout
         layout="narrow"
         title={formatMessage({ defaultMessage: 'Create project', id: 'VUN1K7' })}
         autoNavigation={false}
         page={currentPage}
-        alert={useGetAlert(createProject.error)}
-        isSubmitting={createProject.isLoading}
+        alert={useGetAlert(updateProject.error)}
+        isSubmitting={updateProject.isLoading}
         showOutro={false}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
@@ -168,7 +227,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
         onCloseClick={() => setShowLeave(true)}
         onSubmitClick={handleSubmit(onSubmit)}
       >
-        <Page key="general-information" hasErrors={getPageError(0)}>
+        <Page key="general-information">
           <GeneralInformation
             register={register}
             control={control}
@@ -181,7 +240,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             setError={setError}
           />
         </Page>
-        <Page key="project-description" hasErrors={getPageError(1)}>
+        <Page key="project-description">
           <ProjectDescription
             register={register}
             control={control}
@@ -194,7 +253,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             target_group={project_target_group}
           />
         </Page>
-        <Page key="impact" hasErrors={getPageError(2)}>
+        <Page key="impact">
           <Impact
             register={register}
             control={control}
@@ -206,7 +265,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             clearErrors={clearErrors}
           />
         </Page>
-        <Page key="funding" hasErrors={getPageError(3)}>
+        <Page key="funding">
           <Funding
             register={register}
             control={control}
@@ -219,7 +278,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             instrument_type={instrument_type}
           />
         </Page>
-        <Page key="project-grow" hasErrors={getPageError(4)}>
+        <Page key="project-grow">
           <ProjectGrow
             register={register}
             control={control}
@@ -227,7 +286,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             errors={errors}
           />
         </Page>
-        <Page key="other" hasErrors={getPageError(5)}>
+        <Page key="other">
           <OtherInformation
             register={register}
             control={control}
@@ -246,8 +305,8 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
   );
 };
 
-Project.layout = {
+EditProject.layout = {
   Component: FormPageLayout,
 };
 
-export default Project;
+export default EditProject;
