@@ -83,7 +83,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
               )}
               {suggestions.map((suggestion) => {
                 const className = cx({
-                  'bg-white cursor-pointer text-xs py-0.5': true,
+                  'bg-white cursor-pointer text-xs py-0.5 px-1.5': true,
                   'text-gray-800': suggestion.active,
                   'text-gray-600': !suggestion.active,
                 });
