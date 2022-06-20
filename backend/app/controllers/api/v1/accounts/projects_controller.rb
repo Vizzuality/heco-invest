@@ -6,6 +6,20 @@ module API
         before_action :fetch_project, only: [:update]
         load_and_authorize_resource
 
+        def index
+          projects = @projects
+            .where(project_developer_id: current_user.account.project_developer.id)
+            .includes(:project_developer, :involved_project_developers, project_images: {file_attachment: :blob})
+          projects = API::Filterer.new(projects, filter_params.to_h).call
+          projects = API::Sorter.new(projects, sorting_by: params[:sorting]).call
+          render json: ProjectSerializer.new(
+            projects,
+            include: included_relationships,
+            fields: sparse_fieldset,
+            params: {current_user: current_user}
+          ).serializable_hash
+        end
+
         def create
           @project.save!
           render json: ProjectSerializer.new(
@@ -68,6 +82,10 @@ module API
 
         def fetch_project
           @project = Project.friendly.find(params[:id])
+        end
+
+        def filter_params
+          params.fetch(:filter, {}).permit :full_text
         end
       end
     end

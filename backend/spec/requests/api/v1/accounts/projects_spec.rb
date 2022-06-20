@@ -62,6 +62,76 @@ RSpec.describe "API V1 Account Projects", type: :request do
   }
 
   path "/api/v1/account/projects" do
+    get "Returns list of projects of User" do
+      tags "Projects"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+
+      parameter name: "fields[project]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
+      parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
+      parameter name: :sorting, in: :query, type: :string, required: false, description: "Sort records.",
+        enum: [
+          "name asc", "name desc",
+          # "category asc", "category desc", # TODO: this is stored as a slug in the db, i.e. in English
+          # "municipality asc", "municipality desc", # TODO: this shows as 'Leticia, Colombia' in the design
+          # "ticket_size asc", "ticket_size desc", # TODO: this is stored as a slug in the db, i.e. in English
+          # "instrument_type asc", "instrument_type desc", # TODO: this is an array of slugs
+          # "status asc", "status desc", # TODO: this is stored as a slug in the db, i.e. in English
+          "created_at asc", "created_at desc"
+        ]
+
+      let(:sorting) { "name asc" }
+
+      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {type: :array, items: {"$ref" => "#/components/schemas/project"}}
+        }
+
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before(:each) do
+          @project = create(:project, name: "This PDs Project Awesome", project_developer: user.account.project_developer)
+          create(:project, name: "This PDs Project Amazing", project_developer: user.account.project_developer)
+          create(:project, name: "Other PD's project", project_developer: create(:project_developer))
+          sign_in user
+        end
+
+        run_test!
+
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/account/projects")
+        end
+
+        context "with sparse fieldset" do
+          let("fields[project]") { "name,description,nonexisting" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/account/projects-sparse-fieldset")
+          end
+        end
+
+        context "with relationships" do
+          let("fields[project]") { "name,project_developer" }
+          let(:includes) { "project_developer" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/account/projects-include-relationships")
+          end
+        end
+
+        context "when filtered by searched text" do
+          let("filter[full_text]") { @project.name }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([@project.id])
+          end
+        end
+      end
+    end
+
     post "Create new Projects for User" do
       tags "Projects"
       consumes "application/json"
