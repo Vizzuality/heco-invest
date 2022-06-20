@@ -60,7 +60,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
         onSelect={handleSelectAddress}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div className="absolute top-0 left-0 z-10 w-32">
+          <div className="absolute top-3.5 left-3.5 z-10 w-32">
             <Icon
               icon={SearchIcon}
               className="absolute z-20 w-4.5 h-4.5 text-gray-700 bg-white rounded-full top-1.5 left-2"
