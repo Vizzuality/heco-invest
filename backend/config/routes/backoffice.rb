@@ -10,7 +10,7 @@ namespace :backoffice do
       post :reject
     end
   end
-  resources :investors, only: [:index]
+  resources :investors, only: [:index, :edit, :update]
   resources :project_developers, only: [:index, :edit, :update]
   resources :projects, only: [:index]
 end

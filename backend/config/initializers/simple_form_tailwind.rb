@@ -34,6 +34,8 @@ SimpleForm.setup do |config|
   config.input_field_valid_class = "border-green-400"
   config.label_class = "font-sans text-gray-800 font-semibold text-sm mb-2"
 
+  checkbox_class = "appearance-none inline-block w-4 h-4 mr-2 mt-0.5 px-0.5 py-[3px] border border-beige rounded hover:border hover:border-green-dark outline-none focus-visible:ring-green-dark focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white checked:border-green-dark checked:bg-green-dark checked:bg-checkbox-checked bg-no-repeat bg-center disabled:opacity-60 disabled:hover:border-beige transition"
+
   # vertical forms
   #
   # vertical default_wrapper
@@ -56,7 +58,7 @@ SimpleForm.setup do |config|
     b.use :html5
     b.optional :readonly
     b.wrapper tag: "div", class: "flex items-center h-5" do |ba|
-      ba.use :input, class: "focus:ring-2 focus:ring-indigo-500:focus ring-offset-2 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+      ba.use :input, class: checkbox_class
     end
     b.wrapper tag: "div", class: "ml-3 text-sm" do |bb|
       bb.use :label, class: "block", error_class: "text-red-500"
@@ -74,7 +76,7 @@ SimpleForm.setup do |config|
     end
     b.wrapper tag: "div", class: "flex flex-wrap gap-4.5 mt-2" do |bb|
       bb.use :input,
-        class: "appearance-none inline-block w-4 h-4 mr-2 mt-0.5 px-0.5 py-[3px] border border-beige rounded hover:border hover:border-green-dark outline-none focus-visible:ring-green-dark focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white  checked:border-green-dark checked:bg-green-dark checked:bg-checkbox-checked bg-no-repeat bg-center disabled:opacity-60 disabled:hover:border-beige transition",
+        class: checkbox_class,
         error_class: "invalid:border-red-700",
         valid_class: "text-green-400"
       bb.use :full_error, wrap_with: {tag: "p", class: "block mt-2 text-red-500 text-xs italic"}
