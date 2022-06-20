@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 
-import { FieldError } from 'react-hook-form';
+import { Controller, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -23,22 +23,31 @@ const Funding = ({
   clearErrors,
   instrument_type,
   ticket_sizes,
+  control,
 }: FundingProps) => {
   const { formatMessage } = useIntl();
-  const [showLookingForFundingFields, setShowLookingForFundingFields] = useState(false);
-  const [showReceivedFundedFields, setShowReceivedFundedFields] = useState(false);
+  const [defaultLookingForFunding, setDefaultLookingForFunding] = useState<boolean>();
+  const [defaultReceivedFunded, setDefaultReceivedFunded] = useState<boolean>();
 
   useEffect(() => {
-    setShowLookingForFundingFields(!!Number(getValues('looking_for_funding')));
-    setShowReceivedFundedFields(!!Number(getValues('received_funding')));
+    const lookingForFunding = getValues('looking_for_funding');
+    if (typeof lookingForFunding !== 'number') {
+      setDefaultLookingForFunding(lookingForFunding);
+    }
+    const receivedFunded = getValues('received_funding');
+    if (typeof receivedFunded !== 'number') {
+      setDefaultReceivedFunded(receivedFunded);
+    }
   }, [getValues]);
 
   const handleChangeLookingForFunding = (e: ChangeEvent<HTMLInputElement>) => {
-    setShowLookingForFundingFields(!!Number(e.target.value));
+    setDefaultLookingForFunding(!!Number(e.target.value));
+    setValue('looking_for_funding', !!Number(e.target.value));
   };
 
   const handleChangeReceivedFunded = (e: ChangeEvent<HTMLInputElement>) => {
-    setShowReceivedFundedFields(!!Number(e.target.value));
+    setDefaultReceivedFunded(!!Number(e.target.value));
+    setValue('received_funding', !!Number(e.target.value));
   };
 
   return (
@@ -76,32 +85,44 @@ const Funding = ({
                   htmlFor="looking_for_funding-yes"
                   className="flex items-center pt-0.5 font-normal"
                 >
-                  <input
-                    id="looking_for_funding-yes"
-                    type="radio"
-                    value={1}
-                    className="mr-2"
-                    aria-describedby="looking-forfunding-error"
-                    {...register('looking_for_funding', {
-                      onChange: handleChangeLookingForFunding,
-                    })}
-                  />
+                  <Controller
+                    control={control}
+                    name="looking_for_funding"
+                    render={(field) => (
+                      <input
+                        {...field}
+                        id="looking_for_funding-yes"
+                        type="radio"
+                        value={1}
+                        checked={defaultLookingForFunding}
+                        className="mr-2"
+                        aria-describedby="looking-forfunding-error"
+                        onChange={handleChangeLookingForFunding}
+                      />
+                    )}
+                  ></Controller>
                   <FormattedMessage defaultMessage="Yes" id="a5msuh" />
                 </Label>
                 <Label
                   htmlFor="looking_for_funding-no"
                   className="flex items-center pt-0.5 ml-4 font-normal"
                 >
-                  <input
-                    id="looking_for_funding-no"
-                    type="radio"
-                    value={0}
-                    className="mr-2"
-                    aria-describedby="looking-forfunding-error"
-                    {...register('looking_for_funding', {
-                      onChange: handleChangeLookingForFunding,
-                    })}
-                  />
+                  <Controller
+                    control={control}
+                    name="looking_for_funding"
+                    render={(field) => (
+                      <input
+                        {...field}
+                        id="looking_for_funding-no"
+                        type="radio"
+                        value={0}
+                        checked={defaultLookingForFunding === false}
+                        className="mr-2"
+                        aria-describedby="looking-forfunding-error"
+                        onChange={handleChangeLookingForFunding}
+                      />
+                    )}
+                  ></Controller>
                   <FormattedMessage defaultMessage="No" id="oUWADl" />
                 </Label>
               </div>
@@ -115,8 +136,8 @@ const Funding = ({
           </div>
           <div
             className={cx('transition-all ease bg-background-middle rounded-md px-4', {
-              'h-0 opacity-0 py-0 mt-0 hidden': !showLookingForFundingFields,
-              'opacity-100 h-fit py-4.5 mt-4.5 block': showLookingForFundingFields,
+              'h-0 opacity-0 py-0 mt-0 hidden': !defaultLookingForFunding,
+              'opacity-100 h-fit py-4.5 mt-4.5 block': !!defaultLookingForFunding,
             })}
           >
             <div>
@@ -244,32 +265,45 @@ const Funding = ({
                   htmlFor="received_funding-yes"
                   className="flex items-center pt-0.5 font-normal"
                 >
-                  <input
-                    id="received_funding-yes"
-                    type="radio"
-                    value={1}
-                    className="mr-2"
-                    aria-describedby="received_funding-error"
-                    {...register('received_funding', {
-                      onChange: handleChangeReceivedFunded,
-                    })}
-                  />
+                  <Controller
+                    control={control}
+                    name="received_funding"
+                    render={(field) => (
+                      <input
+                        {...field}
+                        id="received_funding-yes"
+                        type="radio"
+                        value={1}
+                        checked={defaultReceivedFunded}
+                        className="mr-2"
+                        aria-describedby="received_funding-error"
+                        onChange={handleChangeReceivedFunded}
+                      />
+                    )}
+                  ></Controller>
+
                   <FormattedMessage defaultMessage="Yes" id="a5msuh" />
                 </Label>
                 <Label
                   htmlFor="received_funding-no"
                   className="flex items-center pt-0.5 ml-4 font-normal"
                 >
-                  <input
-                    id="received_funding-no"
-                    type="radio"
-                    value={0}
-                    className="mr-2"
-                    aria-describedby="received_funding-error"
-                    {...register('received_funding', {
-                      onChange: handleChangeReceivedFunded,
-                    })}
-                  />
+                  <Controller
+                    control={control}
+                    name="received_funding"
+                    render={(field) => (
+                      <input
+                        {...field}
+                        id="received_funding-no"
+                        type="radio"
+                        value={0}
+                        checked={defaultReceivedFunded === false}
+                        className="mr-2"
+                        aria-describedby="received_funding-error"
+                        onChange={handleChangeReceivedFunded}
+                      />
+                    )}
+                  ></Controller>
                   <FormattedMessage defaultMessage="No" id="oUWADl" />
                 </Label>
               </div>
@@ -285,8 +319,8 @@ const Funding = ({
             className={cx(
               'z-1 transition-all bg-background-middle px-4 py-4.5 mt-4.5 rounded-md sm:flex gap-6',
               {
-                'h-0 opacity-0 hidden': !showReceivedFundedFields,
-                'opacity-100 h-auto': showReceivedFundedFields,
+                'h-0 opacity-0 hidden': !defaultReceivedFunded,
+                'opacity-100 h-auto': !!defaultReceivedFunded,
               }
             )}
           >

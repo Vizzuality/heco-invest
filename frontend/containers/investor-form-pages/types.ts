@@ -54,13 +54,6 @@ export type FundingProps = InvestorFormPagesProps & {
   instrument_type: Enum[];
 };
 
-export type SelectLanguageProps = {
-  /** React Hook Form's `register` function */
-  register: UseFormRegister<InvestorForm>;
-  /** React Hook Form's state 'errors' function */
-  errors: FieldErrors<InvestorForm>;
-};
-
 export type ProfileProps = InvestorFormPagesProps & {
   investorTypes: Enum[];
 };

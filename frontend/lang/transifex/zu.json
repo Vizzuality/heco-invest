@@ -230,9 +230,6 @@
   "8R8Or7": {
     "string": "Search community"
   },
-  "8SayhS": {
-    "string": "{placeholder}"
-  },
   "8WtyrD": {
     "string": "Spanish"
   },
@@ -293,9 +290,6 @@
   "APjPYs": {
     "string": "I want to write my content in"
   },
-  "AdAi3x": {
-    "string": "Emails"
-  },
   "AiagLY": {
     "string": "Entity legal registration number (NIT or RUT)"
   },
@@ -337,6 +331,9 @@
   },
   "CYTiug": {
     "string": "HeCo Invest will benefit poor and vulnerable people living in HeCo priority landscapes."
+  },
+  "CcFPkO": {
+    "string": "This project has {numDevelopers} project developer{noun}"
   },
   "CiBvks": {
     "string": "General information about the the project developer."
@@ -549,6 +546,9 @@
   "KvhWhT": {
     "string": "The <span>IDB Lab</span>, the <span>Paulson Institute</span> and the <span>World Wildlife Fund</span> are working together to develop a digital platform that connects governments, investors, donors, and philanthropists with carefully identified investment opportunities in <span>high priority locations</span> identified by programs such as Herencia Colombia (HeCo)."
   },
+  "LFDgTb": {
+    "string": "Leave project developer edition?"
+  },
   "LmHPHR": {
     "string": "Select the topics/sector categories that you work on"
   },
@@ -569,9 +569,6 @@
   },
   "MHwpc4": {
     "string": "Draw or upload your location"
-  },
-  "MM4RqT": {
-    "string": "This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}."
   },
   "MXykbb": {
     "string": "The problem we are solving"
@@ -668,9 +665,6 @@
   },
   "QqpgJo": {
     "string": "Leave investor creation form"
-  },
-  "R+1DVQ": {
-    "string": "Invite users"
   },
   "RDCAd6": {
     "string": "value {optionName} focused, {pagination}."
@@ -1157,12 +1151,6 @@
   },
   "o+Vt3t": {
     "string": "Partnership between:"
-  },
-  "oAIvoH": {
-    "string": "Please, enter valid email."
-  },
-  "oBB4L4": {
-    "string": "Send invite"
   },
   "oMC3r1": {
     "string": "Choose your account type"

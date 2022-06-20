@@ -14,12 +14,13 @@ import { decycle } from 'cycle';
 
 import { Queries } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
-import { Project, ProjectCreationPayload } from 'types/project';
+import { Project, ProjectCreationPayload, ProjectUpdatePayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 
 import API from 'services/api';
 import { ErrorResponse, ResponseData } from 'services/types';
 
+// Create PD
 const getProjectDeveloper = async (): Promise<ProjectDeveloper> => {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/project_developer`,
@@ -63,6 +64,22 @@ export function useCreateProjectDeveloper(): UseMutationResult<
   });
 }
 
+// Update PD
+const updateProjectDeveloper = async (
+  data: ProjectDeveloperSetupForm
+): Promise<AxiosResponse<ProjectDeveloper>> => {
+  return await API.put('/api/v1/account/project_developer', data);
+};
+
+export function useUpdateProjectDeveloper(): UseMutationResult<
+  AxiosResponse<ProjectDeveloper>,
+  AxiosError<ErrorResponse>,
+  ProjectDeveloperSetupForm
+> {
+  return useMutation(updateProjectDeveloper);
+}
+
+// Create Project
 export function useCreateProject(): UseMutationResult<
   AxiosResponse<Project>,
   AxiosError<ErrorResponse>,
@@ -79,6 +96,18 @@ export function useCreateProject(): UseMutationResult<
       queryClient.setQueryData(Queries.ProjectQuery, result.data);
     },
   });
+}
+
+export function useUpdateProject(): UseMutationResult<
+  AxiosResponse<Project>,
+  AxiosError<ErrorResponse>,
+  ProjectUpdatePayload
+> {
+  const updateProject = async (project: ProjectUpdatePayload): Promise<AxiosResponse<Project>> => {
+    return API.put(`/api/v1/account/projects/${project.id}`, project);
+  };
+
+  return useMutation(updateProject);
 }
 
 const getInvestor = async (): Promise<Investor> => {

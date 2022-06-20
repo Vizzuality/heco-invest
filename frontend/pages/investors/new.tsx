@@ -10,8 +10,8 @@ import { groupBy } from 'lodash-es';
 import { loadI18nMessages } from 'helpers/i18n';
 import { getServiceErrors, useGetAlert } from 'helpers/pages';
 
+import SelectLanguageForm from 'containers/forms/select-language-form';
 import {
-  SelectLanguage,
   Profile,
   InvestmentInformation,
   Impacts,
@@ -127,7 +127,7 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
         onSubmitClick={handleSubmit(onSubmit)}
       >
         <Page hasErrors={getPageErrors(0)}>
-          <SelectLanguage register={register} errors={errors} />
+          <SelectLanguageForm fieldName="language" register={register} errors={errors} />
         </Page>
         <Page hasErrors={getPageErrors(1)}>
           <Profile
