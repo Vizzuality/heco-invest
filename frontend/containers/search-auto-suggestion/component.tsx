@@ -122,7 +122,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
             </Button>
           </div>
           <div>
-            <p className="text-sm text-gray-800">
+            <p className="py-2 text-sm text-gray-800">
               <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
             </p>
           </div>
