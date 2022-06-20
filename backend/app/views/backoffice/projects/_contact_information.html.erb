@@ -1,0 +1,18 @@
+<table class="m-3 text-left">
+  <tr>
+    <th class="pr-8"><%= t("backoffice.common.name") %></th>
+    <td class="text-green-dark underline"><%= link_to project_developer.name, edit_backoffice_project_developer_path(project_developer.id) %></td>
+  </tr>
+  <tr>
+    <th class="pr-8"><%= t("simple_form.labels.account.type") %></th>
+    <td><%= ProjectDeveloperType.find(project_developer.project_developer_type).name %></td>
+  </tr>
+  <tr>
+    <th class="pr-8"><%= t("simple_form.labels.account.email") %></th>
+    <td class="text-green-dark underline"><%= mail_to project_developer.contact_email %></td>
+  </tr>
+  <tr>
+    <th class="pr-8"><%= t("simple_form.labels.account.phone") %></th>
+    <td class="text-green-dark underline"><%= phone_to project_developer.contact_phone %></td>
+  </tr>
+</table>
