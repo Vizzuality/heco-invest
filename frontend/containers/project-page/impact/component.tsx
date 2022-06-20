@@ -24,14 +24,14 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
   const intl = useIntl();
 
   const impact = useMemo(() => projectImpact(project)[impactLocation], [impactLocation, project]);
+  const impactScore = useMemo(
+    () => (impact?.total ? Math.round(impact?.total * 10) : null),
+    [impact]
+  );
   const targetGroups = enums?.project_target_group?.filter((targetGroup) =>
     project.target_groups?.includes(targetGroup.id)
   );
   const sdgs = enums.sdg.filter(({ id }) => project.sdgs.includes(parseInt(id)));
-
-  const formatCapitalizeDashedString = (s) => {
-    return s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, ' ');
-  };
 
   const OPTIONS = [
     {
@@ -124,9 +124,48 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
                 </button>
               </div>
               {/* DESKTOP */}
-              <div className="flex-col items-center hidden p-6 font-semibold bg-white lg:flex w-52 rounded-xl">
-                <p className=" text-green-dark">
-                  <span className="text-2xl">30</span>/ 100
+              {impactScore && (
+                <div className="flex-col items-center hidden p-6 font-semibold bg-white lg:flex w-52 rounded-xl">
+                  <p className=" text-green-dark">
+                    <span className="text-2xl">{impactScore}</span>/ 100
+                  </p>
+                  <div className="flex items-center space-x-2">
+                    <p className="text-base text-gray-800">
+                      <FormattedMessage defaultMessage="Impact score" id="2GBpne" />
+                    </p>
+
+                    <Tooltip
+                      placement="right"
+                      arrow
+                      arrowClassName="bg-black"
+                      content={
+                        <div className="max-w-md p-2 font-sans text-sm font-normal text-white bg-black rounded-sm w-72">
+                          <FormattedMessage
+                            defaultMessage="Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
+                            id="sFn7MX"
+                          />
+                        </div>
+                      }
+                    >
+                      <button
+                        type="button"
+                        className="box-border flex items-center justify-center w-4 h-4 text-gray-800 border border-gray-800 rounded-full pointer"
+                      >
+                        <p className="text-xs">i</p>
+                      </button>
+                    </Tooltip>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="my-8 lg:my-24 lg:w-1/2">
+              <ImpactChart category={project.category} impact={impact} />
+            </div>
+            {/* MOBILE */}
+            {impactScore && (
+              <div className="flex flex-col items-center p-6 font-semibold bg-white lg:hidden w-52 rounded-xl">
+                <p className="text-green-dark">
+                  <span className="text-2xl">{impactScore}</span>/ 100
                 </p>
                 <div className="flex items-center space-x-2">
                   <p className="text-base text-gray-800">
@@ -155,42 +194,7 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
                   </Tooltip>
                 </div>
               </div>
-            </div>
-            <div className="my-8 lg:my-24 lg:w-1/2">
-              <ImpactChart category={project.category} impact={impact} />
-            </div>
-            {/* MOBILE */}
-            <div className="flex flex-col items-center p-6 font-semibold bg-white lg:hidden w-52 rounded-xl">
-              <p className="text-green-dark">
-                <span className="text-2xl">30</span>/ 100
-              </p>
-              <div className="flex items-center space-x-2">
-                <p className="text-base text-gray-800">
-                  <FormattedMessage defaultMessage="Impact score" id="2GBpne" />
-                </p>
-
-                <Tooltip
-                  placement="right"
-                  arrow
-                  arrowClassName="bg-black"
-                  content={
-                    <div className="max-w-md p-2 font-sans text-sm font-normal text-white bg-black rounded-sm w-72">
-                      <FormattedMessage
-                        defaultMessage="Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
-                        id="sFn7MX"
-                      />
-                    </div>
-                  }
-                >
-                  <button
-                    type="button"
-                    className="box-border flex items-center justify-center w-4 h-4 text-gray-800 border border-gray-800 rounded-full pointer"
-                  >
-                    <p className="text-xs">i</p>
-                  </button>
-                </Tooltip>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </LayoutContainer>
