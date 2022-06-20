@@ -1,5 +1,3 @@
-import { FilterParams } from 'containers/forms/filters/types';
-
 export type DiscoverSearchProps = {
   /** Classes to apply to the container */
   className?: string;
