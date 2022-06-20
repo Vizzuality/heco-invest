@@ -8119,6 +8119,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/google.maps@npm:*":
+  version: 3.49.2
+  resolution: "@types/google.maps@npm:3.49.2"
+  checksum: ca2cb7842dfbc10551b5a33a052bd1c90dab21c13d5632601d87bc908064516a3f90b0b7eb517ce1024ea98734e490e2a90028c5534c52a82ceffb2e1b241fc9
+  languageName: node
+  linkType: hard
+
 "@types/graceful-fs@npm:^4.1.2":
   version: 4.1.5
   resolution: "@types/graceful-fs@npm:4.1.5"
@@ -8439,6 +8446,16 @@ __metadata:
     "@types/react": "*"
     "@types/viewport-mercator-project": "*"
   checksum: f386a50fa5d05c43b9c4f4ad3c5119affed8f719c1c8d5599050130dfdf3a4f839df3701f903a052838b0aac2642284534406b7b53741aca36ce9cf8f31ffd56
+  languageName: node
+  linkType: hard
+
+"@types/react-places-autocomplete@npm:^7.2.9":
+  version: 7.2.9
+  resolution: "@types/react-places-autocomplete@npm:7.2.9"
+  dependencies:
+    "@types/google.maps": "*"
+    "@types/react": "*"
+  checksum: df5f24f3c86576a1bac5e4d5fcb3f0d8d90bd1679b80357b4cbb26ed97612cd83bb2b2b03b2aec94f4c7d502ca9c75f7e9158b7cd91328d1600110010c26026f
   languageName: node
   linkType: hard
 
@@ -14375,6 +14392,7 @@ __metadata:
     "@types/lodash-es": ^4.17.6
     "@types/rails__activestorage": ^7.0.1
     "@types/react": ^17.0.5
+    "@types/react-places-autocomplete": ^7.2.9
     "@types/react-vis": ^1.11.11
     "@types/supercluster": ^7.1.0
     "@typescript-eslint/eslint-plugin": ^5.10.1
@@ -14418,6 +14436,7 @@ __metadata:
     react-intl: ^5.24.6
     react-map-gl: ^6.1.15
     react-map-gl-draw: ^1.0.2
+    react-places-autocomplete: ^7.3.0
     react-popper: ^2.2.5
     react-query: ^3.16.0
     react-redux: ^7.2.4
@@ -19653,6 +19672,18 @@ __metadata:
   peerDependencies:
     react: ">=16.3.0"
   checksum: 7094de00e02521c24d13499c78865ab13a5e013f19dc154cdf8070f77b15374124b623e9ef988f53e9b5cf0fc0d5291e8f462007372b92e452e501560e81e7d8
+  languageName: node
+  linkType: hard
+
+"react-places-autocomplete@npm:^7.3.0":
+  version: 7.3.0
+  resolution: "react-places-autocomplete@npm:7.3.0"
+  dependencies:
+    lodash.debounce: ^4.0.8
+    prop-types: ^15.5.8
+  peerDependencies:
+    react: ">=0.14.7"
+  checksum: b507fedc60129a7def162c0a82ef1eb17f856dc63e4547edc5123f41b32f0e47542682d4e2a86a3c63eba8ba91c68d3a00d71ded02363f1ded194dd78f04d29f
   languageName: node
   linkType: hard
 

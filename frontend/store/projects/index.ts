@@ -2,25 +2,24 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 // Define a type for the slice state
 interface UIState {
-  isMenuMobileOpen: boolean;
+  bbox: number[];
 }
 
 // Define the initial state using that type
 const initialState: UIState = {
-  isMenuMobileOpen: false,
+  bbox: null,
 };
 
 export const applicationSlice = createSlice({
   name: 'application',
   initialState,
   reducers: {
-    setMenuMobileOpen: (state, action: PayloadAction<boolean>) => ({
-      ...state,
-      isMenuMobileOpen: action.payload,
-    }),
+    setBbox: (state, action: PayloadAction<number[]>) => {
+      state.bbox = action.payload;
+    },
   },
 });
 
-export const { setMenuMobileOpen } = applicationSlice.actions;
+export const { setBbox } = applicationSlice.actions;
 
 export default applicationSlice.reducer;

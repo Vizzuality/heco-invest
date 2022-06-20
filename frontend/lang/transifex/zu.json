@@ -35,6 +35,9 @@
   "/plMvw": {
     "string": "Project category"
   },
+  "0+CmKm": {
+    "string": "Find location"
+  },
   "0CAqpl": {
     "string": "About the partners"
   },
@@ -1034,6 +1037,9 @@
   },
   "hWhIuU": {
     "string": "Select the intrument type(s)"
+  },
+  "hX5PAb": {
+    "string": "No results found"
   },
   "hbFTZN": {
     "string": "Users will receive an email to sign up into the platform and join NEEsT’s account."
