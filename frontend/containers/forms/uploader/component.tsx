@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 
 import { FileRejection, useDropzone } from 'react-dropzone';
-import { FieldValues, Path } from 'react-hook-form';
+import { Controller, FieldValues, Path } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import classNames from 'classnames';
@@ -17,11 +17,12 @@ import { directUpload } from 'services/direct-upload/directUpload';
 import { UploaderProps, UploadErrorCode } from './types';
 
 export const Uploader = <FormValues extends FieldValues>({
+  name,
   fileTypes,
   maxFiles = 1,
   maxSize = FILE_UPLOADER_MAX_SIZE,
-  register,
-  registerOptions,
+  control,
+  controlOptions,
   onUpload,
   setError,
   clearErrors,
@@ -32,7 +33,7 @@ export const Uploader = <FormValues extends FieldValues>({
 
   const setMaxSizeError = useCallback(
     (file: File) => {
-      setError('project_images_attributes', {
+      setError(name, {
         message: formatMessage(
           { defaultMessage: 'File {fileName} is larger than {fileSize}MB', id: 'v9GdgG' },
           {
@@ -42,7 +43,7 @@ export const Uploader = <FormValues extends FieldValues>({
         ),
       });
     },
-    [formatMessage, maxSize, setError]
+    [formatMessage, maxSize, name, setError]
   );
 
   const uploadFiles = useCallback(
@@ -61,14 +62,14 @@ export const Uploader = <FormValues extends FieldValues>({
             try {
               const { signed_id, filename, direct_upload } = await directUpload(file);
               uploadedFiles.push({
-                id: signed_id,
+                id: undefined,
                 file: signed_id,
                 cover: false,
                 src: direct_upload?.url || URL.createObjectURL(file),
                 title: filename,
               });
             } catch (error) {
-              setError('project_images_attributes' as Path<FormValues>, {
+              setError(name as Path<FormValues>, {
                 message:
                   error?.message ||
                   formatMessage({
@@ -85,11 +86,11 @@ export const Uploader = <FormValues extends FieldValues>({
       setIsUploading(false);
       setFilesLength(0);
     },
-    [maxSize, onUpload, setError, setMaxSizeError, formatMessage]
+    [onUpload, maxSize, setMaxSizeError, setError, name, formatMessage]
   );
 
   const onDropAccepted = async (files: File[]) => {
-    clearErrors('project_images_attributes');
+    clearErrors(name);
     uploadFiles(files);
   };
 
@@ -102,7 +103,7 @@ export const Uploader = <FormValues extends FieldValues>({
             setMaxSizeError(rejection.file);
             break;
           case UploadErrorCode.TooManyFiles:
-            setError('project_images_attributes', {
+            setError(name, {
               message: formatMessage(
                 {
                   defaultMessage: 'You can upload a maximum of {maxFiles} files',
@@ -112,7 +113,7 @@ export const Uploader = <FormValues extends FieldValues>({
               ),
             });
           case UploadErrorCode.FileInvalidType:
-            setError('project_images_attributes', {
+            setError(name, {
               message: formatMessage(
                 {
                   defaultMessage: 'File {fileName} has an invalid format',
@@ -122,15 +123,15 @@ export const Uploader = <FormValues extends FieldValues>({
               ),
             });
           default:
-            setError('project_images_attributes', { message: error.message });
+            setError(name, { message: error.message });
         }
       });
     });
   };
 
-  const { getRootProps, getInputProps } = useDropzone({
+  const { getRootProps, getInputProps, inputRef } = useDropzone({
     accept: fileTypes,
-    disabled: registerOptions.disabled || !!isUploading,
+    disabled: controlOptions.disabled || !!isUploading,
     maxSize,
     maxFiles,
     multiple: maxFiles > 1,
@@ -139,8 +140,8 @@ export const Uploader = <FormValues extends FieldValues>({
   });
 
   useEffect(() => {
-    if (isUploading) clearErrors('project_images_attributes');
-  }, [clearErrors, isUploading]);
+    if (isUploading) clearErrors(name);
+  }, [clearErrors, isUploading, name]);
 
   return (
     <div className="h-full">
@@ -148,17 +149,17 @@ export const Uploader = <FormValues extends FieldValues>({
         className={classNames(
           'h-full rounded-md border-2 border-dashed  border-beige py-10 px-4 text-center text-sm focus:outline-green-700 focus-visible:ring-green-dark focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-0',
           {
-            'cursor-pointer': !registerOptions.disabled,
-            'opacity-60': registerOptions.disabled,
+            'cursor-pointer': !controlOptions.disabled,
+            'opacity-60': controlOptions.disabled,
           }
         )}
         {...getRootProps()}
       >
-        <input {...getInputProps()} />
-        <input
-          className="hidden"
-          name="project_images_attributes"
-          {...register('project_images_attributes' as Path<FormValues>, registerOptions)}
+        <input {...getInputProps()} ref={inputRef} />
+        <Controller
+          name={name}
+          control={control}
+          render={(field) => <input {...field} className="hidden" name={name} />}
         />
         <Image src="/images/upload-gallery.svg" width="38" height="39" alt="Upload file" />
         {!isUploading ? (

@@ -21,16 +21,14 @@ export const useEnums = () => {
     ...staticDataQueryOptions,
   });
 
-  /** Enums grouped by type property */
-  const enumsGroupedByTypes = groupBy(query?.data, 'type') as {
-    [key in EnumTypes]: Enum[];
-  };
-
-  return useMemo(
-    () => ({
+  return useMemo(() => {
+    /** Enums grouped by type property */
+    const enumsGroupedByTypes = groupBy(query?.data, 'type') as {
+      [key in EnumTypes]: Enum[];
+    };
+    return {
       ...query,
       data: enumsGroupedByTypes,
-    }),
-    [query, enumsGroupedByTypes]
-  );
+    };
+  }, [query]);
 };

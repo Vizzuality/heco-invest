@@ -1,9 +1,10 @@
 module Translations
   class Translate
-    attr_accessor :resource
+    attr_accessor :resource, :changed_attrs
 
-    def initialize(resource)
+    def initialize(resource, changed_attrs: nil)
       @resource = resource
+      @changed_attrs = changed_attrs
       # try to obtain project id automatically
       @project_id = ENV["GCP_PROJECT_ID"]
     end
@@ -35,7 +36,7 @@ module Translations
     end
 
     def present_translatable_attributes
-      @present_translatable_attributes ||= resource.translatable_attributes.select do |col|
+      @present_translatable_attributes ||= (changed_attrs.presence || resource.translatable_attributes).select do |col|
         resource.public_send(:"#{col}?", locale: source_language_code)
       end
     end

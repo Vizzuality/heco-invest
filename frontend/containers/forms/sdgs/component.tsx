@@ -21,6 +21,7 @@ export const SDGs = <FormValues extends FieldValues>({
   setValue,
   clearErrors,
   setValueOptions = { shouldDirty: true },
+  defaultValues = [],
 }: SDGsProps<FormValues>) => {
   const {
     data: { sdg: allSdgs = [] },
@@ -50,10 +51,11 @@ export const SDGs = <FormValues extends FieldValues>({
           {allSdgs.map(({ id, name: title }) => (
             <SDG
               key={id}
-              id={id}
+              id={id.toString()}
               name={name}
               image={SDGS_IMAGES[id]}
               title={title}
+              defaultChecked={defaultValues && defaultValues.includes(Number(id))}
               register={register}
               registerOptions={registerOptions}
               invalid={errors && errors[name]}

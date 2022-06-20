@@ -86,6 +86,9 @@
   "2GBpne": {
     "string": "Impact score"
   },
+  "2JJSDv": {
+    "string": "Edit project developer’s account"
+  },
   "2O2sfp": {
     "string": "Finish"
   },
@@ -292,6 +295,9 @@
   },
   "AiagLY": {
     "string": "Entity legal registration number (NIT or RUT)"
+  },
+  "AoHRBG": {
+    "string": "Custom search"
   },
   "BAC0rl": {
     "string": "<span>Community:</span> income, sustainable projects;"
@@ -543,6 +549,9 @@
   "KvhWhT": {
     "string": "The <span>IDB Lab</span>, the <span>Paulson Institute</span> and the <span>World Wildlife Fund</span> are working together to develop a digital platform that connects governments, investors, donors, and philanthropists with carefully identified investment opportunities in <span>high priority locations</span> identified by programs such as Herencia Colombia (HeCo)."
   },
+  "LFDgTb": {
+    "string": "Leave project developer edition?"
+  },
   "Ll72W/": {
     "string": "Currently not looking for funding"
   },
@@ -593,6 +602,9 @@
   },
   "NjKSap": {
     "string": "Online presence"
+  },
+  "NsIwKY": {
+    "string": "Leave create project develop?"
   },
   "NvzZkI": {
     "string": "Create partnerships"
@@ -1065,9 +1077,6 @@
   "jKdvln": {
     "string": "Relevant links (optional)"
   },
-  "jQfYef": {
-    "string": "Leave create project develop"
-  },
   "jUgR7w": {
     "string": "Stage of development or maturity of the project"
   },
@@ -1079,6 +1088,9 @@
   },
   "jXqlWP": {
     "string": "{name} project developer"
+  },
+  "jj4ae3": {
+    "string": "Project image {index}."
   },
   "jwimQJ": {
     "string": "Ok"

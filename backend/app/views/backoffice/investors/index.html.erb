@@ -32,6 +32,8 @@
       </th>
       <th>
       </th>
+      <th>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -45,6 +47,7 @@
         <td><%= investor.open_calls_count %></td>
         <td><%= investor.language %></td>
         <td><%= status_tag investor.account.review_status, ReviewStatus.find(investor.account.review_status).name %></td>
+        <td><%= link_to t("backoffice.common.edit"), edit_backoffice_investor_path(investor.id), class: "link-button" %></td>
         <td>
           <%= button_to t("backoffice.common.approve"), approve_backoffice_account_path(investor.account.id), class: "link-button", method: :post unless investor.account.approved? %>
           <%= button_to t("backoffice.common.reject"), reject_backoffice_account_path(investor.account.id), class: "link-button", method: :post unless investor.account.rejected? %>

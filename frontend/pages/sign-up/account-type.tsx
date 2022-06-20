@@ -9,7 +9,8 @@ import AccountTypeSelector from 'containers/account-type-selector';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
-import { Paths } from 'enums';
+import { Paths, UserRoles } from 'enums';
+import ProtectedPage from 'layouts/protected-page';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { AccountType, PageComponent } from 'types';
 
@@ -31,7 +32,7 @@ const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = () => {
   };
 
   return (
-    <>
+    <ProtectedPage permissions={[UserRoles.Light]}>
       <Head
         title={intl.formatMessage({
           defaultMessage: 'Choose your account type',
@@ -68,7 +69,7 @@ const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = () => {
           </section>
         </LayoutContainer>
       </div>
-    </>
+    </ProtectedPage>
   );
 };
 
