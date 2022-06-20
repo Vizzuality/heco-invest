@@ -86,6 +86,9 @@
   "2GBpne": {
     "string": "Impact score"
   },
+  "2JJSDv": {
+    "string": "Edit project developer’s account"
+  },
   "2O2sfp": {
     "string": "Finish"
   },
@@ -227,6 +230,9 @@
   "8R8Or7": {
     "string": "Search community"
   },
+  "8SayhS": {
+    "string": "{placeholder}"
+  },
   "8WtyrD": {
     "string": "Spanish"
   },
@@ -287,8 +293,14 @@
   "APjPYs": {
     "string": "I want to write my content in"
   },
+  "AdAi3x": {
+    "string": "Emails"
+  },
   "AiagLY": {
     "string": "Entity legal registration number (NIT or RUT)"
+  },
+  "AoHRBG": {
+    "string": "Custom search"
   },
   "BAC0rl": {
     "string": "<span>Community:</span> income, sustainable projects;"
@@ -328,9 +340,6 @@
   },
   "CYTiug": {
     "string": "HeCo Invest will benefit poor and vulnerable people living in HeCo priority landscapes."
-  },
-  "CcFPkO": {
-    "string": "This project has {numDevelopers} project developer{noun}"
   },
   "CiBvks": {
     "string": "General information about the the project developer."
@@ -567,6 +576,9 @@
   "MHwpc4": {
     "string": "Draw or upload your location"
   },
+  "MM4RqT": {
+    "string": "This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}."
+  },
   "MXykbb": {
     "string": "The problem we are solving"
   },
@@ -590,6 +602,9 @@
   },
   "NjKSap": {
     "string": "Online presence"
+  },
+  "NsIwKY": {
+    "string": "Leave create project develop?"
   },
   "NvzZkI": {
     "string": "Create partnerships"
@@ -662,6 +677,9 @@
   },
   "QqpgJo": {
     "string": "Leave investor creation form"
+  },
+  "R+1DVQ": {
+    "string": "Invite users"
   },
   "RDCAd6": {
     "string": "value {optionName} focused, {pagination}."
@@ -1017,6 +1035,9 @@
   "hWhIuU": {
     "string": "Select the intrument type(s)"
   },
+  "hbFTZN": {
+    "string": "Users will receive an email to sign up into the platform and join NEEsT’s account."
+  },
   "hg7Mex": {
     "string": "Select which areas your project will have an impact on"
   },
@@ -1062,9 +1083,6 @@
   "jKdvln": {
     "string": "Relevant links (optional)"
   },
-  "jQfYef": {
-    "string": "Leave create project develop"
-  },
   "jUgR7w": {
     "string": "Stage of development or maturity of the project"
   },
@@ -1076,6 +1094,9 @@
   },
   "jXqlWP": {
     "string": "{name} project developer"
+  },
+  "jj4ae3": {
+    "string": "Project image {index}."
   },
   "jwimQJ": {
     "string": "Ok"
@@ -1142,6 +1163,12 @@
   },
   "o+Vt3t": {
     "string": "Partnership between:"
+  },
+  "oAIvoH": {
+    "string": "Please, enter valid email."
+  },
+  "oBB4L4": {
+    "string": "Send invite"
   },
   "oMC3r1": {
     "string": "Choose your account type"

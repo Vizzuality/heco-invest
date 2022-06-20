@@ -33,3 +33,12 @@ export type UserAccount = {
   slug: string;
   type: 'project_developer' | 'investor';
 };
+
+export type UsersInvitationForm = {
+  email: string;
+  emails: string[];
+};
+
+export type InviteUsersDto = {
+  data: string[];
+};
