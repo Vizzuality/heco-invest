@@ -1011,9 +1011,6 @@
   "gjBW8J": {
     "string": "General information about the investor/funder."
   },
-  "gjBiyj": {
-    "string": "Loading..."
-  },
   "gpTOIc": {
     "string": "{message} for search term {term}"
   },
@@ -1028,6 +1025,9 @@
   },
   "hWhIuU": {
     "string": "Select the intrument type(s)"
+  },
+  "hX5PAb": {
+    "string": "No results found"
   },
   "hbFTZN": {
     "string": "Users will receive an email to sign up into the platform and join NEEsT’s account."
