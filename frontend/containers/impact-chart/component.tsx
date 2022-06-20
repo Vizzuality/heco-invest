@@ -140,7 +140,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
 
   return (
     <div className={className}>
-      <div className="flex justify-between w-full ">
+      <div className="flex justify-between w-full">
         <div className="z-0 flex flex-col w-full h-full gap-2">
           {allImpacts && (
             <span className="flex items-center justify-center w-full">
@@ -159,7 +159,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
                 <FieldInfo infoText={impactData[ImpactsEnum.Water].description} />
               </span>
             )}
-            <span className="relative flex items-center w-full overflow-x-scroll aspect-square">
+            <span className="relative flex items-center w-full overflow-x-hidden aspect-square">
               <span className="absolute rounded-full opacity-50 top-2 right-2 bottom-2 left-2 bg-background-middle" />
               <span className="absolute scale-50 rounded-full top-2 right-2 bottom-2 left-2 bg-background-middle opacity-60" />
               <Radar className="z-10" data={chartData} options={chartOptions} />

@@ -42,6 +42,8 @@ RSpec.describe Project, type: :model do
     expect(subject).to have(1).errors_on(:estimated_duration_in_months)
     subject.estimated_duration_in_months = 0
     expect(subject).to have(1).errors_on(:estimated_duration_in_months)
+    subject.estimated_duration_in_months = 37
+    expect(subject).to have(1).errors_on(:estimated_duration_in_months)
   end
 
   it "should not be valid without description" do

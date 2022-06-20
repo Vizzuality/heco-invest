@@ -8,8 +8,10 @@ module Translatable
   end
 
   def translate_attributes
-    return unless translatable_attributes.any? { |attr| public_send "saved_change_to_#{attr}_#{language}?" }
+    changed_attrs = translatable_attributes.each_with_object([]) do |attr, res|
+      res << attr if public_send "saved_change_to_#{attr}_#{language}?"
+    end
 
-    TranslateJob.perform_later self
+    TranslateJob.perform_later self, changed_attrs: changed_attrs if changed_attrs.present?
   end
 end

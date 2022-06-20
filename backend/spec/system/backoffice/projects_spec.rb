@@ -28,6 +28,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
       I18n.t("backoffice.projects.index.priority_landscape"),
       I18n.t("backoffice.common.status")
     ]
+    it_behaves_like "with csv export", file_name: "projects.csv"
 
     it "shows projects list" do
       expect(page).to have_xpath(".//tbody/tr", count: 5)

@@ -78,6 +78,14 @@ resource "google_cloud_run_service" "cloud_run" {
   autogenerate_revision_name = true
 
   depends_on = [google_secret_manager_secret_iam_member.secret_access, var.database]
+
+  lifecycle {
+    ignore_changes = [
+      template[0].metadata[0].annotations["client.knative.dev/user-image"],
+      template[0].metadata[0].annotations["run.googleapis.com/client-name"],
+      template[0].metadata[0].annotations["run.googleapis.com/client-version"],
+    ]
+  }
 }
 
 data "google_iam_policy" "noauth" {

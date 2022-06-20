@@ -40,6 +40,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
       I18n.t("backoffice.common.language"),
       I18n.t("backoffice.common.status")
     ]
+    it_behaves_like "with csv export", file_name: "project_developers.csv"
 
     it "shows project developers list" do
       within_row("Super PD Enterprise") do
@@ -205,6 +206,17 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
           expect(approved_pd.account.about_es).to eq("New about description - Spanish")
           expect(approved_pd.mission_es).to eq("New mission - Spanish")
         end
+      end
+    end
+
+    context "when removing account" do
+      it "removes project developer" do
+        accept_confirm do
+          click_on t("backoffice.account.delete")
+        end
+        expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.project_developer")))
+        expect(current_path).to eql(backoffice_project_developers_path)
+        expect(page).not_to have_text(approved_pd.name)
       end
     end
   end

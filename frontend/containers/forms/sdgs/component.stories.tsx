@@ -4,10 +4,25 @@ import { SubmitHandler, useForm, NestedValue } from 'react-hook-form';
 
 import { action } from '@storybook/addon-actions';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import withMock from 'storybook-addon-mock';
 
 import Button from 'components/button';
+import apiEnumsMock from 'mockups/api/v1/enums.json';
+
+import { apiBaseUrl } from 'services/api';
 
 import SDGs, { SDGsProps } from '.';
+
+const apiUrl = `${apiBaseUrl}/api/v1`;
+
+const mockApiData = [
+  {
+    url: `${apiUrl}/enums`,
+    method: 'GET',
+    status: 200,
+    response: apiEnumsMock,
+  },
+];
 
 export default {
   component: SDGs,
@@ -15,6 +30,7 @@ export default {
   argTypes: {
     register: { control: { disable: true } },
   },
+  decorators: [withMock],
 } as Meta;
 
 interface FormValues {
@@ -50,6 +66,9 @@ const Template: Story<SDGsProps<FormValues>> = (args: SDGsProps<FormValues>) => 
 export const Default: Story<SDGsProps<FormValues>> = Template.bind({});
 Default.args = {
   name: 'sdgs',
+};
+Default.parameters = {
+  mockData: mockApiData,
 };
 
 const TemplateWithForm: Story<SDGsProps<FormValues>> = (args: SDGsProps<FormValues>) => {
@@ -116,6 +135,7 @@ ErrorState.parameters = {
       type: 'code',
     },
   },
+  mockData: mockApiData,
 };
 
 ErrorState.args = {

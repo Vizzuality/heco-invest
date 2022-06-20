@@ -23,6 +23,8 @@ export type MultiPageLayoutProps = PropsWithChildren<
     onNextClick?: (page: number) => void;
     /** Callback when a page number button is clicked */
     onPageClick?: (page: number) => void;
+    /** Returns the total number of pages */
+    getTotalPages?: (totalPages: number) => void;
   } & Pick<LayoutContainerProps, 'layout'> &
     Pick<MultiPageLayoutHeaderProps, 'title' | 'onCloseClick' | 'leaveButtonText'> &
     Pick<

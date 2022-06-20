@@ -25,7 +25,7 @@ const Template: Story<ProjectGalleryProps<FormValues>> = (
   args: ProjectGalleryProps<FormValues>
 ) => {
   const {
-    register,
+    control,
     setValue,
     clearErrors,
     formState: { errors },
@@ -40,7 +40,7 @@ const Template: Story<ProjectGalleryProps<FormValues>> = (
           setValue={setValue}
           clearErrors={clearErrors}
           errors={errors}
-          register={register}
+          control={control}
           {...args}
         />
       </fieldset>
@@ -55,6 +55,7 @@ Default.args = {
     id: `id-${index}`,
     title: `Image ${index + 1}`,
     src: 'https://placekitten.com/g/768/400',
+    cover: false,
   })),
 };
 
@@ -65,6 +66,7 @@ DefaultSelected.args = {
     id: `id-${index}`,
     title: `Image ${index + 1}`,
     src: 'https://placekitten.com/g/768/400',
+    cover: false,
   })),
   defaultSelected: 'id-1',
 };
@@ -73,7 +75,7 @@ const TemplateWithForm: Story<ProjectGalleryProps<FormValues>> = (
   args: ProjectGalleryProps<FormValues>
 ) => {
   const {
-    register,
+    control,
     setValue,
     handleSubmit,
     clearErrors,
@@ -102,7 +104,7 @@ const TemplateWithForm: Story<ProjectGalleryProps<FormValues>> = (
             setValue={setValue}
             clearErrors={clearErrors}
             errors={errors}
-            register={register}
+            control={control}
             {...args}
           />
           {errors[args.name]?.message && (
@@ -141,8 +143,6 @@ ErrorState.args = {
     id: `id-${index}`,
     title: `Image ${index + 1}`,
     src: 'https://placekitten.com/g/768/400',
+    cover: false,
   })),
-  registerOptions: {
-    required: 'Selecting a cover image is required.',
-  },
 };
