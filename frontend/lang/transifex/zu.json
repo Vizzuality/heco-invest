@@ -35,6 +35,9 @@
   "/plMvw": {
     "string": "Project category"
   },
+  "0+CmKm": {
+    "string": "Find location"
+  },
   "0CAqpl": {
     "string": "About the partners"
   },
@@ -1007,6 +1010,9 @@
   },
   "gjBW8J": {
     "string": "General information about the investor/funder."
+  },
+  "gjBiyj": {
+    "string": "Loading..."
   },
   "gpTOIc": {
     "string": "{message} for search term {term}"

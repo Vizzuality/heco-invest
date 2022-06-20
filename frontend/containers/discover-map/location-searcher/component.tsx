@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 
+import { FormattedMessage, useIntl } from 'react-intl';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { useDispatch } from 'react-redux';
 
@@ -9,12 +10,17 @@ import Script from 'next/script';
 
 import { setBbox } from 'store/projects';
 
+import Icon from 'components/icon';
+
+import SearchIcon from 'svgs/search.svg';
+
 import { LocationSearcherProps } from './types';
 
 export const LocationSearcher: FC<LocationSearcherProps> = () => {
-  const [address, setAddress] = useState('');
-
   const dispatch = useDispatch();
+  const intl = useIntl();
+
+  const [address, setAddress] = useState('');
 
   const handleChangeAddress = (newAddress) => {
     setAddress(newAddress);
@@ -55,20 +61,31 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className="absolute top-0 left-0 z-10 w-32">
+            <Icon
+              icon={SearchIcon}
+              className="absolute z-20 w-4.5 h-4.5 text-gray-700 bg-white rounded-full top-1.5 left-2"
+            />
             <input
               {...getInputProps({
-                placeholder: 'Find location ...',
+                placeholder: intl.formatMessage({
+                  defaultMessage: 'Find location',
+                  id: '0+CmKm',
+                }),
                 className:
-                  'rounded shadow-sm block w-full px-2 text-base text-gray-900 placeholder-gray-400 py-1 placeholder-opacity-100 border border-solid border-beige focus:border-green-dark outline-none bg-white transition',
+                  'rounded shadow-sm block w-full pr-2 pl-8 text-base text-gray-900 placeholder-gray-700 py-1 placeholder-opacity-100 focus:border-green-dark outline-none bg-white transition',
               })}
             />
             <div className="autocomplete-dropdown-container">
-              {loading && <div>Loading...</div>}
+              {loading && (
+                <div>
+                  <FormattedMessage defaultMessage="Loading..." id="gjBiyj" />
+                </div>
+              )}
               {suggestions.map((suggestion) => {
                 const className = cx({
-                  'bg-white cursor-pointer': true,
-                  'text-red-600': suggestion.active,
-                  'text-yellow-600 bg-red-600': !suggestion.active,
+                  'bg-white cursor-pointer text-xs py-0.5': true,
+                  'text-gray-800': suggestion.active,
+                  'text-gray-600': !suggestion.active,
                 });
                 return (
                   <div
