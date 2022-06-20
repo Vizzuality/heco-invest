@@ -59,7 +59,7 @@ export const Inner: React.ForwardRefRenderFunction<any, ButtonProps> = (
     }
 
     return (
-      <Link href={rest.to}>
+      <Link href={rest.to} as={rest.as}>
         <a ref={ref} className={className} {...elementProps}>
           {icon && <Icon icon={icon} className={iconClassName} />}
           {children}
