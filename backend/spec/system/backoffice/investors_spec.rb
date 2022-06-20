@@ -221,6 +221,17 @@ RSpec.describe "Backoffice: Investors", type: :system do
           expect(approved_investor.other_information_es).to eq("New other info - Spanish")
         end
       end
+
+      context "when removing account" do
+        it "removes investor" do
+          accept_confirm do
+            click_on t("backoffice.account.delete")
+          end
+          expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.investor")))
+          expect(current_path).to eql(backoffice_investors_path)
+          expect(page).not_to have_text(approved_investor.name)
+        end
+      end
     end
   end
 end

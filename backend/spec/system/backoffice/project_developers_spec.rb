@@ -208,5 +208,16 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
         end
       end
     end
+
+    context "when removing account" do
+      it "removes project developer" do
+        accept_confirm do
+          click_on t("backoffice.account.delete")
+        end
+        expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.project_developer")))
+        expect(current_path).to eql(backoffice_project_developers_path)
+        expect(page).not_to have_text(approved_pd.name)
+      end
+    end
   end
 end
