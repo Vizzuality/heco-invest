@@ -12,6 +12,7 @@ export const Textarea = <FormValues extends FieldValues>({
   rows = 3,
   resize = TextareaResize.None,
   name,
+  contentEditable,
   register,
   registerOptions,
   className,
@@ -29,6 +30,7 @@ export const Textarea = <FormValues extends FieldValues>({
 
   return (
     <textarea
+      contentEditable={contentEditable}
       id={id}
       aria-label={ariaLabel}
       className={cx({
