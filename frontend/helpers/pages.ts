@@ -117,6 +117,6 @@ export const useFilterNames = () => {
     [EnumTypes.Impact]: formatMessage({ defaultMessage: 'Impact', id: 'W2JBdp' }),
     [EnumTypes.TicketSize]: formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
     [EnumTypes.InstrumentType]: formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
-    [EnumTypes.SDGs]: formatMessage({ defaultMessage: 'SDGs', id: 'JQjEP9' }),
+    [EnumTypes.Sdg]: formatMessage({ defaultMessage: 'SDGs', id: 'JQjEP9' }),
   };
 };
