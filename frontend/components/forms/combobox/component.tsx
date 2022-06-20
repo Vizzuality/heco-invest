@@ -54,7 +54,6 @@ export const Combobox = <FormValues extends FieldValues, T extends object>({
   const state = useComboBoxState({ ...ariaComboboxProps, defaultFilter: contains });
 
   const triggerRef = useRef(null);
-  const clearRef = useRef(null);
   const inputRef = React.useRef(null);
   const listboxRef = React.useRef(null);
   const popoverRef = React.useRef(null);

@@ -1,8 +1,9 @@
-import { Languages } from 'enums';
+import { Languages, ReviewStatus } from 'enums';
 import { Picture } from 'types';
 
 import { CategoryType } from './category';
 import { Enum } from './enums';
+import { Project } from './project';
 
 export type ProjectDeveloperPicture = {
   small: string;
@@ -11,33 +12,37 @@ export type ProjectDeveloperPicture = {
 };
 
 export type ProjectDeveloper = {
-  id: string;
-  slug: string;
-  type: 'project_developer';
-  name: string;
   about: string;
-  website?: string;
-  instagram?: string;
-  facebook?: string;
-  linkedin?: string;
-  twitter?: string;
-  mission: string;
+  categories: CategoryType[];
   contact_email: string;
   contact_phone?: string;
-  project_developer_type: string;
-  categories: CategoryType[];
-  impacts: string[];
-  mosaics: string[];
-  language: Languages;
-  picture: Picture;
   entity_legal_registration_number: string;
+  facebook?: string;
   favourite: boolean;
+  id: string;
+  impacts: string[];
+  instagram?: string;
+  involved_projects?: Project[];
+  language: Languages;
+  linkedin?: string;
+  mission: string;
+  mosaics: string[];
+  name: string;
+  owner?: { id: string; type: 'user' };
+  picture: ProjectDeveloperPicture;
+  project_developer_type: string;
   projects?: any[]; // Cannot use ProjectType because linting will complain about circular references
+  relationshipNames?: string[];
+  review_status: ReviewStatus;
+  slug: string;
+  twitter?: string;
+  type: 'project_developer';
+  website?: string;
 };
 
 export type ProjectDeveloperSetupForm = Omit<
   ProjectDeveloper,
-  'picture' | 'id' | 'type' | 'favorite'
+  'picture' | 'id' | 'type' | 'favorite' | 'relationshipNames' | 'projects'
 > & {
   picture: string;
   mosaics?: string[];

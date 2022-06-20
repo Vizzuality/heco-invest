@@ -1,6 +1,5 @@
 import { FC } from 'react';
 
-import { FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import dynamic from 'next/dynamic';
@@ -19,13 +18,15 @@ import { ProfileProps } from '../types';
 const ImageUploader = dynamic(() => import('components/forms/image-uploader'), { ssr: false });
 
 export const Profile: FC<ProfileProps> = ({
-  control,
-  errors,
-  register,
-  investorTypes,
-  setValue,
   setError,
+  setValue,
+  register,
   clearErrors,
+  errors,
+  control,
+  projectDeveloperTypeEnums,
+  enumsIsError,
+  picture,
 }) => {
   const { formatMessage } = useIntl();
 
@@ -33,12 +34,12 @@ export const Profile: FC<ProfileProps> = ({
     <form className="flex flex-col justify-between" noValidate>
       <div className="mb-10">
         <h1 className="mb-2 font-serif text-3xl font-semibold">
-          <FormattedMessage defaultMessage="Investor/Funder profile" id="BHJZyR" />
+          <FormattedMessage defaultMessage="Project developer profile" id="twK/jv" />
         </h1>
         <p className="font-sans text-base text-gray-600">
           <FormattedMessage
-            defaultMessage="General information about the investor/funder."
-            id="gjBW8J"
+            defaultMessage="General information about the the project developer."
+            id="CiBvks"
           />
         </p>
       </div>
@@ -52,109 +53,143 @@ export const Profile: FC<ProfileProps> = ({
           </Label>
           <FieldInfo
             infoText={formatMessage({
-              defaultMessage: 'Add your logo or a picture that identifies the account.',
-              id: '2Cbk6h',
+              defaultMessage: 'Add your logo or a picture that indentifies the account.',
+              id: 'bjubNC',
             })}
           />
         </div>
         <ImageUploader
           setError={setError}
+          setValue={setValue}
           name="picture"
           id="picture"
-          setValue={setValue}
           control={control}
-          clearErrors={clearErrors}
           preview
-          aria-describedby="picture-error"
+          clearErrors={clearErrors}
+          defaultImage={picture}
         />
         <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
       </div>
       <div className="md:flex gap-x-6 mb-6.5">
         <div className="md:w-1/2 mb-6.5 md:m-0">
-          <Label htmlFor="name">
-            <FormattedMessage defaultMessage="Investor/Funder name" id="6MEtAZ" />
+          <Label htmlFor="profile">
+            <FormattedMessage defaultMessage="Project developer name" id="Sv/Mtz" />
           </Label>
           <Input
             name="name"
             className="mt-2.5"
             aria-required
-            id="name"
+            id="profile"
             type="text"
             register={register}
             placeholder={formatMessage({
               defaultMessage: 'insert the name',
               id: 'WAr33U',
             })}
-            aria-describedby="name-error"
+            aria-describedby="profile-error"
           />
-          <ErrorMessage id="name-error" errorText={errors?.name?.message} />
+          <ErrorMessage id="profile-error" errorText={errors?.name?.message} />
         </div>
         <div className="md:w-1/2">
-          <Label htmlFor="investor-type" id="investor-type-label">
-            <FormattedMessage defaultMessage="Investor/Funder type" id="RDclSN" />
+          <Label htmlFor="project-developer-type" id="project-developer-type-label">
+            <FormattedMessage defaultMessage="Project developer type" id="3tWxy0" />
           </Label>
           <Combobox
             control={control}
             controlOptions={{ disabled: false }}
             aria-required
-            name="investor_type"
-            id="investor-type"
+            name="project_developer_type"
+            id="project-developer-type"
             className="mt-2.5 w-full h-10 border border-beige rounded-lg px-4"
             placeholder={formatMessage({
-              defaultMessage: 'select investor/funder type',
-              id: 'r/AN6W',
+              defaultMessage: 'select the project developer type',
+              id: 'N9+9Fi',
             })}
-            aria-describedby="investor-type-error"
-            aria-labelledby="investor-type-label"
+            aria-describedby="project-developer-type-error"
+            aria-labelledby="project-developer-type-label"
           >
-            {investorTypes?.map(({ id, name }) => (
+            {projectDeveloperTypeEnums?.map(({ id, name }) => (
               <Option key={id}>{name}</Option>
             ))}
           </Combobox>
           <ErrorMessage
             errorText={
-              Array.isArray(errors?.instrument_types)
-                ? errors?.instrument_types[0].message
-                : (errors?.instrument_types as FieldError)?.message
+              (enumsIsError &&
+                formatMessage({ defaultMessage: 'Unable to load the data', id: 'zniaka' })) ||
+              errors?.project_developer_type?.message
             }
-            id="investor-type-error"
+            id="project-developer-type-error"
           />
         </div>
       </div>
       <div className="mb-6.5">
+        <Label htmlFor="entity-legal-registration">
+          <FormattedMessage
+            defaultMessage="Entity legal registration number (NIT or RUT)"
+            id="AiagLY"
+          />
+          <span className="ml-2.5">
+            <FieldInfo
+              infoText={formatMessage({
+                defaultMessage:
+                  'Add your legal registration number so we can verify your legal entity . This information will not be publicaly available.',
+                id: '11hyS6',
+              })}
+            />
+          </span>
+          <Input
+            type="text"
+            id="entity-legal-registration"
+            className="mt-2.5"
+            register={register}
+            aria-required
+            name="entity_legal_registration_number"
+            placeholder={formatMessage({
+              defaultMessage: 'insert the number',
+              id: 'tS6cAK',
+            })}
+            aria-describedby="entity-legal-registration-error"
+          />
+        </Label>
+        <ErrorMessage
+          id="entity-legal-registration-error"
+          errorText={errors?.entity_legal_registration_number?.message}
+        />
+      </div>
+      <div className="mb-6.5">
         <Label htmlFor="about">
           <FormattedMessage defaultMessage="About" id="g5pX+a" />
+          <TextArea
+            name="about"
+            className="mt-2.5"
+            id="about"
+            register={register}
+            aria-required
+            placeholder={formatMessage({
+              defaultMessage: 'insert your answer (max 600 characters)',
+              id: 'hPsrc0',
+            })}
+            aria-describedby="about-error"
+          />
         </Label>
-        <TextArea
-          name="about"
-          className="mt-2.5"
-          id="about"
-          register={register}
-          aria-required
-          placeholder={formatMessage({
-            defaultMessage: 'insert your answer (max 600 characters)',
-            id: 'hPsrc0',
-          })}
-          aria-describedby="about-error"
-        />
         <ErrorMessage errorText={errors?.about?.message} id="about-error" />
       </div>
       <div className="mb-10">
         <Label htmlFor="mission">
           <FormattedMessage defaultMessage="What's your mission?" id="vaWFzs" />
+          <TextArea
+            name="mission"
+            className="mt-2.5"
+            id="mission"
+            aria-required
+            register={register}
+            placeholder={formatMessage({
+              defaultMessage: 'insert your answer (max 600 characters)',
+              id: 'hPsrc0',
+            })}
+            aria-describedby="mission-error"
+          />
         </Label>
-        <TextArea
-          name="mission"
-          className="mt-2.5"
-          id="mission"
-          aria-required
-          register={register}
-          placeholder={formatMessage({
-            defaultMessage: 'insert your answer (max 600 characters)',
-            id: 'hPsrc0',
-          })}
-          aria-describedby="mission-error"
-        />
         <ErrorMessage errorText={errors?.mission?.message} id="mission-error" />
       </div>
       <div className="mb-10">
@@ -173,20 +208,20 @@ export const Profile: FC<ProfileProps> = ({
                   })}
                 />
               </span>
+              <Input
+                name="contact_email"
+                type="email"
+                id="email"
+                register={register}
+                aria-required
+                placeholder={formatMessage({
+                  defaultMessage: 'insert email',
+                  id: 'DkjIbR',
+                })}
+                className="mt-2.5"
+                aria-describedby="email-error"
+              />
             </Label>
-            <Input
-              name="contact_email"
-              type="email"
-              id="email"
-              register={register}
-              aria-required
-              placeholder={formatMessage({
-                defaultMessage: 'insert email',
-                id: 'DkjIbR',
-              })}
-              className="mt-2.5"
-              aria-describedby="email-error"
-            />
             <ErrorMessage id="email-error" errorText={errors.contact_email?.message} />
           </div>
           <div className="md:w-1/2">
@@ -201,20 +236,20 @@ export const Profile: FC<ProfileProps> = ({
                   })}
                 />
               </span>
+              <Input
+                name="contact_phone"
+                type="tel"
+                id="phone-number"
+                register={register}
+                aria-required
+                placeholder={formatMessage({
+                  defaultMessage: 'insert phone number',
+                  id: 'iiVhlC',
+                })}
+                className="mt-2.5"
+                aria-describedby="phone-number-error"
+              />
             </Label>
-            <Input
-              name="contact_phone"
-              type="tel"
-              id="phone-number"
-              register={register}
-              aria-required
-              placeholder={formatMessage({
-                defaultMessage: 'insert phone number',
-                id: 'iiVhlC',
-              })}
-              className="mt-2.5"
-              aria-describedby="phone-number-error"
-            />
             <ErrorMessage id="phone-number-error" errorText={errors.contact_phone?.message} />
           </div>
         </div>

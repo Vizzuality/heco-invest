@@ -20,6 +20,7 @@ import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDevelo
 import API from 'services/api';
 import { ErrorResponse, ResponseData } from 'services/types';
 
+// Create PD
 const getProjectDeveloper = async (): Promise<ProjectDeveloper> => {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/project_developer`,
@@ -63,6 +64,22 @@ export function useCreateProjectDeveloper(): UseMutationResult<
   });
 }
 
+// Update PD
+const updateProjectDeveloper = async (
+  data: ProjectDeveloperSetupForm
+): Promise<AxiosResponse<ProjectDeveloper>> => {
+  return await API.put('/api/v1/account/project_developer', data);
+};
+
+export function useUpdateProjectDeveloper(): UseMutationResult<
+  AxiosResponse<ProjectDeveloper>,
+  AxiosError<ErrorResponse>,
+  ProjectDeveloperSetupForm
+> {
+  return useMutation(updateProjectDeveloper);
+}
+
+// Create Project
 export function useCreateProject(): UseMutationResult<
   AxiosResponse<Project>,
   AxiosError<ErrorResponse>,

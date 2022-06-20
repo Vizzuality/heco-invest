@@ -125,6 +125,10 @@ export enum Impacts {
   Community = 'community',
 }
 
+export enum ReviewStatus {
+  Approved = 'approved',
+}
+
 export enum ImpactAreas {
   Municipality = 'municipality',
   Hydrobasin = 'hydrobasin',

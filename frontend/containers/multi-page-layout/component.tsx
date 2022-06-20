@@ -1,4 +1,4 @@
-import React, { FC, Children, useState } from 'react';
+import React, { FC, Children, useState, useEffect } from 'react';
 
 import cx from 'classnames';
 
@@ -36,6 +36,7 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
   onCloseClick,
   onSubmitClick,
   onCompleteClick,
+  getTotalPages,
 }: MultiPageLayoutProps) => {
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -87,6 +88,10 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
       onPageClick(page);
     }
   };
+
+  useEffect(() => {
+    getTotalPages?.(numPages);
+  }, [getTotalPages, numPages]);
 
   return (
     <div

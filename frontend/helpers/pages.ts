@@ -40,20 +40,22 @@ export function getServiceErrors<FormValues>(
   return { fieldErrors, errorPages };
 }
 
-export function useGetAlert(error?: AxiosError<ErrorResponse>): string[] {
+export const useGetAlert = (error?: AxiosError<ErrorResponse>) => {
   const { formatMessage } = useIntl();
-  if (error) {
-    return Array.isArray(error?.message)
-      ? error.message.map(({ title }: { title: string }) => title)
-      : [
-          formatMessage({
-            defaultMessage:
-              'Something went wrong while submitting your form. Please correct the errors before submitting again.',
-            id: 'WTuVeL',
-          }),
-        ];
-  }
-}
+  return useMemo(() => {
+    if (error) {
+      return Array.isArray(error?.message)
+        ? error.message.map(({ title }: { title: string }) => title)
+        : [
+            formatMessage({
+              defaultMessage:
+                'Something went wrong while submitting your form. Please correct the errors before submitting again.',
+              id: 'WTuVeL',
+            }),
+          ];
+    }
+  }, [error, formatMessage]);
+};
 
 /** Function to convert bytes in megabites */
 export const bytesToMegabytes = (bytes: number): number => {

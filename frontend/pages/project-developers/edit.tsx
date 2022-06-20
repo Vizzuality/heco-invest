@@ -12,8 +12,9 @@ import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 
-import { useCreateProjectDeveloper } from 'services/account';
+import { useUpdateProjectDeveloper } from 'services/account';
 import { getEnums } from 'services/enums/enumService';
+import { useCurrentProjectDeveloper } from 'services/project-developers/projectDevelopersService';
 
 export async function getStaticProps(ctx) {
   const queryClient = new QueryClient();
@@ -30,19 +31,19 @@ type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps> = () => {
   const { formatMessage } = useIntl();
-
-  const createProjectDeveloper = useCreateProjectDeveloper();
+  const updateProjectDeveloper = useUpdateProjectDeveloper();
+  const { projectDeveloper } = useCurrentProjectDeveloper();
 
   return (
-    <ProtectedPage permissions={[UserRoles.Light]}>
+    <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
       <ProjectDeveloperForm
-        title={formatMessage({ defaultMessage: 'Setup project developer’s account', id: 'bhxvPM' })}
+        initialValues={projectDeveloper}
+        title={formatMessage({ defaultMessage: 'Edit project developer’s account', id: '2JJSDv' })}
         leaveMessage={formatMessage({
-          defaultMessage: 'Leave create project develop?',
-          id: 'NsIwKY',
+          defaultMessage: 'Leave project developer edition?',
+          id: 'LFDgTb',
         })}
-        isCreateForm
-        mutation={createProjectDeveloper}
+        mutation={updateProjectDeveloper}
       />
     </ProtectedPage>
   );

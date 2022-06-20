@@ -22,14 +22,14 @@ interface FormValues {
 }
 
 const Template: Story<ImageUploaderProps<FormValues>> = (args: ImageUploaderProps<FormValues>) => {
-  const { register, clearErrors, setError, setValue } = useForm<FormValues>();
+  const { control, clearErrors, setError, setValue } = useForm<FormValues>();
 
   return (
     <ImageUploader
       clearErrors={clearErrors}
       setError={setError}
       setValue={setValue}
-      register={register}
+      control={control}
       {...args}
     />
   );
@@ -44,7 +44,7 @@ Default.args = {
 const TemplateWithLabel: Story<ImageUploaderProps<FormValues>> = (
   args: ImageUploaderProps<FormValues>
 ) => {
-  const { register, clearErrors, setError, setValue } = useForm<FormValues>();
+  const { control, clearErrors, setError, setValue } = useForm<FormValues>();
 
   return (
     <>
@@ -55,7 +55,7 @@ const TemplateWithLabel: Story<ImageUploaderProps<FormValues>> = (
         clearErrors={clearErrors}
         setError={setError}
         setValue={setValue}
-        register={register}
+        control={control}
         {...args}
       />
     </>
@@ -73,7 +73,7 @@ const TemplateWithForm: Story<ImageUploaderProps<FormValues>> = (
   args: ImageUploaderProps<FormValues>
 ) => {
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
     clearErrors,
@@ -98,7 +98,7 @@ const TemplateWithForm: Story<ImageUploaderProps<FormValues>> = (
         clearErrors={clearErrors}
         setError={setError}
         setValue={setValue}
-        register={register}
+        control={control}
         {...args}
         aria-describedby="form-error"
       />
@@ -122,5 +122,4 @@ ErrorState.args = {
   id: 'picture',
   name: 'picture',
   preview: true,
-  registerOptions: { required: 'The profile image is required' },
 };
