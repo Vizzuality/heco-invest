@@ -1,13 +1,9 @@
-import { useState } from 'react';
-
 import { Mail as MailIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
-
-import InviteUsersModal from 'containers/users/invite-users-modal';
 
 import Button from 'components/button';
 import Head from 'components/head';
@@ -29,7 +25,6 @@ export async function getStaticProps(ctx) {
 type UsersPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const UsersPage: PageComponent<UsersPageProps, DashboardLayoutProps> = () => {
-  const [openInvitationModal, setOpenInvitationModal] = useState(false);
   const intl = useIntl();
 
   return (
@@ -37,17 +32,13 @@ export const UsersPage: PageComponent<UsersPageProps, DashboardLayoutProps> = ()
       <Head title={intl.formatMessage({ defaultMessage: 'My users', id: 'lda5xz' })} />
       <DashboardLayout
         buttons={
-          <Button
-            className="drop-shadow-xl"
-            theme="primary-white"
-            onClick={() => setOpenInvitationModal(true)}
-          >
+          <Button className="drop-shadow-xl" theme="primary-white">
             <Icon icon={MailIcon} className="w-4 h-4 mr-2" aria-hidden />
             <FormattedMessage defaultMessage="Invite user" id="/4GN+O" />
           </Button>
         }
       >
-        Users page
+        <h1>Users page</h1>
       </DashboardLayout>
 
       <InviteUsersModal

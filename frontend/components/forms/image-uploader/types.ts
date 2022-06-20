@@ -1,9 +1,8 @@
 import {
+  Control,
   FieldPath,
   Path,
-  RegisterOptions,
   UseFormClearErrors,
-  UseFormRegister,
   UseFormSetError,
   UseFormSetValue,
 } from 'react-hook-form';
@@ -13,10 +12,8 @@ export type ImageUploaderProps<FormValues> = {
   name: Path<FormValues>;
   /** id of the input */
   id: string;
-  /** React Hook Form's `register` function */
-  register: UseFormRegister<any>;
-  /** Options for React Hook Form's `register` function */
-  registerOptions?: Omit<RegisterOptions<any, FieldPath<any>>, 'onChange'>;
+  /** React Hook Form's `control` */
+  control: Control<any>;
   /** show preview image when uploaded */
   preview?: boolean;
   /** className of the preview component */
@@ -31,4 +28,6 @@ export type ImageUploaderProps<FormValues> = {
   clearErrors: UseFormClearErrors<any>;
   /** Max image size in bytes */
   maxSize?: number;
+  /** Default image url to show */
+  defaultImage?: string;
 };

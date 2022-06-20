@@ -55,4 +55,19 @@ module ApplicationHelper
       class: "text-sm font-sans px-2 py-1 rounded-full #{STATUS_TAG_CLASSES[key.to_s]}"
     )
   end
+
+  def svg(filename, options = {})
+    filepath = Rails.root.join("app", "assets", "images", "#{filename}.svg")
+
+    if File.exist?(filepath)
+      file = File.read(filepath)
+      doc = Nokogiri::HTML::DocumentFragment.parse file
+      svg = doc.at_css "svg"
+      svg["class"] = options[:class] if options[:class].present?
+    else
+      doc = "<!-- SVG #{filename} not found -->"
+    end
+
+    raw doc
+  end
 end

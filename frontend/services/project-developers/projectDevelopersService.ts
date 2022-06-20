@@ -1,6 +1,15 @@
 import { useMemo } from 'react';
 
-import { UseQueryResult, useQuery, useMutation, QueryClient, UseQueryOptions } from 'react-query';
+import {
+  UseQueryResult,
+  useQuery,
+  useMutation,
+  QueryClient,
+  UseQueryOptions,
+  QueryFunction,
+  QueryKey,
+  QueryOptions,
+} from 'react-query';
 
 import { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { decycle } from 'cycle';
@@ -96,20 +105,23 @@ export function useProjectDeveloper(
   );
 }
 
+const getCurrentProjectDeveloper: QueryFunction<ProjectDeveloper> = async () =>
+  await API.get<ResponseData<ProjectDeveloper>>('/api/v1/account/project_developer').then(
+    (response) => response.data.data
+  );
 /** Get the Current Project Developer if the UserRole is project_developer */
-export const useCurrentProjectDeveloper = (user: User) => {
-  const getCurrentProjectDeveloper = async (): Promise<ProjectDeveloper> =>
-    await API.get('/api/v1/account/project_developer').then(
-      (response: AxiosResponse<ResponseData<ProjectDeveloper>>) => response.data.data
-    );
+export const useCurrentProjectDeveloper = (user?: User) => {
+  const query = useQuery<ProjectDeveloper, any, ProjectDeveloper, any>(
+    [Queries.ProjectDeveloper, user],
+    getCurrentProjectDeveloper,
+    {
+      // Creates the conditional to only fetch the data if the user is a project developer user
+      enabled: !user || user?.role === UserRoles.ProjectDeveloper,
+      ...staticDataQueryOptions,
+    }
+  );
 
-  const query = useQuery([Queries.Account, user], getCurrentProjectDeveloper, {
-    // Creates the conditional to only fetch the data if the user is a project developer user
-    enabled: user?.role === UserRoles.ProjectDeveloper,
-    ...staticDataQueryOptions,
-  });
-
-  return useMemo(
+  return useMemo<UseQueryResult<ProjectDeveloper> & { projectDeveloper: ProjectDeveloper }>(
     () => ({
       ...query,
       projectDeveloper: query.data,

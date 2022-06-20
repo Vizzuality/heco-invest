@@ -27,12 +27,14 @@ export enum Paths {
   ProjectCreation = '/projects/new',
   ProjectDeveloper = '/project-developer',
   NewProjectDeveloper = '/project-developers/new',
+  PendingProjectDeveloper = '/project-developers/pending',
   ProjectDevelopers = '/discover/project-developers',
   OpenCall = '/open-call',
   OpenCalls = '/discover/open-calls',
   OpenCallCreation = '/open-calls/new',
   Investor = '/investor',
   NewInvestor = '/investors/new',
+  PendingInvestor = '/investors/pending',
   Investors = '/discover/investors',
 }
 
@@ -96,6 +98,7 @@ export enum EnumTypes {
   TargetGroup = 'project_target_group',
   Mosaic = 'mosaic',
   Images = 'image',
+  Sdg = 'sdg',
 }
 
 /** Project development stages */
@@ -120,6 +123,10 @@ export enum Impacts {
   Climate = 'climate',
   Water = 'water',
   Community = 'community',
+}
+
+export enum ReviewStatus {
+  Approved = 'approved',
 }
 
 export enum ImpactAreas {

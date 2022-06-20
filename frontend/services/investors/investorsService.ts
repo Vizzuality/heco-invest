@@ -2,10 +2,11 @@ import { useMemo } from 'react';
 
 import { UseQueryResult, useQuery, UseQueryOptions } from 'react-query';
 
-import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
+import { AxiosResponse, AxiosRequestConfig } from 'axios';
 
-import { Queries } from 'enums';
+import { Queries, UserRoles } from 'enums';
 import { Investor } from 'types/investor';
+import { User } from 'types/user';
 
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
@@ -68,3 +69,26 @@ export function useInvestor(id: string, initialData?: Investor) {
     [query]
   );
 }
+
+/** Get the Current Investor if the UserRole is investor */
+export const useCurrentInvestor = (user: User) => {
+  const getCurrentInvestor = async (): Promise<Investor> =>
+    await API.get('/api/v1/account/investor').then(
+      (response: AxiosResponse<ResponseData<Investor>> & { investor: Investor }) =>
+        response.data.data
+    );
+
+  const query = useQuery([Queries.Account, user], getCurrentInvestor, {
+    // Creates the conditional to only fetch the data if the user is a project developer user
+    enabled: user?.role === UserRoles.Investor,
+    ...staticDataQueryOptions,
+  });
+
+  return useMemo(
+    () => ({
+      ...query,
+      investor: query.data,
+    }),
+    [query]
+  );
+};
