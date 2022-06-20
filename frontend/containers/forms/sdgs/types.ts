@@ -28,4 +28,6 @@ export type SDGsProps<FormValues> = {
   register: (name, RegisterOptions) => UseFormRegisterReturn;
   /** Options for React Hook Form's `register` callback */
   registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
+  /** Default SDGs value */
+  defaultValues?: number[];
 };

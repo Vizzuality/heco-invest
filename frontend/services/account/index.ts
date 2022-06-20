@@ -14,7 +14,7 @@ import { decycle } from 'cycle';
 
 import { Queries } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
-import { Project, ProjectCreationPayload } from 'types/project';
+import { Project, ProjectCreationPayload, ProjectUpdatePayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 
 import API from 'services/api';
@@ -98,7 +98,17 @@ export function useCreateProject(): UseMutationResult<
   });
 }
 
-// Create Investor
+export function useUpdateProject(): UseMutationResult<
+  AxiosResponse<Project>,
+  AxiosError<ErrorResponse>,
+  ProjectUpdatePayload
+> {
+  const updateProject = async (project: ProjectUpdatePayload): Promise<AxiosResponse<Project>> => {
+    return API.put(`/api/v1/account/projects/${project.id}`, project);
+  };
+
+  return useMutation(updateProject);
+}
 
 const getInvestor = async (): Promise<Investor> => {
   const config: AxiosRequestConfig = {

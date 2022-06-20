@@ -1,11 +1,11 @@
 import { Accept } from 'react-dropzone';
 import {
   Path,
-  RegisterOptions,
-  FieldPath,
-  UseFormRegisterReturn,
+  Control,
   UseFormSetError,
   UseFormClearErrors,
+  FieldPath,
+  UseControllerProps,
 } from 'react-hook-form';
 
 import { ProjectImageGallery } from 'types/project';
@@ -23,10 +23,13 @@ export type UploaderProps<FormValues> = {
   name: Path<FormValues>;
   /** id of the input */
   id: string;
-  /** React Hook Form's `register` function */
-  register: (name: Path<FormValues>, options?: RegisterOptions) => UseFormRegisterReturn;
-  /** Options for React Hook Form's `register` function */
-  registerOptions?: RegisterOptions<FormValues, FieldPath<FormValues>>;
+  /** React Hook Form's control */
+  control: Control<any>;
+  /** React Hook Form's control options */
+  controlOptions: UseControllerProps<FormValues, FieldPath<FormValues>>['rules'] & {
+    /** Whether the input is disabled */
+    disabled?: boolean;
+  };
   /** React Hook Form's `setError` function */
   setError: UseFormSetError<any>;
   /** ReactHook Form's `clearErrors` callback */

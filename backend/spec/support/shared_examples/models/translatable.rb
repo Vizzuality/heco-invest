@@ -14,7 +14,7 @@ RSpec.shared_examples :translatable do
       end
 
       it "queues translation job" do
-        assert_enqueued_with job: TranslateJob, args: [resource] do
+        assert_enqueued_with job: TranslateJob, args: [resource, changed_attrs: [attribute]] do
           resource.save!
         end
       end

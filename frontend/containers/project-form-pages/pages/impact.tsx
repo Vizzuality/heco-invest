@@ -10,7 +10,14 @@ import TagGroup from 'components/forms/tag-group';
 
 import { ImpactProps } from '../types';
 
-export const Impact = ({ register, errors, impacts, setValue, clearErrors }: ImpactProps) => {
+export const Impact = ({
+  register,
+  errors,
+  impacts,
+  setValue,
+  clearErrors,
+  getValues,
+}: ImpactProps) => {
   const { formatMessage } = useIntl();
 
   return (
@@ -87,6 +94,7 @@ export const Impact = ({ register, errors, impacts, setValue, clearErrors }: Imp
               clearErrors={clearErrors}
               register={register}
               aria-describedby="sdgs-error"
+              defaultValues={getValues('sdgs')}
             />
           </fieldset>
           <ErrorMessage

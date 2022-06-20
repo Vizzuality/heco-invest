@@ -34,6 +34,7 @@ export enum Paths {
   OpenCallCreation = '/open-calls/new',
   Investor = '/investor',
   NewInvestor = '/investors/new',
+  PendingInvestor = '/investors/pending',
   Investors = '/discover/investors',
 }
 

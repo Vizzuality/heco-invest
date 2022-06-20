@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 
-import { Path } from 'react-hook-form';
+import { FormState, Path } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
 
-import { ProjectDeveloper } from 'types/projectDeveloper';
+import { EnumTypes } from 'enums';
 
 import { ErrorResponse } from 'services/types';
 
@@ -110,5 +110,20 @@ export const getSocialMediaLinksRegex = () => {
     facebook: getRegex('facebook'),
     linkedin: getRegex('linkedin'),
     instagram: getRegex('instagram'),
+  };
+};
+
+export const getPageErrors = (formPageInputs: string[], errors: FormState<any>['errors']) => {
+  return formPageInputs.some((input) => errors.hasOwnProperty(input));
+};
+
+export const useFilterNames = () => {
+  const { formatMessage } = useIntl();
+  return {
+    [EnumTypes.Category]: formatMessage({ defaultMessage: 'Category', id: 'ccXLVi' }),
+    [EnumTypes.Impact]: formatMessage({ defaultMessage: 'Impact', id: 'W2JBdp' }),
+    [EnumTypes.TicketSize]: formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
+    [EnumTypes.InstrumentType]: formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
+    [EnumTypes.Sdg]: formatMessage({ defaultMessage: 'SDGs', id: 'JQjEP9' }),
   };
 };
