@@ -19,7 +19,6 @@ import Button from 'components/button';
 import Tag from 'components/tag';
 import { ImpactAreas } from 'enums';
 import { Paths } from 'enums';
-import sdgsMock from 'mockups/sdgs.json';
 import { CategoryType } from 'types/category';
 import { Enum } from 'types/enums';
 
@@ -50,6 +49,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
       instrument_type: allInstrumentTypes,
       ticket_size: allTicketSizes,
       category: allCategories,
+      sdg: allSdgs,
     },
   } = useEnums();
 
@@ -74,7 +74,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
   const projectDeveloper = project?.project_developer;
   const category = allCategories?.find(({ id }) => id === project.category);
   const link = `${Paths.Project}/${project.slug}`;
-  const sdgs = sdgsMock.filter(({ id }) => project.sdgs.includes(parseInt(id)));
+  const sdgs = allSdgs.filter(({ id }) => project.sdgs.includes(parseInt(id)));
   const impact = useMemo(() => projectImpact(project), [project])[impactArea];
 
   return (

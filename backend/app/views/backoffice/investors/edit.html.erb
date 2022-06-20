@@ -1,0 +1,25 @@
+<div class="flex">
+  <aside class="w-2/6">
+    <h1 class="font-semibold text-xl text-black mb-8">
+      <%= @investor.name %>
+    </h1>
+
+    <ul class="flex flex-col gap-8 mb-8">
+      <li><%= section_link_to t("backoffice.account.account_language"), :language %></li>
+      <li><%= section_link_to t("backoffice.account.profile"), :profile, default: true %></li>
+      <li><%= section_link_to t("backoffice.account.approval_status"), :status %></li>
+    </ul>
+    <%= link_to backoffice_investor_path(@investor.id),
+       data: {
+         turbo_method: :delete,
+         turbo_confirm: t("backoffice.messages.delete_confirmation", model: t("backoffice.common.investor").downcase)
+       },
+       class: "button button-secondary-green button-with-icon" do %>
+      <%= svg "trash" %>
+      <%= t("backoffice.account.delete") %>
+    <% end %>
+  </aside>
+  <div class="w-full h-full bg-white rounded-xl p-6">
+    <%= render section_partial %>
+  </div>
+</div>

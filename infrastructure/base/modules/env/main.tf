@@ -61,6 +61,9 @@ locals {
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY = var.google_maps_api_key
     NEXT_PUBLIC_MAPBOX_API_TOKEN    = var.mapbox_api_key
   }
+  backend_docker_build_args = {
+    RAILS_RELATIVE_URL_ROOT = "/backend"
+  }
 }
 
 module "frontend_build" {
@@ -92,6 +95,7 @@ module "backend_build" {
   image_name             = "backend"
   dockerfile_path        = "./backend/Dockerfile"
   docker_context_path    = "./backend"
+  docker_build_args      = local.backend_docker_build_args
   cloud_run_service_name = "${var.project_name}-backend"
   test_container_name    = "backend"
   additional_steps       = [{
@@ -176,7 +180,7 @@ module "backend_cloudrun" {
     },
     {
       name  = "CLOUDTASKER_PROCESSOR_HOST"
-      value = "https://${var.domain}"
+      value = module.jobs_cloudrun.cloudrun_service_url
     },
     {
       name  = "CLOUDTASKER_PROCESSOR_PATH"
@@ -278,6 +282,10 @@ module "jobs_cloudrun" {
       value = "https://${var.domain}/backend"
     },
     {
+      name  = "FRONTEND_URL"
+      value = "https://${var.domain}"
+    },
+    {
       name  = "RAILS_RELATIVE_URL_ROOT"
       value = "/backend"
     },
@@ -340,7 +348,8 @@ module "backend_storage" {
   source                = "../storage"
   region                = var.gcp_region
   project_id            = var.gcp_project_id
-  service_account_email = module.backend_cloudrun.service_account_email
+  backend_service_account_email = module.backend_cloudrun.service_account_email
+  jobs_service_account_email = module.jobs_cloudrun.service_account_email
   name                  = "${var.project_name}-site-storage"
   domain                = var.domain
   cors_origin           = var.cors_origin
@@ -394,7 +403,7 @@ module "load_balancer" {
 module "translation" {
   source = "../translation"
   project_id            = var.gcp_project_id
-  service_account_email = module.backend_cloudrun.service_account_email
+  service_account_email = module.jobs_cloudrun.service_account_email
 }
 
 module "error_reporting" {

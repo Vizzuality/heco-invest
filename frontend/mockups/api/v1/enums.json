@@ -562,6 +562,125 @@
       "attributes": {
         "name": "Orinoquía"
       }
+    },
+    {
+      "id": "1",
+      "type": "sdg",
+      "attributes": {
+        "name": "No poverty"
+      }
+    },
+    {
+      "id": "2",
+      "type": "sdg",
+      "attributes": {
+        "name": "Zero hunger"
+      }
+    },
+    {
+      "id": "3",
+      "type": "sdg",
+      "attributes": {
+        "name": "Good health and well-being"
+      }
+    },
+    {
+      "id": "4",
+      "type": "sdg",
+      "attributes": {
+        "name": "Quality education"
+      }
+    },
+    {
+      "id": "5",
+      "type": "sdg",
+      "attributes": {
+        "name": "Gender equality"
+      }
+    },
+    {
+      "id": "6",
+      "type": "sdg",
+      "attributes": {
+        "name": "Clean water and sanitation"
+      }
+    },
+    {
+      "id": "7",
+      "type": "sdg",
+      "attributes": {
+        "name": "Affordable and clean energy"
+      }
+    },
+    {
+      "id": "8",
+      "type": "sdg",
+      "attributes": {
+        "name": "Decent work and economic growth"
+      }
+    },
+    {
+      "id": "9",
+      "type": "sdg",
+      "attributes": {
+        "name": "Industry, innovation and infrastructure"
+      }
+    },
+    {
+      "id": "10",
+      "type": "sdg",
+      "attributes": {
+        "name": "Reduced inequalities"
+      }
+    },
+    {
+      "id": "11",
+      "type": "sdg",
+      "attributes": {
+        "name": "Sustainable cities and communities"
+      }
+    },
+    {
+      "id": "12",
+      "type": "sdg",
+      "attributes": {
+        "name": "Responsible consumption and production"
+      }
+    },
+    {
+      "id": "13",
+      "type": "sdg",
+      "attributes": {
+        "name": "Climate action"
+      }
+    },
+    {
+      "id": "14",
+      "type": "sdg",
+      "attributes": {
+        "name": "Life below water"
+      }
+    },
+    {
+      "id": "15",
+      "type": "sdg",
+      "attributes": {
+        "name": "Life on land"
+      }
+    },
+    {
+      "id": "16",
+      "type": "sdg",
+      "attributes": {
+        "name": "Peace, justice and strong institutions"
+      }
+    },
+    {
+      "id": "17",
+      "type": "sdg",
+      "attributes": {
+        "name": "Partnerships for the goals"
+      }
     }
   ]
 }

@@ -9,11 +9,11 @@ import { FieldInfoProps } from './types';
 export const FieldInfo = ({ infoText }: FieldInfoProps) => {
   return (
     <Tooltip
-      placement="right"
+      placement="auto"
       arrow
       arrowClassName="bg-black"
       content={
-        <div className="max-w-md p-2 font-sans text-sm font-normal text-white bg-black rounded-sm">
+        <div className="max-w-xs sm:max-w-md p-2 font-sans text-sm font-normal text-white bg-black rounded-sm">
           {infoText}
         </div>
       }

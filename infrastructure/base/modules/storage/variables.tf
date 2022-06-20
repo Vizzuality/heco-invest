@@ -19,9 +19,14 @@ variable "storage_class" {
   description = "The storage class of the Storage Bucket to create"
 }
 
-variable "service_account_email" {
+variable "backend_service_account_email" {
   type        = string
-  description = "Email address of the service account to grant read/write permissions to"
+  description = "Email address of the backend instance service account to grant read/write permissions to"
+}
+
+variable "jobs_service_account_email" {
+  type        = string
+  description = "Email address of the jobs instance service account to grant read/write permissions to"
 }
 
 variable "domain" {

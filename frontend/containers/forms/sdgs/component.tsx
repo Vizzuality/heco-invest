@@ -5,7 +5,9 @@ import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
-import sdgs from 'mockups/sdgs.json';
+import { SDGS_IMAGES } from 'containers/sdgs/constants';
+
+import { useEnums } from 'services/enums/enumService';
 
 import SDG from './sdg';
 import { SDGsProps } from './types';
@@ -21,9 +23,13 @@ export const SDGs = <FormValues extends FieldValues>({
   setValueOptions = { shouldDirty: true },
   defaultValues = [],
 }: SDGsProps<FormValues>) => {
+  const {
+    data: { sdg: allSdgs = [] },
+  } = useEnums();
+
   // Casting as any as a workaround for the following issue:
   // https://github.com/react-hook-form/react-hook-form/discussions/7246
-  const allValues = useMemo(() => sdgs.map(({ id }) => id) as any, []);
+  const allValues = useMemo(() => allSdgs.map(({ id }) => id) as any, [allSdgs]);
 
   const handleSelectAllClick = () => {
     // Set the values on react-hook-form
@@ -42,12 +48,12 @@ export const SDGs = <FormValues extends FieldValues>({
     >
       <div role="group">
         <div className="flex flex-wrap items-center gap-2">
-          {sdgs.map(({ id, name: title, image }) => (
+          {allSdgs.map(({ id, name: title }) => (
             <SDG
               key={id}
               id={id.toString()}
               name={name}
-              image={image}
+              image={SDGS_IMAGES[id]}
               title={title}
               defaultChecked={defaultValues && defaultValues.includes(Number(id))}
               register={register}

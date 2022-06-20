@@ -16,7 +16,8 @@ class Account < ApplicationRecord
 
   translates :about
 
-  enum review_status: {unapproved: 0, approved: 1, rejected: 2}, _default: :unapproved
+  enum review_status: ReviewStatus::TYPES_WITH_CODE, _default: :unapproved
+  ransacker :review_status, formatter: proc { |v| review_statuses[v] }
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :about, presence: true
@@ -25,7 +26,7 @@ class Account < ApplicationRecord
   validates :twitter, url: true
   validates :facebook, url: true
   validates :instagram, url: true
-  validates :language, inclusion: {in: Language::TYPES}
+  validates :language, inclusion: {in: Language::TYPES, allow_blank: true}, presence: true
   validates :picture, attached: true, content_type: /\Aimage\/.*\z/
   validates :contact_email, presence: true
   validates :contact_email, format: {with: Devise.email_regexp}, unless: -> { contact_email.blank? }

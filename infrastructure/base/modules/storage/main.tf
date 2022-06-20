@@ -28,11 +28,17 @@ resource "google_storage_bucket" "storage_bucket" {
 resource "google_storage_bucket_iam_member" "objectViewer" {
   bucket = google_storage_bucket.storage_bucket.name
   role   = "roles/storage.objectViewer"
-  member = "serviceAccount:${var.service_account_email}"
+  member = "serviceAccount:${var.backend_service_account_email}"
 }
 
 resource "google_storage_bucket_iam_member" "objectCreator" {
   bucket = google_storage_bucket.storage_bucket.name
   role   = "roles/storage.objectCreator"
-  member = "serviceAccount:${var.service_account_email}"
+  member = "serviceAccount:${var.backend_service_account_email}"
+}
+
+resource "google_storage_bucket_iam_member" "objectAdmin" {
+  bucket = google_storage_bucket.storage_bucket.name
+  role   = "roles/storage.objectAdmin"
+  member = "serviceAccount:${var.jobs_service_account_email}"
 }
