@@ -31,6 +31,8 @@ export type ProjectDeveloperFormProps = {
     ProjectDeveloperSetupForm,
     unknown
   >;
+  /** Callback to execute when form has been submitted successfully */
+  onComplete: () => void;
 };
 
 export type ProfileProps = {
