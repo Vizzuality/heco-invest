@@ -25,6 +25,7 @@ export interface User {
   email: string;
   role: UserRoles;
   confirmed: boolean;
+  approved: boolean;
 }
 
 export type UserAccount = {

@@ -12,7 +12,9 @@ import {
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { decycle } from 'cycle';
 
-import { Queries } from 'enums';
+import useMe from 'hooks/me';
+
+import { Queries, UserRoles } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
 import { Project, ProjectCreationPayload, ProjectUpdatePayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
@@ -142,4 +144,27 @@ export function useCreateInvestor(): UseMutationResult<
       queryClient.setQueryData(Queries.Investor, result.data.data);
     },
   });
+}
+
+export function useAccount() {
+  const { user } = useMe();
+  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
+  const isInvestor = user?.role === UserRoles.Investor;
+
+  const { data: projectDeveloperData, isLoading: isLoadingProjectDeveloperData } =
+    useProjectDeveloper({
+      enabled: isProjectDeveloper,
+    });
+
+  const { data: investorData, isLoading: isLoadingInvestorData } = useInvestor({
+    enabled: isInvestor,
+  });
+
+  const accountData = isProjectDeveloper ? projectDeveloperData : investorData;
+  const isLoadingAccountData = isLoadingProjectDeveloperData || isLoadingInvestorData;
+
+  return {
+    data: accountData,
+    isLoading: isLoadingAccountData,
+  };
 }
