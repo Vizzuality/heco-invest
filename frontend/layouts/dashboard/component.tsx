@@ -6,7 +6,7 @@ import LayoutContainer from 'components/layout-container';
 import { UserRoles } from 'enums';
 import ProtectedPage from 'layouts/protected-page';
 
-import { useProjectDeveloper, useInvestor } from 'services/account';
+import { useAccount } from 'services/account';
 
 import AccountInfo from './account-info';
 import AccountPicture from './account-picture';
@@ -19,19 +19,7 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
   buttons,
 }: DashboardLayoutProps) => {
   const { user } = useMe();
-
-  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
-  const isInvestor = user?.role === UserRoles.Investor;
-
-  const { data: projectDeveloperData } = useProjectDeveloper({
-    enabled: isProjectDeveloper,
-  });
-
-  const { data: investorData } = useInvestor({
-    enabled: isInvestor,
-  });
-
-  const accountData = isProjectDeveloper ? projectDeveloperData : investorData;
+  const { data: accountData, isLoading: isLoadingAccountData } = useAccount();
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>

@@ -29,6 +29,9 @@
   "/VnDMl": {
     "string": "Other"
   },
+  "/XKclL": {
+    "string": "To update any of this information, or to delete the account, please contact the platform administrator."
+  },
   "/m/QYW": {
     "string": "Tell us what is the project about the problem and the solution to solve it"
   },
@@ -133,6 +136,9 @@
   },
   "4bznpU": {
     "string": "HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the long-term sustainability of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
+  },
+  "4iXh64": {
+    "string": "Your account has not been approved, your profile is not publicly visible."
   },
   "4vn+6A": {
     "string": "{inputName} is focused, type to refine list, press down to open the menu, press left to focus selected values"
@@ -419,6 +425,9 @@
   "Ftj+/t": {
     "string": "Why is my profile pending approval?"
   },
+  "G6hIMy": {
+    "string": "Public profile"
+  },
   "G6tmT0": {
     "string": "Select the ticket size(s) that you provide"
   },
@@ -650,6 +659,9 @@
   },
   "PheCRL": {
     "string": "Estimated Impact"
+  },
+  "Py+eVV": {
+    "string": "Basic info"
   },
   "Q1Q4rT": {
     "string": "Insert your name"
@@ -1140,6 +1152,9 @@
   "nBHzO6": {
     "string": "Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
   },
+  "nYrKWp": {
+    "string": "Edit profile"
+  },
   "nbqoY2": {
     "string": "Do you have a partnership with someone else?"
   },
@@ -1239,6 +1254,9 @@
   "s07dAT": {
     "string": "Project image"
   },
+  "sDHn6D": {
+    "string": "Contact Admin"
+  },
   "sFn7MX": {
     "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
   },
@@ -1283,6 +1301,9 @@
   },
   "txaU6M": {
     "string": "Apply to open calls"
+  },
+  "tzMNF3": {
+    "string": "Status"
   },
   "u/E7xG": {
     "string": "Are you currently looking for funding?"
@@ -1380,6 +1401,9 @@
   "xusigZ": {
     "string": "Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."
   },
+  "y1Z3or": {
+    "string": "Language"
+  },
   "yF82he": {
     "string": "Project developer"
   },
@@ -1424,5 +1448,8 @@
   },
   "ztd20l": {
     "string": "Development of the project"
+  },
+  "zyydTD": {
+    "string": "Your account has been <b>approved</b>, your profile is now publicly visible."
   }
 }
