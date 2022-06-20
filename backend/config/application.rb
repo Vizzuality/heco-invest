@@ -8,6 +8,9 @@ require "google/cloud/error_reporting/rails"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# otherwise relative rails url root is not taken when running server using bin/rails s command
+Dotenv::Railtie.load if Rails.env.development?
+
 module Backend
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

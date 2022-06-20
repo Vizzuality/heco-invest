@@ -109,7 +109,8 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
         [filterName]: filterValue,
       }));
     });
-    // The dependencies are empty because we just need it to run on mounting and to avoid a infinit loop
+    // The dependencies are empty because we just need it to run on mounting and to avoid a infinite loop
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onChange = (ev: any) => {
@@ -144,7 +145,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
             </label>
           </div>
 
-          <div className="flex flex-col sm:flex-row flex-wrap gap-y-4">
+          <div className="flex flex-col flex-wrap sm:flex-row gap-y-4">
             {filters?.map((item, index) => {
               const fieldName = item[0].type;
               return (
@@ -156,8 +157,8 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
                   })}
                 >
                   <fieldset>
-                    <legend className="inline font-sans text-base font-medium text-black mb-3">
-                      <span className="mr-2 font-sans font-semibold text-sm text-gray-800">
+                    <legend className="inline mb-3 font-sans text-base font-medium text-black">
+                      <span className="mr-2 font-sans text-sm font-semibold text-gray-800">
                         {legends[index]}
                       </span>
                       <FieldInfo
@@ -238,7 +239,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
               className="mb-6"
             >
               <fieldset>
-                <legend className="inline font-sans text-base font-medium text-black mb-3">
+                <legend className="inline mb-3 font-sans text-base font-medium text-black">
                   <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
                 </legend>
 
@@ -275,7 +276,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
               </fieldset>
             </div>
           )}
-          <div className="sm:flex justify-between items-center text-sm text-gray-600">
+          <div className="items-center justify-between text-sm text-gray-600 sm:flex">
             <div className="mb-4 sm:mb-0">
               <p>
                 <FormattedMessage

@@ -1,0 +1,28 @@
+<%= f.simple_fields_for :account do |ff|  %>
+  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
+    <%= t("backoffice.account.about") %>
+  </h2>
+
+  <%= ff.input localized_attribute(:about), label: t("simple_form.labels.account.about"), as: :text, input_html: {rows: 5} %>
+  <%= f.input localized_attribute(:mission), label: t("simple_form.labels.defaults.mission"), as: :text, input_html: {rows: 5} %>
+  <%= ff.input :website, as: :string %>
+
+  <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
+    <%= t("backoffice.account.contact_information") %>
+  </h2>
+  <div class="grid grid-cols-2 gap-4">
+    <%= ff.input :contact_email, as: :string %>
+    <%= ff.input :contact_phone, as: :string %>
+  </div>
+  <h3 class="mb-4 mt-6 text-gray-600 font-semibold">
+    <%= t("backoffice.account.online_presence") %>
+  </h3>
+  <div class="grid grid-cols-2 gap-4">
+    <%= ff.input :linkedin, as: :string %>
+    <%= ff.input :instagram, as: :string %>
+  </div>
+  <div class="grid grid-cols-2 gap-4">
+    <%= ff.input :facebook, as: :string %>
+    <%= ff.input :twitter, as: :string %>
+  </div>
+<% end %>
