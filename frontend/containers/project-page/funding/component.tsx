@@ -87,7 +87,7 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
               )}
             </h3>
             {project.looking_for_funding && (
-              <div className="flex flex-col gap-4 font-sans lg:gap-0 lg:space-x-20 lg:flex-row">
+              <div className="flex flex-col gap-4 font-sans 2xl:gap-02xl:space-x-20 2xl:flex-row">
                 <div className="flex flex-col justify-end space-y-1">
                   <p className="text-xl font-semibold lg:text-2xl">{ticketSizeStr}</p>
                   <p className="text-base whitespace-nowrap">
