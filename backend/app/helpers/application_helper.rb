@@ -57,11 +57,10 @@ module ApplicationHelper
   end
 
   def svg(filename, options = {})
-    assets = Rails.application.assets
-    asset = assets.find_asset(filename)
+    filepath = Rails.root.join("app", "assets", "images", "#{filename}.svg")
 
-    if asset
-      file = asset.source.force_encoding("UTF-8")
+    if File.exist?(filepath)
+      file = File.read(filepath)
       doc = Nokogiri::HTML::DocumentFragment.parse file
       svg = doc.at_css "svg"
       svg["class"] = options[:class] if options[:class].present?
