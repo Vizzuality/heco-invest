@@ -143,7 +143,8 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": null
+        "favourite": null,
+        "created_at": "2022-06-21T11:29:48.433Z"
       },
       "relationships": {
         "owner": {
@@ -203,7 +204,8 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": null
+        "favourite": null,
+        "created_at": "2022-06-21T11:29:48.795Z"
       },
       "relationships": {
         "owner": {
@@ -263,7 +265,8 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": null
+        "favourite": null,
+        "created_at": "2022-06-21T11:29:48.893Z"
       },
       "relationships": {
         "owner": {
@@ -323,7 +326,8 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": null
+        "favourite": null,
+        "created_at": "2022-06-21T11:29:49.002Z"
       },
       "relationships": {
         "owner": {
@@ -383,7 +387,8 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": null
+        "favourite": null,
+        "created_at": "2022-06-21T11:29:49.103Z"
       },
       "relationships": {
         "owner": {
@@ -443,7 +448,8 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": null
+        "favourite": null,
+        "created_at": "2022-06-21T11:29:49.194Z"
       },
       "relationships": {
         "owner": {
@@ -503,7 +509,8 @@
           "amazon-heart",
           "amazonian-piedmont-massif"
         ],
-        "favourite": null
+        "favourite": null,
+        "created_at": "2022-06-21T11:29:49.300Z"
       },
       "relationships": {
         "owner": {
