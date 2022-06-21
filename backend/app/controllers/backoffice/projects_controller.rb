@@ -47,7 +47,7 @@ module Backoffice
         :country_id,
         :department_id,
         :municipality_id,
-        # :shapefile # TODO: add support for shapefile
+        :geometry,
         :project_developer_id,
         :development_stage,
         :estimated_duration_in_months,
