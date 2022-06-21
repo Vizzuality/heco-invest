@@ -5,6 +5,8 @@ import { useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { decycle } from 'cycle';
 import { groupBy, pickBy } from 'lodash-es';
 
@@ -38,12 +40,12 @@ import { useUpdateProject } from 'services/account';
 import { getEnums, useEnums } from 'services/enums/enumService';
 import { getProject } from 'services/projects/projectService';
 
-export const getServerSideProps = async ({ params: { id }, locale }) => {
+export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let project;
 
   // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    ({ data: project } = await getProject(id, {
+    ({ data: project } = await getProject(id as string, {
       includes: [
         'project_images',
         'country',
@@ -65,7 +67,7 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
       project: decycle(project),
     },
   };
-};
+});
 
 type EditProjectProps = {
   project: ProjectType;

@@ -1,6 +1,8 @@
 // import { useRouter } from 'next/router';
 import { FormattedMessage } from 'react-intl';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { decycle } from 'cycle';
 import { groupBy } from 'lodash-es';
 
@@ -23,12 +25,12 @@ import { Investor } from 'types/investor';
 import { getEnums } from 'services/enums/enumService';
 import { getInvestor, useInvestor } from 'services/investors/investorsService';
 
-export const getServerSideProps = async ({ params: { id }, locale }) => {
+export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let investor = null;
 
   // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    investor = await getInvestor(id);
+    investor = await getInvestor(id as string);
   } catch (e) {
     return { notFound: true };
   }
@@ -42,7 +44,7 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
       investor: decycle(investor),
     },
   };
-};
+});
 
 type InvestorPageProps = {
   investor: Investor;

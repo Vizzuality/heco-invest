@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { chunk, groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -30,13 +32,13 @@ import {
   useProjectDeveloper,
 } from 'services/project-developers/projectDevelopersService';
 
-export const getServerSideProps = async ({ params: { id }, locale }) => {
+export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let projectDeveloper;
 
   // If getting the project developer fails, it's most likely because the record has
   // not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    projectDeveloper = await getProjectDeveloper(id, { includes: 'projects' });
+    projectDeveloper = await getProjectDeveloper(id as string, { includes: 'projects' });
   } catch (e) {
     return { notFound: true };
   }
@@ -50,7 +52,7 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
       initialProjectDeveloper: projectDeveloper,
     },
   };
-};
+});
 
 type ProjectDeveloperPageProps = {
   initialProjectDeveloper: ProjectDeveloperType;

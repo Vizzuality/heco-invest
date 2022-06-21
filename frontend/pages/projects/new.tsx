@@ -6,6 +6,8 @@ import { QueryClient, dehydrate } from 'react-query';
 
 import { useRouter } from 'next/router';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -35,18 +37,18 @@ import { useCreateProject } from 'services/account';
 import { getEnums, useEnums } from 'services/enums/enumService';
 import { getLocations } from 'services/locations/locations';
 
-export async function getStaticProps(ctx) {
+export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   const queryClient = new QueryClient();
   // prefetch static data - enums and locations
   queryClient.prefetchQuery(Queries.EnumList, getEnums);
   queryClient.prefetchQuery(Queries.Locations, () => getLocations());
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
       dehydratedState: dehydrate(queryClient),
     },
   };
-}
+});
 
 type ProjectProps = InferGetStaticPropsType<typeof getStaticProps>;
 

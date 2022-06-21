@@ -1,3 +1,5 @@
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { decycle } from 'cycle';
 import { groupBy } from 'lodash-es';
 
@@ -21,12 +23,12 @@ import { Project as ProjectType } from 'types/project';
 import { getEnums } from 'services/enums/enumService';
 import { getProject, useProject } from 'services/projects/projectService';
 
-export const getServerSideProps = async ({ params: { id }, locale }) => {
+export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let project;
 
   // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    ({ data: project } = await getProject(id, {
+    ({ data: project } = await getProject(id as string, {
       includes: [
         'project_images',
         'project_developer',
@@ -50,7 +52,7 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
       project: decycle(project),
     },
   };
-};
+});
 
 type ProjectPageProps = {
   project: ProjectType;

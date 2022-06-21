@@ -5,6 +5,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -22,13 +24,13 @@ import { useForgotPasswordResolver } from 'validations/sign-in';
 
 import { useResetPassword } from 'services/users/userService';
 
-export async function getStaticProps(ctx) {
+export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
     },
   };
-}
+});
 
 type ForgotPasswordPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
