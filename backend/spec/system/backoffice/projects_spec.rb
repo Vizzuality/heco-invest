@@ -186,6 +186,14 @@ RSpec.describe "Backoffice: Projects", type: :system do
           expect(page).to have_text(t("simple_form.error_notification.default_message"))
           expect(page).to have_text("Estimated duration in months must be less than 37")
         end
+
+        it "shows validation errors for localized inputs" do
+          fill_in t("simple_form.labels.project.name"), with: ""
+          click_on t("backoffice.common.save")
+
+          expect(page).to have_text(t("simple_form.error_notification.default_message"))
+          expect(page).to have_text("Name can't be blank")
+        end
       end
     end
 
