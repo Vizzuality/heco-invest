@@ -346,5 +346,4 @@ export function useAccountUsersList(
     }),
     [query]
   );
-};
-
+}
