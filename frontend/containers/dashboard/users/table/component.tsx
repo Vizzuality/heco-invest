@@ -25,7 +25,7 @@ export const UsersTable = () => {
 
   const sortChangeHandler = useSortChange({
     substitutions: {
-      user: 'user',
+      user: 'first_name',
       email: 'email',
       role: 'role',
       invitation: 'invitation',
@@ -36,6 +36,7 @@ export const UsersTable = () => {
     columns: [
       {
         Header: 'User',
+        accessor: 'user',
         className: 'capitalize text-sm break-all',
         defaultCanSort: true,
         sortDescFirst: true,
