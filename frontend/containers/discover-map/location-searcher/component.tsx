@@ -63,10 +63,10 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
         onSelect={handleSelectAddress}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div className="absolute top-3.5 left-3.5 z-10 w-60">
+          <div className="absolute top-3.5 left-3.5 w-60">
             <Icon
               icon={SearchIcon}
-              className="absolute z-20 w-4.5 h-4.5 text-black bg-white rounded-full top-2 left-2"
+              className="absolute w-4.5 h-4.5 text-black bg-white rounded-full top-2 left-2"
             />
             <input
               {...getInputProps({
@@ -82,7 +82,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
             <button
               type="button"
               className={cx({
-                'absolute z-20 cursor-pointer top-[9px] right-2': true,
+                'absolute cursor-pointer top-[9px] right-2': true,
                 hidden: address === '',
               })}
               onClick={() => setAddress('')}

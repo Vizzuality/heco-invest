@@ -6,6 +6,8 @@ import { ProjectGalleryImageType } from 'containers/forms/project-gallery/projec
 
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
+import { Locations } from './locations';
+
 /** Project images on responses */
 export type ProjectImageType = {
   id?: string;
@@ -20,11 +22,7 @@ export type ProjectImageType = {
 /** Common Project types */
 export type ProjectBase = {
   category: string;
-  country: {
-    id: string;
-    location_type: 'country';
-    name: string;
-  };
+  country: Locations;
   description: string;
   development_stage: DevelopmentStages;
   estimated_duration_in_months: number;
@@ -34,6 +32,7 @@ export type ProjectBase = {
   instrument_types: string[];
   involved_project_developer_not_listed: boolean;
   looking_for_funding: boolean;
+  funding_plan: string;
   name: string;
   problem: string;
   progress_impact_tracking: string;
@@ -94,13 +93,13 @@ export type Project = ProjectBase &
     slug: string;
     trusted?: boolean;
     type: 'project';
+    priority_landscape: Locations;
   };
 
 /** Project Form inputs */
 export type ProjectForm = ProjectBase & {
   country_id: string;
   department_id: string;
-  funding_plan: string;
   involved_project_developer_ids: string[];
   municipality_id: string;
   project_images_attributes: ProjectImageGallery[];

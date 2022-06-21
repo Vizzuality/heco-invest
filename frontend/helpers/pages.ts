@@ -7,7 +7,8 @@ import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
 
-import { EnumTypes } from 'enums';
+import { EnumTypes, Languages } from 'enums';
+import languages from 'locales.config.json';
 
 import { ErrorResponse } from 'services/types';
 
@@ -126,4 +127,22 @@ export const useFilterNames = () => {
     [EnumTypes.InstrumentType]: formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
     [EnumTypes.Sdg]: formatMessage({ defaultMessage: 'SDGs', id: 'JQjEP9' }),
   };
+};
+
+/** Hook to use an object with the locales as keys and the correspondent translated languages as values */
+export const useLanguageNames = () => {
+  const { formatMessage } = useIntl();
+  let langs: Partial<{ [key in Languages]: string }> = {};
+
+  languages.locales.map(({ locale }) => {
+    switch (locale) {
+      case 'en':
+        langs.en = formatMessage({ defaultMessage: 'English', id: 'WkrNSk' });
+      case 'es':
+        langs.es = formatMessage({ defaultMessage: 'Espanish', id: '5kWT1/' });
+      case 'pt':
+        langs.pt = formatMessage({ defaultMessage: 'Portuguese', id: 'A4UTjl' });
+    }
+  });
+  return langs;
 };

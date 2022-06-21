@@ -1,0 +1,17 @@
+<%= simple_form_for [:backoffice, @project], url: backoffice_project_path(@project.id) do |f| %>
+  <%= f.error_notification %>
+
+  <h2 class="mb-2 text-gray-900 font-semibold">
+    <%= t("backoffice.projects.status") %>
+  </h2>
+  <p class="mb-8 text-gray-600">
+    <%= t("backoffice.projects.status_description") %>
+  </p>
+
+  <%= f.input :trusted, label: "", collection: [[t("backoffice.common.verified"), true], [t("backoffice.common.unverified"), false]], as: :radio_buttons %>
+
+  <div class="mt-3 flex justify-end gap-3">
+    <%= link_to t("backoffice.common.cancel"), backoffice_projects_path, class: "button button-secondary-green" %>
+    <%= f.button :submit, t("backoffice.common.save"), class: "button button-primary-green" %>
+  </div>
+<% end %>
