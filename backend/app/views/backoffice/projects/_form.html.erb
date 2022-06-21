@@ -1,4 +1,4 @@
-<%= simple_form_for [:backoffice, project] do |f| %>
+<%= simple_form_for [:backoffice, project], url: backoffice_project_path(project.id) do |f| %>
   <%= f.error_notification %>
 
   <%= f.input localized_attribute(:name), label: t("simple_form.labels.project.name"), as: :string %>

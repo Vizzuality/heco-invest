@@ -1,4 +1,4 @@
-<%= simple_form_for [:backoffice, @project] do |f| %>
+<%= simple_form_for [:backoffice, @project], url: backoffice_project_path(@project.id) do |f| %>
   <%= f.error_notification %>
 
   <h2 class="mb-2 text-gray-900 font-semibold">

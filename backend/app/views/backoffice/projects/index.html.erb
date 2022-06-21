@@ -36,7 +36,7 @@
           <%= status_tag :verified, t('backoffice.common.verified') if p.trusted?  %>
           <%= status_tag :unverified, t('backoffice.common.unverified') unless p.trusted?  %>
         </td>
-        <td><%= link_to t("backoffice.common.edit"), edit_backoffice_project_path(p.friendly_id), class: "link-button" %></td>
+        <td><%= link_to t("backoffice.common.edit"), edit_backoffice_project_path(p.id), class: "link-button" %></td>
       </tr>
     <% end %>
   </tbody>

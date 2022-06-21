@@ -31,7 +31,7 @@ module Backoffice
     def update
       if @project.update(update_params)
         redirect_back(
-          fallback_location: edit_backoffice_project_path(@project.friendly_id),
+          fallback_location: edit_backoffice_project_path(@project.id),
           notice: t("backoffice.messages.success_update", model: t("backoffice.common.project"))
         )
       else
@@ -103,7 +103,7 @@ module Backoffice
     end
 
     def fetch_project
-      @project = Project.friendly.find(params[:id])
+      @project = Project.find(params[:id])
     end
 
     def set_breadcrumbs
