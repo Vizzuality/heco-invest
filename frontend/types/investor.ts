@@ -31,12 +31,8 @@ export type Investor = InvestorForm & {
   slug: string;
   picture: Picture;
   review_status: string;
-  relationships: {
-    owner: {
-      data: {
-        id: string;
-        type: string;
-      };
-    };
+  owner: {
+    id: string;
+    type: string;
   };
 };

@@ -10,7 +10,7 @@ import { User } from 'types/user';
 
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
-import { PagedResponse, PagedRequest, ResponseData } from 'services/types';
+import { PagedResponse, PagedRequest, ResponseData, SingleRequestParams } from 'services/types';
 
 const getInvestors = async (params?: PagedRequest) => {
   const { fields, search, page, perPage, ...rest } = params || {};
@@ -50,14 +50,14 @@ export function useInvestorsList(
 }
 
 /** Get a Investor using an id and, optionally, the wanted fields */
-export const getInvestor = async (id: string): Promise<Investor> => {
+export const getInvestor = async (id: string, params?: SingleRequestParams): Promise<Investor> => {
   const response = await API.get<ResponseData<Investor>>(`/api/v1/investors/${id}`);
   return response.data.data;
 };
 
 /** Use query for a single Investor */
-export function useInvestor(id: string, initialData?: Investor) {
-  const query = useQuery([Queries.Investor, id], () => getInvestor(id), {
+export function useInvestor(id: string, initialData?: Investor, params?: SingleRequestParams) {
+  const query = useQuery([Queries.Investor, id], () => getInvestor(id, params), {
     initialData,
   });
 

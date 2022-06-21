@@ -37,3 +37,8 @@ export type PagedResponse<ResponseData> = {
 export type ErrorResponse = {
   message: { title: string; code?: string }[];
 };
+
+export type SingleRequestParams = {
+  includes?: string;
+  fields?: string;
+};
