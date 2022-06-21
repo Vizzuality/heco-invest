@@ -247,7 +247,7 @@ const getAccountUsers = async (params?: PagedRequest): Promise<PagedResponse<Acc
       },
       {
         first_name: 'Savannah',
-        last_name: 'Nguyen',
+        last_name: 'Campbell',
         picture: null,
         email: 'savannah.nguyen@nesst.com',
         id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
