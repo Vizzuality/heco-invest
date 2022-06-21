@@ -1008,6 +1008,9 @@
   "efZTBX": {
     "string": "Use this space to share links to documents, videos and websites that support your pitch."
   },
+  "ejuZC0": {
+    "string": "To upload a Shapefile geometry, you must upload the .shp, .shx, .dbf and eventually .prj files all at once."
+  },
   "et2m37": {
     "string": "insert URL"
   },
