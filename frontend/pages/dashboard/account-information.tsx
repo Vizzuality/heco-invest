@@ -1,14 +1,12 @@
-import { useMemo } from 'react';
-
 import { ExternalLink } from 'react-feather';
-import { FormattedDate, FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import Link from 'next/link';
 
 import { InferGetStaticPropsType } from 'next';
 
 import { useUserAccount } from 'hooks/use-user-account';
-import useOwnerAccountName from 'hooks/useAccountOwner';
+// import useOwnerAccountName from 'hooks/useAccountOwner';
 
 import { loadI18nMessages } from 'helpers/i18n';
 import { useLanguageNames } from 'helpers/pages';
