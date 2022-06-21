@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useMemo, useState } from 'react';
 
 import { Controller, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -6,6 +6,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import cx from 'classnames';
 
 import dynamic from 'next/dynamic';
+
+import { sortBy } from 'lodash-es';
 
 import GeometryInput from 'containers/forms/geometry';
 import ProjectGallery from 'containers/forms/project-gallery';
@@ -55,7 +57,6 @@ const GeneralInformation = ({
 
   useEffect(() => {
     const defaultImages = getValues('project_images_attributes');
-    console.log(defaultImages);
     setImages(defaultImages || []);
 
     setCoverImage(
@@ -76,21 +77,27 @@ const GeneralInformation = ({
     setValue('involved_project_developer', Number(e.target.value));
   };
 
-  const getOptions = (locationType: LocationsTypes, filter: 'department' | 'country') => {
-    let filteredLocations = [];
-    if (locations) {
-      // If there is data on locations
-      filteredLocations = locations[locationType];
-      // If there is a filter for the field
-      if (locationsFilter && locationsFilter[filter]) {
-        filteredLocations = filteredLocations?.filter(
-          (location) => !locationsFilter[filter] || location.parent.id === locationsFilter[filter]
-        );
-      }
-    }
+  const getOptions = useMemo(
+    () => (locationType: LocationsTypes, filter: 'department' | 'country') => {
+      let filteredLocations = [];
 
-    return filteredLocations?.map(({ id, name }) => <Option key={id}>{name}</Option>);
-  };
+      if (locations) {
+        // If there is data on locations
+        filteredLocations = locations[locationType];
+        // If there is a filter for the field
+        if (locationsFilter && locationsFilter[filter]) {
+          filteredLocations = filteredLocations?.filter(
+            (location) => !locationsFilter[filter] || location.parent.id === locationsFilter[filter]
+          );
+        }
+      }
+
+      return sortBy(filteredLocations, 'name').map(({ id, name }) => (
+        <Option key={id}>{name}</Option>
+      ));
+    },
+    [locations, locationsFilter]
+  );
 
   const handleChangeLocation = (locationType: LocationsTypes, e: any) => {
     const { value } = e.target;
