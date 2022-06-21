@@ -56,6 +56,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
     name: projectDeveloper.name,
     email: projectDeveloper.contact_email,
     phone: projectDeveloper.contact_phone,
+    picture: projectDeveloper.picture?.small,
   };
 
   const ticketSizeStr = useMemo(
