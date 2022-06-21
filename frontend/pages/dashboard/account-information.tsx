@@ -147,18 +147,24 @@ export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayou
                   <span>TODO</span>
                   */}
                 </div>
-                <div className="flex flex-col items-center gap-4 p-4 mt-6 text-sm md:flex-row rounded-xl bg-background-middle">
-                  <div className="flex flex-grow">
-                    <FormattedMessage
-                      defaultMessage="To update any of this information, or to delete the account, please contact the platform administrator."
-                      id="/XKclL"
-                    />
-                  </div>
-                  <div>
-                    <Button theme="secondary-green" className="whitespace-nowrap">
-                      <FormattedMessage defaultMessage="Contact Admin" id="sDHn6D" />
-                    </Button>
-                  </div>
+                <div className="p-4 mt-6 text-sm md:flex-row rounded-xl bg-background-middle">
+                  <FormattedMessage
+                    defaultMessage="To update any of this information or to delete the account, please contact the platform administrator by sending an email to: <email>admin@admin.com</email>."
+                    id="Uzc3q6"
+                    values={{
+                      email: (chunk: string) => (
+                        <Link href={`mailto:${chunk}`}>
+                          <a
+                            className="inline underline transition-all rounded text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {chunk}
+                          </a>
+                        </Link>
+                      ),
+                    }}
+                  />
                 </div>
               </>
             )}
