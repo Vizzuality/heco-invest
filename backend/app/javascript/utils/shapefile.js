@@ -43,11 +43,12 @@ const readFileAsText = (file) => {
  */
 export const validateFile = async (
   file,
-  loader
+  loader,
+  messages
 ) => {
   switch (loader) {
     case KMLLoader: {
-      const errorMessage = 'This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues.';
+      const errorMessage = messages.not_valid_kml;
 
       // For the KML files, we're checking whether they are valid XML files. For this, we verify:
       // 1. that we can parse them with `DOMParser`
@@ -79,7 +80,7 @@ export const validateFile = async (
  * @param files Files to convert
   * @returns Error message if the convertion fails
  */
-export async function convertFilesToGeojson(files) {
+export async function convertFilesToGeojson(files, messages) {
   // If multiple files are uploaded and one of them is a ShapeFile, this is the one we pass to the
   // loader because it is the one `ShapefileLoader` expects (out of the .prj, .shx, etc. other
   // Shapefile-related files). If the user uploaded files of a different extension, we just take the
@@ -103,16 +104,16 @@ export async function convertFilesToGeojson(files) {
   }
 
   if (!loader) {
-    return Promise.reject('This file is not supported. Please try uploading a different format.');
+    return Promise.reject(messages.not_supported);
   }
 
-  const validationError = await validateFile(fileToParse, loader);
+  const validationError = await validateFile(fileToParse, loader, messages);
   if (validationError) {
     return Promise.reject(validationError);
   }
 
   let content;
-  let errorMessage = `Unable to parse the file ${fileToParse.name}. Please try uploading a different format.`;
+  let errorMessage = messages.unable_to_parse;
 
   try {
     content = await load(fileToParse, loader, {
