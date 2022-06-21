@@ -34,7 +34,8 @@
         "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTmpJeU5tWTRaaTFqWldOa0xUUXdaR1V0WVRoaFlpMHpaVE16WkdWak5UUXhNMklHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--a72d61ce4bcbef3b5da4975762de0531db5c6bf0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
         "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTmpJeU5tWTRaaTFqWldOa0xUUXdaR1V0WVRoaFlpMHpaVE16WkdWak5UUXhNMklHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--a72d61ce4bcbef3b5da4975762de0531db5c6bf0/picture.jpg"
       },
-      "favourite": null
+      "favourite": null,
+      "created_at": "2022-06-21T11:29:52.890Z"
     },
     "relationships": {
       "owner": {

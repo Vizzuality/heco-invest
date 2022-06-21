@@ -12,7 +12,9 @@ import {
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { decycle } from 'cycle';
 
-import { Queries } from 'enums';
+import useMe from 'hooks/me';
+
+import { Queries, UserRoles } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
 import { Project, ProjectCreationPayload, ProjectUpdatePayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
@@ -20,7 +22,7 @@ import { AccountUser } from 'types/user';
 
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
-import { PagedResponse, PagedRequest, ResponseData, ErrorResponse } from 'services/types';
+import { ErrorResponse, PagedRequest, PagedResponse, ResponseData } from 'services/types';
 
 // Create PD
 const getProjectDeveloper = async (): Promise<ProjectDeveloper> => {
@@ -182,6 +184,29 @@ export function useAccountProjectsList(
   );
 }
 
+export function useAccount() {
+  const { user } = useMe();
+  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
+  const isInvestor = user?.role === UserRoles.Investor;
+
+  const { data: projectDeveloperData, isLoading: isLoadingProjectDeveloperData } =
+    useProjectDeveloper({
+      enabled: isProjectDeveloper,
+    });
+
+  const { data: investorData, isLoading: isLoadingInvestorData } = useInvestor({
+    enabled: isInvestor,
+  });
+
+  const accountData = isProjectDeveloper ? projectDeveloperData : investorData;
+  const isLoadingAccountData = isLoadingProjectDeveloperData || isLoadingInvestorData;
+
+  return {
+    data: accountData,
+    isLoading: isLoadingAccountData,
+  };
+}
+
 /** Hook to use the the Users Invited to User Account */
 const getAccountUsers = async (params?: PagedRequest): Promise<PagedResponse<AccountUser>> => {
   const { search, page, includes, ...rest } = params || {};
@@ -321,4 +346,5 @@ export function useAccountUsersList(
     }),
     [query]
   );
-}
+};
+

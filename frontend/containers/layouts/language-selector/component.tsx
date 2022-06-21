@@ -4,6 +4,8 @@ import { useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
+import { setCookie } from 'helpers/cookies';
+
 import Button from 'components/button';
 import Icon from 'components/icon';
 import Menu, { MenuItem } from 'components/menu';
@@ -31,7 +33,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = () => {
       router.push({ pathname, query }, asPath, { locale: newLanguageCode });
 
       // Set a cookie for 1 year so that the user preference is kept
-      document.cookie = `NEXT_LOCALE=${newLanguageCode}; path=/; max-age=31536000; secure`;
+      setCookie('NEXT_LOCALE', `${newLanguageCode}; path=/; max-age=31536000; secure`);
     },
     [router]
   );

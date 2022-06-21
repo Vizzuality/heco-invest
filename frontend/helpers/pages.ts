@@ -139,7 +139,7 @@ export const useLanguageNames = () => {
       case 'en':
         langs.en = formatMessage({ defaultMessage: 'English', id: 'WkrNSk' });
       case 'es':
-        langs.es = formatMessage({ defaultMessage: 'Espanish', id: '5kWT1/' });
+        langs.es = formatMessage({ defaultMessage: 'Spanish', id: '8WtyrD' });
       case 'pt':
         langs.pt = formatMessage({ defaultMessage: 'Portuguese', id: 'A4UTjl' });
     }

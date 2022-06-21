@@ -28,6 +28,11 @@ export type HTMLAnchorProps = PropsWithChildren<
        * a new tab/window.
        */
       external?: boolean;
+      /**
+       * Optional decorator for the path that will be shown in the browser URL bar
+       * See: https://nextjs.org/docs/api-reference/next/link
+       */
+      as?: string;
     }
 >;
 

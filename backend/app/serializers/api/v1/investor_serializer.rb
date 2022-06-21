@@ -3,10 +3,27 @@ module API
     class InvestorSerializer < BaseSerializer
       include BlobSerializer
 
-      attributes :name, :slug, :about, :website, :instagram, :facebook, :linkedin, :twitter,
-        :mission, :prioritized_projects_description, :other_information, :investor_type,
-        :categories, :ticket_sizes, :instrument_types, :impacts, :sdgs,
-        :previously_invested, :language, :review_status
+      attributes :name,
+        :slug,
+        :about,
+        :website,
+        :instagram,
+        :facebook,
+        :linkedin,
+        :twitter,
+        :mission,
+        :prioritized_projects_description,
+        :other_information,
+        :investor_type,
+        :categories,
+        :ticket_sizes,
+        :instrument_types,
+        :impacts,
+        :sdgs,
+        :previously_invested,
+        :language,
+        :review_status,
+        :created_at
 
       account_approved_attributes :contact_email, :contact_phone
 
