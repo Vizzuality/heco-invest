@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
+import { ArrowLeft as ArrowLeftIcon, ArrowRight as ArrowRightIcon } from 'react-feather';
 import {
   ChevronsLeft as ChevronsLeftIcon,
   ChevronLeft as ChevronLeftIcon,
@@ -12,8 +13,9 @@ import cx from 'classnames';
 
 import { noop } from 'lodash-es';
 
-import Button from 'components/button';
+import Button, { ButtonProps } from 'components/button';
 
+import { THEMES } from './constants';
 import { PaginationProps } from './types';
 
 const Pagination: React.FC<PaginationProps> = ({
@@ -25,6 +27,7 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   totalItems,
   numNumberButtons = 8,
+  theme = 'default',
   onPageClick = noop,
 }: PaginationProps) => {
   const intl = useIntl();
@@ -93,27 +96,29 @@ const Pagination: React.FC<PaginationProps> = ({
         })}
       >
         <nav aria-label={intl.formatMessage({ defaultMessage: 'Pagination', id: 'ZATT08' })}>
-          <ol className="flex flex-wrap items-center justify-center gap-2 py-3">
+          <ol className={THEMES[theme].listClasses}>
+            {theme === 'default' && (
+              <li>
+                <Button
+                  className={THEMES[theme].buttonClasses.default}
+                  size="smallest"
+                  theme={THEMES[theme].buttonTheme.default as ButtonProps['theme']}
+                  aria-label={intl.formatMessage({
+                    defaultMessage: 'Go to first page',
+                    id: 'F4dsUN',
+                  })}
+                  disabled={pagination.currentPage <= 1}
+                  onClick={handleFirstClick}
+                >
+                  <ChevronsLeftIcon className="w-4 h-4" />
+                </Button>
+              </li>
+            )}
             <li>
               <Button
-                className="justify-center w-10 h-10 focus-visible:!outline-green-dark"
+                className={THEMES[theme].buttonClasses.default}
                 size="smallest"
-                theme="primary-white"
-                aria-label={intl.formatMessage({
-                  defaultMessage: 'Go to first page',
-                  id: 'F4dsUN',
-                })}
-                disabled={pagination.currentPage <= 1}
-                onClick={handleFirstClick}
-              >
-                <ChevronsLeftIcon className="w-4 h-4" />
-              </Button>
-            </li>
-            <li>
-              <Button
-                className="justify-center w-10 h-10 focus-visible:!outline-green-dark"
-                size="smallest"
-                theme="primary-white"
+                theme={THEMES[theme].buttonTheme.default as ButtonProps['theme']}
                 aria-label={intl.formatMessage({
                   defaultMessage: 'Go to previous page',
                   id: 'NYErt1',
@@ -121,18 +126,25 @@ const Pagination: React.FC<PaginationProps> = ({
                 disabled={pagination.currentPage <= 1}
                 onClick={handlePreviousClick}
               >
-                <ChevronLeftIcon className="w-4 h-4" />
+                {theme === 'default' ? (
+                  <ChevronLeftIcon className="w-4 h-4" />
+                ) : (
+                  <ArrowLeftIcon className="w-4 h-4" />
+                )}
               </Button>
             </li>
             {rangeButtons.map((buttonNumber) => {
               const isCurrent = buttonNumber === pagination.currentPage;
-              const theme = isCurrent ? 'primary-green' : 'primary-white';
               return (
                 <li key={buttonNumber} aria-current={isCurrent}>
                   <Button
-                    className="justify-center w-10 h-10 focus-visible:!outline-green-dark"
+                    className={THEMES[theme].buttonClasses[isCurrent ? 'active' : 'default']}
                     size="smallest"
-                    theme={theme}
+                    theme={
+                      THEMES[theme].buttonTheme[
+                        isCurrent ? 'active' : 'default'
+                      ] as ButtonProps['theme']
+                    }
                     aria-label={intl.formatMessage(
                       {
                         defaultMessage: 'Go to page {page}',
@@ -140,7 +152,7 @@ const Pagination: React.FC<PaginationProps> = ({
                       },
                       { page: buttonNumber }
                     )}
-                    disabled={isCurrent}
+                    disabled={isCurrent && theme !== 'compact'}
                     key={buttonNumber}
                     onClick={() => {
                       handleRangeButtonClick(buttonNumber);
@@ -153,9 +165,9 @@ const Pagination: React.FC<PaginationProps> = ({
             })}
             <li>
               <Button
-                className="justify-center w-10 h-10 focus-visible:!outline-green-dark"
+                className={THEMES[theme].buttonClasses.default}
                 size="smallest"
-                theme="primary-white"
+                theme={THEMES[theme].buttonTheme.default as ButtonProps['theme']}
                 aria-label={intl.formatMessage({
                   defaultMessage: 'Go to next page',
                   id: 'nkDaFL',
@@ -163,27 +175,37 @@ const Pagination: React.FC<PaginationProps> = ({
                 disabled={pagination.currentPage >= pagination.totalPages}
                 onClick={handleNextClick}
               >
-                <ChevronRightIcon className="w-4 h-4" />
+                {theme === 'default' ? (
+                  <ChevronRightIcon className="w-4 h-4" />
+                ) : (
+                  <ArrowRightIcon className="w-4 h-4" />
+                )}
               </Button>
             </li>
-            <li>
-              <Button
-                className="justify-center w-10 h-10 focus-visible:!outline-green-dark"
-                size="smallest"
-                theme="primary-white"
-                aria-label={intl.formatMessage({
-                  defaultMessage: 'Go to last page',
-                  id: 'fMrPOR',
-                })}
-                disabled={pagination.currentPage >= pagination.totalPages}
-                onClick={handleLastClick}
-              >
-                <ChevronsRightIcon className="w-4 h-4" />
-              </Button>
-            </li>
+            {theme === 'default' && (
+              <li>
+                <Button
+                  className={THEMES[theme].buttonClasses.default}
+                  size="smallest"
+                  theme={THEMES[theme].buttonTheme.default as ButtonProps['theme']}
+                  aria-label={intl.formatMessage({
+                    defaultMessage: 'Go to last page',
+                    id: 'fMrPOR',
+                  })}
+                  disabled={pagination.currentPage >= pagination.totalPages}
+                  onClick={handleLastClick}
+                >
+                  <ChevronsRightIcon className="w-4 h-4" />
+                </Button>
+              </li>
+            )}
           </ol>
         </nav>
-        <div className="flex justify-center text-sm" aria-live="polite" aria-atomic="true">
+        <div
+          className={cx({ 'flex justify-center text-sm': true, hidden: theme === 'compact' })}
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <FormattedMessage
             defaultMessage="{numItems} of {totalItems} entries"
             values={{ numItems, totalItems }}

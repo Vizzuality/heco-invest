@@ -38,7 +38,7 @@ COPY --chown=nextjs:nextjs . .
 RUN yarn install --immutable
 
 RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
-RUN ./tx pull
+RUN ./tx pull -f
 
 RUN yarn build
 

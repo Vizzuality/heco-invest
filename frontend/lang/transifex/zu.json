@@ -59,6 +59,9 @@
   "0hzVw6": {
     "string": "How accounts work?"
   },
+  "0iaD3T": {
+    "string": "Total <span>{numProjects}</span> {numProjects, plural, one {project} other {projects}}"
+  },
   "0wBg9P": {
     "string": "Project developers"
   },
@@ -133,6 +136,9 @@
   },
   "4JFhNG": {
     "string": "Describe briefly the impact that the project is expected to generate to the identified users/beneficiaries. Try to explain how the solution or project will achieve this impact. Also try to give some estimates of the number of people impacted, at least to get an initial idea."
+  },
+  "4YJHut": {
+    "string": "Clear search"
   },
   "4bznpU": {
     "string": "HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the long-term sustainability of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
@@ -331,6 +337,9 @@
   },
   "C0sD76": {
     "string": "insert number (max 24)"
+  },
+  "C1dyBg": {
+    "string": "No search results matching the criteria."
   },
   "C23He5": {
     "string": "Sort in ascending order"
@@ -1082,6 +1091,9 @@
   },
   "in26xr": {
     "string": "{organization} logo"
+  },
+  "itfsqC": {
+    "string": "Currently you don’t have any <b>Projects</b>."
   },
   "j4lBL7": {
     "string": "Note: Some filters not apply to all tabs"

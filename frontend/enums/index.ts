@@ -76,6 +76,8 @@ export enum Queries {
   ProjectsMap = 'projects_map',
   /** Current user's account owner name */
   AccountOwnerName = 'account_owner_name',
+  /** List of projects */
+  AccountProjectList = 'account_projects',
 }
 
 /** Location endpoint param location_type */

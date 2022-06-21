@@ -104,6 +104,7 @@
     "react-redux": "^7.2.4",
     "react-select": "^4.3.0",
     "react-stately": "^3.12.2",
+    "react-table": "^7.8.0",
     "rooks": "^5.10.0",
     "sharp": "^0.30.1",
     "slugify": "^1.6.5",
