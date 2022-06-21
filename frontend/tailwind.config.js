@@ -21,6 +21,7 @@ module.exports = {
       '6xl': ['5.5rem', '6.5rem'],
     },
     colors: {
+      transparent: 'transparent',
       background: {
         light: '#FFFDFA',
         middle: '#FBF7F2',

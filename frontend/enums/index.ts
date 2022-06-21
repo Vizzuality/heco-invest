@@ -75,6 +75,8 @@ export enum Queries {
   ProjectQuery = 'project',
   /** Projects Map location */
   ProjectsMap = 'projects_map',
+  /** List of projects */
+  AccountProjectList = 'account_projects',
 }
 
 /** Location endpoint param location_type */

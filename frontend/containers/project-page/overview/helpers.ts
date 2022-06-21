@@ -7,7 +7,6 @@ import tw from 'tailwind.config.js';
 export const getLayer = (feature: ValidGeometryType, category: string) => {
   const colors = tw.theme.colors.category;
   const color = find(colors, (value, key) => category?.includes(key));
-  console.log(color);
 
   return {
     id: 'multipolygon',

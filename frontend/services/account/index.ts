@@ -20,7 +20,8 @@ import { Project, ProjectCreationPayload, ProjectUpdatePayload } from 'types/pro
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 
 import API from 'services/api';
-import { ErrorResponse, ResponseData } from 'services/types';
+import { staticDataQueryOptions } from 'services/helpers';
+import { PagedResponse, PagedRequest, ResponseData, ErrorResponse } from 'services/types';
 
 // Create PD
 const getProjectDeveloper = async (): Promise<ProjectDeveloper> => {
@@ -167,4 +168,40 @@ export function useAccount() {
     data: accountData,
     isLoading: isLoadingAccountData,
   };
+}
+
+const getAccountProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
+  const { search, page, includes, ...rest } = params || {};
+
+  const config: AxiosRequestConfig = {
+    // TODO: Change to the correct endpoint
+    url: '/api/v1/projects',
+    method: 'GET',
+    params: {
+      ...rest,
+      includes: includes?.join(','),
+      'filter[full_text]': search,
+      'page[number]': page,
+    },
+  };
+
+  return await API.request(config).then((result) => result.data);
+};
+
+export function useAccountProjectsList(
+  params?: PagedRequest,
+  options?: UseQueryOptions<PagedResponse<Project>>
+): UseQueryResult<PagedResponse<Project>> & { projects: Project[] } {
+  const query = useQuery([Queries.AccountProjectList, params], () => getAccountProjects(params), {
+    ...staticDataQueryOptions,
+    ...options,
+  });
+
+  return useMemo(
+    () => ({
+      ...query,
+      projects: query?.data?.data || [],
+    }),
+    [query]
+  );
 }

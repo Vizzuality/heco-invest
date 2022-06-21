@@ -8119,6 +8119,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/google.maps@npm:*":
+  version: 3.49.2
+  resolution: "@types/google.maps@npm:3.49.2"
+  checksum: ca2cb7842dfbc10551b5a33a052bd1c90dab21c13d5632601d87bc908064516a3f90b0b7eb517ce1024ea98734e490e2a90028c5534c52a82ceffb2e1b241fc9
+  languageName: node
+  linkType: hard
+
 "@types/graceful-fs@npm:^4.1.2":
   version: 4.1.5
   resolution: "@types/graceful-fs@npm:4.1.5"
@@ -8439,6 +8446,16 @@ __metadata:
     "@types/react": "*"
     "@types/viewport-mercator-project": "*"
   checksum: f386a50fa5d05c43b9c4f4ad3c5119affed8f719c1c8d5599050130dfdf3a4f839df3701f903a052838b0aac2642284534406b7b53741aca36ce9cf8f31ffd56
+  languageName: node
+  linkType: hard
+
+"@types/react-places-autocomplete@npm:^7.2.9":
+  version: 7.2.9
+  resolution: "@types/react-places-autocomplete@npm:7.2.9"
+  dependencies:
+    "@types/google.maps": "*"
+    "@types/react": "*"
+  checksum: df5f24f3c86576a1bac5e4d5fcb3f0d8d90bd1679b80357b4cbb26ed97612cd83bb2b2b03b2aec94f4c7d502ca9c75f7e9158b7cd91328d1600110010c26026f
   languageName: node
   linkType: hard
 
@@ -14375,6 +14392,7 @@ __metadata:
     "@types/lodash-es": ^4.17.6
     "@types/rails__activestorage": ^7.0.1
     "@types/react": ^17.0.5
+    "@types/react-places-autocomplete": ^7.2.9
     "@types/react-vis": ^1.11.11
     "@types/supercluster": ^7.1.0
     "@typescript-eslint/eslint-plugin": ^5.10.1
@@ -14418,11 +14436,13 @@ __metadata:
     react-intl: ^5.24.6
     react-map-gl: ^6.1.15
     react-map-gl-draw: ^1.0.2
+    react-places-autocomplete: ^7.3.0
     react-popper: ^2.2.5
     react-query: ^3.16.0
     react-redux: ^7.2.4
     react-select: ^4.3.0
     react-stately: ^3.12.2
+    react-table: ^7.8.0
     rooks: ^5.10.0
     sharp: ^0.30.1
     slugify: ^1.6.5
@@ -19656,6 +19676,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-places-autocomplete@npm:^7.3.0":
+  version: 7.3.0
+  resolution: "react-places-autocomplete@npm:7.3.0"
+  dependencies:
+    lodash.debounce: ^4.0.8
+    prop-types: ^15.5.8
+  peerDependencies:
+    react: ">=0.14.7"
+  checksum: b507fedc60129a7def162c0a82ef1eb17f856dc63e4547edc5123f41b32f0e47542682d4e2a86a3c63eba8ba91c68d3a00d71ded02363f1ded194dd78f04d29f
+  languageName: node
+  linkType: hard
+
 "react-popper-tooltip@npm:^3.1.1":
   version: 3.1.1
   resolution: "react-popper-tooltip@npm:3.1.1"
@@ -19823,6 +19855,15 @@ __metadata:
   peerDependencies:
     react: ">= 0.14.0"
   checksum: fa03880a887bc0c79c0be25fc35924980d75f684f8d05620272bdfcbb9f119f45bb7f8ddd92b9e944103964a4e094b99750d0b19c992fd86f2ce0b70266e89c3
+  languageName: node
+  linkType: hard
+
+"react-table@npm:^7.8.0":
+  version: 7.8.0
+  resolution: "react-table@npm:7.8.0"
+  peerDependencies:
+    react: ^16.8.3 || ^17.0.0-0 || ^18.0.0
+  checksum: 44ca0fb848c6869cd793cede8dc33072b38ebb8f8d2833565afe7cf3eac5d1fa455ac5fb9d06838b16fab0523d5d03e3e82f7645032f71245096e67b892313b9
   languageName: node
   linkType: hard
 
