@@ -1308,6 +1308,9 @@
   "rvirM2": {
     "string": "Location"
   },
+  "rwcive": {
+    "string": "Total of {total} users"
+  },
   "s07dAT": {
     "string": "Project image"
   },
