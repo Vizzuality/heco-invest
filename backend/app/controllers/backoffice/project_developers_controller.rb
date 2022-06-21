@@ -29,7 +29,7 @@ module Backoffice
     end
 
     def update
-      if @project_developer.update(update_params)
+      if I18n.with_locale(content_language) { @project_developer.update(update_params) }
         redirect_back(
           fallback_location: edit_backoffice_project_developer_path(@project_developer.id),
           notice: t("backoffice.messages.success_update", model: t("backoffice.common.project_developer"))
@@ -52,18 +52,14 @@ module Backoffice
       params.require(:project_developer).permit(
         :project_developer_type,
         :entity_legal_registration_number,
-        :mission_en,
-        :mission_es,
-        :mission_pt,
+        :mission,
         account_attributes: [
           :id,
           :picture,
           :name,
           :language,
           :review_status,
-          :about_en,
-          :about_es,
-          :about_pt,
+          :about,
           :website,
           :linkedin,
           :facebook,

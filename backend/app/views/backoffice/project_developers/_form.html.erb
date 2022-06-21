@@ -1,5 +1,6 @@
 <%= simple_form_for [:backoffice, project_developer] do |f| %>
   <%= f.error_notification %>
+  <%= hidden_field_tag :content_lang, params[:content_lang] %>
 
   <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
     <%= t(".general") %>

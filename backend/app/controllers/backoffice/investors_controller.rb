@@ -29,7 +29,7 @@ module Backoffice
     end
 
     def update
-      if @investor.update(update_params)
+      if I18n.with_locale(content_language) { @investor.update(update_params) }
         redirect_back(
           fallback_location: edit_backoffice_investor_path(@investor.id),
           notice: t("backoffice.messages.success_update", model: t("backoffice.common.investor"))
@@ -52,24 +52,16 @@ module Backoffice
       params.require(:investor).permit(
         :investor_type,
         :previously_invested,
-        :mission_en,
-        :mission_es,
-        :mission_pt,
-        :prioritized_projects_description_en,
-        :prioritized_projects_description_es,
-        :prioritized_projects_description_pt,
-        :other_information_en,
-        :other_information_es,
-        :other_information_pt,
+        :mission,
+        :prioritized_projects_description,
+        :other_information,
         account_attributes: [
           :id,
           :picture,
           :name,
           :language,
           :review_status,
-          :about_en,
-          :about_es,
-          :about_pt,
+          :about,
           :website,
           :linkedin,
           :facebook,
