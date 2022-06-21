@@ -48,7 +48,9 @@ export const UsersPage: PageComponent<UsersPageProps, DashboardLayoutProps> = ()
           </Button>
         }
       >
-        <UsersTable />
+        <div className="pt-4">
+          <UsersTable />
+        </div>
       </DashboardLayout>
       <InviteUsersModal
         openInvitationModal={openInvitationModal}

@@ -9,6 +9,8 @@ import { usePagination } from 'hooks/usePagination';
 import { useSortChange } from 'helpers/dashboard';
 import { useQueryParams } from 'helpers/pages';
 
+import NoSearchResults from 'containers/dashboard/no-search-results';
+
 import Search from 'components/search';
 import Table from 'components/table';
 
@@ -19,20 +21,23 @@ import Invitation from './cells/invitation';
 import User from './cells/user';
 
 export const UsersTable = () => {
-  const [search, setSearch] = useState('');
+  const queryOptions = { keepPreviousData: true };
+  const queryParams = useQueryParams();
+
+  const [search, setSearch] = useState<string>(queryParams.search);
 
   const onSearch = useDebouncedCallback((v) => {
     setSearch(v);
   }, 250);
 
-  const queryOptions = { keepPreviousData: true };
-  const queryParams = useQueryParams();
-
   const {
     data: { data: users, meta } = { data: [], meta: undefined },
     isLoading: isLoadingUsers,
     isFetching: isFetchingUsers,
-  } = useAccountUsersList({ ...queryParams }, queryOptions);
+  } = useAccountUsersList({ ...queryParams, search }, queryOptions);
+
+  const isSearching = !!queryParams.search;
+  const hasUsers = !!users.length;
 
   const { props: paginationProps } = usePagination(meta);
 
@@ -109,7 +114,7 @@ export const UsersTable = () => {
             onChange={onSearch}
           />
         </div>
-        <div className="font-sans text-sm break-all">
+        <div className="font-sans text-base text-gray-800 break-all">
           {users && (
             <FormattedMessage
               defaultMessage="Total of {total} users"
@@ -121,7 +126,12 @@ export const UsersTable = () => {
           )}
         </div>
       </div>
-      <Table {...tableProps} />
+      {hasUsers && <Table {...tableProps} />}
+      {!hasUsers && (
+        <div className="flex flex-col items-center mt-10 lg:mt-20">
+          {isSearching && <NoSearchResults />}
+        </div>
+      )}
     </div>
   );
 };
