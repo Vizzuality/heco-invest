@@ -19,6 +19,7 @@ import DashboardLayout, { DashboardLayoutProps } from 'layouts/dashboard';
 import NakedLayout from 'layouts/naked';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
+import { useRouter } from 'next/router';
 
 export async function getStaticProps(ctx) {
   return {
@@ -34,6 +35,7 @@ export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayou
   const intl = useIntl();
   const account = useUserAccount();
   const languages = useLanguageNames();
+  const { push } = useRouter();
 
   const statusText = {
     [ReviewStatus.Approved]: (
@@ -95,7 +97,11 @@ export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayou
               <p>{!!account && statusText[account.review_status]}</p>
             </div>
             <div className="flex justify-end">
-              <Button>
+              <Button
+                onClick={() =>
+                  push(`/${account?.type === 'investor' ? 'investors' : 'project-developers'}/edit`)
+                }
+              >
                 <FormattedMessage defaultMessage="Edit profile" id="nYrKWp" />
               </Button>
             </div>
