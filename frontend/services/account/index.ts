@@ -183,7 +183,6 @@ export function useAccountProjectsList(
 }
 
 /** Hook to use the the Users Invited to User Account */
-// TODO: Replace endpoint by correct one
 const getAccountUsers = async (params?: PagedRequest): Promise<PagedResponse<AccountUser>> => {
   const { search, page, includes, ...rest } = params || {};
 

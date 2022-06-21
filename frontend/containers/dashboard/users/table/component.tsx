@@ -1,9 +1,3 @@
-import { useState } from 'react';
-
-import { useIntl } from 'react-intl';
-
-import { data } from 'autoprefixer';
-
 import { usePagination } from 'hooks/usePagination';
 
 import { useSortChange } from 'helpers/dashboard';
@@ -29,7 +23,14 @@ export const UsersTable = () => {
 
   const { props: paginationProps } = usePagination(meta);
 
-  // const sortChangeHandler = useSortChange({});
+  const sortChangeHandler = useSortChange({
+    substitutions: {
+      user: 'user',
+      email: 'email',
+      role: 'role',
+      invitation: 'invitation',
+    },
+  });
 
   const tableProps = {
     columns: [
@@ -77,7 +78,7 @@ export const UsersTable = () => {
     data: users,
     loading: isLoadingUsers || isFetchingUsers,
     pagination: paginationProps,
-    // onSortChange: sortChangeHandler,
+    onSortChange: sortChangeHandler,
   };
 
   return <Table {...tableProps} />;
