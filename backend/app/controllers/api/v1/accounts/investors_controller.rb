@@ -32,6 +32,7 @@ module API
         def show
           render json: InvestorSerializer.new(
             current_user.account.investor,
+            include: included_relationships,
             params: {current_user: current_user}
           ).serializable_hash
         end

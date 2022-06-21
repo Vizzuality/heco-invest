@@ -3,9 +3,23 @@ module API
     class ProjectDeveloperSerializer < BaseSerializer
       include BlobSerializer
 
-      attributes :name, :slug, :about, :website, :instagram, :facebook, :linkedin, :twitter,
-        :mission, :project_developer_type, :categories, :impacts, :language, :entity_legal_registration_number,
-        :review_status, :mosaics
+      attributes :name,
+        :slug,
+        :about,
+        :website,
+        :instagram,
+        :facebook,
+        :linkedin,
+        :twitter,
+        :mission,
+        :project_developer_type,
+        :categories,
+        :impacts,
+        :language,
+        :entity_legal_registration_number,
+        :review_status,
+        :mosaics,
+        :created_at
 
       account_approved_attributes :contact_email, :contact_phone
 

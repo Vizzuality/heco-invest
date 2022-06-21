@@ -8,6 +8,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
       tags "Project Developers"
       produces "application/json"
       security [csrf: [], cookie_auth: []]
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
 
       let(:project_developer) { create :project_developer, :with_involved_projects }
       let(:user) { create :user }
@@ -29,6 +30,14 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/accounts-project-developer")
+        end
+
+        context "with relationships" do
+          let(:includes) { "owner" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/accounts-project-developer-include-relationships")
+          end
         end
       end
     end

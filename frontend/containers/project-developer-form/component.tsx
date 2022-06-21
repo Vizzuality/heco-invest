@@ -18,7 +18,6 @@ import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
 
 import Head from 'components/head';
-import { Paths } from 'enums';
 import { ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 import useProjectDeveloperValidation, { formPageInputs } from 'validations/project-developer';
 
@@ -35,13 +34,13 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
   initialValues,
   mutation,
   isCreateForm,
+  onComplete,
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [showLeave, setShowLeave] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
-  const { formatMessage } = useIntl();
   const resolver = useProjectDeveloperValidation(isCreateForm ? currentPage : currentPage + 1);
-  const { push, back } = useRouter();
+  const { back } = useRouter();
 
   const enums = useEnums();
   const {
@@ -91,7 +90,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
       mutation.mutate(values, {
         onError: handleServiceErrors,
         onSuccess: () => {
-          !isCreateForm ? push(Paths.Dashboard) : setCurrentPage(currentPage + 1);
+          !isCreateForm ? onComplete() : setCurrentPage(currentPage + 1);
         },
       });
     } else {

@@ -161,9 +161,6 @@
   "5hbC/K": {
     "string": "Start making an impact now!"
   },
-  "5kWT1/": {
-    "string": "Espanish"
-  },
   "5kZ+j+": {
     "string": "Duration of the project"
   },
@@ -684,6 +681,9 @@
   "PheCRL": {
     "string": "Estimated Impact"
   },
+  "Py+eVV": {
+    "string": "Basic info"
+  },
   "Q1Q4rT": {
     "string": "Insert your name"
   },
@@ -773,6 +773,9 @@
   },
   "UxTJRa": {
     "string": "Projects"
+  },
+  "Uzc3q6": {
+    "string": "To update any of this information or to delete the account, please contact the platform administrator by sending an email to: <email>admin@admin.com</email>."
   },
   "V/JHlm": {
     "string": "Forgot password?"
