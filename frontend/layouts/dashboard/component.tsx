@@ -8,7 +8,7 @@ import Loading from 'components/loading';
 import { UserRoles } from 'enums';
 import ProtectedPage from 'layouts/protected-page';
 
-import { useProjectDeveloper, useInvestor } from 'services/account';
+import { useAccount } from 'services/account';
 
 import AccountInfo from './account-info';
 import AccountPicture from './account-picture';
@@ -24,21 +24,9 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
 }: DashboardLayoutProps) => {
   const mainContainerRef = useRef(null);
   const { user } = useMe();
-
-  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
-  const isInvestor = user?.role === UserRoles.Investor;
+  const { data: accountData, isLoading: isLoadingAccountData } = useAccount();
 
   useScrollOnQuery({ ref: mainContainerRef, autoScroll: scrollOnQuery });
-
-  const { data: projectDeveloperData } = useProjectDeveloper({
-    enabled: isProjectDeveloper,
-  });
-
-  const { data: investorData } = useInvestor({
-    enabled: isInvestor,
-  });
-
-  const accountData = isProjectDeveloper ? projectDeveloperData : investorData;
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>

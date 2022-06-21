@@ -1,13 +1,15 @@
 import { useIntl } from 'react-intl';
 import { dehydrate, QueryClient } from 'react-query';
 
+import { useRouter } from 'next/router';
+
 import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
 import ProjectDeveloperForm from 'containers/project-developer-form';
 
-import { Queries, UserRoles } from 'enums';
+import { Paths, Queries, UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
@@ -29,9 +31,14 @@ export async function getStaticProps(ctx) {
 type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps> = () => {
+  const router = useRouter();
   const { formatMessage } = useIntl();
 
   const createProjectDeveloper = useCreateProjectDeveloper();
+
+  const handleOnComplete = () => {
+    router.push(Paths.Dashboard);
+  };
 
   return (
     <ProtectedPage permissions={[UserRoles.Light]}>
@@ -43,6 +50,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
         })}
         isCreateForm
         mutation={createProjectDeveloper}
+        onComplete={handleOnComplete}
       />
     </ProtectedPage>
   );

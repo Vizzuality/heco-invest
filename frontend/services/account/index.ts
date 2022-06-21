@@ -12,14 +12,16 @@ import {
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { decycle } from 'cycle';
 
-import { Queries } from 'enums';
+import useMe from 'hooks/me';
+
+import { Queries, UserRoles } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
 import { Project, ProjectCreationPayload, ProjectUpdatePayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
-import { PagedResponse, PagedRequest, ResponseData, ErrorResponse } from 'services/types';
+import { ErrorResponse, PagedRequest, PagedResponse, ResponseData } from 'services/types';
 
 // Create PD
 const getProjectDeveloper = async (): Promise<ProjectDeveloper> => {
@@ -179,4 +181,27 @@ export function useAccountProjectsList(
     }),
     [query]
   );
+}
+
+export function useAccount() {
+  const { user } = useMe();
+  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
+  const isInvestor = user?.role === UserRoles.Investor;
+
+  const { data: projectDeveloperData, isLoading: isLoadingProjectDeveloperData } =
+    useProjectDeveloper({
+      enabled: isProjectDeveloper,
+    });
+
+  const { data: investorData, isLoading: isLoadingInvestorData } = useInvestor({
+    enabled: isInvestor,
+  });
+
+  const accountData = isProjectDeveloper ? projectDeveloperData : investorData;
+  const isLoadingAccountData = isLoadingProjectDeveloperData || isLoadingInvestorData;
+
+  return {
+    data: accountData,
+    isLoading: isLoadingAccountData,
+  };
 }
