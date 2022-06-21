@@ -18,6 +18,8 @@ export type PaginationProps = {
   totalItems: number;
   /** Number of Number buttons to display. defaults to 8 */
   numNumberButtons?: number;
+  /** Theme to be used for the pagination. Defaults to default` */
+  theme?: 'default' | 'compact';
   /** Callback for when the user chooses a page */
   onPageClick?: (page: number) => void;
 };
