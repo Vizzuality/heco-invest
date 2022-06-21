@@ -13,7 +13,7 @@ import Map from 'components/map';
 import { getLayer } from './helpers';
 
 export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) => {
-  const { country, municipality, geometry, category } = project;
+  const { country, municipality, geometry, category, priority_landscape } = project;
   const layer = getLayer(geometry, category);
 
   const [bounds, setBounds] = useState({
@@ -28,8 +28,8 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
   }, []);
 
   return (
-    <LayoutContainer className="mb-20 mt-18 space-y-36">
-      <section className="p-6 mt-48 font-serif text-white lg:p-16 bg-green-dark rounded-2xl">
+    <LayoutContainer className="mb-14 lg:mb-20 mt-18 space-y-36">
+      <section className="p-6 mt-32 font-serif text-white lg:mt-48 lg:p-16 bg-green-dark rounded-2xl">
         <div className="relative grid w-full grid-cols-1 gap-12 lg:grid-cols-2">
           <Map
             className="absolute z-10 -mb-32 border-8 border-white drop-shadow-xl h-96 -top-44 lg:overflow-hidden rounded-xl"
@@ -45,7 +45,7 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
           </Map>
           <div className="flex flex-col space-y-4 lg:col-start-2">
             <h2 className="text-2xl lg:text-3xl">
-              <FormattedMessage defaultMessage="Country" id="vONi+O" />
+              <FormattedMessage defaultMessage="Location" id="rvirM2" />
             </h2>
             <div className="flex flex-col space-y-1">
               <div className="flex space-x-2 font-sans text-base">
@@ -60,47 +60,28 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
                 </h3>
                 <p>{municipality.name}</p>
               </div>
-              <div className="flex flex-wrap font-sans text-base sm:space-x-2 sm:flex-nowrap">
-                <h3 className="font-semibold whitespace-pre">
-                  <FormattedMessage defaultMessage="HeCo priority landscape" id="kPq9Kx" />
-                </h3>
-                <p>{municipality.parent.name}</p>
-              </div>
+
+              {!!priority_landscape && (
+                <div className="flex flex-wrap font-sans text-base sm:space-x-2 sm:flex-nowrap">
+                  <h3 className="font-semibold whitespace-pre">
+                    <FormattedMessage defaultMessage="HeCo priority landscape" id="kPq9Kx" />
+                  </h3>
+                  <p>{priority_landscape.name}</p>
+                </div>
+              )}
             </div>
           </div>
           <div className="flex flex-col space-y-4">
             <h2 className="text-2xl lg:text-3xl">
               <FormattedMessage defaultMessage="The problem we are solving" id="MXykbb" />
             </h2>
-            <p className="font-sans text-base">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis amet ullamcorper
-              faucibus lacus in. Erat amet, interdum erat in porttitor sed eleifend rutrum lorem.
-              Purus lorem amet, eget venenatis ac arcu.
-            </p>
-            <p className="font-sans text-base">
-              Fusce in odio iaculis eget sed. Tristique gravida sem nunc vitae convallis sit sit
-              tempor. Augue massa facilisis aliquet massa libero quam eget mi. Lectus tellus a
-              bibendum purus vulputate quisque massa lacus at. Nisi, mattis amet eu enim turpis.
-              Massa nulla non eu sit commodo. Arcu amet, aliquet mattis quis sodales tincidunt purus
-              commodo. Non condimentum a rhoncus tellus aenean iaculis.
-            </p>
+            <p className="font-sans text-base">{project.problem}</p>
           </div>
           <div className="flex flex-col space-y-4">
             <h2 className="text-2xl lg:text-3xl">
               <FormattedMessage defaultMessage="The solution proposed" id="9CDBQg" />
             </h2>
-            <p className="font-sans text-base">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis amet ullamcorper
-              faucibus lacus in. Erat amet, interdum erat in porttitor sed eleifend rutrum lorem.
-              Purus lorem amet, eget venenatis ac arcu.
-            </p>
-            <p className="font-sans text-base">
-              Fusce in odio iaculis eget sed. Tristique gravida sem nunc vitae convallis sit sit
-              tempor. Augue massa facilisis aliquet massa libero quam eget mi. Lectus tellus a
-              bibendum purus vulputate quisque massa lacus at. Nisi, mattis amet eu enim turpis.
-              Massa nulla non eu sit commodo. Arcu amet, aliquet mattis quis sodales tincidunt purus
-              commodo. Non condimentum a rhoncus tellus aenean iaculis.
-            </p>
+            <p className="font-sans text-base">{project.solution}</p>
           </div>
         </div>
       </section>

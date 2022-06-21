@@ -260,6 +260,9 @@
   "8rIwwr": {
     "string": "Expected Impact"
   },
+  "8xsdU1": {
+    "string": "This project isn’t currently looking for funding at this moment."
+  },
   "9+Ddtu": {
     "string": "Next"
   },
@@ -566,6 +569,9 @@
   },
   "LFDgTb": {
     "string": "Leave project developer edition?"
+  },
+  "Ll72W/": {
+    "string": "Currently not looking for funding"
   },
   "LmHPHR": {
     "string": "Select the topics/sector categories that you work on"
@@ -1228,7 +1234,7 @@
     "string": "Select HeCo priority landscapes on which you will have impact (optional)"
   },
   "psXhQO": {
-    "string": "Funding & development"
+    "string": "Funding &amp; development"
   },
   "puek63": {
     "string": "This information will help us understand what is the impact you want to have."
@@ -1244,6 +1250,9 @@
   },
   "qZPjW2": {
     "string": "What is a verification badge?"
+  },
+  "qcsPS9": {
+    "string": "{duration} months"
   },
   "qoImFc": {
     "string": "Replicability of the project"
