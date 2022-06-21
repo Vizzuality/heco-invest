@@ -78,6 +78,8 @@ export enum Queries {
   AccountOwnerName = 'account_owner_name',
   /** List of projects */
   AccountProjectList = 'account_projects',
+  /** List of users */
+  AccountUsersList = 'account_users',
 }
 
 /** Location endpoint param location_type */

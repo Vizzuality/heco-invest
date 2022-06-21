@@ -750,6 +750,9 @@
   "TUFmRM": {
     "string": "Climate impact"
   },
+  "TXXaVd": {
+    "string": "Are you sure you want to delete {displayName}?. <br/> You cant undo this action"
+  },
   "TfXhCr": {
     "string": "No projects"
   },

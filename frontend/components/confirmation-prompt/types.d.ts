@@ -9,7 +9,7 @@ export interface ConfirmationPromptProps {
   /**
    * Description displayed below the title
    */
-  description?: string;
+  description?: string | ReactNode;
   /**
    * Whether the prompt is diplayed
    */

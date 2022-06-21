@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Mail as MailIcon, Trash2 as TrashIcon } from 'react-feather';
+import { useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
@@ -11,16 +12,18 @@ import { CellActionsProps } from './types';
 
 export const CellActions = ({ row }: CellActionsProps) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const intl = useIntl();
 
   if (!row) return null;
   const {
-    original: { id, email, confirmed },
+    original: { id, confirmed, first_name, last_name },
   } = row;
+  const displayName = first_name + ' ' + last_name;
 
   return (
     <div className="flex space-x-2">
-      <a
-        href={`mailto:${email}`}
+      <button
+        onClick={() => console.log('re-invite user')}
         className={cx({
           'flex items-center justify-center w-8 h-8 border rounded-full pointer border-green-dark':
             true,
@@ -28,7 +31,7 @@ export const CellActions = ({ row }: CellActionsProps) => {
         })}
       >
         <Icon className="w-5 h-5 text-green-dark" icon={MailIcon} />
-      </a>
+      </button>
 
       <button
         type="button"
@@ -43,7 +46,16 @@ export const CellActions = ({ row }: CellActionsProps) => {
         onDismiss={() => setConfirmDelete(false)}
         onRefuse={() => setConfirmDelete(false)}
         title="Delete user?"
-        description="Are you sure you want to delete <b>“User name”</b>?. <br/>You can’t undo this action."
+        description={intl.formatMessage(
+          {
+            defaultMessage:
+              'Are you sure you want to delete {displayName}?. <br/> You cant undo this action',
+            id: 'TXXaVd',
+          },
+          {
+            displayName,
+          }
+        )}
       />
     </div>
   );
