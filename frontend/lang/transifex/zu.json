@@ -161,6 +161,9 @@
   "5hbC/K": {
     "string": "Start making an impact now!"
   },
+  "5kWT1/": {
+    "string": "Espanish"
+  },
   "5kZ+j+": {
     "string": "Duration of the project"
   },
@@ -440,6 +443,9 @@
   "Ftj+/t": {
     "string": "Why is my profile pending approval?"
   },
+  "G6hIMy": {
+    "string": "Public profile"
+  },
   "G6tmT0": {
     "string": "Select the ticket size(s) that you provide"
   },
@@ -557,6 +563,9 @@
   },
   "K+Q04b": {
     "string": "Image gallery"
+  },
+  "K3r6DQ": {
+    "string": "Delete"
   },
   "KGREXT": {
     "string": "Total of projects"
@@ -744,6 +753,9 @@
   "TfXhCr": {
     "string": "No projects"
   },
+  "ToXG99": {
+    "string": "View project page"
+  },
   "U1OBY8": {
     "string": "options {options}, selected."
   },
@@ -920,6 +932,9 @@
   },
   "aT5Ajq": {
     "string": "Start drawing"
+  },
+  "aZVd4k": {
+    "string": "Your account has been <n>approved</n>, your profile is now publicly visible."
   },
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
@@ -1179,6 +1194,9 @@
   "nBHzO6": {
     "string": "Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
   },
+  "nYrKWp": {
+    "string": "Edit profile"
+  },
   "nbqoY2": {
     "string": "Do you have a partnership with someone else?"
   },
@@ -1253,6 +1271,9 @@
   },
   "qcsPS9": {
     "string": "{duration} months"
+  },
+  "qhxHf3": {
+    "string": "Your account has been <n>rejected</n>, your profile is not publicly visible."
   },
   "qoImFc": {
     "string": "Replicability of the project"
@@ -1332,6 +1353,9 @@
   "txaU6M": {
     "string": "Apply to open calls"
   },
+  "tzMNF3": {
+    "string": "Status"
+  },
   "u/E7xG": {
     "string": "Are you currently looking for funding?"
   },
@@ -1373,6 +1397,9 @@
   },
   "vygPIS": {
     "string": "Leave project creation form"
+  },
+  "wEQDC6": {
+    "string": "Edit"
   },
   "wQteLO": {
     "string": "Go to page {page}"
@@ -1425,8 +1452,14 @@
   "xnQiBM": {
     "string": "The impact of this project isn’t available. Impact calculations may take some time to be available."
   },
+  "xqsnF9": {
+    "string": "Your account has not yet been reviewed, your profile is not publicly visible."
+  },
   "xusigZ": {
     "string": "Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."
+  },
+  "y1Z3or": {
+    "string": "Language"
   },
   "yF82he": {
     "string": "Project developer"
