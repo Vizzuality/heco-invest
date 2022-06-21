@@ -74,6 +74,8 @@ export enum Queries {
   ProjectQuery = 'project',
   /** Projects Map location */
   ProjectsMap = 'projects_map',
+  /** Current user's account owner name */
+  AccountOwnerName = 'account_owner_name',
   /** List of projects */
   AccountProjectList = 'account_projects',
 }
@@ -129,6 +131,8 @@ export enum Impacts {
 
 export enum ReviewStatus {
   Approved = 'approved',
+  Unapproved = 'unapproved',
+  Rejected = 'rejected',
 }
 
 export enum ImpactAreas {

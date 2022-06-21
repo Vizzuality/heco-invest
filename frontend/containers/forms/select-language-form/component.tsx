@@ -1,6 +1,8 @@
 import { FieldValues } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
+import { useLanguageNames } from 'helpers/pages';
+
 import ErrorMessage from 'components/forms/error-message';
 import Label from 'components/forms/label';
 import languages from 'locales.config.json';
@@ -12,11 +14,7 @@ export const SelectLanguageForm = <FormValues extends FieldValues>({
   register,
   fieldName,
 }: SelectLanguageFormProps<FormValues>) => {
-  const text = {
-    es: <FormattedMessage defaultMessage="Spanish" id="8WtyrD" />,
-    pt: <FormattedMessage defaultMessage="Portuguese" id="A4UTjl" />,
-    en: <FormattedMessage defaultMessage="English" id="WkrNSk" />,
-  };
+  const languageNames = useLanguageNames();
 
   return (
     <form className="flex flex-col justify-between" noValidate>
@@ -52,7 +50,7 @@ export const SelectLanguageForm = <FormValues extends FieldValues>({
                   className="flex flex-col justify-center w-full text-center border rounded-lg py-7 border-beige peer-checked:border-green-dark"
                 >
                   <span className="block font-sans text-lg font-semibold text-green-dark">
-                    {text[locale]}
+                    {languageNames[locale]}
                   </span>
                   <span className="block font-normal">({name})</span>
                 </Label>
