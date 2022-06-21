@@ -555,6 +555,9 @@
   "K+Q04b": {
     "string": "Image gallery"
   },
+  "K3r6DQ": {
+    "string": "Delete"
+  },
   "KGREXT": {
     "string": "Total of projects"
   },
@@ -737,6 +740,9 @@
   },
   "TfXhCr": {
     "string": "No projects"
+  },
+  "ToXG99": {
+    "string": "View project page"
   },
   "U1OBY8": {
     "string": "options {options}, selected."
@@ -1361,6 +1367,9 @@
   },
   "vygPIS": {
     "string": "Leave project creation form"
+  },
+  "wEQDC6": {
+    "string": "Edit"
   },
   "wQteLO": {
     "string": "Go to page {page}"
