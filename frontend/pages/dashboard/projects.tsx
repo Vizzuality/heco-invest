@@ -120,6 +120,7 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
       },
       {
         accessor: 'actions',
+        canSort: false,
         hideHeader: true,
         width: 0,
         Cell: ({ cell }) => {
@@ -168,6 +169,7 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
     })),
     loading: isLoadingProjects || isFetchingProjects,
     pagination: paginationProps,
+    sortingEnabled: false, // Enable when endpoints can handle sorting
     onSortChange: sortChangeHandler,
   };
 

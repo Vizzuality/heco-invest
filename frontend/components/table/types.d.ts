@@ -6,5 +6,6 @@ export interface TableProps {
   initialState?: Record<string, any>;
   loading?: boolean;
   pagination?: PaginationProps;
+  sortingEnabled?: boolean;
   onSortChange?: ({ sortBy, sortOrder }: { sortBy?: string; sortOrder?: 'asc' | 'desc' }) => void;
 }

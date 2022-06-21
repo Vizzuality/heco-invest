@@ -19,6 +19,7 @@ export const Table: FC<TableProps> = ({
   columns,
   initialState,
   loading,
+  sortingEnabled = false,
   pagination: paginationProps,
   onSortChange = noop,
 }: TableProps) => {
@@ -50,6 +51,7 @@ export const Table: FC<TableProps> = ({
       // sorting
       manualSortBy: true,
       disableMultiSort: true,
+      disableSortBy: !sortingEnabled,
 
       initialState: {
         ...initialState,
@@ -85,9 +87,15 @@ export const Table: FC<TableProps> = ({
               return (
                 <tr key={headerGroupKey} {...restHeaderGroupProps} className="sticky top-0 px-10">
                   {headerGroup.headers.map((column) => {
-                    const { id, canSort, sortDescFirst, toggleSortBy } = column;
-
+                    const { id, sortDescFirst, toggleSortBy } = column;
                     const { key: headerKey, ...restHeaderProps } = column.getHeaderProps();
+
+                    // canSort is always true when manualSortBy is true
+                    // See: https://github.com/TanStack/table/issues/2599
+                    const canSort =
+                      (sortingEnabled &&
+                        columns.find(({ accessor }) => accessor === id)?.canSort) ??
+                      true;
 
                     return (
                       <th
@@ -113,10 +121,12 @@ export const Table: FC<TableProps> = ({
                         {column.hideHeader ? null : (
                           <>
                             <span>{column.render('Header')}</span>
-                            <div className="flex flex-col">
-                              <Icon icon={SORT_SVG} className="w-2 h-2 text-black" />
-                              <Icon icon={SORT_SVG} className="w-2 h-2 text-black rotate-180" />
-                            </div>
+                            {canSort && (
+                              <div className="flex flex-col">
+                                <Icon icon={SORT_SVG} className="w-2 h-2 text-black" />
+                                <Icon icon={SORT_SVG} className="w-2 h-2 text-black rotate-180" />
+                              </div>
+                            )}
                           </>
                         )}
                       </th>
