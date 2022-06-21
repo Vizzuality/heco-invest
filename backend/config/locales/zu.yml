@@ -120,13 +120,14 @@ zu:
     project_developers:
       index:
         projects: Projects
-      edit:
+      form:
         general: General
         about_the_work: About the work
     investors:
       index:
         open_calls: Open calls
-      edit:
+      form:
+        general: General
         investment_information: Investment information
         impact: Impact
     projects:
