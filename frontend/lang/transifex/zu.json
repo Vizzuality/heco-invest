@@ -1077,9 +1077,6 @@
   "hX5PAb": {
     "string": "No results found"
   },
-  "hbFTZN": {
-    "string": "Users will receive an email to sign up into the platform and join NEEsT’s account."
-  },
   "hg7Mex": {
     "string": "Select which areas your project will have an impact on"
   },
@@ -1121,6 +1118,9 @@
   },
   "itfsqC": {
     "string": "Currently you don’t have any <b>Projects</b>."
+  },
+  "j0CZkp": {
+    "string": "Users will receive an email to sign up into the platform and join the account."
   },
   "j4lBL7": {
     "string": "Note: Some filters not apply to all tabs"

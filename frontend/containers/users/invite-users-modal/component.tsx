@@ -117,8 +117,8 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
 
         <p className="mb-4">
           <FormattedMessage
-            defaultMessage="Users will receive an email to sign up into the platform and join NEEsT’s account."
-            id="hbFTZN"
+            defaultMessage="Users will receive an email to sign up into the platform and join the account."
+            id="j0CZkp"
           />
         </p>
 
