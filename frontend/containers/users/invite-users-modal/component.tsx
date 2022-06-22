@@ -107,7 +107,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
       title={formatMessage({ defaultMessage: 'Invite users', id: 'R+1DVQ' })}
       open={openInvitationModal}
       dismissable={true}
-      size="default"
+      size="narrow"
       scrollable={false}
     >
       <form className="flex flex-col" noValidate autoComplete="off">
