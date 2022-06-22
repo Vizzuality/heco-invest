@@ -221,26 +221,3 @@ export function useAccountProjectsList(
     [query]
   );
 }
-
-export function useAccount() {
-  const { user } = useMe();
-  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
-  const isInvestor = user?.role === UserRoles.Investor;
-
-  const { data: projectDeveloperData, isLoading: isLoadingProjectDeveloperData } =
-    useProjectDeveloper({
-      enabled: isProjectDeveloper,
-    });
-
-  const { data: investorData, isLoading: isLoadingInvestorData } = useInvestor({
-    enabled: isInvestor,
-  });
-
-  const accountData = isProjectDeveloper ? projectDeveloperData : investorData;
-  const isLoadingAccountData = isLoadingProjectDeveloperData || isLoadingInvestorData;
-
-  return {
-    data: accountData,
-    isLoading: isLoadingAccountData,
-  };
-}
