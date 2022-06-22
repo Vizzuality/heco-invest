@@ -19,7 +19,7 @@ import { getInvitedUser } from 'services/users/userService';
 
 export const getServerSideProps: GetServerSideProps = async ({ locale, query }) => {
   let invitedUser: InvitedUser = null;
-  // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
+
   try {
     const { token } = query;
     invitedUser = await getInvitedUser(token as string);
@@ -44,24 +44,20 @@ type InvitationServerSideProps = {
 
 const Invitation: PageComponent<InvitationServerSideProps> = ({ invitedUser }) => {
   const { formatMessage } = useIntl();
-  // const { user, isLoading, isError } = useMe();
+  const { user, isError } = useMe();
   const { push } = useRouter();
 
-  // If t
-  if (!invitedUser.signed_up) {
-    push({ pathname: Paths.SignUp, query: { account: invitedUser.id } });
-    return null;
-  }
-
-  if (invitedUser.signed_up) {
+  // If the user has an user account but is not signed in
+  if (isError && invitedUser.signed_up) {
     push({ pathname: Paths.SignIn, query: { account: invitedUser.id } });
     return null;
   }
 
-  // if (!!user && user?.role !== UserRoles.Light) {
-  //   push(Paths.Dashboard);
-  //   return null;
-  // }
+  // If the user already has a PD or Investor account
+  if (!!user && user?.role !== UserRoles.Light) {
+    push(Paths.Dashboard);
+    return null;
+  }
 
   return (
     <div className="flex flex-col items-center w-full min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-176px)]">

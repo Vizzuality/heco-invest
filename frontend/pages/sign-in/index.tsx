@@ -29,7 +29,7 @@ import { getInvitedUser } from 'services/users/userService';
 export const getServerSideProps = async ({ locale, query }) => {
   let invitedUser = null;
 
-  // If it is an invitation redirect
+  // If it is an invitation get the invited user data
   if (query?.token) {
     try {
       invitedUser = await getInvitedUser(query.token as string);
@@ -93,11 +93,18 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = ({ invitedUs
       </p>
 
       {!!invitedUser && (
-        <div className="w-full bg-background-middle">
+        <div className="w-full p-4 rounded-lg bg-beige">
           <FormattedMessage
-            defaultMessage="By signing up you will be automatically added to {accountName} account. How account’s work?"
-            id="ZgpBay"
-            values={{ accountName: invitedUser.account_name }}
+            defaultMessage="By signing in you will be automatically added to {accountName} account. <a>How accounts work?</a>"
+            id="WXE4DJ"
+            values={{
+              accountName: invitedUser.account_name,
+              a: (chunks) => (
+                <a className="underline" href={Paths.FAQ}>
+                  {chunks}
+                </a>
+              ),
+            }}
           />
         </div>
       )}

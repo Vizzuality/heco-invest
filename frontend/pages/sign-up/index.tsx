@@ -25,7 +25,7 @@ import { getInvitedUser, useSignup } from 'services/users/userService';
 export const getServerSideProps = async ({ locale, query }) => {
   let invitedUser = null;
 
-  // If it is an invitation redirect
+  // If it is an invitation get the invited user data
   if (query?.token) {
     try {
       invitedUser = await getInvitedUser(query.token as string);
