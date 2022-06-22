@@ -3,13 +3,12 @@ import { convertFilesToGeojson } from "../utils/shapefile";
 
 // Connects to data-controller="shapefile"
 export default class extends Controller {
-  static targets = ["output", "input", "errorMessage", "uploadButton"];
+  static targets = ["output", "input", "errorMessage", "successMessage", "uploadButton"];
   static values = {
     messages: String
   };
 
   upload() {
-    this.errorMessageTarget.innerHTML = '';
     this.inputTarget.click();
   }
 
@@ -19,11 +18,16 @@ export default class extends Controller {
 
     const oldUploadText = this.uploadButtonTarget.innerHTML;
     this.uploadButtonTarget.innerHTML = this.uploadButtonTarget.dataset.uploadingText;
+    this.successMessageTarget.classList.add("hidden");
+    this.errorMessageTarget.classList.add("hidden");
+    this.errorMessageTarget.innerHTML = '';
 
     convertFilesToGeojson(files, messages).then((geojson) => {
       this.outputTarget.value = JSON.stringify(geojson);
+      this.successMessageTarget.classList.remove("hidden");
     }).catch((error) => {
       this.errorMessageTarget.innerHTML = error;
+      this.errorMessageTarget.classList.remove("hidden");
       console.error(error);
     }).finally(() => {
       this.inputTarget.value = null;

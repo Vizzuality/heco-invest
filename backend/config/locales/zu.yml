@@ -147,6 +147,7 @@ zu:
         how_will_project_grow: How the project will grow
         shapefile_upload: Upload Shapefile/KML
         shapefile_uploading: Uploading...
+        shapefile_loaded: Shapefile loaded!
         shapefile_messages:
           not_valid_kml: This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues.
           not_supported: This file is not supported. Please try uploading a different format.

@@ -16,7 +16,10 @@
   <div data-controller="shapefile" data-shapefile-messages-value="<%= t('.shapefile_messages').to_json %>">
     <input type="file" name="shapefile" class="sr-only" data-shapefile-target="input" data-action="shapefile#readFiles" />
     <%= f.input :geometry, input_html: { value: f.object.geometry.to_json, "data-shapefile-target": "output", rows: 5 } %>
-    <p data-shapefile-target="errorMessage" class="mt-2 text-red-500 text-xs italic">
+    <p data-shapefile-target="errorMessage" class="mt-2 text-red-500 text-xs italic hidden">
+    </p>
+    <p data-shapefile-target="successMessage" class="mt-2 text-green-dark text-xs italic hidden">
+      <%= t(".shapefile_loaded") %>
     </p>
     <div class="flex gap-4 justify-end">
       <button type="button" class="button button-primary-green" data-uploading-text="<%= t('.shapefile_uploading') %>" data-shapefile-target="uploadButton" data-action="shapefile#upload">
