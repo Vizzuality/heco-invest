@@ -14,3 +14,4 @@ production_project_name = "heco"
 
 domain = "heco.vizzuality.com"
 google_analytics_key = "changeMe"
+uptime_alert_email = "tiago.garcia@vizzuality.com"
