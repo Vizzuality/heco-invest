@@ -14,7 +14,7 @@ export default class extends Controller {
 
   readFiles() {
     const files = Array.from(this.inputTarget.files);
-    const messages = this.messagesValue;
+    const messages = JSON.parse(this.messagesValue);
 
     const oldUploadText = this.uploadButtonTarget.innerHTML;
     this.uploadButtonTarget.innerHTML = this.uploadButtonTarget.dataset.uploadingText;

@@ -235,6 +235,11 @@ RSpec.describe "Backoffice: Projects", type: :system do
           expect(page).to have_text(t("simple_form.error_notification.default_message"))
           expect(page).to have_text("Name can't be blank")
         end
+
+        it "shows validation errors for wrong shapefile" do
+          attach_file :shapefile, Rails.root.join("spec/fixtures/files/text_file.txt")
+          expect(page).to have_text(t("backoffice.projects.form.shapefile_messages.not_supported"))
+        end
       end
     end
 

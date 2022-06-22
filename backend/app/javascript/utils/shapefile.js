@@ -113,7 +113,7 @@ export async function convertFilesToGeojson(files, messages) {
     if (fileToParse) {
       loader = ShapefileLoader;
     }
-  } else {
+  } else if (supportedFileformats.includes(fileToParse.extension)) {
     loader = await selectLoader(fileToParse, [ShapefileLoader, KMLLoader]);
   }
 
