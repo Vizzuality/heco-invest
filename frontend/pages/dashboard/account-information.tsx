@@ -5,6 +5,8 @@ import Link from 'next/link';
 
 import { InferGetStaticPropsType } from 'next';
 
+import useMe from 'hooks/me';
+
 import { loadI18nMessages } from 'helpers/i18n';
 import { translatedLanguageNameForLocale } from 'helpers/intl';
 

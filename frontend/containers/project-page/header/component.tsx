@@ -21,12 +21,9 @@ import { ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper
 
 import { useEnums } from 'services/enums/enumService';
 
-import type { ProjectHeaderProps } from './types';
+import type { HeaderProps } from './types';
 
-export const ProjectHeader: FC<ProjectHeaderProps> = ({
-  className,
-  project,
-}: ProjectHeaderProps) => {
+export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => {
   const intl = useIntl();
   const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
   const {
@@ -59,6 +56,7 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
     name: projectDeveloper.name,
     email: projectDeveloper.contact_email,
     phone: projectDeveloper.contact_phone,
+    picture: projectDeveloper.picture?.small,
   };
 
   const ticketSizeStr = useMemo(
@@ -219,4 +217,4 @@ export const ProjectHeader: FC<ProjectHeaderProps> = ({
   );
 };
 
-export default ProjectHeader;
+export default Header;

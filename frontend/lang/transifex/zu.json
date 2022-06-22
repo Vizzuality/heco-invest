@@ -266,6 +266,9 @@
   "8rIwwr": {
     "string": "Expected Impact"
   },
+  "8xsdU1": {
+    "string": "This project isn’t currently looking for funding at this moment."
+  },
   "9+Ddtu": {
     "string": "Next"
   },
@@ -564,6 +567,9 @@
   "K+Q04b": {
     "string": "Image gallery"
   },
+  "K3r6DQ": {
+    "string": "Delete"
+  },
   "KGREXT": {
     "string": "Total of projects"
   },
@@ -575,6 +581,9 @@
   },
   "LFDgTb": {
     "string": "Leave project developer edition?"
+  },
+  "Ll72W/": {
+    "string": "Currently not looking for funding"
   },
   "LmHPHR": {
     "string": "Select the topics/sector categories that you work on"
@@ -750,6 +759,9 @@
   "TfXhCr": {
     "string": "No projects"
   },
+  "ToXG99": {
+    "string": "View project page"
+  },
   "U1OBY8": {
     "string": "options {options}, selected."
   },
@@ -764,6 +776,9 @@
   },
   "UxTJRa": {
     "string": "Projects"
+  },
+  "Uzc3q6": {
+    "string": "To update any of this information or to delete the account, please contact the platform administrator by sending an email to: <email>admin@admin.com</email>."
   },
   "V/JHlm": {
     "string": "Forgot password?"
@@ -927,6 +942,9 @@
   "aT5Ajq": {
     "string": "Start drawing"
   },
+  "aZVd4k": {
+    "string": "Your account has been <n>approved</n>, your profile is now publicly visible."
+  },
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
   },
@@ -1019,6 +1037,9 @@
   },
   "efZTBX": {
     "string": "Use this space to share links to documents, videos and websites that support your pitch."
+  },
+  "ejuZC0": {
+    "string": "To upload a Shapefile geometry, you must upload the .shp, .shx, .dbf and eventually .prj files all at once."
   },
   "et2m37": {
     "string": "insert URL"
@@ -1240,7 +1261,7 @@
     "string": "Select HeCo priority landscapes on which you will have impact (optional)"
   },
   "psXhQO": {
-    "string": "Funding & development"
+    "string": "Funding &amp; development"
   },
   "puek63": {
     "string": "This information will help us understand what is the impact you want to have."
@@ -1256,6 +1277,12 @@
   },
   "qZPjW2": {
     "string": "What is a verification badge?"
+  },
+  "qcsPS9": {
+    "string": "{duration} months"
+  },
+  "qhxHf3": {
+    "string": "Your account has been <n>rejected</n>, your profile is not publicly visible."
   },
   "qoImFc": {
     "string": "Replicability of the project"
@@ -1383,6 +1410,9 @@
   "vygPIS": {
     "string": "Leave project creation form"
   },
+  "wEQDC6": {
+    "string": "Edit"
+  },
   "wQteLO": {
     "string": "Go to page {page}"
   },
@@ -1433,6 +1463,9 @@
   },
   "xnQiBM": {
     "string": "The impact of this project isn’t available. Impact calculations may take some time to be available."
+  },
+  "xqsnF9": {
+    "string": "Your account has not yet been reviewed, your profile is not publicly visible."
   },
   "xusigZ": {
     "string": "Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."

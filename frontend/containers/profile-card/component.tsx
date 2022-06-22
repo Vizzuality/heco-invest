@@ -27,9 +27,11 @@ export const ProfileCard: FC<ProfileCardProps> = ({
   link,
   picture: pictureProp = undefined,
 }: ProfileCardProps) => {
+  const placeholderPicture = '/images/placeholders/profile-logo.png';
+
   const intl = useIntl();
   const router = useRouter();
-  const [picture, setPicture] = useState<string>(pictureProp);
+  const [picture, setPicture] = useState<string>(pictureProp || placeholderPicture);
 
   const {
     data: {
@@ -90,7 +92,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
               alt={intl.formatMessage({ defaultMessage: '{name} picture', id: 'rLzWx9' }, { name })}
               layout="fill"
               objectFit="cover"
-              onError={() => setPicture('/images/placeholders/profile-logo.png')}
+              onError={() => setPicture(placeholderPicture)}
             />
           </div>
           <div className="pt-2">

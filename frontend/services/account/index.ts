@@ -21,7 +21,7 @@ import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDevelo
 
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
-import { PagedResponse, PagedRequest, ResponseData, ErrorResponse } from 'services/types';
+import { ErrorResponse, PagedRequest, PagedResponse, ResponseData } from 'services/types';
 
 // Create PD
 const getProjectDeveloper = async (includes?: string): Promise<ProjectDeveloper> => {
@@ -220,4 +220,27 @@ export function useAccountProjectsList(
     }),
     [query]
   );
+}
+
+export function useAccount() {
+  const { user } = useMe();
+  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
+  const isInvestor = user?.role === UserRoles.Investor;
+
+  const { data: projectDeveloperData, isLoading: isLoadingProjectDeveloperData } =
+    useProjectDeveloper({
+      enabled: isProjectDeveloper,
+    });
+
+  const { data: investorData, isLoading: isLoadingInvestorData } = useInvestor({
+    enabled: isInvestor,
+  });
+
+  const accountData = isProjectDeveloper ? projectDeveloperData : investorData;
+  const isLoadingAccountData = isLoadingProjectDeveloperData || isLoadingInvestorData;
+
+  return {
+    data: accountData,
+    isLoading: isLoadingAccountData,
+  };
 }

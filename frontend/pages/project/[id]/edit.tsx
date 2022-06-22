@@ -44,7 +44,13 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
   // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
     ({ data: project } = await getProject(id, {
-      includes: 'project_images,country,municipality,department,involved_project_developers',
+      includes: [
+        'project_images',
+        'country',
+        'municipality',
+        'department',
+        'involved_project_developers',
+      ],
     }));
   } catch (e) {
     return { notFound: true };

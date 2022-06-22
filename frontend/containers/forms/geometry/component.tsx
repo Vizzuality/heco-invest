@@ -147,7 +147,9 @@ export const GeometryInput = <FormValues extends FieldValues>({
           <Icon icon={UploadIcon} className="inline-block w-5 h-5 mr-3" aria-hidden={true} />
           <FormattedMessage defaultMessage="Shapefile / KML" id="cqoaMq" />
         </Button>
-        <ErrorMessage id={`${name}-internal-error`} errorText={internalError} />
+        <span className="max-w-lg text-right">
+          <ErrorMessage id={`${name}-internal-error`} errorText={internalError} />
+        </span>
       </div>
       <div
         className={cx({

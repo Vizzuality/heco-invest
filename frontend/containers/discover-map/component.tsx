@@ -46,7 +46,6 @@ export const DiscoverMap: FC<DiscoverMapProps> = () => {
   return (
     <>
       <div className="relative w-full h-full">
-        <LocationSearcher />
         <Map bounds={bounds} viewport={viewport} onMapViewportChange={handleViewportChange}>
           {(map) => (
             <>
@@ -65,6 +64,8 @@ export const DiscoverMap: FC<DiscoverMapProps> = () => {
         <Controls className="absolute bottom-10 xl:bottom-6 right-11">
           <ProjectLegend />
         </Controls>
+
+        <LocationSearcher />
       </div>
     </>
   );

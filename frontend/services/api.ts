@@ -1,7 +1,11 @@
 import axios from 'axios';
 import Jsona from 'jsona';
 
+import { getCookie } from 'helpers/cookies';
+
 import { ErrorResponse } from './types';
+
+const { locales } = require('locales.config.json');
 
 const dataFormatter = new Jsona();
 
@@ -18,6 +22,16 @@ const API = axios.create({
   xsrfCookieName: 'csrf_token',
   xsrfHeaderName: 'X-CSRF-TOKEN',
 });
+
+const onRequest = (config) => {
+  return {
+    ...config,
+    params: {
+      ...config?.params,
+      locale: getCookie('NEXT_LOCALE') || locales.find((locale) => locale.default).locale,
+    },
+  };
+};
 
 const onResponseSuccess = (response) => {
   try {
@@ -45,6 +59,7 @@ const onResponseError = (error) => {
   return Promise.reject(error);
 };
 
+API.interceptors.request.use(onRequest);
 API.interceptors.response.use(onResponseSuccess, onResponseError);
 
 export default API;
