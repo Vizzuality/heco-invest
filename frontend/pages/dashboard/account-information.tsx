@@ -35,10 +35,13 @@ type AccountInfoPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayoutProps> = () => {
   const intl = useIntl();
   const { user, userAccount, userAccountLoading } = useAccount('owner');
+  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
 
-  const publicProfileLink = `${
-    user?.role === UserRoles.ProjectDeveloper ? Paths.ProjectDeveloper : Paths.Investor
-  }/${userAccount?.slug}`;
+  const publicProfileLink = `${isProjectDeveloper ? Paths.ProjectDeveloper : Paths.Investor}/${
+    userAccount?.slug
+  }`;
+
+  const editProfileLink = isProjectDeveloper ? Paths.EditProjectDeveloper : Paths.EditInvestor;
 
   return (
     <ProtectedPage allowConfirmed permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
@@ -91,8 +94,8 @@ export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayou
                 </div>
                 <div className="flex flex-col items-center justify-end mt-8 md:flex-row">
                   <Button
-                    to={`${Paths.EditProjectDeveloper}?returnPath=${Paths.DashboardAccountInfo}`}
-                    as={Paths.EditProjectDeveloper}
+                    to={`${editProfileLink}?returnPath=${Paths.DashboardAccountInfo}`}
+                    as={editProfileLink}
                   >
                     <FormattedMessage defaultMessage="Edit profile" id="nYrKWp" />
                   </Button>
