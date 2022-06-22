@@ -121,7 +121,9 @@ const getInvestor = async (): Promise<Investor> => {
   return await API.request(config).then((response) => decycle(response.data.data));
 };
 
-export function useInvestor(options: UseQueryOptions<Investor>) {
+export function useInvestor(
+  options: UseQueryOptions<Investor>
+): UseQueryResult<Investor> & { investor: Investor } {
   const query = useQuery([Queries.CurrentInvestor], () => getInvestor(), {
     refetchOnWindowFocus: false,
     ...options,
@@ -130,21 +132,25 @@ export function useInvestor(options: UseQueryOptions<Investor>) {
 }
 
 export function useCreateInvestor(): UseMutationResult<
-  AxiosResponse<ResponseData<Investor>>,
+  AxiosResponse<Investor>,
   AxiosError<ErrorResponse>,
   InvestorForm
 > {
-  const createInvestor = async (
-    data: InvestorForm
-  ): Promise<AxiosResponse<ResponseData<Investor>>> => API.post('/api/v1/account/investor', data);
+  const createInvestor = async (data: InvestorForm): Promise<AxiosResponse<Investor>> =>
+    API.post('/api/v1/account/investor', data).then((response) => response.data);
 
-  const queryClient = useQueryClient();
+  return useMutation(createInvestor);
+}
 
-  return useMutation(createInvestor, {
-    onSuccess: (result) => {
-      queryClient.setQueryData(Queries.Investor, result.data.data);
-    },
-  });
+export function useUpdateInvestor(): UseMutationResult<
+  AxiosResponse<Investor>,
+  AxiosError<ErrorResponse>,
+  InvestorForm
+> {
+  const updateInvestor = async (data: InvestorForm): Promise<AxiosResponse<Investor>> =>
+    API.put('/api/v1/account/investor', data).then((response) => response.data);
+
+  return useMutation(updateInvestor);
 }
 
 const getAccountProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
