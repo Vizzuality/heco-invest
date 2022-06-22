@@ -68,6 +68,9 @@
   "0iaD3T": {
     "string": "Total <span>{numProjects}</span> {numProjects, plural, one {project} other {projects}}"
   },
+  "0vL5u1": {
+    "string": "Create an account"
+  },
   "0wBg9P": {
     "string": "Project developers"
   },
@@ -759,9 +762,6 @@
   "RXoqkD": {
     "string": "Mission"
   },
-  "RczAkW": {
-    "string": "Report back"
-  },
   "SMrXWc": {
     "string": "Favorites"
   },
@@ -873,6 +873,9 @@
   "WkrNSk": {
     "string": "English"
   },
+  "Wm7zf8": {
+    "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and start the conversation."
+  },
   "Wo0Pmr": {
     "string": "Already a member? Log in"
   },
@@ -914,9 +917,6 @@
   },
   "Y2zB+b": {
     "string": "No project developers"
-  },
-  "Y7/cBd": {
-    "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and <span>start the conversation</span>. Make sure to update us to help us track your contribution to preserving the Amazon: <span>the future is in your hands too!</span>"
   },
   "Y9bYKH": {
     "string": "Next slide"
