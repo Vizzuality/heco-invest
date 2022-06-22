@@ -8,6 +8,7 @@ export const supportedFileformats = [
   ...KMLLoader.extensions,
   ...['kmz'],
   ...['shp', 'prj', 'shx', 'dbf', 'cfg'],
+  'zip'
 ];
 
 /**

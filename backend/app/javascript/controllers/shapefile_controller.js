@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { convertFilesToGeojson } from "../utils/shapefile";
+import { convertFilesToGeojson, supportedFileformats } from "../utils/shapefile";
 
 // Connects to data-controller="shapefile"
 export default class extends Controller {
@@ -7,6 +7,10 @@ export default class extends Controller {
   static values = {
     messages: String
   };
+
+  connect() {
+    this.inputTarget.accept = supportedFileformats.map((ext) => `.${ext}`).join(',');
+  }
 
   upload() {
     this.inputTarget.click();
