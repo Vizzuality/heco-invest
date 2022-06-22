@@ -14,7 +14,7 @@
     <%= f.input :municipality_id, collection: Location.municipality.order(["name", content_language].join("_")), label: t("simple_form.labels.project.municipality"), include_blank: false %>
   </div>
   <div data-controller="shapefile" data-shapefile-messages-value="<%= t('.shapefile_messages').to_json %>">
-    <input type="file" class="sr-only" data-shapefile-target="input" data-action="shapefile#readFiles" multiple />
+    <input type="file" name="shapefile" class="sr-only" data-shapefile-target="input" data-action="shapefile#readFiles" />
     <%= f.input :geometry, input_html: { value: f.object.geometry.to_json, "data-shapefile-target": "output", rows: 5 } %>
     <p data-shapefile-target="errorMessage" class="mt-2 text-red-500 text-xs italic">
     </p>

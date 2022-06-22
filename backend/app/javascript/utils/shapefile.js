@@ -99,6 +99,20 @@ export async function convertFilesToGeojson(files, messages) {
     fileToParse = kmlFileName ? fileMap[kmlFileName] : null;
 
     loader = KMLLoader;
+  } else if (fileToParse.name.endsWith('.zip')) {
+    const fileMap = await parse(fileToParse, ZipLoader);
+
+    const shpFileName = Object.keys(fileMap).find((name) => name.endsWith('.shp'));
+    fileToParse = shpFileName ? fileMap[shpFileName] : null;
+    files = Object.keys(fileMap).map((filename) => {
+      if (!(fileMap[filename] instanceof ArrayBuffer)) return null;
+      const blob = new Blob([fileMap[filename]]);
+      return new File([blob], filename);
+    }).filter(x => x);
+
+    if (fileToParse) {
+      loader = ShapefileLoader;
+    }
   } else {
     loader = await selectLoader(fileToParse, [ShapefileLoader, KMLLoader]);
   }
