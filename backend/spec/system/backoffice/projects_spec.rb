@@ -259,5 +259,16 @@ RSpec.describe "Backoffice: Projects", type: :system do
         expect(project.relevant_links_es).to eq("New relevant links - Spanish")
       end
     end
+
+    context "when removing project" do
+      it "removes project" do
+        accept_confirm do
+          click_on t("backoffice.projects.delete")
+        end
+        expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.project")))
+        expect(current_path).to eql(backoffice_projects_path)
+        expect(page).not_to have_text(project.name)
+      end
+    end
   end
 end
