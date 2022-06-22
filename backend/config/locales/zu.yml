@@ -38,6 +38,7 @@ zu:
         country: Country
         department: State
         municipality: Municipality
+        geometry: Geometry
         project_developer: Owner
         involved_project_developers: Partners (optional)
         partners: Partners
