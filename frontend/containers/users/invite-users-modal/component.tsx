@@ -110,7 +110,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
       size="default"
       scrollable={false}
     >
-      <form className="flex flex-col" noValidate>
+      <form className="flex flex-col" noValidate autoComplete="off">
         <p className="mb-2 font-serif text-3xl text-green-dark">
           <FormattedMessage defaultMessage="Invite users" id="R+1DVQ" />
         </p>
