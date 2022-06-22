@@ -1,8 +1,5 @@
 import { FC, useRef } from 'react';
 
-import useMe from 'hooks/me';
-import { useScrollOnQuery } from 'hooks/use-scroll-on-query';
-
 import LayoutContainer from 'components/layout-container';
 import Loading from 'components/loading';
 import { UserRoles } from 'enums';
@@ -23,8 +20,8 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
   buttons,
 }: DashboardLayoutProps) => {
   const mainContainerRef = useRef(null);
-  const { user } = useMe();
-  const { data: accountData, isLoading: isLoadingAccountData } = useAccount();
+
+  const { user, userAccount } = useAccount('owner');
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
@@ -36,10 +33,10 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
               <div className="flex flex-col w-full text-white lg:flex-row">
                 <div className="flex flex-grow gap-8">
                   <div className="lg:translate-y-5">
-                    <AccountPicture name={accountData?.name} picture={accountData?.picture.small} />
+                    <AccountPicture name={userAccount?.name} picture={userAccount?.picture.small} />
                   </div>
                   <div className="flex flex-col justify-end pb-2 mt-5 lg:mt-0">
-                    <AccountInfo userRole={user?.role} account={accountData} />
+                    <AccountInfo userRole={user?.role} account={userAccount} />
                     <Navigation className="hidden lg:flex" userRole={user?.role} />
                   </div>
                 </div>

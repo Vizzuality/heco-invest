@@ -1,11 +1,9 @@
 import { ExternalLink as ExternalLinkIcon } from 'react-feather';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedDate, FormattedMessage, useIntl } from 'react-intl';
 
 import Link from 'next/link';
 
 import { InferGetStaticPropsType } from 'next';
-
-import useMe from 'hooks/me';
 
 import { loadI18nMessages } from 'helpers/i18n';
 import { translatedLanguageNameForLocale } from 'helpers/intl';
@@ -34,16 +32,14 @@ type AccountInfoPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayoutProps> = () => {
   const intl = useIntl();
-  const { user } = useMe();
-
-  const { data: accountData, isLoading: isLoadingAccountData } = useAccount();
+  const { user, userAccount, userAccountLoading } = useAccount('owner');
 
   const publicProfileLink = `${
     user?.role === UserRoles.ProjectDeveloper ? Paths.ProjectDeveloper : Paths.Investor
-  }/${accountData?.slug}`;
+  }/${userAccount?.slug}`;
 
   return (
-    <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
+    <ProtectedPage allowConfirmed permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
       <Head title={intl.formatMessage({ defaultMessage: 'Account information', id: 'CzsYIe' })} />
       <DashboardLayout>
         <LayoutContainer layout={'narrow'} className="flex flex-col gap-4">
@@ -52,7 +48,7 @@ export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayou
               <div className="flex-grow font-semibold">
                 <FormattedMessage defaultMessage="Public profile" id="G6hIMy" />
               </div>
-              {accountData && (
+              {userAccount && (
                 <Link href={publicProfileLink}>
                   <a
                     className="flex gap-2 px-2 transition-all rounded-full text-green-light focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2"
@@ -108,29 +104,30 @@ export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayou
                 <FormattedMessage defaultMessage="Basic info" id="Py+eVV" />
               </div>
             </div>
-            {isLoadingAccountData ? (
+            {userAccountLoading ? (
               <div className="flex items-center justify-center w-full h-10">
                 <Loading visible={true} iconClassName="w-10 h-10" />
               </div>
             ) : (
               <>
                 <div className="text-sm gap-6 grid grid-cols-1 lg:grid-cols-[240px_1fr] mt-8 text-gray-900">
-                  {/*
                   <span className="text-gray-600">
                     <FormattedMessage defaultMessage="Date of creation" id="KxPY7j" />
                   </span>
-                  <span>TODO</span>
-                  */}
+                  <span>
+                    {!!userAccount?.created_at && FormattedDate({ value: userAccount.created_at })}
+                  </span>
+
                   <span className="text-gray-600">
                     <FormattedMessage defaultMessage="Language" id="y1Z3or" />
                   </span>
-                  <span>{translatedLanguageNameForLocale(intl, accountData?.language)}</span>
-                  {/*
+                  <span>{translatedLanguageNameForLocale(intl, userAccount?.language)}</span>
                   <span className="text-gray-600">
                     <FormattedMessage defaultMessage="Owner" id="zINlao" />
                   </span>
-                  <span>TODO</span>
-                  */}
+                  <span>
+                    {userAccount?.owner.first_name} {userAccount?.owner.last_name}
+                  </span>
                 </div>
                 <div className="flex flex-col items-center gap-4 p-4 mt-6 text-sm md:flex-row rounded-xl bg-background-middle">
                   <div className="flex flex-grow">
@@ -139,11 +136,12 @@ export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayou
                       id="/XKclL"
                     />
                   </div>
-                  <div>
+                  {/* ADD BUTTON WHEN WE HAVE THE ADMIN CONTACT */}
+                  {/* <div>
                     <Button theme="secondary-green" className="whitespace-nowrap">
                       <FormattedMessage defaultMessage="Contact Admin" id="sDHn6D" />
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
               </>
             )}
