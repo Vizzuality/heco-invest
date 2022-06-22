@@ -1,31 +1,25 @@
-import { useMemo, useState } from 'react';
-
 import { decycle } from 'cycle';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
-import { projectImpact } from 'helpers/project';
 
 import Breadcrumbs from 'containers/breadcrumbs';
-import ImpactChart from 'containers/impact-chart';
-import ImpactText from 'containers/impact-text';
-import ProjectHeader from 'containers/project-header';
-import Contact from 'containers/project-page/contact/component';
-import ProjectDevelopers from 'containers/project-page/developers/component';
-import Funding from 'containers/project-page/funding/component';
-import Impact from 'containers/project-page/impact/component';
-import Overview from 'containers/project-page/overview/component';
+import Contact from 'containers/project-page/contact';
+import ProjectDevelopers from 'containers/project-page/developers';
+import Funding from 'containers/project-page/funding';
+import Header from 'containers/project-page/header';
+import Impact from 'containers/project-page/impact';
+import Overview from 'containers/project-page/overview';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
-import { ImpactAreas } from 'enums';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
 import { Project as ProjectType } from 'types/project';
 
 import { getEnums } from 'services/enums/enumService';
-import { getProject } from 'services/projects/projectService';
+import { getProject, useProject } from 'services/projects/projectService';
 
 export const getServerSideProps = async ({ params: { id }, locale }) => {
   let project;
@@ -33,8 +27,15 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
   // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
     ({ data: project } = await getProject(id, {
-      includes:
-        'project_images,project_developer,country,municipality,department,involved_project_developers',
+      includes: [
+        'project_images',
+        'project_developer',
+        'involved_project_developers',
+        'country',
+        'municipality',
+        'department',
+        'priority_landscape',
+      ],
     }));
   } catch (e) {
     return { notFound: true };
@@ -57,9 +58,27 @@ type ProjectPageProps = {
 };
 
 const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
-  project,
+  project: defaultProject,
   enums,
 }) => {
+  const {
+    project: { data: project },
+  } = useProject(
+    defaultProject.id,
+    {
+      includes: [
+        'project_images',
+        'project_developer',
+        'involved_project_developers',
+        'country',
+        'municipality',
+        'department',
+        'priority_landscape',
+      ],
+    },
+    defaultProject
+  );
+
   return (
     <>
       <Head title={project.name} description={project.description} />
@@ -71,12 +90,12 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
             id: { name: project.name },
           }}
         />
-        <ProjectHeader className="mt-6" project={project} />
+        <Header className="mt-6" project={project} />
       </LayoutContainer>
 
       <Overview project={project} />
-      <Impact project={project} />
-      <Funding project={project} />
+      <Impact project={project} enums={enums} />
+      <Funding project={project} enums={enums} />
       <ProjectDevelopers project={project} />
       <Contact project={project} />
     </>

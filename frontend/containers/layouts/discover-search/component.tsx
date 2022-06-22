@@ -8,6 +8,7 @@ import cx from 'classnames';
 import { noop } from 'lodash-es';
 
 import Filters from 'containers/forms/filters';
+import SearchAutoSuggestion from 'containers/search-auto-suggestion';
 
 import Button from 'components/button';
 import Icon from 'components/icon';
@@ -23,6 +24,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
 }: DiscoverSearchProps) => {
   const [searchText, setSearchText] = useState<string>(searchTextProp);
   const [openFilters, setOpenFilters] = useState(false);
+  const [openSuggestions, setOpenSuggestions] = useState(false);
 
   useEffect(() => {
     setSearchText(searchTextProp);
@@ -42,21 +44,21 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
     <div className={className}>
       <div
         className={cx('z-10 w-full sm:h-16 text-black bg-white border drop-shadow-xl', {
-          'rounded-full': !openFilters,
-          'rounded-t-4xl': openFilters,
+          'rounded-full': !openFilters && !openSuggestions,
+          'rounded-t-4xl': openFilters || openSuggestions,
         })}
       >
-        <div className="flex items-center justify-between sm:gap-4 py-3 px-6">
+        <div className="flex items-center justify-between px-6 py-3 sm:gap-4">
           <form
             role="search"
-            className="items-center sm:justify-between w-full h-full gap-1 sm:gap-3 flex sm:flex-row flex-col justify-end"
+            className="flex flex-col items-center justify-end w-full h-full gap-1 sm:justify-between sm:gap-3 sm:flex-row"
             onSubmit={handleSubmit}
           >
-            <div className="w-full flex gap-2 items-center">
+            <div className="flex items-center w-full gap-2">
               <Icon
                 aria-hidden={true}
                 icon={SearchIcon}
-                className="w-6 h-6 sm:w-8 sm:h-8 mr-2 text-green-dark"
+                className="w-6 h-6 mr-2 sm:w-8 sm:h-8 text-green-dark"
               />
               <label htmlFor="header-search" className="sr-only">
                 <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
@@ -69,11 +71,11 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
                 onChange={handleChange}
               />
             </div>
-            <div className="flex gap-4 sm:gap-6 sm:justify-self-end items-center">
+            <div className="flex items-center gap-4 sm:gap-6 sm:justify-self-end">
               {/* Filters accordion header https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html */}
               <h3>
                 <Button
-                  className="inline font-normal bg-white text-green-dark px-0"
+                  className="inline px-0 font-normal bg-white text-green-dark"
                   id="filters-button"
                   theme="primary-green"
                   onClick={() => setOpenFilters(!openFilters)}
@@ -114,6 +116,12 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
         >
           {openFilters && <Filters closeFilters={() => setOpenFilters(false)} />}
         </div>
+        {!openFilters && (
+          <SearchAutoSuggestion
+            onChangeOpenSuggestion={setOpenSuggestions}
+            searchText={searchText}
+          />
+        )}
       </div>
     </div>
   );

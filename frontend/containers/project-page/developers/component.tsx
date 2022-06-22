@@ -15,12 +15,14 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
     // Occasionally, the (involved_project_developers) relationship is not returned correctly, causing
     // the frontend to crash. In order to make it more resilient, we're making this check to ensure
     // that we do have the relationship before attempting to use its data to show the PD cards.
-    ({ type }) => type === 'project_developer'
+    ({ type, id }, index) =>
+      // The type must be 'project developer' and the involved project developer must be different than the project developer.
+      type === 'project_developer' && (index === 0 || id !== project.project_developer.id)
   );
 
   return (
     <section className="bg-background-middle py-18">
-      <LayoutContainer className="flex flex-col lg:flex-row space-y-28 lg:space-y-0 lg:space-x-28">
+      <LayoutContainer className="flex flex-col space-y-10 lg:flex-row lg:space-y-0 lg:space-x-28">
         <div className="flex flex-col pl-6 space-y-1 lg:pl-16">
           <h2 className="font-serif text-2xl text-black lg:text-4xl lg:mb-4">
             <FormattedMessage defaultMessage="Project Developers" id="+K9fF0" />

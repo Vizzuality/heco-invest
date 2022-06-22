@@ -3,7 +3,7 @@ module Backoffice
     include Sections
     include ContentLanguage
 
-    before_action :fetch_project_developer, only: [:edit, :update]
+    before_action :fetch_project_developer, only: [:edit, :update, :destroy]
     before_action :set_breadcrumbs, only: [:edit, :update]
     before_action :set_sections, only: [:edit, :update]
     before_action :set_content_language_default, only: [:edit, :update]
@@ -11,14 +11,25 @@ module Backoffice
     def index
       @q = ProjectDeveloper.ransack params[:q]
       @project_developers = API::Filterer.new(@q.result, {full_text: params.dig(:q, :filter_full_text)}).call
-      @pagy_object, @project_developers = pagy @project_developers.includes(account: [:owner]), pagy_defaults
+      @project_developers = @project_developers.includes(account: [:owner])
+
+      respond_to do |format|
+        format.html do
+          @pagy_object, @project_developers = pagy @project_developers, pagy_defaults
+        end
+        format.csv do
+          send_data Backoffice::CSV::ProjectDeveloperExporter.new(@project_developers).call,
+            filename: "project_developers.csv",
+            type: "text/csv; charset=utf-8"
+        end
+      end
     end
 
     def edit
     end
 
     def update
-      if @project_developer.update(update_params)
+      if I18n.with_locale(content_language) { @project_developer.update(update_params) }
         redirect_back(
           fallback_location: edit_backoffice_project_developer_path(@project_developer.id),
           notice: t("backoffice.messages.success_update", model: t("backoffice.common.project_developer"))
@@ -28,26 +39,27 @@ module Backoffice
       end
     end
 
+    def destroy
+      @project_developer.destroy!
+
+      redirect_to backoffice_project_developers_path, status: :see_other,
+        notice: t("backoffice.messages.success_delete", model: t("backoffice.common.project_developer"))
+    end
+
     private
 
     def update_params
       params.require(:project_developer).permit(
-        :name,
-        :language,
         :project_developer_type,
         :entity_legal_registration_number,
-        :mission_en,
-        :mission_es,
-        :mission_pt,
+        :mission,
         account_attributes: [
           :id,
           :picture,
           :name,
           :language,
           :review_status,
-          :about_en,
-          :about_es,
-          :about_pt,
+          :about,
           :website,
           :linkedin,
           :facebook,

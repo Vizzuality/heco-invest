@@ -12,14 +12,18 @@ import {
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { decycle } from 'cycle';
 
-import { Queries } from 'enums';
+import useMe from 'hooks/me';
+
+import { Queries, UserRoles } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
-import { Project, ProjectCreationPayload } from 'types/project';
+import { Project, ProjectCreationPayload, ProjectUpdatePayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 
 import API from 'services/api';
-import { ErrorResponse, ResponseData } from 'services/types';
+import { staticDataQueryOptions } from 'services/helpers';
+import { ErrorResponse, PagedRequest, PagedResponse, ResponseData } from 'services/types';
 
+// Create PD
 const getProjectDeveloper = async (): Promise<ProjectDeveloper> => {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/project_developer`,
@@ -63,6 +67,22 @@ export function useCreateProjectDeveloper(): UseMutationResult<
   });
 }
 
+// Update PD
+const updateProjectDeveloper = async (
+  data: ProjectDeveloperSetupForm
+): Promise<AxiosResponse<ProjectDeveloper>> => {
+  return await API.put('/api/v1/account/project_developer', data);
+};
+
+export function useUpdateProjectDeveloper(): UseMutationResult<
+  AxiosResponse<ProjectDeveloper>,
+  AxiosError<ErrorResponse>,
+  ProjectDeveloperSetupForm
+> {
+  return useMutation(updateProjectDeveloper);
+}
+
+// Create Project
 export function useCreateProject(): UseMutationResult<
   AxiosResponse<Project>,
   AxiosError<ErrorResponse>,
@@ -79,6 +99,18 @@ export function useCreateProject(): UseMutationResult<
       queryClient.setQueryData(Queries.ProjectQuery, result.data);
     },
   });
+}
+
+export function useUpdateProject(): UseMutationResult<
+  AxiosResponse<Project>,
+  AxiosError<ErrorResponse>,
+  ProjectUpdatePayload
+> {
+  const updateProject = async (project: ProjectUpdatePayload): Promise<AxiosResponse<Project>> => {
+    return API.put(`/api/v1/account/projects/${project.id}`, project);
+  };
+
+  return useMutation(updateProject);
 }
 
 const getInvestor = async (): Promise<Investor> => {
@@ -113,4 +145,63 @@ export function useCreateInvestor(): UseMutationResult<
       queryClient.setQueryData(Queries.Investor, result.data.data);
     },
   });
+}
+
+const getAccountProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
+  const { search, page, includes, ...rest } = params || {};
+
+  const config: AxiosRequestConfig = {
+    // TODO: Change to the correct endpoint
+    url: '/api/v1/projects',
+    method: 'GET',
+    params: {
+      ...rest,
+      includes: includes?.join(','),
+      'filter[full_text]': search,
+      'page[number]': page,
+    },
+  };
+
+  return await API.request(config).then((result) => result.data);
+};
+
+export function useAccountProjectsList(
+  params?: PagedRequest,
+  options?: UseQueryOptions<PagedResponse<Project>>
+): UseQueryResult<PagedResponse<Project>> & { projects: Project[] } {
+  const query = useQuery([Queries.AccountProjectList, params], () => getAccountProjects(params), {
+    ...staticDataQueryOptions,
+    ...options,
+  });
+
+  return useMemo(
+    () => ({
+      ...query,
+      projects: query?.data?.data || [],
+    }),
+    [query]
+  );
+}
+
+export function useAccount() {
+  const { user } = useMe();
+  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
+  const isInvestor = user?.role === UserRoles.Investor;
+
+  const { data: projectDeveloperData, isLoading: isLoadingProjectDeveloperData } =
+    useProjectDeveloper({
+      enabled: isProjectDeveloper,
+    });
+
+  const { data: investorData, isLoading: isLoadingInvestorData } = useInvestor({
+    enabled: isInvestor,
+  });
+
+  const accountData = isProjectDeveloper ? projectDeveloperData : investorData;
+  const isLoadingAccountData = isLoadingProjectDeveloperData || isLoadingInvestorData;
+
+  return {
+    data: accountData,
+    isLoading: isLoadingAccountData,
+  };
 }

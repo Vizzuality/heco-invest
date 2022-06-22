@@ -3,11 +3,12 @@ import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
 import { Enum } from 'types/enums';
+import { Interest } from 'types/projectDeveloper';
 
 interface InterestItems {
-  category?: Enum[];
-  impact?: Enum[];
-  mosaic?: Enum[];
+  categoryEnums?: Enum[];
+  impactEnums?: Enum[];
+  mosaicEnums?: Enum[];
 }
 
 export enum InterestNames {
@@ -16,7 +17,7 @@ export enum InterestNames {
   Mosaics = 'mosaics',
 }
 
-const useInterests = ({ category, impact, mosaic }: InterestItems) => {
+const useInterests = ({ categoryEnums, impactEnums, mosaicEnums }: InterestItems): Interest[] => {
   const { formatMessage } = useIntl();
   return useMemo(
     () => [
@@ -26,14 +27,16 @@ const useInterests = ({ category, impact, mosaic }: InterestItems) => {
           id: 'LmHPHR',
         }),
         name: InterestNames.Categories,
-        items: category,
+        items: categoryEnums,
         required: true,
+        infoText: '',
       },
       {
         title: formatMessage({ defaultMessage: 'Expect to have impact on', id: 'YB8bt5' }),
         name: InterestNames.Impacts,
-        items: impact,
+        items: impactEnums,
         required: true,
+        infoText: '',
       },
       {
         title: formatMessage({
@@ -42,7 +45,7 @@ const useInterests = ({ category, impact, mosaic }: InterestItems) => {
           id: 'piBsTx',
         }),
         name: InterestNames.Mosaics,
-        items: mosaic,
+        items: mosaicEnums,
         infoText: formatMessage({
           defaultMessage:
             'Geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystem services.',
@@ -51,7 +54,7 @@ const useInterests = ({ category, impact, mosaic }: InterestItems) => {
         required: false,
       },
     ],
-    [category, impact, mosaic, formatMessage]
+    [formatMessage, categoryEnums, impactEnums, mosaicEnums]
   );
 };
 

@@ -1,11 +1,14 @@
 import { useMemo } from 'react';
 
-import { Path } from 'react-hook-form';
+import { FormState, Path } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
+
+import { EnumTypes, Languages } from 'enums';
+import languages from 'locales.config.json';
 
 import { ErrorResponse } from 'services/types';
 
@@ -38,20 +41,22 @@ export function getServiceErrors<FormValues>(
   return { fieldErrors, errorPages };
 }
 
-export function useGetAlert(error?: AxiosError<ErrorResponse>): string[] {
+export const useGetAlert = (error?: AxiosError<ErrorResponse>) => {
   const { formatMessage } = useIntl();
-  if (error) {
-    return Array.isArray(error?.message)
-      ? error.message.map(({ title }: { title: string }) => title)
-      : [
-          formatMessage({
-            defaultMessage:
-              'Something went wrong while submitting your form. Please correct the errors before submitting again.',
-            id: 'WTuVeL',
-          }),
-        ];
-  }
-}
+  return useMemo(() => {
+    if (error) {
+      return Array.isArray(error?.message)
+        ? error.message.map(({ title }: { title: string }) => title)
+        : [
+            formatMessage({
+              defaultMessage:
+                'Something went wrong while submitting your form. Please correct the errors before submitting again.',
+              id: 'WTuVeL',
+            }),
+          ];
+    }
+  }, [error, formatMessage]);
+};
 
 /** Function to convert bytes in megabites */
 export const bytesToMegabytes = (bytes: number): number => {
@@ -107,4 +112,37 @@ export const getSocialMediaLinksRegex = () => {
     linkedin: getRegex('linkedin'),
     instagram: getRegex('instagram'),
   };
+};
+
+export const getPageErrors = (formPageInputs: string[], errors: FormState<any>['errors']) => {
+  return formPageInputs.some((input) => errors.hasOwnProperty(input));
+};
+
+export const useFilterNames = () => {
+  const { formatMessage } = useIntl();
+  return {
+    [EnumTypes.Category]: formatMessage({ defaultMessage: 'Category', id: 'ccXLVi' }),
+    [EnumTypes.Impact]: formatMessage({ defaultMessage: 'Impact', id: 'W2JBdp' }),
+    [EnumTypes.TicketSize]: formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
+    [EnumTypes.InstrumentType]: formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
+    [EnumTypes.Sdg]: formatMessage({ defaultMessage: 'SDGs', id: 'JQjEP9' }),
+  };
+};
+
+/** Hook to use an object with the locales as keys and the correspondent translated languages as values */
+export const useLanguageNames = () => {
+  const { formatMessage } = useIntl();
+  let langs: Partial<{ [key in Languages]: string }> = {};
+
+  languages.locales.map(({ locale }) => {
+    switch (locale) {
+      case 'en':
+        langs.en = formatMessage({ defaultMessage: 'English', id: 'WkrNSk' });
+      case 'es':
+        langs.es = formatMessage({ defaultMessage: 'Spanish', id: '8WtyrD' });
+      case 'pt':
+        langs.pt = formatMessage({ defaultMessage: 'Portuguese', id: 'A4UTjl' });
+    }
+  });
+  return langs;
 };

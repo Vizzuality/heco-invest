@@ -62,7 +62,7 @@ export const Profile: FC<ProfileProps> = ({
           name="picture"
           id="picture"
           setValue={setValue}
-          register={register}
+          control={control}
           clearErrors={clearErrors}
           preview
           aria-describedby="picture-error"

@@ -1,4 +1,6 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
+
+import { useSelector } from 'react-redux';
 
 import { useRouter } from 'next/router';
 
@@ -13,16 +15,25 @@ import { ProjectMapParams } from 'types/project';
 
 import { useProjectsMap } from 'services/projects/projectService';
 
+import LocationSearcher from './location-searcher';
 import MapPin from './pin';
 import MapPinCluster from './pin-cluster';
 import { DiscoverMapProps } from './types';
 
 export const DiscoverMap: FC<DiscoverMapProps> = () => {
   const [viewport, setViewport] = useState({});
-  const [bounds, setBounds] = useState({
-    bbox: [-81.99, -4.35, -65.69, 12.54],
-    options: { padding: 0 },
-  });
+
+  const { bbox } = useSelector((state) => state['/projects']);
+
+  const [bounds, setBounds] = useState(null);
+
+  useEffect(() => {
+    setBounds({
+      bbox: bbox,
+      options: { padding: 0 },
+      viewportOptions: { transitionDuration: 1000 },
+    });
+  }, [bbox]);
 
   const { query } = useRouter();
 
@@ -33,26 +44,30 @@ export const DiscoverMap: FC<DiscoverMapProps> = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-full">
-      <Map bounds={bounds} viewport={viewport} onMapViewportChange={handleViewportChange}>
-        {(map) => (
-          <>
-            <LayerManager map={map} plugin={PluginMapboxGl}></LayerManager>
+    <>
+      <div className="relative w-full h-full">
+        <Map bounds={bounds} viewport={viewport} onMapViewportChange={handleViewportChange}>
+          {(map) => (
+            <>
+              <LayerManager map={map} plugin={PluginMapboxGl}></LayerManager>
 
-            <ClusterLayer
-              data={projectsMap}
-              map={map}
-              MarkerComponent={<MapPin />}
-              ClusterComponent={<MapPinCluster />}
-            />
-          </>
-        )}
-      </Map>
+              <ClusterLayer
+                data={projectsMap}
+                map={map}
+                MarkerComponent={<MapPin />}
+                ClusterComponent={<MapPinCluster />}
+              />
+            </>
+          )}
+        </Map>
 
-      <Controls className="absolute bottom-10 xl:bottom-6 right-11">
-        <ProjectLegend />
-      </Controls>
-    </div>
+        <Controls className="absolute bottom-10 xl:bottom-6 right-11">
+          <ProjectLegend />
+        </Controls>
+
+        <LocationSearcher />
+      </div>
+    </>
   );
 };
 

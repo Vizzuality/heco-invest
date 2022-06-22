@@ -1,3 +1,7 @@
 namespace :jobs do
-  post :test, to: ->(_env) { [200, {}, [""]] }
+  resources :users, only: [] do
+    collection do
+      post :purge
+    end
+  end
 end

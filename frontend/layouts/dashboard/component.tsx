@@ -1,12 +1,14 @@
-import { FC } from 'react';
+import { FC, useRef } from 'react';
 
 import useMe from 'hooks/me';
+import { useScrollOnQuery } from 'hooks/use-scroll-on-query';
 
 import LayoutContainer from 'components/layout-container';
+import Loading from 'components/loading';
 import { UserRoles } from 'enums';
 import ProtectedPage from 'layouts/protected-page';
 
-import { useProjectDeveloper, useInvestor } from 'services/account';
+import { useAccount } from 'services/account';
 
 import AccountInfo from './account-info';
 import AccountPicture from './account-picture';
@@ -15,29 +17,22 @@ import Navigation from './navigation';
 import { DashboardLayoutProps } from './types';
 
 export const DashboardLayout: FC<DashboardLayoutProps> = ({
+  scrollOnQuery = true,
+  isLoading = false,
   children,
   buttons,
 }: DashboardLayoutProps) => {
+  const mainContainerRef = useRef(null);
   const { user } = useMe();
+  const { data: accountData, isLoading: isLoadingAccountData } = useAccount();
 
-  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
-  const isInvestor = user?.role === UserRoles.Investor;
-
-  const { data: projectDeveloperData } = useProjectDeveloper({
-    enabled: isProjectDeveloper,
-  });
-
-  const { data: investorData } = useInvestor({
-    enabled: isInvestor,
-  });
-
-  const accountData = isProjectDeveloper ? projectDeveloperData : investorData;
+  useScrollOnQuery({ ref: mainContainerRef, autoScroll: scrollOnQuery });
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
       <div className="min-h-screen bg-background-dark">
         <div className="flex flex-col lg:h-screen ">
-          <div className="flex flex-col bg-radial-green-dark bg-green-dark lg:backdrop-blur-sm">
+          <div className="z-10 flex flex-col bg-radial-green-dark bg-green-dark lg:backdrop-blur-sm">
             <Header />
             <LayoutContainer className="mt-18 lg:mt-0">
               <div className="flex flex-col w-full text-white lg:flex-row">
@@ -57,8 +52,14 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
               </div>
             </LayoutContainer>
           </div>
-          <main className="h-full overflow-y-scroll bg-background-dark">
-            <LayoutContainer className="py-8">{children}</LayoutContainer>
+          <main ref={mainContainerRef} className="h-full overflow-y-scroll bg-background-dark">
+            {isLoading ? (
+              <div className="absolute flex items-center justify-center bg-background-dark top-px bottom-px left-px bg-opacity-20 right-px rounded-2xl backdrop-blur-sm">
+                <Loading visible={true} iconClassName="w-10 h-10" />
+              </div>
+            ) : (
+              <LayoutContainer className="py-8">{children}</LayoutContainer>
+            )}
           </main>
         </div>
       </div>

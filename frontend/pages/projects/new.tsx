@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
-import { getServiceErrors, useGetAlert } from 'helpers/pages';
+import { getPageErrors, getServiceErrors, useGetAlert } from 'helpers/pages';
 
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
@@ -147,10 +147,9 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
 
   const handleNextClick = async () => {
     await handleSubmit(onSubmit)();
-    if (!errors) {
-      setCurrentPage(currentPage + 1);
-    }
   };
+
+  const getPageError = (page: number) => getPageErrors(formPageInputs[page], errors);
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
@@ -169,7 +168,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
         onCloseClick={() => setShowLeave(true)}
         onSubmitClick={handleSubmit(onSubmit)}
       >
-        <Page key="general-information">
+        <Page key="general-information" hasErrors={getPageError(0)}>
           <GeneralInformation
             register={register}
             control={control}
@@ -182,7 +181,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             setError={setError}
           />
         </Page>
-        <Page key="project-description">
+        <Page key="project-description" hasErrors={getPageError(1)}>
           <ProjectDescription
             register={register}
             control={control}
@@ -195,7 +194,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             target_group={project_target_group}
           />
         </Page>
-        <Page key="impact">
+        <Page key="impact" hasErrors={getPageError(2)}>
           <Impact
             register={register}
             control={control}
@@ -207,7 +206,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             clearErrors={clearErrors}
           />
         </Page>
-        <Page key="funding">
+        <Page key="funding" hasErrors={getPageError(3)}>
           <Funding
             register={register}
             control={control}
@@ -220,7 +219,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             instrument_type={instrument_type}
           />
         </Page>
-        <Page key="project-grow">
+        <Page key="project-grow" hasErrors={getPageError(4)}>
           <ProjectGrow
             register={register}
             control={control}
@@ -228,7 +227,7 @@ const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
             errors={errors}
           />
         </Page>
-        <Page key="other">
+        <Page key="other" hasErrors={getPageError(5)}>
           <OtherInformation
             register={register}
             control={control}

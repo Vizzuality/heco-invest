@@ -48,6 +48,7 @@ export const ImpactText: FC<ImpactTextProps> = ({ className, area, impact }) => 
     () => allImpacts?.find((impact) => highestImpactId === impact.id)?.name,
     [allImpacts, highestImpactId]
   );
+
   const impactScore = useMemo(
     () => (impact?.total ? Math.round(impact?.total * 10) : null),
     [impact]

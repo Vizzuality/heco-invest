@@ -32,6 +32,7 @@ module API
         def show
           render json: ProjectDeveloperSerializer.new(
             current_user.account.project_developer,
+            include: included_relationships,
             params: {current_user: current_user}
           ).serializable_hash
         end

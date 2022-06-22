@@ -6,10 +6,11 @@ RSpec.describe Translations::Translate do
     allow(credentials).to receive(:quota_project_id).and_return("heco")
     allow(Google::Auth).to receive(:get_application_default).and_return(credentials)
   end
-  subject { described_class.new resource }
 
   describe "#call" do
     [Project, ProjectDeveloper, OpenCall, Investor, Account].each do |klass|
+      subject { described_class.new resource, changed_attrs: [attribute] }
+
       let(:attribute) { klass.translatable_attributes.first }
       let(:resource) { create klass.table_name.singularize, "#{attribute}_en" => "TEXT_EN" }
       let(:translated_text) { "TEXT_ES" }

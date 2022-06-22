@@ -8,6 +8,7 @@ RSpec.describe "API V1 Account Investors", type: :request do
       tags "Investors"
       produces "application/json"
       security [csrf: [], cookie_auth: []]
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
 
       let(:investor) { create :investor }
       let(:user) { create :user }
@@ -29,6 +30,14 @@ RSpec.describe "API V1 Account Investors", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/accounts-investor")
+        end
+
+        context "with relationships" do
+          let(:includes) { "owner" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/accounts-investor-include-relationships")
+          end
         end
       end
     end

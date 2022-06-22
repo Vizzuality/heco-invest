@@ -57,23 +57,31 @@ export const getProject = async (
   id: string,
   params?: {
     fields?: string;
-    includes?: string;
+    includes?: string[];
   }
 ): Promise<{
   data: Project;
   included: any[]; // TODO
 }> => {
+  const { includes, ...rest } = params || {};
+
   const config: AxiosRequestConfig = {
     url: `/api/v1/projects/${id}`,
     method: 'GET',
-    params: params,
+    params: {
+      includes: includes?.join(','),
+      ...rest,
+    },
   };
   return await API.request(config).then((response) => response.data);
 };
 
 /** Use query for a single Project */
-export function useProject(id: string, params) {
-  const query = useQuery([Queries.ProjectQuery, id], () => getProject(id, params));
+export function useProject(id: string, params, initialData?: Project) {
+  const query = useQuery([Queries.ProjectQuery, id], () => getProject(id, params), {
+    refetchOnWindowFocus: false,
+    initialData: { data: initialData, included: [] },
+  });
 
   return useMemo(
     () => ({

@@ -1,15 +1,16 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useMemo, useState } from 'react';
 
-import { FieldError } from 'react-hook-form';
+import { Controller, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
 import dynamic from 'next/dynamic';
 
+import { sortBy } from 'lodash-es';
+
 import GeometryInput from 'containers/forms/geometry';
 import ProjectGallery from 'containers/forms/project-gallery';
-import { ProjectGalleryImageType } from 'containers/forms/project-gallery/project-gallery-image';
 
 import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
@@ -38,12 +39,12 @@ const GeneralInformation = ({
   clearErrors,
   setError,
 }: ProjectFormPagesProps<ProjectForm>) => {
-  const [showInvolvedProjectDevelopers, setShowInvolvedProjectDevelopers] = useState(false);
+  const [defaultInvolvedProjectDeveloper, setDefaultInvolvedProjectDeveloper] = useState<boolean>();
   const [locationsFilter, setLocationsFilter] = useState<{ country: string; department: string }>({
     country: undefined,
     department: undefined,
   });
-  const [previewImages, setPreviewImages] = useState<ProjectGalleryImageType[]>([]);
+  const [images, setImages] = useState<ProjectImageGallery[]>([]);
   const [coverImage, setCoverImage] = useState<string>();
 
   const { formatMessage } = useIntl();
@@ -55,38 +56,48 @@ const GeneralInformation = ({
   });
 
   useEffect(() => {
-    // This is just for when the user get back to this page (the page mounts), it shows the select if there is any value selected
-    setShowInvolvedProjectDevelopers(!!Number(getValues('involved_project_developer')));
-    // Get the uploaded images src from the involved_project_developer input values
-    setPreviewImages(
-      getValues('project_images_attributes')?.map(({ id, title, src }) => ({
-        id,
-        title,
-        src,
-      })) || []
+    const defaultImages = getValues('project_images_attributes');
+    setImages(defaultImages || []);
+
+    setCoverImage(
+      getValues('project_images_attributes_cover') || defaultImages?.length
+        ? defaultImages[0]?.file
+        : undefined
     );
-    setCoverImage(getValues('project_images_attributes_cover'));
+
+    const involvedProjectDeveloper = getValues('involved_project_developer');
+    // If there is a value for involved_project_developer, it checks the corresponding radio button
+    if (typeof involvedProjectDeveloper === 'number') {
+      setDefaultInvolvedProjectDeveloper(!!Number(involvedProjectDeveloper));
+    }
   }, [getValues]);
 
   const handleChangeInvolvedProjectDeveloper = (e: ChangeEvent<HTMLInputElement>) => {
-    setShowInvolvedProjectDevelopers(!!Number(e.target.value));
+    setDefaultInvolvedProjectDeveloper(!!Number(e.target.value));
+    setValue('involved_project_developer', Number(e.target.value));
   };
 
-  const getOptions = (locationType: LocationsTypes, filter: 'department' | 'country') => {
-    let filteredLocations = [];
-    if (locations) {
-      // If there is data on locations
-      filteredLocations = locations[locationType];
-      // If there is a filter for the field
-      if (locationsFilter && locationsFilter[filter]) {
-        filteredLocations = filteredLocations?.filter(
-          (location) => !locationsFilter[filter] || location.parent.id === locationsFilter[filter]
-        );
+  const getOptions = useMemo(
+    () => (locationType: LocationsTypes, filter: 'department' | 'country') => {
+      let filteredLocations = [];
+
+      if (locations) {
+        // If there is data on locations
+        filteredLocations = locations[locationType];
+        // If there is a filter for the field
+        if (locationsFilter && locationsFilter[filter]) {
+          filteredLocations = filteredLocations?.filter(
+            (location) => !locationsFilter[filter] || location.parent.id === locationsFilter[filter]
+          );
+        }
       }
-    }
 
-    return filteredLocations?.map(({ id, name }) => <Option key={id}>{name}</Option>);
-  };
+      return sortBy(filteredLocations, 'name').map(({ id, name }) => (
+        <Option key={id}>{name}</Option>
+      ));
+    },
+    [locations, locationsFilter]
+  );
 
   const handleChangeLocation = (locationType: LocationsTypes, e: any) => {
     const { value } = e.target;
@@ -105,34 +116,33 @@ const GeneralInformation = ({
 
   const handleUploadImages = (newUploadedImages: ProjectImageGallery[]) => {
     // current project_images_attributes input value
-    const uploadedImages = getValues('project_images_attributes') || [];
+    if (!coverImage && newUploadedImages[0]) {
+      setValue('project_images_attributes_cover', newUploadedImages[0].file);
+      setCoverImage(newUploadedImages[0].id);
+    }
+    setValue('project_images_attributes', [...images, ...newUploadedImages]);
+    setImages([...images, ...newUploadedImages]);
+  };
 
-    const newPreviewImages = newUploadedImages?.map(({ src, id, title }) => ({
-      src,
-      id,
-      title,
-    }));
-
-    if (!coverImage && newUploadedImages[0]) setCoverImage(newUploadedImages[0].id);
-    setPreviewImages([...previewImages, ...newPreviewImages]);
-    setValue('project_images_attributes', [...uploadedImages, ...newUploadedImages]);
+  const handleSelectCover = (imageId: string) => {
+    setValue('project_images_attributes_cover', imageId);
+    setCoverImage(imageId);
   };
 
   const handleDeleteImage = (imageId: string) => {
     // Get the images and remove the deleted one
-    const filteredImageAttr = getValues('project_images_attributes')?.filter(
-      ({ file }) => file !== imageId
+    const imagesWithDeleted = images?.map((image) =>
+      image.file === imageId ? { ...image, _destroy: true } : image
     );
     // Set images with the new images array
-    setValue('project_images_attributes', filteredImageAttr);
+    setValue('project_images_attributes', imagesWithDeleted);
+    setImages(imagesWithDeleted);
     // If the deleted image was the cover, set new cover to the first image left
     if (coverImage === imageId) {
-      const newCoverImage = filteredImageAttr[0].id;
-      setCoverImage(newCoverImage);
-      setValue('project_images_attributes_cover', newCoverImage);
+      const filteredImageAttr = imagesWithDeleted?.filter((image) => !image._destroy);
+      const newCoverImage = filteredImageAttr.length ? filteredImageAttr[0].file : undefined;
+      handleSelectCover(newCoverImage);
     }
-    // Remove the deleted image from preview images
-    setPreviewImages(previewImages?.filter(({ id }) => id !== imageId));
   };
 
   return (
@@ -195,8 +205,8 @@ const GeneralInformation = ({
                 name="project_images_attributes"
                 setError={setError}
                 clearErrors={clearErrors}
-                register={register}
-                registerOptions={{ disabled: false }}
+                controlOptions={{ disabled: false }}
+                control={control}
                 // See: Browser limitations section
                 // https://react-dropzone.org/#section-accepting-specific-file-types
                 fileTypes={{ 'image/*': ['.png', '.jpg', '.jpeg'] }}
@@ -207,16 +217,16 @@ const GeneralInformation = ({
             </div>
             <div className="w-full h-[176px]">
               <ProjectGallery
-                images={previewImages}
+                images={images}
                 name="project_images_attributes_cover"
-                register={register}
-                registerOptions={{}}
                 setValue={setValue}
                 clearErrors={clearErrors}
                 errors={errors}
                 className="h-full"
                 onDeleteImage={handleDeleteImage}
+                onSelectCover={handleSelectCover}
                 defaultSelected={coverImage}
+                control={control}
               />
             </div>
           </div>
@@ -351,26 +361,40 @@ const GeneralInformation = ({
                 />
               </legend>
               <Label id="involved-project-developer-yes" className="block font-normal">
-                <input
-                  id="involved-project-developer-yes"
-                  type="radio"
-                  value={1}
-                  className="mr-2"
-                  {...register('involved_project_developer', {
-                    onChange: handleChangeInvolvedProjectDeveloper,
-                  })}
+                <Controller
+                  control={control}
+                  name="involved_project_developer"
+                  render={(field) => (
+                    <input
+                      {...field}
+                      id="involved-project-developer-yes"
+                      type="radio"
+                      value={1}
+                      checked={defaultInvolvedProjectDeveloper}
+                      className="mr-2"
+                      name="involved_project_developer"
+                      onChange={handleChangeInvolvedProjectDeveloper}
+                    />
+                  )}
                 />
                 <FormattedMessage defaultMessage="Yes" id="a5msuh" />
               </Label>
               <Label htmlFor="involved-project-developer-no" className="block mt-4 font-normal">
-                <input
-                  id="involved-project-developer-no"
-                  type="radio"
-                  value={0}
-                  className="mr-2"
-                  {...register('involved_project_developer', {
-                    onChange: handleChangeInvolvedProjectDeveloper,
-                  })}
+                <Controller
+                  control={control}
+                  name="involved_project_developer"
+                  render={(field) => (
+                    <input
+                      {...field}
+                      id="involved-project-developer-no"
+                      type="radio"
+                      value={0}
+                      checked={defaultInvolvedProjectDeveloper === false}
+                      className="mr-2"
+                      name="involved_project_developer"
+                      onChange={handleChangeInvolvedProjectDeveloper}
+                    />
+                  )}
                 />
                 <FormattedMessage defaultMessage="No" id="oUWADl" />
               </Label>
@@ -382,7 +406,7 @@ const GeneralInformation = ({
             {/* Project developers selector */}
             <div
               className={cx('relative top-[-66px] left-16 w-[360px]', {
-                hidden: !showInvolvedProjectDevelopers,
+                hidden: !defaultInvolvedProjectDeveloper,
               })}
             >
               <MultiCombobox

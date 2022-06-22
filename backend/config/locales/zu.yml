@@ -10,20 +10,61 @@ zu:
       default_message: "Please review the problems below:"
     labels:
       account:
-        picture: picture
+        picture: Picture
         name: Profile name
         about: About
         website: Website
         contact_phone: Contact phone
         contact_email: Contact email
+        phone: Phone
+        email: Email
         language: Language
         review_status: Review status
+        type: Type
       project_developer:
+        impacts: Expect to have impact on
         project_developer_type: Project developer type
         entity_legal_registration_number: Entity legal registration number (NIT or RUT)
+      investor:
+        investor_type: Investor/Funder type
+        previously_invested: Have you previously invested in impact?
+        impacts: Select the impacts that you prioritize
+        sdgs: Select the SDG's you are interested in
+        prioritized_projects_description: What type of projects are you prioritizing?
+        other_information: Other relevant information
+      project:
+        name: Project name
+        project_images: Project gallery (optional)
+        country: Country
+        department: State
+        municipality: Municipality
+        project_developer: Owner
+        involved_project_developers: Partners (optional)
+        partners: Partners
+        development_stage: Stage of development or maturity of the project
+        estimated_duration_in_months: Estimated duration for project in months
+        estimated_duration_in_months_placeholder: Insert number (max 36)
+        category: Which of these topics/sector category better describe your project?
+        problem: Problem you are solving
+        solution: The solution or opportunity proposed
+        expected_impact: Expected impact
+        target_groups: Target group
+        impact_areas: Select which areas your project will have an impact on
+        sdgs: Select in which SDG's your project will have impact
+        looking_for_funding: Are you currently looking for funding?
+        ticket_size: Select the amount of money that you need
+        instrument_types: Select the instrument type(s)
+        funding_plan: How will the money be used?
+        received_funding: Has this project been funded before?
+        received_funding_amount_usd: How much money did the project received or raised?
+        received_funding_investor: From which investor or funder?
+        replicability: Replicability of the project
+        sustainability: Sustainability of the project
+        progress_impact_tracking: Progress and impact tracking
+        description: Short description of the project
+        relevant_links: Relevant links (optional)
       defaults:
         categories: Select the categories that you work on
-        impacts: Expect to have impact on
         mission: What's your mission?
         mosaics: Select HeCo priority landscapes on which you will have impact
   backoffice:
@@ -39,6 +80,8 @@ zu:
       contact_phone: Phone
       project_name: Project name
       project_developer: Project developer
+      investor: Investor
+      project: Project
       category: Category
       mosaic: Mosaic
       verified: Verified
@@ -51,6 +94,7 @@ zu:
       apply: Apply
       reset: Reset
       total: Total
+      export_csv: export csv
       navigation:
         prev: "←"
         next: "→"
@@ -64,8 +108,11 @@ zu:
       about: About
       contact_information: Contact Information
       online_presence: Online presence
+      delete: Delete account
     messages:
+      delete_confirmation: Are you sure you want to delete this %{model}?
       success_update: "%{model} was successfully updated"
+      success_delete: "%{model} was successfully deleted"
     sign_in:
       welcome: Welcome to HeCO Invest backoffice.
       enter_details_below: Please enter your details below.
@@ -79,9 +126,25 @@ zu:
     investors:
       index:
         open_calls: Open calls
+      edit:
+        investment_information: Investment information
+        impact: Impact
     projects:
+      information: Information
+      status: Verification status
+      status_description: The verification status allow the project to have a verification badge. By default all the projects are set to "Unverified". Please review the information and change it to "Verified".
+      project_developers: Project developers
+      project_developers_in_project: Project developers in the project (%{count})
       index:
         priority_landscape: Priority Landscape
+      edit:
+        location: Location
+        project_developers: Project developers
+        description: Description of the project
+        impact: Impact
+        funding_information: Funding information
+        how_will_project_grow: How the project will grow
+
     layout:
       header: Backoffice
       sign_out: Sign out

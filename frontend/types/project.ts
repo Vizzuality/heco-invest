@@ -6,8 +6,11 @@ import { ProjectGalleryImageType } from 'containers/forms/project-gallery/projec
 
 import { DevelopmentStages, Languages, TicketSizes } from 'enums';
 
+import { Locations } from './locations';
+
 /** Project images on responses */
 export type ProjectImageType = {
+  id?: string;
   cover: boolean;
   file: {
     small: string;
@@ -19,11 +22,7 @@ export type ProjectImageType = {
 /** Common Project types */
 export type ProjectBase = {
   category: string;
-  country: {
-    id: string;
-    location_type: 'country';
-    name: string;
-  };
+  country: Locations;
   description: string;
   development_stage: DevelopmentStages;
   estimated_duration_in_months: number;
@@ -33,6 +32,7 @@ export type ProjectBase = {
   instrument_types: string[];
   involved_project_developer_not_listed: boolean;
   looking_for_funding: boolean;
+  funding_plan: string;
   name: string;
   problem: string;
   progress_impact_tracking: string;
@@ -53,7 +53,7 @@ export type ProjectBase = {
     name: string;
     parent: {
       id: string;
-      location_type: 'depatment';
+      location_type: 'department';
       name: string;
     };
   };
@@ -93,35 +93,45 @@ export type Project = ProjectBase &
     slug: string;
     trusted?: boolean;
     type: 'project';
+    priority_landscape: Locations;
   };
 
 /** Project Form inputs */
 export type ProjectForm = ProjectBase & {
   country_id: string;
   department_id: string;
-  funding_plan: string;
   involved_project_developer_ids: string[];
   municipality_id: string;
   project_images_attributes: ProjectImageGallery[];
   project_images_attributes_cover: string;
 
   // Not part of the payload
-  involved_project_developer: boolean;
+  involved_project_developer: number;
   project_gallery?: FileList;
 };
 
 /** Project images for creation/edition */
 export type ProjectImagesAttributes = {
-  file: File | string;
+  file?: string;
   cover: boolean;
+  id?: string;
+  _destroy?: boolean;
 };
 
 /** Project creation/edition payload */
 export type ProjectCreationPayload = Omit<
   ProjectForm,
-  'involved_project_developer' | 'project_gallery' | 'slug' | 'project_images_attributes_cover'
+  | 'involved_project_developer'
+  | 'project_gallery'
+  | 'slug'
+  | 'project_images_attributes_cover'
+  | 'project_images_attributes'
 > & {
   project_images_attributes: ProjectImagesAttributes[];
+};
+
+export type ProjectUpdatePayload = ProjectCreationPayload & {
+  id: string;
 };
 
 export type ProjectImageGallery = ProjectImagesAttributes & ProjectGalleryImageType;

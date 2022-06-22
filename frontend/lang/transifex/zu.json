@@ -35,6 +35,9 @@
   "/plMvw": {
     "string": "Project category"
   },
+  "0+CmKm": {
+    "string": "Find location"
+  },
   "0CAqpl": {
     "string": "About the partners"
   },
@@ -55,6 +58,9 @@
   },
   "0hzVw6": {
     "string": "How accounts work?"
+  },
+  "0iaD3T": {
+    "string": "Total <span>{numProjects}</span> {numProjects, plural, one {project} other {projects}}"
   },
   "0wBg9P": {
     "string": "Project developers"
@@ -85,6 +91,9 @@
   },
   "2GBpne": {
     "string": "Impact score"
+  },
+  "2JJSDv": {
+    "string": "Edit project developer’s account"
   },
   "2O2sfp": {
     "string": "Finish"
@@ -127,6 +136,9 @@
   },
   "4JFhNG": {
     "string": "Describe briefly the impact that the project is expected to generate to the identified users/beneficiaries. Try to explain how the solution or project will achieve this impact. Also try to give some estimates of the number of people impacted, at least to get an initial idea."
+  },
+  "4YJHut": {
+    "string": "Clear search"
   },
   "4bznpU": {
     "string": "HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the long-term sustainability of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
@@ -248,6 +260,9 @@
   "8rIwwr": {
     "string": "Expected Impact"
   },
+  "8xsdU1": {
+    "string": "This project isn’t currently looking for funding at this moment."
+  },
   "9+Ddtu": {
     "string": "Next"
   },
@@ -296,6 +311,9 @@
   "AiagLY": {
     "string": "Entity legal registration number (NIT or RUT)"
   },
+  "AoHRBG": {
+    "string": "Custom search"
+  },
   "BAC0rl": {
     "string": "<span>Community:</span> income, sustainable projects;"
   },
@@ -322,6 +340,9 @@
   },
   "C0sD76": {
     "string": "insert number (max 24)"
+  },
+  "C1dyBg": {
+    "string": "No search results matching the criteria."
   },
   "C23He5": {
     "string": "Sort in ascending order"
@@ -418,6 +439,9 @@
   },
   "Ftj+/t": {
     "string": "Why is my profile pending approval?"
+  },
+  "G6hIMy": {
+    "string": "Public profile"
   },
   "G6tmT0": {
     "string": "Select the ticket size(s) that you provide"
@@ -537,6 +561,9 @@
   "K+Q04b": {
     "string": "Image gallery"
   },
+  "K3r6DQ": {
+    "string": "Delete"
+  },
   "KGREXT": {
     "string": "Total of projects"
   },
@@ -545,6 +572,12 @@
   },
   "KvhWhT": {
     "string": "The <span>IDB Lab</span>, the <span>Paulson Institute</span> and the <span>World Wildlife Fund</span> are working together to develop a digital platform that connects governments, investors, donors, and philanthropists with carefully identified investment opportunities in <span>high priority locations</span> identified by programs such as Herencia Colombia (HeCo)."
+  },
+  "LFDgTb": {
+    "string": "Leave project developer edition?"
+  },
+  "Ll72W/": {
+    "string": "Currently not looking for funding"
   },
   "LmHPHR": {
     "string": "Select the topics/sector categories that you work on"
@@ -593,6 +626,9 @@
   },
   "NjKSap": {
     "string": "Online presence"
+  },
+  "NsIwKY": {
+    "string": "Leave create project develop?"
   },
   "NvzZkI": {
     "string": "Create partnerships"
@@ -644,6 +680,9 @@
   },
   "PheCRL": {
     "string": "Estimated Impact"
+  },
+  "Py+eVV": {
+    "string": "Basic info"
   },
   "Q1Q4rT": {
     "string": "Insert your name"
@@ -714,6 +753,9 @@
   "TfXhCr": {
     "string": "No projects"
   },
+  "ToXG99": {
+    "string": "View project page"
+  },
   "U1OBY8": {
     "string": "options {options}, selected."
   },
@@ -728,6 +770,9 @@
   },
   "UxTJRa": {
     "string": "Projects"
+  },
+  "Uzc3q6": {
+    "string": "To update any of this information or to delete the account, please contact the platform administrator by sending an email to: <email>admin@admin.com</email>."
   },
   "V/JHlm": {
     "string": "Forgot password?"
@@ -891,6 +936,9 @@
   "aT5Ajq": {
     "string": "Start drawing"
   },
+  "aZVd4k": {
+    "string": "Your account has been <n>approved</n>, your profile is now publicly visible."
+  },
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
   },
@@ -984,6 +1032,9 @@
   "efZTBX": {
     "string": "Use this space to share links to documents, videos and websites that support your pitch."
   },
+  "ejuZC0": {
+    "string": "To upload a Shapefile geometry, you must upload the .shp, .shx, .dbf and eventually .prj files all at once."
+  },
   "et2m37": {
     "string": "insert URL"
   },
@@ -1022,6 +1073,9 @@
   },
   "hWhIuU": {
     "string": "Select the intrument type(s)"
+  },
+  "hX5PAb": {
+    "string": "No results found"
   },
   "hbFTZN": {
     "string": "Users will receive an email to sign up into the platform and join NEEsT’s account."
@@ -1065,14 +1119,14 @@
   "in26xr": {
     "string": "{organization} logo"
   },
+  "itfsqC": {
+    "string": "Currently you don’t have any <b>Projects</b>."
+  },
   "j4lBL7": {
     "string": "Note: Some filters not apply to all tabs"
   },
   "jKdvln": {
     "string": "Relevant links (optional)"
-  },
-  "jQfYef": {
-    "string": "Leave create project develop"
   },
   "jUgR7w": {
     "string": "Stage of development or maturity of the project"
@@ -1085,6 +1139,9 @@
   },
   "jXqlWP": {
     "string": "{name} project developer"
+  },
+  "jj4ae3": {
+    "string": "Project image {index}."
   },
   "jwimQJ": {
     "string": "Ok"
@@ -1139,6 +1196,9 @@
   },
   "nBHzO6": {
     "string": "Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
+  },
+  "nYrKWp": {
+    "string": "Edit profile"
   },
   "nbqoY2": {
     "string": "Do you have a partnership with someone else?"
@@ -1195,7 +1255,7 @@
     "string": "Select HeCo priority landscapes on which you will have impact (optional)"
   },
   "psXhQO": {
-    "string": "Funding & development"
+    "string": "Funding &amp; development"
   },
   "puek63": {
     "string": "This information will help us understand what is the impact you want to have."
@@ -1211,6 +1271,12 @@
   },
   "qZPjW2": {
     "string": "What is a verification badge?"
+  },
+  "qcsPS9": {
+    "string": "{duration} months"
+  },
+  "qhxHf3": {
+    "string": "Your account has been <n>rejected</n>, your profile is not publicly visible."
   },
   "qoImFc": {
     "string": "Replicability of the project"
@@ -1290,6 +1356,9 @@
   "txaU6M": {
     "string": "Apply to open calls"
   },
+  "tzMNF3": {
+    "string": "Status"
+  },
   "u/E7xG": {
     "string": "Are you currently looking for funding?"
   },
@@ -1331,6 +1400,9 @@
   },
   "vygPIS": {
     "string": "Leave project creation form"
+  },
+  "wEQDC6": {
+    "string": "Edit"
   },
   "wQteLO": {
     "string": "Go to page {page}"
@@ -1383,8 +1455,14 @@
   "xnQiBM": {
     "string": "The impact of this project isn’t available. Impact calculations may take some time to be available."
   },
+  "xqsnF9": {
+    "string": "Your account has not yet been reviewed, your profile is not publicly visible."
+  },
   "xusigZ": {
     "string": "Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."
+  },
+  "y1Z3or": {
+    "string": "Language"
   },
   "yF82he": {
     "string": "Project developer"

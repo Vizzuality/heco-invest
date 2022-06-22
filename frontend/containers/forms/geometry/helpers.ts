@@ -109,6 +109,23 @@ export async function convertFilesToGeojson(
 
   let loader: Loader;
 
+  // We check that we have all the mandatory files to process a ShapeFile
+  if (
+    (fileToParse.name.endsWith('.shp') ||
+      fileToParse.name.endsWith('.shx') ||
+      fileToParse.name.endsWith('.dbf') ||
+      fileToParse.name.endsWith('.prj')) &&
+    files.length < 3
+  ) {
+    return Promise.reject(
+      intl.formatMessage({
+        defaultMessage:
+          'To upload a Shapefile geometry, you must upload the .shp, .shx, .dbf and eventually .prj files all at once.',
+        id: 'ejuZC0',
+      })
+    );
+  }
+
   if (fileToParse.name.endsWith('.kmz')) {
     // In most of the cases, a .kmz file is just a zipped .kml file, but it can still contains
     // multiple files
@@ -120,7 +137,16 @@ export async function convertFilesToGeojson(
 
     loader = KMLLoader;
   } else {
-    loader = await selectLoader(fileToParse, [ShapefileLoader, KMLLoader]);
+    try {
+      loader = await selectLoader(fileToParse, [ShapefileLoader, KMLLoader]);
+    } catch (e) {
+      return Promise.reject(
+        intl.formatMessage({
+          defaultMessage: 'This file is not supported. Please try uploading a different format.',
+          id: 'XO0Kon',
+        })
+      );
+    }
   }
 
   if (!loader) {

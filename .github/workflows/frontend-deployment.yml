@@ -79,7 +79,7 @@ jobs:
           TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx push -s
         fi
         echo 'Pulling the translations…'
-        TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx pull
+        TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx pull -f
 
     - name: Run tests
       run: yarn test
