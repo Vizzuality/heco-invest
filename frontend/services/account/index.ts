@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 
 import {
-  useQuery,
   useMutation,
   UseMutationResult,
   useQueryClient,
@@ -13,6 +12,7 @@ import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { decycle } from 'cycle';
 
 import useMe from 'hooks/me';
+import { useLocalizedQuery } from 'hooks/query';
 
 import { Queries, UserRoles } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
@@ -38,10 +38,14 @@ export function useProjectDeveloper(
   options: UseQueryOptions<ProjectDeveloper>,
   includes?: string
 ): UseQueryResult<ProjectDeveloper> & { projectDeveloper: ProjectDeveloper } {
-  const query = useQuery([Queries.CurrentProjectDeveloper], () => getProjectDeveloper(includes), {
-    refetchOnWindowFocus: false,
-    ...options,
-  });
+  const query = useLocalizedQuery(
+    [Queries.CurrentProjectDeveloper],
+    () => getProjectDeveloper(includes),
+    {
+      refetchOnWindowFocus: false,
+      ...options,
+    }
+  );
   return useMemo(() => ({ ...query, projectDeveloper: query.data }), [query]);
 }
 
@@ -126,7 +130,7 @@ const getInvestor = async (includes?: string): Promise<Investor> => {
 };
 
 export function useInvestor(options: UseQueryOptions<Investor>, includes?: string) {
-  const query = useQuery([Queries.CurrentInvestor], () => getInvestor(includes), {
+  const query = useLocalizedQuery([Queries.CurrentInvestor], () => getInvestor(includes), {
     refetchOnWindowFocus: false,
     ...options,
   });
@@ -209,10 +213,14 @@ export function useAccountProjectsList(
   params?: PagedRequest,
   options?: UseQueryOptions<PagedResponse<Project>>
 ): UseQueryResult<PagedResponse<Project>> & { projects: Project[] } {
-  const query = useQuery([Queries.AccountProjectList, params], () => getAccountProjects(params), {
-    ...staticDataQueryOptions,
-    ...options,
-  });
+  const query = useLocalizedQuery(
+    [Queries.AccountProjectList, params],
+    () => getAccountProjects(params),
+    {
+      ...staticDataQueryOptions,
+      ...options,
+    }
+  );
 
   return useMemo(
     () => ({
@@ -350,10 +358,14 @@ export function useAccountUsersList(
   params?: PagedRequest,
   options?: UseQueryOptions<PagedResponse<AccountUser>>
 ): UseQueryResult<PagedResponse<AccountUser>> & { users: AccountUser[] } {
-  const query = useQuery([Queries.AccountUsersList, params], () => getAccountUsers(params), {
-    ...staticDataQueryOptions,
-    ...options,
-  });
+  const query = useLocalizedQuery(
+    [Queries.AccountUsersList, params],
+    () => getAccountUsers(params),
+    {
+      ...staticDataQueryOptions,
+      ...options,
+    }
+  );
 
   return useMemo(
     () => ({

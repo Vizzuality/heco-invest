@@ -1,4 +1,3 @@
-// import { useRouter } from 'next/router';
 import { FormattedMessage } from 'react-intl';
 
 import { withLocalizedRequests } from 'hoc/locale';
@@ -23,7 +22,7 @@ import { GroupedEnums } from 'types/enums';
 import { Investor } from 'types/investor';
 
 import { getEnums } from 'services/enums/enumService';
-import { getInvestor, useInvestor } from 'services/investors/investorsService';
+import { getInvestor } from 'services/investors/investorsService';
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let investor = null;
@@ -56,29 +55,26 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
   enums,
 }) => {
   const {
-    investor: {
-      name,
-      website,
-      twitter,
-      facebook,
-      linkedin,
-      instagram,
-      contact_email,
-      contact_phone,
-      categories,
-      picture,
-      ticket_sizes,
-      instrument_types,
-      impacts,
-      sdgs,
-      about,
-      mission,
-      investor_type,
-      other_information,
-      language,
-      prioritized_projects_description,
-    },
-  } = useInvestor(investor.id, investor);
+    name,
+    twitter,
+    facebook,
+    linkedin,
+    instagram,
+    contact_email,
+    contact_phone,
+    categories,
+    picture,
+    ticket_sizes,
+    instrument_types,
+    impacts,
+    sdgs,
+    about,
+    mission,
+    investor_type,
+    other_information,
+    language,
+    prioritized_projects_description,
+  } = investor;
 
   const {
     category: allCategories,

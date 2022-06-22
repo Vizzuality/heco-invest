@@ -18,7 +18,7 @@ import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 import Carousel, { Slide } from 'components/carousel';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
-import { EnumTypes, Paths } from 'enums';
+import { EnumTypes } from 'enums';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 import { CategoryType } from 'types/category';
@@ -29,7 +29,6 @@ import { getEnums } from 'services/enums/enumService';
 import {
   getProjectDeveloper,
   useFavoriteProjectDeveloper,
-  useProjectDeveloper,
 } from 'services/project-developers/projectDevelopersService';
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
@@ -49,28 +48,20 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
     props: {
       intlMessages: await loadI18nMessages({ locale }),
       enums: groupBy(enums, 'type'),
-      initialProjectDeveloper: projectDeveloper,
+      projectDeveloper,
     },
   };
 });
 
 type ProjectDeveloperPageProps = {
-  initialProjectDeveloper: ProjectDeveloperType;
+  projectDeveloper: ProjectDeveloperType;
   enums: GroupedEnumsType;
 };
 
 const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageLayoutProps> = ({
-  initialProjectDeveloper,
+  projectDeveloper,
   enums,
 }) => {
-  const { projectDeveloper } = useProjectDeveloper(
-    initialProjectDeveloper.id,
-    {
-      includes: 'projects',
-    },
-    initialProjectDeveloper
-  );
-
   const [isFavourite, setIsFavourite] = useState(projectDeveloper.favourite);
 
   useEffect(() => {

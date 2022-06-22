@@ -2,17 +2,16 @@ import { useMemo } from 'react';
 
 import {
   UseQueryResult,
-  useQuery,
   useMutation,
   QueryClient,
   UseQueryOptions,
   QueryFunction,
-  QueryKey,
-  QueryOptions,
 } from 'react-query';
 
-import { AxiosResponse, AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig } from 'axios';
 import { decycle } from 'cycle';
+
+import { useLocalizedQuery } from 'hooks/query';
 
 import { Queries, UserRoles } from 'enums';
 import { ProjectDeveloper } from 'types/projectDeveloper';
@@ -48,7 +47,7 @@ export function useProjectDevelopersList(
   params?: PagedRequest,
   options?: UseQueryOptions<PagedResponse<ProjectDeveloper>>
 ): UseQueryResult<PagedResponse<ProjectDeveloper>> & { projectDevelopers: ProjectDeveloper[] } {
-  const query = useQuery(
+  const query = useLocalizedQuery(
     [Queries.ProjectDeveloperList, params],
     () => getProjectDevelopers(params),
     {
@@ -91,10 +90,14 @@ export function useProjectDeveloper(
   },
   initialData?: ProjectDeveloper
 ) {
-  const query = useQuery([Queries.ProjectDeveloper, id], () => getProjectDeveloper(id, params), {
-    initialData,
-    refetchOnWindowFocus: false,
-  });
+  const query = useLocalizedQuery(
+    [Queries.ProjectDeveloper, id],
+    () => getProjectDeveloper(id, params),
+    {
+      initialData,
+      refetchOnWindowFocus: false,
+    }
+  );
 
   return useMemo(
     () => ({
@@ -111,7 +114,7 @@ const getCurrentProjectDeveloper: QueryFunction<ProjectDeveloper> = async () =>
   );
 /** Get the Current Project Developer if the UserRole is project_developer */
 export const useCurrentProjectDeveloper = (user?: User) => {
-  const query = useQuery<ProjectDeveloper, any, ProjectDeveloper, any>(
+  const query = useLocalizedQuery<ProjectDeveloper, any, ProjectDeveloper, any>(
     [Queries.ProjectDeveloper, user],
     getCurrentProjectDeveloper,
     {

@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
 
-import { UseQueryResult, useQuery, UseQueryOptions } from 'react-query';
+import { UseQueryResult, UseQueryOptions } from 'react-query';
 
 import { AxiosResponse, AxiosRequestConfig } from 'axios';
+
+import { useLocalizedQuery } from 'hooks/query';
 
 import { Queries, UserRoles } from 'enums';
 import { Investor } from 'types/investor';
@@ -35,7 +37,7 @@ export function useInvestorsList(
   params?: PagedRequest,
   options?: UseQueryOptions<PagedResponse<Investor>>
 ): UseQueryResult<PagedResponse<Investor>> & { investors: Investor[] } {
-  const query = useQuery([Queries.InvestorList, params], () => getInvestors(params), {
+  const query = useLocalizedQuery([Queries.InvestorList, params], () => getInvestors(params), {
     ...staticDataQueryOptions,
     ...options,
   });
@@ -57,7 +59,7 @@ export const getInvestor = async (id: string, params?: SingleRequestParams): Pro
 
 /** Use query for a single Investor */
 export function useInvestor(id: string, initialData?: Investor, params?: SingleRequestParams) {
-  const query = useQuery([Queries.Investor, id], () => getInvestor(id, params), {
+  const query = useLocalizedQuery([Queries.Investor, id], () => getInvestor(id, params), {
     initialData,
   });
 
@@ -78,7 +80,7 @@ export const useCurrentInvestor = (user: User) => {
         response.data.data
     );
 
-  const query = useQuery([Queries.Account, user], getCurrentInvestor, {
+  const query = useLocalizedQuery([Queries.Account, user], getCurrentInvestor, {
     // Creates the conditional to only fetch the data if the user is a project developer user
     enabled: user?.role === UserRoles.Investor,
     ...staticDataQueryOptions,

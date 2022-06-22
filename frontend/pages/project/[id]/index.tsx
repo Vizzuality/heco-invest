@@ -60,27 +60,9 @@ type ProjectPageProps = {
 };
 
 const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
-  project: defaultProject,
+  project,
   enums,
 }) => {
-  const {
-    project: { data: project },
-  } = useProject(
-    defaultProject.id,
-    {
-      includes: [
-        'project_images',
-        'project_developer',
-        'involved_project_developers',
-        'country',
-        'municipality',
-        'department',
-        'priority_landscape',
-      ],
-    },
-    defaultProject
-  );
-
   return (
     <>
       <Head title={project.name} description={project.description} />
