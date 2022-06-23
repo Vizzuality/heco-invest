@@ -4,6 +4,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { groupBy } from 'lodash-es';
 
 import { usePagination } from 'hooks/usePagination';
@@ -31,7 +33,7 @@ import { GroupedEnums as GroupedEnumsType } from 'types/enums';
 import { useAccountProjectsList } from 'services/account';
 import { getEnums } from 'services/enums/enumService';
 
-export const getServerSideProps = async ({ locale }) => {
+export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
   const enums = await getEnums();
 
   return {
@@ -40,7 +42,7 @@ export const getServerSideProps = async ({ locale }) => {
       enums: groupBy(enums, 'type'),
     },
   };
-};
+});
 
 type ProjectsPageProps = {
   enums: GroupedEnumsType;

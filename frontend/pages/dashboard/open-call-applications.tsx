@@ -1,5 +1,7 @@
 import { useIntl } from 'react-intl';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -11,13 +13,13 @@ import NakedLayout from 'layouts/naked';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 
-export async function getStaticProps(ctx) {
+export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
     },
   };
-}
+});
 
 type OpenCallApplicationsPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 

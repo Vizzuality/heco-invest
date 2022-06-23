@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 
-import { useQuery } from 'react-query';
-
 import { AxiosError, AxiosResponse } from 'axios';
+
+import { useLocalizedQuery } from 'hooks/query';
 
 import { Queries } from 'enums';
 import { User } from 'types/user';
@@ -11,7 +11,7 @@ import { ErrorResponse, ResponseData } from 'services/types';
 import { getCurrentUser } from 'services/users/userService';
 
 export default function useMe() {
-  const query = useQuery<AxiosResponse<ResponseData<User>>, AxiosError<ErrorResponse>>(
+  const query = useLocalizedQuery<AxiosResponse<ResponseData<User>>, AxiosError<ErrorResponse>>(
     Queries.User,
     getCurrentUser,
     {

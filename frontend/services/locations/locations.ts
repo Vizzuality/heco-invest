@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
 
-import { useQuery, UseQueryResult } from 'react-query';
+import { UseQueryResult } from 'react-query';
 
 import { groupBy } from 'lodash-es';
+
+import { useLocalizedQuery } from 'hooks/query';
 
 import { Queries, LocationsTypes } from 'enums';
 import { Locations, LocationsParams } from 'types/locations';
@@ -23,7 +25,7 @@ export const useGroupedLocations = (
 ): UseQueryResult<Locations[], ErrorResponse> & {
   locations?: { [key in LocationsTypes]: Locations[] };
 } => {
-  const query = useQuery<Locations[], ErrorResponse>(
+  const query = useLocalizedQuery<Locations[], ErrorResponse>(
     [Queries.Locations, params],
     () => getLocations(params),
     staticDataQueryOptions

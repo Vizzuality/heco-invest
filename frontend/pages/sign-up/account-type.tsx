@@ -3,6 +3,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { loadI18nMessages } from 'helpers/i18n';
 
 import AccountTypeSelector from 'containers/account-type-selector';
@@ -14,13 +16,11 @@ import ProtectedPage from 'layouts/protected-page';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { AccountType, PageComponent } from 'types';
 
-export async function getServerSideProps(ctx) {
-  return {
-    props: {
-      intlMessages: await loadI18nMessages(ctx),
-    },
-  };
-}
+export const getServerSideProps = withLocalizedRequests(async ({ locale }) => ({
+  props: {
+    intlMessages: await loadI18nMessages({ locale }),
+  },
+}));
 
 const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = () => {
   const intl = useIntl();

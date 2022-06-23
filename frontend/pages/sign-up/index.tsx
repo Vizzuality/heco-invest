@@ -5,6 +5,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { InferGetStaticPropsType } from 'next';
 
 import useMe from 'hooks/me';
@@ -24,17 +26,17 @@ import { useSignupResolver } from 'validations/signup';
 
 import { useSignup } from 'services/users/userService';
 
-export async function getStaticProps(ctx) {
+export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
     },
   };
-}
+});
 
-type SIgnUpPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+type SignUpPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = () => {
+const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
   const { locale, push } = useRouter();
   const intl = useIntl();
   const signUp = useSignup();

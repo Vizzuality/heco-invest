@@ -3,6 +3,8 @@ import { FormattedDate, FormattedMessage, useIntl } from 'react-intl';
 
 import Link from 'next/link';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { InferGetStaticPropsType } from 'next';
 
 import useMe from 'hooks/me';
@@ -22,13 +24,13 @@ import { PageComponent } from 'types';
 
 import { useAccount } from 'services/account';
 
-export async function getStaticProps(ctx) {
+export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
     },
   };
-}
+});
 
 type AccountInfoPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 

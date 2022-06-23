@@ -5,6 +5,8 @@ import { useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -34,15 +36,15 @@ import useValidation, { formPageInputs } from 'validations/investor';
 import { useCreateInvestor } from 'services/account';
 import { getEnums } from 'services/enums/enumService';
 
-export async function getServerSideProps(ctx) {
+export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
   const enums = await getEnums();
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
       enums: groupBy(enums, 'type'),
     },
   };
-}
+});
 
 type NewInvestorServerSideProps = {
   enums: GroupedEnums;

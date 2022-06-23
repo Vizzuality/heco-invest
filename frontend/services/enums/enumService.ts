@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
 
-import { useQuery } from 'react-query';
+import { UseQueryOptions } from 'react-query';
 
 import { groupBy } from 'lodash-es';
+
+import { useLocalizedQuery } from 'hooks/query';
 
 import { Queries, EnumTypes } from 'enums';
 import { Enum } from 'types/enums';
@@ -16,9 +18,10 @@ export const getEnums = async (): Promise<Enum[]> => {
   return enums.data.data;
 };
 
-export const useEnums = () => {
-  const query = useQuery<Enum[], ErrorResponse>(Queries.EnumList, getEnums, {
+export const useEnums = (options?: UseQueryOptions<Enum[], ErrorResponse>) => {
+  const query = useLocalizedQuery<Enum[], ErrorResponse>(Queries.EnumList, getEnums, {
     ...staticDataQueryOptions,
+    ...options,
   });
 
   return useMemo(() => {
