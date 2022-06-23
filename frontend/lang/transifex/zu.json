@@ -233,6 +233,9 @@
   "7gMEKc": {
     "string": "Project details"
   },
+  "7qB5i4": {
+    "string": "As an Investor or Funder"
+  },
   "7xE2Vv": {
     "string": "Illustration of a person looking at a tree"
   },
@@ -401,6 +404,9 @@
   "DIA26W": {
     "string": "Create open call"
   },
+  "DIrN6T": {
+    "string": "Project developer features"
+  },
   "DQoGRx": {
     "string": "About the impact"
   },
@@ -490,9 +496,6 @@
   },
   "HK3ph8": {
     "string": "How it works"
-  },
-  "HNpobe": {
-    "string": "Features for project developers"
   },
   "HVQtvr": {
     "string": "BC3's mission is to generate valuable knowledge for policy and decision making, integrating the environmental, socio-economic and ethical dimensions of climate change. Through the production of collaborative and open-source tools such as ARIES, which can track and forecast progress towards sustainable environmental and economic goals, BC3 plays a key role in enhancing regional, national and international economic development."
@@ -1152,9 +1155,6 @@
   "hxIQ/8": {
     "string": "Projects waiting funding"
   },
-  "i50XU3": {
-    "string": "Features for investors"
-  },
   "i9eK6b": {
     "string": "Show verified content only"
   },
@@ -1184,9 +1184,6 @@
   },
   "jUgR7w": {
     "string": "Stage of development or maturity of the project"
-  },
-  "jWOeHy": {
-    "string": "<a>Call on our community</a> of project developers to identify opportunities in your preferred sectors and geographies."
   },
   "jX0V8C": {
     "string": "No investors"
@@ -1380,9 +1377,6 @@
   "sFn7MX": {
     "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
   },
-  "sMWFoV": {
-    "string": "As an Investor / Funder"
-  },
   "sV+3z0": {
     "string": "Currently looking for"
   },
@@ -1494,6 +1488,9 @@
   "wpyHb9": {
     "string": "Open Calls"
   },
+  "wsk6Y/": {
+    "string": "Investors features"
+  },
   "wvoA3H": {
     "string": "Picture"
   },
@@ -1530,6 +1527,9 @@
   "xnQiBM": {
     "string": "The impact of this project isn’t available. Impact calculations may take some time to be available."
   },
+  "xqjjPY": {
+    "string": "As an Investor or <br></br> Funder"
+  },
   "y1Z3or": {
     "string": "Language"
   },
@@ -1553,6 +1553,9 @@
   },
   "ygAxHr": {
     "string": "Your project is awaiting verification. This means that the project is visible in the platform but without the <b>Verification badge</b>."
+  },
+  "yqBX7I": {
+    "string": "Call on our community of project developers to identify opportunities in your preferred sectors and geographies."
   },
   "yqJ5XD": {
     "string": "Select the amount of money that you need"
