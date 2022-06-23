@@ -49,7 +49,7 @@ export const Search: FC<SearchProps> = ({
         type="search"
         style={{ background: 'transparent' }}
         className={cx(
-          'w-full font-sans px-12 truncate leading-4 placeholder:text-gray-800 placeholder:text-base',
+          'w-full font-sans px-12 truncate leading-4 placeholder:text-gray-800 placeholder:text-base focus-visible:outline-green-dark',
           {
             [THEME[theme]]: true,
             [SIZES[size]]: true,
@@ -57,15 +57,16 @@ export const Search: FC<SearchProps> = ({
         )}
       />
 
-      {state.value !== '' && (
-        <button
-          {...buttonProps}
-          className="absolute z-10 flex items-center self-center justify-center w-5 h-5 right-3 r-2"
-          type="button"
-        >
-          <Icon icon={xIcon} className="inline-block w-2 h-2" />
-        </button>
-      )}
+      <button
+        {...buttonProps}
+        className={cx({
+          'absolute z-10 flex items-center self-center justify-center w-5 h-5 right-3 r-2': true,
+          hidden: state.value === '',
+        })}
+        type="button"
+      >
+        <Icon icon={xIcon} className="inline-block w-5 h-5" />
+      </button>
     </div>
   );
 };

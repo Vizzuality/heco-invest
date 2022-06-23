@@ -55,9 +55,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
   const handleSendInvite = useCallback(
     (data: InviteUsersDto) =>
       inviteUsers.mutate(data, {
-        onError: (error) => {
-          console.log('error', error);
-        },
+        onError: () => {},
         onSuccess: () => {
           setOpenInvitationModal(false);
         },
