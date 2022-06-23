@@ -7,6 +7,7 @@ import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import UsersTable from 'containers/dashboard/users/table';
 import InviteUsersModal from 'containers/users/invite-users-modal';
 
 import Button from 'components/button';
@@ -47,7 +48,9 @@ export const UsersPage: PageComponent<UsersPageProps, DashboardLayoutProps> = ()
           </Button>
         }
       >
-        Users page
+        <div className="pt-4">
+          <UsersTable />
+        </div>
       </DashboardLayout>
       <InviteUsersModal
         openInvitationModal={openInvitationModal}

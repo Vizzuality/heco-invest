@@ -18,6 +18,7 @@ import { Queries, UserRoles } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
 import { Project, ProjectCreationPayload, ProjectUpdatePayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
+import { AccountUser } from 'types/user';
 
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
@@ -217,6 +218,147 @@ export function useAccountProjectsList(
     () => ({
       ...query,
       projects: query?.data?.data || [],
+    }),
+    [query]
+  );
+}
+
+/** Hook to use the the Users Invited to User Account */
+const getAccountUsers = async (params?: PagedRequest): Promise<PagedResponse<AccountUser>> => {
+  const { search, page, includes, ...rest } = params || {};
+
+  const config: AxiosRequestConfig = {
+    // TODO: Change to the correct endpoint
+    url: '/api/v1/projects',
+    method: 'GET',
+    params: {
+      ...rest,
+      includes: includes?.join(','),
+      'filter[full_text]': search,
+      'page[number]': page,
+    },
+  };
+
+  const MOCK_DATA = {
+    data: [
+      {
+        first_name: 'Dorothy',
+        last_name: 'Campbell',
+        picture: null,
+        email: 'dorothy.campbell@nesst.com',
+        id: 'cba6a23c-d100-46aa-b691-352eeec200cd',
+        role: 'Owner',
+        confirmed: true,
+      },
+      {
+        first_name: 'Savannah',
+        last_name: 'Nguyen',
+        picture: null,
+        email: 'savannah.nguyen@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: false,
+      },
+      {
+        first_name: 'Robert',
+        last_name: 'Fox',
+        picture: null,
+        email: 'robert.fox@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: true,
+      },
+      {
+        first_name: 'Cameron',
+        last_name: 'Williamson',
+        picture: null,
+        email: 'cameron.williamson@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: false,
+      },
+      {
+        first_name: 'Dorothy',
+        last_name: 'Campbell',
+        picture: null,
+        email: 'dorothy.campbell@nesst.com',
+        id: 'cba6a23c-d100-46aa-b691-352eeec200cd',
+        role: 'Owner',
+        confirmed: true,
+      },
+      {
+        first_name: 'Savannah',
+        last_name: 'Campbell',
+        picture: null,
+        email: 'savannah.nguyen@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: false,
+      },
+      {
+        first_name: 'Robert',
+        last_name: 'Fox',
+        picture: null,
+        email: 'robert.fox@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: true,
+      },
+      {
+        first_name: 'Dorothy',
+        last_name: 'Campbell',
+        picture: null,
+        email: 'dorothy.campbell@nesst.com',
+        id: 'cba6a23c-d100-46aa-b691-352eeec200cd',
+        role: 'Owner',
+        confirmed: true,
+      },
+      {
+        first_name: 'Savannah',
+        last_name: 'Nguyen',
+        picture: null,
+        email: 'savannah.nguyen@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: false,
+      },
+      {
+        first_name: 'Robert',
+        last_name: 'Fox',
+        picture: null,
+        email: 'robert.fox@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: true,
+      },
+    ],
+    meta: {
+      from: 1,
+      page: 1,
+      pages: 2,
+      per_page: 5,
+      to: 10,
+      total: 10,
+    },
+    links: [],
+  };
+
+  return await API.request(config).then(() => MOCK_DATA as any);
+};
+
+export function useAccountUsersList(
+  params?: PagedRequest,
+  options?: UseQueryOptions<PagedResponse<AccountUser>>
+): UseQueryResult<PagedResponse<AccountUser>> & { users: AccountUser[] } {
+  const query = useQuery([Queries.AccountUsersList, params], () => getAccountUsers(params), {
+    ...staticDataQueryOptions,
+    ...options,
+  });
+
+  return useMemo(
+    () => ({
+      ...query,
+      users: query?.data?.data || [],
     }),
     [query]
   );

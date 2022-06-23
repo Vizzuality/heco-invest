@@ -1,4 +1,4 @@
-import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
+import { useQueryClient, useMutation, UseMutationResult } from 'react-query';
 
 import { AxiosResponse, AxiosError } from 'axios';
 
@@ -35,7 +35,7 @@ export const getCurrentUser = (): Promise<AxiosResponse<ResponseData<User>>> =>
   });
 
 /** Invite user to project developer account */
-//TODO: Replace endpoint by correct one
+// TODO: Replace endpoint by correct one
 export function useInviteUsers(): UseMutationResult<
   AxiosResponse<User>,
   AxiosError<ErrorResponse>,

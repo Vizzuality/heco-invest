@@ -16,6 +16,7 @@ import Modal from 'components/modal';
 import { UsersInvitationForm } from 'types/user';
 import { InviteUsersDto } from 'types/user';
 
+import { useAccount } from 'services/account';
 import { useInviteUsers } from 'services/users/userService';
 
 import type { InviteUsersModalProps } from './types';
@@ -26,6 +27,8 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
 }: InviteUsersModalProps) => {
   const { formatMessage } = useIntl();
   const inviteUsers = useInviteUsers();
+  const { userAccount } = useAccount('owner');
+  const { name } = userAccount || {};
 
   const {
     clearErrors,
@@ -52,9 +55,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
   const handleSendInvite = useCallback(
     (data: InviteUsersDto) =>
       inviteUsers.mutate(data, {
-        onError: (error) => {
-          console.log('error', error);
-        },
+        onError: () => {},
         onSuccess: () => {
           setOpenInvitationModal(false);
         },
@@ -117,8 +118,18 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
 
         <p className="mb-4">
           <FormattedMessage
-            defaultMessage="Users will receive an email to sign up into the platform and join the account."
-            id="j0CZkp"
+            defaultMessage="Users will receive an email to sign up into the platform and join <strong>{name}</strong> account."
+            id="k5DITM"
+            values={{
+              name: name,
+              _strong: (chunk: string) => <strong>{chunk}</strong>,
+              get strong() {
+                return this._strong;
+              },
+              set strong(value) {
+                this._strong = value;
+              },
+            }}
           />
         </p>
 
