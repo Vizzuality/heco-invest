@@ -6,6 +6,11 @@ devise_for :users, path: "api/v1", skip: :all
 namespace :api, format: "json" do
   namespace :v1 do
     resource :session, only: [:create, :destroy]
+    resource :invitation, only: [:create, :update] do
+      member do
+        post :info
+      end
+    end
     resource :user, only: [:create, :show]
     resource :email_confirmation, only: [:create, :show]
     resource :reset_password, only: [:create, :update]
@@ -30,10 +35,11 @@ namespace :api, format: "json" do
 
     resources :background_job_events, only: [:index]
 
-    scope "account", module: "accounts" do
+    namespace :account, module: :accounts do
       resource :project_developer, only: [:create, :update, :show]
       resource :investor, only: [:create, :update, :show]
       resources :projects, only: [:create, :update]
+      resources :users, only: [:index]
     end
     resources :test_jobs, only: [] do
       post :test_sync, on: :collection

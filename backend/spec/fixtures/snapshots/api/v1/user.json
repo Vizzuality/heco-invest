@@ -8,7 +8,8 @@
       "email": "user@example.com",
       "role": "light",
       "confirmed": true,
-      "approved": null
+      "approved": null,
+      "invitation": null
     }
   }
 }

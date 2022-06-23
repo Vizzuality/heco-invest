@@ -74,7 +74,8 @@
         "email": "desmond_herzog@example.org",
         "role": "light",
         "confirmed": true,
-        "approved": true
+        "approved": true,
+        "invitation": null
       }
     }
   ]

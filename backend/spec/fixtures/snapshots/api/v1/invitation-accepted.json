@@ -1,15 +1,15 @@
 {
   "data": {
-    "id": "0eb20bcb-ec1e-4832-9995-cdb5a683f381",
+    "id": "b7a3c943-3b2e-4879-9999-05782e0962d4",
     "type": "user",
     "attributes": {
       "first_name": "Dawna",
       "last_name": "Block",
-      "email": "user@example.com",
+      "email": "dawna.block@example.org",
       "role": "light",
       "confirmed": true,
-      "approved": null,
-      "invitation": null
+      "approved": true,
+      "invitation": "completed"
     }
   }
 }
