@@ -14,12 +14,19 @@ export const UsePlatform = () => {
   const breakpoint = useBreakpoint();
   const intl = useIntl();
 
-  const MAIN_IMAGE = breakpoint('sm')
+  const INVESTOR_IMAGE = breakpoint('sm')
     ? '/images/home-investor-illustration.svg'
     : '/images/home-investor-illustration-mobile.svg';
 
-  const MAIN_IMAGE_HEIGHT = breakpoint('sm') ? 544 : 138;
-  const MAIN_IMAGE_WIDTH = breakpoint('sm') ? 490 : 143;
+  const PD_IMAGE = breakpoint('sm')
+    ? '/images/home-project-developer-illustration.svg'
+    : '/images/home-project-developer-illustration-mobile.svg';
+
+  const INVESTOR_IMAGE_HEIGHT = breakpoint('sm') ? 544 : 138;
+  const INVESTOR_IMAGE_WIDTH = breakpoint('sm') ? 490 : 143;
+
+  const PD_IMAGE_HEIGHT = breakpoint('sm') ? 520 : 138;
+  const PD_IMAGE_WIDTH = breakpoint('sm') ? 490 : 143;
 
   return (
     <LayoutContainer className="mt-24 lg:mt-28">
@@ -36,12 +43,12 @@ export const UsePlatform = () => {
           >
             <Image
               className="relative mx-auto"
-              height={MAIN_IMAGE_HEIGHT}
-              width={MAIN_IMAGE_WIDTH}
-              src={MAIN_IMAGE}
+              height={INVESTOR_IMAGE_HEIGHT}
+              width={INVESTOR_IMAGE_WIDTH}
+              src={INVESTOR_IMAGE}
               alt={intl.formatMessage({
-                defaultMessage: 'Why use this platform',
-                id: 'VCODFJ',
+                defaultMessage: 'As an Investor or Funder',
+                id: '7qB5i4',
               })}
             />
           </div>
@@ -120,18 +127,42 @@ export const UsePlatform = () => {
             theme="secondary-green"
             size="small"
             to="/investors"
-            className="inline-block mt-12 md:mt-16"
+            className={cx({
+              'inline-block mt-12 md:mt-16': true,
+              'w-full text-center': !breakpoint('sm'),
+            })}
           >
             <FormattedMessage defaultMessage="Investors features" id="wsk6Y/" />
           </Button>
         </div>
       </div>
 
-      <div className="relative mt-20 lg:mt-52 md:grid md:grid-cols-2 md:gap-3 lg:items-center">
+      <div className="relative mt-10 lg:mt-52 md:grid md:grid-cols-2 md:gap-3 lg:items-center">
         <div className="relative mt-12 lg:mt-0">
-          <h3 className="text-xl font-semibold lg:text-2xl text-green-dark">
-            <FormattedMessage defaultMessage="As a Project Developer" id="pgfBG8" />
-          </h3>
+          <div className="flex items-end space-x-2">
+            <h3 className="text-xl font-semibold lg:text-2xl text-green-dark pb-1.5">
+              <FormattedMessage defaultMessage="As a Project Developer" id="pgfBG8" />
+            </h3>
+            <div
+              className={cx({
+                'mt-10 lg:mt-0 lg:pl-24': true,
+                block: !breakpoint('sm'),
+                hidden: breakpoint('sm'),
+              })}
+            >
+              <Image
+                className="relative mx-auto"
+                height={PD_IMAGE_HEIGHT}
+                width={PD_IMAGE_WIDTH}
+                src={PD_IMAGE}
+                alt={intl.formatMessage({
+                  defaultMessage: 'As a Project Developer',
+                  id: 'pgfBG8',
+                })}
+              />
+            </div>
+          </div>
+
           <div className="mt-8">
             <dl className="space-y-10 md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-16 md:space-y-0">
               <div>
@@ -178,7 +209,7 @@ export const UsePlatform = () => {
                     values={{
                       a: (chunks) => (
                         <Link href="/discover/open-call">
-                          <a className="font-bold underline text-green-dark">{chunks}</a>
+                          <a className="text-green-dark">{chunks}</a>
                         </Link>
                       ),
                     }}
@@ -191,18 +222,30 @@ export const UsePlatform = () => {
             theme="secondary-green"
             size="small"
             to="/investors"
-            className="inline-block mt-12 md:mt-16"
+            className={cx({
+              'inline-block mt-12 md:mt-16': true,
+              'w-full text-center': !breakpoint('sm'),
+            })}
           >
             <FormattedMessage defaultMessage="Project developer features" id="DIrN6T" />
           </Button>
         </div>
-        <div className="mt-10 lg:mt-0 lg:pl-24">
+        <div
+          className={cx({
+            'mt-10 lg:mt-0 lg:pl-24': true,
+            block: breakpoint('sm'),
+            hidden: !breakpoint('sm'),
+          })}
+        >
           <Image
             className="relative mx-auto"
-            height={520}
-            width={490}
-            src="/images/home-project-developer-illustration.svg"
-            alt=""
+            height={PD_IMAGE_HEIGHT}
+            width={PD_IMAGE_WIDTH}
+            src={PD_IMAGE}
+            alt={intl.formatMessage({
+              defaultMessage: 'As a Project Developer',
+              id: 'pgfBG8',
+            })}
           />
         </div>
       </div>
