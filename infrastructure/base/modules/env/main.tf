@@ -98,14 +98,16 @@ module "backend_build" {
   docker_build_args      = local.backend_docker_build_args
   cloud_run_service_name = "${var.project_name}-backend"
   test_container_name    = "backend"
-  additional_steps       = [{
-    name       = "gcr.io/google.com/cloudsdktool/cloud-sdk"
-    entrypoint = "gcloud"
-    args       = [
-      "run", "deploy", "${var.project_name}-jobs", "--image", "gcr.io/${var.gcp_project_id}/backend:latest",
-      "--region", var.gcp_region
-    ]
-  }]
+  additional_steps       = [
+    {
+      name       = "gcr.io/google.com/cloudsdktool/cloud-sdk"
+      entrypoint = "gcloud"
+      args       = [
+        "run", "deploy", "${var.project_name}-jobs", "--image", "gcr.io/${var.gcp_project_id}/backend:latest",
+        "--region", var.gcp_region
+      ]
+    }
+  ]
 }
 
 module "frontend_cloudrun" {
@@ -345,14 +347,14 @@ module "jobs_cloudrun" {
 }
 
 module "backend_storage" {
-  source                = "../storage"
-  region                = var.gcp_region
-  project_id            = var.gcp_project_id
+  source                        = "../storage"
+  region                        = var.gcp_region
+  project_id                    = var.gcp_project_id
   backend_service_account_email = module.backend_cloudrun.service_account_email
-  jobs_service_account_email = module.jobs_cloudrun.service_account_email
-  name                  = "${var.project_name}-site-storage"
-  domain                = var.domain
-  cors_origin           = var.cors_origin
+  jobs_service_account_email    = module.jobs_cloudrun.service_account_email
+  name                          = "${var.project_name}-site-storage"
+  domain                        = var.domain
+  cors_origin                   = var.cors_origin
 }
 
 module "database" {
@@ -373,7 +375,6 @@ module "bastion" {
   subnetwork_name = module.network.subnetwork_name
 }
 
-
 module "test_cloud_tasks" {
   source                = "../cloud-tasks"
   name                  = "email-test"
@@ -381,6 +382,13 @@ module "test_cloud_tasks" {
   project_id            = var.gcp_project_id
   region                = var.gcp_region
   service_account_email = module.backend_cloudrun.service_account_email
+}
+
+module "purge_users_cron" {
+  source                = "../cloud-scheduler"
+  name                  = "${var.project_name}-purge-users"
+  uri                   = "${module.jobs_cloudrun.cloudrun_service_url}/backend/jobs/users/purge"
+  service_account_email = module.jobs_cloudrun.service_account_email
 }
 
 module "dns" {
@@ -401,7 +409,7 @@ module "load_balancer" {
 }
 
 module "translation" {
-  source = "../translation"
+  source                = "../translation"
   project_id            = var.gcp_project_id
   service_account_email = module.jobs_cloudrun.service_account_email
 }
