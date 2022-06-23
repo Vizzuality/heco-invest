@@ -24,18 +24,20 @@ import { staticDataQueryOptions } from 'services/helpers';
 import { ErrorResponse, PagedRequest, PagedResponse, ResponseData } from 'services/types';
 
 // Create PD
-const getProjectDeveloper = async (): Promise<ProjectDeveloper> => {
+const getProjectDeveloper = async (includes?: string): Promise<ProjectDeveloper> => {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/project_developer`,
     method: 'GET',
+    params: { includes },
   };
   return await API.request(config).then((response) => decycle(response.data.data));
 };
 
 export function useProjectDeveloper(
-  options: UseQueryOptions<ProjectDeveloper>
+  options: UseQueryOptions<ProjectDeveloper>,
+  includes?: string
 ): UseQueryResult<ProjectDeveloper> & { projectDeveloper: ProjectDeveloper } {
-  const query = useQuery([Queries.CurrentProjectDeveloper], () => getProjectDeveloper(), {
+  const query = useQuery([Queries.CurrentProjectDeveloper], () => getProjectDeveloper(includes), {
     refetchOnWindowFocus: false,
     ...options,
   });
@@ -113,18 +115,17 @@ export function useUpdateProject(): UseMutationResult<
   return useMutation(updateProject);
 }
 
-const getInvestor = async (): Promise<Investor> => {
+const getInvestor = async (includes?: string): Promise<Investor> => {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/investor`,
     method: 'GET',
+    params: { includes },
   };
   return await API.request(config).then((response) => decycle(response.data.data));
 };
 
-export function useInvestor(
-  options: UseQueryOptions<Investor>
-): UseQueryResult<Investor> & { investor: Investor } {
-  const query = useQuery([Queries.CurrentInvestor], () => getInvestor(), {
+export function useInvestor(options: UseQueryOptions<Investor>, includes?: string) {
+  const query = useQuery([Queries.CurrentInvestor], () => getInvestor(includes), {
     refetchOnWindowFocus: false,
     ...options,
   });
@@ -151,6 +152,42 @@ export function useUpdateInvestor(): UseMutationResult<
     API.put('/api/v1/account/investor', data).then((response) => response.data);
 
   return useMutation(updateInvestor);
+}
+
+export function useAccount(includes?: string) {
+  const { user, isLoading, isError: userIsError } = useMe();
+  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
+  const isInvestor = user?.role === UserRoles.Investor;
+
+  const {
+    data: projectDeveloperData,
+    isLoading: isLoadingProjectDeveloperData,
+    isError: projectDeveloperIsError,
+  } = useProjectDeveloper(
+    {
+      enabled: isProjectDeveloper && !userIsError,
+    },
+    includes
+  );
+
+  const {
+    data: investorData,
+    isLoading: isLoadingInvestorData,
+    isError: investorIsError,
+  } = useInvestor({ enabled: isInvestor && !userIsError }, includes);
+
+  const userAccount = isProjectDeveloper ? projectDeveloperData : investorData;
+  const userAccountLoading = isLoadingProjectDeveloperData || isLoadingInvestorData;
+  const accountIsError = isProjectDeveloper ? projectDeveloperIsError : investorIsError;
+
+  return {
+    user: user,
+    userIsLoading: isLoading,
+    userIsError,
+    userAccount,
+    userAccountLoading,
+    accountIsError,
+  };
 }
 
 const getAccountProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
@@ -187,27 +224,4 @@ export function useAccountProjectsList(
     }),
     [query]
   );
-}
-
-export function useAccount() {
-  const { user } = useMe();
-  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
-  const isInvestor = user?.role === UserRoles.Investor;
-
-  const { data: projectDeveloperData, isLoading: isLoadingProjectDeveloperData } =
-    useProjectDeveloper({
-      enabled: isProjectDeveloper,
-    });
-
-  const { data: investorData, isLoading: isLoadingInvestorData } = useInvestor({
-    enabled: isInvestor,
-  });
-
-  const accountData = isProjectDeveloper ? projectDeveloperData : investorData;
-  const isLoadingAccountData = isLoadingProjectDeveloperData || isLoadingInvestorData;
-
-  return {
-    data: accountData,
-    isLoading: isLoadingAccountData,
-  };
 }

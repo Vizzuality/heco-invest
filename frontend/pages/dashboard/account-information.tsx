@@ -1,5 +1,5 @@
 import { ExternalLink as ExternalLinkIcon } from 'react-feather';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedDate, FormattedMessage, useIntl } from 'react-intl';
 
 import Link from 'next/link';
 
@@ -14,7 +14,7 @@ import Button from 'components/button';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import Loading from 'components/loading';
-import { UserRoles, Paths, ReviewStatus } from 'enums';
+import { UserRoles, Paths } from 'enums';
 import DashboardLayout, { DashboardLayoutProps } from 'layouts/dashboard';
 import NakedLayout from 'layouts/naked';
 import ProtectedPage from 'layouts/protected-page';
@@ -34,46 +34,17 @@ type AccountInfoPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayoutProps> = () => {
   const intl = useIntl();
-  const { user } = useMe();
+  const { user, userAccount, userAccountLoading } = useAccount('owner');
+  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
 
-  const { data: accountData, isLoading: isLoadingAccountData } = useAccount();
+  const publicProfileLink = `${isProjectDeveloper ? Paths.ProjectDeveloper : Paths.Investor}/${
+    userAccount?.slug
+  }`;
 
-  const publicProfileLink = `${
-    user?.role === UserRoles.ProjectDeveloper ? Paths.ProjectDeveloper : Paths.Investor
-  }/${accountData?.slug}`;
-
-  const statusText = {
-    [ReviewStatus.Approved]: (
-      <FormattedMessage
-        defaultMessage="Your account has been <n>approved</n>, your profile is now publicly visible."
-        id="aZVd4k"
-        values={{
-          n: (chunk: string) => <strong>{chunk}</strong>,
-        }}
-      />
-    ),
-    [ReviewStatus.Unapproved]: (
-      <FormattedMessage
-        defaultMessage="Your account has not yet been reviewed, your profile is not publicly visible."
-        id="xqsnF9"
-        values={{
-          n: (chunk: string) => <strong>{chunk}</strong>,
-        }}
-      />
-    ),
-    [ReviewStatus.Rejected]: (
-      <FormattedMessage
-        defaultMessage="Your account has been <n>rejected</n>, your profile is not publicly visible."
-        id="qhxHf3"
-        values={{
-          n: (chunk: string) => <strong>{chunk}</strong>,
-        }}
-      />
-    ),
-  };
+  const editProfileLink = isProjectDeveloper ? Paths.EditProjectDeveloper : Paths.EditInvestor;
 
   return (
-    <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
+    <ProtectedPage allowConfirmed permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
       <Head title={intl.formatMessage({ defaultMessage: 'Account information', id: 'CzsYIe' })} />
       <DashboardLayout>
         <LayoutContainer layout={'narrow'} className="flex flex-col gap-4">
@@ -82,7 +53,7 @@ export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayou
               <div className="flex-grow font-semibold">
                 <FormattedMessage defaultMessage="Public profile" id="G6hIMy" />
               </div>
-              {accountData && (
+              {userAccount && (
                 <Link href={publicProfileLink}>
                   <a
                     className="flex gap-2 px-2 transition-all rounded-full text-green-light focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2"
@@ -94,7 +65,7 @@ export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayou
                 </Link>
               )}
             </div>
-            {!user || !accountData ? (
+            {!user ? (
               <div className="flex items-center justify-center w-full h-10">
                 <Loading visible={true} iconClassName="w-10 h-10" />
               </div>
@@ -104,12 +75,27 @@ export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayou
                   <span className="text-gray-600">
                     <FormattedMessage defaultMessage="Status" id="tzMNF3" />
                   </span>
-                  <span>{statusText[accountData?.review_status]}</span>
+                  <span>
+                    {user?.approved ? (
+                      <FormattedMessage
+                        defaultMessage="Your account has been <b>approved</b>, your profile is now publicly visible."
+                        id="zyydTD"
+                        values={{
+                          b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+                        }}
+                      />
+                    ) : (
+                      <FormattedMessage
+                        defaultMessage="Your account has not been approved, your profile is not publicly visible."
+                        id="4iXh64"
+                      />
+                    )}
+                  </span>
                 </div>
                 <div className="flex flex-col items-center justify-end mt-8 md:flex-row">
                   <Button
-                    to={`${Paths.EditProjectDeveloper}?returnPath=${Paths.DashboardAccountInfo}`}
-                    as={Paths.EditProjectDeveloper}
+                    to={`${editProfileLink}?returnPath=${Paths.DashboardAccountInfo}`}
+                    as={editProfileLink}
                   >
                     <FormattedMessage defaultMessage="Edit profile" id="nYrKWp" />
                   </Button>
@@ -123,48 +109,44 @@ export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayou
                 <FormattedMessage defaultMessage="Basic info" id="Py+eVV" />
               </div>
             </div>
-            {isLoadingAccountData ? (
+            {userAccountLoading ? (
               <div className="flex items-center justify-center w-full h-10">
                 <Loading visible={true} iconClassName="w-10 h-10" />
               </div>
             ) : (
               <>
                 <div className="text-sm gap-6 grid grid-cols-1 lg:grid-cols-[240px_1fr] mt-8 text-gray-900">
-                  {/*
                   <span className="text-gray-600">
                     <FormattedMessage defaultMessage="Date of creation" id="KxPY7j" />
                   </span>
-                  <span>TODO</span>
-                  */}
+                  <span>
+                    {!!userAccount?.created_at && FormattedDate({ value: userAccount.created_at })}
+                  </span>
+
                   <span className="text-gray-600">
                     <FormattedMessage defaultMessage="Language" id="y1Z3or" />
                   </span>
-                  <span>{translatedLanguageNameForLocale(intl, accountData?.language)}</span>
-                  {/*
+                  <span>{translatedLanguageNameForLocale(intl, userAccount?.language)}</span>
                   <span className="text-gray-600">
                     <FormattedMessage defaultMessage="Owner" id="zINlao" />
                   </span>
-                  <span>TODO</span>
-                  */}
+                  <span>
+                    {userAccount?.owner.first_name} {userAccount?.owner.last_name}
+                  </span>
                 </div>
-                <div className="p-4 mt-6 text-sm md:flex-row rounded-xl bg-background-middle">
-                  <FormattedMessage
-                    defaultMessage="To update any of this information or to delete the account, please contact the platform administrator by sending an email to: <email>admin@admin.com</email>."
-                    id="Uzc3q6"
-                    values={{
-                      email: (chunk: string) => (
-                        <Link href={`mailto:${chunk}`}>
-                          <a
-                            className="inline underline transition-all rounded text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {chunk}
-                          </a>
-                        </Link>
-                      ),
-                    }}
-                  />
+                <div className="flex flex-col items-center gap-4 p-4 mt-6 text-sm md:flex-row rounded-xl bg-background-middle">
+                  <div className="flex flex-grow">
+                    <FormattedMessage
+                      defaultMessage="To update any of this information, or to delete the account, please contact the platform administrator."
+                      id="/XKclL"
+                    />
+                  </div>
+                  {/* ADD BUTTON WHEN WE HAVE THE ADMIN CONTACT */}
+                  {/* <div>
+                    <Button theme="secondary-green" className="whitespace-nowrap">
+                      <FormattedMessage defaultMessage="Contact Admin" id="sDHn6D" />
+                    </Button>
+                  </div> */}
                 </div>
               </>
             )}

@@ -29,6 +29,9 @@
   "/VnDMl": {
     "string": "Other"
   },
+  "/XKclL": {
+    "string": "To update any of this information, or to delete the account, please contact the platform administrator."
+  },
   "/m/QYW": {
     "string": "Tell us what is the project about the problem and the solution to solve it"
   },
@@ -142,6 +145,9 @@
   },
   "4bznpU": {
     "string": "HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the long-term sustainability of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
+  },
+  "4iXh64": {
+    "string": "Your account has not been approved, your profile is not publicly visible."
   },
   "4vn+6A": {
     "string": "{inputName} is focused, type to refine list, press down to open the menu, press left to focus selected values"
@@ -1077,9 +1083,6 @@
   "hX5PAb": {
     "string": "No results found"
   },
-  "hbFTZN": {
-    "string": "Users will receive an email to sign up into the platform and join NEEsT’s account."
-  },
   "hg7Mex": {
     "string": "Select which areas your project will have an impact on"
   },
@@ -1121,6 +1124,9 @@
   },
   "itfsqC": {
     "string": "Currently you don’t have any <b>Projects</b>."
+  },
+  "j0CZkp": {
+    "string": "Users will receive an email to sign up into the platform and join the account."
   },
   "j4lBL7": {
     "string": "Note: Some filters not apply to all tabs"
@@ -1310,6 +1316,9 @@
   },
   "s07dAT": {
     "string": "Project image"
+  },
+  "sDHn6D": {
+    "string": "Contact Admin"
   },
   "sFn7MX": {
     "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
@@ -1508,5 +1517,8 @@
   },
   "ztd20l": {
     "string": "Development of the project"
+  },
+  "zyydTD": {
+    "string": "Your account has been <b>approved</b>, your profile is now publicly visible."
   }
 }
