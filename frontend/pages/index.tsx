@@ -268,8 +268,8 @@ const Home: PageComponent<HomePageProps, StaticPageLayoutProps> = () => {
               </h3>
               <p className="mt-2 md:mt-2.5 text-black/70">
                 <FormattedMessage
-                  defaultMessage="Inspire and educate other users by coming back to the platform and updating us on your progress. We’ll be able to track the Amazon’s improvement thanks to your contribution!"
-                  id="O1mdXY"
+                  defaultMessage="Create your organization's account as a project developer in the field or as an investor or funder and become part of the HeCo Invest community."
+                  id="PR8FFs"
                 />
               </p>
             </div>
@@ -298,8 +298,8 @@ const Home: PageComponent<HomePageProps, StaticPageLayoutProps> = () => {
               </h3>
               <p className="mt-2 md:mt-2.5 text-black/70">
                 <FormattedMessage
-                  defaultMessage="Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."
-                  id="xusigZ"
+                  defaultMessage="Start connecting with people to create impact. You can find investors, opportunities to invest open calls and much more."
+                  id="SHw9Ht"
                 />
               </p>
             </div>
