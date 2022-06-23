@@ -35,6 +35,9 @@
   "/XKclL": {
     "string": "To update any of this information, or to delete the account, please contact the platform administrator."
   },
+  "/aYUC+": {
+    "string": "By contributing to improve the productions systems and livelihoods of local communities and indigenous peoples to satisfy their basic needs, while enhancing their adaptation to climate change.<br></br><br></br>Supporting the consolidation of their lands governance structures and capacities for sound management."
+  },
   "/m/QYW": {
     "string": "Tell us what is the project about the problem and the solution to solve it"
   },
@@ -191,9 +194,6 @@
   "5zAKQ7": {
     "string": "About HeCo"
   },
-  "60xeYL": {
-    "string": "Contribute to improving the production systems and livelihoods of local communities and indigenous people, to ensure their basic needs are met, while enhancing their adaptation to climate change."
-  },
   "6EYInP": {
     "string": "My open call applications"
   },
@@ -220,9 +220,6 @@
   },
   "7JlauX": {
     "string": "Explore"
-  },
-  "7KLSqh": {
-    "string": "Contribute to the conservation and restoration of the most diverse terrestrial ecosystems on the planet. These ecosystems support countless endemic species and contribute to mitigate the impacts of the climate crisis."
   },
   "7Rh11y": {
     "string": "Setup investor profile"
@@ -500,9 +497,6 @@
   "Hb+Idf": {
     "string": "Project description"
   },
-  "HmDmU1": {
-    "string": "Support the protection of water availability and regulation. These approaches are vital for reducing risks such as floods and droughts, which in the face of climate change can become more frequent and larger in magnitude."
-  },
   "HnG9/3": {
     "string": "Insert password"
   },
@@ -524,9 +518,6 @@
   },
   "IBlTCs": {
     "string": "The image is larger than {maxSize}MB"
-  },
-  "IMe8OV": {
-    "string": "Nature based solutions are estimated to compensate up to 30% of global emissions."
   },
   "ITdmlJ": {
     "string": "Contact information"
@@ -648,9 +639,6 @@
   "N9+9Fi": {
     "string": "select the project developer type"
   },
-  "NIQVjS": {
-    "string": "Support the consolidation of their lands governance structures and capacities for sound management."
-  },
   "NUVSd2": {
     "string": "Protected areas"
   },
@@ -707,9 +695,6 @@
   },
   "PR8FFs": {
     "string": "Create your organization's account as a project developer in the field or as an investor or funder and become part of the HeCo Invest community."
-  },
-  "PTr6+3": {
-    "string": "Contribute to climate solutions through investments that reduce CO2 emissions and conserve or restore forest-related carbon sinks."
   },
   "PgGfZr": {
     "string": "Upload shapefile / KML file"
@@ -954,6 +939,9 @@
   "ZaT/7W": {
     "string": "option {optionName}, selected."
   },
+  "ZcbMzP": {
+    "string": "Support protecting the environmental factors that help maintain the availability and regulation of the water resources, which are vital for reducing risks such as floods and droughts, which in the face of climate change can become more frequent and larger in magnitude."
+  },
   "Zht65f": {
     "string": "Identify the target group(s) of this solution. Try to be very specific and do not cover an unrealistic range of beneficiaries or clients."
   },
@@ -1089,6 +1077,9 @@
   "fMrPOR": {
     "string": "Go to last page"
   },
+  "fX9u5/": {
+    "string": "Contribute to addressing the effects of climate change through investments to reduce CO2 emissions and conserve or restore forest-related carbon sinks. <br></br><br></br> Nature based solutions have been estimated to have the potential of contributing to compensate for up to 30% of global emissions."
+  },
   "fnihsY": {
     "string": "Leave"
   },
@@ -1100,6 +1091,9 @@
   },
   "g5pX+a": {
     "string": "About"
+  },
+  "gF/kn9": {
+    "string": "Contribute to protecting areas of greatest ecosystems diversity, conservation and restoration potential, degree of threat or protection for flora and fauna, landscape connectivity and degree of endemism."
   },
   "ghj0+t": {
     "string": "Geographies"

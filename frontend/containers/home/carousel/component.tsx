@@ -46,8 +46,8 @@ export const Carousel = () => {
           </h3>
           <p className="max-w-md mx-auto mt-3 text-base text-white md:mt-6 lg:mx-0 sm:text-lg md:text-xl opacity-70">
             <FormattedMessage
-              defaultMessage="Contribute to the conservation and restoration of the most diverse terrestrial ecosystems on the planet. These ecosystems support countless endemic species and contribute to mitigate the impacts of the climate crisis."
-              id="7KLSqh"
+              defaultMessage="Contribute to protecting areas of greatest ecosystems diversity, conservation and restoration potential, degree of threat or protection for flora and fauna, landscape connectivity and degree of endemism."
+              id="gF/kn9"
             />
           </p>
           <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
@@ -84,14 +84,11 @@ export const Carousel = () => {
           </h3>
           <p className="max-w-md mx-auto mt-3 text-base text-white md:mt-6 lg:mx-0 sm:text-lg md:text-xl opacity-70">
             <FormattedMessage
-              defaultMessage="Contribute to climate solutions through investments that reduce CO2 emissions and conserve or restore forest-related carbon sinks."
-              id="PTr6+3"
-            />
-            <br />
-            <br />
-            <FormattedMessage
-              defaultMessage="Nature based solutions are estimated to compensate up to 30% of global emissions."
-              id="IMe8OV"
+              defaultMessage="Contribute to addressing the effects of climate change through investments to reduce CO2 emissions and conserve or restore forest-related carbon sinks. <br></br><br></br> Nature based solutions have been estimated to have the potential of contributing to compensate for up to 30% of global emissions."
+              id="fX9u5/"
+              values={{
+                br: () => <br />,
+              }}
             />
           </p>
           <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
@@ -128,14 +125,11 @@ export const Carousel = () => {
           </h3>
           <p className="max-w-md mx-auto mt-3 text-base text-white md:mt-6 lg:mx-0 sm:text-lg md:text-xl opacity-70">
             <FormattedMessage
-              defaultMessage="Contribute to improving the production systems and livelihoods of local communities and indigenous people, to ensure their basic needs are met, while enhancing their adaptation to climate change."
-              id="60xeYL"
-            />
-            <br />
-            <br />
-            <FormattedMessage
-              defaultMessage="Support the consolidation of their lands governance structures and capacities for sound management."
-              id="NIQVjS"
+              defaultMessage="By contributing to improve the productions systems and livelihoods of local communities and indigenous peoples to satisfy their basic needs, while enhancing their adaptation to climate change.<br></br><br></br>Supporting the consolidation of their lands governance structures and capacities for sound management."
+              id="/aYUC+"
+              values={{
+                br: () => <br />,
+              }}
             />
           </p>
           <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
@@ -174,8 +168,8 @@ export const Carousel = () => {
             </h3>
             <p className="max-w-md mx-auto mt-3 text-base text-white md:mt-6 lg:mx-0 sm:text-lg md:text-xl opacity-70">
               <FormattedMessage
-                defaultMessage="Support the protection of water availability and regulation. These approaches are vital for reducing risks such as floods and droughts, which in the face of climate change can become more frequent and larger in magnitude."
-                id="HmDmU1"
+                defaultMessage="Support protecting the environmental factors that help maintain the availability and regulation of the water resources, which are vital for reducing risks such as floods and droughts, which in the face of climate change can become more frequent and larger in magnitude."
+                id="ZcbMzP"
               />
             </p>
             <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
