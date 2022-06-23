@@ -2,13 +2,10 @@ import React, { useMemo } from 'react';
 
 import { useRouter } from 'next/router';
 
-import useMe from 'hooks/me';
-
 import { Paths, UserRoles } from 'enums';
 import { ProtectedProps } from 'layouts/protected-page/types';
 
-import { useCurrentInvestor } from 'services/investors/investorsService';
-import { useCurrentProjectDeveloper } from 'services/project-developers/projectDevelopersService';
+import { useAccount } from 'services/account';
 
 const Protected: React.FC<ProtectedProps> = ({
   permissions,
@@ -21,20 +18,19 @@ const Protected: React.FC<ProtectedProps> = ({
   ...rest
 }) => {
   const router = useRouter();
-  const { user, isLoading, isError } = useMe();
-  const projectDeveloper = useCurrentProjectDeveloper(user);
-  const investor = useCurrentInvestor(user);
-  const { data: userAccount, isLoading: userAccountIsLoading } = projectDeveloper || investor;
+
+  const { user, userIsLoading, userAccount, userIsError } = useAccount();
+
   const isOwner = useMemo(
     () => ownership?.getIsOwner(user, userAccount),
     [ownership, user, userAccount]
   );
 
   // Not display anything when me request is on progress
-  if (isLoading) return null;
+  if (userIsLoading) return null;
 
   // Redirect to sign-in when session doesn't exist
-  if (isError) {
+  if (userIsError) {
     router.push(Paths.SignIn);
     return null;
   }
@@ -60,7 +56,7 @@ const Protected: React.FC<ProtectedProps> = ({
       return null;
     }
     // If the ownership of the entity is needed and the user don't have it
-    if (ownership?.allowOwner && !userAccountIsLoading) {
+    if (ownership?.allowOwner) {
       if (!isOwner) {
         // Redirect to dashboard
         router.push(Paths.Dashboard);
