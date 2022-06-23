@@ -49,11 +49,12 @@ export const CellActions = ({ row }: CellActionsProps) => {
         description={intl.formatMessage(
           {
             defaultMessage:
-              'Are you sure you want to delete {displayName}?. <br/> You cant undo this action',
-            id: 'TXXaVd',
+              'Are you sure you want to delete <strong>{displayName}</strong>? You cant undo this action.',
+            id: 'bQc7X2',
           },
           {
-            displayName,
+            displayName: displayName,
+            strong: (chunk: string) => <strong>{chunk}</strong>,
           }
         )}
       />

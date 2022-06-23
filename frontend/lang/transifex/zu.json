@@ -750,9 +750,6 @@
   "TUFmRM": {
     "string": "Climate impact"
   },
-  "TXXaVd": {
-    "string": "Are you sure you want to delete {displayName}?. <br/> You cant undo this action"
-  },
   "TfXhCr": {
     "string": "No projects"
   },
@@ -950,6 +947,9 @@
   },
   "bNpbHr": {
     "string": "Find other people with similar interests. Join forces, secure more investment and create a greater impact."
+  },
+  "bQc7X2": {
+    "string": "Are you sure you want to delete <strong>{displayName}</strong>? You cant undo this action."
   },
   "bWygLM": {
     "string": "insert the amount of money"

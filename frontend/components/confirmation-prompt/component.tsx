@@ -23,10 +23,7 @@ export const ConfirmationPrompt: FC<ConfirmationPromptProps> = ({
   <Modal open={open} title={title} size="default" dismissable={dismissible} onDismiss={onDismiss}>
     <div className="flex flex-col items-center px-8 py-4">
       <div className="font-serif text-3xl font-semibold text-center text-black">{title}</div>
-      <p
-        dangerouslySetInnerHTML={{ __html: description }}
-        className="mt-4 font-sans text-base text-center text-black"
-      />
+      <p className="mt-4 font-sans text-base text-center text-black">{description}</p>
       <div
         className={classnames({
           'flex justify-start items-end': true,
