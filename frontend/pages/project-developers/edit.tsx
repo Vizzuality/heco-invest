@@ -38,7 +38,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
   const { projectDeveloper } = useCurrentProjectDeveloper();
 
   const handleOnComplete = () => {
-    router.push((router.query?.returnPath as string) || Paths.Dashboard);
+    router.push(decodeURIComponent(router.query?.returnPath as string) || Paths.Dashboard);
   };
 
   return (
