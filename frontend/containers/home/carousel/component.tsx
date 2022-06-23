@@ -9,6 +9,7 @@ import { useInViewRef } from 'rooks';
 import Button from 'components/button';
 
 export const Carousel = () => {
+  const BASE_SEARCH_URL = '/discover/projects?page=1&search=&sorting=&filter%5Bimpact%5D=';
   const [slide2Ref, inViewSlide2] = useInViewRef(undefined, {
     root: null,
     rootMargin: '0px 0px 0px 0px',
@@ -51,7 +52,7 @@ export const Carousel = () => {
             />
           </p>
           <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-            <Button theme="secondary-white" size="small" to="/discover?s=biodiversity">
+            <Button theme="secondary-white" size="small" to={`${BASE_SEARCH_URL}biodiversity`}>
               <FormattedMessage defaultMessage="Search biodiversity" id="PIZ1dD" />
             </Button>
           </div>
@@ -92,7 +93,7 @@ export const Carousel = () => {
             />
           </p>
           <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-            <Button theme="secondary-white" size="small" to="/discover?s=climate">
+            <Button theme="secondary-white" size="small" to={`${BASE_SEARCH_URL}climate`}>
               <FormattedMessage defaultMessage="Search climate" id="kUPAU5" />
             </Button>
           </div>
@@ -133,7 +134,7 @@ export const Carousel = () => {
             />
           </p>
           <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-            <Button theme="secondary-white" size="small" to="/discover?s=community">
+            <Button theme="secondary-white" size="small" to={`${BASE_SEARCH_URL}community`}>
               <FormattedMessage defaultMessage="Search community" id="8R8Or7" />
             </Button>
           </div>
@@ -173,7 +174,7 @@ export const Carousel = () => {
               />
             </p>
             <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-              <Button theme="secondary-white" size="small" to="/discover?s=water">
+              <Button theme="secondary-white" size="small" to={`${BASE_SEARCH_URL}water`}>
                 <FormattedMessage defaultMessage="Search water" id="XJqnLu" />
               </Button>
             </div>
