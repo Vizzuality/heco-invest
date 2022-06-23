@@ -135,6 +135,7 @@ zu:
       status_description: The verification status allow the project to have a verification badge. By default all the projects are set to "Unverified". Please review the information and change it to "Verified".
       project_developers: Project developers
       project_developers_in_project: Project developers in the project (%{count})
+      delete: Delete project
       index:
         priority_landscape: Priority Landscape
       edit:

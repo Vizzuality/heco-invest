@@ -78,7 +78,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
   const { formatMessage } = useIntl();
   const resolver = useProjectValidation(currentPage);
   const updateProject = useUpdateProject();
-  const { push } = useRouter();
+  const router = useRouter();
   const { data } = useEnums();
   const {
     category,
@@ -146,14 +146,16 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
           errorPages.length && setCurrentPage(errorPages[0]);
         },
         onSuccess: (result) => {
-          push({
-            pathname: `${Paths.Project}/${project?.slug}`,
-            search: `project=${result.data.slug}`,
-          });
+          router.push(
+            decodeURIComponent(router.query?.returnPath as string) || {
+              pathname: `${Paths.Project}/${project?.slug}`,
+              search: `project=${result.data.slug}`,
+            }
+          );
         },
       });
     },
-    [updateProject, setError, push, project?.slug]
+    [updateProject, setError, router, project?.slug]
   );
 
   const onSubmit: SubmitHandler<ProjectForm> = (values: ProjectForm) => {
@@ -304,7 +306,9 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
       <LeaveFormModal
         isOpen={showLeave}
         close={() => setShowLeave(false)}
-        handleLeave={() => push(Paths.Dashboard)}
+        handleLeave={() =>
+          router.push(decodeURIComponent(router.query?.returnPath as string) || Paths.Dashboard)
+        }
         title={formatMessage({ defaultMessage: 'Leave project creation form', id: 'vygPIS' })}
       />
     </ProtectedPage>

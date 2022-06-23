@@ -27,8 +27,8 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
 }: InviteUsersModalProps) => {
   const { formatMessage } = useIntl();
   const inviteUsers = useInviteUsers();
-  const { data: accountData, isLoading: isLoadingAccountData } = useAccount();
-  const { name } = accountData || {};
+  const { userAccount } = useAccount('owner');
+  const { name } = userAccount || {};
 
   const {
     clearErrors,
@@ -108,10 +108,10 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
       title={formatMessage({ defaultMessage: 'Invite users', id: 'R+1DVQ' })}
       open={openInvitationModal}
       dismissable={true}
-      size="default"
+      size="narrow"
       scrollable={false}
     >
-      <form className="flex flex-col" noValidate>
+      <form className="flex flex-col" noValidate autoComplete="off">
         <p className="mb-2 font-serif text-3xl text-green-dark">
           <FormattedMessage defaultMessage="Invite users" id="R+1DVQ" />
         </p>
@@ -140,10 +140,13 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
           <div className="flex flex-wrap space-x-1">
             <div className="flex flex-wrap">
               {getValues('emails')?.map((email, i) => (
-                <div className="flex px-4 py-1 mb-1 mr-1 bg-beige rounded-2xl" key={i}>
+                <div
+                  className="flex px-4 pt-1 mb-1 mr-1 border cursor-pointer bg-background-dark border-beige rounded-2xl hover:bg-opacity-25 hover:bg-green-light"
+                  key={i}
+                >
                   <p className="text-sm text-green-dark">{email}</p>
                   <button type="button" onClick={() => removeEmail(email)}>
-                    <Icon icon={CloseIcon} className={cx('w-4 ml-3 text-green-dark')} />
+                    <Icon icon={CloseIcon} className={cx('w-4 ml-3 pb-[3px] text-green-dark')} />
                   </button>
                 </div>
               ))}

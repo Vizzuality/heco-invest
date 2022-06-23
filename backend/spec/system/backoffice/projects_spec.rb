@@ -186,6 +186,14 @@ RSpec.describe "Backoffice: Projects", type: :system do
           expect(page).to have_text(t("simple_form.error_notification.default_message"))
           expect(page).to have_text("Estimated duration in months must be less than 37")
         end
+
+        it "shows validation errors for localized inputs" do
+          fill_in t("simple_form.labels.project.name"), with: ""
+          click_on t("backoffice.common.save")
+
+          expect(page).to have_text(t("simple_form.error_notification.default_message"))
+          expect(page).to have_text("Name can't be blank")
+        end
       end
     end
 
@@ -249,6 +257,17 @@ RSpec.describe "Backoffice: Projects", type: :system do
         expect(project.progress_impact_tracking_es).to eq("New progress impact tracking - Spanish")
         expect(project.description_es).to eq("New description - Spanish")
         expect(project.relevant_links_es).to eq("New relevant links - Spanish")
+      end
+    end
+
+    context "when removing project" do
+      it "removes project" do
+        accept_confirm do
+          click_on t("backoffice.projects.delete")
+        end
+        expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.project")))
+        expect(current_path).to eql(backoffice_projects_path)
+        expect(page).not_to have_text(project.name)
       end
     end
   end

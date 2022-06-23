@@ -70,4 +70,11 @@ module ApplicationHelper
 
     raw doc
   end
+
+  def localized_input(f, field_name, lang, **options)
+    options[:input_html] ||= {}
+    options[:input_html][:value] ||= f.object.public_send(field_name, locale: lang)
+
+    f.input field_name, options
+  end
 end

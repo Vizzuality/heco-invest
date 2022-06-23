@@ -3,7 +3,7 @@ module Backoffice
     include Sections
     include ContentLanguage
 
-    before_action :fetch_project, only: [:edit, :update]
+    before_action :fetch_project, only: [:edit, :update, :destroy]
     before_action :set_breadcrumbs, only: [:edit, :update]
     before_action :set_sections, only: [:edit, :update]
     before_action :set_content_language_default, only: [:edit, :update]
@@ -29,7 +29,7 @@ module Backoffice
     end
 
     def update
-      if @project.update(update_params)
+      if I18n.with_locale(content_language) { @project.update(update_params) }
         redirect_back(
           fallback_location: edit_backoffice_project_path(@project.id),
           notice: t("backoffice.messages.success_update", model: t("backoffice.common.project"))
@@ -39,13 +39,18 @@ module Backoffice
       end
     end
 
+    def destroy
+      @project.destroy!
+
+      redirect_to backoffice_projects_path, status: :see_other,
+        notice: t("backoffice.messages.success_delete", model: t("backoffice.common.project"))
+    end
+
     private
 
     def update_params
       params.require(:project).permit(
-        :name_en,
-        :name_es,
-        :name_pt,
+        :name,
         :country_id,
         :department_id,
         :municipality_id,
@@ -54,38 +59,20 @@ module Backoffice
         :development_stage,
         :estimated_duration_in_months,
         :category,
-        :problem_en,
-        :problem_es,
-        :problem_pt,
-        :solution_en,
-        :solution_es,
-        :solution_pt,
-        :expected_impact_en,
-        :expected_impact_es,
-        :expected_impact_pt,
+        :problem,
+        :solution,
+        :expected_impact,
         :looking_for_funding,
         :ticket_size,
-        :funding_plan_en,
-        :funding_plan_es,
-        :funding_plan_pt,
+        :funding_plan,
         :received_funding,
         :received_funding_amount_usd,
         :received_funding_investor,
-        :replicability_en,
-        :replicability_es,
-        :replicability_pt,
-        :sustainability_en,
-        :sustainability_es,
-        :sustainability_pt,
-        :progress_impact_tracking_en,
-        :progress_impact_tracking_es,
-        :progress_impact_tracking_pt,
-        :description_en,
-        :description_es,
-        :description_pt,
-        :relevant_links_en,
-        :relevant_links_es,
-        :relevant_links_pt,
+        :replicability,
+        :sustainability,
+        :progress_impact_tracking,
+        :description,
+        :relevant_links,
         :trusted,
         instrument_types: [],
         impact_areas: [],
