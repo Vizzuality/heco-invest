@@ -93,8 +93,8 @@ const ProjectDescription = ({
                 <FieldInfo
                   infoText={formatMessage({
                     defaultMessage:
-                      'Enter the estimated implementation duration for the project. MAX 24 months.',
-                    id: '7eO+k/',
+                      'Enter the estimated implementation duration for the project. MAX 36 months.',
+                    id: '/Lbk/f',
                   })}
                 />
               </Label>
@@ -106,8 +106,8 @@ const ProjectDescription = ({
                 className="mt-2.5"
                 aria-describedby="estimated-duration-in-months-error"
                 placeholder={formatMessage({
-                  defaultMessage: 'insert number (max 24)',
-                  id: 'C0sD76',
+                  defaultMessage: 'insert number (max 36)',
+                  id: 'pkBu4q',
                 })}
               />
               <ErrorMessage

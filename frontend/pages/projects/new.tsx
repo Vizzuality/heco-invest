@@ -1,255 +1,59 @@
-import { useCallback, useState } from 'react';
-
-import { SubmitHandler, useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
-import { QueryClient, dehydrate } from 'react-query';
-
-import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
-import { InferGetStaticPropsType } from 'next';
+import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
-import { getPageErrors, getServiceErrors, useGetAlert } from 'helpers/pages';
 
-import LeaveFormModal from 'containers/leave-form-modal';
-import MultiPageLayout, { Page } from 'containers/multi-page-layout';
-import {
-  GeneralInformation,
-  ProjectDescription,
-  Impact,
-  Funding,
-  ProjectGrow,
-  OtherInformation,
-} from 'containers/project-form-pages';
+import ProjectForm from 'containers/project-form';
 
-import Head from 'components/head';
-import { Paths, Queries, UserRoles } from 'enums';
-import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
+import { UserRoles } from 'enums';
+import FormPageLayout from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
-import { ProjectCreationPayload, ProjectForm } from 'types/project';
-import useProjectValidation from 'validations/project';
-import { formPageInputs } from 'validations/project';
+import { GroupedEnums } from 'types/enums';
 
 import { useCreateProject } from 'services/account';
-import { getEnums, useEnums } from 'services/enums/enumService';
-import { getLocations } from 'services/locations/locations';
+import { getEnums } from 'services/enums/enumService';
 
-export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
-  const queryClient = new QueryClient();
-  // prefetch static data - enums and locations
-  queryClient.prefetchQuery(Queries.EnumList, getEnums);
-  queryClient.prefetchQuery(Queries.Locations, () => getLocations());
+export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
+  const enums = await getEnums();
+
   return {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
-      dehydratedState: dehydrate(queryClient),
+      enums: groupBy(enums, 'type'),
     },
   };
 });
 
-type ProjectProps = InferGetStaticPropsType<typeof getStaticProps>;
+type CreateProjectProps = {
+  enums: GroupedEnums;
+};
 
-const Project: PageComponent<ProjectProps, FormPageLayoutProps> = () => {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [showLeave, setShowLeave] = useState(false);
+const CreateProject: PageComponent<CreateProjectProps> = ({ enums }) => {
   const { formatMessage } = useIntl();
-  const resolver = useProjectValidation(currentPage);
   const createProject = useCreateProject();
-  const { push } = useRouter();
-  const { data } = useEnums();
-  const {
-    category,
-    project_development_stage,
-    project_target_group,
-    impact_area,
-    ticket_size,
-    instrument_type,
-  } = data;
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    control,
-    getValues,
-    setValue,
-    clearErrors,
-    resetField,
-    setError,
-  } = useForm<ProjectForm>({
-    resolver,
-    shouldUseNativeValidation: true,
-    shouldFocusError: true,
-    reValidateMode: 'onChange',
-    defaultValues: { target_groups: [] },
-  });
-
-  const handleCreate = useCallback(
-    (formData: ProjectCreationPayload) => {
-      const data = {
-        ...formData,
-        // Endpoint only expects `file` and `cover`. If for instance an `id` is passed, it'll
-        // return an error. However, the frontend needs extra properties such as the `id` during
-        // the form creation, so we're cleaning up the form data before POST'ing it to the endpoint.
-        project_images_attributes: formData.project_images_attributes?.map(({ file, cover }) => ({
-          file,
-          cover,
-        })),
-      } as ProjectCreationPayload;
-
-      return createProject.mutate(data, {
-        onError: (error) => {
-          const { errorPages, fieldErrors } = getServiceErrors<ProjectForm>(error, formPageInputs);
-          fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
-          errorPages.length && setCurrentPage(errorPages[0]);
-        },
-        onSuccess: (result) => {
-          push({ pathname: '/projects/pending/', search: `project=${result.data.slug}` });
-        },
-      });
-    },
-    [createProject, push, setError]
-  );
-
-  const onSubmit: SubmitHandler<ProjectForm> = (values: ProjectForm) => {
-    if (currentPage === 5) {
-      const {
-        involved_project_developer,
-        project_gallery,
-        project_images_attributes_cover,
-        geometry,
-        ...rest
-      } = values;
-
-      // set image_attributes cover from the project_images_attributes_cover value
-      const project_images_attributes: any = values.project_images_attributes.map(({ file }) =>
-        file === project_images_attributes_cover ? { file, cover: true } : { file, cover: false }
-      );
-      // set involved_project_developer_not_listed to true if not listed is selected and removes this value from the involved_project_developer_ids
-      const involved_project_developer_not_listed =
-        !!values.involved_project_developer_ids?.includes('not-listed');
-      const involved_project_developer_ids = values.involved_project_developer_ids?.filter(
-        (id) => id !== 'not-listed'
-      );
-
-      handleCreate({
-        ...rest,
-        involved_project_developer_not_listed,
-        involved_project_developer_ids,
-        project_images_attributes,
-        geometry,
-      });
-    } else {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handleNextClick = async () => {
-    await handleSubmit(onSubmit)();
-  };
-
-  const getPageError = (page: number) => getPageErrors(formPageInputs[page], errors);
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
-      <Head title={formatMessage({ defaultMessage: 'Create project', id: 'VUN1K7' })} />
-      <MultiPageLayout
-        layout="narrow"
+      <ProjectForm
         title={formatMessage({ defaultMessage: 'Create project', id: 'VUN1K7' })}
-        autoNavigation={false}
-        page={currentPage}
-        alert={useGetAlert(createProject.error)}
-        isSubmitting={createProject.isLoading}
-        showOutro={false}
-        onNextClick={handleNextClick}
-        onPreviousClick={() => setCurrentPage(currentPage - 1)}
-        showProgressBar
-        onCloseClick={() => setShowLeave(true)}
-        onSubmitClick={handleSubmit(onSubmit)}
-      >
-        <Page key="general-information" hasErrors={getPageError(0)}>
-          <GeneralInformation
-            register={register}
-            control={control}
-            controlOptions={{ disabled: false }}
-            errors={errors}
-            getValues={getValues}
-            resetField={resetField}
-            setValue={setValue}
-            clearErrors={clearErrors}
-            setError={setError}
-          />
-        </Page>
-        <Page key="project-description" hasErrors={getPageError(1)}>
-          <ProjectDescription
-            register={register}
-            control={control}
-            controlOptions={{ disabled: false }}
-            setValue={setValue}
-            errors={errors}
-            clearErrors={clearErrors}
-            category={category}
-            project_development_stage={project_development_stage}
-            target_group={project_target_group}
-          />
-        </Page>
-        <Page key="impact" hasErrors={getPageError(2)}>
-          <Impact
-            register={register}
-            control={control}
-            controlOptions={{ disabled: false }}
-            errors={errors}
-            getValues={getValues}
-            impacts={impact_area}
-            setValue={setValue}
-            clearErrors={clearErrors}
-          />
-        </Page>
-        <Page key="funding" hasErrors={getPageError(3)}>
-          <Funding
-            register={register}
-            control={control}
-            controlOptions={{ disabled: false }}
-            errors={errors}
-            getValues={getValues}
-            setValue={setValue}
-            clearErrors={clearErrors}
-            ticket_sizes={ticket_size}
-            instrument_type={instrument_type}
-          />
-        </Page>
-        <Page key="project-grow" hasErrors={getPageError(4)}>
-          <ProjectGrow
-            register={register}
-            control={control}
-            controlOptions={{ disabled: false }}
-            errors={errors}
-          />
-        </Page>
-        <Page key="other" hasErrors={getPageError(5)}>
-          <OtherInformation
-            register={register}
-            control={control}
-            controlOptions={{ disabled: false }}
-            errors={errors}
-          />
-        </Page>
-      </MultiPageLayout>
-      <LeaveFormModal
-        isOpen={showLeave}
-        close={() => setShowLeave(false)}
-        handleLeave={() => push(Paths.Dashboard)}
-        title={formatMessage({ defaultMessage: 'Leave project creation form', id: 'vygPIS' })}
+        leaveMessage={formatMessage({
+          defaultMessage: 'Leave project creation form',
+          id: 'vygPIS',
+        })}
+        mutation={createProject}
+        enums={enums}
+        isCreateForm
       />
     </ProtectedPage>
   );
 };
 
-Project.layout = {
+CreateProject.layout = {
   Component: FormPageLayout,
 };
 
-export default Project;
+export default CreateProject;
