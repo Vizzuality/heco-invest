@@ -1080,9 +1080,6 @@
   "hX5PAb": {
     "string": "No results found"
   },
-  "hbFTZN": {
-    "string": "Users will receive an email to sign up into the platform and join NEEsT’s account."
-  },
   "hg7Mex": {
     "string": "Select which areas your project will have an impact on"
   },
@@ -1148,6 +1145,9 @@
   },
   "jwimQJ": {
     "string": "Ok"
+  },
+  "k5DITM": {
+    "string": "Users will receive an email to sign up into the platform and join <strong>{name}</strong> account."
   },
   "k62/kN": {
     "string": "Fit bounds"
