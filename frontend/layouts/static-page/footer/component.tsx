@@ -7,7 +7,11 @@ import cx from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
+
+import FacebookIcon from 'svgs/social/facebook.svg';
+import TwitterIcon from 'svgs/social/twitter.svg';
 
 import { FooterProps } from './types';
 
@@ -230,6 +234,26 @@ export const Footer: React.FC<FooterProps> = ({
                 <h3 className="text-gray-600">
                   <FormattedMessage defaultMessage="Contact" id="zFegDD" />
                 </h3>
+                <ul className="mt-2 space-y-2">
+                  <li>
+                    <FormattedMessage defaultMessage="+123456789" id="6//v4m" />
+                  </li>
+                  <li>
+                    <a className="cursor-pointer hover:underline" href="mailto:info@hecoinvest.com">
+                      <FormattedMessage defaultMessage="info@hecoinvest.com" id="JFgMWS" />
+                    </a>
+                  </li>
+                  <li>
+                    <p className="text-gray-600">
+                      <FormattedMessage defaultMessage="Social media" id="ZEEVQX" />
+                    </p>
+                    <div className="flex my-3 space-x-5">
+                      <Icon icon={FacebookIcon} className="w-4 h-4" />
+
+                      <Icon icon={TwitterIcon} className="w-4 h-4" />
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
