@@ -12,6 +12,8 @@ import { useInViewRef } from 'rooks';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import FooterBanner from 'containers/home/footer-banner';
+
 import Button from 'components/button';
 import Head from 'components/head';
 import Icon from 'components/icon';
@@ -20,7 +22,7 @@ import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 
 import ConnectIcon from 'svgs/home/connect.svg';
-import CreateAccountIcon from 'svgs/home/create-account.svg';
+import ReportBackIcon from 'svgs/home/create-account.svg';
 import SearchFindIcon from 'svgs/home/search-find.svg';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
@@ -250,29 +252,14 @@ const Home: PageComponent<HomePageProps, StaticPageLayoutProps> = () => {
           </h2>
           <p className="max-w-md mx-auto mt-4 text-base text-center md:mt-8 sm:max-w-xl md:max-w-4xl sm:text-lg md:text-xl">
             <FormattedMessage
-              defaultMessage="Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and start the conversation."
-              id="Wm7zf8"
+              defaultMessage="Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and <span>start the conversation</span>. Make sure to update us to help us track your contribution to preserving the Amazon: <span>the future is in your hands too!</span>"
+              id="Y7/cBd"
               values={{
                 span: (chunks) => <span className="font-semibold">{chunks}</span>,
               }}
             />
           </p>
           <div className="grid grid-rows-3 gap-6 mt-12 md:mt-20 md:grid-rows-none md:grid-cols-3">
-            <div className="px-6 py-6 text-center md:py-10 bg-green-light/20 rounded-4xl">
-              <Icon
-                icon={CreateAccountIcon}
-                className="w-24 h-24 p-3 mx-auto bg-white rounded-full text-green-dark"
-              />
-              <h3 className="mt-4 text-xl font-medium uppercase md:mt-14">
-                <FormattedMessage defaultMessage="Create an account" id="0vL5u1" />
-              </h3>
-              <p className="mt-2 md:mt-2.5 text-black/70">
-                <FormattedMessage
-                  defaultMessage="Create your organization's account as a project developer in the field or as an investor or funder and become part of the HeCo Invest community."
-                  id="PR8FFs"
-                />
-              </p>
-            </div>
             <div className="px-6 py-6 text-center md:py-10 bg-green-light/20 rounded-4xl">
               <Icon
                 icon={SearchFindIcon}
@@ -298,8 +285,23 @@ const Home: PageComponent<HomePageProps, StaticPageLayoutProps> = () => {
               </h3>
               <p className="mt-2 md:mt-2.5 text-black/70">
                 <FormattedMessage
-                  defaultMessage="Start connecting with people to create impact. You can find investors, opportunities to invest open calls and much more."
-                  id="SHw9Ht"
+                  defaultMessage="Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."
+                  id="xusigZ"
+                />
+              </p>
+            </div>
+            <div className="px-6 py-6 text-center md:py-10 bg-green-light/20 rounded-4xl">
+              <Icon
+                icon={ReportBackIcon}
+                className="w-24 h-24 p-3 mx-auto bg-white rounded-full text-green-dark"
+              />
+              <h3 className="mt-4 text-xl font-medium uppercase md:mt-14">
+                <FormattedMessage defaultMessage="Report back" id="RczAkW" />
+              </h3>
+              <p className="mt-2 md:mt-2.5 text-black/70">
+                <FormattedMessage
+                  defaultMessage="Inspire and educate other users by coming back to the platform and updating us on your progress. We’ll be able to track the Amazon’s improvement thanks to your contribution!"
+                  id="O1mdXY"
                 />
               </p>
             </div>
@@ -529,30 +531,7 @@ const Home: PageComponent<HomePageProps, StaticPageLayoutProps> = () => {
         </div>
       </div>
 
-      <div className="bg-green-dark bg-cover bg-center bg-[url('/images/home-hero.jpg')]">
-        <LayoutContainer className="py-16 text-center text-white sm:pt-24 sm:pb-20">
-          <h2 className="font-serif text-3xl font-bold md:text-4xl">
-            <FormattedMessage defaultMessage="Start making an impact now!" id="5hbC/K" />
-          </h2>
-          <div className="grid max-w-5xl grid-rows-2 gap-4 mx-auto mt-12 text-base md:mt-16 md:grid-rows-none md:grid-cols-2 md:gap-6 sm:text-lg md:text-xl">
-            <p className="px-4">
-              <FormattedMessage
-                defaultMessage="Find projects, start-ups or create an open call to locate opportunities for investment that make an impact."
-                id="GKDt/J"
-              />
-            </p>
-            <p className="px-4">
-              <FormattedMessage
-                defaultMessage="Promote your idea, project or business and connect it with investors and funding sources to generate impact in the Amazon region."
-                id="9pXx8c"
-              />
-            </p>
-          </div>
-          <Button theme="primary-white" size="small" className="mt-12 md:mt-16" disabled>
-            <FormattedMessage defaultMessage="Create your profile" id="CjpGzJ" />
-          </Button>
-        </LayoutContainer>
-      </div>
+      <FooterBanner />
     </>
   );
 };
