@@ -91,29 +91,26 @@ export function useUpdateProjectDeveloper(): UseMutationResult<
 
 // Create Project
 export function useCreateProject(): UseMutationResult<
-  AxiosResponse<Project>,
+  AxiosResponse<ResponseData<Project>>,
   AxiosError<ErrorResponse>,
   ProjectCreationPayload
 > {
-  const createProject = async (data: ProjectCreationPayload): Promise<AxiosResponse<Project>> => {
-    return API.post('/api/v1/account/projects', data).then((response) => response.data);
+  const createProject = async (
+    data: ProjectCreationPayload
+  ): Promise<AxiosResponse<ResponseData<Project>>> => {
+    return await API.post('/api/v1/account/projects', data);
   };
-
-  const queryClient = useQueryClient();
-
-  return useMutation(createProject, {
-    onSuccess: (result) => {
-      queryClient.setQueryData(Queries.ProjectQuery, result.data);
-    },
-  });
+  return useMutation(createProject);
 }
 
 export function useUpdateProject(): UseMutationResult<
-  AxiosResponse<Project>,
+  AxiosResponse<ResponseData<Project>>,
   AxiosError<ErrorResponse>,
   ProjectUpdatePayload
 > {
-  const updateProject = async (project: ProjectUpdatePayload): Promise<AxiosResponse<Project>> => {
+  const updateProject = async (
+    project: ProjectUpdatePayload
+  ): Promise<AxiosResponse<ResponseData<Project>>> => {
     return API.put(`/api/v1/account/projects/${project.id}`, project);
   };
 

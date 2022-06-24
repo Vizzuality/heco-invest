@@ -11,9 +11,30 @@ import {
   UseFormResetField,
   UseFormSetError,
 } from 'react-hook-form';
+import { UseMutationResult } from 'react-query';
 
-import { Enum } from 'types/enums';
-import { ProjectForm } from 'types/project';
+import { AxiosResponse, AxiosError } from 'axios';
+
+import { Enum, GroupedEnums } from 'types/enums';
+import { Project, ProjectForm } from 'types/project';
+
+import { ErrorResponse, ResponseData } from 'services/types';
+
+export type ProjectFormProps = {
+  /** Title to Header and MultipageLayout */
+  title: string;
+  /** Leave message to show when leaving the form */
+  leaveMessage: string;
+  /** If is the create form. Default = false (update form) */
+  isCreateForm?: boolean;
+  /** Values of the current project developer, in case it is the update form */
+  initialValues?: Project;
+  /** UseMutation hook values */
+  mutation: UseMutationResult<AxiosResponse<ResponseData<Project>>, AxiosError<ErrorResponse>>;
+  /** Callback to execute when form has been submitted successfully */
+  onComplete?: () => void;
+  enums: GroupedEnums;
+};
 
 export type ProjectFormPagesProps<FormValues> = {
   /** React Hook Form's `register` function */
