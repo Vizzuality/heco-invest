@@ -80,6 +80,9 @@
   "1MTH/x": {
     "string": "option {optionName} {status}, {pagination}."
   },
+  "1Qvlb5": {
+    "string": "Legalized Indigenous Reservations until the year 2021."
+  },
   "1iEPTM": {
     "string": "General"
   },
@@ -206,6 +209,9 @@
   "6ukMW9": {
     "string": "Basque Centre for Climate Change"
   },
+  "6vrfSY": {
+    "string": "Displays the Key Biodiversity Areas containing 95% or more of the remaining population of one or more species listed as Endangered or Critically Endangered on the International Union for Conservation of Nature (IUCN) Red List of Threatened Species."
+  },
   "6xBvFx": {
     "string": "Describe the problem or market need that your project or solution seeks to address. It should be a very specific problem, not a macro global issue like \"climate change\" or \"poverty\". Make sure that your showing that the problem is addressing a specific demand (is real) and it affects the poor and vulnerable population and/or the environment. We recommend using numbers to give a dimension of the problem."
   },
@@ -293,6 +299,9 @@
   "9cE0nR": {
     "string": "How is the impact calculated?"
   },
+  "9nYuln": {
+    "string": "Base Layers"
+  },
   "9pXx8c": {
     "string": "Promote your idea, project or business and connect it with investors and funding sources to generate impact in the Amazon region."
   },
@@ -301,6 +310,9 @@
   },
   "A4UTjl": {
     "string": "Portuguese"
+  },
+  "A8lXv/": {
+    "string": "Global estimate of human population density and distribution."
   },
   "AC6emZ": {
     "string": "Inter-American Development Bank"
@@ -329,6 +341,9 @@
   "BHrBCl": {
     "string": "PNG, JPG up to 5MB"
   },
+  "BSFsv6": {
+    "string": "Tree biomass density"
+  },
   "BZkcBV": {
     "string": "Project developer photo"
   },
@@ -337,6 +352,9 @@
   },
   "BkLlj6": {
     "string": "What’s the impact of your project and what do you want to achieve"
+  },
+  "Bt7PVr": {
+    "string": "Biodiversity intactness"
   },
   "BvO1iK": {
     "string": "Biodiversity impact"
@@ -416,6 +434,9 @@
   "Ec0M9T": {
     "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
   },
+  "EmE3wV": {
+    "string": "Sub-basin boundaries of Colombia."
+  },
   "ErIkUS": {
     "string": "Insert your email"
   },
@@ -439,6 +460,9 @@
   },
   "FN+0yY": {
     "string": "Unable to parse the file. Please try uploading a different format."
+  },
+  "Fm6QvT": {
+    "string": "Political boundaries"
   },
   "Ftj+/t": {
     "string": "Why is my profile pending approval?"
@@ -528,6 +552,9 @@
   "J4w7T/": {
     "string": "Enable positive impact"
   },
+  "JBFQAB": {
+    "string": "Population density"
+  },
   "JFkvlB": {
     "string": "Please use the contacts below to reach the project developer."
   },
@@ -606,6 +633,9 @@
   "MHwpc4": {
     "string": "Draw or upload your location"
   },
+  "MJuP2l": {
+    "string": "Displays the impacts of forest change on local biodiversity intactness."
+  },
   "MM4RqT": {
     "string": "This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}."
   },
@@ -626,6 +656,9 @@
   },
   "NIQVjS": {
     "string": "Support the consolidation of their lands governance structures and capacities for sound management."
+  },
+  "NUVSd2": {
+    "string": "Protected areas"
   },
   "NYErt1": {
     "string": "Go to previous page"
@@ -671,6 +704,9 @@
   },
   "P7PLVj": {
     "string": "Date"
+  },
+  "PD6Q1A": {
+    "string": "Endangered species and critical habitats"
   },
   "PGlFh/": {
     "string": "Community impact"
@@ -825,6 +861,9 @@
   "W5x0GV": {
     "string": "Water impact"
   },
+  "W7un1n": {
+    "string": "HeCo mosaics"
+  },
   "WAr33U": {
     "string": "insert the name"
   },
@@ -837,6 +876,9 @@
   "Wo0Pmr": {
     "string": "Already a member? Log in"
   },
+  "WskbuL": {
+    "string": "Sub-basin boundaries"
+  },
   "X0E3iC": {
     "string": "I agree with the Terms and Privacy Policy."
   },
@@ -848,6 +890,9 @@
   },
   "XJqnLu": {
     "string": "Search water"
+  },
+  "XKK/dy": {
+    "string": "Shows the wetlands of Colombia."
   },
   "XO0Kon": {
     "string": "This file is not supported. Please try uploading a different format."
@@ -1044,11 +1089,17 @@
   "fDd10o": {
     "string": "Instrument type"
   },
+  "fIkMFK": {
+    "string": "Context Layers"
+  },
   "fMrPOR": {
     "string": "Go to last page"
   },
   "fnihsY": {
     "string": "Leave"
+  },
+  "fvFVbs": {
+    "string": "Shows above ground live woody biomass density."
   },
   "fwSVTQ": {
     "string": "Sort in descending order"
@@ -1061,6 +1112,9 @@
   },
   "gjBW8J": {
     "string": "General information about the investor/funder."
+  },
+  "gpOeXW": {
+    "string": "Priority Layers"
   },
   "gpTOIc": {
     "string": "{message} for search term {term}"
@@ -1154,6 +1208,9 @@
   },
   "kEXoaQ": {
     "string": "About your work"
+  },
+  "kN5g/0": {
+    "string": "Indigenous Reserves"
   },
   "kPq9Kx": {
     "string": "HeCo priority landscape"
@@ -1311,6 +1368,9 @@
   "rvirM2": {
     "string": "Location"
   },
+  "rw2/NH": {
+    "string": "Identifies areas of gross tree cover loss."
+  },
   "rwcive": {
     "string": "Total of {total} users"
   },
@@ -1449,6 +1509,9 @@
   "xXbJso": {
     "string": "Sign out"
   },
+  "xa6OiT": {
+    "string": "Wetlands"
+  },
   "xbi38c": {
     "string": "Zoom in"
   },
@@ -1466,6 +1529,9 @@
   },
   "y1Z3or": {
     "string": "Language"
+  },
+  "y8AKM4": {
+    "string": "Tree cover loss"
   },
   "yF82he": {
     "string": "Project developer"
