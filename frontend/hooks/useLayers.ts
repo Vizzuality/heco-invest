@@ -57,15 +57,31 @@ export const useLayers = () => {
           id: LAYERS.HeCoMosaics,
           group: LAYER_GROUPS.BaseLayer,
           name: intl.formatMessage({ defaultMessage: 'HeCo mosaics', id: 'W7un1n' }),
-          description: null,
-          specification: null,
+          // description: '',
+          specification: {
+            type: 'raster',
+            source: {
+              type: 'raster',
+              tiles: [
+                `https://api.mapbox.com/v4/leticiaheco.1d0el4j0/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+              ],
+            },
+          },
         },
         {
           id: LAYERS.PoliticalBoundaries,
           group: LAYER_GROUPS.BaseLayer,
           name: intl.formatMessage({ defaultMessage: 'Political boundaries', id: 'Fm6QvT' }),
-          description: null,
-          specification: null,
+          // description: '',
+          specification: {
+            type: 'raster',
+            source: {
+              type: 'raster',
+              tiles: [
+                `https://api.mapbox.com/v4/leticiaheco.59zi3at4/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+              ],
+            },
+          },
         },
         {
           id: LAYERS.SubBasinBoundaries,
@@ -75,14 +91,30 @@ export const useLayers = () => {
             defaultMessage: 'Sub-basin boundaries of Colombia.',
             id: 'EmE3wV',
           }),
-          specification: null,
+          specification: {
+            type: 'raster',
+            source: {
+              type: 'raster',
+              tiles: [
+                `https://api.mapbox.com/v4/leticiaheco.77lko5p2/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+              ],
+            },
+          },
         },
         {
           id: LAYERS.ProtectedAreas,
           group: LAYER_GROUPS.BaseLayer,
           name: intl.formatMessage({ defaultMessage: 'Protected areas', id: 'NUVSd2' }),
-          description: null,
-          specification: null,
+          // description: '',
+          specification: {
+            type: 'raster',
+            source: {
+              type: 'raster',
+              tiles: [
+                `https://api.mapbox.com/v4/leticiaheco.3cokqqf5/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+              ],
+            },
+          },
         },
         // CONTEXT_LAYERS
         {
@@ -94,7 +126,15 @@ export const useLayers = () => {
               'Displays the impacts of forest change on local biodiversity intactness.',
             id: 'MJuP2l',
           }),
-          specification: null,
+          specification: {
+            type: 'raster',
+            source: {
+              type: 'raster',
+              tiles: [
+                'https://tiles.globalforestwatch.org/birdlife_biodiversity_intactness/v201909/default/{z}/{x}/{y}.png',
+              ],
+            },
+          },
         },
         {
           id: LAYERS.TreeBiomassIntensity,
@@ -104,7 +144,15 @@ export const useLayers = () => {
             defaultMessage: 'Shows above ground live woody biomass density.',
             id: 'fvFVbs',
           }),
-          specification: null,
+          specification: {
+            type: 'raster',
+            source: {
+              type: 'raster',
+              tiles: [
+                'https://storage.googleapis.com/wri-public/biomass/global/2017/v2/30/{z}/{x}/{y}.png',
+              ],
+            },
+          },
         },
         {
           id: LAYERS.Wetlands,
@@ -114,7 +162,15 @@ export const useLayers = () => {
             defaultMessage: 'Shows the wetlands of Colombia.',
             id: 'XKK/dy',
           }),
-          specification: null,
+          specification: {
+            type: 'raster',
+            source: {
+              type: 'raster',
+              tiles: [
+                `https://api.mapbox.com/v4/leticiaheco.0lg4uw9f/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+              ],
+            },
+          },
         },
         {
           id: LAYERS.PopulationDensity,
@@ -124,7 +180,15 @@ export const useLayers = () => {
             defaultMessage: 'Global estimate of human population density and distribution.',
             id: 'A8lXv/',
           }),
-          specification: null,
+          specification: {
+            type: 'raster',
+            source: {
+              type: 'raster',
+              tiles: [
+                'https://api.resourcewatch.org/v1/layer/24aaef77-3cee-4bdd-b6c9-2f5ab147db7d/tile/gee/{z}/{x}/{y}',
+              ],
+            },
+          },
         },
         // PRIORITY LAYERS
         {
@@ -139,7 +203,47 @@ export const useLayers = () => {
               'Displays the Key Biodiversity Areas containing 95% or more of the remaining population of one or more species listed as Endangered or Critically Endangered on the International Union for Conservation of Nature (IUCN) Red List of Threatened Species.',
             id: '6vrfSY',
           }),
-          specification: null,
+          specification: {
+            type: 'vector',
+            source: {
+              type: 'vector',
+              provider: {
+                type: 'carto',
+                account: 'wri-rw',
+                layers: [
+                  {
+                    options: {
+                      type: 'cartodb',
+                      sql: 'SELECT * FROM bio_001_endangered_species_critical_habitats',
+                    },
+                  },
+                ],
+              },
+            },
+            render: {
+              layers: [
+                {
+                  'source-layer': 'layer0',
+                  type: 'line',
+                  filter: ['all'],
+                  paint: {
+                    'line-width': 0.5,
+                    'line-color': '#FFF',
+                    'line-opacity': 1,
+                  },
+                },
+                {
+                  'source-layer': 'layer0',
+                  type: 'fill',
+                  filter: ['all'],
+                  paint: {
+                    'fill-color': ' #b2d26e',
+                    'fill-opacity': 1,
+                  },
+                },
+              ],
+            },
+          },
         },
         {
           id: LAYERS.TreeCoverLoss,
@@ -152,7 +256,15 @@ export const useLayers = () => {
             defaultMessage: 'Identifies areas of gross tree cover loss.',
             id: 'rw2/NH',
           }),
-          specification: null,
+          specification: {
+            type: 'raster',
+            source: {
+              type: 'raster',
+              tiles: [
+                'https://tiles.globalforestwatch.org/umd_tree_cover_loss/v1.8/tcd_30/{z}/{x}/{y}.png',
+              ],
+            },
+          },
         },
         /*
         {
@@ -167,7 +279,7 @@ export const useLayers = () => {
               'Shows the percentage of the population expected to be affected by riverine flooding in an average year.',
             id: 'nwXvcg',
           }),
-          specification: null,
+          specification: {},
         },
         */
         {
@@ -178,11 +290,22 @@ export const useLayers = () => {
             defaultMessage: 'Legalized Indigenous Reservations until the year 2021.',
             id: '1Qvlb5',
           }),
-          specification: null,
+          specification: {
+            type: 'raster',
+            source: {
+              type: 'raster',
+              tiles: [
+                `https://api.mapbox.com/v4/leticiaheco.99uihxi8/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+              ],
+            },
+          },
         },
       ].map((layer) => ({
         ...layer,
-        ...(layer.specification && { specification: { id: layer.id, ...layer.specification } }),
+        specification: {
+          id: layer.id,
+          ...layer.specification,
+        },
       })),
     [intl]
   );
