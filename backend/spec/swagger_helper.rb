@@ -72,7 +72,8 @@ RSpec.configure do |config|
                   impacts: {type: :array, items: {type: :string}},
                   sdgs: {type: :array, items: {type: :integer}},
                   previously_invested: {type: :boolean},
-                  language: {type: :string}
+                  language: {type: :string},
+                  created_at: {type: :string}
                 }
               },
               relationships: {
@@ -93,7 +94,8 @@ RSpec.configure do |config|
                 type: :object,
                 properties: {
                   name: {type: :string},
-                  location_type: {type: :string, enum: LocationType::TYPES}
+                  location_type: {type: :string, enum: LocationType::TYPES},
+                  created_at: {type: :string}
                 }
               },
               relationships: {
@@ -122,7 +124,8 @@ RSpec.configure do |config|
                   money_distribution: {type: :string},
                   impact_description: {type: :string},
                   closing_at: {type: :string},
-                  language: {type: :string}
+                  language: {type: :string},
+                  created_at: {type: :string}
                 }
               },
               relationships: {
@@ -168,6 +171,8 @@ RSpec.configure do |config|
                   latitude: {type: :number},
                   longitude: {type: :number},
                   category: {type: :string},
+                  trusted: {type: :boolean},
+                  created_at: {type: :string},
                   target_groups: {type: :array, items: {type: :string}},
                   impact_areas: {type: :array, items: {type: :string}},
                   instrument_types: {type: :array, items: {type: :string}},
@@ -230,7 +235,8 @@ RSpec.configure do |config|
                   mosaics: {type: :array, items: {type: :string}},
                   language: {type: :string},
                   entity_legal_registration_number: {type: :string},
-                  favourite: {type: :boolean, nullable: true}
+                  favourite: {type: :boolean, nullable: true},
+                  created_at: {type: :string}
                 }
               },
               relationships: {

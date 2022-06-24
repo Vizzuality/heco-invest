@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
 
-import { UseQueryResult, useQuery, UseQueryOptions } from 'react-query';
+import { UseQueryResult, UseQueryOptions } from 'react-query';
 
 import { AxiosRequestConfig } from 'axios';
+
+import { useLocalizedQuery } from 'hooks/query';
 
 import { Queries } from 'enums';
 import { Project, ProjectMapParams, ProjectsMap, ProjectsMapGeojson } from 'types/project';
@@ -38,7 +40,7 @@ export function useProjectsList(
   params?: PagedRequest,
   options?: UseQueryOptions<PagedResponse<Project>>
 ): UseQueryResult<PagedResponse<Project>> & { projects: Project[] } {
-  const query = useQuery([Queries.ProjectList, params], () => getProjects(params), {
+  const query = useLocalizedQuery([Queries.ProjectList, params], () => getProjects(params), {
     ...staticDataQueryOptions,
     ...options,
   });
@@ -77,8 +79,12 @@ export const getProject = async (
 };
 
 /** Use query for a single Project */
-export function useProject(id: string, params, initialData?: Project) {
-  const query = useQuery([Queries.ProjectQuery, id], () => getProject(id, params), {
+export function useProject(
+  id: string,
+  params: Parameters<typeof getProject>[1],
+  initialData?: Project
+) {
+  const query = useLocalizedQuery([Queries.ProjectQuery, id], () => getProject(id, params), {
     refetchOnWindowFocus: false,
     initialData: { data: initialData, included: [] },
   });
@@ -102,7 +108,7 @@ const getProjectsMap = (params) =>
 export const useProjectsMap = (
   params: ProjectMapParams
 ): UseQueryResult<ResponseData<ProjectsMap[]>, unknown> & { projectsMap: ProjectsMapGeojson } => {
-  const query = useQuery([Queries.ProjectQuery], () => getProjectsMap(params), {
+  const query = useLocalizedQuery([Queries.ProjectQuery], () => getProjectsMap(params), {
     placeholderData: {
       data: [],
     },

@@ -65,3 +65,8 @@ variable "domain" {
   type = string
   description = "Base domain for the DNS zone"
 }
+
+variable "uptime_alert_email" {
+  type = string
+  description = "Email address to which uptime alerts should be sent"
+}

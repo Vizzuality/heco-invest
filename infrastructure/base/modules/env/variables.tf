@@ -95,3 +95,8 @@ variable "cors_origin" {
   description = "Origin for CORS config"
   default = "*"
 }
+
+variable "uptime_alert_email" {
+  type = string
+  description = "Email address to which uptime alerts should be sent"
+}

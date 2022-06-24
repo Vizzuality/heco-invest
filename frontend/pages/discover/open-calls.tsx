@@ -1,3 +1,5 @@
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -8,7 +10,7 @@ import { GroupedEnums as GroupedEnumsType } from 'types/enums';
 
 import { getEnums } from 'services/enums/enumService';
 
-export const getServerSideProps = async ({ locale }) => {
+export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
   const enums = await getEnums();
 
   return {
@@ -17,7 +19,7 @@ export const getServerSideProps = async ({ locale }) => {
       enums: groupBy(enums, 'type'),
     },
   };
-};
+});
 
 type OpenCallsPageProps = {
   enums: GroupedEnumsType;

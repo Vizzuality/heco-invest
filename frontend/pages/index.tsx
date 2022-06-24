@@ -5,6 +5,8 @@ import cx from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { InferGetStaticPropsType } from 'next';
 import { useInViewRef } from 'rooks';
 
@@ -21,13 +23,13 @@ import ConnectIcon from 'svgs/home/connect.svg';
 import ReportBackIcon from 'svgs/home/report-back.svg';
 import SearchFindIcon from 'svgs/home/search-find.svg';
 
-export async function getStaticProps(ctx) {
+export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
     },
   };
-}
+});
 
 type HomePageProps = InferGetStaticPropsType<typeof getStaticProps>;
 

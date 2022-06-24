@@ -7,6 +7,7 @@ export const COLOR_THEMES: Record<NonNullable<ButtonCommonProps['theme']>, strin
   'primary-green': `bg-green-dark text-white hover:text-green-light focus-visible:outline-green-dark`,
   'primary-white': `bg-white text-green-dark hover:text-green-light shadow-transparent hover:shadow-lg focus-visible:outline-white`,
   'primary-orange': `bg-orange text-black hover:text-white focus-visible:outline-green-dark`,
+  'primary-red': `bg-red-700 text-white hover:bg-red-800 focus-visible:outline-red-600`,
   'secondary-green': `bg-green-light/0 border border-green-dark text-green-dark hover:bg-green-light focus-visible:outline-green-dark`,
   'secondary-white': `bg-white/0 border border-white text-white hover:bg-background-light hover:text-green-dark focus-visible:outline-white`,
   naked: '',

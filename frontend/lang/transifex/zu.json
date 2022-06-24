@@ -954,6 +954,9 @@
   "bNpbHr": {
     "string": "Find other people with similar interests. Join forces, secure more investment and create a greater impact."
   },
+  "bQc7X2": {
+    "string": "Are you sure you want to delete <strong>{displayName}</strong>? You cant undo this action."
+  },
   "bWygLM": {
     "string": "insert the amount of money"
   },
@@ -1152,6 +1155,9 @@
   "jwimQJ": {
     "string": "Ok"
   },
+  "k5DITM": {
+    "string": "Users will receive an email to sign up into the platform and join <strong>{name}</strong> account."
+  },
   "k62/kN": {
     "string": "Fit bounds"
   },
@@ -1313,6 +1319,9 @@
   },
   "rvirM2": {
     "string": "Location"
+  },
+  "rwcive": {
+    "string": "Total of {total} users"
   },
   "s07dAT": {
     "string": "Project image"

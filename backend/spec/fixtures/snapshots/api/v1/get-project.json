@@ -66,7 +66,8 @@
       "priority_landscape_climate_impact": null,
       "priority_landscape_water_impact": null,
       "priority_landscape_community_impact": null,
-      "priority_landscape_total_impact": null
+      "priority_landscape_total_impact": null,
+      "created_at": "2022-06-24T09:07:48.981Z"
     },
     "relationships": {
       "project_developer": {

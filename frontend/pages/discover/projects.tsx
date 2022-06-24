@@ -6,6 +6,8 @@ import cx from 'classnames';
 
 import { useRouter } from 'next/router';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { FocusScope } from '@react-aria/focus';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useOutsideClick } from 'rooks';
@@ -27,13 +29,13 @@ import DiscoverPageLayout, { DiscoverPageLayoutProps } from 'layouts/discover-pa
 import { PageComponent } from 'types';
 import { Project as ProjectType } from 'types/project';
 
-export const getServerSideProps = async ({ locale }) => {
+export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
     },
   };
-};
+});
 
 type ProjectsPageProps = {
   data: ProjectType[];
