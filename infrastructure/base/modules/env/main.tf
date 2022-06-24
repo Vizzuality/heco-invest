@@ -391,6 +391,21 @@ module "purge_users_cron" {
   service_account_email = module.jobs_cloudrun.service_account_email
 }
 
+module "frontend_uptime_check" {
+  source = "../uptime-check"
+  name   = "${var.project_name} Frontend"
+  host   = var.domain
+  email  = var.uptime_alert_email
+}
+
+module "api_uptime_check" {
+  source = "../uptime-check"
+  name   = "${var.project_name} API"
+  host   = var.domain
+  path   = "/backend/health_check"
+  email  = var.uptime_alert_email
+}
+
 module "dns" {
   source = "../dns"
   domain = var.domain
