@@ -7,7 +7,7 @@ import ConnectIcon from 'svgs/home/connect.svg';
 import CreateAccountIcon from 'svgs/home/create-account.svg';
 import SearchFindIcon from 'svgs/home/search-find.svg';
 
-export const FooterBanner = () => (
+export const Working = () => (
   <div className="py-16 mt-24 sm:py-28 bg-background-middle">
     <LayoutContainer>
       <h2 className="max-w-md mx-auto font-serif text-2xl font-bold text-center sm:max-w-xl md:max-w-4xl sm:text-3xl md:text-5xl">
@@ -73,4 +73,4 @@ export const FooterBanner = () => (
   </div>
 );
 
-export default FooterBanner;
+export default Working;

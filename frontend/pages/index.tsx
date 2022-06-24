@@ -5,11 +5,11 @@ import { InferGetStaticPropsType } from 'next';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Carousel from 'containers/home/carousel';
-import FooterBanner from 'containers/home/footer-banner';
 import Hero from 'containers/home/hero';
-import HowItWorks from 'containers/home/how-it-works';
 import Priorities from 'containers/home/priorities';
+import StartBanner from 'containers/home/start-banner';
 import UsePlatform from 'containers/home/use-platform';
+import Working from 'containers/home/working';
 
 import Head from 'components/head';
 import { StaticPageLayoutProps } from 'layouts/static-page';
@@ -31,10 +31,10 @@ const Home: PageComponent<HomePageProps, StaticPageLayoutProps> = () => {
       <Head />
       <Hero />
       <UsePlatform />
-      <HowItWorks />
+      <Working />
       <Priorities />
       <Carousel />
-      <FooterBanner />
+      <StartBanner />
     </>
   );
 };

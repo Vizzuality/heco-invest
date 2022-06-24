@@ -52,12 +52,7 @@ export const UsePlatform = () => {
               })}
             />
           </div>
-          <h3
-            className={cx({
-              'text-lg font-semibold text-green-dark pb-1.5': true,
-              hidden: breakpoint('sm'),
-            })}
-          >
+          <h3 className="text-lg font-semibold text-green-dark pb-1.5 sm:hidden">
             <FormattedMessage
               defaultMessage="As an Investor or <br></br> Funder"
               id="xqjjPY"
@@ -67,12 +62,7 @@ export const UsePlatform = () => {
         </div>
 
         <div className="relative mt-12 lg:mt-0">
-          <h3
-            className={cx({
-              'text-xl font-semibold lg:text-2xl text-green-dark': true,
-              hidden: !breakpoint('sm'),
-            })}
-          >
+          <h3 className="hidden text-xl font-semibold lg:text-2xl text-green-dark sm:block">
             <FormattedMessage defaultMessage="As an Investor or Funder" id="7qB5i4" />
           </h3>
           <div className="mt-8">
@@ -127,10 +117,7 @@ export const UsePlatform = () => {
             theme="secondary-green"
             size="small"
             to="/investors"
-            className={cx({
-              'inline-block mt-12 md:mt-16': true,
-              'w-full text-center': !breakpoint('sm'),
-            })}
+            className="inline-block w-full mt-12 text-center md:mt-16 sm:w-auto"
           >
             <FormattedMessage defaultMessage="Investors features" id="wsk6Y/" />
           </Button>
@@ -143,13 +130,7 @@ export const UsePlatform = () => {
             <h3 className="text-xl font-semibold lg:text-2xl text-green-dark pb-1.5">
               <FormattedMessage defaultMessage="As a Project Developer" id="pgfBG8" />
             </h3>
-            <div
-              className={cx({
-                'mt-10 lg:mt-0 lg:pl-24': true,
-                block: !breakpoint('sm'),
-                hidden: breakpoint('sm'),
-              })}
-            >
+            <div className="block mt-10 lg:mt-0 lg:pl-24 sm:hidden">
               <Image
                 className="relative mx-auto"
                 height={PD_IMAGE_HEIGHT}
@@ -222,21 +203,12 @@ export const UsePlatform = () => {
             theme="secondary-green"
             size="small"
             to="/investors"
-            className={cx({
-              'inline-block mt-12 md:mt-16': true,
-              'w-full text-center': !breakpoint('sm'),
-            })}
+            className="inline-block w-full mt-12 text-center md:mt-16 sm:w-auto"
           >
             <FormattedMessage defaultMessage="Project developer features" id="DIrN6T" />
           </Button>
         </div>
-        <div
-          className={cx({
-            'mt-10 lg:mt-0 lg:pl-24': true,
-            block: breakpoint('sm'),
-            hidden: !breakpoint('sm'),
-          })}
-        >
+        <div className="hidden mt-10 lg:mt-0 lg:pl-24 sm:block">
           <Image
             className="relative mx-auto"
             height={PD_IMAGE_HEIGHT}
