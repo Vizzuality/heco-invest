@@ -17,7 +17,8 @@
       "impact_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
       "closing_at": "2023-01-15T11:45:07.390Z",
       "language": "en",
-      "trusted": false
+      "trusted": false,
+      "created_at": "2022-06-24T09:07:24.094Z"
     },
     "relationships": {
       "investor": {
