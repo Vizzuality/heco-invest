@@ -109,6 +109,8 @@ RSpec.describe "Backoffice: Projects", type: :system do
         it "can update project information" do
           fill_in t("simple_form.labels.project.name"), with: "New name"
           attach_file t("simple_form.labels.project.project_images"), [Rails.root.join("spec/fixtures/files/picture.jpg"), Rails.root.join("spec/fixtures/files/picture_2.jpg")]
+          attach_file :shapefile, Rails.root.join("spec/fixtures/files/shapefile.zip")
+          expect(page).to have_text(t("backoffice.projects.form.shapefile_loaded"))
           select country.name, from: t("simple_form.labels.project.country")
           select country.locations.first.name, from: t("simple_form.labels.project.department")
           select country.locations.first.locations.first.name, from: t("simple_form.labels.project.municipality")
@@ -175,6 +177,45 @@ RSpec.describe "Backoffice: Projects", type: :system do
           expect(project.progress_impact_tracking).to eq("New progress impact tracking")
           expect(project.description).to eq("New description")
           expect(project.relevant_links).to eq("New relevant links")
+          expect(project.geometry).to eq({
+            type: "Feature",
+            properties: {},
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [
+                    -74.59716796875,
+                    2.3943223575350774
+                  ],
+                  [
+                    -75.16845703124999,
+                    1.7355743631421197
+                  ],
+                  [
+                    -74.5751953125,
+                    1.252341676699629
+                  ],
+                  [
+                    -73.80615234375,
+                    1.1864386394452024
+                  ],
+                  [
+                    -73.47656249999999,
+                    1.6037944300589857
+                  ],
+                  [
+                    -73.89404296875,
+                    2.3065056838291094
+                  ],
+                  [
+                    -74.59716796875,
+                    2.3943223575350774
+                  ]
+                ]
+              ]
+            }
+          }.as_json)
         end
       end
 
@@ -193,6 +234,11 @@ RSpec.describe "Backoffice: Projects", type: :system do
 
           expect(page).to have_text(t("simple_form.error_notification.default_message"))
           expect(page).to have_text("Name can't be blank")
+        end
+
+        it "shows validation errors for wrong shapefile" do
+          attach_file :shapefile, Rails.root.join("spec/fixtures/files/text_file.txt")
+          expect(page).to have_text(t("backoffice.projects.form.shapefile_messages.not_supported"))
         end
       end
     end
