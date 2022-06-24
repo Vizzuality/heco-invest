@@ -6,7 +6,7 @@ module API
       before_action :authenticate_user! # TODO: Only Admin can access!
 
       def index
-        events = apply_filter_to BackgroundJobEvent.all
+        events = apply_filter_to(BackgroundJobEvent.all).order :created_at
         pagy_object, events = pagy(events, page: current_page, items: per_page)
         render json: BackgroundJobEventSerializer.new(
           events,
