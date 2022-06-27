@@ -11,7 +11,7 @@ module API
             .where(project_developer_id: current_user.account.project_developer.id)
             .includes(:project_developer, :involved_project_developers, project_images: {file_attachment: :blob})
           projects = API::Filterer.new(projects, filter_params.to_h).call
-          projects = API::Sorter.new(projects, sorting_by: params[:sorting]).call
+          projects = projects.order(created_at: :desc)
           render json: ProjectSerializer.new(
             projects,
             include: included_relationships,

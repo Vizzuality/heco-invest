@@ -70,18 +70,6 @@ RSpec.describe "API V1 Account Projects", type: :request do
       parameter name: "fields[project]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
       parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
       parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
-      parameter name: :sorting, in: :query, type: :string, required: false, description: "Sort records.",
-        enum: [
-          "name asc", "name desc",
-          # "category asc", "category desc", # TODO: this is stored as a slug in the db, i.e. in English
-          # "municipality asc", "municipality desc", # TODO: this shows as 'Leticia, Colombia' in the design
-          # "ticket_size asc", "ticket_size desc", # TODO: this is stored as a slug in the db, i.e. in English
-          # "instrument_type asc", "instrument_type desc", # TODO: this is an array of slugs
-          # "status asc", "status desc", # TODO: this is stored as a slug in the db, i.e. in English
-          "created_at asc", "created_at desc"
-        ]
-
-      let(:sorting) { "name asc" }
 
       it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
 
