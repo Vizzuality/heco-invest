@@ -41,7 +41,7 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
   const createInvestor = useCreateInvestor();
 
   const handleOnComplete = () => {
-    push(Paths.Dashboard);
+    router.push((router.query?.returnPath as string) || Paths.Dashboard);
   };
 
   return (
