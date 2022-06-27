@@ -75,4 +75,4 @@ TODO: When adding docker, make sure fresh translations are pulled when creating 
 
 Static content that needs to be translated has to be added only to `config/locales/zu.yml` file. To push new translations to Transifex use `tx push -s`.
 
-From time to time it will be useful to download already translated content into the repo `tx pull -m onlytranslated`.
+To download already translated content `bin/rails transifex:pull`
