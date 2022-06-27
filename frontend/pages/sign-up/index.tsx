@@ -32,16 +32,11 @@ export const getServerSideProps = withLocalizedRequests<GetServerSideProps>(
   async ({ locale, query }) => {
     let invitedUser: InvitedUserInfo = null;
 
-    // If it is an invitation get the invited user data
+    // If there is an invitation token get the invited user data
     if (query?.invitation_token) {
       try {
         invitedUser = await getInvitedUser(query.invitation_token as string);
       } catch (e) {
-        // invitedUser = {
-        //   account_name: 'MOCKED ACCOUNT NAME',
-        //   email: 'mocked@email.com',
-        //   requires_registration: true,
-        // };
         return { notFound: true };
       }
     }

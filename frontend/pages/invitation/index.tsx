@@ -25,11 +25,6 @@ export const getServerSideProps: GetServerSideProps = async ({ locale, query }) 
     const { invitation_token } = query;
     invitedUser = await getInvitedUser(invitation_token as string);
   } catch (e) {
-    // invitedUser = {
-    //   account_name: 'MOCKED ACCOUNT NAME',
-    //   email: 'mocked@email.com',
-    //   requires_registration: false,
-    // };
     return { notFound: true };
   }
 
