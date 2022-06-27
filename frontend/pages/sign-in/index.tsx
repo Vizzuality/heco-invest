@@ -6,6 +6,10 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
+import { GetServerSideProps } from 'next';
+
 import useMe from 'hooks/me';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -19,41 +23,44 @@ import Loading from 'components/loading';
 import { Paths, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
+import { InvitedUserInfo } from 'types/invitation';
 import { SignIn } from 'types/sign-in';
-import { InvitedUser } from 'types/user';
 import { useSignInResolver } from 'validations/sign-in';
 
 import { useSignIn } from 'services/authentication/authService';
-import { getInvitedUser } from 'services/users/userService';
+import { getInvitedUser, useAcceptInvitation } from 'services/invitation/invitationService';
 
-export const getServerSideProps = async ({ locale, query }) => {
-  let invitedUser = null;
+export const getServerSideProps = withLocalizedRequests<GetServerSideProps>(
+  async ({ locale, query }) => {
+    let invitedUser: InvitedUserInfo = null;
 
-  // If it is an invitation get the invited user data
-  if (query?.token) {
-    try {
-      invitedUser = await getInvitedUser(query.token as string);
-    } catch (e) {
-      return { notFound: true };
+    // If it is an invitation get the invited user data
+    if (query?.invitation_token) {
+      try {
+        invitedUser = await getInvitedUser(query.invitation_token as string);
+      } catch (e) {
+        return { notFound: true };
+      }
     }
-  }
 
-  return {
-    props: {
-      intlMessages: await loadI18nMessages({ locale }),
-      invitedUser,
-    },
-  };
-};
+    return {
+      props: {
+        intlMessages: await loadI18nMessages({ locale }),
+        invitedUser,
+      },
+    };
+  }
+);
 
 type SignInPageProps = {
-  invitedUser: InvitedUser;
+  invitedUser: InvitedUserInfo;
 };
 
 const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = ({ invitedUser }) => {
   const { push, query } = useRouter();
   const intl = useIntl();
   const signIn = useSignIn();
+  const acceptInvitation = useAcceptInvitation();
   const resolver = useSignInResolver();
   const {
     register,
@@ -64,7 +71,7 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = ({ invitedUs
     shouldUseNativeValidation: true,
     defaultValues: { email: invitedUser?.email },
   });
-  const { user } = useMe();
+  const { user, refetch } = useMe();
 
   useEffect(() => {
     if (user) {
@@ -76,7 +83,20 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = ({ invitedUs
     }
   }, [push, query.callbackUrl, user]);
 
-  const handleSignIn = useCallback((data: SignIn) => signIn.mutate(data), [signIn]);
+  const handleSignIn = useCallback(
+    (data: SignIn) =>
+      signIn.mutate(data, {
+        onSuccess: () => {
+          if (!!invitedUser) {
+            acceptInvitation.mutate(query.invitation_token as string, {
+              onSuccess: () => push(Paths.Dashboard),
+            });
+          }
+          refetch();
+        },
+      }),
+    [acceptInvitation, invitedUser, push, query.invitation_token, refetch, signIn]
+  );
 
   const onSubmit: SubmitHandler<SignIn> = handleSignIn;
 
@@ -109,9 +129,17 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = ({ invitedUs
         </div>
       )}
 
+      {acceptInvitation?.isError && (
+        <Alert className="mt-4.5" withLayoutContainer>
+          {Array.isArray(acceptInvitation?.error?.message)
+            ? acceptInvitation?.error?.message[0].title
+            : acceptInvitation?.error?.message}
+        </Alert>
+      )}
+
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signIn.error?.message && (
-          <Alert className="mb-4.5" withLayoutContainer>
+          <Alert className="my-4.5" withLayoutContainer>
             {Array.isArray(signIn.error?.message)
               ? signIn.error.message[0].title
               : signIn.error.message}

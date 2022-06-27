@@ -5,6 +5,10 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
+import { GetServerSideProps } from 'next';
+
 import useMe from 'hooks/me';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -17,39 +21,49 @@ import Loading from 'components/loading';
 import { Paths } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
-import { InvitedUser, SignupDto, SignupFormI } from 'types/user';
+import { InvitedUserInfo } from 'types/invitation';
+import { SignupDto, SignupFormI } from 'types/user';
 import { useSignupResolver } from 'validations/signup';
 
-import { getInvitedUser, useSignup } from 'services/users/userService';
+import { getInvitedUser, useAcceptInvitation } from 'services/invitation/invitationService';
+import { useSignup } from 'services/users/userService';
 
-export const getServerSideProps = async ({ locale, query }) => {
-  let invitedUser = null;
+export const getServerSideProps = withLocalizedRequests<GetServerSideProps>(
+  async ({ locale, query }) => {
+    let invitedUser: InvitedUserInfo = null;
 
-  // If it is an invitation get the invited user data
-  if (query?.token) {
-    try {
-      invitedUser = await getInvitedUser(query.token as string);
-    } catch (e) {
-      return { notFound: true };
+    // If it is an invitation get the invited user data
+    if (query?.invitation_token) {
+      try {
+        invitedUser = await getInvitedUser(query.invitation_token as string);
+      } catch (e) {
+        // invitedUser = {
+        //   account_name: 'MOCKED ACCOUNT NAME',
+        //   email: 'mocked@email.com',
+        //   requires_registration: true,
+        // };
+        return { notFound: true };
+      }
     }
+
+    return {
+      props: {
+        intlMessages: await loadI18nMessages({ locale }),
+        invitedUser,
+      },
+    };
   }
+);
 
-  return {
-    props: {
-      intlMessages: await loadI18nMessages({ locale }),
-      invitedUser,
-    },
-  };
+type SignUpPageProps = {
+  invitedUser?: InvitedUserInfo;
 };
 
-type SIgnUpPageProps = {
-  invitedUser: InvitedUser;
-};
-
-const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = ({ invitedUser }) => {
-  const { locale, push } = useRouter();
+const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = ({ invitedUser }) => {
+  const { locale, push, query } = useRouter();
   const intl = useIntl();
   const signUp = useSignup();
+  const acceptInvitation = useAcceptInvitation();
   const resolver = useSignupResolver();
   const { refetch } = useMe();
 
@@ -67,11 +81,15 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = ({ invitedUs
     (data: SignupDto) =>
       signUp.mutate(data, {
         onSuccess: () => {
-          push(Paths.AccountType);
+          if (!!invitedUser && query.invitation_token) {
+            acceptInvitation.mutate(query.invitation_token as string);
+          } else {
+            push(Paths.AccountType);
+          }
           refetch();
         },
       }),
-    [signUp, push, refetch]
+    [signUp, invitedUser, query.invitation_token, push, refetch, acceptInvitation]
   );
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {
@@ -125,6 +143,11 @@ const SignUp: PageComponent<SIgnUpPageProps, AuthPageLayoutProps> = ({ invitedUs
             </Alert>
           )
         ) : null}
+        {acceptInvitation.isError && (
+          <Alert withLayoutContainer className="mt-6">
+            {(acceptInvitation.error as any)?.message}
+          </Alert>
+        )}
         <div className="md:flex md:gap-4">
           <div className="w-full">
             <label htmlFor="first-name">

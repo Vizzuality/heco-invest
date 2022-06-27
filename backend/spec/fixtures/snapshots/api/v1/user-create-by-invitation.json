@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id": "b8328381-05e5-453b-954a-8c97230f2d42",
+    "type": "user",
+    "attributes": {
+      "first_name": "Jan",
+      "last_name": "Kowalski",
+      "email": "jankowalski@example.com",
+      "role": "light",
+      "confirmed": true,
+      "approved": null,
+      "invitation": "waiting",
+      "created_at": "2022-06-24T10:15:12.699Z"
+    }
+  }
+}

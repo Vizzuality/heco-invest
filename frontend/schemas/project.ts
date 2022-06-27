@@ -50,8 +50,8 @@ export default (page: number) => {
         id: 'pQMwQ7',
       }),
       max: formatMessage({
-        defaultMessage: 'The max development durations is 24 months',
-        id: 'eL1UbG',
+        defaultMessage: 'The max development durations is 36 months',
+        id: 'PsOtRA',
       }),
       required: formatMessage({
         defaultMessage: 'You need to enter the estimated duration of the project',
@@ -152,7 +152,7 @@ export default (page: number) => {
       estimated_duration_in_months: number()
         .typeError(messages.estimated_duration_in_months.required)
         .min(1, messages.estimated_duration_in_months.min)
-        .max(24, messages.estimated_duration_in_months.max)
+        .max(36, messages.estimated_duration_in_months.max)
         .required(messages.estimated_duration_in_months.required),
       category: string().ensure().required(messages.category),
       problem: string().min(1, messages.problem).max(600, maxTextLength),
@@ -172,6 +172,7 @@ export default (page: number) => {
       ticket_size: string().when('looking_for_funding', {
         is: true,
         then: string().required(messages.ticket_size),
+        otherwise: string().nullable(),
       }),
       instrument_types: array().when('looking_for_funding', {
         is: true,
@@ -187,6 +188,7 @@ export default (page: number) => {
           .min(1, messages.funding_plan)
           .max(600, maxTextLength)
           .required(messages.funding_plan),
+        otherwise: string().ensure().nullable(),
       }),
       received_funding: boolean().typeError(booleanField).required(booleanField),
       received_funding_amount_usd: mixed().test(

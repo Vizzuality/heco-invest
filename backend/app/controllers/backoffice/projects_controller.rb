@@ -3,7 +3,7 @@ module Backoffice
     include Sections
     include ContentLanguage
 
-    before_action :fetch_project, only: [:edit, :update]
+    before_action :fetch_project, only: [:edit, :update, :destroy]
     before_action :set_breadcrumbs, only: [:edit, :update]
     before_action :set_sections, only: [:edit, :update]
     before_action :set_content_language_default, only: [:edit, :update]
@@ -39,6 +39,13 @@ module Backoffice
       end
     end
 
+    def destroy
+      @project.destroy!
+
+      redirect_to backoffice_projects_path, status: :see_other,
+        notice: t("backoffice.messages.success_delete", model: t("backoffice.common.project"))
+    end
+
     private
 
     def update_params
@@ -47,7 +54,7 @@ module Backoffice
         :country_id,
         :department_id,
         :municipality_id,
-        # :shapefile # TODO: add support for shapefile
+        :geometry,
         :project_developer_id,
         :development_stage,
         :estimated_duration_in_months,

@@ -35,6 +35,7 @@ export enum Paths {
   OpenCallCreation = '/open-calls/new',
   Investor = '/investor',
   NewInvestor = '/investors/new',
+  EditInvestor = '/investors/edit',
   PendingInvestor = '/investors/pending',
   Investors = '/discover/investors',
 }
@@ -79,6 +80,8 @@ export enum Queries {
   AccountOwnerName = 'account_owner_name',
   /** List of projects */
   AccountProjectList = 'account_projects',
+  /** List of users */
+  AccountUsersList = 'account_users',
 }
 
 /** Location endpoint param location_type */
@@ -140,4 +143,9 @@ export enum ImpactAreas {
   Municipality = 'municipality',
   Hydrobasin = 'hydrobasin',
   PriorityLandscape = 'priority_landscape',
+}
+
+export enum InvitationStatus {
+  Waiting = 'waiting',
+  Completed = 'completed',
 }

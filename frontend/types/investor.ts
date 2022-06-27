@@ -1,12 +1,15 @@
 import { Languages } from 'enums';
 import { Picture } from 'types';
 
+import { User } from './user';
+
 export type InvestorForm = {
   language: Languages;
   picture: string;
   name: string;
   contact_email: string;
   contact_phone?: string;
+  created_at?: string;
   investor_type: string;
   website?: string;
   linkedin?: string;
@@ -31,8 +34,5 @@ export type Investor = InvestorForm & {
   slug: string;
   picture: Picture;
   review_status: string;
-  owner: {
-    id: string;
-    type: string;
-  };
+  owner: User;
 };

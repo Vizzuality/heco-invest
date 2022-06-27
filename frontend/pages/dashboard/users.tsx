@@ -3,10 +3,13 @@ import { useState } from 'react';
 import { Mail as MailIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import UsersTable from 'containers/dashboard/users/table';
 import InviteUsersModal from 'containers/users/invite-users-modal';
 
 import Button from 'components/button';
@@ -18,13 +21,13 @@ import NakedLayout from 'layouts/naked';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 
-export async function getStaticProps(ctx) {
+export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
     },
   };
-}
+});
 
 type UsersPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -47,7 +50,9 @@ export const UsersPage: PageComponent<UsersPageProps, DashboardLayoutProps> = ()
           </Button>
         }
       >
-        Users page
+        <div className="pt-4">
+          <UsersTable />
+        </div>
       </DashboardLayout>
       <InviteUsersModal
         openInvitationModal={openInvitationModal}

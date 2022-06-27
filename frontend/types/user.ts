@@ -1,4 +1,4 @@
-import { UserRoles } from 'enums';
+import { InvitationStatus, UserRoles } from 'enums';
 
 export interface SignupFormI {
   first_name: string;
@@ -26,6 +26,7 @@ export interface User {
   role: UserRoles;
   confirmed: boolean;
   approved: boolean;
+  invitation?: InvitationStatus;
 }
 
 export type UserAccount = {
@@ -35,18 +36,12 @@ export type UserAccount = {
   type: 'project_developer' | 'investor';
 };
 
-export type UsersInvitationForm = {
-  email: string;
-  emails: string[];
-};
-
-export type InviteUsersDto = {
-  data: string[];
-};
-
-export type InvitedUser = {
+export interface AccountUser {
   id: string;
+  first_name: string;
+  last_name: string;
   email: string;
-  signed_up: boolean;
-  account_name: string;
-};
+  role: string;
+  picture: string;
+  confirmed: boolean;
+}

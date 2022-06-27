@@ -4,6 +4,7 @@ import { Picture } from 'types';
 import { CategoryType } from './category';
 import { Enum } from './enums';
 import { Project } from './project';
+import { User } from './user';
 
 export type ProjectDeveloperPicture = {
   small: string;
@@ -16,6 +17,7 @@ export type ProjectDeveloper = {
   categories: CategoryType[];
   contact_email: string;
   contact_phone?: string;
+  created_at: string;
   entity_legal_registration_number: string;
   facebook?: string;
   favourite: boolean;
@@ -28,7 +30,7 @@ export type ProjectDeveloper = {
   mission: string;
   mosaics: string[];
   name: string;
-  owner?: { id: string; type: 'user' };
+  owner?: User;
   picture: ProjectDeveloperPicture;
   project_developer_type: string;
   projects?: any[]; // Cannot use ProjectType because linting will complain about circular references

@@ -38,6 +38,7 @@ zu:
         country: Country
         department: State
         municipality: Municipality
+        geometry: Geometry
         project_developer: Owner
         involved_project_developers: Partners (optional)
         partners: Partners
@@ -120,13 +121,14 @@ zu:
     project_developers:
       index:
         projects: Projects
-      edit:
+      form:
         general: General
         about_the_work: About the work
     investors:
       index:
         open_calls: Open calls
-      edit:
+      form:
+        general: General
         investment_information: Investment information
         impact: Impact
     projects:
@@ -135,15 +137,23 @@ zu:
       status_description: The verification status allow the project to have a verification badge. By default all the projects are set to "Unverified". Please review the information and change it to "Verified".
       project_developers: Project developers
       project_developers_in_project: Project developers in the project (%{count})
+      delete: Delete project
       index:
         priority_landscape: Priority Landscape
-      edit:
+      form:
         location: Location
         project_developers: Project developers
         description: Description of the project
         impact: Impact
         funding_information: Funding information
         how_will_project_grow: How the project will grow
+        shapefile_upload: Upload Shapefile/KML
+        shapefile_uploading: Uploading...
+        shapefile_loaded: Shapefile loaded!
+        shapefile_messages:
+          not_valid_kml: This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues.
+          not_supported: This file is not supported. Please try uploading a different format.
+          unable_to_parse: Unable to parse the file. Please try uploading a different format.
 
     layout:
       header: Backoffice

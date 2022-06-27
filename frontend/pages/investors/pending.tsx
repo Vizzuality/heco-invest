@@ -5,6 +5,8 @@ import { FormattedMessage } from 'react-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -15,13 +17,13 @@ import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import Header from 'layouts/static-page/header';
 import { PageComponent } from 'types';
 
-export async function getStaticProps(ctx) {
+export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
     },
   };
-}
+});
 
 type PendingProjectProps = InferGetStaticPropsType<typeof getStaticProps>;
 

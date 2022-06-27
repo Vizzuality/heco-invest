@@ -10,24 +10,36 @@ import useMe from 'hooks/me';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import Alert from 'components/alert';
 import Button from 'components/button';
 import { Paths, UserRoles } from 'enums';
 import { PageComponent } from 'types';
-import { InvitedUser } from 'types/user';
+import { InvitedUserInfo } from 'types/invitation';
 
-import { getInvitedUser } from 'services/users/userService';
+import { getInvitedUser, useAcceptInvitation } from 'services/invitation/invitationService';
 
 export const getServerSideProps: GetServerSideProps = async ({ locale, query }) => {
-  let invitedUser: InvitedUser = null;
+  let invitedUser: InvitedUserInfo = null;
 
   try {
-    const { token } = query;
-    invitedUser = await getInvitedUser(token as string);
-    if (!invitedUser.signed_up) {
-      return { redirect: { destination: `${Paths.SignUp}?token=${token}`, permanent: true } };
-    }
+    const { invitation_token } = query;
+    invitedUser = await getInvitedUser(invitation_token as string);
   } catch (e) {
+    // invitedUser = {
+    //   account_name: 'MOCKED ACCOUNT NAME',
+    //   email: 'mocked@email.com',
+    //   requires_registration: false,
+    // };
     return { notFound: true };
+  }
+
+  if (invitedUser.requires_registration) {
+    return {
+      redirect: {
+        destination: `${Paths.SignUp}?invitation_token=${query?.invitation_token}`,
+        permanent: true,
+      },
+    };
   }
 
   return {
@@ -39,17 +51,18 @@ export const getServerSideProps: GetServerSideProps = async ({ locale, query }) 
 };
 
 type InvitationServerSideProps = {
-  invitedUser: InvitedUser;
+  invitedUser: InvitedUserInfo;
 };
 
 const Invitation: PageComponent<InvitationServerSideProps> = ({ invitedUser }) => {
   const { formatMessage } = useIntl();
   const { user, isError } = useMe();
-  const { push } = useRouter();
+  const acceptInvitation = useAcceptInvitation();
+  const { push, query } = useRouter();
 
   // If the user has an user account but is not signed in
-  if (isError && invitedUser.signed_up) {
-    push({ pathname: Paths.SignIn, query: { account: invitedUser.id } });
+  if (isError) {
+    push({ pathname: Paths.SignIn, query: { invitation_token: query.invitation_token } });
     return null;
   }
 
@@ -58,6 +71,12 @@ const Invitation: PageComponent<InvitationServerSideProps> = ({ invitedUser }) =
     push(Paths.Dashboard);
     return null;
   }
+
+  const handleAccept = () => {
+    acceptInvitation.mutate(query.invitation_token as string, {
+      onSuccess: () => push(Paths.Dashboard),
+    });
+  };
 
   return (
     <div className="flex flex-col items-center w-full min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-176px)]">
@@ -89,13 +108,21 @@ const Invitation: PageComponent<InvitationServerSideProps> = ({ invitedUser }) =
           />
         </p>
         <div className="flex justify-center gap-4 mb-8 mt-14">
-          <Button theme="secondary-green">
-            <FormattedMessage defaultMessage="Discard" id="nmpevl" />
+          <Button onClick={() => push(Paths.Home)} theme="secondary-green">
+            <FormattedMessage defaultMessage="Ignore" id="paBpxN" />
+            {/* <FormattedMessage defaultMessage="Discard" id="nmpevl" /> */}
           </Button>
-          <Button>
+          <Button onClick={handleAccept}>
             <FormattedMessage defaultMessage="Accept" id="sjzLbX" />
           </Button>
         </div>
+        {acceptInvitation.isError && (
+          <Alert className="my-4">
+            {Array.isArray(acceptInvitation.error?.message)
+              ? acceptInvitation.error.message.map(({ title }) => title).join('\n')
+              : acceptInvitation.error?.message}
+          </Alert>
+        )}
         <Link href={`${Paths.FAQ}#accounts`} passHref>
           <a className="text-base text-gray-700 underline">
             <FormattedMessage defaultMessage="How do accounts work?" id="/ITXlB" />

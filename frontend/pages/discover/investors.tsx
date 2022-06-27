@@ -4,6 +4,8 @@ import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { useScrollOnQuery } from 'hooks/use-scroll-on-query';
 import { usePagination } from 'hooks/usePagination';
 
@@ -18,13 +20,13 @@ import DiscoverPageLayout, { DiscoverPageLayoutProps } from 'layouts/discover-pa
 import { PageComponent } from 'types';
 import { Investor as InvestorType } from 'types/investor';
 
-export const getServerSideProps = async ({ locale }) => {
+export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
     },
   };
-};
+});
 
 type InvestorsPageProps = {
   data: InvestorType[];

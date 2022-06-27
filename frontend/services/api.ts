@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import Jsona from 'jsona';
 
 import { getCookie } from 'helpers/cookies';
@@ -23,12 +23,22 @@ const API = axios.create({
   xsrfHeaderName: 'X-CSRF-TOKEN',
 });
 
-const onRequest = (config) => {
+const onRequest = (config: AxiosRequestConfig) => {
+  // We want to always send the locale to the API automatically. Unfortunately, this can't work for
+  // requests made on the server because we can't read the `NEXT_LOCALE` cookie there (`document` is
+  // `undefined`) and at that moment in time axios doesn't give us access to the request cookies.
+  // For this reason, the following code only sends the correct locale when requests are made on the
+  // client.
   return {
     ...config,
     params: {
-      ...config?.params,
-      locale: getCookie('NEXT_LOCALE') || locales.find((locale) => locale.default).locale,
+      ...(config?.params ?? {}),
+      // NOTE: requests made on the server, should already have a `locale` parameter thanks to
+      // `withLocalizedRequests`
+      locale:
+        config?.params?.locale ??
+        getCookie('NEXT_LOCALE') ??
+        locales.find((locale) => locale.default).locale,
     },
   };
 };

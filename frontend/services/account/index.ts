@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 
 import {
-  useQuery,
   useMutation,
   UseMutationResult,
   useQueryClient,
@@ -13,32 +12,40 @@ import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { decycle } from 'cycle';
 
 import useMe from 'hooks/me';
+import { useLocalizedQuery } from 'hooks/query';
 
 import { Queries, UserRoles } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
 import { Project, ProjectCreationPayload, ProjectUpdatePayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
+import { AccountUser } from 'types/user';
 
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
 import { ErrorResponse, PagedRequest, PagedResponse, ResponseData } from 'services/types';
 
 // Create PD
-const getProjectDeveloper = async (): Promise<ProjectDeveloper> => {
+const getProjectDeveloper = async (includes?: string): Promise<ProjectDeveloper> => {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/project_developer`,
     method: 'GET',
+    params: { includes },
   };
   return await API.request(config).then((response) => decycle(response.data.data));
 };
 
 export function useProjectDeveloper(
-  options: UseQueryOptions<ProjectDeveloper>
+  options: UseQueryOptions<ProjectDeveloper>,
+  includes?: string
 ): UseQueryResult<ProjectDeveloper> & { projectDeveloper: ProjectDeveloper } {
-  const query = useQuery([Queries.CurrentProjectDeveloper], () => getProjectDeveloper(), {
-    refetchOnWindowFocus: false,
-    ...options,
-  });
+  const query = useLocalizedQuery(
+    [Queries.CurrentProjectDeveloper],
+    () => getProjectDeveloper(includes),
+    {
+      refetchOnWindowFocus: false,
+      ...options,
+    }
+  );
   return useMemo(() => ({ ...query, projectDeveloper: query.data }), [query]);
 }
 
@@ -84,45 +91,43 @@ export function useUpdateProjectDeveloper(): UseMutationResult<
 
 // Create Project
 export function useCreateProject(): UseMutationResult<
-  AxiosResponse<Project>,
+  AxiosResponse<ResponseData<Project>>,
   AxiosError<ErrorResponse>,
   ProjectCreationPayload
 > {
-  const createProject = async (data: ProjectCreationPayload): Promise<AxiosResponse<Project>> => {
-    return API.post('/api/v1/account/projects', data).then((response) => response.data);
+  const createProject = async (
+    data: ProjectCreationPayload
+  ): Promise<AxiosResponse<ResponseData<Project>>> => {
+    return await API.post('/api/v1/account/projects', data);
   };
-
-  const queryClient = useQueryClient();
-
-  return useMutation(createProject, {
-    onSuccess: (result) => {
-      queryClient.setQueryData(Queries.ProjectQuery, result.data);
-    },
-  });
+  return useMutation(createProject);
 }
 
 export function useUpdateProject(): UseMutationResult<
-  AxiosResponse<Project>,
+  AxiosResponse<ResponseData<Project>>,
   AxiosError<ErrorResponse>,
   ProjectUpdatePayload
 > {
-  const updateProject = async (project: ProjectUpdatePayload): Promise<AxiosResponse<Project>> => {
+  const updateProject = async (
+    project: ProjectUpdatePayload
+  ): Promise<AxiosResponse<ResponseData<Project>>> => {
     return API.put(`/api/v1/account/projects/${project.id}`, project);
   };
 
   return useMutation(updateProject);
 }
 
-const getInvestor = async (): Promise<Investor> => {
+const getInvestor = async (includes?: string): Promise<Investor> => {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/investor`,
     method: 'GET',
+    params: { includes },
   };
   return await API.request(config).then((response) => decycle(response.data.data));
 };
 
-export function useInvestor(options: UseQueryOptions<Investor>) {
-  const query = useQuery([Queries.CurrentInvestor], () => getInvestor(), {
+export function useInvestor(options: UseQueryOptions<Investor>, includes?: string) {
+  const query = useLocalizedQuery([Queries.CurrentInvestor], () => getInvestor(includes), {
     refetchOnWindowFocus: false,
     ...options,
   });
@@ -147,6 +152,42 @@ export function useCreateInvestor(): UseMutationResult<
   });
 }
 
+export function useAccount(includes?: string) {
+  const { user, isLoading, isError: userIsError } = useMe();
+  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
+  const isInvestor = user?.role === UserRoles.Investor;
+
+  const {
+    data: projectDeveloperData,
+    isLoading: isLoadingProjectDeveloperData,
+    isError: projectDeveloperIsError,
+  } = useProjectDeveloper(
+    {
+      enabled: isProjectDeveloper && !userIsError,
+    },
+    includes
+  );
+
+  const {
+    data: investorData,
+    isLoading: isLoadingInvestorData,
+    isError: investorIsError,
+  } = useInvestor({ enabled: isInvestor && !userIsError }, includes);
+
+  const userAccount = isProjectDeveloper ? projectDeveloperData : investorData;
+  const userAccountLoading = isLoadingProjectDeveloperData || isLoadingInvestorData;
+  const accountIsError = isProjectDeveloper ? projectDeveloperIsError : investorIsError;
+
+  return {
+    user: user,
+    userIsLoading: isLoading,
+    userIsError,
+    userAccount,
+    userAccountLoading,
+    accountIsError,
+  };
+}
+
 const getAccountProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
   const { search, page, includes, ...rest } = params || {};
 
@@ -169,10 +210,14 @@ export function useAccountProjectsList(
   params?: PagedRequest,
   options?: UseQueryOptions<PagedResponse<Project>>
 ): UseQueryResult<PagedResponse<Project>> & { projects: Project[] } {
-  const query = useQuery([Queries.AccountProjectList, params], () => getAccountProjects(params), {
-    ...staticDataQueryOptions,
-    ...options,
-  });
+  const query = useLocalizedQuery(
+    [Queries.AccountProjectList, params],
+    () => getAccountProjects(params),
+    {
+      ...staticDataQueryOptions,
+      ...options,
+    }
+  );
 
   return useMemo(
     () => ({
@@ -183,25 +228,147 @@ export function useAccountProjectsList(
   );
 }
 
-export function useAccount() {
-  const { user } = useMe();
-  const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
-  const isInvestor = user?.role === UserRoles.Investor;
+/** Hook to use the the Users Invited to User Account */
+const getAccountUsers = async (params?: PagedRequest): Promise<PagedResponse<AccountUser>> => {
+  const { search, page, includes, ...rest } = params || {};
 
-  const { data: projectDeveloperData, isLoading: isLoadingProjectDeveloperData } =
-    useProjectDeveloper({
-      enabled: isProjectDeveloper,
-    });
-
-  const { data: investorData, isLoading: isLoadingInvestorData } = useInvestor({
-    enabled: isInvestor,
-  });
-
-  const accountData = isProjectDeveloper ? projectDeveloperData : investorData;
-  const isLoadingAccountData = isLoadingProjectDeveloperData || isLoadingInvestorData;
-
-  return {
-    data: accountData,
-    isLoading: isLoadingAccountData,
+  const config: AxiosRequestConfig = {
+    // TODO: Change to the correct endpoint
+    url: '/api/v1/projects',
+    method: 'GET',
+    params: {
+      ...rest,
+      includes: includes?.join(','),
+      'filter[full_text]': search,
+      'page[number]': page,
+    },
   };
+
+  const MOCK_DATA = {
+    data: [
+      {
+        first_name: 'Dorothy',
+        last_name: 'Campbell',
+        picture: null,
+        email: 'dorothy.campbell@nesst.com',
+        id: 'cba6a23c-d100-46aa-b691-352eeec200cd',
+        role: 'Owner',
+        confirmed: true,
+      },
+      {
+        first_name: 'Savannah',
+        last_name: 'Nguyen',
+        picture: null,
+        email: 'savannah.nguyen@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: false,
+      },
+      {
+        first_name: 'Robert',
+        last_name: 'Fox',
+        picture: null,
+        email: 'robert.fox@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: true,
+      },
+      {
+        first_name: 'Cameron',
+        last_name: 'Williamson',
+        picture: null,
+        email: 'cameron.williamson@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: false,
+      },
+      {
+        first_name: 'Dorothy',
+        last_name: 'Campbell',
+        picture: null,
+        email: 'dorothy.campbell@nesst.com',
+        id: 'cba6a23c-d100-46aa-b691-352eeec200cd',
+        role: 'Owner',
+        confirmed: true,
+      },
+      {
+        first_name: 'Savannah',
+        last_name: 'Campbell',
+        picture: null,
+        email: 'savannah.nguyen@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: false,
+      },
+      {
+        first_name: 'Robert',
+        last_name: 'Fox',
+        picture: null,
+        email: 'robert.fox@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: true,
+      },
+      {
+        first_name: 'Dorothy',
+        last_name: 'Campbell',
+        picture: null,
+        email: 'dorothy.campbell@nesst.com',
+        id: 'cba6a23c-d100-46aa-b691-352eeec200cd',
+        role: 'Owner',
+        confirmed: true,
+      },
+      {
+        first_name: 'Savannah',
+        last_name: 'Nguyen',
+        picture: null,
+        email: 'savannah.nguyen@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: false,
+      },
+      {
+        first_name: 'Robert',
+        last_name: 'Fox',
+        picture: null,
+        email: 'robert.fox@nesst.com',
+        id: 'f07a3edc-20a4-4a6e-b55e-2d8b492951ca',
+        role: 'User',
+        confirmed: true,
+      },
+    ],
+    meta: {
+      from: 1,
+      page: 1,
+      pages: 2,
+      per_page: 5,
+      to: 10,
+      total: 10,
+    },
+    links: [],
+  };
+
+  return await API.request(config).then(() => MOCK_DATA as any);
+};
+
+export function useAccountUsersList(
+  params?: PagedRequest,
+  options?: UseQueryOptions<PagedResponse<AccountUser>>
+): UseQueryResult<PagedResponse<AccountUser>> & { users: AccountUser[] } {
+  const query = useLocalizedQuery(
+    [Queries.AccountUsersList, params],
+    () => getAccountUsers(params),
+    {
+      ...staticDataQueryOptions,
+      ...options,
+    }
+  );
+
+  return useMemo(
+    () => ({
+      ...query,
+      users: query?.data?.data || [],
+    }),
+    [query]
+  );
 }

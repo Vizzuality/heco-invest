@@ -6,7 +6,7 @@ module.exports = {
     defaultLocale: locales.find((locale) => locale.default).locale,
   },
   images: {
-    domains: ['heco.vizzuality.com', 'staging.heco.vizzuality.com'],
+    domains: ['heco.vizzuality.com', 'staging.heco.vizzuality.com', 'staging.hecopilot.org'],
   },
   swcMinify: false,
   eslint: {

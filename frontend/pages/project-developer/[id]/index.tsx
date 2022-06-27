@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
 import { chunk, groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -16,7 +18,7 @@ import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 import Carousel, { Slide } from 'components/carousel';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
-import { EnumTypes, Paths } from 'enums';
+import { EnumTypes } from 'enums';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 import { CategoryType } from 'types/category';
@@ -27,16 +29,15 @@ import { getEnums } from 'services/enums/enumService';
 import {
   getProjectDeveloper,
   useFavoriteProjectDeveloper,
-  useProjectDeveloper,
 } from 'services/project-developers/projectDevelopersService';
 
-export const getServerSideProps = async ({ params: { id }, locale }) => {
+export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let projectDeveloper;
 
   // If getting the project developer fails, it's most likely because the record has
   // not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    projectDeveloper = await getProjectDeveloper(id, { includes: 'projects' });
+    projectDeveloper = await getProjectDeveloper(id as string, { includes: 'projects' });
   } catch (e) {
     return { notFound: true };
   }
@@ -47,28 +48,20 @@ export const getServerSideProps = async ({ params: { id }, locale }) => {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
       enums: groupBy(enums, 'type'),
-      initialProjectDeveloper: projectDeveloper,
+      projectDeveloper,
     },
   };
-};
+});
 
 type ProjectDeveloperPageProps = {
-  initialProjectDeveloper: ProjectDeveloperType;
+  projectDeveloper: ProjectDeveloperType;
   enums: GroupedEnumsType;
 };
 
 const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageLayoutProps> = ({
-  initialProjectDeveloper,
+  projectDeveloper,
   enums,
 }) => {
-  const { projectDeveloper } = useProjectDeveloper(
-    initialProjectDeveloper.id,
-    {
-      includes: 'projects',
-    },
-    initialProjectDeveloper
-  );
-
   const [isFavourite, setIsFavourite] = useState(projectDeveloper.favourite);
 
   useEffect(() => {

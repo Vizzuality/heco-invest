@@ -18,7 +18,8 @@
         "impact_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
         "closing_at": "2023-01-15T11:45:07.390Z",
         "language": "en",
-        "trusted": false
+        "trusted": false,
+        "created_at": "2022-06-24T09:07:24.094Z"
       },
       "relationships": {
         "investor": {
@@ -47,7 +48,8 @@
         "impact_description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
         "closing_at": "2023-01-15T11:45:07.428Z",
         "language": "en",
-        "trusted": false
+        "trusted": false,
+        "created_at": "2022-06-24T09:07:24.183Z"
       },
       "relationships": {
         "investor": {
@@ -76,7 +78,8 @@
         "impact_description": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
         "closing_at": "2023-01-15T11:45:07.450Z",
         "language": "en",
-        "trusted": false
+        "trusted": false,
+        "created_at": "2022-06-24T09:07:24.265Z"
       },
       "relationships": {
         "investor": {
@@ -105,7 +108,8 @@
         "impact_description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
         "closing_at": "2023-01-15T11:45:07.474Z",
         "language": "en",
-        "trusted": false
+        "trusted": false,
+        "created_at": "2022-06-24T09:07:24.362Z"
       },
       "relationships": {
         "investor": {
@@ -134,7 +138,8 @@
         "impact_description": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
         "closing_at": "2023-01-15T11:45:07.500Z",
         "language": "en",
-        "trusted": false
+        "trusted": false,
+        "created_at": "2022-06-24T09:07:24.442Z"
       },
       "relationships": {
         "investor": {
@@ -163,7 +168,8 @@
         "impact_description": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
         "closing_at": "2023-01-15T11:45:07.522Z",
         "language": "en",
-        "trusted": false
+        "trusted": false,
+        "created_at": "2022-06-24T09:07:24.557Z"
       },
       "relationships": {
         "investor": {
@@ -192,7 +198,8 @@
         "impact_description": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
         "closing_at": "2023-01-15T11:45:07.546Z",
         "language": "en",
-        "trusted": false
+        "trusted": false,
+        "created_at": "2022-06-24T09:07:24.641Z"
       },
       "relationships": {
         "investor": {
