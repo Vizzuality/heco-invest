@@ -20,6 +20,9 @@
   "/L6T3E": {
     "string": "Get connected"
   },
+  "/Lbk/f": {
+    "string": "Enter the estimated implementation duration for the project. MAX 36 months."
+  },
   "/PlWea": {
     "string": "Use up and down to choose options, press escape to exit the menu, press tab to select the option and exit the menu."
   },
@@ -221,9 +224,6 @@
   "7aTDQM": {
     "string": "Project gallery (optional)"
   },
-  "7eO+k/": {
-    "string": "Enter the estimated implementation duration for the project. MAX 24 months."
-  },
   "7gMEKc": {
     "string": "Project details"
   },
@@ -343,9 +343,6 @@
   },
   "ByoZDD": {
     "string": "Breadcrumbs"
-  },
-  "C0sD76": {
-    "string": "insert number (max 24)"
   },
   "C1dyBg": {
     "string": "No search results matching the criteria."
@@ -579,6 +576,9 @@
   "KvhWhT": {
     "string": "The <span>IDB Lab</span>, the <span>Paulson Institute</span> and the <span>World Wildlife Fund</span> are working together to develop a digital platform that connects governments, investors, donors, and philanthropists with carefully identified investment opportunities in <span>high priority locations</span> identified by programs such as Herencia Colombia (HeCo)."
   },
+  "KxPY7j": {
+    "string": "Date of creation"
+  },
   "LFDgTb": {
     "string": "Leave project developer edition?"
   },
@@ -777,9 +777,6 @@
   "UxTJRa": {
     "string": "Projects"
   },
-  "Uzc3q6": {
-    "string": "To update any of this information or to delete the account, please contact the platform administrator by sending an email to: <email>admin@admin.com</email>."
-  },
   "V/JHlm": {
     "string": "Forgot password?"
   },
@@ -941,9 +938,6 @@
   },
   "aT5Ajq": {
     "string": "Start drawing"
-  },
-  "aZVd4k": {
-    "string": "Your account has been <n>approved</n>, your profile is now publicly visible."
   },
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
@@ -1128,9 +1122,6 @@
   "itfsqC": {
     "string": "Currently you don’t have any <b>Projects</b>."
   },
-  "j0CZkp": {
-    "string": "Users will receive an email to sign up into the platform and join the account."
-  },
   "j4lBL7": {
     "string": "Note: Some filters not apply to all tabs"
   },
@@ -1266,6 +1257,9 @@
   "piBsTx": {
     "string": "Select HeCo priority landscapes on which you will have impact (optional)"
   },
+  "pkBu4q": {
+    "string": "insert number (max 36)"
+  },
   "psXhQO": {
     "string": "Funding &amp; development"
   },
@@ -1286,9 +1280,6 @@
   },
   "qcsPS9": {
     "string": "{duration} months"
-  },
-  "qhxHf3": {
-    "string": "Your account has been <n>rejected</n>, your profile is not publicly visible."
   },
   "qoImFc": {
     "string": "Replicability of the project"
@@ -1325,9 +1316,6 @@
   },
   "s07dAT": {
     "string": "Project image"
-  },
-  "sDHn6D": {
-    "string": "Contact Admin"
   },
   "sFn7MX": {
     "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
@@ -1473,9 +1461,6 @@
   "xnQiBM": {
     "string": "The impact of this project isn’t available. Impact calculations may take some time to be available."
   },
-  "xqsnF9": {
-    "string": "Your account has not yet been reviewed, your profile is not publicly visible."
-  },
   "xusigZ": {
     "string": "Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."
   },
@@ -1508,6 +1493,9 @@
   },
   "zFegDD": {
     "string": "Contact"
+  },
+  "zINlao": {
+    "string": "Owner"
   },
   "zSOvI0": {
     "string": "Filters"
