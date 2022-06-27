@@ -41,7 +41,7 @@ const EditInvestorPage: PageComponent<EditInvestorServerSideProps, FormPageLayou
   const updateInvestor = useUpdateInvestor();
 
   const handleOnComplete = () => {
-    push(Paths.Dashboard);
+    router.push((router.query?.returnPath as string) || Paths.Dashboard);
   };
 
   const { investor } = useInvestor({});
