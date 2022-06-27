@@ -71,13 +71,16 @@ export default (page: number) => {
       about: string().max(600, maxTextLength).required(messages.about),
       mission: string().max(600, maxTextLength).required(messages.mission),
       contact_email: string()
+        .ensure()
         .email(messages.contactEmail.isValid)
         .required(messages.contactEmail.required),
-      contact_phone: string().test(
-        'isValid',
-        messages.contactPhone,
-        (value) => !value || !!value.match(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
-      ),
+      contact_phone: string()
+        .nullable()
+        .test(
+          'isValid',
+          messages.contactPhone,
+          (value) => !value || !!value.match(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
+        ),
       website: string().url(messages.website),
       facebook: string().test(
         'isSocialMediaLink',
