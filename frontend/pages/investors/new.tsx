@@ -35,8 +35,8 @@ type NewInvestorServerSideProps = {
 const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutProps> = ({
   enums,
 }) => {
+  const router = useRouter();
   const { formatMessage } = useIntl();
-  const { push } = useRouter();
 
   const createInvestor = useCreateInvestor();
 
