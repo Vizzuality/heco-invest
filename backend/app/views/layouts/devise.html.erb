@@ -1,8 +1,13 @@
 <% content_for :content do %>
   <header class="fixed top-0 w-full h-16 lg:h-20 z-10 py-4 bg-green-dark">
-    <div class="container mx-auto text-beige">
-      <a class="font-semibold" href="/">HeCo Invest</a>
-      <span class="font-light">Backoffice</span>
+    <div class="text-beige flex items-center">
+      <div class="container mx-auto">
+        <a class="font-semibold" href="/">HeCo Invest</a>
+        <span class="font-light">Backoffice</span>
+      </div>
+      <div class="mx-auto">
+        <%= render partial: "layouts/language_selector" %>
+      </div>
     </div>
   </header>
 
