@@ -41,7 +41,7 @@ export const Carousel = () => {
         </figcaption>
       </figure>
       <div className="mx-auto lg:mt-[-50vh] lg:mb-[50vh] pt-16 lg:pt-0 pb-20 lg:pb-0 w-full max-w-7xl lg:-translate-y-1/2 lg:flex items-center text-center lg:text-left">
-        <div className="px-4 lg:ml-auto sm:px-8 xl:pl-28 lg:w-1/2 ">
+        <div className="px-4 text-left lg:ml-auto sm:px-8 xl:pl-28 lg:w-1/2 ">
           <h3 className="font-serif text-2xl font-semibold text-white sm:text-3xl md:text-4xl">
             <FormattedMessage defaultMessage="Biodiversity" id="mbTJWV" />
           </h3>
@@ -51,8 +51,13 @@ export const Carousel = () => {
               id="gF/kn9"
             />
           </p>
-          <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-            <Button theme="secondary-white" size="small" to={`${BASE_SEARCH_URL}biodiversity`}>
+          <div className="w-full mt-10 sm:flex sm:justify-center lg:justify-start">
+            <Button
+              className="w-full text-lg text-center sm:text-sm sm:w-auto"
+              theme="secondary-white"
+              size="small"
+              to={`${BASE_SEARCH_URL}biodiversity`}
+            >
               <FormattedMessage defaultMessage="Search biodiversity" id="PIZ1dD" />
             </Button>
           </div>
@@ -79,7 +84,7 @@ export const Carousel = () => {
         </figcaption>
       </figure>
       <div className="mx-auto lg:mt-[-50vh] lg:mb-[50vh] pt-16 lg:pt-0 pb-20 lg:pb-0 w-full max-w-7xl lg:-translate-y-1/2 lg:flex items-center text-center lg:text-left">
-        <div className="px-4 lg:ml-auto sm:px-8 xl:pl-28 lg:w-1/2 ">
+        <div className="px-4 text-left lg:ml-auto sm:px-8 xl:pl-28 lg:w-1/2 ">
           <h3 className="font-serif text-2xl font-semibold text-white sm:text-3xl md:text-4xl">
             <FormattedMessage defaultMessage="Climate" id="MuOp0t" />
           </h3>
@@ -92,8 +97,13 @@ export const Carousel = () => {
               }}
             />
           </p>
-          <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-            <Button theme="secondary-white" size="small" to={`${BASE_SEARCH_URL}climate`}>
+          <div className="w-full mt-10 sm:flex lg:justify-start">
+            <Button
+              className="w-full text-lg text-center sm:w-auto sm:text-sm"
+              theme="secondary-white"
+              size="small"
+              to={`${BASE_SEARCH_URL}climate`}
+            >
               <FormattedMessage defaultMessage="Search climate" id="kUPAU5" />
             </Button>
           </div>
@@ -120,7 +130,7 @@ export const Carousel = () => {
         </figcaption>
       </figure>
       <div className="mx-auto lg:mt-[-50vh] lg:mb-[50vh] pt-16 lg:pt-0 pb-20 lg:pb-0 w-full max-w-7xl lg:-translate-y-1/2 lg:flex items-center text-center lg:text-left">
-        <div className="px-4 lg:ml-auto sm:px-8 xl:pl-28 lg:w-1/2 ">
+        <div className="px-4 text-left lg:ml-auto sm:px-8 xl:pl-28 lg:w-1/2 ">
           <h3 className="font-serif text-2xl font-semibold text-white sm:text-3xl md:text-4xl">
             <FormattedMessage defaultMessage="Community" id="4CrCbD" />
           </h3>
@@ -133,8 +143,13 @@ export const Carousel = () => {
               }}
             />
           </p>
-          <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-            <Button theme="secondary-white" size="small" to={`${BASE_SEARCH_URL}community`}>
+          <div className="w-full mt-10 sm:flex lg:justify-start">
+            <Button
+              className="w-full text-lg text-center sm:w-auto sm:text-sm"
+              theme="secondary-white"
+              size="small"
+              to={`${BASE_SEARCH_URL}community`}
+            >
               <FormattedMessage defaultMessage="Search community" id="8R8Or7" />
             </Button>
           </div>
@@ -162,8 +177,8 @@ export const Carousel = () => {
             <FormattedMessage defaultMessage="© Luis Barreto / WWF-UK" id="tH/CDj" />
           </figcaption>
         </figure>
-        <div className="items-center w-full pt-16 pb-20 mx-auto text-center max-w-7xl lg:h-full lg:flex lg:text-left">
-          <div className="px-4 lg:ml-auto sm:px-8 xl:pl-28 lg:w-1/2 ">
+        <div className="items-center w-full pt-16 pb-20 mx-auto max-w-7xl lg:h-full lg:flex lg:text-left">
+          <div className="px-4 text-left lg:ml-auto sm:px-8 xl:pl-28 lg:w-1/2">
             <h3 className="font-serif text-2xl font-semibold text-white sm:text-3xl md:text-4xl">
               <FormattedMessage defaultMessage="Water" id="t7YvMF" />
             </h3>
@@ -173,8 +188,13 @@ export const Carousel = () => {
                 id="ZcbMzP"
               />
             </p>
-            <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-              <Button theme="secondary-white" size="small" to={`${BASE_SEARCH_URL}water`}>
+            <div className="w-full mt-10 sm:flex">
+              <Button
+                className="w-full text-lg text-center sm:w-auto sm:text-sm"
+                theme="secondary-white"
+                size="small"
+                to={`${BASE_SEARCH_URL}water`}
+              >
                 <FormattedMessage defaultMessage="Search water" id="XJqnLu" />
               </Button>
             </div>

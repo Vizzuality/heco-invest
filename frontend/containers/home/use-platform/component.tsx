@@ -117,7 +117,7 @@ export const UsePlatform = () => {
             theme="secondary-green"
             size="small"
             to="/investors"
-            className="inline-block w-full mt-12 text-center md:mt-16 sm:w-auto"
+            className="inline-block w-full mt-12 text-lg text-center md:mt-16 sm:w-auto sm:text-sm"
           >
             <FormattedMessage defaultMessage="Investors features" id="wsk6Y/" />
           </Button>
@@ -203,7 +203,7 @@ export const UsePlatform = () => {
             theme="secondary-green"
             size="small"
             to="/investors"
-            className="inline-block w-full mt-12 text-center md:mt-16 sm:w-auto"
+            className="inline-block w-full mt-12 text-lg text-center md:mt-16 sm:w-auto sm:text-sm"
           >
             <FormattedMessage defaultMessage="Project developer features" id="DIrN6T" />
           </Button>
