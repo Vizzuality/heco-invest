@@ -35,8 +35,8 @@ type EditInvestorServerSideProps = {
 const EditInvestorPage: PageComponent<EditInvestorServerSideProps, FormPageLayoutProps> = ({
   enums,
 }) => {
+  const router = useRouter();
   const { formatMessage } = useIntl();
-  const { push } = useRouter();
 
   const updateInvestor = useUpdateInvestor();
 
