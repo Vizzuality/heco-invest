@@ -37,6 +37,7 @@ type AccountInfoPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayoutProps> = () => {
   const intl = useIntl();
   const { user, userAccount, userAccountLoading } = useAccount('owner');
+
   const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
 
   const publicProfileLink = `${isProjectDeveloper ? Paths.ProjectDeveloper : Paths.Investor}/${

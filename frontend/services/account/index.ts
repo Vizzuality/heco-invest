@@ -23,6 +23,7 @@ import { AccountUser } from 'types/user';
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
 import { ErrorResponse, PagedRequest, PagedResponse, ResponseData } from 'services/types';
+import { useRouter } from 'next/router';
 
 // Create PD
 const getProjectDeveloper = async (includes?: string): Promise<ProjectDeveloper> => {
@@ -65,11 +66,12 @@ export function useCreateProjectDeveloper(): UseMutationResult<
   AxiosError<ErrorResponse>,
   ProjectDeveloperSetupForm
 > {
+  const { locale } = useRouter();
   const queryClient = useQueryClient();
 
   return useMutation(createProjectDeveloper, {
     onSuccess: (result) => {
-      queryClient.setQueryData(Queries.ProjectDeveloper, result.data);
+      queryClient.setQueryData([Queries.ProjectDeveloper, locale], result.data);
     },
   });
 }
@@ -139,6 +141,8 @@ export function useCreateInvestor(): UseMutationResult<
   AxiosError<ErrorResponse>,
   InvestorForm
 > {
+  const { locale } = useRouter();
+
   const createInvestor = async (
     data: InvestorForm
   ): Promise<AxiosResponse<ResponseData<Investor>>> => API.post('/api/v1/account/investor', data);
@@ -147,7 +151,7 @@ export function useCreateInvestor(): UseMutationResult<
 
   return useMutation(createInvestor, {
     onSuccess: (result) => {
-      queryClient.setQueryData(Queries.Investor, result.data.data);
+      queryClient.setQueryData([Queries.Investor, locale], result.data.data);
     },
   });
 }

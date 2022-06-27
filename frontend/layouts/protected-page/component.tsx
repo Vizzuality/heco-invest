@@ -36,7 +36,7 @@ const Protected: React.FC<ProtectedProps> = ({
   }
 
   // If needs role permissions and has no user or the role don't match
-  if (!permissions.includes(user.role)) {
+  if (!!user && !permissions.includes(user.role)) {
     //If the role is light
     if (user.role === UserRoles.Light) {
       // Redirect to choose account type if the user have a Light account

@@ -1,18 +1,31 @@
 import { useEffect } from 'react';
 
+import { useQueryClient } from 'react-query';
+
 import { useRouter } from 'next/router';
+
+import { Paths, Queries } from 'enums';
 
 import { useSignOut } from 'services/authentication/authService';
 
 const SignOut = () => {
   const signOut = useSignOut();
-  const { push } = useRouter();
+  const { replace, locale } = useRouter();
+  const queryClient = useQueryClient();
 
   useEffect(() => {
-    signOut.mutate({}, { onSuccess: () => push('/') });
+    signOut.mutate(
+      {},
+      {
+        onSuccess: () => {
+          queryClient.setQueryData([Queries.User, locale], undefined);
+          replace(Paths.Home);
+        },
+      }
+    );
   }, []);
 
-  return <div>SIGN OUT</div>;
+  return null;
 };
 
 export default SignOut;

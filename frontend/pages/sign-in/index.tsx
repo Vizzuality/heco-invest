@@ -24,6 +24,7 @@ import { Paths, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
 import { SignIn } from 'types/sign-in';
+import { User } from 'types/user';
 import { useSignInResolver } from 'validations/sign-in';
 
 import { useSignIn } from 'services/authentication/authService';
@@ -50,17 +51,32 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
   } = useForm<SignIn>({ resolver, shouldUseNativeValidation: true });
   const { user } = useMe();
 
-  useEffect(() => {
-    if (user) {
+  const redirectUser = useCallback(
+    (user: User) => {
       if (user?.role === UserRoles.Light) {
         push(Paths.AccountType);
       } else {
         push(Paths.Dashboard);
       }
-    }
-  }, [push, query.callbackUrl, user]);
+    },
+    [push]
+  );
 
-  const handleSignIn = useCallback((data: SignIn) => signIn.mutate(data), [signIn]);
+  useEffect(() => {
+    if (user) {
+      redirectUser(user);
+    }
+  }, [push, query.callbackUrl, redirectUser, user]);
+
+  const handleSignIn = useCallback(
+    (data: SignIn) =>
+      signIn.mutate(data, {
+        onSuccess: ({ data }) => {
+          redirectUser(data);
+        },
+      }),
+    [redirectUser, signIn]
+  );
 
   const onSubmit: SubmitHandler<SignIn> = handleSignIn;
 

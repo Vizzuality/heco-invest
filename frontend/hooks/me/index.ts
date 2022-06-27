@@ -24,6 +24,7 @@ export default function useMe() {
   );
 
   const { data } = query;
+  console.log(data);
 
   return useMemo(
     () => ({
