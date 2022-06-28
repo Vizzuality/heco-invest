@@ -111,9 +111,12 @@ export function useUpdateProject(): UseMutationResult<
   AxiosError<ErrorResponse>,
   ProjectUpdatePayload
 > {
+  const queryClient = useQueryClient();
+
   const updateProject = async (
     project: ProjectUpdatePayload
   ): Promise<AxiosResponse<ResponseData<Project>>> => {
+    queryClient.invalidateQueries(Queries.AccountProjectList);
     return API.put(`/api/v1/account/projects/${project.id}`, project);
   };
 

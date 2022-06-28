@@ -55,7 +55,7 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
     ticket_size: allTicketSizes,
   } = enums;
 
-  const queryOptions = { keepPreviousData: true };
+  const queryOptions = { keepPreviousData: true, refetchOnMount: true };
   const queryParams = useQueryParams();
 
   const {
