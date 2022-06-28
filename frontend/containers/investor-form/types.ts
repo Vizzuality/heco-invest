@@ -9,12 +9,38 @@ import {
   UseFormClearErrors,
   UseFormSetValue,
   UseFormResetField,
-  Path,
   UseFormSetError,
 } from 'react-hook-form';
+import { UseMutationResult } from 'react-query';
 
-import { Enum } from 'types/enums';
-import { InvestorForm } from 'types/investor';
+import { AxiosResponse, AxiosError } from 'axios';
+
+import { Enum, GroupedEnums } from 'types/enums';
+import { Investor, InvestorForm } from 'types/investor';
+
+import { ErrorResponse, ResponseData } from 'services/types';
+
+export type InvestorFormProps = {
+  /** Title to Header and MultipageLayout */
+  title: string;
+  /** Leave message to show when leaving the form */
+  leaveMessage: string;
+  /** If is the create form. Default = false (update form) */
+  isCreateForm?: boolean;
+  /** Values of the current project developer, in case it is the update form */
+  initialValues?: Investor;
+  /** UseMutation hook values */
+  mutation: UseMutationResult<
+    AxiosResponse<ResponseData<Investor>>,
+    AxiosError<ErrorResponse>,
+    InvestorForm,
+    unknown
+  >;
+  /** Callback to execute when form has been submitted successfully */
+  onComplete: () => void;
+  /** Server Enumns */
+  enums: GroupedEnums;
+};
 
 export type InvestorFormPagesProps = {
   /** React Hook Form's `register` function */
@@ -37,6 +63,8 @@ export type InvestorFormPagesProps = {
   clearErrors?: UseFormClearErrors<InvestorForm>;
   /** React-hook-form useForm resetField */
   resetField?: UseFormResetField<InvestorForm>;
+  /** Default picture src */
+  picture?: string;
 };
 
 export type ProjectDescriptionProps = InvestorFormPagesProps & {

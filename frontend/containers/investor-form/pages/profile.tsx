@@ -26,6 +26,7 @@ export const Profile: FC<ProfileProps> = ({
   setValue,
   setError,
   clearErrors,
+  picture,
 }) => {
   const { formatMessage } = useIntl();
 
@@ -66,6 +67,7 @@ export const Profile: FC<ProfileProps> = ({
           clearErrors={clearErrors}
           preview
           aria-describedby="picture-error"
+          defaultImage={picture}
         />
         <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
       </div>

@@ -45,7 +45,7 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
   const signIn = useSignIn();
   const acceptInvitation = useAcceptInvitation();
   const resolver = useSignInResolver();
-  const { user, refetch } = useMe();
+  const { user } = useMe();
   const { invitedUser } = useInvitedUser(query.invitation_token as string);
 
   const {
@@ -62,18 +62,16 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
   useEffect(() => {
     if (!!invitedUser) {
       setValue('email', invitedUser.email);
+    } else {
+      if (!!user) {
+        if (user?.role === UserRoles.Light) {
+          push(Paths.AccountType);
+        } else {
+          push(Paths.Dashboard);
+        }
+      }
     }
-  }, [invitedUser, setValue]);
-
-  // useEffect(() => {
-  //   if (user && !invitedUser) {
-  //     if (user?.role === UserRoles.Light) {
-  //       push(Paths.AccountType);
-  //     } else {
-  //       push(Paths.Dashboard);
-  //     }
-  //   }
-  // }, [invitedUser, push, query.callbackUrl, user]);
+  }, [invitedUser, push, setValue, user]);
 
   const handleSignIn = useCallback(
     (data: SignIn) =>
@@ -83,11 +81,12 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
             acceptInvitation.mutate(query.invitation_token as string, {
               onSuccess: () => push(Paths.Dashboard),
             });
+          } else {
+            push(Paths.Dashboard);
           }
-          refetch();
         },
       }),
-    [acceptInvitation, invitedUser, push, query.invitation_token, refetch, signIn]
+    [acceptInvitation, invitedUser, push, query.invitation_token, signIn]
   );
 
   const onSubmit: SubmitHandler<SignIn> = handleSignIn;

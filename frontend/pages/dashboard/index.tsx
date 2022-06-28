@@ -11,6 +11,7 @@ import NakedLayout from 'layouts/naked';
 export const DashboardPage = () => {
   const router = useRouter();
   const { user, isLoading } = useMe();
+  console.log(user);
 
   useEffect(() => {
     if (isLoading) return;

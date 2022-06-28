@@ -1,0 +1,8 @@
+<%= select_tag :locale, options_for_select(Language.all.map { |l| [l.id.upcase, l.id] }, I18n.locale),
+   class: "bg-green-dark", data: {url: backoffice_admins_sessions_change_locale_url},
+   onchange: "
+     url = new window.URL(event.target.dataset.url);
+     url.searchParams.set('locale', event.target.value);
+     location.assign(url.toString());
+   "
+%>

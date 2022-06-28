@@ -1,4 +1,7 @@
-devise_for :admins, path: "backoffice"
+devise_for :admins, path: "backoffice", controllers: {sessions: "backoffice/admins/sessions"}
+devise_scope :admin do
+  get "backoffice/admins/sessions/change_locale" => "backoffice/admins/sessions"
+end
 
 # admin_root_path is useful for devise
 get "/backoffice", to: redirect("backoffice/projects"), as: :admin_root

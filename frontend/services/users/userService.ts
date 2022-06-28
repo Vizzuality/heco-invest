@@ -10,6 +10,7 @@ import { SignupDto, User } from 'types/user';
 import { ErrorResponse, ResponseData } from 'services/types';
 
 import API from '../api';
+import { useRouter } from 'next/router';
 
 export function useSignup(): UseMutationResult<
   AxiosResponse<SignupDto>,
