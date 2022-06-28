@@ -247,7 +247,7 @@ export function useAccountProjectsList(
 
 /** Hook to use the the Users Invited to User Account */
 const getAccountUsers = async (params?: PagedRequest): Promise<PagedResponse<AccountUser>> => {
-  const { search, page, includes, ...rest } = params || {};
+  const { search, includes, ...rest } = params || {};
 
   const config: AxiosRequestConfig = {
     url: '/api/v1/account/users',
@@ -256,7 +256,6 @@ const getAccountUsers = async (params?: PagedRequest): Promise<PagedResponse<Acc
       ...rest,
       includes: includes?.join(','),
       'filter[full_text]': search,
-      'page[number]': page,
     },
   };
 
