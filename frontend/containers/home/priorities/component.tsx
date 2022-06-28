@@ -6,13 +6,13 @@ export const Priorities = () => (
   <>
     <LayoutContainer className="mt-14 md:pb-56">
       <div className="relative px-4 py-6 sm:py-12 sm:px-8 md:pt-20 md:pb-60 lg:pb-72 bg-green-dark rounded-3xl">
-        <h2 className="max-w-md mx-auto font-serif text-2xl font-bold text-center text-white sm:max-w-xl md:max-w-4xl sm:text-3xl md:text-4xl">
+        <h2 className="max-w-md mx-auto font-serif text-3xl font-bold text-white sm:text-center sm:max-w-xl md:max-w-4xl md:text-4xl">
           <FormattedMessage
             defaultMessage="Identified priorities by the HeCo program"
             id="XQuzr9"
           />
         </h2>
-        <p className="max-w-md mx-auto mt-4 text-base text-center md:mt-8 sm:max-w-xl md:max-w-5xl sm:text-lg md:text-xl text-white/70">
+        <p className="max-w-md mx-auto mt-6 text-base sm:text-center md:mt-8 sm:max-w-xl md:max-w-5xl sm:text-lg md:text-xl text-white/70">
           <FormattedMessage
             defaultMessage="HeCo Invest manages a wide range of investment and financing opportunities in various sectors and priority geographies for the conservation and development of the Colombian Amazon region."
             id="ZMvQxR"
@@ -48,13 +48,13 @@ export const Priorities = () => (
     </LayoutContainer>
 
     <LayoutContainer className="mt-24 lg:mt-48">
-      <h2 className="max-w-md mx-auto font-serif text-2xl font-bold text-center sm:max-w-xl md:max-w-4xl sm:text-3xl md:text-4xl text-green-dark">
+      <h2 className="max-w-md mx-auto font-serif text-3xl font-bold sm:text-center sm:max-w-xl md:max-w-4xl md:text-4xl text-green-dark">
         <FormattedMessage
           defaultMessage="Invest in the most meaningful way to have the biggest impact"
           id="4EE+gM"
         />
       </h2>
-      <p className="max-w-md mx-auto mt-4 text-base text-center md:mt-8 sm:max-w-xl md:max-w-5xl sm:text-lg md:text-xl">
+      <p className="max-w-md mx-auto mt-6 text-base sm:text-center md:mt-8 sm:max-w-xl md:max-w-5xl sm:text-lg md:text-xl">
         <FormattedMessage
           defaultMessage="Through accessing <span>ARIES</span> (Artificial Intelligence for Environmental Sustainability) and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
           id="yJVljq"
