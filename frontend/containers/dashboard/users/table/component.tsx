@@ -4,9 +4,6 @@ import { FormattedMessage } from 'react-intl';
 
 import { useDebouncedCallback } from 'use-debounce';
 
-import { usePagination } from 'hooks/usePagination';
-
-import { useSortChange } from 'helpers/dashboard';
 import { useQueryParams } from 'helpers/pages';
 
 import NoSearchResults from 'containers/dashboard/no-search-results';
@@ -21,7 +18,7 @@ import Invitation from './cells/invitation';
 import User from './cells/user';
 
 export const UsersTable = () => {
-  const queryOptions = { keepPreviousData: true };
+  const queryOptions = { keepPreviousData: true, refetchOnMount: true };
   const queryParams = useQueryParams();
 
   const [search, setSearch] = useState<string>(queryParams.search);
@@ -31,26 +28,13 @@ export const UsersTable = () => {
   }, 250);
 
   const {
-    data: { data: users, meta } = { data: [], meta: undefined },
+    data: { data: users } = { data: [] },
     isLoading: isLoadingUsers,
     isFetching: isFetchingUsers,
   } = useAccountUsersList({ ...queryParams, search }, queryOptions);
 
-  console.log({ users });
-
   const isSearching = !!queryParams.search;
   const hasUsers = !!users.length;
-
-  const { props: paginationProps } = usePagination(meta);
-
-  const sortChangeHandler = useSortChange({
-    substitutions: {
-      user: 'first_name',
-      email: 'email',
-      role: 'role',
-      invitation: 'invitation',
-    },
-  });
 
   const tableProps = {
     columns: [
@@ -58,65 +42,54 @@ export const UsersTable = () => {
         Header: 'User',
         accessor: 'user',
         className: 'capitalize text-sm break-all',
-        defaultCanSort: true,
-        sortDescFirst: true,
         Cell: User,
       },
       {
         Header: 'Email',
         accessor: 'email',
         className: 'text-sm',
-        defaultCanSort: true,
-        sortDescFirst: true,
       },
       {
         Header: 'Role',
         accessor: 'role',
         className: 'text-sm',
-        defaultCanSort: true,
-        sortDescFirst: true,
         width: 100,
       },
       {
         Header: 'Invitation',
         accessor: 'confirmed',
         className: 'text-sm',
-        defaultCanSort: true,
-        sortDescFirst: true,
         width: 80,
         Cell: Invitation,
       },
       {
         Header: 'Actions',
         className: 'capitalize text-sm',
-        defaultCanSort: true,
-        sortDescFirst: true,
-        width: 35,
+        canSort: false,
+        width: 60,
         hideHeader: true,
         Cell: Actions,
       },
     ],
     data: users,
     loading: isLoadingUsers || isFetchingUsers,
-    pagination: paginationProps,
-    onSortChange: sortChangeHandler,
+    sortingEnabled: true,
+    manualSorting: false,
   };
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <div className="w-full">
-          <SearchAndInfo className="mt-4 mb-6">
-            <FormattedMessage
-              defaultMessage="Total <span>{numUsers}</span> {numUsers, plural, one {user} other {users}}"
-              id="YQsqLq"
-              values={{
-                span: (chunks: string) => <span className="px-1 font-semibold">{chunks}</span>,
-                numUsers: users.length,
-              }}
-            />
-          </SearchAndInfo>
-        </div>
+        <SearchAndInfo className="w-full mt-4 mb-6">
+          <FormattedMessage
+            defaultMessage="Total <span>{numUsers}</span> {numUsers, plural, one {user} other {users}}"
+            id="YQsqLq"
+            values={{
+              span: (chunks: string) => <span className="px-1 font-semibold">{chunks}</span>,
+              numUsers: users.length,
+            }}
+          />
+        </SearchAndInfo>
       </div>
       {hasUsers && <Table {...tableProps} />}
       {!hasUsers && (
