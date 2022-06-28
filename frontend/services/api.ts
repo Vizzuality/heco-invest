@@ -73,3 +73,11 @@ API.interceptors.request.use(onRequest);
 API.interceptors.response.use(onResponseSuccess, onResponseError);
 
 export default API;
+
+export const NO_SERIALIZED_API = axios.create({
+  baseURL: apiBaseUrl,
+  headers: { 'Content-Type': 'application/json' },
+  withCredentials: true,
+  xsrfCookieName: 'csrf_token',
+  xsrfHeaderName: 'X-CSRF-TOKEN',
+});

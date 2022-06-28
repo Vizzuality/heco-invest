@@ -82,6 +82,8 @@ export enum Queries {
   AccountProjectList = 'account_projects',
   /** List of users */
   AccountUsersList = 'account_users',
+  /** Invited User */
+  InvitedUser = 'invited_user',
 }
 
 /** Location endpoint param location_type */

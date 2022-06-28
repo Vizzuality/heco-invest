@@ -15,6 +15,7 @@ export interface SignupDto {
   email: string;
   password: string;
   ui_language: string;
+  invitation_token?: string;
 }
 
 export interface User {

@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
-import { GetServerSideProps } from 'next';
+import { InferGetStaticPropsType } from 'next';
 
 import useMe from 'hooks/me';
 
@@ -25,42 +25,36 @@ import { InvitedUserInfo } from 'types/invitation';
 import { SignupDto, SignupFormI } from 'types/user';
 import { useSignupResolver } from 'validations/signup';
 
-import { getInvitedUser, useAcceptInvitation } from 'services/invitation/invitationService';
+import { useAcceptInvitation, useInvitedUser } from 'services/invitation/invitationService';
 import { useSignup } from 'services/users/userService';
 
-export const getServerSideProps = withLocalizedRequests<GetServerSideProps>(
-  async ({ locale, query }) => {
-    let invitedUser: InvitedUserInfo = null;
+export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
+  return {
+    props: {
+      intlMessages: await loadI18nMessages({ locale }),
+    },
+  };
+});
 
-    // If there is an invitation token get the invited user data
-    if (query?.invitation_token) {
-      try {
-        invitedUser = await getInvitedUser(query.invitation_token as string);
-      } catch (e) {
-        return { notFound: true };
-      }
-    }
+type SignUpPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-    return {
-      props: {
-        intlMessages: await loadI18nMessages({ locale }),
-        invitedUser,
-      },
-    };
-  }
-);
-
-type SignUpPageProps = {
-  invitedUser?: InvitedUserInfo;
-};
-
-const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = ({ invitedUser }) => {
+const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
   const { locale, query, replace } = useRouter();
   const intl = useIntl();
   const signUp = useSignup();
+  const { invitedUser } = useInvitedUser(query.invitation_token as string);
   const acceptInvitation = useAcceptInvitation();
   const resolver = useSignupResolver();
   const { user } = useMe();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    setValue,
+  } = useForm<SignupFormI>({
+    resolver,
+    shouldUseNativeValidation: true,
+  });
 
   useEffect(() => {
     if (!!user) {
@@ -76,30 +70,30 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = ({ invitedUs
     }
   }, [invitedUser, replace, user]);
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<SignupFormI>({
-    resolver,
-    shouldUseNativeValidation: true,
-    defaultValues: { email: invitedUser?.email },
-  });
+  useEffect(() => {
+    if (!!invitedUser) {
+      setValue('email', invitedUser.email);
+    }
+  }, [invitedUser, setValue]);
 
   const handleSignUp = useCallback(
-    (data: SignupDto) =>
+    (data: SignupDto) => {
+      const signUpDto = data;
+      if (!!invitedUser) {
+        signUpDto.invitation_token = query.invitation_token as string;
+        signUpDto.email = null;
+      }
       signUp.mutate(data, {
         onSuccess: () => {
-          if (!!invitedUser && query.invitation_token) {
-            acceptInvitation.mutate(query.invitation_token as string, {
-              onSuccess: () => replace(Paths.Dashboard),
-            });
+          if (!!invitedUser) {
+            replace(Paths.Dashboard);
           } else {
             replace(Paths.AccountType);
           }
         },
-      }),
-    [signUp, invitedUser, query.invitation_token, replace, acceptInvitation]
+      });
+    },
+    [signUp, invitedUser, query.invitation_token, replace]
   );
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {
@@ -153,11 +147,21 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = ({ invitedUs
             </Alert>
           )
         ) : null}
-        {acceptInvitation.isError && (
-          <Alert withLayoutContainer className="mt-6">
-            {(acceptInvitation.error as any)?.message}
-          </Alert>
-        )}
+        {acceptInvitation.isError && acceptInvitation.error.message ? (
+          Array.isArray(acceptInvitation.error.message) ? (
+            <ul>
+              {acceptInvitation.error.message.map((err: any) => (
+                <Alert key={err.title} withLayoutContainer className="mt-6">
+                  <li key={err.title}>{err.title}</li>
+                </Alert>
+              ))}
+            </ul>
+          ) : (
+            <Alert withLayoutContainer className="mt-6">
+              {acceptInvitation.error.message}
+            </Alert>
+          )
+        ) : null}
         <div className="md:flex md:gap-4">
           <div className="w-full">
             <label htmlFor="first-name">

@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
-import { GetServerSideProps } from 'next';
+import { InferGetStaticPropsType } from 'next';
 
 import useMe from 'hooks/me';
 
@@ -23,65 +23,57 @@ import Loading from 'components/loading';
 import { Paths, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
-import { InvitedUserInfo } from 'types/invitation';
 import { SignIn } from 'types/sign-in';
 import { useSignInResolver } from 'validations/sign-in';
 
 import { useSignIn } from 'services/authentication/authService';
-import { getInvitedUser, useAcceptInvitation } from 'services/invitation/invitationService';
+import { useAcceptInvitation, useInvitedUser } from 'services/invitation/invitationService';
 
-export const getServerSideProps = withLocalizedRequests<GetServerSideProps>(
-  async ({ locale, query }) => {
-    let invitedUser: InvitedUserInfo = null;
+export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
+  return {
+    props: {
+      intlMessages: await loadI18nMessages({ locale }),
+    },
+  };
+});
 
-    // If there is an invitation token get the invited user data
-    if (query?.invitation_token) {
-      try {
-        invitedUser = await getInvitedUser(query.invitation_token as string);
-      } catch (e) {
-        return { notFound: true };
-      }
-    }
+type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-    return {
-      props: {
-        intlMessages: await loadI18nMessages({ locale }),
-        invitedUser,
-      },
-    };
-  }
-);
-
-type SignInPageProps = {
-  invitedUser: InvitedUserInfo;
-};
-
-const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = ({ invitedUser }) => {
+const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => {
   const { push, query } = useRouter();
   const intl = useIntl();
   const signIn = useSignIn();
   const acceptInvitation = useAcceptInvitation();
   const resolver = useSignInResolver();
+  const { user, refetch } = useMe();
+  const { invitedUser } = useInvitedUser(query.invitation_token as string);
+
   const {
     register,
     formState: { errors },
     handleSubmit,
+    setValue,
   } = useForm<SignIn>({
     resolver,
     shouldUseNativeValidation: true,
     defaultValues: { email: invitedUser?.email },
   });
-  const { user, refetch } = useMe();
 
   useEffect(() => {
-    if (user) {
-      if (user?.role === UserRoles.Light) {
-        push(Paths.AccountType);
-      } else {
-        push(Paths.Dashboard);
-      }
+    if (!!invitedUser) {
+      setValue('email', invitedUser.email);
     }
-  }, [push, query.callbackUrl, user]);
+  }, [invitedUser, setValue]);
+
+  // useEffect(() => {
+  //   if (user && !invitedUser) {
+  //     if (user?.role === UserRoles.Light) {
+  //       push(Paths.AccountType);
+  //     } else {
+  //       push(Paths.Dashboard);
+  //     }
+  //   }
+  // }, [invitedUser, push, query.callbackUrl, user]);
 
   const handleSignIn = useCallback(
     (data: SignIn) =>
