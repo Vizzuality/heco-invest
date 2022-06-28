@@ -113,14 +113,16 @@ export const UsePlatform = () => {
               </div>
             </dl>
           </div>
-          <Button
-            theme="secondary-green"
-            size="small"
-            to="/investors"
-            className="inline-block w-full mt-12 text-lg text-center md:mt-16 sm:w-auto sm:text-sm"
-          >
-            <FormattedMessage defaultMessage="Investors features" id="wsk6Y/" />
-          </Button>
+          <div className="w-full mt-10 sm:flex">
+            <Button
+              theme="secondary-green"
+              size="small"
+              to="/investors"
+              className="justify-center w-full text-lg text-center sm:w-auto sm:text-sm"
+            >
+              <FormattedMessage defaultMessage="Investors features" id="wsk6Y/" />
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -199,14 +201,16 @@ export const UsePlatform = () => {
               </div>
             </dl>
           </div>
-          <Button
-            theme="secondary-green"
-            size="small"
-            to="/investors"
-            className="inline-block w-full mt-12 text-lg text-center md:mt-16 sm:w-auto sm:text-sm"
-          >
-            <FormattedMessage defaultMessage="Project developer features" id="DIrN6T" />
-          </Button>
+          <div className="w-full mt-10 sm:flex">
+            <Button
+              theme="secondary-green"
+              size="small"
+              to="/investors"
+              className="justify-center w-full text-lg text-center sm:w-auto sm:text-sm"
+            >
+              <FormattedMessage defaultMessage="Project developer features" id="DIrN6T" />
+            </Button>
+          </div>
         </div>
         <div className="hidden mt-10 lg:mt-0 lg:pl-24 sm:block">
           <Image

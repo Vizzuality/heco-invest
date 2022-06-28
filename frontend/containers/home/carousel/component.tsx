@@ -53,7 +53,7 @@ export const Carousel = () => {
           </p>
           <div className="w-full mt-10 sm:flex sm:justify-center lg:justify-start">
             <Button
-              className="w-full text-lg text-center sm:text-sm sm:w-auto"
+              className="justify-center w-full text-lg text-center sm:text-sm sm:w-auto"
               theme="secondary-white"
               size="small"
               to={`${BASE_SEARCH_URL}biodiversity`}
@@ -99,7 +99,7 @@ export const Carousel = () => {
           </p>
           <div className="w-full mt-10 sm:flex lg:justify-start">
             <Button
-              className="w-full text-lg text-center sm:w-auto sm:text-sm"
+              className="justify-center w-full text-lg text-center sm:w-auto sm:text-sm"
               theme="secondary-white"
               size="small"
               to={`${BASE_SEARCH_URL}climate`}
@@ -145,7 +145,7 @@ export const Carousel = () => {
           </p>
           <div className="w-full mt-10 sm:flex lg:justify-start">
             <Button
-              className="w-full text-lg text-center sm:w-auto sm:text-sm"
+              className="justify-center w-full text-lg text-center sm:w-auto sm:text-sm"
               theme="secondary-white"
               size="small"
               to={`${BASE_SEARCH_URL}community`}
@@ -190,7 +190,7 @@ export const Carousel = () => {
             </p>
             <div className="w-full mt-10 sm:flex">
               <Button
-                className="w-full text-lg text-center sm:w-auto sm:text-sm"
+                className="justify-center w-full text-lg text-center sm:w-auto sm:text-sm"
                 theme="secondary-white"
                 size="small"
                 to={`${BASE_SEARCH_URL}water`}

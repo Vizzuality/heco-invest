@@ -48,7 +48,12 @@ export const StartBanner = () => {
               </div>
             </div>
             <div className="flex justify-center w-full px-4 pt-6 pb-16">
-              <Button theme="primary-green" size="small" className="w-full text-lg" disabled>
+              <Button
+                theme="primary-green"
+                size="small"
+                className="justify-center w-full text-lg"
+                disabled
+              >
                 <FormattedMessage defaultMessage="Create account" id="huqKGl" />
               </Button>
             </div>
