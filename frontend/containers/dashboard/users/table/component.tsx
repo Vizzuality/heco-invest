@@ -1,8 +1,4 @@
-import { useState } from 'react';
-
 import { FormattedMessage } from 'react-intl';
-
-import { useDebouncedCallback } from 'use-debounce';
 
 import { useQueryParams } from 'helpers/pages';
 
@@ -21,17 +17,11 @@ export const UsersTable = () => {
   const queryOptions = { keepPreviousData: true, refetchOnMount: true };
   const queryParams = useQueryParams();
 
-  const [search, setSearch] = useState<string>(queryParams.search);
-
-  const onSearch = useDebouncedCallback((v) => {
-    setSearch(v);
-  }, 250);
-
   const {
     data: { data: users } = { data: [] },
     isLoading: isLoadingUsers,
     isFetching: isFetchingUsers,
-  } = useAccountUsersList({ ...queryParams, search }, queryOptions);
+  } = useAccountUsersList({ ...queryParams }, queryOptions);
 
   const isSearching = !!queryParams.search;
   const hasUsers = !!users.length;
