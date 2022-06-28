@@ -23,6 +23,7 @@ import { CategoryType } from 'types/category';
 import { Enum } from 'types/enums';
 
 import { useEnums } from 'services/enums/enumService';
+import { useFavoriteProject } from 'services/projects/projectService';
 
 import FavoriteContact from './favorite-contact';
 import type { ProjectDetailsProps } from './types';
@@ -33,8 +34,6 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
   onClose = noop,
 }: ProjectDetailsProps) => {
   const intl = useIntl();
-
-  const impactArea = ImpactAreas.Municipality;
 
   const [projectDeveloperImage, setProjectDeveloperImage] = useState<string>(
     project.project_developer?.picture.small
@@ -57,6 +56,8 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
     setProjectDeveloperImage('/images/placeholders/profile-logo.png');
   };
 
+  const impactArea = ImpactAreas.Municipality;
+
   const ticketSizeStr = useMemo(
     () => allTicketSizes?.find(({ id }) => project.ticket_size === id)?.description,
     [allTicketSizes, project.ticket_size]
@@ -76,6 +77,20 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
   const link = `${Paths.Project}/${project.slug}`;
   const sdgs = allSdgs.filter(({ id }) => project.sdgs.includes(parseInt(id)));
   const impact = useMemo(() => projectImpact(project), [project])[impactArea];
+
+  const favoriteProject = useFavoriteProject();
+
+  const handleFavoriteClick = () => {
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    favoriteProject.mutate(
+      { id: project.id, isFavourite: project.favourite },
+      {
+        onSuccess: (data) => {
+          project.favourite = data.favourite;
+        },
+      }
+    );
+  };
 
   return (
     <div className={className}>
@@ -182,7 +197,11 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
           </span>
           <span>{projectDeveloper.name}</span>
         </div>
-        <FavoriteContact className="mt-10 mb-6" project={project} />
+        <FavoriteContact
+          className="mt-10 mb-6"
+          project={project}
+          onFavoriteClick={handleFavoriteClick}
+        />
         <div className="my-2 text-gray-900" aria-describedby="estimated-impact">
           <h2 id="estimated-impact" className="text-xl font-semibold">
             <FormattedMessage defaultMessage="Estimated impact" id="Jl9QMO" />
@@ -196,7 +215,11 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
           </h2>
           <SDGs className="mt-3" size="smallest" sdgs={sdgs as Enum[]} />
         </div>
-        <FavoriteContact className="mt-4 -mb-4" project={project} />
+        <FavoriteContact
+          className="mt-4 -mb-4"
+          project={project}
+          onFavoriteClick={handleFavoriteClick}
+        />
       </div>
     </div>
   );

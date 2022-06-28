@@ -1,13 +1,11 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import Jsona from 'jsona';
+import { deserialize } from 'deserialize-json-api';
 
 import { getCookie } from 'helpers/cookies';
 
 import { ErrorResponse } from './types';
 
 const { locales } = require('locales.config.json');
-
-const dataFormatter = new Jsona();
 
 export const apiBaseUrl =
   process.env.NEXT_PUBLIC_PROXY_BACKEND === 'true'
@@ -48,7 +46,7 @@ const onResponseSuccess = (response) => {
     return {
       data: {
         // Deserialized data
-        data: response.data ? dataFormatter.deserialize(response.data) : null,
+        data: response.data ? deserialize(response.data)?.data : null,
         // Metadata (pagination) if any
         ...(response.data.meta ? { meta: response.data.meta } : {}),
       },

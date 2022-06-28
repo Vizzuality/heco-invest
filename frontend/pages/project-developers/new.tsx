@@ -1,5 +1,5 @@
 import { useIntl } from 'react-intl';
-import { dehydrate, QueryClient } from 'react-query';
+import { dehydrate, useQueryClient } from 'react-query';
 
 import { useRouter } from 'next/router';
 
@@ -20,7 +20,7 @@ import { useCreateProjectDeveloper } from 'services/account';
 import { getEnums } from 'services/enums/enumService';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
-  const queryClient = new QueryClient();
+  const queryClient = useQueryClient();
   queryClient.prefetchQuery(Queries.EnumList, getEnums);
   return {
     props: {

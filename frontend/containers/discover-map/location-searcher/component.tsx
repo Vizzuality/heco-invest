@@ -2,7 +2,6 @@ import { FC, useState, useRef } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import { useDispatch } from 'react-redux';
 
 import cx from 'classnames';
 

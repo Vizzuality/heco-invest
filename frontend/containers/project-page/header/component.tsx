@@ -6,6 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import cx from 'classnames';
 
 import { translatedLanguageNameForLocale } from 'helpers/intl';
+import { projectContacts } from 'helpers/project';
 
 import CategoryTag from 'containers/category-tag';
 import ImageGallery from 'containers/image-gallery';
@@ -14,17 +15,23 @@ import ContactInformationModal, {
 } from 'containers/social-contact/contact-information-modal';
 
 import Button from 'components/button';
+import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import Tag from 'components/tag';
 import { CategoryType } from 'types/category';
 import { ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
 
+import { useAccount } from 'services/account';
 import { useEnums } from 'services/enums/enumService';
+import { useFavoriteProject } from 'services/projects/projectService';
 
 import type { HeaderProps } from './types';
 
 export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => {
   const intl = useIntl();
+  const { user } = useAccount();
+  const favoriteProject = useFavoriteProject();
+
   const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
   const {
     data: {
@@ -52,13 +59,6 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
     [project.project_images]
   );
 
-  const contact: ContactItemType = {
-    name: projectDeveloper.name,
-    email: projectDeveloper.contact_email,
-    phone: projectDeveloper.contact_phone,
-    picture: projectDeveloper.picture?.small,
-  };
-
   const ticketSizeStr = useMemo(
     () => allTicketSizes?.find(({ id }) => project.ticket_size === id)?.description,
     [allTicketSizes, project.ticket_size]
@@ -73,7 +73,19 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
     [allInstrumentTypes, project.instrument_types]
   );
 
-  const handleFavoriteClick = () => {};
+  const contacts = projectContacts(project);
+
+  const handleFavoriteClick = () => {
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    favoriteProject.mutate(
+      { id: project.id, isFavourite: project.favourite },
+      {
+        onSuccess: (data) => {
+          project.favourite = data.favourite;
+        },
+      }
+    );
+  };
 
   return (
     <div className={className}>
@@ -190,16 +202,22 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
 
           <div className="flex flex-col justify-between gap-4 mt-5 lg:flex-row">
             <Button
-              className="justify-center"
+              className="justify-start"
               theme="secondary-green"
-              icon={HeartIcon}
               onClick={handleFavoriteClick}
+              disabled={!user}
             >
+              <Icon
+                icon={HeartIcon}
+                className={cx('w-4 mr-3', {
+                  'fill-green-dark': project.favourite,
+                })}
+              />
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </Button>
             <Button
-              disabled={!contact?.phone && !contact?.email}
               className="w-full lg:max-w-[200px] justify-center"
+              disabled={!contacts.length}
               theme="primary-green"
               onClick={() => setIsContactInfoModalOpen(true)}
             >
@@ -211,7 +229,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
       <ContactInformationModal
         isOpen={isContactInfoModalOpen}
         onDismiss={() => setIsContactInfoModalOpen(false)}
-        contacts={contact}
+        contacts={contacts}
       />
     </div>
   );

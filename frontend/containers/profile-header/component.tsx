@@ -18,11 +18,13 @@ import Button from 'components/button';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 
+import { useAccount } from 'services/account';
+
 import type { ProfileHeaderProps } from './types';
 
 export const ProfileHeader: FC<ProfileHeaderProps> = ({
   className,
-  logo: logoProp,
+  logo,
   title,
   subtitle,
   text,
@@ -37,13 +39,18 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
   onFavoriteClick = () => noop,
 }: ProfileHeaderProps) => {
   const intl = useIntl();
+  const { user } = useAccount();
 
   const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
-  const [logo, setLogo] = useState<string>(logoProp);
+  const [profileImage, setProfileImage] = useState<string>(logo);
 
   useEffect(() => {
-    setLogo(logoProp);
-  }, [logoProp]);
+    setProfileImage(logo);
+  }, [logo]);
+
+  const handleProfileImageError = () => {
+    setProfileImage('/images/placeholders/profile-logo.png');
+  };
 
   return (
     <div className={className}>
@@ -53,14 +60,14 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
             <div className="relative overflow-hidden bg-white w-52 h-52 rounded-2xl">
               <Image
                 className="mx-auto w-52 h-52"
-                src={logo}
+                src={profileImage}
                 alt={intl.formatMessage(
-                  { defaultMessage: '{organization} logo', id: 'in26xr' },
-                  { organization: title }
+                  { defaultMessage: '{profile} logo', id: 'UWUdIl' },
+                  { profile: title }
                 )}
                 layout="fill"
                 objectFit="cover"
-                onError={() => setLogo('/images/placeholders/profile-logo.png')}
+                onError={handleProfileImageError}
               />
             </div>
             <div className="-mb-2 text-center lg:mb-4 lg:text-left">
@@ -121,7 +128,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
               className="justify-center"
               theme="secondary-green"
               onClick={onFavoriteClick}
-              disabled={favoriteLoading}
+              disabled={favoriteLoading || !user}
               aria-pressed={isFavorite}
             >
               <Icon

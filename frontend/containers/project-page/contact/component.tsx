@@ -14,7 +14,7 @@ export const Contact: React.FC<ContactProps> = ({ project }: ContactProps) => {
 
   const contacts = useMemo<ContactItemType[]>(
     () =>
-      [project?.project_developer, ...project?.involved_project_developers].reduce(
+      [project?.project_developer, ...(project?.involved_project_developers || [])].reduce(
         (prev: ContactItemType[], { contact_email, contact_phone, name, picture, id }, index) => {
           if (
             // If there are values for contacts AND the involved_project_developer is not the project_developer

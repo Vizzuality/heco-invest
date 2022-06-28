@@ -1,4 +1,4 @@
-import { QueryClient } from 'react-query';
+import { useQueryClient } from 'react-query';
 
 import { dehydrate } from 'react-query/hydration';
 
@@ -6,7 +6,7 @@ import API from 'services/api';
 
 export function withProtection() {
   return async (context: any) => {
-    const queryClient = new QueryClient();
+    const queryClient = useQueryClient();
     // remember to proxy cookies
     await queryClient.prefetchQuery('user', () =>
       API.get('/api/v1/', {

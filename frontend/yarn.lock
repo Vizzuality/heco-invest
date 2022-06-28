@@ -11705,13 +11705,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cycle@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "cycle@npm:1.0.3"
-  checksum: b9f131094fb832a8c4ba18c6d2dc9c87fc80d3242847a45f0a5f70911b2acab68abc1c25eb23e5155fcf2135a27d8fcc3635556745b03b488c4f360cfbc352df
-  languageName: node
-  linkType: hard
-
 "cyclist@npm:^1.0.1":
   version: 1.0.1
   resolution: "cyclist@npm:1.0.1"
@@ -11948,6 +11941,17 @@ __metadata:
     inherits: ^2.0.1
     minimalistic-assert: ^1.0.0
   checksum: 1ec2eedd7ed6bd61dd5e0519fd4c96124e93bb22de8a9d211b02d63e5dd152824853d919bb2090f965cc0e3eb9c515950a9836b332020d810f9c71feb0fd7df4
+  languageName: node
+  linkType: hard
+
+"deserialize-json-api@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "deserialize-json-api@npm:1.4.0"
+  dependencies:
+    lodash.camelcase: ^4.3.0
+    lodash.isarray: ^4.0.0
+    lodash.isplainobject: ^4.0.6
+  checksum: abf21fcc70c146983e307f86b024d8014bd6c9a5db6755afb9b0e7f86731ffb0fa38b968a0798ec03d610b3c32b8e8c70bcb62c7e233832e03ab1cd9c8f88456
   languageName: node
   linkType: hard
 
@@ -14394,8 +14398,8 @@ __metadata:
     axios: ^0.21.1
     chart.js: ^3.7.1
     classnames: ^2.3.1
-    cycle: ^1.0.3
     d3-ease: ^2.0.0
+    deserialize-json-api: ^1.4.0
     downshift: ^6.1.3
     eslint: ^8.9.0
     eslint-config-next: 12.1.0
@@ -14405,7 +14409,6 @@ __metadata:
     final-form: ^4.20.2
     framer-motion: ^4.1.17
     jest: ^27.5.1
-    jsona: ^1.9.2
     jsonwebtoken: ^8.5.1
     lodash-es: ^4.17.21
     maplibre-gl: ^1.15.2
@@ -16253,13 +16256,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsona@npm:^1.9.2":
-  version: 1.9.6
-  resolution: "jsona@npm:1.9.6"
-  checksum: a87f9915642c444fd1afc648e59c41ee156f10b7d530ab936e6da7f10a2ef9f7def1860347a81bbafab388371e9efb68b6207506e699fe1b82164b87efd87cc7
-  languageName: node
-  linkType: hard
-
 "jsonfile@npm:^2.1.0":
   version: 2.4.0
   resolution: "jsonfile@npm:2.4.0"
@@ -16610,6 +16606,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.camelcase@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "lodash.camelcase@npm:4.3.0"
+  checksum: cb9227612f71b83e42de93eccf1232feeb25e705bdb19ba26c04f91e885bfd3dd5c517c4a97137658190581d3493ea3973072ca010aab7e301046d90740393d1
+  languageName: node
+  linkType: hard
+
 "lodash.debounce@npm:^4.0.8":
   version: 4.0.8
   resolution: "lodash.debounce@npm:4.0.8"
@@ -16621,6 +16624,13 @@ __metadata:
   version: 4.3.0
   resolution: "lodash.includes@npm:4.3.0"
   checksum: 71092c130515a67ab3bd928f57f6018434797c94def7f46aafa417771e455ce3a4834889f4267b17887d7f75297dfabd96231bf704fd2b8c5096dc4a913568b6
+  languageName: node
+  linkType: hard
+
+"lodash.isarray@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "lodash.isarray@npm:4.0.0"
+  checksum: 88aeb6b9af3e19ad9bfd38cf03b50991a0cd2862965214ef3047f55fd7df27aa731ff9c6aca0899e4a8a90180d5c0c4f936949adcc224f3929e95a1918362123
   languageName: node
   linkType: hard
 
