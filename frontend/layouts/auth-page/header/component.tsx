@@ -22,7 +22,7 @@ export const Header: FC<HeaderProps> = ({
 
   const href =
     (pageType === 'sign-in' || pageType === 'forgot-password' ? Paths.SignUp : Paths.SignIn) +
-    (query.token && '?token=' + query.token);
+    (!!query.invitation_token ? '?invitation_token=' + query.invitation_token : '');
 
   return (
     <header

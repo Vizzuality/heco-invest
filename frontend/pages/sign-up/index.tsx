@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -18,7 +18,7 @@ import Checkbox from 'components/forms/checkbox';
 import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Loading from 'components/loading';
-import { Paths } from 'enums';
+import { Paths, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
 import { InvitedUserInfo } from 'types/invitation';
@@ -55,12 +55,26 @@ type SignUpPageProps = {
 };
 
 const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = ({ invitedUser }) => {
-  const { locale, push, query } = useRouter();
+  const { locale, query, replace } = useRouter();
   const intl = useIntl();
   const signUp = useSignup();
   const acceptInvitation = useAcceptInvitation();
   const resolver = useSignupResolver();
-  const { refetch } = useMe();
+  const { user } = useMe();
+
+  useEffect(() => {
+    if (!!user) {
+      if (user.role === UserRoles.Light) {
+        if (!invitedUser) {
+          // If the user exists and is not an invited user, redirect to the account type page
+          replace(Paths.AccountType);
+        }
+      } else {
+        // If the user has a role other than light, redirect to the dashboard
+        replace(Paths.Dashboard);
+      }
+    }
+  }, [invitedUser, replace, user]);
 
   const {
     register,
@@ -77,14 +91,15 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = ({ invitedUs
       signUp.mutate(data, {
         onSuccess: () => {
           if (!!invitedUser && query.invitation_token) {
-            acceptInvitation.mutate(query.invitation_token as string);
+            acceptInvitation.mutate(query.invitation_token as string, {
+              onSuccess: () => replace(Paths.Dashboard),
+            });
           } else {
-            push(Paths.AccountType);
+            replace(Paths.AccountType);
           }
-          refetch();
         },
       }),
-    [signUp, invitedUser, query.invitation_token, push, refetch, acceptInvitation]
+    [signUp, invitedUser, query.invitation_token, replace, acceptInvitation]
   );
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {
@@ -106,13 +121,13 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = ({ invitedUs
       </p>
 
       {!!invitedUser && (
-        <div className="w-full p-4 rounded-lg bg-beige">
+        <div className="w-full mt-6 p-4 rounded-lg bg-beige">
           <FormattedMessage
             defaultMessage="By signing up you will be automatically added to {accountName} account. <a>How accounts work?</a>"
             id="cWqW+j"
             values={{
               accountName: invitedUser.account_name,
-              a: (chunks) => (
+              a: (chunks: string) => (
                 <a className="underline" href={Paths.FAQ}>
                   {chunks}
                 </a>

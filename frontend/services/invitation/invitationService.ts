@@ -3,15 +3,16 @@ import { UseMutationResult, useQueryClient, useMutation } from 'react-query';
 import { AxiosResponse, AxiosError } from 'axios';
 
 import { Queries } from 'enums';
-import { InviteUsersDto } from 'types/invitation';
+import { InviteUsersDto, InvitedUserInfo } from 'types/invitation';
 import { User } from 'types/user';
 
 import API from 'services/api';
 import { ErrorResponse } from 'services/types';
 
-export const getInvitedUser = async (invitation_token: string) => {
-  const result = await API.post('/api/v1/invitation/info', { invitation_token });
-  return result.data.data;
+export const getInvitedUser = async (invitation_token: string): Promise<InvitedUserInfo> => {
+  return await API.post('/api/v1/invitation/info', { invitation_token }).then(
+    (res) => res.data.data
+  );
 };
 
 /** Invite user to project developer account */

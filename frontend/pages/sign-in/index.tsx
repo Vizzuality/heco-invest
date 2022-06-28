@@ -113,13 +113,13 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = ({ invitedUs
       </p>
 
       {!!invitedUser && (
-        <div className="w-full p-4 rounded-lg bg-beige">
+        <div className="w-full mb-6 p-4 rounded-lg bg-beige">
           <FormattedMessage
             defaultMessage="By signing in you will be automatically added to {accountName} account. <a>How accounts work?</a>"
             id="WXE4DJ"
             values={{
               accountName: invitedUser.account_name,
-              a: (chunks) => (
+              a: (chunks: string) => (
                 <a className="underline" href={Paths.FAQ}>
                   {chunks}
                 </a>
