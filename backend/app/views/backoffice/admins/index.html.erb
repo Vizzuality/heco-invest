@@ -1,0 +1,33 @@
+<div class="flex">
+  <%= render partial: "filters", locals: {q: @q} %>
+  <%= render partial: "backoffice/base/total_records" %>
+</div>
+
+<table class="backoffice-table">
+  <thead>
+    <tr>
+      <th>
+        <%= sort_link @q, :full_name, t("backoffice.common.name") %>
+      </th>
+      <th>
+        <%= sort_link @q, :email, t("backoffice.common.email") %>
+      </th>
+      <th>
+        <%= sort_link @q, :created_at, t("backoffice.common.created_at") %>
+      </th>
+      <th>
+        <%= sort_link @q, :last_sign_in_at, t("backoffice.admins.index.last_sign_in_at") %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @admins.each do |admin| %>
+      <tr>
+        <td><%= admin.full_name %></td>
+        <td><%= admin.email %></td>
+        <td><%= I18n.l admin.created_at.to_date %></td>
+        <td><%= I18n.l admin.last_sign_in_at&.to_date, default: '' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

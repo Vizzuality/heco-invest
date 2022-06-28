@@ -1,4 +1,7 @@
 zu:
+  date:
+    formats:
+      default: "%d %B %Y"
   simple_form:
     required:
       text: 'required'
@@ -77,6 +80,7 @@ zu:
       status: Status
       approve: Approve
       reject: Reject
+      email: Email
       contact_email: Email
       contact_phone: Phone
       project_name: Project name
@@ -96,6 +100,7 @@ zu:
       reset: Reset
       total: Total
       export_csv: export csv
+      created_at: Added at
       navigation:
         prev: "←"
         next: "→"
@@ -118,6 +123,9 @@ zu:
       welcome: Welcome to HeCO Invest backoffice.
       enter_details_below: Please enter your details below.
       sign_in: Sign in
+    admins:
+      index:
+        last_sign_in_at: Last login
     project_developers:
       index:
         projects: Projects
@@ -161,6 +169,7 @@ zu:
       project_developers: Project developers
       investors: Investors
       projects: Projects
+      admins: Administrators
   errors:
     messages:
       password_length: must be at least %{count} characters long
