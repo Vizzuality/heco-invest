@@ -10,7 +10,7 @@ import SearchFindIcon from 'svgs/home/search-find.svg';
 export const Working = () => (
   <div className="py-16 mt-24 sm:py-28 bg-background-middle">
     <LayoutContainer>
-      <h2 className="max-w-md mx-auto font-serif text-2xl font-bold text-center sm:max-w-xl md:max-w-4xl sm:text-3xl md:text-5xl">
+      <h2 className="max-w-md mx-auto font-serif text-3xl font-bold text-center sm:max-w-xl md:max-w-4xl md:text-5xl">
         <FormattedMessage defaultMessage="How it works" id="HK3ph8" />
       </h2>
       <p className="max-w-md mx-auto mt-4 text-base text-center md:mt-8 sm:max-w-xl md:max-w-4xl sm:text-lg md:text-xl">
