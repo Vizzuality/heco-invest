@@ -15,9 +15,12 @@ RSpec.describe "API V1 Favourite Investor", type: :request do
       let(:user) { create :user, account: create(:account, :approved) }
 
       it_behaves_like "with not authorized error", csrf: true
-      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user, account: create(:account, :unapproved)) }
 
       response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/investor"}
+        }
+
         let("X-CSRF-TOKEN") { get_csrf_token }
 
         before { sign_in user }
@@ -26,6 +29,26 @@ RSpec.describe "API V1 Favourite Investor", type: :request do
 
         it "favourite of investor is truthy" do
           expect(response_json["data"]["attributes"]["favourite"]).to be_truthy
+        end
+      end
+
+      response "403", "Investor or User account are not approved" do
+        schema "$ref" => "#/components/schemas/errors"
+
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before { sign_in user }
+
+        context "when user is not approved" do
+          let(:user) { create :user, account: create(:account, :unapproved) }
+
+          run_test!
+        end
+
+        context "when investor is not approved" do
+          let(:investor) { create :investor, account: create(:account, :unapproved) }
+
+          run_test!
         end
       end
     end
@@ -46,6 +69,10 @@ RSpec.describe "API V1 Favourite Investor", type: :request do
       it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user, account: create(:account, :unapproved)) }
 
       response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/investor"}
+        }
+
         let("X-CSRF-TOKEN") { get_csrf_token }
 
         before do
