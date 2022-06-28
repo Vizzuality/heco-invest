@@ -20,6 +20,7 @@ export const Table: FC<TableProps> = ({
   initialState,
   loading,
   sortingEnabled = false,
+  manualSorting = false,
   pagination: paginationProps,
   onSortChange = noop,
 }: TableProps) => {
@@ -49,9 +50,9 @@ export const Table: FC<TableProps> = ({
       // pagination
       manualPagination: true,
       // sorting
-      manualSortBy: true,
-      disableMultiSort: true,
       disableSortBy: !sortingEnabled,
+      manualSortBy: manualSorting,
+      disableMultiSort: true,
 
       initialState: {
         ...initialState,
