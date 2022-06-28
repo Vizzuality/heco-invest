@@ -4,7 +4,7 @@ set -e
 case "$1" in
     start)
         echo "Pulling translations from transifex"
-        ./tx pull -m onlytranslated -f
+        rake transifex:pull
         echo "Running Start"
         RAILS_ENV=production rake db:migrate
         RAILS_ENV=production bin/prod

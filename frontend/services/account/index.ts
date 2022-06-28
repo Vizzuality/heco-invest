@@ -8,6 +8,8 @@ import {
   UseQueryOptions,
 } from 'react-query';
 
+import { useRouter } from 'next/router';
+
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { decycle } from 'cycle';
 
@@ -23,7 +25,6 @@ import { AccountUser } from 'types/user';
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
 import { ErrorResponse, PagedRequest, PagedResponse, ResponseData } from 'services/types';
-import { useRouter } from 'next/router';
 
 // Create PD
 const getProjectDeveloper = async (includes?: string): Promise<ProjectDeveloper> => {
@@ -52,7 +53,7 @@ export function useProjectDeveloper(
 
 const createProjectDeveloper = async (
   data: ProjectDeveloperSetupForm
-): Promise<AxiosResponse<ProjectDeveloper>> => {
+): Promise<AxiosResponse<ResponseData<ProjectDeveloper>>> => {
   const config: AxiosRequestConfig = {
     method: 'POST',
     url: '/api/v1/account/project_developer',
@@ -62,7 +63,7 @@ const createProjectDeveloper = async (
 };
 
 export function useCreateProjectDeveloper(): UseMutationResult<
-  AxiosResponse<ProjectDeveloper>,
+  AxiosResponse<ResponseData<ProjectDeveloper>>,
   AxiosError<ErrorResponse>,
   ProjectDeveloperSetupForm
 > {
@@ -71,7 +72,7 @@ export function useCreateProjectDeveloper(): UseMutationResult<
 
   return useMutation(createProjectDeveloper, {
     onSuccess: (result) => {
-      queryClient.setQueryData([Queries.ProjectDeveloper, locale], result.data);
+      queryClient.setQueryData([Queries.ProjectDeveloper, locale], result.data.data);
     },
   });
 }
@@ -79,12 +80,12 @@ export function useCreateProjectDeveloper(): UseMutationResult<
 // Update PD
 const updateProjectDeveloper = async (
   data: ProjectDeveloperSetupForm
-): Promise<AxiosResponse<ProjectDeveloper>> => {
+): Promise<AxiosResponse<ResponseData<ProjectDeveloper>>> => {
   return await API.put('/api/v1/account/project_developer', data);
 };
 
 export function useUpdateProjectDeveloper(): UseMutationResult<
-  AxiosResponse<ProjectDeveloper>,
+  AxiosResponse<ResponseData<ProjectDeveloper>>,
   AxiosError<ErrorResponse>,
   ProjectDeveloperSetupForm
 > {
@@ -142,18 +143,29 @@ export function useCreateInvestor(): UseMutationResult<
   InvestorForm
 > {
   const { locale } = useRouter();
+  const queryClient = useQueryClient();
 
   const createInvestor = async (
     data: InvestorForm
   ): Promise<AxiosResponse<ResponseData<Investor>>> => API.post('/api/v1/account/investor', data);
-
-  const queryClient = useQueryClient();
 
   return useMutation(createInvestor, {
     onSuccess: (result) => {
       queryClient.setQueryData([Queries.Investor, locale], result.data.data);
     },
   });
+}
+
+export function useUpdateInvestor(): UseMutationResult<
+  AxiosResponse<ResponseData<Investor>>,
+  AxiosError<ErrorResponse>,
+  InvestorForm
+> {
+  const updateInvestor = async (
+    data: InvestorForm
+  ): Promise<AxiosResponse<ResponseData<Investor>>> => API.put('/api/v1/account/investor', data);
+
+  return useMutation(updateInvestor);
 }
 
 export function useAccount(includes?: string) {

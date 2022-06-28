@@ -38,7 +38,7 @@ namespace :api, format: "json" do
     namespace :account, module: :accounts do
       resource :project_developer, only: [:create, :update, :show]
       resource :investor, only: [:create, :update, :show]
-      resources :projects, only: [:create, :update]
+      resources :projects, only: [:index, :create, :update]
       resources :users, only: [:index]
     end
     resources :test_jobs, only: [] do

@@ -2,8 +2,6 @@ import { useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
-import { withLocalizedRequests } from 'hoc/locale';
-
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -17,37 +15,39 @@ import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 import { GroupedEnums } from 'types/enums';
 
-import { useCreateInvestor } from 'services/account';
+import { useInvestor, useUpdateInvestor } from 'services/account';
 import { getEnums } from 'services/enums/enumService';
 
-export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
+export async function getServerSideProps(ctx) {
   const enums = await getEnums();
   return {
     props: {
-      intlMessages: await loadI18nMessages({ locale }),
+      intlMessages: await loadI18nMessages(ctx),
       enums: groupBy(enums, 'type'),
     },
   };
-});
+}
 
-type NewInvestorServerSideProps = {
+type EditInvestorServerSideProps = {
   enums: GroupedEnums;
 };
 
-const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutProps> = ({
+const EditInvestorPage: PageComponent<EditInvestorServerSideProps, FormPageLayoutProps> = ({
   enums,
 }) => {
   const router = useRouter();
   const { formatMessage } = useIntl();
 
-  const createInvestor = useCreateInvestor();
+  const updateInvestor = useUpdateInvestor();
 
   const handleOnComplete = () => {
     router.push((router.query?.returnPath as string) || Paths.Dashboard);
   };
 
+  const { investor } = useInvestor({});
+
   return (
-    <ProtectedPage permissions={[UserRoles.Light]}>
+    <ProtectedPage permissions={[UserRoles.Investor]}>
       <InvestorForm
         title={formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })}
         leaveMessage={formatMessage({
@@ -55,16 +55,16 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
           id: 'QqpgJo',
         })}
         enums={enums}
-        mutation={createInvestor}
+        mutation={updateInvestor}
         onComplete={handleOnComplete}
-        isCreateForm
+        initialValues={investor}
       />
     </ProtectedPage>
   );
 };
 
-NewInvestorPage.layout = {
+EditInvestorPage.layout = {
   Component: FormPageLayout,
 };
 
-export default NewInvestorPage;
+export default EditInvestorPage;

@@ -26,5 +26,5 @@ export type AccountType = 'investor' | 'project-developer';
 export type Picture = {
   small: string;
   medium: string;
-  large: string;
+  original: string;
 };
