@@ -208,14 +208,12 @@ const getAccountProjects = async (params?: PagedRequest): Promise<PagedResponse<
   const { search, page, includes, ...rest } = params || {};
 
   const config: AxiosRequestConfig = {
-    // TODO: Change to the correct endpoint
-    url: '/api/v1/projects',
+    url: '/api/v1/account/projects',
     method: 'GET',
     params: {
       ...rest,
       includes: includes?.join(','),
       'filter[full_text]': search,
-      'page[number]': page,
     },
   };
 
