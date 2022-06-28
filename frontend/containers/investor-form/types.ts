@@ -18,7 +18,7 @@ import { AxiosResponse, AxiosError } from 'axios';
 import { Enum, GroupedEnums } from 'types/enums';
 import { Investor, InvestorForm } from 'types/investor';
 
-import { ErrorResponse } from 'services/types';
+import { ErrorResponse, ResponseData } from 'services/types';
 
 export type InvestorFormProps = {
   /** Title to Header and MultipageLayout */
@@ -31,7 +31,7 @@ export type InvestorFormProps = {
   initialValues?: Investor;
   /** UseMutation hook values */
   mutation: UseMutationResult<
-    AxiosResponse<Investor>,
+    AxiosResponse<ResponseData<Investor>>,
     AxiosError<ErrorResponse>,
     InvestorForm,
     unknown

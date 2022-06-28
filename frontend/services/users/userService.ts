@@ -9,6 +9,7 @@ import { SignupDto, User, InviteUsersDto } from 'types/user';
 import { ErrorResponse, ResponseData } from 'services/types';
 
 import API from '../api';
+import { useRouter } from 'next/router';
 
 export function useSignup(): UseMutationResult<
   AxiosResponse<SignupDto>,
@@ -41,6 +42,7 @@ export function useInviteUsers(): UseMutationResult<
   AxiosError<ErrorResponse>,
   InviteUsersDto
 > {
+  const { locale } = useRouter();
   const inviteUsers = async (data: InviteUsersDto): Promise<AxiosResponse<User>> => {
     return API.post('/api/v1/account/projects', data).then((response) => response.data);
   };
@@ -49,7 +51,7 @@ export function useInviteUsers(): UseMutationResult<
 
   return useMutation(inviteUsers, {
     onSuccess: (result) => {
-      queryClient.setQueryData(Queries.User, result.data);
+      queryClient.setQueryData([Queries.User, locale], result.data);
     },
   });
 }

@@ -5,13 +5,11 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
-import useMe from 'hooks/me';
-
 import Button from 'components/button';
 import Menu, { MenuItem, MenuSection } from 'components/menu';
 import { Paths } from 'enums';
 
-import { useCurrentProjectDeveloper } from 'services/project-developers/projectDevelopersService';
+import { useAccount } from 'services/account';
 
 import { NavigationMenuButtonProps } from './types';
 
@@ -21,9 +19,7 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
 }: NavigationMenuButtonProps) => {
   const router = useRouter();
   const intl = useIntl();
-  const { user } = useMe();
-  const { projectDeveloper } = useCurrentProjectDeveloper(user);
-  const investor = undefined; // Important!!! Include the current investor when available
+  const { user, userAccount: account } = useAccount();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -37,8 +33,6 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
     },
     [router]
   );
-
-  const account = projectDeveloper || investor;
 
   return (
     <div className={className}>
