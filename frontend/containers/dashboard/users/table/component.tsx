@@ -36,6 +36,8 @@ export const UsersTable = () => {
     isFetching: isFetchingUsers,
   } = useAccountUsersList({ ...queryParams, search }, queryOptions);
 
+  console.log({ users });
+
   const isSearching = !!queryParams.search;
   const hasUsers = !!users.length;
 
