@@ -8,8 +8,6 @@ import cx from 'classnames';
 
 import Script from 'next/script';
 
-import { setBbox } from 'store/projects';
-
 import Icon from 'components/icon';
 
 import SearchIcon from 'svgs/search.svg';
@@ -17,8 +15,7 @@ import CloseIcon from 'svgs/ui/close.svg';
 
 import { LocationSearcherProps } from './types';
 
-export const LocationSearcher: FC<LocationSearcherProps> = () => {
-  const dispatch = useDispatch();
+export const LocationSearcher: FC<LocationSearcherProps> = ({ onLocationSelected }) => {
   const intl = useIntl();
   const placesRef = useRef();
 
@@ -38,7 +35,10 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
         const NELng = bounds.getNorthEast().lng();
         const SWLat = bounds.getSouthWest().lat();
         const SWLng = bounds.getSouthWest().lng();
-        dispatch(setBbox([NELng, NELat, SWLng, SWLat]));
+
+        onLocationSelected({
+          bbox: [NELng, NELat, SWLng, SWLat],
+        });
       })
       .catch((error) => console.error('Error', error));
   };

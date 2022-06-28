@@ -1,6 +1,4 @@
-import { FC, useCallback, useEffect, useState } from 'react';
-
-import { useSelector } from 'react-redux';
+import { FC, useCallback, useState } from 'react';
 
 import { useRouter } from 'next/router';
 
@@ -27,26 +25,24 @@ import { DiscoverMapProps } from './types';
 const cartoProvider = new CartoProvider();
 
 export const DiscoverMap: FC<DiscoverMapProps> = () => {
-  const { bbox } = useSelector((state) => state['/projects']);
-
-  const [viewport, setViewport] = useState({});
-  const [bounds, setBounds] = useState(null);
   const [visibleLayers, setVisibleLayers] = useState<string[]>([]);
   const { layers } = useLayers();
   const { query } = useRouter();
   const { projectsMap } = useProjectsMap(query as ProjectMapParams);
 
+  const [viewport, setViewport] = useState({});
+  const [bounds, setBounds] = useState({
+    bbox: [-81.99, -4.35, -65.69, 12.54],
+    options: { padding: 0 },
+  });
+
   const handleViewportChange = useCallback((vw) => {
     setViewport(vw);
   }, []);
 
-  useEffect(() => {
-    setBounds({
-      bbox: bbox,
-      options: { padding: 0 },
-      viewportOptions: { transitionDuration: 1000 },
-    });
-  }, [bbox]);
+  const handleLocationSelected = ({ bbox }) => {
+    setBounds({ ...bounds, bbox });
+  };
 
   return (
     <>
@@ -79,7 +75,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = () => {
 
         <div className="absolute flex gap-2 top-3.5 left-3.5 text-gray-800 text-sm">
           <MapLayersSelector onActiveLayersChange={setVisibleLayers} />
-          <LocationSearcher />
+          <LocationSearcher onLocationSelected={handleLocationSelected} />
         </div>
 
         <Controls className="absolute border bottom-10 xl:bottom-6 right-11">
