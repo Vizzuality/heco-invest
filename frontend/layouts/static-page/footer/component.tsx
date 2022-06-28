@@ -185,18 +185,14 @@ export const Footer: React.FC<FooterProps> = ({
                 </h3>
                 <ul className="mt-2 space-y-2">
                   <li>
-                    <Link href="/investors">
-                      <a className="hover:underline">
-                        <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
-                      </a>
-                    </Link>
+                    <a className="text-gray-400 disabled:pointer-events-none">
+                      <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
+                    </a>
                   </li>
                   <li>
-                    <Link href="/project-developers">
-                      <a className="hover:underline">
-                        <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
-                      </a>
-                    </Link>
+                    <a className="text-gray-400 disabled:pointer-events-none">
+                      <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -215,18 +211,14 @@ export const Footer: React.FC<FooterProps> = ({
                     </Link>
                   </li>
                   <li>
-                    <Link href="/faq">
-                      <a className="hover:underline">
-                        <FormattedMessage defaultMessage="FAQ’s" id="qIvPIE" />
-                      </a>
-                    </Link>
+                    <a className="text-gray-400 disabled:pointer-events-none">
+                      <FormattedMessage defaultMessage="FAQ’s" id="qIvPIE" />
+                    </a>
                   </li>
                   <li>
-                    <Link href="/privacy-policy">
-                      <a className="hover:underline">
-                        <FormattedMessage defaultMessage="Privacy policy" id="cPwv2c" />
-                      </a>
-                    </Link>
+                    <a className="text-gray-400 disabled:pointer-events-none">
+                      <FormattedMessage defaultMessage="Privacy policy" id="cPwv2c" />
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -248,9 +240,9 @@ export const Footer: React.FC<FooterProps> = ({
                       <FormattedMessage defaultMessage="Social media" id="ZEEVQX" />
                     </p>
                     <div className="flex my-3 space-x-5">
-                      <Icon icon={FacebookIcon} className="w-4 h-4" />
+                      <Icon icon={FacebookIcon} className="w-4 h-4 fill-gray-400" />
 
-                      <Icon icon={TwitterIcon} className="w-4 h-4" />
+                      <Icon icon={TwitterIcon} className="w-4 h-4 fill-gray-400" />
                     </div>
                   </li>
                 </ul>
