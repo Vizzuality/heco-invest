@@ -21,6 +21,7 @@ module "staging" {
   transifex_token      = var.transifex_token
   sendgrid_api_key     = var.sendgrid_api_key
   mapbox_api_key       = var.mapbox_api_key
+  uptime_alert_email   = var.uptime_alert_email
 }
 
 module "production" {
@@ -40,4 +41,5 @@ module "production" {
   frontend_min_scale   = 1
   backend_min_scale    = 1
   cors_origin          = "https://${var.domain}"
+  uptime_alert_email   = var.uptime_alert_email
 }

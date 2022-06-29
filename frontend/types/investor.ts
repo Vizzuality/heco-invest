@@ -28,7 +28,7 @@ export type InvestorForm = {
   other_information: string;
 };
 
-export type Investor = InvestorForm & {
+export type Investor = Omit<InvestorForm, 'picture'> & {
   id: string;
   type: 'investor';
   slug: string;

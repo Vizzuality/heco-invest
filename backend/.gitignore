@@ -47,4 +47,9 @@
 /db/seeds/files/mosaics.geojson
 /db/seeds/files/municipalities.geojson
 
+# Downloadable locales
+/config/locales/en.yml
+/config/locales/es.yml
+/config/locales/pt.yml
+
 dump.rdb

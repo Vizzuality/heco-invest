@@ -20,6 +20,7 @@ import { User } from 'types/user';
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
 import { PagedResponse, PagedRequest, ResponseData } from 'services/types';
+import { useRouter } from 'next/router';
 
 /** Get a paged list of project developers */
 const getProjectDevelopers = async (
@@ -135,6 +136,7 @@ export const useCurrentProjectDeveloper = (user?: User) => {
 
 /** Hook with mutation that handle favorite state. If favorite is false, creates a POST request to set favorite to true, and if favorite is true, creates a DELETE request that set favorite to false. */
 export const useFavoriteProjectDeveloper = () => {
+  const { locale } = useRouter();
   const favoriteOrUnfavoriteProjectDeveloper = (
     projectDeveloperId: string,
     isFavourite: boolean
@@ -153,7 +155,7 @@ export const useFavoriteProjectDeveloper = () => {
       favoriteOrUnfavoriteProjectDeveloper(id, isFavourite),
     {
       onSuccess: (data) => {
-        queryClient.setQueryData(Queries.ProjectDeveloper, data);
+        queryClient.setQueryData([Queries.ProjectDeveloper, locale], data);
       },
     }
   );

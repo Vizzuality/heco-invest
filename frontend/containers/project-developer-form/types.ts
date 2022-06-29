@@ -13,7 +13,7 @@ import { AxiosResponse, AxiosError } from 'axios';
 import { Enum } from 'types/enums';
 import { ProjectDeveloper, ProjectDeveloperSetupForm, Interest } from 'types/projectDeveloper';
 
-import { ErrorResponse } from 'services/types';
+import { ErrorResponse, ResponseData } from 'services/types';
 
 export type ProjectDeveloperFormProps = {
   /** Title to Header and MultipageLayout */
@@ -26,7 +26,7 @@ export type ProjectDeveloperFormProps = {
   initialValues?: ProjectDeveloper;
   /** UseMutation hook values */
   mutation: UseMutationResult<
-    AxiosResponse<ProjectDeveloper>,
+    AxiosResponse<ResponseData<ProjectDeveloper>>,
     AxiosError<ErrorResponse>,
     ProjectDeveloperSetupForm,
     unknown

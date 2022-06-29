@@ -7,15 +7,13 @@ import cx from 'classnames';
 
 import { useRouter } from 'next/router';
 
-import useMe from 'hooks/me';
-
 import { getUserInitials } from 'helpers/user';
 
 import Button from 'components/button';
 import Menu, { MenuItem, MenuSection } from 'components/menu';
 import { Paths } from 'enums';
 
-import { useCurrentProjectDeveloper } from 'services/project-developers/projectDevelopersService';
+import { useAccount } from 'services/account';
 
 import { UserMenuProps } from './types';
 
@@ -25,9 +23,7 @@ export const UserMenu: FC<UserMenuProps> = ({
 }: UserMenuProps) => {
   const router = useRouter();
   const intl = useIntl();
-  const { user } = useMe();
-  const { projectDeveloper } = useCurrentProjectDeveloper(user);
-  const investor = undefined; // Important!!! Include the current investor when available
+  const { user, userAccount: account } = useAccount();
 
   const showBackground = false;
 
@@ -43,8 +39,6 @@ export const UserMenu: FC<UserMenuProps> = ({
     },
     [router]
   );
-
-  const account = projectDeveloper || investor;
 
   return (
     <div className={className}>

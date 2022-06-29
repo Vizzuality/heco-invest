@@ -8,8 +8,6 @@ import cx from 'classnames';
 
 import Script from 'next/script';
 
-import { setBbox } from 'store/projects';
-
 import Icon from 'components/icon';
 
 import SearchIcon from 'svgs/search.svg';
@@ -17,8 +15,7 @@ import CloseIcon from 'svgs/ui/close.svg';
 
 import { LocationSearcherProps } from './types';
 
-export const LocationSearcher: FC<LocationSearcherProps> = () => {
-  const dispatch = useDispatch();
+export const LocationSearcher: FC<LocationSearcherProps> = ({ onLocationSelected }) => {
   const intl = useIntl();
   const placesRef = useRef();
 
@@ -38,7 +35,10 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
         const NELng = bounds.getNorthEast().lng();
         const SWLat = bounds.getSouthWest().lat();
         const SWLng = bounds.getSouthWest().lng();
-        dispatch(setBbox([NELng, NELat, SWLng, SWLat]));
+
+        onLocationSelected({
+          bbox: [NELng, NELat, SWLng, SWLat],
+        });
       })
       .catch((error) => console.error('Error', error));
   };
@@ -48,12 +48,12 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
   };
 
   return (
-    <>
+    <div className="relative">
       <Script
         // TODO: Activate key and remove mock one
         // src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
         strategy="beforeInteractive"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwcOSQ6hnqoqiXX_1D1ykHOBAZZ2UorHE&libraries=places"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwcOSQ6hnqoqiXX_1D1ykHOBAZZ2UorHE&amp;libraries=places"
       />
       <PlacesAutocomplete
         ref={placesRef}
@@ -63,10 +63,10 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
         onSelect={handleSelectAddress}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div className="absolute top-3.5 left-3.5 w-60">
+          <div className="w-60">
             <Icon
               icon={SearchIcon}
-              className="absolute w-4.5 h-4.5 text-black bg-white rounded-full top-2 left-2"
+              className="absolute w-4 h-4 bg-white rounded-full top-1.5 left-2"
             />
             <input
               {...getInputProps({
@@ -75,14 +75,14 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
                   id: '0+CmKm',
                 }),
                 className:
-                  'rounded shadow-sm block w-full px-8 text-base text-gray-900 placeholder-gray-700 py-1 placeholder-opacity-100 focus:border focus:border-green-dark focus:outline-none bg-white transition',
+                  'rounded shadow-sm block w-full px-8 placeholder-gray-700 py-1 placeholder-opacity-100 focus:outline focus:outline-green-dark bg-white transition',
               })}
             />
 
             <button
               type="button"
               className={cx({
-                'absolute cursor-pointer top-[9px] right-2': true,
+                'absolute cursor-pointer top-1.5 right-2': true,
                 hidden: address === '',
               })}
               onClick={() => setAddress('')}
@@ -92,7 +92,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
 
             <div className="rounded-2xl">
               {loading && (
-                <div className="p-4 mt-1 text-sm text-center text-gray-800 bg-white rounded shadow-2xl">
+                <div className="p-4 mt-1 text-center bg-white rounded shadow-2xl">
                   <FormattedMessage defaultMessage="No results found" id="hX5PAb" />
                 </div>
               )}
@@ -124,7 +124,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = () => {
           </div>
         )}
       </PlacesAutocomplete>
-    </>
+    </div>
   );
 };
 

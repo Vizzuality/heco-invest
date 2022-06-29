@@ -20,6 +20,9 @@
   "/L6T3E": {
     "string": "Get connected"
   },
+  "/Lbk/f": {
+    "string": "Enter the estimated implementation duration for the project. MAX 36 months."
+  },
   "/PlWea": {
     "string": "Use up and down to choose options, press escape to exit the menu, press tab to select the option and exit the menu."
   },
@@ -31,6 +34,9 @@
   },
   "/XKclL": {
     "string": "To update any of this information, or to delete the account, please contact the platform administrator."
+  },
+  "/aYUC+": {
+    "string": "By contributing to improve the productions systems and livelihoods of local communities and indigenous peoples to satisfy their basic needs, while enhancing their adaptation to climate change.<br></br><br></br>Supporting the consolidation of their lands governance structures and capacities for sound management."
   },
   "/m/QYW": {
     "string": "Tell us what is the project about the problem and the solution to solve it"
@@ -65,6 +71,9 @@
   "0iaD3T": {
     "string": "Total <span>{numProjects}</span> {numProjects, plural, one {project} other {projects}}"
   },
+  "0vL5u1": {
+    "string": "Create an account"
+  },
   "0wBg9P": {
     "string": "Project developers"
   },
@@ -76,6 +85,9 @@
   },
   "1MTH/x": {
     "string": "option {optionName} {status}, {pagination}."
+  },
+  "1Qvlb5": {
+    "string": "Legalized Indigenous Reservations until the year 2021."
   },
   "1iEPTM": {
     "string": "General"
@@ -164,9 +176,6 @@
   "5c08Qp": {
     "string": "Project information"
   },
-  "5hbC/K": {
-    "string": "Start making an impact now!"
-  },
   "5kZ+j+": {
     "string": "Duration of the project"
   },
@@ -185,8 +194,8 @@
   "5zAKQ7": {
     "string": "About HeCo"
   },
-  "60xeYL": {
-    "string": "Contribute to improving the production systems and livelihoods of local communities and indigenous people, to ensure their basic needs are met, while enhancing their adaptation to climate change."
+  "6//v4m": {
+    "string": "+123456789"
   },
   "6EYInP": {
     "string": "My open call applications"
@@ -203,6 +212,9 @@
   "6ukMW9": {
     "string": "Basque Centre for Climate Change"
   },
+  "6vrfSY": {
+    "string": "Displays the Key Biodiversity Areas containing 95% or more of the remaining population of one or more species listed as Endangered or Critically Endangered on the International Union for Conservation of Nature (IUCN) Red List of Threatened Species."
+  },
   "6xBvFx": {
     "string": "Describe the problem or market need that your project or solution seeks to address. It should be a very specific problem, not a macro global issue like \"climate change\" or \"poverty\". Make sure that your showing that the problem is addressing a specific demand (is real) and it affects the poor and vulnerable population and/or the environment. We recommend using numbers to give a dimension of the problem."
   },
@@ -212,20 +224,17 @@
   "7JlauX": {
     "string": "Explore"
   },
-  "7KLSqh": {
-    "string": "Contribute to the conservation and restoration of the most diverse terrestrial ecosystems on the planet. These ecosystems support countless endemic species and contribute to mitigate the impacts of the climate crisis."
-  },
   "7Rh11y": {
     "string": "Setup investor profile"
   },
   "7aTDQM": {
     "string": "Project gallery (optional)"
   },
-  "7eO+k/": {
-    "string": "Enter the estimated implementation duration for the project. MAX 24 months."
-  },
   "7gMEKc": {
     "string": "Project details"
+  },
+  "7qB5i4": {
+    "string": "As an Investor or Funder"
   },
   "7xE2Vv": {
     "string": "Illustration of a person looking at a tree"
@@ -293,6 +302,9 @@
   "9cE0nR": {
     "string": "How is the impact calculated?"
   },
+  "9nYuln": {
+    "string": "Base Layers"
+  },
   "9pXx8c": {
     "string": "Promote your idea, project or business and connect it with investors and funding sources to generate impact in the Amazon region."
   },
@@ -301,6 +313,9 @@
   },
   "A4UTjl": {
     "string": "Portuguese"
+  },
+  "A8lXv/": {
+    "string": "Global estimate of human population density and distribution."
   },
   "AC6emZ": {
     "string": "Inter-American Development Bank"
@@ -329,6 +344,9 @@
   "BHrBCl": {
     "string": "PNG, JPG up to 5MB"
   },
+  "BSFsv6": {
+    "string": "Tree biomass density"
+  },
   "BZkcBV": {
     "string": "Project developer photo"
   },
@@ -338,14 +356,14 @@
   "BkLlj6": {
     "string": "What’s the impact of your project and what do you want to achieve"
   },
+  "Bt7PVr": {
+    "string": "Biodiversity intactness"
+  },
   "BvO1iK": {
     "string": "Biodiversity impact"
   },
   "ByoZDD": {
     "string": "Breadcrumbs"
-  },
-  "C0sD76": {
-    "string": "insert number (max 24)"
   },
   "C1dyBg": {
     "string": "No search results matching the criteria."
@@ -364,9 +382,6 @@
   },
   "CiBvks": {
     "string": "General information about the the project developer."
-  },
-  "CjpGzJ": {
-    "string": "Create your profile"
   },
   "Cra78t": {
     "string": "© {date} HeCo Invest. All rights reserved."
@@ -388,6 +403,9 @@
   },
   "DIA26W": {
     "string": "Create open call"
+  },
+  "DIrN6T": {
+    "string": "Project developer features"
   },
   "DQoGRx": {
     "string": "About the impact"
@@ -419,6 +437,9 @@
   "Ec0M9T": {
     "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
   },
+  "EmE3wV": {
+    "string": "Sub-basin boundaries of Colombia."
+  },
   "ErIkUS": {
     "string": "Insert your email"
   },
@@ -443,6 +464,9 @@
   "FN+0yY": {
     "string": "Unable to parse the file. Please try uploading a different format."
   },
+  "Fm6QvT": {
+    "string": "Political boundaries"
+  },
   "Ftj+/t": {
     "string": "Why is my profile pending approval?"
   },
@@ -451,9 +475,6 @@
   },
   "G6tmT0": {
     "string": "Select the ticket size(s) that you provide"
-  },
-  "GKDt/J": {
-    "string": "Find projects, start-ups or create an open call to locate opportunities for investment that make an impact."
   },
   "GKONs7": {
     "string": "Start having impact now."
@@ -476,17 +497,11 @@
   "HK3ph8": {
     "string": "How it works"
   },
-  "HNpobe": {
-    "string": "Features for project developers"
-  },
   "HVQtvr": {
     "string": "BC3's mission is to generate valuable knowledge for policy and decision making, integrating the environmental, socio-economic and ethical dimensions of climate change. Through the production of collaborative and open-source tools such as ARIES, which can track and forecast progress towards sustainable environmental and economic goals, BC3 plays a key role in enhancing regional, national and international economic development."
   },
   "Hb+Idf": {
     "string": "Project description"
-  },
-  "HmDmU1": {
-    "string": "Support the protection of water availability and regulation. These approaches are vital for reducing risks such as floods and droughts, which in the face of climate change can become more frequent and larger in magnitude."
   },
   "HnG9/3": {
     "string": "Insert password"
@@ -510,9 +525,6 @@
   "IBlTCs": {
     "string": "The image is larger than {maxSize}MB"
   },
-  "IMe8OV": {
-    "string": "Nature based solutions are estimated to compensate up to 30% of global emissions."
-  },
   "ITdmlJ": {
     "string": "Contact information"
   },
@@ -530,6 +542,12 @@
   },
   "J4w7T/": {
     "string": "Enable positive impact"
+  },
+  "JBFQAB": {
+    "string": "Population density"
+  },
+  "JFgMWS": {
+    "string": "info@hecoinvest.com"
   },
   "JFkvlB": {
     "string": "Please use the contacts below to reach the project developer."
@@ -579,6 +597,9 @@
   "KvhWhT": {
     "string": "The <span>IDB Lab</span>, the <span>Paulson Institute</span> and the <span>World Wildlife Fund</span> are working together to develop a digital platform that connects governments, investors, donors, and philanthropists with carefully identified investment opportunities in <span>high priority locations</span> identified by programs such as Herencia Colombia (HeCo)."
   },
+  "KxPY7j": {
+    "string": "Date of creation"
+  },
   "LFDgTb": {
     "string": "Leave project developer edition?"
   },
@@ -606,6 +627,9 @@
   "MHwpc4": {
     "string": "Draw or upload your location"
   },
+  "MJuP2l": {
+    "string": "Displays the impacts of forest change on local biodiversity intactness."
+  },
   "MM4RqT": {
     "string": "This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}."
   },
@@ -624,8 +648,8 @@
   "N9+9Fi": {
     "string": "select the project developer type"
   },
-  "NIQVjS": {
-    "string": "Support the consolidation of their lands governance structures and capacities for sound management."
+  "NUVSd2": {
+    "string": "Protected areas"
   },
   "NYErt1": {
     "string": "Go to previous page"
@@ -641,9 +665,6 @@
   },
   "Nye7xC": {
     "string": "Explore our curated database featuring the contacts you need to take your project or business to the next level."
-  },
-  "O1mdXY": {
-    "string": "Inspire and educate other users by coming back to the platform and updating us on your progress. We’ll be able to track the Amazon’s improvement thanks to your contribution!"
   },
   "OBhULP": {
     "string": "Open calls"
@@ -672,14 +693,17 @@
   "P7PLVj": {
     "string": "Date"
   },
+  "PD6Q1A": {
+    "string": "Endangered species and critical habitats"
+  },
   "PGlFh/": {
     "string": "Community impact"
   },
   "PIZ1dD": {
     "string": "Search biodiversity"
   },
-  "PTr6+3": {
-    "string": "Contribute to climate solutions through investments that reduce CO2 emissions and conserve or restore forest-related carbon sinks."
+  "PR8FFs": {
+    "string": "Create your organization's account as a project developer in the field or as an investor or funder and become part of the HeCo Invest community."
   },
   "PgGfZr": {
     "string": "Upload shapefile / KML file"
@@ -723,8 +747,8 @@
   "RXoqkD": {
     "string": "Mission"
   },
-  "RczAkW": {
-    "string": "Report back"
+  "SHw9Ht": {
+    "string": "Start connecting with people to create impact. You can find investors, opportunities to invest open calls and much more."
   },
   "SMrXWc": {
     "string": "Favorites"
@@ -777,9 +801,6 @@
   "UxTJRa": {
     "string": "Projects"
   },
-  "Uzc3q6": {
-    "string": "To update any of this information or to delete the account, please contact the platform administrator by sending an email to: <email>admin@admin.com</email>."
-  },
   "V/JHlm": {
     "string": "Forgot password?"
   },
@@ -828,6 +849,9 @@
   "W5x0GV": {
     "string": "Water impact"
   },
+  "W7un1n": {
+    "string": "HeCo mosaics"
+  },
   "WAr33U": {
     "string": "insert the name"
   },
@@ -837,8 +861,14 @@
   "WkrNSk": {
     "string": "English"
   },
+  "Wm7zf8": {
+    "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and start the conversation."
+  },
   "Wo0Pmr": {
     "string": "Already a member? Log in"
+  },
+  "WskbuL": {
+    "string": "Sub-basin boundaries"
   },
   "X0E3iC": {
     "string": "I agree with the Terms and Privacy Policy."
@@ -851,6 +881,9 @@
   },
   "XJqnLu": {
     "string": "Search water"
+  },
+  "XKK/dy": {
+    "string": "Shows the wetlands of Colombia."
   },
   "XO0Kon": {
     "string": "This file is not supported. Please try uploading a different format."
@@ -872,9 +905,6 @@
   },
   "Y2zB+b": {
     "string": "No project developers"
-  },
-  "Y7/cBd": {
-    "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and <span>start the conversation</span>. Make sure to update us to help us track your contribution to preserving the Amazon: <span>the future is in your hands too!</span>"
   },
   "Y9bYKH": {
     "string": "Next slide"
@@ -918,6 +948,9 @@
   "ZaT/7W": {
     "string": "option {optionName}, selected."
   },
+  "ZcbMzP": {
+    "string": "Support protecting the environmental factors that help maintain the availability and regulation of the water resources, which are vital for reducing risks such as floods and droughts, which in the face of climate change can become more frequent and larger in magnitude."
+  },
   "Zht65f": {
     "string": "Identify the target group(s) of this solution. Try to be very specific and do not cover an unrealistic range of beneficiaries or clients."
   },
@@ -941,9 +974,6 @@
   },
   "aT5Ajq": {
     "string": "Start drawing"
-  },
-  "aZVd4k": {
-    "string": "Your account has been <n>approved</n>, your profile is now publicly visible."
   },
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
@@ -1050,11 +1080,20 @@
   "fDd10o": {
     "string": "Instrument type"
   },
+  "fIkMFK": {
+    "string": "Context Layers"
+  },
   "fMrPOR": {
     "string": "Go to last page"
   },
+  "fX9u5/": {
+    "string": "Contribute to addressing the effects of climate change through investments to reduce CO2 emissions and conserve or restore forest-related carbon sinks. <br></br><br></br> Nature based solutions have been estimated to have the potential of contributing to compensate for up to 30% of global emissions."
+  },
   "fnihsY": {
     "string": "Leave"
+  },
+  "fvFVbs": {
+    "string": "Shows above ground live woody biomass density."
   },
   "fwSVTQ": {
     "string": "Sort in descending order"
@@ -1062,11 +1101,17 @@
   "g5pX+a": {
     "string": "About"
   },
+  "gF/kn9": {
+    "string": "Contribute to protecting areas of greatest ecosystems diversity, conservation and restoration potential, degree of threat or protection for flora and fauna, landscape connectivity and degree of endemism."
+  },
   "ghj0+t": {
     "string": "Geographies"
   },
   "gjBW8J": {
     "string": "General information about the investor/funder."
+  },
+  "gpOeXW": {
+    "string": "Priority Layers"
   },
   "gpTOIc": {
     "string": "{message} for search term {term}"
@@ -1104,11 +1149,11 @@
   "hpOE0K": {
     "string": "<a>Browse</a> or drag and drop"
   },
+  "huqKGl": {
+    "string": "Create account"
+  },
   "hxIQ/8": {
     "string": "Projects waiting funding"
-  },
-  "i50XU3": {
-    "string": "Features for investors"
   },
   "i9eK6b": {
     "string": "Show verified content only"
@@ -1128,8 +1173,8 @@
   "itfsqC": {
     "string": "Currently you don’t have any <b>Projects</b>."
   },
-  "j0CZkp": {
-    "string": "Users will receive an email to sign up into the platform and join the account."
+  "iwpEth": {
+    "string": "Map layers"
   },
   "j4lBL7": {
     "string": "Note: Some filters not apply to all tabs"
@@ -1139,9 +1184,6 @@
   },
   "jUgR7w": {
     "string": "Stage of development or maturity of the project"
-  },
-  "jWOeHy": {
-    "string": "<a>Call on our community</a> of project developers to identify opportunities in your preferred sectors and geographies."
   },
   "jX0V8C": {
     "string": "No investors"
@@ -1163,6 +1205,9 @@
   },
   "kEXoaQ": {
     "string": "About your work"
+  },
+  "kN5g/0": {
+    "string": "Indigenous Reserves"
   },
   "kPq9Kx": {
     "string": "HeCo priority landscape"
@@ -1266,6 +1311,9 @@
   "piBsTx": {
     "string": "Select HeCo priority landscapes on which you will have impact (optional)"
   },
+  "pkBu4q": {
+    "string": "insert number (max 36)"
+  },
   "psXhQO": {
     "string": "Funding &amp; development"
   },
@@ -1286,9 +1334,6 @@
   },
   "qcsPS9": {
     "string": "{duration} months"
-  },
-  "qhxHf3": {
-    "string": "Your account has been <n>rejected</n>, your profile is not publicly visible."
   },
   "qoImFc": {
     "string": "Replicability of the project"
@@ -1320,20 +1365,17 @@
   "rvirM2": {
     "string": "Location"
   },
+  "rw2/NH": {
+    "string": "Identifies areas of gross tree cover loss."
+  },
   "rwcive": {
     "string": "Total of {total} users"
   },
   "s07dAT": {
     "string": "Project image"
   },
-  "sDHn6D": {
-    "string": "Contact Admin"
-  },
   "sFn7MX": {
     "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
-  },
-  "sMWFoV": {
-    "string": "As an Investor / Funder"
   },
   "sV+3z0": {
     "string": "Currently looking for"
@@ -1347,11 +1389,17 @@
   "stKKFV": {
     "string": "What type of projects are you prioritizing?"
   },
+  "sx8Bco": {
+    "string": "Find projects, start-ups or create an open call to locate opportunities for investment or funding that make an impact."
+  },
   "sy+pv5": {
     "string": "Email"
   },
   "t7YvMF": {
     "string": "Water"
+  },
+  "t7lNU8": {
+    "string": "Start making an impact now"
   },
   "tGAYL2": {
     "string": "Select an option"
@@ -1440,6 +1488,9 @@
   "wpyHb9": {
     "string": "Open Calls"
   },
+  "wsk6Y/": {
+    "string": "Investors features"
+  },
   "wvoA3H": {
     "string": "Picture"
   },
@@ -1461,6 +1512,9 @@
   "xXbJso": {
     "string": "Sign out"
   },
+  "xa6OiT": {
+    "string": "Wetlands"
+  },
   "xbi38c": {
     "string": "Zoom in"
   },
@@ -1473,14 +1527,14 @@
   "xnQiBM": {
     "string": "The impact of this project isn’t available. Impact calculations may take some time to be available."
   },
-  "xqsnF9": {
-    "string": "Your account has not yet been reviewed, your profile is not publicly visible."
-  },
-  "xusigZ": {
-    "string": "Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."
+  "xqjjPY": {
+    "string": "As an Investor or <br></br> Funder"
   },
   "y1Z3or": {
     "string": "Language"
+  },
+  "y8AKM4": {
+    "string": "Tree cover loss"
   },
   "yF82he": {
     "string": "Project developer"
@@ -1500,6 +1554,9 @@
   "ygAxHr": {
     "string": "Your project is awaiting verification. This means that the project is visible in the platform but without the <b>Verification badge</b>."
   },
+  "yqBX7I": {
+    "string": "Call on our community of project developers to identify opportunities in your preferred sectors and geographies."
+  },
   "yqJ5XD": {
     "string": "Select the amount of money that you need"
   },
@@ -1508,6 +1565,9 @@
   },
   "zFegDD": {
     "string": "Contact"
+  },
+  "zINlao": {
+    "string": "Owner"
   },
   "zSOvI0": {
     "string": "Filters"

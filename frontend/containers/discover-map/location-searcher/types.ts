@@ -1,1 +1,3 @@
-export interface LocationSearcherProps {}
+export interface LocationSearcherProps {
+  onLocationSelected: ({ bbox }: { bbox: number[] }) => void;
+}

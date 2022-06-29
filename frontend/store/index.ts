@@ -1,11 +1,7 @@
-import projects from 'store/projects';
-
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import type { ReducersMapObject } from '@reduxjs/toolkit';
 
-const staticReducers = {
-  '/projects': projects,
-};
+const staticReducers = {};
 
 const asyncReducers = {};
 

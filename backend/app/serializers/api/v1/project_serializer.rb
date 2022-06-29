@@ -28,6 +28,7 @@ module API
         :language,
         :geometry,
         :trusted,
+        :created_at,
         :municipality_biodiversity_impact,
         :municipality_climate_impact,
         :municipality_water_impact,
