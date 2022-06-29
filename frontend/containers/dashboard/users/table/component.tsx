@@ -89,7 +89,7 @@ export const UsersTable = () => {
         className: 'capitalize text-sm',
         defaultCanSort: true,
         sortDescFirst: true,
-        width: 60,
+        width: 35,
         hideHeader: true,
         Cell: Actions,
       },
