@@ -11,6 +11,7 @@ import { useAccountUsersList } from 'services/account';
 
 import Actions from './cells/actions';
 import Invitation from './cells/invitation';
+import Role from './cells/role';
 import User from './cells/user';
 
 export const UsersTable = () => {
@@ -41,9 +42,10 @@ export const UsersTable = () => {
       },
       {
         Header: 'Role',
-        accessor: 'role',
+        accessor: 'owner',
         className: 'text-sm',
         width: 100,
+        Cell: Role,
       },
       {
         Header: 'Invitation',
