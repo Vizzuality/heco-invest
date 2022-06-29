@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 import { Mail as MailIcon, Trash2 as TrashIcon } from 'react-feather';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
 import ConfirmationPrompt from 'components/confirmation-prompt';
 import Icon from 'components/icon';
+import Tooltip from 'components/tooltip';
 
 import { CellActionsProps } from './types';
 
@@ -22,24 +23,47 @@ export const CellActions = ({ row }: CellActionsProps) => {
 
   return (
     <div className="flex space-x-2">
-      <button
-        onClick={() => console.log('re-invite user')}
-        className={cx({
-          'flex items-center justify-center w-8 h-8 border rounded-full pointer border-green-dark':
-            true,
-          invisible: confirmed,
-        })}
+      <Tooltip
+        placement="top"
+        arrow
+        arrowClassName="bg-black"
+        content={
+          <div className="max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
+            <FormattedMessage defaultMessage="Invite again" id="Fxekek" />
+          </div>
+        }
       >
-        <Icon className="w-5 h-5 text-green-dark" icon={MailIcon} />
-      </button>
+        <button
+          onClick={() => console.log('re-invite user')}
+          className={cx({
+            'flex items-center justify-center w-8 h-8 border rounded-full pointer border-green-dark hover:bg-green-light hover:bg-opacity-20':
+              true,
+            invisible: confirmed,
+          })}
+        >
+          <Icon className="w-5 h-5 text-green-dark" icon={MailIcon} />
+        </button>
+      </Tooltip>
 
-      <button
-        type="button"
-        onClick={() => setConfirmDelete(true)}
-        className="flex items-center justify-center w-8 h-8 border rounded-full pointer border-green-dark"
+      <Tooltip
+        placement="top"
+        arrow
+        arrowClassName="bg-black"
+        content={
+          <div className="max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
+            <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
+          </div>
+        }
       >
-        <Icon className="w-5 h-5 text-green-dark" icon={TrashIcon} />
-      </button>
+        <button
+          type="button"
+          onClick={() => setConfirmDelete(true)}
+          className="flex items-center justify-center w-8 h-8 border rounded-full hover:bg-green-light hover:bg-opacity-20 pointer border-green-dark"
+        >
+          <Icon className="w-5 h-5 text-green-dark" icon={TrashIcon} />
+        </button>
+      </Tooltip>
+
       <ConfirmationPrompt
         open={confirmDelete}
         onAccept={() => console.log(`Delete ${id} user`)}

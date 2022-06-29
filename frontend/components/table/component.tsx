@@ -103,7 +103,7 @@ export const Table: FC<TableProps> = ({
                         key={headerKey}
                         {...restHeaderProps}
                         className={cx({
-                          'flex items-center py-5 pr-5 space-x-2 text-sm font-medium capitalize font-heading':
+                          'flex items-center py-5 px-2.5 space-x-2 text-sm font-medium capitalize font-heading':
                             true,
                           'cursor-pointer': canSort,
                         })}
@@ -153,7 +153,7 @@ export const Table: FC<TableProps> = ({
                         key={cellKey}
                         {...restCellProps}
                         className={cx({
-                          'py-5 pr-5': true,
+                          'py-5 px-2.5': true,
                           [cell?.column?.className]: !!cell?.column?.className,
                         })}
                       >

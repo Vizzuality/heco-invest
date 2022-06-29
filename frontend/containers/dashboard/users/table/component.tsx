@@ -10,8 +10,8 @@ import { useSortChange } from 'helpers/dashboard';
 import { useQueryParams } from 'helpers/pages';
 
 import NoSearchResults from 'containers/dashboard/no-search-results';
+import SearchAndInfo from 'containers/dashboard/search-and-info';
 
-import Search from 'components/search';
 import Table from 'components/table';
 
 import { useAccountUsersList } from 'services/account';
@@ -89,7 +89,7 @@ export const UsersTable = () => {
         className: 'capitalize text-sm',
         defaultCanSort: true,
         sortDescFirst: true,
-        width: 60,
+        width: 35,
         hideHeader: true,
         Cell: Actions,
       },
@@ -103,27 +103,17 @@ export const UsersTable = () => {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <div className="w-2/3">
-          <Search
-            id="user-search"
-            defaultValue={search}
-            size="sm"
-            theme="light"
-            placeholder="Search"
-            aria-label="Search"
-            onChange={onSearch}
-          />
-        </div>
-        <div className="font-sans text-base text-gray-800 break-all">
-          {users && (
+        <div className="w-full">
+          <SearchAndInfo className="mt-4 mb-6">
             <FormattedMessage
-              defaultMessage="Total of {total} users"
+              defaultMessage="Total <span>{numUsers}</span> {numUsers, plural, one {user} other {users}}"
+              id="YQsqLq"
               values={{
-                total: <b>{users?.length || 0}</b>,
+                span: (chunks: string) => <span className="px-1 font-semibold">{chunks}</span>,
+                numUsers: users.length,
               }}
-              id="rwcive"
             />
-          )}
+          </SearchAndInfo>
         </div>
       </div>
       {hasUsers && <Table {...tableProps} />}
