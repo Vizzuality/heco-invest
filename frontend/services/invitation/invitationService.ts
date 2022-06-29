@@ -57,7 +57,7 @@ export const useAcceptInvitation = (): UseMutationResult<
   AxiosError<ErrorResponse>,
   string
 > => {
-  return useMutation((data) => {
-    return API.put('/api/v1/invitation', data);
+  return useMutation((invitation_token) => {
+    return API.put('/api/v1/invitation', { invitation_token });
   });
 };

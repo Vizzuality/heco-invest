@@ -21,7 +21,6 @@ import Loading from 'components/loading';
 import { Paths, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
-import { InvitedUserInfo } from 'types/invitation';
 import { SignupDto, SignupFormI } from 'types/user';
 import { useSignupResolver } from 'validations/signup';
 
@@ -45,7 +44,7 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
   const { invitedUser } = useInvitedUser(query.invitation_token as string);
   const acceptInvitation = useAcceptInvitation();
   const resolver = useSignupResolver();
-  const { user } = useMe();
+  const { user, refetch: refetchUser } = useMe();
   const {
     register,
     formState: { errors },
@@ -78,22 +77,22 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
 
   const handleSignUp = useCallback(
     (data: SignupDto) => {
-      const signUpDto = data;
       if (!!invitedUser) {
-        signUpDto.invitation_token = query.invitation_token as string;
-        signUpDto.email = null;
+        data.invitation_token = query.invitation_token as string;
       }
       signUp.mutate(data, {
         onSuccess: () => {
           if (!!invitedUser) {
-            replace(Paths.Dashboard);
+            acceptInvitation.mutate(query.invitation_token as string, {
+              onSuccess: () => refetchUser(),
+            });
           } else {
             replace(Paths.AccountType);
           }
         },
       });
     },
-    [signUp, invitedUser, query.invitation_token, replace]
+    [invitedUser, signUp, query.invitation_token, acceptInvitation, refetchUser, replace]
   );
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {
@@ -202,25 +201,27 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
             <ErrorMessage id="last-name-error" errorText={errors.last_name?.message} />
           </div>
         </div>
-        <div className="w-full">
-          <label htmlFor="email">
-            <p className="mb-2.5 mt-4.5 font-sans text-sm font-semibold text-gray-800">
-              <FormattedMessage defaultMessage="Email" id="sy+pv5" />
-            </p>
-            <Input
-              type="email"
-              name="email"
-              id="email"
-              placeholder={intl.formatMessage({
-                defaultMessage: 'Insert your email',
-                id: 'ErIkUS',
-              })}
-              aria-describedby="email-error"
-              register={register}
-            />
-          </label>
-          <ErrorMessage id="email-error" errorText={errors.email?.message} />
-        </div>
+        {!invitedUser && (
+          <div className="w-full">
+            <label htmlFor="email">
+              <p className="mb-2.5 mt-4.5 font-sans text-sm font-semibold text-gray-800">
+                <FormattedMessage defaultMessage="Email" id="sy+pv5" />
+              </p>
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                placeholder={intl.formatMessage({
+                  defaultMessage: 'Insert your email',
+                  id: 'ErIkUS',
+                })}
+                aria-describedby="email-error"
+                register={register}
+              />
+            </label>
+            <ErrorMessage id="email-error" errorText={errors.email?.message} />
+          </div>
+        )}
         <div className="md:gap-4 md:flex">
           <div className="w-full">
             <label htmlFor="password">

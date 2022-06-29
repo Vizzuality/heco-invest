@@ -40,12 +40,12 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
 type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => {
-  const { push, query } = useRouter();
+  const { query, replace } = useRouter();
   const intl = useIntl();
   const signIn = useSignIn();
   const acceptInvitation = useAcceptInvitation();
   const resolver = useSignInResolver();
-  const { user } = useMe();
+  const { user, refetch: refetchUser } = useMe();
   const { invitedUser } = useInvitedUser(query.invitation_token as string);
 
   const {
@@ -62,16 +62,18 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
   useEffect(() => {
     if (!!invitedUser) {
       setValue('email', invitedUser.email);
-    } else {
-      if (!!user) {
-        if (user?.role === UserRoles.Light) {
-          push(Paths.AccountType);
-        } else {
-          push(Paths.Dashboard);
-        }
+    }
+  }, [invitedUser, setValue]);
+
+  useEffect(() => {
+    if (!!user) {
+      if (user?.role === UserRoles.Light) {
+        replace(Paths.AccountType);
+      } else {
+        replace(Paths.Dashboard);
       }
     }
-  }, [invitedUser, push, setValue, user]);
+  }, [replace, user]);
 
   const handleSignIn = useCallback(
     (data: SignIn) =>
@@ -79,14 +81,14 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
         onSuccess: () => {
           if (!!invitedUser) {
             acceptInvitation.mutate(query.invitation_token as string, {
-              onSuccess: () => push(Paths.Dashboard),
+              onSuccess: () => refetchUser(),
             });
           } else {
-            push(Paths.Dashboard);
+            replace(Paths.Dashboard);
           }
         },
       }),
-    [acceptInvitation, invitedUser, push, query.invitation_token, signIn]
+    [acceptInvitation, invitedUser, replace, query.invitation_token, refetchUser, signIn]
   );
 
   const onSubmit: SubmitHandler<SignIn> = handleSignIn;
