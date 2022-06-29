@@ -52,7 +52,7 @@ export const StartBanner = () => {
                 theme="primary-green"
                 size="small"
                 className="justify-center w-full text-lg"
-                disabled
+                to="/sign-up"
               >
                 <FormattedMessage defaultMessage="Create account" id="huqKGl" />
               </Button>
@@ -91,7 +91,12 @@ export const StartBanner = () => {
             </div>
           </div>
           <div className="flex justify-center w-full">
-            <Button theme="primary-green" size="small" className="mb-20 text-sm mt-44" disabled>
+            <Button
+              theme="primary-green"
+              size="small"
+              className="mb-20 text-sm mt-44"
+              to="/sign-up"
+            >
               <FormattedMessage defaultMessage="Create account" id="huqKGl" />
             </Button>
           </div>

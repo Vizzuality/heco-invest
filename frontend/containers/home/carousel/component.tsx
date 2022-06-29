@@ -45,7 +45,7 @@ export const Carousel = () => {
           <h3 className="font-serif text-2xl font-semibold text-white sm:text-3xl md:text-4xl">
             <FormattedMessage defaultMessage="Biodiversity" id="mbTJWV" />
           </h3>
-          <p className="max-w-md mt-3 text-base text-white md:mt-6 lg:mx-0 sm:text-lg md:text-xl opacity-70">
+          <p className="max-w-md mt-3 text-base text-white md:mt-6 lg:mx-0 lg:text-lg opacity-70">
             <FormattedMessage
               defaultMessage="Contribute to protecting areas of greatest ecosystems diversity, conservation and restoration potential, degree of threat or protection for flora and fauna, landscape connectivity and degree of endemism."
               id="gF/kn9"
@@ -88,7 +88,7 @@ export const Carousel = () => {
           <h3 className="font-serif text-2xl font-semibold text-white sm:text-3xl md:text-4xl">
             <FormattedMessage defaultMessage="Climate" id="MuOp0t" />
           </h3>
-          <p className="max-w-md mt-3 text-base text-white md:mt-6 lg:mx-0 sm:text-lg md:text-xl opacity-70">
+          <p className="max-w-md mt-3 text-base text-white md:mt-6 lg:mx-0 lg:text-lg opacity-70">
             <FormattedMessage
               defaultMessage="Contribute to addressing the effects of climate change through investments to reduce CO2 emissions and conserve or restore forest-related carbon sinks. <br></br><br></br> Nature based solutions have been estimated to have the potential of contributing to compensate for up to 30% of global emissions."
               id="fX9u5/"
@@ -134,7 +134,7 @@ export const Carousel = () => {
           <h3 className="font-serif text-2xl font-semibold text-white sm:text-3xl md:text-4xl">
             <FormattedMessage defaultMessage="Community" id="4CrCbD" />
           </h3>
-          <p className="max-w-md mt-3 text-base text-white md:mt-6 lg:mx-0 sm:text-lg md:text-xl opacity-70">
+          <p className="max-w-md mt-3 text-base text-white lg:text-lg md:mt-6 lg:mx-0 opacity-70">
             <FormattedMessage
               defaultMessage="By contributing to improve the productions systems and livelihoods of local communities and indigenous peoples to satisfy their basic needs, while enhancing their adaptation to climate change.<br></br><br></br>Supporting the consolidation of their lands governance structures and capacities for sound management."
               id="/aYUC+"
@@ -182,7 +182,7 @@ export const Carousel = () => {
             <h3 className="font-serif text-2xl font-semibold text-white sm:text-3xl md:text-4xl">
               <FormattedMessage defaultMessage="Water" id="t7YvMF" />
             </h3>
-            <p className="max-w-md mt-3 text-base text-white md:mt-6 lg:mx-0 sm:text-lg md:text-xl opacity-70">
+            <p className="max-w-md mt-3 text-base text-white lg:text-lg md:mt-6 lg:mx-0 opacity-70">
               <FormattedMessage
                 defaultMessage="Support protecting the environmental factors that help maintain the availability and regulation of the water resources, which are vital for reducing risks such as floods and droughts, which in the face of climate change can become more frequent and larger in magnitude."
                 id="ZcbMzP"
