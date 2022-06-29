@@ -40,20 +40,20 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
   const [impactModalOpen, setImpactModalOpen] = useState(false);
 
   const breakpoint = useBreakpoint();
-  const isMobile = breakpoint('xs');
+  const isDesktop = breakpoint('lg');
 
   return (
     <>
       <Head title="About" />
       <ImpactModal impactModalOpen={impactModalOpen} setImpactModalOpen={setImpactModalOpen} />
       <LayoutContainer className="bg-background-light">
-        <div className="grid grid-cols-1 grid-rows-1-fr md:grid-cols-2 md:gap-x-6 lg:gap-x-40">
-          <div className="md:pt-8 row-start-1">
-            <h1 className="font-serif text-5xl font-bold md:text-4xl text-green-dark md:text-black">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 xl:gap-x-40">
+          <div className="lg:pt-8 row-start-1">
+            <h1 className="font-serif text-5xl font-bold lg:text-4xl text-green-dark lg:text-black">
               <FormattedMessage defaultMessage="About the platform" id="eM7TKf" />
             </h1>
           </div>
-          <div className="mt-8 row-start-3 md:row-start-2">
+          <div className="mt-8 lg:mt-0 row-start-3 lg:row-start-2">
             <p className="mb-6">
               <FormattedMessage
                 defaultMessage=" HeCo Invest supports the Herencia Colombia program in its efforts to stimulate and channel funding for high impact projects in the Amazon region of Colombia."
@@ -76,30 +76,44 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               />
             </p>
           </div>
-          <div className="mt-8 md:mt-0 row-start-2 md:row-start-1 row-span-2">
-            <Image
-              src={isMobile ? '/images/about-intro-mobile.png' : '/images/about-intro.png'}
-              height={isMobile ? 591 : 1209}
-              width={isMobile ? 514 : 1204}
-              layout="responsive"
-              alt=""
-            />
+          <div className="mt-8 lg:mt-0 row-start-2 lg:row-start-1 lg:row-span-2">
+            {isDesktop ? (
+              <Image
+                src="/images/about-intro.png"
+                height={695}
+                width={772}
+                layout="responsive"
+                alt=""
+                priority
+              />
+            ) : (
+              <Image
+                src="/images/about-intro-mobile.png"
+                height={591}
+                width={514}
+                layout="responsive"
+                alt=""
+                priority
+              />
+            )}
           </div>
         </div>
       </LayoutContainer>
 
-      <LayoutContainer className="mt-5 sm:mt-24 lg:pt-14">
-        <div className="flex flex-col gap-8 pb-10 sm:py-12 md:pt-14 md:pb-16 lg:pb-14 sm:px-8 xl:px-24 md:gap-0 md:grid md:grid-cols-2 bg-green-dark rounded-3xl">
-          <div className="overflow-hidden h-52 sm:h-auto lg:-mt-28 lg:pr-10 rounded-2xl md:rounded-none">
+      <LayoutContainer className="mt-5 lg:mt-24 lg:pt-14">
+        <div className="flex flex-col lg:py-14 lg:grid lg:grid-cols-2 rounded-3xl">
+          <div className="overflow-hidden h-52 lg:h-auto lg:-mt-28 rounded-t-2xl lg:rounded-3xl lg:rounded-br-none">
             <Image
-              src="/images/about-about-section.png"
-              height={1096}
-              width={1072}
+              src="/images/about-heco.jpg"
+              height={691}
+              width={724}
+              objectFit="cover"
+              objectPosition="bottom"
               layout="responsive"
               alt=""
             />
           </div>
-          <div className="px-6 md:pl-6 xl:pl-16 xl:pr-16 text-white">
+          <div className="px-6 pt-6 pb-10 lg:pl-6 lg:px-16 2xl:px-20 text-white bg-green-dark rounded-b-2xl lg:pt-14 lg:rounded-3xl lg:rounded-l-none">
             <h2 className="font-serif text-2xl font-semibold sm:text-3xl">
               <FormattedMessage defaultMessage="About HeCo" id="5zAKQ7" />
             </h2>
