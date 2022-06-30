@@ -112,7 +112,7 @@ RSpec.describe "API V1 Reset Password", type: :request do
 
         context "expired token" do
           let(:token) do
-            travel_to 7.hours.ago do
+            travel_to 3.days.ago do
               user.send(:set_reset_password_token) # this is protected method
             end
           end
