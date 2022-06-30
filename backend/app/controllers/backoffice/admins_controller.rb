@@ -25,8 +25,8 @@ module Backoffice
 
     def create
       if @admin.update admin_params.merge(password: GeneratePassword.new(50).call, ui_language: current_admin.ui_language)
-        redirect_to backoffice_admins_url,
-          notice: t("backoffice.messages.success_create", model: t("backoffice.common.admin"))
+        AdminMailer.first_time_login_instructions(@admin).deliver_later
+        redirect_to backoffice_admins_url, notice: t("backoffice.messages.success_create", model: t("backoffice.common.admin"))
       else
         render :new, status: :unprocessable_entity
       end

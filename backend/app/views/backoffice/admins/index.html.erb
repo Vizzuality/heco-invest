@@ -1,4 +1,4 @@
-<%= render partial: "new_record", locals: { text: t("backoffice.admins.index.new"), url: new_backoffice_admin_path } %>
+<%= render "new_record", text: t("backoffice.admins.index.new"), url: new_backoffice_admin_path %>
 <div class="flex">
   <%= render partial: "filters", locals: {q: @q} %>
   <%= render partial: "backoffice/base/total_records" %>

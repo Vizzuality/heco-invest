@@ -53,10 +53,12 @@ RSpec.describe "Backoffice: Admins", type: :system do
 
     context "when content is correct" do
       it "creates new admin" do
-        fill_in t("activerecord.attributes.admin.first_name"), with: "First Name"
-        fill_in t("activerecord.attributes.admin.last_name"), with: "Last Name"
-        fill_in t("activerecord.attributes.admin.email"), with: "user@example.com"
-        click_on t("backoffice.common.save")
+        fill_in t("simple_form.labels.admin.first_name"), with: "First Name"
+        fill_in t("simple_form.labels.admin.last_name"), with: "Last Name"
+        fill_in t("simple_form.labels.admin.email"), with: "user@example.com"
+        expect {
+          click_on t("backoffice.common.save")
+        }.to have_enqueued_mail(AdminMailer, :first_time_login_instructions).once
 
         expect(page).to have_text(t("backoffice.messages.success_create", model: t("backoffice.common.admin")))
         expect(new_admin.first_name).to eq("First Name")
@@ -69,7 +71,7 @@ RSpec.describe "Backoffice: Admins", type: :system do
 
     context "when content is incorrect" do
       it "shows validation errors" do
-        fill_in t("activerecord.attributes.admin.first_name"), with: ""
+        fill_in t("simple_form.labels.admin.first_name"), with: ""
         click_on t("backoffice.common.save")
 
         expect(page).to have_text(t("simple_form.error_notification.default_message"))

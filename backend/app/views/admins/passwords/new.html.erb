@@ -1,0 +1,11 @@
+<div class="bg-white p-6 rounded-2xl shadow-lg min-w-[600px]">
+  <h2 class="text-green-dark font-bold text-lg"><%= t("backoffice.forgot_password.title") %></h2>
+
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, "data-turbo": false }) do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+
+    <%= f.button :submit, t("backoffice.forgot_password.button"), class: "button button-primary-green mx-auto" %>
+  <% end %>
+</div>

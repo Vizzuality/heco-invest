@@ -12,6 +12,12 @@ zu:
     error_notification:
       default_message: "Please review the problems below:"
     labels:
+      admin:
+        first_name: First name
+        last_name: Last name
+        email: Email
+        password: New password
+        password_confirmation: Confirm your new password
       account:
         picture: Picture
         name: Profile name
@@ -125,6 +131,12 @@ zu:
       welcome: Welcome to HeCO Invest backoffice.
       enter_details_below: Please enter your details below.
       sign_in: Sign in
+    forgot_password:
+      title: Forgot your password?
+      button: Send me reset password instructions
+    change_password:
+      title: Change your password
+      button: Change my password
     admins:
       index:
         new: Add administrator
@@ -198,12 +210,13 @@ zu:
     rejected:
       subject: Your account was rejected!
       content_html: We would like to inform you that your account at HeCo platform was rejected. One of our platform administrators should reach you shortly, but feel free to contact us at %{contact_url}.
-  activerecord:
-    attributes:
-      admin:
-        first_name: First name
-        last_name: Last name
-        email: Email
+  admin_mailer:
+    greetings: Dear %{full_name},
+    farewell_html: Best Regards,<br />Your HeCo Team
+    first_time_login_instructions:
+      subject: Your HeCo Admin account was created!
+      content_html: "To login for first time, please %{reset_password_link}."
+      reset_password_link: setup your new password
   enums:
     review_status:
       approved:
