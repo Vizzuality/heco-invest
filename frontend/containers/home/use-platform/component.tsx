@@ -34,7 +34,7 @@ export const UsePlatform = () => {
         <FormattedMessage defaultMessage="Why use this platform" id="VCODFJ" />
       </h2>
 
-      <div className="relative mt-20 md:mt-12 lg:mt-24 md:grid md:grid-cols-2 md:gap-3 lg:items-center">
+      <div className="relative mt-20 -z-10 md:mt-12 lg:mt-24 md:grid md:grid-cols-2 md:gap-3 lg:items-center">
         <div className="flex items-end space-x-2">
           <div
             className={cx({

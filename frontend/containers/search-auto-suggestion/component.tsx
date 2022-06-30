@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 import { omit } from 'lodash-es';
 
-import { useFilterNames, useQueryParams } from 'helpers/pages';
+import { useDiscoverPath, useFilterNames, useQueryParams } from 'helpers/pages';
 
 import Button from 'components/button';
 import { Enum } from 'types/enums';
@@ -25,6 +25,8 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
   const { data, isLoading } = useEnums();
   const { page, search, sorting, ...initialFilters } = useQueryParams();
   const { push } = useRouter();
+  const pathname = useDiscoverPath();
+
   const filterNames = useFilterNames();
 
   const filters: Enum[] = useMemo(() => {
@@ -65,6 +67,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
     const newFilters = omit(initialFilters, filterKey);
     push(
       {
+        pathname,
         query: {
           page: 1,
           sorting,
@@ -83,6 +86,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
   const handleSearch = () => {
     push(
       {
+        pathname,
         query: {
           page: 1,
           search: searchText,

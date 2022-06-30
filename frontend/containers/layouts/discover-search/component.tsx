@@ -1,7 +1,7 @@
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 
 import { Search as SearchIcon } from 'react-feather';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
@@ -25,6 +25,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
   const [searchText, setSearchText] = useState<string>(searchTextProp);
   const [openFilters, setOpenFilters] = useState(false);
   const [openSuggestions, setOpenSuggestions] = useState(false);
+  const { formatMessage } = useIntl();
 
   useEffect(() => {
     setSearchText(searchTextProp);
@@ -69,6 +70,10 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
                 value={searchText}
                 className="w-full h-full text-lg outline-none autofill:bg-transparent"
                 onChange={handleChange}
+                placeholder={formatMessage({
+                  defaultMessage: 'Search for projects, investors, open calls...',
+                  id: 'BZG0d+',
+                })}
               />
             </div>
             <div className="flex items-center gap-4 sm:gap-6 sm:justify-self-end">
