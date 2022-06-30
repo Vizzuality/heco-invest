@@ -67,7 +67,6 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
       {
         query: {
           page: 1,
-          search,
           sorting,
           ...newFilters,
           [filterKey]: filter.id,
@@ -112,11 +111,11 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
       )}
     >
       {!!autoSuggestions?.length && (
-        <div className="px-9 py-5">
+        <div className="py-5 px-9">
           <div>
             <Button key="custom" theme="naked" className="px-0 py-2" onClick={handleSearch}>
               &quot;{searchText}&quot;
-              <span className="text-gray-600 ml-2">
+              <span className="ml-2 text-gray-600">
                 <FormattedMessage defaultMessage="Custom search" id="AoHRBG" />
               </span>
             </Button>
@@ -135,7 +134,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
                 onClick={() => handleFilter(item)}
               >
                 {item.name} {item.type}
-                <span className="text-gray-600 ml-2">{filterNames[item.type]}</span>
+                <span className="ml-2 text-gray-600">{filterNames[item.type]}</span>
               </Button>
             ))}
           </div>

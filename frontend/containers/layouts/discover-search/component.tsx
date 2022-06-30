@@ -67,7 +67,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
                 id="header-search"
                 type="search"
                 value={searchText}
-                className="w-full h-full text-lg rounded-full outline-none autofill:bg-transparent"
+                className="w-full h-full text-lg outline-none autofill:bg-transparent"
                 onChange={handleChange}
               />
             </div>
