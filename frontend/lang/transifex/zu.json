@@ -17,6 +17,9 @@
   "/CaREm": {
     "string": "Pending approval"
   },
+  "/ITXlB": {
+    "string": "How do accounts work?"
+  },
   "/L6T3E": {
     "string": "Get connected"
   },
@@ -639,6 +642,9 @@
   "MXykbb": {
     "string": "The problem we are solving"
   },
+  "MZI6bG": {
+    "string": "You have been invited to join {accountName} account"
+  },
   "MZl85Y": {
     "string": "One more step to go"
   },
@@ -686,6 +692,9 @@
   },
   "Ow9MS8": {
     "string": "I want to find the right investment for my projects"
+  },
+  "OwLYPT": {
+    "string": "By accepting this invitation you will belong to {accountName} Project Developers’ account."
   },
   "P+9ug1": {
     "string": "We’ll help you reset it and get back on track."
@@ -861,6 +870,9 @@
   "WTuVeL": {
     "string": "Something went wrong while submitting your form. Please correct the errors before submitting again."
   },
+  "WXE4DJ": {
+    "string": "By signing in you will be automatically added to {accountName} account. <a>How accounts work?</a>"
+  },
   "WkrNSk": {
     "string": "English"
   },
@@ -899,6 +911,9 @@
   },
   "XgaRPC": {
     "string": "Expected impact"
+  },
+  "XimHnV": {
+    "string": "Invalid invitation token"
   },
   "Xk8qys": {
     "string": "Are there other Project developers involved in the project?"
@@ -969,6 +984,9 @@
   "ZjA6uH": {
     "string": "Welcome to HeCo Invest. Please enter your details below."
   },
+  "a+vAPa": {
+    "string": "Invitation mail"
+  },
   "a5msuh": {
     "string": "Yes"
   },
@@ -1022,6 +1040,9 @@
   },
   "cT6b2H": {
     "string": "WWF"
+  },
+  "cWqW+j": {
+    "string": "By signing up you will be automatically added to {accountName} account. <a>How accounts work?</a>"
   },
   "ccXLVi": {
     "string": "Category"
@@ -1152,6 +1173,9 @@
   "hmK5Jb": {
     "string": "Close project details card"
   },
+  "hmY5tv": {
+    "string": "Something went wrong while sending invite to email {email}."
+  },
   "hpOE0K": {
     "string": "<a>Browse</a> or drag and drop"
   },
@@ -1184,6 +1208,9 @@
   },
   "j4lBL7": {
     "string": "Note: Some filters not apply to all tabs"
+  },
+  "jG0v72": {
+    "string": "Email {email} is invalid."
   },
   "jKdvln": {
     "string": "Relevant links (optional)"
@@ -1308,6 +1335,9 @@
   "pWwsxm": {
     "string": "Delete image"
   },
+  "paBpxN": {
+    "string": "Ignore"
+  },
   "pcRRCK": {
     "string": "Financial information about your project and what are the needs"
   },
@@ -1380,6 +1410,9 @@
   "sFn7MX": {
     "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
   },
+  "sK7G1d": {
+    "string": "User with email {email} already has an account in HeCo."
+  },
   "sV+3z0": {
     "string": "Currently looking for"
   },
@@ -1388,6 +1421,9 @@
   },
   "saBdZ2": {
     "string": "select option"
+  },
+  "sjzLbX": {
+    "string": "Accept"
   },
   "stKKFV": {
     "string": "What type of projects are you prioritizing?"
