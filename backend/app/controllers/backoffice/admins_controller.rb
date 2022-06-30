@@ -1,5 +1,8 @@
 module Backoffice
   class AdminsController < BaseController
+    before_action :initialize_admin, only: [:new, :create]
+    before_action :set_breadcrumbs, only: [:new, :create]
+
     def index
       @q = Admin.ransack params[:q]
       @admins = @q.result
@@ -15,6 +18,37 @@ module Backoffice
             type: "text/csv; charset=utf-8"
         end
       end
+    end
+
+    def new
+    end
+
+    def create
+      if @admin.update admin_params.merge(password: GeneratePassword.new(50).call, ui_language: current_admin.ui_language)
+        redirect_to backoffice_admins_url,
+          notice: t("backoffice.messages.success_create", model: t("backoffice.common.admin"))
+      else
+        render :new, status: :unprocessable_entity
+      end
+    end
+
+    private
+
+    def admin_params
+      params.require(:admin).permit(
+        :first_name,
+        :last_name,
+        :email
+      )
+    end
+
+    def initialize_admin
+      @admin = Admin.new
+    end
+
+    def set_breadcrumbs
+      add_breadcrumb(I18n.t("backoffice.layout.admins"), backoffice_admins_path)
+      @admin.new_record? ? add_breadcrumb(I18n.t("backoffice.admins.form.new")) : add_breadcrumb(@admin.full_name)
     end
   end
 end
