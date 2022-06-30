@@ -13,9 +13,18 @@
     <%= f.input :email, required: true %>
     <%= f.input :password, required: true %>
 
-    <% if devise_mapping.rememberable? %>
-      <%= f.input :remember_me, as: :boolean %>
-    <% end%>
+
+    <div class="flex">
+      <div class="grow">
+        <% if devise_mapping.rememberable? %>
+          <%= f.input :remember_me, as: :boolean %>
+        <% end%>
+      </div>
+
+      <% if devise_mapping.recoverable? %>
+        <%= link_to t("backoffice.forgot_password.title"), new_admin_password_path, class: "link-button" %>
+      <% end %>
+    </div>
 
     <%= f.submit t("backoffice.sign_in.sign_in"), class: "button button-primary-green mx-auto" %>
   <% end %>
