@@ -6,8 +6,7 @@ RSpec.describe "API V1 Account Users", type: :request do
       tags "Users"
       produces "application/json"
       security [csrf: [], cookie_auth: []]
-      parameter name: "page[number]", in: :query, type: :integer, description: "Page number. Default: 1", required: false
-      parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
+      parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
 
       let(:account) { create :account }
       let!(:account_user) { create :user, account: account, invitation_accepted_at: Time.current }
@@ -19,9 +18,7 @@ RSpec.describe "API V1 Account Users", type: :request do
 
       response "200", :success do
         schema type: :object, properties: {
-          data: {type: :array, items: {"$ref" => "#/components/schemas/user"}},
-          meta: {"$ref" => "#/components/schemas/pagination_meta"},
-          links: {"$ref" => "#/components/schemas/pagination_links"}
+          data: {type: :array, items: {"$ref" => "#/components/schemas/user"}}
         }
         let("X-CSRF-TOKEN") { get_csrf_token }
 
@@ -33,6 +30,14 @@ RSpec.describe "API V1 Account Users", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/accounts-users")
+        end
+
+        context "when filtered by searched text" do
+          let("filter[full_text]") { account_user.first_name }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([account_user.id])
+          end
         end
       end
     end

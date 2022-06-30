@@ -14,6 +14,10 @@ module API
           :waiting
         end
       end
+
+      attribute :owner do |object, _params|
+        object.owner_account.present?
+      end
     end
   end
 end
