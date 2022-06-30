@@ -1,4 +1,7 @@
-devise_for :admins, path: "backoffice", controllers: {sessions: "backoffice/admins/sessions"}
+devise_for :admins, path: "backoffice", controllers: {
+  sessions: "backoffice/admins/sessions",
+  passwords: "backoffice/admins/passwords"
+}
 devise_scope :admin do
   get "backoffice/admins/sessions/change_locale" => "backoffice/admins/sessions"
 end
