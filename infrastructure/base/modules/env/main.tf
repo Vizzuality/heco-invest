@@ -1,3 +1,8 @@
+locals {
+  domain = var.subdomain == "" ? var.domain : "${var.subdomain}.${var.domain}"
+  redirect_domain = var.subdomain == "" ? var.redirect_domain : "${var.subdomain}.${var.redirect_domain}"
+}
+
 module "network" {
   source     = "../network"
   project_id = var.gcp_project_id
@@ -54,8 +59,8 @@ module "sendgrid_api_key" {
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN                 = var.transifex_token
-    NEXT_PUBLIC_FRONTEND_URL        = "https://${var.domain}"
-    NEXT_PUBLIC_BACKEND_URL         = "https://${var.domain}/backend"
+    NEXT_PUBLIC_FRONTEND_URL        = "https://${local.domain}"
+    NEXT_PUBLIC_BACKEND_URL         = "https://${local.domain}/backend"
     NEXT_PUBLIC_GOOGLE_ANALYTICS    = var.google_analytics_key
     NEXT_PUBLIC_PROXY_BACKEND       = "false"
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY = var.google_maps_api_key
@@ -170,11 +175,11 @@ module "backend_cloudrun" {
     },
     {
       name  = "BACKEND_URL"
-      value = "https://${var.domain}/backend"
+      value = "https://${local.domain}/backend"
     },
     {
       name  = "FRONTEND_URL"
-      value = "https://${var.domain}"
+      value = "https://${local.domain}"
     },
     {
       name  = "RAILS_RELATIVE_URL_ROOT"
@@ -218,7 +223,7 @@ module "backend_cloudrun" {
     },
     {
       name  = "MAILER_DEFAULT_HOST"
-      value = var.domain
+      value = local.domain
     },
     {
       name  = "MAILER_DEFAULT_FROM"
@@ -281,11 +286,11 @@ module "jobs_cloudrun" {
     },
     {
       name  = "BACKEND_URL"
-      value = "https://${var.domain}/backend"
+      value = "https://${local.domain}/backend"
     },
     {
       name  = "FRONTEND_URL"
-      value = "https://${var.domain}"
+      value = "https://${local.domain}"
     },
     {
       name  = "RAILS_RELATIVE_URL_ROOT"
@@ -293,7 +298,7 @@ module "jobs_cloudrun" {
     },
     {
       name  = "CLOUDTASKER_PROCESSOR_HOST"
-      value = "https://${var.domain}"
+      value = "https://${local.domain}"
     },
     {
       name  = "CLOUDTASKER_PROCESSOR_PATH"
@@ -329,7 +334,7 @@ module "jobs_cloudrun" {
     },
     {
       name  = "MAILER_DEFAULT_HOST"
-      value = var.domain
+      value = local.domain
     },
     {
       name  = "MAILER_DEFAULT_FROM"
@@ -353,7 +358,7 @@ module "backend_storage" {
   backend_service_account_email = module.backend_cloudrun.service_account_email
   jobs_service_account_email    = module.jobs_cloudrun.service_account_email
   name                          = "${var.project_name}-site-storage"
-  domain                        = var.domain
+  domain                        = local.domain
   cors_origin                   = var.cors_origin
 }
 
@@ -406,21 +411,18 @@ module "api_uptime_check" {
   email  = var.uptime_alert_email
 }
 
-module "dns" {
-  source = "../dns"
-  domain = var.domain
-  name   = var.project_name
-}
-
 module "load_balancer" {
-  source                  = "../load-balancer"
-  region                  = var.gcp_region
-  project                 = var.gcp_project_id
-  name                    = var.project_name
-  backend_cloud_run_name  = module.backend_cloudrun.name
-  frontend_cloud_run_name = module.frontend_cloudrun.name
-  domain                  = var.domain
-  dns_managed_zone_name   = module.dns.dns_zone_name
+  source                                = "../load-balancer"
+  region                                = var.gcp_region
+  project                               = var.gcp_project_id
+  name                                  = var.project_name
+  backend_cloud_run_name                = module.backend_cloudrun.name
+  frontend_cloud_run_name               = module.frontend_cloudrun.name
+  domain                                = var.domain
+  dns_managed_zone_name                 = var.dns_zone_name
+  redirect_domain                       = var.redirect_domain
+  redirect_domain_dns_managed_zone_name = var.redirect_dns_zone_name
+  subdomain                             = var.subdomain
 }
 
 module "translation" {
