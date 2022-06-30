@@ -24,7 +24,7 @@ module Backoffice
     end
 
     def create
-      if @admin.update admin_params.merge(password: GeneratePassword.new(50).call, ui_language: current_admin.ui_language)
+      if @admin.update admin_params.merge(password: GeneratePassword.new(50).call)
         AdminMailer.first_time_login_instructions(@admin).deliver_later
         redirect_to backoffice_admins_url, notice: t("backoffice.messages.success_create", model: t("backoffice.common.admin"))
       else
@@ -38,6 +38,7 @@ module Backoffice
       params.require(:admin).permit(
         :first_name,
         :last_name,
+        :ui_language,
         :email
       )
     end

@@ -55,6 +55,7 @@ RSpec.describe "Backoffice: Admins", type: :system do
       it "creates new admin" do
         fill_in t("simple_form.labels.admin.first_name"), with: "First Name"
         fill_in t("simple_form.labels.admin.last_name"), with: "Last Name"
+        select t("enums.language.es.name"), from: t("simple_form.labels.admin.ui_language")
         fill_in t("simple_form.labels.admin.email"), with: "user@example.com"
         expect {
           click_on t("backoffice.common.save")
@@ -65,7 +66,7 @@ RSpec.describe "Backoffice: Admins", type: :system do
         expect(new_admin.last_name).to eq("Last Name")
         expect(new_admin.email).to eq("user@example.com")
         expect(new_admin.encrypted_password).not_to be_blank
-        expect(new_admin.ui_language).to eq(admin.ui_language)
+        expect(new_admin.ui_language).to eq("es")
       end
     end
 
