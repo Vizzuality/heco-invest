@@ -35,21 +35,20 @@ export const useInvitedUser = (invitation_token: string) => {
 
 /** Invite user to project developer account */
 export function useInviteUsers(): UseMutationResult<
-  AxiosResponse<User>,
+  AxiosResponse<{ [key: string]: number }>,
   AxiosError<ErrorResponse>,
   InviteUsersDto
 > {
-  const inviteUsers = async (data: InviteUsersDto): Promise<AxiosResponse<User>> => {
-    return API.post('/api/v1/invitation', data).then((response) => response.data);
+  const inviteUsers = async (
+    dto: InviteUsersDto
+  ): Promise<AxiosResponse<{ [key: string]: number }>> => {
+    const { emails } = dto;
+    return NO_SERIALIZED_API.post('/api/v1/invitation', { emails }).then(
+      (response) => response.data
+    );
   };
 
-  const queryClient = useQueryClient();
-
-  return useMutation(inviteUsers, {
-    onSuccess: (result) => {
-      queryClient.setQueryData(Queries.User, result.data);
-    },
-  });
+  return useMutation(inviteUsers);
 }
 
 export const useAcceptInvitation = (): UseMutationResult<

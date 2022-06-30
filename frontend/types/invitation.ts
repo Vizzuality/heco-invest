@@ -10,5 +10,5 @@ export type UsersInvitationForm = {
 };
 
 export type InviteUsersDto = {
-  data: string[];
+  emails: string[];
 };
