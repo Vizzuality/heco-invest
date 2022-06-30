@@ -12,6 +12,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
     type: :object,
     properties: {
       name: {type: :string},
+      status: {type: :string, enum: ProjectStatus::TYPES},
       country_id: {type: :string},
       municipality_id: {type: :string},
       department_id: {type: :string},
@@ -130,6 +131,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
       let(:project_params) do
         {
           name: "Project Name",
+          status: "draft",
           country_id: country.id,
           municipality_id: municipality.id,
           department_id: department.id,
@@ -217,11 +219,12 @@ RSpec.describe "API V1 Account Projects", type: :request do
       parameter name: :project_params, in: :body, schema: project_params_schema
 
       let(:project_image) { create :project_image }
-      let(:project) { create :project, project_images: [project_image] }
+      let(:project) { create :project, status: "draft", project_images: [project_image] }
       let(:id) { project.id }
       let(:project_params) do
         {
           name: "Updated Project Name",
+          status: "published",
           country_id: country.id,
           municipality_id: municipality.id,
           department_id: department.id,

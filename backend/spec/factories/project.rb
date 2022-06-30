@@ -6,6 +6,7 @@ FactoryBot.define do
       "Project #{n}"
     end
 
+    status { "published" }
     development_stage { "scaling-up" }
     category { "forestry-and-agroforestry" }
     sdgs { [1, 4, 5] }
