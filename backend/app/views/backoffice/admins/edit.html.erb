@@ -1,0 +1,26 @@
+<div class="flex">
+  <aside class="w-2/6">
+    <h1 class="font-semibold text-xl text-black mb-8">
+      <%= @admin.full_name %>
+    </h1>
+
+    <ul class="flex flex-col gap-8 mb-8">
+      <li><%= section_link_to t("backoffice.admins.information"), edit_backoffice_admin_path, :information, default: true %></li>
+      <% if @admin == current_admin %>
+        <li><%= section_link_to t("backoffice.admins.password"), edit_backoffice_admin_path, :password %></li>
+      <% end %>
+    </ul>
+    <%= link_to backoffice_admin_path(@admin.id),
+       data: {
+         turbo_method: :delete,
+         turbo_confirm: t("backoffice.messages.delete_confirmation", model: t("backoffice.common.admin").downcase)
+       },
+       class: "button button-secondary-green button-with-icon" do %>
+      <%= svg "trash" %>
+      <%= t("backoffice.admins.delete") %>
+    <% end %>
+  </aside>
+  <div class="w-full h-full bg-white rounded-xl p-6">
+    <%= render section_partial %>
+  </div>
+</div>
