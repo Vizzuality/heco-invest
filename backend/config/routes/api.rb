@@ -39,7 +39,7 @@ namespace :api, format: "json" do
       resource :project_developer, only: [:create, :update, :show]
       resource :investor, only: [:create, :update, :show]
       resources :projects, only: [:index, :create, :update]
-      resources :users, only: [:index]
+      resources :users, only: [:index, :destroy]
     end
     resources :test_jobs, only: [] do
       post :test_sync, on: :collection
