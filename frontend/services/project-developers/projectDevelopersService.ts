@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import {
   UseQueryResult,
   useMutation,
-  QueryClient,
+  useQueryClient,
   UseQueryOptions,
   QueryFunction,
 } from 'react-query';
@@ -140,6 +140,7 @@ export const useCurrentProjectDeveloper = (user?: User) => {
 
 /** Hook with mutation that handle favorite state. If favorite is false, creates a POST request to set favorite to true, and if favorite is true, creates a DELETE request that set favorite to false. */
 export const useFavoriteProjectDeveloper = () => {
+  const queryClient = useQueryClient();
   const { locale } = useRouter();
 
   const favoriteOrUnfavoriteProjectDeveloper = (
@@ -154,7 +155,6 @@ export const useFavoriteProjectDeveloper = () => {
 
     return API.request(config).then((response) => response.data.data);
   };
-  const queryClient = new QueryClient();
 
   return useMutation(
     ({ id, isFavourite }: { id: string; isFavourite: boolean }) =>
