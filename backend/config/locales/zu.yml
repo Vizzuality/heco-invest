@@ -461,5 +461,3 @@ zu:
         name: Draft
       published:
         name: Published
-      closed:
-        name: Closed
