@@ -9,6 +9,8 @@ import Link from 'next/link';
 
 import useMe from 'hooks/me';
 
+import { projectContacts } from 'helpers/project';
+
 import ContactInformationModal from 'containers/social-contact/contact-information-modal';
 
 import Button from 'components/button';
@@ -26,6 +28,7 @@ export const FavoriteContact: FC<FavoriteContactProps> = ({
   const [contactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
 
   const { user } = useMe();
+  const contacts = projectContacts(project);
   const favoriteProjectDeveloper = useFavoriteProjectDeveloper();
 
   const handleFavoriteClick = () => {
@@ -43,26 +46,11 @@ export const FavoriteContact: FC<FavoriteContactProps> = ({
     );
   };
 
-  const contacts = [project?.project_developer, ...project?.involved_project_developers]
-    .map((developer) => {
-      if (!developer.contact_email && !developer.contact_phone) return;
-
-      return {
-        name: developer.name,
-        email: developer.contact_email,
-        phone: developer.contact_phone,
-        picture: developer.picture?.small,
-      };
-    })
-    .filter((developer) => !!developer);
-
-  const hasContacts = !contacts.length;
-
   return (
     <div className={className}>
       <div className="flex flex-col items-start gap-4 mt-5 xl:items-center xl:flex-row">
         <Button
-          disabled={!user || hasContacts}
+          disabled={!user || !contacts.length}
           className="justify-start"
           theme="primary-green"
           onClick={() => setIsContactInfoModalOpen(true)}
