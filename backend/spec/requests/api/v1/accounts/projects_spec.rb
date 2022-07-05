@@ -12,7 +12,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
     type: :object,
     properties: {
       name: {type: :string},
-      status: {type: :string, enum: ProjectStatus::TYPES},
+      status: {type: :string, enum: ProjectStatus::TYPES, default: "published"},
       country_id: {type: :string},
       municipality_id: {type: :string},
       department_id: {type: :string},
