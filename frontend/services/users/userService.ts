@@ -1,5 +1,7 @@
 import { useQueryClient, useMutation, UseMutationResult } from 'react-query';
 
+import { useRouter } from 'next/router';
+
 import { AxiosResponse, AxiosError } from 'axios';
 
 import { Queries } from 'enums';
@@ -9,7 +11,6 @@ import { SignupDto, User, InviteUsersDto } from 'types/user';
 import { ErrorResponse, ResponseData } from 'services/types';
 
 import API from '../api';
-import { useRouter } from 'next/router';
 
 export function useSignup(): UseMutationResult<
   AxiosResponse<SignupDto>,

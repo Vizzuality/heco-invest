@@ -8,6 +8,8 @@ import {
   QueryFunction,
 } from 'react-query';
 
+import { useRouter } from 'next/router';
+
 import { AxiosRequestConfig } from 'axios';
 
 import { useLocalizedQuery } from 'hooks/query';
@@ -19,7 +21,6 @@ import { User } from 'types/user';
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
 import { PagedResponse, PagedRequest, ResponseData } from 'services/types';
-import { useRouter } from 'next/router';
 
 /** Get a paged list of project developers */
 const getProjectDevelopers = async (
