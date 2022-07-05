@@ -1,5 +1,7 @@
 import { FormattedMessage } from 'react-intl';
 
+import { useRouter } from 'next/router';
+
 import { withLocalizedRequests } from 'hoc/locale';
 
 import { groupBy } from 'lodash-es';
@@ -21,7 +23,7 @@ import { GroupedEnums } from 'types/enums';
 import { Investor } from 'types/investor';
 
 import { getEnums } from 'services/enums/enumService';
-import { getInvestor } from 'services/investors/investorsService';
+import { getInvestor, useInvestor } from 'services/investors/investorsService';
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let investor = null;
@@ -50,9 +52,15 @@ type InvestorPageProps = {
 };
 
 const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
-  investor,
+  investor: investorProp,
   enums,
 }) => {
+  const router = useRouter();
+
+  const { data: investorData } = useInvestor(router.query.id as string);
+
+  const investor = investorData || investorProp;
+
   const {
     name,
     twitter,
