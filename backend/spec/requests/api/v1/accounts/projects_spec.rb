@@ -85,6 +85,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
           @project = create(:project, name: "This PDs Project Awesome", project_developer: user.account.project_developer)
           create(:project, name: "This PDs Project Amazing", project_developer: user.account.project_developer)
           create(:project, name: "Other PD's project", project_developer: create(:project_developer))
+          create(:project, :draft, name: "Draft project", project_developer: user.account.project_developer)
           sign_in user
         end
 
@@ -219,7 +220,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
       parameter name: :project_params, in: :body, schema: project_params_schema
 
       let(:project_image) { create :project_image }
-      let(:project) { create :project, status: "draft", project_images: [project_image] }
+      let(:project) { create :project, :draft, project_images: [project_image] }
       let(:id) { project.id }
       let(:project_params) do
         {

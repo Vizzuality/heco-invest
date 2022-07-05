@@ -76,5 +76,13 @@ FactoryBot.define do
     trait :with_project_images do
       project_images { [build(:project_image, project: nil), build(:project_image, project: nil)] }
     end
+
+    trait :draft do
+      status { "draft" }
+    end
+
+    trait :published do
+      status { "published" }
+    end
   end
 end

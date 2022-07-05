@@ -50,7 +50,7 @@ if Rails.env.development?
         FactoryBot.create(:municipality, parent: FactoryBot.create(:department, parent: FactoryBot.create(:location)))
       FactoryBot.create(
         :project,
-        status: "published",
+        status: :published,
         trusted: [true, false].sample,
         name: "#{Faker::Lorem.sentence} #{SecureRandom.hex(4)}",
         category: Category::TYPES.sample,
