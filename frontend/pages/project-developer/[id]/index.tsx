@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
+import { useRouter } from 'next/router';
+
 import { withLocalizedRequests } from 'hoc/locale';
 
 import { chunk, groupBy } from 'lodash-es';
@@ -29,7 +31,12 @@ import { getEnums } from 'services/enums/enumService';
 import {
   getProjectDeveloper,
   useFavoriteProjectDeveloper,
+  useProjectDeveloper,
 } from 'services/project-developers/projectDevelopersService';
+
+const PROJECT_DEVELOPER_QUERY_PARAMS = {
+  includes: ['projects'],
+};
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let projectDeveloper;
@@ -37,7 +44,10 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
   // If getting the project developer fails, it's most likely because the record has
   // not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    projectDeveloper = await getProjectDeveloper(id as string, { includes: 'projects' });
+    ({ data: projectDeveloper } = await getProjectDeveloper(
+      id as string,
+      PROJECT_DEVELOPER_QUERY_PARAMS
+    ));
   } catch (e) {
     return { notFound: true };
   }
@@ -59,9 +69,17 @@ type ProjectDeveloperPageProps = {
 };
 
 const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageLayoutProps> = ({
-  projectDeveloper,
+  projectDeveloper: projectDeveloperProp,
   enums,
 }) => {
+  const router = useRouter();
+
+  const {
+    data: { data: projectDeveloperData },
+  } = useProjectDeveloper(router.query.id as string, PROJECT_DEVELOPER_QUERY_PARAMS);
+
+  const projectDeveloper = projectDeveloperData || projectDeveloperProp;
+
   const [isFavourite, setIsFavourite] = useState(projectDeveloper.favourite);
 
   useEffect(() => {
