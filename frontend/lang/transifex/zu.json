@@ -347,6 +347,9 @@
   "BSFsv6": {
     "string": "Tree biomass density"
   },
+  "BZG0d+": {
+    "string": "Search for projects, investors, open calls..."
+  },
   "BZkcBV": {
     "string": "Project developer photo"
   },
@@ -798,6 +801,9 @@
   "URdlN+": {
     "string": "Invest in small, medium or big project opportunities."
   },
+  "UWUdIl": {
+    "string": "{profile} logo"
+  },
   "Ub+AGc": {
     "string": "Sign In"
   },
@@ -1172,9 +1178,6 @@
   },
   "ilgFAX": {
     "string": "Target group(s)"
-  },
-  "in26xr": {
-    "string": "{organization} logo"
   },
   "itfsqC": {
     "string": "Currently you don’t have any <b>Projects</b>."
