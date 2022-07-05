@@ -6,19 +6,18 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import cx from 'classnames';
 
 import { translatedLanguageNameForLocale } from 'helpers/intl';
+import { projectContacts } from 'helpers/project';
 
 import CategoryTag from 'containers/category-tag';
 import ImageGallery from 'containers/image-gallery';
-import ContactInformationModal, {
-  ContactItemType,
-} from 'containers/social-contact/contact-information-modal';
+import ContactInformationModal from 'containers/social-contact/contact-information-modal';
 
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
 import Tag from 'components/tag';
 import { CategoryType } from 'types/category';
-import { ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
 
+import { useAccount } from 'services/account';
 import { useEnums } from 'services/enums/enumService';
 
 import type { HeaderProps } from './types';
@@ -34,7 +33,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
     },
   } = useEnums();
 
-  const projectDeveloper: ProjectDeveloperType = project.project_developer;
+  const { user } = useAccount();
 
   const category = useMemo(
     () => allCategories?.find(({ id }) => id === project.category),
@@ -52,13 +51,6 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
     [project.project_images]
   );
 
-  const contact: ContactItemType = {
-    name: projectDeveloper.name,
-    email: projectDeveloper.contact_email,
-    phone: projectDeveloper.contact_phone,
-    picture: projectDeveloper.picture?.small,
-  };
-
   const ticketSizeStr = useMemo(
     () => allTicketSizes?.find(({ id }) => project.ticket_size === id)?.description,
     [allTicketSizes, project.ticket_size]
@@ -72,6 +64,8 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
         .join(', '),
     [allInstrumentTypes, project.instrument_types]
   );
+
+  const contacts = projectContacts(project);
 
   const handleFavoriteClick = () => {};
 
@@ -191,6 +185,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
           <div className="flex flex-col justify-between gap-4 mt-5 lg:flex-row">
             <Button
               className="justify-center"
+              disabled={!user}
               theme="secondary-green"
               icon={HeartIcon}
               onClick={handleFavoriteClick}
@@ -198,7 +193,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </Button>
             <Button
-              disabled={!contact?.phone && !contact?.email}
+              disabled={!contacts.length}
               className="w-full lg:max-w-[200px] justify-center"
               theme="primary-green"
               onClick={() => setIsContactInfoModalOpen(true)}
@@ -211,7 +206,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
       <ContactInformationModal
         isOpen={isContactInfoModalOpen}
         onDismiss={() => setIsContactInfoModalOpen(false)}
-        contacts={contact}
+        contacts={contacts}
       />
     </div>
   );
