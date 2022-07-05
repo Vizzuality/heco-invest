@@ -2,7 +2,6 @@ import { FormattedMessage } from 'react-intl';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
-import { decycle } from 'cycle';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -40,7 +39,7 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
     props: {
       intlMessages: await loadI18nMessages({ locale }),
       enums: groupBy(enums, 'type'),
-      investor: decycle(investor),
+      investor: investor,
     },
   };
 });

@@ -9,7 +9,6 @@ import {
 } from 'react-query';
 
 import { AxiosRequestConfig } from 'axios';
-import { decycle } from 'cycle';
 
 import { useLocalizedQuery } from 'hooks/query';
 
@@ -79,7 +78,7 @@ export async function getProjectDeveloper(
     method: 'GET',
     params: params,
   };
-  return await API.request(config).then((response) => decycle(response.data.data));
+  return await API.request(config).then((response) => response.data.data);
 }
 
 /** Use query for a single Project Developer */
@@ -147,7 +146,7 @@ export const useFavoriteProjectDeveloper = () => {
       data: { project_developer_id: projectDeveloperId },
     };
 
-    return API.request(config).then((response) => decycle(response.data.data));
+    return API.request(config).then((response) => response.data.data);
   };
   const queryClient = new QueryClient();
   return useMutation(
