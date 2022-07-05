@@ -14,6 +14,13 @@ module API
           ).serializable_hash
         end
 
+        def destroy
+          # @user cannot be account owner AND
+          # either current_user == @user OR current_user is account owner in @user's account
+          @user.destroy!
+          head :ok
+        end
+
         private
 
         def filter_params
