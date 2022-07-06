@@ -6,7 +6,6 @@ import { FormattedMessage } from 'react-intl';
 import cx from 'classnames';
 
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
@@ -18,6 +17,7 @@ import { useBreakpoint } from 'hooks/use-breakpoint';
 import { loadI18nMessages } from 'helpers/i18n';
 import { getCategoryColor } from 'helpers/pages';
 
+import ProjectCard from 'containers/for-public-pages/project-card';
 import ImpactModal from 'containers/modals/impact';
 
 import Button from 'components/button';
@@ -27,13 +27,12 @@ import LayoutContainer from 'components/layout-container';
 import { Paths } from 'enums';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
+import { CategoryType } from 'types/category';
 import { Enum } from 'types/enums';
 import { Project } from 'types/project';
 
 import { getEnums } from 'services/enums/enumService';
 import { getProjects } from 'services/projects/projectService';
-
-import ArrowIcon from 'svgs/project/project-card-arrow.svg';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   let projects: Project[] = [];
@@ -63,12 +62,12 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
   projects,
   enums,
 }) => {
-  const { push } = useRouter();
   const [impactModalOpen, setImpactModalOpen] = useState(false);
   const [whatCanDoIndex, setWhatCanDoIndex] = useState(0);
   const breakpoint = useBreakpoint();
   const isDesktop = breakpoint('lg');
   const isXl = breakpoint('xl');
+
   const { category: categoryEnums, mosaic: mosaicEnums } = groupBy(enums, 'type');
   const projectsGroupedByCategory = groupBy(projects, 'category');
 
@@ -112,6 +111,40 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
     ),
   };
 
+  const whatHecoCanDoTexts = [
+    {
+      title: <FormattedMessage defaultMessage="Create open calls" id="4EYbNW" />,
+      description: (
+        <FormattedMessage
+          defaultMessage="As an investor or funder, if you do not find a project aligned with your interests, you can create your own call to challenge the <n>HeCo Invest community</n> and receive customized, quality proposals that are only visible to the users of your account."
+          id="iMJ1Xr"
+          values={{
+            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+          }}
+        />
+      ),
+    },
+    {
+      title: <FormattedMessage defaultMessage="Save your favorites" id="62pTkz" />,
+      description: (
+        <FormattedMessage
+          defaultMessage="Save your favorites by clicking on the 'Heart'. You can save projects, project developers or even other investors and never loose track of them."
+          id="qay06p"
+        />
+      ),
+    },
+    {
+      title: <FormattedMessage defaultMessage="Contact access" id="nIbokM" />,
+      description: (
+        <FormattedMessage
+          defaultMessage="Have access to all of the contacts of <n>project developers </n> and <n>investors</n>. Easily reach and connect so you can decide where to invest."
+          id="/Jn84b"
+          values={{ n: (chunk: string) => <span className="font-semibold">{chunk}</span> }}
+        />
+      ),
+    },
+  ];
+
   const whatHecoCanDoImages = [
     '/images/for-investor/for-investor-can-do-1.jpeg',
     '/images/for-investor/for-investor-can-do-2.jpeg',
@@ -119,56 +152,6 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
     '/images/for-investor/for-investor-can-do-1.jpeg',
     '/images/for-investor/for-investor-can-do-2.jpeg',
   ];
-
-  const projectsCard = (
-    id: string,
-    name: string,
-    description: string,
-    projectsQuantity: number,
-    categoryColor?: string
-  ) => (
-    <div
-      className="w-[80vw] h-full md:w-auto row-start-2 md:row-start-auto lg:max-w-full flex flex-col justify-between p-4 transition-all duration-500 bg-white rounded-lg shadow-sm group drop-shadow-none hover:drop-shadow-lg ease min-h-[290px]"
-      key={id}
-    >
-      <div className="flex justify-between mb-2">
-        <h3 className="font-serif text-xl font-bold xl:text-2xl max-w-[80%]">{name}</h3>
-        {!!categoryColor && (
-          <div className={`absolute right-4 bg-category-${categoryColor} w-8 h-8 rounded-full`} />
-        )}
-      </div>
-      <div>
-        <p className="mb-4 text-sm text-gray-800 transition-all duration-500 md:opacity-0 group-hover:opacity-100 ease">
-          {description}
-        </p>
-      </div>
-      <div className="flex items-center justify-between">
-        <p className="text-base text-gray-600">
-          <span className="font-bold text-black">{projectsQuantity}</span>{' '}
-          <FormattedMessage
-            defaultMessage="{projectsQuantity, plural, one {project} other {projects}}"
-            id="gbcj32"
-            values={{ projectsQuantity }}
-          />
-        </p>
-        <Button
-          theme="naked"
-          onClick={() =>
-            push({
-              pathname: Paths.Discover,
-              // TODO: CHANGE TO FILTER BY PROIORITY LANDSCAPE
-              query: !!categoryColor ? { 'filter[category]': id } : { search: name },
-            })
-          }
-        >
-          <Icon
-            icon={ArrowIcon}
-            className="transition-all duration-500 md:opacity-0 w-15 group-hover:opacity-100 ease"
-          />
-        </Button>
-      </div>
-    </div>
-  );
 
   return (
     <>
@@ -240,7 +223,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             </p>
           </div>
           <div className="order-1 lg:order-2">
-            <div className="flex items-center justify-center w-full h-full bg-[url("/images/for-investor/for-investors-why-to-invest.jpg")] rounded-t-2xl lg:rounded-3xl lg:rounded-l-none">
+            <div className="flex items-center justify-center w-full h-full bg-[url('/images/for-investor/for-investors-why-to-invest.jpg')] rounded-t-2xl lg:rounded-3xl lg:rounded-l-none">
               <div className="max-w-lg p-6 pt-10 text-white lg:p-10 lg:max-w-md">
                 <h2 className="mb-6 font-serif text-3xl font-bold lg:text-4xl">
                   <FormattedMessage defaultMessage="Why invest in the Amazon" id="mQk71L" />
@@ -269,7 +252,16 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
           {categoryEnums.map(({ id, name, description }) => {
             const categoryColor = getCategoryColor(id);
             const projectsQuantity = projectsGroupedByCategory[id]?.length || 0;
-            return projectsCard(id, name, description, projectsQuantity, categoryColor);
+            return (
+              <ProjectCard
+                key={id}
+                id={id}
+                name={name}
+                description={description}
+                projectsQuantity={projectsQuantity}
+                category={id as CategoryType}
+              />
+            );
           })}
         </div>
       </div>
@@ -297,7 +289,13 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             const description = priorityLandscapesDescriptions[id];
             return (
               <div key={id} className={`row-start-3 ${gridPosition}`}>
-                {projectsCard(id, name, description, projectsQuantity)}
+                <ProjectCard
+                  key={id}
+                  id={id}
+                  name={name}
+                  description={description}
+                  projectsQuantity={projectsQuantity}
+                />
               </div>
             );
           })}
@@ -412,17 +410,9 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                 </div>
                 <div className="text-left text-black">
                   <h4 className="mb-6 font-serif text-2xl">
-                    <FormattedMessage defaultMessage="Create open calls" id="4EYbNW" />
+                    {whatHecoCanDoTexts[whatCanDoIndex].title}
                   </h4>
-                  <p>
-                    <FormattedMessage
-                      defaultMessage="As an investor or funder, if you do not find a project aligned with your interests, you can create your own call to challenge the <n>HeCo Invest community</n> and receive customized, quality proposals that are only visible to the users of your account."
-                      id="iMJ1Xr"
-                      values={{
-                        n: (chunk: string) => <span className="font-bold">{chunk}</span>,
-                      }}
-                    />
-                  </p>
+                  <p>{whatHecoCanDoTexts[whatCanDoIndex].description}</p>
                 </div>
               </div>
             </div>

@@ -9,6 +9,7 @@ import { useBreakpoint } from 'hooks/use-breakpoint';
 
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
+import { Paths } from 'enums';
 
 export const UsePlatform = () => {
   const breakpoint = useBreakpoint();
@@ -117,7 +118,7 @@ export const UsePlatform = () => {
             <Button
               theme="secondary-green"
               size="small"
-              to="/investors"
+              to={Paths.ForInvestors}
               className="justify-center w-full text-lg text-center sm:w-auto sm:text-sm"
             >
               <FormattedMessage defaultMessage="Investors features" id="wsk6Y/" />
