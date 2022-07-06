@@ -8,7 +8,7 @@ import cx from 'classnames';
 
 import { useRouter } from 'next/router';
 
-import { useQueryParams } from 'helpers/pages';
+import { useDiscoverPath, useQueryParams } from 'helpers/pages';
 
 import Button from 'components/button';
 import Checkbox from 'components/forms/checkbox';
@@ -27,6 +27,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
   const { formatMessage } = useIntl();
   const { push } = useRouter();
   const { page, search, sorting, ...initialFilters } = useQueryParams();
+  const pathname = useDiscoverPath();
 
   const [showMoreFilters, setShowMoreFilters] = useState(false);
   const [filtersState, setFiltersState] = useState<Partial<FilterForm>>({});
@@ -57,7 +58,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
   const handleFilter = (filterParams?: FilterParams) => {
     if (filterParams) {
       // Replace or add the new filters to the search params
-      push({ query: { page: 1, search, sorting, ...filterParams } }, undefined, {
+      push({ pathname, query: { page: 1, search, sorting, ...filterParams } }, undefined, {
         shallow: true,
       });
     } else {

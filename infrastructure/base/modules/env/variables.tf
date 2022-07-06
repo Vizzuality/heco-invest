@@ -61,9 +61,30 @@ variable "mapbox_api_key" {
   description = "Mapbox API key"
 }
 
+variable "dns_zone_name" {
+  type        = string
+  description = "Name for the GCP DNS Zone"
+}
+
+variable "redirect_dns_zone_name" {
+  type        = string
+  description = "Name for the GCP redirect DNS Zone"
+}
+
 variable "domain" {
   type = string
   description = "Base domain for the DNS zone"
+}
+
+variable "redirect_domain" {
+  type = string
+  description = "Legacy domain to redirect"
+}
+
+variable "subdomain" {
+  type = string
+  default = ""
+  description = "If set, it will be prepended to the domain to form a subdomain."
 }
 
 variable "frontend_min_scale" {
