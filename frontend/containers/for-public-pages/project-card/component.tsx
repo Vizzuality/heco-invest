@@ -33,7 +33,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
         {!!category && <CategoryTagDot category={category} size="large" />}
       </div>
       <div>
-        <p className="mb-4 text-sm text-gray-800 transition-all duration-500 md:opacity-0 group-hover:opacity-100 ease">
+        <p className="mb-4 text-sm text-gray-800 transition-all duration-500 md:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 ease">
           {description}
         </p>
       </div>
@@ -56,9 +56,12 @@ export const ProjectCard: FC<ProjectCardProps> = ({
             })
           }
         >
+          <span className="sr-only">
+            <FormattedMessage defaultMessage="See projects" id="q6rG+e" />
+          </span>
           <Icon
             icon={ArrowIcon}
-            className="transition-all duration-500 md:opacity-0 w-15 group-hover:opacity-100 ease"
+            className="transition-all duration-500 md:opacity-0 w-15 group-hover:opacity-100 group-focus-within:opacity-100 ease"
           />
         </Button>
       </div>
