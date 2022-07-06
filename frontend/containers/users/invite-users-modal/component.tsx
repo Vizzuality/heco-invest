@@ -6,6 +6,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
+import { isArray } from 'lodash-es';
+
 import Alert from 'components/alert';
 import Button from 'components/button';
 import ErrorMessage from 'components/forms/error-message';
@@ -19,8 +21,6 @@ import { useAccount } from 'services/account';
 import { useInviteUsers } from 'services/invitation/invitationService';
 
 import type { InviteUsersModalProps } from './types';
-
-import { isArray } from 'lodash-es';
 
 export const InviteUsersModal: FC<InviteUsersModalProps> = ({
   openInvitationModal,
@@ -70,8 +70,9 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
       default:
         return formatMessage(
           {
-            defaultMessage: 'Something went wrong while sending an invitation to the email {email}.',
-            id: 'hmY5tv',
+            defaultMessage:
+              'Something went wrong while sending an invitation to the email {email}.',
+            id: '9dtx+L',
           },
           {
             email,
