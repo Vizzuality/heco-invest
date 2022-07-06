@@ -240,7 +240,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             </p>
           </div>
           <div className="order-1 lg:order-2">
-            <div className="flex items-center justify-center w-full h-full bg-why-invest-in-the-amazon rounded-t-2xl lg:rounded-3xl lg:rounded-l-none">
+            <div className="flex items-center justify-center w-full h-full bg-[url("/images/for-investor/for-investors-why-to-invest.jpg")] rounded-t-2xl lg:rounded-3xl lg:rounded-l-none">
               <div className="max-w-lg p-6 pt-10 text-white lg:p-10 lg:max-w-md">
                 <h2 className="mb-6 font-serif text-3xl font-bold lg:text-4xl">
                   <FormattedMessage defaultMessage="Why invest in the Amazon" id="mQk71L" />
