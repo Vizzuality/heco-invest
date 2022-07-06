@@ -1,10 +1,11 @@
 class Ability
   include CanCan::Ability
 
-  attr_accessor :user
+  attr_accessor :user, :context
 
-  def initialize(user)
+  def initialize(user, context: nil)
     @user = user
+    @context = context
 
     default_rights
     return if user.blank?
@@ -20,10 +21,14 @@ class Ability
     can :create, User
 
     # only data from approved users are visible
-    can %i[index show], ProjectDeveloper, account: {review_status: :approved}
-    can %i[index show], Investor, account: {review_status: :approved}
-    can %i[index show], Project, project_developer: {account: {review_status: :approved}}
-    can %i[index show], OpenCall, investor: {account: {review_status: :approved}}
+    can %i[index show], ProjectDeveloper, account: {review_status: Account.review_statuses[:approved]}
+    can %i[index show], Investor, account: {review_status: Account.review_statuses[:approved]}
+    can %i[index show], Project,
+      project_developer: {
+        account: {review_status: Account.review_statuses[:approved]}
+      },
+      status: Project.statuses[:published]
+    can %i[index show], OpenCall, investor: {account: {review_status: Account.review_statuses[:approved]}}
   end
 
   def user_rights
@@ -43,6 +48,11 @@ class Ability
     can %i[show], Investor, account_id: user.account_id
     can %i[show], Project, project_developer: {account_id: user.account_id}
     can %i[show], OpenCall, investor: {account_id: user.account_id}
+
+    # user can list even draft data in accounts controller context
+    if context == :accounts
+      can %i[index], Project, project_developer: {account_id: user.account_id}
+    end
   end
 
   def owner_rights
