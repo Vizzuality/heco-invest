@@ -3,6 +3,8 @@ import React, { useState, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import cx from 'classnames';
+
 import { projectImpact } from 'helpers/project';
 
 import ImpactChart from 'containers/impact-chart';
@@ -11,6 +13,7 @@ import ImpactModal from 'containers/modals/impact';
 import { ImpactProps } from 'containers/project-page/impact/types';
 import SDGs from 'containers/sdgs/component';
 
+import Button from 'components/button';
 import Select, { Option } from 'components/forms/select';
 import LayoutContainer from 'components/layout-container';
 import Tag from 'components/tag';
@@ -122,6 +125,32 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
                 >
                   <FormattedMessage defaultMessage="How is the impact calculated?" id="9cE0nR" />
                 </button>
+                <div
+                  className={cx('transition-all ease-in-out duration-300', {
+                    'h-0 opacity-0': impactLocation !== ImpactAreas.PriorityLandscape,
+                    'h-auto opacity-100': impactLocation === ImpactAreas.PriorityLandscape,
+                  })}
+                >
+                  <p>
+                    <FormattedMessage
+                      defaultMessage="<n>HeCo priority landscapes</n> are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystems"
+                      id="0WEEzi"
+                      values={{
+                        n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+                      }}
+                    />
+                  </p>
+                  <Button
+                    theme="naked"
+                    className="py-0 px-0 mt-4 text-green-dark font-normal text-small underline inline !items-start"
+                    to="/images/mosaics.png"
+                    target="_blank"
+                    size="small"
+                    external
+                  >
+                    <FormattedMessage defaultMessage="Landscapes location" id="4HIQfn" />
+                  </Button>
+                </div>
               </div>
               {/* DESKTOP */}
               {impactScore && (
