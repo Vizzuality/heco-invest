@@ -90,6 +90,7 @@ module.exports = {
         'radial-green-dark':
           'radial-gradient(63.59% 95.05% at 42.99% 35.35%, #316146 0%, #073525 100%)',
         'radial-beige': 'radial-gradient(63.59% 95.05% at 42.99% 35.35%, #EFEDE9 0%, #FFFDFA 100%)',
+        'why-invest-in-the-amazon': 'url("/images/for-investor/for-investors-why-to-invest.jpg")',
       },
       transitionProperty: {
         width: 'width',

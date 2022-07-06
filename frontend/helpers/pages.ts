@@ -12,6 +12,8 @@ import languages from 'locales.config.json';
 
 import { ErrorResponse } from 'services/types';
 
+import { theme } from 'tailwind.config';
+
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
 export function getServiceErrors<FormValues>(
   error: AxiosError<ErrorResponse>,
@@ -145,4 +147,9 @@ export const useLanguageNames = () => {
     }
   });
   return langs;
+};
+
+export const getCategoryColor = (categoryId: string): string => {
+  const category = Object.keys(theme.colors.category)?.find((key) => categoryId.includes(key));
+  return category;
 };
