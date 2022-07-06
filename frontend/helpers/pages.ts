@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
 
-import { EnumTypes, Languages } from 'enums';
+import { EnumTypes, Languages, Paths } from 'enums';
 import languages from 'locales.config.json';
 
 import { ErrorResponse } from 'services/types';
@@ -67,6 +67,15 @@ export const bytesToMegabytes = (bytes: number): number => {
 
 /** Constant to define the default max allowed file size to upload */
 export const FILE_UPLOADER_MAX_SIZE = 5 * 1024 * 1024;
+
+/** Hook to use the discover path.
+ * If the current route is one of the discover subpaths, returnd itself.
+ * If it's on other page, return the discover path.
+ */
+export const useDiscoverPath = () => {
+  const { pathname } = useRouter();
+  return pathname.includes('/discover') ? pathname : Paths.Discover;
+};
 
 /** Hook to get the query params of the discover pages */
 export const useQueryParams = (sortingState?: { sortBy: string; sortOrder: string }) => {

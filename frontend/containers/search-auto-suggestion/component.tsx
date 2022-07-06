@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 import { omit } from 'lodash-es';
 
-import { useFilterNames, useQueryParams } from 'helpers/pages';
+import { useDiscoverPath, useFilterNames, useQueryParams } from 'helpers/pages';
 
 import Button from 'components/button';
 import { Enum } from 'types/enums';
@@ -25,6 +25,8 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
   const { data, isLoading } = useEnums();
   const { page, search, sorting, ...initialFilters } = useQueryParams();
   const { push } = useRouter();
+  const pathname = useDiscoverPath();
+
   const filterNames = useFilterNames();
 
   const filters: Enum[] = useMemo(() => {
@@ -65,9 +67,9 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
     const newFilters = omit(initialFilters, filterKey);
     push(
       {
+        pathname,
         query: {
           page: 1,
-          search,
           sorting,
           ...newFilters,
           [filterKey]: filter.id,
@@ -84,6 +86,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
   const handleSearch = () => {
     push(
       {
+        pathname,
         query: {
           page: 1,
           search: searchText,
@@ -112,11 +115,11 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
       )}
     >
       {!!autoSuggestions?.length && (
-        <div className="px-9 py-5">
+        <div className="py-5 px-9">
           <div>
             <Button key="custom" theme="naked" className="px-0 py-2" onClick={handleSearch}>
               &quot;{searchText}&quot;
-              <span className="text-gray-600 ml-2">
+              <span className="ml-2 text-gray-600">
                 <FormattedMessage defaultMessage="Custom search" id="AoHRBG" />
               </span>
             </Button>
@@ -135,7 +138,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
                 onClick={() => handleFilter(item)}
               >
                 {item.name} {item.type}
-                <span className="text-gray-600 ml-2">{filterNames[item.type]}</span>
+                <span className="ml-2 text-gray-600">{filterNames[item.type]}</span>
               </Button>
             ))}
           </div>

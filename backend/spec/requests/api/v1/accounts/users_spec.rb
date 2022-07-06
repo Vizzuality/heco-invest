@@ -42,4 +42,103 @@ RSpec.describe "API V1 Account Users", type: :request do
       end
     end
   end
+
+  path "/api/v1/account/users/{user_id}" do
+    delete "Deletes user" do
+      tags "Users"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :user_id, in: :path, type: :string
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
+
+      let(:account) { create(:account, :approved) }
+      let(:account_owner) do
+        owner = create(:user, account_id: account.id)
+        account.update_columns(owner_id: owner.id)
+        owner
+      end
+      let(:account_user) { create(:user, account_id: account.id) }
+      let(:other_account_user) { create(:user, account: create(:account, :approved)) }
+      let(:user_id) { account_user.id }
+
+      it_behaves_like "with not authorized error", csrf: true
+
+      response "403", :forbidden do
+        let("X-CSRF-TOKEN") { get_csrf_token }
+        schema "$ref" => "#/components/schemas/errors"
+
+        context "User account not approved" do
+          before { sign_in create(:user, account: create(:account, :unapproved)) }
+
+          run_test!
+        end
+
+        context "User is account owner, deleting self" do
+          let(:user_id) { account_owner.id }
+          before { sign_in account_owner }
+
+          run_test!
+        end
+
+        context "User is account user, deleting account owner" do
+          let(:user_id) { account_owner.id }
+          before { sign_in account_user }
+
+          run_test!
+        end
+
+        context "User is other account user, deleting account owner" do
+          let(:user_id) { account_owner.id }
+          before { sign_in other_account_user }
+
+          run_test!
+        end
+
+        context "User is account owner, deleting other account user" do
+          let(:user_id) { other_account_user.id }
+          before { sign_in account_owner }
+
+          run_test!
+        end
+
+        context "User is account user, deleting other account user" do
+          let(:user_id) { other_account_user.id }
+          before { sign_in account_user }
+
+          run_test!
+        end
+      end
+
+      response "200", :success do
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        context "User is account owner and deleted user is in their account" do
+          let(:user_id) { account_user.id }
+          before do
+            sign_in account_owner
+          end
+
+          run_test!
+
+          it "user is deleted" do
+            expect { account_user.reload }.to raise_error(ActiveRecord::RecordNotFound)
+          end
+        end
+
+        context "User is deleting themselves" do
+          let(:user_id) { account_user.id }
+          before do
+            sign_in account_user
+          end
+
+          run_test!
+
+          it "user is deleted" do
+            expect { account_user.reload }.to raise_error(ActiveRecord::RecordNotFound)
+          end
+        end
+      end
+    end
+  end
 end
