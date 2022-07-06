@@ -94,7 +94,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
         <div className="max-w-lg text-center">
           <h1 className="mb-6 font-serif text-3xl font-semibold mt-7 text-green-dark">
             <FormattedMessage
-              defaultMessage="You have been invited to join {accountName} account"
+              defaultMessage="You have been invited to join the {accountName} account"
               id="MZI6bG"
               values={{
                 accountName: invitedUser?.account_name,
