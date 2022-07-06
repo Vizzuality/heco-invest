@@ -44,11 +44,13 @@ const Invitation: PageComponent<InvitationProps> = () => {
   const acceptInvitation = useAcceptInvitation();
 
   useEffect(() => {
-    if (!!invitedUser && !!user && user.email !== invitedUser.email) {
+    if (
+      (!!invitedUser && !!user && user.email !== invitedUser.email) ||
+      (!!user && user?.role !== UserRoles.Light)
+    ) {
       replace(Paths.Dashboard);
-    }
-    // If the user has an user account but is not signed in
-    if (!!invitedUser && userError) {
+    } else if (!!invitedUser && userError) {
+      // If the user has an user account but is not signed in
       replace({
         pathname: invitedUser.requires_registration ? Paths.SignUp : Paths.SignIn,
         query: { invitation_token: query.invitation_token },
@@ -57,20 +59,13 @@ const Invitation: PageComponent<InvitationProps> = () => {
     }
   }, [invitedUser, query.invitation_token, replace, user, userError]);
 
-  useEffect(() => {
-    if (!!user && user?.role !== UserRoles.Light) {
-      // If the user already has a PD or Investor account
-      replace(Paths.Dashboard);
-    }
-  }, [replace, user]);
-
   const handleAccept = () => {
     acceptInvitation.mutate(query.invitation_token as string, {
       onSuccess: () => push(Paths.Dashboard),
     });
   };
 
-  return (
+  return !!user ? (
     <div className="flex flex-col items-center w-full min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-176px)]">
       <div className="flex items-center justify-center rounded-full w-44 h-44 bg-background-middle">
         <Image
@@ -85,7 +80,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
           <Loading visible iconClassName="w-16 h-16" />
         </div>
       ) : invitedUserError || !query.invitation_token ? (
-        <div className="max-w-lg text-center mt-10">
+        <div className="max-w-lg mt-10 text-center">
           <Alert withLayoutContainer>
             <FormattedMessage defaultMessage="Invalid invitation token" id="XimHnV" />
           </Alert>
@@ -95,7 +90,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
           <h1 className="mb-6 font-serif text-3xl font-semibold mt-7 text-green-dark">
             <FormattedMessage
               defaultMessage="You have been invited to join the {accountName} account"
-              id="MZI6bG"
+              id="zxHx8B"
               values={{
                 accountName: invitedUser?.account_name,
               }}
@@ -103,8 +98,8 @@ const Invitation: PageComponent<InvitationProps> = () => {
           </h1>
           <p className="max-w-md m-auto text-base">
             <FormattedMessage
-              defaultMessage="By accepting this invitation you will belong to  {accountName} Project Developers’ account."
-              id="OwLYPT"
+              defaultMessage="By accepting this invitation you will belong to  {accountName} account."
+              id="I1k1kN"
               values={{
                 accountName: invitedUser?.account_name,
               }}
@@ -134,7 +129,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
         </div>
       )}
     </div>
-  );
+  ) : null;
 };
 
 Invitation.layout = {};

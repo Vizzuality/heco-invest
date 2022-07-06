@@ -106,14 +106,14 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
       </p>
 
       {!!invitedUser && (
-        <div className="w-full mb-6 p-4 rounded-lg bg-beige">
+        <div className="w-full p-4 mb-6 rounded-lg bg-beige">
           <FormattedMessage
-            defaultMessage="By signing in you will be automatically added to {accountName} account. <a>How accounts work?</a>"
-            id="WXE4DJ"
+            defaultMessage="By signing in you will be automatically added to the {accountName} account. <a>How accounts work?</a>"
+            id="RUzNGu"
             values={{
               accountName: invitedUser.account_name,
               a: (chunks: string) => (
-                <a className="underline" href={Paths.FAQ}>
+                <a className="underline" href={`${Paths.FAQ}#accounts`}>
                   {chunks}
                 </a>
               ),
@@ -122,13 +122,21 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
         </div>
       )}
 
-      {acceptInvitation?.isError && (
-        <Alert className="mt-4.5" withLayoutContainer>
-          {Array.isArray(acceptInvitation?.error?.message)
-            ? acceptInvitation?.error?.message[0].title
-            : acceptInvitation?.error?.message}
-        </Alert>
-      )}
+      {acceptInvitation.isError && acceptInvitation.error.message ? (
+        Array.isArray(acceptInvitation.error.message) ? (
+          <ul>
+            {acceptInvitation.error.message.map((err: any) => (
+              <Alert key={err.title} withLayoutContainer className="mt-6">
+                <li key={err.title}>{err.title}</li>
+              </Alert>
+            ))}
+          </ul>
+        ) : (
+          <Alert withLayoutContainer className="mt-6">
+            {acceptInvitation.error.message}
+          </Alert>
+        )
+      ) : null}
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signIn.error?.message && (

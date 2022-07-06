@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { UseMutationResult, useQueryClient, useMutation } from 'react-query';
+import { UseMutationResult, useMutation } from 'react-query';
 
 import { AxiosResponse, AxiosError } from 'axios';
 
@@ -8,14 +8,13 @@ import { useLocalizedQuery } from 'hooks/query';
 
 import { Queries } from 'enums';
 import { InviteUsersDto, InvitedUserInfo } from 'types/invitation';
-import { User } from 'types/user';
 
-import API, { NO_SERIALIZED_API } from 'services/api';
+import API, { RawApi } from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
 import { ErrorResponse } from 'services/types';
 
 export const getInvitedUser = async (invitation_token: string): Promise<InvitedUserInfo> => {
-  const result = await NO_SERIALIZED_API.post('/api/v1/invitation/info', { invitation_token });
+  const result = await RawApi.post('/api/v1/invitation/info', { invitation_token });
   return result.data;
 };
 
@@ -43,9 +42,7 @@ export function useInviteUsers(): UseMutationResult<
     dto: InviteUsersDto
   ): Promise<AxiosResponse<{ [key: string]: number }>> => {
     const { emails } = dto;
-    return NO_SERIALIZED_API.post('/api/v1/invitation', { emails }).then(
-      (response) => response.data
-    );
+    return RawApi.post('/api/v1/invitation', { emails }).then((response) => response.data);
   };
 
   return useMutation(inviteUsers);

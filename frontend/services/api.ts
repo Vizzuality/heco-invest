@@ -15,13 +15,15 @@ export const apiBaseUrl =
       `${process.env.NEXT_PUBLIC_FRONTEND_URL}/backend`
     : process.env.NEXT_PUBLIC_BACKEND_URL;
 
-const API = axios.create({
+const options = {
   baseURL: apiBaseUrl,
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true,
   xsrfCookieName: 'csrf_token',
   xsrfHeaderName: 'X-CSRF-TOKEN',
-});
+};
+
+const API = axios.create(options);
 
 const onRequest = (config: AxiosRequestConfig) => {
   // We want to always send the locale to the API automatically. Unfortunately, this can't work for
@@ -74,10 +76,7 @@ API.interceptors.response.use(onResponseSuccess, onResponseError);
 
 export default API;
 
-export const NO_SERIALIZED_API = axios.create({
-  baseURL: apiBaseUrl,
-  headers: { 'Content-Type': 'application/json' },
-  withCredentials: true,
-  xsrfCookieName: 'csrf_token',
-  xsrfHeaderName: 'X-CSRF-TOKEN',
-});
+const RawApi = axios.create(options);
+RawApi.interceptors.request.use(onRequest);
+
+export { RawApi };

@@ -61,6 +61,8 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
         if (!invitedUser) {
           // If the user exists and is not an invited user, redirect to the account type page
           replace(Paths.AccountType);
+        } else {
+          replace(Paths.Invitation);
         }
       } else {
         // If the user has a role other than light, redirect to the dashboard
@@ -80,17 +82,20 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
       if (!!invitedUser) {
         data.invitation_token = query.invitation_token as string;
       }
-      signUp.mutate(data, {
-        onSuccess: () => {
-          if (!!invitedUser) {
-            acceptInvitation.mutate(query.invitation_token as string, {
-              onSuccess: () => refetchUser(),
-            });
-          } else {
-            replace(Paths.AccountType);
-          }
-        },
-      });
+      signUp.mutate(
+        { ...data, invitation_token: query.invitation_token as string },
+        {
+          onSuccess: () => {
+            if (!!invitedUser) {
+              acceptInvitation.mutate(query.invitation_token as string, {
+                onSuccess: () => refetchUser(),
+              });
+            } else {
+              replace(Paths.AccountType);
+            }
+          },
+        }
+      );
     },
     [invitedUser, signUp, query.invitation_token, acceptInvitation, refetchUser, replace]
   );
@@ -114,14 +119,14 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
       </p>
 
       {!!invitedUser && (
-        <div className="w-full mt-6 p-4 rounded-lg bg-beige">
+        <div className="w-full p-4 mt-6 rounded-lg bg-beige">
           <FormattedMessage
-            defaultMessage="By signing up you will be automatically added to {accountName} account. <a>How accounts work?</a>"
-            id="cWqW+j"
+            defaultMessage="By signing up you will be automatically added to the {accountName} account. <a>How accounts work?</a>"
+            id="DHLi++"
             values={{
               accountName: invitedUser.account_name,
               a: (chunks: string) => (
-                <a className="underline" href={Paths.FAQ}>
+                <a className="underline" href={`${Paths.FAQ}#accounts`}>
                   {chunks}
                 </a>
               ),
