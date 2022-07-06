@@ -194,27 +194,34 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
       <LayoutContainer className="mt-5 lg:mt-32">
         <div className="flex flex-col lg:py-14 lg:grid lg:grid-cols-2">
           <div className="flex flex-col justify-center order-2 p-6 pb-10 overflow-hidden text-white lg:py-10 lg:order-1 lg:-mt-28 rounded-b-2xl lg:rounded-3xl lg:rounded-br-none bg-green-dark lg:px-14">
-            <h2 className="font-serif text-3xl font-bold lg:text-4xl xl:text-5xl">
+            <div className="font-serif text-3xl font-bold lg:text-4xl xl:text-5xl">
               <FormattedMessage defaultMessage="30 million" id="m1w8ew" />
-            </h2>
+            </div>
             <p className="mt-4 mb-6">
+              <FormattedMessage defaultMessage="people live in the Amazon region." id="xUR9nd" />
+              <br />
               <FormattedMessage
-                defaultMessage="people live in the Amazon region1.5 million indigenous people and more than 5 million Afro-descendants."
-                id="duKl7d"
+                defaultMessage="1.5 million indigenous people and more than 5 million Afro-descendants."
+                id="Sg5j0W"
               />
             </p>
-            <h2 className="font-serif text-3xl font-bold lg:text-4xl xl:text-5xl">
+            <div className="font-serif text-3xl font-bold lg:text-4xl xl:text-5xl">
               <FormattedMessage defaultMessage="123.000 million" id="2HumLB" />
-            </h2>
+            </div>
             <p className="mt-4 mb-6">
               <FormattedMessage
-                defaultMessage="tons of carbon are stored in the Amazon.It is one of the most important terrestrial carbon sink on Earth, helping to mitigate climate change."
-                id="tzQB5d"
+                defaultMessage="tons of carbon are stored in the Amazon."
+                id="Ejc7dP"
+              />
+              <br />
+              <FormattedMessage
+                defaultMessage="It is one of the most important terrestrial carbon sink on Earth, helping to mitigate climate change."
+                id="7mgGgs"
               />
             </p>
-            <h2 className="font-serif text-3xl font-bold lg:text-4xl xl:text-5xl">
+            <div className="font-serif text-3xl font-bold lg:text-4xl xl:text-5xl">
               <FormattedMessage defaultMessage="10%" id="HlDhAh" />
-            </h2>
+            </div>
             <p className="mt-4">
               <FormattedMessage
                 defaultMessage="of the planet’s known biodiversity lives in the Amazon, the largest tropical rainforest on the planet."
@@ -313,6 +320,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
               objectFit="cover"
               objectPosition="center"
               layout="responsive"
+              className="rounded-lg"
             />
             <div>
               <p className="mt-6 text-center text-gray-700 text-2xs">
@@ -384,34 +392,42 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                     </p>
                   </div>
                   <div className="flex gap-2.5">
-                    <button
-                      className="flex items-center justify-center w-8 h-8 px-0 py-0 border rounded-full border-beige drop-shadow-lg "
+                    <Button
+                      theme="naked"
+                      className="flex items-center justify-center w-8 h-8 py-0 pl-0 pr-0 border rounded-full border-beige drop-shadow-lg"
                       onClick={() =>
                         setWhatCanDoIndex(whatCanDoIndex === 0 ? 2 : whatCanDoIndex - 1)
                       }
                     >
+                      <span className="sr-only">
+                        <FormattedMessage defaultMessage="Previous" id="JJNc3c" />
+                      </span>
                       <Icon
                         icon={ChevronLeft}
                         className="text-black transition-colors duration-300 ease-in-out hover:text-beige"
                       />
-                    </button>
-                    <button
-                      className="flex items-center justify-center w-8 h-8 p-0 border rounded-full drop-shadow-lg "
+                    </Button>
+                    <Button
+                      theme="naked"
+                      className="flex items-center justify-center w-8 h-8 py-0 pl-0 pr-0 border rounded-full drop-shadow-lg"
                       onClick={() =>
                         setWhatCanDoIndex(whatCanDoIndex === 2 ? 0 : whatCanDoIndex + 1)
                       }
                     >
+                      <span className="sr-only">
+                        <FormattedMessage defaultMessage="Next" id="9+Ddtu" />
+                      </span>
                       <Icon
                         icon={ChevronRight}
                         className="text-black transition-colors duration-300 ease-in-out hover:text-beige"
                       />
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div className="text-left text-black">
-                  <h4 className="mb-6 font-serif text-2xl">
+                  <h3 className="mb-6 font-serif text-2xl">
                     {whatHecoCanDoTexts[whatCanDoIndex].title}
-                  </h4>
+                  </h3>
                   <p>{whatHecoCanDoTexts[whatCanDoIndex].description}</p>
                 </div>
               </div>
@@ -419,7 +435,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             <Button
               className="justify-center w-full md:w-auto"
               theme="secondary-white"
-              href={Paths.SignUp}
+              to={Paths.SignUp}
             >
               <FormattedMessage defaultMessage="Create account" id="huqKGl" />
             </Button>
