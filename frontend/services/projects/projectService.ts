@@ -29,7 +29,7 @@ export const getProjects = async (params?: PagedRequest): Promise<PagedResponse<
       includes: includes?.join(','),
       'filter[full_text]': search,
       'page[number]': page,
-      'fields[project]': fields.join(','),
+      'fields[project]': fields?.join(','),
     },
   };
 
