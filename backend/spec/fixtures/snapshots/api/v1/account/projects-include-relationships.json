@@ -4,7 +4,7 @@
       "id": "ec7ed634-dc78-4625-9544-17b57c0c7123",
       "type": "project",
       "attributes": {
-        "name": "This PDs Project Amazing"
+        "name": "Draft project"
       },
       "relationships": {
         "project_developer": {
@@ -19,12 +19,27 @@
       "id": "d26a996b-26a1-4052-87fc-996f72b4b081",
       "type": "project",
       "attributes": {
-        "name": "This PDs Project Awesome"
+        "name": "This PDs Project Amazing"
       },
       "relationships": {
         "project_developer": {
           "data": {
             "id": "82e9f097-4d1e-42da-a046-9762e414060e",
+            "type": "project_developer"
+          }
+        }
+      }
+    },
+    {
+      "id": "076316da-6162-41e9-a75e-cc2363910dbc",
+      "type": "project",
+      "attributes": {
+        "name": "This PDs Project Awesome"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "2fe05bce-972d-4b32-98b6-7a866d0adc12",
             "type": "project_developer"
           }
         }
@@ -86,6 +101,10 @@
             },
             {
               "id": "ec7ed634-dc78-4625-9544-17b57c0c7123",
+              "type": "project"
+            },
+            {
+              "id": "474af0e6-92c4-4004-a5b6-40f9782c5382",
               "type": "project"
             }
           ]

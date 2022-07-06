@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_28_110318) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_30_095402) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -271,7 +271,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_28_110318) do
     t.text "name_es"
     t.text "name_pt"
     t.text "slug", null: false
-    t.integer "status", default: 0, null: false
+    t.integer "status", default: 1, null: false
     t.text "address"
     t.string "ticket_size"
     t.string "instrument_types", array: true

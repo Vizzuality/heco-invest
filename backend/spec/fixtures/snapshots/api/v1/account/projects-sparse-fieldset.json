@@ -4,6 +4,16 @@
       "id": "d3ca2cb8-f5fc-4dff-8645-69446310465d",
       "type": "project",
       "attributes": {
+        "name": "Draft project",
+        "description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia."
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "46fde042-9ff8-4d77-9f16-2165ff4922ef",
+      "type": "project",
+      "attributes": {
         "name": "This PDs Project Amazing",
         "description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti."
       },
@@ -11,7 +21,7 @@
       }
     },
     {
-      "id": "46fde042-9ff8-4d77-9f16-2165ff4922ef",
+      "id": "c97baf48-acee-4362-9867-cdc5ababa048",
       "type": "project",
       "attributes": {
         "name": "This PDs Project Awesome",
