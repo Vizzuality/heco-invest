@@ -207,7 +207,7 @@ export default (page: number) => {
     }),
     object().shape({
       description: string().max(600, maxTextLength).required(messages.description),
-      relevant_links: string(),
+      relevant_links: string().nullable(),
     }),
   ];
   return schemas[page];

@@ -1,0 +1,4 @@
+<h3><%= t "admin_mailer.greetings", full_name: @admin.full_name %></h3>
+<p><%= t "admin_mailer.first_time_login_instructions.content_html",
+         reset_password_link: link_to(t(".reset_password_link"), edit_admin_password_url(reset_password_token: @token)) %></p>
+<p><%= t "admin_mailer.farewell_html" %></p>

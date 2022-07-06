@@ -40,7 +40,8 @@ export const SearchAndInfo: FC<SearchAndInfoProps> = ({
 
     router.push({
       query: {
-        ...queryParams,
+        // Endpoints don't support filtering, sorting
+        //...queryParams,
         search: e.target[0].value || '',
       },
     });

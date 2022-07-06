@@ -470,6 +470,9 @@
   "Ftj+/t": {
     "string": "Why is my profile pending approval?"
   },
+  "Fxekek": {
+    "string": "Invite again"
+  },
   "G6hIMy": {
     "string": "Public profile"
   },
@@ -921,6 +924,9 @@
   "YEYmEz": {
     "string": "Draw on the map or upload a file with the geographical area your project will have an impact on."
   },
+  "YQsqLq": {
+    "string": "Total <span>{numUsers}</span> {numUsers, plural, one {user} other {users}}"
+  },
   "YWQkk+": {
     "string": "Short description of the project"
   },
@@ -1367,9 +1373,6 @@
   },
   "rw2/NH": {
     "string": "Identifies areas of gross tree cover loss."
-  },
-  "rwcive": {
-    "string": "Total of {total} users"
   },
   "s07dAT": {
     "string": "Project image"

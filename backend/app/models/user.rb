@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include PgSearch::Model
+
   EMAIL_CONFIRMATION_LIMIT_PERIOD = 10.minutes
 
   belongs_to :account, optional: true, counter_cache: true
@@ -10,6 +12,8 @@ class User < ApplicationRecord
   has_many :favourite_investors, dependent: :destroy
   has_many :investors, through: :favourite_investors
   has_one :owner_account, class_name: "Account", foreign_key: "owner_id", dependent: :destroy
+
+  pg_search_scope :search, against: [:first_name, :last_name, :email]
 
   devise :invitable, :database_authenticatable, :confirmable, :registerable,
     :recoverable, :rememberable, :validatable

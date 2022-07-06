@@ -8,9 +8,6 @@ import { withLocalizedRequests } from 'hoc/locale';
 
 import { groupBy } from 'lodash-es';
 
-import { usePagination } from 'hooks/usePagination';
-
-import { useSortChange } from 'helpers/dashboard';
 import { loadI18nMessages } from 'helpers/i18n';
 import { useQueryParams } from 'helpers/pages';
 
@@ -58,27 +55,17 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
     ticket_size: allTicketSizes,
   } = enums;
 
-  const queryOptions = { keepPreviousData: true };
+  const queryOptions = { keepPreviousData: true, refetchOnMount: true };
   const queryParams = useQueryParams();
 
   const {
-    data: { data: projects, meta } = { data: [], meta: undefined },
+    data: { data: projects } = { data: [] },
     isLoading: isLoadingProjects,
     isFetching: isFetchingProjects,
   } = useAccountProjectsList(
     { ...queryParams, includes: ['municipality', 'country'] },
     queryOptions
   );
-
-  const { props: paginationProps } = usePagination(meta);
-
-  const sortChangeHandler = useSortChange({
-    substitutions: {
-      location: 'municipality',
-      ticketSize: 'ticket_size',
-      instrumentType: 'instrument_types',
-    },
-  });
 
   const handleRowMenuItemClick = ({ key, slug }: { key: string; slug: string }) => {
     switch (key) {
@@ -100,26 +87,11 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
 
   const tableProps = {
     columns: [
-      {
-        Header: 'Title',
-        accessor: 'name',
-      },
-      {
-        Header: 'Category',
-        accessor: 'category',
-      },
-      {
-        Header: 'Location',
-        accessor: 'location',
-      },
-      {
-        Header: 'Instrument type',
-        accessor: 'instrumentType',
-      },
-      {
-        Header: 'Value',
-        accessor: 'ticketSize',
-      },
+      { Header: 'Title', accessor: 'name' },
+      { Header: 'Category', accessor: 'category' },
+      { Header: 'Location', accessor: 'location' },
+      { Header: 'Instrument type', accessor: 'instrumentType' },
+      { Header: 'Value', accessor: 'ticketSize', canSort: false },
       {
         accessor: 'actions',
         canSort: false,
@@ -170,9 +142,8 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
       ticketSize: allTicketSizes?.find(({ id }) => project.ticket_size === id)?.description,
     })),
     loading: isLoadingProjects || isFetchingProjects,
-    pagination: paginationProps,
-    sortingEnabled: false, // Enable when endpoints can handle sorting
-    onSortChange: sortChangeHandler,
+    sortingEnabled: true,
+    manualSorting: false,
   };
 
   const isSearching = !!queryParams.search;
@@ -196,7 +167,7 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
             id="0iaD3T"
             values={{
               span: (chunks: string) => <span className="px-1 font-semibold">{chunks}</span>,
-              numProjects: paginationProps.totalItems,
+              numProjects: projects.length,
             }}
           />
         </SearchAndInfo>
