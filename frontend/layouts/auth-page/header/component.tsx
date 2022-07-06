@@ -38,7 +38,7 @@ export const Header: FC<HeaderProps> = ({
           <div className="flex items-center justify-end flex-1">
             <div className="mr-4">
               <span className="mr-2 text-sm text-gray-600">
-                {pageType === 'sign-in' ? (
+                {pageType === 'sign-in' || pageType === 'forgot-password' ? (
                   <FormattedMessage defaultMessage="Don't have an account?" id="25WwxF" />
                 ) : (
                   <FormattedMessage defaultMessage="Already have an account?" id="uCk8r+" />
@@ -46,7 +46,7 @@ export const Header: FC<HeaderProps> = ({
               </span>
               <Link href={href} passHref>
                 <a className="text-sm font-medium text-green-dark">
-                  {pageType === 'sign-in' ? (
+                  {pageType === 'sign-in' || pageType === 'forgot-password' ? (
                     <FormattedMessage defaultMessage="Sign Up" id="39AHJm" />
                   ) : (
                     <FormattedMessage defaultMessage="Sign In" id="Ub+AGc" />

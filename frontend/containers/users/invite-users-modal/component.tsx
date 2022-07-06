@@ -70,7 +70,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
       default:
         return formatMessage(
           {
-            defaultMessage: 'Something went wrong while sending invite to email {email}.',
+            defaultMessage: 'Something went wrong while sending an invitation to the email {email}.',
             id: 'hmY5tv',
           },
           {
