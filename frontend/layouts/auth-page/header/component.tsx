@@ -46,7 +46,7 @@ export const Header: FC<HeaderProps> = ({
               </span>
               <Link href={href} passHref>
                 <a className="text-sm font-medium text-green-dark">
-                  {pageType === 'sign-in' ? (
+                  {pageType === 'sign-in' || pageType === 'forgot-password' ? (
                     <FormattedMessage defaultMessage="Sign Up" id="39AHJm" />
                   ) : (
                     <FormattedMessage defaultMessage="Sign In" id="Ub+AGc" />
