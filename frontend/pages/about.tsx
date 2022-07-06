@@ -48,12 +48,12 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
       <ImpactModal impactModalOpen={impactModalOpen} setImpactModalOpen={setImpactModalOpen} />
       <LayoutContainer className="bg-background-light">
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 xl:gap-x-40">
-          <div className="lg:pt-8 row-start-1 lg:self-center">
+          <div className="row-start-1 lg:pt-8 lg:self-center">
             <h1 className="font-serif text-5xl font-bold lg:text-4xl text-green-dark lg:text-black">
               <FormattedMessage defaultMessage="About the platform" id="eM7TKf" />
             </h1>
           </div>
-          <div className="mt-8 lg:mt-0 row-start-3 lg:row-start-2">
+          <div className="row-start-3 mt-8 lg:mt-0 lg:row-start-2">
             <p className="mb-6">
               <FormattedMessage
                 defaultMessage=" HeCo Invest supports the Herencia Colombia program in its efforts to stimulate and channel funding for high impact projects in the Amazon region of Colombia."
@@ -76,7 +76,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               />
             </p>
           </div>
-          <div className="mt-8 lg:mt-0 row-start-2 lg:row-start-1 lg:row-span-2">
+          <div className="row-start-2 mt-8 lg:mt-0 lg:row-start-1 lg:row-span-2">
             {isDesktop ? (
               <Image
                 src="/images/about-intro.png"
@@ -114,7 +114,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               className="lg:rounded-bl-3xl"
             />
           </div>
-          <div className="px-6 pt-6 pb-10 lg:pl-6 lg:p-16 2xl:p-24 text-white bg-green-dark rounded-b-2xl lg:pt-14 lg:rounded-3xl lg:rounded-tl-none xl:rounded-l-none">
+          <div className="px-6 pt-6 pb-10 text-white lg:p-10 2xl:p-24 bg-green-dark rounded-b-2xl lg:pt-14 lg:rounded-3xl lg:rounded-tl-none xl:rounded-l-none">
             <h2 className="font-serif text-2xl font-semibold sm:text-3xl">
               <FormattedMessage defaultMessage="About HeCo" id="5zAKQ7" />
             </h2>
@@ -161,7 +161,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 })}
               />
             </div>
-            <p className="hidden md:block mt-3 sm:mt-6">
+            <p className="hidden mt-3 md:block sm:mt-6">
               <FormattedMessage
                 defaultMessage="The Inter-American Development Bank (IDB) is the largest source of development financing for Latin America and the Caribbean. Established in 1959, the IDB supports Latin American and Caribbean economic development, social development and regional integration by lending to governments and government agencies, including State corporations."
                 id="URLNhk"
@@ -180,7 +180,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 })}
               />
             </div>
-            <p className="hidden md:block mt-3 sm:mt-6">
+            <p className="hidden mt-3 md:block sm:mt-6">
               <FormattedMessage
                 defaultMessage="IDB Lab is the innovation laboratory of the Inter-American Development Bank Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
                 id="W4Jolw"
@@ -196,7 +196,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 alt={intl.formatMessage({ defaultMessage: 'WWF', id: 'cT6b2H' })}
               />
             </div>
-            <p className="hidden md:block mt-3 sm:mt-6">
+            <p className="hidden mt-3 md:block sm:mt-6">
               <FormattedMessage
                 defaultMessage="World Wildlife Fund (WWF) is the largest international conservation organization in the world, with more than 50 offices implementing conservation projects across more than 100 countries and has a membership of almost five million people. WWF has extensive experience working in the Amazon region, with offices in all seven signatory countries of the Leticia Pact. In Colombia, WWF has been working in partnership with the government and a consortium of civil society organizations on Heritage Colombia since 2015."
                 id="zkonnO"
@@ -212,7 +212,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 alt={intl.formatMessage({ defaultMessage: 'Paulson Institute', id: 'JRfERD' })}
               />
             </div>
-            <p className="hidden md:block mt-3 sm:mt-6">
+            <p className="hidden mt-3 md:block sm:mt-6">
               <FormattedMessage
                 defaultMessage="Paulson Institute: The Paulson Institute (PI) is a non-partisan, independent “think and do tank” delivering solutions that contribute to a more resilient and sustainable world. PI operates at the intersection of economics, financial markets, and environmental protection by promoting market-based solutions to ensure green economic growth. Under their Financing Nature initiative, they are working to identify and implement innovative mechanisms that can rapidly mobilize substantial amounts of funding for nature conservation."
                 id="qPKAOa"
@@ -231,7 +231,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 })}
               />
             </div>
-            <p className="hidden md:block mt-3 sm:mt-6">
+            <p className="hidden mt-3 md:block sm:mt-6">
               <FormattedMessage
                 defaultMessage="BC3's mission is to generate valuable knowledge for policy and decision making, integrating the environmental, socio-economic and ethical dimensions of climate change. Through the production of collaborative and open-source tools such as ARIES, which can track and forecast progress towards sustainable environmental and economic goals, BC3 plays a key role in enhancing regional, national and international economic development."
                 id="HVQtvr"
@@ -250,7 +250,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 })}
               />
             </div>
-            <p className="hidden md:block mt-3 sm:mt-6">
+            <p className="hidden mt-3 md:block sm:mt-6">
               <FormattedMessage
                 defaultMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eros fames ut quam turpis sit proin euismod nisi. Sed sed quis lectus adipiscing et tempus tincidunt nec. Morbi neque sollicitudin sit a adipiscing scelerisque. Etiam lacus eget nisl amet cursus. Habitasse tortor sagittis mauris, cursus imperdiet elit sit. Sit nibh cras pulvinar integer tempus, id. Pulvinar arcu feugiat adipiscing ultricies enim eu. Magna consectetur tellus tellus arcu. Augue ut al."
                 id="XVNtgB"
@@ -261,9 +261,9 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
       </LayoutContainer>
 
       <div className="bg-green-dark">
-        <LayoutContainer className="mt-12 md:mt-20  py-16 text-white sm:pt-24 sm:pb-20 md:grid md:grid-cols-2 md:gap-12 xl:gap-6">
+        <LayoutContainer className="py-16 mt-12 text-white md:mt-20 sm:pt-24 sm:pb-20 md:grid md:grid-cols-2 md:gap-12 xl:gap-6">
           <div className="lg:pr-12 xl:pr-24">
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold lg:text-4xl">
+            <h2 className="font-serif text-2xl font-bold sm:text-3xl lg:text-4xl">
               <FormattedMessage
                 defaultMessage="Powered by ARIES: The First AI-powered 'Knowledge Commons'"
                 id="uIp9ro"
@@ -299,10 +299,10 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
 
       <LayoutContainer className="mt-12 lg:mt-26 lg:pt-14">
         <div className="flex flex-col gap-6 py-6 sm:py-12 lg:mb-14 lg:grid lg:gap-x-20 2xl:gap-x-40 lg:gap-y-0 lg:grid-cols-2 rounded-3xl">
-          <h2 className="font-serif lg:self-end lg:mb-8 text-3xl font-semibold sm:text-3xl lg:text-4xl">
+          <h2 className="font-serif text-3xl font-semibold lg:self-end lg:mb-8 sm:text-3xl lg:text-4xl">
             <FormattedMessage defaultMessage="About the impact" id="DQoGRx" />
           </h2>
-          <div className="lg:row-start-1 lg:col-start-2 lg:row-span-2 m-auto">
+          <div className="m-auto lg:row-start-1 lg:col-start-2 lg:row-span-2">
             <Image
               src="/images/about-impact-lg.png"
               width={597}
@@ -339,7 +339,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
         <LayoutContainer className="px-4 py-10 lg:pt-28 lg:pb-44">
           <div className="lg:text-center">
             <div className="max-w-4xl m-auto lg:mb-12">
-              <h2 className="font-serif mb-6 text-3xl font-semibold sm:text-3xl md:text-4xl">
+              <h2 className="mb-6 font-serif text-3xl font-semibold sm:text-3xl md:text-4xl">
                 <FormattedMessage defaultMessage="How is the impact calculated?" id="9cE0nR" />
               </h2>
               <p>
@@ -350,10 +350,10 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 />
               </p>
             </div>
-            <div className="lg:flex lg:gap-6 xl:gap-8 justify-center">
-              <div className="rounded-4xl lg:rounded-full lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 flex items-center justify-center mt-8 mb-6 overflow-hidden opacity-80">
-                <div className="z-1 lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 absolute text-white text-center px-10 lg:px-2 lg:ml-0 flex flex-col items-center justify-center">
-                  <h3 className="text-lg font-semibold mb-1">
+            <div className="justify-center lg:flex lg:gap-6 xl:gap-8">
+              <div className="flex items-center justify-center mt-8 mb-6 overflow-hidden rounded-4xl lg:rounded-full lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 opacity-80">
+                <div className="absolute flex flex-col items-center justify-center px-10 text-center text-white z-1 lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 lg:px-2 lg:ml-0">
+                  <h3 className="mb-1 text-lg font-semibold">
                     <FormattedMessage defaultMessage="Biodiversity" id="mbTJWV" />
                   </h3>
                   <p>
@@ -363,7 +363,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                     />
                   </p>
                 </div>
-                <div className="-z-10 bg-green-dark w-full h-full">
+                <div className="w-full h-full -z-10 bg-green-dark">
                   <Image
                     src="/images/about/about-biodiversity.jpeg"
                     width={isDesktop ? 300 : 411.6}
@@ -376,9 +376,9 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                   />
                 </div>
               </div>
-              <div className="rounded-4xl lg:rounded-full lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 flex items-center mt-8 mb-6 justify-center overflow-hidden opacity-80">
-                <div className="z-1 lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 absolute text-white text-center px-10 lg:px-2 lg:ml-0 flex flex-col items-center justify-center">
-                  <h3 className="text-lg font-semibold mb-1">
+              <div className="flex items-center justify-center mt-8 mb-6 overflow-hidden rounded-4xl lg:rounded-full lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 opacity-80">
+                <div className="absolute flex flex-col items-center justify-center px-10 text-center text-white z-1 lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 lg:px-2 lg:ml-0">
+                  <h3 className="mb-1 text-lg font-semibold">
                     <FormattedMessage defaultMessage="Climate" id="MuOp0t" />
                   </h3>
                   <p>
@@ -388,7 +388,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                     />
                   </p>
                 </div>
-                <div className="-z-10 bg-green-dark w-full h-full">
+                <div className="w-full h-full -z-10 bg-green-dark">
                   <Image
                     src="/images/about/about-climate.jpeg"
                     width={isDesktop ? 300 : 411.6}
@@ -401,16 +401,16 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                   />
                 </div>
               </div>
-              <div className="rounded-4xl lg:rounded-full lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 flex items-center mt-8 mb-6 overflow-hidden justify-center opacity-80">
-                <div className="z-1 lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 absolute text-white text-center px-10 lg:px-2 lg:ml-0 flex flex-col items-center justify-center">
-                  <h3 className="text-lg font-semibold mb-1">
+              <div className="flex items-center justify-center mt-8 mb-6 overflow-hidden rounded-4xl lg:rounded-full lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 opacity-80">
+                <div className="absolute flex flex-col items-center justify-center px-10 text-center text-white z-1 lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 lg:px-2 lg:ml-0">
+                  <h3 className="mb-1 text-lg font-semibold">
                     <FormattedMessage defaultMessage="Community" id="4CrCbD" />
                   </h3>
                   <p>
                     <FormattedMessage defaultMessage="income, sustainable projects;" id="K/CKP5" />
                   </p>
                 </div>
-                <div className="-z-10 bg-green-dark w-full h-full">
+                <div className="w-full h-full -z-10 bg-green-dark">
                   <Image
                     src="/images/about/about-community.jpg"
                     width={isDesktop ? 300 : 411.6}
@@ -423,9 +423,9 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                   />
                 </div>
               </div>
-              <div className="rounded-4xl lg:rounded-full lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 flex items-center mt-8 mb-6 overflow-hidden justify-center opacity-80">
-                <div className="z-1 lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 absolute text-white text-center px-10 lg:px-2 lg:ml-0 flex flex-col items-center justify-center">
-                  <h3 className="text-lg font-semibold mb-1">
+              <div className="flex items-center justify-center mt-8 mb-6 overflow-hidden rounded-4xl lg:rounded-full lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 opacity-80">
+                <div className="absolute flex flex-col items-center justify-center px-10 text-center text-white z-1 lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 lg:px-2 lg:ml-0">
+                  <h3 className="mb-1 text-lg font-semibold">
                     <FormattedMessage defaultMessage="Water" id="t7YvMF" />
                   </h3>
                   <p>
@@ -435,7 +435,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                     />
                   </p>
                 </div>
-                <div className="-z-10 bg-green-dark w-full h-full">
+                <div className="w-full h-full -z-10 bg-green-dark">
                   <Image
                     src="/images/about/about-water.jpg"
                     width={isDesktop ? 300 : 411.6}
@@ -454,7 +454,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
       </div>
 
       <div className="bg-green-dark">
-        <LayoutContainer className="py-10 lg:py-18 lg:mt-0 text-white">
+        <LayoutContainer className="py-10 text-white lg:py-18 lg:mt-0">
           <p className="max-w-md mx-auto text-base sm:max-w-xl lg:max-w-3xl xl:max-w-5xl sm:text-lg md:text-xl">
             <FormattedMessage
               defaultMessage="These investments will support the country’s ambitious climate, biodiversity, and sustainable development goals. They will create resilient landscapes that serve as spaces for inclusion and peacebuilding, with opportunities for improved human well-being and development."
@@ -464,7 +464,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
           <Button
             onClick={() => push(Paths.Discover)}
             theme="secondary-white"
-            className="w-full mt-8 lg:w-52 m-auto justify-center"
+            className="justify-center w-full m-auto mt-8 lg:w-52"
           >
             <FormattedMessage defaultMessage="Explore projects" id="4VKVh6" />
           </Button>
