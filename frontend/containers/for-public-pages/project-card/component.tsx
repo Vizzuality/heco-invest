@@ -46,24 +46,26 @@ export const ProjectCard: FC<ProjectCardProps> = ({
             values={{ projectsQuantity }}
           />
         </p>
-        <Button
-          theme="naked"
-          onClick={() =>
-            push({
-              pathname: Paths.Discover,
-              // TODO: CHANGE TO FILTER BY PROIORITY LANDSCAPE
-              query: !!category ? { 'filter[category]': id } : { search: name },
-            })
-          }
-        >
-          <span className="sr-only">
-            <FormattedMessage defaultMessage="See projects" id="q6rG+e" />
-          </span>
-          <Icon
-            icon={ArrowIcon}
-            className="transition-all duration-500 md:opacity-0 w-15 group-hover:opacity-100 group-focus-within:opacity-100 ease"
-          />
-        </Button>
+        {!!category && (
+          <Button
+            theme="naked"
+            onClick={() =>
+              push({
+                pathname: Paths.Discover,
+                // TODO: CHANGE TO FILTER BY PROIORITY LANDSCAPE
+                query: !!category ? { 'filter[category]': id } : { search: name },
+              })
+            }
+          >
+            <span className="sr-only">
+              <FormattedMessage defaultMessage="See projects" id="q6rG+e" />
+            </span>
+            <Icon
+              icon={ArrowIcon}
+              className="transition-all duration-500 md:opacity-0 w-15 group-hover:opacity-100 group-focus-within:opacity-100 ease"
+            />
+          </Button>
+        )}
       </div>
     </div>
   );
