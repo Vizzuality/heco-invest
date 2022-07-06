@@ -66,7 +66,8 @@
       "latitude": 2.0,
       "longitude": 1.0,
       "favourite": false,
-      "created_at": "2022-06-24T09:06:27.599Z"
+      "created_at": "2022-06-24T09:06:27.599Z",
+      "status": "published"
     },
     "relationships": {
       "project_developer": {

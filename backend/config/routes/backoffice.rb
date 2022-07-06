@@ -1,4 +1,7 @@
-devise_for :admins, path: "backoffice", controllers: {sessions: "backoffice/admins/sessions"}
+devise_for :admins, path: "backoffice", controllers: {
+  sessions: "backoffice/admins/sessions",
+  passwords: "backoffice/admins/passwords"
+}
 devise_scope :admin do
   get "backoffice/admins/sessions/change_locale" => "backoffice/admins/sessions"
 end
@@ -16,5 +19,5 @@ namespace :backoffice do
   resources :investors, only: [:index, :edit, :update, :destroy]
   resources :project_developers, only: [:index, :edit, :update, :destroy]
   resources :projects, only: [:index, :edit, :update, :destroy]
-  resources :admins, only: [:index]
+  resources :admins, only: [:index, :new, :create]
 end

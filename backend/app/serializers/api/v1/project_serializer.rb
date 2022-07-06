@@ -2,6 +2,7 @@ module API
   module V1
     class ProjectSerializer < BaseSerializer
       attributes :name,
+        :status,
         :slug,
         :description,
         :development_stage,

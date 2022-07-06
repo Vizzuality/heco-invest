@@ -89,7 +89,8 @@
         "priority_landscape_water_impact": null,
         "priority_landscape_community_impact": null,
         "priority_landscape_total_impact": null,
-        "created_at": "2022-06-24T09:06:30.522Z"
+        "created_at": "2022-06-24T09:06:30.522Z",
+        "status": "published"
       },
       "relationships": {
         "project_developer": {
@@ -202,7 +203,8 @@
         "priority_landscape_water_impact": null,
         "priority_landscape_community_impact": null,
         "priority_landscape_total_impact": null,
-        "created_at": "2022-06-24T09:06:30.643Z"
+        "created_at": "2022-06-24T09:06:30.643Z",
+        "status": "published"
       },
       "relationships": {
         "project_developer": {

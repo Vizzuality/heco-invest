@@ -42,4 +42,42 @@ RSpec.describe "Backoffice: Admins", type: :system do
       end
     end
   end
+
+  describe "New" do
+    let(:new_admin) { Admin.last }
+
+    before do
+      visit "/backoffice/admins"
+      click_on t("backoffice.admins.index.new")
+    end
+
+    context "when content is correct" do
+      it "creates new admin" do
+        fill_in t("simple_form.labels.admin.first_name"), with: "First Name"
+        fill_in t("simple_form.labels.admin.last_name"), with: "Last Name"
+        select t("enums.language.es.name"), from: t("simple_form.labels.admin.ui_language")
+        fill_in t("simple_form.labels.admin.email"), with: "user@example.com"
+        expect {
+          click_on t("backoffice.common.save")
+        }.to have_enqueued_mail(AdminMailer, :first_time_login_instructions).once
+
+        expect(page).to have_text(t("backoffice.messages.success_create", model: t("backoffice.common.admin")))
+        expect(new_admin.first_name).to eq("First Name")
+        expect(new_admin.last_name).to eq("Last Name")
+        expect(new_admin.email).to eq("user@example.com")
+        expect(new_admin.encrypted_password).not_to be_blank
+        expect(new_admin.ui_language).to eq("es")
+      end
+    end
+
+    context "when content is incorrect" do
+      it "shows validation errors" do
+        fill_in t("simple_form.labels.admin.first_name"), with: ""
+        click_on t("backoffice.common.save")
+
+        expect(page).to have_text(t("simple_form.error_notification.default_message"))
+        expect(page).to have_text("First name can't be blank")
+      end
+    end
+  end
 end

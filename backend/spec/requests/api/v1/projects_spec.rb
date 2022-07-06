@@ -4,8 +4,11 @@ RSpec.describe "API V1 Projects", type: :request do
   before_all do
     @project = create(:project, :with_involved_project_developers, :with_project_images, category: "non-timber-forest-production")
     create_list(:project, 6, category: "forestry-and-agroforestry")
-    @unapproved_project = create(:project, project_developer: create(:project_developer, account: create(:account, :unapproved, users: [create(:user)])))
-    @approved_account = create(:account, review_status: :approved, users: [create(:user)])
+
+    unapproved_pd = create(:project_developer, account: create(:account, :unapproved, users: [create(:user)]))
+    @approved_pd = create(:project_developer, account: create(:account, :approved, users: [create(:user)]))
+    @unapproved_project = create(:project, project_developer: unapproved_pd)
+    @draft_project = create(:project, :draft, category: "non-timber-forest-production")
   end
 
   include_examples :api_pagination, model: Project, expected_total: 7
@@ -49,6 +52,10 @@ RSpec.describe "API V1 Projects", type: :request do
           expect(response_json["data"].pluck("id")).not_to include(@unapproved_project.id)
         end
 
+        it "ignores draft record" do
+          expect(response_json["data"].pluck("id")).not_to include(@draft_project.id)
+        end
+
         context "with sparse fieldset" do
           let("fields[project]") { "name,description,nonexisting" }
 
@@ -80,6 +87,16 @@ RSpec.describe "API V1 Projects", type: :request do
           it "contains only correct records" do
             expect(response_json["data"].pluck("id")).to eq([@project.id])
           end
+        end
+
+        context "when listing own projects" do
+          before { sign_in @draft_project.project_developer.account.users.first }
+
+          it "still ignores draft record" do
+            expect(response_json["data"].pluck("id")).not_to include(@draft_project.id)
+          end
+
+          run_test!
         end
       end
     end
@@ -140,6 +157,14 @@ RSpec.describe "API V1 Projects", type: :request do
 
           run_test!
         end
+
+        context "when project developer shows its own draft project" do
+          let(:id) { @draft_project.id }
+
+          before { sign_in @draft_project.project_developer.account.users.first }
+
+          run_test!
+        end
       end
 
       response "403", :forbidden do
@@ -150,7 +175,15 @@ RSpec.describe "API V1 Projects", type: :request do
         run_test!
 
         context "when logged in user tries to see project of unapproved project developer" do
-          before { sign_in @approved_account.users.first }
+          before { sign_in @approved_pd.account.users.first }
+
+          run_test!
+        end
+
+        context "when logged in user tries to see draft project of different project developer" do
+          let(:id) { @draft_project.id }
+
+          before { sign_in @approved_pd.account.users.first }
 
           run_test!
         end
