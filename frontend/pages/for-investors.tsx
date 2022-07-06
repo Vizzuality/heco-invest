@@ -172,7 +172,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
 
   return (
     <>
-      <Head title="About" />
+      <Head title="For investors" />
       <ImpactModal impactModalOpen={impactModalOpen} setImpactModalOpen={setImpactModalOpen} />
       <LayoutContainer className="bg-background-light">
         <div className="mb-10 lg:pt-8">
