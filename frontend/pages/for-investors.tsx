@@ -153,13 +153,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         </p>
         <Button
           theme="naked"
-          onClick={() =>
-            push({
-              pathname: Paths.Discover,
-              // TODO: CHANGE TO FILTER BY PROIORITY LANDSCAPE
-              query: !!categoryColor ? { 'filter[category]': id } : { search: name },
-            })
-          }
+          to={`${Paths.Discover}?${!!categoryColor ? `filter[category]=${id}` : `search=${name}`}`}
         >
           <Icon
             icon={ArrowIcon}
