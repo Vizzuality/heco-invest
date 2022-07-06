@@ -38,19 +38,19 @@ export const UsersTable = () => {
       {
         Header: 'Email',
         accessor: 'email',
-        className: 'text-sm',
+        className: 'text-sm leading-8',
       },
       {
         Header: 'Role',
         accessor: 'owner',
-        className: 'text-sm',
+        className: 'text-sm leading-8',
         width: 100,
         Cell: Role,
       },
       {
         Header: 'Invitation',
         accessor: 'confirmed',
-        className: 'text-sm',
+        className: 'text-sm leading-8',
         width: 80,
         Cell: Invitation,
       },
@@ -72,7 +72,7 @@ export const UsersTable = () => {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <SearchAndInfo className="w-full mt-4 mb-6">
+        <SearchAndInfo className="w-full">
           <FormattedMessage
             defaultMessage="Total <span>{numUsers}</span> {numUsers, plural, one {user} other {users}}"
             id="YQsqLq"
