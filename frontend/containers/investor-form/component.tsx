@@ -49,6 +49,7 @@ const InvestorForm: FC<InvestorFormProps> = ({
     control,
     setError,
     setValue,
+    getValues,
     clearErrors,
   } = useForm<InvestorFormType>({
     resolver,
@@ -116,6 +117,7 @@ const InvestorForm: FC<InvestorFormProps> = ({
         getTotalPages={(pages) => setTotalPages(pages)}
         layout="narrow"
         title={title}
+        locale={initialValues?.language || (currentPage !== 0 ? getValues('language') : null)}
         autoNavigation={false}
         page={currentPage}
         alert={alert}

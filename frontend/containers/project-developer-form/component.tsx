@@ -57,6 +57,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
     control,
     setError,
     setValue,
+    getValues,
     clearErrors,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
@@ -123,6 +124,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
         getTotalPages={(pages) => setTotalPages(pages)}
         layout="narrow"
         title={title}
+        locale={initialValues?.language || (currentPage !== 0 ? getValues('language') : null)}
         autoNavigation={false}
         page={currentPage}
         alert={alert}
