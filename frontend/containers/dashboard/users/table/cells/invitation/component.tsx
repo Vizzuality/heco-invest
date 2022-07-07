@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { FormattedMessage } from 'react-intl';
+
 import cx from 'classnames';
 
 import { CellInvitationProps } from './types';
@@ -22,8 +24,8 @@ export const CellInvitation = ({ value }: CellInvitationProps) => {
           'text-orange': !value,
         })}
       >
-        {value && 'Accepted'}
-        {!value && 'Waiting'}
+        {value && <FormattedMessage defaultMessage="Accepted" id="aFyFm0" />}
+        {!value && <FormattedMessage defaultMessage="Waiting" id="dZd8H/" />}
       </p>
     </div>
   );
