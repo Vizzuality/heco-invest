@@ -227,7 +227,7 @@ module "backend_cloudrun" {
     },
     {
       name  = "MAILER_DEFAULT_FROM"
-      value = "agnieszka.figiel@vizzuality.com"
+      value = var.from_email_address
     },
     {
       name  = "GCP_PROJECT_ID"
@@ -338,7 +338,7 @@ module "jobs_cloudrun" {
     },
     {
       name  = "MAILER_DEFAULT_FROM"
-      value = "agnieszka.figiel@vizzuality.com"
+      value = var.from_email_address
     },
     {
       name  = "GCP_PROJECT_ID"

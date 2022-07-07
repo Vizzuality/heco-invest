@@ -26,6 +26,7 @@ module "staging" {
   redirect_dns_zone_name = module.redirect_dns.dns_zone_name
   subdomain              = "staging"
   uptime_alert_email     = var.uptime_alert_email
+  from_email_address     = "no-reply@${var.domain}"
 }
 
 module "production" {
@@ -49,6 +50,7 @@ module "production" {
   dns_zone_name          = module.dns.dns_zone_name
   redirect_dns_zone_name = module.redirect_dns.dns_zone_name
   uptime_alert_email     = var.uptime_alert_email
+  from_email_address     = "no-reply@${var.domain}"
 }
 
 module "dns" {
