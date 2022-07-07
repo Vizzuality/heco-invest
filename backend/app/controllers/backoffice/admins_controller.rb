@@ -4,7 +4,7 @@ module Backoffice
 
     before_action :initialize_admin, only: [:new, :create]
     before_action :fetch_admin, only: [:edit, :update, :destroy]
-    before_action :set_breadcrumbs, only: [:new, :create]
+    before_action :set_breadcrumbs, only: [:new, :create, :edit, :update]
     before_action :set_sections, only: [:edit, :update]
 
     def index
