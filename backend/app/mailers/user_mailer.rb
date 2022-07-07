@@ -10,4 +10,10 @@ class UserMailer < ApplicationMailer
 
     mail to: @user.email
   end
+
+  def destroyed(email, full_name)
+    @full_name = full_name
+
+    mail to: email
+  end
 end
