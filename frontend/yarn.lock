@@ -14409,7 +14409,6 @@ __metadata:
     final-form: ^4.20.2
     framer-motion: ^4.1.17
     jest: ^27.5.1
-    jsona: ^1.9.2
     jsonwebtoken: ^8.5.1
     lodash-es: ^4.17.21
     maplibre-gl: ^1.15.2
@@ -16254,13 +16253,6 @@ __metadata:
   bin:
     json5: lib/cli.js
   checksum: e88fc5274bb58fc99547baa777886b069d2dd96d9cfc4490b305fd16d711dabd5979e35a4f90873cefbeb552e216b041a304fe56702bedba76e19bc7845f208d
-  languageName: node
-  linkType: hard
-
-"jsona@npm:^1.9.2":
-  version: 1.9.6
-  resolution: "jsona@npm:1.9.6"
-  checksum: a87f9915642c444fd1afc648e59c41ee156f10b7d530ab936e6da7f10a2ef9f7def1860347a81bbafab388371e9efb68b6207506e699fe1b82164b87efd87cc7
   languageName: node
   linkType: hard
 
