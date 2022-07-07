@@ -25,7 +25,7 @@ module "staging" {
   dns_zone_name          = module.dns.dns_zone_name
   redirect_dns_zone_name = module.redirect_dns.dns_zone_name
   subdomain              = "staging"
-  uptime_alert_email   = var.uptime_alert_email
+  uptime_alert_email     = var.uptime_alert_email
 }
 
 module "production" {
@@ -48,7 +48,7 @@ module "production" {
   redirect_domain        = var.redirect_domain
   dns_zone_name          = module.dns.dns_zone_name
   redirect_dns_zone_name = module.redirect_dns.dns_zone_name
-  uptime_alert_email   = var.uptime_alert_email
+  uptime_alert_email     = var.uptime_alert_email
 }
 
 module "dns" {
@@ -61,4 +61,16 @@ module "redirect_dns" {
   source = "./modules/dns"
   domain = var.redirect_domain
   name   = "heco-redirect"
+}
+
+module "sendgrid_dns_entries" {
+  source            = "./modules/sendgrid_dns_entries"
+  domain            = var.domain
+  cname_records_map = {
+    "em733.hecopilot.org."         = "u27846126.wl127.sendgrid.net."
+    "s1._domainkey.hecopilot.org." = "s1.domainkey.u27846126.wl127.sendgrid.net."
+    "s2._domainkey.hecopilot.org." = "s2.domainkey.u27846126.wl127.sendgrid.net."
+  }
+  dns_managed_zone_name = module.dns.dns_zone_name
+  project               = var.gcp_project_id
 }
