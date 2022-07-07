@@ -10,4 +10,10 @@ class UserMailer < ApplicationMailer
 
     mail to: @user.email
   end
+
+  def ownership_transferred(user)
+    @user = user
+
+    mail to: @user.email
+  end
 end

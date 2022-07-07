@@ -21,6 +21,13 @@ module API
           head :ok
         end
 
+        def transfer_ownership
+          user = @users.find params[:user_id]
+          current_user.account.update! owner: user
+          UserMailer.ownership_transferred(user).deliver_later
+          render json: UserSerializer.new(user, params: {current_user: user}).serializable_hash
+        end
+
         private
 
         def filter_params
