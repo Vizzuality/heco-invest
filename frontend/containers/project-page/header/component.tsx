@@ -13,17 +13,23 @@ import ImageGallery from 'containers/image-gallery';
 import ContactInformationModal from 'containers/social-contact/contact-information-modal';
 
 import Button from 'components/button';
+import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import Tag from 'components/tag';
 import { CategoryType } from 'types/category';
+import { ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
 
 import { useAccount } from 'services/account';
 import { useEnums } from 'services/enums/enumService';
+import { useFavoriteProject } from 'services/projects/projectService';
 
 import type { HeaderProps } from './types';
 
 export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => {
   const intl = useIntl();
+  const { user } = useAccount();
+  const favoriteProject = useFavoriteProject();
+
   const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
   const {
     data: {
@@ -33,7 +39,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
     },
   } = useEnums();
 
-  const { user } = useAccount();
+  const projectDeveloper: ProjectDeveloperType = project.project_developer;
 
   const category = useMemo(
     () => allCategories?.find(({ id }) => id === project.category),
@@ -67,7 +73,17 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
 
   const contacts = projectContacts(project);
 
-  const handleFavoriteClick = () => {};
+  const handleFavoriteClick = () => {
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    favoriteProject.mutate(
+      { id: project.id, isFavourite: project.favourite },
+      {
+        onSuccess: (data) => {
+          project.favourite = data.favourite;
+        },
+      }
+    );
+  };
 
   return (
     <div className={className}>
@@ -184,17 +200,22 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
 
           <div className="flex flex-col justify-between gap-4 mt-5 lg:flex-row">
             <Button
-              className="justify-center"
-              disabled={!user}
+              className="justify-start"
               theme="secondary-green"
-              icon={HeartIcon}
               onClick={handleFavoriteClick}
+              disabled={!user}
             >
+              <Icon
+                icon={HeartIcon}
+                className={cx('w-4 mr-3', {
+                  'fill-green-dark': project.favourite,
+                })}
+              />
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </Button>
             <Button
-              disabled={!contacts.length}
               className="w-full lg:max-w-[200px] justify-center"
+              disabled={!contacts.length}
               theme="primary-green"
               onClick={() => setIsContactInfoModalOpen(true)}
             >
