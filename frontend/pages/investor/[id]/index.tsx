@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { FormattedMessage } from 'react-intl';
 
 import { useRouter } from 'next/router';
@@ -23,7 +25,7 @@ import { GroupedEnums } from 'types/enums';
 import { Investor } from 'types/investor';
 
 import { getEnums } from 'services/enums/enumService';
-import { getInvestor, useInvestor } from 'services/investors/investorsService';
+import { getInvestor, useInvestor, useFavoriteInvestor } from 'services/investors/investorsService';
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let investor = null;
@@ -60,6 +62,8 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
   const { data: investorData } = useInvestor(router.query.id as string);
 
   const investor = investorData || investorProp;
+
+  const [isFavourite, setIsFavourite] = useState(investor.favourite);
 
   const {
     name,
@@ -132,6 +136,19 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
 
   const investorTypeName = allInvestorTypes?.find(({ id }) => id === investor_type)?.name;
 
+  const favoriteInvestor = useFavoriteInvestor();
+
+  const handleFavoriteClick = () => {
+    const { id } = investor;
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    favoriteInvestor.mutate(
+      { id, isFavourite },
+      {
+        onSuccess: (data) => setIsFavourite(data.favourite),
+      }
+    );
+  };
+
   return (
     <>
       <Head title={name} description={about} />
@@ -154,6 +171,9 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
           // social={getSocialInfo()}
           contact={contact}
           originalLanguage={language}
+          isFavorite={isFavourite}
+          onFavoriteClick={handleFavoriteClick}
+          favoriteLoading={favoriteInvestor.isLoading}
         />
       </LayoutContainer>
 
