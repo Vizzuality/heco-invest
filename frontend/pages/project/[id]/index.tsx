@@ -72,6 +72,9 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
     data: { data: projectData },
   } = useProject(router.query.id as string, PROJECT_QUERY_PARAMS);
 
+  // TODO: Find better solution. Data from 'getServerSideProps' will not contain contacts, favorites and other data
+  //       that requires a logged in user. We're refetching on the client, which is most likely not ideal.
+  //       A possible solution to investigate: https://react-query.tanstack.com/reference/hydration
   const project = projectData || projectProp;
 
   return (
