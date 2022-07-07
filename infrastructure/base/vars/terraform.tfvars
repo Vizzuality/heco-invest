@@ -12,7 +12,7 @@ gcp_project_id = "heco-342801"
 staging_project_name    = "staging-heco"
 production_project_name = "heco"
 
-domain               = "hecopilot.org"
+domain               = "hecoinvest.org"
 redirect_domain      = "heco.vizzuality.com"
 google_analytics_key = "changeMe"
 uptime_alert_email   = "tiago.garcia@vizzuality.com"
