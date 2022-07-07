@@ -113,7 +113,7 @@ const getProjectsMap = (params) =>
 export const useProjectsMap = (
   params: ProjectMapParams
 ): UseQueryResult<ResponseData<ProjectsMap[]>, unknown> & { projectsMap: ProjectsMapGeojson } => {
-  const query = useLocalizedQuery([Queries.ProjectQuery], () => getProjectsMap(params), {
+  const query = useLocalizedQuery([Queries.ProjectsMap], () => getProjectsMap(params), {
     placeholderData: {
       data: [],
     },
