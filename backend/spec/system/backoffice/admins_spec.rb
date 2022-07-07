@@ -80,4 +80,100 @@ RSpec.describe "Backoffice: Admins", type: :system do
       end
     end
   end
+
+  describe "Edit" do
+    before do
+      visit "/backoffice/admins"
+      within_row(extra_admin.full_name) do
+        click_on t("backoffice.common.edit")
+      end
+    end
+
+    context "user information section" do
+      context "when content is correct" do
+        it "can update admin information" do
+          fill_in t("simple_form.labels.admin.first_name"), with: "First Name"
+          fill_in t("simple_form.labels.admin.last_name"), with: "Last Name"
+          select t("enums.language.es.name"), from: t("simple_form.labels.admin.ui_language")
+          fill_in t("simple_form.labels.admin.email"), with: "user@example.com"
+          click_on t("backoffice.common.save")
+
+          expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.admin")))
+          extra_admin.reload
+          expect(extra_admin.first_name).to eq("First Name")
+          expect(extra_admin.last_name).to eq("Last Name")
+          expect(extra_admin.email).to eq("user@example.com")
+          expect(extra_admin.ui_language).to eq("es")
+        end
+      end
+
+      context "when content is incorrect" do
+        it "shows validation errors" do
+          fill_in t("simple_form.labels.admin.first_name"), with: ""
+          click_on t("backoffice.common.save")
+
+          expect(page).to have_text(t("simple_form.error_notification.default_message"))
+          expect(page).to have_text("First name can't be blank")
+        end
+      end
+    end
+
+    context "password section" do
+      context "when visiting admin profile of different admin" do
+        it "does not show password section" do
+          within_sidebar do
+            expect(page).not_to have_link(t("backoffice.admins.password"))
+          end
+        end
+      end
+
+      context "when visiting admin profile of currently logged admin" do
+        let!(:old_password) { admin.encrypted_password }
+
+        before do
+          visit "/backoffice/admins"
+          within_row(admin.full_name) do
+            click_on t("backoffice.common.edit")
+          end
+          within_sidebar { click_on t("backoffice.admins.password") }
+        end
+
+        context "when content is correct" do
+          it "can update admin password" do
+            fill_in t("simple_form.labels.admin.password"), with: "SuperSecret6123456"
+            fill_in t("simple_form.labels.admin.password_confirmation"), with: "SuperSecret6123456"
+            click_on t("backoffice.common.save")
+
+            expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.admin")))
+            admin.reload
+            expect(admin.encrypted_password).not_to eq(old_password)
+          end
+        end
+
+        context "when content is incorrect" do
+          it "shows validation errors" do
+            fill_in t("simple_form.labels.admin.password"), with: "SuperSecret6123456"
+            fill_in t("simple_form.labels.admin.password_confirmation"), with: "SuperSecret6"
+            click_on t("backoffice.common.save")
+
+            expect(page).to have_text(t("simple_form.error_notification.default_message"))
+            expect(page).to have_text("Password confirmation doesn't match Password")
+            admin.reload
+            expect(admin.encrypted_password).to eq(old_password)
+          end
+        end
+      end
+    end
+
+    context "when removing admin" do
+      it "removes admin" do
+        accept_confirm do
+          click_on t("backoffice.admins.delete")
+        end
+        expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.admin")))
+        expect(current_path).to eql(backoffice_admins_path)
+        expect(page).not_to have_text(extra_admin.full_name)
+      end
+    end
+  end
 end
