@@ -187,7 +187,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <ul className="mt-2 space-y-2">
                   <li>
                     <Link href={Paths.ForInvestors}>
-                      <a className="text-gray-400 disabled:pointer-events-none">
+                      <a className="hover:underline">
                         <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
                       </a>
                     </Link>
