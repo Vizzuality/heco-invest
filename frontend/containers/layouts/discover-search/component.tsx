@@ -44,7 +44,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
   return (
     <div className={className}>
       <div
-        className={cx('z-10 w-full sm:h-16 text-black bg-white border drop-shadow-xl', {
+        className={cx('z-10 relative w-full sm:h-16 text-black bg-white border drop-shadow-xl', {
           'rounded-full': !openFilters && !openSuggestions,
           'rounded-t-4xl': openFilters || openSuggestions,
         })}

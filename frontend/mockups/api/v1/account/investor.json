@@ -20,32 +20,10 @@
         "non-timber-forest-production",
         "human-capital-and-inclusion"
       ],
-      "ticket_sizes": [
-        "small-grants",
-        "prototyping",
-        "validation",
-        "scaling"
-      ],
-      "instrument_types": [
-        "grant",
-        "loan",
-        "equity"
-      ],
-      "impacts": [
-        "biodiversity",
-        "climate",
-        "water",
-        "community"
-      ],
-      "sdgs": [
-        1,
-        2,
-        3,
-        4,
-        6,
-        14,
-        15
-      ],
+      "ticket_sizes": ["small-grants", "prototyping", "validation", "scaling"],
+      "instrument_types": ["grant", "loan", "equity"],
+      "impacts": ["biodiversity", "climate", "water", "community"],
+      "sdgs": [1, 2, 3, 4, 6, 14, 15],
       "previously_invested": true,
       "language": "en",
       "review_status": "approved",

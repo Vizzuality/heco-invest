@@ -13,21 +13,12 @@
       "twitter": "https://twitter.com/pdorganizationtest1",
       "mission": "Mission Test organization 1. This organization's mission is to find sustainable tourism solutions for the Amazon region. ",
       "project_developer_type": "ngo",
-      "categories": [
-        "tourism-and-recreation"
-      ],
-      "impacts": [
-        "biodiversity",
-        "climate",
-        "water",
-        "community"
-      ],
+      "categories": ["tourism-and-recreation"],
+      "impacts": ["biodiversity", "climate", "water", "community"],
       "language": "en",
       "entity_legal_registration_number": "1234567890",
       "review_status": "approved",
-      "mosaics": [
-        "orinoquia-transition"
-      ],
+      "mosaics": ["orinoquia-transition"],
       "contact_email": "susana.romao+pdapproved@vizzuality.com",
       "contact_phone": "00251536698521",
       "picture": {

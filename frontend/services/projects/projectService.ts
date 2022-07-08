@@ -18,8 +18,8 @@ const Feature: 'Feature' = 'Feature';
 const Point: 'Point' = 'Point';
 
 /** Get a paged list of projects */
-const getProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
-  const { search, page, includes, ...rest } = params || {};
+export const getProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
+  const { search, page, includes, fields, ...rest } = params || {};
 
   const config: AxiosRequestConfig = {
     url: '/api/v1/projects',
@@ -29,6 +29,7 @@ const getProjects = async (params?: PagedRequest): Promise<PagedResponse<Project
       includes: includes?.join(','),
       'filter[full_text]': search,
       'page[number]': page,
+      'fields[project]': fields?.join(','),
     },
   };
 

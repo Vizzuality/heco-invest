@@ -17,6 +17,9 @@
   "/CaREm": {
     "string": "Pending approval"
   },
+  "/Jn84b": {
+    "string": "Have access to all of the contacts of <n>project developers </n> and <n>investors</n>. Easily reach and connect so you can decide where to invest."
+  },
   "/L6T3E": {
     "string": "Get connected"
   },
@@ -107,17 +110,20 @@
   "2GBpne": {
     "string": "Impact score"
   },
+  "2HumLB": {
+    "string": "123.000 million"
+  },
   "2JJSDv": {
     "string": "Edit project developer’s account"
   },
   "2O2sfp": {
     "string": "Finish"
   },
-  "2aOaT4": {
-    "string": "HeCo Invest is considered as a pilot effort. It will then scale to include all the signatory countries of the Pact."
-  },
   "2inebt": {
     "string": "The opportunities are located in geographies that are are unique due to of their biodiversity, cultural heritages, and regulation of water systems. As such, these projects will have the greatest impact for people and nature."
+  },
+  "2sU5tO": {
+    "string": "What HeCo Invest can do for you"
   },
   "35YoEI": {
     "string": "Description of the project"
@@ -133,6 +139,9 @@
   },
   "3tWxy0": {
     "string": "Project developer type"
+  },
+  "4+4OY6": {
+    "string": "HeCo Invest supports the Herencia Colombia program in its efforts to stimulate and channel funding for high impact projects in the Amazon region of Colombia."
   },
   "47FYwb": {
     "string": "Cancel"
@@ -152,17 +161,20 @@
   "4JFhNG": {
     "string": "Describe briefly the impact that the project is expected to generate to the identified users/beneficiaries. Try to explain how the solution or project will achieve this impact. Also try to give some estimates of the number of people impacted, at least to get an initial idea."
   },
+  "4VKVh6": {
+    "string": "Explore projects"
+  },
   "4YJHut": {
     "string": "Clear search"
-  },
-  "4bznpU": {
-    "string": "HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the long-term sustainability of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
   },
   "4iXh64": {
     "string": "Your account has not been approved, your profile is not publicly visible."
   },
   "4vn+6A": {
     "string": "{inputName} is focused, type to refine list, press down to open the menu, press left to focus selected values"
+  },
+  "4zK41e": {
+    "string": "Investing in the Amazon means contributing to improving the quality of life of more than 30 million people. It is also contributing to the development and conservation of a vital region for South America and the world."
   },
   "50bxrQ": {
     "string": "My favorites"
@@ -197,8 +209,14 @@
   "6//v4m": {
     "string": "+123456789"
   },
+  "62pTkz": {
+    "string": "Save your favorites"
+  },
   "6EYInP": {
     "string": "My open call applications"
+  },
+  "6IKs4G": {
+    "string": "wood and soil biomass, application of sustainable forest measures;"
   },
   "6MEtAZ": {
     "string": "Investor/Funder name"
@@ -232,6 +250,9 @@
   },
   "7gMEKc": {
     "string": "Project details"
+  },
+  "7mgGgs": {
+    "string": "It is one of the most important terrestrial carbon sink on Earth, helping to mitigate climate change."
   },
   "7qB5i4": {
     "string": "As an Investor or Funder"
@@ -380,9 +401,6 @@
   "CPO6eS": {
     "string": "Select in which SDG’s your project will have impact"
   },
-  "CYTiug": {
-    "string": "HeCo Invest will benefit poor and vulnerable people living in HeCo priority landscapes."
-  },
   "CiBvks": {
     "string": "General information about the the project developer."
   },
@@ -397,9 +415,6 @@
   },
   "D5RCKi": {
     "string": "Project name"
-  },
-  "DAJK4J": {
-    "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure 20 million hectares of sustainable landscape over the next 20 years, through investments in conservation and sustainable development."
   },
   "DCAMZh": {
     "string": "Choose the field to sort by"
@@ -440,6 +455,9 @@
   "Ec0M9T": {
     "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
   },
+  "Ejc7dP": {
+    "string": "tons of carbon are stored in the Amazon."
+  },
   "EmE3wV": {
     "string": "Sub-basin boundaries of Colombia."
   },
@@ -448,6 +466,9 @@
   },
   "EwRIOm": {
     "string": "User"
+  },
+  "EzGCO8": {
+    "string": "water cycling, quality, and risk management"
   },
   "F++AYx": {
     "string": "Something went wrong with the picture upload"
@@ -509,6 +530,9 @@
   "Hb+Idf": {
     "string": "Project description"
   },
+  "HlDhAh": {
+    "string": "10%"
+  },
   "HnG9/3": {
     "string": "Insert password"
   },
@@ -558,11 +582,11 @@
   "JFkvlB": {
     "string": "Please use the contacts below to reach the project developer."
   },
-  "JI99E2": {
-    "string": "HeCo Invest was created following the Leticia Pact, and the commitment of the seven Heads of State to increase capital flows for sustainable development in the <span>Amazon</span>."
-  },
   "JIehAU": {
     "string": "This is why ARIES is developing a 'Wikipedia-like' platform, that is collaborative, open-source and enables interoperable models and data. For the first time, this generates new knowledge through integrating the existing platform with the ultimate scope of building a more sustainable and resilient future for all."
+  },
+  "JJNc3c": {
+    "string": "Previous"
   },
   "JJQfhh": {
     "string": "Progress and impact tracking"
@@ -579,6 +603,9 @@
   "JWYapR": {
     "string": "{name} project"
   },
+  "JcS7oJ": {
+    "string": "By priority landscapes"
+  },
   "JkLHGw": {
     "string": "Website"
   },
@@ -591,6 +618,9 @@
   "K+Q04b": {
     "string": "Image gallery"
   },
+  "K/CKP5": {
+    "string": "income, sustainable projects;"
+  },
   "K3r6DQ": {
     "string": "Delete"
   },
@@ -599,9 +629,6 @@
   },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
-  },
-  "KvhWhT": {
-    "string": "The <span>IDB Lab</span>, the <span>Paulson Institute</span> and the <span>World Wildlife Fund</span> are working together to develop a digital platform that connects governments, investors, donors, and philanthropists with carefully identified investment opportunities in <span>high priority locations</span> identified by programs such as Herencia Colombia (HeCo)."
   },
   "KxPY7j": {
     "string": "Date of creation"
@@ -614,6 +641,9 @@
   },
   "LmHPHR": {
     "string": "Select the topics/sector categories that you work on"
+  },
+  "LmyoPR": {
+    "string": "Thanks to our integration with <n>ARIES</n>, an Artificial Intelligence tool that integrates <n>expert knowledge, Semantics</n> and <n>Machine Reasoning</n> technology, we can <n>estimate a projects’ impact</n> along our four dimensions of interest: <n>Climate, Biodiversity, Water, Community</n> to guide and track your investment decisions."
   },
   "LtTjKV": {
     "string": "selected"
@@ -654,6 +684,9 @@
   "N9+9Fi": {
     "string": "select the project developer type"
   },
+  "NG6Ull": {
+    "string": "HeCo Invest manages a <n>wide range of investment and financing opportunities</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n>."
+  },
   "NUVSd2": {
     "string": "Protected areas"
   },
@@ -683,6 +716,9 @@
   },
   "OWnChd": {
     "string": "If you are not looking for funding and just want to publish your project, select No."
+  },
+  "Ob7+Ly": {
+    "string": "Google Cloud accelerates every organization’s ability to digitally transform its business. We deliver enterprise-grade solutions that leverage Google’s cutting-edge technology – all on the cleanest cloud in the industry. Customers in more than 200 countries and territories turn to Google Cloud as their trusted partner to enable growth and solve their most critical business problems."
   },
   "Obr4XP": {
     "string": "Guiding tools"
@@ -732,6 +768,12 @@
   "QESbGa": {
     "string": "select project developers"
   },
+  "QI4yO9": {
+    "string": "It is an area with a number of attributes related to heterogeneity that maintain the structure and ecological processes that characterize it as the Heart of the Amazon, it is also one of the most unique natural and cultural heritages in the national territory due to its exuberant cultural diversity."
+  },
+  "QlBsxM": {
+    "string": "Google Cloud"
+  },
   "Qmlx+T": {
     "string": "Insert the email to receive the contact messages."
   },
@@ -743,6 +785,9 @@
   },
   "R+1DVQ": {
     "string": "Invite users"
+  },
+  "RBIeR5": {
+    "string": "Being a point of transition and meeting between the two most biodiverse biomes on Earth, the Tropical Andes and the Amazon, the Mosaic foothills represents one of the regions with <n>the greatest biodiversity in the world</n>."
   },
   "RDCAd6": {
     "string": "value {optionName} focused, {pagination}."
@@ -770,6 +815,9 @@
   },
   "Scnx6A": {
     "string": "Maturity / stage of development"
+  },
+  "Sg5j0W": {
+    "string": "1.5 million indigenous people and more than 5 million Afro-descendants."
   },
   "Sv/Mtz": {
     "string": "Project developer name"
@@ -860,6 +908,12 @@
   },
   "WAr33U": {
     "string": "insert the name"
+  },
+  "WJGIA3": {
+    "string": "Helps to ensure connectivity between the Andean, Orinocean and Amazonian ecosystems, allowing the conservation of flora, fauna, scenic beauties, geomorphological complexes, historical or cultural manifestations, the conservation and regulation of water systems."
+  },
+  "WLDgff": {
+    "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
   },
   "WTuVeL": {
     "string": "Something went wrong while submitting your form. Please correct the errors before submitting again."
@@ -972,6 +1026,9 @@
   "ZjA6uH": {
     "string": "Welcome to HeCo Invest. Please enter your details below."
   },
+  "Zt7DBA": {
+    "string": "Priority landscapes of HeCo"
+  },
   "a5msuh": {
     "string": "Yes"
   },
@@ -1050,6 +1107,9 @@
   "d3TPmn": {
     "string": "SDG's"
   },
+  "dHpDHe": {
+    "string": "HeCo Invest will <n>benefit poor and vulnerable people</n> living in <n>HeCo priority landscapes in the Amazon region</n>."
+  },
   "dPuc1g": {
     "string": "Slide {slideNumber}"
   },
@@ -1061,6 +1121,9 @@
   },
   "daUTdN": {
     "string": "Open call applications"
+  },
+  "des5Rg": {
+    "string": "Discover projects by category"
   },
   "dkNQOz": {
     "string": "Projects of all sizes"
@@ -1104,6 +1167,9 @@
   "fX9u5/": {
     "string": "Contribute to addressing the effects of climate change through investments to reduce CO2 emissions and conserve or restore forest-related carbon sinks. <br></br><br></br> Nature based solutions have been estimated to have the potential of contributing to compensate for up to 30% of global emissions."
   },
+  "ff0+bt": {
+    "string": "The platform will use the most advanced technologies and Artificial Intelligence applications to provide in one place data and tools to connect investors, donors and philanthropists with carefully selected projects in high priority locations defined by Heremcia Colombia."
+  },
   "fnihsY": {
     "string": "Leave"
   },
@@ -1116,8 +1182,14 @@
   "g5pX+a": {
     "string": "About"
   },
+  "gEdnC6": {
+    "string": "endemism, conservation/ restoration potential, landscape connectivity;"
+  },
   "gF/kn9": {
     "string": "Contribute to protecting areas of greatest ecosystems diversity, conservation and restoration potential, degree of threat or protection for flora and fauna, landscape connectivity and degree of endemism."
+  },
+  "gbcj32": {
+    "string": "{projectsQuantity, plural, one {project} other {projects}}"
   },
   "ghj0+t": {
     "string": "Geographies"
@@ -1176,8 +1248,17 @@
   "iD2hRt": {
     "string": "insert the project name"
   },
+  "iMJ1Xr": {
+    "string": "As an investor or funder, if you do not find a project aligned with your interests, you can create your own call to challenge the <n>HeCo Invest community</n> and receive customized, quality proposals that are only visible to the users of your account."
+  },
+  "iUt7so": {
+    "string": "of the planet’s known biodiversity lives in the Amazon, the largest tropical rainforest on the planet."
+  },
   "iiVhlC": {
     "string": "insert phone number"
+  },
+  "ikyoJL": {
+    "string": "HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the <n>long-term sustainability</n> of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
   },
   "ilgFAX": {
     "string": "Target group(s)"
@@ -1208,6 +1289,9 @@
   },
   "jj4ae3": {
     "string": "Project image {index}."
+  },
+  "jnYkhy": {
+    "string": "The <n>IDB Lab</n>, the <n>Paulson Institute</n>, the <n>World Wildlife Fund</n>, the <n>Spanish Cooperation Fund</n>, the <n>Basque Center for Climate Change</n> and <n>Google</n> are joining forces to launch this platform which can later be deployed across all Amazonian countries."
   },
   "jwimQJ": {
     "string": "Ok"
@@ -1248,6 +1332,12 @@
   "lfx6Nc": {
     "string": "Ticket size"
   },
+  "lkNGwt": {
+    "string": "ARIES estimate - in a scientifically-informed and accurate manner - the impact of each project in each one of our <n>four dimensions</n> of interest based on existing knowledge and data. These impacts are calculated on a scale from <n>0 (low impact) to 10 (high impact)</n>."
+  },
+  "m1w8ew": {
+    "string": "30 million"
+  },
   "m3Dnav": {
     "string": "Investment info"
   },
@@ -1256,6 +1346,9 @@
   },
   "mMReor": {
     "string": "Go to project page"
+  },
+  "mQk71L": {
+    "string": "Why invest in the Amazon"
   },
   "mbTJWV": {
     "string": "Biodiversity"
@@ -1268,6 +1361,9 @@
   },
   "nBHzO6": {
     "string": "Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
+  },
+  "nIbokM": {
+    "string": "Contact access"
   },
   "nYrKWp": {
     "string": "Edit profile"
@@ -1283,6 +1379,9 @@
   },
   "o+Vt3t": {
     "string": "Partnership between:"
+  },
+  "o0+PZ+": {
+    "string": "Start having the greatest impact"
   },
   "oAIvoH": {
     "string": "Please, enter valid email."
@@ -1335,6 +1434,9 @@
   "puek63": {
     "string": "This information will help us understand what is the impact you want to have."
   },
+  "q6rG+e": {
+    "string": "See projects"
+  },
   "qFZuSl": {
     "string": "My projects"
   },
@@ -1346,6 +1448,9 @@
   },
   "qZPjW2": {
     "string": "What is a verification badge?"
+  },
+  "qay06p": {
+    "string": "Save your favorites by clicking on the 'Heart'. You can save projects, project developers or even other investors and never loose track of them."
   },
   "qcsPS9": {
     "string": "{duration} months"
@@ -1397,6 +1502,9 @@
   },
   "saBdZ2": {
     "string": "select option"
+  },
+  "sbodFR": {
+    "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure <n>20 million hectares</n> of sustainable landscape over the next 20 years, through investments in <n>conservation and sustainable development</n>."
   },
   "stKKFV": {
     "string": "What type of projects are you prioritizing?"
@@ -1520,6 +1628,9 @@
   },
   "xQ4XkB": {
     "string": "Only by understanding nature’s contributions to people and the economy can we push for policy-making where nature counts."
+  },
+  "xUR9nd": {
+    "string": "people live in the Amazon region."
   },
   "xXbJso": {
     "string": "Sign out"
