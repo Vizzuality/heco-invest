@@ -1,6 +1,7 @@
 <%= simple_form_for [:backoffice, investor] do |f| %>
   <%= f.error_notification %>
   <%= hidden_field_tag :content_lang, params[:content_lang] %>
+  <%= hidden_field_tag :section, params[:section] %>
 
   <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
     <%= t(".general") %>

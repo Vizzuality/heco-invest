@@ -1,5 +1,5 @@
 locals {
-  domain = var.subdomain == "" ? var.domain : "${var.subdomain}.${var.domain}"
+  domain          = var.subdomain == "" ? var.domain : "${var.subdomain}.${var.domain}"
   redirect_domain = var.subdomain == "" ? var.redirect_domain : "${var.subdomain}.${var.redirect_domain}"
 }
 
@@ -227,7 +227,7 @@ module "backend_cloudrun" {
     },
     {
       name  = "MAILER_DEFAULT_FROM"
-      value = "agnieszka.figiel@vizzuality.com"
+      value = var.from_email_address
     },
     {
       name  = "GCP_PROJECT_ID"
@@ -338,7 +338,7 @@ module "jobs_cloudrun" {
     },
     {
       name  = "MAILER_DEFAULT_FROM"
-      value = "agnieszka.figiel@vizzuality.com"
+      value = var.from_email_address
     },
     {
       name  = "GCP_PROJECT_ID"
@@ -397,18 +397,20 @@ module "purge_users_cron" {
 }
 
 module "frontend_uptime_check" {
-  source = "../uptime-check"
-  name   = "${var.project_name} Frontend"
-  host   = var.domain
-  email  = var.uptime_alert_email
+  source     = "../uptime-check"
+  name       = "${var.project_name} Frontend"
+  host       = var.domain
+  email      = var.uptime_alert_email
+  project_id = var.gcp_project_id
 }
 
 module "api_uptime_check" {
-  source = "../uptime-check"
-  name   = "${var.project_name} API"
-  host   = var.domain
-  path   = "/backend/health_check"
-  email  = var.uptime_alert_email
+  source     = "../uptime-check"
+  name       = "${var.project_name} API"
+  host       = var.domain
+  path       = "/backend/health_check"
+  email      = var.uptime_alert_email
+  project_id = var.gcp_project_id
 }
 
 module "load_balancer" {

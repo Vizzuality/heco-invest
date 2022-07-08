@@ -1,5 +1,6 @@
 <%= simple_form_for [:backoffice, admin] do |f| %>
   <%= f.error_notification %>
+  <%= hidden_field_tag :section, params[:section] %>
 
   <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
     <%= t(".information") %>

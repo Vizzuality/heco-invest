@@ -1,5 +1,6 @@
 <%= simple_form_for [:backoffice, form_object] do |f| %>
   <%= f.error_notification %>
+  <%= hidden_field_tag :section, params[:section] %>
 
   <h2 class="mb-2 text-gray-900 font-semibold">
     <%= t("backoffice.account.approval_status") %>
