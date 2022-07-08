@@ -56,8 +56,8 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
           <div className="row-start-3 mt-8 lg:mt-0 lg:row-start-2">
             <p className="mb-6">
               <FormattedMessage
-                defaultMessage=" HeCo Invest supports the Herencia Colombia program in its efforts to stimulate and channel funding for high impact projects in the Amazon region of Colombia."
-                id="VRg5iy"
+                defaultMessage="HeCo Invest supports the Herencia Colombia program in its efforts to stimulate and channel funding for high impact projects in the Amazon region of Colombia."
+                id="4+4OY6"
               />
             </p>
             <p className="mb-6">
@@ -77,25 +77,26 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             </p>
           </div>
           <div className="row-start-2 mt-8 lg:mt-0 lg:row-start-1 lg:row-span-2">
-            {isDesktop ? (
+            <div className="hidden xl:block">
               <Image
-                src="/images/about-intro.png"
+                src="/images/about/about-intro.png"
                 height={695}
                 width={772}
                 layout="responsive"
                 alt=""
                 priority
               />
-            ) : (
+            </div>
+            <div className="block xl:hidden">
               <Image
-                src="/images/about-intro-mobile.png"
+                src="/images/about/about-intro-mobile.png"
                 height={591}
                 width={514}
                 layout="responsive"
                 alt=""
                 priority
               />
-            )}
+            </div>
           </div>
         </div>
       </LayoutContainer>
@@ -104,7 +105,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
         <div className="flex flex-col lg:py-14 lg:grid lg:grid-cols-2">
           <div className="overflow-hidden h-52 lg:h-auto lg:-mt-28 rounded-t-2xl lg:rounded-3xl lg:rounded-br-none">
             <Image
-              src="/images/about-heco.jpg"
+              src="/images/about/about-heco.jpg"
               height={691}
               width={724}
               objectFit="cover"
@@ -136,8 +137,9 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             </p>
             <p className="mt-4">
               <FormattedMessage
-                defaultMessage="HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the long-term sustainability of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
-                id="4bznpU"
+                defaultMessage="HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the <n>long-term sustainability</n> of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
+                id="ikyoJL"
+                values={{ n: (chunk: string) => <span className="font-semibold">{chunk}</span> }}
               />
             </p>
           </div>
@@ -193,6 +195,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 src="/images/logos/wwf.png"
                 width={348}
                 height={124}
+                objectFit="contain"
                 alt={intl.formatMessage({ defaultMessage: 'WWF', id: 'cT6b2H' })}
               />
             </div>
@@ -241,19 +244,19 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
           <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
             <div className="text-center">
               <Image
-                src="/images/about-google.png"
+                src="/images/logos/about-google.png"
                 width={348}
                 height={124}
                 alt={intl.formatMessage({
-                  defaultMessage: 'Basque Centre for Climate Change',
-                  id: '6ukMW9',
+                  defaultMessage: 'Google Cloud',
+                  id: 'QlBsxM',
                 })}
               />
             </div>
             <p className="hidden mt-3 md:block sm:mt-6">
               <FormattedMessage
-                defaultMessage="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eros fames ut quam turpis sit proin euismod nisi. Sed sed quis lectus adipiscing et tempus tincidunt nec. Morbi neque sollicitudin sit a adipiscing scelerisque. Etiam lacus eget nisl amet cursus. Habitasse tortor sagittis mauris, cursus imperdiet elit sit. Sit nibh cras pulvinar integer tempus, id. Pulvinar arcu feugiat adipiscing ultricies enim eu. Magna consectetur tellus tellus arcu. Augue ut al."
-                id="XVNtgB"
+                defaultMessage="Google Cloud accelerates every organization’s ability to digitally transform its business. We deliver enterprise-grade solutions that leverage Google’s cutting-edge technology – all on the cleanest cloud in the industry. Customers in more than 200 countries and territories turn to Google Cloud as their trusted partner to enable growth and solve their most critical business problems."
+                id="Ob7+Ly"
               />
             </p>
           </div>
@@ -269,7 +272,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 id="uIp9ro"
               />
             </h2>
-            <p className="mt-6 text-base sm:text-lg md:text-xl">
+            <p className="mt-6 text-base font-semibold lg:font-normal sm:text-lg md:text-xl">
               <FormattedMessage
                 defaultMessage="The climate crisis is where short-term thinking and long-term consequences collide. How to think long-term in a short-term world?"
                 id="VR21hO"
@@ -303,15 +306,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             <FormattedMessage defaultMessage="About the impact" id="DQoGRx" />
           </h2>
           <div className="m-auto lg:row-start-1 lg:col-start-2 lg:row-span-2">
-            <Image
-              src="/images/about-impact-lg.png"
-              width={597}
-              height={600}
-              alt={intl.formatMessage({
-                defaultMessage: 'Basque Centre for Climate Change',
-                id: '6ukMW9',
-              })}
-            />
+            <Image src="/images/about/about-impact-lg.png" width={597} height={600} alt="" />
           </div>
           <p className="md:mt-8 lg:mt-0 lg:row-start-2 lg:col-start-1">
             <FormattedMessage
@@ -351,8 +346,8 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               </p>
             </div>
             <div className="justify-center lg:flex lg:gap-6 xl:gap-8">
-              <div className="flex items-center justify-center mt-8 mb-6 overflow-hidden rounded-4xl lg:rounded-full lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 opacity-80">
-                <div className="absolute flex flex-col items-center justify-center px-10 text-center text-white z-1 lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 lg:px-2 lg:ml-0">
+              <div className="flex items-center justify-center mt-8 mb-6 overflow-hidden rounded-4xl lg:rounded-full lg:w-60 2xl:w-64 opacity-80">
+                <div className="absolute flex flex-col items-center justify-center px-10 text-center text-white z-1 lg:w-60 2xl:w-64 lg:px-2 lg:ml-0">
                   <h3 className="mb-1 text-lg font-semibold">
                     <FormattedMessage defaultMessage="Biodiversity" id="mbTJWV" />
                   </h3>
@@ -376,8 +371,8 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                   />
                 </div>
               </div>
-              <div className="flex items-center justify-center mt-8 mb-6 overflow-hidden rounded-4xl lg:rounded-full lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 opacity-80">
-                <div className="absolute flex flex-col items-center justify-center px-10 text-center text-white z-1 lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 lg:px-2 lg:ml-0">
+              <div className="flex items-center justify-center mt-8 mb-6 overflow-hidden rounded-4xl lg:rounded-full lg:w-60 2xl:w-64 opacity-80">
+                <div className="absolute flex flex-col items-center justify-center px-10 text-center text-white z-1 lg:w-60 2xl:w-64 lg:px-2 lg:ml-0">
                   <h3 className="mb-1 text-lg font-semibold">
                     <FormattedMessage defaultMessage="Climate" id="MuOp0t" />
                   </h3>
@@ -401,8 +396,8 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                   />
                 </div>
               </div>
-              <div className="flex items-center justify-center mt-8 mb-6 overflow-hidden rounded-4xl lg:rounded-full lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 opacity-80">
-                <div className="absolute flex flex-col items-center justify-center px-10 text-center text-white z-1 lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 lg:px-2 lg:ml-0">
+              <div className="flex items-center justify-center mt-8 mb-6 overflow-hidden rounded-4xl lg:rounded-full lg:w-60 2xl:w-64 opacity-80">
+                <div className="absolute flex flex-col items-center justify-center px-10 text-center text-white z-1 lg:w-60 2xl:w-64 lg:px-2 lg:ml-0">
                   <h3 className="mb-1 text-lg font-semibold">
                     <FormattedMessage defaultMessage="Community" id="4CrCbD" />
                   </h3>
@@ -423,8 +418,8 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                   />
                 </div>
               </div>
-              <div className="flex items-center justify-center mt-8 mb-6 overflow-hidden rounded-4xl lg:rounded-full lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 opacity-80">
-                <div className="absolute flex flex-col items-center justify-center px-10 text-center text-white z-1 lg:w-60 lg:h-60 2xl:w-64 2xl:h-64 lg:px-2 lg:ml-0">
+              <div className="flex items-center justify-center mt-8 mb-6 overflow-hidden rounded-4xl lg:rounded-full lg:w-60 2xl:w-64 opacity-80">
+                <div className="absolute flex flex-col items-center justify-center px-10 text-center text-white z-1 lg:w-60 2xl:w-64 lg:px-2 lg:ml-0">
                   <h3 className="mb-1 text-lg font-semibold">
                     <FormattedMessage defaultMessage="Water" id="t7YvMF" />
                   </h3>
@@ -455,14 +450,14 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
 
       <div className="bg-green-dark">
         <LayoutContainer className="py-10 text-white lg:py-18 lg:mt-0">
-          <p className="max-w-md mx-auto text-base sm:max-w-xl lg:max-w-3xl xl:max-w-5xl sm:text-lg md:text-xl">
+          <p className="max-w-md mx-auto text-base text-center sm:max-w-xl lg:max-w-3xl xl:max-w-5xl sm:text-lg md:text-xl">
             <FormattedMessage
               defaultMessage="These investments will support the country’s ambitious climate, biodiversity, and sustainable development goals. They will create resilient landscapes that serve as spaces for inclusion and peacebuilding, with opportunities for improved human well-being and development."
               id="cvyJC+"
             />
           </p>
           <Button
-            onClick={() => push(Paths.Discover)}
+            to={Paths.Discover}
             theme="secondary-white"
             className="justify-center w-full m-auto mt-8 lg:w-52"
           >
@@ -477,7 +472,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
 AboutPage.layout = {
   props: {
     footerProps: {
-      className: 'mt-0 sm:mt-24 lg:mt-0',
+      className: 'mt-0',
     },
   },
 };
