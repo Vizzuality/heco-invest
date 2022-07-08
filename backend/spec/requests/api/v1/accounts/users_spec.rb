@@ -119,10 +119,16 @@ RSpec.describe "API V1 Account Users", type: :request do
             sign_in account_owner
           end
 
-          run_test!
-
-          it "user is deleted" do
+          it "user is deleted" do |example|
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
             expect { account_user.reload }.to raise_error(ActiveRecord::RecordNotFound)
+          end
+
+          it "send email" do |example|
+            expect {
+              submit_request example.metadata
+            }.to have_enqueued_mail(UserMailer, :destroyed).with(account_user.email, account_user.full_name)
           end
         end
 
@@ -132,10 +138,16 @@ RSpec.describe "API V1 Account Users", type: :request do
             sign_in account_user
           end
 
-          run_test!
-
-          it "user is deleted" do
+          it "user is deleted" do |example|
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
             expect { account_user.reload }.to raise_error(ActiveRecord::RecordNotFound)
+          end
+
+          it "send email" do |example|
+            expect {
+              submit_request example.metadata
+            }.to have_enqueued_mail(UserMailer, :destroyed).with(account_user.email, account_user.full_name)
           end
         end
       end

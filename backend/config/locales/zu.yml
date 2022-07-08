@@ -214,6 +214,9 @@ zu:
     rejected:
       subject: Your account was rejected!
       content_html: We would like to inform you that your account at HeCo platform was rejected. One of our platform administrators should reach you shortly, but feel free to contact us at %{contact_url}.
+    destroyed:
+      subject: Your account has been removed!
+      content: We would like to inform you that your account at HeCo platform was removed.
   admin_mailer:
     greetings: Dear %{full_name},
     farewell_html: Best Regards,<br />Your HeCo Team
