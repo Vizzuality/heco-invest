@@ -127,14 +127,14 @@
       }
     },
     {
-      "id": "water-capacity",
+      "id": "water-capacity-or-efficiency",
       "type": "impact_area",
       "attributes": {
         "name": "Water capacity or efficiency"
       }
     },
     {
-      "id": "water-efficiency",
+      "id": "hydrometerological-risk-reduction",
       "type": "impact_area",
       "attributes": {
         "name": "Hydrometerological risk reduction"
@@ -333,231 +333,28 @@
       }
     },
     {
-      "id": "academic",
+      "id": "basins_category",
       "type": "location_type",
       "attributes": {
         "name": "Basins Category"
       }
     },
     {
-      "id": "business-cooperative",
+      "id": "basin",
       "type": "location_type",
       "attributes": {
         "name": "Basin"
       }
     },
     {
-      "id": "business-large-enterprise-corporation",
-      "type": "project_developer_type",
-      "attributes": {
-        "name": "Academic"
-      }
-    },
-    {
-      "id": "business-sme-and-msme",
-      "type": "project_developer_type",
-      "attributes": {
-        "name": "Business - Cooperative"
-      }
-    },
-    {
-      "id": "business-start-up-entrepreneur",
-      "type": "project_developer_type",
-      "attributes": {
-        "name": "Business - Large enterprise corporation"
-      }
-    },
-    {
-      "id": "business-trade-or-business-association",
-      "type": "project_developer_type",
-      "attributes": {
-        "name": "Business - SME and MSME"
-      }
-    },
-    {
-      "id": "government-national",
-      "type": "project_developer_type",
-      "attributes": {
-        "name": "Business - Start-up entrepreneur"
-      }
-    },
-    {
-      "id": "government-sub-national",
-      "type": "project_developer_type",
-      "attributes": {
-        "name": "Business - Trade or business association"
-      }
-    },
-    {
-      "id": "public-private-organization-or-program",
-      "type": "project_developer_type",
-      "attributes": {
-        "name": "Government - National"
-      }
-    },
-    {
-      "id": "ngo",
-      "type": "project_developer_type",
-      "attributes": {
-        "name": "Government - Sub-national"
-      }
-    },
-    {
-      "id": "iplc-organization",
-      "type": "project_developer_type",
-      "attributes": {
-        "name": "Public-private organization or program"
-      }
-    },
-    {
-      "id": "incipient",
-      "type": "project_developer_type",
-      "attributes": {
-        "name": "NGO"
-      }
-    },
-    {
-      "id": "consolidaton",
-      "type": "project_developer_type",
-      "attributes": {
-        "name": "IPLC organization"
-      }
-    },
-    {
-      "id": "scaling-up",
-      "type": "project_development_stage",
-      "attributes": {
-        "name": "Incipient",
-        "description": "idea to be developed from scratch"
-      }
-    },
-    {
-      "id": "entrepreneurs-and-innovators-startups",
-      "type": "project_development_stage",
-      "attributes": {
-        "name": "Consolidaton",
-        "description": "project or solution already in implementation that seeks to be strengthened and consolidated"
-      }
-    },
-    {
-      "id": "small-and-medium-businesses",
-      "type": "project_development_stage",
-      "attributes": {
-        "name": "Scaling up",
-        "description": "consolidated, demonstrated project or solution that seeks to be scaled or replicated in other contexts and/or geographies"
-      }
-    },
-    {
-      "id": "urban-populations",
-      "type": "project_target_group",
-      "attributes": {
-        "name": "Enterpreneurs and innovators - startups"
-      }
-    },
-    {
-      "id": "indigenous-peoples",
-      "type": "project_target_group",
-      "attributes": {
-        "name": "Small and medium businesses"
-      }
-    },
-    {
-      "id": "afro-desendant-peoples",
-      "type": "project_target_group",
-      "attributes": {
-        "name": "Urban populations"
-      }
-    },
-    {
-      "id": "peasants-and-traditional-inhabitants",
-      "type": "project_target_group",
-      "attributes": {
-        "name": "Indigenous peoples"
-      }
-    },
-    {
-      "id": "migrants-and-displaced-groups",
-      "type": "project_target_group",
-      "attributes": {
-        "name": "Afro-desendant peoples"
-      }
-    },
-    {
-      "id": "groups-with-disabilities",
-      "type": "project_target_group",
-      "attributes": {
-        "name": "Peasants and traditional inhabitants"
-      }
-    },
-    {
-      "id": "lgtbq-plus-groups",
-      "type": "project_target_group",
-      "attributes": {
-        "name": "Migrants and displaced groups"
-      }
-    },
-    {
-      "id": "other",
-      "type": "project_target_group",
-      "attributes": {
-        "name": "Groups with disabilities"
-      }
-    },
-    {
-      "id": "small-grants",
-      "type": "project_target_group",
-      "attributes": {
-        "name": "LGTBQ+ groups"
-      }
-    },
-    {
-      "id": "prototyping",
-      "type": "project_target_group",
-      "attributes": {
-        "name": "Other"
-      }
-    },
-    {
-      "id": "validation",
-      "type": "ticket_size",
-      "attributes": {
-        "name": "Small Grants",
-        "description": "<US$25,000"
-      }
-    },
-    {
-      "id": "scaling",
-      "type": "ticket_size",
-      "attributes": {
-        "name": "Prototyping",
-        "description": "US$25,000 - 150,000"
-      }
-    },
-    {
       "id": "amazon-heart",
-      "type": "ticket_size",
-      "attributes": {
-        "name": "Validation",
-        "description": "US$150,000 - 750,000"
-      }
-    },
-    {
-      "id": "amazonian-piedmont-massif",
-      "type": "ticket_size",
-      "attributes": {
-        "name": "Scaling",
-        "description": ">US$750,000"
-      }
-    },
-    {
-      "id": "orinoquia-transition",
       "type": "mosaic",
       "attributes": {
         "name": "Amazon Heart"
       }
     },
     {
-      "id": "orinoquia",
+      "id": "amazonian-piedmont-massif",
       "type": "mosaic",
       "attributes": {
         "name": "Amazonian Piedmont Massif"
@@ -575,6 +372,191 @@
       "type": "mosaic",
       "attributes": {
         "name": "Orinoquía"
+      }
+    },
+    {
+      "id": "academic",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Academic"
+      }
+    },
+    {
+      "id": "business-cooperative",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Cooperative"
+      }
+    },
+    {
+      "id": "business-large-enterprise-corporation",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Large enterprise corporation"
+      }
+    },
+    {
+      "id": "business-sme-and-msme",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - SME and MSME"
+      }
+    },
+    {
+      "id": "business-start-up-entrepreneur",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Start-up entrepreneur"
+      }
+    },
+    {
+      "id": "business-trade-or-business-association",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Trade or business association"
+      }
+    },
+    {
+      "id": "government-national",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Government - National"
+      }
+    },
+    {
+      "id": "government-sub-national",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Government - Sub-national"
+      }
+    },
+    {
+      "id": "public-private-organization-or-program",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Public-private organization or program"
+      }
+    },
+    {
+      "id": "ngo",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "NGO"
+      }
+    },
+    {
+      "id": "iplc-organization",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "IPLC organization"
+      }
+    },
+    {
+      "id": "incipient",
+      "type": "project_development_stage",
+      "attributes": {
+        "name": "Incipient",
+        "description": "idea to be developed from scratch"
+      }
+    },
+    {
+      "id": "consolidaton",
+      "type": "project_development_stage",
+      "attributes": {
+        "name": "Consolidaton",
+        "description": "project or solution already in implementation that seeks to be strengthened and consolidated"
+      }
+    },
+    {
+      "id": "scaling-up",
+      "type": "project_development_stage",
+      "attributes": {
+        "name": "Scaling up",
+        "description": "consolidated, demonstrated project or solution that seeks to be scaled or replicated in other contexts and/or geographies"
+      }
+    },
+    {
+      "id": "draft",
+      "type": "project_status",
+      "attributes": {
+        "name": "Draft"
+      }
+    },
+    {
+      "id": "published",
+      "type": "project_status",
+      "attributes": {
+        "name": "Published"
+      }
+    },
+    {
+      "id": "entrepreneurs-and-innovators-startups",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Enterpreneurs and innovators - startups"
+      }
+    },
+    {
+      "id": "small-and-medium-businesses",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Small and medium businesses"
+      }
+    },
+    {
+      "id": "urban-populations",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Urban populations"
+      }
+    },
+    {
+      "id": "indigenous-peoples",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Indigenous peoples"
+      }
+    },
+    {
+      "id": "afro-desendant-peoples",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Afro-desendant peoples"
+      }
+    },
+    {
+      "id": "peasants-and-traditional-inhabitants",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Peasants and traditional inhabitants"
+      }
+    },
+    {
+      "id": "migrants-and-displaced-groups",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Migrants and displaced groups"
+      }
+    },
+    {
+      "id": "groups-with-disabilities",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Groups with disabilities"
+      }
+    },
+    {
+      "id": "lgtbq-plus-groups",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "LGTBQ+ groups"
+      }
+    },
+    {
+      "id": "other",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Other"
       }
     },
     {
@@ -697,24 +679,35 @@
       }
     },
     {
-      "id": "draft",
-      "type": "project_status",
+      "id": "small-grants",
+      "type": "ticket_size",
       "attributes": {
-        "name": "Draft"
+        "name": "Small Grants",
+        "description": "<US$25,000"
       }
     },
     {
-      "id": "published",
-      "type": "project_status",
+      "id": "prototyping",
+      "type": "ticket_size",
       "attributes": {
-        "name": "Published"
+        "name": "Prototyping",
+        "description": "US$25,000 - 150,000"
       }
     },
     {
-      "id": "closed",
-      "type": "project_status",
+      "id": "validation",
+      "type": "ticket_size",
       "attributes": {
-        "name": "Closed"
+        "name": "Validation",
+        "description": "US$150,000 - 750,000"
+      }
+    },
+    {
+      "id": "scaling",
+      "type": "ticket_size",
+      "attributes": {
+        "name": "Scaling",
+        "description": ">US$750,000"
       }
     }
   ]

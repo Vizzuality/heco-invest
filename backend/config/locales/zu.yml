@@ -139,6 +139,9 @@ zu:
       title: Change your password
       button: Change my password
     admins:
+      information: User information
+      password: Password
+      delete: Delete admin
       index:
         new: Add administrator
         last_sign_in_at: Last login
@@ -461,5 +464,3 @@ zu:
         name: Draft
       published:
         name: Published
-      closed:
-        name: Closed

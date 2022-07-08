@@ -1,6 +1,7 @@
 <%= simple_form_for [:backoffice, project], url: backoffice_project_path(project.id) do |f| %>
   <%= f.error_notification %>
   <%= hidden_field_tag :content_lang, params[:content_lang] %>
+  <%= hidden_field_tag :section, params[:section] %>
 
   <%= localized_input f, :name, content_language, label: t("simple_form.labels.project.name"), as: :string %>
   <%= f.input :project_images, label: t("simple_form.labels.project.project_images"), as: :file, input_html: { multiple: true, accept: "image/*" } %>
