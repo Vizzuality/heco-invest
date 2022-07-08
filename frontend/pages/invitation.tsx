@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
+import { useQueryClient } from 'react-query';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,9 +18,10 @@ import { loadI18nMessages } from 'helpers/i18n';
 import Alert from 'components/alert';
 import Button from 'components/button';
 import Loading from 'components/loading';
-import { Paths, UserRoles } from 'enums';
+import { Paths, Queries, UserRoles } from 'enums';
 import { PageComponent } from 'types';
 
+import { useSignOut } from 'services/authentication/authService';
 import { useAcceptInvitation, useInvitedUser } from 'services/invitation/invitationService';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
@@ -42,30 +44,40 @@ const Invitation: PageComponent<InvitationProps> = () => {
   } = useInvitedUser(query.invitation_token as string);
   const { user, isError: userError, isLoading: userLoading } = useMe();
   const acceptInvitation = useAcceptInvitation();
+  const signOut = useSignOut();
+  const queryClient = useQueryClient();
 
   useEffect(() => {
-    if (
-      (!!invitedUser && !!user && user.email !== invitedUser.email) ||
-      (!!user && user?.role !== UserRoles.Light)
-    ) {
+    if (!!invitedUser && !!user && user.email !== invitedUser.email) {
+      // If the invited user and the sign-in user are different, sign-out the current user and continue with the invitation flow.
+      signOut.mutate({}, { onSuccess: () => queryClient.invalidateQueries(Queries.User) });
+    } else if (!!user && user?.role !== UserRoles.Light) {
+      // If the user and the invites user have the same email but the role is not ligth
       replace(Paths.Dashboard);
     } else if (!!invitedUser && userError) {
-      // If the user has an user account but is not signed in
+      // The user is not signed in
       replace({
-        pathname: invitedUser.requires_registration ? Paths.SignUp : Paths.SignIn,
+        pathname: invitedUser.requires_registration
+          ? // The invited user needs sign-up before accept invitation
+            Paths.SignUp
+          : // If the user has a ligth user account but is not signed in
+            Paths.SignIn,
         query: { invitation_token: query.invitation_token },
       });
-      return null;
     }
-  }, [invitedUser, query.invitation_token, replace, user, userError]);
+  }, [invitedUser, query.invitation_token, queryClient, replace, signOut, user, userError]);
 
   const handleAccept = () => {
     acceptInvitation.mutate(query.invitation_token as string, {
-      onSuccess: () => push(Paths.Dashboard),
+      onSuccess: async () => {
+        queryClient.invalidateQueries(Queries.User);
+        replace(Paths.Dashboard);
+      },
     });
   };
 
-  return !!user ? (
+  // The page only loads if the user is signed in
+  return (
     <div className="flex flex-col items-center w-full min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-176px)]">
       <div className="flex items-center justify-center rounded-full w-44 h-44 bg-background-middle">
         <Image
@@ -75,7 +87,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
           alt={formatMessage({ defaultMessage: 'Invitation mail', id: 'a+vAPa' })}
         />
       </div>
-      {invitedUserLoading || userLoading ? (
+      {invitedUserLoading || userLoading || userError ? (
         <div className="flex flex-col items-center justify-center mt-20">
           <Loading visible iconClassName="w-16 h-16" />
         </div>
@@ -129,7 +141,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
         </div>
       )}
     </div>
-  ) : null;
+  );
 };
 
 Invitation.layout = {};

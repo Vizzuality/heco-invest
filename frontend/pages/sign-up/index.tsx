@@ -2,6 +2,7 @@ import { useCallback, useEffect } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { useQueryClient } from 'react-query';
 
 import { useRouter } from 'next/router';
 
@@ -18,7 +19,7 @@ import Checkbox from 'components/forms/checkbox';
 import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Loading from 'components/loading';
-import { Paths, UserRoles } from 'enums';
+import { Paths, Queries, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
 import { SignupDto, SignupFormI } from 'types/user';
@@ -44,7 +45,7 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
   const { invitedUser } = useInvitedUser(query.invitation_token as string);
   const acceptInvitation = useAcceptInvitation();
   const resolver = useSignupResolver();
-  const { user, refetch: refetchUser } = useMe();
+  const { user } = useMe();
   const {
     register,
     formState: { errors },
@@ -54,6 +55,7 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
     resolver,
     shouldUseNativeValidation: true,
   });
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     if (!!user) {
@@ -69,35 +71,28 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
         replace(Paths.Dashboard);
       }
     }
-  }, [invitedUser, replace, user]);
-
-  useEffect(() => {
     if (!!invitedUser) {
       setValue('email', invitedUser.email);
     }
-  }, [invitedUser, setValue]);
+  }, [invitedUser, replace, setValue, user]);
 
   const handleSignUp = useCallback(
     (data: SignupDto) => {
-      if (!!invitedUser) {
-        data.invitation_token = query.invitation_token as string;
-      }
       signUp.mutate(
         { ...data, invitation_token: query.invitation_token as string },
         {
           onSuccess: () => {
             if (!!invitedUser) {
-              acceptInvitation.mutate(query.invitation_token as string, {
-                onSuccess: () => refetchUser(),
-              });
+              acceptInvitation.mutate(query.invitation_token as string);
             } else {
               replace(Paths.AccountType);
             }
+            queryClient.invalidateQueries([Queries.User]);
           },
         }
       );
     },
-    [invitedUser, signUp, query.invitation_token, acceptInvitation, refetchUser, replace]
+    [invitedUser, signUp, query.invitation_token, queryClient, acceptInvitation, replace]
   );
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {

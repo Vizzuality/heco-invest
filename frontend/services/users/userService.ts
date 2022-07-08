@@ -1,7 +1,8 @@
-import { useMutation, UseMutationResult } from 'react-query';
+import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
 
 import { AxiosResponse, AxiosError } from 'axios';
 
+import { Queries } from 'enums';
 import { ResetPassword } from 'types/sign-in';
 import { SignupDto, User } from 'types/user';
 
@@ -18,6 +19,8 @@ export function useSignup(): UseMutationResult<
   const signup = async (dto: SignupDto): Promise<AxiosResponse<SignupDto>> => {
     return await API.post('/api/v1/user', dto);
   };
+  const queryClient = useQueryClient();
+  queryClient.invalidateQueries(Queries.User);
   return useMutation(signup);
 }
 
