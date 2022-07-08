@@ -221,6 +221,15 @@ zu:
       subject: Your HeCo Admin account was created!
       content_html: "To login for first time, please %{reset_password_link}."
       reset_password_link: setup your new password
+  project_developer_mailer:
+    greetings: Dear %{full_name},
+    farewell_html: Best Regards,<br />Your HeCo Team
+    added_to_project:
+      subject: You have been added as new collaborator.
+      content: We would like to inform you that you have been added as new collaborator to project %{project_name}.
+    removed_from_project:
+      subject: Your collaboration has ended.
+      content: We would like to inform you that your collaboration with project %{project_name} has ended.
   enums:
     review_status:
       approved:

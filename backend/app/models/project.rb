@@ -12,10 +12,10 @@ class Project < ApplicationRecord
   belongs_to :department, class_name: "Location"
   belongs_to :priority_landscape, class_name: "Location", optional: true
 
-  has_and_belongs_to_many :involved_project_developers, join_table: "project_involvements", class_name: "ProjectDeveloper"
-
   has_many :project_images, dependent: :destroy
   has_many :favourite_projects, dependent: :destroy
+  has_many :project_involvements, dependent: :destroy
+  has_many :involved_project_developers, through: :project_involvements, source: :project_developer
 
   translates :name,
     :description,
