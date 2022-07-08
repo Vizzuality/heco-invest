@@ -70,7 +70,7 @@ const ForgotPassword: PageComponent<ForgotPasswordPageProps, AuthPageLayoutProps
       </p>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {resetPassword.isError && (
-          <Alert className="mb-4.5" withLayoutContainer>
+          <Alert type="warning" className="mb-4.5" withLayoutContainer>
             {Array.isArray(resetPassword.error.message)
               ? resetPassword.error.message[0].title
               : resetPassword.error.message}
