@@ -217,6 +217,9 @@ zu:
     ownership_transferred:
       subject: Account ownership changed
       content: Congratulations! You are now owner of account %{name}.
+    destroyed:
+      subject: Your account has been removed!
+      content: We would like to inform you that your account at HeCo platform was removed.
   admin_mailer:
     greetings: Dear %{full_name},
     farewell_html: Best Regards,<br />Your HeCo Team

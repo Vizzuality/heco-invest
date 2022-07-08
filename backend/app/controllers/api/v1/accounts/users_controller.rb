@@ -18,6 +18,7 @@ module API
           # @user cannot be account owner AND
           # either current_user == @user OR current_user is account owner in @user's account
           @user.destroy!
+          UserMailer.destroyed(@user.email, @user.full_name).deliver_later
           head :ok
         end
 
