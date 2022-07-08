@@ -13,7 +13,7 @@ resource "google_monitoring_uptime_check_config" "https" {
   monitored_resource {
     type   = "uptime_url"
     labels = {
-      service = var.name
+      project_id = var.project_id
       host    = var.host
     }
   }

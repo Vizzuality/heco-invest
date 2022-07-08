@@ -121,3 +121,8 @@ variable "uptime_alert_email" {
   type = string
   description = "Email address to which uptime alerts should be sent"
 }
+
+variable "from_email_address" {
+  type = string
+  description = "Email address from which to send emails"
+}

@@ -19,6 +19,8 @@
       <th>
         <%= sort_link @q, :last_sign_in_at, t("backoffice.admins.index.last_sign_in_at") %>
       </th>
+      <th>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -28,6 +30,7 @@
         <td><%= admin.email %></td>
         <td><%= I18n.l admin.created_at.to_date %></td>
         <td><%= I18n.l admin.last_sign_in_at&.to_date, default: '' %></td>
+        <td><%= link_to t("backoffice.common.edit"), edit_backoffice_admin_path(admin.id), class: "link-button" %></td>
       </tr>
     <% end %>
   </tbody>
