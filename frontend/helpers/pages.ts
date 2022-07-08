@@ -9,10 +9,10 @@ import { AxiosError } from 'axios';
 
 import { EnumTypes, Languages, Paths } from 'enums';
 import languages from 'locales.config.json';
+import { Enum } from 'types/enums';
+import { Project } from 'types/project';
 
 import { ErrorResponse } from 'services/types';
-
-import { theme } from 'tailwind.config';
 
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
 export function getServiceErrors<FormValues>(
@@ -158,7 +158,19 @@ export const useLanguageNames = () => {
   return langs;
 };
 
-export const getCategoryColor = (categoryId: string): string => {
-  const category = Object.keys(theme.colors.category)?.find((key) => categoryId.includes(key));
-  return category;
+/**  Function to get the mosaics list with the number of related projects, using a mockup relation between mosaic ids and their corresponding location ids */
+export const getMosaicsWithProjectsNumber = (mosaicEnums: Enum[], projects: Project[]) => {
+  const mosaicLocations = {
+    'amazon-heart': '6f827753-3c27-4343-bc39-0c81a1875488',
+    'amazonian-piedmont-massif': '35490999-6962-4825-8ca4-1862c1a5e45d',
+    'orinoquia-transition': '135e49c7-0d29-455f-8700-33c573772b41',
+    orinoquia: 'b8eba9d3-1618-401c-b85c-c287941f6fe9',
+  };
+
+  return mosaicEnums.map((mosaic) => {
+    const projectsQuantity =
+      projects.filter((project) => project.priority_landscape?.id === mosaicLocations[mosaic.id])
+        ?.length || 0;
+    return { ...mosaic, projectsQuantity };
+  });
 };

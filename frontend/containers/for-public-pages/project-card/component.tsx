@@ -21,11 +21,9 @@ export const ProjectCard: FC<ProjectCardProps> = ({
   projectsQuantity,
   category,
 }) => {
-  const { push } = useRouter();
-
   return (
     <div
-      className="w-[80vw] h-full md:w-auto row-start-2 md:row-start-auto lg:max-w-full flex flex-col justify-between p-4 transition-all duration-500 bg-white rounded-lg shadow-sm group drop-shadow-none hover:drop-shadow-lg ease min-h-[290px]"
+      className="w-[75vw] sm:w-[60vw] h-full md:w-auto m-2 row-start-2 md:row-start-auto lg:max-w-full flex flex-col justify-between p-4 transition-all duration-500 bg-white rounded-lg shadow-sm group drop-shadow-none hover:drop-shadow-lg ease min-h-[290px]"
       key={id}
     >
       <div className="flex justify-between mb-2">
@@ -46,17 +44,9 @@ export const ProjectCard: FC<ProjectCardProps> = ({
             values={{ projectsQuantity }}
           />
         </p>
+        {/* The link is only for categories, since we don't have priority landscape filters */}
         {!!category && (
-          <Button
-            theme="naked"
-            onClick={() =>
-              push({
-                pathname: Paths.Discover,
-                // TODO: CHANGE TO FILTER BY PROIORITY LANDSCAPE
-                query: !!category ? { 'filter[category]': id } : { search: name },
-              })
-            }
-          >
+          <Button theme="naked" to={`${Paths.Discover}?filter[category]=${id}`}>
             <span className="sr-only">
               <FormattedMessage defaultMessage="See projects" id="q6rG+e" />
             </span>

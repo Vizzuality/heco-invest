@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { ChevronRight, ChevronLeft } from 'react-feather';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
@@ -15,7 +15,7 @@ import { InferGetStaticPropsType } from 'next';
 import { useBreakpoint } from 'hooks/use-breakpoint';
 
 import { loadI18nMessages } from 'helpers/i18n';
-import { getCategoryColor } from 'helpers/pages';
+import { getMosaicsWithProjectsNumber } from 'helpers/pages';
 
 import ProjectCard from 'containers/for-public-pages/project-card';
 import ImpactModal from 'containers/modals/impact';
@@ -62,24 +62,18 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
   projects,
   enums,
 }) => {
+  const { formatMessage } = useIntl();
   const [impactModalOpen, setImpactModalOpen] = useState(false);
   const [whatCanDoIndex, setWhatCanDoIndex] = useState(0);
   const breakpoint = useBreakpoint();
-  const isDesktop = breakpoint('lg');
+  const isMd = breakpoint('sm');
+  const isLg = breakpoint('lg');
   const isXl = breakpoint('xl');
 
   const { category: categoryEnums, mosaic: mosaicEnums } = groupBy(enums, 'type');
   const projectsGroupedByCategory = groupBy(projects, 'category');
 
-  const groupedProjectsByMosaic = mosaicEnums.map((mosaic) => {
-    const key = mosaic.name.trim().toLowerCase().replace(/-|\s/g, '');
-    const projectsQuantity =
-      projects.filter(
-        (project) =>
-          project.priority_landscape?.name?.trim().toLowerCase().replace(/-|\s/g, '') === key
-      )?.length || 0;
-    return { ...mosaic, projectsQuantity };
-  });
+  const mosaicsWithProjectsNumber = getMosaicsWithProjectsNumber(mosaicEnums, projects);
 
   const priorityLandscapesDescriptions = {
     'amazonian-piedmont-massif': (
@@ -155,15 +149,16 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
 
   return (
     <>
-      <Head title="For investors" />
+      <Head title={formatMessage({ defaultMessage: 'For investors', id: 'MfCYKW' })} />
       <ImpactModal impactModalOpen={impactModalOpen} setImpactModalOpen={setImpactModalOpen} />
+
       <LayoutContainer className="bg-background-light">
         <div className="mb-10 lg:pt-8">
           <h1 className="font-serif text-3xl font-bold lg:text-6xl text-green-dark">
             <FormattedMessage defaultMessage="Start having the greatest impact" id="o0+PZ+" />
           </h1>
         </div>
-        <div className="mt-8 lg:mt-0 lg:flex lg:flex-col lg:gap-y-10 mb-15 lg:mb-0">
+        <div className="mt-8 lg:mt-0 lg:flex lg:flex-col lg:gap-y-10 pb-15 lg:pb-0">
           <div className="mb-8 lg:flex lg:gap-80 lg:mb-0">
             <p className="flex-1">
               <FormattedMessage
@@ -191,9 +186,9 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         </div>
       </LayoutContainer>
 
-      <LayoutContainer className="mt-5 lg:mt-32">
-        <div className="flex flex-col lg:py-14 lg:grid lg:grid-cols-2">
-          <div className="flex flex-col justify-center order-2 p-6 pb-10 overflow-hidden text-white lg:py-10 lg:order-1 lg:-mt-28 rounded-b-2xl lg:rounded-3xl lg:rounded-br-none bg-green-dark lg:px-14">
+      <LayoutContainer className="mt-5 md:mt-32">
+        <div className="flex flex-col mdpy-14 md:grid md:grid-cols-2">
+          <div className="flex flex-col justify-center order-2 p-6 pb-10 overflow-hidden text-white md:py-10 md:order-1 md:-mt-28 rounded-b-2xl md:rounded-3xl md:rounded-br-none bg-green-dark md:px-14">
             <div className="font-serif text-3xl font-bold lg:text-4xl xl:text-5xl">
               <FormattedMessage defaultMessage="30 million" id="m1w8ew" />
             </div>
@@ -229,9 +224,9 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
               />
             </p>
           </div>
-          <div className="order-1 lg:order-2">
-            <div className="flex items-center justify-center w-full h-full bg-[url('/images/for-investor/for-investors-why-to-invest.jpg')] rounded-t-2xl lg:rounded-3xl lg:rounded-l-none">
-              <div className="max-w-lg p-6 pt-10 text-white lg:p-10 lg:max-w-md">
+          <div className="order-1 md:order-2">
+            <div className="flex items-center justify-center w-full h-full bg-[url('/images/for-investor/for-investors-why-to-invest.jpg')] rounded-t-2xl md:rounded-3xl md:rounded-l-none">
+              <div className="max-w-lg p-6 pt-10 text-white md:p-10 md:max-w-md">
                 <h2 className="mb-6 font-serif text-3xl font-bold lg:text-4xl">
                   <FormattedMessage defaultMessage="Why invest in the Amazon" id="mQk71L" />
                 </h2>
@@ -247,17 +242,16 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         </div>
       </LayoutContainer>
 
-      <div className="pl-4 mt-20 mb-6 sm:mt-24 lg:mt-40">
+      <LayoutContainer className="pr-0 mt-28 sm:pr-0 md:pr-6">
         <h2 className="font-serif text-3xl font-bold md:hidden">
           <FormattedMessage defaultMessage="Discover projects by category" id="des5Rg" />
         </h2>
-        <div className="grid pb-6 pr-4 overflow-x-scroll grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-6 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 md:grid-row-2 xl:grid-cols-4 md:place-content-end md:container md:mx-auto sm:px-6 md:px-8">
+        <div className="grid pb-6 overflow-x-scroll grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-4 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 md:grid-row-2 xl:grid-cols-4 md:place-content-end px-1 md:px-0">
           {/* Repeating the header here to change the layout when md screens */}
           <h2 className="hidden row-span-1 font-serif text-3xl font-semibold md:block md:mb-10 md:col-span-1 lg:text-5xl xl:col-span-2 lg:mb-0 lg:w-auto">
             <FormattedMessage defaultMessage="Discover projects by category" id="des5Rg" />
           </h2>
           {categoryEnums.map(({ id, name, description }) => {
-            const categoryColor = getCategoryColor(id);
             const projectsQuantity = projectsGroupedByCategory[id]?.length || 0;
             return (
               <ProjectCard
@@ -271,31 +265,57 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             );
           })}
         </div>
-      </div>
+      </LayoutContainer>
 
-      <LayoutContainer>
-        <div className="flex items-end mb-6 overflow-hidden rounded-xl">
+      <LayoutContainer className="pr-0">
+        <div className="flex items-end mt-18 mb-6 overflow-hidden w-full h-[285px]">
           <Image
             src="/images/for-investor/for-investor-category.png"
-            width={isDesktop ? 918 : 343}
-            height={isDesktop ? 285 : 285}
+            width={isLg ? 918 : isMd ? 543 : 343}
+            height={285}
             objectFit="cover"
+            layout="intrinsic"
             alt=""
+            className="rounded-xl"
           />
           <p className="absolute p-4 text-white text-2xs">© Luis Barreto / WWF-UK</p>
         </div>
-        {/* <div className="md:grid-cols-4 md:gap-6 md:grid"> */}
-        <div className="grid pb-6 pr-4 md:pr-0 md:pl-0 overflow-x-scroll grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-6 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 md:grid-row-2 xl:grid-cols-4 md:place-content-end md:container md:mx-auto sm:px-6 md:px-8">
-          {groupedProjectsByMosaic.map(({ id, name, projectsQuantity }, index) => {
-            const gridPosition =
-              index === 0
-                ? 'lg:row-start-1'
-                : index === 3
-                ? 'lg:row-start-3 lg:col-start-2'
-                : 'lg:row-start-2';
+        {/* For mobiles */}
+        <div className="block mb-8 md:hidden">
+          <h2 className="mt-8 font-serif text-3xl font-semibold md:text-5xl">
+            <FormattedMessage defaultMessage="By priority landscapes" id="JcS7oJ" />
+          </h2>
+        </div>
+        <div className="md:hidden block w-full max-h-[300px] mb-6 rounded-lg overflow-hidden">
+          <Image
+            src="/images/for-investor/for-investor-priority-landscapes.png"
+            alt=""
+            width={604}
+            height={557}
+            objectFit="cover"
+            objectPosition="center"
+            className="rounded-lg"
+          />
+          <div>
+            <p className="mt-6 text-center text-gray-700 text-2xs">
+              <FormattedMessage defaultMessage="Priority landscapes of HeCo" id="Zt7DBA" />
+            </p>
+          </div>
+        </div>
+
+        <div className="grid pb-6 md:pr-0 md:pl-0 overflow-x-scroll md:grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-6 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 md:place-content-end md:container md:mx-auto md:px-8">
+          {mosaicsWithProjectsNumber.map(({ id, name, projectsQuantity }, index) => {
             const description = priorityLandscapesDescriptions[id];
             return (
-              <div key={id} className={`row-start-3 ${gridPosition}`}>
+              <div
+                key={id}
+                className={cx('row-start-1', {
+                  'md:row-start-2 lg:row-start-1': index === 0,
+                  'md:row-start-2 lg:row-start-2': index === 1,
+                  'md:row-start-2': index === 2,
+                  'md:row-start-3 lg:row-start-3 lg:col-start-2': index === 3,
+                })}
+              >
                 <ProjectCard
                   key={id}
                   id={id}
@@ -306,12 +326,13 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
               </div>
             );
           })}
-          <div className="w-[calc(100vw-32px)] lg:w-auto col-span-auto md:col-span-2 md:col-start-3">
+          {/* For desktop */}
+          <div className="hidden col-span-3 md:block lg:col-span-2 lg:col-start-3 md:col-start-1 md:row-start-1 md:pb-4">
             <h2 className="mt-8 font-serif text-3xl font-semibold md:text-5xl">
               <FormattedMessage defaultMessage="By priority landscapes" id="JcS7oJ" />
             </h2>
           </div>
-          <div className="w-[calc(100vw-32px)] lg:w-auto col-start-1 row-start-2 col-span- lg:col-span-2 lg:col-start-3 lg:row-span-2 lg:row-start-2">
+          <div className="hidden md:block w-[calc(100vw-32px)] max-h-[300px] md:w-auto col-start-1 row-start-2 md:col-span-2 md:col-start-2 md:row-span-2 md:row-start-3 lg:row-start-2 lg:col-start-3 rounded-lg overflow-hidden">
             <Image
               src="/images/for-investor/for-investor-priority-landscapes.png"
               alt=""
@@ -319,7 +340,6 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
               height={557}
               objectFit="cover"
               objectPosition="center"
-              layout="responsive"
               className="rounded-lg"
             />
             <div>
@@ -361,7 +381,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                     <div
                       key={imageSrc + index}
                       className={cx(
-                        'overflow-hidden rounded-2xl transition-all ease-in-out duration-700',
+                        'overflow-hidden rounded-2xl transition-all ease-in-out duration-700 sm:max-h-[250px] md:max-h-[350px] lg:max-h-[500px]',
                         {
                           'w-[calc(100vw-20px)] lg:w-[50vw] opacity-100': index === whatCanDoIndex,
                           'w-[calc(100vw-20px)] lg:w-[33.33vw]': index !== whatCanDoIndex,
@@ -373,8 +393,8 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                       <Image
                         src={imageSrc}
                         alt=""
-                        width={isXl ? 1063.5 : 709}
-                        height={isXl ? 750 : 500}
+                        width={isXl ? 1063.5 : isMd ? 709 : 340}
+                        height={isXl ? 750 : isMd ? 500 : 250}
                         objectFit="cover"
                         objectPosition="center"
                         layout="fixed"
@@ -384,7 +404,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                   );
                 })}
               </div>
-              <div className="lg:absolute p-7 -translate-y-8 lg:-translate-y-full max-w-full lg:max-w-[500px] lg:left-1/2 bg-background-light rounded-xl -mt-1.5">
+              <div className="lg:absolute p-7 -translate-y-8 lg:-translate-y-full max-w-full lg:max-w-[500px] lg:left-1/2 bg-background-light rounded-xl">
                 <div className="flex justify-between mb-2 align-middle">
                   <div>
                     <p className="text-xl font-bold text-gray-600">
@@ -393,8 +413,9 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                   </div>
                   <div className="flex gap-2.5">
                     <Button
-                      theme="naked"
-                      className="flex items-center justify-center w-8 h-8 py-0 pl-0 pr-0 border rounded-full border-beige drop-shadow-lg"
+                      theme="primary-white"
+                      size="smallest"
+                      className="justify-center w-8 h-8 border border-beige drop-shadow-lg focus-visible:!outline-green-dark"
                       onClick={() =>
                         setWhatCanDoIndex(whatCanDoIndex === 0 ? 2 : whatCanDoIndex - 1)
                       }
@@ -404,22 +425,24 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                       </span>
                       <Icon
                         icon={ChevronLeft}
-                        className="text-black transition-colors duration-300 ease-in-out hover:text-beige"
+                        className="text-black transition-colors duration-300 ease-in-out"
                       />
                     </Button>
+
                     <Button
-                      theme="naked"
-                      className="flex items-center justify-center w-8 h-8 py-0 pl-0 pr-0 border rounded-full drop-shadow-lg"
+                      theme="primary-white"
+                      size="smallest"
+                      className="justify-center w-8 h-8 border border-beige drop-shadow-lg focus-visible:!outline-green-dark"
                       onClick={() =>
                         setWhatCanDoIndex(whatCanDoIndex === 2 ? 0 : whatCanDoIndex + 1)
                       }
                     >
                       <span className="sr-only">
-                        <FormattedMessage defaultMessage="Next" id="9+Ddtu" />
+                        <FormattedMessage defaultMessage="Previous" id="JJNc3c" />
                       </span>
                       <Icon
                         icon={ChevronRight}
-                        className="text-black transition-colors duration-300 ease-in-out hover:text-beige"
+                        className="text-black transition-colors duration-300 ease-in-out"
                       />
                     </Button>
                   </div>
