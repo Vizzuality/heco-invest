@@ -75,3 +75,8 @@ variable "redirect_domain" {
   type = string
   description = "Legacy domain to redirect"
 }
+
+variable "from_email_address" {
+  type = string
+  description = "Email address from which to send emails"
+}

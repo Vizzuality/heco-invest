@@ -347,6 +347,9 @@
   "BSFsv6": {
     "string": "Tree biomass density"
   },
+  "BZG0d+": {
+    "string": "Search for projects, investors, open calls..."
+  },
   "BZkcBV": {
     "string": "Project developer photo"
   },
@@ -975,6 +978,9 @@
   "aDn1WM": {
     "string": "Curated database"
   },
+  "aFyFm0": {
+    "string": "Accepted"
+  },
   "aRIIAG": {
     "string": "<span>Climate:</span> wood and soil biomass, application of sustainable forest measures;"
   },
@@ -1049,6 +1055,9 @@
   },
   "dZYyPC": {
     "string": "View {name} project details"
+  },
+  "dZd8H/": {
+    "string": "Waiting"
   },
   "daUTdN": {
     "string": "Open call applications"
