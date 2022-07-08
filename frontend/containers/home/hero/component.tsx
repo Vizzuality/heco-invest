@@ -51,7 +51,7 @@ export const Hero = () => {
         </p>
       </div>
       <LayoutContainer className="sm:mt-5 md:mt-9">
-        <div className="sm:mx-auto sm:max-w-2xl md:max-w-4xl h-[4.5rem] translate-y-1/2 flex justify-center items-center w-full">
+        <div className="relative z-10 sm:mx-auto sm:max-w-2xl md:max-w-4xl h-[4.5rem] translate-y-1/2 flex justify-center items-center w-full">
           <DiscoverSearch
             className="w-full"
             onSearch={handleSearch}
