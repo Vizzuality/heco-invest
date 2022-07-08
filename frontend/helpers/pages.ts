@@ -115,6 +115,14 @@ export const useQueryString = () => {
   return '';
 };
 
+/** Hook that returns the query returnPath, if any */
+export const useQueryReturnPath = () => {
+  const { query } = useRouter();
+  return typeof query?.returnPath === 'string'
+    ? decodeURIComponent(query.returnPath as string)
+    : undefined;
+};
+
 export const getSocialMediaLinksRegex = () => {
   const getRegex = (media: string) => new RegExp(`^https?:\/\/(www.)?${media}.com\/.*$`);
   return {

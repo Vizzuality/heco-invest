@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { useRouter } from 'next/router';
 
-import { getServiceErrors, useGetAlert } from 'helpers/pages';
+import { getServiceErrors, useGetAlert, useQueryReturnPath } from 'helpers/pages';
 
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { OutroPage, Page } from 'containers/multi-page-layout';
@@ -48,6 +48,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   const [projectSlug, setProjectSlug] = useState<string>();
   const resolver = useProjectValidation(currentPage);
   const updateProject = useUpdateProject();
+  const queryReturnPath = useQueryReturnPath();
   const router = useRouter();
   const {
     category,
@@ -273,9 +274,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
       <LeaveFormModal
         isOpen={showLeave}
         close={() => setShowLeave(false)}
-        handleLeave={() =>
-          router.push(decodeURIComponent(router.query?.returnPath as string) || Paths.Dashboard)
-        }
+        handleLeave={() => router.push(queryReturnPath || Paths.Dashboard)}
         title={leaveMessage}
       />
     </>
