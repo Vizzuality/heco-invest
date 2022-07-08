@@ -21,7 +21,7 @@ export const Navigation: FC<NavigationProps> = ({ className }: NavigationProps) 
             <Icon icon={SearchIcon} />
           </a>
         </ActiveLink>
-        <ActiveLink href={Paths.Investors} activeClassName="font-semibold">
+        <ActiveLink href={Paths.ForInvestors} activeClassName="font-semibold">
           <a>
             <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
           </a>

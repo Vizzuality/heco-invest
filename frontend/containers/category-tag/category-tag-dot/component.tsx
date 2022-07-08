@@ -11,6 +11,7 @@ export const CategoryTagDot: FC<CategoryTagDotProps> = ({
   <span
     className={cx({
       'inline-block rounded-full': true,
+      'w-8 h-8': size === 'large',
       'w-4 h-4 mr-4 ': size === 'small',
       'w-2 h-2 mr-2': size === 'smallest',
       'bg-category-tourism': category === 'tourism-and-recreation',

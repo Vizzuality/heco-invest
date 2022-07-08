@@ -39,6 +39,7 @@ export enum Paths {
   PendingInvestor = '/investors/pending',
   Investors = '/discover/investors',
   Invitation = '/invitation',
+  ForInvestors = '/for-investors',
 }
 
 export enum UserRoles {

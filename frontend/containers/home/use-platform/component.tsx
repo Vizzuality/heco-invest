@@ -9,6 +9,7 @@ import { useBreakpoint } from 'hooks/use-breakpoint';
 
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
+import { Paths } from 'enums';
 
 export const UsePlatform = () => {
   const breakpoint = useBreakpoint();
@@ -34,7 +35,7 @@ export const UsePlatform = () => {
         <FormattedMessage defaultMessage="Why use this platform" id="VCODFJ" />
       </h2>
 
-      <div className="relative mt-20 -z-10 md:mt-12 lg:mt-24 md:grid md:grid-cols-2 md:gap-3 lg:items-center">
+      <div className="relative mt-20 md:mt-12 lg:mt-24 md:grid md:grid-cols-2 md:gap-3 lg:items-center">
         <div className="flex items-end space-x-2">
           <div
             className={cx({
@@ -117,7 +118,7 @@ export const UsePlatform = () => {
             <Button
               theme="secondary-green"
               size="small"
-              to="/investors"
+              to={Paths.ForInvestors}
               className="justify-center w-full text-lg text-center sm:w-auto sm:text-sm"
             >
               <FormattedMessage defaultMessage="Investors features" id="wsk6Y/" />
