@@ -15,11 +15,6 @@ const Template: Story<AlertProps> = ({ children, ...rest }: AlertProps) => (
 export const Default: Story<AlertProps> = Template.bind({});
 Default.args = {};
 
-export const withLayoutContainer: Story<AlertProps> = Template.bind({});
-withLayoutContainer.args = {
-  withLayoutContainer: true,
-};
-
 export const Warning: Story<AlertProps> = Template.bind({});
 Warning.args = {
   type: 'warning',
@@ -28,4 +23,9 @@ Warning.args = {
 export const Success: Story<AlertProps> = Template.bind({});
 Success.args = {
   type: 'success',
+};
+
+export const withLayoutContainer: Story<AlertProps> = Template.bind({});
+withLayoutContainer.args = {
+  withLayoutContainer: true,
 };
