@@ -2,7 +2,6 @@ import { FC, useEffect } from 'react';
 import { useState, useCallback } from 'react';
 
 import { SubmitHandler, useForm, Path } from 'react-hook-form';
-import { useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
@@ -13,6 +12,7 @@ import useInterests from 'hooks/useInterests';
 
 import { getServiceErrors, useGetAlert } from 'helpers/pages';
 
+import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import SelectLanguageForm from 'containers/forms/select-language-form';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
@@ -139,7 +139,10 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
             <SelectLanguageForm register={register} errors={errors} fieldName="language" />
           </Page>
         )}
-        <Page hasErrors={getPageErrors(1)}>
+        <Page hasErrors={getPageErrors(1)} className="relative">
+          {!isCreateForm && (
+            <ContentLanguageAlert className="mb-6" locale={initialValues?.language} />
+          )}
           <Profile
             setError={setError}
             setValue={setValue}

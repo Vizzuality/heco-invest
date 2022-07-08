@@ -9,6 +9,7 @@ import { entries, pick } from 'lodash-es';
 
 import { getServiceErrors, useGetAlert } from 'helpers/pages';
 
+import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import SelectLanguageForm from 'containers/forms/select-language-form';
 import {
   Profile,
@@ -132,6 +133,9 @@ const InvestorForm: FC<InvestorFormProps> = ({
           </Page>
         )}
         <Page hasErrors={getPageErrors(1)}>
+          {!isCreateForm && (
+            <ContentLanguageAlert className="mb-6" locale={initialValues?.language} />
+          )}
           <Profile
             register={register}
             control={control}
