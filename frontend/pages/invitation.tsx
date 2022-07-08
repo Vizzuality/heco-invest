@@ -110,8 +110,8 @@ const Invitation: PageComponent<InvitationProps> = () => {
           </h1>
           <p className="max-w-md m-auto text-base">
             <FormattedMessage
-              defaultMessage="By accepting this invitation you will belong to  {accountName} account."
-              id="I1k1kN"
+              defaultMessage="By accepting this invitation you will belong to the {accountName} account."
+              id="jvHO6d"
               values={{
                 accountName: invitedUser?.account_name,
               }}
