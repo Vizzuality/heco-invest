@@ -17,7 +17,7 @@ RSpec.describe "API V1 Background Job Events", type: :request do
       parameter name: "filter[created_at_min]", in: :query, type: :string, description: "Filter records", required: false
       parameter name: "filter[created_at_max]", in: :query, type: :string, description: "Filter records", required: false
 
-      let(:user) { create :user }
+      let(:admin) { create :admin }
 
       it_behaves_like "with not authorized error", csrf: true
 
@@ -29,7 +29,7 @@ RSpec.describe "API V1 Background Job Events", type: :request do
         }
         let("X-CSRF-TOKEN") { get_csrf_token }
 
-        before { sign_in user }
+        before { sign_in admin }
 
         run_test!
 
