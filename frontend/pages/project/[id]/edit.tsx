@@ -90,7 +90,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
       permissions={[UserRoles.ProjectDeveloper]}
     >
       <ProjectForm
-        title={formatMessage({ defaultMessage: 'Create project', id: 'VUN1K7' })}
+        title={formatMessage({ defaultMessage: 'Edit project', id: 'qwCflo' })}
         leaveMessage={formatMessage({
           defaultMessage: 'Leave project creation form',
           id: 'vygPIS',
