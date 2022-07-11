@@ -15,6 +15,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
     )
   }
   let!(:projects) { create_list(:project, 4) }
+  let!(:draft_project) { create :project, :draft }
 
   before { sign_in admin }
 
@@ -39,6 +40,10 @@ RSpec.describe "Backoffice: Projects", type: :system do
         expect(page).to have_text("Test priority landscape")
         expect(page).to have_text(I18n.t("backoffice.common.verified"))
       end
+    end
+
+    it "ignores draft project" do
+      expect(page).not_to have_text(draft_project.name)
     end
 
     context "when searching" do

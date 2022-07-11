@@ -9,7 +9,7 @@ module Backoffice
     before_action :set_content_language_default, only: [:edit, :update]
 
     def index
-      @q = Project.ransack params[:q]
+      @q = Project.published.ransack params[:q]
       @projects = API::Filterer.new(@q.result, {full_text: params.dig(:q, :filter_full_text)}).call
       @projects = @projects.includes(:priority_landscape, project_developer: [:account])
 
