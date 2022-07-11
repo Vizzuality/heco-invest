@@ -1,6 +1,7 @@
 import { FC, useCallback, useState } from 'react';
 
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 
 import MapboxGLPlugin from '@vizzuality/layer-manager-plugin-mapboxgl';
 import CartoProvider from '@vizzuality/layer-manager-provider-carto';
@@ -47,6 +48,10 @@ export const DiscoverMap: FC<DiscoverMapProps> = () => {
   return (
     <>
       <div className="relative w-full h-full">
+        <Script
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+          strategy="beforeInteractive"
+        />
         <Map bounds={bounds} viewport={viewport} onMapViewportChange={handleViewportChange}>
           {(map) => (
             <>

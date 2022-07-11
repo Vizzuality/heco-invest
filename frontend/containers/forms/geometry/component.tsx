@@ -13,6 +13,8 @@ import { LayerManager, Layer } from '@vizzuality/layer-manager-react';
 
 import { mergeRefs } from 'helpers/refs';
 
+import LocationSearcher from 'containers/discover-map/location-searcher';
+
 import Button from 'components/button';
 import ErrorMessage from 'components/forms/error-message';
 import Icon from 'components/icon';
@@ -119,6 +121,10 @@ export const GeometryInput = <FormValues extends FieldValues>({
     },
     [name, onChange]
   );
+
+  const handleLocationSelected = ({ bbox }) => {
+    setBounds({ ...bounds, bbox });
+  };
 
   return (
     <div className={className}>
@@ -228,6 +234,9 @@ export const GeometryInput = <FormValues extends FieldValues>({
                 </LayerManager>
               )}
             </Map>
+            <div className="absolute flex gap-2 top-3.5 left-3.5 text-gray-800 text-sm">
+              <LocationSearcher onLocationSelected={handleLocationSelected} />
+            </div>
             <Controls className="absolute bottom-2 left-2">
               <ZoomControl viewport={{ ...viewport }} onZoomChange={onZoomChange} />
             </Controls>

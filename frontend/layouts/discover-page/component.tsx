@@ -3,6 +3,7 @@ import React, { FC, useEffect, useMemo, useState } from 'react';
 import cx from 'classnames';
 
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 
 import { useQueryParams } from 'helpers/pages';
 
@@ -181,6 +182,9 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 h-screen bg-background-dark">
+      <Script
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+      />
       <div className="flex flex-col h-screen overflow-auto">
         <div className="z-10">
           <Header {...discoverSearchProps} />
