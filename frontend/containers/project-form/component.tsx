@@ -18,6 +18,7 @@ import {
 } from 'types/project';
 import useProjectValidation, { formPageInputs } from 'validations/project';
 
+import { useAccount } from 'services/account';
 import { useUpdateProject } from 'services/account';
 
 import { useDefaultValues } from './helpers';
@@ -50,6 +51,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   const updateProject = useUpdateProject();
   const queryReturnPath = useQueryReturnPath();
   const router = useRouter();
+  const { userAccount } = useAccount();
   const {
     category,
     project_development_stage,
@@ -189,6 +191,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         layout="narrow"
         getTotalPages={(pages) => setTotalPages(pages)}
         title={title}
+        locale={defaultValues?.language || userAccount?.language}
         autoNavigation={false}
         page={currentPage}
         alert={useGetAlert(updateProject.error)}
