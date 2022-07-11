@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 
 import { getServiceErrors, useGetAlert, useQueryReturnPath } from 'helpers/pages';
 
+import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { OutroPage, Page } from 'containers/multi-page-layout';
 
@@ -184,6 +185,8 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     await handleSubmit(onSubmit)();
   };
 
+  const contentLocale = defaultValues?.language || userAccount?.language;
+
   return (
     <>
       <Head title={title} />
@@ -191,7 +194,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         layout="narrow"
         getTotalPages={(pages) => setTotalPages(pages)}
         title={title}
-        locale={defaultValues?.language || userAccount?.language}
+        locale={contentLocale}
         autoNavigation={false}
         page={currentPage}
         alert={useGetAlert(updateProject.error)}
@@ -204,6 +207,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         onSubmitClick={handleSubmit(onSubmit)}
       >
         <Page key="general-information">
+          <ContentLanguageAlert className="mb-6" locale={contentLocale} />
           <GeneralInformation
             register={register}
             control={control}
