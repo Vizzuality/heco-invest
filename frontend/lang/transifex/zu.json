@@ -8,6 +8,9 @@
   "+mzZak": {
     "string": "About {name}"
   },
+  "+pH0Po": {
+    "string": "When you create your project profile, the platform's artificial intelligence engine will define the type of impact it will have for its geographical location and connect with suitable sources of support."
+  },
   "+vVZ/G": {
     "string": "Connect"
   },
@@ -257,6 +260,9 @@
   "7qB5i4": {
     "string": "As an Investor or Funder"
   },
+  "7rePKd": {
+    "string": "HeCo Invest takes you step-by-step through the presentation of your proposal and then intelligently connects you with the community and potential sources of support and funding."
+  },
   "7xE2Vv": {
     "string": "Illustration of a person looking at a tree"
   },
@@ -446,6 +452,9 @@
   "E1kj21": {
     "string": "Project verification"
   },
+  "EOsYCo": {
+    "string": "Discover our current calls from investors. Apply with your project and receive funding."
+  },
   "EVKdUn": {
     "string": "Priority Landscape"
   },
@@ -627,6 +636,9 @@
   "KGREXT": {
     "string": "Total of projects"
   },
+  "KYymTZ": {
+    "string": "{quantity, plural, one {project} other {projects}}"
+  },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
   },
@@ -695,6 +707,9 @@
   },
   "NjKSap": {
     "string": "Online presence"
+  },
+  "NpcyZ1": {
+    "string": "Create an attractive project profile with well-defined attributes to intelligently connect with potential funders and investors."
   },
   "NsIwKY": {
     "string": "Leave create project develop?"
@@ -797,6 +812,9 @@
   },
   "RXoqkD": {
     "string": "Mission"
+  },
+  "RyOOZR": {
+    "string": "Have access to all of the contacts of <n>Investors</n> and <n>Project Developers</n>. Easily reach and connect so you can find the best investment or partnership."
   },
   "SHw9Ht": {
     "string": "Start connecting with people to create impact. You can find investors, opportunities to invest open calls and much more."
@@ -914,6 +932,9 @@
   },
   "WLDgff": {
     "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
+  },
+  "WSvHHP": {
+    "string": "With an HeCo account you can have a public profile page, making it easier for Investors and other Project Developers to find and reach you."
   },
   "WTuVeL": {
     "string": "Something went wrong while submitting your form. Please correct the errors before submitting again."
@@ -1131,6 +1152,9 @@
   "e0c9xF": {
     "string": "insert the name of the investor/funder"
   },
+  "eItis6": {
+    "string": "Discover investors by budget/ticket size"
+  },
   "eM7TKf": {
     "string": "About the platform"
   },
@@ -1154,6 +1178,9 @@
   },
   "et2m37": {
     "string": "insert URL"
+  },
+  "eu+7Vl": {
+    "string": "Do you have a project or a start-up business in the Colombian Amazon?"
   },
   "fDd10o": {
     "string": "Instrument type"
@@ -1187,9 +1214,6 @@
   },
   "gF/kn9": {
     "string": "Contribute to protecting areas of greatest ecosystems diversity, conservation and restoration potential, degree of threat or protection for flora and fauna, landscape connectivity and degree of endemism."
-  },
-  "gbcj32": {
-    "string": "{projectsQuantity, plural, one {project} other {projects}}"
   },
   "ghj0+t": {
     "string": "Geographies"
@@ -1275,6 +1299,9 @@
   "j4lBL7": {
     "string": "Note: Some filters not apply to all tabs"
   },
+  "jHyKQ2": {
+    "string": "Thanks to our <n>model ARIES</n>, an Artificial Intelligence tool, you can <n>reach investors</n> that are interested in your project and <n>learn how your activity impacts</n> the environment and your community."
+  },
   "jKdvln": {
     "string": "Relevant links (optional)"
   },
@@ -1352,6 +1379,9 @@
   },
   "mbTJWV": {
     "string": "Biodiversity"
+  },
+  "mgsoLa": {
+    "string": "Looking for the highest impact?"
   },
   "n0nU+Y": {
     "string": "Illustration of a person looking at a list of cards"
@@ -1436,6 +1466,9 @@
   },
   "q6rG+e": {
     "string": "See projects"
+  },
+  "q7I+Bg": {
+    "string": "{quantity, plural, one {investor} other {investors}}"
   },
   "qFZuSl": {
     "string": "My projects"
@@ -1578,6 +1611,9 @@
   "vTJ8GJ": {
     "string": "SDG'S"
   },
+  "vViagZ": {
+    "string": "Discover investors by category"
+  },
   "vaWFzs": {
     "string": "What's your mission?"
   },
@@ -1589,6 +1625,9 @@
   },
   "wEQDC6": {
     "string": "Edit"
+  },
+  "wGWm2r": {
+    "string": "Find the support and ressources to grow your business or project"
   },
   "wQteLO": {
     "string": "Go to page {page}"
@@ -1652,6 +1691,9 @@
   },
   "xqjjPY": {
     "string": "As an Investor or <br></br> Funder"
+  },
+  "xupvNr": {
+    "string": "Have a public profile page"
   },
   "y1Z3or": {
     "string": "Language"
