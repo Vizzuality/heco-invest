@@ -45,6 +45,8 @@ const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
     }
   }
 
+  // DEBUG DEPLOYMENT
+
   return (
     <IntlProvider
       locale={locale}
