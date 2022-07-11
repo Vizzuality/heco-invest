@@ -1,7 +1,7 @@
 require "swagger_helper"
 
 RSpec.shared_examples "with not found error" do |csrf: false, user: nil|
-  response "404", "Not Found" do
+  response "404", "Not Found", generate_swagger_example: true do
     let("X-CSRF-TOKEN") { get_csrf_token } if csrf
     let(:id) { "not-found" }
 

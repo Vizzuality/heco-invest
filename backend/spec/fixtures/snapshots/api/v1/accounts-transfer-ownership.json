@@ -1,0 +1,17 @@
+{
+  "data": {
+    "id": "045be70f-f21f-47da-9332-fd21ae67dce0",
+    "type": "user",
+    "attributes": {
+      "first_name": "Desmond",
+      "last_name": "Herzog",
+      "email": "desmond_herzog@example.org",
+      "role": "light",
+      "created_at": "2022-07-07T09:08:27.916Z",
+      "confirmed": true,
+      "approved": true,
+      "invitation": null,
+      "owner": true
+    }
+  }
+}

@@ -33,9 +33,7 @@ class Ability
 
   def user_rights
     can %i[show edit update], User, id: user.id
-    can %i[destroy], User do |u|
-      u.id == user.id && user.owner_account.nil?
-    end
+    can %i[destroy], User.left_joins(:owner_account).where(id: user.id, owner_account: {id: nil})
     can %i[index show], User, account_id: user.account_id
 
     can %i[create update], Investor, account_id: user.account_id
@@ -58,9 +56,8 @@ class Ability
   def owner_rights
     can %i[invite], User, account_id: nil
     can %i[index show], User, invited_by_id: user.id, invited_by_type: "User"
-    can %i[destroy], User do |u|
-      u.account_id == user.account_id && u.id != user.id
-    end
+    can %i[destroy], User.where(account_id: user.account_id).where.not(id: user.id)
+    can :transfer_ownership, User, account_id: user.account.id
   end
 
   def approved_user_rights
