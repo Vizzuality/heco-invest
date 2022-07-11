@@ -32,11 +32,25 @@ RSpec.describe "API V1 Session", type: :request do
         end
         let("X-CSRF-TOKEN") { get_csrf_token }
 
-        run_test!
+        context "when non-invited user tries to login" do
+          run_test!
 
-        it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/session")
-          expect(session["warden.user.user.key"]).to be_present
+          it "matches snapshot", generate_swagger_example: true do
+            expect(response.body).to match_snapshot("api/v1/session")
+            expect(session["warden.user.user.key"]).to be_present
+          end
+        end
+
+        context "when invited user tries to login" do
+          before do
+            @user.invite! create(:account).owner
+          end
+
+          run_test!
+
+          it "can still login" do
+            expect(session["warden.user.user.key"]).to be_present
+          end
         end
       end
 
