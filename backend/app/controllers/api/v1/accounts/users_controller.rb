@@ -18,7 +18,15 @@ module API
           # @user cannot be account owner AND
           # either current_user == @user OR current_user is account owner in @user's account
           @user.destroy!
+          UserMailer.destroyed(@user.email, @user.full_name).deliver_later
           head :ok
+        end
+
+        def transfer_ownership
+          user = @users.find params[:user_id]
+          current_user.account.update! owner: user
+          UserMailer.ownership_transferred(user).deliver_later
+          render json: UserSerializer.new(user, params: {current_user: user}).serializable_hash
         end
 
         private

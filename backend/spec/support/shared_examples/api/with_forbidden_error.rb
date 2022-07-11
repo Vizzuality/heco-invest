@@ -1,7 +1,7 @@
 require "swagger_helper"
 
 RSpec.shared_examples "with forbidden error" do |csrf: false, user: nil|
-  response "403", "Forbidden" do
+  response "403", "Forbidden", generate_swagger_example: true do
     let("X-CSRF-TOKEN") { get_csrf_token } if csrf
 
     before do

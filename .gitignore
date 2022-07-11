@@ -17,3 +17,8 @@ lefthook-local.yml
 .terraform
 terraform.tfstate.*
 terraform.tfstate
+
+infrastructure/base/vars/*
+infrastructure/remote-state/vars/*
+!infrastructure/base/vars/terraform.tfvars
+!infrastructure/remote-state/vars/terraform.tfvars

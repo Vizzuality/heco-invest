@@ -22,7 +22,12 @@ export const CellActions = ({ row }: CellActionsProps) => {
   const displayName = first_name + ' ' + last_name;
 
   return (
-    <div className="flex space-x-2">
+    <div
+      className={cx({
+        'flex justify-end': true,
+        'space-x-2': !confirmed,
+      })}
+    >
       <Tooltip
         placement="top"
         arrow

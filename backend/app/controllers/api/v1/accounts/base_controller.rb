@@ -17,6 +17,10 @@ module API
 
           raise API::UnauthorizedError, I18n.t("errors.messages.user.no_investor")
         end
+
+        def current_ability
+          @current_ability ||= Ability.new(current_user, context: :accounts)
+        end
       end
     end
   end

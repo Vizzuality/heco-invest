@@ -20,7 +20,8 @@ export const CellUser = ({ row }: CellUserProps) => {
         height={32}
         className="rounded-full"
       />
-      <p>{`${first_name} ${last_name}`}</p>
+
+      <p>{`${first_name || ''} ${last_name || ''}`}</p>
     </div>
   );
 };

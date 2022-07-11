@@ -50,6 +50,7 @@ module API
         def update_params
           params.permit(
             :name,
+            :status,
             :country_id,
             :department_id,
             :municipality_id,

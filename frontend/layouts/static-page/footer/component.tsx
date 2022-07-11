@@ -14,6 +14,7 @@ import FacebookIcon from 'svgs/social/facebook.svg';
 import TwitterIcon from 'svgs/social/twitter.svg';
 
 import { FooterProps } from './types';
+import { Paths } from 'enums';
 
 export const Footer: React.FC<FooterProps> = ({
   props = {
@@ -185,9 +186,11 @@ export const Footer: React.FC<FooterProps> = ({
                 </h3>
                 <ul className="mt-2 space-y-2">
                   <li>
-                    <a className="text-gray-400 disabled:pointer-events-none">
-                      <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
-                    </a>
+                    <Link href={Paths.ForInvestors}>
+                      <a className="hover:underline">
+                        <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
+                      </a>
+                    </Link>
                   </li>
                   <li>
                     <a className="text-gray-400 disabled:pointer-events-none">

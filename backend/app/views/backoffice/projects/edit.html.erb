@@ -5,9 +5,9 @@
     </h1>
 
     <ul class="flex flex-col gap-8 mb-8">
-      <li><%= section_link_to t("backoffice.projects.information"), :information, default: true %></li>
-      <li><%= section_link_to t("backoffice.projects.status"), :status %></li>
-      <li><%= section_link_to t("backoffice.projects.project_developers"), :project_developers %></li>
+      <li><%= section_link_to t("backoffice.projects.information"), edit_backoffice_project_path, :information, default: true %></li>
+      <li><%= section_link_to t("backoffice.projects.status"), edit_backoffice_project_path, :status %></li>
+      <li><%= section_link_to t("backoffice.projects.project_developers"), edit_backoffice_project_path, :project_developers %></li>
     </ul>
     <%= link_to backoffice_project_path(@project.id),
        data: {

@@ -1,10 +1,11 @@
 class Ability
   include CanCan::Ability
 
-  attr_accessor :user
+  attr_accessor :user, :context
 
-  def initialize(user)
+  def initialize(user, context: nil)
     @user = user
+    @context = context
 
     default_rights
     return if user.blank?
@@ -20,17 +21,19 @@ class Ability
     can :create, User
 
     # only data from approved users are visible
-    can %i[index show], ProjectDeveloper, account: {review_status: :approved}
-    can %i[index show], Investor, account: {review_status: :approved}
-    can %i[index show], Project, project_developer: {account: {review_status: :approved}}
-    can %i[index show], OpenCall, investor: {account: {review_status: :approved}}
+    can %i[index show], ProjectDeveloper, account: {review_status: Account.review_statuses[:approved]}
+    can %i[index show], Investor, account: {review_status: Account.review_statuses[:approved]}
+    can %i[index show], Project,
+      project_developer: {
+        account: {review_status: Account.review_statuses[:approved]}
+      },
+      status: Project.statuses[:published]
+    can %i[index show], OpenCall, investor: {account: {review_status: Account.review_statuses[:approved]}}
   end
 
   def user_rights
     can %i[show edit update], User, id: user.id
-    can %i[destroy], User do |u|
-      u.id == user.id && user.owner_account.nil?
-    end
+    can %i[destroy], User.left_joins(:owner_account).where(id: user.id, owner_account: {id: nil})
     can %i[index show], User, account_id: user.account_id
 
     can %i[create update], Investor, account_id: user.account_id
@@ -43,14 +46,18 @@ class Ability
     can %i[show], Investor, account_id: user.account_id
     can %i[show], Project, project_developer: {account_id: user.account_id}
     can %i[show], OpenCall, investor: {account_id: user.account_id}
+
+    # user can list even draft data in accounts controller context
+    if context == :accounts
+      can %i[index], Project, project_developer: {account_id: user.account_id}
+    end
   end
 
   def owner_rights
     can %i[invite], User, account_id: nil
     can %i[index show], User, invited_by_id: user.id, invited_by_type: "User"
-    can %i[destroy], User do |u|
-      u.account_id == user.account_id && u.id != user.id
-    end
+    can %i[destroy], User.where(account_id: user.account_id).where.not(id: user.id)
+    can :transfer_ownership, User, account_id: user.account.id
   end
 
   def approved_user_rights

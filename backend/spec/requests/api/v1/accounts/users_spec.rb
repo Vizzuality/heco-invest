@@ -119,10 +119,16 @@ RSpec.describe "API V1 Account Users", type: :request do
             sign_in account_owner
           end
 
-          run_test!
-
-          it "user is deleted" do
+          it "user is deleted" do |example|
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
             expect { account_user.reload }.to raise_error(ActiveRecord::RecordNotFound)
+          end
+
+          it "send email" do |example|
+            expect {
+              submit_request example.metadata
+            }.to have_enqueued_mail(UserMailer, :destroyed).with(account_user.email, account_user.full_name)
           end
         end
 
@@ -132,12 +138,75 @@ RSpec.describe "API V1 Account Users", type: :request do
             sign_in account_user
           end
 
-          run_test!
-
-          it "user is deleted" do
+          it "user is deleted" do |example|
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
             expect { account_user.reload }.to raise_error(ActiveRecord::RecordNotFound)
           end
+
+          it "send email" do |example|
+            expect {
+              submit_request example.metadata
+            }.to have_enqueued_mail(UserMailer, :destroyed).with(account_user.email, account_user.full_name)
+          end
         end
+      end
+    end
+  end
+
+  path "/api/v1/account/users/transfer_ownership" do
+    get "Transfers ownership of current user to different user from same account" do
+      tags "Users"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :user_id, in: :query, type: :string, description: "Id of user from same account", required: true
+
+      let(:account) { create :account, :approved }
+      let(:user) { create :user, account: account }
+      let(:user_with_different_account) { create :user, account: create(:account, :approved) }
+      let(:user_id) { user.id }
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/user"}
+        }
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before do
+          sign_in account.owner
+        end
+
+        it "returns success response" do |example|
+          submit_request example.metadata
+          assert_response_matches_metadata example.metadata
+        end
+
+        it "matches snapshot", generate_swagger_example: true do |example|
+          submit_request example.metadata
+          expect(response.body).to match_snapshot("api/v1/accounts-transfer-ownership")
+        end
+
+        it "sends email" do |example|
+          expect {
+            submit_request example.metadata
+          }.to have_enqueued_mail(UserMailer, :ownership_transferred).with(user)
+        end
+      end
+
+      response "404", "User not found at owner account", generate_swagger_example: true do
+        schema "$ref" => "#/components/schemas/errors"
+        let("X-CSRF-TOKEN") { get_csrf_token }
+        let(:user_id) { user_with_different_account.id }
+
+        before do
+          sign_in account.owner
+        end
+
+        run_test!
       end
     end
   end

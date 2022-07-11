@@ -4,6 +4,117 @@
       "id": "df1a92db-c671-4cb0-b10c-61c69174b338",
       "type": "project",
       "attributes": {
+        "name": "Draft project",
+        "slug": "kutch-spencer-draft-project",
+        "description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "category": "forestry-and-agroforestry",
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "involved_project_developer_not_listed": false,
+        "problem": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "solution": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "expected_impact": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "looking_for_funding": true,
+        "ticket_size": "scaling",
+        "instrument_types": [
+          "grant",
+          "loan"
+        ],
+        "funding_plan": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "sustainability": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "replicability": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "progress_impact_tracking": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Hilpert, Waters and Johnston",
+        "relevant_links": null,
+        "language": "en",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        },
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null,
+        "latitude": 2.0,
+        "longitude": 1.0,
+        "favourite": false,
+        "created_at": "2022-06-27T09:04:33.005Z",
+        "status": "draft"
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "5257d4bf-7e77-40fd-abf0-5ca78cef1d5e",
+            "type": "project_developer"
+          }
+        },
+        "country": {
+          "data": {
+            "id": "57ebc0b3-6188-4038-8f9d-1d16f9fe2795",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "6d4c1423-8fd3-4de8-ba5d-5464ebce0dd2",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "6d2b6d95-9338-488a-bffe-dc66a93c1e66",
+            "type": "location"
+          }
+        },
+        "priority_landscape": {
+          "data": null
+        },
+        "involved_project_developers": {
+          "data": [
+
+          ]
+        },
+        "project_images": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "d2454295-5a2f-404e-a100-9e38bfc567b6",
+      "type": "project",
+      "attributes": {
         "name": "This PDs Project Amazing",
         "slug": "kutch-spencer-this-pds-project-amazing",
         "description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
@@ -68,7 +179,8 @@
         "latitude": 2.0,
         "longitude": 1.0,
         "favourite": false,
-        "created_at": "2022-06-27T09:04:33.005Z"
+        "created_at": "2022-06-27T09:04:32.944Z",
+        "status": "published"
       },
       "relationships": {
         "project_developer": {
@@ -79,19 +191,19 @@
         },
         "country": {
           "data": {
-            "id": "57ebc0b3-6188-4038-8f9d-1d16f9fe2795",
+            "id": "236a7a1e-cfc0-4bb8-a3b6-5b9f14620c06",
             "type": "location"
           }
         },
         "municipality": {
           "data": {
-            "id": "6d4c1423-8fd3-4de8-ba5d-5464ebce0dd2",
+            "id": "c49d2244-5efc-4be5-a029-9b70e6faaab7",
             "type": "location"
           }
         },
         "department": {
           "data": {
-            "id": "6d2b6d95-9338-488a-bffe-dc66a93c1e66",
+            "id": "1ea7eccc-18f7-45b8-b8a4-d53ebd23f02e",
             "type": "location"
           }
         },
@@ -111,10 +223,11 @@
       }
     },
     {
-      "id": "d2454295-5a2f-404e-a100-9e38bfc567b6",
+      "id": "0be57ead-19e9-471a-b768-39b2f62aa48f",
       "type": "project",
       "attributes": {
         "name": "This PDs Project Awesome",
+        "status": "published",
         "slug": "kutch-spencer-this-pds-project-awesome",
         "description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
         "development_stage": "scaling-up",
@@ -160,6 +273,7 @@
           ]
         },
         "trusted": false,
+        "created_at": "2022-07-05T08:47:28.745Z",
         "municipality_biodiversity_impact": null,
         "municipality_climate_impact": null,
         "municipality_water_impact": null,
@@ -177,31 +291,30 @@
         "priority_landscape_total_impact": null,
         "latitude": 2.0,
         "longitude": 1.0,
-        "favourite": false,
-        "created_at": "2022-06-27T09:04:32.944Z"
+        "favourite": false
       },
       "relationships": {
         "project_developer": {
           "data": {
-            "id": "5257d4bf-7e77-40fd-abf0-5ca78cef1d5e",
+            "id": "96792ae6-1d73-4197-af17-d7d7ea674bf8",
             "type": "project_developer"
           }
         },
         "country": {
           "data": {
-            "id": "236a7a1e-cfc0-4bb8-a3b6-5b9f14620c06",
+            "id": "c3c2cb10-68ce-4133-849d-aca56e8814ec",
             "type": "location"
           }
         },
         "municipality": {
           "data": {
-            "id": "c49d2244-5efc-4be5-a029-9b70e6faaab7",
+            "id": "bb30f485-9389-4ce3-a0d4-7750301c538f",
             "type": "location"
           }
         },
         "department": {
           "data": {
-            "id": "1ea7eccc-18f7-45b8-b8a4-d53ebd23f02e",
+            "id": "757482cd-1e59-4cc7-9009-826b5e761eaa",
             "type": "location"
           }
         },
