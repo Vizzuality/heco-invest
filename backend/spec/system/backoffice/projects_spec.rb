@@ -112,11 +112,12 @@ RSpec.describe "Backoffice: Projects", type: :system do
     context "information section" do
       context "when content is correct" do
         it "can update project information" do
-          sleep 10 # give form time to load all js libs
           fill_in t("simple_form.labels.project.name"), with: "New name"
           attach_file t("simple_form.labels.project.project_images"), [Rails.root.join("spec/fixtures/files/picture.jpg"), Rails.root.join("spec/fixtures/files/picture_2.jpg")]
-          attach_file :shapefile, Rails.root.join("spec/fixtures/files/shapefile.zip")
-          expect(page).to have_text(t("backoffice.projects.form.shapefile_loaded"))
+          using_wait_time 15 do
+            attach_file :shapefile, Rails.root.join("spec/fixtures/files/shapefile.zip")
+            expect(page).to have_text(t("backoffice.projects.form.shapefile_loaded"))
+          end
           select country.name, from: t("simple_form.labels.project.country")
           select country.locations.first.name, from: t("simple_form.labels.project.department")
           select country.locations.first.locations.first.name, from: t("simple_form.labels.project.municipality")
