@@ -5,8 +5,8 @@ class ProjectDeveloper < ApplicationRecord
 
   has_many :projects, dependent: :destroy
   has_many :favourite_project_developers, dependent: :destroy
-
-  has_and_belongs_to_many :involved_projects, join_table: "project_involvements", class_name: "Project"
+  has_many :project_involvements, dependent: :destroy
+  has_many :involved_projects, through: :project_involvements, source: :project
 
   validates :categories, array_inclusion: {in: Category::TYPES}, presence: true
   validates :impacts, array_inclusion: {in: Impact::TYPES}
