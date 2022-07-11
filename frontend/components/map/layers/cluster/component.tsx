@@ -1,3 +1,5 @@
+import { Paths } from 'enums';
+import Link from 'next/link';
 import { cloneElement, FC, useMemo } from 'react';
 
 import { Marker } from 'react-map-gl';
@@ -44,7 +46,9 @@ export const ClusterLayer: FC<ClusterLayerProps> = ({
 
         return (
           <Marker key={id} latitude={latitude} longitude={longitude}>
-            {cloneElement(MarkerComponent, properties)}
+            <Link href={`${Paths.Project}/${id}`}>
+              <a>{cloneElement(MarkerComponent, properties)}</a>
+            </Link>
           </Marker>
         );
       })}
