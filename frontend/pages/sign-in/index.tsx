@@ -2,6 +2,7 @@ import { useCallback, useEffect } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { useQueryClient } from 'react-query';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -20,7 +21,7 @@ import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import Loading from 'components/loading';
-import { Paths, UserRoles } from 'enums';
+import { Paths, Queries, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
 import { SignIn } from 'types/sign-in';
@@ -47,6 +48,7 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
   const resolver = useSignInResolver();
   const { user, refetch: refetchUser } = useMe();
   const { invitedUser } = useInvitedUser(query.invitation_token as string);
+  const queryClient = useQueryClient();
 
   const {
     register,
@@ -75,20 +77,26 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
     }
   }, [replace, user]);
 
+  const redirectSignedUser = useCallback(() => {
+    queryClient.invalidateQueries(Queries.User);
+    replace(Paths.Dashboard);
+  }, [queryClient, replace]);
+
   const handleSignIn = useCallback(
-    (data: SignIn) =>
+    (data: SignIn) => {
       signIn.mutate(data, {
         onSuccess: () => {
           if (!!invitedUser) {
             acceptInvitation.mutate(query.invitation_token as string, {
-              onSuccess: () => refetchUser(),
+              onSuccess: redirectSignedUser,
             });
           } else {
-            replace(Paths.Dashboard);
+            redirectSignedUser();
           }
         },
-      }),
-    [acceptInvitation, invitedUser, replace, query.invitation_token, refetchUser, signIn]
+      });
+    },
+    [signIn, invitedUser, acceptInvitation, query.invitation_token, redirectSignedUser]
   );
 
   const onSubmit: SubmitHandler<SignIn> = handleSignIn;

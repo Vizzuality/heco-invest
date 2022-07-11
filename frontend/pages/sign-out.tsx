@@ -18,12 +18,12 @@ const SignOut = () => {
       {},
       {
         onSuccess: () => {
-          queryClient.setQueryData([Queries.User, locale], undefined);
+          queryClient.invalidateQueries([Queries.User, locale]);
           replace(Paths.Home);
         },
       }
     );
-  }, []);
+  }, [locale, queryClient, replace, signOut]);
 
   return null;
 };
