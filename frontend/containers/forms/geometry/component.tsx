@@ -7,6 +7,8 @@ import { Editor, DrawPolygonMode } from 'react-map-gl-draw';
 
 import cx from 'classnames';
 
+import Script from 'next/script';
+
 import bbox from '@turf/bbox';
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { LayerManager, Layer } from '@vizzuality/layer-manager-react';
@@ -128,6 +130,9 @@ export const GeometryInput = <FormValues extends FieldValues>({
 
   return (
     <div className={className}>
+      <Script
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+      />
       <div className="flex flex-col items-end">
         <input
           ref={mergeRefs([ref, inputRef])}
