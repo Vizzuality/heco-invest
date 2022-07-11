@@ -94,7 +94,7 @@ export const StartBanner = () => {
             <Button
               theme="primary-green"
               size="small"
-              className="mb-20 text-sm mt-44"
+              className="mt-24 mb-20 text-sm md:mt-44"
               to="/sign-up"
             >
               <FormattedMessage defaultMessage="Create account" id="huqKGl" />
