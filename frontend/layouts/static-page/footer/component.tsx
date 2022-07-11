@@ -193,9 +193,11 @@ export const Footer: React.FC<FooterProps> = ({
                     </Link>
                   </li>
                   <li>
-                    <a className="text-gray-400 disabled:pointer-events-none">
-                      <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
-                    </a>
+                    <Link href={Paths.ForProjecDevelopers}>
+                      <a className="hover:underline">
+                        <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
+                      </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

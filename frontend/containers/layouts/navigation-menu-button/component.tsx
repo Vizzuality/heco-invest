@@ -65,7 +65,7 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
             <MenuItem key={Paths.ForInvestors}>
               <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
             </MenuItem>
-            <MenuItem key={Paths.ProjectDevelopers}>
+            <MenuItem key={Paths.ForProjecDevelopers}>
               <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
             </MenuItem>
             <MenuItem key={Paths.About}>
