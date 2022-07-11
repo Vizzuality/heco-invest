@@ -29,6 +29,8 @@ import DiscoverPageLayout, { DiscoverPageLayoutProps } from 'layouts/discover-pa
 import { PageComponent } from 'types';
 import { Project as ProjectType } from 'types/project';
 
+import { getProject } from 'services/projects/projectService';
+
 export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
@@ -74,8 +76,19 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
     setSelectedProject(null);
   }, [query]);
 
-  const handleProjectCardClick = (projectId: string) => {
-    setSelectedProject(projects.find(({ id }) => id === projectId));
+  const handleProjectCardClick = async (projectId: string) => {
+    const selected = projects.find(({ id }) => id === projectId);
+    if (!selected) {
+      // if the selected project from the map is not in the filtered list, the project will be fetched
+      const newSelectedProject = await getProject(projectId, {
+        includes: ['project_images', 'priority_landscape', 'project_developer'],
+      });
+      if (!!newSelectedProject.data) {
+        setSelectedProject(newSelectedProject.data);
+      }
+      return;
+    }
+    setSelectedProject(selected);
   };
 
   const handleProjectDetailsClose = () => {
