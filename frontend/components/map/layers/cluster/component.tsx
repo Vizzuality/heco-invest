@@ -1,10 +1,10 @@
-import { Paths } from 'enums';
-import Link from 'next/link';
 import { cloneElement, FC, useMemo } from 'react';
 
 import { Marker } from 'react-map-gl';
 
 import Supercluster from 'supercluster';
+
+import Button from 'components/button';
 
 import type { ClusterLayerProps } from './types';
 
@@ -13,6 +13,7 @@ export const ClusterLayer: FC<ClusterLayerProps> = ({
   map,
   MarkerComponent,
   ClusterComponent,
+  onSelectProjectPin,
 }: ClusterLayerProps) => {
   const bbox = map.getBounds().toArray().flat();
   const zoom = map.getZoom();
@@ -46,9 +47,9 @@ export const ClusterLayer: FC<ClusterLayerProps> = ({
 
         return (
           <Marker key={id} latitude={latitude} longitude={longitude}>
-            <Link href={`${Paths.Project}/${id}`}>
-              <a>{cloneElement(MarkerComponent, properties)}</a>
-            </Link>
+            <Button theme="naked" onClick={() => onSelectProjectPin(`${id}`)}>
+              {cloneElement(MarkerComponent, properties)}
+            </Button>
           </Marker>
         );
       })}

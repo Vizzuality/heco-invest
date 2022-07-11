@@ -164,7 +164,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
         )}
       </div>
       <aside className="flex-grow min-h-full p-2 m-1 bg-white rounded-2xl lg:min-h-0 lg:absolute lg:right-0 lg:w-7/12 lg:bottom-1 lg:top-1">
-        <DiscoverMap />
+        <DiscoverMap onSelectProjectPin={handleProjectCardClick} />
       </aside>
     </div>
   );
