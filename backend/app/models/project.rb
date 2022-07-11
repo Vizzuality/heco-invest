@@ -68,6 +68,7 @@ class Project < ApplicationRecord
   before_validation :clear_received_funding_fields, unless: -> { received_funding? }
   before_save :assign_priority_landscape, if: :centroid_changed?
   after_save :calculate_impacts, if: -> { saved_change_to_geometry? || saved_change_to_impact_areas? }
+  after_update :notify_project_developers, if: -> { saved_change_to_status? && published? }
 
   accepts_nested_attributes_for :project_images, reject_if: :all_blank, allow_destroy: true
 
@@ -111,5 +112,11 @@ class Project < ApplicationRecord
 
   def calculate_impacts
     ImpactCalculationJob.perform_later self
+  end
+
+  def notify_project_developers
+    involved_project_developers.each do |project_developer|
+      ProjectDeveloperMailer.added_to_project(project_developer, self).deliver_later
+    end
   end
 end
