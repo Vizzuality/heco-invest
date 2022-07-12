@@ -7,6 +7,11 @@ terraform {
   }
 }
 
+resource "google_project_service" "maps_api" {
+  service            = "maps-backend.googleapis.com"
+  disable_on_destroy = false
+}
+
 module "staging" {
   source                 = "./modules/env"
   domain                 = var.domain
