@@ -8,3 +8,10 @@ export type MapLayersSelectorProps = {
 export type MapLayersSelectorForm = {
   activeLayers: string[];
 };
+
+export type SelectedLayerTooltip = {
+  id: string;
+  name: string;
+  description: string;
+  overview?: string;
+};

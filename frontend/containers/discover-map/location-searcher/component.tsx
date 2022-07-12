@@ -48,7 +48,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ onLocationSelected
   };
 
   return (
-    <div className="relative">
+    <div className="absolute translate-x-80">
       <Script
         // TODO: Activate key and remove mock one
         // src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
