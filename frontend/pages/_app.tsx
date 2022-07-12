@@ -13,6 +13,7 @@ import { Hydrate } from 'react-query/hydration';
 import StaticPageLayout from 'layouts/static-page';
 import store from 'store';
 import { LayoutStaticProp } from 'types';
+import { NODE_ENV } from 'vars.config';
 
 import 'styles/globals.css';
 
@@ -55,7 +56,7 @@ const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
         // Nevertheless, the translations aren't pulled until the application is deployed in
         // production mode. For this reason, the message is removed during development.
         if (
-          process.env.NODE_ENV === 'production' ||
+          NODE_ENV === 'production' ||
           !error.message.startsWith('[@formatjs/intl Error MISSING_TRANSLATION]')
         ) {
           console.error(error);

@@ -9,6 +9,7 @@ import cx from 'classnames';
 import Script from 'next/script';
 
 import Icon from 'components/icon';
+// import { GOOGLE_MAPS_API_KEY } from 'vars.config';
 
 import SearchIcon from 'svgs/search.svg';
 import CloseIcon from 'svgs/ui/close.svg';
@@ -51,7 +52,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ onLocationSelected
     <div className="relative">
       <Script
         // TODO: Activate key and remove mock one
-        // src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+        // src={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places`}
         strategy="beforeInteractive"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwcOSQ6hnqoqiXX_1D1ykHOBAZZ2UorHE&amp;libraries=places"
       />

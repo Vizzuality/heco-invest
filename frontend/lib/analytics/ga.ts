@@ -1,4 +1,6 @@
-export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+import { GOOGLE_ANALYTICS } from 'vars.config';
+
+export const GA_TRACKING_ID = GOOGLE_ANALYTICS;
 
 // log the pageview with their URL
 export const GAPage = (url: string): void => {

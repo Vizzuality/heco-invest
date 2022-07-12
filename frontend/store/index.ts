@@ -1,6 +1,8 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import type { ReducersMapObject } from '@reduxjs/toolkit';
 
+import { NODE_ENV } from 'vars.config';
+
 const staticReducers = {};
 
 const asyncReducers = {};
@@ -13,7 +15,7 @@ const createReducer = (reducers: ReducersMapObject) =>
 
 const store = configureStore({
   reducer: createReducer(asyncReducers),
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: NODE_ENV !== 'production',
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
