@@ -20,7 +20,7 @@ export const projectImpact = (project: ProjectType) => {
   );
 };
 
-export const projectContacts = (project: ProjectType) => {
+export const useProjectContacts = (project: ProjectType) => {
   if (!project) return null;
 
   return [project?.project_developer || [], ...(project?.involved_project_developers || [])]

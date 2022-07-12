@@ -11,7 +11,7 @@ import { noop } from 'lodash-es';
 
 import useMe from 'hooks/me';
 
-import { projectContacts } from 'helpers/project';
+import { useProjectContacts } from 'helpers/project';
 
 import ContactInformationModal from 'containers/social-contact/contact-information-modal';
 
@@ -29,7 +29,7 @@ export const FavoriteContact: FC<FavoriteContactProps> = ({
   const [contactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
 
   const { user } = useMe();
-  const contacts = projectContacts(project);
+  const contacts = useProjectContacts(project);
 
   return (
     <div className={className}>

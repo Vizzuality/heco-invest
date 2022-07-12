@@ -6,7 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import cx from 'classnames';
 
 import { translatedLanguageNameForLocale } from 'helpers/intl';
-import { projectContacts } from 'helpers/project';
+import { useProjectContacts } from 'helpers/project';
 
 import CategoryTag from 'containers/category-tag';
 import ImageGallery from 'containers/image-gallery';
@@ -71,7 +71,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
     [allInstrumentTypes, project.instrument_types]
   );
 
-  const contacts = projectContacts(project);
+  const contacts = useProjectContacts(project);
 
   const handleFavoriteClick = () => {
     // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
