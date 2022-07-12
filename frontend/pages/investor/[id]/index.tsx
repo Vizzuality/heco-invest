@@ -59,12 +59,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
 }) => {
   const router = useRouter();
 
-  const { data: investorData } = useInvestor(router.query.id as string);
-
-  // TODO: Find better solution. Data from 'getServerSideProps' will not contain contacts, favorites and other data
-  //       that requires a logged in user. We're refetching on the client, which is most likely not ideal.
-  //       A possible solution to investigate: https://react-query.tanstack.com/reference/hydration
-  const investor = investorData || investorProp;
+  const { data: investor } = useInvestor(router.query.id as string, investorProp);
 
   const [isFavourite, setIsFavourite] = useState(investor.favourite);
 

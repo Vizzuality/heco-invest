@@ -75,13 +75,12 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
   const router = useRouter();
 
   const {
-    data: { data: projectDeveloperData },
-  } = useProjectDeveloper(router.query.id as string, PROJECT_DEVELOPER_QUERY_PARAMS);
-
-  // TODO: Find better solution. Data from 'getServerSideProps' will not contain contacts, favorites and other data
-  //       that requires a logged in user. We're refetching on the client, which is most likely not ideal.
-  //       A possible solution to investigate: https://react-query.tanstack.com/reference/hydration
-  const projectDeveloper = projectDeveloperData || projectDeveloperProp;
+    data: { data: projectDeveloper },
+  } = useProjectDeveloper(
+    router.query.id as string,
+    PROJECT_DEVELOPER_QUERY_PARAMS,
+    projectDeveloperProp
+  );
 
   const [isFavourite, setIsFavourite] = useState(projectDeveloper.favourite);
 
