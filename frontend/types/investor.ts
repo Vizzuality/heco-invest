@@ -35,5 +35,5 @@ export type Investor = Omit<InvestorForm, 'picture'> & {
   picture: Picture;
   review_status: string;
   owner: User;
-  favourite: boolean;
+  favourite?: boolean;
 };
