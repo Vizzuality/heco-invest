@@ -144,7 +144,6 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
                     theme="naked"
                     className="py-0 px-0 mt-4 text-green-dark font-normal text-small underline inline !items-start"
                     to="/images/mosaics.png"
-                    target="_blank"
                     size="small"
                     external
                   >
