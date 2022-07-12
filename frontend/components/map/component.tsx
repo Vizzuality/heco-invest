@@ -9,6 +9,8 @@ import { easeCubic } from 'd3-ease';
 import { isEmpty } from 'lodash-es';
 import { useDebouncedCallback } from 'use-debounce';
 
+import { MAPBOX_API_TOKEN } from 'vars.config';
+
 import type { MapProps } from './types';
 
 export const Map: FC<MapProps> = ({
@@ -160,7 +162,7 @@ export const Map: FC<MapProps> = ({
             mapRef.current = _map.getMap();
           }
         }}
-        mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
+        mapboxApiAccessToken={MAPBOX_API_TOKEN}
         mapStyle="mapbox://styles/leticiaheco/cksxhjccb826d18mriwdgahf1"
         // CUSTOM PROPS FROM REACT MAPBOX API
         {...mapboxProps}

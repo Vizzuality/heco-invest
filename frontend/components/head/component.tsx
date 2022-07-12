@@ -5,6 +5,8 @@ import { useIntl } from 'react-intl';
 import NextHead from 'next/head';
 import { useRouter } from 'next/router';
 
+import { FRONTEND_URL } from 'vars.config';
+
 import { HeadProps } from './types';
 
 export const Head: React.FC<HeadProps> = ({
@@ -35,14 +37,10 @@ export const Head: React.FC<HeadProps> = ({
           key={locale}
           rel="alternate"
           hrefLang={locale}
-          href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${locale}${asPath}`}
+          href={`${FRONTEND_URL}/${locale}${asPath}`}
         />
       ))}
-      <link
-        rel="alternate"
-        hrefLang="x-default"
-        href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}${asPath}`}
-      />
+      <link rel="alternate" hrefLang="x-default" href={`${FRONTEND_URL}${asPath}`} />
 
       {/* <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />

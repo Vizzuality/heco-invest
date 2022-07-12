@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
 
-const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN;
+import { MAPBOX_API_TOKEN } from 'vars.config';
 
 enum LAYER_GROUPS {
   BaseLayer = 'base-layer',
@@ -63,7 +63,7 @@ export const useLayers = () => {
             source: {
               type: 'raster',
               tiles: [
-                `https://api.mapbox.com/v4/leticiaheco.1d0el4j0/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+                `https://api.mapbox.com/v4/leticiaheco.1d0el4j0/{z}/{x}/{y}.png?access_token=${MAPBOX_API_TOKEN}`,
               ],
             },
           },
@@ -78,7 +78,7 @@ export const useLayers = () => {
             source: {
               type: 'raster',
               tiles: [
-                `https://api.mapbox.com/v4/leticiaheco.59zi3at4/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+                `https://api.mapbox.com/v4/leticiaheco.59zi3at4/{z}/{x}/{y}.png?access_token=${MAPBOX_API_TOKEN}`,
               ],
             },
           },
@@ -96,7 +96,7 @@ export const useLayers = () => {
             source: {
               type: 'raster',
               tiles: [
-                `https://api.mapbox.com/v4/leticiaheco.77lko5p2/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+                `https://api.mapbox.com/v4/leticiaheco.77lko5p2/{z}/{x}/{y}.png?access_token=${MAPBOX_API_TOKEN}`,
               ],
             },
           },
@@ -111,7 +111,7 @@ export const useLayers = () => {
             source: {
               type: 'raster',
               tiles: [
-                `https://api.mapbox.com/v4/leticiaheco.3cokqqf5/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+                `https://api.mapbox.com/v4/leticiaheco.3cokqqf5/{z}/{x}/{y}.png?access_token=${MAPBOX_API_TOKEN}`,
               ],
             },
           },
@@ -167,7 +167,7 @@ export const useLayers = () => {
             source: {
               type: 'raster',
               tiles: [
-                `https://api.mapbox.com/v4/leticiaheco.0lg4uw9f/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+                `https://api.mapbox.com/v4/leticiaheco.0lg4uw9f/{z}/{x}/{y}.png?access_token=${MAPBOX_API_TOKEN}`,
               ],
             },
           },
@@ -295,7 +295,7 @@ export const useLayers = () => {
             source: {
               type: 'raster',
               tiles: [
-                `https://api.mapbox.com/v4/leticiaheco.99uihxi8/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+                `https://api.mapbox.com/v4/leticiaheco.99uihxi8/{z}/{x}/{y}.png?access_token=${MAPBOX_API_TOKEN}`,
               ],
             },
           },

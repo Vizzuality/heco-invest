@@ -3,6 +3,8 @@ import Jsona from 'jsona';
 
 import { getCookie } from 'helpers/cookies';
 
+import { BACKEND_URL, FRONTEND_URL, PROXY_BACKEND } from 'vars.config';
+
 import { ErrorResponse } from './types';
 
 const { locales } = require('locales.config.json');
@@ -10,10 +12,10 @@ const { locales } = require('locales.config.json');
 const dataFormatter = new Jsona();
 
 export const apiBaseUrl =
-  process.env.NEXT_PUBLIC_PROXY_BACKEND === 'true'
+  PROXY_BACKEND === 'true'
     ? // This path must correspond to the one stored in `next.config.js` in the `rewrites` function
-      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/backend`
-    : process.env.NEXT_PUBLIC_BACKEND_URL;
+      `${FRONTEND_URL}/backend`
+    : BACKEND_URL;
 
 const API = axios.create({
   baseURL: apiBaseUrl,
