@@ -130,6 +130,7 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
                     'h-0 opacity-0': impactLocation !== ImpactAreas.PriorityLandscape,
                     'h-auto opacity-100': impactLocation === ImpactAreas.PriorityLandscape,
                   })}
+                  aria-hidden={impactLocation !== ImpactAreas.PriorityLandscape}
                 >
                   <p>
                     <FormattedMessage
