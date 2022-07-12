@@ -5,6 +5,8 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 
 import cx from 'classnames';
 
+import Script from 'next/script';
+
 import Icon from 'components/icon';
 
 import SearchIcon from 'svgs/search.svg';
@@ -46,6 +48,9 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ onLocationSelected
 
   return (
     <>
+      <Script
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places&callback=onGoogleMapsReady`}
+      />
       <div className="relative">
         <PlacesAutocomplete
           ref={placesRef}
@@ -53,6 +58,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ onLocationSelected
           searchOptions={searchOptions}
           onChange={handleChangeAddress}
           onSelect={handleSelectAddress}
+          googleCallbackName="onGoogleMapsReady"
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div className="w-60">
