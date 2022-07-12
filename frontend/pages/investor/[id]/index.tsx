@@ -135,16 +135,8 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
   const favoriteInvestor = useFavoriteInvestor();
 
   const handleFavoriteClick = () => {
-    const { id } = investor;
     // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
-    favoriteInvestor.mutate(
-      { id, isFavourite: investor.favourite },
-      {
-        onSuccess: (data) => {
-          investor.favourite = data.favourite;
-        },
-      }
-    );
+    favoriteInvestor.mutate({ id: investor.id, isFavourite: investor.favourite });
   };
 
   return (

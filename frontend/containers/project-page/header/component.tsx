@@ -75,14 +75,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
 
   const handleFavoriteClick = () => {
     // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
-    favoriteProject.mutate(
-      { id: project.id, isFavourite: project.favourite },
-      {
-        onSuccess: (data) => {
-          project.favourite = data.favourite;
-        },
-      }
-    );
+    favoriteProject.mutate({ id: project.id, isFavourite: project.favourite });
   };
 
   return (

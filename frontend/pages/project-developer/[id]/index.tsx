@@ -124,16 +124,11 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
   const favoriteProjectDeveloper = useFavoriteProjectDeveloper();
 
   const handleFavoriteClick = () => {
-    const { id } = projectDeveloper;
     // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
-    favoriteProjectDeveloper.mutate(
-      { id, isFavourite: projectDeveloper.favourite },
-      {
-        onSuccess: (data) => {
-          projectDeveloper.favourite = data.favourite;
-        },
-      }
-    );
+    favoriteProjectDeveloper.mutate({
+      id: projectDeveloper.id,
+      isFavourite: projectDeveloper.favourite,
+    });
   };
 
   return (

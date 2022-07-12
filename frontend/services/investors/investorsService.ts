@@ -121,6 +121,7 @@ export const useFavoriteInvestor = () => {
     {
       onSuccess: (data) => {
         queryClient.setQueryData([Queries.Investor, locale], data);
+        queryClient.invalidateQueries([Queries.Investor], {});
         queryClient.invalidateQueries([Queries.InvestorList], {});
       },
     }
