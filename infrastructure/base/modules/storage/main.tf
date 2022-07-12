@@ -16,7 +16,7 @@ resource "google_storage_bucket" "storage_bucket" {
 
   cors {
     origin          = [var.cors_origin]
-    method          = ["GET", "HEAD", "PUT", "POST"]
+    method          = ["GET", "HEAD", "PUT", "POST", "DELETE"]
     response_header = ["*"]
     max_age_seconds = 3600
   }
