@@ -14,4 +14,6 @@ export type SelectedLayerTooltip = {
   name: string;
   description: string;
   overview?: string;
+  dataSource: string;
+  dataSourceUrl: string;
 };

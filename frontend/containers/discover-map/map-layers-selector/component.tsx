@@ -117,34 +117,43 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                         }
                       >
                         <ol className="flex flex-col gap-3.5 text-xs text-black py-2">
-                          {layerGroup.layers.map(({ id, name, description, overview }) => (
-                            <li key={id} className="flex items-center gap-1.5">
-                              <label
-                                key={id}
-                                htmlFor={id}
-                                className="flex items-center gap-2 cursor-pointer"
-                              >
-                                <Switch
-                                  id={id}
-                                  name="activeLayers"
-                                  switchSize="smallest"
-                                  value={id}
-                                  register={register}
-                                />
-                                {name}
-                              </label>
+                          {layerGroup.layers.map(
+                            ({ id, name, description, overview, dataSource, dataSourceUrl }) => (
+                              <li key={id} className="flex items-center gap-1.5">
+                                <label
+                                  key={id}
+                                  htmlFor={id}
+                                  className="flex items-center gap-2 cursor-pointer"
+                                >
+                                  <Switch
+                                    id={id}
+                                    name="activeLayers"
+                                    switchSize="smallest"
+                                    value={id}
+                                    register={register}
+                                  />
+                                  {name}
+                                </label>
 
-                              <button
-                                onClick={() =>
-                                  handleShowTooltip({ id, name, description, overview })
-                                }
-                                type="button"
-                                className="flex items-center justify-center w-4 h-4 text-gray-800 scale-90 border border-gray-800 rounded-full pointer focus-visible:outline-green-dark focus-visible:outline-2"
-                              >
-                                <p className="pt-0.5 text-xs">i</p>
-                              </button>
-                            </li>
-                          ))}
+                                <button
+                                  onClick={() =>
+                                    handleShowTooltip({
+                                      id,
+                                      name,
+                                      description,
+                                      overview,
+                                      dataSource,
+                                      dataSourceUrl,
+                                    })
+                                  }
+                                  type="button"
+                                  className="flex items-center justify-center w-4 h-4 text-gray-800 scale-90 border border-gray-800 rounded-full pointer focus-visible:outline-green-dark focus-visible:outline-2"
+                                >
+                                  <p className="pt-0.5 text-xs">i</p>
+                                </button>
+                              </li>
+                            )
+                          )}
                         </ol>
                       </Expando>
                     );
