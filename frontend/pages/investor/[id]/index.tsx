@@ -61,8 +61,6 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
 
   const { data: investor } = useInvestor(router.query.id as string, investorProp);
 
-  const [isFavourite, setIsFavourite] = useState(investor.favourite);
-
   const {
     name,
     twitter,
@@ -140,9 +138,11 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     const { id } = investor;
     // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
     favoriteInvestor.mutate(
-      { id, isFavourite },
+      { id, isFavourite: investor.favourite },
       {
-        onSuccess: (data) => setIsFavourite(data.favourite),
+        onSuccess: (data) => {
+          investor.favourite = data.favourite;
+        },
       }
     );
   };
@@ -169,7 +169,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
           // social={getSocialInfo()}
           contact={contact}
           originalLanguage={language}
-          isFavorite={isFavourite}
+          isFavorite={investor.favourite}
           onFavoriteClick={handleFavoriteClick}
           favoriteLoading={favoriteInvestor.isLoading}
         />

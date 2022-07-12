@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 import { FormattedMessage } from 'react-intl';
 
 import { useRouter } from 'next/router';
@@ -82,13 +80,6 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     projectDeveloperProp
   );
 
-  const [isFavourite, setIsFavourite] = useState(projectDeveloper.favourite);
-
-  useEffect(() => {
-    // this useEffect is needed because the initial PD can be different from the current. On the server, when we fetch the PD, we don't send the session cookie so the endpoint doesn't tell us if the PD is in the favourites. When the hook executes on the client (the browser), we do send the token and thus projectDeveloper.favourite has a different value.
-    setIsFavourite(projectDeveloper.favourite);
-  }, [projectDeveloper]);
-
   const projectDeveloperTypeName = enums[EnumTypes.ProjectDeveloperType].find(
     ({ id }) => id === projectDeveloper.project_developer_type
   )?.name;
@@ -136,9 +127,11 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     const { id } = projectDeveloper;
     // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
     favoriteProjectDeveloper.mutate(
-      { id, isFavourite },
+      { id, isFavourite: projectDeveloper.favourite },
       {
-        onSuccess: (data) => setIsFavourite(data.favourite),
+        onSuccess: (data) => {
+          projectDeveloper.favourite = data.favourite;
+        },
       }
     );
   };
@@ -169,7 +162,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           projectsWaitingFunding={stats.projectsWaitingFunding}
           totalProjects={stats.totalProjects}
           originalLanguage={projectDeveloper.language}
-          isFavorite={isFavourite}
+          isFavorite={projectDeveloper.favourite}
           onFavoriteClick={handleFavoriteClick}
           favoriteLoading={favoriteProjectDeveloper.isLoading}
         />
