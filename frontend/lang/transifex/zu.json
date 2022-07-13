@@ -65,6 +65,9 @@
   "0SKBlf": {
     "string": "Go to page {pageNumber}"
   },
+  "0WEEzi": {
+    "string": "<n>HeCo priority landscapes</n> are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystems"
+  },
   "0cWjQP": {
     "string": "{title} - page {currentPage} out of {numPages}"
   },
@@ -514,6 +517,9 @@
   },
   "GdS9Mk": {
     "string": "Has this project been funded before?"
+  },
+  "GtP2gp": {
+    "string": "Find opportunities that have the greatest impact on challenges like <b>biodiversity, climate, community</b> and <b>water</b>."
   },
   "GufXy5": {
     "string": "Value"
@@ -1407,9 +1413,6 @@
   "p+Qmws": {
     "string": "Which of these topic/sector categories better describe your project?"
   },
-  "p1NkQY": {
-    "string": "Find opportunities that have the greatest impact on challenges like biodiversity, climate, community and water."
-  },
   "pONqz8": {
     "string": "First name"
   },
@@ -1454,6 +1457,9 @@
   },
   "qcsPS9": {
     "string": "{duration} months"
+  },
+  "qe+BvO": {
+    "string": "<b>Call on our community</b> of project developers to identify opportunities in your preferred sectors and geographies."
   },
   "qoImFc": {
     "string": "Replicability of the project"
@@ -1676,9 +1682,6 @@
   },
   "ygAxHr": {
     "string": "Your project is awaiting verification. This means that the project is visible in the platform but without the <b>Verification badge</b>."
-  },
-  "yqBX7I": {
-    "string": "Call on our community of project developers to identify opportunities in your preferred sectors and geographies."
   },
   "yqJ5XD": {
     "string": "Select the amount of money that you need"

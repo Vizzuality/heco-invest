@@ -28,7 +28,7 @@ export const Working = () => (
             icon={CreateAccountIcon}
             className="w-24 h-24 p-3 mx-auto bg-white rounded-full text-green-dark"
           />
-          <h3 className="mt-4 text-xl font-medium uppercase md:mt-14">
+          <h3 className="mt-4 text-xl font-semibold uppercase md:mt-14">
             <FormattedMessage defaultMessage="Create an account" id="0vL5u1" />
           </h3>
           <p className="mt-2 md:mt-2.5 text-black/70">
@@ -43,7 +43,7 @@ export const Working = () => (
             icon={SearchFindIcon}
             className="w-24 h-24 p-3 mx-auto bg-white rounded-full text-green-dark"
           />
-          <h3 className="mt-4 text-xl font-medium uppercase md:mt-14">
+          <h3 className="mt-4 text-xl font-semibold uppercase md:mt-14">
             <FormattedMessage defaultMessage="Search and find" id="oiQKNY" />
           </h3>
           <p className="mt-2 md:mt-2.5 text-black/70">
@@ -58,7 +58,7 @@ export const Working = () => (
             icon={ConnectIcon}
             className="w-24 h-24 p-3 mx-auto bg-white rounded-full text-green-dark"
           />
-          <h3 className="mt-4 text-xl font-medium uppercase md:mt-14">
+          <h3 className="mt-4 text-xl font-semibold uppercase md:mt-14">
             <FormattedMessage defaultMessage="Connect" id="+vVZ/G" />
           </h3>
           <p className="mt-2 md:mt-2.5 text-black/70">
