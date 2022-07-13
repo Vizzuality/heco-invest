@@ -46,16 +46,18 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
     [allCategories, project.category]
   );
 
-  const coverImage = useMemo(
-    () =>
+  const coverImage = useMemo(() => {
+    if (!project.project_images?.length) return null;
+
+    return (
       // First we try to find the image with `cover: true`
-      project.project_images.find(({ cover = false }) => cover === true)?.file.medium ||
+      project.project_images?.find(({ cover = false }) => cover === true)?.file.medium ||
       // If none found, we use the first image as cover
       project.project_images[0]?.file.medium ||
       // No images to use as cover image.
-      null,
-    [project.project_images]
-  );
+      null
+    );
+  }, [project.project_images]);
 
   const ticketSizeStr = useMemo(
     () => allTicketSizes?.find(({ id }) => project.ticket_size === id)?.description,
@@ -115,7 +117,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
                 </CategoryTag>
               )}
             </div>
-            {!!project.project_images.length && (
+            {!!project.project_images?.length && (
               <div className="self-end order-first sm:self-start sm:order-last">
                 <ImageGallery images={project.project_images} />
               </div>
