@@ -81,7 +81,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
     if (!selected) {
       // if the selected project from the map is not in the filtered list, the project will be fetched
       const newSelectedProject = await getProject(projectId, {
-        includes: ['project_images', 'priority_landscape', 'project_developer'],
+        includes: ['project_developer', 'involved_project_developers'],
       });
       if (!!newSelectedProject.data) {
         setSelectedProject(newSelectedProject.data);

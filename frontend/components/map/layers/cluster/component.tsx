@@ -4,8 +4,6 @@ import { Marker } from 'react-map-gl';
 
 import Supercluster from 'supercluster';
 
-import Button from 'components/button';
-
 import type { ClusterLayerProps } from './types';
 
 export const ClusterLayer: FC<ClusterLayerProps> = ({
@@ -46,10 +44,13 @@ export const ClusterLayer: FC<ClusterLayerProps> = ({
         }
 
         return (
-          <Marker key={id} latitude={latitude} longitude={longitude}>
-            <Button theme="naked" onClick={() => onSelectProjectPin(`${id}`)}>
-              {cloneElement(MarkerComponent, properties)}
-            </Button>
+          <Marker
+            key={id}
+            latitude={latitude}
+            longitude={longitude}
+            onClick={() => onSelectProjectPin(`${id}`)}
+          >
+            {cloneElement(MarkerComponent, properties)}
           </Marker>
         );
       })}
