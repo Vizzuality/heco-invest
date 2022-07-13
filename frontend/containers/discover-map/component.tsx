@@ -24,7 +24,7 @@ import { DiscoverMapProps } from './types';
 
 const cartoProvider = new CartoProvider();
 
-export const DiscoverMap: FC<DiscoverMapProps> = () => {
+export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
   const [visibleLayers, setVisibleLayers] = useState<string[]>([]);
   const { layers } = useLayers();
   const { query } = useRouter();
@@ -68,6 +68,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = () => {
                 map={map}
                 MarkerComponent={<MapPin />}
                 ClusterComponent={<MapPinCluster />}
+                onSelectProjectPin={onSelectProjectPin}
               />
             </>
           )}

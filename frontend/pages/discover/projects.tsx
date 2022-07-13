@@ -29,6 +29,8 @@ import DiscoverPageLayout, { DiscoverPageLayoutProps } from 'layouts/discover-pa
 import { PageComponent } from 'types';
 import { Project as ProjectType } from 'types/project';
 
+import { getProject } from 'services/projects/projectService';
+
 export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
@@ -74,8 +76,19 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
     setSelectedProject(null);
   }, [query]);
 
-  const handleProjectCardClick = (projectId: string) => {
-    setSelectedProject(projects.find(({ id }) => id === projectId));
+  const handleProjectCardClick = async (projectId: string) => {
+    const selected = projects.find(({ id }) => id === projectId);
+    if (!selected) {
+      // if the selected project from the map is not in the filtered list, the project will be fetched
+      const newSelectedProject = await getProject(projectId, {
+        includes: ['project_developer', 'involved_project_developers'],
+      });
+      if (!!newSelectedProject.data) {
+        setSelectedProject(newSelectedProject.data);
+      }
+      return;
+    }
+    setSelectedProject(selected);
   };
 
   const handleProjectDetailsClose = () => {
@@ -164,7 +177,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
         )}
       </div>
       <aside className="flex-grow min-h-full p-2 m-1 bg-white rounded-2xl lg:min-h-0 lg:absolute lg:right-0 lg:w-7/12 lg:bottom-1 lg:top-1">
-        <DiscoverMap />
+        <DiscoverMap onSelectProjectPin={handleProjectCardClick} />
       </aside>
     </div>
   );

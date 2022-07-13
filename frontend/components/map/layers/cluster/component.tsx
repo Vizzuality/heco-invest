@@ -11,6 +11,7 @@ export const ClusterLayer: FC<ClusterLayerProps> = ({
   map,
   MarkerComponent,
   ClusterComponent,
+  onSelectProjectPin,
 }: ClusterLayerProps) => {
   const bbox = map.getBounds().toArray().flat();
   const zoom = map.getZoom();
@@ -43,7 +44,12 @@ export const ClusterLayer: FC<ClusterLayerProps> = ({
         }
 
         return (
-          <Marker key={id} latitude={latitude} longitude={longitude}>
+          <Marker
+            key={id}
+            latitude={latitude}
+            longitude={longitude}
+            onClick={() => onSelectProjectPin(`${id}`)}
+          >
             {cloneElement(MarkerComponent, properties)}
           </Marker>
         );
