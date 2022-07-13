@@ -56,7 +56,7 @@ export const UsersPage: PageComponent<UsersPageProps, DashboardLayoutProps> = ()
         }
       >
         <div className="pt-4">
-          <UsersTable />
+          <UsersTable isOwner={user?.owner} />
         </div>
       </DashboardLayout>
       <InviteUsersModal

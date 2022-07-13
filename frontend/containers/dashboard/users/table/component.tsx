@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 import { FormattedMessage } from 'react-intl';
 
 import { useQueryParams } from 'helpers/pages';
@@ -14,7 +16,9 @@ import Invitation from './cells/invitation';
 import Role from './cells/role';
 import User from './cells/user';
 
-export const UsersTable = () => {
+import { UsersTableProps } from '.';
+
+export const UsersTable: FC<UsersTableProps> = ({ isOwner }) => {
   const queryOptions = { keepPreviousData: true, refetchOnMount: true };
   const queryParams = useQueryParams();
 
@@ -56,20 +60,29 @@ export const UsersTable = () => {
         width: 50,
         Cell: Invitation,
       },
-      {
-        Header: 'Actions',
-        className: 'capitalize text-sm',
-        canSort: false,
-        width: 50,
-        hideHeader: true,
-        Cell: Actions,
-      },
     ],
     data: users,
     loading: isLoadingUsers || isFetchingUsers,
     sortingEnabled: true,
     manualSorting: false,
   };
+
+  const tablePropsWithPermissions = isOwner
+    ? {
+        ...tableProps,
+        columns: [
+          ...tableProps.columns,
+          {
+            Header: 'Actions',
+            className: 'capitalize text-sm',
+            canSort: false,
+            width: 50,
+            hideHeader: true,
+            Cell: Actions,
+          },
+        ],
+      }
+    : tableProps;
 
   return (
     <div>
@@ -85,7 +98,7 @@ export const UsersTable = () => {
           />
         </SearchAndInfo>
       </div>
-      {hasUsers && <Table {...tableProps} />}
+      {hasUsers && <Table {...tablePropsWithPermissions} />}
       {!hasUsers && (
         <div className="flex flex-col items-center mt-10 lg:mt-20">
           {isSearching && <NoSearchResults />}
