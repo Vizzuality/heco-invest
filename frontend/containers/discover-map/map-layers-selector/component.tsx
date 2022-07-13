@@ -2,7 +2,7 @@ import { FC, useRef, useState, useEffect } from 'react';
 
 import { FocusScope } from 'react-aria';
 import { Layers as IconLayers } from 'react-feather';
-import { ChevronUp as ChevronUpIcon, X as CloseIcon } from 'react-feather';
+import { ChevronUp as ChevronUpIcon } from 'react-feather';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
@@ -87,7 +87,7 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
               className="z-10 relative flex flex-col md:flex-row mx-0.5 mt-2 bg-white rounded-2xl"
               ref={selectorRef}
             >
-              <div className="flex top-0 left-0 lg:min-w-fit z-10 p-3 -m-0.5 whitespace-nowrap overflow-auto">
+              <div className="flex top-0 left-0 lg:min-w-fit z-10 p-3 -m-0.5 whitespace-nowrap overflow-auto min-w-fit">
                 <form>
                   {groupedLayers.map((layerGroup) => {
                     if (!layerGroup.layers.length) return null;
