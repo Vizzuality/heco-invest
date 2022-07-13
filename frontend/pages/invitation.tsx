@@ -48,24 +48,37 @@ const Invitation: PageComponent<InvitationProps> = () => {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    if (!!invitedUser && !!user && user.email !== invitedUser.email) {
-      // If the invited user and the sign-in user are different, sign-out the current user and continue with the invitation flow.
-      signOut.mutate({}, { onSuccess: () => queryClient.invalidateQueries(Queries.User) });
-    } else if (!!user && user?.role !== UserRoles.Light) {
-      // If the user and the invites user have the same email but the role is not ligth
-      replace(Paths.Dashboard);
-    } else if (!!invitedUser && userError) {
-      // The user is not signed in
-      replace({
-        pathname: invitedUser.requires_registration
-          ? // The invited user needs sign-up before accept invitation
-            Paths.SignUp
-          : // If the user has a ligth user account but is not signed in
-            Paths.SignIn,
-        query: { invitation_token: query.invitation_token },
-      });
+    // The conditions will only be tested if the user and invited user are already fetched
+    if (!userLoading && !invitedUserLoading) {
+      if (!!invitedUser && !!user && user.email !== invitedUser.email) {
+        // If the invited user and the sign-in user are different, sign-out the current user and continue with the invitation flow.
+        signOut.mutate({}, { onSuccess: () => queryClient.invalidateQueries(Queries.User) });
+      } else if (!!user && user?.role !== UserRoles.Light) {
+        // If the user and the invites user have the same email but the role is not ligth
+        replace(Paths.Dashboard);
+      } else if (!!invitedUser && userError) {
+        // The user is not signed in
+        replace({
+          pathname: invitedUser.requires_registration
+            ? // The invited user needs sign-up before accept invitation
+              Paths.SignUp
+            : // If the user has a ligth user account but is not signed in
+              Paths.SignIn,
+          query: { invitation_token: query.invitation_token },
+        });
+      }
     }
-  }, [invitedUser, query.invitation_token, queryClient, replace, signOut, user, userError]);
+  }, [
+    invitedUser,
+    invitedUserLoading,
+    query.invitation_token,
+    queryClient,
+    replace,
+    signOut,
+    user,
+    userError,
+    userLoading,
+  ]);
 
   const handleAccept = () => {
     acceptInvitation.mutate(query.invitation_token as string, {
@@ -76,7 +89,6 @@ const Invitation: PageComponent<InvitationProps> = () => {
     });
   };
 
-  // The page only loads if the user is signed in
   return (
     <div className="flex flex-col items-center w-full min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-176px)]">
       <div className="flex items-center justify-center rounded-full w-44 h-44 bg-background-middle">

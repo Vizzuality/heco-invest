@@ -19,10 +19,10 @@ const SignOut = () => {
       {
         onSuccess: () => {
           queryClient.invalidateQueries([Queries.User, locale]);
-          replace(Paths.Home);
         },
       }
     );
+    replace(Paths.Home);
   }, [locale, queryClient, replace, signOut]);
 
   return null;

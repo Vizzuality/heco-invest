@@ -4,24 +4,26 @@ import { useRouter } from 'next/router';
 
 import { AxiosResponse, AxiosError } from 'axios';
 
-import { Queries } from 'enums';
+import { Paths, Queries } from 'enums';
 import { SignIn } from 'types/sign-in';
 import { User } from 'types/user';
 
 import API from '../api';
 
 export function useSignOut(): UseMutationResult<AxiosResponse, AxiosError> {
-  const { locale } = useRouter();
   const signOut = async () =>
     await API.request({
       method: 'DELETE',
       url: '/api/v1/session',
       data: {},
     });
+  const { locale } = useRouter();
   const queryClient = useQueryClient();
   return useMutation(signOut, {
     onSuccess: () => {
-      queryClient.setQueryData([Queries.User, locale], undefined);
+      queryClient.setQueriesData([Queries.User, locale], undefined);
+      queryClient.setQueriesData([Queries.CurrentInvestor, locale], undefined);
+      queryClient.setQueriesData([Queries.CurrentProjectDeveloper, locale], undefined);
     },
   });
 }
