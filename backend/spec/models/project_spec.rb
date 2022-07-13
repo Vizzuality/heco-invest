@@ -316,4 +316,23 @@ RSpec.describe Project, type: :model do
       end
     end
   end
+
+  describe "#notify_project_developers" do
+    let(:project_developer) { create :project_developer }
+    let(:new_project_developer) { create :project_developer }
+    let!(:project) { create :project, :draft, involved_project_developers: [project_developer] }
+
+    it "notifies all involved project developers" do
+      expect {
+        project.update! involved_project_developers: [project_developer, new_project_developer], status: :published
+      }.to have_enqueued_mail(ProjectDeveloperMailer, :added_to_project).with(project_developer, project).once
+        .and have_enqueued_mail(ProjectDeveloperMailer, :added_to_project).with(new_project_developer, project).once
+    end
+
+    it "does not notifies project developers when status of project does not change" do
+      expect {
+        project.update! involved_project_developers: [project_developer, new_project_developer]
+      }.not_to have_enqueued_mail(ProjectDeveloperMailer, :added_to_project)
+    end
+  end
 end

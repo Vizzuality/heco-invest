@@ -7,7 +7,7 @@ RSpec.describe "API V1 User", type: :request do
 
   path "/api/v1/user" do
     post "Creates/Registers user" do
-      tags "User"
+      tags "Users"
       consumes "application/json"
       produces "application/json"
       security [csrf: []]
@@ -133,7 +133,7 @@ RSpec.describe "API V1 User", type: :request do
     end
 
     get "Returns logged in user" do
-      tags "User"
+      tags "Users"
       produces "application/json"
       security [cookie_auth: []]
 

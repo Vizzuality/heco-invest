@@ -74,8 +74,11 @@ export const UsePlatform = () => {
                 </dt>
                 <dd className="mt-1 text-black/70">
                   <FormattedMessage
-                    defaultMessage="Call on our community of project developers to identify opportunities in your preferred sectors and geographies."
-                    id="yqBX7I"
+                    defaultMessage="<b>Call on our community</b> of project developers to identify opportunities in your preferred sectors and geographies."
+                    id="qe+BvO"
+                    values={{
+                      b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+                    }}
                   />
                 </dd>
               </div>
@@ -85,8 +88,11 @@ export const UsePlatform = () => {
                 </dt>
                 <dd className="mt-1 text-black/70">
                   <FormattedMessage
-                    defaultMessage="Find opportunities that have the greatest impact on challenges like biodiversity, climate, community and water."
-                    id="p1NkQY"
+                    defaultMessage="Find opportunities that have the greatest impact on challenges like <b>biodiversity, climate, community</b> and <b>water</b>."
+                    id="GtP2gp"
+                    values={{
+                      b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+                    }}
                   />
                 </dd>
               </div>
@@ -192,8 +198,10 @@ export const UsePlatform = () => {
                     id="btdgGc"
                     values={{
                       a: (chunks) => (
-                        <Link href="/discover/open-call">
-                          <a className="text-green-dark">{chunks}</a>
+                        <Link href="/discover/open-calls">
+                          <a className="font-semibold underline text-green-dark hover:no-underline">
+                            {chunks}
+                          </a>
                         </Link>
                       ),
                     }}

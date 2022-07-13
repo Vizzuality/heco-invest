@@ -37,11 +37,11 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
   const impactArea = ImpactAreas.Municipality;
 
   const [projectDeveloperImage, setProjectDeveloperImage] = useState<string>(
-    project.project_developer?.picture.small
+    project.project_developer?.picture?.small
   );
 
   useEffect(() => {
-    setProjectDeveloperImage(project.project_developer?.picture.small);
+    setProjectDeveloperImage(project.project_developer?.picture?.small);
   }, [project]);
 
   const {

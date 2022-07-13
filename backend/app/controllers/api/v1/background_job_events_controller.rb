@@ -3,7 +3,7 @@ module API
     class BackgroundJobEventsController < BaseController
       include API::Pagination
 
-      before_action :authenticate_user! # TODO: Only Admin can access!
+      before_action :authenticate_admin!
 
       def index
         events = apply_filter_to(BackgroundJobEvent.all).order :created_at

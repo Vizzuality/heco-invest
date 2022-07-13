@@ -57,4 +57,8 @@ class User < ApplicationRecord
 
     errors.add :password, :password_complexity
   end
+
+  def block_from_invitation?
+    false # invited users can still sign-in
+  end
 end
