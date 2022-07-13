@@ -2,7 +2,7 @@ import { FC, useRef, useState, useEffect } from 'react';
 
 import { FocusScope } from 'react-aria';
 import { Layers as IconLayers } from 'react-feather';
-import { ChevronUp as ChevronUpIcon } from 'react-feather';
+import { ChevronUp as ChevronUpIcon, X as CloseIcon } from 'react-feather';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
@@ -12,20 +12,25 @@ import { useKey, useOutsideClick } from 'rooks';
 
 import { useLayers } from 'hooks/useLayers';
 
+import Button from 'components/button';
 import Expando from 'components/expando';
 import Switch from 'components/forms/switch';
-import Tooltip from 'components/tooltip';
 
-import type { MapLayersSelectorProps, MapLayersSelectorForm } from './types';
+import LayerTooltip from '../layer-tooltip';
+
+import type { MapLayersSelectorProps, MapLayersSelectorForm, SelectedLayerTooltip } from './types';
 
 export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   className,
   onActiveLayersChange,
 }: MapLayersSelectorProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedLayer, setSelectedlayer] = useState<SelectedLayerTooltip>();
   const containerRef = useRef<HTMLDivElement>(null);
   const selectorRef = useRef<HTMLDivElement>(null);
   const { groupedLayers } = useLayers();
+  const initialOpenLayerGroup = groupedLayers.map((group) => group.id);
+  const [openLayerGroup, setOpenLayerGroup] = useState<string[]>(initialOpenLayerGroup);
 
   const { register, watch } = useForm<MapLayersSelectorForm>({
     defaultValues: {
@@ -42,6 +47,8 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   useOutsideClick(containerRef, () => {
     if (!isOpen) return;
     setIsOpen(false);
+    setSelectedlayer(undefined);
+    setOpenLayerGroup(initialOpenLayerGroup);
   });
 
   useEffect(() => {
@@ -50,13 +57,25 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
 
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
+    setSelectedlayer(undefined);
+  };
+
+  const handleShowTooltip = (layer: SelectedLayerTooltip) => {
+    setSelectedlayer(layer);
+  };
+
+  const handleChangeOpenLayerGroup = (groupId: string) => {
+    const newOpenLayerGroup = openLayerGroup.includes(groupId)
+      ? openLayerGroup.filter((id) => id !== groupId)
+      : [...openLayerGroup, groupId];
+    setOpenLayerGroup(newOpenLayerGroup);
   };
 
   return (
     <div className={className} ref={containerRef}>
       <div className="relative flex flex-col justify-center">
         <button
-          className="flex items-center gap-2.5 shadow-sm h-full bg-white rounded border-xl px-2 py-1 outline-none focus-visible:ring-green-dark focus-visible:ring-2 hover:ring-green-dark hover:ring-1"
+          className="flex items-center gap-2.5 shadow-sm h-full bg-white rounded border-xl px-2 py-1 outline-none focus-visible:ring-green-dark focus-visible:ring-2 hover:ring-green-dark hover:ring-1 w-fit"
           onClick={handleButtonClick}
         >
           <IconLayers className="w-4 h-4" />
@@ -64,74 +83,87 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
         </button>
         {isOpen && (
           <FocusScope contain restoreFocus>
-            <div className="relative mx-0.5 mt-2" ref={selectorRef}>
-              <div className="absolute top-0 left-0 lg:min-w-[280px] z-10 p-3 -m-0.5 bg-white rounded-md shadow-xl border-xl whitespace-nowrap">
+            <div
+              className="z-10 relative flex flex-col md:flex-row mx-0.5 mt-2 bg-white rounded-2xl"
+              ref={selectorRef}
+            >
+              <div className="flex top-0 left-0 lg:min-w-fit z-10 p-3 -m-0.5 whitespace-nowrap overflow-auto">
                 <form>
                   {groupedLayers.map((layerGroup) => {
                     if (!layerGroup.layers.length) return null;
+                    const groupIsOpen = openLayerGroup.includes(layerGroup.id);
 
                     return (
                       <Expando
+                        defaultOpen={groupIsOpen}
                         key={layerGroup.id}
                         title={
-                          <div className="flex items-center w-full my-2">
-                            <span className="flex flex-grow">{layerGroup.name}</span>
-                            <span>
+                          <Button
+                            theme="naked"
+                            className="w-full px-0 py-0"
+                            onClick={() => handleChangeOpenLayerGroup(layerGroup.id)}
+                          >
+                            <div className="flex items-center w-full my-2">
+                              <span className="flex flex-grow">{layerGroup.name}</span>
                               <ChevronUpIcon
                                 className={cx({
                                   'w-4 h-4 transition-all': true,
-                                  'rotate-0': !isOpen,
-                                  'rotate-180': isOpen,
+                                  'rotate-180': !groupIsOpen,
+                                  'rotate-0': groupIsOpen,
                                 })}
                               />
-                            </span>
-                          </div>
+                            </div>
+                          </Button>
                         }
                       >
                         <ol className="flex flex-col gap-3.5 text-xs text-black py-2">
-                          {layerGroup.layers.map(({ id, name, description }) => (
-                            <li key={id} className="flex items-center gap-1.5">
-                              <label
-                                key={id}
-                                htmlFor={id}
-                                className="flex items-center gap-2 cursor-pointer"
-                              >
-                                <Switch
-                                  id={id}
-                                  name="activeLayers"
-                                  switchSize="smallest"
-                                  value={id}
-                                  register={register}
-                                />
-                                {name}
-                              </label>
-                              {description && (
-                                <Tooltip
-                                  placement="top"
-                                  arrow
-                                  arrowClassName="bg-black"
-                                  content={
-                                    <div className="max-w-md p-2 font-sans text-sm font-normal text-white bg-black rounded-sm w-72">
-                                      {description}
-                                    </div>
-                                  }
+                          {layerGroup.layers.map(
+                            ({ id, name, description, overview, dataSource, dataSourceUrl }) => (
+                              <li key={id} className="flex items-center gap-1.5">
+                                <label
+                                  key={id}
+                                  htmlFor={id}
+                                  className="flex items-center gap-2 cursor-pointer"
                                 >
-                                  <button
-                                    type="button"
-                                    className="flex items-center justify-center w-4 h-4 text-gray-800 scale-90 border border-gray-800 rounded-full pointer focus-visible:outline-green-dark focus-visible:outline-2"
-                                  >
-                                    <p className="text-xs">i</p>
-                                  </button>
-                                </Tooltip>
-                              )}
-                            </li>
-                          ))}
+                                  <Switch
+                                    id={id}
+                                    name="activeLayers"
+                                    switchSize="smallest"
+                                    value={id}
+                                    register={register}
+                                  />
+                                  {name}
+                                </label>
+
+                                <button
+                                  onClick={() =>
+                                    handleShowTooltip({
+                                      id,
+                                      name,
+                                      description,
+                                      overview,
+                                      dataSource,
+                                      dataSourceUrl,
+                                    })
+                                  }
+                                  type="button"
+                                  className="flex items-center justify-center w-4 h-4 text-gray-800 scale-90 border border-gray-800 rounded-full pointer focus-visible:outline-green-dark focus-visible:outline-2"
+                                >
+                                  <p className="pt-0.5 text-xs">i</p>
+                                </button>
+                              </li>
+                            )
+                          )}
                         </ol>
                       </Expando>
                     );
                   })}
                 </form>
               </div>
+              <LayerTooltip
+                selectedLayer={selectedLayer}
+                closeTooltip={() => setSelectedlayer(undefined)}
+              />
             </div>
           </FocusScope>
         )}
