@@ -15,7 +15,7 @@ class Project < ApplicationRecord
   has_many :project_images, dependent: :destroy
   has_many :favourite_projects, dependent: :destroy
   has_many :project_involvements, dependent: :destroy
-  has_many :involved_project_developers, through: :project_involvements, source: :project_developer
+  has_many :involved_project_developers, through: :project_involvements, source: :project_developer, dependent: :destroy
 
   translates :name,
     :description,
