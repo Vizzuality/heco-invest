@@ -17,7 +17,6 @@ import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import Tag from 'components/tag';
 import { CategoryType } from 'types/category';
-import { ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
 
 import { useAccount } from 'services/account';
 import { useEnums } from 'services/enums/enumService';
@@ -38,8 +37,6 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
       category: allCategories,
     },
   } = useEnums();
-
-  const projectDeveloper: ProjectDeveloperType = project.project_developer;
 
   const category = useMemo(
     () => allCategories?.find(({ id }) => id === project.category),
