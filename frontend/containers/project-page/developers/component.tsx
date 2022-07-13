@@ -40,7 +40,7 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
             />
           </p>
         </div>
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col flex-1 space-y-6">
           {allDevelopers.map(({ about, name, picture, project_developer_type, id, slug }) => (
             <ProfileCard
               className="w-full"
