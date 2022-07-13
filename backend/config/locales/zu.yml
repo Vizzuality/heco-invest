@@ -138,6 +138,10 @@ zu:
     change_password:
       title: Change your password
       button: Change my password
+    users:
+      index:
+        account: Account
+        last_sign_in_at: Last login
     admins:
       information: User information
       password: Password
@@ -191,6 +195,7 @@ zu:
       project_developers: Project developers
       investors: Investors
       projects: Projects
+      users: Users
       admins: Administrators
   errors:
     messages:
