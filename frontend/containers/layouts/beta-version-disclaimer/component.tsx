@@ -6,7 +6,6 @@ import { FormattedMessage } from 'react-intl';
 import cx from 'classnames';
 
 import Button from 'components/button';
-import { Paths } from 'enums';
 
 const BetaVersionDisclaimer = () => {
   const [hidden, setHidden] = useState(false);
@@ -33,16 +32,12 @@ const BetaVersionDisclaimer = () => {
         }
       )}
     >
-      <p className="text-sm mr-2">
+      <p className="text-sm mr-2 text-center">
         <FormattedMessage
-          defaultMessage="HeCo Invest is currently on Beta version. We still testing and making improvements and for that reason some features may not be fully functional. <a>About the Beta version</a>"
-          id="Qnrkzi"
+          defaultMessage="HeCo Invest is currently on <n>Beta</n> version. We still testing and making improvements and for that reason some features may not be fully functional. Please let us know if there is anything we can change to make your experience better."
+          id="vOsmgU"
           values={{
-            a: (chunk: string) => (
-              <a className="underline" href={`${Paths.FAQ}#beta`}>
-                {chunk}
-              </a>
-            ),
+            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
           }}
         />
       </p>
