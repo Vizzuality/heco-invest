@@ -36,7 +36,7 @@ FactoryBot.define do
       review_status { "rejected" }
     end
 
-    after :create do |account|
+    before :create do |account|
       account.users << account.owner
     end
   end

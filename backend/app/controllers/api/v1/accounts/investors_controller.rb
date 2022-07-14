@@ -8,8 +8,8 @@ module API
           current_user.with_lock do
             raise API::UnprocessableEntityError, I18n.t("errors.messages.user.multiple_accounts") if current_user.account_id.present?
 
-            account = Account.create! account_params.merge(owner: current_user)
-            current_user.update! account: account, role: :investor
+            account = Account.create! account_params.merge(owner: current_user, users: [current_user])
+            current_user.update! role: :investor
             investor = Investor.create! investor_params.merge(account: account)
             render json: InvestorSerializer.new(
               investor,

@@ -31,6 +31,7 @@ zu:
         language: Language
         review_status: Review status
         type: Type
+        owner_id: Owner
       project_developer:
         impacts: Expect to have impact on
         project_developer_type: Project developer type
@@ -206,6 +207,7 @@ zu:
       not_geojson: is not geojson
       unsupported_geometry: shape is not supported
       missing_geometry: inside geojson is empty
+      owner_not_part_of_account: is not part of account
       user:
         multiple_accounts: User already have account!
         no_project_developer: User is not project developer!

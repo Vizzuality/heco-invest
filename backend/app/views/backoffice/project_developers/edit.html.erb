@@ -8,6 +8,7 @@
       <li><%= section_link_to t("backoffice.account.account_language"), edit_backoffice_project_developer_path, :language %></li>
       <li><%= section_link_to t("backoffice.account.profile"), edit_backoffice_project_developer_path, :profile, default: true %></li>
       <li><%= section_link_to t("backoffice.account.approval_status"), edit_backoffice_project_developer_path, :status %></li>
+      <li><%= section_link_to t("backoffice.common.account_owner"), edit_backoffice_project_developer_path, :owner %></li>
     </ul>
     <%= link_to backoffice_project_developer_path(@project_developer.id),
        data: {

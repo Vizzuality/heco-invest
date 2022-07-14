@@ -66,6 +66,11 @@ RSpec.describe Account, type: :model do
     expect(subject).to have(1).errors_on(:contact_email)
   end
 
+  it "should not be valid with owner from different account" do
+    subject.owner = create(:user)
+    expect(subject).to have(1).errors_on(:owner_id)
+  end
+
   context "when changing review_status" do
     subject { create(:account, :unapproved) }
 

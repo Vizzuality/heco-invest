@@ -8,8 +8,8 @@ module API
           current_user.with_lock do
             raise API::UnprocessableEntityError, I18n.t("errors.messages.user.multiple_accounts") if current_user.account_id.present?
 
-            account = Account.create! account_params.merge(owner: current_user)
-            current_user.update! account: account, role: :project_developer
+            account = Account.create! account_params.merge(owner: current_user, users: [current_user])
+            current_user.update! role: :project_developer
             project_developer = ProjectDeveloper.create! project_developer_params.merge(account: account)
             render json: ProjectDeveloperSerializer.new(
               project_developer,

@@ -68,7 +68,8 @@ module Backoffice
           :twitter,
           :instagram,
           :contact_email,
-          :contact_phone
+          :contact_phone,
+          :owner_id
         ],
         categories: [],
         instrument_types: [],
@@ -88,7 +89,7 @@ module Backoffice
     end
 
     def set_sections
-      sections %w[language profile status], default: "profile"
+      sections %w[language profile status owner], default: "profile"
     end
 
     def set_content_language_default
