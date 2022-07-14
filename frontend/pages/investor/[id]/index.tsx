@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { FormattedMessage } from 'react-intl';
 
 import { useRouter } from 'next/router';
