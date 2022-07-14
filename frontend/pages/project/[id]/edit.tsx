@@ -30,23 +30,17 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
   let enums;
 
   try {
-    // The first request is to know the project original language and the second one is to get the project with the correct language
-    const projectWithLanguage = await getProject(id as string, {
-      'fields[project]': 'language',
-    });
-    if (!!projectWithLanguage?.data) {
-      const projectLanguage = projectWithLanguage.data.language;
-      ({ data: project } = await getProject(id as string, {
-        includes: [
-          'project_images',
-          'country',
-          'municipality',
-          'department',
-          'involved_project_developers',
-        ],
-        locale: projectLanguage,
-      }));
-    }
+    ({ data: project } = await getProject(id as string, {
+      includes: [
+        'project_images',
+        'country',
+        'municipality',
+        'department',
+        'involved_project_developers',
+      ],
+      // The 'locale' setted to undefined, for this endpoint, returns the project data with the project default language
+      locale: undefined,
+    }));
     enums = await getEnums();
   } catch (e) {
     return { notFound: true };
