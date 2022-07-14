@@ -1,8 +1,8 @@
+import { PropsWithChildren } from 'react';
+
 import { LanguageType } from 'types';
 
-export type ContentLanguageAlertProps = {
+export type ContentLanguageAlertProps = PropsWithChildren<{
   /** Classes to apply to the container */
   className?: string;
-  /** Locale code to display a translated string of */
-  locale?: LanguageType;
-};
+}>;

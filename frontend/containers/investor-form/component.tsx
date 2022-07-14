@@ -1,13 +1,14 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 
 import { Path, SubmitHandler, useForm } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
 import { entries, pick } from 'lodash-es';
 
-import { getServiceErrors, useGetAlert } from 'helpers/pages';
+import { getServiceErrors, useGetAlert, useLanguageNames } from 'helpers/pages';
 
 import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import SelectLanguageForm from 'containers/forms/select-language-form';
@@ -41,6 +42,7 @@ const InvestorForm: FC<InvestorFormProps> = ({
   const [totalPages, setTotalPages] = useState(0);
   const resolver = useValidation(isCreateForm ? currentPage : currentPage + 1);
   const { back } = useRouter();
+  const languageNames = useLanguageNames();
 
   const {
     register,
@@ -135,8 +137,17 @@ const InvestorForm: FC<InvestorFormProps> = ({
           </Page>
         )}
         <Page hasErrors={getPageErrors(1)}>
-          {!isCreateForm && (
-            <ContentLanguageAlert className="mb-6" locale={initialValues?.language} />
+          {!isCreateForm && initialValues?.language && (
+            <ContentLanguageAlert className="mb-6">
+              <FormattedMessage
+                defaultMessage="<span>Note:</span>The content of this profile should be written in {language}"
+                id="zINRAT"
+                values={{
+                  language: languageNames[initialValues?.language],
+                  span: (chunks: string) => <span className="mr-2 font-semibold">{chunks}</span>,
+                }}
+              />
+            </ContentLanguageAlert>
           )}
           <Profile
             register={register}

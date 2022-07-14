@@ -1,10 +1,11 @@
 import { FC, useCallback, useState } from 'react';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
-import { getServiceErrors, useGetAlert, useQueryReturnPath } from 'helpers/pages';
+import { getServiceErrors, useGetAlert, useQueryReturnPath, useLanguageNames } from 'helpers/pages';
 
 import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import LeaveFormModal from 'containers/leave-form-modal';
@@ -61,7 +62,9 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     ticket_size,
     instrument_type,
   } = enums;
+
   const defaultValues = useDefaultValues(project);
+  const languageNames = useLanguageNames();
 
   const {
     register,
@@ -207,7 +210,16 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         onSubmitClick={handleSubmit(onSubmit)}
       >
         <Page key="general-information">
-          <ContentLanguageAlert className="mb-6" locale={contentLocale} />
+          <ContentLanguageAlert className="mb-6">
+            <FormattedMessage
+              defaultMessage="<span>Note:</span>The content of this project should be written in {language}"
+              id="S27Bu1"
+              values={{
+                language: languageNames[contentLocale],
+                span: (chunks: string) => <span className="mr-2 font-semibold">{chunks}</span>,
+              }}
+            />
+          </ContentLanguageAlert>
           <GeneralInformation
             register={register}
             control={control}

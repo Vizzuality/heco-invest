@@ -798,6 +798,9 @@
   "RXoqkD": {
     "string": "Mission"
   },
+  "S27Bu1": {
+    "string": "<span>Note:</span>The content of this project should be written in {language}"
+  },
   "SHw9Ht": {
     "string": "Start connecting with people to create impact. You can find investors, opportunities to invest open calls and much more."
   },
@@ -1691,6 +1694,9 @@
   },
   "zFegDD": {
     "string": "Contact"
+  },
+  "zINRAT": {
+    "string": "<span>Note:</span>The content of this profile should be written in {language}"
   },
   "zINlao": {
     "string": "Owner"

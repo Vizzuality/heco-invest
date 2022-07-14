@@ -13,9 +13,4 @@ const Template: Story<ContentLanguageAlertProps> = ({ ...props }: ContentLanguag
 );
 
 export const Default: Story<ContentLanguageAlertProps> = Template.bind({});
-Default.args = {
-  locale: 'en',
-};
-
-export const NoLocale: Story<ContentLanguageAlertProps> = Template.bind({});
-NoLocale.args = {};
+Default.args = {};
