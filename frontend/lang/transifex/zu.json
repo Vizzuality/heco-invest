@@ -56,6 +56,9 @@
   "0DNR+D": {
     "string": "Tell us what you value in the projects you invest in / what will make you invest in projects"
   },
+  "0FJhbi": {
+    "string": "HeCo priority landscapes {test}"
+  },
   "0L/mZC": {
     "string": "Target group"
   },
@@ -659,6 +662,9 @@
   },
   "KxPY7j": {
     "string": "Date of creation"
+  },
+  "L2CvBU": {
+    "string": "Expect to have impact"
   },
   "LFDgTb": {
     "string": "Leave project developer edition?"
@@ -1316,6 +1322,9 @@
   },
   "in26xr": {
     "string": "{organization} logo"
+  },
+  "inQ2Q1": {
+    "string": "Topics/sector categories"
   },
   "itfsqC": {
     "string": "Currently you don’t have any <b>Projects</b>."
