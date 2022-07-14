@@ -91,7 +91,8 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
     columns: [
       { Header: 'Title', accessor: 'name' },
       { Header: 'Category', accessor: 'category' },
-      { Header: 'Location', accessor: 'location' },
+      { Header: 'Country', accessor: 'country' },
+      { Header: 'Municipality', accessor: 'municipality' },
       { Header: 'Instrument type', accessor: 'instrumentType' },
       { Header: 'Value', accessor: 'ticketSize', canSort: false },
       {
@@ -158,7 +159,8 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
       slug: project.slug,
       name: project.name,
       category: allCategories.find(({ id }) => id === project.category)?.name,
-      location: `${project.municipality.name}, ${project.country.name}`,
+      country: project.country.name,
+      municipality: project.municipality.name,
       instrumentType: allInstrumentTypes
         ?.filter(({ id }) => project.instrument_types?.includes(id))
         .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase()))
