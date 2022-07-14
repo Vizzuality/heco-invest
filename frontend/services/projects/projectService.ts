@@ -59,8 +59,9 @@ export function useProjectsList(
 export const getProject = async (
   id: string,
   params?: {
-    fields?: string;
+    'fields[project]'?: string;
     includes?: string[];
+    locale?: string;
   }
 ): Promise<{
   data: Project;
@@ -83,11 +84,13 @@ export const getProject = async (
 export function useProject(
   id: string,
   params: Parameters<typeof getProject>[1],
-  initialData?: Project
+  initialData?: Project,
+  enabled = true
 ) {
   const query = useLocalizedQuery([Queries.ProjectQuery, id], () => getProject(id, params), {
     refetchOnWindowFocus: false,
     initialData: { data: initialData, included: [] },
+    enabled,
   });
 
   return useMemo(

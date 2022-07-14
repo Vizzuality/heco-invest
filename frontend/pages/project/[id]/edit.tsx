@@ -17,7 +17,7 @@ import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
 import { Investor } from 'types/investor';
-import { Project, Project as ProjectType } from 'types/project';
+import { Project as ProjectType } from 'types/project';
 import { ProjectDeveloper } from 'types/projectDeveloper';
 import { User } from 'types/user';
 
@@ -27,23 +27,30 @@ import { getProject } from 'services/projects/projectService';
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let project;
+  let enums;
 
-  // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    ({ data: project } = await getProject(id as string, {
-      includes: [
-        'project_images',
-        'country',
-        'municipality',
-        'department',
-        'involved_project_developers',
-      ],
-    }));
+    // The first request is to know the project original language and the second one is to get the project with the correct language
+    const projectWithLanguage = await getProject(id as string, {
+      'fields[project]': 'language',
+    });
+    if (!!projectWithLanguage?.data) {
+      const projectLanguage = projectWithLanguage.data.language;
+      ({ data: project } = await getProject(id as string, {
+        includes: [
+          'project_images',
+          'country',
+          'municipality',
+          'department',
+          'involved_project_developers',
+        ],
+        locale: projectLanguage,
+      }));
+    }
+    enums = await getEnums();
   } catch (e) {
     return { notFound: true };
   }
-
-  const enums = await getEnums();
 
   return {
     props: {
@@ -64,8 +71,8 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
   const updateProject = useUpdateProject();
   const router = useRouter();
 
-  const getIsOwner = (user: User, userAccount: ProjectDeveloper | Investor) => {
-    // The user must be a the creator of the project to be allowed to edit it.
+  const getIsOwner = (_user: User, userAccount: ProjectDeveloper | Investor) => {
+    // The project developer must be a the owner of the project to be allowed to edit it.
     return (
       project?.project_developer?.id &&
       userAccount?.id &&
@@ -91,7 +98,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
       permissions={[UserRoles.ProjectDeveloper]}
     >
       <ProjectForm
-        title={formatMessage({ defaultMessage: 'Create project', id: 'VUN1K7' })}
+        title={formatMessage({ defaultMessage: 'Edit project', id: 'qwCflo' })}
         leaveMessage={formatMessage({
           defaultMessage: 'Leave project creation form',
           id: 'vygPIS',
