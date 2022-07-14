@@ -24,7 +24,7 @@ enum LAYERS {
   // PRIORITY LAYERS
   EndangeredSpecies = 'endangered-species',
   TreeCoverLoss = 'tree-cover-loss',
-  // RiverineFloodRisk = 'riverine-flood-risk',
+  RiverineFloodRisk = 'riverine-flood-risk',
   IndigenousReserves = 'indigenous-reserves',
 }
 
@@ -342,27 +342,27 @@ export const useLayers = () => {
             },
           },
         },
-        // {
-        //   id: LAYERS.RiverineFloodRisk,
-        //   group: LAYER_GROUPS.PriorityLayer,
-        //   name: formatMessage({
-        //     defaultMessage: 'Riverine flood risk',
-        //     id: 'deHJ3+',
-        //   }),
-        //   description: formatMessage({
-        //     defaultMessage:
-        //       'Shows the percentage of the population expected to be affected by riverine flooding in an average year.',
-        //     id: 'nwXvcg',
-        //   }),
-        //   overview: formatMessage({
-        //     defaultMessage:
-        //       'Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average.',
-        //     id: 'BY6k/1',
-        //   }),
-        // dataSource: 'World Resources Institute',
-        // dataSourceUrl: 'https://www.wri.org/data/aqueduct-global-maps-30-data',
-        //   specification: {},
-        // },
+        {
+          id: LAYERS.RiverineFloodRisk,
+          group: LAYER_GROUPS.PriorityLayer,
+          name: formatMessage({
+            defaultMessage: 'Riverine flood risk',
+            id: 'deHJ3+',
+          }),
+          description: formatMessage({
+            defaultMessage:
+              'Shows the percentage of the population expected to be affected by riverine flooding in an average year.',
+            id: 'nwXvcg',
+          }),
+          overview: formatMessage({
+            defaultMessage:
+              'Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average.',
+            id: 'BY6k/1',
+          }),
+          dataSource: 'World Resources Institute',
+          dataSourceUrl: 'https://www.wri.org/data/aqueduct-global-maps-30-data',
+          specification: {},
+        },
         {
           id: LAYERS.IndigenousReserves,
           group: LAYER_GROUPS.PriorityLayer,
