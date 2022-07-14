@@ -1,6 +1,7 @@
+import { useRouter } from 'next/router';
+
 import { withLocalizedRequests } from 'hoc/locale';
 
-import { decycle } from 'cycle';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -23,22 +24,24 @@ import { Project as ProjectType } from 'types/project';
 import { getEnums } from 'services/enums/enumService';
 import { getProject, useProject } from 'services/projects/projectService';
 
+const PROJECT_QUERY_PARAMS = {
+  includes: [
+    'project_images',
+    'project_developer',
+    'involved_project_developers',
+    'country',
+    'municipality',
+    'department',
+    'priority_landscape',
+  ],
+};
+
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let project;
 
   // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    ({ data: project } = await getProject(id as string, {
-      includes: [
-        'project_images',
-        'project_developer',
-        'involved_project_developers',
-        'country',
-        'municipality',
-        'department',
-        'priority_landscape',
-      ],
-    }));
+    ({ data: project } = await getProject(id as string, PROJECT_QUERY_PARAMS));
   } catch (e) {
     return { notFound: true };
   }
@@ -49,7 +52,7 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
     props: {
       intlMessages: await loadI18nMessages({ locale }),
       enums: groupBy(enums, 'type'),
-      project: decycle(project),
+      project,
     },
   };
 });
@@ -60,9 +63,15 @@ type ProjectPageProps = {
 };
 
 const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
-  project,
+  project: projectProp,
   enums,
 }) => {
+  const router = useRouter();
+
+  const {
+    data: { data: project },
+  } = useProject(router.query.id as string, PROJECT_QUERY_PARAMS, projectProp);
+
   return (
     <>
       <Head title={project.name} description={project.description} />

@@ -11,7 +11,6 @@ import {
 import { useRouter } from 'next/router';
 
 import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
-import { decycle } from 'cycle';
 
 import useMe from 'hooks/me';
 import { useLocalizedQuery } from 'hooks/query';
@@ -33,7 +32,7 @@ const getProjectDeveloper = async (includes?: string): Promise<ProjectDeveloper>
     method: 'GET',
     params: { includes },
   };
-  return await API.request(config).then((response) => decycle(response.data.data));
+  return await API.request(config).then((response) => response.data.data);
 };
 
 export function useProjectDeveloper(
@@ -129,7 +128,7 @@ const getInvestor = async (includes?: string): Promise<Investor> => {
     method: 'GET',
     params: { includes },
   };
-  return await API.request(config).then((response) => decycle(response.data.data));
+  return await API.request(config).then((response) => response.data.data);
 };
 
 export function useInvestor(options: UseQueryOptions<Investor>, includes?: string) {
