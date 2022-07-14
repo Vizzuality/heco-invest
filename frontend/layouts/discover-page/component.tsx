@@ -21,6 +21,7 @@ import Header from './header';
 import { useSortingByOptions } from './helpers';
 import Navigation from './navigation';
 import { DiscoverPageLayoutProps } from './types';
+import BetaVersionDisclaimer from 'containers/layouts/beta-version-disclaimer';
 
 export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   screenHeightLg = false,
@@ -181,6 +182,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 h-screen bg-background-dark">
+      {/* <BetaVersionDisclaimer /> */}
       <div className="flex flex-col h-screen overflow-auto">
         <div className="z-10">
           <Header {...discoverSearchProps} />

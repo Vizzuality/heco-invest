@@ -8,11 +8,13 @@ import UserMenu from 'containers/layouts/user-menu';
 import LayoutContainer from 'components/layout-container';
 
 import { HeaderProps } from './types';
+import BetaVersionDisclaimer from 'containers/layouts/beta-version-disclaimer';
 
 export const Header: FC<HeaderProps> = ({ ...discoverSearchProps }: HeaderProps) => {
   return (
     <>
       <header className="fixed top-0 z-20 w-full text-white border-b bg-green-dark backdrop-blur-sm">
+        {/* <BetaVersionDisclaimer /> */}
         <LayoutContainer>
           <div className="flex items-center justify-between h-18">
             <span className="justify-start flex-1">

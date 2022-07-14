@@ -1,15 +1,18 @@
-import { FC } from 'react';
-
 import Link from 'next/link';
 
 import { Paths } from 'enums';
 
-import { LogoProps } from './types';
+const BetaVersionDisclaimer = () => {
+  return (
+    <Link href={Paths.Home}>
+      <a className="font-semibold">
+        HeCo Invest
+        <span className="bg-white text-green-dark text-sm ml-1 px-1 py-0.5 rounded-[4px]">
+          βeta
+        </span>
+      </a>
+    </Link>
+  );
+};
 
-export const Logo: FC<LogoProps> = ({}: LogoProps) => (
-  <Link href={Paths.Home}>
-    <a className="font-semibold">HeCo Invest</a>
-  </Link>
-);
-
-export default Logo;
+export default BetaVersionDisclaimer;
