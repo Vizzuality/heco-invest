@@ -21,7 +21,6 @@ import Header from './header';
 import { useSortingByOptions } from './helpers';
 import Navigation from './navigation';
 import { DiscoverPageLayoutProps } from './types';
-import BetaVersionDisclaimer from 'containers/layouts/beta-version-disclaimer';
 
 export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   screenHeightLg = false,
@@ -56,6 +55,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     data: projects,
     isLoading: isLoadingProjects,
     isFetching: isFetchingProjects,
+    isRefetching: isRefetchingProjects,
   } = useProjectsList(
     { ...queryParams, includes: ['project_developer', 'involved_project_developers'] },
     queryOptions
@@ -65,12 +65,14 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     data: projectDevelopers,
     isLoading: isLoadingProjectDevelopers,
     isFetching: isFetchingProjectDevelopers,
+    isRefetching: isRefetchingProjectDevelopers,
   } = useProjectDevelopersList({ ...queryParams, perPage: 9 }, queryOptions);
 
   const {
     data: investors,
     isLoading: isLoadingInvestors,
     isFetching: isFetchingInvestors,
+    isRefetching: isRefetchingInvestors,
   } = useInvestorsList({ ...queryParams, perPage: 9 }, queryOptions);
 
   const stats = {
@@ -83,33 +85,41 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   const { data, meta, loading } = useMemo(() => {
     // TODO: Find a way to improve this.
     if (pathname.startsWith(Paths.Projects))
-      return { ...projects, loading: isLoadingProjects || isFetchingProjects };
+      return {
+        ...projects,
+        loading: isLoadingProjects || (isFetchingProjects && !isRefetchingProjects),
+      };
     if (pathname.startsWith(Paths.ProjectDevelopers)) {
       return {
         ...projectDevelopers,
-        loading: isLoadingProjectDevelopers || isFetchingProjectDevelopers,
+        loading:
+          isLoadingProjectDevelopers ||
+          (isFetchingProjectDevelopers && !isRefetchingProjectDevelopers),
       };
     }
 
     if (pathname.startsWith(Paths.Investors)) {
       return {
         ...investors,
-        loading: isLoadingInvestors || isFetchingInvestors,
+        loading: isLoadingInvestors || (isFetchingInvestors && !isRefetchingInvestors),
       };
     }
 
     // if (router.pathname.startsWith(Paths.OpenCalls)) return openCalls;
   }, [
-    investors,
-    isFetchingInvestors,
-    isFetchingProjectDevelopers,
-    isFetchingProjects,
-    isLoadingInvestors,
-    isLoadingProjectDevelopers,
-    isLoadingProjects,
-    projectDevelopers,
-    projects,
     pathname,
+    projects,
+    isLoadingProjects,
+    isFetchingProjects,
+    isRefetchingProjects,
+    projectDevelopers,
+    isLoadingProjectDevelopers,
+    isFetchingProjectDevelopers,
+    isRefetchingProjectDevelopers,
+    investors,
+    isLoadingInvestors,
+    isFetchingInvestors,
+    isRefetchingInvestors,
   ]) || { data: [], meta: [] };
 
   useEffect(() => {
@@ -182,11 +192,10 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 h-screen bg-background-dark">
-      {/* <BetaVersionDisclaimer /> */}
       <div className="flex flex-col h-screen overflow-auto">
         <div className="z-10">
           <Header {...discoverSearchProps} />
-          <LayoutContainer className="z-10 flex justify-center pt-1 mt-20 mb-2 pointer-events-none xl:hidden xl:mb-6 xl:mt-0 xl:left-0 xl:right-0 xl:h-20 xl:fixed xl:top-3">
+          <LayoutContainer className="z-10 flex justify-center pt-1 mt-0 mb-2 pointer-events-none xl:hidden xl:mb-6 xl:mt-0 xl:left-0 xl:right-0 xl:h-20 xl:fixed xl:top-3">
             <DiscoverSearch
               className="w-full max-w-3xl pointer-events-auto"
               {...discoverSearchProps}
@@ -194,7 +203,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
           </LayoutContainer>
         </div>
         <main className="z-0 flex flex-col flex-grow h-screen overflow-y-scroll">
-          <LayoutContainer className="xl:mt-28">
+          <LayoutContainer className="xl:mt-6">
             <div className="flex flex-col items-center gap-2 mt-4 mb-4 lg:mt-2 lg:gap-6 lg:flex-row space-between">
               <SortingButtons className="flex-1" {...sortingButtonsProps} />
               <div className="flex justify-center w-full">
