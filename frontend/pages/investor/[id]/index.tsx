@@ -1,4 +1,4 @@
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
@@ -55,6 +55,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
   investor: investorProp,
   enums,
 }) => {
+  const intl = useIntl();
   const router = useRouter();
 
   const { data: investor } = useInvestor(router.query.id as string, investorProp);
@@ -110,20 +111,24 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
 
   const tagsGridRows: TagsGridRowType[] = [
     {
-      title: 'Invests in',
+      id: 'category',
+      title: intl.formatMessage({ defaultMessage: 'Invests in', id: 'i9cSUD' }),
       type: 'category',
       tags: allCategories.filter(({ id }) => categories?.includes(id)),
     },
     {
-      title: 'Ticket size',
+      id: 'ticket-size',
+      title: intl.formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
       tags: allTicketSizes.filter(({ id }) => ticket_sizes?.includes(id)),
     },
     {
-      title: 'Instrument size',
+      id: 'instrument-size',
+      title: intl.formatMessage({ defaultMessage: 'Instrument size', id: '2AZiFU' }),
       tags: allInstrumentTypes.filter(({ id }) => instrument_types?.includes(id)),
     },
     {
-      title: 'Impact they invest on',
+      id: 'impact',
+      title: intl.formatMessage({ defaultMessage: 'Impact they invest on', id: '4y9VoH' }),
       tags: allImpacts.filter(({ id }) => impacts?.includes(id)),
     },
   ];

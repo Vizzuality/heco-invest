@@ -104,6 +104,9 @@
   "25WwxF": {
     "string": "Don't have an account?"
   },
+  "2AZiFU": {
+    "string": "Instrument size"
+  },
   "2Cbk6h": {
     "string": "Add your logo or a picture that identifies the account."
   },
@@ -175,6 +178,9 @@
   },
   "4vn+6A": {
     "string": "{inputName} is focused, type to refine list, press down to open the menu, press left to focus selected values"
+  },
+  "4y9VoH": {
+    "string": "Impact they invest on"
   },
   "4zK41e": {
     "string": "Investing in the Amazon means contributing to improving the quality of life of more than 30 million people. It is also contributing to the development and conservation of a vital region for South America and the world."
@@ -1283,6 +1289,9 @@
   },
   "hxIQ/8": {
     "string": "Projects waiting funding"
+  },
+  "i9cSUD": {
+    "string": "Invests in"
   },
   "i9eK6b": {
     "string": "Show verified content only"
