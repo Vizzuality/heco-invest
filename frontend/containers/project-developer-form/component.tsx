@@ -17,6 +17,7 @@ import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import SelectLanguageForm from 'containers/forms/select-language-form';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
+import PendingApproval from 'containers/pending-approval';
 
 import Head from 'components/head';
 import { ProjectDeveloperSetupForm } from 'types/projectDeveloper';
@@ -26,7 +27,6 @@ import { useEnums } from 'services/enums/enumService';
 
 import About from './pages/about';
 import Profile from './pages/profile';
-import { ProjectDeveloperOutro } from './pages/project-developer-outro';
 import { ProjectDeveloperFormProps } from './types';
 
 export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
@@ -131,7 +131,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
         page={currentPage}
         alert={alert}
         isSubmitting={mutation.isLoading}
-        showOutro={currentPage === totalPages}
+        showOutro={isCreateForm && currentPage === totalPages}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
@@ -180,7 +180,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
         </Page>
         {isCreateForm && (
           <OutroPage>
-            <ProjectDeveloperOutro />
+            <PendingApproval />
           </OutroPage>
         )}
       </MultiPageLayout>
