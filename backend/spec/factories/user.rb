@@ -35,5 +35,9 @@ FactoryBot.define do
     trait :investor do
       role { "investor" }
     end
+
+    trait :with_avatar do
+      avatar { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/files/picture.jpg"), "image/jpeg") }
+    end
   end
 end

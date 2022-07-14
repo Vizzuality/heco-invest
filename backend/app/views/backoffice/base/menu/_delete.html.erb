@@ -1,0 +1,9 @@
+<li aria-disabled="false" role="menuitem" tabindex="-1" data-key="delete" class="flex justify-between items-center px-4 py-2 sm:py-2 outline-none text-sm font-sans transition text-black cursor-pointer hover:opacity-60">
+  <div>
+    <%= link_to t("backoffice.common.delete"), path,
+       data: {
+         turbo_method: :delete,
+         turbo_confirm: t("backoffice.messages.delete_confirmation", model: model.downcase)
+       } %>
+  </div>
+</li>

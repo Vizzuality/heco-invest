@@ -21,6 +21,9 @@
       <th>
         <%= sort_link @q, :last_sign_in_at, t("backoffice.users.index.last_sign_in_at") %>
       </th>
+      <th>
+      </th>
+      <th class="opacity-25"><%= svg "menu" %></th>
     </tr>
   </thead>
   <tbody>
@@ -28,9 +31,15 @@
       <tr>
         <td><%= user.full_name %></td>
         <td><%= user.email %></td>
-        <td><%= user.account&.name %></td>
+        <td><%= account_link_for user.account %></td>
         <td><%= I18n.l user.created_at.to_date %></td>
         <td><%= I18n.l user.last_sign_in_at&.to_date, default: '' %></td>
+        <td><%= link_to t("backoffice.common.edit"), edit_backoffice_user_path(user.id), class: "link-button" %></td>
+        <td>
+          <%= render "menu" do %>
+            <%= render "backoffice/base/menu/delete", path: backoffice_user_path(user), model: t("backoffice.common.user") %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

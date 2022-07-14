@@ -20,5 +20,5 @@ namespace :backoffice do
   resources :project_developers, only: [:index, :edit, :update, :destroy]
   resources :projects, only: [:index, :edit, :update, :destroy]
   resources :admins
-  resources :users, only: [:index]
+  resources :users, only: [:index, :edit, :update, :destroy]
 end

@@ -1,4 +1,4 @@
-<%= simple_form_for [:backoffice, admin] do |f| %>
+<%= simple_form_for [:backoffice, user] do |f| %>
   <%= f.error_notification %>
   <%= hidden_field_tag :section, params[:section] %>
 
@@ -6,13 +6,12 @@
     <%= t(".information") %>
   </h2>
 
+  <%= f.input :avatar, as: :file, input_html: { accept: "image/*" } %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
-  <%= f.input :ui_language, collection: Language.all %>
-  <%= f.input :email, required: true %>
 
   <div class="mt-3 flex justify-end gap-3">
-    <%= link_to t("backoffice.common.cancel"), backoffice_admins_path, class: "button button-secondary-green" %>
+    <%= link_to t("backoffice.common.cancel"), backoffice_users_path, class: "button button-secondary-green" %>
     <%= f.button :submit, t("backoffice.common.save"), class: "button button-primary-green" %>
   </div>
 <% end %>
