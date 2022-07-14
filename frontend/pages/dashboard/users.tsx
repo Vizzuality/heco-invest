@@ -7,6 +7,8 @@ import { withLocalizedRequests } from 'hoc/locale';
 
 import { InferGetStaticPropsType } from 'next';
 
+import useMe from 'hooks/me';
+
 import { loadI18nMessages } from 'helpers/i18n';
 
 import UsersTable from 'containers/dashboard/users/table';
@@ -34,24 +36,27 @@ type UsersPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 export const UsersPage: PageComponent<UsersPageProps, DashboardLayoutProps> = () => {
   const [openInvitationModal, setOpenInvitationModal] = useState(false);
   const intl = useIntl();
+  const { user } = useMe();
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
       <Head title={intl.formatMessage({ defaultMessage: 'My users', id: 'lda5xz' })} />
       <DashboardLayout
         buttons={
-          <Button
-            className="drop-shadow-xl"
-            theme="primary-white"
-            onClick={() => setOpenInvitationModal(true)}
-          >
-            <Icon icon={MailIcon} className="w-4 h-4 mr-2" aria-hidden />
-            <FormattedMessage defaultMessage="Invite user" id="/4GN+O" />
-          </Button>
+          user?.owner && (
+            <Button
+              className="drop-shadow-xl"
+              theme="primary-white"
+              onClick={() => setOpenInvitationModal(true)}
+            >
+              <Icon icon={MailIcon} className="w-4 h-4 mr-2" aria-hidden />
+              <FormattedMessage defaultMessage="Invite user" id="/4GN+O" />
+            </Button>
+          )
         }
       >
         <div className="pt-4">
-          <UsersTable />
+          <UsersTable isOwner={user?.owner} />
         </div>
       </DashboardLayout>
       <InviteUsersModal
