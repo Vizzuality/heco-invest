@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 
-import { UseQueryResult, UseQueryOptions } from 'react-query';
+import { UseQueryResult, UseQueryOptions, useQueryClient, useMutation } from 'react-query';
+
+import { useRouter } from 'next/router';
 
 import { AxiosRequestConfig } from 'axios';
 
@@ -33,7 +35,9 @@ export const getProjects = async (params?: PagedRequest): Promise<PagedResponse<
     },
   };
 
-  return await API.request(config).then((result) => result.data);
+  return await API.request(config).then((result) => {
+    return result.data;
+  });
 };
 
 /** Hook to use the the projects list */
@@ -83,14 +87,12 @@ export const getProject = async (
 /** Use query for a single Project */
 export function useProject(
   id: string,
-  params: Parameters<typeof getProject>[1],
-  initialData?: Project,
-  enabled = true
+  params?: Parameters<typeof getProject>[1],
+  initialData?: Project
 ) {
   const query = useLocalizedQuery([Queries.ProjectQuery, id], () => getProject(id, params), {
     refetchOnWindowFocus: false,
     initialData: { data: initialData, included: [] },
-    enabled,
   });
 
   return useMemo(
@@ -112,7 +114,7 @@ const getProjectsMap = (params) =>
 export const useProjectsMap = (
   params: ProjectMapParams
 ): UseQueryResult<ResponseData<ProjectsMap[]>, unknown> & { projectsMap: ProjectsMapGeojson } => {
-  const query = useLocalizedQuery([Queries.ProjectQuery], () => getProjectsMap(params), {
+  const query = useLocalizedQuery([Queries.ProjectsMap], () => getProjectsMap(params), {
     placeholderData: {
       data: [],
     },
@@ -121,7 +123,7 @@ export const useProjectsMap = (
   return useMemo(() => {
     // Parse the response to a geojson
     const projectsMapFeatures: ProjectsMapGeojson['features'] = [];
-    query.data.data.forEach(({ latitude, longitude, category, id, trusted, type }) => {
+    (query.data.data || []).forEach(({ latitude, longitude, category, id, trusted, type }) => {
       // Valid longitude and latitude values
       if (
         typeof longitude === 'number' &&
@@ -159,4 +161,35 @@ export const useProjectsMap = (
       projectsMap,
     };
   }, [query]);
+};
+
+/** Hook with mutation that handle favorite state. If favorite is false, creates a POST request to set favorite to true, and if favorite is true, creates a DELETE request that set favorite to false. */
+export const useFavoriteProject = () => {
+  const { locale } = useRouter();
+  const queryClient = useQueryClient();
+
+  const favoriteOrUnfavoriteProject = (
+    projectId: string,
+    isFavourite: boolean
+  ): Promise<Project> => {
+    const config: AxiosRequestConfig = {
+      method: isFavourite ? 'DELETE' : 'POST',
+      url: `/api/v1/projects/${projectId}/favourite_project`,
+      data: { project_id: projectId },
+    };
+
+    return API.request(config).then((response) => response.data.data);
+  };
+
+  return useMutation(
+    ({ id, isFavourite }: { id: string; isFavourite: boolean }) =>
+      favoriteOrUnfavoriteProject(id, isFavourite),
+    {
+      onSuccess: (data) => {
+        queryClient.setQueryData([Queries.Project, locale], data);
+        queryClient.invalidateQueries([Queries.Project], {});
+        queryClient.invalidateQueries([Queries.ProjectList], {});
+      },
+    }
+  );
 };
