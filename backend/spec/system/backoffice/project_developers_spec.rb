@@ -12,7 +12,8 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
         :approved,
         name: "Super PD Enterprise",
         about: "About PD Enterprise account",
-        owner: approved_pd_owner
+        owner: approved_pd_owner,
+        users: [approved_pd_owner]
       ),
       categories: %w[forestry-and-agroforestry non-timber-forest-production],
       impacts: %w[climate water],
@@ -22,7 +23,18 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
       language: "en"
     )
   }
-  let!(:unapproved_pd) { create(:project_developer, account: build(:account, :unapproved, name: "Unapproved PD Enterprise", owner: unapproved_pd_owner)) }
+  let!(:unapproved_pd) {
+    create(
+      :project_developer,
+      account: build(
+        :account,
+        :unapproved,
+        name: "Unapproved PD Enterprise",
+        owner: unapproved_pd_owner,
+        users: [unapproved_pd_owner]
+      )
+    )
+  }
 
   before { sign_in admin }
 
@@ -206,6 +218,21 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
           expect(approved_pd.account.about_es).to eq("New about description - Spanish")
           expect(approved_pd.mission_es).to eq("New mission - Spanish")
         end
+      end
+    end
+
+    context "account owner section" do
+      let!(:new_user) { create :user, account: approved_pd.account }
+
+      before { within_sidebar { click_on t("backoffice.common.account_owner") } }
+
+      it "updates account owner" do
+        select new_user.full_name, from: t("simple_form.labels.account.owner_id")
+        click_on t("backoffice.common.save")
+
+        expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.project_developer")))
+        approved_pd.reload
+        expect(approved_pd.owner).to eq(new_user)
       end
     end
 

@@ -55,6 +55,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     data: projects,
     isLoading: isLoadingProjects,
     isFetching: isFetchingProjects,
+    isRefetching: isRefetchingProjects,
   } = useProjectsList(
     { ...queryParams, includes: ['project_developer', 'involved_project_developers'] },
     queryOptions
@@ -64,12 +65,14 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     data: projectDevelopers,
     isLoading: isLoadingProjectDevelopers,
     isFetching: isFetchingProjectDevelopers,
+    isRefetching: isRefetchingProjectDevelopers,
   } = useProjectDevelopersList({ ...queryParams, perPage: 9 }, queryOptions);
 
   const {
     data: investors,
     isLoading: isLoadingInvestors,
     isFetching: isFetchingInvestors,
+    isRefetching: isRefetchingInvestors,
   } = useInvestorsList({ ...queryParams, perPage: 9 }, queryOptions);
 
   const stats = {
@@ -82,33 +85,41 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   const { data, meta, loading } = useMemo(() => {
     // TODO: Find a way to improve this.
     if (pathname.startsWith(Paths.Projects))
-      return { ...projects, loading: isLoadingProjects || isFetchingProjects };
+      return {
+        ...projects,
+        loading: isLoadingProjects || (isFetchingProjects && !isRefetchingProjects),
+      };
     if (pathname.startsWith(Paths.ProjectDevelopers)) {
       return {
         ...projectDevelopers,
-        loading: isLoadingProjectDevelopers || isFetchingProjectDevelopers,
+        loading:
+          isLoadingProjectDevelopers ||
+          (isFetchingProjectDevelopers && !isRefetchingProjectDevelopers),
       };
     }
 
     if (pathname.startsWith(Paths.Investors)) {
       return {
         ...investors,
-        loading: isLoadingInvestors || isFetchingInvestors,
+        loading: isLoadingInvestors || (isFetchingInvestors && !isRefetchingInvestors),
       };
     }
 
     // if (router.pathname.startsWith(Paths.OpenCalls)) return openCalls;
   }, [
-    investors,
-    isFetchingInvestors,
-    isFetchingProjectDevelopers,
-    isFetchingProjects,
-    isLoadingInvestors,
-    isLoadingProjectDevelopers,
-    isLoadingProjects,
-    projectDevelopers,
-    projects,
     pathname,
+    projects,
+    isLoadingProjects,
+    isFetchingProjects,
+    isRefetchingProjects,
+    projectDevelopers,
+    isLoadingProjectDevelopers,
+    isFetchingProjectDevelopers,
+    isRefetchingProjectDevelopers,
+    investors,
+    isLoadingInvestors,
+    isFetchingInvestors,
+    isRefetchingInvestors,
   ]) || { data: [], meta: [] };
 
   useEffect(() => {

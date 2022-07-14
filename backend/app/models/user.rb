@@ -16,7 +16,7 @@ class User < ApplicationRecord
   pg_search_scope :search, against: [:first_name, :last_name, :email]
 
   devise :invitable, :database_authenticatable, :confirmable, :registerable,
-    :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable, :trackable
 
   enum role: {light: 0, investor: 1, project_developer: 2}, _default: :light
 
@@ -44,6 +44,7 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+  alias_method :to_s, :full_name
 
   private
 

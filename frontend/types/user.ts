@@ -26,6 +26,7 @@ export interface User {
   role: UserRoles;
   confirmed: boolean;
   approved: boolean;
+  owner: boolean;
 }
 
 export type UserAccount = {

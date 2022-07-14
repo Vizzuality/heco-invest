@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-
 import { FormattedMessage } from 'react-intl';
+
+import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
@@ -29,7 +29,12 @@ import { getEnums } from 'services/enums/enumService';
 import {
   getProjectDeveloper,
   useFavoriteProjectDeveloper,
+  useProjectDeveloper,
 } from 'services/project-developers/projectDevelopersService';
+
+const PROJECT_DEVELOPER_QUERY_PARAMS = {
+  includes: ['projects'],
+};
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let projectDeveloper;
@@ -37,7 +42,10 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
   // If getting the project developer fails, it's most likely because the record has
   // not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    projectDeveloper = await getProjectDeveloper(id as string, { includes: 'projects' });
+    ({ data: projectDeveloper } = await getProjectDeveloper(
+      id as string,
+      PROJECT_DEVELOPER_QUERY_PARAMS
+    ));
   } catch (e) {
     return { notFound: true };
   }
@@ -59,15 +67,18 @@ type ProjectDeveloperPageProps = {
 };
 
 const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageLayoutProps> = ({
-  projectDeveloper,
+  projectDeveloper: projectDeveloperProp,
   enums,
 }) => {
-  const [isFavourite, setIsFavourite] = useState(projectDeveloper.favourite);
+  const router = useRouter();
 
-  useEffect(() => {
-    // this useEffect is needed because the initial PD can be different from the current. On the server, when we fetch the PD, we don't send the session cookie so the endpoint doesn't tell us if the PD is in the favourites. When the hook executes on the client (the browser), we do send the token and thus projectDeveloper.favourite has a different value.
-    setIsFavourite(projectDeveloper.favourite);
-  }, [projectDeveloper]);
+  const {
+    data: { data: projectDeveloper },
+  } = useProjectDeveloper(
+    router.query.id as string,
+    PROJECT_DEVELOPER_QUERY_PARAMS,
+    projectDeveloperProp
+  );
 
   const projectDeveloperTypeName = enums[EnumTypes.ProjectDeveloperType].find(
     ({ id }) => id === projectDeveloper.project_developer_type
@@ -113,14 +124,11 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
   const favoriteProjectDeveloper = useFavoriteProjectDeveloper();
 
   const handleFavoriteClick = () => {
-    const { id } = projectDeveloper;
     // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
-    favoriteProjectDeveloper.mutate(
-      { id, isFavourite },
-      {
-        onSuccess: (data) => setIsFavourite(data.favourite),
-      }
-    );
+    favoriteProjectDeveloper.mutate({
+      id: projectDeveloper.id,
+      isFavourite: projectDeveloper.favourite,
+    });
   };
 
   return (
@@ -149,7 +157,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           projectsWaitingFunding={stats.projectsWaitingFunding}
           totalProjects={stats.totalProjects}
           originalLanguage={projectDeveloper.language}
-          isFavorite={isFavourite}
+          isFavorite={projectDeveloper.favourite}
           onFavoriteClick={handleFavoriteClick}
           favoriteLoading={favoriteProjectDeveloper.isLoading}
         />
