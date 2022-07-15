@@ -11,7 +11,9 @@ class User < ApplicationRecord
   has_many :project_developers, through: :favourite_project_developers
   has_many :favourite_investors, dependent: :destroy
   has_many :investors, through: :favourite_investors
-  has_one :owner_account, class_name: "Account", foreign_key: "owner_id", dependent: :destroy
+  has_one :owner_account, class_name: "Account", foreign_key: "owner_id", dependent: :restrict_with_error
+
+  has_one_attached :avatar
 
   pg_search_scope :search, against: [:first_name, :last_name, :email]
 

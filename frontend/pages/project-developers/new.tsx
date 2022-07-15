@@ -8,6 +8,7 @@ import { withLocalizedRequests } from 'hoc/locale';
 import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
+import { useQueryReturnPath } from 'helpers/pages';
 
 import ProjectDeveloperForm from 'containers/project-developer-form';
 
@@ -37,9 +38,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
   const { formatMessage } = useIntl();
 
   const createProjectDeveloper = useCreateProjectDeveloper();
+  const queryReturnPath = useQueryReturnPath();
 
   const handleOnComplete = () => {
-    router.push(Paths.Dashboard);
+    router.push(queryReturnPath || Paths.Dashboard);
   };
 
   return (

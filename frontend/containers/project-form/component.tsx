@@ -1,11 +1,13 @@
 import { FC, useCallback, useState } from 'react';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
-import { getServiceErrors, useGetAlert } from 'helpers/pages';
+import { getServiceErrors, useGetAlert, useQueryReturnPath, useLanguageNames } from 'helpers/pages';
 
+import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { OutroPage, Page } from 'containers/multi-page-layout';
 
@@ -18,6 +20,7 @@ import {
 } from 'types/project';
 import useProjectValidation, { formPageInputs } from 'validations/project';
 
+import { useAccount } from 'services/account';
 import { useUpdateProject } from 'services/account';
 
 import { useDefaultValues } from './helpers';
@@ -48,7 +51,9 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   const [projectSlug, setProjectSlug] = useState<string>();
   const resolver = useProjectValidation(currentPage);
   const updateProject = useUpdateProject();
+  const queryReturnPath = useQueryReturnPath();
   const router = useRouter();
+  const { userAccount } = useAccount();
   const {
     category,
     project_development_stage,
@@ -57,7 +62,9 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     ticket_size,
     instrument_type,
   } = enums;
+
   const defaultValues = useDefaultValues(project);
+  const languageNames = useLanguageNames();
 
   const {
     register,
@@ -181,6 +188,8 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     await handleSubmit(onSubmit)();
   };
 
+  const contentLocale = defaultValues?.language || userAccount?.language;
+
   return (
     <>
       <Head title={title} />
@@ -188,6 +197,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         layout="narrow"
         getTotalPages={(pages) => setTotalPages(pages)}
         title={title}
+        locale={contentLocale}
         autoNavigation={false}
         page={currentPage}
         alert={useGetAlert(updateProject.error)}
@@ -200,6 +210,16 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         onSubmitClick={handleSubmit(onSubmit)}
       >
         <Page key="general-information">
+          <ContentLanguageAlert className="mb-6">
+            <FormattedMessage
+              defaultMessage="<span>Note:</span>The content of this project should be written in {language}"
+              id="S27Bu1"
+              values={{
+                language: languageNames[contentLocale],
+                span: (chunks: string) => <span className="mr-2 font-semibold">{chunks}</span>,
+              }}
+            />
+          </ContentLanguageAlert>
           <GeneralInformation
             register={register}
             control={control}
@@ -273,9 +293,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
       <LeaveFormModal
         isOpen={showLeave}
         close={() => setShowLeave(false)}
-        handleLeave={() =>
-          router.push(decodeURIComponent(router.query?.returnPath as string) || Paths.Dashboard)
-        }
+        handleLeave={() => router.push(queryReturnPath || Paths.Dashboard)}
         title={leaveMessage}
       />
     </>

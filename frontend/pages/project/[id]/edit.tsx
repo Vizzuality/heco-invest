@@ -7,6 +7,7 @@ import { withLocalizedRequests } from 'hoc/locale';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
+import { useQueryReturnPath } from 'helpers/pages';
 
 import ProjectForm from 'containers/project-form';
 
@@ -61,11 +62,13 @@ type EditProjectProps = {
 
 const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ project, enums }) => {
   const { formatMessage } = useIntl();
-  const updateProject = useUpdateProject();
   const router = useRouter();
 
-  const getIsOwner = (_user: User, userAccount: ProjectDeveloper | Investor) => {
-    // The project developer must be a the owner of the project to be allowed to edit it.
+  const updateProject = useUpdateProject();
+  const queryReturnPath = useQueryReturnPath();
+
+  const getIsOwner = (user: User, userAccount: ProjectDeveloper | Investor) => {
+    // The user must be a the creator of the project to be allowed to edit it.
     return (
       project?.project_developer?.id &&
       userAccount?.id &&
@@ -74,11 +77,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
   };
 
   const onComplete = () => {
-    router.push(
-      router.query?.returnPath
-        ? decodeURIComponent(router.query?.returnPath as string)
-        : Paths.DashboardProjects
-    );
+    router.push(queryReturnPath || Paths.DashboardProjects);
   };
 
   return (
