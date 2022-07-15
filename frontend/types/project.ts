@@ -59,6 +59,7 @@ export type ProjectBase = {
   };
   project_images: ProjectImageType[];
   trusted?: boolean;
+  favourite?: boolean;
   project_developer?: any; // Cannot use ProjectDeveloperType because linting will complain about circular references
   involved_project_developers?: any[]; // Cannot use ProjectDeveloperType because linting will complain about circular references
 };

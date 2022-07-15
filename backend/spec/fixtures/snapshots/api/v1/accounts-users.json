@@ -12,7 +12,12 @@
         "approved": true,
         "invitation": null,
         "created_at": "2022-06-24T10:15:01.723Z",
-        "owner": true
+        "owner": true,
+        "avatar": {
+          "small": null,
+          "medium": null,
+          "original": null
+        }
       }
     },
     {
@@ -27,7 +32,12 @@
         "approved": true,
         "invitation": "completed",
         "created_at": "2022-06-24T10:15:01.772Z",
-        "owner": false
+        "owner": false,
+        "avatar": {
+          "small": null,
+          "medium": null,
+          "original": null
+        }
       }
     },
     {
@@ -42,7 +52,12 @@
         "approved": null,
         "invitation": "waiting",
         "created_at": "2022-06-24T10:15:01.782Z",
-        "owner": false
+        "owner": false,
+        "avatar": {
+          "small": null,
+          "medium": null,
+          "original": null
+        }
       }
     }
   ]

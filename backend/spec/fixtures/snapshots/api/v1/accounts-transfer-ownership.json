@@ -11,7 +11,12 @@
       "confirmed": true,
       "approved": true,
       "invitation": null,
-      "owner": true
+      "owner": true,
+      "avatar": {
+        "small": null,
+        "medium": null,
+        "original": null
+      }
     }
   }
 }

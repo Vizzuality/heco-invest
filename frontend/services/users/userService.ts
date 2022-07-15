@@ -1,5 +1,7 @@
 import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
 
+import { useRouter } from 'next/router';
+
 import { AxiosResponse, AxiosError } from 'axios';
 
 import { Queries } from 'enums';

@@ -5,4 +5,6 @@ export type FavoriteContactProps = {
   className?: string;
   /** Project object */
   project: ProjectType;
+  /** Callback called when the favorite button is clicked */
+  onFavoriteClick?: () => void;
 };

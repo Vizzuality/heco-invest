@@ -77,4 +77,11 @@ module ApplicationHelper
 
     f.input field_name, options
   end
+
+  def account_link_for(record)
+    return if record.blank?
+    return link_to record.name, edit_backoffice_project_developer_path(record.project_developer), class: "link-button" if record.project_developer_id.present?
+
+    link_to record.name, edit_backoffice_investor_path(record.investor), class: "link-button" if record.investor_id.present?
+  end
 end

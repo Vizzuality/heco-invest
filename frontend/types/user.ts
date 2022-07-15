@@ -28,6 +28,7 @@ export interface User {
   confirmed: boolean;
   approved: boolean;
   invitation?: InvitationStatus;
+  owner: boolean;
 }
 
 export type UserAccount = {

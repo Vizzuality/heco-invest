@@ -30,6 +30,7 @@ class Account < ApplicationRecord
   validates :picture, attached: true, content_type: /\Aimage\/.*\z/
   validates :contact_email, presence: true
   validates :contact_email, format: {with: Devise.email_regexp}, unless: -> { contact_email.blank? }
+  validate :owner_is_part_of_account, if: :owner_id_changed?
 
   before_update :set_reviewed_at, if: :review_status_changed?
 
@@ -39,6 +40,10 @@ class Account < ApplicationRecord
   end
 
   private
+
+  def owner_is_part_of_account
+    errors.add :owner_id, :owner_not_part_of_account unless owner_id.in? user_ids
+  end
 
   def set_reviewed_at
     self.reviewed_at = Time.now

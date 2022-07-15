@@ -265,7 +265,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
         </div>
 
         {inviteUsers.isError && (
-          <Alert className="my-4" withLayoutContainer>
+          <Alert type="warning" className="my-4" withLayoutContainer>
             {Array.isArray(inviteUsers.error.message)
               ? inviteUsers.error.message[0].title
               : inviteUsers.error.message}

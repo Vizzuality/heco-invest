@@ -80,9 +80,9 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
               {/* Filters accordion header https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html */}
               <h3>
                 <Button
-                  className="inline px-0 font-normal bg-white text-green-dark"
+                  className="inline px-4 py-2 font-normal text-center bg-white text-green-dark hover:text-green-light focus-visible:outline-green-dark"
                   id="filters-button"
-                  theme="primary-green"
+                  theme="naked"
                   onClick={() => setOpenFilters(!openFilters)}
                   aria-expanded={openFilters}
                   aria-controls="filters"
@@ -90,10 +90,10 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
                   <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
                   <span
                     className={cx(
-                      'flex items-center justify-center w-6 h-6 ml-2 px-0 py-0 rounded-full border border-bg-green-light bg-green-light bg-opacity-30 text-green-dark font-bold text-xs transition-opacity ease-in',
+                      'flex items-center justify-center h-6 px-0 py-0 rounded-full border border-bg-green-light bg-green-light bg-opacity-30 text-green-dark font-bold text-xs transition-all ease-in',
                       {
-                        'opacity-100': !!filtersQuantity,
-                        'opacity-0': !filtersQuantity,
+                        'opacity-100 w-6 ml-2': !!filtersQuantity,
+                        'opacity-0 w-0 ml-0': !filtersQuantity,
                       }
                     )}
                   >

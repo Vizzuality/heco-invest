@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { AxiosResponse, AxiosError } from 'axios';
 
-import { Paths, Queries } from 'enums';
+import { Queries } from 'enums';
 import { SignIn } from 'types/sign-in';
 import { User } from 'types/user';
 
@@ -21,9 +21,7 @@ export function useSignOut(): UseMutationResult<AxiosResponse, AxiosError> {
   const queryClient = useQueryClient();
   return useMutation(signOut, {
     onSuccess: () => {
-      queryClient.setQueriesData([Queries.User, locale], undefined);
-      queryClient.setQueriesData([Queries.CurrentInvestor, locale], undefined);
-      queryClient.setQueriesData([Queries.CurrentProjectDeveloper, locale], undefined);
+      queryClient.removeQueries();
     },
   });
 }

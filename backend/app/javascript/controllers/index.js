@@ -5,4 +5,6 @@
 import { application } from "./application"
 
 import ShapefileController from "./shapefile_controller.js"
+import MenuController from "./menu_controller";
 application.register("shapefile", ShapefileController)
+application.register("menu", MenuController)

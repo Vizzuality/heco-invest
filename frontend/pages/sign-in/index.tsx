@@ -148,7 +148,7 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signIn.error?.message && (
-          <Alert className="my-4.5" withLayoutContainer>
+          <Alert type="warning" className="mb-4.5" withLayoutContainer>
             {Array.isArray(signIn.error?.message)
               ? signIn.error.message[0].title
               : signIn.error.message}

@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import {
   UseQueryResult,
   useMutation,
-  QueryClient,
+  useQueryClient,
   UseQueryOptions,
   QueryFunction,
 } from 'react-query';
@@ -11,7 +11,6 @@ import {
 import { useRouter } from 'next/router';
 
 import { AxiosRequestConfig } from 'axios';
-import { decycle } from 'cycle';
 
 import { useLocalizedQuery } from 'hooks/query';
 
@@ -68,36 +67,40 @@ export function useProjectDevelopersList(
 }
 
 /** Get a Project Developer using an id and, optionally, the wanted fields */
-export async function getProjectDeveloper(
+export const getProjectDeveloper = async (
   id: string,
   params?: {
     fields?: string;
-    includes?: string;
+    includes?: string[];
   }
-): Promise<ProjectDeveloper> {
+): Promise<{
+  data: ProjectDeveloper;
+  included: any[]; // TODO
+}> => {
+  const { includes, ...rest } = params || {};
+
   const config: AxiosRequestConfig = {
     url: `/api/v1/project_developers/${id}`,
     method: 'GET',
-    params: params,
+    params: {
+      includes: includes?.join(','),
+      ...rest,
+    },
   };
-  return await API.request(config).then((response) => decycle(response.data.data));
-}
+  return await API.request(config).then((response) => response.data);
+};
 
 /** Use query for a single Project Developer */
 export function useProjectDeveloper(
   id: string,
-  params?: {
-    fields?: string;
-    includes?: string;
-  },
+  params?: Parameters<typeof getProjectDeveloper>[1],
   initialData?: ProjectDeveloper
 ) {
   const query = useLocalizedQuery(
     [Queries.ProjectDeveloper, id],
     () => getProjectDeveloper(id, params),
     {
-      initialData,
-      refetchOnWindowFocus: false,
+      initialData: { data: initialData, included: [] },
     }
   );
 
@@ -137,7 +140,9 @@ export const useCurrentProjectDeveloper = (user?: User) => {
 
 /** Hook with mutation that handle favorite state. If favorite is false, creates a POST request to set favorite to true, and if favorite is true, creates a DELETE request that set favorite to false. */
 export const useFavoriteProjectDeveloper = () => {
+  const queryClient = useQueryClient();
   const { locale } = useRouter();
+
   const favoriteOrUnfavoriteProjectDeveloper = (
     projectDeveloperId: string,
     isFavourite: boolean
@@ -148,15 +153,17 @@ export const useFavoriteProjectDeveloper = () => {
       data: { project_developer_id: projectDeveloperId },
     };
 
-    return API.request(config).then((response) => decycle(response.data.data));
+    return API.request(config).then((response) => response.data.data);
   };
-  const queryClient = new QueryClient();
+
   return useMutation(
     ({ id, isFavourite }: { id: string; isFavourite: boolean }) =>
       favoriteOrUnfavoriteProjectDeveloper(id, isFavourite),
     {
       onSuccess: (data) => {
         queryClient.setQueryData([Queries.ProjectDeveloper, locale], data);
+        queryClient.invalidateQueries([Queries.ProjectDeveloper], {});
+        queryClient.invalidateQueries([Queries.ProjectDeveloperList], {});
       },
     }
   );
