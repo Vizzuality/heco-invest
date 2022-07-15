@@ -22,12 +22,11 @@ import { ProjectDeveloper } from 'types/projectDeveloper';
 import { User } from 'types/user';
 
 import { useUpdateProject } from 'services/account';
-import { getEnums } from 'services/enums/enumService';
+import { getEnums, useEnums } from 'services/enums/enumService';
 import { getProject } from 'services/projects/projectService';
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let project;
-  let enums;
 
   try {
     ({ data: project } = await getProject(id as string, {
@@ -41,7 +40,6 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
       // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
       locale: null,
     }));
-    enums = await getEnums();
   } catch (e) {
     return { notFound: true };
   }
@@ -49,7 +47,6 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
   return {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
-      enums: groupBy(enums, 'type'),
       project: project,
     },
   };
@@ -57,15 +54,16 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
 
 type EditProjectProps = {
   project: ProjectType;
-  enums: GroupedEnumsType;
 };
 
-const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ project, enums }) => {
+const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ project }) => {
   const { formatMessage } = useIntl();
   const router = useRouter();
 
   const updateProject = useUpdateProject();
   const queryReturnPath = useQueryReturnPath();
+  // The enums should be feched on the client to have the correct locale param.
+  const enumsData = useEnums();
 
   const getIsOwner = (user: User, userAccount: ProjectDeveloper | Investor) => {
     // The user must be a the creator of the project to be allowed to edit it.
@@ -98,7 +96,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
         mutation={updateProject}
         onComplete={onComplete}
         initialValues={project}
-        enums={enums}
+        enums={enumsData?.data}
       />
     </ProtectedPage>
   );
