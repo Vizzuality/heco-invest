@@ -34,8 +34,8 @@ const BetaVersionDisclaimer = () => {
     >
       <p className="text-sm mr-2 text-center">
         <FormattedMessage
-          defaultMessage="HeCo Invest is currently on <n>Beta</n> version. We still testing and making improvements and for that reason some features may not be fully functional. Please let us know if there is anything we can change to make your experience better."
-          id="vOsmgU"
+          defaultMessage="HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional."
+          id="HvSsTa"
           values={{
             n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
           }}
