@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 
 import { LayoutContainerProps } from 'components/layout-container';
+import { LanguageType } from 'types';
 
 import { MultiPageLayoutFooterProps } from './footer';
 import { MultiPageLayoutHeaderProps } from './header';
@@ -9,6 +10,8 @@ export type MultiPageLayoutProps = PropsWithChildren<
   {
     /** Classnames to apply to the container */
     className?: string;
+    /** Locale of the layout to display in a tag in the header */
+    locale?: LanguageType;
     /** Whether to show the outro page */
     showOutro?: boolean;
     /** Whether to show the footer on the outro page. Defaults to `false` */

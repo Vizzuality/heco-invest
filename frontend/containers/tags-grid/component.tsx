@@ -2,8 +2,6 @@ import { FC } from 'react';
 
 import cx from 'classnames';
 
-import { slugify } from 'helpers/slugify';
-
 import CategoryTag from 'containers/category-tag';
 
 import Tag from 'components/tag';
@@ -11,9 +9,7 @@ import Tag from 'components/tag';
 import type { TagsGridProps } from './types';
 
 export const TagsGrid: FC<TagsGridProps> = ({ className, rows }: TagsGridProps) => {
-  const gridCells = rows.reduce((arr, { title, type, tags }) => {
-    const id = slugify(title);
-
+  const gridCells = rows.reduce((arr, { id, title, type, tags }) => {
     // Do not display grid rows that have no tags
     if (!tags?.length) return arr;
 

@@ -1,8 +1,9 @@
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
+
+import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
-import { decycle } from 'cycle';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -22,7 +23,7 @@ import { GroupedEnums } from 'types/enums';
 import { Investor } from 'types/investor';
 
 import { getEnums } from 'services/enums/enumService';
-import { getInvestor } from 'services/investors/investorsService';
+import { getInvestor, useInvestor, useFavoriteInvestor } from 'services/investors/investorsService';
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let investor = null;
@@ -40,7 +41,7 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
     props: {
       intlMessages: await loadI18nMessages({ locale }),
       enums: groupBy(enums, 'type'),
-      investor: decycle(investor),
+      investor: investor,
     },
   };
 });
@@ -51,9 +52,14 @@ type InvestorPageProps = {
 };
 
 const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
-  investor,
+  investor: investorProp,
   enums,
 }) => {
+  const intl = useIntl();
+  const router = useRouter();
+
+  const { data: investor } = useInvestor(router.query.id as string, investorProp);
+
   const {
     name,
     twitter,
@@ -105,25 +111,36 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
 
   const tagsGridRows: TagsGridRowType[] = [
     {
-      title: 'Invests in',
+      id: 'category',
+      title: intl.formatMessage({ defaultMessage: 'Invests in', id: 'i9cSUD' }),
       type: 'category',
       tags: allCategories.filter(({ id }) => categories?.includes(id)),
     },
     {
-      title: 'Ticket size',
+      id: 'ticket-size',
+      title: intl.formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
       tags: allTicketSizes.filter(({ id }) => ticket_sizes?.includes(id)),
     },
     {
-      title: 'Instrument size',
+      id: 'instrument-size',
+      title: intl.formatMessage({ defaultMessage: 'Instrument size', id: '2AZiFU' }),
       tags: allInstrumentTypes.filter(({ id }) => instrument_types?.includes(id)),
     },
     {
-      title: 'Impact they invest on',
+      id: 'impact',
+      title: intl.formatMessage({ defaultMessage: 'Impact they invest on', id: '4y9VoH' }),
       tags: allImpacts.filter(({ id }) => impacts?.includes(id)),
     },
   ];
 
   const investorTypeName = allInvestorTypes?.find(({ id }) => id === investor_type)?.name;
+
+  const favoriteInvestor = useFavoriteInvestor();
+
+  const handleFavoriteClick = () => {
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    favoriteInvestor.mutate({ id: investor.id, isFavourite: investor.favourite });
+  };
 
   return (
     <>
@@ -147,6 +164,9 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
           // social={getSocialInfo()}
           contact={contact}
           originalLanguage={language}
+          isFavorite={investor.favourite}
+          onFavoriteClick={handleFavoriteClick}
+          favoriteLoading={favoriteInvestor.isLoading}
         />
       </LayoutContainer>
 

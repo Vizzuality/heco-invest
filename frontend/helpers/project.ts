@@ -19,3 +19,20 @@ export const projectImpact = (project: ProjectType) => {
     {}
   );
 };
+
+export const useProjectContacts = (project: ProjectType) => {
+  if (!project) return null;
+
+  return [project?.project_developer || [], ...(project?.involved_project_developers || [])]
+    .map((developer) => {
+      if (!developer.contact_email && !developer.contact_phone) return;
+
+      return {
+        name: developer.name,
+        email: developer.contact_email,
+        phone: developer.contact_phone,
+        picture: developer.picture?.small,
+      };
+    })
+    .filter((developer) => !!developer);
+};

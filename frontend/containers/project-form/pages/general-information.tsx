@@ -48,7 +48,7 @@ const GeneralInformation = ({
   const [coverImage, setCoverImage] = useState<string>();
 
   const { formatMessage } = useIntl();
-  const { locations } = useGroupedLocations();
+  const { locations } = useGroupedLocations({ includes: 'parent' });
 
   const { projectDevelopers } = useProjectDevelopersList({
     'page[size]': 1000,

@@ -1,9 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
+import { useProjectContacts } from 'helpers/project';
+
 import { ContactProps } from 'containers/project-page/contact/types';
-import { ContactItemType } from 'containers/social-contact/contact-information-modal';
 import ContactInformationModal from 'containers/social-contact/contact-information-modal/component';
 
 import Button from 'components/button';
@@ -12,25 +13,7 @@ import LayoutContainer from 'components/layout-container';
 export const Contact: React.FC<ContactProps> = ({ project }: ContactProps) => {
   const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
 
-  const contacts = useMemo<ContactItemType[]>(
-    () =>
-      [project?.project_developer, ...project?.involved_project_developers].reduce(
-        (prev: ContactItemType[], { contact_email, contact_phone, name, picture, id }, index) => {
-          if (
-            // If there are values for contacts AND the involved_project_developer is not the project_developer
-            (contact_email || contact_phone) &&
-            (index === 0 || id !== project?.project_developer.id)
-          )
-            return [
-              ...prev,
-              { email: contact_email, name, picture: picture?.small, phone: contact_phone },
-            ];
-          return prev;
-        },
-        []
-      ),
-    [project]
-  );
+  const contacts = useProjectContacts(project);
 
   if (!contacts.length) return null;
 

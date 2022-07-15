@@ -2,7 +2,7 @@ require "swagger_helper"
 
 RSpec.describe "API V1 User", type: :request do
   before_all do
-    @user = create(:user, email: "user@example.com", password: "SuperSecret1234")
+    @user = create(:user, :with_avatar, email: "user@example.com", password: "SuperSecret1234")
   end
 
   path "/api/v1/user" do

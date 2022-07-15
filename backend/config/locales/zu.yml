@@ -12,6 +12,10 @@ zu:
     error_notification:
       default_message: "Please review the problems below:"
     labels:
+      user:
+        avatar: Avatar (optional)
+        first_name: First name
+        last_name: Last name
       admin:
         first_name: First name
         last_name: Last name
@@ -31,6 +35,7 @@ zu:
         language: Language
         review_status: Review status
         type: Type
+        owner_id: Owner
       project_developer:
         impacts: Expect to have impact on
         project_developer_type: Project developer type
@@ -95,6 +100,7 @@ zu:
       investor: Investor
       project: Project
       admin: Administrator
+      user: User
       category: Category
       mosaic: Mosaic
       verified: Verified
@@ -102,6 +108,7 @@ zu:
       edit: Edit
       save: Save
       cancel: Cancel
+      delete: Delete
       view_content_in: View content in
       search_placeholder: Search
       apply: Apply
@@ -138,6 +145,14 @@ zu:
     change_password:
       title: Change your password
       button: Change my password
+    users:
+      information: User information
+      delete: Delete user
+      index:
+        account: Account
+        last_sign_in_at: Last login
+      form:
+        information: Information
     admins:
       information: User information
       password: Password
@@ -191,6 +206,7 @@ zu:
       project_developers: Project developers
       investors: Investors
       projects: Projects
+      users: Users
       admins: Administrators
   errors:
     messages:
@@ -201,6 +217,7 @@ zu:
       not_geojson: is not geojson
       unsupported_geometry: shape is not supported
       missing_geometry: inside geojson is empty
+      owner_not_part_of_account: is not part of account
       user:
         multiple_accounts: User already have account!
         no_project_developer: User is not project developer!

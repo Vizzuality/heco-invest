@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 
-import { UseQueryResult, UseQueryOptions } from 'react-query';
+import { UseQueryResult, UseQueryOptions, useMutation, useQueryClient } from 'react-query';
+
+import { useRouter } from 'next/router';
 
 import { AxiosResponse, AxiosRequestConfig } from 'axios';
 
@@ -81,7 +83,7 @@ export const useCurrentInvestor = (user: User) => {
     );
 
   const query = useLocalizedQuery([Queries.Account, user], getCurrentInvestor, {
-    // Creates the conditional to only fetch the data if the user is a project developer user
+    // Creates the conditional to only fetch the data if the user is a investor user
     enabled: user?.role === UserRoles.Investor,
     ...staticDataQueryOptions,
   });
@@ -92,5 +94,36 @@ export const useCurrentInvestor = (user: User) => {
       investor: query.data,
     }),
     [query]
+  );
+};
+
+/** Hook with mutation that handle favorite state. If favorite is false, creates a POST request to set favorite to true, and if favorite is true, creates a DELETE request that set favorite to false. */
+export const useFavoriteInvestor = () => {
+  const { locale } = useRouter();
+  const queryClient = useQueryClient();
+
+  const favoriteOrUnfavoriteInvestor = (
+    investorId: string,
+    isFavourite: boolean
+  ): Promise<Investor> => {
+    const config: AxiosRequestConfig = {
+      method: isFavourite ? 'DELETE' : 'POST',
+      url: `/api/v1/investors/${investorId}/favourite_investor`,
+      data: { investor_id: investorId },
+    };
+
+    return API.request(config).then((response) => response.data.data);
+  };
+
+  return useMutation(
+    ({ id, isFavourite }: { id: string; isFavourite: boolean }) =>
+      favoriteOrUnfavoriteInvestor(id, isFavourite),
+    {
+      onSuccess: (data) => {
+        queryClient.setQueryData([Queries.Investor, locale], data);
+        queryClient.invalidateQueries([Queries.Investor], {});
+        queryClient.invalidateQueries([Queries.InvestorList], {});
+      },
+    }
   );
 };
