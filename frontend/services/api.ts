@@ -34,9 +34,9 @@ const onRequest = (config: AxiosRequestConfig) => {
       // NOTE: requests made on the server, should already have a `locale` parameter thanks to
       // `withLocalizedRequests`
       locale:
-        config?.params?.locale ??
-        getCookie('NEXT_LOCALE') ??
-        locales.find((locale) => locale.default).locale,
+        config?.params?.locale === null
+          ? null
+          : getCookie('NEXT_LOCALE') ?? locales.find((locale) => locale.default).locale,
     },
   };
 };
