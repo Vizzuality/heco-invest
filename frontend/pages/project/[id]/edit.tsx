@@ -36,6 +36,7 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
         'country',
         'municipality',
         'department',
+        'project_developer',
         'involved_project_developers',
       ],
     }));
