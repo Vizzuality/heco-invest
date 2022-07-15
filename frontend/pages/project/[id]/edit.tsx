@@ -37,8 +37,8 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
         'department',
         'involved_project_developers',
       ],
-      // The 'locale' setted to undefined, for this endpoint, returns the project data with the project default language
-      locale: undefined,
+      // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
+      locale: null,
     }));
     enums = await getEnums();
   } catch (e) {
