@@ -37,7 +37,13 @@
         <td><%= link_to t("backoffice.common.edit"), edit_backoffice_user_path(user.id), class: "link-button" %></td>
         <td>
           <%= render "menu" do %>
-            <%= render "backoffice/base/menu/delete", path: backoffice_user_path(user), model: t("backoffice.common.user") %>
+            <%= render "backoffice/base/menu/item" do %>
+              <%= link_to t("backoffice.common.delete"), backoffice_user_path(user.id),
+                 data: {
+                   turbo_method: :delete,
+                   turbo_confirm: t("backoffice.messages.delete_confirmation", model: t("backoffice.common.user").downcase)
+                 } %>
+            <% end %>
           <% end %>
         </td>
       </tr>
