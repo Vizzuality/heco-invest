@@ -94,7 +94,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
 
   return (
     <div className={className}>
-      <div className="absolute top-0 right-0 z-10 w-full h-full overflow-hidden pointer-events-none">
+      <div className="absolute top-0 right-0 z-20 w-full h-full overflow-hidden pointer-events-none">
         <Button
           size="smallest"
           theme="naked"

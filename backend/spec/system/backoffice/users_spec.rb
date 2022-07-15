@@ -90,9 +90,11 @@ RSpec.describe "Backoffice: Users", type: :system do
 
     context "when removing user" do
       it "removes user" do
-        accept_confirm do
-          click_on t("backoffice.users.delete")
-        end
+        expect {
+          accept_confirm do
+            click_on t("backoffice.users.delete")
+          end
+        }.to have_enqueued_mail(UserMailer, :destroyed).with(user.email, user.full_name)
         expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.user")))
         expect(current_path).to eql(backoffice_users_path)
         expect(page).not_to have_text(user.full_name)
