@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import { useState, useCallback } from 'react';
 
 import { SubmitHandler, useForm, Path } from 'react-hook-form';
-import { useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
@@ -11,8 +11,9 @@ import { entries, pick } from 'lodash-es';
 
 import useInterests from 'hooks/useInterests';
 
-import { getServiceErrors, useGetAlert } from 'helpers/pages';
+import { getServiceErrors, useGetAlert, useLanguageNames } from 'helpers/pages';
 
+import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import SelectLanguageForm from 'containers/forms/select-language-form';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
@@ -41,6 +42,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
   const [totalPages, setTotalPages] = useState(0);
   const resolver = useProjectDeveloperValidation(isCreateForm ? currentPage : currentPage + 1);
   const { back } = useRouter();
+  const languageNames = useLanguageNames();
 
   const enums = useEnums();
   const {
@@ -57,6 +59,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
     control,
     setError,
     setValue,
+    getValues,
     clearErrors,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
@@ -123,6 +126,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
         getTotalPages={(pages) => setTotalPages(pages)}
         layout="narrow"
         title={title}
+        locale={initialValues?.language || (currentPage !== 0 ? getValues('language') : null)}
         autoNavigation={false}
         page={currentPage}
         alert={alert}
@@ -139,7 +143,19 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
             <SelectLanguageForm register={register} errors={errors} fieldName="language" />
           </Page>
         )}
-        <Page hasErrors={getPageErrors(1)}>
+        <Page hasErrors={getPageErrors(1)} className="relative">
+          {!isCreateForm && initialValues?.language && (
+            <ContentLanguageAlert className="mb-6">
+              <FormattedMessage
+                defaultMessage="<span>Note:</span>The content of this profile should be written in {language}"
+                id="zINRAT"
+                values={{
+                  language: languageNames[initialValues?.language],
+                  span: (chunks: string) => <span className="mr-2 font-semibold">{chunks}</span>,
+                }}
+              />
+            </ContentLanguageAlert>
+          )}
           <Profile
             setError={setError}
             setValue={setValue}

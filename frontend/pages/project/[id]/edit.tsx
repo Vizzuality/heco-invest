@@ -7,6 +7,7 @@ import { withLocalizedRequests } from 'hoc/locale';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
+import { useQueryReturnPath } from 'helpers/pages';
 
 import ProjectForm from 'containers/project-form';
 
@@ -60,8 +61,10 @@ type EditProjectProps = {
 
 const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ project, enums }) => {
   const { formatMessage } = useIntl();
-  const updateProject = useUpdateProject();
   const router = useRouter();
+
+  const updateProject = useUpdateProject();
+  const queryReturnPath = useQueryReturnPath();
 
   const getIsOwner = (user: User, userAccount: ProjectDeveloper | Investor) => {
     // The user must be a the creator of the project to be allowed to edit it.
@@ -73,11 +76,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
   };
 
   const onComplete = () => {
-    router.push(
-      router.query?.returnPath
-        ? decodeURIComponent(router.query?.returnPath as string)
-        : Paths.DashboardProjects
-    );
+    router.push(queryReturnPath || Paths.DashboardProjects);
   };
 
   return (
@@ -90,7 +89,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
       permissions={[UserRoles.ProjectDeveloper]}
     >
       <ProjectForm
-        title={formatMessage({ defaultMessage: 'Create project', id: 'VUN1K7' })}
+        title={formatMessage({ defaultMessage: 'Edit project', id: 'qwCflo' })}
         leaveMessage={formatMessage({
           defaultMessage: 'Leave project creation form',
           id: 'vygPIS',

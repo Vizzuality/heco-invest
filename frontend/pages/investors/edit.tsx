@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
+import { useQueryReturnPath } from 'helpers/pages';
 
 import InvestorForm from 'containers/investor-form';
 
@@ -39,9 +40,10 @@ const EditInvestorPage: PageComponent<EditInvestorServerSideProps, FormPageLayou
   const { formatMessage } = useIntl();
 
   const updateInvestor = useUpdateInvestor();
+  const queryReturnPath = useQueryReturnPath();
 
   const handleOnComplete = () => {
-    router.push((router.query?.returnPath as string) || Paths.Dashboard);
+    router.push(queryReturnPath || Paths.Dashboard);
   };
 
   const { investor } = useInvestor({});
