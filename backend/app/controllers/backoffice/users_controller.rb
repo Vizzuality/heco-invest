@@ -39,6 +39,7 @@ module Backoffice
 
     def destroy
       if @user.destroy
+        UserMailer.destroyed(@user.email, @user.full_name).deliver_later
         redirect_to backoffice_users_path, status: :see_other,
           notice: t("backoffice.messages.success_delete", model: t("backoffice.common.user"))
       else
