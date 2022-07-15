@@ -15,6 +15,7 @@ RSpec.describe "Backoffice: Users", type: :system do
       I18n.t("backoffice.common.name"),
       I18n.t("backoffice.common.email"),
       I18n.t("backoffice.users.index.account"),
+      I18n.t("backoffice.common.account_owner"),
       I18n.t("backoffice.common.created_at"),
       I18n.t("backoffice.users.index.last_sign_in_at")
     ]
@@ -24,6 +25,7 @@ RSpec.describe "Backoffice: Users", type: :system do
       within_row(owner.full_name) do
         expect(page).to have_text(owner.email)
         expect(page).to have_text(owner.account.name)
+        expect(page).to have_text(I18n.t(owner.owner_account.present?))
         expect(page).to have_text(I18n.l(owner.created_at.to_date))
         expect(page).to have_text(I18n.l(owner.last_sign_in_at&.to_date, default: ""))
       end
