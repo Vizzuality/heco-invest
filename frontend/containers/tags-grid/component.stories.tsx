@@ -14,6 +14,7 @@ export const Default: Story<TagsGridProps> = Template.bind({});
 Default.args = {
   rows: [
     {
+      id: 'category',
       title: 'Invests in',
       type: 'category',
       tags: [
@@ -24,14 +25,17 @@ Default.args = {
       ],
     },
     {
+      id: 'ticket-size',
       title: 'Ticket size',
       tags: ['US$50k', '$50k - $500k', '$500k - $1M'],
     },
     {
+      id: 'instrument-size',
       title: 'Instrument size',
       tags: ['Grand', 'Loan'],
     },
     {
+      id: 'impact',
       title: 'Impact they invest on',
       tags: ['Biodiversity', 'Community'],
     },

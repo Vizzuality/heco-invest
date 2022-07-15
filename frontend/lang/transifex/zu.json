@@ -104,6 +104,9 @@
   "25WwxF": {
     "string": "Don't have an account?"
   },
+  "2AZiFU": {
+    "string": "Instrument size"
+  },
   "2Cbk6h": {
     "string": "Add your logo or a picture that identifies the account."
   },
@@ -176,6 +179,9 @@
   "4vn+6A": {
     "string": "{inputName} is focused, type to refine list, press down to open the menu, press left to focus selected values"
   },
+  "4y9VoH": {
+    "string": "Impact they invest on"
+  },
   "4zK41e": {
     "string": "Investing in the Amazon means contributing to improving the quality of life of more than 30 million people. It is also contributing to the development and conservation of a vital region for South America and the world."
   },
@@ -190,6 +196,9 @@
   },
   "5c08Qp": {
     "string": "Project information"
+  },
+  "5gd2Z7": {
+    "string": "HeCo <a>priority landscapes</a>"
   },
   "5kZ+j+": {
     "string": "Duration of the project"
@@ -512,6 +521,9 @@
   "G6tmT0": {
     "string": "Select the ticket size(s) that you provide"
   },
+  "G9iCfx": {
+    "string": "Reach them in"
+  },
   "GKONs7": {
     "string": "Start having impact now."
   },
@@ -650,6 +662,9 @@
   },
   "KxPY7j": {
     "string": "Date of creation"
+  },
+  "L2CvBU": {
+    "string": "Expect to have impact"
   },
   "LFDgTb": {
     "string": "Leave project developer edition?"
@@ -1287,6 +1302,9 @@
   "hxIQ/8": {
     "string": "Projects waiting funding"
   },
+  "i9cSUD": {
+    "string": "Invests in"
+  },
   "i9eK6b": {
     "string": "Show verified content only"
   },
@@ -1310,6 +1328,9 @@
   },
   "in26xr": {
     "string": "{organization} logo"
+  },
+  "inQ2Q1": {
+    "string": "Topics/sector categories"
   },
   "itfsqC": {
     "string": "Currently you don’t have any <b>Projects</b>."

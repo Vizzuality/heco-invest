@@ -1,6 +1,10 @@
+import { ReactNode } from 'react';
+
 export type TagsGridRowType = {
-  /** Label for the tags list */
-  title: string;
+  /** Id for the tags list row */
+  id: string;
+  /** Label for the tags list row */
+  title: string | ReactNode;
   /** Type of tags to display. Defaults to `default` */
   type?: 'default' | 'category';
   /** Array of strings for `default` tags, or array of { id, title } for `category` tags */

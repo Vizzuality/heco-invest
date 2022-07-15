@@ -1,4 +1,4 @@
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
@@ -70,6 +70,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
   projectDeveloper: projectDeveloperProp,
   enums,
 }) => {
+  const intl = useIntl();
   const router = useRouter();
 
   const {
@@ -103,18 +104,38 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
 
   const tagsRows: TagsGridRowType[] = [
     {
-      title: 'Categories of interest',
+      id: 'categories',
+      title: intl.formatMessage({ defaultMessage: 'Topics/sector categories', id: 'inQ2Q1' }),
       type: 'category',
       tags: enums[EnumTypes.Category].filter(({ id }) =>
         projectDeveloper.categories?.includes(id as CategoryType)
       ),
     },
     {
-      title: 'Areas of work',
+      id: 'priority-landscapes',
+      title: intl.formatMessage(
+        {
+          defaultMessage: 'HeCo <a>priority landscapes</a>',
+          id: '5gd2Z7',
+        },
+        {
+          a: (chunks) => (
+            <a
+              href="/images/mosaics.png"
+              className="underline rounded-full focus-visible:outline-green-dark"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {chunks}
+            </a>
+          ),
+        }
+      ),
       tags: enums[EnumTypes.Mosaic].filter(({ id }) => projectDeveloper.mosaics?.includes(id)),
     },
     {
-      title: 'Impact',
+      id: 'impact',
+      title: intl.formatMessage({ defaultMessage: 'Expect to have impact', id: 'L2CvBU' }),
       tags: enums[EnumTypes.Impact].filter(({ id }) => projectDeveloper.impacts?.includes(id)),
     },
   ];
