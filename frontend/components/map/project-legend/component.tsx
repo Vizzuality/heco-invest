@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 
 import { CategoryTagDot } from 'containers/category-tag';
 
+import Button from 'components/button';
 import Icon from 'components/icon';
 import { CategoryType } from 'types/category';
 
@@ -43,13 +44,17 @@ export const ProjectLegend: FC<ProjectLegendProps> = ({ className }: ProjectLege
         [className]: !!className,
       })}
     >
-      <button
-        type="button"
+      <Button
+        theme="naked"
+        size="smallest"
         aria-controls={id}
         aria-expanded={active}
-        className="relative flex items-center justify-center w-8 h-8 bg-white rounded shadow-xl focus-visible:outline-green-dark"
+        className="flex items-center justify-center w-8 h-8 bg-white rounded shadow-xl focus-visible:outline-green-dark"
         onClick={onToggleActive}
       >
+        <span className="sr-only">
+          <FormattedMessage defaultMessage="Legend" id="iZuO+L" />
+        </span>
         <Icon
           aria-hidden={true}
           icon={ChevronDownIcon}
@@ -58,9 +63,10 @@ export const ProjectLegend: FC<ProjectLegendProps> = ({ className }: ProjectLege
             '-scale-y-100': !active,
           })}
         />
-      </button>
+      </Button>
       <motion.div
         id={id}
+        aria-hidden={!active}
         animate={active ? 'open' : 'closed'}
         transition={{ duration: 0.6 }}
         variants={legendVariants}
