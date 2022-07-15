@@ -105,7 +105,7 @@
     "react-stately": "^3.12.2",
     "react-table": "^7.8.0",
     "rooks": "^5.10.0",
-    "sharp": "^0.30.1",
+    "sharp": "^0.30.5",
     "slugify": "^1.6.5",
     "supercluster": "^7.1.5",
     "tailwindcss": "^3.0.23",
