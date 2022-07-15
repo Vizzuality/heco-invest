@@ -12,6 +12,10 @@ zu:
     error_notification:
       default_message: "Please review the problems below:"
     labels:
+      user:
+        avatar: Avatar (optional)
+        first_name: First name
+        last_name: Last name
       admin:
         first_name: First name
         last_name: Last name
@@ -96,6 +100,7 @@ zu:
       investor: Investor
       project: Project
       admin: Administrator
+      user: User
       category: Category
       mosaic: Mosaic
       verified: Verified
@@ -103,6 +108,7 @@ zu:
       edit: Edit
       save: Save
       cancel: Cancel
+      delete: Delete
       view_content_in: View content in
       search_placeholder: Search
       apply: Apply
@@ -140,9 +146,13 @@ zu:
       title: Change your password
       button: Change my password
     users:
+      information: User information
+      delete: Delete user
       index:
         account: Account
         last_sign_in_at: Last login
+      form:
+        information: Information
     admins:
       information: User information
       password: Password

@@ -39,11 +39,23 @@ RSpec.configure do |config|
               id: {type: :string},
               type: {type: :string},
               attributes: {
-                first_name: {type: :string},
-                last_name: {type: :string},
-                email: {type: :string}
+                type: :object,
+                properties: {
+                  first_name: {type: :string},
+                  last_name: {type: :string},
+                  email: {type: :string},
+                  role: {type: :string},
+                  created_at: {type: :string},
+                  confirmed: {type: :boolean},
+                  approved: {type: :boolean, nullable: true},
+                  invitation: {type: :string, nullable: true},
+                  owner: {type: :boolean},
+                  avatar: {"$ref" => "#/components/schemas/image_blob"}
+                },
+                required: %w[first_name last_name email role created_at confirmed approved invitation owner avatar]
               }
-            }
+            },
+            required: %w[id type attributes]
           },
           investor: {
             type: :object,
@@ -55,7 +67,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
-                  picture_url: {type: :string},
+                  picture: {"$ref" => "#/components/schemas/image_blob"},
                   about: {type: :string, nullable: true},
                   website: {type: :string, nullable: true},
                   instagram: {type: :string, nullable: true},
@@ -221,7 +233,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
-                  picture_url: {type: :string},
+                  picture: {"$ref" => "#/components/schemas/image_blob"},
                   about: {type: :string, nullable: true},
                   website: {type: :string, nullable: true},
                   instagram: {type: :string, nullable: true},
@@ -315,6 +327,15 @@ RSpec.configure do |config|
               }
             },
             required: %w[id key filename content_type metadata byte_size checksum created_at service_name signed_id attachable_sgid direct_upload]
+          },
+          image_blob: {
+            type: :object,
+            properties: {
+              small: {type: :string, nullable: true},
+              medium: {type: :string, nullable: true},
+              original: {type: :string, nullable: true}
+            },
+            required: %w[small medium original]
           },
           pagination_meta: {
             type: :object,
