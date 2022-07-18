@@ -14,9 +14,9 @@ import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import { Paths } from 'enums';
 
-import { PublicPageCarrouselProps } from './index';
+import { PublicPageCarouselProps } from '.';
 
-export const ForPublicPagesCarrousel: FC<PublicPageCarrouselProps> = ({
+export const ForPublicPagesCarousel: FC<PublicPageCarouselProps> = ({
   texts,
   images,
   subtitle,
@@ -138,4 +138,4 @@ export const ForPublicPagesCarrousel: FC<PublicPageCarrouselProps> = ({
   );
 };
 
-export default ForPublicPagesCarrousel;
+export default ForPublicPagesCarousel;

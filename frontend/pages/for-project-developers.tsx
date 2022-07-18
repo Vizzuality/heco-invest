@@ -12,9 +12,10 @@ import { groupBy } from 'lodash-es';
 import { InferGetStaticPropsType } from 'next';
 
 import { useBreakpoint } from 'hooks/use-breakpoint';
+
 import { loadI18nMessages } from 'helpers/i18n';
 
-import Carrousel from 'containers/for-public-pages/carrousel';
+import Carousel from 'containers/for-public-pages/carousel';
 import Description from 'containers/for-public-pages/description';
 import PublicPageCard from 'containers/for-public-pages/public-page-card';
 import ImpactModal from 'containers/modals/impact';
@@ -112,7 +113,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
 
   return (
     <>
-      <Head title={formatMessage({ defaultMessage: 'For investors', id: 'MfCYKW' })} />
+      <Head title={formatMessage({ defaultMessage: 'For Project Developers', id: 'QcPpQd' })} />
       <ImpactModal impactModalOpen={impactModalOpen} setImpactModalOpen={setImpactModalOpen} />
 
       <Description
@@ -268,7 +269,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
         </div>
       </LayoutContainer>
 
-      <Carrousel
+      <Carousel
         subtitle={
           <FormattedMessage
             defaultMessage="Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."

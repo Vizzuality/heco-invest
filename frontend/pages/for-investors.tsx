@@ -16,9 +16,9 @@ import { useBreakpoint } from 'hooks/use-breakpoint';
 import { loadI18nMessages } from 'helpers/i18n';
 import { getMosaicsWithProjectsNumber } from 'helpers/pages';
 
-import Carrousel from 'containers/for-public-pages/carrousel';
+import Carousel from 'containers/for-public-pages/carousel';
 import Description from 'containers/for-public-pages/description';
-import ProjectCard from 'containers/for-public-pages/public-page-card';
+import PublicPageCard from 'containers/for-public-pages/public-page-card';
 import ImpactModal from 'containers/modals/impact';
 
 import Head from 'components/head';
@@ -231,7 +231,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
           {categoryEnums.map(({ id, name, description }) => {
             const projectsQuantity = projectsGroupedByCategory[id]?.length || 0;
             return (
-              <ProjectCard
+              <PublicPageCard
                 key={id}
                 id={id}
                 name={name}
@@ -295,7 +295,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                   'md:row-start-3 lg:row-start-3 lg:col-start-2': index === 3,
                 })}
               >
-                <ProjectCard
+                <PublicPageCard
                   key={id}
                   id={id}
                   name={name}
@@ -332,7 +332,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         </div>
       </LayoutContainer>
 
-      <Carrousel
+      <Carousel
         subtitle={
           <FormattedMessage
             defaultMessage="Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."

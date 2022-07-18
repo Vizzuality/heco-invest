@@ -18,12 +18,12 @@ export const Description: FC<DescriptionProps> = ({
         </div>
         <div className="mt-8 lg:mt-0 lg:flex lg:flex-col lg:gap-y-10 pb-15 lg:pb-0">
           <div className="mb-8 lg:flex lg:gap-80 lg:mb-0">
-            <p className="flex-1">{descriptions[0]}</p>
+            <p className="flex-1">{descriptions?.[0]}</p>
             <div className="flex-1"></div>
           </div>
           <div className="lg:flex lg:gap-x-80">
             <div className="flex-1"></div>
-            <p className="flex-1">{descriptions[1]}</p>
+            <p className="flex-1">{descriptions?.[1]}</p>
           </div>
         </div>
       </LayoutContainer>
