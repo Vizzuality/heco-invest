@@ -84,7 +84,6 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
 
   return (
     <ProtectedPage
-      allowConfirmed
       ownership={{
         allowOwner: true,
         getIsOwner,

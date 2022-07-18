@@ -14,7 +14,6 @@ const Protected: React.FC<ProtectedProps> = ({
     allowOwner: false,
     getIsOwner: () => false,
   },
-  allowConfirmed = false,
   allowUnapproved = false,
   children,
   ...rest
@@ -58,14 +57,6 @@ const Protected: React.FC<ProtectedProps> = ({
     router.back();
     return null;
   } else {
-    // If the account confirmation is needed and the account is not confirmed
-    if (allowConfirmed && !user.confirmed) {
-      // Redirect to pending approval page
-      router.push(
-        user.role === UserRoles.Investor ? Paths.PendingInvestor : Paths.PendingProjectDeveloper
-      );
-      return null;
-    }
     // If the account is not yet approved and approval is needed
     if (!allowUnapproved && userAccount && userAccount?.review_status !== ReviewStatus.Approved) {
       // Redirect to pending approval page

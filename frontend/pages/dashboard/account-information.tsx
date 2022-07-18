@@ -47,7 +47,7 @@ export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayou
   const editProfileLink = isProjectDeveloper ? Paths.EditProjectDeveloper : Paths.EditInvestor;
 
   return (
-    <ProtectedPage allowConfirmed permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
+    <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
       <Head title={intl.formatMessage({ defaultMessage: 'Account information', id: 'CzsYIe' })} />
       <DashboardLayout>
         <LayoutContainer layout={'narrow'} className="flex flex-col gap-4">

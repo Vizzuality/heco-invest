@@ -7,8 +7,6 @@ export type ProtectedProps = React.PropsWithChildren<
   React.ComponentProps<'div'> & {
     /** User roles allowed */
     permissions: UserRoles[];
-    /** Allow just confirmed account users. Defaults to 'true' */
-    allowConfirmed?: boolean;
     /** Allow unapproved account users. Defaults to 'false' */
     allowUnapproved?: boolean;
     /** Allow for owner */
