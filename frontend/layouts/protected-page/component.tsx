@@ -56,22 +56,23 @@ const Protected: React.FC<ProtectedProps> = ({
     // Redirect to the last route (go back) if the user have a different kind of account
     router.back();
     return null;
-  } else {
-    // If the account is not yet approved and approval is needed
-    if (!allowUnapproved && userAccount && userAccount?.review_status !== ReviewStatus.Approved) {
-      // Redirect to pending approval page
-      router.push(
-        user.role === UserRoles.Investor ? Paths.PendingInvestor : Paths.PendingProjectDeveloper
-      );
+  }
+
+  // If the account is not yet approved and approval is needed
+  if (!allowUnapproved && userAccount && userAccount?.review_status !== ReviewStatus.Approved) {
+    // Redirect to pending approval page
+    router.push(
+      user.role === UserRoles.Investor ? Paths.PendingInvestor : Paths.PendingProjectDeveloper
+    );
+    return null;
+  }
+
+  // If the ownership of the entity is needed and the user don't have it
+  if (ownership?.allowOwner) {
+    if (!isOwner) {
+      // Redirect to dashboard
+      router.push(Paths.Dashboard);
       return null;
-    }
-    // If the ownership of the entity is needed and the user don't have it
-    if (ownership?.allowOwner) {
-      if (!userIsLoading && !userAccountLoading && !isOwner) {
-        // Redirect to dashboard
-        router.push(Paths.Dashboard);
-        return null;
-      }
     }
   }
 
