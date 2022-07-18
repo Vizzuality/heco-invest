@@ -2,7 +2,10 @@ import { useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
 
-const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN;
+import { TileLayer } from '@deck.gl/geo-layers';
+import { MapboxLayer } from '@deck.gl/mapbox';
+import GL from '@luma.gl/constants';
+import { DecodedLayer } from '@vizzuality/layer-manager-layers-deckgl';
 
 enum LAYER_GROUPS {
   BaseLayer = 'base-layer',
@@ -253,13 +256,58 @@ export const useLayers = () => {
           dataSourceUrl:
             'https://data.globalforestwatch.org/datasets/aboveground-live-woody-biomass-density',
           specification: {
-            type: 'raster',
+            type: 'deck',
             source: {
-              type: 'raster',
-              tiles: [
-                'https://storage.googleapis.com/wri-public/biomass/global/2017/v2/30/{z}/{x}/{y}.png',
-              ],
+              parse: false,
             },
+            render: {
+              parse: false,
+            },
+            deck: [
+              new MapboxLayer({
+                id: 'tree-biomass-density',
+                type: TileLayer,
+                data: 'https://storage.googleapis.com/wri-public/biomass/global/2017/v2/30/{z}/{x}/{y}.png',
+                tileSize: 256,
+                visible: true,
+                refinementStrategy: 'no-overlap',
+                renderSubLayers: ({ id: subLayerId, data, tile, visible, opacity }) => {
+                  const {
+                    zoom,
+                    bbox: { west, south, east, north },
+                  } = tile;
+
+                  if (data) {
+                    return new DecodedLayer({
+                      id: subLayerId,
+                      image: data,
+                      bounds: [west, south, east, north],
+                      textureParameters: {
+                        [GL.TEXTURE_MIN_FILTER]: GL.NEAREST,
+                        [GL.TEXTURE_MAG_FILTER]: GL.NEAREST,
+                        [GL.TEXTURE_WRAP_S]: GL.CLAMP_TO_EDGE,
+                        [GL.TEXTURE_WRAP_T]: GL.CLAMP_TO_EDGE,
+                      },
+                      zoom,
+                      visible,
+                      opacity,
+                      decodeParams: {
+                        threshold: 30,
+                      },
+                      decodeFunction: `
+                        float intensity = color.b * 255.;
+                        color.r = (255. - intensity) / 255.;
+                        color.g = 128. / 255.;
+                        color.b = 0.;
+                        alpha = intensity / 255.;
+                      `,
+                    });
+                  }
+
+                  return null;
+                },
+              }),
+            ],
           },
         },
         {
@@ -404,36 +452,150 @@ export const useLayers = () => {
           dataSource: 'Hansen/UMD/Google/USGS/NASA',
           dataSourceUrl: 'https://glad.earthengine.app/view/global-forest-change',
           specification: {
-            type: 'raster',
+            type: 'deck',
             source: {
-              type: 'raster',
-              tiles: [
-                'https://tiles.globalforestwatch.org/umd_tree_cover_loss/v1.8/tcd_30/{z}/{x}/{y}.png',
+              parse: false,
+            },
+            render: {
+              parse: false,
+            },
+            deck: [
+              new MapboxLayer({
+                id: 'tree-cover-loss',
+                type: TileLayer,
+                data: 'https://tiles.globalforestwatch.org/umd_tree_cover_loss/v1.8/tcd_30/{z}/{x}/{y}.png',
+                tileSize: 256,
+                visible: true,
+                refinementStrategy: 'no-overlap',
+                renderSubLayers: ({ id: subLayerId, data, tile, visible, opacity }) => {
+                  const {
+                    zoom,
+                    bbox: { west, south, east, north },
+                  } = tile;
+
+                  if (data) {
+                    return new DecodedLayer({
+                      id: subLayerId,
+                      image: data,
+                      bounds: [west, south, east, north],
+                      textureParameters: {
+                        [GL.TEXTURE_MIN_FILTER]: GL.NEAREST,
+                        [GL.TEXTURE_MAG_FILTER]: GL.NEAREST,
+                        [GL.TEXTURE_WRAP_S]: GL.CLAMP_TO_EDGE,
+                        [GL.TEXTURE_WRAP_T]: GL.CLAMP_TO_EDGE,
+                      },
+                      zoom,
+                      visible,
+                      opacity,
+                      decodeParams: {
+                        startYear: 2001,
+                        endYear: new Date().getFullYear(),
+                      },
+                      decodeFunction: `
+                        // values for creating power scale, domain (input), and range (output)
+                        float domainMin = 0.;
+                        float domainMax = 255.;
+                        float rangeMin = 0.;
+                        float rangeMax = 255.;
+                        float exponent = zoom < 13. ? 0.3 + (zoom - 3.) / 20. : 1.;
+                        float intensity = color.r * 255.;
+                        // get the min, max, and current values on the power scale
+                        float minPow = pow(domainMin, exponent - domainMin);
+                        float maxPow = pow(domainMax, exponent);
+                        float currentPow = pow(intensity, exponent);
+                        // get intensity value mapped to range
+                        float scaleIntensity = ((currentPow - minPow) / (maxPow - minPow) * (rangeMax - rangeMin)) + rangeMin;
+                        // a value between 0 and 255
+                        alpha = zoom < 13. ? scaleIntensity / 255. : color.g;
+                        float year = 2000.0 + (color.b * 255.);
+                        // map to years
+                        if (year >= startYear && year <= endYear && year >= 2001.) {
+                          color.r = 220. / 255.;
+                          color.g = (72. - zoom + 102. - 3. * scaleIntensity / zoom) / 255.;
+                          color.b = (33. - zoom + 153. - intensity / zoom) / 255.;
+                        } else {
+                          alpha = 0.;
+                        }
+                      `,
+                    });
+                  }
+
+                  return null;
+                },
+              }),
+            ],
+          },
+        },
+        {
+          id: LAYERS.RiverineFloodRisk,
+          group: LAYER_GROUPS.PriorityLayer,
+          name: formatMessage({
+            defaultMessage: 'Riverine flood risk',
+            id: 'deHJ3+',
+          }),
+          description: formatMessage({
+            defaultMessage:
+              'Shows the percentage of the population expected to be affected by riverine flooding in an average year.',
+            id: 'nwXvcg',
+          }),
+          overview: formatMessage({
+            defaultMessage:
+              'Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average.',
+            id: 'BY6k/1',
+          }),
+          dataSource: 'World Resources Institute',
+          dataSourceUrl: 'https://www.wri.org/data/aqueduct-global-maps-30-data',
+          specification: {
+            type: 'vector',
+            source: {
+              type: 'vector',
+              provider: {
+                type: 'carto',
+                account: 'wri-rw',
+                layers: [
+                  {
+                    type: 'cartodb',
+                    options: {
+                      sql: "SELECT s.aq30_id as cartodb_id, coalesce(NULLIF(rfr_label,''), 'No Data') as label, r.the_geom, r.the_geom_webmercator, (CASE WHEN rfr_label = 'Insignificant Trend' THEN -1 ELSE coalesce(rfr_cat, -9999)END) as water_risk FROM water_risk_indicators_annual s LEFT JOIN y2018m12d06_rh_master_shape_v01 r on s.aq30_id=r.aq30_id WHERE s.pfaf_id != -9999 and s.gid_1 != '-9999' and r.aqid != -9999 ORDER BY s.aq30_id",
+                      cartocss:
+                        '#water_risk_indicators_annual [water_risk=4] { polygon-fill:#990000; line-color:#990000 } #water_risk_indicators_annual [water_risk=3] { polygon-fill:  #FF1900; line-color:  #FF1900 } #water_risk_indicators_annual [water_risk=2] { polygon-fill: #FF9900; line-color: #FF9900 } #water_risk_indicators_annual [water_risk=1] { polygon-fill: #FFE600; line-color:  #FFE600 } #water_risk_indicators_annual [water_risk=0] { polygon-fill: #FFFF99; line-color:  #FFFF99 } #water_risk_indicators_annual [water_risk=-1] { polygon-fill: #808080; line-color:  #808080 } #water_risk_indicators_annual [water_risk<-1] { polygon-fill: #4E4E4E; line-color:  #4E4E4E }',
+                      cartocss_version: '2.3.0',
+                    },
+                  },
+                ],
+              },
+            },
+            render: {
+              layers: [
+                {
+                  'source-layer': 'layer0',
+                  type: 'fill',
+                  filter: ['all'],
+                  paint: {
+                    'fill-opacity': 0.7,
+                    'fill-color': [
+                      'step',
+                      ['get', 'water_risk'],
+                      '#4E4E4E',
+                      -1,
+                      '#808080',
+                      0,
+                      '#FFFF99',
+                      1,
+                      '#FFE600',
+                      2,
+                      '#FF9900',
+                      3,
+                      '#FF1900',
+                      4,
+                      '#990000',
+                    ],
+                  },
+                },
               ],
             },
           },
         },
-        // {
-        //   id: LAYERS.RiverineFloodRisk,
-        //   group: LAYER_GROUPS.PriorityLayer,
-        //   name: formatMessage({
-        //     defaultMessage: 'Riverine flood risk',
-        //     id: 'deHJ3+',
-        //   }),
-        //   description: formatMessage({
-        //     defaultMessage:
-        //       'Shows the percentage of the population expected to be affected by riverine flooding in an average year.',
-        //     id: 'nwXvcg',
-        //   }),
-        //   overview: formatMessage({
-        //     defaultMessage:
-        //       'Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average.',
-        //     id: 'BY6k/1',
-        //   }),
-        // dataSource: 'World Resources Institute',
-        // dataSourceUrl: 'https://www.wri.org/data/aqueduct-global-maps-30-data',
-        //   specification: {},
-        // },
         {
           id: LAYERS.IndigenousReserves,
           group: LAYER_GROUPS.PriorityLayer,

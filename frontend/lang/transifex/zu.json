@@ -386,6 +386,9 @@
   "BSFsv6": {
     "string": "Tree biomass density"
   },
+  "BY6k/1": {
+    "string": "Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average."
+  },
   "BZG0d+": {
     "string": "Search for projects, investors, open calls..."
   },
@@ -1179,6 +1182,9 @@
   "daUTdN": {
     "string": "Open call applications"
   },
+  "deHJ3+": {
+    "string": "Riverine flood risk"
+  },
   "des5Rg": {
     "string": "Discover projects by category"
   },
@@ -1454,6 +1460,9 @@
   },
   "nkDaFL": {
     "string": "Go to next page"
+  },
+  "nwXvcg": {
+    "string": "Shows the percentage of the population expected to be affected by riverine flooding in an average year."
   },
   "o+Vt3t": {
     "string": "Partnership between:"
