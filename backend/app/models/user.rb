@@ -34,6 +34,9 @@ class User < ApplicationRecord
   ransacker :full_name do
     Arel.sql("CONCAT_WS(' ', users.first_name, users.last_name)")
   end
+  ransacker :owner_account_exists do
+    Arel.sql("(SELECT EXISTS (SELECT 1 FROM accounts WHERE accounts.owner_id = users.id))")
+  end
 
   def send_confirmation_instructions
     return if confirmation_sent_within_limited_period?

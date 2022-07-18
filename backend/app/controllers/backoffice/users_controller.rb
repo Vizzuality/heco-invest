@@ -8,7 +8,7 @@ module Backoffice
 
     def index
       @q = User.ransack params[:q]
-      @users = @q.result.includes(:account)
+      @users = @q.result.includes(:owner_account, account: %i[project_developer investor])
       @users = @users.search params.dig(:q, :filter_full_text) if params.dig(:q, :filter_full_text).present?
 
       respond_to do |format|
