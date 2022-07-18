@@ -96,17 +96,37 @@ RSpec.describe "API V1 Invitation", type: :request do
 
         before { sign_in account.owner }
 
-        run_test!
+        context "when users were not invited yet" do
+          run_test!
 
-        it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/invitation-create")
+          it "matches snapshot", generate_swagger_example: true do
+            expect(response.body).to match_snapshot("api/v1/invitation-create")
+          end
+
+          it "sends emails" do
+            mails = ActionMailer::Base.deliveries[-2..]
+            expect(mails.map(&:subject).uniq).to eq([I18n.t("devise.mailer.invitation_instructions.subject")])
+            expect(mails.first.to).to eq(["user@example.com"])
+            expect(mails.second.to).to eq([user.email])
+          end
         end
 
-        it "sends email" do
-          mails = ActionMailer::Base.deliveries[-2..]
-          expect(mails.map(&:subject).uniq).to eq([I18n.t("devise.mailer.invitation_instructions.subject")])
-          expect(mails.first.to).to eq(["user@example.com"])
-          expect(mails.second.to).to eq([user.email])
+        context "when user is already invited" do
+          let(:invitation_params) { {emails: [user.email]} }
+
+          before { user.invite! account.owner }
+
+          run_test!
+
+          it "re-invites user" do
+            expect(response_json[user.email]).to eq(200)
+          end
+
+          it "sends email" do
+            mail = ActionMailer::Base.deliveries.last
+            expect(mail.subject).to eq(I18n.t("devise.mailer.invitation_instructions.subject"))
+            expect(mail.to).to eq([user.email])
+          end
         end
       end
     end
