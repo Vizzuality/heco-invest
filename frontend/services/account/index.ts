@@ -40,7 +40,7 @@ export function useProjectDeveloper(
   includes?: string
 ): UseQueryResult<ProjectDeveloper> & { projectDeveloper: ProjectDeveloper } {
   const query = useLocalizedQuery(
-    [Queries.CurrentProjectDeveloper],
+    [Queries.CurrentProjectDeveloper, includes],
     () => getProjectDeveloper(includes),
     {
       refetchOnWindowFocus: false,
@@ -132,10 +132,14 @@ const getInvestor = async (includes?: string): Promise<Investor> => {
 };
 
 export function useInvestor(options: UseQueryOptions<Investor>, includes?: string) {
-  const query = useLocalizedQuery([Queries.CurrentInvestor], () => getInvestor(includes), {
-    refetchOnWindowFocus: false,
-    ...options,
-  });
+  const query = useLocalizedQuery(
+    [Queries.CurrentInvestor, includes],
+    () => getInvestor(includes),
+    {
+      refetchOnWindowFocus: false,
+      ...options,
+    }
+  );
   return useMemo(() => ({ ...query, investor: query.data }), [query]);
 }
 
