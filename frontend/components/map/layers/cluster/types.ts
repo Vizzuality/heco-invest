@@ -5,4 +5,5 @@ export type ClusterLayerProps = {
   map: any; // TODO: change type
   MarkerComponent: JSX.Element;
   ClusterComponent: JSX.Element;
+  onSelectProjectPin: (projectId: string) => void;
 };

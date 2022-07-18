@@ -11,12 +11,14 @@ class User < ApplicationRecord
   has_many :project_developers, through: :favourite_project_developers
   has_many :favourite_investors, dependent: :destroy
   has_many :investors, through: :favourite_investors
-  has_one :owner_account, class_name: "Account", foreign_key: "owner_id", dependent: :destroy
+  has_one :owner_account, class_name: "Account", foreign_key: "owner_id", dependent: :restrict_with_error
+
+  has_one_attached :avatar
 
   pg_search_scope :search, against: [:first_name, :last_name, :email]
 
   devise :invitable, :database_authenticatable, :confirmable, :registerable,
-    :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable, :trackable
 
   enum role: {light: 0, investor: 1, project_developer: 2}, _default: :light
 
@@ -32,6 +34,9 @@ class User < ApplicationRecord
   ransacker :full_name do
     Arel.sql("CONCAT_WS(' ', users.first_name, users.last_name)")
   end
+  ransacker :owner_account_exists do
+    Arel.sql("(SELECT EXISTS (SELECT 1 FROM accounts WHERE accounts.owner_id = users.id))")
+  end
 
   def send_confirmation_instructions
     return if confirmation_sent_within_limited_period?
@@ -44,6 +49,7 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+  alias_method :to_s, :full_name
 
   private
 
@@ -56,5 +62,9 @@ class User < ApplicationRecord
     return if password.match?(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)./)
 
     errors.add :password, :password_complexity
+  end
+
+  def block_from_invitation?
+    false # invited users can still sign-in
   end
 end

@@ -7,6 +7,7 @@ import { withLocalizedRequests } from 'hoc/locale';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
+import { useQueryReturnPath } from 'helpers/pages';
 
 import InvestorForm from 'containers/investor-form';
 
@@ -41,9 +42,10 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
   const { formatMessage } = useIntl();
 
   const createInvestor = useCreateInvestor();
+  const queryReturnPath = useQueryReturnPath();
 
   const handleOnComplete = () => {
-    router.push((router.query?.returnPath as string) || Paths.Dashboard);
+    router.push(queryReturnPath || Paths.Dashboard);
   };
 
   return (

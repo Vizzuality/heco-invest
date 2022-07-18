@@ -1,6 +1,8 @@
 import { PlusCircle as PlusCircleIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import cx from 'classnames';
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -87,11 +89,50 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
 
   const tableProps = {
     columns: [
-      { Header: 'Title', accessor: 'name' },
-      { Header: 'Category', accessor: 'category' },
-      { Header: 'Location', accessor: 'location' },
-      { Header: 'Instrument type', accessor: 'instrumentType' },
-      { Header: 'Value', accessor: 'ticketSize', canSort: false },
+      { Header: intl.formatMessage({ defaultMessage: 'Title', id: '9a9+ww' }), accessor: 'name' },
+      {
+        Header: intl.formatMessage({ defaultMessage: 'Category', id: 'ccXLVi' }),
+        accessor: 'category',
+      },
+      {
+        Header: intl.formatMessage({ defaultMessage: 'Country', id: 'vONi+O' }),
+        accessor: 'country',
+      },
+      {
+        Header: intl.formatMessage({ defaultMessage: 'Municipality', id: '9I1zvK' }),
+        accessor: 'municipality',
+      },
+      {
+        Header: intl.formatMessage({ defaultMessage: 'Instrument type', id: 'fDd10o' }),
+        accessor: 'instrumentType',
+      },
+      {
+        Header: intl.formatMessage({ defaultMessage: 'Value', id: 'GufXy5' }),
+        accessor: 'ticketSize',
+        canSort: false,
+      },
+      {
+        Header: intl.formatMessage({ defaultMessage: 'Status', id: 'tzMNF3' }),
+        accessor: 'status',
+        Cell: ({ cell: { value } }) => {
+          return (
+            <span
+              className={cx({
+                'bg-opacity-20 text-sm px-2.5 py-0.5 rounded-2xl': true,
+                'bg-gray-800 text-gray-800': value === 'draft',
+                'bg-green-light text-green-dark': value === 'verified',
+                'bg-orange text-orange': value === 'unverified',
+              })}
+            >
+              {value === 'draft' && <FormattedMessage defaultMessage="Draft" id="W6nwjo" />}
+              {value === 'verified' && <FormattedMessage defaultMessage="Verified" id="Z8971h" />}
+              {value === 'unverified' && (
+                <FormattedMessage defaultMessage="Unverified" id="n9fdaJ" />
+              )}
+            </span>
+          );
+        },
+      },
       {
         accessor: 'actions',
         canSort: false,
@@ -134,11 +175,13 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
       slug: project.slug,
       name: project.name,
       category: allCategories.find(({ id }) => id === project.category)?.name,
-      location: `${project.municipality.name}, ${project.country.name}`,
+      country: project.country.name,
+      municipality: project.municipality.name,
       instrumentType: allInstrumentTypes
         ?.filter(({ id }) => project.instrument_types?.includes(id))
         .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase()))
         .join(', '),
+      status: project.status === 'draft' ? 'draft' : project.trusted ? 'verified' : 'unverified',
       ticketSize: allTicketSizes?.find(({ id }) => project.ticket_size === id)?.description,
     })),
     loading: isLoadingProjects || isFetchingProjects,

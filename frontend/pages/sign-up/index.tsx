@@ -82,13 +82,13 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
           Array.isArray(signUp.error.message) ? (
             <ul>
               {signUp.error.message.map((err: any) => (
-                <Alert key={err.title} withLayoutContainer className="mt-6">
+                <Alert type="warning" key={err.title} withLayoutContainer className="mt-6">
                   <li key={err.title}>{err.title}</li>
                 </Alert>
               ))}
             </ul>
           ) : (
-            <Alert withLayoutContainer className="mt-6">
+            <Alert type="warning" withLayoutContainer className="mt-6">
               {signUp.error.message}
             </Alert>
           )

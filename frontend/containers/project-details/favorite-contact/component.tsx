@@ -7,7 +7,11 @@ import cx from 'classnames';
 
 import Link from 'next/link';
 
+import { noop } from 'lodash-es';
+
 import useMe from 'hooks/me';
+
+import { useProjectContacts } from 'helpers/project';
 
 import ContactInformationModal from 'containers/social-contact/contact-information-modal';
 
@@ -15,54 +19,23 @@ import Button from 'components/button';
 import Icon from 'components/icon';
 import { Paths } from 'enums';
 
-import { useFavoriteProjectDeveloper } from 'services/project-developers/projectDevelopersService';
-
 import { FavoriteContactProps } from './types';
 
 export const FavoriteContact: FC<FavoriteContactProps> = ({
   className,
   project,
+  onFavoriteClick = noop,
 }: FavoriteContactProps) => {
   const [contactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
 
   const { user } = useMe();
-  const favoriteProjectDeveloper = useFavoriteProjectDeveloper();
-
-  const handleFavoriteClick = () => {
-    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
-    favoriteProjectDeveloper.mutate(
-      {
-        id: project.project_developer.id,
-        isFavourite: project.project_developer.favourite,
-      },
-      {
-        onSuccess: (data) => {
-          project.project_developer = data;
-        },
-      }
-    );
-  };
-
-  const contacts = [project?.project_developer, ...project?.involved_project_developers]
-    .map((developer) => {
-      if (!developer.contact_email && !developer.contact_phone) return;
-
-      return {
-        name: developer.name,
-        email: developer.contact_email,
-        phone: developer.contact_phone,
-        picture: developer.picture?.small,
-      };
-    })
-    .filter((developer) => !!developer);
-
-  const hasContacts = !contacts.length;
+  const contacts = useProjectContacts(project);
 
   return (
     <div className={className}>
       <div className="flex flex-col items-start gap-4 mt-5 xl:items-center xl:flex-row">
         <Button
-          disabled={!user || hasContacts}
+          disabled={!user || !contacts.length}
           className="justify-start"
           theme="primary-green"
           onClick={() => setIsContactInfoModalOpen(true)}
@@ -70,15 +43,10 @@ export const FavoriteContact: FC<FavoriteContactProps> = ({
           <FormattedMessage defaultMessage="Contact" id="zFegDD" />
         </Button>
         {!!user && (
-          <Button
-            className="justify-start"
-            disabled={favoriteProjectDeveloper.isLoading}
-            theme="secondary-green"
-            onClick={handleFavoriteClick}
-          >
+          <Button className="justify-start" theme="secondary-green" onClick={onFavoriteClick}>
             <Icon
               icon={HeartIcon}
-              className={cx('w-4 mr-3', { 'fill-green-dark': project.project_developer.favourite })}
+              className={cx('w-4 mr-3', { 'fill-green-dark': project.favourite })}
             />
             <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
           </Button>

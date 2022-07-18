@@ -18,6 +18,8 @@ import Button from 'components/button';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 
+import { useAccount } from 'services/account';
+
 import type { ProfileHeaderProps } from './types';
 
 export const ProfileHeader: FC<ProfileHeaderProps> = ({
@@ -37,6 +39,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
   onFavoriteClick = () => noop,
 }: ProfileHeaderProps) => {
   const intl = useIntl();
+  const { user } = useAccount();
 
   const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
   const [logo, setLogo] = useState<string>(logoProp);
@@ -121,7 +124,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
               className="justify-center"
               theme="secondary-green"
               onClick={onFavoriteClick}
-              disabled={favoriteLoading}
+              disabled={!user || favoriteLoading}
               aria-pressed={isFavorite}
             >
               <Icon

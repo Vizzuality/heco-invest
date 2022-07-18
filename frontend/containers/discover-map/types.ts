@@ -1,1 +1,3 @@
-export interface DiscoverMapProps {}
+export interface DiscoverMapProps {
+  onSelectProjectPin: (projectId: string) => void;
+}

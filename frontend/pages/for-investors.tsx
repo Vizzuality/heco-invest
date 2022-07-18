@@ -265,12 +265,12 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             <FormattedMessage defaultMessage="By priority landscapes" id="JcS7oJ" />
           </h2>
         </div>
-        <div className="md:hidden block w-full max-h-[300px] mb-6 rounded-lg overflow-hidden">
+        <div className="block max-w-full mb-6 mr-4 rounded-lg sm:mr-0 md:hidden">
           <Image
             src="/images/for-investor/for-investor-priority-landscapes.png"
             alt=""
-            width={604}
-            height={557}
+            width={686}
+            height={632}
             objectFit="cover"
             objectPosition="center"
             className="rounded-lg"
@@ -313,12 +313,12 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
               <FormattedMessage defaultMessage="By priority landscapes" id="JcS7oJ" />
             </h2>
           </div>
-          <div className="hidden md:block w-[calc(100vw-32px)] max-h-[300px] md:w-auto col-start-1 row-start-2 md:col-span-2 md:col-start-2 md:row-span-2 md:row-start-3 lg:row-start-2 lg:col-start-3 rounded-lg overflow-hidden">
+          <div className="hidden md:block w-[calc(100vw-32px)] md:w-auto col-start-1 row-start-2 md:col-span-2 md:col-start-2 md:row-span-2 md:row-start-3 lg:row-start-2 lg:col-start-3 rounded-lg">
             <Image
               src="/images/for-investor/for-investor-priority-landscapes.png"
               alt=""
-              width={604}
-              height={557}
+              width={1124}
+              height={1306}
               objectFit="cover"
               objectPosition="center"
               className="rounded-lg"

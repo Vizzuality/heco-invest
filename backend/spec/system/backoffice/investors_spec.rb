@@ -13,7 +13,8 @@ RSpec.describe "Backoffice: Investors", type: :system do
         :approved,
         name: "Super Investor Enterprise",
         about: "About Investor Enterprise account",
-        owner: approved_investor_owner
+        owner: approved_investor_owner,
+        users: [approved_investor_owner]
       ),
       previously_invested: true,
       categories: %w[forestry-and-agroforestry non-timber-forest-production],
@@ -26,7 +27,16 @@ RSpec.describe "Backoffice: Investors", type: :system do
     )
   }
   let!(:unapproved_investor) {
-    create(:investor, account: build(:account, :unapproved, name: "Unapproved Investor Enterprise", owner: unapproved_investor_owner))
+    create(
+      :investor,
+      account: build(
+        :account,
+        :unapproved,
+        name: "Unapproved Investor Enterprise",
+        owner: unapproved_investor_owner,
+        users: [unapproved_investor_owner]
+      )
+    )
   }
 
   before { sign_in admin }
@@ -219,6 +229,21 @@ RSpec.describe "Backoffice: Investors", type: :system do
           expect(approved_investor.mission_es).to eq("New mission - Spanish")
           expect(approved_investor.prioritized_projects_description_es).to eq("New prioritized projects - Spanish")
           expect(approved_investor.other_information_es).to eq("New other info - Spanish")
+        end
+      end
+
+      context "account owner section" do
+        let!(:new_user) { create :user, account: approved_investor.account }
+
+        before { within_sidebar { click_on t("backoffice.common.account_owner") } }
+
+        it "updates account owner" do
+          select new_user.full_name, from: t("simple_form.labels.account.owner_id")
+          click_on t("backoffice.common.save")
+
+          expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.investor")))
+          approved_investor.reload
+          expect(approved_investor.owner).to eq(new_user)
         end
       end
 

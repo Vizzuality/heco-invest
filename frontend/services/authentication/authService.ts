@@ -21,7 +21,7 @@ export function useSignOut(): UseMutationResult<AxiosResponse, AxiosError> {
   const queryClient = useQueryClient();
   return useMutation(signOut, {
     onSuccess: () => {
-      queryClient.setQueryData([Queries.User, locale], undefined);
+      queryClient.removeQueries();
     },
   });
 }

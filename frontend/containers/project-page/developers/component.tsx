@@ -11,7 +11,10 @@ import { Paths } from 'enums';
 export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
   project,
 }: ProjectDevelopersProps) => {
-  const allDevelopers = [project.project_developer, ...project.involved_project_developers].filter(
+  const allDevelopers = [
+    project.project_developer,
+    ...(project.involved_project_developers || []),
+  ].filter(
     // Occasionally, the (involved_project_developers) relationship is not returned correctly, causing
     // the frontend to crash. In order to make it more resilient, we're making this check to ensure
     // that we do have the relationship before attempting to use its data to show the PD cards.
@@ -37,7 +40,7 @@ export const ProjectDevelopers: React.FC<ProjectDevelopersProps> = ({
             />
           </p>
         </div>
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col flex-1 space-y-6">
           {allDevelopers.map(({ about, name, picture, project_developer_type, id, slug }) => (
             <ProfileCard
               className="w-full"

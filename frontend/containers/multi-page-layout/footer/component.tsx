@@ -57,12 +57,16 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
             <ul>
               {alert.map((a: string) => (
                 <li key={a}>
-                  <Alert withLayoutContainer={true}>{a}</Alert>
+                  <Alert type="warning" withLayoutContainer={true}>
+                    {a}
+                  </Alert>
                 </li>
               ))}
             </ul>
           ) : (
-            <Alert withLayoutContainer={true}>{alert}</Alert>
+            <Alert type="warning" withLayoutContainer={true}>
+              {alert}
+            </Alert>
           )}
         </div>
       )}
