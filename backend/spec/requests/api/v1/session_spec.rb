@@ -105,6 +105,7 @@ RSpec.describe "API V1 Session", type: :request do
 
       response "200", :success do
         let("X-CSRF-TOKEN") { get_csrf_token }
+        let!(:token) { @user.token }
 
         before(:each) { sign_in @user }
 
@@ -112,6 +113,7 @@ RSpec.describe "API V1 Session", type: :request do
 
         it "removes user from session" do
           expect(session["warden.user.user.key"]).to be_nil
+          expect(@user.reload.token).not_to eq(token)
         end
       end
     end
