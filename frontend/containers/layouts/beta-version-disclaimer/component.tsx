@@ -23,7 +23,7 @@ const BetaVersionDisclaimer = () => {
   return (
     <div
       className={cx(
-        'w-full z-50 flex bg-background-middle justify-center transform-all ease-in-out duration-300 overflow-hidden text-black',
+        'w-full z-50 flex bg-background-middle justify-center transform-all ease-in-out duration-300 overflow-hidden text-black fixed bottom-0 sm:static sm:bottom-auto',
         {
           'h-0': hidden,
           'h-auto p-3': !hidden,
