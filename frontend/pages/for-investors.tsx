@@ -217,6 +217,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             />
           ),
         }}
+        page="for-investors"
       />
 
       <LayoutContainer className="pr-0 mt-28 sm:pr-0 md:pr-6">

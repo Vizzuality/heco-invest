@@ -214,7 +214,7 @@ export const UsePlatform = () => {
             <Button
               theme="secondary-green"
               size="small"
-              to="/investors"
+              to={Paths.ForProjecDevelopers}
               className="justify-center w-full text-lg text-center sm:w-auto sm:text-sm"
             >
               <FormattedMessage defaultMessage="Project developer features" id="DIrN6T" />

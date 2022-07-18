@@ -126,8 +126,8 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
         descriptions={[
           <FormattedMessage
             key="desc-1"
-            defaultMessage="HeCo Invest manages a <n>wide range of investment and financing opportunities</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n>."
-            id="NG6Ull"
+            defaultMessage="HeCo Invest provides you with a range of resources <n>to help you grow</n> and have the greatest <n>impact in the Colombian Amazon</n>."
+            id="XUD4o/"
             values={{
               n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
             }}
@@ -181,6 +181,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
             />
           ),
         }}
+        page="for-project-developers"
       />
 
       <LayoutContainer className="pr-0 mt-28 sm:pr-0 md:pr-6">
@@ -207,7 +208,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
               >
                 <PublicPageCard
                   id={id}
-                  name={description}
+                  name={description?.replace(/,000/g, 'K')}
                   description={name}
                   quantity={projectsQuantity}
                   filterName="ticket_size"
@@ -272,8 +273,11 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
       <Carousel
         subtitle={
           <FormattedMessage
-            defaultMessage="Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
-            id="WLDgff"
+            defaultMessage="Create a free account to start using all the benefits that HeCo Invest can offer to you and <n>your team</n>."
+            id="0QW5LG"
+            values={{
+              n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+            }}
           />
         }
         images={whatHecoCanDoImages}

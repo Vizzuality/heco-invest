@@ -1,3 +1,5 @@
+import { Paths } from 'enums';
+
 export type DescriptionProps = {
   // Main title of the page.
   title: string | JSX.Element;
@@ -7,4 +9,6 @@ export type DescriptionProps = {
   leftTexts: { title: string | JSX.Element; description: string | JSX.Element }[];
   // Text displayed on the right block, with a title and description.
   rightText: { title: string | JSX.Element; description: string | JSX.Element };
+  // The page using this component
+  page: 'for-investors' | 'for-project-developers';
 };
