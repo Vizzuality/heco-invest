@@ -13,7 +13,6 @@ enum LAYER_GROUPS {
 enum LAYERS {
   // BASE LAYERS
   HeCoMosaics = 'heco-mosaics',
-  PoliticalBoundaries = 'political-boundaries',
   SubBasinBoundaries = 'sub-basin-boundaries',
   ProtectedAreas = 'protected-areas',
   // CONTEXT LAYERS
@@ -24,7 +23,7 @@ enum LAYERS {
   // PRIORITY LAYERS
   EndangeredSpecies = 'endangered-species',
   TreeCoverLoss = 'tree-cover-loss',
-  // RiverineFloodRisk = 'riverine-flood-risk',
+  RiverineFloodRisk = 'riverine-flood-risk',
   IndigenousReserves = 'indigenous-reserves',
 }
 
@@ -39,7 +38,7 @@ export const useLayers = () => {
       },
       {
         id: LAYER_GROUPS.ContextLayer,
-        name: formatMessage({ defaultMessage: 'Context Layers', id: 'fIkMFK' }),
+        name: formatMessage({ defaultMessage: 'Contextual Layers', id: 'EKOV4Z' }),
       },
       {
         id: LAYER_GROUPS.PriorityLayer,
@@ -56,42 +55,82 @@ export const useLayers = () => {
         {
           id: LAYERS.HeCoMosaics,
           group: LAYER_GROUPS.BaseLayer,
-          name: formatMessage({ defaultMessage: 'HeCo mosaics', id: 'W7un1n' }),
-          description: formatMessage({ defaultMessage: 'Herencia Colombia mosaics', id: 'MmtnIe' }),
+          name: formatMessage({ defaultMessage: 'HeCo priority landscapes', id: 'X+46wB' }),
+          description: formatMessage({
+            defaultMessage: 'Herencia Colombia priority landscapes',
+            id: 'YjuFXX',
+          }),
           overview: formatMessage({
             defaultMessage: 'Displays the areas prioritized for Goal 3 of Herencia Colombia',
             id: 'Id5CnU',
           }),
           dataSource: 'Ministerio de Medio Ambiente y Desarrollo Sostenible de Colombia',
-          dataSourceUrl:
-            'https://basecamp.com/1756858/projects/18107300/messages/99371742?enlarge=450698651#attachment_450698651',
+          dataSourceUrl: '',
           specification: {
-            type: 'raster',
+            type: 'vector',
             source: {
-              type: 'raster',
-              tiles: [
-                `https://api.mapbox.com/v4/leticiaheco.1d0el4j0/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
-              ],
+              url: 'mapbox://leticiaheco.1d0el4j0',
             },
-          },
-        },
-        {
-          id: LAYERS.PoliticalBoundaries,
-          group: LAYER_GROUPS.BaseLayer,
-          name: formatMessage({ defaultMessage: 'Political boundaries', id: 'Fm6QvT' }),
-          description: formatMessage({
-            defaultMessage: 'Displays the political boundaries at country and state levels',
-            id: 'CS2uRY',
-          }),
-          dataSource: 'Instituto Geográfico Agustín Codazzi - IGAC',
-          dataSourceUrl:
-            'https://basecamp.com/1756858/projects/18107300/messages/99371742?enlarge=452957920#attachment_452957920',
-          specification: {
-            type: 'raster',
-            source: {
-              type: 'raster',
-              tiles: [
-                `https://api.mapbox.com/v4/leticiaheco.59zi3at4/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+            render: {
+              layers: [
+                {
+                  paint: {
+                    'fill-color': 'hsla(145, 29%, 58%, 0.7)',
+                    'fill-outline-color': '#3d6c50',
+                  },
+                  'source-layer': 'Mosaics',
+                  type: 'fill',
+                },
+                {
+                  paint: {
+                    'line-color': 'hsl(94, 35%, 33%)',
+                    'line-width': [
+                      'interpolate',
+                      ['linear'],
+                      ['zoom'],
+                      0,
+                      0.5,
+                      4.03,
+                      0.5,
+                      8.26,
+                      1,
+                      22,
+                      1,
+                    ],
+                  },
+                  layout: {
+                    'line-cap': 'round',
+                    'line-join': 'round',
+                    'line-round-limit': ['interpolate', ['linear'], ['zoom'], 0, 1, 22, 1],
+                    visibility: 'none',
+                  },
+                  'source-layer': 'Mosaics',
+                  type: 'line',
+                },
+                {
+                  layout: {
+                    'text-field': ['to-string', ['get', 'mosaico']],
+                    'text-font': ['Work Sans Medium', 'Arial Unicode MS Regular'],
+                    'text-transform': 'uppercase',
+                    'text-size': 10,
+                    'text-letter-spacing': 0.1,
+                    'text-offset': [0.3, 0],
+                    'text-radial-offset': 0.4,
+                    visibility: 'none',
+                  },
+                  metadata: {
+                    'mapbox:group': '3023c5604894e6920a7f7da208a21b27',
+                  },
+                  type: 'symbol',
+                  source: 'composite',
+                  paint: {
+                    'text-halo-color': 'hsl(0, 7%, 91%)',
+                    'text-halo-width': 0.3,
+                    'text-color': '#517237',
+                    'text-halo-blur': 2,
+                  },
+                  'source-layer': 'Mosaics',
+                },
               ],
             },
           },
@@ -112,11 +151,25 @@ export const useLayers = () => {
           dataSource: 'HydroSHEDS',
           dataSourceUrl: 'https://www.hydrosheds.org/products/hydrobasins#downloads',
           specification: {
-            type: 'raster',
+            type: 'vector',
             source: {
-              type: 'raster',
-              tiles: [
-                `https://api.mapbox.com/v4/leticiaheco.77lko5p2/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+              url: 'mapbox://leticiaheco.7r96572i',
+            },
+            render: {
+              layers: [
+                {
+                  paint: {
+                    'line-color': 'hsl(202, 68%, 44%)',
+                    'line-width': ['interpolate', ['linear'], ['zoom'], 4, 0.5, 8, 1],
+                  },
+                  layout: {
+                    'line-cap': 'round',
+                    'line-join': 'round',
+                    'line-round-limit': 1,
+                  },
+                  'source-layer': 'Zonificacion_Hidrografica_201-4s7eff',
+                  type: 'line',
+                },
               ],
             },
           },
@@ -137,11 +190,20 @@ export const useLayers = () => {
           dataSource: 'Parques Nacionales Naturales de Colombia',
           dataSourceUrl: 'https://runap.parquesnacionales.gov.co/cifras',
           specification: {
-            type: 'raster',
+            type: 'vector',
             source: {
-              type: 'raster',
-              tiles: [
-                `https://api.mapbox.com/v4/leticiaheco.3cokqqf5/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+              url: 'mapbox://leticiaheco.3cokqqf5',
+            },
+            render: {
+              layers: [
+                {
+                  paint: {
+                    'fill-color': 'hsla(141, 94%, 86%, 0.7)',
+                    'fill-outline-color': 'hsl(141, 20%, 56%)',
+                  },
+                  'source-layer': 'Protected',
+                  type: 'fill',
+                },
               ],
             },
           },
@@ -217,11 +279,20 @@ export const useLayers = () => {
           dataSourceUrl:
             'https://siac-datosabiertos-mads.hub.arcgis.com/datasets/a499da66b2814db48888343283b57cdb/about',
           specification: {
-            type: 'raster',
+            type: 'vector',
             source: {
-              type: 'raster',
-              tiles: [
-                `https://api.mapbox.com/v4/leticiaheco.0lg4uw9f/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+              url: 'mapbox://leticiaheco.1r3bnjgc',
+            },
+            render: {
+              layers: [
+                {
+                  paint: {
+                    'fill-color': 'hsla(194, 88%, 42%, 0.6)',
+                    'fill-outline-color': 'hsla(0, 0%, 0%, 0)',
+                  },
+                  'source-layer': 'Wetlands',
+                  type: 'fill',
+                },
               ],
             },
           },
@@ -380,11 +451,34 @@ export const useLayers = () => {
           dataSourceUrl:
             'https://data-agenciadetierras.opendata.arcgis.com/datasets/agenciadetierras::resguardos-ind%C3%ADgenas-1/about',
           specification: {
-            type: 'raster',
+            type: 'vector',
             source: {
-              type: 'raster',
-              tiles: [
-                `https://api.mapbox.com/v4/leticiaheco.99uihxi8/{z}/{x}/{y}.png?access_token=${MAPBOX_TOKEN}`,
+              url: 'mapbox://leticiaheco.99uihxi8',
+            },
+            render: {
+              layers: [
+                {
+                  paint: {
+                    'fill-color': 'hsla(26, 100%, 75%, 0.7)',
+                    'fill-outline-color': '#b96f37',
+                  },
+                  'source-layer': 'Reserves',
+                  type: 'fill',
+                },
+                {
+                  paint: {
+                    'line-color': 'hsl(37, 59%, 64%)',
+                    'line-width': ['interpolate', ['linear'], ['zoom'], 4, 0.5, 8, 1],
+                  },
+                  layout: {
+                    'line-cap': 'round',
+                    'line-join': 'round',
+                    'line-round-limit': 1,
+                    visibility: 'none',
+                  },
+                  'source-layer': 'Reserves',
+                  type: 'line',
+                },
               ],
             },
           },

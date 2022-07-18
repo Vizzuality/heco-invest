@@ -419,9 +419,6 @@
   "CPO6eS": {
     "string": "Select in which SDG’s your project will have impact"
   },
-  "CS2uRY": {
-    "string": "Displays the political boundaries at country and state levels"
-  },
   "CiBvks": {
     "string": "General information about the the project developer."
   },
@@ -467,6 +464,9 @@
   "E1kj21": {
     "string": "Project verification"
   },
+  "EKOV4Z": {
+    "string": "Contextual Layers"
+  },
   "EVKdUn": {
     "string": "Priority Landscape"
   },
@@ -508,9 +508,6 @@
   },
   "FN+0yY": {
     "string": "Unable to parse the file. Please try uploading a different format."
-  },
-  "Fm6QvT": {
-    "string": "Political boundaries"
   },
   "Ftj+/t": {
     "string": "Why is my profile pending approval?"
@@ -713,9 +710,6 @@
   },
   "MfCYKW": {
     "string": "For investors"
-  },
-  "MmtnIe": {
-    "string": "Herencia Colombia mosaics"
   },
   "MuOp0t": {
     "string": "Climate"
@@ -960,9 +954,6 @@
   "W6nwjo": {
     "string": "Draft"
   },
-  "W7un1n": {
-    "string": "HeCo mosaics"
-  },
   "WAr33U": {
     "string": "insert the name"
   },
@@ -986,6 +977,9 @@
   },
   "WskbuL": {
     "string": "Sub-basin boundaries"
+  },
+  "X+46wB": {
+    "string": "HeCo priority landscapes"
   },
   "X0E3iC": {
     "string": "I agree with the Terms and Privacy Policy."
@@ -1046,6 +1040,9 @@
   },
   "YYMUK5": {
     "string": "Expects to have impact on"
+  },
+  "YjuFXX": {
+    "string": "Herencia Colombia priority landscapes"
   },
   "Z8971h": {
     "string": "Verified"
@@ -1218,9 +1215,6 @@
   "fDd10o": {
     "string": "Instrument type"
   },
-  "fIkMFK": {
-    "string": "Context Layers"
-  },
   "fMrPOR": {
     "string": "Go to last page"
   },
@@ -1319,6 +1313,9 @@
   },
   "iUt7so": {
     "string": "of the planet’s known biodiversity lives in the Amazon, the largest tropical rainforest on the planet."
+  },
+  "iZuO+L": {
+    "string": "Legend"
   },
   "iiVhlC": {
     "string": "insert phone number"
