@@ -109,9 +109,13 @@ RSpec.describe "API V1 Session", type: :request do
 
         before(:each) { sign_in @user }
 
-        run_test!
+        it "returns correct response" do |example|
+          submit_request example.metadata
+          assert_response_matches_metadata example.metadata
+        end
 
-        it "removes user from session" do
+        it "removes user from session" do |example|
+          submit_request example.metadata
           expect(session["warden.user.user.key"]).to be_nil
           expect(@user.reload.token).not_to eq(token)
         end
