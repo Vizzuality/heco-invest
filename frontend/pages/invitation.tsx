@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useQueryClient } from 'react-query';
@@ -18,7 +18,7 @@ import { loadI18nMessages } from 'helpers/i18n';
 import Alert from 'components/alert';
 import Button from 'components/button';
 import Loading from 'components/loading';
-import { Paths, Queries, UserRoles } from 'enums';
+import { Paths, Queries } from 'enums';
 import { PageComponent } from 'types';
 
 import { useSignOut } from 'services/authentication/authService';
@@ -36,7 +36,7 @@ type InvitationProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Invitation: PageComponent<InvitationProps> = () => {
   const { formatMessage } = useIntl();
-  const { push, query, replace } = useRouter();
+  const { query, push } = useRouter();
   const {
     invitedUser,
     isError: invitedUserError,
@@ -51,14 +51,11 @@ const Invitation: PageComponent<InvitationProps> = () => {
     // The conditions will only be tested if the user and invited user are already fetched
     if (!userLoading && !invitedUserLoading) {
       if (!!invitedUser && !!user && user.email !== invitedUser.email) {
-        // If the invited user and the sign-in user are different, sign-out the current user and continue with the invitation flow.
-        signOut.mutate({}, { onSuccess: () => queryClient.invalidateQueries(Queries.User) });
-      } else if (!!user && user?.role !== UserRoles.Light) {
-        // If the user and the invites user have the same email but the role is not ligth
-        replace(Paths.Dashboard);
+        // The invited user and the signed in user are different
+        push(Paths.Dashboard);
       } else if (!!invitedUser && userError) {
         // The user is not signed in
-        replace({
+        push({
           pathname: invitedUser.requires_registration
             ? // The invited user needs sign-up before accept invitation
               Paths.SignUp
@@ -73,7 +70,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
     invitedUserLoading,
     query.invitation_token,
     queryClient,
-    replace,
+    push,
     signOut,
     user,
     userError,
@@ -83,8 +80,8 @@ const Invitation: PageComponent<InvitationProps> = () => {
   const handleAccept = () => {
     acceptInvitation.mutate(query.invitation_token as string, {
       onSuccess: async () => {
-        queryClient.invalidateQueries(Queries.User);
-        replace(Paths.Dashboard);
+        queryClient.invalidateQueries([Queries.User]);
+        push(Paths.Dashboard);
       },
     });
   };

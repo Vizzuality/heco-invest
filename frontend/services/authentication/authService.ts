@@ -17,7 +17,6 @@ export function useSignOut(): UseMutationResult<AxiosResponse, AxiosError> {
       url: '/api/v1/session',
       data: {},
     });
-  const { locale } = useRouter();
   const queryClient = useQueryClient();
   return useMutation(signOut, {
     onSuccess: () => {

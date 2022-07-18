@@ -18,11 +18,11 @@ export function useSignup(): UseMutationResult<
   SignupDto,
   unknown
 > {
+  const queryClient = useQueryClient();
   const signup = async (dto: SignupDto): Promise<AxiosResponse<SignupDto>> => {
+    queryClient.invalidateQueries(Queries.User);
     return await API.post('/api/v1/user', dto);
   };
-  const queryClient = useQueryClient();
-  queryClient.invalidateQueries(Queries.User);
   return useMutation(signup);
 }
 
