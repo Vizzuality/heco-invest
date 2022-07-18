@@ -14,7 +14,7 @@ import type { AlertProps } from './types';
 export const Alert: FC<AlertProps> = ({
   className,
   withLayoutContainer = false,
-  type = 'warning',
+  type = 'default',
   children,
 }: AlertProps) => {
   const variants = {
@@ -29,8 +29,10 @@ export const Alert: FC<AlertProps> = ({
     switch (type) {
       case 'success':
         return 'text-green-dark';
-      default:
+      case 'warning':
         return 'text-red-700';
+      default:
+        return 'text-black';
     }
   }, [type]);
 
@@ -38,20 +40,24 @@ export const Alert: FC<AlertProps> = ({
     switch (type) {
       case 'success':
         return CheckCircleIcon;
-      default:
+      case 'warning':
         return AlertTriangleIcon;
+      default:
+        return null;
     }
   }, [type]);
 
   const alertContent = () => (
     <>
-      <Icon
-        className={cx({
-          'w-5 h-5 mr-2': true,
-          [alertIconColor]: true,
-        })}
-        icon={alertIcon}
-      />
+      {alertIcon && (
+        <Icon
+          className={cx({
+            'w-5 h-5 mr-2': true,
+            [alertIconColor]: true,
+          })}
+          icon={alertIcon}
+        />
+      )}
       {children}
     </>
   );
@@ -68,6 +74,7 @@ export const Alert: FC<AlertProps> = ({
         <div
           className={cx({
             'rounded-lg': !withLayoutContainer,
+            'bg-beige': type === 'default',
             'bg-red-50': type === 'warning',
             'bg-green-light': type === 'success',
           })}

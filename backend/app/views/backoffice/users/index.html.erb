@@ -16,11 +16,17 @@
         <%= sort_link @q, :account_name, t("backoffice.users.index.account") %>
       </th>
       <th>
+        <%= sort_link @q, :owner_account_exists, t("backoffice.common.account_owner") %>
+      </th>
+      <th>
         <%= sort_link @q, :created_at, t("backoffice.common.created_at") %>
       </th>
       <th>
         <%= sort_link @q, :last_sign_in_at, t("backoffice.users.index.last_sign_in_at") %>
       </th>
+      <th>
+      </th>
+      <th class="opacity-25"><%= svg "menu" %></th>
     </tr>
   </thead>
   <tbody>
@@ -28,9 +34,26 @@
       <tr>
         <td><%= user.full_name %></td>
         <td><%= user.email %></td>
-        <td><%= user.account&.name %></td>
+        <td><%= account_link_for user.account %></td>
+        <td><%= t user.owner_account.present? %></td>
         <td><%= I18n.l user.created_at.to_date %></td>
         <td><%= I18n.l user.last_sign_in_at&.to_date, default: '' %></td>
+        <td><%= link_to t("backoffice.common.edit"), edit_backoffice_user_path(user.id), class: "link-button" %></td>
+        <td>
+          <%= render "menu" do %>
+            <%= render "backoffice/base/menu/item" do %>
+              <% if user.owner_account.present? %>
+                <div class="disabled-item"><%= t("backoffice.common.delete") %></div>
+              <% else %>
+                <%= link_to t("backoffice.common.delete"), backoffice_user_path(user.id),
+                   data: {
+                     turbo_method: :delete,
+                     turbo_confirm: t("backoffice.messages.delete_confirmation", model: t("backoffice.common.user").downcase)
+                   } %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -19,7 +19,7 @@ const Protected: React.FC<ProtectedProps> = ({
 }) => {
   const router = useRouter();
 
-  const { user, userIsLoading, userAccount, userIsError } = useAccount();
+  const { user, userIsLoading, userAccount, userIsError, userAccountLoading } = useAccount();
 
   const isOwner = useMemo(
     () => ownership?.getIsOwner(user, userAccount),
@@ -57,7 +57,7 @@ const Protected: React.FC<ProtectedProps> = ({
     }
     // If the ownership of the entity is needed and the user don't have it
     if (ownership?.allowOwner) {
-      if (!isOwner) {
+      if (!userIsLoading && !userAccountLoading && !isOwner) {
         // Redirect to dashboard
         router.push(Paths.Dashboard);
         return null;

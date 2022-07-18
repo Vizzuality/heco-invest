@@ -79,7 +79,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           <LocationSearcher onLocationSelected={handleLocationSelected} />
         </div>
 
-        <Controls className="absolute border bottom-10 xl:bottom-6 right-11">
+        <Controls className="absolute bottom-10 xl:bottom-4 right-4">
           <ProjectLegend />
         </Controls>
       </div>

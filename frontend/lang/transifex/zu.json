@@ -104,6 +104,9 @@
   "25WwxF": {
     "string": "Don't have an account?"
   },
+  "2AZiFU": {
+    "string": "Instrument size"
+  },
   "2Cbk6h": {
     "string": "Add your logo or a picture that identifies the account."
   },
@@ -176,6 +179,9 @@
   "4vn+6A": {
     "string": "{inputName} is focused, type to refine list, press down to open the menu, press left to focus selected values"
   },
+  "4y9VoH": {
+    "string": "Impact they invest on"
+  },
   "4zK41e": {
     "string": "Investing in the Amazon means contributing to improving the quality of life of more than 30 million people. It is also contributing to the development and conservation of a vital region for South America and the world."
   },
@@ -190,6 +196,9 @@
   },
   "5c08Qp": {
     "string": "Project information"
+  },
+  "5gd2Z7": {
+    "string": "HeCo <a>priority landscapes</a>"
   },
   "5kZ+j+": {
     "string": "Duration of the project"
@@ -322,6 +331,9 @@
   },
   "9WcWke": {
     "string": "{name} investor"
+  },
+  "9a9+ww": {
+    "string": "Title"
   },
   "9cE0nR": {
     "string": "How is the impact calculated?"
@@ -512,6 +524,9 @@
   "G6tmT0": {
     "string": "Select the ticket size(s) that you provide"
   },
+  "G9iCfx": {
+    "string": "Reach them in"
+  },
   "GKONs7": {
     "string": "Start having impact now."
   },
@@ -650,6 +665,9 @@
   },
   "KxPY7j": {
     "string": "Date of creation"
+  },
+  "L2CvBU": {
+    "string": "Expect to have impact"
   },
   "LFDgTb": {
     "string": "Leave project developer edition?"
@@ -822,6 +840,9 @@
   "RXoqkD": {
     "string": "Mission"
   },
+  "S27Bu1": {
+    "string": "<span>Note:</span>The content of this project should be written in {language}"
+  },
   "SHw9Ht": {
     "string": "Start connecting with people to create impact. You can find investors, opportunities to invest open calls and much more."
   },
@@ -848,6 +869,9 @@
   },
   "Swj4mJ": {
     "string": "Select the {name} account"
+  },
+  "TDaF6J": {
+    "string": "Dismiss"
   },
   "TJo5E6": {
     "string": "Preview"
@@ -1281,6 +1305,9 @@
   "hxIQ/8": {
     "string": "Projects waiting funding"
   },
+  "i9cSUD": {
+    "string": "Invests in"
+  },
   "i9eK6b": {
     "string": "Show verified content only"
   },
@@ -1293,6 +1320,9 @@
   "iUt7so": {
     "string": "of the planet’s known biodiversity lives in the Amazon, the largest tropical rainforest on the planet."
   },
+  "iZuO+L": {
+    "string": "Legend"
+  },
   "iiVhlC": {
     "string": "insert phone number"
   },
@@ -1304,6 +1334,9 @@
   },
   "in26xr": {
     "string": "{organization} logo"
+  },
+  "inQ2Q1": {
+    "string": "Topics/sector categories"
   },
   "itfsqC": {
     "string": "Currently you don’t have any <b>Projects</b>."
@@ -1514,6 +1547,9 @@
   },
   "qpDURb": {
     "string": "Something went wrong with the file upload"
+  },
+  "qwCflo": {
+    "string": "Edit project"
   },
   "r/AN6W": {
     "string": "select investor/funder type"
@@ -1746,6 +1782,9 @@
   "zFegDD": {
     "string": "Contact"
   },
+  "zINRAT": {
+    "string": "<span>Note:</span>The content of this profile should be written in {language}"
+  },
   "zINlao": {
     "string": "Owner"
   },
@@ -1757,6 +1796,9 @@
   },
   "zdIaHp": {
     "string": "Investors"
+  },
+  "zetZX8": {
+    "string": "Content language"
   },
   "zkonnO": {
     "string": "World Wildlife Fund (WWF) is the largest international conservation organization in the world, with more than 50 offices implementing conservation projects across more than 100 countries and has a membership of almost five million people. WWF has extensive experience working in the Amazon region, with offices in all seven signatory countries of the Leticia Pact. In Colombia, WWF has been working in partnership with the government and a consortium of civil society organizations on Heritage Colombia since 2015."

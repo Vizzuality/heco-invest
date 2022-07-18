@@ -1,14 +1,17 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 
 import { Path, SubmitHandler, useForm } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
 import { entries, pick } from 'lodash-es';
 
-import { getServiceErrors, useGetAlert } from 'helpers/pages';
+import { getServiceErrors, useGetAlert, useLanguageNames } from 'helpers/pages';
 
+import AccountPendingApproval from 'containers/account-pending-approval';
+import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import SelectLanguageForm from 'containers/forms/select-language-form';
 import {
   Profile,
@@ -18,7 +21,7 @@ import {
   OtherInformation,
 } from 'containers/investor-form';
 import LeaveFormModal from 'containers/leave-form-modal';
-import MultiPageLayout, { Page } from 'containers/multi-page-layout';
+import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
 
 import Head from 'components/head';
 import { InvestorForm as InvestorFormType } from 'types/investor';
@@ -40,6 +43,7 @@ const InvestorForm: FC<InvestorFormProps> = ({
   const [totalPages, setTotalPages] = useState(0);
   const resolver = useValidation(isCreateForm ? currentPage : currentPage + 1);
   const { back } = useRouter();
+  const languageNames = useLanguageNames();
 
   const {
     register,
@@ -48,6 +52,7 @@ const InvestorForm: FC<InvestorFormProps> = ({
     control,
     setError,
     setValue,
+    getValues,
     clearErrors,
   } = useForm<InvestorFormType>({
     resolver,
@@ -115,11 +120,12 @@ const InvestorForm: FC<InvestorFormProps> = ({
         getTotalPages={(pages) => setTotalPages(pages)}
         layout="narrow"
         title={title}
+        locale={initialValues?.language || (currentPage !== 0 ? getValues('language') : null)}
         autoNavigation={false}
         page={currentPage}
         alert={alert}
         isSubmitting={mutation.isLoading}
-        showOutro={false}
+        showOutro={isCreateForm && currentPage === totalPages}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
@@ -132,6 +138,18 @@ const InvestorForm: FC<InvestorFormProps> = ({
           </Page>
         )}
         <Page hasErrors={getPageErrors(1)}>
+          {!isCreateForm && initialValues?.language && (
+            <ContentLanguageAlert className="mb-6">
+              <FormattedMessage
+                defaultMessage="<span>Note:</span>The content of this profile should be written in {language}"
+                id="zINRAT"
+                values={{
+                  language: languageNames[initialValues?.language],
+                  span: (chunks: string) => <span className="mr-2 font-semibold">{chunks}</span>,
+                }}
+              />
+            </ContentLanguageAlert>
+          )}
           <Profile
             register={register}
             control={control}
@@ -170,6 +188,11 @@ const InvestorForm: FC<InvestorFormProps> = ({
         <Page hasErrors={getPageErrors(5)}>
           <OtherInformation register={register} errors={errors} />
         </Page>
+        {isCreateForm && (
+          <OutroPage>
+            <AccountPendingApproval />
+          </OutroPage>
+        )}
       </MultiPageLayout>
 
       <LeaveFormModal

@@ -16,6 +16,7 @@ export const useDefaultValues = (project: Project): Partial<ProjectForm> => {
     const general = pickBy(project, (value, key: any) => projectFormKeys.includes(key));
     return {
       ...general,
+      language: project.language,
       municipality_id: project.municipality?.id,
       department_id: project.municipality.parent.id,
       country_id: project.country?.id,
@@ -32,7 +33,7 @@ export const useDefaultValues = (project: Project): Partial<ProjectForm> => {
           src: file.original,
         };
       }),
-      involved_project_developer: !!project.involved_project_developers.length ? 1 : 0,
+      involved_project_developer: !!project.involved_project_developers?.length ? 1 : 0,
       involved_project_developer_ids: project.involved_project_developers?.map(({ id }) => id),
       involved_project_developer_not_listed: project.involved_project_developer_not_listed,
     };
