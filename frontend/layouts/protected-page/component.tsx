@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { Paths, UserRoles } from 'enums';
+import { Paths, ReviewStatus, UserRoles } from 'enums';
 import { ProtectedProps } from 'layouts/protected-page/types';
 
 import { useAccount } from 'services/account';
@@ -14,6 +14,7 @@ const Protected: React.FC<ProtectedProps> = ({
     getIsOwner: () => false,
   },
   allowConfirmed = false,
+  allowUnapproved = false,
   children,
   ...rest
 }) => {
@@ -27,7 +28,7 @@ const Protected: React.FC<ProtectedProps> = ({
   );
 
   // Not display anything when me request is on progress
-  if (userIsLoading) return null;
+  if (userIsLoading || userAccountLoading) return null;
 
   // Redirect to sign-in when session doesn't exist
   if (userIsError) {
@@ -49,6 +50,14 @@ const Protected: React.FC<ProtectedProps> = ({
   } else {
     // If the account confirmation is needed and the account is not confirmed
     if (allowConfirmed && !user.confirmed) {
+      // Redirect to pending approval page
+      router.push(
+        user.role === UserRoles.Investor ? Paths.PendingInvestor : Paths.PendingProjectDeveloper
+      );
+      return null;
+    }
+    // If the account is not yet approved and approval is needed
+    if (!allowUnapproved && userAccount && userAccount?.review_status !== ReviewStatus.Approved) {
       // Redirect to pending approval page
       router.push(
         user.role === UserRoles.Investor ? Paths.PendingInvestor : Paths.PendingProjectDeveloper
