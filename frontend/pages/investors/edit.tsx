@@ -46,6 +46,10 @@ const EditInvestorPage: PageComponent<EditInvestorServerSideProps, FormPageLayou
     router.push(queryReturnPath || Paths.Dashboard);
   };
 
+  const handleOnLeave = (isOutroPage) => {
+    router.push(queryReturnPath || (isOutroPage ? Paths.Discover : Paths.Dashboard));
+  };
+
   const { investor } = useInvestor({});
 
   return (
@@ -59,6 +63,7 @@ const EditInvestorPage: PageComponent<EditInvestorServerSideProps, FormPageLayou
         enums={enums}
         mutation={updateInvestor}
         onComplete={handleOnComplete}
+        onLeave={handleOnLeave}
         initialValues={investor}
       />
     </ProtectedPage>

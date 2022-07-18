@@ -38,7 +38,9 @@ export type InvestorFormProps = {
   >;
   /** Callback to execute when form has been submitted successfully */
   onComplete: () => void;
-  /** Server Enumns */
+  /** Callback to execute when the user clicks to leave the form */
+  onLeave: (isOutroPage: boolean) => void;
+  /** Server Enums */
   enums: GroupedEnums;
 };
 

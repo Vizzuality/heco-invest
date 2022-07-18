@@ -48,6 +48,10 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
     router.push(queryReturnPath || Paths.Dashboard);
   };
 
+  const handleOnLeave = (isOutroPage) => {
+    router.push(queryReturnPath || (isOutroPage ? Paths.Discover : Paths.AccountType));
+  };
+
   return (
     <ProtectedPage permissions={[UserRoles.Light]}>
       <InvestorForm
@@ -59,6 +63,7 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
         enums={enums}
         mutation={createInvestor}
         onComplete={handleOnComplete}
+        onLeave={handleOnLeave}
         isCreateForm
       />
     </ProtectedPage>

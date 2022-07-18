@@ -36,13 +36,14 @@ const InvestorForm: FC<InvestorFormProps> = ({
   mutation,
   isCreateForm,
   onComplete,
+  onLeave,
   enums,
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [showLeave, setShowLeave] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const resolver = useValidation(isCreateForm ? currentPage : currentPage + 1);
-  const { back } = useRouter();
+  const router = useRouter();
   const languageNames = useLanguageNames();
 
   const {
@@ -112,6 +113,8 @@ const InvestorForm: FC<InvestorFormProps> = ({
     }
   }, [initialValues, setValue]);
 
+  const isOutroPage = isCreateForm && currentPage === totalPages;
+
   return (
     <div>
       <Head title={title} />
@@ -125,11 +128,11 @@ const InvestorForm: FC<InvestorFormProps> = ({
         page={currentPage}
         alert={alert}
         isSubmitting={mutation.isLoading}
-        showOutro={isCreateForm && currentPage === totalPages}
+        showOutro={isOutroPage}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
-        onCloseClick={() => setShowLeave(true)}
+        onCloseClick={() => (isOutroPage ? onLeave(true) : setShowLeave(true))}
         onSubmitClick={handleSubmit(onSubmit)}
       >
         {isCreateForm && (
@@ -198,7 +201,7 @@ const InvestorForm: FC<InvestorFormProps> = ({
       <LeaveFormModal
         isOpen={showLeave}
         close={() => setShowLeave(false)}
-        handleLeave={back}
+        handleLeave={() => onLeave(isOutroPage)}
         title={leaveMessage}
       />
     </div>
