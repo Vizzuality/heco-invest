@@ -10,6 +10,7 @@ import { entries, pick } from 'lodash-es';
 
 import { getServiceErrors, useGetAlert, useLanguageNames } from 'helpers/pages';
 
+import AccountPendingApproval from 'containers/account-pending-approval';
 import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import SelectLanguageForm from 'containers/forms/select-language-form';
 import {
@@ -21,7 +22,6 @@ import {
 } from 'containers/investor-form';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
-import PendingApproval from 'containers/pending-approval';
 
 import Head from 'components/head';
 import { InvestorForm as InvestorFormType } from 'types/investor';
@@ -190,7 +190,7 @@ const InvestorForm: FC<InvestorFormProps> = ({
         </Page>
         {isCreateForm && (
           <OutroPage>
-            <PendingApproval />
+            <AccountPendingApproval />
           </OutroPage>
         )}
       </MultiPageLayout>

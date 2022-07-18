@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import Button from 'components/button';
 
-export const PendingApproval = () => {
+export const AccountPendingApproval = () => {
   return (
     <div className="flex flex-col items-center max-w-xl m-auto text-center">
       <Image
@@ -41,4 +41,4 @@ export const PendingApproval = () => {
     </div>
   );
 };
-export default PendingApproval;
+export default AccountPendingApproval;

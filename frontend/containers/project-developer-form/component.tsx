@@ -13,11 +13,11 @@ import useInterests from 'hooks/useInterests';
 
 import { getServiceErrors, useGetAlert, useLanguageNames } from 'helpers/pages';
 
+import AccountPendingApproval from 'containers/account-pending-approval';
 import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import SelectLanguageForm from 'containers/forms/select-language-form';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
-import PendingApproval from 'containers/pending-approval';
 
 import Head from 'components/head';
 import { ProjectDeveloperSetupForm } from 'types/projectDeveloper';
@@ -180,7 +180,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
         </Page>
         {isCreateForm && (
           <OutroPage>
-            <PendingApproval />
+            <AccountPendingApproval />
           </OutroPage>
         )}
       </MultiPageLayout>
