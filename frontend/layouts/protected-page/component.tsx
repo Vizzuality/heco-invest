@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 
 import { useRouter } from 'next/router';
 
+import Loading from 'components/loading';
 import { Paths, ReviewStatus, UserRoles } from 'enums';
 import { ProtectedProps } from 'layouts/protected-page/types';
 
@@ -22,13 +23,22 @@ const Protected: React.FC<ProtectedProps> = ({
 
   const { user, userIsLoading, userAccount, userIsError, userAccountLoading } = useAccount();
 
+  const isLoading = userIsLoading || userAccountLoading;
+
   const isOwner = useMemo(
     () => ownership?.getIsOwner(user, userAccount),
     [ownership, user, userAccount]
   );
 
-  // Not display anything when me request is on progress
-  if (userIsLoading || userAccountLoading) return null;
+  if (isLoading) {
+    return (
+      <Loading
+        visible={true}
+        className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-background-dark"
+        iconClassName="w-10 h-10"
+      />
+    );
+  }
 
   // Redirect to sign-in when session doesn't exist
   if (userIsError) {
