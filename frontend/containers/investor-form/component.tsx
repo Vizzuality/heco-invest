@@ -10,6 +10,7 @@ import { entries, pick } from 'lodash-es';
 
 import { getServiceErrors, useGetAlert, useLanguageNames } from 'helpers/pages';
 
+import AccountPendingApproval from 'containers/account-pending-approval';
 import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import SelectLanguageForm from 'containers/forms/select-language-form';
 import {
@@ -20,7 +21,7 @@ import {
   OtherInformation,
 } from 'containers/investor-form';
 import LeaveFormModal from 'containers/leave-form-modal';
-import MultiPageLayout, { Page } from 'containers/multi-page-layout';
+import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
 
 import Head from 'components/head';
 import { InvestorForm as InvestorFormType } from 'types/investor';
@@ -124,7 +125,7 @@ const InvestorForm: FC<InvestorFormProps> = ({
         page={currentPage}
         alert={alert}
         isSubmitting={mutation.isLoading}
-        showOutro={false}
+        showOutro={isCreateForm && currentPage === totalPages}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
@@ -187,6 +188,11 @@ const InvestorForm: FC<InvestorFormProps> = ({
         <Page hasErrors={getPageErrors(5)}>
           <OtherInformation register={register} errors={errors} />
         </Page>
+        {isCreateForm && (
+          <OutroPage>
+            <AccountPendingApproval />
+          </OutroPage>
+        )}
       </MultiPageLayout>
 
       <LeaveFormModal
