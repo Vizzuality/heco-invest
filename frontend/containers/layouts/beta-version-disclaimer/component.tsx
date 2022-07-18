@@ -11,7 +11,7 @@ const BetaVersionDisclaimer = () => {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const isClosed = sessionStorage.getItem('beta-version-discalimer-closed');
+    const isClosed = sessionStorage.getItem('beta-version-disclaimer-closed');
     if (isClosed) {
       setHidden(true);
     }
@@ -19,7 +19,7 @@ const BetaVersionDisclaimer = () => {
 
   const handleClose = () => {
     setHidden(true);
-    sessionStorage.setItem('beta-version-discalimer-closed', 'true');
+    sessionStorage.setItem('beta-version-disclaimer-closed', 'true');
   };
 
   return (
@@ -32,7 +32,7 @@ const BetaVersionDisclaimer = () => {
         }
       )}
     >
-      <p className="text-sm mr-2 text-center">
+      <p className="mr-2 text-sm text-center">
         <FormattedMessage
           defaultMessage="HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional."
           id="HvSsTa"
