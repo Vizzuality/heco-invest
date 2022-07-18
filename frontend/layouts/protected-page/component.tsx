@@ -56,17 +56,6 @@ const Protected: React.FC<ProtectedProps> = ({
     );
   }
 
-  if (isUnapproved) {
-    return (
-      <>
-        <Header />
-        <LayoutContainer className="flex items-center h-screen">
-          <AccountPendingApproval />
-        </LayoutContainer>
-      </>
-    );
-  }
-
   // If needs role permissions and has no user or the role don't match
   if (!!user && !permissions.includes(user.role)) {
     //If the role is light
@@ -87,6 +76,17 @@ const Protected: React.FC<ProtectedProps> = ({
       router.push(Paths.Dashboard);
       return null;
     }
+  }
+
+  if (isUnapproved) {
+    return (
+      <>
+        <Header />
+        <LayoutContainer className="flex items-center h-screen">
+          <AccountPendingApproval />
+        </LayoutContainer>
+      </>
+    );
   }
 
   return <div {...rest}>{children}</div>;
