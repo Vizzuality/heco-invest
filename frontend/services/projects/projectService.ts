@@ -63,8 +63,9 @@ export function useProjectsList(
 export const getProject = async (
   id: string,
   params?: {
-    fields?: string;
+    'fields[project]'?: string;
     includes?: string[];
+    locale?: string;
   }
 ): Promise<{
   data: Project;
