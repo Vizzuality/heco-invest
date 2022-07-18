@@ -4,8 +4,6 @@ import { useState, useCallback } from 'react';
 import { SubmitHandler, useForm, Path } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { useRouter } from 'next/router';
-
 import { AxiosError } from 'axios';
 import { entries, pick } from 'lodash-es';
 
@@ -36,12 +34,12 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
   mutation,
   isCreateForm,
   onComplete,
+  onLeave,
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [showLeave, setShowLeave] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const resolver = useProjectDeveloperValidation(isCreateForm ? currentPage : currentPage + 1);
-  const { back } = useRouter();
   const languageNames = useLanguageNames();
 
   const enums = useEnums();
@@ -119,6 +117,8 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
     }
   }, [initialValues, setValue]);
 
+  const isOutroPage = isCreateForm && currentPage === totalPages;
+
   return (
     <>
       <Head title={title} />
@@ -131,11 +131,11 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
         page={currentPage}
         alert={alert}
         isSubmitting={mutation.isLoading}
-        showOutro={isCreateForm && currentPage === totalPages}
+        showOutro={isOutroPage}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
-        onCloseClick={() => setShowLeave(true)}
+        onCloseClick={() => (isOutroPage ? onLeave(true) : setShowLeave(true))}
         onSubmitClick={handleSubmit(onSubmit)}
       >
         {isCreateForm && (
@@ -187,7 +187,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
       <LeaveFormModal
         title={leaveMessage}
         isOpen={showLeave}
-        handleLeave={back}
+        handleLeave={() => onLeave(isOutroPage)}
         close={() => setShowLeave(false)}
       />
     </>

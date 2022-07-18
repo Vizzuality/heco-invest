@@ -33,6 +33,8 @@ export type ProjectDeveloperFormProps = {
   >;
   /** Callback to execute when form has been submitted successfully */
   onComplete: () => void;
+  /** Callback to execute when the user clicks to leave the form */
+  onLeave: (isOutroPage: boolean) => void;
 };
 
 export type ProfileProps = {
