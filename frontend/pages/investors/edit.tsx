@@ -55,10 +55,10 @@ const EditInvestorPage: PageComponent<EditInvestorServerSideProps, FormPageLayou
   return (
     <ProtectedPage permissions={[UserRoles.Investor]}>
       <InvestorForm
-        title={formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })}
+        title={formatMessage({ defaultMessage: 'Edit investor profile', id: 'JnwEP6' })}
         leaveMessage={formatMessage({
-          defaultMessage: 'Leave investor creation form',
-          id: 'QqpgJo',
+          defaultMessage: 'Leave investor edition form',
+          id: 'lmxGNp',
         })}
         enums={enums}
         mutation={updateInvestor}
