@@ -11,22 +11,23 @@ import { useQueryReturnPath } from 'helpers/pages';
 
 import ProjectForm from 'containers/project-form';
 
-import { Paths, UserRoles } from 'enums';
+import { EnumTypes, Paths, UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
-import { GroupedEnums as GroupedEnumsType } from 'types/enums';
+import { Enum } from 'types/enums';
 import { Investor } from 'types/investor';
 import { Project as ProjectType } from 'types/project';
 import { ProjectDeveloper } from 'types/projectDeveloper';
 import { User } from 'types/user';
 
 import { useUpdateProject } from 'services/account';
-import { getEnums, useEnums } from 'services/enums/enumService';
+import { getEnums } from 'services/enums/enumService';
 import { getProject } from 'services/projects/projectService';
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let project;
+  let enums;
 
   try {
     ({ data: project } = await getProject(id as string, {
@@ -36,10 +37,12 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
         'municipality',
         'department',
         'involved_project_developers',
+        'project_developer',
       ],
       // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
       locale: null,
     }));
+    enums = await getEnums();
   } catch (e) {
     return { notFound: true };
   }
@@ -47,25 +50,28 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
   return {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
-      project: project,
+      project,
+      enums,
     },
   };
 });
 
 type EditProjectProps = {
   project: ProjectType;
+  enums: Enum[];
 };
 
-const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ project }) => {
+const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ project, enums }) => {
   const { formatMessage } = useIntl();
   const router = useRouter();
 
   const updateProject = useUpdateProject();
   const queryReturnPath = useQueryReturnPath();
-  // The enums should be feched on the client to have the correct locale param.
-  const enumsData = useEnums();
+  const groupedEnums = groupBy(enums, 'type') as {
+    [key in EnumTypes]: Enum[];
+  };
 
-  const getIsOwner = (user: User, userAccount: ProjectDeveloper | Investor) => {
+  const getIsOwner = (_user: User, userAccount: ProjectDeveloper | Investor) => {
     // The user must be a the creator of the project to be allowed to edit it.
     return (
       project?.project_developer?.id &&
@@ -96,7 +102,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
         mutation={updateProject}
         onComplete={onComplete}
         initialValues={project}
-        enums={enumsData?.data}
+        enums={groupedEnums}
       />
     </ProtectedPage>
   );
