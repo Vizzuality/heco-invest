@@ -8,18 +8,16 @@ import cx from 'classnames';
 import Button from 'components/button';
 
 const BetaVersionDisclaimer = () => {
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(true);
 
   useEffect(() => {
-    const isClosed = sessionStorage.getItem('beta-version-disclaimer-closed');
-    if (isClosed) {
-      setHidden(true);
-    }
+    const isClosed = localStorage.getItem('beta-version-disclaimer-closed');
+    setHidden(!!isClosed);
   }, []);
 
   const handleClose = () => {
     setHidden(true);
-    sessionStorage.setItem('beta-version-disclaimer-closed', 'true');
+    localStorage.setItem('beta-version-disclaimer-closed', 'true');
   };
 
   return (
