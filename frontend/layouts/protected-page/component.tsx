@@ -34,8 +34,7 @@ const Protected: React.FC<ProtectedProps> = ({
     [ownership, user, userAccount]
   );
 
-  const isUnapproved =
-    !allowUnapproved && userAccount && userAccount?.review_status !== ReviewStatus.Approved;
+  const isUnapproved = userAccount?.review_status !== ReviewStatus.Approved;
 
   // Redirect to sign-in when session doesn't exist
   if (userIsError) {
@@ -78,7 +77,7 @@ const Protected: React.FC<ProtectedProps> = ({
     }
   }
 
-  if (isUnapproved) {
+  if (isUnapproved && !allowUnapproved) {
     return (
       <>
         <Header />
