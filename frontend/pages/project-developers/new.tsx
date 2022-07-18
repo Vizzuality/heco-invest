@@ -44,6 +44,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
     router.push(queryReturnPath || Paths.Dashboard);
   };
 
+  const handleOnLeave = (isOutroPage) => {
+    router.push(queryReturnPath || (isOutroPage ? Paths.Discover : Paths.AccountType));
+  };
+
   return (
     <ProtectedPage permissions={[UserRoles.Light]}>
       <ProjectDeveloperForm
@@ -55,6 +59,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
         isCreateForm
         mutation={createProjectDeveloper}
         onComplete={handleOnComplete}
+        onLeave={handleOnLeave}
       />
     </ProtectedPage>
   );
