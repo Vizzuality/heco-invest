@@ -15,7 +15,7 @@ import { EnumTypes, Paths, UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
-import { Enum } from 'types/enums';
+import { GroupedEnums as GroupedEnumsType } from 'types/enums';
 import { Investor } from 'types/investor';
 import { Project as ProjectType } from 'types/project';
 import { ProjectDeveloper } from 'types/projectDeveloper';
@@ -51,14 +51,14 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
     props: {
       intlMessages: await loadI18nMessages({ locale }),
       project,
-      enums,
+      enums: groupBy(enums, 'type'),
     },
   };
 });
 
 type EditProjectProps = {
   project: ProjectType;
-  enums: Enum[];
+  enums: GroupedEnumsType;
 };
 
 const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ project, enums }) => {
@@ -67,9 +67,6 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
 
   const updateProject = useUpdateProject();
   const queryReturnPath = useQueryReturnPath();
-  const groupedEnums = groupBy(enums, 'type') as {
-    [key in EnumTypes]: Enum[];
-  };
 
   const getIsOwner = (_user: User, userAccount: ProjectDeveloper | Investor) => {
     // The user must be a the creator of the project to be allowed to edit it.
@@ -102,7 +99,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
         mutation={updateProject}
         onComplete={onComplete}
         initialValues={project}
-        enums={groupedEnums}
+        enums={enums}
       />
     </ProtectedPage>
   );
