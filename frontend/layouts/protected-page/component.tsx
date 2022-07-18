@@ -2,11 +2,16 @@ import React, { useMemo } from 'react';
 
 import { useRouter } from 'next/router';
 
+import AccountPendingApproval from 'containers/account-pending-approval';
+
+import LayoutContainer from 'components/layout-container';
 import Loading from 'components/loading';
 import { Paths, ReviewStatus, UserRoles } from 'enums';
-import { ProtectedProps } from 'layouts/protected-page/types';
+import Header from 'layouts/static-page/header';
 
 import { useAccount } from 'services/account';
+
+import { ProtectedProps } from './types';
 
 const Protected: React.FC<ProtectedProps> = ({
   permissions,
@@ -29,20 +34,37 @@ const Protected: React.FC<ProtectedProps> = ({
     [ownership, user, userAccount]
   );
 
-  if (isLoading) {
-    return (
-      <Loading
-        visible={true}
-        className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-background-dark"
-        iconClassName="w-10 h-10"
-      />
-    );
-  }
+  const isUnapproved =
+    !allowUnapproved && userAccount && userAccount?.review_status !== ReviewStatus.Approved;
 
   // Redirect to sign-in when session doesn't exist
   if (userIsError) {
     router.push(Paths.SignIn);
     return null;
+  }
+
+  if (isLoading) {
+    return (
+      <>
+        <Header />
+        <Loading
+          visible={true}
+          className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-background-light/90 backdrop-blur-sm"
+          iconClassName="w-10 h-10"
+        />
+      </>
+    );
+  }
+
+  if (isUnapproved) {
+    return (
+      <>
+        <Header />
+        <LayoutContainer className="flex items-center h-screen">
+          <AccountPendingApproval />
+        </LayoutContainer>
+      </>
+    );
   }
 
   // If needs role permissions and has no user or the role don't match
@@ -55,15 +77,6 @@ const Protected: React.FC<ProtectedProps> = ({
     }
     // Redirect to the last route (go back) if the user have a different kind of account
     router.back();
-    return null;
-  }
-
-  // If the account is not yet approved and approval is needed
-  if (!allowUnapproved && userAccount && userAccount?.review_status !== ReviewStatus.Approved) {
-    // Redirect to pending approval page
-    router.push(
-      user.role === UserRoles.Investor ? Paths.PendingInvestor : Paths.PendingProjectDeveloper
-    );
     return null;
   }
 
