@@ -59,7 +59,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
               >
                 {layers.map(({ specification: layerSpec }) => {
                   if (!layerSpec || !visibleLayers.includes(layerSpec.id)) return null;
-                  return <Layer key={layerSpec.id} {...layerSpec} opacity={0.7} />;
+                  return <Layer key={layerSpec.id} {...layerSpec} />;
                 })}
               </LayerManager>
 

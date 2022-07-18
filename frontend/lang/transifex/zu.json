@@ -386,6 +386,9 @@
   "BSFsv6": {
     "string": "Tree biomass density"
   },
+  "BY6k/1": {
+    "string": "Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average."
+  },
   "BZG0d+": {
     "string": "Search for projects, investors, open calls..."
   },
@@ -418,9 +421,6 @@
   },
   "CPO6eS": {
     "string": "Select in which SDG’s your project will have impact"
-  },
-  "CS2uRY": {
-    "string": "Displays the political boundaries at country and state levels"
   },
   "CiBvks": {
     "string": "General information about the the project developer."
@@ -467,6 +467,9 @@
   "E1kj21": {
     "string": "Project verification"
   },
+  "EKOV4Z": {
+    "string": "Contextual Layers"
+  },
   "EVKdUn": {
     "string": "Priority Landscape"
   },
@@ -508,9 +511,6 @@
   },
   "FN+0yY": {
     "string": "Unable to parse the file. Please try uploading a different format."
-  },
-  "Fm6QvT": {
-    "string": "Political boundaries"
   },
   "Ftj+/t": {
     "string": "Why is my profile pending approval?"
@@ -713,9 +713,6 @@
   },
   "MfCYKW": {
     "string": "For investors"
-  },
-  "MmtnIe": {
-    "string": "Herencia Colombia mosaics"
   },
   "MuOp0t": {
     "string": "Climate"
@@ -960,9 +957,6 @@
   "W6nwjo": {
     "string": "Draft"
   },
-  "W7un1n": {
-    "string": "HeCo mosaics"
-  },
   "WAr33U": {
     "string": "insert the name"
   },
@@ -986,6 +980,9 @@
   },
   "WskbuL": {
     "string": "Sub-basin boundaries"
+  },
+  "X+46wB": {
+    "string": "HeCo priority landscapes"
   },
   "X0E3iC": {
     "string": "I agree with the Terms and Privacy Policy."
@@ -1046,6 +1043,9 @@
   },
   "YYMUK5": {
     "string": "Expects to have impact on"
+  },
+  "YjuFXX": {
+    "string": "Herencia Colombia priority landscapes"
   },
   "Z8971h": {
     "string": "Verified"
@@ -1182,6 +1182,9 @@
   "daUTdN": {
     "string": "Open call applications"
   },
+  "deHJ3+": {
+    "string": "Riverine flood risk"
+  },
   "des5Rg": {
     "string": "Discover projects by category"
   },
@@ -1217,9 +1220,6 @@
   },
   "fDd10o": {
     "string": "Instrument type"
-  },
-  "fIkMFK": {
-    "string": "Context Layers"
   },
   "fMrPOR": {
     "string": "Go to last page"
@@ -1460,6 +1460,9 @@
   },
   "nkDaFL": {
     "string": "Go to next page"
+  },
+  "nwXvcg": {
+    "string": "Shows the percentage of the population expected to be affected by riverine flooding in an average year."
   },
   "o+Vt3t": {
     "string": "Partnership between:"
