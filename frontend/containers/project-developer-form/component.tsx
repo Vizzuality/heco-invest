@@ -4,8 +4,6 @@ import { useState, useCallback } from 'react';
 import { SubmitHandler, useForm, Path } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { useRouter } from 'next/router';
-
 import { AxiosError } from 'axios';
 import { entries, pick } from 'lodash-es';
 
@@ -42,7 +40,6 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
   const [showLeave, setShowLeave] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const resolver = useProjectDeveloperValidation(isCreateForm ? currentPage : currentPage + 1);
-  const router = useRouter();
   const languageNames = useLanguageNames();
 
   const enums = useEnums();

@@ -3,8 +3,6 @@ import { FC, useCallback, useEffect, useState } from 'react';
 import { Path, SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { useRouter } from 'next/router';
-
 import { AxiosError } from 'axios';
 import { entries, pick } from 'lodash-es';
 
@@ -43,7 +41,6 @@ const InvestorForm: FC<InvestorFormProps> = ({
   const [showLeave, setShowLeave] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
   const resolver = useValidation(isCreateForm ? currentPage : currentPage + 1);
-  const router = useRouter();
   const languageNames = useLanguageNames();
 
   const {
