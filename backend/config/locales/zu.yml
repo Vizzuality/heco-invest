@@ -1,4 +1,6 @@
 zu:
+  "true": "yes"
+  "false": "no"
   date:
     formats:
       default: "%d %B %Y"

@@ -7,14 +7,21 @@
     <ul class="flex flex-col gap-8 mb-8">
       <li><%= section_link_to t("backoffice.users.information"), edit_backoffice_user_path, :information, default: true %></li>
     </ul>
-    <%= link_to backoffice_user_path(@user.id),
-       data: {
-         turbo_method: :delete,
-         turbo_confirm: t("backoffice.messages.delete_confirmation", model: t("backoffice.common.user").downcase)
-       },
-       class: "button button-secondary-green button-with-icon" do %>
-      <%= svg "trash" %>
-      <%= t("backoffice.users.delete") %>
+    <% if @user.owner_account.present? %>
+      <div class="button button-secondary-green button-with-icon opacity-60 hover:bg-green-lighter/0">
+        <%= svg "trash" %>
+        <%= t("backoffice.users.delete") %>
+      </div>
+    <% else %>
+      <%= link_to backoffice_user_path(@user.id),
+         data: {
+           turbo_method: :delete,
+           turbo_confirm: t("backoffice.messages.delete_confirmation", model: t("backoffice.common.user").downcase)
+         },
+         class: "button button-secondary-green button-with-icon" do %>
+        <%= svg "trash" %>
+        <%= t("backoffice.users.delete") %>
+      <% end %>
     <% end %>
   </aside>
   <div class="w-full h-full bg-white rounded-xl p-6">
