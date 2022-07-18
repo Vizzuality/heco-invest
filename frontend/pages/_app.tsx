@@ -10,8 +10,6 @@ import { OverlayProvider } from '@react-aria/overlays';
 import { SSRProvider } from '@react-aria/ssr';
 import { Hydrate } from 'react-query/hydration';
 
-import BetaVersionDisclaimer from 'containers/layouts/beta-version-disclaimer';
-
 import StaticPageLayout from 'layouts/static-page';
 import store from 'store';
 import { LayoutStaticProp } from 'types';
@@ -71,8 +69,6 @@ const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
               <I18nProvider locale={locale}>
                 <OverlayProvider>
                   <Layout {...layoutProps}>
-                    {/* REMOVE WHEN VERSION CHANGES */}
-                    {/* <BetaVersionDisclaimer /> */}
                     <Component {...pageProps} />
                   </Layout>
                 </OverlayProvider>

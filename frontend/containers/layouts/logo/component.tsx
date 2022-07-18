@@ -6,7 +6,7 @@ import { useScrollY } from 'hooks/use-scroll-y';
 
 import { Paths } from 'enums';
 
-const BetaVersionDisclaimer = () => {
+const Logo = () => {
   const { isScrolledY } = useScrollY();
   return (
     <Link href={Paths.Home}>
@@ -25,4 +25,4 @@ const BetaVersionDisclaimer = () => {
   );
 };
 
-export default BetaVersionDisclaimer;
+export default Logo;
