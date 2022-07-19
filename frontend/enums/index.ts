@@ -152,3 +152,8 @@ export enum InvitationStatus {
   Waiting = 'waiting',
   Completed = 'completed',
 }
+
+export enum ProjectStatus {
+  Published = 'published',
+  Draft = 'draft',
+}

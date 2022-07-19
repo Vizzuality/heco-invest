@@ -11,8 +11,9 @@ import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { OutroPage, Page } from 'containers/multi-page-layout';
 
+import Button from 'components/button';
 import Head from 'components/head';
-import { Paths } from 'enums';
+import { Paths, ProjectStatus } from 'enums';
 import {
   ProjectCreationPayload,
   ProjectForm as ProjectFormType,
@@ -65,6 +66,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
 
   const defaultValues = useDefaultValues(project);
   const languageNames = useLanguageNames();
+  const isLastPage = currentPage === totalPages - 1;
 
   const {
     register,
@@ -135,7 +137,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   );
 
   const onSubmit: SubmitHandler<ProjectFormType> = (values: ProjectFormType) => {
-    if (currentPage === totalPages - 1) {
+    if (isLastPage) {
       const {
         involved_project_developer,
         project_gallery,
@@ -161,6 +163,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
       const involved_project_developer_ids = values.involved_project_developer_ids?.filter(
         (id) => id !== 'not-listed'
       );
+
       if (isCreateForm) {
         handleCreate({
           ...rest,
@@ -188,6 +191,16 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     await handleSubmit(onSubmit)();
   };
 
+  const handleSubmitDraft = async () => {
+    setValue('status', ProjectStatus.Draft);
+    await handleSubmit(onSubmit)();
+  };
+
+  const handleSubmitPublish = async () => {
+    setValue('status', ProjectStatus.Published);
+    await handleSubmit(onSubmit)();
+  };
+
   const contentLocale = defaultValues?.language || userAccount?.language;
 
   return (
@@ -207,7 +220,20 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
         onCloseClick={() => setShowLeave(true)}
-        onSubmitClick={handleSubmit(onSubmit)}
+        onSubmitClick={handleSubmitPublish}
+        footerElements={
+          isLastPage &&
+          project?.status !== ProjectStatus.Published && (
+            <Button
+              className="px-3 py-2 leading-none md:px-8 md:py-4"
+              theme="secondary-green"
+              size="base"
+              onClick={handleSubmitDraft}
+            >
+              <FormattedMessage defaultMessage="Save as draft" id="JHJJAH" />
+            </Button>
+          )
+        }
       >
         <Page key="general-information">
           <ContentLanguageAlert className="mb-6">
