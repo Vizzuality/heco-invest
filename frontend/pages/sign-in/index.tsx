@@ -2,6 +2,7 @@ import { useCallback, useEffect } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { useQueryClient } from 'react-query';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -20,14 +21,14 @@ import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import Loading from 'components/loading';
-import { Paths, UserRoles } from 'enums';
+import { Paths, Queries, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
 import { SignIn } from 'types/sign-in';
-import { User } from 'types/user';
 import { useSignInResolver } from 'validations/sign-in';
 
 import { useSignIn } from 'services/authentication/authService';
+import { useAcceptInvitation, useInvitedUser } from 'services/invitation/invitationService';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
@@ -37,45 +38,65 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   };
 });
 
-type SignInPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
-  const { push, query } = useRouter();
+const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => {
+  const { query, replace } = useRouter();
   const intl = useIntl();
   const signIn = useSignIn();
+  const acceptInvitation = useAcceptInvitation();
   const resolver = useSignInResolver();
+  const { user, refetch: refetchUser } = useMe();
+  const { invitedUser } = useInvitedUser(query.invitation_token as string);
+  const queryClient = useQueryClient();
+
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<SignIn>({ resolver, shouldUseNativeValidation: true });
-  const { user } = useMe();
-
-  const redirectUser = useCallback(
-    (user: User) => {
-      if (user?.role === UserRoles.Light) {
-        push(Paths.AccountType);
-      } else {
-        push(Paths.Dashboard);
-      }
-    },
-    [push]
-  );
+    setValue,
+  } = useForm<SignIn>({
+    resolver,
+    shouldUseNativeValidation: true,
+    defaultValues: { email: invitedUser?.email },
+  });
 
   useEffect(() => {
-    if (user) {
-      redirectUser(user);
+    if (!!invitedUser) {
+      setValue('email', invitedUser.email);
     }
-  }, [push, query.callbackUrl, redirectUser, user]);
+  }, [invitedUser, setValue]);
+
+  useEffect(() => {
+    if (!!user) {
+      if (user?.role === UserRoles.Light) {
+        replace(Paths.AccountType);
+      } else {
+        replace(Paths.Dashboard);
+      }
+    }
+  }, [replace, user]);
+
+  const redirectSignedUser = useCallback(() => {
+    queryClient.invalidateQueries(Queries.User);
+    replace(Paths.Dashboard);
+  }, [queryClient, replace]);
 
   const handleSignIn = useCallback(
-    (data: SignIn) =>
+    (data: SignIn) => {
       signIn.mutate(data, {
-        onSuccess: ({ data }) => {
-          redirectUser(data);
+        onSuccess: () => {
+          if (!!invitedUser) {
+            acceptInvitation.mutate(query.invitation_token as string, {
+              onSuccess: redirectSignedUser,
+            });
+          } else {
+            redirectSignedUser();
+          }
         },
-      }),
-    [redirectUser, signIn]
+      });
+    },
+    [signIn, invitedUser, acceptInvitation, query.invitation_token, redirectSignedUser]
   );
 
   const onSubmit: SubmitHandler<SignIn> = handleSignIn;
@@ -91,6 +112,40 @@ const SignIn: PageComponent<SignInPageProps, AuthPageLayoutProps> = () => {
           id="ZjA6uH"
         />
       </p>
+
+      {!!invitedUser && (
+        <div className="w-full p-4 mb-6 rounded-lg bg-beige">
+          <FormattedMessage
+            defaultMessage="By signing in you will be automatically added to the {accountName} account. <a>How accounts work?</a>"
+            id="RUzNGu"
+            values={{
+              accountName: invitedUser.account_name,
+              a: (chunks: string) => (
+                <a className="underline" href={`${Paths.FAQ}#accounts`}>
+                  {chunks}
+                </a>
+              ),
+            }}
+          />
+        </div>
+      )}
+
+      {acceptInvitation.isError && acceptInvitation.error.message ? (
+        Array.isArray(acceptInvitation.error.message) ? (
+          <ul>
+            {acceptInvitation.error.message.map((err: any) => (
+              <Alert key={err.title} withLayoutContainer className="mt-6">
+                <li key={err.title}>{err.title}</li>
+              </Alert>
+            ))}
+          </ul>
+        ) : (
+          <Alert withLayoutContainer className="mt-6">
+            {acceptInvitation.error.message}
+          </Alert>
+        )
+      ) : null}
+
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signIn.error?.message && (
           <Alert type="warning" className="mb-4.5" withLayoutContainer>

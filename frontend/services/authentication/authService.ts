@@ -11,7 +11,6 @@ import { User } from 'types/user';
 import API from '../api';
 
 export function useSignOut(): UseMutationResult<AxiosResponse, AxiosError> {
-  const { locale } = useRouter();
   const signOut = async () =>
     await API.request({
       method: 'DELETE',

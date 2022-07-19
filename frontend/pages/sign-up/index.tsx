@@ -1,7 +1,8 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { useQueryClient } from 'react-query';
 
 import { useRouter } from 'next/router';
 
@@ -18,12 +19,13 @@ import Checkbox from 'components/forms/checkbox';
 import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Loading from 'components/loading';
-import { Paths } from 'enums';
+import { Paths, Queries, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
 import { SignupDto, SignupFormI } from 'types/user';
 import { useSignupResolver } from 'validations/signup';
 
+import { useAcceptInvitation, useInvitedUser } from 'services/invitation/invitationService';
 import { useSignup } from 'services/users/userService';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
@@ -37,27 +39,60 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
 type SignUpPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
-  const { locale, push } = useRouter();
+  const { locale, query, replace } = useRouter();
   const intl = useIntl();
   const signUp = useSignup();
+  const { invitedUser } = useInvitedUser(query.invitation_token as string);
+  const acceptInvitation = useAcceptInvitation();
   const resolver = useSignupResolver();
-  const { refetch } = useMe();
-
+  const { user } = useMe();
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<SignupFormI>({ resolver, shouldUseNativeValidation: true });
+    setValue,
+  } = useForm<SignupFormI>({
+    resolver,
+    shouldUseNativeValidation: true,
+  });
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    if (!!user) {
+      if (user.role === UserRoles.Light) {
+        if (!invitedUser) {
+          // If the user exists and is not an invited user, redirect to the account type page
+          replace(Paths.AccountType);
+        } else {
+          replace(Paths.Invitation);
+        }
+      } else {
+        // If the user has a role other than light, redirect to the dashboard
+        replace(Paths.Dashboard);
+      }
+    }
+    if (!!invitedUser) {
+      setValue('email', invitedUser.email);
+    }
+  }, [invitedUser, replace, setValue, user]);
 
   const handleSignUp = useCallback(
-    (data: SignupDto) =>
-      signUp.mutate(data, {
-        onSuccess: () => {
-          push(Paths.AccountType);
-          refetch();
-        },
-      }),
-    [signUp, push, refetch]
+    (data: SignupDto) => {
+      signUp.mutate(
+        { ...data, invitation_token: query.invitation_token as string },
+        {
+          onSuccess: () => {
+            if (!!invitedUser) {
+              acceptInvitation.mutate(query.invitation_token as string);
+            } else {
+              replace(Paths.AccountType);
+            }
+            queryClient.invalidateQueries([Queries.User]);
+          },
+        }
+      );
+    },
+    [invitedUser, signUp, query.invitation_token, queryClient, acceptInvitation, replace]
   );
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {
@@ -77,6 +112,24 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
       <p className="mb-1.5 font-sans text-base text-gray-600">
         <FormattedMessage defaultMessage="Please enter your details below." id="rfVDxL" />
       </p>
+
+      {!!invitedUser && (
+        <div className="w-full p-4 mt-6 rounded-lg bg-beige">
+          <FormattedMessage
+            defaultMessage="By signing up you will be automatically added to the {accountName} account. <a>How accounts work?</a>"
+            id="DHLi++"
+            values={{
+              accountName: invitedUser.account_name,
+              a: (chunks: string) => (
+                <a className="underline" href={`${Paths.FAQ}#accounts`}>
+                  {chunks}
+                </a>
+              ),
+            }}
+          />
+        </div>
+      )}
+
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {signUp.isError && signUp.error.message ? (
           Array.isArray(signUp.error.message) ? (
@@ -90,6 +143,21 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
           ) : (
             <Alert type="warning" withLayoutContainer className="mt-6">
               {signUp.error.message}
+            </Alert>
+          )
+        ) : null}
+        {acceptInvitation.isError && acceptInvitation.error.message ? (
+          Array.isArray(acceptInvitation.error.message) ? (
+            <ul>
+              {acceptInvitation.error.message.map((err: any) => (
+                <Alert key={err.title} withLayoutContainer className="mt-6">
+                  <li key={err.title}>{err.title}</li>
+                </Alert>
+              ))}
+            </ul>
+          ) : (
+            <Alert withLayoutContainer className="mt-6">
+              {acceptInvitation.error.message}
             </Alert>
           )
         ) : null}
@@ -133,25 +201,27 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
             <ErrorMessage id="last-name-error" errorText={errors.last_name?.message} />
           </div>
         </div>
-        <div className="w-full">
-          <label htmlFor="email">
-            <p className="mb-2.5 mt-4.5 font-sans text-sm font-semibold text-gray-800">
-              <FormattedMessage defaultMessage="Email" id="sy+pv5" />
-            </p>
-            <Input
-              type="email"
-              name="email"
-              id="email"
-              placeholder={intl.formatMessage({
-                defaultMessage: 'Insert your email',
-                id: 'ErIkUS',
-              })}
-              aria-describedby="email-error"
-              register={register}
-            />
-          </label>
-          <ErrorMessage id="email-error" errorText={errors.email?.message} />
-        </div>
+        {!invitedUser && (
+          <div className="w-full">
+            <label htmlFor="email">
+              <p className="mb-2.5 mt-4.5 font-sans text-sm font-semibold text-gray-800">
+                <FormattedMessage defaultMessage="Email" id="sy+pv5" />
+              </p>
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                placeholder={intl.formatMessage({
+                  defaultMessage: 'Insert your email',
+                  id: 'ErIkUS',
+                })}
+                aria-describedby="email-error"
+                register={register}
+              />
+            </label>
+            <ErrorMessage id="email-error" errorText={errors.email?.message} />
+          </div>
+        )}
         <div className="md:gap-4 md:flex">
           <div className="w-full">
             <label htmlFor="password">

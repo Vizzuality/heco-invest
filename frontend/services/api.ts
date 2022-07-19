@@ -13,13 +13,15 @@ export const apiBaseUrl =
       `${process.env.NEXT_PUBLIC_FRONTEND_URL}/backend`
     : process.env.NEXT_PUBLIC_BACKEND_URL;
 
-const API = axios.create({
+const options = {
   baseURL: apiBaseUrl,
   headers: { 'Content-Type': 'application/json' },
   withCredentials: true,
   xsrfCookieName: 'csrf_token',
   xsrfHeaderName: 'X-CSRF-TOKEN',
-});
+};
+
+const API = axios.create(options);
 
 const onRequest = (config: AxiosRequestConfig) => {
   // We want to always send the locale to the API automatically. Unfortunately, this can't work for requests made on the server because we can't read the `NEXT_LOCALE` cookie there (`document` is `undefined`) and at that moment in time axios doesn't give us access to the request cookies. For this reason, the following code only sends the correct locale when requests are made on the client.
@@ -71,3 +73,8 @@ API.interceptors.request.use(onRequest);
 API.interceptors.response.use(onResponseSuccess, onResponseError);
 
 export default API;
+
+const RawApi = axios.create(options);
+RawApi.interceptors.request.use(onRequest);
+
+export { RawApi };
