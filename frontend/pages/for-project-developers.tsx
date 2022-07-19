@@ -164,6 +164,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
         ]}
         leftTexts={[
           {
+            id: 'project',
             title: (
               <span className="block text-2xl leading-10 md:text-3xl font-semibold md:leading-[48px]">
                 <FormattedMessage
@@ -180,6 +181,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
             ),
           },
           {
+            id: 'impact',
             title: (
               <span className="block text-2xl leading-10 md:text-3xl font-semibold md:leading-[48px]">
                 <FormattedMessage defaultMessage="Looking for the highest impact?" id="mgsoLa" />

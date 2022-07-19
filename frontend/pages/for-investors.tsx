@@ -176,6 +176,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         ]}
         leftTexts={[
           {
+            id: 'population',
             title: <FormattedMessage defaultMessage="30 million" id="m1w8ew" />,
             description: (
               <>
@@ -189,6 +190,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             ),
           },
           {
+            id: 'carbon',
             title: <FormattedMessage defaultMessage="123.000 million" id="2HumLB" />,
             description: (
               <>
@@ -205,6 +207,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             ),
           },
           {
+            id: 'biodiversity',
             title: <FormattedMessage defaultMessage="10%" id="HlDhAh" />,
             description: (
               <FormattedMessage

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 
 import cx from 'classnames';
 
@@ -35,15 +35,15 @@ export const Description: FC<DescriptionProps> = ({
         <div className="flex flex-col mdpy-14 md:grid md:grid-cols-2">
           <div className="flex flex-col justify-center order-2 p-6 pb-10 overflow-hidden text-white md:py-10 md:order-1 md:-mt-28 rounded-b-2xl md:rounded-3xl md:rounded-br-none bg-green-dark md:px-14">
             {leftTexts.map((text) => (
-              <>
+              <Fragment key={text.id}>
                 <div className="font-serif text-3xl font-semibold lg:text-4xl xl:text-5xl">
                   {text.title}
                 </div>
                 <p className="mt-4 mb-6">{text.description}</p>
-              </>
+              </Fragment>
             ))}
           </div>
-          <div className="order-1 md:order-2 rounded-t-2xl md:rounded-3xl md:rounded-l-none overflow-hidden">
+          <div className="order-1 overflow-hidden md:order-2 rounded-t-2xl md:rounded-3xl md:rounded-l-none">
             <div
               className={cx(
                 'flex items-center justify-center w-full h-full bg-cover  bg-blend-overlay bg-black bg-opacity-25',
