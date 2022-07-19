@@ -1,5 +1,6 @@
 import { FC } from 'react';
 
+import BetaVersionDisclaimer from 'containers/layouts/beta-version-disclaimer';
 import DiscoverSearch from 'containers/layouts/discover-search';
 import Logo from 'containers/layouts/logo';
 import NavigationMenuButton from 'containers/layouts/navigation-menu-button';
@@ -12,7 +13,8 @@ import { HeaderProps } from './types';
 export const Header: FC<HeaderProps> = ({ ...discoverSearchProps }: HeaderProps) => {
   return (
     <>
-      <header className="fixed top-0 z-20 w-full text-white border-b bg-green-dark backdrop-blur-sm">
+      <header className="top-0 z-20 w-full text-white border-b bg-green-dark backdrop-blur-sm">
+        <BetaVersionDisclaimer />
         <LayoutContainer>
           <div className="flex items-center justify-between h-18">
             <span className="justify-start flex-1">

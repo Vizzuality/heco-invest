@@ -4,6 +4,7 @@ import cx from 'classnames';
 
 import { useScrollY } from 'hooks/use-scroll-y';
 
+import BetaVersionDisclaimer from 'containers/layouts/beta-version-disclaimer';
 import LanguageSelector from 'containers/layouts/language-selector';
 import Logo from 'containers/layouts/logo';
 import Navigation from 'containers/layouts/navigation';
@@ -30,6 +31,7 @@ export const Header: React.FC<HeaderProps> = ({
         [className]: !!className,
       })}
     >
+      <BetaVersionDisclaimer />
       <LayoutContainer>
         <div className="flex items-center justify-between pt-3 pb-3 md:pt-6 md:pb-4 lg:space-x-10">
           <Logo />

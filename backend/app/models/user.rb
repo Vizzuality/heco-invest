@@ -51,6 +51,14 @@ class User < ApplicationRecord
   end
   alias_method :to_s, :full_name
 
+  def invalidate_session!
+    update! token: SecureRandom.hex, remember_created_at: nil
+  end
+
+  def authenticatable_salt
+    "#{super}#{token}"
+  end
+
   private
 
   def confirmation_sent_within_limited_period?

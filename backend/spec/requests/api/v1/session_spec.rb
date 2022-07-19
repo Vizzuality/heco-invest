@@ -1,9 +1,7 @@
 require "swagger_helper"
 
 RSpec.describe "API V1 Session", type: :request do
-  before_all do
-    @user = create(:user, email: "user@example.com", password: "SuperSecret1234")
-  end
+  let!(:user) { create(:user, email: "user@example.com", password: "SuperSecret1234") }
 
   path "/api/v1/session" do
     post "Creates User Session/Logs In" do
@@ -43,7 +41,7 @@ RSpec.describe "API V1 Session", type: :request do
 
         context "when invited user tries to login" do
           before do
-            @user.invite! create(:account).owner
+            user.invite! create(:account).owner
           end
 
           run_test!
@@ -105,13 +103,15 @@ RSpec.describe "API V1 Session", type: :request do
 
       response "200", :success do
         let("X-CSRF-TOKEN") { get_csrf_token }
+        let!(:token) { user.token }
 
-        before(:each) { sign_in @user }
+        before(:each) { sign_in user }
 
         run_test!
 
         it "removes user from session" do
           expect(session["warden.user.user.key"]).to be_nil
+          expect(user.reload.token).not_to eq(token)
         end
       end
     end
