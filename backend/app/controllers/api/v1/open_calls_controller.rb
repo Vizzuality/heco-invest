@@ -7,7 +7,7 @@ module API
       load_and_authorize_resource
 
       def index
-        open_calls = @open_calls.all.includes(:investor)
+        open_calls = @open_calls.all.includes({investor: :account})
         open_calls = API::Filterer.new(open_calls, filter_params.to_h).call
         open_calls = API::Sorter.new(open_calls, sorting_by: params[:sorting]).call
         pagy_object, open_calls = pagy(open_calls, page: current_page, items: per_page)

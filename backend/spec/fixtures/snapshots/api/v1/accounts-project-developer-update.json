@@ -35,7 +35,8 @@
         "amazon-heart"
       ],
       "favourite": false,
-      "created_at": "2022-06-21T11:30:04.521Z"
+      "created_at": "2022-06-21T11:30:04.521Z",
+      "account_language": "en"
     },
     "relationships": {
       "owner": {

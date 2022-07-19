@@ -72,6 +72,8 @@ class Project < ApplicationRecord
 
   accepts_nested_attributes_for :project_images, reject_if: :all_blank, allow_destroy: true
 
+  delegate :account_language, to: :project_developer, allow_nil: true
+
   ransacker :category_index do
     Arel.sql(Category.select_index_sql)
   end

@@ -27,6 +27,7 @@ module API
         :received_funding_investor,
         :relevant_links,
         :language,
+        :account_language,
         :geometry,
         :trusted,
         :created_at,

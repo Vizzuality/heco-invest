@@ -30,6 +30,7 @@ class User < ApplicationRecord
   validates_presence_of :first_name, :last_name
 
   delegate :approved?, to: :account, allow_nil: true
+  delegate :language, to: :account, allow_nil: true, prefix: true
 
   ransacker :full_name do
     Arel.sql("CONCAT_WS(' ', users.first_name, users.last_name)")

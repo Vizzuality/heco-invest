@@ -204,7 +204,8 @@
         "longitude": 1.0,
         "favourite": null,
         "created_at": "2022-06-24T09:06:30.522Z",
-        "status": "published"
+        "status": "published",
+        "account_language": "en"
       },
       "relationships": {
         "project_developer": {
@@ -318,7 +319,8 @@
         "longitude": 1.0,
         "favourite": null,
         "created_at": "2022-06-24T09:06:30.643Z",
-        "status": "published"
+        "status": "published",
+        "account_language": "en"
       },
       "relationships": {
         "project_developer": {

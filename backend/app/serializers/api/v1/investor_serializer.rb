@@ -22,6 +22,7 @@ module API
         :sdgs,
         :previously_invested,
         :language,
+        :account_language,
         :review_status,
         :created_at
 

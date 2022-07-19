@@ -19,7 +19,8 @@
         "closing_at": "2023-01-15T11:45:07.390Z",
         "language": "en",
         "trusted": false,
-        "created_at": "2022-06-24T09:07:24.094Z"
+        "created_at": "2022-06-24T09:07:24.094Z",
+        "account_language": "en"
       },
       "relationships": {
         "investor": {
@@ -49,7 +50,8 @@
         "closing_at": "2023-01-15T11:45:07.428Z",
         "language": "en",
         "trusted": false,
-        "created_at": "2022-06-24T09:07:24.183Z"
+        "created_at": "2022-06-24T09:07:24.183Z",
+        "account_language": "en"
       },
       "relationships": {
         "investor": {
@@ -79,7 +81,8 @@
         "closing_at": "2023-01-15T11:45:07.450Z",
         "language": "en",
         "trusted": false,
-        "created_at": "2022-06-24T09:07:24.265Z"
+        "created_at": "2022-06-24T09:07:24.265Z",
+        "account_language": "en"
       },
       "relationships": {
         "investor": {
@@ -109,7 +112,8 @@
         "closing_at": "2023-01-15T11:45:07.474Z",
         "language": "en",
         "trusted": false,
-        "created_at": "2022-06-24T09:07:24.362Z"
+        "created_at": "2022-06-24T09:07:24.362Z",
+        "account_language": "en"
       },
       "relationships": {
         "investor": {
@@ -139,7 +143,8 @@
         "closing_at": "2023-01-15T11:45:07.500Z",
         "language": "en",
         "trusted": false,
-        "created_at": "2022-06-24T09:07:24.442Z"
+        "created_at": "2022-06-24T09:07:24.442Z",
+        "account_language": "en"
       },
       "relationships": {
         "investor": {
@@ -169,7 +174,8 @@
         "closing_at": "2023-01-15T11:45:07.522Z",
         "language": "en",
         "trusted": false,
-        "created_at": "2022-06-24T09:07:24.557Z"
+        "created_at": "2022-06-24T09:07:24.557Z",
+        "account_language": "en"
       },
       "relationships": {
         "investor": {
@@ -199,7 +205,8 @@
         "closing_at": "2023-01-15T11:45:07.546Z",
         "language": "en",
         "trusted": false,
-        "created_at": "2022-06-24T09:07:24.641Z"
+        "created_at": "2022-06-24T09:07:24.641Z",
+        "account_language": "en"
       },
       "relationships": {
         "investor": {
