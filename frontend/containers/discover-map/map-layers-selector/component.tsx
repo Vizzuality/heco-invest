@@ -135,7 +135,10 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                                   {name}
                                 </label>
 
-                                <button
+                                <Button
+                                  theme="naked"
+                                  size="smallest"
+                                  className="flex items-center justify-center w-4 h-4 text-gray-800 scale-90 border border-gray-800 rounded-full pointer focus-visible:outline-green-dark focus-visible:outline-2"
                                   onClick={() =>
                                     handleShowTooltip({
                                       id,
@@ -146,11 +149,14 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                                       dataSourceUrl,
                                     })
                                   }
-                                  type="button"
-                                  className="flex items-center justify-center w-4 h-4 text-gray-800 scale-90 border border-gray-800 rounded-full pointer focus-visible:outline-green-dark focus-visible:outline-2"
                                 >
-                                  <p className="pt-0.5 text-xs">i</p>
-                                </button>
+                                  <span className="sr-only">
+                                    <FormattedMessage defaultMessage="Information" id="E80WrK" />
+                                  </span>
+                                  <span className="pt-0.5 text-xs" aria-hidden>
+                                    i
+                                  </span>
+                                </Button>
                               </li>
                             )
                           )}
