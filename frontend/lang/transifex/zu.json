@@ -485,12 +485,11 @@
   "E1kj21": {
     "string": "Project verification"
   },
-
-  "EOsYCo": {
-    "string": "Discover our current calls from investors. Apply with your project and receive funding."
-  },
   "EKOV4Z": {
     "string": "Contextual Layers"
+  },
+  "EOsYCo": {
+    "string": "Discover our current calls from investors. Apply with your project and receive funding."
   },
   "EVKdUn": {
     "string": "Priority Landscape"
@@ -1405,11 +1404,11 @@
   "j4lBL7": {
     "string": "Note: Some filters not apply to all tabs"
   },
-  "jHyKQ2": {
-    "string": "Thanks to our <n>model ARIES</n>, an Artificial Intelligence tool, you can <n>reach investors</n> that are interested in your project and <n>learn how your activity impacts</n> the environment and your community."
-  },
   "jG0v72": {
     "string": "Email {email} is invalid."
+  },
+  "jHyKQ2": {
+    "string": "Thanks to our <n>model ARIES</n>, an Artificial Intelligence tool, you can <n>reach investors</n> that are interested in your project and <n>learn how your activity impacts</n> the environment and your community."
   },
   "jJYv/7": {
     "string": "This data set, a collaboration between the Global Land Analysis & Discovery (GLAD) lab at the University of Maryland, Google, USGS, and NASA, measures areas of tree cover loss across all global land (except Antarctica and other Arctic islands) at approximately 30 × 30 meter resolution. The data were generated using multispectral satellite imagery from the Landsat 5 thematic mapper (TM), the Landsat 7 thematic mapper plus (ETM+), and the Landsat 8 Operational Land Imager (OLI) sensors. Over 1 million satellite images were processed and analyzed, including over 600,000 Landsat 7 images for the 2000-2012 interval, and more than 400,000 Landsat 5, 7, and 8 images for updates for the 2011-2021 interval. The clear land surface observations in the satellite images were assembled and a supervised learning algorithm was applied to identify per pixel tree cover loss. In this data set, “tree cover” is defined as all vegetation greater than 5 meters in height, and may take the form of natural forests or plantations across a range of canopy densities. Tree cover loss is defined as “stand replacement disturbance,” or the complete removal of tree cover canopy at the Landsat pixel scale. Tree cover loss may be the result of human activities, including forestry practices such as timber harvesting or deforestation (the conversion of natural forest to other land uses), as well as natural causes such as disease or storm damage. Fire is another widespread cause of tree cover loss, and can be either natural or human-induced."

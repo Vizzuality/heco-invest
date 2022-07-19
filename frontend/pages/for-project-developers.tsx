@@ -90,8 +90,6 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
   const isMd = breakpoint('sm');
   const isLg = breakpoint('lg');
 
-  console.log({ categoryEnums, ticketSizeEnums, investorsByCategory, investorsByTicketSize });
-
   const whatHecoCanDoTexts = [
     {
       title: <FormattedMessage defaultMessage="Have a public profile page" id="xupvNr" />,

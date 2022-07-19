@@ -25,7 +25,6 @@ import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
-import { CategoryType } from 'types/category';
 import { Enum } from 'types/enums';
 import { Project } from 'types/project';
 
@@ -33,23 +32,34 @@ import { getEnums } from 'services/enums/enumService';
 import { getProjects } from 'services/projects/projectService';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
-  let projects: Project[] = [];
-  let enums: Enum[] = [];
+  let categoryEnums: Enum[] = [];
+  let mosaicEnums: Enum[] = [];
+
+  let projectsByCategory: Record<string, Project[]> = {};
+  let mosaicsWithProjectsNumber: ReturnType<typeof getMosaicsWithProjectsNumber> = [];
+
   try {
-    projects = await getProjects({
+    const projects: Project[] = await getProjects({
       'page[size]': 10000,
       includes: ['priority_landscape'],
       fields: ['category', 'priority_landscape'],
     }).then((res) => res.data);
-    enums = await getEnums();
+
+    const enums: Enum[] = await getEnums();
+
+    ({ category: categoryEnums, mosaic: mosaicEnums } = groupBy(enums, 'type'));
+
+    projectsByCategory = groupBy(projects, 'category');
+    mosaicsWithProjectsNumber = getMosaicsWithProjectsNumber(mosaicEnums, projects);
   } catch (e) {
     return { notFound: true };
   }
   return {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
-      enums,
-      projects,
+      categoryEnums,
+      projectsByCategory,
+      mosaicsWithProjectsNumber,
     },
   };
 });
@@ -57,19 +67,15 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
 type ForInvestorsPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutProps> = ({
-  projects,
-  enums,
+  categoryEnums,
+  projectsByCategory,
+  mosaicsWithProjectsNumber,
 }) => {
   const { formatMessage } = useIntl();
   const [impactModalOpen, setImpactModalOpen] = useState(false);
   const breakpoint = useBreakpoint();
   const isMd = breakpoint('sm');
   const isLg = breakpoint('lg');
-
-  const { category: categoryEnums, mosaic: mosaicEnums } = groupBy(enums, 'type');
-  const projectsGroupedByCategory = groupBy(projects, 'category');
-
-  const mosaicsWithProjectsNumber = getMosaicsWithProjectsNumber(mosaicEnums, projects);
 
   const priorityLandscapesDescriptions = {
     'amazonian-piedmont-massif': (
@@ -230,7 +236,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             <FormattedMessage defaultMessage="Discover projects by category" id="des5Rg" />
           </h2>
           {categoryEnums.map(({ id, name, description }) => {
-            const projectsQuantity = projectsGroupedByCategory[id]?.length || 0;
+            const projectsQuantity = projectsByCategory[id]?.length || 0;
             return (
               <PublicPageCard
                 key={id}
