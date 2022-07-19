@@ -9,12 +9,12 @@ import Link from 'next/link';
 
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
+import { Paths } from 'enums';
 
 import FacebookIcon from 'svgs/social/facebook.svg';
 import TwitterIcon from 'svgs/social/twitter.svg';
 
 import { FooterProps } from './types';
-import { Paths } from 'enums';
 
 export const Footer: React.FC<FooterProps> = ({
   props = {
@@ -193,9 +193,11 @@ export const Footer: React.FC<FooterProps> = ({
                     </Link>
                   </li>
                   <li>
-                    <a className="text-gray-400 disabled:pointer-events-none">
-                      <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
-                    </a>
+                    <Link href={Paths.ForProjectDevelopers}>
+                      <a className="hover:underline">
+                        <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
+                      </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

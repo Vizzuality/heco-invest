@@ -40,6 +40,7 @@ export enum Paths {
   Investors = '/discover/investors',
   Invitation = '/invitation',
   ForInvestors = '/for-investors',
+  ForProjectDevelopers = '/for-project-developers',
 }
 
 export enum UserRoles {

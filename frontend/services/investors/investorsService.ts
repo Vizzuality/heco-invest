@@ -16,7 +16,7 @@ import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
 import { PagedResponse, PagedRequest, ResponseData, SingleRequestParams } from 'services/types';
 
-const getInvestors = async (params?: PagedRequest) => {
+export const getInvestors = async (params?: PagedRequest) => {
   const { fields, search, page, perPage, ...rest } = params || {};
 
   const config: AxiosRequestConfig = {
