@@ -24,31 +24,54 @@ import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
-import { CategoryType } from 'types/category';
 import { Enum } from 'types/enums';
-import { Project } from 'types/project';
+import { Investor } from 'types/investor';
 
 import { getEnums } from 'services/enums/enumService';
-import { getProjects } from 'services/projects/projectService';
+import { getInvestors } from 'services/investors/investorsService';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
-  let projects: Project[] = [];
-  let enums: Enum[] = [];
+  let categoryEnums: Enum[] = [];
+  let ticketSizeEnums: Enum[] = [];
+
+  let investorsByCategory: Record<string, Investor[]> = {};
+  let investorsByTicketSize: Record<string, Investor[]> = {};
+
   try {
-    projects = await getProjects({
+    const investors: Investor[] = await getInvestors({
       'page[size]': 10000,
-      includes: ['priority_landscape'],
-      fields: ['category', 'priority_landscape', 'ticket_size'],
+      fields: ['categories', 'ticket_sizes'],
     }).then((res) => res.data);
-    enums = await getEnums();
+
+    const enums: Enum[] = await getEnums();
+
+    ({ category: categoryEnums, ticket_size: ticketSizeEnums } = groupBy(enums, 'type'));
+
+    investorsByCategory = categoryEnums.reduce(
+      (res, { id }) => ({
+        ...res,
+        [id]: investors.filter((investor) => investor.categories.includes(id)),
+      }),
+      {}
+    );
+
+    investorsByTicketSize = ticketSizeEnums.reduce(
+      (res, { id }) => ({
+        ...res,
+        [id]: investors.filter((investor) => investor.ticket_sizes.includes(id)),
+      }),
+      {}
+    );
   } catch (e) {
     return { notFound: true };
   }
   return {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
-      enums,
-      projects,
+      categoryEnums,
+      ticketSizeEnums,
+      investorsByCategory,
+      investorsByTicketSize,
     },
   };
 });
@@ -56,18 +79,18 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
 type ForProjectDevelopersProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageLayoutProps> = ({
-  projects,
-  enums,
+  categoryEnums,
+  ticketSizeEnums,
+  investorsByCategory,
+  investorsByTicketSize,
 }) => {
   const { formatMessage } = useIntl();
   const [impactModalOpen, setImpactModalOpen] = useState(false);
   const breakpoint = useBreakpoint();
   const isMd = breakpoint('sm');
   const isLg = breakpoint('lg');
-  const { category: categoryEnums, ticket_size: ticketSizeEnums } = groupBy(enums, 'type');
 
-  const projectsGroupedByCategory = groupBy(projects, 'category');
-  const projectsGroupedByTicketSize = groupBy(projects, 'ticket_size');
+  console.log({ categoryEnums, ticketSizeEnums, investorsByCategory, investorsByTicketSize });
 
   const whatHecoCanDoTexts = [
     {
@@ -197,7 +220,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
             />
           </h2>
           {ticketSizeEnums.map(({ id, description, name }, index) => {
-            const projectsQuantity = projectsGroupedByTicketSize[id]?.length || 0;
+            const investorsQuantity = investorsByTicketSize[id]?.length ?? 0;
             return (
               <div
                 className={cx('row-start-1 md:row-start-2 xl:row-start-auto', {
@@ -210,7 +233,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
                   id={id}
                   name={description?.replace(/,000/g, 'K')}
                   description={name}
-                  quantity={projectsQuantity}
+                  quantity={investorsQuantity}
                   filterName="ticket_size"
                   enumType="ticket_size"
                   cardType="investors"
@@ -246,7 +269,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
             <FormattedMessage defaultMessage="Discover investors by category" id="vViagZ" />
           </h2>
           {categoryEnums.map(({ id, name, description }, index) => {
-            const projectsQuantity = projectsGroupedByCategory[id]?.length || 0;
+            const investorsQuantity = investorsByCategory[id]?.length ?? 0;
             return (
               <div
                 className={cx('row-start-1 md:row-start-auto', {
@@ -259,7 +282,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
                   id={id}
                   name={name}
                   description={description}
-                  quantity={projectsQuantity}
+                  quantity={investorsQuantity}
                   cardType="investors"
                   filterName="category"
                   enumType="category"
