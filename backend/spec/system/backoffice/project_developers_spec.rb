@@ -175,6 +175,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
           expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.project_developer")))
           approved_pd.reload
           expect(approved_pd.account.picture.filename.to_s).to eq("picture_2.jpg")
+          expect(page).to have_css "form a img", count: 1
           expect(approved_pd.account.name).to eq("New profile name")
           expect(approved_pd.project_developer_type).to eq("academic")
           expect(approved_pd.entity_legal_registration_number).to eq("1111111111")

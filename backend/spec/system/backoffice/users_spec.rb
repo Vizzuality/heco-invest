@@ -74,6 +74,7 @@ RSpec.describe "Backoffice: Users", type: :system do
           expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.user")))
           user.reload
           expect(user.avatar.filename.to_s).to eq("picture.jpg")
+          expect(page).to have_css "form a img", count: 1
           expect(user.first_name).to eq("First Name")
           expect(user.last_name).to eq("Last Name")
         end

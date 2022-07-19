@@ -1,0 +1,8 @@
+<% blob_object = f.object.public_send blob %>
+
+<% if blob_object.present? %>
+  <%= link_to url_for(blob_object) do %>
+    <%= image_tag blob_object.variant(resize: "200x200"), class: "inline" %>
+  <% end %>
+<% end %>
+<%= f.input blob, as: :file, input_html: { accept: "image/*" } %>

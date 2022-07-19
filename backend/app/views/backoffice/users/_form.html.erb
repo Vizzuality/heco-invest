@@ -6,7 +6,7 @@
     <%= t(".information") %>
   </h2>
 
-  <%= f.input :avatar, as: :file, input_html: { accept: "image/*" } %>
+  <%= render "image_with_thumbnail", f: f, blob: :avatar %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
 
