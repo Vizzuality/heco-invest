@@ -104,7 +104,7 @@ RSpec.describe "API V1 Invitation", type: :request do
           end
 
           it "sends emails" do
-            mails = ActionMailer::Base.deliveries[-2..]
+            mails = ActionMailer::Base.deliveries.last(2)
             expect(mails.map(&:subject).uniq).to eq([I18n.t("devise.mailer.invitation_instructions.subject")])
             expect(mails.first.to).to eq(["user@example.com"])
             expect(mails.second.to).to eq([user.email])
