@@ -13,17 +13,18 @@ export const LayerTooltip: FC<LayerTooltipProps> = ({ selectedLayer, closeToolti
   const isOpen = !!selectedLayer;
   return (
     <div
-      className={cx('z-10 transition-all ease-in-out duration-500', {
-        'left-0 opacity-0 py-0 pt-0 pl-0 pr-0 pb-0 w-0': !isOpen,
-        'left-auto opacity-100 pt-4 pl-6 pr-3 pb-4 w-auto': isOpen,
+      aria-hidden={!isOpen}
+      className={cx('z-10 transition-all ease-in-out duration-500 flex flex-col max-h-[500px]', {
+        'opacity-0 p-0 w-0': !isOpen,
+        'opacity-100 pt-4 pl-6 pr-3 pb-4 w-auto': isOpen,
       })}
     >
-      <div className="flex flex-col max-h-[500px] overflow-y-auto pr-2">
-        <div className="flex justify-end">
-          <Button theme="naked" className="px-0 py-0" onClick={closeTooltip}>
-            <CloseIcon className="w-4 h-4 transition-transform rotate-0 hover:rotate-180" />
-          </Button>
-        </div>
+      <div className="flex justify-end p-0.5">
+        <Button theme="naked" size="smallest" onClick={closeTooltip}>
+          <CloseIcon className="w-4 h-4 transition-transform rotate-0 hover:rotate-180" />
+        </Button>
+      </div>
+      <div className="overflow-y-auto">
         <div className="text-lg font-semibold text-gray-900">{selectedLayer?.name}</div>
         <div className="max-w-full">
           <p className="mt-4 mb-2 text-sm font-semibold text-gray-600">

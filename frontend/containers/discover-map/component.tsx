@@ -74,7 +74,10 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           )}
         </Map>
 
-        <div className="absolute w-full flex gap-2 top-3.5 left-3.5 text-gray-800 text-sm">
+        <div
+          // `bottom-12` ensures the layers menu doesn't overflow the map
+          className="absolute flex items-start gap-2 inset-3.5 bottom-12 text-gray-800 text-sm"
+        >
           <MapLayersSelector onActiveLayersChange={setVisibleLayers} />
           <LocationSearcher onLocationSelected={handleLocationSelected} />
         </div>

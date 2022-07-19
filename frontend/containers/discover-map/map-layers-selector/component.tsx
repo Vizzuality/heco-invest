@@ -73,107 +73,105 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
 
   return (
     <div className={className} ref={containerRef}>
-      <div className="relative flex flex-col justify-center">
-        <button
-          className="flex items-center gap-2.5 shadow-sm h-full bg-white rounded border-xl px-2 py-1 outline-none focus-visible:ring-green-dark focus-visible:ring-2 hover:ring-green-dark hover:ring-1 w-fit"
-          onClick={handleButtonClick}
-        >
-          <IconLayers className="w-4 h-4" />
-          <FormattedMessage defaultMessage="Map layers" id="iwpEth" />
-        </button>
-        {isOpen && (
-          <FocusScope contain restoreFocus>
-            <div
-              className="z-10 relative flex flex-col md:flex-row mx-0.5 mt-2 bg-white rounded-2xl"
-              ref={selectorRef}
-            >
-              <div className="flex top-0 left-0 lg:min-w-fit z-10 p-3 -m-0.5 whitespace-nowrap overflow-auto min-w-fit">
-                <form>
-                  {groupedLayers.map((layerGroup) => {
-                    if (!layerGroup.layers.length) return null;
-                    const groupIsOpen = openLayerGroup.includes(layerGroup.id);
+      <button
+        className="flex items-center gap-2.5 shadow-sm h-full bg-white rounded border-xl px-2 py-1 outline-none focus-visible:ring-green-dark focus-visible:ring-2 hover:ring-green-dark hover:ring-1 w-fit"
+        onClick={handleButtonClick}
+      >
+        <IconLayers className="w-4 h-4" />
+        <FormattedMessage defaultMessage="Map layers" id="iwpEth" />
+      </button>
+      {isOpen && (
+        <FocusScope contain restoreFocus>
+          <div
+            className="absolute top-8 z-20 flex flex-col md:flex-row md:items-stretch mx-0.5 bg-white rounded-2xl shadow-sm max-h-full"
+            ref={selectorRef}
+          >
+            <div className="flex flex-shrink-0 p-3 overflow-y-auto whitespace-nowrap">
+              <form>
+                {groupedLayers.map((layerGroup) => {
+                  if (!layerGroup.layers.length) return null;
+                  const groupIsOpen = openLayerGroup.includes(layerGroup.id);
 
-                    return (
-                      <Expando
-                        defaultOpen={groupIsOpen}
-                        key={layerGroup.id}
-                        title={
-                          <Button
-                            theme="naked"
-                            className="w-full px-0 py-0"
-                            onClick={() => handleChangeOpenLayerGroup(layerGroup.id)}
-                          >
-                            <div className="flex items-center w-full my-2">
-                              <span className="flex flex-grow">{layerGroup.name}</span>
-                              <ChevronUpIcon
-                                className={cx({
-                                  'w-4 h-4 transition-all': true,
-                                  'rotate-180': !groupIsOpen,
-                                  'rotate-0': groupIsOpen,
-                                })}
-                              />
-                            </div>
-                          </Button>
-                        }
-                      >
-                        <ol className="flex flex-col gap-3.5 text-xs text-black py-2">
-                          {layerGroup.layers.map(
-                            ({ id, name, description, overview, dataSource, dataSourceUrl }) => (
-                              <li key={id} className="flex items-center gap-1.5">
-                                <label
-                                  key={id}
-                                  htmlFor={id}
-                                  className="flex items-center gap-2 cursor-pointer"
-                                >
-                                  <Switch
-                                    id={id}
-                                    name="activeLayers"
-                                    switchSize="smallest"
-                                    value={id}
-                                    register={register}
-                                  />
-                                  {name}
-                                </label>
+                  return (
+                    <Expando
+                      defaultOpen={groupIsOpen}
+                      key={layerGroup.id}
+                      title={
+                        <Button
+                          theme="naked"
+                          className="w-full px-0 py-0"
+                          onClick={() => handleChangeOpenLayerGroup(layerGroup.id)}
+                        >
+                          <div className="flex items-center w-full my-2">
+                            <span className="flex flex-grow">{layerGroup.name}</span>
+                            <ChevronUpIcon
+                              className={cx({
+                                'w-4 h-4 transition-all': true,
+                                'rotate-180': !groupIsOpen,
+                                'rotate-0': groupIsOpen,
+                              })}
+                            />
+                          </div>
+                        </Button>
+                      }
+                    >
+                      <ol className="flex flex-col gap-3.5 text-xs text-black py-2">
+                        {layerGroup.layers.map(
+                          ({ id, name, description, overview, dataSource, dataSourceUrl }) => (
+                            <li key={id} className="flex items-center gap-1.5">
+                              <label
+                                key={id}
+                                htmlFor={id}
+                                className="flex items-center gap-2 cursor-pointer"
+                              >
+                                <Switch
+                                  id={id}
+                                  name="activeLayers"
+                                  switchSize="smallest"
+                                  value={id}
+                                  register={register}
+                                />
+                                {name}
+                              </label>
 
-                                <Button
-                                  theme="naked"
-                                  size="smallest"
-                                  className="flex items-center justify-center w-4 h-4 text-gray-800 scale-90 border border-gray-800 rounded-full pointer focus-visible:outline-green-dark focus-visible:outline-2"
-                                  onClick={() =>
-                                    handleShowTooltip({
-                                      id,
-                                      name,
-                                      description,
-                                      overview,
-                                      dataSource,
-                                      dataSourceUrl,
-                                    })
-                                  }
-                                >
-                                  <span className="sr-only">
-                                    <FormattedMessage defaultMessage="Information" id="E80WrK" />
-                                  </span>
-                                  <span className="pt-0.5 text-xs" aria-hidden>
-                                    i
-                                  </span>
-                                </Button>
-                              </li>
-                            )
-                          )}
-                        </ol>
-                      </Expando>
-                    );
-                  })}
-                </form>
-              </div>
-              <LayerTooltip
-                selectedLayer={selectedLayer}
-                closeTooltip={() => setSelectedlayer(undefined)}
-              />
+                              <Button
+                                theme="naked"
+                                size="smallest"
+                                className="flex items-center justify-center w-4 h-4 text-gray-800 scale-90 border border-gray-800 rounded-full pointer focus-visible:outline-green-dark focus-visible:outline-2"
+                                onClick={() =>
+                                  handleShowTooltip({
+                                    id,
+                                    name,
+                                    description,
+                                    overview,
+                                    dataSource,
+                                    dataSourceUrl,
+                                  })
+                                }
+                              >
+                                <span className="sr-only">
+                                  <FormattedMessage defaultMessage="Information" id="E80WrK" />
+                                </span>
+                                <span className="pt-0.5 text-xs" aria-hidden>
+                                  i
+                                </span>
+                              </Button>
+                            </li>
+                          )
+                        )}
+                      </ol>
+                    </Expando>
+                  );
+                })}
+              </form>
             </div>
-          </FocusScope>
-        )}
-      </div>
+            <LayerTooltip
+              selectedLayer={selectedLayer}
+              closeTooltip={() => setSelectedlayer(undefined)}
+            />
+          </div>
+        </FocusScope>
+      )}
     </div>
   );
 };
