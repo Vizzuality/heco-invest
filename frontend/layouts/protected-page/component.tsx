@@ -2,10 +2,16 @@ import React, { useMemo } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { Paths, UserRoles } from 'enums';
-import { ProtectedProps } from 'layouts/protected-page/types';
+import AccountPendingApproval from 'containers/account-pending-approval';
+
+import LayoutContainer from 'components/layout-container';
+import Loading from 'components/loading';
+import { Paths, ReviewStatus, UserRoles } from 'enums';
+import Header from 'layouts/static-page/header';
 
 import { useAccount } from 'services/account';
+
+import { ProtectedProps } from './types';
 
 const Protected: React.FC<ProtectedProps> = ({
   permissions,
@@ -13,7 +19,7 @@ const Protected: React.FC<ProtectedProps> = ({
     allowOwner: false,
     getIsOwner: () => false,
   },
-  allowConfirmed = false,
+  allowUnapproved = false,
   children,
   ...rest
 }) => {
@@ -21,18 +27,32 @@ const Protected: React.FC<ProtectedProps> = ({
 
   const { user, userIsLoading, userAccount, userIsError, userAccountLoading } = useAccount();
 
+  const isLoading = userIsLoading || userAccountLoading;
+
   const isOwner = useMemo(
     () => ownership?.getIsOwner(user, userAccount),
     [ownership, user, userAccount]
   );
 
-  // Not display anything when me request is on progress
-  if (userIsLoading) return null;
+  const isUnapproved = userAccount?.review_status !== ReviewStatus.Approved;
 
   // Redirect to sign-in when session doesn't exist
   if (userIsError) {
     router.push(Paths.SignIn);
     return null;
+  }
+
+  if (isLoading) {
+    return (
+      <>
+        <Header />
+        <Loading
+          visible={true}
+          className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-background-light/90 backdrop-blur-sm"
+          iconClassName="w-10 h-10"
+        />
+      </>
+    );
   }
 
   // If needs role permissions and has no user or the role don't match
@@ -46,23 +66,26 @@ const Protected: React.FC<ProtectedProps> = ({
     // Redirect to the last route (go back) if the user have a different kind of account
     router.back();
     return null;
-  } else {
-    // If the account confirmation is needed and the account is not confirmed
-    if (allowConfirmed && !user.confirmed) {
-      // Redirect to pending approval page
-      router.push(
-        user.role === UserRoles.Investor ? Paths.PendingInvestor : Paths.PendingProjectDeveloper
-      );
+  }
+
+  // If the ownership of the entity is needed and the user don't have it
+  if (ownership?.allowOwner) {
+    if (!isOwner) {
+      // Redirect to dashboard
+      router.push(Paths.Dashboard);
       return null;
     }
-    // If the ownership of the entity is needed and the user don't have it
-    if (ownership?.allowOwner) {
-      if (!userIsLoading && !userAccountLoading && !isOwner) {
-        // Redirect to dashboard
-        router.push(Paths.Dashboard);
-        return null;
-      }
-    }
+  }
+
+  if (isUnapproved && !allowUnapproved) {
+    return (
+      <>
+        <Header />
+        <LayoutContainer className="flex items-center h-screen">
+          <AccountPendingApproval />
+        </LayoutContainer>
+      </>
+    );
   }
 
   return <div {...rest}>{children}</div>;

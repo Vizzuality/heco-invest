@@ -7,8 +7,8 @@ export type ProtectedProps = React.PropsWithChildren<
   React.ComponentProps<'div'> & {
     /** User roles allowed */
     permissions: UserRoles[];
-    /** Allow just confirmed account users */
-    allowConfirmed?: boolean;
+    /** Allow unapproved account users. Defaults to 'false' */
+    allowUnapproved?: boolean;
     /** Allow for owner */
     ownership?: {
       /** Whether the user is required to be the owner/creator of the entity that the page displays. For example: project/[project-slug]/edit - must be the project owner. Default = 'false' */
