@@ -61,6 +61,10 @@ module.exports = {
         source: '/backend/:path*',
         destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/:path*`,
       },
+      {
+        source: '/project/:id/preview',
+        destination: '/project/:id?preview=true',
+      },
     ];
   },
   async redirects() {
