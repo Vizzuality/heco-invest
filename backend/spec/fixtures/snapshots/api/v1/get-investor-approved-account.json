@@ -1,6 +1,6 @@
 {
   "data": {
-    "id": "6ff598f1-be25-43f5-b2c6-c14a992de7d4",
+    "id": "f5ef9f47-47b7-4bda-967f-e151b8cddcf1",
     "type": "investor",
     "attributes": {
       "name": "Kutch-Spencer",
@@ -11,6 +11,8 @@
       "facebook": "https://facebook.com/kutch-spencer",
       "linkedin": "https://linkedin.com/kutch-spencer",
       "twitter": "https://twitter.com/kutch-spencer",
+      "mission": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+      "prioritized_projects_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
       "other_information": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
       "investor_type": "angel-investor",
       "categories": [
@@ -35,24 +37,22 @@
       ],
       "previously_invested": true,
       "language": "en",
+      "account_language": "en",
       "review_status": "approved",
+      "created_at": "2022-07-19T19:44:57.332Z",
       "contact_email": "contact@example.com",
       "contact_phone": "+57-1-xxx-xx-xx",
       "picture": {
-        "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxoT1RsbE1tRTFZeTFpTkRJMExUUm1NVGt0WVRBek1TMDJOekEyT1daak5EQmlOamNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--bb51c69d3107b6fec084afc89c9f4063e0b475da/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f7523a0d05ddde23c99aa6cff8205483f9bdcc69/picture.jpg",
-        "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxoT1RsbE1tRTFZeTFpTkRJMExUUm1NVGt0WVRBek1TMDJOekEyT1daak5EQmlOamNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--bb51c69d3107b6fec084afc89c9f4063e0b475da/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1d7560c2ca237061922fe1e35b43f845e8a5689a/picture.jpg",
-        "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxoT1RsbE1tRTFZeTFpTkRJMExUUm1NVGt0WVRBek1TMDJOekEyT1daak5EQmlOamNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--bb51c69d3107b6fec084afc89c9f4063e0b475da/picture.jpg"
+        "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxWTJVeU5XTXdZeTAyWVdFMExUUmxNR1l0WWpGbE5TMWxNVFk0TWpVM1pqTXhNVE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--2f6c5a47fbe7ee9b09548fc32cc76eea3d556f7b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1eb0cccee7522d208acd539788e1cc169cbbe2bf/picture.jpg",
+        "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxWTJVeU5XTXdZeTAyWVdFMExUUmxNR1l0WWpGbE5TMWxNVFk0TWpVM1pqTXhNVE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--2f6c5a47fbe7ee9b09548fc32cc76eea3d556f7b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--b9054379195e77680b08961676ba21361613fb9f/picture.jpg",
+        "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxWTJVeU5XTXdZeTAyWVdFMExUUmxNR1l0WWpGbE5TMWxNVFk0TWpVM1pqTXhNVE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--2f6c5a47fbe7ee9b09548fc32cc76eea3d556f7b/picture.jpg"
       },
-      "mission": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-      "prioritized_projects_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-      "favourite": false,
-      "created_at": "2022-06-21T11:30:06.817Z",
-      "account_language": "en"
+      "favourite": false
     },
     "relationships": {
       "owner": {
         "data": {
-          "id": "9c26727a-6253-4586-9db9-a05b1b072e81",
+          "id": "a813d922-b4d0-485c-9d75-c162771305dc",
           "type": "user"
         }
       }

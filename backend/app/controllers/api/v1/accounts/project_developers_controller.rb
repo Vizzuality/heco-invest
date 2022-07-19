@@ -3,6 +3,7 @@ module API
     module Accounts
       class ProjectDevelopersController < BaseController
         before_action :require_project_developer!, except: :create
+        around_action(only: [:show]) { |_controller, action| set_locale(current_user&.account&.language, &action) }
 
         def create
           current_user.with_lock do

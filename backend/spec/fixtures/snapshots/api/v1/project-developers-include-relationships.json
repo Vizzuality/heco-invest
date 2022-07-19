@@ -109,7 +109,7 @@
       "id": "656ab0e5-e118-4033-aaa6-73cccabfd5f3",
       "type": "project_developer",
       "attributes": {
-        "name": "Ritchie, Glover and Ward"
+        "name": "Lind, Langworth and Gottlieb"
       },
       "relationships": {
         "involved_projects": {
@@ -121,6 +121,20 @@
     },
     {
       "id": "5994b3a8-4f98-4585-b02e-ade1859cb1e1",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Ritchie, Glover and Ward"
+      },
+      "relationships": {
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "b40abf91-e283-4000-a212-6feee6a1f10c",
       "type": "project_developer",
       "attributes": {
         "name": "Runolfsson and Sons"
@@ -370,8 +384,8 @@
     "page": 1,
     "per_page": 10,
     "from": 1,
-    "to": 9,
-    "total": 9,
+    "to": 10,
+    "total": 10,
     "pages": 1
   },
   "links": {

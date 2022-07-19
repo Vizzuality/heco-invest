@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "id": "2de23c4b-e4e6-444f-9b04-b97865360496",
+      "id": "5cbb0bdf-b7f0-47f3-b7d9-af771777e177",
       "type": "investor",
       "attributes": {
         "instagram": "https://instagram.com/bartoletti-and-sons",
@@ -11,7 +11,7 @@
       }
     },
     {
-      "id": "c9bf1790-ce65-4a84-a2d2-4cace5d8fe96",
+      "id": "d1a7e23b-90ac-4ad1-a4a1-9d89c36f36ec",
       "type": "investor",
       "attributes": {
         "instagram": "https://instagram.com/becker-llc",
@@ -21,7 +21,17 @@
       }
     },
     {
-      "id": "fd14b13f-fb86-4bd2-bc08-ed13229a944b",
+      "id": "f4cfa157-4f59-4221-b6e3-179558045088",
+      "type": "investor",
+      "attributes": {
+        "instagram": "https://instagram.com/gleichner-bartoletti",
+        "facebook": "https://facebook.com/gleichner-bartoletti"
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "a317b704-2d11-45a7-a1ff-e4cfedea021f",
       "type": "investor",
       "attributes": {
         "instagram": "https://instagram.com/hane-lehner-and-goyette",
@@ -31,7 +41,7 @@
       }
     },
     {
-      "id": "3175d2d1-aa70-4df6-8f6c-f66c92f1ad4f",
+      "id": "46339a95-e04a-4daa-93ac-ee716540f0ce",
       "type": "investor",
       "attributes": {
         "instagram": "https://instagram.com/hilpert-waters-and-johnston",
@@ -41,7 +51,7 @@
       }
     },
     {
-      "id": "bfb4184f-a9d5-43d8-a028-3780c4ca5ee3",
+      "id": "2ac0c201-d51f-49fa-add8-af2ed00b508b",
       "type": "investor",
       "attributes": {
         "instagram": "https://instagram.com/jacobson-fritsch-and-stanton",
@@ -51,7 +61,7 @@
       }
     },
     {
-      "id": "da3810c6-2da6-4f01-b676-29aaeed2a768",
+      "id": "1d2ab397-eb2e-4110-9445-56c7d2e66647",
       "type": "investor",
       "attributes": {
         "instagram": "https://instagram.com/keebler-kub-and-zemlak",
@@ -61,7 +71,7 @@
       }
     },
     {
-      "id": "7902c074-dc4c-42b5-ba42-8c26e457af2b",
+      "id": "f5ef9f47-47b7-4bda-967f-e151b8cddcf1",
       "type": "investor",
       "attributes": {
         "instagram": "https://instagram.com/kutch-spencer",
@@ -75,8 +85,8 @@
     "page": 1,
     "per_page": 10,
     "from": 1,
-    "to": 7,
-    "total": 7,
+    "to": 8,
+    "total": 8,
     "pages": 1
   },
   "links": {
