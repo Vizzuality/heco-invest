@@ -20,8 +20,9 @@ export function useSignup(): UseMutationResult<
 > {
   const queryClient = useQueryClient();
   const signup = async (dto: SignupDto): Promise<AxiosResponse<SignupDto>> => {
+    const data = await API.post('/api/v1/user', dto);
     queryClient.invalidateQueries(Queries.User);
-    return await API.post('/api/v1/user', dto);
+    return data;
   };
   return useMutation(signup);
 }

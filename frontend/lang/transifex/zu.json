@@ -341,6 +341,9 @@
   "9cE0nR": {
     "string": "How is the impact calculated?"
   },
+  "9dtx+L": {
+    "string": "Something went wrong while sending an invitation to the email {email}."
+  },
   "9fHGyd": {
     "string": "Open verified project"
   },
@@ -442,6 +445,9 @@
   },
   "DCAMZh": {
     "string": "Choose the field to sort by"
+  },
+  "DHLi++": {
+    "string": "By signing up you will be automatically added to the {accountName} account. <a>How accounts work?</a>"
   },
   "DIA26W": {
     "string": "Create open call"
@@ -711,9 +717,6 @@
   "MXykbb": {
     "string": "The problem we are solving"
   },
-  "MZI6bG": {
-    "string": "You have been invited to join {accountName} account"
-  },
   "MZl85Y": {
     "string": "One more step to go"
   },
@@ -770,9 +773,6 @@
   },
   "Ow9MS8": {
     "string": "I want to find the right investment for my projects"
-  },
-  "OwLYPT": {
-    "string": "By accepting this invitation you will belong to {accountName} Project Developers’ account."
   },
   "P+9ug1": {
     "string": "We’ll help you reset it and get back on track."
@@ -845,6 +845,9 @@
   },
   "RDclSN": {
     "string": "Investor/Funder type"
+  },
+  "RUzNGu": {
+    "string": "By signing in you will be automatically added to the {accountName} account. <a>How accounts work?</a>"
   },
   "RXoqkD": {
     "string": "Mission"
@@ -984,9 +987,6 @@
   "WTuVeL": {
     "string": "Something went wrong while submitting your form. Please correct the errors before submitting again."
   },
-  "WXE4DJ": {
-    "string": "By signing in you will be automatically added to {accountName} account. <a>How accounts work?</a>"
-  },
   "WkrNSk": {
     "string": "English"
   },
@@ -1098,11 +1098,11 @@
   "ZjA6uH": {
     "string": "Welcome to HeCo Invest. Please enter your details below."
   },
-  "a+vAPa": {
-    "string": "Invitation mail"
-  },
   "Zt7DBA": {
     "string": "Priority landscapes of HeCo"
+  },
+  "a+vAPa": {
+    "string": "Invitation mail"
   },
   "a5msuh": {
     "string": "Yes"
@@ -1163,9 +1163,6 @@
   },
   "cT6b2H": {
     "string": "WWF"
-  },
-  "cWqW+j": {
-    "string": "By signing up you will be automatically added to {accountName} account. <a>How accounts work?</a>"
   },
   "ccXLVi": {
     "string": "Category"
@@ -1317,9 +1314,6 @@
   "hmK5Jb": {
     "string": "Close project details card"
   },
-  "hmY5tv": {
-    "string": "Something went wrong while sending invite to email {email}."
-  },
   "hpOE0K": {
     "string": "<a>Browse</a> or drag and drop"
   },
@@ -1343,6 +1337,9 @@
   },
   "iUt7so": {
     "string": "of the planet’s known biodiversity lives in the Amazon, the largest tropical rainforest on the planet."
+  },
+  "iZuO+L": {
+    "string": "Legend"
   },
   "iiVhlC": {
     "string": "insert phone number"
@@ -1391,6 +1388,9 @@
   },
   "jnYkhy": {
     "string": "The <n>IDB Lab</n>, the <n>Paulson Institute</n>, the <n>World Wildlife Fund</n>, the <n>Spanish Cooperation Fund</n>, the <n>Basque Center for Climate Change</n> and <n>Google</n> are joining forces to launch this platform which can later be deployed across all Amazonian countries."
+  },
+  "jvHO6d": {
+    "string": "By accepting this invitation you will belong to the {accountName} account."
   },
   "jvb6yi": {
     "string": "This is a global, wall-to-wall map of aboveground biomass (AGB) at approximately 30-meter resolution. This data product expands on the methodology presented in Baccini et al. (2012) to generate a global map of aboveground live woody biomass (AGB) density (megagrams biomass per ha) at 0.00025-degree (approximately 30-meter) resolution for the year 2000. Aboveground biomass was estimated using a multi-step process of calculating AGB at more than seven hundred thousand points with LiDAR with regional allometric equations, then using those to train a wall-to-wall model based on Landsat imagery. Pixels without tree canopy were assigned a biomass density of 0 Mg/ha."
@@ -1623,11 +1623,11 @@
   "saBdZ2": {
     "string": "select option"
   },
-  "sjzLbX": {
-    "string": "Accept"
-  },
   "sbodFR": {
     "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure <n>20 million hectares</n> of sustainable landscape over the next 20 years, through investments in <n>conservation and sustainable development</n>."
+  },
+  "sjzLbX": {
+    "string": "Accept"
   },
   "stKKFV": {
     "string": "What type of projects are you prioritizing?"
@@ -1841,6 +1841,9 @@
   },
   "ztd20l": {
     "string": "Development of the project"
+  },
+  "zxHx8B": {
+    "string": "You have been invited to join the {accountName} account"
   },
   "zyydTD": {
     "string": "Your account has been <b>approved</b>, your profile is now publicly visible."
