@@ -1,4 +1,4 @@
-import { useQueryClient, useMutation, UseMutationResult } from 'react-query';
+import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
 
 import { useRouter } from 'next/router';
 
@@ -6,7 +6,7 @@ import { AxiosResponse, AxiosError } from 'axios';
 
 import { Queries } from 'enums';
 import { ResetPassword } from 'types/sign-in';
-import { SignupDto, User, InviteUsersDto } from 'types/user';
+import { SignupDto, User } from 'types/user';
 
 import { ErrorResponse, ResponseData } from 'services/types';
 
@@ -18,8 +18,11 @@ export function useSignup(): UseMutationResult<
   SignupDto,
   unknown
 > {
+  const queryClient = useQueryClient();
   const signup = async (dto: SignupDto): Promise<AxiosResponse<SignupDto>> => {
-    return await API.post('/api/v1/user', dto);
+    const data = await API.post('/api/v1/user', dto);
+    queryClient.invalidateQueries(Queries.User);
+    return data;
   };
   return useMutation(signup);
 }
@@ -35,24 +38,3 @@ export const getCurrentUser = (): Promise<AxiosResponse<ResponseData<User>>> =>
     method: 'GET',
     url: '/api/v1/user',
   });
-
-/** Invite user to project developer account */
-// TODO: Replace endpoint by correct one
-export function useInviteUsers(): UseMutationResult<
-  AxiosResponse<User>,
-  AxiosError<ErrorResponse>,
-  InviteUsersDto
-> {
-  const { locale } = useRouter();
-  const inviteUsers = async (data: InviteUsersDto): Promise<AxiosResponse<User>> => {
-    return API.post('/api/v1/account/projects', data).then((response) => response.data);
-  };
-
-  const queryClient = useQueryClient();
-
-  return useMutation(inviteUsers, {
-    onSuccess: (result) => {
-      queryClient.setQueryData([Queries.User, locale], result.data);
-    },
-  });
-}

@@ -3,7 +3,7 @@ module API
     module Accounts
       class ProjectsController < BaseController
         before_action :require_project_developer!
-        before_action :fetch_project, only: [:update]
+        before_action :fetch_project, only: [:update, :destroy]
         load_and_authorize_resource
 
         def index
@@ -36,6 +36,11 @@ module API
             include: included_relationships,
             params: {current_user: current_user}
           ).serializable_hash
+        end
+
+        def destroy
+          @project.destroy!
+          head :ok
         end
 
         private
