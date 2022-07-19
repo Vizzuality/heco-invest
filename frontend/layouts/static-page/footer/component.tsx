@@ -9,12 +9,12 @@ import Link from 'next/link';
 
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
+import { Paths } from 'enums';
 
 import FacebookIcon from 'svgs/social/facebook.svg';
 import TwitterIcon from 'svgs/social/twitter.svg';
 
 import { FooterProps } from './types';
-import { Paths } from 'enums';
 
 export const Footer: React.FC<FooterProps> = ({
   props = {

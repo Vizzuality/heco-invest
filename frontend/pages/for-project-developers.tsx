@@ -290,7 +290,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
 ForProjectDevelopers.layout = {
   props: {
     footerProps: {
-      className: 'mt-0 sm:mt-24 lg:mt-0',
+      className: 'mt-0',
     },
   },
 };

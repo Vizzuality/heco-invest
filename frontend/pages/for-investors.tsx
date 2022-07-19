@@ -350,7 +350,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
 ForInvestorsPage.layout = {
   props: {
     footerProps: {
-      className: 'mt-0 sm:mt-24 lg:mt-0',
+      className: 'mt-0',
     },
   },
 };
