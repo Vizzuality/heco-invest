@@ -17,7 +17,9 @@ module API
       end
 
       def destroy
-        sign_out current_user
+        user = current_user
+        sign_out user
+        user.invalidate_session!
         head :ok
       end
     end

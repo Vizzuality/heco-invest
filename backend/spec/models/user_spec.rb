@@ -68,4 +68,15 @@ RSpec.describe User, type: :model do
       User::EMAIL_CONFIRMATION_LIMIT_PERIOD
     end
   end
+
+  describe "#invalidate_session!" do
+    let!(:user) { create :user }
+    let!(:token) { user.token }
+
+    before { user.invalidate_session! }
+
+    it "changes token" do
+      expect(user.reload.token).not_to eq(token)
+    end
+  end
 end
