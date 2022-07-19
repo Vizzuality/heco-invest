@@ -8,6 +8,9 @@
   "+mzZak": {
     "string": "About {name}"
   },
+  "+pH0Po": {
+    "string": "When you create your project profile, the platform's artificial intelligence engine will define the type of impact it will have for its geographical location and connect with suitable sources of support."
+  },
   "+vVZ/G": {
     "string": "Connect"
   },
@@ -64,6 +67,9 @@
   },
   "0PnfDn": {
     "string": "View public profile"
+  },
+  "0QW5LG": {
+    "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and <n>your team</n>."
   },
   "0SKBlf": {
     "string": "Go to page {pageNumber}"
@@ -272,6 +278,9 @@
   "7qB5i4": {
     "string": "As an Investor or Funder"
   },
+  "7rePKd": {
+    "string": "HeCo Invest takes you step-by-step through the presentation of your proposal and then intelligently connects you with the community and potential sources of support and funding."
+  },
   "7xE2Vv": {
     "string": "Illustration of a person looking at a tree"
   },
@@ -479,6 +488,9 @@
   "EKOV4Z": {
     "string": "Contextual Layers"
   },
+  "EOsYCo": {
+    "string": "Discover our current calls from investors. Apply with your project and receive funding."
+  },
   "EVKdUn": {
     "string": "Priority Landscape"
   },
@@ -675,6 +687,9 @@
   "KGREXT": {
     "string": "Total of projects"
   },
+  "KYymTZ": {
+    "string": "{quantity, plural, one {project} other {projects}}"
+  },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
   },
@@ -746,6 +761,9 @@
   },
   "NjKSap": {
     "string": "Online presence"
+  },
+  "NpcyZ1": {
+    "string": "Create an attractive project profile with well-defined attributes to intelligently connect with potential funders and investors."
   },
   "NsIwKY": {
     "string": "Leave create project develop?"
@@ -825,6 +843,9 @@
   "QI4yO9": {
     "string": "It is an area with a number of attributes related to heterogeneity that maintain the structure and ecological processes that characterize it as the Heart of the Amazon, it is also one of the most unique natural and cultural heritages in the national territory due to its exuberant cultural diversity."
   },
+  "QcPpQd": {
+    "string": "For Project Developers"
+  },
   "QlBsxM": {
     "string": "Google Cloud"
   },
@@ -854,6 +875,9 @@
   },
   "RXoqkD": {
     "string": "Mission"
+  },
+  "RyOOZR": {
+    "string": "Have access to all of the contacts of <n>Investors</n> and <n>Project Developers</n>. Easily reach and connect so you can find the best investment or partnership."
   },
   "S27Bu1": {
     "string": "<span>Note:</span>The content of this project should be written in {language}"
@@ -984,6 +1008,9 @@
   "WLDgff": {
     "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
   },
+  "WSvHHP": {
+    "string": "With an HeCo account you can have a public profile page, making it easier for Investors and other Project Developers to find and reach you."
+  },
   "WTuVeL": {
     "string": "Something went wrong while submitting your form. Please correct the errors before submitting again."
   },
@@ -1019,6 +1046,9 @@
   },
   "XQuzr9": {
     "string": "Identified priorities by the HeCo program"
+  },
+  "XUD4o/": {
+    "string": "HeCo Invest provides you with a range of resources <n>to help you grow</n> and have the greatest <n>impact in the Colombian Amazon</n>."
   },
   "Xf3dpi": {
     "string": "Toggle fullscreen mode"
@@ -1218,6 +1248,9 @@
   "e0c9xF": {
     "string": "insert the name of the investor/funder"
   },
+  "eItis6": {
+    "string": "Discover investors by budget/ticket size"
+  },
   "eM7TKf": {
     "string": "About the platform"
   },
@@ -1241,6 +1274,9 @@
   },
   "et2m37": {
     "string": "insert URL"
+  },
+  "eu+7Vl": {
+    "string": "Do you have a project or a start-up business in the Colombian Amazon?"
   },
   "fDd10o": {
     "string": "Instrument type"
@@ -1274,9 +1310,6 @@
   },
   "gF/kn9": {
     "string": "Contribute to protecting areas of greatest ecosystems diversity, conservation and restoration potential, degree of threat or protection for flora and fauna, landscape connectivity and degree of endemism."
-  },
-  "gbcj32": {
-    "string": "{projectsQuantity, plural, one {project} other {projects}}"
   },
   "ghj0+t": {
     "string": "Geographies"
@@ -1374,6 +1407,9 @@
   "jG0v72": {
     "string": "Email {email} is invalid."
   },
+  "jHyKQ2": {
+    "string": "Thanks to our <n>model ARIES</n>, an Artificial Intelligence tool, you can <n>reach investors</n> that are interested in your project and <n>learn how your activity impacts</n> the environment and your community."
+  },
   "jJYv/7": {
     "string": "This data set, a collaboration between the Global Land Analysis & Discovery (GLAD) lab at the University of Maryland, Google, USGS, and NASA, measures areas of tree cover loss across all global land (except Antarctica and other Arctic islands) at approximately 30 × 30 meter resolution. The data were generated using multispectral satellite imagery from the Landsat 5 thematic mapper (TM), the Landsat 7 thematic mapper plus (ETM+), and the Landsat 8 Operational Land Imager (OLI) sensors. Over 1 million satellite images were processed and analyzed, including over 600,000 Landsat 7 images for the 2000-2012 interval, and more than 400,000 Landsat 5, 7, and 8 images for updates for the 2011-2021 interval. The clear land surface observations in the satellite images were assembled and a supervised learning algorithm was applied to identify per pixel tree cover loss. In this data set, “tree cover” is defined as all vegetation greater than 5 meters in height, and may take the form of natural forests or plantations across a range of canopy densities. Tree cover loss is defined as “stand replacement disturbance,” or the complete removal of tree cover canopy at the Landsat pixel scale. Tree cover loss may be the result of human activities, including forestry practices such as timber harvesting or deforestation (the conversion of natural forest to other land uses), as well as natural causes such as disease or storm damage. Fire is another widespread cause of tree cover loss, and can be either natural or human-induced."
   },
@@ -1467,6 +1503,9 @@
   "mbTJWV": {
     "string": "Biodiversity"
   },
+  "mgsoLa": {
+    "string": "Looking for the highest impact?"
+  },
   "n0nU+Y": {
     "string": "Illustration of a person looking at a list of cards"
   },
@@ -1559,6 +1598,9 @@
   },
   "q6rG+e": {
     "string": "See projects"
+  },
+  "q7I+Bg": {
+    "string": "{quantity, plural, one {investor} other {investors}}"
   },
   "qFZuSl": {
     "string": "My projects"
@@ -1716,6 +1758,9 @@
   "vTJ8GJ": {
     "string": "SDG'S"
   },
+  "vViagZ": {
+    "string": "Discover investors by category"
+  },
   "vaWFzs": {
     "string": "What's your mission?"
   },
@@ -1727,6 +1772,9 @@
   },
   "wEQDC6": {
     "string": "Edit"
+  },
+  "wGWm2r": {
+    "string": "Find the support and ressources to grow your business or project"
   },
   "wQteLO": {
     "string": "Go to page {page}"
@@ -1790,6 +1838,9 @@
   },
   "xqjjPY": {
     "string": "As an Investor or <br></br> Funder"
+  },
+  "xupvNr": {
+    "string": "Have a public profile page"
   },
   "y1Z3or": {
     "string": "Language"

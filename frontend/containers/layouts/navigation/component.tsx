@@ -26,7 +26,7 @@ export const Navigation: FC<NavigationProps> = ({ className }: NavigationProps) 
             <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
           </a>
         </ActiveLink>
-        <ActiveLink href={Paths.ProjectDevelopers} activeClassName="font-semibold">
+        <ActiveLink href={Paths.ForProjectDevelopers} activeClassName="font-semibold">
           <a>
             <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
           </a>

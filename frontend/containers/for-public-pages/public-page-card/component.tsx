@@ -2,24 +2,27 @@ import { FC } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
-import { useRouter } from 'next/router';
+import cx from 'classnames';
 
 import { CategoryTagDot } from 'containers/category-tag';
 
 import Button from 'components/button';
 import Icon from 'components/icon';
 import { Paths } from 'enums';
+import { CategoryType } from 'types/category';
 
 import ArrowIcon from 'svgs/project/project-card-arrow.svg';
 
-import { ProjectCardProps } from './types';
+import { PublicPageCardProps } from './types';
 
-export const ProjectCard: FC<ProjectCardProps> = ({
+export const PublicPageCard: FC<PublicPageCardProps> = ({
   id,
   name,
   description,
-  projectsQuantity,
-  category,
+  quantity,
+  enumType,
+  cardType,
+  filterName,
 }) => {
   return (
     <div
@@ -28,7 +31,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
     >
       <div className="flex justify-between mb-2">
         <h3 className="font-serif text-xl font-bold xl:text-2xl max-w-[80%]">{name}</h3>
-        {!!category && <CategoryTagDot category={category} size="large" />}
+        {enumType === 'category' && <CategoryTagDot category={id as CategoryType} size="large" />}
       </div>
       <div>
         <p className="mb-4 text-sm text-gray-800 transition-all duration-500 md:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 ease">
@@ -37,16 +40,24 @@ export const ProjectCard: FC<ProjectCardProps> = ({
       </div>
       <div className="flex items-center justify-between">
         <p className="text-base text-gray-600">
-          <span className="font-bold text-black">{projectsQuantity}</span>{' '}
-          <FormattedMessage
-            defaultMessage="{projectsQuantity, plural, one {project} other {projects}}"
-            id="gbcj32"
-            values={{ projectsQuantity }}
-          />
+          <span className="font-bold text-black">{quantity}</span>{' '}
+          {cardType === 'projects' ? (
+            <FormattedMessage
+              defaultMessage="{quantity, plural, one {project} other {projects}}"
+              id="KYymTZ"
+              values={{ quantity }}
+            />
+          ) : (
+            <FormattedMessage
+              defaultMessage="{quantity, plural, one {investor} other {investors}}"
+              id="q7I+Bg"
+              values={{ quantity }}
+            />
+          )}
         </p>
         {/* The link is only for categories, since we don't have priority landscape filters */}
-        {!!category && (
-          <Button theme="naked" to={`${Paths.Discover}?filter[category]=${id}`}>
+        {!!filterName && (
+          <Button theme="naked" to={`${Paths.Discover}/${cardType}/?filter[${filterName}]=${id}`}>
             <span className="sr-only">
               <FormattedMessage defaultMessage="See projects" id="q6rG+e" />
             </span>
@@ -61,4 +72,4 @@ export const ProjectCard: FC<ProjectCardProps> = ({
   );
 };
 
-export default ProjectCard;
+export default PublicPageCard;
