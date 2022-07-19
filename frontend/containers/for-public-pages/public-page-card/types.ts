@@ -9,7 +9,7 @@ export type PublicPageCardProps = {
   name: string;
   // The description of the card.
   description: string;
-  // The quentity displayed in the card.
+  // The quantity displayed in the card.
   quantity: number;
   // The filter to add to the card link.
   filterName?: string;
