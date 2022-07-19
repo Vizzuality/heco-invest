@@ -32,6 +32,7 @@ export type MultiPageLayoutProps = PropsWithChildren<
     Pick<MultiPageLayoutHeaderProps, 'title' | 'onCloseClick' | 'leaveButtonText'> &
     Pick<
       MultiPageLayoutFooterProps,
+      | 'footerElements'
       | 'alert'
       | 'showProgressBar'
       | 'isSubmitting'

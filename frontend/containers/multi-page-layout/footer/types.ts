@@ -23,6 +23,8 @@ export interface MultiPageLayoutFooterProps {
   pagesWithErrors?: number[];
   /** Alert to display right above the footer */
   alert?: string | string[];
+  /** Allows us to pass custom elements to be displayed on the footer. (Eg: custom buttons) */
+  footerElements?: JSX.Element;
   /** Previous Button click callback */
   onPreviousClick?: () => void;
   /** Next Button click callback */

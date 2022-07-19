@@ -31,6 +31,7 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
   page: pageProp,
   children,
   autoNavigation = true,
+  footerElements,
   onPreviousClick = noop,
   onNextClick = noop,
   onPageClick = noop,
@@ -125,6 +126,7 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
           outroButtonText={outroButtonText}
           pagesWithErrors={pagesWithErrors}
           alert={alert}
+          footerElements={footerElements}
           onPreviousClick={handlePreviousClick}
           onNextClick={handleNextClick}
           onSubmitClick={onSubmitClick}

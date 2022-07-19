@@ -28,6 +28,7 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
   outroButtonText,
   pagesWithErrors = [],
   alert,
+  footerElements,
   onPreviousClick = noop,
   onNextClick = noop,
   onSubmitClick = noop,
@@ -72,7 +73,8 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
       )}
       <LayoutContainer>
         <div className="flex flex-row-reverse items-center justify-between w-full h-20 gap-x-8 md:gap-x-16">
-          <div className="flex justify-end flex-1">
+          <div className="flex justify-end flex-1 gap-3">
+            {footerElements}
             {!showOutro &&
               (isLastPage ? (
                 <Button
