@@ -306,5 +306,46 @@ RSpec.describe "API V1 Account Projects", type: :request do
         end
       end
     end
+
+    delete "Delete existing project of User" do
+      tags "Projects"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :id, in: :path, type: :string, description: "Use project ID or slug"
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
+
+      let(:user) { create :user, :project_developer }
+      let!(:project) { create :project, project_developer: create(:project_developer, account: create(:account, owner: user)) }
+      let(:id) { project.id }
+
+      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+      it_behaves_like "with not found error", csrf: true, user: -> { user }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
+
+      response "200", :success do
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before { sign_in user }
+
+        it "removes project" do |example|
+          expect {
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
+          }.to change(Project, :count).by(-1)
+        end
+
+        context "when slug is used" do
+          let(:id) { project.slug }
+
+          it "removes project" do |example|
+            expect {
+              submit_request example.metadata
+              assert_response_matches_metadata example.metadata
+            }.to change(Project, :count).by(-1)
+          end
+        end
+      end
+    end
   end
 end
