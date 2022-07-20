@@ -19,7 +19,8 @@ import { SeachAutoSuggestionProps } from './types';
 
 export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
   searchText,
-  onChangeOpenSuggestion,
+  onChangeShowSuggestion,
+  showSuggestion,
 }) => {
   const [autoSuggestions, setAutoSuggestions] = useState<Enum[]>();
   const { data, isLoading } = useEnums();
@@ -37,9 +38,17 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
   }, [isLoading]);
 
   const closeSuggestions = useCallback(() => {
-    onChangeOpenSuggestion(false);
+    onChangeShowSuggestion(false);
     setAutoSuggestions(undefined);
-  }, [onChangeOpenSuggestion]);
+  }, [onChangeShowSuggestion]);
+
+  useEffect(() => {
+    if (searchText?.length < 1) {
+      onChangeShowSuggestion(true);
+    } else {
+      onChangeShowSuggestion(false);
+    }
+  }, [searchText]);
 
   useEffect(() => {
     if (searchText.length > 1) {
@@ -53,14 +62,13 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
             : 1;
         });
       if (filtersToSuggest?.length) {
-        onChangeOpenSuggestion(true);
         setAutoSuggestions(filtersToSuggest);
         return;
       }
       closeSuggestions();
     }
     closeSuggestions();
-  }, [closeSuggestions, filters, onChangeOpenSuggestion, searchText]);
+  }, [closeSuggestions, filters, onChangeShowSuggestion, searchText]);
 
   const handleFilter = (filter: Enum) => {
     const filterKey = `filter[${filter.type}]`;
@@ -110,7 +118,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
       className={cx(
         'h-0 w-full bg-white -mt-1 rounded-b-4xl drop-shadow-xl transition-all ease-in',
         {
-          'h-fit border-t-gray-200 border-t-2 overflow-hidden': !!autoSuggestions,
+          'h-fit border-t-gray-200 border-t-2 overflow-hidden': !!autoSuggestions && showSuggestion,
         }
       )}
     >

@@ -1,5 +1,14 @@
+import { SubmitHandler } from 'react-hook-form';
+
 export type FiltersProps = {
+  /** Function that closes the filters  */
   closeFilters: () => void;
+  /** Filters input values */
+  filtersInputValue: Partial<FilterForm>;
+  /** Function to set the filters values */
+  setFiltersInputValue: (filtersInputValue: Partial<FilterForm>) => void;
+  /** Function that adds the filters to the query params  */
+  onSubmitFilters: (filters: Partial<FilterForm>) => void;
 };
 
 export type FilterParams = {
