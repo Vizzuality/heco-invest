@@ -3,7 +3,9 @@ class AdminMailer < ApplicationMailer
     @admin = admin
     @token = set_reset_password_token admin
 
-    mail to: admin.email
+    I18n.with_locale admin.ui_language do
+      mail to: admin.email
+    end
   end
 
   private

@@ -79,4 +79,24 @@ RSpec.describe User, type: :model do
       expect(user.reload.token).not_to eq(token)
     end
   end
+
+  describe "#locale" do
+    let(:user) { create :user, ui_language: "en" }
+
+    context "when user have account" do
+      let(:account) { create :account, language: "pt" }
+
+      before { user.update! account: account }
+
+      it "returns account language" do
+        expect(user.locale).to eq("pt")
+      end
+    end
+
+    context "when user does not have account" do
+      it "returns ui_language" do
+        expect(user.locale).to eq("en")
+      end
+    end
+  end
 end
