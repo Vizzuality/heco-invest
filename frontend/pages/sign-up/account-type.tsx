@@ -32,7 +32,7 @@ const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = () => {
   };
 
   return (
-    <ProtectedPage permissions={[UserRoles.Light]}>
+    <ProtectedPage allowUnapproved permissions={[UserRoles.Light]}>
       <Head
         title={intl.formatMessage({
           defaultMessage: 'Choose your account type',

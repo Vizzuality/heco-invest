@@ -49,7 +49,7 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
   };
 
   return (
-    <ProtectedPage permissions={[UserRoles.Light]}>
+    <ProtectedPage allowUnapproved permissions={[UserRoles.Light]}>
       <ProjectDeveloperForm
         title={formatMessage({ defaultMessage: 'Setup project developer’s account', id: 'bhxvPM' })}
         leaveMessage={formatMessage({
