@@ -91,7 +91,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({
     );
   };
 
-  const onComplete = () => {
+  const handleOnComplete = () => {
     router.push(queryReturnPath || Paths.DashboardProjects);
   };
 
@@ -110,7 +110,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({
           id: 'vygPIS',
         })}
         mutation={updateProject}
-        onComplete={onComplete}
+        onComplete={handleOnComplete}
         initialValues={project}
         isLoading={isFetchingProject}
         enums={enums}

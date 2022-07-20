@@ -3,9 +3,7 @@ import { FC, useCallback, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { useRouter } from 'next/router';
-
-import { getServiceErrors, useGetAlert, useQueryReturnPath, useLanguageNames } from 'helpers/pages';
+import { getServiceErrors, useGetAlert, useLanguageNames } from 'helpers/pages';
 
 import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import LeaveFormModal from 'containers/leave-form-modal';
@@ -13,7 +11,7 @@ import MultiPageLayout, { OutroPage, Page } from 'containers/multi-page-layout';
 
 import Button from 'components/button';
 import Head from 'components/head';
-import { Paths, ProjectStatus } from 'enums';
+import { ProjectStatus } from 'enums';
 import {
   ProjectCreationPayload,
   ProjectForm as ProjectFormType,
@@ -53,8 +51,6 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   const [projectSlug, setProjectSlug] = useState<string>();
   const resolver = useProjectValidation(currentPage);
   const updateProject = useUpdateProject();
-  const queryReturnPath = useQueryReturnPath();
-  const router = useRouter();
   const { userAccount } = useAccount();
   const {
     category,
@@ -98,12 +94,26 @@ export const ProjectForm: FC<ProjectFormProps> = ({
           fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
           errorPages.length && setCurrentPage(errorPages[0]);
         },
-        onSuccess: () => {
-          onComplete?.();
+        onSuccess: ({
+          data: {
+            data: { slug, status, trusted },
+          },
+        }) => {
+          // If the user is saving the project as a draft, they aren't publishing it and it won't
+          // be visible in the administration area either. If they are publishing it now, we make
+          // a check to verify whether the project has been verified before. If so, it's already been
+          // verified and doesn't make sense to display the "Pending approval" screen. If not, then
+          // we show the screen.
+          if (status === ProjectStatus.Published && trusted !== true) {
+            setCurrentPage(currentPage + 1);
+            setProjectSlug(slug);
+          } else {
+            onComplete();
+          }
         },
       });
     },
-    [updateProject, onComplete, setError]
+    [updateProject, setError, currentPage, onComplete]
   );
 
   const handleCreate = useCallback(
@@ -128,13 +138,24 @@ export const ProjectForm: FC<ProjectFormProps> = ({
           fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
           errorPages.length && setCurrentPage(errorPages[0]);
         },
-        onSuccess: (result) => {
-          setCurrentPage(currentPage + 1);
-          setProjectSlug(result.data.data.slug);
+        onSuccess: ({
+          data: {
+            data: { slug, status },
+          },
+        }) => {
+          // If the user is publishing on creation, we have to display the
+          // "Project pending approval" screen. If not we don't need to, because
+          // the project is not published and the admins can't see it either.
+          if (status === ProjectStatus.Published) {
+            setCurrentPage(currentPage + 1);
+            setProjectSlug(slug);
+          } else {
+            onComplete();
+          }
         },
       });
     },
-    [currentPage, mutation, setError]
+    [currentPage, mutation, onComplete, setError]
   );
 
   const onSubmit: SubmitHandler<ProjectFormType> = (values: ProjectFormType) => {
@@ -203,7 +224,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   };
 
   const contentLocale = defaultValues?.language || userAccount?.language;
-  const isOutroPage = isCreateForm && currentPage === totalPages;
+  const isOutroPage = currentPage === totalPages;
 
   return (
     <>
@@ -221,9 +242,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
-        onCloseClick={() =>
-          isOutroPage ? router.push(queryReturnPath || Paths.Dashboard) : setShowLeave(true)
-        }
+        onCloseClick={() => (isOutroPage ? onComplete() : setShowLeave(true))}
         onSubmitClick={handleSubmitPublish}
         isLoading={isLoading}
         footerElements={
@@ -324,7 +343,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
       <LeaveFormModal
         isOpen={showLeave}
         close={() => setShowLeave(false)}
-        handleLeave={() => router.push(queryReturnPath || Paths.Dashboard)}
+        handleLeave={onComplete}
         title={leaveMessage}
       />
     </>
