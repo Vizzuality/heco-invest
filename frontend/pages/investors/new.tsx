@@ -53,7 +53,7 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
   };
 
   return (
-    <ProtectedPage permissions={[UserRoles.Light]}>
+    <ProtectedPage allowUnapproved permissions={[UserRoles.Light]}>
       <InvestorForm
         title={formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })}
         leaveMessage={formatMessage({
