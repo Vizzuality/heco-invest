@@ -20,6 +20,7 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
   title,
   locale,
   isLoading = false,
+  siteHeader = false,
   showProgressBar = true,
   isSubmitting = false,
   showOutro = false,
@@ -111,6 +112,7 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
       <MultiPageLayoutHeader
         title={title}
         locale={locale}
+        siteHeader={siteHeader}
         leaveButtonText={leaveButtonText}
         onCloseClick={onCloseClick}
       />

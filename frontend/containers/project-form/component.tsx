@@ -239,6 +239,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         alert={useGetAlert(updateProject.error)}
         isSubmitting={updateProject.isLoading}
         showOutro={isOutroPage}
+        siteHeader={isOutroPage}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar

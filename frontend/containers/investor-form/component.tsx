@@ -126,6 +126,7 @@ const InvestorForm: FC<InvestorFormProps> = ({
         alert={alert}
         isSubmitting={mutation.isLoading}
         showOutro={isOutroPage}
+        siteHeader={isOutroPage}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar

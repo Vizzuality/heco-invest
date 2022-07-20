@@ -9,17 +9,21 @@ import { noop } from 'lodash-es';
 
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
+import Header from 'layouts/static-page/header';
 
 import { MultiPageLayoutHeaderProps } from './types';
 
 export const MultiPageLayoutHeader: React.FC<MultiPageLayoutHeaderProps> = ({
   className,
   title,
+  siteHeader = false,
   locale,
   leaveButtonText,
   onCloseClick = noop,
 }: MultiPageLayoutHeaderProps) => {
   const intl = useIntl();
+
+  if (siteHeader) return <Header />;
 
   return (
     <header

@@ -132,6 +132,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
         alert={alert}
         isSubmitting={mutation.isLoading}
         showOutro={isOutroPage}
+        siteHeader={isOutroPage}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
