@@ -69,14 +69,24 @@
       },
       "relationships": {
       }
+    },
+    {
+      "id": "18197ca4-66b8-44b8-bdc7-a44b24d55009",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 9",
+        "description": "Description EN"
+      },
+      "relationships": {
+      }
     }
   ],
   "meta": {
     "page": 1,
     "per_page": 10,
     "from": 1,
-    "to": 7,
-    "total": 7,
+    "to": 8,
+    "total": 8,
     "pages": 1
   },
   "links": {

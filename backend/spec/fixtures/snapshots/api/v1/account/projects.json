@@ -69,7 +69,8 @@
         "longitude": 1.0,
         "favourite": false,
         "created_at": "2022-06-27T09:04:33.005Z",
-        "status": "draft"
+        "status": "draft",
+        "account_language": "en"
       },
       "relationships": {
         "project_developer": {
@@ -180,7 +181,8 @@
         "longitude": 1.0,
         "favourite": false,
         "created_at": "2022-06-27T09:04:32.944Z",
-        "status": "published"
+        "status": "published",
+        "account_language": "en"
       },
       "relationships": {
         "project_developer": {
@@ -291,7 +293,8 @@
         "priority_landscape_total_impact": null,
         "latitude": 2.0,
         "longitude": 1.0,
-        "favourite": false
+        "favourite": false,
+        "account_language": "en"
       },
       "relationships": {
         "project_developer": {

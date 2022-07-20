@@ -10,6 +10,7 @@ import Menu, { MenuItem, MenuSection } from 'components/menu';
 import { Paths } from 'enums';
 
 import { useAccount } from 'services/account';
+import { useSignOut } from 'services/authentication/authService';
 
 import { NavigationMenuButtonProps } from './types';
 
@@ -20,18 +21,30 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
   const router = useRouter();
   const intl = useIntl();
   const { user, userAccount: account } = useAccount();
+  const signOut = useSignOut();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
   const onClickMenuItem = useCallback(
     (key) => {
       switch (key) {
+        case Paths.SignOut:
+          signOut.mutate(
+            {},
+            {
+              onSuccess: () => {
+                router.push(Paths.Home);
+              },
+            }
+          );
+          break;
+
         default:
           router.push(key);
           break;
       }
     },
-    [router]
+    [router, signOut]
   );
 
   return (

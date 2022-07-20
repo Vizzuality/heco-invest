@@ -18,7 +18,8 @@
       "closing_at": "2023-01-15T11:45:07.390Z",
       "language": "en",
       "trusted": false,
-      "created_at": "2022-06-24T09:07:24.094Z"
+      "created_at": "2022-06-24T09:07:24.094Z",
+      "account_language": "en"
     },
     "relationships": {
       "investor": {

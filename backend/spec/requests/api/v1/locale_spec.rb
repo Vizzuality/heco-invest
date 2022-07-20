@@ -4,6 +4,7 @@ RSpec.describe "API V1 Locale Param", type: :request do
   let_it_be(:investor) {
     create(
       :investor,
+      account: create(:account, language: "pt"),
       other_information_en: "Other Information en",
       other_information_es: nil,
       other_information_pt: nil,
@@ -16,9 +17,9 @@ RSpec.describe "API V1 Locale Param", type: :request do
   context "no locale" do
     before(:each) { get "/api/v1/investors/#{investor.id}" }
 
-    it "should return default locale" do
+    it "should return account locale" do
       expect(response).to have_http_status(:ok)
-      expect(response_json["data"]["attributes"]["mission"]).to eq("Mission en")
+      expect(response_json["data"]["attributes"]["mission"]).to eq("Mission pt")
     end
   end
 
@@ -39,9 +40,9 @@ RSpec.describe "API V1 Locale Param", type: :request do
   context "invalid locale" do
     before(:each) { get "/api/v1/investors/#{investor.id}?locale=invalid" }
 
-    it "should return default locale" do
+    it "should return account locale" do
       expect(response).to have_http_status(:ok)
-      expect(response_json["data"]["attributes"]["mission"]).to eq("Mission en")
+      expect(response_json["data"]["attributes"]["mission"]).to eq("Mission pt")
     end
   end
 end
