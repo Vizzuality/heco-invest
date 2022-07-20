@@ -83,6 +83,27 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     defaultValues,
   });
 
+  const handleCompletion = useCallback(
+    ({
+      data: {
+        data: { slug, status, trusted },
+      },
+    }) => {
+      // If the user is saving the project as a draft, they aren't publishing it and it won't
+      // be visible in the administration area either. If they are publishing it now, we make
+      // a check to verify whether the project has been verified before. If so, it's already been
+      // verified and doesn't make sense to display the "Pending approval" screen. If not, then
+      // we show the screen.
+      if (status === ProjectStatus.Published && trusted !== true) {
+        setCurrentPage(currentPage + 1);
+        setProjectSlug(slug);
+      } else {
+        onComplete();
+      }
+    },
+    [currentPage, onComplete]
+  );
+
   const handleUpdate = useCallback(
     (formData: ProjectUpdatePayload) => {
       return updateProject.mutate(formData, {
@@ -94,26 +115,10 @@ export const ProjectForm: FC<ProjectFormProps> = ({
           fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
           errorPages.length && setCurrentPage(errorPages[0]);
         },
-        onSuccess: ({
-          data: {
-            data: { slug, status, trusted },
-          },
-        }) => {
-          // If the user is saving the project as a draft, they aren't publishing it and it won't
-          // be visible in the administration area either. If they are publishing it now, we make
-          // a check to verify whether the project has been verified before. If so, it's already been
-          // verified and doesn't make sense to display the "Pending approval" screen. If not, then
-          // we show the screen.
-          if (status === ProjectStatus.Published && trusted !== true) {
-            setCurrentPage(currentPage + 1);
-            setProjectSlug(slug);
-          } else {
-            onComplete();
-          }
-        },
+        onSuccess: handleCompletion,
       });
     },
-    [updateProject, setError, currentPage, onComplete]
+    [updateProject, handleCompletion, setError]
   );
 
   const handleCreate = useCallback(
@@ -138,24 +143,10 @@ export const ProjectForm: FC<ProjectFormProps> = ({
           fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
           errorPages.length && setCurrentPage(errorPages[0]);
         },
-        onSuccess: ({
-          data: {
-            data: { slug, status },
-          },
-        }) => {
-          // If the user is publishing on creation, we have to display the
-          // "Project pending approval" screen. If not we don't need to, because
-          // the project is not published and the admins can't see it either.
-          if (status === ProjectStatus.Published) {
-            setCurrentPage(currentPage + 1);
-            setProjectSlug(slug);
-          } else {
-            onComplete();
-          }
-        },
+        onSuccess: handleCompletion,
       });
     },
-    [currentPage, mutation, onComplete, setError]
+    [handleCompletion, mutation, setError]
   );
 
   const onSubmit: SubmitHandler<ProjectFormType> = (values: ProjectFormType) => {
