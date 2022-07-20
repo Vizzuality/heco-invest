@@ -59,7 +59,7 @@ export const ProjectLegend: FC<ProjectLegendProps> = ({ className }: ProjectLege
           aria-hidden={true}
           icon={ChevronDownIcon}
           className={cx({
-            'w-4.5 h-4.5 text-gray-600 shrink-0 transition duration-500': true,
+            'w-4.5 h-4.5 text-gray-800 shrink-0 transition duration-500': true,
             '-scale-y-100': !active,
           })}
         />
