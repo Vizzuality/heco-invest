@@ -41,10 +41,6 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
   }, [search]);
 
   useEffect(() => {
-    setShowSuggestions(searchInputValue?.length > 1);
-  }, [searchInputValue]);
-
-  useEffect(() => {
     const filterInputs: Partial<FilterForm> = {};
 
     Object.entries(filters).forEach(([key, value]) => {
@@ -78,6 +74,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
 
   const handleChangeSearchInput = (e: SyntheticEvent<HTMLInputElement>) => {
     setSearchInputValue(e.currentTarget.value);
+    setShowSuggestions(searchInputValue?.length > 1);
   };
 
   const getFilterParams = (filters: Partial<FilterForm>) => {
@@ -195,12 +192,10 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
           id="filters"
           role="region"
           aria-labelledby="filters-button"
-          className={cx(
-            'h-0 w-full bg-white rounded-b-4xl drop-shadow-xl transition-all ease-in overflow-hidden',
-            {
-              'h-fit border-t-gray-200 border-t-2 overflow-hidden': openFilters,
-            }
-          )}
+          className={cx('w-full bg-white rounded-b-4xl drop-shadow-xl transition-all ease-in', {
+            'h-fit border-t-gray-200 border-t-2 overflow-hidden': openFilters,
+            'h-0 border-none overflow-hidden': !openFilters,
+          })}
         >
           {openFilters && (
             <Filters
@@ -217,6 +212,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
             searchText={searchInputValue}
             onFilterSuggestion={handleFilterSuggestion}
             onSearchSuggestion={handleSearchSuggestion}
+            showSuggestion={showSuggestion}
           />
         )}
       </div>

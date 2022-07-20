@@ -5,4 +5,5 @@ export type SeachAutoSuggestionProps = {
   closeSuggestions: () => void;
   onFilterSuggestion: (filter: Enum) => void;
   onSearchSuggestion: () => void;
+  showSuggestion: boolean;
 };

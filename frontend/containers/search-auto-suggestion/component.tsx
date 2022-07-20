@@ -18,6 +18,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
   closeSuggestions,
   onFilterSuggestion,
   onSearchSuggestion,
+  showSuggestion,
 }) => {
   const [autoSuggestions, setAutoSuggestions] = useState<Enum[]>();
   const { data, isLoading } = useEnums();
@@ -31,7 +32,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
     }
   }, [isLoading]);
 
-  const onCloseSuggestions = useCallback(() => {
+  const handleCloseSuggestions = useCallback(() => {
     closeSuggestions();
     setAutoSuggestions(undefined);
   }, [closeSuggestions]);
@@ -52,7 +53,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
         return;
       }
     }
-    closeSuggestions();
+    handleCloseSuggestions();
   }, [closeSuggestions, filters, searchText]);
 
   return (
@@ -61,11 +62,11 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
       role="region"
       aria-labelledby="filters-button"
       className={cx('w-full bg-white -mt-1 rounded-b-4xl drop-shadow-xl transition-all ease-in', {
-        'h-fit border-t-gray-200 border-t-2': !!autoSuggestions?.length,
-        'h-0 overflow-hidden': !autoSuggestions?.length,
+        'h-fit border-t-gray-200 border-t-2': showSuggestion,
+        'h-0 overflow-hidden': !showSuggestion,
       })}
     >
-      {!!autoSuggestions?.length && (
+      {showSuggestion && (
         <div className="py-5 px-9">
           <div>
             <Button key="custom" theme="naked" className="px-0 py-2" onClick={onSearchSuggestion}>
@@ -75,23 +76,30 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
               </span>
             </Button>
           </div>
-          <div>
-            <p className="py-2 text-sm text-gray-800">
-              <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
-            </p>
-          </div>
-          <div className="flex flex-col">
-            {autoSuggestions.map((item) => (
-              <Button
-                key={item.id}
-                theme="naked"
-                className="px-0"
-                onClick={() => onFilterSuggestion(item)}
-              >
-                {item.name}
-                <span className="ml-2 text-gray-600">{filterNames[item.type]}</span>
-              </Button>
-            ))}
+          <div
+            className={cx('overflow-hidden', {
+              'h-0': !autoSuggestions?.length,
+              'h-auto': autoSuggestions?.length,
+            })}
+          >
+            <div>
+              <p className="py-2 text-sm text-gray-800">
+                <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
+              </p>
+            </div>
+            <div className="flex flex-col">
+              {autoSuggestions?.map((item) => (
+                <Button
+                  key={item.id}
+                  theme="naked"
+                  className="px-0"
+                  onClick={() => onFilterSuggestion(item)}
+                >
+                  {item.name}
+                  <span className="ml-2 text-gray-600">{filterNames[item.type]}</span>
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
       )}
