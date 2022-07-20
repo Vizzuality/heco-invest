@@ -1,5 +1,8 @@
+import { Enum } from 'types/enums';
+
 export type SeachAutoSuggestionProps = {
   searchText?: string;
-  onChangeShowSuggestion: (open: boolean) => void;
-  showSuggestion: boolean;
+  closeSuggestions: () => void;
+  onFilterSuggestion: (filter: Enum) => void;
+  onSearchSuggestion: () => void;
 };

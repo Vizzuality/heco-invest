@@ -15,6 +15,7 @@ import SearchAutoSuggestion from 'containers/search-auto-suggestion';
 
 import Button from 'components/button';
 import Icon from 'components/icon';
+import { Enum } from 'types/enums';
 
 import { DiscoverSearchProps } from './types';
 
@@ -22,33 +23,39 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
   className,
   searchButtonText = <FormattedMessage defaultMessage="Search" id="xmcVZ0" />,
 }) => {
-  const [openFilters, setOpenFilters] = useState(false);
-  const [openSuggestions, setOpenSuggestions] = useState(false);
   const { formatMessage } = useIntl();
-
-  const [searchInputValue, setSearchInputValue] = useState<string>('');
-  const [filtersInputValue, setFiltersInputValue] = useState<Partial<FilterForm>>({});
-  const { search, sorting, page, ...filters } = useQueryParams();
   const { push } = useRouter();
+  const { search, sorting, page, ...filters } = useQueryParams();
   const pathname = useDiscoverPath();
 
+  const [openFilters, setOpenFilters] = useState(false);
+  const [filtersInputValue, setFiltersInputValue] = useState<Partial<FilterForm>>({});
   const filtersQuantity = useMemo(() => Object.keys(filters)?.length, [filters]);
+
+  const [showSuggestion, setShowSuggestions] = useState(false);
+
+  const [searchInputValue, setSearchInputValue] = useState<string>('');
+
   useEffect(() => {
     setSearchInputValue(search);
   }, [search]);
 
   useEffect(() => {
+    setShowSuggestions(searchInputValue?.length > 1);
+  }, [searchInputValue]);
+
+  useEffect(() => {
+    const filterInputs: Partial<FilterForm> = {};
+
     Object.entries(filters).forEach(([key, value]) => {
       // Change the filter param name to the form input name
       const filterName = key.replace('filter[', '').replace(']', '');
-
       const filterValue = filterName === 'only_verified' ? JSON.parse(value) : value;
 
-      setFiltersInputValue({
-        ...filtersInputValue,
-        [filterName]: filterValue,
-      });
+      filterInputs[filterName] = filterValue;
     });
+    setFiltersInputValue(filterInputs);
+    setShowSuggestions(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -66,6 +73,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
     e.preventDefault();
     const filterParams = getFilterParams(filtersInputValue);
     handleSearch(searchInputValue, filterParams);
+    setShowSuggestions(false);
   };
 
   const handleChangeSearchInput = (e: SyntheticEvent<HTMLInputElement>) => {
@@ -88,23 +96,41 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
     const filterParams = getFilterParams(filters);
     handleSearch(searchInputValue, filterParams);
     setOpenFilters(false);
+    setShowSuggestions(false);
+  };
+
+  const handleFilterSuggestion = (filter: Enum) => {
+    const filterKey = `filter[${filter.type}]`;
+    handleSearch('', { ...filters, [filterKey]: filter.id });
+    setFiltersInputValue({ ...filtersInputValue, [filter.type]: filter.id });
+    setShowSuggestions(false);
+    setSearchInputValue('');
+  };
+
+  const handleSearchSuggestion = () => {
+    handleSearch(searchInputValue, filters);
+    setShowSuggestions(false);
   };
 
   return (
     <div className={className}>
       <div
         className={cx('z-10 relative w-full sm:h-16 text-black bg-white border drop-shadow-xl', {
-          'rounded-full': !openFilters && !openSuggestions,
-          'rounded-t-4xl': openFilters || openSuggestions,
+          'rounded-full': !openFilters && !showSuggestion,
+          'rounded-t-4xl': openFilters || showSuggestion,
         })}
       >
-        <div className="flex items-center justify-between px-6 py-3 sm:gap-4">
+        <div
+          className={cx('flex items-center justify-between px-6 py-3 sm:gap-4', {
+            'py-4': openFilters || showSuggestion,
+          })}
+        >
           <form
             role="search"
             className="flex flex-col items-center justify-end w-full h-full gap-1 sm:justify-between sm:gap-3 sm:flex-row"
             onSubmit={handleSubmitSearch}
           >
-            <div className="flex items-center w-full gap-2">
+            <div className="flex items-center gap-2 flex-grow">
               <Icon
                 aria-hidden={true}
                 icon={SearchIcon}
@@ -127,9 +153,9 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
             </div>
             <div
               className={cx(
-                'flex items-center gap-4 sm:gap-6 sm:justify-self-end transition-all ease-in-out duration-300',
+                'flex items-center gap-4 sm:gap-6 sm:justify-self-end transition-all ease-in-out duration-300 flex-grow-0',
                 {
-                  'w-0 overflow-hidden opacity-0': openFilters,
+                  'w-0 h-0 overflow-hidden opacity-0': openFilters,
                   'w-auto opacity-100': !openFilters,
                 }
               )}
@@ -170,7 +196,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
           role="region"
           aria-labelledby="filters-button"
           className={cx(
-            'h-0 w-full bg-white -mt-1 rounded-b-4xl drop-shadow-xl transition-all ease-in',
+            'h-0 w-full bg-white rounded-b-4xl drop-shadow-xl transition-all ease-in overflow-hidden',
             {
               'h-fit border-t-gray-200 border-t-2 overflow-hidden': openFilters,
             }
@@ -185,11 +211,12 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
             />
           )}
         </div>
-        {!openFilters && (
+        {!openFilters && showSuggestion && (
           <SearchAutoSuggestion
-            onChangeShowSuggestion={setOpenSuggestions}
+            closeSuggestions={() => setShowSuggestions}
             searchText={searchInputValue}
-            showSuggestion={openSuggestions}
+            onFilterSuggestion={handleFilterSuggestion}
+            onSearchSuggestion={handleSearchSuggestion}
           />
         )}
       </div>
