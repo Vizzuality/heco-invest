@@ -8,7 +8,7 @@
   </h2>
 
   <%= f.simple_fields_for :account do |ff|  %>
-    <%= ff.input :picture %>
+    <%= render "image_with_thumbnail", f: ff, blob: :picture %>
   <% end %>
   <div class="grid grid-cols-2 gap-4">
     <%= f.simple_fields_for :account do |ff|  %>

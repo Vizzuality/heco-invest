@@ -183,6 +183,7 @@ RSpec.describe "Backoffice: Investors", type: :system do
           expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.investor")))
           approved_investor.reload
           expect(approved_investor.account.picture.filename.to_s).to eq("picture_2.jpg")
+          expect(page).to have_css "form a img", count: 1
           expect(approved_investor.account.name).to eq("New profile name")
           expect(approved_investor.investor_type).to eq("angel-investor")
           expect(approved_investor.account.about).to eq("New about description")
