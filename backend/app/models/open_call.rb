@@ -18,6 +18,8 @@ class OpenCall < ApplicationRecord
 
   translates :name, :description, :money_distribution, :impact_description
 
+  delegate :account_language, to: :investor, allow_nil: true
+
   def investor_prefixed_name
     "#{investor&.name} #{original_name}"
   end

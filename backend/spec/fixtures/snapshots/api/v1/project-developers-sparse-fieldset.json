@@ -74,6 +74,16 @@
       "id": "656ab0e5-e118-4033-aaa6-73cccabfd5f3",
       "type": "project_developer",
       "attributes": {
+        "instagram": "https://instagram.com/lind-langworth-and-gottlieb",
+        "facebook": "https://facebook.com/lind-langworth-and-gottlieb"
+      },
+      "relationships": {
+      }
+    },
+    {
+      "id": "5994b3a8-4f98-4585-b02e-ade1859cb1e1",
+      "type": "project_developer",
+      "attributes": {
         "instagram": "https://instagram.com/ritchie-glover-and-ward",
         "facebook": "https://facebook.com/ritchie-glover-and-ward"
       },
@@ -81,7 +91,7 @@
       }
     },
     {
-      "id": "5994b3a8-4f98-4585-b02e-ade1859cb1e1",
+      "id": "b40abf91-e283-4000-a212-6feee6a1f10c",
       "type": "project_developer",
       "attributes": {
         "instagram": "https://instagram.com/runolfsson-and-sons",
@@ -95,8 +105,8 @@
     "page": 1,
     "per_page": 10,
     "from": 1,
-    "to": 9,
-    "total": 9,
+    "to": 10,
+    "total": 10,
     "pages": 1
   },
   "links": {

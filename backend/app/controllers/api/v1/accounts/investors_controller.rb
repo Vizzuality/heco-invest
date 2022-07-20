@@ -3,6 +3,7 @@ module API
     module Accounts
       class InvestorsController < BaseController
         before_action :require_investor!, except: :create
+        around_action(only: [:show]) { |_controller, action| set_locale(current_user&.account&.language, &action) }
 
         def create
           current_user.with_lock do

@@ -16,6 +16,7 @@ module API
         :categories,
         :impacts,
         :language,
+        :account_language,
         :entity_legal_registration_number,
         :review_status,
         :mosaics,

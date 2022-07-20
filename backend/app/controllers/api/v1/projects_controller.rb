@@ -4,10 +4,11 @@ module API
       include API::Pagination
 
       before_action :fetch_project, only: [:show]
+      around_action(only: [:show]) { |_controller, action| set_locale(@project&.project_developer&.account&.language, &action) }
       load_and_authorize_resource
 
       def index
-        projects = @projects.includes(:project_developer, :involved_project_developers, project_images: {file_attachment: :blob})
+        projects = @projects.includes({project_developer: :account}, :involved_project_developers, project_images: {file_attachment: :blob})
         projects = API::Filterer.new(projects, filter_params.to_h).call
         projects = API::Sorter.new(projects, sorting_by: params[:sorting]).call
         pagy_object, projects = pagy(projects, page: current_page, items: per_page)

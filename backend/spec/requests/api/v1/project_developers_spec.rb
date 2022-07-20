@@ -6,9 +6,13 @@ RSpec.describe "API V1 Project Developers", type: :request do
     create_list(:project_developer, 6, categories: %w[forestry-and-agroforestry non-timber-forest-production])
     @unapproved_project_developer = create(:project_developer, account: create(:account, review_status: :unapproved, users: [create(:user)]))
     @approved_account = create(:account, review_status: :approved, users: [create(:user)])
+    @pd_in_pt = create(
+      :project_developer,
+      account: create(:account, about_en: "About EN", about_es: "About ES", about_pt: "About PT", language: "pt")
+    )
   end
 
-  include_examples :api_pagination, model: ProjectDeveloper, expected_total: 9
+  include_examples :api_pagination, model: ProjectDeveloper, expected_total: 10
 
   path "/api/v1/project_developers" do
     get "Returns list of the project developers" do
@@ -22,6 +26,7 @@ RSpec.describe "API V1 Project Developers", type: :request do
       parameter name: "filter[impact]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
       parameter name: :sorting, in: :query, type: :string, enum: ["name asc", "name desc", "created_at asc", "created_at desc"], required: false, description: "Sort records."
+      parameter name: :locale, in: :query, type: :string, required: false, description: "Retrieve content in required language, skip for account language."
 
       let(:sorting) { "name asc" }
 
@@ -85,6 +90,7 @@ RSpec.describe "API V1 Project Developers", type: :request do
       parameter name: :id, in: :path, type: :string, description: "Use project developer ID or account slug"
       parameter name: "fields[project_developer]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
       parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
+      parameter name: :locale, in: :query, type: :string, required: false, description: "Retrieve content in required language, skip for account language."
 
       let(:id) { @project_developer.id }
 
@@ -153,6 +159,25 @@ RSpec.describe "API V1 Project Developers", type: :request do
           before { sign_in @unapproved_project_developer.account.users.first }
 
           run_test!
+        end
+
+        context "account language" do
+          context "when locale set" do
+            let(:id) { @pd_in_pt.id }
+            let(:locale) { "es" }
+
+            it "returns content in requested language" do
+              expect(response_json["data"]["attributes"]["about"]).to eq("About ES")
+            end
+          end
+
+          context "when locale not set" do
+            let(:id) { @pd_in_pt.id }
+
+            it "returns content in account language" do
+              expect(response_json["data"]["attributes"]["about"]).to eq("About PT")
+            end
+          end
         end
       end
 

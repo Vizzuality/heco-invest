@@ -4,6 +4,7 @@ module API
       include API::Pagination
 
       before_action :fetch_investor, only: :show
+      around_action(only: [:show]) { |_controller, action| set_locale(@investor&.account&.language, &action) }
       load_and_authorize_resource
 
       def index

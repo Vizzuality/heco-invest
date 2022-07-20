@@ -16,7 +16,9 @@
         "small": null,
         "medium": null,
         "original": null
-      }
+      },
+      "ui_language": "en",
+      "account_language": "en"
     }
   }
 }

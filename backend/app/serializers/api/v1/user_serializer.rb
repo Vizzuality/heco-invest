@@ -3,7 +3,7 @@ module API
     class UserSerializer < BaseSerializer
       include BlobSerializer
 
-      attributes :first_name, :last_name, :email, :role, :created_at
+      attributes :first_name, :last_name, :email, :role, :created_at, :ui_language, :account_language
       attribute :confirmed, &:confirmed?
       attribute :approved, &:approved?
 

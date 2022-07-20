@@ -11,6 +11,7 @@ module API
         :impact_description,
         :closing_at,
         :language,
+        :account_language,
         :trusted,
         :created_at
 

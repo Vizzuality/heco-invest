@@ -35,7 +35,8 @@
         "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxrTVRjMlkyVXhPQzFsTVRWbExUUm1ZMkV0WWpCaE9TMDBaV0U0Wmpoa05qVmxOVEFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--348d41d7d0cb63d0e63efb483c7ec38191ce8c7a/picture.jpg"
       },
       "favourite": false,
-      "created_at": "2022-06-21T11:29:52.890Z"
+      "created_at": "2022-06-21T11:29:52.890Z",
+      "account_language": "en"
     },
     "relationships": {
       "owner": {

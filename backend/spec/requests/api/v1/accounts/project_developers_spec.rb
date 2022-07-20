@@ -9,6 +9,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
       produces "application/json"
       security [csrf: [], cookie_auth: []]
       parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
+      parameter name: :locale, in: :query, type: :string, required: false, description: "Retrieve content in required language, skip for account language."
 
       let(:project_developer) { create :project_developer, :with_involved_projects }
       let(:user) { create :user }

@@ -6,9 +6,14 @@ RSpec.describe "API V1 Investors", type: :request do
     create_list(:investor, 6, sdgs: [1, 5])
     @unapproved_investor = create(:investor, account: create(:account, review_status: :unapproved, users: [create(:user)]))
     @approved_account = create(:account, review_status: :approved, users: [create(:user)])
+    @investor_in_pt = create(
+      :investor,
+      account: create(:account, about_en: "About EN", about_es: "About ES", about_pt: "About PT", language: "pt"),
+      sdgs: [1, 5]
+    )
   end
 
-  include_examples :api_pagination, model: Investor, expected_total: 7
+  include_examples :api_pagination, model: Investor, expected_total: 8
 
   path "/api/v1/investors" do
     get "Returns list of the investors" do
@@ -24,6 +29,7 @@ RSpec.describe "API V1 Investors", type: :request do
       parameter name: "filter[ticket_size]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
       parameter name: :sorting, in: :query, type: :string, enum: ["name asc", "name desc", "created_at asc", "created_at desc"], required: false, description: "Sort records."
+      parameter name: :locale, in: :query, type: :string, required: false, description: "Retrieve content in required language, skip for account language."
 
       let(:sorting) { "name asc" }
 
@@ -77,6 +83,7 @@ RSpec.describe "API V1 Investors", type: :request do
       produces "application/json"
       parameter name: :id, in: :path, type: :string, description: "Use investor ID or account slug"
       parameter name: "fields[investor]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
+      parameter name: :locale, in: :query, type: :string, required: false, description: "Retrieve content in required language, skip for account language."
 
       let(:id) { @investor.id }
 
@@ -125,6 +132,25 @@ RSpec.describe "API V1 Investors", type: :request do
           before { sign_in @unapproved_investor.account.users.first }
 
           run_test!
+        end
+
+        context "account language" do
+          context "when locale set" do
+            let(:id) { @investor_in_pt.id }
+            let(:locale) { "es" }
+
+            it "returns content in requested language" do
+              expect(response_json["data"]["attributes"]["about"]).to eq("About ES")
+            end
+          end
+
+          context "when locale not set" do
+            let(:id) { @investor_in_pt.id }
+
+            it "returns content in account language" do
+              expect(response_json["data"]["attributes"]["about"]).to eq("About PT")
+            end
+          end
         end
       end
 

@@ -47,7 +47,8 @@
         "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxrWlRaaU1UUXlNUzAwTlRRNUxUUTJPV010T0RGaVppMHpabVE0TmpnMk56YzNPVGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--4dd2c0d5effdccfd04b8b1e3ed6b12a6e75968f1/picture.jpg"
       },
       "favourite": false,
-      "created_at": "2022-06-21T11:29:52.031Z"
+      "created_at": "2022-06-21T11:29:52.031Z",
+      "account_language": "en"
     },
     "relationships": {
       "owner": {
@@ -76,7 +77,9 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "ui_language": "en",
+        "account_language": "en"
       }
     }
   ]
