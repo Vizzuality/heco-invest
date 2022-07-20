@@ -14,6 +14,7 @@ import Menu, { MenuItem, MenuSection } from 'components/menu';
 import { Paths } from 'enums';
 
 import { useAccount } from 'services/account';
+import { useSignOut } from 'services/authentication/authService';
 
 import { UserMenuProps } from './types';
 
@@ -24,6 +25,7 @@ export const UserMenu: FC<UserMenuProps> = ({
   const router = useRouter();
   const intl = useIntl();
   const { user, userAccount: account } = useAccount();
+  const signOut = useSignOut();
 
   const showBackground = false;
 
@@ -32,12 +34,23 @@ export const UserMenu: FC<UserMenuProps> = ({
   const onClickMenuItem = useCallback(
     (key) => {
       switch (key) {
+        case Paths.SignOut:
+          signOut.mutate(
+            {},
+            {
+              onSuccess: () => {
+                router.push(Paths.Home);
+              },
+            }
+          );
+          break;
+
         default:
           router.push(key);
           break;
       }
     },
-    [router]
+    [router, signOut]
   );
 
   return (
