@@ -90,7 +90,7 @@ export function useProject(
   params?: Parameters<typeof getProject>[1],
   initialData?: Project
 ) {
-  const query = useLocalizedQuery([Queries.ProjectQuery, id], () => getProject(id, params), {
+  const query = useLocalizedQuery([Queries.Project, id], () => getProject(id, params), {
     refetchOnWindowFocus: false,
     initialData: { data: initialData, included: [] },
   });

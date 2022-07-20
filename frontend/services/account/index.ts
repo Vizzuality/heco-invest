@@ -115,11 +115,16 @@ export function useUpdateProject(): UseMutationResult<
   const updateProject = async (
     project: ProjectUpdatePayload
   ): Promise<AxiosResponse<ResponseData<Project>>> => {
-    queryClient.invalidateQueries(Queries.AccountProjectList);
     return API.put(`/api/v1/account/projects/${project.id}`, project);
   };
 
-  return useMutation(updateProject);
+  return useMutation(updateProject, {
+    onSuccess: (result) => {
+      queryClient.setQueryData(Queries.Project, result.data.data);
+      queryClient.invalidateQueries(Queries.AccountProjectList);
+      queryClient.invalidateQueries(Queries.Project);
+    },
+  });
 }
 
 const getInvestor = async (includes?: string): Promise<Investor> => {

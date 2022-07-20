@@ -73,8 +73,6 @@ export enum Queries {
   EnumList = 'enum_list',
   /** Locations */
   Locations = 'locations',
-  /** Single Project */
-  ProjectQuery = 'project',
   /** Projects Map location */
   ProjectsMap = 'projects_map',
   /** Current user's account owner name */
