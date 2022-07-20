@@ -203,6 +203,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   };
 
   const contentLocale = defaultValues?.language || userAccount?.language;
+  const isOutroPage = isCreateForm && currentPage === totalPages;
 
   return (
     <>
@@ -216,11 +217,13 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         page={currentPage}
         alert={useGetAlert(updateProject.error)}
         isSubmitting={updateProject.isLoading}
-        showOutro={currentPage === totalPages && !!projectSlug}
+        showOutro={isOutroPage}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
-        onCloseClick={() => setShowLeave(true)}
+        onCloseClick={() =>
+          isOutroPage ? router.push(queryReturnPath || Paths.Dashboard) : setShowLeave(true)
+        }
         onSubmitClick={handleSubmitPublish}
         isLoading={isLoading}
         footerElements={
