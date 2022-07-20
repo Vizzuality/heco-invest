@@ -140,8 +140,8 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
       <Description
         title={
           <FormattedMessage
-            defaultMessage="Find the support and ressources to grow your business or project"
-            id="wGWm2r"
+            defaultMessage="Find the support and resources to grow your business or project"
+            id="5UMEjA"
           />
         }
         descriptions={[
