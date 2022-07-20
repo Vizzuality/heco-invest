@@ -132,7 +132,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
       let(:project_params) do
         {
           name: "Project Name",
-          status: "draft",
+          status: "published",
           country_id: country.id,
           municipality_id: municipality.id,
           department_id: department.id,
@@ -178,15 +178,22 @@ RSpec.describe "API V1 Account Projects", type: :request do
 
         before(:each) { sign_in user }
 
-        run_test!
-
-        it "matches snapshot", generate_swagger_example: true do
+        it "matches snapshot", generate_swagger_example: true do |example|
+          submit_request example.metadata
+          assert_response_matches_metadata example.metadata
           expect(response.body).to match_snapshot("api/v1/accounts-project-create")
         end
 
-        it "queues translation job" do
-          job = ActiveJob::Base.queue_adapter.enqueued_jobs.find { |j| j[:job] == TranslateJob }
-          expect(job).not_to be_nil
+        it "notifies new collaborators" do |example|
+          expect {
+            submit_request example.metadata
+          }.to have_enqueued_mail(ProjectDeveloperMailer, :added_to_project).exactly(project_developers.count).times
+        end
+
+        it "queues translation job" do |example|
+          expect {
+            submit_request example.metadata
+          }.to have_enqueued_job(TranslateJob).at_least(:once)
         end
       end
 
@@ -201,10 +208,22 @@ RSpec.describe "API V1 Account Projects", type: :request do
           sign_in user
         end
 
-        run_test!
-
-        it "returns correct error", generate_swagger_example: true do
+        it "returns correct error", generate_swagger_example: true do |example|
+          submit_request example.metadata
+          assert_response_matches_metadata example.metadata
           expect(response_json["errors"][0]["title"]).to eq("Name en (EN) has already been taken")
+        end
+
+        it "does not send email that new collaborator was added" do |example|
+          expect {
+            submit_request example.metadata
+          }.not_to have_enqueued_mail(ProjectDeveloperMailer, :added_to_project)
+        end
+
+        it "does not send email that old collaborator was removed" do |example|
+          expect {
+            submit_request example.metadata
+          }.not_to have_enqueued_mail(ProjectDeveloperMailer, :removed_from_project)
         end
       end
     end
@@ -220,7 +239,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
       parameter name: :project_params, in: :body, schema: project_params_schema
 
       let(:project_image) { create :project_image }
-      let(:project) { create :project, :draft, project_images: [project_image] }
+      let!(:project) { create :project, :draft, :with_involved_project_developers, project_images: [project_image] }
       let(:id) { project.id }
       let(:project_params) do
         {
@@ -271,14 +290,28 @@ RSpec.describe "API V1 Account Projects", type: :request do
           sign_in user
         end
 
-        run_test!
-
-        it "matches snapshot", generate_swagger_example: true do
+        it "matches snapshot", generate_swagger_example: true do |example|
+          submit_request example.metadata
+          assert_response_matches_metadata example.metadata
           expect(response.body).to match_snapshot("api/v1/accounts-project-update")
+        end
+
+        it "send email that new collaborator was added" do |example|
+          expect {
+            submit_request example.metadata
+          }.to have_enqueued_mail(ProjectDeveloperMailer, :added_to_project).with(project_developers.last, project)
+        end
+
+        it "send email that old collaborator was removed" do |example|
+          expect {
+            submit_request example.metadata
+          }.to have_enqueued_mail(ProjectDeveloperMailer, :removed_from_project).with(project.involved_project_developers.first, project)
         end
 
         context "when slug is used" do
           let(:id) { project.slug }
+
+          run_test!
 
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/accounts-project-update")
@@ -290,6 +323,8 @@ RSpec.describe "API V1 Account Projects", type: :request do
             {project_images_attributes: [{file: blob.signed_id, cover: true}]}
           end
 
+          run_test!
+
           it "adds new image" do
             expect(response_json["data"]["relationships"]["project_images"]["data"].count).to eq(2)
           end
@@ -300,9 +335,48 @@ RSpec.describe "API V1 Account Projects", type: :request do
             {project_images_attributes: [{id: project_image.id, _destroy: "1"}]}
           end
 
+          run_test!
+
           it "removes image" do
             expect(response_json["data"]["relationships"]["project_images"]["data"].count).to eq(0)
           end
+        end
+      end
+
+      response "422", "Validation errors" do
+        schema "$ref" => "#/components/schemas/errors"
+
+        let("X-CSRF-TOKEN") { get_csrf_token }
+        let(:project_params) do
+          {
+            status: "published",
+            involved_project_developer_ids: project_developers.map(&:id),
+            involved_project_developer_not_listed: true,
+            instrument_types: %w[WRONG_ENUM]
+          }
+        end
+
+        before do
+          project.project_developer.account.users << user
+          sign_in user
+        end
+
+        it "returns correct error", generate_swagger_example: true do |example|
+          submit_request example.metadata
+          assert_response_matches_metadata example.metadata
+          expect(response_json["errors"][0]["title"]).to eq("Instrument types [\"WRONG_ENUM\"] is not included in the list")
+        end
+
+        it "does not send email that new collaborator was added" do |example|
+          expect {
+            submit_request example.metadata
+          }.not_to have_enqueued_mail(ProjectDeveloperMailer, :added_to_project)
+        end
+
+        it "does not send email that old collaborator was removed" do |example|
+          expect {
+            submit_request example.metadata
+          }.not_to have_enqueued_mail(ProjectDeveloperMailer, :removed_from_project)
         end
       end
     end
@@ -316,7 +390,9 @@ RSpec.describe "API V1 Account Projects", type: :request do
       parameter name: :empty, in: :body, schema: {type: :object}, required: false
 
       let(:user) { create :user, :project_developer }
-      let!(:project) { create :project, project_developer: create(:project_developer, account: create(:account, owner: user)) }
+      let!(:project) do
+        create :project, :with_involved_project_developers, project_developer: create(:project_developer, account: create(:account, owner: user))
+      end
       let(:id) { project.id }
 
       it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
@@ -333,6 +409,19 @@ RSpec.describe "API V1 Account Projects", type: :request do
             submit_request example.metadata
             assert_response_matches_metadata example.metadata
           }.to change(Project, :count).by(-1)
+        end
+
+        it "sends email that project was destroyed to involved project developers" do |example|
+          expect {
+            submit_request example.metadata
+          }.to have_enqueued_mail(ProjectDeveloperMailer, :project_destroyed).with(project.project_developer, project.name)
+            .and have_enqueued_mail(ProjectDeveloperMailer, :project_destroyed).with(project.involved_project_developers.first, project.name)
+        end
+
+        it "does not send email that collaboration was removed" do |example|
+          expect {
+            submit_request example.metadata
+          }.not_to have_enqueued_mail(ProjectDeveloperMailer, :removed_from_project)
         end
 
         context "when slug is used" do

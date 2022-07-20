@@ -39,7 +39,11 @@ module API
         end
 
         def destroy
+          project_developers = [@project.project_developer] + @project.involved_project_developers
           @project.destroy!
+          project_developers.each do |project_developer|
+            ProjectDeveloperMailer.project_destroyed(project_developer, @project.name).deliver_later
+          end
           head :ok
         end
 
@@ -77,12 +81,12 @@ module API
             :progress_impact_tracking,
             :description,
             :relevant_links,
-            involved_project_developer_ids: [],
             target_groups: [],
             impact_areas: [],
             sdgs: [],
             instrument_types: [],
-            project_images_attributes: %i[id file cover _destroy]
+            project_images_attributes: %i[id file cover _destroy],
+            involved_project_developer_ids: []
           ).tap { |r| r[:geometry] = params[:geometry].permit! if params[:geometry].present? }
         end
 

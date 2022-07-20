@@ -12,4 +12,11 @@ class ProjectDeveloperMailer < ApplicationMailer
 
     mail to: @user.email
   end
+
+  def project_destroyed(project_developer, project_name)
+    @user = project_developer.owner
+    @project_name = project_name
+
+    mail to: @user.email
+  end
 end
