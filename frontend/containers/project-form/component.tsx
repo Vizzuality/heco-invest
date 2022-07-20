@@ -45,6 +45,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   initialValues: project,
   isCreateForm,
   enums,
+  isLoading,
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -221,6 +222,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         showProgressBar
         onCloseClick={() => setShowLeave(true)}
         onSubmitClick={handleSubmitPublish}
+        isLoading={isLoading}
         footerElements={
           isLastPage &&
           project?.status !== ProjectStatus.Published && (
