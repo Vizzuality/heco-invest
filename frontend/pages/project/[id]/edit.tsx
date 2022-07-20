@@ -112,7 +112,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({
         mutation={updateProject}
         onComplete={handleOnComplete}
         initialValues={project}
-        isLoading={isFetchingProject}
+        isLoading={!project && isFetchingProject}
         enums={enums}
       />
     </ProtectedPage>

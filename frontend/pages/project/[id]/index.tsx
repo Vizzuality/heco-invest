@@ -87,7 +87,7 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
   } = useProject(router.query.id as string, PROJECT_QUERY_PARAMS, projectProp);
 
   if (!project) {
-    if (!isFetchingProject) router.push(Paths.Dashboard);
+    if (!project && !isFetchingProject) router.push(Paths.Dashboard);
     return (
       <div className="flex items-center justify-center min-h-screen -mt-28 md:-mt-36 lg:-mt-44">
         <Loading visible={true} iconClassName="w-10 h-10" />
