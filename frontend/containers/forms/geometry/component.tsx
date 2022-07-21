@@ -164,7 +164,7 @@ export const GeometryInput = <FormValues extends FieldValues>({
           'border-red-700': invalid,
         })}
       >
-        <div className="w-full h-full overflow-hidden rounded-lg">
+        <div className="w-full h-full rounded-lg">
           <div ref={mapContainerRef} className="relative w-full h-full bg-white">
             <Map
               bounds={bounds}
