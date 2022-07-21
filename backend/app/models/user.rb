@@ -39,6 +39,10 @@ class User < ApplicationRecord
     Arel.sql("(SELECT EXISTS (SELECT 1 FROM accounts WHERE accounts.owner_id = users.id))")
   end
 
+  def locale
+    account_language.presence || ui_language
+  end
+
   def send_confirmation_instructions
     return if confirmation_sent_within_limited_period?
 

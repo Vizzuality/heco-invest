@@ -68,7 +68,7 @@ class Project < ApplicationRecord
   before_validation :clear_received_funding_fields, unless: -> { received_funding? }
   before_save :assign_priority_landscape, if: :centroid_changed?
   after_save :calculate_impacts, if: -> { saved_change_to_geometry? || saved_change_to_impact_areas? }
-  after_update :notify_project_developers, if: -> { saved_change_to_status? && published? }
+  after_save :notify_project_developers, if: -> { saved_change_to_status? && published? }
 
   accepts_nested_attributes_for :project_images, reject_if: :all_blank, allow_destroy: true
 

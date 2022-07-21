@@ -255,6 +255,9 @@ zu:
     removed_from_project:
       subject: Your collaboration has ended.
       content: We would like to inform you that your collaboration with project %{project_name} has ended.
+    project_destroyed:
+      subject: Project has been removed.
+      content: Project %{project_name} which you have been collaborator of have been removed.
   enums:
     review_status:
       approved:

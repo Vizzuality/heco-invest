@@ -2,7 +2,7 @@ module Backoffice
   class UsersController < BaseController
     include Sections
 
-    before_action :fetch_admin, only: [:edit, :update, :destroy]
+    before_action :fetch_user, only: [:edit, :update, :destroy]
     before_action :set_breadcrumbs, only: [:edit, :update]
     before_action :set_sections, only: [:edit, :update]
 
@@ -39,7 +39,7 @@ module Backoffice
 
     def destroy
       if @user.destroy
-        UserMailer.destroyed(@user.email, @user.full_name).deliver_later
+        UserMailer.destroyed(@user.email, @user.full_name, @user.locale).deliver_later
         redirect_to backoffice_users_path, status: :see_other,
           notice: t("backoffice.messages.success_delete", model: t("backoffice.common.user"))
       else
@@ -57,7 +57,7 @@ module Backoffice
       )
     end
 
-    def fetch_admin
+    def fetch_user
       @user = User.find(params[:id])
     end
 
