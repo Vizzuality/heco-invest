@@ -77,8 +77,8 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
     }
   }, [replace, user]);
 
-  const redirectSignedUser = useCallback(() => {
-    queryClient.invalidateQueries(Queries.User);
+  const redirectSignedUser = useCallback(async () => {
+    await queryClient.invalidateQueries(Queries.User);
     replace(Paths.Dashboard);
   }, [queryClient, replace]);
 
