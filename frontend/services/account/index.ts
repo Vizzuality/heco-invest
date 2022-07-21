@@ -221,6 +221,29 @@ export function useAccount(includes?: string) {
   };
 }
 
+/** Hook with mutation to delete a project from the account */
+export const useDeleteAccountProject = () => {
+  const queryClient = useQueryClient();
+
+  const deleteAccountProject = (id: string): Promise<Project> => {
+    const config: AxiosRequestConfig = {
+      method: 'DELETE',
+      url: `/api/v1/account/projects/${id}`,
+      data: { id },
+    };
+
+    return API.request(config).then((response) => response.data.data);
+  };
+
+  return useMutation(({ id }: { id: string }) => deleteAccountProject(id), {
+    onSuccess: () => {
+      queryClient.invalidateQueries(Queries.Project);
+      queryClient.invalidateQueries(Queries.ProjectList);
+      queryClient.invalidateQueries(Queries.AccountProjectList);
+    },
+  });
+};
+
 const getAccountProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
   const { search, page, includes, ...rest } = params || {};
 
