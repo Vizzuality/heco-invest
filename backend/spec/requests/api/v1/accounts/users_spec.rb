@@ -128,7 +128,7 @@ RSpec.describe "API V1 Account Users", type: :request do
           it "send email" do |example|
             expect {
               submit_request example.metadata
-            }.to have_enqueued_mail(UserMailer, :destroyed).with(account_user.email, account_user.full_name)
+            }.to have_enqueued_mail(UserMailer, :destroyed).with(account_user.email, account_user.full_name, account_user.account_language)
           end
         end
 
@@ -147,7 +147,7 @@ RSpec.describe "API V1 Account Users", type: :request do
           it "send email" do |example|
             expect {
               submit_request example.metadata
-            }.to have_enqueued_mail(UserMailer, :destroyed).with(account_user.email, account_user.full_name)
+            }.to have_enqueued_mail(UserMailer, :destroyed).with(account_user.email, account_user.full_name, account_user.account_language)
           end
         end
       end

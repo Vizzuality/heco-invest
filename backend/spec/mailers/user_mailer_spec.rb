@@ -52,7 +52,7 @@ RSpec.describe UserMailer, type: :mailer do
   end
 
   describe ".destroyed" do
-    let(:mail) { UserMailer.destroyed user.email, user.full_name }
+    let(:mail) { UserMailer.destroyed user.email, user.full_name, "en" }
 
     it "renders the headers" do
       expect(mail.subject).to eq(I18n.t("user_mailer.destroyed.subject"))

@@ -16,42 +16,45 @@ RSpec.describe ProjectInvolvement, type: :model do
   end
 
   describe "added_to_project notification" do
+    let!(:project_developer) { create :project_developer }
+    let!(:project) { create :project }
+
     context "when project is published" do
       it "notifies project developer owner" do
         expect {
-          subject.save!
-        }.to have_enqueued_mail(ProjectDeveloperMailer, :added_to_project).with(subject.project_developer, subject.project)
+          create :project_involvement, project: project.reload, project_developer: project_developer
+        }.to have_enqueued_mail(ProjectDeveloperMailer, :added_to_project).with(project_developer, project)
       end
     end
 
     context "when project is draft" do
-      before { subject.project.update! status: :draft }
+      before { project.update! status: :draft }
 
       it "does not notifies project developer owner" do
         expect {
-          subject.save!
+          create :project_involvement, project: project.reload, project_developer: project_developer
         }.not_to have_enqueued_mail(ProjectDeveloperMailer, :added_to_project)
       end
     end
   end
 
   describe "removed_from_project notification" do
-    before { subject.save! }
+    let!(:project_involvement) { create :project_involvement }
 
     context "when project is published" do
       it "notifies project developer owner" do
         expect {
-          subject.destroy!
-        }.to have_enqueued_mail(ProjectDeveloperMailer, :removed_from_project).with(subject.project_developer, subject.project)
+          project_involvement.reload.destroy!
+        }.to have_enqueued_mail(ProjectDeveloperMailer, :removed_from_project).with(project_involvement.project_developer, project_involvement.project)
       end
     end
 
     context "when project is draft" do
-      before { subject.project.update! status: :draft }
+      before { project_involvement.project.update! status: :draft }
 
       it "does not notifies project developer owner" do
         expect {
-          subject.destroy!
+          project_involvement.reload.destroy!
         }.not_to have_enqueued_mail(ProjectDeveloperMailer, :removed_from_project)
       end
     end

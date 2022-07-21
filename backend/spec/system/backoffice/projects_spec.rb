@@ -315,9 +315,12 @@ RSpec.describe "Backoffice: Projects", type: :system do
 
     context "when removing project" do
       it "removes project" do
-        accept_confirm do
-          click_on t("backoffice.projects.delete")
-        end
+        expect {
+          accept_confirm do
+            click_on t("backoffice.projects.delete")
+          end
+        }.to have_enqueued_mail(ProjectDeveloperMailer, :project_destroyed).with(project.project_developer, project.name)
+          .and have_enqueued_mail(ProjectDeveloperMailer, :project_destroyed).with(project.involved_project_developers.first, project.name)
         expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.project")))
         expect(current_path).to eql(backoffice_projects_path)
         expect(page).not_to have_text(project.name)

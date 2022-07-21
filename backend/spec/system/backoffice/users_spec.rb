@@ -3,14 +3,14 @@ require "system_helper"
 RSpec.describe "Backoffice: Users", type: :system do
   let!(:admin) { create(:admin, email: "admin@example.com", password: "SuperSecret6", first_name: "Admin", last_name: "Example") }
   let!(:owner) { create(:project_developer).owner }
-  let!(:user) { create :user }
+  let!(:user) { create :user, account: create(:account, language: "pt") }
 
   before { sign_in admin }
 
   describe "Index" do
     before { visit "/backoffice/users" }
 
-    it_behaves_like "with table pagination", expected_total: 2
+    it_behaves_like "with table pagination", expected_total: 3
     it_behaves_like "with table sorting", columns: [
       I18n.t("backoffice.common.name"),
       I18n.t("backoffice.common.email"),
@@ -97,7 +97,7 @@ RSpec.describe "Backoffice: Users", type: :system do
           accept_confirm do
             click_on t("backoffice.users.delete")
           end
-        }.to have_enqueued_mail(UserMailer, :destroyed).with(user.email, user.full_name)
+        }.to have_enqueued_mail(UserMailer, :destroyed).with(user.email, user.full_name, user.account_language)
         expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.user")))
         expect(current_path).to eql(backoffice_users_path)
         expect(page).not_to have_text(user.full_name)
