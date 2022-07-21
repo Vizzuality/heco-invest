@@ -2,29 +2,25 @@ import { FC } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import cx from 'classnames';
-
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-
 import { useQueryParams } from 'helpers/pages';
 
 import NoSearchResults from 'containers/dashboard/no-search-results';
-import RowMenu, { RowMenuItem } from 'containers/dashboard/row-menu';
 import SearchAndInfo from 'containers/dashboard/search-and-info';
 
 import Button from 'components/button';
 import Table from 'components/table';
-import { Paths, ProjectStatus } from 'enums';
+import { Paths } from 'enums';
 
 import { useAccountProjectsList } from 'services/account';
 import { useEnums } from 'services/enums/enumService';
+
+import CellActions from './cells/actions';
+import CellStatus from './cells/status';
 
 import { ProjectsTableProps } from '.';
 
 export const ProjectsTable: FC<ProjectsTableProps> = () => {
   const intl = useIntl();
-  const router = useRouter();
 
   const queryOptions = { keepPreviousData: true, refetchOnMount: true };
   const queryParams = useQueryParams();
@@ -50,27 +46,6 @@ export const ProjectsTable: FC<ProjectsTableProps> = () => {
   const isSearching = !!queryParams.search;
   const isLoading = isLoadingEnums || isLoadingProjects || isFetchingProjects;
   const hasProjects = !!projects.length;
-
-  const handleRowMenuItemClick = ({ key, slug }: { key: string; slug: string }) => {
-    switch (key) {
-      case 'edit':
-        router.push(
-          `${Paths.Project}/${slug}/edit?returnPath=${encodeURIComponent(router.asPath)}`,
-          `${Paths.Project}/${slug}/edit`
-        );
-        return;
-      case 'preview':
-        router.push(`${Paths.Project}/${slug}/preview`);
-        return;
-      case 'open':
-        router.push(`${Paths.Project}/${slug}`);
-        return;
-      case 'delete':
-        // TODO
-        console.log('Delete:', slug);
-        return;
-    }
-  };
 
   const tableProps = {
     columns: [
@@ -98,75 +73,21 @@ export const ProjectsTable: FC<ProjectsTableProps> = () => {
       },
       {
         Header: intl.formatMessage({ defaultMessage: 'Status', id: 'tzMNF3' }),
-        accessor: 'status',
-        Cell: ({ cell: { value } }) => {
-          return (
-            <span
-              className={cx({
-                'bg-opacity-20 text-sm px-2.5 py-0.5 rounded-2xl': true,
-                'bg-gray-800 text-gray-800': value === 'draft',
-                'bg-green-light text-green-dark': value === 'verified',
-                'bg-orange text-orange': value === 'unverified',
-              })}
-            >
-              {value === 'draft' && <FormattedMessage defaultMessage="Draft" id="W6nwjo" />}
-              {value === 'verified' && <FormattedMessage defaultMessage="Verified" id="Z8971h" />}
-              {value === 'unverified' && (
-                <FormattedMessage defaultMessage="Unverified" id="n9fdaJ" />
-              )}
-            </span>
-          );
-        },
+        accessor: 'statusTag',
+        Cell: CellStatus,
       },
       {
         accessor: 'actions',
         canSort: false,
         hideHeader: true,
         width: 0,
-        Cell: ({
-          cell: {
-            row: {
-              original: { slug, status },
-            },
-          },
-        }) => {
-          return (
-            <div className="flex items-center justify-center gap-3">
-              <Link
-                href={`${Paths.Project}/${slug}/edit?returnPath=${encodeURIComponent(
-                  router.asPath
-                )}`}
-                as={`${Paths.Project}/${slug}/edit`}
-              >
-                <a className="px-2 py-1 text-sm transition-all text-green-dark focus-visible:outline-green-dark rounded-2xl">
-                  <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
-                </a>
-              </Link>
-              <RowMenu onAction={(key: string) => handleRowMenuItemClick({ key, slug })}>
-                <RowMenuItem key="edit">
-                  <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
-                </RowMenuItem>
-                {status === ProjectStatus.Draft ? (
-                  <RowMenuItem key="preview">
-                    <FormattedMessage defaultMessage="Preview project page" id="EvP1Ut" />
-                  </RowMenuItem>
-                ) : (
-                  <RowMenuItem key="open">
-                    <FormattedMessage defaultMessage="View project page" id="ToXG99" />
-                  </RowMenuItem>
-                )}
-                <RowMenuItem key="delete">
-                  <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
-                </RowMenuItem>
-              </RowMenu>
-            </div>
-          );
-        },
+        Cell: CellActions,
       },
     ],
     data: projects.map((project) => ({
       slug: project.slug,
       name: project.name,
+      status: project.status,
       category: allCategories.find(({ id }) => id === project.category)?.name,
       country: project.country.name,
       municipality: project.municipality.name,
@@ -174,7 +95,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = () => {
         ?.filter(({ id }) => project.instrument_types?.includes(id))
         .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase()))
         .join(', '),
-      status: project.status === 'draft' ? 'draft' : project.trusted ? 'verified' : 'unverified',
+      statusTag: project.status === 'draft' ? 'draft' : project.trusted ? 'verified' : 'unverified',
       ticketSize: allTicketSizes?.find(({ id }) => project.ticket_size === id)?.description,
     })),
     loading: isLoading,
