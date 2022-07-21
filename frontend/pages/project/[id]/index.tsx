@@ -58,6 +58,11 @@ export const getServerSideProps = withLocalizedRequests(
       }
     }
 
+    // If a project is published, let's make it so the "Preview" page doesn't exist
+    if (project && query?.preview) {
+      return { notFound: true };
+    }
+
     const enums = await getEnums();
 
     return {
