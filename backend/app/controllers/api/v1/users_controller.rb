@@ -1,7 +1,7 @@
 module API
   module V1
     class UsersController < BaseController
-      before_action :authenticate_user!, only: [:show]
+      before_action :authenticate_user!, only: [:show, :change_password]
 
       def create
         user = params[:invitation_token].present? ? preload_invited_user : User.new(user_params)
@@ -15,10 +15,23 @@ module API
         render json: UserSerializer.new(current_user).serializable_hash
       end
 
+      def change_password
+        if current_user.update_with_password change_password_params
+          bypass_sign_in current_user
+          head :ok
+        else
+          render_validation_errors current_user
+        end
+      end
+
       private
 
       def user_params
         params.permit(:first_name, :last_name, :email, :password, :ui_language)
+      end
+
+      def change_password_params
+        params.permit :current_password, :password, :password_confirmation
       end
 
       def preload_invited_user
