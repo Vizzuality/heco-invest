@@ -1,6 +1,8 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
+
+import { noop } from 'lodash-es';
 
 import { useQueryParams } from 'helpers/pages';
 
@@ -19,7 +21,7 @@ import CellStatus from './cells/status';
 
 import { ProjectsTableProps } from '.';
 
-export const ProjectsTable: FC<ProjectsTableProps> = () => {
+export const ProjectsTable: FC<ProjectsTableProps> = ({ onLoaded = noop }) => {
   const intl = useIntl();
 
   const queryOptions = { keepPreviousData: true, refetchOnMount: true };
@@ -46,6 +48,10 @@ export const ProjectsTable: FC<ProjectsTableProps> = () => {
   const isSearching = !!queryParams.search;
   const isLoading = isLoadingEnums || isLoadingProjects || isFetchingProjects;
   const hasProjects = !!projects.length;
+
+  useEffect(() => {
+    if (!isLoadingProjects) onLoaded();
+  }, [isLoadingProjects, onLoaded]);
 
   const tableProps = {
     columns: [
@@ -116,8 +122,8 @@ export const ProjectsTable: FC<ProjectsTableProps> = () => {
           }}
         />
       </SearchAndInfo>
-      {(isLoading || hasProjects) && <Table {...tableProps} />}
-      {!isLoading && !hasProjects && (
+      {hasProjects && <Table {...tableProps} />}
+      {!hasProjects && (
         <div className="flex flex-col items-center mt-10 lg:mt-20">
           {isSearching ? (
             <NoSearchResults />

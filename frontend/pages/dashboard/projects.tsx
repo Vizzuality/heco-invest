@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { PlusCircle as PlusCircleIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -31,11 +33,13 @@ type ProjectsPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps> = () => {
   const intl = useIntl();
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
       <Head title={intl.formatMessage({ defaultMessage: 'My projects', id: 'qFZuSl' })} />
       <DashboardLayout
+        isLoading={!isLoaded}
         buttons={
           <Button className="drop-shadow-xl" theme="primary-white" to={Paths.ProjectCreation}>
             <Icon icon={PlusCircleIcon} className="w-4 h-4 mr-2" aria-hidden />
@@ -43,7 +47,7 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
           </Button>
         }
       >
-        <ProjectsTable />
+        <ProjectsTable onLoaded={() => setIsLoaded(true)} />
       </DashboardLayout>
     </ProtectedPage>
   );
