@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 
 import { Mail as MailIcon, Trash2 as TrashIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { useQueryClient } from 'react-query';
 
 import cx from 'classnames';
 
 import ConfirmationPrompt from 'components/confirmation-prompt';
 import Icon from 'components/icon';
 import Tooltip from 'components/tooltip';
+import { InvitationStatus, Queries } from 'enums';
+
+import { useDeleteUser } from 'services/account';
 
 import { CellActionsProps } from './types';
 
@@ -15,17 +19,31 @@ export const CellActions = ({ row }: CellActionsProps) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const intl = useIntl();
 
+  const deleteUser = useDeleteUser();
+  const queryClient = useQueryClient();
+
   if (!row) return null;
   const {
-    original: { id, confirmed, first_name, last_name },
+    original: { id, invitation, first_name, last_name },
   } = row;
   const displayName = first_name + ' ' + last_name;
+  const canResendInvitation =
+    invitation === InvitationStatus.Expired || invitation === InvitationStatus.Waiting;
+
+  const handleDeleteUser = (userId: string) => {
+    deleteUser.mutate(userId, {
+      onSuccess: () => {
+        queryClient.invalidateQueries(Queries.AccountUsersList);
+        setConfirmDelete(false);
+      },
+    });
+  };
 
   return (
     <div
       className={cx({
         'flex justify-end': true,
-        'space-x-2': !confirmed,
+        'space-x-2': canResendInvitation,
       })}
     >
       <Tooltip
@@ -43,7 +61,7 @@ export const CellActions = ({ row }: CellActionsProps) => {
           className={cx({
             'flex items-center justify-center w-8 h-8 border rounded-full pointer border-green-dark hover:bg-green-light hover:bg-opacity-20':
               true,
-            invisible: confirmed,
+            invisible: !canResendInvitation,
           })}
         >
           <Icon className="w-5 h-5 text-green-dark" icon={MailIcon} />
@@ -71,7 +89,7 @@ export const CellActions = ({ row }: CellActionsProps) => {
 
       <ConfirmationPrompt
         open={confirmDelete}
-        onAccept={() => console.log(`Delete ${id} user`)}
+        onAccept={() => handleDeleteUser(id)}
         onDismiss={() => setConfirmDelete(false)}
         onRefuse={() => setConfirmDelete(false)}
         title="Delete user?"
