@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -23,13 +23,13 @@ export const UsersTable: FC<UsersTableProps> = ({ isOwner }) => {
   const queryParams = useQueryParams();
 
   const {
-    data: { data: users } = { data: [] },
+    data: { data: users },
     isLoading: isLoadingUsers,
     isFetching: isFetchingUsers,
   } = useAccountUsersList({ ...queryParams }, queryOptions);
 
   const isSearching = !!queryParams.search;
-  const hasUsers = !!users.length;
+  const hasUsers = !!users?.length;
 
   const tableProps = {
     columns: [
@@ -61,7 +61,7 @@ export const UsersTable: FC<UsersTableProps> = ({ isOwner }) => {
         Cell: Invitation,
       },
     ],
-    data: users,
+    data: users || [],
     loading: isLoadingUsers || isFetchingUsers,
     sortingEnabled: true,
     manualSorting: false,
@@ -93,7 +93,7 @@ export const UsersTable: FC<UsersTableProps> = ({ isOwner }) => {
             id="YQsqLq"
             values={{
               span: (chunks: string) => <span className="px-1 font-semibold">{chunks}</span>,
-              numUsers: users.length,
+              numUsers: users?.length,
             }}
           />
         </SearchAndInfo>
