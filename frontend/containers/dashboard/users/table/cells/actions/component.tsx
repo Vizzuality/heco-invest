@@ -24,9 +24,9 @@ export const CellActions = ({ row }: CellActionsProps) => {
 
   if (!row) return null;
   const {
-    original: { id, invitation, first_name, last_name },
+    original: { id, invitation, first_name, last_name, email },
   } = row;
-  const displayName = first_name + ' ' + last_name;
+  const displayName = first_name ? first_name + ' ' + last_name : email;
   const canResendInvitation =
     invitation === InvitationStatus.Expired || invitation === InvitationStatus.Waiting;
 
@@ -92,15 +92,15 @@ export const CellActions = ({ row }: CellActionsProps) => {
         onAccept={() => handleDeleteUser(id)}
         onDismiss={() => setConfirmDelete(false)}
         onRefuse={() => setConfirmDelete(false)}
-        title="Delete user?"
+        title={intl.formatMessage({ id: 'tSCuG5', defaultMessage: 'Delete user?' })}
         description={intl.formatMessage(
           {
             defaultMessage:
-              'Are you sure you want to delete <strong>{displayName}</strong>? You cant undo this action.',
-            id: 'bQc7X2',
+              "Are you sure you want to delete <strong>{displayName}</strong>? You can't undo this action.",
+            id: 'eXH6WV',
           },
           {
-            displayName: displayName,
+            displayName,
             strong: (chunk: string) => <strong>{chunk}</strong>,
           }
         )}
