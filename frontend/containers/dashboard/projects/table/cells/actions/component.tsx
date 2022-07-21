@@ -1,22 +1,30 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import RowMenu, { RowMenuItem } from 'containers/dashboard/row-menu';
 
+import ConfirmationPrompt from 'components/confirmation-prompt';
 import { Paths, ProjectStatus } from 'enums';
+
+import { useDeleteAccountProject } from 'services/account';
 
 import { CellActionsProps } from './types';
 
 export const CellActions: FC<CellActionsProps> = ({
   row: {
-    original: { slug, status },
+    original: { slug, name, status },
   },
 }: CellActionsProps) => {
+  const intl = useIntl();
   const router = useRouter();
+
+  const deleteProjectMutation = useDeleteAccountProject();
+
+  const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
 
   const handleRowMenuItemClick = (key: string) => {
     switch (key) {
@@ -33,10 +41,20 @@ export const CellActions: FC<CellActionsProps> = ({
         router.push(`${Paths.Project}/${slug}`);
         return;
       case 'delete':
-        // TODO: confirm and delete
-        console.log('Delete:', slug);
+        setConfirmDelete(true);
         return;
     }
+  };
+
+  const handleDeleteProjectConfirmation = () => {
+    deleteProjectMutation.mutate(
+      { id: slug },
+      {
+        onSuccess: () => {
+          setConfirmDelete(false);
+        },
+      }
+    );
   };
 
   return (
@@ -66,6 +84,31 @@ export const CellActions: FC<CellActionsProps> = ({
           <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
         </RowMenuItem>
       </RowMenu>
+
+      <ConfirmationPrompt
+        open={confirmDelete}
+        onAccept={handleDeleteProjectConfirmation}
+        onDismiss={() => setConfirmDelete(false)}
+        onRefuse={() => setConfirmDelete(false)}
+        title={intl.formatMessage({ defaultMessage: 'Delete project?', id: 'GsO+rH' })}
+        description={
+          <>
+            <p>
+              <FormattedMessage
+                defaultMessage="Are you sure you want to delete “<strong>{projectName}</strong>”?"
+                id="UIQdVc"
+                values={{
+                  projectName: name,
+                  strong: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+                }}
+              />
+            </p>
+            <p>
+              <FormattedMessage defaultMessage="You can't undo this action." id="k0xbVH" />
+            </p>
+          </>
+        }
+      />
     </div>
   );
 };
