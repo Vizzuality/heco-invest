@@ -55,9 +55,8 @@ class Ability
 
   def owner_rights
     can %i[invite], User, account_id: nil
-    can %i[index show], User, invited_by_id: user.id, invited_by_type: "User"
+    can %i[index show destroy], User, invited_by_id: user.id, invited_by_type: "User", account_id: nil
     can %i[destroy], User.where(account_id: user.account_id).where.not(id: user.id)
-    can %i[destroy], User, invited_by_id: user.id, invited_by_type: "User", account_id: nil
     can :transfer_ownership, User, account_id: user.account.id
 
     can :destroy, Project, {project_developer: {account: {owner_id: user.id}}}
