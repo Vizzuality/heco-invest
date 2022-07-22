@@ -81,6 +81,22 @@ RSpec.describe "Backoffice: Investors", type: :system do
           expect(page).to have_text(ReviewStatus.find("approved").name)
         end
       end
+
+      context "when account language is different" do
+        before do
+          I18n.with_locale "pt" do
+            unapproved_investor.account.update! language: "pt", about_pt: "ABOUT PT", about_en: ""
+          end
+        end
+
+        it "still flips the status to approved" do
+          within_row(unapproved_investor.name) do
+            expect(page).to have_text(ReviewStatus.find("unapproved").name)
+            click_on t("backoffice.common.approve")
+            expect(page).to have_text(ReviewStatus.find("approved").name)
+          end
+        end
+      end
     end
 
     context "when rejecting investor" do
@@ -92,6 +108,22 @@ RSpec.describe "Backoffice: Investors", type: :system do
             click_on t("backoffice.common.reject")
           }.to have_enqueued_mail(UserMailer, :rejected).with(approved_investor_owner).once
           expect(page).to have_text(ReviewStatus.find("rejected").name)
+        end
+      end
+
+      context "when account language is different" do
+        before do
+          I18n.with_locale "pt" do
+            approved_investor.account.update! language: "pt", about_pt: "ABOUT PT", about_en: ""
+          end
+        end
+
+        it "still flips the status to rejected" do
+          within_row(approved_investor.name) do
+            expect(page).to have_text(ReviewStatus.find("approved").name)
+            click_on t("backoffice.common.reject")
+            expect(page).to have_text(ReviewStatus.find("rejected").name)
+          end
         end
       end
     end
