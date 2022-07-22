@@ -43,8 +43,10 @@ export const getServerSideProps = withLocalizedRequests(
   // Property 'query' does not exist on type 'GetStaticPropsContext<ParsedUrlQuery, PreviewData>'.
   async ({ params: { id }, locale, query }) => {
     let project;
+    let enums;
 
     try {
+      enums = await getEnums();
       ({ data: project } = await getProject(id as string, PROJECT_QUERY_PARAMS));
     } catch (e) {
       // If getting the project fails, it's most likely because the record has not been found.
@@ -62,8 +64,6 @@ export const getServerSideProps = withLocalizedRequests(
     if (project && query?.preview) {
       return { notFound: true };
     }
-
-    const enums = await getEnums();
 
     return {
       props: {
