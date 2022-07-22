@@ -150,6 +150,28 @@ RSpec.describe "API V1 Account Users", type: :request do
             }.to have_enqueued_mail(UserMailer, :destroyed).with(account_user.email, account_user.full_name, account_user.account_language)
           end
         end
+
+        context "when owner deletes user which he invited" do
+          let(:user_without_account) { create :user }
+          let(:user_id) { user_without_account.id }
+
+          before do
+            user_without_account.invite! account_owner
+            sign_in account_owner
+          end
+
+          it "user is deleted" do |example|
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
+            expect { user_without_account.reload }.to raise_error(ActiveRecord::RecordNotFound)
+          end
+
+          it "send email" do |example|
+            expect {
+              submit_request example.metadata
+            }.to have_enqueued_mail(UserMailer, :destroyed).with(user_without_account.email, user_without_account.full_name, user_without_account.ui_language)
+          end
+        end
       end
     end
   end
