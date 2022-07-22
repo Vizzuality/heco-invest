@@ -100,7 +100,14 @@ export const CellActions = ({ row }: CellActionsProps) => {
         onDismiss={handleDismiss}
         onRefuse={handleDismiss}
         onAcceptLoading={deleteUser.isLoading}
-        confirmationError={deleteUser.error?.message[0]?.title}
+        confirmationError={
+          deleteUser.isError &&
+          (deleteUser.error?.message?.[0]?.title ||
+            intl.formatMessage({
+              defaultMessage: 'Something went wrong while trying to delete the user',
+              id: 'sIhhxz',
+            }))
+        }
         title={intl.formatMessage({ id: 'tSCuG5', defaultMessage: 'Delete user?' })}
         description={intl.formatMessage(
           {
