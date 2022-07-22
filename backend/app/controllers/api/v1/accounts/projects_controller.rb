@@ -10,7 +10,7 @@ module API
           projects = @projects
             .where(project_developer_id: current_user.account.project_developer.id)
             .includes(:project_developer, :involved_project_developers, project_images: {file_attachment: :blob})
-          projects = API::Filterer.new(projects, filter_params.to_h).call
+          projects = projects.dynamic_search ["name_#{I18n.locale}"], filter_params[:full_text], [] if filter_params[:full_text].present?
           projects = projects.order(created_at: :desc)
           render json: ProjectSerializer.new(
             projects,
