@@ -11,7 +11,11 @@ namespace :api, format: "json" do
         post :info
       end
     end
-    resource :user, only: [:create, :show]
+    resource :user, only: [:create, :show] do
+      collection do
+        post :change_password
+      end
+    end
     resource :email_confirmation, only: [:create, :show]
     resource :reset_password, only: [:create, :update]
 
