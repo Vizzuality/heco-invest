@@ -14,7 +14,7 @@ import CloseIcon from 'svgs/ui/close.svg';
 
 import { LocationSearcherProps } from './types';
 
-export const LocationSearcher: FC<LocationSearcherProps> = ({ onLocationSelected }) => {
+export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocationSelected }) => {
   const intl = useIntl();
   const placesRef = useRef();
 
@@ -51,7 +51,12 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ onLocationSelected
       <Script
         src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places&callback=onGoogleMapsReady`}
       />
-      <div className="relative z-10">
+      <div
+        className={cx({
+          'relative z-10': true,
+          [className]: !!className,
+        })}
+      >
         <PlacesAutocomplete
           ref={placesRef}
           value={address}
