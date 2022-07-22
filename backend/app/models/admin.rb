@@ -16,6 +16,10 @@ class Admin < ApplicationRecord
     Arel.sql("CONCAT_WS(' ', admins.first_name, admins.last_name)")
   end
 
+  def locale
+    ui_language
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
