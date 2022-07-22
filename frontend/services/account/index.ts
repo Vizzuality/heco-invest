@@ -287,7 +287,7 @@ export function useAccountUsersList(
   );
 }
 
-export const useDeleteUser = (): UseMutationResult<{}> => {
+export const useDeleteUser = (): UseMutationResult<{}, ErrorResponse> => {
   const deleteUser = async (id: string) =>
     await API.delete(`/api/v1/account/users/${id}`, { data: {} });
 

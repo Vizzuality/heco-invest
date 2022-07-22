@@ -39,6 +39,13 @@ export const CellActions = ({ row }: CellActionsProps) => {
     });
   };
 
+  const handleDismiss = () => {
+    if (deleteUser.isError) {
+      deleteUser.reset();
+    }
+    setConfirmDelete(false);
+  };
+
   return (
     <div
       className={cx({
@@ -90,8 +97,10 @@ export const CellActions = ({ row }: CellActionsProps) => {
       <ConfirmationPrompt
         open={confirmDelete}
         onAccept={() => handleDeleteUser(id)}
-        onDismiss={() => setConfirmDelete(false)}
-        onRefuse={() => setConfirmDelete(false)}
+        onDismiss={handleDismiss}
+        onRefuse={handleDismiss}
+        onAcceptLoading={deleteUser.isLoading}
+        confirmationError={deleteUser.error?.message[0]?.title}
         title={intl.formatMessage({ id: 'tSCuG5', defaultMessage: 'Delete user?' })}
         description={intl.formatMessage(
           {

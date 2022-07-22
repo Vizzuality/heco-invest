@@ -24,12 +24,9 @@ export const CellInvitation = ({ value }: CellInvitationProps) => {
     }
   };
 
-  console.log(value);
-
   return (
     <div
-      className={cx({
-        'items-center inline-block px-2.5 py-0.5 bg-opacity-20 rounded-2xl': true,
+      className={cx('items-center inline-block px-2.5 py-0.5 bg-opacity-20 rounded-2xl', {
         'bg-green-light': value === InvitationStatus.Completed,
         'bg-orange ml-2': value === InvitationStatus.Waiting,
         'bg-red-300 ml-2': value === InvitationStatus.Expired,
