@@ -27,6 +27,12 @@ export interface ConfirmationPromptProps {
    */
   onAccept: () => void;
   /**
+   * Whether the onAccept function is loading. Defauts to 'false'
+   */
+  onAcceptLoading?: boolean;
+  /** Message of the error triggered by the confirmation the action. */
+  confirmationError?: string;
+  /**
    * Callback executed when the user refuses the action
    */
   onRefuse: () => void;

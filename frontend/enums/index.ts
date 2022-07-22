@@ -151,4 +151,5 @@ export enum ImpactAreas {
 export enum InvitationStatus {
   Waiting = 'waiting',
   Completed = 'completed',
+  Expired = 'expired',
 }

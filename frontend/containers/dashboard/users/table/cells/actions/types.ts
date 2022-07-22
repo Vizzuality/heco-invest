@@ -1,3 +1,5 @@
+import { InvitationStatus } from 'enums';
+
 export interface CellActionsProps {
   row: {
     original: {
@@ -6,6 +8,7 @@ export interface CellActionsProps {
       confirmed: boolean;
       first_name: string;
       last_name: string;
+      invitation: InvitationStatus;
     };
   };
 }
