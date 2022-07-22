@@ -22,7 +22,6 @@ const Template: Story<FiltersProps> = () => {
           filtersInputValue={filters}
           closeFilters={() => setOpenFilters(false)}
           onSubmitFilters={(filters) => {
-            console.log(filters);
             setOpenFilters(false);
           }}
           setFiltersInputValue={(filters) => setFilters(filters)}
