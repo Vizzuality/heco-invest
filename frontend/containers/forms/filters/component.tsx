@@ -1,14 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
 
 import { ChevronDown, ChevronUp, X as CloseIcon } from 'react-feather';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
-
-import { useRouter } from 'next/router';
-
-import { useDiscoverPath, useQueryParams } from 'helpers/pages';
 
 import Button from 'components/button';
 import Checkbox from 'components/forms/checkbox';
@@ -21,16 +17,17 @@ import { EnumTypes } from 'enums';
 
 import { useEnums } from 'services/enums/enumService';
 
-import { FiltersProps, FilterForm, FilterParams } from './types';
+import { FiltersProps, FilterForm } from './types';
 
-export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
+export const Filters: FC<FiltersProps> = ({
+  closeFilters,
+  setFiltersInputValue,
+  filtersInputValue,
+  onSubmitFilters,
+}) => {
   const { formatMessage } = useIntl();
-  const { push } = useRouter();
-  const { page, search, sorting, ...initialFilters } = useQueryParams();
-  const pathname = useDiscoverPath();
 
   const [showMoreFilters, setShowMoreFilters] = useState(false);
-  const [filtersState, setFiltersState] = useState<Partial<FilterForm>>({});
 
   const {
     register,
@@ -55,60 +52,15 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
     formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
   ];
 
-  const handleFilter = (filterParams?: FilterParams) => {
-    if (filterParams) {
-      // Replace or add the new filters to the search params
-      push({ pathname, query: { page: 1, search, sorting, ...filterParams } }, undefined, {
-        shallow: true,
-      });
-    } else {
-      // Clear the filters removing them from the search params
-      push({ query: { page: 1, search, sorting } }, undefined, {
-        shallow: true,
-      });
-    }
-    closeFilters();
-  };
-
-  const onSubmit: SubmitHandler<FilterForm> = (filters) => {
-    let filterParams: Partial<FilterParams> = {};
-    if (filters) {
-      // Create the search params with the API params format
-      Object.entries(filters).forEach(([key, value]) => {
-        // Just send the used filters
-        if (value === true) {
-          filterParams[`filter[${key}]`] = `${value}`;
-        }
-        if (typeof value === 'string') {
-          filterParams[`filter[${key}]`] = value;
-        }
-      });
-      // Replace the filter values
-      handleFilter(filterParams as FilterParams);
-    } else {
-      // Remove the filters
-      handleFilter();
-    }
-  };
-
   const handleClear = () => {
-    handleFilter();
+    onSubmitFilters({});
     reset();
   };
 
   useEffect(() => {
     // If I have the search params when the component mounts, I set the for values according to them.
-    Object.entries(initialFilters as unknown as FilterParams).forEach(([key, value]) => {
-      // Change the filter param name to the form input name
-      const filterName = key.replace('filter[', '').replace(']', '');
-      // The only_verified field is a boolean, so it is parsed from a string. The other ones are string arrays, so they are parsed from string to array using split
-      const filterValue: boolean | string =
-        filterName === 'only_verified' ? JSON.parse(value) : value;
-      setValue(filterName as keyof FilterForm, filterValue);
-      setFiltersState((initialFilterState) => ({
-        ...initialFilterState,
-        [filterName]: filterValue,
-      }));
+    Object.entries(filtersInputValue).forEach(([key, value]) => {
+      setValue(key as keyof FilterForm, value);
     });
     // The dependencies are empty because we just need it to run on mounting and to avoid a infinite loop
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -117,33 +69,43 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
   const onChange = (ev: any) => {
     const { value, name } = ev.target;
     // Remove check when clicking on a ckecked tag
-    if (filtersState[name] === value) {
+    if (filtersInputValue[name] === value) {
       setValue(name, undefined);
-      setFiltersState({ ...filtersState, [name]: undefined });
+      setFiltersInputValue({ ...filtersInputValue, [name]: undefined });
       return;
     }
 
     setValue(name, value);
-    setFiltersState({ ...filtersState, [name]: value });
+    setFiltersInputValue({ ...filtersInputValue, [name]: value });
+  };
+
+  const onCheckboxChange = (ev: any) => {
+    const { name, checked } = ev.target;
+    setValue(name, checked);
+    setFiltersInputValue({ ...filtersInputValue, [name]: checked });
   };
 
   return isLoading ? (
     <Loading />
   ) : (
     <div className="p-6">
-      <Button
-        theme="naked"
-        icon={CloseIcon}
-        className="absolute px-0 py-0 right-4"
-        onClick={closeFilters}
-      />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmitFilters)}>
         <div>
-          <div className="flex items-center mb-4">
-            <Checkbox id="verified" name="only_verified" register={register} />
-            <label htmlFor="verified" className="mt-1 text-sm font-normal text-gray-800">
-              <FormattedMessage defaultMessage="Show verified content only" id="i9eK6b" />
-            </label>
+          <div className="flex justify-between">
+            <div className="flex items-center mb-4">
+              <Checkbox
+                id="verified"
+                name="only_verified"
+                register={register}
+                registerOptions={{ onChange: onCheckboxChange }}
+              />
+              <label htmlFor="verified" className="mt-1 text-sm font-normal text-gray-800">
+                <FormattedMessage defaultMessage="Show verified content only" id="i9eK6b" />
+              </label>
+            </div>
+            <Button theme="naked" className="px-0 py-0" onClick={closeFilters}>
+              <CloseIcon className="w-4 h-4 transition-transform rotate-0 hover:rotate-180" />
+            </Button>
           </div>
 
           <div className="flex flex-col flex-wrap sm:flex-row gap-y-4">
@@ -291,7 +253,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters }) => {
                 <FormattedMessage defaultMessage="Clear filters" id="F4gyn3" />
               </Button>
               <Button theme="primary-green" type="submit">
-                <FormattedMessage defaultMessage="Apply" id="EWw/tK" />
+                <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
               </Button>
             </div>
           </div>

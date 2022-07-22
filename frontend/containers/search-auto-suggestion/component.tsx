@@ -4,11 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
-import { useRouter } from 'next/router';
-
-import { omit } from 'lodash-es';
-
-import { useDiscoverPath, useFilterNames, useQueryParams } from 'helpers/pages';
+import { useFilterNames } from 'helpers/pages';
 
 import Button from 'components/button';
 import { Enum } from 'types/enums';
@@ -19,13 +15,13 @@ import { SeachAutoSuggestionProps } from './types';
 
 export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
   searchText,
-  onChangeOpenSuggestion,
+  closeSuggestions,
+  onFilterSuggestion,
+  onSearchSuggestion,
+  showSuggestion,
 }) => {
   const [autoSuggestions, setAutoSuggestions] = useState<Enum[]>();
   const { data, isLoading } = useEnums();
-  const { page, search, sorting, ...initialFilters } = useQueryParams();
-  const { push } = useRouter();
-  const pathname = useDiscoverPath();
 
   const filterNames = useFilterNames();
 
@@ -36,10 +32,10 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
     }
   }, [isLoading]);
 
-  const closeSuggestions = useCallback(() => {
-    onChangeOpenSuggestion(false);
+  const handleCloseSuggestions = useCallback(() => {
+    closeSuggestions();
     setAutoSuggestions(undefined);
-  }, [onChangeOpenSuggestion]);
+  }, [closeSuggestions]);
 
   useEffect(() => {
     if (searchText.length > 1) {
@@ -53,94 +49,57 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
             : 1;
         });
       if (filtersToSuggest?.length) {
-        onChangeOpenSuggestion(true);
         setAutoSuggestions(filtersToSuggest);
         return;
       }
-      closeSuggestions();
     }
-    closeSuggestions();
-  }, [closeSuggestions, filters, onChangeOpenSuggestion, searchText]);
-
-  const handleFilter = (filter: Enum) => {
-    const filterKey = `filter[${filter.type}]`;
-    const newFilters = omit(initialFilters, filterKey);
-    push(
-      {
-        pathname,
-        query: {
-          page: 1,
-          sorting,
-          ...newFilters,
-          [filterKey]: filter.id,
-        },
-      },
-      undefined,
-      {
-        shallow: true,
-      }
-    );
-    closeSuggestions();
-  };
-
-  const handleSearch = () => {
-    push(
-      {
-        pathname,
-        query: {
-          page: 1,
-          search: searchText,
-          sorting,
-          ...initialFilters,
-        },
-      },
-      undefined,
-      {
-        shallow: true,
-      }
-    );
-    closeSuggestions();
-  };
+    handleCloseSuggestions();
+  }, [closeSuggestions, filters, searchText]);
 
   return (
     <div
       id="filters"
       role="region"
       aria-labelledby="filters-button"
-      className={cx(
-        'h-0 w-full bg-white -mt-1 rounded-b-4xl drop-shadow-xl transition-all ease-in',
-        {
-          'h-fit border-t-gray-200 border-t-2 overflow-hidden': !!autoSuggestions,
-        }
-      )}
+      className={cx('w-full bg-white -mt-1 rounded-b-4xl drop-shadow-xl transition-all ease-in', {
+        'h-fit border-t-gray-200 border-t-2': showSuggestion,
+        'h-0 overflow-hidden': !showSuggestion,
+      })}
     >
-      {!!autoSuggestions?.length && (
+      {showSuggestion && (
         <div className="py-5 px-9">
           <div>
-            <Button key="custom" theme="naked" className="px-0 py-2" onClick={handleSearch}>
+            <Button key="custom" theme="naked" className="px-0 py-2" onClick={onSearchSuggestion}>
               &quot;{searchText}&quot;
               <span className="ml-2 text-gray-600">
                 <FormattedMessage defaultMessage="Custom search" id="AoHRBG" />
               </span>
             </Button>
           </div>
-          <div>
-            <p className="py-2 text-sm text-gray-800">
-              <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
-            </p>
-          </div>
-          <div className="flex flex-col">
-            {autoSuggestions.map((item) => (
-              <Button
-                key={item.id}
-                theme="naked"
-                className="px-0"
-                onClick={() => handleFilter(item)}
-              >
-                {item.name} {item.type}
-                <span className="ml-2 text-gray-600">{filterNames[item.type]}</span>
-              </Button>
-            ))}
+          <div
+            className={cx('overflow-hidden', {
+              'h-0': !autoSuggestions?.length,
+              'h-auto': autoSuggestions?.length,
+            })}
+          >
+            <div>
+              <p className="py-2 text-sm text-gray-800">
+                <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
+              </p>
+            </div>
+            <div className="flex flex-col">
+              {autoSuggestions?.map((item) => (
+                <Button
+                  key={item.id}
+                  theme="naked"
+                  className="px-0"
+                  onClick={() => onFilterSuggestion(item)}
+                >
+                  {item.name}
+                  <span className="ml-2 text-gray-600">{filterNames[item.type]}</span>
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
       )}

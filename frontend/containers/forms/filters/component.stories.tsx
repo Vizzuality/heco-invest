@@ -13,10 +13,20 @@ export default {
 
 const Template: Story<FiltersProps> = () => {
   const [openFilters, setOpenFilters] = useState(false);
+  const [filters, setFilters] = useState({});
   return (
     <>
       <Button onClick={() => setOpenFilters(true)}>Open filters</Button>
-      {openFilters && <Filters closeFilters={() => setOpenFilters(false)} />}
+      {openFilters && (
+        <Filters
+          filtersInputValue={filters}
+          closeFilters={() => setOpenFilters(false)}
+          onSubmitFilters={(filters) => {
+            setOpenFilters(false);
+          }}
+          setFiltersInputValue={(filters) => setFilters(filters)}
+        />
+      )}
     </>
   );
 };

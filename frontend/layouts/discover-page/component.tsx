@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 import { useQueryParams } from 'helpers/pages';
 
-import DiscoverSearch, { DiscoverSearchProps } from 'containers/layouts/discover-search';
+import DiscoverSearch from 'containers/layouts/discover-search';
 
 import LayoutContainer from 'components/layout-container';
 import SortingButtons, { SortingOrderType } from 'components/sorting-buttons';
@@ -41,12 +41,10 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   // This shouldn't be needed, but due to CSS positioning / z-index issues we need to have the DiscoverSearch
   // components both in the header and in this layout; which one is visible depends on the screen resolution.
   // These states are here to keep both DiscoverSearch in sync, in case the user resizes their screen.
-  const [searchInputValue, setSearchInputValue] = useState<string>('');
+
   const [sorting, setSorting] =
     useState<{ sortBy: SortingOptionKey; sortOrder: SortingOrderType }>(defaultSorting);
 
-  // Hook to use 'search', 'filter', 'page' and 'sorting' query params
-  // http://localhost:3000/discover/projects?page=2&search=sar&sorting=name+asc
   const queryParams = useQueryParams(sorting);
 
   const queryOptions = { keepPreviousData: false };
@@ -123,20 +121,9 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   ]) || { data: [], meta: [] };
 
   useEffect(() => {
-    const { search } = queryParams;
-    setSearchInputValue(search);
-  }, [queryParams]);
-
-  useEffect(() => {
     const [sortBy, sortOrder]: any = queryParams.sorting.split(' ');
     setSorting(sortBy && sortOrder ? { sortBy, sortOrder } : defaultSorting);
   }, [defaultSorting, queryParams.sorting]);
-
-  const handleSearch = (searchText: string) => {
-    push({ query: { ...queryParams, page: 1, search: searchText } }, undefined, {
-      shallow: true,
-    });
-  };
 
   const handleSorting = ({
     sortBy,
@@ -151,18 +138,6 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
         sorting: `${sortBy || sorting.sortBy} ${sortOrder || sorting.sortOrder}`,
       },
     });
-  };
-
-  const getFiltersQuantity = () => {
-    const { page, search, sorting, ...filters } = queryParams;
-    return Object.keys(filters)?.length;
-  };
-
-  const discoverSearchProps: DiscoverSearchProps = {
-    searchText: searchInputValue,
-    onSearch: handleSearch,
-    onSearchChange: setSearchInputValue,
-    filtersQuantity: getFiltersQuantity(),
   };
 
   const getSortingOptions = () => {
@@ -194,12 +169,9 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     <div className="fixed top-0 bottom-0 left-0 right-0 h-screen bg-background-dark">
       <div className="flex flex-col h-screen overflow-auto">
         <div className="z-10">
-          <Header {...discoverSearchProps} />
+          <Header />
           <LayoutContainer className="z-10 flex justify-center pt-1 mt-0 mb-2 pointer-events-none xl:hidden xl:mb-6 xl:mt-0 xl:left-0 xl:right-0 xl:h-20 xl:fixed xl:top-3">
-            <DiscoverSearch
-              className="w-full max-w-3xl pointer-events-auto"
-              {...discoverSearchProps}
-            />
+            <DiscoverSearch className="w-full max-w-3xl pointer-events-auto" />
           </LayoutContainer>
         </div>
         <main className="z-0 flex flex-col flex-grow h-screen overflow-y-scroll">
