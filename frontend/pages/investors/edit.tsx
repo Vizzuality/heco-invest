@@ -50,7 +50,10 @@ const EditInvestorPage: PageComponent<EditInvestorServerSideProps, FormPageLayou
     router.push(queryReturnPath || (isOutroPage ? Paths.Discover : Paths.Dashboard));
   };
 
-  const { data: investor } = useInvestor();
+  const { data: investor } = useInvestor({
+    // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
+    locale: null,
+  });
 
   return (
     <ProtectedPage permissions={[UserRoles.Investor]}>
