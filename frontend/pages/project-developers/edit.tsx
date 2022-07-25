@@ -38,7 +38,8 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
   const { formatMessage } = useIntl();
 
   const updateProjectDeveloper = useUpdateProjectDeveloper();
-  const { projectDeveloper } = useProjectDeveloper({});
+  const { data: projectDeveloper } = useProjectDeveloper();
+
   const queryReturnPath = useQueryReturnPath();
 
   const handleOnComplete = () => {
