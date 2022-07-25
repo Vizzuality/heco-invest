@@ -114,8 +114,8 @@ RSpec.describe "Backoffice: Projects", type: :system do
         it "can update project information" do
           fill_in t("simple_form.labels.project.name"), with: "New name"
           attach_file t("simple_form.labels.project.project_images"), [Rails.root.join("spec/fixtures/files/picture.jpg"), Rails.root.join("spec/fixtures/files/picture_2.jpg")]
-          using_wait_time 60 do
-            sleep 3
+          using_wait_time 120 do
+            sleep 5
             attach_file :shapefile, Rails.root.join("spec/fixtures/files/shapefile.zip")
             expect(page).to have_text(t("backoffice.projects.form.shapefile_loaded"))
           end
