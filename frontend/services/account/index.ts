@@ -108,22 +108,37 @@ export function useUpdateProjectDeveloper(
 }
 
 // Create Project
-export function useCreateProject(): UseMutationResult<
+export const createProject = async (
+  data: ProjectCreationPayload,
+  params?: {
+    locale?: string;
+  }
+): Promise<AxiosResponse<ResponseData<Project>>> => {
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/projects/`,
+    method: 'POST',
+    data: data,
+    params: params || {},
+  };
+
+  return await API(config);
+};
+
+export function useCreateProject(
+  params?: Parameters<typeof updateProject>[1]
+): UseMutationResult<
   AxiosResponse<ResponseData<Project>>,
   AxiosError<ErrorResponse>,
   ProjectCreationPayload
 > {
   const queryClient = useQueryClient();
 
-  const createProject = async (
-    data: ProjectCreationPayload
-  ): Promise<AxiosResponse<ResponseData<Project>>> => {
-    return await API.post('/api/v1/account/projects', data);
-  };
-
-  return useMutation(createProject, {
-    onSuccess: () => {
+  return useMutation((data) => createProject(data, params), {
+    onSuccess: (result) => {
+      const { id } = result.data.data;
+      queryClient.invalidateQueries([Queries.Project, id]);
       queryClient.invalidateQueries(Queries.AccountProjectList);
+      queryClient.setQueryData([Queries.Project, id], result.data.data);
     },
   });
 }
