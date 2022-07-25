@@ -81,19 +81,30 @@ export function useCreateProjectDeveloper(): UseMutationResult<
   });
 }
 
-// Update PD
-const updateProjectDeveloper = async (
-  data: ProjectDeveloperSetupForm
+export const updateProjectDeveloper = async (
+  data: ProjectDeveloperSetupForm,
+  params?: {
+    locale?: string;
+  }
 ): Promise<AxiosResponse<ResponseData<ProjectDeveloper>>> => {
-  return await API.put('/api/v1/account/project_developer', data);
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/project_developer`,
+    method: 'PUT',
+    data: data,
+    params: params || {},
+  };
+
+  return await API(config);
 };
 
-export function useUpdateProjectDeveloper(): UseMutationResult<
+export function useUpdateProjectDeveloper(
+  params?: Parameters<typeof updateProjectDeveloper>[1]
+): UseMutationResult<
   AxiosResponse<ResponseData<ProjectDeveloper>>,
   AxiosError<ErrorResponse>,
   ProjectDeveloperSetupForm
 > {
-  return useMutation(updateProjectDeveloper);
+  return useMutation((data) => updateProjectDeveloper(data, params));
 }
 
 // Create Project
