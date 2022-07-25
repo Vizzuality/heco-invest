@@ -20,6 +20,11 @@ import { GroupedEnums } from 'types/enums';
 import { useCreateProject } from 'services/account';
 import { getEnums } from 'services/enums/enumService';
 
+const PROJECT_QUERY_PARAMS = {
+  // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
+  locale: null,
+};
+
 export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
   const enums = await getEnums();
 
@@ -39,12 +44,12 @@ const CreateProject: PageComponent<CreateProjectProps> = ({ enums }) => {
   const { formatMessage } = useIntl();
   const router = useRouter();
 
-  const createProject = useCreateProject();
   const queryReturnPath = useQueryReturnPath();
 
   const handleOnComplete = () => {
     router.push(queryReturnPath || Paths.DashboardProjects);
   };
+  const createProject = useCreateProject(PROJECT_QUERY_PARAMS);
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
