@@ -198,16 +198,30 @@ export function useCreateInvestor(): UseMutationResult<
   });
 }
 
-export function useUpdateInvestor(): UseMutationResult<
+export const updateInvestor = async (
+  data: InvestorForm,
+  params?: {
+    locale?: string;
+  }
+): Promise<AxiosResponse<ResponseData<Investor>>> => {
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/investor`,
+    method: 'PUT',
+    data: data,
+    params: params || {},
+  };
+
+  return await API(config);
+};
+
+export function useUpdateInvestor(
+  params?: Parameters<typeof updateProjectDeveloper>[1]
+): UseMutationResult<
   AxiosResponse<ResponseData<Investor>>,
   AxiosError<ErrorResponse>,
   InvestorForm
 > {
-  const updateInvestor = async (
-    data: InvestorForm
-  ): Promise<AxiosResponse<ResponseData<Investor>>> => API.put('/api/v1/account/investor', data);
-
-  return useMutation(updateInvestor);
+  return useMutation((data) => updateInvestor(data, params));
 }
 
 export function useAccount(params = {}) {
