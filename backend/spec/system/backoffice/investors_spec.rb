@@ -162,12 +162,30 @@ RSpec.describe "Backoffice: Investors", type: :system do
     context "account language section" do
       before { within_sidebar { click_on t("backoffice.account.account_language") } }
 
-      it "can update account language" do
-        expect(page).to have_select(t("simple_form.labels.account.language"), selected: "English")
-        select "Spanish", from: t("simple_form.labels.account.language")
-        click_on t("backoffice.common.save")
-        expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.investor")))
-        expect(approved_investor.account.reload.language).to eq("es")
+      context "when new language has all text translated" do
+        before do
+          approved_investor.account.update! about_es: "ES"
+          approved_investor.update! other_information_es: "ES", mission_es: "ES", prioritized_projects_description: "ES"
+        end
+
+        it "can update account language" do
+          expect(page).to have_select(t("simple_form.labels.account.language"), selected: "English")
+          select "Spanish", from: t("simple_form.labels.account.language")
+          click_on t("backoffice.common.save")
+          expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.investor")))
+          expect(approved_investor.account.reload.language).to eq("es")
+        end
+      end
+
+      context "when new language is missing some translations" do
+        it "cannot update account language" do
+          expect(page).to have_select(t("simple_form.labels.account.language"), selected: "English")
+          select "Spanish", from: t("simple_form.labels.account.language")
+          click_on t("backoffice.common.save")
+          expect(page).to have_text(t("simple_form.error_notification.default_message"))
+          expect(page).to have_text("Account about can't be blank")
+          expect(page).to have_text("Mission can't be blank")
+        end
       end
     end
 

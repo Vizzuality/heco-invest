@@ -45,7 +45,7 @@ module API
         end
 
         def investor_params
-          params.permit :language, :investor_type, :mission, :prioritized_projects_description, :other_information,
+          params.permit :investor_type, :mission, :prioritized_projects_description, :other_information,
             :previously_invested, categories: [], ticket_sizes: [], instrument_types: [], impacts: [], sdgs: []
         end
       end

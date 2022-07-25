@@ -29,7 +29,7 @@ module Backoffice
     end
 
     def update
-      if I18n.with_locale(content_language) { @project_developer.update(update_params) }
+      if I18n.with_locale(update_language) { @project_developer.update(update_params) }
         redirect_back(
           fallback_location: edit_backoffice_project_developer_path(@project_developer.id),
           notice: t("backoffice.messages.success_update", model: t("backoffice.common.project_developer"))
@@ -73,6 +73,10 @@ module Backoffice
         impacts: [],
         mosaics: []
       )
+    end
+
+    def update_language
+      update_params.dig(:account_attributes, :language).presence || content_language
     end
 
     def fetch_project_developer

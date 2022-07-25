@@ -3,13 +3,13 @@ module Backoffice
     before_action :fetch_account, only: [:approve, :reject]
 
     def approve
-      I18n.with_locale(@account.language) { @account.approved! }
+      @account.approved!
       UserMailer.approved(@account.owner).deliver_later
       redirect_back(fallback_location: admin_root_path)
     end
 
     def reject
-      I18n.with_locale(@account.language) { @account.rejected! }
+      @account.rejected!
       UserMailer.rejected(@account.owner).deliver_later
       redirect_back(fallback_location: admin_root_path)
     end
