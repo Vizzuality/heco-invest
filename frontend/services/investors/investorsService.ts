@@ -4,13 +4,12 @@ import { UseQueryResult, UseQueryOptions, useMutation, useQueryClient } from 're
 
 import { useRouter } from 'next/router';
 
-import { AxiosResponse, AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig } from 'axios';
 
 import { useLocalizedQuery } from 'hooks/query';
 
-import { Queries, UserRoles } from 'enums';
+import { Queries } from 'enums';
 import { Investor } from 'types/investor';
-import { User } from 'types/user';
 
 import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
@@ -73,29 +72,6 @@ export function useInvestor(id: string, initialData?: Investor, params?: SingleR
     [query]
   );
 }
-
-/** Get the Current Investor if the UserRole is investor */
-export const useCurrentInvestor = (user: User) => {
-  const getCurrentInvestor = async (): Promise<Investor> =>
-    await API.get('/api/v1/account/investor').then(
-      (response: AxiosResponse<ResponseData<Investor>> & { investor: Investor }) =>
-        response.data.data
-    );
-
-  const query = useLocalizedQuery([Queries.Account, user], getCurrentInvestor, {
-    // Creates the conditional to only fetch the data if the user is a investor user
-    enabled: user?.role === UserRoles.Investor,
-    ...staticDataQueryOptions,
-  });
-
-  return useMemo(
-    () => ({
-      ...query,
-      investor: query.data,
-    }),
-    [query]
-  );
-};
 
 /** Hook with mutation that handle favorite state. If favorite is false, creates a POST request to set favorite to true, and if favorite is true, creates a DELETE request that set favorite to false. */
 export const useFavoriteInvestor = () => {
