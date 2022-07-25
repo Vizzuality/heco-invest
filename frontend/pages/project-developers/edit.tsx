@@ -38,7 +38,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
   const { formatMessage } = useIntl();
 
   const updateProjectDeveloper = useUpdateProjectDeveloper();
-  const { data: projectDeveloper } = useProjectDeveloper();
+  const { data: projectDeveloper } = useProjectDeveloper({
+    // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
+    locale: null,
+  });
 
   const queryReturnPath = useQueryReturnPath();
 
