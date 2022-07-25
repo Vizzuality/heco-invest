@@ -19,6 +19,11 @@ import { GroupedEnums } from 'types/enums';
 import { useInvestor, useUpdateInvestor } from 'services/account';
 import { getEnums } from 'services/enums/enumService';
 
+const INVESTOR_QUERY_PARAMS = {
+  // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
+  locale: null,
+};
+
 export async function getServerSideProps(ctx) {
   const enums = await getEnums();
   return {
@@ -39,8 +44,10 @@ const EditInvestorPage: PageComponent<EditInvestorServerSideProps, FormPageLayou
   const router = useRouter();
   const { formatMessage } = useIntl();
 
-  const updateInvestor = useUpdateInvestor();
   const queryReturnPath = useQueryReturnPath();
+  const updateInvestor = useUpdateInvestor(INVESTOR_QUERY_PARAMS);
+
+  const { data: investor } = useInvestor(INVESTOR_QUERY_PARAMS);
 
   const handleOnComplete = () => {
     router.push(queryReturnPath || Paths.Dashboard);
@@ -49,11 +56,6 @@ const EditInvestorPage: PageComponent<EditInvestorServerSideProps, FormPageLayou
   const handleOnLeave = (isOutroPage) => {
     router.push(queryReturnPath || (isOutroPage ? Paths.Discover : Paths.Dashboard));
   };
-
-  const { data: investor } = useInvestor({
-    // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
-    locale: null,
-  });
 
   return (
     <ProtectedPage permissions={[UserRoles.Investor]}>
