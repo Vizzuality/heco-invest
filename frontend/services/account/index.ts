@@ -76,6 +76,8 @@ export function useCreateProjectDeveloper(): UseMutationResult<
 
   return useMutation(createProjectDeveloper, {
     onSuccess: (result) => {
+      queryClient.invalidateQueries(Queries.ProjectDeveloper);
+      queryClient.invalidateQueries(Queries.ProjectDeveloperList);
       queryClient.setQueryData([Queries.ProjectDeveloper, locale], result.data.data);
     },
   });
@@ -104,7 +106,16 @@ export function useUpdateProjectDeveloper(
   AxiosError<ErrorResponse>,
   ProjectDeveloperSetupForm
 > {
-  return useMutation((data) => updateProjectDeveloper(data, params));
+  const queryClient = useQueryClient();
+
+  return useMutation((data) => updateProjectDeveloper(data, params), {
+    onSuccess: (result) => {
+      const { data } = result.data;
+      queryClient.invalidateQueries(Queries.ProjectDeveloper);
+      queryClient.invalidateQueries(Queries.ProjectDeveloperList);
+      queryClient.setQueryData([Queries.ProjectDeveloper, data.id], data);
+    },
+  });
 }
 
 // Create Project
@@ -135,10 +146,11 @@ export function useCreateProject(
 
   return useMutation((data) => createProject(data, params), {
     onSuccess: (result) => {
-      const { id } = result.data.data;
-      queryClient.invalidateQueries([Queries.Project, id]);
+      const { data } = result.data;
+      queryClient.invalidateQueries(Queries.Project);
+      queryClient.invalidateQueries(Queries.ProjectList);
       queryClient.invalidateQueries(Queries.AccountProjectList);
-      queryClient.setQueryData([Queries.Project, id], result.data.data);
+      queryClient.setQueryData([Queries.Project, data.id], data);
     },
   });
 }
@@ -170,10 +182,11 @@ export function useUpdateProject(
 
   return useMutation((data) => updateProject(data, params), {
     onSuccess: (result) => {
-      const { id } = result.data.data;
+      const { data } = result.data;
       queryClient.invalidateQueries(Queries.Project);
+      queryClient.invalidateQueries(Queries.ProjectList);
       queryClient.invalidateQueries(Queries.AccountProjectList);
-      queryClient.setQueryData([Queries.Project, id], result.data.data);
+      queryClient.setQueryData([Queries.Project, data.id], data);
     },
   });
 }
@@ -222,6 +235,8 @@ export function useCreateInvestor(): UseMutationResult<
 
   return useMutation(createInvestor, {
     onSuccess: (result) => {
+      queryClient.invalidateQueries(Queries.Investor);
+      queryClient.invalidateQueries(Queries.InvestorList);
       queryClient.setQueryData([Queries.Investor, locale], result.data.data);
     },
   });
@@ -250,7 +265,16 @@ export function useUpdateInvestor(
   AxiosError<ErrorResponse>,
   InvestorForm
 > {
-  return useMutation((data) => updateInvestor(data, params));
+  const queryClient = useQueryClient();
+
+  return useMutation((data) => updateInvestor(data, params), {
+    onSuccess: (result) => {
+      const { data } = result.data;
+      queryClient.invalidateQueries(Queries.Investor);
+      queryClient.invalidateQueries(Queries.InvestorList);
+      queryClient.setQueryData([Queries.ProjectDeveloper, data.id], data);
+    },
+  });
 }
 
 export function useAccount(params = {}) {
