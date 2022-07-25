@@ -50,7 +50,10 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   const [showLeave, setShowLeave] = useState(false);
   const [projectSlug, setProjectSlug] = useState<string>();
   const resolver = useProjectValidation(currentPage);
-  const updateProject = useUpdateProject();
+  const updateProject = useUpdateProject({
+    // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
+    locale: null,
+  });
   const { userAccount } = useAccount();
   const {
     category,

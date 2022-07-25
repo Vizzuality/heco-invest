@@ -74,7 +74,10 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({
   const { formatMessage } = useIntl();
   const router = useRouter();
 
-  const updateProject = useUpdateProject();
+  const updateProject = useUpdateProject({
+    // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
+    locale: null,
+  });
   const queryReturnPath = useQueryReturnPath();
 
   const {
