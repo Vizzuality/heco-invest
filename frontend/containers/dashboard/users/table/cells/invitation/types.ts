@@ -1,3 +1,5 @@
+import { InvitationStatus } from 'enums';
+
 export interface CellInvitationProps {
-  value: string;
+  value: InvitationStatus;
 }

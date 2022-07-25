@@ -23,7 +23,7 @@ module API
       end
 
       def update_params
-        params.permit(:reset_password_token, :password)
+        params.permit(:reset_password_token, :password, :password_confirmation)
       end
     end
   end
