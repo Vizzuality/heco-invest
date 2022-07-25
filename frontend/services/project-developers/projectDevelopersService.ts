@@ -1,12 +1,6 @@
 import { useMemo } from 'react';
 
-import {
-  UseQueryResult,
-  useMutation,
-  useQueryClient,
-  UseQueryOptions,
-  QueryFunction,
-} from 'react-query';
+import { UseQueryResult, useMutation, useQueryClient, UseQueryOptions } from 'react-query';
 
 import { useRouter } from 'next/router';
 
@@ -112,31 +106,6 @@ export function useProjectDeveloper(
     [query]
   );
 }
-
-const getCurrentProjectDeveloper: QueryFunction<ProjectDeveloper> = async () =>
-  await API.get<ResponseData<ProjectDeveloper>>('/api/v1/account/project_developer').then(
-    (response) => response.data.data
-  );
-/** Get the Current Project Developer if the UserRole is project_developer */
-export const useCurrentProjectDeveloper = (user?: User) => {
-  const query = useLocalizedQuery<ProjectDeveloper, any, ProjectDeveloper, any>(
-    [Queries.ProjectDeveloper, user],
-    getCurrentProjectDeveloper,
-    {
-      // Creates the conditional to only fetch the data if the user is a project developer user
-      enabled: !user || user?.role === UserRoles.ProjectDeveloper,
-      ...staticDataQueryOptions,
-    }
-  );
-
-  return useMemo<UseQueryResult<ProjectDeveloper> & { projectDeveloper: ProjectDeveloper }>(
-    () => ({
-      ...query,
-      projectDeveloper: query.data,
-    }),
-    [query]
-  );
-};
 
 /** Hook with mutation that handle favorite state. If favorite is false, creates a POST request to set favorite to true, and if favorite is true, creates a DELETE request that set favorite to false. */
 export const useFavoriteProjectDeveloper = () => {

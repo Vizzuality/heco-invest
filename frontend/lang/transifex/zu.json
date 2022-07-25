@@ -140,6 +140,9 @@
   "2O2sfp": {
     "string": "Finish"
   },
+  "2ffyX7": {
+    "string": "This page is coming soon"
+  },
   "2inebt": {
     "string": "The opportunities are located in geographies that are are unique due to of their biodiversity, cultural heritages, and regulation of water systems. As such, these projects will have the greatest impact for people and nature."
   },
@@ -241,9 +244,6 @@
   },
   "5zAKQ7": {
     "string": "About HeCo"
-  },
-  "6//v4m": {
-    "string": "+123456789"
   },
   "62pTkz": {
     "string": "Save your favorites"
@@ -1185,9 +1185,6 @@
   "ZATT08": {
     "string": "Pagination"
   },
-  "ZEEVQX": {
-    "string": "Social media"
-  },
   "ZKsAVY": {
     "string": "This project isn’t currently looking for funding."
   },
@@ -1331,6 +1328,9 @@
   },
   "e0c9xF": {
     "string": "insert the name of the investor/funder"
+  },
+  "e61Jf3": {
+    "string": "Coming soon"
   },
   "eE6uKi": {
     "string": "This data set, a collaboration between the Global Land Analysis & Discovery (GLAD) lab at the University of Maryland, Google, USGS, and NASA, measures areas of tree cover loss across all global land (except Antarctica and other Arctic islands) at approximately 30 × 30 meter resolution. The data were generated using multispectral satellite imagery from the Landsat 5 thematic mapper (TM), the Landsat 7 thematic mapper plus (ETM+), and the Landsat 8 Operational Land Imager (OLI) sensors. Over 1 million satellite images were processed and analyzed, including over 600,000 Landsat 7 images for the 2000-2012 interval, and more than 400,000 Landsat 5, 7, and 8 images for updates for the 2011-2021 interval. The clear land surface observations in the satellite images were assembled and a supervised learning algorithm was applied to identify per pixel tree cover loss."
