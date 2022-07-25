@@ -19,8 +19,7 @@ import {
 } from 'types/project';
 import useProjectValidation, { formPageInputs } from 'validations/project';
 
-import { useAccount } from 'services/account';
-import { useUpdateProject } from 'services/account';
+import { useAccount, useUpdateProject } from 'services/account';
 
 import { useDefaultValues } from './helpers';
 
@@ -109,7 +108,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
 
   const handleUpdate = useCallback(
     (formData: ProjectUpdatePayload) => {
-      return updateProject.mutate(formData, {
+      return mutation.mutate(formData, {
         onError: (error) => {
           const { errorPages, fieldErrors } = getServiceErrors<ProjectFormType>(
             error,

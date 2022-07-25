@@ -11,7 +11,7 @@ import { useQueryReturnPath } from 'helpers/pages';
 
 import ProjectForm from 'containers/project-form';
 
-import { EnumTypes, Paths, UserRoles } from 'enums';
+import { Paths, UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
@@ -39,12 +39,28 @@ const PROJECT_QUERY_PARAMS = {
   locale: null,
 };
 
+const SHARED_PROJECT_QUERY_PARAMS = {
+  // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
+  locale: null,
+};
+
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let project;
   let enums;
 
   try {
-    ({ data: project } = await getProject(id as string, PROJECT_QUERY_PARAMS));
+    ({ data: project } = await getProject(id as string, {
+      includes: [
+        'project_images',
+        'country',
+        'municipality',
+        'department',
+        'project_developer',
+        'involved_project_developers',
+        'project_developer',
+      ],
+      ...SHARED_PROJECT_QUERY_PARAMS,
+    }));
     enums = await getEnums();
   } catch (e) {
     // The user may be attempting to preview a drafted project, which the endpoint won't return
@@ -74,10 +90,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({
   const { formatMessage } = useIntl();
   const router = useRouter();
 
-  const updateProject = useUpdateProject({
-    // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
-    locale: null,
-  });
+  const updateProject = useUpdateProject(SHARED_PROJECT_QUERY_PARAMS);
   const queryReturnPath = useQueryReturnPath();
 
   const {
