@@ -126,7 +126,7 @@ export const createProject = async (
   }
 ): Promise<AxiosResponse<ResponseData<Project>>> => {
   const config: AxiosRequestConfig = {
-    url: `/api/v1/account/projects/`,
+    url: `/api/v1/account/projects`,
     method: 'POST',
     data: data,
     params: params || {},
