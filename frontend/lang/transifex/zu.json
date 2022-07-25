@@ -642,6 +642,9 @@
   "IBlTCs": {
     "string": "The image is larger than {maxSize}MB"
   },
+  "IQTULX": {
+    "string": "We are here to help you"
+  },
   "ITdmlJ": {
     "string": "Contact information"
   },
@@ -872,6 +875,9 @@
   },
   "Q8Qw5B": {
     "string": "Description"
+  },
+  "QA1wrZ": {
+    "string": "Frequently Asked Questions"
   },
   "QDj3j7": {
     "string": "Inter-American Development Bank Lab"
@@ -1475,6 +1481,9 @@
   },
   "jKdvln": {
     "string": "Relevant links (optional)"
+  },
+  "jN8Kad": {
+    "string": "Browse thought the most frequently asked questions."
   },
   "jUgR7w": {
     "string": "Stage of development or maturity of the project"
