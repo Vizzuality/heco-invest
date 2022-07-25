@@ -50,7 +50,7 @@ const EditInvestorPage: PageComponent<EditInvestorServerSideProps, FormPageLayou
     router.push(queryReturnPath || (isOutroPage ? Paths.Discover : Paths.Dashboard));
   };
 
-  const { investor } = useInvestor({});
+  const { data: investor } = useInvestor();
 
   return (
     <ProtectedPage permissions={[UserRoles.Investor]}>
