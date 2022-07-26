@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_18_082600) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_25_074544) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -153,7 +153,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_082600) do
     t.text "other_information_es"
     t.text "other_information_pt"
     t.boolean "previously_invested", default: false, null: false
-    t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "mission_en"
@@ -238,7 +237,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_082600) do
     t.text "mission_en"
     t.text "mission_es"
     t.text "mission_pt"
-    t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "entity_legal_registration_number", null: false

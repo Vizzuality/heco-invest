@@ -81,6 +81,22 @@ RSpec.describe "Backoffice: Investors", type: :system do
           expect(page).to have_text(ReviewStatus.find("approved").name)
         end
       end
+
+      context "when account language is different" do
+        before do
+          I18n.with_locale "pt" do
+            unapproved_investor.account.update! language: "pt", about_pt: "ABOUT PT", about_en: ""
+          end
+        end
+
+        it "still flips the status to approved" do
+          within_row(unapproved_investor.name) do
+            expect(page).to have_text(ReviewStatus.find("unapproved").name)
+            click_on t("backoffice.common.approve")
+            expect(page).to have_text(ReviewStatus.find("approved").name)
+          end
+        end
+      end
     end
 
     context "when rejecting investor" do
@@ -92,6 +108,22 @@ RSpec.describe "Backoffice: Investors", type: :system do
             click_on t("backoffice.common.reject")
           }.to have_enqueued_mail(UserMailer, :rejected).with(approved_investor_owner).once
           expect(page).to have_text(ReviewStatus.find("rejected").name)
+        end
+      end
+
+      context "when account language is different" do
+        before do
+          I18n.with_locale "pt" do
+            approved_investor.account.update! language: "pt", about_pt: "ABOUT PT", about_en: ""
+          end
+        end
+
+        it "still flips the status to rejected" do
+          within_row(approved_investor.name) do
+            expect(page).to have_text(ReviewStatus.find("approved").name)
+            click_on t("backoffice.common.reject")
+            expect(page).to have_text(ReviewStatus.find("rejected").name)
+          end
         end
       end
     end
@@ -130,12 +162,30 @@ RSpec.describe "Backoffice: Investors", type: :system do
     context "account language section" do
       before { within_sidebar { click_on t("backoffice.account.account_language") } }
 
-      it "can update account language" do
-        expect(page).to have_select(t("simple_form.labels.account.language"), selected: "English")
-        select "Spanish", from: t("simple_form.labels.account.language")
-        click_on t("backoffice.common.save")
-        expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.investor")))
-        expect(approved_investor.account.reload.language).to eq("es")
+      context "when new language has all text translated" do
+        before do
+          approved_investor.account.update! about_es: "ES"
+          approved_investor.update! other_information_es: "ES", mission_es: "ES", prioritized_projects_description: "ES"
+        end
+
+        it "can update account language" do
+          expect(page).to have_select(t("simple_form.labels.account.language"), selected: "English")
+          select "Spanish", from: t("simple_form.labels.account.language")
+          click_on t("backoffice.common.save")
+          expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.investor")))
+          expect(approved_investor.account.reload.language).to eq("es")
+        end
+      end
+
+      context "when new language is missing some translations" do
+        it "cannot update account language" do
+          expect(page).to have_select(t("simple_form.labels.account.language"), selected: "English")
+          select "Spanish", from: t("simple_form.labels.account.language")
+          click_on t("backoffice.common.save")
+          expect(page).to have_text(t("simple_form.error_notification.default_message"))
+          expect(page).to have_text("Account about can't be blank")
+          expect(page).to have_text("Mission can't be blank")
+        end
       end
     end
 
