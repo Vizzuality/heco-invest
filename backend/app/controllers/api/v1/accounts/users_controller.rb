@@ -16,7 +16,7 @@ module API
 
         def destroy
           # @user cannot be account owner AND
-          # either current_user == @user OR current_user is account owner in @user's account
+          # either current_user == @user OR current_user is account owner in @user's account OR @user is invited by current_user
           @user.destroy!
           UserMailer.destroyed(@user.email, @user.full_name, @user.locale).deliver_later
           head :ok

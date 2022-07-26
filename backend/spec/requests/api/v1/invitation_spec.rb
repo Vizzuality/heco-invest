@@ -1,8 +1,8 @@
 require "swagger_helper"
 
 RSpec.describe "API V1 Invitation", type: :request do
-  let(:account) { create :account }
-  let(:user) { create :user }
+  let(:account) { create :account, language: "pt" }
+  let(:user) { create :user, ui_language: "es" }
 
   path "/api/v1/invitation/info" do
     post "Invited User information" do
@@ -105,9 +105,13 @@ RSpec.describe "API V1 Invitation", type: :request do
 
           it "sends emails" do
             mails = ActionMailer::Base.deliveries.last(2)
-            expect(mails.map(&:subject).uniq).to eq([I18n.t("devise.mailer.invitation_instructions.subject")])
+            expect(mails.map(&:subject).uniq).to eq([I18n.with_locale(account.language) { I18n.t("devise.mailer.invitation_instructions.subject") }])
             expect(mails.first.to).to eq(["user@example.com"])
             expect(mails.second.to).to eq([user.email])
+          end
+
+          it "sets unregistered user's ui_language to inviting account language" do
+            expect(User.find_by_email("user@example.com").ui_language).to eq("pt")
           end
         end
 
@@ -124,7 +128,7 @@ RSpec.describe "API V1 Invitation", type: :request do
 
           it "sends email" do
             mail = ActionMailer::Base.deliveries.last
-            expect(mail.subject).to eq(I18n.t("devise.mailer.invitation_instructions.subject"))
+            expect(mail.subject).to eq(I18n.with_locale(account.language) { I18n.t("devise.mailer.invitation_instructions.subject") })
             expect(mail.to).to eq([user.email])
           end
         end

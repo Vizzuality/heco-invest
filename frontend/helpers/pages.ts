@@ -74,7 +74,7 @@ export const FILE_UPLOADER_MAX_SIZE = 5 * 1024 * 1024;
  */
 export const useDiscoverPath = () => {
   const { pathname } = useRouter();
-  return pathname.includes('/discover') ? pathname : Paths.Discover;
+  return pathname.includes(Paths.Discover) ? pathname : Paths.Discover;
 };
 
 /** Hook to get the query params of the discover pages */

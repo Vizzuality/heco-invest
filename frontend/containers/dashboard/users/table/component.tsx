@@ -55,7 +55,7 @@ export const UsersTable: FC<UsersTableProps> = ({ isOwner }) => {
       },
       {
         Header: 'Invitation',
-        accessor: 'confirmed',
+        accessor: 'invitation',
         className: 'text-sm leading-8',
         width: 50,
         Cell: Invitation,

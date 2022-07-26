@@ -10,7 +10,7 @@ import LayoutContainer from 'components/layout-container';
 
 import { HeaderProps } from './types';
 
-export const Header: FC<HeaderProps> = ({ ...discoverSearchProps }: HeaderProps) => {
+export const Header: FC<HeaderProps> = () => {
   return (
     <>
       <header className="top-0 z-20 w-full text-white border-b bg-green-dark backdrop-blur-sm">
@@ -21,7 +21,7 @@ export const Header: FC<HeaderProps> = ({ ...discoverSearchProps }: HeaderProps)
               <Logo />
             </span>
             <span className="justify-end hidden w-full max-w-3xl mt-10 xl:block">
-              <DiscoverSearch {...discoverSearchProps} />
+              <DiscoverSearch />
             </span>
             <span className="flex items-center justify-end flex-1 gap-2 lg:gap-4">
               <UserMenu className="hidden sm:flex" />

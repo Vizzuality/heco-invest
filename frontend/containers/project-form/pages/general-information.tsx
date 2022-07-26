@@ -51,7 +51,7 @@ const GeneralInformation = ({
   const { locations } = useGroupedLocations({ includes: 'parent' });
 
   const { projectDevelopers } = useProjectDevelopersList({
-    'page[size]': 1000,
+    perPage: 1000,
     fields: ['name'],
   });
 

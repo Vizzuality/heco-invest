@@ -1,61 +1,133 @@
-import { FC, SyntheticEvent, useEffect, useState } from 'react';
+import { FC, SyntheticEvent, useEffect, useMemo, useState } from 'react';
 
 import { Search as SearchIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
-import { noop } from 'lodash-es';
+import { useRouter } from 'next/router';
+
+import { useDiscoverPath, useQueryParams } from 'helpers/pages';
 
 import Filters from 'containers/forms/filters';
+import { FilterForm, FilterParams } from 'containers/forms/filters/types';
 import SearchAutoSuggestion from 'containers/search-auto-suggestion';
 
 import Button from 'components/button';
 import Icon from 'components/icon';
+import { Enum } from 'types/enums';
 
 import { DiscoverSearchProps } from './types';
 
 export const DiscoverSearch: FC<DiscoverSearchProps> = ({
   className,
-  searchText: searchTextProp = '',
-  onSearch = noop,
-  onSearchChange = noop,
-  filtersQuantity,
-}: DiscoverSearchProps) => {
-  const [searchText, setSearchText] = useState<string>(searchTextProp);
-  const [openFilters, setOpenFilters] = useState(false);
-  const [openSuggestions, setOpenSuggestions] = useState(false);
+  searchButtonText = <FormattedMessage defaultMessage="Search" id="xmcVZ0" />,
+}) => {
   const { formatMessage } = useIntl();
+  const { push } = useRouter();
+  const { search, sorting, page, ...filters } = useQueryParams();
+  const pathname = useDiscoverPath();
+
+  const [openFilters, setOpenFilters] = useState(false);
+  const [filtersInputValue, setFiltersInputValue] = useState<Partial<FilterForm>>({});
+  const filtersQuantity = useMemo(() => Object.keys(filters)?.length, [filters]);
+
+  const [showSuggestion, setShowSuggestions] = useState(false);
+
+  const [searchInputValue, setSearchInputValue] = useState<string>('');
 
   useEffect(() => {
-    setSearchText(searchTextProp);
-  }, [searchTextProp]);
+    setSearchInputValue(search);
+  }, [search]);
 
-  const handleSubmit = (e: SyntheticEvent) => {
-    e.preventDefault();
-    onSearch(searchText);
+  useEffect(() => {
+    const filterInputs: Partial<FilterForm> = {};
+
+    Object.entries(filters).forEach(([key, value]) => {
+      // Change the filter param name to the form input name
+      const filterName = key.replace('filter[', '').replace(']', '');
+      const filterValue = filterName === 'only_verified' ? JSON.parse(value) : value;
+
+      filterInputs[filterName] = filterValue;
+    });
+    setFiltersInputValue(filterInputs);
+    setShowSuggestions(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleSearch = (searchInput: string, filtersInput: Partial<FilterParams>) => {
+    push(
+      { query: { sorting, page: 1, search: searchInput, ...filtersInput }, pathname },
+      undefined,
+      {
+        shallow: true,
+      }
+    );
   };
 
-  const handleChange = (e: SyntheticEvent<HTMLInputElement>) => {
-    setSearchText(e.currentTarget.value);
-    onSearchChange(e.currentTarget.value);
+  const handleSubmitSearch = (e: SyntheticEvent) => {
+    e.preventDefault();
+    const filterParams = getFilterParams(filtersInputValue);
+    handleSearch(searchInputValue, filterParams);
+    setShowSuggestions(false);
+  };
+
+  const handleChangeSearchInput = (e: SyntheticEvent<HTMLInputElement>) => {
+    setSearchInputValue(e.currentTarget.value);
+    setShowSuggestions(searchInputValue?.length > 1);
+  };
+
+  const getFilterParams = (filters: Partial<FilterForm>) => {
+    let filterParams: Partial<FilterParams> = {};
+    Object.entries(filters).forEach(([key, value]) => {
+      // Just send the used filters
+      if (value) {
+        filterParams[`filter[${key}]`] = `${value}`;
+      }
+    });
+    return filterParams;
+  };
+
+  const handleSubmitFilters = (filters: FilterForm) => {
+    setFiltersInputValue(filters);
+    const filterParams = getFilterParams(filters);
+    handleSearch(searchInputValue, filterParams);
+    setOpenFilters(false);
+    setShowSuggestions(false);
+  };
+
+  const handleFilterSuggestion = (filter: Enum) => {
+    const filterKey = `filter[${filter.type}]`;
+    handleSearch('', { ...filters, [filterKey]: filter.id });
+    setFiltersInputValue({ ...filtersInputValue, [filter.type]: filter.id });
+    setShowSuggestions(false);
+    setSearchInputValue('');
+  };
+
+  const handleSearchSuggestion = () => {
+    handleSearch(searchInputValue, filters);
+    setShowSuggestions(false);
   };
 
   return (
     <div className={className}>
       <div
         className={cx('z-10 relative w-full sm:h-16 text-black bg-white border drop-shadow-xl', {
-          'rounded-full': !openFilters && !openSuggestions,
-          'rounded-t-4xl': openFilters || openSuggestions,
+          'rounded-full': !openFilters && !showSuggestion,
+          'rounded-t-4xl': openFilters || showSuggestion,
         })}
       >
-        <div className="flex items-center justify-between px-6 py-3 sm:gap-4">
+        <div
+          className={cx('flex items-center justify-between px-6 py-3 sm:gap-4', {
+            'py-4': openFilters || showSuggestion,
+          })}
+        >
           <form
             role="search"
             className="flex flex-col items-center justify-end w-full h-full gap-1 sm:justify-between sm:gap-3 sm:flex-row"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmitSearch}
           >
-            <div className="flex items-center w-full gap-2">
+            <div className="flex items-center gap-2 flex-grow">
               <Icon
                 aria-hidden={true}
                 icon={SearchIcon}
@@ -67,16 +139,24 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
               <input
                 id="header-search"
                 type="search"
-                value={searchText}
+                value={searchInputValue}
                 className="w-full h-full text-lg outline-none autofill:bg-transparent"
-                onChange={handleChange}
+                onChange={handleChangeSearchInput}
                 placeholder={formatMessage({
                   defaultMessage: 'Search for projects, investors, open calls...',
                   id: 'BZG0d+',
                 })}
               />
             </div>
-            <div className="flex items-center gap-4 sm:gap-6 sm:justify-self-end">
+            <div
+              className={cx(
+                'flex items-center gap-4 sm:gap-6 sm:justify-self-end transition-all ease-in-out duration-300 flex-grow-0',
+                {
+                  'w-0 h-0 overflow-hidden opacity-0': openFilters,
+                  'w-auto opacity-100': !openFilters,
+                }
+              )}
+            >
               {/* Filters accordion header https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html */}
               <h3>
                 <Button
@@ -102,7 +182,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
                 </Button>
               </h3>
               <Button type="submit" className="h-full font-normal" theme="primary-orange">
-                <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
+                {searchButtonText}
               </Button>
             </div>
           </form>
@@ -112,19 +192,27 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
           id="filters"
           role="region"
           aria-labelledby="filters-button"
-          className={cx(
-            'h-0 w-full bg-white -mt-1 rounded-b-4xl drop-shadow-xl transition-all ease-in',
-            {
-              'h-fit border-t-gray-200 border-t-2 overflow-hidden': openFilters,
-            }
-          )}
+          className={cx('w-full bg-white rounded-b-4xl drop-shadow-xl transition-all ease-in', {
+            'h-fit border-t-gray-200 border-t-2 overflow-hidden': openFilters,
+            'h-0 border-none overflow-hidden': !openFilters,
+          })}
         >
-          {openFilters && <Filters closeFilters={() => setOpenFilters(false)} />}
+          {openFilters && (
+            <Filters
+              closeFilters={() => setOpenFilters(false)}
+              filtersInputValue={filtersInputValue}
+              setFiltersInputValue={(filters: Partial<FilterForm>) => setFiltersInputValue(filters)}
+              onSubmitFilters={handleSubmitFilters}
+            />
+          )}
         </div>
-        {!openFilters && (
+        {!openFilters && showSuggestion && (
           <SearchAutoSuggestion
-            onChangeOpenSuggestion={setOpenSuggestions}
-            searchText={searchText}
+            closeSuggestions={() => setShowSuggestions}
+            searchText={searchInputValue}
+            onFilterSuggestion={handleFilterSuggestion}
+            onSearchSuggestion={handleSearchSuggestion}
+            showSuggestion={showSuggestion}
           />
         )}
       </div>

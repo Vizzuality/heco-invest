@@ -29,7 +29,7 @@ module Backoffice
     end
 
     def update
-      if I18n.with_locale(content_language) { @investor.update(update_params) }
+      if I18n.with_locale(update_language) { @investor.update(update_params) }
         redirect_back(
           fallback_location: edit_backoffice_investor_path(@investor.id),
           notice: t("backoffice.messages.success_update", model: t("backoffice.common.investor"))
@@ -77,6 +77,10 @@ module Backoffice
         impacts: [],
         sdgs: []
       )
+    end
+
+    def update_language
+      update_params.dig(:account_attributes, :language).presence || content_language
     end
 
     def fetch_investor

@@ -10,7 +10,6 @@ FactoryBot.define do
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)
     end
-    language { "en" }
     entity_legal_registration_number { "564823570" }
 
     trait :with_involved_projects do

@@ -11,10 +11,12 @@ module API
         response = params[:emails].to_a.each_with_object({}) do |email, statuses|
           next statuses[email] = 422 if email.match(Devise.email_regexp).blank?
 
-          user = User.find_by_email(email) || User.new(email: email)
+          user = User.find_by_email(email) || User.new(email: email, ui_language: current_user.locale)
           next statuses[email] = 409 if user.account_id.present?
 
-          user.invite! current_user
+          I18n.with_locale(current_user.locale) do
+            user.invite! current_user
+          end
           statuses[email] = 200
         end
         render json: response.to_json
