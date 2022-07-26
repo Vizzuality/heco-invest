@@ -11,7 +11,7 @@ import { useQueryReturnPath } from 'helpers/pages';
 
 import ProjectForm from 'containers/project-form';
 
-import { EnumTypes, Paths, UserRoles } from 'enums';
+import { Paths, UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
@@ -24,6 +24,11 @@ import { User } from 'types/user';
 import { useUpdateProject } from 'services/account';
 import { getEnums } from 'services/enums/enumService';
 import { getProject } from 'services/projects/projectService';
+
+const SHARED_PROJECT_QUERY_PARAMS = {
+  // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
+  locale: null,
+};
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let project;
@@ -40,8 +45,7 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
         'involved_project_developers',
         'project_developer',
       ],
-      // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
-      locale: null,
+      ...SHARED_PROJECT_QUERY_PARAMS,
     }));
     enums = await getEnums();
   } catch (e) {
@@ -66,7 +70,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
   const { formatMessage } = useIntl();
   const router = useRouter();
 
-  const updateProject = useUpdateProject();
+  const updateProject = useUpdateProject(SHARED_PROJECT_QUERY_PARAMS);
   const queryReturnPath = useQueryReturnPath();
 
   const getIsOwner = (_user: User, userAccount: ProjectDeveloper | Investor) => {

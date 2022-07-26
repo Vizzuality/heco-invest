@@ -17,9 +17,13 @@ import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 
-import { useUpdateProjectDeveloper } from 'services/account';
+import { useProjectDeveloper, useUpdateProjectDeveloper } from 'services/account';
 import { getEnums } from 'services/enums/enumService';
-import { useCurrentProjectDeveloper } from 'services/project-developers/projectDevelopersService';
+
+const PROJECT_DEVELOPER_QUERY_PARAMS = {
+  // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
+  locale: null,
+};
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   const queryClient = new QueryClient();
@@ -38,8 +42,10 @@ const ProjectDeveloper: PageComponent<ProjectDeveloperProps, FormPageLayoutProps
   const router = useRouter();
   const { formatMessage } = useIntl();
 
-  const updateProjectDeveloper = useUpdateProjectDeveloper();
-  const { projectDeveloper } = useCurrentProjectDeveloper();
+  const updateProjectDeveloper = useUpdateProjectDeveloper(PROJECT_DEVELOPER_QUERY_PARAMS);
+
+  const { data: projectDeveloper } = useProjectDeveloper(PROJECT_DEVELOPER_QUERY_PARAMS);
+
   const queryReturnPath = useQueryReturnPath();
 
   const handleOnComplete = () => {

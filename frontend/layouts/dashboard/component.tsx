@@ -21,7 +21,7 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
 }: DashboardLayoutProps) => {
   const mainContainerRef = useRef(null);
 
-  const { user, userAccount } = useAccount('owner');
+  const { user, userAccount } = useAccount({ includes: 'owner' });
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>

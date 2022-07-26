@@ -21,7 +21,6 @@ import {
 import useProjectValidation, { formPageInputs } from 'validations/project';
 
 import { useAccount } from 'services/account';
-import { useUpdateProject } from 'services/account';
 
 import { useDefaultValues } from './helpers';
 
@@ -50,7 +49,6 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   const [showLeave, setShowLeave] = useState(false);
   const [projectSlug, setProjectSlug] = useState<string>();
   const resolver = useProjectValidation(currentPage);
-  const updateProject = useUpdateProject();
   const queryReturnPath = useQueryReturnPath();
   const router = useRouter();
   const { userAccount } = useAccount();
@@ -86,7 +84,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
 
   const handleUpdate = useCallback(
     (formData: ProjectUpdatePayload) => {
-      return updateProject.mutate(formData, {
+      return mutation.mutate(formData, {
         onError: (error) => {
           const { errorPages, fieldErrors } = getServiceErrors<ProjectFormType>(
             error,
@@ -100,7 +98,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         },
       });
     },
-    [updateProject, onComplete, setError]
+    [mutation, onComplete, setError]
   );
 
   const handleCreate = useCallback(
@@ -200,8 +198,8 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         locale={contentLocale}
         autoNavigation={false}
         page={currentPage}
-        alert={useGetAlert(updateProject.error)}
-        isSubmitting={updateProject.isLoading}
+        alert={useGetAlert(mutation.error)}
+        isSubmitting={mutation.isLoading}
         showOutro={currentPage === totalPages && !!projectSlug}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
