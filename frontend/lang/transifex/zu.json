@@ -500,9 +500,6 @@
   "EVKdUn": {
     "string": "Priority Landscape"
   },
-  "EWw/tK": {
-    "string": "Apply"
-  },
   "Ec0M9T": {
     "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
   },
@@ -538,6 +535,9 @@
   },
   "FN+0yY": {
     "string": "Unable to parse the file. Please try uploading a different format."
+  },
+  "FazwRl": {
+    "string": "Try again"
   },
   "Ftj+/t": {
     "string": "Why is my profile pending approval?"
@@ -879,6 +879,9 @@
   "RXoqkD": {
     "string": "Mission"
   },
+  "RahCRH": {
+    "string": "Expired"
+  },
   "RyOOZR": {
     "string": "Have access to all of the contacts of <n>Investors</n> and <n>Project Developers</n>. Easily reach and connect so you can find the best investment or partnership."
   },
@@ -1170,9 +1173,6 @@
   "bNpbHr": {
     "string": "Find other people with similar interests. Join forces, secure more investment and create a greater impact."
   },
-  "bQc7X2": {
-    "string": "Are you sure you want to delete <strong>{displayName}</strong>? You cant undo this action."
-  },
   "bWygLM": {
     "string": "insert the amount of money"
   },
@@ -1265,6 +1265,9 @@
   },
   "eXDHt0": {
     "string": "Describe the project or solution and describe clearly why you consider it is innovative, different from others and how it can generate an important change and impact towards the target groups. Highlight the characteristics that may attract partners, clients, or investors."
+  },
+  "eXH6WV": {
+    "string": "Are you sure you want to delete <strong>{displayName}</strong>? You can't undo this action."
   },
   "ee3r6Y": {
     "string": "Other relevant information"
@@ -1551,6 +1554,9 @@
   "oBB4L4": {
     "string": "Send invite"
   },
+  "oG/A0q": {
+    "string": "See full catalogue"
+  },
   "oMC3r1": {
     "string": "Choose your account type"
   },
@@ -1668,6 +1674,9 @@
   "sFn7MX": {
     "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
   },
+  "sIhhxz": {
+    "string": "Something went wrong while trying to delete the user"
+  },
   "sK7G1d": {
     "string": "User with email {email} already has an account in HeCo."
   },
@@ -1712,6 +1721,9 @@
   },
   "tS6cAK": {
     "string": "insert the number"
+  },
+  "tSCuG5": {
+    "string": "Delete user?"
   },
   "twK/jv": {
     "string": "Project developer profile"
