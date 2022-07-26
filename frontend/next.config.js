@@ -70,6 +70,11 @@ module.exports = {
         destination: '/discover/projects',
         permanent: true,
       },
+      {
+        source: '/settings',
+        destination: '/settings/information',
+        permanent: true,
+      },
     ];
   },
 };

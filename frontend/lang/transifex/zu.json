@@ -146,6 +146,9 @@
   "39AHJm": {
     "string": "Sign Up"
   },
+  "3T3umg": {
+    "string": "If you are the owner of the account, please transfer the ownership before continuing."
+  },
   "3dEg+E": {
     "string": "{start} of {end}"
   },
@@ -181,6 +184,9 @@
   },
   "4YJHut": {
     "string": "Clear search"
+  },
+  "4iPaIz": {
+    "string": "Update information"
   },
   "4iXh64": {
     "string": "Your account has not been approved, your profile is not publicly visible."
@@ -370,6 +376,9 @@
   },
   "A4UTjl": {
     "string": "Portuguese"
+  },
+  "A775MJ": {
+    "string": "You are currently the account owner. Please transfer the ownership before continuing."
   },
   "A8lXv/": {
     "string": "Global estimate of human population density and distribution."
@@ -1296,6 +1305,9 @@
   "fX9u5/": {
     "string": "Contribute to addressing the effects of climate change through investments to reduce CO2 emissions and conserve or restore forest-related carbon sinks. <br></br><br></br> Nature based solutions have been estimated to have the potential of contributing to compensate for up to 30% of global emissions."
   },
+  "fZpvTQ": {
+    "string": "Delete my user"
+  },
   "ff0+bt": {
     "string": "The platform will use the most advanced technologies and Artificial Intelligence applications to provide in one place data and tools to connect investors, donors and philanthropists with carefully selected projects in high priority locations defined by Heremcia Colombia."
   },
@@ -1647,6 +1659,9 @@
   "rLzWx9": {
     "string": "{name} picture"
   },
+  "rPwLb7": {
+    "string": "By deleting your user, you will be removed from the account <n>accountName</n> and you no longer will have access to HeCo Invest Platform."
+  },
   "rPwaWt": {
     "string": "A great name is short, crisp, and easily understood."
   },
@@ -1670,6 +1685,9 @@
   },
   "s07dAT": {
     "string": "Project image"
+  },
+  "s63oNj": {
+    "string": "Are you sure you want to delete your user? You can't undo this action and you will lose your access to the platform."
   },
   "sFn7MX": {
     "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
