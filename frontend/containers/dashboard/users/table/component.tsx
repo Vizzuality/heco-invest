@@ -23,7 +23,7 @@ export const UsersTable: FC<UsersTableProps> = ({ isOwner }) => {
   const queryParams = useQueryParams();
 
   const {
-    data: { data: users },
+    users,
     isLoading: isLoadingUsers,
     isFetching: isFetchingUsers,
   } = useAccountUsersList({ ...queryParams }, queryOptions);
@@ -93,7 +93,7 @@ export const UsersTable: FC<UsersTableProps> = ({ isOwner }) => {
             id="YQsqLq"
             values={{
               span: (chunks: string) => <span className="px-1 font-semibold">{chunks}</span>,
-              numUsers: users?.length,
+              numUsers: users?.length || 0,
             }}
           />
         </SearchAndInfo>

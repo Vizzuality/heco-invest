@@ -281,7 +281,7 @@ export function useAccountUsersList(
   return useMemo(
     () => ({
       ...query,
-      users: query?.data?.data || [],
+      users: query?.data?.data,
     }),
     [query]
   );
