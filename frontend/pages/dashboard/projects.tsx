@@ -21,7 +21,7 @@ import Button from 'components/button';
 import Head from 'components/head';
 import Icon from 'components/icon';
 import Table from 'components/table';
-import { UserRoles } from 'enums';
+import { ProjectStatus, UserRoles } from 'enums';
 import { Paths } from 'enums';
 import DashboardLayout, { DashboardLayoutProps } from 'layouts/dashboard';
 import NakedLayout from 'layouts/naked';
@@ -76,6 +76,9 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
           `${Paths.Project}/${slug}/edit?returnPath=${encodeURIComponent(router.asPath)}`,
           `${Paths.Project}/${slug}/edit`
         );
+        return;
+      case 'preview':
+        router.push(`${Paths.Project}/${slug}/preview`);
         return;
       case 'open':
         router.push(`${Paths.Project}/${slug}`);
@@ -138,30 +141,38 @@ export const ProjectsPage: PageComponent<ProjectsPageProps, DashboardLayoutProps
         canSort: false,
         hideHeader: true,
         width: 0,
-        Cell: ({ cell }) => {
+        Cell: ({
+          cell: {
+            row: {
+              original: { slug, status },
+            },
+          },
+        }) => {
           return (
             <div className="flex items-center justify-center gap-3">
               <Link
-                href={`${Paths.Project}/${
-                  cell.row.original.slug
-                }/edit?returnPath=${encodeURIComponent(router.asPath)}`}
-                as={`${Paths.Project}/${cell.row.original.slug}/edit`}
+                href={`${Paths.Project}/${slug}/edit?returnPath=${encodeURIComponent(
+                  router.asPath
+                )}`}
+                as={`${Paths.Project}/${slug}/edit`}
               >
                 <a className="px-2 py-1 text-sm transition-all text-green-dark focus-visible:outline-green-dark rounded-2xl">
                   <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
                 </a>
               </Link>
-              <RowMenu
-                onAction={(key: string) =>
-                  handleRowMenuItemClick({ key, slug: cell.row.original.slug })
-                }
-              >
+              <RowMenu onAction={(key: string) => handleRowMenuItemClick({ key, slug })}>
                 <RowMenuItem key="edit">
                   <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
                 </RowMenuItem>
-                <RowMenuItem key="open">
-                  <FormattedMessage defaultMessage="View project page" id="ToXG99" />
-                </RowMenuItem>
+                {status === ProjectStatus.Draft ? (
+                  <RowMenuItem key="preview">
+                    <FormattedMessage defaultMessage="Preview project page" id="EvP1Ut" />
+                  </RowMenuItem>
+                ) : (
+                  <RowMenuItem key="open">
+                    <FormattedMessage defaultMessage="View project page" id="ToXG99" />
+                  </RowMenuItem>
+                )}
                 <RowMenuItem key="delete">
                   <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
                 </RowMenuItem>

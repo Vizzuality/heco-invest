@@ -16,6 +16,7 @@ export const useDefaultValues = (project: Project): Partial<ProjectForm> => {
     const general = pickBy(project, (value, key: any) => projectFormKeys.includes(key));
     return {
       ...general,
+      status: project.status,
       language: project.language,
       municipality_id: project.municipality?.id,
       department_id: project.municipality.parent.id,

@@ -12,6 +12,10 @@ export type MultiPageLayoutProps = PropsWithChildren<
     className?: string;
     /** Locale of the layout to display in a tag in the header */
     locale?: LanguageType;
+    /** Whether to show a loading spinner instead of the pages. Defaults to `false` */
+    isLoading?: boolean;
+    /** Whether to show the regular static page header. Defaults to `false` */
+    siteHeader?: boolean;
     /** Whether to show the outro page */
     showOutro?: boolean;
     /** Whether to show the footer on the outro page. Defaults to `false` */
@@ -32,6 +36,7 @@ export type MultiPageLayoutProps = PropsWithChildren<
     Pick<MultiPageLayoutHeaderProps, 'title' | 'onCloseClick' | 'leaveButtonText'> &
     Pick<
       MultiPageLayoutFooterProps,
+      | 'footerElements'
       | 'alert'
       | 'showProgressBar'
       | 'isSubmitting'

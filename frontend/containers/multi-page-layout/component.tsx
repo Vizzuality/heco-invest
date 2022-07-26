@@ -9,6 +9,7 @@ import LayoutContainer from 'components/layout-container';
 import MultiPageLayoutAriaLive from './aria-live';
 import MultiPageLayoutFooter from './footer';
 import MultiPageLayoutHeader from './header';
+import MultiPageLayoutLoading from './loading';
 import MultiPageLayoutOutroPage from './outro-page';
 import MultiPageLayoutPage from './page';
 import type { MultiPageLayoutProps } from './types';
@@ -18,6 +19,8 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
   layout,
   title,
   locale,
+  isLoading = false,
+  siteHeader = false,
   showProgressBar = true,
   isSubmitting = false,
   showOutro = false,
@@ -31,6 +34,7 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
   page: pageProp,
   children,
   autoNavigation = true,
+  footerElements,
   onPreviousClick = noop,
   onNextClick = noop,
   onPageClick = noop,
@@ -108,12 +112,16 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
       <MultiPageLayoutHeader
         title={title}
         locale={locale}
+        siteHeader={siteHeader}
         leaveButtonText={leaveButtonText}
         onCloseClick={onCloseClick}
       />
-      <LayoutContainer layout={layout}>{CurrentPage}</LayoutContainer>
+      <LayoutContainer layout={layout}>
+        {isLoading ? <MultiPageLayoutLoading /> : CurrentPage}
+      </LayoutContainer>
       {(!showOutro || (showOutro && showOutroFooter)) && (
         <MultiPageLayoutFooter
+          disabled={isLoading}
           numPages={numPages}
           currentPage={autoNavigation ? currentPage : pageProp}
           showProgressBar={showProgressBar}
@@ -125,6 +133,7 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
           outroButtonText={outroButtonText}
           pagesWithErrors={pagesWithErrors}
           alert={alert}
+          footerElements={footerElements}
           onPreviousClick={handlePreviousClick}
           onNextClick={handleNextClick}
           onSubmitClick={onSubmitClick}

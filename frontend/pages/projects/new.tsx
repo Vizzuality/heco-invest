@@ -1,14 +1,17 @@
 import { useIntl } from 'react-intl';
 
+import { useRouter } from 'next/router';
+
 import { withLocalizedRequests } from 'hoc/locale';
 
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
+import { useQueryReturnPath } from 'helpers/pages';
 
 import ProjectForm from 'containers/project-form';
 
-import { UserRoles } from 'enums';
+import { Paths, UserRoles } from 'enums';
 import FormPageLayout from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
@@ -34,7 +37,14 @@ type CreateProjectProps = {
 
 const CreateProject: PageComponent<CreateProjectProps> = ({ enums }) => {
   const { formatMessage } = useIntl();
+  const router = useRouter();
+
   const createProject = useCreateProject();
+  const queryReturnPath = useQueryReturnPath();
+
+  const handleOnComplete = () => {
+    router.push(queryReturnPath || Paths.DashboardProjects);
+  };
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
@@ -45,6 +55,7 @@ const CreateProject: PageComponent<CreateProjectProps> = ({ enums }) => {
           id: 'vygPIS',
         })}
         mutation={createProject}
+        onComplete={handleOnComplete}
         enums={enums}
         isCreateForm
       />

@@ -3,16 +3,15 @@ import { FC, useCallback, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { useRouter } from 'next/router';
-
-import { getServiceErrors, useGetAlert, useQueryReturnPath, useLanguageNames } from 'helpers/pages';
+import { getServiceErrors, useGetAlert, useLanguageNames } from 'helpers/pages';
 
 import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { OutroPage, Page } from 'containers/multi-page-layout';
 
+import Button from 'components/button';
 import Head from 'components/head';
-import { Paths } from 'enums';
+import { ProjectStatus } from 'enums';
 import {
   ProjectCreationPayload,
   ProjectForm as ProjectFormType,
@@ -44,6 +43,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   initialValues: project,
   isCreateForm,
   enums,
+  isLoading,
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -51,8 +51,6 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   const [projectSlug, setProjectSlug] = useState<string>();
   const resolver = useProjectValidation(currentPage);
   const updateProject = useUpdateProject();
-  const queryReturnPath = useQueryReturnPath();
-  const router = useRouter();
   const { userAccount } = useAccount();
   const {
     category,
@@ -65,6 +63,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
 
   const defaultValues = useDefaultValues(project);
   const languageNames = useLanguageNames();
+  const isLastPage = currentPage === totalPages - 1;
 
   const {
     register,
@@ -84,6 +83,27 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     defaultValues,
   });
 
+  const handleCompletion = useCallback(
+    ({
+      data: {
+        data: { slug, status, trusted },
+      },
+    }) => {
+      // If the user is saving the project as a draft, they aren't publishing it and it won't
+      // be visible in the administration area either. If they are publishing it now, we make
+      // a check to verify whether the project has been verified before. If so, it's already been
+      // verified and doesn't make sense to display the "Pending approval" screen. If not, then
+      // we show the screen.
+      if (status === ProjectStatus.Published && trusted !== true) {
+        setCurrentPage(currentPage + 1);
+        setProjectSlug(slug);
+      } else {
+        onComplete();
+      }
+    },
+    [currentPage, onComplete]
+  );
+
   const handleUpdate = useCallback(
     (formData: ProjectUpdatePayload) => {
       return updateProject.mutate(formData, {
@@ -95,12 +115,10 @@ export const ProjectForm: FC<ProjectFormProps> = ({
           fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
           errorPages.length && setCurrentPage(errorPages[0]);
         },
-        onSuccess: () => {
-          onComplete?.();
-        },
+        onSuccess: handleCompletion,
       });
     },
-    [updateProject, onComplete, setError]
+    [updateProject, handleCompletion, setError]
   );
 
   const handleCreate = useCallback(
@@ -125,17 +143,14 @@ export const ProjectForm: FC<ProjectFormProps> = ({
           fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
           errorPages.length && setCurrentPage(errorPages[0]);
         },
-        onSuccess: (result) => {
-          setCurrentPage(currentPage + 1);
-          setProjectSlug(result.data.data.slug);
-        },
+        onSuccess: handleCompletion,
       });
     },
-    [currentPage, mutation, setError]
+    [handleCompletion, mutation, setError]
   );
 
   const onSubmit: SubmitHandler<ProjectFormType> = (values: ProjectFormType) => {
-    if (currentPage === totalPages - 1) {
+    if (isLastPage) {
       const {
         involved_project_developer,
         project_gallery,
@@ -161,6 +176,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
       const involved_project_developer_ids = values.involved_project_developer_ids?.filter(
         (id) => id !== 'not-listed'
       );
+
       if (isCreateForm) {
         handleCreate({
           ...rest,
@@ -188,7 +204,18 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     await handleSubmit(onSubmit)();
   };
 
+  const handleSubmitDraft = async () => {
+    setValue('status', ProjectStatus.Draft);
+    await handleSubmit(onSubmit)();
+  };
+
+  const handleSubmitPublish = async () => {
+    setValue('status', ProjectStatus.Published);
+    await handleSubmit(onSubmit)();
+  };
+
   const contentLocale = defaultValues?.language || userAccount?.language;
+  const isOutroPage = currentPage === totalPages;
 
   return (
     <>
@@ -202,12 +229,27 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         page={currentPage}
         alert={useGetAlert(updateProject.error)}
         isSubmitting={updateProject.isLoading}
-        showOutro={currentPage === totalPages && !!projectSlug}
+        showOutro={isOutroPage}
+        siteHeader={isOutroPage}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
-        onCloseClick={() => setShowLeave(true)}
-        onSubmitClick={handleSubmit(onSubmit)}
+        onCloseClick={() => (isOutroPage ? onComplete() : setShowLeave(true))}
+        onSubmitClick={handleSubmitPublish}
+        isLoading={isLoading}
+        footerElements={
+          isLastPage &&
+          project?.status !== ProjectStatus.Published && (
+            <Button
+              className="px-3 py-2 leading-none md:px-8 md:py-4"
+              theme="secondary-green"
+              size="base"
+              onClick={handleSubmitDraft}
+            >
+              <FormattedMessage defaultMessage="Save as draft" id="JHJJAH" />
+            </Button>
+          )
+        }
       >
         <Page key="general-information">
           <ContentLanguageAlert className="mb-6">
@@ -293,7 +335,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
       <LeaveFormModal
         isOpen={showLeave}
         close={() => setShowLeave(false)}
-        handleLeave={() => router.push(queryReturnPath || Paths.Dashboard)}
+        handleLeave={onComplete}
         title={leaveMessage}
       />
     </>

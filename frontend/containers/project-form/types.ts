@@ -29,6 +29,8 @@ export type ProjectFormProps = {
   isCreateForm?: boolean;
   /** Values of the current project developer, in case it is the update form */
   initialValues?: Project;
+  /** Whether the project data is still being loaded/fetched */
+  isLoading?: boolean;
   /** UseMutation hook values */
   mutation: UseMutationResult<AxiosResponse<ResponseData<Project>>, AxiosError<ErrorResponse>>;
   /** Callback to execute when form has been submitted successfully */

@@ -23,29 +23,34 @@ import { User } from 'types/user';
 
 import { useUpdateProject } from 'services/account';
 import { getEnums } from 'services/enums/enumService';
-import { getProject } from 'services/projects/projectService';
+import { getProject, useProject } from 'services/projects/projectService';
+
+const PROJECT_QUERY_PARAMS = {
+  includes: [
+    'project_images',
+    'country',
+    'municipality',
+    'department',
+    'project_developer',
+    'involved_project_developers',
+    'project_developer',
+  ],
+  // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
+  locale: null,
+};
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
   let project;
   let enums;
 
   try {
-    ({ data: project } = await getProject(id as string, {
-      includes: [
-        'project_images',
-        'country',
-        'municipality',
-        'department',
-        'project_developer',
-        'involved_project_developers',
-        'project_developer',
-      ],
-      // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
-      locale: null,
-    }));
+    ({ data: project } = await getProject(id as string, PROJECT_QUERY_PARAMS));
     enums = await getEnums();
   } catch (e) {
-    return { notFound: true };
+    // The user may be attempting to preview a drafted project, which the endpoint won't return
+    // unless the ownership can be verified. We'll be loading it client side and redirect the user
+    // to the dashboard if the project really doesn't exist or the user doesn't have permissions
+    project = null;
   }
 
   return {
@@ -62,12 +67,20 @@ type EditProjectProps = {
   enums: GroupedEnumsType;
 };
 
-const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ project, enums }) => {
+const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({
+  project: projectProp,
+  enums,
+}) => {
   const { formatMessage } = useIntl();
   const router = useRouter();
 
   const updateProject = useUpdateProject();
   const queryReturnPath = useQueryReturnPath();
+
+  const {
+    data: { data: project },
+    isFetching: isFetchingProject,
+  } = useProject(router.query.id as string, PROJECT_QUERY_PARAMS, projectProp);
 
   const getIsOwner = (_user: User, userAccount: ProjectDeveloper | Investor) => {
     // The user must be a the creator of the project to be allowed to edit it.
@@ -78,7 +91,7 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
     );
   };
 
-  const onComplete = () => {
+  const handleOnComplete = () => {
     router.push(queryReturnPath || Paths.DashboardProjects);
   };
 
@@ -97,8 +110,9 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({ pro
           id: 'vygPIS',
         })}
         mutation={updateProject}
-        onComplete={onComplete}
+        onComplete={handleOnComplete}
         initialValues={project}
+        isLoading={!project && isFetchingProject}
         enums={enums}
       />
     </ProtectedPage>

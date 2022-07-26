@@ -97,12 +97,19 @@ export function useCreateProject(): UseMutationResult<
   AxiosError<ErrorResponse>,
   ProjectCreationPayload
 > {
+  const queryClient = useQueryClient();
+
   const createProject = async (
     data: ProjectCreationPayload
   ): Promise<AxiosResponse<ResponseData<Project>>> => {
     return await API.post('/api/v1/account/projects', data);
   };
-  return useMutation(createProject);
+
+  return useMutation(createProject, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(Queries.AccountProjectList);
+    },
+  });
 }
 
 export function useUpdateProject(): UseMutationResult<
@@ -115,11 +122,15 @@ export function useUpdateProject(): UseMutationResult<
   const updateProject = async (
     project: ProjectUpdatePayload
   ): Promise<AxiosResponse<ResponseData<Project>>> => {
-    queryClient.invalidateQueries(Queries.AccountProjectList);
     return API.put(`/api/v1/account/projects/${project.id}`, project);
   };
 
-  return useMutation(updateProject);
+  return useMutation(updateProject, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(Queries.Project);
+      queryClient.invalidateQueries(Queries.AccountProjectList);
+    },
+  });
 }
 
 const getInvestor = async (includes?: string): Promise<Investor> => {

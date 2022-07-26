@@ -4,7 +4,7 @@ import { string } from 'yup';
 import { ValidGeometryType } from 'containers/forms/geometry/types';
 import { ProjectGalleryImageType } from 'containers/forms/project-gallery/project-gallery-image/types';
 
-import { DevelopmentStages, Languages, TicketSizes } from 'enums';
+import { DevelopmentStages, Languages, TicketSizes, ProjectStatus } from 'enums';
 
 import { Locations } from './locations';
 
@@ -60,6 +60,7 @@ export type ProjectBase = {
   project_images: ProjectImageType[];
   trusted?: boolean;
   favourite?: boolean;
+  status?: ProjectStatus;
   project_developer?: any; // Cannot use ProjectDeveloperType because linting will complain about circular references
   involved_project_developers?: any[]; // Cannot use ProjectDeveloperType because linting will complain about circular references
 };
