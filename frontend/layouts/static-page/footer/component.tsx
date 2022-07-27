@@ -39,7 +39,10 @@ export const Footer: React.FC<FooterProps> = ({
       <LayoutContainer>
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="xl:col-span-1">
-            <p className="text-xs font-medium">HeCo Invest</p>
+            <p className="text-base font-semibold">
+              HeCo Invest{' '}
+              <span className="text-green-dark bg-white rounded-sm py-0.5 px-1 text-xs">βeta</span>
+            </p>
             <p className="max-w-xs mt-2 font-serif text-xl font-semibold leading-7">
               <FormattedMessage
                 defaultMessage="Be part of the biggest change in the colombian Amazon"
@@ -49,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({
             <p className="mt-5 text-xs font-medium">
               <FormattedMessage defaultMessage="Partnership between:" id="o+Vt3t" />
             </p>
-            <div className="flex mt-2 space-x-6">
+            <div className="flex mt-2 gap-x-2.5">
               <a
                 href="https://www.iadb.org"
                 target="_blank"
@@ -141,6 +144,50 @@ export const Footer: React.FC<FooterProps> = ({
                   />
                 </div>
               </a>
+              <a
+                href="https://www.bc3research.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+                title={intl.formatMessage({
+                  defaultMessage: 'Basque Centre for Climate Change',
+                  id: '6ukMW9',
+                })}
+              >
+                <span className="sr-only">
+                  <FormattedMessage defaultMessage="Basque Centre for Climate Change" id="6ukMW9" />
+                </span>
+                <div className="flex items-center justify-center w-10 h-10 bg-white rounded">
+                  <Image
+                    src="/images/footer-bc3.png"
+                    width={32}
+                    height={32}
+                    alt={intl.formatMessage({
+                      defaultMessage: 'Basque Centre for Climate Change',
+                      id: '6ukMW9',
+                    })}
+                  />
+                </div>
+              </a>
+              <a
+                href="https://cloud.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+                title={intl.formatMessage({ defaultMessage: 'Google Cloud', id: 'QlBsxM' })}
+              >
+                <span className="sr-only">
+                  <FormattedMessage defaultMessage="Google Cloud" id="QlBsxM" />
+                </span>
+                <div className="flex items-center justify-center w-10 h-10 bg-white rounded">
+                  <Image
+                    src="/images/footer-google.png"
+                    width={32}
+                    height={32}
+                    alt={intl.formatMessage({ defaultMessage: 'Google Cloud', id: 'QlBsxM' })}
+                  />
+                </div>
+              </a>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-8 mt-12 xl:mt-0 xl:col-span-2">
@@ -160,7 +207,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <li>
                     <Link href="/discover/open-calls">
                       <a className="hover:underline">
-                        <FormattedMessage defaultMessage="Open calls" id="OBhULP" />
+                        <FormattedMessage defaultMessage="Open Calls" id="wpyHb9" />
                       </a>
                     </Link>
                   </li>
