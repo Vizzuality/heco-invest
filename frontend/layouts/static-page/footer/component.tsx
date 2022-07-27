@@ -216,9 +216,11 @@ export const Footer: React.FC<FooterProps> = ({
                     </Link>
                   </li>
                   <li>
-                    <a className="text-gray-400 disabled:pointer-events-none">
-                      <FormattedMessage defaultMessage="FAQ’s" id="qIvPIE" />
-                    </a>
+                    <Link href="/faq">
+                      <a className="hover:underline">
+                        <FormattedMessage defaultMessage="FAQ’s" id="qIvPIE" />
+                      </a>
+                    </Link>
                   </li>
                   <li>
                     <a className="text-gray-400 disabled:pointer-events-none">
