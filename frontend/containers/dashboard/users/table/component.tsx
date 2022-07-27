@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useQueryParams } from 'helpers/pages';
 
@@ -19,6 +19,8 @@ import User from './cells/user';
 import { UsersTableProps } from '.';
 
 export const UsersTable: FC<UsersTableProps> = ({ isOwner }) => {
+  const intl = useIntl();
+
   const queryOptions = { keepPreviousData: true, refetchOnMount: true };
   const queryParams = useQueryParams();
 
@@ -34,27 +36,27 @@ export const UsersTable: FC<UsersTableProps> = ({ isOwner }) => {
   const tableProps = {
     columns: [
       {
-        Header: 'User',
+        Header: intl.formatMessage({ defaultMessage: 'User', id: 'EwRIOm' }),
         accessor: 'user',
         className: 'capitalize text-sm break-all',
         width: 120,
         Cell: User,
       },
       {
-        Header: 'Email',
+        Header: intl.formatMessage({ defaultMessage: 'Email', id: 'sy+pv5' }),
         accessor: 'email',
         className: 'text-sm leading-8',
         width: 200,
       },
       {
-        Header: 'Role',
+        Header: intl.formatMessage({ defaultMessage: 'Role', id: '1ZgrhW' }),
         accessor: 'owner',
         className: 'text-sm leading-8',
         width: 50,
         Cell: Role,
       },
       {
-        Header: 'Invitation',
+        Header: intl.formatMessage({ defaultMessage: 'Invitation', id: 'GM/hd6' }),
         accessor: 'invitation',
         className: 'text-sm leading-8',
         width: 50,
@@ -73,7 +75,7 @@ export const UsersTable: FC<UsersTableProps> = ({ isOwner }) => {
         columns: [
           ...tableProps.columns,
           {
-            Header: 'Actions',
+            Header: intl.formatMessage({ defaultMessage: 'Actions', id: 'wL7VAE' }),
             className: 'capitalize text-sm',
             canSort: false,
             width: 50,
