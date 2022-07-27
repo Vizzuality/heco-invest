@@ -38,7 +38,17 @@ export const LayerTooltip: FC<LayerTooltipProps> = ({ selectedLayer, closeToolti
               <FormattedMessage defaultMessage="Overview" id="9uOFF3" />
             )}
           </p>
-          <p className="text-xs text-gray-900">{selectedLayer?.overview}</p>
+          {Array.isArray(selectedLayer?.overview) ? (
+            <div className="flex flex-col gap-2">
+              {selectedLayer.overview.map((overview, index) => (
+                <p key={index} className="text-xs text-gray-900">
+                  {overview}
+                </p>
+              ))}
+            </div>
+          ) : (
+            <p className="text-xs text-gray-900">{selectedLayer?.overview}</p>
+          )}
         </div>
         <div>
           <p className="mt-4 mb-2 text-sm font-semibold text-gray-600">
@@ -48,7 +58,7 @@ export const LayerTooltip: FC<LayerTooltipProps> = ({ selectedLayer, closeToolti
           </p>
           {selectedLayer?.dataSourceUrl ? (
             <a
-              className="text-xs text-gray-900 hover:underline"
+              className="text-xs text-gray-900 underline"
               target="_blanc"
               rel="noopener noreferrer"
               href={selectedLayer?.dataSourceUrl}
