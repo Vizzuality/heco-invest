@@ -40,6 +40,7 @@ type SignUpPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
   const { locale, query, replace } = useRouter();
+  const queryClient = useQueryClient();
   const intl = useIntl();
   const signUp = useSignup();
   const { invitedUser } = useInvitedUser(query.invitation_token as string);
@@ -55,7 +56,6 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
     resolver,
     shouldUseNativeValidation: true,
   });
-  const queryClient = useQueryClient();
 
   useEffect(() => {
     if (!!user) {
@@ -63,8 +63,6 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
         if (!invitedUser) {
           // If the user exists and is not an invited user, redirect to the account type page
           replace(Paths.AccountType);
-        } else {
-          replace(Paths.Invitation);
         }
       } else {
         // If the user has a role other than light, redirect to the dashboard
@@ -83,16 +81,17 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
         {
           onSuccess: () => {
             if (!!invitedUser) {
-              acceptInvitation.mutate(query.invitation_token as string);
+              acceptInvitation.mutate(query.invitation_token as string, {
+                onSuccess: async () => await queryClient.invalidateQueries(Queries.User),
+              });
             } else {
-              replace(Paths.AccountType);
+              queryClient.invalidateQueries(Queries.User);
             }
-            queryClient.invalidateQueries([Queries.User]);
           },
         }
       );
     },
-    [invitedUser, signUp, query.invitation_token, queryClient, acceptInvitation, replace]
+    [signUp, query.invitation_token, invitedUser, acceptInvitation, queryClient]
   );
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {

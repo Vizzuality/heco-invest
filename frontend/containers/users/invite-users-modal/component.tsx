@@ -3,6 +3,7 @@ import { FC, useCallback, useEffect } from 'react';
 import { X as CloseIcon } from 'react-feather';
 import { FieldError, SubmitErrorHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { useQueryClient } from 'react-query';
 
 import cx from 'classnames';
 
@@ -15,6 +16,7 @@ import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import Icon from 'components/icon';
 import Modal from 'components/modal';
+import { Queries } from 'enums';
 import { InviteUsersDto, UsersInvitationForm } from 'types/invitation';
 
 import { useAccount } from 'services/account';
@@ -30,6 +32,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
   const inviteUsers = useInviteUsers();
   const { userAccount } = useAccount('owner');
   const { name } = userAccount || {};
+  const queryClient = useQueryClient();
 
   const {
     clearErrors,
@@ -107,10 +110,11 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
             if (!getValues('emails')?.length) {
               resetForm();
             }
+            queryClient.invalidateQueries([Queries.AccountUsersList]);
           },
         }
       ),
-    [getValues, inviteUsers, resetForm, setError, setValue]
+    [getValues, inviteUsers, resetForm, setError, setValue, queryClient]
   );
 
   const onSubmit = (values: UsersInvitationForm) => {
@@ -133,7 +137,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
   const validateAndSetEmailsValue = useCallback(
     (e?, type?: 'submiting') => {
       const oldEmails = getValues('emails');
-      const newEmail = getValues('email').trim();
+      const newEmail = getValues('email')?.trim();
       if (type == 'submiting' || ['Enter', 'Tab'].includes(e.key)) {
         const isValid = /\S+@\S+\.\S+/.test(newEmail);
         if (isValid) {

@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useQueryClient } from 'react-query';
@@ -96,15 +96,17 @@ const Invitation: PageComponent<InvitationProps> = () => {
           alt={formatMessage({ defaultMessage: 'Invitation mail', id: 'a+vAPa' })}
         />
       </div>
-      {invitedUserLoading || userLoading || userError ? (
+      {invitedUserError || !query.invitation_token ? (
+        <div className="max-w-lg mt-20 text-center rounded-lg overflow-hidden">
+          <Alert withLayoutContainer>
+            <p className="text-lg">
+              <FormattedMessage defaultMessage="Invalid invitation token" id="XimHnV" />
+            </p>
+          </Alert>
+        </div>
+      ) : invitedUserLoading || userLoading ? (
         <div className="flex flex-col items-center justify-center mt-20">
           <Loading visible iconClassName="w-16 h-16" />
-        </div>
-      ) : invitedUserError || !query.invitation_token ? (
-        <div className="max-w-lg mt-10 text-center">
-          <Alert withLayoutContainer>
-            <FormattedMessage defaultMessage="Invalid invitation token" id="XimHnV" />
-          </Alert>
         </div>
       ) : (
         <div className="max-w-lg text-center">
