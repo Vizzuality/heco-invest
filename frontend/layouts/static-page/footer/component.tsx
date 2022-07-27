@@ -263,14 +263,18 @@ export const Footer: React.FC<FooterProps> = ({
                     </Link>
                   </li>
                   <li>
-                    <a className="text-gray-400 disabled:pointer-events-none">
-                      <FormattedMessage defaultMessage="FAQ’s" id="qIvPIE" />
-                    </a>
+                    <Link href={Paths.ComingSoon} passHref>
+                      <a className="text-gray-400 disabled:pointer-events-none">
+                        <FormattedMessage defaultMessage="FAQ’s" id="qIvPIE" />
+                      </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="text-gray-400 disabled:pointer-events-none">
-                      <FormattedMessage defaultMessage="Privacy policy" id="cPwv2c" />
-                    </a>
+                    <Link href={Paths.ComingSoon} passHref>
+                      <a className="text-gray-400 disabled:pointer-events-none">
+                        <FormattedMessage defaultMessage="Privacy policy" id="cPwv2c" />
+                      </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

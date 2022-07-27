@@ -39,6 +39,7 @@ export enum Paths {
   Invitation = '/invitation',
   ForInvestors = '/for-investors',
   ForProjectDevelopers = '/for-project-developers',
+  ComingSoon = '/coming-soon',
 }
 
 export enum UserRoles {
