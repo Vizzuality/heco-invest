@@ -104,6 +104,9 @@
   "1Qvlb5": {
     "string": "Legalized Indigenous Reservations until the year 2021."
   },
+  "1ZgrhW": {
+    "string": "Role"
+  },
   "1iEPTM": {
     "string": "General"
   },
@@ -560,6 +563,9 @@
   "GKONs7": {
     "string": "Start having impact now."
   },
+  "GM/hd6": {
+    "string": "Invitation"
+  },
   "GOg6XJ": {
     "string": "Be part of the biggest change in the colombian Amazon"
   },
@@ -571,6 +577,9 @@
   },
   "GgNMmS": {
     "string": "National Wetlands Map of Colombia"
+  },
+  "GsO+rH": {
+    "string": "Delete project?"
   },
   "GtP2gp": {
     "string": "Find opportunities that have the greatest impact on challenges like <b>biodiversity, climate, community</b> and <b>water</b>."
@@ -944,6 +953,9 @@
   },
   "U98Mu/": {
     "string": "This layer shows the permanent and temporal wetlands of Colombia at a 1:100.000 reoslution"
+  },
+  "UIQdVc": {
+    "string": "Are you sure you want to delete “<strong>{projectName}</strong>”?"
   },
   "URLNhk": {
     "string": "The Inter-American Development Bank (IDB) is the largest source of development financing for Latin America and the Caribbean. Established in 1959, the IDB supports Latin American and Caribbean economic development, social development and regional integration by lending to governments and government agencies, including State corporations."
@@ -1452,6 +1464,9 @@
   "jwimQJ": {
     "string": "Ok"
   },
+  "k0xbVH": {
+    "string": "You can't undo this action."
+  },
   "k5DITM": {
     "string": "Users will receive an email to sign up into the platform and join <strong>{name}</strong> account."
   },
@@ -1793,6 +1808,9 @@
   },
   "wEQDC6": {
     "string": "Edit"
+  },
+  "wL7VAE": {
+    "string": "Actions"
   },
   "wQteLO": {
     "string": "Go to page {page}"

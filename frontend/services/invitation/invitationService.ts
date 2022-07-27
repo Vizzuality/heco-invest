@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { UseMutationResult, useMutation } from 'react-query';
+import { UseMutationResult, useMutation, useQueryClient } from 'react-query';
 
 import { AxiosResponse, AxiosError } from 'axios';
 
@@ -8,10 +8,11 @@ import { useLocalizedQuery } from 'hooks/query';
 
 import { Queries } from 'enums';
 import { InviteUsersDto, InvitedUserInfo } from 'types/invitation';
+import { User } from 'types/user';
 
 import API, { RawApi } from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
-import { ErrorResponse } from 'services/types';
+import { ErrorResponse, ResponseData } from 'services/types';
 
 export const getInvitedUser = async (invitation_token: string): Promise<InvitedUserInfo> => {
   const result = await RawApi.post('/api/v1/invitation/info', { invitation_token });
@@ -25,6 +26,7 @@ export const useInvitedUser = (invitation_token: string) => {
     () => getInvitedUser(invitation_token),
     {
       enabled: !!invitation_token,
+      retry: 1,
       ...staticDataQueryOptions,
     }
   );
@@ -53,7 +55,17 @@ export const useAcceptInvitation = (): UseMutationResult<
   AxiosError<ErrorResponse>,
   string
 > => {
-  return useMutation((invitation_token) => {
-    return API.put('/api/v1/invitation', { invitation_token });
+  const queryClient = useQueryClient();
+
+  const acceptInvitation = async (
+    invitation_token: string
+  ): Promise<AxiosResponse<ResponseData<User>>> => {
+    return await API.put('/api/v1/invitation', { invitation_token });
+  };
+
+  return useMutation(acceptInvitation, {
+    onSuccess: () => {
+      queryClient.removeQueries(Queries.InvitedUser);
+    },
   });
 };
