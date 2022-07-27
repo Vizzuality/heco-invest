@@ -96,7 +96,7 @@ const FaqPage: PageComponent<FaqPageProps, StaticPageLayoutProps> = () => {
         title={intl.formatMessage({ defaultMessage: 'Frequently Asked Questions', id: 'QA1wrZ' })}
       />
 
-      <LayoutContainer className="mt-8 mb-32 bg-background-light">
+      <LayoutContainer className="mt-8 mb-20 lg:mb-32 bg-background-light">
         <h1 className="font-serif text-3xl font-semibold md:text-4xl">
           <FormattedMessage defaultMessage="We are here to help you" id="IQTULX" />
         </h1>
@@ -109,8 +109,11 @@ const FaqPage: PageComponent<FaqPageProps, StaticPageLayoutProps> = () => {
 
         <hr className="my-8 border-t-background-dark" />
 
-        <div ref={containerRef} className="relative flex flex-col gap-8 mt-8 md:gap-20 lg:flex-row">
-          <aside className="justify-start md:sticky md:self-start md:top-32">
+        <div
+          ref={containerRef}
+          className="relative flex flex-col gap-8 mt-8 md:gap-20 lg:gap-32 xl:gap-48 lg:flex-row"
+        >
+          <aside className="justify-start w-full md:sticky md:self-start md:top-32">
             {faqs.map(({ sectionId: id, name }) => (
               <Button
                 key={id}
