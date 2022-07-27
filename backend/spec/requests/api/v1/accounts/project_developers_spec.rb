@@ -223,4 +223,60 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
       end
     end
   end
+
+  path "/api/v1/account/project_developers/favourites" do
+    get "Returns list of project developers marked as favourite" do
+      tags "Project Developers"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: "page[number]", in: :query, type: :integer, description: "Page number. Default: 1", required: false
+      parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
+      parameter name: "fields[project_developer]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user, account: create(:account, :unapproved)) }
+
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {type: :array, items: {"$ref" => "#/components/schemas/project_developer"}},
+          meta: {"$ref" => "#/components/schemas/pagination_meta"},
+          links: {"$ref" => "#/components/schemas/pagination_links"}
+        }
+
+        let("X-CSRF-TOKEN") { get_csrf_token }
+        let(:user) { create :user, account: create(:account, :approved) }
+        let!(:favourite_project_developer) { create :favourite_project_developer, user: user }
+        let!(:favourite_project_developer_of_different_user) { create :favourite_project_developer }
+        let!(:project_developer_not_marked_as_favourite) { create :project_developer }
+
+        before { sign_in user }
+
+        run_test!
+
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/account/project-developers-favourites")
+          expect(response_json["data"].pluck("id")).to eq([favourite_project_developer.project_developer_id])
+        end
+
+        context "with sparse fieldset" do
+          let("fields[project_developer]") { "instagram,facebook,nonexisting" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/account/project-developers-favourites-sparse-fieldset")
+          end
+        end
+
+        context "with relationships" do
+          let("fields[project_developer]") { "instagram,involved_projects" }
+          let(:includes) { "involved_projects" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/account/project-developers-favourites-include-relationships")
+          end
+        end
+      end
+    end
+  end
 end
