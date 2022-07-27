@@ -3,6 +3,12 @@ export type SignIn = {
   password: string;
 };
 
-export type ResetPassword = {
+export type ForgotPassword = {
   email: string;
+};
+
+export type ResetPassword = {
+  password: string;
+  password_confirmation: string;
+  reset_password_token: string;
 };

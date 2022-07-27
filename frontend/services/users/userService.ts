@@ -1,11 +1,8 @@
 import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
 
-import { useRouter } from 'next/router';
-
 import { AxiosResponse, AxiosError } from 'axios';
 
 import { Queries } from 'enums';
-import { ResetPassword } from 'types/sign-in';
 import { SignupDto, User } from 'types/user';
 
 import { ErrorResponse, ResponseData } from 'services/types';
@@ -25,11 +22,6 @@ export function useSignup(): UseMutationResult<
     return data;
   };
   return useMutation(signup);
-}
-
-export function useResetPassword(): UseMutationResult<AxiosResponse, AxiosError, ResetPassword> {
-  const resetPassword = async (dto: ResetPassword) => await API.post('/api/v1/reset_password', dto);
-  return useMutation(resetPassword);
 }
 
 /** Get the logged user */
