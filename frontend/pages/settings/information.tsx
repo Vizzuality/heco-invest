@@ -23,7 +23,7 @@ import ProtectedPage from 'layouts/protected-page';
 import SettingsLayout, { SettingsLayoutProps } from 'layouts/settings';
 import { PageComponent } from 'types';
 
-import { useDeleteUser } from 'services/account';
+import { useAccount, useDeleteUser } from 'services/account';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
@@ -38,7 +38,7 @@ type InformationPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 const Information: PageComponent<InformationPageProps, SettingsLayoutProps> = () => {
   const { formatMessage } = useIntl();
   const { push } = useRouter();
-  const { user } = useMe();
+  const { user, userAccount } = useAccount();
   const queryClient = useQueryClient();
   const deleteUser = useDeleteUser();
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -79,11 +79,7 @@ const Information: PageComponent<InformationPageProps, SettingsLayoutProps> = ()
                     defaultMessage="By deleting your user, you will be removed from the account <n>accountName</n> and you no longer will have access to HeCo Invest Platform."
                     id="rPwLb7"
                     values={{
-                      n: () => (
-                        <span className="font-semibold">
-                          {user?.first_name} {user?.last_name}
-                        </span>
-                      ),
+                      n: () => <span className="font-semibold">{userAccount?.name}</span>,
                     }}
                   />
                 </p>
