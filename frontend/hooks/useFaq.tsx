@@ -213,7 +213,11 @@ export const useFaq = () => {
               defaultMessage: 'What is a verification badge?',
               id: 'qZPjW2',
             }),
-            answer: null,
+            answer: formatMessage({
+              defaultMessage:
+                'A project or an open call can be submitted to the platform administrator for verification that the content complies with the quality standards of the HeCo Invest platform. If so, the content will be marked as “Verified” and will be more prominent than non-verified content on the platform.',
+              id: 'LEQjvN',
+            }),
           },
           {
             questionId: FaqQuestions.WhenWillTheProjectHaveTheVerificationBadge,
@@ -221,7 +225,11 @@ export const useFaq = () => {
               defaultMessage: 'When will the open call have the Verification badge?',
               id: '5DdRx+',
             }),
-            answer: null,
+            answer: formatMessage({
+              defaultMessage:
+                'The HeCo invest platform administrator will attribute a verification badge to an open call after reviewing it and considering that all criteria match the goals and standards of the platform.',
+              id: 'JGIdpr',
+            }),
           },
           {
             questionId: FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge,
@@ -229,7 +237,11 @@ export const useFaq = () => {
               defaultMessage: 'When will the project have the Verification badge?',
               id: 'E/YxHp',
             }),
-            answer: null,
+            answer: formatMessage({
+              defaultMessage:
+                'The HeCo invest platform administrator will attribute a verification badge to a project after reviewing it and considering that all criteria match the goals and standards of the platform.',
+              id: 'VBwakD',
+            }),
           },
         ],
       },
