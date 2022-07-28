@@ -52,6 +52,8 @@ export const FaqPaths = {
 export const useFaq = () => {
   const { formatMessage } = useIntl();
 
+  const patrimonioNaturalHref = 'https://www.patrimonionatural.org.co/redes-y-plataformas/heco/';
+
   const faq = useMemo(
     () => [
       {
@@ -255,7 +257,25 @@ export const useFaq = () => {
               defaultMessage: 'What are HeCo priority landscapes?',
               id: '8gJV79',
             }),
-            answer: null,
+            answer: formatMessage(
+              {
+                defaultMessage:
+                  'The HeCo priority landscapes or conservation mosaics are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure quality ecosystem services. The HeCo priority landscapes result from modeling and technical prioritization where the common interest prevailed in favor of the conservation and sustainable use of biodiversity and vital ecosystem services for national development. More information about these regions <link>here</link>.',
+                id: 'EpzS3H',
+              },
+              {
+                link: (chunks: string) => (
+                  <a
+                    className="underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={patrimonioNaturalHref}
+                  >
+                    {chunks}
+                  </a>
+                ),
+              }
+            ),
           },
           {
             questionId: FaqQuestions.WhyAreThoseRegionsImportant,
@@ -263,7 +283,25 @@ export const useFaq = () => {
               defaultMessage: 'Why are these regions important?',
               id: 'aRoGjo',
             }),
-            answer: null,
+            answer: formatMessage(
+              {
+                defaultMessage:
+                  "These prioritized regions are spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure quality ecosystem services. Many of these regions belong to the municipalities prioritized for the post-conflict process. These areas centralize Herencia Colombia's efforts to preserve and sustainably use biodiversity, land use planning, improve the quality of life of local communities, reduce deforestation, mitigate and adapt to climate change, and generate livelihoods, among others. This will ultimately contribute directly to building peace in the most affected areas. More information about these regions <link>here</link>.",
+                id: 'Qmq3hW',
+              },
+              {
+                link: (chunks: string) => (
+                  <a
+                    className="underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={patrimonioNaturalHref}
+                  >
+                    {chunks}
+                  </a>
+                ),
+              }
+            ),
           },
           {
             questionId: FaqQuestions.WhichAreTheHeCoProgramPriorityLandscapes,
@@ -271,7 +309,25 @@ export const useFaq = () => {
               defaultMessage: 'Which are the HeCo Program priority landscapes?',
               id: 'qCZWRp',
             }),
-            answer: null,
+            answer: formatMessage(
+              {
+                defaultMessage:
+                  'The Herencia Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. The HeCo Invest platform centers its attention on areas directly connected to the Amazon. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition. More information about these regions <link>here</link>.',
+                id: 'lviFjb',
+              },
+              {
+                link: (chunks: string) => (
+                  <a
+                    className="underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={patrimonioNaturalHref}
+                  >
+                    {chunks}
+                  </a>
+                ),
+              }
+            ),
           },
         ],
       },
