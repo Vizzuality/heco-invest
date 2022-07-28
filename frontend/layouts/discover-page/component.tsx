@@ -171,7 +171,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
         <div className="z-10">
           <Header />
           <LayoutContainer className="z-10 flex justify-center pt-1 mt-0 mb-2 pointer-events-none xl:hidden xl:mb-6 xl:mt-0 xl:left-0 xl:right-0 xl:h-20 xl:fixed xl:top-3">
-            <DiscoverSearch className="w-full max-w-3xl pointer-events-auto" />
+            <DiscoverSearch className="-z-10 w-full max-w-3xl pointer-events-auto" />
           </LayoutContainer>
         </div>
         <main className="z-0 flex flex-col flex-grow h-screen overflow-y-scroll">
