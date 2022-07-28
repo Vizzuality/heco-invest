@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
 
+import InvestorInfo from 'containers/faq-page/answers/account/investor-info';
 import ProjectDeveloperInfo from 'containers/faq-page/answers/account/project-developer-info';
 
 import { Paths } from 'enums';
@@ -109,7 +110,7 @@ export const useFaq = () => {
               defaultMessage: 'What information do I need to create an Investor account?',
               id: 'JK13Ms',
             }),
-            answer: null,
+            answer: <InvestorInfo />,
           },
         ],
       },
