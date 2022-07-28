@@ -37,8 +37,8 @@ export const FaqPaths = {
   [FaqQuestions.HowDoAccountsWork]: `${Paths.FAQ}/${FaqSections.Account}/${FaqQuestions.HowDoAccountsWork}`,
   [FaqQuestions.CanIAddColleagues]: `${Paths.FAQ}/${FaqSections.Account}/${FaqQuestions.CanIAddColleagues}`,
   [FaqQuestions.WhyAccountIsPendingApproval]: `${Paths.FAQ}/${FaqSections.Account}/${FaqQuestions.WhyAccountIsPendingApproval}`,
-  // [FaqQuestions.InfoNeededForPdAccount]: `${Paths.FAQ}/${FaqSections.Account}/${FaqQuestions.InfoNeededForPdAccount}`,
-  // [FaqQuestions.InfoNeededForInvestorAccount]: `${Paths.FAQ}/${FaqSections.Account}/${FaqQuestions.InfoNeededForInvestorAccount}`,
+  [FaqQuestions.InfoNeededForPdAccount]: `${Paths.FAQ}/${FaqSections.Account}/${FaqQuestions.InfoNeededForPdAccount}`,
+  [FaqQuestions.InfoNeededForInvestorAccount]: `${Paths.FAQ}/${FaqSections.Account}/${FaqQuestions.InfoNeededForInvestorAccount}`,
   /** Projects */
   [FaqQuestions.WhatIsAProject]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.WhatIsAProject}`,
   [FaqQuestions.ForWhoIsTheProjectFor]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.ForWhoIsTheProjectFor}`,
