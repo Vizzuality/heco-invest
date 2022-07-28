@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
 
+import ProjectDeveloperInfo from 'containers/faq-page/answers/account/project-developer-info';
+
 import { Paths } from 'enums';
 
 /** FAQ Sections */
@@ -99,7 +101,7 @@ export const useFaq = () => {
               defaultMessage: 'What information do I need to create a Project Developer account?',
               id: 'orirkU',
             }),
-            answer: null,
+            answer: <ProjectDeveloperInfo />,
           },
           {
             questionId: FaqQuestions.InfoNeededForInvestorAccount,

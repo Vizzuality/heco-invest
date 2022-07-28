@@ -65,6 +65,11 @@ module.exports = {
       search: '0 0 32px rgb(0 0 0 / 0.25)',
       none: 'none',
     },
+    listStyleType: {
+      decimal: 'decimal',
+      'lower-latin': 'lower-latin',
+      'lower-roman': 'lower-roman',
+    },
     extend: {
       spacing: {
         1.75: '0.4375rem',
