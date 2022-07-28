@@ -153,7 +153,7 @@ export const InvestorInfo: FC = () => {
         <li>
           <FormattedMessage defaultMessage="What’s your mission?" id="t39CQq" />{' '}
           <span className="italic font-normal">
-            <FormattedMessage defaultMessage="(max 600 characters) *" id="ZQW+yb" />
+            (<FormattedMessage defaultMessage="max 600 characters" id="UhT/Dv" />) *
           </span>
         </li>
         <li>

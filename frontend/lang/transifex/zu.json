@@ -608,6 +608,9 @@
   "EOsYCo": {
     "string": "Discover our current calls from investors. Apply with your project and receive funding."
   },
+  "ET6OJw": {
+    "string": "To create a project you will need the following information."
+  },
   "EVKdUn": {
     "string": "Priority Landscape"
   },
@@ -2033,6 +2036,9 @@
   },
   "qwCflo": {
     "string": "Edit project"
+  },
+  "qyN+gs": {
+    "string": "Note that all of this information will be visible in the project public page except questions 20 and 21."
   },
   "r/AN6W": {
     "string": "select investor/funder type"

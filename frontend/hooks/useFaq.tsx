@@ -4,6 +4,7 @@ import { useIntl } from 'react-intl';
 
 import InvestorInfo from 'containers/faq-page/answers/account/investor-info';
 import ProjectDeveloperInfo from 'containers/faq-page/answers/account/project-developer-info';
+import ProjectInfo from 'containers/faq-page/answers/projects/project-info';
 
 import { Paths } from 'enums';
 
@@ -157,7 +158,7 @@ export const useFaq = () => {
               defaultMessage: 'What information do I need to create a project?',
               id: 'oRepRG',
             }),
-            answer: null,
+            answer: <ProjectInfo />,
           },
         ],
       },
