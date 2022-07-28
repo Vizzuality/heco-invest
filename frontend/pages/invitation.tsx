@@ -12,7 +12,7 @@ import { withLocalizedRequests } from 'hoc/locale';
 import { InferGetStaticPropsType } from 'next';
 
 import useMe from 'hooks/me';
-import { FaqPaths } from 'hooks/useFaq';
+import { FaqPaths, FaqQuestions } from 'hooks/useFaq';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
@@ -145,7 +145,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
                 : acceptInvitation.error?.message}
             </Alert>
           )}
-          <Link href={FaqPaths['how-do-accounts-work']} passHref>
+          <Link href={FaqPaths[FaqQuestions.HowDoAccountsWork]} passHref>
             <a className="text-base text-gray-700 underline">
               <FormattedMessage defaultMessage="How do accounts work?" id="/ITXlB" />
             </a>

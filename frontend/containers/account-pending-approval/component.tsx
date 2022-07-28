@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { FaqPaths } from 'hooks/useFaq';
+import { FaqPaths, FaqQuestions } from 'hooks/useFaq';
 
 import Button from 'components/button';
 
@@ -35,7 +35,7 @@ export const AccountPendingApproval = () => {
       <Button className="mt-6 mb-12" to="/discover">
         <FormattedMessage defaultMessage="Explore" id="7JlauX" />
       </Button>
-      <Link href={FaqPaths['why-is-my-account-pending-approval']} passHref>
+      <Link href={FaqPaths[FaqQuestions.WhyAccountIsPendingApproval]} passHref>
         <a target="_blank" rel="noopener noreferrer" className="font-sans text-gray-600 underline">
           <FormattedMessage defaultMessage="Why is my profile pending approval?" id="Ftj+/t" />
         </a>
