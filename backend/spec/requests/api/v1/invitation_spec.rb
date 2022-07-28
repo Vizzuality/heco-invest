@@ -97,20 +97,20 @@ RSpec.describe "API V1 Invitation", type: :request do
         before { sign_in account.owner }
 
         context "when users were not invited yet" do
-          run_test!
-
-          it "matches snapshot", generate_swagger_example: true do
+          it "matches snapshot", generate_swagger_example: true do |example|
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
             expect(response.body).to match_snapshot("api/v1/invitation-create")
           end
 
-          it "sends emails" do
-            mails = ActionMailer::Base.deliveries.last(2)
-            expect(mails.map(&:subject).uniq).to eq([I18n.with_locale(account.language) { I18n.t("devise.mailer.invitation_instructions.subject") }])
-            expect(mails.first.to).to eq(["user@example.com"])
-            expect(mails.second.to).to eq([user.email])
+          it "sends emails" do |example|
+            expect {
+              submit_request example.metadata
+            }.to have_enqueued_mail(DeviseMailer, :invitation_instructions).with(User, String, fallback_language: :pt).twice
           end
 
-          it "sets unregistered user's ui_language to inviting account language" do
+          it "sets unregistered user's ui_language to inviting account language" do |example|
+            submit_request example.metadata
             expect(User.find_by_email("user@example.com").ui_language).to eq("pt")
           end
         end
@@ -120,16 +120,16 @@ RSpec.describe "API V1 Invitation", type: :request do
 
           before { user.invite! account.owner }
 
-          run_test!
-
-          it "re-invites user" do
+          it "re-invites user" do |example|
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
             expect(response_json[user.email]).to eq(200)
           end
 
-          it "sends email" do
-            mail = ActionMailer::Base.deliveries.last
-            expect(mail.subject).to eq(I18n.with_locale(account.language) { I18n.t("devise.mailer.invitation_instructions.subject") })
-            expect(mail.to).to eq([user.email])
+          it "sends emails" do |example|
+            expect {
+              submit_request example.metadata
+            }.to have_enqueued_mail(DeviseMailer, :invitation_instructions).with(user, String, fallback_language: :pt)
           end
         end
       end
