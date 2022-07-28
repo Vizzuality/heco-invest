@@ -4,6 +4,7 @@ import { useIntl } from 'react-intl';
 
 import InvestorInfo from 'containers/faq-page/answers/account/investor-info';
 import ProjectDeveloperInfo from 'containers/faq-page/answers/account/project-developer-info';
+import OpenCallInfo from 'containers/faq-page/answers/open-calls/open-call-info';
 import ProjectInfo from 'containers/faq-page/answers/projects/project-info';
 
 import { Paths } from 'enums';
@@ -205,7 +206,7 @@ export const useFaq = () => {
               defaultMessage: 'What information do I need to create an open call?',
               id: '1E9nN4',
             }),
-            answer: null,
+            answer: <OpenCallInfo />,
           },
         ],
       },
