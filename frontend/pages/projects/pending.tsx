@@ -10,6 +10,8 @@ import { withLocalizedRequests } from 'hoc/locale';
 
 import { InferGetStaticPropsType } from 'next';
 
+import { FaqPaths } from 'hooks/useFaq';
+
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Button from 'components/button';
@@ -57,7 +59,7 @@ const Pending: PageComponent<PendingProjectProps, FormPageLayoutProps> = () => {
         <Button className="mt-6 mb-12" to={`${Paths.Project}/${query.project}`}>
           <FormattedMessage defaultMessage="Go to project page" id="mMReor" />
         </Button>
-        <Link href="/faq#pending-approval" passHref>
+        <Link href={FaqPaths['what-is-a-verification-badge']} passHref>
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -66,7 +68,7 @@ const Pending: PageComponent<PendingProjectProps, FormPageLayoutProps> = () => {
             <FormattedMessage defaultMessage="What is a verification badge?" id="qZPjW2" />
           </a>
         </Link>
-        <Link href="/faq#pending-approval" passHref>
+        <Link href={FaqPaths['when-will-the-project-have-the-verification-badge']} passHref>
           <a
             target="_blank"
             rel="noopener noreferrer"

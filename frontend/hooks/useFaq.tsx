@@ -26,6 +26,10 @@ export enum FaqQuestions {
   ForWhoIsTheProjectFor = 'for-who-is-the-project-for',
   HowCanIFundAProject = 'how-can-i-fund-a-project',
   WhatInfoToCreateProject = 'what-information-do-i-need-to-create-a-project',
+  /** Verification Badges */
+  WhatIsAVerificationBadge = 'what-is-a-verification-badge',
+  WhenWillTheProjectHaveTheVerificationBadge = 'when-will-the-project-have-the-verification-badge',
+  WhenWillTheOpenCallHaveTheVerificationBadge = 'when-will-the-open-call-have-the-verification-badge',
 }
 
 export const FaqPaths = {
@@ -40,6 +44,9 @@ export const FaqPaths = {
   [FaqQuestions.ForWhoIsTheProjectFor]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.ForWhoIsTheProjectFor}`,
   [FaqQuestions.HowCanIFundAProject]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.HowCanIFundAProject}`,
   // [FaqQuestions.WhatInfoToCreateProject]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.WhatInfoToCreateProject}`,
+  [FaqQuestions.WhatIsAVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhatIsAVerificationBadge}`,
+  [FaqQuestions.WhenWillTheProjectHaveTheVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhenWillTheProjectHaveTheVerificationBadge}`,
+  // [FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge}`,
 };
 
 export const useFaq = () => {

@@ -12,6 +12,7 @@ import { withLocalizedRequests } from 'hoc/locale';
 import { InferGetStaticPropsType } from 'next';
 
 import useMe from 'hooks/me';
+import { FaqPaths } from 'hooks/useFaq';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
@@ -97,7 +98,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
         />
       </div>
       {invitedUserError || !query.invitation_token ? (
-        <div className="max-w-lg mt-20 text-center rounded-lg overflow-hidden">
+        <div className="max-w-lg mt-20 overflow-hidden text-center rounded-lg">
           <Alert withLayoutContainer>
             <p className="text-lg">
               <FormattedMessage defaultMessage="Invalid invitation token" id="XimHnV" />
@@ -144,7 +145,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
                 : acceptInvitation.error?.message}
             </Alert>
           )}
-          <Link href={`${Paths.FAQ}#accounts`} passHref>
+          <Link href={FaqPaths['how-do-accounts-work']} passHref>
             <a className="text-base text-gray-700 underline">
               <FormattedMessage defaultMessage="How do accounts work?" id="/ITXlB" />
             </a>

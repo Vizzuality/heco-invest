@@ -5,6 +5,8 @@ import { FormattedMessage } from 'react-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { FaqPaths } from 'hooks/useFaq';
+
 import Button from 'components/button';
 import { Paths } from 'enums';
 
@@ -33,12 +35,12 @@ export const PendingApproval = ({ projectSlug }: { projectSlug: string }) => {
       <Button className="mt-6 mb-12" to={`${Paths.Project}/${projectSlug}`}>
         <FormattedMessage defaultMessage="Go to project page" id="mMReor" />
       </Button>
-      <Link href="/faq#pending-approval" passHref>
+      <Link href={FaqPaths['what-is-a-verification-badge']} passHref>
         <a target="_blank" rel="noopener noreferrer" className="font-sans text-gray-600 underline">
           <FormattedMessage defaultMessage="What is a verification badge?" id="qZPjW2" />
         </a>
       </Link>
-      <Link href="/faq#pending-approval" passHref>
+      <Link href={FaqPaths['when-will-the-project-have-the-verification-badge']} passHref>
         <a
           target="_blank"
           rel="noopener noreferrer"
