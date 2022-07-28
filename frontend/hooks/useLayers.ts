@@ -68,7 +68,8 @@ export const useLayers = () => {
             id: 'Id5CnU',
           }),
           dataSource: 'Ministerio de Medio Ambiente y Desarrollo Sostenible de Colombia',
-          dataSourceUrl: '',
+          dataSourceUrl:
+            'https://www.arcgis.com/home/item.html?id=07bdb2d56b534039843a415995fc4447',
           specification: {
             type: 'vector',
             source: {
@@ -228,7 +229,7 @@ export const useLayers = () => {
           }),
           dataSource:
             'United Nations Environment World Conservation Monitoring Centre (UNEP-WCMC) and Natural History Museum',
-          dataSourceUrl: '',
+          dataSourceUrl: 'https://data.nhm.ac.uk/',
           specification: {
             type: 'raster',
             source: {
@@ -353,11 +354,18 @@ export const useLayers = () => {
             defaultMessage: 'Global estimate of human population density and distribution.',
             id: 'A8lXv/',
           }),
-          overview: formatMessage({
-            defaultMessage:
-              'The Global Human Settlement Layer (GHSL) Population Grid depicts the distribution and density of population, expressed as the number of people per cell, for 2015. While GFW uses only 2015 data, the GHSL is a multi-temporal population data set that employs new spatial data mining technologies. These methods enable the automatic processing and extraction of analytics and knowledge from different data sets: global, fine-scale satellite image data streams, census data, and crowd sources or volunteered geographic information sources. To produce this population density and distribution data set, researchers mapped global built-up areas, which are defined as all above ground constructions intended for human or animal sheltering or to produce economic goods. The locations of these built up areas was established using Landsat imagery analysis. An additional source used to compile this data set was the Gridded Population of the World (GPW) data set assembled by the Center for International Earth Science Information Network (CIESIN). The GPW data set consists of census population data and bolstered the built-up areas data by enabling researchers to estimate residential population. To present this data as grid cells, GPW data was disaggregated from census or administrative units.',
-            id: 'PIc+q2',
-          }),
+          overview: [
+            formatMessage({
+              defaultMessage:
+                'The Global Human Settlement Layer (GHSL) Population Grid depicts the distribution and density of population, expressed as the number of people per cell, for 2015. While GFW uses only 2015 data, the GHSL is a multi-temporal population data set that employs new spatial data mining technologies. These methods enable the automatic processing and extraction of analytics and knowledge from different data sets: global, fine-scale satellite image data streams, census data, and crowd sources or volunteered geographic information sources.',
+              id: 'VzuazJ',
+            }),
+            formatMessage({
+              defaultMessage:
+                'To produce this population density and distribution data set, researchers mapped global built-up areas, which are defined as all above ground constructions intended for human or animal sheltering or to produce economic goods. The locations of these built up areas was established using Landsat imagery analysis. An additional source used to compile this data set was the Gridded Population of the World (GPW) data set assembled by the Center for International Earth Science Information Network (CIESIN). The GPW data set consists of census population data and bolstered the built-up areas data by enabling researchers to estimate residential population. To present this data as grid cells, GPW data was disaggregated from census or administrative units.',
+              id: 'dKiARI',
+            }),
+          ],
           dataSource:
             'European Commission, Joint Research Centre (JRC); Columbia University, Center for International Earth Science Information Network - CIESIN',
           dataSourceUrl: 'https://data.jrc.ec.europa.eu/dataset/jrc-ghsl-ghs_pop_gpw4_globe_r2015a',
@@ -384,11 +392,18 @@ export const useLayers = () => {
               'Displays the Key Biodiversity Areas containing 95% or more of the remaining population of one or more species listed as Endangered or Critically Endangered on the International Union for Conservation of Nature (IUCN) Red List of Threatened Species.',
             id: '6vrfSY',
           }),
-          overview: formatMessage({
-            defaultMessage:
-              'The dataset represents the boundaries of sites containing 95% or more of the remaining population of one or more species listed as Endangered or Critically Endangered on the International Union for Conservation of Nature (IUCN) Red List of Threatened Species. The Alliance for Zero Extinction (AZE) originally created this dataset with a goal to prevent extinctions by identifying and safeguarding key sites. The 2019 March version of this dataset contains 859 sites, supporting 1483 Critically Endangered or Endangered species.',
-            id: 'UVJ5y2',
-          }),
+          overview: [
+            formatMessage({
+              defaultMessage:
+                'The dataset represents the boundaries of sites containing 95% or more of the remaining population of one or more species listed as Endangered or Critically Endangered on the International Union for Conservation of Nature (IUCN) Red List of Threatened Species.',
+              id: 'TYrWO2',
+            }),
+            formatMessage({
+              defaultMessage:
+                'The Alliance for Zero Extinction (AZE) originally created this dataset with a goal to prevent extinctions by identifying and safeguarding key sites. The 2019 March version of this dataset contains 859 sites, supporting 1483 Critically Endangered or Endangered species.',
+              id: 'tgYyOu',
+            }),
+          ],
           dataSource: 'Alliance for Zero Extinctions (AZE)',
           dataSourceUrl: 'https://www.keybiodiversityareas.org/kba-data/request',
           specification: {
@@ -444,11 +459,18 @@ export const useLayers = () => {
             defaultMessage: 'Identifies areas of gross tree cover loss.',
             id: 'rw2/NH',
           }),
-          overview: formatMessage({
-            defaultMessage:
-              'This data set, a collaboration between the Global Land Analysis & Discovery (GLAD) lab at the University of Maryland, Google, USGS, and NASA, measures areas of tree cover loss across all global land (except Antarctica and other Arctic islands) at approximately 30 × 30 meter resolution. The data were generated using multispectral satellite imagery from the Landsat 5 thematic mapper (TM), the Landsat 7 thematic mapper plus (ETM+), and the Landsat 8 Operational Land Imager (OLI) sensors. Over 1 million satellite images were processed and analyzed, including over 600,000 Landsat 7 images for the 2000-2012 interval, and more than 400,000 Landsat 5, 7, and 8 images for updates for the 2011-2021 interval. The clear land surface observations in the satellite images were assembled and a supervised learning algorithm was applied to identify per pixel tree cover loss. In this data set, “tree cover” is defined as all vegetation greater than 5 meters in height, and may take the form of natural forests or plantations across a range of canopy densities. Tree cover loss is defined as “stand replacement disturbance,” or the complete removal of tree cover canopy at the Landsat pixel scale. Tree cover loss may be the result of human activities, including forestry practices such as timber harvesting or deforestation (the conversion of natural forest to other land uses), as well as natural causes such as disease or storm damage. Fire is another widespread cause of tree cover loss, and can be either natural or human-induced.',
-            id: 'jJYv/7',
-          }),
+          overview: [
+            formatMessage({
+              defaultMessage:
+                'This data set, a collaboration between the Global Land Analysis & Discovery (GLAD) lab at the University of Maryland, Google, USGS, and NASA, measures areas of tree cover loss across all global land (except Antarctica and other Arctic islands) at approximately 30 × 30 meter resolution. The data were generated using multispectral satellite imagery from the Landsat 5 thematic mapper (TM), the Landsat 7 thematic mapper plus (ETM+), and the Landsat 8 Operational Land Imager (OLI) sensors. Over 1 million satellite images were processed and analyzed, including over 600,000 Landsat 7 images for the 2000-2012 interval, and more than 400,000 Landsat 5, 7, and 8 images for updates for the 2011-2021 interval. The clear land surface observations in the satellite images were assembled and a supervised learning algorithm was applied to identify per pixel tree cover loss.',
+              id: 'eE6uKi',
+            }),
+            formatMessage({
+              defaultMessage:
+                'In this data set, “tree cover” is defined as all vegetation greater than 5 meters in height, and may take the form of natural forests or plantations across a range of canopy densities. Tree cover loss is defined as “stand replacement disturbance,” or the complete removal of tree cover canopy at the Landsat pixel scale. Tree cover loss may be the result of human activities, including forestry practices such as timber harvesting or deforestation (the conversion of natural forest to other land uses), as well as natural causes such as disease or storm damage. Fire is another widespread cause of tree cover loss, and can be either natural or human-induced.',
+              id: 'keWpuD',
+            }),
+          ],
           dataSource: 'Hansen/UMD/Google/USGS/NASA',
           dataSourceUrl: 'https://glad.earthengine.app/view/global-forest-change',
           specification: {
