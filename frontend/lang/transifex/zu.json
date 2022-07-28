@@ -101,6 +101,9 @@
   "1B1DeU": {
     "string": "HeCo Invest relies on the <span>ARIES Artificial Intelligence</span> model to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four dimensions of interest based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10 as shown in the chart of impact."
   },
+  "1E9nN4": {
+    "string": "What information do I need to create an open call?"
+  },
   "1MTH/x": {
     "string": "option {optionName} {status}, {pagination}."
   },
@@ -209,6 +212,9 @@
   "50bxrQ": {
     "string": "My favorites"
   },
+  "5DdRx+": {
+    "string": "When will the open call have the Verification badge?"
+  },
   "5GLwZF": {
     "string": "Select the account language in which you want to write the content of this account. This will avoid mixed content in the platform."
   },
@@ -220,6 +226,9 @@
   },
   "5c08Qp": {
     "string": "Project information"
+  },
+  "5g0Cah": {
+    "string": "For who is the open call for?"
   },
   "5gd2Z7": {
     "string": "HeCo <a>priority landscapes</a>"
@@ -322,6 +331,9 @@
   },
   "8XJceA": {
     "string": "Have you previously invested in impact?"
+  },
+  "8gJV79": {
+    "string": "What are HeCo priority landscapes?"
   },
   "8i6S4q": {
     "string": "Connecting investors, donors and philanthropists with carefully identified investment opportunities."
@@ -705,6 +717,9 @@
   "JJQfhh": {
     "string": "Progress and impact tracking"
   },
+  "JK13Ms": {
+    "string": "What information do I need to create an Investor account?"
+  },
   "JNTB42": {
     "string": "Phone number (optional)"
   },
@@ -803,6 +818,9 @@
   },
   "MuOp0t": {
     "string": "Climate"
+  },
+  "MxllAO": {
+    "string": "What is an open call?"
   },
   "N9+9Fi": {
     "string": "select the project developer type"
@@ -959,6 +977,9 @@
   },
   "SYPx2d": {
     "string": "Project developers involved in the project"
+  },
+  "SZBXIx": {
+    "string": "How can I apply for an open call?"
   },
   "Scnx6A": {
     "string": "Maturity / stage of development"
@@ -1235,6 +1256,9 @@
   },
   "aRIIAG": {
     "string": "<span>Climate:</span> wood and soil biomass, application of sustainable forest measures;"
+  },
+  "aRoGjo": {
+    "string": "Why are these regions important?"
   },
   "aT5Ajq": {
     "string": "Start drawing"
@@ -1665,6 +1689,9 @@
   "oN8abW": {
     "string": "Explain how the impact of the solution or project will be maintained after funding. Try to be specific and not too vague. Is the solution or project will be financially viable? How? What are the key elements to ensure sustainability (business model, partners, partnerships with governments, etc.)?"
   },
+  "oRepRG": {
+    "string": "What information do I need to create a project?"
+  },
   "oUWADl": {
     "string": "No"
   },
@@ -1673,6 +1700,9 @@
   },
   "oiQKNY": {
     "string": "Search and find"
+  },
+  "orirkU": {
+    "string": "What information do I need to create a Project Developer account?"
   },
   "p+Qmws": {
     "string": "Which of these topic/sector categories better describe your project?"
@@ -1712,6 +1742,9 @@
   },
   "q7I+Bg": {
     "string": "{quantity, plural, one {investor} other {investors}}"
+  },
+  "qCZWRp": {
+    "string": "Which are the HeCo Program priority landscapes?"
   },
   "qFZuSl": {
     "string": "My projects"

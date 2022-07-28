@@ -91,6 +91,22 @@ export const useFaq = () => {
               id: 'Fg5HOn',
             }),
           },
+          {
+            questionId: FaqQuestions.InfoNeededForPdAccount,
+            question: formatMessage({
+              defaultMessage: 'What information do I need to create a Project Developer account?',
+              id: 'orirkU',
+            }),
+            answer: null,
+          },
+          {
+            questionId: FaqQuestions.InfoNeededForInvestorAccount,
+            question: formatMessage({
+              defaultMessage: 'What information do I need to create an Investor account?',
+              id: 'JK13Ms',
+            }),
+            answer: null,
+          },
         ],
       },
       {
@@ -130,19 +146,110 @@ export const useFaq = () => {
               id: 'FVcGqA',
             }),
           },
+          {
+            questionId: FaqQuestions.WhatInfoToCreateProject,
+            question: formatMessage({
+              defaultMessage: 'What information do I need to create a project?',
+              id: 'oRepRG',
+            }),
+            answer: null,
+          },
         ],
       },
       {
         sectionId: FaqSections.OpenCalls,
         name: formatMessage({ defaultMessage: 'Open Calls', id: 'wpyHb9' }),
+        items: [
+          {
+            questionId: FaqQuestions.WhatIsAnOpenCall,
+            question: formatMessage({ defaultMessage: 'What is an open call?', id: 'MxllAO' }),
+            answer: null,
+          },
+          {
+            questionId: FaqQuestions.ForWhoIsTheOpenCallFor,
+            question: formatMessage({
+              defaultMessage: 'For who is the open call for?',
+              id: '5g0Cah',
+            }),
+            answer: null,
+          },
+          {
+            questionId: FaqQuestions.HowCanIApplyToAnOpenCall,
+            question: formatMessage({
+              defaultMessage: 'How can I apply for an open call?',
+              id: 'SZBXIx',
+            }),
+            answer: null,
+          },
+          {
+            questionId: FaqQuestions.WhatInfoToCreateOpenCall,
+            question: formatMessage({
+              defaultMessage: 'What information do I need to create an open call?',
+              id: '1E9nN4',
+            }),
+            answer: null,
+          },
+        ],
       },
       {
         sectionId: FaqSections.VerificationBadges,
         name: formatMessage({ defaultMessage: 'Verification badges', id: 'AGwIKZ' }),
+        items: [
+          {
+            questionId: FaqQuestions.WhatIsAVerificationBadge,
+            question: formatMessage({
+              defaultMessage: 'What is a verification badge?',
+              id: 'qZPjW2',
+            }),
+            answer: null,
+          },
+          {
+            questionId: FaqQuestions.WhenWillTheProjectHaveTheVerificationBadge,
+            question: formatMessage({
+              defaultMessage: 'When will the open call have the Verification badge?',
+              id: '5DdRx+',
+            }),
+            answer: null,
+          },
+          {
+            questionId: FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge,
+            question: formatMessage({
+              defaultMessage: 'When will the project have the Verification badge?',
+              id: 'E/YxHp',
+            }),
+            answer: null,
+          },
+        ],
       },
       {
         sectionId: FaqSections.HeCoPriorityLandscapes,
         name: formatMessage({ defaultMessage: 'HeCo Priority landscapes', id: 'BTFkyB' }),
+        items: [
+          {
+            questionId: FaqQuestions.WhatAreHeCoPriorityLandscapes,
+            question: formatMessage({
+              defaultMessage: 'What are HeCo priority landscapes?',
+              id: '8gJV79',
+            }),
+            answer: null,
+          },
+          {
+            questionId: FaqQuestions.WhyAreThoseRegionsImportant,
+            question: formatMessage({
+              defaultMessage: 'Why are these regions important?',
+              id: 'aRoGjo',
+            }),
+            answer: null,
+          },
+          {
+            questionId: FaqQuestions.WhichAreTheHeCoProgramPriorityLandscapes,
+            question: formatMessage({
+              defaultMessage: 'Which are the HeCo Program priority landscapes?',
+              id: 'qCZWRp',
+            }),
+            answer: null,
+          },
+        ],
       },
     ],
     [formatMessage]
