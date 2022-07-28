@@ -182,7 +182,11 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
                 </Button>
               </h3>
               <Button type="submit" className="h-full font-normal" theme="primary-orange">
-                {searchButtonText}
+                {searchInputValue ? (
+                  <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
+                ) : (
+                  searchButtonText
+                )}
               </Button>
             </div>
           </form>

@@ -263,8 +263,8 @@ export const Footer: React.FC<FooterProps> = ({
                     </Link>
                   </li>
                   <li>
-                    <Link href={Paths.ComingSoon} passHref>
-                      <a className="text-gray-400 disabled:pointer-events-none">
+                    <Link href="/faq">
+                      <a className="hover:underline">
                         <FormattedMessage defaultMessage="FAQ’s" id="qIvPIE" />
                       </a>
                     </Link>
