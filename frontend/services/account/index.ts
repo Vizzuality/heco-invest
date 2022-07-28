@@ -97,12 +97,19 @@ export function useCreateProject(): UseMutationResult<
   AxiosError<ErrorResponse>,
   ProjectCreationPayload
 > {
+  const queryClient = useQueryClient();
+
   const createProject = async (
     data: ProjectCreationPayload
   ): Promise<AxiosResponse<ResponseData<Project>>> => {
     return await API.post('/api/v1/account/projects', data);
   };
-  return useMutation(createProject);
+
+  return useMutation(createProject, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(Queries.AccountProjectList);
+    },
+  });
 }
 
 export function useUpdateProject(): UseMutationResult<
@@ -115,11 +122,15 @@ export function useUpdateProject(): UseMutationResult<
   const updateProject = async (
     project: ProjectUpdatePayload
   ): Promise<AxiosResponse<ResponseData<Project>>> => {
-    queryClient.invalidateQueries(Queries.AccountProjectList);
     return API.put(`/api/v1/account/projects/${project.id}`, project);
   };
 
-  return useMutation(updateProject);
+  return useMutation(updateProject, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(Queries.Project);
+      queryClient.invalidateQueries(Queries.AccountProjectList);
+    },
+  });
 }
 
 const getInvestor = async (includes?: string): Promise<Investor> => {
@@ -210,6 +221,29 @@ export function useAccount(includes?: string) {
   };
 }
 
+/** Hook with mutation to delete a project from the account */
+export const useDeleteAccountProject = () => {
+  const queryClient = useQueryClient();
+
+  const deleteAccountProject = (id: string): Promise<Project> => {
+    const config: AxiosRequestConfig = {
+      method: 'DELETE',
+      url: `/api/v1/account/projects/${id}`,
+      data: { id },
+    };
+
+    return API.request(config).then((response) => response.data.data);
+  };
+
+  return useMutation(({ id }: { id: string }) => deleteAccountProject(id), {
+    onSuccess: () => {
+      queryClient.invalidateQueries(Queries.Project);
+      queryClient.invalidateQueries(Queries.ProjectList);
+      queryClient.invalidateQueries(Queries.AccountProjectList);
+    },
+  });
+};
+
 const getAccountProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
   const { search, page, includes, ...rest } = params || {};
 
@@ -281,7 +315,7 @@ export function useAccountUsersList(
   return useMemo(
     () => ({
       ...query,
-      users: query?.data?.data || [],
+      users: query?.data?.data,
     }),
     [query]
   );

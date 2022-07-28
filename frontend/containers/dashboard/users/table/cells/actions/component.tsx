@@ -8,10 +8,12 @@ import cx from 'classnames';
 
 import ConfirmationPrompt from 'components/confirmation-prompt';
 import Icon from 'components/icon';
+import Loading from 'components/loading';
 import Tooltip from 'components/tooltip';
 import { InvitationStatus, Queries } from 'enums';
 
 import { useDeleteUser } from 'services/account';
+import { useInviteUsers } from 'services/invitation/invitationService';
 
 import { CellActionsProps } from './types';
 
@@ -19,6 +21,7 @@ export const CellActions = ({ row }: CellActionsProps) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const intl = useIntl();
 
+  const inviteUser = useInviteUsers();
   const deleteUser = useDeleteUser();
   const queryClient = useQueryClient();
 
@@ -29,6 +32,17 @@ export const CellActions = ({ row }: CellActionsProps) => {
   const displayName = first_name ? first_name + ' ' + last_name : email;
   const canResendInvitation =
     invitation === InvitationStatus.Expired || invitation === InvitationStatus.Waiting;
+
+  const handleResendInvitation = () => {
+    inviteUser.mutate(
+      { emails: [id] },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries(Queries.AccountUsersList);
+        },
+      }
+    );
+  };
 
   const handleDeleteUser = (userId: string) => {
     deleteUser.mutate(userId, {
@@ -64,14 +78,16 @@ export const CellActions = ({ row }: CellActionsProps) => {
         }
       >
         <button
-          onClick={() => console.log('re-invite user')}
+          onClick={handleResendInvitation}
           className={cx({
             'flex items-center justify-center w-8 h-8 border rounded-full pointer border-green-dark hover:bg-green-light hover:bg-opacity-20':
               true,
             invisible: !canResendInvitation,
           })}
+          disabled={inviteUser.isLoading}
         >
-          <Icon className="w-5 h-5 text-green-dark" icon={MailIcon} />
+          <Loading visible={inviteUser.isLoading} />
+          {!inviteUser.isLoading && <Icon className="w-5 h-5 text-green-dark" icon={MailIcon} />}
         </button>
       </Tooltip>
 
@@ -88,9 +104,11 @@ export const CellActions = ({ row }: CellActionsProps) => {
         <button
           type="button"
           onClick={() => setConfirmDelete(true)}
+          disabled={deleteUser.isLoading}
           className="flex items-center justify-center w-8 h-8 border rounded-full hover:bg-green-light hover:bg-opacity-20 pointer border-green-dark"
         >
-          <Icon className="w-5 h-5 text-green-dark" icon={TrashIcon} />
+          <Loading visible={deleteUser.isLoading} />
+          {!deleteUser.isLoading && <Icon className="w-5 h-5 text-green-dark" icon={TrashIcon} />}
         </button>
       </Tooltip>
 

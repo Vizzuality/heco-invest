@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 
 import { AxiosResponse, AxiosError } from 'axios';
 
-import { Queries } from 'enums';
 import { ResetPassword } from 'types/sign-in';
 import { SignupDto, User } from 'types/user';
 
@@ -13,16 +12,15 @@ import { ErrorResponse, ResponseData } from 'services/types';
 import API from '../api';
 
 export function useSignup(): UseMutationResult<
-  AxiosResponse<SignupDto>,
+  AxiosResponse<ResponseData<User>>,
   AxiosError<ErrorResponse>,
   SignupDto,
   unknown
 > {
   const queryClient = useQueryClient();
-  const signup = async (dto: SignupDto): Promise<AxiosResponse<SignupDto>> => {
-    const data = await API.post('/api/v1/user', dto);
-    queryClient.invalidateQueries(Queries.User);
-    return data;
+  const { locale } = useRouter();
+  const signup = async (dto: SignupDto): Promise<AxiosResponse<ResponseData<User>>> => {
+    return await API.post('/api/v1/user', dto);
   };
   return useMutation(signup);
 }

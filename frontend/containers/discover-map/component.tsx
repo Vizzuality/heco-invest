@@ -76,10 +76,19 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
 
         <div
           // `bottom-12` ensures the layers menu doesn't overflow the map
-          className="absolute flex items-start gap-2 inset-3.5 bottom-12 text-gray-800 text-sm"
+          // `pointer-events-none` because this div covers the map, this class is necessary to ensure the user can
+          // interact with the map; however children elements inside need the `pointer-events-auto` added to make them
+          // interactable
+          className="absolute flex items-start gap-2 inset-3.5 bottom-12 text-gray-800 text-sm pointer-events-none"
         >
-          <MapLayersSelector onActiveLayersChange={setVisibleLayers} />
-          <LocationSearcher onLocationSelected={handleLocationSelected} />
+          <MapLayersSelector
+            className="pointer-events-auto"
+            onActiveLayersChange={setVisibleLayers}
+          />
+          <LocationSearcher
+            className="pointer-events-auto"
+            onLocationSelected={handleLocationSelected}
+          />
         </div>
 
         <Controls className="absolute bottom-10 xl:bottom-4 right-4">

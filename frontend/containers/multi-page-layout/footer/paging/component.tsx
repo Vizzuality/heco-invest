@@ -14,6 +14,7 @@ export const MultiPageLayoutFooterPaging: FC<MultiPageLayoutFooterPagingProps> =
   numPages,
   pagesWithErrors = [],
   isSubmitting,
+  disabled = false,
   onPageClick,
 }: MultiPageLayoutFooterPagingProps) => {
   const intl = useIntl();
@@ -61,7 +62,7 @@ export const MultiPageLayoutFooterPaging: FC<MultiPageLayoutFooterPagingProps> =
                   !isCurrentPage && !hasErrors && isBeforeCurrent && !isSubmitting,
                 'bg-background-light border border-beige text-beige': isSubmitting,
               })}
-              disabled={isSubmitting}
+              disabled={disabled || isSubmitting}
               onClick={() => onPageClick(page)}
             >
               {page + 1}

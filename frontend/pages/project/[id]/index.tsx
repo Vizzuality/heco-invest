@@ -16,6 +16,8 @@ import Overview from 'containers/project-page/overview';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
+import Loading from 'components/loading';
+import { Paths } from 'enums';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
@@ -36,26 +38,42 @@ const PROJECT_QUERY_PARAMS = {
   ],
 };
 
-export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
-  let project;
+export const getServerSideProps = withLocalizedRequests(
+  /** @ts-ignore */
+  // Property 'query' does not exist on type 'GetStaticPropsContext<ParsedUrlQuery, PreviewData>'.
+  async ({ params: { id }, locale, query }) => {
+    let project;
+    let enums;
 
-  // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
-  try {
-    ({ data: project } = await getProject(id as string, PROJECT_QUERY_PARAMS));
-  } catch (e) {
-    return { notFound: true };
+    try {
+      enums = await getEnums();
+      ({ data: project } = await getProject(id as string, PROJECT_QUERY_PARAMS));
+    } catch (e) {
+      // If getting the project fails, it's most likely because the record has not been found.
+      if (query?.preview) {
+        // The user is attempting to preview a drafted project, which the endpoint won't return
+        // unless the ownership can be verified. We'll be loading it client side.
+        project = null;
+      } else {
+        // Not previewing a drafted project and project doesn't exist. Return a 404.
+        return { notFound: true };
+      }
+    }
+
+    // If a project is published, let's make it so the "Preview" page doesn't exist
+    if (project && query?.preview) {
+      return { notFound: true };
+    }
+
+    return {
+      props: {
+        intlMessages: await loadI18nMessages({ locale }),
+        enums: groupBy(enums, 'type'),
+        project,
+      },
+    };
   }
-
-  const enums = await getEnums();
-
-  return {
-    props: {
-      intlMessages: await loadI18nMessages({ locale }),
-      enums: groupBy(enums, 'type'),
-      project,
-    },
-  };
-});
+);
 
 type ProjectPageProps = {
   project: ProjectType;
@@ -70,27 +88,39 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
 
   const {
     data: { data: project },
+    isFetching: isFetchingProject,
   } = useProject(router.query.id as string, PROJECT_QUERY_PARAMS, projectProp);
+
+  if (!project) {
+    if (!isFetchingProject) router.push(Paths.Dashboard);
+    return (
+      <div className="flex items-center justify-center min-h-screen -mt-28 md:-mt-36 lg:-mt-44">
+        <Loading visible={true} iconClassName="w-10 h-10" />
+      </div>
+    );
+  }
 
   return (
     <>
       <Head title={project.name} description={project.description} />
 
-      <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
-        <Breadcrumbs
-          className="px-4 sm:px-6 lg:px-8"
-          substitutions={{
-            id: { name: project.name },
-          }}
-        />
-        <Header className="mt-6" project={project} />
-      </LayoutContainer>
+      <>
+        <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
+          <Breadcrumbs
+            className="px-4 sm:px-6 lg:px-8"
+            substitutions={{
+              id: { name: project.name },
+            }}
+          />
+          <Header className="mt-6" project={project} />
+        </LayoutContainer>
 
-      <Overview project={project} />
-      <Impact project={project} enums={enums} />
-      <Funding project={project} enums={enums} />
-      <ProjectDevelopers project={project} />
-      <Contact project={project} />
+        <Overview project={project} />
+        <Impact project={project} enums={enums} />
+        <Funding project={project} enums={enums} />
+        <ProjectDevelopers project={project} />
+        <Contact project={project} />
+      </>
     </>
   );
 };

@@ -54,12 +54,28 @@ module.exports = {
     return config;
   },
   async rewrites() {
-    if (process.env.NEXT_PUBLIC_PROXY_BACKEND !== 'true') return [];
+    const shouldProxyBackend = !(process.env.NEXT_PUBLIC_PROXY_BACKEND !== 'true');
 
     return [
+      ...(shouldProxyBackend
+        ? [
+            {
+              source: '/backend/:path*',
+              destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/:path*`,
+            },
+          ]
+        : []),
       {
-        source: '/backend/:path*',
-        destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/:path*`,
+        source: '/project/:id/preview',
+        destination: '/project/:id?preview=true',
+      },
+      {
+        source: '/faq/:sectionId',
+        destination: '/faq',
+      },
+      {
+        source: '/faq/:sectionId/:questionId',
+        destination: '/faq',
       },
     ];
   },
