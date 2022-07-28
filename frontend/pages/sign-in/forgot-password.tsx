@@ -19,10 +19,10 @@ import Label from 'components/forms/label';
 import Loading from 'components/loading';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
-import { ResetPassword } from 'types/sign-in';
+import { ForgotPassword } from 'types/sign-in';
 import { useForgotPasswordResolver } from 'validations/sign-in';
 
-import { useResetPassword } from 'services/users/userService';
+import { useForgotPassword } from 'services/reset-password/reset-password-service';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
@@ -36,17 +36,17 @@ type ForgotPasswordPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const ForgotPassword: PageComponent<ForgotPasswordPageProps, AuthPageLayoutProps> = () => {
   const intl = useIntl();
-  const resetPassword = useResetPassword();
+  const resetPassword = useForgotPassword();
   const resolver = useForgotPasswordResolver();
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<ResetPassword>({ resolver, shouldUseNativeValidation: true });
+  } = useForm<ForgotPassword>({ resolver, shouldUseNativeValidation: true });
   const { push } = useRouter();
 
   const handleResetPassword = useCallback(
-    (data: ResetPassword) =>
+    (data: ForgotPassword) =>
       resetPassword.mutate(data, {
         onSuccess: () => {
           push('/sign-in');
@@ -54,8 +54,7 @@ const ForgotPassword: PageComponent<ForgotPasswordPageProps, AuthPageLayoutProps
       }),
     [resetPassword, push]
   );
-
-  const onSubmit: SubmitHandler<ResetPassword> = handleResetPassword;
+  const onSubmit: SubmitHandler<ForgotPassword> = handleResetPassword;
 
   return (
     <div className="flex flex-col justify-center w-full h-full max-w-xl m-auto">

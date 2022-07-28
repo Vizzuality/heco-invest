@@ -1,10 +1,7 @@
-import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
-
-import { useRouter } from 'next/router';
+import { useMutation, UseMutationResult } from 'react-query';
 
 import { AxiosResponse, AxiosError } from 'axios';
 
-import { ResetPassword } from 'types/sign-in';
 import { SignupDto, User } from 'types/user';
 
 import { ErrorResponse, ResponseData } from 'services/types';
@@ -17,17 +14,10 @@ export function useSignup(): UseMutationResult<
   SignupDto,
   unknown
 > {
-  const queryClient = useQueryClient();
-  const { locale } = useRouter();
   const signup = async (dto: SignupDto): Promise<AxiosResponse<ResponseData<User>>> => {
     return await API.post('/api/v1/user', dto);
   };
   return useMutation(signup);
-}
-
-export function useResetPassword(): UseMutationResult<AxiosResponse, AxiosError, ResetPassword> {
-  const resetPassword = async (dto: ResetPassword) => await API.post('/api/v1/reset_password', dto);
-  return useMutation(resetPassword);
 }
 
 /** Get the logged user */
