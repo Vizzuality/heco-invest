@@ -1,4 +1,7 @@
 {
+  "+8XJbK": {
+    "string": "To be part of the HeCo Invest platform your organization, institution or business must create an account. An account is your organization profile and it contains all the basic information to describe it. There are two types of accounts HeCo Invest: one for organizations developing projects - Project Developers - and one for organizations investing in projects - Investors. Each account will have at least one contact: the account owner."
+  },
   "+JVDMC": {
     "string": "Know more"
   },
@@ -103,6 +106,9 @@
   },
   "1Qvlb5": {
     "string": "Legalized Indigenous Reservations until the year 2021."
+  },
+  "1ZgrhW": {
+    "string": "Role"
   },
   "1iEPTM": {
     "string": "General"
@@ -380,6 +386,9 @@
   "ADBj6Y": {
     "string": "What type of financing are you looking for to implement your project or solution?"
   },
+  "AGwIKZ": {
+    "string": "Verification badges"
+  },
   "APjPYs": {
     "string": "I want to write my content in"
   },
@@ -403,6 +412,9 @@
   },
   "BSFsv6": {
     "string": "Tree biomass density"
+  },
+  "BTFkyB": {
+    "string": "HeCo Priority landscapes"
   },
   "BY6k/1": {
     "string": "Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average."
@@ -545,8 +557,14 @@
   "FN+0yY": {
     "string": "Unable to parse the file. Please try uploading a different format."
   },
+  "FVcGqA": {
+    "string": "The HeCo Invest platform connects governments, investors, donors, and philanthropists with selected investment opportunities and projects in high-priority areas for Herencia Colombia. If you find a project that matches your investment goals you can contact its project developer. The contact details will only be available for platform registered users. So if you want to reach out to a project developer, you first need to create an account or join an existing account. The beta version of the HeCo Invest platform does not include the actual attainment of the business deals. To fund a project, investors must carry out all business procedures outside the platform."
+  },
   "FazwRl": {
     "string": "Try again"
+  },
+  "Fg5HOn": {
+    "string": "Every new account created will need to be approved by the HeCo Invest staff - platform administrator. This approval process allows for the verification of each organization, institution or business that applies to the HeCo Invest platform, guaranteeing that only trustworthy organizations will present their projects or investment opportunities. Therefore, your account will only be visible on the HeCo Invest platform after the platform administrator completes this approval step."
   },
   "Ftj+/t": {
     "string": "Why is my profile pending approval?"
@@ -566,6 +584,9 @@
   "GKONs7": {
     "string": "Start having impact now."
   },
+  "GM/hd6": {
+    "string": "Invitation"
+  },
   "GOg6XJ": {
     "string": "Be part of the biggest change in the colombian Amazon"
   },
@@ -580,6 +601,9 @@
   },
   "GhrkT+": {
     "string": "confirm password"
+  },
+  "GsO+rH": {
+    "string": "Delete project?"
   },
   "GtP2gp": {
     "string": "Find opportunities that have the greatest impact on challenges like <b>biodiversity, climate, community</b> and <b>water</b>."
@@ -618,11 +642,17 @@
   "I2VJMv": {
     "string": "Complete your profile with relevant information to make your relationship with project developers as precise as possible. For example the very particular topics you are interested in or the activities and items you definitely do not finance or invest in."
   },
+  "I2yxwP": {
+    "string": "Why is my account pending approval?"
+  },
   "I9iCt5": {
     "string": "From which investor or funder? (optional)"
   },
   "IBlTCs": {
     "string": "The image is larger than {maxSize}MB"
+  },
+  "IQTULX": {
+    "string": "We are here to help you"
   },
   "ITdmlJ": {
     "string": "Contact information"
@@ -798,6 +828,9 @@
   "OChccW": {
     "string": "Investor / Funder"
   },
+  "OJfOvp": {
+    "string": "The account owner can invite other colleagues to the account. These will receive an invitation by email to join the account. Each email can only be associated with one account. Once you are set as an account user, you can manage the account. However, adding or removing other account users can only be managed by account owners."
+  },
   "OSAxiC": {
     "string": "The solution or opportunity proposed"
   },
@@ -831,9 +864,6 @@
   "PIZ1dD": {
     "string": "Search biodiversity"
   },
-  "PIc+q2": {
-    "string": "The Global Human Settlement Layer (GHSL) Population Grid depicts the distribution and density of population, expressed as the number of people per cell, for 2015. While GFW uses only 2015 data, the GHSL is a multi-temporal population data set that employs new spatial data mining technologies. These methods enable the automatic processing and extraction of analytics and knowledge from different data sets: global, fine-scale satellite image data streams, census data, and crowd sources or volunteered geographic information sources. To produce this population density and distribution data set, researchers mapped global built-up areas, which are defined as all above ground constructions intended for human or animal sheltering or to produce economic goods. The locations of these built up areas was established using Landsat imagery analysis. An additional source used to compile this data set was the Gridded Population of the World (GPW) data set assembled by the Center for International Earth Science Information Network (CIESIN). The GPW data set consists of census population data and bolstered the built-up areas data by enabling researchers to estimate residential population. To present this data as grid cells, GPW data was disaggregated from census or administrative units."
-  },
   "PR8FFs": {
     "string": "Create your organization's account as a project developer in the field or as an investor or funder and become part of the HeCo Invest community."
   },
@@ -851,6 +881,9 @@
   },
   "Q8Qw5B": {
     "string": "Description"
+  },
+  "QA1wrZ": {
+    "string": "Frequently Asked Questions"
   },
   "QDj3j7": {
     "string": "Inter-American Development Bank Lab"
@@ -942,11 +975,17 @@
   "TUFmRM": {
     "string": "Climate impact"
   },
+  "TYrWO2": {
+    "string": "The dataset represents the boundaries of sites containing 95% or more of the remaining population of one or more species listed as Endangered or Critically Endangered on the International Union for Conservation of Nature (IUCN) Red List of Threatened Species."
+  },
   "TfXhCr": {
     "string": "No projects"
   },
   "ToXG99": {
     "string": "View project page"
+  },
+  "TwyMau": {
+    "string": "Account"
   },
   "U1OBY8": {
     "string": "options {options}, selected."
@@ -954,14 +993,14 @@
   "U98Mu/": {
     "string": "This layer shows the permanent and temporal wetlands of Colombia at a 1:100.000 reoslution"
   },
+  "UIQdVc": {
+    "string": "Are you sure you want to delete “<strong>{projectName}</strong>”?"
+  },
   "URLNhk": {
     "string": "The Inter-American Development Bank (IDB) is the largest source of development financing for Latin America and the Caribbean. Established in 1959, the IDB supports Latin American and Caribbean economic development, social development and regional integration by lending to governments and government agencies, including State corporations."
   },
   "URdlN+": {
     "string": "Invest in small, medium or big project opportunities."
-  },
-  "UVJ5y2": {
-    "string": "The dataset represents the boundaries of sites containing 95% or more of the remaining population of one or more species listed as Endangered or Critically Endangered on the International Union for Conservation of Nature (IUCN) Red List of Threatened Species. The Alliance for Zero Extinction (AZE) originally created this dataset with a goal to prevent extinctions by identifying and safeguarding key sites. The 2019 March version of this dataset contains 859 sites, supporting 1483 Critically Endangered or Endangered species."
   },
   "Ub+AGc": {
     "string": "Sign In"
@@ -996,6 +1035,9 @@
   "Vge+RX": {
     "string": "Footer"
   },
+  "Vi/HrX": {
+    "string": "Projects target investors. They are set up whenever a project developer is seeking visibility or needing investment. The project is intended to contribute to the environmental conservation of a specific region and benefit nature and people."
+  },
   "ViF88C": {
     "string": "Tell us about your work and impact priorities."
   },
@@ -1007,6 +1049,9 @@
   },
   "Vxcu91": {
     "string": "{name} account"
+  },
+  "VzuazJ": {
+    "string": "The Global Human Settlement Layer (GHSL) Population Grid depicts the distribution and density of population, expressed as the number of people per cell, for 2015. While GFW uses only 2015 data, the GHSL is a multi-temporal population data set that employs new spatial data mining technologies. These methods enable the automatic processing and extraction of analytics and knowledge from different data sets: global, fine-scale satellite image data streams, census data, and crowd sources or volunteered geographic information sources."
   },
   "W2JBdp": {
     "string": "Impact"
@@ -1085,6 +1130,9 @@
   },
   "XkF/qg": {
     "string": "Profile picture of {name}"
+  },
+  "XwmxKZ": {
+    "string": "A project is an enterprise or initiative carefully planned and run by project developers in a given region with the objective of contributing to its environmental conservation. Projects are set up whenever a project developer is seeking visibility or needing investment."
   },
   "Y2HapG": {
     "string": "The dataset represents a series of vectorized polygon layers that depict sub-basin boundaries at a global scale. An important characteristic of any sub-basin delineation is the sub-basin breakdown. At its highest level of sub-basin breakdown, each basin has been divided into two sub-basins at every location where two river branches meet which each have an individual upstream area of at least 100 km². A second critical feature of sub-basin delineations is the way the sub-basins are grouped or coded to allow for the creation of nested sub-basins at different scales, or to navigate within the sub-basin network from up- to downstream. To support these functionalities and topological concepts, the ‘Pfafstetter’ coding system has been implemented, offering 12 hierarchically nested sub-basin breakdowns globally."
@@ -1221,6 +1269,9 @@
   "cT6b2H": {
     "string": "WWF"
   },
+  "caaGgO": {
+    "string": "How can I invest/fund a project?"
+  },
   "ccXLVi": {
     "string": "Category"
   },
@@ -1245,6 +1296,9 @@
   "dHpDHe": {
     "string": "HeCo Invest will <n>benefit poor and vulnerable people</n> living in <n>HeCo priority landscapes in the Amazon region</n>."
   },
+  "dKiARI": {
+    "string": "To produce this population density and distribution data set, researchers mapped global built-up areas, which are defined as all above ground constructions intended for human or animal sheltering or to produce economic goods. The locations of these built up areas was established using Landsat imagery analysis. An additional source used to compile this data set was the Gridded Population of the World (GPW) data set assembled by the Center for International Earth Science Information Network (CIESIN). The GPW data set consists of census population data and bolstered the built-up areas data by enabling researchers to estimate residential population. To present this data as grid cells, GPW data was disaggregated from census or administrative units."
+  },
   "dPuc1g": {
     "string": "Slide {slideNumber}"
   },
@@ -1268,6 +1322,9 @@
   },
   "e0c9xF": {
     "string": "insert the name of the investor/funder"
+  },
+  "eE6uKi": {
+    "string": "This data set, a collaboration between the Global Land Analysis & Discovery (GLAD) lab at the University of Maryland, Google, USGS, and NASA, measures areas of tree cover loss across all global land (except Antarctica and other Arctic islands) at approximately 30 × 30 meter resolution. The data were generated using multispectral satellite imagery from the Landsat 5 thematic mapper (TM), the Landsat 7 thematic mapper plus (ETM+), and the Landsat 8 Operational Land Imager (OLI) sensors. Over 1 million satellite images were processed and analyzed, including over 600,000 Landsat 7 images for the 2000-2012 interval, and more than 400,000 Landsat 5, 7, and 8 images for updates for the 2011-2021 interval. The clear land surface observations in the satellite images were assembled and a supervised learning algorithm was applied to identify per pixel tree cover loss."
   },
   "eItis6": {
     "string": "Discover investors by budget/ticket size"
@@ -1298,6 +1355,9 @@
   },
   "et2m37": {
     "string": "insert URL"
+  },
+  "etdw49": {
+    "string": "For who is the project for?"
   },
   "eu+7Vl": {
     "string": "Do you have a project or a start-up business in the Colombian Amazon?"
@@ -1437,11 +1497,11 @@
   "jHyKQ2": {
     "string": "Thanks to our <n>model ARIES</n>, an Artificial Intelligence tool, you can <n>reach investors</n> that are interested in your project and <n>learn how your activity impacts</n> the environment and your community."
   },
-  "jJYv/7": {
-    "string": "This data set, a collaboration between the Global Land Analysis & Discovery (GLAD) lab at the University of Maryland, Google, USGS, and NASA, measures areas of tree cover loss across all global land (except Antarctica and other Arctic islands) at approximately 30 × 30 meter resolution. The data were generated using multispectral satellite imagery from the Landsat 5 thematic mapper (TM), the Landsat 7 thematic mapper plus (ETM+), and the Landsat 8 Operational Land Imager (OLI) sensors. Over 1 million satellite images were processed and analyzed, including over 600,000 Landsat 7 images for the 2000-2012 interval, and more than 400,000 Landsat 5, 7, and 8 images for updates for the 2011-2021 interval. The clear land surface observations in the satellite images were assembled and a supervised learning algorithm was applied to identify per pixel tree cover loss. In this data set, “tree cover” is defined as all vegetation greater than 5 meters in height, and may take the form of natural forests or plantations across a range of canopy densities. Tree cover loss is defined as “stand replacement disturbance,” or the complete removal of tree cover canopy at the Landsat pixel scale. Tree cover loss may be the result of human activities, including forestry practices such as timber harvesting or deforestation (the conversion of natural forest to other land uses), as well as natural causes such as disease or storm damage. Fire is another widespread cause of tree cover loss, and can be either natural or human-induced."
-  },
   "jKdvln": {
     "string": "Relevant links (optional)"
+  },
+  "jN8Kad": {
+    "string": "Browse thought the most frequently asked questions."
   },
   "jUgR7w": {
     "string": "Stage of development or maturity of the project"
@@ -1467,6 +1527,9 @@
   "jwimQJ": {
     "string": "Ok"
   },
+  "k0xbVH": {
+    "string": "You can't undo this action."
+  },
   "k5DITM": {
     "string": "Users will receive an email to sign up into the platform and join <strong>{name}</strong> account."
   },
@@ -1490,6 +1553,9 @@
   },
   "kX7oGR": {
     "string": "Other information"
+  },
+  "keWpuD": {
+    "string": "In this data set, “tree cover” is defined as all vegetation greater than 5 meters in height, and may take the form of natural forests or plantations across a range of canopy densities. Tree cover loss is defined as “stand replacement disturbance,” or the complete removal of tree cover canopy at the Landsat pixel scale. Tree cover loss may be the result of human activities, including forestry practices such as timber harvesting or deforestation (the conversion of natural forest to other land uses), as well as natural causes such as disease or storm damage. Fire is another widespread cause of tree cover loss, and can be either natural or human-induced."
   },
   "ku+mDU": {
     "string": "State"
@@ -1734,6 +1800,9 @@
   "t7lNU8": {
     "string": "Start making an impact now"
   },
+  "tDM2u5": {
+    "string": "Can I add colleagues from my organization to the account?"
+  },
   "tGAYL2": {
     "string": "Select an option"
   },
@@ -1748,6 +1817,9 @@
   },
   "tSCuG5": {
     "string": "Delete user?"
+  },
+  "tgYyOu": {
+    "string": "The Alliance for Zero Extinction (AZE) originally created this dataset with a goal to prevent extinctions by identifying and safeguarding key sites. The 2019 March version of this dataset contains 859 sites, supporting 1483 Critically Endangered or Endangered species."
   },
   "twK/jv": {
     "string": "Project developer profile"
@@ -1811,6 +1883,9 @@
   },
   "wEQDC6": {
     "string": "Edit"
+  },
+  "wL7VAE": {
+    "string": "Actions"
   },
   "wQteLO": {
     "string": "Go to page {page}"
@@ -1889,6 +1964,9 @@
   },
   "yJVljq": {
     "string": "Through accessing <span>ARIES</span> (Artificial Intelligence for Environmental Sustainability) and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
+  },
+  "yP7Lrl": {
+    "string": "What is a project?"
   },
   "yQ7bY1": {
     "string": "You can upload a maximum of {maxFiles} files"

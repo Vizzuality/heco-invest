@@ -5,6 +5,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
+import { useBreakpoint } from 'hooks/use-breakpoint';
+
 import Button from 'components/button';
 import Menu, { MenuItem, MenuSection } from 'components/menu';
 import { Paths } from 'enums';
@@ -18,10 +20,13 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
   className,
   theme = 'primary-white',
 }: NavigationMenuButtonProps) => {
-  const router = useRouter();
+  const { pathname, push } = useRouter();
+  const isSearchPage = pathname.includes(Paths.Discover);
   const intl = useIntl();
   const { user, userAccount: account } = useAccount();
   const signOut = useSignOut();
+  const breakpoint = useBreakpoint();
+  const isLg = breakpoint('lg');
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -33,18 +38,18 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
             {},
             {
               onSuccess: () => {
-                router.push(Paths.Home);
+                push(Paths.Home);
               },
             }
           );
           break;
 
         default:
-          router.push(key);
+          push(key);
           break;
       }
     },
-    [router, signOut]
+    [push, signOut]
   );
 
   return (
@@ -72,9 +77,11 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
           hiddenSections={{ 'user-section': 'sm' }}
         >
           <MenuSection>
-            <MenuItem key={Paths.Projects}>
-              <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
-            </MenuItem>
+            {!isSearchPage && (
+              <MenuItem key={Paths.Projects}>
+                <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
+              </MenuItem>
+            )}
             <MenuItem key={Paths.ForInvestors}>
               <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
             </MenuItem>
@@ -117,8 +124,13 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
               key="user-section-sign-in"
               title={intl.formatMessage({ defaultMessage: 'User', id: 'EwRIOm' })}
             >
-              <MenuItem key={Paths.SignIn}>
-                <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
+              {(!isSearchPage || !isLg) && (
+                <MenuItem key={Paths.SignIn}>
+                  <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
+                </MenuItem>
+              )}
+              <MenuItem key={Paths.SignUp}>
+                <FormattedMessage defaultMessage="Sign up" id="8HJxXG" />
               </MenuItem>
             </MenuSection>
           )}

@@ -1,3 +1,5 @@
+import { string } from 'yup/lib/locale';
+
 export type MapLayersSelectorProps = {
   /** Classes to apply to the container */
   className?: string;
@@ -13,7 +15,7 @@ export type SelectedLayerTooltip = {
   id: string;
   name: string;
   description: string;
-  overview?: string;
+  overview?: string | string[];
   dataSource: string;
   dataSourceUrl: string;
 };
