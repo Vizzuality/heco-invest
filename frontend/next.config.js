@@ -69,6 +69,14 @@ module.exports = {
         source: '/project/:id/preview',
         destination: '/project/:id?preview=true',
       },
+      {
+        source: '/faq/:sectionId',
+        destination: '/faq',
+      },
+      {
+        source: '/faq/:sectionId/:questionId',
+        destination: '/faq',
+      },
     ];
   },
   async redirects() {
