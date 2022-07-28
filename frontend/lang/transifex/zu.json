@@ -729,6 +729,9 @@
   "JRfERD": {
     "string": "Paulson Institute"
   },
+  "JSrP/U": {
+    "string": "The HeCo Invest platform connects governments, investors, donors, and philanthropists with selected investment opportunities and projects in high-priority areas for Herencia Colombia. If you find an open call that matches your goals and needs, you can create a project tailored specifically to that open call criteria. Project creation is only available for registered project developer account users. Once your project is created, you can apply to the open call, using the “Apply now” button on the open call page. You can also contact the investor, if needed. The contact details will only be available for platform registered users. So if you want to reach out to an investor, you first need to create an account or join an existing account."
+  },
   "JWYapR": {
     "string": "{name} project"
   },
@@ -1001,6 +1004,9 @@
   },
   "TLn/wq": {
     "string": "Open image"
+  },
+  "TM4C3M": {
+    "string": "Open calls target project developers. They are a way for investors to call for projects within their specific scope. Project developers may submit their projects to a specific open call, if they match the open call criteria."
   },
   "TUFmRM": {
     "string": "Climate impact"
@@ -1589,6 +1595,9 @@
   },
   "kX7oGR": {
     "string": "Other information"
+  },
+  "kaAF7K": {
+    "string": "An open call is a call for projects made by a given investor. Open calls give investors the possibility to open specific opportunities in their topics of interest. All registered project developers have the possibility to submit their projects to an open call, if they match the open call criteria, and therefore apply to this particular funding."
   },
   "keWpuD": {
     "string": "In this data set, “tree cover” is defined as all vegetation greater than 5 meters in height, and may take the form of natural forests or plantations across a range of canopy densities. Tree cover loss is defined as “stand replacement disturbance,” or the complete removal of tree cover canopy at the Landsat pixel scale. Tree cover loss may be the result of human activities, including forestry practices such as timber harvesting or deforestation (the conversion of natural forest to other land uses), as well as natural causes such as disease or storm damage. Fire is another widespread cause of tree cover loss, and can be either natural or human-induced."
