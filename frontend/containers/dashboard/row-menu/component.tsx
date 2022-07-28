@@ -7,7 +7,7 @@ import Menu, { MenuItem } from 'components/menu';
 
 import { RowMenuProps } from './types';
 
-export const RowMenu: FC<RowMenuProps> = ({ onAction, children }: RowMenuProps) => {
+export const RowMenu: FC<RowMenuProps> = ({ onAction, children, direction }: RowMenuProps) => {
   return (
     <Menu
       Trigger={
@@ -18,6 +18,7 @@ export const RowMenu: FC<RowMenuProps> = ({ onAction, children }: RowMenuProps) 
       align="end"
       onAction={onAction}
       hiddenSections={{ 'user-section': 'sm' }}
+      direction={direction}
     >
       {children}
     </Menu>

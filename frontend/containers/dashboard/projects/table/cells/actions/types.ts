@@ -15,5 +15,8 @@ export type CellActionsProps = {
       ticketSize: string;
       statusTag: StatusTag;
     };
+    index: number;
   };
+  // Property that comes for each row
+  rows: any[];
 };
