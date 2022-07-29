@@ -2,7 +2,7 @@ import { useMutation, UseMutationResult } from 'react-query';
 
 import { AxiosResponse, AxiosError } from 'axios';
 
-import { SignupDto, User } from 'types/user';
+import { SignupDto, User, ChangePassword } from 'types/user';
 
 import { ErrorResponse, ResponseData } from 'services/types';
 
@@ -26,3 +26,20 @@ export const getCurrentUser = (): Promise<AxiosResponse<ResponseData<User>>> =>
     method: 'GET',
     url: '/api/v1/user',
   });
+
+export const changePassword = (dto: ChangePassword) => {
+  return API.request({
+    method: 'POST',
+    url: '/api/v1/user/change_password',
+    data: dto,
+  });
+};
+
+/** Hook to change the user password */
+export const useChangePassword = (): UseMutationResult<
+  AxiosResponse<any>,
+  ErrorResponse,
+  ChangePassword
+> => {
+  return useMutation(changePassword);
+};
