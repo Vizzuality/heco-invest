@@ -10,7 +10,9 @@ export const FundingTypesList: FC = () => {
   return (
     <FaqList level="two">
       <ListItem
-        title={formatMessage({ defaultMessage: '<US$25,000 (Small grants)', id: 'kZ0sht' })}
+        // Less than sign must be escaped with an apostrophe
+        // https://github.com/formatjs/formatjs/issues/1845
+        title={formatMessage({ defaultMessage: "'<US$25,000 (Small grants)", id: 'Uomdkb' })}
       />
       <ListItem
         title={formatMessage({
