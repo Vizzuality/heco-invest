@@ -111,9 +111,9 @@ const FaqPage: PageComponent<FaqPageProps, StaticPageLayoutProps> = () => {
 
         <div
           ref={containerRef}
-          className="relative flex flex-col gap-8 mt-8 md:gap-20 lg:gap-32 xl:gap-48 lg:flex-row"
+          className="relative flex flex-col gap-8 mt-8 md:gap-10 lg:gap-48 2xl:gap-72 lg:flex-row"
         >
-          <aside className="justify-start w-full md:sticky md:self-start md:top-32">
+          <aside className="justify-start lg:sticky md:self-start md:top-32">
             {faqs.map(({ sectionId: id, name }) => (
               <Button
                 key={id}
@@ -130,7 +130,7 @@ const FaqPage: PageComponent<FaqPageProps, StaticPageLayoutProps> = () => {
               </Button>
             ))}
           </aside>
-          <motion.main key={sectionId as string} {...animationVariants}>
+          <motion.main className="w-full" key={sectionId as string} {...animationVariants}>
             <div className="border-t border-l border-r rounded-lg shadow-sm border-bg-dark">
               {faqItems.map(({ questionId: id, question, answer }, index) => (
                 <FaqExpando
