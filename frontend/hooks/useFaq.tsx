@@ -31,10 +31,19 @@ export enum FaqQuestions {
   ForWhoIsTheProjectFor = 'for-who-is-the-project-for',
   HowCanIFundAProject = 'how-can-i-fund-a-project',
   WhatInfoToCreateProject = 'what-information-do-i-need-to-create-a-project',
+  /** Open calls */
+  WhatIsAnOpenCall = 'what-is-an-open-call',
+  ForWhoIsTheOpenCallFor = 'for-who-is-the-open-call-for',
+  HowCanIApplyToAnOpenCall = 'how-can-i-apply-to-an-open-call',
+  WhatInfoToCreateOpenCall = 'what-information-do-i-need-to-create-an-open-call',
   /** Verification Badges */
   WhatIsAVerificationBadge = 'what-is-a-verification-badge',
   WhenWillTheProjectHaveTheVerificationBadge = 'when-will-the-project-have-the-verification-badge',
   WhenWillTheOpenCallHaveTheVerificationBadge = 'when-will-the-open-call-have-the-verification-badge',
+  /** HeCo priority landscapes */
+  WhatAreHeCoPriorityLandscapes = 'what-are-heco-priority-landscapes',
+  WhyAreThoseRegionsImportant = 'why-are-those-regions-important',
+  WhichAreTheHeCoProgramPriorityLandscapes = 'which-are-the-heco-program-priority-landscapes',
 }
 
 export const FaqPaths = {
@@ -48,10 +57,20 @@ export const FaqPaths = {
   [FaqQuestions.WhatIsAProject]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.WhatIsAProject}`,
   [FaqQuestions.ForWhoIsTheProjectFor]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.ForWhoIsTheProjectFor}`,
   [FaqQuestions.HowCanIFundAProject]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.HowCanIFundAProject}`,
-  // [FaqQuestions.WhatInfoToCreateProject]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.WhatInfoToCreateProject}`,
+  [FaqQuestions.WhatInfoToCreateProject]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.WhatInfoToCreateProject}`,
+  /** Open calls */
+  [FaqQuestions.WhatIsAnOpenCall]: `${Paths.FAQ}/${FaqSections.OpenCalls}/${FaqQuestions.WhatIsAnOpenCall}`,
+  [FaqQuestions.ForWhoIsTheOpenCallFor]: `${Paths.FAQ}/${FaqSections.OpenCalls}/${FaqQuestions.ForWhoIsTheOpenCallFor}`,
+  [FaqQuestions.HowCanIApplyToAnOpenCall]: `${Paths.FAQ}/${FaqSections.OpenCalls}/${FaqQuestions.HowCanIApplyToAnOpenCall}`,
+  [FaqQuestions.WhatInfoToCreateOpenCall]: `${Paths.FAQ}/${FaqSections.OpenCalls}/${FaqQuestions.WhatInfoToCreateOpenCall}`,
+  /** Verification Badges */
   [FaqQuestions.WhatIsAVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhatIsAVerificationBadge}`,
   [FaqQuestions.WhenWillTheProjectHaveTheVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhenWillTheProjectHaveTheVerificationBadge}`,
-  // [FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge}`,
+  [FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge}`,
+  /** HeCo priority landscapes */
+  [FaqQuestions.WhatAreHeCoPriorityLandscapes]: `${Paths.FAQ}/${FaqSections.HeCoPriorityLandscapes}/${FaqQuestions.WhatAreHeCoPriorityLandscapes}`,
+  [FaqQuestions.WhyAreThoseRegionsImportant]: `${Paths.FAQ}/${FaqSections.HeCoPriorityLandscapes}/${FaqQuestions.WhyAreThoseRegionsImportant}`,
+  [FaqQuestions.WhichAreTheHeCoProgramPriorityLandscapes]: `${Paths.FAQ}/${FaqSections.HeCoPriorityLandscapes}/${FaqQuestions.WhichAreTheHeCoProgramPriorityLandscapes}`,
 };
 
 export const useFaq = () => {
