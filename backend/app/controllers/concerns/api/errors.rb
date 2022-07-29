@@ -15,6 +15,7 @@ module API
       base.rescue_from API::UnprocessableEntityError, with: :render_unprocessable_entity_error
       base.rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_error
       base.rescue_from ActiveRecord::RecordInvalid, with: :render_validation_errors
+      base.rescue_from ActiveRecord::RecordNotUnique, with: :render_validation_errors
     end
 
     def render_error(exception)
