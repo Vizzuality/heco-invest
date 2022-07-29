@@ -11,6 +11,7 @@ import { withLocalizedRequests } from 'hoc/locale';
 import { InferGetStaticPropsType } from 'next';
 
 import useMe from 'hooks/me';
+import { FaqPaths, FaqQuestions } from 'hooks/useFaq';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
@@ -120,7 +121,7 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
             values={{
               accountName: invitedUser.account_name,
               a: (chunks: string) => (
-                <a className="underline" href={`${Paths.FAQ}#accounts`}>
+                <a className="underline" href={FaqPaths[FaqQuestions.HowDoAccountsWork]}>
                   {chunks}
                 </a>
               ),
