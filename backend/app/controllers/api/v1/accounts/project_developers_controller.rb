@@ -2,8 +2,11 @@ module API
   module V1
     module Accounts
       class ProjectDevelopersController < BaseController
-        before_action :require_project_developer!, except: :create
+        include API::Pagination
+
+        before_action :require_project_developer!, except: %i[create favourites]
         around_action(only: [:show]) { |_controller, action| set_locale(current_user&.account&.language, &action) }
+        load_and_authorize_resource only: :favourites
 
         def create
           current_user.with_lock do
@@ -34,6 +37,19 @@ module API
           render json: ProjectDeveloperSerializer.new(
             current_user.account.project_developer,
             include: included_relationships,
+            params: {current_user: current_user}
+          ).serializable_hash
+        end
+
+        def favourites
+          @project_developers = @project_developers.includes(:projects, :involved_projects, account: [:owner, {picture_attachment: :blob}])
+          pagy_object, @project_developers = pagy(@project_developers, page: current_page, items: per_page)
+          render json: ProjectDeveloperSerializer.new(
+            @project_developers,
+            include: included_relationships,
+            fields: sparse_fieldset,
+            links: pagination_links(:api_v1_project_developers_path, pagy_object),
+            meta: pagination_meta(pagy_object),
             params: {current_user: current_user}
           ).serializable_hash
         end

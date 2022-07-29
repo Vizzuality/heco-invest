@@ -28,6 +28,12 @@ FactoryBot.define do
       account factory: :account_project_developer
     end
 
+    factory :user_investor do
+      role { "investor" }
+
+      account factory: :account_investor
+    end
+
     trait :project_developer do
       role { "project_developer" }
     end

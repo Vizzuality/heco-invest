@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_25_074544) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_27_083258) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -108,6 +108,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_25_074544) do
     t.index ["investor_id"], name: "index_favourite_investors_on_investor_id"
     t.index ["user_id", "investor_id"], name: "index_favourite_investors_on_user_id_and_investor_id", unique: true
     t.index ["user_id"], name: "index_favourite_investors_on_user_id"
+  end
+
+  create_table "favourite_open_calls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "open_call_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["open_call_id"], name: "index_favourite_open_calls_on_open_call_id"
+    t.index ["user_id", "open_call_id"], name: "favourite_open_call_id_on_user_id", unique: true
+    t.index ["user_id"], name: "index_favourite_open_calls_on_user_id"
   end
 
   create_table "favourite_project_developers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -398,6 +408,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_25_074544) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favourite_investors", "investors", on_delete: :cascade
   add_foreign_key "favourite_investors", "users", on_delete: :cascade
+  add_foreign_key "favourite_open_calls", "open_calls", on_delete: :cascade
+  add_foreign_key "favourite_open_calls", "users", on_delete: :cascade
   add_foreign_key "favourite_project_developers", "project_developers", on_delete: :cascade
   add_foreign_key "favourite_project_developers", "users", on_delete: :cascade
   add_foreign_key "favourite_projects", "projects", on_delete: :cascade
