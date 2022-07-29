@@ -2,6 +2,9 @@ import { FC } from 'react';
 
 import { useIntl, FormattedMessage } from 'react-intl';
 
+import FinancialInstrumentsList from 'containers/faq-page/answers/shared-lists/financial-instruments';
+import FundingTypesList from 'containers/faq-page/answers/shared-lists/funding-types';
+import ProjectCategoriesList from 'containers/faq-page/answers/shared-lists/project-categories';
 import FaqList, { ListItem, ItemValidationTypes } from 'containers/faq-page/faq-list';
 
 export const ProjectInfo: FC = () => {
@@ -128,56 +131,7 @@ export const ProjectInfo: FC = () => {
             id: '3hV8r4',
           })}
         >
-          <FaqList level="two">
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Sustainable agrosystem', id: 'hGDBI4' })}
-              description={formatMessage({
-                defaultMessage:
-                  'sustainable and regenerative agriculture, fishing, and aquaculture as well as manufacturing of derived subproducts.',
-                id: 'PFbrpZ',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Tourism and recreation', id: 'hOp4Ue' })}
-              description={formatMessage({
-                defaultMessage:
-                  'accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects.',
-                id: 'MY++C0',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Forestry and agroforestry', id: 'sa2DTR' })}
-              description={formatMessage({
-                defaultMessage:
-                  'sustainable timber extraction and forest management practices, including reforestation and restoration.',
-                id: 'gbBVhv',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({
-                defaultMessage: 'Non-timber forest production',
-                id: 'DZ+TNi',
-              })}
-              description={formatMessage({
-                defaultMessage:
-                  'production of health, wellness, and cosmetic products; art, clothing, and  handcrafted products; production of food and drinks.',
-                id: 'YtyJ9Z',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Human capital and Inclusion', id: 'MEywfd' })}
-              description={formatMessage({
-                defaultMessage:
-                  'adequate access to quality education, appropriate health services, and formal employment opportunities that respond to diverse skill profiles and are adapted to regional cultural diversity.',
-                id: '+qyVem',
-              })}
-            />
-          </FaqList>
+          <ProjectCategoriesList />
         </ListItem>
         <ListItem
           mandatory={true}
@@ -342,29 +296,7 @@ export const ProjectInfo: FC = () => {
             id: 'LanZ2z',
           })}
         >
-          <FaqList level="two">
-            <ListItem
-              title={formatMessage({ defaultMessage: '<US$25,000 (Small grants)', id: 'kZ0sht' })}
-            />
-            <ListItem
-              title={formatMessage({
-                defaultMessage: 'US$25,000 – 150,000 (Prototyping)',
-                id: 'MZTu88',
-              })}
-            />
-            <ListItem
-              title={formatMessage({
-                defaultMessage: 'US$150,000 – 750,000 (Market validation)',
-                id: 'NLk0cp',
-              })}
-            />
-            <ListItem
-              title={formatMessage({
-                defaultMessage: '> US$750,000 (Scaling)',
-                id: 'E010/S',
-              })}
-            />
-          </FaqList>
+          <FundingTypesList />
         </ListItem>
         <ListItem
           validationType={ItemValidationTypes.SelectOne}
@@ -373,35 +305,7 @@ export const ProjectInfo: FC = () => {
             id: '+Hbd1j',
           })}
         >
-          <FaqList level="two">
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Loan', id: 'OkH5va' })}
-              description={formatMessage({
-                defaultMessage:
-                  'a loan is a transaction in which a financial institution grants a predefined amount of money to develop a particular project. The institution or business that receives the loan is obliged to repay it within a certain period of time and to pay the agreed commissions, expenses and interest.',
-                id: 'C3hduB',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Grant', id: '3ciGOS' })}
-              description={formatMessage({
-                defaultMessage:
-                  'technical cooperation grants are resources provided by an entity to fulfil a well-defined purpose or objective. In general, they are non-reimbursable resources that are destined in particular to projects or enterprises in early stages of development.',
-                id: 'NP4Cd6',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Equity', id: 'Kub2g2' })}
-              description={formatMessage({
-                defaultMessage:
-                  'an equity investment consists of the acquisition, by an entity specialized in private equity, of a package of shares of a company or enterprise. The private equity firm thus becomes one of the owners of the company.',
-                id: 'TkWozN',
-              })}
-            />
-          </FaqList>
+          <FinancialInstrumentsList />
         </ListItem>
         <ListItem
           validationType={ItemValidationTypes.Max600Chars}

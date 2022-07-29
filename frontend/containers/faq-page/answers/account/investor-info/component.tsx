@@ -2,6 +2,11 @@ import { FC } from 'react';
 
 import { useIntl, FormattedMessage } from 'react-intl';
 
+import FinancialInstrumentsList from 'containers/faq-page/answers/shared-lists/financial-instruments';
+import FundingTypesList from 'containers/faq-page/answers/shared-lists/funding-types';
+import ImpactsList from 'containers/faq-page/answers/shared-lists/impacts';
+import OnlinePresenceList from 'containers/faq-page/answers/shared-lists/online-presence';
+import ProjectCategoriesList from 'containers/faq-page/answers/shared-lists/project-categories';
 import FaqList, { ListItem, ItemValidationTypes } from 'containers/faq-page/faq-list';
 
 export const InvestorInfo: FC = () => {
@@ -112,13 +117,7 @@ export const InvestorInfo: FC = () => {
           </FaqList>
         </ListItem>
         <ListItem title={formatMessage({ defaultMessage: 'Online Presence', id: 'V+X/MZ' })}>
-          <FaqList level="two">
-            <ListItem title={formatMessage({ defaultMessage: 'Website', id: 'JkLHGw' })} />
-            <ListItem title={formatMessage({ defaultMessage: 'LinkedIn', id: 'Rb/hb9' })} />
-            <ListItem title={formatMessage({ defaultMessage: 'Facebook', id: 'EmpHyB' })} />
-            <ListItem title={formatMessage({ defaultMessage: 'Twitter', id: '8ywLSf' })} />
-            <ListItem title={formatMessage({ defaultMessage: 'Instagram', id: '39PtLD' })} />
-          </FaqList>
+          <OnlinePresenceList />
         </ListItem>
         <ListItem
           mandatory={true}
@@ -138,56 +137,7 @@ export const InvestorInfo: FC = () => {
             id: '9o8/Wn',
           })}
         >
-          <FaqList level="two">
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Sustainable agrosystem', id: 'hGDBI4' })}
-              description={formatMessage({
-                defaultMessage:
-                  'sustainable and regenerative agriculture, fishing, and aquaculture as well as manufacturing of derived subproducts.',
-                id: 'PFbrpZ',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Tourism and recreation', id: 'hOp4Ue' })}
-              description={formatMessage({
-                defaultMessage:
-                  'accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects.',
-                id: 'MY++C0',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Forestry and agroforestry', id: 'sa2DTR' })}
-              description={formatMessage({
-                defaultMessage:
-                  'sustainable timber extraction and forest management practices, including reforestation and restoration.',
-                id: 'gbBVhv',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({
-                defaultMessage: 'Non-timber forest production',
-                id: 'DZ+TNi',
-              })}
-              description={formatMessage({
-                defaultMessage:
-                  'production of health, wellness, and cosmetic products; art, clothing, and  handcrafted products; production of food and drinks.',
-                id: 'YtyJ9Z',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Human capital and Inclusion', id: 'MEywfd' })}
-              description={formatMessage({
-                defaultMessage:
-                  'adequate access to quality education, appropriate health services, and formal employment opportunities that respond to diverse skill profiles and are adapted to regional cultural diversity.',
-                id: '+qyVem',
-              })}
-            />
-          </FaqList>
+          <ProjectCategoriesList />
         </ListItem>
         <ListItem
           title={formatMessage({
@@ -195,29 +145,7 @@ export const InvestorInfo: FC = () => {
             id: 'G6tmT0',
           })}
         >
-          <FaqList level="two">
-            <ListItem
-              title={formatMessage({ defaultMessage: '<US$25,000 (Small grants)', id: 'kZ0sht' })}
-            />
-            <ListItem
-              title={formatMessage({
-                defaultMessage: 'US$25,000 – 150,000 (Prototyping)',
-                id: 'MZTu88',
-              })}
-            />
-            <ListItem
-              title={formatMessage({
-                defaultMessage: 'US$150,000 – 750,000 (Market validation)',
-                id: 'NLk0cp',
-              })}
-            />
-            <ListItem
-              title={formatMessage({
-                defaultMessage: '> US$750,000 (Scaling)',
-                id: 'E010/S',
-              })}
-            />
-          </FaqList>
+          <FundingTypesList />
         </ListItem>
         <ListItem
           validationType={ItemValidationTypes.SelectMultiple}
@@ -226,35 +154,7 @@ export const InvestorInfo: FC = () => {
             id: 'QGF3ow',
           })}
         >
-          <FaqList level="two">
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Loan', id: 'OkH5va' })}
-              description={formatMessage({
-                defaultMessage:
-                  'a loan is a transaction in which a financial institution grants a predefined amount of money to develop a particular project. The institution or business that receives the loan is obliged to repay it within a certain period of time and to pay the agreed commissions, expenses and interest.',
-                id: 'C3hduB',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Grant', id: '3ciGOS' })}
-              description={formatMessage({
-                defaultMessage:
-                  'technical cooperation grants are resources provided by an entity to fulfil a well-defined purpose or objective. In general, they are non-reimbursable resources that are destined in particular to projects or enterprises in early stages of development.',
-                id: 'NP4Cd6',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Equity', id: 'Kub2g2' })}
-              description={formatMessage({
-                defaultMessage:
-                  'an equity investment consists of the acquisition, by an entity specialized in private equity, of a package of shares of a company or enterprise. The private equity firm thus becomes one of the owners of the company.',
-                id: 'TkWozN',
-              })}
-            />
-          </FaqList>
+          <FinancialInstrumentsList />
         </ListItem>
         <ListItem
           mandatory={true}
@@ -268,44 +168,7 @@ export const InvestorInfo: FC = () => {
           mandatory={true}
           title={formatMessage({ defaultMessage: 'Impact you prioritize', id: 'zfuq6W' })}
         >
-          <FaqList level="two">
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Biodiversity', id: 'mbTJWV' })}
-              description={formatMessage({
-                defaultMessage:
-                  'Impact of projects on biodiversity conservation, calculated from indicators of endemism, land conservation/restoration, connectivity, and development of sustainable social projects.',
-                id: 'DrtKvj',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Climate', id: 'MuOp0t' })}
-              description={formatMessage({
-                defaultMessage:
-                  'Impact of projects that reduce carbon emissions from the land sector (deforestation/degradation), as wood and soil biomass as well as application of sustainable forest measures.',
-                id: 'sWdxgq',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Community', id: '4CrCbD' })}
-              description={formatMessage({
-                defaultMessage:
-                  'Impact of projects on ensuring and improving equal and inclusive physical, mental, economic, and spiritual health.',
-                id: 'lpyO42',
-              })}
-            />
-            <ListItem
-              inlineDescription={true}
-              title={formatMessage({ defaultMessage: 'Water', id: 't7YvMF' })}
-              description={formatMessage({
-                defaultMessage:
-                  'Impact of projects  managing water cycling, quality and availability as well as the management of associated risks.',
-                id: '3BIClA',
-              })}
-            />
-          </FaqList>
+          <ImpactsList />
         </ListItem>
         <ListItem title={formatMessage({ defaultMessage: 'SDG’s', id: '/apC0L' })} />
         <ListItem
