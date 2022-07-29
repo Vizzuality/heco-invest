@@ -2,7 +2,6 @@ import { useCallback, useEffect } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useQueryClient } from 'react-query';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -21,7 +20,7 @@ import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import Loading from 'components/loading';
-import { Paths, Queries, UserRoles } from 'enums';
+import { Paths, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
 import { PageComponent } from 'types';
 import { SignIn } from 'types/sign-in';
@@ -46,9 +45,10 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
   const signIn = useSignIn();
   const acceptInvitation = useAcceptInvitation();
   const resolver = useSignInResolver();
-  const { user, refetch: refetchUser } = useMe();
-  const { invitedUser } = useInvitedUser(query.invitation_token as string);
-  const queryClient = useQueryClient();
+  const { user, isLoading: isUserLoading } = useMe();
+  const { invitedUser, isLoading: isInvitedUserLoading } = useInvitedUser(
+    query.invitation_token as string
+  );
 
   const {
     register,
@@ -62,25 +62,37 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
   });
 
   useEffect(() => {
-    if (!!invitedUser) {
-      setValue('email', invitedUser.email);
-    }
-  }, [invitedUser, setValue]);
-
-  useEffect(() => {
-    if (!!user) {
-      if (user?.role === UserRoles.Light) {
-        replace(Paths.AccountType);
-      } else {
-        replace(Paths.Dashboard);
+    // Wait until user and inviteUser are loaded to be able to compare them
+    if (!isUserLoading && !isInvitedUserLoading) {
+      if (!!invitedUser) {
+        // If the user has an invitation and is signed in go to invitation page
+        if (!!user && user?.role === UserRoles.Light) {
+          replace({
+            pathname: Paths.Invitation,
+            query: { invitation_token: query.invitation_token },
+          });
+        }
+        setValue('email', invitedUser.email);
+      } else if (!!user) {
+        // If is not a invited user and is already signed in
+        if (user?.role === UserRoles.Light) {
+          // If the user don't have an account go to the 'choose account type' page
+          replace(Paths.AccountType);
+        } else {
+          // If the user has an account go to the dashboard
+          replace(Paths.Dashboard);
+        }
       }
     }
-  }, [replace, user]);
-
-  const redirectSignedUser = useCallback(async () => {
-    await queryClient.invalidateQueries(Queries.User);
-    replace(Paths.Dashboard);
-  }, [queryClient, replace]);
+  }, [
+    invitedUser,
+    isInvitedUserLoading,
+    isUserLoading,
+    query.invitation_token,
+    replace,
+    setValue,
+    user,
+  ]);
 
   const handleSignIn = useCallback(
     (data: SignIn) => {
@@ -88,15 +100,15 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
         onSuccess: () => {
           if (!!invitedUser) {
             acceptInvitation.mutate(query.invitation_token as string, {
-              onSuccess: redirectSignedUser,
+              onSuccess: () => replace(Paths.Dashboard),
             });
           } else {
-            redirectSignedUser();
+            replace(Paths.Dashboard);
           }
         },
       });
     },
-    [signIn, invitedUser, acceptInvitation, query.invitation_token, redirectSignedUser]
+    [signIn, invitedUser, acceptInvitation, query.invitation_token, replace]
   );
 
   const onSubmit: SubmitHandler<SignIn> = handleSignIn;

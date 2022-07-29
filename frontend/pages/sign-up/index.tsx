@@ -43,10 +43,12 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
   const queryClient = useQueryClient();
   const intl = useIntl();
   const signUp = useSignup();
-  const { invitedUser } = useInvitedUser(query.invitation_token as string);
+  const { invitedUser, isLoading: isInvitedUserLoading } = useInvitedUser(
+    query.invitation_token as string
+  );
   const acceptInvitation = useAcceptInvitation();
   const resolver = useSignupResolver();
-  const { user } = useMe();
+  const { user, isLoading: isUserLoading } = useMe();
   const {
     register,
     formState: { errors },
@@ -58,21 +60,40 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
   });
 
   useEffect(() => {
-    if (!!user) {
-      if (user.role === UserRoles.Light) {
-        if (!invitedUser) {
-          // If the user exists and is not an invited user, redirect to the account type page
-          replace(Paths.AccountType);
+    // Wait until user and invited user are loaded to be able to compare them
+    if (!isUserLoading && !isInvitedUserLoading) {
+      if (!!invitedUser) {
+        setValue('email', invitedUser.email);
+      }
+      if (!!user) {
+        // If the user already exists and is signed in
+        if (user.role === UserRoles.Light) {
+          // If the user don't have an account
+          if (!!invitedUser) {
+            // If the user has an invitation
+            replace({
+              pathname: Paths.Invitation,
+              query: { invitation_token: query.invitation_token },
+            });
+          } else {
+            // If the user exists and is not an invited user, redirect to the account type page
+            replace(Paths.AccountType);
+          }
+        } else {
+          // If the user has a role other than light, redirect to the dashboard
+          replace(Paths.Dashboard);
         }
-      } else {
-        // If the user has a role other than light, redirect to the dashboard
-        replace(Paths.Dashboard);
       }
     }
-    if (!!invitedUser) {
-      setValue('email', invitedUser.email);
-    }
-  }, [invitedUser, replace, setValue, user]);
+  }, [
+    invitedUser,
+    isInvitedUserLoading,
+    isUserLoading,
+    query.invitation_token,
+    replace,
+    setValue,
+    user,
+  ]);
 
   const handleSignUp = useCallback(
     (data: SignupDto) => {
@@ -81,9 +102,7 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
         {
           onSuccess: () => {
             if (!!invitedUser) {
-              acceptInvitation.mutate(query.invitation_token as string, {
-                onSuccess: async () => await queryClient.invalidateQueries(Queries.User),
-              });
+              acceptInvitation.mutate(query.invitation_token as string);
             } else {
               queryClient.invalidateQueries(Queries.User);
             }
