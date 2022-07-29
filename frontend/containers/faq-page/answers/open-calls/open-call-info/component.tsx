@@ -1,8 +1,12 @@
 import { FC } from 'react';
 
-import { FormattedMessage } from 'react-intl';
+import { useIntl, FormattedMessage } from 'react-intl';
+
+import FaqList, { ListItem, ItemValidationTypes } from 'containers/faq-page/faq-list';
 
 export const OpenCallInfo: FC = () => {
+  const { formatMessage } = useIntl();
+
   return (
     <>
       <p>
@@ -17,83 +21,82 @@ export const OpenCallInfo: FC = () => {
           id="ltUH9L"
         />
       </p>
-      <ol className="my-4 ml-6 font-medium list-decimal">
-        <li>
-          <FormattedMessage defaultMessage="Open call name" id="8Gp8gS" /> *
-        </li>
-        <li>
-          <FormattedMessage defaultMessage="Picture" id="wvoA3H" />
-          <p className="font-light text-gray-600">
-            <FormattedMessage
-              defaultMessage="A picture can make your open call page more attractive."
-              id="iFQwyC"
-            />
-          </p>
-        </li>
-        <li>
-          <FormattedMessage defaultMessage="Country" id="vONi+O" /> *
-        </li>
-        <li>
-          <FormattedMessage defaultMessage="State" id="ku+mDU" />
-        </li>
-        <li>
-          <FormattedMessage defaultMessage="Municipality" id="9I1zvK" />
-        </li>
-        <li>
-          <FormattedMessage defaultMessage="What’s the open call about" id="4zUbhC" />{' '}
-          <span className="italic font-normal">
-            (<FormattedMessage defaultMessage="max 600 characters" id="UhT/Dv" />) *
-          </span>
-        </li>
-        <li>
-          <FormattedMessage defaultMessage="Expected impact" id="XgaRPC" />{' '}
-          <span className="italic font-normal">
-            (<FormattedMessage defaultMessage="max 600 characters" id="UhT/Dv" />) *
-          </span>
-          <p className="font-light text-gray-600">
-            <FormattedMessage
-              defaultMessage="Describe briefly the impact that the project is expected to generate."
-              id="jqCFCY"
-            />
-          </p>
-        </li>
-        <li>
-          <FormattedMessage defaultMessage="SDG’s" id="/apC0L" />
-        </li>
-        <li>
-          <FormattedMessage defaultMessage="Maximum funding available per project" id="9GzPsf" /> *
-        </li>
-        <li>
-          <FormattedMessage defaultMessage="Financial instrument available" id="m38DjH" /> *
-        </li>
-        <li>
-          <FormattedMessage defaultMessage="Funding priorities" id="P1f6hp" />{' '}
-          <span className="italic font-normal">
-            (<FormattedMessage defaultMessage="max 600 characters" id="UhT/Dv" />) *
-          </span>
-          <p className="font-light text-gray-600">
-            <FormattedMessage
-              defaultMessage="What type of projects the funding is covering."
-              id="b3Iz6I"
-            />
-          </p>
-        </li>
-        <li>
-          <FormattedMessage defaultMessage="Funding exclusions" id="gQ16Mj" />{' '}
-          <span className="italic font-normal">
-            (<FormattedMessage defaultMessage="max 600 characters" id="UhT/Dv" />) *
-          </span>
-          <p className="font-light text-gray-600">
-            <FormattedMessage
-              defaultMessage="What type of projects the funding is not covering."
-              id="ydCOwz"
-            />
-          </p>
-        </li>
-        <li>
-          <FormattedMessage defaultMessage="Deadline" id="8/Da7A" /> *
-        </li>
-      </ol>
+      <FaqList level="one">
+        <ListItem
+          mandatory={true}
+          title={formatMessage({ defaultMessage: 'Open call name', id: '8Gp8gS' })}
+        />
+        <ListItem
+          title={formatMessage({ defaultMessage: 'Picture', id: 'wvoA3H' })}
+          description={formatMessage({
+            defaultMessage: 'A picture can make your open call page more attractive.',
+            id: 'iFQwyC',
+          })}
+        />
+        <ListItem
+          mandatory={true}
+          title={formatMessage({ defaultMessage: 'Country', id: 'vONi+O' })}
+        />
+        <ListItem title={formatMessage({ defaultMessage: 'State', id: 'ku+mDU' })} />
+        <ListItem title={formatMessage({ defaultMessage: 'Municipality', id: '9I1zvK' })} />
+        <ListItem
+          mandatory={true}
+          validationType={ItemValidationTypes.Max600Chars}
+          title={formatMessage({ defaultMessage: 'What’s the open call about', id: '4zUbhC' })}
+        />
+        <ListItem
+          mandatory={true}
+          validationType={ItemValidationTypes.Max600Chars}
+          title={formatMessage({ defaultMessage: 'Expected impact', id: 'XgaRPC' })}
+          description={formatMessage({
+            defaultMessage: 'Describe briefly the impact that the project is expected to generate.',
+            id: 'jqCFCY',
+          })}
+        />
+        <ListItem title={formatMessage({ defaultMessage: 'SDG’s', id: '/apC0L' })} />
+        <ListItem
+          mandatory={true}
+          title={formatMessage({
+            defaultMessage: 'Maximum funding available per project',
+            id: '9GzPsf',
+          })}
+        />
+        <ListItem
+          mandatory={true}
+          title={formatMessage({
+            defaultMessage: 'Financial instrument available',
+            id: 'm38DjH',
+          })}
+        />
+        <ListItem
+          mandatory={true}
+          validationType={ItemValidationTypes.Max600Chars}
+          title={formatMessage({
+            defaultMessage: 'Funding priorities',
+            id: 'P1f6hp',
+          })}
+          description={formatMessage({
+            defaultMessage: 'What type of projects the funding is covering.',
+            id: 'b3Iz6I',
+          })}
+        />
+        <ListItem
+          mandatory={true}
+          validationType={ItemValidationTypes.Max600Chars}
+          title={formatMessage({
+            defaultMessage: 'Funding exclusions',
+            id: 'gQ16Mj',
+          })}
+          description={formatMessage({
+            defaultMessage: 'What type of projects the funding is not covering.',
+            id: 'ydCOwz',
+          })}
+        />
+        <ListItem
+          mandatory={true}
+          title={formatMessage({ defaultMessage: 'Deadline', id: '8/Da7A' })}
+        />
+      </FaqList>
 
       <div className="mt-4">
         * <FormattedMessage defaultMessage="mandatory fields" id="Gxnfj4" />

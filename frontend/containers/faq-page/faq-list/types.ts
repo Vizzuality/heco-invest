@@ -5,6 +5,7 @@ export enum ItemValidationTypes {
   SelectOne = 'select-one',
   SelectMultiple = 'select-multiple',
   Max600Chars = 'max-600-caracters',
+  Max36Months = 'max-36-months',
 }
 
 export type FaqListProps = PropsWithChildren<{

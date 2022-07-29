@@ -572,9 +572,6 @@
   "C3hduB": {
     "string": "a loan is a transaction in which a financial institution grants a predefined amount of money to develop a particular project. The institution or business that receives the loan is obliged to repay it within a certain period of time and to pay the agreed commissions, expenses and interest."
   },
-  "CBfDLD": {
-    "string": "Select the instrument type(s) you provide"
-  },
   "CEQo2w": {
     "string": "My preferences"
   },
@@ -1139,6 +1136,9 @@
   },
   "QESbGa": {
     "string": "select project developers"
+  },
+  "QGF3ow": {
+    "string": "\"Select the instrument type(s) you provide"
   },
   "QI4yO9": {
     "string": "It is an area with a number of attributes related to heterogeneity that maintain the structure and ecological processes that characterize it as the Heart of the Amazon, it is also one of the most unique natural and cultural heritages in the national territory due to its exuberant cultural diversity."

@@ -56,6 +56,9 @@ export const ListItem: FC<ListItemProps> = ({
             {validationType === ItemValidationTypes.YesNo && (
               <FormattedMessage defaultMessage="Yes / No" id="aNY6/x" />
             )}
+            {validationType === ItemValidationTypes.Max36Months && (
+              <FormattedMessage defaultMessage="max 36 months" id="f9DtLB" />
+            )}
             )
           </span>
         </>
