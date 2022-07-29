@@ -62,10 +62,11 @@ const Protected: React.FC<ProtectedProps> = ({
       // Redirect to choose account type if the user have a Light account
       router.push(Paths.AccountType);
       return null;
+    } else {
+      // If the user has an account redirect to the the dashboard
+      router.push(Paths.Dashboard);
+      return null;
     }
-    // Redirect to the last route (go back) if the user have a different kind of account
-    router.back();
-    return null;
   }
 
   // If the ownership of the entity is needed and the user don't have it

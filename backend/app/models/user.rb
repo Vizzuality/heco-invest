@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :project_developers, through: :favourite_project_developers
   has_many :favourite_investors, dependent: :destroy
   has_many :investors, through: :favourite_investors
+  has_many :favourite_open_calls, dependent: :destroy
+  has_many :open_calls, through: :favourite_open_calls
   has_one :owner_account, class_name: "Account", foreign_key: "owner_id", dependent: :restrict_with_error
 
   has_one_attached :avatar
@@ -79,5 +81,10 @@ class User < ApplicationRecord
 
   def block_from_invitation?
     false # invited users can still sign-in
+  end
+
+  def send_devise_notification(notification, *args)
+    args[-1] = (args.last || {}).merge fallback_language: I18n.locale
+    devise_mailer.send(notification, self, *args).deliver_later
   end
 end

@@ -32,6 +32,8 @@ export interface ConfirmationPromptProps {
   onAcceptLoading?: boolean;
   /** Message of the error triggered by the confirmation the action. */
   confirmationError?: string;
+  /** Disables the onConfirm action button. Defaults to 'false' */
+  onConfirmDisabled?: boolean;
   /**
    * Callback executed when the user refuses the action
    */

@@ -23,6 +23,7 @@ export const ConfirmationPrompt: FC<ConfirmationPromptProps> = ({
   onRefuse,
   onAcceptLoading = false,
   confirmationError,
+  onConfirmDisabled = false,
 }: ConfirmationPromptProps) => (
   <Modal open={open} title={title} size="default" dismissable={dismissible} onDismiss={onDismiss}>
     <div className="flex flex-col items-center px-8 py-4">
@@ -57,7 +58,7 @@ export const ConfirmationPrompt: FC<ConfirmationPromptProps> = ({
           size="small"
           className="flex-shrink-0 sm:mr-5"
           onClick={onAccept}
-          disabled={onAcceptLoading}
+          disabled={onConfirmDisabled || onAcceptLoading}
         >
           <Loading className="mr-2" visible={onAcceptLoading} />
           {!confirmationError ? (

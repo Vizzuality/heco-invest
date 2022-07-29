@@ -41,8 +41,27 @@ namespace :api, format: "json" do
 
     namespace :account, module: :accounts do
       resource :project_developer, only: [:create, :update, :show]
+      resources :project_developers, only: [] do
+        collection do
+          get :favourites
+        end
+      end
       resource :investor, only: [:create, :update, :show]
-      resources :projects, only: [:index, :create, :update, :destroy]
+      resources :investors, only: [] do
+        collection do
+          get :favourites
+        end
+      end
+      resources :projects, only: [:index, :create, :update, :destroy] do
+        collection do
+          get :favourites
+        end
+      end
+      resources :open_calls, only: [] do
+        collection do
+          get :favourites
+        end
+      end
       resources :users, only: [:index, :destroy] do
         collection do
           get :transfer_ownership

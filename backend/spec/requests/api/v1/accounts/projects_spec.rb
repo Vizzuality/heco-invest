@@ -437,4 +437,59 @@ RSpec.describe "API V1 Account Projects", type: :request do
       end
     end
   end
+
+  path "/api/v1/account/projects/favourites" do
+    get "Returns list of projects marked as favourite" do
+      tags "Projects"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: "page[number]", in: :query, type: :integer, description: "Page number. Default: 1", required: false
+      parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
+      parameter name: "fields[project]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user, account: create(:account, :unapproved)) }
+
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {type: :array, items: {"$ref" => "#/components/schemas/project"}},
+          meta: {"$ref" => "#/components/schemas/pagination_meta"},
+          links: {"$ref" => "#/components/schemas/pagination_links"}
+        }
+
+        let("X-CSRF-TOKEN") { get_csrf_token }
+        let!(:favourite_project) { create :favourite_project, user: user }
+        let!(:favourite_project_of_different_user) { create :favourite_project }
+        let!(:project_not_marked_as_favourite) { create :project }
+
+        before { sign_in user }
+
+        run_test!
+
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/account/projects-favourites")
+          expect(response_json["data"].pluck("id")).to eq([favourite_project.project_id])
+        end
+
+        context "with sparse fieldset" do
+          let("fields[project]") { "name,description,nonexisting" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/account/projects-favourites-sparse-fieldset")
+          end
+        end
+
+        context "with relationships" do
+          let("fields[project]") { "name,project_developer" }
+          let(:includes) { "project_developer" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/account/projects-favourites-include-relationships")
+          end
+        end
+      end
+    end
+  end
 end
