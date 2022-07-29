@@ -41,9 +41,9 @@ RSpec.describe "API V1 User", type: :request do
             }
           end
 
-          run_test!
-
-          it "matches snapshot", generate_swagger_example: true do
+          it "matches snapshot", generate_swagger_example: true do |example|
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
             expect(response.body).to match_snapshot("api/v1/user-create")
           end
 
@@ -53,8 +53,10 @@ RSpec.describe "API V1 User", type: :request do
           #   expect(mail.to.first).to eq("jankowalski@example.com")
           # end
 
-          it "does not send confirmation email and signs user in" do
-            expect(ActionMailer::Base.deliveries.count).to eq(0)
+          it "does not send confirmation email and signs user in" do |example|
+            expect {
+              submit_request example.metadata
+            }.not_to have_enqueued_mail(DeviseMailer, :confirmation_instructions)
             expect(session["warden.user.user.key"]).to be_present
           end
         end
@@ -73,17 +75,18 @@ RSpec.describe "API V1 User", type: :request do
 
           before do
             user.invite! create(:account).owner
-            ActionMailer::Base.deliveries.clear
           end
 
-          run_test!
-
-          it "matches snapshot", generate_swagger_example: true do
+          it "matches snapshot", generate_swagger_example: true do |example|
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
             expect(response.body).to match_snapshot("api/v1/user-create-by-invitation")
           end
 
-          it "does not send confirmation email and signs user in" do
-            expect(ActionMailer::Base.deliveries.count).to eq(0)
+          it "does not send confirmation email and signs user in" do |example|
+            expect {
+              submit_request example.metadata
+            }.not_to have_enqueued_mail(DeviseMailer, :confirmation_instructions)
             expect(session["warden.user.user.key"]).to be_present
           end
         end

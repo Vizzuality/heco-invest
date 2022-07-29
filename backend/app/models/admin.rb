@@ -32,4 +32,9 @@ class Admin < ApplicationRecord
 
     errors.add :password, :password_complexity
   end
+
+  def send_devise_notification(notification, *args)
+    args[-1] = (args.last || {}).merge fallback_language: I18n.locale
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 end

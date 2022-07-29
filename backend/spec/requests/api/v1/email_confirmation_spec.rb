@@ -21,16 +21,17 @@ RSpec.describe "API V1 Email Confirmation", type: :request do
         let(:params) { {email: unconfirmed_user.email} }
         let("X-CSRF-TOKEN") { get_csrf_token }
 
-        run_test!
-
-        it "sends email" do
-          mail = ActionMailer::Base.deliveries.last
-          expect(mail.subject).to eq("Confirmation instructions")
-          expect(mail.to.first).to eq("user@example.com")
+        it "sends email" do |example|
+          expect {
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
+          }.to have_enqueued_mail(DeviseMailer, :confirmation_instructions).with(unconfirmed_user, String, fallback_language: :en)
         end
 
         context "invalid email" do
           let(:params) { {email: "invalid"} }
+
+          run_test!
 
           it "returns 200" do
             expect(response).to have_http_status(:ok)
@@ -39,6 +40,8 @@ RSpec.describe "API V1 Email Confirmation", type: :request do
 
         context "non existing user" do
           let(:params) { {email: "valid@example.com"} }
+
+          run_test!
 
           it "returns 200" do
             expect(response).to have_http_status(:ok)
@@ -49,9 +52,11 @@ RSpec.describe "API V1 Email Confirmation", type: :request do
           let(:confirmed_user) { create(:user) }
           let(:params) { {email: confirmed_user.email} }
 
-          it "returns 200, do not send email" do
-            expect(ActionMailer::Base.deliveries.count).to eq(0)
-            expect(response).to have_http_status(:ok)
+          it "returns 200, do not send email" do |example|
+            expect {
+              submit_request example.metadata
+              assert_response_matches_metadata example.metadata
+            }.not_to have_enqueued_mail(DeviseMailer, :confirmation_instructions)
           end
         end
       end
