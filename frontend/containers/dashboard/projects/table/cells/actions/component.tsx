@@ -17,7 +17,9 @@ import { CellActionsProps } from './types';
 export const CellActions: FC<CellActionsProps> = ({
   row: {
     original: { slug, name, status },
+    index,
   },
+  rows,
 }: CellActionsProps) => {
   const intl = useIntl();
   const router = useRouter();
@@ -57,6 +59,9 @@ export const CellActions: FC<CellActionsProps> = ({
     );
   };
 
+  // Used to change the position of the menu on the last row so that it is not hidden by the table's bottom
+  const isLast = rows?.length === index + 1;
+
   return (
     <div className="flex items-center justify-center gap-3">
       <Link
@@ -67,7 +72,7 @@ export const CellActions: FC<CellActionsProps> = ({
           <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
         </a>
       </Link>
-      <RowMenu onAction={handleRowMenuItemClick}>
+      <RowMenu direction={isLast ? 'top' : 'bottom'} onAction={handleRowMenuItemClick}>
         <RowMenuItem key="edit">
           <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
         </RowMenuItem>
