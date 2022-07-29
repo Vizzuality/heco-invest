@@ -2,7 +2,9 @@ module API
   module V1
     module Accounts
       class ProjectsController < BaseController
-        before_action :require_project_developer!
+        include API::Pagination
+
+        before_action :require_project_developer!, except: :favourites
         before_action :fetch_project, only: [:update, :destroy]
         load_and_authorize_resource
 
@@ -45,6 +47,20 @@ module API
             ProjectDeveloperMailer.project_destroyed(project_developer, @project.name).deliver_later
           end
           head :ok
+        end
+
+        def favourites
+          @projects = @projects.includes(:project_developer, :involved_project_developers, project_images: {file_attachment: :blob})
+            .order(created_at: :desc)
+          pagy_object, @projects = pagy(@projects, page: current_page, items: per_page)
+          render json: ProjectSerializer.new(
+            @projects,
+            include: included_relationships,
+            fields: sparse_fieldset,
+            links: pagination_links(:api_v1_projects_path, pagy_object),
+            meta: pagination_meta(pagy_object),
+            params: {current_user: current_user}
+          ).serializable_hash
         end
 
         private

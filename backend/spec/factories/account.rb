@@ -24,6 +24,10 @@ FactoryBot.define do
       project_developer
     end
 
+    factory :account_investor do
+      investor
+    end
+
     trait :unapproved do
       review_status { "unapproved" }
     end

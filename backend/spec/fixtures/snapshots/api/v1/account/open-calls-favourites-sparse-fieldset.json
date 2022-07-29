@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "id": "ed5efee6-02e3-486b-91e1-3592c4e8ebee",
+      "type": "open_call",
+      "attributes": {
+        "name": "Open call 1",
+        "slug": "hane-lehner-and-goyette-open-call-1",
+        "description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "ticket_size": "scaling",
+        "instrument_type": "loan",
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "money_distribution": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "impact_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "closing_at": "2023-05-27T08:55:05.546Z",
+        "language": "en",
+        "account_language": "en",
+        "trusted": false,
+        "created_at": "2022-07-27T08:55:05.550Z"
+      },
+      "relationships": {
+        "investor": {
+          "data": {
+            "id": "c1836268-bd85-4506-9458-d1800d58b597",
+            "type": "investor"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 1,
+    "total": 1,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/open_calls?page%5Bsize%5D=10",
+    "self": "/api/v1/open_calls?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/open_calls?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}

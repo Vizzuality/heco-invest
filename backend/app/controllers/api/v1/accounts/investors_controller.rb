@@ -2,8 +2,11 @@ module API
   module V1
     module Accounts
       class InvestorsController < BaseController
-        before_action :require_investor!, except: :create
+        include API::Pagination
+
+        before_action :require_investor!, except: %i[create favourites]
         around_action(only: [:show]) { |_controller, action| set_locale(current_user&.account&.language, &action) }
+        load_and_authorize_resource only: :favourites
 
         def create
           current_user.with_lock do
@@ -34,6 +37,19 @@ module API
           render json: InvestorSerializer.new(
             current_user.account.investor,
             include: included_relationships,
+            params: {current_user: current_user}
+          ).serializable_hash
+        end
+
+        def favourites
+          @investors = @investors.includes(account: [:owner, {picture_attachment: :blob}])
+          pagy_object, @investors = pagy(@investors, page: current_page, items: per_page)
+          render json: InvestorSerializer.new(
+            @investors,
+            include: included_relationships,
+            fields: sparse_fieldset,
+            links: pagination_links(:api_v1_investors_path, pagy_object),
+            meta: pagination_meta(pagy_object),
             params: {current_user: current_user}
           ).serializable_hash
         end

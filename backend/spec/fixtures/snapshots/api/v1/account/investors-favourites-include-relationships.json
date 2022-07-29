@@ -1,0 +1,51 @@
+{
+  "data": [
+    {
+      "id": "7a8105a2-b84e-459c-9539-327c84bf4846",
+      "type": "investor",
+      "attributes": {
+        "instagram": "https://instagram.com/bartoletti-and-sons",
+        "facebook": "https://facebook.com/bartoletti-and-sons"
+      },
+      "relationships": {
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": "ff39ea8f-3369-47e1-8631-88857feb53ec",
+      "type": "user",
+      "attributes": {
+        "first_name": "Raymon",
+        "last_name": "Runte",
+        "email": "runte_raymon@example.org",
+        "role": "light",
+        "created_at": "2022-07-27T08:22:36.841Z",
+        "ui_language": "en",
+        "account_language": "en",
+        "confirmed": true,
+        "approved": true,
+        "invitation": null,
+        "owner": true,
+        "avatar": {
+          "small": null,
+          "medium": null,
+          "original": null
+        }
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 1,
+    "total": 1,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/investors?page%5Bsize%5D=10",
+    "self": "/api/v1/investors?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/investors?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}
