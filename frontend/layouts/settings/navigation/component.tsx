@@ -20,12 +20,12 @@ export const Navigation: FC<NavigationProps> = ({ className, userRole }: Navigat
       {
         id: Paths.UserInformation,
         name: intl.formatMessage({ defaultMessage: 'Information', id: 'E80WrK' }),
-        restricted: UserRoles.ProjectDeveloper,
+        restricted: [UserRoles.ProjectDeveloper, UserRoles.Investor],
       },
       {
         id: Paths.UserPassword,
         name: intl.formatMessage({ defaultMessage: 'Password', id: '5sg7KC' }),
-        restricted: UserRoles.ProjectDeveloper,
+        restricted: [UserRoles.ProjectDeveloper, UserRoles.Investor],
       },
     ],
     [intl]
