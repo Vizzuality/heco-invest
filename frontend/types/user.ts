@@ -31,7 +31,7 @@ export interface User {
   account_language: Languages;
   confirmed: boolean;
   approved: boolean;
-  invitation: boolean;
+  invitation: InvitationStatus;
   owner: boolean;
   avatar: Picture;
 }

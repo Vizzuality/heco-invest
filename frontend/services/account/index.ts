@@ -6,6 +6,7 @@ import {
   useQueryClient,
   UseQueryResult,
   UseQueryOptions,
+  useQuery,
 } from 'react-query';
 
 import { useRouter } from 'next/router';
@@ -413,4 +414,10 @@ export const useDeleteUser = (): UseMutationResult<{}, ErrorResponse> => {
     await API.delete(`/api/v1/account/users/${id}`, { data: {} });
 
   return useMutation(deleteUser);
+};
+
+export const transferOwnership = async (userId: string) => {
+  return await API.get('/api/v1/account/users/transfer_ownership', {
+    params: { user_id: userId },
+  });
 };

@@ -18,7 +18,7 @@ import User from './cells/user';
 
 import { UsersTableProps } from '.';
 
-export const UsersTable: FC<UsersTableProps> = ({ isOwner }) => {
+export const UsersTable: FC<UsersTableProps> = ({ isOwner, accountName }) => {
   const intl = useIntl();
 
   const queryOptions = { keepPreviousData: true, refetchOnMount: true };
@@ -67,6 +67,8 @@ export const UsersTable: FC<UsersTableProps> = ({ isOwner }) => {
     loading: isLoadingUsers || isFetchingUsers,
     sortingEnabled: true,
     manualSorting: false,
+    isOwner,
+    accountName,
   };
 
   const tablePropsWithPermissions = isOwner
