@@ -35,7 +35,7 @@ export const CellActions = ({ row }: CellActionsProps) => {
 
   const handleResendInvitation = () => {
     inviteUser.mutate(
-      { emails: [id] },
+      { emails: [email] },
       {
         onSuccess: () => {
           queryClient.invalidateQueries(Queries.AccountUsersList);
