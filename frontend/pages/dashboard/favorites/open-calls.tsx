@@ -1,5 +1,3 @@
-import { useIntl } from 'react-intl';
-
 import { withLocalizedRequests } from 'hoc/locale';
 
 import { InferGetStaticPropsType } from 'next';
@@ -9,7 +7,6 @@ import { loadI18nMessages } from 'helpers/i18n';
 import DashboardFavoritesLayout, {
   DashboardFavoritesLayoutProps,
 } from 'layouts/dashboard-favorites';
-import NakedLayout from 'layouts/naked';
 import { PageComponent } from 'types';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
@@ -26,11 +23,11 @@ export const FavoritesOpenCallsPage: PageComponent<
   FavoritesOpenCallsPageProps,
   DashboardFavoritesLayoutProps
 > = () => {
-  return <DashboardFavoritesLayout>Open calls</DashboardFavoritesLayout>;
+  return <div>Open calls</div>;
 };
 
 FavoritesOpenCallsPage.layout = {
-  Component: NakedLayout,
+  Component: DashboardFavoritesLayout,
 };
 
 export default FavoritesOpenCallsPage;

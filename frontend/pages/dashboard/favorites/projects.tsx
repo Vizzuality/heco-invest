@@ -5,7 +5,6 @@ import { loadI18nMessages } from 'helpers/i18n';
 import DashboardFavoritesLayout, {
   DashboardFavoritesLayoutProps,
 } from 'layouts/dashboard-favorites';
-import NakedLayout from 'layouts/naked';
 import { PageComponent } from 'types';
 import { Project as ProjectType } from 'types/project';
 
@@ -31,7 +30,7 @@ export const FavoritesProjectsPage: PageComponent<
 };
 
 FavoritesProjectsPage.layout = {
-  Component: NakedLayout,
+  Component: DashboardFavoritesLayout,
 };
 
 export default FavoritesProjectsPage;
