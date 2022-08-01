@@ -21,7 +21,7 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
   const intl = useIntl();
 
   const badgeElement = (number: number, isActive: boolean) => {
-    if (!number) return null;
+    if (Number.isNaN(number)) return null;
 
     return (
       <span
