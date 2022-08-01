@@ -1,8 +1,4 @@
-import { useIntl } from 'react-intl';
-
 import { withLocalizedRequests } from 'hoc/locale';
-
-import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
@@ -11,6 +7,7 @@ import DashboardFavoritesLayout, {
 } from 'layouts/dashboard-favorites';
 import NakedLayout from 'layouts/naked';
 import { PageComponent } from 'types';
+import { ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
@@ -20,7 +17,11 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   };
 });
 
-type FavoritesProjectDevelopersPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+type FavoritesProjectDevelopersPageProps = {
+  data: ProjectDeveloperType[];
+  meta: Record<string, string>;
+  loading: boolean;
+};
 
 export const FavoritesProjectDevelopersPage: PageComponent<
   FavoritesProjectDevelopersPageProps,
