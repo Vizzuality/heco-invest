@@ -51,9 +51,8 @@ const Information: PageComponent<InformationPageProps, SettingsLayoutProps> = ()
 
   const onSubmit: SubmitHandler<ChangePassword> = (data) => {
     changePassword.mutate(data, {
-      onSuccess: () => {
-        reset();
-      },
+      onSuccess: () => reset(),
+      onError: () => reset(),
     });
   };
 
