@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
@@ -11,7 +13,7 @@ import { useQueryReturnPath } from 'helpers/pages';
 
 import ProjectForm from 'containers/project-form';
 
-import { Paths, UserRoles } from 'enums';
+import { Languages, Paths, UserRoles } from 'enums';
 import FormPageLayout from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
@@ -39,15 +41,26 @@ const CreateProject: PageComponent<CreateProjectProps> = ({ enums }) => {
   const { formatMessage } = useIntl();
   const router = useRouter();
 
-  const createProject = useCreateProject();
   const queryReturnPath = useQueryReturnPath();
 
   const handleOnComplete = () => {
     router.push(queryReturnPath || Paths.DashboardProjects);
   };
+  const [pdLanguage, setPdLanguage] = useState<Languages>();
+  const createProject = useCreateProject({ locale: pdLanguage });
 
   return (
-    <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
+    <ProtectedPage
+      ownership={{
+        //The protected page already fetches the user's account, so we don't need to fetch it again. The userAccount is the project-developer. Whe are using the userAccount to determine the project-developer's language.
+        getIsOwner(_user, userAccount) {
+          setPdLanguage(userAccount.language);
+          return true;
+        },
+        allowOwner: false,
+      }}
+      permissions={[UserRoles.ProjectDeveloper]}
+    >
       <ProjectForm
         title={formatMessage({ defaultMessage: 'Create project', id: 'VUN1K7' })}
         leaveMessage={formatMessage({

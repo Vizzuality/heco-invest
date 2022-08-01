@@ -19,8 +19,7 @@ import {
 } from 'types/project';
 import useProjectValidation, { formPageInputs } from 'validations/project';
 
-import { useAccount } from 'services/account';
-import { useUpdateProject } from 'services/account';
+import { useAccount, useUpdateProject } from 'services/account';
 
 import { useDefaultValues } from './helpers';
 
@@ -50,7 +49,10 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   const [showLeave, setShowLeave] = useState(false);
   const [projectSlug, setProjectSlug] = useState<string>();
   const resolver = useProjectValidation(currentPage);
-  const updateProject = useUpdateProject();
+  const updateProject = useUpdateProject({
+    // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
+    locale: null,
+  });
   const { userAccount } = useAccount();
   const {
     category,
@@ -106,7 +108,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
 
   const handleUpdate = useCallback(
     (formData: ProjectUpdatePayload) => {
-      return updateProject.mutate(formData, {
+      return mutation.mutate(formData, {
         onError: (error) => {
           const { errorPages, fieldErrors } = getServiceErrors<ProjectFormType>(
             error,

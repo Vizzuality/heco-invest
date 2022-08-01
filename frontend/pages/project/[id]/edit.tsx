@@ -11,7 +11,7 @@ import { useQueryReturnPath } from 'helpers/pages';
 
 import ProjectForm from 'containers/project-form';
 
-import { EnumTypes, Paths, UserRoles } from 'enums';
+import { Paths, UserRoles } from 'enums';
 import FormPageLayout, { FormPageLayoutProps } from 'layouts/form-page';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
@@ -73,14 +73,14 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({
 }) => {
   const { formatMessage } = useIntl();
   const router = useRouter();
-
-  const updateProject = useUpdateProject();
   const queryReturnPath = useQueryReturnPath();
 
   const {
     data: { data: project },
     isFetching: isFetchingProject,
   } = useProject(router.query.id as string, PROJECT_QUERY_PARAMS, projectProp);
+
+  const updateProject = useUpdateProject({ locale: project.language });
 
   const getIsOwner = (_user: User, userAccount: ProjectDeveloper | Investor) => {
     // The user must be a the creator of the project to be allowed to edit it.
