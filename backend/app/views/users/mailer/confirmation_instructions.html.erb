@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<p><%= t("devise.mailer.confirmation_instructions.greeting", recipient: @email) %></p>
 
-<p>You can confirm your account email through the link below:</p>
+<p><%= t("devise.mailer.confirmation_instructions.instruction") %></p>
 
-<p><%= link_to 'Confirm my account', api_v1_email_confirmation_url(confirmation_token: @token) %></p>
+<p><%= link_to t("devise.mailer.confirmation_instructions.action"), api_v1_email_confirmation_url(confirmation_token: @token) %></p>

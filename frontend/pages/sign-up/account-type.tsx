@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
+import { FaqPaths, FaqQuestions } from 'hooks/useFaq';
+
 import { loadI18nMessages } from 'helpers/i18n';
 
 import AccountTypeSelector from 'containers/account-type-selector';
@@ -61,7 +63,7 @@ const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = () => {
               className="max-w-3xl mt-6"
               onAccountTypeSelected={handleAccountTypeSelected}
             />
-            <Link href={Paths.FAQ}>
+            <Link href={FaqPaths[FaqQuestions.HowDoAccountsWork]}>
               <a className="mt-6 text-gray-600 underline transition-colors hover:text-green-dark active:text-green-dark outline-green-dark outline-rounded">
                 <FormattedMessage defaultMessage="How accounts work?" id="0hzVw6" />
               </a>

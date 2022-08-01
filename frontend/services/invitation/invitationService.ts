@@ -66,6 +66,7 @@ export const useAcceptInvitation = (): UseMutationResult<
   return useMutation(acceptInvitation, {
     onSuccess: () => {
       queryClient.removeQueries(Queries.InvitedUser);
+      queryClient.invalidateQueries([Queries.User]);
     },
   });
 };

@@ -12,13 +12,14 @@ import { withLocalizedRequests } from 'hoc/locale';
 import { InferGetStaticPropsType } from 'next';
 
 import useMe from 'hooks/me';
+import { FaqPaths, FaqQuestions } from 'hooks/useFaq';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Alert from 'components/alert';
 import Button from 'components/button';
 import Loading from 'components/loading';
-import { Paths, Queries } from 'enums';
+import { Paths } from 'enums';
 import { PageComponent } from 'types';
 
 import { useSignOut } from 'services/authentication/authService';
@@ -51,8 +52,8 @@ const Invitation: PageComponent<InvitationProps> = () => {
     // The conditions will only be tested if the user and invited user are already fetched
     if (!userLoading && !invitedUserLoading) {
       if (!!invitedUser && !!user && user.email !== invitedUser.email) {
-        // The invited user and the signed in user are different
-        push(Paths.Dashboard);
+        // The invited user and the signed in user are different we sign out the user to start the invitation flow again
+        signOut.mutate({});
       } else if (!!invitedUser && userError) {
         // The user is not signed in
         push({
@@ -80,7 +81,6 @@ const Invitation: PageComponent<InvitationProps> = () => {
   const handleAccept = () => {
     acceptInvitation.mutate(query.invitation_token as string, {
       onSuccess: async () => {
-        queryClient.invalidateQueries([Queries.User]);
         push(Paths.Dashboard);
       },
     });
@@ -97,7 +97,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
         />
       </div>
       {invitedUserError || !query.invitation_token ? (
-        <div className="max-w-lg mt-20 text-center rounded-lg overflow-hidden">
+        <div className="max-w-lg mt-20 overflow-hidden text-center rounded-lg">
           <Alert withLayoutContainer>
             <p className="text-lg">
               <FormattedMessage defaultMessage="Invalid invitation token" id="XimHnV" />
@@ -144,7 +144,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
                 : acceptInvitation.error?.message}
             </Alert>
           )}
-          <Link href={`${Paths.FAQ}#accounts`} passHref>
+          <Link href={FaqPaths[FaqQuestions.HowDoAccountsWork]} passHref>
             <a className="text-base text-gray-700 underline">
               <FormattedMessage defaultMessage="How do accounts work?" id="/ITXlB" />
             </a>
