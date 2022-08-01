@@ -67,7 +67,7 @@ export const ListItem: FC<ListItemProps> = ({
       {description && (
         <p
           className={cx({
-            'font-light text-gray-600': true,
+           'font-normal text-gray-700': true,
             inline: inlineDescription,
           })}
         >
