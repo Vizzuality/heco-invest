@@ -16,8 +16,9 @@ import { DashboardLayoutProps } from './types';
 export const DashboardLayout: FC<DashboardLayoutProps> = ({
   scrollOnQuery = true,
   isLoading = false,
-  children,
   buttons,
+  sidebar,
+  children,
 }: DashboardLayoutProps) => {
   const mainContainerRef = useRef(null);
 
@@ -47,14 +48,23 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
               </div>
             </LayoutContainer>
           </div>
-          <main ref={mainContainerRef} className="h-full overflow-y-auto bg-background-dark">
-            <LayoutContainer className="py-8">{children}</LayoutContainer>
-            {isLoading && (
-              <div className="absolute flex items-center justify-center bg-background-dark top-px bottom-px left-px right-px rounded-2xl backdrop-blur-sm">
-                <Loading visible={true} iconClassName="w-10 h-10" />
-              </div>
-            )}
-          </main>
+          <div ref={mainContainerRef} className="h-full overflow-y-auto bg-background-dark">
+            <LayoutContainer className="flex flex-col gap-20 py-8 md:flex-row">
+              {sidebar && (
+                <aside className="relative w-3/12">
+                  <div className="md:sticky md:top-8">{sidebar}</div>
+                </aside>
+              )}
+              <main className="flex-1 h-full">
+                {children}
+                {isLoading && (
+                  <div className="absolute flex items-center justify-center bg-background-dark top-px bottom-px left-px right-px rounded-2xl backdrop-blur-sm">
+                    <Loading visible={true} iconClassName="w-10 h-10" />
+                  </div>
+                )}
+              </main>
+            </LayoutContainer>
+          </div>
         </div>
       </div>
     </ProtectedPage>
