@@ -25,30 +25,35 @@ import API from 'services/api';
 import { staticDataQueryOptions } from 'services/helpers';
 import { ErrorResponse, PagedRequest, PagedResponse, ResponseData } from 'services/types';
 
-// Create PD
-const getProjectDeveloper = async (includes?: string): Promise<ProjectDeveloper> => {
+// Get Account PD
+export const getProjectDeveloper = async (params?: {
+  includes?: string[];
+  locale?: string;
+}): Promise<ProjectDeveloper> => {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/project_developer`,
     method: 'GET',
-    params: { includes },
+    params: params || {},
   };
+
   return await API.request(config).then((response) => response.data.data);
 };
 
-export function useProjectDeveloper(
-  options: UseQueryOptions<ProjectDeveloper>,
-  includes?: string
-): UseQueryResult<ProjectDeveloper> & { projectDeveloper: ProjectDeveloper } {
-  const query = useLocalizedQuery(
-    [Queries.CurrentProjectDeveloper, includes],
-    () => getProjectDeveloper(includes),
+export const useProjectDeveloper = (
+  params?: Parameters<typeof getProjectDeveloper>[0],
+  options?: UseQueryOptions
+): UseQueryResult<ProjectDeveloper> => {
+  const query = useLocalizedQuery<any>(
+    [Queries.CurrentProjectDeveloper, params],
+    () => getProjectDeveloper(params),
     {
       refetchOnWindowFocus: false,
       ...options,
     }
   );
-  return useMemo(() => ({ ...query, projectDeveloper: query.data }), [query]);
-}
+
+  return query;
+};
 
 const createProjectDeveloper = async (
   data: ProjectDeveloperSetupForm
@@ -71,88 +76,150 @@ export function useCreateProjectDeveloper(): UseMutationResult<
 
   return useMutation(createProjectDeveloper, {
     onSuccess: (result) => {
+      queryClient.invalidateQueries(Queries.ProjectDeveloper);
+      queryClient.invalidateQueries(Queries.ProjectDeveloperList);
       queryClient.setQueryData([Queries.ProjectDeveloper, locale], result.data.data);
     },
   });
 }
 
-// Update PD
-const updateProjectDeveloper = async (
-  data: ProjectDeveloperSetupForm
+export const updateProjectDeveloper = async (
+  data: ProjectDeveloperSetupForm,
+  params?: {
+    locale?: string;
+  }
 ): Promise<AxiosResponse<ResponseData<ProjectDeveloper>>> => {
-  return await API.put('/api/v1/account/project_developer', data);
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/project_developer`,
+    method: 'PUT',
+    data: data,
+    params: params || {},
+  };
+
+  return await API(config);
 };
 
-export function useUpdateProjectDeveloper(): UseMutationResult<
+export function useUpdateProjectDeveloper(
+  params?: Parameters<typeof updateProjectDeveloper>[1]
+): UseMutationResult<
   AxiosResponse<ResponseData<ProjectDeveloper>>,
   AxiosError<ErrorResponse>,
   ProjectDeveloperSetupForm
 > {
-  return useMutation(updateProjectDeveloper);
+  const queryClient = useQueryClient();
+
+  return useMutation((data) => updateProjectDeveloper(data, params), {
+    onSuccess: (result) => {
+      const { data } = result.data;
+      queryClient.invalidateQueries(Queries.ProjectDeveloper);
+      queryClient.invalidateQueries(Queries.ProjectDeveloperList);
+      queryClient.setQueryData([Queries.ProjectDeveloper, data.id], data);
+    },
+  });
 }
 
 // Create Project
-export function useCreateProject(): UseMutationResult<
+export const createProject = async (
+  data: ProjectCreationPayload,
+  params?: {
+    locale?: string;
+  }
+): Promise<AxiosResponse<ResponseData<Project>>> => {
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/projects`,
+    method: 'POST',
+    data: data,
+    params: params || {},
+  };
+
+  return await API(config);
+};
+
+export function useCreateProject(
+  params?: Parameters<typeof updateProject>[1]
+): UseMutationResult<
   AxiosResponse<ResponseData<Project>>,
   AxiosError<ErrorResponse>,
   ProjectCreationPayload
 > {
   const queryClient = useQueryClient();
 
-  const createProject = async (
-    data: ProjectCreationPayload
-  ): Promise<AxiosResponse<ResponseData<Project>>> => {
-    return await API.post('/api/v1/account/projects', data);
-  };
-
-  return useMutation(createProject, {
-    onSuccess: () => {
+  return useMutation((data) => createProject(data, params), {
+    onSuccess: (result) => {
+      const { data } = result.data;
+      queryClient.invalidateQueries(Queries.Project);
+      queryClient.invalidateQueries(Queries.ProjectList);
       queryClient.invalidateQueries(Queries.AccountProjectList);
+      queryClient.setQueryData([Queries.Project, data.id], data);
     },
   });
 }
 
-export function useUpdateProject(): UseMutationResult<
+export const updateProject = async (
+  data: ProjectUpdatePayload,
+  params?: {
+    locale?: string;
+  }
+): Promise<AxiosResponse<ResponseData<Project>>> => {
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/projects/${data.id}`,
+    method: 'PUT',
+    data: data,
+    params: params || {},
+  };
+
+  return await API(config);
+};
+
+export function useUpdateProject(
+  params?: Parameters<typeof updateProject>[1]
+): UseMutationResult<
   AxiosResponse<ResponseData<Project>>,
   AxiosError<ErrorResponse>,
   ProjectUpdatePayload
 > {
   const queryClient = useQueryClient();
 
-  const updateProject = async (
-    project: ProjectUpdatePayload
-  ): Promise<AxiosResponse<ResponseData<Project>>> => {
-    return API.put(`/api/v1/account/projects/${project.id}`, project);
-  };
-
-  return useMutation(updateProject, {
-    onSuccess: () => {
+  return useMutation((data) => updateProject(data, params), {
+    onSuccess: (result) => {
+      const { data } = result.data;
       queryClient.invalidateQueries(Queries.Project);
+      queryClient.invalidateQueries(Queries.ProjectList);
       queryClient.invalidateQueries(Queries.AccountProjectList);
+      queryClient.setQueryData([Queries.Project, data.id], data);
     },
   });
 }
 
-const getInvestor = async (includes?: string): Promise<Investor> => {
+// Get Account Investor
+export const getInvestor = async (params?: {
+  includes?: string[];
+  locale?: string;
+}): Promise<Investor> => {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/investor`,
     method: 'GET',
-    params: { includes },
+    params: params || {},
   };
+
   return await API.request(config).then((response) => response.data.data);
 };
 
-export function useInvestor(options: UseQueryOptions<Investor>, includes?: string) {
-  const query = useLocalizedQuery(
-    [Queries.CurrentInvestor, includes],
-    () => getInvestor(includes),
+export const useInvestor = (
+  params?: Parameters<typeof getInvestor>[0],
+  options?: UseQueryOptions
+): UseQueryResult<Investor> => {
+  const query = useLocalizedQuery<any>(
+    [Queries.CurrentInvestor, params],
+    () => getInvestor(params),
     {
       refetchOnWindowFocus: false,
       ...options,
     }
   );
-  return useMemo(() => ({ ...query, investor: query.data }), [query]);
-}
+
+  return query;
+};
 
 export function useCreateInvestor(): UseMutationResult<
   AxiosResponse<ResponseData<Investor>>,
@@ -168,24 +235,49 @@ export function useCreateInvestor(): UseMutationResult<
 
   return useMutation(createInvestor, {
     onSuccess: (result) => {
+      queryClient.invalidateQueries(Queries.Investor);
+      queryClient.invalidateQueries(Queries.InvestorList);
       queryClient.setQueryData([Queries.Investor, locale], result.data.data);
     },
   });
 }
 
-export function useUpdateInvestor(): UseMutationResult<
+export const updateInvestor = async (
+  data: InvestorForm,
+  params?: {
+    locale?: string;
+  }
+): Promise<AxiosResponse<ResponseData<Investor>>> => {
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/investor`,
+    method: 'PUT',
+    data: data,
+    params: params || {},
+  };
+
+  return await API(config);
+};
+
+export function useUpdateInvestor(
+  params?: Parameters<typeof updateProjectDeveloper>[1]
+): UseMutationResult<
   AxiosResponse<ResponseData<Investor>>,
   AxiosError<ErrorResponse>,
   InvestorForm
 > {
-  const updateInvestor = async (
-    data: InvestorForm
-  ): Promise<AxiosResponse<ResponseData<Investor>>> => API.put('/api/v1/account/investor', data);
+  const queryClient = useQueryClient();
 
-  return useMutation(updateInvestor);
+  return useMutation((data) => updateInvestor(data, params), {
+    onSuccess: (result) => {
+      const { data } = result.data;
+      queryClient.invalidateQueries(Queries.Investor);
+      queryClient.invalidateQueries(Queries.InvestorList);
+      queryClient.setQueryData([Queries.ProjectDeveloper, data.id], data);
+    },
+  });
 }
 
-export function useAccount(includes?: string) {
+export function useAccount(params = {}) {
   const { user, isLoading, isError: userIsError } = useMe();
   const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
   const isInvestor = user?.role === UserRoles.Investor;
@@ -194,18 +286,13 @@ export function useAccount(includes?: string) {
     data: projectDeveloperData,
     isLoading: isLoadingProjectDeveloperData,
     isError: projectDeveloperIsError,
-  } = useProjectDeveloper(
-    {
-      enabled: isProjectDeveloper && !userIsError,
-    },
-    includes
-  );
+  } = useProjectDeveloper(params, { enabled: isProjectDeveloper && !userIsError });
 
   const {
     data: investorData,
     isLoading: isLoadingInvestorData,
     isError: investorIsError,
-  } = useInvestor({ enabled: isInvestor && !userIsError }, includes);
+  } = useInvestor(params, { enabled: isInvestor && !userIsError });
 
   const userAccount = isProjectDeveloper ? projectDeveloperData : investorData;
   const userAccountLoading = isLoadingProjectDeveloperData || isLoadingInvestorData;

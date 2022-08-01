@@ -30,7 +30,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
 }: InviteUsersModalProps) => {
   const { formatMessage } = useIntl();
   const inviteUsers = useInviteUsers();
-  const { userAccount } = useAccount('owner');
+  const { userAccount } = useAccount({ includes: 'owner' });
   const { name } = userAccount || {};
   const queryClient = useQueryClient();
 
