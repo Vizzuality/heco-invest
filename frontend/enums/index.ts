@@ -60,6 +60,8 @@ export enum Queries {
   User = 'user',
   /** List of project developers */
   ProjectDeveloperList = 'project_developers',
+  /** List of favorited project evelopers */
+  FavoriteProjectDeveloperList = 'favorite_project_developers',
   /** Single project developer */
   ProjectDeveloper = 'project_developer',
   /** The current user Project Developer */
@@ -68,10 +70,14 @@ export enum Queries {
   CurrentInvestor = 'current_investor',
   /** List of projects */
   ProjectList = 'projects',
+  /** List of favorited projects */
+  FavoriteProjectsList = 'favorite_projects',
   /** Single project */
   Project = 'project',
   /** List of investors */
   InvestorList = 'investors',
+  /** List of favorited investors */
+  FavoriteInvestorsList = 'favorite_investors',
   /** Single investor  */
   Investor = 'investor',
   /** User account name and slug */

@@ -47,7 +47,7 @@ export function useFavoriteProjectsList(
   options?: UseQueryOptions<PagedResponse<Project>>
 ): UseQueryResult<PagedResponse<Project>> & { projects: Project[] } {
   const query = useLocalizedQuery(
-    [Queries.ProjectList, params],
+    [Queries.FavoriteProjectsList, params],
     () => getFavoriteProjects(params),
     {
       ...staticDataQueryOptions,
@@ -96,7 +96,7 @@ export function useFavoriteInvestorsList(
   options?: UseQueryOptions<PagedResponse<Investor>>
 ): UseQueryResult<PagedResponse<Investor>> & { investors: Investor[] } {
   const query = useLocalizedQuery(
-    [Queries.InvestorList, params],
+    [Queries.FavoriteInvestorsList, params],
     () => getFavoriteInvestors(params),
     {
       ...staticDataQueryOptions,
@@ -145,7 +145,7 @@ export function useFavoriteProjectDevelopersList(
   options?: UseQueryOptions<PagedResponse<ProjectDeveloper>>
 ): UseQueryResult<PagedResponse<ProjectDeveloper>> & { projectDevelopers: ProjectDeveloper[] } {
   const query = useLocalizedQuery(
-    [Queries.ProjectDeveloperList, params],
+    [Queries.FavoriteProjectDeveloperList, params],
     () => getFavoriteProjectDevelopers(params),
     {
       ...staticDataQueryOptions,
