@@ -60,11 +60,7 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
                 'h-full': isLoading,
               })}
             >
-              {sidebar && (
-                <aside className="relative w-3/12">
-                  <div className="md:sticky md:top-8">{sidebar}</div>
-                </aside>
-              )}
+              {sidebar && <aside className="relative w-3/12">{sidebar}</aside>}
               <main className="relative flex-1 h-full">
                 <div className={cx({ hidden: isLoading })}>{children}</div>
                 {isLoading && (

@@ -41,7 +41,7 @@ export const FavoritesProjectsPage: PageComponent<
 
   return (
     <>
-      <div className="flex justify-between mx-1 mb-4">
+      <div className="top-0 left-0 flex justify-between w-full pb-3 pr-2 mx-1 mb-4 md:pt-10 md:-mt-10 md:px-1 lg:z-10 lg:sticky bg-background-dark">
         <div className="font-medium">
           <FormattedMessage defaultMessage="Projects" id="UxTJRa" />{' '}
           {meta?.total && `(${meta?.total})`}
@@ -57,7 +57,7 @@ export const FavoritesProjectsPage: PageComponent<
           </Button>
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col md:pl-1 md:-mr-1">
         {hasProjects ? (
           <>
             {projects.map((project) => (
