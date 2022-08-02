@@ -33,6 +33,7 @@ class Account < ApplicationRecord
   validate :owner_is_part_of_account, if: :owner_id_changed?
 
   before_update :set_reviewed_at, if: :review_status_changed?
+  before_update :change_invitations_ownership, if: :owner_id_changed?
 
   def slug_preview
     set_slug unless slug.present?
@@ -47,5 +48,9 @@ class Account < ApplicationRecord
 
   def set_reviewed_at
     self.reviewed_at = Time.now
+  end
+
+  def change_invitations_ownership
+    User.where(invited_by_id: owner_id_was, invited_by_type: "User").update_all(invited_by_id: owner_id)
   end
 end

@@ -177,7 +177,7 @@ RSpec.describe "API V1 Account Users", type: :request do
   end
 
   path "/api/v1/account/users/transfer_ownership" do
-    get "Transfers ownership of current user to different user from same account" do
+    post "Transfers ownership of current user to different user from same account" do
       tags "Users"
       consumes "application/json"
       produces "application/json"

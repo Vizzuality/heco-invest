@@ -64,7 +64,7 @@ namespace :api, format: "json" do
       end
       resources :users, only: [:index, :destroy] do
         collection do
-          get :transfer_ownership
+          post :transfer_ownership
         end
       end
     end
