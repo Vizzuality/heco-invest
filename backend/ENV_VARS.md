@@ -4,8 +4,7 @@ RACK_ENV
 RAILS_MAX_THREADS (say 10)
 SECRET_KEY_BASE (generated with rake secret)
 
-Control which routes are available for Rails instance - true / false
-IS_API_INSTANCE
+Control if jobs routes are available (default false)
 IS_JOBS_INSTANCE
 
 BACKEND_URL (without protocol)
@@ -13,7 +12,7 @@ RAILS_RELATIVE_URL_ROOT (if running backend application in sub url, like /backen
 
 GCP services config
 GCP_PROJECT_ID - Id of the GCP project
-GCP_REGION - GCP region where the project's GCP resources are hosted 
+GCP_REGION - GCP region where the project's GCP resources are hosted
 
 Cloud Tasks configuration
 CLOUDTASKER_PROCESSOR_HOST - with protocol, as available from outside the platform, e.g. https://your-public-domain.com
