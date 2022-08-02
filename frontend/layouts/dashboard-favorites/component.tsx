@@ -36,21 +36,18 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
     data: projects,
     isLoading: isLoadingProjects,
     isFetching: isFetchingProjects,
-    isRefetching: isRefetchingProjects,
   } = useFavoriteProjectsList(defaultQueryParams, defaultQueryOptions);
 
   const {
     data: investors,
     isLoading: isLoadingInvestors,
     isFetching: isFetchingInvestors,
-    isRefetching: isRefetchingInvestors,
   } = useFavoriteInvestorsList(defaultQueryParams, defaultQueryOptions);
 
   const {
     data: projectDevelopers,
     isLoading: isLoadingProjectDevelopers,
     isFetching: isFetchingProjectDevelopers,
-    isRefetching: isRefetchingProjectDevelopers,
   } = useFavoriteProjectDevelopersList(defaultQueryParams, defaultQueryOptions);
 
   const stats = {
@@ -65,23 +62,21 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
     if (pathname.startsWith(Paths.DashboardFavoritesProjects)) {
       return {
         ...projects,
-        loading: isLoadingProjects || (isFetchingProjects && !isRefetchingProjects),
+        loading: isLoadingProjects || isFetchingProjects,
       };
     }
 
     if (pathname.startsWith(Paths.DashboardFavoritesProjectDevelopers)) {
       return {
         ...projectDevelopers,
-        loading:
-          isLoadingProjectDevelopers ||
-          (isFetchingProjectDevelopers && !isRefetchingProjectDevelopers),
+        loading: isLoadingProjectDevelopers || isFetchingProjectDevelopers,
       };
     }
 
     if (pathname.startsWith(Paths.DashboardFavoritesInvestors)) {
       return {
         ...investors,
-        loading: isLoadingInvestors || (isFetchingInvestors && !isRefetchingInvestors),
+        loading: isLoadingInvestors || isFetchingInvestors,
       };
     }
 
@@ -91,15 +86,12 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
     projects,
     isLoadingProjects,
     isFetchingProjects,
-    isRefetchingProjects,
     projectDevelopers,
     isLoadingProjectDevelopers,
     isFetchingProjectDevelopers,
-    isRefetchingProjectDevelopers,
     investors,
     isLoadingInvestors,
     isFetchingInvestors,
-    isRefetchingInvestors,
   ]) || { data: [], meta: [] };
 
   const childrenWithProps = React.Children.map(children, (child) => {
