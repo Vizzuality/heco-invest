@@ -202,10 +202,6 @@ module "backend_cloudrun" {
       value = "email-test"
     },
     {
-      name  = "IS_API_INSTANCE"
-      value = true
-    },
-    {
       name  = "IS_JOBS_INSTANCE"
       value = false
     },
@@ -311,10 +307,6 @@ module "jobs_cloudrun" {
     {
       name  = "CLOUD_TASKS_TEST_QUEUE_NAME"
       value = "email-test"
-    },
-    {
-      name  = "IS_API_INSTANCE"
-      value = false
     },
     {
       name  = "IS_JOBS_INSTANCE"

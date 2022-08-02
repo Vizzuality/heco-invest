@@ -13,7 +13,6 @@ services:
       - DATABASE_HOST=db
       - CLOUD_TASKS_TEST_QUEUE_NAME=test
       - FRONTEND_URL=http://localhost:4000
-      - IS_API_INSTANCE=true
       - IS_JOBS_INSTANCE=true
     depends_on:
       - db
