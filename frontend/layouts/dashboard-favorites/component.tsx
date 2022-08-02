@@ -111,7 +111,7 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
       <Head title={intl.formatMessage({ defaultMessage: 'My favorites', id: '50bxrQ' })} />
       <DashboardLayout
         isLoading={loading}
-        sidebar={<Navigation className="mt-8 -ml-6" stats={stats} />}
+        sidebar={<Navigation className="-ml-6 -mb-14 md:mt-8" stats={stats} />}
       >
         {childrenWithProps}
       </DashboardLayout>
