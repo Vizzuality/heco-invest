@@ -189,6 +189,7 @@ export const useFavoriteProject = () => {
         queryClient.setQueryData([Queries.Project, locale], data);
         queryClient.invalidateQueries([Queries.Project], {});
         queryClient.invalidateQueries([Queries.ProjectList], {});
+        queryClient.invalidateQueries([Queries.FavoriteProjectsList, {}]);
       },
     }
   );

@@ -24,8 +24,12 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
   const { pathname } = useRouter();
 
   const defaultQueryParams = {
-    // TODO: Implement pagination. Infinite scroll perhaps?
-    perPage: 10000,
+    perPage: 10000, // TODO: Implement pagination. Infinite scroll perhaps?
+  };
+
+  const defaultQueryOptions = {
+    refetchOnMount: true, // Fix issues with react-query not refetching stale data
+    keepPreviousData: false,
   };
 
   const {
@@ -33,21 +37,21 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
     isLoading: isLoadingProjects,
     isFetching: isFetchingProjects,
     isRefetching: isRefetchingProjects,
-  } = useFavoriteProjectsList(defaultQueryParams);
+  } = useFavoriteProjectsList(defaultQueryParams, defaultQueryOptions);
 
   const {
     data: investors,
     isLoading: isLoadingInvestors,
     isFetching: isFetchingInvestors,
     isRefetching: isRefetchingInvestors,
-  } = useFavoriteInvestorsList(defaultQueryParams);
+  } = useFavoriteInvestorsList(defaultQueryParams, defaultQueryOptions);
 
   const {
     data: projectDevelopers,
     isLoading: isLoadingProjectDevelopers,
     isFetching: isFetchingProjectDevelopers,
     isRefetching: isRefetchingProjectDevelopers,
-  } = useFavoriteProjectDevelopersList(defaultQueryParams);
+  } = useFavoriteProjectDevelopersList(defaultQueryParams, defaultQueryOptions);
 
   const stats = {
     projects: projects?.meta?.total,

@@ -61,7 +61,7 @@ export enum Queries {
   /** List of project developers */
   ProjectDeveloperList = 'project_developers',
   /** List of favorited project evelopers */
-  FavoriteProjectDeveloperList = 'favorite_project_developers',
+  FavoriteProjectDevelopersList = 'favorite_project_developers',
   /** Single project developer */
   ProjectDeveloper = 'project_developer',
   /** The current user Project Developer */

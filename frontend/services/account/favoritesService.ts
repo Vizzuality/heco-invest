@@ -145,7 +145,7 @@ export function useFavoriteProjectDevelopersList(
   options?: UseQueryOptions<PagedResponse<ProjectDeveloper>>
 ): UseQueryResult<PagedResponse<ProjectDeveloper>> & { projectDevelopers: ProjectDeveloper[] } {
   const query = useLocalizedQuery(
-    [Queries.FavoriteProjectDeveloperList, params],
+    [Queries.FavoriteProjectDevelopersList, params],
     () => getFavoriteProjectDevelopers(params),
     {
       ...staticDataQueryOptions,
