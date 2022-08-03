@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 
-import { Heart as HeartIcon } from 'react-feather';
+import { Facebook, Heart as HeartIcon, Link, Mail, Twitter } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -11,6 +11,7 @@ import Image from 'next/image';
 
 import { translatedLanguageNameForLocale } from 'helpers/intl';
 
+import ShareIcons from 'containers/share-icons';
 import ContactInformationModal from 'containers/social-contact/contact-information-modal';
 import WebsiteSocial from 'containers/social-contact/website-social';
 
@@ -89,7 +90,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
           )}
           <p>{text}</p>
         </div>
-        <div className="lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0">
+        <div className="flex flex-col justify-start lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0">
           {typeof totalProjects === 'number' && typeof projectsWaitingFunding === 'number' && (
             <>
               <div className="flex flex-col gap-8 md:flex-row">
@@ -142,6 +143,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
               <FormattedMessage defaultMessage="Contact" id="zFegDD" />
             </Button>
           </div>
+          <ShareIcons title={title} />
         </div>
       </LayoutContainer>
       <ContactInformationModal
