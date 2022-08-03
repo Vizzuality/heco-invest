@@ -46,7 +46,7 @@ export const FavoritesProjectDevelopersPage: PageComponent<
 
   return (
     <>
-      <div className="top-0 left-0 flex justify-between w-full pb-3 pr-2 mx-1 mb-4 md:pt-10 md:-mt-10 md:px-1 lg:z-10 lg:sticky bg-background-dark">
+      <div className="top-0 left-0 flex justify-between w-full pb-1 pr-2 mx-1 mb-4 md:pt-10 md:-mt-10 md:px-1 lg:z-20 lg:sticky bg-background-dark">
         <div className="font-medium">
           <FormattedMessage defaultMessage="Project developers" id="0wBg9P" />{' '}
           {meta?.total && `(${meta?.total})`}
@@ -62,7 +62,7 @@ export const FavoritesProjectDevelopersPage: PageComponent<
           </Button>
         </div>
       </div>
-      <div className="flex flex-col md:pl-1 md:-mr-1">
+      <div className="flex flex-col pt-2 md:pl-1 md:-mr-1">
         {hasProjectDevelopers ? (
           <div className="grid grid-cols-1 gap-6 p-1 2xl:grid-cols-2">
             {projectDevelopers.map(
