@@ -95,8 +95,8 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
     ),
     orinoquia: (
       <FormattedMessage
-        defaultMessage="Helps to ensure connectivity between the Andean, Orinocean and Amazonian ecosystems, allowing the conservation of flora, fauna, scenic beauties, geomorphological complexes, historical or cultural manifestations, the conservation and regulation of water systems."
-        id="WJGIA3"
+        defaultMessage="It is an ecoregion covered with savannahs of high floristic diversity and habitats representative of the evolutionary processes of the Guiana Shield. It includes both blackwater and whitewater rivers that feed the great Orinoco River, creating different types of seasonally flooded forests."
+        id="pNNQA+"
       />
     ),
     'amazon-heart': (
