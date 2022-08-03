@@ -28,7 +28,7 @@ export const CardHoverToDelete: FC<CardHoverToDeleteProps> = ({
     <div className="relative" {...hoverProps}>
       {isHovered && (
         <AnimatePresence>
-          <motion.span className="absolute right-5 z-10 -translate-y-1/2 top-1.5" {...variants}>
+          <motion.span className="absolute top-0 z-10 -translate-y-1/2 right-5" {...variants}>
             <button
               type="button"
               onClick={onClick}

@@ -62,12 +62,12 @@ export const FavoritesProjectsPage: PageComponent<
           </Button>
         </div>
       </div>
-      <div className="flex flex-col md:pl-1 md:-mr-1">
+      <div className="flex flex-col gap-2 md:pl-1 md:-mr-1">
         {hasProjects ? (
           <>
             {projects.map((project) => (
               <CardHoverToDelete key={project.slug} onClick={() => handleRemoveClick(project.slug)}>
-                <ProjectCard className="m-1" project={project} />
+                <ProjectCard className="" project={project} />
               </CardHoverToDelete>
             ))}
           </>
