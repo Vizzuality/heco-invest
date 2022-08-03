@@ -24,6 +24,7 @@ export const ConfirmationPrompt: FC<ConfirmationPromptProps> = ({
   onAcceptLoading = false,
   confirmationError,
   onConfirmDisabled = false,
+  onConfirmText,
 }: ConfirmationPromptProps) => (
   <Modal open={open} title={title} size="default" dismissable={dismissible} onDismiss={onDismiss}>
     <div className="flex flex-col items-center px-8 py-4">
@@ -62,7 +63,7 @@ export const ConfirmationPrompt: FC<ConfirmationPromptProps> = ({
         >
           <Loading className="mr-2" visible={onAcceptLoading} />
           {!confirmationError ? (
-            <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
+            onConfirmText || <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
           ) : (
             <FormattedMessage defaultMessage="Try again" id="FazwRl" />
           )}

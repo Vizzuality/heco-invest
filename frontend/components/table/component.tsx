@@ -23,6 +23,8 @@ export const Table: FC<TableProps> = ({
   manualSorting = false,
   pagination: paginationProps,
   onSortChange = noop,
+  isOwner,
+  accountName,
 }: TableProps) => {
   const DEFAULT_COLUMN = React.useMemo(
     () => ({
@@ -53,7 +55,8 @@ export const Table: FC<TableProps> = ({
       disableSortBy: !sortingEnabled,
       manualSortBy: manualSorting,
       disableMultiSort: true,
-
+      isOwner,
+      accountName,
       initialState: {
         ...initialState,
       },

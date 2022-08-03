@@ -43,4 +43,6 @@ export interface ConfirmationPromptProps {
    * unset.
    */
   onDismiss: ModalProps['onDismiss'];
+  /** Text to show on the confirm button. Defaults to 'Delete' */
+  onConfirmText?: string;
 }

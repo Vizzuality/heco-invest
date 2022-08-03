@@ -134,6 +134,9 @@
   "0wBg9P": {
     "string": "Project developers"
   },
+  "0z5mo1": {
+    "string": "insert new password"
+  },
   "11hyS6": {
     "string": "Add your legal registration number so we can verify your legal entity . This information will not be publicaly available."
   },
@@ -160,6 +163,9 @@
   },
   "25WwxF": {
     "string": "Don't have an account?"
+  },
+  "2AIlHB": {
+    "string": "Transfer ownership"
   },
   "2AZiFU": {
     "string": "Instrument size"
@@ -716,6 +722,9 @@
   "F4gyn3": {
     "string": "Clear filters"
   },
+  "F76hVG": {
+    "string": "insert current password"
+  },
   "FJfVJJ": {
     "string": "Access user-friendly tools that help turn a good idea into a proposal ready to be reviewed by an investor or funder."
   },
@@ -918,6 +927,9 @@
   "KYymTZ": {
     "string": "{quantity, plural, one {project} other {projects}}"
   },
+  "KkT/Fh": {
+    "string": "Update password"
+  },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
   },
@@ -935,6 +947,9 @@
   },
   "L2CvBU": {
     "string": "Expect to have impact"
+  },
+  "L4nXIc": {
+    "string": "Change password"
   },
   "L51On4": {
     "string": "Public-private organization"
@@ -1026,6 +1041,9 @@
   "NG6Ull": {
     "string": "HeCo Invest manages a <n>wide range of investment and financing opportunities</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n>."
   },
+  "NIynnB": {
+    "string": "Current password"
+  },
   "NLk0cp": {
     "string": "US$150,000 – 750,000 (Market validation)"
   },
@@ -1094,6 +1112,9 @@
   },
   "P1f6hp": {
     "string": "Funding priorities"
+  },
+  "P3pSke": {
+    "string": "Something went wrong while trying to change the account ownership."
   },
   "P4T4Ib": {
     "string": "Discover projects that have impact in the Amazon region and get connected with investors and project developers."
@@ -1278,6 +1299,9 @@
   "U98Mu/": {
     "string": "This layer shows the permanent and temporal wetlands of Colombia at a 1:100.000 reoslution"
   },
+  "UD6OB+": {
+    "string": "Are you sure you want to make <n>{userName}</n> the owner of <n>{accountName}</n> account? You cant undo this action."
+  },
   "UIQdVc": {
     "string": "Are you sure you want to delete “<strong>{projectName}</strong>”?"
   },
@@ -1433,6 +1457,9 @@
   },
   "XaFc9D": {
     "string": "Select HeCo priority landscapes on which you will have impact"
+  },
+  "Xcq/fH": {
+    "string": "Change account owner"
   },
   "Xf3dpi": {
     "string": "Toggle fullscreen mode"
@@ -2090,6 +2117,9 @@
   },
   "oYPIc/": {
     "string": "By leaving you will lose your current progress"
+  },
+  "odrmaG": {
+    "string": "Password changed successfully"
   },
   "oiQKNY": {
     "string": "Search and find"
