@@ -4,6 +4,8 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 import { GA_TRACKING_ID } from 'lib/analytics/ga';
 
+const hecoUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
+const hecoThumb = hecoUrl + '/images/heco_invest_thumbnail.png';
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const initialProps = await Document.getInitialProps(ctx);
@@ -30,6 +32,8 @@ class MyDocument extends Document {
               `,
             }}
           />
+          <meta property="og:image" content={hecoThumb} />
+          <meta property="og:url" content={hecoUrl} />
         </Head>
         <body className="bg-background-light">
           <Main />
