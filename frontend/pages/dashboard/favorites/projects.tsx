@@ -5,6 +5,7 @@ import { withLocalizedRequests } from 'hoc/locale';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import CardHoverToDelete from 'containers/dashboard/favorites/card-hover-to-delete';
 import ProjectCard from 'containers/project-card';
 
 import Button from 'components/button';
@@ -35,6 +36,10 @@ export const FavoritesProjectsPage: PageComponent<
 > = ({ data: projects = [], meta }) => {
   const hasProjects = projects?.length > 0;
 
+  const handleRemoveClick = (id: string) => {
+    console.log('unfavorite', id);
+  };
+
   const handleRemoveAllClick = () => {
     console.log('unfavorite all projects');
   };
@@ -61,7 +66,9 @@ export const FavoritesProjectsPage: PageComponent<
         {hasProjects ? (
           <>
             {projects.map((project) => (
-              <ProjectCard className="m-1" key={project.id} project={project} />
+              <CardHoverToDelete key={project.slug} onClick={() => handleRemoveClick(project.slug)}>
+                <ProjectCard className="m-1" project={project} />
+              </CardHoverToDelete>
             ))}
           </>
         ) : (

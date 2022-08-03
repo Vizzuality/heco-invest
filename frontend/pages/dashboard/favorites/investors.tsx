@@ -5,6 +5,7 @@ import { withLocalizedRequests } from 'hoc/locale';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import CardHoverToDelete from 'containers/dashboard/favorites/card-hover-to-delete';
 import ProfileCard from 'containers/profile-card';
 
 import Button from 'components/button';
@@ -35,6 +36,10 @@ export const FavoritesInvestorsPage: PageComponent<
 > = ({ data: investors = [], meta }) => {
   const hasInvestors = investors?.length > 0;
 
+  const handleRemoveClick = (slug: string) => {
+    console.log('unfavorite', slug);
+  };
+
   const handleRemoveAllClick = () => {
     console.log('unfavorite all investors');
   };
@@ -61,16 +66,18 @@ export const FavoritesInvestorsPage: PageComponent<
         {hasInvestors ? (
           <div className="grid grid-cols-1 gap-6 p-1 2xl:grid-cols-2">
             {investors.map(({ investor_type, name, about, slug, picture, impacts }) => (
-              <ProfileCard
-                profileType="investor"
-                key={slug}
-                name={name}
-                type={investor_type}
-                description={about}
-                link={`${Paths.Investor}/${slug}`}
-                picture={picture?.small}
-                impacts={impacts}
-              />
+              <CardHoverToDelete key={slug} onClick={() => handleRemoveClick(slug)}>
+                <ProfileCard
+                  className="h-full"
+                  profileType="investor"
+                  name={name}
+                  type={investor_type}
+                  description={about}
+                  link={`${Paths.Investor}/${slug}`}
+                  picture={picture?.small}
+                  impacts={impacts}
+                />
+              </CardHoverToDelete>
             ))}
           </div>
         ) : (

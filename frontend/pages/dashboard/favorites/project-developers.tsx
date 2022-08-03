@@ -5,6 +5,7 @@ import { withLocalizedRequests } from 'hoc/locale';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import CardHoverToDelete from 'containers/dashboard/favorites/card-hover-to-delete';
 import ProfileCard from 'containers/profile-card';
 
 import Button from 'components/button';
@@ -35,6 +36,10 @@ export const FavoritesProjectDevelopersPage: PageComponent<
 > = ({ data: projectDevelopers = [], meta }) => {
   const hasProjectDevelopers = projectDevelopers?.length > 0;
 
+  const handleRemoveClick = (slug: string) => {
+    console.log('unfavorite', slug);
+  };
+
   const handleRemoveAllClick = () => {
     console.log('unfavorite all project developers');
   };
@@ -62,16 +67,18 @@ export const FavoritesProjectDevelopersPage: PageComponent<
           <div className="grid grid-cols-1 gap-6 p-1 2xl:grid-cols-2">
             {projectDevelopers.map(
               ({ slug, name, project_developer_type, about, picture, impacts }) => (
-                <ProfileCard
-                  profileType="project-developer"
-                  key={slug}
-                  name={name}
-                  type={project_developer_type}
-                  description={about}
-                  link={`${Paths.ProjectDeveloper}/${slug}`}
-                  picture={picture?.small}
-                  impacts={impacts}
-                />
+                <CardHoverToDelete key={slug} onClick={() => handleRemoveClick(slug)}>
+                  <ProfileCard
+                    className="h-full"
+                    profileType="project-developer"
+                    name={name}
+                    type={project_developer_type}
+                    description={about}
+                    link={`${Paths.ProjectDeveloper}/${slug}`}
+                    picture={picture?.small}
+                    impacts={impacts}
+                  />
+                </CardHoverToDelete>
               )
             )}
           </div>
