@@ -46,7 +46,7 @@ export const FavoritesProjectsPage: PageComponent<
 
   return (
     <>
-      <div className="top-0 left-0 flex justify-between w-full pb-3 pr-2 mx-1 mb-4 md:pt-10 md:-mt-10 md:px-1 lg:z-10 lg:sticky bg-background-dark">
+      <div className="top-0 flex justify-between px-2 pb-3 mb-4 -mx-2 md:pt-10 md:-mt-10 md:pl-3 md:pr-2 lg:z-20 lg:sticky bg-background-dark">
         <div className="font-medium">
           <FormattedMessage defaultMessage="Projects" id="UxTJRa" />{' '}
           {meta?.total && `(${meta?.total})`}
