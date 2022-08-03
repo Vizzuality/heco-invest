@@ -164,6 +164,9 @@
   "25WwxF": {
     "string": "Don't have an account?"
   },
+  "2AIlHB": {
+    "string": "Transfer ownership"
+  },
   "2AZiFU": {
     "string": "Instrument size"
   },
@@ -1110,6 +1113,9 @@
   "P1f6hp": {
     "string": "Funding priorities"
   },
+  "P3pSke": {
+    "string": "Something went wrong while trying to change the account ownership."
+  },
   "P4T4Ib": {
     "string": "Discover projects that have impact in the Amazon region and get connected with investors and project developers."
   },
@@ -1293,6 +1299,9 @@
   "U98Mu/": {
     "string": "This layer shows the permanent and temporal wetlands of Colombia at a 1:100.000 reoslution"
   },
+  "UD6OB+": {
+    "string": "Are you sure you want to make <n>{userName}</n> the owner of <n>{accountName}</n> account? You cant undo this action."
+  },
   "UIQdVc": {
     "string": "Are you sure you want to delete “<strong>{projectName}</strong>”?"
   },
@@ -1448,6 +1457,9 @@
   },
   "XaFc9D": {
     "string": "Select HeCo priority landscapes on which you will have impact"
+  },
+  "Xcq/fH": {
+    "string": "Change account owner"
   },
   "Xf3dpi": {
     "string": "Toggle fullscreen mode"

@@ -417,7 +417,7 @@ export const useDeleteUser = (): UseMutationResult<{}, ErrorResponse> => {
 };
 
 export const transferOwnership = async (userId: string) => {
-  return await API.get('/api/v1/account/users/transfer_ownership', {
-    params: { user_id: userId },
+  return await API.post('/api/v1/account/users/transfer_ownership', {
+    user_id: userId,
   });
 };
