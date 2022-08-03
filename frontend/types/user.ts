@@ -52,3 +52,9 @@ export interface AccountUser {
   picture: string;
   confirmed: boolean;
 }
+
+export type ChangePassword = {
+  current_password: string;
+  password: string;
+  password_confirmation: string;
+};

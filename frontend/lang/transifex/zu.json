@@ -134,6 +134,9 @@
   "0wBg9P": {
     "string": "Project developers"
   },
+  "0z5mo1": {
+    "string": "insert new password"
+  },
   "11hyS6": {
     "string": "Add your legal registration number so we can verify your legal entity . This information will not be publicaly available."
   },
@@ -716,6 +719,9 @@
   "F4gyn3": {
     "string": "Clear filters"
   },
+  "F76hVG": {
+    "string": "insert current password"
+  },
   "FJfVJJ": {
     "string": "Access user-friendly tools that help turn a good idea into a proposal ready to be reviewed by an investor or funder."
   },
@@ -918,6 +924,9 @@
   "KYymTZ": {
     "string": "{quantity, plural, one {project} other {projects}}"
   },
+  "KkT/Fh": {
+    "string": "Update password"
+  },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
   },
@@ -935,6 +944,9 @@
   },
   "L2CvBU": {
     "string": "Expect to have impact"
+  },
+  "L4nXIc": {
+    "string": "Change password"
   },
   "L51On4": {
     "string": "Public-private organization"
@@ -1025,6 +1037,9 @@
   },
   "NG6Ull": {
     "string": "HeCo Invest manages a <n>wide range of investment and financing opportunities</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n>."
+  },
+  "NIynnB": {
+    "string": "Current password"
   },
   "NLk0cp": {
     "string": "US$150,000 – 750,000 (Market validation)"
@@ -2090,6 +2105,9 @@
   },
   "oYPIc/": {
     "string": "By leaving you will lose your current progress"
+  },
+  "odrmaG": {
+    "string": "Password changed successfully"
   },
   "oiQKNY": {
     "string": "Search and find"
