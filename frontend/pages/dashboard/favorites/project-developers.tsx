@@ -17,6 +17,8 @@ import DashboardFavoritesLayout, {
 import { PageComponent } from 'types';
 import { ProjectDeveloper as ProjectDeveloperType } from 'types/projectDeveloper';
 
+import { useFavoriteProjectDeveloper } from 'services/project-developers/projectDevelopersService';
+
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
@@ -36,8 +38,10 @@ export const FavoritesProjectDevelopersPage: PageComponent<
 > = ({ data: projectDevelopers = [], meta }) => {
   const hasProjectDevelopers = projectDevelopers?.length > 0;
 
-  const handleRemoveClick = (slug: string) => {
-    console.log('unfavorite', slug);
+  const favoriteProjectDeveloper = useFavoriteProjectDeveloper();
+
+  const handleRemoveClick = (id: string) => {
+    favoriteProjectDeveloper.mutate({ id, isFavourite: true });
   };
 
   const handleRemoveAllClick = () => {
@@ -66,8 +70,8 @@ export const FavoritesProjectDevelopersPage: PageComponent<
         {hasProjectDevelopers ? (
           <div className="grid grid-cols-1 gap-6 p-1 2xl:grid-cols-2">
             {projectDevelopers.map(
-              ({ slug, name, project_developer_type, about, picture, impacts }) => (
-                <CardHoverToDelete key={slug} onClick={() => handleRemoveClick(slug)}>
+              ({ id, slug, name, project_developer_type, about, picture, impacts }) => (
+                <CardHoverToDelete key={slug} onClick={() => handleRemoveClick(id)}>
                   <ProfileCard
                     className="h-full"
                     profileType="project-developer"
