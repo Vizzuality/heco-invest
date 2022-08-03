@@ -233,7 +233,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         <h2 className="font-serif text-3xl font-bold md:hidden">
           <FormattedMessage defaultMessage="Discover projects by category" id="des5Rg" />
         </h2>
-        <div className="grid pb-6 overflow-x-scroll grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-4 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 md:grid-row-2 xl:grid-cols-4 md:place-content-end px-1 md:px-0">
+        <div className="grid pb-6 overflow-x-auto grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-4 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 md:grid-row-2 xl:grid-cols-4 md:place-content-end px-1 md:px-0">
           {/* Repeating the header here to change the layout when md screens */}
           <h2 className="hidden row-span-1 font-serif text-3xl font-semibold md:block md:mb-10 md:col-span-1 lg:text-5xl xl:col-span-2 lg:mb-0 lg:w-auto">
             <FormattedMessage defaultMessage="Discover projects by category" id="des5Rg" />
@@ -292,7 +292,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
           </div>
         </div>
 
-        <div className="grid pb-6 md:pr-0 md:pl-0 overflow-x-scroll md:grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-6 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 md:place-content-end md:container md:mx-auto md:px-8">
+        <div className="grid pb-6 md:pr-0 md:pl-0 overflow-x-auto md:grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-6 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 md:place-content-end md:container md:mx-auto md:px-8">
           {mosaicsWithProjectsNumber.map(({ id, name, projectsQuantity }, index) => {
             const description = priorityLandscapesDescriptions[id];
             return (

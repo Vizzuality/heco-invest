@@ -52,7 +52,7 @@ export const Navigation: FC<NavigationProps> = ({ stats }: NavigationProps) => {
   const activeId = navigationItems.find(({ path }) => asPath.startsWith(path))?.id;
 
   return (
-    <div className="flex items-center w-full pb-3 -mb-3 overflow-x-scroll">
+    <div className="flex items-center w-full pb-3 -mb-3 overflow-x-auto">
       <BadgeNavigation
         className="flex items-center justify-center flex-grow"
         activeId={activeId}

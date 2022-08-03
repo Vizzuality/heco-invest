@@ -47,7 +47,7 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
               </div>
             </LayoutContainer>
           </div>
-          <main ref={mainContainerRef} className="h-full overflow-y-scroll bg-background-dark">
+          <main ref={mainContainerRef} className="h-full overflow-y-auto bg-background-dark">
             <LayoutContainer className="py-8">{children}</LayoutContainer>
             {isLoading && (
               <div className="absolute flex items-center justify-center bg-background-dark top-px bottom-px left-px right-px rounded-2xl backdrop-blur-sm">

@@ -174,7 +174,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
             <DiscoverSearch className="-z-10 w-full max-w-3xl pointer-events-auto" />
           </LayoutContainer>
         </div>
-        <main className="z-0 flex flex-col flex-grow h-screen overflow-y-scroll">
+        <main className="z-0 flex flex-col flex-grow h-screen overflow-y-auto">
           <LayoutContainer className="xl:mt-6">
             <div className="flex flex-col items-center gap-2 mt-4 mb-4 lg:mt-2 lg:gap-6 lg:flex-row space-between">
               <SortingButtons className="flex-1" {...sortingButtonsProps} />
@@ -186,7 +186,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
           </LayoutContainer>
           <LayoutContainer
             className={cx({
-              'mb-4 lg:mb-0 lg:overflow-y-scroll': true,
+              'mb-4 lg:mb-0 lg:overflow-y-auto': true,
               'h-screen': !screenHeightLg,
               'flex-grow lg:overflow-hidden': screenHeightLg,
             })}
