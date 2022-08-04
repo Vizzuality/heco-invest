@@ -2,6 +2,8 @@ import { useMemo, useState, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 
+import { useQueryParams } from 'helpers/pages';
+
 export const usePagination = (meta) => {
   const router = useRouter();
   const { query } = router;
@@ -20,13 +22,7 @@ export const usePagination = (meta) => {
     totalPages: undefined,
   });
 
-  const queryParams = useMemo(
-    () => ({
-      page: parseInt(query.page as string) || 1,
-      search: (query.search as string) || '',
-    }),
-    [query]
-  );
+  const queryParams = useQueryParams();
 
   useEffect(() => {
     if (!meta) return;
