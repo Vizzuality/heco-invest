@@ -291,8 +291,8 @@ export const Footer: React.FC<FooterProps> = ({
                     <FormattedMessage defaultMessage="+123456789" id="6//v4m" />
                   </li> */}
                   <li>
-                    <a className="cursor-pointer hover:underline" href="mailto:info@hecoinvest.com">
-                      <FormattedMessage defaultMessage="info@hecoinvest.com" id="JFgMWS" />
+                    <a className="cursor-pointer hover:underline" href="mailto:info@hecoinvest.org">
+                      <FormattedMessage defaultMessage="info@hecoinvest.org" id="+2I7uh" />
                     </a>
                   </li>
                   {/* <li>
