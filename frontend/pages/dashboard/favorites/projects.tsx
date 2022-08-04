@@ -17,6 +17,8 @@ import DashboardFavoritesLayout, {
 import { PageComponent } from 'types';
 import { Project as ProjectType } from 'types/project';
 
+import { useFavoriteProject } from 'services/projects/projectService';
+
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
@@ -36,8 +38,10 @@ export const FavoritesProjectsPage: PageComponent<
 > = ({ data: projects = [], meta }) => {
   const hasProjects = projects?.length > 0;
 
-  const handleRemoveClick = (id: string) => {
-    console.log('unfavorite', id);
+  const favoriteProject = useFavoriteProject();
+
+  const handleRemoveClick = (slug: string) => {
+    favoriteProject.mutate({ id: slug, isFavourite: true });
   };
 
   const handleRemoveAllClick = () => {
@@ -66,7 +70,7 @@ export const FavoritesProjectsPage: PageComponent<
         {hasProjects ? (
           <>
             {projects.map((project) => (
-              <CardHoverToDelete key={project.slug} onClick={() => handleRemoveClick(project.slug)}>
+              <CardHoverToDelete key={project.id} onClick={() => handleRemoveClick(project.id)}>
                 <ProjectCard className="" project={project} />
               </CardHoverToDelete>
             ))}

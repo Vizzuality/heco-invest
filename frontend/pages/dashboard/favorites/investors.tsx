@@ -17,6 +17,8 @@ import DashboardFavoritesLayout, {
 import { PageComponent } from 'types';
 import { Investor as InvestorType } from 'types/investor';
 
+import { useFavoriteInvestor } from 'services/investors/investorsService';
+
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
@@ -36,8 +38,10 @@ export const FavoritesInvestorsPage: PageComponent<
 > = ({ data: investors = [], meta }) => {
   const hasInvestors = investors?.length > 0;
 
-  const handleRemoveClick = (slug: string) => {
-    console.log('unfavorite', slug);
+  const favoriteInvestor = useFavoriteInvestor();
+
+  const handleRemoveClick = (id: string) => {
+    favoriteInvestor.mutate({ id, isFavourite: true });
   };
 
   const handleRemoveAllClick = () => {
@@ -65,8 +69,8 @@ export const FavoritesInvestorsPage: PageComponent<
       <div className="flex flex-col pt-2 md:pl-1 md:-mr-1">
         {hasInvestors ? (
           <div className="grid grid-cols-1 gap-6 p-1 2xl:grid-cols-2">
-            {investors.map(({ investor_type, name, about, slug, picture, impacts }) => (
-              <CardHoverToDelete key={slug} onClick={() => handleRemoveClick(slug)}>
+            {investors.map(({ id, investor_type, name, about, slug, picture, impacts }) => (
+              <CardHoverToDelete key={slug} onClick={() => handleRemoveClick(id)}>
                 <ProfileCard
                   className="h-full"
                   profileType="investor"
