@@ -126,3 +126,9 @@ variable "from_email_address" {
   type = string
   description = "Email address from which to send emails"
 }
+
+variable "instance_role" {
+  type = string
+  default = "production"
+  description = "staging|production, NOT the same as RAILS_ENV as that is 'production' in staging as well"
+}
