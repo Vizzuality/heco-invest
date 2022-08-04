@@ -7,6 +7,9 @@ SECRET_KEY_BASE (generated with rake secret)
 Control if jobs routes are available (default false)
 IS_JOBS_INSTANCE
 
+staging|production, NOT the same as RAILS_ENV as that is "production" in staging as well
+INSTANCE_ROLE=
+
 BACKEND_URL (without protocol)
 RAILS_RELATIVE_URL_ROOT (if running backend application in sub url, like /backend)
 
