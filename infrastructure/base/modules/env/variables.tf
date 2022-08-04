@@ -129,6 +129,6 @@ variable "from_email_address" {
 
 variable "instance_role" {
   type = string
-  default = ""
+  default = "production"
   description = "staging|production, NOT the same as RAILS_ENV as that is 'production' in staging as well"
 }
