@@ -1,6 +1,7 @@
 import React, { FC, useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
+import { UseQueryResult } from 'react-query';
 
 import { useRouter } from 'next/router';
 
@@ -13,6 +14,7 @@ import {
   useFavoriteProjectDevelopersList,
   useFavoriteProjectsList,
 } from 'services/account/favoritesService';
+import { PagedResponse } from 'services/types';
 
 import Navigation from './navigation';
 import { DashboardFavoritesLayoutProps } from './types';
@@ -32,67 +34,51 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
     keepPreviousData: false,
   };
 
-  const {
-    data: projects,
-    isLoading: isLoadingProjects,
-    isFetching: isFetchingProjects,
-  } = useFavoriteProjectsList(defaultQueryParams, defaultQueryOptions);
+  const projects = useFavoriteProjectsList(defaultQueryParams, defaultQueryOptions);
+  const investors = useFavoriteInvestorsList(defaultQueryParams, defaultQueryOptions);
+  const projectDevelopers = useFavoriteProjectDevelopersList(
+    defaultQueryParams,
+    defaultQueryOptions
+  );
 
-  const {
-    data: investors,
-    isLoading: isLoadingInvestors,
-    isFetching: isFetchingInvestors,
-  } = useFavoriteInvestorsList(defaultQueryParams, defaultQueryOptions);
+  // TODO: Change for real open calls
+  const openCalls = useMemo(
+    () => ({
+      data: [],
+      meta: { total: 0 },
+      loading: false,
+    }),
+    []
+  );
 
-  const {
-    data: projectDevelopers,
-    isLoading: isLoadingProjectDevelopers,
-    isFetching: isFetchingProjectDevelopers,
-  } = useFavoriteProjectDevelopersList(defaultQueryParams, defaultQueryOptions);
+  const stats = useMemo(
+    () => ({
+      projects: projects.data?.meta.total,
+      projectDevelopers: projectDevelopers.data?.meta.total,
+      investors: investors.data?.meta.total,
+      openCalls: 0,
+    }),
+    [projects, investors, projectDevelopers]
+  );
 
-  const stats = {
-    projects: projects?.meta?.total,
-    projectDevelopers: projectDevelopers?.meta?.total,
-    investors: investors?.meta?.total,
-    openCalls: 0,
+  const getFavoriteCurrentData = (data: UseQueryResult<PagedResponse<any>>) => {
+    return {
+      data: data.data?.data,
+      meta: data.data?.meta,
+      loading: data.isLoading || data?.isFetching,
+    };
   };
 
   const { data, meta, loading } = useMemo(() => {
-    // TODO: Find a way to improve this.
-    if (pathname.startsWith(Paths.DashboardFavoritesProjects)) {
-      return {
-        ...projects,
-        loading: isLoadingProjects || isFetchingProjects,
-      };
-    }
-
-    if (pathname.startsWith(Paths.DashboardFavoritesProjectDevelopers)) {
-      return {
-        ...projectDevelopers,
-        loading: isLoadingProjectDevelopers || isFetchingProjectDevelopers,
-      };
-    }
-
-    if (pathname.startsWith(Paths.DashboardFavoritesInvestors)) {
-      return {
-        ...investors,
-        loading: isLoadingInvestors || isFetchingInvestors,
-      };
-    }
-
-    // if (router.pathname.startsWith(Paths.DashboardFavoritesOpenCalls)) return openCalls;
-  }, [
-    pathname,
-    projects,
-    isLoadingProjects,
-    isFetchingProjects,
-    projectDevelopers,
-    isLoadingProjectDevelopers,
-    isFetchingProjectDevelopers,
-    investors,
-    isLoadingInvestors,
-    isFetchingInvestors,
-  ]) || { data: [], meta: [] };
+    if (pathname.startsWith(Paths.DashboardFavoritesProjects))
+      return getFavoriteCurrentData(projects);
+    if (pathname.startsWith(Paths.DashboardFavoritesProjectDevelopers))
+      return getFavoriteCurrentData(projectDevelopers);
+    if (pathname.startsWith(Paths.DashboardFavoritesInvestors))
+      return getFavoriteCurrentData(investors);
+    // TODO: Change when real open calls are implemented
+    if (pathname.startsWith(Paths.DashboardFavoritesOpenCalls)) return openCalls;
+  }, [pathname, projects, projectDevelopers, investors, openCalls]) || { data: [], meta: [] };
 
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
