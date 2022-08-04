@@ -16,7 +16,7 @@ Rails.application.configure do
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
   # we want to allow non https localhost requests to staging, but not production
-  config.action_controller.forgery_protection_origin_check = (ENV["INSTANCE_ROLE"].present? && ENV["INSTANCE_ROLE"] == "production") || false
+  config.action_controller.forgery_protection_origin_check = false if ENV["INSTANCE_ROLE"] == "staging"
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
