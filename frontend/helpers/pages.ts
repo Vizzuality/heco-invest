@@ -17,7 +17,7 @@ import { Locations } from 'types/locations';
 import { Project, ProjectForm, ProjectUpdatePayload } from 'types/project';
 import { formPageInputs } from 'validations/project';
 
-import { ErrorResponse } from 'services/types';
+import { PagedRequest, ErrorResponse } from 'services/types';
 
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
 export function getServiceErrors<FormValues>(
@@ -103,18 +103,19 @@ export const useQueryParams = (sortingState?: { sortBy: string; sortOrder: strin
 };
 
 /** Hook that returns the search queries on string format */
-export const useQueryString = () => {
+export const useQueryString = (params: PagedRequest = {}) => {
   const { query } = useRouter();
   const queries = Object.entries(query);
   if (queries.length) {
     const queryString = new URLSearchParams();
     queries.forEach(([key, value]) => {
-      let queryValue = value;
-      if (Array.isArray(value)) {
-        queryValue = value.join(',');
+      let queryValue = params[key] || value;
+      if (Array.isArray(queryValue)) {
+        queryValue = queryValue.join(',');
       }
       queryString.append(key, queryValue as string);
     });
+
     return `?${queryString}`;
   }
   return '';
