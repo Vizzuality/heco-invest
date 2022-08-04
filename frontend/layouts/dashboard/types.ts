@@ -8,6 +8,8 @@ export type DashboardLayoutProps = PropsWithChildren<
     isLoading?: boolean;
     /** Whether the main container should auto scroll up on query. Defaults to `true` */
     scrollOnQuery?: boolean;
+    /** Sidebar to show on the dashboard */
+    sidebar?: JSX.Element;
     /** Buttons to show in the header */
     buttons?: JSX.Element;
   }

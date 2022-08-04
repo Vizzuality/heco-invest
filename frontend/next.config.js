@@ -77,6 +77,10 @@ module.exports = {
         source: '/faq/:sectionId/:questionId',
         destination: '/faq',
       },
+      {
+        source: '/dashboard/favorites',
+        destination: '/dashboard/favorites/projects',
+      },
     ];
   },
   async redirects() {
