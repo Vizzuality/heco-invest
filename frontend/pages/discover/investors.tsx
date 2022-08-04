@@ -53,7 +53,7 @@ const InvestorsPage: PageComponent<InvestorsPageProps, DiscoverPageLayoutProps> 
           ref={investorsContainerRef}
           className={cx({
             'relative flex-grow lg:pr-2.5': true,
-            'lg:overflow-y-scroll': !loading,
+            'lg:overflow-y-auto': !loading,
             'lg:pointer-events-none lg:overflow-hidden': loading,
           })}
         >
