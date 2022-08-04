@@ -143,6 +143,9 @@
   "11hyS6": {
     "string": "Add your legal registration number so we can verify your legal entity . This information will not be publicaly available."
   },
+  "1AM5V6": {
+    "string": "Reach out {title} on the HeCo Invest through the link"
+  },
   "1B1DeU": {
     "string": "HeCo Invest relies on the <span>ARIES Artificial Intelligence</span> model to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four dimensions of interest based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10 as shown in the chart of impact."
   },
@@ -199,6 +202,9 @@
   },
   "2sU5tO": {
     "string": "What HeCo Invest can do for you"
+  },
+  "2yCGR2": {
+    "string": "Link copied to clipboard"
   },
   "35YoEI": {
     "string": "Description of the project"
@@ -981,6 +987,9 @@
   "LtTjKV": {
     "string": "selected"
   },
+  "Lw4PWP": {
+    "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
+  },
   "M1xKEI": {
     "string": "Language: {language}"
   },
@@ -1082,6 +1091,9 @@
   },
   "OJfOvp": {
     "string": "The account owner can invite other colleagues to the account. These will receive an invitation by email to join the account. Each email can only be associated with one account. Once you are set as an account user, you can manage the account. However, adding or removing other account users can only be managed by account owners."
+  },
+  "OKhRC6": {
+    "string": "Share"
   },
   "OSAxiC": {
     "string": "The solution or opportunity proposed"
@@ -2429,6 +2441,9 @@
   },
   "w1Fanr": {
     "string": "Business"
+  },
+  "wD2sM8": {
+    "string": "Someone has shared a HeCo invest {shared} with you"
   },
   "wEQDC6": {
     "string": "Edit"
