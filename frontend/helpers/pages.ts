@@ -19,6 +19,27 @@ import { formPageInputs } from 'validations/project';
 
 import { PagedRequest, ErrorResponse } from 'services/types';
 
+export function cleanQueryParams(params) {
+  let queryParams = { ...params };
+
+  Object.keys(queryParams).forEach((key) => {
+    const value = queryParams[key];
+
+    if (
+      value === null ||
+      value === undefined ||
+      (typeof value === 'string' && value === '') ||
+      (typeof value === 'object' && !Object.keys(value).length) ||
+      (key === 'page' && value === '1') ||
+      (key === 'sorting' && value === 'created_at desc')
+    ) {
+      delete queryParams[key];
+    }
+  });
+
+  return queryParams;
+}
+
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
 export function getServiceErrors<FormValues>(
   error: AxiosError<ErrorResponse>,
@@ -87,8 +108,8 @@ export const useQueryParams = (sortingState?: { sortBy: string; sortOrder: strin
   const { query } = useRouter();
   return useMemo(() => {
     const { page, search, sorting, ...filters } = query;
-    return {
-      page: parseInt(query.page as string) || 1,
+    return cleanQueryParams({
+      page: parseInt(query.page as string) || null,
       search: (query.search as string) || '',
       sorting:
         // No need to decode URI component, next/router does it automatically
@@ -98,7 +119,7 @@ export const useQueryParams = (sortingState?: { sortBy: string; sortOrder: strin
           ? `${sortingState?.sortBy} ${sortingState?.sortOrder}`
           : '',
       ...filters,
-    };
+    });
   }, [query, sortingState]);
 };
 
@@ -109,11 +130,13 @@ export const useQueryString = (params: PagedRequest = {}) => {
   if (queries.length) {
     const queryString = new URLSearchParams();
     queries.forEach(([key, value]) => {
-      let queryValue = params[key] || value;
+      let queryValue = params[key] !== undefined ? params[key] : value;
       if (Array.isArray(queryValue)) {
         queryValue = queryValue.join(',');
       }
-      queryString.append(key, queryValue as string);
+      if (Object.keys(cleanQueryParams({ [key]: queryValue })).length) {
+        queryString.append(key, queryValue as string);
+      }
     });
 
     return `?${queryString}`;

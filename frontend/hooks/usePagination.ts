@@ -22,7 +22,8 @@ export const usePagination = (meta) => {
     totalPages: undefined,
   });
 
-  const queryParams = useQueryParams();
+  let queryParams = useQueryParams();
+  delete queryParams['page'];
 
   useEffect(() => {
     if (!meta) return;
@@ -51,7 +52,7 @@ export const usePagination = (meta) => {
   }, [meta]);
 
   const handlePageClick = (page: number) => {
-    router.push({ query: { ...queryParams, page } });
+    router.push({ query: { ...queryParams, ...(page !== 1 && { page }) } });
   };
 
   if (!paginationProps) return null;

@@ -16,7 +16,7 @@ export const Navigation: FC<NavigationProps> = ({ stats }: NavigationProps) => {
   const { asPath } = useRouter();
 
   // Pick the the query params we want to preserve in the navigation links (search, filters, sorting)
-  const queryString = useQueryString({ page: 1 });
+  const queryString = useQueryString({ page: null });
 
   const navigationItems = [
     {
