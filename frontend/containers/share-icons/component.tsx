@@ -49,7 +49,7 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
     })}`,
   };
 
-  const copyToCkipboard = () => {
+  const copyToClipboard = () => {
     navigator?.clipboard?.writeText(shareLinkUrl)?.then(() => {
       setCopied(true);
     });
