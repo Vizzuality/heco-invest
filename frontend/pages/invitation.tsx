@@ -42,7 +42,8 @@ const Invitation: PageComponent<InvitationProps> = () => {
     invitedUser,
     isError: invitedUserError,
     isLoading: invitedUserLoading,
-  } = useInvitedUser(query.invitation_token as string);
+  } = useInvitedUser((query.invitation_token as string) || 'INVALID_INVITATION_TOKEN');
+  //The useInvitedUser is only enabled when the query.invitation_token is not null, so we set it to any string to show an error if the query.invitation_token is null
   const { user, isError: userError, isLoading: userLoading } = useMe();
   const acceptInvitation = useAcceptInvitation();
   const signOut = useSignOut();
@@ -86,17 +87,9 @@ const Invitation: PageComponent<InvitationProps> = () => {
     });
   };
 
-  return (
-    <div className="flex flex-col items-center w-full min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-176px)]">
-      <div className="flex items-center justify-center rounded-full w-44 h-44 bg-background-middle">
-        <Image
-          src="/images/invitation.svg"
-          width={112}
-          height={97}
-          alt={formatMessage({ defaultMessage: 'Invitation mail', id: 'a+vAPa' })}
-        />
-      </div>
-      {invitedUserError || !query.invitation_token ? (
+  const InvitationContent = () => {
+    if (invitedUserError) {
+      return (
         <div className="max-w-lg mt-20 overflow-hidden text-center rounded-lg">
           <Alert withLayoutContainer>
             <p className="text-lg">
@@ -104,11 +97,11 @@ const Invitation: PageComponent<InvitationProps> = () => {
             </p>
           </Alert>
         </div>
-      ) : !invitedUser || invitedUserLoading || userLoading ? (
-        <div className="flex flex-col items-center justify-center mt-20">
-          <Loading visible iconClassName="w-16 h-16" />
-        </div>
-      ) : (
+      );
+    }
+
+    if (!!invitedUser && !!user) {
+      return (
         <div className="max-w-lg text-center">
           <h1 className="mb-6 font-serif text-3xl font-semibold mt-7 text-green-dark">
             <FormattedMessage
@@ -150,7 +143,27 @@ const Invitation: PageComponent<InvitationProps> = () => {
             </a>
           </Link>
         </div>
-      )}
+      );
+    }
+
+    return (
+      <div className="flex flex-col items-center justify-center mt-20">
+        <Loading visible iconClassName="w-16 h-16" />
+      </div>
+    );
+  };
+
+  return (
+    <div className="flex flex-col items-center w-full min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-176px)]">
+      <div className="flex items-center justify-center rounded-full w-44 h-44 bg-background-middle">
+        <Image
+          src="/images/invitation.svg"
+          width={112}
+          height={97}
+          alt={formatMessage({ defaultMessage: 'Invitation mail', id: 'a+vAPa' })}
+        />
+      </div>
+      <InvitationContent />
     </div>
   );
 };
