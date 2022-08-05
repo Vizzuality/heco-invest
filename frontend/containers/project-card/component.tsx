@@ -150,7 +150,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           <div>
             {onClick ? (
               <button
-                className="text-xl font-semibold leading-tight outline-none"
+                className="text-xl font-semibold leading-tight text-left outline-none"
                 aria-label={intl.formatMessage(
                   {
                     defaultMessage: 'View {name} project details',
