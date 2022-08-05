@@ -89,7 +89,7 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
           <Icon icon={Mail} fill="white" />
         </Button>
         <Button
-          onClick={copyToCkipboard}
+          onClick={copyToClipboard}
           className="flex items-center justify-center w-8 h-8 px-0 py-0 text-white transition-opacity rounded-full bg-beige hover:opacity-60 hover:text-white"
         >
           <Icon icon={Link} />
