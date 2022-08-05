@@ -66,13 +66,6 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
     // Wait until user and inviteUser are loaded to be able to compare them
     if (!isUserLoading && !isInvitedUserLoading) {
       if (!!invitedUser) {
-        // If the user has an invitation and is signed in go to invitation page
-        if (!!user && user?.role === UserRoles.Light) {
-          replace({
-            pathname: Paths.Invitation,
-            query: { invitation_token: query.invitation_token },
-          });
-        }
         setValue('email', invitedUser.email);
       } else if (!!user) {
         // If is not a invited user and is already signed in

@@ -104,7 +104,7 @@ const Invitation: PageComponent<InvitationProps> = () => {
             </p>
           </Alert>
         </div>
-      ) : invitedUserLoading || userLoading ? (
+      ) : !invitedUser || invitedUserLoading || userLoading ? (
         <div className="flex flex-col items-center justify-center mt-20">
           <Loading visible iconClassName="w-16 h-16" />
         </div>
