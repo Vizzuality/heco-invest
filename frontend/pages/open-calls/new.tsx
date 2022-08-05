@@ -1,10 +1,12 @@
+import { useIntl } from 'react-intl';
+
 import { withLocalizedRequests } from 'hoc/locale';
 
 import { InferGetServerSidePropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
-import OpenCallCalendar from 'containers/open-call-form/open-call-calendar';
+import OpenCallForm from 'containers/open-call-form';
 
 import { UserRoles } from 'enums';
 import FormPageLayout from 'layouts/form-page';
@@ -22,9 +24,19 @@ export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
 const CreateOpenCallPage: PageComponent<
   InferGetServerSidePropsType<typeof getServerSideProps>
 > = () => {
+  const { formatMessage } = useIntl();
+  const handleNextClick = () => {};
+  const handleLeave = () => {};
+  const mutation = {};
+
   return (
     // <ProtectedPage permissions={[UserRoles.Investor]}>
-    <OpenCallCalendar />
+    <OpenCallForm
+      handleNextClick={handleNextClick}
+      onLeave={handleLeave}
+      title={formatMessage({ defaultMessage: 'Create Open Call', id: '7xC2j0' })}
+      mutation={mutation}
+    />
     // </ProtectedPage>
   );
 };

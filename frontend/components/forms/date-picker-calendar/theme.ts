@@ -5,15 +5,15 @@ export const themeOptions: ThemeOptions = {
     MuiPickersBasePicker: {
       pickerView: {
         width: '100%',
-        minWidth: '700px',
+        // minWidth: '700px',
         maxWidth: '814px',
-        minHeight: '700px',
         backgroundColor: '#FFFDFA',
       },
     },
     MuiPickersCalendarHeader: {
       switchHeader: {
         justifyContent: 'center',
+        marginBottom: '16px',
       },
       transitionContainer: {
         width: '100%',
@@ -26,13 +26,17 @@ export const themeOptions: ThemeOptions = {
       },
       dayLabel: {
         backgroundColor: '#EFEDE9',
-        width: '100px',
+        width: '100%',
         margin: 0,
         borderRadius: '8px',
         padding: '8px',
         textAlign: 'left',
         fontSize: '16px',
         color: '#000',
+      },
+      iconButton: {
+        width: '32px',
+        height: '32px',
       },
     },
     MuiTypography: {
@@ -50,7 +54,7 @@ export const themeOptions: ThemeOptions = {
     },
     MuiIconButton: {
       root: {
-        boxShadow: '0px 4px 15px 0px rgba(220, 220, 220, 0.49)',
+        padding: '8px',
         color: '#000',
         '&:hover': {
           backgroundColor: '#FFF',
@@ -72,9 +76,14 @@ export const themeOptions: ThemeOptions = {
         display: 'flex',
         gap: '8px',
         marginBottom: '8px',
+        width: '100%',
+        '& > div': {
+          width: '100%',
+        },
       },
       transitionContainer: {
         marginTop: '8px',
+        width: '100%',
       },
     },
   },
