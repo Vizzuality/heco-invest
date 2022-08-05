@@ -54,7 +54,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   const sortingOptions = useSortingByOptions(sortingOptionsTarget);
   const queryParams = useQueryParams(sorting);
 
-  const queryOptions = { keepPreviousData: false };
+  const queryOptions = { keepPreviousData: true };
 
   const projects = useProjectsList(
     { ...queryParams, includes: ['project_developer', 'involved_project_developers'] },
