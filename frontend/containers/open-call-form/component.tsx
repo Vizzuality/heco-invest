@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 
 import Head from 'components/head';
-import { OpenCall } from 'types/open-calls';
+import { OpenCallForm as OpenFormType } from 'types/open-calls';
 
 import {
   OpenCallClosingDate,
@@ -29,7 +29,10 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
     getValues,
     formState: { errors },
     clearErrors,
-  } = useForm<OpenCall>();
+    setValue,
+    setError,
+    resetField,
+  } = useForm<OpenFormType>();
   const [isOutroPage, setIsOutroPage] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -59,11 +62,19 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
         onCloseClick={() => (isOutroPage ? onLeave(true) : setShowLeave(true))}
         onSubmitClick={handleSubmit(onSubmit)}
       >
-        {/* <Page>
-          <OpenCallInformation register={register} errors={errors} clearErrors={clearErrors} />
-        </Page> */}
         <Page>
-          <OpenCallClosingDate control={control} errors={errors.created_at} />
+          <OpenCallInformation
+            control={control}
+            setError={setError}
+            setValue={setValue}
+            register={register}
+            errors={errors}
+            clearErrors={clearErrors}
+            resetField={resetField}
+          />
+        </Page>
+        <Page>
+          <OpenCallClosingDate control={control} errors={errors} />
         </Page>
       </MultiPageLayout>
     </div>

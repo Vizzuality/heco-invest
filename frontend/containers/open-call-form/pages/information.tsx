@@ -2,13 +2,18 @@ import { FC } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import dynamic from 'next/dynamic';
+
+import LocationSelectors from 'containers/forms/location-selectors';
+import ProjectGallery from 'containers/forms/project-gallery';
+
+import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
+import Textarea from 'components/forms/textarea';
 
 import { OpenCallInformationProps } from '../types';
-import dynamic from 'next/dynamic';
-import ProjectGallery from 'containers/forms/project-gallery';
 // Import the uploader component only if is on th client because DirectUpload is not supported on server
 const Uploader = dynamic(() => import('containers/forms/uploader'), { ssr: false });
 
@@ -19,11 +24,11 @@ export const OpenCallInformation: FC<OpenCallInformationProps> = ({
   control,
   clearErrors,
   setValue,
+  resetField,
 }) => {
   const { formatMessage } = useIntl();
 
-  const handleDeleteImage = () => {};
-  const handleSelectCover = () => {};
+  const handleUploadImages = () => {};
 
   return (
     <div className="max-w-[814px] m-auto">
@@ -53,46 +58,75 @@ export const OpenCallInformation: FC<OpenCallInformationProps> = ({
               defaultMessage: 'insert the open call name',
               id: '5oTICT',
             })}
+            aria-describedby="name-error"
           />
-          {errors.name && <FieldInfo infoText={errors.name?.message} />}
+          <ErrorMessage id="name-error" errorText={errors.name?.message} />
         </div>
-        <div>
-          <Label htmlFor="name">
-            <FormattedMessage defaultMessage="Picture (optional)" id="8rdnTq" />
-          </Label>
-          <div className="flex flex-col sm:flex-row gap-4 sm:h-[176px]">
-            <div className="w-full h-full">
-              <Uploader
-                id="project-images-attributes"
-                aria-describedby="project-images-attributes-error"
-                name="project_images_attributes"
-                setError={setError}
-                clearErrors={clearErrors}
-                controlOptions={{ disabled: false }}
-                control={control}
-                // See: Browser limitations section
-                // https://react-dropzone.org/#section-accepting-specific-file-types
-                fileTypes={{ 'image/*': ['.png', '.jpg', '.jpeg'] }}
-                maxFiles={6}
-                maxSize={5 * 1024 * 1025}
-                onUpload={handleUploadImages}
-              />
-            </div>
-            <div className="w-full h-[176px]">
-              <ProjectGallery
-                images={images}
-                name="project_images_attributes_cover"
-                setValue={setValue}
-                clearErrors={clearErrors}
-                errors={errors}
-                className="h-full"
-                onDeleteImage={handleDeleteImage}
-                onSelectCover={handleSelectCover}
-                // defaultSelected={coverImage}
-                control={control}
-              />
-            </div>
+        <div className="mt-6">
+          <div className="mb-2.5">
+            <Label htmlFor="picture" className="mr-2">
+              <FormattedMessage defaultMessage="Picture (optional)" id="8rdnTq" />
+            </Label>
+            <FieldInfo
+              infoText={formatMessage({
+                defaultMessage: 'A picture can make your open call page more attractive.',
+                id: 'iFQwyC',
+              })}
+            />
           </div>
+          <Uploader
+            id="picture"
+            aria-describedby="picture-error"
+            name="picture"
+            setError={setError}
+            clearErrors={clearErrors}
+            controlOptions={{ disabled: false }}
+            control={control}
+            // See: Browser limitations section
+            // https://react-dropzone.org/#section-accepting-specific-file-types
+            fileTypes={{ 'image/*': ['.png', '.jpg', '.jpeg'] }}
+            maxFiles={6}
+            maxSize={5 * 1024 * 1025}
+            onUpload={handleUploadImages}
+          />
+          <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
+        </div>
+        <div className="mt-7">
+          <LocationSelectors
+            control={control}
+            resetField={resetField}
+            errors={errors}
+            fields={{
+              country: { fieldName: 'country_id', required: true },
+              state: { fieldName: 'department_id', required: false },
+              municipality: { fieldName: 'municipality_id', required: false },
+            }}
+          />
+        </div>
+        <div className="mt-6">
+          <div className="mb-2.5">
+            <Label htmlFor="description" className="mr-2">
+              <FormattedMessage defaultMessage="What is the open call about?" id="HcakU9" />
+            </Label>
+            {/* <FieldInfo
+              infoText={formatMessage({
+                defaultMessage: 'A picture can make your open call page more attractive.',
+                id: 'iFQwyC',
+              })}
+            /> */}
+          </div>
+          <Textarea
+            className="mt-2.5"
+            name="description"
+            id="description"
+            register={register}
+            placeholder={formatMessage({
+              defaultMessage: 'insert your answer (max 600 characters)',
+              id: 'hPsrc0',
+            })}
+            aria-describedby="description-error"
+          />
+          <ErrorMessage id="description-error" errorText={errors.description?.message} />
         </div>
       </form>
     </div>

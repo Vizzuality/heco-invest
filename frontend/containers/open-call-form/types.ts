@@ -5,9 +5,12 @@ import {
   FormState,
   UseFormClearErrors,
   UseFormRegister,
+  UseFormResetField,
+  UseFormSetError,
+  UseFormSetValue,
 } from 'react-hook-form';
 
-import { OpenCall } from 'types/open-calls';
+import { OpenCallForm } from 'types/open-calls';
 
 export type OpenCallFormTypes = {
   handleNextClick: () => void;
@@ -19,17 +22,24 @@ export type OpenCallFormTypes = {
 
 export type OpenCallInformationProps = {
   /**  React-hook-form register function */
-  register: UseFormRegister<OpenCall>;
+  register: UseFormRegister<OpenCallForm>;
   /**  React-hook-form clearErrors function */
-  clearErrors: UseFormClearErrors<OpenCall>;
+  clearErrors: UseFormClearErrors<OpenCallForm>;
   /**  React-hook-form state - errors */
-  errors: FieldErrors<OpenCall>;
-  setError;
-  control;
-  setValue;
+  errors: FieldErrors<OpenCallForm>;
+  /**  React-hook-form setError function */
+  setError: UseFormSetError<OpenCallForm>;
+  /**  React-hook-form control */
+  control: Control<OpenCallForm, any>;
+  /**  React-hook-form setValue function */
+  setValue: UseFormSetValue<OpenCallForm>;
+  /**  React-hook-form resetField function */
+  resetField?: UseFormResetField<OpenCallForm>;
 };
 
 export type OpenCallClosingDateProps = {
-  control: Control<OpenCall, any>;
-  errors?: FieldError;
+  /**  React-hook-form control */
+  control: Control<OpenCallForm, any>;
+  /**  React-hook-form state - errors */
+  errors: FieldErrors<OpenCallForm>;
 };

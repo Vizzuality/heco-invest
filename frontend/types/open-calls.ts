@@ -18,4 +18,8 @@ export type OpenCall = {
 
 export type OpenCallForm = Omit<OpenCall, 'created_at'> & {
   created_at: Dayjs;
+  picture?: string;
+  country_id: string;
+  department_id?: string;
+  municipality_id?: string;
 };
