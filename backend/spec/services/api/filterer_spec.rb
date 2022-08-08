@@ -108,12 +108,9 @@ RSpec.describe API::Filterer do
       let(:query) { OpenCall.all }
 
       context "when filtered by enum filters" do
-        let!(:correct_open_call) do
-          create :open_call, sdgs: [1, 2], instrument_type: "loan", ticket_size: "scaling"
-        end
+        let!(:correct_open_call) { create :open_call, sdgs: [1, 2], instrument_types: ["loan"] }
         let!(:different_sdgs_open_call) { create :open_call, sdgs: [4, 5] }
-        let!(:different_instrument_type_open_call) { create :open_call, instrument_type: "grant" }
-        let!(:different_ticket_size_open_call) { create :open_call, ticket_size: "prototyping" }
+        let!(:different_instrument_type_open_call) { create :open_call, instrument_types: ["grant"] }
 
         it "returns only correct open calls" do
           expect(subject.call).to eq([correct_open_call])
@@ -135,7 +132,7 @@ RSpec.describe API::Filterer do
         let!(:correct_open_call) { create :open_call, description_en: "TEST" }
         let!(:different_language_open_call) { create :open_call, description_es: "TEST" }
         let!(:different_text_open_call) { create :open_call, description_en: "DIFFERENT" }
-        let!(:ignored_collumn_open_call) { create :open_call, money_distribution_en: "TEST" }
+        let!(:ignored_column_open_call) { create :open_call, funding_priorities_en: "TEST" }
 
         it "returns only records with correct text at correct language" do
           expect(subject.call).to eq([correct_open_call])

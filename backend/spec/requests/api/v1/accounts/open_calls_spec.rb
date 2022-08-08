@@ -1,7 +1,98 @@
 require "swagger_helper"
 
 RSpec.describe "API V1 Account Open Calls", type: :request do
+  let(:country) { create(:country) }
+  let(:municipality) { create(:municipality) }
+  let(:department) { create(:department) }
   let(:user) { create :user_investor }
+  let(:blob) { ActiveStorage::Blob.create_and_upload! io: fixture_file_upload("picture.jpg"), filename: "test" }
+
+  path "/api/v1/account/open_calls" do
+    post "Create new OpenCall for User" do
+      tags "Open Calls"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :open_call_params, in: :body, schema: {
+        type: :object,
+        properties: {
+          picture: {type: :string},
+          name: {type: :string},
+          description: {type: :string},
+          country_id: {type: :string},
+          municipality_id: {type: :string},
+          department_id: {type: :string},
+          impact_description: {type: :string},
+          maximum_funding_per_project: {type: :integer},
+          funding_priorities: {type: :string},
+          funding_exclusions: {type: :string},
+          closing_at: {type: :string},
+          sdgs: {type: :array, items: {type: :integer, enum: Sdg::TYPES}},
+          instrument_types: {type: :array, items: {type: :string, enum: InstrumentType::TYPES}}
+        },
+        required: %w[
+          name description country_id impact_description maximum_funding_per_project funding_priorities funding_exclusions
+          closing_at instrument_types
+        ]
+      }
+
+      let(:open_call_params) do
+        {
+          picture: blob.signed_id,
+          name: "Open Call Name",
+          description: "Open Call Description",
+          country_id: country.id,
+          municipality_id: municipality.id,
+          department_id: department.id,
+          impact_description: "Open Call Impact Description",
+          maximum_funding_per_project: 100_000,
+          funding_priorities: "Open Call Funding Priorities",
+          funding_exclusions: "Open Call Funding Exclusions",
+          closing_at: 1.day.from_now,
+          sdgs: [1, 2],
+          instrument_types: %w[loan grant]
+        }
+      end
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
+
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/open_call"}
+        }
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before(:each) { sign_in user }
+
+        it "matches snapshot", generate_swagger_example: true do |example|
+          expect {
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
+          }.to change(OpenCall, :count).by(1)
+          expect(response.body).to match_snapshot("api/v1/account/open-calls-create")
+        end
+      end
+
+      response "422", "Validation errors" do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/errors"}
+        }
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before(:each) do
+          create(:open_call, name: open_call_params[:name], investor: user.account.investor)
+          sign_in user
+        end
+
+        run_test!
+
+        it "returns correct error", generate_swagger_example: true do
+          expect(response_json["errors"][0]["title"]).to eq("Name en (EN) has already been taken")
+        end
+      end
+    end
+  end
 
   path "/api/v1/account/open_calls/favourites" do
     get "Returns list of open calls marked as favourite" do

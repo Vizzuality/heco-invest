@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_27_083258) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_08_082718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -218,24 +218,33 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_27_083258) do
     t.text "description_en"
     t.text "description_es"
     t.text "description_pt"
-    t.text "money_distribution_en"
-    t.text "money_distribution_es"
-    t.text "money_distribution_pt"
     t.text "impact_description_en"
     t.text "impact_description_es"
     t.text "impact_description_pt"
     t.boolean "trusted", default: false, null: false
-    t.string "ticket_size", null: false
-    t.string "instrument_type", null: false
     t.integer "sdgs", array: true
     t.string "language", null: false
     t.datetime "closing_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "country_id", null: false
+    t.uuid "department_id"
+    t.uuid "municipality_id"
+    t.integer "maximum_funding_per_project", default: 0, null: false
+    t.text "funding_priorities_en"
+    t.text "funding_priorities_es"
+    t.text "funding_priorities_pt"
+    t.text "funding_exclusions_en"
+    t.text "funding_exclusions_es"
+    t.text "funding_exclusions_pt"
+    t.string "instrument_types", null: false, array: true
+    t.index ["country_id"], name: "index_open_calls_on_country_id"
+    t.index ["department_id"], name: "index_open_calls_on_department_id"
     t.index ["investor_id", "name_en"], name: "index_open_calls_on_investor_id_and_name_en", unique: true
     t.index ["investor_id", "name_es"], name: "index_open_calls_on_investor_id_and_name_es", unique: true
     t.index ["investor_id", "name_pt"], name: "index_open_calls_on_investor_id_and_name_pt", unique: true
     t.index ["investor_id"], name: "index_open_calls_on_investor_id"
+    t.index ["municipality_id"], name: "index_open_calls_on_municipality_id"
     t.index ["slug"], name: "index_open_calls_on_slug", unique: true
   end
 
@@ -418,6 +427,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_27_083258) do
   add_foreign_key "location_geometries", "locations", on_delete: :cascade
   add_foreign_key "locations", "locations", column: "parent_id", on_delete: :cascade
   add_foreign_key "open_calls", "investors", on_delete: :cascade
+  add_foreign_key "open_calls", "locations", column: "country_id"
+  add_foreign_key "open_calls", "locations", column: "department_id"
+  add_foreign_key "open_calls", "locations", column: "municipality_id"
   add_foreign_key "project_developers", "accounts", on_delete: :cascade
   add_foreign_key "project_images", "projects", on_delete: :cascade
   add_foreign_key "project_involvements", "project_developers", on_delete: :cascade

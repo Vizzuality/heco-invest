@@ -2,8 +2,8 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Open Calls", type: :request do
   before_all do
-    @open_call = create(:open_call, instrument_type: "grant")
-    create_list(:open_call, 6, instrument_type: "loan")
+    @open_call = create(:open_call, instrument_types: ["grant"])
+    create_list(:open_call, 6, instrument_types: ["loan"])
     @unapproved_open_call = create(:open_call, investor: create(:investor, account: create(:account, :unapproved, users: [create(:user)])))
     @approved_account = create(:account, review_status: :approved, users: [create(:user)])
     @open_call_in_pt = create(
@@ -24,7 +24,6 @@ RSpec.describe "API V1 Open Calls", type: :request do
       parameter name: "fields[open_call]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
       parameter name: "filter[sdg]", in: :query, type: :integer, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[instrument_type]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
-      parameter name: "filter[ticket_size]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[only_verified]", in: :query, type: :boolean, required: false, description: "Filter records."
       parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
       parameter name: :sorting, in: :query, type: :string, enum: ["name asc", "name desc", "created_at asc", "created_at desc"], required: false, description: "Sort records."
@@ -42,7 +41,7 @@ RSpec.describe "API V1 Open Calls", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/open_calls", dynamic_attributes: %w[closing_at])
+          expect(response.body).to match_snapshot("api/v1/open-calls")
         end
 
         it "ignores unapproved record" do
@@ -58,7 +57,7 @@ RSpec.describe "API V1 Open Calls", type: :request do
         end
 
         context "when filtering is used" do
-          let("filter[instrument_type]") { @open_call.instrument_type }
+          let("filter[instrument_type]") { @open_call.instrument_types.first }
 
           it "includes filtered open call" do
             expect(response_json["data"].pluck("id")).to eq([@open_call.id])
@@ -96,14 +95,14 @@ RSpec.describe "API V1 Open Calls", type: :request do
         run_test!
 
         it "matches snapshot", generate_swagger_example: true do
-          expect(response.body).to match_snapshot("api/v1/get-open_call", dynamic_attributes: %w[closing_at])
+          expect(response.body).to match_snapshot("api/v1/get-open-call")
         end
 
         context "when slug is used" do
           let(:id) { @open_call.slug }
 
           it "matches snapshot" do
-            expect(response.body).to match_snapshot("api/v1/get-open_call", dynamic_attributes: %w[closing_at])
+            expect(response.body).to match_snapshot("api/v1/get-open-call")
           end
         end
 
