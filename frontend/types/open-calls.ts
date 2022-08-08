@@ -1,25 +1,31 @@
-import { Dayjs } from 'dayjs';
-
-import { Languages } from 'enums';
+import { Languages, ProjectStatus } from 'enums';
 
 export type OpenCall = {
   name: string;
   slug: string;
   description: string;
-  ticket_size: string;
-  instrument_type: string;
+  instrument_types: string;
   sdgs: number[];
-  money_distribution: string;
-  impact_description: string;
   closing_at: string;
   language: Languages;
-  created_at: string;
+  max_funding: number;
+  funding_priorities: string;
+  funding_exclusions: string;
+  status: ProjectStatus;
+  expected_impact: string;
+  // ticket_size: string;
+  // money_distribution: string;
+  // impact_description: string;
 };
 
-export type OpenCallForm = Omit<OpenCall, 'created_at'> & {
-  created_at: Dayjs;
+export type OpenCallForm = Omit<OpenCall, 'closing_at' | 'language' | 'slug'> & {
+  closing_at: Date;
   picture?: string;
   country_id: string;
   department_id?: string;
   municipality_id?: string;
+};
+
+export type OpenCallFormDto = Omit<OpenCallForm, 'created_at'> & {
+  closing_at: string;
 };

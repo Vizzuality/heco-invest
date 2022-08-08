@@ -155,6 +155,9 @@
   "1iEPTM": {
     "string": "General"
   },
+  "1pQoFr": {
+    "string": "Information about the open call"
+  },
   "1t1fGY": {
     "string": "How will the money be used?"
   },
@@ -323,6 +326,9 @@
   "5mkG4O": {
     "string": "This description should succently explain your project. It should be a catching text since it's the first thing investors will read."
   },
+  "5oTICT": {
+    "string": "insert the open call name"
+  },
   "5sg7KC": {
     "string": "Password"
   },
@@ -337,6 +343,9 @@
   },
   "6EYInP": {
     "string": "My open call applications"
+  },
+  "6FQ0Y8": {
+    "string": "Leave open call creation form"
   },
   "6IKs4G": {
     "string": "wood and soil biomass, application of sustainable forest measures;"
@@ -371,6 +380,9 @@
   "7JlauX": {
     "string": "Explore"
   },
+  "7NGqWp": {
+    "string": "Your open call is awaiting verification. This means that the open call is visible in the platform but without the <b>Verification badge</b>."
+  },
   "7Rh11y": {
     "string": "Setup investor profile"
   },
@@ -388,6 +400,9 @@
   },
   "7rePKd": {
     "string": "HeCo Invest takes you step-by-step through the presentation of your proposal and then intelligently connects you with the community and potential sources of support and funding."
+  },
+  "7xC2j0": {
+    "string": "Create Open Call"
   },
   "7xE2Vv": {
     "string": "Illustration of a person looking at a tree"
@@ -422,6 +437,9 @@
   "8XJceA": {
     "string": "Have you previously invested in impact?"
   },
+  "8dGhWP": {
+    "string": "Browse or drag and drop"
+  },
   "8gJV79": {
     "string": "What are HeCo priority landscapes?"
   },
@@ -436,6 +454,9 @@
   },
   "8rIwwr": {
     "string": "Expected Impact"
+  },
+  "8rdnTq": {
+    "string": "Picture (optional)"
   },
   "8xsdU1": {
     "string": "This project isn’t currently looking for funding at this moment."
@@ -518,6 +539,9 @@
   "APjPYs": {
     "string": "I want to write my content in"
   },
+  "Ac9oiY": {
+    "string": "This information will be displayed in the open call page."
+  },
   "AdAi3x": {
     "string": "Emails"
   },
@@ -551,8 +575,14 @@
   "BZkcBV": {
     "string": "Project developer photo"
   },
+  "Bc20la": {
+    "string": "days"
+  },
   "BcZVZW": {
     "string": "This description should sumarize your project in a few words."
+  },
+  "BeVl3b": {
+    "string": "How long will the open call be available?"
   },
   "BkLlj6": {
     "string": "What’s the impact of your project and what do you want to achieve"
@@ -659,6 +689,9 @@
   "E80WrK": {
     "string": "Information"
   },
+  "EFVd2S": {
+    "string": "Financial instruments available"
+  },
   "EGMX38": {
     "string": "Please insert your new password."
   },
@@ -746,6 +779,9 @@
   "G9iCfx": {
     "string": "Reach them in"
   },
+  "GDPNty": {
+    "string": "insert value"
+  },
   "GKONs7": {
     "string": "Start having impact now."
   },
@@ -790,6 +826,9 @@
   },
   "Hb+Idf": {
     "string": "Project description"
+  },
+  "HcakU9": {
+    "string": "What is the open call about?"
   },
   "HlDhAh": {
     "string": "10%"
@@ -918,6 +957,9 @@
   "KYymTZ": {
     "string": "{quantity, plural, one {project} other {projects}}"
   },
+  "KcJ5IK": {
+    "string": "Select the deadline for this open call."
+  },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
   },
@@ -948,6 +990,9 @@
   "LFDgTb": {
     "string": "Leave project developer edition?"
   },
+  "LFNAet": {
+    "string": "Select the SDG’s you expect to have impact (optional)"
+  },
   "LMjhPg": {
     "string": "Large enterprise"
   },
@@ -968,6 +1013,9 @@
   },
   "M1xKEI": {
     "string": "Language: {language}"
+  },
+  "M4pZPN": {
+    "string": "Go to open call page"
   },
   "M7261y": {
     "string": "This information will help us understand what you are interested in invest or funding."
@@ -1019,6 +1067,9 @@
   },
   "MxllAO": {
     "string": "What is an open call?"
+  },
+  "N5k7R7": {
+    "string": "Tell us what’s the impact that you expect with this open call."
   },
   "N9+9Fi": {
     "string": "select the project developer type"
@@ -1560,6 +1611,9 @@
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
   },
+  "agJGNx": {
+    "string": "How much funding do you have available for this open call? ($)"
+  },
   "avVMND": {
     "string": "This information will be visible in the project page when you launch it."
   },
@@ -1571,6 +1625,9 @@
   },
   "bWygLM": {
     "string": "insert the amount of money"
+  },
+  "bXy++M": {
+    "string": "How much money do you intend to give to this open call."
   },
   "bh4rlK": {
     "string": "Government"
@@ -1628,6 +1685,9 @@
   },
   "cyRU1N": {
     "string": "Forgot your password?"
+  },
+  "d1OgED": {
+    "string": "(optional)"
   },
   "d3TPmn": {
     "string": "SDG's"
@@ -1826,6 +1886,9 @@
   },
   "i2AgQl": {
     "string": "Which of these topics/sector categories better describe your project?"
+  },
+  "i2oTer": {
+    "string": "Starting today, this open call will be available for"
   },
   "i9cSUD": {
     "string": "Invests in"

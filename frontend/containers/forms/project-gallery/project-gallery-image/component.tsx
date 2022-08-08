@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Trash2 } from 'react-feather';
-import { Controller, FieldValues, Path } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -23,6 +23,7 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
   defaultSelected = false,
   onDeleteImage,
   onSelectCover,
+  className,
   ...rest
 }: ProjectGalleryImageProps<FormValues>) => {
   const [invalid, setInvalid] = useState<boolean>(invalidProp);
@@ -35,28 +36,25 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
   }, [invalidProp]);
 
   return (
-    <div className="relative rounded group">
-      <Controller
-        name={'project_images_attributes' as Path<FormValues>}
-        control={control}
-        render={(field) => (
-          <Button
-            {...field}
-            name="project_images_attributes"
-            theme="primary-white"
-            className="absolute right-0 z-10 justify-center w-6 h-6 px-0 py-0 mx-2 my-2 overflow-hidden text-red-600 transition-opacity ease-in opacity-0 group-hover:opacity-100 group-hover:text-red-600 focus-visible:opacity-100"
-            title={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
-            onClick={onDeleteImage}
-            aria-label={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
-          >
-            <Icon icon={Trash2} className="w-4" />
-          </Button>
-        )}
-      />
+    <div
+      className={cx('relative rounded group', {
+        [className]: !!className,
+      })}
+    >
+      <Button
+        name={name}
+        theme="primary-white"
+        className="absolute right-0 z-10 justify-center w-6 h-6 px-0 py-0 mx-2 my-2 overflow-hidden text-red-600 transition-opacity ease-in opacity-0 group-hover:opacity-100 group-hover:text-red-600 focus-visible:opacity-100"
+        title={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
+        onClick={onDeleteImage}
+        aria-label={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
+      >
+        <Icon icon={Trash2} className="w-4" />
+      </Button>
       <Controller
         name={name}
         control={control}
-        render={(field) => (
+        render={({ field }) => (
           <input
             {...field}
             name={name}

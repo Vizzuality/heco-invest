@@ -4,6 +4,8 @@ import { FormattedMessage } from 'react-intl';
 
 import dayjs, { Dayjs } from 'dayjs';
 
+import ErrorMessage from 'components/forms/error-message';
+
 import OpenCallCalendar from '../../../components/forms/date-picker-calendar';
 import { OpenCallClosingDateProps } from '../types';
 
@@ -20,7 +22,7 @@ export const OpenCallClosingDate: FC<OpenCallClosingDateProps> = ({ control, err
 
   return (
     <div className="max-w-[814px] m-auto">
-      <div className="mb-5">
+      <div className="mb-10">
         <h1 className="mb-2 font-serif text-3xl font-semibold">
           <FormattedMessage
             defaultMessage="How long will the open call be available?"
@@ -35,13 +37,14 @@ export const OpenCallClosingDate: FC<OpenCallClosingDateProps> = ({ control, err
         <OpenCallCalendar
           control={control}
           name="closing_at"
+          id="closing_at"
           controlOptions={{
             disabled: false,
             required: 'This field is required',
             onChange: handleChangeDate,
           }}
         />
-        {errors?.message}
+        <ErrorMessage id="closing_at-error" errorText={errors?.closing_at?.message} />
       </div>
       <div className="text-center font-lg mt-7">
         <p>

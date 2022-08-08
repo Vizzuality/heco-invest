@@ -14,7 +14,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import dayjs, { Dayjs } from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 
-import { OpenCall } from 'types/open-calls';
+import { OpenCallForm } from 'types/open-calls';
 
 import { themeOptions } from './theme';
 
@@ -35,7 +35,9 @@ export const OpenCallCalendar: FC<OpenCallCalendarProps> = ({ control, controlOp
     name,
     control,
     rules: controlOptions,
-    defaultValue: controlOptions.value as UnpackNestedValue<PathValue<OpenCall, Path<OpenCall>>>,
+    defaultValue: controlOptions.value as UnpackNestedValue<
+      PathValue<OpenCallForm, Path<OpenCallForm>>
+    >,
   });
 
   return (
