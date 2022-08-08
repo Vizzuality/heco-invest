@@ -1,14 +1,7 @@
-import { InvitationStatus } from 'enums';
+import { User } from 'types/user';
 
 export interface CellActionsProps {
   row: {
-    original: {
-      id: string;
-      email: string;
-      confirmed: boolean;
-      first_name: string;
-      last_name: string;
-      invitation: InvitationStatus;
-    };
+    original: User;
   };
 }
