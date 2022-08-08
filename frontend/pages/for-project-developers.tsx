@@ -211,7 +211,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
         <h2 className="mb-6 font-serif text-3xl font-bold md:hidden">
           <FormattedMessage defaultMessage="Discover investors by budget/ticket size" id="eItis6" />
         </h2>
-        <div className="grid pb-6 overflow-x-scroll grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-4 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 md:grid-row-2 xl:grid-cols-4 md:place-content-end px-1 md:px-0">
+        <div className="grid pb-6 overflow-x-auto grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-4 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 md:grid-row-2 xl:grid-cols-4 md:place-content-end px-1 md:px-0">
           {/* Repeating the header here to change the layout when md screens */}
           <h2 className="hidden row-span-1 pt-6 font-serif text-3xl font-semibold md:block md:mb-10 md:col-span-4 lg:text-4xl xl:text-5xl xl:col-span-2 lg:mb-0 md:w-auto">
             <FormattedMessage
@@ -263,7 +263,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
         <h2 className="mb-6 font-serif text-3xl font-bold md:hidden">
           <FormattedMessage defaultMessage="Discover investors by category" id="vViagZ" />
         </h2>
-        <div className="grid pb-6 overflow-x-scroll grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-4 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 md:grid-row-2 xl:grid-cols-4 md:place-content-end px-1 md:px-0">
+        <div className="grid pb-6 overflow-x-auto grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-4 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 md:grid-row-2 xl:grid-cols-4 md:place-content-end px-1 md:px-0">
           {/* Repeating the header here to change the layout when md screens */}
           <h2 className="hidden row-span-1 pt-6 font-serif text-3xl font-semibold md:block md:mb-10 lg:text-4xl xl:text-5xl xl:col-span-2 lg:mb-0 lg:w-auto">
             <FormattedMessage defaultMessage="Discover investors by category" id="vViagZ" />

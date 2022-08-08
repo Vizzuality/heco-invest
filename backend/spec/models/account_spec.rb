@@ -80,4 +80,25 @@ RSpec.describe Account, type: :model do
       expect(subject.reviewed_at).to be_present
     end
   end
+
+  context "when changing ownership" do
+    subject { create(:account) }
+
+    before do
+      User.invite!({email: "new_user@example.com", skip_invitation: true}, subject.owner)
+      User.invite!({email: "another@example.com", skip_invitation: true}, subject.owner)
+    end
+
+    let!(:new_owner) { create(:user, account: subject) }
+
+    it "should transfer ownership of invitations" do
+      subject.reload # otherwise it does not see new_owner id in user_ids
+      old_owner = subject.owner
+      subject.owner = new_owner
+      subject.save!
+
+      expect(User.where(invited_by: old_owner).count).to be(0)
+      expect(User.where(invited_by: new_owner).count).to be(2)
+    end
+  end
 end

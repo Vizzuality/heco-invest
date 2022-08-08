@@ -23,6 +23,8 @@ export const Table: FC<TableProps> = ({
   manualSorting = false,
   pagination: paginationProps,
   onSortChange = noop,
+  isOwner,
+  accountName,
 }: TableProps) => {
   const DEFAULT_COLUMN = React.useMemo(
     () => ({
@@ -53,7 +55,8 @@ export const Table: FC<TableProps> = ({
       disableSortBy: !sortingEnabled,
       manualSortBy: manualSorting,
       disableMultiSort: true,
-
+      isOwner,
+      accountName,
       initialState: {
         ...initialState,
       },
@@ -78,7 +81,7 @@ export const Table: FC<TableProps> = ({
 
   return (
     <div>
-      <div className="relative overflow-x-scroll md:overflow-hidden rounded-2xl">
+      <div className="relative overflow-x-auto md:overflow-hidden rounded-2xl">
         <table {...getTableProps()} className="relative w-full bg-white rounded-t-2xl">
           <thead>
             {headerGroups.map((headerGroup) => {
@@ -93,10 +96,7 @@ export const Table: FC<TableProps> = ({
 
                     // canSort is always true when manualSortBy is true
                     // See: https://github.com/TanStack/table/issues/2599
-                    const canSort =
-                      (sortingEnabled &&
-                        columns.find(({ accessor }) => accessor === id)?.canSort) ??
-                      true;
+                    const canSort = (sortingEnabled && column?.canSort) ?? true;
 
                     return (
                       <th

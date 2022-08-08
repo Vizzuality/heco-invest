@@ -24,7 +24,7 @@ export default {
 
 const Template: Story<ProjectDetailsProps> = ({ project }: ProjectDetailsProps) => {
   return (
-    <div className="relative max-w-md max-h-full overflow-y-scroll bg-white border rounded-2xl">
+    <div className="relative max-w-md max-h-full overflow-y-auto bg-white border rounded-2xl">
       <ProjectDetails project={project} />
     </div>
   );

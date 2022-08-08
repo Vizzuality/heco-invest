@@ -133,6 +133,7 @@ export const useFavoriteProjectDeveloper = () => {
         queryClient.setQueryData([Queries.ProjectDeveloper, locale], data);
         queryClient.invalidateQueries([Queries.ProjectDeveloper], {});
         queryClient.invalidateQueries([Queries.ProjectDeveloperList], {});
+        queryClient.invalidateQueries([Queries.FavoriteProjectDevelopersList, {}]);
       },
     }
   );

@@ -7,8 +7,6 @@ import { withLocalizedRequests } from 'hoc/locale';
 
 import { InferGetStaticPropsType } from 'next';
 
-import useMe from 'hooks/me';
-
 import { loadI18nMessages } from 'helpers/i18n';
 
 import UsersTable from 'containers/dashboard/users/table';
@@ -23,6 +21,8 @@ import NakedLayout from 'layouts/naked';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 
+import { useAccount } from 'services/account';
+
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
@@ -36,7 +36,7 @@ type UsersPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 export const UsersPage: PageComponent<UsersPageProps, DashboardLayoutProps> = () => {
   const [openInvitationModal, setOpenInvitationModal] = useState(false);
   const intl = useIntl();
-  const { user } = useMe();
+  const { user, userAccount } = useAccount();
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
@@ -56,7 +56,7 @@ export const UsersPage: PageComponent<UsersPageProps, DashboardLayoutProps> = ()
         }
       >
         <div className="pt-4">
-          <UsersTable isOwner={user?.owner} />
+          <UsersTable accountName={userAccount?.name} isOwner={user?.owner} />
         </div>
       </DashboardLayout>
       <InviteUsersModal

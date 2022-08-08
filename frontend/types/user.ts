@@ -31,7 +31,7 @@ export interface User {
   account_language: Languages;
   confirmed: boolean;
   approved: boolean;
-  invitation: boolean;
+  invitation: InvitationStatus;
   owner: boolean;
   avatar: Picture;
 }
@@ -52,3 +52,9 @@ export interface AccountUser {
   picture: string;
   confirmed: boolean;
 }
+
+export type ChangePassword = {
+  current_password: string;
+  password: string;
+  password_confirmation: string;
+};

@@ -48,7 +48,7 @@ export const SettingsLayout: FC<SettingsLayoutProps> = ({
               </div>
             </LayoutContainer>
           </div>
-          <main ref={mainContainerRef} className="h-full overflow-y-scroll bg-background-dark">
+          <main ref={mainContainerRef} className="h-full overflow-y-auto bg-background-dark">
             {isLoading ? (
               <div className="absolute flex items-center justify-center bg-background-dark top-px bottom-px left-px bg-opacity-20 right-px rounded-2xl backdrop-blur-sm">
                 <Loading visible={true} iconClassName="w-10 h-10" />

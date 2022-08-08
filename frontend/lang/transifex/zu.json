@@ -1,4 +1,7 @@
 {
+  "+2I7uh": {
+    "string": "info@hecoinvest.org"
+  },
   "+4Udxw": {
     "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below."
   },
@@ -134,6 +137,9 @@
   "0wBg9P": {
     "string": "Project developers"
   },
+  "0z5mo1": {
+    "string": "insert new password"
+  },
   "11hyS6": {
     "string": "Add your legal registration number so we can verify your legal entity . This information will not be publicaly available."
   },
@@ -163,6 +169,9 @@
   },
   "25WwxF": {
     "string": "Don't have an account?"
+  },
+  "2AIlHB": {
+    "string": "Transfer ownership"
   },
   "2AZiFU": {
     "string": "Instrument size"
@@ -391,6 +400,9 @@
   },
   "7gMEKc": {
     "string": "Project details"
+  },
+  "7iO/ih": {
+    "string": "Discover project developers"
   },
   "7mgGgs": {
     "string": "It is one of the most important terrestrial carbon sink on Earth, helping to mitigate climate change."
@@ -749,6 +761,12 @@
   "F4gyn3": {
     "string": "Clear filters"
   },
+  "F76hVG": {
+    "string": "insert current password"
+  },
+  "FFbWHO": {
+    "string": "Discover investors"
+  },
   "FJfVJJ": {
     "string": "Access user-friendly tools that help turn a good idea into a proposal ready to be reviewed by an investor or funder."
   },
@@ -769,6 +787,9 @@
   },
   "Fxekek": {
     "string": "Invite again"
+  },
+  "FyUIBK": {
+    "string": "Discover open calls and <heart></heart> them."
   },
   "G6hIMy": {
     "string": "Public profile"
@@ -885,9 +906,6 @@
   "JBFQAB": {
     "string": "Population density"
   },
-  "JFgMWS": {
-    "string": "info@hecoinvest.com"
-  },
   "JFkvlB": {
     "string": "Please use the contacts below to reach the project developer."
   },
@@ -960,6 +978,9 @@
   "KcJ5IK": {
     "string": "Select the deadline for this open call."
   },
+  "KkT/Fh": {
+    "string": "Update password"
+  },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
   },
@@ -977,6 +998,9 @@
   },
   "L2CvBU": {
     "string": "Expect to have impact"
+  },
+  "L4nXIc": {
+    "string": "Change password"
   },
   "L51On4": {
     "string": "Public-private organization"
@@ -1077,6 +1101,9 @@
   "NG6Ull": {
     "string": "HeCo Invest manages a <n>wide range of investment and financing opportunities</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n>."
   },
+  "NIynnB": {
+    "string": "Current password"
+  },
   "NLk0cp": {
     "string": "US$150,000 – 750,000 (Market validation)"
   },
@@ -1146,6 +1173,9 @@
   "P1f6hp": {
     "string": "Funding priorities"
   },
+  "P3pSke": {
+    "string": "Something went wrong while trying to change the account ownership."
+  },
   "P4T4Ib": {
     "string": "Discover projects that have impact in the Amazon region and get connected with investors and project developers."
   },
@@ -1191,6 +1221,9 @@
   "QESbGa": {
     "string": "select project developers"
   },
+  "QEg+U9": {
+    "string": "Discover projects and <heart></heart> them."
+  },
   "QGF3ow": {
     "string": "\"Select the instrument type(s) you provide"
   },
@@ -1233,6 +1266,9 @@
   "RDclSN": {
     "string": "Investor/Funder type"
   },
+  "RFAvvo": {
+    "string": "Discover investors and <heart></heart> them."
+  },
   "RPrfBJ": {
     "string": "Philanthropy"
   },
@@ -1265,6 +1301,9 @@
   },
   "SNBzCW": {
     "string": "Tell us what how do you expect to grow your project , how will you measure progress and impact."
+  },
+  "SNyd7j": {
+    "string": "Currently you don’t have any <b>Open calls</b> in your favorites."
   },
   "SQJto2": {
     "string": "Sign in"
@@ -1317,6 +1356,9 @@
   "TkWozN": {
     "string": "an equity investment consists of the acquisition, by an entity specialized in private equity, of a package of shares of a company or enterprise. The private equity firm thus becomes one of the owners of the company."
   },
+  "TndK0C": {
+    "string": "Discover projects"
+  },
   "ToXG99": {
     "string": "View project page"
   },
@@ -1328,6 +1370,9 @@
   },
   "U98Mu/": {
     "string": "This layer shows the permanent and temporal wetlands of Colombia at a 1:100.000 reoslution"
+  },
+  "UD6OB+": {
+    "string": "Are you sure you want to make <n>{userName}</n> the owner of <n>{accountName}</n> account? You cant undo this action."
   },
   "UIQdVc": {
     "string": "Are you sure you want to delete “<strong>{projectName}</strong>”?"
@@ -1485,6 +1530,9 @@
   "XaFc9D": {
     "string": "Select HeCo priority landscapes on which you will have impact"
   },
+  "Xcq/fH": {
+    "string": "Change account owner"
+  },
   "Xf3dpi": {
     "string": "Toggle fullscreen mode"
   },
@@ -1499,6 +1547,9 @@
   },
   "XkF/qg": {
     "string": "Profile picture of {name}"
+  },
+  "Xms+aE": {
+    "string": "Currently you don’t have any <b>Projects</b> in your favorites."
   },
   "XwmxKZ": {
     "string": "A project is an enterprise or initiative carefully planned and run by project developers in a given region with the objective of contributing to its environmental conservation. Projects are set up whenever a project developer is seeking visibility or needing investment."
@@ -1616,6 +1667,9 @@
   },
   "avVMND": {
     "string": "This information will be visible in the project page when you launch it."
+  },
+  "azx2BO": {
+    "string": "Discover open calls"
   },
   "b3Iz6I": {
     "string": "What type of projects the funding is covering."
@@ -1890,6 +1944,9 @@
   "i2oTer": {
     "string": "Starting today, this open call will be available for"
   },
+  "i5gK2X": {
+    "string": "Currently you don’t have any <b>Project developers</b> in your favorites."
+  },
   "i9cSUD": {
     "string": "Invests in"
   },
@@ -1958,6 +2015,9 @@
   },
   "jN8Kad": {
     "string": "Browse thought the most frequently asked questions."
+  },
+  "jNai7b": {
+    "string": "Remove all"
   },
   "jUgR7w": {
     "string": "Stage of development or maturity of the project"
@@ -2121,6 +2181,9 @@
   "nlIkQG": {
     "string": "The name that will identify the account across the platform."
   },
+  "ntxEU3": {
+    "string": "Discover project developers and <heart></heart> them."
+  },
   "nwXvcg": {
     "string": "Shows the percentage of the population expected to be affected by riverine flooding in an average year."
   },
@@ -2154,6 +2217,9 @@
   "oYPIc/": {
     "string": "By leaving you will lose your current progress"
   },
+  "odrmaG": {
+    "string": "Password changed successfully"
+  },
   "oiQKNY": {
     "string": "Search and find"
   },
@@ -2171,6 +2237,9 @@
   },
   "pHaFj5": {
     "string": "To create an Investor account you will need the following information."
+  },
+  "pNNQA+": {
+    "string": "It is an ecoregion covered with savannahs of high floristic diversity and habitats representative of the evolutionary processes of the Guiana Shield. It includes both blackwater and whitewater rivers that feed the great Orinoco River, creating different types of seasonally flooded forests."
   },
   "pONqz8": {
     "string": "First name"
@@ -2237,6 +2306,9 @@
   },
   "qcsPS9": {
     "string": "{duration} months"
+  },
+  "qdQPNb": {
+    "string": "Currently you don’t have any <b>Investors</b> in your favorites."
   },
   "qe+BvO": {
     "string": "<b>Call on our community</b> of project developers to identify opportunities in your preferred sectors and geographies."

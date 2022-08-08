@@ -202,10 +202,6 @@ module "backend_cloudrun" {
       value = "email-test"
     },
     {
-      name  = "IS_API_INSTANCE"
-      value = true
-    },
-    {
       name  = "IS_JOBS_INSTANCE"
       value = false
     },
@@ -236,6 +232,10 @@ module "backend_cloudrun" {
     {
       name  = "GCP_REGION"
       value = var.gcp_region
+    },
+    {
+      name  = "INSTANCE_ROLE"
+      value = var.instance_role
     }
   ]
 }
@@ -313,10 +313,6 @@ module "jobs_cloudrun" {
       value = "email-test"
     },
     {
-      name  = "IS_API_INSTANCE"
-      value = false
-    },
-    {
       name  = "IS_JOBS_INSTANCE"
       value = true
     },
@@ -347,6 +343,10 @@ module "jobs_cloudrun" {
     {
       name  = "GCP_REGION"
       value = var.gcp_region
+    },
+    {
+      name  = "INSTANCE_ROLE"
+      value = var.instance_role
     }
   ]
 }

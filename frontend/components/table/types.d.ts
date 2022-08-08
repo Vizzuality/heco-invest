@@ -17,4 +17,8 @@ export interface TableProps {
   manualSorting?: boolean;
   /** Callback for when sorting changes */
   onSortChange?: ({ sortBy, sortOrder }: { sortBy?: string; sortOrder?: 'asc' | 'desc' }) => void;
+  /** Whether the current user is the account owner. Defaults to 'false */
+  isOwner?: boolean;
+  /** Current account name */
+  accountName?: string;
 }

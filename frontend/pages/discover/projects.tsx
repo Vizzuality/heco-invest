@@ -108,7 +108,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
             ref={projectsListContainerRef}
             className={cx({
               'relative flex-grow lg:pr-2.5': true,
-              'lg:overflow-y-scroll': !loading,
+              'lg:overflow-y-auto': !loading,
               'lg:pointer-events-none lg:overflow-hidden': loading,
             })}
           >
@@ -151,7 +151,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
                   exit={{ opacity: 0 }}
                 >
                   <aside className="absolute top-0 z-10 w-7/12 xl:w-5/12 mt-1 mb-0 -ml-2.5 -bottom-4 left-5/12 rounded-t-2xl">
-                    <div className="max-h-full overflow-y-scroll bg-white border rounded-2xl">
+                    <div className="max-h-full overflow-y-auto bg-white border rounded-2xl">
                       <ProjectDetails
                         project={selectedProject}
                         onClose={handleProjectDetailsClose}
