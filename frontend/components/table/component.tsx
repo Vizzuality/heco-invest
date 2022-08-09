@@ -96,10 +96,7 @@ export const Table: FC<TableProps> = ({
 
                     // canSort is always true when manualSortBy is true
                     // See: https://github.com/TanStack/table/issues/2599
-                    const canSort =
-                      (sortingEnabled &&
-                        columns.find(({ accessor }) => accessor === id)?.canSort) ??
-                      true;
+                    const canSort = (sortingEnabled && column?.canSort) ?? true;
 
                     return (
                       <th

@@ -6,7 +6,7 @@ module.exports = {
     defaultLocale: locales.find((locale) => locale.default).locale,
   },
   images: {
-    domains: ['hecoinvest.org', 'staging.hecoinvest.org'],
+    domains: ['hecoinvest.org', 'staging.hecoinvest.org', 'localhost'],
   },
   swcMinify: false,
   eslint: {
@@ -76,6 +76,10 @@ module.exports = {
       {
         source: '/faq/:sectionId/:questionId',
         destination: '/faq',
+      },
+      {
+        source: '/dashboard/favorites',
+        destination: '/dashboard/favorites/projects',
       },
     ];
   },

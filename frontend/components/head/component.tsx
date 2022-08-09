@@ -24,7 +24,8 @@ export const Head: React.FC<HeadProps> = ({
       id: 'HzKhBJ',
       description: 'Description shown in search engines',
     });
-  // const imageUrl = ''; // A complete URL is required by at least Twitter
+  const hecoUrl = process.env.NEXT_PUBLIC_FRONTEND_URL;
+  const imageUrl = hecoUrl + '/images/heco_invest_thumbnail.png';
 
   return (
     <NextHead>
@@ -44,7 +45,7 @@ export const Head: React.FC<HeadProps> = ({
         href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}${asPath}`}
       />
 
-      {/* <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
@@ -55,7 +56,7 @@ export const Head: React.FC<HeadProps> = ({
       <link rel="manifest" href="manifest.json" />
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="msapplication-config" content="/browserconfig.xml" />
-      <link rel="shortcut icon" href="/favicon.ico" /> */}
+      <link rel="shortcut icon" href="/favicon.ico" />
       {children}
     </NextHead>
   );
