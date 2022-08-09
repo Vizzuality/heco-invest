@@ -21,9 +21,9 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
   const { asPath } = useRouter();
   // Facebook don't support locales, so we use the staging url when in local
   const shareLinkUrl =
-    process.env.NODE_ENV === 'production'
+    process.env.NODE_ENV !== 'production'
       ? `https://staging.hecoinvest.org${asPath}`
-      : `${process.env.NEXT_PUBLIC_PROXY_BACKEND}${asPath}`;
+      : `${process.env.NEXT_PUBLIC_FRONTEND_URL}${asPath}`;
 
   const isProjectPage = asPath.includes('/project/');
 
