@@ -24,6 +24,7 @@ import { ProjectDeveloper } from 'types/projectDeveloper';
 import { User } from 'types/user';
 
 import { getEnums } from 'services/enums/enumService';
+import { useCreateOpenCall } from 'services/open-call/open-call-service';
 
 export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
   const enums = await getEnums();
@@ -47,7 +48,7 @@ const CreateOpenCallPage: PageComponent<InferGetServerSidePropsType<typeof getSe
     push(queryReturnPath || Paths.DashboardOpenCalls);
   };
 
-  const mutation = {};
+  const createOpenCall = useCreateOpenCall();
 
   const getIsOwner = (_user: User, userAccount: Investor | ProjectDeveloper) => {
     setLanguage(userAccount?.language);
@@ -59,7 +60,7 @@ const CreateOpenCallPage: PageComponent<InferGetServerSidePropsType<typeof getSe
       <OpenCallForm
         onComplete={handleComplete}
         title={formatMessage({ defaultMessage: 'Create Open Call', id: '7xC2j0' })}
-        mutation={mutation}
+        mutation={createOpenCall}
         enums={enums as GroupedEnums}
         language={language}
         leaveMessage={formatMessage({

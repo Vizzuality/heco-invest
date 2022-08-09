@@ -35,7 +35,6 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
   language,
   onComplete,
   leaveMessage,
-  isCreateForm = false,
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -78,21 +77,7 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
     [currentPage, onComplete]
   );
 
-  const handleUpdate = useCallback(
-    (data: OpenCallFormDto) => {
-      return mutation.mutate(data, {
-        onError: (error) => {
-          const { errorPages, fieldErrors } = getServiceErrors<OpenFormType>(error, formPageInputs);
-          fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
-          errorPages.length && setCurrentPage(errorPages[0]);
-        },
-        onSuccess: handleCompletion,
-      });
-    },
-    [handleCompletion, mutation, setError]
-  );
-
-  const handleCreate = useCallback(
+  const handleMutate = useCallback(
     (data: OpenCallFormDto) => {
       return mutation.mutate(data, {
         onError: (error) => {
@@ -109,13 +94,7 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
   const onSubmit: SubmitHandler<OpenFormType> = (values) => {
     if (isLastPage) {
       const closing_at = values.closing_at.toUTCString();
-      if (isCreateForm) {
-        console.log({ ...values, closing_at });
-        // handleCreate({ ...values });
-      } else {
-        console.log({ ...values, closing_at });
-        // handleUpdate({ ...values });
-      }
+      handleMutate({ ...values, closing_at });
     } else {
       setCurrentPage(currentPage + 1);
     }

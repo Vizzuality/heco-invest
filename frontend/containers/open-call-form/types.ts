@@ -7,20 +7,28 @@ import {
   UseFormSetError,
   UseFormSetValue,
 } from 'react-hook-form';
+import { UseMutationResult } from 'react-query';
+
+import { AxiosError, AxiosResponse } from 'axios';
 
 import { Languages } from 'enums';
 import { Enum, GroupedEnums } from 'types/enums';
-import { OpenCallForm } from 'types/open-calls';
+import { OpenCall, OpenCallForm, OpenCallFormDto } from 'types/open-calls';
+
+import { ResponseData, ErrorResponse } from 'services/types';
 
 export type OpenCallFormTypes = {
   title: string;
-  mutation: any;
+  mutation: UseMutationResult<
+    AxiosResponse<ResponseData<OpenCall>>,
+    AxiosError<ErrorResponse>,
+    OpenCallFormDto
+  >;
   initialValues?: any;
   enums: GroupedEnums;
   language: Languages;
   onComplete: () => void;
   leaveMessage: string;
-  isCreateForm?: boolean;
 };
 
 export type OpenCallInformationProps = {

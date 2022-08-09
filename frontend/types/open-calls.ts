@@ -13,9 +13,6 @@ export type OpenCall = {
   funding_exclusions: string;
   status: ProjectStatus;
   expected_impact: string;
-  // ticket_size: string;
-  // money_distribution: string;
-  // impact_description: string;
 };
 
 export type OpenCallForm = Omit<OpenCall, 'closing_at' | 'language' | 'slug'> & {
@@ -26,6 +23,6 @@ export type OpenCallForm = Omit<OpenCall, 'closing_at' | 'language' | 'slug'> & 
   municipality_id?: string;
 };
 
-export type OpenCallFormDto = Omit<OpenCallForm, 'created_at'> & {
+export type OpenCallFormDto = Omit<OpenCallForm, 'closing_at'> & {
   closing_at: string;
 };
