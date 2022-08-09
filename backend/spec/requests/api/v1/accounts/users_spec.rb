@@ -232,4 +232,41 @@ RSpec.describe "API V1 Account Users", type: :request do
       end
     end
   end
+
+  path "/api/v1/account/users/favourites" do
+    delete "Delete all user favourites" do
+      tags "Users"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
+
+      let(:account) { create :account, :approved }
+      let(:user) { account.owner }
+      let!(:favourite_project) { create :favourite_project, user: user }
+      let!(:favourite_project_developer) { create :favourite_project_developer, user: user }
+      let!(:favourite_investor) { create :favourite_investor, user: user }
+      let!(:favourite_open_call) { create :favourite_open_call, user: user }
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+
+      response "200", :success do
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before do
+          sign_in user
+        end
+
+        run_test!
+
+        it "deletes all favourites" do
+          expect(user.favourite_projects.count).to be_zero
+          expect(user.favourite_project_developers.count).to be_zero
+          expect(user.favourite_investors.count).to be_zero
+          expect(user.favourite_open_calls.count).to be_zero
+        end
+      end
+    end
+  end
 end

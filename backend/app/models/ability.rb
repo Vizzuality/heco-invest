@@ -66,6 +66,7 @@ class Ability
     can :manage, FavouriteInvestor, user_id: user.id
     can :manage, FavouriteOpenCall, user_id: user.id
 
+    can %i[favourites], User, id: user.id
     can %i[favourites], Project, favourite_projects: {user_id: user.id}
     can %i[favourites], ProjectDeveloper, favourite_project_developers: {user_id: user.id}
     can %i[favourites], Investor, favourite_investors: {user_id: user.id}
