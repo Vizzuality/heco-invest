@@ -28,10 +28,13 @@ class ChangesForOpenCalls < ActiveRecord::Migration[7.0]
   private
 
   def migrate_existing_open_calls!
-    country = Location.find_by! location_type: :country, name_en: "Colombia"
     OpenCall.all.each do |open_call|
       open_call.assign_attributes country_id: country.id, instrument_types: [open_call.instrument_type]
       open_call.save validate: false
     end
+  end
+
+  def country
+    @country ||= Location.find_by! location_type: :country, name_en: "Colombia"
   end
 end
