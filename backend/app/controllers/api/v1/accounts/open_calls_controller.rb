@@ -4,10 +4,20 @@ module API
       class OpenCallsController < BaseController
         include API::Pagination
 
+        before_action :fetch_open_call, only: [:update]
         load_and_authorize_resource
 
         def create
           @open_call.save!
+          render json: OpenCallSerializer.new(
+            @open_call,
+            include: included_relationships,
+            params: {current_user: current_user}
+          ).serializable_hash
+        end
+
+        def update
+          @open_call.update! update_params
           render json: OpenCallSerializer.new(
             @open_call,
             include: included_relationships,
@@ -53,6 +63,10 @@ module API
             sdgs: [],
             instrument_types: []
           )
+        end
+
+        def fetch_open_call
+          @open_call = OpenCall.friendly.find(params[:id])
         end
       end
     end
