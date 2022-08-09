@@ -37,7 +37,7 @@ export const AccountPendingApproval = () => {
       </Button>
       <Link href={FaqPaths[FaqQuestions.WhyAccountIsPendingApproval]} passHref>
         <a target="_blank" rel="noopener noreferrer" className="font-sans text-gray-600 underline">
-          <FormattedMessage defaultMessage="Why is my profile pending approval?" id="Ftj+/t" />
+          <FormattedMessage defaultMessage="Why is my account pending approval?" id="I2yxwP" />
         </a>
       </Link>
     </div>
