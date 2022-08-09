@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 
-import { Facebook, Heart as HeartIcon, Link, Mail, Twitter } from 'react-feather';
+import { Heart as HeartIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';

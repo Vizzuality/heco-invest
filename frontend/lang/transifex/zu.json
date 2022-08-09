@@ -86,6 +86,9 @@
   "02KfzX": {
     "string": "Add your legal registration number so we can verify your legal entity. This information will not be publicly available."
   },
+  "06VF+w": {
+    "string": "Share on Facebook"
+  },
   "0Bne2n": {
     "string": "Location Area"
   },
@@ -142,9 +145,6 @@
   },
   "11hyS6": {
     "string": "Add your legal registration number so we can verify your legal entity . This information will not be publicaly available."
-  },
-  "1AM5V6": {
-    "string": "Reach out {title} on the HeCo Invest through the link"
   },
   "1B1DeU": {
     "string": "HeCo Invest relies on the <span>ARIES Artificial Intelligence</span> model to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four dimensions of interest based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10 as shown in the chart of impact."
@@ -353,6 +353,9 @@
   "6EYInP": {
     "string": "My open call applications"
   },
+  "6GktxW": {
+    "string": "Someone has shared a HeCo invest contact with you"
+  },
   "6IKs4G": {
     "string": "wood and soil biomass, application of sustainable forest measures;"
   },
@@ -412,6 +415,9 @@
   },
   "8/Da7A": {
     "string": "Deadline"
+  },
+  "80Vefc": {
+    "string": "Share on Twitter"
   },
   "8Gp8gS": {
     "string": "Open call name"
@@ -712,6 +718,9 @@
   },
   "ErIkUS": {
     "string": "Insert your email"
+  },
+  "EsZlwZ": {
+    "string": "Copy link to clipboard"
   },
   "EvP1Ut": {
     "string": "Preview project page"
@@ -1091,6 +1100,9 @@
   },
   "Nye7xC": {
     "string": "Explore our curated database featuring the contacts you need to take your project or business to the next level."
+  },
+  "O29TSs": {
+    "string": "Share by email"
   },
   "OBhULP": {
     "string": "Open calls"
@@ -1902,6 +1914,9 @@
   "i9eK6b": {
     "string": "Show verified content only"
   },
+  "iAtu/T": {
+    "string": "Someone has shared a HeCo invest project with you"
+  },
   "iD2hRt": {
     "string": "insert the project name"
   },
@@ -2033,6 +2048,9 @@
   },
   "ku+mDU": {
     "string": "State"
+  },
+  "l+2DwB": {
+    "string": "Reach out {title} on HeCo Invest through the link"
   },
   "l2HvdU": {
     "string": "Estimated duration for project in months"
@@ -2480,9 +2498,6 @@
   },
   "w1Fanr": {
     "string": "Business"
-  },
-  "wD2sM8": {
-    "string": "Someone has shared a HeCo invest {shared} with you"
   },
   "wEQDC6": {
     "string": "Edit"

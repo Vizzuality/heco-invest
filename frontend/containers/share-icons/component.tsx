@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import Button from 'components/button';
 import Icon from 'components/icon';
 import Toast from 'components/toast';
+import Tooltip from 'components/tooltip';
 
 import { ShareIconsProps } from '.';
 
@@ -19,25 +20,30 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
 
   const { asPath } = useRouter();
   // Facebook don't support locales, so we use the staging url when in local
-  const shareLinkUrl = process.env.NEXT_PUBLIC_PROXY_BACKEND
-    ? `https://staging.hecoinvest.org${asPath}`
-    : `${process.env.NEXT_PUBLIC_FRONTEND_URL}${asPath}`;
+  const shareLinkUrl =
+    process.env.NODE_ENV === 'production'
+      ? `https://staging.hecoinvest.org${asPath}`
+      : `${process.env.NEXT_PUBLIC_PROXY_BACKEND}${asPath}`;
 
   const isProjectPage = asPath.includes('/project/');
 
   const shareLinks = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${shareLinkUrl}`,
     twitter: `https://twitter.com/intent/tweet?url=${shareLinkUrl}`,
-    email: `mailto:?subject=${formatMessage(
+    email: `mailto:?subject=${
+      isProjectPage
+        ? formatMessage({
+            defaultMessage: 'Someone has shared a HeCo invest project with you',
+            id: 'iAtu/T',
+          })
+        : formatMessage({
+            defaultMessage: 'Someone has shared a HeCo invest contact with you',
+            id: '6GktxW',
+          })
+    }&body=${formatMessage(
       {
-        defaultMessage: 'Someone has shared a HeCo invest {shared} with you',
-        id: 'wD2sM8',
-      },
-      { shared: isProjectPage ? 'project' : 'contact' }
-    )}&body=${formatMessage(
-      {
-        defaultMessage: 'Reach out {title} on the HeCo Invest through the link',
-        id: '1AM5V6',
+        defaultMessage: 'Reach out {title} on HeCo Invest through the link',
+        id: 'l+2DwB',
       },
       {
         title,
@@ -66,37 +72,81 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
         <span className="mr-2 text-sm leading-6 text-gray-600">
           <FormattedMessage defaultMessage="Share" id="OKhRC6" />
         </span>
-        <Button
-          to={shareLinks.twitter}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center w-8 h-8 px-0 py-0 transition-opacity rounded-full bg-beige text-beige hover:opacity-60 hover:text-beige"
+        <Tooltip
+          content={
+            <div className="max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
+              <FormattedMessage defaultMessage="Share on Twitter" id="80Vefc" />
+            </div>
+          }
         >
-          <Icon fill="white" icon={Twitter} />
-        </Button>
-        <Button
-          to={shareLinks.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center w-8 h-8 px-0 py-0 text-transparent transition-opacity rounded-full bg-beige hover:opacity-60 hover:text-transparent"
+          <Button
+            to={shareLinks.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-8 h-8 px-0 py-0 transition-opacity rounded-full bg-beige text-beige hover:opacity-60 hover:text-beige"
+          >
+            <span className="sr-only">
+              <FormattedMessage defaultMessage="Share on Twitter" id="80Vefc" />
+            </span>
+            <Icon fill="white" icon={Twitter} />
+          </Button>
+        </Tooltip>
+        <Tooltip
+          content={
+            <div className="max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
+              <FormattedMessage defaultMessage="Share on Facebook" id="06VF+w" />
+            </div>
+          }
         >
-          <Icon fill="white" icon={Facebook} />
-        </Button>
-        <Button
-          to={shareLinks.email}
-          className="flex items-center justify-center w-8 h-8 px-0 py-0 transition-opacity rounded-full bg-beige text-beige hover:opacity-60 hover:text-beige"
+          <Button
+            to={shareLinks.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-8 h-8 px-0 py-0 text-transparent transition-opacity rounded-full bg-beige hover:opacity-60 hover:text-transparent"
+          >
+            <span className="sr-only">
+              <FormattedMessage defaultMessage="Share on Facebook" id="06VF+w" />
+            </span>
+            <Icon fill="white" icon={Facebook} />
+          </Button>
+        </Tooltip>
+        <Tooltip
+          content={
+            <div className="max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
+              <FormattedMessage defaultMessage="Share by email" id="O29TSs" />
+            </div>
+          }
         >
-          <Icon icon={Mail} fill="white" />
-        </Button>
-        <Button
-          onClick={copyToClipboard}
-          className="flex items-center justify-center w-8 h-8 px-0 py-0 text-white transition-opacity rounded-full bg-beige hover:opacity-60 hover:text-white"
+          <Button
+            to={shareLinks.email}
+            className="flex items-center justify-center w-8 h-8 px-0 py-0 transition-opacity rounded-full bg-beige text-beige hover:opacity-60 hover:text-beige"
+          >
+            <span className="sr-only">
+              <FormattedMessage defaultMessage="Share by email" id="O29TSs" />
+            </span>
+            <Icon icon={Mail} fill="white" />
+          </Button>
+        </Tooltip>
+        <Tooltip
+          content={
+            <div className="max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
+              <FormattedMessage defaultMessage="Copy link to clipboard" id="EsZlwZ" />{' '}
+            </div>
+          }
         >
-          <Icon icon={Link} />
-        </Button>
+          <Button
+            onClick={copyToClipboard}
+            className="flex items-center justify-center w-8 h-8 px-0 py-0 text-white transition-opacity rounded-full bg-beige hover:opacity-60 hover:text-white"
+          >
+            <span className="sr-only">
+              <FormattedMessage defaultMessage="Copy link to clipboard" id="EsZlwZ" />
+            </span>
+            <Icon icon={Link} />
+          </Button>
+        </Tooltip>
       </div>
       {copied && (
-        <div className="-translate-x-10 translate-y-4 lg:absolute min-w-fit">
+        <div className="-translate-x-10 translate-y-4 absolute min-w-fit">
           <Toast
             id="copied-success"
             level="success"

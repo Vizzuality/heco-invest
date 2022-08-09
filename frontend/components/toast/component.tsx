@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react';
 
+import { FormattedMessage } from 'react-intl';
+
 import cx from 'classnames';
 
 import { motion, useAnimation } from 'framer-motion';
@@ -102,10 +104,8 @@ export const Toast: React.FC<ToastProps> = ({
                 onUpdate={handleProgressUpdate}
                 onAnimationComplete={handleDismiss}
               />
-
               <Icon icon={ICON} className="relative z-20 self-center w-5 h-5" />
             </div>
-
             <div className="flex-grow ml-2.5">{content}</div>
           </div>
 
@@ -117,6 +117,9 @@ export const Toast: React.FC<ToastProps> = ({
             })}
             onClick={handleDismiss}
           >
+            <span className="sr-only">
+              <FormattedMessage defaultMessage="Dismiss" id="TDaF6J" />
+            </span>
             <Icon icon={xIcon} className="w-3 h-3" />
           </button>
         </div>
