@@ -18,6 +18,11 @@ RSpec.describe OpenCall, type: :model do
     expect(subject).to have(1).errors_on(:closing_at)
   end
 
+  it "should not be valid without country" do
+    subject.country = nil
+    expect(subject).to have(1).errors_on(:country)
+  end
+
   it "should not be valid without name" do
     subject.name = nil
     expect(subject).to have(1).errors_on(:name)
@@ -28,9 +33,14 @@ RSpec.describe OpenCall, type: :model do
     expect(subject).to have(1).errors_on(:description)
   end
 
-  it "should not be valid without money distribution" do
-    subject.money_distribution = nil
-    expect(subject).to have(1).errors_on(:money_distribution)
+  it "should not be valid without funding_priorities" do
+    subject.funding_priorities = nil
+    expect(subject).to have(1).errors_on(:funding_priorities)
+  end
+
+  it "should not be valid without funding_exclusions" do
+    subject.funding_exclusions = nil
+    expect(subject).to have(1).errors_on(:funding_exclusions)
   end
 
   it "should not be valid without impact description" do
@@ -53,7 +63,6 @@ RSpec.describe OpenCall, type: :model do
     expect(subject).to have(1).errors_on(:language)
   end
 
-  include_examples :static_relation_validations, attribute: :instrument_type, presence: true
-  include_examples :static_relation_validations, attribute: :ticket_size, presence: true
+  include_examples :static_relation_validations, attribute: :instrument_types, presence: true
   include_examples :static_relation_validations, attribute: :sdgs, presence: false
 end

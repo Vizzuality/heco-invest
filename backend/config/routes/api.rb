@@ -57,7 +57,7 @@ namespace :api, format: "json" do
           get :favourites
         end
       end
-      resources :open_calls, only: [] do
+      resources :open_calls, only: [:create] do
         collection do
           get :favourites
         end

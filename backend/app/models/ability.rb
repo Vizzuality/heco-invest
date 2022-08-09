@@ -38,8 +38,6 @@ class Ability
 
     can %i[create update], Investor, account_id: user.account_id
     can %i[create update], ProjectDeveloper, account_id: user.account_id
-    can %i[create update], Project, project_developer: {account_id: user.account_id}
-    can %i[create update], OpenCall, investor: {account_id: user.account_id}
 
     # users can always see their own data
     can %i[show], ProjectDeveloper, account_id: user.account_id
@@ -72,5 +70,11 @@ class Ability
     can %i[favourites], ProjectDeveloper, favourite_project_developers: {user_id: user.id}
     can %i[favourites], Investor, favourite_investors: {user_id: user.id}
     can %i[favourites], OpenCall, favourite_open_calls: {user_id: user.id}
+
+    if user.account.investor_id.present?
+      can %i[create update], OpenCall, investor: {account_id: user.account_id}
+    else
+      can %i[create update], Project, project_developer: {account_id: user.account_id}
+    end
   end
 end

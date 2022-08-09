@@ -129,11 +129,13 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
+                  picture: {"$ref" => "#/components/schemas/image_blob"},
                   description: {type: :string},
-                  ticket_size: {type: :string},
-                  instrument_type: {type: :string},
+                  funding_priorities: {type: :string},
+                  funding_exclusions: {type: :string},
+                  maximum_funding_per_project: {type: :integer},
+                  instrument_types: {type: :array, items: {type: :string}},
                   sdgs: {type: :array, items: {type: :integer}},
-                  money_distribution: {type: :string},
                   impact_description: {type: :string},
                   closing_at: {type: :string},
                   language: {type: :string},
@@ -143,7 +145,10 @@ RSpec.configure do |config|
               relationships: {
                 type: :object,
                 properties: {
-                  investor: {"$ref" => "#/components/schemas/response_relation"}
+                  investor: {"$ref" => "#/components/schemas/response_relation"},
+                  country: {"$ref" => "#/components/schemas/response_relation"},
+                  municipality: {"$ref" => "#/components/schemas/response_relation"},
+                  department: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }
             },
