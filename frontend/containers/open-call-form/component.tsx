@@ -3,8 +3,6 @@ import { FC, useCallback, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { Dayjs } from 'dayjs';
-
 import { getServiceErrors, useGetAlert, useLanguageNames } from 'helpers/pages';
 
 import ContentLanguageAlert from 'containers/forms/content-language-alert';
@@ -13,10 +11,9 @@ import MultiPageLayout, { OutroPage, Page } from 'containers/multi-page-layout';
 
 import Button from 'components/button';
 import Head from 'components/head';
-import { ProjectStatus } from 'enums';
-import { OpenCallForm as OpenFormType, OpenCallFormDto } from 'types/open-calls';
-import { formPageInputs } from 'validations/open-call';
-import useOpenCallResolver from 'validations/open-call';
+import { OpenCallStatus } from 'enums';
+import { OpenCallForm as OpenFormType, OpenCallDto, OpenCall } from 'types/open-calls';
+import useOpenCallResolver, { formPageInputs } from 'validations/open-call';
 
 import {
   OpenCallInformation,
@@ -41,6 +38,7 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
   const [showLeave, setShowLeave] = useState(false);
   const [slug, setSlug] = useState<string>();
   const resolver = useOpenCallResolver(currentPage);
+
   const {
     handleSubmit,
     register,
@@ -55,40 +53,37 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
     shouldUseNativeValidation: true,
     shouldFocusError: true,
     reValidateMode: 'onChange',
-    // defaultValues,
   });
+
   const isLastPage = currentPage === totalPages - 1;
   const languageNames = useLanguageNames();
   const isOutroPage = currentPage === totalPages;
 
-  const handleCompletion = useCallback(
-    ({
-      data: {
-        data: { slug, status, trusted },
-      },
-    }) => {
-      if (status === ProjectStatus.Published && trusted !== true) {
-        setCurrentPage(currentPage + 1);
-        setSlug(slug);
-      } else {
-        onComplete();
-      }
-    },
-    [currentPage, onComplete]
-  );
-
   const handleMutate = useCallback(
-    (data: OpenCallFormDto) => {
-      return mutation.mutate(data, {
-        onError: (error) => {
-          const { errorPages, fieldErrors } = getServiceErrors<OpenFormType>(error, formPageInputs);
-          fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
-          errorPages.length && setCurrentPage(errorPages[0]);
-        },
-        onSuccess: handleCompletion,
-      });
+    (data: OpenCallDto) => {
+      return mutation.mutate(
+        { dto: data, locale: language },
+        {
+          onError: (error) => {
+            const { errorPages, fieldErrors } = getServiceErrors<OpenFormType>(
+              error,
+              formPageInputs
+            );
+            fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
+            errorPages.length && setCurrentPage(errorPages[0]);
+          },
+          onSuccess: (data) => {
+            if (data.data.data.trusted) {
+              onComplete();
+            } else {
+              setCurrentPage(currentPage + 1);
+              setSlug(data.data.data.slug);
+            }
+          },
+        }
+      );
     },
-    [handleCompletion, mutation, setError]
+    [currentPage, language, mutation, onComplete, setError]
   );
 
   const onSubmit: SubmitHandler<OpenFormType> = (values) => {
@@ -105,12 +100,12 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
   };
 
   const handleSubmitDraft = async () => {
-    setValue('status', ProjectStatus.Draft);
+    setValue('status', OpenCallStatus.Draft);
     await handleSubmit(onSubmit)();
   };
 
   const handleSubmitPublish = async () => {
-    setValue('status', ProjectStatus.Published);
+    setValue('status', OpenCallStatus.Published);
     await handleSubmit(onSubmit)();
   };
 
@@ -137,7 +132,7 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
         onSubmitClick={handleSubmitPublish}
         footerElements={
           isLastPage &&
-          openCall?.status !== ProjectStatus.Published && (
+          openCall?.status !== OpenCallStatus.Published && (
             <Button
               className="px-3 py-2 leading-none md:px-8 md:py-4"
               theme="secondary-green"

@@ -48,7 +48,7 @@ export const OpenCallExpectedImpact: FC<OpenCallExpectedImpactProps> = ({
           </div>
           <Textarea
             className="mt-2.5"
-            name="expected_impact"
+            name="impact_description"
             id="expected_impact"
             register={register}
             placeholder={formatMessage({
@@ -57,7 +57,7 @@ export const OpenCallExpectedImpact: FC<OpenCallExpectedImpactProps> = ({
             })}
             aria-describedby="description-error"
           />
-          <ErrorMessage id="expected_impact-error" errorText={errors.expected_impact?.message} />
+          <ErrorMessage id="expected_impact-error" errorText={errors.impact_description?.message} />
         </div>
         <div className="mt-4.5">
           <Label htmlFor="sdgs" className="mr-2">

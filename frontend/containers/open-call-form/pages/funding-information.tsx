@@ -47,7 +47,7 @@ export const OpenCallFundingInformation: FC<OpenCallFundingInformationProps> = (
           <Input
             type="number"
             className="mt-2.5"
-            name="max_funding"
+            name="maximum_funding_per_project"
             id="max_funding"
             register={register}
             placeholder={formatMessage({
@@ -56,7 +56,10 @@ export const OpenCallFundingInformation: FC<OpenCallFundingInformationProps> = (
             })}
             aria-describedby="max_funding-error"
           />
-          <ErrorMessage id="max_funding-error" errorText={errors.max_funding?.message} />
+          <ErrorMessage
+            id="max_funding-error"
+            errorText={errors.maximum_funding_per_project?.message}
+          />
         </div>
 
         <div className="mt-4.5 mb-8">

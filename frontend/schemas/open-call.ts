@@ -1,6 +1,8 @@
 import { useIntl } from 'react-intl';
 
-import { object, string, array, date, number } from 'yup';
+import { object, string, array, date, number, SchemaOf } from 'yup';
+
+import { OpenCallForm } from 'types/open-calls';
 
 export default (page: number) => {
   const { formatMessage } = useIntl();
@@ -47,31 +49,47 @@ export default (page: number) => {
     }),
   };
 
-  const schemas = [
-    object().shape({
-      name: string().required(messages.name),
-      picture: string(),
-      country_id: string().required(messages.country_id),
-      department_id: string(),
-      municipality_id: string(),
-      description: string().max(600, maxTextLength).required(messages.description),
-    }),
-    object().shape({
-      expected_impact: string().max(600, maxTextLength).required(messages.expected_impact),
-      sdgs: array().of(string()).ensure(),
-    }),
-    object().shape({
-      max_funding: number().min(1).required(messages.max_funding),
-      instrument_types: array()
-        .of(string())
-        .min(1, messages.instrument_types)
-        .typeError(messages.instrument_types),
-      funding_priorities: string().max(600, maxTextLength).required(messages.funding_priorities),
-      funding_exclusions: string().max(600, maxTextLength).required(messages.funding_exclusions),
-    }),
-    object().shape({
-      closing_at: date().required(messages.closing_at),
-    }),
+  const openCallSchema: SchemaOf<Partial<OpenCallForm>> = object({
+    name: string().required(messages.name),
+    picture: string(),
+    country_id: string().required(messages.country_id),
+    department_id: string(),
+    municipality_id: string(),
+    description: string().max(600, maxTextLength).required(messages.description),
+    impact_description: string().max(600, maxTextLength).required(messages.expected_impact),
+    sdgs: array().of(number()).ensure(),
+    maximum_funding_per_project: number()
+      .typeError(messages.max_funding)
+      .min(1)
+      .required(messages.max_funding),
+    instrument_types: array()
+      .of(string())
+      .min(1, messages.instrument_types)
+      .typeError(messages.instrument_types),
+    funding_priorities: string().max(600, maxTextLength).required(messages.funding_priorities),
+    funding_exclusions: string().max(600, maxTextLength).required(messages.funding_exclusions),
+    closing_at: date().required(messages.closing_at),
+    status: string(),
+  });
+
+  const schemas: SchemaOf<Partial<OpenCallForm>>[] = [
+    openCallSchema.pick([
+      'name',
+      'picture',
+      'country_id',
+      'department_id',
+      'municipality_id',
+      'description',
+    ]),
+    openCallSchema.pick(['impact_description', 'sdgs']),
+    openCallSchema.pick([
+      'maximum_funding_per_project',
+      'instrument_types',
+      'funding_priorities',
+      'funding_exclusions',
+    ]),
+    openCallSchema.pick(['closing_at']),
   ];
+
   return schemas[page];
 };

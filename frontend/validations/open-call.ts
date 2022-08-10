@@ -9,7 +9,7 @@ export default (section: number) => {
 
 export const formPageInputs: Partial<keyof OpenCallForm>[][] = [
   ['name', 'picture', 'country_id', 'department_id', 'municipality_id', 'description'],
-  ['expected_impact', 'sdgs'],
-  ['max_funding', 'instrument_types', 'funding_priorities', 'funding_exclusions'],
+  ['impact_description', 'sdgs'],
+  ['maximum_funding_per_project', 'instrument_types', 'funding_priorities', 'funding_exclusions'],
   ['closing_at'],
 ];

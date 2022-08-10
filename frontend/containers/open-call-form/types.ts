@@ -13,7 +13,7 @@ import { AxiosError, AxiosResponse } from 'axios';
 
 import { Languages } from 'enums';
 import { Enum, GroupedEnums } from 'types/enums';
-import { OpenCall, OpenCallForm, OpenCallFormDto } from 'types/open-calls';
+import { OpenCall, OpenCallForm, OpenCallDto } from 'types/open-calls';
 
 import { ResponseData, ErrorResponse } from 'services/types';
 
@@ -22,9 +22,9 @@ export type OpenCallFormTypes = {
   mutation: UseMutationResult<
     AxiosResponse<ResponseData<OpenCall>>,
     AxiosError<ErrorResponse>,
-    OpenCallFormDto
+    { dto: OpenCallDto; locale: Languages }
   >;
-  initialValues?: any;
+  initialValues?: OpenCall;
   enums: GroupedEnums;
   language: Languages;
   onComplete: () => void;
