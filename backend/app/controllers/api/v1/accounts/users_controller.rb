@@ -31,10 +31,12 @@ module API
 
         # DELETE
         def favourites
-          current_user.favourite_projects.destroy_all
-          current_user.favourite_project_developers.destroy_all
-          current_user.favourite_investors.destroy_all
-          current_user.favourite_open_calls.destroy_all
+          ActiveRecord::Base.transaction do
+            current_user.favourite_projects.destroy_all
+            current_user.favourite_project_developers.destroy_all
+            current_user.favourite_investors.destroy_all
+            current_user.favourite_open_calls.destroy_all
+          end
           head :ok
         end
 
