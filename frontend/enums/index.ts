@@ -96,6 +96,8 @@ export enum Queries {
   AccountUsersList = 'account_users',
   /** Invited User */
   InvitedUser = 'invited_user',
+  /** List of open calls */
+  OpenCallsList = 'open_calls',
 }
 
 /** Location endpoint param location_type */
@@ -166,6 +168,11 @@ export enum InvitationStatus {
 }
 
 export enum ProjectStatus {
+  Published = 'published',
+  Draft = 'draft',
+}
+
+export enum OpenCallStatus {
   Published = 'published',
   Draft = 'draft',
 }

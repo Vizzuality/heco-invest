@@ -17,6 +17,8 @@ import NakedLayout from 'layouts/naked';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
 
+import { useGetOpenCallList } from 'services/open-call/open-call-service';
+
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
@@ -29,6 +31,8 @@ type OpenCallsPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const OpenCallsPage: PageComponent<OpenCallsPageProps, DashboardLayoutProps> = () => {
   const intl = useIntl();
+
+  const openCalls = useGetOpenCallList();
 
   return (
     <ProtectedPage permissions={[UserRoles.Investor]}>
