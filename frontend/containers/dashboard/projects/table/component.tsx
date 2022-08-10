@@ -41,7 +41,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ onLoaded = noop }) => {
     isLoading: isLoadingProjects,
     isFetching: isFetchingProjects,
   } = useAccountProjectsList(
-    { ...queryParams, includes: ['municipality', 'country'] },
+    { ...queryParams, includes: ['municipality', 'department', 'country', 'project_images'] },
     queryOptions
   );
 
@@ -91,6 +91,7 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ onLoaded = noop }) => {
       },
     ],
     data: projects.map((project) => ({
+      data: project,
       slug: project.slug,
       name: project.name,
       status: project.status,
