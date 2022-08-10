@@ -128,7 +128,7 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
-        onCloseClick={() => (isOutroPage ? onComplete() : setShowLeave(true))}
+        onCloseClick={() => setShowLeave(true)}
         onSubmitClick={handleSubmitPublish}
         footerElements={
           isLastPage &&
@@ -188,13 +188,13 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
         <OutroPage>
           <PendingVerification slug={slug} />
         </OutroPage>
-        <LeaveFormModal
-          isOpen={showLeave}
-          close={() => setShowLeave(false)}
-          handleLeave={onComplete}
-          title={leaveMessage}
-        />
       </MultiPageLayout>
+      <LeaveFormModal
+        isOpen={showLeave}
+        close={() => setShowLeave(false)}
+        handleLeave={onComplete}
+        title={leaveMessage}
+      />
     </div>
   );
 };
