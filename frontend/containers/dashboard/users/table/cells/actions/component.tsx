@@ -27,7 +27,7 @@ export const CellActions = ({ row }: CellActionsProps) => {
 
   if (!row) return null;
   const {
-    original: { id, invitation, first_name, last_name, email },
+    original: { id, invitation, first_name, last_name, email, owner },
   } = row;
   const displayName = first_name ? first_name + ' ' + last_name : email;
   const canResendInvitation =
@@ -45,12 +45,14 @@ export const CellActions = ({ row }: CellActionsProps) => {
   };
 
   const handleDeleteUser = (userId: string) => {
-    deleteUser.mutate(userId, {
-      onSuccess: () => {
-        queryClient.invalidateQueries(Queries.AccountUsersList);
-        setConfirmDelete(false);
-      },
-    });
+    if (!owner) {
+      deleteUser.mutate(userId, {
+        onSuccess: () => {
+          queryClient.invalidateQueries(Queries.AccountUsersList);
+          setConfirmDelete(false);
+        },
+      });
+    }
   };
 
   const handleDismiss = () => {
@@ -91,26 +93,28 @@ export const CellActions = ({ row }: CellActionsProps) => {
         </button>
       </Tooltip>
 
-      <Tooltip
-        placement="top"
-        arrow
-        arrowClassName="bg-black"
-        content={
-          <div className="max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
-            <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
-          </div>
-        }
-      >
-        <button
-          type="button"
-          onClick={() => setConfirmDelete(true)}
-          disabled={deleteUser.isLoading}
-          className="flex items-center justify-center w-8 h-8 border rounded-full hover:bg-green-light hover:bg-opacity-20 pointer border-green-dark"
+      {!owner && (
+        <Tooltip
+          placement="top"
+          arrow
+          arrowClassName="bg-black"
+          content={
+            <div className="max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
+              <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
+            </div>
+          }
         >
-          <Loading visible={deleteUser.isLoading} />
-          {!deleteUser.isLoading && <Icon className="w-5 h-5 text-green-dark" icon={TrashIcon} />}
-        </button>
-      </Tooltip>
+          <button
+            type="button"
+            onClick={() => setConfirmDelete(true)}
+            disabled={deleteUser.isLoading}
+            className="flex items-center justify-center w-8 h-8 border rounded-full hover:bg-green-light hover:bg-opacity-20 pointer border-green-dark"
+          >
+            <Loading visible={deleteUser.isLoading} />
+            {!deleteUser.isLoading && <Icon className="w-5 h-5 text-green-dark" icon={TrashIcon} />}
+          </button>
+        </Tooltip>
+      )}
 
       <ConfirmationPrompt
         open={confirmDelete}

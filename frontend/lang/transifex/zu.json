@@ -86,6 +86,9 @@
   "02KfzX": {
     "string": "Add your legal registration number so we can verify your legal entity. This information will not be publicly available."
   },
+  "06VF+w": {
+    "string": "Share on Facebook"
+  },
   "0Bne2n": {
     "string": "Location Area"
   },
@@ -202,6 +205,9 @@
   },
   "2sU5tO": {
     "string": "What HeCo Invest can do for you"
+  },
+  "2yCGR2": {
+    "string": "Link copied to clipboard"
   },
   "35YoEI": {
     "string": "Description of the project"
@@ -356,6 +362,9 @@
   "6FQ0Y8": {
     "string": "Leave open call creation form"
   },
+  "6GktxW": {
+    "string": "Someone has shared a HeCo invest contact with you"
+  },
   "6IKs4G": {
     "string": "wood and soil biomass, application of sustainable forest measures;"
   },
@@ -421,6 +430,9 @@
   },
   "8/Da7A": {
     "string": "Deadline"
+  },
+  "80Vefc": {
+    "string": "Share on Twitter"
   },
   "8Gp8gS": {
     "string": "Open call name"
@@ -740,6 +752,9 @@
   "ErIkUS": {
     "string": "Insert your email"
   },
+  "EsZlwZ": {
+    "string": "Copy link to clipboard"
+  },
   "EvP1Ut": {
     "string": "Preview project page"
   },
@@ -781,9 +796,6 @@
   },
   "Fg5HOn": {
     "string": "Every new account created will need to be approved by the HeCo Invest staff - platform administrator. This approval process allows for the verification of each organization, institution or business that applies to the HeCo Invest platform, guaranteeing that only trustworthy organizations will present their projects or investment opportunities. Therefore, your account will only be visible on the HeCo Invest platform after the platform administrator completes this approval step."
-  },
-  "Ftj+/t": {
-    "string": "Why is my profile pending approval?"
   },
   "Fxekek": {
     "string": "Invite again"
@@ -1035,6 +1047,9 @@
   "LtTjKV": {
     "string": "selected"
   },
+  "Lw4PWP": {
+    "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
+  },
   "M1xKEI": {
     "string": "Language: {language}"
   },
@@ -1134,6 +1149,9 @@
   "Nye7xC": {
     "string": "Explore our curated database featuring the contacts you need to take your project or business to the next level."
   },
+  "O29TSs": {
+    "string": "Share by email"
+  },
   "OBhULP": {
     "string": "Open calls"
   },
@@ -1142,6 +1160,9 @@
   },
   "OJfOvp": {
     "string": "The account owner can invite other colleagues to the account. These will receive an invitation by email to join the account. Each email can only be associated with one account. Once you are set as an account user, you can manage the account. However, adding or removing other account users can only be managed by account owners."
+  },
+  "OKhRC6": {
+    "string": "Share"
   },
   "OSAxiC": {
     "string": "The solution or opportunity proposed"
@@ -1953,6 +1974,9 @@
   "i9eK6b": {
     "string": "Show verified content only"
   },
+  "iAtu/T": {
+    "string": "Someone has shared a HeCo invest project with you"
+  },
   "iD2hRt": {
     "string": "insert the project name"
   },
@@ -2084,6 +2108,9 @@
   },
   "ku+mDU": {
     "string": "State"
+  },
+  "l+2DwB": {
+    "string": "Reach out {title} on HeCo Invest through the link"
   },
   "l2HvdU": {
     "string": "Estimated duration for project in months"

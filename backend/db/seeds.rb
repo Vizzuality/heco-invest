@@ -30,7 +30,15 @@ if Rails.env.development?
       language: investor_account.language
     )
     (0..5).to_a.sample.times do
-      FactoryBot.create(:open_call, investor: investor)
+      municipality = Location.where(location_type: :municipality).order("RANDOM()").first ||
+        FactoryBot.create(:municipality, parent: FactoryBot.create(:department, parent: FactoryBot.create(:location)))
+      FactoryBot.create(
+        :open_call,
+        investor: investor,
+        municipality: municipality,
+        department: municipality.parent,
+        country: municipality.parent.parent
+      )
     end
 
     project_developer_account = FactoryBot.create(:account)

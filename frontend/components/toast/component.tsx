@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react';
 
+import { FormattedMessage } from 'react-intl';
+
 import cx from 'classnames';
 
 import { motion, useAnimation } from 'framer-motion';
@@ -17,6 +19,7 @@ export const Toast: React.FC<ToastProps> = ({
   level = 'info',
   autoDismiss = true,
   onDismiss,
+  size = 'medium',
 }: ToastProps) => {
   const DURATION = 5;
   const controls = useAnimation();
@@ -79,8 +82,10 @@ export const Toast: React.FC<ToastProps> = ({
           <div className="flex flex-grow">
             <div
               className={cx({
-                'relative w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center shadow-md overflow-hidden z-20':
+                'relative rounded-xl flex-shrink-0 flex items-center justify-center shadow-md overflow-hidden z-20':
                   true,
+                'w-10 h-10': size === 'medium',
+                'w-6 h-6': size === 'small',
               })}
             >
               <div
@@ -99,18 +104,22 @@ export const Toast: React.FC<ToastProps> = ({
                 onUpdate={handleProgressUpdate}
                 onAnimationComplete={handleDismiss}
               />
-
               <Icon icon={ICON} className="relative z-20 self-center w-5 h-5" />
             </div>
-
             <div className="flex-grow ml-2.5">{content}</div>
           </div>
 
           <button
             type="button"
-            className="flex items-center justify-center flex-shrink-0 w-10 h-10 ml-5"
+            className={cx('flex items-center justify-center flex-shrink-0 ml-5', {
+              'w-10 h-10': size === 'medium',
+              'w-6 h-6': size === 'small',
+            })}
             onClick={handleDismiss}
           >
+            <span className="sr-only">
+              <FormattedMessage defaultMessage="Dismiss" id="TDaF6J" />
+            </span>
             <Icon icon={xIcon} className="w-3 h-3" />
           </button>
         </div>

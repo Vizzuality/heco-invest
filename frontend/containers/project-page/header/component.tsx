@@ -10,6 +10,7 @@ import { useProjectContacts } from 'helpers/project';
 
 import CategoryTag from 'containers/category-tag';
 import ImageGallery from 'containers/image-gallery';
+import ShareIcons from 'containers/share-icons';
 import ContactInformationModal from 'containers/social-contact/contact-information-modal';
 
 import Button from 'components/button';
@@ -143,7 +144,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
           )}
           <p>{project.description}</p>
         </div>
-        <div className="lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0">
+        <div className="lg:mr-4 p-6 bg-white drop-shadow-xl pb-16 lg:pb-8 lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0 flex flex-col z-30">
           {project.looking_for_funding ? (
             <div className="flex flex-col gap-8 md:flex-row">
               <div className="flex flex-col items-start justify-end w-full gap-2 text-center md:min-w-1/2">
@@ -192,7 +193,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
 
           <div className="flex flex-col justify-between gap-4 mt-5 lg:flex-row">
             <Button
-              className="justify-start"
+              className="justify-center"
               theme="secondary-green"
               onClick={handleFavoriteClick}
               disabled={!user}
@@ -213,6 +214,9 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
             >
               <FormattedMessage defaultMessage="Contact" id="zFegDD" />
             </Button>
+          </div>
+          <div className="flex justify-center mt-4 lg:mt-0">
+            <ShareIcons title={project.name} />
           </div>
         </div>
       </LayoutContainer>

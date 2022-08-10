@@ -29,6 +29,17 @@ module API
           render json: UserSerializer.new(user, params: {current_user: user}).serializable_hash
         end
 
+        # DELETE
+        def favourites
+          ActiveRecord::Base.transaction do
+            current_user.favourite_projects.destroy_all
+            current_user.favourite_project_developers.destroy_all
+            current_user.favourite_investors.destroy_all
+            current_user.favourite_open_calls.destroy_all
+          end
+          head :ok
+        end
+
         private
 
         def filter_params

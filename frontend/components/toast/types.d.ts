@@ -17,6 +17,8 @@ export interface ToastProps {
   level: Level;
   autoDismiss?: boolean;
   onDismiss?: (id: string) => void;
+  /** Size of the component. Defaults to 'medium' */
+  size?: 'small' | 'medium' | 'large';
 }
 
 export interface ToastTheme {

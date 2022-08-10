@@ -1,14 +1,17 @@
 module API
   module V1
     class OpenCallSerializer < BaseSerializer
+      include BlobSerializer
+
       attributes :name,
         :slug,
         :description,
-        :ticket_size,
-        :instrument_type,
+        :instrument_types,
         :sdgs,
-        :money_distribution,
+        :funding_priorities,
+        :funding_exclusions,
         :impact_description,
+        :maximum_funding_per_project,
         :closing_at,
         :language,
         :account_language,
@@ -16,6 +19,13 @@ module API
         :created_at
 
       belongs_to :investor
+      belongs_to :country, serializer: LocationSerializer
+      belongs_to :municipality, serializer: LocationSerializer
+      belongs_to :department, serializer: LocationSerializer
+
+      attribute :picture do |object|
+        image_links_for object.picture
+      end
     end
   end
 end
