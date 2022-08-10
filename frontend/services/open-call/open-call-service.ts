@@ -1,12 +1,12 @@
-import { useMutation, UseMutationResult } from 'react-query';
+import { useMutation, UseMutationResult, UseQueryResult } from 'react-query';
 
-import { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import { Languages, Queries } from 'enums';
-import { OpenCall, OpenCallDto } from 'types/open-calls';
+import { OpenCall, OpenCallDto, OpenCalParams } from 'types/open-calls';
 
 import API from 'services/api';
-import { ErrorResponse, ResponseData } from 'services/types';
+import { ErrorResponse, PagedResponse, ResponseData } from 'services/types';
 import { useLocalizedQuery } from 'hooks/query';
 
 export const useCreateOpenCall = (): UseMutationResult<
@@ -19,20 +19,33 @@ export const useCreateOpenCall = (): UseMutationResult<
   );
 };
 
-const getOpenCallsList = async () => {
-  const response = await API.get('/api/v1/open_calls');
+const getOpenCallsList = async ({
+  fields,
+  filter,
+  includes,
+}: OpenCalParams): Promise<OpenCall[]> => {
+  const params = {};
+  fields?.length && (params['fields[open_call]'] = fields.join(','));
+  includes?.length && (params['includes'] = includes.join(','));
+  filter && (params['filter[full_text]'] = filter);
+  const options: AxiosRequestConfig = {
+    url: '/api/v1/open_calls',
+    params,
+  };
+  const response = await API.request<PagedResponse<OpenCall>>(options);
   return response.data.data;
 };
 
-export const useGetOpenCallList = () => {
-  const { data, ...rest } = useLocalizedQuery(Queries.OpenCallsList, getOpenCallsList, {
-    refetchOnWindowFocus: false,
-  });
+export const useGetOpenCallList = (
+  params: OpenCalParams
+): UseQueryResult<OpenCall[], ErrorResponse> => {
+  const query = useLocalizedQuery<OpenCall[], ErrorResponse>(
+    Queries.OpenCallsList,
+    () => getOpenCallsList(params),
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
 
-  console.log(data);
-
-  return {
-    openCalls: data,
-    ...rest,
-  };
+  return query;
 };

@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -11,53 +11,48 @@ import Button from 'components/button';
 import Table from 'components/table';
 import { Paths } from 'enums';
 
-import { useAccountOpenCallList } from 'services/open-call';
 import { useEnums } from 'services/enums/enumService';
+import { useGetOpenCallList } from 'services/open-call/open-call-service';
 
-// import CellActions from './cells/actions';
-// import CellStatus from './cells/status';
+import CellActions from './cells/actions';
+import CellInstrumentTypes from './cells/instrument-types';
+import CellStatus from './cells/status';
 
 import { OpenCallsTableProps } from '.';
 
 export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
   const intl = useIntl();
 
-  const queryOptions = { keepPreviousData: true, refetchOnMount: true };
   const queryParams = useQueryParams();
 
   const {
-    data: {
-      category: allCategories,
-      instrument_type: allInstrumentTypes,
-      ticket_size: allTicketSizes,
-    },
+    data: { instrument_type: allInstrumentTypes },
     isLoading: isLoadingEnums,
   } = useEnums();
 
   const {
-    data: { data: projects } = { data: [] },
-    isLoading: isLoadingProjects,
-    isFetching: isFetchingProjects,
-  } = useAccountProjectsList(
-    { ...queryParams, includes: ['municipality', 'country'] },
-    queryOptions
-  );
+    data: openCalls,
+    isLoading: isLoadingOpenCalls,
+    isFetching: isFetchingOpenCalls,
+  } = useGetOpenCallList({
+    includes: ['municipality', 'country'],
+    fields: [
+      'name',
+      'country',
+      'municipality',
+      'instrument_types',
+      'maximum_funding_per_project',
+      'status',
+    ],
+  });
 
   const isSearching = !!queryParams.search;
-  const isLoading = isLoadingEnums || isLoadingProjects || isFetchingProjects;
-  const hasProjects = !!projects.length;
-
-  useEffect(() => {
-    if (!isLoadingProjects) onLoaded();
-  }, [isLoadingProjects, onLoaded]);
+  const isLoading = isLoadingEnums || isLoadingOpenCalls || isFetchingOpenCalls;
+  const hasOpenCalls = !!openCalls?.length;
 
   const tableProps = {
     columns: [
       { Header: intl.formatMessage({ defaultMessage: 'Title', id: '9a9+ww' }), accessor: 'name' },
-      {
-        Header: intl.formatMessage({ defaultMessage: 'Category', id: 'ccXLVi' }),
-        accessor: 'category',
-      },
       {
         Header: intl.formatMessage({ defaultMessage: 'Country', id: 'vONi+O' }),
         accessor: 'country',
@@ -69,10 +64,11 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
       {
         Header: intl.formatMessage({ defaultMessage: 'Instrument type', id: 'fDd10o' }),
         accessor: 'instrumentType',
+        Cell: CellInstrumentTypes,
       },
       {
         Header: intl.formatMessage({ defaultMessage: 'Value', id: 'GufXy5' }),
-        accessor: 'ticketSize',
+        accessor: 'maximumFundingPerProject',
         canSort: false,
       },
       {
@@ -88,19 +84,18 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
         Cell: CellActions,
       },
     ],
-    data: projects.map((project) => ({
-      slug: project.slug,
-      name: project.name,
-      status: project.status,
-      category: allCategories.find(({ id }) => id === project.category)?.name,
-      country: project.country.name,
-      municipality: project.municipality.name,
+    data: openCalls?.map((openCall) => ({
+      slug: openCall.slug,
+      name: openCall.name,
+      status: openCall.status,
+      country: openCall.country?.name,
+      municipality: openCall.municipality?.name,
       instrumentType: allInstrumentTypes
-        ?.filter(({ id }) => project.instrument_types?.includes(id))
-        .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase()))
-        .join(', '),
-      statusTag: project.status === 'draft' ? 'draft' : project.trusted ? 'verified' : 'unverified',
-      ticketSize: allTicketSizes?.find(({ id }) => project.ticket_size === id)?.description,
+        ?.filter(({ id }) => openCall.instrument_types?.includes(id))
+        .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase())),
+      maximumFundingPerProject: `$ ${openCall.maximum_funding_per_project.toLocaleString()}`,
+      statusTag:
+        openCall.status === 'draft' ? 'draft' : openCall.trusted ? 'verified' : 'unverified',
     })),
     loading: isLoading,
     sortingEnabled: true,
@@ -112,16 +107,16 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
     <>
       <SearchAndInfo className="mt-4 mb-6">
         <FormattedMessage
-          defaultMessage="Total <span>{numProjects}</span> {numProjects, plural, one {project} other {projects}}"
-          id="0iaD3T"
+          defaultMessage="Total <span>{numOpenCalls}</span> {numOpenCalls, plural, one {openCall} other {openCalls?}}"
+          id="RBc+Z9"
           values={{
             span: (chunks: string) => <span className="px-1 font-semibold">{chunks}</span>,
-            numProjects: projects.length,
+            numOpenCalls: openCalls?.length || 0,
           }}
         />
       </SearchAndInfo>
-      {hasProjects && <Table {...tableProps} />}
-      {!hasProjects && (
+      {hasOpenCalls && <Table {...tableProps} />}
+      {!hasOpenCalls && (
         <div className="flex flex-col items-center mt-10 lg:mt-20">
           {isSearching ? (
             <NoSearchResults />
@@ -129,15 +124,15 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
             <>
               <p className="text-lg text-gray-800 lg:text-xl">
                 <FormattedMessage
-                  defaultMessage="Currently you don’t have any <b>Projects</b>."
-                  id="itfsqC"
+                  defaultMessage="Currently you don’t have any <b>Open Call</b>."
+                  id="NJOWFQ"
                   values={{
                     b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
                   }}
                 />
               </p>
               <Button className="mt-8" to={Paths.ProjectCreation}>
-                <FormattedMessage defaultMessage="Create project" id="VUN1K7" />
+                <FormattedMessage defaultMessage="Create openCall" id="IsC1uH" />
               </Button>
             </>
           )}

@@ -7,6 +7,8 @@ import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import OpenCallsTable from 'containers/dashboard/open-calls/table';
+
 import Button from 'components/button';
 import Head from 'components/head';
 import Icon from 'components/icon';
@@ -16,8 +18,6 @@ import DashboardLayout, { DashboardLayoutProps } from 'layouts/dashboard';
 import NakedLayout from 'layouts/naked';
 import ProtectedPage from 'layouts/protected-page';
 import { PageComponent } from 'types';
-
-import { useGetOpenCallList } from 'services/open-call/open-call-service';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
@@ -32,8 +32,6 @@ type OpenCallsPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 export const OpenCallsPage: PageComponent<OpenCallsPageProps, DashboardLayoutProps> = () => {
   const intl = useIntl();
 
-  const openCalls = useGetOpenCallList();
-
   return (
     <ProtectedPage permissions={[UserRoles.Investor]}>
       <Head title={intl.formatMessage({ defaultMessage: 'My open calls', id: '8Qmt9j' })} />
@@ -45,7 +43,7 @@ export const OpenCallsPage: PageComponent<OpenCallsPageProps, DashboardLayoutPro
           </Button>
         }
       >
-        Open calls page
+        <OpenCallsTable />
       </DashboardLayout>
     </ProtectedPage>
   );
