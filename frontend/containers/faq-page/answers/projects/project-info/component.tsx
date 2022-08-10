@@ -160,8 +160,8 @@ export const ProjectInfo: FC = () => {
           mandatory={true}
           validationType={ItemValidationTypes.SelectMultiple}
           title={formatMessage({
-            defaultMessage: 'Which of these topics/sector categories better describe your project?',
-            id: 'i2AgQl',
+            defaultMessage: 'Target group',
+            id: '0L/mZC',
           })}
           description={formatMessage({
             defaultMessage:
