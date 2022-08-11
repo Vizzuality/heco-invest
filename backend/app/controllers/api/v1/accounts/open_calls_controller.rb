@@ -60,6 +60,7 @@ module API
             :funding_priorities,
             :funding_exclusions,
             :closing_at,
+            :status,
             sdgs: [],
             instrument_types: []
           )

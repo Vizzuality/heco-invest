@@ -709,6 +709,27 @@
         "name": "Scaling",
         "description": ">US$750,000"
       }
+    },
+    {
+      "id": "draft",
+      "type": "open_call_status",
+      "attributes": {
+        "name": "Draft"
+      }
+    },
+    {
+      "id": "launched",
+      "type": "open_call_status",
+      "attributes": {
+        "name": "Launched"
+      }
+    },
+    {
+      "id": "closed",
+      "type": "open_call_status",
+      "attributes": {
+        "name": "Closed"
+      }
     }
   ]
 }

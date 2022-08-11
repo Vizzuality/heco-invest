@@ -559,3 +559,10 @@ zu:
         name: Draft
       published:
         name: Published
+    open_call_status:
+      draft:
+        name: Draft
+      launched:
+        name: Launched
+      closed:
+        name: Closed

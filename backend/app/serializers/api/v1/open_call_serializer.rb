@@ -13,6 +13,7 @@ module API
         :impact_description,
         :maximum_funding_per_project,
         :closing_at,
+        :status,
         :language,
         :account_language,
         :trusted,
