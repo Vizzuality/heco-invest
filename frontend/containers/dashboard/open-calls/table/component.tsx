@@ -38,6 +38,7 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
     includes: ['municipality', 'country'],
     fields: [
       'name',
+      'slug',
       'country',
       'municipality',
       'instrument_types',
