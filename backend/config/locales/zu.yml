@@ -281,6 +281,7 @@ zu:
         multiple_accounts: User already have account!
         no_project_developer: User is not project developer!
         no_investor: User is not investor!
+        is_owner: User is owner of account and cannot be deleted now!
   user_mailer:
     greetings: Dear %{full_name},
     farewell_html: Best Regards,<br />Your HeCo Team

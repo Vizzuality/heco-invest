@@ -40,7 +40,7 @@ module Backoffice
     end
 
     def destroy
-      @project_developer.destroy!
+      @project_developer.account.destroy!
 
       redirect_to backoffice_project_developers_path, status: :see_other,
         notice: t("backoffice.messages.success_delete", model: t("backoffice.common.project_developer"))
