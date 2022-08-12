@@ -7,10 +7,10 @@ class Account < ApplicationRecord
 
   belongs_to :owner, class_name: "User"
 
-  has_many :users
+  has_many :users, dependent: :destroy
 
-  has_one :investor
-  has_one :project_developer
+  has_one :investor, dependent: :destroy
+  has_one :project_developer, dependent: :destroy
 
   has_one_attached :picture
 

@@ -129,6 +129,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
+                  status: {type: :string},
                   picture: {"$ref" => "#/components/schemas/image_blob"},
                   description: {type: :string},
                   funding_priorities: {type: :string},
@@ -164,6 +165,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
+                  status: {type: :string},
                   country_id: {type: :string},
                   municipality_id: {type: :string},
                   department_id: {type: :string},
