@@ -12,8 +12,9 @@ import Map from 'components/map';
 
 import { getLayer } from './helpers';
 
-export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) => {
+export const Overview: React.FC<OverviewProps> = ({ project, openCall }: OverviewProps) => {
   const { country, municipality, geometry, category, priority_landscape } = project;
+
   const layer = getLayer(geometry, category);
 
   const [bounds, setBounds] = useState({
@@ -29,7 +30,7 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
 
   return (
     <LayoutContainer className="mb-14 lg:mb-20 mt-18 space-y-36">
-      <section className="p-4 sm:p-6 mt-32 font-serif text-white lg:mt-48 lg:p-16 bg-green-dark rounded-2xl">
+      <section className="p-4 mt-32 font-serif text-white sm:p-6 lg:mt-48 lg:p-16 bg-green-dark rounded-2xl">
         <div className="relative grid w-full grid-cols-1 gap-12 lg:grid-cols-2">
           <Map
             className="absolute z-10 -mb-32 border-8 border-white drop-shadow-xl h-96 -top-44 lg:overflow-hidden rounded-xl"
