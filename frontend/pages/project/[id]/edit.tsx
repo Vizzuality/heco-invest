@@ -80,15 +80,13 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({
     isFetching: isFetchingProject,
   } = useProject(router.query.id as string, PROJECT_QUERY_PARAMS, projectProp);
 
-  const updateProject = useUpdateProject({ locale: project.language });
+  const updateProject = useUpdateProject({ locale: project?.language });
 
   const getIsOwner = (_user: User, userAccount: ProjectDeveloper | Investor) => {
     // The user must be a the creator of the project to be allowed to edit it.
-    return (
-      project?.project_developer?.id &&
-      userAccount?.id &&
-      project.project_developer.id === userAccount.id
-    );
+    if (project?.project_developer?.id && userAccount?.id) {
+      return project.project_developer.id === userAccount.id;
+    }
   };
 
   const handleOnComplete = () => {

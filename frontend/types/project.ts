@@ -47,16 +47,8 @@ export type ProjectBase = {
   target_groups: string[];
   ticket_size?: TicketSizes;
   language: Languages;
-  municipality: {
-    id: string;
-    location_type: 'municipality';
-    name: string;
-    parent: {
-      id: string;
-      location_type: 'department';
-      name: string;
-    };
-  };
+  municipality: Locations;
+  department: Locations;
   project_images: ProjectImageType[];
   trusted?: boolean;
   favourite?: boolean;
