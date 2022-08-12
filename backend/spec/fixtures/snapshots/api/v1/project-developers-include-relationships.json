@@ -219,7 +219,8 @@
         "favourite": null,
         "created_at": "2022-06-24T09:06:30.522Z",
         "status": "published",
-        "account_language": "en"
+        "account_language": "en",
+        "impact_calculated": false
       },
       "relationships": {
         "project_developer": {
@@ -334,7 +335,8 @@
         "favourite": null,
         "created_at": "2022-06-24T09:06:30.643Z",
         "status": "published",
-        "account_language": "en"
+        "account_language": "en",
+        "impact_calculated": false
       },
       "relationships": {
         "project_developer": {

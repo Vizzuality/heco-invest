@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_11_122918) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_12_075824) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -361,6 +361,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_11_122918) do
     t.decimal "priority_landscape_total_impact", precision: 25, scale: 20
     t.geometry "centroid", limit: {:srid=>0, :type=>"st_point"}
     t.uuid "priority_landscape_id"
+    t.boolean "impact_calculated", default: false
     t.index ["country_id"], name: "index_projects_on_country_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
     t.index ["municipality_id"], name: "index_projects_on_municipality_id"

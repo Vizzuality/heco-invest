@@ -70,7 +70,8 @@
         "priority_landscape_total_impact": null,
         "created_at": "2022-06-24T09:07:48.981Z",
         "status": "published",
-        "account_language": "en"
+        "account_language": "en",
+        "impact_calculated": false
       },
       "relationships": {
         "project_developer": {
@@ -196,7 +197,8 @@
         "priority_landscape_total_impact": null,
         "created_at": "2022-06-24T09:07:49.146Z",
         "status": "published",
-        "account_language": "pt"
+        "account_language": "pt",
+        "impact_calculated": false
       },
       "relationships": {
         "project_developer": {
@@ -308,7 +310,8 @@
         "priority_landscape_total_impact": null,
         "created_at": "2022-06-24T09:07:49.266Z",
         "status": "published",
-        "account_language": "en"
+        "account_language": "en",
+        "impact_calculated": false
       },
       "relationships": {
         "project_developer": {
@@ -420,7 +423,8 @@
         "priority_landscape_total_impact": null,
         "created_at": "2022-06-24T09:07:49.376Z",
         "status": "published",
-        "account_language": "en"
+        "account_language": "en",
+        "impact_calculated": false
       },
       "relationships": {
         "project_developer": {
@@ -532,7 +536,8 @@
         "priority_landscape_total_impact": null,
         "created_at": "2022-06-24T09:07:49.489Z",
         "status": "published",
-        "account_language": "en"
+        "account_language": "en",
+        "impact_calculated": false
       },
       "relationships": {
         "project_developer": {
@@ -644,7 +649,8 @@
         "priority_landscape_total_impact": null,
         "created_at": "2022-06-24T09:07:49.607Z",
         "status": "published",
-        "account_language": "en"
+        "account_language": "en",
+        "impact_calculated": false
       },
       "relationships": {
         "project_developer": {
@@ -756,7 +762,8 @@
         "priority_landscape_total_impact": null,
         "created_at": "2022-06-24T09:07:49.721Z",
         "status": "published",
-        "account_language": "en"
+        "account_language": "en",
+        "impact_calculated": false
       },
       "relationships": {
         "project_developer": {
@@ -868,7 +875,8 @@
         "priority_landscape_total_impact": null,
         "latitude": 2.0,
         "longitude": 1.0,
-        "favourite": null
+        "favourite": null,
+        "impact_calculated": false
       },
       "relationships": {
         "project_developer": {
