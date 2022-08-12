@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_08_082718) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_11_122918) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -238,6 +238,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_08_082718) do
     t.text "funding_exclusions_es"
     t.text "funding_exclusions_pt"
     t.string "instrument_types", null: false, array: true
+    t.integer "status", default: 1, null: false
     t.index ["country_id"], name: "index_open_calls_on_country_id"
     t.index ["department_id"], name: "index_open_calls_on_department_id"
     t.index ["investor_id", "name_en"], name: "index_open_calls_on_investor_id_and_name_en", unique: true

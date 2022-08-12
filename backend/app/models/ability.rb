@@ -24,11 +24,11 @@ class Ability
     can %i[index show], ProjectDeveloper, account: {review_status: Account.review_statuses[:approved]}
     can %i[index show], Investor, account: {review_status: Account.review_statuses[:approved]}
     can %i[index show], Project,
-      project_developer: {
-        account: {review_status: Account.review_statuses[:approved]}
-      },
+      project_developer: {account: {review_status: Account.review_statuses[:approved]}},
       status: Project.statuses[:published]
-    can %i[index show], OpenCall, investor: {account: {review_status: Account.review_statuses[:approved]}}
+    can %i[index show], OpenCall,
+      investor: {account: {review_status: Account.review_statuses[:approved]}},
+      status: [OpenCall.statuses[:launched], OpenCall.statuses[:closed]]
   end
 
   def user_rights
@@ -45,9 +45,10 @@ class Ability
     can %i[show], Project, project_developer: {account_id: user.account_id}
     can %i[show], OpenCall, investor: {account_id: user.account_id}
 
-    # user can list even draft data in accounts controller context
     if context == :accounts
+      # user can list even draft data in accounts controller context
       can %i[index], Project, project_developer: {account_id: user.account_id}
+      can %i[index], OpenCall, investor: {account_id: user.account_id}
     end
   end
 
