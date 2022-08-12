@@ -70,7 +70,8 @@
         "priority_landscape_total_impact": null,
         "latitude": 2.0,
         "longitude": 1.0,
-        "favourite": true
+        "favourite": true,
+        "impact_calculated": false
       },
       "relationships": {
         "project_developer": {

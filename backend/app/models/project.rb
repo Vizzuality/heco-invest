@@ -113,6 +113,7 @@ class Project < ApplicationRecord
   end
 
   def calculate_impacts
+    update_columns impact_calculated: false
     ImpactCalculationJob.perform_later self
   end
 
