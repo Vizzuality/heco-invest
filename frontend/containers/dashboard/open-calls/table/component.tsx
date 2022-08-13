@@ -108,8 +108,8 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
     <>
       <SearchAndInfo className="mt-4 mb-6">
         <FormattedMessage
-          defaultMessage="Total <span>{numOpenCalls}</span> {numOpenCalls, plural, one {openCall} other {openCalls?}}"
-          id="RBc+Z9"
+          defaultMessage="Total <span>{numOpenCalls}</span> {numOpenCalls, plural, one {openCall} other {openCalls}}"
+          id="cDSTwv"
           values={{
             span: (chunks: string) => <span className="px-1 font-semibold">{chunks}</span>,
             numOpenCalls: openCalls?.length || 0,
