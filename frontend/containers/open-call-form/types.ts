@@ -20,9 +20,12 @@ import { ResponseData, ErrorResponse } from 'services/types';
 export type OpenCallFormTypes = {
   title: string;
   mutation: UseMutationResult<
-    AxiosResponse<ResponseData<OpenCall>>,
+    OpenCall,
     AxiosError<ErrorResponse>,
-    { dto: OpenCallDto; locale: Languages }
+    {
+      dto: OpenCallDto;
+      locale: Languages;
+    }
   >;
   initialValues?: OpenCall;
   enums: GroupedEnums;

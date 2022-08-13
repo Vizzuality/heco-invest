@@ -1,6 +1,4 @@
-import { FC } from 'react';
-
-import { Path, PathValue, UnpackNestedValue, useController } from 'react-hook-form';
+import { FieldValues, Path, PathValue, UnpackNestedValue, useController } from 'react-hook-form';
 
 import cx from 'classnames';
 
@@ -14,17 +12,19 @@ import { ThemeProvider } from '@material-ui/styles';
 import dayjs, { Dayjs } from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 
-import { OpenCallForm } from 'types/open-calls';
-
 import { themeOptions } from './theme';
 
-import { OpenCallCalendarProps } from '.';
+import { DatePickerCalendarProps } from '.';
 
 dayjs.extend(isBetween);
 
 const materialTheme = createTheme(themeOptions);
 
-export const OpenCallCalendar: FC<OpenCallCalendarProps> = ({ control, controlOptions, name }) => {
+export const DatePickerCalendar = <FormValues extends FieldValues>({
+  control,
+  controlOptions,
+  name,
+}: DatePickerCalendarProps<FormValues>) => {
   const { locale } = useRouter();
   const today = dayjs();
 
@@ -36,7 +36,7 @@ export const OpenCallCalendar: FC<OpenCallCalendarProps> = ({ control, controlOp
     control,
     rules: controlOptions,
     defaultValue: controlOptions.value as UnpackNestedValue<
-      PathValue<OpenCallForm, Path<OpenCallForm>>
+      PathValue<FormValues, Path<FormValues>>
     >,
   });
 
@@ -79,4 +79,4 @@ export const OpenCallCalendar: FC<OpenCallCalendarProps> = ({ control, controlOp
   );
 };
 
-export default OpenCallCalendar;
+export default DatePickerCalendar;

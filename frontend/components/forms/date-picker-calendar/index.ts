@@ -1,2 +1,2 @@
 export { default } from './component';
-export type { OpenCallCalendarProps } from './types';
+export type { DatePickerCalendarProps } from './types';

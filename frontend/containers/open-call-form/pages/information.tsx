@@ -34,7 +34,6 @@ export const OpenCallInformation: FC<OpenCallInformationProps> = ({
   const handleUploadImages = (uploadedImages: ProjectImageGallery[]) => {
     if (uploadedImages?.length) {
       setValue('picture', uploadedImages[0]?.file);
-      console.log(uploadedImages[0]);
       setPicture(uploadedImages[0]);
     }
   };
@@ -134,12 +133,6 @@ export const OpenCallInformation: FC<OpenCallInformationProps> = ({
             <Label htmlFor="description" className="mr-2">
               <FormattedMessage defaultMessage="What is the open call about?" id="HcakU9" />
             </Label>
-            {/* <FieldInfo
-              infoText={formatMessage({
-                defaultMessage: 'A picture can make your open call page more attractive.',
-                id: 'iFQwyC',
-              })}
-            /> */}
           </div>
           <Textarea
             className="mt-2.5"

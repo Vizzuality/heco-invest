@@ -30,7 +30,7 @@ export const PendingVerification = ({ slug }: { slug: string }) => {
           }}
         />
       </p>
-      <Button className="mt-6 mb-12" to={`${Paths.Project}/${slug}`}>
+      <Button className="mt-6 mb-12" to={`${Paths.OpenCall}/${slug}`}>
         <FormattedMessage defaultMessage="Go to open call page" id="M4pZPN" />
       </Button>
       <Link href={FaqPaths[FaqQuestions.WhatIsAVerificationBadge]} passHref>

@@ -4,9 +4,9 @@ import { FormattedMessage } from 'react-intl';
 
 import dayjs, { Dayjs } from 'dayjs';
 
+import OpenCallCalendar from 'components/forms/date-picker-calendar';
 import ErrorMessage from 'components/forms/error-message';
 
-import OpenCallCalendar from '../../../components/forms/date-picker-calendar';
 import { OpenCallClosingDateProps } from '../types';
 
 export const OpenCallClosingDate: FC<OpenCallClosingDateProps> = ({ control, errors }) => {
@@ -49,11 +49,14 @@ export const OpenCallClosingDate: FC<OpenCallClosingDateProps> = ({ control, err
       <div className="text-center font-lg mt-7">
         <p>
           <FormattedMessage
-            defaultMessage="Starting today, this open call will be available for"
-            id="i2oTer"
-          />{' '}
-          <span className="px-4 py-2 border rounded-lg border-beige">{totalDays}</span>{' '}
-          <FormattedMessage defaultMessage="days" id="Bc20la" />
+            defaultMessage="Starting today, this open call will be available for <total></total> days."
+            id="A2bq3p"
+            values={{
+              total: () => (
+                <span className="px-4 py-2 border rounded-lg border-beige">{totalDays}</span>
+              ),
+            }}
+          />
         </p>
       </div>
     </div>

@@ -9,10 +9,10 @@ import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { OutroPage, Page } from 'containers/multi-page-layout';
 
-import Button from 'components/button';
+// import Button from 'components/button';
 import Head from 'components/head';
 import { OpenCallStatus } from 'enums';
-import { OpenCallForm as OpenFormType, OpenCallDto, OpenCall } from 'types/open-calls';
+import { OpenCallForm as OpenFormType, OpenCallDto } from 'types/open-calls';
 import useOpenCallResolver, { formPageInputs } from 'validations/open-call';
 
 import {
@@ -70,14 +70,14 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
               formPageInputs
             );
             fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
-            errorPages.length && setCurrentPage(errorPages[0]);
+            if (errorPages.length) setCurrentPage(errorPages[0]);
           },
-          onSuccess: (data) => {
-            if (data.data.data.trusted) {
+          onSuccess: (openCall) => {
+            if (openCall.trusted) {
               onComplete();
             } else {
               setCurrentPage(currentPage + 1);
-              setSlug(data.data.data.slug);
+              setSlug(openCall.slug);
             }
           },
         }
@@ -130,25 +130,25 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
         showProgressBar
         onCloseClick={() => setShowLeave(true)}
         onSubmitClick={handleSubmitPublish}
-        footerElements={
-          isLastPage &&
-          openCall?.status !== OpenCallStatus.Published && (
-            <Button
-              className="px-3 py-2 leading-none md:px-8 md:py-4"
-              theme="secondary-green"
-              size="base"
-              onClick={handleSubmitDraft}
-            >
-              <FormattedMessage defaultMessage="Save as draft" id="JHJJAH" />
-            </Button>
-          )
-        }
+        // footerElements={
+        //   isLastPage &&
+        //   openCall?.status !== OpenCallStatus.Published && (
+        //     <Button
+        //       className="px-3 py-2 leading-none md:px-8 md:py-4"
+        //       theme="secondary-green"
+        //       size="base"
+        //       onClick={handleSubmitDraft}
+        //     >
+        //       <FormattedMessage defaultMessage="Save as draft" id="JHJJAH" />
+        //     </Button>
+        //   )
+        // }
       >
         <Page>
           <ContentLanguageAlert className="mb-6">
             <FormattedMessage
-              defaultMessage="<span>Note:</span>The content of this project should be written in {language}"
-              id="S27Bu1"
+              defaultMessage="<span>Note:</span>The content of this open call should be written in {language}"
+              id="SUQqz6"
               values={{
                 language: languageNames[language],
                 span: (chunks: string) => <span className="mr-2 font-semibold">{chunks}</span>,

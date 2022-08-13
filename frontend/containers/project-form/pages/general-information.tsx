@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useMemo, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 
 import { Controller, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -7,25 +7,20 @@ import cx from 'classnames';
 
 import dynamic from 'next/dynamic';
 
-import { sortBy } from 'lodash-es';
-
 import GeometryInput from 'containers/forms/geometry';
+import LocationSelectors from 'containers/forms/location-selectors';
 import ProjectGallery from 'containers/forms/project-gallery';
 
-import Combobox, { Option } from 'components/forms/combobox';
 import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
-import MultiCombobox from 'components/forms/multi-combobox';
-import { LocationsTypes } from 'enums';
+import MultiCombobox, { Option } from 'components/forms/multi-combobox';
 import { ProjectForm, ProjectImageGallery } from 'types/project';
 
-import { useGroupedLocations } from 'services/locations/locations';
 import { useProjectDevelopersList } from 'services/project-developers/projectDevelopersService';
 
 import { ProjectFormPagesProps } from '..';
-import LocationSelectors from 'containers/forms/location-selectors';
 
 // Import the uploader component only if is on th client because DirectUpload is not supported on server
 const Uploader = dynamic(() => import('containers/forms/uploader'), { ssr: false });
@@ -209,7 +204,7 @@ const GeneralInformation = ({
             fields={{
               country: { fieldName: 'country_id', required: true },
               state: { fieldName: 'department_id', required: true },
-              municipality: { fieldName: 'municipality', required: true },
+              municipality: { fieldName: 'municipality_id', required: true },
             }}
           />
         </div>

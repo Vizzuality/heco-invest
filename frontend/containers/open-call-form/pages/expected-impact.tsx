@@ -35,7 +35,7 @@ export const OpenCallExpectedImpact: FC<OpenCallExpectedImpactProps> = ({
       <form>
         <div className="mt-6">
           <div className="mb-2.5">
-            <Label htmlFor="expected_impact" className="mr-2">
+            <Label htmlFor="impact_description" className="mr-2">
               <FormattedMessage defaultMessage="Expected impact" id="XgaRPC" />
             </Label>
             <FieldInfo
@@ -49,32 +49,38 @@ export const OpenCallExpectedImpact: FC<OpenCallExpectedImpactProps> = ({
           <Textarea
             className="mt-2.5"
             name="impact_description"
-            id="expected_impact"
+            id="impact_description"
             register={register}
             placeholder={formatMessage({
               defaultMessage: 'insert your answer (max 600 characters)',
               id: 'hPsrc0',
             })}
-            aria-describedby="description-error"
+            aria-describedby="impact_description-error"
           />
-          <ErrorMessage id="expected_impact-error" errorText={errors.impact_description?.message} />
+          <ErrorMessage
+            id="impact_description-error"
+            errorText={errors.impact_description?.message}
+          />
         </div>
         <div className="mt-4.5">
-          <Label htmlFor="sdgs" className="mr-2">
-            <FormattedMessage
-              defaultMessage="Select the SDG’s you expect to have impact (optional)"
-              id="LFNAet"
+          <fieldset name="sdgs">
+            <legend className="mr-2 font-sans text-sm font-semibold text-gray-800">
+              <FormattedMessage
+                defaultMessage="Select the SDG’s you expect to have impact (optional)"
+                id="LFNAet"
+              />
+            </legend>
+            <SDGs
+              className="mt-3"
+              clearErrors={clearErrors}
+              errors={errors}
+              name="sdgs"
+              register={register}
+              setValue={setValue}
+              aria-describedby="sdgs-error"
             />
-          </Label>
-          <SDGs
-            className="mt-3"
-            clearErrors={clearErrors}
-            errors={errors}
-            name="sdgs"
-            register={register}
-            setValue={setValue}
-          />
-          <ErrorMessage id="description-error" errorText={errors.sdgs?.[0]?.message} />
+            <ErrorMessage id="sdgs-error" errorText={errors.sdgs?.[0]?.message} />
+          </fieldset>
         </div>
       </form>
     </div>

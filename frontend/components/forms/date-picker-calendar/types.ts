@@ -2,17 +2,15 @@ import { Control, Path, UseControllerProps } from 'react-hook-form';
 
 import { MuiPickersOverrides } from '@material-ui/pickers/typings/overrides';
 
-import { OpenCallForm } from 'types/open-calls';
-
-export type OpenCallCalendarProps = {
+export type DatePickerCalendarProps<FormValues> = {
   /**  field name */
-  name: Path<OpenCallForm>;
+  name: Path<FormValues>;
   /**  field id */
   id: string;
   /**  React-hook-form control */
-  control: Control<OpenCallForm>;
+  control: Control<FormValues>;
   /**  React-hook-form control options */
-  controlOptions: UseControllerProps<OpenCallForm>['rules'] & { disabled: boolean };
+  controlOptions: UseControllerProps<FormValues>['rules'] & { disabled: boolean };
 };
 
 type overridesNameToClassKey = {

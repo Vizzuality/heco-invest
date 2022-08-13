@@ -36,9 +36,9 @@ export const LocationSelectors = <FormValues extends FieldValues>({
         // If there is data on locations
         filteredLocations = locations[locationType];
         // If there is a filter for the field
-        if (locationsFilter && locationsFilter[filter]) {
+        if (locationsFilter[filter]) {
           filteredLocations = filteredLocations?.filter(
-            (location) => !locationsFilter[filter] || location.parent.id === locationsFilter[filter]
+            (location) => location.parent.id === locationsFilter[filter]
           );
         }
       }
@@ -50,10 +50,13 @@ export const LocationSelectors = <FormValues extends FieldValues>({
     [locations, locationsFilter]
   );
 
-  const handleChangeLocation = (locationType: LocationsTypes, e: any) => {
+  const handleChangeLocation = (
+    locationType: Extract<LocationsTypes, LocationsTypes.Country | LocationsTypes.Department>,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const { value } = e.target;
     // The Combobox component responds to onChange even if the value is the same as before, but the field is reseted only if the value changes
-    if (!locationsFilter || value !== locationsFilter[locationType]) {
+    if (value !== locationsFilter[locationType]) {
       // if the country changes, the department and the municipality are reseted (clear field error and set value to undefined) and their options are filtered.
       // if the departmnet changes, only the municipality is affected
       setLocationsFilter({
@@ -80,7 +83,7 @@ export const LocationSelectors = <FormValues extends FieldValues>({
           aria-describedby="country-error"
           control={control}
           controlOptions={{
-            disabled: false,
+            ...country.controlOptions,
             onChange: (e) => handleChangeLocation(LocationsTypes.Country, e),
           }}
           className="mt-2.5"
@@ -105,7 +108,7 @@ export const LocationSelectors = <FormValues extends FieldValues>({
           name={state.fieldName}
           control={control}
           controlOptions={{
-            disabled: false,
+            ...state.controlOptions,
             onChange: (e) => handleChangeLocation(LocationsTypes.Department, e),
           }}
           className="mt-2.5"
@@ -128,7 +131,7 @@ export const LocationSelectors = <FormValues extends FieldValues>({
           aria-describedby="municipality-error"
           control={control}
           controlOptions={{
-            disabled: false,
+            ...municipality.controlOptions,
           }}
           className="mt-2.5"
           placeholder={formatMessage({ defaultMessage: 'select', id: 'J4SQjQ' })}
