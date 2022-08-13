@@ -5,36 +5,35 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { getProjectValues } from 'helpers/pages';
+
 import RowMenu, { RowMenuItem } from 'containers/dashboard/row-menu';
 
 import ConfirmationPrompt from 'components/confirmation-prompt';
 import { Paths, ProjectStatus } from 'enums';
 
-import { useDeleteAccountProject } from 'services/account';
+import { useDeleteAccountProject, useUpdateProject } from 'services/account';
 
 import { CellActionsProps } from './types';
 
 export const CellActions: FC<CellActionsProps> = ({
-  row: {
-    original: { slug, name, status },
-    index,
-  },
+  row: { original: project, index },
   rows,
 }: CellActionsProps) => {
   const intl = useIntl();
   const router = useRouter();
+  const { slug, name, status, data } = project;
 
   const deleteProjectMutation = useDeleteAccountProject();
+  const updateProject = useUpdateProject();
 
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
+  const [confirmPublish, setConfirmPublish] = useState<boolean>(false);
 
   const handleRowMenuItemClick = (key: string) => {
     switch (key) {
-      case 'edit':
-        router.push(
-          `${Paths.Project}/${slug}/edit?returnPath=${encodeURIComponent(router.asPath)}`,
-          `${Paths.Project}/${slug}/edit`
-        );
+      case 'publish':
+        setConfirmPublish(true);
         return;
       case 'preview':
         router.push(`${Paths.Project}/${slug}/preview`);
@@ -59,6 +58,18 @@ export const CellActions: FC<CellActionsProps> = ({
     );
   };
 
+  const handlePublishProject = () => {
+    const dto = getProjectValues(data);
+    updateProject.mutate(
+      { ...dto, status: ProjectStatus.Published },
+      {
+        onSuccess: () => {
+          setConfirmPublish(false);
+        },
+      }
+    );
+  };
+
   // Used to change the position of the menu on the last row so that it is not hidden by the table's bottom
   const isLast = rows?.length === index + 1;
 
@@ -73,9 +84,11 @@ export const CellActions: FC<CellActionsProps> = ({
         </a>
       </Link>
       <RowMenu direction={isLast ? 'top' : 'bottom'} onAction={handleRowMenuItemClick}>
-        <RowMenuItem key="edit">
-          <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
-        </RowMenuItem>
+        {status === ProjectStatus.Draft && (
+          <RowMenuItem key="publish">
+            <FormattedMessage defaultMessage="Publish draft" id="Jfw90a" />
+          </RowMenuItem>
+        )}
         {status === ProjectStatus.Draft ? (
           <RowMenuItem key="preview">
             <FormattedMessage defaultMessage="Preview project page" id="EvP1Ut" />
@@ -110,6 +123,28 @@ export const CellActions: FC<CellActionsProps> = ({
             </p>
             <p>
               <FormattedMessage defaultMessage="You can't undo this action." id="k0xbVH" />
+            </p>
+          </>
+        }
+      />
+
+      <ConfirmationPrompt
+        open={confirmPublish}
+        onAccept={handlePublishProject}
+        onDismiss={() => setConfirmPublish(false)}
+        onRefuse={() => setConfirmPublish(false)}
+        onConfirmText={intl.formatMessage({ defaultMessage: 'Publish', id: 'syEQFE' })}
+        title={intl.formatMessage({ defaultMessage: 'Publish project?', id: 'yp8KtZ' })}
+        description={
+          <>
+            <p>
+              <FormattedMessage
+                defaultMessage="By publishing your project it will be publicly visible."
+                id="DQDJ8q"
+              />
+            </p>
+            <p>
+              <FormattedMessage defaultMessage="Are you sure you want to continue?" id="Iu60EH" />
             </p>
           </>
         }

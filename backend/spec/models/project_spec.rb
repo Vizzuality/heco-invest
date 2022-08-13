@@ -239,7 +239,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe "#calculate_impacts" do
-    let!(:project) { create :project }
+    let!(:project) { create :project, impact_calculated: true }
 
     context "when geometry changes" do
       it "enqueues impact calculation job" do
@@ -247,6 +247,11 @@ RSpec.describe Project, type: :model do
           project.geometry = {type: "Polygon", coordinates: [[[0.3, 0.3], [1.3, 0.3], [1.3, 1.3], [0.3, 1.3]]]}
           project.save!
         end
+      end
+
+      it "resets impact_calculated attribute" do
+        project.update! geometry: {type: "Polygon", coordinates: [[[0.3, 0.3], [1.3, 0.3], [1.3, 1.3], [0.3, 1.3]]]}
+        expect(project.reload.impact_calculated).to be_falsey
       end
     end
 

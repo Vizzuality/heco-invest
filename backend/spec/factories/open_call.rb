@@ -5,6 +5,7 @@ FactoryBot.define do
     sequence(:name) do |n|
       "Open call #{n}"
     end
+    status { "launched" }
 
     picture { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/files/picture.jpg"), "image/jpeg") }
 

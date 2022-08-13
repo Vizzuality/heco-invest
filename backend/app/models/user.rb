@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :investors, through: :favourite_investors
   has_many :favourite_open_calls, dependent: :destroy
   has_many :open_calls, through: :favourite_open_calls
-  has_one :owner_account, class_name: "Account", foreign_key: "owner_id", dependent: :restrict_with_error
+  has_one :owner_account, class_name: "Account", foreign_key: "owner_id"
 
   has_one_attached :avatar
 

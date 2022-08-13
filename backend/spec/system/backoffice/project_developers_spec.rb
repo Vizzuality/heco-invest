@@ -263,6 +263,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
         expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.project_developer")))
         expect(current_path).to eql(backoffice_project_developers_path)
         expect(page).not_to have_text(approved_pd.name)
+        expect(Account.find_by(id: approved_pd.account_id)).to be_nil
       end
     end
   end

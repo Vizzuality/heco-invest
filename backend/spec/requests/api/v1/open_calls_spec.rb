@@ -11,6 +11,7 @@ RSpec.describe "API V1 Open Calls", type: :request do
       investor: create(:investor, account: create(:account, language: "pt")),
       description_en: "Description EN", description_es: "Description ES", description_pt: "Description PT"
     )
+    @draft_open_call = create(:open_call, status: :draft)
   end
 
   include_examples :api_pagination, model: OpenCall, expected_total: 8
@@ -46,6 +47,10 @@ RSpec.describe "API V1 Open Calls", type: :request do
 
         it "ignores unapproved record" do
           expect(response_json["data"].pluck("id")).not_to include(@unapproved_open_call.id)
+        end
+
+        it "ignores open call with draft status" do
+          expect(response_json["data"].pluck("id")).not_to include(@draft_open_call.id)
         end
 
         context "with sparse fieldset" do

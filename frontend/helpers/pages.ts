@@ -3,6 +3,9 @@ import { useMemo } from 'react';
 import { FormState, Path } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
+import omit from 'lodash-es/omit';
+import pickBy from 'lodash-es/pickBy';
+
 import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
@@ -10,7 +13,8 @@ import { AxiosError } from 'axios';
 import { EnumTypes, Languages, Paths } from 'enums';
 import languages from 'locales.config.json';
 import { Enum } from 'types/enums';
-import { Project } from 'types/project';
+import { Project, ProjectForm, ProjectUpdatePayload } from 'types/project';
+import { formPageInputs } from 'validations/project';
 
 import { ErrorResponse } from 'services/types';
 
@@ -181,4 +185,41 @@ export const getMosaicsWithProjectsNumber = (mosaicEnums: Enum[], projects: Proj
         ?.length || 0;
     return { ...mosaic, projectsQuantity };
   });
+};
+
+/** Function to transform the project (get) to the upload payload */
+export const getProjectValues = (project: Project): ProjectUpdatePayload => {
+  const inputs = formPageInputs.flat();
+  const projectForm = pickBy<ProjectForm>(project, (value, key: any) => inputs.includes(key));
+
+  const projectDto = omit(
+    projectForm,
+    'involved_project_developer',
+    'project_gallery',
+    'slug',
+    'project_images_attributes_cover',
+    'project_images_attributes'
+  );
+
+  const projectUpload = {
+    ...projectDto,
+    id: project.id,
+    municipality_id: project.municipality?.id,
+    department_id: project.municipality?.parent?.id,
+    country_id: project.country?.id,
+    project_images_attributes: project.project_images?.map(({ cover, file, id }) => {
+      const imageId = file.original.split('redirect/')[1].split('/')[0];
+      return {
+        file: imageId,
+        cover,
+        id,
+        _destroy: false,
+      };
+    }),
+    involved_project_developer_ids: project.involved_project_developers?.map(({ id }) => id),
+    involved_project_developer_not_listed: project.involved_project_developer_not_listed,
+    status: project.status,
+  };
+
+  return projectUpload as ProjectUpdatePayload;
 };
