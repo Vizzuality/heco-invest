@@ -105,7 +105,7 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
   };
 
   const handleSubmitPublish = async () => {
-    setValue('status', OpenCallStatus.Published);
+    setValue('status', OpenCallStatus.Launched);
     await handleSubmit(onSubmit)();
   };
 

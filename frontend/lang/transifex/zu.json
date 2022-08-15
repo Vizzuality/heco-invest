@@ -539,6 +539,9 @@
   "A/or0n": {
     "string": "High-Net-Worth Individual (HNWI) or celebrity"
   },
+  "A2bq3p": {
+    "string": "Starting today, this open call will be available for <total></total> days."
+  },
   "A4UTjl": {
     "string": "Portuguese"
   },
@@ -598,9 +601,6 @@
   },
   "BZkcBV": {
     "string": "Project developer photo"
-  },
-  "Bc20la": {
-    "string": "days"
   },
   "BcZVZW": {
     "string": "This description should sumarize your project in a few words."
@@ -673,6 +673,9 @@
   },
   "DIrN6T": {
     "string": "Project developer features"
+  },
+  "DQDJ8q": {
+    "string": "By publishing your project it will be publicly visible."
   },
   "DQoGRx": {
     "string": "About the impact"
@@ -909,6 +912,9 @@
   "IkUX0b": {
     "string": "How the money will be used"
   },
+  "Iu60EH": {
+    "string": "Are you sure you want to continue?"
+  },
   "J4SQjQ": {
     "string": "select"
   },
@@ -959,6 +965,9 @@
   },
   "JcS7oJ": {
     "string": "By priority landscapes"
+  },
+  "Jfw90a": {
+    "string": "Publish draft"
   },
   "JkLHGw": {
     "string": "Website"
@@ -1328,6 +1337,9 @@
   },
   "SQJto2": {
     "string": "Sign in"
+  },
+  "SUQqz6": {
+    "string": "<span>Note:</span>The content of this open call should be written in {language}"
   },
   "SXKvVa": {
     "string": "From which investor or funder?"
@@ -1962,9 +1974,6 @@
   "i2AgQl": {
     "string": "Which of these topics/sector categories better describe your project?"
   },
-  "i2oTer": {
-    "string": "Starting today, this open call will be available for"
-  },
   "i5gK2X": {
     "string": "Currently you don’t have any <b>Project developers</b> in your favorites."
   },
@@ -2451,6 +2460,9 @@
   "sy+pv5": {
     "string": "Email"
   },
+  "syEQFE": {
+    "string": "Publish"
+  },
   "t39CQq": {
     "string": "What’s your mission?"
   },
@@ -2672,6 +2684,9 @@
   },
   "ygx9Jx": {
     "string": "Micro finance"
+  },
+  "yp8KtZ": {
+    "string": "Publish project?"
   },
   "yqJ5XD": {
     "string": "Select the amount of money that you need"
