@@ -566,6 +566,9 @@
   "BTFkyB": {
     "string": "HeCo Priority landscapes"
   },
+  "BV91+1": {
+    "string": "Inter-American Natural Capital Lab"
+  },
   "BY6k/1": {
     "string": "Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average."
   },
@@ -643,6 +646,9 @@
   },
   "DIrN6T": {
     "string": "Project developer features"
+  },
+  "DQDJ8q": {
+    "string": "By publishing your project it will be publicly visible."
   },
   "DQoGRx": {
     "string": "About the impact"
@@ -870,6 +876,9 @@
   "IkUX0b": {
     "string": "How the money will be used"
   },
+  "Iu60EH": {
+    "string": "Are you sure you want to continue?"
+  },
   "J4SQjQ": {
     "string": "select"
   },
@@ -920,6 +929,9 @@
   },
   "JcS7oJ": {
     "string": "By priority landscapes"
+  },
+  "Jfw90a": {
+    "string": "Publish draft"
   },
   "JkLHGw": {
     "string": "Website"
@@ -1431,9 +1443,6 @@
   "W2JBdp": {
     "string": "Impact"
   },
-  "W4Jolw": {
-    "string": "IDB Lab is the innovation laboratory of the Inter-American Development Bank Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
-  },
   "W5x0GV": {
     "string": "Water impact"
   },
@@ -1445,6 +1454,9 @@
   },
   "WJGIA3": {
     "string": "Helps to ensure connectivity between the Andean, Orinocean and Amazonian ecosystems, allowing the conservation of flora, fauna, scenic beauties, geomorphological complexes, historical or cultural manifestations, the conservation and regulation of water systems."
+  },
+  "WJcNiD": {
+    "string": "The Inter-American Development Bank (IDB) is the main source of multilateral financing and expertise for sustainable economic, social and institutional development in Latin America and the Caribbean. The IDB Natural Capital Lab works to drive innovation in natural capital finance by looking at nature as an asset."
   },
   "WLDgff": {
     "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
@@ -2388,6 +2400,9 @@
   "sy+pv5": {
     "string": "Email"
   },
+  "syEQFE": {
+    "string": "Publish"
+  },
   "t39CQq": {
     "string": "What’s your mission?"
   },
@@ -2609,6 +2624,9 @@
   },
   "ygx9Jx": {
     "string": "Micro finance"
+  },
+  "yp8KtZ": {
+    "string": "Publish project?"
   },
   "yqJ5XD": {
     "string": "Select the amount of money that you need"
