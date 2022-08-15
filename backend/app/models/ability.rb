@@ -23,12 +23,15 @@ class Ability
     # only data from approved users are visible
     can %i[index show], ProjectDeveloper, account: {review_status: Account.review_statuses[:approved]}
     can %i[index show], Investor, account: {review_status: Account.review_statuses[:approved]}
-    can %i[index show], Project,
-      project_developer: {account: {review_status: Account.review_statuses[:approved]}},
-      status: Project.statuses[:published]
-    can %i[index show], OpenCall,
-      investor: {account: {review_status: Account.review_statuses[:approved]}},
-      status: [OpenCall.statuses[:launched], OpenCall.statuses[:closed]]
+
+    unless context == :accounts
+      can %i[index show], Project,
+        project_developer: {account: {review_status: Account.review_statuses[:approved]}},
+        status: Project.statuses[:published]
+      can %i[index show], OpenCall,
+        investor: {account: {review_status: Account.review_statuses[:approved]}},
+        status: [OpenCall.statuses[:launched], OpenCall.statuses[:closed]]
+    end
   end
 
   def user_rights
@@ -44,12 +47,6 @@ class Ability
     can %i[show], Investor, account_id: user.account_id
     can %i[show], Project, project_developer: {account_id: user.account_id}
     can %i[show], OpenCall, investor: {account_id: user.account_id}
-
-    if context == :accounts
-      # user can list even draft data in accounts controller context
-      can %i[index], Project, project_developer: {account_id: user.account_id}
-      can %i[index], OpenCall, investor: {account_id: user.account_id}
-    end
   end
 
   def owner_rights
@@ -75,8 +72,10 @@ class Ability
 
     if user.account.investor_id.present?
       can %i[create update], OpenCall, investor: {account_id: user.account_id}
+      can %i[index], OpenCall, investor: {account_id: user.account_id} if context == :accounts
     else
       can %i[create update], Project, project_developer: {account_id: user.account_id}
+      can %i[index], Project, project_developer: {account_id: user.account_id} if context == :accounts
     end
   end
 end
