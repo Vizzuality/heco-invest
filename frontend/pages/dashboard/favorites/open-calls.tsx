@@ -32,26 +32,12 @@ export const FavoritesOpenCallsPage: PageComponent<
 > = ({ data: openCalls = [], meta }) => {
   const hasOpenCalls = openCalls?.length > 0;
 
-  const handleRemoveAllClick = () => {
-    console.log('unfavorite all open calls');
-  };
-
   return (
     <>
       <div className="top-0 left-0 flex justify-between w-full pb-1 pr-2 mx-1 mb-4 md:pt-10 md:-mt-10 md:px-1 lg:z-20 lg:sticky bg-background-dark">
         <div className="font-medium">
           <FormattedMessage defaultMessage="Open calls" id="OBhULP" />{' '}
           {/*meta?.total && `(${meta?.total})`*/}(0)
-        </div>
-        <div>
-          <Button
-            size="smallest"
-            theme="naked"
-            className="text-sm underline text-green-dark focus-visible:outline-green-dark"
-            onClick={handleRemoveAllClick}
-          >
-            <FormattedMessage defaultMessage="Remove all" id="jNai7b" />
-          </Button>
         </div>
       </div>
       <div className="flex flex-col pt-2 md:pl-1 md:-mr-1">
