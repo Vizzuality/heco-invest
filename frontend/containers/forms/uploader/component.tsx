@@ -155,11 +155,15 @@ export const Uploader = <FormValues extends FieldValues>({
         )}
         {...getRootProps()}
       >
-        <input {...getInputProps()} ref={inputRef} />
+        <input
+          aria-label={formatMessage({ defaultMessage: 'Browse or drag and drop', id: '8dGhWP' })}
+          {...getInputProps()}
+          ref={inputRef}
+        />
         <Controller
           name={name}
           control={control}
-          render={(field) => <input {...field} className="hidden" name={name} />}
+          render={({ field }) => <input {...field} className="hidden" name={name} />}
         />
         <Image src="/images/upload-gallery.svg" width="38" height="39" alt="Upload file" />
         {!isUploading ? (

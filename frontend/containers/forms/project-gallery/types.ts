@@ -33,4 +33,6 @@ export type ProjectGalleryProps<FormValues> = {
   onDeleteImage: (imageId: string) => void;
   /** Callback to handle selecting a cover image */
   onSelectCover: (imageId: string) => void;
+  /**  Number of images to display. If not enough images are supplied, placeholders will be generated. Defaults to '6' */
+  numImages?: number;
 };

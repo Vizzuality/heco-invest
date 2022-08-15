@@ -169,3 +169,9 @@ export enum ProjectStatus {
   Published = 'published',
   Draft = 'draft',
 }
+
+export enum OpenCallStatus {
+  Draft = 'draft',
+  Launched = 'launched',
+  Closed = 'closed',
+}
