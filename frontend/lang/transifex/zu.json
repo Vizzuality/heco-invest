@@ -461,6 +461,9 @@
   "8SayhS": {
     "string": "{placeholder}"
   },
+  "8UvQTx": {
+    "string": "By launching your open call, it will be publicly visible and projects will be able to apply to it."
+  },
   "8WtyrD": {
     "string": "Spanish"
   },
@@ -749,6 +752,9 @@
   "Ec0M9T": {
     "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
   },
+  "EgOO+m": {
+    "string": "Launch open call?"
+  },
   "Ejc7dP": {
     "string": "tons of carbon are stored in the Amazon."
   },
@@ -926,6 +932,9 @@
   },
   "IkUX0b": {
     "string": "How the money will be used"
+  },
+  "IsC1uH": {
+    "string": "Create openCall"
   },
   "Iu60EH": {
     "string": "Are you sure you want to continue?"
@@ -1752,6 +1761,9 @@
   "c1m3Q7": {
     "string": "The project gallery will be the first thing other users will see on you page, it will help you to showcase you project."
   },
+  "c4HVkO": {
+    "string": "Launch open call"
+  },
   "c6KUQu": {
     "string": "Your account was successfully created, but you still need to be approved by our platform administrators."
   },
@@ -1874,6 +1886,9 @@
   },
   "eu+7Vl": {
     "string": "Do you have a project or a start-up business in the Colombian Amazon?"
+  },
+  "ewx2b7": {
+    "string": "Launch"
   },
   "f9DtLB": {
     "string": "max 36 months"

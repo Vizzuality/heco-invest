@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -11,6 +11,7 @@ import ConfirmationPrompt from 'components/confirmation-prompt';
 import { Paths, OpenCallStatus } from 'enums';
 
 import { useDeleteAccountProject } from 'services/account';
+import { useUpdateOpenCall } from 'services/open-call/open-call-service';
 
 import { CellActionsProps } from './types';
 
@@ -25,11 +26,16 @@ export const CellActions: FC<CellActionsProps> = ({
   const router = useRouter();
 
   const deleteProjectMutation = useDeleteAccountProject();
+  const updateOpenCallMutation = useUpdateOpenCall();
 
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
+  const [confirmLaunch, setConfirmLaunch] = useState(false);
 
   const handleRowMenuItemClick = (key: string) => {
     switch (key) {
+      case 'launch':
+        setConfirmLaunch(true);
+        return;
       // case 'edit':
       //   router.push(
       //     `${Paths.OpenCall}/${slug}/edit?returnPath=${encodeURIComponent(router.asPath)}`,
@@ -59,6 +65,17 @@ export const CellActions: FC<CellActionsProps> = ({
     );
   };
 
+  const handleLaunchOpenCall = useCallback(() => {
+    updateOpenCallMutation.mutate(
+      { id: slug, status: OpenCallStatus.Launched },
+      {
+        onSuccess: () => {
+          setConfirmLaunch(false);
+        },
+      }
+    );
+  }, [slug, updateOpenCallMutation]);
+
   return (
     <div className="flex items-center justify-center gap-3">
       <Link
@@ -70,6 +87,11 @@ export const CellActions: FC<CellActionsProps> = ({
         </a>
       </Link>
       <RowMenu direction="top" onAction={handleRowMenuItemClick}>
+        {status === OpenCallStatus.Draft && (
+          <RowMenuItem key="launch">
+            <FormattedMessage defaultMessage="Launch open call" id="c4HVkO" />
+          </RowMenuItem>
+        )}
         {/* <RowMenuItem key="edit">
           <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
         </RowMenuItem>
@@ -107,6 +129,28 @@ export const CellActions: FC<CellActionsProps> = ({
             </p>
             <p>
               <FormattedMessage defaultMessage="You can't undo this action." id="k0xbVH" />
+            </p>
+          </>
+        }
+      />
+
+      <ConfirmationPrompt
+        open={confirmLaunch}
+        onAccept={handleLaunchOpenCall}
+        onDismiss={() => setConfirmLaunch(false)}
+        onRefuse={() => setConfirmLaunch(false)}
+        onConfirmText={intl.formatMessage({ defaultMessage: 'Launch', id: 'ewx2b7' })}
+        title={intl.formatMessage({ defaultMessage: 'Launch open call?', id: 'EgOO+m' })}
+        description={
+          <>
+            <p>
+              <FormattedMessage
+                defaultMessage="By launching your open call, it will be publicly visible and projects will be able to apply to it."
+                id="8UvQTx"
+              />
+            </p>
+            <p>
+              <FormattedMessage defaultMessage="Are you sure you want to continue?" id="Iu60EH" />
             </p>
           </>
         }
