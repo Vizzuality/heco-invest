@@ -2,12 +2,13 @@ import { useMutation, UseMutationResult, UseQueryResult } from 'react-query';
 
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
+import { useLocalizedQuery } from 'hooks/query';
+
 import { Languages, Queries } from 'enums';
 import { OpenCall, OpenCallDto, OpenCalParams } from 'types/open-calls';
 
 import API from 'services/api';
 import { ErrorResponse, PagedResponse, ResponseData } from 'services/types';
-import { useLocalizedQuery } from 'hooks/query';
 
 export const useCreateOpenCall = (): UseMutationResult<
   AxiosResponse<ResponseData<OpenCall>>,
@@ -19,7 +20,7 @@ export const useCreateOpenCall = (): UseMutationResult<
   );
 };
 
-const getOpenCallsList = async ({
+const getAccountOpenCallsList = async ({
   fields,
   filter,
   includes,
@@ -29,6 +30,8 @@ const getOpenCallsList = async ({
   includes?.length && (params['includes'] = includes.join(','));
   filter && (params['filter[full_text]'] = filter);
   const options: AxiosRequestConfig = {
+    // TODO: change to this endpoint when available
+    // url: '/api/v1/account/open_calls',
     url: '/api/v1/open_calls',
     params,
   };
@@ -36,12 +39,12 @@ const getOpenCallsList = async ({
   return response.data.data;
 };
 
-export const useGetOpenCallList = (
+export const useAccountOpenCallList = (
   params: OpenCalParams
 ): UseQueryResult<OpenCall[], ErrorResponse> => {
   const query = useLocalizedQuery<OpenCall[], ErrorResponse>(
-    Queries.OpenCallsList,
-    () => getOpenCallsList(params),
+    Queries.AccountOpenCallsList,
+    () => getAccountOpenCallsList(params),
     {
       refetchOnWindowFocus: false,
     }

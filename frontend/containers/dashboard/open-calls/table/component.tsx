@@ -12,7 +12,7 @@ import Table from 'components/table';
 import { Paths } from 'enums';
 
 import { useEnums } from 'services/enums/enumService';
-import { useGetOpenCallList } from 'services/open-call/open-call-service';
+import { useAccountOpenCallList } from 'services/open-call/open-call-service';
 
 import CellActions from './cells/actions';
 import CellInstrumentTypes from './cells/instrument-types';
@@ -34,7 +34,7 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
     data: openCalls,
     isLoading: isLoadingOpenCalls,
     isFetching: isFetchingOpenCalls,
-  } = useGetOpenCallList({
+  } = useAccountOpenCallList({
     includes: ['municipality', 'country'],
     fields: [
       'name',
