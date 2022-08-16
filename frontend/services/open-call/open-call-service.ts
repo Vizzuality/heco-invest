@@ -11,12 +11,14 @@ import API from 'services/api';
 import { ErrorResponse, PagedResponse, ResponseData } from 'services/types';
 
 export const useCreateOpenCall = (): UseMutationResult<
-  AxiosResponse<ResponseData<OpenCall>>,
+  OpenCall,
   AxiosError<ErrorResponse>,
   { dto: OpenCallDto; locale: Languages }
 > => {
   return useMutation(({ dto, locale }) =>
-    API.post('/api/v1/account/open_calls', dto, { params: { locale } })
+    API.post('/api/v1/account/open_calls', dto, { params: { locale } }).then(
+      (response) => response.data.data
+    )
   );
 };
 

@@ -15,9 +15,8 @@ export const ProjectGallery = <FormValues extends FieldValues>({
   errors,
   onDeleteImage,
   onSelectCover,
+  numImages = 6,
 }: ProjectGalleryProps<FormValues>) => {
-  // Number of images to display. If not enough images are supplied, placeholders will be generated.
-  const numImages = 6;
   // const images: ProjectGalleryImageType[] = getValues(name as unknown as Path<FormValues>);
 
   const imagesToShow = images?.filter(({ _destroy }) => !_destroy) || [];
