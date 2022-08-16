@@ -30,6 +30,7 @@ export const CellActions: FC<CellActionsProps> = ({
 
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
   const [confirmLaunch, setConfirmLaunch] = useState(false);
+  const [confirmClose, setConfirmClose] = useState(false);
 
   const handleRowMenuItemClick = (key: string) => {
     switch (key) {
@@ -47,6 +48,9 @@ export const CellActions: FC<CellActionsProps> = ({
       //   return;
       case 'open':
         router.push(`${Paths.OpenCall}/${slug}`);
+        return;
+      case 'close':
+        setConfirmClose(true);
         return;
       // case 'delete':
       //   setConfirmDelete(true);
@@ -71,6 +75,17 @@ export const CellActions: FC<CellActionsProps> = ({
       {
         onSuccess: () => {
           setConfirmLaunch(false);
+        },
+      }
+    );
+  }, [slug, updateOpenCallMutation]);
+
+  const handleCloseOpenCall = useCallback(() => {
+    updateOpenCallMutation.mutate(
+      { id: slug, status: OpenCallStatus.Closed },
+      {
+        onSuccess: () => {
+          setConfirmClose(false);
         },
       }
     );
@@ -104,6 +119,11 @@ export const CellActions: FC<CellActionsProps> = ({
           <FormattedMessage defaultMessage="View open call page" id="7sVapx" />
         </RowMenuItem>
         {/* )} */}
+        {status === OpenCallStatus.Launched && (
+          <RowMenuItem key="close">
+            <FormattedMessage defaultMessage="Close open call" id="kdZTM0" />
+          </RowMenuItem>
+        )}
         {/* <RowMenuItem key="delete">
           <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
         </RowMenuItem> */}
@@ -151,6 +171,32 @@ export const CellActions: FC<CellActionsProps> = ({
             </p>
             <p>
               <FormattedMessage defaultMessage="Are you sure you want to continue?" id="Iu60EH" />
+            </p>
+          </>
+        }
+      />
+
+      <ConfirmationPrompt
+        open={confirmClose}
+        onAccept={handleCloseOpenCall}
+        onDismiss={() => setConfirmClose(false)}
+        onRefuse={() => setConfirmClose(false)}
+        onConfirmText={intl.formatMessage({ defaultMessage: 'Close', id: 'rbrahO' })}
+        title={intl.formatMessage({ defaultMessage: 'Close open call?', id: '0lKwqs' })}
+        description={
+          <>
+            <p>
+              <FormattedMessage
+                defaultMessage="Are you sure you want to close “<strong>{name}</strong>”?"
+                id="r2qqVX"
+                values={{
+                  name,
+                  strong: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+                }}
+              />
+            </p>
+            <p>
+              <FormattedMessage defaultMessage="You can't undo this action." id="k0xbVH" />
             </p>
           </>
         }

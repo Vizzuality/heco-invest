@@ -131,6 +131,9 @@
   "0iaD3T": {
     "string": "Total <span>{numProjects}</span> {numProjects, plural, one {project} other {projects}}"
   },
+  "0lKwqs": {
+    "string": "Close open call?"
+  },
   "0v43t3": {
     "string": "Note that all of this information will be visible in the Investor public profile page except questions."
   },
@@ -2151,6 +2154,9 @@
   "kaAF7K": {
     "string": "An open call is a call for projects made by a given investor. Open calls give investors the possibility to open specific opportunities in their topics of interest. All registered project developers have the possibility to submit their projects to an open call, if they match the open call criteria, and therefore apply to this particular funding."
   },
+  "kdZTM0": {
+    "string": "Close open call"
+  },
   "keWpuD": {
     "string": "In this data set, “tree cover” is defined as all vegetation greater than 5 meters in height, and may take the form of natural forests or plantations across a range of canopy densities. Tree cover loss is defined as “stand replacement disturbance,” or the complete removal of tree cover canopy at the Landsat pixel scale. Tree cover loss may be the result of human activities, including forestry practices such as timber harvesting or deforestation (the conversion of natural forest to other land uses), as well as natural causes such as disease or storm damage. Fire is another widespread cause of tree cover loss, and can be either natural or human-induced."
   },
@@ -2405,6 +2411,9 @@
   },
   "r/AN6W": {
     "string": "select investor/funder type"
+  },
+  "r2qqVX": {
+    "string": "Are you sure you want to close “<strong>{name}</strong>”?"
   },
   "rLzWx9": {
     "string": "{name} picture"
