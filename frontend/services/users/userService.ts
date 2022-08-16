@@ -1,7 +1,10 @@
-import { useMutation, UseMutationResult } from 'react-query';
+import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
+
+import { useRouter } from 'next/router';
 
 import { AxiosResponse, AxiosError } from 'axios';
 
+import { Queries } from 'enums';
 import { SignupDto, User, ChangePassword } from 'types/user';
 
 import { ErrorResponse, ResponseData } from 'services/types';
@@ -42,4 +45,45 @@ export const useChangePassword = (): UseMutationResult<
   ChangePassword
 > => {
   return useMutation(changePassword);
+};
+
+export const deleteFavorites = () => {
+  return API.request({
+    method: 'DELETE',
+    url: '/api/v1/account/users/favourites',
+    data: {},
+  });
+};
+
+export const useDeleteFavorites = (): UseMutationResult<
+  AxiosResponse<any>,
+  ErrorResponse,
+  void
+> => {
+  const { locale } = useRouter();
+  const queryClient = useQueryClient();
+
+  return useMutation(deleteFavorites, {
+    onSuccess: (data) => {
+      queryClient.setQueryData([Queries.Project, locale], data);
+      queryClient.invalidateQueries([Queries.Project], {});
+      queryClient.invalidateQueries([Queries.ProjectList], {});
+      queryClient.invalidateQueries([Queries.FavoriteProjectsList, {}]);
+
+      queryClient.setQueryData([Queries.OpenCall, locale], data);
+      queryClient.invalidateQueries([Queries.OpenCall], {});
+      queryClient.invalidateQueries([Queries.OpenCallList], {});
+      queryClient.invalidateQueries([Queries.FavoriteOpenCallsList, {}]);
+
+      queryClient.setQueryData([Queries.ProjectDeveloper, locale], data);
+      queryClient.invalidateQueries([Queries.ProjectDeveloper], {});
+      queryClient.invalidateQueries([Queries.ProjectDeveloperList], {});
+      queryClient.invalidateQueries([Queries.FavoriteProjectDevelopersList, {}]);
+
+      queryClient.setQueryData([Queries.Investor, locale], data);
+      queryClient.invalidateQueries([Queries.Investor], {});
+      queryClient.invalidateQueries([Queries.InvestorList], {});
+      queryClient.invalidateQueries([Queries.FavoriteInvestorsList], {});
+    },
+  });
 };
