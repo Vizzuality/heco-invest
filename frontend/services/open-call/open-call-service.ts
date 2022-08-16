@@ -65,6 +65,34 @@ export function useUpdateOpenCall(
   });
 }
 
+export const deleteOpenCall = async (
+  id: OpenCall['id']
+): Promise<AxiosResponse<ResponseData<OpenCall>>> => {
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/open_calls/${id}`,
+    method: 'DELETE',
+    data: { id },
+  };
+
+  return await API(config);
+};
+
+export function useDeleteOpenCall(): UseMutationResult<
+  AxiosResponse<ResponseData<OpenCall>>,
+  AxiosError<ErrorResponse>,
+  OpenCall['id']
+> {
+  const queryClient = useQueryClient();
+
+  return useMutation((id) => deleteOpenCall(id), {
+    onSuccess: () => {
+      queryClient.invalidateQueries(Queries.OpenCall);
+      queryClient.invalidateQueries(Queries.OpenCallList);
+      queryClient.invalidateQueries(Queries.AccountOpenCallsList);
+    },
+  });
+}
+
 const getAccountOpenCallsList = async ({
   fields,
   filter,

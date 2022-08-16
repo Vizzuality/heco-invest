@@ -10,8 +10,7 @@ import RowMenu, { RowMenuItem } from 'containers/dashboard/row-menu';
 import ConfirmationPrompt from 'components/confirmation-prompt';
 import { Paths, OpenCallStatus } from 'enums';
 
-import { useDeleteAccountProject } from 'services/account';
-import { useUpdateOpenCall } from 'services/open-call/open-call-service';
+import { useDeleteOpenCall, useUpdateOpenCall } from 'services/open-call/open-call-service';
 
 import { CellActionsProps } from './types';
 
@@ -25,7 +24,7 @@ export const CellActions: FC<CellActionsProps> = ({
   const intl = useIntl();
   const router = useRouter();
 
-  const deleteProjectMutation = useDeleteAccountProject();
+  const deleteOpenCallMutation = useDeleteOpenCall();
   const updateOpenCallMutation = useUpdateOpenCall();
 
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
@@ -52,22 +51,19 @@ export const CellActions: FC<CellActionsProps> = ({
       case 'close':
         setConfirmClose(true);
         return;
-      // case 'delete':
-      //   setConfirmDelete(true);
-      //   return;
+      case 'delete':
+        setConfirmDelete(true);
+        return;
     }
   };
 
-  const handleDeleteProjectConfirmation = () => {
-    deleteProjectMutation.mutate(
-      { id: slug },
-      {
-        onSuccess: () => {
-          setConfirmDelete(false);
-        },
-      }
-    );
-  };
+  const handleDeleteOpenCall = useCallback(() => {
+    deleteOpenCallMutation.mutate(slug, {
+      onSuccess: () => {
+        setConfirmDelete(false);
+      },
+    });
+  }, [slug, deleteOpenCallMutation]);
 
   const handleLaunchOpenCall = useCallback(() => {
     updateOpenCallMutation.mutate(
@@ -124,14 +120,14 @@ export const CellActions: FC<CellActionsProps> = ({
             <FormattedMessage defaultMessage="Close open call" id="kdZTM0" />
           </RowMenuItem>
         )}
-        {/* <RowMenuItem key="delete">
+        <RowMenuItem key="delete">
           <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
-        </RowMenuItem> */}
+        </RowMenuItem>
       </RowMenu>
 
       <ConfirmationPrompt
         open={confirmDelete}
-        onAccept={handleDeleteProjectConfirmation}
+        onAccept={handleDeleteOpenCall}
         onDismiss={() => setConfirmDelete(false)}
         onRefuse={() => setConfirmDelete(false)}
         title={intl.formatMessage({ defaultMessage: 'Delete open call?', id: 'DsukuX' })}
