@@ -72,7 +72,9 @@ RSpec.describe "API V1 Account Projects", type: :request do
       parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
       parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
 
-      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
 
       response "200", :success do
         schema type: :object, properties: {
@@ -84,7 +86,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
         before(:each) do
           @project = create(:project, name: "This PDs Project Awesome", project_developer: user.account.project_developer)
           create(:project, name: "This PDs Project Amazing", project_developer: user.account.project_developer)
-          create(:project, name: "Other PD's project", project_developer: create(:project_developer))
+          @different_project_developer_project = create(:project, name: "Other PD's project", project_developer: create(:project_developer))
           create(:project, :draft, name: "Draft project", project_developer: user.account.project_developer)
           sign_in user
         end
@@ -93,6 +95,10 @@ RSpec.describe "API V1 Account Projects", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/account/projects")
+        end
+
+        it "does not contain records of different project developer" do
+          expect(response_json["data"].pluck("id")).not_to include(@different_project_developer_project.id)
         end
 
         context "with sparse fieldset" do
@@ -168,7 +174,9 @@ RSpec.describe "API V1 Account Projects", type: :request do
         }
       end
 
-      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
 
       response "200", :success do
         schema type: :object, properties: {
@@ -275,8 +283,10 @@ RSpec.describe "API V1 Account Projects", type: :request do
         }
       end
 
-      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+      it_behaves_like "with not authorized error", csrf: true
       it_behaves_like "with not found error", csrf: true, user: -> { create(:user_project_developer) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
       it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
 
       response "200", :success do
@@ -395,8 +405,10 @@ RSpec.describe "API V1 Account Projects", type: :request do
       end
       let(:id) { project.id }
 
-      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+      it_behaves_like "with not authorized error", csrf: true
       it_behaves_like "with not found error", csrf: true, user: -> { user }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
       it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
 
       response "200", :success do

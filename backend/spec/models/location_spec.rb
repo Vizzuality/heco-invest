@@ -3,6 +3,8 @@ require "rails_helper"
 RSpec.describe Location, type: :model do
   subject { build(:location) }
 
+  it_behaves_like :with_ransacked_translations
+
   it { is_expected.to be_valid }
 
   it "should not be valid without name" do

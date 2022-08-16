@@ -4,14 +4,11 @@ module API
       class ProjectsController < BaseController
         include API::Pagination
 
-        before_action :require_project_developer!, except: :favourites
         before_action :fetch_project, only: [:update, :destroy]
         load_and_authorize_resource
 
         def index
-          projects = @projects
-            .where(project_developer_id: current_user.account.project_developer.id)
-            .includes(:project_developer, :involved_project_developers, project_images: {file_attachment: :blob})
+          projects = @projects.includes(:project_developer, :involved_project_developers, project_images: {file_attachment: :blob})
           projects = projects.dynamic_search ["name_#{I18n.locale}"], filter_params[:full_text], [] if filter_params[:full_text].present?
           projects = projects.order(created_at: :desc)
           render json: ProjectSerializer.new(
@@ -67,8 +64,8 @@ module API
 
         def create_params
           update_params.merge(
-            project_developer_id: current_user.account.project_developer.id,
-            language: current_user.account.language
+            project_developer_id: current_user.account&.project_developer_id,
+            language: current_user.account&.language
           )
         end
 
