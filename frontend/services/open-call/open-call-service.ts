@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult, UseQueryResult } from 'react-query';
 
-import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { AxiosError, AxiosRequestConfig } from 'axios';
 
 import { useLocalizedQuery } from 'hooks/query';
 
@@ -8,7 +8,7 @@ import { Languages, Queries } from 'enums';
 import { OpenCall, OpenCallDto, OpenCalParams } from 'types/open-calls';
 
 import API from 'services/api';
-import { ErrorResponse, PagedResponse, ResponseData } from 'services/types';
+import { ErrorResponse, PagedResponse } from 'services/types';
 
 export const useCreateOpenCall = (): UseMutationResult<
   OpenCall,
