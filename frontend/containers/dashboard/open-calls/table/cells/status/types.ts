@@ -1,3 +1,5 @@
+import { OpenCallStatus } from 'enums';
+
 export enum StatusTag {
   Draft = 'draft',
   Verified = 'verified',
@@ -5,5 +7,5 @@ export enum StatusTag {
 }
 
 export type CellStatusProps = {
-  value: StatusTag;
+  value: OpenCallStatus;
 };

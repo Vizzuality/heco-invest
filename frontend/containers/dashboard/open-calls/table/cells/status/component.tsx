@@ -4,7 +4,9 @@ import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
-import { CellStatusProps, StatusTag } from './types';
+import { OpenCallStatus } from 'enums';
+
+import { CellStatusProps } from './types';
 
 export const CellStatus: FC<CellStatusProps> = ({ value }: CellStatusProps) => {
   if (value === undefined) return null;
@@ -13,16 +15,16 @@ export const CellStatus: FC<CellStatusProps> = ({ value }: CellStatusProps) => {
     <span
       className={cx({
         'bg-opacity-20 text-sm px-2.5 py-0.5 rounded-2xl': true,
-        'bg-gray-800 text-gray-800': value === StatusTag.Draft,
-        'bg-green-light text-green-dark': value === StatusTag.Verified,
-        'bg-orange text-orange': value === StatusTag.Unverified,
+        'bg-gray-800 text-gray-800': value === OpenCallStatus.Draft,
+        'bg-green-light text-green-dark': value === OpenCallStatus.Launched,
+        'bg-orange text-orange': value === OpenCallStatus.Closed,
       })}
     >
-      {value === StatusTag.Draft && <FormattedMessage defaultMessage="Draft" id="W6nwjo" />}
-      {value === StatusTag.Verified && <FormattedMessage defaultMessage="Verified" id="Z8971h" />}
-      {value === StatusTag.Unverified && (
-        <FormattedMessage defaultMessage="Unverified" id="n9fdaJ" />
+      {value === OpenCallStatus.Draft && <FormattedMessage defaultMessage="Draft" id="W6nwjo" />}
+      {value === OpenCallStatus.Launched && (
+        <FormattedMessage defaultMessage="Launched" id="sH3zMa" />
       )}
+      {value === OpenCallStatus.Closed && <FormattedMessage defaultMessage="Closed" id="Fv1ZSz" />}
     </span>
   );
 };

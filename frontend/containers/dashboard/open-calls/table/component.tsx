@@ -74,7 +74,7 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
       },
       {
         Header: intl.formatMessage({ defaultMessage: 'Status', id: 'tzMNF3' }),
-        accessor: 'statusTag',
+        accessor: 'status',
         Cell: CellStatus,
       },
       {
@@ -95,8 +95,6 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
         ?.filter(({ id }) => openCall.instrument_types?.includes(id))
         .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase())),
       maximumFundingPerProject: `$ ${openCall.maximum_funding_per_project.toLocaleString()}`,
-      statusTag:
-        openCall.status === 'draft' ? 'draft' : openCall.trusted ? 'verified' : 'unverified',
     })),
     loading: isLoading,
     sortingEnabled: true,
