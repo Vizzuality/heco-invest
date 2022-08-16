@@ -29,3 +29,24 @@ export type OpenCall = {
   department: Locations;
   status: OpenCallStatus;
 };
+
+export type OpenCallForm = {
+  picture: string;
+  name: string;
+  description: string;
+  country_id: string;
+  municipality_id: string;
+  department_id: string;
+  impact_description: string;
+  maximum_funding_per_project: number;
+  funding_priorities: string;
+  funding_exclusions: string;
+  closing_at: Date;
+  sdgs: number[];
+  instrument_types: string[];
+  status: string;
+};
+
+export type OpenCallDto = Omit<OpenCallForm, 'closing_at'> & {
+  closing_at: string;
+};

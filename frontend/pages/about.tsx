@@ -173,25 +173,6 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
           <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
             <div className="text-center">
               <Image
-                src="/images/logos/idb-lab.png"
-                width={348}
-                height={124}
-                alt={intl.formatMessage({
-                  defaultMessage: 'Inter-American Development Bank Lab',
-                  id: 'QDj3j7',
-                })}
-              />
-            </div>
-            <p className="hidden mt-3 md:block sm:mt-6">
-              <FormattedMessage
-                defaultMessage="IDB Lab is the innovation laboratory of the Inter-American Development Bank Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
-                id="W4Jolw"
-              />
-            </p>
-          </div>
-          <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
-            <div className="text-center">
-              <Image
                 src="/images/logos/wwf.png"
                 width={348}
                 height={124}
@@ -203,6 +184,25 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               <FormattedMessage
                 defaultMessage="World Wildlife Fund (WWF) is the largest international conservation organization in the world, with more than 50 offices implementing conservation projects across more than 100 countries and has a membership of almost five million people. WWF has extensive experience working in the Amazon region, with offices in all seven signatory countries of the Leticia Pact. In Colombia, WWF has been working in partnership with the government and a consortium of civil society organizations on Heritage Colombia since 2015."
                 id="zkonnO"
+              />
+            </p>
+          </div>
+          <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
+            <div className="text-center">
+              <Image
+                src="/images/logos/idb-lab.png"
+                width={348}
+                height={124}
+                alt={intl.formatMessage({
+                  defaultMessage: 'Inter-American Natural Capital Lab',
+                  id: 'BV91+1',
+                })}
+              />
+            </div>
+            <p className="hidden mt-3 md:block sm:mt-6">
+              <FormattedMessage
+                defaultMessage="The Inter-American Development Bank (IDB) is the main source of multilateral financing and expertise for sustainable economic, social and institutional development in Latin America and the Caribbean. The IDB Natural Capital Lab works to drive innovation in natural capital finance by looking at nature as an asset."
+                id="WJcNiD"
               />
             </p>
           </div>

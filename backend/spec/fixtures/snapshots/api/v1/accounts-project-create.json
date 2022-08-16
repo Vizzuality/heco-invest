@@ -98,7 +98,8 @@
       "priority_landscape_total_impact": null,
       "created_at": "2022-06-24T09:06:23.534Z",
       "status": "published",
-      "account_language": "en"
+      "account_language": "en",
+      "impact_calculated": false
     },
     "relationships": {
       "project_developer": {

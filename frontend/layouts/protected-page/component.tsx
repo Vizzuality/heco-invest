@@ -71,7 +71,7 @@ const Protected: React.FC<ProtectedProps> = ({
 
   // If the ownership of the entity is needed and the user don't have it
   if (ownership?.allowOwner) {
-    if (!isOwner) {
+    if (isOwner === false) {
       // Redirect to dashboard
       router.push(Paths.Dashboard);
       return null;

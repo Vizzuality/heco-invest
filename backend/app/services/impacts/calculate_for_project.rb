@@ -48,6 +48,7 @@ module Impacts
 
     def store_impacts!
       project.assign_attributes impacts
+      project.impact_calculated = true
       project.save!
     end
 

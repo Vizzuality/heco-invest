@@ -21,6 +21,9 @@ class OpenCall < ApplicationRecord
     :funding_exclusions,
     :impact_description
 
+  enum status: OpenCallStatus::TYPES_WITH_CODE, _default: :launched
+  ransacker :status, formatter: proc { |v| statuses[v] }
+
   validates :instrument_types, array_inclusion: {in: InstrumentType::TYPES}, presence: true
   validates :sdgs, array_inclusion: {in: Sdg::TYPES}
   validates :language, inclusion: {in: Language::TYPES, allow_blank: true}, presence: true

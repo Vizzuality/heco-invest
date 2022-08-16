@@ -74,6 +74,12 @@ export enum Queries {
   FavoriteProjectsList = 'favorite_projects',
   /** Single project */
   Project = 'project',
+  /** List of projects */
+  OpenCallList = 'open_calls',
+  /** List of favorited projects */
+  FavoriteOpenCallsList = 'favorite_open_calls',
+  /** Single open call */
+  OpenCall = 'open_call',
   /** List of investors */
   InvestorList = 'investors',
   /** List of favorited investors */
@@ -171,6 +177,7 @@ export enum ProjectStatus {
 }
 
 export enum OpenCallStatus {
-  Published = 'published',
   Draft = 'draft',
+  Launched = 'launched',
+  Closed = 'closed',
 }

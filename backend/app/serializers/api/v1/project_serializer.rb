@@ -45,7 +45,8 @@ module API
         :priority_landscape_climate_impact,
         :priority_landscape_water_impact,
         :priority_landscape_community_impact,
-        :priority_landscape_total_impact
+        :priority_landscape_total_impact,
+        :impact_calculated
 
       belongs_to :project_developer
       belongs_to :country, serializer: LocationSerializer

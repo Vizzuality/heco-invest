@@ -67,6 +67,10 @@ RSpec.describe Impacts::CalculateForProject do
       expect(project.priority_landscape_total_impact.round(10)).to eq(0.2222222222)
     end
 
+    it "updates impact_calculated attribute" do
+      expect(project.reload.impact_calculated).to be_truthy
+    end
+
     context "when no intersect locations are found" do
       let(:project) do
         create :project,
