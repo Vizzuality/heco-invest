@@ -2,6 +2,7 @@ class Project < ApplicationRecord
   extend FriendlyId
   include Translatable
   include Searchable
+  include ExtraRansackers
 
   friendly_id :project_developer_prefixed_name, use: :slugged
 
@@ -74,9 +75,8 @@ class Project < ApplicationRecord
 
   delegate :account_language, to: :project_developer, allow_nil: true
 
-  ransacker :category_index do
-    Arel.sql(Category.select_index_sql)
-  end
+  generate_ransackers_for_translated_columns
+  generate_localized_ransackers_for_static_types :category
 
   def project_developer_prefixed_name
     "#{project_developer&.name} #{original_name}"

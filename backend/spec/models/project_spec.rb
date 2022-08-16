@@ -309,13 +309,13 @@ RSpec.describe Project, type: :model do
       context "sort" do
         it "correctly by category name asc" do
           q = Project.ransack
-          q.sorts = "category_index asc"
+          q.sorts = "category_localized asc"
           expect(q.result.pluck(:category)).to eq(["forestry-and-agroforestry", "sustainable-agrosystems", "tourism-and-recreation"])
         end
 
         it "correctly by category name desc" do
           q = Project.ransack
-          q.sorts = "category_index desc"
+          q.sorts = "category_localized desc"
           expect(q.result.pluck(:category)).to eq(["tourism-and-recreation", "sustainable-agrosystems", "forestry-and-agroforestry"])
         end
       end
