@@ -7,6 +7,8 @@ RSpec.describe Project, type: :model do
 
   it_behaves_like :searchable
   it_behaves_like :translatable
+  it_behaves_like :with_ransacked_translations
+  it_behaves_like :with_ransacked_static_types, :category
 
   it { is_expected.to be_valid }
 
