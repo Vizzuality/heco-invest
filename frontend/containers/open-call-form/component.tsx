@@ -9,7 +9,7 @@ import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { OutroPage, Page } from 'containers/multi-page-layout';
 
-// import Button from 'components/button';
+import Button from 'components/button';
 import Head from 'components/head';
 import { OpenCallStatus } from 'enums';
 import { OpenCallForm as OpenFormType, OpenCallDto } from 'types/open-calls';
@@ -130,19 +130,19 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
         showProgressBar
         onCloseClick={() => setShowLeave(true)}
         onSubmitClick={handleSubmitPublish}
-        // footerElements={
-        //   isLastPage &&
-        //   openCall?.status !== OpenCallStatus.Published && (
-        //     <Button
-        //       className="px-3 py-2 leading-none md:px-8 md:py-4"
-        //       theme="secondary-green"
-        //       size="base"
-        //       onClick={handleSubmitDraft}
-        //     >
-        //       <FormattedMessage defaultMessage="Save as draft" id="JHJJAH" />
-        //     </Button>
-        //   )
-        // }
+        footerElements={
+          isLastPage &&
+          (!openCall?.status || openCall.status === OpenCallStatus.Draft) && (
+            <Button
+              className="px-3 py-2 leading-none md:px-8 md:py-4"
+              theme="secondary-green"
+              size="base"
+              onClick={handleSubmitDraft}
+            >
+              <FormattedMessage defaultMessage="Save as draft" id="JHJJAH" />
+            </Button>
+          )
+        }
       >
         <Page>
           <ContentLanguageAlert className="mb-6">
