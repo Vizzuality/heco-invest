@@ -299,6 +299,48 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
         end
       end
     end
+
+    delete "Delete existing open call of User" do
+      tags "Open Calls"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :id, in: :path, type: :string, description: "Use open call ID or slug"
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
+
+      let(:user) { create :user, :investor }
+      let!(:open_call) { create :open_call, investor: create(:investor, account: create(:account, owner: user)) }
+      let(:id) { open_call.id }
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with not found error", csrf: true, user: -> { user }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
+
+      response "200", :success do
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before { sign_in user }
+
+        it "removes open call" do |example|
+          expect {
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
+          }.to change(OpenCall, :count).by(-1)
+        end
+
+        context "when slug is used" do
+          let(:id) { open_call.slug }
+
+          it "removes open call" do |example|
+            expect {
+              submit_request example.metadata
+            }.to change(OpenCall, :count).by(-1)
+          end
+        end
+      end
+    end
   end
 
   path "/api/v1/account/open_calls/favourites" do
