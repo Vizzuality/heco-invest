@@ -4,7 +4,7 @@ module API
       class OpenCallsController < BaseController
         include API::Pagination
 
-        before_action :fetch_open_call, only: [:update]
+        before_action :fetch_open_call, only: [:update, :destroy]
         load_and_authorize_resource
 
         def create
@@ -23,6 +23,11 @@ module API
             include: included_relationships,
             params: {current_user: current_user}
           ).serializable_hash
+        end
+
+        def destroy
+          @open_call.destroy!
+          head :ok
         end
 
         def favourites

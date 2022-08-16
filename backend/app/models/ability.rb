@@ -58,7 +58,11 @@ class Ability
     can %i[destroy], User.where(account_id: user.account_id).where.not(id: user.id)
     can :transfer_ownership, User, account_id: user.account.id
 
-    can :destroy, Project, {project_developer: {account: {owner_id: user.id}}}
+    if user.account.investor_id.present?
+      can :destroy, OpenCall, {investor: {account: {owner_id: user.id}}}
+    else
+      can :destroy, Project, {project_developer: {account: {owner_id: user.id}}}
+    end
   end
 
   def approved_user_rights
