@@ -18,12 +18,13 @@ import ShareIcons from 'containers/share-icons';
 import Button from 'components/button';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
+import { OpenCallStatus } from 'enums';
 
-import OpenCallChart from '../open-call-chart';
+import OpenCallChart from '../chart';
 
 import { OpenCallHeaderProps } from '.';
 
-export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTypeEnums }) => {
+export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTypes }) => {
   const intl = useIntl();
   const { locale } = useRouter();
   const {
@@ -34,10 +35,12 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
     language,
     created_at,
     closing_at,
+    status,
   } = openCall;
   const coverImage = picture?.medium || '/images/avatar.svg';
   const originalLanguage = language || 'es';
   const totalProjects = 0;
+  const isFavorite = false;
 
   const openCallRange = useMemo(() => {
     const openDate = dayjs(created_at);
@@ -51,7 +54,6 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
     const consumed = duration - remaining;
     return { consumed, remaining, deadline };
   }, [closing_at, created_at]);
-  const isFavorite = false;
 
   return (
     <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
@@ -62,15 +64,15 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
         }}
       />
 
-      <div className="">
+      <div className="mt-4">
         <div
-          className="mx-4 bg-center bg-cover lg:mx-0 rounded-2xl bg-radial-green-dark bg-green-dark"
+          className="flex items-end mx-4 bg-center bg-cover lg:mx-0 rounded-2xl bg-radial-green-dark bg-green-dark min-h-[250px] lg:min-h-[372px]"
           style={{
             ...(coverImage && { backgroundImage: `url(${coverImage})` }),
           }}
         >
           <LayoutContainer>
-            <div className="-mb-2 text-center lg:mb-4 lg:text-left min-h-[200px] xl:min-h-[372px]">
+            <div className="mb-8 text-center lg:w-1/2 lg:text-left">
               <h1 className="font-serif text-3xl text-white">{name}</h1>
             </div>
           </LayoutContainer>
@@ -94,8 +96,8 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
           <div className="flex flex-col justify-start lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-1/3 rounded-2xl mt-8 lg:mt-0">
             {typeof totalProjects === 'number' && (
               <>
-                <div className="flex flex-col gap-8 pl-2 md:flex-row">
-                  <div className="flex flex-col justify-end w-full gap-2 md:min-w-1/3">
+                <div className="flex flex-col gap-8 pl-2 sm:flex-row">
+                  <div className="flex flex-col items-center justify-end w-full gap-2 sm:items-start sm:w-1/3">
                     <span aria-labelledby="open-call-value" className="text-2xl font-semibold">
                       ${maximum_funding_per_project.toLocaleString(locale)}
                     </span>
@@ -103,21 +105,23 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                       <FormattedMessage defaultMessage="Value" id="GufXy5" />
                     </span>
                   </div>
-                  <div className="flex flex-col items-end justify-end w-full gap-2 md:min-w-2/3">
-                    {instrument_types?.map((type) => {
-                      return (
-                        <span
-                          aria-labelledby="open-call-instrument-types"
-                          key={type}
-                          className={cx('font-semibold whitespace-nowrap', {
-                            'text-2xl': instrument_types.length === 1,
-                            'text-lg': instrument_types.length > 1,
-                          })}
-                        >
-                          {instrumentTypeEnums.find((instrument) => instrument.id === type)?.name}
-                        </span>
-                      );
-                    })}
+                  <div className="flex flex-col items-center justify-end w-full gap-2 sm:items-end sm:w-2/3">
+                    <div className="max-w-full text-center sm:text-right">
+                      {instrumentTypes?.map((type) => {
+                        return (
+                          <p
+                            aria-labelledby="block open-call-instrument-types"
+                            key={type}
+                            className={cx('font-semibold whitespace-nowrap', {
+                              'text-2xl': instrument_types.length === 1,
+                              'text-[26px]': instrument_types.length > 1,
+                            })}
+                          >
+                            {type}
+                          </p>
+                        );
+                      })}
+                    </div>
                     <span id="open-call-instrument-types" className="text-gray-400">
                       <FormattedMessage
                         defaultMessage="Instrument {numInstrumentTypes, plural, one {type} other {types}}"
@@ -130,26 +134,26 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                   </div>
                 </div>
                 <hr className="mt-6 mb-8" />
-                <div className="flex flex-col pl-2 sm:flex-row">
-                  <div className="flex flex-col gap-2 sm:min-w-2/3">
+                <div className="flex flex-col justify-between pl-2 sm:flex-row">
+                  <div className="flex flex-col items-center justify-end w-full gap-2 text-center sm:w-1/3">
+                    <div className="w-[82px] h-[82px] rounded-full flex justify-center items-center">
+                      <OpenCallChart openCallRange={openCallRange} />
+                      <p className="absolute max-w-[62px] text-xs font-semibold text-green-dark">
+                        {status === OpenCallStatus.Launched ? (
+                          <FormattedMessage defaultMessage="Ending soon" id="8mCCtS" />
+                        ) : (
+                          <FormattedMessage defaultMessage="Closed" id="Fv1ZSz" />
+                        )}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center justify-end w-full gap-2 sm:w-2/3 sm:items-end">
                     <span id="total-of-projects" className="text-2xl font-semibold text-gray-700">
                       {openCallRange.deadline}
                     </span>
                     <span aria-labelledby="total-of-projects" className="text-gray-400">
                       <FormattedMessage defaultMessage="Deadline" id="8/Da7A" />
                     </span>
-                  </div>
-                  <div className="flex flex-col items-center self-center gap-2 text-center sm:min-w-1/3">
-                    <div className="w-[82px] h-[82px] rounded-full flex justify-center items-center">
-                      <OpenCallChart openCallRange={openCallRange} />
-                      <p className="absolute max-w-[62px] text-xs font-semibold text-green-dark">
-                        {!!openCallRange.remaining ? (
-                          <FormattedMessage defaultMessage="Ending soon" id="8mCCtS" />
-                        ) : (
-                          <FormattedMessage defaultMessage="Open call ended" id="vZgJJu" />
-                        )}
-                      </p>
-                    </div>
                   </div>
                 </div>
               </>

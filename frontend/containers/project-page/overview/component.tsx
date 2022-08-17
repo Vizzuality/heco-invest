@@ -12,7 +12,7 @@ import Map from 'components/map';
 
 import { getLayer } from './helpers';
 
-export const Overview: React.FC<OverviewProps> = ({ project, openCall }: OverviewProps) => {
+export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) => {
   const { country, municipality, geometry, category, priority_landscape } = project;
 
   const layer = getLayer(geometry, category);

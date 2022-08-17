@@ -2,6 +2,8 @@ import { Languages, OpenCallStatus } from 'enums';
 import { Picture } from 'types';
 import { Locations } from 'types/locations';
 
+import { Investor } from './investor';
+
 export type OpenCall = {
   id: string;
   type: 'open_call';
@@ -20,10 +22,7 @@ export type OpenCall = {
   trusted: boolean;
   created_at: string;
   picture: Picture;
-  investor: {
-    id: string;
-    type: 'investor';
-  };
+  investor: Investor;
   country: Locations;
   municipality: Locations;
   department: Locations;

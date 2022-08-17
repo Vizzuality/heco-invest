@@ -1,7 +1,8 @@
 import { Enum } from 'types/enums';
 import { OpenCall } from 'types/open-calls';
 
-export type OpenCallHeaderProps = {
+export type OpenCallFundingImpactProps = {
   openCall: OpenCall;
-  instrumentTypeEnums: Enum[];
+  instrumentTypes: string[];
+  allSdgs: Enum[];
 };
