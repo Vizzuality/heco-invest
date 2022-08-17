@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import { useMutation, UseMutationResult, UseQueryResult } from 'react-query';
 
 import { AxiosError, AxiosRequestConfig } from 'axios';
@@ -8,7 +10,7 @@ import { Languages, Queries } from 'enums';
 import { OpenCall, OpenCallDto, OpenCalParams } from 'types/open-calls';
 
 import API from 'services/api';
-import { ErrorResponse, PagedResponse } from 'services/types';
+import { ErrorResponse, ResponseData } from 'services/types';
 
 export const useCreateOpenCall = (): UseMutationResult<
   OpenCall,
@@ -27,30 +29,37 @@ const getAccountOpenCallsList = async ({
   filter,
   includes,
 }: OpenCalParams): Promise<OpenCall[]> => {
-  const params = {};
-  fields?.length && (params['fields[open_call]'] = fields.join(','));
-  includes?.length && (params['includes'] = includes.join(','));
-  filter && (params['filter[full_text]'] = filter);
+  const params = {
+    'fields[open_call]': fields?.join(','),
+    includes: includes?.join(','),
+    'filter[full_text]': filter,
+  };
+
   const options: AxiosRequestConfig = {
-    // TODO: change to this endpoint when available
-    // url: '/api/v1/account/open_calls',
-    url: '/api/v1/open_calls',
+    url: '/api/v1/account/open_calls',
     params,
   };
-  const response = await API.request<PagedResponse<OpenCall>>(options);
+
+  const response = await API.request<ResponseData<OpenCall[]>>(options);
   return response.data.data;
 };
 
+/** Hook to use the open calls list belonging to the current Investor account  */
 export const useAccountOpenCallList = (
   params: OpenCalParams
-): UseQueryResult<OpenCall[], ErrorResponse> => {
-  const query = useLocalizedQuery<OpenCall[], ErrorResponse>(
-    Queries.AccountOpenCallsList,
+): Omit<UseQueryResult, 'data'> & { openCalls: OpenCall[] } => {
+  const { data, ...rest } = useLocalizedQuery<OpenCall[], ErrorResponse>(
+    [Queries.AccountOpenCallsList, params],
     () => getAccountOpenCallsList(params),
     {
       refetchOnWindowFocus: false,
     }
   );
-
-  return query;
+  return useMemo(
+    () => ({
+      ...rest,
+      openCalls: data || [],
+    }),
+    [data, rest]
+  );
 };

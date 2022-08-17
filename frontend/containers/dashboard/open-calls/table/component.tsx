@@ -2,6 +2,8 @@ import { FC } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import { useRouter } from 'next/router';
+
 import { useQueryParams } from 'helpers/pages';
 
 import NoSearchResults from 'containers/dashboard/no-search-results';
@@ -22,8 +24,8 @@ import { OpenCallsTableProps } from '.';
 
 export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
   const intl = useIntl();
-
-  const queryParams = useQueryParams();
+  const { locale } = useRouter();
+  const { search } = useQueryParams();
 
   const {
     data: { instrument_type: allInstrumentTypes },
@@ -31,7 +33,7 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
   } = useEnums();
 
   const {
-    data: openCalls,
+    openCalls,
     isLoading: isLoadingOpenCalls,
     isFetching: isFetchingOpenCalls,
   } = useAccountOpenCallList({
@@ -45,15 +47,19 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
       'maximum_funding_per_project',
       'status',
     ],
+    filter: search,
   });
 
-  const isSearching = !!queryParams.search;
+  const isSearching = !!search;
   const isLoading = isLoadingEnums || isLoadingOpenCalls || isFetchingOpenCalls;
   const hasOpenCalls = !!openCalls?.length;
 
   const tableProps = {
     columns: [
-      { Header: intl.formatMessage({ defaultMessage: 'Title', id: '9a9+ww' }), accessor: 'name' },
+      {
+        Header: intl.formatMessage({ defaultMessage: 'Title', id: '9a9+ww' }),
+        accessor: 'name',
+      },
       {
         Header: intl.formatMessage({ defaultMessage: 'Country', id: 'vONi+O' }),
         accessor: 'country',
@@ -65,12 +71,15 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
       {
         Header: intl.formatMessage({ defaultMessage: 'Instrument type', id: 'fDd10o' }),
         accessor: 'instrumentType',
+        disableSortBy: true,
         Cell: CellInstrumentTypes,
+        width: 200,
       },
       {
         Header: intl.formatMessage({ defaultMessage: 'Value', id: 'GufXy5' }),
         accessor: 'maximumFundingPerProject',
-        canSort: false,
+        width: 100,
+        Cell: ({ cell: { value } }) => `$${value?.toLocaleString(locale)}`,
       },
       {
         Header: intl.formatMessage({ defaultMessage: 'Status', id: 'tzMNF3' }),
@@ -79,7 +88,7 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
       },
       {
         accessor: 'actions',
-        canSort: false,
+        disableSortBy: true,
         hideHeader: true,
         width: 0,
         Cell: CellActions,
@@ -94,7 +103,7 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
       instrumentType: allInstrumentTypes
         ?.filter(({ id }) => openCall.instrument_types?.includes(id))
         .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase())),
-      maximumFundingPerProject: `$ ${openCall.maximum_funding_per_project.toLocaleString()}`,
+      maximumFundingPerProject: openCall.maximum_funding_per_project,
     })),
     loading: isLoading,
     sortingEnabled: true,
@@ -115,7 +124,7 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
         />
       </SearchAndInfo>
       {hasOpenCalls && <Table {...tableProps} />}
-      {!hasOpenCalls && (
+      {!hasOpenCalls && !isLoading && (
         <div className="flex flex-col items-center mt-10 lg:mt-20">
           {isSearching ? (
             <NoSearchResults />
