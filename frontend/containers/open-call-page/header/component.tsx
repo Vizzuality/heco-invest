@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react';
 
-import { Heart } from 'react-feather';
+// import { Heart } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -12,11 +12,10 @@ import dayjs from 'dayjs';
 import { translatedLanguageNameForLocale } from 'helpers/intl';
 
 import Breadcrumbs from 'containers/breadcrumbs';
-import description from 'containers/for-public-pages/description';
 import ShareIcons from 'containers/share-icons';
 
-import Button from 'components/button';
-import Icon from 'components/icon';
+// import Button from 'components/button';
+// import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import { OpenCallStatus } from 'enums';
 
@@ -24,7 +23,12 @@ import OpenCallChart from '../chart';
 
 import { OpenCallHeaderProps } from '.';
 
-export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTypes }) => {
+export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
+  openCall,
+  instrumentTypes,
+  // handleFavorite,
+  // handleApply,
+}) => {
   const intl = useIntl();
   const { locale } = useRouter();
   const {
@@ -63,7 +67,6 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
           id: { name },
         }}
       />
-
       <div className="mt-4">
         <div
           className="flex items-end mx-4 bg-center bg-cover lg:mx-0 rounded-2xl bg-radial-green-dark bg-green-dark min-h-[250px] lg:min-h-[372px]"
@@ -91,7 +94,6 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                 />
               </span>
             )}
-            <p>{description}</p>
           </div>
           <div className="flex flex-col justify-start lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-1/3 rounded-2xl mt-8 lg:mt-0">
             {typeof totalProjects === 'number' && (
@@ -158,11 +160,11 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                 </div>
               </>
             )}
-            <div className="flex flex-col justify-between gap-4 lg:flex-row mt-7">
+            {/* <div className="flex flex-col justify-between gap-4 lg:flex-row mt-7">
               <Button
                 className="justify-center"
                 theme="secondary-green"
-                // onClick={onFavoriteClick}
+                onClick={handleFavorite}
                 // disabled={!user || favoriteLoading}
                 aria-pressed={isFavorite}
               >
@@ -172,11 +174,11 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
               <Button
                 className="w-full lg:max-w-[200px] justify-center"
                 theme="primary-green"
-                onClick={() => console.log('apply')}
+                onClick={handleApply}
               >
                 <FormattedMessage defaultMessage="Apply now" id="VR4TEV" />
               </Button>
-            </div>
+            </div> */}
             <ShareIcons title={name} />
           </div>
         </LayoutContainer>

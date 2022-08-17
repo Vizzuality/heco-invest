@@ -17,6 +17,9 @@
   "+K9fF0": {
     "string": "Project Developers"
   },
+  "+USuwC": {
+    "string": "Funding available per project"
+  },
   "+mzZak": {
     "string": "About {name}"
   },
@@ -473,6 +476,9 @@
   "8j91Nj": {
     "string": "In the {area} the project has higher impact on <b>{impact}</b> and has an <b>impact score</b> of {score}."
   },
+  "8mCCtS": {
+    "string": "Ending soon"
+  },
   "8rAlFa": {
     "string": "Not listed"
   },
@@ -803,6 +809,9 @@
   "Fg5HOn": {
     "string": "Every new account created will need to be approved by the HeCo Invest staff - platform administrator. This approval process allows for the verification of each organization, institution or business that applies to the HeCo Invest platform, guaranteeing that only trustworthy organizations will present their projects or investment opportunities. Therefore, your account will only be visible on the HeCo Invest platform after the platform administrator completes this approval step."
   },
+  "Fv1ZSz": {
+    "string": "Closed"
+  },
   "Fxekek": {
     "string": "Invite again"
   },
@@ -896,6 +905,9 @@
   },
   "IBlTCs": {
     "string": "The image is larger than {maxSize}MB"
+  },
+  "IHCcxL": {
+    "string": "What is the open call about"
   },
   "IQTULX": {
     "string": "We are here to help you"
@@ -1007,6 +1019,9 @@
   },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
+  },
+  "Knhvmr": {
+    "string": "Who is financing this open call"
   },
   "Kt3qxl": {
     "string": "Renewable energy"
@@ -1178,6 +1193,9 @@
   },
   "OSAxiC": {
     "string": "The solution or opportunity proposed"
+  },
+  "OTKLo8": {
+    "string": "Instrument {numInstrumentTypes, plural, one {type} other {types}}"
   },
   "OWnChd": {
     "string": "If you are not looking for funding and just want to publish your project, select No."
@@ -2447,6 +2465,9 @@
   },
   "sbodFR": {
     "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure <n>20 million hectares</n> of sustainable landscape over the next 20 years, through investments in <n>conservation and sustainable development</n>."
+  },
+  "sfFhiy": {
+    "string": "Maximum value"
   },
   "si4NjO": {
     "string": "Select the account language in which you want to write the content of this account (including profile information and future projects). This will avoid mixed content in the platform."

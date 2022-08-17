@@ -25,7 +25,7 @@ export const useCreateOpenCall = (): UseMutationResult<
   );
 };
 
-export const getOpenCall = async (id: string) => {
+export const getOpenCall = async (id: string): Promise<OpenCall> => {
   const response = await RawApi.get(`/api/v1/open_calls/${id}`);
   const {
     investor: {
@@ -56,17 +56,24 @@ export const getOpenCall = async (id: string) => {
   };
 
   return openCall;
+  // Use the code bellow when the BE team add the 'includes' param to the open call endpoint
+  // const response = await API.get<ResponseData<OpenCall>>(`/api/v1/open_calls/${id}`, {
+  //   params: {
+  //     includes: 'investor,country,department,municipality',
+  //   },
+  // });
+  // return response.data.data;
 };
 
 export const useOpenCall = (
   id: string,
   initialData?: OpenCall
-): UseQueryResult & { openCall: OpenCall } => {
-  const query = useLocalizedQuery([Queries.OpenCall, id], () => getOpenCall(id), {
+): Omit<UseQueryResult, 'data'> & { openCall: OpenCall } => {
+  const { data, ...rest } = useLocalizedQuery([Queries.OpenCall, id], () => getOpenCall(id), {
     initialData,
   });
 
   return useMemo(() => {
-    return { ...query, openCall: query.data };
-  }, [query]);
+    return { ...rest, openCall: data };
+  }, [data, rest]);
 };

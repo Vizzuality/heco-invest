@@ -6,15 +6,14 @@ import LayoutContainer from 'components/layout-container';
 
 import { OpenCallOverviewTypes } from './types';
 
-export const Overview: FC<OpenCallOverviewTypes> = ({ openCall }) => {
+export const Overview: FC<OpenCallOverviewTypes> = ({ openCall, overviewRef }) => {
   const { country, municipality, description, department } = openCall;
 
   return (
-    <LayoutContainer className="mb-14 lg:mb-20 mt-18 space-y-36">
-      <section className="p-4 mt-32 font-serif lg:flex sm:p-6 lg:mt-48 lg:p-16 rounded-2xl">
-        <div className="lg:w-1/2"></div>
-        <div className="lg:w-1/2">
-          <div className="flex flex-col mb-12 space-y-4 lg:col-start-2">
+    <LayoutContainer id="overview" className="my-20 lg:mt-44">
+      <section ref={overviewRef} className="p-4 font-serif lg:flex sm:p-6 rounded-2xl">
+        <div className="flex flex-col gap-10 lg:justify-between lg:flex-row">
+          <div className="flex flex-col space-y-4 lg:mb-12 lg:w-1/2">
             <h2 className="text-2xl lg:text-3xl">
               <FormattedMessage defaultMessage="Location" id="rvirM2" />
             </h2>
@@ -43,7 +42,7 @@ export const Overview: FC<OpenCallOverviewTypes> = ({ openCall }) => {
               )}
             </div>
           </div>
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-4 lg:w-1/2">
             <h2 className="text-2xl lg:text-3xl">
               <FormattedMessage defaultMessage="What is the open call about" id="IHCcxL" />
             </h2>

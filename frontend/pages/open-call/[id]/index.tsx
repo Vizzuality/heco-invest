@@ -1,4 +1,4 @@
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useRef } from 'react';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
@@ -10,7 +10,8 @@ import {
   OpenCallHeader,
   OpenCallOverview,
   OpenCallFundingInformation,
-  OpenCallInvestor,
+  OpenCallInvestorAndFooter,
+  OpenCallSectionLinks,
 } from 'containers/open-call-page';
 
 import Head from 'components/head';
@@ -52,8 +53,6 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
   openCall: openCallProp,
   enums,
 }) => {
-  const intl = useIntl();
-
   const { openCall } = useOpenCall(openCallProp.id, openCallProp);
 
   const { name, description, instrument_types } = openCall;
@@ -64,18 +63,47 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
     (instrumentType) => allInstrumentTypes.find((type) => type.id === instrumentType).name
   );
 
+  const fundingRef = useRef(null);
+  const overviewRef = useRef(null);
+  const impactRef = useRef(null);
+  const investorRef = useRef(null);
+
+  // To implement
+  const handleFavorite = () => {};
+
+  // To implement
+  const handleApply = () => {};
+
   return (
-    <>
+    <div>
       <Head title={name} description={description} />
-      <OpenCallHeader openCall={openCall} instrumentTypes={instrumentTypeNames} />
-      <OpenCallOverview openCall={openCall} />
+      <OpenCallHeader
+        openCall={openCall}
+        instrumentTypes={instrumentTypeNames}
+        handleFavorite={handleFavorite}
+        handleApply={handleApply}
+      />
+      <OpenCallSectionLinks
+        investorRef={investorRef}
+        fundingRef={fundingRef}
+        overviewRef={overviewRef}
+        impactRef={impactRef}
+      />
+      <OpenCallOverview overviewRef={overviewRef} openCall={openCall} />
       <OpenCallFundingInformation
         instrumentTypes={instrumentTypeNames}
         openCall={openCall}
         allSdgs={allSdgs}
+        fundingRef={fundingRef}
+        impactRef={impactRef}
       />
-      <OpenCallInvestor investor={openCall?.investor} />
-    </>
+      <OpenCallInvestorAndFooter
+        investorRef={investorRef}
+        investor={openCall?.investor}
+        handleFavorite={handleFavorite}
+        handleApply={handleApply}
+      />
+    </div>
   );
 };
 
