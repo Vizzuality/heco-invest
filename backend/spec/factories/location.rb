@@ -48,5 +48,13 @@ FactoryBot.define do
         "Municipality #{n}"
       end
     end
+
+    factory :priority_landscape do
+      location_type { "priority_landscape" }
+
+      sequence(:name) do |n|
+        "Priority Landscape #{n}"
+      end
+    end
   end
 end

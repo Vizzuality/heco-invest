@@ -5,7 +5,7 @@ FactoryBot.define do
     categories { %w[forestry-and-agroforestry non-timber-forest-production] }
     impacts { %w[climate water] }
     project_developer_type { "ngo" }
-    mosaics { %w[amazon-heart amazonian-piedmont-massif] }
+    priority_landscapes { create_list(:priority_landscape, 2) }
     sequence(:mission) do |n|
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)

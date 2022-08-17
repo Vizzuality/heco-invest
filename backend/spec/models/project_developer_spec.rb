@@ -36,5 +36,4 @@ RSpec.describe ProjectDeveloper, type: :model do
   include_examples :static_relation_validations, attribute: :project_developer_type, presence: true
   include_examples :static_relation_validations, attribute: :impacts, presence: false
   include_examples :static_relation_validations, attribute: :categories, presence: true
-  include_examples :static_relation_validations, attribute: :mosaics, presence: false
 end

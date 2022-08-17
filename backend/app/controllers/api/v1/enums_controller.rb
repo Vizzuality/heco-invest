@@ -9,7 +9,6 @@ module API
           InstrumentType.all,
           InvestorType.all,
           LocationType.all,
-          Mosaic.all,
           ProjectDeveloperType.all,
           ProjectDevelopmentStage.all,
           ProjectStatus.all,

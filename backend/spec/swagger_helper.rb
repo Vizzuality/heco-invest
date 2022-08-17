@@ -251,7 +251,6 @@ RSpec.configure do |config|
                   project_developer_type: {type: :string, nullable: true},
                   categories: {type: :array, items: {type: :string}},
                   impacts: {type: :array, items: {type: :string}},
-                  mosaics: {type: :array, items: {type: :string}},
                   language: {type: :string},
                   entity_legal_registration_number: {type: :string},
                   favourite: {type: :boolean, nullable: true},
@@ -263,6 +262,7 @@ RSpec.configure do |config|
                 properties: {
                   projects: {"$ref" => "#/components/schemas/response_relations"},
                   involved_projects: {"$ref" => "#/components/schemas/response_relations"},
+                  priority_landscapes: {"$ref" => "#/components/schemas/response_relations"},
                   owner: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }

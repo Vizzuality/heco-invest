@@ -326,10 +326,10 @@
       }
     },
     {
-      "id": "region",
+      "id": "priority_landscape",
       "type": "location_type",
       "attributes": {
-        "name": "Region"
+        "name": "Priority Landscape"
       }
     },
     {
@@ -348,111 +348,83 @@
     },
     {
       "id": "amazon-heart",
-      "type": "mosaic",
-      "attributes": {
-        "name": "Amazon Heart"
-      }
-    },
-    {
-      "id": "amazonian-piedmont-massif",
-      "type": "mosaic",
-      "attributes": {
-        "name": "Amazonian Piedmont Massif"
-      }
-    },
-    {
-      "id": "orinoquia-transition",
-      "type": "mosaic",
-      "attributes": {
-        "name": "Orinoquía Transition"
-      }
-    },
-    {
-      "id": "orinoquia",
-      "type": "mosaic",
-      "attributes": {
-        "name": "Orinoquía"
-      }
-    },
-    {
-      "id": "academic",
       "type": "project_developer_type",
       "attributes": {
         "name": "Academic"
       }
     },
     {
-      "id": "business-cooperative",
+      "id": "amazonian-piedmont-massif",
       "type": "project_developer_type",
       "attributes": {
         "name": "Business - Cooperative"
       }
     },
     {
-      "id": "business-large-enterprise-corporation",
+      "id": "orinoquia-transition",
       "type": "project_developer_type",
       "attributes": {
         "name": "Business - Large enterprise corporation"
       }
     },
     {
-      "id": "business-sme-and-msme",
+      "id": "orinoquia",
       "type": "project_developer_type",
       "attributes": {
         "name": "Business - SME and MSME"
       }
     },
     {
-      "id": "business-start-up-entrepreneur",
+      "id": "academic",
       "type": "project_developer_type",
       "attributes": {
         "name": "Business - Start-up entrepreneur"
       }
     },
     {
-      "id": "business-trade-or-business-association",
+      "id": "business-cooperative",
       "type": "project_developer_type",
       "attributes": {
         "name": "Business - Trade or business association"
       }
     },
     {
-      "id": "government-national",
+      "id": "business-large-enterprise-corporation",
       "type": "project_developer_type",
       "attributes": {
         "name": "Government - National"
       }
     },
     {
-      "id": "government-sub-national",
+      "id": "business-sme-and-msme",
       "type": "project_developer_type",
       "attributes": {
         "name": "Government - Sub-national"
       }
     },
     {
-      "id": "public-private-organization-or-program",
+      "id": "business-start-up-entrepreneur",
       "type": "project_developer_type",
       "attributes": {
         "name": "Public-private organization or program"
       }
     },
     {
-      "id": "ngo",
+      "id": "business-trade-or-business-association",
       "type": "project_developer_type",
       "attributes": {
         "name": "NGO"
       }
     },
     {
-      "id": "iplc-organization",
+      "id": "government-national",
       "type": "project_developer_type",
       "attributes": {
         "name": "IPLC organization"
       }
     },
     {
-      "id": "incipient",
+      "id": "government-sub-national",
       "type": "project_development_stage",
       "attributes": {
         "name": "Incipient",
@@ -460,7 +432,7 @@
       }
     },
     {
-      "id": "consolidaton",
+      "id": "public-private-organization-or-program",
       "type": "project_development_stage",
       "attributes": {
         "name": "Consolidaton",
@@ -468,7 +440,7 @@
       }
     },
     {
-      "id": "scaling-up",
+      "id": "ngo",
       "type": "project_development_stage",
       "attributes": {
         "name": "Scaling up",
@@ -476,203 +448,203 @@
       }
     },
     {
-      "id": "draft",
+      "id": "iplc-organization",
       "type": "project_status",
       "attributes": {
         "name": "Draft"
       }
     },
     {
-      "id": "published",
+      "id": "incipient",
       "type": "project_status",
       "attributes": {
         "name": "Published"
       }
     },
     {
-      "id": "entrepreneurs-and-innovators-startups",
+      "id": "consolidaton",
       "type": "project_target_group",
       "attributes": {
         "name": "Enterpreneurs and innovators - startups"
       }
     },
     {
-      "id": "small-and-medium-businesses",
+      "id": "scaling-up",
       "type": "project_target_group",
       "attributes": {
         "name": "Small and medium businesses"
       }
     },
     {
-      "id": "urban-populations",
+      "id": "draft",
       "type": "project_target_group",
       "attributes": {
         "name": "Urban populations"
       }
     },
     {
-      "id": "indigenous-peoples",
+      "id": "published",
       "type": "project_target_group",
       "attributes": {
         "name": "Indigenous peoples"
       }
     },
     {
-      "id": "afro-desendant-peoples",
+      "id": "entrepreneurs-and-innovators-startups",
       "type": "project_target_group",
       "attributes": {
         "name": "Afro-desendant peoples"
       }
     },
     {
-      "id": "peasants-and-traditional-inhabitants",
+      "id": "small-and-medium-businesses",
       "type": "project_target_group",
       "attributes": {
         "name": "Peasants and traditional inhabitants"
       }
     },
     {
-      "id": "migrants-and-displaced-groups",
+      "id": "urban-populations",
       "type": "project_target_group",
       "attributes": {
         "name": "Migrants and displaced groups"
       }
     },
     {
-      "id": "groups-with-disabilities",
+      "id": "indigenous-peoples",
       "type": "project_target_group",
       "attributes": {
         "name": "Groups with disabilities"
       }
     },
     {
-      "id": "lgtbq-plus-groups",
+      "id": "afro-desendant-peoples",
       "type": "project_target_group",
       "attributes": {
         "name": "LGTBQ+ groups"
       }
     },
     {
-      "id": "other",
+      "id": "peasants-and-traditional-inhabitants",
       "type": "project_target_group",
       "attributes": {
         "name": "Other"
       }
     },
     {
-      "id": "1",
+      "id": "migrants-and-displaced-groups",
       "type": "sdg",
       "attributes": {
         "name": "No poverty"
       }
     },
     {
-      "id": "2",
+      "id": "groups-with-disabilities",
       "type": "sdg",
       "attributes": {
         "name": "Zero hunger"
       }
     },
     {
-      "id": "3",
+      "id": "lgtbq-plus-groups",
       "type": "sdg",
       "attributes": {
         "name": "Good health and well-being"
       }
     },
     {
-      "id": "4",
+      "id": "other",
       "type": "sdg",
       "attributes": {
         "name": "Quality education"
       }
     },
     {
-      "id": "5",
+      "id": "1",
       "type": "sdg",
       "attributes": {
         "name": "Gender equality"
       }
     },
     {
-      "id": "6",
+      "id": "2",
       "type": "sdg",
       "attributes": {
         "name": "Clean water and sanitation"
       }
     },
     {
-      "id": "7",
+      "id": "3",
       "type": "sdg",
       "attributes": {
         "name": "Affordable and clean energy"
       }
     },
     {
-      "id": "8",
+      "id": "4",
       "type": "sdg",
       "attributes": {
         "name": "Decent work and economic growth"
       }
     },
     {
-      "id": "9",
+      "id": "5",
       "type": "sdg",
       "attributes": {
         "name": "Industry, innovation and infrastructure"
       }
     },
     {
-      "id": "10",
+      "id": "6",
       "type": "sdg",
       "attributes": {
         "name": "Reduced inequalities"
       }
     },
     {
-      "id": "11",
+      "id": "7",
       "type": "sdg",
       "attributes": {
         "name": "Sustainable cities and communities"
       }
     },
     {
-      "id": "12",
+      "id": "8",
       "type": "sdg",
       "attributes": {
         "name": "Responsible consumption and production"
       }
     },
     {
-      "id": "13",
+      "id": "9",
       "type": "sdg",
       "attributes": {
         "name": "Climate action"
       }
     },
     {
-      "id": "14",
+      "id": "10",
       "type": "sdg",
       "attributes": {
         "name": "Life below water"
       }
     },
     {
-      "id": "15",
+      "id": "11",
       "type": "sdg",
       "attributes": {
         "name": "Life on land"
       }
     },
     {
-      "id": "16",
+      "id": "12",
       "type": "sdg",
       "attributes": {
         "name": "Peace, justice and strong institutions"
       }
     },
     {
-      "id": "17",
+      "id": "13",
       "type": "sdg",
       "attributes": {
         "name": "Partnerships for the goals"

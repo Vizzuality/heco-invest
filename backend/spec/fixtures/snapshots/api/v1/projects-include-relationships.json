@@ -154,10 +154,6 @@
         },
         "contact_email": null,
         "contact_phone": null,
-        "mosaics": [
-          "amazon-heart",
-          "amazonian-piedmont-massif"
-        ],
         "favourite": null,
         "created_at": "2022-06-21T11:29:48.433Z",
         "account_language": "en"
@@ -180,6 +176,18 @@
         "involved_projects": {
           "data": [
 
+          ]
+        },
+        "priority_landscapes": {
+          "data": [
+            {
+              "id": "eadefe85-9e52-4b63-bcd6-83235bacba83",
+              "type": "location"
+            },
+            {
+              "id": "ed5387f6-07c6-4ead-8b6e-883ca3946232",
+              "type": "location"
+            }
           ]
         }
       }
@@ -216,10 +224,6 @@
         },
         "contact_email": null,
         "contact_phone": null,
-        "mosaics": [
-          "amazon-heart",
-          "amazonian-piedmont-massif"
-        ],
         "favourite": null,
         "created_at": "2022-06-21T11:29:48.795Z",
         "account_language": "pt"
@@ -242,6 +246,18 @@
         "involved_projects": {
           "data": [
 
+          ]
+        },
+        "priority_landscapes": {
+          "data": [
+            {
+              "id": "34210bfb-d496-449a-a749-b1b3f350d608",
+              "type": "location"
+            },
+            {
+              "id": "13ff3f64-1947-480e-bed1-b0209f4ccc86",
+              "type": "location"
+            }
           ]
         }
       }
@@ -278,10 +294,6 @@
         },
         "contact_email": null,
         "contact_phone": null,
-        "mosaics": [
-          "amazon-heart",
-          "amazonian-piedmont-massif"
-        ],
         "favourite": null,
         "created_at": "2022-06-21T11:29:48.893Z",
         "account_language": "en"
@@ -304,6 +316,18 @@
         "involved_projects": {
           "data": [
 
+          ]
+        },
+        "priority_landscapes": {
+          "data": [
+            {
+              "id": "f62bdbe2-a780-490b-953f-caae9ffa4b35",
+              "type": "location"
+            },
+            {
+              "id": "078c3f7f-4466-424d-80eb-a46d7ec127d6",
+              "type": "location"
+            }
           ]
         }
       }
@@ -340,10 +364,6 @@
         },
         "contact_email": null,
         "contact_phone": null,
-        "mosaics": [
-          "amazon-heart",
-          "amazonian-piedmont-massif"
-        ],
         "favourite": null,
         "created_at": "2022-06-21T11:29:49.002Z",
         "account_language": "en"
@@ -366,6 +386,18 @@
         "involved_projects": {
           "data": [
 
+          ]
+        },
+        "priority_landscapes": {
+          "data": [
+            {
+              "id": "c48915ec-aa3b-4386-8a83-c1e330eb05e0",
+              "type": "location"
+            },
+            {
+              "id": "2ac49d18-5075-4f9d-84e6-8cbdb58c02b0",
+              "type": "location"
+            }
           ]
         }
       }
@@ -402,10 +434,6 @@
         },
         "contact_email": null,
         "contact_phone": null,
-        "mosaics": [
-          "amazon-heart",
-          "amazonian-piedmont-massif"
-        ],
         "favourite": null,
         "created_at": "2022-06-21T11:29:49.103Z",
         "account_language": "en"
@@ -428,6 +456,18 @@
         "involved_projects": {
           "data": [
 
+          ]
+        },
+        "priority_landscapes": {
+          "data": [
+            {
+              "id": "76c9db03-704c-4704-9b22-36c4d3f098b7",
+              "type": "location"
+            },
+            {
+              "id": "2a21dd73-3690-4baa-b097-8c887eca44a0",
+              "type": "location"
+            }
           ]
         }
       }
@@ -464,10 +504,6 @@
         },
         "contact_email": null,
         "contact_phone": null,
-        "mosaics": [
-          "amazon-heart",
-          "amazonian-piedmont-massif"
-        ],
         "favourite": null,
         "created_at": "2022-06-21T11:29:49.194Z",
         "account_language": "en"
@@ -490,6 +526,18 @@
         "involved_projects": {
           "data": [
 
+          ]
+        },
+        "priority_landscapes": {
+          "data": [
+            {
+              "id": "f3cb24d3-a15c-44ae-9fd6-7d91babcc73d",
+              "type": "location"
+            },
+            {
+              "id": "1ea13159-b8ca-46e6-aad0-550c98fe8eae",
+              "type": "location"
+            }
           ]
         }
       }
@@ -526,10 +574,6 @@
         },
         "contact_email": null,
         "contact_phone": null,
-        "mosaics": [
-          "amazon-heart",
-          "amazonian-piedmont-massif"
-        ],
         "favourite": null,
         "created_at": "2022-06-21T11:29:49.300Z",
         "account_language": "en"
@@ -552,6 +596,18 @@
         "involved_projects": {
           "data": [
 
+          ]
+        },
+        "priority_landscapes": {
+          "data": [
+            {
+              "id": "cae0d79d-b2ed-4d63-96be-07a27c6d0b42",
+              "type": "location"
+            },
+            {
+              "id": "1ac78836-4ed5-4bd2-991f-227ee3b859bd",
+              "type": "location"
+            }
           ]
         }
       }
@@ -582,10 +638,6 @@
         "account_language": "en",
         "entity_legal_registration_number": "564823570",
         "review_status": "approved",
-        "mosaics": [
-          "amazon-heart",
-          "amazonian-piedmont-massif"
-        ],
         "created_at": "2022-07-19T16:14:03.409Z",
         "contact_email": null,
         "contact_phone": null,
@@ -614,6 +666,18 @@
         "involved_projects": {
           "data": [
 
+          ]
+        },
+        "priority_landscapes": {
+          "data": [
+            {
+              "id": "21d556af-65ec-474c-aad3-732c9ce9924d",
+              "type": "location"
+            },
+            {
+              "id": "f7003e40-65d7-43a9-b225-b68ae33823f5",
+              "type": "location"
+            }
           ]
         }
       }
