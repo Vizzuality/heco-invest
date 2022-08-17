@@ -7,7 +7,7 @@
       "check_name": "MassAssignment",
       "message": "Specify exact keys allowed for mass assignment instead of using `permit!` which allows any keys",
       "file": "app/controllers/api/v1/accounts/projects_controller.rb",
-      "line": 66,
+      "line": 103,
       "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
       "code": "params[:geometry].permit!",
       "render_path": null,
@@ -19,8 +19,68 @@
       "user_input": null,
       "confidence": "Medium",
       "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "3ac49ed5505e6585e4f845703d33a95a68e2b2ec60174ef7e761e902b96eabf8",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/models/concerns/extra_ransackers.rb",
+      "line": 12,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "Arel.sql(\"(case when #{(parent.table.table_alias or table_name)}.#{attribute}_#{I18n.locale} <> '' then #{(parent.table.table_alias or table_name)}.#{attribute}_#{I18n.locale} else (case #{(I18n.available_locales - [:zu]).map do\n \"when #{(fallback or \"'#{fallback}'\")} = '#{l}' then #{(parent.table.table_alias or table_name)}.#{attribute}_#{l}\"\n end.join(\" \")} end) end)\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ExtraRansackers",
+        "method": "generate_ransackers_for_translated_columns"
+      },
+      "user_input": "parent.table.table_alias",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "63ada8a3904d159a8eef817906593b3726ebf3bbdd9d81255ac60e6bb0dce8a3",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/models/concerns/extra_ransackers.rb",
+      "line": 24,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "Arel.sql(\"array_to_string(#{type.to_s.classify.constantize.all.inject(\"ARRAY[#{(parent.table.table_alias or table_name)}.#{type}]::text[]\") do\n \"array_replace(#{res}, '#{obj.slug}', '#{obj.name}')\"\n end}, ' ')\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ExtraRansackers",
+        "method": "generate_localized_ransackers_for_static_types"
+      },
+      "user_input": "type.to_s.classify.constantize.all.inject(\"ARRAY[#{(parent.table.table_alias or table_name)}.#{type}]::text[]\") do\n \"array_replace(#{res}, '#{obj.slug}', '#{obj.name}')\"\n end",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "fea0d800bb9c21444cffae1713e05cf04194287657d44fdd952fd1856071a023",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/models/concerns/extra_ransackers.rb",
+      "line": 36,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "Arel.sql(\"(case #{klass.all.map do\n \"when #{(parent.table.table_alias or table_name)}.#{enum} = #{obj.class::TYPES_WITH_CODE[obj.slug]} then '#{obj.name}'\"\n end.join(\" \")} end)\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ExtraRansackers",
+        "method": "generate_localized_ransackers_for_enums"
+      },
+      "user_input": "klass.all.map do\n \"when #{(parent.table.table_alias or table_name)}.#{enum} = #{obj.class::TYPES_WITH_CODE[obj.slug]} then '#{obj.name}'\"\n end.join(\" \")",
+      "confidence": "Medium",
+      "note": ""
     }
   ],
-  "updated": "2022-05-31 16:40:51 +0200",
+  "updated": "2022-08-15 14:57:01 +0200",
   "brakeman_version": "5.2.2"
 }

@@ -7,16 +7,16 @@
   <thead>
     <tr>
       <th>
-        <%= localized_sort_link @q, :name, t("backoffice.common.project_name") %>
+        <%= sort_link @q, :name, t("backoffice.common.project_name") %>
       </th>
       <th>
         <%= sort_link @q, :project_developer_account_name, t("backoffice.common.project_developer") %>
       </th>
       <th>
-        <%= sort_link @q, :category_index, t("backoffice.common.category") %>
+        <%= sort_link @q, :category_localized, t("backoffice.common.category") %>
       </th>
       <th>
-        <%= localized_sort_link @q, :priority_landscape_name, t("backoffice.projects.index.priority_landscape") %>
+        <%= sort_link @q, :priority_landscape_name, t("backoffice.projects.index.priority_landscape") %>
       </th>
       <th>
         <%= sort_link @q, :trusted, t("backoffice.common.status") %>

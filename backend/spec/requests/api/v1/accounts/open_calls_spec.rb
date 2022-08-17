@@ -8,6 +8,114 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
   let(:blob) { ActiveStorage::Blob.create_and_upload! io: fixture_file_upload("picture.jpg"), filename: "test" }
 
   path "/api/v1/account/open_calls" do
+    get "Returns list of open calls of User" do
+      tags "Open Calls"
+      consumes "application/json"
+      produces "application/json"
+      security [cookie_auth: []]
+
+      parameter name: "fields[open_call]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
+      parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
+
+      let!(:status_open_call) { create :open_call, investor: user.account.investor, status: :draft }
+      let!(:name_open_call) { create :open_call, investor: user.account.investor, name: "Filtered Open Call Name" }
+      let!(:country_name_open_call) { create :open_call, investor: user.account.investor, country: create(:country, name: "Filtered Country Name") }
+      let!(:department_name_open_call) { create :open_call, investor: user.account.investor, department: create(:department, name: "Filtered Department Name") }
+      let!(:municipality_name_open_call) { create :open_call, investor: user.account.investor, municipality: create(:municipality, name: "Filtered Municipality Name") }
+      let!(:instrument_types_open_call) { create :open_call, investor: user.account.investor, instrument_types: ["grant"] }
+      let!(:different_investor_open_call) { create :open_call }
+
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {type: :array, items: {"$ref" => "#/components/schemas/open_call"}}
+        }
+
+        before do
+          sign_in user
+        end
+
+        run_test!
+
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/account/open-calls")
+        end
+
+        it "does not contain records of different investor" do
+          expect(response_json["data"].pluck("id")).not_to include(different_investor_open_call.id)
+        end
+
+        context "with sparse fieldset" do
+          let("fields[open_call]") { "name,description,nonexisting" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/account/open-calls-sparse-fieldset")
+          end
+        end
+
+        context "with relationships" do
+          let("fields[open_call]") { "name,investor" }
+          let(:includes) { "investor" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/account/open-calls-include-relationships")
+          end
+        end
+
+        context "when searched by status" do
+          let("filter[full_text]") { I18n.t "enums.open_call_status.draft.name" }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([status_open_call.id])
+          end
+        end
+
+        context "when searched by name" do
+          let("filter[full_text]") { "Filtered Open Call Name" }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([name_open_call.id])
+          end
+        end
+
+        context "when searched by country name" do
+          let("filter[full_text]") { "Filtered Country Name" }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([country_name_open_call.id])
+          end
+        end
+
+        context "when searched by department name" do
+          let("filter[full_text]") { "Filtered Department Name" }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([department_name_open_call.id])
+          end
+        end
+
+        context "when searched by municipality name" do
+          let("filter[full_text]") { "Filtered Municipality Name" }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([municipality_name_open_call.id])
+          end
+        end
+
+        context "when searched by instrument types" do
+          let("filter[full_text]") { I18n.t "enums.instrument_type.grant.name" }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([instrument_types_open_call.id])
+          end
+        end
+      end
+    end
+
     post "Create new OpenCall for User" do
       tags "Open Calls"
       consumes "application/json"
@@ -57,6 +165,7 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
       end
 
       it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
       it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
 
       response "200", :success do
@@ -146,6 +255,7 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
 
       it_behaves_like "with not authorized error", csrf: true
       it_behaves_like "with not found error", csrf: true, user: -> { user }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
       it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
       it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
 
@@ -186,6 +296,48 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
 
         it "returns correct error", generate_swagger_example: true do
           expect(response_json["errors"][0]["title"]).to eq("Instrument types [\"WRONG_ENUM\"] is not included in the list")
+        end
+      end
+    end
+
+    delete "Delete existing open call of User" do
+      tags "Open Calls"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :id, in: :path, type: :string, description: "Use open call ID or slug"
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
+
+      let(:user) { create :user, :investor }
+      let!(:open_call) { create :open_call, investor: create(:investor, account: create(:account, owner: user)) }
+      let(:id) { open_call.id }
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with not found error", csrf: true, user: -> { user }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
+
+      response "200", :success do
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before { sign_in user }
+
+        it "removes open call" do |example|
+          expect {
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
+          }.to change(OpenCall, :count).by(-1)
+        end
+
+        context "when slug is used" do
+          let(:id) { open_call.slug }
+
+          it "removes open call" do |example|
+            expect {
+              submit_request example.metadata
+            }.to change(OpenCall, :count).by(-1)
+          end
         end
       end
     end
