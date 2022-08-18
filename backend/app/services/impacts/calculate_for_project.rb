@@ -43,7 +43,7 @@ module Impacts
     def calculate_impacts
       assign_impacts_for location_intersection_for(:municipality), impact_type: :municipality
       assign_impacts_for location_intersection_for(:basin), impact_type: :hydrobasin
-      assign_impacts_for location_intersection_for(:region), impact_type: :priority_landscape
+      assign_impacts_for location_intersection_for(:priority_landscape), impact_type: :priority_landscape
     end
 
     def store_impacts!

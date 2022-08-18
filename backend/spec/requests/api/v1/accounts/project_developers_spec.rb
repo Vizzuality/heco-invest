@@ -2,6 +2,7 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Account Project Developers", type: :request do
   let(:blob) { ActiveStorage::Blob.create_and_upload! io: fixture_file_upload("picture.jpg"), filename: "test" }
+  let(:priority_landscape) { create :priority_landscape }
 
   path "/api/v1/account/project_developer" do
     get "Get current Project Developer" do
@@ -67,7 +68,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           contact_phone: {type: :string},
           categories: {type: :array, items: {type: :string, enum: Category::TYPES}},
           impacts: {type: :array, items: {type: :string, enum: Impact::TYPES}},
-          mosaics: {type: :array, items: {type: :string, enum: Mosaic::TYPES}}
+          priority_landscape_ids: {type: :array, items: {type: :string}}
         },
         required: %w[language picture name about project_developer_type entity_legal_registration_number mission contact_email categories impacts]
       }
@@ -90,7 +91,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           contact_email: "contact@example.com",
           categories: ["sustainable-agrosystems", "tourism-and-recreation"],
           impacts: ["biodiversity", "climate"],
-          mosaics: ["amazon-heart"]
+          priority_landscape_ids: [priority_landscape.id]
         }
       end
 
@@ -153,7 +154,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           contact_phone: {type: :string},
           categories: {type: :array, items: {type: :string, enum: Category::TYPES}},
           impacts: {type: :array, items: {type: :string, enum: Impact::TYPES}},
-          mosaics: {type: :array, items: {type: :string, enum: Mosaic::TYPES}}
+          priority_landscape_ids: {type: :array, items: {type: :string}}
         }
       }
 
@@ -174,7 +175,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           mission: "Mission",
           categories: ["sustainable-agrosystems", "tourism-and-recreation"],
           impacts: ["biodiversity", "climate"],
-          mosaics: ["amazon-heart"]
+          priority_landscape_ids: [priority_landscape.id]
         }
       end
 

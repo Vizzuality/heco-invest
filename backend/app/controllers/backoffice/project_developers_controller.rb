@@ -71,7 +71,7 @@ module Backoffice
         ],
         categories: [],
         impacts: [],
-        mosaics: []
+        priority_landscape_ids: []
       )
     end
 

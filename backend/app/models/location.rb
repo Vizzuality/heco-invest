@@ -7,6 +7,10 @@ class Location < ApplicationRecord
   has_many :country_projects, class_name: "Project", foreign_key: "country_id", dependent: :destroy
   has_many :municipality_projects, class_name: "Project", foreign_key: "municipality_id", dependent: :destroy
   has_many :department_projects, class_name: "Project", foreign_key: "department_id", dependent: :destroy
+  has_many :country_open_calls, class_name: "OpenCall", foreign_key: "country_id", dependent: :destroy
+  has_many :municipality_open_calls, class_name: "OpenCall", foreign_key: "municipality_id", dependent: :destroy
+  has_many :department_open_calls, class_name: "OpenCall", foreign_key: "department_id", dependent: :destroy
+  has_many :project_developer_priority_landscapes, foreign_key: "priority_landscape_id", dependent: :destroy
 
   has_one :location_geometry, dependent: :destroy
 

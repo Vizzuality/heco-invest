@@ -109,7 +109,7 @@ class Project < ApplicationRecord
   end
 
   def assign_priority_landscape
-    self.priority_landscape = centroid.blank? ? nil : LocationGeometry.of_type(:region).intersection_with(centroid).first&.location
+    self.priority_landscape = centroid.blank? ? nil : LocationGeometry.of_type(:priority_landscape).intersection_with(centroid).first&.location
   end
 
   def calculate_impacts

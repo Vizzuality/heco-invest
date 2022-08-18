@@ -15,7 +15,7 @@ namespace :import_geojsons do
     ######### RUN DELETION OF RECORDS WITHOUT GEOMETRIES ##########
     puts "Deleting mosaics without geometries"
     Location.left_joins(:location_geometry)
-      .where(parent_id: country.id, location_type: :region, location_geometries: {geometry: nil}).destroy_all
+      .where(parent_id: country.id, location_type: :priority_landscape, location_geometries: {geometry: nil}).destroy_all
     puts "Deleting municipalities without geometries"
     Location.left_joins(:location_geometry)
       .where(parent: Location.where(parent_id: country.id, location_type: :department))

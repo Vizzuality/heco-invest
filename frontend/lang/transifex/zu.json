@@ -146,6 +146,9 @@
   "0z5mo1": {
     "string": "insert new password"
   },
+  "0zLVGQ": {
+    "string": "Instrument types"
+  },
   "11hyS6": {
     "string": "Add your legal registration number so we can verify your legal entity . This information will not be publicaly available."
   },
@@ -424,6 +427,9 @@
   },
   "7rePKd": {
     "string": "HeCo Invest takes you step-by-step through the presentation of your proposal and then intelligently connects you with the community and potential sources of support and funding."
+  },
+  "7sVapx": {
+    "string": "View open call page"
   },
   "7xC2j0": {
     "string": "Create Open Call"
@@ -709,6 +715,9 @@
   },
   "DrtKvj": {
     "string": "Impact of projects on biodiversity conservation, calculated from indicators of endemism, land conservation/restoration, connectivity, and development of sustainable social projects."
+  },
+  "DsukuX": {
+    "string": "Delete open call?"
   },
   "E/YxHp": {
     "string": "When will the project have the Verification badge?"
@@ -1056,6 +1065,9 @@
   "LFNAet": {
     "string": "Select the SDG’s you expect to have impact (optional)"
   },
+  "LI0oKR": {
+    "string": "Are you sure you want to delete “<strong>{name}</strong>”?"
+  },
   "LMjhPg": {
     "string": "Large enterprise"
   },
@@ -1145,6 +1157,9 @@
   },
   "NIynnB": {
     "string": "Current password"
+  },
+  "NJOWFQ": {
+    "string": "Currently you don’t have any <b>Open Call</b>."
   },
   "NLk0cp": {
     "string": "US$150,000 – 750,000 (Market validation)"
@@ -1757,6 +1772,9 @@
   },
   "c8BbZZ": {
     "string": "Trade or business association"
+  },
+  "cDSTwv": {
+    "string": "Total <span>{numOpenCalls}</span> {numOpenCalls, plural, one {openCall} other {openCalls}}"
   },
   "cE4Hfw": {
     "string": "Discover"
@@ -2441,6 +2459,9 @@
   },
   "sFn7MX": {
     "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
+  },
+  "sH3zMa": {
+    "string": "Launched"
   },
   "sIhhxz": {
     "string": "Something went wrong while trying to delete the user"

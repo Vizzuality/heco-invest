@@ -1,8 +1,8 @@
 import { Languages, OpenCallStatus } from 'enums';
 import { Picture } from 'types';
-import { Locations } from 'types/locations';
 
 import { Investor } from './investor';
+import { Locations } from './locations';
 
 export type OpenCall = {
   id: string;
@@ -49,4 +49,10 @@ export type OpenCallForm = {
 
 export type OpenCallDto = Omit<OpenCallForm, 'closing_at'> & {
   closing_at: string;
+};
+
+export type OpenCalParams = {
+  fields?: string[];
+  includes?: string[];
+  filter?: string;
 };
