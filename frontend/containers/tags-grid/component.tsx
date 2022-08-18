@@ -9,7 +9,6 @@ import Tag from 'components/tag';
 import type { TagsGridProps } from './types';
 
 export const TagsGrid: FC<TagsGridProps> = ({ className, rows }: TagsGridProps) => {
-  console.log(rows);
   const gridCells = rows.reduce((arr, { id, title, type, tags }) => {
     // Do not display grid rows that have no tags
     if (!tags?.length) return arr;

@@ -80,7 +80,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     PROJECT_DEVELOPER_QUERY_PARAMS,
     projectDeveloperProp
   );
-  console.log(projectDeveloper);
+
   const projectDeveloperTypeName = enums[EnumTypes.ProjectDeveloperType].find(
     ({ id }) => id === projectDeveloper.project_developer_type
   )?.name;
