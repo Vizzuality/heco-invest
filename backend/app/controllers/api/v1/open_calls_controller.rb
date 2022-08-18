@@ -14,16 +14,20 @@ module API
         pagy_object, open_calls = pagy(open_calls, page: current_page, items: per_page)
         render json: OpenCallSerializer.new(
           open_calls,
+          include: included_relationships,
           fields: sparse_fieldset,
           links: pagination_links(:api_v1_open_calls_path, pagy_object),
-          meta: pagination_meta(pagy_object)
+          meta: pagination_meta(pagy_object),
+          params: {current_user: current_user}
         ).serializable_hash
       end
 
       def show
         render json: OpenCallSerializer.new(
           @open_call,
-          fields: sparse_fieldset
+          include: included_relationships,
+          fields: sparse_fieldset,
+          params: {current_user: current_user}
         ).serializable_hash
       end
 

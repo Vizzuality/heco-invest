@@ -17,6 +17,8 @@ class CreateProjectDeveloperPriorityLandscapes < ActiveRecord::Migration[7.0]
     I18n.with_locale(:es) { migrate_mosaics_to_priority_landscapes! }
 
     remove_column :project_developers, :mosaics
+
+    Rake::Task["priority_landscapes:translate"].execute
   end
 
   def down

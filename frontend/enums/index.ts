@@ -102,6 +102,8 @@ export enum Queries {
   AccountUsersList = 'account_users',
   /** Invited User */
   InvitedUser = 'invited_user',
+  /** List of open calls */
+  AccountOpenCallsList = 'account_open_calls',
 }
 
 /** Location endpoint param location_type */
