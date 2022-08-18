@@ -63,7 +63,7 @@ module API
 
         def project_developer_params
           params.permit :project_developer_type, :entity_legal_registration_number, :mission,
-            categories: [], impacts: [], mosaics: []
+            categories: [], impacts: [], priority_landscape_ids: []
         end
       end
     end

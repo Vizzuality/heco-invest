@@ -30,7 +30,7 @@ RSpec.describe Impacts::CalculateForProject do
         community_demand: 0.8
     end
     let!(:mosaic) do
-      create :location, :with_geometry, location_type: :region,
+      create :location, :with_geometry, location_type: :priority_landscape,
         geometry: RGeo::GeoJSON.decode({type: "Polygon", coordinates: [[[0.4, 0.4], [1.4, 0.4], [1.4, 1.4], [0.4, 1.4]]]}.to_json),
         biodiversity_demand: 0,
         climate_demand: 0,
@@ -40,7 +40,7 @@ RSpec.describe Impacts::CalculateForProject do
 
     before { subject.call }
 
-    it "computes correct region impacts" do
+    it "computes correct municipality impacts" do
       project.reload
       expect(project.municipality_biodiversity_impact).to eq(0)
       expect(project.municipality_climate_impact).to eq(0)

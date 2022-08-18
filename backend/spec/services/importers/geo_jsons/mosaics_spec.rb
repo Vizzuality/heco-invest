@@ -18,31 +18,31 @@ RSpec.describe Importers::GeoJsons::Mosaics do
 
     context "when path with proper geojson is provided" do
       let(:path) { Rails.root.join("spec/fixtures/files/dummy_mosaics.geojson") }
-      let(:mosaics) { Location.where location_type: :region, parent: country }
+      let(:priority_landscapes) { Location.where location_type: :priority_landscape, parent: country }
 
       before { subject.call }
 
-      it "creates correct mosaics" do
-        expect(mosaics.count).to eq(2)
-        expect(mosaics.pluck(:name_en)).to include("Cordillera Oriental")
-        expect(mosaics.pluck(:name_en)).to include("Piedemonte Amazónico - Macizo")
+      it "creates correct priority_landscapes" do
+        expect(priority_landscapes.count).to eq(2)
+        expect(priority_landscapes.pluck(:name_en)).to include("Cordillera Oriental")
+        expect(priority_landscapes.pluck(:name_en)).to include("Piedemonte Amazónico - Macizo")
       end
 
       it "creates geometries records" do
-        expect(LocationGeometry.count).to eq(mosaics.count)
-        expect(mosaics.find_by(name_en: "Piedemonte Amazónico - Macizo").location_geometry.geometry)
+        expect(LocationGeometry.count).to eq(priority_landscapes.count)
+        expect(priority_landscapes.find_by(name_en: "Piedemonte Amazónico - Macizo").location_geometry.geometry)
           .to eq(RGeo::GeoJSON.decode({type: "Polygon", coordinates: [[[105.0, 0.0], [106.0, 0.0], [106.0, 1.0], [105.0, 1.0], [105.0, 0.0]]]}.to_json))
       end
 
       it "assign all impact related attributes" do
-        expect(mosaics.first.biodiversity).not_to be_nil
-        expect(mosaics.first.biodiversity_demand).not_to be_nil
-        expect(mosaics.first.climate).not_to be_nil
-        expect(mosaics.first.climate_demand).not_to be_nil
-        expect(mosaics.first.community).not_to be_nil
-        expect(mosaics.first.community_demand).not_to be_nil
-        expect(mosaics.first.water).not_to be_nil
-        expect(mosaics.first.water_demand).not_to be_nil
+        expect(priority_landscapes.first.biodiversity).not_to be_nil
+        expect(priority_landscapes.first.biodiversity_demand).not_to be_nil
+        expect(priority_landscapes.first.climate).not_to be_nil
+        expect(priority_landscapes.first.climate_demand).not_to be_nil
+        expect(priority_landscapes.first.community).not_to be_nil
+        expect(priority_landscapes.first.community_demand).not_to be_nil
+        expect(priority_landscapes.first.water).not_to be_nil
+        expect(priority_landscapes.first.water_demand).not_to be_nil
       end
     end
   end

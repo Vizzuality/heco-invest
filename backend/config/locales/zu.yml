@@ -87,6 +87,7 @@ zu:
         categories: Select the categories that you work on
         mission: What's your mission?
         mosaics: Select HeCo priority landscapes on which you will have impact
+        priority_landscapes: Select HeCo priority landscapes on which you will have impact
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
@@ -154,6 +155,7 @@ zu:
       user: User
       category: Category
       mosaic: Mosaic
+      priority_landscapes: Priority landscapes
       verified: Verified
       unverified: Unverified
       edit: Edit
@@ -446,8 +448,8 @@ zu:
         name: Department
       municipality:
         name: Municipality
-      region:
-        name: Region
+      priority_landscape:
+        name: Priority Landscape
       basin:
         name: Basin
       basins_category:
@@ -510,15 +512,6 @@ zu:
         name: Indigenous or ethic jobs
       community-empowerment:
         name: Community empowerment
-    mosaic:
-      amazon-heart:
-        name: Amazon Heart
-      amazonian-piedmont-massif:
-        name: Amazonian Piedmont Massif
-      orinoquia-transition:
-        name: Orinoquía Transition
-      orinoquia:
-        name: Orinoquía
     sdg:
       1:
         name: No poverty

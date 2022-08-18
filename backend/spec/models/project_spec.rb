@@ -279,7 +279,7 @@ RSpec.describe Project, type: :model do
   describe "#assign_priority_landscape" do
     let(:project) { create :project, geometry: geometry }
     let!(:location) do
-      create :location, :with_geometry, location_type: :region,
+      create :location, :with_geometry, location_type: :priority_landscape,
         geometry: RGeo::GeoJSON.decode({type: "Polygon", coordinates: [[[-10, -10], [10, -10], [10, 10], [-10, 10]]]}.to_json)
     end
 

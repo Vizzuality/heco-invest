@@ -24,6 +24,8 @@ class Ability
     can %i[index show], ProjectDeveloper, account: {review_status: Account.review_statuses[:approved]}
     can %i[index show], Investor, account: {review_status: Account.review_statuses[:approved]}
 
+    can %i[index show], Location, visible: true
+
     unless context == :accounts
       can %i[index show], Project,
         project_developer: {account: {review_status: Account.review_statuses[:approved]}},

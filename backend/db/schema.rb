@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_12_075824) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_17_085024) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -200,6 +200,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_12_075824) do
     t.decimal "community_demand", precision: 25, scale: 20
     t.decimal "water", precision: 25, scale: 20
     t.decimal "water_demand", precision: 25, scale: 20
+    t.boolean "visible", default: true, null: false
     t.index ["location_type", "name_en"], name: "uniq_name_en_without_parent_id", unique: true, where: "(parent_id IS NULL)"
     t.index ["location_type", "name_es"], name: "uniq_name_es_without_parent_id", unique: true, where: "(parent_id IS NULL)"
     t.index ["location_type", "name_pt"], name: "uniq_name_pt_without_parent_id", unique: true, where: "(parent_id IS NULL)"
@@ -249,6 +250,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_12_075824) do
     t.index ["slug"], name: "index_open_calls_on_slug", unique: true
   end
 
+  create_table "project_developer_priority_landscapes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "project_developer_id", null: false
+    t.uuid "priority_landscape_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["priority_landscape_id"], name: "index_priority_landscape_id_on_priority_landscapes"
+    t.index ["project_developer_id"], name: "index_project_developer_id_on_priority_landscapes"
+  end
+
   create_table "project_developers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "account_id", null: false
     t.string "project_developer_type", null: false
@@ -260,7 +270,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_12_075824) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "entity_legal_registration_number", null: false
-    t.string "mosaics", array: true
     t.integer "projects_count", default: 0, null: false
     t.index ["account_id"], name: "index_project_developers_on_account_id"
   end
@@ -432,6 +441,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_12_075824) do
   add_foreign_key "open_calls", "locations", column: "country_id"
   add_foreign_key "open_calls", "locations", column: "department_id"
   add_foreign_key "open_calls", "locations", column: "municipality_id"
+  add_foreign_key "project_developer_priority_landscapes", "locations", column: "priority_landscape_id", on_delete: :cascade
+  add_foreign_key "project_developer_priority_landscapes", "project_developers", on_delete: :cascade
   add_foreign_key "project_developers", "accounts", on_delete: :cascade
   add_foreign_key "project_images", "projects", on_delete: :cascade
   add_foreign_key "project_involvements", "project_developers", on_delete: :cascade
