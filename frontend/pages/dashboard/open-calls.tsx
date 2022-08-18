@@ -7,6 +7,8 @@ import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import OpenCallsTable from 'containers/dashboard/open-calls/table';
+
 import Button from 'components/button';
 import Head from 'components/head';
 import Icon from 'components/icon';
@@ -41,7 +43,7 @@ export const OpenCallsPage: PageComponent<OpenCallsPageProps, DashboardLayoutPro
           </Button>
         }
       >
-        Open calls page
+        <OpenCallsTable />
       </DashboardLayout>
     </ProtectedPage>
   );
