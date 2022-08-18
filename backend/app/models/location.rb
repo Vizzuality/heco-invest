@@ -1,4 +1,6 @@
 class Location < ApplicationRecord
+  include ExtraRansackers
+
   belongs_to :parent, class_name: "Location", optional: true
 
   has_many :locations, class_name: "Location", foreign_key: "parent_id", dependent: :destroy
@@ -18,6 +20,8 @@ class Location < ApplicationRecord
   validates_uniqueness_of :name_en, scope: :location_type, if: -> { parent_id.blank? }
 
   translates :name
+
+  generate_ransackers_for_translated_columns I18n.default_locale, db_column: false
 
   accepts_nested_attributes_for :location_geometry, reject_if: :all_blank, allow_destroy: true
 end

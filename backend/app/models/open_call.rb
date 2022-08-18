@@ -2,6 +2,7 @@ class OpenCall < ApplicationRecord
   extend FriendlyId
   include Translatable
   include Searchable
+  include ExtraRansackers
 
   friendly_id :investor_prefixed_name, use: :slugged
 
@@ -38,6 +39,10 @@ class OpenCall < ApplicationRecord
   validate :location_types
 
   delegate :account_language, to: :investor, allow_nil: true
+
+  generate_ransackers_for_translated_columns
+  generate_localized_ransackers_for_static_types :instrument_types
+  generate_localized_ransackers_for_enums status: OpenCallStatus
 
   def investor_prefixed_name
     "#{investor&.name} #{original_name}"
