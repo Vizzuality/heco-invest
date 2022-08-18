@@ -4,7 +4,7 @@
     "type": "project_developer",
     "attributes": {
       "name": "Name",
-      "slug": "kutch-spencer",
+      "slug": "galvez-y-banda",
       "about": "About",
       "website": "http://website.com",
       "instagram": "http://instagram.com",
@@ -21,7 +21,7 @@
         "biodiversity",
         "climate"
       ],
-      "language": "en",
+      "language": "es",
       "entity_legal_registration_number": "564823570",
       "review_status": "approved",
       "picture": {
@@ -33,7 +33,7 @@
       "contact_phone": "+57-1-xxx-xx-xx",
       "favourite": false,
       "created_at": "2022-06-21T11:30:04.521Z",
-      "account_language": "en"
+      "account_language": "es"
     },
     "relationships": {
       "owner": {

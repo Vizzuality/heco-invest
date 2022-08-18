@@ -4,7 +4,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
   let(:country) { create(:country) }
   let(:municipality) { create(:municipality) }
   let(:department) { create(:department) }
-  let(:user) { create(:user_project_developer, first_name: "User", last_name: "Example") }
+  let(:user) { create(:user, first_name: "User", last_name: "Example", account: create(:account_project_developer, language: :es)) }
   let(:project_developers) { create_list(:project_developer, 2) }
   let(:blob) { ActiveStorage::Blob.create_and_upload! io: fixture_file_upload("picture.jpg"), filename: "test" }
 
@@ -192,6 +192,14 @@ RSpec.describe "API V1 Account Projects", type: :request do
           expect(response.body).to match_snapshot("api/v1/accounts-project-create")
         end
 
+        it "saves data to account language attributes" do |example|
+          submit_request example.metadata
+          project = Project.find response_json["data"]["id"]
+          Project.translatable_attributes.each do |attr|
+            expect(project.public_send("#{attr}_#{user.account.language}")).to eq(project_params[attr])
+          end
+        end
+
         it "notifies new collaborators" do |example|
           expect {
             submit_request example.metadata
@@ -212,14 +220,14 @@ RSpec.describe "API V1 Account Projects", type: :request do
         let("X-CSRF-TOKEN") { get_csrf_token }
 
         before(:each) do
-          create(:project, name: "Project name", project_developer: user.account.project_developer)
+          create(:project, name_es: "Project name", project_developer: user.account.project_developer)
           sign_in user
         end
 
         it "returns correct error", generate_swagger_example: true do |example|
           submit_request example.metadata
           assert_response_matches_metadata example.metadata
-          expect(response_json["errors"][0]["title"]).to eq("Name en (EN) has already been taken")
+          expect(response_json["errors"][0]["title"]).to eq("Name es (ES) has already been taken")
         end
 
         it "does not send email that new collaborator was added" do |example|
@@ -304,6 +312,14 @@ RSpec.describe "API V1 Account Projects", type: :request do
           submit_request example.metadata
           assert_response_matches_metadata example.metadata
           expect(response.body).to match_snapshot("api/v1/accounts-project-update")
+        end
+
+        it "saves data to account language attributes" do |example|
+          submit_request example.metadata
+          project.reload
+          Project.translatable_attributes.each do |attr|
+            expect(project.public_send("#{attr}_#{user.account.language}")).to eq(project_params[attr])
+          end
         end
 
         it "send email that new collaborator was added" do |example|

@@ -4,7 +4,7 @@
     "type": "investor",
     "attributes": {
       "name": "Name",
-      "slug": "kutch-spencer",
+      "slug": "galvez-y-banda",
       "about": "About",
       "website": "http://website.com",
       "instagram": "http://instagram.com",
@@ -33,7 +33,7 @@
         5
       ],
       "previously_invested": true,
-      "language": "en",
+      "language": "es",
       "review_status": "approved",
       "contact_email": "contact@example.com",
       "contact_phone": "123456789",
@@ -46,7 +46,7 @@
       "prioritized_projects_description": "What type of projects are you prioritizing?",
       "favourite": false,
       "created_at": "2022-06-21T11:29:50.603Z",
-      "account_language": "en"
+      "account_language": "es"
     },
     "relationships": {
       "owner": {

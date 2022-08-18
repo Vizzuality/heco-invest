@@ -33,7 +33,7 @@
         5
       ],
       "previously_invested": true,
-      "language": "en",
+      "language": "es",
       "review_status": "unapproved",
       "contact_email": null,
       "contact_phone": null,
@@ -46,7 +46,7 @@
       "prioritized_projects_description": "What type of projects are you prioritizing?",
       "favourite": false,
       "created_at": "2022-06-21T11:29:51.428Z",
-      "account_language": "en"
+      "account_language": "es"
     },
     "relationships": {
       "owner": {

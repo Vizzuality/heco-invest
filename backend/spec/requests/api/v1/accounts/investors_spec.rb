@@ -79,7 +79,7 @@ RSpec.describe "API V1 Account Investors", type: :request do
       let(:user) { create :user }
       let(:investor_params) do
         {
-          language: "en",
+          language: "es",
           picture: blob.signed_id,
           name: "Name",
           about: "About",
@@ -117,6 +117,13 @@ RSpec.describe "API V1 Account Investors", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/accounts-investor-create")
+        end
+
+        it "saves data to correct language" do
+          investor = Investor.find response_json["data"]["id"]
+          Investor.translatable_attributes.each do |attr|
+            expect(investor.public_send("#{attr}_#{investor_params[:language]}")).to eq(investor_params[attr])
+          end
         end
       end
 
@@ -170,7 +177,7 @@ RSpec.describe "API V1 Account Investors", type: :request do
         }
       }
 
-      let(:investor) { create :investor }
+      let(:investor) { I18n.with_locale(:es) { create :investor, language: :es } }
       let(:user) { create :user }
       let(:investor_params) do
         {
@@ -216,6 +223,13 @@ RSpec.describe "API V1 Account Investors", type: :request do
           expect(response.body).to match_snapshot("api/v1/accounts-investor-update")
         end
 
+        it "saves data to correct language" do
+          investor.reload
+          Investor.translatable_attributes.each do |attr|
+            expect(investor.public_send("#{attr}_#{investor.language}")).to eq(investor_params[attr])
+          end
+        end
+
         context "when updating just some attributes" do
           let(:investor_params) do
             {
@@ -236,7 +250,7 @@ RSpec.describe "API V1 Account Investors", type: :request do
           end
 
           it "keeps old language" do
-            expect(response_json["data"]["attributes"]["language"]).to eq("en")
+            expect(response_json["data"]["attributes"]["language"]).to eq("es")
           end
         end
       end
