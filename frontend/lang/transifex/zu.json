@@ -143,6 +143,9 @@
   "0z5mo1": {
     "string": "insert new password"
   },
+  "0zLVGQ": {
+    "string": "Instrument types"
+  },
   "11hyS6": {
     "string": "Add your legal registration number so we can verify your legal entity . This information will not be publicaly available."
   },
@@ -923,9 +926,6 @@
   },
   "IkUX0b": {
     "string": "How the money will be used"
-  },
-  "IsC1uH": {
-    "string": "Create openCall"
   },
   "Iu60EH": {
     "string": "Are you sure you want to continue?"

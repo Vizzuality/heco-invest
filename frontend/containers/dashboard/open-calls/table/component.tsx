@@ -69,8 +69,8 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
         accessor: 'municipality',
       },
       {
-        Header: intl.formatMessage({ defaultMessage: 'Instrument type', id: 'fDd10o' }),
-        accessor: 'instrumentType',
+        Header: intl.formatMessage({ defaultMessage: 'Instrument types', id: '0zLVGQ' }),
+        accessor: 'instrumentTypes',
         disableSortBy: true,
         Cell: CellInstrumentTypes,
         width: 200,
@@ -100,7 +100,7 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
       status: openCall.status,
       country: openCall.country?.name,
       municipality: openCall.municipality?.name,
-      instrumentType: allInstrumentTypes
+      instrumentTypes: allInstrumentTypes
         ?.filter(({ id }) => openCall.instrument_types?.includes(id))
         .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase())),
       maximumFundingPerProject: openCall.maximum_funding_per_project,
@@ -114,14 +114,16 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
   return (
     <>
       <SearchAndInfo className="mt-4 mb-6">
-        <FormattedMessage
-          defaultMessage="Total <span>{numOpenCalls}</span> {numOpenCalls, plural, one {openCall} other {openCalls}}"
-          id="cDSTwv"
-          values={{
-            span: (chunks: string) => <span className="px-1 font-semibold">{chunks}</span>,
-            numOpenCalls: openCalls?.length || 0,
-          }}
-        />
+        {!isLoading && (
+          <FormattedMessage
+            defaultMessage="Total <span>{numOpenCalls}</span> {numOpenCalls, plural, one {openCall} other {openCalls}}"
+            id="cDSTwv"
+            values={{
+              span: (chunks: string) => <span className="px-1 font-semibold">{chunks}</span>,
+              numOpenCalls: openCalls?.length || 0,
+            }}
+          />
+        )}
       </SearchAndInfo>
       {hasOpenCalls && <Table {...tableProps} />}
       {!hasOpenCalls && !isLoading && (
@@ -139,8 +141,8 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
                   }}
                 />
               </p>
-              <Button className="mt-8" to={Paths.ProjectCreation}>
-                <FormattedMessage defaultMessage="Create openCall" id="IsC1uH" />
+              <Button className="mt-8" to={Paths.OpenCallCreation}>
+                <FormattedMessage defaultMessage="Create open call" id="DIA26W" />
               </Button>
             </>
           )}

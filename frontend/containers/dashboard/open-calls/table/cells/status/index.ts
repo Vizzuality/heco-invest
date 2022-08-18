@@ -1,2 +1,2 @@
 export { default } from './component';
-export type { CellStatusProps, StatusTag } from './types';
+export type { CellStatusProps } from './types';
