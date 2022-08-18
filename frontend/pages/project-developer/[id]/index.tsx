@@ -33,7 +33,7 @@ import {
 } from 'services/project-developers/projectDevelopersService';
 
 const PROJECT_DEVELOPER_QUERY_PARAMS = {
-  includes: ['projects'],
+  includes: ['projects', 'priority_landscapes'],
 };
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
@@ -80,7 +80,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     PROJECT_DEVELOPER_QUERY_PARAMS,
     projectDeveloperProp
   );
-
+  console.log(projectDeveloper);
   const projectDeveloperTypeName = enums[EnumTypes.ProjectDeveloperType].find(
     ({ id }) => id === projectDeveloper.project_developer_type
   )?.name;
