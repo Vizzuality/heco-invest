@@ -3,21 +3,26 @@ import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
 import { Enum } from 'types/enums';
+import { Locations } from 'types/locations';
 import { Interest } from 'types/projectDeveloper';
 
 interface InterestItems {
   categoryEnums?: Enum[];
   impactEnums?: Enum[];
-  mosaicEnums?: Enum[];
+  priorityLandscapes?: Locations[];
 }
 
 export enum InterestNames {
   Categories = 'categories',
   Impacts = 'impacts',
-  Mosaics = 'mosaics',
+  PriorityLandscapes = 'priority_landscape_ids',
 }
 
-const useInterests = ({ categoryEnums, impactEnums, mosaicEnums }: InterestItems): Interest[] => {
+const useInterests = ({
+  categoryEnums,
+  impactEnums,
+  priorityLandscapes,
+}: InterestItems): Interest[] => {
   const { formatMessage } = useIntl();
   return useMemo(
     () => [
@@ -44,8 +49,8 @@ const useInterests = ({ categoryEnums, impactEnums, mosaicEnums }: InterestItems
             'Select HeCo priority landscapes on which you will have impact (optional)',
           id: 'piBsTx',
         }),
-        name: InterestNames.Mosaics,
-        items: mosaicEnums,
+        name: InterestNames.PriorityLandscapes,
+        items: priorityLandscapes,
         infoText: formatMessage({
           defaultMessage:
             'Geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystem services.',
@@ -54,7 +59,7 @@ const useInterests = ({ categoryEnums, impactEnums, mosaicEnums }: InterestItems
         required: false,
       },
     ],
-    [formatMessage, categoryEnums, impactEnums, mosaicEnums]
+    [formatMessage, categoryEnums, impactEnums, priorityLandscapes]
   );
 };
 

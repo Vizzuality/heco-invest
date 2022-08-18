@@ -17,6 +17,7 @@ import { Project, ProjectForm, ProjectUpdatePayload } from 'types/project';
 import { formPageInputs } from 'validations/project';
 
 import { ErrorResponse } from 'services/types';
+import { Locations } from 'types/locations';
 
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
 export function getServiceErrors<FormValues>(
@@ -170,23 +171,6 @@ export const useLanguageNames = () => {
   return langs;
 };
 
-/**  Function to get the mosaics list with the number of related projects, using a mockup relation between mosaic ids and their corresponding location ids */
-export const getMosaicsWithProjectsNumber = (mosaicEnums: Enum[], projects: Project[]) => {
-  const mosaicLocations = {
-    'amazon-heart': '6f827753-3c27-4343-bc39-0c81a1875488',
-    'amazonian-piedmont-massif': '35490999-6962-4825-8ca4-1862c1a5e45d',
-    'orinoquia-transition': '135e49c7-0d29-455f-8700-33c573772b41',
-    orinoquia: 'b8eba9d3-1618-401c-b85c-c287941f6fe9',
-  };
-
-  return mosaicEnums.map((mosaic) => {
-    const projectsQuantity =
-      projects.filter((project) => project.priority_landscape?.id === mosaicLocations[mosaic.id])
-        ?.length || 0;
-    return { ...mosaic, projectsQuantity };
-  });
-};
-
 /** Function to transform the project (get) to the upload payload */
 export const getProjectValues = (project: Project): ProjectUpdatePayload => {
   const inputs = formPageInputs.flat();
@@ -223,3 +207,10 @@ export const getProjectValues = (project: Project): ProjectUpdatePayload => {
 
   return projectUpload as ProjectUpdatePayload;
 };
+
+export const PRIORITY_LANDSCAPES_IDS = [
+  'b8eba9d3-1618-401c-b85c-c287941f6fe9',
+  '6f827753-3c27-4343-bc39-0c81a1875488',
+  '35490999-6962-4825-8ca4-1862c1a5e45d',
+  '135e49c7-0d29-455f-8700-33c573772b41',
+];

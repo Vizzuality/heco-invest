@@ -131,7 +131,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           ),
         }
       ),
-      tags: enums[EnumTypes.Mosaic].filter(({ id }) => projectDeveloper.mosaics?.includes(id)),
+      tags: projectDeveloper.priority_landscapes,
     },
     {
       id: 'impact',
