@@ -31,7 +31,7 @@ class CreateProjectDeveloperPriorityLandscapes < ActiveRecord::Migration[7.0]
 
   def migrate_mosaics_to_priority_landscapes!
     ProjectDeveloper.all.each do |project_developer|
-      developer_priority_landscapes = project_developer.mosaics.map { |m| priority_landscapes[ENUM_TO_LOCATION_TABLE[m]].first }
+      developer_priority_landscapes = project_developer.mosaics.to_a.map { |m| priority_landscapes[ENUM_TO_LOCATION_TABLE[m]].first }
       project_developer.priority_landscapes = developer_priority_landscapes.compact
       project_developer.save validate: false
     end
