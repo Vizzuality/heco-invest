@@ -2,26 +2,31 @@ import { FC } from 'react';
 
 import { Doughnut } from 'react-chartjs-2';
 
-import { Chart as ChartJS, ArcElement } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
+
+import { theme } from 'tailwind.config';
 
 import { OpenCallChartProps } from '.';
 
-ChartJS.register(ArcElement);
+ChartJS.register(ArcElement, Tooltip);
 
 export const OpenCallChart: FC<OpenCallChartProps> = ({ openCallRange }) => {
   return (
     <Doughnut
       options={{
-        cutout: '83%',
+        // This controls the width of the doughnut
+        cutout: '86%',
+        // The events empty is to disable the hover effect
+        events: [],
       }}
       data={{
         datasets: [
           {
-            data: [openCallRange.remaining, openCallRange.consumed],
-            backgroundColor: ['#CFD762', '#E3DED6'],
+            data: [openCallRange.consumed, openCallRange.remaining],
+            backgroundColor: [theme.colors.beige, theme.colors.green.light],
+            borderColor: [theme.colors.beige, theme.colors.green.light],
           },
         ],
-        labels: ['Remaining', 'Consumed'],
       }}
     />
   );

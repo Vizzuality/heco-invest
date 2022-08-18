@@ -27,6 +27,7 @@ export type OpenCall = {
   municipality: Locations;
   department: Locations;
   status: OpenCallStatus;
+  favourite: boolean;
 };
 
 export type OpenCallForm = {

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useScrollToElement } from 'hooks/useScrollToElement';
 
@@ -16,44 +16,48 @@ export const OpenCallSectionLinks: FC<OpenCallSectionLinksProps> = ({
   overviewRef,
 }) => {
   const scrollToElement = useScrollToElement();
+  const { formatMessage } = useIntl();
 
   return (
     <LayoutContainer className="mt-20 lg:mt-4">
       <LayoutContainer>
-        <div className="flex justify-center gap-4 lg:justify-start">
+        <nav
+          aria-label={formatMessage({ defaultMessage: 'Quick links', id: 'S3SiEe' })}
+          className="flex justify-center gap-4 lg:justify-start"
+        >
           <Button
-            className="px-0 py-0"
+            className="text-green-dark hover:text-green-light"
+            size="smallest"
             theme="naked"
             onClick={() => scrollToElement(overviewRef, 100)}
           >
-            <span className="text-green-dark hover:text-gray-700">
-              <FormattedMessage defaultMessage="Overview" id="9uOFF3" />
-            </span>
+            <FormattedMessage defaultMessage="Overview" id="9uOFF3" />
           </Button>
           <Button
-            className="px-0 py-0"
+            className="text-green-dark hover:text-green-light"
+            size="smallest"
             theme="naked"
             onClick={() => scrollToElement(fundingRef, 100)}
           >
-            <span className="text-green-dark hover:text-gray-700">
-              <FormattedMessage defaultMessage="Funding information" id="mEYG82" />
-            </span>
+            <FormattedMessage defaultMessage="Funding information" id="mEYG82" />
           </Button>
           <Button
-            className="px-0 py-0"
+            className="text-green-dark hover:text-green-light"
+            size="smallest"
             theme="naked"
             onClick={() => scrollToElement(impactRef, 100)}
           >
-            <span className="text-green-dark hover:text-gray-700">
-              <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
-            </span>
+            <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
           </Button>
-          <Button className="px-0 py-0" theme="naked" onClick={() => scrollToElement(investorRef)}>
-            <span className="text-green-dark hover:text-gray-700">
-              <FormattedMessage defaultMessage="Investor" id="nEvNJb" />
-            </span>
+          <Button
+            className="text-green-dark hover:text-green-light"
+            size="smallest"
+            theme="naked"
+            onClick={() => scrollToElement(investorRef)}
+          >
+            <FormattedMessage defaultMessage="Investor" id="nEvNJb" />
           </Button>
-        </div>
+        </nav>
       </LayoutContainer>
     </LayoutContainer>
   );

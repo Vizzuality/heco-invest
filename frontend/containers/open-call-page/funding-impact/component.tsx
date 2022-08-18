@@ -39,12 +39,12 @@ export const OpenCallFundingImpact: FC<OpenCallFundingImpactProps> = ({
             </h2>
           </LayoutContainer>
           <LayoutContainer className="text-white px-15 lg:px-15 bg-green-dark py-14 rounded-3xl">
-            <div>
+            <div className="sm:w-1/2">
               <h3 className="font-serif text-3xl font-semibold">
                 <FormattedMessage defaultMessage="Funding available per project" id="+USuwC" />
               </h3>
               <div className="flex flex-col mt-10 gap-14 sm:flex-row">
-                <div className="sm:w-1/2">
+                <div>
                   <p className="mb-2 text-2xl font-semibold">
                     ${maximum_funding_per_project?.toLocaleString(locale)}
                   </p>
@@ -52,8 +52,8 @@ export const OpenCallFundingImpact: FC<OpenCallFundingImpactProps> = ({
                     <FormattedMessage defaultMessage="Maximum value" id="sfFhiy" />
                   </p>
                 </div>
-                <div className="sm:w-1/2">
-                  <div className="flex-wrap gap-4 sm:flex">
+                <div>
+                  <div className="flex-wrap gap-x-4 sm:flex">
                     {instrumentTypes?.map((instrumentType, index) => (
                       <>
                         <p key={instrumentType} className="mb-2 text-2xl font-semibold">
@@ -67,8 +67,8 @@ export const OpenCallFundingImpact: FC<OpenCallFundingImpactProps> = ({
                   </div>
                   <p className="text-base">
                     <FormattedMessage
-                      defaultMessage="Instrument {numInstrumentTypes, plural, one {type} other {types}}"
-                      id="OTKLo8"
+                      defaultMessage="{numInstrumentTypes, plural, one {Instrument type} other {Instrument types}}"
+                      id="eFJIPT"
                       values={{
                         numInstrumentTypes: instrumentTypes?.length || 0,
                       }}
@@ -96,27 +96,40 @@ export const OpenCallFundingImpact: FC<OpenCallFundingImpactProps> = ({
       </div>
       <div ref={impactRef}>
         <LayoutContainer className="mt-36 mb-36">
-          <LayoutContainer>
-            <div>
-              <h2 className="mb-10 font-serif text-4xl font-bold">
-                <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
-              </h2>
-            </div>
-            <div className="flex flex-col gap-12 lg:flex-row lg:gap-28">
+          {!!openCallSdgs.length ? (
+            <LayoutContainer>
+              <div>
+                <h2 className="mb-10 font-serif text-4xl font-bold">
+                  <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
+                </h2>
+              </div>
+              <div className="flex flex-col gap-12 lg:flex-row lg:gap-28">
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold">
+                    <FormattedMessage defaultMessage="Expected impact" id="XgaRPC" />
+                  </h3>
+                  <p className="mt-6">{impact_description}</p>
+                </div>
+                <div className="flex-1">
+                  <h3 className="mb-6 text-xl font-semibold">
+                    <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
+                  </h3>
+                  <SDGs sdgs={openCallSdgs} />
+                </div>
+              </div>
+            </LayoutContainer>
+          ) : (
+            <LayoutContainer className="flex flex-col sm:flex-row">
               <div className="flex-1">
-                <h3 className="text-xl font-semibold">
-                  <FormattedMessage defaultMessage="Expected impact" id="XgaRPC" />
-                </h3>
+                <h2 className="mb-10 font-serif text-4xl font-bold">
+                  <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
+                </h2>
+              </div>
+              <div className="flex flex-col flex-1 gap-12 lg:flex-row lg:gap-28">
                 <p className="mt-6">{impact_description}</p>
               </div>
-              <div className="flex-1">
-                <h3 className="mb-6 text-xl font-semibold">
-                  <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
-                </h3>
-                <SDGs sdgs={openCallSdgs} />
-              </div>
-            </div>
-          </LayoutContainer>
+            </LayoutContainer>
+          )}
         </LayoutContainer>
       </div>
     </div>

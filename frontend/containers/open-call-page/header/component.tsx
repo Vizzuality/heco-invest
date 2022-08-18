@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react';
 
-// import { Heart } from 'react-feather';
+import { Heart } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -14,10 +14,11 @@ import { translatedLanguageNameForLocale } from 'helpers/intl';
 import Breadcrumbs from 'containers/breadcrumbs';
 import ShareIcons from 'containers/share-icons';
 
-// import Button from 'components/button';
-// import Icon from 'components/icon';
+import Button from 'components/button';
+import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
-import { OpenCallStatus } from 'enums';
+import { Languages, OpenCallStatus } from 'enums';
+import { locales } from 'locales.config.json';
 
 import OpenCallChart from '../chart';
 
@@ -26,8 +27,8 @@ import { OpenCallHeaderProps } from '.';
 export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
   openCall,
   instrumentTypes,
-  // handleFavorite,
-  // handleApply,
+  handleFavorite,
+  handleApply,
 }) => {
   const intl = useIntl();
   const { locale } = useRouter();
@@ -40,11 +41,11 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
     created_at,
     closing_at,
     status,
+    favourite,
   } = openCall;
-  const coverImage = picture?.medium || '/images/avatar.svg';
-  const originalLanguage = language || 'es';
-  const totalProjects = 0;
-  const isFavorite = false;
+  const coverImage = picture?.medium;
+  const originalLanguage =
+    language || (locales.find((locale) => locale.default)?.locale as Languages);
 
   const openCallRange = useMemo(() => {
     const openDate = dayjs(created_at);
@@ -96,89 +97,89 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
             )}
           </div>
           <div className="flex flex-col justify-start lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-1/3 rounded-2xl mt-8 lg:mt-0">
-            {typeof totalProjects === 'number' && (
-              <>
-                <div className="flex flex-col gap-8 pl-2 sm:flex-row">
-                  <div className="flex flex-col items-center justify-end w-full gap-2 sm:items-start sm:w-1/3">
-                    <span aria-labelledby="open-call-value" className="text-2xl font-semibold">
-                      ${maximum_funding_per_project.toLocaleString(locale)}
-                    </span>
-                    <span id="open-call-value" className="text-gray-400">
-                      <FormattedMessage defaultMessage="Value" id="GufXy5" />
-                    </span>
+            <>
+              <div className="flex flex-col gap-8 pl-2 sm:flex-row">
+                <div className="flex flex-col items-center justify-end w-full gap-2 sm:items-start sm:w-1/3">
+                  <span aria-labelledby="open-call-value" className="text-2xl font-semibold">
+                    ${maximum_funding_per_project.toLocaleString(locale)}
+                  </span>
+                  <span id="open-call-value" className="text-gray-400">
+                    <FormattedMessage defaultMessage="Value" id="GufXy5" />
+                  </span>
+                </div>
+                <div className="flex flex-col items-center justify-end w-full gap-2 sm:items-end sm:w-2/3">
+                  <div className="max-w-full text-center sm:text-right">
+                    {instrumentTypes?.map((type) => {
+                      return (
+                        <p
+                          aria-labelledby="block open-call-instrument-types"
+                          key={type}
+                          className={cx('font-semibold whitespace-nowrap', {
+                            'text-2xl': instrument_types.length === 1,
+                            'text-[26px]': instrument_types.length > 1,
+                          })}
+                        >
+                          {type}
+                        </p>
+                      );
+                    })}
                   </div>
-                  <div className="flex flex-col items-center justify-end w-full gap-2 sm:items-end sm:w-2/3">
-                    <div className="max-w-full text-center sm:text-right">
-                      {instrumentTypes?.map((type) => {
-                        return (
-                          <p
-                            aria-labelledby="block open-call-instrument-types"
-                            key={type}
-                            className={cx('font-semibold whitespace-nowrap', {
-                              'text-2xl': instrument_types.length === 1,
-                              'text-[26px]': instrument_types.length > 1,
-                            })}
-                          >
-                            {type}
-                          </p>
-                        );
-                      })}
-                    </div>
-                    <span id="open-call-instrument-types" className="text-gray-400">
-                      <FormattedMessage
-                        defaultMessage="Instrument {numInstrumentTypes, plural, one {type} other {types}}"
-                        id="OTKLo8"
-                        values={{
-                          numInstrumentTypes: instrument_types?.length || 0,
-                        }}
-                      />
-                    </span>
+                  <span id="open-call-instrument-types" className="text-gray-400">
+                    <FormattedMessage
+                      defaultMessage="{numInstrumentTypes, plural, one {Instrument type} other {Instrument types}}"
+                      id="eFJIPT"
+                      values={{
+                        numInstrumentTypes: instrument_types?.length || 0,
+                      }}
+                    />
+                  </span>
+                </div>
+              </div>
+              <hr className="mt-6 mb-8" />
+              <div className="flex flex-col justify-between pl-2 sm:flex-row min-w-[395px] gap-y-8">
+                <div className="flex flex-col items-center justify-end w-full gap-2 sm:w-2/3 sm:items-start">
+                  <span id="total-of-projects" className="text-2xl font-semibold text-gray-700">
+                    {openCallRange.deadline}
+                  </span>
+                  <span aria-labelledby="total-of-projects" className="text-gray-400">
+                    <FormattedMessage defaultMessage="Deadline" id="8/Da7A" />
+                  </span>
+                </div>
+                <div className="flex flex-col items-center justify-end w-full gap-2 text-center sm:w-1/3">
+                  <div className="w-[82px] h-[82px] rounded-full flex justify-center items-center">
+                    <OpenCallChart openCallRange={openCallRange} />
+                    <p className="absolute max-w-[62px] text-xs font-semibold text-green-dark">
+                      {status === OpenCallStatus.Launched ? (
+                        <FormattedMessage defaultMessage="Ending soon" id="8mCCtS" />
+                      ) : (
+                        <FormattedMessage defaultMessage="Closed" id="Fv1ZSz" />
+                      )}
+                    </p>
                   </div>
                 </div>
-                <hr className="mt-6 mb-8" />
-                <div className="flex flex-col justify-between pl-2 sm:flex-row">
-                  <div className="flex flex-col items-center justify-end w-full gap-2 text-center sm:w-1/3">
-                    <div className="w-[82px] h-[82px] rounded-full flex justify-center items-center">
-                      <OpenCallChart openCallRange={openCallRange} />
-                      <p className="absolute max-w-[62px] text-xs font-semibold text-green-dark">
-                        {status === OpenCallStatus.Launched ? (
-                          <FormattedMessage defaultMessage="Ending soon" id="8mCCtS" />
-                        ) : (
-                          <FormattedMessage defaultMessage="Closed" id="Fv1ZSz" />
-                        )}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-center justify-end w-full gap-2 sm:w-2/3 sm:items-end">
-                    <span id="total-of-projects" className="text-2xl font-semibold text-gray-700">
-                      {openCallRange.deadline}
-                    </span>
-                    <span aria-labelledby="total-of-projects" className="text-gray-400">
-                      <FormattedMessage defaultMessage="Deadline" id="8/Da7A" />
-                    </span>
-                  </div>
-                </div>
-              </>
-            )}
-            {/* <div className="flex flex-col justify-between gap-4 lg:flex-row mt-7">
+              </div>
+            </>
+
+            <div className="flex flex-col justify-between gap-4 lg:flex-row mt-7">
               <Button
                 className="justify-center"
                 theme="secondary-green"
                 onClick={handleFavorite}
-                // disabled={!user || favoriteLoading}
-                aria-pressed={isFavorite}
+                disabled
+                aria-pressed={favourite}
               >
-                <Icon icon={Heart} className={cx('w-4 mr-3', { 'fill-green-dark': isFavorite })} />
+                <Icon icon={Heart} className={cx('w-4 mr-3', { 'fill-green-dark': favourite })} />
                 <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
               </Button>
               <Button
                 className="w-full lg:max-w-[200px] justify-center"
                 theme="primary-green"
                 onClick={handleApply}
+                disabled
               >
                 <FormattedMessage defaultMessage="Apply now" id="VR4TEV" />
               </Button>
-            </div> */}
+            </div>
             <ShareIcons title={name} />
           </div>
         </LayoutContainer>

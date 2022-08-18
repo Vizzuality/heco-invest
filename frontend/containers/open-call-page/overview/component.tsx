@@ -11,8 +11,8 @@ export const Overview: FC<OpenCallOverviewTypes> = ({ openCall, overviewRef }) =
 
   return (
     <LayoutContainer id="overview" className="my-20 lg:mt-44">
-      <section ref={overviewRef} className="p-4 font-serif lg:flex sm:p-6 rounded-2xl">
-        <div className="flex flex-col gap-10 lg:justify-between lg:flex-row">
+      <section className="p-4 font-serif lg:flex sm:p-6 rounded-2xl">
+        <div ref={overviewRef} className="flex flex-col gap-10 lg:justify-between lg:flex-row">
           <div className="flex flex-col space-y-4 lg:mb-12 lg:w-1/2">
             <h2 className="text-2xl lg:text-3xl">
               <FormattedMessage defaultMessage="Location" id="rvirM2" />
@@ -22,7 +22,7 @@ export const Overview: FC<OpenCallOverviewTypes> = ({ openCall, overviewRef }) =
                 <h3 className="font-semibold min-w-[130px]">
                   <FormattedMessage defaultMessage="Country" id="vONi+O" />
                 </h3>
-                <p>{country?.name || 'Colombia'}</p>
+                <p>{country?.name}</p>
               </div>
               {!!department && (
                 <div className="flex space-x-2 font-sans text-base">

@@ -1,8 +1,8 @@
 import { MutableRefObject } from 'react';
 
 export type OpenCallSectionLinksProps = {
-  investorRef: MutableRefObject<any>;
-  fundingRef: MutableRefObject<any>;
-  overviewRef: MutableRefObject<any>;
-  impactRef: MutableRefObject<any>;
+  investorRef: MutableRefObject<HTMLDivElement>;
+  fundingRef: MutableRefObject<HTMLDivElement>;
+  overviewRef: MutableRefObject<HTMLDivElement>;
+  impactRef: MutableRefObject<HTMLDivElement>;
 };

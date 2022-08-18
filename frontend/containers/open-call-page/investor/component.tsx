@@ -3,9 +3,12 @@ import { FC } from 'react';
 import { Heart } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
 
+import cx from 'classnames';
+
 import ProfileCard from 'containers/profile-card';
 
 import Button from 'components/button';
+import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import { Paths } from 'enums';
 
@@ -16,11 +19,12 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({
   investorRef,
   handleApply,
   handleFavorite,
+  favourite,
 }) => {
   return (
-    <div ref={investorRef} className="w-full py-20 bg-background-middle">
+    <div ref={investorRef} className="w-full pt-20 bg-background-middle">
       <LayoutContainer>
-        <LayoutContainer className="flex flex-col justify-between gap-12 md:flex-row">
+        <LayoutContainer className="flex flex-col justify-between pb-20 gap-y-12 md:flex-row">
           <div className="w-full">
             <h2 className="mb-4 font-serif text-4xl font-bold">
               <FormattedMessage defaultMessage="Investor" id="nEvNJb" />
@@ -42,12 +46,12 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({
           </div>
         </LayoutContainer>
       </LayoutContainer>
-      {/* <div className="py-20 text-center bg-green-dark">
+      <div className="py-20 text-center bg-green-dark">
         <h2 className="max-w-2xl mx-auto font-serif text-4xl font-semibold text-white">
           <FormattedMessage defaultMessage="Would you like to apply for this fund?" id="8KmEyC" />
         </h2>
         <div className="flex items-center justify-center gap-4 mt-14">
-          <Button theme="primary-white" onClick={handleApply}>
+          <Button disabled theme="primary-white" onClick={handleApply}>
             <span className="text-lg">
               <FormattedMessage defaultMessage="Apply now" id="VR4TEV" />
             </span>
@@ -55,13 +59,14 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({
           <span className="text-xl text-white">
             <FormattedMessage defaultMessage="or" id="Ntjkqd" />
           </span>
-          <Button icon={Heart} theme="secondary-white" onClick={handleFavorite}>
+          <Button disabled theme="secondary-white" onClick={handleFavorite}>
+            <Icon icon={Heart} className={cx('w-4 mr-3', { 'fill-green-dark': favourite })} />
             <span className="text-lg">
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </span>
           </Button>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -7,6 +7,6 @@ export type OpenCallFundingImpactProps = {
   openCall: OpenCall;
   instrumentTypes: string[];
   allSdgs: Enum[];
-  fundingRef: MutableRefObject<any>;
-  impactRef: MutableRefObject<any>;
+  fundingRef: MutableRefObject<HTMLDivElement>;
+  impactRef: MutableRefObject<HTMLDivElement>;
 };
