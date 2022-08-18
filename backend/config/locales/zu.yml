@@ -86,6 +86,7 @@ zu:
       defaults:
         categories: Select the categories that you work on
         mission: What's your mission?
+        mosaics: Select HeCo priority landscapes on which you will have impact
         priority_landscapes: Select HeCo priority landscapes on which you will have impact
   devise:
     confirmations:
@@ -153,6 +154,7 @@ zu:
       admin: Administrator
       user: User
       category: Category
+      mosaic: Mosaic
       priority_landscapes: Priority landscapes
       verified: Verified
       unverified: Unverified
