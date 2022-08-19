@@ -107,6 +107,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   location_type: {type: :string, enum: LocationType::TYPES},
+                  code: {type: :string, nullable: true},
                   created_at: {type: :string}
                 }
               },
