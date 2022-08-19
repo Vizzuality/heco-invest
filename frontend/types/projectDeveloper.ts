@@ -1,8 +1,8 @@
 import { Languages, ReviewStatus } from 'enums';
-import { Picture } from 'types';
 
 import { CategoryType } from './category';
 import { Enum } from './enums';
+import { Locations } from './locations';
 import { Project } from './project';
 import { User } from './user';
 
@@ -28,7 +28,7 @@ export type ProjectDeveloper = {
   language: Languages;
   linkedin?: string;
   mission: string;
-  mosaics: string[];
+  priority_landscapes: Locations[];
   name: string;
   owner?: User;
   picture: ProjectDeveloperPicture;
@@ -44,10 +44,10 @@ export type ProjectDeveloper = {
 
 export type ProjectDeveloperSetupForm = Omit<
   ProjectDeveloper,
-  'picture' | 'id' | 'type' | 'favorite' | 'relationshipNames' | 'projects'
+  'picture' | 'id' | 'type' | 'favorite' | 'relationshipNames' | 'projects' | 'priority_landscapes'
 > & {
   picture: string;
-  mosaics?: string[];
+  priority_landscape_ids?: string[];
 };
 
 export type InterestItem = { name: string; id: string; color?: string; infoText?: string };
@@ -55,7 +55,7 @@ export type InterestItem = { name: string; id: string; color?: string; infoText?
 export type Interest = {
   name: keyof ProjectDeveloperSetupForm;
   title: string;
-  items: Enum[];
+  items: Enum[] | Locations[];
   infoText?: string;
   required?: boolean;
 };

@@ -70,7 +70,7 @@ export const About: FC<AboutProps> = ({
 
                 <FieldInfo infoText={infoText || getItemsInfoText(items)} />
               </legend>
-              {name === InterestNames.Mosaics && (
+              {name === InterestNames.PriorityLandscapes && (
                 <Button
                   theme="naked"
                   className="py-0 px-0 text-green-dark font-normal text-small underline inline !items-start"

@@ -33,7 +33,7 @@ import {
 } from 'services/project-developers/projectDevelopersService';
 
 const PROJECT_DEVELOPER_QUERY_PARAMS = {
-  includes: ['projects'],
+  includes: ['projects', 'priority_landscapes'],
 };
 
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
@@ -131,7 +131,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           ),
         }
       ),
-      tags: enums[EnumTypes.Mosaic].filter(({ id }) => projectDeveloper.mosaics?.includes(id)),
+      tags: projectDeveloper.priority_landscapes,
     },
     {
       id: 'impact',

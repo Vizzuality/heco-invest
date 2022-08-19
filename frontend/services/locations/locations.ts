@@ -6,6 +6,8 @@ import { groupBy } from 'lodash-es';
 
 import { useLocalizedQuery } from 'hooks/query';
 
+import { PRIORITY_LANDSCAPES_IDS } from 'helpers/pages';
+
 import { Queries, LocationsTypes } from 'enums';
 import { Locations, LocationsParams } from 'types/locations';
 
@@ -41,5 +43,26 @@ export const useGroupedLocations = (
       locations,
     }),
     [query, locations]
+  );
+};
+
+export const getPriorityLandscapes = async () => {
+  const result = await getLocations({ 'filter[location_type]': LocationsTypes.PriorityLandscapes });
+  return result.filter(({ id }) => PRIORITY_LANDSCAPES_IDS.includes(id));
+};
+
+export const usePriorityLandscapes = () => {
+  const query = useLocalizedQuery<Locations[], ErrorResponse>(
+    [Queries.PriorityLandscapes],
+    () => getPriorityLandscapes(),
+    staticDataQueryOptions
+  );
+
+  return useMemo(
+    () => ({
+      ...query,
+      priorityLandscapes: query.data,
+    }),
+    [query]
   );
 };

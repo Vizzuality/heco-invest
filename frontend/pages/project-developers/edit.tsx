@@ -23,6 +23,7 @@ import { getEnums } from 'services/enums/enumService';
 const PROJECT_DEVELOPER_QUERY_PARAMS = {
   // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
   locale: null,
+  includes: ['priority_landscapes'],
 };
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
