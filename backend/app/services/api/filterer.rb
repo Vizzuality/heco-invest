@@ -1,6 +1,6 @@
 module API
   class Filterer
-    attr_accessor :query, :filters, :language
+    attr_accessor :query, :original_query, :filters, :language
 
     FULL_TEXT_FILTERS = %i[name description about mission problem solution expected_impact]
     FULL_TEXT_EXTRA_TABLES = {
@@ -9,9 +9,11 @@ module API
     }
     NUMERICAL_FILTERS = %i[municipality_biodiversity_impact municipality_climate_impact municipality_water_impact municipality_community_impact]
     ENUM_FILTERS = %i[category impact sdg instrument_type ticket_size]
+    ASSOCIATION_FILTERS = %i[priority_landscape]
 
-    def initialize(query, filters, language: I18n.locale)
-      @query = query
+    def initialize(original_query, filters, language: I18n.locale)
+      @original_query = original_query
+      @query = original_query.klass.all
       @filters = filters
       @language = language
 
@@ -23,7 +25,8 @@ module API
       apply_numerical_filter
       filter_by_enums
       filter_by_only_verified
-      query
+      filter_by_relations
+      original_query.where id: query.pluck(:id)
     end
 
     private
@@ -62,6 +65,12 @@ module API
       self.query = query.where trusted: true
     end
 
+    def filter_by_relations
+      pluralize(filters.slice(*ASSOCIATION_FILTERS)).slice(*klass_associations).each do |filter_key, filter_value|
+        self.query = query.joins(filter_key.to_sym).where(filter_key => {id: filter_value.split(",")})
+      end
+    end
+
     def localized_columns_for(klass)
       columns = (klass.translatable_attributes & FULL_TEXT_FILTERS).map { |key| "#{key}_#{language}" }
       (columns + FULL_TEXT_FILTERS.map(&:to_s)) & klass.column_names
@@ -76,6 +85,10 @@ module API
 
     def column_names
       @column_names ||= query.klass.column_names
+    end
+
+    def klass_associations
+      @klass_associations ||= query.klass.reflect_on_all_associations.map { |a| a.name.to_s }
     end
   end
 end

@@ -43,7 +43,7 @@ module API
       end
 
       def filter_params
-        params.fetch(:filter, {}).permit :category, :impact, :full_text
+        params.fetch(:filter, {}).permit :category, :impact, :full_text, :priority_landscape
       end
     end
   end
