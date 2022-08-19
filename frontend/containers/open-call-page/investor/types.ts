@@ -11,6 +11,6 @@ export type OpenCallInvestorProps = {
   handleFavorite: () => void;
   /** Function to apply to a open call */
   handleApply: () => void;
-  /** Whether the open call is favourite */
-  favourite: boolean;
+  // /** Whether the open call is favourite */
+  // favourite: boolean;
 };

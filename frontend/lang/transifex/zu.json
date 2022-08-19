@@ -452,6 +452,9 @@
   "8HimVK": {
     "string": "Confirm password"
   },
+  "8KmEyC": {
+    "string": "Would you like to apply for this fund?"
+  },
   "8MAKwj": {
     "string": "Sustainability of the project"
   },
@@ -1185,6 +1188,9 @@
   "NsIwKY": {
     "string": "Leave create project develop?"
   },
+  "Ntjkqd": {
+    "string": "or"
+  },
   "NvzZkI": {
     "string": "Create partnerships"
   },
@@ -1208,9 +1214,6 @@
   },
   "OSAxiC": {
     "string": "The solution or opportunity proposed"
-  },
-  "OTKLo8": {
-    "string": "Instrument {numInstrumentTypes, plural, one {type} other {types}}"
   },
   "OWnChd": {
     "string": "If you are not looking for funding and just want to publish your project, select No."
@@ -1356,6 +1359,9 @@
   "S27Bu1": {
     "string": "<span>Note:</span>The content of this project should be written in {language}"
   },
+  "S3SiEe": {
+    "string": "Quick links"
+  },
   "SFGITa": {
     "string": "Amazon Heart"
   },
@@ -1493,6 +1499,9 @@
   },
   "VR21hO": {
     "string": "The climate crisis is where short-term thinking and long-term consequences collide. How to think long-term in a short-term world?"
+  },
+  "VR4TEV": {
+    "string": "Apply now"
   },
   "VUN1K7": {
     "string": "Create project"
@@ -1853,6 +1862,9 @@
   },
   "eE6uKi": {
     "string": "This data set, a collaboration between the Global Land Analysis & Discovery (GLAD) lab at the University of Maryland, Google, USGS, and NASA, measures areas of tree cover loss across all global land (except Antarctica and other Arctic islands) at approximately 30 × 30 meter resolution. The data were generated using multispectral satellite imagery from the Landsat 5 thematic mapper (TM), the Landsat 7 thematic mapper plus (ETM+), and the Landsat 8 Operational Land Imager (OLI) sensors. Over 1 million satellite images were processed and analyzed, including over 600,000 Landsat 7 images for the 2000-2012 interval, and more than 400,000 Landsat 5, 7, and 8 images for updates for the 2011-2021 interval. The clear land surface observations in the satellite images were assembled and a supervised learning algorithm was applied to identify per pixel tree cover loss."
+  },
+  "eFJIPT": {
+    "string": "{numInstrumentTypes, plural, one {Instrument type} other {Instrument types}}"
   },
   "eItis6": {
     "string": "Discover investors by budget/ticket size"

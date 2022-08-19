@@ -19,7 +19,7 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({
   investorRef,
   handleApply,
   handleFavorite,
-  favourite,
+  // favourite,
 }) => {
   return (
     <div ref={investorRef} className="w-full pt-20 bg-background-middle">
@@ -60,7 +60,11 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({
             <FormattedMessage defaultMessage="or" id="Ntjkqd" />
           </span>
           <Button disabled theme="secondary-white" onClick={handleFavorite}>
-            <Icon icon={Heart} className={cx('w-4 mr-3', { 'fill-green-dark': favourite })} />
+            <Icon
+              icon={Heart}
+              // className={cx('w-4 mr-3', { 'fill-green-dark': favourite })}
+              className={cx('w-4 mr-3')}
+            />
             <span className="text-lg">
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </span>
