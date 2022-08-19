@@ -69,7 +69,7 @@
           "climate",
           "water"
         ],
-        "language": "en",
+        "language": "es",
         "entity_legal_registration_number": "564823570",
         "review_status": "approved",
         "contact_email": "contact@example.com",
@@ -81,7 +81,7 @@
         },
         "favourite": false,
         "created_at": "2022-06-27T09:04:33.802Z",
-        "account_language": "en"
+        "account_language": "es"
       },
       "relationships": {
         "owner": {

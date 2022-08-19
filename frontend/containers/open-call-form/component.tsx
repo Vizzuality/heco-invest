@@ -12,7 +12,7 @@ import MultiPageLayout, { OutroPage, Page } from 'containers/multi-page-layout';
 import Button from 'components/button';
 import Head from 'components/head';
 import { OpenCallStatus } from 'enums';
-import { OpenCallForm as OpenFormType, OpenCallDto } from 'types/open-calls';
+import { OpenCallForm as OpenFormType, OpenCallCreationPayload } from 'types/open-calls';
 import useOpenCallResolver, { formPageInputs } from 'validations/open-call';
 
 import {
@@ -60,7 +60,7 @@ export const OpenCallForm: FC<OpenCallFormTypes> = ({
   const isOutroPage = currentPage === totalPages;
 
   const handleMutate = useCallback(
-    (data: OpenCallDto) => {
+    (data: OpenCallCreationPayload) => {
       return mutation.mutate(
         { dto: data, locale: language },
         {

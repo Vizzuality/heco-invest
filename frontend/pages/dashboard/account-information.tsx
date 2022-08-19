@@ -36,7 +36,7 @@ type AccountInfoPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const AccountInfoPage: PageComponent<AccountInfoPageProps, DashboardLayoutProps> = () => {
   const intl = useIntl();
-  const { user, userAccount, userAccountLoading } = useAccount({ includes: 'owner' });
+  const { user, userAccount, userAccountLoading } = useAccount({ includes: ['owner'] });
 
   const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
 

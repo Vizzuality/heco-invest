@@ -21,7 +21,7 @@
         "biodiversity",
         "climate"
       ],
-      "language": "en",
+      "language": "es",
       "entity_legal_registration_number": "564823570",
       "review_status": "unapproved",
       "picture": {
@@ -33,7 +33,7 @@
       "contact_phone": null,
       "favourite": false,
       "created_at": "2022-06-21T11:30:04.901Z",
-      "account_language": "en"
+      "account_language": "es"
     },
     "relationships": {
       "owner": {

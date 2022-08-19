@@ -13,7 +13,7 @@ import { AxiosError, AxiosResponse } from 'axios';
 
 import { Languages } from 'enums';
 import { Enum, GroupedEnums } from 'types/enums';
-import { OpenCall, OpenCallForm, OpenCallDto } from 'types/open-calls';
+import { OpenCall, OpenCallForm, OpenCallCreationPayload } from 'types/open-calls';
 
 import { ResponseData, ErrorResponse } from 'services/types';
 
@@ -23,7 +23,7 @@ export type OpenCallFormTypes = {
     OpenCall,
     AxiosError<ErrorResponse>,
     {
-      dto: OpenCallDto;
+      dto: OpenCallCreationPayload;
       locale: Languages;
     }
   >;

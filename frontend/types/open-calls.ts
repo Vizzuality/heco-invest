@@ -47,11 +47,15 @@ export type OpenCallForm = {
   status: string;
 };
 
-export type OpenCallDto = Omit<OpenCallForm, 'closing_at'> & {
+export type OpenCallCreationPayload = Omit<OpenCallForm, 'closing_at'> & {
   closing_at: string;
 };
 
-export type OpenCalParams = {
+export type OpenCallUpdatePayload = Partial<OpenCallCreationPayload> & {
+  id: string;
+};
+
+export type OpenCallParams = {
   fields?: string[];
   includes?: string[];
   filter?: string;

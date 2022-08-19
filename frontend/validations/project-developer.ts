@@ -23,5 +23,5 @@ export const formPageInputs = [
     'instagram',
     'twitter',
   ],
-  ['categories', 'mosaics', 'impacts'],
+  ['categories', 'priority_landscape_ids', 'impacts'],
 ];

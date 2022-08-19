@@ -104,6 +104,8 @@ export enum Queries {
   InvitedUser = 'invited_user',
   /** List of open calls */
   AccountOpenCallsList = 'account_open_calls',
+  /** Priority Landscapes */
+  PriorityLandscapes = 'priority_landscapes',
 }
 
 /** Location endpoint param location_type */
@@ -112,6 +114,7 @@ export enum LocationsTypes {
   Department = 'department',
   Municipality = 'municipality',
   Region = 'region',
+  PriorityLandscapes = 'priority_landscape',
 }
 
 /** Enum types returned on 'enums' service endpoint */
@@ -126,7 +129,6 @@ export enum EnumTypes {
   LocationType = 'location_type',
   ProjectDevelopmentStage = 'project_development_stage',
   TargetGroup = 'project_target_group',
-  Mosaic = 'mosaic',
   Images = 'image',
   Sdg = 'sdg',
 }
