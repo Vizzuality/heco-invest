@@ -4,7 +4,7 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
   let(:country) { create(:country) }
   let(:municipality) { create(:municipality) }
   let(:department) { create(:department) }
-  let(:user) { create :user_investor }
+  let(:user) { create :user, :investor, account: create(:account_investor, language: :es) }
   let(:blob) { ActiveStorage::Blob.create_and_upload! io: fixture_file_upload("picture.jpg"), filename: "test" }
 
   path "/api/v1/account/open_calls" do
@@ -183,6 +183,14 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
           }.to change(OpenCall, :count).by(1)
           expect(response.body).to match_snapshot("api/v1/account/open-calls-create")
         end
+
+        it "saves data to account language attributes" do |example|
+          submit_request example.metadata
+          open_call = OpenCall.find response_json["data"]["id"]
+          OpenCall.translatable_attributes.each do |attr|
+            expect(open_call.public_send("#{attr}_#{user.account.language}")).to eq(open_call_params[attr])
+          end
+        end
       end
 
       response "422", "Validation errors" do
@@ -192,14 +200,14 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
         let("X-CSRF-TOKEN") { get_csrf_token }
 
         before(:each) do
-          create(:open_call, name: open_call_params[:name], investor: user.account.investor)
+          create(:open_call, name_es: open_call_params[:name], investor: user.account.investor)
           sign_in user
         end
 
         run_test!
 
         it "returns correct error", generate_swagger_example: true do
-          expect(response_json["errors"][0]["title"]).to eq("Name en (EN) has already been taken")
+          expect(response_json["errors"][0]["title"]).to eq("Name es (ES) has already been taken")
         end
       end
     end
@@ -271,6 +279,13 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/account/open-calls-update")
+        end
+
+        it "saves data to account language attributes" do
+          open_call.reload
+          OpenCall.translatable_attributes.each do |attr|
+            expect(open_call.public_send("#{attr}_#{user.account.language}")).to eq(open_call_params[attr])
+          end
         end
 
         context "when slug is used" do

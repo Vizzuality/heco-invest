@@ -5,7 +5,8 @@ module API
         include API::Pagination
 
         before_action :require_project_developer!, except: %i[create favourites]
-        around_action(only: [:show]) { |_controller, action| set_locale(current_user&.account&.language, &action) }
+        around_action(only: %i[create]) { |_, action| set_locale(account_params[:language], &action) }
+        around_action(only: %i[update show]) { |_, action| set_locale(current_user&.account&.language, &action) }
         load_and_authorize_resource only: :favourites
 
         def create

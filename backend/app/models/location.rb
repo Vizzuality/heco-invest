@@ -14,6 +14,8 @@ class Location < ApplicationRecord
 
   has_one :location_geometry, dependent: :destroy
 
+  translates :name
+
   LocationType::TYPES.each do |location_type|
     scope location_type, -> { where(location_type: location_type) }
   end
@@ -21,9 +23,7 @@ class Location < ApplicationRecord
   validates :location_type, inclusion: {in: LocationType::TYPES, allow_blank: true}, presence: true
   validates_presence_of :name
 
-  validates_uniqueness_of :name_en, scope: :location_type, if: -> { parent_id.blank? }
-
-  translates :name
+  validates_uniqueness_of [*locale_columns(:name)], scope: %i[location_type parent_id], case_sensitive: false, allow_blank: true
 
   generate_ransackers_for_translated_columns I18n.default_locale, db_column: false
 

@@ -76,7 +76,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
       let(:user) { create :user }
       let(:project_developer_params) do
         {
-          language: "en",
+          language: "es",
           picture: blob.signed_id,
           name: "Name",
           about: "About",
@@ -109,6 +109,13 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/accounts-project-developer-create")
+        end
+
+        it "saves data to correct language" do
+          project_developer = ProjectDeveloper.find response_json["data"]["id"]
+          ProjectDeveloper.translatable_attributes.each do |attr|
+            expect(project_developer.public_send("#{attr}_#{project_developer_params[:language]}")).to eq(project_developer_params[attr])
+          end
         end
       end
 
@@ -158,7 +165,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
         }
       }
 
-      let(:project_developer) { create :project_developer }
+      let(:project_developer) { I18n.with_locale(:es) { create :project_developer, language: :es } }
       let(:user) { create :user }
       let(:project_developer_params) do
         {
@@ -198,6 +205,13 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           expect(response.body).to match_snapshot("api/v1/accounts-project-developer-update")
         end
 
+        it "saves data to correct language" do
+          project_developer.reload
+          ProjectDeveloper.translatable_attributes.each do |attr|
+            expect(project_developer.public_send("#{attr}_#{project_developer.language}")).to eq(project_developer_params[attr])
+          end
+        end
+
         context "when updating just some attributes" do
           let(:project_developer_params) do
             {
@@ -218,7 +232,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           end
 
           it "keeps old language" do
-            expect(response_json["data"]["attributes"]["language"]).to eq("en")
+            expect(response_json["data"]["attributes"]["language"]).to eq("es")
           end
         end
       end
