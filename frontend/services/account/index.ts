@@ -34,7 +34,10 @@ export const getProjectDeveloper = async (params?: {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/project_developer`,
     method: 'GET',
-    params: params || {},
+    params: {
+      ...(params ?? {}),
+      includes: params?.includes?.join(','),
+    },
   };
 
   return await API.request(config).then((response) => response.data.data);
@@ -200,7 +203,10 @@ export const getInvestor = async (params?: {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/investor`,
     method: 'GET',
-    params: params || {},
+    params: {
+      ...(params ?? {}),
+      includes: params?.includes?.join(','),
+    },
   };
 
   return await API.request(config).then((response) => response.data.data);

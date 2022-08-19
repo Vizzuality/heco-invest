@@ -115,6 +115,14 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
     if (initialValues) {
       const { picture, ...rest } = pick(initialValues, formPageInputs.flat());
       setValue('picture', picture?.original?.split('redirect/')[1].split('/')[0]);
+
+      if (initialValues.priority_landscapes?.length) {
+        setValue(
+          'priority_landscape_ids',
+          initialValues.priority_landscapes.map(({ id }) => id)
+        );
+      }
+
       entries(rest).forEach(([key, value]) => {
         setValue(key as keyof ProjectDeveloperSetupForm, value);
       });
