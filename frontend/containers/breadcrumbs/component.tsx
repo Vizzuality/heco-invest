@@ -94,12 +94,12 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
       className={className}
       aria-label={intl.formatMessage({ defaultMessage: 'Breadcrumbs', id: 'ByoZDD' })}
     >
-      <ol className="flex gap-3 text-sm text-gray-400">
+      <ol className="text-sm text-gray-400">
         {breadcrumbs.map(({ name, link }, index) => {
           const isLastBreadcrumb = index === breadcrumbs.length - 1;
 
           return (
-            <li key={name}>
+            <li key={name} className="inline ml-3 first-of-type:ml-0">
               <Link key={link} href={link}>
                 <a
                   className={cx({

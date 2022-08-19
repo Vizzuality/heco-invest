@@ -107,7 +107,7 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
       <>
         <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
           <Breadcrumbs
-            className="px-4 sm:px-6 lg:px-8"
+            className="sm:px-6 lg:px-8"
             substitutions={{
               id: { name: project.name },
             }}

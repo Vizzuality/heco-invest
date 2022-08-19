@@ -23,7 +23,7 @@ export const useCreateOpenCall = (): UseMutationResult<
   { dto: OpenCallCreationPayload; locale: Languages }
 > => {
   return useMutation(({ dto, locale }) =>
-    API.post('/api/v1/account/open_calls', dto, { params: { locale } }).then(
+    API.post('/api/v1/account/open_calls', dto, { params: { locale, includes: 'investor' } }).then(
       (response) => response.data.data
     )
   );
@@ -131,4 +131,25 @@ export const useAccountOpenCallList = (
     }),
     [data, rest]
   );
+};
+export const getOpenCall = async (id: string): Promise<OpenCall> => {
+  const response = await API.get<ResponseData<OpenCall>>(`/api/v1/open_calls/${id}`, {
+    params: {
+      includes: 'investor,country,department,municipality',
+    },
+  });
+  return response.data.data;
+};
+
+export const useOpenCall = (
+  id: string,
+  initialData?: OpenCall
+): Omit<UseQueryResult, 'data'> & { openCall: OpenCall } => {
+  const { data, ...rest } = useLocalizedQuery([Queries.OpenCall, id], () => getOpenCall(id), {
+    initialData,
+  });
+
+  return useMemo(() => {
+    return { ...rest, openCall: data };
+  }, [data, rest]);
 };

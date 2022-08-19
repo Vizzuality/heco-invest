@@ -17,6 +17,9 @@
   "+K9fF0": {
     "string": "Project Developers"
   },
+  "+USuwC": {
+    "string": "Funding available per project"
+  },
   "+mzZak": {
     "string": "About {name}"
   },
@@ -452,6 +455,9 @@
   "8HimVK": {
     "string": "Confirm password"
   },
+  "8KmEyC": {
+    "string": "Would you like to apply for this fund?"
+  },
   "8MAKwj": {
     "string": "Sustainability of the project"
   },
@@ -484,6 +490,9 @@
   },
   "8j91Nj": {
     "string": "In the {area} the project has higher impact on <b>{impact}</b> and has an <b>impact score</b> of {score}."
+  },
+  "8mCCtS": {
+    "string": "Ending soon"
   },
   "8rAlFa": {
     "string": "Not listed"
@@ -936,9 +945,6 @@
   "IkUX0b": {
     "string": "How the money will be used"
   },
-  "IsC1uH": {
-    "string": "Create openCall"
-  },
   "Iu60EH": {
     "string": "Are you sure you want to continue?"
   },
@@ -1031,6 +1037,9 @@
   },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
+  },
+  "Knhvmr": {
+    "string": "Who is financing this open call"
   },
   "Kt3qxl": {
     "string": "Renewable energy"
@@ -1184,6 +1193,9 @@
   },
   "NsIwKY": {
     "string": "Leave create project develop?"
+  },
+  "Ntjkqd": {
+    "string": "or"
   },
   "NvzZkI": {
     "string": "Create partnerships"
@@ -1490,6 +1502,9 @@
   },
   "VR21hO": {
     "string": "The climate crisis is where short-term thinking and long-term consequences collide. How to think long-term in a short-term world?"
+  },
+  "VR4TEV": {
+    "string": "Apply now"
   },
   "VUN1K7": {
     "string": "Create project"
@@ -1853,6 +1868,9 @@
   },
   "eE6uKi": {
     "string": "This data set, a collaboration between the Global Land Analysis & Discovery (GLAD) lab at the University of Maryland, Google, USGS, and NASA, measures areas of tree cover loss across all global land (except Antarctica and other Arctic islands) at approximately 30 × 30 meter resolution. The data were generated using multispectral satellite imagery from the Landsat 5 thematic mapper (TM), the Landsat 7 thematic mapper plus (ETM+), and the Landsat 8 Operational Land Imager (OLI) sensors. Over 1 million satellite images were processed and analyzed, including over 600,000 Landsat 7 images for the 2000-2012 interval, and more than 400,000 Landsat 5, 7, and 8 images for updates for the 2011-2021 interval. The clear land surface observations in the satellite images were assembled and a supervised learning algorithm was applied to identify per pixel tree cover loss."
+  },
+  "eFJIPT": {
+    "string": "{numInstrumentTypes, plural, one {Instrument type} other {Instrument types}}"
   },
   "eItis6": {
     "string": "Discover investors by budget/ticket size"
@@ -2495,6 +2513,9 @@
   },
   "sbodFR": {
     "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure <n>20 million hectares</n> of sustainable landscape over the next 20 years, through investments in <n>conservation and sustainable development</n>."
+  },
+  "sfFhiy": {
+    "string": "Maximum value"
   },
   "si4NjO": {
     "string": "Select the account language in which you want to write the content of this account (including profile information and future projects). This will avoid mixed content in the platform."
