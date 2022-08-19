@@ -63,14 +63,14 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
   return (
     <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
       <Breadcrumbs
-        className="px-4 sm:px-6 lg:px-8"
+        className="sm:px-6 lg:px-8"
         substitutions={{
           id: { name },
         }}
       />
       <div className="mt-4">
         <div
-          className="flex items-end mx-4 bg-center bg-cover lg:mx-0 rounded-2xl bg-radial-green-dark bg-green-dark min-h-[250px] lg:min-h-[372px]"
+          className="flex items-end sm:mx-4 bg-center bg-cover lg:mx-0 rounded-2xl bg-radial-green-dark bg-green-dark min-h-[250px] lg:min-h-[372px]"
           style={{
             ...(coverImage && { backgroundImage: `url(${coverImage})` }),
           }}
@@ -95,11 +95,12 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
                 />
               </span>
             )}
+            <p>{openCall.description}</p>
           </div>
           <div className="flex flex-col justify-start lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-1/3 rounded-2xl mt-8 lg:mt-0">
             <>
-              <div className="flex flex-col gap-8 pl-2 sm:flex-row">
-                <div className="flex flex-col items-center justify-end w-full gap-2 sm:items-start sm:w-1/3">
+              <div className="flex flex-col gap-8 pl-2 sm:gap-11 sm:flex-row sm:justify-between">
+                <div className="flex flex-col items-center justify-end gap-2 sm:items-start">
                   <span aria-labelledby="open-call-value" className="text-2xl font-semibold">
                     ${maximum_funding_per_project.toLocaleString(locale)}
                   </span>
@@ -107,8 +108,8 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
                     <FormattedMessage defaultMessage="Value" id="GufXy5" />
                   </span>
                 </div>
-                <div className="flex flex-col items-center justify-end w-full gap-2 sm:items-end sm:w-2/3">
-                  <div className="max-w-full text-center sm:text-right">
+                <div className="flex flex-col items-center justify-end gap-2 sm:items-start">
+                  <div className="max-w-full text-center sm:text-left">
                     {instrumentTypes?.map((type) => {
                       return (
                         <p
@@ -116,7 +117,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
                           key={type}
                           className={cx('font-semibold whitespace-nowrap', {
                             'text-2xl': instrument_types.length === 1,
-                            'text-[26px]': instrument_types.length > 1,
+                            'text-xl': instrument_types.length > 1,
                           })}
                         >
                           {type}
@@ -136,8 +137,8 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
                 </div>
               </div>
               <hr className="mt-6 mb-8" />
-              <div className="flex flex-col justify-between pl-2 sm:flex-row min-w-[395px] gap-y-8">
-                <div className="flex flex-col items-center justify-end w-full gap-2 sm:w-2/3 sm:items-start">
+              <div className="flex flex-col justify-between gap-8 pl-2 sm:flex-row sm:gap-11">
+                <div className="flex flex-col items-center justify-end gap-2 sm:items-start">
                   <span id="total-of-projects" className="text-2xl font-semibold text-gray-700">
                     {openCallRange.deadline}
                   </span>
@@ -145,18 +146,20 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
                     <FormattedMessage defaultMessage="Deadline" id="8/Da7A" />
                   </span>
                 </div>
-                <div className="flex flex-col items-center justify-end w-full gap-2 text-center sm:w-1/3">
-                  <div className="w-[82px] h-[82px] rounded-full flex justify-center items-center">
-                    <OpenCallChart openCallRange={openCallRange} />
-                    <p className="absolute max-w-[62px] text-xs font-semibold text-green-dark">
-                      {status === OpenCallStatus.Launched ? (
-                        <FormattedMessage defaultMessage="Ending soon" id="8mCCtS" />
-                      ) : (
-                        <FormattedMessage defaultMessage="Closed" id="Fv1ZSz" />
-                      )}
-                    </p>
+                {openCallRange.remaining <= 7 && (
+                  <div className="flex flex-col items-center justify-end gap-2 text-center">
+                    <div className="w-[82px] h-[82px] rounded-full flex justify-center items-center">
+                      <OpenCallChart openCallRange={openCallRange} />
+                      <p className="absolute max-w-[62px] text-xs font-semibold text-green-dark">
+                        {status === OpenCallStatus.Launched ? (
+                          <FormattedMessage defaultMessage="Ending soon" id="8mCCtS" />
+                        ) : (
+                          <FormattedMessage defaultMessage="Closed" id="Fv1ZSz" />
+                        )}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </>
 

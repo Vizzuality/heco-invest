@@ -11,7 +11,6 @@ import {
   OpenCallOverview,
   OpenCallFundingInformation,
   OpenCallInvestorAndFooter,
-  OpenCallSectionLinks,
 } from 'containers/open-call-page';
 
 import Head from 'components/head';
@@ -63,11 +62,6 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
     (instrumentType) => allInstrumentTypes.find((type) => type.id === instrumentType).name
   );
 
-  const fundingRef = useRef(null);
-  const overviewRef = useRef(null);
-  const impactRef = useRef(null);
-  const investorRef = useRef(null);
-
   // To implement
   const handleFavorite = () => {};
 
@@ -83,22 +77,13 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
         handleFavorite={handleFavorite}
         handleApply={handleApply}
       />
-      <OpenCallSectionLinks
-        investorRef={investorRef}
-        fundingRef={fundingRef}
-        overviewRef={overviewRef}
-        impactRef={impactRef}
-      />
-      <OpenCallOverview overviewRef={overviewRef} openCall={openCall} />
+      <OpenCallOverview openCall={openCall} />
       <OpenCallFundingInformation
         instrumentTypes={instrumentTypeNames}
         openCall={openCall}
         allSdgs={allSdgs}
-        fundingRef={fundingRef}
-        impactRef={impactRef}
       />
       <OpenCallInvestorAndFooter
-        investorRef={investorRef}
         investor={openCall?.investor}
         handleFavorite={handleFavorite}
         handleApply={handleApply}

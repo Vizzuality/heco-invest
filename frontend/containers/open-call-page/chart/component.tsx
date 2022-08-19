@@ -15,16 +15,16 @@ export const OpenCallChart: FC<OpenCallChartProps> = ({ openCallRange }) => {
     <Doughnut
       options={{
         // This controls the width of the doughnut
-        cutout: '86%',
+        cutout: '95%',
         // The events empty is to disable the hover effect
         events: [],
       }}
       data={{
         datasets: [
           {
-            data: [openCallRange.consumed, openCallRange.remaining],
-            backgroundColor: [theme.colors.beige, theme.colors.green.light],
-            borderColor: [theme.colors.beige, theme.colors.green.light],
+            data: [openCallRange.remaining, openCallRange.consumed],
+            backgroundColor: [theme.colors.green.light, theme.colors.beige],
+            borderColor: [theme.colors.green.light, theme.colors.beige],
           },
         ],
       }}
