@@ -6,7 +6,8 @@
       "attributes": {
         "name": "Papua New Guinea",
         "location_type": "department",
-        "created_at": "2022-06-24T09:07:25.381Z"
+        "created_at": "2022-06-24T09:07:25.381Z",
+        "code": null
       },
       "relationships": {
         "parent": {
