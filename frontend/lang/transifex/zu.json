@@ -927,9 +927,6 @@
   "IBlTCs": {
     "string": "The image is larger than {maxSize}MB"
   },
-  "IHCcxL": {
-    "string": "What is the open call about"
-  },
   "IQTULX": {
     "string": "We are here to help you"
   },
@@ -947,9 +944,6 @@
   },
   "IkUX0b": {
     "string": "How the money will be used"
-  },
-  "IsC1uH": {
-    "string": "Create openCall"
   },
   "Iu60EH": {
     "string": "Are you sure you want to continue?"
@@ -1370,9 +1364,6 @@
   },
   "S27Bu1": {
     "string": "<span>Note:</span>The content of this project should be written in {language}"
-  },
-  "S3SiEe": {
-    "string": "Quick links"
   },
   "SFGITa": {
     "string": "Amazon Heart"
