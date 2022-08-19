@@ -18,7 +18,7 @@ import Button from 'components/button';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import { Languages, OpenCallStatus } from 'enums';
-import { locales } from 'locales.config.json';
+import languages from 'locales.config.json';
 
 import OpenCallChart from '../chart';
 
@@ -45,7 +45,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
   } = openCall;
   const coverImage = picture?.medium;
   const originalLanguage =
-    language || (locales.find((locale) => locale.default)?.locale as Languages);
+    language || (languages.locales.find((locale) => locale.default)?.locale as Languages);
 
   const openCallRange = useMemo(() => {
     const openDate = dayjs(created_at);

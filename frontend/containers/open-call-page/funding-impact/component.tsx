@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -52,14 +52,14 @@ export const OpenCallFundingImpact: FC<OpenCallFundingImpactProps> = ({
               <div>
                 <div className="flex-wrap gap-x-4 sm:flex">
                   {instrumentTypes?.map((instrumentType, index) => (
-                    <>
+                    <Fragment key={instrumentType}>
                       <p key={instrumentType} className="mb-2 text-2xl font-semibold">
                         {instrumentType}
                       </p>
                       {index !== instrumentTypes.length - 1 && (
                         <span className="hidden text-2xl sm:inline">&#183;</span>
                       )}
-                    </>
+                    </Fragment>
                   ))}
                 </div>
                 <p className="text-base">

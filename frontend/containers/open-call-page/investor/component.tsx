@@ -36,7 +36,7 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({
             <ProfileCard
               className="min-w-full"
               description={investor?.about}
-              link={`/${Paths.Investor}/${investor?.slug}`}
+              link={`${Paths.Investor}/${investor?.slug}`}
               name={investor?.name}
               picture={investor?.picture?.small}
               profileType="investor"
