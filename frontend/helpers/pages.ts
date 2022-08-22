@@ -13,11 +13,11 @@ import { AxiosError } from 'axios';
 import { EnumTypes, Languages, Paths } from 'enums';
 import languages from 'locales.config.json';
 import { Enum } from 'types/enums';
+import { Locations } from 'types/locations';
 import { Project, ProjectForm, ProjectUpdatePayload } from 'types/project';
 import { formPageInputs } from 'validations/project';
 
 import { ErrorResponse } from 'services/types';
-import { Locations } from 'types/locations';
 
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
 export function getServiceErrors<FormValues>(
@@ -208,9 +208,9 @@ export const getProjectValues = (project: Project): ProjectUpdatePayload => {
   return projectUpload as ProjectUpdatePayload;
 };
 
-export const PRIORITY_LANDSCAPES_IDS = [
-  'b8eba9d3-1618-401c-b85c-c287941f6fe9',
-  '6f827753-3c27-4343-bc39-0c81a1875488',
-  '35490999-6962-4825-8ca4-1862c1a5e45d',
-  '135e49c7-0d29-455f-8700-33c573772b41',
+export const PRIORITY_LANDSCAPES_CODES = [
+  'priority-landscape-orinoquia',
+  'priority-landscape-amazon-heart',
+  'priority-landscape-amazonian-piedmont-massif',
+  'priority-landscape-orinoquia-transition',
 ];
