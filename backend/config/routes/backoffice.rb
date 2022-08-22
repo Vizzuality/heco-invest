@@ -19,6 +19,7 @@ namespace :backoffice do
   resources :investors, only: [:index, :edit, :update, :destroy]
   resources :project_developers, only: [:index, :edit, :update, :destroy]
   resources :projects, only: [:index, :edit, :update, :destroy]
+  resources :open_calls, only: [:index]
   resources :admins
   resources :users, only: [:index, :edit, :update, :destroy]
 end

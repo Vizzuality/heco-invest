@@ -13,6 +13,7 @@ class OpenCall < ApplicationRecord
   belongs_to :department, class_name: "Location", optional: true
 
   has_many :favourite_open_calls, dependent: :destroy
+  has_many :open_call_applications, dependent: :destroy
 
   has_one_attached :picture
 

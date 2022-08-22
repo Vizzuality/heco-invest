@@ -252,13 +252,18 @@ zu:
           not_valid_kml: This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues.
           not_supported: This file is not supported. Please try uploading a different format.
           unable_to_parse: Unable to parse the file. Please try uploading a different format.
-
+    open_calls:
+      index:
+        name: Open Call name
+        location: Location
+        applications: Applications
     layout:
       header: Backoffice
       sign_out: Sign out
       project_developers: Project developers
       investors: Investors
       projects: Projects
+      open_calls: Open Calls
       users: Users
       admins: Administrators
   errors:
