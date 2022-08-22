@@ -2,7 +2,9 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Projects", type: :request do
   before_all do
-    @project = create(:project, :with_involved_project_developers, :with_project_images, category: "non-timber-forest-production")
+    geometry = {type: "Polygon", coordinates: [[[0, 0], [1, 0], [1, 1], [0, 1]]]}
+    create :location, :with_geometry, location_type: :priority_landscape, geometry: RGeo::GeoJSON.decode(geometry.to_json)
+    @project = create(:project, :with_involved_project_developers, :with_project_images, category: "non-timber-forest-production", geometry: geometry)
     create_list(:project, 6, category: "forestry-and-agroforestry")
 
     unapproved_pd = create(:project_developer, account: create(:account, :unapproved, users: [create(:user)]))
@@ -33,6 +35,7 @@ RSpec.describe "API V1 Projects", type: :request do
       parameter name: "filter[impact]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[only_verified]", in: :query, type: :boolean, required: false, description: "Filter records."
       parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
+      parameter name: "filter[priority_landscape]", in: :query, type: :string, required: false, description: "Filter records by ID. Use comma to separate multiple IDs."
       parameter name: :sorting, in: :query, type: :string, required: false, description: "Sort records.",
         enum: ["name asc", "name desc", "created_at asc", "created_at desc",
           "municipality_biodiversity_impact asc", "municipality_climate_impact asc", "municipality_water_impact asc", "municipality_community_impact asc", "municipality_total_impact asc",
@@ -89,6 +92,14 @@ RSpec.describe "API V1 Projects", type: :request do
 
         context "when filtered by searched text" do
           let("filter[full_text]") { @project.name }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([@project.id])
+          end
+        end
+
+        context "when filtered by association" do
+          let("filter[priority_landscape]") { @project.priority_landscape.id }
 
           it "contains only correct records" do
             expect(response_json["data"].pluck("id")).to eq([@project.id])

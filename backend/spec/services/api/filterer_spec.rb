@@ -65,6 +65,28 @@ RSpec.describe API::Filterer do
           expect(subject.call).not_to include(project_without_municipality_impact)
         end
       end
+
+      context "when filtered by priority landscape" do
+        let(:filters) { {priority_landscape: priority_landscape.id} }
+
+        let(:geometry) { {type: "Polygon", coordinates: [[[0, 0], [1, 0], [1, 1], [0, 1]]]} }
+        let(:different_geometry) { {type: "Polygon", coordinates: [[[100, 100], [101, 100], [101, 101], [100, 101]]]} }
+        let!(:priority_landscape) do
+          create :location, :with_geometry, location_type: :priority_landscape, geometry: RGeo::GeoJSON.decode(geometry.to_json)
+        end
+        let!(:different_priority_landscape) do
+          create :location, :with_geometry, location_type: :priority_landscape, geometry: RGeo::GeoJSON.decode(different_geometry.to_json)
+        end
+        let!(:correct_project) { create :project, geometry: geometry }
+        let!(:project_at_different_location) { create :project, geometry: different_geometry }
+        let!(:project_without_priority_landscape) do
+          create :project, geometry: {type: "Polygon", coordinates: [[[1000, 1000], [1010, 1000], [1010, 1010], [1000, 1010]]]}
+        end
+
+        it "returns only records with correct priority landscape" do
+          expect(subject.call).to eq([correct_project])
+        end
+      end
     end
 
     describe "used with Project Developer query" do
@@ -100,6 +122,43 @@ RSpec.describe API::Filterer do
 
         it "returns only correct project developers" do
           expect(subject.call).to eq([correct_project_developer])
+        end
+      end
+
+      context "when filtered by priority landscape" do
+        let!(:priority_landscape_1) { create :location, :with_geometry, location_type: :priority_landscape }
+        let!(:priority_landscape_2) { create :location, :with_geometry, location_type: :priority_landscape }
+        let!(:priority_landscape_3) { create :location, :with_geometry, location_type: :priority_landscape }
+        let!(:project_developer_1) { create :project_developer, priority_landscapes: [priority_landscape_1] }
+        let!(:project_developer_2) { create :project_developer, priority_landscapes: [priority_landscape_2, priority_landscape_3] }
+        let!(:project_developer_3) { create :project_developer, priority_landscapes: [priority_landscape_3] }
+
+        context "when filtered by one priority landscape which have only one result" do
+          let(:filters) { {priority_landscape: priority_landscape_1.id} }
+
+          it "returns only records with correct priority landscape" do
+            expect(subject.call).to eq([project_developer_1])
+          end
+        end
+
+        context "when filtered by one priority landscape which have multiple result" do
+          let(:filters) { {priority_landscape: priority_landscape_3.id} }
+
+          it "returns only records with correct priority landscape" do
+            expect(subject.call).not_to include(project_developer_1)
+            expect(subject.call).to include(project_developer_2)
+            expect(subject.call).to include(project_developer_3)
+          end
+        end
+
+        context "when filtered by multiple priority landscapes" do
+          let(:filters) { {priority_landscape: "#{priority_landscape_1.id},#{priority_landscape_2.id}"} }
+
+          it "returns only records with correct priority landscape" do
+            expect(subject.call).to include(project_developer_1)
+            expect(subject.call).to include(project_developer_2)
+            expect(subject.call).not_to include(project_developer_3)
+          end
         end
       end
     end
