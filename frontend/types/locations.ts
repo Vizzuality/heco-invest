@@ -11,6 +11,7 @@ export type Locations = {
   id: string;
   type: 'location';
   name: string;
+  code?: string;
   location_type: LocationsTypes;
   parent: {
     id: string;

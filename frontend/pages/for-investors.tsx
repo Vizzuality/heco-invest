@@ -81,29 +81,29 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
   const isMd = breakpoint('sm');
   const isLg = breakpoint('lg');
 
-  const priorityLandscapesDescriptions = {
-    '35490999-6962-4825-8ca4-1862c1a5e45d': (
+  const priorityLandscapesDescriptionsByCode = {
+    'priority-landscape-amazonian-piedmont-massif': (
       <FormattedMessage
         defaultMessage="Being a point of transition and meeting between the two most biodiverse biomes on Earth, the Tropical Andes and the Amazon, the Mosaic foothills represents one of the regions with <n>the greatest biodiversity in the world</n>."
         id="RBIeR5"
         values={{
-          n: (chunk: string) => <span className="font-bold">{chunk}</span>,
+          n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
         }}
       />
     ),
-    '135e49c7-0d29-455f-8700-33c573772b41': (
+    'priority-landscape-orinoquia-transition': (
       <FormattedMessage
         defaultMessage="Helps to ensure connectivity between the Andean, Orinocean and Amazonian ecosystems, allowing the conservation of flora, fauna, scenic beauties, geomorphological complexes, historical or cultural manifestations, the conservation and regulation of water systems."
         id="WJGIA3"
       />
     ),
-    'b8eba9d3-1618-401c-b85c-c287941f6fe9': (
+    'priority-landscape-orinoquia': (
       <FormattedMessage
         defaultMessage="It is an ecoregion covered with savannahs of high floristic diversity and habitats representative of the evolutionary processes of the Guiana Shield. It includes both blackwater and whitewater rivers that feed the great Orinoco River, creating different types of seasonally flooded forests."
         id="pNNQA+"
       />
     ),
-    '6f827753-3c27-4343-bc39-0c81a1875488': (
+    'priority-landscape-amazon-heart': (
       <FormattedMessage
         defaultMessage="It is an area with a number of attributes related to heterogeneity that maintain the structure and ecological processes that characterize it as the Heart of the Amazon, it is also one of the most unique natural and cultural heritages in the national territory due to its exuberant cultural diversity."
         id="QI4yO9"
@@ -297,8 +297,8 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         </div>
 
         <div className="grid pb-6 md:pr-0 md:pl-0 overflow-x-auto md:grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-6 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 md:place-content-end md:container md:mx-auto md:px-8">
-          {priorityLandscapes.map(({ id, name }, index) => {
-            const description = priorityLandscapesDescriptions[id];
+          {priorityLandscapes.map(({ id, name, code }, index) => {
+            const description = priorityLandscapesDescriptionsByCode[code];
             const projectsQuantity = projectsByPriorityLandscape[id]?.length || 0;
             return (
               <div
