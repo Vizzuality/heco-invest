@@ -67,9 +67,6 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
   );
 
   // To implement
-  const handleFavorite = () => {};
-
-  // To implement
   const handleApply = () => {};
 
   return (
@@ -86,11 +83,7 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
         openCall={openCall}
         allSdgs={allSdgs}
       />
-      <OpenCallInvestorAndFooter
-        investor={openCall?.investor}
-        handleFavorite={handleFavorite}
-        handleApply={handleApply}
-      />
+      <OpenCallInvestorAndFooter openCall={openCall} handleApply={handleApply} />
     </div>
   );
 };

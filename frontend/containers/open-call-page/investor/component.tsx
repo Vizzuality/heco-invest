@@ -5,6 +5,8 @@ import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
+import useMe from 'hooks/me';
+
 import ProfileCard from 'containers/profile-card';
 
 import Button from 'components/button';
@@ -12,14 +14,28 @@ import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import { Paths } from 'enums';
 
+import { useFavoriteOpenCall } from 'services/open-call/open-call-service';
+
 import { OpenCallInvestorProps } from '.';
 
-export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({
-  investor,
-  handleApply,
-  handleFavorite,
-  // favourite,
-}) => {
+export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({ openCall, handleApply }) => {
+  const { user } = useMe();
+  const favoriteOpenCall = useFavoriteOpenCall();
+
+  const { investor } = openCall;
+
+  const handleFavoriteClick = () => {
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    favoriteOpenCall.mutate(
+      { id: openCall.id, isFavourite: openCall.favourite },
+      {
+        onSuccess: (data) => {
+          openCall.favourite = data.favourite;
+        },
+      }
+    );
+  };
+
   return (
     <div className="w-full pt-20 bg-background-middle">
       <LayoutContainer>
@@ -59,11 +75,13 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({
             <span className="text-xl text-white">
               <FormattedMessage defaultMessage="or" id="Ntjkqd" />
             </span>
-            <Button disabled theme="secondary-white" onClick={handleFavorite}>
+            <Button disabled={!user} theme="secondary-white" onClick={handleFavoriteClick}>
               <Icon
                 icon={Heart}
-                // className={cx('w-4 mr-3', { 'fill-green-dark': favourite })}
-                className={cx('w-4 mr-3')}
+                className={cx('w-4 mr-3', {
+                  'fill-green-dark': !openCall.favourite,
+                  'fill-white': openCall.favourite,
+                })}
               />
               <span className="text-lg">
                 <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
