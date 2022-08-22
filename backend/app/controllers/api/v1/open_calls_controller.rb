@@ -4,7 +4,7 @@ module API
       include API::Pagination
 
       before_action :fetch_open_call, only: [:show]
-      around_action(only: [:show]) { |_controller, action| set_locale(@open_call&.investor&.account&.language, &action) }
+      around_action(only: [:show]) { |_, action| set_locale(fallback_language: @open_call&.investor&.account&.language, &action) }
       load_and_authorize_resource
 
       def index

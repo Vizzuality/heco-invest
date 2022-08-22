@@ -99,7 +99,8 @@ RSpec.describe "API V1 Account Investors", type: :request do
           impacts: ["biodiversity", "climate"],
           ticket_sizes: ["small-grants"],
           instrument_types: ["grant"],
-          sdgs: [1, 2, 5]
+          sdgs: [1, 2, 5],
+          locale: :en
         }
       end
 
@@ -200,7 +201,8 @@ RSpec.describe "API V1 Account Investors", type: :request do
           impacts: ["biodiversity", "climate"],
           ticket_sizes: ["small-grants"],
           instrument_types: ["grant"],
-          sdgs: [1, 2, 5]
+          sdgs: [1, 2, 5],
+          locale: :en
         }
       end
 
