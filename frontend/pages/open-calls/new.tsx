@@ -48,7 +48,7 @@ const CreateOpenCallPage: PageComponent<InferGetServerSidePropsType<typeof getSe
     push(queryReturnPath || Paths.DashboardOpenCalls);
   };
 
-  const createOpenCall = useCreateOpenCall();
+  const createOpenCall = useCreateOpenCall({ locale: language });
 
   const getIsOwner = (_user: User, userAccount: Investor | ProjectDeveloper) => {
     setLanguage(userAccount?.language);
@@ -62,7 +62,7 @@ const CreateOpenCallPage: PageComponent<InferGetServerSidePropsType<typeof getSe
         title={formatMessage({ defaultMessage: 'Create Open Call', id: '7xC2j0' })}
         mutation={createOpenCall}
         enums={enums as GroupedEnums}
-        language={language}
+        locale={language}
         leaveMessage={formatMessage({
           defaultMessage: 'Leave open call creation form',
           id: '6FQ0Y8',

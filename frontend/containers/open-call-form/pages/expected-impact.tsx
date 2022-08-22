@@ -16,6 +16,7 @@ export const OpenCallExpectedImpact: FC<OpenCallExpectedImpactProps> = ({
   errors,
   clearErrors,
   setValue,
+  getValues,
 }) => {
   const { formatMessage } = useIntl();
 
@@ -77,6 +78,7 @@ export const OpenCallExpectedImpact: FC<OpenCallExpectedImpactProps> = ({
               name="sdgs"
               register={register}
               setValue={setValue}
+              defaultValues={getValues('sdgs')}
               aria-describedby="sdgs-error"
             />
             <ErrorMessage id="sdgs-error" errorText={errors.sdgs?.[0]?.message} />
