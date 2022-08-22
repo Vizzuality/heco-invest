@@ -1,5 +1,3 @@
-import { useRef } from 'react';
-
 import { withLocalizedRequests } from 'hoc/locale';
 
 import { groupBy } from 'lodash-es';
@@ -80,7 +78,6 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
       <OpenCallHeader
         openCall={openCall}
         instrumentTypes={instrumentTypeNames}
-        handleFavorite={handleFavorite}
         handleApply={handleApply}
       />
       <OpenCallOverview openCall={openCall} />
