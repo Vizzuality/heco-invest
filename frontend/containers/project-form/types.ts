@@ -27,7 +27,7 @@ export type ProjectFormProps = {
   leaveMessage: string;
   /** If is the create form. Default = false (update form) */
   isCreateForm?: boolean;
-  /** Values of the current project developer, in case it is the update form */
+  /** Values of the project when editing */
   initialValues?: Project;
   /** Whether the project data is still being loaded/fetched */
   isLoading?: boolean;
@@ -35,6 +35,7 @@ export type ProjectFormProps = {
   mutation: UseMutationResult<AxiosResponse<ResponseData<Project>>, AxiosError<ErrorResponse>>;
   /** Callback to execute when form has been submitted successfully */
   onComplete?: () => void;
+  /** Enums data */
   enums: GroupedEnums;
 };
 

@@ -1722,6 +1722,9 @@
   "aDn1WM": {
     "string": "Curated database"
   },
+  "aF/DIA": {
+    "string": "Leave project edition form"
+  },
   "aFyFm0": {
     "string": "Accepted"
   },
@@ -1865,6 +1868,9 @@
   },
   "e61Jf3": {
     "string": "Coming soon"
+  },
+  "eCiudu": {
+    "string": "Open call cover image"
   },
   "eE6uKi": {
     "string": "This data set, a collaboration between the Global Land Analysis & Discovery (GLAD) lab at the University of Maryland, Google, USGS, and NASA, measures areas of tree cover loss across all global land (except Antarctica and other Arctic islands) at approximately 30 × 30 meter resolution. The data were generated using multispectral satellite imagery from the Landsat 5 thematic mapper (TM), the Landsat 7 thematic mapper plus (ETM+), and the Landsat 8 Operational Land Imager (OLI) sensors. Over 1 million satellite images were processed and analyzed, including over 600,000 Landsat 7 images for the 2000-2012 interval, and more than 400,000 Landsat 5, 7, and 8 images for updates for the 2011-2021 interval. The clear land surface observations in the satellite images were assembled and a supervised learning algorithm was applied to identify per pixel tree cover loss."
@@ -2153,6 +2159,9 @@
   },
   "kEXoaQ": {
     "string": "About your work"
+  },
+  "kHpaMt": {
+    "string": "Edit Open Call"
   },
   "kN5g/0": {
     "string": "Indigenous Reserves"
@@ -2498,6 +2507,9 @@
   },
   "sV+3z0": {
     "string": "Currently looking for"
+  },
+  "sVpJRp": {
+    "string": "Leave open call edition form"
   },
   "sWdxgq": {
     "string": "Impact of projects that reduce carbon emissions from the land sector (deforestation/degradation), as wood and soil biomass as well as application of sustainable forest measures."
