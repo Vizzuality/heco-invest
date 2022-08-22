@@ -42,7 +42,7 @@ RSpec.describe "Backoffice: Open Calls", type: :system do
         it "shows only found open calls" do
           expect(page).to have_text(open_call.name)
           open_calls.each { |o| expect(page).to have_text(o.name) }
-          fill_in :q_filter_full_text, with: open_call.name
+          fill_in :q_name_or_investor_account_name_or_country_name_or_department_name_or_municipality_name_i_cont, with: open_call.name
           find("form.open_call_search button").click
           expect(page).to have_text(open_call.name)
           open_calls.each { |o| expect(page).not_to have_text(o.name) }
