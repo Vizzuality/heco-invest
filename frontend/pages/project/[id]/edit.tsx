@@ -33,7 +33,6 @@ const PROJECT_QUERY_PARAMS = {
     'department',
     'project_developer',
     'involved_project_developers',
-    'project_developer',
   ],
   // We set the `locale` as `null` so that we get the project in the account's language instead of the UI language
   locale: null,
@@ -104,8 +103,8 @@ const EditProject: PageComponent<EditProjectProps, FormPageLayoutProps> = ({
       <ProjectForm
         title={formatMessage({ defaultMessage: 'Edit project', id: 'qwCflo' })}
         leaveMessage={formatMessage({
-          defaultMessage: 'Leave project creation form',
-          id: 'vygPIS',
+          defaultMessage: 'Leave project edition form',
+          id: 'aF/DIA',
         })}
         mutation={updateProject}
         onComplete={handleOnComplete}

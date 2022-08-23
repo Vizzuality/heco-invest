@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -9,19 +9,27 @@ import ErrorMessage from 'components/forms/error-message';
 
 import { OpenCallClosingDateProps } from '../types';
 
-export const OpenCallClosingDate: FC<OpenCallClosingDateProps> = ({ control, errors }) => {
-  const [totalDays, setTotalDays] = useState(0);
+const getDaysCountFromToday = (targetDate: Dayjs) => {
+  // In order to have a “ceil” value, we pass `true` as the last param to get a float
+  return Math.ceil(targetDate.diff(dayjs(), 'd', true)) + 1;
+};
 
-  const handleChangeDate = (event: any) => {
+export const OpenCallClosingDate: FC<OpenCallClosingDateProps> = ({
+  control,
+  errors,
+  getValues,
+}) => {
+  const [totalDays, setTotalDays] = useState(
+    getValues('closing_at') ? getDaysCountFromToday(dayjs(getValues('closing_at'))) : 0
+  );
+
+  const handleChangeDate = useCallback((event: any) => {
     const newDate: Dayjs = event.target.value;
-    // total days between now and the closing_date (the selected date)
-    // The 'true' on the last function param is to return a float value, so we use the Math.ceil to round up, and the + 1 is to add the current day
-    const total = newDate?.diff(dayjs(), 'd', true);
-    setTotalDays(total ? Math.ceil(total) + 1 : 0);
-  };
+    setTotalDays(newDate ? getDaysCountFromToday(newDate) : 0);
+  }, []);
 
   return (
-    <div className="max-w-[814px] m-auto">
+    <>
       <div className="mb-10">
         <h1 className="mb-2 font-serif text-3xl font-semibold">
           <FormattedMessage
@@ -59,6 +67,6 @@ export const OpenCallClosingDate: FC<OpenCallClosingDateProps> = ({ control, err
           />
         </p>
       </div>
-    </div>
+    </>
   );
 };

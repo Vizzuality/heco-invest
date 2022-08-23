@@ -17,46 +17,83 @@ import {
 import API from 'services/api';
 import { ErrorResponse, ResponseData } from 'services/types';
 
-export const useCreateOpenCall = (): UseMutationResult<
-  OpenCall,
-  AxiosError<ErrorResponse>,
-  { dto: OpenCallCreationPayload; locale: Languages }
-> => {
-  return useMutation(({ dto, locale }) =>
-    API.post('/api/v1/account/open_calls', dto, { params: { locale, includes: 'investor' } }).then(
-      (response) => response.data.data
-    )
+export const getOpenCall = async (
+  id: string,
+  params?: {
+    'fields[open_call]'?: string;
+    includes?: string[];
+    locale?: string;
+  }
+): Promise<{
+  data: OpenCall;
+  included: any[]; // TODO
+}> => {
+  const { includes, ...rest } = params || {};
+
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/open_calls/${id}`,
+    method: 'GET',
+    params: {
+      includes: includes?.join(','),
+      ...rest,
+    },
+  };
+  return await API.request(config).then((response) => response.data);
+};
+
+/** Use query for a single OpenCall */
+export function useOpenCall(
+  id: string,
+  params?: Parameters<typeof getOpenCall>[1],
+  initialData?: OpenCall
+) {
+  const query = useLocalizedQuery([Queries.OpenCall, id], () => getOpenCall(id, params), {
+    refetchOnWindowFocus: false,
+    initialData: { data: initialData, included: [] },
+  });
+
+  return useMemo(
+    () => ({
+      ...query,
+      openCall: query.data,
+    }),
+    [query]
+  );
+}
+
+export const useCreateOpenCall = (params: {
+  locale?: Languages;
+}): UseMutationResult<OpenCall, AxiosError<ErrorResponse>, OpenCallCreationPayload> => {
+  return useMutation((data: OpenCallCreationPayload) =>
+    API.post('/api/v1/account/open_calls', data, {
+      params: { ...params, includes: 'investor' },
+    }).then((response) => response.data.data)
   );
 };
 
 export const updateOpenCall = async (
   data: OpenCallUpdatePayload,
   params?: {
-    locale?: string;
+    locale?: Languages;
   }
-): Promise<AxiosResponse<ResponseData<OpenCall>>> => {
+): Promise<OpenCall> => {
   const config: AxiosRequestConfig = {
     url: `/api/v1/account/open_calls/${data.id}`,
     method: 'PUT',
-    data: data,
-    params: params || {},
+    data,
+    params,
   };
 
-  return await API(config);
+  return await API(config).then((response) => response.data.data);
 };
 
 export function useUpdateOpenCall(
   params?: Parameters<typeof updateOpenCall>[1]
-): UseMutationResult<
-  AxiosResponse<ResponseData<OpenCall>>,
-  AxiosError<ErrorResponse>,
-  OpenCallUpdatePayload
-> {
+): UseMutationResult<OpenCall, AxiosError<ErrorResponse>, OpenCallUpdatePayload> {
   const queryClient = useQueryClient();
 
   return useMutation((data) => updateOpenCall(data, params), {
-    onSuccess: (result) => {
-      const { data } = result.data;
+    onSuccess: (data) => {
       queryClient.invalidateQueries(Queries.OpenCall);
       queryClient.invalidateQueries(Queries.OpenCallList);
       queryClient.invalidateQueries(Queries.AccountOpenCallsList);
@@ -131,25 +168,4 @@ export const useAccountOpenCallList = (
     }),
     [data, rest]
   );
-};
-export const getOpenCall = async (id: string): Promise<OpenCall> => {
-  const response = await API.get<ResponseData<OpenCall>>(`/api/v1/open_calls/${id}`, {
-    params: {
-      includes: 'investor,country,department,municipality',
-    },
-  });
-  return response.data.data;
-};
-
-export const useOpenCall = (
-  id: string,
-  initialData?: OpenCall
-): Omit<UseQueryResult, 'data'> & { openCall: OpenCall } => {
-  const { data, ...rest } = useLocalizedQuery([Queries.OpenCall, id], () => getOpenCall(id), {
-    initialData,
-  });
-
-  return useMemo(() => {
-    return { ...rest, openCall: data };
-  }, [data, rest]);
 };

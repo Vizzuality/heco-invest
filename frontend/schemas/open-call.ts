@@ -51,7 +51,7 @@ export default (page: number) => {
 
   const openCallSchema: SchemaOf<Partial<OpenCallForm>> = object({
     name: string().required(messages.name),
-    picture: string(),
+    picture: string().nullable(),
     country_id: string().required(messages.country_id),
     department_id: string(),
     municipality_id: string(),

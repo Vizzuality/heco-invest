@@ -22,12 +22,16 @@ import { OpenCall } from 'types/open-calls';
 import { getEnums } from 'services/enums/enumService';
 import { getOpenCall, useOpenCall } from 'services/open-call/open-call-service';
 
+const OPEN_CALL_QUERY_PARAMS = {
+  includes: ['country', 'municipality', 'department', 'investor'],
+};
+
 export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
-  let openCall = null;
+  let openCall: OpenCall = null;
 
   // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
   try {
-    openCall = await getOpenCall(id as string);
+    ({ data: openCall } = await getOpenCall(id as string, OPEN_CALL_QUERY_PARAMS));
   } catch (e) {
     return { notFound: true };
   }
@@ -52,7 +56,9 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
   openCall: openCallProp,
   enums,
 }) => {
-  const { openCall } = useOpenCall(openCallProp.id, openCallProp);
+  const {
+    data: { data: openCall },
+  } = useOpenCall(openCallProp.id, OPEN_CALL_QUERY_PARAMS, openCallProp);
 
   const { name, description, instrument_types } = openCall;
 

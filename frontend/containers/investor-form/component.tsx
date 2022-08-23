@@ -178,6 +178,7 @@ const InvestorForm: FC<InvestorFormProps> = ({
           <Impacts
             register={register}
             setError={setError}
+            getValues={getValues}
             setValue={setValue}
             errors={errors}
             impacts={enums?.impact}

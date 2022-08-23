@@ -52,7 +52,7 @@ export type OpenCallCreationPayload = Omit<OpenCallForm, 'closing_at'> & {
 };
 
 export type OpenCallUpdatePayload = Partial<OpenCallCreationPayload> & {
-  id: string;
+  id?: string;
 };
 
 export type OpenCallParams = {

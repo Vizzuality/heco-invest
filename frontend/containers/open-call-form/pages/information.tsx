@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -20,16 +20,32 @@ import { OpenCallInformationProps } from '../types';
 const Uploader = dynamic(() => import('containers/forms/uploader'), { ssr: false });
 
 export const OpenCallInformation: FC<OpenCallInformationProps> = ({
+  openCall,
   register,
   errors,
   setError,
   control,
+  getValues,
   clearErrors,
   setValue,
   resetField,
 }) => {
   const { formatMessage } = useIntl();
-  const [picture, setPicture] = useState<ProjectImageGallery>();
+
+  const getInitialPictureValue = useCallback(
+    () =>
+      openCall?.picture?.original
+        ? {
+            src: openCall.picture.original,
+            title: formatMessage({ defaultMessage: 'Open call cover image', id: 'eCiudu' }),
+            id: openCall.picture?.original?.split('redirect/')[1].split('/')[0] ?? undefined,
+            cover: true,
+          }
+        : undefined,
+    [formatMessage, openCall]
+  );
+
+  const [picture, setPicture] = useState<ProjectImageGallery>(getInitialPictureValue());
 
   const handleUploadImages = (uploadedImages: ProjectImageGallery[]) => {
     if (uploadedImages?.length) {
@@ -39,12 +55,20 @@ export const OpenCallInformation: FC<OpenCallInformationProps> = ({
   };
 
   const handleDeleteImage = () => {
-    resetField('picture');
+    setValue('picture', null);
     setPicture(undefined);
   };
 
+  // When this component is mounted, `openCall` may not have a value yet so this is why this hook
+  // is needed
+  useEffect(() => {
+    if (openCall) {
+      setPicture(getInitialPictureValue());
+    }
+  }, [openCall, setPicture, getInitialPictureValue]);
+
   return (
-    <div className="max-w-[814px] m-auto">
+    <>
       <div className="mb-10">
         <h1 className="mb-2 font-serif text-3xl font-semibold">
           <FormattedMessage defaultMessage="Information about the open call" id="1pQoFr" />
@@ -92,9 +116,8 @@ export const OpenCallInformation: FC<OpenCallInformationProps> = ({
               control={control}
               image={picture}
               onDeleteImage={handleDeleteImage}
-              onSelectCover={console.log}
               name="picture"
-              className="min-h-[190px]"
+              className="h-48"
             />
           ) : (
             <Uploader
@@ -148,6 +171,6 @@ export const OpenCallInformation: FC<OpenCallInformationProps> = ({
           <ErrorMessage id="description-error" errorText={errors.description?.message} />
         </div>
       </form>
-    </div>
+    </>
   );
 };
