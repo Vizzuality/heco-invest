@@ -347,6 +347,12 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
           }.to change(OpenCall, :count).by(-1)
         end
 
+        it "sends email that open call was destroyed to investor owner" do |example|
+          expect {
+            submit_request example.metadata
+          }.to have_enqueued_mail(InvestorMailer, :open_call_destroyed).with(open_call.investor, open_call.name)
+        end
+
         context "when slug is used" do
           let(:id) { open_call.slug }
 

@@ -323,6 +323,12 @@ zu:
     project_destroyed:
       subject: Project has been removed.
       content: Project %{project_name} which you have been collaborator of have been removed.
+  investor_mailer:
+    greetings: Dear %{full_name},
+    farewell_html: Best Regards,<br />Your HeCo Team
+    open_call_destroyed:
+      subject: Open Call has been removed.
+      content: Open Call with name %{open_call_name} have been removed.
   enums:
     review_status:
       approved:

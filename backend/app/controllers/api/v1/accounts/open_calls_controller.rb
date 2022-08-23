@@ -40,6 +40,7 @@ module API
 
         def destroy
           @open_call.destroy!
+          InvestorMailer.open_call_destroyed(@open_call.investor, @open_call.name).deliver_later
           head :ok
         end
 
