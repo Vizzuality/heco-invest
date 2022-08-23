@@ -13,7 +13,7 @@ export const FieldInfo = ({ infoText }: FieldInfoProps) => {
       arrow
       arrowClassName="bg-black"
       content={
-        <div className="max-w-xs sm:max-w-md p-2 font-sans text-sm font-normal text-white bg-black rounded-sm">
+        <div className="max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
           {infoText}
         </div>
       }

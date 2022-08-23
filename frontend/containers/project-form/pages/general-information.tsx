@@ -214,11 +214,22 @@ const GeneralInformation = ({
               <FormattedMessage defaultMessage="Draw or upload your location" id="MHwpc4" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
-                defaultMessage:
-                  'Draw on the map or upload a file with the geographical area your project will have an impact on.',
-                id: 'YEYmEz',
-              })}
+              infoText={
+                <>
+                  <p>
+                    <FormattedMessage
+                      defaultMessage="Draw on the map or upload a file with the geographical area your project will have an impact on."
+                      id="YEYmEz"
+                    />
+                  </p>
+                  <p className="mt-2">
+                    <FormattedMessage
+                      defaultMessage="To upload a Shapefile, you must upload the .shp, .shx, .dbf and .prj files all at once."
+                      id="OxfymA"
+                    />
+                  </p>
+                </>
+              }
             />
           </Label>
           <GeometryInput
