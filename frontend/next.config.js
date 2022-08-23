@@ -70,6 +70,10 @@ module.exports = {
         destination: '/project/:id?preview=true',
       },
       {
+        source: '/open-call/:id/preview',
+        destination: '/open-call/:id?preview=true',
+      },
+      {
         source: '/faq/:sectionId',
         destination: '/faq',
       },

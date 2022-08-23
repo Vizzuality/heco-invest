@@ -19,6 +19,7 @@ import {
 import API from 'services/api';
 import { ErrorResponse, ResponseData } from 'services/types';
 
+/** Get an Open call using an id and, optionally, the wanted fields */
 export const getOpenCall = async (
   id: string,
   params?: {
