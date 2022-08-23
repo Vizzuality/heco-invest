@@ -1,0 +1,40 @@
+<div class="flex">
+  <%= render partial: "filters", locals: {q: @q} %>
+  <%= render partial: "backoffice/base/total_records" %>
+</div>
+
+<table class="backoffice-table">
+  <thead>
+  <tr>
+    <th>
+      <%= sort_link @q, :name, t("backoffice.open_calls.index.name") %>
+    </th>
+    <th>
+      <%= sort_link @q, :investor_account_name, t("backoffice.common.investor") %>
+    </th>
+    <th>
+      <%= sort_link @q, :municipality_name, [:municipality_name, :department_name, :country_name], t("backoffice.open_calls.index.location") %>
+    </th>
+    <th>
+      <%= sort_link @q, :open_call_applications_count, t("backoffice.open_calls.index.applications") %>
+    </th>
+    <th>
+      <%= sort_link @q, :trusted, t("backoffice.common.status") %>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @open_calls.each do |p| %>
+    <tr>
+      <td><%= p.name %></td>
+      <td><%= p.investor.name %></td>
+      <td><%= [p.municipality&.name, p.department&.name, p.country&.name].compact.join(", ") %></td>
+      <td><%= p.open_call_applications_count %></td>
+      <td>
+        <%= status_tag :verified, t('backoffice.common.verified') if p.trusted?  %>
+        <%= status_tag :unverified, t('backoffice.common.unverified') unless p.trusted?  %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

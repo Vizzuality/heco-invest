@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_19_092444) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_22_104832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -210,6 +210,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_092444) do
     t.index ["parent_id"], name: "index_locations_on_parent_id"
   end
 
+  create_table "open_call_applications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "open_call_id", null: false
+    t.uuid "project_developer_id", null: false
+    t.uuid "project_id", null: false
+    t.text "message_en"
+    t.text "message_es"
+    t.text "message_pt"
+    t.string "language", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["open_call_id"], name: "index_open_call_applications_on_open_call_id"
+    t.index ["project_developer_id"], name: "index_open_call_applications_on_project_developer_id"
+    t.index ["project_id"], name: "index_open_call_applications_on_project_id"
+  end
+
   create_table "open_calls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "investor_id", null: false
     t.text "name_en"
@@ -240,6 +255,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_092444) do
     t.text "funding_exclusions_pt"
     t.string "instrument_types", null: false, array: true
     t.integer "status", default: 1, null: false
+    t.integer "open_call_applications_count", default: 0, null: false
     t.index ["country_id"], name: "index_open_calls_on_country_id"
     t.index ["department_id"], name: "index_open_calls_on_department_id"
     t.index ["investor_id", "name_en"], name: "index_open_calls_on_investor_id_and_name_en", unique: true
@@ -437,6 +453,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_092444) do
   add_foreign_key "investors", "accounts", on_delete: :cascade
   add_foreign_key "location_geometries", "locations", on_delete: :cascade
   add_foreign_key "locations", "locations", column: "parent_id", on_delete: :cascade
+  add_foreign_key "open_call_applications", "open_calls", on_delete: :cascade
+  add_foreign_key "open_call_applications", "project_developers", on_delete: :cascade
+  add_foreign_key "open_call_applications", "projects", on_delete: :cascade
   add_foreign_key "open_calls", "investors", on_delete: :cascade
   add_foreign_key "open_calls", "locations", column: "country_id"
   add_foreign_key "open_calls", "locations", column: "department_id"
