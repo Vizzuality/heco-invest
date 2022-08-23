@@ -5,7 +5,7 @@ module API
         include API::Pagination
 
         before_action :fetch_project, only: [:update, :destroy]
-        around_action(only: %i[create update]) { |_, action| set_locale(current_user&.account&.language, &action) }
+        around_action(only: %i[create update]) { |_, action| set_locale(language: current_user&.account&.language, &action) }
         load_and_authorize_resource
 
         def index

@@ -91,7 +91,8 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           contact_email: "contact@example.com",
           categories: ["sustainable-agrosystems", "tourism-and-recreation"],
           impacts: ["biodiversity", "climate"],
-          priority_landscape_ids: [priority_landscape.id]
+          priority_landscape_ids: [priority_landscape.id],
+          locale: :en
         }
       end
 
@@ -182,7 +183,8 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           mission: "Mission",
           categories: ["sustainable-agrosystems", "tourism-and-recreation"],
           impacts: ["biodiversity", "climate"],
-          priority_landscape_ids: [priority_landscape.id]
+          priority_landscape_ids: [priority_landscape.id],
+          locale: :en
         }
       end
 

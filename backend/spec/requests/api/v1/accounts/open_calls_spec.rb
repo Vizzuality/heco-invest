@@ -160,7 +160,8 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
           funding_exclusions: "Open Call Funding Exclusions",
           closing_at: 1.day.from_now,
           sdgs: [1, 2],
-          instrument_types: %w[loan grant]
+          instrument_types: %w[loan grant],
+          locale: :en
         }
       end
 
@@ -257,7 +258,8 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
           funding_exclusions: "Updated Open Call Funding Exclusions",
           closing_at: 10.days.from_now,
           sdgs: [1, 8],
-          instrument_types: %w[grant]
+          instrument_types: %w[grant],
+          locale: :en
         }
       end
 

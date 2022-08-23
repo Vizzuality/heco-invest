@@ -170,7 +170,8 @@ RSpec.describe "API V1 Account Projects", type: :request do
             {file: blob.signed_id, cover: true},
             {file: blob.signed_id, cover: false}
           ],
-          includes: "project_images"
+          includes: "project_images",
+          locale: :en
         }
       end
 
@@ -287,7 +288,8 @@ RSpec.describe "API V1 Account Projects", type: :request do
           target_groups: %w[urban-populations indigenous-peoples],
           impact_areas: %w[restoration pollutants-reduction],
           sdgs: [2, 4, 5],
-          instrument_types: %w[grant]
+          instrument_types: %w[grant],
+          locale: :en
         }
       end
 
