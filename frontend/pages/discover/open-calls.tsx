@@ -11,6 +11,8 @@ import { usePagination } from 'hooks/usePagination';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import OpenCallCard from 'containers/open-call-card';
+
 import Loading from 'components/loading';
 import Pagination from 'components/pagination';
 import DiscoverPageLayout, { DiscoverPageLayoutProps } from 'layouts/discover-page';
@@ -61,7 +63,7 @@ const OpenCallsPage: PageComponent<OpenCallsPageProps, DiscoverPageLayoutProps> 
           )}
           <div className="grid grid-cols-1 gap-6 p-1 md:grid-cols-2">
             {openCalls.map((openCall) => (
-              <div key={openCall.id}>{openCall.name}</div>
+              <OpenCallCard key={openCall.id} openCall={openCall} />
             ))}
             {!loading && !hasOpenCalls && (
               <FormattedMessage defaultMessage="No open calls" id="O3WloJ" />
