@@ -1,14 +1,8 @@
-import { MutableRefObject } from 'react';
-
-import { Investor } from 'types/investor';
+import { OpenCall } from 'types/open-calls';
 
 export type OpenCallInvestorProps = {
-  /** The open call investor */
-  investor: Investor;
-  /** Function to favorite/unfavorite open call */
-  handleFavorite: () => void;
+  /** The open call object we are displaying the banner for */
+  openCall: OpenCall;
   /** Function to apply to a open call */
   handleApply: () => void;
-  // /** Whether the open call is favourite */
-  // favourite: boolean;
 };

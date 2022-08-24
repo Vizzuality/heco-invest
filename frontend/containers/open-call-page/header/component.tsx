@@ -9,6 +9,8 @@ import { useRouter } from 'next/router';
 
 import dayjs from 'dayjs';
 
+import useMe from 'hooks/me';
+
 import { translatedLanguageNameForLocale } from 'helpers/intl';
 
 import Breadcrumbs from 'containers/breadcrumbs';
@@ -20,6 +22,8 @@ import LayoutContainer from 'components/layout-container';
 import { Languages, OpenCallStatus } from 'enums';
 import languages from 'locales.config.json';
 
+import { useFavoriteOpenCall } from 'services/open-call/open-call-service';
+
 import OpenCallChart from '../chart';
 
 import { OpenCallHeaderProps } from '.';
@@ -27,12 +31,15 @@ import { OpenCallHeaderProps } from '.';
 export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
   openCall,
   instrumentTypes,
-  handleFavorite,
   handleApply,
 }) => {
   const intl = useIntl();
   const { locale } = useRouter();
+  const favoriteOpenCall = useFavoriteOpenCall();
+  const { user } = useMe();
+
   const {
+    id,
     name,
     instrument_types,
     maximum_funding_per_project,
@@ -43,6 +50,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
     status,
     favourite,
   } = openCall;
+
   const coverImage = picture?.medium;
   const originalLanguage =
     language || (languages.locales.find((locale) => locale.default)?.locale as Languages);
@@ -59,6 +67,11 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
     const consumed = duration - remaining;
     return { consumed, remaining, deadline };
   }, [closing_at, created_at]);
+
+  const handleFavoriteClick = () => {
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    favoriteOpenCall.mutate({ id, isFavourite: favourite });
+  };
 
   return (
     <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
@@ -167,8 +180,8 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
               <Button
                 className="justify-center"
                 theme="secondary-green"
-                onClick={handleFavorite}
-                disabled
+                onClick={handleFavoriteClick}
+                disabled={!user}
                 aria-pressed={favourite}
               >
                 <Icon icon={Heart} className={cx('w-4 mr-3', { 'fill-green-dark': favourite })} />

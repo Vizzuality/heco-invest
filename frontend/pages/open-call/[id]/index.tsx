@@ -1,5 +1,3 @@
-import { useRef } from 'react';
-
 import { withLocalizedRequests } from 'hoc/locale';
 
 import { groupBy } from 'lodash-es';
@@ -69,9 +67,6 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
   );
 
   // To implement
-  const handleFavorite = () => {};
-
-  // To implement
   const handleApply = () => {};
 
   return (
@@ -80,7 +75,6 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
       <OpenCallHeader
         openCall={openCall}
         instrumentTypes={instrumentTypeNames}
-        handleFavorite={handleFavorite}
         handleApply={handleApply}
       />
       <OpenCallOverview openCall={openCall} />
@@ -89,11 +83,7 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
         openCall={openCall}
         allSdgs={allSdgs}
       />
-      <OpenCallInvestorAndFooter
-        investor={openCall?.investor}
-        handleFavorite={handleFavorite}
-        handleApply={handleApply}
-      />
+      <OpenCallInvestorAndFooter openCall={openCall} handleApply={handleApply} />
     </div>
   );
 };

@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 
 import { useMutation, UseMutationResult, useQueryClient, UseQueryResult } from 'react-query';
 
+import { useRouter } from 'next/router';
+
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import { useLocalizedQuery } from 'hooks/query';
@@ -167,5 +169,41 @@ export const useAccountOpenCallList = (
       openCalls: data || [],
     }),
     [data, rest]
+  );
+};
+
+/**
+ * Hook with mutation that handles the favorite state.
+ * If favorite is false, it creates a POST request to set favorite to true, and
+ * if favorite is true, creates a DELETE request that set favorite to false.
+ **/
+export const useFavoriteOpenCall = () => {
+  const { locale } = useRouter();
+  const queryClient = useQueryClient();
+
+  const favoriteOrUnfavoriteOpenCall = (
+    openCallId: string,
+    isFavourite: boolean
+  ): Promise<OpenCall> => {
+    const config: AxiosRequestConfig = {
+      method: isFavourite ? 'DELETE' : 'POST',
+      url: `/api/v1/open-calls/${openCallId}/favourite_open_call`,
+      data: { open_call_id: openCallId },
+    };
+
+    return API.request(config).then((response) => response.data.data);
+  };
+
+  return useMutation(
+    ({ id, isFavourite }: { id: string; isFavourite: boolean }) =>
+      favoriteOrUnfavoriteOpenCall(id, isFavourite),
+    {
+      onSuccess: (data) => {
+        queryClient.invalidateQueries(Queries.OpenCall);
+        queryClient.invalidateQueries(Queries.OpenCallList);
+        queryClient.invalidateQueries(Queries.FavoriteOpenCallsList);
+        queryClient.setQueryData([Queries.OpenCall, data.id], data);
+      },
+    }
   );
 };
