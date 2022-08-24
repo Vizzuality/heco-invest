@@ -84,8 +84,8 @@ export const ProfileCard: FC<ProfileCardProps> = ({
       {...focusWithinProps}
     >
       <div className="relative flex flex-col h-full p-5 bg-white border shadow rounded-2xl gap-y-2 sm:gap-x-4">
-        <div className="flex gap-4">
-          <div className="relative overflow-hidden rounded-full w-18 aspect-square">
+        <div className="flex items-start gap-4">
+          <div className="relative flex-shrink-0 overflow-hidden rounded-full w-18 aspect-square">
             <Image
               className="w-18 h-18"
               src={picture}

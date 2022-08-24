@@ -17,6 +17,9 @@
   "+K9fF0": {
     "string": "Project Developers"
   },
+  "+USuwC": {
+    "string": "Funding available per project"
+  },
   "+mzZak": {
     "string": "About {name}"
   },
@@ -131,6 +134,9 @@
   "0iaD3T": {
     "string": "Total <span>{numProjects}</span> {numProjects, plural, one {project} other {projects}}"
   },
+  "0lKwqs": {
+    "string": "Close open call?"
+  },
   "0v43t3": {
     "string": "Note that all of this information will be visible in the Investor public profile page except questions."
   },
@@ -142,6 +148,9 @@
   },
   "0z5mo1": {
     "string": "insert new password"
+  },
+  "0zLVGQ": {
+    "string": "Instrument types"
   },
   "11hyS6": {
     "string": "Add your legal registration number so we can verify your legal entity . This information will not be publicaly available."
@@ -163,6 +172,9 @@
   },
   "1iEPTM": {
     "string": "General"
+  },
+  "1pQoFr": {
+    "string": "Information about the open call"
   },
   "1t1fGY": {
     "string": "How will the money be used?"
@@ -338,6 +350,9 @@
   "5mkG4O": {
     "string": "This description should succently explain your project. It should be a catching text since it's the first thing investors will read."
   },
+  "5oTICT": {
+    "string": "insert the open call name"
+  },
   "5sg7KC": {
     "string": "Password"
   },
@@ -352,6 +367,9 @@
   },
   "6EYInP": {
     "string": "My open call applications"
+  },
+  "6FQ0Y8": {
+    "string": "Leave open call creation form"
   },
   "6GktxW": {
     "string": "Someone has shared a HeCo invest contact with you"
@@ -389,6 +407,9 @@
   "7JlauX": {
     "string": "Explore"
   },
+  "7NGqWp": {
+    "string": "Your open call is awaiting verification. This means that the open call is visible in the platform but without the <b>Verification badge</b>."
+  },
   "7Rh11y": {
     "string": "Setup investor profile"
   },
@@ -410,6 +431,12 @@
   "7rePKd": {
     "string": "HeCo Invest takes you step-by-step through the presentation of your proposal and then intelligently connects you with the community and potential sources of support and funding."
   },
+  "7sVapx": {
+    "string": "View open call page"
+  },
+  "7xC2j0": {
+    "string": "Create Open Call"
+  },
   "7xE2Vv": {
     "string": "Illustration of a person looking at a tree"
   },
@@ -428,6 +455,9 @@
   "8HimVK": {
     "string": "Confirm password"
   },
+  "8KmEyC": {
+    "string": "Would you like to apply for this fund?"
+  },
   "8MAKwj": {
     "string": "Sustainability of the project"
   },
@@ -440,11 +470,17 @@
   "8SayhS": {
     "string": "{placeholder}"
   },
+  "8UvQTx": {
+    "string": "By launching your open call, it will be publicly visible and projects will be able to apply to it."
+  },
   "8WtyrD": {
     "string": "Spanish"
   },
   "8XJceA": {
     "string": "Have you previously invested in impact?"
+  },
+  "8dGhWP": {
+    "string": "Browse or drag and drop"
   },
   "8gJV79": {
     "string": "What are HeCo priority landscapes?"
@@ -455,11 +491,17 @@
   "8j91Nj": {
     "string": "In the {area} the project has higher impact on <b>{impact}</b> and has an <b>impact score</b> of {score}."
   },
+  "8mCCtS": {
+    "string": "Ending soon"
+  },
   "8rAlFa": {
     "string": "Not listed"
   },
   "8rIwwr": {
     "string": "Expected Impact"
+  },
+  "8rdnTq": {
+    "string": "Picture (optional)"
   },
   "8xsdU1": {
     "string": "This project isn’t currently looking for funding at this moment."
@@ -518,6 +560,9 @@
   "A/or0n": {
     "string": "High-Net-Worth Individual (HNWI) or celebrity"
   },
+  "A2bq3p": {
+    "string": "Starting today, this open call will be available for <total></total> days."
+  },
   "A4UTjl": {
     "string": "Portuguese"
   },
@@ -541,6 +586,9 @@
   },
   "APjPYs": {
     "string": "I want to write my content in"
+  },
+  "Ac9oiY": {
+    "string": "This information will be displayed in the open call page."
   },
   "AdAi3x": {
     "string": "Emails"
@@ -566,6 +614,9 @@
   "BTFkyB": {
     "string": "HeCo Priority landscapes"
   },
+  "BV91+1": {
+    "string": "Inter-American Natural Capital Lab"
+  },
   "BY6k/1": {
     "string": "Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average."
   },
@@ -577,6 +628,9 @@
   },
   "BcZVZW": {
     "string": "This description should sumarize your project in a few words."
+  },
+  "BeVl3b": {
+    "string": "How long will the open call be available?"
   },
   "BkLlj6": {
     "string": "What’s the impact of your project and what do you want to achieve"
@@ -644,6 +698,9 @@
   "DIrN6T": {
     "string": "Project developer features"
   },
+  "DQDJ8q": {
+    "string": "By publishing your project it will be publicly visible."
+  },
   "DQoGRx": {
     "string": "About the impact"
   },
@@ -668,6 +725,9 @@
   "DrtKvj": {
     "string": "Impact of projects on biodiversity conservation, calculated from indicators of endemism, land conservation/restoration, connectivity, and development of sustainable social projects."
   },
+  "DsukuX": {
+    "string": "Delete open call?"
+  },
   "E/YxHp": {
     "string": "When will the project have the Verification badge?"
   },
@@ -682,6 +742,9 @@
   },
   "E80WrK": {
     "string": "Information"
+  },
+  "EFVd2S": {
+    "string": "Financial instruments available"
   },
   "EGMX38": {
     "string": "Please insert your new password."
@@ -700,6 +763,9 @@
   },
   "Ec0M9T": {
     "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
+  },
+  "EgOO+m": {
+    "string": "Launch open call?"
   },
   "Ejc7dP": {
     "string": "tons of carbon are stored in the Amazon."
@@ -764,6 +830,9 @@
   "Fg5HOn": {
     "string": "Every new account created will need to be approved by the HeCo Invest staff - platform administrator. This approval process allows for the verification of each organization, institution or business that applies to the HeCo Invest platform, guaranteeing that only trustworthy organizations will present their projects or investment opportunities. Therefore, your account will only be visible on the HeCo Invest platform after the platform administrator completes this approval step."
   },
+  "Fv1ZSz": {
+    "string": "Closed"
+  },
   "Fxekek": {
     "string": "Invite again"
   },
@@ -778,6 +847,9 @@
   },
   "G9iCfx": {
     "string": "Reach them in"
+  },
+  "GDPNty": {
+    "string": "insert value"
   },
   "GKONs7": {
     "string": "Start having impact now."
@@ -824,6 +896,9 @@
   "Hb+Idf": {
     "string": "Project description"
   },
+  "HcakU9": {
+    "string": "What is the open call about?"
+  },
   "HlDhAh": {
     "string": "10%"
   },
@@ -869,6 +944,9 @@
   },
   "IkUX0b": {
     "string": "How the money will be used"
+  },
+  "Iu60EH": {
+    "string": "Are you sure you want to continue?"
   },
   "J4SQjQ": {
     "string": "select"
@@ -921,6 +999,9 @@
   "JcS7oJ": {
     "string": "By priority landscapes"
   },
+  "Jfw90a": {
+    "string": "Publish draft"
+  },
   "JkLHGw": {
     "string": "Website"
   },
@@ -948,11 +1029,17 @@
   "KYymTZ": {
     "string": "{quantity, plural, one {project} other {projects}}"
   },
+  "KcJ5IK": {
+    "string": "Select the deadline for this open call."
+  },
   "KkT/Fh": {
     "string": "Update password"
   },
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
+  },
+  "Knhvmr": {
+    "string": "Who is financing this open call"
   },
   "Kt3qxl": {
     "string": "Renewable energy"
@@ -984,6 +1071,12 @@
   "LFDgTb": {
     "string": "Leave project developer edition?"
   },
+  "LFNAet": {
+    "string": "Select the SDG’s you expect to have impact (optional)"
+  },
+  "LI0oKR": {
+    "string": "Are you sure you want to delete “<strong>{name}</strong>”?"
+  },
   "LMjhPg": {
     "string": "Large enterprise"
   },
@@ -1007,6 +1100,9 @@
   },
   "M1xKEI": {
     "string": "Language: {language}"
+  },
+  "M4pZPN": {
+    "string": "Go to open call page"
   },
   "M7261y": {
     "string": "This information will help us understand what you are interested in invest or funding."
@@ -1059,6 +1155,9 @@
   "MxllAO": {
     "string": "What is an open call?"
   },
+  "N5k7R7": {
+    "string": "Tell us what’s the impact that you expect with this open call."
+  },
   "N9+9Fi": {
     "string": "select the project developer type"
   },
@@ -1067,6 +1166,9 @@
   },
   "NIynnB": {
     "string": "Current password"
+  },
+  "NJOWFQ": {
+    "string": "Currently you don’t have any <b>Open Call</b>."
   },
   "NLk0cp": {
     "string": "US$150,000 – 750,000 (Market validation)"
@@ -1091,6 +1193,9 @@
   },
   "NsIwKY": {
     "string": "Leave create project develop?"
+  },
+  "Ntjkqd": {
+    "string": "or"
   },
   "NvzZkI": {
     "string": "Create partnerships"
@@ -1133,6 +1238,9 @@
   },
   "Ow9MS8": {
     "string": "I want to find the right investment for my projects"
+  },
+  "OxfymA": {
+    "string": "To upload a Shapefile, you must upload the .shp, .shx, .dbf and .prj files all at once."
   },
   "Oy4O4U": {
     "string": "National"
@@ -1278,6 +1386,9 @@
   "SQJto2": {
     "string": "Sign in"
   },
+  "SUQqz6": {
+    "string": "<span>Note:</span>The content of this open call should be written in {language}"
+  },
   "SXKvVa": {
     "string": "From which investor or funder?"
   },
@@ -1395,6 +1506,9 @@
   "VR21hO": {
     "string": "The climate crisis is where short-term thinking and long-term consequences collide. How to think long-term in a short-term world?"
   },
+  "VR4TEV": {
+    "string": "Apply now"
+  },
   "VUN1K7": {
     "string": "Create project"
   },
@@ -1431,9 +1545,6 @@
   "W2JBdp": {
     "string": "Impact"
   },
-  "W4Jolw": {
-    "string": "IDB Lab is the innovation laboratory of the Inter-American Development Bank Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
-  },
   "W5x0GV": {
     "string": "Water impact"
   },
@@ -1445,6 +1556,9 @@
   },
   "WJGIA3": {
     "string": "Helps to ensure connectivity between the Andean, Orinocean and Amazonian ecosystems, allowing the conservation of flora, fauna, scenic beauties, geomorphological complexes, historical or cultural manifestations, the conservation and regulation of water systems."
+  },
+  "WJcNiD": {
+    "string": "The Inter-American Development Bank (IDB) is the main source of multilateral financing and expertise for sustainable economic, social and institutional development in Latin America and the Caribbean. The IDB Natural Capital Lab works to drive innovation in natural capital finance by looking at nature as an asset."
   },
   "WLDgff": {
     "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
@@ -1611,6 +1725,9 @@
   "aDn1WM": {
     "string": "Curated database"
   },
+  "aF/DIA": {
+    "string": "Leave project edition form"
+  },
   "aFyFm0": {
     "string": "Accepted"
   },
@@ -1632,6 +1749,9 @@
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
   },
+  "agJGNx": {
+    "string": "How much funding do you have available for this open call? ($)"
+  },
   "avVMND": {
     "string": "This information will be visible in the project page when you launch it."
   },
@@ -1646,6 +1766,9 @@
   },
   "bWygLM": {
     "string": "insert the amount of money"
+  },
+  "bXy++M": {
+    "string": "How much money do you intend to give to this open call."
   },
   "bh4rlK": {
     "string": "Government"
@@ -1662,11 +1785,17 @@
   "c1m3Q7": {
     "string": "The project gallery will be the first thing other users will see on you page, it will help you to showcase you project."
   },
+  "c4HVkO": {
+    "string": "Launch open call"
+  },
   "c6KUQu": {
     "string": "Your account was successfully created, but you still need to be approved by our platform administrators."
   },
   "c8BbZZ": {
     "string": "Trade or business association"
+  },
+  "cDSTwv": {
+    "string": "Total <span>{numOpenCalls}</span> {numOpenCalls, plural, one {openCall} other {openCalls}}"
   },
   "cE4Hfw": {
     "string": "Discover"
@@ -1704,6 +1833,9 @@
   "cyRU1N": {
     "string": "Forgot your password?"
   },
+  "d1OgED": {
+    "string": "(optional)"
+  },
   "d3TPmn": {
     "string": "SDG's"
   },
@@ -1740,8 +1872,14 @@
   "e61Jf3": {
     "string": "Coming soon"
   },
+  "eCiudu": {
+    "string": "Open call cover image"
+  },
   "eE6uKi": {
     "string": "This data set, a collaboration between the Global Land Analysis & Discovery (GLAD) lab at the University of Maryland, Google, USGS, and NASA, measures areas of tree cover loss across all global land (except Antarctica and other Arctic islands) at approximately 30 × 30 meter resolution. The data were generated using multispectral satellite imagery from the Landsat 5 thematic mapper (TM), the Landsat 7 thematic mapper plus (ETM+), and the Landsat 8 Operational Land Imager (OLI) sensors. Over 1 million satellite images were processed and analyzed, including over 600,000 Landsat 7 images for the 2000-2012 interval, and more than 400,000 Landsat 5, 7, and 8 images for updates for the 2011-2021 interval. The clear land surface observations in the satellite images were assembled and a supervised learning algorithm was applied to identify per pixel tree cover loss."
+  },
+  "eFJIPT": {
+    "string": "{numInstrumentTypes, plural, one {Instrument type} other {Instrument types}}"
   },
   "eItis6": {
     "string": "Discover investors by budget/ticket size"
@@ -1778,6 +1916,9 @@
   },
   "eu+7Vl": {
     "string": "Do you have a project or a start-up business in the Colombian Amazon?"
+  },
+  "ewx2b7": {
+    "string": "Launch"
   },
   "f9DtLB": {
     "string": "max 36 months"
@@ -1923,6 +2064,9 @@
   "iMJ1Xr": {
     "string": "As an investor or funder, if you do not find a project aligned with your interests, you can create your own call to challenge the <n>HeCo Invest community</n> and receive customized, quality proposals that are only visible to the users of your account."
   },
+  "iR1WoG": {
+    "string": "Preview open call page"
+  },
   "iSPvEQ": {
     "string": "To create an open call you will need the following information."
   },
@@ -2022,6 +2166,9 @@
   "kEXoaQ": {
     "string": "About your work"
   },
+  "kHpaMt": {
+    "string": "Edit Open Call"
+  },
   "kN5g/0": {
     "string": "Indigenous Reserves"
   },
@@ -2039,6 +2186,9 @@
   },
   "kaAF7K": {
     "string": "An open call is a call for projects made by a given investor. Open calls give investors the possibility to open specific opportunities in their topics of interest. All registered project developers have the possibility to submit their projects to an open call, if they match the open call criteria, and therefore apply to this particular funding."
+  },
+  "kdZTM0": {
+    "string": "Close open call"
   },
   "keWpuD": {
     "string": "In this data set, “tree cover” is defined as all vegetation greater than 5 meters in height, and may take the form of natural forests or plantations across a range of canopy densities. Tree cover loss is defined as “stand replacement disturbance,” or the complete removal of tree cover canopy at the Landsat pixel scale. Tree cover loss may be the result of human activities, including forestry practices such as timber harvesting or deforestation (the conversion of natural forest to other land uses), as well as natural causes such as disease or storm damage. Fire is another widespread cause of tree cover loss, and can be either natural or human-induced."
@@ -2295,6 +2445,9 @@
   "r/AN6W": {
     "string": "select investor/funder type"
   },
+  "r2qqVX": {
+    "string": "Are you sure you want to close “<strong>{name}</strong>”?"
+  },
   "rLzWx9": {
     "string": "{name} picture"
   },
@@ -2349,6 +2502,9 @@
   "sFn7MX": {
     "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
   },
+  "sH3zMa": {
+    "string": "Launched"
+  },
   "sIhhxz": {
     "string": "Something went wrong while trying to delete the user"
   },
@@ -2357,6 +2513,9 @@
   },
   "sV+3z0": {
     "string": "Currently looking for"
+  },
+  "sVpJRp": {
+    "string": "Leave open call edition form"
   },
   "sWdxgq": {
     "string": "Impact of projects that reduce carbon emissions from the land sector (deforestation/degradation), as wood and soil biomass as well as application of sustainable forest measures."
@@ -2373,6 +2532,9 @@
   "sbodFR": {
     "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure <n>20 million hectares</n> of sustainable landscape over the next 20 years, through investments in <n>conservation and sustainable development</n>."
   },
+  "sfFhiy": {
+    "string": "Maximum value"
+  },
   "si4NjO": {
     "string": "Select the account language in which you want to write the content of this account (including profile information and future projects). This will avoid mixed content in the platform."
   },
@@ -2387,6 +2549,9 @@
   },
   "sy+pv5": {
     "string": "Email"
+  },
+  "syEQFE": {
+    "string": "Publish"
   },
   "t39CQq": {
     "string": "What’s your mission?"
@@ -2609,6 +2774,9 @@
   },
   "ygx9Jx": {
     "string": "Micro finance"
+  },
+  "yp8KtZ": {
+    "string": "Publish project?"
   },
   "yqJ5XD": {
     "string": "Select the amount of money that you need"

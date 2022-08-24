@@ -9,13 +9,13 @@ module API
           InstrumentType.all,
           InvestorType.all,
           LocationType.all,
-          Mosaic.all,
           ProjectDeveloperType.all,
           ProjectDevelopmentStage.all,
           ProjectStatus.all,
           ProjectTargetGroup.all,
           Sdg.all,
-          TicketSize.all
+          TicketSize.all,
+          OpenCallStatus.all
         ].flatten
 
         serialized_enums = data.map do |d|

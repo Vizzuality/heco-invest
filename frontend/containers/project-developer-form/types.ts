@@ -11,6 +11,7 @@ import { UseMutationResult } from 'react-query';
 import { AxiosResponse, AxiosError } from 'axios';
 
 import { Enum } from 'types/enums';
+import { Locations } from 'types/locations';
 import { ProjectDeveloper, ProjectDeveloperSetupForm, Interest } from 'types/projectDeveloper';
 
 import { ErrorResponse, ResponseData } from 'services/types';

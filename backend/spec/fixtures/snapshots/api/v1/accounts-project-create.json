@@ -38,7 +38,7 @@
       "received_funding_amount_usd": "1000000.0",
       "received_funding_investor": "Some Investor name",
       "relevant_links": "Here relevant links",
-      "language": "en",
+      "language": "es",
       "favourite": false,
       "geometry": {
         "type": "FeatureCollection",
@@ -98,7 +98,8 @@
       "priority_landscape_total_impact": null,
       "created_at": "2022-06-24T09:06:23.534Z",
       "status": "published",
-      "account_language": "en"
+      "account_language": "es",
+      "impact_calculated": false
     },
     "relationships": {
       "project_developer": {

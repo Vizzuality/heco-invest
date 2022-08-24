@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Trash2 } from 'react-feather';
-import { Controller, FieldValues, Path } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -23,11 +23,12 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
   defaultSelected = false,
   onDeleteImage,
   onSelectCover,
+  className,
   ...rest
 }: ProjectGalleryImageProps<FormValues>) => {
   const [invalid, setInvalid] = useState<boolean>(invalidProp);
   const { isFocusVisible, focusProps } = useFocusRing();
-  const { file, title, src } = image;
+  const { id, file, title, src } = image;
   const { formatMessage } = useIntl();
 
   useEffect(() => {
@@ -35,50 +36,22 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
   }, [invalidProp]);
 
   return (
-    <div className="relative rounded group">
-      <Controller
-        name={'project_images_attributes' as Path<FormValues>}
-        control={control}
-        render={(field) => (
-          <Button
-            {...field}
-            name="project_images_attributes"
-            theme="primary-white"
-            className="absolute right-0 z-10 justify-center w-6 h-6 px-0 py-0 mx-2 my-2 overflow-hidden text-red-600 transition-opacity ease-in opacity-0 group-hover:opacity-100 group-hover:text-red-600 focus-visible:opacity-100"
-            title={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
-            onClick={onDeleteImage}
-            aria-label={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
-          >
-            <Icon icon={Trash2} className="w-4" />
-          </Button>
-        )}
-      />
-      <Controller
-        name={name}
-        control={control}
-        render={(field) => (
-          <input
-            {...field}
-            name={name}
-            id={file}
-            type="radio"
-            className="sr-only peer"
-            value={file}
-            onInvalid={() => setInvalid(true)}
-            checked={defaultSelected}
-            {...focusProps}
-            {...rest}
-            onChange={onSelectCover}
-            aria-labelledby="select-cover-input"
-          />
-        )}
-      />
-      <label
-        id="select-cover-input"
-        htmlFor={file}
-        className="overflow-hidden rounded cursor-pointer"
+    <div
+      className={cx('relative rounded group', {
+        [className]: !!className,
+      })}
+    >
+      <Button
+        theme="primary-white"
+        className="absolute right-0 z-10 justify-center w-6 h-6 px-0 py-0 mx-2 my-2 overflow-hidden text-red-600 transition-opacity ease-in opacity-0 group-hover:opacity-100 group-hover:text-red-600 focus-visible:opacity-100"
+        title={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
+        onClick={onDeleteImage}
+        aria-label={formatMessage({ defaultMessage: 'Delete image', id: 'pWwsxm' })}
       >
-        <span className="sr-only">{image.title}</span>
+        <Icon icon={Trash2} className="w-4" />
+      </Button>
+
+      {!onSelectCover && (
         <Image
           aria-hidden={true}
           className="z-0 rounded"
@@ -88,7 +61,43 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
           layout="fill"
           objectFit="cover"
         />
-      </label>
+      )}
+
+      {!!onSelectCover && (
+        <>
+          <Controller
+            name={name}
+            control={control}
+            render={({ field }) => (
+              <input
+                {...field}
+                name={name}
+                id={id}
+                type="radio"
+                className="sr-only peer"
+                value={file}
+                onInvalid={() => setInvalid(true)}
+                checked={defaultSelected}
+                {...focusProps}
+                {...rest}
+                onChange={onSelectCover}
+              />
+            )}
+          />
+          <label htmlFor={id} className="overflow-hidden rounded cursor-pointer">
+            <span className="sr-only">{image.title}</span>
+            <Image
+              aria-hidden={true}
+              className="z-0 rounded"
+              src={src}
+              title={title}
+              alt={title}
+              layout="fill"
+              objectFit="cover"
+            />
+          </label>
+        </>
+      )}
 
       <span
         aria-hidden={true}

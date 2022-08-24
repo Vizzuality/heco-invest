@@ -30,5 +30,5 @@ export type ProjectGalleryImageProps<FormValues> = {
   /** handle remove an an image from images array */
   onDeleteImage: () => void;
   /** Callback to handle selecting a cover image */
-  onSelectCover: () => void;
+  onSelectCover?: () => void;
 };

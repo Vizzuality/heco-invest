@@ -2,6 +2,7 @@ class OpenCall < ApplicationRecord
   extend FriendlyId
   include Translatable
   include Searchable
+  include ExtraRansackers
 
   friendly_id :investor_prefixed_name, use: :slugged
 
@@ -12,6 +13,7 @@ class OpenCall < ApplicationRecord
   belongs_to :department, class_name: "Location", optional: true
 
   has_many :favourite_open_calls, dependent: :destroy
+  has_many :open_call_applications, dependent: :destroy
 
   has_one_attached :picture
 
@@ -20,6 +22,9 @@ class OpenCall < ApplicationRecord
     :funding_priorities,
     :funding_exclusions,
     :impact_description
+
+  enum status: OpenCallStatus::TYPES_WITH_CODE, _default: :launched
+  ransacker :status, formatter: proc { |v| statuses[v] }
 
   validates :instrument_types, array_inclusion: {in: InstrumentType::TYPES}, presence: true
   validates :sdgs, array_inclusion: {in: Sdg::TYPES}
@@ -35,6 +40,10 @@ class OpenCall < ApplicationRecord
   validate :location_types
 
   delegate :account_language, to: :investor, allow_nil: true
+
+  generate_ransackers_for_translated_columns
+  generate_localized_ransackers_for_static_types :instrument_types
+  generate_localized_ransackers_for_enums status: OpenCallStatus
 
   def investor_prefixed_name
     "#{investor&.name} #{original_name}"

@@ -38,6 +38,8 @@ module Backoffice
     end
 
     def destroy
+      return redirect_to(backoffice_users_path, status: :see_other, alert: I18n.t("errors.messages.user.is_owner")) if @user.owner_account.present?
+
       if @user.destroy
         UserMailer.destroyed(@user.email, @user.full_name, @user.locale).deliver_later
         redirect_to backoffice_users_path, status: :see_other,

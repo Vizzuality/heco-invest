@@ -23,10 +23,6 @@
       "language": "en",
       "entity_legal_registration_number": "564823570",
       "review_status": "approved",
-      "mosaics": [
-        "amazon-heart",
-        "amazonian-piedmont-massif"
-      ],
       "contact_email": "contact@example.com",
       "contact_phone": "+57-1-xxx-xx-xx",
       "picture": {
@@ -59,6 +55,18 @@
           {
             "id": "569f1fea-cf31-4fba-b3ba-70a393744792",
             "type": "project"
+          }
+        ]
+      },
+      "priority_landscapes": {
+        "data": [
+          {
+            "id": "1db7d674-20e3-46ec-b7b5-66b241e2fc31",
+            "type": "location"
+          },
+          {
+            "id": "e7c444e4-b87f-4262-93fd-431beb6e36be",
+            "type": "location"
           }
         ]
       }

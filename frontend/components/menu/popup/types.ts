@@ -8,7 +8,7 @@ import { SectionProps } from '../section';
 
 export interface PopupProps {
   /** Reference to the popup's trigger element */
-  triggerRef: React.MutableRefObject<any>;
+  triggerRef: React.MutableRefObject<HTMLElement>;
   /** Horizontal alignment of the popup relative to the trigger */
   align: Alignment;
   /** Vertical alignment of the popup relative to the trigger */

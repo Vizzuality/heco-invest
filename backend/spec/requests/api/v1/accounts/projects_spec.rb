@@ -4,7 +4,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
   let(:country) { create(:country) }
   let(:municipality) { create(:municipality) }
   let(:department) { create(:department) }
-  let(:user) { create(:user_project_developer, first_name: "User", last_name: "Example") }
+  let(:user) { create(:user, first_name: "User", last_name: "Example", account: create(:account_project_developer, language: :es)) }
   let(:project_developers) { create_list(:project_developer, 2) }
   let(:blob) { ActiveStorage::Blob.create_and_upload! io: fixture_file_upload("picture.jpg"), filename: "test" }
 
@@ -72,7 +72,9 @@ RSpec.describe "API V1 Account Projects", type: :request do
       parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
       parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
 
-      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
 
       response "200", :success do
         schema type: :object, properties: {
@@ -84,7 +86,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
         before(:each) do
           @project = create(:project, name: "This PDs Project Awesome", project_developer: user.account.project_developer)
           create(:project, name: "This PDs Project Amazing", project_developer: user.account.project_developer)
-          create(:project, name: "Other PD's project", project_developer: create(:project_developer))
+          @different_project_developer_project = create(:project, name: "Other PD's project", project_developer: create(:project_developer))
           create(:project, :draft, name: "Draft project", project_developer: user.account.project_developer)
           sign_in user
         end
@@ -93,6 +95,10 @@ RSpec.describe "API V1 Account Projects", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/account/projects")
+        end
+
+        it "does not contain records of different project developer" do
+          expect(response_json["data"].pluck("id")).not_to include(@different_project_developer_project.id)
         end
 
         context "with sparse fieldset" do
@@ -164,11 +170,14 @@ RSpec.describe "API V1 Account Projects", type: :request do
             {file: blob.signed_id, cover: true},
             {file: blob.signed_id, cover: false}
           ],
-          includes: "project_images"
+          includes: "project_images",
+          locale: :en
         }
       end
 
-      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
 
       response "200", :success do
         schema type: :object, properties: {
@@ -182,6 +191,14 @@ RSpec.describe "API V1 Account Projects", type: :request do
           submit_request example.metadata
           assert_response_matches_metadata example.metadata
           expect(response.body).to match_snapshot("api/v1/accounts-project-create")
+        end
+
+        it "saves data to account language attributes" do |example|
+          submit_request example.metadata
+          project = Project.find response_json["data"]["id"]
+          Project.translatable_attributes.each do |attr|
+            expect(project.public_send("#{attr}_#{user.account.language}")).to eq(project_params[attr])
+          end
         end
 
         it "notifies new collaborators" do |example|
@@ -204,14 +221,14 @@ RSpec.describe "API V1 Account Projects", type: :request do
         let("X-CSRF-TOKEN") { get_csrf_token }
 
         before(:each) do
-          create(:project, name: "Project name", project_developer: user.account.project_developer)
+          create(:project, name_es: "Project name", project_developer: user.account.project_developer)
           sign_in user
         end
 
         it "returns correct error", generate_swagger_example: true do |example|
           submit_request example.metadata
           assert_response_matches_metadata example.metadata
-          expect(response_json["errors"][0]["title"]).to eq("Name en (EN) has already been taken")
+          expect(response_json["errors"][0]["title"]).to eq("Name es (ES) has already been taken")
         end
 
         it "does not send email that new collaborator was added" do |example|
@@ -271,12 +288,15 @@ RSpec.describe "API V1 Account Projects", type: :request do
           target_groups: %w[urban-populations indigenous-peoples],
           impact_areas: %w[restoration pollutants-reduction],
           sdgs: [2, 4, 5],
-          instrument_types: %w[grant]
+          instrument_types: %w[grant],
+          locale: :en
         }
       end
 
-      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+      it_behaves_like "with not authorized error", csrf: true
       it_behaves_like "with not found error", csrf: true, user: -> { create(:user_project_developer) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
       it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
 
       response "200", :success do
@@ -294,6 +314,14 @@ RSpec.describe "API V1 Account Projects", type: :request do
           submit_request example.metadata
           assert_response_matches_metadata example.metadata
           expect(response.body).to match_snapshot("api/v1/accounts-project-update")
+        end
+
+        it "saves data to account language attributes" do |example|
+          submit_request example.metadata
+          project.reload
+          Project.translatable_attributes.each do |attr|
+            expect(project.public_send("#{attr}_#{user.account.language}")).to eq(project_params[attr])
+          end
         end
 
         it "send email that new collaborator was added" do |example|
@@ -395,8 +423,10 @@ RSpec.describe "API V1 Account Projects", type: :request do
       end
       let(:id) { project.id }
 
-      it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
+      it_behaves_like "with not authorized error", csrf: true
       it_behaves_like "with not found error", csrf: true, user: -> { user }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
       it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
 
       response "200", :success do

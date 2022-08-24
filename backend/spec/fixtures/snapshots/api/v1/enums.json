@@ -326,10 +326,10 @@
       }
     },
     {
-      "id": "region",
+      "id": "priority_landscape",
       "type": "location_type",
       "attributes": {
-        "name": "Region"
+        "name": "Priority Landscape"
       }
     },
     {
@@ -344,34 +344,6 @@
       "type": "location_type",
       "attributes": {
         "name": "Basin"
-      }
-    },
-    {
-      "id": "amazon-heart",
-      "type": "mosaic",
-      "attributes": {
-        "name": "Amazon Heart"
-      }
-    },
-    {
-      "id": "amazonian-piedmont-massif",
-      "type": "mosaic",
-      "attributes": {
-        "name": "Amazonian Piedmont Massif"
-      }
-    },
-    {
-      "id": "orinoquia-transition",
-      "type": "mosaic",
-      "attributes": {
-        "name": "Orinoquía Transition"
-      }
-    },
-    {
-      "id": "orinoquia",
-      "type": "mosaic",
-      "attributes": {
-        "name": "Orinoquía"
       }
     },
     {
@@ -708,6 +680,27 @@
       "attributes": {
         "name": "Scaling",
         "description": ">US$750,000"
+      }
+    },
+    {
+      "id": "draft",
+      "type": "open_call_status",
+      "attributes": {
+        "name": "Draft"
+      }
+    },
+    {
+      "id": "launched",
+      "type": "open_call_status",
+      "attributes": {
+        "name": "Launched"
+      }
+    },
+    {
+      "id": "closed",
+      "type": "open_call_status",
+      "attributes": {
+        "name": "Closed"
       }
     }
   ]

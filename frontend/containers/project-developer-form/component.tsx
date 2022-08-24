@@ -18,10 +18,12 @@ import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
 
 import Head from 'components/head';
+import { LocationsTypes } from 'enums';
 import { ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 import useProjectDeveloperValidation, { formPageInputs } from 'validations/project-developer';
 
 import { useEnums } from 'services/enums/enumService';
+import { useGroupedLocations, usePriorityLandscapes } from 'services/locations/locations';
 
 import About from './pages/about';
 import Profile from './pages/profile';
@@ -43,13 +45,15 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
   const languageNames = useLanguageNames();
 
   const enums = useEnums();
+
+  const { priorityLandscapes } = usePriorityLandscapes();
+
   const {
     category: categoryEnums,
     impact: impactEnums,
     project_developer_type: projectDeveloperTypeEnums,
-    mosaic: mosaicEnums,
   } = enums?.data;
-  const interests = useInterests({ categoryEnums, impactEnums, mosaicEnums });
+  const interests = useInterests({ categoryEnums, impactEnums, priorityLandscapes });
   const {
     register,
     handleSubmit,
@@ -61,7 +65,7 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
     clearErrors,
   } = useForm<ProjectDeveloperSetupForm>({
     resolver,
-    defaultValues: { categories: [], impacts: [], mosaics: [] },
+    defaultValues: { categories: [], impacts: [], priority_landscape_ids: [] },
     shouldUseNativeValidation: true,
     shouldFocusError: true,
     reValidateMode: 'onChange',
@@ -111,6 +115,14 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
     if (initialValues) {
       const { picture, ...rest } = pick(initialValues, formPageInputs.flat());
       setValue('picture', picture?.original?.split('redirect/')[1].split('/')[0]);
+
+      if (initialValues.priority_landscapes?.length) {
+        setValue(
+          'priority_landscape_ids',
+          initialValues.priority_landscapes.map(({ id }) => id)
+        );
+      }
+
       entries(rest).forEach(([key, value]) => {
         setValue(key as keyof ProjectDeveloperSetupForm, value);
       });

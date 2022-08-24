@@ -87,6 +87,7 @@ zu:
         categories: Select the categories that you work on
         mission: What's your mission?
         mosaics: Select HeCo priority landscapes on which you will have impact
+        priority_landscapes: Select HeCo priority landscapes on which you will have impact
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
@@ -154,6 +155,7 @@ zu:
       user: User
       category: Category
       mosaic: Mosaic
+      priority_landscapes: Priority landscapes
       verified: Verified
       unverified: Unverified
       edit: Edit
@@ -250,13 +252,18 @@ zu:
           not_valid_kml: This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues.
           not_supported: This file is not supported. Please try uploading a different format.
           unable_to_parse: Unable to parse the file. Please try uploading a different format.
-
+    open_calls:
+      index:
+        name: Open Call name
+        location: Location
+        applications: Applications
     layout:
       header: Backoffice
       sign_out: Sign out
       project_developers: Project developers
       investors: Investors
       projects: Projects
+      open_calls: Open Calls
       users: Users
       admins: Administrators
   errors:
@@ -281,6 +288,7 @@ zu:
         multiple_accounts: User already have account!
         no_project_developer: User is not project developer!
         no_investor: User is not investor!
+        is_owner: User is owner of account and cannot be deleted now!
   user_mailer:
     greetings: Dear %{full_name},
     farewell_html: Best Regards,<br />Your HeCo Team
@@ -315,6 +323,12 @@ zu:
     project_destroyed:
       subject: Project has been removed.
       content: Project %{project_name} which you have been collaborator of have been removed.
+  investor_mailer:
+    greetings: Dear %{full_name},
+    farewell_html: Best Regards,<br />Your HeCo Team
+    open_call_destroyed:
+      subject: Open Call has been removed.
+      content: Open Call with name %{open_call_name} has been removed.
   enums:
     review_status:
       approved:
@@ -445,8 +459,8 @@ zu:
         name: Department
       municipality:
         name: Municipality
-      region:
-        name: Region
+      priority_landscape:
+        name: Priority Landscape
       basin:
         name: Basin
       basins_category:
@@ -509,15 +523,6 @@ zu:
         name: Indigenous or ethic jobs
       community-empowerment:
         name: Community empowerment
-    mosaic:
-      amazon-heart:
-        name: Amazon Heart
-      amazonian-piedmont-massif:
-        name: Amazonian Piedmont Massif
-      orinoquia-transition:
-        name: Orinoquía Transition
-      orinoquia:
-        name: Orinoquía
     sdg:
       1:
         name: No poverty
@@ -558,3 +563,10 @@ zu:
         name: Draft
       published:
         name: Published
+    open_call_status:
+      draft:
+        name: Draft
+      launched:
+        name: Launched
+      closed:
+        name: Closed

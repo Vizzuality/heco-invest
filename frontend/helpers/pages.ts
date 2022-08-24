@@ -3,6 +3,9 @@ import { useMemo } from 'react';
 import { FormState, Path } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
+import omit from 'lodash-es/omit';
+import pickBy from 'lodash-es/pickBy';
+
 import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
@@ -10,7 +13,9 @@ import { AxiosError } from 'axios';
 import { EnumTypes, Languages, Paths } from 'enums';
 import languages from 'locales.config.json';
 import { Enum } from 'types/enums';
-import { Project } from 'types/project';
+import { Locations } from 'types/locations';
+import { Project, ProjectForm, ProjectUpdatePayload } from 'types/project';
+import { formPageInputs } from 'validations/project';
 
 import { ErrorResponse } from 'services/types';
 
@@ -166,19 +171,46 @@ export const useLanguageNames = () => {
   return langs;
 };
 
-/**  Function to get the mosaics list with the number of related projects, using a mockup relation between mosaic ids and their corresponding location ids */
-export const getMosaicsWithProjectsNumber = (mosaicEnums: Enum[], projects: Project[]) => {
-  const mosaicLocations = {
-    'amazon-heart': '6f827753-3c27-4343-bc39-0c81a1875488',
-    'amazonian-piedmont-massif': '35490999-6962-4825-8ca4-1862c1a5e45d',
-    'orinoquia-transition': '135e49c7-0d29-455f-8700-33c573772b41',
-    orinoquia: 'b8eba9d3-1618-401c-b85c-c287941f6fe9',
+/** Function to transform the project (get) to the upload payload */
+export const getProjectValues = (project: Project): ProjectUpdatePayload => {
+  const inputs = formPageInputs.flat();
+  const projectForm = pickBy<ProjectForm>(project, (value, key: any) => inputs.includes(key));
+
+  const projectDto = omit(
+    projectForm,
+    'involved_project_developer',
+    'project_gallery',
+    'slug',
+    'project_images_attributes_cover',
+    'project_images_attributes'
+  );
+
+  const projectUpload = {
+    ...projectDto,
+    id: project.id,
+    municipality_id: project.municipality?.id,
+    department_id: project.municipality?.parent?.id,
+    country_id: project.country?.id,
+    project_images_attributes: project.project_images?.map(({ cover, file, id }) => {
+      const imageId = file.original.split('redirect/')[1].split('/')[0];
+      return {
+        file: imageId,
+        cover,
+        id,
+        _destroy: false,
+      };
+    }),
+    involved_project_developer_ids: project.involved_project_developers?.map(({ id }) => id),
+    involved_project_developer_not_listed: project.involved_project_developer_not_listed,
+    status: project.status,
   };
 
-  return mosaicEnums.map((mosaic) => {
-    const projectsQuantity =
-      projects.filter((project) => project.priority_landscape?.id === mosaicLocations[mosaic.id])
-        ?.length || 0;
-    return { ...mosaic, projectsQuantity };
-  });
+  return projectUpload as ProjectUpdatePayload;
 };
+
+export const PRIORITY_LANDSCAPES_CODES = [
+  'priority-landscape-orinoquia',
+  'priority-landscape-amazon-heart',
+  'priority-landscape-amazonian-piedmont-massif',
+  'priority-landscape-orinoquia-transition',
+];

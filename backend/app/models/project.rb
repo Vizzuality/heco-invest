@@ -2,6 +2,7 @@ class Project < ApplicationRecord
   extend FriendlyId
   include Translatable
   include Searchable
+  include ExtraRansackers
 
   friendly_id :project_developer_prefixed_name, use: :slugged
 
@@ -16,6 +17,7 @@ class Project < ApplicationRecord
   has_many :favourite_projects, dependent: :destroy
   has_many :project_involvements, dependent: :destroy
   has_many :involved_project_developers, through: :project_involvements, source: :project_developer, dependent: :destroy
+  has_many :open_call_applications, dependent: :destroy
 
   translates :name,
     :description,
@@ -74,9 +76,8 @@ class Project < ApplicationRecord
 
   delegate :account_language, to: :project_developer, allow_nil: true
 
-  ransacker :category_index do
-    Arel.sql(Category.select_index_sql)
-  end
+  generate_ransackers_for_translated_columns
+  generate_localized_ransackers_for_static_types :category
 
   def project_developer_prefixed_name
     "#{project_developer&.name} #{original_name}"
@@ -109,10 +110,11 @@ class Project < ApplicationRecord
   end
 
   def assign_priority_landscape
-    self.priority_landscape = centroid.blank? ? nil : LocationGeometry.of_type(:region).intersection_with(centroid).first&.location
+    self.priority_landscape = centroid.blank? ? nil : LocationGeometry.of_type(:priority_landscape).intersection_with(centroid).first&.location
   end
 
   def calculate_impacts
+    update_columns impact_calculated: false
     ImpactCalculationJob.perform_later self
   end
 

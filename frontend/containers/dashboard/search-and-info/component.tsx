@@ -5,6 +5,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
+import { pickBy } from 'lodash-es';
+
 import { useQueryParams } from 'helpers/pages';
 
 import Icon from 'components/icon';
@@ -50,11 +52,11 @@ export const SearchAndInfo: FC<SearchAndInfoProps> = ({
   };
 
   const handleClearSearch = () => {
+    // const newQuery = pickBy(queryParams, (value, key) => !!value && key !== 'search');
+    // If we add the pagination, use the line above instead of the line below
+    const newQuery = {};
     router.push({
-      query: {
-        ...queryParams,
-        search: '',
-      },
+      query: newQuery,
     });
   };
 

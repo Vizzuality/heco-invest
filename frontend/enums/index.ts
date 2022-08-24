@@ -74,6 +74,12 @@ export enum Queries {
   FavoriteProjectsList = 'favorite_projects',
   /** Single project */
   Project = 'project',
+  /** List of projects */
+  OpenCallList = 'open_calls',
+  /** List of favorited projects */
+  FavoriteOpenCallsList = 'favorite_open_calls',
+  /** Single open call */
+  OpenCall = 'open_call',
   /** List of investors */
   InvestorList = 'investors',
   /** List of favorited investors */
@@ -96,6 +102,10 @@ export enum Queries {
   AccountUsersList = 'account_users',
   /** Invited User */
   InvitedUser = 'invited_user',
+  /** List of open calls */
+  AccountOpenCallsList = 'account_open_calls',
+  /** Priority Landscapes */
+  PriorityLandscapes = 'priority_landscapes',
 }
 
 /** Location endpoint param location_type */
@@ -104,6 +114,7 @@ export enum LocationsTypes {
   Department = 'department',
   Municipality = 'municipality',
   Region = 'region',
+  PriorityLandscapes = 'priority_landscape',
 }
 
 /** Enum types returned on 'enums' service endpoint */
@@ -118,7 +129,6 @@ export enum EnumTypes {
   LocationType = 'location_type',
   ProjectDevelopmentStage = 'project_development_stage',
   TargetGroup = 'project_target_group',
-  Mosaic = 'mosaic',
   Images = 'image',
   Sdg = 'sdg',
 }
@@ -168,4 +178,10 @@ export enum InvitationStatus {
 export enum ProjectStatus {
   Published = 'published',
   Draft = 'draft',
+}
+
+export enum OpenCallStatus {
+  Draft = 'draft',
+  Launched = 'launched',
+  Closed = 'closed',
 }

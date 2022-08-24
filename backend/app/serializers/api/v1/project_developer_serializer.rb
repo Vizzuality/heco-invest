@@ -19,7 +19,6 @@ module API
         :account_language,
         :entity_legal_registration_number,
         :review_status,
-        :mosaics,
         :created_at
 
       account_approved_attributes :contact_email, :contact_phone
@@ -28,6 +27,7 @@ module API
 
       has_many :projects
       has_many :involved_projects, serializer: :project
+      has_many :priority_landscapes, serializer: :location
 
       attribute :picture do |object|
         image_links_for object.picture

@@ -14,7 +14,6 @@ import { InferGetStaticPropsType } from 'next';
 import { useBreakpoint } from 'hooks/use-breakpoint';
 
 import { loadI18nMessages } from 'helpers/i18n';
-import { getMosaicsWithProjectsNumber } from 'helpers/pages';
 
 import Carousel from 'containers/for-public-pages/carousel';
 import Description from 'containers/for-public-pages/description';
@@ -26,17 +25,19 @@ import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 import { Enum } from 'types/enums';
+import { Locations } from 'types/locations';
 import { Project } from 'types/project';
 
 import { getEnums } from 'services/enums/enumService';
+import { getPriorityLandscapes } from 'services/locations/locations';
 import { getProjects } from 'services/projects/projectService';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   let categoryEnums: Enum[] = [];
-  let mosaicEnums: Enum[] = [];
+  let priorityLandscapes: Locations[] = [];
 
   let projectsByCategory: Record<string, Project[]> = {};
-  let mosaicsWithProjectsNumber: ReturnType<typeof getMosaicsWithProjectsNumber> = [];
+  let projectsByPriorityLandscape: Record<string, Project[]> = {};
 
   try {
     const projects: Project[] = await getProjects({
@@ -46,11 +47,12 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
     }).then((res) => res.data);
 
     const enums: Enum[] = await getEnums();
+    ({ category: categoryEnums } = groupBy(enums, 'type'));
 
-    ({ category: categoryEnums, mosaic: mosaicEnums } = groupBy(enums, 'type'));
+    priorityLandscapes = await getPriorityLandscapes();
 
     projectsByCategory = groupBy(projects, 'category');
-    mosaicsWithProjectsNumber = getMosaicsWithProjectsNumber(mosaicEnums, projects);
+    projectsByPriorityLandscape = groupBy(projects, 'priority_landscape.id');
   } catch (e) {
     return { notFound: true };
   }
@@ -59,7 +61,8 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
       intlMessages: await loadI18nMessages({ locale }),
       categoryEnums,
       projectsByCategory,
-      mosaicsWithProjectsNumber,
+      projectsByPriorityLandscape,
+      priorityLandscapes,
     },
   };
 });
@@ -69,7 +72,8 @@ type ForInvestorsPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutProps> = ({
   categoryEnums,
   projectsByCategory,
-  mosaicsWithProjectsNumber,
+  projectsByPriorityLandscape,
+  priorityLandscapes,
 }) => {
   const { formatMessage } = useIntl();
   const [impactModalOpen, setImpactModalOpen] = useState(false);
@@ -77,29 +81,29 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
   const isMd = breakpoint('sm');
   const isLg = breakpoint('lg');
 
-  const priorityLandscapesDescriptions = {
-    'amazonian-piedmont-massif': (
+  const priorityLandscapesDescriptionsByCode = {
+    'priority-landscape-amazonian-piedmont-massif': (
       <FormattedMessage
         defaultMessage="Being a point of transition and meeting between the two most biodiverse biomes on Earth, the Tropical Andes and the Amazon, the Mosaic foothills represents one of the regions with <n>the greatest biodiversity in the world</n>."
         id="RBIeR5"
         values={{
-          n: (chunk: string) => <span className="font-bold">{chunk}</span>,
+          n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
         }}
       />
     ),
-    'orinoquia-transition': (
+    'priority-landscape-orinoquia-transition': (
       <FormattedMessage
         defaultMessage="Helps to ensure connectivity between the Andean, Orinocean and Amazonian ecosystems, allowing the conservation of flora, fauna, scenic beauties, geomorphological complexes, historical or cultural manifestations, the conservation and regulation of water systems."
         id="WJGIA3"
       />
     ),
-    orinoquia: (
+    'priority-landscape-orinoquia': (
       <FormattedMessage
         defaultMessage="It is an ecoregion covered with savannahs of high floristic diversity and habitats representative of the evolutionary processes of the Guiana Shield. It includes both blackwater and whitewater rivers that feed the great Orinoco River, creating different types of seasonally flooded forests."
         id="pNNQA+"
       />
     ),
-    'amazon-heart': (
+    'priority-landscape-amazon-heart': (
       <FormattedMessage
         defaultMessage="It is an area with a number of attributes related to heterogeneity that maintain the structure and ecological processes that characterize it as the Heart of the Amazon, it is also one of the most unique natural and cultural heritages in the national territory due to its exuberant cultural diversity."
         id="QI4yO9"
@@ -293,8 +297,9 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         </div>
 
         <div className="grid pb-6 md:pr-0 md:pl-0 overflow-x-auto md:grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-6 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 md:place-content-end md:container md:mx-auto md:px-8">
-          {mosaicsWithProjectsNumber.map(({ id, name, projectsQuantity }, index) => {
-            const description = priorityLandscapesDescriptions[id];
+          {priorityLandscapes.map(({ id, name, code }, index) => {
+            const description = priorityLandscapesDescriptionsByCode[code];
+            const projectsQuantity = projectsByPriorityLandscape[id]?.length || 0;
             return (
               <div
                 key={id}

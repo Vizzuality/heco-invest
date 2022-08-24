@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_08_082718) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_22_104832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -200,6 +200,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_08_082718) do
     t.decimal "community_demand", precision: 25, scale: 20
     t.decimal "water", precision: 25, scale: 20
     t.decimal "water_demand", precision: 25, scale: 20
+    t.boolean "visible", default: true, null: false
     t.index ["location_type", "name_en"], name: "uniq_name_en_without_parent_id", unique: true, where: "(parent_id IS NULL)"
     t.index ["location_type", "name_es"], name: "uniq_name_es_without_parent_id", unique: true, where: "(parent_id IS NULL)"
     t.index ["location_type", "name_pt"], name: "uniq_name_pt_without_parent_id", unique: true, where: "(parent_id IS NULL)"
@@ -207,6 +208,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_08_082718) do
     t.index ["location_type", "parent_id", "name_es"], name: "uniq_name_es_with_parent_id", unique: true, where: "(parent_id IS NOT NULL)"
     t.index ["location_type", "parent_id", "name_pt"], name: "uniq_name_pt_with_parent_id", unique: true, where: "(parent_id IS NOT NULL)"
     t.index ["parent_id"], name: "index_locations_on_parent_id"
+  end
+
+  create_table "open_call_applications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "open_call_id", null: false
+    t.uuid "project_developer_id", null: false
+    t.uuid "project_id", null: false
+    t.text "message_en"
+    t.text "message_es"
+    t.text "message_pt"
+    t.string "language", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["open_call_id"], name: "index_open_call_applications_on_open_call_id"
+    t.index ["project_developer_id"], name: "index_open_call_applications_on_project_developer_id"
+    t.index ["project_id"], name: "index_open_call_applications_on_project_id"
   end
 
   create_table "open_calls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -238,6 +254,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_08_082718) do
     t.text "funding_exclusions_es"
     t.text "funding_exclusions_pt"
     t.string "instrument_types", null: false, array: true
+    t.integer "status", default: 1, null: false
+    t.integer "open_call_applications_count", default: 0, null: false
     t.index ["country_id"], name: "index_open_calls_on_country_id"
     t.index ["department_id"], name: "index_open_calls_on_department_id"
     t.index ["investor_id", "name_en"], name: "index_open_calls_on_investor_id_and_name_en", unique: true
@@ -246,6 +264,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_08_082718) do
     t.index ["investor_id"], name: "index_open_calls_on_investor_id"
     t.index ["municipality_id"], name: "index_open_calls_on_municipality_id"
     t.index ["slug"], name: "index_open_calls_on_slug", unique: true
+  end
+
+  create_table "project_developer_priority_landscapes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "project_developer_id", null: false
+    t.uuid "priority_landscape_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["priority_landscape_id"], name: "index_priority_landscape_id_on_priority_landscapes"
+    t.index ["project_developer_id"], name: "index_project_developer_id_on_priority_landscapes"
   end
 
   create_table "project_developers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -259,7 +286,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_08_082718) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "entity_legal_registration_number", null: false
-    t.string "mosaics", array: true
     t.integer "projects_count", default: 0, null: false
     t.index ["account_id"], name: "index_project_developers_on_account_id"
   end
@@ -360,6 +386,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_08_082718) do
     t.decimal "priority_landscape_total_impact", precision: 25, scale: 20
     t.geometry "centroid", limit: {:srid=>0, :type=>"st_point"}
     t.uuid "priority_landscape_id"
+    t.boolean "impact_calculated", default: false
     t.index ["country_id"], name: "index_projects_on_country_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
     t.index ["municipality_id"], name: "index_projects_on_municipality_id"
@@ -426,10 +453,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_08_082718) do
   add_foreign_key "investors", "accounts", on_delete: :cascade
   add_foreign_key "location_geometries", "locations", on_delete: :cascade
   add_foreign_key "locations", "locations", column: "parent_id", on_delete: :cascade
+  add_foreign_key "open_call_applications", "open_calls", on_delete: :cascade
+  add_foreign_key "open_call_applications", "project_developers", on_delete: :cascade
+  add_foreign_key "open_call_applications", "projects", on_delete: :cascade
   add_foreign_key "open_calls", "investors", on_delete: :cascade
   add_foreign_key "open_calls", "locations", column: "country_id"
   add_foreign_key "open_calls", "locations", column: "department_id"
   add_foreign_key "open_calls", "locations", column: "municipality_id"
+  add_foreign_key "project_developer_priority_landscapes", "locations", column: "priority_landscape_id", on_delete: :cascade
+  add_foreign_key "project_developer_priority_landscapes", "project_developers", on_delete: :cascade
   add_foreign_key "project_developers", "accounts", on_delete: :cascade
   add_foreign_key "project_images", "projects", on_delete: :cascade
   add_foreign_key "project_involvements", "project_developers", on_delete: :cascade

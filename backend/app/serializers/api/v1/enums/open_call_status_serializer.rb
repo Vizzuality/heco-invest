@@ -1,7 +1,7 @@
 module API
   module V1
     module Enums
-      class MosaicSerializer
+      class OpenCallStatusSerializer
         include EnumSerializer
       end
     end

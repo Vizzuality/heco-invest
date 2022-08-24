@@ -5,7 +5,8 @@
     "attributes": {
       "name": "Jamaica",
       "location_type": "municipality",
-      "created_at": "2022-06-24T09:07:25.385Z"
+      "created_at": "2022-06-24T09:07:25.385Z",
+      "code": null
     },
     "relationships": {
       "parent": {

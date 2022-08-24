@@ -54,7 +54,7 @@ const CreateProject: PageComponent<CreateProjectProps> = ({ enums }) => {
       ownership={{
         //The protected page already fetches the user's account, so we don't need to fetch it again. The userAccount is the project-developer. Whe are using the userAccount to determine the project-developer's language.
         getIsOwner(_user, userAccount) {
-          setPdLanguage(userAccount.language);
+          setPdLanguage(userAccount?.language);
           return true;
         },
         allowOwner: false,

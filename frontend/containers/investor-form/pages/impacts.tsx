@@ -13,7 +13,14 @@ import TagGroup from 'components/forms/tag-group';
 
 import { ImpactProps } from '../types';
 
-export const Impact: FC<ImpactProps> = ({ register, errors, impacts, setValue, clearErrors }) => {
+export const Impact: FC<ImpactProps> = ({
+  register,
+  errors,
+  impacts,
+  getValues,
+  setValue,
+  clearErrors,
+}) => {
   return (
     <div>
       <h1 className="font-serif text-3xl font-semibold mb-2.5">
@@ -130,6 +137,7 @@ export const Impact: FC<ImpactProps> = ({ register, errors, impacts, setValue, c
               clearErrors={clearErrors}
               register={register}
               aria-describedby="sdgs-error"
+              defaultValues={getValues('sdgs')}
             />
           </fieldset>
           <ErrorMessage

@@ -2,6 +2,7 @@ require "system_helper"
 
 RSpec.describe "Backoffice: Project Developers", type: :system do
   let(:admin) { create(:admin, email: "admin@example.com", password: "SuperSecret6", first_name: "Admin", last_name: "Example") }
+  let(:priority_landscape) { create :priority_landscape }
   let(:approved_pd_owner) { create(:user, :project_developer, first_name: "Tom", last_name: "Higgs") }
   let(:unapproved_pd_owner) { create(:user, :project_developer, first_name: "John", last_name: "Levis") }
   let!(:approved_pd) {
@@ -17,7 +18,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
       ),
       categories: %w[forestry-and-agroforestry non-timber-forest-production],
       impacts: %w[climate water],
-      mosaics: %w[amazonian-piedmont-massif],
+      priority_landscapes: [priority_landscape],
       mission: "Some example mission",
       entity_legal_registration_number: "564823570",
       language: "en"
@@ -187,7 +188,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
           check t("enums.impact.community.name")
           uncheck t("enums.impact.water.name")
           uncheck t("enums.impact.climate.name")
-          check t("enums.mosaic.amazon-heart.name")
+          check priority_landscape.name
           click_on t("backoffice.common.save")
 
           expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.project_developer")))
@@ -208,7 +209,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
           expect(approved_pd.account.twitter).to eq("https://twitter.com/new-profile")
           expect(approved_pd.categories.sort).to eq(%w[non-timber-forest-production tourism-and-recreation])
           expect(approved_pd.impacts).to eq(%w[community])
-          expect(approved_pd.mosaics.sort).to eq(%w[amazon-heart amazonian-piedmont-massif])
+          expect(approved_pd.priority_landscape_ids.sort).to eq([priority_landscape.id])
         end
       end
 
@@ -263,6 +264,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
         expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.project_developer")))
         expect(current_path).to eql(backoffice_project_developers_path)
         expect(page).not_to have_text(approved_pd.name)
+        expect(Account.find_by(id: approved_pd.account_id)).to be_nil
       end
     end
   end

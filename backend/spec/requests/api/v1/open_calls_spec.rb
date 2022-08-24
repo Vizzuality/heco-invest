@@ -11,6 +11,7 @@ RSpec.describe "API V1 Open Calls", type: :request do
       investor: create(:investor, account: create(:account, language: "pt")),
       description_en: "Description EN", description_es: "Description ES", description_pt: "Description PT"
     )
+    @draft_open_call = create(:open_call, status: :draft)
   end
 
   include_examples :api_pagination, model: OpenCall, expected_total: 8
@@ -22,6 +23,7 @@ RSpec.describe "API V1 Open Calls", type: :request do
       parameter name: "page[number]", in: :query, type: :integer, description: "Page number. Default: 1", required: false
       parameter name: "page[size]", in: :query, type: :integer, description: "Per page items. Default: 10", required: false
       parameter name: "fields[open_call]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
       parameter name: "filter[sdg]", in: :query, type: :integer, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[instrument_type]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[only_verified]", in: :query, type: :boolean, required: false, description: "Filter records."
@@ -48,11 +50,24 @@ RSpec.describe "API V1 Open Calls", type: :request do
           expect(response_json["data"].pluck("id")).not_to include(@unapproved_open_call.id)
         end
 
+        it "ignores open call with draft status" do
+          expect(response_json["data"].pluck("id")).not_to include(@draft_open_call.id)
+        end
+
         context "with sparse fieldset" do
           let("fields[open_call]") { "name,description,nonexisting" }
 
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/open-calls-sparse-fieldset")
+          end
+        end
+
+        context "with relationships" do
+          let("fields[open_call]") { "name,investor" }
+          let(:includes) { "investor" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/open-calls-include-relationships")
           end
         end
 
@@ -81,6 +96,7 @@ RSpec.describe "API V1 Open Calls", type: :request do
       produces "application/json"
       parameter name: :id, in: :path, type: :string, description: "Use open call ID or slug"
       parameter name: "fields[open_call]", in: :query, type: :string, description: "Get only required fields. Use comma to separate multiple fields", required: false
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
       parameter name: :locale, in: :query, type: :string, required: false, description: "Retrieve content in required language, skip for account language."
 
       let(:id) { @open_call.id }
@@ -111,6 +127,15 @@ RSpec.describe "API V1 Open Calls", type: :request do
 
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/get-open-call-sparse-fieldset")
+          end
+        end
+
+        context "with relationships" do
+          let("fields[open_call]") { "name,investor" }
+          let(:includes) { "investor" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/get-open-call-include-relationships")
           end
         end
 

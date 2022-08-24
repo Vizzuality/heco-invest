@@ -3,6 +3,7 @@ require "swagger_helper"
 RSpec.describe "API V1 Locations", type: :request do
   before_all do
     @country = create :location, :with_municipalities, municipalities_count: 3
+    @invisible_priority_landscape = create :priority_landscape, visible: false
   end
 
   path "/api/v1/locations" do
@@ -23,6 +24,10 @@ RSpec.describe "API V1 Locations", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/locations")
+        end
+
+        it "ignores invisible record" do
+          expect(response_json["data"].pluck("id")).not_to include(@invisible_priority_landscape.id)
         end
 
         context "with sparse fieldset" do

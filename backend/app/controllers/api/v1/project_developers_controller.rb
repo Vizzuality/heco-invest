@@ -4,7 +4,7 @@ module API
       include API::Pagination
 
       before_action :fetch_project_developer, only: :show
-      around_action(only: [:show]) { |_controller, action| set_locale(@project_developer&.account&.language, &action) }
+      around_action(only: [:show]) { |_, action| set_locale(fallback_language: @project_developer&.account&.language, &action) }
       load_and_authorize_resource
 
       def index
@@ -43,7 +43,7 @@ module API
       end
 
       def filter_params
-        params.fetch(:filter, {}).permit :category, :impact, :full_text
+        params.fetch(:filter, {}).permit :category, :impact, :full_text, :priority_landscape
       end
     end
   end

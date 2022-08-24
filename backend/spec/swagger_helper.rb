@@ -107,6 +107,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   location_type: {type: :string, enum: LocationType::TYPES},
+                  code: {type: :string, nullable: true},
                   created_at: {type: :string}
                 }
               },
@@ -129,6 +130,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
+                  status: {type: :string},
                   picture: {"$ref" => "#/components/schemas/image_blob"},
                   description: {type: :string},
                   funding_priorities: {type: :string},
@@ -164,6 +166,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
+                  status: {type: :string},
                   country_id: {type: :string},
                   municipality_id: {type: :string},
                   department_id: {type: :string},
@@ -249,7 +252,6 @@ RSpec.configure do |config|
                   project_developer_type: {type: :string, nullable: true},
                   categories: {type: :array, items: {type: :string}},
                   impacts: {type: :array, items: {type: :string}},
-                  mosaics: {type: :array, items: {type: :string}},
                   language: {type: :string},
                   entity_legal_registration_number: {type: :string},
                   favourite: {type: :boolean, nullable: true},
@@ -261,6 +263,7 @@ RSpec.configure do |config|
                 properties: {
                   projects: {"$ref" => "#/components/schemas/response_relations"},
                   involved_projects: {"$ref" => "#/components/schemas/response_relations"},
+                  priority_landscapes: {"$ref" => "#/components/schemas/response_relations"},
                   owner: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }

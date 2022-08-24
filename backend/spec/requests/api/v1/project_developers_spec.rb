@@ -25,6 +25,7 @@ RSpec.describe "API V1 Project Developers", type: :request do
       parameter name: "filter[category]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[impact]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
+      parameter name: "filter[priority_landscape]", in: :query, type: :string, required: false, description: "Filter records by ID. Use comma to separate multiple IDs."
       parameter name: :sorting, in: :query, type: :string, enum: ["name asc", "name desc", "created_at asc", "created_at desc"], required: false, description: "Sort records."
       parameter name: :locale, in: :query, type: :string, required: false, description: "Retrieve content in required language, skip for account language."
 
@@ -74,6 +75,14 @@ RSpec.describe "API V1 Project Developers", type: :request do
 
         context "when filtered by searched text" do
           let("filter[full_text]") { @project_developer.mission }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([@project_developer.id])
+          end
+        end
+
+        context "when filtered by association" do
+          let("filter[priority_landscape]") { @project_developer.priority_landscape_ids.join(",") }
 
           it "contains only correct records" do
             expect(response_json["data"].pluck("id")).to eq([@project_developer.id])

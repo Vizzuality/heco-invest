@@ -5,7 +5,9 @@ module API
         include API::Pagination
 
         before_action :require_project_developer!, except: %i[create favourites]
-        around_action(only: [:show]) { |_controller, action| set_locale(current_user&.account&.language, &action) }
+        around_action(only: %i[create]) { |_, action| set_locale(language: account_params[:language], &action) }
+        around_action(only: %i[update]) { |_, action| set_locale(language: current_user&.account&.language, &action) }
+        around_action(only: %i[show]) { |_, action| set_locale(fallback_language: current_user&.account&.language, &action) }
         load_and_authorize_resource only: :favourites
 
         def create
@@ -63,7 +65,7 @@ module API
 
         def project_developer_params
           params.permit :project_developer_type, :entity_legal_registration_number, :mission,
-            categories: [], impacts: [], mosaics: []
+            categories: [], impacts: [], priority_landscape_ids: []
         end
       end
     end

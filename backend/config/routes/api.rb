@@ -23,7 +23,9 @@ namespace :api, format: "json" do
       resource :favourite_investor, only: [:create, :destroy]
     end
     resources :locations, only: [:index, :show]
-    resources :open_calls, only: [:index, :show]
+    resources :open_calls, only: [:index, :show] do
+      resource :favourite_open_call, only: [:create, :destroy]
+    end
     resources :project_developers, only: [:index, :show] do
       resource :favourite_project_developer, only: [:create, :destroy]
     end
@@ -57,7 +59,7 @@ namespace :api, format: "json" do
           get :favourites
         end
       end
-      resources :open_calls, only: [:create, :update] do
+      resources :open_calls, only: [:index, :create, :update, :destroy] do
         collection do
           get :favourites
         end

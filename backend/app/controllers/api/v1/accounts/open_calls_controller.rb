@@ -4,8 +4,21 @@ module API
       class OpenCallsController < BaseController
         include API::Pagination
 
-        before_action :fetch_open_call, only: [:update]
+        before_action :fetch_open_call, only: [:update, :destroy]
+        around_action(only: %i[create update]) { |_, action| set_locale(language: current_user&.account&.language, &action) }
         load_and_authorize_resource
+
+        def index
+          open_calls = @open_calls.includes(picture_attachment: :blob, investor: :account)
+          open_calls = open_calls.ransack(name_or_country_name_or_department_name_or_municipality_name_or_instrument_types_localized_or_status_localized_i_cont: filter_params[:full_text]).result if filter_params[:full_text].present?
+          open_calls = open_calls.order(created_at: :desc)
+          render json: OpenCallSerializer.new(
+            open_calls,
+            include: included_relationships,
+            fields: sparse_fieldset,
+            params: {current_user: current_user}
+          ).serializable_hash
+        end
 
         def create
           @open_call.save!
@@ -25,6 +38,12 @@ module API
           ).serializable_hash
         end
 
+        def destroy
+          @open_call.destroy!
+          InvestorMailer.open_call_destroyed(@open_call.investor, @open_call.name).deliver_later
+          head :ok
+        end
+
         def favourites
           @open_calls = @open_calls.includes(:investor).order(created_at: :desc)
           pagy_object, @open_calls = pagy(@open_calls, page: current_page, items: per_page)
@@ -42,8 +61,8 @@ module API
 
         def create_params
           update_params.merge(
-            investor_id: current_user.account.investor_id,
-            language: current_user.account.language
+            investor_id: current_user.account&.investor_id,
+            language: current_user.account&.language
           )
         end
 
@@ -60,6 +79,7 @@ module API
             :funding_priorities,
             :funding_exclusions,
             :closing_at,
+            :status,
             sdgs: [],
             instrument_types: []
           )
@@ -67,6 +87,10 @@ module API
 
         def fetch_open_call
           @open_call = OpenCall.friendly.find(params[:id])
+        end
+
+        def filter_params
+          params.fetch(:filter, {}).permit :full_text
         end
       end
     end

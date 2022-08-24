@@ -306,6 +306,7 @@ RSpec.describe "Backoffice: Investors", type: :system do
           expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.investor")))
           expect(current_path).to eql(backoffice_investors_path)
           expect(page).not_to have_text(approved_investor.name)
+          expect(Account.find_by(id: approved_investor.account_id)).to be_nil
         end
       end
     end
