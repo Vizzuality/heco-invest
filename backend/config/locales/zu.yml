@@ -284,7 +284,7 @@ zu:
       unsupported_geometry: shape is not supported
       missing_geometry: inside geojson is empty
       owner_not_part_of_account: is not part of account
-      not_future: must be at future
+      not_future: must be in the future
       user:
         multiple_accounts: User already have account!
         no_project_developer: User is not project developer!

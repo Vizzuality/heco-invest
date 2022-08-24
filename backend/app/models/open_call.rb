@@ -38,7 +38,7 @@ class OpenCall < ApplicationRecord
 
   validates_uniqueness_of [*locale_columns(:name)], scope: [:investor_id], case_sensitive: false, allow_blank: true
   validate :location_types
-  validate :closing_at_is_at_future, if: -> { closing_at_changed? }
+  validate :closing_at_is_in_the_future, if: -> { closing_at_changed? }
 
   after_save :change_closing_at_to_current_time, if: -> { saved_change_to_status? && closed? }
 
@@ -67,7 +67,7 @@ class OpenCall < ApplicationRecord
     errors.add :department, :location_type_mismatch if department && department.location_type != "department"
   end
 
-  def closing_at_is_at_future
+  def closing_at_is_in_the_future
     errors.add :closing_at, :not_future if closing_at < Time.current
   end
 
