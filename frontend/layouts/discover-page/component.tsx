@@ -42,10 +42,6 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     []
   );
 
-  // This shouldn't be needed, but due to CSS positioning / z-index issues we need to have the DiscoverSearch
-  // components both in the header and in this layout; which one is visible depends on the screen resolution.
-  // These states are here to keep both DiscoverSearch in sync, in case the user resizes their screen.
-
   const [sorting, setSorting] =
     useState<{ sortBy: SortingOptionKey; sortOrder: SortingOrderType }>(defaultSorting);
 
