@@ -27,6 +27,12 @@ module API
       attribute :picture do |object|
         image_links_for object.picture
       end
+
+      attribute :favourite do |object, params|
+        next if params[:current_user].blank?
+
+        object.id.in? params[:current_user].open_call_ids
+      end
     end
   end
 end
