@@ -70,14 +70,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
 
   const handleFavoriteClick = () => {
     // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
-    favoriteOpenCall.mutate(
-      { id, isFavourite: favourite },
-      {
-        onSuccess: (data) => {
-          openCall.favourite = data.favourite;
-        },
-      }
-    );
+    favoriteOpenCall.mutate({ id, isFavourite: favourite });
   };
 
   return (

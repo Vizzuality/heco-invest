@@ -26,14 +26,7 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({ openCall,
 
   const handleFavoriteClick = () => {
     // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
-    favoriteOpenCall.mutate(
-      { id: openCall.id, isFavourite: openCall.favourite },
-      {
-        onSuccess: (data) => {
-          openCall.favourite = data.favourite;
-        },
-      }
-    );
+    favoriteOpenCall.mutate({ id: openCall.id, isFavourite: openCall.favourite });
   };
 
   return (
