@@ -1,40 +1,84 @@
+import { useRef } from 'react';
+
+import { FormattedMessage } from 'react-intl';
+
+import cx from 'classnames';
+
 import { withLocalizedRequests } from 'hoc/locale';
 
-import { groupBy } from 'lodash-es';
+import { useScrollOnQuery } from 'hooks/use-scroll-on-query';
+import { usePagination } from 'hooks/usePagination';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import Loading from 'components/loading';
+import Pagination from 'components/pagination';
 import DiscoverPageLayout, { DiscoverPageLayoutProps } from 'layouts/discover-page';
 import { PageComponent } from 'types';
-import { GroupedEnums as GroupedEnumsType } from 'types/enums';
-
-import { getEnums } from 'services/enums/enumService';
+import { OpenCall as OpenCallType } from 'types/open-calls';
 
 export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
-  const enums = await getEnums();
-
   return {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
-      enums: groupBy(enums, 'type'),
     },
   };
 });
 
 type OpenCallsPageProps = {
-  enums: GroupedEnumsType;
+  data: OpenCallType[];
+  meta: Record<string, string>;
+  loading: boolean;
 };
 
-const OpenCallsPage: PageComponent<OpenCallsPageProps, DiscoverPageLayoutProps> = ({ enums }) => {
+const OpenCallsPage: PageComponent<OpenCallsPageProps, DiscoverPageLayoutProps> = ({
+  data: openCalls = [],
+  loading = false,
+  meta,
+}) => {
+  const openCallsContainerRef = useRef(null);
+  const { props: paginationProps } = usePagination(meta);
+
+  useScrollOnQuery({ ref: openCallsContainerRef });
+
+  const hasOpenCalls = openCalls?.length > 0 || false;
+
   return (
-    <div className="flex w-full gap-5">
-      <span>Page: OpenCalls</span>
+    <div className="flex flex-col w-full h-full pb-2 lg:p-1 lg:-m-1 lg:gap-0 lg:overflow-hidden lg:flex-row">
+      <div className="relative flex flex-col w-full lg:overflow-hidden ">
+        <div
+          ref={openCallsContainerRef}
+          className={cx({
+            'relative flex-grow lg:pr-2.5': true,
+            'lg:overflow-y-auto': !loading,
+            'lg:pointer-events-none lg:overflow-hidden': loading,
+          })}
+        >
+          {loading && (
+            <span className="absolute bottom-0 z-20 flex items-center justify-center bg-gray-600 bg-opacity-20 top-1 left-1 right-3 rounded-2xl">
+              <Loading visible={loading} iconClassName="w-10 h-10" />
+            </span>
+          )}
+          <div className="grid grid-cols-1 gap-6 p-1 md:grid-cols-2">
+            {openCalls.map((openCall) => (
+              <div key={openCall.id}>{openCall.name}</div>
+            ))}
+            {!loading && !hasOpenCalls && (
+              <FormattedMessage defaultMessage="No open calls" id="O3WloJ" />
+            )}
+          </div>
+        </div>
+        {hasOpenCalls && <Pagination className="w-full pt-2 -mb-2" {...paginationProps} />}
+      </div>
     </div>
   );
 };
 
 OpenCallsPage.layout = {
   Component: DiscoverPageLayout,
+  props: {
+    screenHeightLg: true,
+  },
 };
 
 export default OpenCallsPage;
