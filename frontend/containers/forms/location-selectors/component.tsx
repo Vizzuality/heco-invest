@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { FieldValues } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -22,12 +22,23 @@ export const LocationSelectors = <FormValues extends FieldValues>({
   fields,
 }: LocationSelectorsTypes<FormValues>) => {
   const { country, state, municipality } = fields;
+  const [countryFormValue, departmentFormValue] = getValues([country.fieldName, state.fieldName]);
+
   const { formatMessage } = useIntl();
   const { locations } = useGroupedLocations({ includes: 'parent' });
   const [locationsFilter, setLocationsFilter] = useState<{ country: string; department: string }>({
-    country: getValues(country.fieldName),
-    department: getValues(state.fieldName),
+    country: countryFormValue,
+    department: departmentFormValue,
   });
+
+  // This component may be mounted before all the data has been resolved. As such, we want to make
+  // sure `locationsFilter`is updated when/if the country and department form values change.
+  useEffect(() => {
+    setLocationsFilter({
+      country: countryFormValue,
+      department: departmentFormValue,
+    });
+  }, [countryFormValue, departmentFormValue]);
 
   const getOptions = useMemo(
     () => (locationType: LocationsTypes, filter: 'department' | 'country') => {
