@@ -14,6 +14,7 @@ import { SortingOptionKey } from 'components/sorting-buttons/types';
 import { Paths } from 'enums';
 
 import { useInvestorsList } from 'services/investors/investorsService';
+import { useOpenCallsList } from 'services/open-call/open-call-service';
 import { useProjectDevelopersList } from 'services/project-developers/projectDevelopersService';
 import { useProjectsList } from 'services/projects/projectService';
 
@@ -73,11 +74,18 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     isRefetching: isRefetchingInvestors,
   } = useInvestorsList({ ...queryParams, perPage: 9 }, queryOptions);
 
+  const {
+    data: openCalls,
+    isLoading: isLoadingOpenCalls,
+    isFetching: isFetchingOpenCalls,
+    isRefetching: isRefetchingOpenCalls,
+  } = useOpenCallsList({ ...queryParams, includes: ['investor'] }, queryOptions);
+
   const stats = {
     projects: projects?.meta?.total,
     projectDevelopers: projectDevelopers?.meta?.total,
     investors: investors?.meta?.total,
-    openCalls: 0,
+    openCalls: openCalls?.meta?.total,
   };
 
   const { data, meta, loading } = useMemo(() => {
@@ -103,7 +111,12 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
       };
     }
 
-    // if (router.pathname.startsWith(Paths.OpenCalls)) return openCalls;
+    if (pathname.startsWith(Paths.OpenCalls)) {
+      return {
+        ...openCalls,
+        loading: isLoadingOpenCalls || (isFetchingOpenCalls && !isRefetchingOpenCalls),
+      };
+    }
   }, [
     pathname,
     projects,
@@ -118,6 +131,10 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     isLoadingInvestors,
     isFetchingInvestors,
     isRefetchingInvestors,
+    openCalls,
+    isLoadingOpenCalls,
+    isFetchingOpenCalls,
+    isRefetchingOpenCalls,
   ]) || { data: [], meta: [] };
 
   useEffect(() => {
@@ -143,7 +160,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   const getSortingOptions = () => {
     // return all the sorting types for projects pages
     if (pathname === Paths.Projects) return sortingOptions;
-    // reaturn just name and data sorting types for the other pages
+    // return just name and data sorting types for the other pages
     if (sorting.sortBy !== 'name' && sorting.sortBy !== 'created_at') {
       setSorting({ ...sorting, sortBy: 'name' });
     }
