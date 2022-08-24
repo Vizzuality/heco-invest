@@ -328,7 +328,7 @@ zu:
     farewell_html: Best Regards,<br />Your HeCo Team
     open_call_destroyed:
       subject: Open Call has been removed.
-      content: Open Call with name %{open_call_name} have been removed.
+      content: Open Call with name %{open_call_name} has been removed.
   enums:
     review_status:
       approved:
