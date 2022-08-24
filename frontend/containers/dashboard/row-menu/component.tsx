@@ -10,17 +10,15 @@ import { RowMenuProps } from './types';
 export const RowMenu: FC<RowMenuProps> = ({
   onAction,
   children,
-  direction,
   iconType = 'actions',
 }: RowMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuIconOpenClose = () => {
-    const iconValue = (direction === 'top' ? 1 : 0) - (isOpen ? 1 : 0);
-    if (iconValue === 0) {
-      return <ChevronDown />;
-    } else {
+    if (isOpen) {
       return <ChevronUp />;
+    } else {
+      return <ChevronDown />;
     }
   };
 
@@ -38,7 +36,7 @@ export const RowMenu: FC<RowMenuProps> = ({
       align="end"
       onAction={onAction}
       hiddenSections={{ 'user-section': 'sm' }}
-      direction={direction}
+      direction={'bottom'}
       onOpen={() => setIsOpen(true)}
       onClose={() => setIsOpen(false)}
     >

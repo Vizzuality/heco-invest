@@ -17,9 +17,7 @@ import { CellActionsProps } from './types';
 export const CellActions: FC<CellActionsProps> = ({
   row: {
     original: { slug, name, status },
-    index,
   },
-  rows,
 }: CellActionsProps) => {
   const intl = useIntl();
   const router = useRouter();
@@ -87,9 +85,6 @@ export const CellActions: FC<CellActionsProps> = ({
     );
   }, [slug, updateOpenCallMutation]);
 
-  // Used to change the position of the menu on the first row so that it is not hidden by the table's top
-  const isFirst = index === 0;
-
   return (
     <div className="flex items-center justify-center gap-3">
       <Link
@@ -100,7 +95,7 @@ export const CellActions: FC<CellActionsProps> = ({
           <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
         </a>
       </Link>
-      <RowMenu direction={isFirst ? 'bottom' : 'top'} onAction={handleRowMenuItemClick}>
+      <RowMenu onAction={handleRowMenuItemClick}>
         {status === OpenCallStatus.Draft && (
           <RowMenuItem key="launch">
             <FormattedMessage defaultMessage="Launch open call" id="c4HVkO" />
