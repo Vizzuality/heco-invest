@@ -36,12 +36,12 @@ export const CellActions: FC<CellActionsProps> = ({
       case 'launch':
         setConfirmLaunch(true);
         return;
-      // case 'edit':
-      //   router.push(
-      //     `${Paths.OpenCall}/${slug}/edit?returnPath=${encodeURIComponent(router.asPath)}`,
-      //     `${Paths.OpenCall}/${slug}/edit`
-      //   );
-      //   return;
+      case 'edit':
+        router.push(
+          `${Paths.OpenCall}/${slug}/edit?returnPath=${encodeURIComponent(router.asPath)}`,
+          `${Paths.OpenCall}/${slug}/edit`
+        );
+        return;
       case 'preview':
         router.push(`${Paths.OpenCall}/${slug}/preview`);
         return;
@@ -103,10 +103,9 @@ export const CellActions: FC<CellActionsProps> = ({
             <FormattedMessage defaultMessage="Launch open call" id="c4HVkO" />
           </RowMenuItem>
         )}
-        {/* <RowMenuItem key="edit">
+        <RowMenuItem key="edit">
           <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
         </RowMenuItem>
-        */}
         {status === OpenCallStatus.Draft ? (
           <RowMenuItem key="preview">
             <FormattedMessage defaultMessage="Preview open call page" id="iR1WoG" />
