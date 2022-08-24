@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { withLocalizedRequests } from 'hoc/locale';
 
 import { groupBy } from 'lodash-es';
+import { GetServerSideProps } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
@@ -28,9 +29,7 @@ const OPEN_CALL_QUERY_PARAMS = {
   includes: ['country', 'municipality', 'department', 'investor'],
 };
 
-export const getServerSideProps = withLocalizedRequests(
-  /** @ts-ignore */
-  // Property 'query' does not exist on type 'GetStaticPropsContext<ParsedUrlQuery, PreviewData>'.
+export const getServerSideProps = withLocalizedRequests<GetServerSideProps>(
   async ({ params: { id }, locale, query }) => {
     let openCall: OpenCall = null;
     let enums;
