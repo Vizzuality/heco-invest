@@ -36,15 +36,15 @@ export const CellActions: FC<CellActionsProps> = ({
       case 'launch':
         setConfirmLaunch(true);
         return;
-      // case 'edit':
-      //   router.push(
-      //     `${Paths.OpenCall}/${slug}/edit?returnPath=${encodeURIComponent(router.asPath)}`,
-      //     `${Paths.OpenCall}/${slug}/edit`
-      //   );
-      //   return;
-      // case 'preview':
-      //   router.push(`${Paths.OpenCall}/${slug}/preview`);
-      //   return;
+      case 'edit':
+        router.push(
+          `${Paths.OpenCall}/${slug}/edit?returnPath=${encodeURIComponent(router.asPath)}`,
+          `${Paths.OpenCall}/${slug}/edit`
+        );
+        return;
+      case 'preview':
+        router.push(`${Paths.OpenCall}/${slug}/preview`);
+        return;
       case 'open':
         router.push(`${Paths.OpenCall}/${slug}`);
         return;
@@ -87,6 +87,9 @@ export const CellActions: FC<CellActionsProps> = ({
     );
   }, [slug, updateOpenCallMutation]);
 
+  // Used to change the position of the menu on the first row so that it is not hidden by the table's top
+  const isFirst = index === 0;
+
   return (
     <div className="flex items-center justify-center gap-3">
       <Link
@@ -97,24 +100,24 @@ export const CellActions: FC<CellActionsProps> = ({
           <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
         </a>
       </Link>
-      <RowMenu direction="top" onAction={handleRowMenuItemClick}>
+      <RowMenu direction={isFirst ? 'bottom' : 'top'} onAction={handleRowMenuItemClick}>
         {status === OpenCallStatus.Draft && (
           <RowMenuItem key="launch">
             <FormattedMessage defaultMessage="Launch open call" id="c4HVkO" />
           </RowMenuItem>
         )}
-        {/* <RowMenuItem key="edit">
+        <RowMenuItem key="edit">
           <FormattedMessage defaultMessage="Edit" id="wEQDC6" />
         </RowMenuItem>
         {status === OpenCallStatus.Draft ? (
           <RowMenuItem key="preview">
             <FormattedMessage defaultMessage="Preview open call page" id="iR1WoG" />
           </RowMenuItem>
-        ) : ( */}
-        <RowMenuItem key="open">
-          <FormattedMessage defaultMessage="View open call page" id="7sVapx" />
-        </RowMenuItem>
-        {/* )} */}
+        ) : (
+          <RowMenuItem key="open">
+            <FormattedMessage defaultMessage="View open call page" id="7sVapx" />
+          </RowMenuItem>
+        )}
         {status === OpenCallStatus.Launched && (
           <RowMenuItem key="close">
             <FormattedMessage defaultMessage="Close open call" id="kdZTM0" />

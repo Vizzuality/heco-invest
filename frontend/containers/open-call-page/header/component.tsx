@@ -61,10 +61,10 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
     const deadline = closingDate.format('DD MMM YYYY');
     // total duration of the open call in days
     const duration = closingDate.diff(openDate, 'day');
-    // remaining days of the open call. Difference between today and the open call ending date in days
-    const remaining = closingDate.diff(dayjs(), 'day');
+    // remaining days of the open call. Difference between today and the open call ending date in days + 1.
+    const remaining = closingDate.diff(dayjs(), 'day') + 1;
     // consumed days of the open call
-    const consumed = duration - remaining;
+    const consumed = duration - remaining - 1;
     return { consumed, remaining, deadline };
   }, [closing_at, created_at]);
 
@@ -159,12 +159,12 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
                     <FormattedMessage defaultMessage="Deadline" id="8/Da7A" />
                   </span>
                 </div>
-                {openCallRange.remaining <= 7 && (
+                {openCallRange.remaining <= 8 && (
                   <div className="flex flex-col items-center justify-end gap-2 text-center">
                     <div className="w-[82px] h-[82px] rounded-full flex justify-center items-center">
                       <OpenCallChart openCallRange={openCallRange} />
                       <p className="absolute max-w-[62px] text-xs font-semibold text-green-dark">
-                        {status === OpenCallStatus.Launched ? (
+                        {status !== OpenCallStatus.Closed ? (
                           <FormattedMessage defaultMessage="Ending soon" id="8mCCtS" />
                         ) : (
                           <FormattedMessage defaultMessage="Closed" id="Fv1ZSz" />
