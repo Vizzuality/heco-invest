@@ -81,7 +81,7 @@ export const Table: FC<TableProps> = ({
 
   return (
     <div>
-      <div className="relative overflow-x-auto md:overflow-hidden rounded-2xl">
+      <div className="relative rounded-2xl">
         <table {...getTableProps()} className="relative w-full bg-white rounded-t-2xl">
           <thead>
             {headerGroups.map((headerGroup) => {
