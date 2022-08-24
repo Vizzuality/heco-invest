@@ -153,11 +153,14 @@ zu:
       project: Project
       admin: Administrator
       user: User
+      open_call: Open Call
       category: Category
       mosaic: Mosaic
       priority_landscapes: Priority landscapes
       verified: Verified
+      verify: Verify
       unverified: Unverified
+      unverify: Unverify
       edit: Edit
       save: Save
       cancel: Cancel
