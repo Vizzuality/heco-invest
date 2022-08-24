@@ -143,6 +143,7 @@ export const OpenCallInformation: FC<OpenCallInformationProps> = ({
           <LocationSelectors
             control={control}
             resetField={resetField}
+            getValues={getValues}
             errors={errors}
             fields={{
               country: { fieldName: 'country_id', required: true },

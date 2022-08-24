@@ -18,14 +18,15 @@ export const LocationSelectors = <FormValues extends FieldValues>({
   control,
   errors,
   resetField,
+  getValues,
   fields,
 }: LocationSelectorsTypes<FormValues>) => {
   const { country, state, municipality } = fields;
   const { formatMessage } = useIntl();
   const { locations } = useGroupedLocations({ includes: 'parent' });
   const [locationsFilter, setLocationsFilter] = useState<{ country: string; department: string }>({
-    country: undefined,
-    department: undefined,
+    country: getValues(country.fieldName),
+    department: getValues(state.fieldName),
   });
 
   const getOptions = useMemo(

@@ -4,6 +4,7 @@ import {
   FieldPath,
   Path,
   UseControllerProps,
+  UseFormGetValues,
   UseFormResetField,
 } from 'react-hook-form';
 
@@ -14,6 +15,8 @@ export type LocationSelectorsTypes<FormValues> = {
   control: Control<FormValues, FieldPath<FormValues>>;
   /** React-hook-form useForm resetField */
   resetField?: UseFormResetField<FormValues>;
+  /** React-hook-form useForm getValues */
+  getValues: UseFormGetValues<FormValues>;
   /** Fields displayed */
   fields: {
     country: {
