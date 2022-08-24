@@ -24,6 +24,7 @@ const Template: Story<LocationSelectorsTypes<FormValues>> = ({ fields }) => {
     control,
     formState: { errors },
     resetField,
+    getValues,
     handleSubmit,
   } = useForm<FormValues>();
 
@@ -40,6 +41,7 @@ const Template: Story<LocationSelectorsTypes<FormValues>> = ({ fields }) => {
         errors={errors}
         fields={fields}
         resetField={resetField}
+        getValues={getValues}
       />
       <Button className="my-4" type="submit">
         Submit
