@@ -396,6 +396,14 @@ module "purge_users_cron" {
   service_account_email = module.jobs_cloudrun.service_account_email
 }
 
+module "close_open_calls_cron" {
+  source                = "../cloud-scheduler"
+  name                  = "${var.project_name}-close-open-calls"
+  uri                   = "${module.jobs_cloudrun.cloudrun_service_url}/backend/jobs/open_calls/close_past_deadline"
+  service_account_email = module.jobs_cloudrun.service_account_email
+  schedule              = "0 1 * * *"
+}
+
 module "frontend_uptime_check" {
   source     = "../uptime-check"
   name       = "${var.project_name} Frontend"
