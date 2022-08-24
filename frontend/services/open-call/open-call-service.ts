@@ -188,7 +188,7 @@ export const useFavoriteOpenCall = () => {
   ): Promise<OpenCall> => {
     const config: AxiosRequestConfig = {
       method: isFavourite ? 'DELETE' : 'POST',
-      url: `/api/v1/open-calls/${openCallId}/favourite_open_call`,
+      url: `/api/v1/open_calls/${openCallId}/favourite_open_call`,
       data: { open_call_id: openCallId },
     };
 
