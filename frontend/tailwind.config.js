@@ -70,6 +70,7 @@ module.exports = {
       decimal: 'decimal',
       'lower-latin': 'lower-latin',
       'lower-roman': 'lower-roman',
+      disc: 'disc',
     },
     extend: {
       spacing: {
