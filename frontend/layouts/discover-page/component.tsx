@@ -32,8 +32,6 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 }: DiscoverPageLayoutProps) => {
   const { push, pathname } = useRouter();
 
-  const sortingOptions = useSortingByOptions();
-
   const defaultSorting = useMemo(
     () => ({
       sortBy: 'created_at' as SortingOptionKey,
@@ -44,6 +42,17 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 
   const [sorting, setSorting] =
     useState<{ sortBy: SortingOptionKey; sortOrder: SortingOrderType }>(defaultSorting);
+
+  const sortingOptionsTarget = useMemo(() => {
+    if (pathname.startsWith(Paths.Projects)) return 'projects';
+    if (pathname.startsWith(Paths.OpenCalls)) return 'openCalls';
+
+    if (sorting.sortBy !== 'name' && sorting.sortBy !== 'created_at') {
+      setSorting({ ...sorting, sortBy: 'name' });
+    }
+  }, [pathname, sorting]);
+
+  const sortingOptions = useSortingByOptions(sortingOptionsTarget);
 
   const queryParams = useQueryParams(sorting);
 
@@ -102,20 +111,10 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     });
   };
 
-  const getSortingOptions = () => {
-    // return all the sorting types for projects pages
-    if (pathname === Paths.Projects) return sortingOptions;
-    // return just name and data sorting types for the other pages
-    if (sorting.sortBy !== 'name' && sorting.sortBy !== 'created_at') {
-      setSorting({ ...sorting, sortBy: 'name' });
-    }
-    return sortingOptions.slice(0, 2);
-  };
-
   const sortingButtonsProps = {
     sortBy: sorting.sortBy,
     sortOrder: sorting.sortOrder as SortingOrderType,
-    options: getSortingOptions(),
+    options: sortingOptions,
     onChange: handleSorting,
   };
 
