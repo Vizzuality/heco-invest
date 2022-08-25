@@ -10,8 +10,8 @@ export const Overview: FC<OpenCallOverviewTypes> = ({ openCall }) => {
   const { country, municipality, department } = openCall;
 
   return (
-    <LayoutContainer id="overview" className="my-20 lg:mb-28">
-      <section className="p-4 font-serif lg:flex sm:p-6 rounded-2xl">
+    <LayoutContainer id="overview" className="mt-10 mb-20 lg:mb-28">
+      <LayoutContainer className="font-serif lg:flex">
         <div className="flex flex-col gap-10 lg:justify-between lg:flex-row">
           <div className="flex flex-col space-y-4 lg:mb-12 lg:w-1/2">
             <h2 className="text-2xl lg:text-3xl">
@@ -43,7 +43,7 @@ export const Overview: FC<OpenCallOverviewTypes> = ({ openCall }) => {
             </div>
           </div>
         </div>
-      </section>
+      </LayoutContainer>
     </LayoutContainer>
   );
 };

@@ -90,7 +90,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
         >
           <LayoutContainer>
             <div className="mb-8 text-center lg:w-1/2 lg:text-left">
-              <h1 className="font-serif text-3xl text-white">{name}</h1>
+              <h1 className="font-serif text-2xl text-white lg:text-4xl">{name}</h1>
             </div>
           </LayoutContainer>
         </div>
@@ -110,7 +110,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
             )}
             <p>{openCall.description}</p>
           </div>
-          <div className="flex flex-col justify-start lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-1/3 rounded-2xl mt-8 lg:mt-0">
+          <div className="mb-10 flex flex-col justify-start lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-1/3 rounded-2xl mt-8 lg:mt-0">
             <>
               <div className="flex flex-col gap-8 pl-2 sm:gap-11 sm:flex-row sm:justify-between">
                 <div className="flex flex-col items-center justify-end gap-2 sm:items-start">

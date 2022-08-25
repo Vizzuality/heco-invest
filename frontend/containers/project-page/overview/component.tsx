@@ -33,7 +33,7 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
       <section className="p-4 mt-32 font-serif text-white sm:p-6 lg:mt-48 lg:p-16 bg-green-dark rounded-2xl">
         <div className="relative grid w-full grid-cols-1 gap-12 lg:grid-cols-2">
           <Map
-            className="absolute z-10 -mb-32 border-8 border-white drop-shadow-xl h-96 -top-44 lg:overflow-hidden rounded-xl"
+            className="absolute z-10 -mb-32 border-8 border-white drop-shadow-xl h-96 -top-28 lg:-top-44 lg:overflow-hidden rounded-xl"
             onMapViewportChange={handleViewportChange}
             bounds={bounds}
             viewport={viewport}
