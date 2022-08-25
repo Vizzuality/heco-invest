@@ -64,6 +64,7 @@ namespace :api, format: "json" do
           get :favourites
         end
       end
+      resource :open_call_applications, only: [:create]
       resources :users, only: [:index, :destroy] do
         collection do
           post :transfer_ownership

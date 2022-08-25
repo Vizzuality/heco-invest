@@ -270,6 +270,32 @@ RSpec.configure do |config|
             },
             required: %w[id type attributes relationships]
           },
+          open_call_application: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              type: {type: :string},
+              attributes: {
+                type: :object,
+                properties: {
+                  message: {type: :string},
+                  funded: {type: :boolean},
+                  created_at: {type: :string},
+                  updated_at: {type: :string}
+                }
+              },
+              relationships: {
+                type: :object,
+                properties: {
+                  open_call: {"$ref" => "#/components/schemas/response_relation"},
+                  project: {"$ref" => "#/components/schemas/response_relation"},
+                  project_developer: {"$ref" => "#/components/schemas/response_relation"},
+                  investor: {"$ref" => "#/components/schemas/response_relation"}
+                }
+              }
+            },
+            required: %w[id type attributes relationships]
+          },
           background_job_event: {
             type: :object,
             properties: {

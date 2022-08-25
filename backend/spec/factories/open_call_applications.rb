@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :open_call_application do
     open_call
-    project_developer
     project
 
     sequence(:message) do |n|
