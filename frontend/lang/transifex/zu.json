@@ -365,6 +365,9 @@
   "62pTkz": {
     "string": "Save your favorites"
   },
+  "68i9X8": {
+    "string": "Investor information"
+  },
   "6EYInP": {
     "string": "My open call applications"
   },
@@ -871,6 +874,9 @@
   },
   "GhrkT+": {
     "string": "confirm password"
+  },
+  "GmR2YQ": {
+    "string": "picture"
   },
   "GsO+rH": {
     "string": "Delete project?"
@@ -2399,6 +2405,9 @@
   },
   "q6rG+e": {
     "string": "See projects"
+  },
+  "q7AUEZ": {
+    "string": "Max funding"
   },
   "q7I+Bg": {
     "string": "{quantity, plural, one {investor} other {investors}}"
