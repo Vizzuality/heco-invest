@@ -123,7 +123,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
           </div>
           <div className="text-center lg:mb-4 lg:text-left">
             <div className="lg:w-6/12">
-              <h1 className="font-serif text-3xl text-white">{project.name}</h1>
+              <h1 className="font-serif text-2xl text-white lg:text-4xl">{project.name}</h1>
             </div>
           </div>
         </LayoutContainer>

@@ -90,7 +90,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({
         >
           <LayoutContainer>
             <div className="mb-8 text-center lg:w-1/2 lg:text-left">
-              <h1 className="font-serif text-3xl text-white">{name}</h1>
+              <h1 className="font-serif text-2xl text-white lg:text-4xl">{name}</h1>
             </div>
           </LayoutContainer>
         </div>
