@@ -62,5 +62,44 @@ RSpec.describe "Backoffice: Open Calls", type: :system do
         end
       end
     end
+
+    context "when deleting open call via menu" do
+      it "deletes open call" do
+        within_row(open_call.name) do
+          find("button.rounded-full").click
+          expect {
+            accept_confirm do
+              click_on t("backoffice.common.delete")
+            end
+          }.to have_enqueued_mail(InvestorMailer, :open_call_destroyed).with(open_call.investor, open_call.name)
+        end
+        expect(page).not_to have_text(open_call.name)
+      end
+    end
+
+    context "when unverifying open call via menu" do
+      it "unverifies open call" do
+        within_row(open_call.name) do
+          find("button.rounded-full").click
+          click_on t("backoffice.common.unverify")
+          expect(page).to have_text(I18n.t("backoffice.common.unverified"))
+        end
+      end
+    end
+
+    context "when verifying open call via menu" do
+      before do
+        open_call.update! trusted: false
+        visit "/backoffice/open_calls"
+      end
+
+      it "verifies open call" do
+        within_row(open_call.name) do
+          find("button.rounded-full").click
+          click_on t("backoffice.common.verify")
+          expect(page).to have_text(I18n.t("backoffice.common.verified"))
+        end
+      end
+    end
   end
 end
