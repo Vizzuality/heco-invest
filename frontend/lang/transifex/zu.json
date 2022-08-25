@@ -1032,6 +1032,9 @@
   "KcJ5IK": {
     "string": "Select the deadline for this open call."
   },
+  "Kg0xQM": {
+    "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 10."
+  },
   "KkT/Fh": {
     "string": "Update password"
   },
@@ -2498,9 +2501,6 @@
   },
   "s63oNj": {
     "string": "Are you sure you want to delete your user? You can't undo this action and you will lose your access to the platform."
-  },
-  "sFn7MX": {
-    "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
   },
   "sH3zMa": {
     "string": "Launched"
