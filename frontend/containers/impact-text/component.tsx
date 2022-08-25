@@ -49,10 +49,7 @@ export const ImpactText: FC<ImpactTextProps> = ({ className, area, impact }) => 
     [allImpacts, highestImpactId]
   );
 
-  const impactScore = useMemo(
-    () => (impact?.total ? Math.round(impact?.total * 10) : null),
-    [impact]
-  );
+  const impactScore = useMemo(() => impact?.total?.toFixed(1) ?? null, [impact]);
 
   if (isLoadingAllImpacts) return null;
 
