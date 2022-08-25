@@ -3,8 +3,6 @@ import { FC, useState } from 'react';
 import { Facebook, Link, Mail, Twitter } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import classNames from 'classnames';
-
 import { useRouter } from 'next/router';
 
 import Button from 'components/button';
@@ -62,12 +60,7 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
   };
 
   return (
-    <div
-      className={classNames('self-center h-0', {
-        'translate-y-12': !isProjectPage,
-        'lg:translate-y-12': isProjectPage,
-      })}
-    >
+    <div className="absolute self-center translate-y-full -bottom-4">
       <div className="flex items-center gap-2">
         <span className="mr-2 text-sm leading-6 text-gray-600">
           <FormattedMessage defaultMessage="Share" id="OKhRC6" />
@@ -146,7 +139,7 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
         </Tooltip>
       </div>
       {copied && (
-        <div className="-translate-x-10 translate-y-4 absolute min-w-fit">
+        <div className="absolute -translate-x-10 translate-y-4 min-w-fit">
           <Toast
             id="copied-success"
             level="success"
