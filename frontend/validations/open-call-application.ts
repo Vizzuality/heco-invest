@@ -1,0 +1,29 @@
+import { useIntl } from 'react-intl';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+import { SchemaOf, object, string } from 'yup';
+
+import { OpenCallApplicationForm } from 'types/open-calls';
+
+export const useApplyToOpenCallResolver = () => {
+  const { formatMessage } = useIntl();
+
+  const schema: SchemaOf<Omit<OpenCallApplicationForm, 'open_call_id'>> = object().shape({
+    project_id: string()
+      .nullable()
+      .required(
+        formatMessage({
+          defaultMessage: 'You need to select a project.',
+          id: 'L/i942',
+        })
+      ),
+    message: string().required(
+      formatMessage({
+        defaultMessage: 'You need to enter a message.',
+        id: 'i8NU3I',
+      })
+    ),
+  });
+
+  return yupResolver(schema);
+};
