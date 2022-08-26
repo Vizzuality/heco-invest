@@ -193,8 +193,8 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
             disabled={isSubmitting || isLoadingProjects}
             onClick={handleSubmit(onSubmit)}
           >
+            <Loading className="mr-2" visible={isSubmitting} />
             <FormattedMessage defaultMessage="Send application" id="qY71uO" />
-            <Loading className="ml-2" visible={isSubmitting} />
           </Button>
         </div>
       </form>
