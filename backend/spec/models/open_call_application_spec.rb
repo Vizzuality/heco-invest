@@ -15,11 +15,6 @@ RSpec.describe OpenCallApplication, type: :model do
     expect(subject).to have(1).errors_on(:project)
   end
 
-  it "should not be valid without project_developer" do
-    subject.project_developer = nil
-    expect(subject).to have(1).errors_on(:project_developer)
-  end
-
   it "should not be valid without message" do
     subject.message = nil
     expect(subject).to have(1).errors_on(:message)
@@ -33,5 +28,11 @@ RSpec.describe OpenCallApplication, type: :model do
   it "should not be valid without language" do
     subject.language = nil
     expect(subject).to have(1).errors_on(:language)
+  end
+
+  it "should not be valid when application already exists" do
+    application = create :open_call_application
+    subject.assign_attributes application.attributes
+    expect(subject).to have(1).errors_on(:open_call)
   end
 end

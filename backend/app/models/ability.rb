@@ -82,6 +82,9 @@ class Ability
     else
       can %i[create update], Project, project_developer: {account_id: user.account_id}
       can %i[index], Project, project_developer: {account_id: user.account_id} if context == :accounts
+      can %i[create], OpenCallApplication,
+        project: {project_developer: {account_id: user.account_id}, status: Project.statuses[:published]},
+        open_call: {status: OpenCall.statuses[:launched], closing_at: Time.current..}
     end
   end
 end
