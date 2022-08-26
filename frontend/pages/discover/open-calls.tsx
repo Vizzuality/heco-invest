@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
@@ -14,6 +14,7 @@ import { loadI18nMessages } from 'helpers/i18n';
 import DiscoverNotice from 'containers/discover-notice';
 import OpenCallCard from 'containers/open-call-card';
 
+import Head from 'components/head';
 import Loading from 'components/loading';
 import Pagination from 'components/pagination';
 import DiscoverPageLayout, { DiscoverPageLayoutProps } from 'layouts/discover-page';
@@ -39,6 +40,7 @@ const OpenCallsPage: PageComponent<OpenCallsPageProps, DiscoverPageLayoutProps> 
   loading = false,
   meta,
 }) => {
+  const intl = useIntl();
   const openCallsContainerRef = useRef(null);
   const { props: paginationProps } = usePagination(meta);
   const [showNotice, setShowNotice] = useState<boolean>(false);
@@ -59,6 +61,7 @@ const OpenCallsPage: PageComponent<OpenCallsPageProps, DiscoverPageLayoutProps> 
 
   return (
     <>
+      <Head title={intl.formatMessage({ defaultMessage: 'Discover Open Calls', id: 'Y9+L0O' })} />
       <div className="flex flex-col w-full h-full pb-2 lg:p-1 lg:-m-1 lg:gap-0 lg:overflow-hidden lg:flex-row">
         <div className="relative flex flex-col w-full lg:overflow-hidden ">
           <DiscoverNotice className="mb-1" isVisible={showNotice} onClose={handleCloseNoticeClick}>
