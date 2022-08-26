@@ -212,6 +212,9 @@
   "2inebt": {
     "string": "The opportunities are located in geographies that are are unique due to of their biodiversity, cultural heritages, and regulation of water systems. As such, these projects will have the greatest impact for people and nature."
   },
+  "2qzivP": {
+    "string": "Discover Project Developers"
+  },
   "2sU5tO": {
     "string": "What HeCo Invest can do for you"
   },
@@ -364,6 +367,9 @@
   },
   "62pTkz": {
     "string": "Save your favorites"
+  },
+  "68i9X8": {
+    "string": "Investor information"
   },
   "6EYInP": {
     "string": "My open call applications"
@@ -661,6 +667,9 @@
   },
   "CPO6eS": {
     "string": "Select in which SDG’s your project will have impact"
+  },
+  "Cf2YAW": {
+    "string": "Open calls are funding offers from investors requesting project developer proposals to grow their businesses. Note that these open proposals are available for a limited time and have unique application requirements."
   },
   "CiBvks": {
     "string": "General information about the the project developer."
@@ -1209,6 +1218,9 @@
   "O29TSs": {
     "string": "Share by email"
   },
+  "O3WloJ": {
+    "string": "No open calls"
+  },
   "OBhULP": {
     "string": "Open calls"
   },
@@ -1331,6 +1343,9 @@
   },
   "QqpgJo": {
     "string": "Leave investor creation form"
+  },
+  "Qt/+mk": {
+    "string": "Discover Projects"
   },
   "R+1DVQ": {
     "string": "Invite users"
@@ -1647,6 +1662,9 @@
   "Y2zB+b": {
     "string": "No project developers"
   },
+  "Y9+L0O": {
+    "string": "Discover Open Calls"
+  },
   "Y9bYKH": {
     "string": "Next slide"
   },
@@ -1949,6 +1967,9 @@
   },
   "ff0+bt": {
     "string": "The platform will use the most advanced technologies and Artificial Intelligence applications to provide in one place data and tools to connect investors, donors and philanthropists with carefully selected projects in high priority locations defined by Heremcia Colombia."
+  },
+  "fmTQay": {
+    "string": "open call"
   },
   "fnihsY": {
     "string": "Leave"
@@ -2280,6 +2301,9 @@
   "nIbokM": {
     "string": "Contact access"
   },
+  "nWf75J": {
+    "string": "Discover Investors"
+  },
   "nYrKWp": {
     "string": "Edit profile"
   },
@@ -2396,6 +2420,9 @@
   },
   "q6rG+e": {
     "string": "See projects"
+  },
+  "q7AUEZ": {
+    "string": "Max funding"
   },
   "q7I+Bg": {
     "string": "{quantity, plural, one {investor} other {investors}}"
@@ -2648,6 +2675,9 @@
   },
   "vViagZ": {
     "string": "Discover investors by category"
+  },
+  "vZgJJu": {
+    "string": "Open call ended"
   },
   "vaWFzs": {
     "string": "What's your mission?"

@@ -1,5 +1,7 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
 
+import { UseQueryResult } from 'react-query';
+
 import cx from 'classnames';
 
 import { useRouter } from 'next/router';
@@ -11,14 +13,16 @@ import DiscoverSearch from 'containers/layouts/discover-search';
 import LayoutContainer from 'components/layout-container';
 import SortingButtons, { SortingOrderType } from 'components/sorting-buttons';
 import { SortingOptionKey } from 'components/sorting-buttons/types';
-import { Paths } from 'enums';
+import { Paths, Queries } from 'enums';
 
 import { useInvestorsList } from 'services/investors/investorsService';
+import { useOpenCallsList } from 'services/open-call/open-call-service';
 import { useProjectDevelopersList } from 'services/project-developers/projectDevelopersService';
 import { useProjectsList } from 'services/projects/projectService';
+import { PagedResponse } from 'services/types';
 
 import Header from './header';
-import { useSortingByOptions } from './helpers';
+import { useSortingByOptions, SortingByTargetType } from './helpers';
 import Navigation from './navigation';
 import { DiscoverPageLayoutProps } from './types';
 
@@ -28,8 +32,6 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 }: DiscoverPageLayoutProps) => {
   const { push, pathname } = useRouter();
 
-  const sortingOptions = useSortingByOptions();
-
   const defaultSorting = useMemo(
     () => ({
       sortBy: 'created_at' as SortingOptionKey,
@@ -38,87 +40,55 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     []
   );
 
-  // This shouldn't be needed, but due to CSS positioning / z-index issues we need to have the DiscoverSearch
-  // components both in the header and in this layout; which one is visible depends on the screen resolution.
-  // These states are here to keep both DiscoverSearch in sync, in case the user resizes their screen.
-
   const [sorting, setSorting] =
     useState<{ sortBy: SortingOptionKey; sortOrder: SortingOrderType }>(defaultSorting);
+
+  const sortingOptionsTarget = useMemo(() => {
+    if (pathname.startsWith(Paths.Projects)) return Queries.Project;
+
+    if (sorting.sortBy !== 'name' && sorting.sortBy !== 'created_at') {
+      setSorting({ ...sorting, sortBy: 'name' });
+    }
+  }, [pathname, sorting]) as SortingByTargetType;
+
+  const sortingOptions = useSortingByOptions(sortingOptionsTarget);
 
   const queryParams = useQueryParams(sorting);
 
   const queryOptions = { keepPreviousData: false };
 
-  const {
-    data: projects,
-    isLoading: isLoadingProjects,
-    isFetching: isFetchingProjects,
-    isRefetching: isRefetchingProjects,
-  } = useProjectsList(
+  const projects = useProjectsList(
     { ...queryParams, includes: ['project_developer', 'involved_project_developers'] },
     queryOptions
   );
+  const projectDevelopers = useProjectDevelopersList({ ...queryParams, perPage: 9 }, queryOptions);
+  const investors = useInvestorsList({ ...queryParams, perPage: 9 }, queryOptions);
+  const openCalls = useOpenCallsList({ ...queryParams, includes: ['investor'] }, queryOptions);
 
-  const {
-    data: projectDevelopers,
-    isLoading: isLoadingProjectDevelopers,
-    isFetching: isFetchingProjectDevelopers,
-    isRefetching: isRefetchingProjectDevelopers,
-  } = useProjectDevelopersList({ ...queryParams, perPage: 9 }, queryOptions);
+  const stats = useMemo(
+    () => ({
+      projects: projects?.data?.meta?.total,
+      projectDevelopers: projectDevelopers?.data?.meta?.total,
+      investors: investors?.data?.meta?.total,
+      openCalls: openCalls?.data?.meta?.total,
+    }),
+    [projects, investors, projectDevelopers, openCalls]
+  );
 
-  const {
-    data: investors,
-    isLoading: isLoadingInvestors,
-    isFetching: isFetchingInvestors,
-    isRefetching: isRefetchingInvestors,
-  } = useInvestorsList({ ...queryParams, perPage: 9 }, queryOptions);
-
-  const stats = {
-    projects: projects?.meta?.total,
-    projectDevelopers: projectDevelopers?.meta?.total,
-    investors: investors?.meta?.total,
-    openCalls: 0,
+  const getCurrentData = (data: UseQueryResult<PagedResponse<any>>) => {
+    return {
+      data: data.data?.data,
+      meta: data.data?.meta,
+      loading: data.isLoading || data?.isFetching || data?.isRefetching,
+    };
   };
 
   const { data, meta, loading } = useMemo(() => {
-    // TODO: Find a way to improve this.
-    if (pathname.startsWith(Paths.Projects))
-      return {
-        ...projects,
-        loading: isLoadingProjects || (isFetchingProjects && !isRefetchingProjects),
-      };
-    if (pathname.startsWith(Paths.ProjectDevelopers)) {
-      return {
-        ...projectDevelopers,
-        loading:
-          isLoadingProjectDevelopers ||
-          (isFetchingProjectDevelopers && !isRefetchingProjectDevelopers),
-      };
-    }
-
-    if (pathname.startsWith(Paths.Investors)) {
-      return {
-        ...investors,
-        loading: isLoadingInvestors || (isFetchingInvestors && !isRefetchingInvestors),
-      };
-    }
-
-    // if (router.pathname.startsWith(Paths.OpenCalls)) return openCalls;
-  }, [
-    pathname,
-    projects,
-    isLoadingProjects,
-    isFetchingProjects,
-    isRefetchingProjects,
-    projectDevelopers,
-    isLoadingProjectDevelopers,
-    isFetchingProjectDevelopers,
-    isRefetchingProjectDevelopers,
-    investors,
-    isLoadingInvestors,
-    isFetchingInvestors,
-    isRefetchingInvestors,
-  ]) || { data: [], meta: [] };
+    if (pathname.startsWith(Paths.Projects)) return getCurrentData(projects);
+    if (pathname.startsWith(Paths.ProjectDevelopers)) return getCurrentData(projectDevelopers);
+    if (pathname.startsWith(Paths.Investors)) return getCurrentData(investors);
+    if (pathname.startsWith(Paths.OpenCalls)) return getCurrentData(openCalls);
+  }, [pathname, projects, projectDevelopers, investors, openCalls]) || { data: [], meta: [] };
 
   useEffect(() => {
     const [sortBy, sortOrder]: any = queryParams.sorting.split(' ');
@@ -140,20 +110,10 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     });
   };
 
-  const getSortingOptions = () => {
-    // return all the sorting types for projects pages
-    if (pathname === Paths.Projects) return sortingOptions;
-    // reaturn just name and data sorting types for the other pages
-    if (sorting.sortBy !== 'name' && sorting.sortBy !== 'created_at') {
-      setSorting({ ...sorting, sortBy: 'name' });
-    }
-    return sortingOptions.slice(0, 2);
-  };
-
   const sortingButtonsProps = {
     sortBy: sorting.sortBy,
     sortOrder: sorting.sortOrder as SortingOrderType,
-    options: getSortingOptions(),
+    options: sortingOptions,
     onChange: handleSorting,
   };
 
