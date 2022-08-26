@@ -5,22 +5,21 @@ import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
-import useMe from 'hooks/me';
-
 import OpenCallApplicationModal from 'containers/open-call-application-modal';
 import ProfileCard from 'containers/profile-card';
 
 import Button from 'components/button';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
-import { Paths } from 'enums';
+import { OpenCallStatus, Paths, UserRoles } from 'enums';
 
+import { useAccount } from 'services/account';
 import { useFavoriteOpenCall } from 'services/open-call/open-call-service';
 
 import { OpenCallInvestorProps } from '.';
 
 export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({ openCall }) => {
-  const { user } = useMe();
+  const { userAccount } = useAccount();
   const favoriteOpenCall = useFavoriteOpenCall();
   const [showApplicationModal, setShowApplicationModal] = useState<boolean>(false);
 
@@ -66,7 +65,15 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({ openCall 
               />
             </h2>
             <div className="flex flex-col items-center justify-center gap-4 mt-8 sm:flex-row sm:mt-14">
-              <Button theme="primary-white" onClick={() => setShowApplicationModal(true)}>
+              <Button
+                theme="primary-white"
+                disabled={
+                  !userAccount ||
+                  userAccount.type !== UserRoles.ProjectDeveloper ||
+                  status !== OpenCallStatus.Launched
+                }
+                onClick={() => setShowApplicationModal(true)}
+              >
                 <span className="text-lg">
                   <FormattedMessage defaultMessage="Apply now" id="VR4TEV" />
                 </span>
@@ -74,7 +81,7 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({ openCall 
               <span className="text-xl text-white">
                 <FormattedMessage defaultMessage="or" id="Ntjkqd" />
               </span>
-              <Button disabled={!user} theme="secondary-white" onClick={handleFavoriteClick}>
+              <Button disabled={!userAccount} theme="secondary-white" onClick={handleFavoriteClick}>
                 <Icon
                   icon={Heart}
                   className={cx('w-4 mr-3', {

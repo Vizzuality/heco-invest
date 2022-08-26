@@ -9,8 +9,6 @@ import { useRouter } from 'next/router';
 
 import dayjs from 'dayjs';
 
-import useMe from 'hooks/me';
-
 import { translatedLanguageNameForLocale } from 'helpers/intl';
 
 import Breadcrumbs from 'containers/breadcrumbs';
@@ -20,9 +18,10 @@ import ShareIcons from 'containers/share-icons';
 import Button from 'components/button';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
-import { Languages, OpenCallStatus } from 'enums';
+import { Languages, OpenCallStatus, UserRoles } from 'enums';
 import languages from 'locales.config.json';
 
+import { useAccount } from 'services/account';
 import { useFavoriteOpenCall } from 'services/open-call/open-call-service';
 
 import OpenCallChart from '../chart';
@@ -33,7 +32,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
   const intl = useIntl();
   const { locale } = useRouter();
   const favoriteOpenCall = useFavoriteOpenCall();
-  const { user } = useMe();
+  const { userAccount } = useAccount();
 
   const [showApplicationModal, setShowApplicationModal] = useState<boolean>(false);
 
@@ -181,7 +180,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                   className="justify-center"
                   theme="secondary-green"
                   onClick={handleFavoriteClick}
-                  disabled={!user}
+                  disabled={!userAccount}
                   aria-pressed={favourite}
                 >
                   <Icon icon={Heart} className={cx('w-4 mr-3', { 'fill-green-dark': favourite })} />
@@ -189,6 +188,11 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                 </Button>
                 <Button
                   className="w-full lg:max-w-[200px] justify-center"
+                  disabled={
+                    !userAccount ||
+                    userAccount.type !== UserRoles.ProjectDeveloper ||
+                    status !== OpenCallStatus.Launched
+                  }
                   theme="primary-green"
                   onClick={() => setShowApplicationModal(true)}
                 >
