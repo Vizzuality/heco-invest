@@ -5,8 +5,7 @@ export type SortingOptionKey =
   | 'biodiversity_impact'
   | 'climate_impact'
   | 'water_impact'
-  | 'community_impact'
-  | 'instrument_type';
+  | 'community_impact';
 
 export type SortingOptionType = {
   /** Option key */

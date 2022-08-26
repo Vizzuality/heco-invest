@@ -13,7 +13,7 @@ import DiscoverSearch from 'containers/layouts/discover-search';
 import LayoutContainer from 'components/layout-container';
 import SortingButtons, { SortingOrderType } from 'components/sorting-buttons';
 import { SortingOptionKey } from 'components/sorting-buttons/types';
-import { Paths } from 'enums';
+import { Paths, Queries } from 'enums';
 
 import { useInvestorsList } from 'services/investors/investorsService';
 import { useOpenCallsList } from 'services/open-call/open-call-service';
@@ -22,7 +22,7 @@ import { useProjectsList } from 'services/projects/projectService';
 import { PagedResponse } from 'services/types';
 
 import Header from './header';
-import { useSortingByOptions } from './helpers';
+import { useSortingByOptions, SortingByTargetType } from './helpers';
 import Navigation from './navigation';
 import { DiscoverPageLayoutProps } from './types';
 
@@ -44,13 +44,12 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     useState<{ sortBy: SortingOptionKey; sortOrder: SortingOrderType }>(defaultSorting);
 
   const sortingOptionsTarget = useMemo(() => {
-    if (pathname.startsWith(Paths.Projects)) return 'projects';
-    if (pathname.startsWith(Paths.OpenCalls)) return 'openCalls';
+    if (pathname.startsWith(Paths.Projects)) return Queries.Project;
 
     if (sorting.sortBy !== 'name' && sorting.sortBy !== 'created_at') {
       setSorting({ ...sorting, sortBy: 'name' });
     }
-  }, [pathname, sorting]);
+  }, [pathname, sorting]) as SortingByTargetType;
 
   const sortingOptions = useSortingByOptions(sortingOptionsTarget);
 

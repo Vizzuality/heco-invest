@@ -3,9 +3,12 @@ import { useIntl } from 'react-intl';
 import { compact } from 'lodash-es';
 
 import { SortingOptionType } from 'components/sorting-buttons';
+import { Queries } from 'enums';
+
+export type SortingByTargetType = Queries.Project;
 
 /** Returns the sorting-by types array with translated labels  */
-export const useSortingByOptions = (target?: 'projects' | 'openCalls'): SortingOptionType[] => {
+export const useSortingByOptions = (target?: SortingByTargetType): SortingOptionType[] => {
   const { formatMessage } = useIntl();
 
   const sortingOptions = {
@@ -13,7 +16,7 @@ export const useSortingByOptions = (target?: 'projects' | 'openCalls'): SortingO
       { key: 'name', label: formatMessage({ defaultMessage: 'Name', id: 'HAlOn1' }) },
       { key: 'created_at', label: formatMessage({ defaultMessage: 'Date', id: 'P7PLVj' }) },
     ],
-    projects: [
+    [Queries.Project]: [
       {
         key: 'total_impact',
         label: formatMessage({ defaultMessage: 'Impact score', id: '2GBpne' }),
@@ -33,12 +36,6 @@ export const useSortingByOptions = (target?: 'projects' | 'openCalls'): SortingO
       {
         key: 'community_impact',
         label: formatMessage({ defaultMessage: 'Community impact', id: 'PGlFh/' }),
-      },
-    ],
-    openCalls: [
-      {
-        key: 'instrument_type',
-        label: formatMessage({ defaultMessage: 'Instrument type', id: 'fDd10o' }),
       },
     ],
   };
