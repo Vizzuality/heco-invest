@@ -158,7 +158,10 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardPr
             <span className="relative flex-shrink-0 w-8 overflow-hidden rounded-full aspect-square">
               <Image
                 src={picture}
-                alt={`${name} ${intl.formatMessage({ defaultMessage: 'picture', id: 'GmR2YQ' })}`}
+                alt={intl.formatMessage(
+                  { defaultMessage: '{name} picture', id: 'rLzWx9' },
+                  { name }
+                )}
                 layout="fill"
                 objectFit="cover"
                 onError={() => setPicture(placeholderPicture)}
