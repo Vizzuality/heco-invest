@@ -17,12 +17,20 @@ export const useApplyToOpenCallResolver = () => {
           id: 'L/i942',
         })
       ),
-    message: string().required(
-      formatMessage({
-        defaultMessage: 'You need to enter a message.',
-        id: 'i8NU3I',
-      })
-    ),
+    message: string()
+      .max(
+        600,
+        formatMessage({
+          defaultMessage: 'The message can have a maximum of 600 characters',
+          id: '0ZgDo2',
+        })
+      )
+      .required(
+        formatMessage({
+          defaultMessage: 'You need to enter a message.',
+          id: 'i8NU3I',
+        })
+      ),
   });
 
   return yupResolver(schema);
