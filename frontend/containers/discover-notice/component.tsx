@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { X as XIcon } from 'react-feather';
+import { FormattedMessage } from 'react-intl';
 
 import Alert from 'components/alert';
 import Button from 'components/button';
@@ -26,6 +27,9 @@ export const DiscoverNotice: FC<DiscoverNoticeProps> = ({
               size="smallest"
               onClick={onClose}
             >
+              <span className="sr-only">
+                <FormattedMessage defaultMessage="Dismiss" id="TDaF6J" />
+              </span>
               <XIcon className="w-5 h-5" />
             </Button>
           </div>
