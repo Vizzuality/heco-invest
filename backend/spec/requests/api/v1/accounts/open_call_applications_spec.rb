@@ -117,4 +117,37 @@ RSpec.describe "API V1 Account Open Call Applications", type: :request do
       end
     end
   end
+
+  path "/api/v1/account/open_call_applications/{id}" do
+    delete "Delete existing application of Project Developer" do
+      tags "Open Call Applications"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :id, in: :path, type: :string, description: "Use open call application ID"
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
+
+      let(:open_call_application) { create :open_call_application }
+      let(:user) { open_call_application.project_developer.owner }
+      let(:id) { open_call_application.id }
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
+
+      response "200", :success do
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before(:each) { sign_in user }
+
+        it "removes open call application" do |example|
+          expect {
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
+          }.to change(OpenCallApplication, :count).by(-1)
+        end
+      end
+    end
+  end
 end
