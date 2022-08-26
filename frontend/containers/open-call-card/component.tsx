@@ -27,6 +27,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardPr
     status,
     trusted,
     investor,
+    instrument_types,
     maximum_funding_per_project: maxFunding,
     closing_at: closingAt,
     picture: pictureProp,
@@ -57,10 +58,10 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardPr
   const instrumentTypesStr = useMemo(
     () =>
       allInstrumentTypes
-        ?.filter(({ id }) => investor.instrument_types?.includes(id))
+        ?.filter(({ id }) => instrument_types?.includes(id))
         .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase()))
         .join(', '),
-    [allInstrumentTypes, investor]
+    [allInstrumentTypes, instrument_types]
   );
 
   const deadlineStr = useMemo(() => dayjs(closingAt).format('D MMMM'), [closingAt]);
