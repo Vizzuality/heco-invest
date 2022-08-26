@@ -85,6 +85,7 @@ class Ability
       can %i[create], OpenCallApplication,
         project: {project_developer: {account_id: user.account_id}, status: Project.statuses[:published]},
         open_call: {status: OpenCall.statuses[:launched], closing_at: Time.current..}
+      can %i[destroy], OpenCallApplication, project: {project_developer: {account_id: user.account_id}}
     end
   end
 end

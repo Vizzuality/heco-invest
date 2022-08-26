@@ -14,6 +14,11 @@ module API
           ).serializable_hash
         end
 
+        def destroy
+          @open_call_application.destroy!
+          head :ok
+        end
+
         private
 
         def create_params
