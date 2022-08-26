@@ -74,8 +74,10 @@ export enum Queries {
   FavoriteProjectsList = 'favorite_projects',
   /** Single project */
   Project = 'project',
-  /** List of projects */
+  /** List of open calls */
   OpenCallList = 'open_calls',
+  /** List of open call applications */
+  OpenCallApplicationList = 'open_calls_applications',
   /** List of favorited projects */
   FavoriteOpenCallsList = 'favorite_open_calls',
   /** Single open call */
