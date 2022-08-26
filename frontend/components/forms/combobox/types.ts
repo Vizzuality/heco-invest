@@ -1,13 +1,8 @@
-import {
-  Path,
-  Control,
-  RegisterOptions,
-  FieldPath,
-  UseControllerProps,
-  UseFormResetField,
-} from 'react-hook-form';
+import { Path, Control, RegisterOptions, FieldPath, UseControllerProps } from 'react-hook-form';
 
 import type { ComboBoxProps } from '@react-types/combobox';
+
+import { ListboxProps } from '../select/listbox';
 
 export type ComboboxProps<FormValues, T extends object> = {
   /** ID of the input */
@@ -27,13 +22,14 @@ export type ComboboxProps<FormValues, T extends object> = {
     /** Whether the input is disabled */
     disabled?: boolean;
   };
-} & Omit<
-  ComboBoxProps<T>,
-  | keyof RegisterOptions<FormValues, FieldPath<FormValues>>
-  | 'name'
-  | 'isDisabled'
-  | 'isRequired'
-  | 'inputValue'
-  | 'defaultInputValue'
-  | 'onInputChange'
->;
+} & Pick<ListboxProps, 'height'> &
+  Omit<
+    ComboBoxProps<T>,
+    | keyof RegisterOptions<FormValues, FieldPath<FormValues>>
+    | 'name'
+    | 'isDisabled'
+    | 'isRequired'
+    | 'inputValue'
+    | 'defaultInputValue'
+    | 'onInputChange'
+  >;

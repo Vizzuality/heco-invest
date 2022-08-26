@@ -126,6 +126,7 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
               name="project_id"
               id="project-id"
               className="mt-2.5 w-full h-10 border border-beige rounded-lg px-4"
+              height="small"
               placeholder={formatMessage({
                 defaultMessage: 'select project',
                 id: 'kRnyPA',
