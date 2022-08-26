@@ -81,91 +81,104 @@
       "id": "conservation",
       "type": "impact_area",
       "attributes": {
-        "name": "Conservation"
+        "name": "Conservation",
+        "impact": "biodiversity"
       }
     },
     {
       "id": "restoration",
       "type": "impact_area",
       "attributes": {
-        "name": "Restoration"
+        "name": "Restoration",
+        "impact": "biodiversity"
       }
     },
     {
       "id": "pollutants-reduction",
       "type": "impact_area",
       "attributes": {
-        "name": "Pollutants reduction"
+        "name": "Pollutants reduction",
+        "impact": "biodiversity"
       }
     },
     {
       "id": "carbon-emission-reduction",
       "type": "impact_area",
       "attributes": {
-        "name": "Carbon emission reduction"
+        "name": "Carbon emission reduction",
+        "impact": "climate"
       }
     },
     {
       "id": "energy-efficiency",
       "type": "impact_area",
       "attributes": {
-        "name": "Energy efficiency"
+        "name": "Energy efficiency",
+        "impact": "climate"
       }
     },
     {
       "id": "renewable-energy",
       "type": "impact_area",
       "attributes": {
-        "name": "Renewable energy"
+        "name": "Renewable energy",
+        "impact": "climate"
       }
     },
     {
       "id": "carbon-storage-or-sequestration",
       "type": "impact_area",
       "attributes": {
-        "name": "Carbon storage or sequestration"
+        "name": "Carbon storage or sequestration",
+        "impact": "climate"
       }
     },
     {
       "id": "water-capacity-or-efficiency",
       "type": "impact_area",
       "attributes": {
-        "name": "Water capacity or efficiency"
+        "name": "Water capacity or efficiency",
+        "impact": "water"
       }
     },
     {
       "id": "hydrometerological-risk-reduction",
       "type": "impact_area",
       "attributes": {
-        "name": "Hydrometerological risk reduction"
+        "name": "Hydrometerological risk reduction",
+        "impact": "water"
       }
     },
     {
       "id": "sustainable-food",
       "type": "impact_area",
       "attributes": {
-        "name": "Sustainable food"
+        "name": "Sustainable food",
+        "impact": "water"
       }
     },
     {
       "id": "gender-equality-jobs",
       "type": "impact_area",
       "attributes": {
-        "name": "Gender equality jobs"
+        "name": "Gender equality jobs",
+        "impact": "community"
       }
     },
     {
       "id": "indigenous-or-ethic-jobs",
       "type": "impact_area",
       "attributes": {
-        "name": "Indigenous or ethic jobs"
+        "name": "Indigenous or ethic jobs",
+        "impact": "community"
       }
     },
     {
       "id": "community-empowerment",
       "type": "impact_area",
       "attributes": {
-        "name": "Community empowerment"
+        "name": "Community empowerment",
+        "impact": "community"
       }
     },
     {
