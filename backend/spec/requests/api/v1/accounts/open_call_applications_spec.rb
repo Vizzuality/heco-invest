@@ -65,7 +65,7 @@ RSpec.describe "API V1 Account Open Call Applications", type: :request do
             let(:includes) { "project_developer" }
 
             it "matches snapshot" do
-              expect(response.body).to match_snapshot("api/v1/account/open_call_applications-include-relationships")
+              expect(response.body).to match_snapshot("api/v1/account/open-call-applications-include-relationships")
             end
           end
 
@@ -257,6 +257,58 @@ RSpec.describe "API V1 Account Open Call Applications", type: :request do
   end
 
   path "/api/v1/account/open_call_applications/{id}" do
+    get "See detail of Open Call Application" do
+      tags "Open Call Applications"
+      consumes "application/json"
+      produces "application/json"
+      security [cookie_auth: []]
+      parameter name: :id, in: :path, type: :string, description: "Use open call application ID"
+      parameter name: :includes, in: :query, type: :string, description: "Include relationships. Use comma to separate multiple fields", required: false
+
+      let(:open_call_application) { create :open_call_application }
+      let(:id) { open_call_application.id }
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with not found error", csrf: true, user: -> { user }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
+
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/open_call_application"}
+        }
+
+        context "when signed in as project developer" do
+          before { sign_in open_call_application.project_developer.owner }
+
+          run_test!
+
+          it "matches snapshot", generate_swagger_example: true do
+            expect(response.body).to match_snapshot("api/v1/account/open-call-application-project-developer")
+          end
+
+          context "with relationships" do
+            let(:includes) { "project_developer" }
+
+            it "matches snapshot" do
+              expect(response.body).to match_snapshot("api/v1/account/open-call-application-include-relationships")
+            end
+          end
+        end
+
+        context "when signed in as investor" do
+          before { sign_in open_call_application.investor.owner }
+
+          run_test!
+
+          it "matches snapshot", generate_swagger_example: true do
+            expect(response.body).to match_snapshot("api/v1/account/open-call-application-investor")
+          end
+        end
+      end
+    end
+
     put "Update existing application of Project Developer" do
       tags "Open Call Applications"
       consumes "application/json"

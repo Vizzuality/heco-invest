@@ -19,6 +19,15 @@ module API
           ).serializable_hash
         end
 
+        def show
+          render json: OpenCallApplicationSerializer.new(
+            @open_call_application,
+            include: included_relationships,
+            fields: sparse_fieldset,
+            params: {current_user: current_user}
+          ).serializable_hash
+        end
+
         def create
           @open_call_application.save!
           render json: OpenCallApplicationSerializer.new(
