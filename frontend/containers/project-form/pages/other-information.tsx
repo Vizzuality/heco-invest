@@ -30,7 +30,7 @@ const OtherInformation = ({ register, errors }: ProjectFormPagesProps<ProjectFor
               <FormattedMessage defaultMessage="Short description of the project" id="YWQkk+" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage:
                   "This description should succently explain your project. It should be a catching text since it's the first thing investors will read.",
                 id: '5mkG4O',
@@ -55,7 +55,7 @@ const OtherInformation = ({ register, errors }: ProjectFormPagesProps<ProjectFor
               <FormattedMessage defaultMessage="Relevant links (optional)" id="jKdvln" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage:
                   'Use this space to share links to documents, videos and websites that support your pitch.',
                 id: 'efZTBX',

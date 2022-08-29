@@ -74,7 +74,7 @@ const Funding = ({
                     />
                   </span>
                   <FieldInfo
-                    infoText={formatMessage({
+                    content={formatMessage({
                       defaultMessage:
                         'If you are not looking for funding and just want to publish your project, select No.',
                       id: 'OWnChd',
@@ -181,7 +181,7 @@ const Funding = ({
                     <FormattedMessage defaultMessage="Select the intrument type(s)" id="hWhIuU" />
                   </span>
                   <FieldInfo
-                    infoText={formatMessage({
+                    content={formatMessage({
                       defaultMessage:
                         'What type of financing are you looking for to implement your project or solution?',
                       id: 'ADBj6Y',
@@ -224,7 +224,7 @@ const Funding = ({
                   <FormattedMessage defaultMessage="How will the money be used?" id="1t1fGY" />
                 </span>
                 <FieldInfo
-                  infoText={formatMessage({
+                  content={formatMessage({
                     defaultMessage:
                       'Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components',
                     id: 'Ec0M9T',

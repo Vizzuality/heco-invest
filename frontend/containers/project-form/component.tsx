@@ -58,6 +58,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     category,
     project_development_stage,
     project_target_group,
+    impact,
     impact_area,
     ticket_size,
     instrument_type,
@@ -73,6 +74,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     formState: { errors },
     control,
     getValues,
+    watch,
     setValue,
     clearErrors,
     resetField,
@@ -296,7 +298,9 @@ export const ProjectForm: FC<ProjectFormProps> = ({
             controlOptions={{ disabled: false }}
             errors={errors}
             getValues={getValues}
-            impacts={impact_area}
+            watch={watch}
+            impacts={impact}
+            impactAreas={impact_area}
             setValue={setValue}
             clearErrors={clearErrors}
           />

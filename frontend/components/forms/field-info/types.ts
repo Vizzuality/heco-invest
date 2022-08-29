@@ -1,4 +1,6 @@
+import React from 'react';
+
 export type FieldInfoProps = {
-  /** info text to display on Tooltip */
-  infoText: string | JSX.Element;
+  /** Content of the tooltip */
+  content: string | React.ReactNode;
 };

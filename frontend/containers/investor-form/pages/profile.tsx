@@ -52,7 +52,7 @@ export const Profile: FC<ProfileProps> = ({
             <FormattedMessage defaultMessage="Picture" id="wvoA3H" />
           </Label>
           <FieldInfo
-            infoText={formatMessage({
+            content={formatMessage({
               defaultMessage: 'Add your logo or a picture that identifies the account.',
               id: '2Cbk6h',
             })}
@@ -169,7 +169,7 @@ export const Profile: FC<ProfileProps> = ({
               <FormattedMessage defaultMessage="Email" id="sy+pv5" />
               <span className="ml-2.5">
                 <FieldInfo
-                  infoText={formatMessage({
+                  content={formatMessage({
                     defaultMessage: 'Insert the email to receive the contact messages.',
                     id: 'Qmlx+T',
                   })}
@@ -196,7 +196,7 @@ export const Profile: FC<ProfileProps> = ({
               <FormattedMessage defaultMessage="Phone number (optional)" id="JNTB42" />
               <span className="ml-2.5">
                 <FieldInfo
-                  infoText={formatMessage({
+                  content={formatMessage({
                     defaultMessage:
                       'Insert the phone number in case you would like to be contacted by phone.',
                     id: 'VkljLs',

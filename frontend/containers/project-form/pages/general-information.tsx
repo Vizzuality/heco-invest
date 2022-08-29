@@ -117,7 +117,7 @@ const GeneralInformation = ({
               <FormattedMessage defaultMessage="Project name" id="D5RCKi" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage: 'A great name is short, crisp, and easily understood.',
                 id: 'rPwaWt',
               })}
@@ -144,7 +144,7 @@ const GeneralInformation = ({
               <FormattedMessage defaultMessage="Project gallery (optional)" id="7aTDQM" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage:
                   'The project gallery will be the first thing other users will see on you page, it will help you to showcase you project.',
                 id: 'c1m3Q7',
@@ -215,7 +215,7 @@ const GeneralInformation = ({
               <FormattedMessage defaultMessage="Draw or upload your location" id="MHwpc4" />
             </span>
             <FieldInfo
-              infoText={
+              content={
                 <>
                   <p>
                     <FormattedMessage
@@ -261,7 +261,7 @@ const GeneralInformation = ({
                   />
                 </span>
                 <FieldInfo
-                  infoText={formatMessage({
+                  content={formatMessage({
                     defaultMessage: 'Do you have a partnership with someone else?',
                     id: 'nbqoY2',
                   })}

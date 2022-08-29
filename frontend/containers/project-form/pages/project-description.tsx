@@ -55,7 +55,7 @@ const ProjectDescription = ({
                   />
                 </span>
                 <FieldInfo
-                  infoText={formatMessage({
+                  content={formatMessage({
                     defaultMessage:
                       'Select the stage of development of the project or solution at the time of submitting this pitch',
                     id: '3hV8r4',
@@ -91,7 +91,7 @@ const ProjectDescription = ({
                   />
                 </span>
                 <FieldInfo
-                  infoText={formatMessage({
+                  content={formatMessage({
                     defaultMessage:
                       'Enter the estimated implementation duration for the project. MAX 36 months.',
                     id: '/Lbk/f',
@@ -126,7 +126,7 @@ const ProjectDescription = ({
                   />
                 </span>
                 <FieldInfo
-                  infoText={
+                  content={
                     <ul>
                       {category?.map(({ id, name, description }) => (
                         <li key={id}>
@@ -171,7 +171,7 @@ const ProjectDescription = ({
               <FormattedMessage defaultMessage="Problem you are solving" id="xBZz+E" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage:
                   'Describe the problem or market need that your project or solution seeks to address. It should be a very specific problem, not a macro global issue like "climate change" or "poverty". Make sure that your showing that the problem is addressing a specific demand (is real) and it affects the poor and vulnerable population and/or the environment. We recommend using numbers to give a dimension of the problem.',
                 id: '6xBvFx',
@@ -197,7 +197,7 @@ const ProjectDescription = ({
               <FormattedMessage defaultMessage="The solution or opportunity proposed" id="OSAxiC" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage:
                   'Describe the project or solution and describe clearly why you consider it is innovative, different from others and how it can generate an important change and impact towards the target groups. Highlight the characteristics that may attract partners, clients, or investors.',
                 id: 'eXDHt0',
@@ -224,7 +224,7 @@ const ProjectDescription = ({
                 <FormattedMessage defaultMessage="Target group" id="0L/mZC" />
               </span>
               <FieldInfo
-                infoText={formatMessage({
+                content={formatMessage({
                   defaultMessage:
                     'Identify the target group(s) of this solution. Try to be very specific and do not cover an unrealistic range of beneficiaries or clients.',
                   id: 'Zht65f',
@@ -266,7 +266,7 @@ const ProjectDescription = ({
               <FormattedMessage defaultMessage="Expected impact" id="XgaRPC" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage:
                   'Describe briefly the impact that the project is expected to generate to the identified users/beneficiaries. Try to explain how the solution or project will achieve this impact. Also try to give some estimates of the number of people impacted, at least to get an initial idea.',
                 id: '4JFhNG',

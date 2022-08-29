@@ -147,7 +147,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
               <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
                 {impactData[ImpactsEnum.Biodiversity].name}
               </span>
-              <FieldInfo infoText={impactData[ImpactsEnum.Biodiversity].description} />
+              <FieldInfo content={impactData[ImpactsEnum.Biodiversity].description} />
             </span>
           )}
           <span className="flex w-full">
@@ -156,7 +156,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
                 <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
                   {impactData[ImpactsEnum.Water].name}
                 </span>
-                <FieldInfo infoText={impactData[ImpactsEnum.Water].description} />
+                <FieldInfo content={impactData[ImpactsEnum.Water].description} />
               </span>
             )}
             <span className="relative flex items-center w-full overflow-x-hidden aspect-square">
@@ -169,7 +169,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
                 <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
                   {impactData[ImpactsEnum.Climate].name}
                 </span>
-                <FieldInfo infoText={impactData[ImpactsEnum.Climate].description} />
+                <FieldInfo content={impactData[ImpactsEnum.Climate].description} />
               </span>
             )}
           </span>
@@ -178,7 +178,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
               <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
                 {impactData[ImpactsEnum.Community].name}
               </span>
-              <FieldInfo infoText={impactData[ImpactsEnum.Community].description} />
+              <FieldInfo content={impactData[ImpactsEnum.Community].description} />
             </span>
           )}
         </div>
