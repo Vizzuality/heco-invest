@@ -111,176 +111,184 @@ export const Filters: FC<FiltersProps> = ({
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="p-6">
-      <form onSubmit={handleSubmit(onSubmitFilters)}>
-        <div>
-          <div className="flex justify-between">
-            <div className="flex items-center mb-4">
-              <Checkbox
-                id="verified"
-                name="only_verified"
-                register={register}
-                registerOptions={{ onChange: onCheckboxChange }}
-              />
-              <label htmlFor="verified" className="mt-1 text-sm font-normal text-gray-800">
-                <FormattedMessage defaultMessage="Show verified content only" id="i9eK6b" />
-              </label>
-            </div>
-            <Button theme="naked" className="px-0 py-0" onClick={closeFilters}>
-              <CloseIcon className="w-4 h-4 transition-transform rotate-0 hover:rotate-180" />
-            </Button>
-          </div>
-
-          <div className="flex flex-col flex-wrap gap-y-4">
-            {filters?.map((filter) => {
-              return (
-                <div key={filter.title}>
-                  <fieldset>
-                    <legend className="inline mb-3 font-sans text-base font-medium text-black">
-                      <span className="mr-2 font-sans text-sm font-semibold text-gray-800">
-                        {filter.title}
-                      </span>
-                      <FieldInfo
-                        content={
-                          filter.description ? (
-                            filter.description
-                          ) : (
-                            <ul>
-                              {filter.values.map((value) => (
-                                <li key={value.id} className="mb-2">
-                                  <p className="font-bold ">{value.name}</p>
-                                  {!!value.description && <p>{value.description}</p>}
-                                </li>
-                              ))}
-                            </ul>
-                          )
-                        }
-                      />
-                    </legend>
-
-                    {!!filter.values.length && (
-                      <TagGroup
-                        name={filter.values?.[0].type}
-                        type="radio"
-                        clearErrors={clearErrors}
-                        setValue={setValue}
-                        errors={errors}
-                        thresholdToShowSelectAll={Infinity}
-                        className="flex flex-wrap gap-2"
-                        isFilterTag
-                      >
-                        {filter.values.map(({ name, id, type, description }) => (
-                          <Tag
-                            key={id}
-                            id={`${id}-tag`}
-                            name={type}
-                            value={id}
-                            register={register}
-                            registerOptions={{
-                              disabled: false,
-                              onChange,
-                            }}
-                            type="radio"
-                            isfilterTag
-                            onClick={onChange}
-                          >
-                            <span className="block">
-                              {type === EnumTypes.TicketSize ? description : name}
-                            </span>
-                          </Tag>
-                        ))}
-                      </TagGroup>
-                    )}
-                  </fieldset>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="flex my-4">
-            {/* More filters accordion header https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html */}
-            <h3>
-              <Button
-                onClick={() => setShowMoreFilters(!showMoreFilters)}
-                theme="naked"
-                className="px-0 py-0 font-sans text-base font-medium text-black"
-                id="more-filters-button"
-                aria-expanded={showMoreFilters}
-                aria-controls="more-filters"
-              >
-                <FormattedMessage defaultMessage="More filters" id="vdJRZj" />
-                <Icon className="w-5 h-5 ml-1" icon={showMoreFilters ? ChevronUp : ChevronDown} />
-              </Button>
-            </h3>
-          </div>
-
-          {/* More filters accordion pannel */}
-          {showMoreFilters && (
-            <div
-              id="more-filters"
-              role="region"
-              aria-labelledby="more-filters-button"
-              className="mb-6"
-            >
-              <fieldset>
-                <legend className="inline mb-3 font-sans text-base font-medium text-black">
-                  <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
-                </legend>
-
-                <div className="flex flex-wrap gap-4">
-                  <TagGroup
-                    name="sdg"
-                    type="radio"
-                    clearErrors={clearErrors}
-                    setValue={setValue}
-                    errors={errors}
-                    thresholdToShowSelectAll={Infinity}
-                    isFilterTag
-                  >
-                    {sdg.map(({ name, type, id }) => (
-                      <Tag
-                        key={id}
-                        id={`${id}-tag`}
-                        name={type}
-                        value={id}
-                        register={register}
-                        registerOptions={{
-                          disabled: false,
-                          onChange,
-                        }}
-                        type="radio"
-                        isfilterTag
-                        onClick={onChange}
-                      >
-                        <span className="block">{name}</span>
-                      </Tag>
-                    ))}
-                  </TagGroup>
-                </div>
-              </fieldset>
-            </div>
-          )}
-          <div className="items-center justify-between text-sm text-gray-600 sm:flex">
-            <div className="mb-4 sm:mb-0">
-              <p>
-                <FormattedMessage
-                  defaultMessage="Note: Some filters not apply to all tabs"
-                  id="j4lBL7"
-                />
-              </p>
-            </div>
-            <div className="flex justify-end gap-4">
-              <Button theme="secondary-green" onClick={handleClear}>
-                <FormattedMessage defaultMessage="Clear filters" id="F4gyn3" />
-              </Button>
-              <Button theme="primary-green" type="submit">
-                <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
-              </Button>
-            </div>
+    <form
+      className="relative p-6 max-h-[75vh] flex flex-col"
+      onSubmit={handleSubmit(onSubmitFilters)}
+    >
+      <Button
+        theme="naked"
+        size="smallest"
+        className="absolute top-6 right-6"
+        onClick={closeFilters}
+      >
+        <span className="sr-only">
+          <FormattedMessage defaultMessage="Close filters" id="78vrMq" />
+        </span>
+        <CloseIcon className="w-4 h-4 transition-transform rotate-0 hover:rotate-180" />
+      </Button>
+      <div className="overflow-y-auto">
+        <div className="flex justify-between">
+          <div className="flex items-center mb-4">
+            <Checkbox
+              id="verified"
+              name="only_verified"
+              register={register}
+              registerOptions={{ onChange: onCheckboxChange }}
+            />
+            <label htmlFor="verified" className="mt-1 text-sm font-normal text-gray-800">
+              <FormattedMessage defaultMessage="Show verified content only" id="i9eK6b" />
+            </label>
           </div>
         </div>
-      </form>
-    </div>
+
+        <div className="flex flex-col flex-wrap gap-y-4">
+          {filters?.map((filter) => {
+            return (
+              <div key={filter.title}>
+                <fieldset>
+                  <legend className="inline mb-3 font-sans text-base font-medium text-black">
+                    <span className="mr-2 font-sans text-sm font-semibold text-gray-800">
+                      {filter.title}
+                    </span>
+                    <FieldInfo
+                      content={
+                        filter.description ? (
+                          filter.description
+                        ) : (
+                          <ul>
+                            {filter.values.map((value) => (
+                              <li key={value.id} className="mb-2">
+                                <p className="font-bold ">{value.name}</p>
+                                {!!value.description && <p>{value.description}</p>}
+                              </li>
+                            ))}
+                          </ul>
+                        )
+                      }
+                    />
+                  </legend>
+
+                  {!!filter.values.length && (
+                    <TagGroup
+                      name={filter.values?.[0].type}
+                      type="radio"
+                      clearErrors={clearErrors}
+                      setValue={setValue}
+                      errors={errors}
+                      thresholdToShowSelectAll={Infinity}
+                      className="flex flex-wrap gap-2"
+                      isFilterTag
+                    >
+                      {filter.values.map(({ name, id, type, description }) => (
+                        <Tag
+                          key={id}
+                          id={`${id}-tag`}
+                          name={type}
+                          value={id}
+                          register={register}
+                          registerOptions={{
+                            disabled: false,
+                            onChange,
+                          }}
+                          type="radio"
+                          isfilterTag
+                          onClick={onChange}
+                        >
+                          <span className="block">
+                            {type === EnumTypes.TicketSize ? description : name}
+                          </span>
+                        </Tag>
+                      ))}
+                    </TagGroup>
+                  )}
+                </fieldset>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="flex my-4">
+          {/* More filters accordion header https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html */}
+          <h3>
+            <Button
+              onClick={() => setShowMoreFilters(!showMoreFilters)}
+              theme="naked"
+              className="px-0 py-0 font-sans text-base font-medium text-black"
+              id="more-filters-button"
+              aria-expanded={showMoreFilters}
+              aria-controls="more-filters"
+            >
+              <FormattedMessage defaultMessage="More filters" id="vdJRZj" />
+              <Icon className="w-5 h-5 ml-1" icon={showMoreFilters ? ChevronUp : ChevronDown} />
+            </Button>
+          </h3>
+        </div>
+
+        {/* More filters accordion pannel */}
+        {showMoreFilters && (
+          <div
+            className="mb-4"
+            id="more-filters"
+            role="region"
+            aria-labelledby="more-filters-button"
+          >
+            <fieldset>
+              <legend className="inline mb-3 font-sans text-base font-medium text-black sm:mb-2">
+                <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
+              </legend>
+
+              <div className="flex flex-wrap gap-4">
+                <TagGroup
+                  name="sdg"
+                  type="radio"
+                  clearErrors={clearErrors}
+                  setValue={setValue}
+                  errors={errors}
+                  thresholdToShowSelectAll={Infinity}
+                  isFilterTag
+                >
+                  {sdg.map(({ name, type, id }) => (
+                    <Tag
+                      key={id}
+                      id={`${id}-tag`}
+                      name={type}
+                      value={id}
+                      register={register}
+                      registerOptions={{
+                        disabled: false,
+                        onChange,
+                      }}
+                      type="radio"
+                      isfilterTag
+                      onClick={onChange}
+                    >
+                      <span className="block">{name}</span>
+                    </Tag>
+                  ))}
+                </TagGroup>
+              </div>
+            </fieldset>
+          </div>
+        )}
+      </div>
+      <div className="items-center justify-between flex-shrink-0 gap-4 pt-2 sm:pt-4 sm:flex">
+        <p className="mb-4 text-sm text-gray-600 sm:mb-0">
+          <FormattedMessage defaultMessage="Note: Some filters not apply to all tabs" id="j4lBL7" />
+        </p>
+        <div className="flex flex-col gap-2 sm:gap-4 sm:flex-row">
+          <Button
+            theme="secondary-green"
+            className="justify-center sm:justify-between"
+            onClick={handleClear}
+          >
+            <FormattedMessage defaultMessage="Clear filters" id="F4gyn3" />
+          </Button>
+          <Button theme="primary-green" className="justify-center sm:justify-between" type="submit">
+            <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
+          </Button>
+        </div>
+      </div>
+    </form>
   );
 };
 
