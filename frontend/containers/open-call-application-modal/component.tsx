@@ -118,7 +118,7 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
                 <FormattedMessage defaultMessage="Select project to apply" id="3BlzQw" />
               </Label>
               <FieldInfo
-                infoText={formatMessage({
+                content={formatMessage({
                   defaultMessage: 'Choose one of your projects to apply to the open call.',
                   id: 'b6bipu',
                 })}
@@ -160,7 +160,7 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
                 <FormattedMessage defaultMessage="Type your message" id="HtMY9H" />
               </Label>
               <FieldInfo
-                infoText={formatMessage({
+                content={formatMessage({
                   defaultMessage: 'Tell the investor why your project should receive the funding.',
                   id: '3WLO/M',
                 })}
