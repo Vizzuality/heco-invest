@@ -127,15 +127,15 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
                 defaultMessage: 'select project',
                 id: 'kRnyPA',
               })}
-              aria-describedby="project-id-error"
+              aria-describedby="project-id-error project-id-note"
             >
               {sortedProjects.map(({ id, name }) => (
                 <Option key={id}>{name}</Option>
               ))}
             </Combobox>
-            <ErrorMessage id="message-error" errorText={errors?.project_id?.message} />
+            <ErrorMessage id="project-id-error" errorText={errors?.project_id?.message} />
 
-            <span className="mt-2">
+            <span id="project-id-note" className="mt-2">
               <Link href={Paths.ProjectCreation} passHref>
                 <a className="inline text-sm text-gray-600 underline rounded-full focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2">
                   <FormattedMessage
@@ -184,6 +184,7 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
             <FormattedMessage defaultMessage="Cancel" id="47FYwb" />
           </Button>
           <Button
+            type="submit"
             className="flex-shrink-0 mr-5"
             theme="primary-green"
             size="small"
