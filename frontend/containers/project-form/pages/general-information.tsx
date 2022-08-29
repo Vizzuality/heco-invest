@@ -30,6 +30,7 @@ const GeneralInformation = ({
   errors,
   control,
   getValues,
+  watch,
   resetField,
   setValue,
   clearErrors,
@@ -46,22 +47,28 @@ const GeneralInformation = ({
     fields: ['name'],
   });
 
+  const watchedProjectImagesAttributes = watch('project_images_attributes');
+  const watchedProjectImagesAttributesCover = watch('project_images_attributes_cover');
+  const watchedInvolvedProjectDeveloper = watch('involved_project_developer');
+
   useEffect(() => {
-    const defaultImages = getValues('project_images_attributes');
-    setImages(defaultImages || []);
+    setImages(watchedProjectImagesAttributes || []);
 
     setCoverImage(
-      getValues('project_images_attributes_cover') || defaultImages?.length
-        ? defaultImages[0]?.file
+      watchedProjectImagesAttributesCover || watchedProjectImagesAttributes?.length
+        ? watchedProjectImagesAttributes[0]?.file
         : undefined
     );
 
-    const involvedProjectDeveloper = getValues('involved_project_developer');
     // If there is a value for involved_project_developer, it checks the corresponding radio button
-    if (typeof involvedProjectDeveloper === 'number') {
-      setDefaultInvolvedProjectDeveloper(!!Number(involvedProjectDeveloper));
+    if (typeof watchedInvolvedProjectDeveloper === 'number') {
+      setDefaultInvolvedProjectDeveloper(!!Number(watchedInvolvedProjectDeveloper));
     }
-  }, [getValues]);
+  }, [
+    watchedProjectImagesAttributes,
+    watchedProjectImagesAttributesCover,
+    watchedInvolvedProjectDeveloper,
+  ]);
 
   const handleChangeInvolvedProjectDeveloper = (e: ChangeEvent<HTMLInputElement>) => {
     setDefaultInvolvedProjectDeveloper(!!Number(e.target.value));
