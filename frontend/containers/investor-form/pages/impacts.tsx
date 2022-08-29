@@ -82,7 +82,7 @@ export const Impact: FC<ImpactProps> = ({
                 />
               </span>
               <FieldInfo
-                infoText={
+                content={
                   <ul>
                     {impacts?.map(({ id, name, description }) => (
                       <li key={id}>

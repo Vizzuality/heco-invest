@@ -43,8 +43,13 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
   let enums;
 
   try {
-    ({ data: project } = await getProject(id as string, PROJECT_QUERY_PARAMS));
+    // The enums and any data mandatory for the page should be placed before the request for the
+    // project's data. The reason is that if the project is a draft, the request will fail and
+    // execute again on the client. Any request after the project's won't be initiated.
+    // We can either put the other requests before the project's or re-execute them on the client.
     enums = await getEnums();
+
+    ({ data: project } = await getProject(id as string, PROJECT_QUERY_PARAMS));
   } catch (e) {
     // The user may be attempting to preview a drafted project, which the endpoint won't return
     // unless the ownership can be verified. We'll be loading it client side and redirect the user

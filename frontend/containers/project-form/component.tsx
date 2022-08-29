@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useState, useEffect } from 'react';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
@@ -58,6 +58,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     category,
     project_development_stage,
     project_target_group,
+    impact,
     impact_area,
     ticket_size,
     instrument_type,
@@ -73,6 +74,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     formState: { errors },
     control,
     getValues,
+    watch,
     setValue,
     clearErrors,
     resetField,
@@ -219,6 +221,17 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   const contentLocale = defaultValues?.language || userAccount?.language;
   const isOutroPage = currentPage === totalPages;
 
+  // This component may be mounted when `project` has not resolved yet (`isLoading` will be `true`).
+  // In that case, we want to make sure the form is populated with the default values.
+  // `useForm`'s `defaultValues` attribute is only read on mount.
+  useEffect(() => {
+    if (!isLoading && defaultValues) {
+      Object.entries(defaultValues).map(([key, value]) => {
+        setValue(key as keyof ProjectFormType, value);
+      });
+    }
+  }, [isLoading, defaultValues, setValue]);
+
   return (
     <>
       <Head title={title} />
@@ -270,6 +283,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
             controlOptions={{ disabled: false }}
             errors={errors}
             getValues={getValues}
+            watch={watch}
             resetField={resetField}
             setValue={setValue}
             clearErrors={clearErrors}
@@ -296,7 +310,9 @@ export const ProjectForm: FC<ProjectFormProps> = ({
             controlOptions={{ disabled: false }}
             errors={errors}
             getValues={getValues}
-            impacts={impact_area}
+            watch={watch}
+            impacts={impact}
+            impactAreas={impact_area}
             setValue={setValue}
             clearErrors={clearErrors}
           />

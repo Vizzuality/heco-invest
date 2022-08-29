@@ -257,6 +257,68 @@ RSpec.describe "API V1 Account Open Call Applications", type: :request do
   end
 
   path "/api/v1/account/open_call_applications/{id}" do
+    put "Update existing application of Project Developer" do
+      tags "Open Call Applications"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :id, in: :path, type: :string, description: "Use open call application ID"
+      parameter name: :open_call_application_params, in: :body, schema: {
+        type: :object,
+        properties: {
+          message: {type: :string}
+        }
+      }
+
+      let(:open_call_application) { create :open_call_application }
+      let(:id) { open_call_application.id }
+      let(:user) { open_call_application.project_developer.owner }
+      let(:open_call_application_params) { {message: "This is updated text"} }
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with not found error", csrf: true, user: -> { user }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { open_call_application.investor.owner }
+
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/open_call_application"}
+        }
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before { sign_in user }
+
+        run_test!
+
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/account/open-call-applications-update")
+        end
+
+        it "saves data to account language attributes" do
+          open_call_application.reload
+          OpenCallApplication.translatable_attributes.each do |attr|
+            expect(open_call_application.public_send("#{attr}_#{user.account.language}")).to eq(open_call_application_params[attr])
+          end
+        end
+      end
+
+      response "422", "Validation errors" do
+        schema "$ref" => "#/components/schemas/errors"
+
+        let("X-CSRF-TOKEN") { get_csrf_token }
+        let(:open_call_application_params) { {message: ""} }
+
+        before { sign_in user }
+
+        run_test!
+
+        it "returns correct error", generate_swagger_example: true do
+          expect(response_json["errors"][0]["title"]).to eq("Message can't be blank")
+        end
+      end
+    end
+
     delete "Delete existing application of Project Developer" do
       tags "Open Call Applications"
       consumes "application/json"
@@ -284,6 +346,72 @@ RSpec.describe "API V1 Account Open Call Applications", type: :request do
             submit_request example.metadata
             assert_response_matches_metadata example.metadata
           }.to change(OpenCallApplication, :count).by(-1)
+        end
+      end
+    end
+  end
+
+  path "/api/v1/account/open_call_applications/{id}/funding" do
+    post "Mark Open Call Application as funded" do
+      tags "Open Call Applications"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :id, in: :path, type: :string, description: "Use open call application ID"
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
+
+      let(:open_call_application) { create :open_call_application, funded: false }
+      let(:id) { open_call_application.id }
+      let(:user) { open_call_application.investor.owner }
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with not found error", csrf: true, user: -> { user }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { open_call_application.project_developer.owner }
+
+      response "200", :success do
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before { sign_in user }
+
+        run_test!
+
+        it "is marked as funded" do
+          expect(open_call_application.reload).to be_funded
+        end
+      end
+    end
+  end
+
+  path "/api/v1/account/open_call_applications/{id}/not_funding" do
+    post "Mark Open Call Application as not funded" do
+      tags "Open Call Applications"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :id, in: :path, type: :string, description: "Use open call application ID"
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
+
+      let(:open_call_application) { create :open_call_application, funded: true }
+      let(:id) { open_call_application.id }
+      let(:user) { open_call_application.investor.owner }
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with not found error", csrf: true, user: -> { user }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { open_call_application.project_developer.owner }
+
+      response "200", :success do
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before { sign_in user }
+
+        run_test!
+
+        it "is marked as not funded" do
+          expect(open_call_application.reload).not_to be_funded
         end
       end
     end

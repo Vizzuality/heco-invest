@@ -31,6 +31,7 @@ export enum FaqQuestions {
   ForWhoIsTheProjectFor = 'for-who-is-the-project-for',
   HowCanIFundAProject = 'how-can-i-fund-a-project',
   WhatInfoToCreateProject = 'what-information-do-i-need-to-create-a-project',
+  HowIsTheImpactCalculated = 'how-is-the-impact-calculated',
   /** Open calls */
   WhatIsAnOpenCall = 'what-is-an-open-call',
   ForWhoIsTheOpenCallFor = 'for-who-is-the-open-call-for',
@@ -58,6 +59,7 @@ export const FaqPaths = {
   [FaqQuestions.ForWhoIsTheProjectFor]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.ForWhoIsTheProjectFor}`,
   [FaqQuestions.HowCanIFundAProject]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.HowCanIFundAProject}`,
   [FaqQuestions.WhatInfoToCreateProject]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.WhatInfoToCreateProject}`,
+  [FaqQuestions.HowIsTheImpactCalculated]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.HowIsTheImpactCalculated}`,
   /** Open calls */
   [FaqQuestions.WhatIsAnOpenCall]: `${Paths.FAQ}/${FaqSections.OpenCalls}/${FaqQuestions.WhatIsAnOpenCall}`,
   [FaqQuestions.ForWhoIsTheOpenCallFor]: `${Paths.FAQ}/${FaqSections.OpenCalls}/${FaqQuestions.ForWhoIsTheOpenCallFor}`,

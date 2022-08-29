@@ -30,6 +30,7 @@ const GeneralInformation = ({
   errors,
   control,
   getValues,
+  watch,
   resetField,
   setValue,
   clearErrors,
@@ -46,22 +47,28 @@ const GeneralInformation = ({
     fields: ['name'],
   });
 
+  const watchedProjectImagesAttributes = watch('project_images_attributes');
+  const watchedProjectImagesAttributesCover = watch('project_images_attributes_cover');
+  const watchedInvolvedProjectDeveloper = watch('involved_project_developer');
+
   useEffect(() => {
-    const defaultImages = getValues('project_images_attributes');
-    setImages(defaultImages || []);
+    setImages(watchedProjectImagesAttributes || []);
 
     setCoverImage(
-      getValues('project_images_attributes_cover') || defaultImages?.length
-        ? defaultImages[0]?.file
+      watchedProjectImagesAttributesCover || watchedProjectImagesAttributes?.length
+        ? watchedProjectImagesAttributes[0]?.file
         : undefined
     );
 
-    const involvedProjectDeveloper = getValues('involved_project_developer');
     // If there is a value for involved_project_developer, it checks the corresponding radio button
-    if (typeof involvedProjectDeveloper === 'number') {
-      setDefaultInvolvedProjectDeveloper(!!Number(involvedProjectDeveloper));
+    if (typeof watchedInvolvedProjectDeveloper === 'number') {
+      setDefaultInvolvedProjectDeveloper(!!Number(watchedInvolvedProjectDeveloper));
     }
-  }, [getValues]);
+  }, [
+    watchedProjectImagesAttributes,
+    watchedProjectImagesAttributesCover,
+    watchedInvolvedProjectDeveloper,
+  ]);
 
   const handleChangeInvolvedProjectDeveloper = (e: ChangeEvent<HTMLInputElement>) => {
     setDefaultInvolvedProjectDeveloper(!!Number(e.target.value));
@@ -117,7 +124,7 @@ const GeneralInformation = ({
               <FormattedMessage defaultMessage="Project name" id="D5RCKi" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage: 'A great name is short, crisp, and easily understood.',
                 id: 'rPwaWt',
               })}
@@ -144,7 +151,7 @@ const GeneralInformation = ({
               <FormattedMessage defaultMessage="Project gallery (optional)" id="7aTDQM" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage:
                   'The project gallery will be the first thing other users will see on you page, it will help you to showcase you project.',
                 id: 'c1m3Q7',
@@ -215,7 +222,7 @@ const GeneralInformation = ({
               <FormattedMessage defaultMessage="Draw or upload your location" id="MHwpc4" />
             </span>
             <FieldInfo
-              infoText={
+              content={
                 <>
                   <p>
                     <FormattedMessage
@@ -261,7 +268,7 @@ const GeneralInformation = ({
                   />
                 </span>
                 <FieldInfo
-                  infoText={formatMessage({
+                  content={formatMessage({
                     defaultMessage: 'Do you have a partnership with someone else?',
                     id: 'nbqoY2',
                   })}

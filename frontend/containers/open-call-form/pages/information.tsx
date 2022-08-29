@@ -105,7 +105,7 @@ export const OpenCallInformation: FC<OpenCallInformationProps> = ({
               <FormattedMessage defaultMessage="Picture (optional)" id="8rdnTq" />
             </Label>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage: 'A picture can make your open call page more attractive.',
                 id: 'iFQwyC',
               })}

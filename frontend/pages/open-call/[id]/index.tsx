@@ -91,24 +91,17 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
     (instrumentType) => allInstrumentTypes.find((type) => type.id === instrumentType).name
   );
 
-  // To implement
-  const handleApply = () => {};
-
   return (
     <div>
       <Head title={openCall.name} description={openCall.description} />
-      <OpenCallHeader
-        openCall={openCall}
-        instrumentTypes={instrumentTypeNames}
-        handleApply={handleApply}
-      />
+      <OpenCallHeader openCall={openCall} instrumentTypes={instrumentTypeNames} />
       <OpenCallOverview openCall={openCall} />
       <OpenCallFundingInformation
         instrumentTypes={instrumentTypeNames}
         openCall={openCall}
         allSdgs={allSdgs}
       />
-      <OpenCallInvestorAndFooter openCall={openCall} handleApply={handleApply} />
+      <OpenCallInvestorAndFooter openCall={openCall} />
     </div>
   );
 };
