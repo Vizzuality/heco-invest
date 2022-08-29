@@ -6,6 +6,7 @@ module API
         load_and_authorize_resource
 
         def index
+          @open_call_applications = @open_call_applications.includes(open_call: {investor: :account}, project: {project_developer: :account})
           @open_call_applications = @open_call_applications.where project_id: filter_params[:project_id] if filter_params[:project_id].present?
           @open_call_applications = @open_call_applications.where open_call_id: filter_params[:open_call_id] if filter_params[:open_call_id].present?
           @open_call_applications = search_by filter_params[:full_text], @open_call_applications if filter_params[:full_text].present?
