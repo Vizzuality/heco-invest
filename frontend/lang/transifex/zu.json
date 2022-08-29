@@ -1803,6 +1803,9 @@
   "btdgGc": {
     "string": "<a>Browse the open calls</a> posted by our investor community to identify new areas for project development."
   },
+  "c+PoWZ": {
+    "string": "This will help us measure the impact of your project. Try to be as precise and realistic as possible, choosing only your main direct impacts. <a>Learn more</a>"
+  },
   "c1m3Q7": {
     "string": "The project gallery will be the first thing other users will see on you page, it will help you to showcase you project."
   },
@@ -1910,9 +1913,6 @@
   },
   "eSLLyC": {
     "string": "To complete you registration and make full use of the platform, please select which account you would like to create."
-  },
-  "eTuDrh": {
-    "string": "This will help us measure the impact of your project"
   },
   "eXDHt0": {
     "string": "Describe the project or solution and describe clearly why you consider it is innovative, different from others and how it can generate an important change and impact towards the target groups. Highlight the characteristics that may attract partners, clients, or investors."

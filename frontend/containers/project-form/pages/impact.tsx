@@ -73,10 +73,22 @@ export const Impact = ({
                 />
               </span>
               <FieldInfo
-                content={formatMessage({
-                  defaultMessage: 'This will help us measure the impact of your project',
-                  id: 'eTuDrh',
-                })}
+                content={formatMessage(
+                  {
+                    defaultMessage:
+                      'This will help us measure the impact of your project. Try to be as precise and realistic as possible, choosing only your main direct impacts. <a>Learn more</a>',
+                    id: 'c+PoWZ',
+                  },
+                  {
+                    a: (chunks: string) => (
+                      <Link href={FaqPaths['how-is-the-impact-calculated']}>
+                        <a className="underline" target="_blank">
+                          {chunks}
+                        </a>
+                      </Link>
+                    ),
+                  }
+                )}
               />
             </legend>
             {impacts.map((impact) => (
