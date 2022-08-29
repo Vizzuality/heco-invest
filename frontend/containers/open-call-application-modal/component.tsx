@@ -45,6 +45,11 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
     [projects]
   );
 
+  const defaultValues = {
+    project_id: null,
+    message: '',
+  };
+
   const {
     control,
     formState: { errors },
@@ -57,12 +62,12 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
     shouldFocusError: true,
     shouldUseNativeValidation: true,
     reValidateMode: 'onChange',
-    defaultValues: {},
+    defaultValues,
   });
 
   const closeModal = () => {
     applyToOpenCall.reset();
-    reset();
+    reset(defaultValues);
     clearErrors();
     onClose();
   };
