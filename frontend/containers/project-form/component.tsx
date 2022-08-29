@@ -74,6 +74,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     formState: { errors },
     control,
     getValues,
+    watch,
     setValue,
     clearErrors,
     resetField,
@@ -297,6 +298,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
             controlOptions={{ disabled: false }}
             errors={errors}
             getValues={getValues}
+            watch={watch}
             impacts={impact}
             impactAreas={impact_area}
             setValue={setValue}

@@ -1,12 +1,17 @@
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 
 import { FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import Link from 'next/link';
+
 import { groupBy } from 'lodash-es';
+
+import { FaqPaths } from 'hooks/useFaq';
 
 import Sdgs from 'containers/forms/sdgs';
 
+import Alert from 'components/alert';
 import ErrorMessage from 'components/forms/error-message';
 import FieldInfo from 'components/forms/field-info';
 import Tag from 'components/forms/tag';
@@ -22,10 +27,29 @@ export const Impact = ({
   setValue,
   clearErrors,
   getValues,
+  watch,
 }: ImpactProps) => {
   const { formatMessage } = useIntl();
 
+  const watchedImpactAreas = watch('impact_areas');
+
   const impactsByDimension = useMemo(() => groupBy(impactAreas, 'impact'), [impactAreas]);
+
+  /** For a specific impact dimension, return how many options can be selected */
+  const getMaxSelectionForImpactDimension = useCallback(
+    (impactDimension: string) => (impactsByDimension[impactDimension]?.length ?? 1) - 1,
+    [impactsByDimension]
+  );
+
+  /** For a specific impact dimension, return how many options have been selected */
+  const getImpactSelectionCountForDimension = useCallback(
+    (impactDimension: string) => {
+      const relevantImpacts = impactsByDimension[impactDimension];
+      const impacts = Array.isArray(watchedImpactAreas) ? watchedImpactAreas : [];
+      return impacts.filter((impact) => !!relevantImpacts.find(({ id }) => id === impact)).length;
+    },
+    [watchedImpactAreas, impactsByDimension]
+  );
 
   return (
     <div>
@@ -67,7 +91,7 @@ export const Impact = ({
                       defaultMessage="select <b>max. {areasCount}</b> areas"
                       id="xDgU8W"
                       values={{
-                        areasCount: (impactsByDimension[impact.id]?.length ?? 1) - 1,
+                        areasCount: getMaxSelectionForImpactDimension(impact.id),
                         b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
                       }}
                     />
@@ -93,6 +117,27 @@ export const Impact = ({
                       </Tag>
                     ))}
                   </TagGroup>
+                  {getImpactSelectionCountForDimension(impact.id) >
+                    getMaxSelectionForImpactDimension(impact.id) && (
+                    <Alert type="warning" className="mt-4">
+                      <p>
+                        <FormattedMessage
+                          defaultMessage="If you select <b>all areas</b>, the impact will be 0. Consider choosing only your main direct ones. <a>Learn more</a>"
+                          id="uuxwc2"
+                          values={{
+                            b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+                            a: (chunks: string) => (
+                              <Link href={FaqPaths['how-is-the-impact-calculated']}>
+                                <a className="underline" target="_blank">
+                                  {chunks}
+                                </a>
+                              </Link>
+                            ),
+                          }}
+                        />
+                      </p>
+                    </Alert>
+                  )}
                 </fieldset>
               </div>
             ))}

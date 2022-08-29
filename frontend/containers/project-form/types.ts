@@ -10,6 +10,7 @@ import {
   UseFormSetValue,
   UseFormResetField,
   UseFormSetError,
+  UseFormWatch,
 } from 'react-hook-form';
 import { UseMutationResult } from 'react-query';
 
@@ -53,6 +54,8 @@ export type ProjectFormPagesProps<FormValues> = {
   };
   /** React-hook-form useForm getValues */
   getValues?: UseFormGetValues<FormValues>;
+  /** React-hook-form useForm watch */
+  watch?: UseFormWatch<FormValues>;
   /** React-hook-form useForm setValues */
   setValue?: UseFormSetValue<FormValues>;
   /** React-hook-form useForm clearErrors */
