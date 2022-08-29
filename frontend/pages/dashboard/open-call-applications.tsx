@@ -6,6 +6,8 @@ import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import OpenCallApplicationsTable from 'containers/dashboard/open-call-applications/table';
+
 import Head from 'components/head';
 import { UserRoles } from 'enums';
 import DashboardLayout, { DashboardLayoutProps } from 'layouts/dashboard';
@@ -34,7 +36,9 @@ export const OpenCallApplicationsPage: PageComponent<
       <Head
         title={intl.formatMessage({ defaultMessage: 'My open call applications', id: '6EYInP' })}
       />
-      <DashboardLayout>Open call applications page</DashboardLayout>
+      <DashboardLayout>
+        <OpenCallApplicationsTable />
+      </DashboardLayout>
     </ProtectedPage>
   );
 };
