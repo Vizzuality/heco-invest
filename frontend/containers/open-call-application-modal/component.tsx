@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from 'react';
+import { FC, useMemo } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -30,8 +30,6 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
   isOpen,
   onClose,
 }: OpenCallApplicationModalProps) => {
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-
   const { formatMessage } = useIntl();
   const applyToOpenCall = useApplyToOpenCall();
   const alert = useGetAlert(applyToOpenCall.error);
@@ -75,16 +73,9 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
   const onSubmit = (values: OpenCallApplicationForm) => {
     const { project_id, message } = values;
 
-    setIsSubmitting(true);
-
     applyToOpenCall.mutate(
       { open_call_id: openCallId, project_id, message },
-      {
-        onSuccess: closeModal,
-        onSettled: () => {
-          setIsSubmitting(false);
-        },
-      }
+      { onSuccess: closeModal }
     );
   };
 
@@ -196,10 +187,10 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
             className="flex-shrink-0 mr-5"
             theme="primary-green"
             size="small"
-            disabled={isSubmitting || isLoadingProjects}
+            disabled={applyToOpenCall.isLoading || isLoadingProjects}
             onClick={handleSubmit(onSubmit)}
           >
-            <Loading className="mr-2" visible={isSubmitting} />
+            <Loading className="mr-2" visible={applyToOpenCall.isLoading} />
             <FormattedMessage defaultMessage="Send application" id="qY71uO" />
           </Button>
         </div>
