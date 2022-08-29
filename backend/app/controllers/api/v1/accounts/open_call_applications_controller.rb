@@ -6,6 +6,8 @@ module API
         load_and_authorize_resource
 
         def index
+          @open_call_applications = @open_call_applications.where project_id: filter_params[:project_id] if filter_params[:project_id].present?
+          @open_call_applications = @open_call_applications.where open_call_id: filter_params[:open_call_id] if filter_params[:open_call_id].present?
           @open_call_applications = search_by filter_params[:full_text], @open_call_applications if filter_params[:full_text].present?
           @open_call_applications = @open_call_applications.order(created_at: :desc)
           render json: OpenCallApplicationSerializer.new(
@@ -49,7 +51,7 @@ module API
         end
 
         def filter_params
-          params.fetch(:filter, {}).permit :full_text
+          params.fetch(:filter, {}).permit :project_id, :open_call_id, :full_text
         end
       end
     end
