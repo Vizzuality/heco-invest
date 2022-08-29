@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SchemaOf, object, string } from 'yup';
 
-import { OpenCallApplicationForm } from 'types/open-calls';
+import { OpenCallApplicationForm } from 'types/open-call-applications';
 
 export const useApplyToOpenCallResolver = () => {
   const { formatMessage } = useIntl();

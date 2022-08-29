@@ -60,12 +60,3 @@ export type OpenCallParams = {
   includes?: string[];
   filter?: string;
 };
-
-export type OpenCallApplicationForm = {
-  project_id: string;
-  message: string;
-};
-
-export type OpenCallApplicationPayload = OpenCallApplicationForm & {
-  open_call_id: string;
-};
