@@ -29,7 +29,7 @@ export const ProjectGrow = ({ register, errors }: ProjectFormPagesProps<ProjectF
               <FormattedMessage defaultMessage="Replicability of the project" id="qoImFc" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage:
                   'Explain how the solution or project can be replicated in other contexts and geographies. Think practically about the existing opportunities, the partners and allies needed as well as the barriers that this replication effort may face such as climate issues, regulations and legal frameworks, land tenure, institutional capacity, etc.',
                 id: '6MoU6D',
@@ -55,7 +55,7 @@ export const ProjectGrow = ({ register, errors }: ProjectFormPagesProps<ProjectF
               <FormattedMessage defaultMessage="Sustainability of the project" id="8MAKwj" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage:
                   'Explain how the impact of the solution or project will be maintained after funding.  Try to be specific and not too vague. Is the solution or project will be financially viable? How? What are the key elements to ensure sustainability (business model, partners, partnerships with governments, etc.)?',
                 id: 'oN8abW',
@@ -81,7 +81,7 @@ export const ProjectGrow = ({ register, errors }: ProjectFormPagesProps<ProjectF
               <FormattedMessage defaultMessage="Progress and impact tracking" id="JJQfhh" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage:
                   'How do you plan to measure the progress and impact of the project or solution? What would be the key indicators to be used for these measurements?',
                 id: 'yb3Bot',

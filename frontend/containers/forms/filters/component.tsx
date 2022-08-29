@@ -125,7 +125,7 @@ export const Filters: FC<FiltersProps> = ({
                         {legends[index]}
                       </span>
                       <FieldInfo
-                        infoText={
+                        content={
                           <ul>
                             {item.map(({ name, id, description }) => (
                               <li key={id} className="mb-2">

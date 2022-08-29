@@ -68,7 +68,7 @@ export const About: FC<AboutProps> = ({
               <legend className="font-sans font-semibold text-sm text-gray-800 mb-4.5">
                 <span className="mr-2.5">{title}</span>
 
-                <FieldInfo infoText={infoText || getItemsInfoText(items)} />
+                <FieldInfo content={infoText || getItemsInfoText(items)} />
               </legend>
               {name === InterestNames.PriorityLandscapes && (
                 <Button

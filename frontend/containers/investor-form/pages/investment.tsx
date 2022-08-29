@@ -45,7 +45,7 @@ const InvestmentInformation: FC<InvestmentInformationProps> = ({
                   />
                 </span>
                 <FieldInfo
-                  infoText={
+                  content={
                     <ul>
                       {categories?.map(({ id, name, description }) => (
                         <li key={id}>
@@ -140,7 +140,7 @@ const InvestmentInformation: FC<InvestmentInformationProps> = ({
                   />
                 </span>
                 <FieldInfo
-                  infoText={
+                  content={
                     <ul>
                       {instrument_types?.map(({ id, name, description }) => (
                         <li key={id}>

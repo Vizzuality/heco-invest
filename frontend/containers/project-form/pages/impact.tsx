@@ -73,7 +73,7 @@ export const Impact = ({
                 />
               </span>
               <FieldInfo
-                infoText={formatMessage({
+                content={formatMessage({
                   defaultMessage: 'This will help us measure the impact of your project',
                   id: 'eTuDrh',
                 })}
