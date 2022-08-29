@@ -13,9 +13,10 @@ import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
 import Icon from 'components/icon';
 import Loading from 'components/loading';
-import { EnumTypes } from 'enums';
+import { EnumTypes, LocationsTypes } from 'enums';
 
 import { useEnums } from 'services/enums/enumService';
+import { usePriorityLandscapes } from 'services/locations/locations';
 
 import { FiltersProps, FilterForm } from './types';
 
@@ -43,13 +44,35 @@ export const Filters: FC<FiltersProps> = ({
     isLoading,
   } = useEnums();
 
-  const filters = [category, impact, ticket_size, instrument_type];
+  const { priorityLandscapes } = usePriorityLandscapes();
 
-  const legends = [
-    formatMessage({ defaultMessage: 'Category', id: 'ccXLVi' }),
-    formatMessage({ defaultMessage: 'Impact', id: 'W2JBdp' }),
-    formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
-    formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
+  const filters = [
+    { title: formatMessage({ defaultMessage: 'Category', id: 'ccXLVi' }), values: category },
+    { title: formatMessage({ defaultMessage: 'Impact', id: 'W2JBdp' }), values: impact },
+    { title: formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }), values: ticket_size },
+    {
+      title: formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
+      values: instrument_type,
+    },
+    {
+      title: formatMessage({ defaultMessage: 'Priority landscape', id: 'dwB95+' }),
+      description: formatMessage(
+        {
+          defaultMessage:
+            'Priority landscapes are <b>unique regions</b> due to their biodiversity, cultural heritages, and regulation of water systems. As such, the projects located in these landscapes will have the greatest impact on people and nature.',
+          id: 'zyG32m',
+        },
+        {
+          b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+        }
+      ),
+      values:
+        priorityLandscapes?.map(({ id, name }) => ({
+          id,
+          type: LocationsTypes.PriorityLandscapes,
+          name,
+        })) ?? [],
+    },
   ];
 
   const handleClear = () => {
@@ -108,68 +131,66 @@ export const Filters: FC<FiltersProps> = ({
             </Button>
           </div>
 
-          <div className="flex flex-col flex-wrap sm:flex-row gap-y-4">
-            {filters?.map((item, index) => {
-              const fieldName = item[0].type;
+          <div className="flex flex-col flex-wrap gap-y-4">
+            {filters?.map((filter) => {
               return (
-                <div
-                  key={fieldName}
-                  className={cx({
-                    'sm:w-2/3 sm:pr-10': index % 2 === 0,
-                    'sm:w-1/3': index % 2 !== 0,
-                  })}
-                >
+                <div key={filter.title}>
                   <fieldset>
                     <legend className="inline mb-3 font-sans text-base font-medium text-black">
                       <span className="mr-2 font-sans text-sm font-semibold text-gray-800">
-                        {legends[index]}
+                        {filter.title}
                       </span>
                       <FieldInfo
                         content={
-                          <ul>
-                            {item.map(({ name, id, description }) => (
-                              <li key={id} className="mb-2">
-                                <p className="font-bold ">{name}</p>
-                                <p>{description}</p>
-                              </li>
-                            ))}
-                          </ul>
+                          filter.description ? (
+                            filter.description
+                          ) : (
+                            <ul>
+                              {filter.values.map((value) => (
+                                <li key={value.id} className="mb-2">
+                                  <p className="font-bold ">{value.name}</p>
+                                  {!!value.description && <p>{value.description}</p>}
+                                </li>
+                              ))}
+                            </ul>
+                          )
                         }
                       />
                     </legend>
 
-                    <TagGroup
-                      key={fieldName}
-                      name={fieldName}
-                      type="radio"
-                      clearErrors={clearErrors}
-                      setValue={setValue}
-                      errors={errors}
-                      thresholdToShowSelectAll={Infinity}
-                      className="flex flex-wrap gap-2"
-                      isFilterTag
-                    >
-                      {item.map(({ name, id, type, description }) => (
-                        <Tag
-                          key={id}
-                          id={`${id}-tag`}
-                          name={type}
-                          value={id}
-                          register={register}
-                          registerOptions={{
-                            disabled: false,
-                            onChange,
-                          }}
-                          type="radio"
-                          isfilterTag
-                          onClick={onChange}
-                        >
-                          <span className="block">
-                            {type === EnumTypes.TicketSize ? description : name}
-                          </span>
-                        </Tag>
-                      ))}
-                    </TagGroup>
+                    {!!filter.values.length && (
+                      <TagGroup
+                        name={filter.values?.[0].type}
+                        type="radio"
+                        clearErrors={clearErrors}
+                        setValue={setValue}
+                        errors={errors}
+                        thresholdToShowSelectAll={Infinity}
+                        className="flex flex-wrap gap-2"
+                        isFilterTag
+                      >
+                        {filter.values.map(({ name, id, type, description }) => (
+                          <Tag
+                            key={id}
+                            id={`${id}-tag`}
+                            name={type}
+                            value={id}
+                            register={register}
+                            registerOptions={{
+                              disabled: false,
+                              onChange,
+                            }}
+                            type="radio"
+                            isfilterTag
+                            onClick={onChange}
+                          >
+                            <span className="block">
+                              {type === EnumTypes.TicketSize ? description : name}
+                            </span>
+                          </Tag>
+                        ))}
+                      </TagGroup>
+                    )}
                   </fieldset>
                 </div>
               );
