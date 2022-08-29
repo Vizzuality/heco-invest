@@ -58,6 +58,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     category,
     project_development_stage,
     project_target_group,
+    impact,
     impact_area,
     ticket_size,
     instrument_type,
@@ -296,7 +297,8 @@ export const ProjectForm: FC<ProjectFormProps> = ({
             controlOptions={{ disabled: false }}
             errors={errors}
             getValues={getValues}
-            impacts={impact_area}
+            impacts={impact}
+            impactAreas={impact_area}
             setValue={setValue}
             clearErrors={clearErrors}
           />

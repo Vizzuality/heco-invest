@@ -71,6 +71,7 @@ export type ProjectDescriptionProps = ProjectFormPagesProps<ProjectForm> & {
 
 export type ImpactProps = ProjectFormPagesProps<ProjectForm> & {
   impacts: Enum[];
+  impactAreas: Enum[];
 };
 
 export type FundingProps = ProjectFormPagesProps<ProjectForm> & {

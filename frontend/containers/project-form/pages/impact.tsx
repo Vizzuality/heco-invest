@@ -1,5 +1,9 @@
+import { useMemo } from 'react';
+
 import { FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+
+import { groupBy } from 'lodash-es';
 
 import Sdgs from 'containers/forms/sdgs';
 
@@ -14,11 +18,14 @@ export const Impact = ({
   register,
   errors,
   impacts,
+  impactAreas,
   setValue,
   clearErrors,
   getValues,
 }: ImpactProps) => {
   const { formatMessage } = useIntl();
+
+  const impactsByDimension = useMemo(() => groupBy(impactAreas, 'impact'), [impactAreas]);
 
   return (
     <div>
@@ -32,7 +39,7 @@ export const Impact = ({
         />
       </p>
       <form noValidate>
-        <div className="mb-6.5">
+        <div className="mb-10">
           <fieldset>
             <legend className="inline font-sans font-semibold text-sm text-gray-800 mb-4.5">
               <span className="mr-2.5">
@@ -48,25 +55,47 @@ export const Impact = ({
                 })}
               />
             </legend>
-            <TagGroup
-              name="impact_areas"
-              setValue={setValue}
-              errors={errors}
-              clearErrors={clearErrors}
-            >
-              {impacts?.map((item) => (
-                <Tag
-                  key={item.id}
-                  id={item.id}
-                  name="impact_areas"
-                  value={item.id}
-                  aria-describedby="impact-areas-error"
-                  register={register}
-                >
-                  {item.name}
-                </Tag>
-              ))}
-            </TagGroup>
+            {impacts.map((impact) => (
+              <div
+                key={impact.id}
+                className="mt-4 first-of-type:mt-0 px-4 py-4.5 bg-background-middle rounded-lg"
+              >
+                <fieldset>
+                  <legend className="text-sm text-gray-800 mb-4.5">
+                    <span className="font-semibold">{impact.name}</span> (
+                    <FormattedMessage
+                      defaultMessage="select <b>max. {areasCount}</b> areas"
+                      id="xDgU8W"
+                      values={{
+                        areasCount: (impactsByDimension[impact.id]?.length ?? 1) - 1,
+                        b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+                      }}
+                    />
+                    )
+                  </legend>
+                  <TagGroup
+                    name="impact_areas"
+                    setValue={setValue}
+                    errors={errors}
+                    clearErrors={clearErrors}
+                    thresholdToShowSelectAll={Infinity}
+                  >
+                    {impactsByDimension[impact.id]?.map((item) => (
+                      <Tag
+                        key={item.id}
+                        id={item.id}
+                        name="impact_areas"
+                        value={item.id}
+                        aria-describedby="impact-areas-error"
+                        register={register}
+                      >
+                        {item.name}
+                      </Tag>
+                    ))}
+                  </TagGroup>
+                </fieldset>
+              </div>
+            ))}
           </fieldset>
           <ErrorMessage
             id="impact-areas-error"
