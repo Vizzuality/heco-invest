@@ -25,6 +25,7 @@ export const Combobox = <FormValues extends FieldValues, T extends object>({
   direction = 'bottom',
   control,
   controlOptions,
+  height,
   ...rest
 }: ComboboxProps<FormValues, T>) => {
   const {
@@ -109,7 +110,7 @@ export const Combobox = <FormValues extends FieldValues, T extends object>({
           onClose={state.close}
           direction={direction}
         >
-          <Listbox {...listboxProps} listBoxRef={listboxRef} state={state} />
+          <Listbox {...listboxProps} height={height} listBoxRef={listboxRef} state={state} />
         </Popover>
       )}
     </div>

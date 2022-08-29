@@ -236,8 +236,14 @@
   "3BcZ1K": {
     "string": "Conservation"
   },
+  "3BlzQw": {
+    "string": "Select project to apply"
+  },
   "3T3umg": {
     "string": "If you are the owner of the account, please transfer the ownership before continuing."
+  },
+  "3WLO/M": {
+    "string": "Tell the investor why your project should receive the funding."
   },
   "3ciGOS": {
     "string": "Grant"
@@ -770,6 +776,9 @@
   "EVKdUn": {
     "string": "Priority Landscape"
   },
+  "EWw/tK": {
+    "string": "Apply"
+  },
   "Ec0M9T": {
     "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
   },
@@ -913,6 +922,9 @@
   },
   "HnG9/3": {
     "string": "Insert password"
+  },
+  "HtMY9H": {
+    "string": "Type your message"
   },
   "HvSsTa": {
     "string": "HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional."
@@ -1386,6 +1398,9 @@
   "S27Bu1": {
     "string": "<span>Note:</span>The content of this project should be written in {language}"
   },
+  "SFCYg4": {
+    "string": "Don’t have a project yet? Create a project now"
+  },
   "SFGITa": {
     "string": "Amazon Heart"
   },
@@ -1782,6 +1797,9 @@
   "b3Iz6I": {
     "string": "What type of projects the funding is covering."
   },
+  "b6bipu": {
+    "string": "Choose one of your projects to apply to the open call."
+  },
   "bNpbHr": {
     "string": "Find other people with similar interests. Join forces, secure more investment and create a greater impact."
   },
@@ -2115,6 +2133,9 @@
   "inQ2Q1": {
     "string": "Topics/sector categories"
   },
+  "iosznt": {
+    "string": "Select one of your projects and tell the investor why your project should receive the funding to apply."
+  },
   "ipYSrV": {
     "string": "The email where you want to receive contacts from Investors or other Project Developers"
   },
@@ -2198,6 +2219,9 @@
   },
   "kPq9Kx": {
     "string": "HeCo priority landscape"
+  },
+  "kRnyPA": {
+    "string": "select project"
   },
   "kTXMXN": {
     "string": "Displays the protected areas signed into the RUNAP (Unique Registry of Protected Areas) of Colombia"
@@ -2442,6 +2466,9 @@
   "qPKAOa": {
     "string": "Paulson Institute: The Paulson Institute (PI) is a non-partisan, independent “think and do tank” delivering solutions that contribute to a more resilient and sustainable world. PI operates at the intersection of economics, financial markets, and environmental protection by promoting market-based solutions to ensure green economic growth. Under their Financing Nature initiative, they are working to identify and implement innovative mechanisms that can rapidly mobilize substantial amounts of funding for nature conservation."
   },
+  "qY71uO": {
+    "string": "Send application"
+  },
   "qZPjW2": {
     "string": "What is a verification badge?"
   },
@@ -2660,6 +2687,9 @@
   },
   "v9GdgG": {
     "string": "File {fileName} is larger than {fileSize}MB"
+  },
+  "vC2u0N": {
+    "string": "Apply to Open Call"
   },
   "vIKTZ9": {
     "string": "If you have interest in this project contact the project developer to know how you can work together."
