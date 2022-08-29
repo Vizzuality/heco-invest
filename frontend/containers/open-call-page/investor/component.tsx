@@ -70,7 +70,7 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({ openCall 
                 disabled={
                   !userAccount ||
                   userAccount.type !== UserRoles.ProjectDeveloper ||
-                  status !== OpenCallStatus.Launched
+                  openCall.status !== OpenCallStatus.Launched
                 }
                 onClick={() => setShowApplicationModal(true)}
               >
