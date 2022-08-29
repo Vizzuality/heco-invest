@@ -169,6 +169,7 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
             <Textarea
               id="message"
               name="message"
+              className="mt-2.5"
               register={register}
               aria-describedby="message-error"
             />
