@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 import { AxiosError } from 'axios';
 
-import { EnumTypes, Languages, Paths } from 'enums';
+import { EnumTypes, Languages, LocationsTypes, Paths } from 'enums';
 import languages from 'locales.config.json';
 import { Enum } from 'types/enums';
 import { Locations } from 'types/locations';
@@ -150,6 +150,10 @@ export const useFilterNames = () => {
     [EnumTypes.TicketSize]: formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
     [EnumTypes.InstrumentType]: formatMessage({ defaultMessage: 'Instrument', id: 'wduJme' }),
     [EnumTypes.Sdg]: formatMessage({ defaultMessage: 'SDGs', id: 'JQjEP9' }),
+    [LocationsTypes.PriorityLandscapes]: formatMessage({
+      defaultMessage: 'Priority landscape',
+      id: 'dwB95+',
+    }),
   };
 };
 
