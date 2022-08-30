@@ -16,4 +16,6 @@ export type BreadcrumbsProps = {
       link?: string;
     }
   >;
+  /** Route segments to hide */
+  hidden?: string[];
 };

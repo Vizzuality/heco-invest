@@ -14,6 +14,7 @@ import type { BreadcrumbsProps } from './types';
 export const Breadcrumbs: FC<BreadcrumbsProps> = ({
   className,
   substitutions: propSubstitutions = {},
+  hidden: segmentsToHide = [],
 }: BreadcrumbsProps) => {
   const intl = useIntl();
   const { route, asPath } = useRouter();
@@ -83,10 +84,16 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
         // or as a fallback, we'll use the path
         path;
 
-      acc.push({ name, path, link });
+      // If it is a segment marked as to be hidden, we'll just set the property to true and
+      // filter it later. We need it to be in the array in order for path building to work
+      // correctly.
+      const hidden: boolean = segmentsToHide.includes(query) || segmentsToHide.includes(segment);
+
+      acc.push({ name, path, link, hidden });
 
       return acc;
     }, [])
+    .filter(({ hidden }) => !hidden)
     .map(({ name, link }) => ({ name, link }));
 
   return (
