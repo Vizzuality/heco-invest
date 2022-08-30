@@ -155,25 +155,20 @@ export const ProjectForm: FC<ProjectFormProps> = ({
 
   const onSubmit: SubmitHandler<ProjectFormType> = (values: ProjectFormType) => {
     if (isLastPage) {
-      const {
-        involved_project_developer,
-        project_gallery,
-        project_images_attributes_cover,
-        geometry,
-        ...rest
-      } = values;
+      const { involved_project_developer, project_gallery, geometry, ...rest } = values;
 
-      // set image_attributes cover from the project_images_attributes_cover value
       const project_images_attributes: any = values.project_images_attributes?.map(
-        ({ file, id, _destroy }) => {
-          // If is an old image, send the image id, if is a new one, send the image file (direct-upload signed_id)
+        ({ file, id, cover, _destroy }) => {
+          // If the image was already uploaded, we send its id, otherwise, we send only the file
+          // (direct-upload signed_id)
           if (id) {
-            return { file, id, cover: file === project_images_attributes_cover, _destroy };
+            return { file, id, cover, _destroy };
           } else {
-            return { file, cover: file === project_images_attributes_cover };
+            return { file, cover };
           }
         }
       );
+
       // set involved_project_developer_not_listed to true if not listed is selected and removes this value from the involved_project_developer_ids
       const involved_project_developer_not_listed =
         !!values.involved_project_developer_ids?.includes('not-listed');

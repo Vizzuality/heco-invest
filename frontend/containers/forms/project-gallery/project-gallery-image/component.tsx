@@ -28,7 +28,7 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
 }: ProjectGalleryImageProps<FormValues>) => {
   const [invalid, setInvalid] = useState<boolean>(invalidProp);
   const { isFocusVisible, focusProps } = useFocusRing();
-  const { id, file, title, src } = image;
+  const { file, title, src } = image;
   const { formatMessage } = useIntl();
 
   useEffect(() => {
@@ -72,7 +72,9 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
               <input
                 {...field}
                 name={name}
-                id={id}
+                // Newly uploaded images don't have an `id` attribute so we use the `file` one
+                // instead
+                id={file}
                 type="radio"
                 className="sr-only peer"
                 value={file}
@@ -84,7 +86,11 @@ export const ProjectGalleryImage = <FormValues extends FieldValues>({
               />
             )}
           />
-          <label htmlFor={id} className="overflow-hidden rounded cursor-pointer">
+          <label
+            // Newly uploaded images don't have an `id` attribute so we use the `file` one instead
+            htmlFor={file}
+            className="overflow-hidden rounded cursor-pointer"
+          >
             <span className="sr-only">{image.title}</span>
             <Image
               aria-hidden={true}
