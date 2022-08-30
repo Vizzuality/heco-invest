@@ -668,7 +668,7 @@
       "type": "ticket_size",
       "attributes": {
         "name": "Small Grants",
-        "description": "<US$25,000"
+        "description": "<US$25k"
       }
     },
     {
@@ -676,7 +676,7 @@
       "type": "ticket_size",
       "attributes": {
         "name": "Prototyping",
-        "description": "US$25,000 - 150,000"
+        "description": "US$25k - 150k"
       }
     },
     {
@@ -684,7 +684,7 @@
       "type": "ticket_size",
       "attributes": {
         "name": "Validation",
-        "description": "US$150,000 - 750,000"
+        "description": "US$150k - 750k"
       }
     },
     {
@@ -692,7 +692,7 @@
       "type": "ticket_size",
       "attributes": {
         "name": "Scaling",
-        "description": ">US$750,000"
+        "description": ">US$750k"
       }
     },
     {
