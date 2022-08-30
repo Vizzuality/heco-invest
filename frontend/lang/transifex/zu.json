@@ -371,6 +371,9 @@
   "5zAKQ7": {
     "string": "About HeCo"
   },
+  "62884j": {
+    "string": "<b>Climate</b>: areas with high carbon storage potential where land sector interventions can be implemented for climate regulation."
+  },
   "62pTkz": {
     "string": "Save your favorites"
   },
@@ -469,6 +472,9 @@
   },
   "8HimVK": {
     "string": "Confirm password"
+  },
+  "8IPyXf": {
+    "string": "Carbon emissions reduction"
   },
   "8KmEyC": {
     "string": "Would you like to apply for this fund?"
@@ -650,6 +656,9 @@
   "BkLlj6": {
     "string": "What’s the impact of your project and what do you want to achieve"
   },
+  "BqrQ5O": {
+    "string": "At the <b>Landscape level</b>, a composite index combining the set of indicators identified for each dimension is used to calculate <b>Context scores</b>, with values ranging from 0 to 1. <b>Demand</b> is then computed as 1 - <b>Context score</b>, representing the “quantity” missing to reach 1, where 1 assumes the best sustainability conditions. Because the demand can be considered at multiple scales (namely, municipality, hydrological basins, and HeCo Priority Landscapes), the demand score is computed using zonal statistics at a user-specified scale, with the municipality level being the default. Unlike municipalities and hydrographic basins, the HeCo Priority Landscapes don’t cover the entire country, and therefore <b>if the project area doesn't fall into any of the Priority Landscapes, the impact of that project will be zero at that particular scale</b>."
+  },
   "Bt7PVr": {
     "string": "Biodiversity intactness"
   },
@@ -739,6 +748,9 @@
   },
   "DkjIbR": {
     "string": "insert email"
+  },
+  "Dm1lEK": {
+    "string": "A score of expected impact along the four sustainability dimensions is assigned to every project. These scores are calculated using a combination of landscape-level variables (<b>Demand</b>) and self-reported project data (<b>Supply</b>)."
   },
   "DrtKvj": {
     "string": "Impact of projects on biodiversity conservation, calculated from indicators of endemism, land conservation/restoration, connectivity, and development of sustainable social projects."
@@ -904,6 +916,9 @@
   },
   "Gxnfj4": {
     "string": "mandatory fields"
+  },
+  "H0r0a5": {
+    "string": "At the <b>Project level</b>, the analysis is meant to communicate the expected impact of individual projects on the ground. This information is provided by project developers during the project registration phase. The following key indicators have been identified to inform if the project is appropriate in its local context."
   },
   "HAlOn1": {
     "string": "Name"
@@ -1124,6 +1139,9 @@
   },
   "Lw4PWP": {
     "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
+  },
+  "LxYOKo": {
+    "string": "With a known <b>Demand</b> and <b>Supply</b>, a <b>Net value</b> is generated as <b>Supply</b> - <b>Demand</b>. This value ranges from -1 to 1. The closest the net value to 0 the better because it means that supply meets demand and vice versa. The Net value is then transformed into an <b>impact score</b>, using the formula y = - (x^​2) + 1. The results range from 0 to 1, where 0 is the low positive impact and 1 is a high positive impact, in relation to the context demand. Finally, this value is multiplied by 10 to rescale it from 0 to 10."
   },
   "M1xKEI": {
     "string": "Language: {language}"
@@ -1836,6 +1854,9 @@
   "c6KUQu": {
     "string": "Your account was successfully created, but you still need to be approved by our platform administrators."
   },
+  "c82kx9": {
+    "string": "HeCo Invest relies on the ARIES Artificial Intelligence model to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four “sustainability dimensions”, based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10, as shown in the chart of impact."
+  },
   "c8BbZZ": {
     "string": "Trade or business association"
   },
@@ -1893,6 +1914,9 @@
   "dPuc1g": {
     "string": "Slide {slideNumber}"
   },
+  "dYFllx": {
+    "string": "The methodology that estimates the project’s impacts is based on a supply-and-demand framework, where <b>Demand</b> responds to the question: “what does the local context need?” and <b>Supply</b> to the question “What is the project providing?”. For a project to satisfy the needs of a local context, supply needs to meet the demand, and vice versa."
+  },
   "dZYyPC": {
     "string": "View {name} project details"
   },
@@ -1910,6 +1934,9 @@
   },
   "dkNQOz": {
     "string": "Projects of all sizes"
+  },
+  "du2+Gq": {
+    "string": "<b>Biodiversity</b>:"
   },
   "dwB95+": {
     "string": "Priority landscape"
@@ -1964,6 +1991,9 @@
   },
   "ewx2b7": {
     "string": "Launch"
+  },
+  "f6GN1M": {
+    "string": "<b>Community</b>: areas with production systems and sustainable practices where local and indigenous communities can thrive while enhancing their adaptation to climate change."
   },
   "f9DtLB": {
     "string": "max 36 months"
@@ -2511,6 +2541,9 @@
   "r2qqVX": {
     "string": "Are you sure you want to close “<strong>{name}</strong>”?"
   },
+  "r333tD": {
+    "string": "<b>Water</b>:"
+  },
   "rLzWx9": {
     "string": "{name} picture"
   },
@@ -2522,6 +2555,9 @@
   },
   "rPwaWt": {
     "string": "A great name is short, crisp, and easily understood."
+  },
+  "rb3Hsm": {
+    "string": "<b>Climate</b>:"
   },
   "rbmO5C": {
     "string": "The phone number for Project Developers or other Investors to reach you/your team"
@@ -2685,6 +2721,9 @@
   "ui0dk9": {
     "string": "idea to be developed from scratch."
   },
+  "up42nX": {
+    "string": "<b>Biodiversity</b>: areas of great ecosystem diversity as well as with a degree of threat or protection for flora and fauna, and where more investments in conservation, restoration, and scientific knowledge are needed."
+  },
   "uuxwc2": {
     "string": "If you select <b>all areas</b>, the impact will be 0. Consider choosing only your main direct ones. <a>Learn more</a>"
   },
@@ -2693,6 +2732,9 @@
   },
   "v9GdgG": {
     "string": "File {fileName} is larger than {fileSize}MB"
+  },
+  "v9JR0p": {
+    "string": "<b>Water</b>: areas with environmental factors that will help maintain the availability and regulation of water resources, including reducing risks such as floods and droughts."
   },
   "vC2u0N": {
     "string": "Apply to Open Call"
@@ -2729,6 +2771,9 @@
   },
   "w1Fanr": {
     "string": "Business"
+  },
+  "wA8Ls7": {
+    "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. The <b>Supply</b> score of each sustainability dimension is then computed by taking the mean value of the corresponding indicators. <b>However, if all the indicators of a given dimension are selected, then the supply score of that dimension goes automatically to 0</b>. This is to make sure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
   },
   "wEQDC6": {
     "string": "Edit"
@@ -2783,6 +2828,9 @@
   },
   "xQ4XkB": {
     "string": "Only by understanding nature’s contributions to people and the economy can we push for policy-making where nature counts."
+  },
+  "xQArDr": {
+    "string": "<b>Community</b>:"
   },
   "xUR9nd": {
     "string": "people live in the Amazon region."
@@ -2891,6 +2939,9 @@
   },
   "zkonnO": {
     "string": "World Wildlife Fund (WWF) is the largest international conservation organization in the world, with more than 50 offices implementing conservation projects across more than 100 countries and has a membership of almost five million people. WWF has extensive experience working in the Amazon region, with offices in all seven signatory countries of the Leticia Pact. In Colombia, WWF has been working in partnership with the government and a consortium of civil society organizations on Heritage Colombia since 2015."
+  },
+  "zkzBCh": {
+    "string": "Hydro-meteorological risk reduction"
   },
   "zniaka": {
     "string": "Unable to load the data"
