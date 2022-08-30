@@ -20,7 +20,7 @@ import { CellActionsProps } from './types';
 
 export const CellActions: FC<CellActionsProps> = ({
   row: {
-    original: { id, slug, openCallName },
+    original: { id, openCallName },
   },
 }: CellActionsProps) => {
   const [confirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState<boolean>(false);
@@ -66,7 +66,7 @@ export const CellActions: FC<CellActionsProps> = ({
             </Button>
           </Tooltip>
         </div>
-        <Link href={`${Paths.DashboardOpenCallApplications}/${slug}/details`}>
+        <Link href={`${Paths.DashboardOpenCallApplications}/${id}`}>
           <a className="px-2 py-1 text-sm transition-all text-green-dark focus-visible:outline-green-dark rounded-2xl">
             <FormattedMessage defaultMessage="Details" id="Lv0zJu" />
           </a>

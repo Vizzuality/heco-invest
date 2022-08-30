@@ -5,11 +5,10 @@ import { Project } from 'types/project';
 export type OpenCallApplication = {
   id: string;
   type: 'open_call_application';
-  slug: string;
   created_at: string;
+  updated_at: string;
   message: string;
   funded: boolean;
-
   investor: Investor;
   project: Project;
   open_call: OpenCall;

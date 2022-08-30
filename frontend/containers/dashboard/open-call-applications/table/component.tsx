@@ -76,7 +76,6 @@ export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () 
 
       return {
         id: openCallApplication.id,
-        slug: openCallApplication.slug,
         openCallName: openCall.name,
         investorName: investor.name,
         applicationDate: openCallApplication.created_at,
