@@ -20,7 +20,6 @@ import {
   OpenCallCreationPayload,
   OpenCallParams,
   OpenCallUpdatePayload,
-  OpenCallApplicationPayload,
 } from 'types/open-calls';
 
 import API from 'services/api';
@@ -252,41 +251,6 @@ export const useFavoriteOpenCall = () => {
         queryClient.invalidateQueries(Queries.OpenCallList);
         queryClient.invalidateQueries(Queries.FavoriteOpenCallsList);
         queryClient.setQueryData([Queries.OpenCall, data.id], data);
-      },
-    }
-  );
-};
-
-/**
- * Hook to apply to an open call
- **/
-export const useApplyToOpenCall = (): UseMutationResult<
-  AxiosResponse<ResponseData<OpenCall>>,
-  AxiosError<ErrorResponse>,
-  OpenCallApplicationPayload
-> => {
-  const queryClient = useQueryClient();
-
-  const applyToOpenCall = (
-    projectId: string,
-    openCallId: string,
-    message: string
-  ): Promise<AxiosResponse<ResponseData<OpenCall>>> => {
-    const config: AxiosRequestConfig = {
-      method: 'POST',
-      url: `/api/v1/account/open_call_applications`,
-      data: { project_id: projectId, open_call_id: openCallId, message },
-    };
-
-    return API(config);
-  };
-
-  return useMutation(
-    ({ project_id, open_call_id, message }: OpenCallApplicationPayload) =>
-      applyToOpenCall(project_id, open_call_id, message),
-    {
-      onSuccess() {
-        queryClient.invalidateQueries(Queries.OpenCallApplicationList);
       },
     }
   );

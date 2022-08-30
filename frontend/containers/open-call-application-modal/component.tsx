@@ -17,11 +17,11 @@ import Textarea from 'components/forms/textarea';
 import Loading from 'components/loading';
 import Modal from 'components/modal';
 import { Paths } from 'enums';
-import { OpenCallApplicationForm } from 'types/open-calls';
+import { OpenCallApplicationForm } from 'types/open-call-applications';
 import { useApplyToOpenCallResolver } from 'validations/open-call-application';
 
 import { useAccountProjectsList } from 'services/account';
-import { useApplyToOpenCall } from 'services/open-call/open-call-service';
+import { useApplyToOpenCall } from 'services/open-call/application-service';
 
 import type { OpenCallApplicationModalProps } from './types';
 

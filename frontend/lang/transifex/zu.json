@@ -683,6 +683,9 @@
   "CIcAVo": {
     "string": "consolidated, demonstrated project or solution that seeks to be scaled or replicated in other contexts and/or geographies."
   },
+  "CIeYUa": {
+    "string": "Max. Funding"
+  },
   "CPO6eS": {
     "string": "Select in which SDG’s your project will have impact"
   },
@@ -739,6 +742,9 @@
   },
   "DWQSFT": {
     "string": "Use left and right to toggle between focused values, press backspace to remove the currently focused value"
+  },
+  "DYbC4X": {
+    "string": "Total <span>{numOpenCallApplications}</span> {numOpenCallApplications, plural, one {application} other {applications}}"
   },
   "DZ+TNi": {
     "string": "Non-timber forest production"
@@ -1136,6 +1142,9 @@
   },
   "LtTjKV": {
     "string": "selected"
+  },
+  "Lv0zJu": {
+    "string": "Details"
   },
   "Lw4PWP": {
     "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
@@ -1659,6 +1668,9 @@
   "XO0Kon": {
     "string": "This file is not supported. Please try uploading a different format."
   },
+  "XOLAV7": {
+    "string": "Withdraw from the open call?"
+  },
   "XQuzr9": {
     "string": "Identified priorities by the HeCo program"
   },
@@ -1847,6 +1859,9 @@
   },
   "c1m3Q7": {
     "string": "The project gallery will be the first thing other users will see on you page, it will help you to showcase you project."
+  },
+  "c3w2Rt": {
+    "string": "Currently you don’t have any <b>Open Call Applications</b>."
   },
   "c4HVkO": {
     "string": "Launch open call"
@@ -2058,6 +2073,9 @@
   "gbBVhv": {
     "string": "sustainable timber extraction and forest management practices, including reforestation and restoration."
   },
+  "gd1sn5": {
+    "string": "Widthraw from the open call"
+  },
   "ghj0+t": {
     "string": "Geographies"
   },
@@ -2238,6 +2256,9 @@
   "k0xbVH": {
     "string": "You can't undo this action."
   },
+  "k36uSw": {
+    "string": "Project"
+  },
   "k5DITM": {
     "string": "Users will receive an email to sign up into the platform and join <strong>{name}</strong> account."
   },
@@ -2261,6 +2282,9 @@
   },
   "kTXMXN": {
     "string": "Displays the protected areas signed into the RUNAP (Unique Registry of Protected Areas) of Colombia"
+  },
+  "kUEzKa": {
+    "string": "Application date"
   },
   "kUPAU5": {
     "string": "Search climate"
@@ -2544,6 +2568,9 @@
   "r333tD": {
     "string": "<b>Water</b>:"
   },
+  "rE2fon": {
+    "string": "Are you sure you want to withdraw from the “<strong>{openCallName}</strong>“ open call?"
+  },
   "rLzWx9": {
     "string": "{name} picture"
   },
@@ -2636,6 +2663,9 @@
   },
   "sjzLbX": {
     "string": "Accept"
+  },
+  "soFliQ": {
+    "string": "Withdraw from the open call"
   },
   "stKKFV": {
     "string": "What type of projects are you prioritizing?"
