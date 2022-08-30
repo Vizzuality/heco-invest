@@ -77,6 +77,20 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
     [enums, openCall]
   );
 
+  const breadcrumbsProps = {
+    substitutions: {
+      'open-call-applications': {
+        name: intl.formatMessage({
+          defaultMessage: 'Open call applications',
+          id: 'daUTdN',
+        }),
+        link: Paths.DashboardOpenCallApplications,
+      },
+      id: { name: openCall?.name },
+    },
+    hidden: ['dashboard'],
+  };
+
   // If we can't load the open call, it may have been removed or the user not have access to it. Let's
   // redirect the user to the Dashboard open call applications list.
   if (isLoadingError) {
@@ -89,7 +103,11 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
       <Head
         title={intl.formatMessage({ defaultMessage: 'My open call applications', id: '6EYInP' })}
       />
-      <DashboardLayout isLoading={isLoading}>
+      <DashboardLayout
+        header="breadcrumbs"
+        isLoading={isLoading}
+        breadcrumbsProps={breadcrumbsProps}
+      >
         <LayoutContainer layout="narrow">
           <div className="flex flex-col gap-4 p-6 break-all bg-white border rounded-lg lg:mt-4 lg:mb-14">
             <div className="flex flex-col items-center justify-between lg:flex-row">
