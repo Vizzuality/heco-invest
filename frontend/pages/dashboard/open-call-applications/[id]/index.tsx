@@ -12,11 +12,10 @@ import dayjs from 'dayjs';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
-import { useGetAlert } from 'helpers/pages';
 
-import Alert from 'components/alert';
+import WithdrawApplicationModal from 'containers/dashboard/open-call-applications/withdraw-application-modal';
+
 import Button from 'components/button';
-import ConfirmationPrompt from 'components/confirmation-prompt';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { Paths, UserRoles } from 'enums';
@@ -27,10 +26,7 @@ import { PageComponent } from 'types';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
 
 import { getEnums } from 'services/enums/enumService';
-import {
-  useOpenCallApplication,
-  useDeleteOpenCallApplication,
-} from 'services/open-call/application-service';
+import { useOpenCallApplication } from 'services/open-call/application-service';
 
 const SECTION_CLASSNAMES = 'break-all';
 const TITLE_CLASSNAMES = 'mb-5 mt-3 text-gray-600';
@@ -57,13 +53,10 @@ type OpenCallDetailsPageProps = {
 export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, DashboardLayoutProps> = ({
   enums,
 }) => {
-  const [confirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState<boolean>(false);
+  const [withdrawApplicationModalOpen, setWithdrawApplicationModalOpen] = useState<boolean>(false);
 
   const intl = useIntl();
   const router = useRouter();
-
-  const deleteOpenCallApplicationMutation = useDeleteOpenCallApplication();
-  const alert = useGetAlert(deleteOpenCallApplicationMutation.error);
 
   const { data: openCallApplication, isLoading: isLoadingOpenCallApplication } =
     useOpenCallApplication(router.query.id as string, {
@@ -81,20 +74,6 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
     [enums, openCall]
   );
 
-  const closeConfirmDeleteModal = () => {
-    deleteOpenCallApplicationMutation.reset();
-    setConfirmDeleteModalOpen(false);
-  };
-
-  const handleDeletionConfirmation = () => {
-    deleteOpenCallApplicationMutation.mutate(openCallApplication.id, {
-      onSuccess: () => {
-        closeConfirmDeleteModal();
-        router.push(Paths.DashboardOpenCallApplications);
-      },
-    });
-  };
-
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
       <Head
@@ -108,7 +87,7 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
                 <h1 className="text-xl font-semibold">{openCall?.name}</h1>
               </span>
               <span className="flex flex-col-reverse items-center gap-4 mt-2 lg:gap-2 lg:mt-0 lg:flex-row">
-                <Button onClick={() => setConfirmDeleteModalOpen(true)}>
+                <Button onClick={() => setWithdrawApplicationModalOpen(true)}>
                   <FormattedMessage defaultMessage="Withdraw project" id="IysIYD" />
                 </Button>
                 <Link href={`${Paths.OpenCall}/${openCall?.slug}`}>
@@ -215,39 +194,15 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
           </div>
         </LayoutContainer>
       </DashboardLayout>
-      <ConfirmationPrompt
-        open={confirmDeleteModalOpen}
-        onAccept={handleDeletionConfirmation}
-        onDismiss={closeConfirmDeleteModal}
-        onRefuse={closeConfirmDeleteModal}
-        onAcceptLoading={deleteOpenCallApplicationMutation.isLoading}
-        title={intl.formatMessage({
-          defaultMessage: 'Withdraw from the open call?',
-          id: 'XOLAV7',
-        })}
-        description={
-          <>
-            <p className="max-w-sm">
-              <FormattedMessage
-                defaultMessage="Are you sure you want to withdraw from the “<strong>{openCallName}</strong>“ open call?"
-                id="rE2fon"
-                values={{
-                  openCallName: openCall?.name,
-                  strong: (chunk: string) => <span className="font-semibold">{chunk}</span>,
-                }}
-              />
-            </p>
-            <p className="mt-4">
-              <FormattedMessage defaultMessage="You can't undo this action." id="k0xbVH" />
-            </p>
-            {alert && (
-              <Alert type="warning" className="my-4 -mb-4 rounded">
-                {/* useGetAlert returns an array, but the endpoint only sends one error message at a time. */}
-                {alert[0]}
-              </Alert>
-            )}
-          </>
-        }
+      <WithdrawApplicationModal
+        openCallApplication={openCallApplication}
+        openCall={openCall}
+        isOpen={withdrawApplicationModalOpen}
+        onAccept={() => {
+          setWithdrawApplicationModalOpen(false);
+          router.push(Paths.DashboardOpenCallApplications);
+        }}
+        onDismiss={() => setWithdrawApplicationModalOpen(false)}
       />
     </ProtectedPage>
   );

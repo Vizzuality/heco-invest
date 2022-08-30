@@ -81,6 +81,8 @@ export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () 
         applicationDate: openCallApplication.created_at,
         maxOpenCallFunding: openCall.maximum_funding_per_project,
         projectName: project.name,
+        openCallApplication,
+        openCall,
       };
     }),
     loading: isLoading,
