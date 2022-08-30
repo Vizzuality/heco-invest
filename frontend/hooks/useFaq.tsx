@@ -5,6 +5,7 @@ import { useIntl } from 'react-intl';
 import InvestorInfo from 'containers/faq-page/answers/account/investor-info';
 import ProjectDeveloperInfo from 'containers/faq-page/answers/account/project-developer-info';
 import OpenCallInfo from 'containers/faq-page/answers/open-calls/open-call-info';
+import ProjectImpact from 'containers/faq-page/answers/projects/project-impact';
 import ProjectInfo from 'containers/faq-page/answers/projects/project-info';
 
 import { Paths } from 'enums';
@@ -181,6 +182,14 @@ export const useFaq = () => {
               id: 'oRepRG',
             }),
             answer: <ProjectInfo />,
+          },
+          {
+            questionId: FaqQuestions.HowIsTheImpactCalculated,
+            question: formatMessage({
+              defaultMessage: 'How is the impact calculated?',
+              id: '9cE0nR',
+            }),
+            answer: <ProjectImpact />,
           },
         ],
       },
