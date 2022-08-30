@@ -89,6 +89,9 @@
   "02KfzX": {
     "string": "Add your legal registration number so we can verify your legal entity. This information will not be publicly available."
   },
+  "03HUos": {
+    "string": "View public page"
+  },
   "06VF+w": {
     "string": "Share on Facebook"
   },
@@ -617,6 +620,9 @@
   "AiagLY": {
     "string": "Entity legal registration number (NIT or RUT)"
   },
+  "AjUo5c": {
+    "string": "Max. funding per project"
+  },
   "AoHRBG": {
     "string": "Custom search"
   },
@@ -877,6 +883,9 @@
   },
   "FyUIBK": {
     "string": "Discover open calls and <heart></heart> them."
+  },
+  "G6cbGp": {
+    "string": "Investor name"
   },
   "G6hIMy": {
     "string": "Public profile"
@@ -1350,6 +1359,9 @@
   "QA1wrZ": {
     "string": "Frequently Asked Questions"
   },
+  "QD4yJl": {
+    "string": "Application details"
+  },
   "QDj3j7": {
     "string": "Inter-American Development Bank Lab"
   },
@@ -1475,6 +1487,9 @@
   },
   "Swj4mJ": {
     "string": "Select the {name} account"
+  },
+  "T7Ry38": {
+    "string": "Message"
   },
   "TDaF6J": {
     "string": "Dismiss"
@@ -1743,6 +1758,9 @@
   "YtyJ9Z": {
     "string": "production of health, wellness, and cosmetic products; art, clothing, and handcrafted products; production of food and drinks."
   },
+  "Yw0iXW": {
+    "string": "Open call details"
+  },
   "Yy/yDL": {
     "string": "Reset password"
   },
@@ -1899,6 +1917,9 @@
   "ccXLVi": {
     "string": "Category"
   },
+  "cdeA3/": {
+    "string": "Investor email"
+  },
   "cqoaMq": {
     "string": "Shapefile / KML"
   },
@@ -2003,6 +2024,9 @@
   },
   "eu+7Vl": {
     "string": "Do you have a project or a start-up business in the Colombian Amazon?"
+  },
+  "ew5vRN": {
+    "string": "Investor phone"
   },
   "ewx2b7": {
     "string": "Launch"
@@ -2447,6 +2471,9 @@
   },
   "oiQKNY": {
     "string": "Search and find"
+  },
+  "ojuv8F": {
+    "string": "Investor contacts"
   },
   "orirkU": {
     "string": "What information do I need to create a Project Developer account?"
