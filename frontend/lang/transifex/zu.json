@@ -1791,9 +1791,6 @@
   "a5msuh": {
     "string": "Yes"
   },
-  "a7GhdS": {
-    "string": "<p>Are you sure you want to withdraw from the </p><p>“<strong>{openCallName}“</strong> open call?</p>"
-  },
   "aDn1WM": {
     "string": "Curated database"
   },
@@ -2570,6 +2567,9 @@
   },
   "r333tD": {
     "string": "<b>Water</b>:"
+  },
+  "rE2fon": {
+    "string": "Are you sure you want to withdraw from the “<strong>{openCallName}</strong>“ open call?"
   },
   "rLzWx9": {
     "string": "{name} picture"

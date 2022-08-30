@@ -85,15 +85,16 @@ export const CellActions: FC<CellActionsProps> = ({
         })}
         description={
           <>
-            <FormattedMessage
-              defaultMessage="<p>Are you sure you want to withdraw from the </p><p>“<strong>{openCallName}“</strong> open call?</p>"
-              id="a7GhdS"
-              values={{
-                openCallName,
-                p: (chunk: string) => <p>{chunk}</p>,
-                strong: (chunk: string) => <span className="font-semibold">{chunk}</span>,
-              }}
-            />
+            <p className="max-w-sm">
+              <FormattedMessage
+                defaultMessage="Are you sure you want to withdraw from the “<strong>{openCallName}</strong>“ open call?"
+                id="rE2fon"
+                values={{
+                  openCallName,
+                  strong: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+                }}
+              />
+            </p>
             <p className="mt-4">
               <FormattedMessage defaultMessage="You can't undo this action." id="k0xbVH" />
             </p>
