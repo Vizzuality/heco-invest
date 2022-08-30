@@ -92,7 +92,7 @@ export const useApplyToOpenCall = (): UseMutationResult<
       applyToOpenCall(project_id, open_call_id, message),
     {
       onSuccess() {
-        queryClient.invalidateQueries(Queries.OpenCallApplicationList);
+        queryClient.invalidateQueries(Queries.AccountOpenCallApplicationsList);
       },
     }
   );
@@ -119,7 +119,7 @@ export const useDeleteOpenCallApplication = (): UseMutationResult<
 
   return useMutation((openCallId: string) => deleteOpenCallApplication(openCallId), {
     onSuccess() {
-      queryClient.invalidateQueries(Queries.OpenCallApplicationList);
+      queryClient.invalidateQueries(Queries.AccountOpenCallApplicationsList);
     },
   });
 };
