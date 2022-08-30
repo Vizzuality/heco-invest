@@ -1,0 +1,38 @@
+{
+  "data": {
+    "id": "8ad4fbe2-6cc9-449a-9e6e-d1a49617fe3f",
+    "type": "open_call_application",
+    "attributes": {
+      "message": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+      "funded": false,
+      "created_at": "2022-08-29T16:10:52.805Z",
+      "updated_at": "2022-08-29T16:10:52.805Z"
+    },
+    "relationships": {
+      "open_call": {
+        "data": {
+          "id": "5af68a1e-e194-425c-bcd0-77205362b32e",
+          "type": "open_call"
+        }
+      },
+      "project": {
+        "data": {
+          "id": "7aa6f3b6-3217-44dd-a911-18f74ddece51",
+          "type": "project"
+        }
+      },
+      "project_developer": {
+        "data": {
+          "id": "6e5eae71-3d51-4eb0-960d-ea3765ed932c",
+          "type": "project_developer"
+        }
+      },
+      "investor": {
+        "data": {
+          "id": "ef77fc2f-17f6-4b48-ab0e-59f34f9d1942",
+          "type": "investor"
+        }
+      }
+    }
+  }
+}

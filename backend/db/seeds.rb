@@ -68,5 +68,12 @@ if Rails.env.development?
         country: municipality.parent.parent
       )
     end
+
+    [[investor.open_calls.first, project_developer.projects.first],
+      [investor.open_calls.first, project_developer.projects.last],
+      [investor.open_calls.last, project_developer.projects.last]].each do |open_call, project|
+      application = FactoryBot.build :open_call_application, open_call: open_call, project: project
+      application.save if application.valid?
+    end
   end
 end

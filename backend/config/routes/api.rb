@@ -64,7 +64,7 @@ namespace :api, format: "json" do
           get :favourites
         end
       end
-      resources :open_call_applications, only: [:create, :update, :destroy] do
+      resources :open_call_applications, only: [:index, :show, :create, :update, :destroy] do
         member do
           post :funding
           post :not_funding
