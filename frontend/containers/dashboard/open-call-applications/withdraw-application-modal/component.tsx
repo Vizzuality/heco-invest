@@ -44,6 +44,7 @@ export const WithdrawApplicationModal: FC<WithdrawApplicationModalProps> = ({
       onDismiss={closeConfirmDeleteModal}
       onRefuse={closeConfirmDeleteModal}
       onAcceptLoading={deleteOpenCallApplicationMutation.isLoading}
+      onConfirmText={intl.formatMessage({ defaultMessage: 'Withdraw', id: 'PXAur5' })}
       title={intl.formatMessage({
         defaultMessage: 'Withdraw from the open call?',
         id: 'XOLAV7',
