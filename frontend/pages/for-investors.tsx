@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { withLocalizedRequests } from 'hoc/locale';
 
 import { groupBy } from 'lodash-es';
-import { InferGetStaticPropsType } from 'next';
+import { InferGetServerSidePropsType } from 'next';
 
 import { useBreakpoint } from 'hooks/use-breakpoint';
 
@@ -32,7 +32,7 @@ import { getEnums } from 'services/enums/enumService';
 import { getPriorityLandscapes } from 'services/locations/locations';
 import { getProjects } from 'services/projects/projectService';
 
-export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
+export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
   let categoryEnums: Enum[] = [];
   let priorityLandscapes: Locations[] = [];
 
@@ -67,7 +67,7 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   };
 });
 
-type ForInvestorsPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+type ForInvestorsPageProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutProps> = ({
   categoryEnums,
@@ -318,6 +318,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                   quantity={projectsQuantity}
                   cardType="projects"
                   enumType="mosaic"
+                  filterName="priority_landscape"
                 />
               </div>
             );
