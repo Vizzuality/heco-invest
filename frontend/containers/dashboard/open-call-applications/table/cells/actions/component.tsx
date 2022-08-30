@@ -53,7 +53,7 @@ export const CellActions: FC<CellActionsProps> = ({
             }
           >
             <Button
-              className="flex items-center justify-center w-8 h-8 border rounded-full hover:bg-green-light hover:bg-opacity-20 pointer border-green-dark focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2"
+              className="flex items-center justify-center w-8 h-8 -my-2 border rounded-full hover:bg-green-light hover:bg-opacity-20 pointer border-green-dark focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2"
               theme="naked"
               type="button"
               size="smallest"
