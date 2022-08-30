@@ -55,7 +55,6 @@ export const PublicPageCard: FC<PublicPageCardProps> = ({
             />
           )}
         </p>
-        {/* The link is only for categories, since we don't have priority landscape filters */}
         {!!filterName && (
           <Button theme="naked" to={`${Paths.Discover}/${cardType}/?filter[${filterName}]=${id}`}>
             <span className="sr-only">
