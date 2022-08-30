@@ -58,10 +58,13 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
   const intl = useIntl();
   const router = useRouter();
 
-  const { data: openCallApplication, isLoading: isLoadingOpenCallApplication } =
-    useOpenCallApplication(router.query.id as string, {
-      includes: ['open_call', 'project', 'investor'],
-    });
+  const {
+    data: openCallApplication,
+    isLoading,
+    isLoadingError,
+  } = useOpenCallApplication(router.query.id as string, {
+    includes: ['open_call', 'project', 'investor'],
+  });
 
   const { open_call: openCall, investor, project } = openCallApplication || {};
 
@@ -74,12 +77,19 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
     [enums, openCall]
   );
 
+  // If we can't load the open call, it may have been removed or the user not have access to it. Let's
+  // redirect the user to the Dashboard open call applications list.
+  if (isLoadingError) {
+    router.push(Paths.DashboardOpenCallApplications);
+    return null;
+  }
+
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
       <Head
         title={intl.formatMessage({ defaultMessage: 'My open call applications', id: '6EYInP' })}
       />
-      <DashboardLayout isLoading={isLoadingOpenCallApplication}>
+      <DashboardLayout isLoading={isLoading}>
         <LayoutContainer layout="narrow">
           <div className="flex flex-col gap-4 p-6 break-all bg-white border rounded-lg lg:mt-4 lg:mb-14">
             <div className="flex flex-col items-center justify-between lg:flex-row">
