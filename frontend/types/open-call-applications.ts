@@ -1,6 +1,7 @@
 import { Investor } from 'types/investor';
 import { OpenCall } from 'types/open-calls';
 import { Project } from 'types/project';
+import { ProjectDeveloper } from 'types/projectDeveloper';
 
 export type OpenCallApplication = {
   id: string;
@@ -12,6 +13,7 @@ export type OpenCallApplication = {
   investor: Investor;
   project: Project;
   open_call: OpenCall;
+  project_developer: ProjectDeveloper;
 };
 
 export type OpenCallApplicationParams = {
