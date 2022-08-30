@@ -399,6 +399,12 @@ RSpec.describe "API V1 Account Open Call Applications", type: :request do
             assert_response_matches_metadata example.metadata
           }.to change(OpenCallApplication, :count).by(-1)
         end
+
+        it "sends email to investor" do |example|
+          expect {
+            submit_request example.metadata
+          }.to have_enqueued_mail(InvestorMailer, :open_call_application_destroyed).with(open_call_application.investor, open_call_application.project)
+        end
       end
     end
   end
