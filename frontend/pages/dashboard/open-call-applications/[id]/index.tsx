@@ -1,6 +1,6 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
-import { ExternalLink as ExternalLinkIcon } from 'react-feather';
+import { ExternalLink as ExternalLinkIcon, X as XIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import Link from 'next/link';
@@ -12,7 +12,11 @@ import dayjs from 'dayjs';
 import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
+import { useGetAlert } from 'helpers/pages';
 
+import Alert from 'components/alert';
+import Button from 'components/button';
+import ConfirmationPrompt from 'components/confirmation-prompt';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { Paths, UserRoles } from 'enums';
@@ -23,8 +27,12 @@ import { PageComponent } from 'types';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
 
 import { getEnums } from 'services/enums/enumService';
-import { useOpenCallApplication } from 'services/open-call/application-service';
+import {
+  useOpenCallApplication,
+  useDeleteOpenCallApplication,
+} from 'services/open-call/application-service';
 
+const SECTION_CLASSNAMES = 'break-all';
 const TITLE_CLASSNAMES = 'mb-5 mt-3 text-gray-600';
 const GRID_CLASSNAMES = 'grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-y-4';
 const LABEL_CLASSNAMES = 'flex items-center text-sm font-semibold text-gray-800';
@@ -49,8 +57,13 @@ type OpenCallDetailsPageProps = {
 export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, DashboardLayoutProps> = ({
   enums,
 }) => {
+  const [confirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState<boolean>(false);
+
   const intl = useIntl();
   const router = useRouter();
+
+  const deleteOpenCallApplicationMutation = useDeleteOpenCallApplication();
+  const alert = useGetAlert(deleteOpenCallApplicationMutation.error);
 
   const { data: openCallApplication, isLoading: isLoadingOpenCallApplication } =
     useOpenCallApplication(router.query.id as string, {
@@ -68,6 +81,20 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
     [enums, openCall]
   );
 
+  const closeConfirmDeleteModal = () => {
+    deleteOpenCallApplicationMutation.reset();
+    setConfirmDeleteModalOpen(false);
+  };
+
+  const handleDeletionConfirmation = () => {
+    deleteOpenCallApplicationMutation.mutate(openCallApplication.id, {
+      onSuccess: () => {
+        closeConfirmDeleteModal();
+        router.push(Paths.DashboardOpenCallApplications);
+      },
+    });
+  };
+
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper]}>
       <Head
@@ -80,7 +107,10 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
               <span>
                 <h1 className="text-xl font-semibold">{openCall?.name}</h1>
               </span>
-              <span className="mt-2 lg:mt-0">
+              <span className="flex flex-col-reverse items-center gap-4 mt-2 lg:gap-2 lg:mt-0 lg:flex-row">
+                <Button onClick={() => setConfirmDeleteModalOpen(true)}>
+                  <FormattedMessage defaultMessage="Withdraw project" id="IysIYD" />
+                </Button>
                 <Link href={`${Paths.OpenCall}/${openCall?.slug}`}>
                   <a
                     className="flex gap-2 px-2 text-sm rounded-full text-green-dark focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2"
@@ -93,7 +123,7 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
               </span>
             </div>
 
-            <div>
+            <div className={SECTION_CLASSNAMES}>
               <div className={TITLE_CLASSNAMES}>
                 <FormattedMessage defaultMessage="Application details" id="QD4yJl" />
               </div>
@@ -121,7 +151,7 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
               </div>
             </div>
 
-            <div>
+            <div className={SECTION_CLASSNAMES}>
               <div className={TITLE_CLASSNAMES}>
                 <FormattedMessage defaultMessage="Open call details" id="Yw0iXW" />
               </div>
@@ -137,7 +167,7 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
               </div>
             </div>
 
-            <div>
+            <div className={SECTION_CLASSNAMES}>
               <div className={TITLE_CLASSNAMES}>
                 <FormattedMessage defaultMessage="Investor contacts" id="ojuv8F" />
               </div>
@@ -185,6 +215,40 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
           </div>
         </LayoutContainer>
       </DashboardLayout>
+      <ConfirmationPrompt
+        open={confirmDeleteModalOpen}
+        onAccept={handleDeletionConfirmation}
+        onDismiss={closeConfirmDeleteModal}
+        onRefuse={closeConfirmDeleteModal}
+        onAcceptLoading={deleteOpenCallApplicationMutation.isLoading}
+        title={intl.formatMessage({
+          defaultMessage: 'Withdraw from the open call?',
+          id: 'XOLAV7',
+        })}
+        description={
+          <>
+            <p className="max-w-sm">
+              <FormattedMessage
+                defaultMessage="Are you sure you want to withdraw from the “<strong>{openCallName}</strong>“ open call?"
+                id="rE2fon"
+                values={{
+                  openCallName: openCall?.name,
+                  strong: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+                }}
+              />
+            </p>
+            <p className="mt-4">
+              <FormattedMessage defaultMessage="You can't undo this action." id="k0xbVH" />
+            </p>
+            {alert && (
+              <Alert type="warning" className="my-4 -mb-4 rounded">
+                {/* useGetAlert returns an array, but the endpoint only sends one error message at a time. */}
+                {alert[0]}
+              </Alert>
+            )}
+          </>
+        }
+      />
     </ProtectedPage>
   );
 };
