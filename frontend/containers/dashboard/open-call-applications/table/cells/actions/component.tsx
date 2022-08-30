@@ -14,7 +14,7 @@ import Icon from 'components/icon';
 import Tooltip from 'components/tooltip';
 import { Paths } from 'enums';
 
-import { useDeleteOpenCallApplication } from 'services/open-call/applicationService';
+import { useDeleteOpenCallApplication } from 'services/open-call/application-service';
 
 import { CellActionsProps } from './types';
 

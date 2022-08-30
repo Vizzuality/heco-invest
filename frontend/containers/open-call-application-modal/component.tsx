@@ -21,7 +21,7 @@ import { OpenCallApplicationForm } from 'types/open-call-applications';
 import { useApplyToOpenCallResolver } from 'validations/open-call-application';
 
 import { useAccountProjectsList } from 'services/account';
-import { useApplyToOpenCall } from 'services/open-call/applicationService';
+import { useApplyToOpenCall } from 'services/open-call/application-service';
 
 import type { OpenCallApplicationModalProps } from './types';
 

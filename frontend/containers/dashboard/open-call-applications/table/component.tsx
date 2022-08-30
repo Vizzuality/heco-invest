@@ -15,7 +15,7 @@ import Button from 'components/button';
 import Table from 'components/table';
 import { Paths } from 'enums';
 
-import { useAccountOpenCallApplicationsList } from 'services/open-call/applicationService';
+import { useAccountOpenCallApplicationsList } from 'services/open-call/application-service';
 
 import CellActions from './cells/actions';
 
