@@ -1,6 +1,8 @@
 export type BreadcrumbsProps = {
   /** Classes to apply to the container */
   className?: string;
+  /** Theme to apply to the breadcrumbs. Defaults to 'dark' */
+  theme?: 'dark' | 'light';
   /**
    * Name/Link substitutions to make on the route segments
    * Eg:

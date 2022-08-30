@@ -13,6 +13,7 @@ import type { BreadcrumbsProps } from './types';
 
 export const Breadcrumbs: FC<BreadcrumbsProps> = ({
   className,
+  theme = 'dark',
   substitutions: propSubstitutions = {},
   hidden: segmentsToHide = [],
 }: BreadcrumbsProps) => {
@@ -101,7 +102,13 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
       className={className}
       aria-label={intl.formatMessage({ defaultMessage: 'Breadcrumbs', id: 'ByoZDD' })}
     >
-      <ol className="text-sm text-gray-400">
+      <ol
+        className={cx({
+          'text-sm ': true,
+          'text-gray-400': theme === 'dark',
+          'text-white': theme === 'light',
+        })}
+      >
         {breadcrumbs.map(({ name, link }, index) => {
           const isLastBreadcrumb = index === breadcrumbs.length - 1;
 
@@ -112,7 +119,9 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
                   className={cx({
                     'transition-all rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark':
                       true,
-                    'text-black cursor-pointer': isLastBreadcrumb,
+                    'cursor-pointer': isLastBreadcrumb,
+                    'text-black': isLastBreadcrumb && theme === 'dark',
+                    'text-white opacity-50': isLastBreadcrumb && theme === 'light',
                   })}
                   aria-current={isLastBreadcrumb ? 'location' : false}
                 >
