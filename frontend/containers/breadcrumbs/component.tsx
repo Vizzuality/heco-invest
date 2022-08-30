@@ -46,7 +46,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
 
   const nameFromPathname = (text: string): string =>
     text
-      .replace(/(-|_)/, ' ') // Change Dashes and Underscores into spaces
+      .replaceAll(/(-|_)/g, ' ') // Change Dashes and Underscores into spaces
       .split(' ') // Split into an array of words
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Uppercase words' first letters
       .join(' '); // Join back into a string
