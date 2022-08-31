@@ -7,4 +7,13 @@ class InvestorMailer < ApplicationMailer
       mail to: @user.email
     end
   end
+
+  def open_call_application_destroyed(investor, project)
+    @user = investor.owner
+    @project = project
+
+    I18n.with_locale investor.account_language do
+      mail to: @user.email
+    end
+  end
 end

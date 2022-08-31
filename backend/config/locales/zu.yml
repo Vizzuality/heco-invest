@@ -333,6 +333,9 @@ zu:
     open_call_destroyed:
       subject: Open Call has been removed.
       content: Open Call with name %{open_call_name} has been removed.
+    open_call_application_destroyed:
+      subject: Project developer withdrew its application
+      content: Application of project with name %{project_name} has been withdrawn.
   enums:
     review_status:
       approved:
