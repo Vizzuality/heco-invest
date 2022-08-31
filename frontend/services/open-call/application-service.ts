@@ -60,29 +60,6 @@ export function useOpenCallApplication(
 }
 
 /**
- * Hook to use the open call applications list belonging to the current Investor account
- **/
-export const useAccountOpenCallApplication = (
-  params: OpenCallApplicationParams
-): Omit<UseQueryResult, 'data'> & { openCallApplications: OpenCallApplication[] } => {
-  const { data, ...rest } = useLocalizedQuery<OpenCallApplication[], ErrorResponse>(
-    [Queries.AccountOpenCallApplicationsList, params],
-    () => getAccountOpenCallApplicationsList(params),
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
-
-  return useMemo(
-    () => ({
-      ...rest,
-      openCallApplications: data || [],
-    }),
-    [data, rest]
-  );
-};
-
-/**
  * Get a list of open call applications
  **/
 const getAccountOpenCallApplicationsList = async ({
