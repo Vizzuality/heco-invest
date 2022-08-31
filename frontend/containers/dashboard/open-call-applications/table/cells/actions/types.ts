@@ -1,11 +1,11 @@
-import { OpenCallStatus } from 'enums';
+import { OpenCallApplication } from 'types/open-call-applications';
+import { OpenCall } from 'types/open-calls';
 
 export type CellActionsProps = {
   row: {
     original: {
-      id: string;
-      slug: string;
-      openCallName: string;
+      openCallApplication: OpenCallApplication;
+      openCall: OpenCall;
     };
   };
 };

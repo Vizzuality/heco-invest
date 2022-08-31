@@ -1,42 +1,25 @@
 import { FC, useState } from 'react';
 
 import { X as XIcon } from 'react-feather';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import Link from 'next/link';
 
-import { useGetAlert } from 'helpers/pages';
+import WithdrawApplicationModal from 'containers/dashboard/open-call-applications/withdraw-application-modal';
 
-import Alert from 'components/alert';
 import Button from 'components/button';
-import ConfirmationPrompt from 'components/confirmation-prompt';
 import Icon from 'components/icon';
 import Tooltip from 'components/tooltip';
 import { Paths } from 'enums';
-
-import { useDeleteOpenCallApplication } from 'services/open-call/application-service';
 
 import { CellActionsProps } from './types';
 
 export const CellActions: FC<CellActionsProps> = ({
   row: {
-    original: { id, openCallName },
+    original: { openCallApplication, openCall },
   },
 }: CellActionsProps) => {
-  const [confirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState<boolean>(false);
-
-  const intl = useIntl();
-  const deleteOpenCallApplicationMutation = useDeleteOpenCallApplication();
-  const alert = useGetAlert(deleteOpenCallApplicationMutation.error);
-
-  const closeConfirmDeleteModal = () => {
-    deleteOpenCallApplicationMutation.reset();
-    setConfirmDeleteModalOpen(false);
-  };
-
-  const handleDeletionConfirmation = () => {
-    deleteOpenCallApplicationMutation.mutate(id, { onSuccess: closeConfirmDeleteModal });
-  };
+  const [withdrawApplicationModalOpen, setWithdrawApplicationModalOpen] = useState<boolean>(false);
 
   return (
     <>
@@ -57,55 +40,28 @@ export const CellActions: FC<CellActionsProps> = ({
               theme="naked"
               type="button"
               size="smallest"
-              onClick={() => setConfirmDeleteModalOpen(true)}
+              onClick={() => setWithdrawApplicationModalOpen(true)}
             >
               <span className="sr-only">
-                <FormattedMessage defaultMessage="Widthraw from the open call" id="gd1sn5" />
+                <FormattedMessage defaultMessage="Withdraw from the open call" id="soFliQ" />
               </span>
               <Icon className="w-4 h-4 text-green-dark" icon={XIcon} />
             </Button>
           </Tooltip>
         </div>
-        <Link href={`${Paths.DashboardOpenCallApplications}/${id}`}>
+        <Link href={`${Paths.DashboardOpenCallApplications}/${openCallApplication.id}`}>
           <a className="px-2 py-1 text-sm transition-all text-green-dark focus-visible:outline-green-dark rounded-2xl">
             <FormattedMessage defaultMessage="Details" id="Lv0zJu" />
           </a>
         </Link>
       </div>
 
-      <ConfirmationPrompt
-        open={confirmDeleteModalOpen}
-        onAccept={handleDeletionConfirmation}
-        onDismiss={closeConfirmDeleteModal}
-        onRefuse={closeConfirmDeleteModal}
-        onAcceptLoading={deleteOpenCallApplicationMutation.isLoading}
-        title={intl.formatMessage({
-          defaultMessage: 'Withdraw from the open call?',
-          id: 'XOLAV7',
-        })}
-        description={
-          <>
-            <p className="max-w-sm">
-              <FormattedMessage
-                defaultMessage="Are you sure you want to withdraw from the “<strong>{openCallName}</strong>“ open call?"
-                id="rE2fon"
-                values={{
-                  openCallName,
-                  strong: (chunk: string) => <span className="font-semibold">{chunk}</span>,
-                }}
-              />
-            </p>
-            <p className="mt-4">
-              <FormattedMessage defaultMessage="You can't undo this action." id="k0xbVH" />
-            </p>
-            {alert && (
-              <Alert type="warning" className="my-4 -mb-4 rounded">
-                {/* useGetAlert returns an array, but the endpoint only sends one error message at a time. */}
-                {alert[0]}
-              </Alert>
-            )}
-          </>
-        }
+      <WithdrawApplicationModal
+        openCallApplication={openCallApplication}
+        openCall={openCall}
+        isOpen={withdrawApplicationModalOpen}
+        onAccept={() => setWithdrawApplicationModalOpen(false)}
+        onDismiss={() => setWithdrawApplicationModalOpen(false)}
       />
     </>
   );

@@ -18,6 +18,48 @@ import API from 'services/api';
 import { ErrorResponse, ResponseData } from 'services/types';
 
 /**
+ * Get an open call application using an id and, optionally, the wanted fields
+ **/
+export const getOpenCallApplication = async (
+  id: string,
+  params?: {
+    includes?: string[];
+  }
+): Promise<OpenCallApplication> => {
+  const { includes, ...rest } = params || {};
+
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/open_call_applications/${id}`,
+    method: 'GET',
+    params: {
+      includes: includes?.join(','),
+      ...rest,
+    },
+  };
+  return await API.request(config).then((response) => response.data.data);
+};
+
+/**
+ * Hook to use get an open call application
+ **/
+export function useOpenCallApplication(
+  id: string,
+  params?: Parameters<typeof getOpenCallApplication>[1]
+) {
+  const query = useLocalizedQuery([Queries.AccountOpenCallApplication, id], () =>
+    getOpenCallApplication(id, params)
+  );
+
+  return useMemo(
+    () => ({
+      ...query,
+      openCall: query.data,
+    }),
+    [query]
+  );
+}
+
+/**
  * Get a list of open call applications
  **/
 const getAccountOpenCallApplicationsList = async ({

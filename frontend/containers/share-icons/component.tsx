@@ -76,7 +76,8 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
             to={shareLinks.twitter}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-8 h-8 px-0 py-0 transition-opacity rounded-full bg-beige text-beige hover:opacity-60 hover:text-beige"
+            className="flex items-center justify-center w-8 h-8 px-0 py-0 transition-all rounded-full bg-beige text-beige hover:opacity-60 hover:text-beige focus-visible:outline-green-dark "
+            theme="naked"
           >
             <span className="sr-only">
               <FormattedMessage defaultMessage="Share on Twitter" id="80Vefc" />
@@ -95,7 +96,8 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
             to={shareLinks.facebook}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-8 h-8 px-0 py-0 text-transparent transition-opacity rounded-full bg-beige hover:opacity-60 hover:text-transparent"
+            className="flex items-center justify-center w-8 h-8 px-0 py-0 text-transparent transition-all rounded-full bg-beige hover:opacity-60 hover:text-transparent focus-visible:outline-green-dark"
+            theme="naked"
           >
             <span className="sr-only">
               <FormattedMessage defaultMessage="Share on Facebook" id="06VF+w" />
@@ -112,7 +114,8 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
         >
           <Button
             to={shareLinks.email}
-            className="flex items-center justify-center w-8 h-8 px-0 py-0 transition-opacity rounded-full bg-beige text-beige hover:opacity-60 hover:text-beige"
+            className="flex items-center justify-center w-8 h-8 px-0 py-0 transition-all rounded-full bg-beige text-beige hover:opacity-60 hover:text-beige focus-visible:outline-green-dark"
+            theme="naked"
           >
             <span className="sr-only">
               <FormattedMessage defaultMessage="Share by email" id="O29TSs" />
@@ -129,7 +132,8 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
         >
           <Button
             onClick={copyToClipboard}
-            className="flex items-center justify-center w-8 h-8 px-0 py-0 text-white transition-opacity rounded-full bg-beige hover:opacity-60 hover:text-white"
+            className="flex items-center justify-center w-8 h-8 px-0 py-0 text-white transition-all rounded-full bg-beige hover:opacity-60 hover:text-white focus-visible:outline-green-dark"
+            theme="naked"
           >
             <span className="sr-only">
               <FormattedMessage defaultMessage="Copy link to clipboard" id="EsZlwZ" />

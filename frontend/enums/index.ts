@@ -104,6 +104,8 @@ export enum Queries {
   InvitedUser = 'invited_user',
   /** List of open calls */
   AccountOpenCallsList = 'account_open_calls',
+  /** Single account open call application */
+  AccountOpenCallApplication = 'account_open_call_application',
   /** List of account open call applications */
   AccountOpenCallApplicationsList = 'account_open_call_applications',
   /** Priority Landscapes */
