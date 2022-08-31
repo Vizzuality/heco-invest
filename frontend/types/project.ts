@@ -59,6 +59,7 @@ export type ProjectBase = {
 
 /** Project impact properties  */
 export type ProjectImpacts = {
+  impact_calculated: boolean;
   municipality_biodiversity_impact?: number;
   municipality_climate_impact?: number;
   municipality_water_impact?: number;

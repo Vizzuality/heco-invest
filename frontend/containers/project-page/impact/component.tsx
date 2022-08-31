@@ -114,7 +114,12 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
                     ))}
                   </Select>
                 </div>
-                <ImpactText className="my-4" area={impactLocation as ImpactAreas} impact={impact} />
+                <ImpactText
+                  className="my-4"
+                  area={impactLocation as ImpactAreas}
+                  impact={impact}
+                  impactCalculated={project.impact_calculated}
+                />
                 <button
                   onClick={() => setImpactModalOpen(true)}
                   type="button"
