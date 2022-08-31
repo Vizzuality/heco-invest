@@ -2,7 +2,7 @@ module API
   class Filterer
     attr_accessor :query, :original_query, :filters, :language
 
-    FULL_TEXT_FILTERS = %i[name description about mission problem solution expected_impact]
+    FULL_TEXT_FILTERS = %i[name description about mission problem solution expected_impact impact_description funding_priorities]
     FULL_TEXT_EXTRA_TABLES = {
       ProjectDeveloper => :account,
       Investor => :account

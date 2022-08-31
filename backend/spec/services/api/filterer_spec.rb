@@ -191,7 +191,7 @@ RSpec.describe API::Filterer do
         let!(:correct_open_call) { create :open_call, description_en: "TEST" }
         let!(:different_language_open_call) { create :open_call, description_es: "TEST" }
         let!(:different_text_open_call) { create :open_call, description_en: "DIFFERENT" }
-        let!(:ignored_column_open_call) { create :open_call, funding_priorities_en: "TEST" }
+        let!(:ignored_column_open_call) { create :open_call, funding_exclusions_en: "TEST" }
 
         it "returns only records with correct text at correct language" do
           expect(subject.call).to eq([correct_open_call])
