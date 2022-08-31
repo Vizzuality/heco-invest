@@ -83,14 +83,14 @@ const GeneralInformation = ({
       const updatedImages =
         watchedProjectImagesAttributes?.map((image) => ({
           ...image,
-          _destroy: image.file === imageFile,
+          _destroy: image.file === imageFile ? true : image._destroy,
         })) ?? [];
 
       const remainingImages = updatedImages.filter((image) => !image._destroy);
       const coverImage = updatedImages.find((image) => image.cover);
 
       if (coverImage?._destroy === true && remainingImages.length > 0) {
-        updatedImages[0].cover = true;
+        remainingImages[0].cover = true;
         coverImage.cover = false;
       }
 
