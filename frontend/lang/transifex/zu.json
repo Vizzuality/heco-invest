@@ -2346,6 +2346,9 @@
   "l2HvdU": {
     "string": "Estimated duration for project in months"
   },
+  "lYS3vO": {
+    "string": "Project developers provide the impact information during the project registration phase by selecting one or more indicators from each dimension."
+  },
   "lda5xz": {
     "string": "My users"
   },
@@ -2765,6 +2768,9 @@
   },
   "tzMNF3": {
     "string": "Status"
+  },
+  "u+TnMw": {
+    "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. However, if all the indicators of a given dimension are selected, then the <b>score goes automatically to 0</b>. This is to ensure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
   },
   "u/E7xG": {
     "string": "Are you currently looking for funding?"
