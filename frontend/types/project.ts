@@ -97,7 +97,6 @@ export type ProjectForm = ProjectBase & {
   involved_project_developer_ids: string[];
   municipality_id: string;
   project_images_attributes: ProjectImageGallery[];
-  project_images_attributes_cover: string;
 
   // Not part of the payload
   involved_project_developer: number;
@@ -115,11 +114,7 @@ export type ProjectImagesAttributes = {
 /** Project creation/edition payload */
 export type ProjectCreationPayload = Omit<
   ProjectForm,
-  | 'involved_project_developer'
-  | 'project_gallery'
-  | 'slug'
-  | 'project_images_attributes_cover'
-  | 'project_images_attributes'
+  'involved_project_developer' | 'project_gallery' | 'slug' | 'project_images_attributes'
 > & {
   project_images_attributes: ProjectImagesAttributes[];
 };

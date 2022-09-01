@@ -185,7 +185,6 @@ export const getProjectValues = (project: Project): ProjectUpdatePayload => {
     'involved_project_developer',
     'project_gallery',
     'slug',
-    'project_images_attributes_cover',
     'project_images_attributes'
   );
 

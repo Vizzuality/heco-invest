@@ -130,7 +130,6 @@ export default (page: number) => {
           { message: messages.project_images_attributes.max_length },
           (images) => images.filter((image) => !image._destroy).length <= 6
         ),
-      project_images_attributes_cover: string().nullable(),
       geometry: mixed().required(messages.geometry),
       involved_project_developer: number()
         .min(0)
