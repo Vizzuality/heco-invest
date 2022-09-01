@@ -17,7 +17,8 @@ module API
         :language,
         :account_language,
         :trusted,
-        :created_at
+        :created_at,
+        :open_call_applications_count
 
       belongs_to :investor
       belongs_to :country, serializer: LocationSerializer
