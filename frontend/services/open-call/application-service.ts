@@ -64,13 +64,14 @@ export function useOpenCallApplication(
  **/
 const getAccountOpenCallApplicationsList = async ({
   fields,
-  filter,
+  filters: { search, openCall },
   includes,
 }: OpenCallApplicationParams): Promise<OpenCallApplication[]> => {
   const params = {
     'fields[open_call]': fields?.join(','),
     includes: includes?.join(','),
-    'filter[full_text]': filter,
+    'filter[full_text]': search,
+    'filter[open_call_id]': openCall,
   };
 
   const options: AxiosRequestConfig = {

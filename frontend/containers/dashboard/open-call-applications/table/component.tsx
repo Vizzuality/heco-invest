@@ -32,7 +32,7 @@ export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () 
     isFetching: isFetchingOpenCallApplications,
   } = useAccountOpenCallApplicationsList({
     includes: ['investor', 'project', 'open_call'],
-    filter: search,
+    filters: { search },
   });
 
   const isSearching = !!search;

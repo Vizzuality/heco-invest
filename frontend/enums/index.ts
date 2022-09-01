@@ -22,6 +22,7 @@ export enum Paths {
   DashboardFavoritesInvestors = '/dashboard/favorites/investors',
   DashboardFavoritesProjectDevelopers = '/dashboard/favorites/project-developers',
   DashboardOpenCalls = '/dashboard/open-calls',
+  DashboardOpenCallDetails = '/dashboard/open-call',
   DashboardOpenCallApplications = '/dashboard/open-call-applications',
   DashboardUsers = '/dashboard/users',
   DashboardAccountInfo = '/dashboard/account-information',
