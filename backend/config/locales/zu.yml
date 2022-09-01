@@ -327,9 +327,15 @@ zu:
     project_destroyed:
       subject: Project has been removed.
       content: Project %{project_name} which you have been collaborator of have been removed.
+    open_call_destroyed:
+      subject: Open Call has been removed.
+      content: Open Call with name %{open_call_name} which you have applied for has been removed.
   investor_mailer:
     greetings: Dear %{full_name},
     farewell_html: Best Regards,<br />Your HeCo Team
+    project_destroyed:
+      subject: Project has been removed.
+      content: Project %{project_name} which have applied to your open call has been removed.
     open_call_destroyed:
       subject: Open Call has been removed.
       content: Open Call with name %{open_call_name} has been removed.

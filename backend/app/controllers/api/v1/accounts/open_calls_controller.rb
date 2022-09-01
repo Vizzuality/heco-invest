@@ -39,8 +39,7 @@ module API
         end
 
         def destroy
-          @open_call.destroy!
-          InvestorMailer.open_call_destroyed(@open_call.investor, @open_call.name).deliver_later
+          ::OpenCalls::WithEmailNotification.new(@open_call).destroy!
           head :ok
         end
 
