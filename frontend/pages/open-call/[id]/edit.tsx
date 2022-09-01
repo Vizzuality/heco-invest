@@ -34,7 +34,7 @@ export const getServerSideProps = withLocalizedRequests(async ({ params: { id },
   let enums;
 
   try {
-    ({ data: openCall } = await getOpenCall(id as string, OPEN_CALL_QUERY_PARAMS));
+    openCall = await getOpenCall(id as string, OPEN_CALL_QUERY_PARAMS);
     enums = await getEnums();
   } catch (e) {
     // The user may be attempting to preview a drafted open call, which the endpoint won't return
@@ -64,10 +64,11 @@ const EditOpenCall: PageComponent<EditOpenCallProps, FormPageLayoutProps> = ({
   const router = useRouter();
   const queryReturnPath = useQueryReturnPath();
 
-  const {
-    data: { data: openCall },
-    isFetching: isFetchingProject,
-  } = useOpenCall(router.query.id as string, OPEN_CALL_QUERY_PARAMS, initialOpenCall);
+  const { data: openCall, isFetching: isFetchingProject } = useOpenCall(
+    router.query.id as string,
+    OPEN_CALL_QUERY_PARAMS,
+    initialOpenCall
+  );
 
   const updateOpenCall = useUpdateOpenCall({ locale: openCall?.language });
 

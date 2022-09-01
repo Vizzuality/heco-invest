@@ -881,6 +881,9 @@
   "Fv1ZSz": {
     "string": "Closed"
   },
+  "FvveL5": {
+    "string": "Open call"
+  },
   "Fxekek": {
     "string": "Invite again"
   },
@@ -1277,6 +1280,9 @@
   },
   "O3WloJ": {
     "string": "No open calls"
+  },
+  "O95R3Z": {
+    "string": "Phone"
   },
   "OBhULP": {
     "string": "Open calls"
@@ -1848,6 +1854,9 @@
   "aT5Ajq": {
     "string": "Start drawing"
   },
+  "aa5EE8": {
+    "string": "applications"
+  },
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
   },
@@ -2346,6 +2355,9 @@
   "l2HvdU": {
     "string": "Estimated duration for project in months"
   },
+  "lJfJXg": {
+    "string": "About the project developer"
+  },
   "lYS3vO": {
     "string": "Project developers provide the impact information during the project registration phase by selecting one or more indicators from each dimension."
   },
@@ -2678,6 +2690,9 @@
   },
   "sV+3z0": {
     "string": "Currently looking for"
+  },
+  "sVbuuM": {
+    "string": "{projectName} application"
   },
   "sVpJRp": {
     "string": "Leave open call edition form"

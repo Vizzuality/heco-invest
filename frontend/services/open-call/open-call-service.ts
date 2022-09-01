@@ -74,10 +74,7 @@ export const getOpenCall = async (
     includes?: string[];
     locale?: string;
   }
-): Promise<{
-  data: OpenCall;
-  included: any[]; // TODO
-}> => {
+): Promise<OpenCall> => {
   const { includes, ...rest } = params || {};
 
   const config: AxiosRequestConfig = {
@@ -88,7 +85,7 @@ export const getOpenCall = async (
       ...rest,
     },
   };
-  return await API.request(config).then((response) => response.data);
+  return await API.request(config).then((response) => response.data.data);
 };
 
 /** Use query for a single OpenCall */
@@ -99,7 +96,7 @@ export function useOpenCall(
 ) {
   const query = useLocalizedQuery([Queries.OpenCall, id], () => getOpenCall(id, params), {
     refetchOnWindowFocus: false,
-    initialData: { data: initialData, included: [] },
+    initialData,
   });
 
   return useMemo(

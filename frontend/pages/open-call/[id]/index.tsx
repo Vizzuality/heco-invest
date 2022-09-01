@@ -37,7 +37,7 @@ export const getServerSideProps = withLocalizedRequests<GetServerSideProps>(
     // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
     try {
       enums = await getEnums();
-      ({ data: openCall } = await getOpenCall(id as string, OPEN_CALL_QUERY_PARAMS));
+      openCall = await getOpenCall(id as string, OPEN_CALL_QUERY_PARAMS);
     } catch (e) {
       // If getting the open call fails, it's most likely because the record has not been found.
       if (query?.preview) {
@@ -71,10 +71,11 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
 }) => {
   const router = useRouter();
 
-  const {
-    data: { data: openCall },
-    isFetching: isFetchingOpenCall,
-  } = useOpenCall(router.query.id as string, OPEN_CALL_QUERY_PARAMS, openCallProp);
+  const { data: openCall, isFetching: isFetchingOpenCall } = useOpenCall(
+    router.query.id as string,
+    OPEN_CALL_QUERY_PARAMS,
+    openCallProp
+  );
 
   if (!openCall) {
     if (!isFetchingOpenCall) router.push(Paths.Dashboard);
