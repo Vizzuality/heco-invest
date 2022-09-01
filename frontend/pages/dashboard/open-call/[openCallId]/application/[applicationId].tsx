@@ -111,12 +111,13 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
   return (
     <ProtectedPage permissions={[UserRoles.Investor]}>
       <Head
-        title={`${
-          project?.name || intl.formatMessage({ defaultMessage: 'Project', id: 'k36uSw' })
-        } ${intl.formatMessage({
-          defaultMessage: 'application',
-          id: 'HFalmD',
-        })}`}
+        title={intl.formatMessage(
+          { defaultMessage: '{projectName} application', id: 'sVbuuM' },
+          {
+            projectName:
+              project?.name || intl.formatMessage({ defaultMessage: 'Project', id: 'k36uSw' }),
+          }
+        )}
       />
       <DashboardLayout
         header="breadcrumbs"
