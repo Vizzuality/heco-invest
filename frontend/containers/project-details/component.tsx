@@ -206,7 +206,14 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
           <h2 id="estimated-impact" className="text-xl font-semibold">
             <FormattedMessage defaultMessage="Estimated impact" id="Jl9QMO" />
           </h2>
-          <ImpactText className="my-3" area={impactArea} impact={impact} />
+          <ImpactText
+            className="my-3"
+            area={impactArea}
+            impactCalculated={project.impact_calculated}
+            impact={impact}
+            shortText
+            linkToFAQ
+          />
           <ImpactChart className="my-4" category={category.id} impact={impact} />
         </div>
         <div className="mt-4 text-gray-900" aria-describedby="sdgs">
