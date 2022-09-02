@@ -86,7 +86,7 @@ module API
 
         def slug_or_id_filter_for(query, value, association)
           return query if value.blank?
-          return query.where "#{association}_id" => value if fetching_by_uuid? value
+          return query.where "#{association}_id".to_sym => value if fetching_by_uuid? value
 
           query.joins(association).where association.to_s.pluralize => {slug: value}
         end
