@@ -77,8 +77,24 @@ RSpec.describe "API V1 Account Open Call Applications", type: :request do
             end
           end
 
+          context "when filtered by project slug" do
+            let("filter[project_id]") { project_developer_searched_application.project.slug }
+
+            it "contains only correct records" do
+              expect(response_json["data"].pluck("id")).to eq([project_developer_searched_application.id])
+            end
+          end
+
           context "when filtered by open call" do
             let("filter[open_call_id]") { project_developer_searched_application.open_call_id }
+
+            it "contains only correct records" do
+              expect(response_json["data"].pluck("id")).to eq([project_developer_searched_application.id])
+            end
+          end
+
+          context "when filtered by open call slug" do
+            let("filter[open_call_id]") { project_developer_searched_application.open_call.slug }
 
             it "contains only correct records" do
               expect(response_json["data"].pluck("id")).to eq([project_developer_searched_application.id])

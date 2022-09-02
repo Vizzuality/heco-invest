@@ -7,8 +7,8 @@ module API
 
         def index
           @open_call_applications = @open_call_applications.includes(open_call: {investor: :account}, project: {project_developer: :account})
-          @open_call_applications = @open_call_applications.where project_id: filter_params[:project_id] if filter_params[:project_id].present?
-          @open_call_applications = @open_call_applications.where open_call_id: filter_params[:open_call_id] if filter_params[:open_call_id].present?
+          @open_call_applications = slug_or_id_filter_for @open_call_applications, filter_params[:project_id], :project
+          @open_call_applications = slug_or_id_filter_for @open_call_applications, filter_params[:open_call_id], :open_call
           @open_call_applications = search_by filter_params[:full_text], @open_call_applications if filter_params[:full_text].present?
           @open_call_applications = @open_call_applications.order(created_at: :desc)
           render json: OpenCallApplicationSerializer.new(
@@ -74,14 +74,21 @@ module API
           )
         end
 
+        def update_params
+          params.permit :message
+        end
+
         def search_by(text, query)
           return query.ransack(open_call_name_or_project_name_or_open_call_investor_account_name_i_cont: text).result if current_user.project_developer?
 
           query.ransack(project_name_or_project_project_developer_account_name_i_cont: text).result
         end
 
-        def update_params
-          params.permit :message
+        def slug_or_id_filter_for(query, value, association)
+          return query if value.blank?
+          return query.where "#{association}_id" => value if fetching_by_uuid? value
+
+          query.joins(association).where association.to_s.pluralize => {slug: value}
         end
 
         def filter_params
