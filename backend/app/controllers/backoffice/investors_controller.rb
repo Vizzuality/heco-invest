@@ -40,7 +40,7 @@ module Backoffice
     end
 
     def destroy
-      Accounts::WithEmailNotification.new(@investor.account).destroy!
+      Accounts::Destroy.new(@investor.account).call
       redirect_to backoffice_investors_path, status: :see_other, notice: t("backoffice.messages.success_delete", model: t("backoffice.common.investor"))
     end
 

@@ -39,7 +39,7 @@ module API
         end
 
         def destroy
-          ::Projects::WithEmailNotification.new(@project).destroy!
+          ::Projects::Destroy.new(@project).call
           head :ok
         end
 

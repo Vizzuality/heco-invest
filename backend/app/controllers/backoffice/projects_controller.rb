@@ -40,7 +40,7 @@ module Backoffice
     end
 
     def destroy
-      Projects::WithEmailNotification.new(@project).destroy!
+      Projects::Destroy.new(@project).call
       redirect_to backoffice_projects_path, status: :see_other, notice: t("backoffice.messages.success_delete", model: t("backoffice.common.project"))
     end
 

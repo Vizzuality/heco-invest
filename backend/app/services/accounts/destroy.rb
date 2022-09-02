@@ -1,5 +1,5 @@
 module Accounts
-  class WithEmailNotification
+  class Destroy
     attr_accessor :account, :emails
 
     def initialize(account)
@@ -7,7 +7,7 @@ module Accounts
       @emails = []
     end
 
-    def destroy!
+    def call
       collect_emails
       account.destroy!
       emails.map(&:deliver_later)

@@ -1,9 +1,9 @@
 require "rails_helper"
 
-RSpec.describe Accounts::WithEmailNotification do
+RSpec.describe Accounts::Destroy do
   subject { described_class.new(account) }
 
-  describe "#destroy!" do
+  describe "#call" do
     context "when account is project developer" do
       let(:project_developer) { create :project_developer }
       let(:account) { project_developer.account }
@@ -12,14 +12,14 @@ RSpec.describe Accounts::WithEmailNotification do
 
       it "notifies account users that they were removed" do
         expect {
-          subject.destroy!
+          subject.call
           expect(User.where(account: account)).not_to be_exist
         }.to have_enqueued_mail(UserMailer, :destroyed).with(account.owner.email, account.owner.full_name, account.owner.locale)
       end
 
       it "notifies investors that project was removed" do
         expect {
-          subject.destroy!
+          subject.call
           expect(Project.where(project_developer: project_developer)).not_to be_exist
         }.to have_enqueued_mail(InvestorMailer, :project_destroyed).with(open_call_application.investor, project.name)
       end
@@ -33,14 +33,14 @@ RSpec.describe Accounts::WithEmailNotification do
 
       it "notifies account users that they were removed" do
         expect {
-          subject.destroy!
+          subject.call
           expect(User.where(account: account)).not_to be_exist
         }.to have_enqueued_mail(UserMailer, :destroyed).with(account.owner.email, account.owner.full_name, account.owner.locale)
       end
 
       it "notifies project developers that open call was removed" do
         expect {
-          subject.destroy!
+          subject.call
           expect(OpenCall.where(investor: investor)).not_to be_exist
         }.to have_enqueued_mail(ProjectDeveloperMailer, :open_call_destroyed).with(open_call_application.project_developer, open_call.name)
       end

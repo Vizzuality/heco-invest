@@ -1,5 +1,5 @@
 module Projects
-  class WithEmailNotification
+  class Destroy
     attr_accessor :project, :emails
 
     def initialize(project)
@@ -7,7 +7,7 @@ module Projects
       @emails = []
     end
 
-    def destroy!
+    def call
       collect_emails
       project.destroy!
       emails.map(&:deliver_later)

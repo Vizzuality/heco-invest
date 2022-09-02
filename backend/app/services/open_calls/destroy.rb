@@ -1,5 +1,5 @@
 module OpenCalls
-  class WithEmailNotification
+  class Destroy
     attr_accessor :open_call, :emails
 
     def initialize(open_call)
@@ -7,7 +7,7 @@ module OpenCalls
       @emails = []
     end
 
-    def destroy!
+    def call
       collect_emails
       open_call.destroy!
       emails.map(&:deliver_later)

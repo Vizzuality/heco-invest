@@ -39,7 +39,7 @@ module API
         end
 
         def destroy
-          ::OpenCalls::WithEmailNotification.new(@open_call).destroy!
+          ::OpenCalls::Destroy.new(@open_call).call
           head :ok
         end
 

@@ -20,7 +20,7 @@ module Backoffice
     end
 
     def destroy
-      OpenCalls::WithEmailNotification.new(@open_call).destroy!
+      OpenCalls::Destroy.new(@open_call).call
       redirect_to backoffice_open_calls_path, status: :see_other, notice: t("backoffice.messages.success_delete", model: t("backoffice.common.open_call"))
     end
 
