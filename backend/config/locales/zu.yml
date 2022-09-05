@@ -83,6 +83,21 @@ zu:
         progress_impact_tracking: Progress and impact tracking
         description: Short description of the project
         relevant_links: Relevant links (optional)
+      open_call:
+        name: Open call name
+        picture: Picture
+        country_id: Country
+        department_id: State (optional)
+        municipality_id: Municipality (optional)
+        description: What is the open call about?
+        investor_id: Owner
+        impact_description: Expected impact
+        sdgs: Select the SDG's you expect to have impact (optional)
+        maximum_funding_per_project: How much funding do you have available for this open call? ($)
+        instrument_types: Financial instrument available
+        funding_priorities: Funding priorities
+        funding_exclusions: Funding exclusions
+        closing_at: End
       defaults:
         categories: Select the categories that you work on
         mission: What's your mission?
@@ -256,10 +271,22 @@ zu:
           not_supported: This file is not supported. Please try uploading a different format.
           unable_to_parse: Unable to parse the file. Please try uploading a different format.
     open_calls:
+      information: Information
+      status: Verification status
+      status_description: The verification status allow the open call to have a verification badge. By default all the open calls are set to "Unverified". Please review the information and change it to "Verified".
+      investor: Investor
+      investor_description: "Investor that created open call:"
+      delete: Delete open call
       index:
         name: Open Call name
         location: Location
         applications: Applications
+      form:
+        general: General
+        investor: Investor
+        impact: Impact
+        funding: Funding information
+        date: Date
     layout:
       header: Backoffice
       sign_out: Sign out
