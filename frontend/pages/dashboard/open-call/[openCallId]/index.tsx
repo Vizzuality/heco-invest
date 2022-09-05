@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
-import { groupBy } from 'lodash-es';
-
 import { loadI18nMessages } from 'helpers/i18n';
+
+import OpenCallDetailsTable from 'containers/dashboard/open-call-details/table';
 
 import Head from 'components/head';
 import { Paths, UserRoles } from 'enums';
@@ -64,19 +64,20 @@ export const OpenCallApplicationsPage: PageComponent<
   return (
     <ProtectedPage permissions={[UserRoles.Investor]}>
       <Head
-        title={`${
-          openCall?.name || intl.formatMessage({ defaultMessage: 'Open call', id: 'FvveL5' })
-        } ${intl.formatMessage({
-          defaultMessage: 'applications',
-          id: 'aa5EE8',
-        })}`}
+        title={intl.formatMessage(
+          { defaultMessage: '{openCallName} applications', id: 'lMjl92' },
+          {
+            openCallName:
+              openCall?.name || intl.formatMessage({ defaultMessage: 'Open call', id: 'FvveL5' }),
+          }
+        )}
       />
       <DashboardLayout
         isLoading={isLoading}
         header="breadcrumbs"
         breadcrumbsProps={breadcrumbsProps}
       >
-        Open call applications table
+        <OpenCallDetailsTable />
       </DashboardLayout>
     </ProtectedPage>
   );

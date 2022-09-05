@@ -1860,9 +1860,6 @@
   "aT5Ajq": {
     "string": "Start drawing"
   },
-  "aa5EE8": {
-    "string": "applications"
-  },
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
   },
@@ -2660,6 +2657,9 @@
   },
   "rfVDxL": {
     "string": "Please enter your details below."
+  },
+  "rg2Seh": {
+    "string": "{openCall} applications"
   },
   "rginRA": {
     "string": "Project categories"
