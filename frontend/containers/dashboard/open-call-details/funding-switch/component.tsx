@@ -19,6 +19,7 @@ export const FundingSwitch: FC<FundingSwitchProps> = ({
   const [prevFunded, setPrevFunded] = useState<boolean>(null);
 
   const fundingOpenCallMutation = useOpenCallApplicationFunding();
+  const alert = useGetAlert(fundingOpenCallMutation.error);
 
   const { register, watch, setValue, getValues, reset } = useForm({
     defaultValues: {
@@ -70,12 +71,10 @@ export const FundingSwitch: FC<FundingSwitchProps> = ({
         />
         <FormattedMessage defaultMessage="I'm financing this project" id="kICTEM" />
       </label>
-      {fundingOpenCallMutation.error && (
+      {alert && (
         <Alert type="warning" className="mt-4 rounded">
-          <FormattedMessage
-            defaultMessage="There was an error processing your request. Please try again."
-            id="URkYUE"
-          />
+          {/* useGetAlert returns an array, but the endpoint only sends one error message at a time. */}
+          {alert[0]}
         </Alert>
       )}
     </form>

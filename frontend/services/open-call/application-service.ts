@@ -170,7 +170,10 @@ export const useDeleteOpenCallApplication = (): UseMutationResult<
 /**
  * Hook with mutation to mark an open call application as being funded or not funded
  **/
-export const useOpenCallApplicationFunding = () => {
+export const useOpenCallApplicationFunding = (): UseMutationResult<
+  AxiosResponse<ResponseData<OpenCall>>,
+  AxiosError<ErrorResponse>
+> => {
   const queryClient = useQueryClient();
 
   const fundingOpenCall = (
