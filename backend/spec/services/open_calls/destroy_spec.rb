@@ -16,7 +16,8 @@ RSpec.describe OpenCalls::Destroy do
     it "notifies all project developers that open call was removed" do
       expect {
         subject.call
-      }.to have_enqueued_mail(ProjectDeveloperMailer, :open_call_destroyed).with(open_call_application.project_developer, open_call.name)
+      }.to have_enqueued_mail(ProjectDeveloperMailer, :open_call_destroyed)
+        .with(open_call_application.project_developer, open_call_application.project, open_call.name)
     end
   end
 end

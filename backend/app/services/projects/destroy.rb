@@ -19,7 +19,13 @@ module Projects
       ([project.project_developer] + project.involved_project_developers).each do |project_developer|
         emails << ProjectDeveloperMailer.project_destroyed(project_developer, project.name)
       end
-      project.investors.each { |investor| emails << InvestorMailer.project_destroyed(investor, project.name) }
+      project.open_call_applications.each do |open_call_application|
+        emails << InvestorMailer.project_destroyed(
+          open_call_application.investor,
+          project.name,
+          open_call_application.open_call
+        )
+      end
     end
   end
 end

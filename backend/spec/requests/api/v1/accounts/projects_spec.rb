@@ -452,7 +452,8 @@ RSpec.describe "API V1 Account Projects", type: :request do
         it "sends email that project was destroyed to involved investors" do |example|
           expect {
             submit_request example.metadata
-          }.to have_enqueued_mail(InvestorMailer, :project_destroyed).with(open_call_application.investor, project.name)
+          }.to have_enqueued_mail(InvestorMailer, :project_destroyed)
+            .with(open_call_application.investor, project.name, open_call_application.open_call)
         end
 
         it "does not send email that collaboration was removed" do |example|

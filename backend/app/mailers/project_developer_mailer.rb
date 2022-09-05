@@ -26,8 +26,9 @@ class ProjectDeveloperMailer < ApplicationMailer
     end
   end
 
-  def open_call_destroyed(project_developer, open_call_name)
+  def open_call_destroyed(project_developer, project, open_call_name)
     @user = project_developer.owner
+    @project = project
     @open_call_name = open_call_name
 
     I18n.with_locale project_developer.account_language do

@@ -21,7 +21,8 @@ RSpec.describe Accounts::Destroy do
         expect {
           subject.call
           expect(Project.where(project_developer: project_developer)).not_to be_exist
-        }.to have_enqueued_mail(InvestorMailer, :project_destroyed).with(open_call_application.investor, project.name)
+        }.to have_enqueued_mail(InvestorMailer, :project_destroyed)
+          .with(open_call_application.investor, project.name, open_call_application.open_call)
       end
     end
 
@@ -42,7 +43,8 @@ RSpec.describe Accounts::Destroy do
         expect {
           subject.call
           expect(OpenCall.where(investor: investor)).not_to be_exist
-        }.to have_enqueued_mail(ProjectDeveloperMailer, :open_call_destroyed).with(open_call_application.project_developer, open_call.name)
+        }.to have_enqueued_mail(ProjectDeveloperMailer, :open_call_destroyed)
+          .with(open_call_application.project_developer, open_call_application.project, open_call.name)
       end
     end
   end

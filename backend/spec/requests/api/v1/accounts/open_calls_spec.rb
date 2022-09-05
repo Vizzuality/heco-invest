@@ -357,7 +357,8 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
         it "sends email that open call was destroyed to project developer owner who applied to open call" do |example|
           expect {
             submit_request example.metadata
-          }.to have_enqueued_mail(ProjectDeveloperMailer, :open_call_destroyed).with(open_call_application.project_developer, open_call.name)
+          }.to have_enqueued_mail(ProjectDeveloperMailer, :open_call_destroyed)
+            .with(open_call_application.project_developer, open_call_application.project, open_call.name)
         end
 
         context "when slug is used" do

@@ -17,7 +17,8 @@ RSpec.describe Projects::Destroy do
     it "notifies all investors that project was removed" do
       expect {
         subject.call
-      }.to have_enqueued_mail(InvestorMailer, :project_destroyed).with(open_call_application.investor, project.name)
+      }.to have_enqueued_mail(InvestorMailer, :project_destroyed)
+        .with(open_call_application.investor, project.name, open_call_application.open_call)
     end
   end
 end

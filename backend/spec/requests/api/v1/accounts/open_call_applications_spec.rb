@@ -403,7 +403,8 @@ RSpec.describe "API V1 Account Open Call Applications", type: :request do
         it "sends email to investor" do |example|
           expect {
             submit_request example.metadata
-          }.to have_enqueued_mail(InvestorMailer, :open_call_application_destroyed).with(open_call_application.investor, open_call_application.project)
+          }.to have_enqueued_mail(InvestorMailer, :open_call_application_destroyed)
+            .with(open_call_application.investor, open_call_application.project, open_call_application.open_call)
         end
       end
     end

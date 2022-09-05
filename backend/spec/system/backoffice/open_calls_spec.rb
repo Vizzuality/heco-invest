@@ -73,7 +73,7 @@ RSpec.describe "Backoffice: Open Calls", type: :system do
               click_on t("backoffice.common.delete")
             end
           }.to have_enqueued_mail(InvestorMailer, :open_call_destroyed).with(open_call.investor, open_call.name)
-            .and have_enqueued_mail(ProjectDeveloperMailer, :open_call_destroyed).with(open_call_application.project_developer, open_call.name)
+            .and have_enqueued_mail(ProjectDeveloperMailer, :open_call_destroyed).with(open_call_application.project_developer, open_call_application.project, open_call.name)
         end
         expect(page).not_to have_text(open_call.name)
       end
