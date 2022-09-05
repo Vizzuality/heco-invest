@@ -1155,6 +1155,9 @@
   "Ll72W/": {
     "string": "Currently not looking for funding"
   },
+  "Llk7Pe": {
+    "string": "Not funding"
+  },
   "LmHPHR": {
     "string": "Select the topics/sector categories that you work on"
   },
@@ -2082,6 +2085,9 @@
   "fX9u5/": {
     "string": "Contribute to addressing the effects of climate change through investments to reduce CO2 emissions and conserve or restore forest-related carbon sinks. <br></br><br></br> Nature based solutions have been estimated to have the potential of contributing to compensate for up to 30% of global emissions."
   },
+  "fZb224": {
+    "string": "Funding"
+  },
   "fZpvTQ": {
     "string": "Delete my user"
   },
@@ -2825,6 +2831,9 @@
   },
   "uyxTSu": {
     "string": "Select the impacts that you prioritize"
+  },
+  "v2wxEw": {
+    "string": "Back to open calls"
   },
   "v9GdgG": {
     "string": "File {fileName} is larger than {fileSize}MB"
