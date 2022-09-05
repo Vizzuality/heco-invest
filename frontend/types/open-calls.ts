@@ -16,6 +16,7 @@ export type OpenCall = {
   funding_exclusions: string;
   impact_description: string;
   maximum_funding_per_project: number;
+  open_call_applications_count: number;
   closing_at: string;
   language: Languages;
   account_language: Languages;

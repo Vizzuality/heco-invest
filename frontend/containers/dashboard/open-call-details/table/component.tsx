@@ -18,12 +18,14 @@ import { Paths } from 'enums';
 import { useAccountOpenCallApplicationsList } from 'services/open-call/application-service';
 
 import CellActions from './cells/actions';
+import CellProjectDeveloper from './cells/project-developer';
+import CellStatus from './cells/status';
 
-import { OpenCallApplicationsTableProps } from '.';
+import { OpenCallDetailsTableProps } from '.';
 
-export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () => {
+export const OpenCallDetailsTable: FC<OpenCallDetailsTableProps> = () => {
   const intl = useIntl();
-  const { locale } = useRouter();
+  const router = useRouter();
   const { search } = useQueryParams();
 
   const {
@@ -31,8 +33,11 @@ export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () 
     isLoading: isLoadingOpenCallApplications,
     isFetching: isFetchingOpenCallApplications,
   } = useAccountOpenCallApplicationsList({
-    includes: ['investor', 'project', 'open_call'],
-    filters: { search },
+    includes: ['project_developer', 'project', 'open_call'],
+    filters: {
+      search,
+      openCall: router.query.openCallId as string,
+    },
   });
 
   const isSearching = !!search;
@@ -42,12 +47,13 @@ export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () 
   const tableProps = {
     columns: [
       {
-        Header: intl.formatMessage({ defaultMessage: 'Open call name', id: '8Gp8gS' }),
-        accessor: 'openCallName',
+        Header: intl.formatMessage({ defaultMessage: 'Project', id: 'k36uSw' }),
+        accessor: 'project',
       },
       {
-        Header: intl.formatMessage({ defaultMessage: 'Investor', id: 'nEvNJb' }),
-        accessor: 'investorName',
+        Header: intl.formatMessage({ defaultMessage: 'Project developer', id: 'yF82he' }),
+        accessor: 'projectDeveloperName',
+        Cell: CellProjectDeveloper,
       },
       {
         Header: intl.formatMessage({ defaultMessage: 'Application date', id: 'kUEzKa' }),
@@ -55,13 +61,9 @@ export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () 
         Cell: ({ cell: { value } }) => dayjs(value).format('DD MMM YYYY'),
       },
       {
-        Header: intl.formatMessage({ defaultMessage: 'Max. Funding', id: 'CIeYUa' }),
-        accessor: 'maxOpenCallFunding',
-        Cell: ({ cell: { value } }) => `$${value?.toLocaleString(locale)}`,
-      },
-      {
-        Header: intl.formatMessage({ defaultMessage: 'Project', id: 'k36uSw' }),
-        accessor: 'projectName',
+        Header: intl.formatMessage({ defaultMessage: 'Status', id: 'tzMNF3' }),
+        accessor: 'fundingStatus',
+        Cell: CellStatus,
       },
       {
         Header: intl.formatMessage({ defaultMessage: 'Actions', id: 'wL7VAE' }),
@@ -72,17 +74,22 @@ export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () 
       },
     ],
     data: openCallApplications?.map((openCallApplication) => {
-      const { open_call: openCall, project, investor } = openCallApplication;
+      const {
+        open_call: openCall,
+        project_developer: projectDeveloper,
+        project,
+      } = openCallApplication;
 
       return {
-        id: openCallApplication.id,
-        openCallName: openCall.name,
-        investorName: investor.name,
+        project: project.name,
+        projectDeveloperName: projectDeveloper.name,
         applicationDate: openCallApplication.created_at,
-        maxOpenCallFunding: openCall.maximum_funding_per_project,
-        projectName: project.name,
-        openCallApplication,
+        fundingStatus: openCallApplication.funded
+          ? intl.formatMessage({ defaultMessage: 'Funding', id: 'fZb224' })
+          : intl.formatMessage({ defaultMessage: 'Not funding', id: 'Llk7Pe' }),
         openCall,
+        projectDeveloper,
+        openCallApplication,
       };
     }),
     loading: isLoading,
@@ -121,8 +128,8 @@ export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () 
                   }}
                 />
               </p>
-              <Button className="mt-8" to={Paths.OpenCalls}>
-                <FormattedMessage defaultMessage="Discover open calls" id="azx2BO" />
+              <Button className="mt-8" to={Paths.DashboardOpenCalls}>
+                <FormattedMessage defaultMessage="Back to open calls" id="v2wxEw" />
               </Button>
             </>
           )}
@@ -132,4 +139,4 @@ export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () 
   );
 };
 
-export default OpenCallApplicationsTable;
+export default OpenCallDetailsTable;

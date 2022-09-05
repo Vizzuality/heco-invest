@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
 
-import { pickBy } from 'lodash-es';
+import { omit } from 'lodash-es';
 
 import { useQueryParams } from 'helpers/pages';
 
@@ -44,19 +44,20 @@ export const SearchAndInfo: FC<SearchAndInfoProps> = ({
 
     router.push({
       query: {
-        // ? Endpoints don't support filtering, sorting
-        // ...queryParams,
-        search: e.target[0].value || '',
+        // Endpoints don't support paging, sorting
+        ...omit(queryParams, ['sorting', 'page', 'search']),
+        ...(searchValue && { search: searchValue }),
       },
     });
   };
 
   const handleClearSearch = () => {
-    // const newQuery = pickBy(queryParams, (value, key) => !!value && key !== 'search');
-    // If we add the pagination, use the line above instead of the line below
-    const newQuery = {};
     router.push({
-      query: newQuery,
+      query: {
+        // We can't completely clear the query because nextJs will still need certain query params, such as
+        // openCallId, etc. It'll cause this issue: https://nextjs.org/docs/messages/href-interpolation-failed
+        ...omit(queryParams, ['sorting', 'page', 'search']),
+      },
     });
   };
 

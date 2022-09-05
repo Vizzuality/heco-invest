@@ -19,7 +19,10 @@ export type OpenCallApplication = {
 export type OpenCallApplicationParams = {
   fields?: string[];
   includes?: string[];
-  filter?: string;
+  filters?: {
+    search?: string;
+    openCall?: string;
+  };
 };
 
 export type OpenCallApplicationForm = {
