@@ -767,6 +767,9 @@
   "Dm1lEK": {
     "string": "A score of expected impact along the four sustainability dimensions is assigned to every project. These scores are calculated using a combination of landscape-level variables (<b>Demand</b>) and self-reported project data (<b>Supply</b>)."
   },
+  "DqD1yK": {
+    "string": "Applications"
+  },
   "DrtKvj": {
     "string": "Impact of projects on biodiversity conservation, calculated from indicators of endemism, land conservation/restoration, connectivity, and development of sustainable social projects."
   },
@@ -2180,6 +2183,9 @@
   },
   "hxIQ/8": {
     "string": "Projects waiting funding"
+  },
+  "i1R/il": {
+    "string": "View all applications"
   },
   "i2AgQl": {
     "string": "Which of these topics/sector categories better describe your project?"

@@ -17,6 +17,7 @@ import { useEnums } from 'services/enums/enumService';
 import { useAccountOpenCallList } from 'services/open-call/open-call-service';
 
 import CellActions from './cells/actions';
+import CellApplications from './cells/applications';
 import CellInstrumentTypes from './cells/instrument-types';
 import CellStatus from './cells/status';
 
@@ -46,6 +47,7 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
       'instrument_types',
       'maximum_funding_per_project',
       'status',
+      'open_call_applications_count',
     ],
     filter: search,
   });
@@ -82,6 +84,11 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
         Cell: ({ cell: { value } }) => `$${value?.toLocaleString(locale)}`,
       },
       {
+        Header: intl.formatMessage({ defaultMessage: 'Applications', id: 'DqD1yK' }),
+        accessor: 'applicationsCount',
+        Cell: CellApplications,
+      },
+      {
         Header: intl.formatMessage({ defaultMessage: 'Status', id: 'tzMNF3' }),
         accessor: 'status',
         Cell: CellStatus,
@@ -104,6 +111,7 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
         ?.filter(({ id }) => openCall.instrument_types?.includes(id))
         .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase())),
       maximumFundingPerProject: openCall.maximum_funding_per_project,
+      applicationsCount: openCall.open_call_applications_count,
     })),
     loading: isLoading,
     sortingEnabled: true,
