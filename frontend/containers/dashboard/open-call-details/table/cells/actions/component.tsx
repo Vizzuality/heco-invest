@@ -4,7 +4,11 @@ import { FormattedMessage } from 'react-intl';
 
 import Link from 'next/link';
 
+import RowMenu, { RowMenuItem } from 'containers/dashboard/row-menu';
+
 import { Paths } from 'enums';
+
+import { useOpenCallApplicationFunding } from 'services/open-call/application-service';
 
 import { CellActionsProps } from './types';
 
@@ -13,6 +17,19 @@ export const CellActions: FC<CellActionsProps> = ({
     original: { openCall, openCallApplication },
   },
 }: CellActionsProps) => {
+  const fundingOpenCallMutation = useOpenCallApplicationFunding();
+
+  const handleRowMenuItemClick = (key: string) => {
+    switch (key) {
+      case 'funding':
+        fundingOpenCallMutation.mutate({ id: openCallApplication?.id, isFunding: true });
+        return;
+      case 'not-funding':
+        fundingOpenCallMutation.mutate({ id: openCallApplication?.id, isFunding: false });
+        return;
+    }
+  };
+
   return (
     <div className="flex items-center justify-center gap-3">
       <Link
@@ -22,6 +39,14 @@ export const CellActions: FC<CellActionsProps> = ({
           <FormattedMessage defaultMessage="Details" id="Lv0zJu" />
         </a>
       </Link>
+      <RowMenu onAction={handleRowMenuItemClick}>
+        <RowMenuItem key="funding">
+          <FormattedMessage defaultMessage="Funding" id="fZb224" />
+        </RowMenuItem>
+        <RowMenuItem key="not-funding">
+          <FormattedMessage defaultMessage="Not funding" id="Llk7Pe" />
+        </RowMenuItem>
+      </RowMenu>
     </div>
   );
 };
