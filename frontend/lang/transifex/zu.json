@@ -1566,6 +1566,9 @@
   "URdlN+": {
     "string": "Invest in small, medium or big project opportunities."
   },
+  "URkYUE": {
+    "string": "There was an error processing your request. Please try again."
+  },
   "Ub+AGc": {
     "string": "Sign In"
   },
@@ -2324,6 +2327,9 @@
   },
   "kHpaMt": {
     "string": "Edit Open Call"
+  },
+  "kICTEM": {
+    "string": "I'm financing this project"
   },
   "kN5g/0": {
     "string": "Indigenous Reserves"
