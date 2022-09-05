@@ -3,9 +3,12 @@ import {
   Twitter as TwitterIcon,
   Linkedin as LinkedinIcon,
   Instagram as InstagramIcon,
+  Icon,
 } from 'react-feather';
 
-export const SOCIAL_DATA = [
+import { SocialType } from './website-social';
+
+export const SOCIAL_DATA: { id: SocialType['id']; title: string; icon: Icon }[] = [
   {
     id: 'twitter',
     title: 'Twitter',

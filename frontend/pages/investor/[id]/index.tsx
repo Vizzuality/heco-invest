@@ -94,7 +94,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
 
   const getSocialInfo = () => {
     const social: SocialType[] = [
-      { id: 'linked-in', url: linkedin },
+      { id: 'linkedin', url: linkedin },
       { id: 'twitter', url: twitter },
       { id: 'facebook', url: facebook },
       { id: 'instagram', url: instagram },
