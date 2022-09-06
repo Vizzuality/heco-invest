@@ -40,14 +40,8 @@ module Backoffice
     end
 
     def destroy
-      project_developers = [@project.project_developer] + @project.involved_project_developers
-      @project.destroy!
-      project_developers.each do |project_developer|
-        ProjectDeveloperMailer.project_destroyed(project_developer, @project.name).deliver_later
-      end
-
-      redirect_to backoffice_projects_path, status: :see_other,
-        notice: t("backoffice.messages.success_delete", model: t("backoffice.common.project"))
+      Projects::Destroy.new(@project).call
+      redirect_to backoffice_projects_path, status: :see_other, notice: t("backoffice.messages.success_delete", model: t("backoffice.common.project"))
     end
 
     private

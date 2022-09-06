@@ -327,6 +327,7 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
 
       let(:user) { create :user, :investor }
       let!(:open_call) { create :open_call, investor: create(:investor, account: create(:account, owner: user)) }
+      let!(:open_call_application) { create :open_call_application, open_call: open_call }
       let(:id) { open_call.id }
 
       it_behaves_like "with not authorized error", csrf: true
@@ -351,6 +352,13 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
           expect {
             submit_request example.metadata
           }.to have_enqueued_mail(InvestorMailer, :open_call_destroyed).with(open_call.investor, open_call.name)
+        end
+
+        it "sends email that open call was destroyed to project developer owner who applied to open call" do |example|
+          expect {
+            submit_request example.metadata
+          }.to have_enqueued_mail(ProjectDeveloperMailer, :open_call_destroyed)
+            .with(open_call_application.project_developer, open_call_application.project, open_call.name)
         end
 
         context "when slug is used" do

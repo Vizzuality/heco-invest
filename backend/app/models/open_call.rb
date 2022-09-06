@@ -14,6 +14,8 @@ class OpenCall < ApplicationRecord
 
   has_many :favourite_open_calls, dependent: :destroy
   has_many :open_call_applications, dependent: :destroy
+  has_many :projects, through: :open_call_applications
+  has_many :project_developers, through: :projects
 
   has_one_attached :picture
 

@@ -50,4 +50,20 @@ RSpec.describe ProjectDeveloperMailer, type: :mailer do
       expect(mail.body.encoded).to match(I18n.t("project_developer_mailer.farewell_html"))
     end
   end
+
+  describe ".open_call_destroyed" do
+    let(:open_call) { create :open_call }
+    let(:mail) { ProjectDeveloperMailer.open_call_destroyed project_developer, project, open_call.name }
+
+    it "renders the headers" do
+      expect(mail.subject).to eq(I18n.t("project_developer_mailer.open_call_destroyed.subject"))
+      expect(mail.to).to eq([project_developer.owner.email])
+    end
+
+    it "renders the body" do
+      expect(mail.body.encoded).to match(I18n.t("project_developer_mailer.greetings", full_name: project_developer.owner.full_name))
+      expect(mail.body.encoded).to match(I18n.t("project_developer_mailer.open_call_destroyed.content", open_call_name: open_call.name, project_name: project.name))
+      expect(mail.body.encoded).to match(I18n.t("project_developer_mailer.farewell_html"))
+    end
+  end
 end

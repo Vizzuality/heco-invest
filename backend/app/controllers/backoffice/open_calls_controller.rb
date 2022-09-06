@@ -20,9 +20,7 @@ module Backoffice
     end
 
     def destroy
-      @open_call.destroy!
-      InvestorMailer.open_call_destroyed(@open_call.investor, @open_call.name).deliver_later
-
+      OpenCalls::Destroy.new(@open_call).call
       redirect_to backoffice_open_calls_path, status: :see_other, notice: t("backoffice.messages.success_delete", model: t("backoffice.common.open_call"))
     end
 

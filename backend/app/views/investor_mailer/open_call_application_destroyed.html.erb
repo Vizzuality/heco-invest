@@ -1,3 +1,3 @@
 <h3><%= t "investor_mailer.greetings", full_name: @user.full_name %></h3>
-<p><%= t "investor_mailer.open_call_application_destroyed.content", project_name: @project.name %></p>
+<p><%= t "investor_mailer.open_call_application_destroyed.content", project_name: @project.name, open_call_name: @open_call.name %></p>
 <p><%= t "investor_mailer.farewell_html" %></p>

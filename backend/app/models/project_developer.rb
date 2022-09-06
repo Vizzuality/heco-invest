@@ -4,6 +4,7 @@ class ProjectDeveloper < ApplicationRecord
   include Searchable
 
   has_many :projects, dependent: :destroy
+  has_many :open_call_applications, through: :projects
   has_many :favourite_project_developers, dependent: :destroy
   has_many :project_involvements, dependent: :destroy
   has_many :involved_projects, through: :project_involvements, source: :project, dependent: :destroy

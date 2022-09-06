@@ -16,6 +16,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
   }
   let!(:projects) { create_list(:project, 4) }
   let!(:draft_project) { create :project, :draft }
+  let!(:open_call_application) { create :open_call_application, project: project }
 
   before { sign_in admin }
 
@@ -322,6 +323,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
           end
         }.to have_enqueued_mail(ProjectDeveloperMailer, :project_destroyed).with(project.project_developer, project.name)
           .and have_enqueued_mail(ProjectDeveloperMailer, :project_destroyed).with(project.involved_project_developers.first, project.name)
+          .and have_enqueued_mail(InvestorMailer, :project_destroyed).with(open_call_application.investor, project.name, open_call_application.open_call)
         expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.project")))
         expect(current_path).to eql(backoffice_projects_path)
         expect(page).not_to have_text(project.name)
