@@ -62,7 +62,7 @@ export const WebsiteSocial: FC<WebsiteSocialProps> = ({
         </>
       )}
 
-      {social.length > 0 && (
+      {sortedSocialLinks.length > 0 && (
         <>
           <span className="mt-4 text-gray-800 sm:mt-0">
             <FormattedMessage defaultMessage="Reach them in" id="G9iCfx" />
