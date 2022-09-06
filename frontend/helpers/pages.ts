@@ -104,23 +104,9 @@ export const useDiscoverPath = () => {
 };
 
 /** Hook to get the query params of the discover pages */
-export const useQueryParams = (sortingState?: { sortBy: string; sortOrder: string }) => {
+export const useQueryParams = () => {
   const { query } = useRouter();
-  return useMemo(() => {
-    const { page, search, sorting, ...filters } = query;
-    return cleanQueryParams({
-      page: parseInt(query.page as string) || null,
-      search: (query.search as string) || '',
-      sorting:
-        // No need to decode URI component, next/router does it automatically
-        sorting
-          ? (sorting as string)
-          : sortingState?.sortBy
-          ? `${sortingState?.sortBy} ${sortingState?.sortOrder}`
-          : '',
-      ...filters,
-    });
-  }, [query, sortingState]);
+  return cleanQueryParams(query);
 };
 
 /** Hook that returns the search queries on string format */

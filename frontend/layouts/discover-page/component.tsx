@@ -47,12 +47,12 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     if (pathname.startsWith(Paths.Projects)) return Queries.Project;
 
     if (sorting.sortBy !== 'name' && sorting.sortBy !== 'created_at') {
-      setSorting({ ...sorting, sortBy: 'name' });
+      setSorting(defaultSorting);
     }
-  }, [pathname, sorting]) as SortingByTargetType;
+  }, [defaultSorting, pathname, sorting]) as SortingByTargetType;
 
   const sortingOptions = useSortingByOptions(sortingOptionsTarget);
-  const queryParams = useQueryParams(sorting);
+  const queryParams = useQueryParams();
 
   const queryOptions = { keepPreviousData: true };
 
