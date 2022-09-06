@@ -2367,6 +2367,9 @@
   "lJfJXg": {
     "string": "About the project developer"
   },
+  "lMjl92": {
+    "string": "{openCallName} applications"
+  },
   "lYS3vO": {
     "string": "Project developers provide the impact information during the project registration phase by selecting one or more indicators from each dimension."
   },
@@ -2657,9 +2660,6 @@
   },
   "rfVDxL": {
     "string": "Please enter your details below."
-  },
-  "rg2Seh": {
-    "string": "{openCall} applications"
   },
   "rginRA": {
     "string": "Project categories"
