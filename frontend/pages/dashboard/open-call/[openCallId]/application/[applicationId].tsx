@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { ExternalLink as ExternalLinkIcon, X as XIcon } from 'react-feather';
+import { ExternalLink as ExternalLinkIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import Image from 'next/image';
@@ -14,7 +14,7 @@ import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
-import WithdrawApplicationModal from 'containers/dashboard/open-call-applications/withdraw-application-modal';
+import FundingSwitch from 'containers/dashboard/open-call-details/funding-switch';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
@@ -61,8 +61,9 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
 
   const {
     data: openCallApplication,
-    isLoading,
-    isLoadingError,
+    isLoading: isLoadingOpenCallApplication,
+    isLoadingError: isLoadingOpenCallApplicationError,
+    isRefetching: isRefetchingOpenCallApplication,
   } = useOpenCallApplication(router.query.applicationId as string, {
     includes: ['open_call', 'project', 'project_developer'],
   });
@@ -103,7 +104,7 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
 
   // If we can't load the open call, it may have been removed or the user not have access to it. Let's
   // redirect the user to the Dashboard open calls list.
-  if (isLoadingError) {
+  if (isLoadingOpenCallApplicationError) {
     router.push(Paths.DashboardOpenCalls);
     return null;
   }
@@ -121,7 +122,7 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
       />
       <DashboardLayout
         header="breadcrumbs"
-        isLoading={isLoading}
+        isLoading={isLoadingOpenCallApplication}
         breadcrumbsProps={breadcrumbsProps}
       >
         <LayoutContainer layout="narrow">
@@ -220,6 +221,9 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
                     <span className="mt-1">{projectDeveloper?.about}</span>
                   </div>
                 </div>
+              </div>
+              <div className="mt-12">
+                <FundingSwitch openCallApplication={openCallApplication} />
               </div>
             </div>
           </div>

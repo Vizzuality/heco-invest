@@ -166,3 +166,40 @@ export const useDeleteOpenCallApplication = (): UseMutationResult<
     },
   });
 };
+
+/**
+ * Hook with mutation to mark an open call application as being funded or not funded
+ **/
+export const useOpenCallApplicationFunding = (): UseMutationResult<
+  AxiosResponse<ResponseData<OpenCall>>,
+  AxiosError<ErrorResponse>
+> => {
+  const queryClient = useQueryClient();
+
+  const fundingOpenCall = (
+    openCallApplicationId: string,
+    isFunding: boolean
+  ): Promise<AxiosResponse> => {
+    const endpoint = isFunding
+      ? `/api/v1/account/open_call_applications/${openCallApplicationId}/funding`
+      : `/api/v1/account/open_call_applications/${openCallApplicationId}/not_funding`;
+
+    const config: AxiosRequestConfig = {
+      method: 'POST',
+      url: endpoint,
+      data: { id: openCallApplicationId },
+    };
+
+    return API(config);
+  };
+
+  return useMutation(
+    ({ id, isFunding }: { id: string; isFunding: boolean }) => fundingOpenCall(id, isFunding),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(Queries.AccountOpenCallApplication);
+        queryClient.invalidateQueries(Queries.AccountOpenCallApplicationsList);
+      },
+    }
+  );
+};
