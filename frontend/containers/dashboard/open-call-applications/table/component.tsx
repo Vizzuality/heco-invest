@@ -65,9 +65,9 @@ export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () 
       },
       {
         Header: intl.formatMessage({ defaultMessage: 'Actions', id: 'wL7VAE' }),
+        accessor: 'actions',
         canSort: false,
         hideHeader: true,
-        width: 0,
         Cell: CellActions,
       },
     ],
@@ -87,7 +87,6 @@ export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () 
     }),
     loading: isLoading,
     sortingEnabled: true,
-    manualSorting: false,
     className: 'h-screen',
   };
 
