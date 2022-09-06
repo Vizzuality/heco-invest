@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -29,10 +29,10 @@ type Props = AppProps & {
   };
 };
 
-const queryClient = new QueryClient();
-
 const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
   const { locale, defaultLocale } = useRouter();
+
+  const [queryClient] = useState(() => new QueryClient());
 
   // By getting the layout from the child component, we can prevent it from re-rendering when
   // navigating to a page with the same one
