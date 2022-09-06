@@ -17,6 +17,7 @@ RSpec.describe "API V1 Project Maps", type: :request do
       parameter name: "filter[sdg]", in: :query, type: :integer, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[instrument_type]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[ticket_size]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
+      parameter name: "filter[impact]", in: :query, type: :string, required: false, description: "Filter records. Use comma to separate multiple filter options."
       parameter name: "filter[only_verified]", in: :query, type: :boolean, required: false, description: "Filter records."
       parameter name: "filter[full_text]", in: :query, type: :string, required: false, description: "Filter records by provided text."
       parameter name: "filter[priority_landscape]", in: :query, type: :string, required: false, description: "Filter records by ID. Use comma to separate multiple IDs."
