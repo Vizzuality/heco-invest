@@ -4,7 +4,7 @@ module API
       class MapsController < BaseController
         def show
           projects = Project.accessible_by(current_ability)
-            .select(:id, :trusted, :centroid, :category).order(created_at: :desc)
+            .select(:id, :verified, :centroid, :category).order(created_at: :desc)
           projects = API::Filterer.new(projects, filter_params.to_h).call
           render json: ProjectMapSerializer.new(projects).serializable_hash
         end

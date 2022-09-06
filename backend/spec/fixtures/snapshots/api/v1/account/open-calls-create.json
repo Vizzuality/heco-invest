@@ -30,7 +30,8 @@
       },
       "status": "draft",
       "favourite": false,
-      "open_call_applications_count": 0
+      "open_call_applications_count": 0,
+      "verified": false
     },
     "relationships": {
       "investor": {

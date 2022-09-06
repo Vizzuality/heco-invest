@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_25_081811) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_06_084050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -237,7 +237,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_081811) do
     t.text "impact_description_en"
     t.text "impact_description_es"
     t.text "impact_description_pt"
-    t.boolean "trusted", default: false, null: false
+    t.boolean "verified", default: false, null: false
     t.integer "sdgs", array: true
     t.string "language", null: false
     t.datetime "closing_at", null: false
@@ -332,7 +332,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_081811) do
     t.text "sustainability_en"
     t.text "sustainability_es"
     t.text "sustainability_pt"
-    t.boolean "trusted", default: false, null: false
+    t.boolean "verified", default: false, null: false
     t.text "website"
     t.text "linkedin"
     t.text "facebook"

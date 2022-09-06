@@ -141,7 +141,9 @@ RSpec.configure do |config|
                   impact_description: {type: :string},
                   closing_at: {type: :string},
                   language: {type: :string},
-                  created_at: {type: :string}
+                  created_at: {type: :string},
+                  trusted: {type: :boolean},
+                  verified: {type: :boolean}
                 }
               },
               relationships: {
@@ -192,6 +194,7 @@ RSpec.configure do |config|
                   longitude: {type: :number},
                   category: {type: :string},
                   trusted: {type: :boolean},
+                  verified: {type: :boolean},
                   created_at: {type: :string},
                   target_groups: {type: :array, items: {type: :string}},
                   impact_areas: {type: :array, items: {type: :string}},

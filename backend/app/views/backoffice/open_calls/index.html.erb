@@ -19,7 +19,7 @@
       <%= sort_link @q, :open_call_applications_count, t("backoffice.open_calls.index.applications") %>
     </th>
     <th>
-      <%= sort_link @q, :trusted, t("backoffice.common.status") %>
+      <%= sort_link @q, :verified, t("backoffice.common.status") %>
     </th>
     <th>
     </th>
@@ -36,18 +36,18 @@
       <td><%= [open_call.municipality&.name, open_call.department&.name, open_call.country&.name].compact.join(", ") %></td>
       <td><%= open_call.open_call_applications_count %></td>
       <td>
-        <%= status_tag :verified, t('backoffice.common.verified') if open_call.trusted?  %>
-        <%= status_tag :unverified, t('backoffice.common.unverified') unless open_call.trusted?  %>
+        <%= status_tag :verified, t('backoffice.common.verified') if open_call.verified?  %>
+        <%= status_tag :unverified, t('backoffice.common.unverified') unless open_call.verified?  %>
       </td>
       <td><%= link_to t("backoffice.common.edit"), edit_backoffice_open_call_path(open_call.id), class: "link-button" %></td>
       <td>
         <%= render "menu" do %>
-          <% if open_call.trusted? %>
+          <% if open_call.verified? %>
             <%= render "backoffice/base/menu/item" do %>
               <%= button_to t("backoffice.common.unverify"), unverify_backoffice_open_call_path(open_call.id), method: :post %>
             <% end %>
           <% end %>
-          <% unless open_call.trusted? %>
+          <% unless open_call.verified? %>
             <%= render "backoffice/base/menu/item" do %>
               <%= button_to t("backoffice.common.verify"), verify_backoffice_open_call_path(open_call.id), method: :post %>
             <% end %>

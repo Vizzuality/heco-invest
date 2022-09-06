@@ -45,13 +45,13 @@ module Backoffice
     end
 
     def verify
-      @open_call.update! trusted: true
+      @open_call.update! verified: true
 
       redirect_back fallback_location: backoffice_open_calls_path
     end
 
     def unverify
-      @open_call.update! trusted: false
+      @open_call.update! verified: false
 
       redirect_back fallback_location: backoffice_open_calls_path
     end
@@ -72,7 +72,7 @@ module Backoffice
         :maximum_funding_per_project,
         :funding_priorities,
         :funding_exclusions,
-        :trusted,
+        :verified,
         instrument_types: [],
         sdgs: []
       )

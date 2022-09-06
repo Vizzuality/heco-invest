@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Backoffice::CSV::ProjectExporter do
   subject { described_class.new(query) }
 
-  let(:query) { create_list :project, 4, trusted: true }
+  let(:query) { create_list :project, 4, verified: true }
   let(:parsed_csv) { CSV.parse(subject.call) }
 
   describe "#call" do

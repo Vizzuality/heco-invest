@@ -32,8 +32,8 @@ RSpec.describe API::Filterer do
 
       context "when filtered by only verified flag" do
         let(:filters) { {only_verified: true} }
-        let!(:verified_project) { create :project, trusted: true }
-        let!(:unverified_project) { create :project, trusted: false }
+        let!(:verified_project) { create :project, verified: true }
+        let!(:unverified_project) { create :project, verified: false }
 
         it "returns only verified records" do
           expect(subject.call).to eq([verified_project])
@@ -178,8 +178,8 @@ RSpec.describe API::Filterer do
 
       context "when filtered by only verified flag" do
         let(:filters) { {only_verified: true} }
-        let!(:verified_open_call) { create :open_call, trusted: true }
-        let!(:unverified_open_call) { create :open_call, trusted: false }
+        let!(:verified_open_call) { create :open_call, verified: true }
+        let!(:unverified_open_call) { create :open_call, verified: false }
 
         it "returns only verified records" do
           expect(subject.call).to eq([verified_open_call])

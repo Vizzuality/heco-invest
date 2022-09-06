@@ -71,7 +71,7 @@ module Backoffice
         :progress_impact_tracking,
         :description,
         :relevant_links,
-        :trusted,
+        :verified,
         instrument_types: [],
         impact_areas: [],
         sdgs: [],

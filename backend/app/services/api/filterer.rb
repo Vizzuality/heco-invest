@@ -60,9 +60,9 @@ module API
     end
 
     def filter_by_only_verified
-      return unless filters[:only_verified] && column_names.include?("trusted")
+      return unless filters[:only_verified] && column_names.include?("verified")
 
-      self.query = query.where trusted: true
+      self.query = query.where verified: true
     end
 
     def filter_by_relations

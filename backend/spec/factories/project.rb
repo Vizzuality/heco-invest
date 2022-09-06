@@ -13,7 +13,7 @@ FactoryBot.define do
     target_groups { %w[urban-populations indigenous-peoples] }
     impact_areas { %w[pollutants-reduction carbon-emission-reduction] }
 
-    trusted { false }
+    verified { false }
 
     estimated_duration_in_months { 13 }
 

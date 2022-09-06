@@ -71,7 +71,8 @@
         "created_at": "2022-06-27T09:04:33.005Z",
         "status": "draft",
         "account_language": "es",
-        "impact_calculated": false
+        "impact_calculated": false,
+        "verified": false
       },
       "relationships": {
         "project_developer": {
@@ -184,7 +185,8 @@
         "created_at": "2022-06-27T09:04:32.944Z",
         "status": "published",
         "account_language": "es",
-        "impact_calculated": false
+        "impact_calculated": false,
+        "verified": false
       },
       "relationships": {
         "project_developer": {
@@ -297,7 +299,8 @@
         "longitude": 1.0,
         "favourite": false,
         "account_language": "es",
-        "impact_calculated": false
+        "impact_calculated": false,
+        "verified": false
       },
       "relationships": {
         "project_developer": {

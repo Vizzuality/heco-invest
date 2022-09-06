@@ -29,7 +29,7 @@ module API
         :language,
         :account_language,
         :geometry,
-        :trusted,
+        :verified,
         :created_at,
         :municipality_biodiversity_impact,
         :municipality_climate_impact,
@@ -47,6 +47,7 @@ module API
         :priority_landscape_community_impact,
         :priority_landscape_total_impact,
         :impact_calculated
+      attribute :trusted, &:verified
 
       belongs_to :project_developer
       belongs_to :country, serializer: LocationSerializer

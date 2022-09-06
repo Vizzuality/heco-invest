@@ -59,7 +59,7 @@ if Rails.env.development?
       FactoryBot.create(
         :project,
         status: :published,
-        trusted: [true, false].sample,
+        verified: [true, false].sample,
         name: "#{Faker::Lorem.sentence} #{SecureRandom.hex(4)}",
         category: Category::TYPES.sample,
         project_developer: project_developer,
