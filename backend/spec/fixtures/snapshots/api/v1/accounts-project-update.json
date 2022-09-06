@@ -69,7 +69,8 @@
       "created_at": "2022-06-24T09:06:27.599Z",
       "status": "published",
       "account_language": "en",
-      "impact_calculated": false
+      "impact_calculated": false,
+      "verified": false
     },
     "relationships": {
       "project_developer": {

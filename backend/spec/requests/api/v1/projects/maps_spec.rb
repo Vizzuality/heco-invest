@@ -32,6 +32,7 @@ RSpec.describe "API V1 Project Maps", type: :request do
               attributes: {
                 type: :object,
                 properties: {
+                  verified: {type: :boolean},
                   trusted: {type: :boolean},
                   latitude: {type: :number},
                   longitude: {type: :number}

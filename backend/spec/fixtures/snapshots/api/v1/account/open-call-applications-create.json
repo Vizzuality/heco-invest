@@ -107,7 +107,8 @@
         "impact_calculated": false,
         "latitude": 2.0,
         "longitude": 1.0,
-        "favourite": false
+        "favourite": false,
+        "verified": false
       },
       "relationships": {
         "project_developer": {

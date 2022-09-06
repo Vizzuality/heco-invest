@@ -16,9 +16,10 @@ module API
         :status,
         :language,
         :account_language,
-        :trusted,
+        :verified,
         :created_at,
         :open_call_applications_count
+      attribute :trusted, &:verified
 
       belongs_to :investor
       belongs_to :country, serializer: LocationSerializer

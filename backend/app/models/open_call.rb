@@ -36,7 +36,7 @@ class OpenCall < ApplicationRecord
 
   validates_presence_of :name, :description, :funding_priorities, :funding_exclusions, :impact_description, :closing_at
 
-  validates :trusted, inclusion: [true, false]
+  validates :verified, inclusion: [true, false]
 
   validates_uniqueness_of [*locale_columns(:name)], scope: [:investor_id], case_sensitive: false, allow_blank: true
   validate :location_types

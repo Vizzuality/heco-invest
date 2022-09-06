@@ -7,7 +7,7 @@ RSpec.describe "Backoffice: Open Calls", type: :system do
       :open_call,
       name: "Open Call ultra name",
       investor: create(:investor, account: create(:account, name: "Ultra investor name")),
-      trusted: true
+      verified: true
     )
   }
   let!(:open_call_application) { create :open_call_application, open_call: open_call }
@@ -50,13 +50,13 @@ RSpec.describe "Backoffice: Open Calls", type: :system do
         end
       end
 
-      context "when filtered by trusted flag" do
-        before { open_call.update! trusted: true }
+      context "when filtered by verified flag" do
+        before { open_call.update! verified: true }
 
         it "returns records at correct state" do
           expect(page).to have_text(open_call.name)
           open_calls.each { |o| expect(page).to have_text(o.name) }
-          select t("backoffice.common.verified"), from: :q_trusted_eq
+          select t("backoffice.common.verified"), from: :q_verified_eq
           click_on t("backoffice.common.apply")
           expect(page).to have_text(open_call.name)
           open_calls.each { |o| expect(page).not_to have_text(o.name) }
@@ -91,7 +91,7 @@ RSpec.describe "Backoffice: Open Calls", type: :system do
 
     context "when verifying open call via menu" do
       before do
-        open_call.update! trusted: false
+        open_call.update! verified: false
         visit "/backoffice/open_calls"
       end
 
@@ -179,11 +179,11 @@ RSpec.describe "Backoffice: Open Calls", type: :system do
       before { within_sidebar { click_on t("backoffice.open_calls.status") } }
 
       it "can update verification status" do
-        expect(page).to have_checked_field("open_call[trusted]")
-        choose t("backoffice.common.unverified"), name: "open_call[trusted]"
+        expect(page).to have_checked_field("open_call[verified]")
+        choose t("backoffice.common.unverified"), name: "open_call[verified]"
         click_on t("backoffice.common.save")
         expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.open_call")))
-        expect(open_call.reload.trusted).to be_falsey
+        expect(open_call.reload.verified).to be_falsey
       end
     end
 

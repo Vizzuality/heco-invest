@@ -53,7 +53,7 @@ class Project < ApplicationRecord
     :geometry
 
   validates :estimated_duration_in_months, numericality: {only_integer: true, greater_than: 0, less_than: 37}, presence: true
-  validates :trusted, inclusion: [true, false]
+  validates :verified, inclusion: [true, false]
   validates :received_funding, inclusion: [true, false]
   validates :looking_for_funding, inclusion: [true, false]
   validates :project_images, length: {maximum: 6}

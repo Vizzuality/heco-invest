@@ -16,7 +16,7 @@ FactoryBot.define do
     sdgs { [1, 4, 5] }
     instrument_types { ["loan"] }
 
-    trusted { false }
+    verified { false }
 
     maximum_funding_per_project { 100_000 }
 

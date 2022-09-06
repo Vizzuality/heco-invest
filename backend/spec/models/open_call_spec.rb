@@ -56,9 +56,9 @@ RSpec.describe OpenCall, type: :model do
     expect(subject).to have(1).errors_on(:impact_description)
   end
 
-  it "should not be valid without trusted" do
-    subject.trusted = nil
-    expect(subject).to have(1).errors_on(:trusted)
+  it "should not be valid without verified" do
+    subject.verified = nil
+    expect(subject).to have(1).errors_on(:verified)
   end
 
   it "should not be valid with wrong language" do
