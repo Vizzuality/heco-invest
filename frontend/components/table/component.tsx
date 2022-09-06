@@ -26,15 +26,6 @@ export const Table: FC<TableProps> = ({
   isOwner,
   accountName,
 }: TableProps) => {
-  const DEFAULT_COLUMN = React.useMemo(
-    () => ({
-      minWidth: 30,
-      width: 150,
-      maxWidth: 200,
-    }),
-    []
-  );
-
   const {
     getTableProps,
     // headers
@@ -47,7 +38,6 @@ export const Table: FC<TableProps> = ({
   } = useTable(
     {
       columns,
-      defaultColumn: DEFAULT_COLUMN,
       data,
       // pagination
       manualPagination: true,
@@ -82,53 +72,60 @@ export const Table: FC<TableProps> = ({
   return (
     <div>
       <div className="relative rounded-2xl">
-        <table {...getTableProps()} className="relative w-full bg-white rounded-t-2xl">
+        <table {...getTableProps()} className="relative w-full bg-white rounded-2xl">
           <thead>
             {headerGroups.map((headerGroup) => {
-              const { key: headerGroupKey, ...restHeaderGroupProps } =
-                headerGroup.getHeaderGroupProps();
+              const {
+                key: headerGroupKey,
+                style,
+                ...restHeaderGroupProps
+              } = headerGroup.getHeaderGroupProps();
 
               return (
-                <tr key={headerGroupKey} {...restHeaderGroupProps} className="sticky top-0 px-10">
-                  {headerGroup.headers.map((column) => {
-                    const { id, sortDescFirst, toggleSortBy } = column;
-                    const { key: headerKey, ...restHeaderProps } = column.getHeaderProps();
+                <tr key={headerGroupKey} {...restHeaderGroupProps}>
+                  {headerGroup.headers.map((column, index) => {
+                    const { id, sortDescFirst, toggleSortBy, hideHeader } = column;
+                    const { key: headerKey, style, ...restHeaderProps } = column.getHeaderProps();
 
                     // canSort is always true when manualSortBy is true
                     // See: https://github.com/TanStack/table/issues/2599
-                    const canSort = (sortingEnabled && column?.canSort) ?? true;
+                    const canSort = sortingEnabled && columns[index]?.canSort !== false;
 
                     return (
                       <th
                         key={headerKey}
                         {...restHeaderProps}
                         className={cx({
-                          'flex items-center py-5 px-2.5 space-x-2 text-sm font-medium capitalize font-heading':
-                            true,
+                          'text-sm font-semibold py-4 px-6': true,
                           'cursor-pointer': canSort,
+                          'w-0': column.id === 'actions',
                         })}
-                        {...(canSort && {
-                          onClick: () => {
-                            if (id === sortSelected?.id) {
-                              toggleSortBy(!sortSelected.desc, false);
-                            }
+                        onClick={() => {
+                          if (!canSort) return;
 
-                            if (id !== sortSelected?.id) {
-                              toggleSortBy(sortDescFirst, false);
-                            }
-                          },
-                        })}
+                          if (id === sortSelected?.id) {
+                            toggleSortBy(!sortSelected.desc, false);
+                          }
+
+                          if (id !== sortSelected?.id) {
+                            toggleSortBy(sortDescFirst, false);
+                          }
+                        }}
                       >
-                        {column.hideHeader ? null : (
-                          <>
-                            <span>{column.render('Header')}</span>
+                        {!hideHeader && (
+                          <span
+                            className={cx({
+                              'flex items-center gap-2': true,
+                            })}
+                          >
+                            {column.render('Header')}
                             {canSort && (
                               <div className="flex flex-col">
                                 <Icon icon={SORT_SVG} className="w-2 h-2 text-black" />
                                 <Icon icon={SORT_SVG} className="w-2 h-2 text-black rotate-180" />
                               </div>
                             )}
-                          </>
+                          </span>
                         )}
                       </th>
                     );
@@ -141,22 +138,15 @@ export const Table: FC<TableProps> = ({
             {rows.map((row) => {
               prepareRow(row);
 
-              const { key: rowKey, ...restRowProps } = row.getRowProps();
+              const { key: rowKey, style, ...restRowProps } = row.getRowProps();
 
               return (
-                <tr key={rowKey} {...restRowProps} className="px-10 border-t border-gray-100">
+                <tr key={rowKey} {...restRowProps} className="border-t border-gray-100">
                   {row.cells.map((cell) => {
-                    const { key: cellKey, ...restCellProps } = cell.getCellProps();
+                    const { key: cellKey, style, ...restCellProps } = cell.getCellProps();
 
                     return (
-                      <td
-                        key={cellKey}
-                        {...restCellProps}
-                        className={cx({
-                          'py-5 px-2.5': true,
-                          [cell?.column?.className]: !!cell?.column?.className,
-                        })}
-                      >
+                      <td key={cellKey} {...restCellProps} className="px-6 py-5">
                         {cell.render('Cell')}
                       </td>
                     );
@@ -166,8 +156,15 @@ export const Table: FC<TableProps> = ({
             })}
           </tbody>
           {paginationProps && (
-            <tfoot className="relative w-full bg-white border-t border-gray-100 rounded-b-2xl">
-              <Pagination theme="compact" className="w-full my-1" {...paginationProps} />
+            <tfoot>
+              <tr>
+                <td
+                  colSpan={columns.length}
+                  className="bg-white border-t border-gray-100 rounded-b-2xl"
+                >
+                  <Pagination theme="compact" className="w-full my-1" {...paginationProps} />
+                </td>
+              </tr>
             </tfoot>
           )}
         </table>
