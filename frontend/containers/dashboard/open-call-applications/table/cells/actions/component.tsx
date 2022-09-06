@@ -23,7 +23,7 @@ export const CellActions: FC<CellActionsProps> = ({
 
   return (
     <>
-      <div className="flex items-center justify-center gap-10 pr-8">
+      <div className="inline-flex items-center justify-center gap-10">
         <div>
           <Tooltip
             placement="top"
@@ -50,7 +50,7 @@ export const CellActions: FC<CellActionsProps> = ({
           </Tooltip>
         </div>
         <Link href={`${Paths.DashboardOpenCallApplications}/${openCallApplication.id}`}>
-          <a className="px-2 py-1 text-sm transition-all text-green-dark focus-visible:outline-green-dark rounded-2xl">
+          <a className="px-2 py-1 -mr-2 text-sm transition-all text-green-dark focus-visible:outline-green-dark rounded-2xl">
             <FormattedMessage defaultMessage="Details" id="Lv0zJu" />
           </a>
         </Link>

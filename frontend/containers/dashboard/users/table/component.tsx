@@ -66,7 +66,6 @@ export const UsersTable: FC<UsersTableProps> = ({ isOwner, accountName }) => {
     data: users || [],
     loading: isLoadingUsers || isFetchingUsers,
     sortingEnabled: true,
-    manualSorting: false,
     isOwner,
     accountName,
   };
@@ -78,9 +77,8 @@ export const UsersTable: FC<UsersTableProps> = ({ isOwner, accountName }) => {
           ...tableProps.columns,
           {
             Header: intl.formatMessage({ defaultMessage: 'Actions', id: 'wL7VAE' }),
-            className: 'capitalize text-sm',
+            accessor: 'actions',
             canSort: false,
-            width: 50,
             hideHeader: true,
             Cell: Actions,
           },

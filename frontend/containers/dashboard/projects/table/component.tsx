@@ -86,7 +86,6 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ onLoaded = noop }) => {
         accessor: 'actions',
         canSort: false,
         hideHeader: true,
-        width: 0,
         Cell: CellActions,
       },
     ],
@@ -107,7 +106,6 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ onLoaded = noop }) => {
     })),
     loading: isLoading,
     sortingEnabled: true,
-    manualSorting: false,
     className: 'h-screen',
   };
 

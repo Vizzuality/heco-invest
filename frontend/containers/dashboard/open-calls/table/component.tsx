@@ -73,7 +73,7 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
       {
         Header: intl.formatMessage({ defaultMessage: 'Instrument types', id: '0zLVGQ' }),
         accessor: 'instrumentTypes',
-        disableSortBy: true,
+        canSort: false,
         Cell: CellInstrumentTypes,
         width: 200,
       },
@@ -95,9 +95,8 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
       },
       {
         accessor: 'actions',
-        disableSortBy: true,
+        canSort: false,
         hideHeader: true,
-        width: 0,
         Cell: CellActions,
       },
     ],
@@ -115,7 +114,6 @@ export const OpenCallsTable: FC<OpenCallsTableProps> = () => {
     })),
     loading: isLoading,
     sortingEnabled: true,
-    manualSorting: false,
     className: 'h-screen',
   };
 
