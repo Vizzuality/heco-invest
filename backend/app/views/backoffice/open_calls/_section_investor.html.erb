@@ -1,0 +1,22 @@
+<h2 class="mb-2 text-gray-900 font-semibold">
+  <%= t("backoffice.open_calls.investor_description") %>
+</h2>
+
+<table class="text-left">
+  <tr>
+    <th class="pr-8"><%= t("backoffice.common.name") %></th>
+    <td class="text-green-dark underline"><%= link_to @open_call.investor.name, edit_backoffice_investor_path(@open_call.investor.id) %></td>
+  </tr>
+  <tr>
+    <th class="pr-8"><%= t("simple_form.labels.account.type") %></th>
+    <td><%= InvestorType.find(@open_call.investor.investor_type).name %></td>
+  </tr>
+  <tr>
+    <th class="pr-8"><%= t("simple_form.labels.account.email") %></th>
+    <td class="text-green-dark underline"><%= mail_to @open_call.investor.contact_email %></td>
+  </tr>
+  <tr>
+    <th class="pr-8"><%= t("simple_form.labels.account.phone") %></th>
+    <td class="text-green-dark underline"><%= phone_to @open_call.investor.contact_phone %></td>
+  </tr>
+</table>

@@ -21,6 +21,8 @@
     <th>
       <%= sort_link @q, :trusted, t("backoffice.common.status") %>
     </th>
+    <th>
+    </th>
     <th class="opacity-25">
       <%= svg "menu" %>
     </th>
@@ -37,6 +39,7 @@
         <%= status_tag :verified, t('backoffice.common.verified') if open_call.trusted?  %>
         <%= status_tag :unverified, t('backoffice.common.unverified') unless open_call.trusted?  %>
       </td>
+      <td><%= link_to t("backoffice.common.edit"), edit_backoffice_open_call_path(open_call.id), class: "link-button" %></td>
       <td>
         <%= render "menu" do %>
           <% if open_call.trusted? %>
