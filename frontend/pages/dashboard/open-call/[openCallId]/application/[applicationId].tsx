@@ -79,10 +79,6 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
     setProjectDeveloperPhoto(projectDeveloper?.picture?.small);
   }, [projectDeveloper]);
 
-  const handleFundingSwitchChange = () => {
-    if (isLoadingOpenCallApplication || isRefetchingOpenCallApplication) return;
-  };
-
   const breadcrumbsProps = {
     substitutions: {
       'open-call': {
