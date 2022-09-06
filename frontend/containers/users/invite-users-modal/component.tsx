@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect } from 'react';
+import { FC, useCallback } from 'react';
 
 import { X as CloseIcon } from 'react-feather';
 import { FieldError, SubmitErrorHandler, useForm } from 'react-hook-form';
@@ -30,7 +30,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
 }: InviteUsersModalProps) => {
   const { formatMessage } = useIntl();
   const inviteUsers = useInviteUsers();
-  const { userAccount } = useAccount({ includes: 'owner' });
+  const { userAccount } = useAccount();
   const { name } = userAccount || {};
   const queryClient = useQueryClient();
 
@@ -51,38 +51,41 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
     defaultValues: { emails: [] },
   });
 
-  const getInviteUsersErrorMessage = (errorCode: number, email: string) => {
-    switch (errorCode) {
-      case 409:
-        return formatMessage(
-          {
-            defaultMessage: 'User with email {email} already has an account in HeCo.',
-            id: 'sK7G1d',
-          },
-          {
-            email,
-          }
-        );
-      case 422:
-        return formatMessage(
-          { defaultMessage: 'Email {email} is invalid.', id: 'jG0v72' },
-          {
-            email,
-          }
-        );
-      default:
-        return formatMessage(
-          {
-            defaultMessage:
-              'Something went wrong while sending an invitation to the email {email}.',
-            id: '9dtx+L',
-          },
-          {
-            email,
-          }
-        );
-    }
-  };
+  const getInviteUsersErrorMessage = useCallback(
+    (errorCode: number, email: string) => {
+      switch (errorCode) {
+        case 409:
+          return formatMessage(
+            {
+              defaultMessage: 'User with email {email} already has an account in HeCo.',
+              id: 'sK7G1d',
+            },
+            {
+              email,
+            }
+          );
+        case 422:
+          return formatMessage(
+            { defaultMessage: 'Email {email} is invalid.', id: 'jG0v72' },
+            {
+              email,
+            }
+          );
+        default:
+          return formatMessage(
+            {
+              defaultMessage:
+                'Something went wrong while sending an invitation to the email {email}.',
+              id: '9dtx+L',
+            },
+            {
+              email,
+            }
+          );
+      }
+    },
+    [formatMessage]
+  );
 
   const resetForm = useCallback(() => {
     reset({ email: '', emails: [] });
@@ -114,7 +117,7 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
           },
         }
       ),
-    [getValues, inviteUsers, resetForm, setError, setValue, queryClient]
+    [inviteUsers, getValues, queryClient, setError, getInviteUsersErrorMessage, setValue, resetForm]
   );
 
   const onSubmit = (values: UsersInvitationForm) => {
