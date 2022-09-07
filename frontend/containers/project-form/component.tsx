@@ -122,7 +122,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         onSuccess: handleCompletion,
       });
     },
-    [updateProject, handleCompletion, setError]
+    [mutation, handleCompletion, setError]
   );
 
   const handleCreate = useCallback(
