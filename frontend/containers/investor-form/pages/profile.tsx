@@ -74,7 +74,7 @@ export const Profile: FC<ProfileProps> = ({
       <div className="md:flex gap-x-6 mb-6.5">
         <div className="md:w-1/2 mb-6.5 md:m-0">
           <Label htmlFor="name">
-            <FormattedMessage defaultMessage="Investor/Funder name" id="6MEtAZ" />
+            <FormattedMessage defaultMessage="Account name" id="Gcv7QB" />
           </Label>
           <Input
             name="name"
