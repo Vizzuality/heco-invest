@@ -398,9 +398,6 @@
   "6IKs4G": {
     "string": "wood and soil biomass, application of sustainable forest measures;"
   },
-  "6MEtAZ": {
-    "string": "Investor/Funder name"
-  },
   "6MoU6D": {
     "string": "Explain how the solution or project can be replicated in other contexts and geographies. Think practically about the existing opportunities, the partners and allies needed as well as the barriers that this replication effort may face such as climate issues, regulations and legal frameworks, land tenure, institutional capacity, etc."
   },
@@ -922,6 +919,9 @@
   },
   "GYkIYE": {
     "string": "Insert your last name"
+  },
+  "Gcv7QB": {
+    "string": "Account name"
   },
   "GdS9Mk": {
     "string": "Has this project been funded before?"
@@ -1505,9 +1505,6 @@
   },
   "Si0U4V": {
     "string": "Relevant links"
-  },
-  "Sv/Mtz": {
-    "string": "Project developer name"
   },
   "Swj4mJ": {
     "string": "Select the {name} account"
