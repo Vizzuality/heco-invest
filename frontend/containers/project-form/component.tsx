@@ -7,7 +7,7 @@ import { getServiceErrors, useGetAlert, useLanguageNames } from 'helpers/pages';
 
 import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import LeaveFormModal from 'containers/leave-form-modal';
-import MultiPageLayout, { OutroPage, Page } from 'containers/multi-page-layout';
+import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 
 import Button from 'components/button';
 import Head from 'components/head';
@@ -28,7 +28,8 @@ import {
   Funding,
   Impact,
   OtherInformation,
-  PendingApproval,
+  // VERIFICATION PROJECTS: HIDDEN
+  // PendingApproval,
   ProjectDescription,
   ProjectGrow,
   ProjectFormProps,
@@ -87,26 +88,21 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     defaultValues,
   });
 
-  const handleCompletion = useCallback(
-    ({
-      data: {
-        data: { slug, status, trusted },
-      },
-    }) => {
-      // If the user is saving the project as a draft, they aren't publishing it and it won't
-      // be visible in the administration area either. If they are publishing it now, we make
-      // a check to verify whether the project has been verified before. If so, it's already been
-      // verified and doesn't make sense to display the "Pending approval" screen. If not, then
-      // we show the screen.
-      if (status === ProjectStatus.Published && trusted !== true) {
-        setCurrentPage(currentPage + 1);
-        setProjectSlug(slug);
-      } else {
-        onComplete();
-      }
-    },
-    [currentPage, onComplete]
-  );
+  const handleCompletion = useCallback(() => {
+    // VERIFICATION PROJECTS: HIDDEN
+    // If the user is saving the project as a draft, they aren't publishing it and it won't
+    // be visible in the administration area either. If they are publishing it now, we make
+    // a check to verify whether the project has been verified before. If so, it's already been
+    // verified and doesn't make sense to display the "Pending approval" screen. If not, then
+    // we show the screen.
+    // if (status === ProjectStatus.Published && trusted !== true) {
+    //   setCurrentPage(currentPage + 1);
+    //   setProjectSlug(slug);
+    // } else {
+    //   onComplete();
+    // }
+    onComplete();
+  }, [onComplete]);
 
   const handleUpdate = useCallback(
     (formData: ProjectUpdatePayload) => {
@@ -214,7 +210,8 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   };
 
   const contentLocale = defaultValues?.language || userAccount?.language;
-  const isOutroPage = currentPage === totalPages;
+  // VERIFICATION PROJECTS: HIDDEN
+  // const isOutroPage = currentPage === totalPages;
 
   // This component may be mounted when `project` has not resolved yet (`isLoading` will be `true`).
   // In that case, we want to make sure the form is populated with the default values.
@@ -239,12 +236,14 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         page={currentPage}
         alert={useGetAlert(updateProject.error)}
         isSubmitting={updateProject.isLoading}
-        showOutro={isOutroPage}
-        siteHeader={isOutroPage}
+        // VERIFICATION PROJECTS: HIDDEN
+        // showOutro={isOutroPage}
+        // siteHeader={isOutroPage}
+        // onCloseClick={() => (isOutroPage ? onComplete() : setShowLeave(true))}
+        onCloseClick={() => setShowLeave(true)}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
-        onCloseClick={() => (isOutroPage ? onComplete() : setShowLeave(true))}
         onSubmitClick={handleSubmitPublish}
         isLoading={isLoading}
         footerElements={
@@ -341,9 +340,11 @@ export const ProjectForm: FC<ProjectFormProps> = ({
             errors={errors}
           />
         </Page>
+        {/* VERIFICATION PROJECTS: HIDDEN
         <OutroPage>
           <PendingApproval projectSlug={projectSlug} />
         </OutroPage>
+        */}
       </MultiPageLayout>
       <LeaveFormModal
         isOpen={showLeave}
