@@ -169,7 +169,7 @@ export const GeometryInput = <FormValues extends FieldValues>({
             <Map
               bounds={bounds}
               viewport={viewport}
-              onMapViewportChange={(v) => setViewport(v)}
+              onMapViewportChange={(v) => setViewport({ ...viewport, ...v })}
               getCursor={({ isHovering, isDragging }) => {
                 if (drawing) {
                   return 'crosshair';
