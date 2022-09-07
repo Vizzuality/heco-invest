@@ -14,6 +14,7 @@ export const useDefaultValues = (openCall: OpenCall): Partial<OpenCallForm> => {
     return {
       ...general,
       id: openCall.id,
+      language: openCall.language,
       picture: openCall.picture?.original?.split('redirect/')[1].split('/')[0] ?? undefined,
       country_id: openCall.country?.id,
       department_id: openCall.department?.id,
