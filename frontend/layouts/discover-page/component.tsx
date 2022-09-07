@@ -135,13 +135,10 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
           </LayoutContainer>
         </div>
         <main className="z-0 flex flex-col flex-grow h-screen overflow-y-auto">
-          <LayoutContainer className="xl:mt-6">
-            <div className="flex flex-col items-center gap-2 mt-4 mb-4 lg:mt-2 lg:gap-6 lg:flex-row space-between">
-              <SortingButtons className="flex-1" {...sortingButtonsProps} />
-              <div className="flex justify-center w-full">
-                <Navigation stats={stats} />
-              </div>
-              <div className="flex-1">{/*Share*/}</div>
+          <LayoutContainer className="xl:mt-6 ">
+            <div className="relative flex flex-col items-center gap-2 mx-2 mt-4 mb-4 -ml-1 -mr-1 lg:mt-2 lg:gap-6 lg:flex-row space-between after:left-2 after:right-2 after:bottom-2 after:h-px after:bg-gray-800 after:bg-opacity-40 after:absolute after:hidden after:md:inline">
+              <Navigation stats={stats} />
+              <SortingButtons {...sortingButtonsProps} />
             </div>
           </LayoutContainer>
           <LayoutContainer
