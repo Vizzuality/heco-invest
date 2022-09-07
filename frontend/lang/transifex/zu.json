@@ -569,9 +569,6 @@
   "9dtx+L": {
     "string": "Something went wrong while sending an invitation to the email {email}."
   },
-  "9fHGyd": {
-    "string": "Open verified project"
-  },
   "9nYuln": {
     "string": "Base Layers"
   },
@@ -2433,9 +2430,6 @@
   "n6KNWj": {
     "string": "Pending verification"
   },
-  "n9fdaJ": {
-    "string": "Unverified"
-  },
   "nBHzO6": {
     "string": "Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
   },
@@ -2873,6 +2867,9 @@
   },
   "w1Fanr": {
     "string": "Business"
+  },
+  "w7tf2z": {
+    "string": "Published"
   },
   "wA8Ls7": {
     "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. The <b>Supply</b> score of each sustainability dimension is then computed by taking the mean value of the corresponding indicators. <b>However, if all the indicators of a given dimension are selected, then the supply score of that dimension goes automatically to 0</b>. This is to make sure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
