@@ -48,6 +48,14 @@ Default.args = {
   items: navigationItems,
 };
 
+export const Pill: Story<BadgeNavigationProps> = Template.bind({});
+
+Pill.args = {
+  activeId: 'second-id',
+  type: 'pill',
+  items: navigationItems,
+};
+
 export const BadgeLeft: Story<BadgeNavigationProps> = Template.bind({});
 
 BadgeLeft.args = {

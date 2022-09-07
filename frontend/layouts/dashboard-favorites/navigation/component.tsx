@@ -61,6 +61,7 @@ export const Navigation: FC<NavigationProps> = ({ className, stats }: Navigation
         orientation="vertical"
         badgePosition="left"
         theme="simple"
+        type="pill"
         activeId={activeId}
         items={navigationItems}
       />
