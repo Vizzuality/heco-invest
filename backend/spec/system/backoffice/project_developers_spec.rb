@@ -44,7 +44,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
 
     it_behaves_like "with table pagination", expected_total: 2
     it_behaves_like "with table sorting", columns: [
-      I18n.t("backoffice.common.name"),
+      I18n.t("backoffice.common.account_name"),
       I18n.t("backoffice.common.account_owner"),
       I18n.t("backoffice.common.contact_email"),
       I18n.t("backoffice.common.contact_phone"),

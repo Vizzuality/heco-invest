@@ -29,7 +29,7 @@ zu:
         password_confirmation: Confirm your new password
       account:
         picture: Picture
-        name: Profile name
+        name: Account name
         about: About
         website: Website
         contact_phone: Contact phone
@@ -154,6 +154,7 @@ zu:
     common:
       account_owner: Account owner
       account_users: Account users
+      account_name: Account name
       language: Language
       name: Name
       status: Status
