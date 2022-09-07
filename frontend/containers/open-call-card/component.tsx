@@ -19,7 +19,7 @@ import { useEnums } from 'services/enums/enumService';
 
 import type { OpenCallCardProps } from './types';
 
-export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardProps) => {
+export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: OpenCallCardProps) => {
   const {
     slug,
     name,
@@ -86,6 +86,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardPr
         'cursor-pointer transition rounded-2xl': true,
         'hover:ring-1 hover:ring-green-dark': true,
         'ring-2 ring-green-dark': isFocusWithin,
+        [className]: !!className,
       })}
       {...pressProps}
       {...focusWithinProps}
@@ -147,7 +148,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardPr
           {truncatedDescription}
         </div>
         <div
-          className="flex items-center justify-between mt-2"
+          className="flex items-center justify-between gap-2 mt-2"
           aria-label={intl.formatMessage({
             defaultMessage: 'Investor information',
             id: '68i9X8',
@@ -170,7 +171,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardPr
           </span>
           {tags && (
             <span
-              className="flex flex-wrap items-center gap-2"
+              className="flex flex-wrap items-center justify-end gap-2"
               role="group"
               aria-label={intl.formatMessage({
                 defaultMessage: 'Expects to have impact on',
