@@ -40,6 +40,12 @@ module API
           head :ok
         end
 
+        # DELETE
+        def account
+          ::Accounts::Destroy.new(current_user.account).call
+          head :ok
+        end
+
         private
 
         def filter_params

@@ -55,7 +55,7 @@ class Ability
     can %i[invite], User, account_id: nil
     can %i[index show destroy], User, invited_by_id: user.id, invited_by_type: "User", account_id: nil
     can %i[destroy], User.where(account_id: user.account_id).where.not(id: user.id)
-    can :transfer_ownership, User, account_id: user.account.id
+    can %i[transfer_ownership account], User, account_id: user.account.id
 
     if user.account.investor_id.present?
       can :destroy, OpenCall, {investor: {account: {owner_id: user.id}}}

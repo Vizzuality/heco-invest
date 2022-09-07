@@ -269,4 +269,69 @@ RSpec.describe "API V1 Account Users", type: :request do
       end
     end
   end
+
+  path "/api/v1/account/users/account" do
+    delete "Deletes current user account" do
+      tags "Users"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
+
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
+
+      response "200", :success do
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        context "when user is signed as investor" do
+          let(:user) { create :user_investor }
+          let(:open_call) { create :open_call, investor: user.account.investor }
+          let!(:open_call_application) { create :open_call_application, open_call: open_call }
+
+          before do
+            sign_in user.account.owner
+          end
+
+          it "returns success response" do |example|
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
+          end
+
+          it "sends emails" do |example|
+            expect {
+              submit_request example.metadata
+              expect(OpenCall.where(investor: user.account.investor)).not_to be_exist
+            }.to have_enqueued_mail(ProjectDeveloperMailer, :open_call_destroyed)
+              .with(open_call_application.project_developer, open_call_application.project, open_call.name)
+          end
+        end
+
+        context "when user is signed as project developer" do
+          let(:user) { create :user_project_developer }
+          let(:project) { create :project, project_developer: user.account.project_developer }
+          let!(:open_call_application) { create :open_call_application, project: project }
+
+          before do
+            sign_in user.account.owner
+          end
+
+          it "returns success response" do |example|
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
+          end
+
+          it "sends emails" do |example|
+            expect {
+              submit_request example.metadata
+              expect(Project.where(project_developer: user.account.project_developer)).not_to be_exist
+            }.to have_enqueued_mail(InvestorMailer, :project_destroyed)
+              .with(open_call_application.investor, project.name, open_call_application.open_call)
+          end
+        end
+      end
+    end
+  end
 end
