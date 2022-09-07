@@ -2,7 +2,9 @@ import { useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
 
+import InvestorAccountDeletion from 'containers/faq-page/answers/account/investor-account-deletion';
 import InvestorInfo from 'containers/faq-page/answers/account/investor-info';
+import ProjectDeveloperAccountDeletion from 'containers/faq-page/answers/account/project-developer-account-deletion';
 import ProjectDeveloperInfo from 'containers/faq-page/answers/account/project-developer-info';
 import OpenCallInfo from 'containers/faq-page/answers/open-calls/open-call-info';
 import ProjectImpact from 'containers/faq-page/answers/projects/project-impact';
@@ -27,6 +29,8 @@ export enum FaqQuestions {
   WhyAccountIsPendingApproval = 'why-is-my-account-pending-approval',
   InfoNeededForPdAccount = 'what-information-do-i-need-to-create-a-project-developer-account',
   InfoNeededForInvestorAccount = 'what-information-do-i-need-to-create-an-investor-account',
+  WhatHappensDeletePdAccount = 'what-happens-when-i-delete-my-project-developer-account',
+  WhatHappensDeleteInvestorAccount = 'what-happens-when-i-delete-my-investor-account',
   /** Projects */
   WhatIsAProject = 'what-is-a-project',
   ForWhoIsTheProjectFor = 'for-who-is-the-project-for',
@@ -55,6 +59,8 @@ export const FaqPaths = {
   [FaqQuestions.WhyAccountIsPendingApproval]: `${Paths.FAQ}/${FaqSections.Account}/${FaqQuestions.WhyAccountIsPendingApproval}`,
   [FaqQuestions.InfoNeededForPdAccount]: `${Paths.FAQ}/${FaqSections.Account}/${FaqQuestions.InfoNeededForPdAccount}`,
   [FaqQuestions.InfoNeededForInvestorAccount]: `${Paths.FAQ}/${FaqSections.Account}/${FaqQuestions.InfoNeededForInvestorAccount}`,
+  [FaqQuestions.WhatHappensDeletePdAccount]: `${Paths.FAQ}/${FaqSections.Account}/${FaqQuestions.WhatHappensDeletePdAccount}`,
+  [FaqQuestions.WhatHappensDeleteInvestorAccount]: `${Paths.FAQ}/${FaqSections.Account}/${FaqQuestions.WhatHappensDeleteInvestorAccount}`,
   /** Projects */
   [FaqQuestions.WhatIsAProject]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.WhatIsAProject}`,
   [FaqQuestions.ForWhoIsTheProjectFor]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.ForWhoIsTheProjectFor}`,
@@ -135,6 +141,22 @@ export const useFaq = () => {
               id: 'JK13Ms',
             }),
             answer: <InvestorInfo />,
+          },
+          {
+            questionId: FaqQuestions.WhatHappensDeletePdAccount,
+            question: formatMessage({
+              defaultMessage: 'What happens when I delete my Project Developer account?',
+              id: 'ZocjEJ',
+            }),
+            answer: <ProjectDeveloperAccountDeletion />,
+          },
+          {
+            questionId: FaqQuestions.WhatHappensDeleteInvestorAccount,
+            question: formatMessage({
+              defaultMessage: 'What happens when I delete my Investor account?',
+              id: 'ub/Akh',
+            }),
+            answer: <InvestorAccountDeletion />,
           },
         ],
       },
