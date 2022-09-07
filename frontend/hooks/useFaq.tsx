@@ -38,10 +38,11 @@ export enum FaqQuestions {
   ForWhoIsTheOpenCallFor = 'for-who-is-the-open-call-for',
   HowCanIApplyToAnOpenCall = 'how-can-i-apply-to-an-open-call',
   WhatInfoToCreateOpenCall = 'what-information-do-i-need-to-create-an-open-call',
-  /** Verification Badges */
-  WhatIsAVerificationBadge = 'what-is-a-verification-badge',
-  WhenWillTheProjectHaveTheVerificationBadge = 'when-will-the-project-have-the-verification-badge',
-  WhenWillTheOpenCallHaveTheVerificationBadge = 'when-will-the-open-call-have-the-verification-badge',
+  // VERIFICATION FAQ: HIDDEN
+  // /** Verification Badges */
+  // WhatIsAVerificationBadge = 'what-is-a-verification-badge',
+  // WhenWillTheProjectHaveTheVerificationBadge = 'when-will-the-project-have-the-verification-badge',
+  // WhenWillTheOpenCallHaveTheVerificationBadge = 'when-will-the-open-call-have-the-verification-badge',
   /** HeCo priority landscapes */
   WhatAreHeCoPriorityLandscapes = 'what-are-heco-priority-landscapes',
   WhyAreThoseRegionsImportant = 'why-are-those-regions-important',
@@ -67,9 +68,10 @@ export const FaqPaths = {
   [FaqQuestions.HowCanIApplyToAnOpenCall]: `${Paths.FAQ}/${FaqSections.OpenCalls}/${FaqQuestions.HowCanIApplyToAnOpenCall}`,
   [FaqQuestions.WhatInfoToCreateOpenCall]: `${Paths.FAQ}/${FaqSections.OpenCalls}/${FaqQuestions.WhatInfoToCreateOpenCall}`,
   /** Verification Badges */
-  [FaqQuestions.WhatIsAVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhatIsAVerificationBadge}`,
-  [FaqQuestions.WhenWillTheProjectHaveTheVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhenWillTheProjectHaveTheVerificationBadge}`,
-  [FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge}`,
+  // VERIFICATION FAQ: HIDDEN
+  // [FaqQuestions.WhatIsAVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhatIsAVerificationBadge}`,
+  // [FaqQuestions.WhenWillTheProjectHaveTheVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhenWillTheProjectHaveTheVerificationBadge}`,
+  // [FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge]: `${Paths.FAQ}/${FaqSections.VerificationBadges}/${FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge}`,
   /** HeCo priority landscapes */
   [FaqQuestions.WhatAreHeCoPriorityLandscapes]: `${Paths.FAQ}/${FaqSections.HeCoPriorityLandscapes}/${FaqQuestions.WhatAreHeCoPriorityLandscapes}`,
   [FaqQuestions.WhyAreThoseRegionsImportant]: `${Paths.FAQ}/${FaqSections.HeCoPriorityLandscapes}/${FaqQuestions.WhyAreThoseRegionsImportant}`,
@@ -240,48 +242,49 @@ export const useFaq = () => {
           },
         ],
       },
-      {
-        sectionId: FaqSections.VerificationBadges,
-        name: formatMessage({ defaultMessage: 'Verification badges', id: 'AGwIKZ' }),
-        items: [
-          {
-            questionId: FaqQuestions.WhatIsAVerificationBadge,
-            question: formatMessage({
-              defaultMessage: 'What is a verification badge?',
-              id: 'qZPjW2',
-            }),
-            answer: formatMessage({
-              defaultMessage:
-                'A project or an open call can be submitted to the platform administrator for verification that the content complies with the quality standards of the HeCo Invest platform. If so, the content will be marked as “Verified” and will be more prominent than non-verified content on the platform.',
-              id: 'LEQjvN',
-            }),
-          },
-          {
-            questionId: FaqQuestions.WhenWillTheProjectHaveTheVerificationBadge,
-            question: formatMessage({
-              defaultMessage: 'When will the open call have the Verification badge?',
-              id: '5DdRx+',
-            }),
-            answer: formatMessage({
-              defaultMessage:
-                'The HeCo invest platform administrator will attribute a verification badge to an open call after reviewing it and considering that all criteria match the goals and standards of the platform.',
-              id: 'JGIdpr',
-            }),
-          },
-          {
-            questionId: FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge,
-            question: formatMessage({
-              defaultMessage: 'When will the project have the Verification badge?',
-              id: 'E/YxHp',
-            }),
-            answer: formatMessage({
-              defaultMessage:
-                'The HeCo invest platform administrator will attribute a verification badge to a project after reviewing it and considering that all criteria match the goals and standards of the platform.',
-              id: 'VBwakD',
-            }),
-          },
-        ],
-      },
+      // VERIFICATION FAQ: HIDDEN
+      // {
+      //   sectionId: FaqSections.VerificationBadges,
+      //   name: formatMessage({ defaultMessage: 'Verification badges', id: 'AGwIKZ' }),
+      //   items: [
+      //     {
+      //       questionId: FaqQuestions.WhatIsAVerificationBadge,
+      //       question: formatMessage({
+      //         defaultMessage: 'What is a verification badge?',
+      //         id: 'qZPjW2',
+      //       }),
+      //       answer: formatMessage({
+      //         defaultMessage:
+      //           'A project or an open call can be submitted to the platform administrator for verification that the content complies with the quality standards of the HeCo Invest platform. If so, the content will be marked as “Verified” and will be more prominent than non-verified content on the platform.',
+      //         id: 'LEQjvN',
+      //       }),
+      //     },
+      //     {
+      //       questionId: FaqQuestions.WhenWillTheProjectHaveTheVerificationBadge,
+      //       question: formatMessage({
+      //         defaultMessage: 'When will the open call have the Verification badge?',
+      //         id: '5DdRx+',
+      //       }),
+      //       answer: formatMessage({
+      //         defaultMessage:
+      //           'The HeCo invest platform administrator will attribute a verification badge to an open call after reviewing it and considering that all criteria match the goals and standards of the platform.',
+      //         id: 'JGIdpr',
+      //       }),
+      //     },
+      //     {
+      //       questionId: FaqQuestions.WhenWillTheOpenCallHaveTheVerificationBadge,
+      //       question: formatMessage({
+      //         defaultMessage: 'When will the project have the Verification badge?',
+      //         id: 'E/YxHp',
+      //       }),
+      //       answer: formatMessage({
+      //         defaultMessage:
+      //           'The HeCo invest platform administrator will attribute a verification badge to a project after reviewing it and considering that all criteria match the goals and standards of the platform.',
+      //         id: 'VBwakD',
+      //       }),
+      //     },
+      //   ],
+      // },
       {
         sectionId: FaqSections.HeCoPriorityLandscapes,
         name: formatMessage({ defaultMessage: 'HeCo Priority landscapes', id: 'BTFkyB' }),
