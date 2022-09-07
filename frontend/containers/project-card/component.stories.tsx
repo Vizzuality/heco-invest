@@ -22,7 +22,9 @@ Default.args = {
   project: { ...projectMock, trusted: false } as unknown as ProjectType,
 };
 
+/* VERIFICATION PROJECTS: HIDDEN
 export const Verified: Story<ProjectCardProps> = Template.bind({});
 Verified.args = {
   project: projectMock as unknown as ProjectType,
 };
+*/
