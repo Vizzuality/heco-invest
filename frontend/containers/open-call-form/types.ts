@@ -29,8 +29,8 @@ export type OpenCallFormTypes<MutationType extends BasicMutationType> = {
   initialValues?: OpenCall;
   /** Enums data */
   enums: GroupedEnums;
-  /** Locale of the content */
-  locale: Languages;
+  /** Locale of the content. Defaults to the openCall locale, and if not set, the account locale */
+  locale?: Languages;
   /** Callback to execute when form has been submitted successfully */
   onComplete: () => void;
   /** Leave message to show when leaving the form */

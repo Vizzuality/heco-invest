@@ -101,7 +101,6 @@ const EditOpenCall: PageComponent<EditOpenCallProps, FormPageLayoutProps> = ({
         onComplete={handleOnComplete}
         initialValues={openCall}
         isLoading={!openCall && isFetchingProject}
-        locale={openCall?.language}
         enums={enums as GroupedEnums}
       />
     </ProtectedPage>

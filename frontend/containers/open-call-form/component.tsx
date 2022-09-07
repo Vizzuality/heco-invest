@@ -15,6 +15,8 @@ import { OpenCallStatus } from 'enums';
 import { OpenCallForm as OpenFormType, OpenCallCreationPayload } from 'types/open-calls';
 import useOpenCallResolver, { formPageInputs } from 'validations/open-call';
 
+import { useAccount } from 'services/account';
+
 import { useDefaultValues } from './helpers';
 import { BasicMutationType } from './types';
 
@@ -42,6 +44,7 @@ export const OpenCallForm = <MutationType extends BasicMutationType>({
   const [showLeave, setShowLeave] = useState(false);
   const [slug, setSlug] = useState<string>();
   const resolver = useOpenCallResolver(currentPage);
+  const { userAccount } = useAccount();
 
   const defaultValues = useDefaultValues(openCall);
 
@@ -65,6 +68,7 @@ export const OpenCallForm = <MutationType extends BasicMutationType>({
 
   const isLastPage = currentPage === totalPages - 1;
   const languageNames = useLanguageNames();
+  const contentLocale = locale || openCall?.language || userAccount?.language;
   const isOutroPage = currentPage === totalPages;
 
   const alert = useGetAlert(mutation.error);
@@ -131,7 +135,7 @@ export const OpenCallForm = <MutationType extends BasicMutationType>({
         getTotalPages={(pages) => setTotalPages(pages)}
         layout="narrow"
         title={title}
-        locale={locale}
+        locale={contentLocale}
         autoNavigation={false}
         page={currentPage}
         alert={alert}
@@ -164,7 +168,7 @@ export const OpenCallForm = <MutationType extends BasicMutationType>({
               defaultMessage="<span>Note:</span>The content of this open call should be written in {language}"
               id="SUQqz6"
               values={{
-                language: languageNames[locale],
+                language: languageNames[contentLocale],
                 span: (chunks: string) => <span className="mr-2 font-semibold">{chunks}</span>,
               }}
             />
