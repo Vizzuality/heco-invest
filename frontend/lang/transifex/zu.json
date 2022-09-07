@@ -629,6 +629,9 @@
   "AoHRBG": {
     "string": "Custom search"
   },
+  "Ay+1nm": {
+    "string": "Due to security reasons, we are not allowed to display more <b>detailed financial information</b>. Please contact the Project Developers directly in order to obtain detailed information."
+  },
   "BAC0rl": {
     "string": "<span>Community:</span> income, sustainable projects;"
   },
