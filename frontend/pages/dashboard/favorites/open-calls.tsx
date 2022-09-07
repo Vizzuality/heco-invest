@@ -12,6 +12,7 @@ import DashboardFavoritesLayout, {
   DashboardFavoritesLayoutProps,
 } from 'layouts/dashboard-favorites';
 import { PageComponent } from 'types';
+import { OpenCall as OpenCallType } from 'types/open-calls';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
@@ -22,7 +23,7 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
 });
 
 type FavoritesOpenCallsPageProps = {
-  data: any[]; // OpenCallType
+  data: OpenCallType[];
   meta: Record<string, string>;
 };
 
@@ -37,7 +38,7 @@ export const FavoritesOpenCallsPage: PageComponent<
       <div className="top-0 left-0 flex justify-between w-full pb-1 pr-2 mx-1 mb-4 md:pt-10 md:-mt-10 md:px-1 lg:z-20 lg:sticky bg-background-dark">
         <div className="font-medium">
           <FormattedMessage defaultMessage="Open calls" id="OBhULP" />{' '}
-          {/*meta?.total && `(${meta?.total})`*/}(0)
+          {meta?.total && `(${meta?.total})`}
         </div>
       </div>
       <div className="flex flex-col pt-2 md:pl-1 md:-mr-1">

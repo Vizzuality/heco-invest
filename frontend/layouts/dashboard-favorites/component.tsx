@@ -13,6 +13,7 @@ import {
   useFavoriteInvestorsList,
   useFavoriteProjectDevelopersList,
   useFavoriteProjectsList,
+  useFavoriteOpenCallsList,
 } from 'services/account/favoritesService';
 import { PagedResponse } from 'services/types';
 
@@ -36,19 +37,10 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
 
   const projects = useFavoriteProjectsList(defaultQueryParams, defaultQueryOptions);
   const investors = useFavoriteInvestorsList(defaultQueryParams, defaultQueryOptions);
+  const openCalls = useFavoriteOpenCallsList(defaultQueryParams, defaultQueryOptions);
   const projectDevelopers = useFavoriteProjectDevelopersList(
     defaultQueryParams,
     defaultQueryOptions
-  );
-
-  // TODO: Change for real open calls
-  const openCalls = useMemo(
-    () => ({
-      data: [],
-      meta: { total: 0 },
-      loading: false,
-    }),
-    []
   );
 
   const stats = useMemo(
@@ -56,9 +48,9 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
       projects: projects.data?.meta.total,
       projectDevelopers: projectDevelopers.data?.meta.total,
       investors: investors.data?.meta.total,
-      openCalls: 0,
+      openCalls: openCalls.data?.meta.total,
     }),
-    [projects, investors, projectDevelopers]
+    [projects, investors, projectDevelopers, openCalls]
   );
 
   const getFavoriteCurrentData = (data: UseQueryResult<PagedResponse<any>>) => {
@@ -76,8 +68,8 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
       return getFavoriteCurrentData(projectDevelopers);
     if (pathname.startsWith(Paths.DashboardFavoritesInvestors))
       return getFavoriteCurrentData(investors);
-    // TODO: Change when real open calls are implemented
-    if (pathname.startsWith(Paths.DashboardFavoritesOpenCalls)) return openCalls;
+    if (pathname.startsWith(Paths.DashboardFavoritesOpenCalls))
+      return getFavoriteCurrentData(openCalls);
   }, [pathname, projects, projectDevelopers, investors, openCalls]) || { data: [], meta: [] };
 
   const childrenWithProps = React.Children.map(children, (child) => {
