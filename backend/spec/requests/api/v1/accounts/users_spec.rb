@@ -278,7 +278,6 @@ RSpec.describe "API V1 Account Users", type: :request do
       security [csrf: [], cookie_auth: []]
       parameter name: :empty, in: :body, schema: {type: :object}, required: false
 
-
       it_behaves_like "with not authorized error", csrf: true
       it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
       it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
