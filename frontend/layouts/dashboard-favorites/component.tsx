@@ -37,9 +37,12 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
 
   const projects = useFavoriteProjectsList(defaultQueryParams, defaultQueryOptions);
   const investors = useFavoriteInvestorsList(defaultQueryParams, defaultQueryOptions);
-  const openCalls = useFavoriteOpenCallsList(defaultQueryParams, defaultQueryOptions);
   const projectDevelopers = useFavoriteProjectDevelopersList(
     defaultQueryParams,
+    defaultQueryOptions
+  );
+  const openCalls = useFavoriteOpenCallsList(
+    { ...defaultQueryParams, includes: ['investor'] },
     defaultQueryOptions
   );
 

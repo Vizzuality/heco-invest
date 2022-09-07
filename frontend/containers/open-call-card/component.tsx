@@ -19,7 +19,7 @@ import { useEnums } from 'services/enums/enumService';
 
 import type { OpenCallCardProps } from './types';
 
-export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardProps) => {
+export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: OpenCallCardProps) => {
   const {
     slug,
     name,
@@ -86,6 +86,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardPr
         'cursor-pointer transition rounded-2xl': true,
         'hover:ring-1 hover:ring-green-dark': true,
         'ring-2 ring-green-dark': isFocusWithin,
+        [className]: !!className,
       })}
       {...pressProps}
       {...focusWithinProps}

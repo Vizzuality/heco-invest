@@ -5,6 +5,9 @@ import { withLocalizedRequests } from 'hoc/locale';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import CardHoverToDelete from 'containers/dashboard/favorites/card-hover-to-delete';
+import OpenCallCard from 'containers/open-call-card';
+
 import Button from 'components/button';
 import Icon from 'components/icon';
 import { Paths } from 'enums';
@@ -13,6 +16,8 @@ import DashboardFavoritesLayout, {
 } from 'layouts/dashboard-favorites';
 import { PageComponent } from 'types';
 import { OpenCall as OpenCallType } from 'types/open-calls';
+
+import { useFavoriteOpenCall } from 'services/open-call/open-call-service';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
@@ -33,6 +38,12 @@ export const FavoritesOpenCallsPage: PageComponent<
 > = ({ data: openCalls = [], meta }) => {
   const hasOpenCalls = openCalls?.length > 0;
 
+  const favoriteOpenCall = useFavoriteOpenCall();
+
+  const handleRemoveClick = (id: string) => {
+    favoriteOpenCall.mutate({ id, isFavourite: true });
+  };
+
   return (
     <>
       <div className="top-0 left-0 flex justify-between w-full pb-1 pr-2 mx-1 mb-4 md:pt-10 md:-mt-10 md:px-1 lg:z-20 lg:sticky bg-background-dark">
@@ -43,7 +54,13 @@ export const FavoritesOpenCallsPage: PageComponent<
       </div>
       <div className="flex flex-col pt-2 md:pl-1 md:-mr-1">
         {hasOpenCalls ? (
-          <div className="grid grid-cols-1 gap-6 p-1 2xl:grid-cols-2">{/* TODO */}</div>
+          <div className="grid grid-cols-1 gap-6 p-1 2xl:grid-cols-2">
+            {openCalls.map((openCall) => (
+              <CardHoverToDelete key={openCall.slug} onClick={() => handleRemoveClick(openCall.id)}>
+                <OpenCallCard className="h-full" key={openCall.id} openCall={openCall} />
+              </CardHoverToDelete>
+            ))}
+          </div>
         ) : (
           <div className="flex flex-col items-center mt-10 lg:mt-20">
             <p className="text-lg text-gray-800 lg:text-xl">
