@@ -82,7 +82,7 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
         <h2 className="pl-6 mb-6 font-serif text-2xl text-black lg:text-4xl lg:pl-16 lg:mb-16">
           <FormattedMessage defaultMessage="Funding & development" id="psXhQO" />
         </h2>
-        <div className="flex flex-col p-6 text-white lg:p-16 lg:space-x-10 lg:flex-row bg-green-dark rounded-t-2xl">
+        <div className="flex flex-col p-6 text-white lg:px-16 lg:py-12 lg:space-x-10 lg:flex-row bg-green-dark rounded-t-2xl">
           <div className="flex flex-col pb-12 pr-10 space-y-8 border-b-2 border-white lg:pb-6 pb:10 lg:border-b-0 lg:w-1/3 lg:border-r-2">
             <h3 className="font-serif text-2xl lg:text-3xl">
               {project.looking_for_funding ? (
