@@ -148,7 +148,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
           {truncatedDescription}
         </div>
         <div
-          className="flex items-center justify-between mt-2"
+          className="flex items-center justify-between gap-2 mt-2"
           aria-label={intl.formatMessage({
             defaultMessage: 'Investor information',
             id: '68i9X8',
@@ -171,7 +171,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
           </span>
           {tags && (
             <span
-              className="flex flex-wrap items-center gap-2"
+              className="flex flex-wrap items-center justify-end gap-2"
               role="group"
               aria-label={intl.formatMessage({
                 defaultMessage: 'Expects to have impact on',
