@@ -8,6 +8,7 @@ import { useLocalizedQuery } from 'hooks/query';
 
 import { Queries } from 'enums';
 import { Investor } from 'types/investor';
+import { OpenCall } from 'types/open-calls';
 import { Project } from 'types/project';
 import { ProjectDeveloper } from 'types/projectDeveloper';
 
@@ -157,6 +158,55 @@ export function useFavoriteProjectDevelopersList(
     () => ({
       ...query,
       projectDevelopers: query?.data?.data || [],
+    }),
+    [query]
+  );
+}
+
+/** ============================================================ */
+/** ======================== OPEN CALLS ======================== */
+/** ============================================================ */
+
+/** Get a paged list of favorited open calls */
+export const getFavoriteOpenCalls = async (
+  params?: PagedRequest
+): Promise<PagedResponse<OpenCall>> => {
+  const { search, page, includes, fields, ...rest } = params || {};
+
+  const config: AxiosRequestConfig = {
+    url: '/api/v1/account/open_calls/favourites',
+    method: 'GET',
+    params: {
+      ...rest,
+      includes: includes?.join(','),
+      'page[number]': page,
+      'fields[project]': fields?.join(','),
+    },
+  };
+
+  return await API.request(config).then((result) => {
+    return result.data;
+  });
+};
+
+/** Hook to use getFavoriteOpenCalls */
+export function useFavoriteOpenCallsList(
+  params?: PagedRequest,
+  options?: UseQueryOptions<PagedResponse<OpenCall>>
+): UseQueryResult<PagedResponse<OpenCall>> & { openCalls: OpenCall[] } {
+  const query = useLocalizedQuery(
+    [Queries.FavoriteOpenCallsList, params],
+    () => getFavoriteOpenCalls(params),
+    {
+      ...staticDataQueryOptions,
+      ...options,
+    }
+  );
+
+  return useMemo(
+    () => ({
+      ...query,
+      openCalls: query?.data?.data || [],
     }),
     [query]
   );
