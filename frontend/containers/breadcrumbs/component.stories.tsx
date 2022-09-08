@@ -76,3 +76,23 @@ PrettyNames.story = {
     },
   },
 };
+
+export const HiddenSegments: Story<BreadcrumbsProps> = Template.bind({});
+
+HiddenSegments.args = {
+  substitutions: {
+    platform: { name: 'HeCo project' },
+    about: { link: 'http://www.example.com' },
+    'our-work': { name: 'Substituted name' },
+  },
+  hidden: ['platform'],
+};
+
+HiddenSegments.story = {
+  parameters: {
+    nextRouter: {
+      route: '/platform/about/our-work',
+      asPath: '/platform/about/our-work',
+    },
+  },
+};

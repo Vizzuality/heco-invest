@@ -68,6 +68,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     instagram,
     contact_email,
     contact_phone,
+    website,
     categories,
     picture,
     ticket_sizes,
@@ -93,7 +94,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
 
   const getSocialInfo = () => {
     const social: SocialType[] = [
-      { id: 'linked-in', url: linkedin },
+      { id: 'linkedin', url: linkedin },
       { id: 'twitter', url: twitter },
       { id: 'facebook', url: facebook },
       { id: 'instagram', url: instagram },
@@ -160,8 +161,8 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
           title={name}
           subtitle={investorTypeName}
           text={about}
-          // website={website}
-          // social={getSocialInfo()}
+          website={website}
+          social={getSocialInfo()}
           contact={contact}
           originalLanguage={language}
           isFavorite={investor.favourite}

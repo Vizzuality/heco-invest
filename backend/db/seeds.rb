@@ -59,7 +59,7 @@ if Rails.env.development?
       FactoryBot.create(
         :project,
         status: :published,
-        trusted: [true, false].sample,
+        verified: [true, false].sample,
         name: "#{Faker::Lorem.sentence} #{SecureRandom.hex(4)}",
         category: Category::TYPES.sample,
         project_developer: project_developer,
@@ -67,6 +67,13 @@ if Rails.env.development?
         department: municipality.parent,
         country: municipality.parent.parent
       )
+    end
+
+    [[investor.open_calls.first, project_developer.projects.first],
+      [investor.open_calls.first, project_developer.projects.last],
+      [investor.open_calls.last, project_developer.projects.last]].each do |open_call, project|
+      application = FactoryBot.build :open_call_application, open_call: open_call, project: project
+      application.save if application.valid?
     end
   end
 end

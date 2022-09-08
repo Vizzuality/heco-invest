@@ -71,11 +71,11 @@ export const CellRole = ({ value, row: { original }, isOwner, accountName }: Cel
   };
 
   return (
-    <div className="items-center flex">
+    <div className="flex items-center">
       <p className="mr-2">
         <FormattedMessage defaultMessage="User" id="EwRIOm" />
       </p>
-      <RowMenu direction="top" onAction={handleChangeOwner} iconType="open-close">
+      <RowMenu onAction={handleChangeOwner} iconType="open-close">
         <RowMenuItem key="user">
           <FormattedMessage defaultMessage="User" id="EwRIOm" />
         </RowMenuItem>

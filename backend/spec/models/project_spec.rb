@@ -103,9 +103,9 @@ RSpec.describe Project, type: :model do
     expect(subject).to have(1).errors_on(:progress_impact_tracking)
   end
 
-  it "should not be valid without trusted" do
-    subject.trusted = nil
-    expect(subject).to have(1).errors_on(:trusted)
+  it "should not be valid without verified" do
+    subject.verified = nil
+    expect(subject).to have(1).errors_on(:verified)
   end
 
   it "should not be valid without received funding" do

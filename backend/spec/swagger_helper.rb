@@ -141,7 +141,9 @@ RSpec.configure do |config|
                   impact_description: {type: :string},
                   closing_at: {type: :string},
                   language: {type: :string},
-                  created_at: {type: :string}
+                  created_at: {type: :string},
+                  trusted: {type: :boolean},
+                  verified: {type: :boolean}
                 }
               },
               relationships: {
@@ -192,6 +194,7 @@ RSpec.configure do |config|
                   longitude: {type: :number},
                   category: {type: :string},
                   trusted: {type: :boolean},
+                  verified: {type: :boolean},
                   created_at: {type: :string},
                   target_groups: {type: :array, items: {type: :string}},
                   impact_areas: {type: :array, items: {type: :string}},
@@ -265,6 +268,32 @@ RSpec.configure do |config|
                   involved_projects: {"$ref" => "#/components/schemas/response_relations"},
                   priority_landscapes: {"$ref" => "#/components/schemas/response_relations"},
                   owner: {"$ref" => "#/components/schemas/response_relation"}
+                }
+              }
+            },
+            required: %w[id type attributes relationships]
+          },
+          open_call_application: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              type: {type: :string},
+              attributes: {
+                type: :object,
+                properties: {
+                  message: {type: :string},
+                  funded: {type: :boolean},
+                  created_at: {type: :string},
+                  updated_at: {type: :string}
+                }
+              },
+              relationships: {
+                type: :object,
+                properties: {
+                  open_call: {"$ref" => "#/components/schemas/response_relation"},
+                  project: {"$ref" => "#/components/schemas/response_relation"},
+                  project_developer: {"$ref" => "#/components/schemas/response_relation"},
+                  investor: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }
             },

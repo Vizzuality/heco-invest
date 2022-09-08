@@ -51,7 +51,12 @@
   <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">
     <%= t(".impact") %>
   </h2>
-  <%= f.input :impact_areas, collection: ImpactArea.all, label: t("simple_form.labels.project.impact_areas"), as: :check_boxes %>
+  <%= f.label :impact_areas %>
+  <div class="ml-2">
+    <% ImpactArea::TYPES_WITH_GROUPS.each do |impact, impact_areas| %>
+      <%= f.input :impact_areas, collection: ImpactArea.find_many(impact_areas), label: Impact.find(impact).to_s, required: false, as: :check_boxes %>
+    <% end %>
+  </div>
   <%= f.input :sdgs, collection: Sdg.all, label: t("simple_form.labels.project.sdgs"), as: :check_boxes %>
 
   <h2 class="mb-4 mt-6 text-gray-600 font-semibold text-xl">

@@ -7,9 +7,11 @@ import cx from 'classnames';
 import { useFilterNames } from 'helpers/pages';
 
 import Button from 'components/button';
+import { EnumTypes, LocationsTypes } from 'enums';
 import { Enum } from 'types/enums';
 
 import { useEnums } from 'services/enums/enumService';
+import { usePriorityLandscapes } from 'services/locations/locations';
 
 import { SeachAutoSuggestionProps } from './types';
 
@@ -24,13 +26,27 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
   const { data, isLoading } = useEnums();
 
   const filterNames = useFilterNames();
+  const { priorityLandscapes } = usePriorityLandscapes();
 
   const filters: Enum[] = useMemo(() => {
     if (!isLoading) {
       const { category, ticket_size, instrument_type, impact, sdg } = data;
-      return [category, ticket_size, instrument_type, impact, sdg].flat();
+      return [
+        category,
+        ticket_size,
+        instrument_type,
+        impact,
+        sdg,
+        priorityLandscapes?.map(({ id, name }) => ({
+          id,
+          // A bit hacky but the priority landscapes are not enums. It was assumed that filters
+          // would only be based on enums.
+          type: LocationsTypes.PriorityLandscapes as unknown as EnumTypes,
+          name,
+        })) ?? [],
+      ].flat();
     }
-  }, [isLoading]);
+  }, [data, isLoading, priorityLandscapes]);
 
   const handleCloseSuggestions = useCallback(() => {
     closeSuggestions();
@@ -54,7 +70,7 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
       }
     }
     handleCloseSuggestions();
-  }, [closeSuggestions, filters, searchText]);
+  }, [closeSuggestions, filters, handleCloseSuggestions, searchText]);
 
   return (
     <div

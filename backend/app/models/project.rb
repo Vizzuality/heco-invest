@@ -18,6 +18,8 @@ class Project < ApplicationRecord
   has_many :project_involvements, dependent: :destroy
   has_many :involved_project_developers, through: :project_involvements, source: :project_developer, dependent: :destroy
   has_many :open_call_applications, dependent: :destroy
+  has_many :open_calls, through: :open_call_applications
+  has_many :investors, through: :open_calls
 
   translates :name,
     :description,
@@ -51,7 +53,7 @@ class Project < ApplicationRecord
     :geometry
 
   validates :estimated_duration_in_months, numericality: {only_integer: true, greater_than: 0, less_than: 37}, presence: true
-  validates :trusted, inclusion: [true, false]
+  validates :verified, inclusion: [true, false]
   validates :received_funding, inclusion: [true, false]
   validates :looking_for_funding, inclusion: [true, false]
   validates :project_images, length: {maximum: 6}

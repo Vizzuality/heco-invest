@@ -39,11 +39,7 @@ module API
         end
 
         def destroy
-          project_developers = [@project.project_developer] + @project.involved_project_developers
-          @project.destroy!
-          project_developers.each do |project_developer|
-            ProjectDeveloperMailer.project_destroyed(project_developer, @project.name).deliver_later
-          end
+          ::Projects::Destroy.new(@project).call
           head :ok
         end
 

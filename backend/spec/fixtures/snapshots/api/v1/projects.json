@@ -91,7 +91,8 @@
         "impact_calculated": false,
         "latitude": 0.5,
         "longitude": 0.5,
-        "favourite": null
+        "favourite": null,
+        "verified": false
       },
       "relationships": {
         "project_developer": {
@@ -221,7 +222,8 @@
         "impact_calculated": false,
         "latitude": 2.0,
         "longitude": 1.0,
-        "favourite": null
+        "favourite": null,
+        "verified": false
       },
       "relationships": {
         "project_developer": {
@@ -334,7 +336,8 @@
         "impact_calculated": false,
         "latitude": 2.0,
         "longitude": 1.0,
-        "favourite": null
+        "favourite": null,
+        "verified": false
       },
       "relationships": {
         "project_developer": {
@@ -447,7 +450,8 @@
         "impact_calculated": false,
         "latitude": 2.0,
         "longitude": 1.0,
-        "favourite": null
+        "favourite": null,
+        "verified": false
       },
       "relationships": {
         "project_developer": {
@@ -560,7 +564,8 @@
         "impact_calculated": false,
         "latitude": 2.0,
         "longitude": 1.0,
-        "favourite": null
+        "favourite": null,
+        "verified": false
       },
       "relationships": {
         "project_developer": {
@@ -673,7 +678,8 @@
         "impact_calculated": false,
         "latitude": 2.0,
         "longitude": 1.0,
-        "favourite": null
+        "favourite": null,
+        "verified": false
       },
       "relationships": {
         "project_developer": {
@@ -786,7 +792,8 @@
         "impact_calculated": false,
         "latitude": 2.0,
         "longitude": 1.0,
-        "favourite": null
+        "favourite": null,
+        "verified": false
       },
       "relationships": {
         "project_developer": {
@@ -899,7 +906,8 @@
         "impact_calculated": false,
         "latitude": 2.0,
         "longitude": 1.0,
-        "favourite": null
+        "favourite": null,
+        "verified": false
       },
       "relationships": {
         "project_developer": {

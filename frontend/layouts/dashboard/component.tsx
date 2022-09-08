@@ -2,6 +2,8 @@ import { FC, useRef } from 'react';
 
 import cx from 'classnames';
 
+import Breadcrumbs from 'containers/breadcrumbs';
+
 import LayoutContainer from 'components/layout-container';
 import Loading from 'components/loading';
 import { UserRoles } from 'enums';
@@ -18,13 +20,15 @@ import { DashboardLayoutProps } from './types';
 export const DashboardLayout: FC<DashboardLayoutProps> = ({
   scrollOnQuery = true,
   isLoading = false,
+  header = 'account',
+  breadcrumbsProps = {},
   buttons,
   sidebar,
   children,
 }: DashboardLayoutProps) => {
   const mainContainerRef = useRef(null);
 
-  const { user, userAccount } = useAccount({ includes: 'owner' });
+  const { user, userAccount } = useAccount();
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
@@ -33,21 +37,29 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
           <div className="z-30 flex flex-col bg-radial-green-dark bg-green-dark lg:backdrop-blur-sm">
             <Header />
             <LayoutContainer className="mt-18 lg:mt-0">
-              <div className="flex flex-col w-full text-white lg:flex-row">
-                <div className="flex flex-grow gap-8">
-                  <div className="lg:translate-y-5">
-                    <AccountPicture name={userAccount?.name} picture={userAccount?.picture.small} />
+              {header === 'account' && (
+                <div className="flex flex-col w-full text-white lg:flex-row">
+                  <div className="flex flex-grow gap-8">
+                    <div className="lg:translate-y-5">
+                      <AccountPicture
+                        name={userAccount?.name}
+                        picture={userAccount?.picture.small}
+                      />
+                    </div>
+                    <div className="flex flex-col justify-end pb-2 mt-5 lg:mt-0">
+                      <AccountInfo userRole={user?.role} account={userAccount} />
+                      <Navigation className="hidden lg:flex" userRole={user?.role} />
+                    </div>
                   </div>
-                  <div className="flex flex-col justify-end pb-2 mt-5 lg:mt-0">
-                    <AccountInfo userRole={user?.role} account={userAccount} />
-                    <Navigation className="hidden lg:flex" userRole={user?.role} />
+                  <Navigation className="flex mt-2 lg:hidden" userRole={user?.role} />
+                  <div className="flex items-end justify-center">
+                    <div className="flex gap-2 my-4 lg:my-0 lg:translate-y-5">{buttons}</div>
                   </div>
                 </div>
-                <Navigation className="flex mt-2 lg:hidden" userRole={user?.role} />
-                <div className="flex items-end justify-center">
-                  <div className="flex gap-2 my-4 lg:my-0 lg:translate-y-5">{buttons}</div>
-                </div>
-              </div>
+              )}
+              {header === 'breadcrumbs' && (
+                <Breadcrumbs className="mt-2 mb-2.5" theme="light" {...breadcrumbsProps} />
+              )}
             </LayoutContainer>
           </div>
           <div

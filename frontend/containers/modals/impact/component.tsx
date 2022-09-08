@@ -3,6 +3,9 @@ import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import Image from 'next/image';
+import Link from 'next/link';
+
+import { FaqPaths } from 'hooks/useFaq';
 
 import { ImpactModalProps } from 'containers/modals/impact/types';
 
@@ -78,7 +81,7 @@ export const ImpactModal: React.FC<ImpactModalProps> = ({
         </div>
         <div className="max-w-md mx-auto">
           <Image
-            src="/images/about-impact-chart.svg"
+            src="/images/about/about-impact-chart.svg"
             width={308}
             height={252}
             layout="intrinsic"
@@ -86,6 +89,28 @@ export const ImpactModal: React.FC<ImpactModalProps> = ({
           />
         </div>
       </div>
+      <p className="mt-4">
+        <FormattedMessage
+          defaultMessage="Project developers provide the impact information during the project registration phase by selecting one or more indicators from each dimension."
+          id="lYS3vO"
+        />
+      </p>
+      <p className="mt-4">
+        <FormattedMessage
+          defaultMessage="To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. However, if all the indicators of a given dimension are selected, then the <b>score goes automatically to 0</b>. This is to ensure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
+          id="u+TnMw"
+          values={{
+            b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+          }}
+        />
+      </p>
+      <p className="mt-4">
+        <Link href={FaqPaths['how-is-the-impact-calculated']}>
+          <a className="underline text-green-dark" target="_blank">
+            <FormattedMessage defaultMessage="Learn more" id="TdTXXf" />
+          </a>
+        </Link>
+      </p>
       <div className="flex justify-center mt-5 text-center md:mt-12">
         <Button theme="primary-green" onClick={() => setImpactModalOpen(false)}>
           <FormattedMessage defaultMessage="Ok" id="jwimQJ" />

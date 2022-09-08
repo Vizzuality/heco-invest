@@ -422,6 +422,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
         create :project, :with_involved_project_developers, project_developer: create(:project_developer, account: create(:account, owner: user))
       end
       let(:id) { project.id }
+      let!(:open_call_application) { create :open_call_application, project: project }
 
       it_behaves_like "with not authorized error", csrf: true
       it_behaves_like "with not found error", csrf: true, user: -> { user }
@@ -446,6 +447,13 @@ RSpec.describe "API V1 Account Projects", type: :request do
             submit_request example.metadata
           }.to have_enqueued_mail(ProjectDeveloperMailer, :project_destroyed).with(project.project_developer, project.name)
             .and have_enqueued_mail(ProjectDeveloperMailer, :project_destroyed).with(project.involved_project_developers.first, project.name)
+        end
+
+        it "sends email that project was destroyed to involved investors" do |example|
+          expect {
+            submit_request example.metadata
+          }.to have_enqueued_mail(InvestorMailer, :project_destroyed)
+            .with(open_call_application.investor, project.name, open_call_application.open_call)
         end
 
         it "does not send email that collaboration was removed" do |example|

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 import { Camera as CameraIcon } from 'react-feather';
-import { FieldValues } from 'react-hook-form';
+import { FieldValues, useController } from 'react-hook-form';
 
 import ProjectGalleryImage from './project-gallery-image';
 import type { ProjectGalleryProps } from './types';
@@ -9,15 +9,18 @@ import type { ProjectGalleryProps } from './types';
 export const ProjectGallery = <FormValues extends FieldValues>({
   className,
   name,
-  images,
-  defaultSelected,
   control,
   errors,
   onDeleteImage,
   onSelectCover,
   numImages = 6,
 }: ProjectGalleryProps<FormValues>) => {
-  // const images: ProjectGalleryImageType[] = getValues(name as unknown as Path<FormValues>);
+  const {
+    field: { value: images },
+  } = useController({
+    name,
+    control,
+  });
 
   const imagesToShow = images?.filter(({ _destroy }) => !_destroy) || [];
 
@@ -37,7 +40,7 @@ export const ProjectGallery = <FormValues extends FieldValues>({
               image={image}
               control={control}
               invalid={errors && errors[name]}
-              defaultSelected={image.file === defaultSelected}
+              defaultSelected={image.cover}
               onDeleteImage={() => onDeleteImage(image.file)}
               onSelectCover={() => onSelectCover(image.file)}
             />

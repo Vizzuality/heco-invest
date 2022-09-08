@@ -29,8 +29,8 @@ module API
         raise API::Error, "application/json content type is required by the requested endpoint"
       end
 
-      def fetching_by_uuid?
-        /\A[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\z/.match?(params[:id])
+      def fetching_by_uuid?(value = params[:id])
+        /\A[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\z/.match?(value)
       end
     end
   end

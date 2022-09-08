@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -17,6 +17,24 @@ export const WebsiteSocial: FC<WebsiteSocialProps> = ({
   website,
   social = [],
 }: WebsiteSocialProps) => {
+  const sortedSocialLinks = useMemo(
+    () =>
+      SOCIAL_DATA.map((item) => {
+        const socialData = social.find((link) => link.id === item.id);
+
+        if (!socialData) {
+          return null;
+        }
+
+        return {
+          ...socialData,
+          ...item,
+        };
+      }).filter((item) => !!item),
+
+    [social]
+  );
+
   return (
     <div
       className={cx({
@@ -44,41 +62,36 @@ export const WebsiteSocial: FC<WebsiteSocialProps> = ({
         </>
       )}
 
-      {social.length > 0 && (
+      {sortedSocialLinks.length > 0 && (
         <>
           <span className="mt-4 text-gray-800 sm:mt-0">
             <FormattedMessage defaultMessage="Reach them in" id="G9iCfx" />
           </span>
           <span className="flex items-center gap-2">
-            {social.map(({ id, url }: SocialType) => {
-              const socialItem = SOCIAL_DATA.find((sd) => sd.id === id);
-              if (!socialItem) return null;
-              const { icon, title } = socialItem;
-              return (
-                <Link key={id} href={url}>
-                  <a
-                    className="transition-all rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
-                    target="_blank"
-                    rel="noopener noreferrer"
+            {sortedSocialLinks.map(({ id, url, icon, title }) => (
+              <Link key={id} href={url}>
+                <a
+                  className="transition-all rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span
+                    key={id}
+                    className="block w-5 h-5 px-0.5 bg-black rounded"
+                    aria-label={title}
                   >
-                    <span
-                      key={id}
-                      className="block w-5 h-5 px-0.5 bg-black rounded"
-                      aria-label={title}
-                    >
-                      <Icon
-                        aria-hidden={true}
-                        icon={icon}
-                        className={cx({
-                          'w-full h-full fill-white': true,
-                          'stroke-0': id !== 'instagram',
-                        })}
-                      />
-                    </span>
-                  </a>
-                </Link>
-              );
-            })}
+                    <Icon
+                      aria-hidden={true}
+                      icon={icon}
+                      className={cx({
+                        'w-full h-full fill-white': true,
+                        'stroke-0': id !== 'instagram',
+                      })}
+                    />
+                  </span>
+                </a>
+              </Link>
+            ))}
           </span>
         </>
       )}

@@ -46,7 +46,7 @@ RSpec.describe "Backoffice: Investors", type: :system do
 
     it_behaves_like "with table pagination", expected_total: 2
     it_behaves_like "with table sorting", columns: [
-      I18n.t("backoffice.common.name"),
+      I18n.t("backoffice.common.account_name"),
       I18n.t("backoffice.common.account_owner"),
       I18n.t("backoffice.common.contact_email"),
       I18n.t("backoffice.common.contact_phone"),
@@ -300,9 +300,11 @@ RSpec.describe "Backoffice: Investors", type: :system do
 
       context "when removing account" do
         it "removes investor" do
-          accept_confirm do
-            click_on t("backoffice.account.delete")
-          end
+          expect {
+            accept_confirm do
+              click_on t("backoffice.account.delete")
+            end
+          }.to have_enqueued_mail(UserMailer, :destroyed).with(approved_investor.owner.email, approved_investor.owner.full_name, approved_investor.owner.locale)
           expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.investor")))
           expect(current_path).to eql(backoffice_investors_path)
           expect(page).not_to have_text(approved_investor.name)

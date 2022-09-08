@@ -1,12 +1,7 @@
 class Impact
   include EnumModel
 
-  TYPES = %w[
-    biodiversity
-    climate
-    water
-    community
-  ].freeze
+  TYPES = ImpactArea::TYPES_WITH_GROUPS.keys
 
   def description
     read_attribute("description")

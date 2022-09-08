@@ -1,6 +1,12 @@
 import { useMemo } from 'react';
 
-import { useMutation, UseMutationResult, useQueryClient, UseQueryResult } from 'react-query';
+import {
+  useMutation,
+  UseMutationResult,
+  useQueryClient,
+  UseQueryOptions,
+  UseQueryResult,
+} from 'react-query';
 
 import { useRouter } from 'next/router';
 
@@ -17,7 +23,48 @@ import {
 } from 'types/open-calls';
 
 import API from 'services/api';
-import { ErrorResponse, ResponseData } from 'services/types';
+import { staticDataQueryOptions } from 'services/helpers';
+import { ErrorResponse, PagedRequest, PagedResponse, ResponseData } from 'services/types';
+
+/** Get a paged list of openCalls */
+export const getOpenCalls = async (params?: PagedRequest): Promise<PagedResponse<OpenCall>> => {
+  const { search, page, includes, fields, ...rest } = params || {};
+
+  const config: AxiosRequestConfig = {
+    url: '/api/v1/open_calls',
+    method: 'GET',
+    params: {
+      ...rest,
+      includes: includes?.join(','),
+      'filter[full_text]': search,
+      'page[number]': page,
+      'fields[open_call]': fields?.join(','),
+    },
+  };
+
+  return await API.request(config).then((result) => {
+    return result.data;
+  });
+};
+
+/** Hook to use the the open calls list */
+export function useOpenCallsList(
+  params?: PagedRequest,
+  options?: UseQueryOptions<PagedResponse<OpenCall>>
+): UseQueryResult<PagedResponse<OpenCall>> & { openCalls: OpenCall[] } {
+  const query = useLocalizedQuery([Queries.ProjectList, params], () => getOpenCalls(params), {
+    ...staticDataQueryOptions,
+    ...options,
+  });
+
+  return useMemo(
+    () => ({
+      ...query,
+      openCalls: query?.data?.data || [],
+    }),
+    [query]
+  );
+}
 
 /** Get an Open call using an id and, optionally, the wanted fields */
 export const getOpenCall = async (
@@ -27,10 +74,7 @@ export const getOpenCall = async (
     includes?: string[];
     locale?: string;
   }
-): Promise<{
-  data: OpenCall;
-  included: any[]; // TODO
-}> => {
+): Promise<OpenCall> => {
   const { includes, ...rest } = params || {};
 
   const config: AxiosRequestConfig = {
@@ -41,7 +85,7 @@ export const getOpenCall = async (
       ...rest,
     },
   };
-  return await API.request(config).then((response) => response.data);
+  return await API.request(config).then((response) => response.data.data);
 };
 
 /** Use query for a single OpenCall */
@@ -52,7 +96,7 @@ export function useOpenCall(
 ) {
   const query = useLocalizedQuery([Queries.OpenCall, id], () => getOpenCall(id, params), {
     refetchOnWindowFocus: false,
-    initialData: { data: initialData, included: [] },
+    initialData,
   });
 
   return useMemo(
@@ -188,7 +232,7 @@ export const useFavoriteOpenCall = () => {
   ): Promise<OpenCall> => {
     const config: AxiosRequestConfig = {
       method: isFavourite ? 'DELETE' : 'POST',
-      url: `/api/v1/open-calls/${openCallId}/favourite_open_call`,
+      url: `/api/v1/open_calls/${openCallId}/favourite_open_call`,
       data: { open_call_id: openCallId },
     };
 

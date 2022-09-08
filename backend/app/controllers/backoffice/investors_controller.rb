@@ -40,10 +40,8 @@ module Backoffice
     end
 
     def destroy
-      @investor.account.destroy!
-
-      redirect_to backoffice_investors_path, status: :see_other,
-        notice: t("backoffice.messages.success_delete", model: t("backoffice.common.investor"))
+      Accounts::Destroy.new(@investor.account).call
+      redirect_to backoffice_investors_path, status: :see_other, notice: t("backoffice.messages.success_delete", model: t("backoffice.common.investor"))
     end
 
     private

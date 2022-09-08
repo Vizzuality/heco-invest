@@ -83,11 +83,11 @@
     @apply block px-4 py-2 text-base text-gray-900 placeholder-gray-400 placeholder-opacity-100 border border-solid border-beige hover:shadow-sm focus:shadow-sm focus:border-green-dark outline-none bg-white rounded-lg disabled:opacity-60 transition
   }
 
-  li[role="menuitem"] a {
-    @apply block px-8 py-2 hover:bg-gray-200;
+  li[role="menuitem"] a, li[role="menuitem"] button {
+    @apply block px-8 py-2 w-full hover:bg-gray-200;
   }
 
   li[role="menuitem"] .disabled-item {
-    @apply block px-8 py-2 opacity-60;
+    @apply block px-8 py-2 w-full opacity-60;
   }
 }

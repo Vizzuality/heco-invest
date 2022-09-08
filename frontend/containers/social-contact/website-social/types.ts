@@ -1,5 +1,5 @@
 export type SocialType = {
-  id: 'facebook' | 'twitter' | 'linked-in' | 'instagram';
+  id: 'facebook' | 'twitter' | 'linkedin' | 'instagram';
   url: string;
 };
 

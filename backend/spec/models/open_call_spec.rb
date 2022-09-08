@@ -21,6 +21,11 @@ RSpec.describe OpenCall, type: :model do
     expect(subject).to have(1).errors_on(:closing_at)
   end
 
+  it "should not be valid when closing_at is at past" do
+    subject.closing_at = 1.day.ago
+    expect(subject).to have(1).errors_on(:closing_at)
+  end
+
   it "should not be valid without country" do
     subject.country = nil
     expect(subject).to have(1).errors_on(:country)
@@ -51,9 +56,9 @@ RSpec.describe OpenCall, type: :model do
     expect(subject).to have(1).errors_on(:impact_description)
   end
 
-  it "should not be valid without trusted" do
-    subject.trusted = nil
-    expect(subject).to have(1).errors_on(:trusted)
+  it "should not be valid without verified" do
+    subject.verified = nil
+    expect(subject).to have(1).errors_on(:verified)
   end
 
   it "should not be valid with wrong language" do
@@ -68,4 +73,14 @@ RSpec.describe OpenCall, type: :model do
 
   include_examples :static_relation_validations, attribute: :instrument_types, presence: true
   include_examples :static_relation_validations, attribute: :sdgs, presence: false
+
+  describe "#change_closing_at_to_current_time" do
+    let!(:open_call) { create :open_call, closing_at: 1.day.from_now }
+
+    before { open_call.update! status: :closed }
+
+    it "sets closed at value to current time" do
+      expect(open_call.reload.closing_at).to be_within(5.seconds).of(Time.current)
+    end
+  end
 end

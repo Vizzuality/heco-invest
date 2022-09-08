@@ -31,6 +31,7 @@ module.exports = {
       },
       gray: {
         200: '#E5E7EB',
+        300: '#DADADA',
         400: '#B5B5B5',
         600: '#999999',
         700: '#757575',
@@ -70,6 +71,7 @@ module.exports = {
       decimal: 'decimal',
       'lower-latin': 'lower-latin',
       'lower-roman': 'lower-roman',
+      disc: 'disc',
     },
     extend: {
       spacing: {

@@ -5,6 +5,7 @@ import { useIntl } from 'react-intl';
 import InvestorInfo from 'containers/faq-page/answers/account/investor-info';
 import ProjectDeveloperInfo from 'containers/faq-page/answers/account/project-developer-info';
 import OpenCallInfo from 'containers/faq-page/answers/open-calls/open-call-info';
+import ProjectImpact from 'containers/faq-page/answers/projects/project-impact';
 import ProjectInfo from 'containers/faq-page/answers/projects/project-info';
 
 import { Paths } from 'enums';
@@ -31,6 +32,7 @@ export enum FaqQuestions {
   ForWhoIsTheProjectFor = 'for-who-is-the-project-for',
   HowCanIFundAProject = 'how-can-i-fund-a-project',
   WhatInfoToCreateProject = 'what-information-do-i-need-to-create-a-project',
+  HowIsTheImpactCalculated = 'how-is-the-impact-calculated',
   /** Open calls */
   WhatIsAnOpenCall = 'what-is-an-open-call',
   ForWhoIsTheOpenCallFor = 'for-who-is-the-open-call-for',
@@ -58,6 +60,7 @@ export const FaqPaths = {
   [FaqQuestions.ForWhoIsTheProjectFor]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.ForWhoIsTheProjectFor}`,
   [FaqQuestions.HowCanIFundAProject]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.HowCanIFundAProject}`,
   [FaqQuestions.WhatInfoToCreateProject]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.WhatInfoToCreateProject}`,
+  [FaqQuestions.HowIsTheImpactCalculated]: `${Paths.FAQ}/${FaqSections.Projects}/${FaqQuestions.HowIsTheImpactCalculated}`,
   /** Open calls */
   [FaqQuestions.WhatIsAnOpenCall]: `${Paths.FAQ}/${FaqSections.OpenCalls}/${FaqQuestions.WhatIsAnOpenCall}`,
   [FaqQuestions.ForWhoIsTheOpenCallFor]: `${Paths.FAQ}/${FaqSections.OpenCalls}/${FaqQuestions.ForWhoIsTheOpenCallFor}`,
@@ -179,6 +182,14 @@ export const useFaq = () => {
               id: 'oRepRG',
             }),
             answer: <ProjectInfo />,
+          },
+          {
+            questionId: FaqQuestions.HowIsTheImpactCalculated,
+            question: formatMessage({
+              defaultMessage: 'How is the impact calculated?',
+              id: '9cE0nR',
+            }),
+            answer: <ProjectImpact />,
           },
         ],
       },

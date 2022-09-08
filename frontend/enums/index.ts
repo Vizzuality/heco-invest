@@ -22,6 +22,7 @@ export enum Paths {
   DashboardFavoritesInvestors = '/dashboard/favorites/investors',
   DashboardFavoritesProjectDevelopers = '/dashboard/favorites/project-developers',
   DashboardOpenCalls = '/dashboard/open-calls',
+  DashboardOpenCallDetails = '/dashboard/open-call',
   DashboardOpenCallApplications = '/dashboard/open-call-applications',
   DashboardUsers = '/dashboard/users',
   DashboardAccountInfo = '/dashboard/account-information',
@@ -74,7 +75,7 @@ export enum Queries {
   FavoriteProjectsList = 'favorite_projects',
   /** Single project */
   Project = 'project',
-  /** List of projects */
+  /** List of open calls */
   OpenCallList = 'open_calls',
   /** List of favorited projects */
   FavoriteOpenCallsList = 'favorite_open_calls',
@@ -104,6 +105,10 @@ export enum Queries {
   InvitedUser = 'invited_user',
   /** List of open calls */
   AccountOpenCallsList = 'account_open_calls',
+  /** Single account open call application */
+  AccountOpenCallApplication = 'account_open_call_application',
+  /** List of account open call applications */
+  AccountOpenCallApplicationsList = 'account_open_call_applications',
   /** Priority Landscapes */
   PriorityLandscapes = 'priority_landscapes',
 }

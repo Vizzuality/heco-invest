@@ -21,6 +21,6 @@ Default.args = {
     { id: 'facebook', url: 'https://www.facebook.com' },
     { id: 'twitter', url: 'https://www.twitter.com' },
     { id: 'instagram', url: 'https://www.instagram.com' },
-    { id: 'linked-in', url: 'https://www.linkedin.com' },
+    { id: 'linkedin', url: 'https://www.linkedin.com' },
   ],
 };

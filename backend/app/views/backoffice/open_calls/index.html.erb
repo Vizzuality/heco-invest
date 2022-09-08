@@ -19,20 +19,47 @@
       <%= sort_link @q, :open_call_applications_count, t("backoffice.open_calls.index.applications") %>
     </th>
     <th>
-      <%= sort_link @q, :trusted, t("backoffice.common.status") %>
+      <%= sort_link @q, :verified, t("backoffice.common.status") %>
+    </th>
+    <th>
+    </th>
+    <th class="opacity-25">
+      <%= svg "menu" %>
     </th>
   </tr>
   </thead>
   <tbody>
-  <% @open_calls.each do |p| %>
+  <% @open_calls.each do |open_call| %>
     <tr>
-      <td><%= p.name %></td>
-      <td><%= p.investor.name %></td>
-      <td><%= [p.municipality&.name, p.department&.name, p.country&.name].compact.join(", ") %></td>
-      <td><%= p.open_call_applications_count %></td>
+      <td><%= open_call.name %></td>
+      <td><%= open_call.investor.name %></td>
+      <td><%= [open_call.municipality&.name, open_call.department&.name, open_call.country&.name].compact.join(", ") %></td>
+      <td><%= open_call.open_call_applications_count %></td>
       <td>
-        <%= status_tag :verified, t('backoffice.common.verified') if p.trusted?  %>
-        <%= status_tag :unverified, t('backoffice.common.unverified') unless p.trusted?  %>
+        <%= status_tag :verified, t('backoffice.common.verified') if open_call.verified?  %>
+        <%= status_tag :unverified, t('backoffice.common.unverified') unless open_call.verified?  %>
+      </td>
+      <td><%= link_to t("backoffice.common.edit"), edit_backoffice_open_call_path(open_call.id), class: "link-button" %></td>
+      <td>
+        <%= render "menu" do %>
+          <% if open_call.verified? %>
+            <%= render "backoffice/base/menu/item" do %>
+              <%= button_to t("backoffice.common.unverify"), unverify_backoffice_open_call_path(open_call.id), method: :post %>
+            <% end %>
+          <% end %>
+          <% unless open_call.verified? %>
+            <%= render "backoffice/base/menu/item" do %>
+              <%= button_to t("backoffice.common.verify"), verify_backoffice_open_call_path(open_call.id), method: :post %>
+            <% end %>
+          <% end %>
+          <%= render "backoffice/base/menu/item" do %>
+            <%= link_to t("backoffice.common.delete"), backoffice_open_call_path(open_call.id),
+               data: {
+                 turbo_method: :delete,
+                 turbo_confirm: t("backoffice.messages.delete_confirmation", model: t("backoffice.common.open_call").downcase)
+               } %>
+          <% end %>
+        <% end %>
       </td>
     </tr>
   <% end %>

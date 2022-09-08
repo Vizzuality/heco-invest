@@ -69,7 +69,7 @@ export const OpenCallFundingInformation: FC<OpenCallFundingInformationProps> = (
                 <FormattedMessage defaultMessage="Financial instruments available" id="EFVd2S" />
               </span>
               <FieldInfo
-                infoText={
+                content={
                   <ul>
                     {instrument_types?.map(({ id, name, description }) => (
                       <li key={id}>
@@ -122,7 +122,7 @@ export const OpenCallFundingInformation: FC<OpenCallFundingInformationProps> = (
               <FormattedMessage defaultMessage="Funding priorities" id="P1f6hp" />
             </Label>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage: 'What type of projects the funding is covering.',
                 id: 'b3Iz6I',
               })}
@@ -151,7 +151,7 @@ export const OpenCallFundingInformation: FC<OpenCallFundingInformationProps> = (
               <FormattedMessage defaultMessage="Funding exclusions" id="gQ16Mj" />
             </Label>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage: 'What type of projects the funding is not covering.',
                 id: 'ydCOwz',
               })}

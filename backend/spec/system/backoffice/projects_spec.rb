@@ -11,11 +11,12 @@ RSpec.describe "Backoffice: Projects", type: :system do
       name: "Project ultra name",
       project_developer: create(:project_developer, account: create(:account, name: "Ultra project developer name")),
       geometry: geometry,
-      trusted: true
+      verified: true
     )
   }
   let!(:projects) { create_list(:project, 4) }
   let!(:draft_project) { create :project, :draft }
+  let!(:open_call_application) { create :open_call_application, project: project }
 
   before { sign_in admin }
 
@@ -58,13 +59,13 @@ RSpec.describe "Backoffice: Projects", type: :system do
     end
 
     context "when searching by ransack filter" do
-      context "when filtered by trusted flag" do
-        before { project.update! trusted: true }
+      context "when filtered by verified flag" do
+        before { project.update! verified: true }
 
         it "returns records at correct state" do
           expect(page).to have_text(project.name)
           projects.each { |p| expect(page).to have_text(p.name) }
-          select t("backoffice.common.verified"), from: :q_trusted_eq
+          select t("backoffice.common.verified"), from: :q_verified_eq
           click_on t("backoffice.common.apply")
           expect(page).to have_text(project.name)
           projects.each { |p| expect(page).not_to have_text(p.name) }
@@ -255,11 +256,11 @@ RSpec.describe "Backoffice: Projects", type: :system do
       before { within_sidebar { click_on t("backoffice.projects.status") } }
 
       it "can update verification status" do
-        expect(page).to have_checked_field("project[trusted]")
-        choose t("backoffice.common.unverified"), name: "project[trusted]"
+        expect(page).to have_checked_field("project[verified]")
+        choose t("backoffice.common.unverified"), name: "project[verified]"
         click_on t("backoffice.common.save")
         expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.project")))
-        expect(project.reload.trusted).to be_falsey
+        expect(project.reload.verified).to be_falsey
       end
     end
 
@@ -322,6 +323,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
           end
         }.to have_enqueued_mail(ProjectDeveloperMailer, :project_destroyed).with(project.project_developer, project.name)
           .and have_enqueued_mail(ProjectDeveloperMailer, :project_destroyed).with(project.involved_project_developers.first, project.name)
+          .and have_enqueued_mail(InvestorMailer, :project_destroyed).with(open_call_application.investor, project.name, open_call_application.open_call)
         expect(page).to have_text(t("backoffice.messages.success_delete", model: t("backoffice.common.project")))
         expect(current_path).to eql(backoffice_projects_path)
         expect(page).not_to have_text(project.name)

@@ -27,10 +27,7 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
   const intl = useIntl();
 
   const impact = useMemo(() => projectImpact(project)[impactLocation], [impactLocation, project]);
-  const impactScore = useMemo(
-    () => (impact?.total ? Math.round(impact?.total * 10) : null),
-    [impact]
-  );
+  const impactScore = useMemo(() => impact?.total?.toFixed(1) ?? null, [impact]);
   const targetGroups = enums?.project_target_group?.filter((targetGroup) =>
     project.target_groups?.includes(targetGroup.id)
   );
@@ -117,7 +114,12 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
                     ))}
                   </Select>
                 </div>
-                <ImpactText className="my-4" area={impactLocation as ImpactAreas} impact={impact} />
+                <ImpactText
+                  className="my-4"
+                  area={impactLocation as ImpactAreas}
+                  impact={impact}
+                  impactCalculated={project.impact_calculated}
+                />
                 <button
                   onClick={() => setImpactModalOpen(true)}
                   type="button"
@@ -156,7 +158,7 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
               {impactScore && (
                 <div className="flex-col items-center hidden p-6 font-semibold bg-white lg:flex w-52 rounded-xl">
                   <p className=" text-green-dark">
-                    <span className="text-2xl">{impactScore}</span>/ 100
+                    <span className="text-2xl">{impactScore}</span>/ 10
                   </p>
                   <div className="flex items-center space-x-2">
                     <p className="text-base text-gray-800">
@@ -170,8 +172,8 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
                       content={
                         <div className="max-w-md p-2 font-sans text-sm font-normal text-white bg-black rounded-sm w-72">
                           <FormattedMessage
-                            defaultMessage="Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
-                            id="sFn7MX"
+                            defaultMessage="Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 10."
+                            id="Kg0xQM"
                           />
                         </div>
                       }
@@ -194,7 +196,7 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
             {impactScore && (
               <div className="flex flex-col items-center p-6 font-semibold bg-white lg:hidden w-52 rounded-xl">
                 <p className="text-green-dark">
-                  <span className="text-2xl">{impactScore}</span>/ 100
+                  <span className="text-2xl">{impactScore}</span>/ 10
                 </p>
                 <div className="flex items-center space-x-2">
                   <p className="text-base text-gray-800">
@@ -208,8 +210,8 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
                     content={
                       <div className="max-w-md p-2 font-sans text-sm font-normal text-white bg-black rounded-sm w-72">
                         <FormattedMessage
-                          defaultMessage="Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 100."
-                          id="sFn7MX"
+                          defaultMessage="Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 10."
+                          id="Kg0xQM"
                         />
                       </div>
                     }

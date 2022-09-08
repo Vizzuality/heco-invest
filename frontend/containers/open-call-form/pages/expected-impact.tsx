@@ -40,7 +40,7 @@ export const OpenCallExpectedImpact: FC<OpenCallExpectedImpactProps> = ({
               <FormattedMessage defaultMessage="Expected impact" id="XgaRPC" />
             </Label>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage:
                   'Describe briefly the impact that the project is expected to generate.',
                 id: 'jqCFCY',

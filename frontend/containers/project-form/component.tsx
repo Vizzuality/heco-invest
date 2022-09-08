@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useState, useEffect } from 'react';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
@@ -58,6 +58,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     category,
     project_development_stage,
     project_target_group,
+    impact,
     impact_area,
     ticket_size,
     instrument_type,
@@ -73,6 +74,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
     formState: { errors },
     control,
     getValues,
+    watch,
     setValue,
     clearErrors,
     resetField,
@@ -153,25 +155,20 @@ export const ProjectForm: FC<ProjectFormProps> = ({
 
   const onSubmit: SubmitHandler<ProjectFormType> = (values: ProjectFormType) => {
     if (isLastPage) {
-      const {
-        involved_project_developer,
-        project_gallery,
-        project_images_attributes_cover,
-        geometry,
-        ...rest
-      } = values;
+      const { involved_project_developer, project_gallery, geometry, ...rest } = values;
 
-      // set image_attributes cover from the project_images_attributes_cover value
       const project_images_attributes: any = values.project_images_attributes?.map(
-        ({ file, id, _destroy }) => {
-          // If is an old image, send the image id, if is a new one, send the image file (direct-upload signed_id)
+        ({ file, id, cover, _destroy }) => {
+          // If the image was already uploaded, we send its id, otherwise, we send only the file
+          // (direct-upload signed_id)
           if (id) {
-            return { file, id, cover: file === project_images_attributes_cover, _destroy };
+            return { file, id, cover, _destroy };
           } else {
-            return { file, cover: file === project_images_attributes_cover };
+            return { file, cover };
           }
         }
       );
+
       // set involved_project_developer_not_listed to true if not listed is selected and removes this value from the involved_project_developer_ids
       const involved_project_developer_not_listed =
         !!values.involved_project_developer_ids?.includes('not-listed');
@@ -218,6 +215,17 @@ export const ProjectForm: FC<ProjectFormProps> = ({
 
   const contentLocale = defaultValues?.language || userAccount?.language;
   const isOutroPage = currentPage === totalPages;
+
+  // This component may be mounted when `project` has not resolved yet (`isLoading` will be `true`).
+  // In that case, we want to make sure the form is populated with the default values.
+  // `useForm`'s `defaultValues` attribute is only read on mount.
+  useEffect(() => {
+    if (!isLoading && defaultValues) {
+      Object.entries(defaultValues).map(([key, value]) => {
+        setValue(key as keyof ProjectFormType, value);
+      });
+    }
+  }, [isLoading, defaultValues, setValue]);
 
   return (
     <>
@@ -270,6 +278,7 @@ export const ProjectForm: FC<ProjectFormProps> = ({
             controlOptions={{ disabled: false }}
             errors={errors}
             getValues={getValues}
+            watch={watch}
             resetField={resetField}
             setValue={setValue}
             clearErrors={clearErrors}
@@ -296,7 +305,9 @@ export const ProjectForm: FC<ProjectFormProps> = ({
             controlOptions={{ disabled: false }}
             errors={errors}
             getValues={getValues}
-            impacts={impact_area}
+            watch={watch}
+            impacts={impact}
+            impactAreas={impact_area}
             setValue={setValue}
             clearErrors={clearErrors}
           />

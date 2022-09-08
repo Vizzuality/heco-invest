@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 
 import { Controller, FieldError } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -30,74 +30,82 @@ const GeneralInformation = ({
   errors,
   control,
   getValues,
+  watch,
   resetField,
   setValue,
   clearErrors,
   setError,
 }: ProjectFormPagesProps<ProjectForm>) => {
-  const [defaultInvolvedProjectDeveloper, setDefaultInvolvedProjectDeveloper] = useState<boolean>();
-  const [images, setImages] = useState<ProjectImageGallery[]>([]);
-  const [coverImage, setCoverImage] = useState<string>();
-
   const { formatMessage } = useIntl();
+
+  const [defaultInvolvedProjectDeveloper, setDefaultInvolvedProjectDeveloper] = useState<boolean>();
 
   const { projectDevelopers } = useProjectDevelopersList({
     perPage: 1000,
     fields: ['name'],
   });
 
-  useEffect(() => {
-    const defaultImages = getValues('project_images_attributes');
-    setImages(defaultImages || []);
-
-    setCoverImage(
-      getValues('project_images_attributes_cover') || defaultImages?.length
-        ? defaultImages[0]?.file
-        : undefined
-    );
-
-    const involvedProjectDeveloper = getValues('involved_project_developer');
-    // If there is a value for involved_project_developer, it checks the corresponding radio button
-    if (typeof involvedProjectDeveloper === 'number') {
-      setDefaultInvolvedProjectDeveloper(!!Number(involvedProjectDeveloper));
-    }
-  }, [getValues]);
+  const watchedProjectImagesAttributes = watch('project_images_attributes');
+  const watchedInvolvedProjectDeveloper = watch('involved_project_developer');
 
   const handleChangeInvolvedProjectDeveloper = (e: ChangeEvent<HTMLInputElement>) => {
     setDefaultInvolvedProjectDeveloper(!!Number(e.target.value));
     setValue('involved_project_developer', Number(e.target.value));
   };
 
-  const handleUploadImages = (newUploadedImages: ProjectImageGallery[]) => {
-    // current project_images_attributes input value
-    if (!coverImage && newUploadedImages[0]) {
-      setValue('project_images_attributes_cover', newUploadedImages[0].file);
-      setCoverImage(newUploadedImages[0].id);
-    }
-    setValue('project_images_attributes', [...images, ...newUploadedImages]);
-    setImages([...images, ...newUploadedImages]);
-  };
+  const handleSelectCover = useCallback(
+    (imageFile: ProjectImageGallery['file']) => {
+      setValue(
+        'project_images_attributes',
+        watchedProjectImagesAttributes?.map((image) => ({
+          ...image,
+          cover: image.file === imageFile,
+        })) ?? []
+      );
+    },
+    [setValue, watchedProjectImagesAttributes]
+  );
 
-  const handleSelectCover = (imageId: string) => {
-    setValue('project_images_attributes_cover', imageId);
-    setCoverImage(imageId);
-  };
+  const handleUploadImages = useCallback(
+    (newUploadedImages: ProjectImageGallery[]) => {
+      const hasCover = watchedProjectImagesAttributes?.some((image) => image.cover) ?? false;
 
-  const handleDeleteImage = (imageId: string) => {
-    // Get the images and remove the deleted one
-    const imagesWithDeleted = images?.map((image) =>
-      image.file === imageId ? { ...image, _destroy: true } : image
-    );
-    // Set images with the new images array
-    setValue('project_images_attributes', imagesWithDeleted);
-    setImages(imagesWithDeleted);
-    // If the deleted image was the cover, set new cover to the first image left
-    if (coverImage === imageId) {
-      const filteredImageAttr = imagesWithDeleted?.filter((image) => !image._destroy);
-      const newCoverImage = filteredImageAttr.length ? filteredImageAttr[0].file : undefined;
-      handleSelectCover(newCoverImage);
+      setValue('project_images_attributes', [
+        ...(watchedProjectImagesAttributes ?? []),
+        ...newUploadedImages.map((image, index) => ({ ...image, cover: !hasCover && index === 0 })),
+      ]);
+    },
+    [setValue, watchedProjectImagesAttributes]
+  );
+
+  const handleDeleteImage = useCallback(
+    (imageFile: ProjectImageGallery['file']) => {
+      const updatedImages =
+        watchedProjectImagesAttributes?.map((image) => ({
+          ...image,
+          _destroy: image.file === imageFile ? true : image._destroy,
+        })) ?? [];
+
+      const remainingImages = updatedImages.filter((image) => !image._destroy);
+      const coverImage = updatedImages.find((image) => image.cover);
+
+      if (coverImage?._destroy === true && remainingImages.length > 0) {
+        remainingImages[0].cover = true;
+        coverImage.cover = false;
+      }
+
+      // Set images with the new images array
+      setValue('project_images_attributes', updatedImages);
+    },
+    [setValue, watchedProjectImagesAttributes]
+  );
+
+  useEffect(() => {
+    // If there is a value for involved_project_developer, it checks the corresponding radio button
+    if (typeof watchedInvolvedProjectDeveloper === 'number') {
+      setDefaultInvolvedProjectDeveloper(!!Number(watchedInvolvedProjectDeveloper));
     }
-  };
+  }, [watchedInvolvedProjectDeveloper]);
 
   return (
     <div>
@@ -117,7 +125,7 @@ const GeneralInformation = ({
               <FormattedMessage defaultMessage="Project name" id="D5RCKi" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage: 'A great name is short, crisp, and easily understood.',
                 id: 'rPwaWt',
               })}
@@ -144,7 +152,7 @@ const GeneralInformation = ({
               <FormattedMessage defaultMessage="Project gallery (optional)" id="7aTDQM" />
             </span>
             <FieldInfo
-              infoText={formatMessage({
+              content={formatMessage({
                 defaultMessage:
                   'The project gallery will be the first thing other users will see on you page, it will help you to showcase you project.',
                 id: 'c1m3Q7',
@@ -171,15 +179,13 @@ const GeneralInformation = ({
             </div>
             <div className="w-full h-[176px]">
               <ProjectGallery
-                images={images}
-                name="project_images_attributes_cover"
+                name="project_images_attributes"
                 setValue={setValue}
                 clearErrors={clearErrors}
                 errors={errors}
                 className="h-full"
                 onDeleteImage={handleDeleteImage}
                 onSelectCover={handleSelectCover}
-                defaultSelected={coverImage}
                 control={control}
               />
             </div>
@@ -215,7 +221,7 @@ const GeneralInformation = ({
               <FormattedMessage defaultMessage="Draw or upload your location" id="MHwpc4" />
             </span>
             <FieldInfo
-              infoText={
+              content={
                 <>
                   <p>
                     <FormattedMessage
@@ -261,7 +267,7 @@ const GeneralInformation = ({
                   />
                 </span>
                 <FieldInfo
-                  infoText={formatMessage({
+                  content={formatMessage({
                     defaultMessage: 'Do you have a partnership with someone else?',
                     id: 'nbqoY2',
                   })}

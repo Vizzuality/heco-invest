@@ -30,7 +30,9 @@
           "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyTmpJek5ESTFaUzFrTXpFM0xUUTRZekV0T0RZelpTMHlZVFkzWW1FNVpHRXdabVlHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--b74d4962f0e059646bf8b1346f088c733b3060a0/picture.jpg"
         },
         "status": "launched",
-        "favourite": true
+        "favourite": true,
+        "open_call_applications_count": 0,
+        "verified": false
       },
       "relationships": {
         "investor": {

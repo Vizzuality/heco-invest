@@ -13,7 +13,9 @@ import type { BreadcrumbsProps } from './types';
 
 export const Breadcrumbs: FC<BreadcrumbsProps> = ({
   className,
+  theme = 'dark',
   substitutions: propSubstitutions = {},
+  hidden: segmentsToHide = [],
 }: BreadcrumbsProps) => {
   const intl = useIntl();
   const { route, asPath } = useRouter();
@@ -44,7 +46,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
 
   const nameFromPathname = (text: string): string =>
     text
-      .replace(/(-|_)/, ' ') // Change Dashes and Underscores into spaces
+      .replaceAll(/(-|_)/g, ' ') // Change Dashes and Underscores into spaces
       .split(' ') // Split into an array of words
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Uppercase words' first letters
       .join(' '); // Join back into a string
@@ -83,10 +85,16 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
         // or as a fallback, we'll use the path
         path;
 
-      acc.push({ name, path, link });
+      // If it is a segment marked as to be hidden, we'll just set the property to true and
+      // filter it later. We need it to be in the array in order for path building to work
+      // correctly.
+      const hidden: boolean = segmentsToHide.includes(query) || segmentsToHide.includes(segment);
+
+      acc.push({ name, path, link, hidden });
 
       return acc;
     }, [])
+    .filter(({ hidden }) => !hidden)
     .map(({ name, link }) => ({ name, link }));
 
   return (
@@ -94,7 +102,13 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
       className={className}
       aria-label={intl.formatMessage({ defaultMessage: 'Breadcrumbs', id: 'ByoZDD' })}
     >
-      <ol className="text-sm text-gray-400">
+      <ol
+        className={cx({
+          'text-sm ': true,
+          'text-gray-400': theme === 'dark',
+          'text-white': theme === 'light',
+        })}
+      >
         {breadcrumbs.map(({ name, link }, index) => {
           const isLastBreadcrumb = index === breadcrumbs.length - 1;
 
@@ -105,7 +119,9 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
                   className={cx({
                     'transition-all rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark':
                       true,
-                    'text-black cursor-pointer': isLastBreadcrumb,
+                    'cursor-pointer': isLastBreadcrumb,
+                    'text-black': isLastBreadcrumb && theme === 'dark',
+                    'text-white opacity-50': isLastBreadcrumb && theme === 'light',
                   })}
                   aria-current={isLastBreadcrumb ? 'location' : false}
                 >

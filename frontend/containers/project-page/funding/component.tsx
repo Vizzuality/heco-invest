@@ -16,10 +16,15 @@ import TARGET_SVG from 'svgs/project/funding/target-correct.svg';
 export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps) => {
   const { formatMessage } = useIntl();
 
-  const { development_stage, estimated_duration_in_months } = project;
+  const { estimated_duration_in_months } = project;
 
   const ticketSizeStr = useMemo(
     () => enums.ticket_size?.find(({ id }) => project.ticket_size === id)?.description,
+    [enums, project]
+  );
+
+  const developmentStageStr = useMemo(
+    () => enums.project_development_stage?.find(({ id }) => project.development_stage === id)?.name,
     [enums, project]
   );
 
@@ -148,7 +153,7 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
                 </h4>
               </div>
               <div className="flex flex-col w-1/2 space-y-3">
-                <p className="text-xl font-semibold capitalize">{development_stage}</p>
+                <p className="text-xl font-semibold capitalize">{developmentStageStr}</p>
                 <h4>
                   <FormattedMessage defaultMessage="Maturity / stage of development" id="Scnx6A" />
                 </h4>

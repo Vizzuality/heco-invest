@@ -13,10 +13,10 @@ export default {
 } as Meta;
 
 const Template: Story<FieldInfoProps> = (args: FieldInfoProps) => {
-  return <FieldInfo infoText={args.infoText} />;
+  return <FieldInfo content={args.content} />;
 };
 
 export const Default: Story<FieldInfoProps> = Template.bind({});
 Default.args = {
-  infoText: 'Info text',
+  content: 'Info text',
 };
