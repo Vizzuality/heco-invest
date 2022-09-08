@@ -57,7 +57,7 @@ export const SortingButtons: FC<SortingButtonsProps> = ({
               {...buttonProps}
             >
               <span className="py-0.5 -mx-2 flex items-center">
-                <span className="text-sm text-gray-600">
+                <span className="text-sm font-medium text-gray-700">
                   <FormattedMessage defaultMessage="Sort by" id="hDI+JM" />
                   {theme === 'text' && ':'}
                 </span>
@@ -130,7 +130,7 @@ export const SortingButtons: FC<SortingButtonsProps> = ({
             )}
             {theme === 'text' && (
               <>
-                <span className="text-sm text-gray-600">
+                <span className="text-sm font-medium text-gray-700">
                   <FormattedMessage defaultMessage="Order" id="XPruqs" />:
                 </span>
                 <span className="ml-2 text-sm font-medium text-green-dark">

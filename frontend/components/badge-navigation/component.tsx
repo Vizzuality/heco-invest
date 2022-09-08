@@ -23,12 +23,12 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
     return (
       <span
         className={cx({
-          'flex items-center justify-center  text-sm font-medium min-w-min': true,
+          'flex items-center justify-center  text-sm font-semibold min-w-min': true,
           'bg-green-dark text-white w-5 h-5': theme === 'default',
           'w-6 h-6 px-1': theme === 'simple',
           'rounded-sm': type === 'square',
           'rounded-full border border-beige': type === 'pill',
-          'bg-beige text-gray-800': !isActive && theme === 'default',
+          'bg-beige text-gray-700': !isActive && theme === 'default',
           border: theme === 'simple',
           'bg-white ': isActive && theme === 'simple',
           'text-black': theme === 'simple',
@@ -87,10 +87,10 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
                         'hover:text-green-dark': theme === 'default',
                         'text-green-dark':
                           (isActive && theme === 'default') || (!isActive && theme === 'simple'),
-                        'text-gray-600': !isActive && theme === 'default',
+                        'text-gray-700': !isActive && theme === 'default',
                         'hover:text-black': theme === 'simple',
                         'text-black': isActive && theme === 'simple',
-                        'font-medium': theme === 'default' || (isActive && theme === 'simple'),
+                        'font-semibold': theme === 'default' || (isActive && theme === 'simple'),
                       })}
                     >
                       {badgePosition === 'left' && badgeElement(number, isActive)}
