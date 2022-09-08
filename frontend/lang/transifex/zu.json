@@ -143,6 +143,9 @@
   "0lKwqs": {
     "string": "Close open call?"
   },
+  "0u3Vzf": {
+    "string": "All users associated with the account will be deleted."
+  },
   "0v43t3": {
     "string": "Note that all of this information will be visible in the Investor public profile page except questions."
   },
@@ -700,6 +703,9 @@
   },
   "CiYFzk": {
     "string": "SME and MSME"
+  },
+  "CqohYm": {
+    "string": "All content associated with the account will be deleted. If you have created Open Calls to which some Projects have applied, the owners of these Projects will be automatically notified that the Open Call no longer exists."
   },
   "Cra78t": {
     "string": "© {date} HeCo Invest. All rights reserved."
@@ -1806,6 +1812,9 @@
   "ZjA6uH": {
     "string": "Welcome to HeCo Invest. Please enter your details below."
   },
+  "ZocjEJ": {
+    "string": "What happens when I delete my Project Developer account?"
+  },
   "Zt7DBA": {
     "string": "Priority landscapes of HeCo"
   },
@@ -2397,6 +2406,9 @@
   "mQk71L": {
     "string": "Why invest in the Amazon"
   },
+  "mZF8ZA": {
+    "string": "All information associated with the account will be deleted."
+  },
   "mbTJWV": {
     "string": "Biodiversity"
   },
@@ -2793,6 +2805,9 @@
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
   },
+  "ub/Akh": {
+    "string": "What happens when I delete my Investor account?"
+  },
   "ufxVRM": {
     "string": "Display impact on"
   },
@@ -2933,6 +2948,9 @@
   },
   "xmcVZ0": {
     "string": "Search"
+  },
+  "xmwVn+": {
+    "string": "All content associated with the account will be deleted. If your Projects have applied to Open Calls, the owners of the Open Calls will be automatically notified that the Project no longer exists."
   },
   "xnQiBM": {
     "string": "The impact of this project isn’t available. Impact calculations may take some time to be available."
