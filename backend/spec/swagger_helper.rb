@@ -92,7 +92,7 @@ RSpec.configure do |config|
                 type: :object,
                 properties: {
                   owner: {"$ref" => "#/components/schemas/response_relation"},
-                  open_calls: {"$ref" => "#/components/schemas/response_relations"},
+                  open_calls: {"$ref" => "#/components/schemas/response_relations"}
                 }
               }
             },
