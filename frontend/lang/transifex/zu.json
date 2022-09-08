@@ -410,6 +410,9 @@
   "6cU2pG": {
     "string": "The project gallery will be the first thing other users will see on your page, it will help you to showcase your project."
   },
+  "6hS0se": {
+    "string": "Are you sure you want to delete the account?"
+  },
   "6ukMW9": {
     "string": "Basque Centre for Climate Change"
   },
@@ -1779,6 +1782,9 @@
   "Yy/yDL": {
     "string": "Reset password"
   },
+  "Z6MFUA": {
+    "string": "You can’t undo this action."
+  },
   "ZATT08": {
     "string": "Pagination"
   },
@@ -2319,6 +2325,9 @@
   "kICTEM": {
     "string": "I'm financing this project"
   },
+  "kN2Vfv": {
+    "string": "Delete {accountName} account"
+  },
   "kN5g/0": {
     "string": "Indigenous Reserves"
   },
@@ -2423,6 +2432,9 @@
   },
   "mgsoLa": {
     "string": "Looking for the highest impact?"
+  },
+  "mqQ6S4": {
+    "string": "By deleting the account, <b>all existing information, users and related content will be deleted</b>. This action can’t be undone."
   },
   "n0nU+Y": {
     "string": "Illustration of a person looking at a list of cards"
@@ -2912,6 +2924,9 @@
   },
   "wvoA3H": {
     "string": "Picture"
+  },
+  "wyxJrL": {
+    "string": "Delete account"
   },
   "x/1DXz": {
     "string": "In the face of the economic and social crisis caused by the coronavirus pandemic, there is an urgent need to support the transition to a green, fair, and resilient economy that creates jobs, addresses inequality, and drives inclusive growth."
