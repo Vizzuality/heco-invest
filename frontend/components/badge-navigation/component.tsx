@@ -30,7 +30,8 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
           'rounded-full border border-beige': type === 'pill',
           'bg-beige text-gray-800': !isActive && theme === 'default',
           border: theme === 'simple',
-          'bg-white text-black': isActive && theme === 'simple',
+          'bg-white ': isActive && theme === 'simple',
+          'text-black': theme === 'simple',
           'ml-2.5': badgePosition === 'right',
           'mr-2.5': badgePosition === 'left',
         })}
@@ -84,7 +85,8 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
                         'border border-beige': type === 'pill' && theme !== 'simple',
                         'bg-white shadow-sm': isActive && type === 'pill' && theme === 'default',
                         'hover:text-green-dark': theme === 'default',
-                        'text-green-dark': isActive && theme === 'default',
+                        'text-green-dark':
+                          (isActive && theme === 'default') || (!isActive && theme === 'simple'),
                         'text-gray-600': !isActive && theme === 'default',
                         'hover:text-black': theme === 'simple',
                         'text-black': isActive && theme === 'simple',
