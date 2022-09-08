@@ -7,7 +7,7 @@ import { getServiceErrors, useGetAlert, useLanguageNames } from 'helpers/pages';
 
 import ContentLanguageAlert from 'containers/forms/content-language-alert';
 import LeaveFormModal from 'containers/leave-form-modal';
-import MultiPageLayout, { OutroPage, Page } from 'containers/multi-page-layout';
+import MultiPageLayout, { Page } from 'containers/multi-page-layout';
 
 import Button from 'components/button';
 import Head from 'components/head';
@@ -26,7 +26,6 @@ import {
   OpenCallFundingInformation,
   OpenCallClosingDate,
   OpenCallFormTypes,
-  PendingVerification,
 } from '.';
 
 export const OpenCallForm = <MutationType extends BasicMutationType>({
@@ -42,7 +41,8 @@ export const OpenCallForm = <MutationType extends BasicMutationType>({
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [showLeave, setShowLeave] = useState(false);
-  const [slug, setSlug] = useState<string>();
+  // VERIFICATION OPEN CALLS: HIDDEN
+  // const [slug, setSlug] = useState<string>();
   const resolver = useOpenCallResolver(currentPage);
   const { userAccount } = useAccount();
 
@@ -69,7 +69,9 @@ export const OpenCallForm = <MutationType extends BasicMutationType>({
   const isLastPage = currentPage === totalPages - 1;
   const languageNames = useLanguageNames();
   const contentLocale = locale || openCall?.language || userAccount?.language;
-  const isOutroPage = currentPage === totalPages;
+
+  // VERIFICATION OPEN CALLS: HIDDEN
+  // const isOutroPage = currentPage === totalPages;
 
   const alert = useGetAlert(mutation.error);
 
@@ -81,17 +83,19 @@ export const OpenCallForm = <MutationType extends BasicMutationType>({
           fieldErrors.forEach(({ fieldName, message }) => setError(fieldName, { message }));
           if (errorPages.length) setCurrentPage(errorPages[0]);
         },
-        onSuccess: (openCall) => {
-          if (openCall.trusted || data.status === OpenCallStatus.Draft) {
-            onComplete();
-          } else {
-            setCurrentPage(currentPage + 1);
-            setSlug(openCall.slug);
-          }
-        },
+        onSuccess: onComplete,
+        // VERIFICATION OPEN CALLS: HIDDEN
+        // onSuccess: (openCall) => {
+        //   if (openCall.trusted || data.status === OpenCallStatus.Draft) {
+        //     onComplete();
+        //   } else {
+        //     setCurrentPage(currentPage + 1);
+        //     setSlug(openCall.slug);
+        //   }
+        // },
       });
     },
-    [currentPage, mutation, onComplete, setError]
+    [mutation, onComplete, setError]
   );
 
   const onSubmit: SubmitHandler<OpenFormType> = (values) => {
@@ -140,8 +144,9 @@ export const OpenCallForm = <MutationType extends BasicMutationType>({
         page={currentPage}
         alert={alert}
         isSubmitting={mutation?.isLoading}
-        showOutro={isOutroPage}
-        siteHeader={isOutroPage}
+        // VERIFICATION OPEN CALLS: HIDDEN
+        // showOutro={isOutroPage}
+        // siteHeader={isOutroPage}
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
@@ -206,9 +211,11 @@ export const OpenCallForm = <MutationType extends BasicMutationType>({
         <Page>
           <OpenCallClosingDate control={control} errors={errors} getValues={getValues} />
         </Page>
+        {/* VERIFICATION OPEN CALLS: HIDDEN
         <OutroPage>
           <PendingVerification slug={slug} />
         </OutroPage>
+        */}
       </MultiPageLayout>
       <LeaveFormModal
         isOpen={showLeave}

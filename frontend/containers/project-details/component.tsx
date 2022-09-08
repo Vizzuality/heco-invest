@@ -115,6 +115,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
       </div>
       <div className="relative p-10">
         <div className="flex gap-2 text-sm">
+          {/* VERIFICATION PROJECTS: HIDDEN
           {project.trusted && (
             <>
               <span
@@ -131,6 +132,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
               </span>
             </>
           )}
+          */}
           {category && (
             <div title={intl.formatMessage({ defaultMessage: 'Project category', id: '/plMvw' })}>
               <CategoryTag size="smallest" category={category.id as CategoryType}>

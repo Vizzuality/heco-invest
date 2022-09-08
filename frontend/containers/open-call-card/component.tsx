@@ -25,7 +25,8 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
     name,
     description,
     status,
-    trusted,
+    // VERIFICATION OPEN CALLS: HIDDEN
+    // trusted,
     investor,
     instrument_types,
     maximum_funding_per_project: maxFunding,
@@ -76,7 +77,9 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
     .map(({ name }) => name);
 
   const isClosed = status === OpenCallStatus.Closed;
-  const showRibbon = trusted || isClosed;
+  // VERIFICATION OPEN CALLS: HIDDEN
+  // const showRibbon = trusted || isClosed;
+  const showRibbon = isClosed;
 
   return (
     <div
@@ -98,11 +101,14 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
               'absolute py-1 pl-6 pr-8 text-xs text-center origin-top-left rotate-45  w-60 -top-10 -right-28':
                 true,
               'text-gray-600 bg-gray-300': isClosed,
-              'bg-green-dark text-green-light': !isClosed && trusted,
+              // VERIFICATION OPEN CALLS: HIDDEN
+              // 'bg-green-dark text-green-light': !isClosed && trusted,
             })}
           >
             {isClosed && <FormattedMessage defaultMessage="Open call ended" id="vZgJJu" />}
+            {/* VERIFICATION OPEN CALLS: HIDDEN
             {!isClosed && trusted && <FormattedMessage defaultMessage="Verified" id="Z8971h" />}
+            */}
           </span>
         )}
         <div className="flex items-start gap-4">

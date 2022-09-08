@@ -158,6 +158,6 @@ export type ProjectMapParams = {
   'filter[sdg]'?: number;
   'filter[instrument_type]'?: string;
   'filter[ticket_size]'?: string;
-  'filter[only_verified]'?: string;
+  //'filter[only_verified]'?: string; VERIFICATION FILTERS: HIDDEN
   'filter[full_text]'?: string;
 };

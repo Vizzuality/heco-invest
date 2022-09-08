@@ -100,12 +100,14 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
         <LayoutContainer className="flex flex-col justify-between lg:min-h-[18rem]">
           <div className="flex flex-col justify-center gap-2 mb-4 sm:flex-row sm:justify-between">
             <div className="flex justify-center order-last gap-2 mb-4 lg:justify-start sm:order-first">
+              {/* VERIFICATION PROJECTS: HIDDEN
               {project.trusted && (
                 <Tag className="bg-white text-green-dark">
                   <CheckCircleIcon className="w-4 h-4 mr-3" />
                   <FormattedMessage defaultMessage="Verified" id="Z8971h" />
                 </Tag>
               )}
+              */}
               {category && (
                 <CategoryTag
                   className="bg-white text-green-dark"

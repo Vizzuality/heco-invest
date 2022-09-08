@@ -126,6 +126,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
       >
         <div className="flex flex-col flex-grow gap-2">
           <div className="flex text-sm">
+            {/* VERIFICATION PROJECTS: HIDDEN
             {trusted && (
               <>
                 <span
@@ -143,6 +144,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
                 </span>
               </>
             )}
+            */}
             <div title={intl.formatMessage({ defaultMessage: 'Project category', id: '/plMvw' })}>
               {category?.name}
             </div>

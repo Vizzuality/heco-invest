@@ -46,9 +46,10 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
     Object.entries(filters).forEach(([key, value]) => {
       // Change the filter param name to the form input name
       const filterName = key.replace('filter[', '').replace(']', '');
-      const filterValue = filterName === 'only_verified' ? JSON.parse(value) : value;
-
-      filterInputs[filterName] = filterValue;
+      // VERIFICATION: HIDDEN
+      // const filterValue = filterName === 'only_verified' ? JSON.parse(value) : value;
+      // filterInputs[filterName] = filterValue;
+      filterInputs[filterName] = value;
     });
     setFiltersInputValue(filterInputs);
     setShowSuggestions(false);
@@ -127,7 +128,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
             className="flex flex-col items-center justify-end w-full h-full gap-1 sm:justify-between sm:gap-3 sm:flex-row"
             onSubmit={handleSubmitSearch}
           >
-            <div className="flex items-center gap-2 flex-grow">
+            <div className="flex items-center flex-grow gap-2">
               <Icon
                 aria-hidden={true}
                 icon={SearchIcon}

@@ -91,7 +91,7 @@ export const Filters: FC<FiltersProps> = ({
 
   const onChange = (ev: any) => {
     const { value, name } = ev.target;
-    // Remove check when clicking on a ckecked tag
+    // Remove check when clicking on a checked tag
     if (filtersInputValue[name] === value) {
       setValue(name, undefined);
       setFiltersInputValue({ ...filtersInputValue, [name]: undefined });
@@ -102,11 +102,13 @@ export const Filters: FC<FiltersProps> = ({
     setFiltersInputValue({ ...filtersInputValue, [name]: value });
   };
 
+  /* VERIFICATION FILTERS: HIDDEN
   const onCheckboxChange = (ev: any) => {
     const { name, checked } = ev.target;
     setValue(name, checked);
     setFiltersInputValue({ ...filtersInputValue, [name]: checked });
   };
+  */
 
   return isLoading ? (
     <Loading />
@@ -127,6 +129,7 @@ export const Filters: FC<FiltersProps> = ({
         <CloseIcon className="w-4 h-4 transition-transform rotate-0 hover:rotate-180" />
       </Button>
       <div className="overflow-y-auto">
+        {/* VERIFICATION FILTERS: HIDDEN
         <div className="flex justify-between">
           <div className="flex items-center mb-4">
             <Checkbox
@@ -140,6 +143,7 @@ export const Filters: FC<FiltersProps> = ({
             </label>
           </div>
         </div>
+  */}
 
         <div className="flex flex-col flex-wrap gap-y-4">
           {filters?.map((filter) => {

@@ -566,9 +566,6 @@
   "9dtx+L": {
     "string": "Something went wrong while sending an invitation to the email {email}."
   },
-  "9fHGyd": {
-    "string": "Open verified project"
-  },
   "9nYuln": {
     "string": "Base Layers"
   },
@@ -601,9 +598,6 @@
   },
   "ADBj6Y": {
     "string": "What type of financing are you looking for to implement your project or solution?"
-  },
-  "AGwIKZ": {
-    "string": "Verification badges"
   },
   "ANTAp/": {
     "string": "Country, Municipality, State"
@@ -784,9 +778,6 @@
   },
   "E010/S": {
     "string": "> US$750,000 (Scaling)"
-  },
-  "E1kj21": {
-    "string": "Project verification"
   },
   "E80WrK": {
     "string": "Information"
@@ -1029,9 +1020,6 @@
   "JFkvlB": {
     "string": "Please use the contacts below to reach the project developer."
   },
-  "JGIdpr": {
-    "string": "The HeCo invest platform administrator will attribute a verification badge to an open call after reviewing it and considering that all criteria match the goals and standards of the platform."
-  },
   "JHJJAH": {
     "string": "Save as draft"
   },
@@ -1136,9 +1124,6 @@
   },
   "LDgw6G": {
     "string": "NGO"
-  },
-  "LEQjvN": {
-    "string": "A project or an open call can be submitted to the platform administrator for verification that the content complies with the quality standards of the HeCo Invest platform. If so, the content will be marked as “Verified” and will be more prominent than non-verified content on the platform."
   },
   "LFDgTb": {
     "string": "Leave project developer edition?"
@@ -1590,9 +1575,6 @@
   "V4KNjk": {
     "string": "optional"
   },
-  "VBwakD": {
-    "string": "The HeCo invest platform administrator will attribute a verification badge to a project after reviewing it and considering that all criteria match the goals and standards of the platform."
-  },
   "VCODFJ": {
     "string": "Why use this platform"
   },
@@ -1790,9 +1772,6 @@
   },
   "Yy/yDL": {
     "string": "Reset password"
-  },
-  "Z8971h": {
-    "string": "Verified"
   },
   "ZATT08": {
     "string": "Pagination"
@@ -2199,9 +2178,6 @@
   "i9cSUD": {
     "string": "Invests in"
   },
-  "i9eK6b": {
-    "string": "Show verified content only"
-  },
   "iAtu/T": {
     "string": "Someone has shared a HeCo invest project with you"
   },
@@ -2438,9 +2414,6 @@
   },
   "n6KNWj": {
     "string": "Pending verification"
-  },
-  "n9fdaJ": {
-    "string": "Unverified"
   },
   "nBHzO6": {
     "string": "Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
@@ -2879,6 +2852,9 @@
   },
   "w1Fanr": {
     "string": "Business"
+  },
+  "w7tf2z": {
+    "string": "Published"
   },
   "wA8Ls7": {
     "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. The <b>Supply</b> score of each sustainability dimension is then computed by taking the mean value of the corresponding indicators. <b>However, if all the indicators of a given dimension are selected, then the supply score of that dimension goes automatically to 0</b>. This is to make sure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."

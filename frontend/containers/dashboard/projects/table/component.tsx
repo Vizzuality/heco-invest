@@ -101,7 +101,9 @@ export const ProjectsTable: FC<ProjectsTableProps> = ({ onLoaded = noop }) => {
         ?.filter(({ id }) => project.instrument_types?.includes(id))
         .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase()))
         .join(', '),
-      statusTag: project.status === 'draft' ? 'draft' : project.trusted ? 'verified' : 'unverified',
+      // VERIFICATION PROJECTS: HIDDEN
+      // statusTag: project.status === 'draft' ? 'draft' : project.trusted ? 'verified' : 'unverified',
+      statusTag: project.status === 'draft' ? 'draft' : 'published',
       ticketSize: allTicketSizes?.find(({ id }) => project.ticket_size === id)?.description,
     })),
     loading: isLoading,
