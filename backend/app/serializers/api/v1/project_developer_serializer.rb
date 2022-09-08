@@ -25,7 +25,7 @@ module API
 
       belongs_to :owner, serializer: :user
 
-      has_many :projects
+      has_many_restricted :projects
       has_many :involved_projects, serializer: :project
       has_many :priority_landscapes, serializer: :location
 

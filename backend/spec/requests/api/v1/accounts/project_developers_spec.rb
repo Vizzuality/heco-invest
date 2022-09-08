@@ -13,6 +13,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
       parameter name: :locale, in: :query, type: :string, required: false, description: "Retrieve content in required language, skip for account language."
 
       let(:project_developer) { create :project_developer, :with_involved_projects }
+      let!(:draft_project) { create :project, :draft, project_developer: project_developer }
       let(:user) { create :user }
 
       it_behaves_like "with not authorized error", csrf: true, require_project_developer: true
@@ -32,6 +33,10 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/accounts-project-developer")
+        end
+
+        it "shows draft projects defined through relationships" do
+          expect(response_json["data"]["relationships"]["projects"]["data"].pluck("id")).to include(draft_project.id)
         end
 
         context "with relationships" do

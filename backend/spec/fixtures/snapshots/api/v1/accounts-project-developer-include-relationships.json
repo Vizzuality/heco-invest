@@ -44,17 +44,20 @@
       },
       "projects": {
         "data": [
-
+          {
+            "id": "e8d46375-c9a3-43cd-b00e-aae1e83bf62e",
+            "type": "project"
+          }
         ]
       },
       "involved_projects": {
         "data": [
           {
-            "id": "e3e0c8fe-6fd7-413a-a3a7-f612125de296",
+            "id": "aec2f4ee-0401-416e-b2bf-24d626ee944e",
             "type": "project"
           },
           {
-            "id": "aec2f4ee-0401-416e-b2bf-24d626ee944e",
+            "id": "a214700b-7223-41d7-8270-69955abae14d",
             "type": "project"
           }
         ]
@@ -78,9 +81,9 @@
       "id": "cb554861-fea8-473f-ac06-17a8ccfb0aaf",
       "type": "user",
       "attributes": {
-        "first_name": "Desmond",
-        "last_name": "Herzog",
-        "email": "desmond_herzog@example.org",
+        "first_name": "Dawna",
+        "last_name": "Block",
+        "email": "dawna.block@example.org",
         "role": "light",
         "confirmed": true,
         "approved": true,

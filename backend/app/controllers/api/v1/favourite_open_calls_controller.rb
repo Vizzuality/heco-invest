@@ -10,7 +10,7 @@ module API
         @favourite_open_call.save
         render json: OpenCallSerializer.new(
           @open_call,
-          params: {current_user: current_user}
+          params: {current_user: current_user, current_ability: current_ability}
         ).serializable_hash
       end
 
@@ -18,7 +18,7 @@ module API
         @favourite_open_calls.find_by(user: current_user)&.destroy!
         render json: OpenCallSerializer.new(
           @open_call,
-          params: {current_user: current_user}
+          params: {current_user: current_user, current_ability: current_ability}
         ).serializable_hash
       end
 

@@ -149,6 +149,34 @@
             "id": "0f81cc8a-6cbe-4e4d-b797-b0a86b6ca201",
             "type": "user"
           }
+        },
+        "open_calls": {
+          "data": [
+            {
+              "id": "e5a9908f-f999-4b48-bb31-2da6280a563d",
+              "type": "open_call"
+            },
+            {
+              "id": "18300122-ad7d-4350-85fe-64beec2e0236",
+              "type": "open_call"
+            },
+            {
+              "id": "10af76d3-37cc-469c-8a09-4df419075401",
+              "type": "open_call"
+            },
+            {
+              "id": "eb7606b5-954d-4ee1-bed1-47db75106608",
+              "type": "open_call"
+            },
+            {
+              "id": "0aff33ed-7373-4073-8b73-f061bd79cd19",
+              "type": "open_call"
+            },
+            {
+              "id": "98d3ffff-60ec-4e20-8b0c-093462a08ccc",
+              "type": "open_call"
+            }
+          ]
         }
       }
     }

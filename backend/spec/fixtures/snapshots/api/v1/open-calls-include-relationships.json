@@ -179,6 +179,14 @@
             "id": "808be74a-4050-4767-904f-2c952f2f1bb2",
             "type": "user"
           }
+        },
+        "open_calls": {
+          "data": [
+            {
+              "id": "3fca9d03-79b0-416c-812a-d8c73e65b5aa",
+              "type": "open_call"
+            }
+          ]
         }
       }
     },
@@ -239,6 +247,14 @@
             "id": "3841d800-dc71-4d85-a97c-91f59eeede8a",
             "type": "user"
           }
+        },
+        "open_calls": {
+          "data": [
+            {
+              "id": "85dd7f29-d6f7-41b8-9b4f-f8a24ee91520",
+              "type": "open_call"
+            }
+          ]
         }
       }
     },
@@ -299,6 +315,14 @@
             "id": "adc4a2ba-f97c-433b-80c5-86762170a8a5",
             "type": "user"
           }
+        },
+        "open_calls": {
+          "data": [
+            {
+              "id": "bd7c2d47-87aa-4182-b809-bc7417e442f2",
+              "type": "open_call"
+            }
+          ]
         }
       }
     },
@@ -359,6 +383,14 @@
             "id": "7992263f-2aef-4bc9-8027-99d2009aee2c",
             "type": "user"
           }
+        },
+        "open_calls": {
+          "data": [
+            {
+              "id": "abd5cd07-b418-4885-9424-b9075ceb8b45",
+              "type": "open_call"
+            }
+          ]
         }
       }
     },
@@ -419,6 +451,14 @@
             "id": "20c44e56-ee9b-4777-ace5-92a02ee383f2",
             "type": "user"
           }
+        },
+        "open_calls": {
+          "data": [
+            {
+              "id": "f7c0b933-94ff-44d1-8d4f-404fe239be32",
+              "type": "open_call"
+            }
+          ]
         }
       }
     },
@@ -479,6 +519,14 @@
             "id": "448605d9-649f-4737-9660-79959736ca9b",
             "type": "user"
           }
+        },
+        "open_calls": {
+          "data": [
+            {
+              "id": "44e95870-0278-495b-8c4f-c58498d539b4",
+              "type": "open_call"
+            }
+          ]
         }
       }
     },
@@ -539,6 +587,14 @@
             "id": "ef54f47e-37ce-4a8d-ac0f-1b5f8a4fe052",
             "type": "user"
           }
+        },
+        "open_calls": {
+          "data": [
+            {
+              "id": "b7b9f36b-274a-41d1-a88c-1917786ddb3a",
+              "type": "open_call"
+            }
+          ]
         }
       }
     },
@@ -599,6 +655,14 @@
             "id": "aad88d94-41b2-4a58-bdfe-f010de6f9365",
             "type": "user"
           }
+        },
+        "open_calls": {
+          "data": [
+            {
+              "id": "19fdb96b-a74f-4190-920e-abf9af9b7bd9",
+              "type": "open_call"
+            }
+          ]
         }
       }
     }

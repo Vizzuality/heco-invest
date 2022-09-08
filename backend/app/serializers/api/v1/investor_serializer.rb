@@ -30,6 +30,8 @@ module API
 
       belongs_to :owner, serializer: :user
 
+      has_many_restricted :open_calls
+
       attribute :picture do |object|
         image_links_for object.picture
       end
