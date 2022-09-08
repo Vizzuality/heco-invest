@@ -15,7 +15,7 @@ export const Navigation: FC<NavigationProps> = ({ className }: NavigationProps) 
 
   return (
     <div className={className}>
-      <nav className="flex space-x-8">
+      <nav className="flex space-x-8 text-sm xl:text-base">
         <ActiveLink href={Paths.Discover} activeClassName="font-semibold">
           <a title={intl.formatMessage({ defaultMessage: 'Search', id: 'xmcVZ0' })}>
             <Icon icon={SearchIcon} />
