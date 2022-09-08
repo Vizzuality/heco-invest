@@ -16,7 +16,7 @@ import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import useMe from 'hooks/me';
 import { useLocalizedQuery } from 'hooks/query';
 
-import { Queries, UserRoles } from 'enums';
+import { Paths, Queries, UserRoles } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
 import { Project, ProjectCreationPayload, ProjectUpdatePayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
@@ -425,5 +425,28 @@ export const useDeleteUser = (): UseMutationResult<{}, ErrorResponse> => {
 export const transferOwnership = async (userId: string) => {
   return await API.post('/api/v1/account/users/transfer_ownership', {
     user_id: userId,
+  });
+};
+
+/** Hook with mutation to delete an account */
+export const useDeleteAccount = (): UseMutationResult<AxiosResponse, AxiosError> => {
+  const queryClient = useQueryClient();
+  const router = useRouter();
+
+  const deleteAccount = async (): Promise<AxiosResponse> => {
+    const config: AxiosRequestConfig = {
+      method: 'DELETE',
+      url: '/api/v1/account/users/account',
+      data: {},
+    };
+
+    return API(config);
+  };
+
+  return useMutation(deleteAccount, {
+    onSuccess: () => {
+      queryClient.removeQueries();
+      router.push(Paths.Home);
+    },
   });
 };
