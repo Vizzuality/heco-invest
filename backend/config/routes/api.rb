@@ -74,6 +74,7 @@ namespace :api, format: "json" do
         collection do
           post :transfer_ownership
           delete :favourites
+          delete :account
         end
       end
     end
