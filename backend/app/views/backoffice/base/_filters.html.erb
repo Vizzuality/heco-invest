@@ -3,7 +3,7 @@
     <%= yield(f) if yield(f).present? %>
     <div class="inline-flex gap-2">
       <%= f.button :submit, value: I18n.t("backoffice.common.apply"), class: "button button-primary-green" %>
-      <%= link_to I18n.t("backoffice.common.reset"), url_for(only_path: false), class: "button button-secondary-green" %>
+      <%= link_to I18n.t("backoffice.common.reset"), url_for(page: "", q: "", only_path: false), class: "button button-secondary-green" %>
     </div>
   <% end %>
 </div>
