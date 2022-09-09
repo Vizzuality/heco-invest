@@ -7,7 +7,5 @@ FactoryBot.define do
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)
     end
-
-    language { "en" }
   end
 end
