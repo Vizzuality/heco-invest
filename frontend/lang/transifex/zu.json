@@ -425,6 +425,9 @@
   "770IIS": {
     "string": "Investment information"
   },
+  "77qZcU": {
+    "string": "Account Deleted"
+  },
   "78vrMq": {
     "string": "Close filters"
   },
@@ -1458,6 +1461,9 @@
   "S27Bu1": {
     "string": "<span>Note:</span>The content of this project should be written in {language}"
   },
+  "S2nxXm": {
+    "string": "Thanks for using HeCo Invest"
+  },
   "SFCYg4": {
     "string": "Don’t have a project yet? Create a project now"
   },
@@ -1967,6 +1973,9 @@
   },
   "d3TPmn": {
     "string": "SDG's"
+  },
+  "d8knkp": {
+    "string": "Your account has been deleted"
   },
   "dHpDHe": {
     "string": "HeCo Invest will <n>benefit poor and vulnerable people</n> living in <n>HeCo priority landscapes in the Amazon region</n>."

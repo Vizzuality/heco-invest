@@ -446,7 +446,7 @@ export const useDeleteAccount = (): UseMutationResult<AxiosResponse, AxiosError>
   return useMutation(deleteAccount, {
     onSuccess: () => {
       queryClient.removeQueries();
-      router.push(Paths.Home);
+      router.push(`${Paths.HiddenPage}?page=${Paths.AccountDeleted}`, Paths.AccountDeleted);
     },
   });
 };

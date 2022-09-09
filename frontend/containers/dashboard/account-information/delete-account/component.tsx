@@ -2,8 +2,6 @@ import { FC, useState } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { useRouter } from 'next/router';
-
 import { useGetAlert } from 'helpers/pages';
 
 import Alert from 'components/alert';
