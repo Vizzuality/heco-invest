@@ -1,5 +1,7 @@
 import { FC, useCallback, useState } from 'react';
 
+import omit from 'lodash-es/omit';
+
 import { useRouter } from 'next/router';
 
 import MapboxGLPlugin from '@vizzuality/layer-manager-plugin-mapboxgl';
@@ -28,7 +30,11 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
   const [visibleLayers, setVisibleLayers] = useState<string[]>([]);
   const { layers } = useLayers();
   const { query } = useRouter();
-  const { projectsMap } = useProjectsMap(query as ProjectMapParams);
+
+  const { projectsMap } = useProjectsMap({
+    ...(omit(query, 'search') as ProjectMapParams),
+    'filter[full_text]': query.search as string,
+  });
 
   const [viewport, setViewport] = useState({});
   const [bounds, setBounds] = useState({
