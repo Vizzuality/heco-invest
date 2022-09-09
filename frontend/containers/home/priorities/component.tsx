@@ -1,6 +1,9 @@
 import { FormattedMessage } from 'react-intl';
 
+import Link from 'next/link';
+
 import LayoutContainer from 'components/layout-container';
+import { Paths } from 'enums';
 
 export const Priorities = () => (
   <>
@@ -56,9 +59,16 @@ export const Priorities = () => (
       </h2>
       <p className="max-w-md mx-auto mt-6 text-base sm:text-center md:mt-8 sm:max-w-xl md:max-w-5xl sm:text-lg md:text-xl">
         <FormattedMessage
-          defaultMessage="Through accessing <span>ARIES</span> (Artificial Intelligence for Environmental Sustainability) and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
-          id="yJVljq"
+          defaultMessage="Through accessing <a>ARIES (Artificial Intelligence for Environmental Sustainability)</a> and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
+          id="af90UN"
           values={{
+            a: (chunks) => (
+              <Link href={`${Paths.About}#aries`}>
+                <a className="underline focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2">
+                  {chunks}
+                </a>
+              </Link>
+            ),
             span: (chunks) => <span className="font-semibold">{chunks}</span>,
           }}
         />

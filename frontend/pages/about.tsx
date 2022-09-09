@@ -263,7 +263,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
         </div>
       </LayoutContainer>
 
-      <div className="bg-green-dark">
+      <div id="aries" className="scroll-mt-24 bg-green-dark">
         <LayoutContainer className="py-16 mt-12 text-white md:mt-20 sm:pt-24 sm:pb-20 md:grid md:grid-cols-2 md:gap-12 xl:gap-6">
           <div className="lg:pr-12 xl:pr-24">
             <h2 className="font-serif text-2xl font-bold sm:text-3xl lg:text-4xl">
@@ -296,6 +296,16 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               defaultMessage="This is why ARIES is developing a 'Wikipedia-like' platform, that is collaborative, open-source and enables interoperable models and data. For the first time, this generates new knowledge through integrating the existing platform with the ultimate scope of building a more sustainable and resilient future for all."
               id="JIehAU"
             />
+            <br />
+            <br />
+            <a
+              href="https://aries.integratedmodelling.org/"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="underline focus-visible:outline focus-visible:outline-white focus-visible:outline-2 focus-visible:outline-offset-2"
+            >
+              <FormattedMessage defaultMessage="More about ARIES" id="apgkuO" />
+            </a>
           </p>
         </LayoutContainer>
       </div>

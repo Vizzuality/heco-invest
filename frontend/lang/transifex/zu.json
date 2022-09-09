@@ -1851,8 +1851,14 @@
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
   },
+  "af90UN": {
+    "string": "Through accessing <a>ARIES (Artificial Intelligence for Environmental Sustainability)</a> and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
+  },
   "agJGNx": {
     "string": "How much funding do you have available for this open call? ($)"
+  },
+  "apgkuO": {
+    "string": "More about ARIES"
   },
   "avVMND": {
     "string": "This information will be visible in the project page when you launch it."
@@ -2969,9 +2975,6 @@
   },
   "yF82he": {
     "string": "Project developer"
-  },
-  "yJVljq": {
-    "string": "Through accessing <span>ARIES</span> (Artificial Intelligence for Environmental Sustainability) and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
   },
   "yP7Lrl": {
     "string": "What is a project?"
