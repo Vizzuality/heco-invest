@@ -16,9 +16,9 @@ module.exports = {
       xl: ['1.3rem', '2rem'],
       '2xl': ['2rem', '2.5rem'],
       '3xl': ['2.5rem', '3rem'],
-      '4xl': ['3.5rem', '4rem'],
+      '4xl': ['3rem', '3.5rem'],
       '5xl': ['4rem', '5rem'],
-      '6xl': ['5.5rem', '6.5rem'],
+      '6xl': ['5rem', '6rem'],
     },
     colors: {
       transparent: 'transparent',
