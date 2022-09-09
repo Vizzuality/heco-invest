@@ -2,7 +2,6 @@ module API
   module V1
     module Accounts
       class OpenCallApplicationsController < BaseController
-        around_action(only: %i[create update]) { |_, action| set_locale(language: current_user&.account&.language, &action) }
         load_and_authorize_resource
 
         def index
@@ -69,13 +68,7 @@ module API
         private
 
         def create_params
-          params.permit(
-            :open_call_id,
-            :project_id,
-            :message
-          ).merge(
-            language: current_user.account&.language
-          )
+          params.permit :open_call_id, :project_id, :message
         end
 
         def update_params

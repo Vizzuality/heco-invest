@@ -20,16 +20,6 @@ RSpec.describe OpenCallApplication, type: :model do
     expect(subject).to have(1).errors_on(:message)
   end
 
-  it "should not be valid with wrong language" do
-    subject.language = "fr"
-    expect(subject).to have(1).errors_on(:language)
-  end
-
-  it "should not be valid without language" do
-    subject.language = nil
-    expect(subject).to have(1).errors_on(:language)
-  end
-
   it "should not be valid when application already exists" do
     application = create :open_call_application
     subject.assign_attributes application.attributes

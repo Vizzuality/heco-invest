@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_06_084050) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_09_092937) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -213,13 +213,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_084050) do
   create_table "open_call_applications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "open_call_id", null: false
     t.uuid "project_id", null: false
-    t.text "message_en"
-    t.text "message_es"
-    t.text "message_pt"
-    t.string "language", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "funded", default: false, null: false
+    t.text "message"
     t.index ["open_call_id", "project_id"], name: "open_call_applications_open_call_id_on_project_id", unique: true
     t.index ["open_call_id"], name: "index_open_call_applications_on_open_call_id"
     t.index ["project_id"], name: "index_open_call_applications_on_project_id"
@@ -369,6 +366,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_084050) do
     t.text "relevant_links_pt"
     t.string "category", null: false
     t.jsonb "geometry", default: {}
+    t.geometry "centroid", limit: {:srid=>0, :type=>"st_point"}
     t.decimal "municipality_biodiversity_impact", precision: 25, scale: 20
     t.decimal "municipality_climate_impact", precision: 25, scale: 20
     t.decimal "municipality_water_impact", precision: 25, scale: 20
@@ -384,7 +382,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_084050) do
     t.decimal "priority_landscape_water_impact", precision: 25, scale: 20
     t.decimal "priority_landscape_community_impact", precision: 25, scale: 20
     t.decimal "priority_landscape_total_impact", precision: 25, scale: 20
-    t.geometry "centroid", limit: {:srid=>0, :type=>"st_point"}
     t.uuid "priority_landscape_id"
     t.boolean "impact_calculated", default: false
     t.index ["country_id"], name: "index_projects_on_country_id"
