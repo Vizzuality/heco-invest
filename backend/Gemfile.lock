@@ -540,6 +540,7 @@ GEM
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
     unicode-display_width (2.1.0)
+    vcr (6.1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -621,6 +622,7 @@ DEPENDENCIES
   traco
   turbo-rails
   tzinfo-data
+  vcr
   web-console
   webmock
 
