@@ -97,3 +97,18 @@ variable "staging_http_auth_password" {
   description = "Http auth password (for staging)"
   default = ""
 }
+
+variable "klab_api_host" {
+  type = string
+  description = "Klab engine API host"
+}
+
+variable "klab_api_username" {
+  type = string
+  description = "Klab engine API username"
+}
+
+variable "klab_api_password" {
+  type = string
+  description = "Klab engine API password"
+}

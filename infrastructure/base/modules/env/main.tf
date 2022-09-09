@@ -322,6 +322,18 @@ module "backend_cloudrun" {
     {
       name  = "HTTP_AUTH_USERNAME"
       value = var.http_auth_username
+    },
+    {
+      name  = "KLAB_API_HOST"
+      value = var.klab_api_host
+    },
+    {
+      name  = "KLAB_API_USERNAME"
+      value = var.klab_api_username
+    },
+    {
+      name  = "KLAB_API_PASSWORD"
+      value = var.klab_api_password
     }
   ]
 }
@@ -443,6 +455,18 @@ module "jobs_cloudrun" {
     {
       name  = "INSTANCE_ROLE"
       value = var.instance_role
+    },
+    {
+      name  = "KLAB_API_HOST"
+      value = var.klab_api_host
+    },
+    {
+      name  = "KLAB_API_USERNAME"
+      value = var.klab_api_username
+    },
+    {
+      name  = "KLAB_API_PASSWORD"
+      value = var.klab_api_password
     }
   ]
 }
