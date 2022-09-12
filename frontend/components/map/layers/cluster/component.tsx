@@ -34,7 +34,13 @@ export const ClusterLayer: FC<ClusterLayerProps> = ({
 
         if (cluster) {
           return (
-            <Marker key={id} latitude={latitude} longitude={longitude}>
+            <Marker
+              key={id}
+              latitude={latitude}
+              longitude={longitude}
+              offsetLeft={-20}
+              offsetTop={-20}
+            >
               {cloneElement(ClusterComponent, {
                 ...properties,
                 superclusterInstance: SUPERCLUSTER,
@@ -48,6 +54,8 @@ export const ClusterLayer: FC<ClusterLayerProps> = ({
             key={id}
             latitude={latitude}
             longitude={longitude}
+            offsetLeft={-10}
+            offsetTop={-23}
             onClick={() => onSelectProjectPin(`${id}`)}
           >
             {cloneElement(MarkerComponent, properties)}
