@@ -26,13 +26,25 @@ const Template: Story<SortingButtonsProps> = ({ ...props }: SortingButtonsProps)
   };
 
   return (
-    <SortingButtons sortBy={sortBy} sortOrder={sortOrder} onChange={handleOnChange} {...props} />
+    <div className="flex items-center justify-center h-48 p-12 bg-background-dark">
+      <SortingButtons sortBy={sortBy} sortOrder={sortOrder} onChange={handleOnChange} {...props} />
+    </div>
   );
 };
 
 export const Default: Story<SortingButtonsProps> = Template.bind({});
 
 Default.args = {
+  options: [
+    { key: 'name', label: 'Name' },
+    { key: 'created_at', label: 'Created at' },
+  ],
+};
+
+export const Pill: Story<SortingButtonsProps> = Template.bind({});
+
+Pill.args = {
+  theme: 'pill',
   options: [
     { key: 'name', label: 'Name' },
     { key: 'created_at', label: 'Created at' },
