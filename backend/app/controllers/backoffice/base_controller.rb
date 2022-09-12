@@ -3,6 +3,7 @@ module Backoffice
     include Pagy::Backend
     include Breadcrumbs
     include Localization
+    include FilterMemoization
 
     layout "backoffice"
 
