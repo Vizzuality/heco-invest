@@ -72,6 +72,14 @@
             "id": "808be74a-4050-4767-904f-2c952f2f1bb2",
             "type": "user"
           }
+        },
+        "open_calls": {
+          "data": [
+            {
+              "id": "3fca9d03-79b0-416c-812a-d8c73e65b5aa",
+              "type": "open_call"
+            }
+          ]
         }
       }
     }

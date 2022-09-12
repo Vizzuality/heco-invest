@@ -12,6 +12,7 @@ RSpec.describe "API V1 Account Investors", type: :request do
       parameter name: :locale, in: :query, type: :string, required: false, description: "Retrieve content in required language, skip for account language."
 
       let(:investor) { create :investor }
+      let!(:draft_open_call) { create :open_call, status: :draft, investor: investor }
       let(:user) { create :user }
 
       it_behaves_like "with not authorized error", csrf: true, require_investor: true
@@ -31,6 +32,10 @@ RSpec.describe "API V1 Account Investors", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/accounts-investor")
+        end
+
+        it "shows draft open calls defined through relationships" do
+          expect(response_json["data"]["relationships"]["open_calls"]["data"].pluck("id")).to include(draft_open_call.id)
         end
 
         context "with relationships" do

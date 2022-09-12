@@ -14,7 +14,7 @@ module API
             @open_call_applications,
             include: included_relationships,
             fields: sparse_fieldset,
-            params: {current_user: current_user}
+            params: {current_user: current_user, current_ability: current_ability}
           ).serializable_hash
         end
 
@@ -23,7 +23,7 @@ module API
             @open_call_application,
             include: included_relationships,
             fields: sparse_fieldset,
-            params: {current_user: current_user}
+            params: {current_user: current_user, current_ability: current_ability}
           ).serializable_hash
         end
 
@@ -32,7 +32,7 @@ module API
           render json: OpenCallApplicationSerializer.new(
             @open_call_application,
             include: included_relationships,
-            params: {current_user: current_user}
+            params: {current_user: current_user, current_ability: current_ability}
           ).serializable_hash
         end
 
@@ -41,7 +41,7 @@ module API
           render json: OpenCallApplicationSerializer.new(
             @open_call_application,
             include: included_relationships,
-            params: {current_user: current_user}
+            params: {current_user: current_user, current_ability: current_ability}
           ).serializable_hash
         end
 

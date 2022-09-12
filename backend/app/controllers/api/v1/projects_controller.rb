@@ -18,7 +18,7 @@ module API
           fields: sparse_fieldset,
           links: pagination_links(:api_v1_projects_path, pagy_object),
           meta: pagination_meta(pagy_object),
-          params: {current_user: current_user}
+          params: {current_user: current_user, current_ability: current_ability}
         ).serializable_hash
       end
 
@@ -27,7 +27,7 @@ module API
           @project,
           include: included_relationships,
           fields: sparse_fieldset,
-          params: {current_user: current_user}
+          params: {current_user: current_user, current_ability: current_ability}
         ).serializable_hash
       end
 

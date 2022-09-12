@@ -10,7 +10,7 @@ module API
           @users = @users.search filter_params[:full_text] if filter_params[:full_text].present?
           render json: UserSerializer.new(
             @users,
-            params: {current_user: current_user}
+            params: {current_user: current_user, current_ability: current_ability}
           ).serializable_hash
         end
 
