@@ -96,6 +96,47 @@ RSpec.describe "Backoffice: Projects", type: :system do
         end
       end
     end
+
+    context "when deleting project via menu" do
+      it "deletes project" do
+        within_row(project.name) do
+          find("button.rounded-full").click
+          expect {
+            accept_confirm do
+              click_on t("backoffice.common.delete")
+            end
+          }.to have_enqueued_mail(ProjectDeveloperMailer, :project_destroyed).with(project.project_developer, project.name)
+            .and have_enqueued_mail(ProjectDeveloperMailer, :project_destroyed).with(project.involved_project_developers.first, project.name)
+            .and have_enqueued_mail(InvestorMailer, :project_destroyed).with(open_call_application.investor, project.name, open_call_application.open_call)
+        end
+        expect(page).not_to have_text(project.name)
+      end
+    end
+
+    context "when unverifying project via menu" do
+      it "unverifies project" do
+        within_row(project.name) do
+          find("button.rounded-full").click
+          click_on t("backoffice.common.unverify")
+          expect(page).to have_text(I18n.t("backoffice.common.unverified"))
+        end
+      end
+    end
+
+    context "when verifying project via menu" do
+      before do
+        project.update! verified: false
+        visit "/backoffice/projects"
+      end
+
+      it "verifies project" do
+        within_row(project.name) do
+          find("button.rounded-full").click
+          click_on t("backoffice.common.verify")
+          expect(page).to have_text(I18n.t("backoffice.common.verified"))
+        end
+      end
+    end
   end
 
   describe "Edit" do

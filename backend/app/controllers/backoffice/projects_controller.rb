@@ -3,7 +3,7 @@ module Backoffice
     include Sections
     include ContentLanguage
 
-    before_action :fetch_project, only: [:edit, :update, :destroy]
+    before_action :fetch_project, only: [:edit, :update, :destroy, :verify, :unverify]
     before_action :set_breadcrumbs, only: [:edit, :update]
     before_action :set_sections, only: [:edit, :update]
     before_action :set_content_language_default, only: [:edit, :update]
@@ -12,6 +12,7 @@ module Backoffice
       @q = Project.published.ransack params[:q]
       @projects = API::Filterer.new(@q.result, {full_text: params.dig(:q, :filter_full_text)}).call
       @projects = @projects.includes(:priority_landscape, project_developer: [:account])
+      @projects = @projects.order(:created_at)
 
       respond_to do |format|
         format.html do
@@ -42,6 +43,18 @@ module Backoffice
     def destroy
       Projects::Destroy.new(@project).call
       redirect_to backoffice_projects_path, status: :see_other, notice: t("backoffice.messages.success_delete", model: t("backoffice.common.project"))
+    end
+
+    def verify
+      @project.update! verified: true
+
+      redirect_back fallback_location: backoffice_projects_path
+    end
+
+    def unverify
+      @project.update! verified: false
+
+      redirect_back fallback_location: backoffice_projects_path
     end
 
     private
