@@ -59,6 +59,12 @@ export const Overview: React.FC<OverviewProps> = ({
               onMapViewportChange={handleViewportChange}
               bounds={zoomedIn ? zoomedInBounds : zoomedOutBounds}
               viewport={viewport}
+              scrollZoom={false}
+              touchZoom={false}
+              touchRotate={false}
+              dragPan={false}
+              dragRotate={false}
+              getCursor={() => 'default'}
             >
               {(map) => (
                 <LayerManager map={map} plugin={PluginMapboxGl}>
