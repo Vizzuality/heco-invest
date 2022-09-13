@@ -15,8 +15,7 @@ import { PopupProps } from './types';
 
 export const Popup: React.FC<PopupProps> = ({
   triggerRef,
-  align,
-  direction,
+  overlayRef,
   autoFocus,
   domProps,
   children,
@@ -26,9 +25,9 @@ export const Popup: React.FC<PopupProps> = ({
   onAction,
   header,
   hiddenSections = {},
+  ...otherProps
 }: PopupProps) => {
   const ref = React.useRef(null);
-  const overlayRef = React.useRef(null);
 
   const state = useTreeState({ children, selectionMode: 'none', disabledKeys, expandedKeys });
   const { menuProps } = useMenu({ autoFocus, children }, state, ref);
@@ -55,16 +54,12 @@ export const Popup: React.FC<PopupProps> = ({
 
   return (
     <FocusScope restoreFocus>
-      <div {...overlayProps} ref={overlayRef}>
+      <div {...mergeProps(overlayProps, otherProps)} ref={overlayRef} className="!z-30">
         <DismissButton onDismiss={onClose} />
         <div
           {...mergeProps(menuProps, domProps)}
           ref={ref}
-          className={cx(
-            'z-30 absolute transform whitespace-nowrap bg-white shadow-2xl rounded-md overflow-hidden',
-            align === 'start' ? 'left-0' : 'right-0',
-            direction === 'top' ? '-top-2 -translate-y-full' : '-bottom-2 translate-y-full'
-          )}
+          className="overflow-hidden bg-white rounded-md shadow-2xl whitespace-nowrap"
         >
           {header && (
             <div id="popup-header" className="p-4 pb-0">
