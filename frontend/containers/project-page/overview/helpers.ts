@@ -21,7 +21,7 @@ export const getLayer = (feature: ValidGeometryType, category: string) => {
           type: 'fill',
           paint: {
             'fill-color': color,
-            'fill-opacity': 0.5,
+            'fill-opacity': 0.25,
           },
         },
         {

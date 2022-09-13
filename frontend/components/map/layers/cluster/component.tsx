@@ -1,4 +1,4 @@
-import { cloneElement, FC, useMemo } from 'react';
+import { FC, useMemo } from 'react';
 
 import { Marker } from 'react-map-gl';
 
@@ -34,11 +34,14 @@ export const ClusterLayer: FC<ClusterLayerProps> = ({
 
         if (cluster) {
           return (
-            <Marker key={id} latitude={latitude} longitude={longitude}>
-              {cloneElement(ClusterComponent, {
-                ...properties,
-                superclusterInstance: SUPERCLUSTER,
-              })}
+            <Marker
+              key={id}
+              latitude={latitude}
+              longitude={longitude}
+              offsetLeft={-20}
+              offsetTop={-20}
+            >
+              <ClusterComponent {...properties} superclusterInstance={SUPERCLUSTER} />
             </Marker>
           );
         }
@@ -48,9 +51,11 @@ export const ClusterLayer: FC<ClusterLayerProps> = ({
             key={id}
             latitude={latitude}
             longitude={longitude}
+            offsetLeft={-10}
+            offsetTop={-23}
             onClick={() => onSelectProjectPin(`${id}`)}
           >
-            {cloneElement(MarkerComponent, properties)}
+            <MarkerComponent {...properties} />
           </Marker>
         );
       })}
