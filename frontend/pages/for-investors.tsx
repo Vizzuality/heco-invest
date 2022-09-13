@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
@@ -10,6 +11,7 @@ import { groupBy } from 'lodash-es';
 import { InferGetServerSidePropsType } from 'next';
 
 import { useBreakpoint } from 'hooks/use-breakpoint';
+import { FaqPaths } from 'hooks/useFaq';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
@@ -280,10 +282,19 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         <h2 className="mt-8 mb-8 font-serif text-3xl font-semibold md:mt-14 md:text-5xl">
           <FormattedMessage defaultMessage="By priority landscapes" id="JcS7oJ" />
         </h2>
-        <p className="mb-8">
+        <p className="max-w-[800px] mb-8">
           <FormattedMessage
-            defaultMessage="The HeCo priority landscapes or conservation mosaics are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure quality ecosystem services."
-            id="oB/VNW"
+            defaultMessage="The HeCo priority landscapes or conservation mosaics are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure quality ecosystem services. <a>Read more</a>"
+            id="a6W2Pq"
+            values={{
+              a: (chunks: string) => (
+                <Link href={FaqPaths['what-are-heco-priority-landscapes']}>
+                  <a className="underline text-green-dark focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2">
+                    {chunks}
+                  </a>
+                </Link>
+              ),
+            }}
           />
         </p>
         <div className="grid grid-flow-row gap-6 lg:grid-flow-col lg:grid-cols-2 xl:gap-8">
