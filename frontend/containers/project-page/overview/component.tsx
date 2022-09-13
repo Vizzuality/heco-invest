@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
+import { Marker } from 'react-map-gl';
 
 import PluginMapboxGl from '@vizzuality/layer-manager-plugin-mapboxgl';
 import { LayerManager, Layer } from '@vizzuality/layer-manager-react';
@@ -9,12 +10,13 @@ import { OverviewProps } from 'containers/project-page/overview/types';
 
 import LayoutContainer from 'components/layout-container';
 import Map from 'components/map';
+import ProjectMapPin from 'components/project-map-pin';
 
 import { getLayer } from './helpers';
 
 export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) => {
-  const { country, municipality, geometry, category, priority_landscape } = project;
-
+  const { country, municipality, geometry, category, priority_landscape, latitude, longitude } =
+    project;
   const layer = getLayer(geometry, category);
 
   const [bounds, setBounds] = useState({
@@ -41,6 +43,16 @@ export const Overview: React.FC<OverviewProps> = ({ project }: OverviewProps) =>
             {(map) => (
               <LayerManager map={map} plugin={PluginMapboxGl}>
                 <Layer {...layer} />
+                {typeof latitude === 'number' && typeof longitude === 'number' && (
+                  <Marker
+                    latitude={latitude}
+                    longitude={longitude}
+                    offsetLeft={-10}
+                    offsetTop={-23}
+                  >
+                    <ProjectMapPin category={category} interactive={false} />
+                  </Marker>
+                )}
               </LayerManager>
             )}
           </Map>
