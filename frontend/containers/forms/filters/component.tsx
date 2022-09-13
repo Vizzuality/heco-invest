@@ -9,7 +9,6 @@ import { groupBy } from 'lodash-es';
 import {
   transformFilterInputsToParams,
   transformFilterParamsToInputs,
-  useQueryParams,
   useSearch,
 } from 'helpers/pages';
 
@@ -88,7 +87,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
       setValue(key as keyof FilterForm, value);
     });
     setFiltersInputValue(filterInputs);
-  }, [filters]);
+  }, [filters, setValue]);
 
   const onChange = (ev: any) => {
     const { value, name } = ev.target;

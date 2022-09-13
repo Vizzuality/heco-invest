@@ -126,6 +126,13 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                 <Button theme="naked" size="smallest" icon={CloseIcon} onClick={clearInput} />
               </div>
             )}
+            {pathname === Paths.Home && (
+              <div className="hidden md:block">
+                <Button className="text-green-dark" theme="naked" to={Paths.Discover}>
+                  {formatMessage({ defaultMessage: 'See full catalogue', id: 'oG/A0q' })}
+                </Button>
+              </div>
+            )}
             {!openFilters && !showSuggestion && (
               <div className="flex items-center flex-grow-0 gap-4 overflow-hidden transition-all duration-300 ease-in-out sm:gap-6 sm:justify-self-end">
                 {/* Filters accordion header https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html */}
@@ -146,13 +153,6 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                     </span>
                   </Button>
                 </h3>
-              </div>
-            )}
-            {pathname === Paths.Home && (
-              <div className="hidden md:block">
-                <Button theme="primary-orange" to={Paths.Discover}>
-                  {formatMessage({ defaultMessage: 'Search full catalogue', id: 'KJE+sC' })}
-                </Button>
               </div>
             )}
           </form>
