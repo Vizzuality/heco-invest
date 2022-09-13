@@ -59,16 +59,16 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
           Trigger={
             <Button
               theme={theme}
-              size="small"
+              size="smallest"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen(true)}
-              className="sm:py-2"
+              className="pt-2 pb-2 pl-2 pr-2"
             >
-              <span className="hidden sm:inline">
+              <span className="sr-only">
                 <FormattedMessage defaultMessage="Menu" id="tKMlOc" />
               </span>
-              <span className="inline sm:hidden">
-                <MenuIcon height={20} />
+              <span className="inline">
+                <MenuIcon className="h-5" />
               </span>
             </Button>
           }
