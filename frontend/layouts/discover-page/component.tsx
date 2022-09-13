@@ -83,7 +83,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     };
   };
 
-  const { data, meta, loading } = useMemo(() => {
+  const searchResult = useMemo(() => {
     if (pathname.startsWith(Paths.Projects)) return getCurrentData(projects);
     if (pathname.startsWith(Paths.ProjectDevelopers)) return getCurrentData(projectDevelopers);
     if (pathname.startsWith(Paths.Investors)) return getCurrentData(investors);
@@ -119,7 +119,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      return React.cloneElement(child, { data, meta, loading });
+      return React.cloneElement(child, searchResult);
     }
 
     return child;
@@ -130,7 +130,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
       <div className="flex flex-col h-screen overflow-auto">
         <div className="z-10">
           <Header />
-          <LayoutContainer className="z-10 flex justify-center pt-1 mt-0 mb-2 pointer-events-none xl:hidden xl:mb-6 xl:mt-0 xl:left-0 xl:right-0 xl:h-20 xl:fixed xl:top-3">
+          <LayoutContainer className="z-10 flex justify-center pt-1 mt-0 mb-2 pointer-events-none xl:mb-6 xl:mt-3 xl:left-0 xl:right-0 xl:fixed xl:top-3">
             <DiscoverSearch className="w-full max-w-3xl pointer-events-auto -z-10" />
           </LayoutContainer>
         </div>

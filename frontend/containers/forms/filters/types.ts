@@ -1,12 +1,12 @@
+import { Enum } from 'types/enums';
+
 export type FiltersProps = {
   /** Function that closes the filters  */
   closeFilters: () => void;
-  /** Filters input values */
-  filtersInputValue: Partial<FilterForm>;
-  /** Function to set the filters values */
-  setFiltersInputValue: (filtersInputValue: Partial<FilterForm>) => void;
-  /** Function that adds the filters to the query params  */
-  onSubmitFilters: (filters: Partial<FilterForm>) => void;
+  /** Search query filters */
+  filters: Partial<FilterParams>;
+  /** Enums of the filters */
+  filtersData: Enum[];
 };
 
 export type FilterParams = {
