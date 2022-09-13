@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import cx from 'classnames';
-
 import Image from 'next/image';
 
 import { withLocalizedRequests } from 'hoc/locale';
@@ -76,10 +74,12 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
   priorityLandscapes,
 }) => {
   const { formatMessage } = useIntl();
+
   const [impactModalOpen, setImpactModalOpen] = useState(false);
+  const [hoveredPriorityLandscapeCode, setHoveredPriorityLandscapeCode] = useState<string>(null);
+
   const breakpoint = useBreakpoint();
   const isMd = breakpoint('sm');
-  const isLg = breakpoint('lg');
 
   const priorityLandscapesDescriptionsByCode = {
     'priority-landscape-amazonian-piedmont-massif': (
@@ -289,10 +289,14 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         <div className="grid grid-flow-row gap-6 lg:grid-flow-col lg:grid-cols-2 xl:gap-8">
           <figure className="block max-w-md mx-auto rounded-lg lg:max-w-none lg:col-start-2">
             <Image
-              src="/images/for-investor/for-investor-priority-landscapes.png"
+              src={
+                !hoveredPriorityLandscapeCode
+                  ? '/images/for-investor/for-investor-priority-landscapes.png'
+                  : `/images/for-investor/for-investor-${hoveredPriorityLandscapeCode}.png`
+              }
               alt={formatMessage({ defaultMessage: 'HeCo priority landscapes', id: 'X+46wB' })}
-              width={1260}
-              height={902}
+              width={640}
+              height={744}
               className="rounded-lg"
             />
             <figcaption className="mt-2 text-xs font-semibold text-center text-gray-700">
@@ -314,6 +318,8 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                   cardType="projects"
                   enumType="mosaic"
                   filterName="priority_landscape"
+                  onMouseEnter={() => setHoveredPriorityLandscapeCode(code)}
+                  onMouseLeave={() => setHoveredPriorityLandscapeCode(null)}
                 />
               );
             })}
