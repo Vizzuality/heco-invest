@@ -1701,6 +1701,9 @@
   "XOLAV7": {
     "string": "Withdraw from the open call?"
   },
+  "XPruqs": {
+    "string": "Order"
+  },
   "XQuzr9": {
     "string": "Identified priorities by the HeCo program"
   },
@@ -1815,9 +1818,6 @@
   "ZocjEJ": {
     "string": "What happens when I delete my Project Developer account?"
   },
-  "Zt7DBA": {
-    "string": "Priority landscapes of HeCo"
-  },
   "a+vAPa": {
     "string": "Invitation mail"
   },
@@ -1856,6 +1856,9 @@
   },
   "agJGNx": {
     "string": "How much funding do you have available for this open call? ($)"
+  },
+  "aleGqT": {
+    "string": "Descending"
   },
   "apgkuO": {
     "string": "More about ARIES"
@@ -2478,6 +2481,9 @@
   "oAIvoH": {
     "string": "Please, enter valid email."
   },
+  "oB/VNW": {
+    "string": "The HeCo priority landscapes or conservation mosaics are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure quality ecosystem services."
+  },
   "oBB4L4": {
     "string": "Send invite"
   },
@@ -2798,6 +2804,9 @@
   },
   "u2WlCd": {
     "string": "Pollutants reduction"
+  },
+  "u7djqV": {
+    "string": "Ascending"
   },
   "u87XOB": {
     "string": "How your project will grow"

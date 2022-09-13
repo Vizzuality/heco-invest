@@ -26,7 +26,7 @@ export const PublicPageCard: FC<PublicPageCardProps> = ({
 }) => {
   return (
     <div
-      className="w-[75vw] sm:w-[60vw] h-full md:w-auto m-2 row-start-2 md:row-start-auto lg:max-w-full flex flex-col justify-between p-4 transition-all duration-500 bg-white rounded-lg shadow-sm group drop-shadow-none hover:drop-shadow-lg ease min-h-[290px]"
+      className="w-[75vw] sm:w-[60vw] md:w-auto flex flex-col justify-between p-4 transition-all duration-500 bg-white rounded-lg shadow-sm group drop-shadow-none hover:drop-shadow-lg ease min-h-[290px]"
       key={id}
     >
       <div className="flex justify-between mb-2">
