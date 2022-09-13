@@ -1,6 +1,5 @@
 import { FC, useState, useCallback } from 'react';
 
-import { ChevronDown as ChevronDownIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -63,7 +62,7 @@ export const UserMenu: FC<UserMenuProps> = ({
                 aria-label={intl.formatMessage({ defaultMessage: 'User menu', id: '6b2CRH' })}
                 className="px-0 focus-visible:outline-green-dark"
                 theme="naked"
-                size="small"
+                size="smallest"
                 aria-expanded={menuOpen}
                 onClick={() => setMenuOpen(true)}
               >
@@ -75,13 +74,11 @@ export const UserMenu: FC<UserMenuProps> = ({
                 >
                   {getUserInitials(user)}
                 </span>
-                <ChevronDownIcon className="inline-block w-4 h-4 ml-1" />
               </Button>
             }
             onAction={onClickMenuItem}
             align="end"
             direction="bottom"
-            className="md:p-4 md:py-1 lg:pr-0"
             header={
               <div className="flex">
                 <div className="flex items-center justify-center w-12 h-12 mr-2 text-white rounded-full bg-green-dark">
