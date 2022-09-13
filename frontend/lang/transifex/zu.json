@@ -68,9 +68,6 @@
   "/VnDMl": {
     "string": "Other"
   },
-  "/XKclL": {
-    "string": "To update any of this information, or to delete the account, please contact the platform administrator."
-  },
   "/aYUC+": {
     "string": "By contributing to improve the productions systems and livelihoods of local communities and indigenous peoples to satisfy their basic needs, while enhancing their adaptation to climate change.<br></br><br></br>Supporting the consolidation of their lands governance structures and capacities for sound management."
   },
@@ -574,6 +571,9 @@
   },
   "9dtx+L": {
     "string": "Something went wrong while sending an invitation to the email {email}."
+  },
+  "9lOzos": {
+    "string": "To update any of this information, please contact the platform administrator. To delete the account, please contact the account owner."
   },
   "9nYuln": {
     "string": "Base Layers"

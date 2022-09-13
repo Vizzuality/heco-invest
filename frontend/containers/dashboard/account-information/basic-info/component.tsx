@@ -50,8 +50,8 @@ export const AccountBasicInfo: FC<AccountBasicInfoProps> = ({}: AccountBasicInfo
           <div className="flex flex-col items-center gap-4 p-4 mt-6 text-sm md:flex-row rounded-xl bg-background-middle">
             <div className="flex flex-grow">
               <FormattedMessage
-                defaultMessage="To update any of this information, or to delete the account, please contact the platform administrator."
-                id="/XKclL"
+                defaultMessage="To update any of this information, please contact the platform administrator. To delete the account, please contact the account owner."
+                id="9lOzos"
               />
             </div>
           </div>
