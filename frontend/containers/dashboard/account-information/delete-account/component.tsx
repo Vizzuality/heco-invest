@@ -2,17 +2,21 @@ import { FC, useState } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import { useRouter } from 'next/router';
+
 import { useGetAlert } from 'helpers/pages';
 
 import Alert from 'components/alert';
 import Button from 'components/button';
 import ConfirmationPrompt from 'components/confirmation-prompt';
+import { Paths } from 'enums';
 
 import { useAccount, useDeleteAccount } from 'services/account';
 
 import { DeleteAccountProps } from './types';
 
 export const DeleteAccount: FC<DeleteAccountProps> = ({}: DeleteAccountProps) => {
+  const router = useRouter();
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const { formatMessage } = useIntl();
@@ -26,9 +30,14 @@ export const DeleteAccount: FC<DeleteAccountProps> = ({}: DeleteAccountProps) =>
   };
 
   const handleDeleteAccount = () => {
-    deleteAccountMutation.reset();
-    // onSuccess, etc callbacks will not be fired
-    deleteAccountMutation.mutate({});
+    deleteAccountMutation.mutate(
+      {},
+      {
+        onSuccess: () => {
+          router.push(`${Paths.HiddenPage}?page=${Paths.AccountDeleted}`, Paths.AccountDeleted);
+        },
+      }
+    );
   };
 
   return (

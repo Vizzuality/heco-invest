@@ -6,7 +6,6 @@ import {
   useQueryClient,
   UseQueryResult,
   UseQueryOptions,
-  useQuery,
 } from 'react-query';
 
 import { useRouter } from 'next/router';
@@ -16,7 +15,7 @@ import { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import useMe from 'hooks/me';
 import { useLocalizedQuery } from 'hooks/query';
 
-import { Paths, Queries, UserRoles } from 'enums';
+import { Queries, UserRoles } from 'enums';
 import { Investor, InvestorForm } from 'types/investor';
 import { Project, ProjectCreationPayload, ProjectUpdatePayload } from 'types/project';
 import { ProjectDeveloper, ProjectDeveloperSetupForm } from 'types/projectDeveloper';
@@ -446,7 +445,6 @@ export const useDeleteAccount = (): UseMutationResult<AxiosResponse, AxiosError>
   return useMutation(deleteAccount, {
     onSuccess: () => {
       queryClient.removeQueries();
-      router.push(`${Paths.HiddenPage}?page=${Paths.AccountDeleted}`, Paths.AccountDeleted);
     },
   });
 };
