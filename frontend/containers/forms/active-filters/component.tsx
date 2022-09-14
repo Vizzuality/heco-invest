@@ -32,7 +32,7 @@ export const ActiveFilters: FC<ActiveFilterProps> = ({ filters = {}, filtersData
     setValue,
     formState: { errors },
   } = useForm<{ activeFilters: string[] }>({
-    defaultValues: { activeFilters: activeFilters?.map(({ id }) => id) },
+    defaultValues: { activeFilters: activeFilters.map(({ id }) => id) },
   });
 
   const handleDeleteActiveFilter = (filterId: string) => {
