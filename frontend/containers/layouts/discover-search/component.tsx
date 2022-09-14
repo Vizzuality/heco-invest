@@ -7,7 +7,7 @@ import cx from 'classnames';
 
 import { useRouter } from 'next/router';
 
-import { useDiscoverPath, useQueryParams } from 'helpers/pages';
+import { cleanQueryParams, useDiscoverPath, useQueryParams } from 'helpers/pages';
 
 import Filters from 'containers/forms/filters';
 import { FilterForm, FilterParams } from 'containers/forms/filters/types';
@@ -58,11 +58,17 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({
 
   const handleSearch = (searchInput: string, filtersInput: Partial<FilterParams>) => {
     push(
-      { query: { sorting, page: 1, search: searchInput, ...filtersInput }, pathname },
-      undefined,
       {
-        shallow: true,
-      }
+        query: cleanQueryParams({
+          page: null,
+          search: searchInput || null,
+          sorting: sorting || null,
+          ...filtersInput,
+        }),
+        pathname,
+      },
+      undefined,
+      { shallow: true }
     );
   };
 
