@@ -6,7 +6,7 @@ import cx from 'classnames';
 
 import { useRouter } from 'next/router';
 
-import { useQueryParams } from 'helpers/pages';
+import { cleanQueryParams, useQueryParams } from 'helpers/pages';
 
 import DiscoverSearch from 'containers/layouts/discover-search';
 
@@ -47,15 +47,14 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     if (pathname.startsWith(Paths.Projects)) return Queries.Project;
 
     if (sorting.sortBy !== 'name' && sorting.sortBy !== 'created_at') {
-      setSorting({ ...sorting, sortBy: 'name' });
+      setSorting(defaultSorting);
     }
-  }, [pathname, sorting]) as SortingByTargetType;
+  }, [defaultSorting, pathname, sorting]) as SortingByTargetType;
 
   const sortingOptions = useSortingByOptions(sortingOptionsTarget);
+  const queryParams = useQueryParams();
 
-  const queryParams = useQueryParams(sorting);
-
-  const queryOptions = { keepPreviousData: false };
+  const queryOptions = { keepPreviousData: true };
 
   const projects = useProjectsList(
     { ...queryParams, includes: ['project_developer', 'involved_project_developers'] },
@@ -91,8 +90,11 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   }, [pathname, projects, projectDevelopers, investors, openCalls]) || { data: [], meta: [] };
 
   useEffect(() => {
-    const [sortBy, sortOrder]: any = queryParams.sorting.split(' ');
-    setSorting(sortBy && sortOrder ? { sortBy, sortOrder } : defaultSorting);
+    const [sortBy, sortOrder]: any = queryParams?.sorting?.split(' ') || [
+      defaultSorting.sortBy,
+      defaultSorting.sortOrder,
+    ];
+    setSorting({ sortBy, sortOrder });
   }, [defaultSorting, queryParams.sorting]);
 
   const handleSorting = ({
@@ -103,10 +105,10 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     sortOrder: SortingOrderType;
   }) => {
     push({
-      query: {
+      query: cleanQueryParams({
         ...queryParams,
         sorting: `${sortBy || sorting.sortBy} ${sortOrder || sorting.sortOrder}`,
-      },
+      }),
     });
   };
 
