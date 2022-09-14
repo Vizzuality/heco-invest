@@ -1,7 +1,6 @@
 import { FC, PointerEvent, useState, useMemo } from 'react';
 
-import { CheckCircle as CheckCircleIcon } from 'react-feather';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
@@ -41,7 +40,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
     },
   } = useEnums();
 
-  const { id, slug, name, trusted } = project;
+  const { id, slug, name } = project;
   const category = allCategories?.find(({ id }) => id === project.category);
   const impact = useMemo(() => projectImpact(project)['municipality'], [project]);
   const link = `${Paths.Project}/${slug}`;
