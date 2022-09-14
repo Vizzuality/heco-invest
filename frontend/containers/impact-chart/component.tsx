@@ -156,6 +156,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
         ) : (
           <div>
             <Tooltip
+              placement="top"
               visible={isHovered}
               content={
                 <div className="w-0 h-0 overflow-visible text-xs text-center text-gray-600 bg-red-700">
