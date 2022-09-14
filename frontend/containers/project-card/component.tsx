@@ -175,7 +175,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               <span className="text-xl font-semibold leading-tight outline-none">{name}</span>
             )}
           </div>
-          <div className="flex flex-wrap items-center h-5 text-sm text-gray-600 min-h-fit">
+          <div className="flex flex-wrap items-center text-sm text-gray-600 min-h-fit">
             {instrumentTypesStr && (
               <div
                 title={intl.formatMessage({
