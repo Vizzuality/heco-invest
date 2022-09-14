@@ -1,6 +1,6 @@
 import { FC, PointerEvent, useState, useMemo } from 'react';
 
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
@@ -54,7 +54,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
     () =>
       allInstrumentTypes
         ?.filter(({ id }) => project.instrument_types?.includes(id))
-        .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase()))
+        .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase())?.trim())
         .join(', '),
     [allInstrumentTypes, project.instrument_types]
   );
@@ -175,32 +175,57 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               <span className="text-xl font-semibold leading-tight outline-none">{name}</span>
             )}
           </div>
-          <div className="flex items-center h-5 text-sm text-gray-600 min-h-fit">
+          <div className="flex flex-wrap items-center h-5 text-sm text-gray-600 min-h-fit">
             {instrumentTypesStr && (
               <div
                 title={intl.formatMessage({
                   defaultMessage: 'Project financial instrument',
                   id: 'hLG9bm',
                 })}
+                className="mr-2"
               >
                 {instrumentTypesStr}
               </div>
             )}
-            {instrumentTypesStr && ticketSizeStr && (
-              <span className="mx-2" aria-hidden={true}>
-                &bull;
-              </span>
-            )}
-            {ticketSizeStr && (
+            <div>
+              {instrumentTypesStr && ticketSizeStr && (
+                <span className="mr-2" aria-hidden={true}>
+                  &bull;
+                </span>
+              )}
+              {ticketSizeStr && (
+                <div
+                  title={intl.formatMessage({
+                    defaultMessage: 'Project ticket size',
+                    id: 'x/AykP',
+                  })}
+                  className="inline mr-2"
+                >
+                  {ticketSizeStr}
+                </div>
+              )}
+              {(!!instrumentTypesStr || !!ticketSizeStr) && (
+                <span className="mr-2" aria-hidden={true}>
+                  &bull;
+                </span>
+              )}
+            </div>
+            <div>
               <div
+                className="inline"
                 title={intl.formatMessage({
                   defaultMessage: 'Project ticket size',
                   id: 'x/AykP',
                 })}
               >
-                {ticketSizeStr}
+                <FormattedMessage defaultMessage="Impact score" id="2GBpne" />:{' '}
+                {impact?.total !== null ? (
+                  impact.total.toFixed(1)
+                ) : (
+                  <FormattedMessage defaultMessage="not computed" id="uj7/wT" />
+                )}
               </div>
-            )}
+            </div>
           </div>
         </div>
         <div>

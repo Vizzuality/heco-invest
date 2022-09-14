@@ -18,12 +18,12 @@ import {
 } from 'chart.js';
 
 import FieldInfo from 'components/forms/field-info';
+import Tooltip from 'components/tooltip';
 import { Impacts as ImpactsEnum } from 'enums';
 
 import { useEnums } from 'services/enums/enumService';
 
 import { ImpactChartProps } from './types';
-import Tooltip from 'components/tooltip';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, ChartTooltip);
 
@@ -104,17 +104,12 @@ export const ImpactChart: FC<ImpactChartProps> = ({
   const chartOptions: ChartOptions<'radar'> = {
     scales: {
       r: {
-        // display: !compactMode,
         angleLines: {
           color: 'rgba(227, 222, 214, 0.5)',
           display: !isPlaceholder,
         },
         pointLabels: {
-          font: { family: 'Work Sans', weight: '600', size: 10 },
           display: false,
-          color: isHovered ? 'rgb(0,0,0)' : 'transparent',
-          backdropColor: isHovered ? 'white' : 'transparent',
-          backdropPadding: 10,
         },
         grid: {
           circular: true,
