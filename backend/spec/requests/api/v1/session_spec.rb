@@ -37,7 +37,7 @@ RSpec.describe "API V1 Session", type: :request do
             run_test!
 
             it "matches snapshot", generate_swagger_example: true do
-              expect(response.body).to match_snapshot("api/v1/session")
+              expect(response.body).to match_snapshot("api/v1/session-without-2FA")
               expect(session["warden.user.user.key"]).to be_present
             end
           end
@@ -71,7 +71,7 @@ RSpec.describe "API V1 Session", type: :request do
           run_test!
 
           it "matches snapshot" do
-            expect(response.body).to match_snapshot("api/v1/session")
+            expect(response.body).to match_snapshot("api/v1/session-with-2FA")
             expect(session["warden.user.user.key"]).to be_present
           end
         end
