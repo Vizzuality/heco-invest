@@ -31,7 +31,8 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "otp_required_for_login": false
       }
     }
   ],

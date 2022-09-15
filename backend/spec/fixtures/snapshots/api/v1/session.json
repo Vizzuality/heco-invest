@@ -18,7 +18,8 @@
         "original": null
       },
       "ui_language": "en",
-      "account_language": null
+      "account_language": null,
+      "otp_required_for_login": true
     }
   }
 }

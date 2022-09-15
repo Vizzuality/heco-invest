@@ -9,6 +9,7 @@
   <%= render "image_with_thumbnail", f: f, blob: :avatar %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
+  <%= f.input :otp_required_for_login, collection: [[t("true"), true], [t("false"), false]], as: :radio_buttons %>
 
   <div class="mt-3 flex justify-end gap-3">
     <%= link_to t("backoffice.common.cancel"), backoffice_users_path, class: "button button-secondary-green" %>

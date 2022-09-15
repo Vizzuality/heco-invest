@@ -32,11 +32,11 @@ module API
       private
 
       def create_params
-        params.permit(:first_name, :last_name, :email, :password, :ui_language)
+        params.permit(:first_name, :last_name, :email, :password, :ui_language, :otp_required_for_login)
       end
 
       def update_params
-        params.permit :first_name, :last_name
+        params.permit :first_name, :last_name, :otp_required_for_login
       end
 
       def change_password_params

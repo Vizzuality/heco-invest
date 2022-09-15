@@ -20,6 +20,7 @@ zu:
         avatar: Avatar (optional)
         first_name: First name
         last_name: Last name
+        otp_required_for_login: Two factor authentication enabled
       admin:
         first_name: First name
         last_name: Last name

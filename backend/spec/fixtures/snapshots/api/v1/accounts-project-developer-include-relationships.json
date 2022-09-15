@@ -96,7 +96,8 @@
           "original": null
         },
         "ui_language": "en",
-        "account_language": "en"
+        "account_language": "en",
+        "otp_required_for_login": false
       }
     }
   ]

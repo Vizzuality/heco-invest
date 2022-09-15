@@ -55,7 +55,8 @@ module Backoffice
       params.require(:user).permit(
         :avatar,
         :first_name,
-        :last_name
+        :last_name,
+        :otp_required_for_login
       )
     end
 
