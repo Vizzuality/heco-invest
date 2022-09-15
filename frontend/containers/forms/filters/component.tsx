@@ -4,7 +4,9 @@ import { ChevronDown, ChevronUp, X as CloseIcon } from 'react-feather';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { groupBy } from 'lodash-es';
+import { useRouter } from 'next/router';
+
+import { groupBy, isEmpty } from 'lodash-es';
 
 import {
   transformFilterInputsToParams,
@@ -19,13 +21,14 @@ import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
 import Icon from 'components/icon';
 import Loading from 'components/loading';
-import { EnumTypes, LocationsTypes } from 'enums';
+import { EnumTypes, LocationsTypes, Paths } from 'enums';
 import { Enum } from 'types/enums';
 
 import { FiltersProps, FilterForm } from './types';
 
 export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }) => {
   const { formatMessage } = useIntl();
+  const { pathname } = useRouter();
 
   const [filtersInputValue, setFiltersInputValue] = useState<Partial<FilterForm>>({});
   const doSearch = useSearch();
@@ -76,7 +79,10 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
   ];
 
   const handleClear = () => {
-    doSearch(undefined, {});
+    if (!isEmpty(filters)) {
+      // Perform new search to remove filters only if are filters applied
+      doSearch(undefined, {});
+    }
     reset();
     closeFilters();
   };
@@ -121,7 +127,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
       id="filters"
       role="region"
       aria-labelledby="filters-button"
-      className="w-full overflow-hidden bg-white border-t-2 border-t-gray-200 rounded-b-3xl"
+      className="w-full bg-white border-t-2 border-t-gray-200 rounded-b-3xl"
     >
       {!filters ? (
         <Loading />
@@ -153,7 +159,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
                 </label>
               </div>
             </div> */}
-            <div className="flex flex-col flex-wrap gap-y-4">
+            <div className="flex flex-col flex-wrap px-1 gap-y-4">
               {filterTexts?.map((filter) => {
                 return (
                   <div key={filter.title}>
@@ -218,7 +224,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
                 );
               })}
             </div>
-            <div className="flex my-4">
+            <div className="flex px-1 my-4">
               {/* More filters accordion header https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html */}
               <h3>
                 <Button
@@ -237,7 +243,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
             {/* More filters accordion pannel */}
             {showMoreFilters && (
               <div
-                className="mb-4"
+                className="px-1 mb-4"
                 id="more-filters"
                 role="region"
                 aria-labelledby="more-filters-button"
@@ -289,13 +295,16 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
               />
             </p>
             <div className="flex flex-col gap-2 sm:gap-4 sm:flex-row">
-              <Button
-                theme="secondary-green"
-                className="justify-center sm:justify-between"
-                onClick={handleClear}
-              >
-                <FormattedMessage defaultMessage="Clear filters" id="F4gyn3" />
-              </Button>
+              {/* Don't show this button on home page, because there will never have filters applied */}
+              {pathname !== Paths.Home && (
+                <Button
+                  theme="secondary-green"
+                  className="justify-center sm:justify-between"
+                  onClick={handleClear}
+                >
+                  <FormattedMessage defaultMessage="Clear filters" id="F4gyn3" />
+                </Button>
+              )}
               <Button
                 theme="primary-green"
                 className="justify-center sm:justify-between"

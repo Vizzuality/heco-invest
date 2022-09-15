@@ -68,7 +68,7 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
       aria-labelledby="filters-button"
       className={cx('w-full bg-white border-t-2 border-t-gray-200', {
         'rounded-b-3xl': !selectedFilters?.length,
-        'rounded-b-0': !!selectedFilters?.length,
+        'rounded-b-3xl sm:rounded-b-none': !!selectedFilters?.length,
       })}
     >
       {searchText?.length >= 1 && (
@@ -77,56 +77,58 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
             <Button
               key="custom"
               theme="naked"
-              className="flex flex-wrap px-0 py-2"
+              className="flex flex-wrap px-0 py-2 focus-visible:outline-green-dark"
               onClick={handleSearchSuggestion}
             >
-              <span>&quot;{searchText}&quot;</span>
+              <span className="text-left break-all">&quot;{searchText}&quot;</span>
               <span className="ml-2 text-gray-600">
                 <FormattedMessage defaultMessage="Custom search" id="AoHRBG" />
               </span>
             </Button>
           </div>
-          <div
-            className={cx('overflow-hidden', {
-              'h-0': !autoSuggestions?.length,
-              'h-auto': !!autoSuggestions?.length,
-            })}
-          >
-            <div>
-              <p className="py-2 text-sm text-gray-800">
-                <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
-              </p>
+          <fieldset>
+            <div
+              className={cx('overflow-hidden', {
+                'h-0': !autoSuggestions?.length,
+                'h-auto': !!autoSuggestions?.length,
+              })}
+            >
+              <div>
+                <legend className="py-2 text-sm text-gray-800">
+                  <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
+                </legend>
+              </div>
+              <div className="flex">
+                <TagGroup
+                  className="inline"
+                  isFilterTag
+                  clearErrors={clearErrors}
+                  setValue={setValue}
+                  errors={errors}
+                  thresholdToShowSelectAll={Infinity}
+                >
+                  {autoSuggestions?.map((filter) => {
+                    const isSelected = selectedFilters.includes(filter.id);
+                    return (
+                      <Tag
+                        type="checkbox"
+                        name="sugestedFilters"
+                        id={filter.id}
+                        key={filter.id}
+                        register={register}
+                        onClick={() => handleFilterSuggestion(filter)}
+                        isfilterTag
+                        className="inline"
+                        checked={isSelected}
+                      >
+                        {filter.name}
+                      </Tag>
+                    );
+                  })}
+                </TagGroup>
+              </div>
             </div>
-            <div className="flex">
-              <TagGroup
-                className="inline"
-                isFilterTag
-                clearErrors={clearErrors}
-                setValue={setValue}
-                errors={errors}
-                thresholdToShowSelectAll={Infinity}
-              >
-                {autoSuggestions?.map((filter) => {
-                  const isSelected = selectedFilters.includes(filter.id);
-                  return (
-                    <Tag
-                      type="checkbox"
-                      name="sugestedFilters"
-                      id={filter.id}
-                      key={filter.id}
-                      register={register}
-                      onClick={() => handleFilterSuggestion(filter)}
-                      isfilterTag
-                      className="inline"
-                      checked={isSelected}
-                    >
-                      {filter.name}
-                    </Tag>
-                  );
-                })}
-              </TagGroup>
-            </div>
-          </div>
+          </fieldset>
         </div>
       )}
     </div>

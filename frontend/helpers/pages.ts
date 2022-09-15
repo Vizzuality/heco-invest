@@ -111,23 +111,24 @@ export const useFiltersEnums = () => {
   const { priorityLandscapes } = usePriorityLandscapes();
 
   const filtersData: Enum[] = useMemo(() => {
-    if (!isLoading) {
-      const { category, ticket_size, instrument_type, impact, sdg } = data;
-      return [
-        category,
-        ticket_size,
-        instrument_type,
-        impact,
-        sdg,
-        priorityLandscapes?.map(({ id, name }) => ({
-          id,
-          // A bit hacky but the priority landscapes are not enums. It was assumed that filters
-          // would only be based on enums.
-          type: LocationsTypes.PriorityLandscapes as unknown as EnumTypes,
-          name,
-        })) ?? [],
-      ].flat();
+    if (isLoading) {
+      return [];
     }
+    const { category, ticket_size, instrument_type, impact, sdg } = data;
+    return [
+      category,
+      ticket_size,
+      instrument_type,
+      impact,
+      sdg,
+      priorityLandscapes?.map(({ id, name }) => ({
+        id,
+        // A bit hacky but the priority landscapes are not enums. It was assumed that filters
+        // would only be based on enums.
+        type: LocationsTypes.PriorityLandscapes as unknown as EnumTypes,
+        name,
+      })) ?? [],
+    ].flat();
   }, [data, isLoading, priorityLandscapes]);
 
   return filtersData;

@@ -1,6 +1,6 @@
 import { FC, SyntheticEvent, useEffect, useMemo, useState } from 'react';
 
-import { Filter, Search as SearchIcon, X as CloseIcon } from 'react-feather';
+import { Search as SearchIcon, X as CloseIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -19,6 +19,8 @@ import Button from 'components/button';
 import Icon from 'components/icon';
 import { Paths } from 'enums';
 
+import FilterIcon from 'svgs/discover/filters.svg';
+
 import { DiscoverSearchProps } from './types';
 
 export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
@@ -32,6 +34,9 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
   const [showSuggestion, setShowSuggestions] = useState(false);
 
   const [searchInputValue, setSearchInputValue] = useState<string>('');
+
+  const activeFiltersLength = useMemo(() => values(filters).length, [filters]);
+  const showActiveFilters = !!activeFiltersLength;
 
   useEffect(() => {
     setSearchInputValue(search);
@@ -70,40 +75,38 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
     setShowSuggestions(false);
   };
 
-  const showActiveFilters = useMemo(() => !!values(filters).length, [filters]);
-
   return (
     <div className={className}>
       <div
         className={cx(
-          'relative z-10 w-full sm:overflow-visible text-black bg-white border h-14 sm:h-16 drop-shadow-xl rounded-3xl',
+          'relative z-10 w-full sm:overflow-visible text-black bg-white drop-shadow-xl rounded-full',
           {
-            'rounded-b-none mb-0': showSuggestion || openFilters || showActiveFilters,
+            'rounded-full': !showActiveFilters || showSuggestion || openFilters,
+            'sm:rounded-3xl': showActiveFilters,
+            'rounded-t-3xl rounded-b-none sm:rounded-b-none mb-0 h-14 sm:h-16':
+              showSuggestion || openFilters,
           }
         )}
       >
         <div
-          className={cx('flex h-full items-center justify-between px-4 sm:px-6 py-2 sm:gap-4', {
-            'py-4': openFilters || showSuggestion,
-          })}
+          className={cx(
+            'flex h-full min-h-[56px] sm:min-h-[64px] items-center justify-between px-4 sm:px-6 py-2 sm:gap-4 '
+          )}
         >
           <form
             role="search"
             className="flex items-center justify-end w-full h-full gap-2 sm:justify-between sm:gap-3"
             onSubmit={handleSubmitSearch}
           >
-            <div className="flex items-center flex-grow gap-2">
+            <div className="flex items-center flex-grow gap-2 sm:gap-6">
               <Button
                 theme="naked"
                 size="smallest"
-                className="hidden px-3 py-3 sm:block"
-                onClick={clearInput}
+                className="hidden sm:block focus-visible:outline-green-dark"
+                onClick={handleClickInput}
+                aria-label={formatMessage({ defaultMessage: 'open filters', id: 'Lkxlab' })}
               >
-                <Icon
-                  aria-label={formatMessage({ defaultMessage: 'open filters', id: 'Lkxlab' })}
-                  icon={SearchIcon}
-                  className="w-6 h-6 mr-2 sm:w-8 sm:h-8 text-green-dark"
-                />
+                <Icon icon={SearchIcon} className="w-6 h-6 sm:w-7 sm:h-7 text-green-dark" />
               </Button>
               <label htmlFor="header-search" className="sr-only">
                 <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
@@ -112,7 +115,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                 id="header-search"
                 type="search"
                 value={searchInputValue}
-                className="w-full h-full text-lg outline-none autofill:bg-transparent placeholder:text-sm sm:placeholder:text-base"
+                className="w-full h-full overflow-hidden text-lg outline-none autofill:bg-transparent placeholder:text-sm sm:placeholder:text-base placeholder:text-ellipsis"
                 onChange={handleChangeSearchInput}
                 placeholder={formatMessage({
                   defaultMessage: 'Search for projects, investors, open calls...',
@@ -123,18 +126,26 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
             </div>
             {showSuggestion && (
               <div>
-                <Button theme="naked" size="smallest" icon={CloseIcon} onClick={clearInput} />
+                <Button
+                  aria-label={formatMessage({ defaultMessage: 'clear search', id: '44nONQ' })}
+                  theme="naked"
+                  size="smallest"
+                  onClick={clearInput}
+                  className="focus-visible:outline-green-dark"
+                >
+                  <Icon icon={CloseIcon} />
+                </Button>
               </div>
             )}
             {pathname === Paths.Home && (
               <div className="hidden md:block">
                 <Button className="text-green-dark" theme="naked" to={Paths.Discover}>
-                  {formatMessage({ defaultMessage: 'See full catalogue', id: 'oG/A0q' })}
+                  <FormattedMessage defaultMessage="See full catalogue" id="oG/A0q" />
                 </Button>
               </div>
             )}
             {!openFilters && !showSuggestion && (
-              <div className="flex items-center flex-grow-0 gap-4 overflow-hidden transition-all duration-300 ease-in-out sm:gap-6 sm:justify-self-end">
+              <div className="sm:justify-self-end">
                 {/* Filters accordion header https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html */}
                 <h3>
                   <Button
@@ -145,10 +156,15 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                     aria-controls="filters"
                     className="px-2 sm:px-6"
                   >
-                    <span className="md:hidden">
-                      <Icon icon={Filter} className="w-4 h-4 text-white" />
+                    <span className="sm:hidden">
+                      <Icon icon={FilterIcon} className="w-4 h-4 text-white" />
                     </span>
-                    <span className="hidden md:block">
+                    {!!activeFiltersLength && (
+                      <span className="ml-2.5 w-[22px] h-[22px] text-sm rounded-full sm:hidden bg-green-light text-green-dark">
+                        {activeFiltersLength}
+                      </span>
+                    )}
+                    <span className="sr-only sm:not-sr-only">
                       <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
                     </span>
                   </Button>
