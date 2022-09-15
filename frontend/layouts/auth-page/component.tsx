@@ -18,7 +18,7 @@ export const AuthPageLayout: React.FC<AuthPageLayoutProps> = ({
   ...rest
 }: AuthPageLayoutProps) => (
   <div {...rest}>
-    <div className="lg:fixed lg:top-0 lg:bottom-0 lg:left-0 lg:right-0 lg:overflow-y-scroll">
+    <div className="lg:fixed lg:top-0 lg:bottom-0 lg:left-0 lg:right-0 lg:overflow-y-auto">
       <Header props={headerProps} />
       <LayoutContainer>
         <div className="relative flex flex-col mt-20 md:gap-14 lg:gap-20 xl:gap-28 lg:flex-row-reverse">

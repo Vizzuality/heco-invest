@@ -1,0 +1,28 @@
+<nav aria-label="breadcrumb">
+  <ol class="flex gap-3 py-3 items-center text-white">
+    <% breadcrumbs.each do |crumb| %>
+      <% first_one = crumb == breadcrumbs.first %>
+      <% last_one = crumb == breadcrumbs.last %>
+
+      <li class="<%= last_one ? 'text-gray-400' : '' %>" <%= last_one ? "aria-current='page'" : "" %>>
+        <% if crumb.link? %>
+          <% if first_one %>
+            <%= link_to crumb.path do %>
+              <div class="flex gap-3 items-center">
+                <%= svg "arrow-left" %>
+                <%= crumb.title %>
+              </div>
+            <% end %>
+          <% else %>
+            <%= link_to crumb.title, crumb.path %>
+          <% end %>
+        <% else %>
+          <%= crumb.title %>
+        <% end %>
+      </li>
+      <% unless last_one %>
+        <%= "/" %>
+      <% end %>
+    <% end %>
+  </ol>
+</nav>

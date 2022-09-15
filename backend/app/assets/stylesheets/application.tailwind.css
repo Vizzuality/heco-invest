@@ -1,3 +1,93 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .button {
+    @apply flex items-center rounded-full font-sans transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none px-6 py-2
+  }
+
+  .button-with-icon {
+    @apply inline-flex gap-3
+  }
+
+  .link-button {
+    @apply text-sm font-semibold text-green-dark hover:underline
+  }
+
+  .button-primary-green {
+    @apply bg-green-dark text-white hover:text-green-lighter focus-visible:outline-green-dark
+  }
+
+  .button-secondary-green {
+    @apply bg-green-lighter/0 border border-green-dark text-green-dark hover:bg-green-light focus-visible:outline-green-dark
+  }
+
+  .backoffice-table {
+    @apply w-full bg-white text-base rounded-t-xl
+  }
+
+  .backoffice-table th {
+    @apply text-left text-sm p-4
+  }
+
+  .backoffice-table td {
+    @apply text-left p-4
+  }
+
+  .backoffice-table tr, .backoffice-table th {
+    @apply border-b-[1px] border-gray-200
+  }
+
+  .backoffice-table tr:last-child {
+    @apply border-b-0;
+  }
+
+  .pagination {
+    @apply flex items-center flex-col-reverse w-full bg-white rounded-b-xl border-t-[1px] border-gray-200
+  }
+
+  .pagination ol {
+    @apply flex flex-wrap items-center justify-center gap-2 py-3
+  }
+
+  .pagination li {
+    @apply flex items-center font-sans px-1 py-1 justify-center text-gray-600 text-sm
+  }
+
+  .pagination li a {
+    @apply hover:text-green-dark
+  }
+
+  .pagination li .active {
+    @apply text-green-dark
+  }
+
+  .alert {
+    @apply text-sm text-black rounded-lg p-4 mb-4
+  }
+
+  .alert-success {
+    @apply bg-green-lighter
+  }
+
+  .alert-danger {
+    @apply bg-red-50
+  }
+
+  .alert-info {
+    @apply bg-beige
+  }
+
+  .select-input {
+    @apply block px-4 py-2 text-base text-gray-900 placeholder-gray-400 placeholder-opacity-100 border border-solid border-beige hover:shadow-sm focus:shadow-sm focus:border-green-dark outline-none bg-white rounded-lg disabled:opacity-60 transition
+  }
+
+  li[role="menuitem"] a, li[role="menuitem"] button {
+    @apply block px-8 py-2 w-full hover:bg-gray-200;
+  }
+
+  li[role="menuitem"] .disabled-item {
+    @apply block px-8 py-2 w-full opacity-60;
+  }
+}

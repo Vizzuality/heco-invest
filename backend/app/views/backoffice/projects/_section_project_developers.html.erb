@@ -1,0 +1,12 @@
+<h2 class="mb-2 text-gray-900 font-semibold">
+  <%= t("backoffice.projects.project_developers_in_project", count: @project.involved_project_developers.count + 1) %>
+</h2>
+<div class="font-bold my-3"><%= t("simple_form.labels.project.project_developer") %></div>
+<%= render partial: "backoffice/projects/contact_information", locals: { project_developer: @project.project_developer } %>
+
+<% if @project.involved_project_developers.exists? %>
+  <div class="font-bold my-3"><%= t("simple_form.labels.project.partners") %></div>
+  <% @project.involved_project_developers.each do |project_developer| %>
+    <%= render partial: "backoffice/projects/contact_information", locals: { project_developer: project_developer } %>
+  <% end %>
+<% end %>

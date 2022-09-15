@@ -3,6 +3,9 @@ require "rails_helper"
 RSpec.describe Account, type: :model do
   subject { build(:account) }
 
+  it_behaves_like :searchable
+  it_behaves_like :translatable
+
   it { is_expected.to be_valid }
 
   it "should not be valid without owner" do
@@ -50,6 +53,52 @@ RSpec.describe Account, type: :model do
     it "should be invalid if #{link_type} is not a valid URL" do
       subject.send("#{link_type}=", "not a valid url")
       expect(subject).to have(1).errors_on(link_type)
+    end
+  end
+
+  it "should not be valid without contact email" do
+    subject.contact_email = nil
+    expect(subject).to have(1).errors_on(:contact_email)
+  end
+
+  it "should not be valid with malformed contact email" do
+    subject.contact_email = "derp"
+    expect(subject).to have(1).errors_on(:contact_email)
+  end
+
+  it "should not be valid with owner from different account" do
+    subject.owner = create(:user)
+    expect(subject).to have(1).errors_on(:owner_id)
+  end
+
+  context "when changing review_status" do
+    subject { create(:account, :unapproved) }
+
+    it "should set reviewed_at timestamp" do
+      expect(subject.reviewed_at).to be_nil
+      subject.approved!
+      expect(subject.reviewed_at).to be_present
+    end
+  end
+
+  context "when changing ownership" do
+    subject { create(:account) }
+
+    before do
+      User.invite!({email: "new_user@example.com", skip_invitation: true}, subject.owner)
+      User.invite!({email: "another@example.com", skip_invitation: true}, subject.owner)
+    end
+
+    let!(:new_owner) { create(:user, account: subject) }
+
+    it "should transfer ownership of invitations" do
+      subject.reload # otherwise it does not see new_owner id in user_ids
+      old_owner = subject.owner
+      subject.owner = new_owner
+      subject.save!
+
+      expect(User.where(invited_by: old_owner).count).to be(0)
+      expect(User.where(invited_by: new_owner).count).to be(2)
     end
   end
 end

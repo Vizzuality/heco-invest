@@ -5,39 +5,52 @@ import { useIntl, FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
-import Link from 'next/link';
-
 import { noop } from 'lodash-es';
 
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
+import Header from 'layouts/static-page/header';
 
 import { MultiPageLayoutHeaderProps } from './types';
 
 export const MultiPageLayoutHeader: React.FC<MultiPageLayoutHeaderProps> = ({
   className,
   title,
+  siteHeader = false,
+  locale,
   leaveButtonText,
   onCloseClick = noop,
 }: MultiPageLayoutHeaderProps) => {
   const intl = useIntl();
 
+  if (siteHeader) return <Header />;
+
   return (
     <header
       className={cx({
-        'fixed top-0 w-full z-10 bg-background-light/90 backdrop-blur-sm border-b': true,
+        'fixed top-0 w-full z-20 bg-background-light/90 backdrop-blur-sm border-b': true,
         [className]: !!className,
       })}
     >
       <LayoutContainer>
         <div className="flex items-center justify-between h-20 gap-x-8 md:gap-x-16">
-          <div className="flex justify-start flex-1 md:flex-none">
-            <Link href="/">
-              <a className="font-semibold">HeCo Invest</a>
-            </Link>
+          <div className="flex justify-start flex-1">
+            <span className="font-semibold">HeCo Invest</span>
           </div>
-          <div className="md:flex-1">{title}</div>
-          <div className="flex justify-end flex-1 md:flex-none">
+          <LayoutContainer
+            layout="narrow"
+            className="flex flex-col items-center justify-between lg:flex-row"
+          >
+            <span>{title}</span>
+            {locale && (
+              <span className="px-2 py-1 text-sm text-black rounded-lg lg:py-2 bg-background-dark">
+                <FormattedMessage defaultMessage="Content language" id="zetZX8" />
+                <span className="mr-1">:</span>
+                {locale.toUpperCase()}
+              </span>
+            )}
+          </LayoutContainer>
+          <div className="flex justify-end flex-1 whitespace-nowrap">
             <Button
               theme="naked"
               className="px-0 text-gray-400 md:px-6"

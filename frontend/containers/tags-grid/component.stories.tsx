@@ -14,24 +14,28 @@ export const Default: Story<TagsGridProps> = Template.bind({});
 Default.args = {
   rows: [
     {
+      id: 'category',
       title: 'Invests in',
       type: 'category',
       tags: [
-        { id: 'tourism', title: 'Tourism & Recreation' },
-        { id: 'production', title: 'Non-timber forest production' },
-        { id: 'agrosystems', title: 'Sustainable agrosystems' },
-        { id: 'forestry', title: 'Forestry & agroforestry' },
+        { id: 'tourism-and-recreation', name: 'Tourism & Recreation' },
+        { id: 'non-timber-forest-production', name: 'Non-timber forest production' },
+        { id: 'sustainable-agrosystems', name: 'Sustainable agrosystems' },
+        { id: 'forestry-and-agroforestry', name: 'Forestry & agroforestry' },
       ],
     },
     {
+      id: 'ticket-size',
       title: 'Ticket size',
       tags: ['US$50k', '$50k - $500k', '$500k - $1M'],
     },
     {
+      id: 'instrument-size',
       title: 'Instrument size',
       tags: ['Grand', 'Loan'],
     },
     {
+      id: 'impact',
       title: 'Impact they invest on',
       tags: ['Biodiversity', 'Community'],
     },

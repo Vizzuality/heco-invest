@@ -2,13 +2,13 @@ class TicketSize
   include EnumModel
 
   TYPES = %w[
-    small_grants
+    small-grants
     prototyping
     validation
     scaling
   ].freeze
 
-  def amount
-    read_attribute("amount")
+  def description
+    read_attribute("description")
   end
 end

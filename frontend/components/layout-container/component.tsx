@@ -13,7 +13,8 @@ export const LayoutContainer: React.FC<LayoutContainerProps> = ({
     () => ({
       ...rest,
       className: cx({
-        'container mx-auto px-4 sm:px-6 lg:px-8': true,
+        'container md:max-w-screen-lg lg:max-w-screen-xl 2xl:max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8':
+          true,
         'max-w-md sm:max-w-xl md:max-w-5xl': layout === 'narrow',
         [className]: !!className,
       }),

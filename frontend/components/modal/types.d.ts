@@ -15,6 +15,10 @@ export interface ModalProps {
    */
   dismissable?: boolean;
   /**
+   * Theme of the modal
+   */
+  theme?: 'default' | 'naked';
+  /**
    * Size (width) of the modal
    */
   size?: 'narrow' | 'default' | 'wide';

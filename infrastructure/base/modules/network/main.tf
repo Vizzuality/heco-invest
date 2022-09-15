@@ -57,6 +57,19 @@ resource "google_compute_firewall" "web_ingress" {
   }
 }
 
+resource "google_compute_firewall" "ssh_iap_ingress" {
+  name    = "${var.name}-ssh-iap-ingress"
+  network = google_compute_network.network.name
+
+  direction = "INGRESS"
+
+  source_ranges = ["35.235.240.0/20"]
+  allow {
+    protocol = "tcp"
+    ports    = ["22", "3389"]
+  }
+}
+
 resource "google_vpc_access_connector" "connector" {
   name          = "${var.name}-vpc-conn"
   provider      = google-beta

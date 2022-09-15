@@ -1,0 +1,18 @@
+<%= simple_form_for [:backoffice, @open_call], url: backoffice_open_call_path(@open_call.id) do |f| %>
+  <%= f.error_notification %>
+  <%= hidden_field_tag :section, params[:section] %>
+
+  <h2 class="mb-2 text-gray-900 font-semibold">
+    <%= t("backoffice.open_calls.status") %>
+  </h2>
+  <p class="mb-8 text-gray-600">
+    <%= t("backoffice.open_calls.status_description") %>
+  </p>
+
+  <%= f.input :verified, label: "", collection: [[t("backoffice.common.verified"), true], [t("backoffice.common.unverified"), false]], as: :radio_buttons %>
+
+  <div class="mt-3 flex justify-end gap-3">
+    <%= link_to t("backoffice.common.cancel"), backoffice_projects_path, class: "button button-secondary-green" %>
+    <%= f.button :submit, t("backoffice.common.save"), class: "button button-primary-green" %>
+  </div>
+<% end %>

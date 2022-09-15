@@ -1,6 +1,10 @@
 import React from 'react';
 
 import { OverlayProvider } from '@react-aria/overlays';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+import { RouterContext } from 'next/dist/shared/lib/router-context';
+
 import { SSRProvider } from '@react-aria/ssr';
 import { reactIntl, localesNames } from './react-intl.js';
 import '../styles/globals.css';
@@ -18,6 +22,7 @@ export const parameters = {
       ],
     },
   },
+  nextRouter: { Provider: RouterContext.Provider },
   reactIntl,
   locale: reactIntl.defaultLocale,
   locales: localesNames,
@@ -25,12 +30,14 @@ export const parameters = {
 
 export const decorators = [
   (Story) => {
+    const queryClient = new QueryClient();
+
     return (
-      <SSRProvider>
-        <OverlayProvider>
-          {Story()}
-        </OverlayProvider>
-      </SSRProvider>
+      <QueryClientProvider client={queryClient}>
+        <SSRProvider>
+          <OverlayProvider>{Story()}</OverlayProvider>
+        </SSRProvider>
+      </QueryClientProvider>
     );
   },
 ];

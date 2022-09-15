@@ -15,6 +15,7 @@ module.exports = {
     '@storybook/addon-essentials',
     'storybook-addon-next',
     'storybook-react-intl',
+    'storybook-addon-mock/register',
     {
       name: '@storybook/addon-postcss',
       options: {
@@ -34,6 +35,13 @@ module.exports = {
     // If you want to add a directory to search in that takes precedence over node_modules/:
     // https://webpack.js.org/configuration/resolve/#resolvemodules
     config.resolve.modules = [path.resolve(__dirname, '..'), 'node_modules'];
+
+    // Needed by react-map-gl 6.1 to use MapLibre instead of Mapbox GL JS:
+    // https://github.com/visgl/react-map-gl/blob/6.1-release/docs/get-started/get-started.md#using-with-a-mapbox-gl-fork
+    config.resolve.alias = {
+      ...(config.resolve.alias ?? {}),
+      'mapbox-gl': 'maplibre-gl'
+    };
 
     // *************************
     // SVGS

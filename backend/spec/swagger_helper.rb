@@ -39,11 +39,23 @@ RSpec.configure do |config|
               id: {type: :string},
               type: {type: :string},
               attributes: {
-                first_name: {type: :string},
-                last_name: {type: :string},
-                email: {type: :string}
+                type: :object,
+                properties: {
+                  first_name: {type: :string},
+                  last_name: {type: :string},
+                  email: {type: :string},
+                  role: {type: :string},
+                  created_at: {type: :string},
+                  confirmed: {type: :boolean},
+                  approved: {type: :boolean, nullable: true},
+                  invitation: {type: :string, nullable: true},
+                  owner: {type: :boolean},
+                  avatar: {"$ref" => "#/components/schemas/image_blob"}
+                },
+                required: %w[first_name last_name email role created_at confirmed approved invitation owner avatar]
               }
-            }
+            },
+            required: %w[id type attributes]
           },
           investor: {
             type: :object,
@@ -55,15 +67,15 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
-                  picture_url: {type: :string},
+                  picture: {"$ref" => "#/components/schemas/image_blob"},
                   about: {type: :string, nullable: true},
                   website: {type: :string, nullable: true},
                   instagram: {type: :string, nullable: true},
                   facebook: {type: :string, nullable: true},
                   linkedin: {type: :string, nullable: true},
                   twitter: {type: :string, nullable: true},
-                  how_do_you_work: {type: :string},
-                  what_makes_the_difference: {type: :string, nullable: true},
+                  mission: {type: :string},
+                  prioritized_projects_description: {type: :string, nullable: true},
                   other_information: {type: :string},
                   investor_type: {type: :string},
                   categories: {type: :array, items: {type: :string}},
@@ -72,14 +84,15 @@ RSpec.configure do |config|
                   impacts: {type: :array, items: {type: :string}},
                   sdgs: {type: :array, items: {type: :integer}},
                   previously_invested: {type: :boolean},
-                  previously_invested_description: {type: :string, nullable: true},
-                  language: {type: :string}
+                  language: {type: :string},
+                  created_at: {type: :string}
                 }
               },
               relationships: {
                 type: :object,
                 properties: {
-                  owner: {"$ref" => "#/components/schemas/response_relation"}
+                  owner: {"$ref" => "#/components/schemas/response_relation"},
+                  open_calls: {"$ref" => "#/components/schemas/response_relations"}
                 }
               }
             },
@@ -94,28 +107,15 @@ RSpec.configure do |config|
                 type: :object,
                 properties: {
                   name: {type: :string},
-                  location_type: {type: :string, enum: LocationType::TYPES}
+                  location_type: {type: :string, enum: LocationType::TYPES},
+                  code: {type: :string, nullable: true},
+                  created_at: {type: :string}
                 }
               },
               relationships: {
                 type: :object,
                 properties: {
-                  parent: {
-                    type: :object,
-                    properties: {
-                      data: {
-                        type: :object,
-                        nullable: true,
-                        properties: {
-                          id: {type: :string},
-                          type: {type: :string}
-                        },
-                        required: %w[id type]
-                      },
-                      required: %w[data]
-                    }
-                  },
-                  regions: {"$ref" => "#/components/schemas/response_relations"}
+                  parent: {"$ref" => "#/components/schemas/nullable_response_relation"}
                 }
               }
             },
@@ -131,20 +131,29 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
+                  status: {type: :string},
+                  picture: {"$ref" => "#/components/schemas/image_blob"},
                   description: {type: :string},
-                  ticket_size: {type: :string},
-                  instrument_type: {type: :string},
+                  funding_priorities: {type: :string},
+                  funding_exclusions: {type: :string},
+                  maximum_funding_per_project: {type: :integer},
+                  instrument_types: {type: :array, items: {type: :string}},
                   sdgs: {type: :array, items: {type: :integer}},
-                  money_distribution: {type: :string},
                   impact_description: {type: :string},
                   closing_at: {type: :string},
-                  language: {type: :string}
+                  language: {type: :string},
+                  created_at: {type: :string},
+                  trusted: {type: :boolean},
+                  verified: {type: :boolean}
                 }
               },
               relationships: {
                 type: :object,
                 properties: {
-                  investor: {"$ref" => "#/components/schemas/response_relation"}
+                  investor: {"$ref" => "#/components/schemas/response_relation"},
+                  country: {"$ref" => "#/components/schemas/response_relation"},
+                  municipality: {"$ref" => "#/components/schemas/response_relation"},
+                  department: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }
             },
@@ -160,31 +169,67 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
-                  description: {type: :string},
-                  ticket_size: {type: :string},
-                  categories: {type: :array, items: {type: :string}},
-                  instrument_types: {type: :array, items: {type: :string}},
-                  sdgs: {type: :array, items: {type: :integer}},
+                  status: {type: :string},
+                  country_id: {type: :string},
+                  municipality_id: {type: :string},
+                  department_id: {type: :string},
+                  development_stage: {type: :string, enum: ProjectDevelopmentStage::TYPES},
+                  estimated_duration_in_months: {type: :integer},
+                  involved_project_developer_not_listed: {type: :boolean},
                   problem: {type: :string},
                   solution: {type: :string},
-                  business_model: {type: :string},
-                  other_information: {type: :string},
-                  impact_description: {type: :string},
+                  expected_impact: {type: :string},
+                  looking_for_funding: {type: :boolean},
+                  funding_plan: {type: :string, nullable: true},
+                  received_funding: {type: :boolean},
+                  received_funding_amount_usd: {type: :string, nullable: true},
+                  received_funding_investor: {type: :string, nullable: true},
+                  replicability: {type: :string},
                   sustainability: {type: :string},
-                  roi: {type: :string},
+                  progress_impact_tracking: {type: :string},
+                  description: {type: :string},
+                  relevant_links: {type: :string, nullable: true},
+                  ticket_size: {type: :string, enum: TicketSize::TYPES, nullable: true},
+                  geometry: {type: :object},
+                  latitude: {type: :number},
+                  longitude: {type: :number},
+                  category: {type: :string},
+                  trusted: {type: :boolean},
+                  verified: {type: :boolean},
+                  created_at: {type: :string},
+                  target_groups: {type: :array, items: {type: :string}},
+                  impact_areas: {type: :array, items: {type: :string}},
+                  instrument_types: {type: :array, items: {type: :string}},
+                  sdgs: {type: :array, items: {type: :integer}},
                   language: {type: :string},
-                  income_in_last_3_years: {type: :string},
-                  number_of_employees: {type: :integer},
-                  number_of_employees_women: {type: :integer},
-                  number_of_employees_young: {type: :integer},
-                  number_of_employees_indigenous: {type: :integer},
-                  number_of_employees_migrants: {type: :integer}
+                  favourite: {type: :boolean, nullable: true},
+                  municipality_biodiversity_impact: {type: :number, nullable: true},
+                  municipality_climate_impact: {type: :number, nullable: true},
+                  municipality_water_impact: {type: :number, nullable: true},
+                  municipality_community_impact: {type: :number, nullable: true},
+                  municipality_total_impact: {type: :number, nullable: true},
+                  hydrobasin_biodiversity_impact: {type: :number, nullable: true},
+                  hydrobasin_climate_impact: {type: :number, nullable: true},
+                  hydrobasin_water_impact: {type: :number, nullable: true},
+                  hydrobasin_community_impact: {type: :number, nullable: true},
+                  hydrobasin_total_impact: {type: :number, nullable: true},
+                  priority_landscape_biodiversity_impact: {type: :number, nullable: true},
+                  priority_landscape_climate_impact: {type: :number, nullable: true},
+                  priority_landscape_water_impact: {type: :number, nullable: true},
+                  priority_landscape_community_impact: {type: :number, nullable: true},
+                  priority_landscape_total_impact: {type: :number, nullable: true}
                 }
               },
               relationships: {
                 type: :object,
                 properties: {
-                  project_developer: {"$ref" => "#/components/schemas/response_relation"}
+                  project_developer: {"$ref" => "#/components/schemas/response_relation"},
+                  country: {"$ref" => "#/components/schemas/response_relation"},
+                  municipality: {"$ref" => "#/components/schemas/response_relation"},
+                  department: {"$ref" => "#/components/schemas/response_relation"},
+                  priority_landscape: {"$ref" => "#/components/schemas/nullable_response_relation"},
+                  involved_project_developer: {"$ref" => "#/components/schemas/response_relation"},
+                  project_images: {"$ref" => "#/components/schemas/response_relations"}
                 }
               }
             },
@@ -200,7 +245,7 @@ RSpec.configure do |config|
                 properties: {
                   name: {type: :string},
                   slug: {type: :string},
-                  picture_url: {type: :string},
+                  picture: {"$ref" => "#/components/schemas/image_blob"},
                   about: {type: :string, nullable: true},
                   website: {type: :string, nullable: true},
                   instagram: {type: :string, nullable: true},
@@ -212,18 +257,69 @@ RSpec.configure do |config|
                   categories: {type: :array, items: {type: :string}},
                   impacts: {type: :array, items: {type: :string}},
                   language: {type: :string},
-                  entity_legal_registration_number: {type: :string}
+                  entity_legal_registration_number: {type: :string},
+                  favourite: {type: :boolean, nullable: true},
+                  created_at: {type: :string}
                 }
               },
               relationships: {
                 type: :object,
                 properties: {
-                  locations: {"$ref" => "#/components/schemas/response_relations"},
+                  projects: {"$ref" => "#/components/schemas/response_relations"},
+                  involved_projects: {"$ref" => "#/components/schemas/response_relations"},
+                  priority_landscapes: {"$ref" => "#/components/schemas/response_relations"},
                   owner: {"$ref" => "#/components/schemas/response_relation"}
                 }
               }
             },
             required: %w[id type attributes relationships]
+          },
+          open_call_application: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              type: {type: :string},
+              attributes: {
+                type: :object,
+                properties: {
+                  message: {type: :string},
+                  funded: {type: :boolean},
+                  created_at: {type: :string},
+                  updated_at: {type: :string}
+                }
+              },
+              relationships: {
+                type: :object,
+                properties: {
+                  open_call: {"$ref" => "#/components/schemas/response_relation"},
+                  project: {"$ref" => "#/components/schemas/response_relation"},
+                  project_developer: {"$ref" => "#/components/schemas/response_relation"},
+                  investor: {"$ref" => "#/components/schemas/response_relation"}
+                }
+              }
+            },
+            required: %w[id type attributes relationships]
+          },
+          background_job_event: {
+            type: :object,
+            properties: {
+              id: {type: :string},
+              type: {type: :string},
+              attributes: {
+                type: :object,
+                properties: {
+                  status: {type: :string},
+                  arguments: {type: :array},
+                  queue_name: {type: :string},
+                  priority: {type: :string, nullable: true},
+                  executions: {type: :integer},
+                  message: {type: :object, nullable: true},
+                  created_at: {type: :string},
+                  updated_at: {type: :string}
+                }
+              }
+            },
+            required: %w[id type attributes]
           },
           enum: {
             type: :object,
@@ -270,6 +366,15 @@ RSpec.configure do |config|
             },
             required: %w[id key filename content_type metadata byte_size checksum created_at service_name signed_id attachable_sgid direct_upload]
           },
+          image_blob: {
+            type: :object,
+            properties: {
+              small: {type: :string, nullable: true},
+              medium: {type: :string, nullable: true},
+              original: {type: :string, nullable: true}
+            },
+            required: %w[small medium original]
+          },
           pagination_meta: {
             type: :object,
             properties: {
@@ -290,6 +395,21 @@ RSpec.configure do |config|
               last: {type: :string}
             },
             required: %w[first self last]
+          },
+          nullable_response_relation: {
+            type: :object,
+            properties: {
+              data: {
+                type: :object,
+                nullable: true,
+                properties: {
+                  id: {type: :string},
+                  type: {type: :string}
+                },
+                required: %w[id type]
+              }
+            },
+            required: %w[data]
           },
           response_relation: {
             type: :object,

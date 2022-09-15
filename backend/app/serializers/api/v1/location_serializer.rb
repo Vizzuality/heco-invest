@@ -1,13 +1,9 @@
 module API
   module V1
-    class LocationSerializer
-      include JSONAPI::Serializer
-
-      attributes :name, :location_type
+    class LocationSerializer < BaseSerializer
+      attributes :name, :location_type, :code, :created_at
 
       belongs_to :parent, serializer: :location
-
-      has_many :regions, serializer: :location
     end
   end
 end

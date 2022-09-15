@@ -2,13 +2,12 @@ import { forwardRef } from 'react';
 
 import cx from 'classnames';
 
-import { THEME } from './constants';
 import type { LabelProps } from './types';
 
-const LabelComponent = ({ htmlFor, theme = 'dark', children, className }: LabelProps, ref) => (
+const LabelComponent = ({ htmlFor, children, className, id }: LabelProps, ref) => (
   <label
-    className={cx({
-      [THEME[theme]]: true,
+    id={id}
+    className={cx('font-sans text-gray-800 font-semibold text-sm', {
       [className]: !!className,
     })}
     htmlFor={htmlFor}

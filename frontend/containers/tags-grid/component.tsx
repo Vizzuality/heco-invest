@@ -2,8 +2,6 @@ import { FC } from 'react';
 
 import cx from 'classnames';
 
-import { slugify } from 'helpers/slugify';
-
 import CategoryTag from 'containers/category-tag';
 
 import Tag from 'components/tag';
@@ -11,8 +9,9 @@ import Tag from 'components/tag';
 import type { TagsGridProps } from './types';
 
 export const TagsGrid: FC<TagsGridProps> = ({ className, rows }: TagsGridProps) => {
-  const gridCells = rows.reduce((arr, { title, type, tags }) => {
-    const id = slugify(title);
+  const gridCells = rows.reduce((arr, { id, title, type, tags }) => {
+    // Do not display grid rows that have no tags
+    if (!tags?.length) return arr;
 
     return [
       ...arr,
@@ -35,11 +34,12 @@ export const TagsGrid: FC<TagsGridProps> = ({ className, rows }: TagsGridProps) 
         if (cellType === 'tags') {
           return (
             <span key={key} aria-labelledby={id} className="flex flex-wrap gap-x-4 gap-y-2">
-              {type === 'default' && tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+              {type === 'default' &&
+                tags.map((tag) => <Tag key={tag?.id || tag}>{tag?.name || tag}</Tag>)}
               {type === 'category' &&
-                tags.map((tag) => (
-                  <CategoryTag key={tag.id} category={tag.id}>
-                    {tag.title}
+                tags.map(({ id, name }) => (
+                  <CategoryTag key={id} category={id}>
+                    {name}
                   </CategoryTag>
                 ))}
             </span>

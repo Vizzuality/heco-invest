@@ -1,101 +1,175 @@
-// import { useRouter } from 'next/router';
-import { useIntl, FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
+
+import { useRouter } from 'next/router';
+
+import { withLocalizedRequests } from 'hoc/locale';
+
+import { groupBy } from 'lodash-es';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import Breadcrumbs from 'containers/breadcrumbs';
 import ProfileHeader from 'containers/profile-header';
-import SDGs, { SDGType } from 'containers/sdgs';
+import SDGs from 'containers/sdgs';
+import { ContactItemType } from 'containers/social-contact/contact-information-modal';
+import { SocialType } from 'containers/social-contact/website-social';
 import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
-import { SocialType } from 'containers/website-social-contact';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
+import { GroupedEnums } from 'types/enums';
+import { Investor } from 'types/investor';
 
-export async function getServerSideProps(ctx) {
+import { getEnums } from 'services/enums/enumService';
+import { getInvestor, useInvestor, useFavoriteInvestor } from 'services/investors/investorsService';
+
+export const getServerSideProps = withLocalizedRequests(async ({ params: { id }, locale }) => {
+  let investor = null;
+
+  // If getting the project fails, it's most likely because the record has not been found. Let's return a 404. Anything else will trigger a 500 by default.
+  try {
+    investor = await getInvestor(id as string);
+  } catch (e) {
+    return { notFound: true };
+  }
+
+  const enums = await getEnums();
+
   return {
     props: {
-      intlMessages: await loadI18nMessages(ctx),
+      intlMessages: await loadI18nMessages({ locale }),
+      enums: groupBy(enums, 'type'),
+      investor: investor,
     },
   };
-}
+});
 
-const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
+type InvestorPageProps = {
+  investor: Investor;
+  enums: GroupedEnums;
+};
+
+const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
+  investor: investorProp,
+  enums,
+}) => {
   const intl = useIntl();
-  // const { query } = useRouter();
-  // const { id } = query;
+  const router = useRouter();
 
-  const aboutInfo: {
-    logo: string;
-    name: string;
-    description: string;
-    text: string;
-    website: string;
-    social: SocialType[];
-    contact: string;
-  } = {
-    name: 'NESst',
-    description: 'Non-VC Investment vehicle',
-    text: 'NESsT finances enterprises that generate dignified employment and sustain the planet. Since 1997, we have financed 200 enterprises that have sustained jobs for 70,000 individuals and improved 670,000 lives. We achieve our mission through an Incubator that provides pre-seed capital and business services to improve investment readiness; and the Enterprise Fund that deploys seed-state loans to enterprises seeking capital to scale',
-    logo: '/images/temp-placeholders/nesst-logo.png',
-    website: 'https://www.site.com',
-    social: [
-      { id: 'linked-in', url: 'https://www.linkedin.com' },
-      { id: 'twitter', url: 'https://www.twitter.com' },
-      { id: 'facebook', url: 'https://www.facebook.com' },
-      { id: 'instagram', url: 'https://www.instagram.com' },
-    ],
-    contact: 'Loïc Comolli',
+  const { data: investor } = useInvestor(router.query.id as string, investorProp);
+
+  const {
+    name,
+    twitter,
+    facebook,
+    linkedin,
+    instagram,
+    contact_email,
+    contact_phone,
+    website,
+    categories,
+    picture,
+    ticket_sizes,
+    instrument_types,
+    impacts,
+    sdgs,
+    about,
+    mission,
+    investor_type,
+    other_information,
+    language,
+    prioritized_projects_description,
+  } = investor;
+
+  const {
+    category: allCategories,
+    ticket_size: allTicketSizes,
+    instrument_type: allInstrumentTypes,
+    impact: allImpacts,
+    investor_type: allInvestorTypes,
+    sdg: allSdgs,
+  } = enums;
+
+  const getSocialInfo = () => {
+    const social: SocialType[] = [
+      { id: 'linkedin', url: linkedin },
+      { id: 'twitter', url: twitter },
+      { id: 'facebook', url: facebook },
+      { id: 'instagram', url: instagram },
+    ];
+    return social.filter(({ url }) => !!url);
   };
+
+  const contact: ContactItemType = {
+    email: contact_email,
+    phone: contact_phone,
+    name,
+  };
+
+  const logo = picture?.small || '/images/avatar.svg';
 
   const tagsGridRows: TagsGridRowType[] = [
     {
-      title: 'Invests in',
+      id: 'category',
+      title: intl.formatMessage({ defaultMessage: 'Invests in', id: 'i9cSUD' }),
       type: 'category',
-      tags: [
-        { id: 'tourism', title: 'Tourism & Recreation' },
-        { id: 'production', title: 'Non-timber forest production' },
-        { id: 'agrosystems', title: 'Sustainable agrosystems' },
-        { id: 'forestry', title: 'Forestry & agroforestry' },
-      ],
+      tags: allCategories.filter(({ id }) => categories?.includes(id)),
     },
     {
-      title: 'Ticket size',
-      tags: ['US$50k', '$50k - $500k', '$500k - $1M'],
+      id: 'ticket-size',
+      title: intl.formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
+      tags: allTicketSizes.filter(({ id }) => ticket_sizes?.includes(id)),
     },
     {
-      title: 'Instrument size',
-      tags: ['Grand', 'Loan'],
+      id: 'instrument-size',
+      title: intl.formatMessage({ defaultMessage: 'Instrument size', id: '2AZiFU' }),
+      tags: allInstrumentTypes.filter(({ id }) => instrument_types?.includes(id)),
     },
     {
-      title: 'Impact they invest on',
-      tags: ['Biodiversity', 'Community'],
+      id: 'impact',
+      title: intl.formatMessage({ defaultMessage: 'Impact they invest on', id: '4y9VoH' }),
+      tags: allImpacts.filter(({ id }) => impacts?.includes(id)),
     },
   ];
 
-  const sdgsItems: SDGType[] = [
-    { id: 'no-poverty', title: 'No poverty' },
-    { id: 'gender-equality', title: 'Gender equality' },
-    { id: 'decent-work', title: 'Decent work and economic growth' },
-    { id: 'reduced-inequalities', title: 'Reduced inequalities' },
-    { id: 'climate-action', title: 'Climate action' },
-    { id: 'life-on-land', title: 'Life on land' },
-  ];
+  const investorTypeName = allInvestorTypes?.find(({ id }) => id === investor_type)?.name;
+
+  const favoriteInvestor = useFavoriteInvestor();
+
+  const handleFavoriteClick = () => {
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    favoriteInvestor.mutate({ id: investor.id, isFavourite: investor.favourite });
+  };
 
   return (
     <>
-      <Head title={`${aboutInfo.name} - ${aboutInfo.description}`} description={aboutInfo.text} />
+      <Head title={name} description={about} />
 
-      <ProfileHeader
-        logo={aboutInfo.logo}
-        title={aboutInfo.name}
-        subtitle={aboutInfo.description}
-        text={aboutInfo.text}
-        website={aboutInfo.website}
-        social={aboutInfo.social}
-        contact={aboutInfo.contact}
-      />
+      <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
+        <Breadcrumbs
+          className="sm:px-6 lg:px-8"
+          substitutions={{
+            id: { name },
+          }}
+        />
+
+        <ProfileHeader
+          className="mt-6"
+          logo={logo}
+          title={name}
+          subtitle={investorTypeName}
+          text={about}
+          website={website}
+          social={getSocialInfo()}
+          contact={contact}
+          originalLanguage={language}
+          isFavorite={investor.favourite}
+          onFavoriteClick={handleFavoriteClick}
+          favoriteLoading={favoriteInvestor.isLoading}
+        />
+      </LayoutContainer>
 
       <LayoutContainer layout="narrow" className="mt-24 mb-20 md:mt-40">
         <section aria-labelledby="profile-investment-info">
@@ -108,83 +182,45 @@ const InvestorPage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
 
           <TagsGrid className="mt-10 md:mt-14" rows={tagsGridRows} />
 
-          <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
-            <FormattedMessage defaultMessage="Invests in SDG's" id="7qgtEX" />
-          </h3>
-          <SDGs className="my-3" sdgs={sdgsItems} />
+          {!!sdgs && (
+            <>
+              <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
+                <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
+              </h3>
+              <SDGs
+                className="my-3"
+                sdgs={allSdgs.filter(({ id }) => sdgs?.includes(Number(id)))}
+              />
+            </>
+          )}
 
-          <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
-            <FormattedMessage defaultMessage="How do they work?" id="KtecFi" />
-          </h3>
-          <p className="my-3">
-            We achieve our mission through an Incubator that provides pre-seed capital and business
-            services to improve investment readiness; and the Enterprise Fund that deploys
-            seed-state loans to enterprises seeking capital to scale.
-          </p>
-          <p className="my-3">We work across cross-cutting themes that include:</p>
-          <ul className="pl-6 my-3 list-disc">
-            <li>
-              <span className="font-semibold">Climate Change: </span>
-              Regenerative agriculture, circular economy, ecotourism
-            </li>
-            <li>
-              <span className="font-semibold">Gender Equity: </span>
-              Women in tech, financial empowerment
-            </li>
-            <li>
-              <span className="font-semibold">Digital Economy: </span>
-              Workforce development, youth inclusion, diversity hiring
-            </li>
-          </ul>
-          <p>
-            Our headquarters is in the U.S., and we operate in Latin America from local offices in
-            Lima and San Martin (Peru), Bogota (Colombia), Sao Paulo and Para (Brazil), and Santiago
-            (Chile).
-          </p>
+          {!!mission && (
+            <>
+              <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
+                <FormattedMessage defaultMessage="Mission" id="RXoqkD" />
+              </h3>
+              <p className="my-3">{mission}</p>
+            </>
+          )}
 
-          <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
-            <FormattedMessage defaultMessage="This makes a difference to them" id="lPkzC0" />
-          </h3>
-          <p className="my-3">
-            Traditional businesses just aren&apos;t getting the job done in emerging market
-            countries. People deserve access to good jobs, reliable income and the dignity that
-            comes with supporting their families and contributing to their communities.
-            Locally-based social enterprises are uniquely qualified to transform low-income,
-            excluded and environmentally-vulnerable communities.
-          </p>
-          <p className="my-3">
-            These enterprises are on the ground, have the trust of the communities and have created
-            businesses aligned with their best interests. It&apos;s at the early stage of investing
-            where we can first reach the most vulnerable – poor, excluded, and highly at risk
-            individuals – that are often seen as candidates for charity and become the victims of
-            donor fatigue or are simply ignored.
-          </p>
-
+          {!!prioritized_projects_description && (
+            <>
+              <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
+                <FormattedMessage defaultMessage="Type of prioritized projects" id="5y6ZTQ" />
+              </h3>
+              <p className="my-3">{prioritized_projects_description}</p>
+            </>
+          )}
           <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
             <FormattedMessage defaultMessage="Other information" id="kX7oGR" />
           </h3>
-          <p className="my-3">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit ut libero ultricies ut nibh
-            nibh. Ac lacinia sem ullamcorper felis cursus nec. Ornare mattis id quis amet. Sit sed
-            malesuada nulla pharetra turpis sit. Eget in cras lobortis et et sed cras scelerisque
-            erat. Consectetur quis consectetur semper sit aliquam fames. Egestas id in arcu placerat
-            diam, pharetra dolor velit lectus.
-          </p>
+          <p className="my-3">{other_information}</p>
         </section>
       </LayoutContainer>
     </>
   );
 };
 
-InvestorPage.layout = {
-  props: {
-    headerProps: {
-      transparent: true,
-    },
-    mainProps: {
-      topMargin: false,
-    },
-  },
-};
+InvestorPage.layout = {};
 
 export default InvestorPage;

@@ -1,28 +1,25 @@
 import { useMemo } from 'react';
 
-import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { AxiosError, AxiosResponse } from 'axios';
 
-import { useSession } from 'next-auth/client';
+import { useLocalizedQuery } from 'hooks/query';
 
-import USERS from 'services/users';
+import { Queries } from 'enums';
+import { User } from 'types/user';
 
-import { UseSaveMeProps, SaveMeProps } from './types';
+import { ErrorResponse, ResponseData } from 'services/types';
+import { getCurrentUser } from 'services/users/userService';
 
 export default function useMe() {
-  const [session, loading] = useSession();
-
-  const query = useQuery(
-    'me',
-    () =>
-      USERS.request({
-        method: 'GET',
-        url: '/me',
-        headers: {
-          Authorization: `Bearer ${session.accessToken}`,
-        },
-      }).then((response) => response.data),
+  const query = useLocalizedQuery<AxiosResponse<ResponseData<User>>, AxiosError<ErrorResponse>>(
+    Queries.User,
+    getCurrentUser,
     {
-      enabled: !!session && !loading,
+      retry: 1,
+      staleTime: Infinity,
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      // Changing the defaults to those configurations will reduce the fetchings and prevent the unecessary retries
     }
   );
 
@@ -31,38 +28,8 @@ export default function useMe() {
   return useMemo(
     () => ({
       ...query,
-      user: data?.data,
+      user: data?.data?.data,
     }),
-    [query, data?.data]
+    [query, data]
   );
-}
-
-export function useSaveMe({
-  requestConfig = {
-    method: 'PATCH',
-  },
-}: UseSaveMeProps) {
-  const queryClient = useQueryClient();
-  const [session] = useSession();
-
-  const saveMe = ({ data }: SaveMeProps) =>
-    USERS.request({
-      url: '/me',
-      data,
-      headers: {
-        Authorization: `Bearer ${session.accessToken}`,
-      },
-      ...requestConfig,
-    });
-
-  return useMutation(saveMe, {
-    onSuccess: (data, variables, context) => {
-      queryClient.invalidateQueries('me');
-      console.info('Succces', data, variables, context);
-    },
-    onError: (error, variables, context) => {
-      // An error happened!
-      console.info('Error', error, variables, context);
-    },
-  });
 }

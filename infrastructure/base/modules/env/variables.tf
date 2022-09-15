@@ -41,12 +41,94 @@ variable "transifex_token" {
   description = "Transifex API access token"
 }
 
+variable "sendgrid_api_key" {
+  type = string
+  description = "SendGrid API key"
+}
+
 variable "google_analytics_key" {
   type = string
   description = "Google Analytics key"
 }
 
+variable "google_maps_api_key" {
+  type = string
+  description = "Google Maps API key"
+}
+
+variable "mapbox_api_key" {
+  type = string
+  description = "Mapbox API key"
+}
+
+variable "dns_zone_name" {
+  type        = string
+  description = "Name for the GCP DNS Zone"
+}
+
+variable "redirect_dns_zone_name" {
+  type        = string
+  description = "Name for the GCP redirect DNS Zone"
+}
+
 variable "domain" {
   type = string
   description = "Base domain for the DNS zone"
+}
+
+variable "redirect_domain" {
+  type = string
+  description = "Legacy domain to redirect"
+}
+
+variable "subdomain" {
+  type = string
+  default = ""
+  description = "If set, it will be prepended to the domain to form a subdomain."
+}
+
+variable "frontend_min_scale" {
+  type = number
+  description = "Minimum number of frontend app instances to deploy"
+  default = 0
+}
+
+variable "frontend_max_scale" {
+  type = number
+  description = "Maximum number of frontend app instances to deploy"
+  default = 5
+}
+
+variable "backend_min_scale" {
+  type = number
+  description = "Minimum number of backend app instances to deploy"
+  default = 0
+}
+
+variable "backend_max_scale" {
+  type = number
+  description = "Maximum number of backend app instances to deploy"
+  default = 5
+}
+
+variable "cors_origin" {
+  type = string
+  description = "Origin for CORS config"
+  default = "*"
+}
+
+variable "uptime_alert_email" {
+  type = string
+  description = "Email address to which uptime alerts should be sent"
+}
+
+variable "from_email_address" {
+  type = string
+  description = "Email address from which to send emails"
+}
+
+variable "instance_role" {
+  type = string
+  default = "production"
+  description = "staging|production, NOT the same as RAILS_ENV as that is 'production' in staging as well"
 }

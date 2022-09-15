@@ -1,0 +1,32 @@
+<% content_for :content do %>
+  <header class="w-full bg-green-dark text-beige">
+    <div class="container mx-auto">
+      <div class="flex items-center justify-between h-16 md:h-20 gap-x-8 md:gap-x-16">
+        <div>
+          <a class="font-semibold" href="/">HeCo Invest</a>
+          <span class="font-light"><%= t("backoffice.layout.header") %></span>
+        </div>
+        <div class="flex items-center justify-end flex-1 gap-2">
+          <%= current_admin.email %>
+          <%= render partial: "layouts/language_selector" %>
+          <%= button_to t("backoffice.layout.sign_out"), destroy_admin_session_path, data: {turbo: false}, method: :delete %>
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto">
+      <% if breadcrumbs.any? %>
+        <%= render "breadcrumbs" %>
+      <% else %>
+        <%= render "navigation" %>
+      <% end %>
+    </div>
+  </header>
+
+  <main class="container mx-auto py-6 mt-1 relative">
+    <%= render "flash_messages" %>
+    <%= yield %>
+    <%== render partial: "pagination", locals: {pagy: @pagy_object} if defined? @pagy_object %>
+  </main>
+<% end %>
+
+<%= render template: "layouts/application" %>

@@ -1,57 +1,288 @@
 {
+  "+2I7uh": {
+    "string": "info@hecoinvest.org"
+  },
+  "+4Udxw": {
+    "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below."
+  },
+  "+8XJbK": {
+    "string": "To be part of the HeCo Invest platform your organization, institution or business must create an account. An account is your organization profile and it contains all the basic information to describe it. There are two types of accounts HeCo Invest: one for organizations developing projects - Project Developers - and one for organizations investing in projects - Investors. Each account will have at least one contact: the account owner."
+  },
+  "+Hbd1j": {
+    "string": "Financial instrument"
+  },
+  "+JVDMC": {
+    "string": "Know more"
+  },
+  "+K9fF0": {
+    "string": "Project Developers"
+  },
+  "+USuwC": {
+    "string": "Funding available per project"
+  },
   "+mzZak": {
     "string": "About {name}"
+  },
+  "+pH0Po": {
+    "string": "When you create your project profile, the platform's artificial intelligence engine will define the type of impact it will have for its geographical location and connect with suitable sources of support."
+  },
+  "+qyVem": {
+    "string": "adequate access to quality education, appropriate health services, and formal employment opportunities that respond to diverse skill profiles and are adapted to regional cultural diversity."
+  },
+  "+tol9p": {
+    "string": "Water capacity or efficiency"
   },
   "+vVZ/G": {
     "string": "Connect"
   },
-  "/1WGZ8": {
-    "string": "Projects funded"
+  "/3K+SA": {
+    "string": "Entrepreneurs and innovators - startups"
+  },
+  "/4GN+O": {
+    "string": "Invite user"
+  },
+  "/CaREm": {
+    "string": "Pending approval"
+  },
+  "/FrBTj": {
+    "string": "Project pictures"
+  },
+  "/ITXlB": {
+    "string": "How do accounts work?"
+  },
+  "/Jn84b": {
+    "string": "Have access to all of the contacts of <n>project developers </n> and <n>investors</n>. Easily reach and connect so you can decide where to invest."
   },
   "/L6T3E": {
     "string": "Get connected"
   },
+  "/Lbk/f": {
+    "string": "Enter the estimated implementation duration for the project. MAX 36 months."
+  },
+  "/PlWea": {
+    "string": "Use up and down to choose options, press escape to exit the menu, press tab to select the option and exit the menu."
+  },
+  "/UnJ3S": {
+    "string": "Zoom out"
+  },
   "/VnDMl": {
     "string": "Other"
+  },
+  "/aYUC+": {
+    "string": "By contributing to improve the productions systems and livelihoods of local communities and indigenous peoples to satisfy their basic needs, while enhancing their adaptation to climate change.<br></br><br></br>Supporting the consolidation of their lands governance structures and capacities for sound management."
+  },
+  "/apC0L": {
+    "string": "SDG’s"
+  },
+  "/m/QYW": {
+    "string": "Tell us what is the project about the problem and the solution to solve it"
+  },
+  "/oLNw7": {
+    "string": "The impact score of this project is 0."
   },
   "/plMvw": {
     "string": "Project category"
   },
+  "0+CmKm": {
+    "string": "Find location"
+  },
+  "02KfzX": {
+    "string": "Add your legal registration number so we can verify your legal entity. This information will not be publicly available."
+  },
+  "03HUos": {
+    "string": "View public page"
+  },
+  "06VF+w": {
+    "string": "Share on Facebook"
+  },
+  "0Bne2n": {
+    "string": "Location Area"
+  },
   "0CAqpl": {
     "string": "About the partners"
+  },
+  "0DNR+D": {
+    "string": "Tell us what you value in the projects you invest in / what will make you invest in projects"
+  },
+  "0L/mZC": {
+    "string": "Target group"
+  },
+  "0PnfDn": {
+    "string": "View public profile"
+  },
+  "0QW5LG": {
+    "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and <n>your team</n>."
   },
   "0SKBlf": {
     "string": "Go to page {pageNumber}"
   },
+  "0WEEzi": {
+    "string": "<n>HeCo priority landscapes</n> are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystems"
+  },
+  "0WuJfZ": {
+    "string": "Enter the estimated implementation duration for the project."
+  },
+  "0ZkvWW": {
+    "string": "Amazonian Piedmont - Massif"
+  },
   "0cWjQP": {
     "string": "{title} - page {currentPage} out of {numPages}"
+  },
+  "0ch6f/": {
+    "string": "Scaling - up"
   },
   "0hzVw6": {
     "string": "How accounts work?"
   },
+  "0iaD3T": {
+    "string": "Total <span>{numProjects}</span> {numProjects, plural, one {project} other {projects}}"
+  },
+  "0lKwqs": {
+    "string": "Close open call?"
+  },
+  "0u3Vzf": {
+    "string": "All users associated with the account will be deleted."
+  },
+  "0v43t3": {
+    "string": "Note that all of this information will be visible in the Investor public profile page except questions."
+  },
+  "0vL5u1": {
+    "string": "Create an account"
+  },
   "0wBg9P": {
     "string": "Project developers"
+  },
+  "0z5mo1": {
+    "string": "insert new password"
+  },
+  "0zLVGQ": {
+    "string": "Instrument types"
+  },
+  "11hyS6": {
+    "string": "Add your legal registration number so we can verify your legal entity . This information will not be publicaly available."
   },
   "1B1DeU": {
     "string": "HeCo Invest relies on the <span>ARIES Artificial Intelligence</span> model to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four dimensions of interest based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10 as shown in the chart of impact."
   },
+  "1E9nN4": {
+    "string": "What information do I need to create an open call?"
+  },
+  "1MTH/x": {
+    "string": "option {optionName} {status}, {pagination}."
+  },
+  "1Qvlb5": {
+    "string": "Legalized Indigenous Reservations until the year 2021."
+  },
+  "1ZgrhW": {
+    "string": "Role"
+  },
+  "1iEPTM": {
+    "string": "General"
+  },
+  "1pQoFr": {
+    "string": "Information about the open call"
+  },
+  "1t1fGY": {
+    "string": "How will the money be used?"
+  },
   "25WwxF": {
     "string": "Don't have an account?"
+  },
+  "2AIlHB": {
+    "string": "Transfer ownership"
+  },
+  "2AZiFU": {
+    "string": "Instrument size"
+  },
+  "2Cbk6h": {
+    "string": "Add your logo or a picture that identifies the account."
+  },
+  "2CtPQ/": {
+    "string": "Contact phone"
+  },
+  "2GBpne": {
+    "string": "Impact score"
+  },
+  "2HumLB": {
+    "string": "123.000 million"
+  },
+  "2JJSDv": {
+    "string": "Edit project developer’s account"
   },
   "2O2sfp": {
     "string": "Finish"
   },
-  "2aOaT4": {
-    "string": "HeCo Invest is considered as a pilot effort. It will then scale to include all the signatory countries of the Pact."
+  "2ffyX7": {
+    "string": "This page is coming soon"
   },
   "2inebt": {
     "string": "The opportunities are located in geographies that are are unique due to of their biodiversity, cultural heritages, and regulation of water systems. As such, these projects will have the greatest impact for people and nature."
   },
+  "2qzivP": {
+    "string": "Discover Project Developers"
+  },
+  "2sU5tO": {
+    "string": "What HeCo Invest can do for you"
+  },
+  "2yCGR2": {
+    "string": "Link copied to clipboard"
+  },
+  "35YoEI": {
+    "string": "Description of the project"
+  },
   "39AHJm": {
     "string": "Sign Up"
   },
-  "3l2y4U": {
-    "string": "Person of contact"
+  "39PtLD": {
+    "string": "Instagram"
+  },
+  "3BIClA": {
+    "string": "Impact of projects managing water cycling, quality and availability as well as the management of associated risks."
+  },
+  "3BcZ1K": {
+    "string": "Conservation"
+  },
+  "3BlzQw": {
+    "string": "Select project to apply"
+  },
+  "3T3umg": {
+    "string": "If you are the owner of the account, please transfer the ownership before continuing."
+  },
+  "3WLO/M": {
+    "string": "Tell the investor why your project should receive the funding."
+  },
+  "3ciGOS": {
+    "string": "Grant"
+  },
+  "3dEg+E": {
+    "string": "{start} of {end}"
+  },
+  "3hV8r4": {
+    "string": "Select the stage of development of the project or solution at the time of submitting this pitch"
+  },
+  "3i3sH1": {
+    "string": "Investment bank"
+  },
+  "3npveQ": {
+    "string": "This will help us measuring the impact of your project."
+  },
+  "3tWxy0": {
+    "string": "Project developer type"
+  },
+  "3zi0sq": {
+    "string": "Energy efficiency"
+  },
+  "4+4OY6": {
+    "string": "HeCo Invest supports the Herencia Colombia program in its efforts to stimulate and channel funding for high impact projects in the Amazon region of Colombia."
+  },
+  "4+kVuu": {
+    "string": "Indigenous peoples"
+  },
+  "47FYwb": {
+    "string": "Cancel"
+  },
+  "49OGbh": {
+    "string": "Carbon storage or sequestration"
   },
   "4CrCbD": {
     "string": "Community"
@@ -62,41 +293,188 @@
   "4EYbNW": {
     "string": "Create open calls"
   },
-  "4bznpU": {
-    "string": "HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the long-term sustainability of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
+  "4HIQfn": {
+    "string": "Landscapes location"
+  },
+  "4JFhNG": {
+    "string": "Describe briefly the impact that the project is expected to generate to the identified users/beneficiaries. Try to explain how the solution or project will achieve this impact. Also try to give some estimates of the number of people impacted, at least to get an initial idea."
+  },
+  "4S241U": {
+    "string": "Contacts"
+  },
+  "4VKVh6": {
+    "string": "Explore projects"
+  },
+  "4YJHut": {
+    "string": "Clear search"
+  },
+  "4iPaIz": {
+    "string": "Update information"
+  },
+  "4iXh64": {
+    "string": "Your account has not been approved, your profile is not publicly visible."
+  },
+  "4vn+6A": {
+    "string": "{inputName} is focused, type to refine list, press down to open the menu, press left to focus selected values"
+  },
+  "4y9VoH": {
+    "string": "Impact they invest on"
+  },
+  "4zK41e": {
+    "string": "Investing in the Amazon means contributing to improving the quality of life of more than 30 million people. It is also contributing to the development and conservation of a vital region for South America and the world."
+  },
+  "4zUbhC": {
+    "string": "What’s the open call about"
+  },
+  "5/UUMs": {
+    "string": "Incipient"
+  },
+  "50bxrQ": {
+    "string": "My favorites"
+  },
+  "5DdRx+": {
+    "string": "When will the open call have the Verification badge?"
+  },
+  "5GLwZF": {
+    "string": "Select the account language in which you want to write the content of this account. This will avoid mixed content in the platform."
   },
   "5Hzwqs": {
     "string": "Favorite"
   },
-  "5hbC/K": {
-    "string": "Start making an impact now!"
+  "5IVVec": {
+    "string": "Sub-national"
+  },
+  "5UMEjA": {
+    "string": "Find the support and resources to grow your business or project"
+  },
+  "5c08Qp": {
+    "string": "Project information"
+  },
+  "5g0Cah": {
+    "string": "For who is the open call for?"
+  },
+  "5gd2Z7": {
+    "string": "HeCo <a>priority landscapes</a>"
+  },
+  "5kZ+j+": {
+    "string": "Duration of the project"
   },
   "5l/FHl": {
     "string": "You can choose from a variety of opportunities that range from sustainable landscape management tools and solutions, to forest-friendly products and business models. From social welfare solutions, to climate solutions and sustainable businesses."
   },
+  "5mkG4O": {
+    "string": "This description should succently explain your project. It should be a catching text since it's the first thing investors will read."
+  },
+  "5oTICT": {
+    "string": "insert the open call name"
+  },
   "5sg7KC": {
     "string": "Password"
+  },
+  "5y6ZTQ": {
+    "string": "Type of prioritized projects"
   },
   "5zAKQ7": {
     "string": "About HeCo"
   },
-  "60xeYL": {
-    "string": "Contribute to improving the production systems and livelihoods of local communities and indigenous people, to ensure their basic needs are met, while enhancing their adaptation to climate change."
+  "62884j": {
+    "string": "<b>Climate</b>: areas with high carbon storage potential where land sector interventions can be implemented for climate regulation."
+  },
+  "62pTkz": {
+    "string": "Save your favorites"
+  },
+  "68i9X8": {
+    "string": "Investor information"
+  },
+  "6EYInP": {
+    "string": "My open call applications"
+  },
+  "6FQ0Y8": {
+    "string": "Leave open call creation form"
+  },
+  "6GktxW": {
+    "string": "Someone has shared a HeCo invest contact with you"
+  },
+  "6IKs4G": {
+    "string": "wood and soil biomass, application of sustainable forest measures;"
+  },
+  "6MoU6D": {
+    "string": "Explain how the solution or project can be replicated in other contexts and geographies. Think practically about the existing opportunities, the partners and allies needed as well as the barriers that this replication effort may face such as climate issues, regulations and legal frameworks, land tenure, institutional capacity, etc."
+  },
+  "6b2CRH": {
+    "string": "User menu"
+  },
+  "6cU2pG": {
+    "string": "The project gallery will be the first thing other users will see on your page, it will help you to showcase your project."
+  },
+  "6hS0se": {
+    "string": "Are you sure you want to delete the account?"
   },
   "6ukMW9": {
     "string": "Basque Centre for Climate Change"
   },
-  "7KLSqh": {
-    "string": "Contribute to the conservation and restoration of the most diverse terrestrial ecosystems on the planet. These ecosystems support countless endemic species and contribute to mitigate the impacts of the climate crisis."
+  "6vrfSY": {
+    "string": "Displays the Key Biodiversity Areas containing 95% or more of the remaining population of one or more species listed as Endangered or Critically Endangered on the International Union for Conservation of Nature (IUCN) Red List of Threatened Species."
+  },
+  "6xBvFx": {
+    "string": "Describe the problem or market need that your project or solution seeks to address. It should be a very specific problem, not a macro global issue like \"climate change\" or \"poverty\". Make sure that your showing that the problem is addressing a specific demand (is real) and it affects the poor and vulnerable population and/or the environment. We recommend using numbers to give a dimension of the problem."
+  },
+  "770IIS": {
+    "string": "Investment information"
+  },
+  "77qZcU": {
+    "string": "Account Deleted"
+  },
+  "78vrMq": {
+    "string": "Close filters"
+  },
+  "7A5ik/": {
+    "string": "The phone number for Investors or other Project Developers to reach you/your team"
+  },
+  "7JlauX": {
+    "string": "Explore"
+  },
+  "7NGqWp": {
+    "string": "Your open call is awaiting verification. This means that the open call is visible in the platform but without the <b>Verification badge</b>."
   },
   "7Rh11y": {
     "string": "Setup investor profile"
   },
-  "7qgtEX": {
-    "string": "Invests in SDG's"
+  "7aTDQM": {
+    "string": "Project gallery (optional)"
+  },
+  "7gMEKc": {
+    "string": "Project details"
+  },
+  "7iO/ih": {
+    "string": "Discover project developers"
+  },
+  "7mgGgs": {
+    "string": "It is one of the most important terrestrial carbon sink on Earth, helping to mitigate climate change."
+  },
+  "7qB5i4": {
+    "string": "As an Investor or Funder"
+  },
+  "7rePKd": {
+    "string": "HeCo Invest takes you step-by-step through the presentation of your proposal and then intelligently connects you with the community and potential sources of support and funding."
+  },
+  "7sVapx": {
+    "string": "View open call page"
+  },
+  "7xC2j0": {
+    "string": "Create Open Call"
   },
   "7xE2Vv": {
     "string": "Illustration of a person looking at a tree"
+  },
+  "8/Da7A": {
+    "string": "Deadline"
+  },
+  "80Vefc": {
+    "string": "Share on Twitter"
+  },
+  "8Gp8gS": {
+    "string": "Open call name"
   },
   "8HJxXG": {
     "string": "Sign up"
@@ -104,26 +482,104 @@
   "8HimVK": {
     "string": "Confirm password"
   },
+  "8IPyXf": {
+    "string": "Carbon emissions reduction"
+  },
+  "8KmEyC": {
+    "string": "Would you like to apply for this fund?"
+  },
+  "8MAKwj": {
+    "string": "Sustainability of the project"
+  },
+  "8Qmt9j": {
+    "string": "My open calls"
+  },
   "8R8Or7": {
     "string": "Search community"
+  },
+  "8SayhS": {
+    "string": "{placeholder}"
+  },
+  "8UvQTx": {
+    "string": "By launching your open call, it will be publicly visible and projects will be able to apply to it."
   },
   "8WtyrD": {
     "string": "Spanish"
   },
+  "8XJceA": {
+    "string": "Have you previously invested in impact?"
+  },
+  "8dGhWP": {
+    "string": "Browse or drag and drop"
+  },
+  "8gJV79": {
+    "string": "What are HeCo priority landscapes?"
+  },
   "8i6S4q": {
     "string": "Connecting investors, donors and philanthropists with carefully identified investment opportunities."
+  },
+  "8j91Nj": {
+    "string": "In the {area} the project has higher impact on <b>{impact}</b> and has an <b>impact score</b> of {score}."
+  },
+  "8mCCtS": {
+    "string": "Ending soon"
+  },
+  "8rAlFa": {
+    "string": "Not listed"
+  },
+  "8rIwwr": {
+    "string": "Expected Impact"
+  },
+  "8rdnTq": {
+    "string": "Picture (optional)"
+  },
+  "8xsdU1": {
+    "string": "This project isn’t currently looking for funding at this moment."
+  },
+  "8ywLSf": {
+    "string": "Twitter"
   },
   "9+Ddtu": {
     "string": "Next"
   },
+  "94Fg25": {
+    "string": "Select all"
+  },
+  "9CDBQg": {
+    "string": "The solution proposed"
+  },
   "9Er2U2": {
     "string": "Investments in HeCo will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
+  },
+  "9GzPsf": {
+    "string": "Maximum funding available per project"
+  },
+  "9I1zvK": {
+    "string": "Municipality"
   },
   "9VLFbQ": {
     "string": "Landscape photo"
   },
+  "9WcWke": {
+    "string": "{name} investor"
+  },
+  "9a9+ww": {
+    "string": "Title"
+  },
   "9cE0nR": {
     "string": "How is the impact calculated?"
+  },
+  "9dtx+L": {
+    "string": "Something went wrong while sending an invitation to the email {email}."
+  },
+  "9lOzos": {
+    "string": "To update any of this information, please contact the platform administrator. To delete the account, please contact the account owner."
+  },
+  "9nYuln": {
+    "string": "Base Layers"
+  },
+  "9o8/Wn": {
+    "string": "Topics/sector categories that interests you"
   },
   "9pXx8c": {
     "string": "Promote your idea, project or business and connect it with investors and funding sources to generate impact in the Amazon region."
@@ -131,50 +587,335 @@
   "9uOFF3": {
     "string": "Overview"
   },
+  "A/or0n": {
+    "string": "High-Net-Worth Individual (HNWI) or celebrity"
+  },
+  "A2bq3p": {
+    "string": "Starting today, this open call will be available for <total></total> days."
+  },
   "A4UTjl": {
     "string": "Portuguese"
+  },
+  "A775MJ": {
+    "string": "You are currently the account owner. Please transfer the ownership before continuing."
+  },
+  "A8lXv/": {
+    "string": "Global estimate of human population density and distribution."
   },
   "AC6emZ": {
     "string": "Inter-American Development Bank"
   },
+  "ADBj6Y": {
+    "string": "What type of financing are you looking for to implement your project or solution?"
+  },
+  "ANTAp/": {
+    "string": "Country, Municipality, State"
+  },
+  "APjPYs": {
+    "string": "I want to write my content in"
+  },
+  "Ac9oiY": {
+    "string": "This information will be displayed in the open call page."
+  },
+  "AdAi3x": {
+    "string": "Emails"
+  },
+  "AiagLY": {
+    "string": "Entity legal registration number (NIT or RUT)"
+  },
+  "AjUo5c": {
+    "string": "Max. funding per project"
+  },
+  "AoHRBG": {
+    "string": "Custom search"
+  },
+  "Ay+1nm": {
+    "string": "Due to security reasons, we are not allowed to display more <b>detailed financial information</b>. Please contact the Project Developers directly in order to obtain detailed information."
+  },
   "BAC0rl": {
     "string": "<span>Community:</span> income, sustainable projects;"
   },
-  "BvrO01": {
-    "string": "Use at least 8 characters."
+  "BHJZyR": {
+    "string": "Investor/Funder profile"
   },
-  "CYTiug": {
-    "string": "HeCo Invest will benefit poor and vulnerable people living in HeCo priority landscapes."
+  "BHrBCl": {
+    "string": "PNG, JPG up to 5MB"
   },
-  "CjpGzJ": {
-    "string": "Create your profile"
+  "BSFsv6": {
+    "string": "Tree biomass density"
+  },
+  "BTFkyB": {
+    "string": "HeCo Priority landscapes"
+  },
+  "BV91+1": {
+    "string": "Inter-American Natural Capital Lab"
+  },
+  "BY6k/1": {
+    "string": "Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average."
+  },
+  "BZG0d+": {
+    "string": "Search for projects, investors, open calls..."
+  },
+  "BZkcBV": {
+    "string": "Project developer photo"
+  },
+  "BcZVZW": {
+    "string": "This description should sumarize your project in a few words."
+  },
+  "BeVl3b": {
+    "string": "How long will the open call be available?"
+  },
+  "BkLlj6": {
+    "string": "What’s the impact of your project and what do you want to achieve"
+  },
+  "BqrQ5O": {
+    "string": "At the <b>Landscape level</b>, a composite index combining the set of indicators identified for each dimension is used to calculate <b>Context scores</b>, with values ranging from 0 to 1. <b>Demand</b> is then computed as 1 - <b>Context score</b>, representing the “quantity” missing to reach 1, where 1 assumes the best sustainability conditions. Because the demand can be considered at multiple scales (namely, municipality, hydrological basins, and HeCo Priority Landscapes), the demand score is computed using zonal statistics at a user-specified scale, with the municipality level being the default. Unlike municipalities and hydrographic basins, the HeCo Priority Landscapes don’t cover the entire country, and therefore <b>if the project area doesn't fall into any of the Priority Landscapes, the impact of that project will be zero at that particular scale</b>."
+  },
+  "Bt7PVr": {
+    "string": "Biodiversity intactness"
+  },
+  "BvO1iK": {
+    "string": "Biodiversity impact"
+  },
+  "ByoZDD": {
+    "string": "Breadcrumbs"
+  },
+  "C1dyBg": {
+    "string": "No search results matching the criteria."
+  },
+  "C23He5": {
+    "string": "Sort in ascending order"
+  },
+  "C3hduB": {
+    "string": "a loan is a transaction in which a financial institution grants a predefined amount of money to develop a particular project. The institution or business that receives the loan is obliged to repay it within a certain period of time and to pay the agreed commissions, expenses and interest."
+  },
+  "CEQo2w": {
+    "string": "My preferences"
+  },
+  "CIcAVo": {
+    "string": "consolidated, demonstrated project or solution that seeks to be scaled or replicated in other contexts and/or geographies."
+  },
+  "CIeYUa": {
+    "string": "Max. Funding"
+  },
+  "CPO6eS": {
+    "string": "Select in which SDG’s your project will have impact"
+  },
+  "Cf2YAW": {
+    "string": "Open calls are funding offers from investors requesting project developer proposals to grow their businesses. Note that these open proposals are available for a limited time and have unique application requirements."
+  },
+  "CiBvks": {
+    "string": "General information about the the project developer."
+  },
+  "CiYFzk": {
+    "string": "SME and MSME"
+  },
+  "CqohYm": {
+    "string": "All content associated with the account will be deleted. If you have created Open Calls to which some Projects have applied, the owners of these Projects will be automatically notified that the Open Call no longer exists."
   },
   "Cra78t": {
     "string": "© {date} HeCo Invest. All rights reserved."
   },
-  "DAJK4J": {
-    "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure 20 million hectares of sustainable landscape over the next 20 years, through investments in conservation and sustainable development."
+  "CtWJFx": {
+    "string": "Family office"
+  },
+  "Czc5vB": {
+    "string": "Looking for funding"
+  },
+  "CzsYIe": {
+    "string": "Account information"
+  },
+  "D5RCKi": {
+    "string": "Project name"
+  },
+  "D7hbFB": {
+    "string": "Back to Sign in"
+  },
+  "DCAMZh": {
+    "string": "Choose the field to sort by"
+  },
+  "DHLi++": {
+    "string": "By signing up you will be automatically added to the {accountName} account. <a>How accounts work?</a>"
+  },
+  "DIA26W": {
+    "string": "Create open call"
+  },
+  "DIrN6T": {
+    "string": "Project developer features"
+  },
+  "DQDJ8q": {
+    "string": "By publishing your project it will be publicly visible."
   },
   "DQoGRx": {
     "string": "About the impact"
   },
+  "DR+23P": {
+    "string": "Contact email"
+  },
+  "DTQxlC": {
+    "string": "Cooperative"
+  },
+  "DWQSFT": {
+    "string": "Use left and right to toggle between focused values, press backspace to remove the currently focused value"
+  },
+  "DYbC4X": {
+    "string": "Total <span>{numOpenCallApplications}</span> {numOpenCallApplications, plural, one {application} other {applications}}"
+  },
+  "DZ+TNi": {
+    "string": "Non-timber forest production"
+  },
+  "DeOyLr": {
+    "string": "Want to know more about this project?"
+  },
+  "DkjIbR": {
+    "string": "insert email"
+  },
+  "Dm1lEK": {
+    "string": "A score of expected impact along the four sustainability dimensions is assigned to every project. These scores are calculated using a combination of landscape-level variables (<b>Demand</b>) and self-reported project data (<b>Supply</b>)."
+  },
+  "DqD1yK": {
+    "string": "Applications"
+  },
+  "DrtKvj": {
+    "string": "Impact of projects on biodiversity conservation, calculated from indicators of endemism, land conservation/restoration, connectivity, and development of sustainable social projects."
+  },
+  "DsukuX": {
+    "string": "Delete open call?"
+  },
+  "E/YxHp": {
+    "string": "When will the project have the Verification badge?"
+  },
+  "E/uR6M": {
+    "string": "International Financial Institution"
+  },
+  "E010/S": {
+    "string": "> US$750,000 (Scaling)"
+  },
+  "E80WrK": {
+    "string": "Information"
+  },
+  "EFVd2S": {
+    "string": "Financial instruments available"
+  },
+  "EGMX38": {
+    "string": "Please insert your new password."
+  },
+  "EKOV4Z": {
+    "string": "Contextual Layers"
+  },
+  "EOsYCo": {
+    "string": "Discover our current calls from investors. Apply with your project and receive funding."
+  },
+  "ET6OJw": {
+    "string": "To create a project you will need the following information."
+  },
+  "EVKdUn": {
+    "string": "Priority Landscape"
+  },
+  "EWw/tK": {
+    "string": "Apply"
+  },
+  "Ec0M9T": {
+    "string": "Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components"
+  },
+  "EgOO+m": {
+    "string": "Launch open call?"
+  },
+  "Ejc7dP": {
+    "string": "tons of carbon are stored in the Amazon."
+  },
+  "EmE3wV": {
+    "string": "Sub-basin boundaries of Colombia."
+  },
+  "EmEy56": {
+    "string": "Migrants and displaced groups"
+  },
+  "EmpHyB": {
+    "string": "Facebook"
+  },
+  "EpzS3H": {
+    "string": "The HeCo priority landscapes or conservation mosaics are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure quality ecosystem services. The HeCo priority landscapes result from modeling and technical prioritization where the common interest prevailed in favor of the conservation and sustainable use of biodiversity and vital ecosystem services for national development. More information about these regions <link>here</link>."
+  },
   "ErIkUS": {
     "string": "Insert your email"
+  },
+  "EsZlwZ": {
+    "string": "Copy link to clipboard"
+  },
+  "EvP1Ut": {
+    "string": "Preview project page"
   },
   "EwRIOm": {
     "string": "User"
   },
+  "EzGCO8": {
+    "string": "water cycling, quality, and risk management"
+  },
+  "F++AYx": {
+    "string": "Something went wrong with the picture upload"
+  },
   "F1+h/t": {
     "string": "For project developers"
+  },
+  "F4dsUN": {
+    "string": "Go to first page"
+  },
+  "F4gyn3": {
+    "string": "Clear filters"
+  },
+  "F76hVG": {
+    "string": "insert current password"
+  },
+  "FFbWHO": {
+    "string": "Discover investors"
   },
   "FJfVJJ": {
     "string": "Access user-friendly tools that help turn a good idea into a proposal ready to be reviewed by an investor or funder."
   },
-  "GKDt/J": {
-    "string": "Find projects, start-ups or create an open call to locate opportunities for investment that make an impact."
+  "FN+0yY": {
+    "string": "Unable to parse the file. Please try uploading a different format."
+  },
+  "FVcGqA": {
+    "string": "The HeCo Invest platform connects governments, investors, donors, and philanthropists with selected investment opportunities and projects in high-priority areas for Herencia Colombia. If you find a project that matches your investment goals you can contact its project developer. The contact details will only be available for platform registered users. So if you want to reach out to a project developer, you first need to create an account or join an existing account. The beta version of the HeCo Invest platform does not include the actual attainment of the business deals. To fund a project, investors must carry out all business procedures outside the platform."
+  },
+  "FazwRl": {
+    "string": "Try again"
+  },
+  "Fg5HOn": {
+    "string": "Every new account created will need to be approved by the HeCo Invest staff - platform administrator. This approval process allows for the verification of each organization, institution or business that applies to the HeCo Invest platform, guaranteeing that only trustworthy organizations will present their projects or investment opportunities. Therefore, your account will only be visible on the HeCo Invest platform after the platform administrator completes this approval step."
+  },
+  "Fv1ZSz": {
+    "string": "Closed"
+  },
+  "FvveL5": {
+    "string": "Open call"
+  },
+  "Fxekek": {
+    "string": "Invite again"
+  },
+  "FyUIBK": {
+    "string": "Discover open calls and <heart></heart> them."
+  },
+  "G6cbGp": {
+    "string": "Investor name"
+  },
+  "G6hIMy": {
+    "string": "Public profile"
+  },
+  "G6tmT0": {
+    "string": "Select the ticket size(s) that you provide"
+  },
+  "G9iCfx": {
+    "string": "Reach them in"
+  },
+  "GDPNty": {
+    "string": "insert value"
   },
   "GKONs7": {
     "string": "Start having impact now."
+  },
+  "GM/hd6": {
+    "string": "Invitation"
   },
   "GOg6XJ": {
     "string": "Be part of the biggest change in the colombian Amazon"
@@ -182,60 +923,297 @@
   "GYkIYE": {
     "string": "Insert your last name"
   },
+  "Gcv7QB": {
+    "string": "Account name"
+  },
+  "GdS9Mk": {
+    "string": "Has this project been funded before?"
+  },
+  "GgNMmS": {
+    "string": "National Wetlands Map of Colombia"
+  },
+  "GhrkT+": {
+    "string": "confirm password"
+  },
+  "GsO+rH": {
+    "string": "Delete project?"
+  },
+  "GtP2gp": {
+    "string": "Find opportunities that have the greatest impact on challenges like <b>biodiversity, climate, community</b> and <b>water</b>."
+  },
+  "GufXy5": {
+    "string": "Value"
+  },
+  "Gxnfj4": {
+    "string": "mandatory fields"
+  },
+  "H0r0a5": {
+    "string": "At the <b>Project level</b>, the analysis is meant to communicate the expected impact of individual projects on the ground. This information is provided by project developers during the project registration phase. The following key indicators have been identified to inform if the project is appropriate in its local context."
+  },
+  "HAlOn1": {
+    "string": "Name"
+  },
   "HK3ph8": {
     "string": "How it works"
-  },
-  "HNpobe": {
-    "string": "Features for project developers"
   },
   "HVQtvr": {
     "string": "BC3's mission is to generate valuable knowledge for policy and decision making, integrating the environmental, socio-economic and ethical dimensions of climate change. Through the production of collaborative and open-source tools such as ARIES, which can track and forecast progress towards sustainable environmental and economic goals, BC3 plays a key role in enhancing regional, national and international economic development."
   },
-  "HmDmU1": {
-    "string": "Support the protection of water availability and regulation. These approaches are vital for reducing risks such as floods and droughts, which in the face of climate change can become more frequent and larger in magnitude."
+  "Hb+Idf": {
+    "string": "Project description"
+  },
+  "HcakU9": {
+    "string": "What is the open call about?"
+  },
+  "HlDhAh": {
+    "string": "10%"
   },
   "HnG9/3": {
     "string": "Insert password"
+  },
+  "HtMY9H": {
+    "string": "Type your message"
+  },
+  "HvSsTa": {
+    "string": "HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional."
+  },
+  "HyAD0J": {
+    "string": "{numItems} of {totalItems} entries"
   },
   "HzKhBJ": {
     "developer_comment": "Description shown in search engines",
     "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
   },
-  "IMe8OV": {
-    "string": "Nature based solutions are estimated to compensate up to 30% of global emissions."
+  "I2VJMv": {
+    "string": "Complete your profile with relevant information to make your relationship with project developers as precise as possible. For example the very particular topics you are interested in or the activities and items you definitely do not finance or invest in."
+  },
+  "I2yxwP": {
+    "string": "Why is my account pending approval?"
+  },
+  "I9iCt5": {
+    "string": "From which investor or funder? (optional)"
+  },
+  "IBlTCs": {
+    "string": "The image is larger than {maxSize}MB"
+  },
+  "IQTULX": {
+    "string": "We are here to help you"
+  },
+  "ITdmlJ": {
+    "string": "Contact information"
+  },
+  "IXFPYD": {
+    "string": "Combobox"
   },
   "IbrSk1": {
     "string": "Learn"
   },
+  "Id5CnU": {
+    "string": "Displays the areas prioritized for Goal 3 of Herencia Colombia"
+  },
+  "IkUX0b": {
+    "string": "How the money will be used"
+  },
+  "Iu60EH": {
+    "string": "Are you sure you want to continue?"
+  },
+  "IysIYD": {
+    "string": "Withdraw project"
+  },
+  "J4SQjQ": {
+    "string": "select"
+  },
   "J4w7T/": {
     "string": "Enable positive impact"
   },
-  "JI99E2": {
-    "string": "HeCo Invest was created following the Leticia Pact, and the commitment of the seven Heads of State to increase capital flows for sustainable development in the <span>Amazon</span>."
+  "JBFQAB": {
+    "string": "Population density"
+  },
+  "JFkvlB": {
+    "string": "Please use the contacts below to reach the project developer."
+  },
+  "JHJJAH": {
+    "string": "Save as draft"
+  },
+  "JHlWWV": {
+    "string": "Orinoquía"
   },
   "JIehAU": {
     "string": "This is why ARIES is developing a 'Wikipedia-like' platform, that is collaborative, open-source and enables interoperable models and data. For the first time, this generates new knowledge through integrating the existing platform with the ultimate scope of building a more sustainable and resilient future for all."
   },
+  "JJNc3c": {
+    "string": "Previous"
+  },
+  "JJQfhh": {
+    "string": "Progress and impact tracking"
+  },
+  "JK13Ms": {
+    "string": "What information do I need to create an Investor account?"
+  },
+  "JNTB42": {
+    "string": "Phone number (optional)"
+  },
+  "JQjEP9": {
+    "string": "SDGs"
+  },
   "JRfERD": {
     "string": "Paulson Institute"
+  },
+  "JSrP/U": {
+    "string": "The HeCo Invest platform connects governments, investors, donors, and philanthropists with selected investment opportunities and projects in high-priority areas for Herencia Colombia. If you find an open call that matches your goals and needs, you can create a project tailored specifically to that open call criteria. Project creation is only available for registered project developer account users. Once your project is created, you can apply to the open call, using the “Apply now” button on the open call page. You can also contact the investor, if needed. The contact details will only be available for platform registered users. So if you want to reach out to an investor, you first need to create an account or join an existing account."
   },
   "JWYapR": {
     "string": "{name} project"
   },
+  "JcS7oJ": {
+    "string": "By priority landscapes"
+  },
+  "Jfw90a": {
+    "string": "Publish draft"
+  },
   "JkLHGw": {
     "string": "Website"
   },
-  "KtecFi": {
-    "string": "How do they work?"
+  "Jl9QMO": {
+    "string": "Estimated impact"
   },
-  "KvhWhT": {
-    "string": "The <span>IDB Lab</span>, the <span>Paulson Institute</span> and the <span>World Wildlife Fund</span> are working together to develop a digital platform that connects governments, investors, donors, and philanthropists with carefully identified investment opportunities in <span>high priority locations</span> identified by programs such as Herencia Colombia (HeCo)."
+  "JnwEP6": {
+    "string": "Edit investor profile"
+  },
+  "Jwjqn/": {
+    "string": "focused"
+  },
+  "K+Q04b": {
+    "string": "Image gallery"
+  },
+  "K/CKP5": {
+    "string": "income, sustainable projects;"
+  },
+  "K3r6DQ": {
+    "string": "Delete"
+  },
+  "KGREXT": {
+    "string": "Total of projects"
+  },
+  "KYymTZ": {
+    "string": "{quantity, plural, one {project} other {projects}}"
+  },
+  "KcJ5IK": {
+    "string": "Select the deadline for this open call."
+  },
+  "Kg0xQM": {
+    "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 10."
+  },
+  "KkT/Fh": {
+    "string": "Update password"
+  },
+  "KlHNih": {
+    "string": "option {optionName} is disabled. Select another option."
+  },
+  "Knhvmr": {
+    "string": "Who is financing this open call"
+  },
+  "Kt3qxl": {
+    "string": "Renewable energy"
+  },
+  "Kub2g2": {
+    "string": "Equity"
+  },
+  "Kx1fFv": {
+    "string": "Small and medium businesses"
+  },
+  "KxPY7j": {
+    "string": "Date of creation"
+  },
+  "L2CvBU": {
+    "string": "Expect to have impact"
+  },
+  "L4nXIc": {
+    "string": "Change password"
+  },
+  "L51On4": {
+    "string": "Public-private organization"
+  },
+  "LDgw6G": {
+    "string": "NGO"
+  },
+  "LFDgTb": {
+    "string": "Leave project developer edition?"
+  },
+  "LFNAet": {
+    "string": "Select the SDG’s you expect to have impact (optional)"
+  },
+  "LI0oKR": {
+    "string": "Are you sure you want to delete “<strong>{name}</strong>”?"
+  },
+  "LMjhPg": {
+    "string": "Large enterprise"
+  },
+  "LanZ2z": {
+    "string": "Funding needed"
+  },
+  "Ll72W/": {
+    "string": "Currently not looking for funding"
+  },
+  "Llk7Pe": {
+    "string": "Not funding"
+  },
+  "LmHPHR": {
+    "string": "Select the topics/sector categories that you work on"
+  },
+  "LmyoPR": {
+    "string": "Thanks to our integration with <n>ARIES</n>, an Artificial Intelligence tool that integrates <n>expert knowledge, Semantics</n> and <n>Machine Reasoning</n> technology, we can <n>estimate a projects’ impact</n> along our four dimensions of interest: <n>Climate, Biodiversity, Water, Community</n> to guide and track your investment decisions."
+  },
+  "LtTjKV": {
+    "string": "selected"
+  },
+  "Lv0zJu": {
+    "string": "Details"
+  },
+  "Lw4PWP": {
+    "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
+  },
+  "LxYOKo": {
+    "string": "With a known <b>Demand</b> and <b>Supply</b>, a <b>Net value</b> is generated as <b>Supply</b> - <b>Demand</b>. This value ranges from -1 to 1. The closest the net value to 0 the better because it means that supply meets demand and vice versa. The Net value is then transformed into an <b>impact score</b>, using the formula y = - (x^​2) + 1. The results range from 0 to 1, where 0 is the low positive impact and 1 is a high positive impact, in relation to the context demand. Finally, this value is multiplied by 10 to rescale it from 0 to 10."
   },
   "M1xKEI": {
     "string": "Language: {language}"
   },
+  "M4pZPN": {
+    "string": "Go to open call page"
+  },
+  "M7261y": {
+    "string": "This information will help us understand what you are interested in invest or funding."
+  },
+  "MEywfd": {
+    "string": "Human capital and Inclusion"
+  },
+  "MF4b8Z": {
+    "string": "Use at least 12 characters, one uppercase letter, one lowercase letter and one number."
+  },
   "MH3koz": {
     "string": "Previous slide"
+  },
+  "MHwpc4": {
+    "string": "Draw or upload your location"
+  },
+  "MJuP2l": {
+    "string": "Displays the impacts of forest change on local biodiversity intactness."
+  },
+  "MM4RqT": {
+    "string": "This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}."
+  },
+  "MQoSiG": {
+    "string": "Community empowerment"
+  },
+  "MXykbb": {
+    "string": "The problem we are solving"
+  },
+  "MY++C0": {
+    "string": "accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects."
+  },
+  "MZTu88": {
+    "string": "US$25,000 – 150,000 (Prototyping)"
   },
   "MZl85Y": {
     "string": "One more step to go"
@@ -243,11 +1221,59 @@
   "MfCYKW": {
     "string": "For investors"
   },
+  "MfSkhN": {
+    "string": "Urban populations"
+  },
+  "MmBQFd": {
+    "string": "Carbon fund"
+  },
   "MuOp0t": {
     "string": "Climate"
   },
-  "NIQVjS": {
-    "string": "Support the consolidation of their lands governance structures and capacities for sound management."
+  "MxllAO": {
+    "string": "What is an open call?"
+  },
+  "N5k7R7": {
+    "string": "Tell us what’s the impact that you expect with this open call."
+  },
+  "N9+9Fi": {
+    "string": "select the project developer type"
+  },
+  "NG6Ull": {
+    "string": "HeCo Invest manages a <n>wide range of investment and financing opportunities</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n>."
+  },
+  "NIynnB": {
+    "string": "Current password"
+  },
+  "NJOWFQ": {
+    "string": "Currently you don’t have any <b>Open Call</b>."
+  },
+  "NLk0cp": {
+    "string": "US$150,000 – 750,000 (Market validation)"
+  },
+  "NP4Cd6": {
+    "string": "technical cooperation grants are resources provided by an entity to fulfil a well-defined purpose or objective. In general, they are non-reimbursable resources that are destined in particular to projects or enterprises in early stages of development."
+  },
+  "NUVSd2": {
+    "string": "Protected areas"
+  },
+  "NYErt1": {
+    "string": "Go to previous page"
+  },
+  "NjKSap": {
+    "string": "Online presence"
+  },
+  "NpcyZ1": {
+    "string": "Create an attractive project profile with well-defined attributes to intelligently connect with potential funders and investors."
+  },
+  "Nqe54a": {
+    "string": "How much money did the project received or raised?"
+  },
+  "NsIwKY": {
+    "string": "Leave create project develop?"
+  },
+  "Ntjkqd": {
+    "string": "or"
   },
   "NvzZkI": {
     "string": "Create partnerships"
@@ -255,8 +1281,14 @@
   "Nye7xC": {
     "string": "Explore our curated database featuring the contacts you need to take your project or business to the next level."
   },
-  "O1mdXY": {
-    "string": "Inspire and educate other users by coming back to the platform and updating us on your progress. We’ll be able to track the Amazon’s improvement thanks to your contribution!"
+  "O29TSs": {
+    "string": "Share by email"
+  },
+  "O3WloJ": {
+    "string": "No open calls"
+  },
+  "O95R3Z": {
+    "string": "Phone"
   },
   "OBhULP": {
     "string": "Open calls"
@@ -264,41 +1296,269 @@
   "OChccW": {
     "string": "Investor / Funder"
   },
+  "OJfOvp": {
+    "string": "The account owner can invite other colleagues to the account. These will receive an invitation by email to join the account. Each email can only be associated with one account. Once you are set as an account user, you can manage the account. However, adding or removing other account users can only be managed by account owners."
+  },
+  "OKhRC6": {
+    "string": "Share"
+  },
+  "OSAxiC": {
+    "string": "The solution or opportunity proposed"
+  },
+  "OWnChd": {
+    "string": "If you are not looking for funding and just want to publish your project, select No."
+  },
+  "Ob7+Ly": {
+    "string": "Google Cloud accelerates every organization’s ability to digitally transform its business. We deliver enterprise-grade solutions that leverage Google’s cutting-edge technology – all on the cleanest cloud in the industry. Customers in more than 200 countries and territories turn to Google Cloud as their trusted partner to enable growth and solve their most critical business problems."
+  },
   "Obr4XP": {
     "string": "Guiding tools"
+  },
+  "Oc8Fmg": {
+    "string": "Estimated duration of the project"
+  },
+  "OkH5va": {
+    "string": "Loan"
   },
   "Ow9MS8": {
     "string": "I want to find the right investment for my projects"
   },
+  "OxfymA": {
+    "string": "To upload a Shapefile, you must upload the .shp, .shx, .dbf and .prj files all at once."
+  },
+  "Oy4O4U": {
+    "string": "National"
+  },
+  "P+9ug1": {
+    "string": "We’ll help you reset it and get back on track."
+  },
+  "P1f6hp": {
+    "string": "Funding priorities"
+  },
+  "P3pSke": {
+    "string": "Something went wrong while trying to change the account ownership."
+  },
   "P4T4Ib": {
     "string": "Discover projects that have impact in the Amazon region and get connected with investors and project developers."
+  },
+  "P7PLVj": {
+    "string": "Date"
+  },
+  "PD6Q1A": {
+    "string": "Endangered species and critical habitats"
+  },
+  "PFbrpZ": {
+    "string": "sustainable and regenerative agriculture, fishing, and aquaculture as well as manufacturing of derived subproducts."
+  },
+  "PGlFh/": {
+    "string": "Community impact"
   },
   "PIZ1dD": {
     "string": "Search biodiversity"
   },
-  "PTr6+3": {
-    "string": "Contribute to climate solutions through investments that reduce CO2 emissions and conserve or restore forest-related carbon sinks."
+  "PR8FFs": {
+    "string": "Create your organization's account as a project developer in the field or as an investor or funder and become part of the HeCo Invest community."
+  },
+  "PXAur5": {
+    "string": "Withdraw"
+  },
+  "PgGfZr": {
+    "string": "Upload shapefile / KML file"
+  },
+  "PheCRL": {
+    "string": "Estimated Impact"
+  },
+  "Py+eVV": {
+    "string": "Basic info"
   },
   "Q1Q4rT": {
     "string": "Insert your name"
   },
+  "Q8Qw5B": {
+    "string": "Description"
+  },
+  "QA1wrZ": {
+    "string": "Frequently Asked Questions"
+  },
+  "QD4yJl": {
+    "string": "Application details"
+  },
   "QDj3j7": {
     "string": "Inter-American Development Bank Lab"
+  },
+  "QESbGa": {
+    "string": "select project developers"
+  },
+  "QEg+U9": {
+    "string": "Discover projects and <heart></heart> them."
+  },
+  "QGF3ow": {
+    "string": "\"Select the instrument type(s) you provide"
+  },
+  "QI4yO9": {
+    "string": "It is an area with a number of attributes related to heterogeneity that maintain the structure and ecological processes that characterize it as the Heart of the Amazon, it is also one of the most unique natural and cultural heritages in the national territory due to its exuberant cultural diversity."
+  },
+  "QcPpQd": {
+    "string": "For Project Developers"
+  },
+  "Qd/1Cb": {
+    "string": "Corporate foundation"
+  },
+  "QlBsxM": {
+    "string": "Google Cloud"
+  },
+  "Qmlx+T": {
+    "string": "Insert the email to receive the contact messages."
+  },
+  "Qmq3hW": {
+    "string": "These prioritized regions are spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure quality ecosystem services. Many of these regions belong to the municipalities prioritized for the post-conflict process. These areas centralize Herencia Colombia's efforts to preserve and sustainably use biodiversity, land use planning, improve the quality of life of local communities, reduce deforestation, mitigate and adapt to climate change, and generate livelihoods, among others. This will ultimately contribute directly to building peace in the most affected areas. More information about these regions <link>here</link>."
+  },
+  "QncmS+": {
+    "string": "Use up and down to choose options, press Enter to select the currently focused option, press escape to exit the menu, press tab to select the option and exit the menu."
+  },
+  "QqpgJo": {
+    "string": "Leave investor creation form"
+  },
+  "Qt/+mk": {
+    "string": "Discover Projects"
+  },
+  "R+1DVQ": {
+    "string": "Invite users"
+  },
+  "R7Y3LS": {
+    "string": "Start-up"
+  },
+  "RBIeR5": {
+    "string": "Being a point of transition and meeting between the two most biodiverse biomes on Earth, the Tropical Andes and the Amazon, the Mosaic foothills represents one of the regions with <n>the greatest biodiversity in the world</n>."
+  },
+  "RDCAd6": {
+    "string": "value {optionName} focused, {pagination}."
+  },
+  "RDclSN": {
+    "string": "Investor/Funder type"
+  },
+  "RFAvvo": {
+    "string": "Discover investors and <heart></heart> them."
+  },
+  "RPrfBJ": {
+    "string": "Philanthropy"
+  },
+  "RUzNGu": {
+    "string": "By signing in you will be automatically added to the {accountName} account. <a>How accounts work?</a>"
   },
   "RXoqkD": {
     "string": "Mission"
   },
-  "RczAkW": {
-    "string": "Report back"
+  "RahCRH": {
+    "string": "Expired"
+  },
+  "Rb/hb9": {
+    "string": "LinkedIn"
+  },
+  "RyOOZR": {
+    "string": "Have access to all of the contacts of <n>Investors</n> and <n>Project Developers</n>. Easily reach and connect so you can find the best investment or partnership."
+  },
+  "S27Bu1": {
+    "string": "<span>Note:</span>The content of this project should be written in {language}"
+  },
+  "S2nxXm": {
+    "string": "Thanks for using HeCo Invest"
+  },
+  "SFCYg4": {
+    "string": "Don’t have a project yet? Create a project now"
+  },
+  "SFGITa": {
+    "string": "Amazon Heart"
+  },
+  "SHw9Ht": {
+    "string": "Start connecting with people to create impact. You can find investors, opportunities to invest open calls and much more."
+  },
+  "SMrXWc": {
+    "string": "Favorites"
+  },
+  "SNBzCW": {
+    "string": "Tell us what how do you expect to grow your project , how will you measure progress and impact."
+  },
+  "SNyd7j": {
+    "string": "Currently you don’t have any <b>Open calls</b> in your favorites."
   },
   "SQJto2": {
     "string": "Sign in"
   },
+  "SUQqz6": {
+    "string": "<span>Note:</span>The content of this open call should be written in {language}"
+  },
+  "SXKvVa": {
+    "string": "From which investor or funder?"
+  },
+  "SYPx2d": {
+    "string": "Project developers involved in the project"
+  },
+  "SZBXIx": {
+    "string": "How can I apply for an open call?"
+  },
+  "Scnx6A": {
+    "string": "Maturity / stage of development"
+  },
+  "Sg5j0W": {
+    "string": "1.5 million indigenous people and more than 5 million Afro-descendants."
+  },
+  "Si0U4V": {
+    "string": "Relevant links"
+  },
   "Swj4mJ": {
     "string": "Select the {name} account"
   },
-  "TH786p": {
-    "string": "See my profile"
+  "T7Ry38": {
+    "string": "Message"
+  },
+  "TDaF6J": {
+    "string": "Dismiss"
+  },
+  "TJo5E6": {
+    "string": "Preview"
+  },
+  "TLn/wq": {
+    "string": "Open image"
+  },
+  "TM4C3M": {
+    "string": "Open calls target project developers. They are a way for investors to call for projects within their specific scope. Project developers may submit their projects to a specific open call, if they match the open call criteria."
+  },
+  "TUFmRM": {
+    "string": "Climate impact"
+  },
+  "TYrWO2": {
+    "string": "The dataset represents the boundaries of sites containing 95% or more of the remaining population of one or more species listed as Endangered or Critically Endangered on the International Union for Conservation of Nature (IUCN) Red List of Threatened Species."
+  },
+  "TdTXXf": {
+    "string": "Learn more"
+  },
+  "TfXhCr": {
+    "string": "No projects"
+  },
+  "TkWozN": {
+    "string": "an equity investment consists of the acquisition, by an entity specialized in private equity, of a package of shares of a company or enterprise. The private equity firm thus becomes one of the owners of the company."
+  },
+  "TndK0C": {
+    "string": "Discover projects"
+  },
+  "ToXG99": {
+    "string": "View project page"
+  },
+  "TwyMau": {
+    "string": "Account"
+  },
+  "U1OBY8": {
+    "string": "options {options}, selected."
+  },
+  "U98Mu/": {
+    "string": "This layer shows the permanent and temporal wetlands of Colombia at a 1:100.000 reoslution"
+  },
+  "UD6OB+": {
+    "string": "Are you sure you want to make <n>{userName}</n> the owner of <n>{accountName}</n> account? You cant undo this action."
+  },
+  "UIQdVc": {
+    "string": "Are you sure you want to delete “<strong>{projectName}</strong>”?"
   },
   "URLNhk": {
     "string": "The Inter-American Development Bank (IDB) is the largest source of development financing for Latin America and the Caribbean. Established in 1959, the IDB supports Latin American and Caribbean economic development, social development and regional integration by lending to governments and government agencies, including State corporations."
@@ -309,8 +1569,26 @@
   "Ub+AGc": {
     "string": "Sign In"
   },
+  "UhT/Dv": {
+    "string": "max 600 characters"
+  },
+  "Uomdkb": {
+    "string": "'<US$25,000 (Small grants)"
+  },
   "UxTJRa": {
     "string": "Projects"
+  },
+  "V+X/MZ": {
+    "string": "Online Presence"
+  },
+  "V/JHlm": {
+    "string": "Forgot password?"
+  },
+  "V1MZuC": {
+    "string": "Sustainable food"
+  },
+  "V4KNjk": {
+    "string": "optional"
   },
   "VCODFJ": {
     "string": "Why use this platform"
@@ -318,47 +1596,209 @@
   "VG3saq": {
     "string": "<span>Water:</span> water cycling, quality, and risk management."
   },
+  "VJPvoR": {
+    "string": "The impact of this project is 0."
+  },
   "VKb1MS": {
     "string": "Categories"
+  },
+  "VNrnq9": {
+    "string": "Non-VC Investment vehicle"
   },
   "VR21hO": {
     "string": "The climate crisis is where short-term thinking and long-term consequences collide. How to think long-term in a short-term world?"
   },
+  "VR4TEV": {
+    "string": "Apply now"
+  },
+  "VUN1K7": {
+    "string": "Create project"
+  },
+  "VVlH2M": {
+    "string": "Hydrobasin"
+  },
+  "VaC9C0": {
+    "string": "This description should succinctly explain your project. It should be a catching text since it's the first thing investors will read."
+  },
+  "VavuU5": {
+    "string": "Project Developer type"
+  },
   "Vge+RX": {
     "string": "Footer"
+  },
+  "Vi/HrX": {
+    "string": "Projects target investors. They are set up whenever a project developer is seeking visibility or needing investment. The project is intended to contribute to the environmental conservation of a specific region and benefit nature and people."
+  },
+  "ViF88C": {
+    "string": "Tell us about your work and impact priorities."
+  },
+  "VkljLs": {
+    "string": "Insert the phone number in case you would like to be contacted by phone."
+  },
+  "VsNoGp": {
+    "string": "How much money did the project received or raised? (optional)"
   },
   "Vxcu91": {
     "string": "{name} account"
   },
-  "W4Jolw": {
-    "string": "IDB Lab is the innovation laboratory of the Inter-American Development Bank Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
+  "VzuazJ": {
+    "string": "The Global Human Settlement Layer (GHSL) Population Grid depicts the distribution and density of population, expressed as the number of people per cell, for 2015. While GFW uses only 2015 data, the GHSL is a multi-temporal population data set that employs new spatial data mining technologies. These methods enable the automatic processing and extraction of analytics and knowledge from different data sets: global, fine-scale satellite image data streams, census data, and crowd sources or volunteered geographic information sources."
+  },
+  "W2JBdp": {
+    "string": "Impact"
+  },
+  "W5x0GV": {
+    "string": "Water impact"
+  },
+  "W6nwjo": {
+    "string": "Draft"
+  },
+  "WAr33U": {
+    "string": "insert the name"
+  },
+  "WJGIA3": {
+    "string": "Helps to ensure connectivity between the Andean, Orinocean and Amazonian ecosystems, allowing the conservation of flora, fauna, scenic beauties, geomorphological complexes, historical or cultural manifestations, the conservation and regulation of water systems."
+  },
+  "WJcNiD": {
+    "string": "The Inter-American Development Bank (IDB) is the main source of multilateral financing and expertise for sustainable economic, social and institutional development in Latin America and the Caribbean. The IDB Natural Capital Lab works to drive innovation in natural capital finance by looking at nature as an asset."
+  },
+  "WLDgff": {
+    "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
+  },
+  "WSvHHP": {
+    "string": "With an HeCo account you can have a public profile page, making it easier for Investors and other Project Developers to find and reach you."
   },
   "WTuVeL": {
     "string": "Something went wrong while submitting your form. Please correct the errors before submitting again."
   },
+  "WU9L8h": {
+    "string": "Account language"
+  },
   "WkrNSk": {
     "string": "English"
+  },
+  "Wm7zf8": {
+    "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and start the conversation."
+  },
+  "Wo0Pmr": {
+    "string": "Already a member? Log in"
+  },
+  "WskbuL": {
+    "string": "Sub-basin boundaries"
+  },
+  "X+46wB": {
+    "string": "HeCo priority landscapes"
   },
   "X0E3iC": {
     "string": "I agree with the Terms and Privacy Policy."
   },
+  "X2YMUl": {
+    "string": "Contact the project developers to know more about the project."
+  },
+  "XDC7Vp": {
+    "string": "Select the intrument type(s) you provide"
+  },
+  "XGd7Tu": {
+    "string": "Entrepreneur"
+  },
   "XJqnLu": {
     "string": "Search water"
+  },
+  "XO0Kon": {
+    "string": "This file is not supported. Please try uploading a different format."
+  },
+  "XOLAV7": {
+    "string": "Withdraw from the open call?"
+  },
+  "XPruqs": {
+    "string": "Order"
   },
   "XQuzr9": {
     "string": "Identified priorities by the HeCo program"
   },
+  "XUD4o/": {
+    "string": "HeCo Invest provides you with a range of resources <n>to help you grow</n> and have the greatest <n>impact in the Colombian Amazon</n>."
+  },
+  "XaFc9D": {
+    "string": "Select HeCo priority landscapes on which you will have impact"
+  },
+  "Xcq/fH": {
+    "string": "Change account owner"
+  },
+  "Xf3dpi": {
+    "string": "Toggle fullscreen mode"
+  },
+  "XgaRPC": {
+    "string": "Expected impact"
+  },
+  "XimHnV": {
+    "string": "Invalid invitation token"
+  },
+  "Xk8qys": {
+    "string": "Are there other Project developers involved in the project?"
+  },
   "XkF/qg": {
     "string": "Profile picture of {name}"
   },
-  "Y7/cBd": {
-    "string": "Reach out for what you are looking for, from either <span>Investors</span> or <span>Project Developers</span> and <span>start the conversation</span>. Make sure to update us to help us track your contribution to preserving the Amazon: <span>the future is in your hands too!</span>"
+  "Xms+aE": {
+    "string": "Currently you don’t have any <b>Projects</b> in your favorites."
+  },
+  "XwmxKZ": {
+    "string": "A project is an enterprise or initiative carefully planned and run by project developers in a given region with the objective of contributing to its environmental conservation. Projects are set up whenever a project developer is seeking visibility or needing investment."
+  },
+  "Y2HapG": {
+    "string": "The dataset represents a series of vectorized polygon layers that depict sub-basin boundaries at a global scale. An important characteristic of any sub-basin delineation is the sub-basin breakdown. At its highest level of sub-basin breakdown, each basin has been divided into two sub-basins at every location where two river branches meet which each have an individual upstream area of at least 100 km². A second critical feature of sub-basin delineations is the way the sub-basins are grouped or coded to allow for the creation of nested sub-basins at different scales, or to navigate within the sub-basin network from up- to downstream. To support these functionalities and topological concepts, the ‘Pfafstetter’ coding system has been implemented, offering 12 hierarchically nested sub-basin breakdowns globally."
+  },
+  "Y2zB+b": {
+    "string": "No project developers"
+  },
+  "Y9+L0O": {
+    "string": "Discover Open Calls"
   },
   "Y9bYKH": {
     "string": "Next slide"
   },
-  "ZEEVQX": {
-    "string": "Social media"
+  "YB8bt5": {
+    "string": "Expect to have impact on"
+  },
+  "YDMrKK": {
+    "string": "Users"
+  },
+  "YE6fVO": {
+    "string": "{accountName} account"
+  },
+  "YEYmEz": {
+    "string": "Draw on the map or upload a file with the geographical area your project will have an impact on."
+  },
+  "YQsqLq": {
+    "string": "Total <span>{numUsers}</span> {numUsers, plural, one {user} other {users}}"
+  },
+  "YWQkk+": {
+    "string": "Short description of the project"
+  },
+  "YYMUK5": {
+    "string": "Expects to have impact on"
+  },
+  "YjuFXX": {
+    "string": "Herencia Colombia priority landscapes"
+  },
+  "YtyJ9Z": {
+    "string": "production of health, wellness, and cosmetic products; art, clothing, and handcrafted products; production of food and drinks."
+  },
+  "Yw0iXW": {
+    "string": "Open call details"
+  },
+  "Yy/yDL": {
+    "string": "Reset password"
+  },
+  "Z6MFUA": {
+    "string": "You can’t undo this action."
+  },
+  "ZATT08": {
+    "string": "Pagination"
+  },
+  "ZKsAVY": {
+    "string": "This project isn’t currently looking for funding."
   },
   "ZMvQxR": {
     "string": "HeCo Invest manages a wide range of investment and financing opportunities in various sectors and priority geographies for the conservation and development of the Colombian Amazon region."
@@ -366,32 +1806,161 @@
   "ZRwGVc": {
     "string": "In line with your priorities"
   },
+  "ZZPfwt": {
+    "string": "Describe the problem or market need that your project or solution seeks to address. It should be a very specific problem, not a macro global issue like 'climate change' or 'poverty'. Make sure that you're showing that the problem is addressing a specific demand (is real) and it affects the poor and vulnerable population and/or the environment. We recommend using numbers to give a dimension of the problem."
+  },
+  "ZaT/7W": {
+    "string": "option {optionName}, selected."
+  },
+  "ZcbMzP": {
+    "string": "Support protecting the environmental factors that help maintain the availability and regulation of the water resources, which are vital for reducing risks such as floods and droughts, which in the face of climate change can become more frequent and larger in magnitude."
+  },
+  "Zht65f": {
+    "string": "Identify the target group(s) of this solution. Try to be very specific and do not cover an unrealistic range of beneficiaries or clients."
+  },
   "ZiErTG": {
     "string": "Be part of the biggest change in the Colombian Amazon"
+  },
+  "ZikI+j": {
+    "string": "Select the topics/sector categories that interests you"
+  },
+  "ZjA6uH": {
+    "string": "Welcome to HeCo Invest. Please enter your details below."
+  },
+  "ZocjEJ": {
+    "string": "What happens when I delete my Project Developer account?"
+  },
+  "Zt7DBA": {
+    "string": "Priority landscapes of HeCo"
+  },
+  "a+vAPa": {
+    "string": "Invitation mail"
+  },
+  "a5msuh": {
+    "string": "Yes"
   },
   "aDn1WM": {
     "string": "Curated database"
   },
+  "aF/DIA": {
+    "string": "Leave project edition form"
+  },
+  "aFyFm0": {
+    "string": "Accepted"
+  },
+  "aH4De2": {
+    "string": "Source"
+  },
+  "aNY6/x": {
+    "string": "Yes / No"
+  },
   "aRIIAG": {
     "string": "<span>Climate:</span> wood and soil biomass, application of sustainable forest measures;"
+  },
+  "aRoGjo": {
+    "string": "Why are these regions important?"
+  },
+  "aT5Ajq": {
+    "string": "Start drawing"
+  },
+  "adPUXO": {
+    "string": "Until approval you can continue exploring our database."
+  },
+  "af90UN": {
+    "string": "Through accessing <a>ARIES (Artificial Intelligence for Environmental Sustainability)</a> and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
+  },
+  "agJGNx": {
+    "string": "How much funding do you have available for this open call? ($)"
+  },
+  "aleGqT": {
+    "string": "Descending"
+  },
+  "apgkuO": {
+    "string": "More about ARIES"
+  },
+  "avVMND": {
+    "string": "This information will be visible in the project page when you launch it."
+  },
+  "azx2BO": {
+    "string": "Discover open calls"
+  },
+  "b3Iz6I": {
+    "string": "What type of projects the funding is covering."
+  },
+  "b6bipu": {
+    "string": "Choose one of your projects to apply to the open call."
   },
   "bNpbHr": {
     "string": "Find other people with similar interests. Join forces, secure more investment and create a greater impact."
   },
+  "bWygLM": {
+    "string": "insert the amount of money"
+  },
+  "bXy++M": {
+    "string": "How much money do you intend to give to this open call."
+  },
+  "bh4rlK": {
+    "string": "Government"
+  },
+  "bhxvPM": {
+    "string": "Setup project developer’s account"
+  },
+  "bjubNC": {
+    "string": "Add your logo or a picture that indentifies the account."
+  },
   "btdgGc": {
     "string": "<a>Browse the open calls</a> posted by our investor community to identify new areas for project development."
   },
-  "cAtOAM": {
-    "string": "Impact shape of the {name} project"
+  "c+PoWZ": {
+    "string": "This will help us measure the impact of your project. Try to be as precise and realistic as possible, choosing only your main direct impacts. <a>Learn more</a>"
+  },
+  "c1m3Q7": {
+    "string": "The project gallery will be the first thing other users will see on you page, it will help you to showcase you project."
+  },
+  "c3w2Rt": {
+    "string": "Currently you don’t have any <b>Open Call Applications</b>."
+  },
+  "c4HVkO": {
+    "string": "Launch open call"
+  },
+  "c6KUQu": {
+    "string": "Your account was successfully created, but you still need to be approved by our platform administrators."
+  },
+  "c82kx9": {
+    "string": "HeCo Invest relies on the ARIES Artificial Intelligence model to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four “sustainability dimensions”, based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10, as shown in the chart of impact."
+  },
+  "c8BbZZ": {
+    "string": "Trade or business association"
+  },
+  "cDSTwv": {
+    "string": "Total <span>{numOpenCalls}</span> {numOpenCalls, plural, one {openCall} other {openCalls}}"
   },
   "cE4Hfw": {
     "string": "Discover"
+  },
+  "cIQfgu": {
+    "string": "Restoration"
+  },
+  "cKaiI0": {
+    "string": "File {fileName} has an invalid format"
   },
   "cPwv2c": {
     "string": "Privacy policy"
   },
   "cT6b2H": {
     "string": "WWF"
+  },
+  "caaGgO": {
+    "string": "How can I invest/fund a project?"
+  },
+  "ccXLVi": {
+    "string": "Category"
+  },
+  "cdeA3/": {
+    "string": "Investor email"
+  },
+  "cqoaMq": {
+    "string": "Shapefile / KML"
   },
   "ctfKNN": {
     "string": "Set your priorities and HeCo Invest will connect you with the best opportunities."
@@ -402,14 +1971,71 @@
   "cyR7Kh": {
     "string": "Back"
   },
+  "cyRU1N": {
+    "string": "Forgot your password?"
+  },
+  "d1OgED": {
+    "string": "(optional)"
+  },
+  "d3TPmn": {
+    "string": "SDG's"
+  },
+  "d8knkp": {
+    "string": "Your account has been deleted"
+  },
+  "dHpDHe": {
+    "string": "HeCo Invest will <n>benefit poor and vulnerable people</n> living in <n>HeCo priority landscapes in the Amazon region</n>."
+  },
+  "dKiARI": {
+    "string": "To produce this population density and distribution data set, researchers mapped global built-up areas, which are defined as all above ground constructions intended for human or animal sheltering or to produce economic goods. The locations of these built up areas was established using Landsat imagery analysis. An additional source used to compile this data set was the Gridded Population of the World (GPW) data set assembled by the Center for International Earth Science Information Network (CIESIN). The GPW data set consists of census population data and bolstered the built-up areas data by enabling researchers to estimate residential population. To present this data as grid cells, GPW data was disaggregated from census or administrative units."
+  },
   "dPuc1g": {
     "string": "Slide {slideNumber}"
+  },
+  "dYFllx": {
+    "string": "The methodology that estimates the project’s impacts is based on a supply-and-demand framework, where <b>Demand</b> responds to the question: “what does the local context need?” and <b>Supply</b> to the question “What is the project providing?”. For a project to satisfy the needs of a local context, supply needs to meet the demand, and vice versa."
   },
   "dZYyPC": {
     "string": "View {name} project details"
   },
+  "dZd8H/": {
+    "string": "Waiting"
+  },
+  "daUTdN": {
+    "string": "Open call applications"
+  },
+  "deHJ3+": {
+    "string": "Riverine flood risk"
+  },
+  "des5Rg": {
+    "string": "Discover projects by category"
+  },
   "dkNQOz": {
     "string": "Projects of all sizes"
+  },
+  "du2+Gq": {
+    "string": "<b>Biodiversity</b>:"
+  },
+  "dwB95+": {
+    "string": "Priority landscape"
+  },
+  "e0c9xF": {
+    "string": "insert the name of the investor/funder"
+  },
+  "e61Jf3": {
+    "string": "Coming soon"
+  },
+  "eCiudu": {
+    "string": "Open call cover image"
+  },
+  "eE6uKi": {
+    "string": "This data set, a collaboration between the Global Land Analysis & Discovery (GLAD) lab at the University of Maryland, Google, USGS, and NASA, measures areas of tree cover loss across all global land (except Antarctica and other Arctic islands) at approximately 30 × 30 meter resolution. The data were generated using multispectral satellite imagery from the Landsat 5 thematic mapper (TM), the Landsat 7 thematic mapper plus (ETM+), and the Landsat 8 Operational Land Imager (OLI) sensors. Over 1 million satellite images were processed and analyzed, including over 600,000 Landsat 7 images for the 2000-2012 interval, and more than 400,000 Landsat 5, 7, and 8 images for updates for the 2011-2021 interval. The clear land surface observations in the satellite images were assembled and a supervised learning algorithm was applied to identify per pixel tree cover loss."
+  },
+  "eFJIPT": {
+    "string": "{numInstrumentTypes, plural, one {Instrument type} other {Instrument types}}"
+  },
+  "eItis6": {
+    "string": "Discover investors by budget/ticket size"
   },
   "eM7TKf": {
     "string": "About the platform"
@@ -417,35 +2043,320 @@
   "eSLLyC": {
     "string": "To complete you registration and make full use of the platform, please select which account you would like to create."
   },
+  "eXDHt0": {
+    "string": "Describe the project or solution and describe clearly why you consider it is innovative, different from others and how it can generate an important change and impact towards the target groups. Highlight the characteristics that may attract partners, clients, or investors."
+  },
+  "eXH6WV": {
+    "string": "Are you sure you want to delete <strong>{displayName}</strong>? You can't undo this action."
+  },
+  "ee3r6Y": {
+    "string": "Other relevant information"
+  },
+  "efZTBX": {
+    "string": "Use this space to share links to documents, videos and websites that support your pitch."
+  },
+  "ejuZC0": {
+    "string": "To upload a Shapefile geometry, you must upload the .shp, .shx, .dbf and eventually .prj files all at once."
+  },
+  "et2m37": {
+    "string": "insert URL"
+  },
+  "etdw49": {
+    "string": "For who is the project for?"
+  },
+  "eu+7Vl": {
+    "string": "Do you have a project or a start-up business in the Colombian Amazon?"
+  },
+  "ew5vRN": {
+    "string": "Investor phone"
+  },
+  "ewx2b7": {
+    "string": "Launch"
+  },
+  "f6GN1M": {
+    "string": "<b>Community</b>: areas with production systems and sustainable practices where local and indigenous communities can thrive while enhancing their adaptation to climate change."
+  },
+  "f9DtLB": {
+    "string": "max 36 months"
+  },
+  "fDd10o": {
+    "string": "Instrument type"
+  },
+  "fMrPOR": {
+    "string": "Go to last page"
+  },
+  "fTHhSB": {
+    "string": "New password"
+  },
+  "fUM67k": {
+    "string": "Open project"
+  },
+  "fW6hrZ": {
+    "string": "Angel investor"
+  },
+  "fX9u5/": {
+    "string": "Contribute to addressing the effects of climate change through investments to reduce CO2 emissions and conserve or restore forest-related carbon sinks. <br></br><br></br> Nature based solutions have been estimated to have the potential of contributing to compensate for up to 30% of global emissions."
+  },
+  "fZb224": {
+    "string": "Funding"
+  },
+  "fZpvTQ": {
+    "string": "Delete my user"
+  },
+  "ff0+bt": {
+    "string": "The platform will use the most advanced technologies and Artificial Intelligence applications to provide in one place data and tools to connect investors, donors and philanthropists with carefully selected projects in high priority locations defined by Heremcia Colombia."
+  },
+  "fmTQay": {
+    "string": "open call"
+  },
   "fnihsY": {
     "string": "Leave"
+  },
+  "fqJtkV": {
+    "string": "Others"
+  },
+  "fvFVbs": {
+    "string": "Shows above ground live woody biomass density."
+  },
+  "fwSVTQ": {
+    "string": "Sort in descending order"
+  },
+  "g5JslF": {
+    "string": "Institutional investor"
   },
   "g5pX+a": {
     "string": "About"
   },
+  "g8xSgQ": {
+    "string": "Commercial bank"
+  },
+  "gEdnC6": {
+    "string": "endemism, conservation/ restoration potential, landscape connectivity;"
+  },
+  "gF/kn9": {
+    "string": "Contribute to protecting areas of greatest ecosystems diversity, conservation and restoration potential, degree of threat or protection for flora and fauna, landscape connectivity and degree of endemism."
+  },
+  "gQ16Mj": {
+    "string": "Funding exclusions"
+  },
+  "gbBVhv": {
+    "string": "sustainable timber extraction and forest management practices, including reforestation and restoration."
+  },
   "ghj0+t": {
     "string": "Geographies"
+  },
+  "gjBW8J": {
+    "string": "General information about the investor/funder."
+  },
+  "gpOeXW": {
+    "string": "Priority Layers"
+  },
+  "gpTOIc": {
+    "string": "{message} for search term {term}"
+  },
+  "gwLlk9": {
+    "string": "select one"
+  },
+  "hDI+JM": {
+    "string": "Sort by"
+  },
+  "hGDBI4": {
+    "string": "Sustainable agrosystem"
   },
   "hLG9bm": {
     "string": "Project financial instrument"
   },
+  "hOp4Ue": {
+    "string": "Tourism and recreation"
+  },
+  "hPsrc0": {
+    "string": "insert your answer (max 600 characters)"
+  },
+  "hWhIuU": {
+    "string": "Select the intrument type(s)"
+  },
+  "hX5PAb": {
+    "string": "No results found"
+  },
+  "hg7Mex": {
+    "string": "Select which areas your project will have an impact on"
+  },
   "hiQOgT": {
     "string": "<span>Biodiversity:</span> endemism, conservation/restoration potential, landscape connectivity;"
+  },
+  "hkIfkj": {
+    "string": "disabled"
+  },
+  "hl9bd4": {
+    "string": "Cover"
+  },
+  "hmK5Jb": {
+    "string": "Close project details card"
+  },
+  "hpOE0K": {
+    "string": "<a>Browse</a> or drag and drop"
+  },
+  "huqKGl": {
+    "string": "Create account"
   },
   "hxIQ/8": {
     "string": "Projects waiting funding"
   },
-  "i50XU3": {
-    "string": "Features for investors"
+  "i1R/il": {
+    "string": "View all applications"
+  },
+  "i2AgQl": {
+    "string": "Which of these topics/sector categories better describe your project?"
+  },
+  "i5gK2X": {
+    "string": "Currently you don’t have any <b>Project developers</b> in your favorites."
+  },
+  "i9cSUD": {
+    "string": "Invests in"
+  },
+  "iAtu/T": {
+    "string": "Someone has shared a HeCo invest project with you"
+  },
+  "iD2hRt": {
+    "string": "insert the project name"
+  },
+  "iFQwyC": {
+    "string": "A picture can make your open call page more attractive."
+  },
+  "iMJ1Xr": {
+    "string": "As an investor or funder, if you do not find a project aligned with your interests, you can create your own call to challenge the <n>HeCo Invest community</n> and receive customized, quality proposals that are only visible to the users of your account."
+  },
+  "iR1WoG": {
+    "string": "Preview open call page"
+  },
+  "iSPvEQ": {
+    "string": "To create an open call you will need the following information."
+  },
+  "iUt7so": {
+    "string": "of the planet’s known biodiversity lives in the Amazon, the largest tropical rainforest on the planet."
+  },
+  "iZuO+L": {
+    "string": "Legend"
+  },
+  "iiVhlC": {
+    "string": "insert phone number"
+  },
+  "ikyoJL": {
+    "string": "HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the <n>long-term sustainability</n> of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
+  },
+  "ilgFAX": {
+    "string": "Target group(s)"
   },
   "in26xr": {
     "string": "{organization} logo"
   },
-  "jWOeHy": {
-    "string": "<a>Call on our community</a> of project developers to identify opportunities in your preferred sectors and geographies."
+  "inQ2Q1": {
+    "string": "Topics/sector categories"
+  },
+  "iosznt": {
+    "string": "Select one of your projects and tell the investor why your project should receive the funding to apply."
+  },
+  "ipYSrV": {
+    "string": "The email where you want to receive contacts from Investors or other Project Developers"
+  },
+  "itfsqC": {
+    "string": "Currently you don’t have any <b>Projects</b>."
+  },
+  "iwpEth": {
+    "string": "Map layers"
+  },
+  "j4lBL7": {
+    "string": "Note: Some filters not apply to all tabs"
+  },
+  "jC4Plq": {
+    "string": "LGTBQ+ groups"
+  },
+  "jCeHSc": {
+    "string": "Peasants and traditional inhabitants"
+  },
+  "jG0v72": {
+    "string": "Email {email} is invalid."
+  },
+  "jHyKQ2": {
+    "string": "Thanks to our <n>model ARIES</n>, an Artificial Intelligence tool, you can <n>reach investors</n> that are interested in your project and <n>learn how your activity impacts</n> the environment and your community."
+  },
+  "jKdvln": {
+    "string": "Relevant links (optional)"
+  },
+  "jN8Kad": {
+    "string": "Browse thought the most frequently asked questions."
+  },
+  "jNai7b": {
+    "string": "Remove all"
+  },
+  "jUgR7w": {
+    "string": "Stage of development or maturity of the project"
+  },
+  "jX0V8C": {
+    "string": "No investors"
+  },
+  "jXqlWP": {
+    "string": "{name} project developer"
+  },
+  "jdJhOL": {
+    "string": "Phone number"
+  },
+  "jj4ae3": {
+    "string": "Project image {index}."
+  },
+  "jnYkhy": {
+    "string": "The <n>IDB Lab</n>, the <n>Paulson Institute</n>, the <n>World Wildlife Fund</n>, the <n>Spanish Cooperation Fund</n>, the <n>Basque Center for Climate Change</n> and <n>Google</n> are joining forces to launch this platform which can later be deployed across all Amazonian countries."
+  },
+  "jqCFCY": {
+    "string": "Describe briefly the impact that the project is expected to generate."
+  },
+  "jvHO6d": {
+    "string": "By accepting this invitation you will belong to the {accountName} account."
+  },
+  "jvb6yi": {
+    "string": "This is a global, wall-to-wall map of aboveground biomass (AGB) at approximately 30-meter resolution. This data product expands on the methodology presented in Baccini et al. (2012) to generate a global map of aboveground live woody biomass (AGB) density (megagrams biomass per ha) at 0.00025-degree (approximately 30-meter) resolution for the year 2000. Aboveground biomass was estimated using a multi-step process of calculating AGB at more than seven hundred thousand points with LiDAR with regional allometric equations, then using those to train a wall-to-wall model based on Landsat imagery. Pixels without tree canopy were assigned a biomass density of 0 Mg/ha."
   },
   "jwimQJ": {
     "string": "Ok"
+  },
+  "k0xbVH": {
+    "string": "You can't undo this action."
+  },
+  "k36uSw": {
+    "string": "Project"
+  },
+  "k5DITM": {
+    "string": "Users will receive an email to sign up into the platform and join <strong>{name}</strong> account."
+  },
+  "k62/kN": {
+    "string": "Fit bounds"
+  },
+  "kEXoaQ": {
+    "string": "About your work"
+  },
+  "kHpaMt": {
+    "string": "Edit Open Call"
+  },
+  "kICTEM": {
+    "string": "I'm financing this project"
+  },
+  "kN2Vfv": {
+    "string": "Delete {accountName} account"
+  },
+  "kN5g/0": {
+    "string": "Indigenous Reserves"
+  },
+  "kPq9Kx": {
+    "string": "HeCo priority landscape"
+  },
+  "kRnyPA": {
+    "string": "select project"
+  },
+  "kTXMXN": {
+    "string": "Displays the protected areas signed into the RUNAP (Unique Registry of Protected Areas) of Colombia"
+  },
+  "kUEzKa": {
+    "string": "Application date"
   },
   "kUPAU5": {
     "string": "Search climate"
@@ -453,41 +2364,248 @@
   "kX7oGR": {
     "string": "Other information"
   },
-  "lPkzC0": {
-    "string": "This makes a difference to them"
+  "kaAF7K": {
+    "string": "An open call is a call for projects made by a given investor. Open calls give investors the possibility to open specific opportunities in their topics of interest. All registered project developers have the possibility to submit their projects to an open call, if they match the open call criteria, and therefore apply to this particular funding."
+  },
+  "kdZTM0": {
+    "string": "Close open call"
+  },
+  "keWpuD": {
+    "string": "In this data set, “tree cover” is defined as all vegetation greater than 5 meters in height, and may take the form of natural forests or plantations across a range of canopy densities. Tree cover loss is defined as “stand replacement disturbance,” or the complete removal of tree cover canopy at the Landsat pixel scale. Tree cover loss may be the result of human activities, including forestry practices such as timber harvesting or deforestation (the conversion of natural forest to other land uses), as well as natural causes such as disease or storm damage. Fire is another widespread cause of tree cover loss, and can be either natural or human-induced."
+  },
+  "ku+mDU": {
+    "string": "State"
+  },
+  "l+2DwB": {
+    "string": "Reach out {title} on HeCo Invest through the link"
+  },
+  "l2HvdU": {
+    "string": "Estimated duration for project in months"
+  },
+  "lJfJXg": {
+    "string": "About the project developer"
+  },
+  "lMjl92": {
+    "string": "{openCallName} applications"
+  },
+  "lYS3vO": {
+    "string": "Project developers provide the impact information during the project registration phase by selecting one or more indicators from each dimension."
+  },
+  "lda5xz": {
+    "string": "My users"
+  },
+  "lfXAQ2": {
+    "string": "Hydrometeorological risk reduction"
+  },
+  "lfvUqs": {
+    "string": "Do you want to leave?"
+  },
+  "lfx6Nc": {
+    "string": "Ticket size"
+  },
+  "lkNGwt": {
+    "string": "ARIES estimate - in a scientifically-informed and accurate manner - the impact of each project in each one of our <n>four dimensions</n> of interest based on existing knowledge and data. These impacts are calculated on a scale from <n>0 (low impact) to 10 (high impact)</n>."
+  },
+  "lmxGNp": {
+    "string": "Leave investor edition form"
+  },
+  "lpyO42": {
+    "string": "Impact of projects on ensuring and improving equal and inclusive physical, mental, economic, and spiritual health."
+  },
+  "ltUH9L": {
+    "string": "Note that all of this information will be visible in the open call public page."
+  },
+  "lviFjb": {
+    "string": "The Herencia Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. The HeCo Invest platform centers its attention on areas directly connected to the Amazon. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition. More information about these regions <link>here</link>."
+  },
+  "m1w8ew": {
+    "string": "30 million"
+  },
+  "m38DjH": {
+    "string": "Financial instrument available"
   },
   "m3Dnav": {
     "string": "Investment info"
   },
+  "mEYG82": {
+    "string": "Funding information"
+  },
+  "mMReor": {
+    "string": "Go to project page"
+  },
+  "mQk71L": {
+    "string": "Why invest in the Amazon"
+  },
+  "mZF8ZA": {
+    "string": "All information associated with the account will be deleted."
+  },
   "mbTJWV": {
     "string": "Biodiversity"
+  },
+  "mbxIJy": {
+    "string": "Academic"
+  },
+  "mgsoLa": {
+    "string": "Looking for the highest impact?"
+  },
+  "mqQ6S4": {
+    "string": "By deleting the account, <b>all existing information, users and related content will be deleted</b>. This action can’t be undone."
   },
   "n0nU+Y": {
     "string": "Illustration of a person looking at a list of cards"
   },
+  "n4Y/RH": {
+    "string": "insert new passowrd"
+  },
+  "n6KNWj": {
+    "string": "Pending verification"
+  },
   "nBHzO6": {
     "string": "Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
+  },
+  "nEvNJb": {
+    "string": "Investor"
+  },
+  "nIbokM": {
+    "string": "Contact access"
+  },
+  "nWf75J": {
+    "string": "Discover Investors"
+  },
+  "nYrKWp": {
+    "string": "Edit profile"
+  },
+  "nafhHM": {
+    "string": "Indigenous or ethnic jobs"
+  },
+  "nbqoY2": {
+    "string": "Do you have a partnership with someone else?"
   },
   "nhAnF3": {
     "string": "I want to find opportunities to invest / donate"
   },
+  "nkDaFL": {
+    "string": "Go to next page"
+  },
+  "nlIkQG": {
+    "string": "The name that will identify the account across the platform."
+  },
+  "ntxEU3": {
+    "string": "Discover project developers and <heart></heart> them."
+  },
+  "nwXvcg": {
+    "string": "Shows the percentage of the population expected to be affected by riverine flooding in an average year."
+  },
   "o+Vt3t": {
     "string": "Partnership between:"
+  },
+  "o0+PZ+": {
+    "string": "Start having the greatest impact"
+  },
+  "oAIvoH": {
+    "string": "Please, enter valid email."
+  },
+  "oBB4L4": {
+    "string": "Send invite"
+  },
+  "oG/A0q": {
+    "string": "See full catalogue"
   },
   "oMC3r1": {
     "string": "Choose your account type"
   },
+  "oN8abW": {
+    "string": "Explain how the impact of the solution or project will be maintained after funding. Try to be specific and not too vague. Is the solution or project will be financially viable? How? What are the key elements to ensure sustainability (business model, partners, partnerships with governments, etc.)?"
+  },
+  "oRepRG": {
+    "string": "What information do I need to create a project?"
+  },
+  "oUWADl": {
+    "string": "No"
+  },
+  "oYPIc/": {
+    "string": "By leaving you will lose your current progress"
+  },
+  "odrmaG": {
+    "string": "Password changed successfully"
+  },
   "oiQKNY": {
     "string": "Search and find"
   },
-  "p1NkQY": {
-    "string": "Find opportunities that have the greatest impact on challenges like biodiversity, climate, community and water."
+  "ojuv8F": {
+    "string": "Investor contacts"
+  },
+  "orirkU": {
+    "string": "What information do I need to create a Project Developer account?"
+  },
+  "osBdnp": {
+    "string": "IPLC organization"
+  },
+  "p+7s2E": {
+    "string": "Note that all of this information will be visible in the Project Developer public profile page except question 1 and 6."
+  },
+  "p+Qmws": {
+    "string": "Which of these topic/sector categories better describe your project?"
+  },
+  "pHaFj5": {
+    "string": "To create an Investor account you will need the following information."
+  },
+  "pNNQA+": {
+    "string": "It is an ecoregion covered with savannahs of high floristic diversity and habitats representative of the evolutionary processes of the Guiana Shield. It includes both blackwater and whitewater rivers that feed the great Orinoco River, creating different types of seasonally flooded forests."
   },
   "pONqz8": {
     "string": "First name"
   },
+  "pWwsxm": {
+    "string": "Delete image"
+  },
+  "paBpxN": {
+    "string": "Ignore"
+  },
+  "pcRRCK": {
+    "string": "Financial information about your project and what are the needs"
+  },
   "pgfBG8": {
     "string": "As a Project Developer"
+  },
+  "piBsTx": {
+    "string": "Select HeCo priority landscapes on which you will have impact (optional)"
+  },
+  "pkBu4q": {
+    "string": "insert number (max 36)"
+  },
+  "psPbog": {
+    "string": "Corporation"
+  },
+  "psXhQO": {
+    "string": "Funding & development"
+  },
+  "puek63": {
+    "string": "This information will help us understand what is the impact you want to have."
+  },
+  "q0vlJx": {
+    "string": "project or solution already in implementation that seeks to be strengthened and consolidated."
+  },
+  "q18ubl": {
+    "string": "Protected areas of Colombia"
+  },
+  "q6rG+e": {
+    "string": "See projects"
+  },
+  "q7AUEZ": {
+    "string": "Max funding"
+  },
+  "q7I+Bg": {
+    "string": "{quantity, plural, one {investor} other {investors}}"
+  },
+  "q9swhp": {
+    "string": "Foundation"
+  },
+  "qCZWRp": {
+    "string": "Which are the HeCo Program priority landscapes?"
+  },
+  "qFZuSl": {
+    "string": "My projects"
   },
   "qIvPIE": {
     "string": "FAQ’s"
@@ -495,20 +2613,176 @@
   "qPKAOa": {
     "string": "Paulson Institute: The Paulson Institute (PI) is a non-partisan, independent “think and do tank” delivering solutions that contribute to a more resilient and sustainable world. PI operates at the intersection of economics, financial markets, and environmental protection by promoting market-based solutions to ensure green economic growth. Under their Financing Nature initiative, they are working to identify and implement innovative mechanisms that can rapidly mobilize substantial amounts of funding for nature conservation."
   },
+  "qY71uO": {
+    "string": "Send application"
+  },
+  "qZPjW2": {
+    "string": "What is a verification badge?"
+  },
+  "qay06p": {
+    "string": "Save your favorites by clicking on the 'Heart'. You can save projects, project developers or even other investors and never loose track of them."
+  },
+  "qcsPS9": {
+    "string": "{duration} months"
+  },
+  "qdQPNb": {
+    "string": "Currently you don’t have any <b>Investors</b> in your favorites."
+  },
+  "qe+BvO": {
+    "string": "<b>Call on our community</b> of project developers to identify opportunities in your preferred sectors and geographies."
+  },
+  "qoImFc": {
+    "string": "Replicability of the project"
+  },
+  "qpDURb": {
+    "string": "Something went wrong with the file upload"
+  },
+  "qpp+jm": {
+    "string": "To create a Project Developer account you will need the following information."
+  },
+  "qwCflo": {
+    "string": "Edit project"
+  },
+  "qyN+gs": {
+    "string": "Note that all of this information will be visible in the project public page except questions 20 and 21."
+  },
+  "r/AN6W": {
+    "string": "select investor/funder type"
+  },
+  "r2qqVX": {
+    "string": "Are you sure you want to close “<strong>{name}</strong>”?"
+  },
+  "r333tD": {
+    "string": "<b>Water</b>:"
+  },
+  "rE2fon": {
+    "string": "Are you sure you want to withdraw from the “<strong>{openCallName}</strong>“ open call?"
+  },
+  "rLzWx9": {
+    "string": "{name} picture"
+  },
+  "rPEEqE": {
+    "string": "Afro-descendant peoples"
+  },
+  "rPwLb7": {
+    "string": "By deleting your user, you will be removed from the account <n>accountName</n> and you no longer will have access to HeCo Invest Platform."
+  },
+  "rPwaWt": {
+    "string": "A great name is short, crisp, and easily understood."
+  },
+  "rb3Hsm": {
+    "string": "<b>Climate</b>:"
+  },
+  "rbmO5C": {
+    "string": "The phone number for Project Developers or other Investors to reach you/your team"
+  },
   "rbrahO": {
     "string": "Close"
   },
   "rfVDxL": {
     "string": "Please enter your details below."
   },
-  "sMWFoV": {
-    "string": "As an Investor / Funder"
+  "rginRA": {
+    "string": "Project categories"
+  },
+  "rhAEk6": {
+    "string": "option {optionName}, deselected."
+  },
+  "roJe5R": {
+    "string": "Investor/ Funder type"
+  },
+  "rsWAqe": {
+    "string": "select multiple"
+  },
+  "rtcoCk": {
+    "string": "Carbon emission reduction"
+  },
+  "rvirM2": {
+    "string": "Location"
+  },
+  "rw2/NH": {
+    "string": "Identifies areas of gross tree cover loss."
+  },
+  "s+n2ku": {
+    "string": "Profile name"
+  },
+  "s07dAT": {
+    "string": "Project image"
+  },
+  "s63oNj": {
+    "string": "Are you sure you want to delete your user? You can't undo this action and you will lose your access to the platform."
+  },
+  "sH3zMa": {
+    "string": "Launched"
+  },
+  "sIhhxz": {
+    "string": "Something went wrong while trying to delete the user"
+  },
+  "sK7G1d": {
+    "string": "User with email {email} already has an account in HeCo."
+  },
+  "sV+3z0": {
+    "string": "Currently looking for"
+  },
+  "sVbuuM": {
+    "string": "{projectName} application"
+  },
+  "sVpJRp": {
+    "string": "Leave open call edition form"
+  },
+  "sWdxgq": {
+    "string": "Impact of projects that reduce carbon emissions from the land sector (deforestation/degradation), as wood and soil biomass as well as application of sustainable forest measures."
+  },
+  "sZIoMy": {
+    "string": "Send email"
+  },
+  "sa2DTR": {
+    "string": "Forestry and agroforestry"
+  },
+  "saBdZ2": {
+    "string": "select option"
+  },
+  "sbodFR": {
+    "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure <n>20 million hectares</n> of sustainable landscape over the next 20 years, through investments in <n>conservation and sustainable development</n>."
+  },
+  "sfFhiy": {
+    "string": "Maximum value"
+  },
+  "si4NjO": {
+    "string": "Select the account language in which you want to write the content of this account (including profile information and future projects). This will avoid mixed content in the platform."
+  },
+  "sjzLbX": {
+    "string": "Accept"
+  },
+  "soFliQ": {
+    "string": "Withdraw from the open call"
+  },
+  "stKKFV": {
+    "string": "What type of projects are you prioritizing?"
+  },
+  "sx8Bco": {
+    "string": "Find projects, start-ups or create an open call to locate opportunities for investment or funding that make an impact."
   },
   "sy+pv5": {
     "string": "Email"
   },
+  "syEQFE": {
+    "string": "Publish"
+  },
+  "t39CQq": {
+    "string": "What’s your mission?"
+  },
   "t7YvMF": {
     "string": "Water"
+  },
+  "t7lNU8": {
+    "string": "Start making an impact now"
+  },
+  "tAug9g": {
+    "string": "Groups with disabilities"
+  },
+  "tDM2u5": {
+    "string": "Can I add colleagues from my organization to the account?"
   },
   "tGAYL2": {
     "string": "Select an option"
@@ -519,29 +2793,194 @@
   "tKMlOc": {
     "string": "Menu"
   },
+  "tS6cAK": {
+    "string": "insert the number"
+  },
+  "tSCuG5": {
+    "string": "Delete user?"
+  },
+  "tgYyOu": {
+    "string": "The Alliance for Zero Extinction (AZE) originally created this dataset with a goal to prevent extinctions by identifying and safeguarding key sites. The 2019 March version of this dataset contains 859 sites, supporting 1483 Critically Endangered or Endangered species."
+  },
+  "tjj29g": {
+    "string": "Venture capital / private equity"
+  },
+  "twK/jv": {
+    "string": "Project developer profile"
+  },
   "txUL0F": {
     "string": "Last name"
   },
   "txaU6M": {
     "string": "Apply to open calls"
   },
+  "tzMNF3": {
+    "string": "Status"
+  },
+  "u+TnMw": {
+    "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. However, if all the indicators of a given dimension are selected, then the <b>score goes automatically to 0</b>. This is to ensure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
+  },
+  "u/E7xG": {
+    "string": "Are you currently looking for funding?"
+  },
+  "u2WlCd": {
+    "string": "Pollutants reduction"
+  },
+  "u7djqV": {
+    "string": "Ascending"
+  },
+  "u87XOB": {
+    "string": "How your project will grow"
+  },
   "uCk8r+": {
     "string": "Already have an account?"
+  },
+  "uHyJI7": {
+    "string": "Uploading {filesCount} files..."
   },
   "uIp9ro": {
     "string": "Powered by ARIES: The First AI-powered 'Knowledge Commons'"
   },
+  "ub/Akh": {
+    "string": "What happens when I delete my Investor account?"
+  },
+  "ufxVRM": {
+    "string": "Display impact on"
+  },
+  "ui0dk9": {
+    "string": "idea to be developed from scratch."
+  },
+  "up42nX": {
+    "string": "<b>Biodiversity</b>: areas of great ecosystem diversity as well as with a degree of threat or protection for flora and fauna, and where more investments in conservation, restoration, and scientific knowledge are needed."
+  },
+  "uuxwc2": {
+    "string": "If you select <b>all areas</b>, the impact will be 0. Consider choosing only your main direct ones. <a>Learn more</a>"
+  },
+  "uyxTSu": {
+    "string": "Select the impacts that you prioritize"
+  },
+  "v2wxEw": {
+    "string": "Back to open calls"
+  },
+  "v9GdgG": {
+    "string": "File {fileName} is larger than {fileSize}MB"
+  },
+  "v9JR0p": {
+    "string": "<b>Water</b>: areas with environmental factors that will help maintain the availability and regulation of water resources, including reducing risks such as floods and droughts."
+  },
+  "vC2u0N": {
+    "string": "Apply to Open Call"
+  },
+  "vIKTZ9": {
+    "string": "If you have interest in this project contact the project developer to know how you can work together."
+  },
+  "vNQnTR": {
+    "string": "Gender equality jobs"
+  },
+  "vONi+O": {
+    "string": "Country"
+  },
+  "vQmgLw": {
+    "string": "This layer quantifies the impact humans have had on the intactness of species communities. Anthropogenic pressures such as land use conversion have caused dramatic changes to the composition of species communities and this layer illustrates these changes by focusing on the impact of forest change on biodiversity intactness. The maximum value indicates no human impact, while lower values indicate that intactness has been reduced. The Projecting Responses of Ecological Diversity in Changing Terrestrial Systems (PREDICTS) database comprises over 3 million records of geographically and taxonomically representative data of land use impacts to local biodiversity (Hudson et al. 2017). A subset of the PREDICTS database, including data pertaining to forested biomes only, is employed to model the impacts of land use change and human population density on the intactness of local species communities. To produce the land use map, all forested biomes are selected and each 30 x 30 m pixel within the biome is assigned a land use category based upon inputs from the GFW forest change database and a downscaled land use map (Hoskins et al 2016). The modelled results of biodiversity intactness derived from the PREDICTS database are projected onto the land use and human population density maps, and the final product is aggregated to match the resolution of the downscaled land use map (Hoskins et al 2016). The final output models the impacts of forest change on local biodiversity intactness within forested biomes."
+  },
+  "vTJ8GJ": {
+    "string": "SDG'S"
+  },
+  "vViagZ": {
+    "string": "Discover investors by category"
+  },
+  "vZgJJu": {
+    "string": "Open call ended"
+  },
+  "vaWFzs": {
+    "string": "What's your mission?"
+  },
+  "vdJRZj": {
+    "string": "More filters"
+  },
+  "vygPIS": {
+    "string": "Leave project creation form"
+  },
+  "w1Fanr": {
+    "string": "Business"
+  },
+  "w7tf2z": {
+    "string": "Published"
+  },
+  "wA8Ls7": {
+    "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. The <b>Supply</b> score of each sustainability dimension is then computed by taking the mean value of the corresponding indicators. <b>However, if all the indicators of a given dimension are selected, then the supply score of that dimension goes automatically to 0</b>. This is to make sure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
+  },
+  "wEQDC6": {
+    "string": "Edit"
+  },
+  "wL7VAE": {
+    "string": "Actions"
+  },
+  "wQteLO": {
+    "string": "Go to page {page}"
+  },
   "wSZR47": {
     "string": "Submit"
+  },
+  "wduJme": {
+    "string": "Instrument"
+  },
+  "we4Lby": {
+    "string": "Info"
+  },
+  "whbx7G": {
+    "string": "Geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystem services."
   },
   "wkkhPR": {
     "string": "See project developer profile"
   },
+  "wpyHb9": {
+    "string": "Open Calls"
+  },
+  "wsk6Y/": {
+    "string": "Investors features"
+  },
+  "wvoA3H": {
+    "string": "Picture"
+  },
+  "wyxJrL": {
+    "string": "Delete account"
+  },
   "x/1DXz": {
     "string": "In the face of the economic and social crisis caused by the coronavirus pandemic, there is an urgent need to support the transition to a green, fair, and resilient economy that creates jobs, addresses inequality, and drives inclusive growth."
   },
+  "x/AykP": {
+    "string": "Project ticket size"
+  },
+  "x6wKw3": {
+    "string": "All selected options have been cleared."
+  },
+  "xBZz+E": {
+    "string": "Problem you are solving"
+  },
+  "xDgU8W": {
+    "string": "select <b>max. {areasCount}</b> areas"
+  },
+  "xG6n98": {
+    "string": "Consolidation"
+  },
   "xQ4XkB": {
     "string": "Only by understanding nature’s contributions to people and the economy can we push for policy-making where nature counts."
+  },
+  "xQArDr": {
+    "string": "<b>Community</b>:"
+  },
+  "xUR9nd": {
+    "string": "people live in the Amazon region."
+  },
+  "xXbJso": {
+    "string": "Sign out"
+  },
+  "xa6OiT": {
+    "string": "Wetlands"
+  },
+  "xbi38c": {
+    "string": "Zoom in"
   },
   "xjBcRf": {
     "string": "Slide {slide} out of {total}"
@@ -549,23 +2988,80 @@
   "xmcVZ0": {
     "string": "Search"
   },
-  "xusigZ": {
-    "string": "Start connecting with people to create impact. You can find investors, opportunities to invest in and much much more..."
+  "xmwVn+": {
+    "string": "All content associated with the account will be deleted. If your Projects have applied to Open Calls, the owners of the Open Calls will be automatically notified that the Project no longer exists."
+  },
+  "xnQiBM": {
+    "string": "The impact of this project isn’t available. Impact calculations may take some time to be available."
+  },
+  "xqjjPY": {
+    "string": "As an Investor or <br></br> Funder"
+  },
+  "xupvNr": {
+    "string": "Have a public profile page"
+  },
+  "y1Z3or": {
+    "string": "Language"
+  },
+  "y8AKM4": {
+    "string": "Tree cover loss"
   },
   "yF82he": {
     "string": "Project developer"
   },
-  "yJVljq": {
-    "string": "Through accessing <span>ARIES</span> (Artificial Intelligence for Environmental Sustainability) and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
+  "yP7Lrl": {
+    "string": "What is a project?"
+  },
+  "yQ7bY1": {
+    "string": "You can upload a maximum of {maxFiles} files"
   },
   "yXFDuu": {
     "string": "Use our Artificial Intellience tool powered by ARIES, to help you identify what best fits your specific needs."
   },
-  "ylNQY0": {
-    "string": "Something went wrong while submitting your form."
+  "yb3Bot": {
+    "string": "How do you plan to measure the progress and impact of the project or solution? What would be the key indicators to be used for these measurements?"
+  },
+  "ybZSf7": {
+    "string": "Orinoquía Transition"
+  },
+  "ydCOwz": {
+    "string": "What type of projects the funding is not covering."
+  },
+  "yer18A": {
+    "string": "Indigenous Reservations are understood as a socio-political legal institution of colonial origin, made up of a recognized territory of a community of Amerindian descent, with inalienable, collective or community property title, governed by a special autonomous statute, with its own cultural guidelines and traditions."
+  },
+  "ygAxHr": {
+    "string": "Your project is awaiting verification. This means that the project is visible in the platform but without the <b>Verification badge</b>."
+  },
+  "ygx9Jx": {
+    "string": "Micro finance"
+  },
+  "yp8KtZ": {
+    "string": "Publish project?"
+  },
+  "yqJ5XD": {
+    "string": "Select the amount of money that you need"
+  },
+  "z3jrKr": {
+    "string": "The email where you want to receive contacts from Project Developers or other Investors"
+  },
+  "z3yOZn": {
+    "string": "This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues."
   },
   "zFegDD": {
     "string": "Contact"
+  },
+  "zINRAT": {
+    "string": "<span>Note:</span>The content of this profile should be written in {language}"
+  },
+  "zINlao": {
+    "string": "Owner"
+  },
+  "zLCDho": {
+    "string": "Farmers"
+  },
+  "zSOvI0": {
+    "string": "Filters"
   },
   "zXxFL9": {
     "string": "Note: The content of this page was originally written in <span>{language}</span>."
@@ -573,7 +3069,31 @@
   "zdIaHp": {
     "string": "Investors"
   },
+  "zetZX8": {
+    "string": "Content language"
+  },
+  "zfuq6W": {
+    "string": "Impact you prioritize"
+  },
   "zkonnO": {
     "string": "World Wildlife Fund (WWF) is the largest international conservation organization in the world, with more than 50 offices implementing conservation projects across more than 100 countries and has a membership of almost five million people. WWF has extensive experience working in the Amazon region, with offices in all seven signatory countries of the Leticia Pact. In Colombia, WWF has been working in partnership with the government and a consortium of civil society organizations on Heritage Colombia since 2015."
+  },
+  "zkzBCh": {
+    "string": "Hydro-meteorological risk reduction"
+  },
+  "zniaka": {
+    "string": "Unable to load the data"
+  },
+  "ztd20l": {
+    "string": "Development of the project"
+  },
+  "zxHx8B": {
+    "string": "You have been invited to join the {accountName} account"
+  },
+  "zyG32m": {
+    "string": "Priority landscapes are <b>unique regions</b> due to their biodiversity, cultural heritages, and regulation of water systems. As such, the projects located in these landscapes will have the greatest impact on people and nature."
+  },
+  "zyydTD": {
+    "string": "Your account has been <b>approved</b>, your profile is now publicly visible."
   }
 }

@@ -21,5 +21,29 @@ FactoryBot.define do
     after(:build) do |u|
       u.skip_confirmation_notification!
     end
+
+    factory :user_project_developer do
+      role { "project_developer" }
+
+      account factory: :account_project_developer
+    end
+
+    factory :user_investor do
+      role { "investor" }
+
+      account factory: :account_investor
+    end
+
+    trait :project_developer do
+      role { "project_developer" }
+    end
+
+    trait :investor do
+      role { "investor" }
+    end
+
+    trait :with_avatar do
+      avatar { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/files/picture.jpg"), "image/jpeg") }
+    end
   end
 end

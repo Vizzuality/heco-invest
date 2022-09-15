@@ -33,6 +33,10 @@ You can use `docker-compose.yml` to run postgres service.
 If you want to debug rails app, running it through foreman could be not the best idea. In that case you can run css and js bundling
 using foreman `bin/watch` and the server in the standard way in a separate terminal tab.
 
+### Run background jobs
+
+We use `cloudtasker` gem to schedule ad-hoc background jobs. In development, you need `redis-server` running and a `cloudtasker` process.
+
 ### Run the tests
 
 `bundle exec rspec`
@@ -42,6 +46,18 @@ using foreman `bin/watch` and the server in the standard way in a separate termi
 `SWAGGER_DRY_RUN=0 rake rswag:specs:swaggerize`
 
 Documentation can be found at `/api-docs`.
+
+### Replace snapshot files
+
+On the first run, the `match_snapshot` matcher will always return success and it will store a snapshot file. On the next runs, it will compare the response with the file content.
+
+If you need to replace snapshots, run the specs with:
+
+`REPLACE_SNAPSHOTS=true bundle exec rspec`
+
+If you only need to add, remove or replace data without replacing the whole snapshot:
+
+`CONSERVATIVE_UPDATE_SNAPSHOTS=true bundle exec rspec`
 
 ### Run linters
 
@@ -59,4 +75,4 @@ TODO: When adding docker, make sure fresh translations are pulled when creating 
 
 Static content that needs to be translated has to be added only to `config/locales/zu.yml` file. To push new translations to Transifex use `tx push -s`.
 
-From time to time it will be useful to download already translated content into the repo `tx pull -m onlytranslated`.
+To download already translated content `bin/rails transifex:pull`

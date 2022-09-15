@@ -1,11 +1,7 @@
-import ui from 'store/features/ui/slice';
-
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import type { ReducersMapObject } from '@reduxjs/toolkit';
 
-const staticReducers = {
-  ui,
-};
+const staticReducers = {};
 
 const asyncReducers = {};
 

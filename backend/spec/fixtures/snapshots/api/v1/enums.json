@@ -1,30 +1,6 @@
 {
   "data": [
     {
-      "id": "grant",
-      "type": "instrument_type",
-      "attributes": {
-        "name": "Grant",
-        "description": "Technical cooperation grants are resources provided by an entity to fulfill a well-defined purpose or objective. In general, they are non-reimbursable resources that are destined in particular to projects or enterprises in early stages of development."
-      }
-    },
-    {
-      "id": "loan",
-      "type": "instrument_type",
-      "attributes": {
-        "name": "Loan",
-        "description": "A loan is a transaction in which a financial institution grants a predefined amount of money to develop a particular project. The institution or business that receives the loan is obliged to repay it within a certain period of time and to pay the agreed commissions, expenses and interest."
-      }
-    },
-    {
-      "id": "equity",
-      "type": "instrument_type",
-      "attributes": {
-        "name": "Equity",
-        "description": "An equity investment consists of the acquisition, by an entity specialized in private equity, of a package of shares of a company or enterprise. The private equity firm thus becomes one of the owners of the company."
-      }
-    },
-    {
       "id": "sustainable-agrosystems",
       "type": "category",
       "attributes": {
@@ -61,31 +37,12 @@
       }
     },
     {
-      "id": "small_grants",
-      "type": "ticket_size",
+      "id": "human-capital-and-inclusion",
+      "type": "category",
       "attributes": {
-        "name": "translation missing: en.enums.ticket_size.small_grants.name"
-      }
-    },
-    {
-      "id": "prototyping",
-      "type": "ticket_size",
-      "attributes": {
-        "name": "Prototyping"
-      }
-    },
-    {
-      "id": "validation",
-      "type": "ticket_size",
-      "attributes": {
-        "name": "Validation"
-      }
-    },
-    {
-      "id": "scaling",
-      "type": "ticket_size",
-      "attributes": {
-        "name": "Scaling"
+        "name": "Human capital and inclusion",
+        "color": "#A0616A",
+        "description": "Adequate access to quality education, appropriate health services, and formal employment opportunities that respond to diverse skill profiles and are adapted to regional cultural diversity."
       }
     },
     {
@@ -118,6 +75,134 @@
       "attributes": {
         "name": "Community",
         "description": "Impact of projects on ensuring and improving equal and inclusive physical, mental, economic, and spiritual health."
+      }
+    },
+    {
+      "id": "conservation",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Conservation",
+        "impact": "biodiversity"
+      }
+    },
+    {
+      "id": "restoration",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Restoration",
+        "impact": "biodiversity"
+      }
+    },
+    {
+      "id": "pollutants-reduction",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Pollutants reduction",
+        "impact": "biodiversity"
+      }
+    },
+    {
+      "id": "carbon-emission-reduction",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Carbon emission reduction",
+        "impact": "climate"
+      }
+    },
+    {
+      "id": "energy-efficiency",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Energy efficiency",
+        "impact": "climate"
+      }
+    },
+    {
+      "id": "renewable-energy",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Renewable energy",
+        "impact": "climate"
+      }
+    },
+    {
+      "id": "carbon-storage-or-sequestration",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Carbon storage or sequestration",
+        "impact": "climate"
+      }
+    },
+    {
+      "id": "water-capacity-or-efficiency",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Water capacity or efficiency",
+        "impact": "water"
+      }
+    },
+    {
+      "id": "hydrometerological-risk-reduction",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Hydrometerological risk reduction",
+        "impact": "water"
+      }
+    },
+    {
+      "id": "sustainable-food",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Sustainable food",
+        "impact": "water"
+      }
+    },
+    {
+      "id": "gender-equality-jobs",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Gender equality jobs",
+        "impact": "community"
+      }
+    },
+    {
+      "id": "indigenous-or-ethic-jobs",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Indigenous or ethic jobs",
+        "impact": "community"
+      }
+    },
+    {
+      "id": "community-empowerment",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Community empowerment",
+        "impact": "community"
+      }
+    },
+    {
+      "id": "grant",
+      "type": "instrument_type",
+      "attributes": {
+        "name": "Grant",
+        "description": "Technical cooperation grants are resources provided by an entity to fulfill a well-defined purpose or objective. In general, they are non-reimbursable resources that are destined in particular to projects or enterprises in early stages of development."
+      }
+    },
+    {
+      "id": "loan",
+      "type": "instrument_type",
+      "attributes": {
+        "name": "Loan",
+        "description": "A loan is a transaction in which a financial institution grants a predefined amount of money to develop a particular project. The institution or business that receives the loan is obliged to repay it within a certain period of time and to pay the agreed commissions, expenses and interest."
+      }
+    },
+    {
+      "id": "equity",
+      "type": "instrument_type",
+      "attributes": {
+        "name": "Equity",
+        "description": "An equity investment consists of the acquisition, by an entity specialized in private equity, of a package of shares of a company or enterprise. The private equity firm thus becomes one of the owners of the company."
       }
     },
     {
@@ -254,10 +339,381 @@
       }
     },
     {
-      "id": "region",
+      "id": "priority_landscape",
       "type": "location_type",
       "attributes": {
-        "name": "Region"
+        "name": "Priority Landscape"
+      }
+    },
+    {
+      "id": "basins_category",
+      "type": "location_type",
+      "attributes": {
+        "name": "Basins Category"
+      }
+    },
+    {
+      "id": "basin",
+      "type": "location_type",
+      "attributes": {
+        "name": "Basin"
+      }
+    },
+    {
+      "id": "academic",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Academic"
+      }
+    },
+    {
+      "id": "business-cooperative",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Cooperative"
+      }
+    },
+    {
+      "id": "business-large-enterprise-corporation",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Large enterprise corporation"
+      }
+    },
+    {
+      "id": "business-sme-and-msme",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - SME and MSME"
+      }
+    },
+    {
+      "id": "business-start-up-entrepreneur",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Start-up entrepreneur"
+      }
+    },
+    {
+      "id": "business-trade-or-business-association",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Trade or business association"
+      }
+    },
+    {
+      "id": "government-national",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Government - National"
+      }
+    },
+    {
+      "id": "government-sub-national",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Government - Sub-national"
+      }
+    },
+    {
+      "id": "public-private-organization-or-program",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Public-private organization or program"
+      }
+    },
+    {
+      "id": "ngo",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "NGO"
+      }
+    },
+    {
+      "id": "iplc-organization",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "IPLC organization"
+      }
+    },
+    {
+      "id": "incipient",
+      "type": "project_development_stage",
+      "attributes": {
+        "name": "Incipient",
+        "description": "idea to be developed from scratch"
+      }
+    },
+    {
+      "id": "consolidaton",
+      "type": "project_development_stage",
+      "attributes": {
+        "name": "Consolidaton",
+        "description": "project or solution already in implementation that seeks to be strengthened and consolidated"
+      }
+    },
+    {
+      "id": "scaling-up",
+      "type": "project_development_stage",
+      "attributes": {
+        "name": "Scaling up",
+        "description": "consolidated, demonstrated project or solution that seeks to be scaled or replicated in other contexts and/or geographies"
+      }
+    },
+    {
+      "id": "draft",
+      "type": "project_status",
+      "attributes": {
+        "name": "Draft"
+      }
+    },
+    {
+      "id": "published",
+      "type": "project_status",
+      "attributes": {
+        "name": "Published"
+      }
+    },
+    {
+      "id": "entrepreneurs-and-innovators-startups",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Enterpreneurs and innovators - startups"
+      }
+    },
+    {
+      "id": "small-and-medium-businesses",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Small and medium businesses"
+      }
+    },
+    {
+      "id": "urban-populations",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Urban populations"
+      }
+    },
+    {
+      "id": "indigenous-peoples",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Indigenous peoples"
+      }
+    },
+    {
+      "id": "afro-desendant-peoples",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Afro-desendant peoples"
+      }
+    },
+    {
+      "id": "peasants-and-traditional-inhabitants",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Peasants and traditional inhabitants"
+      }
+    },
+    {
+      "id": "migrants-and-displaced-groups",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Migrants and displaced groups"
+      }
+    },
+    {
+      "id": "groups-with-disabilities",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Groups with disabilities"
+      }
+    },
+    {
+      "id": "lgtbq-plus-groups",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "LGTBQ+ groups"
+      }
+    },
+    {
+      "id": "other",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Other"
+      }
+    },
+    {
+      "id": "1",
+      "type": "sdg",
+      "attributes": {
+        "name": "No poverty"
+      }
+    },
+    {
+      "id": "2",
+      "type": "sdg",
+      "attributes": {
+        "name": "Zero hunger"
+      }
+    },
+    {
+      "id": "3",
+      "type": "sdg",
+      "attributes": {
+        "name": "Good health and well-being"
+      }
+    },
+    {
+      "id": "4",
+      "type": "sdg",
+      "attributes": {
+        "name": "Quality education"
+      }
+    },
+    {
+      "id": "5",
+      "type": "sdg",
+      "attributes": {
+        "name": "Gender equality"
+      }
+    },
+    {
+      "id": "6",
+      "type": "sdg",
+      "attributes": {
+        "name": "Clean water and sanitation"
+      }
+    },
+    {
+      "id": "7",
+      "type": "sdg",
+      "attributes": {
+        "name": "Affordable and clean energy"
+      }
+    },
+    {
+      "id": "8",
+      "type": "sdg",
+      "attributes": {
+        "name": "Decent work and economic growth"
+      }
+    },
+    {
+      "id": "9",
+      "type": "sdg",
+      "attributes": {
+        "name": "Industry, innovation and infrastructure"
+      }
+    },
+    {
+      "id": "10",
+      "type": "sdg",
+      "attributes": {
+        "name": "Reduced inequalities"
+      }
+    },
+    {
+      "id": "11",
+      "type": "sdg",
+      "attributes": {
+        "name": "Sustainable cities and communities"
+      }
+    },
+    {
+      "id": "12",
+      "type": "sdg",
+      "attributes": {
+        "name": "Responsible consumption and production"
+      }
+    },
+    {
+      "id": "13",
+      "type": "sdg",
+      "attributes": {
+        "name": "Climate action"
+      }
+    },
+    {
+      "id": "14",
+      "type": "sdg",
+      "attributes": {
+        "name": "Life below water"
+      }
+    },
+    {
+      "id": "15",
+      "type": "sdg",
+      "attributes": {
+        "name": "Life on land"
+      }
+    },
+    {
+      "id": "16",
+      "type": "sdg",
+      "attributes": {
+        "name": "Peace, justice and strong institutions"
+      }
+    },
+    {
+      "id": "17",
+      "type": "sdg",
+      "attributes": {
+        "name": "Partnerships for the goals"
+      }
+    },
+    {
+      "id": "small-grants",
+      "type": "ticket_size",
+      "attributes": {
+        "name": "Small Grants",
+        "description": "<US$25k"
+      }
+    },
+    {
+      "id": "prototyping",
+      "type": "ticket_size",
+      "attributes": {
+        "name": "Prototyping",
+        "description": "US$25k - 150k"
+      }
+    },
+    {
+      "id": "validation",
+      "type": "ticket_size",
+      "attributes": {
+        "name": "Validation",
+        "description": "US$150k - 750k"
+      }
+    },
+    {
+      "id": "scaling",
+      "type": "ticket_size",
+      "attributes": {
+        "name": "Scaling",
+        "description": ">US$750k"
+      }
+    },
+    {
+      "id": "draft",
+      "type": "open_call_status",
+      "attributes": {
+        "name": "Draft"
+      }
+    },
+    {
+      "id": "launched",
+      "type": "open_call_status",
+      "attributes": {
+        "name": "Launched"
+      }
+    },
+    {
+      "id": "closed",
+      "type": "open_call_status",
+      "attributes": {
+        "name": "Closed"
       }
     }
   ]

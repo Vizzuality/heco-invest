@@ -1,0 +1,686 @@
+{
+  "data": [
+    {
+      "id": "sustainable-agrosystems",
+      "type": "category",
+      "attributes": {
+        "name": "Sustainable Agrosystems",
+        "color": "#E7C343",
+        "description": "Sustainable and regenerative agriculture, fishing, and aquaculture as well as manufacturing of derived subproducts."
+      }
+    },
+    {
+      "id": "tourism-and-recreation",
+      "type": "category",
+      "attributes": {
+        "name": "Tourism and Recreation",
+        "color": "#4492E5",
+        "description": "Accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects."
+      }
+    },
+    {
+      "id": "forestry-and-agroforestry",
+      "type": "category",
+      "attributes": {
+        "name": "Forestry and Agroforestry",
+        "color": "#E57D57",
+        "description": "Sustainable timber extraction and forest management practices, including reforestation and restoration."
+      }
+    },
+    {
+      "id": "non-timber-forest-production",
+      "type": "category",
+      "attributes": {
+        "name": "Non Timber Forest Production",
+        "color": "#404B9A",
+        "description": "Production of health, wellness, and cosmetic products; art, clothing, and handcrafted products; production of food and drinks."
+      }
+    },
+    {
+      "id": "human-capital-and-inclusion",
+      "type": "category",
+      "attributes": {
+        "name": "Human capital and inclusion",
+        "color": "#A0616A",
+        "description": "Adequate access to quality education, appropriate health services, and formal employment opportunities that respond to diverse skill profiles and are adapted to regional cultural diversity."
+      }
+    },
+    {
+      "id": "biodiversity",
+      "type": "impact",
+      "attributes": {
+        "name": "Biodiversity",
+        "description": "Impact of projects on biodiversity conservation, calculated from indicators of endemism, land conservation/restoration, connectivity, and development of sustainable social projects."
+      }
+    },
+    {
+      "id": "climate",
+      "type": "impact",
+      "attributes": {
+        "name": "Climate",
+        "description": "Impact of projects that reduce carbon emissions from the land sector (deforestation/degradation), as wood and soil biomass as well as application of sustainable forest measures."
+      }
+    },
+    {
+      "id": "water",
+      "type": "impact",
+      "attributes": {
+        "name": "Water",
+        "description": "Impact of projects managing water cycling, quality and availability as well as the management of associated risks."
+      }
+    },
+    {
+      "id": "community",
+      "type": "impact",
+      "attributes": {
+        "name": "Community",
+        "description": "Impact of projects on ensuring and improving equal and inclusive physical, mental, economic, and spiritual health."
+      }
+    },
+    {
+      "id": "conservation",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Conservation"
+      }
+    },
+    {
+      "id": "restoration",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Restoration"
+      }
+    },
+    {
+      "id": "pollutants-reduction",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Pollutants reduction"
+      }
+    },
+    {
+      "id": "carbon-emission-reduction",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Carbon emission reduction"
+      }
+    },
+    {
+      "id": "energy-efficiency",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Energy efficiency"
+      }
+    },
+    {
+      "id": "renewable-energy",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Renewable energy"
+      }
+    },
+    {
+      "id": "carbon-storage-or-sequestration",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Carbon storage or sequestration"
+      }
+    },
+    {
+      "id": "water-capacity",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Water capacity"
+      }
+    },
+    {
+      "id": "water-efficiency",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Water efficiency"
+      }
+    },
+    {
+      "id": "sustainable-food",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Sustainable food"
+      }
+    },
+    {
+      "id": "gender-equality-jobs",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Gender equality jobs"
+      }
+    },
+    {
+      "id": "indigenous-or-ethic-jobs",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Indigenous or ethic jobs"
+      }
+    },
+    {
+      "id": "community-empowerment",
+      "type": "impact_area",
+      "attributes": {
+        "name": "Community empowerment"
+      }
+    },
+    {
+      "id": "grant",
+      "type": "instrument_type",
+      "attributes": {
+        "name": "Grant",
+        "description": "Technical cooperation grants are resources provided by an entity to fulfill a well-defined purpose or objective. In general, they are non-reimbursable resources that are destined in particular to projects or enterprises in early stages of development."
+      }
+    },
+    {
+      "id": "loan",
+      "type": "instrument_type",
+      "attributes": {
+        "name": "Loan",
+        "description": "A loan is a transaction in which a financial institution grants a predefined amount of money to develop a particular project. The institution or business that receives the loan is obliged to repay it within a certain period of time and to pay the agreed commissions, expenses and interest."
+      }
+    },
+    {
+      "id": "equity",
+      "type": "instrument_type",
+      "attributes": {
+        "name": "Equity",
+        "description": "An equity investment consists of the acquisition, by an entity specialized in private equity, of a package of shares of a company or enterprise. The private equity firm thus becomes one of the owners of the company."
+      }
+    },
+    {
+      "id": "investor",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Investor"
+      }
+    },
+    {
+      "id": "angel-investor",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Angel Investor"
+      }
+    },
+    {
+      "id": "commercial-bank",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Commercial Bank"
+      }
+    },
+    {
+      "id": "family-office",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Family Office"
+      }
+    },
+    {
+      "id": "institutional-investor",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Institutional Investor"
+      }
+    },
+    {
+      "id": "investment-bank",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Investment Bank"
+      }
+    },
+    {
+      "id": "international-financial-institution",
+      "type": "investor_type",
+      "attributes": {
+        "name": "International Financial Institution"
+      }
+    },
+    {
+      "id": "micro-finance",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Micro Finance"
+      }
+    },
+    {
+      "id": "non-VC-investment-vehicle",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Non VC Investment Vehicle"
+      }
+    },
+    {
+      "id": "venture-capital-private-equity",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Venture Capital Private Equity"
+      }
+    },
+    {
+      "id": "carbon-fund",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Carbon Fund"
+      }
+    },
+    {
+      "id": "ngo",
+      "type": "investor_type",
+      "attributes": {
+        "name": "NGO"
+      }
+    },
+    {
+      "id": "foundation",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Foundation"
+      }
+    },
+    {
+      "id": "corporate-foundation",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Corporate Foundation"
+      }
+    },
+    {
+      "id": "philanthropy",
+      "type": "investor_type",
+      "attributes": {
+        "name": "Philanthropy"
+      }
+    },
+    {
+      "id": "hnwi-or-celebrity",
+      "type": "investor_type",
+      "attributes": {
+        "name": "HNWI or Celebrity"
+      }
+    },
+    {
+      "id": "country",
+      "type": "location_type",
+      "attributes": {
+        "name": "Country"
+      }
+    },
+    {
+      "id": "department",
+      "type": "location_type",
+      "attributes": {
+        "name": "Department"
+      }
+    },
+    {
+      "id": "municipality",
+      "type": "location_type",
+      "attributes": {
+        "name": "Municipality"
+      }
+    },
+    {
+      "id": "region",
+      "type": "location_type",
+      "attributes": {
+        "name": "Region"
+      }
+    },
+    {
+      "id": "academic",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Academic"
+      }
+    },
+    {
+      "id": "business-cooperative",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Cooperative"
+      }
+    },
+    {
+      "id": "business-large-enterprise-corporation",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Large enterprise corporation"
+      }
+    },
+    {
+      "id": "business-sme-and-msme",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - SME and MSME"
+      }
+    },
+    {
+      "id": "business-start-up-entrepreneur",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Start-up entrepreneur"
+      }
+    },
+    {
+      "id": "business-trade-or-business-association",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Business - Trade or business association"
+      }
+    },
+    {
+      "id": "government-national",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Government - National"
+      }
+    },
+    {
+      "id": "government-sub-national",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Government - Sub-national"
+      }
+    },
+    {
+      "id": "public-private-organization-or-program",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "Public-private organization or program"
+      }
+    },
+    {
+      "id": "ngo",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "NGO"
+      }
+    },
+    {
+      "id": "iplc-organization",
+      "type": "project_developer_type",
+      "attributes": {
+        "name": "IPLC organization"
+      }
+    },
+    {
+      "id": "incipient",
+      "type": "project_development_stage",
+      "attributes": {
+        "name": "Incipient",
+        "description": "idea to be developed from scratch"
+      }
+    },
+    {
+      "id": "consolidaton",
+      "type": "project_development_stage",
+      "attributes": {
+        "name": "Consolidaton",
+        "description": "project or solution already in implementation that seeks to be strengthened and consolidated"
+      }
+    },
+    {
+      "id": "scaling-up",
+      "type": "project_development_stage",
+      "attributes": {
+        "name": "Scaling up",
+        "description": "consolidated, demonstrated project or solution that seeks to be scaled or replicated in other contexts and/or geographies"
+      }
+    },
+    {
+      "id": "entrepreneurs-and-innovators-startups",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Enterpreneurs and innovators - startups"
+      }
+    },
+    {
+      "id": "small-and-medium-businesses",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Small and medium businesses"
+      }
+    },
+    {
+      "id": "urban-populations",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Urban populations"
+      }
+    },
+    {
+      "id": "indigenous-peoples",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Indigenous peoples"
+      }
+    },
+    {
+      "id": "afro-desendant-peoples",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Afro-desendant peoples"
+      }
+    },
+    {
+      "id": "peasants-and-traditional-inhabitants",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Peasants and traditional inhabitants"
+      }
+    },
+    {
+      "id": "migrants-and-displaced-groups",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Migrants and displaced groups"
+      }
+    },
+    {
+      "id": "groups-with-disabilities",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Groups with disabilities"
+      }
+    },
+    {
+      "id": "lgtbq-plus-groups",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "LGTBQ+ groups"
+      }
+    },
+    {
+      "id": "other",
+      "type": "project_target_group",
+      "attributes": {
+        "name": "Other"
+      }
+    },
+    {
+      "id": "small-grants",
+      "type": "ticket_size",
+      "attributes": {
+        "name": "Small Grants",
+        "description": "<US$25,000"
+      }
+    },
+    {
+      "id": "prototyping",
+      "type": "ticket_size",
+      "attributes": {
+        "name": "Prototyping",
+        "description": "US$25,000 - 150,000"
+      }
+    },
+    {
+      "id": "validation",
+      "type": "ticket_size",
+      "attributes": {
+        "name": "Validation",
+        "description": "US$150,000 - 750,000"
+      }
+    },
+    {
+      "id": "scaling",
+      "type": "ticket_size",
+      "attributes": {
+        "name": "Scaling",
+        "description": ">US$750,000"
+      }
+    },
+    {
+      "id": "amazon-heart",
+      "type": "mosaic",
+      "attributes": {
+        "name": "Amazon Heart"
+      }
+    },
+    {
+      "id": "amazonian-piedmont-massif",
+      "type": "mosaic",
+      "attributes": {
+        "name": "Amazonian Piedmont Massif"
+      }
+    },
+    {
+      "id": "orinoquia-transition",
+      "type": "mosaic",
+      "attributes": {
+        "name": "Orinoquía Transition"
+      }
+    },
+    {
+      "id": "orinoquia",
+      "type": "mosaic",
+      "attributes": {
+        "name": "Orinoquía"
+      }
+    },
+    {
+      "id": "1",
+      "type": "sdg",
+      "attributes": {
+        "name": "No poverty"
+      }
+    },
+    {
+      "id": "2",
+      "type": "sdg",
+      "attributes": {
+        "name": "Zero hunger"
+      }
+    },
+    {
+      "id": "3",
+      "type": "sdg",
+      "attributes": {
+        "name": "Good health and well-being"
+      }
+    },
+    {
+      "id": "4",
+      "type": "sdg",
+      "attributes": {
+        "name": "Quality education"
+      }
+    },
+    {
+      "id": "5",
+      "type": "sdg",
+      "attributes": {
+        "name": "Gender equality"
+      }
+    },
+    {
+      "id": "6",
+      "type": "sdg",
+      "attributes": {
+        "name": "Clean water and sanitation"
+      }
+    },
+    {
+      "id": "7",
+      "type": "sdg",
+      "attributes": {
+        "name": "Affordable and clean energy"
+      }
+    },
+    {
+      "id": "8",
+      "type": "sdg",
+      "attributes": {
+        "name": "Decent work and economic growth"
+      }
+    },
+    {
+      "id": "9",
+      "type": "sdg",
+      "attributes": {
+        "name": "Industry, innovation and infrastructure"
+      }
+    },
+    {
+      "id": "10",
+      "type": "sdg",
+      "attributes": {
+        "name": "Reduced inequalities"
+      }
+    },
+    {
+      "id": "11",
+      "type": "sdg",
+      "attributes": {
+        "name": "Sustainable cities and communities"
+      }
+    },
+    {
+      "id": "12",
+      "type": "sdg",
+      "attributes": {
+        "name": "Responsible consumption and production"
+      }
+    },
+    {
+      "id": "13",
+      "type": "sdg",
+      "attributes": {
+        "name": "Climate action"
+      }
+    },
+    {
+      "id": "14",
+      "type": "sdg",
+      "attributes": {
+        "name": "Life below water"
+      }
+    },
+    {
+      "id": "15",
+      "type": "sdg",
+      "attributes": {
+        "name": "Life on land"
+      }
+    },
+    {
+      "id": "16",
+      "type": "sdg",
+      "attributes": {
+        "name": "Peace, justice and strong institutions"
+      }
+    },
+    {
+      "id": "17",
+      "type": "sdg",
+      "attributes": {
+        "name": "Partnerships for the goals"
+      }
+    }
+  ]
+}

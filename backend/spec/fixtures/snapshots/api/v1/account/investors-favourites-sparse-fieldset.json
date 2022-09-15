@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "id": "29567055-2843-46c5-889e-4326abfe463c",
+      "type": "investor",
+      "attributes": {
+        "instagram": "https://instagram.com/bartoletti-and-sons",
+        "facebook": "https://facebook.com/bartoletti-and-sons"
+      },
+      "relationships": {
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 1,
+    "total": 1,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/investors?page%5Bsize%5D=10",
+    "self": "/api/v1/investors?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/investors?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}

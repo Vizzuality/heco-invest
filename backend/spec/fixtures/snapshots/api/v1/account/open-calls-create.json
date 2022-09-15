@@ -1,0 +1,63 @@
+{
+  "data": {
+    "id": "745301f2-68bf-4f2b-a2c3-0ccf6bddfe00",
+    "type": "open_call",
+    "attributes": {
+      "name": "Open Call Name",
+      "slug": "kutch-spencer-open-call-name",
+      "description": "Open Call Description",
+      "instrument_types": [
+        "loan",
+        "grant"
+      ],
+      "sdgs": [
+        1,
+        2
+      ],
+      "funding_priorities": "Open Call Funding Priorities",
+      "funding_exclusions": "Open Call Funding Exclusions",
+      "impact_description": "Open Call Impact Description",
+      "maximum_funding_per_project": 100000,
+      "closing_at": "2022-08-09T11:55:03.369Z",
+      "language": "es",
+      "account_language": "es",
+      "trusted": false,
+      "created_at": "2022-08-08T11:55:03.401Z",
+      "picture": {
+        "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswWWpOaU1XWmpZUzA0T0RGbExUUmxaVE10T0RBd01pMDJOVFU1TkdKbE9XRTNaVGtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--614be6b1612d2fb7577b4a2011baac04de36c9b2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2d0eVpYTnBlbVZKSWd3eU1EQjRNakF3QmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--eecd42c95d4a671873063e8115ad147ca137769d/test",
+        "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswWWpOaU1XWmpZUzA0T0RGbExUUmxaVE10T0RBd01pMDJOVFU1TkdKbE9XRTNaVGtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--614be6b1612d2fb7577b4a2011baac04de36c9b2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2d0eVpYTnBlbVZKSWd3NE1EQjRPREF3QmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--7e1915aedd9d00d46843b05cad3232ede48b86eb/test",
+        "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWswWWpOaU1XWmpZUzA0T0RGbExUUmxaVE10T0RBd01pMDJOVFU1TkdKbE9XRTNaVGtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--614be6b1612d2fb7577b4a2011baac04de36c9b2/test"
+      },
+      "status": "draft",
+      "favourite": false,
+      "open_call_applications_count": 0,
+      "verified": false
+    },
+    "relationships": {
+      "investor": {
+        "data": {
+          "id": "410a455b-4d41-43bc-88c4-44c8177b8335",
+          "type": "investor"
+        }
+      },
+      "country": {
+        "data": {
+          "id": "82d4f4a9-dc1f-4b14-a88d-2e0ab7518d0e",
+          "type": "location"
+        }
+      },
+      "municipality": {
+        "data": {
+          "id": "fd44391f-1d49-415e-9535-0e43602fa4e7",
+          "type": "location"
+        }
+      },
+      "department": {
+        "data": {
+          "id": "86493a44-527f-4433-aab7-99f02b4c44dc",
+          "type": "location"
+        }
+      }
+    }
+  }
+}

@@ -5,6 +5,8 @@ class LocationType
     country
     department
     municipality
-    region
+    priority_landscape
+    basins_category
+    basin
   ].freeze
 end

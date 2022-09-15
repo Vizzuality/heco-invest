@@ -7,7 +7,12 @@ import cx from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
+// import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
+import { Paths } from 'enums';
+
+// import FacebookIcon from 'svgs/social/facebook.svg';
+// import TwitterIcon from 'svgs/social/twitter.svg';
 
 import { FooterProps } from './types';
 
@@ -34,7 +39,14 @@ export const Footer: React.FC<FooterProps> = ({
       <LayoutContainer>
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="xl:col-span-1">
-            <p className="text-xs font-medium">HeCo Invest</p>
+            <Link href={Paths.Home} passHref>
+              <a className="text-base font-semibold">
+                HeCo Invest{' '}
+                <span className="text-green-dark bg-white rounded-sm py-0.5 px-1 text-xs">
+                  βeta
+                </span>
+              </a>
+            </Link>
             <p className="max-w-xs mt-2 font-serif text-xl font-semibold leading-7">
               <FormattedMessage
                 defaultMessage="Be part of the biggest change in the colombian Amazon"
@@ -44,7 +56,7 @@ export const Footer: React.FC<FooterProps> = ({
             <p className="mt-5 text-xs font-medium">
               <FormattedMessage defaultMessage="Partnership between:" id="o+Vt3t" />
             </p>
-            <div className="flex mt-2 space-x-6">
+            <div className="flex mt-2 gap-x-2.5">
               <a
                 href="https://www.iadb.org"
                 target="_blank"
@@ -136,6 +148,50 @@ export const Footer: React.FC<FooterProps> = ({
                   />
                 </div>
               </a>
+              <a
+                href="https://www.bc3research.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+                title={intl.formatMessage({
+                  defaultMessage: 'Basque Centre for Climate Change',
+                  id: '6ukMW9',
+                })}
+              >
+                <span className="sr-only">
+                  <FormattedMessage defaultMessage="Basque Centre for Climate Change" id="6ukMW9" />
+                </span>
+                <div className="flex items-center justify-center w-10 h-10 bg-white rounded">
+                  <Image
+                    src="/images/footer-bc3.png"
+                    width={32}
+                    height={32}
+                    alt={intl.formatMessage({
+                      defaultMessage: 'Basque Centre for Climate Change',
+                      id: '6ukMW9',
+                    })}
+                  />
+                </div>
+              </a>
+              <a
+                href="https://cloud.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+                title={intl.formatMessage({ defaultMessage: 'Google Cloud', id: 'QlBsxM' })}
+              >
+                <span className="sr-only">
+                  <FormattedMessage defaultMessage="Google Cloud" id="QlBsxM" />
+                </span>
+                <div className="flex items-center justify-center w-10 h-10 bg-white rounded">
+                  <Image
+                    src="/images/footer-google.png"
+                    width={32}
+                    height={32}
+                    alt={intl.formatMessage({ defaultMessage: 'Google Cloud', id: 'QlBsxM' })}
+                  />
+                </div>
+              </a>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-8 mt-12 xl:mt-0 xl:col-span-2">
@@ -155,7 +211,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <li>
                     <Link href="/discover/open-calls">
                       <a className="hover:underline">
-                        <FormattedMessage defaultMessage="Open calls" id="OBhULP" />
+                        <FormattedMessage defaultMessage="Open Calls" id="wpyHb9" />
                       </a>
                     </Link>
                   </li>
@@ -181,14 +237,14 @@ export const Footer: React.FC<FooterProps> = ({
                 </h3>
                 <ul className="mt-2 space-y-2">
                   <li>
-                    <Link href="/investors">
+                    <Link href={Paths.ForInvestors}>
                       <a className="hover:underline">
                         <FormattedMessage defaultMessage="For investors" id="MfCYKW" />
                       </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/project-developers">
+                    <Link href={Paths.ForProjectDevelopers}>
                       <a className="hover:underline">
                         <FormattedMessage defaultMessage="For project developers" id="F1+h/t" />
                       </a>
@@ -211,14 +267,14 @@ export const Footer: React.FC<FooterProps> = ({
                     </Link>
                   </li>
                   <li>
-                    <Link href="/faq">
+                    <Link href={Paths.FAQ}>
                       <a className="hover:underline">
                         <FormattedMessage defaultMessage="FAQ’s" id="qIvPIE" />
                       </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/privacy-policy">
+                    <Link href={Paths.PrivacyPolicy} passHref>
                       <a className="hover:underline">
                         <FormattedMessage defaultMessage="Privacy policy" id="cPwv2c" />
                       </a>
@@ -230,6 +286,26 @@ export const Footer: React.FC<FooterProps> = ({
                 <h3 className="text-gray-600">
                   <FormattedMessage defaultMessage="Contact" id="zFegDD" />
                 </h3>
+                <ul className="mt-2 space-y-2">
+                  {/* <li>
+                    <FormattedMessage defaultMessage="+123456789" id="6//v4m" />
+                  </li> */}
+                  <li>
+                    <a className="cursor-pointer hover:underline" href="mailto:info@hecoinvest.org">
+                      <FormattedMessage defaultMessage="info@hecoinvest.org" id="+2I7uh" />
+                    </a>
+                  </li>
+                  {/* <li>
+                    <p className="text-gray-600">
+                      <FormattedMessage defaultMessage="Social media" id="ZEEVQX" />
+                    </p>
+                    <div className="flex my-3 space-x-5">
+                      <Icon icon={FacebookIcon} className="w-4 h-4 fill-gray-400" />
+
+                      <Icon icon={TwitterIcon} className="w-4 h-4 fill-gray-400" />
+                    </div>
+                  </li> */}
+                </ul>
               </div>
             </div>
           </div>

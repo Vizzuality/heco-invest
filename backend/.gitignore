@@ -40,3 +40,16 @@
 /coverage
 
 /config/credentials/production.key
+
+# Location GeoJSON
+/db/seeds/files/colombia.geojson
+/db/seeds/files/basins.geojson
+/db/seeds/files/mosaics.geojson
+/db/seeds/files/municipalities.geojson
+
+# Downloadable locales
+/config/locales/en.yml
+/config/locales/es.yml
+/config/locales/pt.yml
+
+dump.rdb

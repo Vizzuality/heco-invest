@@ -1,0 +1,6 @@
+{
+  "user@example.com": 200,
+  "desmond_herzog@example.org": 200,
+  "WRONG_EMAIL": 422,
+  "dawna.block@example.org": 409
+}

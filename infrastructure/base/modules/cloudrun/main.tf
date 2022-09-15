@@ -8,7 +8,7 @@ resource "google_project_service" "cloud_run_api" {
 
 resource "google_service_account" "service_account" {
   account_id   = "${var.name}-cr-sa"
-  display_name = "${var.name} Service Account"
+  display_name = "${var.name} Cloud Run Service Account"
 }
 
 resource "google_secret_manager_secret_iam_member" "secret_access" {
@@ -58,8 +58,10 @@ resource "google_cloud_run_service" "cloud_run" {
     }
     metadata {
       annotations = {
-        # Limit scale up to prevent any cost blow outs!
-        "autoscaling.knative.dev/maxScale"        = "5"
+        # Limit max scale up to prevent any cost blow outs!
+        "autoscaling.knative.dev/maxScale"        = var.max_scale
+        # Limit min scale down to prevent service becoming unavailable
+        "autoscaling.knative.dev/minScale"        = var.min_scale
         # Use the VPC Connector
         "run.googleapis.com/vpc-access-connector" = var.vpc_connector_name
         # all egress from the service should go through the VPC Connector
@@ -76,6 +78,14 @@ resource "google_cloud_run_service" "cloud_run" {
   autogenerate_revision_name = true
 
   depends_on = [google_secret_manager_secret_iam_member.secret_access, var.database]
+
+  lifecycle {
+    ignore_changes = [
+      template[0].metadata[0].annotations["client.knative.dev/user-image"],
+      template[0].metadata[0].annotations["run.googleapis.com/client-name"],
+      template[0].metadata[0].annotations["run.googleapis.com/client-version"],
+    ]
+  }
 }
 
 data "google_iam_policy" "noauth" {
@@ -93,4 +103,13 @@ resource "google_cloud_run_service_iam_policy" "noauth" {
   service  = google_cloud_run_service.cloud_run.name
 
   policy_data = data.google_iam_policy.noauth.policy_data
+}
+
+resource "google_service_account_iam_binding" "admin-account-iam" {
+  service_account_id = google_service_account.service_account.name
+  role               = "roles/iam.serviceAccountTokenCreator"
+
+  members = [
+    "serviceAccount:${google_service_account.service_account.email}",
+  ]
 }

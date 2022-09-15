@@ -14,6 +14,12 @@ resource "google_storage_bucket" "storage_bucket" {
   force_destroy = true
   storage_class = var.storage_class
 
+  cors {
+    origin          = [var.cors_origin]
+    method          = ["GET", "HEAD", "PUT", "POST", "DELETE"]
+    response_header = ["*"]
+    max_age_seconds = 3600
+  }
   versioning {
     enabled = true
   }
@@ -22,11 +28,17 @@ resource "google_storage_bucket" "storage_bucket" {
 resource "google_storage_bucket_iam_member" "objectViewer" {
   bucket = google_storage_bucket.storage_bucket.name
   role   = "roles/storage.objectViewer"
-  member = "serviceAccount:${var.service_account_email}"
+  member = "serviceAccount:${var.backend_service_account_email}"
 }
 
 resource "google_storage_bucket_iam_member" "objectCreator" {
   bucket = google_storage_bucket.storage_bucket.name
   role   = "roles/storage.objectCreator"
-  member = "serviceAccount:${var.service_account_email}"
+  member = "serviceAccount:${var.backend_service_account_email}"
+}
+
+resource "google_storage_bucket_iam_member" "objectAdmin" {
+  bucket = google_storage_bucket.storage_bucket.name
+  role   = "roles/storage.objectAdmin"
+  member = "serviceAccount:${var.jobs_service_account_email}"
 }

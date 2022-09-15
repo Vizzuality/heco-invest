@@ -21,18 +21,17 @@ RSpec.describe "API V1 Reset Password", type: :request do
         let(:params) { {email: "user@example.com"} }
         let("X-CSRF-TOKEN") { get_csrf_token }
 
-        run_test!
-
-        # head ok so no generate example
-        it "sends email" do
-          mail = ActionMailer::Base.deliveries.last
-          expect(mail.subject).to eq("Reset password instructions")
-          expect(mail.to.first).to eq("user@example.com")
-          expect(user.reload.reset_password_token).to be_present
+        it "sends email" do |example|
+          expect {
+            submit_request example.metadata
+            assert_response_matches_metadata example.metadata
+          }.to have_enqueued_mail(DeviseMailer, :reset_password_instructions).with(user, String, fallback_language: :en)
         end
 
         context "invalid email" do
           let(:params) { {email: "invalid"} }
+
+          run_test!
 
           it "returns 200" do
             expect(response).to have_http_status(:ok)
@@ -42,6 +41,8 @@ RSpec.describe "API V1 Reset Password", type: :request do
         context "non existing user" do
           let(:params) { {email: "valid@example.com"} }
 
+          run_test!
+
           it "returns 200" do
             expect(response).to have_http_status(:ok)
           end
@@ -49,6 +50,8 @@ RSpec.describe "API V1 Reset Password", type: :request do
 
         context "wrong params" do
           let(:params) { {} }
+
+          run_test!
 
           it "returns 200" do
             expect(response).to have_http_status(:ok)
@@ -66,9 +69,10 @@ RSpec.describe "API V1 Reset Password", type: :request do
         type: :object,
         properties: {
           password: {type: :string},
+          password_confirmation: {type: :string},
           reset_password_token: {type: :string}
         },
-        required: ["email", "reset_password_token"]
+        required: %w[email password_confirmation reset_password_token]
       }
 
       response "200", :success do
@@ -78,7 +82,7 @@ RSpec.describe "API V1 Reset Password", type: :request do
         let(:token) {
           user.send(:set_reset_password_token) # this is protected method
         }
-        let(:params) { {password: "NewPassword1234", reset_password_token: token} }
+        let(:params) { {password: "NewPassword1234", password_confirmation: "NewPassword1234", reset_password_token: token} }
         let("X-CSRF-TOKEN") { get_csrf_token }
 
         run_test!
@@ -93,7 +97,7 @@ RSpec.describe "API V1 Reset Password", type: :request do
 
       response "422", "Invalid, expired token" do
         let(:token) { "invalid" }
-        let(:params) { {password: "NewPassword1234", reset_password_token: token} }
+        let(:params) { {password: "NewPassword1234", password_confirmation: "NewPassword1234", reset_password_token: token} }
         let("X-CSRF-TOKEN") { get_csrf_token }
 
         run_test!
@@ -112,11 +116,11 @@ RSpec.describe "API V1 Reset Password", type: :request do
 
         context "expired token" do
           let(:token) do
-            travel_to 7.hours.ago do
+            travel_to 3.days.ago do
               user.send(:set_reset_password_token) # this is protected method
             end
           end
-          let(:params) { {password: "NewPassword1234", reset_password_token: token} }
+          let(:params) { {password: "NewPassword1234", password_confirmation: "NewPassword1234", reset_password_token: token} }
 
           it "returns correct error" do
             expect(response_json["errors"][0]["title"]).to eq("Reset password token has expired, please request a new one")
@@ -127,13 +131,24 @@ RSpec.describe "API V1 Reset Password", type: :request do
           let(:token) {
             user.send(:set_reset_password_token) # this is protected method
           }
-          let(:params) { {password: "secret", reset_password_token: token} }
+          let(:params) { {password: "secret", password_confirmation: "secret", reset_password_token: token} }
 
           it "returns correct error" do
             expect(response_json["errors"].map { |e| e["title"] }).to include(
               "Password must be at least 12 characters long",
               "Password must include at least one lowercase letter, one uppercase letter, and one digit"
             )
+          end
+        end
+
+        context "invalid password confirmation" do
+          let(:token) {
+            user.send(:set_reset_password_token) # this is protected method
+          }
+          let(:params) { {password: "NewPassword1234", password_confirmation: "WRONG", reset_password_token: token} }
+
+          it "returns correct error" do
+            expect(response_json["errors"][0]["title"]).to eq("Password confirmation doesn't match Password")
           end
         end
       end

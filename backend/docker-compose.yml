@@ -1,11 +1,12 @@
 version: "3.8"
 services:
   db:
-    image: postgres:14.2
+    image: postgis/postgis:14-3.2-alpine
     ports:
       - 5432:5432
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
+      - CLOUD_TASKS_TEST_QUEUE_NAME=test
     volumes:
       - db:/var/lib/postgresql/data
 

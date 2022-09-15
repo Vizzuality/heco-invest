@@ -1,6 +1,10 @@
-export type CategoryType = 'tourism' | 'production' | 'agrosystems' | 'forestry';
+import { CategoryTagDotProps } from './category-tag-dot';
 
-export type CategoryTagProps = React.PropsWithChildren<{
-  /** Identifier of the investment type so that the corresponding colored dot is displayed */
-  category: CategoryType;
-}>;
+export type CategoryTagProps = React.PropsWithChildren<
+  CategoryTagDotProps & {
+    /** Classes to apply to the Tag */
+    className?: string;
+    /** Size of the tag. Defaults to `small` */
+    size?: 'small' | 'smallest';
+  }
+>;

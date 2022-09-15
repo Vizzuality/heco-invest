@@ -1,0 +1,70 @@
+{
+  "data": [
+    {
+      "id": "43264c01-9e34-498e-99d5-d5a98d506111",
+      "type": "user",
+      "attributes": {
+        "first_name": "Dawna",
+        "last_name": "Block",
+        "email": "dawna.block@example.org",
+        "role": "light",
+        "confirmed": true,
+        "approved": true,
+        "invitation": null,
+        "created_at": "2022-06-24T10:15:01.723Z",
+        "owner": true,
+        "avatar": {
+          "small": null,
+          "medium": null,
+          "original": null
+        },
+        "ui_language": "en",
+        "account_language": "en"
+      }
+    },
+    {
+      "id": "c50b792e-11f5-4a22-bd83-94fefdc1dc53",
+      "type": "user",
+      "attributes": {
+        "first_name": "Desmond",
+        "last_name": "Herzog",
+        "email": "desmond_herzog@example.org",
+        "role": "light",
+        "confirmed": true,
+        "approved": true,
+        "invitation": "completed",
+        "created_at": "2022-06-24T10:15:01.772Z",
+        "owner": false,
+        "avatar": {
+          "small": null,
+          "medium": null,
+          "original": null
+        },
+        "ui_language": "en",
+        "account_language": "en"
+      }
+    },
+    {
+      "id": "044e3ebc-aa89-4270-87c7-698fce9d8087",
+      "type": "user",
+      "attributes": {
+        "first_name": "Raymon",
+        "last_name": "Runte",
+        "email": "runte_raymon@example.org",
+        "role": "light",
+        "confirmed": true,
+        "approved": null,
+        "invitation": "waiting",
+        "created_at": "2022-06-24T10:15:01.782Z",
+        "owner": false,
+        "avatar": {
+          "small": null,
+          "medium": null,
+          "original": null
+        },
+        "ui_language": "en",
+        "account_language": null
+      }
+    }
+  ]
+}

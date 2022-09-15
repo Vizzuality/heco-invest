@@ -28,7 +28,7 @@
         "linkedin": "https://linkedin.com/kutch-spencer",
         "twitter": "https://twitter.com/kutch-spencer",
         "mission": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "project_developer_type": "TBD",
+        "project_developer_type": "ngo",
         "categories": [
           "forestry-and-agroforestry",
           "non-timber-forest-production"
@@ -44,7 +44,12 @@
           "small": null,
           "medium": null,
           "original": null
-        }
+        },
+        "contact_email": null,
+        "contact_phone": null,
+        "favourite": null,
+        "created_at": "2022-06-21T11:29:48.433Z",
+        "account_language": "en"
       },
       "relationships": {
         "owner": {
@@ -53,9 +58,29 @@
             "type": "user"
           }
         },
-        "locations": {
+        "projects": {
+          "data": [
+            {
+              "id": "f25fd3bc-71b5-4217-8636-e61e3285ee48",
+              "type": "project"
+            }
+          ]
+        },
+        "involved_projects": {
           "data": [
 
+          ]
+        },
+        "priority_landscapes": {
+          "data": [
+            {
+              "id": "eadefe85-9e52-4b63-bcd6-83235bacba83",
+              "type": "location"
+            },
+            {
+              "id": "ed5387f6-07c6-4ead-8b6e-883ca3946232",
+              "type": "location"
+            }
           ]
         }
       }

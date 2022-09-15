@@ -1,0 +1,28 @@
+<% content_for :content do %>
+  <header class="fixed top-0 w-full h-16 lg:h-20 z-10 py-4 bg-green-dark">
+    <div class="text-beige flex items-center">
+      <div class="container mx-auto">
+        <a class="font-semibold" href="/">HeCo Invest</a>
+        <span class="font-light">Backoffice</span>
+      </div>
+      <div class="mx-auto">
+        <%= render partial: "layouts/language_selector" %>
+      </div>
+    </div>
+  </header>
+
+  <div class="bg-green-dark absolute min-h-[60vh] w-full z-[-1]">
+  </div>
+
+  <main class="flex w-full">
+    <div class="min-h-screen container mx-auto flex flex-col">
+      <div class="mx-auto table h-full">
+        <div class="table-cell align-middle">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </main>
+<% end %>
+
+<%= render template: "layouts/application" %>

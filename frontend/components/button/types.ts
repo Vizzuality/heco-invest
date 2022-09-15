@@ -8,11 +8,12 @@ export interface ButtonCommonProps {
     | 'primary-green'
     | 'primary-white'
     | 'primary-orange'
+    | 'primary-red'
     | 'secondary-green'
     | 'secondary-white'
     | 'naked';
   /** Size of the button */
-  size?: 'base' | 'small';
+  size?: 'base' | 'small' | 'smallest';
   /** Icon of the button */
   icon?: IconProps['icon'];
 }
@@ -27,6 +28,11 @@ export type HTMLAnchorProps = PropsWithChildren<
        * a new tab/window.
        */
       external?: boolean;
+      /**
+       * Optional decorator for the path that will be shown in the browser URL bar
+       * See: https://nextjs.org/docs/api-reference/next/link
+       */
+      as?: string;
     }
 >;
 

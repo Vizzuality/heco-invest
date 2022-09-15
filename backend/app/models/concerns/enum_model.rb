@@ -31,7 +31,7 @@ module EnumModel
     end
 
     def find(slug)
-      all.find { |o| o.slug == slug }
+      new(slug: slug)
     end
   end
 end

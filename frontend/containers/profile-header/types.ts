@@ -1,4 +1,5 @@
-import { WebsiteSocialContactProps } from 'containers/website-social-contact';
+import { ContactItemType } from 'containers/social-contact/contact-information-modal';
+import { WebsiteSocialProps } from 'containers/social-contact/website-social';
 
 import { LanguageType } from 'types';
 
@@ -14,13 +15,19 @@ export type ProfileHeaderProps = {
   /** Text to display */
   text: string;
   /** Original language in which the profile was written in */
-  originalLanguage?: LanguageType;
-  /** Num projects waiting funded */
-  numNotFunded?: number;
-  /** Num projects funded */
-  numFunded?: number;
+  originalLanguage: LanguageType;
+  /** If the entity is favorite */
+  isFavorite?: boolean;
+  /** Number of projects waiting funding */
+  projectsWaitingFunding?: number;
+  /** Number of projects */
+  totalProjects?: number;
+  /** Contact information for the project developer */
+  contact?: ContactItemType;
   /** Callback for when the favorite button is clicked */
   onFavoriteClick?: () => void;
+  /** If the favorite Button shoulb be on loading state */
+  favoriteLoading?: boolean;
   /** Callback for when the contact button is clicked */
   onContactClick?: () => void;
-} & Pick<WebsiteSocialContactProps, 'website' | 'social' | 'contact'>;
+} & Pick<WebsiteSocialProps, 'website' | 'social'>;

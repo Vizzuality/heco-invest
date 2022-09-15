@@ -41,12 +41,42 @@ variable "transifex_token" {
   description = "Transifex API access token"
 }
 
+variable "sendgrid_api_key" {
+  type = string
+  description = "SendGrid API key"
+}
+
 variable "google_analytics_key" {
   type = string
   description = "Google Analytics key"
 }
 
+variable "google_maps_api_key" {
+  type = string
+  description = "Google Maps API key"
+}
+
+variable "mapbox_api_key" {
+  type = string
+  description = "Mapbox API key"
+}
+
 variable "domain" {
   type = string
   description = "Base domain for the DNS zone"
+}
+
+variable "uptime_alert_email" {
+  type        = string
+  description = "Email address to which uptime alerts should be sent"
+}
+
+variable "redirect_domain" {
+  type = string
+  description = "Legacy domain to redirect"
+}
+
+variable "from_email_address" {
+  type = string
+  description = "Email address from which to send emails"
 }

@@ -1,0 +1,25 @@
+<div class="flex">
+  <aside class="w-2/6">
+    <h1 class="font-semibold text-xl text-black mb-8">
+      <%= @open_call.name %>
+    </h1>
+
+    <ul class="flex flex-col gap-8 mb-8">
+      <li><%= section_link_to t("backoffice.open_calls.information"), edit_backoffice_open_call_path, :information, default: true %></li>
+      <li><%= section_link_to t("backoffice.open_calls.status"), edit_backoffice_open_call_path, :status %></li>
+      <li><%= section_link_to t("backoffice.open_calls.investor"), edit_backoffice_open_call_path, :investor %></li>
+    </ul>
+    <%= link_to backoffice_open_call_path(@open_call.id),
+       data: {
+         turbo_method: :delete,
+         turbo_confirm: t("backoffice.messages.delete_confirmation", model: t("backoffice.common.open_call").downcase)
+       },
+       class: "button button-secondary-green button-with-icon" do %>
+      <%= svg "trash" %>
+      <%= t("backoffice.open_calls.delete") %>
+    <% end %>
+  </aside>
+  <div class="w-full h-full bg-white rounded-xl p-6">
+    <%= render section_partial %>
+  </div>
+</div>

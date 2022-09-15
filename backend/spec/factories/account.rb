@@ -16,5 +16,32 @@ FactoryBot.define do
     facebook { "https://facebook.com/#{slug_preview}" }
     website { "https://#{slug_preview}.com" }
     language { "en" }
+    contact_email { "contact@example.com" }
+    contact_phone { "+57-1-xxx-xx-xx" }
+    review_status { "approved" }
+
+    factory :account_project_developer do
+      project_developer
+    end
+
+    factory :account_investor do
+      investor
+    end
+
+    trait :unapproved do
+      review_status { "unapproved" }
+    end
+
+    trait :approved do
+      review_status { "approved" }
+    end
+
+    trait :rejected do
+      review_status { "rejected" }
+    end
+
+    before :create do |account|
+      account.users << account.owner
+    end
   end
 end

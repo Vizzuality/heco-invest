@@ -22,3 +22,9 @@ export type LanguageType = `${Languages}`;
  */
 
 export type AccountType = 'investor' | 'project-developer';
+
+export type Picture = {
+  small: string;
+  medium: string;
+  original: string;
+};

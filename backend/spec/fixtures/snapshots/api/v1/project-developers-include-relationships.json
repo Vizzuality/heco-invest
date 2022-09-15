@@ -1,0 +1,400 @@
+{
+  "data": [
+    {
+      "id": "0c2552a2-e1ac-4786-9f87-624411c7bbd1",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Bartoletti and Sons"
+      },
+      "relationships": {
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "759984de-17f0-4396-9d6e-40676dd410dd",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Becker LLC"
+      },
+      "relationships": {
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "b93e08e5-ad7b-4783-8e94-b2a45d4f6492",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Hane, Lehner and Goyette"
+      },
+      "relationships": {
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "5d5665be-4c2a-403b-965d-cdd5f61be4cf",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Hilpert, Waters and Johnston"
+      },
+      "relationships": {
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "5523d507-5a78-4e8a-a8fb-5474db1746d7",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Jacobson, Fritsch and Stanton"
+      },
+      "relationships": {
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "8b03b1cd-ff98-4ec8-9c5e-6ce24af78b11",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Keebler, Kub and Zemlak"
+      },
+      "relationships": {
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "40625360-65a5-45a7-8867-ee4ed47d244c",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Kutch-Spencer"
+      },
+      "relationships": {
+        "involved_projects": {
+          "data": [
+            {
+              "id": "05119ec0-7217-45f6-a26a-7f4debfdf3bf",
+              "type": "project"
+            },
+            {
+              "id": "e11e66a4-fa9c-4a65-9100-562cf8056265",
+              "type": "project"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "656ab0e5-e118-4033-aaa6-73cccabfd5f3",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Lind, Langworth and Gottlieb"
+      },
+      "relationships": {
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "5994b3a8-4f98-4585-b02e-ade1859cb1e1",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Ritchie, Glover and Ward"
+      },
+      "relationships": {
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "b40abf91-e283-4000-a212-6feee6a1f10c",
+      "type": "project_developer",
+      "attributes": {
+        "name": "Runolfsson and Sons"
+      },
+      "relationships": {
+        "involved_projects": {
+          "data": [
+
+          ]
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": "05119ec0-7217-45f6-a26a-7f4debfdf3bf",
+      "type": "project",
+      "attributes": {
+        "name": "Project 1",
+        "slug": "bartoletti-and-sons-project-1",
+        "description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "category": "forestry-and-agroforestry",
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "involved_project_developer_not_listed": false,
+        "problem": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "solution": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "expected_impact": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "looking_for_funding": true,
+        "ticket_size": "scaling",
+        "instrument_types": [
+          "grant",
+          "loan"
+        ],
+        "funding_plan": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "sustainability": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "replicability": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "progress_impact_tracking": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Kutch-Spencer",
+        "relevant_links": null,
+        "language": "en",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        },
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null,
+        "latitude": 2.0,
+        "longitude": 1.0,
+        "favourite": null,
+        "created_at": "2022-06-24T09:06:30.522Z",
+        "status": "published",
+        "account_language": "en",
+        "impact_calculated": false,
+        "verified": false
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "0c2552a2-e1ac-4786-9f87-624411c7bbd1",
+            "type": "project_developer"
+          }
+        },
+        "country": {
+          "data": {
+            "id": "98ca0542-ce3c-47f6-baa9-1aaf1363d358",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "3b18cc32-6dec-4635-b250-b3846aedc669",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "0a3eff91-0ff5-4061-bb31-ab6f1ad98566",
+            "type": "location"
+          }
+        },
+        "priority_landscape": {
+          "data": null
+        },
+        "involved_project_developers": {
+          "data": [
+            {
+              "id": "40625360-65a5-45a7-8867-ee4ed47d244c",
+              "type": "project_developer"
+            }
+          ]
+        },
+        "project_images": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "e11e66a4-fa9c-4a65-9100-562cf8056265",
+      "type": "project",
+      "attributes": {
+        "name": "Project 2",
+        "slug": "hane-lehner-and-goyette-project-2",
+        "description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "category": "forestry-and-agroforestry",
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "involved_project_developer_not_listed": false,
+        "problem": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "solution": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "expected_impact": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "looking_for_funding": true,
+        "ticket_size": "scaling",
+        "instrument_types": [
+          "grant",
+          "loan"
+        ],
+        "funding_plan": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "sustainability": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "replicability": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "progress_impact_tracking": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Bartoletti and Sons",
+        "relevant_links": null,
+        "language": "en",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        },
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null,
+        "latitude": 2.0,
+        "longitude": 1.0,
+        "favourite": null,
+        "created_at": "2022-06-24T09:06:30.643Z",
+        "status": "published",
+        "account_language": "en",
+        "impact_calculated": false,
+        "verified": false
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "b93e08e5-ad7b-4783-8e94-b2a45d4f6492",
+            "type": "project_developer"
+          }
+        },
+        "country": {
+          "data": {
+            "id": "350c2288-23c7-43a6-9255-e6301404806d",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "b4d8a255-eca1-405f-914e-5a5bcaea8b13",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "b1d4ced6-58c8-4377-bdd3-2119a4179f12",
+            "type": "location"
+          }
+        },
+        "priority_landscape": {
+          "data": null
+        },
+        "involved_project_developers": {
+          "data": [
+            {
+              "id": "40625360-65a5-45a7-8867-ee4ed47d244c",
+              "type": "project_developer"
+            }
+          ]
+        },
+        "project_images": {
+          "data": [
+
+          ]
+        }
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 10,
+    "total": 10,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/project_developers?page%5Bsize%5D=10",
+    "self": "/api/v1/project_developers?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/project_developers?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}

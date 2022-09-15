@@ -4,21 +4,22 @@ RSpec.describe "API V1 Locale Param", type: :request do
   let_it_be(:investor) {
     create(
       :investor,
-      other_information_en: "Other Information en",
+      account: create(:account, language: "pt"),
+      other_information_en: nil,
       other_information_es: nil,
-      other_information_pt: nil,
-      how_do_you_work_en: "How do you work en",
-      how_do_you_work_es: "How do you work es",
-      how_do_you_work_pt: "How do you work pt"
+      other_information_pt: "Other Information pt",
+      mission_en: "Mission en",
+      mission_es: "Mission es",
+      mission_pt: "Mission pt"
     )
   }
 
   context "no locale" do
     before(:each) { get "/api/v1/investors/#{investor.id}" }
 
-    it "should return default locale" do
+    it "should return account locale" do
       expect(response).to have_http_status(:ok)
-      expect(response_json["data"]["attributes"]["how_do_you_work"]).to eq("How do you work en")
+      expect(response_json["data"]["attributes"]["mission"]).to eq("Mission pt")
     end
   end
 
@@ -27,21 +28,21 @@ RSpec.describe "API V1 Locale Param", type: :request do
 
     it "should return attributes properly translated" do
       expect(response).to have_http_status(:ok)
-      expect(response_json["data"]["attributes"]["how_do_you_work"]).to eq("How do you work es")
+      expect(response_json["data"]["attributes"]["mission"]).to eq("Mission es")
     end
 
-    it "attribute without translations fallback to default locale" do
+    it "attribute without translations fallback to default record language" do
       expect(response).to have_http_status(:ok)
-      expect(response_json["data"]["attributes"]["other_information"]).to eq("Other Information en")
+      expect(response_json["data"]["attributes"]["other_information"]).to eq("Other Information pt")
     end
   end
 
   context "invalid locale" do
     before(:each) { get "/api/v1/investors/#{investor.id}?locale=invalid" }
 
-    it "should return default locale" do
+    it "should return account locale" do
       expect(response).to have_http_status(:ok)
-      expect(response_json["data"]["attributes"]["how_do_you_work"]).to eq("How do you work en")
+      expect(response_json["data"]["attributes"]["mission"]).to eq("Mission pt")
     end
   end
 end

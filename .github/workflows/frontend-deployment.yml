@@ -76,10 +76,10 @@ jobs:
         curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
         if [[ "${{ env.ENV }}" == "staging" ]]; then
           echo 'Pushing the source strings…'
-          TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx push
+          TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx push -s
         fi
         echo 'Pulling the translations…'
-        TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx pull
+        TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx pull -f
 
     - name: Run tests
       run: yarn test

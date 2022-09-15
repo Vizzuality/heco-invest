@@ -3,8 +3,10 @@
     "id": "4debca7f-9251-403f-b893-ff0e78bd6af4",
     "type": "location",
     "attributes": {
-      "name": "Hane, Lehner and Goyette",
-      "location_type": "municipality"
+      "name": "Jamaica",
+      "location_type": "municipality",
+      "created_at": "2022-06-24T09:07:25.385Z",
+      "code": null
     },
     "relationships": {
       "parent": {
@@ -12,14 +14,6 @@
           "id": "5331a4ba-ef75-4b7f-8cdd-8ec39e692bbd",
           "type": "location"
         }
-      },
-      "regions": {
-        "data": [
-          {
-            "id": "b5debe16-a4ab-4811-ac48-3b480af1fc56",
-            "type": "location"
-          }
-        ]
       }
     }
   }

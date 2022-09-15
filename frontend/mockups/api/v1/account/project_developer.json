@@ -1,0 +1,59 @@
+{
+  "data": {
+    "id": "0139a6a2-a864-49a0-8f13-1065f929583b",
+    "type": "project_developer",
+    "attributes": {
+      "name": "PD organization test 1",
+      "slug": "pd-organization-test-1",
+      "about": "About Test organization 1. This organization specializes in sustainable tourism solutions for the Amazon region. ",
+      "website": "https://www.vizzuality.com/",
+      "instagram": "https://instagram.com/pdorganizationtest1",
+      "facebook": "https://facebook.com/pdorganizationtest1",
+      "linkedin": "https://linkedin.com/pdorganizationtest1",
+      "twitter": "https://twitter.com/pdorganizationtest1",
+      "mission": "Mission Test organization 1. This organization's mission is to find sustainable tourism solutions for the Amazon region. ",
+      "project_developer_type": "ngo",
+      "categories": ["tourism-and-recreation"],
+      "impacts": ["biodiversity", "climate", "water", "community"],
+      "language": "en",
+      "entity_legal_registration_number": "1234567890",
+      "review_status": "approved",
+      "mosaics": ["orinoquia-transition"],
+      "contact_email": "susana.romao+pdapproved@vizzuality.com",
+      "contact_phone": "00251536698521",
+      "picture": {
+        "small": "https://staging.hecoinvest.org/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsTldJMFpXTmxOQzFpTmpZM0xUUmlNREl0WVRRd015MWlaVEk0Wmpsa056WTJNVGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--190c0b4358f7614f9d4d74e354e74b4cad7ccf98/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2d0eVpYTnBlbVZKSWd3eU1EQjRNakF3QmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--31d536e28bc089dc99d7ade4a06f37157f7bc05e/1.jpeg",
+        "medium": "https://staging.hecoinvest.org/backend/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsTldJMFpXTmxOQzFpTmpZM0xUUmlNREl0WVRRd015MWlaVEk0Wmpsa056WTJNVGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--190c0b4358f7614f9d4d74e354e74b4cad7ccf98/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2d0eVpYTnBlbVZKSWd3NE1EQjRPREF3QmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--55bfb7e58ed75495694b4582bbff8999933c4f35/1.jpeg",
+        "original": "https://staging.hecoinvest.org/backend/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsTldJMFpXTmxOQzFpTmpZM0xUUmlNREl0WVRRd015MWlaVEk0Wmpsa056WTJNVGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--190c0b4358f7614f9d4d74e354e74b4cad7ccf98/1.jpeg"
+      },
+      "favourite": true
+    },
+    "relationships": {
+      "owner": {
+        "data": {
+          "id": "a1958d90-6933-421c-a7b7-65f5238958f7",
+          "type": "user"
+        }
+      },
+      "projects": {
+        "data": [
+          {
+            "id": "a0ca108f-860a-4d35-8ded-6814a1ac459a",
+            "type": "project"
+          },
+          {
+            "id": "7ea7709d-ebd2-4511-af09-57c0f58e64f3",
+            "type": "project"
+          },
+          {
+            "id": "c64168bf-fba1-4846-b0ff-3619767da14b",
+            "type": "project"
+          }
+        ]
+      },
+      "involved_projects": {
+        "data": []
+      }
+    }
+  }
+}

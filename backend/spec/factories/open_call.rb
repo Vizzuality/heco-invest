@@ -5,18 +5,30 @@ FactoryBot.define do
     sequence(:name) do |n|
       "Open call #{n}"
     end
+    status { "launched" }
+
+    picture { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/files/picture.jpg"), "image/jpeg") }
+
+    country
+    municipality
+    department
 
     sdgs { [1, 4, 5] }
-    instrument_type { "loan" }
-    ticket_size { "scaling" }
+    instrument_types { ["loan"] }
 
-    trusted { false }
+    verified { false }
+
+    maximum_funding_per_project { 100_000 }
 
     sequence(:description) do |n|
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)
     end
-    sequence(:money_distribution) do |n|
+    sequence(:funding_priorities) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 4)
+    end
+    sequence(:funding_exclusions) do |n|
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)
     end

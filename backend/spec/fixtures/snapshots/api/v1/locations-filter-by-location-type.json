@@ -1,20 +1,17 @@
 {
   "data": [
     {
-      "id": "e0688667-b935-43ed-80f1-226d66a03902",
+      "id": "341c5a47-56e5-465b-84a7-6f5ecbbc6e69",
       "type": "location",
       "attributes": {
-        "name": "Kutch-Spencer",
-        "location_type": "country"
+        "name": "Canada",
+        "location_type": "country",
+        "created_at": "2022-06-24T09:07:25.377Z",
+        "code": null
       },
       "relationships": {
         "parent": {
           "data": null
-        },
-        "regions": {
-          "data": [
-
-          ]
         }
       }
     }

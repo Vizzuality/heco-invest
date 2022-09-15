@@ -19,6 +19,7 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
   className,
   isSubmitting = false,
   showOutro = false,
+  disabled = false,
   showProgressBar = true,
   numPages,
   currentPage,
@@ -28,6 +29,7 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
   outroButtonText,
   pagesWithErrors = [],
   alert,
+  footerElements,
   onPreviousClick = noop,
   onNextClick = noop,
   onSubmitClick = noop,
@@ -53,19 +55,34 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
       )}
       {alert && !showOutro && (
         <div className="absolute top-0 w-full -translate-y-full">
-          <Alert withLayoutContainer={true}>{alert}</Alert>
+          {Array.isArray(alert) ? (
+            <ul>
+              {alert.map((a: string) => (
+                <li key={a}>
+                  <Alert type="warning" withLayoutContainer={true}>
+                    {a}
+                  </Alert>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <Alert type="warning" withLayoutContainer={true}>
+              {alert}
+            </Alert>
+          )}
         </div>
       )}
       <LayoutContainer>
         <div className="flex flex-row-reverse items-center justify-between w-full h-20 gap-x-8 md:gap-x-16">
-          <div className="flex justify-end flex-1">
+          <div className="flex justify-end flex-1 gap-3">
+            {!disabled && footerElements}
             {!showOutro &&
               (isLastPage ? (
                 <Button
                   className="px-3 py-2 leading-none md:px-8 md:py-4"
                   size="base"
                   onClick={onSubmitClick}
-                  disabled={isSubmitting || pagesWithErrors.length > 0}
+                  disabled={disabled || isSubmitting || pagesWithErrors.length > 0}
                 >
                   <Loading className="w-5 h-5 mr-3 -ml-5" visible={isSubmitting} />
                   {submitButtonText ? (
@@ -78,7 +95,9 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
                 <Button
                   className="px-3 py-2 leading-none md:px-8 md:py-4"
                   size="base"
+                  type="submit"
                   onClick={onNextClick}
+                  disabled={disabled}
                 >
                   {nextButtonText ? (
                     nextButtonText
@@ -92,6 +111,7 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
                 className="px-3 py-2 leading-none md:px-8 md:py-4"
                 size="base"
                 onClick={onCompleteClick}
+                disabled={disabled}
               >
                 {outroButtonText ? (
                   outroButtonText
@@ -108,6 +128,7 @@ export const MultiPageLayoutFooter: FC<MultiPageLayoutFooterProps> = ({
                 numPages={numPages}
                 pagesWithErrors={pagesWithErrors}
                 isSubmitting={isSubmitting}
+                disabled={disabled}
                 onPageClick={onPageClick}
               />
             )}

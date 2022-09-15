@@ -4,13 +4,15 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^7.1.1",
-    "autoprefixer": "^10.4.2",
-    "esbuild": "^0.14.14",
-    "postcss": "^8.4.5",
-    "tailwindcss": "^3.0.17"
+    "@loaders.gl/core": "^3.1.8",
+    "@loaders.gl/kml": "^3.1.8",
+    "@loaders.gl/loader-utils": "^3.1.8",
+    "@loaders.gl/shapefile": "^3.1.8",
+    "@loaders.gl/zip": "^3.1.8",
+    "@turf/turf": "^6.5.0",
+    "esbuild": "^0.14.14"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
   }
 }

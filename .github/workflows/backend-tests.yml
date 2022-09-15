@@ -20,7 +20,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:14-alpine
+        image: postgis/postgis:14-3.2-alpine
         env:
           POSTGRES_USER: ${{ env.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
@@ -30,14 +30,16 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev libgeos-dev
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           working-directory: backend
           bundler-cache: true
-      - name: Install dependencies
-        run: |
-          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
+          cache-version: 2
       - name: Cache Node Modules
         id: cache-node-modules
         uses: actions/cache@v2
@@ -53,6 +55,7 @@ jobs:
           PGHOST: localhost
           PGUSER: ${{ env.POSTGRES_USER }}
           PGPASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          CLOUD_TASKS_TEST_QUEUE_NAME: test
         run: |
           bin/rails db:drop db:create db:schema:load
       - name: Run tests
@@ -61,6 +64,13 @@ jobs:
           PGHOST: localhost
           PGUSER: ${{ env.POSTGRES_USER }}
           PGPASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          CLOUD_TASKS_TEST_QUEUE_NAME: test
+          FRONTEND_URL: http://localhost:4000
+          IS_API_INSTANCE: true
+          IS_JOBS_INSTANCE: true
+          ENCRYPTION_PRIMARY_KEY: TEST
+          ENCRYPTION_DETERMINISTIC_KEY: TEST
+          ENCRYPTION_DERIVATION_SALT: TEST
         run: bundle exec rspec spec
       - uses: actions/upload-artifact@v2
         if: failure()

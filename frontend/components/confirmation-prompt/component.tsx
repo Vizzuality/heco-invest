@@ -1,9 +1,13 @@
 import { FC } from 'react';
 
+import { FormattedMessage } from 'react-intl';
+
 import classnames from 'classnames';
 
+import Alert from 'components/alert';
 import Button from 'components/button';
 import Icon from 'components/icon';
+import Loading from 'components/loading';
 import Modal from 'components/modal';
 
 import type { ConfirmationPromptProps } from './types';
@@ -17,13 +21,22 @@ export const ConfirmationPrompt: FC<ConfirmationPromptProps> = ({
   onDismiss,
   onAccept,
   onRefuse,
+  onAcceptLoading = false,
+  confirmationError,
+  onConfirmDisabled = false,
+  onConfirmText,
 }: ConfirmationPromptProps) => (
-  <Modal open={open} title={title} size="narrow" dismissable={dismissible} onDismiss={onDismiss}>
-    <div className="px-8 py-4">
-      <div className="mt-8 text-xl font-medium text-gray-800 leading-1 sm:mt-0 sm:pr-32 font-heading">
-        {title}
-      </div>
-      <p className="mt-4 text-sm text-gray-400 sm:pr-32">{description}</p>
+  <Modal open={open} title={title} size="default" dismissable={dismissible} onDismiss={onDismiss}>
+    <div className="flex flex-col items-center px-8 py-4">
+      <div className="font-serif text-3xl font-semibold text-center text-black">{title}</div>
+      <p className="mt-4 font-sans text-base text-center text-black">{description}</p>
+      {!!confirmationError && (
+        <div className="w-full mt-6">
+          <Alert type="warning" withLayoutContainer={true}>
+            {confirmationError}
+          </Alert>
+        </div>
+      )}
       <div
         className={classnames({
           'flex justify-start items-end': true,
@@ -35,19 +48,25 @@ export const ConfirmationPrompt: FC<ConfirmationPromptProps> = ({
       >
         <Button
           theme="secondary-green"
-          size="base"
+          size="small"
           className="flex-shrink-0 mr-5"
           onClick={onRefuse}
         >
-          No
+          <FormattedMessage defaultMessage="Cancel" id="47FYwb" />
         </Button>
         <Button
-          theme="primary-green"
-          size="base"
+          theme="primary-red"
+          size="small"
           className="flex-shrink-0 sm:mr-5"
           onClick={onAccept}
+          disabled={onConfirmDisabled || onAcceptLoading}
         >
-          Yes
+          <Loading className="mr-2" visible={onAcceptLoading} />
+          {!confirmationError ? (
+            onConfirmText || <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
+          ) : (
+            <FormattedMessage defaultMessage="Try again" id="FazwRl" />
+          )}
         </Button>
 
         {icon && (

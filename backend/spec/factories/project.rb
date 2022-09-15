@@ -6,12 +6,20 @@ FactoryBot.define do
       "Project #{n}"
     end
 
-    categories { %w[forestry-and-agroforestry non-timber-forest-production] }
+    status { "published" }
+    development_stage { "scaling-up" }
+    category { "forestry-and-agroforestry" }
     sdgs { [1, 4, 5] }
-    instrument_types { %w[grant loan] }
-    ticket_size { "scaling" }
+    target_groups { %w[urban-populations indigenous-peoples] }
+    impact_areas { %w[pollutants-reduction carbon-emission-reduction] }
 
-    trusted { false }
+    verified { false }
+
+    estimated_duration_in_months { 13 }
+
+    country
+    municipality
+    department
 
     sequence(:description) do |n|
       Faker::Config.random = Random.new(n)
@@ -25,40 +33,56 @@ FactoryBot.define do
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)
     end
-    sequence(:business_model) do |n|
-      Faker::Config.random = Random.new(n)
-      Faker::Lorem.paragraph(sentence_count: 4)
-    end
-    sequence(:roi) do |n|
-      Faker::Config.random = Random.new(n)
-      Faker::Lorem.paragraph(sentence_count: 4)
-    end
     sequence(:sustainability) do |n|
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)
     end
-    sequence(:other_information) do |n|
+    sequence(:replicability) do |n|
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)
     end
-    sequence(:impact_description) do |n|
+    sequence(:progress_impact_tracking) do |n|
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 4)
     end
-    income_in_last_3_years { "100K - 500K" }
+    sequence(:expected_impact) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 4)
+    end
 
-    number_of_employees { 10 }
-    number_of_employees_women { 6 }
-    number_of_employees_young { 2 }
-    number_of_employees_indigenous { 3 }
-    number_of_employees_migrants { 2 }
+    looking_for_funding { true }
+    instrument_types { %w[grant loan] }
+    ticket_size { "scaling" }
+    sequence(:funding_plan) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 4)
+    end
 
     received_funding { true }
-    sequence(:received_funding_description) do |n|
+    received_funding_amount_usd { 3000 }
+    sequence(:received_funding_investor) do |n|
       Faker::Config.random = Random.new(n)
-      Faker::Lorem.paragraph(sentence_count: 4)
+      Faker::Company.name
     end
 
     language { "en" }
+    geometry { {type: "Point", coordinates: [1, 2]} }
+
+    trait :with_involved_project_developers do
+      involved_project_developers { create_list(:project_developer, 2) }
+      involved_project_developer_not_listed { true }
+    end
+
+    trait :with_project_images do
+      project_images { [build(:project_image, project: nil), build(:project_image, project: nil)] }
+    end
+
+    trait :draft do
+      status { "draft" }
+    end
+
+    trait :published do
+      status { "published" }
+    end
   end
 end

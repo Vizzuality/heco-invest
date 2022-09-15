@@ -1,0 +1,65 @@
+{
+  "data": {
+    "id": "a1b546bc-0e07-4102-85b9-7f6c33ed1a31",
+    "type": "project_developer",
+    "attributes": {
+      "name": "Name",
+      "slug": "name",
+      "about": "About",
+      "website": "http://website.com",
+      "instagram": "http://instagram.com",
+      "facebook": "http://facebook.com",
+      "linkedin": "http://linkedin.com",
+      "twitter": "http://twitter.com",
+      "mission": "Mission",
+      "project_developer_type": "ngo",
+      "categories": [
+        "sustainable-agrosystems",
+        "tourism-and-recreation"
+      ],
+      "impacts": [
+        "biodiversity",
+        "climate"
+      ],
+      "language": "es",
+      "entity_legal_registration_number": "564823570",
+      "review_status": "unapproved",
+      "picture": {
+        "small": null,
+        "medium": null,
+        "original": null
+      },
+      "contact_email": null,
+      "contact_phone": null,
+      "favourite": false,
+      "created_at": "2022-06-21T11:30:04.901Z",
+      "account_language": "es"
+    },
+    "relationships": {
+      "owner": {
+        "data": {
+          "id": "0df20abe-df39-4b9f-9bc0-612509f29188",
+          "type": "user"
+        }
+      },
+      "projects": {
+        "data": [
+
+        ]
+      },
+      "involved_projects": {
+        "data": [
+
+        ]
+      },
+      "priority_landscapes": {
+        "data": [
+          {
+            "id": "8d6822b0-450f-48d8-95b9-955486ad0a97",
+            "type": "location"
+          }
+        ]
+      }
+    }
+  }
+}

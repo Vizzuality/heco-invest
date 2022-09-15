@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 
 import { LayoutContainerProps } from 'components/layout-container';
+import { LanguageType } from 'types';
 
 import { MultiPageLayoutFooterProps } from './footer';
 import { MultiPageLayoutHeaderProps } from './header';
@@ -9,6 +10,12 @@ export type MultiPageLayoutProps = PropsWithChildren<
   {
     /** Classnames to apply to the container */
     className?: string;
+    /** Locale of the layout to display in a tag in the header */
+    locale?: LanguageType;
+    /** Whether to show a loading spinner instead of the pages. Defaults to `false` */
+    isLoading?: boolean;
+    /** Whether to show the regular static page header. Defaults to `false` */
+    siteHeader?: boolean;
     /** Whether to show the outro page */
     showOutro?: boolean;
     /** Whether to show the footer on the outro page. Defaults to `false` */
@@ -23,10 +30,13 @@ export type MultiPageLayoutProps = PropsWithChildren<
     onNextClick?: (page: number) => void;
     /** Callback when a page number button is clicked */
     onPageClick?: (page: number) => void;
+    /** Returns the total number of pages */
+    getTotalPages?: (totalPages: number) => void;
   } & Pick<LayoutContainerProps, 'layout'> &
     Pick<MultiPageLayoutHeaderProps, 'title' | 'onCloseClick' | 'leaveButtonText'> &
     Pick<
       MultiPageLayoutFooterProps,
+      | 'footerElements'
       | 'alert'
       | 'showProgressBar'
       | 'isSubmitting'

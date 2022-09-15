@@ -1,0 +1,12 @@
+<div class="relative" data-controller="menu">
+  <button data-action="menu#toggle click@window->menu#hide" class="flex items-center rounded-full font-sans transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none px-0 py-0 focus-visible:outline-green-dark" role="button" tabindex="0" aria-haspopup="true" aria-expanded="true" style="user-select: none;">
+    <%= svg "menu" %>
+  </button>
+  <div>
+    <div data-menu-target="menu" role="menu" tabindex="0" class="hidden z-30 absolute transform whitespace-nowrap bg-white shadow-2xl rounded-md overflow-hidden right-0 -bottom-2 translate-y-full">
+      <ul class="">
+        <%= yield if yield.present? %>
+      </ul>
+    </div>
+  </div>
+</div>

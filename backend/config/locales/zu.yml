@@ -1,17 +1,393 @@
 zu:
+  "true": "yes"
+  "false": "no"
+  date:
+    formats:
+      default: "%d %B %Y"
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      user:
+        avatar: Avatar (optional)
+        first_name: First name
+        last_name: Last name
+      admin:
+        first_name: First name
+        last_name: Last name
+        ui_language: UI language
+        email: Email
+        password: New password
+        password_confirmation: Confirm your new password
+      account:
+        picture: Picture
+        name: Account name
+        about: About
+        website: Website
+        contact_phone: Contact phone
+        contact_email: Contact email
+        phone: Phone
+        email: Email
+        language: Language
+        review_status: Review status
+        type: Type
+        owner_id: Owner
+      project_developer:
+        impacts: Expect to have impact on
+        project_developer_type: Project developer type
+        entity_legal_registration_number: Entity legal registration number (NIT or RUT)
+      investor:
+        investor_type: Investor/Funder type
+        previously_invested: Have you previously invested in impact?
+        impacts: Select the impacts that you prioritize
+        sdgs: Select the SDG's you are interested in
+        prioritized_projects_description: What type of projects are you prioritizing?
+        other_information: Other relevant information
+      project:
+        name: Project name
+        project_images: Project gallery (optional)
+        country: Country
+        department: State
+        municipality: Municipality
+        geometry: Geometry
+        project_developer: Owner
+        involved_project_developers: Partners (optional)
+        partners: Partners
+        development_stage: Stage of development or maturity of the project
+        estimated_duration_in_months: Estimated duration for project in months
+        estimated_duration_in_months_placeholder: Insert number (max 36)
+        category: Which of these topics/sector category better describe your project?
+        problem: Problem you are solving
+        solution: The solution or opportunity proposed
+        expected_impact: Expected impact
+        target_groups: Target group
+        impact_areas: Select which areas your project will have an impact on
+        sdgs: Select in which SDG's your project will have impact
+        looking_for_funding: Are you currently looking for funding?
+        ticket_size: Select the amount of money that you need
+        instrument_types: Select the instrument type(s)
+        funding_plan: How will the money be used?
+        received_funding: Has this project been funded before?
+        received_funding_amount_usd: How much money did the project received or raised?
+        received_funding_investor: From which investor or funder?
+        replicability: Replicability of the project
+        sustainability: Sustainability of the project
+        progress_impact_tracking: Progress and impact tracking
+        description: Short description of the project
+        relevant_links: Relevant links (optional)
+      open_call:
+        name: Open call name
+        picture: Picture
+        country_id: Country
+        department_id: State (optional)
+        municipality_id: Municipality (optional)
+        description: What is the open call about?
+        investor_id: Owner
+        impact_description: Expected impact
+        sdgs: Select the SDG's you expect to have impact (optional)
+        maximum_funding_per_project: How much funding do you have available for this open call? ($)
+        instrument_types: Financial instrument available
+        funding_priorities: Funding priorities
+        funding_exclusions: Funding exclusions
+        closing_at: End
+      defaults:
+        categories: Select the categories that you work on
+        mission: What's your mission?
+        mosaics: Select HeCo priority landscapes on which you will have impact
+        priority_landscapes: Select HeCo priority landscapes on which you will have impact
+  devise:
+    confirmations:
+      confirmed: "Your email address has been successfully confirmed."
+      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+    failure:
+      already_authenticated: "You are already signed in."
+      inactive: "Your account is not activated yet."
+      invalid: "Invalid %{authentication_keys} or password."
+      locked: "Your account is locked."
+      last_attempt: "You have one more attempt before your account is locked."
+      not_found_in_database: "Invalid %{authentication_keys} or password."
+      timeout: "Your session expired. Please sign in again to continue."
+      unauthenticated: "You need to sign in or sign up before continuing."
+      unconfirmed: "You have to confirm your email address before continuing."
+    mailer:
+      confirmation_instructions:
+        subject: "Confirmation instructions"
+        greeting: "Welcome %{email}"
+        instruction: "You can confirm your account email through the link below"
+        action: "Confirm my account"
+      reset_password_instructions:
+        subject: "Reset password instructions"
+        greeting: "Hello %{recipient}"
+        instruction: "Someone has requested a link to change your password, and you can do this through the link below."
+        action: "Change my password"
+        instruction_2: "If you did not request this, please ignore this email."
+        instruction_3: "Your password will not change until you access the link above and create a new one."
+      passwords:
+        no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+        send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
+        send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
+        updated: "Your password has been changed successfully. You are now signed in."
+        updated_not_active: "Your password has been changed successfully."
+      registrations:
+        signed_up: "Welcome! You have signed up successfully."
+      sessions:
+        signed_in: "Signed in successfully."
+        signed_out: "Signed out successfully."
+        already_signed_out: "Signed out successfully."
+      invitation_instructions:
+        subject: "Invitation instructions"
+        hello: "Hello %{email}"
+        someone_invited_you: "Someone has invited you to %{url}, you can accept it through the link below."
+        accept: "Accept invitation"
+        accept_until: "This invitation will be due in %{due_date}."
+        ignore: "If you don't want to accept the invitation, please ignore this email."
+  backoffice:
+    common:
+      account_owner: Account owner
+      account_users: Account users
+      account_name: Account name
+      language: Language
+      name: Name
+      status: Status
+      approve: Approve
+      reject: Reject
+      email: Email
+      contact_email: Email
+      contact_phone: Phone
+      project_name: Project name
+      project_developer: Project developer
+      investor: Investor
+      project: Project
+      admin: Administrator
+      user: User
+      open_call: Open Call
+      category: Category
+      mosaic: Mosaic
+      priority_landscapes: Priority landscapes
+      verified: Verified
+      verify: Verify
+      unverified: Unverified
+      unverify: Unverify
+      edit: Edit
+      save: Save
+      cancel: Cancel
+      delete: Delete
+      view_content_in: View content in
+      search_placeholder: Search
+      apply: Apply
+      reset: Reset
+      total: Total
+      export_csv: export csv
+      created_at: Added at
+      navigation:
+        prev: "←"
+        next: "→"
+        gap: "..."
+    account:
+      account_language: Account language
+      account_language_description: This is the default language in which all the content is created by the account users.
+      approval_status: Approval status
+      approval_status_description: Carefully revise the profile information and set the status.
+      profile: Profile
+      about: About
+      contact_information: Contact Information
+      online_presence: Online presence
+      delete: Delete account
+    messages:
+      delete_confirmation: Are you sure you want to delete this %{model}?
+      success_create: "%{model} was successfully created"
+      success_update: "%{model} was successfully updated"
+      success_delete: "%{model} was successfully deleted"
+    sign_in:
+      welcome: Welcome to HeCO Invest backoffice.
+      enter_details_below: Please enter your details below.
+      sign_in: Sign in
+    forgot_password:
+      title: Forgot your password?
+      button: Send me reset password instructions
+    change_password:
+      title: Change your password
+      button: Change my password
+    users:
+      information: User information
+      delete: Delete user
+      index:
+        account: Account
+        last_sign_in_at: Last login
+      form:
+        information: Information
+    admins:
+      information: User information
+      password: Password
+      delete: Delete admin
+      index:
+        new: Add administrator
+        last_sign_in_at: Last login
+      form:
+        new: New admin
+        information: Information
+    project_developers:
+      index:
+        projects: Projects
+      form:
+        general: General
+        about_the_work: About the work
+    investors:
+      index:
+        open_calls: Open calls
+      form:
+        general: General
+        investment_information: Investment information
+        impact: Impact
+    projects:
+      information: Information
+      status: Verification status
+      status_description: The verification status allow the project to have a verification badge. By default all the projects are set to "Unverified". Please review the information and change it to "Verified".
+      project_developers: Project developers
+      project_developers_in_project: Project developers in the project (%{count})
+      delete: Delete project
+      index:
+        priority_landscape: Priority Landscape
+      form:
+        location: Location
+        project_developers: Project developers
+        description: Description of the project
+        impact: Impact
+        funding_information: Funding information
+        how_will_project_grow: How the project will grow
+        shapefile_upload: Upload Shapefile/KML
+        shapefile_uploading: Uploading...
+        shapefile_loaded: Shapefile loaded!
+        shapefile_messages:
+          not_valid_kml: This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues.
+          not_supported: This file is not supported. Please try uploading a different format.
+          unable_to_parse: Unable to parse the file. Please try uploading a different format.
+    open_calls:
+      information: Information
+      status: Verification status
+      status_description: The verification status allow the open call to have a verification badge. By default all the open calls are set to "Unverified". Please review the information and change it to "Verified".
+      investor: Investor
+      investor_description: "Investor that created open call:"
+      delete: Delete open call
+      index:
+        name: Open Call name
+        location: Location
+        applications: Applications
+      form:
+        general: General
+        investor: Investor
+        impact: Impact
+        funding: Funding information
+        date: Date
+    layout:
+      header: Backoffice
+      sign_out: Sign out
+      project_developers: Project developers
+      investors: Investors
+      projects: Projects
+      open_calls: Open Calls
+      users: Users
+      admins: Administrators
   errors:
     messages:
+      already_confirmed: "was already confirmed, please try signing in"
+      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
       password_length: must be at least %{count} characters long
       password_complexity: must include at least one lowercase letter, one uppercase letter, and one digit
+      location_type_mismatch: location type mismatch
+      not_json: is not json
+      not_geojson: is not geojson
+      unsupported_geometry: shape is not supported
+      missing_geometry: inside geojson is empty
+      owner_not_part_of_account: is not part of account
+      not_future: must be in the future
       user:
         multiple_accounts: User already have account!
         no_project_developer: User is not project developer!
-  mailers:
-    user:
-      send_otp_code:
-        subject: Your 2FAuthentication Code
-        body_html: "To finalize your login to HeCo Invest Platform, please enter the following validation code: <strong>%{code}</strong>."
+        no_investor: User is not investor!
+        is_owner: User is owner of account and cannot be deleted now!
+  user_mailer:
+    greetings: Dear %{full_name},
+    farewell_html: Best Regards,<br />Your HeCo Team
+    approved:
+      subject: Your account was approved!
+      content: We are happy to inform you that your account at HeCo platform was approved.
+    rejected:
+      subject: Your account was rejected!
+      content_html: We would like to inform you that your account at HeCo platform was rejected. One of our platform administrators should reach you shortly, but feel free to contact us at %{contact_url}.
+    ownership_transferred:
+      subject: Account ownership changed
+      content: Congratulations! You are now owner of account %{name}.
+    destroyed:
+      subject: Your user has been removed!
+      content: We would like to inform you that your user at HeCo platform was removed.
+    send_otp_code:
+      subject: Your 2FAuthentication Code
+      body_html: "To finalize your login to HeCo Invest Platform, please enter the following validation code: <strong>%{code}</strong>."
+  admin_mailer:
+    greetings: Dear %{full_name},
+    farewell_html: Best Regards,<br />Your HeCo Team
+    first_time_login_instructions:
+      subject: Your HeCo Admin account was created!
+      content_html: "To login for first time, please %{reset_password_link}."
+      reset_password_link: setup your new password
+  project_developer_mailer:
+    greetings: Dear %{full_name},
+    farewell_html: Best Regards,<br />Your HeCo Team
+    added_to_project:
+      subject: You have been added as new collaborator.
+      content: We would like to inform you that you have been added as new collaborator to project %{project_name}.
+    removed_from_project:
+      subject: Your collaboration has ended.
+      content: We would like to inform you that your collaboration with project %{project_name} has ended.
+    project_destroyed:
+      subject: Project has been removed.
+      content: Project %{project_name} which you have been collaborator of have been removed.
+    open_call_destroyed:
+      subject: Open Call has been removed.
+      content: Open Call with name %{open_call_name} which you have applied for with project %{project_name} has been removed.
+  investor_mailer:
+    greetings: Dear %{full_name},
+    farewell_html: Best Regards,<br />Your HeCo Team
+    project_destroyed:
+      subject: Project has been removed.
+      content: Project %{project_name} which have applied to your open call with name %{open_call_name} has been removed.
+    open_call_destroyed:
+      subject: Open Call has been removed.
+      content: Open Call with name %{open_call_name} has been removed.
+    open_call_application_destroyed:
+      subject: Project developer withdrew its application
+      content: Application of project with name %{project_name} for open call named %{open_call_name} has been withdrawn.
   enums:
+    review_status:
+      approved:
+        name: Approved
+      unapproved:
+        name: Unapproved
+      rejected:
+        name: Rejected
+    language:
+      en:
+        name: English
+      es:
+        name: Spanish
+      pt:
+        name: Portugal
     category:
       sustainable-agrosystems:
         name: Sustainable Agrosystems
@@ -25,6 +401,32 @@ zu:
       non-timber-forest-production:
         name: Non Timber Forest Production
         description: Production of health, wellness, and cosmetic products; art, clothing, and handcrafted products; production of food and drinks.
+      human-capital-and-inclusion:
+        name: Human capital and inclusion
+        description: Adequate access to quality education, appropriate health services, and formal employment opportunities that respond to diverse skill profiles and are adapted to regional cultural diversity.
+    project_developer_type:
+      academic:
+        name: Academic
+      business-cooperative:
+        name: Business - Cooperative
+      business-large-enterprise-corporation:
+        name: Business - Large enterprise corporation
+      business-sme-and-msme:
+        name: Business - SME and MSME
+      business-start-up-entrepreneur:
+        name: Business - Start-up entrepreneur
+      business-trade-or-business-association:
+        name: Business - Trade or business association
+      government-national:
+        name: Government - National
+      government-sub-national:
+        name: Government - Sub-national
+      public-private-organization-or-program:
+        name: Public-private organization or program
+      ngo:
+        name: NGO
+      iplc-organization:
+        name: IPLC organization
     investor_type:
       investor:
         name: Investor
@@ -61,16 +463,16 @@ zu:
     ticket_size:
       small-grants:
         name: Small Grants
-        amount: "<US$25,000"
+        description: "<US$25k"
       prototyping:
         name: Prototyping
-        amount: US$25,000 - 150,000
+        description: US$25k - 150k
       validation:
         name: Validation
-        amount: US$150,000 - 750,000
+        description: US$150k - 750k
       scaling:
         name: Scaling
-        amount: ">US$750,000"
+        description: ">US$750k"
     instrument_type:
       grant:
         name: Grant
@@ -101,5 +503,114 @@ zu:
         name: Department
       municipality:
         name: Municipality
-      region:
-        name: Region
+      priority_landscape:
+        name: Priority Landscape
+      basin:
+        name: Basin
+      basins_category:
+        name: Basins Category
+    project_development_stage:
+      incipient:
+        name: Incipient
+        description: idea to be developed from scratch
+      consolidaton:
+        name: Consolidaton
+        description: project or solution already in implementation that seeks to be strengthened and consolidated
+      scaling-up:
+        name: Scaling up
+        description: consolidated, demonstrated project or solution that seeks to be scaled or replicated in other contexts and/or geographies
+    project_target_group:
+      entrepreneurs-and-innovators-startups:
+        name: Enterpreneurs and innovators - startups
+      small-and-medium-businesses:
+        name: Small and medium businesses
+      urban-populations:
+        name: Urban populations
+      indigenous-peoples:
+        name: Indigenous peoples
+      afro-desendant-peoples:
+        name: Afro-desendant peoples
+      peasants-and-traditional-inhabitants:
+        name: Peasants and traditional inhabitants
+      migrants-and-displaced-groups:
+        name: Migrants and displaced groups
+      groups-with-disabilities:
+        name: Groups with disabilities
+      lgtbq-plus-groups:
+        name: LGTBQ+ groups
+      other:
+        name: Other
+    impact_area:
+      conservation:
+        name: Conservation
+      restoration:
+        name: Restoration
+      pollutants-reduction:
+        name: Pollutants reduction
+      carbon-emission-reduction:
+        name: Carbon emission reduction
+      energy-efficiency:
+        name: Energy efficiency
+      renewable-energy:
+        name: Renewable energy
+      carbon-storage-or-sequestration:
+        name: Carbon storage or sequestration
+      water-capacity-or-efficiency:
+        name: Water capacity or efficiency
+      hydrometerological-risk-reduction:
+        name: Hydrometerological risk reduction
+      sustainable-food:
+        name: Sustainable food
+      gender-equality-jobs:
+        name: Gender equality jobs
+      indigenous-or-ethic-jobs:
+        name: Indigenous or ethic jobs
+      community-empowerment:
+        name: Community empowerment
+    sdg:
+      1:
+        name: No poverty
+      2:
+        name: Zero hunger
+      3:
+        name: Good health and well-being
+      4:
+        name: Quality education
+      5:
+        name: Gender equality
+      6:
+        name: Clean water and sanitation
+      7:
+        name: Affordable and clean energy
+      8:
+        name: Decent work and economic growth
+      9:
+        name: Industry, innovation and infrastructure
+      10:
+        name: Reduced inequalities
+      11:
+        name: Sustainable cities and communities
+      12:
+        name: Responsible consumption and production
+      13:
+        name: Climate action
+      14:
+        name: Life below water
+      15:
+        name: Life on land
+      16:
+        name: Peace, justice and strong institutions
+      17:
+        name: Partnerships for the goals
+    project_status:
+      draft:
+        name: Draft
+      published:
+        name: Published
+    open_call_status:
+      draft:
+        name: Draft
+      launched:
+        name: Launched
+      closed:
+        name: Closed

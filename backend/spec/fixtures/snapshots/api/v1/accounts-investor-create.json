@@ -1,0 +1,65 @@
+{
+  "data": {
+    "id": "4bec9460-b807-4b56-ad95-28798ca3d145",
+    "type": "investor",
+    "attributes": {
+      "name": "Name",
+      "slug": "name",
+      "about": "About",
+      "website": "http://website.com",
+      "instagram": "http://instagram.com",
+      "facebook": "http://facebook.com",
+      "linkedin": "http://linkedin.com",
+      "twitter": "http://twitter.com",
+      "other_information": "Other Information",
+      "investor_type": "investor",
+      "categories": [
+        "sustainable-agrosystems",
+        "tourism-and-recreation"
+      ],
+      "ticket_sizes": [
+        "small-grants"
+      ],
+      "instrument_types": [
+        "grant"
+      ],
+      "impacts": [
+        "biodiversity",
+        "climate"
+      ],
+      "sdgs": [
+        1,
+        2,
+        5
+      ],
+      "previously_invested": true,
+      "language": "es",
+      "review_status": "unapproved",
+      "contact_email": null,
+      "contact_phone": null,
+      "picture": {
+        "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxoWWpFNFpUWTFOQzA0WVdVNExUUmtZMkV0T1dFNE1DMWxPREUyWVRkaFlqZGpOamdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--a62321523449e2e9982ad53c4e106db7e85871c0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2d0eVpYTnBlbVZKSWd3eU1EQjRNakF3QmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--eecd42c95d4a671873063e8115ad147ca137769d/test",
+        "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxoWWpFNFpUWTFOQzA0WVdVNExUUmtZMkV0T1dFNE1DMWxPREUyWVRkaFlqZGpOamdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--a62321523449e2e9982ad53c4e106db7e85871c0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2d0eVpYTnBlbVZKSWd3NE1EQjRPREF3QmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--7e1915aedd9d00d46843b05cad3232ede48b86eb/test",
+        "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxoWWpFNFpUWTFOQzA0WVdVNExUUmtZMkV0T1dFNE1DMWxPREUyWVRkaFlqZGpOamdHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--a62321523449e2e9982ad53c4e106db7e85871c0/test"
+      },
+      "mission": "Mission",
+      "prioritized_projects_description": "What type of projects are you prioritizing?",
+      "favourite": false,
+      "created_at": "2022-06-21T11:29:51.428Z",
+      "account_language": "es"
+    },
+    "relationships": {
+      "owner": {
+        "data": {
+          "id": "defd8587-f45f-401f-997e-fa8b031ae140",
+          "type": "user"
+        }
+      },
+      "open_calls": {
+        "data": [
+
+        ]
+      }
+    }
+  }
+}

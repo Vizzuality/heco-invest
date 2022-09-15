@@ -1,63 +1,7 @@
 {
   "data": [
     {
-      "id": "672281c3-0b40-4f96-92b3-c988fce50327",
-      "type": "investor",
-      "attributes": {
-        "name": "Kutch-Spencer",
-        "slug": "kutch-spencer",
-        "about": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "website": "https://kutch-spencer.com",
-        "instagram": "https://instagram.com/kutch-spencer",
-        "facebook": "https://facebook.com/kutch-spencer",
-        "linkedin": "https://linkedin.com/kutch-spencer",
-        "twitter": "https://twitter.com/kutch-spencer",
-        "how_do_you_work": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "what_makes_the_difference": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "other_information": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "investor_type": "angel-investor",
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
-        "ticket_sizes": [
-          "validation",
-          "scaling"
-        ],
-        "instrument_types": [
-          "grant",
-          "loan"
-        ],
-        "impacts": [
-          "climate",
-          "water"
-        ],
-        "sdgs": [
-          1,
-          4,
-          5
-        ],
-        "previously_invested": true,
-        "previously_invested_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "language": "en",
-        "review_status": "approved",
-        "picture": {
-          "small": null,
-          "medium": null,
-          "original": null
-        }
-      },
-      "relationships": {
-        "owner": {
-          "data": {
-            "id": "faef39fa-201f-4b86-870e-b63915e08b6b",
-            "type": "user"
-          }
-        }
-      }
-    },
-    {
-      "id": "5c7ce26a-5b09-439e-8c05-f0447afbe264",
+      "id": "5cbb0bdf-b7f0-47f3-b7d9-af771777e177",
       "type": "investor",
       "attributes": {
         "name": "Bartoletti and Sons",
@@ -68,8 +12,8 @@
         "facebook": "https://facebook.com/bartoletti-and-sons",
         "linkedin": "https://linkedin.com/bartoletti-and-sons",
         "twitter": "https://twitter.com/bartoletti-and-sons",
-        "how_do_you_work": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
-        "what_makes_the_difference": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "mission": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
+        "prioritized_projects_description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
         "other_information": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
         "investor_type": "angel-investor",
         "categories": [
@@ -90,254 +34,38 @@
         ],
         "sdgs": [
           1,
-          4,
           5
         ],
         "previously_invested": true,
-        "previously_invested_description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
         "language": "en",
+        "account_language": "en",
         "review_status": "approved",
+        "created_at": "2022-07-19T19:44:57.382Z",
+        "contact_email": null,
+        "contact_phone": null,
         "picture": {
-          "small": null,
-          "medium": null,
-          "original": null
-        }
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsTVdZek1USmtPUzFqWm1GbExUUTBNMk10WW1ZME1DMWlaV0psT1RWaE5tTXpZemtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--4d77e291a575f2cc02680fc33f1b9fb52797746b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1eb0cccee7522d208acd539788e1cc169cbbe2bf/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsTVdZek1USmtPUzFqWm1GbExUUTBNMk10WW1ZME1DMWlaV0psT1RWaE5tTXpZemtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--4d77e291a575f2cc02680fc33f1b9fb52797746b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--b9054379195e77680b08961676ba21361613fb9f/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWxsTVdZek1USmtPUzFqWm1GbExUUTBNMk10WW1ZME1DMWlaV0psT1RWaE5tTXpZemtHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--4d77e291a575f2cc02680fc33f1b9fb52797746b/picture.jpg"
+        },
+        "favourite": null
       },
       "relationships": {
         "owner": {
           "data": {
-            "id": "76acc670-2ab3-4c6f-920d-9baa73064394",
+            "id": "064aca54-923d-4afd-80fc-17a5677937b6",
             "type": "user"
           }
+        },
+        "open_calls": {
+          "data": [
+
+          ]
         }
       }
     },
     {
-      "id": "2112058f-e5b2-4ef8-9df2-0dc722befaee",
-      "type": "investor",
-      "attributes": {
-        "name": "Hane, Lehner and Goyette",
-        "slug": "hane-lehner-and-goyette",
-        "about": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "website": "https://hane-lehner-and-goyette.com",
-        "instagram": "https://instagram.com/hane-lehner-and-goyette",
-        "facebook": "https://facebook.com/hane-lehner-and-goyette",
-        "linkedin": "https://linkedin.com/hane-lehner-and-goyette",
-        "twitter": "https://twitter.com/hane-lehner-and-goyette",
-        "how_do_you_work": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "what_makes_the_difference": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "other_information": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "investor_type": "angel-investor",
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
-        "ticket_sizes": [
-          "validation",
-          "scaling"
-        ],
-        "instrument_types": [
-          "grant",
-          "loan"
-        ],
-        "impacts": [
-          "climate",
-          "water"
-        ],
-        "sdgs": [
-          1,
-          4,
-          5
-        ],
-        "previously_invested": true,
-        "previously_invested_description": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
-        "language": "en",
-        "review_status": "approved",
-        "picture": {
-          "small": null,
-          "medium": null,
-          "original": null
-        }
-      },
-      "relationships": {
-        "owner": {
-          "data": {
-            "id": "58365202-d078-4f68-88f1-7d207de8913e",
-            "type": "user"
-          }
-        }
-      }
-    },
-    {
-      "id": "4850c3a9-124f-458b-a806-669b6b73865b",
-      "type": "investor",
-      "attributes": {
-        "name": "Hilpert, Waters and Johnston",
-        "slug": "hilpert-waters-and-johnston",
-        "about": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "website": "https://hilpert-waters-and-johnston.com",
-        "instagram": "https://instagram.com/hilpert-waters-and-johnston",
-        "facebook": "https://facebook.com/hilpert-waters-and-johnston",
-        "linkedin": "https://linkedin.com/hilpert-waters-and-johnston",
-        "twitter": "https://twitter.com/hilpert-waters-and-johnston",
-        "how_do_you_work": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "what_makes_the_difference": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "other_information": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "investor_type": "angel-investor",
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
-        "ticket_sizes": [
-          "validation",
-          "scaling"
-        ],
-        "instrument_types": [
-          "grant",
-          "loan"
-        ],
-        "impacts": [
-          "climate",
-          "water"
-        ],
-        "sdgs": [
-          1,
-          4,
-          5
-        ],
-        "previously_invested": true,
-        "previously_invested_description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
-        "language": "en",
-        "review_status": "approved",
-        "picture": {
-          "small": null,
-          "medium": null,
-          "original": null
-        }
-      },
-      "relationships": {
-        "owner": {
-          "data": {
-            "id": "94601a7f-090a-4aa3-affa-6239ffeefd81",
-            "type": "user"
-          }
-        }
-      }
-    },
-    {
-      "id": "5f6d75d4-bf63-4200-9467-27b3b384a15d",
-      "type": "investor",
-      "attributes": {
-        "name": "Jacobson, Fritsch and Stanton",
-        "slug": "jacobson-fritsch-and-stanton",
-        "about": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "website": "https://jacobson-fritsch-and-stanton.com",
-        "instagram": "https://instagram.com/jacobson-fritsch-and-stanton",
-        "facebook": "https://facebook.com/jacobson-fritsch-and-stanton",
-        "linkedin": "https://linkedin.com/jacobson-fritsch-and-stanton",
-        "twitter": "https://twitter.com/jacobson-fritsch-and-stanton",
-        "how_do_you_work": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "what_makes_the_difference": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "other_information": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "investor_type": "angel-investor",
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
-        "ticket_sizes": [
-          "validation",
-          "scaling"
-        ],
-        "instrument_types": [
-          "grant",
-          "loan"
-        ],
-        "impacts": [
-          "climate",
-          "water"
-        ],
-        "sdgs": [
-          1,
-          4,
-          5
-        ],
-        "previously_invested": true,
-        "previously_invested_description": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
-        "language": "en",
-        "review_status": "approved",
-        "picture": {
-          "small": null,
-          "medium": null,
-          "original": null
-        }
-      },
-      "relationships": {
-        "owner": {
-          "data": {
-            "id": "7347c880-0803-48df-be27-c64dd6872650",
-            "type": "user"
-          }
-        }
-      }
-    },
-    {
-      "id": "3381a463-c97d-4ecb-9ab8-17f783180f92",
-      "type": "investor",
-      "attributes": {
-        "name": "Keebler, Kub and Zemlak",
-        "slug": "keebler-kub-and-zemlak",
-        "about": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "website": "https://keebler-kub-and-zemlak.com",
-        "instagram": "https://instagram.com/keebler-kub-and-zemlak",
-        "facebook": "https://facebook.com/keebler-kub-and-zemlak",
-        "linkedin": "https://linkedin.com/keebler-kub-and-zemlak",
-        "twitter": "https://twitter.com/keebler-kub-and-zemlak",
-        "how_do_you_work": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "what_makes_the_difference": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "other_information": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "investor_type": "angel-investor",
-        "categories": [
-          "forestry-and-agroforestry",
-          "non-timber-forest-production"
-        ],
-        "ticket_sizes": [
-          "validation",
-          "scaling"
-        ],
-        "instrument_types": [
-          "grant",
-          "loan"
-        ],
-        "impacts": [
-          "climate",
-          "water"
-        ],
-        "sdgs": [
-          1,
-          4,
-          5
-        ],
-        "previously_invested": true,
-        "previously_invested_description": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
-        "language": "en",
-        "review_status": "approved",
-        "picture": {
-          "small": null,
-          "medium": null,
-          "original": null
-        }
-      },
-      "relationships": {
-        "owner": {
-          "data": {
-            "id": "49d40964-4db3-489d-9df1-18479619462a",
-            "type": "user"
-          }
-        }
-      }
-    },
-    {
-      "id": "57fb132b-6db8-4a37-98eb-8dbb5b3c5132",
+      "id": "d1a7e23b-90ac-4ad1-a4a1-9d89c36f36ec",
       "type": "investor",
       "attributes": {
         "name": "Becker LLC",
@@ -348,8 +76,8 @@
         "facebook": "https://facebook.com/becker-llc",
         "linkedin": "https://linkedin.com/becker-llc",
         "twitter": "https://twitter.com/becker-llc",
-        "how_do_you_work": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
-        "what_makes_the_difference": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
+        "mission": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
+        "prioritized_projects_description": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
         "other_information": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
         "investor_type": "angel-investor",
         "categories": [
@@ -370,25 +98,417 @@
         ],
         "sdgs": [
           1,
-          4,
           5
         ],
         "previously_invested": true,
-        "previously_invested_description": "Mollitia aut vel. Qui illum accusantium. Et laudantium et. Sed recusandae aut.",
         "language": "en",
+        "account_language": "en",
         "review_status": "approved",
+        "created_at": "2022-07-19T19:44:57.652Z",
+        "contact_email": null,
+        "contact_phone": null,
         "picture": {
-          "small": null,
-          "medium": null,
-          "original": null
-        }
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TTJKak1UUTFOaTB6WVRBM0xUUXdZall0T0Raa01DMHpNek0yT1Rjek9UYzBORGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--9894aa28293b9535c9204105b87388c35b2974c7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1eb0cccee7522d208acd539788e1cc169cbbe2bf/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TTJKak1UUTFOaTB6WVRBM0xUUXdZall0T0Raa01DMHpNek0yT1Rjek9UYzBORGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--9894aa28293b9535c9204105b87388c35b2974c7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--b9054379195e77680b08961676ba21361613fb9f/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TTJKak1UUTFOaTB6WVRBM0xUUXdZall0T0Raa01DMHpNek0yT1Rjek9UYzBORGNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--9894aa28293b9535c9204105b87388c35b2974c7/picture.jpg"
+        },
+        "favourite": null
       },
       "relationships": {
         "owner": {
           "data": {
-            "id": "f428ddb7-3919-418b-a6e6-7c227c13ef95",
+            "id": "9cebd02c-c29c-43eb-a170-a6b6d615fa0c",
             "type": "user"
           }
+        },
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "f4cfa157-4f59-4221-b6e3-179558045088",
+      "type": "investor",
+      "attributes": {
+        "name": "Gleichner-Bartoletti",
+        "slug": "gleichner-bartoletti",
+        "about": "About EN",
+        "website": "https://gleichner-bartoletti.com",
+        "instagram": "https://instagram.com/gleichner-bartoletti",
+        "facebook": "https://facebook.com/gleichner-bartoletti",
+        "linkedin": "https://linkedin.com/gleichner-bartoletti",
+        "twitter": "https://twitter.com/gleichner-bartoletti",
+        "mission": "Impedit animi eveniet. Quia illum aut. Dolore quia officiis. Non aut sit.",
+        "prioritized_projects_description": "Impedit animi eveniet. Quia illum aut. Dolore quia officiis. Non aut sit.",
+        "other_information": "Impedit animi eveniet. Quia illum aut. Dolore quia officiis. Non aut sit.",
+        "investor_type": "angel-investor",
+        "categories": [
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
+        ],
+        "ticket_sizes": [
+          "validation",
+          "scaling"
+        ],
+        "instrument_types": [
+          "grant",
+          "loan"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "sdgs": [
+          1,
+          5
+        ],
+        "previously_invested": true,
+        "language": "pt",
+        "account_language": "pt",
+        "review_status": "approved",
+        "created_at": "2022-07-19T19:44:57.817Z",
+        "contact_email": null,
+        "contact_phone": null,
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszTXpJd05UTmxaaTFsTURNekxUUTJZell0T0RaaE9DMWtPVGN4TVRReVlUaGxNakVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--b297d74692516d911e48c95ea024666a752bd9f5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1eb0cccee7522d208acd539788e1cc169cbbe2bf/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszTXpJd05UTmxaaTFsTURNekxUUTJZell0T0RaaE9DMWtPVGN4TVRReVlUaGxNakVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--b297d74692516d911e48c95ea024666a752bd9f5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--b9054379195e77680b08961676ba21361613fb9f/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszTXpJd05UTmxaaTFsTURNekxUUTJZell0T0RaaE9DMWtPVGN4TVRReVlUaGxNakVHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--b297d74692516d911e48c95ea024666a752bd9f5/picture.jpg"
+        },
+        "favourite": null
+      },
+      "relationships": {
+        "owner": {
+          "data": {
+            "id": "75be0a31-356d-4bc4-82f0-eab2108b1389",
+            "type": "user"
+          }
+        },
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "a317b704-2d11-45a7-a1ff-e4cfedea021f",
+      "type": "investor",
+      "attributes": {
+        "name": "Hane, Lehner and Goyette",
+        "slug": "hane-lehner-and-goyette",
+        "about": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
+        "website": "https://hane-lehner-and-goyette.com",
+        "instagram": "https://instagram.com/hane-lehner-and-goyette",
+        "facebook": "https://facebook.com/hane-lehner-and-goyette",
+        "linkedin": "https://linkedin.com/hane-lehner-and-goyette",
+        "twitter": "https://twitter.com/hane-lehner-and-goyette",
+        "mission": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
+        "prioritized_projects_description": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
+        "other_information": "Et quaerat omnis. Harum voluptas atque. Quo nesciunt voluptas. Suscipit ex cum.",
+        "investor_type": "angel-investor",
+        "categories": [
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
+        ],
+        "ticket_sizes": [
+          "validation",
+          "scaling"
+        ],
+        "instrument_types": [
+          "grant",
+          "loan"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "sdgs": [
+          1,
+          5
+        ],
+        "previously_invested": true,
+        "language": "en",
+        "account_language": "en",
+        "review_status": "approved",
+        "created_at": "2022-07-19T19:44:57.444Z",
+        "contact_email": null,
+        "contact_phone": null,
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTlRGaE1UQXlNeTB3WkRVekxUUTJOV010T1RBNE9TMHhaamd4TVRNd1l6ZzRNek1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f3dc9fb0bfa92ead85129e8f09542a47ed446ed0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1eb0cccee7522d208acd539788e1cc169cbbe2bf/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTlRGaE1UQXlNeTB3WkRVekxUUTJOV010T1RBNE9TMHhaamd4TVRNd1l6ZzRNek1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f3dc9fb0bfa92ead85129e8f09542a47ed446ed0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--b9054379195e77680b08961676ba21361613fb9f/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxTlRGaE1UQXlNeTB3WkRVekxUUTJOV010T1RBNE9TMHhaamd4TVRNd1l6ZzRNek1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f3dc9fb0bfa92ead85129e8f09542a47ed446ed0/picture.jpg"
+        },
+        "favourite": null
+      },
+      "relationships": {
+        "owner": {
+          "data": {
+            "id": "1ff7bb0e-bec6-47ee-9f35-afa38349b6cc",
+            "type": "user"
+          }
+        },
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "46339a95-e04a-4daa-93ac-ee716540f0ce",
+      "type": "investor",
+      "attributes": {
+        "name": "Hilpert, Waters and Johnston",
+        "slug": "hilpert-waters-and-johnston",
+        "about": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "website": "https://hilpert-waters-and-johnston.com",
+        "instagram": "https://instagram.com/hilpert-waters-and-johnston",
+        "facebook": "https://facebook.com/hilpert-waters-and-johnston",
+        "linkedin": "https://linkedin.com/hilpert-waters-and-johnston",
+        "twitter": "https://twitter.com/hilpert-waters-and-johnston",
+        "mission": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "prioritized_projects_description": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "other_information": "Dolores fugiat nesciunt. Ut laborum dolores. Sit neque eos. Expedita molestiae quia.",
+        "investor_type": "angel-investor",
+        "categories": [
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
+        ],
+        "ticket_sizes": [
+          "validation",
+          "scaling"
+        ],
+        "instrument_types": [
+          "grant",
+          "loan"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "sdgs": [
+          1,
+          5
+        ],
+        "previously_invested": true,
+        "language": "en",
+        "account_language": "en",
+        "review_status": "approved",
+        "created_at": "2022-07-19T19:44:57.498Z",
+        "contact_email": null,
+        "contact_phone": null,
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyWVdZd05EYzJZUzB6TlRaaUxUUm1NMlF0WW1Wak9DMDRNVE0xWlRJek1qRTRaamNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--e3e15ea37fe12ecd8a03f7807f284c5cd836c9ff/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1eb0cccee7522d208acd539788e1cc169cbbe2bf/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyWVdZd05EYzJZUzB6TlRaaUxUUm1NMlF0WW1Wak9DMDRNVE0xWlRJek1qRTRaamNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--e3e15ea37fe12ecd8a03f7807f284c5cd836c9ff/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--b9054379195e77680b08961676ba21361613fb9f/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyWVdZd05EYzJZUzB6TlRaaUxUUm1NMlF0WW1Wak9DMDRNVE0xWlRJek1qRTRaamNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--e3e15ea37fe12ecd8a03f7807f284c5cd836c9ff/picture.jpg"
+        },
+        "favourite": null
+      },
+      "relationships": {
+        "owner": {
+          "data": {
+            "id": "bb37a987-6743-4877-9365-2c5695cc6c88",
+            "type": "user"
+          }
+        },
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "2ac0c201-d51f-49fa-add8-af2ed00b508b",
+      "type": "investor",
+      "attributes": {
+        "name": "Jacobson, Fritsch and Stanton",
+        "slug": "jacobson-fritsch-and-stanton",
+        "about": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
+        "website": "https://jacobson-fritsch-and-stanton.com",
+        "instagram": "https://instagram.com/jacobson-fritsch-and-stanton",
+        "facebook": "https://facebook.com/jacobson-fritsch-and-stanton",
+        "linkedin": "https://linkedin.com/jacobson-fritsch-and-stanton",
+        "twitter": "https://twitter.com/jacobson-fritsch-and-stanton",
+        "mission": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
+        "prioritized_projects_description": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
+        "other_information": "Autem et et. Voluptatem neque quibusdam. Repellat recusandae eum. Eius ex est.",
+        "investor_type": "angel-investor",
+        "categories": [
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
+        ],
+        "ticket_sizes": [
+          "validation",
+          "scaling"
+        ],
+        "instrument_types": [
+          "grant",
+          "loan"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "sdgs": [
+          1,
+          5
+        ],
+        "previously_invested": true,
+        "language": "en",
+        "account_language": "en",
+        "review_status": "approved",
+        "created_at": "2022-07-19T19:44:57.550Z",
+        "contact_email": null,
+        "contact_phone": null,
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyWTJJMVpXRTBNeTB3TjJZeExUUTFOV0V0T1dRMk15MHpZV1JpT0RWbFlXRmpaREFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--17f73146393db38d810e25a9b39f769e2c604cbe/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1eb0cccee7522d208acd539788e1cc169cbbe2bf/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyWTJJMVpXRTBNeTB3TjJZeExUUTFOV0V0T1dRMk15MHpZV1JpT0RWbFlXRmpaREFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--17f73146393db38d810e25a9b39f769e2c604cbe/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--b9054379195e77680b08961676ba21361613fb9f/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsyWTJJMVpXRTBNeTB3TjJZeExUUTFOV0V0T1dRMk15MHpZV1JpT0RWbFlXRmpaREFHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--17f73146393db38d810e25a9b39f769e2c604cbe/picture.jpg"
+        },
+        "favourite": null
+      },
+      "relationships": {
+        "owner": {
+          "data": {
+            "id": "6e3c57ab-a08d-41ee-b3c7-893f1bba14eb",
+            "type": "user"
+          }
+        },
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "1d2ab397-eb2e-4110-9445-56c7d2e66647",
+      "type": "investor",
+      "attributes": {
+        "name": "Keebler, Kub and Zemlak",
+        "slug": "keebler-kub-and-zemlak",
+        "about": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
+        "website": "https://keebler-kub-and-zemlak.com",
+        "instagram": "https://instagram.com/keebler-kub-and-zemlak",
+        "facebook": "https://facebook.com/keebler-kub-and-zemlak",
+        "linkedin": "https://linkedin.com/keebler-kub-and-zemlak",
+        "twitter": "https://twitter.com/keebler-kub-and-zemlak",
+        "mission": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
+        "prioritized_projects_description": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
+        "other_information": "Porro soluta beatae. Quia ratione facilis. Eligendi sapiente voluptatem. Quas rerum officia.",
+        "investor_type": "angel-investor",
+        "categories": [
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
+        ],
+        "ticket_sizes": [
+          "validation",
+          "scaling"
+        ],
+        "instrument_types": [
+          "grant",
+          "loan"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "sdgs": [
+          1,
+          5
+        ],
+        "previously_invested": true,
+        "language": "en",
+        "account_language": "en",
+        "review_status": "approved",
+        "created_at": "2022-07-19T19:44:57.605Z",
+        "contact_email": null,
+        "contact_phone": null,
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3WkRGaE5EZ3lNUzAyWVRoaUxUUmlNREF0WWpZeFl5MWhaR0ptWlRjeE16Qm1aR1lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--e6264bf481c2d7b8f4eed343957e24fec013f5e8/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1eb0cccee7522d208acd539788e1cc169cbbe2bf/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3WkRGaE5EZ3lNUzAyWVRoaUxUUmlNREF0WWpZeFl5MWhaR0ptWlRjeE16Qm1aR1lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--e6264bf481c2d7b8f4eed343957e24fec013f5e8/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--b9054379195e77680b08961676ba21361613fb9f/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt3WkRGaE5EZ3lNUzAyWVRoaUxUUmlNREF0WWpZeFl5MWhaR0ptWlRjeE16Qm1aR1lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--e6264bf481c2d7b8f4eed343957e24fec013f5e8/picture.jpg"
+        },
+        "favourite": null
+      },
+      "relationships": {
+        "owner": {
+          "data": {
+            "id": "05c6f4cc-12fc-4908-8120-235e971d2eb6",
+            "type": "user"
+          }
+        },
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "f5ef9f47-47b7-4bda-967f-e151b8cddcf1",
+      "type": "investor",
+      "attributes": {
+        "name": "Kutch-Spencer",
+        "slug": "kutch-spencer",
+        "about": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "website": "https://kutch-spencer.com",
+        "instagram": "https://instagram.com/kutch-spencer",
+        "facebook": "https://facebook.com/kutch-spencer",
+        "linkedin": "https://linkedin.com/kutch-spencer",
+        "twitter": "https://twitter.com/kutch-spencer",
+        "mission": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "prioritized_projects_description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "other_information": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "investor_type": "angel-investor",
+        "categories": [
+          "forestry-and-agroforestry",
+          "non-timber-forest-production"
+        ],
+        "ticket_sizes": [
+          "validation",
+          "scaling"
+        ],
+        "instrument_types": [
+          "grant",
+          "loan"
+        ],
+        "impacts": [
+          "climate",
+          "water"
+        ],
+        "sdgs": [
+          3,
+          4
+        ],
+        "previously_invested": true,
+        "language": "en",
+        "account_language": "en",
+        "review_status": "approved",
+        "created_at": "2022-07-19T19:44:57.332Z",
+        "contact_email": null,
+        "contact_phone": null,
+        "picture": {
+          "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxWTJVeU5XTXdZeTAyWVdFMExUUmxNR1l0WWpGbE5TMWxNVFk0TWpVM1pqTXhNVE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--2f6c5a47fbe7ee9b09548fc32cc76eea3d556f7b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERJd01IZ3lNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1eb0cccee7522d208acd539788e1cc169cbbe2bf/picture.jpg",
+          "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxWTJVeU5XTXdZeTAyWVdFMExUUmxNR1l0WWpGbE5TMWxNVFk0TWpVM1pqTXhNVE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--2f6c5a47fbe7ee9b09548fc32cc76eea3d556f7b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRERnd01IZzRNREFHT3daVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--b9054379195e77680b08961676ba21361613fb9f/picture.jpg",
+          "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWsxWTJVeU5XTXdZeTAyWVdFMExUUmxNR1l0WWpGbE5TMWxNVFk0TWpVM1pqTXhNVE1HT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--2f6c5a47fbe7ee9b09548fc32cc76eea3d556f7b/picture.jpg"
+        },
+        "favourite": null
+      },
+      "relationships": {
+        "owner": {
+          "data": {
+            "id": "a813d922-b4d0-485c-9d75-c162771305dc",
+            "type": "user"
+          }
+        },
+        "open_calls": {
+          "data": [
+
+          ]
         }
       }
     }
@@ -397,8 +517,8 @@
     "page": 1,
     "per_page": 10,
     "from": 1,
-    "to": 7,
-    "total": 7,
+    "to": 8,
+    "total": 8,
     "pages": 1
   },
   "links": {

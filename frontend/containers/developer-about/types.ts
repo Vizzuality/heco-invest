@@ -1,4 +1,4 @@
-import { WebsiteSocialContactProps } from 'containers/website-social-contact';
+import { WebsiteSocialProps } from 'containers/social-contact/website-social';
 
 export type DeveloperAboutProps = {
   /** Classnames to apply to the container */
@@ -13,4 +13,4 @@ export type DeveloperAboutProps = {
   text: string;
   /** Optional buttons to display below the website/social/contact information */
   buttons?: JSX.Element;
-} & Pick<WebsiteSocialContactProps, 'website' | 'social'>;
+} & Pick<WebsiteSocialProps, 'website' | 'social'>;

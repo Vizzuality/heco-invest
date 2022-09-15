@@ -1,0 +1,7 @@
+<%= render "backoffice/base/filters", q: q do |f| %>
+  <%= render partial: "backoffice/base/full_text_filter", locals: { f: f, filter_key: :name_or_investor_account_name_or_country_name_or_department_name_or_municipality_name_i_cont } %>
+  <div class="w-30 inline-block mr-3">
+    <%= f.input :verified_eq, as: :select, required: false, label: false, include_blank: I18n.t("backoffice.common.status"),
+                collection: [[t("backoffice.common.verified"), true], [t("backoffice.common.unverified"), false]] %>
+  </div>
+<% end %>

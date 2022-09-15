@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "id": "346c40bb-11ec-4d15-a93d-877ed58e5934",
+      "type": "background_job_event",
+      "attributes": {
+        "status": "enqueued",
+        "arguments": [
+          "test@test.test"
+        ],
+        "queue_name": "default",
+        "priority": null,
+        "executions": 1,
+        "message": null,
+        "created_at": "2022-06-14T10:48:00.636Z",
+        "updated_at": "2022-06-24T10:48:00.637Z"
+      }
+    },
+    {
+      "id": "33bb3c24-15ff-4daa-b10d-8302346df57e",
+      "type": "background_job_event",
+      "attributes": {
+        "status": "crashed",
+        "arguments": [
+          "test@test.test"
+        ],
+        "queue_name": "default",
+        "priority": null,
+        "executions": 1,
+        "message": null,
+        "created_at": "2022-06-24T10:48:00.619Z",
+        "updated_at": "2022-06-24T10:48:00.619Z"
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 2,
+    "total": 2,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/background_job_events?page%5Bsize%5D=10",
+    "self": "/api/v1/background_job_events?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/background_job_events?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}

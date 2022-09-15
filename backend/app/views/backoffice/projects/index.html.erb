@@ -1,0 +1,67 @@
+<div class="flex">
+  <%= render partial: "filters", locals: {q: @q} %>
+  <%= render partial: "backoffice/base/total_records" %>
+</div>
+
+<table class="backoffice-table">
+  <thead>
+    <tr>
+      <th>
+        <%= sort_link @q, :name, t("backoffice.common.project_name") %>
+      </th>
+      <th>
+        <%= sort_link @q, :project_developer_account_name, t("backoffice.common.project_developer") %>
+      </th>
+      <th>
+        <%= sort_link @q, :category_localized, t("backoffice.common.category") %>
+      </th>
+      <th>
+        <%= sort_link @q, :priority_landscape_name, t("backoffice.projects.index.priority_landscape") %>
+      </th>
+      <th>
+        <%= sort_link @q, :verified, t("backoffice.common.status") %>
+      </th>
+      <th>
+      </th>
+      <th class="opacity-25">
+        <%= svg "menu" %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |p| %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.project_developer.name %></td>
+        <td><%= Category.find(p.category).name %></td>
+        <td><%= p.priority_landscape&.name %></td>
+        <td>
+          <%= status_tag :verified, t('backoffice.common.verified') if p.verified?  %>
+          <%= status_tag :unverified, t('backoffice.common.unverified') unless p.verified?  %>
+        </td>
+        <td><%= link_to t("backoffice.common.edit"), edit_backoffice_project_path(p.id), class: "link-button" %></td>
+        <td>
+          <%= render "menu" do %>
+            <% if p.verified? %>
+              <%= render "backoffice/base/menu/item" do %>
+                <%= button_to t("backoffice.common.unverify"), unverify_backoffice_project_path(p.id), method: :post %>
+              <% end %>
+            <% end %>
+            <% unless p.verified? %>
+              <%= render "backoffice/base/menu/item" do %>
+                <%= button_to t("backoffice.common.verify"), verify_backoffice_project_path(p.id), method: :post %>
+              <% end %>
+            <% end %>
+            <%= render "backoffice/base/menu/item" do %>
+              <%= link_to t("backoffice.common.delete"), backoffice_project_path(p.id),
+                 data: {
+                   turbo_method: :delete,
+                   turbo_confirm: t("backoffice.messages.delete_confirmation", model: t("backoffice.common.project").downcase)
+                 } %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

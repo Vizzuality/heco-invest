@@ -1,0 +1,5 @@
+<div class="w-full">
+  <%= search_form_for [:backoffice, q], builder: SimpleForm::FormBuilder do |f| %>
+    <%= render partial: "backoffice/base/full_text_filter", locals: { f: f } %>
+  <% end %>
+</div>

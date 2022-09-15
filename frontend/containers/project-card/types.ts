@@ -1,18 +1,12 @@
+import { Project as ProjectType } from 'types/project';
+
 export type ProjectCardProps = {
   /** Classnames to apply to the wrapper */
   className?: string;
-  /** Id of the project */
-  id: string;
-  /** Investment category */
-  category: string;
-  /** Project name */
-  name: string;
-  /** Instrument type */
-  instrument: string;
-  /** Amount of money invested (in USD) */
-  amount: number;
-  /** Link to follow when the user clicks on a card */
-  link?: string;
+  /** Whether the current card is active. Defaults to `false` */
+  active?: boolean;
+  /** Projects list */
+  project: ProjectType;
   /** onClick callback */
-  onClick?: () => void;
+  onClick?: (projectId: string) => void;
 };

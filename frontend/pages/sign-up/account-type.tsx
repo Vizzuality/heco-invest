@@ -1,6 +1,11 @@
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import { withLocalizedRequests } from 'hoc/locale';
+
+import { FaqPaths, FaqQuestions } from 'hooks/useFaq';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
@@ -8,26 +13,28 @@ import AccountTypeSelector from 'containers/account-type-selector';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
+import { Paths, UserRoles } from 'enums';
+import ProtectedPage from 'layouts/protected-page';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { AccountType, PageComponent } from 'types';
 
-export async function getServerSideProps(ctx) {
-  return {
-    props: {
-      intlMessages: await loadI18nMessages(ctx),
-    },
-  };
-}
+export const getServerSideProps = withLocalizedRequests(async ({ locale }) => ({
+  props: {
+    intlMessages: await loadI18nMessages({ locale }),
+  },
+}));
 
-const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = (props) => {
+const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = () => {
   const intl = useIntl();
+  const { push } = useRouter();
 
   const handleAccountTypeSelected = (accountType: AccountType) => {
-    // TODO: Handle account type selected
+    if (accountType === 'project-developer') push(Paths.NewProjectDeveloper);
+    if (accountType === 'investor') push(Paths.NewInvestor);
   };
 
   return (
-    <>
+    <ProtectedPage allowUnapproved permissions={[UserRoles.Light]}>
       <Head
         title={intl.formatMessage({
           defaultMessage: 'Choose your account type',
@@ -52,13 +59,11 @@ const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = (props) 
                 />
               </p>
             </div>
-
             <AccountTypeSelector
               className="max-w-3xl mt-6"
               onAccountTypeSelected={handleAccountTypeSelected}
             />
-
-            <Link href="/faq">
+            <Link href={FaqPaths[FaqQuestions.HowDoAccountsWork]}>
               <a className="mt-6 text-gray-600 underline transition-colors hover:text-green-dark active:text-green-dark outline-green-dark outline-rounded">
                 <FormattedMessage defaultMessage="How accounts work?" id="0hzVw6" />
               </a>
@@ -66,7 +71,7 @@ const SignUpAccountTypePage: PageComponent<{}, StaticPageLayoutProps> = (props) 
           </section>
         </LayoutContainer>
       </div>
-    </>
+    </ProtectedPage>
   );
 };
 

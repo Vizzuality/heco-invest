@@ -3,19 +3,19 @@ import { useIntl } from 'react-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SchemaOf, object, string, boolean, ref } from 'yup';
 
-import { SignupFormI } from 'types/signup';
+import { SignupFormI } from 'types/user';
 
 export const useSignupResolver = () => {
   const { formatMessage } = useIntl();
 
   const schema: SchemaOf<SignupFormI> = object().shape({
-    firstName: string().required(
+    first_name: string().required(
       formatMessage({
         defaultMessage: 'You need to enter a name.',
         id: 'Pl5xI4',
       })
     ),
-    lastName: string().required(
+    last_name: string().required(
       formatMessage({
         defaultMessage: 'You need to enter a last name.',
         id: 'zPMPr9',
@@ -42,13 +42,20 @@ export const useSignupResolver = () => {
         })
       )
       .min(
-        8,
+        12,
         formatMessage({
-          defaultMessage: 'The password must have at least 8 characters.',
-          id: 'TiXJ+4',
+          defaultMessage: 'The password must have at least 12 characters.',
+          id: 'eKEHsg',
         })
-      ),
-    confirmPassword: string()
+      )
+      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{12,}$/, {
+        message: formatMessage({
+          defaultMessage:
+            'The password must contain at least one uppercase letter, one lowercase letter and one number.',
+          id: 'Y4hw30',
+        }),
+      }),
+    confirm_password: string()
       .oneOf(
         [ref('password'), null],
         formatMessage({ defaultMessage: "The passwords don't match.", id: 'weOT3A' })
@@ -59,7 +66,7 @@ export const useSignupResolver = () => {
           id: '+UvbBR',
         })
       ),
-    acceptTerms: boolean().oneOf(
+    accept_terms: boolean().oneOf(
       [true],
       formatMessage({
         defaultMessage: 'You need to accept the Terms and Privacy Policy.',

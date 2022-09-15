@@ -1,0 +1,129 @@
+{
+  "data": [
+    {
+      "id": "4dde514b-2d46-4ced-85d5-0b4129f5073a",
+      "type": "investor",
+      "attributes": {
+        "name": "Bartoletti and Sons"
+      },
+      "relationships": {
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "a5e7bcf3-100e-42dc-974f-48cf625c3218",
+      "type": "investor",
+      "attributes": {
+        "name": "Becker LLC"
+      },
+      "relationships": {
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "28c97ed0-f855-44f9-8d05-48a762c3e84f",
+      "type": "investor",
+      "attributes": {
+        "name": "Gleichner-Bartoletti"
+      },
+      "relationships": {
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "f7ac5a95-fc92-4824-abac-602ce7d4bebd",
+      "type": "investor",
+      "attributes": {
+        "name": "Hane, Lehner and Goyette"
+      },
+      "relationships": {
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "2e7deed3-b258-488c-af0d-8a63689e5a09",
+      "type": "investor",
+      "attributes": {
+        "name": "Hilpert, Waters and Johnston"
+      },
+      "relationships": {
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "645f5a63-1e5c-4b28-b001-513a1f5c79bc",
+      "type": "investor",
+      "attributes": {
+        "name": "Jacobson, Fritsch and Stanton"
+      },
+      "relationships": {
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "902a7643-32a7-4383-9676-d72fd71b5852",
+      "type": "investor",
+      "attributes": {
+        "name": "Keebler, Kub and Zemlak"
+      },
+      "relationships": {
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    },
+    {
+      "id": "5643135e-7cb8-4e74-870c-70921afe7961",
+      "type": "investor",
+      "attributes": {
+        "name": "Kutch-Spencer"
+      },
+      "relationships": {
+        "open_calls": {
+          "data": [
+
+          ]
+        }
+      }
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "per_page": 10,
+    "from": 1,
+    "to": 8,
+    "total": 8,
+    "pages": 1
+  },
+  "links": {
+    "first": "/api/v1/investors?page%5Bsize%5D=10",
+    "self": "/api/v1/investors?page%5Bnumber%5D=1&page%5Bsize%5D=10",
+    "last": "/api/v1/investors?page%5Bnumber%5D=1&page%5Bsize%5D=10"
+  }
+}

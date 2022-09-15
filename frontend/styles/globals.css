@@ -65,6 +65,11 @@
   input[type='search']::-webkit-search-results-decoration {
     -webkit-appearance: none;
   }
+
+  *:-webkit-full-screen {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 
 @layer utilities {
@@ -80,5 +85,123 @@
       @apply bg-opacity-20;
       backdrop-filter: blur(4px);
     }
+  }
+}
+
+@layer components {
+  /* The following styles are for the `Select` component */
+  .c-select {
+    @apply block;
+  }
+
+  .c-select .c-select-menu {
+    @apply relative top-2 left-1/2;
+  }
+
+  .c-select-menu--is-disabled {
+    @apply opacity-60;
+  }
+
+  .c-select .c-select-menu__control {
+    @apply min-h-0 px-4 py-1 text-base transition bg-white border border-solid rounded-lg border-beige;
+  }
+
+  .c-select.invalid .c-select-menu__control {
+    @apply border-red-600;
+  }
+
+  .c-select .c-select-menu__control:hover {
+    @apply shadow-sm border-beige;
+  }
+
+  .c-select.invalid .c-select-menu__control:hover {
+    @apply border-red-600;
+  }
+
+  .c-select .c-select-menu__control + div {
+    @apply z-30;
+  }
+
+  .c-select .c-select-menu__control--is-focused {
+    @apply shadow-sm border-green-dark ring-0;
+  }
+
+  .c-select .c-select-menu__control--is-focused:hover {
+    @apply border-green-dark;
+  }
+
+  .c-select .c-select-menu__control--menu-is-open {
+    @apply ring-opacity-0;
+  }
+
+  .c-select .c-select-menu__indicator {
+    @apply p-0;
+  }
+
+  .c-select .c-select-menu__indicator:hover {
+  }
+
+  .c-select .c-select-menu__indicator-separator {
+    @apply hidden;
+  }
+
+  .c-select .c-select-menu__value-container {
+    @apply relative h-auto p-0;
+  }
+
+  .c-select .c-select-menu__value-container--is-multi > div:first-of-type {
+    @apply ml-0;
+  }
+
+  .c-select .c-select-menu__multi-value {
+    @apply mx-0.5 bg-white border border-solid border-beige rounded-lg;
+  }
+
+  .c-select .c-select-menu__multi-value__label {
+    @apply py-0 pl-1.5 pr-1;
+  }
+
+  .c-select .c-select-menu__multi-value__remove {
+    @apply px-1.5 text-gray-600 rounded-r-lg transition;
+  }
+
+  .c-select .c-select-menu__multi-value__remove:hover {
+    @apply bg-green-light/20 text-green-dark;
+  }
+
+  .c-select .c-select-menu__placeholder {
+    @apply absolute m-0 text-gray-400 -translate-y-1/2 top-1/2;
+  }
+
+  .c-select .c-select-menu__placeholder + div {
+    @apply ml-0;
+  }
+
+  .c-select .c-select-menu__menu {
+    @apply overflow-hidden bg-white rounded-md shadow-2xl;
+  }
+
+  .c-select .c-select-menu__menu-list {
+    @apply p-0 overflow-y-auto max-h-72;
+  }
+
+  .c-select .c-select-menu__option {
+    @apply px-4 py-2 font-sans text-sm text-black transition cursor-pointer sm:py-2;
+  }
+
+  .c-select .c-select-menu__option:active {
+    @apply bg-green-light/20;
+  }
+
+  .c-select .c-select-menu__option--is-selected {
+    @apply bg-white text-green-dark;
+  }
+
+  .c-select .c-select-menu__option--is-focused {
+    @apply bg-green-light/20;
+  }
+
+  .c-select .c-select-menu__option--is-disabled {
+    @apply cursor-default opacity-40;
   }
 }

@@ -15,8 +15,7 @@ import { PopupProps } from './types';
 
 export const Popup: React.FC<PopupProps> = ({
   triggerRef,
-  align,
-  direction,
+  overlayRef,
   autoFocus,
   domProps,
   children,
@@ -24,9 +23,11 @@ export const Popup: React.FC<PopupProps> = ({
   expandedKeys,
   onClose,
   onAction,
+  header,
+  hiddenSections = {},
+  ...otherProps
 }: PopupProps) => {
   const ref = React.useRef(null);
-  const overlayRef = React.useRef(null);
 
   const state = useTreeState({ children, selectionMode: 'none', disabledKeys, expandedKeys });
   const { menuProps } = useMenu({ autoFocus, children }, state, ref);
@@ -53,41 +54,44 @@ export const Popup: React.FC<PopupProps> = ({
 
   return (
     <FocusScope restoreFocus>
-      <div {...overlayProps} ref={overlayRef}>
+      <div {...mergeProps(overlayProps, otherProps)} ref={overlayRef} className="!z-30">
         <DismissButton onDismiss={onClose} />
-        <ul
+        <div
           {...mergeProps(menuProps, domProps)}
           ref={ref}
-          className={cx(
-            'z-30 absolute transform whitespace-nowrap bg-white shadow-2xl rounded-md overflow-hidden',
-            align === 'start' ? 'left-0' : 'right-0',
-            direction === 'top' ? '-top-2 -translate-y-full' : '-bottom-2 translate-y-full'
-          )}
+          className="overflow-hidden bg-white rounded-md shadow-2xl whitespace-nowrap"
         >
-          {Array.from(state.collection).map((item) => {
-            if (item.type === 'section') {
+          {header && (
+            <div id="popup-header" className="p-4 pb-0">
+              {header}
+            </div>
+          )}
+          <ul className={cx({ 'pl-16 pr-4 pb-4': !!header })}>
+            {Array.from(state.collection).map((item) => {
+              if (item.type === 'section') {
+                return (
+                  <Section
+                    key={item.key}
+                    section={item}
+                    state={state}
+                    onAction={onAction}
+                    onClose={onClose}
+                    hidden={hiddenSections?.[item.key]}
+                  />
+                );
+              }
               return (
-                <Section
+                <Item
                   key={item.key}
-                  section={item}
+                  item={item}
                   state={state}
                   onAction={onAction}
                   onClose={onClose}
                 />
               );
-            }
-
-            return (
-              <Item
-                key={item.key}
-                item={item}
-                state={state}
-                onAction={onAction}
-                onClose={onClose}
-              />
-            );
-          })}
-        </ul>
+            })}
+          </ul>
+        </div>
         <DismissButton onDismiss={onClose} />
       </div>
     </FocusScope>

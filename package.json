@@ -1,7 +1,10 @@
 {
   "name": "heco-invest",
-  "version": "0.1.0",
+  "version": "1.2.0",
   "private": true,
+  "engines": {
+    "node": "~16.14"
+  },
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.7"
   }

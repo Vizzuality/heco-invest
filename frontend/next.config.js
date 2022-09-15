@@ -5,7 +5,10 @@ module.exports = {
     locales: locales.map(({ locale }) => locale),
     defaultLocale: locales.find((locale) => locale.default).locale,
   },
-  swcMinify: true,
+  images: {
+    domains: ['hecoinvest.org', 'staging.hecoinvest.org', 'localhost'],
+  },
+  swcMinify: false,
   eslint: {
     dirs: [
       'components',
@@ -41,6 +44,61 @@ module.exports = {
       ],
     });
 
+    // Needed by react-map-gl 6.1 to use MapLibre instead of Mapbox GL JS:
+    // https://github.com/visgl/react-map-gl/blob/6.1-release/docs/get-started/get-started.md#using-with-a-mapbox-gl-fork
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'mapbox-gl': 'maplibre-gl',
+    };
+
     return config;
+  },
+  async rewrites() {
+    const shouldProxyBackend = !(process.env.NEXT_PUBLIC_PROXY_BACKEND !== 'true');
+
+    return [
+      ...(shouldProxyBackend
+        ? [
+            {
+              source: '/backend/:path*',
+              destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/:path*`,
+            },
+          ]
+        : []),
+      {
+        source: '/project/:id/preview',
+        destination: '/project/:id?preview=true',
+      },
+      {
+        source: '/open-call/:id/preview',
+        destination: '/open-call/:id?preview=true',
+      },
+      {
+        source: '/faq/:sectionId',
+        destination: '/faq',
+      },
+      {
+        source: '/faq/:sectionId/:questionId',
+        destination: '/faq',
+      },
+      {
+        source: '/dashboard/favorites',
+        destination: '/dashboard/favorites/projects',
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/discover',
+        destination: '/discover/projects',
+        permanent: true,
+      },
+      {
+        source: '/settings',
+        destination: '/settings/information',
+        permanent: true,
+      },
+    ];
   },
 };

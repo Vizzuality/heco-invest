@@ -1,167 +1,89 @@
 {
   "data": [
     {
-      "id": "a74413c8-d1f0-479f-a0b9-50cfd7194358",
+      "id": "341c5a47-56e5-465b-84a7-6f5ecbbc6e69",
       "type": "location",
       "attributes": {
-        "name": "Kutch-Spencer",
-        "location_type": "country"
+        "name": "Canada",
+        "location_type": "country",
+        "created_at": "2022-06-24T09:07:25.377Z",
+        "code": null
       },
       "relationships": {
         "parent": {
           "data": null
-        },
-        "regions": {
-          "data": [
-
-          ]
         }
       }
     },
     {
-      "id": "28150e8d-b428-45e7-9a3e-97ddd9eba267",
+      "id": "fcb8d15f-9065-49ed-94e9-2550937489b3",
       "type": "location",
       "attributes": {
-        "name": "Bartoletti and Sons",
-        "location_type": "department"
+        "name": "Papua New Guinea",
+        "location_type": "department",
+        "created_at": "2022-06-24T09:07:25.381Z",
+        "code": null
       },
       "relationships": {
         "parent": {
           "data": {
-            "id": "a74413c8-d1f0-479f-a0b9-50cfd7194358",
+            "id": "341c5a47-56e5-465b-84a7-6f5ecbbc6e69",
             "type": "location"
           }
-        },
-        "regions": {
-          "data": [
-
-          ]
         }
       }
     },
     {
-      "id": "8868aa8c-2f5d-4e5d-a95a-f9cbde9e6458",
+      "id": "3cb9435c-08d2-4f60-b6d9-d97d6aca8bcc",
       "type": "location",
       "attributes": {
-        "name": "Hane, Lehner and Goyette",
-        "location_type": "municipality"
+        "name": "Jamaica",
+        "location_type": "municipality",
+        "created_at": "2022-06-24T09:07:25.385Z",
+        "code": null
       },
       "relationships": {
         "parent": {
           "data": {
-            "id": "28150e8d-b428-45e7-9a3e-97ddd9eba267",
+            "id": "fcb8d15f-9065-49ed-94e9-2550937489b3",
             "type": "location"
           }
-        },
-        "regions": {
-          "data": [
-            {
-              "id": "33041b37-2885-4789-863e-1b3065217cb6",
-              "type": "location"
-            }
-          ]
         }
       }
     },
     {
-      "id": "33041b37-2885-4789-863e-1b3065217cb6",
+      "id": "7b848ecf-c088-48df-a7a5-b8ef767e0281",
       "type": "location",
       "attributes": {
-        "name": "Hilpert, Waters and Johnston",
-        "location_type": "region"
-      },
-      "relationships": {
-        "parent": {
-          "data": null
-        },
-        "regions": {
-          "data": [
-
-          ]
-        }
-      }
-    },
-    {
-      "id": "15a5d5ac-66c2-451c-951d-7ed2dfa43f45",
-      "type": "location",
-      "attributes": {
-        "name": "Jacobson, Fritsch and Stanton",
-        "location_type": "municipality"
+        "name": "Libyan Arab Jamahiriya",
+        "location_type": "municipality",
+        "created_at": "2022-06-24T09:07:25.392Z",
+        "code": null
       },
       "relationships": {
         "parent": {
           "data": {
-            "id": "28150e8d-b428-45e7-9a3e-97ddd9eba267",
+            "id": "fcb8d15f-9065-49ed-94e9-2550937489b3",
             "type": "location"
           }
-        },
-        "regions": {
-          "data": [
-            {
-              "id": "4e9d9bd2-adbb-4e14-b1fe-353191d806d1",
-              "type": "location"
-            }
-          ]
         }
       }
     },
     {
-      "id": "4e9d9bd2-adbb-4e14-b1fe-353191d806d1",
+      "id": "edeeee31-061a-4e60-9649-2825135f81fd",
       "type": "location",
       "attributes": {
-        "name": "Keebler, Kub and Zemlak",
-        "location_type": "region"
-      },
-      "relationships": {
-        "parent": {
-          "data": null
-        },
-        "regions": {
-          "data": [
-
-          ]
-        }
-      }
-    },
-    {
-      "id": "435fa71f-a803-44dd-a9f7-981d37d96f9b",
-      "type": "location",
-      "attributes": {
-        "name": "Becker LLC",
-        "location_type": "municipality"
+        "name": "India",
+        "location_type": "municipality",
+        "created_at": "2022-06-24T09:07:25.399Z",
+        "code": null
       },
       "relationships": {
         "parent": {
           "data": {
-            "id": "28150e8d-b428-45e7-9a3e-97ddd9eba267",
+            "id": "fcb8d15f-9065-49ed-94e9-2550937489b3",
             "type": "location"
           }
-        },
-        "regions": {
-          "data": [
-            {
-              "id": "9cff335c-3f37-4c28-bf57-b82df46d3903",
-              "type": "location"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "id": "9cff335c-3f37-4c28-bf57-b82df46d3903",
-      "type": "location",
-      "attributes": {
-        "name": "Runolfsson and Sons",
-        "location_type": "region"
-      },
-      "relationships": {
-        "parent": {
-          "data": null
-        },
-        "regions": {
-          "data": [
-
-          ]
         }
       }
     }

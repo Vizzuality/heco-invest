@@ -9,7 +9,7 @@ export interface ConfirmationPromptProps {
   /**
    * Description displayed below the title
    */
-  description?: string;
+  description?: string | ReactNode;
   /**
    * Whether the prompt is diplayed
    */
@@ -27,6 +27,14 @@ export interface ConfirmationPromptProps {
    */
   onAccept: () => void;
   /**
+   * Whether the onAccept function is loading. Defauts to 'false'
+   */
+  onAcceptLoading?: boolean;
+  /** Message of the error triggered by the confirmation the action. */
+  confirmationError?: string;
+  /** Disables the onConfirm action button. Defaults to 'false' */
+  onConfirmDisabled?: boolean;
+  /**
    * Callback executed when the user refuses the action
    */
   onRefuse: () => void;
@@ -35,4 +43,6 @@ export interface ConfirmationPromptProps {
    * unset.
    */
   onDismiss: ModalProps['onDismiss'];
+  /** Text to show on the confirm button. Defaults to 'Delete' */
+  onConfirmText?: string;
 }

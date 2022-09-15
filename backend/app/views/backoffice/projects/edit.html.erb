@@ -1,0 +1,25 @@
+<div class="flex">
+  <aside class="w-2/6">
+    <h1 class="font-semibold text-xl text-black mb-8">
+      <%= @project.name %>
+    </h1>
+
+    <ul class="flex flex-col gap-8 mb-8">
+      <li><%= section_link_to t("backoffice.projects.information"), edit_backoffice_project_path, :information, default: true %></li>
+      <li><%= section_link_to t("backoffice.projects.status"), edit_backoffice_project_path, :status %></li>
+      <li><%= section_link_to t("backoffice.projects.project_developers"), edit_backoffice_project_path, :project_developers %></li>
+    </ul>
+    <%= link_to backoffice_project_path(@project.id),
+       data: {
+         turbo_method: :delete,
+         turbo_confirm: t("backoffice.messages.delete_confirmation", model: t("backoffice.common.project").downcase)
+       },
+       class: "button button-secondary-green button-with-icon" do %>
+      <%= svg "trash" %>
+      <%= t("backoffice.projects.delete") %>
+    <% end %>
+  </aside>
+  <div class="w-full h-full bg-white rounded-xl p-6">
+    <%= render section_partial %>
+  </div>
+</div>

@@ -5,10 +5,16 @@ if Rails.env.development?
   Investor.delete_all
   ProjectDeveloper.delete_all
   User.delete_all
+  Location.delete_all
+  Admin.delete_all
 
-  5.times do
+  Admin.create!(first_name: "Admin", last_name: "Example", password: "SuperSecret1234", email: "admin@example.com", ui_language: "en")
+
+  Rake::Task["import_geojsons:colombia"].invoke
+
+  15.times do
     investor_account = FactoryBot.create(:account)
-    FactoryBot.create(:user, account: investor_account)
+    investor_account.owner.update!(role: "investor")
     investor = Investor.create!(
       account: investor_account,
       categories: Category::TYPES.shuffle.take((1..2).to_a.sample),
@@ -18,18 +24,25 @@ if Rails.env.development?
       ticket_sizes: TicketSize::TYPES.shuffle.take((1..2).to_a.sample),
       impacts: Impact::TYPES.shuffle.take((1..2).to_a.sample),
       previously_invested: true,
-      previously_invested_description: Faker::Lorem.paragraph(sentence_count: 4),
-      how_do_you_work: Faker::Lorem.paragraph(sentence_count: 4),
-      what_makes_the_difference: Faker::Lorem.paragraph(sentence_count: 4),
+      mission: Faker::Lorem.paragraph(sentence_count: 4),
+      prioritized_projects_description: Faker::Lorem.paragraph(sentence_count: 4),
       other_information: Faker::Lorem.paragraph(sentence_count: 4),
       language: investor_account.language
     )
-    (0..3).to_a.sample.times do
-      FactoryBot.create(:open_call, investor: investor)
+    (0..5).to_a.sample.times do
+      municipality = Location.where(location_type: :municipality).order("RANDOM()").first ||
+        FactoryBot.create(:municipality, parent: FactoryBot.create(:department, parent: FactoryBot.create(:location)))
+      FactoryBot.create(
+        :open_call,
+        investor: investor,
+        municipality: municipality,
+        department: municipality.parent,
+        country: municipality.parent.parent
+      )
     end
 
     project_developer_account = FactoryBot.create(:account)
-    FactoryBot.create(:user, account: project_developer_account)
+    project_developer_account.owner.update!(role: "project_developer")
     project_developer = ProjectDeveloper.create!(
       account: project_developer_account,
       project_developer_type: ProjectDeveloperType::TYPES.sample,
@@ -40,13 +53,27 @@ if Rails.env.development?
       entity_legal_registration_number: "564823570"
     )
 
-    (0..3).to_a.sample.times do
-      FactoryBot.create(:project, project_developer: project_developer)
+    (0..5).to_a.sample.times do
+      municipality = Location.where(location_type: :municipality).order("RANDOM()").first ||
+        FactoryBot.create(:municipality, parent: FactoryBot.create(:department, parent: FactoryBot.create(:location)))
+      FactoryBot.create(
+        :project,
+        status: :published,
+        verified: [true, false].sample,
+        name: "#{Faker::Lorem.sentence} #{SecureRandom.hex(4)}",
+        category: Category::TYPES.sample,
+        project_developer: project_developer,
+        municipality: municipality,
+        department: municipality.parent,
+        country: municipality.parent.parent
+      )
+    end
+
+    [[investor.open_calls.first, project_developer.projects.first],
+      [investor.open_calls.first, project_developer.projects.last],
+      [investor.open_calls.last, project_developer.projects.last]].each do |open_call, project|
+      application = FactoryBot.build :open_call_application, open_call: open_call, project: project
+      application.save if application.valid?
     end
   end
-
-  Importers::Locations.new("Colombia",
-    departments_file_path: Rails.root.join("db/seeds/files/colombia_departments.csv"),
-    municipalities_file_path: Rails.root.join("db/seeds/files/colombia_municipalities.csv"),
-    regions_file_path: Rails.root.join("db/seeds/files/colombia_regions.csv")).call
 end

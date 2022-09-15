@@ -1,12 +1,12 @@
 module API
   module V1
     class LocationsController < BaseController
-      before_action :fetch_location, only: :show
+      load_and_authorize_resource
 
       def index
-        locations = apply_filter_for Location.all.includes(:regions, parent: :parent)
+        @locations = apply_filter_for @locations.includes(parent: :parent)
         render json: LocationSerializer.new(
-          locations,
+          @locations,
           include: included_relationships,
           fields: sparse_fieldset
         ).serializable_hash
@@ -23,13 +23,13 @@ module API
       private
 
       def apply_filter_for(query)
-        query = query.where location_type: params[:location_type] if params[:location_type].present?
-        query = query.where parent_id: params[:parent_id] if params[:parent_id].present?
+        query = query.where location_type: filter_params[:location_type] if filter_params[:location_type].present?
+        query = query.where parent_id: filter_params[:parent_id] if filter_params[:parent_id].present?
         query
       end
 
-      def fetch_location
-        @location = Location.find(params[:id])
+      def filter_params
+        params.fetch(:filter, {}).permit :location_type, :parent_id
       end
     end
   end
