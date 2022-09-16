@@ -1,6 +1,5 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, useMemo, useRef } from 'react';
 
-import { useHover } from 'react-aria';
 import { Radar } from 'react-chartjs-2';
 import { useIntl } from 'react-intl';
 
@@ -34,6 +33,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
   compactMode = false,
 }) => {
   const { formatMessage } = useIntl();
+  const chartDivRef = useRef();
 
   const {
     data: { impact: allImpacts, category: allCategories },
@@ -55,8 +55,6 @@ export const ImpactChart: FC<ImpactChartProps> = ({
     () => [ImpactsEnum.Biodiversity, ImpactsEnum.Climate, ImpactsEnum.Community, ImpactsEnum.Water],
     []
   );
-
-  const { hoverProps, isHovered } = useHover({});
 
   const impactData = useMemo(() => {
     if (!allImpacts) return [];
@@ -113,15 +111,16 @@ export const ImpactChart: FC<ImpactChartProps> = ({
         },
         grid: {
           circular: true,
-          color:
-            isPlaceholder || compactMode ? 'rgba(227, 222, 214, 0.5)' : 'rgba(227, 222, 214, 1)',
-          borderDash: isPlaceholder ? [2, 2] : [],
+          color: 'rgba(227, 222, 214, 1)',
+          borderDash: (context: { index: number }) => {
+            return isPlaceholder || context.index === 0 ? [2, 2] : [];
+          },
         },
         beginAtZero: true,
         ticks: {
           count: 3,
           color: isPlaceholder ? 'rgba(88, 88, 88, 0.5)' : 'rgba(88, 88, 88, 1)',
-          font: { family: 'Work Sans', size: 12 },
+          font: { family: 'Work Sans', size: 14, weight: '600' },
           backdropColor: 'transparent',
           display: !compactMode,
         },
@@ -149,35 +148,61 @@ export const ImpactChart: FC<ImpactChartProps> = ({
         className={classNames({
           'w-full overflow-visible': !isPlaceholder,
         })}
-        {...hoverProps}
       >
         {isPlaceholder ? (
-          <div className="w-full border border-dashed rounded-full aspect-square border-background-dark bg-radial-beige" />
+          <div className="w-full border border-dashed rounded-full aspect-square border-beige bg-radial-beige" />
         ) : (
           <div>
             <Tooltip
               placement="top"
-              visible={isHovered}
+              arrow
+              arrowClassName="border border-transparent border-b-beige border-r-beige"
               content={
-                <div className="w-0 h-0 overflow-visible text-xs text-center text-gray-600 bg-red-700">
-                  <div className="px-1 -translate-y-3 -translate-x-[50%] bg-white border rounded-md w-min border-beige">
-                    {impactData[ImpactsEnum.Biodiversity].name}
-                  </div>
-                  <div className="px-1 -translate-x-[calc(100%+42px)] translate-y-5 bg-white border rounded-md w-min border-beige">
-                    {impactData[ImpactsEnum.Water].name}
-                  </div>
-                  <div className="px-1 bg-white border rounded-md translate-x-[42px] w-min border-beige">
-                    {impactData[ImpactsEnum.Climate].name}
-                  </div>
-                  <div className="px-1 translate-x-[-50%] translate-y-8 bg-white border rounded-md w-min border-beige">
-                    {impactData[ImpactsEnum.Community].name}
-                  </div>
+                <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
+                  {impactData[ImpactsEnum.Biodiversity].name}
                 </div>
               }
+              reference={chartDivRef}
             >
-              <div>
-                <Radar data={chartData} options={chartOptions} />
-              </div>
+              <Tooltip
+                placement="left"
+                arrow
+                arrowClassName="border border-transparent border-b-beige border-r-beige"
+                content={
+                  <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
+                    {impactData[ImpactsEnum.Water].name}
+                  </div>
+                }
+                reference={chartDivRef}
+              >
+                <Tooltip
+                  placement="right"
+                  arrow
+                  arrowClassName="border border-transparent border-b-beige border-r-beige"
+                  content={
+                    <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
+                      {impactData[ImpactsEnum.Biodiversity].name}
+                    </div>
+                  }
+                  reference={chartDivRef}
+                >
+                  <Tooltip
+                    placement="bottom"
+                    arrow
+                    arrowClassName="border border-transparent border-b-beige border-r-beige"
+                    content={
+                      <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
+                        {impactData[ImpactsEnum.Community].name}
+                      </div>
+                    }
+                    reference={chartDivRef}
+                  >
+                    <div ref={chartDivRef}>
+                      <Radar data={chartData} options={chartOptions} />
+                    </div>
+                  </Tooltip>
+                </Tooltip>
+              </Tooltip>
             </Tooltip>
           </div>
         )}
@@ -207,8 +232,8 @@ export const ImpactChart: FC<ImpactChartProps> = ({
               </span>
             )}
             <span className="relative flex items-center w-full overflow-x-hidden aspect-square">
-              <span className="absolute rounded-full opacity-50 top-2 right-2 bottom-2 left-2 bg-background-middle" />
-              <span className="absolute scale-50 rounded-full top-2 right-2 bottom-2 left-2 bg-background-middle opacity-60" />
+              <span className="absolute bg-white rounded-full opacity-50 top-2 right-2 bottom-2 left-2" />
+              <span className="absolute scale-50 bg-white rounded-full top-2 right-2 bottom-2 left-2 opacity-60" />
               <Radar className="z-10" data={chartData} options={chartOptions} />
             </span>
             {allImpacts && (

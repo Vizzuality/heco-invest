@@ -204,27 +204,6 @@ export const ProjectCard: FC<ProjectCardProps> = ({
                   {ticketSizeStr}
                 </div>
               )}
-              {(!!instrumentTypesStr || !!ticketSizeStr) && (
-                <span className="mr-2" aria-hidden={true}>
-                  &bull;
-                </span>
-              )}
-            </div>
-            <div>
-              <div
-                className="inline"
-                title={intl.formatMessage({
-                  defaultMessage: 'Project ticket size',
-                  id: 'x/AykP',
-                })}
-              >
-                <FormattedMessage defaultMessage="Impact score" id="2GBpne" />:{' '}
-                {impact?.total !== null ? (
-                  impact.total.toFixed(1)
-                ) : (
-                  <FormattedMessage defaultMessage="not computed" id="uj7/wT" />
-                )}
-              </div>
             </div>
           </div>
         </div>
