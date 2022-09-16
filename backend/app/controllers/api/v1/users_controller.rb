@@ -4,10 +4,7 @@ module API
       before_action :authenticate_user!, only: [:update, :show, :change_password]
 
       def create
-        user = params[:invitation_token].present? ? preload_invited_user : User.new(create_params)
-        user.skip_confirmation!
-        user.save!
-        sign_in user
+        user = params[:invitation_token].present? ? preload_invited_user : User.create!(create_params)
         render json: UserSerializer.new(user)
       end
 
@@ -49,6 +46,8 @@ module API
 
           user.assign_attributes create_params.except(:email)
           user.skip_confirmation!
+          user.save!
+          sign_in user
         end
       end
     end
