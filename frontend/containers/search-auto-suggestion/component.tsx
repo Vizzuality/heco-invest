@@ -98,7 +98,7 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
                   <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
                 </legend>
               </div>
-              <div className="flex">
+              <div className="flex px-1 pb-1">
                 <TagGroup
                   className="inline"
                   isFilterTag

@@ -127,7 +127,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
       id="filters"
       role="region"
       aria-labelledby="filters-button"
-      className="w-full bg-white border-t-2 border-t-gray-200 rounded-b-3xl"
+      className="fixed w-full bg-white border-t-2 border-t-gray-200 rounded-b-3xl"
     >
       {!filters ? (
         <Loading />
@@ -136,7 +136,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
           <Button
             theme="naked"
             size="smallest"
-            className="absolute top-6 right-6"
+            className="absolute hidden sm:block top-6 right-6"
             onClick={closeFilters}
           >
             <span className="sr-only">
@@ -288,13 +288,13 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
             )}
           </div>
           <div className="items-center justify-between flex-shrink-0 gap-4 pt-2 sm:pt-4 sm:flex">
-            <p className="mb-4 text-sm text-gray-600 sm:mb-0">
+            <p className="mb-16 text-sm text-gray-600 sm:mb-0">
               <FormattedMessage
                 defaultMessage="Note: Some filters not apply to all tabs"
                 id="j4lBL7"
               />
             </p>
-            <div className="flex flex-col gap-2 sm:gap-4 sm:flex-row">
+            <div className="fixed bottom-0 left-0 flex justify-between w-full gap-2 px-4 py-4 bg-white shadow-lg sm:relative sm:shadow-none sm:gap-4 drop-shadow-2xl sm:drop-shadow-none sm:px-0 sm:py-0 sm:w-auto">
               {/* Don't show this button on home page, because there will never have filters applied */}
               {pathname !== Paths.Home && (
                 <Button
