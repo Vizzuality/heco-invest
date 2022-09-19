@@ -42,41 +42,36 @@ export const ActiveFilters: FC<ActiveFilterProps> = ({ filters = {}, filtersData
   };
 
   return (
-    <div className="items-center hidden w-full px-6 py-4 bg-white border-t-2 sm:flex border-t-gray-200 rounded-b-3xl">
-      <fieldset>
-        <div className="flex items-center">
-          <legend>
-            <span className="mr-2 text-gray-700">
-              <FormattedMessage defaultMessage="Active filters" id="tjunxL" />
-            </span>
-          </legend>
-          <TagGroup
-            className="inline"
-            isFilterTag
-            clearErrors={clearErrors}
-            setValue={setValue}
-            errors={errors}
-            thresholdToShowSelectAll={Infinity}
-          >
-            {activeFilters?.map(({ name, id }) => (
-              <Tag
-                type="checkbox"
-                name="appliedFilters"
-                id={id}
-                register={register}
-                registerOptions={{
-                  onChange: () => handleDeleteActiveFilter(id),
-                }}
-                key={id}
-                isfilterTag
-                checked
-                showDeleteIcon
-              >
-                {name}
-              </Tag>
-            ))}
-          </TagGroup>
-        </div>
+    <div className="hidden w-full px-6 py-4 bg-white border-t-2 sm:flex sm:items-center border-t-gray-200 rounded-b-3xl">
+      <fieldset className="w-full">
+        <legend className="float-left mr-2 text-gray-700">
+          <FormattedMessage defaultMessage="Active filters" id="tjunxL" />
+        </legend>
+        <TagGroup
+          isFilterTag
+          clearErrors={clearErrors}
+          setValue={setValue}
+          errors={errors}
+          thresholdToShowSelectAll={Infinity}
+        >
+          {activeFilters?.map(({ name, id }) => (
+            <Tag
+              type="checkbox"
+              name="appliedFilters"
+              id={id}
+              register={register}
+              registerOptions={{
+                onChange: () => handleDeleteActiveFilter(id),
+              }}
+              key={id}
+              isfilterTag
+              checked
+              showDeleteIcon
+            >
+              {name}
+            </Tag>
+          ))}
+        </TagGroup>
       </fieldset>
     </div>
   );

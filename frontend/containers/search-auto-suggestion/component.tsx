@@ -86,19 +86,17 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
               </span>
             </Button>
           </div>
-          <fieldset>
-            <div
-              className={cx('overflow-hidden', {
-                'h-0': !autoSuggestions?.length,
-                'h-auto': !!autoSuggestions?.length,
-              })}
-            >
+          <div
+            className={cx({
+              hidden: !autoSuggestions?.length,
+              block: !!autoSuggestions?.length,
+            })}
+          >
+            <fieldset>
+              <legend className="py-2 text-sm text-gray-800">
+                <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
+              </legend>
               <div>
-                <legend className="py-2 text-sm text-gray-800">
-                  <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
-                </legend>
-              </div>
-              <div className="flex px-1 pb-1">
                 <TagGroup
                   className="inline"
                   isFilterTag
@@ -127,8 +125,8 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
                   })}
                 </TagGroup>
               </div>
-            </div>
-          </fieldset>
+            </fieldset>
+          </div>
         </div>
       )}
     </div>
