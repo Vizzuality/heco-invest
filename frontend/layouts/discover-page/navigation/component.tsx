@@ -9,14 +9,19 @@ import { useQueryString } from 'helpers/pages';
 import BadgeNavigation from 'components/badge-navigation';
 import { Paths } from 'enums';
 
+import { defaultSorting } from '../helpers';
+
 import { NavigationProps } from './types';
 
 export const Navigation: FC<NavigationProps> = ({ stats }: NavigationProps) => {
   const intl = useIntl();
   const { asPath } = useRouter();
 
-  // Pick the the query params we want to preserve in the navigation links (search, filters, sorting)
-  const queryString = useQueryString({ page: null });
+  // Pick the the query params we want to preserve in the navigation links (search, filters). The page and sorting will always change to default when changing tabs.
+  const queryString = useQueryString({
+    page: null,
+    sorting: `${defaultSorting.sortBy} ${defaultSorting.sortOrder}`,
+  });
 
   const navigationItems = [
     {
