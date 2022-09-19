@@ -1,6 +1,6 @@
 import { FC, SyntheticEvent, useEffect, useMemo, useState } from 'react';
 
-import { ArrowLeft, Search as SearchIcon, X as CloseIcon, XCircle } from 'react-feather';
+import { Search as SearchIcon, X as CloseIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -8,8 +8,6 @@ import cx from 'classnames';
 import { useRouter } from 'next/router';
 
 import { values } from 'lodash-es';
-
-import { useBreakpoint } from 'hooks/use-breakpoint';
 
 import { useFiltersEnums, useQueryParams, useSearch } from 'helpers/pages';
 
@@ -19,7 +17,6 @@ import SearchAutoSuggestion from 'containers/search-auto-suggestion';
 
 import Button from 'components/button';
 import Icon from 'components/icon';
-import Modal from 'components/modal';
 import { Paths } from 'enums';
 
 import FilterIcon from 'svgs/discover/filters.svg';
@@ -32,9 +29,6 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
   const { search, sorting, page, ...filters } = useQueryParams();
   const doSearch = useSearch();
   const filtersData = useFiltersEnums();
-  const isMobile = !useBreakpoint()('sm');
-
-  const [mobileSearch, setMobileSearch] = useState(false);
 
   const [openFilters, setOpenFilters] = useState(false);
   const [showSuggestion, setShowSuggestions] = useState(false);
@@ -60,9 +54,6 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
   };
 
   const handleChangeSearchInput = (e: SyntheticEvent<HTMLInputElement>) => {
-    if (isMobile && !mobileSearch) {
-      setMobileSearch(true);
-    }
     const { value } = e.currentTarget;
     if (value?.length >= 1) {
       setShowSuggestions(true);
@@ -80,24 +71,11 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
   };
 
   const handleClickFilters = () => {
-    if (isMobile) {
-      setMobileSearch(true);
-    }
     setOpenFilters(true);
   };
 
   const handleClickInput = () => {
-    if (!isMobile) {
-      setOpenFilters(true);
-      setShowSuggestions(false);
-    } else {
-      setMobileSearch(true);
-    }
-  };
-
-  const closeModal = () => {
-    setMobileSearch(null);
-    setOpenFilters(false);
+    setOpenFilters(true);
     setShowSuggestions(false);
   };
 
@@ -107,9 +85,9 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
         className={cx(
           'relative z-10 sm:w-full sm:overflow-visible text-black bg-white drop-shadow-xl rounded-full',
           {
-            'rounded-full': !showActiveFilters || showSuggestion || openFilters,
             'sm:rounded-3xl': showActiveFilters,
-            'sm:rounded-t-3xl sm:rounded-b-none mb-0 h-14 sm:h-16': showSuggestion || openFilters,
+            'sm:rounded-t-3xl sm:rounded-b-none rounded-t-3xl rounded-b-none mb-0 h-14 sm:h-16':
+              showSuggestion || openFilters,
           }
         )}
       >
@@ -198,7 +176,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
             )}
           </form>
         </div>
-        {showSuggestion && !mobileSearch && (
+        {showSuggestion && (
           <SearchAutoSuggestion
             filtersData={filtersData}
             filters={filters}
@@ -206,7 +184,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
           />
         )}
         {/* Filters accordion pannel */}
-        {openFilters && !mobileSearch && (
+        {openFilters && (
           <Filters
             filters={filters}
             filtersData={filtersData}
@@ -217,74 +195,6 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
           <ActiveFilters filtersData={filtersData} filters={filters} />
         )}
       </div>
-      <Modal
-        onDismiss={closeModal}
-        title={
-          openFilters
-            ? formatMessage({ defaultMessage: 'Filters', id: 'zSOvI0' })
-            : formatMessage({ defaultMessage: 'Search', id: 'xmcVZ0' })
-        }
-        open={isMobile && mobileSearch}
-        className="left-0 w-screen h-screen !max-h-full rounded-none max-w-screen"
-        theme="naked"
-      >
-        <div className="fixed flex gap-4.5 items-center px-4.5 border-b border-gray-200 h-14 z-50 bg-white w-full">
-          <Button
-            theme="naked"
-            size="smallest"
-            onClick={closeModal}
-            className="text-green-dark"
-            icon={() => <ArrowLeft className="mr-0" />}
-            aria-label={
-              openFilters
-                ? formatMessage({ defaultMessage: 'Close filters', id: '78vrMq' })
-                : formatMessage({ defaultMessage: 'Close search', id: 'NjD8y3' })
-            }
-          />
-          {openFilters ? (
-            <div>
-              <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
-            </div>
-          ) : (
-            <form
-              role="search"
-              className="flex items-center justify-between w-full gap-x-4"
-              onSubmit={handleSubmitSearch}
-            >
-              <input
-                className="w-full focus-visible:py-1 focus-visible:px-2 focus-visible:outline-green-dark"
-                type="text"
-                value={searchInputValue}
-                onChange={handleChangeSearchInput}
-                placeholder={formatMessage({ defaultMessage: 'Type your search', id: '8Nspf/' })}
-                aria-label={formatMessage({ defaultMessage: 'search', id: 'qyQ7t4' })}
-              />
-              <Button
-                aria-label={formatMessage({ defaultMessage: 'clear search', id: '44nONQ' })}
-                theme="naked"
-                size="smallest"
-                className="text-gray-600"
-                icon={() => <XCircle className="mr-0 text-white fill-gray-600" />}
-                onClick={() => {
-                  clearInput();
-                }}
-              />
-            </form>
-          )}
-        </div>
-        <div className="px-1 mt-14">
-          {openFilters && (
-            <Filters filters={filters} filtersData={filtersData} closeFilters={closeModal} />
-          )}
-          {showSuggestion && (
-            <SearchAutoSuggestion
-              filtersData={filtersData}
-              filters={filters}
-              searchText={searchInputValue}
-            />
-          )}
-        </div>
-      </Modal>
     </div>
   );
 };
