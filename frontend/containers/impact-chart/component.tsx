@@ -181,7 +181,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
                   arrowClassName="border border-transparent border-b-beige border-r-beige"
                   content={
                     <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
-                      {impactData[ImpactsEnum.Biodiversity].name}
+                      {impactData[ImpactsEnum.Climate].name}
                     </div>
                   }
                   reference={chartDivRef}
