@@ -52,7 +52,8 @@ export const FavoritesProjectsPage: PageComponent<
           {meta?.total && `${meta?.total}`})
         </div>
       </div>
-      <div className="flex flex-col gap-2 pt-2 md:pl-1 md:-mr-1">
+      <div className="flex flex-col gap-2 pt-2 md:mr-8 2xl:mr-0">
+        {/* This md:mr-8 is to ensure that the chart tooltips will fit the screen */}
         {hasProjects ? (
           <>
             {projects.map((project) => (

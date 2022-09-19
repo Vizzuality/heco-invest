@@ -1,20 +1,22 @@
 import { ImpactAreas, Impacts } from 'enums';
-import type { Project as ProjectType } from 'types/project';
+import type { Project as ProjectType, ProjectImpactAreasScores } from 'types/project';
 
-export const projectImpact = (project: ProjectType) => {
+/** Function to extract the project impacts for each area ( municipality, hydrobasin, priority_landscape) with they scope (biodiversity, climate, water, community, total). */
+export const projectImpact = (project: ProjectType): Partial<ProjectImpactAreasScores> => {
   if (!project) return null;
-
   return Object.values(ImpactAreas).reduce(
     (acc, impactArea) => ({
       ...acc,
-      [impactArea]: Object.values(Impacts).reduce(
-        (acc, impact) => ({
+      [impactArea]: Object.values(Impacts).reduce((acc, impact) => {
+        const impactScore = project[`${impactArea}_${impact}_impact`];
+        const totalImpactScore = project[`${impactArea}_total_impact`];
+        // if the impact score is null it will return null, so we can know that it does not exist
+        return {
           ...acc,
-          [impact]: project[`${impactArea}_${impact}_impact`] * 10 || null,
-          total: project[`${impactArea}_total_impact`] * 10 || null,
-        }),
-        {}
-      ),
+          [impact]: impactScore !== null ? impactScore * 10 : null,
+          total: totalImpactScore !== null ? totalImpactScore * 10 : null,
+        };
+      }, {}),
     }),
     {}
   );
