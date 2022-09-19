@@ -68,7 +68,7 @@ export const SortingButtons: FC<SortingButtonsProps> = ({
                 )}
                 {theme === 'text' && (
                   <span className="ml-2 text-sm font-medium text-green-dark">
-                    {selectedSortByOption.label}
+                    {selectedSortByOption?.label}
                   </span>
                 )}
                 <ChevronDownIcon
@@ -86,7 +86,7 @@ export const SortingButtons: FC<SortingButtonsProps> = ({
           onAction={(key: string) => onChange({ sortBy: key })}
           onOpen={() => setSortByMenuOpen(true)}
           onClose={() => setSortByMenuOpen(false)}
-          expandedKeys={[selectedSortByOption.key]}
+          expandedKeys={[selectedSortByOption?.key]}
         >
           <MenuSection>
             {options.map(({ key, label }) => (
