@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 
-import { Heart as HeartIcon } from 'react-feather';
+import { ArrowRight, Heart as HeartIcon } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
@@ -33,27 +33,36 @@ export const FavoriteContact: FC<FavoriteContactProps> = ({
 
   return (
     <div className={className}>
-      <div className="flex flex-col items-start gap-4 mt-5 xl:items-center xl:flex-row">
-        <Button
-          disabled={!user || !contacts.length}
-          className="justify-start"
-          theme="primary-green"
-          onClick={() => setIsContactInfoModalOpen(true)}
-        >
-          <FormattedMessage defaultMessage="Contact" id="zFegDD" />
-        </Button>
-        {!!user && (
-          <Button className="justify-start" theme="secondary-green" onClick={onFavoriteClick}>
-            <Icon
-              icon={HeartIcon}
-              className={cx('w-4 mr-3', { 'fill-green-dark': project.favourite })}
-            />
-            <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
+      <div className="flex flex-col items-start justify-between gap-4 md:items-center md:flex-row">
+        <div className="flex justify-center gap-4 sm:justify-start">
+          <Button
+            disabled={!user || !contacts.length}
+            className="px-4 py-2 text-sm sm:px-6 sm:py-2"
+            theme="primary-green"
+            onClick={() => setIsContactInfoModalOpen(true)}
+          >
+            <FormattedMessage defaultMessage="Contact" id="zFegDD" />
           </Button>
-        )}
+          {!!user && (
+            <Button
+              className="px-4 py-2 text-sm sm:px-6 sm:py-2"
+              theme="secondary-green"
+              onClick={onFavoriteClick}
+            >
+              <Icon
+                icon={HeartIcon}
+                className={cx('w-4 mr-3', { 'fill-green-dark': project.favourite })}
+              />
+              <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
+            </Button>
+          )}
+        </div>
         <Link href={`${Paths.Project}/${project.slug}`}>
-          <a className="px-1 text-sm transition-all text-green-dark hover:text-green-light rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark">
-            <FormattedMessage defaultMessage="Know more" id="+JVDMC" />
+          <a className="flex items-center text-sm leading-6 text-green-dark hover:text-green-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark group">
+            <span className="border-b border-b-green-dark group-hover:border-b-green-light">
+              <FormattedMessage defaultMessage="Project details" id="7gMEKc" />
+            </span>
+            <Icon icon={ArrowRight} className="w-4 h-4 ml-1.5" />
           </a>
         </Link>
       </div>
