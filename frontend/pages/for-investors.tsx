@@ -2,9 +2,8 @@ import { useState } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import cx from 'classnames';
-
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
@@ -12,6 +11,7 @@ import { groupBy } from 'lodash-es';
 import { InferGetServerSidePropsType } from 'next';
 
 import { useBreakpoint } from 'hooks/use-breakpoint';
+import { FaqPaths } from 'hooks/useFaq';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
@@ -76,10 +76,12 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
   priorityLandscapes,
 }) => {
   const { formatMessage } = useIntl();
+
   const [impactModalOpen, setImpactModalOpen] = useState(false);
+  const [hoveredPriorityLandscapeCode, setHoveredPriorityLandscapeCode] = useState<string>(null);
+
   const breakpoint = useBreakpoint();
   const isMd = breakpoint('sm');
-  const isLg = breakpoint('lg');
 
   const priorityLandscapesDescriptionsByCode = {
     'priority-landscape-amazonian-piedmont-massif': (
@@ -233,11 +235,11 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         page="for-investors"
       />
 
-      <LayoutContainer className="pr-0 mt-28 sm:pr-0 md:pr-6">
-        <h2 className="font-serif text-3xl font-bold md:hidden">
+      <LayoutContainer className="mt-28">
+        <h2 className="mb-8 font-serif text-3xl font-bold md:hidden">
           <FormattedMessage defaultMessage="Discover projects by category" id="des5Rg" />
         </h2>
-        <div className="grid pb-6 overflow-x-auto grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-4 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 md:grid-row-2 xl:grid-cols-4 md:place-content-end px-1 md:px-0">
+        <div className="grid overflow-x-auto md:overflow-visible md:grid-rows-[minmax(auto,_1fr)] gap-x-4 gap-y-14 md:gap-x-4 md:gap-y-6 md:grid-cols-3 md:grid-row-2 xl:grid-cols-4 md:place-content-end px-4 py-6 -mx-4 md:py-0 sm:-mx-6 sm:px-6 md:mx-0 md:px-0">
           {/* Repeating the header here to change the layout when md screens */}
           <h2 className="hidden row-span-1 font-serif text-3xl font-semibold md:block md:mb-10 md:col-span-1 lg:text-5xl xl:col-span-2 lg:mb-0 lg:w-auto">
             <FormattedMessage defaultMessage="Discover projects by category" id="des5Rg" />
@@ -245,71 +247,79 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
           {categoryEnums.map(({ id, name, description }) => {
             const projectsQuantity = projectsByCategory[id]?.length || 0;
             return (
-              <PublicPageCard
-                key={id}
-                id={id}
-                name={name}
-                description={description}
-                quantity={projectsQuantity}
-                cardType="projects"
-                enumType="category"
-                filterName="category"
-              />
+              <div key={id} className="row-start-1 md:row-start-auto">
+                <PublicPageCard
+                  id={id}
+                  name={name}
+                  description={description}
+                  quantity={projectsQuantity}
+                  cardType="projects"
+                  enumType="category"
+                  filterName="category"
+                />
+              </div>
             );
           })}
         </div>
       </LayoutContainer>
 
-      <LayoutContainer className="pr-0">
-        <div className="flex items-end mt-18 mb-6 overflow-hidden w-full h-[285px]">
+      <LayoutContainer>
+        <div className="relative mb-6 overflow-hidden aspect-[6/5]  md:aspect-auto mt-8 md:mt-18">
           <Image
             src="/images/for-investor/for-investor-category.png"
-            width={isLg ? 918 : isMd ? 543 : 343}
+            width={918}
             height={285}
-            objectFit="cover"
-            layout="intrinsic"
-            alt=""
-            className="rounded-xl"
-          />
-          <p className="absolute p-4 text-white text-2xs">© Luis Barreto / WWF-UK</p>
-        </div>
-        {/* For mobiles */}
-        <div className="block mb-8 md:hidden">
-          <h2 className="mt-8 font-serif text-3xl font-semibold md:text-5xl">
-            <FormattedMessage defaultMessage="By priority landscapes" id="JcS7oJ" />
-          </h2>
-        </div>
-        <div className="block max-w-full mb-6 mr-4 rounded-lg sm:mr-0 md:hidden">
-          <Image
-            src="/images/for-investor/for-investor-priority-landscapes.png"
-            alt=""
-            width={686}
-            height={632}
+            layout={isMd ? 'intrinsic' : 'fill'}
             objectFit="cover"
             objectPosition="center"
+            alt=""
             className="rounded-lg"
           />
-          <div>
-            <p className="mt-6 text-center text-gray-700 text-2xs">
-              <FormattedMessage defaultMessage="Priority landscapes of HeCo" id="Zt7DBA" />
-            </p>
-          </div>
+          <p className="absolute bottom-0 left-0 p-4 text-white text-2xs">
+            © Luis Barreto / WWF-UK
+          </p>
         </div>
+        <h2 className="mt-8 mb-8 font-serif text-3xl font-semibold md:mt-14 md:text-5xl">
+          <FormattedMessage defaultMessage="By priority landscapes" id="JcS7oJ" />
+        </h2>
+        <p className="max-w-[800px] mb-8">
+          <FormattedMessage
+            defaultMessage="The HeCo priority landscapes or conservation mosaics are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure quality ecosystem services. <a>Read more</a>"
+            id="a6W2Pq"
+            values={{
+              a: (chunks: string) => (
+                <Link href={FaqPaths['what-are-heco-priority-landscapes']}>
+                  <a className="underline text-green-dark focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2">
+                    {chunks}
+                  </a>
+                </Link>
+              ),
+            }}
+          />
+        </p>
+        <div className="grid grid-flow-row gap-6 lg:grid-flow-col lg:grid-cols-2 xl:gap-8">
+          <figure className="block max-w-md mx-auto rounded-lg lg:max-w-none lg:col-start-2">
+            <Image
+              src={
+                !hoveredPriorityLandscapeCode
+                  ? '/images/for-investor/for-investor-priority-landscapes.png'
+                  : `/images/for-investor/for-investor-${hoveredPriorityLandscapeCode}.png`
+              }
+              alt={formatMessage({ defaultMessage: 'HeCo priority landscapes', id: 'X+46wB' })}
+              width={640}
+              height={744}
+              className="rounded-lg"
+            />
+            <figcaption className="mt-2 text-xs font-semibold text-center text-gray-700">
+              <FormattedMessage defaultMessage="HeCo priority landscapes" id="X+46wB" />
+            </figcaption>
+          </figure>
 
-        <div className="grid pb-6 md:pr-0 md:pl-0 overflow-x-auto md:grid-rows-[minmax(auto,_1fr)] grid-cols-auto-1fr gap-x-4 gap-y-14 md:gap-x-6 md:gap-y-6 md:overflow-x-hidden md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 md:place-content-end md:container md:mx-auto md:px-8">
-          {priorityLandscapes.map(({ id, name, code }, index) => {
-            const description = priorityLandscapesDescriptionsByCode[code];
-            const projectsQuantity = projectsByPriorityLandscape[id]?.length || 0;
-            return (
-              <div
-                key={id}
-                className={cx('row-start-1', {
-                  'md:row-start-2 lg:row-start-1': index === 0,
-                  'md:row-start-2 lg:row-start-2': index === 1,
-                  'md:row-start-2': index === 2,
-                  'md:row-start-3 lg:row-start-3 lg:col-start-2': index === 3,
-                })}
-              >
+          <div className="grid grid-flow-col px-4 py-6 -mx-4 overflow-x-auto lg:py-0 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 lg:grid-flow-row lg:overflow-visible lg:col-start-1 gap-x-4 xl:gap-6 lg:gap-y-6 xl:gap-y-8 lg:grid-cols-2">
+            {priorityLandscapes.map(({ id, name, code }, index) => {
+              const description = priorityLandscapesDescriptionsByCode[code];
+              const projectsQuantity = projectsByPriorityLandscape[id]?.length || 0;
+              return (
                 <PublicPageCard
                   key={id}
                   id={id}
@@ -319,31 +329,11 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                   cardType="projects"
                   enumType="mosaic"
                   filterName="priority_landscape"
+                  onMouseEnter={() => setHoveredPriorityLandscapeCode(code)}
+                  onMouseLeave={() => setHoveredPriorityLandscapeCode(null)}
                 />
-              </div>
-            );
-          })}
-          {/* For desktop */}
-          <div className="hidden col-span-3 md:block lg:col-span-2 lg:col-start-3 md:col-start-1 md:row-start-1 md:pb-4">
-            <h2 className="mt-8 font-serif text-3xl font-semibold md:text-5xl">
-              <FormattedMessage defaultMessage="By priority landscapes" id="JcS7oJ" />
-            </h2>
-          </div>
-          <div className="hidden md:block w-[calc(100vw-32px)] md:w-auto col-start-1 row-start-2 md:col-span-2 md:col-start-2 md:row-span-2 md:row-start-3 lg:row-start-2 lg:col-start-3 rounded-lg">
-            <Image
-              src="/images/for-investor/for-investor-priority-landscapes.png"
-              alt=""
-              width={1124}
-              height={1306}
-              objectFit="cover"
-              objectPosition="center"
-              className="rounded-lg"
-            />
-            <div>
-              <p className="mt-6 text-center text-gray-700 text-2xs">
-                <FormattedMessage defaultMessage="Priority landscapes of HeCo" id="Zt7DBA" />
-              </p>
-            </div>
+              );
+            })}
           </div>
         </div>
       </LayoutContainer>
