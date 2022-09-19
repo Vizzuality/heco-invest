@@ -13,7 +13,7 @@ export default {
 } as Meta;
 
 const Template: Story<MenuProps> = (props: MenuProps) => (
-  <div className="px-4 pt-4 pb-52">
+  <div className="px-4 pt-32 pb-52">
     <Menu {...props}>
       <MenuItem key="copy">Copy</MenuItem>
       <MenuItem key="cut">Cut</MenuItem>
@@ -36,7 +36,7 @@ Default.args = {
 };
 
 const TemplateWithHiddenSections: Story<MenuProps> = (props: MenuProps) => (
-  <div className="px-4 pt-4 pb-52">
+  <div className="px-4 pt-32 pb-52">
     <Menu {...props}>
       <MenuItem key="copy">Copy</MenuItem>
       <MenuItem key="cut">Cut</MenuItem>
@@ -61,7 +61,7 @@ WithHiddenSections.args = {
 };
 
 const TemplateWithHeader: Story<MenuProps> = (props: MenuProps) => (
-  <div className="px-4 pt-4 pb-52">
+  <div className="px-4 pt-56 pb-52">
     <Menu {...props}>
       <MenuItem key="copy">Copy</MenuItem>
       <MenuItem key="cut">Cut</MenuItem>

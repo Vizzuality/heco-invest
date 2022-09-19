@@ -37,15 +37,19 @@ export const Header: React.FC<HeaderProps> = ({
           <Logo />
           <div className="flex">
             <Navigation className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end lg:mr-4" />
-            <div className="flex items-center gap-1 lg:gap-2">
+            <div className="flex items-center gap-2 lg:gap-4">
               <LanguageSelector />
               <UserMenu
-                className="hidden sm:flex"
+                className="hidden lg:ml-4 sm:flex"
                 theme={showBackground ? 'primary-green' : 'primary-white'}
               />
               <NavigationMenuButton
-                className="flex lg:hidden"
-                theme={showBackground ? 'primary-green' : 'primary-white'}
+                className={cx({
+                  'flex lg:hidden': true,
+                  'text-white': !showBackground,
+                  'text-green-dark': showBackground,
+                })}
+                theme="naked"
               />
             </div>
           </div>

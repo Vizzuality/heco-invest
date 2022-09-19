@@ -6,7 +6,7 @@ import cx from 'classnames';
 
 import { useRouter } from 'next/router';
 
-import { useQueryParams } from 'helpers/pages';
+import { cleanQueryParams, useQueryParams } from 'helpers/pages';
 
 import DiscoverSearch from 'containers/layouts/discover-search';
 
@@ -47,15 +47,14 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     if (pathname.startsWith(Paths.Projects)) return Queries.Project;
 
     if (sorting.sortBy !== 'name' && sorting.sortBy !== 'created_at') {
-      setSorting({ ...sorting, sortBy: 'name' });
+      setSorting(defaultSorting);
     }
-  }, [pathname, sorting]) as SortingByTargetType;
+  }, [defaultSorting, pathname, sorting]) as SortingByTargetType;
 
   const sortingOptions = useSortingByOptions(sortingOptionsTarget);
+  const queryParams = useQueryParams();
 
-  const queryParams = useQueryParams(sorting);
-
-  const queryOptions = { keepPreviousData: false };
+  const queryOptions = { keepPreviousData: true };
 
   const projects = useProjectsList(
     { ...queryParams, includes: ['project_developer', 'involved_project_developers'] },
@@ -91,8 +90,11 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   }, [pathname, projects, projectDevelopers, investors, openCalls]) || { data: [], meta: [] };
 
   useEffect(() => {
-    const [sortBy, sortOrder]: any = queryParams.sorting.split(' ');
-    setSorting(sortBy && sortOrder ? { sortBy, sortOrder } : defaultSorting);
+    const [sortBy, sortOrder]: any = queryParams?.sorting?.split(' ') || [
+      defaultSorting.sortBy,
+      defaultSorting.sortOrder,
+    ];
+    setSorting({ sortBy, sortOrder });
   }, [defaultSorting, queryParams.sorting]);
 
   const handleSorting = ({
@@ -103,10 +105,10 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     sortOrder: SortingOrderType;
   }) => {
     push({
-      query: {
+      query: cleanQueryParams({
         ...queryParams,
         sorting: `${sortBy || sorting.sortBy} ${sortOrder || sorting.sortOrder}`,
-      },
+      }),
     });
   };
 
@@ -135,13 +137,10 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
           </LayoutContainer>
         </div>
         <main className="z-0 flex flex-col flex-grow h-screen overflow-y-auto">
-          <LayoutContainer>
-            <div className="flex flex-col items-center gap-2 mt-4 mb-4 lg:mt-2 lg:gap-6 lg:flex-row space-between">
-              <SortingButtons className="flex-1" {...sortingButtonsProps} />
-              <div className="flex justify-center w-full">
-                <Navigation stats={stats} />
-              </div>
-              <div className="flex-1">{/*Share*/}</div>
+          <LayoutContainer className="xl:mt-6 ">
+            <div className="relative flex flex-col items-center gap-2 pb-2 mx-2 mt-4 mb-6 -ml-1 -mr-1 after:left-2 after:right-2 after:h-px after:bg-[#D3CDC4] after:bg-opacity-40 after:absolute after:-bottom-2 after:lg:bottom-2 lg:mb-1 lg:mt-2 lg:gap-6 lg:flex-row space-between lg:pb-0">
+              <Navigation stats={stats} />
+              <SortingButtons {...sortingButtonsProps} />
             </div>
           </LayoutContainer>
           <LayoutContainer

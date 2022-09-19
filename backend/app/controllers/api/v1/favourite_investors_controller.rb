@@ -8,12 +8,12 @@ module API
 
       def create
         @favourite_investor.save
-        render json: InvestorSerializer.new(@investor, params: {current_user: current_user}).serializable_hash
+        render json: InvestorSerializer.new(@investor, params: {current_user: current_user, current_ability: current_ability}).serializable_hash
       end
 
       def destroy
         @favourite_investors.find_by(user: current_user)&.destroy!
-        render json: InvestorSerializer.new(@investor, params: {current_user: current_user}).serializable_hash
+        render json: InvestorSerializer.new(@investor, params: {current_user: current_user, current_ability: current_ability}).serializable_hash
       end
 
       private

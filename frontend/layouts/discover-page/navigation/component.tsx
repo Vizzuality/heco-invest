@@ -15,8 +15,8 @@ export const Navigation: FC<NavigationProps> = ({ stats }: NavigationProps) => {
   const intl = useIntl();
   const { asPath } = useRouter();
 
-  // Pick the query params we want to preserve in the navigation links (search, filters, sorting)
-  const queryString = useQueryString();
+  // Pick the the query params we want to preserve in the navigation links (search, filters, sorting)
+  const queryString = useQueryString({ page: null });
 
   const navigationItems = [
     {
@@ -52,12 +52,8 @@ export const Navigation: FC<NavigationProps> = ({ stats }: NavigationProps) => {
   const activeId = navigationItems.find(({ path }) => asPath.startsWith(path))?.id;
 
   return (
-    <div className="flex items-center w-full pb-3 -mb-3 overflow-x-auto">
-      <BadgeNavigation
-        className="flex items-center justify-center flex-grow"
-        activeId={activeId}
-        items={navigationItems}
-      />
+    <div className="flex w-full overflow-x-auto">
+      <BadgeNavigation activeId={activeId} items={navigationItems} />
     </div>
   );
 };

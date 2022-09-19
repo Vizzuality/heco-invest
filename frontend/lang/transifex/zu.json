@@ -68,9 +68,6 @@
   "/VnDMl": {
     "string": "Other"
   },
-  "/XKclL": {
-    "string": "To update any of this information, or to delete the account, please contact the platform administrator."
-  },
   "/aYUC+": {
     "string": "By contributing to improve the productions systems and livelihoods of local communities and indigenous peoples to satisfy their basic needs, while enhancing their adaptation to climate change.<br></br><br></br>Supporting the consolidation of their lands governance structures and capacities for sound management."
   },
@@ -410,6 +407,9 @@
   "6cU2pG": {
     "string": "The project gallery will be the first thing other users will see on your page, it will help you to showcase your project."
   },
+  "6hS0se": {
+    "string": "Are you sure you want to delete the account?"
+  },
   "6ukMW9": {
     "string": "Basque Centre for Climate Change"
   },
@@ -421,6 +421,9 @@
   },
   "770IIS": {
     "string": "Investment information"
+  },
+  "77qZcU": {
+    "string": "Account Deleted"
   },
   "78vrMq": {
     "string": "Close filters"
@@ -568,6 +571,9 @@
   },
   "9dtx+L": {
     "string": "Something went wrong while sending an invitation to the email {email}."
+  },
+  "9lOzos": {
+    "string": "To update any of this information, please contact the platform administrator. To delete the account, please contact the account owner."
   },
   "9nYuln": {
     "string": "Base Layers"
@@ -1461,6 +1467,9 @@
   "S27Bu1": {
     "string": "<span>Note:</span>The content of this project should be written in {language}"
   },
+  "S2nxXm": {
+    "string": "Thanks for using HeCo Invest"
+  },
   "SFCYg4": {
     "string": "Don’t have a project yet? Create a project now"
   },
@@ -1707,6 +1716,9 @@
   "XOLAV7": {
     "string": "Withdraw from the open call?"
   },
+  "XPruqs": {
+    "string": "Order"
+  },
   "XQuzr9": {
     "string": "Identified priorities by the HeCo program"
   },
@@ -1785,6 +1797,9 @@
   "Yy/yDL": {
     "string": "Reset password"
   },
+  "Z6MFUA": {
+    "string": "You can’t undo this action."
+  },
   "ZATT08": {
     "string": "Pagination"
   },
@@ -1862,6 +1877,9 @@
   },
   "agJGNx": {
     "string": "How much funding do you have available for this open call? ($)"
+  },
+  "aleGqT": {
+    "string": "Descending"
   },
   "apgkuO": {
     "string": "More about ARIES"
@@ -1967,6 +1985,9 @@
   },
   "d3TPmn": {
     "string": "SDG's"
+  },
+  "d8knkp": {
+    "string": "Your account has been deleted"
   },
   "dHpDHe": {
     "string": "HeCo Invest will <n>benefit poor and vulnerable people</n> living in <n>HeCo priority landscapes in the Amazon region</n>."
@@ -2325,6 +2346,9 @@
   "kICTEM": {
     "string": "I'm financing this project"
   },
+  "kN2Vfv": {
+    "string": "Delete {accountName} account"
+  },
   "kN5g/0": {
     "string": "Indigenous Reserves"
   },
@@ -2429,6 +2453,9 @@
   },
   "mgsoLa": {
     "string": "Looking for the highest impact?"
+  },
+  "mqQ6S4": {
+    "string": "By deleting the account, <b>all existing information, users and related content will be deleted</b>. This action can’t be undone."
   },
   "n0nU+Y": {
     "string": "Illustration of a person looking at a list of cards"
@@ -2808,6 +2835,9 @@
   "u2WlCd": {
     "string": "Pollutants reduction"
   },
+  "u7djqV": {
+    "string": "Ascending"
+  },
   "u87XOB": {
     "string": "How your project will grow"
   },
@@ -2921,6 +2951,9 @@
   },
   "wvoA3H": {
     "string": "Picture"
+  },
+  "wyxJrL": {
+    "string": "Delete account"
   },
   "x/1DXz": {
     "string": "In the face of the economic and social crisis caused by the coronavirus pandemic, there is an urgent need to support the transition to a green, fair, and resilient economy that creates jobs, addresses inequality, and drives inclusive growth."

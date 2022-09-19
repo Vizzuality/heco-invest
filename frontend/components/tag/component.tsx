@@ -4,10 +4,16 @@ import cx from 'classnames';
 
 import type { TagProps } from './types';
 
-export const Tag: FC<TagProps> = ({ children, className, size = 'small' }: TagProps) => (
+export const Tag: FC<TagProps> = ({
+  children,
+  className,
+  size = 'small',
+  border = true,
+}: TagProps) => (
   <div
     className={cx({
-      'relative inline-flex border rounded-full': true,
+      'relative inline-flex rounded-full': true,
+      border: border,
       [`${className}`]: !!className,
       'text-black': !className,
     })}

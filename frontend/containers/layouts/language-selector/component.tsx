@@ -47,8 +47,8 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = () => {
       Trigger={
         <Button
           theme="naked"
-          size="small"
-          className="pl-4 pr-4 focus-visible:outline-green-dark"
+          size="smallest"
+          className="pt-2 pb-2 pl-2 pr-2 focus-visible:outline-green-dark"
           aria-label={intl.formatMessage(
             { defaultMessage: 'Language: {language}', id: 'M1xKEI' },
             {

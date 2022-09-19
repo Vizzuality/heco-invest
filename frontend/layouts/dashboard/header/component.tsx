@@ -36,8 +36,8 @@ export const Header: FC<HeaderProps> = ({}: HeaderProps) => {
             <span className="flex items-center justify-end flex-grow gap-2">
               <Navigation className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end lg:mr-4" />
               <LanguageSelector />
-              <UserMenu className="hidden sm:flex" />
-              <NavigationMenuButton className="sm:hidden" />
+              <UserMenu className="hidden sm:flex lg:ml-4" />
+              <NavigationMenuButton theme="naked" className="text-white sm:hidden" />
             </span>
           </div>
         </LayoutContainer>

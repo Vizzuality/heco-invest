@@ -56,6 +56,14 @@
           "id": "4e22968a-2255-478f-ad37-2adac27ebd2a",
           "type": "user"
         }
+      },
+      "open_calls": {
+        "data": [
+          {
+            "id": "525380c3-f6e6-4521-aef0-241aa829269c",
+            "type": "open_call"
+          }
+        ]
       }
     }
   },
@@ -64,9 +72,9 @@
       "id": "4e22968a-2255-478f-ad37-2adac27ebd2a",
       "type": "user",
       "attributes": {
-        "first_name": "Desmond",
-        "last_name": "Herzog",
-        "email": "desmond_herzog@example.org",
+        "first_name": "Dawna",
+        "last_name": "Block",
+        "email": "dawna.block@example.org",
         "role": "light",
         "confirmed": true,
         "approved": true,

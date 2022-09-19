@@ -19,7 +19,7 @@ module API
             project_developer = ProjectDeveloper.create! project_developer_params.merge(account: account)
             render json: ProjectDeveloperSerializer.new(
               project_developer,
-              params: {current_user: current_user}
+              params: {current_user: current_user, current_ability: current_ability}
             ).serializable_hash
           end
         end
@@ -30,7 +30,7 @@ module API
             current_user.account.project_developer.update! project_developer_params.except(:language)
             render json: ProjectDeveloperSerializer.new(
               current_user.account.project_developer,
-              params: {current_user: current_user}
+              params: {current_user: current_user, current_ability: current_ability}
             ).serializable_hash
           end
         end
@@ -39,7 +39,7 @@ module API
           render json: ProjectDeveloperSerializer.new(
             current_user.account.project_developer,
             include: included_relationships,
-            params: {current_user: current_user}
+            params: {current_user: current_user, current_ability: current_ability}
           ).serializable_hash
         end
 
@@ -52,7 +52,7 @@ module API
             fields: sparse_fieldset,
             links: pagination_links(:api_v1_project_developers_path, pagy_object),
             meta: pagination_meta(pagy_object),
-            params: {current_user: current_user}
+            params: {current_user: current_user, current_ability: current_ability}
           ).serializable_hash
         end
 

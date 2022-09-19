@@ -135,6 +135,60 @@ RSpec.describe "API V1 User", type: :request do
       end
     end
 
+    put "Updates currently logged in user" do
+      tags "Users"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :user_params, in: :body, schema: {
+        type: :object,
+        properties: {
+          first_name: {type: :string},
+          last_name: {type: :string}
+        },
+        required: ["first_name", "last_name"]
+      }
+
+      let(:user_params) do
+        {
+          first_name: "New First Name",
+          last_name: "New Last Name"
+        }
+      end
+
+      it_behaves_like "with not authorized error", csrf: true
+
+      response "200", :success do
+        schema type: :object, properties: {
+          data: {"$ref" => "#/components/schemas/user"}
+        }
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before { sign_in @user }
+
+        run_test!
+
+        it "matches snapshot", generate_swagger_example: true do
+          expect(response.body).to match_snapshot("api/v1/user-update")
+        end
+      end
+
+      response "422", "Validation errors" do
+        schema "$ref" => "#/components/schemas/errors"
+
+        let("X-CSRF-TOKEN") { get_csrf_token }
+        let(:user_params) { {first_name: ""} }
+
+        before { sign_in @user }
+
+        run_test!
+
+        it "returns correct error", generate_swagger_example: true do
+          expect(response_json["errors"][0]["title"]).to eq("First name can't be blank")
+        end
+      end
+    end
+
     get "Returns logged in user" do
       tags "Users"
       produces "application/json"

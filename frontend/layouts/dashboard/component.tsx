@@ -68,7 +68,7 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
           >
             <LayoutContainer
               className={cx({
-                'relative flex flex-col gap-20 py-8 md:flex-row': true,
+                'relative flex flex-col gap-10 md:gap-20 py-8 md:flex-row': true,
                 'h-full': isLoading,
               })}
             >

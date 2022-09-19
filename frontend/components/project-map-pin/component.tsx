@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -11,20 +11,29 @@ import MapPinIcon from 'svgs/project/marker.svg';
 // VERIFICATION PROJECTS: HIDDEN
 // import TrustedMapPinIcon from 'svgs/project/trusted-marker.svg';
 
-import { MapPinProps } from './types';
+import { ProjectMapPinProps } from './types';
 
-export const MapPin: FC<MapPinProps> = (props) => {
-  const { category, trusted } = props;
+export const ProjectMapPin: FC<ProjectMapPinProps> = ({ category, interactive = true }) => {
+  const Container = ({ children }) =>
+    interactive ? (
+      <Button theme="naked" size="smallest" className="focus-visible:outline-green-dark">
+        {children}
+      </Button>
+    ) : (
+      <Fragment>{children}</Fragment>
+    );
 
   return (
-    <Button theme="naked" size="smallest" className="focus-visible:outline-green-dark">
-      <span className="sr-only">
-        {/* VERIFICATION PROJECTS: HIDDEN
+    <Container>
+      {interactive && (
+        <span className="sr-only">
+          {/* VERIFICATION PROJECTS: HIDDEN
         {trusted && <FormattedMessage defaultMessage="Open verified project" id="9fHGyd" />}
         {!trusted && <FormattedMessage defaultMessage="Open project" id="fUM67k" />}
         */}
-        <FormattedMessage defaultMessage="Open project" id="fUM67k" />
-      </span>
+          <FormattedMessage defaultMessage="Open project" id="fUM67k" />
+        </span>
+      )}
       <Icon
         // VERIFICATION PROJECTS: HIDDEN
         // icon={trusted ? TrustedMapPinIcon : MapPinIcon}
@@ -39,8 +48,8 @@ export const MapPin: FC<MapPinProps> = (props) => {
           'fill-category-human text-category-human': category === 'human-capital-and-inclusion',
         })}
       />
-    </Button>
+    </Container>
   );
 };
 
-export default MapPin;
+export default ProjectMapPin;

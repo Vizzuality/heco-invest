@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import BetaVersionDisclaimer from 'containers/layouts/beta-version-disclaimer';
+import LanguageSelector from 'containers/layouts/language-selector';
 import Logo from 'containers/layouts/logo';
 import NavigationMenuButton from 'containers/layouts/navigation-menu-button';
 import UserMenu from 'containers/layouts/user-menu';
@@ -19,10 +20,11 @@ export const Header: FC<HeaderProps> = () => {
             <span className="justify-start flex-1">
               <Logo />
             </span>
-            <span className="flex items-center justify-end flex-1 gap-2 lg:gap-4">
+            <div className="flex items-center justify-end flex-1 gap-2">
+              <LanguageSelector />
               <UserMenu className="hidden sm:flex" />
-              <NavigationMenuButton />
-            </span>
+              <NavigationMenuButton theme="naked" />
+            </div>
           </div>
         </LayoutContainer>
       </header>

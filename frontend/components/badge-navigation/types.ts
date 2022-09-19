@@ -10,6 +10,8 @@ export type BadgeNavigationProps = {
   className?: string;
   /** Theme to use. Defaults to `default` */
   theme?: 'default' | 'simple';
+  /** Format of the badges. Defaults to `square` */
+  type?: 'square' | 'pill';
   /** Orientation of the navigation. Defaults to `horizontal` */
   orientation?: 'horizontal' | 'vertical';
   /** Badge position. Defaults to `right` */

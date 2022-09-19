@@ -14,13 +14,34 @@ import { FilterForm, FilterParams } from 'containers/forms/filters/types';
 
 import { EnumTypes, Languages, LocationsTypes, Paths } from 'enums';
 import languages from 'locales.config.json';
+import { Enum } from 'types/enums';
 import { Project, ProjectForm, ProjectUpdatePayload } from 'types/project';
 import { formPageInputs } from 'validations/project';
 
-import { ErrorResponse } from 'services/types';
 import { useEnums } from 'services/enums/enumService';
 import { usePriorityLandscapes } from 'services/locations/locations';
-import { Enum } from 'types/enums';
+import { PagedRequest, ErrorResponse } from 'services/types';
+
+export function cleanQueryParams(params) {
+  let queryParams = { ...params };
+
+  Object.keys(queryParams).forEach((key) => {
+    const value = queryParams[key];
+
+    if (
+      value === null ||
+      value === undefined ||
+      (typeof value === 'string' && value === '') ||
+      (typeof value === 'object' && !Object.keys(value).length) ||
+      (key === 'page' && value === '1') ||
+      (key === 'sorting' && value === 'created_at desc')
+    ) {
+      delete queryParams[key];
+    }
+  });
+
+  return queryParams;
+}
 
 /** Uses the error messages received from the API and the input names of the form to get the fields and form pages with errors */
 export function getServiceErrors<FormValues>(
@@ -86,23 +107,9 @@ export const useDiscoverPath = () => {
 };
 
 /** Hook to get the query params of the discover pages */
-export const useQueryParams = (sortingState?: { sortBy: string; sortOrder: string }) => {
+export const useQueryParams = () => {
   const { query } = useRouter();
-  return useMemo(() => {
-    const { page, search, sorting, ...filters } = query;
-    return {
-      page: parseInt(query.page as string) || 1,
-      search: (query.search as string) || '',
-      sorting:
-        // No need to decode URI component, next/router does it automatically
-        sorting
-          ? (sorting as string)
-          : sortingState?.sortBy
-          ? `${sortingState?.sortBy} ${sortingState?.sortOrder}`
-          : '',
-      ...filters,
-    };
-  }, [query, sortingState]);
+  return cleanQueryParams(query);
 };
 
 export const useFiltersEnums = () => {
@@ -139,21 +146,20 @@ export const useSearch = () => {
   const { push } = useRouter();
   const pathname = useDiscoverPath();
   const { page, sorting, search, ...filters } = useQueryParams();
-  return (newSearch?: string, newFilters?: Partial<FilterParams>, newSorting?: string) =>
+
+  return (newSearch?: string, newFilters?: Partial<FilterParams>) =>
     push(
       {
-        query: {
-          sorting: newSorting || sorting,
-          page: 1,
+        query: cleanQueryParams({
+          page: null,
           search: typeof newSearch === 'string' ? newSearch : search,
+          sorting: sorting || null,
           ...(newFilters || filters),
-        },
+        }),
         pathname,
       },
       undefined,
-      {
-        shallow: true,
-      }
+      { shallow: true }
     );
 };
 
@@ -182,18 +188,21 @@ export const transformFilterParamsToInputs = (filters: Partial<FilterParams>) =>
 };
 
 /** Hook that returns the search queries on string format */
-export const useQueryString = () => {
+export const useQueryString = (params: PagedRequest = {}) => {
   const { query } = useRouter();
   const queries = Object.entries(query);
   if (queries.length) {
     const queryString = new URLSearchParams();
     queries.forEach(([key, value]) => {
-      let queryValue = value;
-      if (Array.isArray(value)) {
-        queryValue = value.join(',');
+      let queryValue = params[key] !== undefined ? params[key] : value;
+      if (Array.isArray(queryValue)) {
+        queryValue = queryValue.join(',');
       }
-      queryString.append(key, queryValue as string);
+      if (Object.keys(cleanQueryParams({ [key]: queryValue })).length) {
+        queryString.append(key, queryValue as string);
+      }
     });
+
     return `?${queryString}`;
   }
   return '';

@@ -3,6 +3,7 @@ require "swagger_helper"
 RSpec.describe "API V1 Investors", type: :request do
   before_all do
     @investor = create(:investor, sdgs: [3, 4])
+    @draft_open_call = create(:open_call, status: :draft, investor: @investor)
     create_list(:investor, 6, sdgs: [1, 5])
     @unapproved_investor = create(:investor, account: create(:account, review_status: :unapproved, users: [create(:user)]))
     @approved_account = create(:account, review_status: :approved, users: [create(:user)])
@@ -50,11 +51,25 @@ RSpec.describe "API V1 Investors", type: :request do
           expect(response_json["data"].pluck("id")).not_to include(@unapproved_investor.id)
         end
 
+        it "ignores draft open calls defined through relationships" do
+          open_call_ids = response_json["data"].map { |d| d["relationships"]["open_calls"]["data"].pluck("id") }.flatten
+          expect(open_call_ids).not_to include(@draft_open_call.id)
+        end
+
         context "with sparse fieldset" do
           let("fields[investor]") { "instagram,facebook,nonexisting" }
 
           it "matches snapshot" do
             expect(response.body).to match_snapshot("api/v1/investors-sparse-fieldset")
+          end
+        end
+
+        context "with relationships" do
+          let("fields[investor]") { "name,open_calls" }
+          let(:includes) { "open_calls" }
+
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/investors-include-relationships")
           end
         end
 

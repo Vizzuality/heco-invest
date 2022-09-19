@@ -14,13 +14,13 @@ import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ClusterLayer from 'components/map/layers/cluster';
 import ProjectLegend from 'components/map/project-legend';
+import ProjectMapPin from 'components/project-map-pin';
 import { ProjectMapParams } from 'types/project';
 
 import { useProjectsMap } from 'services/projects/projectService';
 
 import LocationSearcher from './location-searcher';
 import MapLayersSelector from './map-layers-selector';
-import MapPin from './pin';
 import MapPinCluster from './pin-cluster';
 import { DiscoverMapProps } from './types';
 
@@ -72,8 +72,8 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
               <ClusterLayer
                 data={projectsMap}
                 map={map}
-                MarkerComponent={<MapPin />}
-                ClusterComponent={<MapPinCluster />}
+                MarkerComponent={ProjectMapPin}
+                ClusterComponent={MapPinCluster}
                 onSelectProjectPin={onSelectProjectPin}
               />
             </>

@@ -8,12 +8,12 @@ module API
 
       def create
         @favourite_project.save
-        render json: ProjectSerializer.new(@project, params: {current_user: current_user}).serializable_hash
+        render json: ProjectSerializer.new(@project, params: {current_user: current_user, current_ability: current_ability}).serializable_hash
       end
 
       def destroy
         @favourite_projects.find_by(user: current_user)&.destroy!
-        render json: ProjectSerializer.new(@project, params: {current_user: current_user}).serializable_hash
+        render json: ProjectSerializer.new(@project, params: {current_user: current_user, current_ability: current_ability}).serializable_hash
       end
 
       private

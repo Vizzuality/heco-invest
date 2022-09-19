@@ -6,7 +6,6 @@ import {
   useQueryClient,
   UseQueryResult,
   UseQueryOptions,
-  useQuery,
 } from 'react-query';
 
 import { useRouter } from 'next/router';
@@ -425,5 +424,27 @@ export const useDeleteUser = (): UseMutationResult<{}, ErrorResponse> => {
 export const transferOwnership = async (userId: string) => {
   return await API.post('/api/v1/account/users/transfer_ownership', {
     user_id: userId,
+  });
+};
+
+/** Hook with mutation to delete an account */
+export const useDeleteAccount = (): UseMutationResult<AxiosResponse, AxiosError> => {
+  const queryClient = useQueryClient();
+  const router = useRouter();
+
+  const deleteAccount = async (): Promise<AxiosResponse> => {
+    const config: AxiosRequestConfig = {
+      method: 'DELETE',
+      url: '/api/v1/account/users/account',
+      data: {},
+    };
+
+    return API(config);
+  };
+
+  return useMutation(deleteAccount, {
+    onSuccess: () => {
+      queryClient.removeQueries();
+    },
   });
 };
