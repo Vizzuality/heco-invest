@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
 import Button from 'components/button';
+import filtersData from 'mockups/filters.json';
+import { Enum } from 'types/enums';
 
 import Filters, { FiltersProps } from '.';
 
@@ -13,18 +15,15 @@ export default {
 
 const Template: Story<FiltersProps> = () => {
   const [openFilters, setOpenFilters] = useState(false);
-  const [filters, setFilters] = useState({});
+
   return (
     <>
       <Button onClick={() => setOpenFilters(true)}>Open filters</Button>
       {openFilters && (
         <Filters
-          filtersInputValue={filters}
+          filtersData={filtersData as Enum[]}
+          filters={{}}
           closeFilters={() => setOpenFilters(false)}
-          onSubmitFilters={(filters) => {
-            setOpenFilters(false);
-          }}
-          setFiltersInputValue={(filters) => setFilters(filters)}
         />
       )}
     </>

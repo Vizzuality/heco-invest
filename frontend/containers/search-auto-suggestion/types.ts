@@ -1,9 +1,12 @@
+import { FilterParams } from 'containers/forms/filters/types';
+
 import { Enum } from 'types/enums';
 
 export type SeachAutoSuggestionProps = {
+  /** Text inputed on the search box */
   searchText?: string;
-  closeSuggestions: () => void;
-  onFilterSuggestion: (filter: Enum) => void;
-  onSearchSuggestion: () => void;
-  showSuggestion: boolean;
+  /** Search query filters */
+  filters: Partial<FilterParams>;
+  /** Enums of filters */
+  filtersData: Enum[];
 };

@@ -1,121 +1,131 @@
-import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { FC, useMemo } from 'react';
 
+import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
-import { useFilterNames } from 'helpers/pages';
+import { omitBy } from 'lodash-es';
+
+import { useSearch } from 'helpers/pages';
 
 import Button from 'components/button';
-import { EnumTypes, LocationsTypes } from 'enums';
+import Tag from 'components/forms/tag';
+import TagGroup from 'components/forms/tag-group';
 import { Enum } from 'types/enums';
-
-import { useEnums } from 'services/enums/enumService';
-import { usePriorityLandscapes } from 'services/locations/locations';
 
 import { SeachAutoSuggestionProps } from './types';
 
-export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
+export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
   searchText,
-  closeSuggestions,
-  onFilterSuggestion,
-  onSearchSuggestion,
-  showSuggestion,
+  filters,
+  filtersData,
 }) => {
-  const [autoSuggestions, setAutoSuggestions] = useState<Enum[]>();
-  const { data, isLoading } = useEnums();
+  const selectedFilters = useMemo(() => Object.values(filters), [filters]);
+  const doSearch = useSearch();
 
-  const filterNames = useFilterNames();
-  const { priorityLandscapes } = usePriorityLandscapes();
+  const {
+    register,
+    clearErrors,
+    setValue,
+    formState: { errors },
+  } = useForm<{ sugestedFilters: Enum[] }>();
 
-  const filters: Enum[] = useMemo(() => {
-    if (!isLoading) {
-      const { category, ticket_size, instrument_type, impact, sdg } = data;
-      return [
-        category,
-        ticket_size,
-        instrument_type,
-        impact,
-        sdg,
-        priorityLandscapes?.map(({ id, name }) => ({
-          id,
-          // A bit hacky but the priority landscapes are not enums. It was assumed that filters
-          // would only be based on enums.
-          type: LocationsTypes.PriorityLandscapes as unknown as EnumTypes,
-          name,
-        })) ?? [],
-      ].flat();
+  const handleFilterSuggestion = (filter: Enum) => {
+    const filterKey = `filter[${filter.type}]`;
+    if (selectedFilters.includes(filter.id)) {
+      const newFilters = omitBy(filters, (value, key) => value === filter.id);
+      doSearch(undefined, newFilters);
+    } else {
+      doSearch(undefined, { ...filters, [filterKey]: filter.id });
     }
-  }, [data, isLoading, priorityLandscapes]);
+  };
 
-  const handleCloseSuggestions = useCallback(() => {
-    closeSuggestions();
-    setAutoSuggestions(undefined);
-  }, [closeSuggestions]);
+  const handleSearchSuggestion = () => {
+    doSearch(searchText, filters);
+  };
 
-  useEffect(() => {
-    if (searchText.length > 1) {
-      const filtersToSuggest = filters
-        ?.filter(({ name }) => name.toLowerCase().includes(searchText.toLowerCase()))
+  const autoSuggestions = useMemo(() => {
+    if (searchText?.length >= 1) {
+      return filtersData
+        ?.filter(({ name }) => {
+          return name.toLowerCase().includes(searchText.toLowerCase());
+        })
         .sort((a) => {
-          // Return the ones that match the beginning of the search text first
+          // Returns first the ones that match the beginning of the search text first
           return a.name.toLowerCase().startsWith(searchText.toLowerCase()) ||
             a.id[0] === searchText.toLowerCase()[0]
             ? -1
             : 1;
         });
-      if (filtersToSuggest?.length) {
-        setAutoSuggestions(filtersToSuggest);
-        return;
-      }
     }
-    handleCloseSuggestions();
-  }, [closeSuggestions, filters, handleCloseSuggestions, searchText]);
+  }, [filtersData, searchText]);
 
   return (
     <div
       id="filters"
       role="region"
       aria-labelledby="filters-button"
-      className={cx('w-full bg-white -mt-1 rounded-b-4xl drop-shadow-xl transition-all ease-in', {
-        'h-fit border-t-gray-200 border-t-2': showSuggestion,
-        'h-0 overflow-hidden': !showSuggestion,
+      className={cx('w-full bg-white border-t-2 border-t-gray-200', {
+        'rounded-b-3xl': !selectedFilters?.length,
+        'rounded-b-3xl sm:rounded-b-none': !!selectedFilters?.length,
       })}
     >
-      {showSuggestion && (
-        <div className="py-5 px-9">
+      {searchText?.length >= 1 && (
+        <div className="px-4 py-2 sm:py-5 sm:px-9">
           <div>
-            <Button key="custom" theme="naked" className="px-0 py-2" onClick={onSearchSuggestion}>
-              &quot;{searchText}&quot;
+            <Button
+              key="custom"
+              theme="naked"
+              className="flex flex-wrap px-0 py-2 focus-visible:outline-green-dark"
+              onClick={handleSearchSuggestion}
+            >
+              <span className="text-left break-all">&quot;{searchText}&quot;</span>
               <span className="ml-2 text-gray-600">
                 <FormattedMessage defaultMessage="Custom search" id="AoHRBG" />
               </span>
             </Button>
           </div>
           <div
-            className={cx('overflow-hidden', {
-              'h-0': !autoSuggestions?.length,
-              'h-auto': autoSuggestions?.length,
+            className={cx({
+              hidden: !autoSuggestions?.length,
+              block: !!autoSuggestions?.length,
             })}
           >
-            <div>
-              <p className="py-2 text-sm text-gray-800">
+            <fieldset>
+              <legend className="py-2 text-sm text-gray-800">
                 <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
-              </p>
-            </div>
-            <div className="flex flex-col">
-              {autoSuggestions?.map((item) => (
-                <Button
-                  key={item.id}
-                  theme="naked"
-                  className="px-0"
-                  onClick={() => onFilterSuggestion(item)}
+              </legend>
+              <div>
+                <TagGroup
+                  className="inline"
+                  isFilterTag
+                  clearErrors={clearErrors}
+                  setValue={setValue}
+                  errors={errors}
+                  thresholdToShowSelectAll={Infinity}
                 >
-                  {item.name}
-                  <span className="ml-2 text-gray-600">{filterNames[item.type]}</span>
-                </Button>
-              ))}
-            </div>
+                  {autoSuggestions?.map((filter) => {
+                    const isSelected = selectedFilters.includes(filter.id);
+                    return (
+                      <Tag
+                        type="checkbox"
+                        name="sugestedFilters"
+                        id={filter.id}
+                        key={filter.id}
+                        register={register}
+                        onClick={() => handleFilterSuggestion(filter)}
+                        isfilterTag
+                        className="inline"
+                        checked={isSelected}
+                      >
+                        {filter.name}
+                      </Tag>
+                    );
+                  })}
+                </TagGroup>
+              </div>
+            </fieldset>
           </div>
         </div>
       )}
@@ -123,4 +133,4 @@ export const SearchAutoSugegstion: FC<SeachAutoSuggestionProps> = ({
   );
 };
 
-export default SearchAutoSugegstion;
+export default SearchAutoSuggestion;

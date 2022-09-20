@@ -1095,6 +1095,9 @@
   "KGREXT": {
     "string": "Total of projects"
   },
+  "KJE+sC": {
+    "string": "Search full catalogue"
+  },
   "KYymTZ": {
     "string": "{quantity, plural, one {project} other {projects}}"
   },
@@ -1151,6 +1154,9 @@
   },
   "LanZ2z": {
     "string": "Funding needed"
+  },
+  "Lkxlab": {
+    "string": "open filters"
   },
   "Ll72W/": {
     "string": "Currently not looking for funding"
@@ -2804,6 +2810,9 @@
   },
   "tjj29g": {
     "string": "Venture capital / private equity"
+  },
+  "tjunxL": {
+    "string": "Active filters"
   },
   "twK/jv": {
     "string": "Project developer profile"
