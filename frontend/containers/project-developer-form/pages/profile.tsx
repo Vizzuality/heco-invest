@@ -143,7 +143,7 @@ export const Profile: FC<ProfileProps> = ({
           </span>
           <Tag
             size="smallest"
-            className="font-medium leading-[14px] text-sm  text-gray-800 bg-beige"
+            className="font-medium leading-[14px] border-beige text-sm  text-gray-800 bg-beige"
           >
             <FormattedMessage defaultMessage="Private" id="viXE32" />
           </Tag>

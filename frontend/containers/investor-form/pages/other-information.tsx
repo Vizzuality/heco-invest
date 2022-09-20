@@ -20,7 +20,7 @@ export const OtherInformations: FC<OtherInformationsProps> = ({ register, errors
         <div>
           <Label
             htmlFor="other-information"
-            className="block text-base font-normal text-gray-900 mb-9"
+            className="block !text-base font-normal text-gray-900 mb-9"
           >
             <FormattedMessage
               defaultMessage="Complete your profile with relevant information to make your relationship with project developers as precise as possible. For example the very particular topics you are interested in or the activities and items you definitely do not finance or invest in. "

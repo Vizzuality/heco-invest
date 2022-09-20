@@ -314,7 +314,7 @@ const Funding = ({
               <div>
                 <TextTag
                   size="smallest"
-                  className="ml-4 font-medium leading-[14px] text-sm text-gray-800 bg-beige"
+                  className="ml-4 border-beige font-medium leading-[14px] text-sm text-gray-800 bg-beige"
                 >
                   <FormattedMessage defaultMessage="Private" id="viXE32" />
                 </TextTag>

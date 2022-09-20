@@ -56,8 +56,8 @@ export const About: FC<AboutProps> = ({
         </h1>
         <p className="font-sans text-base text-gray-900">
           <FormattedMessage
-            defaultMessage="Tell us about your work and impact priorities. This information will be <n>public</n> except the one marked as <n>private</n> which will only be visible for admins."
-            id="1zU/+8"
+            defaultMessage="Tell us about your work and impact priorities. This information will be <n>public</n>."
+            id="EoyBnX"
             values={{
               n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
             }}

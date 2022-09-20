@@ -23,7 +23,7 @@ export const Priority: FC<PriorityProps> = ({ register, errors }) => {
         <div>
           <Label
             htmlFor="prioritized-projects-description"
-            className="block text-base font-normal text-gray-900 mb-9"
+            className="block !text-base font-normal text-gray-900 mb-9"
           >
             <FormattedMessage
               defaultMessage="Tell us what you value in the projects you invest in / what will make you invest in projects This information will be <n>public</n>."

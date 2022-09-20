@@ -71,7 +71,7 @@ export const Impact: FC<ImpactProps> = ({
             </div>
             <TextTag
               size="smallest"
-              className="font-medium leading-[14px] text-sm  text-gray-800 bg-beige ml-6"
+              className="font-medium leading-[14px] text-sm border-beige text-gray-800 bg-beige ml-6"
             >
               <FormattedMessage defaultMessage="Private" id="viXE32" />
             </TextTag>
