@@ -32,7 +32,7 @@
   }
 
   .backoffice-table td {
-    @apply text-left p-4
+    @apply text-left p-4 max-w-[30rem] break-words
   }
 
   .backoffice-table tr, .backoffice-table th {
