@@ -118,14 +118,14 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 h-screen bg-background-dark">
       <div className="flex flex-col h-screen overflow-auto">
-        <div className="z-10 h-min xl:-mb-18">
+        <div className="z-10 h-min">
           <Header />
-          <LayoutContainer className="z-10 flex justify-center pt-1 mt-0 mb-2 pointer-events-none xl:mb-6 xl:mt-3 xl:left-0 xl:right-0 xl:relative xl:-top-16">
+          <LayoutContainer className="z-10 flex justify-center pt-1 mt-2 mb-2 pointer-events-none xl:pb-0 xl:mb-0 xl:-mt-10 xl:left-0 xl:right-0 xl:relative">
             <DiscoverSearch className="w-full max-w-3xl pointer-events-auto -z-10" />
           </LayoutContainer>
         </div>
         <main className="z-0 flex flex-col flex-grow h-screen overflow-y-auto">
-          <LayoutContainer className="xl:mt-6 ">
+          <LayoutContainer className="">
             <div className="relative flex flex-col items-center gap-2 pb-2 mx-2 mt-4 mb-6 -ml-1 -mr-1 after:left-2 after:right-2 after:h-px after:bg-[#D3CDC4] after:bg-opacity-40 after:absolute after:-bottom-2 after:lg:bottom-2 lg:mb-1 lg:mt-2 lg:gap-6 lg:flex-row space-between lg:pb-0">
               <Navigation stats={stats} />
               <SortingButtons {...sortingButtonsProps} />
