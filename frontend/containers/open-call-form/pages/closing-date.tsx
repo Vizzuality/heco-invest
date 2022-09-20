@@ -37,8 +37,14 @@ export const OpenCallClosingDate: FC<OpenCallClosingDateProps> = ({
             id="BeVl3b"
           />
         </h1>
-        <p className="text-gray-600">
-          <FormattedMessage defaultMessage="Select the deadline for this open call." id="KcJ5IK" />
+        <p className="text-gray-900">
+          <FormattedMessage
+            defaultMessage="Select the deadline for this open call. This information will be <n>public</n>."
+            id="sh7TMQ"
+            values={{
+              n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+            }}
+          />
         </p>
       </div>
       <div>

@@ -27,10 +27,13 @@ const InvestmentInformation: FC<InvestmentInformationProps> = ({
       <h1 className="font-serif text-3xl font-semibold mb-2.5">
         <FormattedMessage defaultMessage="Investment information" id="770IIS" />
       </h1>
-      <p className="mb-10 text-gray-600">
+      <p className="mb-10 text-gray-900">
         <FormattedMessage
-          defaultMessage="This information will help us understand what you are interested in invest or funding."
-          id="M7261y"
+          defaultMessage="This information will help us understand what you are interested in invest or funding. This information will be <n>public</n>."
+          id="f5UaDG"
+          values={{
+            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+          }}
         />
       </p>
       <form noValidate>

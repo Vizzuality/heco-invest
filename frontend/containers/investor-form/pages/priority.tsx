@@ -23,11 +23,14 @@ export const Priority: FC<PriorityProps> = ({ register, errors }) => {
         <div>
           <Label
             htmlFor="prioritized-projects-description"
-            className="block mb-2 text-base font-normal text-gray-600"
+            className="block text-base font-normal text-gray-900 mb-9"
           >
             <FormattedMessage
-              defaultMessage="Tell us what you value in the projects you invest in / what will make you invest in projects"
-              id="0DNR+D"
+              defaultMessage="Tell us what you value in the projects you invest in / what will make you invest in projects This information will be <n>public</n>."
+              id="9R4Msc"
+              values={{
+                n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+              }}
             />
           </Label>
           <Textarea

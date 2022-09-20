@@ -36,10 +36,13 @@ export const Profile: FC<ProfileProps> = ({
         <h1 className="mb-2 font-serif text-3xl font-semibold">
           <FormattedMessage defaultMessage="Investor/Funder profile" id="BHJZyR" />
         </h1>
-        <p className="font-sans text-base text-gray-600">
+        <p className="font-sans text-base text-gray-900">
           <FormattedMessage
-            defaultMessage="General information about the investor/funder."
-            id="gjBW8J"
+            defaultMessage="General information about the investor/funder. This information will be <n>public</n>."
+            id="5mX4u0"
+            values={{
+              n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+            }}
           />
         </p>
       </div>

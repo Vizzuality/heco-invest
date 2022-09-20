@@ -34,10 +34,13 @@ const ProjectDescription = ({
       <h1 className="font-serif text-3xl font-semibold mb-2.5">
         <FormattedMessage defaultMessage="Description of the project" id="35YoEI" />
       </h1>
-      <p className="mb-10 text-gray-600">
+      <p className="mb-10 text-gray-900">
         <FormattedMessage
-          defaultMessage="Tell us what is the project about the problem and the solution to solve it"
-          id="/m/QYW"
+          defaultMessage="Tell us what is the project about the problem and the solution to solve it. This information will be <n>public</n>."
+          id="defge8"
+          values={{
+            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+          }}
         />
       </p>
       <form noValidate>

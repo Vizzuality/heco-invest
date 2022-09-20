@@ -73,10 +73,13 @@ export const OpenCallInformation: FC<OpenCallInformationProps> = ({
         <h1 className="mb-2 font-serif text-3xl font-semibold">
           <FormattedMessage defaultMessage="Information about the open call" id="1pQoFr" />
         </h1>
-        <p className="text-gray-600">
+        <p className="text-gray-900">
           <FormattedMessage
-            defaultMessage="This information will be displayed in the open call page."
-            id="Ac9oiY"
+            defaultMessage="This information will be displayed and <n>public</n> in the open call page."
+            id="8gmRp0"
+            values={{
+              n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+            }}
           />
         </p>
       </div>

@@ -56,10 +56,13 @@ export const Impact = ({
       <h1 className="font-serif text-3xl font-semibold mb-2.5">
         <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
       </h1>
-      <p className="mb-10 text-gray-600">
+      <p className="mb-10 text-gray-900">
         <FormattedMessage
-          defaultMessage="What’s the impact of your project and what do you want to achieve"
-          id="BkLlj6"
+          defaultMessage="What’s the impact of your project and what do you want to achieve. This information will be <n>public</n>."
+          id="OQ/tJs"
+          values={{
+            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+          }}
         />
       </p>
       <form noValidate>

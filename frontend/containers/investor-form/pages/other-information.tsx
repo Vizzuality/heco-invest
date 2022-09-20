@@ -20,12 +20,21 @@ export const OtherInformations: FC<OtherInformationsProps> = ({ register, errors
         <div>
           <Label
             htmlFor="other-information"
-            className="block mb-2 text-base font-normal text-gray-600"
+            className="block text-base font-normal text-gray-900 mb-9"
           >
             <FormattedMessage
               defaultMessage="Complete your profile with relevant information to make your relationship with project developers as precise as possible. For example the very particular topics you are interested in or the activities and items you definitely do not finance or invest in. "
               id="I2VJMv"
             />
+            <span className="block mt-4">
+              <FormattedMessage
+                defaultMessage="This information will be <n>public</n>."
+                id="rBC2yr"
+                values={{
+                  n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+                }}
+              />
+            </span>
           </Label>
           <Textarea
             id="other-information"
