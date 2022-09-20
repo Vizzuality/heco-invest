@@ -27,10 +27,13 @@ export const OpenCallFundingInformation: FC<OpenCallFundingInformationProps> = (
         <h1 className="mb-2 font-serif text-3xl font-semibold">
           <FormattedMessage defaultMessage="Funding information" id="mEYG82" />
         </h1>
-        <p className="text-gray-600">
+        <p className="text-gray-900">
           <FormattedMessage
-            defaultMessage="How much money do you intend to give to this open call."
-            id="bXy++M"
+            defaultMessage="How much money do you intend to give to this open call. This information will be <n>public</n>."
+            id="k8US3O"
+            values={{
+              n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+            }}
           />
         </p>
       </div>

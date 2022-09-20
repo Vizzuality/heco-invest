@@ -10,6 +10,7 @@ import FieldInfo from 'components/forms/field-info';
 import Label from 'components/forms/label';
 import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
+import TextTag from 'components/tag';
 
 import { ImpactProps } from '../types';
 
@@ -26,22 +27,25 @@ export const Impact: FC<ImpactProps> = ({
       <h1 className="font-serif text-3xl font-semibold mb-2.5">
         <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
       </h1>
-      <p className="mb-10 text-gray-600">
+      <p className="mb-10 text-gray-900">
         <FormattedMessage
-          defaultMessage="This information will help us understand what is the impact you want to have."
-          id="puek63"
+          defaultMessage="This information will help us understand what is the impact you want to have. This information will be <n>public</n> except the one marked as <n>private</n> which will only be visible for admins."
+          id="F6axhK"
+          values={{
+            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+          }}
         />
       </p>
       <form noValidate>
         <div className="mb-6.5">
-          <fieldset className="flex">
-            <div className="flex items-center">
-              <legend className="font-sans text-sm font-semibold text-gray-800">
-                <FormattedMessage
-                  defaultMessage="Have you previously invested in impact?"
-                  id="8XJceA"
-                />
-              </legend>
+          <fieldset className="flex items-center">
+            <legend className="float-left font-sans text-sm font-semibold text-gray-800">
+              <FormattedMessage
+                defaultMessage="Have you previously invested in impact?"
+                id="8XJceA"
+              />
+            </legend>
+            <div className="flex">
               <div className="flex items-center mx-4 font-normal">
                 <input
                   id="previously-invested-yes"
@@ -65,11 +69,17 @@ export const Impact: FC<ImpactProps> = ({
                 </Label>
               </div>
             </div>
+            <TextTag
+              size="smallest"
+              className="font-medium leading-[14px] text-sm border-beige text-gray-800 bg-beige ml-6"
+            >
+              <FormattedMessage defaultMessage="Private" id="viXE32" />
+            </TextTag>
+            <ErrorMessage
+              id="previously-invested-error"
+              errorText={errors?.previously_invested?.message}
+            />
           </fieldset>
-          <ErrorMessage
-            id="previously-invested-error"
-            errorText={errors?.previously_invested?.message}
-          />
         </div>
 
         <div className="mb-6.5">

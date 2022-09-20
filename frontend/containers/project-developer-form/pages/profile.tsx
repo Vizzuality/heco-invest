@@ -12,6 +12,7 @@ import FieldInfo from 'components/forms/field-info';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import TextArea from 'components/forms/textarea';
+import Tag from 'components/tag';
 
 import { ProfileProps } from '../types';
 
@@ -36,10 +37,13 @@ export const Profile: FC<ProfileProps> = ({
         <h1 className="mb-2 font-serif text-3xl font-semibold">
           <FormattedMessage defaultMessage="Project developer profile" id="twK/jv" />
         </h1>
-        <p className="font-sans text-base text-gray-600">
+        <p className="font-sans text-base text-gray-900">
           <FormattedMessage
-            defaultMessage="General information about the the project developer."
-            id="CiBvks"
+            defaultMessage="General information about the project developer. This information will be <n>public</n> except the one marked as <n>private</n> which will only be visible for admins."
+            id="gbWTGl"
+            values={{
+              n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+            }}
           />
         </p>
       </div>
@@ -123,12 +127,12 @@ export const Profile: FC<ProfileProps> = ({
         </div>
       </div>
       <div className="mb-6.5">
-        <Label htmlFor="entity-legal-registration">
-          <FormattedMessage
-            defaultMessage="Entity legal registration number (NIT or RUT)"
-            id="AiagLY"
-          />
-          <span className="ml-2.5">
+        <Label htmlFor="entity-legal-registration" className="flex items-center justify-between">
+          <span className="flex gap-2.5">
+            <FormattedMessage
+              defaultMessage="Entity legal registration number (NIT or RUT)"
+              id="AiagLY"
+            />
             <FieldInfo
               content={formatMessage({
                 defaultMessage:
@@ -137,20 +141,26 @@ export const Profile: FC<ProfileProps> = ({
               })}
             />
           </span>
-          <Input
-            type="text"
-            id="entity-legal-registration"
-            className="mt-2.5"
-            register={register}
-            aria-required
-            name="entity_legal_registration_number"
-            placeholder={formatMessage({
-              defaultMessage: 'insert the number',
-              id: 'tS6cAK',
-            })}
-            aria-describedby="entity-legal-registration-error"
-          />
+          <Tag
+            size="smallest"
+            className="font-medium leading-[14px] border-beige text-sm  text-gray-800 bg-beige"
+          >
+            <FormattedMessage defaultMessage="Private" id="viXE32" />
+          </Tag>
         </Label>
+        <Input
+          type="text"
+          id="entity-legal-registration"
+          className="mt-2.5"
+          register={register}
+          aria-required
+          name="entity_legal_registration_number"
+          placeholder={formatMessage({
+            defaultMessage: 'insert the number',
+            id: 'tS6cAK',
+          })}
+          aria-describedby="entity-legal-registration-error"
+        />
         <ErrorMessage
           id="entity-legal-registration-error"
           errorText={errors?.entity_legal_registration_number?.message}

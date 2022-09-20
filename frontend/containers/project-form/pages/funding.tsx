@@ -10,6 +10,7 @@ import FieldInfo from 'components/forms/field-info';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import Tag from 'components/forms/tag';
+import TextTag from 'components/tag';
 import TagGroup from 'components/forms/tag-group';
 import Textarea from 'components/forms/textarea';
 
@@ -55,32 +56,35 @@ const Funding = ({
       <h1 className="font-serif text-3xl font-semibold mb-2.5">
         <FormattedMessage defaultMessage="Funding information" id="mEYG82" />
       </h1>
-      <p className="mb-10 text-gray-600">
+      <p className="mb-10 text-gray-900">
         <FormattedMessage
-          defaultMessage="Financial information about your project and what are the needs"
-          id="pcRRCK"
+          defaultMessage="Financial information about your project and what are the needs. This information will be <n>public</n> except the one marked as <n>private</n> which will only be visible for admins."
+          id="+hdaRx"
+          values={{
+            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+          }}
         />
       </p>
       <form noValidate>
         <div>
           <div>
-            <fieldset>
-              <div className="flex items-center">
-                <legend className="inline mr-4 font-sans text-sm font-semibold text-gray-800">
-                  <span className="mr-2.5">
-                    <FormattedMessage
-                      defaultMessage="Are you currently looking for funding?"
-                      id="u/E7xG"
-                    />
-                  </span>
-                  <FieldInfo
-                    content={formatMessage({
-                      defaultMessage:
-                        'If you are not looking for funding and just want to publish your project, select No.',
-                      id: 'OWnChd',
-                    })}
+            <fieldset className="flex items-center mt-4.5">
+              <legend className="float-left mr-4 font-sans text-sm font-semibold text-gray-800">
+                <span className="mr-2.5">
+                  <FormattedMessage
+                    defaultMessage="Are you currently looking for funding?"
+                    id="u/E7xG"
                   />
-                </legend>
+                </span>
+                <FieldInfo
+                  content={formatMessage({
+                    defaultMessage:
+                      'If you are not looking for funding and just want to publish your project, select No.',
+                    id: 'OWnChd',
+                  })}
+                />
+              </legend>
+              <div className="flex items-center">
                 <Label
                   htmlFor="looking_for_funding-yes"
                   className="flex items-center pt-0.5 font-normal"
@@ -253,14 +257,14 @@ const Funding = ({
           </div>
 
           <div>
-            <fieldset>
-              <div className="flex items-center mt-4.5">
-                <legend className="inline mr-4 font-sans text-sm font-semibold text-gray-800">
-                  <FormattedMessage
-                    defaultMessage="Has this project been funded before?"
-                    id="GdS9Mk"
-                  />
-                </legend>
+            <fieldset className="flex items-center mt-4.5">
+              <legend className="float-left mr-4 font-sans text-sm font-semibold text-gray-800">
+                <FormattedMessage
+                  defaultMessage="Has this project been funded before?"
+                  id="GdS9Mk"
+                />
+              </legend>
+              <div className="flex items-center">
                 <Label
                   htmlFor="received_funding-yes"
                   className="flex items-center pt-0.5 font-normal"
@@ -306,6 +310,14 @@ const Funding = ({
                   ></Controller>
                   <FormattedMessage defaultMessage="No" id="oUWADl" />
                 </Label>
+              </div>
+              <div>
+                <TextTag
+                  size="smallest"
+                  className="ml-4 border-beige font-medium leading-[14px] text-sm text-gray-800 bg-beige"
+                >
+                  <FormattedMessage defaultMessage="Private" id="viXE32" />
+                </TextTag>
               </div>
               <div>
                 <ErrorMessage
