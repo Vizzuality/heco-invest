@@ -7,6 +7,7 @@ export type PagedRequest = {
   search?: string;
   page?: number;
   perPage?: number;
+  sorting?: string;
 };
 
 /** Default API single item response structure */

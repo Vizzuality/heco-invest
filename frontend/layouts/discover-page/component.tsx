@@ -22,7 +22,7 @@ import { useProjectsList } from 'services/projects/projectService';
 import { PagedResponse } from 'services/types';
 
 import Header from './header';
-import { useSortingByOptions, SortingByTargetType } from './helpers';
+import { useSortingByOptions, SortingByTargetType, defaultSorting } from './helpers';
 import Navigation from './navigation';
 import { DiscoverPageLayoutProps } from './types';
 
@@ -32,24 +32,12 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 }: DiscoverPageLayoutProps) => {
   const { push, pathname } = useRouter();
 
-  const defaultSorting = useMemo(
-    () => ({
-      sortBy: 'created_at' as SortingOptionKey,
-      sortOrder: 'desc' as SortingOrderType,
-    }),
-    []
-  );
-
   const [sorting, setSorting] =
     useState<{ sortBy: SortingOptionKey; sortOrder: SortingOrderType }>(defaultSorting);
 
   const sortingOptionsTarget = useMemo(() => {
     if (pathname.startsWith(Paths.Projects)) return Queries.Project;
-
-    if (sorting.sortBy !== 'name' && sorting.sortBy !== 'created_at') {
-      setSorting(defaultSorting);
-    }
-  }, [defaultSorting, pathname, sorting]) as SortingByTargetType;
+  }, [pathname]) as SortingByTargetType;
 
   const sortingOptions = useSortingByOptions(sortingOptionsTarget);
   const queryParams = useQueryParams();
@@ -90,12 +78,12 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   }, [pathname, projects, projectDevelopers, investors, openCalls]) || { data: [], meta: [] };
 
   useEffect(() => {
-    const [sortBy, sortOrder]: any = queryParams?.sorting?.split(' ') || [
-      defaultSorting.sortBy,
-      defaultSorting.sortOrder,
-    ];
+    const [sortBy, sortOrder]: [SortingOptionKey, SortingOrderType] = queryParams?.sorting?.split(
+      ' '
+    ) || [defaultSorting.sortBy, defaultSorting.sortOrder];
+
     setSorting({ sortBy, sortOrder });
-  }, [defaultSorting, queryParams.sorting]);
+  }, [queryParams?.sorting]);
 
   const handleSorting = ({
     sortBy,
