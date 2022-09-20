@@ -32,6 +32,30 @@ module "rails_secret_key_base" {
   use_random_value    = true
 }
 
+module "rails_encryption_primary_key" {
+  source           = "../secret_value"
+  region           = var.gcp_region
+  key              = "${var.project_name}-rails_encryption_primary_key"
+  random_value_length = 32
+  use_random_value    = true
+}
+
+module "rails_encryption_deterministic_key" {
+  source           = "../secret_value"
+  region           = var.gcp_region
+  key              = "${var.project_name}-rails_encryption_deterministic_key"
+  random_value_length = 32
+  use_random_value    = true
+}
+
+module "rails_encryption_derivation_salt" {
+  source           = "../secret_value"
+  region           = var.gcp_region
+  key              = "${var.project_name}-rails_encryption_derivation_salt"
+  random_value_length = 32
+  use_random_value    = true
+}
+
 module "postgres_application_user_password" {
   source           = "../secret_value"
   region           = var.gcp_region
