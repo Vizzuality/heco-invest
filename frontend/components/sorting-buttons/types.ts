@@ -1,11 +1,11 @@
 export type SortingOptionKey =
   | 'name'
   | 'created_at'
-  | 'total_impact'
-  | 'biodiversity_impact'
-  | 'climate_impact'
-  | 'water_impact'
-  | 'community_impact';
+  | 'municipality_total_impact'
+  | 'municipality_biodiversity_impact'
+  | 'municipality_climate_impact'
+  | 'municipality_water_impact'
+  | 'municipality_community_impact';
 
 export type SortingOptionType = {
   /** Option key */
