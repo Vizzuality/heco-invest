@@ -183,6 +183,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
             filtersData={filtersData}
             filters={filters}
             searchText={searchInputValue}
+            closeSuggestions={clearInput}
           />
         )}
         {/* Filters accordion pannel */}
