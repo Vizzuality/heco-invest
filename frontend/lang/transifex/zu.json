@@ -11,9 +11,6 @@
   "+Hbd1j": {
     "string": "Financial instrument"
   },
-  "+JVDMC": {
-    "string": "Know more"
-  },
   "+K9fF0": {
     "string": "Project Developers"
   },
@@ -524,9 +521,6 @@
   "8gJV79": {
     "string": "What are HeCo priority landscapes?"
   },
-  "8gmRp0": {
-    "string": "This information will be displayed and <n>public</n> in the open call page."
-  },
   "8i6S4q": {
     "string": "Connecting investors, donors and philanthropists with carefully identified investment opportunities."
   },
@@ -754,6 +748,9 @@
   },
   "DR+23P": {
     "string": "Contact email"
+  },
+  "DSzCPO": {
+    "string": "General information about your project. This information will be <n>public.</n>"
   },
   "DTQxlC": {
     "string": "Cooperative"
@@ -1620,6 +1617,9 @@
   "VVlH2M": {
     "string": "Hydrobasin"
   },
+  "VX1gpP": {
+    "string": "General information about your open call. This information will be <n>public</n>."
+  },
   "VaC9C0": {
     "string": "This description should succinctly explain your project. It should be a catching text since it's the first thing investors will read."
   },
@@ -1880,9 +1880,6 @@
   },
   "apgkuO": {
     "string": "More about ARIES"
-  },
-  "avVMND": {
-    "string": "This information will be visible in the project page when you launch it."
   },
   "azx2BO": {
     "string": "Discover open calls"
