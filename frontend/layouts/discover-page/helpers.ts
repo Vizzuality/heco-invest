@@ -24,23 +24,23 @@ export const useSortingByOptions = (target?: SortingByTargetType): SortingOption
     ],
     [Queries.Project]: [
       {
-        key: 'total_impact',
+        key: 'municipality_total_impact',
         label: formatMessage({ defaultMessage: 'Impact score', id: '2GBpne' }),
       },
       {
-        key: 'biodiversity_impact',
+        key: 'municipality_biodiversity_impact',
         label: formatMessage({ defaultMessage: 'Biodiversity impact', id: 'BvO1iK' }),
       },
       {
-        key: 'climate_impact',
+        key: 'municipality_climate_impact',
         label: formatMessage({ defaultMessage: 'Climate impact', id: 'TUFmRM' }),
       },
       {
-        key: 'water_impact',
+        key: 'municipality_water_impact',
         label: formatMessage({ defaultMessage: 'Water impact', id: 'W5x0GV' }),
       },
       {
-        key: 'community_impact',
+        key: 'municipality_community_impact',
         label: formatMessage({ defaultMessage: 'Community impact', id: 'PGlFh/' }),
       },
     ],
