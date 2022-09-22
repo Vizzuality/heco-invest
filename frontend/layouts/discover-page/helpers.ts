@@ -24,10 +24,6 @@ export const useSortingByOptions = (target?: SortingByTargetType): SortingOption
     ],
     [Queries.Project]: [
       {
-        key: 'municipality_total_impact',
-        label: formatMessage({ defaultMessage: 'Impact score', id: '2GBpne' }),
-      },
-      {
         key: 'municipality_biodiversity_impact',
         label: formatMessage({ defaultMessage: 'Biodiversity impact', id: 'BvO1iK' }),
       },
