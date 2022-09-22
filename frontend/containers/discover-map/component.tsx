@@ -1,4 +1,6 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+
+import { useForm } from 'react-hook-form';
 
 import omit from 'lodash-es/omit';
 
@@ -13,14 +15,16 @@ import { useLayers } from 'hooks/useLayers';
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ClusterLayer from 'components/map/layers/cluster';
-import ProjectLegend from 'components/map/project-legend';
+import { Legend, LegendType } from 'components/map/legend/types';
 import ProjectMapPin from 'components/project-map-pin';
 import { ProjectMapParams } from 'types/project';
 
 import { useProjectsMap } from 'services/projects/projectService';
 
+import LayerLegend from './layer-legend';
 import LocationSearcher from './location-searcher';
 import MapLayersSelector from './map-layers-selector';
+import { MapLayersSelectorForm } from './map-layers-selector/types';
 import MapPinCluster from './pin-cluster';
 import { DiscoverMapProps } from './types';
 
@@ -42,6 +46,18 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
     options: { padding: 0 },
   });
 
+  const { register, watch, setValue } = useForm<MapLayersSelectorForm>({
+    defaultValues: {
+      activeLayers: [],
+    },
+  });
+
+  const activeLayers = watch('activeLayers');
+
+  useEffect(() => {
+    setVisibleLayers(activeLayers);
+  }, [activeLayers]);
+
   const handleViewportChange = useCallback((vw) => {
     setViewport(vw);
   }, []);
@@ -49,6 +65,19 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
   const handleLocationSelected = ({ bbox }) => {
     setBounds({ ...bounds, bbox });
   };
+
+  const layerLegends: Legend[] = useMemo(
+    () =>
+      layers
+        ?.filter(({ id }) => visibleLayers.includes(id))
+        .map(({ name, legend: { type, items }, id }) => ({
+          type: type as LegendType,
+          items,
+          name,
+          id,
+        })),
+    [layers, visibleLayers]
+  );
 
   return (
     <>
@@ -88,8 +117,10 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           className="absolute flex items-start gap-2 inset-3.5 bottom-12 text-gray-800 text-sm pointer-events-none"
         >
           <MapLayersSelector
+            initialActiveLayers={visibleLayers}
             className="pointer-events-auto"
             onActiveLayersChange={setVisibleLayers}
+            register={register}
           />
           <LocationSearcher
             className="pointer-events-auto"
@@ -97,8 +128,18 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           />
         </div>
 
-        <Controls className="absolute bottom-10 xl:bottom-4 right-4">
-          <ProjectLegend />
+        <Controls className="absolute h-full bottom-4 right-4">
+          <LayerLegend
+            className="bg-white"
+            onCloseLegend={(id) =>
+              setValue(
+                'activeLayers',
+                visibleLayers.filter((layer) => layer !== id)
+              )
+            }
+            maxHeight="50%"
+            layersLegends={layerLegends}
+          />
         </Controls>
       </div>
     </>

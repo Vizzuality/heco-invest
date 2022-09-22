@@ -17,12 +17,13 @@ export default {
 
 const Template: Story<LegendProps> = (args) => {
   const [sortArray, setSortArray] = useState([]);
+  const [arrItems, setArrItems] = useState(ITEMS);
 
   // Sorted
   const sortedItems = useMemo(() => {
-    const itms = ITEMS.sort((a, b) => sortArray.indexOf(a.id) - sortArray.indexOf(b.id));
+    const itms = arrItems.sort((a, b) => sortArray.indexOf(a.id) - sortArray.indexOf(b.id));
     return itms;
-  }, [sortArray]);
+  }, [arrItems, sortArray]);
 
   // Callbacks
   const onChangeOrder = useCallback((ids) => {
@@ -32,9 +33,13 @@ const Template: Story<LegendProps> = (args) => {
   return (
     <Legend {...args} onChangeOrder={onChangeOrder}>
       {sortedItems.map((i) => {
-        const { type, items } = i;
+        const { type, items, id } = i;
         return (
-          <LegendItem key={i.id} {...i}>
+          <LegendItem
+            handleCloseLegend={() => setArrItems(arrItems.filter((item) => item.id !== id))}
+            key={i.id}
+            {...i}
+          >
             {type === 'basic' && (
               <LegendTypeBasic className="text-sm text-gray-300" items={items} />
             )}

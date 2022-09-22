@@ -1,9 +1,8 @@
-import { FC, useRef, useState, useEffect } from 'react';
+import { FC, useRef, useState } from 'react';
 
 import { FocusScope } from 'react-aria';
 import { Layers as IconLayers } from 'react-feather';
 import { ChevronUp as ChevronUpIcon } from 'react-feather';
-import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
@@ -22,7 +21,7 @@ import type { MapLayersSelectorProps, MapLayersSelectorForm, SelectedLayerToolti
 
 export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   className,
-  onActiveLayersChange,
+  register,
 }: MapLayersSelectorProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedLayer, setSelectedlayer] = useState<SelectedLayerTooltip>();
@@ -31,14 +30,6 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   const { groupedLayers } = useLayers();
   const initialOpenLayerGroup = groupedLayers.map((group) => group.id);
   const [openLayerGroup, setOpenLayerGroup] = useState<string[]>(initialOpenLayerGroup);
-
-  const { register, watch } = useForm<MapLayersSelectorForm>({
-    defaultValues: {
-      activeLayers: [],
-    },
-  });
-
-  const activeLayers = watch('activeLayers');
 
   useKey(['Escape'], () => setIsOpen(false), {
     target: selectorRef,
@@ -50,10 +41,6 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
     setSelectedlayer(undefined);
     setOpenLayerGroup(initialOpenLayerGroup);
   });
-
-  useEffect(() => {
-    onActiveLayersChange(activeLayers);
-  }, [activeLayers, onActiveLayersChange]);
 
   const handleButtonClick = () => {
     setIsOpen(!isOpen);

@@ -9,7 +9,7 @@ export const LegendTypeGradient: FC<LegendTypeGradientProps> = ({
   items,
 }: LegendTypeGradientProps) => (
   <div
-    className={cx({
+    className={cx('h-full', {
       [className]: !!className,
     })}
   >
@@ -21,13 +21,11 @@ export const LegendTypeGradient: FC<LegendTypeGradientProps> = ({
     />
 
     <ul className="flex justify-between w-full mt-1">
-      {items
-        .filter(({ value }) => !!value)
-        .map(({ value }) => (
-          <li key={`${value}`} className="flex-shrink-0 text-xs">
-            {value}
-          </li>
-        ))}
+      {items.map(({ label, color }) => (
+        <li key={`${color}`} className="flex-shrink-0 text-2xs">
+          {label}
+        </li>
+      ))}
     </ul>
   </div>
 );
