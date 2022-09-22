@@ -176,7 +176,6 @@ const GeneralInformation = ({
                 // https://react-dropzone.org/#section-accepting-specific-file-types
                 fileTypes={{ 'image/*': ['.png', '.jpg', '.jpeg'] }}
                 maxFiles={6}
-                maxSize={5 * 1024 * 1025}
                 onUpload={handleUploadImages}
               />
             </div>
