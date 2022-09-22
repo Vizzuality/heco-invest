@@ -26,10 +26,13 @@ export const OpenCallExpectedImpact: FC<OpenCallExpectedImpactProps> = ({
         <h1 className="mb-2 font-serif text-3xl font-semibold">
           <FormattedMessage defaultMessage="Expected impact" id="XgaRPC" />
         </h1>
-        <p className="text-gray-600">
+        <p className="text-gray-900">
           <FormattedMessage
-            defaultMessage="Tell us what’s the impact that you expect with this open call."
-            id="N5k7R7"
+            defaultMessage="Tell us what’s the impact that you expect with this open call. This information will be <n>public</n>."
+            id="6dk02D"
+            values={{
+              n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+            }}
           />
         </p>
       </div>

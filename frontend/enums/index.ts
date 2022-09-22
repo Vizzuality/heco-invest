@@ -47,6 +47,9 @@ export enum Paths {
   PrivacyPolicy = '/privacy-policy',
   UserInformation = '/settings/information',
   UserPassword = '/settings/password',
+  /** HIDDEN PAGES */
+  HiddenPage = '/hidden-page',
+  AccountDeleted = '/account-deleted',
 }
 
 export enum UserRoles {

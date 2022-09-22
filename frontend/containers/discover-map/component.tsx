@@ -1,5 +1,7 @@
 import { FC, useCallback, useState } from 'react';
 
+import omit from 'lodash-es/omit';
+
 import { useRouter } from 'next/router';
 
 import MapboxGLPlugin from '@vizzuality/layer-manager-plugin-mapboxgl';
@@ -12,13 +14,13 @@ import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ClusterLayer from 'components/map/layers/cluster';
 import ProjectLegend from 'components/map/project-legend';
+import ProjectMapPin from 'components/project-map-pin';
 import { ProjectMapParams } from 'types/project';
 
 import { useProjectsMap } from 'services/projects/projectService';
 
 import LocationSearcher from './location-searcher';
 import MapLayersSelector from './map-layers-selector';
-import MapPin from './pin';
 import MapPinCluster from './pin-cluster';
 import { DiscoverMapProps } from './types';
 
@@ -28,7 +30,11 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
   const [visibleLayers, setVisibleLayers] = useState<string[]>([]);
   const { layers } = useLayers();
   const { query } = useRouter();
-  const { projectsMap } = useProjectsMap(query as ProjectMapParams);
+
+  const { projectsMap } = useProjectsMap({
+    ...(omit(query, 'search') as ProjectMapParams),
+    'filter[full_text]': query.search as string,
+  });
 
   const [viewport, setViewport] = useState({});
   const [bounds, setBounds] = useState({
@@ -66,8 +72,8 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
               <ClusterLayer
                 data={projectsMap}
                 map={map}
-                MarkerComponent={<MapPin />}
-                ClusterComponent={<MapPinCluster />}
+                MarkerComponent={ProjectMapPin}
+                ClusterComponent={MapPinCluster}
                 onSelectProjectPin={onSelectProjectPin}
               />
             </>

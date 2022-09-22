@@ -3,9 +3,15 @@ import { useIntl } from 'react-intl';
 import { compact } from 'lodash-es';
 
 import { SortingOptionType } from 'components/sorting-buttons';
+import { SortingOptionKey, SortingOrderType } from 'components/sorting-buttons/types';
 import { Queries } from 'enums';
 
 export type SortingByTargetType = Queries.Project;
+
+export const defaultSorting = {
+  sortBy: 'created_at' as SortingOptionKey,
+  sortOrder: 'desc' as SortingOrderType,
+};
 
 /** Returns the sorting-by types array with translated labels  */
 export const useSortingByOptions = (target?: SortingByTargetType): SortingOptionType[] => {

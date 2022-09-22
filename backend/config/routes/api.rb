@@ -11,7 +11,7 @@ namespace :api, format: "json" do
         post :info
       end
     end
-    resource :user, only: [:create, :show] do
+    resource :user, only: [:create, :update, :show] do
       collection do
         post :change_password
       end
@@ -74,6 +74,7 @@ namespace :api, format: "json" do
         collection do
           post :transfer_ownership
           delete :favourites
+          delete :account
         end
       end
     end

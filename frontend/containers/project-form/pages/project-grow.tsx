@@ -16,10 +16,13 @@ export const ProjectGrow = ({ register, errors }: ProjectFormPagesProps<ProjectF
       <h1 className="font-serif text-3xl font-semibold mb-2.5">
         <FormattedMessage defaultMessage="How your project will grow" id="u87XOB" />
       </h1>
-      <p className="mb-10 text-gray-600">
+      <p className="mb-10 text-gray-900">
         <FormattedMessage
-          defaultMessage="Tell us what how do you expect to grow your project , how will you measure progress and impact."
-          id="SNBzCW"
+          defaultMessage="Tell us what how do you expect to grow your project , how will you measure progress and impact. This information will be <n>public</n>."
+          id="W69F0D"
+          values={{
+            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+          }}
         />
       </p>
       <form noValidate>

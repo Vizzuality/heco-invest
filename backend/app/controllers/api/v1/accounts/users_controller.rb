@@ -10,7 +10,7 @@ module API
           @users = @users.search filter_params[:full_text] if filter_params[:full_text].present?
           render json: UserSerializer.new(
             @users,
-            params: {current_user: current_user}
+            params: {current_user: current_user, current_ability: current_ability}
           ).serializable_hash
         end
 
@@ -37,6 +37,12 @@ module API
             current_user.favourite_investors.destroy_all
             current_user.favourite_open_calls.destroy_all
           end
+          head :ok
+        end
+
+        # DELETE
+        def account
+          ::Accounts::Destroy.new(current_user.account).call
           head :ok
         end
 

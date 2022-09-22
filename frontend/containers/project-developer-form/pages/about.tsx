@@ -54,10 +54,13 @@ export const About: FC<AboutProps> = ({
         <h1 className="mb-2 font-serif text-3xl font-semibold">
           <FormattedMessage defaultMessage="About your work" id="kEXoaQ" />
         </h1>
-        <p className="font-sans text-base text-gray-600">
+        <p className="font-sans text-base text-gray-900">
           <FormattedMessage
-            defaultMessage="Tell us about your work and impact priorities."
-            id="ViF88C"
+            defaultMessage="Tell us about your work and impact priorities. This information will be <n>public</n>."
+            id="EoyBnX"
+            values={{
+              n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+            }}
           />
         </p>
       </div>

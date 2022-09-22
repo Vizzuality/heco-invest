@@ -10,7 +10,7 @@ module API
         @favourite_project_developer.save
         render json: ProjectDeveloperSerializer.new(
           @project_developer,
-          params: {current_user: current_user}
+          params: {current_user: current_user, current_ability: current_ability}
         ).serializable_hash
       end
 
@@ -18,7 +18,7 @@ module API
         @favourite_project_developers.find_by(user: current_user)&.destroy!
         render json: ProjectDeveloperSerializer.new(
           @project_developer,
-          params: {current_user: current_user}
+          params: {current_user: current_user, current_ability: current_ability}
         ).serializable_hash
       end
 

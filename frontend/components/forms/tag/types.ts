@@ -30,6 +30,8 @@ export type TagProps<FormValues> = {
   invalid?: boolean;
   /** label className change to flex for labels with rows */
   flexLabel?: boolean;
+  /** Whether the tag should display the 'delete' icon */
+  showDeleteIcon?: boolean;
 } & Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   keyof RegisterOptions<FormValues, FieldPath<FormValues>>

@@ -18,10 +18,13 @@
       <th>
         <%= sort_link @q, :priority_landscape_name, t("backoffice.projects.index.priority_landscape") %>
       </th>
-      <th>
+      <th class="min-w-[10rem]">
         <%= sort_link @q, :verified, t("backoffice.common.status") %>
       </th>
       <th>
+      </th>
+      <th class="opacity-25">
+        <%= svg "menu" %>
       </th>
     </tr>
   </thead>
@@ -37,6 +40,27 @@
           <%= status_tag :unverified, t('backoffice.common.unverified') unless p.verified?  %>
         </td>
         <td><%= link_to t("backoffice.common.edit"), edit_backoffice_project_path(p.id), class: "link-button" %></td>
+        <td>
+          <%= render "menu" do %>
+            <% if p.verified? %>
+              <%= render "backoffice/base/menu/item" do %>
+                <%= button_to t("backoffice.common.unverify"), unverify_backoffice_project_path(p.id), method: :post %>
+              <% end %>
+            <% end %>
+            <% unless p.verified? %>
+              <%= render "backoffice/base/menu/item" do %>
+                <%= button_to t("backoffice.common.verify"), verify_backoffice_project_path(p.id), method: :post %>
+              <% end %>
+            <% end %>
+            <%= render "backoffice/base/menu/item" do %>
+              <%= link_to t("backoffice.common.delete"), backoffice_project_path(p.id),
+                 data: {
+                   turbo_method: :delete,
+                   turbo_confirm: t("backoffice.messages.delete_confirmation", model: t("backoffice.common.project").downcase)
+                 } %>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

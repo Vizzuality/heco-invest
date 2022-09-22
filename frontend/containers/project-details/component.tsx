@@ -115,6 +115,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
       </div>
       <div className="relative p-10">
         <div className="flex gap-2 text-sm">
+          {/* VERIFICATION PROJECTS: HIDDEN
           {project.trusted && (
             <>
               <span
@@ -131,6 +132,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
               </span>
             </>
           )}
+          */}
           {category && (
             <div title={intl.formatMessage({ defaultMessage: 'Project category', id: '/plMvw' })}>
               <CategoryTag size="smallest" category={category.id as CategoryType}>
@@ -141,7 +143,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
         </div>
         <h1 className="mt-6 mb-2 font-serif text-3xl">
           <Link href={link}>
-            <a className="px-2 -mx-2 text-black transition-all rounded-full hover:text-green-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark">
+            <a className="text-black transition-all duration-500 ease-in-out border-b-2 border-b-transparent hover:border-b-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark">
               {project.name}
             </a>
           </Link>
@@ -197,11 +199,6 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
           </span>
           <span>{projectDeveloper.name}</span>
         </div>
-        <FavoriteContact
-          className="mt-10 mb-6"
-          project={project}
-          onFavoriteClick={handleFavoriteClick}
-        />
         <div className="my-2 text-gray-900" aria-describedby="estimated-impact">
           <h2 id="estimated-impact" className="text-xl font-semibold">
             <FormattedMessage defaultMessage="Estimated impact" id="Jl9QMO" />
@@ -222,12 +219,12 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
           </h2>
           <SDGs className="mt-3" size="smallest" sdgs={sdgs as Enum[]} />
         </div>
-        <FavoriteContact
-          className="mt-4 -mb-4"
-          project={project}
-          onFavoriteClick={handleFavoriteClick}
-        />
       </div>
+      <FavoriteContact
+        className="sticky bottom-0 w-full px-8 py-4 bg-white shadow-lg drop-shadow"
+        project={project}
+        onFavoriteClick={handleFavoriteClick}
+      />
     </div>
   );
 };

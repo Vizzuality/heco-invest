@@ -44,17 +44,20 @@
       },
       "projects": {
         "data": [
-
+          {
+            "id": "b838d0cf-02b2-45a3-ba97-5c086d23278d",
+            "type": "project"
+          }
         ]
       },
       "involved_projects": {
         "data": [
           {
-            "id": "3d79c941-74b7-4b0e-83d4-27fab97d6672",
+            "id": "600f6e89-31e7-45f0-b025-42cc05bdb22b",
             "type": "project"
           },
           {
-            "id": "600f6e89-31e7-45f0-b025-42cc05bdb22b",
+            "id": "098ec756-7903-45b3-aca3-6223a04c02b5",
             "type": "project"
           }
         ]

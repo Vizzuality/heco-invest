@@ -3,6 +3,7 @@ require "swagger_helper"
 RSpec.describe "API V1 Project Developers", type: :request do
   before_all do
     @project_developer = create(:project_developer, :with_involved_projects, number_of_projects: 2, categories: ["tourism-and-recreation"])
+    @draft_project = create(:project, :draft, project_developer: @project_developer)
     create_list(:project_developer, 6, categories: %w[forestry-and-agroforestry non-timber-forest-production])
     @unapproved_project_developer = create(:project_developer, account: create(:account, review_status: :unapproved, users: [create(:user)]))
     @approved_account = create(:account, review_status: :approved, users: [create(:user)])
@@ -46,6 +47,11 @@ RSpec.describe "API V1 Project Developers", type: :request do
 
         it "ignores unapproved record" do
           expect(response_json["data"].pluck("id")).not_to include(@unapproved_project_developer.id)
+        end
+
+        it "ignores draft projects defined through relationships" do
+          project_ids = response_json["data"].map { |d| d["relationships"]["projects"]["data"].pluck("id") }.flatten
+          expect(project_ids).not_to include(@draft_project.id)
         end
 
         context "with sparse fieldset" do

@@ -1,10 +1,14 @@
-import { PointFeature } from 'supercluster';
-import { string } from 'yup';
-
 import { ValidGeometryType } from 'containers/forms/geometry/types';
 import { ProjectGalleryImageType } from 'containers/forms/project-gallery/project-gallery-image/types';
 
-import { DevelopmentStages, Languages, TicketSizes, ProjectStatus } from 'enums';
+import {
+  DevelopmentStages,
+  Languages,
+  TicketSizes,
+  ProjectStatus,
+  ImpactAreas,
+  Impacts,
+} from 'enums';
 
 import { Locations } from './locations';
 
@@ -158,6 +162,20 @@ export type ProjectMapParams = {
   'filter[sdg]'?: number;
   'filter[instrument_type]'?: string;
   'filter[ticket_size]'?: string;
-  'filter[only_verified]'?: string;
+  //'filter[only_verified]'?: string; VERIFICATION FILTERS: HIDDEN
   'filter[full_text]'?: string;
+};
+
+export type ProjectImpactScores = {
+  biodiversity: number | null;
+  climate: number | null;
+  water: number | null;
+  community: number | null;
+  total: number | null;
+};
+
+export type ProjectImpactAreasScores = {
+  municipality: ProjectImpactScores;
+  hydrobasin: ProjectImpactScores;
+  priority_landscape: ProjectImpactScores;
 };

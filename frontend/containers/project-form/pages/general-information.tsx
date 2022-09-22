@@ -112,7 +112,7 @@ const GeneralInformation = ({
       <h1 className="font-serif text-3xl font-semibold mb-2.5">
         <FormattedMessage defaultMessage="Project information" id="5c08Qp" />
       </h1>
-      <p className="mb-10 text-gray-600">
+      <p className="mb-10 text-gray-900">
         <FormattedMessage
           defaultMessage="This information will be visible in the project page when you launch it."
           id="avVMND"

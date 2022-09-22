@@ -11432,10 +11432,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chart.js@npm:^3.7.1":
-  version: 3.7.1
-  resolution: "chart.js@npm:3.7.1"
-  checksum: f9d118d3b7dd3c36b6da7a8d71ac9e5d9673b81095cc66c3f61ff91674e20020c6700f8c9c6f93713fa8474eb471ded106114346ccc6afa88b4a7d0eb73dcea4
+"chart.js@npm:^3.9.1":
+  version: 3.9.1
+  resolution: "chart.js@npm:3.9.1"
+  checksum: 9ab0c0ac01215af0b3f020f2e313030fd6e347b48ed17d5484ee9c4e8ead45e78ae71bea16c397621c386b409ce0b14bf17f9f6c2492cd15b56c0f433efdfff6
   languageName: node
   linkType: hard
 
@@ -15057,7 +15057,7 @@ __metadata:
     "@vizzuality/layer-manager-react": ^2.0.1
     autoprefixer: ^10.4.2
     axios: ^0.21.1
-    chart.js: ^3.7.1
+    chart.js: ^3.9.1
     classnames: ^2.3.1
     d3-ease: ^2.0.0
     dayjs: ^1.11.4

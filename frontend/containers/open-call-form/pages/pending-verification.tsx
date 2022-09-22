@@ -1,3 +1,5 @@
+// VERIFICATION OPEN CALLS: HIDDEN
+// @ts-nocheck
 import { FormattedMessage } from 'react-intl';
 
 import Image from 'next/image';

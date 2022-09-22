@@ -13,4 +13,8 @@ export type PublicPageCardProps = {
   quantity: number;
   // The filter to add to the card link.
   filterName?: string;
+  /** Callback executed when the cursor enters the card */
+  onMouseEnter?: () => void;
+  /** Callback executed when the cursor leaves the card */
+  onMouseLeave?: () => void;
 };

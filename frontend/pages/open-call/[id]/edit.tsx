@@ -101,9 +101,6 @@ const EditOpenCall: PageComponent<EditOpenCallProps, FormPageLayoutProps> = ({
         onComplete={handleOnComplete}
         initialValues={openCall}
         isLoading={!openCall && isFetchingProject}
-        // The language of the content will be the same as the language of the account, which the
-        // API will automatically set
-        locale={null}
         enums={enums as GroupedEnums}
       />
     </ProtectedPage>

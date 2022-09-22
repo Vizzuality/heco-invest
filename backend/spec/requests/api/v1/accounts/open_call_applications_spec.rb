@@ -204,14 +204,6 @@ RSpec.describe "API V1 Account Open Call Applications", type: :request do
           }.to change(OpenCallApplication, :count).by(1)
           expect(response.body).to match_snapshot("api/v1/account/open-call-applications-create")
         end
-
-        it "saves data to account language attributes" do |example|
-          submit_request example.metadata
-          open_call = OpenCallApplication.find response_json["data"]["id"]
-          OpenCallApplication.translatable_attributes.each do |attr|
-            expect(open_call.public_send("#{attr}_#{user.account.language}")).to eq(open_call_application_params[attr])
-          end
-        end
       end
 
       response "403", :forbidden do
@@ -361,13 +353,6 @@ RSpec.describe "API V1 Account Open Call Applications", type: :request do
 
         it "matches snapshot", generate_swagger_example: true do
           expect(response.body).to match_snapshot("api/v1/account/open-call-applications-update")
-        end
-
-        it "saves data to account language attributes" do
-          open_call_application.reload
-          OpenCallApplication.translatable_attributes.each do |attr|
-            expect(open_call_application.public_send("#{attr}_#{user.account.language}")).to eq(open_call_application_params[attr])
-          end
         end
       end
 

@@ -31,6 +31,7 @@ Closed.args = {
   } as unknown as OpenCallType,
 };
 
+/* VERIFICATION OPEN CALLS: HIDDEN
 export const Verified: Story<OpenCallCardProps> = Template.bind({});
 Verified.args = {
   openCall: {
@@ -39,3 +40,4 @@ Verified.args = {
     trusted: true,
   } as unknown as OpenCallType,
 };
+*/

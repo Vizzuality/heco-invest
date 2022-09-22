@@ -19,13 +19,14 @@ import { useEnums } from 'services/enums/enumService';
 
 import type { OpenCallCardProps } from './types';
 
-export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardProps) => {
+export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: OpenCallCardProps) => {
   const {
     slug,
     name,
     description,
     status,
-    trusted,
+    // VERIFICATION OPEN CALLS: HIDDEN
+    // trusted,
     investor,
     instrument_types,
     maximum_funding_per_project: maxFunding,
@@ -76,7 +77,9 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardPr
     .map(({ name }) => name);
 
   const isClosed = status === OpenCallStatus.Closed;
-  const showRibbon = trusted || isClosed;
+  // VERIFICATION OPEN CALLS: HIDDEN
+  // const showRibbon = trusted || isClosed;
+  const showRibbon = isClosed;
 
   return (
     <div
@@ -86,6 +89,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardPr
         'cursor-pointer transition rounded-2xl': true,
         'hover:ring-1 hover:ring-green-dark': true,
         'ring-2 ring-green-dark': isFocusWithin,
+        [className]: !!className,
       })}
       {...pressProps}
       {...focusWithinProps}
@@ -97,11 +101,14 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardPr
               'absolute py-1 pl-6 pr-8 text-xs text-center origin-top-left rotate-45  w-60 -top-10 -right-28':
                 true,
               'text-gray-600 bg-gray-300': isClosed,
-              'bg-green-dark text-green-light': !isClosed && trusted,
+              // VERIFICATION OPEN CALLS: HIDDEN
+              // 'bg-green-dark text-green-light': !isClosed && trusted,
             })}
           >
             {isClosed && <FormattedMessage defaultMessage="Open call ended" id="vZgJJu" />}
+            {/* VERIFICATION OPEN CALLS: HIDDEN
             {!isClosed && trusted && <FormattedMessage defaultMessage="Verified" id="Z8971h" />}
+            */}
           </span>
         )}
         <div className="flex items-start gap-4">
@@ -147,7 +154,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardPr
           {truncatedDescription}
         </div>
         <div
-          className="flex items-center justify-between mt-2"
+          className="flex items-center justify-between gap-2 mt-2"
           aria-label={intl.formatMessage({
             defaultMessage: 'Investor information',
             id: '68i9X8',
@@ -170,7 +177,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ openCall }: OpenCallCardPr
           </span>
           {tags && (
             <span
-              className="flex flex-wrap items-center gap-2"
+              className="flex flex-wrap items-center justify-end gap-2"
               role="group"
               aria-label={intl.formatMessage({
                 defaultMessage: 'Expects to have impact on',

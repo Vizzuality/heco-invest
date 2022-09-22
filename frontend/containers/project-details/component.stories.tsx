@@ -44,6 +44,7 @@ Default.parameters = {
   mockData: mockApiData,
 };
 
+/* VERIFICATION PROJECTS: HIDDEN
 export const Verified: Story<ProjectDetailsProps> = Template.bind({});
 
 Verified.args = {
@@ -57,6 +58,7 @@ Verified.args = {
 Verified.parameters = {
   mockData: mockApiData,
 };
+*/
 
 export const LookingForFunding: Story<ProjectDetailsProps> = Template.bind({});
 

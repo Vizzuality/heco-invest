@@ -48,8 +48,8 @@ export const FavoritesInvestorsPage: PageComponent<
     <>
       <div className="top-0 left-0 flex justify-between w-full pb-1 pr-2 mx-1 mb-4 md:pt-10 md:-mt-10 md:px-1 lg:z-20 lg:sticky bg-background-dark">
         <div className="font-medium">
-          <FormattedMessage defaultMessage="Investors" id="zdIaHp" />{' '}
-          {meta?.total && `(${meta?.total})`}
+          <FormattedMessage defaultMessage="Investors" id="zdIaHp" /> (
+          {meta?.total && `${meta?.total}`})
         </div>
       </div>
       <div className="flex flex-col pt-2 md:pl-1 md:-mr-1">

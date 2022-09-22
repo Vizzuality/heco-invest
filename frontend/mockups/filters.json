@@ -1,0 +1,208 @@
+[
+  {
+    "id": "sustainable-agrosystems",
+    "type": "category",
+    "name": "Agrossistemas sustentáveis",
+    "color": "#E7C343",
+    "description": "Agricultura sustentável e regenerativa, pesca e aquicultura, bem como a fabricação de subprodutos derivados."
+  },
+  {
+    "id": "tourism-and-recreation",
+    "type": "category",
+    "name": "Turismo e Lazer",
+    "color": "#4492E5",
+    "description": "Alojamento, viagens, transporte, hospitalidade, experiências turísticas e projetos de ecoturismo."
+  },
+  {
+    "id": "forestry-and-agroforestry",
+    "type": "category",
+    "name": "Silvicultura e Agrofloresta",
+    "color": "#E57D57",
+    "description": "Práticas sustentáveis de extração de madeira e gestão florestal, incluindo reflorestamento e restauração."
+  },
+  {
+    "id": "non-timber-forest-production",
+    "type": "category",
+    "name": "Produção Florestal Não Madeireira",
+    "color": "#404B9A",
+    "description": "Produção de produtos de saúde, bem-estar e cosméticos; arte, vestuário e produtos artesanais; produção de alimentos e bebidas."
+  },
+  {
+    "id": "human-capital-and-inclusion",
+    "type": "category",
+    "name": "Capital Humano e Inclusão",
+    "color": "#A0616A",
+    "description": "Acesso adequado a educação de qualidade, serviços de saúde apropriados e oportunidades de emprego formal que respondam a diversos perfis e sejam adaptados à diversidade cultural regional."
+  },
+  {
+    "id": "small-grants",
+    "type": "ticket_size",
+    "name": "Pequenas Subvenções",
+    "description": "<US$25k"
+  },
+  {
+    "id": "prototyping",
+    "type": "ticket_size",
+    "name": "Criação de Protótipos",
+    "description": "US$25k - 150k"
+  },
+  {
+    "id": "validation",
+    "type": "ticket_size",
+    "name": "Validação",
+    "description": "US$150k - 750k"
+  },
+  {
+    "id": "scaling",
+    "type": "ticket_size",
+    "name": "Ampliando",
+    "description": ">US$750k"
+  },
+  {
+    "id": "grant",
+    "type": "instrument_type",
+    "name": "Bolsa",
+    "description": "As bolsas ou doações de cooperação técnica são recursos concedidos por uma entidade para cumprir uma finalidade bem definida. Em geral, são recursos não reembolsáveis ​​que se destinam especialmente a projetos ou empreendimentos em fase inicial de desenvolvimento."
+  },
+  {
+    "id": "loan",
+    "type": "instrument_type",
+    "name": "Empréstimo",
+    "description": "Um empréstimo é uma operação em que uma entidade financeira concede uma quantia pré-definida de dinheiro para desenvolver um determinado projeto. A instituição ou empresa que recebe este empréstimo tem a obrigação de o reembolsar num determinado prazo e de pagar as comissões, despesas e juros acordados."
+  },
+  {
+    "id": "equity",
+    "type": "instrument_type",
+    "name": "Investimento de Capital",
+    "description": "Um investimento de capital consiste na aquisição, por uma entidade especializada em capital privado, de um pacote de ações de uma empresa ou empreendimento. A empresa de capital privado torna-se, assim, um dos proprietários da empresa."
+  },
+  {
+    "id": "biodiversity",
+    "type": "impact",
+    "name": "Biodiversidade",
+    "description": "Impacto de projetos na conservação da biodiversidade, calculado a partir de indicadores de endemismo, conservação/restauração de terras, conectividade e desenvolvimento de projetos sociais sustentáveis."
+  },
+  {
+    "id": "climate",
+    "type": "impact",
+    "name": "Clima",
+    "description": "Impacto de projetos de redução de emissões de carbono do setor fundiário relacionados com desflorestação/degradação, bem como a aplicação de medidas florestais sustentáveis."
+  },
+  {
+    "id": "water",
+    "type": "impact",
+    "name": "Água",
+    "description": "Impacto de projetos que gerem o ciclo, qualidade e disponibilidade da água, bem como a gestão dos riscos associados."
+  },
+  {
+    "id": "community",
+    "type": "impact",
+    "name": "Comunidade",
+    "description": "Impacto de projetos para garantir e melhorar a saúde física, mental, econômica e espiritual das comunidades, de forma equitativa e inclusiva."
+  },
+  {
+    "id": "1",
+    "type": "sdg",
+    "name": "Erradicar a pobreza"
+  },
+  {
+    "id": "2",
+    "type": "sdg",
+    "name": "Erradicar a fome"
+  },
+  {
+    "id": "3",
+    "type": "sdg",
+    "name": "Saúde de qualidade"
+  },
+  {
+    "id": "4",
+    "type": "sdg",
+    "name": "Educação de qualidade"
+  },
+  {
+    "id": "5",
+    "type": "sdg",
+    "name": "Igualdade de género"
+  },
+  {
+    "id": "6",
+    "type": "sdg",
+    "name": "Água potável e saneamento"
+  },
+  {
+    "id": "7",
+    "type": "sdg",
+    "name": "Energias renováveis e acessíveis"
+  },
+  {
+    "id": "8",
+    "type": "sdg",
+    "name": "Trabalho digno e crescimento económico"
+  },
+  {
+    "id": "9",
+    "type": "sdg",
+    "name": "Indústria, inovação e infraestruturas"
+  },
+  {
+    "id": "10",
+    "type": "sdg",
+    "name": "Reduzir as desigualdades"
+  },
+  {
+    "id": "11",
+    "type": "sdg",
+    "name": "Cidades e comunidades sustentáveis"
+  },
+  {
+    "id": "12",
+    "type": "sdg",
+    "name": "Produção e consumo sustentáveis"
+  },
+  {
+    "id": "13",
+    "type": "sdg",
+    "name": "Ação climática"
+  },
+  {
+    "id": "14",
+    "type": "sdg",
+    "name": "Proteger a vida marinha"
+  },
+  {
+    "id": "15",
+    "type": "sdg",
+    "name": "Proteger a vida terrestre"
+  },
+  {
+    "id": "16",
+    "type": "sdg",
+    "name": "Paz, justiça e instituições eficazes"
+  },
+  {
+    "id": "17",
+    "type": "sdg",
+    "name": "Parcerias para a implementação dos objetivos"
+  },
+  {
+    "id": "b8eba9d3-1618-401c-b85c-c287941f6fe9",
+    "type": "priority_landscape",
+    "name": "Orinoquía"
+  },
+  {
+    "id": "6f827753-3c27-4343-bc39-0c81a1875488",
+    "type": "priority_landscape",
+    "name": "Coração da Amazônia"
+  },
+  {
+    "id": "35490999-6962-4825-8ca4-1862c1a5e45d",
+    "type": "priority_landscape",
+    "name": "Maciço Piedemonte Amazônico"
+  },
+  {
+    "id": "135e49c7-0d29-455f-8700-33c573772b41",
+    "type": "priority_landscape",
+    "name": "Transição Orinoquía"
+  }
+]

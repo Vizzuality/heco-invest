@@ -55,24 +55,24 @@ export const Navigation: FC<NavigationProps> = ({ className, stats }: Navigation
   }, [deleteFavorites]);
 
   return (
-    <>
+    <div className={className}>
       <BadgeNavigation
-        className={className}
         orientation="vertical"
         badgePosition="left"
         theme="simple"
+        type="pill"
         activeId={activeId}
         items={navigationItems}
       />
       <Button
         size="smallest"
         theme="naked"
-        className="mt-6 text-sm underline text-green-dark focus-visible:outline-green-dark"
+        className="mt-6 ml-6 text-sm underline text-green-dark focus-visible:outline-green-dark"
         onClick={handleRemoveAllClick}
       >
         <FormattedMessage defaultMessage="Remove all" id="jNai7b" />
       </Button>
-    </>
+    </div>
   );
 };
 

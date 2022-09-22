@@ -17,10 +17,13 @@ const OtherInformation = ({ register, errors }: ProjectFormPagesProps<ProjectFor
       <h1 className="font-serif text-3xl font-semibold mb-2.5">
         <FormattedMessage defaultMessage="Other information" id="kX7oGR" />
       </h1>
-      <p className="mb-10 text-gray-600">
+      <p className="mb-10 text-gray-900">
         <FormattedMessage
-          defaultMessage="This description should sumarize your project in a few words."
-          id="BcZVZW"
+          defaultMessage="This description should sumarize your project in a few words. This information will be <n>public</n>."
+          id="8SBW1H"
+          values={{
+            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+          }}
         />
       </p>
       <form noValidate>

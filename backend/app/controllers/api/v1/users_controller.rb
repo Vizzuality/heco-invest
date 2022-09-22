@@ -1,14 +1,19 @@
 module API
   module V1
     class UsersController < BaseController
-      before_action :authenticate_user!, only: [:show, :change_password]
+      before_action :authenticate_user!, only: [:update, :show, :change_password]
 
       def create
-        user = params[:invitation_token].present? ? preload_invited_user : User.new(user_params)
+        user = params[:invitation_token].present? ? preload_invited_user : User.new(create_params)
         user.skip_confirmation!
         user.save!
         sign_in user
         render json: UserSerializer.new(user)
+      end
+
+      def update
+        current_user.update! update_params
+        render json: UserSerializer.new(current_user).serializable_hash
       end
 
       def show
@@ -26,8 +31,12 @@ module API
 
       private
 
-      def user_params
+      def create_params
         params.permit(:first_name, :last_name, :email, :password, :ui_language)
+      end
+
+      def update_params
+        params.permit :first_name, :last_name
       end
 
       def change_password_params
@@ -38,7 +47,7 @@ module API
         User.find_by_invitation_token(params[:invitation_token], true).tap do |user|
           raise ActiveRecord::RecordNotFound if user.blank? || user.invited_by.blank?
 
-          user.assign_attributes user_params.except(:email)
+          user.assign_attributes create_params.except(:email)
           user.skip_confirmation!
         end
       end
