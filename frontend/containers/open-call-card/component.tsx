@@ -31,7 +31,6 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
     instrument_types,
     maximum_funding_per_project: maxFunding,
     closing_at: closingAt,
-    picture: pictureProp,
   } = openCall;
   const placeholderPicture = '/images/placeholders/profile-logo.png';
 
@@ -41,7 +40,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
     data: { instrument_type: allInstrumentTypes, ticket_size: allTicketSizes, impact: allImpacts },
   } = useEnums();
 
-  const [picture, setPicture] = useState<string>(pictureProp?.small || placeholderPicture);
+  const [picture, setPicture] = useState<string>(investor.picture?.small || placeholderPicture);
   const [isFocusWithin, setIsFocusWithin] = useState<boolean>(false);
 
   const link = `${Paths.OpenCall}/${slug}`;
@@ -167,7 +166,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
                 src={picture}
                 alt={intl.formatMessage(
                   { defaultMessage: '{name} picture', id: 'rLzWx9' },
-                  { name }
+                  { name: investor.name }
                 )}
                 layout="fill"
                 objectFit="cover"
