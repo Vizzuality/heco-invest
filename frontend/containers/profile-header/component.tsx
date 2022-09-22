@@ -63,7 +63,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                   { organization: title }
                 )}
                 layout="fill"
-                objectFit="cover"
+                objectFit="contain"
                 onError={() => setLogo('/images/placeholders/profile-logo.png')}
               />
             </div>

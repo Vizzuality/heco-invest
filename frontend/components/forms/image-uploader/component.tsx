@@ -87,7 +87,7 @@ export const ImageUploader = <FormValues extends FieldValues>({
             src={imagePreview || defaultImage || '/images/avatar.svg'}
             alt={formatMessage({ defaultMessage: 'Preview', id: 'TJo5E6' })}
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
           />
         </div>
       )}

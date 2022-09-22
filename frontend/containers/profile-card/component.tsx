@@ -91,7 +91,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
               src={picture}
               alt={intl.formatMessage({ defaultMessage: '{name} picture', id: 'rLzWx9' }, { name })}
               layout="fill"
-              objectFit="cover"
+              objectFit="contain"
               onError={() => setPicture(placeholderPicture)}
             />
           </div>
