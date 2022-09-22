@@ -100,6 +100,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     name: projectDeveloper.name,
     email: projectDeveloper.contact_email,
     phone: projectDeveloper.contact_phone,
+    picture: projectDeveloper.picture?.medium,
   };
 
   const tagsRows: TagsGridRowType[] = [
