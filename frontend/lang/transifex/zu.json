@@ -524,9 +524,6 @@
   "8i6S4q": {
     "string": "Connecting investors, donors and philanthropists with carefully identified investment opportunities."
   },
-  "8j91Nj": {
-    "string": "In the {area} the project has higher impact on <b>{impact}</b> and has an <b>impact score</b> of {score}."
-  },
   "8mCCtS": {
     "string": "Ending soon"
   },
@@ -1259,6 +1256,9 @@
   },
   "NYErt1": {
     "string": "Go to previous page"
+  },
+  "NdyMBg": {
+    "string": "In the {area} the highest impact of the project is on <b>{impactDimension}</b> with a <b>score</b> of {score}."
   },
   "NjKSap": {
     "string": "Online presence"
