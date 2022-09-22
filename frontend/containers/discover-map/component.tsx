@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { FC, useCallback, useMemo, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 
@@ -31,7 +31,6 @@ import { DiscoverMapProps } from './types';
 const cartoProvider = new CartoProvider();
 
 export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
-  const [visibleLayers, setVisibleLayers] = useState<string[]>([]);
   const { layers } = useLayers();
   const { query } = useRouter();
 
@@ -52,11 +51,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
     },
   });
 
-  const activeLayers = watch('activeLayers');
-
-  useEffect(() => {
-    setVisibleLayers(activeLayers);
-  }, [activeLayers]);
+  const visibleLayers = watch('activeLayers');
 
   const handleViewportChange = useCallback((vw) => {
     setViewport(vw);
@@ -68,14 +63,14 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
 
   const layerLegends: Legend[] = useMemo(
     () =>
-      layers
-        ?.filter(({ id }) => visibleLayers.includes(id))
-        .map(({ name, legend: { type, items }, id }) => ({
-          type: type as LegendType,
-          items,
-          name,
+      visibleLayers.map((layer) => {
+        const {
+          legend: { items, type },
           id,
-        })),
+          name,
+        } = layers.find(({ id }) => layer === id);
+        return { items, type: type as LegendType, id, name };
+      }),
     [layers, visibleLayers]
   );
 
@@ -119,7 +114,6 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           <MapLayersSelector
             initialActiveLayers={visibleLayers}
             className="pointer-events-auto"
-            onActiveLayersChange={setVisibleLayers}
             register={register}
           />
           <LocationSearcher
@@ -128,7 +122,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           />
         </div>
 
-        <Controls className="absolute h-full bottom-4 right-4">
+        <Controls className="absolute h-fit max-h-[45%] bottom-4 right-4 overflow-y-auto">
           <LayerLegend
             className="bg-white"
             onCloseLegend={(id) =>
@@ -137,7 +131,6 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
                 visibleLayers.filter((layer) => layer !== id)
               )
             }
-            maxHeight="50%"
             layersLegends={layerLegends}
           />
         </Controls>

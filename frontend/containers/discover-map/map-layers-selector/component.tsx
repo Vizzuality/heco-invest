@@ -17,7 +17,7 @@ import Switch from 'components/forms/switch';
 
 import LayerTooltip from '../layer-tooltip';
 
-import type { MapLayersSelectorProps, MapLayersSelectorForm, SelectedLayerTooltip } from './types';
+import type { MapLayersSelectorProps, SelectedLayerTooltip } from './types';
 
 export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   className,

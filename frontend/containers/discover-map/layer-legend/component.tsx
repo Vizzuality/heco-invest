@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, FC } from 'react';
+import { useState, useCallback, FC } from 'react';
 
 import { ChevronDown as ChevronDownIcon } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
@@ -24,19 +24,8 @@ export const LayerLegend: FC<LayerLegendProps> = ({
   maxHeight,
   onCloseLegend,
 }) => {
-  const [sortArray, setSortArray] = useState([]);
-  // Sorted
-  const sortedItems = useMemo(() => {
-    const itms = layersLegends.sort((a, b) => sortArray.indexOf(a.id) - sortArray.indexOf(b.id));
-    return itms;
-  }, [layersLegends, sortArray]);
-
   const id = useId();
 
-  // Callbacks
-  const onChangeOrder = useCallback((ids) => {
-    setSortArray(ids);
-  }, []);
   const [active, setActive] = useState(true);
 
   const onToggleActive = useCallback(() => {
@@ -51,7 +40,7 @@ export const LayerLegend: FC<LayerLegendProps> = ({
   return (
     <div
       className={cx({
-        'flex flex-col items-end justify-end h-full gap-px bg-transparent': true,
+        'flex flex-col items-end h-full gap-px bg-transparent pl-4': true,
         [className]: !!className,
       })}
     >
@@ -60,11 +49,12 @@ export const LayerLegend: FC<LayerLegendProps> = ({
         size="smallest"
         aria-controls={id}
         aria-expanded={active}
-        className="flex items-center justify-center w-8 h-8 bg-white rounded shadow-xl focus-visible:outline-green-dark"
+        className="fixed flex items-center justify-center w-8 h-8 bg-white rounded -translate-y-[34px] button focus-visible:outline-green-dark shadow"
         onClick={onToggleActive}
       >
         <span className="sr-only">
-          <FormattedMessage defaultMessage="Legend" id="iZuO+L" />
+          {!active && <FormattedMessage defaultMessage="Show legends" id="zj3FuD" />}
+          {active && <FormattedMessage defaultMessage="Hide legends" id="WKPQta" />}
         </span>
         <Icon
           aria-hidden={true}
@@ -81,11 +71,11 @@ export const LayerLegend: FC<LayerLegendProps> = ({
         animate={active ? 'open' : 'closed'}
         transition={{ duration: 0.6 }}
         variants={legendVariants}
-        className="w-56 z-10 bg-transparent shadow-xl text-xs flex flex-col lg:min-w-[280px] h-full overflow-y-auto"
+        className="w-56 z-10 bg-transparent shadow-xl text-xs flex flex-col lg:min-w-[280px] h-full overflow-hidden"
         style={{ maxHeight }}
       >
-        <Legend onChangeOrder={onChangeOrder}>
-          {sortedItems.map((i) => {
+        <Legend>
+          {layersLegends.map((i) => {
             const { type, items, id, name } = i;
             return (
               <LegendItem
@@ -115,7 +105,7 @@ export const LayerLegend: FC<LayerLegendProps> = ({
             );
           })}
         </Legend>
-        <ProjectLegend className="bg-white rounded" />
+        <ProjectLegend className="bg-white rounded shadow" />
       </motion.div>
     </div>
   );

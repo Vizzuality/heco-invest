@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import { Story } from '@storybook/react/types-6-0';
 
@@ -16,23 +16,11 @@ export default {
 };
 
 const Template: Story<LegendProps> = (args) => {
-  const [sortArray, setSortArray] = useState([]);
   const [arrItems, setArrItems] = useState(ITEMS);
 
-  // Sorted
-  const sortedItems = useMemo(() => {
-    const itms = arrItems.sort((a, b) => sortArray.indexOf(a.id) - sortArray.indexOf(b.id));
-    return itms;
-  }, [arrItems, sortArray]);
-
-  // Callbacks
-  const onChangeOrder = useCallback((ids) => {
-    setSortArray(ids);
-  }, []);
-
   return (
-    <Legend {...args} onChangeOrder={onChangeOrder}>
-      {sortedItems.map((i) => {
+    <Legend {...args}>
+      {arrItems.map((i) => {
         const { type, items, id } = i;
         return (
           <LegendItem
