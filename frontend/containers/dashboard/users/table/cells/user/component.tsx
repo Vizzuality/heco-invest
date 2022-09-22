@@ -13,13 +13,15 @@ export const CellUser = ({ row }: CellUserProps) => {
   } = row;
   return (
     <div className="flex items-center space-x-6">
-      <Image
-        src={picture || DEFAULT_IMAGE_PNG}
-        alt={first_name}
-        width={32}
-        height={32}
-        className="rounded-full"
-      />
+      <div className="flex-shrink-0">
+        <Image
+          src={picture || DEFAULT_IMAGE_PNG}
+          alt={first_name}
+          width={32}
+          height={32}
+          className="rounded-full"
+        />
+      </div>
 
       <p>{`${first_name || ''} ${last_name || ''}`}</p>
     </div>
