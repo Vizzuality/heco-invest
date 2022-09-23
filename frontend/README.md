@@ -45,9 +45,10 @@ Below is a description of each of the keys.
 | NEXT_PUBLIC_FRONTEND_URL        | Complete URL from which the front-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com) |
 | NEXT_PUBLIC_BACKEND_URL         | Complete URL from which the back-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com)  |
 | NEXT_PUBLIC_PROXY_BACKEND       | Indicates whether the back-end application is proxied through the front-end application                                                  |
-| NEXT_PUBLIC_GOOGLE_ANALYTICS    | Google Analytics' measurement ID (Google Tag Manager)                                                                                    |
+| NEXT_PUBLIC_GOOGLE_ANALYTICS    | Optional − Google Analytics' measurement ID (Google Tag Manager)                                                                         |
+| NEXT_PUBLIC_HOTJAR_SITE_ID      | Optional − Hotjar's site ID                                                                                                              |
 | NEXT_PUBLIC_GOOGLE_MAPS_API_KEY | Key for Google Maps - Places API                                                                                                         |
-| NEXT_PUBLIC_MAPBOX_API_TOKEN | Mapbox's account API access token                                                                                                           |
+| NEXT_PUBLIC_MAPBOX_API_TOKEN    | Mapbox's account API access token                                                                                                        |
 
 ## CI/CD
 
