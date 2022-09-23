@@ -1,7 +1,6 @@
 export type SortingOptionKey =
   | 'name'
   | 'created_at'
-  | 'municipality_total_impact'
   | 'municipality_biodiversity_impact'
   | 'municipality_climate_impact'
   | 'municipality_water_impact'

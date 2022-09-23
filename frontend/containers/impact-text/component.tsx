@@ -55,12 +55,15 @@ export const ImpactText: FC<ImpactTextProps> = ({
     }
   }, [area, intl]);
 
-  const impactStr = useMemo(
-    () => allImpacts?.find((impact) => highestImpactId === impact.id)?.name,
-    [allImpacts, highestImpactId]
-  );
+  const [highestImpactDimension, highestImpactScore] = useMemo(() => {
+    const highestImpact = allImpacts?.find((impact) => highestImpactId === impact.id);
 
-  const impactScore = useMemo(() => impact?.total?.toFixed(1) ?? null, [impact]);
+    if (!highestImpact) {
+      return ['−', '0'];
+    }
+
+    return [highestImpact.name, impact[highestImpactId].toFixed(1) ?? '0'];
+  }, [allImpacts, impact, highestImpactId]);
 
   if (isLoadingAllImpacts) return null;
 
@@ -81,12 +84,12 @@ export const ImpactText: FC<ImpactTextProps> = ({
         )}
         {highestImpactValue > 0 && (
           <FormattedMessage
-            defaultMessage="In the {area} the project has higher impact on <b>{impact}</b> and has an <b>impact score</b> of {score}. "
-            id="8j91Nj"
+            defaultMessage="In the {area} the highest impact of the project is on <b>{impactDimension}</b> with a <b>score</b> of {score}."
+            id="NdyMBg"
             values={{
               area: impactAreaStr,
-              impact: impactStr,
-              score: impactScore,
+              impactDimension: highestImpactDimension,
+              score: highestImpactScore,
               b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
             }}
           />
