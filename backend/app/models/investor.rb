@@ -7,6 +7,8 @@ class Investor < ApplicationRecord
   has_many :open_call_applications, through: :open_calls
   has_many :favourite_investors, dependent: :destroy
 
+  has_and_belongs_to_many :funded_projects, join_table: "funded_projects", class_name: "Project", dependent: :destroy
+
   validates :categories, array_inclusion: {in: Category::TYPES}
   validates :instrument_types, array_inclusion: {in: InstrumentType::TYPES}, presence: true
   validates :ticket_sizes, array_inclusion: {in: TicketSize::TYPES}, presence: true
