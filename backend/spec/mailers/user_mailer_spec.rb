@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe UserMailer, type: :mailer do
   include ActionView::Helpers::UrlHelper
 
-  let(:user) { create :user, account: create(:account) }
+  let(:user) { create :user, account: create(:account), otp_secret: User.generate_otp_secret(6) }
 
   describe ".approved" do
     let(:mail) { UserMailer.approved user }
@@ -63,6 +63,19 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.body.encoded).to match(I18n.t("user_mailer.greetings", full_name: user.full_name))
       expect(mail.body.encoded).to match(I18n.t("user_mailer.destroyed.content"))
       expect(mail.body.encoded).to match(I18n.t("user_mailer.farewell_html"))
+    end
+  end
+
+  describe ".send_otp_code" do
+    let(:mail) { UserMailer.send_otp_code user }
+
+    it "renders the headers" do
+      expect(mail.subject).to eq(I18n.t("user_mailer.send_otp_code.subject"))
+      expect(mail.to).to eq([user.email])
+    end
+
+    it "renders the body" do
+      expect(mail.body.encoded).to match(I18n.t("user_mailer.send_otp_code.body_html", code: user.current_otp))
     end
   end
 end

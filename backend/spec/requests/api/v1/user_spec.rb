@@ -19,7 +19,8 @@ RSpec.describe "API V1 User", type: :request do
           email: {type: :string, nullable: true},
           invitation_token: {type: :string, nullable: true},
           password: {type: :string},
-          ui_language: {type: :string}
+          ui_language: {type: :string},
+          otp_required_for_login: {type: :boolean}
         },
         required: ["first_name", "last_name", "password"]
       }
@@ -144,7 +145,8 @@ RSpec.describe "API V1 User", type: :request do
         type: :object,
         properties: {
           first_name: {type: :string},
-          last_name: {type: :string}
+          last_name: {type: :string},
+          otp_required_for_login: {type: :boolean}
         },
         required: ["first_name", "last_name"]
       }
@@ -152,7 +154,8 @@ RSpec.describe "API V1 User", type: :request do
       let(:user_params) do
         {
           first_name: "New First Name",
-          last_name: "New Last Name"
+          last_name: "New Last Name",
+          otp_required_for_login: true
         }
       end
 

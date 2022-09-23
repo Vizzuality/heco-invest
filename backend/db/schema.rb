@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_09_092937) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_09_092938) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -427,6 +427,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_092937) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "token"
+    t.boolean "otp_required_for_login", default: false
+    t.string "otp_secret"
+    t.integer "consumed_timestep"
     t.index ["account_id"], name: "index_users_on_account_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

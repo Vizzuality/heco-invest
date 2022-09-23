@@ -20,6 +20,7 @@ zu:
         avatar: Avatar (optional)
         first_name: First name
         last_name: Last name
+        otp_required_for_login: Two factor authentication enabled
       admin:
         first_name: First name
         last_name: Last name
@@ -336,6 +337,9 @@ zu:
     destroyed:
       subject: Your user has been removed!
       content: We would like to inform you that your user at HeCo platform was removed.
+    send_otp_code:
+      subject: Your 2FAuthentication Code
+      body_html: "To finalize your login to HeCo Invest Platform, please enter the following validation code: <strong>%{code}</strong>."
   admin_mailer:
     greetings: Dear %{full_name},
     farewell_html: Best Regards,<br />Your HeCo Team

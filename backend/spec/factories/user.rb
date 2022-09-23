@@ -13,6 +13,7 @@ FactoryBot.define do
     role { "light" }
     ui_language { "en" }
     confirmed_at { 1.day.ago }
+    otp_required_for_login { false }
 
     trait :unconfirmed do
       confirmed_at { nil }

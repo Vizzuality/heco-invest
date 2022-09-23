@@ -5,7 +5,9 @@ devise_for :users, path: "api/v1", skip: :all
 
 namespace :api, format: "json" do
   namespace :v1 do
-    resource :session, only: [:create, :destroy]
+    resource :session, only: [:create, :destroy] do
+      post :two_factor_auth
+    end
     resource :invitation, only: [:create, :update] do
       member do
         post :info

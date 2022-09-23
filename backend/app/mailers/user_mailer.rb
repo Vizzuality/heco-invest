@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserMailer < ApplicationMailer
   def approved(user)
     @user = user
@@ -29,5 +31,10 @@ class UserMailer < ApplicationMailer
     I18n.with_locale(language) do
       mail to: email
     end
+  end
+
+  def send_otp_code(user)
+    @user = user
+    mail to: @user.email
   end
 end
