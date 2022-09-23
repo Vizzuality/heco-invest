@@ -653,9 +653,6 @@
   "BTFkyB": {
     "string": "HeCo Priority landscapes"
   },
-  "BV91+1": {
-    "string": "Inter-American Natural Capital Lab"
-  },
   "BY6k/1": {
     "string": "Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average."
   },
@@ -940,6 +937,9 @@
   },
   "GhrkT+": {
     "string": "confirm password"
+  },
+  "Gpyrow": {
+    "string": "IDB Lab is the innovation laboratory of the Inter-American Development Back Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
   },
   "GsO+rH": {
     "string": "Delete project?"
@@ -1559,9 +1559,6 @@
   },
   "UIQdVc": {
     "string": "Are you sure you want to delete “<strong>{projectName}</strong>”?"
-  },
-  "URLNhk": {
-    "string": "The Inter-American Development Bank (IDB) is the largest source of development financing for Latin America and the Caribbean. Established in 1959, the IDB supports Latin American and Caribbean economic development, social development and regional integration by lending to governments and government agencies, including State corporations."
   },
   "URdlN+": {
     "string": "Invest in small, medium or big project opportunities."
