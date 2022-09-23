@@ -7,7 +7,7 @@ import { MapboxLayer } from '@deck.gl/mapbox';
 import GL from '@luma.gl/constants';
 import { DecodedLayer } from '@vizzuality/layer-manager-layers-deckgl';
 
-enum LAYER_GROUPS {
+export enum LAYER_GROUPS {
   BaseLayer = 'base-layer',
   ContextLayer = 'context-layer',
   PriorityLayer = 'priority-layer',
@@ -71,7 +71,7 @@ export const useLayers = () => {
           dataSourceUrl:
             'https://www.arcgis.com/home/item.html?id=07bdb2d56b534039843a415995fc4447',
           legend: {
-            type: 'basic',
+            type: 'monocolor',
             items: [{ color: '#3d6c50' }],
           },
           specification: {
@@ -159,7 +159,7 @@ export const useLayers = () => {
           dataSource: 'HydroSHEDS',
           dataSourceUrl: 'https://www.hydrosheds.org/products/hydrobasins#downloads',
           legend: {
-            type: 'basic',
+            type: 'monocolor',
             items: [{ color: '#2485bc' }],
           },
           specification: {
@@ -202,7 +202,7 @@ export const useLayers = () => {
           dataSource: 'Parques Nacionales Naturales de Colombia',
           dataSourceUrl: 'https://runap.parquesnacionales.gov.co/cifras',
           legend: {
-            type: 'basic',
+            type: 'monocolor',
             items: [{ color: '#bafdd1', opacity: 0.7 }],
           },
           specification: {
@@ -361,7 +361,7 @@ export const useLayers = () => {
           dataSourceUrl:
             'https://siac-datosabiertos-mads.hub.arcgis.com/datasets/a499da66b2814db48888343283b57cdb/about',
           legend: {
-            type: 'basic',
+            type: 'monocolor',
             items: [{ color: '#0d9dc9', opacity: 0.6 }],
           },
           specification: {
@@ -454,7 +454,7 @@ export const useLayers = () => {
           ],
           dataSource: 'Alliance for Zero Extinctions (AZE)',
           legend: {
-            type: 'basic',
+            type: 'monocolor',
             items: [{ color: '#b2d26e' }],
           },
           dataSourceUrl: 'https://www.keybiodiversityareas.org/kba-data/request',
@@ -526,7 +526,7 @@ export const useLayers = () => {
           dataSource: 'Hansen/UMD/Google/USGS/NASA',
           dataSourceUrl: 'https://glad.earthengine.app/view/global-forest-change',
           legend: {
-            type: 'basic',
+            type: 'monocolor',
             items: [{ color: '#dc6c9a' }],
           },
           specification: {
@@ -647,7 +647,7 @@ export const useLayers = () => {
                 label: formatMessage({ defaultMessage: 'No data ', id: 'F+w00l' }),
               },
             ],
-            type: 'choropleth',
+            type: 'basic',
           },
           dataSourceUrl: 'https://www.wri.org/data/aqueduct-global-maps-30-data',
           specification: {
@@ -718,7 +718,7 @@ export const useLayers = () => {
           dataSourceUrl:
             'https://data-agenciadetierras.opendata.arcgis.com/datasets/agenciadetierras::resguardos-ind%C3%ADgenas-1/about',
           legend: {
-            type: 'basic',
+            type: 'monocolor',
             items: [{ color: '#ffb780' }],
           },
           specification: {

@@ -12,6 +12,7 @@ import Button from 'components/button';
 import Icon from 'components/icon';
 import Legend from 'components/map/legend';
 import LegendItem from 'components/map/legend/item';
+import BasicTypeGradient from 'components/map/legend/types/basic';
 import LegendTypeChoropleth from 'components/map/legend/types/choropleth';
 import LegendTypeGradient from 'components/map/legend/types/gradient';
 import ProjectLegend from 'components/map/project-legend';
@@ -84,7 +85,7 @@ export const LayerLegend: FC<LayerLegendProps> = ({
                 id={id}
                 handleCloseLegend={() => onCloseLegend(id)}
                 icon={
-                  type === 'basic' && (
+                  type === 'monocolor' && (
                     <span
                       className="inline-block w-2 h-2 mr-2 rounded-sm"
                       style={{
@@ -100,6 +101,9 @@ export const LayerLegend: FC<LayerLegendProps> = ({
                 )}
                 {type === 'gradient' && (
                   <LegendTypeGradient className="mt-1.5 text-black text-2sx" items={items} />
+                )}
+                {type === 'basic' && (
+                  <BasicTypeGradient className="mt-1.5 text-black text-2sx" items={items} />
                 )}
               </LegendItem>
             );

@@ -63,14 +63,17 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
 
   const layerLegends: Legend[] = useMemo(
     () =>
-      visibleLayers.map((layer) => {
-        const {
-          legend: { items, type },
-          id,
-          name,
-        } = layers.find(({ id }) => layer === id);
-        return { items, type: type as LegendType, id, name };
-      }),
+      visibleLayers
+        .map((layer) => {
+          const {
+            legend: { items, type },
+            id,
+            name,
+            group,
+          } = layers.find(({ id }) => layer === id);
+          return { items, type: type as LegendType, id, name, group };
+        })
+        .reverse(),
     [layers, visibleLayers]
   );
 

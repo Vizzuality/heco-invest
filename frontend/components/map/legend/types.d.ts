@@ -10,7 +10,7 @@ export type LegendItem = {
   opacity?: number;
 };
 
-export type LegendType = 'basic' | 'choropleth' | 'gradient';
+export type LegendType = 'basic' | 'choropleth' | 'gradient' | 'monocolor';
 
 export type Legend = {
   id: string;

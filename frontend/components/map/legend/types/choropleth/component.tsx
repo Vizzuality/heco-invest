@@ -30,7 +30,7 @@ export const LegendTypeChoropleth: FC<LegendTypeChoroplethProps> = ({
       {items.map(({ label, color }) => (
         <li
           key={color}
-          className="flex-shrink-0 text-center text-2xs"
+          className="flex-shrink-0 font-medium text-center text-2xs"
           style={{
             width: `${100 / items.length}%`,
           }}
