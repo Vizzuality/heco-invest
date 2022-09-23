@@ -129,7 +129,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                 onClick={handleClickInput}
               />
             </div>
-            {showSuggestion && (
+            {(showSuggestion || openFilters) && (
               <div>
                 <Button
                   aria-label={formatMessage({ defaultMessage: 'clear search', id: '44nONQ' })}
