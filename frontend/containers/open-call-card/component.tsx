@@ -169,7 +169,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
                   { name: investor.name }
                 )}
                 layout="fill"
-                objectFit="cover"
+                objectFit="contain"
                 onError={() => setPicture(placeholderPicture)}
               />
             </span>

@@ -36,13 +36,13 @@ export const ContactItem: FC<ContactItemProps> = ({
               src={picture}
               alt={intl.formatMessage({ defaultMessage: '{name} picture', id: 'rLzWx9' }, { name })}
               layout="fill"
-              objectFit="cover"
+              objectFit="contain"
               onError={() => setPicture(placeholderPicture)}
             />
           </div>
         </div>
       )}
-      <div className="flex flex-col items-start w-full max-w-md gap-5">
+      <div className="flex flex-col items-start w-full max-w-md gap-5 break-all">
         {email && (
           <span
             className="flex items-center"

@@ -193,7 +193,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
               src={projectDeveloperImage}
               alt={intl.formatMessage({ defaultMessage: 'Project developer photo', id: 'BZkcBV' })}
               layout="fill"
-              objectFit="cover"
+              objectFit="contain"
               onError={handleProjectDeveloperImageError}
             />
           </span>
