@@ -30,4 +30,6 @@ export type ImageUploaderProps<FormValues> = {
   maxSize?: number;
   /** Default image url to show */
   defaultImage?: string;
+  /** The upload button theme */
+  theme?: 'primary-green' | 'secondary-green';
 };

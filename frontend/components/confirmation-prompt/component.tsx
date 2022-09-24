@@ -25,6 +25,7 @@ export const ConfirmationPrompt: FC<ConfirmationPromptProps> = ({
   confirmationError,
   onConfirmDisabled = false,
   onConfirmText,
+  confirmButtonTheme = 'primary-red',
 }: ConfirmationPromptProps) => (
   <Modal open={open} title={title} size="default" dismissable={dismissible} onDismiss={onDismiss}>
     <div className="flex flex-col items-center px-8 py-4">
@@ -55,7 +56,7 @@ export const ConfirmationPrompt: FC<ConfirmationPromptProps> = ({
           <FormattedMessage defaultMessage="Cancel" id="47FYwb" />
         </Button>
         <Button
-          theme="primary-red"
+          theme={confirmButtonTheme}
           size="small"
           className="flex-shrink-0 sm:mr-5"
           onClick={onAccept}

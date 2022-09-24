@@ -58,3 +58,9 @@ export type ChangePassword = {
   password: string;
   password_confirmation: string;
 };
+
+export type UpdateUserDto = {
+  first_name: string;
+  last_name: string;
+  otp_required_for_login?: boolean;
+};
