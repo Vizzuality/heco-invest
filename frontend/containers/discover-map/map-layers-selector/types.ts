@@ -1,10 +1,12 @@
-import { string } from 'yup/lib/locale';
+import { UseFormRegister } from 'react-hook-form';
 
 export type MapLayersSelectorProps = {
   /** Classes to apply to the container */
   className?: string;
-  /** Callback returning an array active layers */
-  onActiveLayersChange: (activeLayers: string[]) => void;
+  /** List of active layers */
+  initialActiveLayers: string[];
+
+  register: UseFormRegister<any>;
 };
 
 export type MapLayersSelectorForm = {
