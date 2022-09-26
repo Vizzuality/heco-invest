@@ -644,7 +644,7 @@ export const useLayers = () => {
               },
               {
                 color: '#4E4E4E',
-                label: formatMessage({ defaultMessage: 'No data ', id: 'F+w00l' }),
+                label: formatMessage({ defaultMessage: 'No data', id: 'UG5qoS' }),
               },
             ],
             type: 'basic',

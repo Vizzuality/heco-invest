@@ -275,6 +275,9 @@
   "44nONQ": {
     "string": "clear search"
   },
+  "477I0g": {
+    "string": "Low"
+  },
   "47FYwb": {
     "string": "Cancel"
   },
@@ -635,6 +638,9 @@
   "AoHRBG": {
     "string": "Custom search"
   },
+  "AxMhQr": {
+    "string": "High"
+  },
   "Ay+1nm": {
     "string": "Due to security reasons, we are not allowed to display more <b>detailed financial information</b>. Please contact the Project Developers directly in order to obtain detailed information."
   },
@@ -724,6 +730,9 @@
   },
   "D5RCKi": {
     "string": "Project name"
+  },
+  "D6WycV": {
+    "string": "Remove layer"
   },
   "D7hbFB": {
     "string": "Back to Sign in"
@@ -1557,6 +1566,9 @@
   "UD6OB+": {
     "string": "Are you sure you want to make <n>{userName}</n> the owner of <n>{accountName}</n> account? You cant undo this action."
   },
+  "UG5qoS": {
+    "string": "No data"
+  },
   "UIQdVc": {
     "string": "Are you sure you want to delete “<strong>{projectName}</strong>”?"
   },
@@ -1632,6 +1644,9 @@
   "Vi/HrX": {
     "string": "Projects target investors. They are set up whenever a project developer is seeking visibility or needing investment. The project is intended to contribute to the environmental conservation of a specific region and benefit nature and people."
   },
+  "VjcEkC": {
+    "string": "Medium to high"
+  },
   "VkljLs": {
     "string": "Insert the phone number in case you would like to be contacted by phone."
   },
@@ -1664,6 +1679,9 @@
   },
   "WJcNiD": {
     "string": "The Inter-American Development Bank (IDB) is the main source of multilateral financing and expertise for sustainable economic, social and institutional development in Latin America and the Caribbean. The IDB Natural Capital Lab works to drive innovation in natural capital finance by looking at nature as an asset."
+  },
+  "WKPQta": {
+    "string": "Hide legends"
   },
   "WLDgff": {
     "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
@@ -2238,9 +2256,6 @@
   "iUt7so": {
     "string": "of the planet’s known biodiversity lives in the Amazon, the largest tropical rainforest on the planet."
   },
-  "iZuO+L": {
-    "string": "Legend"
-  },
   "iiVhlC": {
     "string": "insert phone number"
   },
@@ -2598,6 +2613,9 @@
   "q7I+Bg": {
     "string": "{quantity, plural, one {investor} other {investors}}"
   },
+  "q9Rhsk": {
+    "string": "Extremely high"
+  },
   "q9swhp": {
     "string": "Foundation"
   },
@@ -2871,6 +2889,9 @@
   "v2wxEw": {
     "string": "Back to open calls"
   },
+  "v5SfUh": {
+    "string": "Arid & low water use"
+  },
   "v9GdgG": {
     "string": "File {fileName} is larger than {fileSize}MB"
   },
@@ -2918,6 +2939,9 @@
   },
   "w7tf2z": {
     "string": "Published"
+  },
+  "w9SaaR": {
+    "string": "Low to medium"
   },
   "wA8Ls7": {
     "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. The <b>Supply</b> score of each sustainability dimension is then computed by taking the mean value of the corresponding indicators. <b>However, if all the indicators of a given dimension are selected, then the supply score of that dimension goes automatically to 0</b>. This is to make sure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
@@ -3086,6 +3110,9 @@
   },
   "zfuq6W": {
     "string": "Impact you prioritize"
+  },
+  "zj3FuD": {
+    "string": "Show legends"
   },
   "zkonnO": {
     "string": "World Wildlife Fund (WWF) is the largest international conservation organization in the world, with more than 50 offices implementing conservation projects across more than 100 countries and has a membership of almost five million people. WWF has extensive experience working in the Amazon region, with offices in all seven signatory countries of the Leticia Pact. In Colombia, WWF has been working in partnership with the government and a consortium of civil society organizations on Heritage Colombia since 2015."
