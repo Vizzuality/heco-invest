@@ -9,4 +9,6 @@ export type SeachAutoSuggestionProps = {
   filters: Partial<FilterParams>;
   /** Enums of filters */
   filtersData: Enum[];
+  /** Function to clear search input and close suggestions */
+  closeSuggestions: () => void;
 };

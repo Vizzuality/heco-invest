@@ -67,7 +67,9 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
   const clearInput = () => {
     setSearchInputValue('');
     setShowSuggestions(false);
-    doSearch('', filters);
+    if (pathname !== Paths.Home) {
+      doSearch('', filters);
+    }
   };
 
   const handleClickFilters = () => {
@@ -127,7 +129,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                 onClick={handleClickInput}
               />
             </div>
-            {showSuggestion && (
+            {!!searchInputValue?.length && (
               <div>
                 <Button
                   aria-label={formatMessage({ defaultMessage: 'clear search', id: '44nONQ' })}
@@ -140,7 +142,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                 </Button>
               </div>
             )}
-            {pathname === Paths.Home && (
+            {pathname === Paths.Home && !showSuggestion && (
               <div className="hidden md:block">
                 <Button className="text-green-dark" theme="naked" to={Paths.Discover}>
                   <FormattedMessage defaultMessage="See full catalogue" id="oG/A0q" />
@@ -181,6 +183,9 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
             filtersData={filtersData}
             filters={filters}
             searchText={searchInputValue}
+            closeSuggestions={() => {
+              setShowSuggestions(false);
+            }}
           />
         )}
         {/* Filters accordion pannel */}
