@@ -21,6 +21,8 @@ class Project < ApplicationRecord
   has_many :open_calls, through: :open_call_applications
   has_many :investors, through: :open_calls
 
+  has_and_belongs_to_many :funded_investors, join_table: "funded_projects", class_name: "Investor", dependent: :destroy
+
   translates :name,
     :description,
     :expected_impact,

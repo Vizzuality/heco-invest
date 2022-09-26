@@ -80,6 +80,7 @@ class Ability
       can %i[create update], OpenCall, investor: {account_id: user.account_id}
       can %i[index], OpenCall, investor: {account_id: user.account_id} if context == :accounts
       can %i[index show funding not_funding], OpenCallApplication, open_call: {investor: {account_id: user.account_id}}
+      can %i[funding not_funding], Project, favourite_projects: {user_id: user.id}
     else
       can %i[create update], Project, project_developer: {account_id: user.account_id}
       can %i[index], Project, project_developer: {account_id: user.account_id} if context == :accounts

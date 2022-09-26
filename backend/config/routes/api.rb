@@ -57,6 +57,10 @@ namespace :api, format: "json" do
         end
       end
       resources :projects, only: [:index, :create, :update, :destroy] do
+        member do
+          post :funding
+          post :not_funding
+        end
         collection do
           get :favourites
         end
