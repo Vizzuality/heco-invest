@@ -61,17 +61,28 @@ export const Profile: FC<ProfileProps> = ({
             })}
           />
         </div>
-        <ImageUploader
-          setError={setError}
-          name="picture"
-          id="picture"
-          setValue={setValue}
-          control={control}
-          clearErrors={clearErrors}
-          preview
-          aria-describedby="picture-error"
-          defaultImage={picture}
-        />
+        <div className="flex items-center gap-x-6">
+          <ImageUploader
+            setError={setError}
+            name="picture"
+            id="picture"
+            setValue={setValue}
+            control={control}
+            clearErrors={clearErrors}
+            preview
+            aria-describedby="picture-error"
+            defaultImage={picture}
+          />
+          <p className="text-sm text-gray-700">
+            <FormattedMessage
+              defaultMessage="Upload a <b>square</b> image, <b>PNG</b> or <b>JPG</b>. Max size of <b>5MB</b>."
+              id="eVWrC4"
+              values={{
+                b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+              }}
+            />
+          </p>
+        </div>
         <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
       </div>
       <div className="md:flex gap-x-6 mb-6.5">
