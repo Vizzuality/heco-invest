@@ -54,8 +54,7 @@ export const LayerLegend: FC<LayerLegendProps> = ({
         onClick={onToggleActive}
       >
         <span className="sr-only">
-          {!active && <FormattedMessage defaultMessage="Show legends" id="zj3FuD" />}
-          {active && <FormattedMessage defaultMessage="Hide legends" id="WKPQta" />}
+          <FormattedMessage defaultMessage="Show legend" id="PexDlg" />
         </span>
         <Icon
           aria-hidden={true}

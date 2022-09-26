@@ -1374,6 +1374,9 @@
   "PXAur5": {
     "string": "Withdraw"
   },
+  "PexDlg": {
+    "string": "Show legend"
+  },
   "PgGfZr": {
     "string": "Upload shapefile / KML file"
   },
@@ -1679,9 +1682,6 @@
   },
   "WJcNiD": {
     "string": "The Inter-American Development Bank (IDB) is the main source of multilateral financing and expertise for sustainable economic, social and institutional development in Latin America and the Caribbean. The IDB Natural Capital Lab works to drive innovation in natural capital finance by looking at nature as an asset."
-  },
-  "WKPQta": {
-    "string": "Hide legends"
   },
   "WLDgff": {
     "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
@@ -3110,9 +3110,6 @@
   },
   "zfuq6W": {
     "string": "Impact you prioritize"
-  },
-  "zj3FuD": {
-    "string": "Show legends"
   },
   "zkonnO": {
     "string": "World Wildlife Fund (WWF) is the largest international conservation organization in the world, with more than 50 offices implementing conservation projects across more than 100 countries and has a membership of almost five million people. WWF has extensive experience working in the Amazon region, with offices in all seven signatory countries of the Leticia Pact. In Colombia, WWF has been working in partnership with the government and a consortium of civil society organizations on Heritage Colombia since 2015."
