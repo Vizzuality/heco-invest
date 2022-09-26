@@ -17,4 +17,5 @@ export type Legend = {
   name: string;
   items: LegendItem[];
   type: LegendType;
+  group: LAYER_GROUPS;
 };

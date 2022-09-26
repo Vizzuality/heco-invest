@@ -22,6 +22,7 @@ import type { MapLayersSelectorProps, SelectedLayerTooltip } from './types';
 export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   className,
   register,
+  registeOptions,
 }: MapLayersSelectorProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedLayer, setSelectedlayer] = useState<SelectedLayerTooltip>();
@@ -104,7 +105,15 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                     >
                       <ol className="flex flex-col gap-3.5 text-xs text-black py-2">
                         {layerGroup.layers.map(
-                          ({ id, name, description, overview, dataSource, dataSourceUrl }) => (
+                          ({
+                            id,
+                            name,
+                            description,
+                            overview,
+                            dataSource,
+                            dataSourceUrl,
+                            group,
+                          }) => (
                             <li key={id} className="flex items-center gap-1.5">
                               <label
                                 key={id}
@@ -113,10 +122,11 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                               >
                                 <Switch
                                   id={id}
-                                  name="activeLayers"
+                                  name={group}
                                   switchSize="smallest"
                                   value={id}
                                   register={register}
+                                  registerOptions={registeOptions}
                                 />
                                 {name}
                               </label>
