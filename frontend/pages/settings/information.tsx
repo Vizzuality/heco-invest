@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -58,12 +58,28 @@ const Information: PageComponent<InformationPageProps, SettingsLayoutProps> = ()
   const deleteUser = useDeleteUser();
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 
-  const { control, clearErrors, setError, setValue, register, reset, handleSubmit, formState } =
-    useForm<UpdateUserDto>({
-      shouldUseNativeValidation: true,
-      shouldFocusError: true,
-      reValidateMode: 'onChange',
-    });
+  const {
+    control,
+    clearErrors,
+    setError,
+    setValue,
+    register,
+    reset,
+    handleSubmit,
+    formState,
+    watch,
+  } = useForm<UpdateUserDto>({
+    shouldUseNativeValidation: true,
+    shouldFocusError: true,
+    reValidateMode: 'onChange',
+  });
+
+  const userInfo = watch();
+
+  const informationChanged = useMemo(
+    () => userInfo?.first_name !== user?.first_name || userInfo.last_name !== user?.last_name,
+    [user?.first_name, user?.last_name, userInfo.first_name, userInfo.last_name]
+  );
 
   useEffect(() => {
     setValue('first_name', user?.first_name);
@@ -78,7 +94,7 @@ const Information: PageComponent<InformationPageProps, SettingsLayoutProps> = ()
   };
 
   const handleDismissConfirmUpdate = () => {
-    reset();
+    reset(user);
     setShowConfirmUpdate(false);
   };
 
@@ -224,7 +240,7 @@ const Information: PageComponent<InformationPageProps, SettingsLayoutProps> = ()
                 </div>
               )}
               <div className="flex justify-end mt-12">
-                <Button onClick={handleClickUpdate}>
+                <Button onClick={handleClickUpdate} disabled={!informationChanged}>
                   <FormattedMessage defaultMessage="Update information" id="4iPaIz" />
                 </Button>
               </div>
@@ -233,7 +249,7 @@ const Information: PageComponent<InformationPageProps, SettingsLayoutProps> = ()
           <ConfirmationPrompt
             onAccept={handleSubmit(onSubmit)}
             onRefuse={handleDismissConfirmUpdate}
-            onDismiss={() => setShowConfirmUpdate(false)}
+            onDismiss={handleDismissConfirmUpdate}
             open={showConfirmUpdate}
             title={formatMessage({ defaultMessage: 'Update user information?', id: 'w5UvPh' })}
             onConfirmText={formatMessage({ defaultMessage: 'Confirm', id: 'N2IrpM' })}
