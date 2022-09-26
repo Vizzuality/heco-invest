@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_09_092938) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_22_150756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -149,6 +149,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_092938) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "funded_projects", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "project_id", null: false
+    t.uuid "investor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["investor_id"], name: "index_funded_projects_on_investor_id"
+    t.index ["project_id", "investor_id"], name: "index_funded_projects_on_project_id_and_investor_id", unique: true
+    t.index ["project_id"], name: "index_funded_projects_on_project_id"
   end
 
   create_table "investors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -450,6 +460,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_092938) do
   add_foreign_key "favourite_project_developers", "users", on_delete: :cascade
   add_foreign_key "favourite_projects", "projects", on_delete: :cascade
   add_foreign_key "favourite_projects", "users", on_delete: :cascade
+  add_foreign_key "funded_projects", "investors", on_delete: :cascade
+  add_foreign_key "funded_projects", "projects", on_delete: :cascade
   add_foreign_key "investors", "accounts", on_delete: :cascade
   add_foreign_key "location_geometries", "locations", on_delete: :cascade
   add_foreign_key "locations", "locations", column: "parent_id", on_delete: :cascade

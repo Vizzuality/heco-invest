@@ -70,6 +70,12 @@ module API
 
         object.id.in? params[:current_user].project_ids
       end
+
+      attribute :funded do |object, params|
+        next if params[:current_user]&.account&.investor.blank?
+
+        object.id.in? params[:current_user].account.investor.funded_project_ids
+      end
     end
   end
 end
