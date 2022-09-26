@@ -1083,9 +1083,6 @@
   "Jfw90a": {
     "string": "Publish draft"
   },
-  "JhuBos": {
-    "string": "Your avatar"
-  },
   "JkLHGw": {
     "string": "Website"
   },
@@ -2060,6 +2057,9 @@
   },
   "eSLLyC": {
     "string": "To complete you registration and make full use of the platform, please select which account you would like to create."
+  },
+  "eVWrC4": {
+    "string": "Upload a <b>square</b> image, <b>PNG</b> or <b>JPG</b>. Max size of <b>5MB</b>."
   },
   "eXDHt0": {
     "string": "Describe the project or solution and describe clearly why you consider it is innovative, different from others and how it can generate an important change and impact towards the target groups. Highlight the characteristics that may attract partners, clients, or investors."
