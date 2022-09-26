@@ -108,7 +108,7 @@ export const LayerLegend: FC<LayerLegendProps> = ({
             );
           })}
         </Legend>
-        <ProjectLegend className="bg-white rounded shadow" />
+        <ProjectLegend className="z-10 bg-white rounded shadow" />
       </motion.div>
     </div>
   );
