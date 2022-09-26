@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { AxiosResponse, AxiosError } from 'axios';
 
 import { Queries } from 'enums';
-import { SignupDto, User, ChangePassword } from 'types/user';
+import { SignupDto, User, ChangePassword, UpdateUserDto } from 'types/user';
 
 import { ErrorResponse, ResponseData } from 'services/types';
 
@@ -45,6 +45,26 @@ export const useChangePassword = (): UseMutationResult<
   ChangePassword
 > => {
   return useMutation(changePassword);
+};
+
+const updateUser = (dto: UpdateUserDto) => {
+  return API.put<ResponseData<User>>('/api/v1/user', dto);
+};
+
+/** Hook to update the current user inforation */
+export const useUpdateUser = (): UseMutationResult<
+  AxiosResponse<ResponseData<User>>,
+  AxiosError<ErrorResponse>,
+  UpdateUserDto
+> => {
+  const { locale } = useRouter();
+  const queryClient = useQueryClient();
+
+  return useMutation(updateUser, {
+    onSuccess: (data) => {
+      queryClient.setQueryData([Queries.User, locale], data);
+    },
+  });
 };
 
 export const deleteFavorites = () => {

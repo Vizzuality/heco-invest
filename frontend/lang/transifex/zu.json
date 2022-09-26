@@ -665,6 +665,9 @@
   "BeVl3b": {
     "string": "How long will the open call be available?"
   },
+  "BfXxmC": {
+    "string": "The first name is required"
+  },
   "BqrQ5O": {
     "string": "At the <b>Landscape level</b>, a composite index combining the set of indicators identified for each dimension is used to calculate <b>Context scores</b>, with values ranging from 0 to 1. <b>Demand</b> is then computed as 1 - <b>Context score</b>, representing the “quantity” missing to reach 1, where 1 assumes the best sustainability conditions. Because the demand can be considered at multiple scales (namely, municipality, hydrological basins, and HeCo Priority Landscapes), the demand score is computed using zonal statistics at a user-specified scale, with the municipality level being the default. Unlike municipalities and hydrographic basins, the HeCo Priority Landscapes don’t cover the entire country, and therefore <b>if the project area doesn't fall into any of the Priority Landscapes, the impact of that project will be zero at that particular scale</b>."
   },
@@ -1080,6 +1083,9 @@
   "Jfw90a": {
     "string": "Publish draft"
   },
+  "JhuBos": {
+    "string": "Your avatar"
+  },
   "JkLHGw": {
     "string": "Website"
   },
@@ -1235,6 +1241,9 @@
   },
   "MxllAO": {
     "string": "What is an open call?"
+  },
+  "N2IrpM": {
+    "string": "Confirm"
   },
   "N9+9Fi": {
     "string": "select the project developer type"
@@ -2406,6 +2415,9 @@
   "lda5xz": {
     "string": "My users"
   },
+  "lewlDm": {
+    "string": "The last name is required"
+  },
   "lfXAQ2": {
     "string": "Hydrometeorological risk reduction"
   },
@@ -2927,6 +2939,9 @@
   },
   "w1Fanr": {
     "string": "Business"
+  },
+  "w5UvPh": {
+    "string": "Update user information?"
   },
   "w7tf2z": {
     "string": "Published"
