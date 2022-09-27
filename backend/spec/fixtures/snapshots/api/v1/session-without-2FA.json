@@ -18,7 +18,8 @@
       "avatar": {
         "small": null,
         "medium": null,
-        "original": null
+        "original": null,
+        "analyzed": null
       }
     }
   }
