@@ -14,6 +14,8 @@ import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import { Paths } from 'enums';
 
+import { useAccount } from 'services/account';
+
 import { PublicPageCarouselProps } from '.';
 
 export const ForPublicPagesCarousel: FC<PublicPageCarouselProps> = ({
@@ -23,6 +25,8 @@ export const ForPublicPagesCarousel: FC<PublicPageCarouselProps> = ({
   title = <FormattedMessage defaultMessage="What HeCo Invest can do for you" id="2sU5tO" />,
 }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const { userAccount, userAccountLoading, accountIsError, userIsError } = useAccount();
 
   const breakpoint = useBreakpoint();
   const isMd = breakpoint('sm');
@@ -125,13 +129,15 @@ export const ForPublicPagesCarousel: FC<PublicPageCarouselProps> = ({
               </div>
             </div>
           </div>
-          <Button
-            className="justify-center w-full md:w-auto"
-            theme="secondary-white"
-            to={Paths.SignUp}
-          >
-            <FormattedMessage defaultMessage="Create account" id="huqKGl" />
-          </Button>
+          {(!userAccount || userIsError || accountIsError || userAccountLoading) && (
+            <Button
+              className="justify-center w-full md:w-auto"
+              theme="secondary-white"
+              to={Paths.SignUp}
+            >
+              <FormattedMessage defaultMessage="Create account" id="huqKGl" />
+            </Button>
+          )}
         </div>
       </LayoutContainer>
     </div>
