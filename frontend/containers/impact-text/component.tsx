@@ -67,36 +67,45 @@ export const ImpactText: FC<ImpactTextProps> = ({
 
   if (isLoadingAllImpacts) return null;
 
+  const getImpactText = () => {
+    if (!impactCalculated) {
+      return (
+        <FormattedMessage
+          defaultMessage="The impact of this project isn’t available. Impact calculations may take some time to be available."
+          id="xnQiBM"
+        />
+      );
+    }
+
+    if (highestImpactValue === 0) {
+      if (shortText) {
+        return <FormattedMessage defaultMessage="The impact of this project is 0." id="VJPvoR" />;
+      }
+      return (
+        <FormattedMessage defaultMessage="The impact score of this project is 0." id="/oLNw7" />
+      );
+    }
+
+    return (
+      <FormattedMessage
+        defaultMessage="In the {area} the highest impact of the project is on <b>{impactDimension}</b> with a <b>score</b> of {score}."
+        id="NdyMBg"
+        values={{
+          area: impactAreaStr,
+          impactDimension: highestImpactDimension,
+          score: highestImpactScore,
+          b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+        }}
+      />
+    );
+  };
+
   return (
     <div className={className}>
       <p>
-        {!impactCalculated && (
-          <FormattedMessage
-            defaultMessage="The impact of this project isn’t available. Impact calculations may take some time to be available."
-            id="xnQiBM"
-          />
-        )}
-        {highestImpactValue === 0 && shortText && (
-          <FormattedMessage defaultMessage="The impact of this project is 0." id="VJPvoR" />
-        )}
-        {highestImpactValue === 0 && !shortText && (
-          <FormattedMessage defaultMessage="The impact score of this project is 0." id="/oLNw7" />
-        )}
-        {highestImpactValue > 0 && (
-          <FormattedMessage
-            defaultMessage="In the {area} the highest impact of the project is on <b>{impactDimension}</b> with a <b>score</b> of {score}."
-            id="NdyMBg"
-            values={{
-              area: impactAreaStr,
-              impactDimension: highestImpactDimension,
-              score: highestImpactScore,
-              b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
-            }}
-          />
-        )}
+        {getImpactText()}
         {linkToFAQ && (
           <>
-            {' '}
             <Link href={FaqPaths['how-is-the-impact-calculated']}>
               <a className="underline text-green-dark" target="_blank">
                 <FormattedMessage defaultMessage="Learn more" id="TdTXXf" />
