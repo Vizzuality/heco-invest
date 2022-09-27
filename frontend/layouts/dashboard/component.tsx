@@ -2,6 +2,8 @@ import { FC, useRef } from 'react';
 
 import cx from 'classnames';
 
+import Head from 'next/head';
+
 import Breadcrumbs from 'containers/breadcrumbs';
 
 import LayoutContainer from 'components/layout-container';
@@ -32,6 +34,9 @@ export const DashboardLayout: FC<DashboardLayoutProps> = ({
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor]}>
+      <Head>
+        <meta name="viewport" content="width=1024, initial-scale=1" />
+      </Head>
       <div className="min-h-screen bg-background-dark">
         <div className="flex flex-col lg:h-screen ">
           <div className="z-30 flex flex-col bg-radial-green-dark bg-green-dark lg:backdrop-blur-sm">
