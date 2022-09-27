@@ -1470,6 +1470,9 @@
   "Rb/hb9": {
     "string": "LinkedIn"
   },
+  "RrcFtD": {
+    "string": "We use cookies for analytics, personalization, and marketing purposes. Only essential cookies are active by default to ensure you get the best experience. Please read our <a>Cookie Policy</a> to learn more."
+  },
   "RyOOZR": {
     "string": "Have access to all of the contacts of <n>Investors</n> and <n>Project Developers</n>. Easily reach and connect so you can find the best investment or partnership."
   },
@@ -1571,6 +1574,9 @@
   },
   "UG5qoS": {
     "string": "No data"
+  },
+  "UH7Vx0": {
+    "string": "Reject non-essential cookies"
   },
   "UIQdVc": {
     "string": "Are you sure you want to delete “<strong>{projectName}</strong>”?"
@@ -1904,6 +1910,9 @@
   },
   "b6bipu": {
     "string": "Choose one of your projects to apply to the open call."
+  },
+  "b8sVDI": {
+    "string": "Privacy notice"
   },
   "bNpbHr": {
     "string": "Find other people with similar interests. Join forces, secure more investment and create a greater impact."
@@ -2330,6 +2339,9 @@
   },
   "jvHO6d": {
     "string": "By accepting this invitation you will belong to the {accountName} account."
+  },
+  "jvP3C2": {
+    "string": "Accept all cookies"
   },
   "jvb6yi": {
     "string": "This is a global, wall-to-wall map of aboveground biomass (AGB) at approximately 30-meter resolution. This data product expands on the methodology presented in Baccini et al. (2012) to generate a global map of aboveground live woody biomass (AGB) density (megagrams biomass per ha) at 0.00025-degree (approximately 30-meter) resolution for the year 2000. Aboveground biomass was estimated using a multi-step process of calculating AGB at more than seven hundred thousand points with LiDAR with regional allometric equations, then using those to train a wall-to-wall model based on Landsat imagery. Pixels without tree canopy were assigned a biomass density of 0 Mg/ha."
