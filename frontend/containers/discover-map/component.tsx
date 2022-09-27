@@ -27,6 +27,7 @@ import MapLayersSelector from './map-layers-selector';
 import { MapLayersSelectorForm } from './map-layers-selector/types';
 import MapPinCluster from './pin-cluster';
 import { DiscoverMapProps } from './types';
+import MapHelp from './map-help';
 
 const cartoProvider = new CartoProvider();
 
@@ -123,6 +124,10 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
             className="pointer-events-auto"
             onLocationSelected={handleLocationSelected}
           />
+        </div>
+
+        <div className="absolute top-4 right-4">
+          <MapHelp />
         </div>
 
         <Controls className="absolute h-fit max-h-[45%] bottom-4 right-4 overflow-y-auto">
