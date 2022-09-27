@@ -22,7 +22,7 @@ import type { MapLayersSelectorProps, SelectedLayerTooltip } from './types';
 export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   className,
   register,
-  registeOptions,
+  registerOptions,
 }: MapLayersSelectorProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedLayer, setSelectedlayer] = useState<SelectedLayerTooltip>();
@@ -126,7 +126,7 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                                   switchSize="smallest"
                                   value={id}
                                   register={register}
-                                  registerOptions={registeOptions}
+                                  registerOptions={registerOptions}
                                 />
                                 {name}
                               </label>

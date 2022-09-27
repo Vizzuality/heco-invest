@@ -8,7 +8,7 @@ export type MapLayersSelectorProps = {
   /** UseForm register function */
   register: UseFormRegister<MapLayersSelectorForm>;
   /** UseForm register options */
-  registeOptions: RegisterOptions<MapLayersSelectorForm>;
+  registerOptions: RegisterOptions<MapLayersSelectorForm>;
 };
 
 export type MapLayersSelectorForm = {

@@ -133,7 +133,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           <MapLayersSelector
             className="pointer-events-auto"
             register={register}
-            registeOptions={{
+            registerOptions={{
               onChange: handleChangeVisibleLayer,
             }}
           />
