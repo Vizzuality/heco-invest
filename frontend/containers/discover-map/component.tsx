@@ -133,7 +133,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           <MapLayersSelector
             className="pointer-events-auto"
             register={register}
-            registeOptions={{
+            registerOptions={{
               onChange: handleChangeVisibleLayer,
             }}
           />
@@ -146,7 +146,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
         <Controls className="absolute h-fit max-h-[45%] bottom-4 right-4 overflow-y-auto">
           <LayerLegend
             className="bg-white"
-            onCloseLegend={(layerGroup) => resetField(layerGroup)}
+            onCloseLegend={(layerGroup) => resetField(layerGroup as keyof MapLayersSelectorForm)}
             layersLegends={layerLegends}
           />
         </Controls>
