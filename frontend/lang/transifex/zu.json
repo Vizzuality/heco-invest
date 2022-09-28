@@ -2202,6 +2202,9 @@
   "hPsrc0": {
     "string": "insert your answer (max 600 characters)"
   },
+  "hRcpAt": {
+    "string": "max 1 layer"
+  },
   "hWhIuU": {
     "string": "Select the intrument type(s)"
   },
