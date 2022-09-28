@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 
-import { HelpCircle, Layers, MapPin, Search, ZoomIn, ZoomOut, X as XIcon } from 'react-feather';
+import { HelpCircle, Layers, MapPin, Search, ZoomIn, ZoomOut } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import Button from 'components/button';
@@ -19,7 +19,7 @@ export const MapHelp: FC<MapHelpProps> = () => {
   return (
     <div className="">
       <Button
-        className="flex items-center justify-center w-8 h-8 px-1.5 py-1.5 text-gray-800 bg-white rounded shadow focus-visible:outline-green-dark"
+        className="flex items-center justify-center w-8 h-8 px-2 py-1 text-gray-800 bg-white rounded shadow-sm outline-none border-xl focus-visible:ring-green-dark focus-visible:ring-2 hover:ring-green-dark hover:ring-1"
         theme="naked"
         size="smallest"
         icon={() => <HelpCircle className="mr-0" />}
@@ -30,38 +30,27 @@ export const MapHelp: FC<MapHelpProps> = () => {
         open={open}
         onDismiss={() => setOpen(false)}
         title={formatMessage({ defaultMessage: 'Map help', id: '5eVTzC' })}
-        theme="naked"
+        scrollable={false}
       >
-        <div className="fixed z-50 w-full px-6 pt-6 bg-white sm:px-10">
-          <div className="flex justify-end">
-            <Button
-              theme="naked"
-              size="smallest"
-              onClick={() => setOpen(false)}
-              className="text-gray-400 focus:text-black hover:text-black group"
-              aria-label={formatMessage({ defaultMessage: 'Close map help', id: 'z7aNcb' })}
-            >
-              <span className="sr-only">
-                <FormattedMessage defaultMessage="Close" id="rbrahO" />
-              </span>
-              <Icon
-                icon={XIcon}
-                className="inline-block w-6 h-6 transition-all fill-current group-hover:rotate-180 group-focus-within:rotate-180"
-              />
-            </Button>
-          </div>
-          <h3 className="font-serif text-3xl font-semibold text-green-dark">
+        <div className="fixed w-full -translate-y-1 bg-white -z-10">
+          <h1 className="font-serif text-3xl font-semibold text-green-dark">
             <FormattedMessage defaultMessage="Help" id="SENRqu" />
-          </h3>
+          </h1>
         </div>
-        <div className="px-6 mt-32 mb-24 sm:px-10 sm:mb-40">
+        <div className="relative h-full px-1 pt-6 pb-24 overflow-y-scroll top-12 sm:pb-44">
           <p>
             <FormattedMessage
-              defaultMessage="The map allows you to quickly see the location of each project and understand the context of the different projects.<n>Projects</n> Each project is represented by a marker that has a color defined by the project category."
-              id="WocAcK"
-              values={{
-                n: (chunk: string) => <span className="block my-2 font-semibold">{chunk}</span>,
-              }}
+              defaultMessage="The map allows you to quickly see the location of each project and understand the context of the different projects."
+              id="ghKJy+"
+            />
+          </p>
+          <h2 className="block my-4 font-semibold">
+            <FormattedMessage defaultMessage="Projects" id="UxTJRa" />
+          </h2>
+          <p>
+            <FormattedMessage
+              defaultMessage="Each project is represented by a marker that has a color defined by the project category."
+              id="qFGn1F"
             />
           </p>
           <div className="flex flex-wrap items-center justify-between gap-4 mt-7">
@@ -91,10 +80,10 @@ export const MapHelp: FC<MapHelpProps> = () => {
           </div>
 
           <div className="mt-12">
-            <div className="flex items-center justify-between mb-5">
-              <p className="font-semibold">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="font-semibold">
                 <FormattedMessage defaultMessage="Map Layers" id="A8VNfu" />
-              </p>
+              </h2>
               <div className="px-2 py-1 rounded shadow right-10">
                 <Icon
                   aria-label={formatMessage({ defaultMessage: 'Map layers icon', id: 'A4FcXS' })}
@@ -112,7 +101,7 @@ export const MapHelp: FC<MapHelpProps> = () => {
                 id="FPr3FX"
               />
             </p>
-            <ul className="!list-disc list-inside mt-6 space-y-1">
+            <ul className="pl-5 mt-6 space-y-1 list-disc">
               <li>
                 <FormattedMessage
                   defaultMessage="<n>Base layers:</n> Heco priority landscapes, Watersheds, Sub-basin boundaries, Protected
@@ -146,9 +135,9 @@ export const MapHelp: FC<MapHelpProps> = () => {
             </ul>
           </div>
           <div className="mt-4">
-            <p className="mb-4 font-semibold">
+            <h2 className="mb-4 font-semibold">
               <FormattedMessage defaultMessage="Map controls" id="r3xohw" />
-            </p>
+            </h2>
             <p>
               <FormattedMessage
                 defaultMessage="The different controls will allow you too easily navigate on the map:"
