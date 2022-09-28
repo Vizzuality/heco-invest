@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useMemo, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 
@@ -45,13 +45,18 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
     options: { padding: 0 },
   });
 
-  const { register, watch, setValue } = useForm<MapLayersSelectorForm>({
-    defaultValues: {
-      activeLayers: [],
-    },
-  });
+  const { register, watch, resetField, setValue } = useForm<MapLayersSelectorForm>();
 
-  const visibleLayers = watch('activeLayers');
+  const layerInputs = watch();
+
+  /** An array with the values of the selected layers */
+  const visibleLayers: string[] = useMemo(
+    () =>
+      Object.values(layerInputs).reduce((prev, curr) => {
+        return !!curr && curr.length ? [...prev, curr[0]] : prev;
+      }, []),
+    [layerInputs]
+  );
 
   const handleViewportChange = useCallback((vw) => {
     setViewport(vw);
@@ -61,6 +66,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
     setBounds({ ...bounds, bbox });
   };
 
+  /** An array with the selected layers legends */
   const layerLegends: Legend[] = useMemo(
     () =>
       visibleLayers
@@ -76,6 +82,16 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
         .reverse(),
     [layers, visibleLayers]
   );
+
+  const handleChangeVisibleLayer = (e: ChangeEvent<HTMLInputElement>) => {
+    // The layer inputs are groups of checkboxes. To limit one value per group, the value is always updated to an array of one item with the last selected value. If the checkbox is already selected (the user unchecked the checkbox), the field is reseted.
+    const { name, value } = e.currentTarget;
+    if (visibleLayers.includes(value)) {
+      resetField(name as keyof MapLayersSelectorForm);
+    } else {
+      setValue(name as keyof MapLayersSelectorForm, [value]);
+    }
+  };
 
   return (
     <>
@@ -115,9 +131,11 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           className="absolute flex items-start gap-2 inset-3.5 bottom-12 text-gray-800 text-sm pointer-events-none"
         >
           <MapLayersSelector
-            initialActiveLayers={visibleLayers}
             className="pointer-events-auto"
             register={register}
+            registerOptions={{
+              onChange: handleChangeVisibleLayer,
+            }}
           />
           <LocationSearcher
             className="pointer-events-auto"
@@ -128,12 +146,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
         <Controls className="absolute h-fit max-h-[45%] bottom-4 right-4 overflow-y-auto">
           <LayerLegend
             className="bg-white"
-            onCloseLegend={(id) =>
-              setValue(
-                'activeLayers',
-                visibleLayers.filter((layer) => layer !== id)
-              )
-            }
+            onCloseLegend={(layerGroup) => resetField(layerGroup as keyof MapLayersSelectorForm)}
             layersLegends={layerLegends}
           />
         </Controls>

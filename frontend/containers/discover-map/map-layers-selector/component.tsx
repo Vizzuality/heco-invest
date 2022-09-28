@@ -22,6 +22,7 @@ import type { MapLayersSelectorProps, SelectedLayerTooltip } from './types';
 export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   className,
   register,
+  registerOptions,
 }: MapLayersSelectorProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedLayer, setSelectedlayer] = useState<SelectedLayerTooltip>();
@@ -86,11 +87,14 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                       title={
                         <Button
                           theme="naked"
-                          className="w-full px-0 py-0"
+                          className="flex items-center justify-start w-full gap-1 px-0 py-0 my-2"
                           onClick={() => handleChangeOpenLayerGroup(layerGroup.id)}
                         >
-                          <div className="flex items-center w-full my-2">
-                            <span className="flex flex-grow">{layerGroup.name}</span>
+                          <span>{layerGroup.name}</span>
+                          <span className="text-xs text-gray-600">
+                            (<FormattedMessage defaultMessage="max 1 layer" id="hRcpAt" />)
+                          </span>
+                          <span className="flex justify-end flex-grow">
                             <ChevronUpIcon
                               className={cx({
                                 'w-4 h-4 transition-all': true,
@@ -98,13 +102,21 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                                 'rotate-0': groupIsOpen,
                               })}
                             />
-                          </div>
+                          </span>
                         </Button>
                       }
                     >
                       <ol className="flex flex-col gap-3.5 text-xs text-black py-2">
                         {layerGroup.layers.map(
-                          ({ id, name, description, overview, dataSource, dataSourceUrl }) => (
+                          ({
+                            id,
+                            name,
+                            description,
+                            overview,
+                            dataSource,
+                            dataSourceUrl,
+                            group,
+                          }) => (
                             <li key={id} className="flex items-center gap-1.5">
                               <label
                                 key={id}
@@ -113,10 +125,11 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                               >
                                 <Switch
                                   id={id}
-                                  name="activeLayers"
+                                  name={group}
                                   switchSize="smallest"
                                   value={id}
                                   register={register}
+                                  registerOptions={registerOptions}
                                 />
                                 {name}
                               </label>

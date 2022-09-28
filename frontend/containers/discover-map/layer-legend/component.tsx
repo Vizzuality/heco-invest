@@ -76,13 +76,13 @@ export const LayerLegend: FC<LayerLegendProps> = ({
       >
         <Legend>
           {layersLegends.map((i) => {
-            const { type, items, id, name } = i;
+            const { type, items, id, name, group } = i;
             return (
               <LegendItem
                 key={i.id}
                 name={name}
                 id={id}
-                handleCloseLegend={() => onCloseLegend(id)}
+                handleCloseLegend={() => onCloseLegend(group)}
                 icon={
                   type === 'monocolor' && (
                     <span
