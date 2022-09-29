@@ -348,7 +348,7 @@ export const useDeleteAccountProject = () => {
 };
 
 const getAccountProjects = async (params?: PagedRequest): Promise<PagedResponse<Project>> => {
-  const { search, page, includes, ...rest } = params || {};
+  const { search, page, includes, fields, ...rest } = params || {};
 
   const config: AxiosRequestConfig = {
     url: '/api/v1/account/projects',
@@ -357,6 +357,7 @@ const getAccountProjects = async (params?: PagedRequest): Promise<PagedResponse<
       ...rest,
       includes: includes?.join(','),
       'filter[full_text]': search,
+      'fields[project]': fields?.join(','),
     },
   };
 
