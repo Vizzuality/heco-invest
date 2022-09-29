@@ -1,6 +1,7 @@
 import { ChangeEvent, FC, useCallback, useMemo, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 
 import omit from 'lodash-es/omit';
 
@@ -23,11 +24,11 @@ import { useProjectsMap } from 'services/projects/projectService';
 
 import LayerLegend from './layer-legend';
 import LocationSearcher from './location-searcher';
+import MapHelp from './map-help';
 import MapLayersSelector from './map-layers-selector';
 import { MapLayersSelectorForm } from './map-layers-selector/types';
 import MapPinCluster from './pin-cluster';
 import { DiscoverMapProps } from './types';
-import MapHelp from './map-help';
 
 const cartoProvider = new CartoProvider();
 
@@ -77,12 +78,17 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
             id,
             name,
             group,
+            isResourceWatch,
           } = layers.find(({ id }) => layer === id);
-          return { items, type: type as LegendType, id, name, group };
+          return { items, type: type as LegendType, id, name, group, isResourceWatch };
         })
         .reverse(),
     [layers, visibleLayers]
   );
+
+  const displayResourceWatchCredits = useMemo(() => {
+    return layerLegends.some((layer) => layer.isResourceWatch);
+  }, [layerLegends]);
 
   const handleChangeVisibleLayer = (e: ChangeEvent<HTMLInputElement>) => {
     // The layer inputs are groups of checkboxes. To limit one value per group, the value is always updated to an array of one item with the last selected value. If the checkbox is already selected (the user unchecked the checkbox), the field is reseted.
@@ -146,6 +152,24 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
 
         <div className="absolute top-4 right-4">
           <MapHelp />
+        </div>
+
+        <div className="absolute bottom-2 left-4">
+          {displayResourceWatchCredits && (
+            <span className="text-xs text-gray-800 drop-shadow-[1px_1px_0px_rgb(198,198,198)]">
+              <FormattedMessage
+                defaultMessage="Powered by <a>Resource Watch</a>"
+                id="vrCHpK"
+                values={{
+                  a: (chunk: string) => (
+                    <a className="hover:underline" href="https://resourcewatch.org/">
+                      {chunk}
+                    </a>
+                  ),
+                }}
+              />
+            </span>
+          )}
         </div>
 
         <Controls className="absolute h-fit max-h-[45%] bottom-4 right-4 overflow-y-auto">

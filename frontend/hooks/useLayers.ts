@@ -254,6 +254,7 @@ export const useLayers = () => {
               { label: formatMessage({ defaultMessage: 'High', id: 'AxMhQr' }), color: '#3C00AB' },
             ],
           },
+          isResourceWatch: true,
           specification: {
             type: 'raster',
             source: {
@@ -289,6 +290,7 @@ export const useLayers = () => {
               { color: '#39A401', label: '480 t Ha⁻¹' },
             ],
           },
+          isResourceWatch: true,
           specification: {
             type: 'deck',
             source: {
@@ -402,6 +404,7 @@ export const useLayers = () => {
             ],
             type: 'choropleth',
           },
+          isResourceWatch: true,
           overview: [
             formatMessage({
               defaultMessage:
@@ -457,6 +460,7 @@ export const useLayers = () => {
             type: 'monocolor',
             items: [{ color: '#b2d26e' }],
           },
+          isResourceWatch: true,
           dataSourceUrl: 'https://www.keybiodiversityareas.org/kba-data/request',
           specification: {
             type: 'vector',
@@ -529,6 +533,7 @@ export const useLayers = () => {
             type: 'monocolor',
             items: [{ color: '#dc6c9a' }],
           },
+          isResourceWatch: true,
           specification: {
             type: 'deck',
             source: {
@@ -649,6 +654,7 @@ export const useLayers = () => {
             ],
             type: 'basic',
           },
+          isResourceWatch: true,
           dataSourceUrl: 'https://www.wri.org/data/aqueduct-global-maps-30-data',
           specification: {
             type: 'vector',
@@ -719,7 +725,7 @@ export const useLayers = () => {
             'https://data-agenciadetierras.opendata.arcgis.com/datasets/agenciadetierras::resguardos-ind%C3%ADgenas-1/about',
           legend: {
             type: 'monocolor',
-            items: [{ color: '#ffb780' }],
+            items: [{ color: '#ffb780', opacity: 0.7 }],
           },
           specification: {
             type: 'vector',

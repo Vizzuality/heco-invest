@@ -18,4 +18,5 @@ export type Legend = {
   items: LegendItem[];
   type: LegendType;
   group: LAYER_GROUPS;
+  isResourceWatch: boolean;
 };
