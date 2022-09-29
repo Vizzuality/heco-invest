@@ -11,7 +11,11 @@ export const SDGs: FC<SDGsProps> = ({ className, size = 'small', sdgs = [] }: SD
   return (
     <div className={cx('flex flex-wrap items-center gap-2', className)}>
       {sdgs.map(({ id, name }) => (
-        <span key={id}>
+        <span
+          key={id}
+          // This removes an extra space displayed below the image when the container wraps
+          className="flex"
+        >
           <Image
             className="rounded"
             src={SDGS_IMAGES[id]}
