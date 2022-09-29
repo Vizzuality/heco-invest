@@ -62,7 +62,7 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   return (
     <div className={className} ref={containerRef}>
       <button
-        className="flex items-center gap-2.5 shadow-sm h-full bg-white rounded border-xl px-2 py-1 outline-none focus-visible:ring-green-dark focus-visible:ring-2 hover:ring-green-dark hover:ring-1 w-fit"
+        className="flex items-center gap-2.5 shadow-sm h-full bg-white rounded border-xl px-2 py-1.5 outline-none focus-visible:ring-green-dark focus-visible:ring-2 hover:ring-green-dark hover:ring-1 w-fit"
         onClick={handleButtonClick}
       >
         <IconLayers className="w-4 h-4" />
