@@ -24,6 +24,7 @@ import { useProjectsMap } from 'services/projects/projectService';
 
 import LayerLegend from './layer-legend';
 import LocationSearcher from './location-searcher';
+import MapHelp from './map-help';
 import MapLayersSelector from './map-layers-selector';
 import { MapLayersSelectorForm } from './map-layers-selector/types';
 import MapPinCluster from './pin-cluster';
@@ -162,6 +163,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
               viewport={{ ...viewport }}
               onZoomChange={onZoomChange}
             />
+            <MapHelp />
           </div>
           <div className="absolute h-fit max-h-[45%] bottom-4 right-4 overflow-y-auto">
             <LayerLegend

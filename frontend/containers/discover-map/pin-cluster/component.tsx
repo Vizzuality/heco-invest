@@ -38,9 +38,9 @@ export const MapPinCluster: FC<MapPinClusterProps> = (props) => {
   };
 
   return (
-    <div className="bg-white rounded-full flex justify-center items-center w-10 h-10">
+    <div className="flex items-center justify-center w-10 h-10 bg-white rounded-full">
       <Doughnut data={data} options={options} />
-      <span className="font-semibold text-sm absolute">{point_count}</span>
+      <span className="absolute text-sm font-semibold">{point_count}</span>
     </div>
   );
 };
