@@ -11,7 +11,7 @@ export const SDGs: FC<SDGsProps> = ({ className, size = 'small', sdgs = [] }: SD
   return (
     <div className={cx('flex flex-wrap items-center gap-2', className)}>
       {sdgs.map(({ id, name }) => (
-        <span
+        <div
           key={id}
           // This removes an extra space displayed below the image when the container wraps
           className="flex"
@@ -23,10 +23,10 @@ export const SDGs: FC<SDGsProps> = ({ className, size = 'small', sdgs = [] }: SD
             title={name}
             width={SDGS_SIZES[size]}
             height={SDGS_SIZES[size]}
-            layout="fixed"
+            layout="intrinsic"
             quality={100}
           />
-        </span>
+        </div>
       ))}
     </div>
   );
