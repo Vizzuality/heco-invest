@@ -2202,6 +2202,9 @@
   "hPsrc0": {
     "string": "insert your answer (max 600 characters)"
   },
+  "hRcpAt": {
+    "string": "max 1 layer"
+  },
   "hWhIuU": {
     "string": "Select the intrument type(s)"
   },
@@ -2612,6 +2615,9 @@
   },
   "psXhQO": {
     "string": "Funding & development"
+  },
+  "pzu2Hd": {
+    "string": "Open location search"
   },
   "q0vlJx": {
     "string": "project or solution already in implementation that seeks to be strengthened and consolidated."
