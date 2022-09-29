@@ -15,7 +15,8 @@
       "avatar": {
         "small": null,
         "medium": null,
-        "original": null
+        "original": null,
+        "analyzed": null
       },
       "ui_language": "es",
       "account_language": "pt",

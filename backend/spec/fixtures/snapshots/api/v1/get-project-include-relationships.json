@@ -43,7 +43,8 @@
         "picture": {
           "small": null,
           "medium": null,
-          "original": null
+          "original": null,
+          "analyzed": false
         },
         "contact_email": null,
         "contact_phone": null,

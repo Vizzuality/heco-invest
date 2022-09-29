@@ -23,9 +23,10 @@
       "trusted": false,
       "created_at": "2022-08-09T09:52:12.069Z",
       "picture": {
-        "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TkRGa05HRmxNeTB5WXpRMUxUUmhOall0WWpjM05pMWlaalE0WkRNMk1HTXhOV1lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--99ca37f2aa2e5ebde523f99cca55080ce0a33379/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2d0eVpYTnBlbVZKSWd3eU1EQjRNakF3QmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--eecd42c95d4a671873063e8115ad147ca137769d/test",
-        "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TkRGa05HRmxNeTB5WXpRMUxUUmhOall0WWpjM05pMWlaalE0WkRNMk1HTXhOV1lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--99ca37f2aa2e5ebde523f99cca55080ce0a33379/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2d0eVpYTnBlbVZKSWd3NE1EQjRPREF3QmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--7e1915aedd9d00d46843b05cad3232ede48b86eb/test",
-        "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TkRGa05HRmxNeTB5WXpRMUxUUmhOall0WWpjM05pMWlaalE0WkRNMk1HTXhOV1lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--99ca37f2aa2e5ebde523f99cca55080ce0a33379/test"
+        "small": null,
+        "medium": null,
+        "original": null,
+        "analyzed": false
       },
       "status": "launched",
       "favourite": false,

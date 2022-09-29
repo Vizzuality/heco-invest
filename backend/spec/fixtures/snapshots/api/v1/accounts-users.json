@@ -16,7 +16,8 @@
         "avatar": {
           "small": null,
           "medium": null,
-          "original": null
+          "original": null,
+          "analyzed": null
         },
         "ui_language": "en",
         "account_language": "en",
@@ -39,7 +40,8 @@
         "avatar": {
           "small": null,
           "medium": null,
-          "original": null
+          "original": null,
+          "analyzed": null
         },
         "ui_language": "en",
         "account_language": "en",
@@ -62,7 +64,8 @@
         "avatar": {
           "small": null,
           "medium": null,
-          "original": null
+          "original": null,
+          "analyzed": null
         },
         "ui_language": "en",
         "account_language": null,

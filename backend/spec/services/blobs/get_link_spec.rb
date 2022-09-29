@@ -8,10 +8,9 @@ RSpec.describe Blobs::GetLink do
 
   describe "#call" do
     context "when blob is analyzed" do
-      # TODO: uncomment when background jobs ready
-      # before do
-      #   ActiveStorage::AnalyzeJob.perform_now blob
-      # end
+      before do
+        ActiveStorage::AnalyzeJob.perform_now blob
+      end
 
       context "when blob is image" do
         it "returns link to blob" do
@@ -19,20 +18,20 @@ RSpec.describe Blobs::GetLink do
         end
       end
 
-      # context "when blob is not image" do
-      #   let(:blob) { ActiveStorage::Blob.create_and_upload! io: fixture_file_upload("text_file.txt"), filename: "test" }
+      context "when blob is not image" do
+        let(:blob) { ActiveStorage::Blob.create_and_upload! io: fixture_file_upload("text_file.txt"), filename: "test" }
 
-      #   it "is nil" do
-      #     expect(subject.call).to be_nil
-      #   end
-      # end
+        it "is nil" do
+          expect(subject.call).to be_nil
+        end
+      end
     end
 
-    # context "when blob is not analyzed" do
-    #   it "is nil" do
-    #     expect(subject.call).to be_nil
-    #   end
-    # end
+    context "when blob is not analyzed" do
+      it "is nil" do
+        expect(subject.call).to be_nil
+      end
+    end
 
     context "when blob is nil" do
       let(:blob) { nil }
