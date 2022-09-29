@@ -8,6 +8,9 @@
   "+8XJbK": {
     "string": "To be part of the HeCo Invest platform your organization, institution or business must create an account. An account is your organization profile and it contains all the basic information to describe it. There are two types of accounts HeCo Invest: one for organizations developing projects - Project Developers - and one for organizations investing in projects - Investors. Each account will have at least one contact: the account owner."
   },
+  "+HRDx3": {
+    "string": "Search a location on the map"
+  },
   "+Hbd1j": {
     "string": "Financial instrument"
   },
@@ -74,6 +77,9 @@
   "/apC0L": {
     "string": "SDG’s"
   },
+  "/cMb5f": {
+    "string": "Zoom out icon"
+  },
   "/oLNw7": {
     "string": "The impact score of this project is 0."
   },
@@ -133,6 +139,9 @@
   },
   "0lKwqs": {
     "string": "Close open call?"
+  },
+  "0tb6zN": {
+    "string": "The different controls will allow you too easily navigate on the map:"
   },
   "0u3Vzf": {
     "string": "All users associated with the account will be deleted."
@@ -347,6 +356,9 @@
   "5c08Qp": {
     "string": "Project information"
   },
+  "5eVTzC": {
+    "string": "Map help"
+  },
   "5g0Cah": {
     "string": "For who is the open call for?"
   },
@@ -518,6 +530,9 @@
   "8dGhWP": {
     "string": "Browse or drag and drop"
   },
+  "8fVxjR": {
+    "string": "<n>Priority layers:</n> Biodiversity intactness, Tree biomass density, Wetlands, Population density;"
+  },
   "8gJV79": {
     "string": "What are HeCo priority landscapes?"
   },
@@ -599,11 +614,17 @@
   "A2bq3p": {
     "string": "Starting today, this open call will be available for <total></total> days."
   },
+  "A4FcXS": {
+    "string": "Map layers icon"
+  },
   "A4UTjl": {
     "string": "Portuguese"
   },
   "A775MJ": {
     "string": "You are currently the account owner. Please transfer the ownership before continuing."
+  },
+  "A8VNfu": {
+    "string": "Map Layers"
   },
   "A8lXv/": {
     "string": "Global estimate of human population density and distribution."
@@ -613,6 +634,9 @@
   },
   "ADBj6Y": {
     "string": "What type of financing are you looking for to implement your project or solution?"
+  },
+  "AMKznU": {
+    "string": "Project pin icon"
   },
   "ANTAp/": {
     "string": "Country, Municipality, State"
@@ -884,6 +908,9 @@
   "FN+0yY": {
     "string": "Unable to parse the file. Please try uploading a different format."
   },
+  "FPr3FX": {
+    "string": "You can activate a varity of data layers to help you to understand the context of each project. These layers may be of 3 types:"
+  },
   "FVcGqA": {
     "string": "The HeCo Invest platform connects governments, investors, donors, and philanthropists with selected investment opportunities and projects in high-priority areas for Herencia Colombia. If you find a project that matches your investment goals you can contact its project developer. The contact details will only be available for platform registered users. So if you want to reach out to a project developer, you first need to create an account or join an existing account. The beta version of the HeCo Invest platform does not include the actual attainment of the business deals. To fund a project, investors must carry out all business procedures outside the platform."
   },
@@ -1106,6 +1133,12 @@
   },
   "KGREXT": {
     "string": "Total of projects"
+  },
+  "KPVqej": {
+    "string": "Zoom in icon"
+  },
+  "KQ9L9d": {
+    "string": "Zoom In"
   },
   "KYymTZ": {
     "string": "{quantity, plural, one {project} other {projects}}"
@@ -1482,6 +1515,9 @@
   "S2nxXm": {
     "string": "Thanks for using HeCo Invest"
   },
+  "SENRqu": {
+    "string": "Help"
+  },
   "SFCYg4": {
     "string": "Don’t have a project yet? Create a project now"
   },
@@ -1656,6 +1692,9 @@
   "VkljLs": {
     "string": "Insert the phone number in case you would like to be contacted by phone."
   },
+  "Vp1beW": {
+    "string": "<n>Hopeful Layers:</n> Priority for conservation, Carbon sequestration potential, Flooding preventions."
+  },
   "VsNoGp": {
     "string": "How much money did the project received or raised? (optional)"
   },
@@ -1769,6 +1808,9 @@
   },
   "XwmxKZ": {
     "string": "A project is an enterprise or initiative carefully planned and run by project developers in a given region with the objective of contributing to its environmental conservation. Projects are set up whenever a project developer is seeking visibility or needing investment."
+  },
+  "XwwnKr": {
+    "string": "Project cluster icon"
   },
   "Y2HapG": {
     "string": "The dataset represents a series of vectorized polygon layers that depict sub-basin boundaries at a global scale. An important characteristic of any sub-basin delineation is the sub-basin breakdown. At its highest level of sub-basin breakdown, each basin has been divided into two sub-basins at every location where two river branches meet which each have an individual upstream area of at least 100 km². A second critical feature of sub-basin delineations is the way the sub-basins are grouped or coded to allow for the creation of nested sub-basins at different scales, or to navigate within the sub-basin network from up- to downstream. To support these functionalities and topological concepts, the ‘Pfafstetter’ coding system has been implemented, offering 12 hierarchically nested sub-basin breakdowns globally."
@@ -1998,6 +2040,9 @@
   "d1OgED": {
     "string": "(optional)"
   },
+  "d2h8L7": {
+    "string": "<n>Base layers:</n> Heco priority landscapes, Watersheds, Sub-basin boundaries, Protected areas;"
+  },
   "d3TPmn": {
     "string": "SDG's"
   },
@@ -2175,6 +2220,9 @@
   "gbWTGl": {
     "string": "General information about the project developer. This information will be <n>public</n> except the one marked as <n>private</n> which will only be visible for admins."
   },
+  "ghKJy+": {
+    "string": "The map allows you to quickly see the location of each project and understand the context of the different projects."
+  },
   "ghj0+t": {
     "string": "Geographies"
   },
@@ -2201,6 +2249,9 @@
   },
   "hPsrc0": {
     "string": "insert your answer (max 600 characters)"
+  },
+  "hRcpAt": {
+    "string": "max 1 layer"
   },
   "hWhIuU": {
     "string": "Select the intrument type(s)"
@@ -2240,6 +2291,9 @@
   },
   "i5gK2X": {
     "string": "Currently you don’t have any <b>Project developers</b> in your favorites."
+  },
+  "i7V7mZ": {
+    "string": "Search icon"
   },
   "i9cSUD": {
     "string": "Invests in"
@@ -2613,6 +2667,9 @@
   "psXhQO": {
     "string": "Funding & development"
   },
+  "q/Z5g4": {
+    "string": "Open map help"
+  },
   "q0vlJx": {
     "string": "project or solution already in implementation that seeks to be strengthened and consolidated."
   },
@@ -2636,6 +2693,9 @@
   },
   "qCZWRp": {
     "string": "Which are the HeCo Program priority landscapes?"
+  },
+  "qFGn1F": {
+    "string": "Each project is represented by a marker that has a color defined by the project category."
   },
   "qFZuSl": {
     "string": "My projects"
@@ -2687,6 +2747,9 @@
   },
   "r333tD": {
     "string": "<b>Water</b>:"
+  },
+  "r3xohw": {
+    "string": "Map controls"
   },
   "rBC2yr": {
     "string": "This information will be <n>public</n>."
@@ -2892,6 +2955,9 @@
   "ui0dk9": {
     "string": "idea to be developed from scratch."
   },
+  "uln7eT": {
+    "string": "Zoom Out"
+  },
   "up42nX": {
     "string": "<b>Biodiversity</b>: areas of great ecosystem diversity as well as with a degree of threat or protection for flora and fauna, and where more investments in conservation, restoration, and scientific knowledge are needed."
   },
@@ -2982,6 +3048,9 @@
   "we4Lby": {
     "string": "Info"
   },
+  "wghPR3": {
+    "string": "Group of projects"
+  },
   "whbx7G": {
     "string": "Geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystem services."
   },
@@ -2996,6 +3065,9 @@
   },
   "wvoA3H": {
     "string": "Picture"
+  },
+  "wvp0Qm": {
+    "string": "Project marker"
   },
   "wyxJrL": {
     "string": "Delete account"
