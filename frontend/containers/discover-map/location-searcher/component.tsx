@@ -102,9 +102,9 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
             return (
               <div ref={containerRef}>
                 <div
-                  className={cx('flex bg-white items-center rounded shadow border', {
-                    'border-green-dark': isFocused,
-                    'border-transparent': !isFocused,
+                  className={cx('flex bg-white items-center rounded shadow', {
+                    'outline outline-green-dark': isFocused && isOpen,
+                    'outline-none': !isFocused && isOpen,
                   })}
                   onMouseEnter={() => setIsOpen(true)}
                   onMouseLeave={() => {
@@ -115,7 +115,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
                 >
                   <Button
                     theme="naked"
-                    className="px-2 py-2 text-gray-800 transition-all bg-white rounded shadow-sm focus-visible:outline-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 hover:text-green-dark"
+                    className="max-h-full px-2 py-2 text-gray-800 transition-all bg-white rounded shadow-sm focus-visible:outline-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 hover:text-green-dark"
                     onClick={() => setIsOpen(true)}
                     disabled={isOpen}
                   >
