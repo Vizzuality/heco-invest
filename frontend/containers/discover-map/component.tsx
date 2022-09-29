@@ -71,9 +71,12 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
     [layerInputs]
   );
 
-  const handleViewportChange = useCallback((vw) => {
-    setViewport(vw);
-  }, []);
+  const handleViewportChange = useCallback(
+    (vw) => {
+      setViewport({ ...viewport, ...vw });
+    },
+    [viewport]
+  );
 
   const handleLocationSelected = ({ bbox }) => {
     setBounds({ ...bounds, bbox });

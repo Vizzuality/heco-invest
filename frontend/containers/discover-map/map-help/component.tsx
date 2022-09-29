@@ -19,7 +19,7 @@ export const MapHelp: FC<MapHelpProps> = () => {
   return (
     <div className="">
       <Button
-        className="flex items-center justify-center w-8 h-8 px-2 py-1 text-gray-800 bg-white rounded shadow-sm outline-none border-xl focus-visible:ring-green-dark focus-visible:ring-2 hover:ring-green-dark hover:ring-1"
+        className="flex items-center justify-center w-8 h-8 px-2 py-1 text-gray-800 transition-all bg-white rounded shadow focus-visible:outline-green-dark hover:text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:text-opacity-60 disabled:pointer-events-none"
         theme="naked"
         size="smallest"
         icon={() => <HelpCircle className="mr-0" />}

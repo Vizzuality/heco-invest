@@ -46,7 +46,7 @@ export const ZoomControl: FC<ZoomControlProps> = ({
       })}
     >
       <button
-        className="p-2 mb-0.5 text-gray-800 transition-all bg-white rounded shadow focus-visible:outline-green-dark hover:text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:text-opacity-60 disabled:pointer-events-none"
+        className="p-2 mb-0.5 text-gray-800 transition-all bg-white rounded shadow focus-visible:outline-green-dark focus-visible:z-50 hover:text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:text-opacity-60 disabled:pointer-events-none"
         title={intl.formatMessage({ defaultMessage: 'Zoom in', id: 'xbi38c' })}
         type="button"
         disabled={zoom === maxZoom}

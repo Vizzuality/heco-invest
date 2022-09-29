@@ -9,6 +9,7 @@ import Script from 'next/script';
 
 import { useOutsideClick } from 'rooks';
 
+import Button from 'components/button';
 import Icon from 'components/icon';
 import Loading from 'components/loading';
 
@@ -70,7 +71,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
   const searchOptions = {
     types: ['locality', 'sublocality'],
   };
-  console.log(address);
+
   return (
     <>
       <Script
@@ -101,25 +102,28 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
             return (
               <div ref={containerRef}>
                 <div
-                  className={cx('flex bg-white items-center rounded shadow', {
-                    'border border-green-dark': isFocused,
+                  className={cx('flex bg-white items-center rounded shadow border', {
+                    'border-green-dark': isFocused,
+                    'border-transparent': !isFocused,
                   })}
                   onMouseEnter={() => setIsOpen(true)}
                   onMouseLeave={() => {
-                    if (!isFocused) {
+                    if (!isFocused && !addressSetted) {
                       setIsOpen(false);
                     }
                   }}
                 >
-                  <button
-                    className="p-2 text-gray-800 transition-all bg-white rounded shadow-sm focus-visible:outline-green-dark hover:text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:text-opacity-60 disabled:pointer-events-non"
+                  <Button
+                    theme="naked"
+                    className="px-2 py-2 text-gray-800 transition-all bg-white rounded shadow-sm focus-visible:outline-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 hover:text-green-dark"
                     onClick={() => setIsOpen(true)}
+                    disabled={isOpen}
                   >
                     <span className="sr-only">
                       <FormattedMessage defaultMessage="Open location search" id="pzu2Hd" />
                     </span>
                     <Icon icon={SearchIcon} className="w-4 h-4" />
-                  </button>
+                  </Button>
                   <input
                     {...getInputProps({
                       placeholder: intl.formatMessage({
@@ -131,7 +135,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
                       onBlur: () => setIsFocused(false),
                     })}
                     className={cx(
-                      'transition-all duration-500 ease-in-out focus-visible:outline-none placeholder-gray-800 text-sm rounded-r overflow-ellipsis overflow-hidden whitespace-nowrap',
+                      'transition-all duration-500 ease-in-out outline-none placeholder-gray-800 text-sm overflow-ellipsis overflow-hidden whitespace-nowrap',
                       {
                         'w-0 opacity-0': !isOpen,
                         'w-[182px] opacity-100': isOpen || addressSetted,
@@ -141,25 +145,31 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
                       defaultMessage: 'Find location',
                       id: '0+CmKm',
                     })}
+                    disabled={!isOpen}
                   />
                   {loading ? (
                     <Loading className="w-6 h-6 pr-1" visible />
                   ) : (
-                    <button
-                      type="button"
-                      className={cx('cursor-pointer transition-opacity', {
-                        'w-auto mx-1': isOpen,
-                        'w-0': !isOpen,
-                        'opacity-0': !address.length,
-                      })}
+                    <Button
+                      className={cx(
+                        'transition-all cursor-pointer px-0 py-0 focus-visible:outline-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+                        {
+                          'w-auto mx-1': isOpen,
+                          'w-0': !isOpen,
+                          'opacity-0': !address.length,
+                        }
+                      )}
                       onClick={handleClearSearch}
                       aria-label={intl.formatMessage({
                         defaultMessage: 'Clear search',
                         id: '4YJHut',
                       })}
+                      theme="naked"
+                      size="smallest"
+                      disabled={!isOpen}
                     >
                       <Icon icon={CloseIcon} className="w-4 h-4" />
-                    </button>
+                    </Button>
                   )}
                 </div>
 
