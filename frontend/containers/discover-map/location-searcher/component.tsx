@@ -70,7 +70,6 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
   const searchOptions = {
     types: ['locality', 'sublocality'],
   };
-  console.log(address);
   return (
     <>
       <Script
