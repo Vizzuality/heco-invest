@@ -46,22 +46,22 @@ export const ZoomControl: FC<ZoomControlProps> = ({
       })}
     >
       <button
-        className="p-2 mb-1 text-gray-800 transition-all bg-white rounded shadow-sm focus-visible:outline-green-dark hover:text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:text-opacity-60 disabled:pointer-events-none"
+        className="p-2 mb-0.5 text-gray-800 transition-all bg-white rounded shadow focus-visible:outline-green-dark hover:text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:text-opacity-60 disabled:pointer-events-none"
         title={intl.formatMessage({ defaultMessage: 'Zoom in', id: 'xbi38c' })}
         type="button"
         disabled={zoom === maxZoom}
         onClick={increaseZoom}
       >
-        <Icon icon={ZoomInIcon} />
+        <Icon icon={ZoomInIcon} className="w-4 h-4" />
       </button>
       <button
-        className="p-2 text-gray-800 transition-all bg-white rounded shadow-sm focus-visible:outline-green-dark hover:text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:text-opacity-60 disabled:pointer-events-none"
+        className="p-2 text-gray-800 transition-all bg-white rounded shadow focus-visible:outline-green-dark hover:text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:text-opacity-60 disabled:pointer-events-none"
         title={intl.formatMessage({ defaultMessage: 'Zoom out', id: '/UnJ3S' })}
         type="button"
         disabled={zoom === minZoom}
         onClick={decreaseZoom}
       >
-        <Icon icon={ZoomOutIcon} />
+        <Icon icon={ZoomOutIcon} className="w-4 h-4" />
       </button>
     </div>
   );
