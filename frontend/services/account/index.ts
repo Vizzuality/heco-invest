@@ -81,6 +81,11 @@ export function useCreateProjectDeveloper(): UseMutationResult<
     onSuccess: (result) => {
       queryClient.invalidateQueries(Queries.ProjectDeveloper);
       queryClient.invalidateQueries(Queries.ProjectDeveloperList);
+
+      // These two make sure that `useMe` and `useAccount` return updated information
+      queryClient.invalidateQueries(Queries.User);
+      queryClient.invalidateQueries(Queries.CurrentProjectDeveloper);
+
       queryClient.setQueryData([Queries.ProjectDeveloper, locale], result.data.data);
     },
   });
@@ -243,6 +248,11 @@ export function useCreateInvestor(): UseMutationResult<
     onSuccess: (result) => {
       queryClient.invalidateQueries(Queries.Investor);
       queryClient.invalidateQueries(Queries.InvestorList);
+
+      // These two make sure that `useMe` and `useAccount` return updated information
+      queryClient.invalidateQueries(Queries.User);
+      queryClient.invalidateQueries(Queries.CurrentInvestor);
+
       queryClient.setQueryData([Queries.Investor, locale], result.data.data);
     },
   });
