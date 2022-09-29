@@ -35,11 +35,15 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
   const alert = useGetAlert(applyToOpenCall.error);
   const resolver = useApplyToOpenCallResolver();
 
-  const { data: { data: projects } = { data: [] }, isLoading: isLoadingProjects } =
-    useAccountProjectsList();
+  const { projects, isLoading: isLoadingProjects } = useAccountProjectsList({
+    fields: ['id', 'name', 'status'],
+  });
 
-  const sortedProjects = useMemo(
-    () => projects.sort((a, b) => a.name.localeCompare(b.name)),
+  const suitableProjects = useMemo(
+    () =>
+      projects
+        .filter((project) => project.status !== 'draft')
+        .sort((a, b) => a.name.localeCompare(b.name)),
     [projects]
   );
 
@@ -129,7 +133,7 @@ export const OpenCallApplicationModal: FC<OpenCallApplicationModalProps> = ({
               })}
               aria-describedby="project-id-error project-id-note"
             >
-              {sortedProjects.map(({ id, name }) => (
+              {suitableProjects.map(({ id, name }) => (
                 <Option key={id}>{name}</Option>
               ))}
             </Combobox>

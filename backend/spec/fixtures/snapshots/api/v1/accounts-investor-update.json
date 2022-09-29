@@ -38,9 +38,10 @@
       "contact_email": "contact@example.com",
       "contact_phone": "123456789",
       "picture": {
-        "small": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszTmpZME5tUTJZeTAwTjJWakxUUXdaR0V0WVdOaVlpMWxPREUwWmpsaVpEaGlOR1VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f8653bf0819b4c5896289095e56660319b1e07d1/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2d0eVpYTnBlbVZKSWd3eU1EQjRNakF3QmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--eecd42c95d4a671873063e8115ad147ca137769d/test",
-        "medium": "http://localhost:4000/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszTmpZME5tUTJZeTAwTjJWakxUUXdaR0V0WVdOaVlpMWxPREUwWmpsaVpEaGlOR1VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f8653bf0819b4c5896289095e56660319b1e07d1/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2d0eVpYTnBlbVZKSWd3NE1EQjRPREF3QmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--7e1915aedd9d00d46843b05cad3232ede48b86eb/test",
-        "original": "http://localhost:4000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWszTmpZME5tUTJZeTAwTjJWakxUUXdaR0V0WVdOaVlpMWxPREUwWmpsaVpEaGlOR1VHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--f8653bf0819b4c5896289095e56660319b1e07d1/test"
+        "small": null,
+        "medium": null,
+        "original": null,
+        "analyzed": false
       },
       "mission": "Mission",
       "prioritized_projects_description": "What type of projects are you prioritizing?",

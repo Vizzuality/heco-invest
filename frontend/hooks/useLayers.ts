@@ -719,7 +719,7 @@ export const useLayers = () => {
             'https://data-agenciadetierras.opendata.arcgis.com/datasets/agenciadetierras::resguardos-ind%C3%ADgenas-1/about',
           legend: {
             type: 'monocolor',
-            items: [{ color: '#ffb780' }],
+            items: [{ color: '#ffb780', opacity: 0.7 }],
           },
           specification: {
             type: 'vector',
