@@ -64,6 +64,7 @@ variable "mapbox_api_key" {
 variable "hotjar_site_id" {
   type = string
   description = "Hotjar site ID"
+  default = ""
 }
 
 variable "dns_zone_name" {

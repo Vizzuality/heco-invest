@@ -79,14 +79,6 @@ module "sendgrid_api_key" {
   use_random_value = false
 }
 
-module "hotjar_site_id" {
-  source           = "../secret_value"
-  region           = var.gcp_region
-  key              = "${var.project_name}_hotjar_site_id"
-  value            = var.hotjar_site_id
-  use_random_value = false
-}
-
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN                 = var.transifex_token

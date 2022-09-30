@@ -31,7 +31,7 @@ module "staging" {
   transifex_token        = var.transifex_token
   sendgrid_api_key       = var.sendgrid_api_key
   mapbox_api_key         = var.mapbox_api_key
-  hotjar_site_id         = var.hotjar_site_id
+  hotjar_site_id         = ""
   redirect_domain        = var.redirect_domain
   dns_zone_name          = module.dns.dns_zone_name
   redirect_dns_zone_name = module.redirect_dns.dns_zone_name
