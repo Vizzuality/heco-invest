@@ -3015,6 +3015,9 @@
   "viXE32": {
     "string": "Private"
   },
+  "vrCHpK": {
+    "string": "Powered by <a>Resource Watch</a>"
+  },
   "vygPIS": {
     "string": "Leave project creation form"
   },
@@ -3101,6 +3104,9 @@
   },
   "xUR9nd": {
     "string": "people live in the Amazon region."
+  },
+  "xXIT0v": {
+    "string": "<b>Note:</b> After submitting the form, images may take some time to be visible in your page."
   },
   "xXbJso": {
     "string": "Sign out"
