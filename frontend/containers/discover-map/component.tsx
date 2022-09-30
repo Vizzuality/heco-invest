@@ -154,7 +154,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           <MapHelp />
         </div>
 
-        <div className="absolute px-2 text-xs text-gray-900 bg-gray-200 rounded bottom-2 left-4 bg-opacity-40">
+        <div className="absolute px-2 text-xs text-gray-900 bg-gray-200 rounded bottom-2 left-4 bg-opacity-30">
           {displayResourceWatchCredits && (
             <span>
               <FormattedMessage
