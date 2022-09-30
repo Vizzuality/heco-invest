@@ -103,7 +103,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
               <div ref={containerRef}>
                 <div
                   className={cx('flex bg-white items-center rounded shadow', {
-                    'outline outline-green-dark': isFocused && isOpen,
+                    'outline outline-green-dark outline-2 outline-offset-2': isFocused && isOpen,
                     'outline-none': !isFocused && isOpen,
                   })}
                   onMouseEnter={() => setIsOpen(true)}
