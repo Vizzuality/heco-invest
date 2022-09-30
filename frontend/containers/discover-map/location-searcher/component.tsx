@@ -154,9 +154,8 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
                       className={cx(
                         'transition-all cursor-pointer px-0 py-0 focus-visible:outline-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
                         {
-                          'w-auto mx-1': isOpen,
-                          'w-0': !isOpen,
-                          'opacity-0': !address.length,
+                          'w-auto mx-1': isOpen && address.length,
+                          hidden: !isOpen || !address.length,
                         }
                       )}
                       onClick={handleClearSearch}
