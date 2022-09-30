@@ -191,6 +191,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
               <SDGs
                 className="my-3"
                 sdgs={allSdgs.filter(({ id }) => sdgs?.includes(Number(id)))}
+                size="large"
               />
             </>
           )}

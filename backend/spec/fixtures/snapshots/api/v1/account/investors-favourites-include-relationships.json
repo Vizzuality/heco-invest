@@ -30,7 +30,8 @@
         "avatar": {
           "small": null,
           "medium": null,
-          "original": null
+          "original": null,
+          "analyzed": null
         },
         "otp_required_for_login": false
       }
