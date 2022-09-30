@@ -61,7 +61,7 @@ export type ChangePassword = {
 };
 
 export type UpdateUserDto = {
-  first_name: string;
-  last_name: string;
+  first_name?: string;
+  last_name?: string;
   otp_required_for_login?: boolean;
 };

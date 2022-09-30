@@ -32,7 +32,7 @@ const Information: PageComponent<InformationPageProps, SettingsLayoutProps> = ()
 
   return (
     <ProtectedPage permissions={[UserRoles.ProjectDeveloper, UserRoles.Investor, UserRoles.Light]}>
-      <Head title={formatMessage({ defaultMessage: 'Change password', id: 'L4nXIc' })} />
+      <Head title={formatMessage({ defaultMessage: 'Account security', id: 'bALo1R' })} />
       <SettingsLayout>
         <LayoutContainer
           layout="narrow"

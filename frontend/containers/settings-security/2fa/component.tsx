@@ -10,7 +10,7 @@ import Switch from 'components/forms/switch';
 
 import { useUpdateUser } from 'services/users/userService';
 
-import { Settings2FAProps } from '.';
+import { Settings2FAProps } from './types';
 
 const Settings2FA: FC<Settings2FAProps> = () => {
   const { user, isLoading } = useMe();
@@ -24,11 +24,7 @@ const Settings2FA: FC<Settings2FAProps> = () => {
   }, [setValue, user]);
 
   const onSubmit = ({ otp_required_for_login }: { otp_required_for_login: boolean }) => {
-    if (!!user) {
-      // The only value extracted from this form is the otp_required_for_login, the other values come from the current user.
-      const { first_name, last_name } = user;
-      updateUser.mutate({ first_name, last_name, otp_required_for_login });
-    }
+    updateUser.mutate({ otp_required_for_login });
   };
 
   return (

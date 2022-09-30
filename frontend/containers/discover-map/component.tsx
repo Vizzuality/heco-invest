@@ -23,11 +23,11 @@ import { useProjectsMap } from 'services/projects/projectService';
 
 import LayerLegend from './layer-legend';
 import LocationSearcher from './location-searcher';
+import MapHelp from './map-help';
 import MapLayersSelector from './map-layers-selector';
 import { MapLayersSelectorForm } from './map-layers-selector/types';
 import MapPinCluster from './pin-cluster';
 import { DiscoverMapProps } from './types';
-import MapHelp from './map-help';
 
 const cartoProvider = new CartoProvider();
 

@@ -14,7 +14,7 @@ import { useChangePasswordResolver } from 'validations/change-password';
 
 import { useChangePassword } from 'services/users/userService';
 
-import { SettingsChangePasswordProps } from '.';
+import { SettingsChangePasswordProps } from './types';
 
 const SettingsChangePassword: FC<SettingsChangePasswordProps> = () => {
   const { formatMessage } = useIntl();
