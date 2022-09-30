@@ -34,6 +34,7 @@ export interface User {
   invitation: InvitationStatus;
   owner: boolean;
   avatar: Picture;
+  otp_required_for_login: boolean;
 }
 
 export type UserAccount = {

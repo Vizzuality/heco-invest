@@ -46,7 +46,7 @@ export enum Paths {
   ForProjectDevelopers = '/for-project-developers',
   PrivacyPolicy = '/privacy-policy',
   UserInformation = '/settings/information',
-  UserPassword = '/settings/password',
+  UserSecurity = '/settings/security',
   /** HIDDEN PAGES */
   HiddenPage = '/hidden-page',
   AccountDeleted = '/account-deleted',
