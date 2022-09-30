@@ -110,7 +110,7 @@ export const OpenCallFundingImpact: FC<OpenCallFundingImpactProps> = ({
                 <h3 className="mb-6 text-xl font-semibold">
                   <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
                 </h3>
-                <SDGs size="large" sdgs={openCallSdgs} />
+                <SDGs sdgs={openCallSdgs} size="large" />
               </div>
             </div>
           </LayoutContainer>
