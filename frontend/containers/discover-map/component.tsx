@@ -14,6 +14,7 @@ import { useLayers } from 'hooks/useLayers';
 
 import Map from 'components/map';
 import Controls from 'components/map/controls';
+import ZoomControl from 'components/map/controls/zoom';
 import ClusterLayer from 'components/map/layers/cluster';
 import { Legend, LegendType } from 'components/map/legend/types';
 import ProjectMapPin from 'components/project-map-pin';
@@ -23,11 +24,11 @@ import { useProjectsMap } from 'services/projects/projectService';
 
 import LayerLegend from './layer-legend';
 import LocationSearcher from './location-searcher';
+import MapHelp from './map-help';
 import MapLayersSelector from './map-layers-selector';
 import { MapLayersSelectorForm } from './map-layers-selector/types';
 import MapPinCluster from './pin-cluster';
 import { DiscoverMapProps } from './types';
-import MapHelp from './map-help';
 
 const cartoProvider = new CartoProvider();
 
@@ -46,6 +47,17 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
     options: { padding: 0 },
   });
 
+  const onZoomChange = useCallback(
+    (zoom) => {
+      setViewport({
+        ...viewport,
+        zoom,
+        transitionDuration: 300,
+      });
+    },
+    [viewport]
+  );
+
   const { register, watch, resetField, setValue } = useForm<MapLayersSelectorForm>();
 
   const layerInputs = watch();
@@ -59,9 +71,12 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
     [layerInputs]
   );
 
-  const handleViewportChange = useCallback((vw) => {
-    setViewport(vw);
-  }, []);
+  const handleViewportChange = useCallback(
+    (vw) => {
+      setViewport({ ...viewport, ...vw });
+    },
+    [viewport]
+  );
 
   const handleLocationSelected = ({ bbox }) => {
     setBounds({ ...bounds, bbox });
@@ -138,22 +153,28 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
               onChange: handleChangeVisibleLayer,
             }}
           />
-          <LocationSearcher
-            className="pointer-events-auto"
-            onLocationSelected={handleLocationSelected}
-          />
         </div>
 
-        <div className="absolute top-4 right-4">
-          <MapHelp />
-        </div>
-
-        <Controls className="absolute h-fit max-h-[45%] bottom-4 right-4 overflow-y-auto">
-          <LayerLegend
-            className="bg-white"
-            onCloseLegend={(layerGroup) => resetField(layerGroup as keyof MapLayersSelectorForm)}
-            layersLegends={layerLegends}
-          />
+        <Controls className="w-full h-full">
+          <div className="absolute flex flex-col items-end top-4 right-4 gap-y-2">
+            <LocationSearcher
+              className="absolute pointer-events-auto"
+              onLocationSelected={handleLocationSelected}
+            />
+            <ZoomControl
+              className="w-min "
+              viewport={{ ...viewport }}
+              onZoomChange={onZoomChange}
+            />
+            <MapHelp />
+          </div>
+          <div className="absolute h-fit max-h-[45%] bottom-4 right-4 overflow-y-auto">
+            <LayerLegend
+              className="bg-white"
+              onCloseLegend={(layerGroup) => resetField(layerGroup as keyof MapLayersSelectorForm)}
+              layersLegends={layerLegends}
+            />
+          </div>
         </Controls>
       </div>
     </>
