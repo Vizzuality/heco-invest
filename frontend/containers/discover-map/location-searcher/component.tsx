@@ -22,6 +22,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
   const intl = useIntl();
   const placesRef = useRef();
   const containerRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [address, setAddress] = useState('');
   const [addressSetted, setAddressSetted] = useState(false);
@@ -72,6 +73,11 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
     types: ['locality', 'sublocality'],
   };
 
+  const handleClickSearch = () => {
+    setIsOpen(true);
+    setTimeout(() => inputRef.current.focus(), 0);
+  };
+
   return (
     <>
       <Script
@@ -116,7 +122,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
                   <Button
                     theme="naked"
                     className="max-h-full px-2 py-2 text-gray-800 transition-all bg-white rounded shadow-sm focus-visible:outline-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 hover:text-green-dark"
-                    onClick={() => setIsOpen(true)}
+                    onClick={handleClickSearch}
                     disabled={isOpen}
                   >
                     <span className="sr-only">
@@ -138,7 +144,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
                       'transition-all duration-500 ease-in-out outline-none placeholder-gray-800 text-sm overflow-ellipsis overflow-hidden whitespace-nowrap',
                       {
                         'w-0 opacity-0': !isOpen,
-                        'w-[182px] opacity-100': isOpen || addressSetted,
+                        'w-52 pr-6 opacity-100': isOpen || addressSetted,
                       }
                     )}
                     aria-label={intl.formatMessage({
@@ -146,16 +152,20 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
                       id: '0+CmKm',
                     })}
                     disabled={!isOpen}
+                    ref={inputRef}
                   />
                   {loading ? (
-                    <Loading className="w-6 h-6 pr-1" visible />
+                    <Loading
+                      className="absolute flex items-center justify-center w-4 h-4 right-1"
+                      visible
+                    />
                   ) : (
                     <Button
                       className={cx(
-                        'transition-all cursor-pointer px-0 py-0 focus-visible:outline-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+                        'absolute right-1 transition-all cursor-pointer px-0 py-0 focus-visible:outline-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
                         {
-                          'w-auto mx-1': isOpen && address.length,
                           hidden: !isOpen || !address.length,
+                          block: isOpen && !!address.length,
                         }
                       )}
                       onClick={handleClearSearch}
