@@ -162,7 +162,12 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
                 id="vrCHpK"
                 values={{
                   a: (chunk: string) => (
-                    <a className="hover:underline" href="https://resourcewatch.org/">
+                    <a
+                      className="hover:underline"
+                      href="https://resourcewatch.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {chunk}
                     </a>
                   ),
