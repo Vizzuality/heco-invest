@@ -79,6 +79,13 @@ module "sendgrid_api_key" {
   use_random_value = false
 }
 
+module "hotjar_site_id" {
+  source           = "../secret_value"
+  region           = var.gcp_region
+  key              = "${var.project_name}_hotjar_site_id"
+  value            = var.hotjar_site_id
+  use_random_value = false
+}
 
 locals {
   frontend_docker_build_args = {
@@ -89,6 +96,7 @@ locals {
     NEXT_PUBLIC_PROXY_BACKEND       = "false"
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY = var.google_maps_api_key
     NEXT_PUBLIC_MAPBOX_API_TOKEN    = var.mapbox_api_key
+    NEXT_PUBLIC_HOTJAR_SITE_ID      = var.hotjar_site_id
   }
   backend_docker_build_args = {
     RAILS_RELATIVE_URL_ROOT = "/backend"
