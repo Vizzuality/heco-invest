@@ -1,6 +1,7 @@
 import { ChangeEvent, FC, useCallback, useMemo, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 
 import omit from 'lodash-es/omit';
 
@@ -92,12 +93,17 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
             id,
             name,
             group,
+            isResourceWatch,
           } = layers.find(({ id }) => layer === id);
-          return { items, type: type as LegendType, id, name, group };
+          return { items, type: type as LegendType, id, name, group, isResourceWatch };
         })
         .reverse(),
     [layers, visibleLayers]
   );
+
+  const displayResourceWatchCredits = useMemo(() => {
+    return layerLegends.some((layer) => layer.isResourceWatch);
+  }, [layerLegends]);
 
   const handleChangeVisibleLayer = (e: ChangeEvent<HTMLInputElement>) => {
     // The layer inputs are groups of checkboxes. To limit one value per group, the value is always updated to an array of one item with the last selected value. If the checkbox is already selected (the user unchecked the checkbox), the field is reseted.
@@ -153,6 +159,29 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
               onChange: handleChangeVisibleLayer,
             }}
           />
+        </div>
+
+        <div className="absolute px-2 text-xs text-gray-900 bg-gray-200 rounded bottom-2 left-4 bg-opacity-30">
+          {displayResourceWatchCredits && (
+            <span>
+              <FormattedMessage
+                defaultMessage="Powered by <a>Resource Watch</a>"
+                id="vrCHpK"
+                values={{
+                  a: (chunk: string) => (
+                    <a
+                      className="hover:underline"
+                      href="https://resourcewatch.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {chunk}
+                    </a>
+                  ),
+                }}
+              />
+            </span>
+          )}
         </div>
 
         <Controls className="w-full h-full">
