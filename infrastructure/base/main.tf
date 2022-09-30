@@ -25,7 +25,7 @@ module "staging" {
   github_org             = var.github_org
   github_project         = var.github_project
   github_branch          = "develop"
-  google_analytics_key   = var.google_analytics_key
+  google_analytics_key   = ""
   google_maps_api_key    = var.google_maps_api_key
   project_name           = var.staging_project_name
   transifex_token        = var.transifex_token
