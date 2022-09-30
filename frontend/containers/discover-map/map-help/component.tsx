@@ -37,7 +37,7 @@ export const MapHelp: FC<MapHelpProps> = () => {
             <FormattedMessage defaultMessage="Help" id="SENRqu" />
           </h1>
         </div>
-        <div className="relative h-full px-1 pt-6 pb-24 overflow-y-scroll top-12 sm:pb-44">
+        <div className="relative h-full px-1 pt-6 pb-24 overflow-y-auto top-12 sm:pb-44">
           <p>
             <FormattedMessage
               defaultMessage="The map allows you to quickly see the location of each project and understand the context of the different projects."
