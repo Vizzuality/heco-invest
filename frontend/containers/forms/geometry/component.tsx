@@ -22,6 +22,7 @@ import Map from 'components/map';
 import Controls from 'components/map/controls';
 import FullscreenControl from 'components/map/controls/fullscreen';
 import ZoomControl from 'components/map/controls/zoom';
+import Tooltip from 'components/tooltip';
 
 import { convertFilesToGeojson, supportedFileformats } from './helpers';
 import { GeometryInputProps } from './types';
@@ -141,18 +142,101 @@ export const GeometryInput = <FormValues extends FieldValues>({
           onBlur={onBlur}
           onChange={onChangeInput}
         />
-        <Button
-          type="button"
-          theme="secondary-green"
-          aria-label={intl.formatMessage({
-            defaultMessage: 'Upload shapefile / KML file',
-            id: 'PgGfZr',
-          })}
-          onClick={() => inputRef.current.click()}
+        <Tooltip
+          placement="top"
+          arrow
+          arrowClassName="bg-black"
+          content={
+            <div className="max-w-sm p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
+              <p className="text-base">
+                <FormattedMessage
+                  defaultMessage="Please upload an area in one of the following formats:"
+                  id="tHHNHH"
+                />
+              </p>
+              <table className="w-full mt-2.5 mb-4">
+                <tr className="border-b border-b-white">
+                  <td className="py-1 pr-4 text-base font-semibold align-top">
+                    <FormattedMessage defaultMessage="Shapefile" id="k42KHN" />
+                  </td>
+                  <td className="py-1">
+                    <p>
+                      <FormattedMessage
+                        defaultMessage="3 mandatory files: <b>.shp</b>, <b>.shx</b> and <b>.dbf</b>"
+                        id="owrtek"
+                        values={{
+                          b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+                        }}
+                      />
+                    </p>
+                    <p>
+                      <FormattedMessage
+                        defaultMessage="2 optional files: <b>.prj</b> (recommended) and <b>.cfg</b>"
+                        id="Fx6O7G"
+                        values={{
+                          b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+                        }}
+                      />
+                    </p>
+                    <p className="text-xs text-gray-600">
+                      <FormattedMessage
+                        defaultMessage="* Upload all the files at once"
+                        id="cTuDKQ"
+                      />
+                    </p>
+                  </td>
+                </tr>
+                <tr className="border-b border-b-white">
+                  <td className="py-1 pr-4 text-base font-semibold align-top">
+                    <FormattedMessage defaultMessage="KML" id="3bnYBc" />
+                  </td>
+                  <td className="py-1">
+                    <FormattedMessage
+                      defaultMessage="1 <b>.kml</b> file"
+                      id="YC0Gf0"
+                      values={{
+                        b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+                      }}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-1 pr-4 text-base font-semibold align-top">
+                    <FormattedMessage defaultMessage="KMZ" id="hBliS7" />
+                  </td>
+                  <td className="py-1">
+                    <FormattedMessage
+                      defaultMessage="1 <b>.kmz</b> file"
+                      id="wCT28C"
+                      values={{
+                        b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+                      }}
+                    />
+                  </td>
+                </tr>
+              </table>
+              <p className="text-base">
+                <FormattedMessage
+                  defaultMessage="Points will not be accepted and only the first area in the file will be considered."
+                  id="B4FwQp"
+                />
+              </p>
+            </div>
+          }
         >
-          <Icon icon={UploadIcon} className="inline-block w-5 h-5 mr-3" aria-hidden={true} />
-          <FormattedMessage defaultMessage="Shapefile / KML" id="cqoaMq" />
-        </Button>
+          <Button
+            type="button"
+            theme="secondary-green"
+            aria-label={intl.formatMessage({
+              defaultMessage: 'Upload area file',
+              id: 'I2JNTd',
+            })}
+            onClick={() => inputRef.current.click()}
+          >
+            <Icon icon={UploadIcon} className="inline-block w-5 h-5 mr-3" aria-hidden={true} />
+            <FormattedMessage defaultMessage="Upload area file" id="I2JNTd" />
+          </Button>
+        </Tooltip>
         <span className="max-w-lg text-right">
           <ErrorMessage id={`${name}-internal-error`} errorText={internalError} />
         </span>
