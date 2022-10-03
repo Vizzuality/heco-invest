@@ -1413,6 +1413,9 @@
   "Py+eVV": {
     "string": "Basic info"
   },
+  "Py189G": {
+    "string": "Security"
+  },
   "Q1Q4rT": {
     "string": "Insert your name"
   },
@@ -1827,6 +1830,9 @@
   "YEYmEz": {
     "string": "Draw on the map or upload a file with the geographical area your project will have an impact on."
   },
+  "YM37l9": {
+    "string": "Keep your account extra secure with a second login step."
+  },
   "YQsqLq": {
     "string": "Total <span>{numUsers}</span> {numUsers, plural, one {user} other {users}}"
   },
@@ -1850,6 +1856,9 @@
   },
   "Yy/yDL": {
     "string": "Reset password"
+  },
+  "Z2ADwQ": {
+    "string": "Two factor authentication"
   },
   "Z6MFUA": {
     "string": "You can’t undo this action."
@@ -3170,6 +3179,9 @@
   },
   "ygx9Jx": {
     "string": "Micro finance"
+  },
+  "yirvdu": {
+    "string": "Enable two factor authentication"
   },
   "yp8KtZ": {
     "string": "Publish project?"
