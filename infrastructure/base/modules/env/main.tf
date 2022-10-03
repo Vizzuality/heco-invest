@@ -232,7 +232,7 @@ module "backend_cloudrun" {
     },
     {
       name  = "CLOUD_TASKS_TEST_QUEUE_NAME"
-      value = "email-test"
+      value = "heco-default-queue"
     },
     {
       name  = "IS_JOBS_INSTANCE"
@@ -343,7 +343,7 @@ module "jobs_cloudrun" {
     },
     {
       name  = "CLOUD_TASKS_TEST_QUEUE_NAME"
-      value = "email-test"
+      value = "heco-default-queue"
     },
     {
       name  = "IS_JOBS_INSTANCE"
@@ -413,13 +413,14 @@ module "bastion" {
   subnetwork_name = module.network.subnetwork_name
 }
 
-module "test_cloud_tasks" {
+module "cloud_tasks" {
   source                = "../cloud-tasks"
-  name                  = "email-test"
+  name                  = "heco-default-queue"
   prefix                = var.project_name
   project_id            = var.gcp_project_id
   region                = var.gcp_region
-  service_account_email = module.backend_cloudrun.service_account_email
+  backend_service_account_email = module.backend_cloudrun.service_account_email
+  jobs_service_account_email = module.jobs_cloudrun.service_account_email
 }
 
 module "purge_users_cron" {
