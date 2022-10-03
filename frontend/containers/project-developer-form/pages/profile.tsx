@@ -83,6 +83,15 @@ export const Profile: FC<ProfileProps> = ({
             />
           </p>
         </div>
+        <p className="mt-4 text-sm text-gray-600">
+          <FormattedMessage
+            defaultMessage="<b>Note:</b> After submitting the form, images may take some time to be visible in your page."
+            id="xXIT0v"
+            values={{
+              b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+            }}
+          />
+        </p>
         <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
       </div>
       <div className="md:flex gap-x-6 mb-6.5">
