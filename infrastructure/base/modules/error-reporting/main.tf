@@ -3,8 +3,14 @@ resource "google_project_service" "error_reporting_api" {
   disable_on_destroy = false
 }
 
-resource "google_project_iam_member" "error_reporting_writer" {
+resource "google_project_iam_member" "error_reporting_backend_writer" {
   project = var.project_id
   role    = "roles/errorreporting.writer"
-  member = "serviceAccount:${var.service_account_email}"
+  member = "serviceAccount:${var.backend_service_account_email}"
+}
+
+resource "google_project_iam_member" "error_reporting_jobs_writer" {
+  project = var.project_id
+  role    = "roles/errorreporting.writer"
+  member = "serviceAccount:${var.jobs_service_account_email}"
 }

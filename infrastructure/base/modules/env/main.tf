@@ -477,5 +477,6 @@ module "translation" {
 module "error_reporting" {
   source                = "../error-reporting"
   project_id            = var.gcp_project_id
-  service_account_email = module.backend_cloudrun.service_account_email
+  backend_service_account_email = module.backend_cloudrun.service_account_email
+  jobs_service_account_email = module.jobs_cloudrun.service_account_email
 }
