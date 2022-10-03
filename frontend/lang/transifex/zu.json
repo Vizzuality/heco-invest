@@ -530,9 +530,6 @@
   "8dGhWP": {
     "string": "Browse or drag and drop"
   },
-  "8fVxjR": {
-    "string": "<n>Priority layers:</n> Biodiversity intactness, Tree biomass density, Wetlands, Population density;"
-  },
   "8gJV79": {
     "string": "What are HeCo priority landscapes?"
   },
@@ -907,9 +904,6 @@
   },
   "FN+0yY": {
     "string": "Unable to parse the file. Please try uploading a different format."
-  },
-  "FPr3FX": {
-    "string": "You can activate a varity of data layers to help you to understand the context of each project. These layers may be of 3 types:"
   },
   "FVcGqA": {
     "string": "The HeCo Invest platform connects governments, investors, donors, and philanthropists with selected investment opportunities and projects in high-priority areas for Herencia Colombia. If you find a project that matches your investment goals you can contact its project developer. The contact details will only be available for platform registered users. So if you want to reach out to a project developer, you first need to create an account or join an existing account. The beta version of the HeCo Invest platform does not include the actual attainment of the business deals. To fund a project, investors must carry out all business procedures outside the platform."
@@ -1692,9 +1686,6 @@
   "VkljLs": {
     "string": "Insert the phone number in case you would like to be contacted by phone."
   },
-  "Vp1beW": {
-    "string": "<n>Hopeful Layers:</n> Priority for conservation, Carbon sequestration potential, Flooding preventions."
-  },
   "VsNoGp": {
     "string": "How much money did the project received or raised? (optional)"
   },
@@ -1842,6 +1833,9 @@
   "YWQkk+": {
     "string": "Short description of the project"
   },
+  "YXI1nH": {
+    "string": "<n>Priority layers:</n> Endangered species and critical habitats, Tree cover loss, Riverine flood risk, Indigenous Reserves."
+  },
   "YYMUK5": {
     "string": "Expects to have impact on"
   },
@@ -1862,6 +1856,9 @@
   },
   "ZATT08": {
     "string": "Pagination"
+  },
+  "ZERB8x": {
+    "string": "<n>Base layers:</n> Heco priority landscapes, Sub-basin boundaries, Protected areas;"
   },
   "ZKsAVY": {
     "string": "This project isn’t currently looking for funding."
@@ -2039,9 +2036,6 @@
   },
   "d1OgED": {
     "string": "(optional)"
-  },
-  "d2h8L7": {
-    "string": "<n>Base layers:</n> Heco priority landscapes, Watersheds, Sub-basin boundaries, Protected areas;"
   },
   "d3TPmn": {
     "string": "SDG's"
@@ -2252,6 +2246,9 @@
   },
   "hRcpAt": {
     "string": "max 1 layer"
+  },
+  "hRsu1I": {
+    "string": "To help you understand the context of each project, we provide a range of contextual layers. These layers are divided in three different groups, and you can only activate one layer per group in order to keep the legibility of the map. The layers are:"
   },
   "hWhIuU": {
     "string": "Select the intrument type(s)"
@@ -2970,6 +2967,9 @@
   "uyxTSu": {
     "string": "Select the impacts that you prioritize"
   },
+  "uzMeos": {
+    "string": "<n>Contextual layers:</n> Biodiversity intactness, Tree biomass density, Wetlands, Population density;"
+  },
   "v2wxEw": {
     "string": "Back to open calls"
   },
@@ -3014,6 +3014,9 @@
   },
   "viXE32": {
     "string": "Private"
+  },
+  "vrCHpK": {
+    "string": "Powered by <a>Resource Watch</a>"
   },
   "vygPIS": {
     "string": "Leave project creation form"
