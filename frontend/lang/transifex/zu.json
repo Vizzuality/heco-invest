@@ -530,6 +530,9 @@
   "8XJceA": {
     "string": "Have you previously invested in impact?"
   },
+  "8XtmJS": {
+    "string": "HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional. <mobile>You are seeing a mobile version of the platform which has limited functionality, please use the desktop version to see the complete version.</mobile>"
+  },
   "8dGhWP": {
     "string": "Browse or drag and drop"
   },
@@ -1015,9 +1018,6 @@
   },
   "HtMY9H": {
     "string": "Type your message"
-  },
-  "HvSsTa": {
-    "string": "HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional."
   },
   "HyAD0J": {
     "string": "{numItems} of {totalItems} entries"
