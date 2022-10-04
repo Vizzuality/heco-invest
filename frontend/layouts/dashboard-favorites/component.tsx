@@ -32,7 +32,7 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
 
   const defaultQueryOptions = {
     refetchOnMount: true, // Fix issues with react-query not refetching stale data
-    keepPreviousData: false,
+    keepPreviousData: true,
   };
 
   const projects = useFavoriteProjectsList(defaultQueryParams, defaultQueryOptions);
@@ -60,7 +60,7 @@ export const DashboardFavoritesLayout: FC<DashboardFavoritesLayoutProps> = ({
     return {
       data: data.data?.data,
       meta: data.data?.meta,
-      loading: data.isLoading || data?.isFetching,
+      loading: data.isLoading,
     };
   };
 
