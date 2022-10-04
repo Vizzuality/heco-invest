@@ -1,11 +1,7 @@
-import session from 'store/session';
-
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import type { ReducersMapObject } from '@reduxjs/toolkit';
 
-const staticReducers = {
-  session,
-};
+const staticReducers = {};
 
 const asyncReducers = {};
 

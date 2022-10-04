@@ -7,11 +7,6 @@ import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
-import { useAppSelector } from 'store/hooks';
-import { session } from 'store/session';
-
-import { InferGetStaticPropsType } from 'next';
-
 import useMe from 'hooks/me';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -27,8 +22,17 @@ import { PageComponent } from 'types';
 import { SignIn, SignInCodeForm } from 'types/sign-in';
 
 import { useSignIn } from 'services/authentication/authService';
+import { useAcceptInvitation, useInvitedUser } from 'services/invitation/invitationService';
 
-export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
+export const getServerSideProps = withLocalizedRequests(async (context) => {
+  // Property 'query' does not exist on type 'GetStaticPropsContext<ParsedUrlQuery, PreviewData>'
+  /** @ts-ignore */
+  const { locale, query } = context;
+  //Redirect back to sign in if the required queries are missing
+  if (!query.password || !query.email) {
+    return { redirect: { destination: Paths.SignIn, permanent: false } };
+  }
+
   return {
     props: {
       intlMessages: await loadI18nMessages({ locale }),
@@ -36,18 +40,17 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   };
 });
 
-type ProjectDeveloperProps = InferGetStaticPropsType<typeof getStaticProps>;
+type ProjectDeveloperProps = {};
 
-const CODE_LENGTH = 5;
+const CODE_LENGTH = 6;
 
 const SignInCode: PageComponent<ProjectDeveloperProps, NakedLayoutProps> = () => {
   const { formatMessage } = useIntl();
-  const { replace } = useRouter();
+  const { replace, query } = useRouter();
   const signIn = useSignIn();
   const { user, isLoading: isUserLoading } = useMe();
-
-  // Email and password got from login page
-  const sessionData = useAppSelector(session);
+  const acceptInvitation = useAcceptInvitation();
+  const { invitedUser } = useInvitedUser(query.invitation_token as string);
 
   const {
     register,
@@ -58,11 +61,11 @@ const SignInCode: PageComponent<ProjectDeveloperProps, NakedLayoutProps> = () =>
   } = useForm<SignInCodeForm>({
     shouldUseNativeValidation: true,
     reValidateMode: 'onChange',
+    mode: 'onChange',
   });
 
-  // Redirect if user is signed in
+  // Redirect if user is signed-in
   useEffect(() => {
-    // Wait until user and inviteUser are loaded to be able to compare them
     if (!isUserLoading && !!user) {
       if (user?.role === UserRoles.Light) {
         // If the user don't have an account go to the 'choose account type' page
@@ -72,7 +75,7 @@ const SignInCode: PageComponent<ProjectDeveloperProps, NakedLayoutProps> = () =>
         replace(Paths.Dashboard);
       }
     }
-  }, [isUserLoading, replace, user]);
+  }, [isUserLoading, query.email, query.password, replace, user]);
 
   // Create an array of numbers from 0 to the code's length
   const code = Array.from({ length: CODE_LENGTH }, (_, i) => i);
@@ -86,7 +89,7 @@ const SignInCode: PageComponent<ProjectDeveloperProps, NakedLayoutProps> = () =>
     const { name, value } = e.currentTarget;
     const currentInputIndex = Number(name.split('.')[1]);
     let nextInput = currentInputIndex + 1;
-    if (!value || currentInputIndex === 4) return;
+    if (!value || currentInputIndex === CODE_LENGTH - 1) return;
     setFocus(`otp_attempt.${nextInput}`);
   };
 
@@ -94,11 +97,17 @@ const SignInCode: PageComponent<ProjectDeveloperProps, NakedLayoutProps> = () =>
     (data: SignIn) => {
       signIn.mutate(data, {
         onSuccess: () => {
-          replace(Paths.Dashboard);
+          if (!!invitedUser) {
+            acceptInvitation.mutate(query.invitation_token as string, {
+              onSuccess: () => replace(Paths.Dashboard),
+            });
+          } else {
+            replace(Paths.Dashboard);
+          }
         },
       });
     },
-    [signIn, replace]
+    [signIn, invitedUser, acceptInvitation, query.invitation_token, replace]
   );
 
   const handlePasteCode = (ev: ClipboardEvent<HTMLInputElement>) => {
@@ -111,14 +120,14 @@ const SignInCode: PageComponent<ProjectDeveloperProps, NakedLayoutProps> = () =>
 
   const onSubmit: SubmitHandler<SignInCodeForm> = (code) => {
     const otp_attempt = Object.values(code.otp_attempt).join('');
-    handleSignIn({ ...sessionData, otp_attempt });
+    handleSignIn({ email: query.email as string, password: query.password as string, otp_attempt });
   };
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen max-w-xl m-auto">
       <div>
         <div className="mb-6 text-center">
-          <p className="mb-6 font-semibold">HeCo invest</p>
+          <p className="mb-6 font-semibold">HeCo Invest</p>
           <h1 className="font-serif text-3xl font-semibold text-green-dark">
             <FormattedMessage defaultMessage="Insert your code" id="Nn0ig7" />
           </h1>
@@ -129,8 +138,8 @@ const SignInCode: PageComponent<ProjectDeveloperProps, NakedLayoutProps> = () =>
             <fieldset>
               <legend className="mb-6 text-gray-800">
                 <FormattedMessage
-                  defaultMessage="To help keep your account secure, we sent a security code to your email. "
-                  id="/vHsVH"
+                  defaultMessage="To help keep your account secure, we sent a security code to your email."
+                  id="DY7X+2"
                 />
               </legend>
               <div className="flex justify-center gap-2.5">
@@ -143,25 +152,41 @@ const SignInCode: PageComponent<ProjectDeveloperProps, NakedLayoutProps> = () =>
                       onChange: handleChangeCode,
                       maxLength: 1,
                       required: true,
+                      pattern: {
+                        value: new RegExp(/[0-9]/),
+                        message: formatMessage({
+                          defaultMessage: 'This input must be a number',
+                          id: 'mJ1J28',
+                        }),
+                      },
                     }}
                     aria-describedby="code-error"
                     register={register}
                     className="text-center"
                     onPaste={handlePasteCode}
+                    aria-label={formatMessage(
+                      {
+                        defaultMessage: 'Two factor authentication code, digit {digit}',
+                        id: 'j+0U2g',
+                      },
+                      { digit: digit + 1 }
+                    )}
                   />
                 ))}
               </div>
             </fieldset>
-            <ErrorMessage
-              id="code-error"
-              errorText={
-                !!Object(errors)?.length &&
-                formatMessage({
-                  defaultMessage: 'You need to enter the security code.',
-                  id: 'f1XmxW',
-                })
-              }
-            />
+            {!!Object(errors.otp_attempt)?.length && (
+              <ErrorMessage
+                id="code-error"
+                errorText={formatMessage(
+                  {
+                    defaultMessage: 'You need to enter the {number} digits security code.',
+                    id: 'HwlCeB',
+                  },
+                  { number: CODE_LENGTH }
+                )}
+              />
+            )}
           </div>
 
           {signIn.error?.message && (
@@ -173,7 +198,7 @@ const SignInCode: PageComponent<ProjectDeveloperProps, NakedLayoutProps> = () =>
           )}
 
           <div className="flex justify-center mt-10">
-            <Button type="submit" disabled={signIn.isLoading}>
+            <Button type="submit" disabled={!!errors.otp_attempt || signIn.isLoading}>
               <Loading visible={signIn.isLoading} className="mr-2.5" />
               <FormattedMessage defaultMessage="Confirm" id="N2IrpM" />
             </Button>

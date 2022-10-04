@@ -8,6 +8,7 @@ export enum Paths {
   Home = '/',
   SignUp = '/sign-up',
   SignIn = '/sign-in',
+  SignInCode = '/sign-in/code',
   SignOut = '/sign-out',
   AccountType = '/sign-up/account-type',
   ForgotPassword = '/sign-in/forgot-password',

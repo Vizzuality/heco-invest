@@ -8,9 +8,6 @@ import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
-import { useAppDispatch } from 'store/hooks';
-import { setSessionData } from 'store/session';
-
 import { InferGetStaticPropsType } from 'next';
 
 import useMe from 'hooks/me';
@@ -54,7 +51,6 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
   const { invitedUser, isLoading: isInvitedUserLoading } = useInvitedUser(
     query.invitation_token as string
   );
-  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -98,8 +94,14 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
       requires2FA.mutate(data, {
         onSuccess: (requires) => {
           if (requires) {
-            dispatch(setSessionData(data));
-            push('/sign-in/code');
+            // Redirect to sign-in/code page with hidden queries
+            push(
+              {
+                pathname: Paths.SignInCode,
+                query: { ...data, invitation_token: query.invitation_token },
+              },
+              Paths.SignInCode
+            );
           } else {
             signIn.mutate(data, {
               onSuccess: () => {
@@ -116,131 +118,120 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
         },
       });
     },
-    [
-      requires2FA,
-      dispatch,
-      push,
-      signIn,
-      invitedUser,
-      acceptInvitation,
-      query.invitation_token,
-      replace,
-    ]
+    [requires2FA, push, signIn, invitedUser, acceptInvitation, query.invitation_token, replace]
   );
 
   const onSubmit: SubmitHandler<SignIn> = handleSignIn;
 
   return (
     <div className="flex flex-col justify-center w-full h-full max-w-xl m-auto">
-      {
-        <div>
-          <h1 className="mb-2.5 font-serif text-4xl font-semibold text-green-dark">
-            <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
-          </h1>
-          <p className="mb-6.5 font-sans text-base text-gray-600">
+      <div>
+        <h1 className="mb-2.5 font-serif text-4xl font-semibold text-green-dark">
+          <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
+        </h1>
+        <p className="mb-6.5 font-sans text-base text-gray-600">
+          <FormattedMessage
+            defaultMessage="Welcome to HeCo Invest. Please enter your details below."
+            id="ZjA6uH"
+          />
+        </p>
+
+        {!!invitedUser && (
+          <div className="w-full p-4 mb-6 rounded-lg bg-beige">
             <FormattedMessage
-              defaultMessage="Welcome to HeCo Invest. Please enter your details below."
-              id="ZjA6uH"
+              defaultMessage="By signing in you will be automatically added to the {accountName} account. <a>How accounts work?</a>"
+              id="RUzNGu"
+              values={{
+                accountName: invitedUser.account_name,
+                a: (chunks: string) => (
+                  <a className="underline" href={FaqPaths[FaqQuestions.HowDoAccountsWork]}>
+                    {chunks}
+                  </a>
+                ),
+              }}
             />
-          </p>
+          </div>
+        )}
 
-          {!!invitedUser && (
-            <div className="w-full p-4 mb-6 rounded-lg bg-beige">
-              <FormattedMessage
-                defaultMessage="By signing in you will be automatically added to the {accountName} account. <a>How accounts work?</a>"
-                id="RUzNGu"
-                values={{
-                  accountName: invitedUser.account_name,
-                  a: (chunks: string) => (
-                    <a className="underline" href={FaqPaths[FaqQuestions.HowDoAccountsWork]}>
-                      {chunks}
-                    </a>
-                  ),
-                }}
-              />
-            </div>
+        {acceptInvitation.isError && acceptInvitation.error.message ? (
+          Array.isArray(acceptInvitation.error.message) ? (
+            <ul>
+              {acceptInvitation.error.message.map((err: any) => (
+                <Alert key={err.title} withLayoutContainer className="mt-6">
+                  <li key={err.title}>{err.title}</li>
+                </Alert>
+              ))}
+            </ul>
+          ) : (
+            <Alert withLayoutContainer className="mt-6">
+              {acceptInvitation.error.message}
+            </Alert>
+          )
+        ) : null}
+
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          {signIn.error?.message && (
+            <Alert type="warning" className="mb-4.5" withLayoutContainer>
+              {Array.isArray(signIn.error?.message)
+                ? signIn.error.message[0].title
+                : signIn.error.message}
+            </Alert>
           )}
-
-          {acceptInvitation.isError && acceptInvitation.error.message ? (
-            Array.isArray(acceptInvitation.error.message) ? (
-              <ul>
-                {acceptInvitation.error.message.map((err: any) => (
-                  <Alert key={err.title} withLayoutContainer className="mt-6">
-                    <li key={err.title}>{err.title}</li>
-                  </Alert>
-                ))}
-              </ul>
-            ) : (
-              <Alert withLayoutContainer className="mt-6">
-                {acceptInvitation.error.message}
-              </Alert>
-            )
-          ) : null}
-
-          <form onSubmit={handleSubmit(onSubmit)} noValidate>
-            {signIn.error?.message && (
-              <Alert type="warning" className="mb-4.5" withLayoutContainer>
-                {Array.isArray(signIn.error?.message)
-                  ? signIn.error.message[0].title
-                  : signIn.error.message}
-              </Alert>
-            )}
-            <div className="w-full mb-4.5">
-              <Label htmlFor="email">
-                <FormattedMessage defaultMessage="Email" id="sy+pv5" />
-                <Input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder={intl.formatMessage({
-                    defaultMessage: 'Insert your email',
-                    id: 'ErIkUS',
-                  })}
-                  aria-describedby="email-error"
-                  register={register}
-                  className="mt-2.5"
-                />
-              </Label>
-              <ErrorMessage id="email-error" errorText={errors.email?.message} />
-            </div>
-            <div className="md:gap-4 md:flex mt-2.5">
-              <div className="w-full">
-                <div className="flex justify-between mb-2.5">
-                  <Label htmlFor="password">
-                    <FormattedMessage defaultMessage="Password" id="5sg7KC" />
-                  </Label>
-                  <Link href={Paths.ForgotPassword}>
-                    <a
-                      id="password-description"
-                      className="font-sans text-sm font-normal cursor-pointer text-green-dark"
-                    >
-                      <FormattedMessage defaultMessage="Forgot password?" id="V/JHlm" />
-                    </a>
-                  </Link>
-                </div>
-                <Input
-                  type="password"
-                  placeholder={intl.formatMessage({
-                    defaultMessage: 'Insert password',
-                    id: 'HnG9/3',
-                  })}
-                  name="password"
-                  id="password"
-                  aria-describedby="password-description password-error"
-                  register={register}
-                />
-                <ErrorMessage id="password-error" errorText={errors.password?.message} />
+          <div className="w-full mb-4.5">
+            <Label htmlFor="email">
+              <FormattedMessage defaultMessage="Email" id="sy+pv5" />
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                placeholder={intl.formatMessage({
+                  defaultMessage: 'Insert your email',
+                  id: 'ErIkUS',
+                })}
+                aria-describedby="email-error"
+                register={register}
+                className="mt-2.5"
+              />
+            </Label>
+            <ErrorMessage id="email-error" errorText={errors.email?.message} />
+          </div>
+          <div className="md:gap-4 md:flex mt-2.5">
+            <div className="w-full">
+              <div className="flex justify-between mb-2.5">
+                <Label htmlFor="password">
+                  <FormattedMessage defaultMessage="Password" id="5sg7KC" />
+                </Label>
+                <Link href={Paths.ForgotPassword}>
+                  <a
+                    id="password-description"
+                    className="font-sans text-sm font-normal cursor-pointer text-green-dark"
+                  >
+                    <FormattedMessage defaultMessage="Forgot password?" id="V/JHlm" />
+                  </a>
+                </Link>
               </div>
+              <Input
+                type="password"
+                placeholder={intl.formatMessage({
+                  defaultMessage: 'Insert password',
+                  id: 'HnG9/3',
+                })}
+                name="password"
+                id="password"
+                aria-describedby="password-description password-error"
+                register={register}
+              />
+              <ErrorMessage id="password-error" errorText={errors.password?.message} />
             </div>
-            <div className="flex justify-center mt-15">
-              <Button type="submit" disabled={signIn.isLoading}>
-                <Loading visible={signIn.isLoading} className="mr-2.5" />
-                <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
-              </Button>
-            </div>
-          </form>
-        </div>
-      }
+          </div>
+          <div className="flex justify-center mt-15">
+            <Button type="submit" disabled={signIn.isLoading}>
+              <Loading visible={signIn.isLoading} className="mr-2.5" />
+              <FormattedMessage defaultMessage="Sign in" id="SQJto2" />
+            </Button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
