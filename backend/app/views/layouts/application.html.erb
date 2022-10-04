@@ -8,6 +8,14 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= favicon_link_tag "android-chrome-512x512.png", type: "image/png", sizes: "512x512" %>
+    <%= favicon_link_tag "android-chrome-192x192.png", type: "image/png", sizes: "192x192" %>
+    <%= favicon_link_tag "favicon-32x32.png", type: "image/png", sizes: "32x32" %>
+    <%= favicon_link_tag "favicon-16x16.png", type: "image/png", sizes: "16x16" %>
+    <%= favicon_link_tag "apple-touch-icon.png", type: "image/png", sizes: "180x180", rel: "apple-touch-icon" %>
+    <%= favicon_link_tag "favicon.ico", rel: "shortcut icon"%>
+    <meta name="msapplication-TileImage" content="<%= image_path("mstile-150x150.png") %>" />
+    <meta name="msapplication-TileColor" content="#316146" />
   </head>
 
   <body class="bg-beige">
