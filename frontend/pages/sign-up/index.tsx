@@ -27,6 +27,7 @@ import { PageComponent } from 'types';
 import { SignupDto, SignupFormI } from 'types/user';
 import { useSignupResolver } from 'validations/signup';
 
+import { useSendEmailConfirmation } from 'services/email-confirmation';
 import { useAcceptInvitation, useInvitedUser } from 'services/invitation/invitationService';
 import { useSignup } from 'services/users/userService';
 
@@ -61,6 +62,8 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
     shouldUseNativeValidation: true,
   });
 
+  const sendEmailConfirmation = useSendEmailConfirmation();
+
   useEffect(() => {
     // Wait until user and invited user are loaded to be able to compare them
     if (!isUserLoading && !isInvitedUserLoading) {
@@ -78,8 +81,12 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
               query: { invitation_token: query.invitation_token },
             });
           } else {
-            // If the user exists and is not an invited user, redirect to the account type page
-            replace(Paths.AccountType);
+            // if (user.confirmed) {
+            //   // If the user exists and is not an invited user, redirect to the account type page
+            //   replace(Paths.AccountType);
+            // } else {
+            replace({ pathname: Paths.Verification, query: `email=${user.email}` });
+            // }
           }
         } else {
           // If the user has a role other than light, redirect to the dashboard
@@ -104,15 +111,25 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
         {
           onSuccess: () => {
             if (!!invitedUser) {
-              acceptInvitation.mutate(query.invitation_token as string);
+              acceptInvitation.mutate(query.invitation_token as string, {
+                onSuccess: () => sendEmailConfirmation.mutate(data.email),
+              });
             } else {
               queryClient.invalidateQueries(Queries.User);
+              sendEmailConfirmation.mutate(data.email);
             }
           },
         }
       );
     },
-    [signUp, query.invitation_token, invitedUser, acceptInvitation, queryClient]
+    [
+      signUp,
+      query.invitation_token,
+      invitedUser,
+      acceptInvitation,
+      sendEmailConfirmation,
+      queryClient,
+    ]
   );
 
   const onSubmit: SubmitHandler<SignupFormI> = async (values) => {
