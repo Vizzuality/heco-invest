@@ -3,12 +3,12 @@ import { useIntl } from 'react-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SchemaOf, object, string, ref } from 'yup';
 
-import { ResetPassword, ForgotPassword, SignIn } from 'types/sign-in';
+import { ResetPassword, ForgotPassword } from 'types/sign-in';
 
 export const useSignInResolver = () => {
   const { formatMessage } = useIntl();
 
-  const schema: SchemaOf<SignIn> = object().shape({
+  const schema = object().shape({
     email: string()
       .required(
         formatMessage({
