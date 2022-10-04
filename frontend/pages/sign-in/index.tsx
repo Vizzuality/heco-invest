@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -55,7 +55,6 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
     query.invitation_token as string
   );
   const dispatch = useAppDispatch();
-  const [show2FACode, setShow2FACode] = useState(false);
 
   const {
     register,
@@ -98,7 +97,6 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
     (data: SignIn) => {
       requires2FA.mutate(data, {
         onSuccess: (requires) => {
-          console.log(requires);
           if (requires) {
             dispatch(setSessionData(data));
             push('/sign-in/code');
@@ -118,7 +116,16 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
         },
       });
     },
-    [requires2FA, signIn, invitedUser, acceptInvitation, query.invitation_token, replace]
+    [
+      requires2FA,
+      dispatch,
+      push,
+      signIn,
+      invitedUser,
+      acceptInvitation,
+      query.invitation_token,
+      replace,
+    ]
   );
 
   const onSubmit: SubmitHandler<SignIn> = handleSignIn;

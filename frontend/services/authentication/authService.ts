@@ -1,10 +1,8 @@
-import { useMutation, UseMutationResult, useQueryClient, UseQueryResult } from 'react-query';
+import { useMutation, UseMutationResult, useQueryClient } from 'react-query';
 
 import { useRouter } from 'next/router';
 
 import { AxiosResponse, AxiosError } from 'axios';
-
-import { useLocalizedQuery } from 'hooks/query';
 
 import { Queries } from 'enums';
 import { SignIn } from 'types/sign-in';
