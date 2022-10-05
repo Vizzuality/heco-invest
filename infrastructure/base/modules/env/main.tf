@@ -298,6 +298,15 @@ module "jobs_cloudrun" {
     }, {
       name        = "SMTP_PASSWORD"
       secret_name = module.sendgrid_api_key.secret_name
+    }, {
+      name        = "ENCRYPTION_PRIMARY_KEY"
+      secret_name = module.rails_encryption_primary_key.secret_name
+    }, {
+      name        = "ENCRYPTION_DETERMINISTIC_KEY"
+      secret_name = module.rails_encryption_deterministic_key.secret_name
+    }, {
+      name        = "ENCRYPTION_DERIVATION_SALT"
+      secret_name = module.rails_encryption_derivation_salt.secret_name
     }
   ]
   env_vars = [
