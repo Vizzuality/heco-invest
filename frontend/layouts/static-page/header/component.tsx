@@ -23,39 +23,48 @@ export const Header: React.FC<HeaderProps> = ({
   const showBackground = !transparent || isScrolledY;
 
   return (
-    <header
-      className={cx({
-        'fixed top-0 w-full z-20 transition-colors': true,
-        'text-white': !showBackground,
-        'bg-background-light/90 backdrop-blur-sm': showBackground,
-        [className]: !!className,
-      })}
-    >
-      <BetaVersionDisclaimer />
-      <LayoutContainer>
-        <div className="flex items-center justify-between pt-3 pb-3 md:pt-6 md:pb-4 lg:space-x-10">
-          <Logo />
-          <div className="flex">
-            <Navigation className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end lg:mr-4" />
-            <div className="flex items-center gap-2 lg:gap-4">
-              <LanguageSelector />
-              <UserMenu
-                className="hidden lg:ml-4 sm:flex"
-                theme={showBackground ? 'primary-green' : 'primary-white'}
-              />
-              <NavigationMenuButton
-                className={cx({
-                  'flex lg:hidden': true,
-                  'text-white': !showBackground,
-                  'text-green-dark': showBackground,
-                })}
-                theme="naked"
-              />
+    <>
+      <BetaVersionDisclaimer className="sm:hidden" />
+      <header
+        className={cx({
+          'sticky sm:fixed h-0 sm:h-auto top-0 w-full z-20 transition-colors': true,
+          'text-white': !showBackground,
+          [className]: !!className,
+        })}
+      >
+        <BetaVersionDisclaimer className="hidden sm:flex" />
+        <div
+          className={cx({
+            'transition-colors': true,
+            'bg-background-light/90 backdrop-blur-sm': showBackground,
+          })}
+        >
+          <LayoutContainer>
+            <div className="flex items-center justify-between pt-3 pb-3 md:pt-6 md:pb-4 lg:space-x-10">
+              <Logo />
+              <div className="flex">
+                <Navigation className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end lg:mr-4" />
+                <div className="flex items-center gap-2 lg:gap-4">
+                  <LanguageSelector />
+                  <UserMenu
+                    className="hidden lg:ml-4 sm:flex"
+                    theme={showBackground ? 'primary-green' : 'primary-white'}
+                  />
+                  <NavigationMenuButton
+                    className={cx({
+                      'flex lg:hidden': true,
+                      'text-white': !showBackground,
+                      'text-green-dark': showBackground,
+                    })}
+                    theme="naked"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
+          </LayoutContainer>
         </div>
-      </LayoutContainer>
-    </header>
+      </header>
+    </>
   );
 };
 

@@ -28,6 +28,11 @@ DATABASE_USER
 DATABASE_PASSWORD
 DATABASE_HOST
 
+For Rails Active Record encryption
+ENCRYPTION_PRIMARY_KEY
+ENCRYPTION_DETERMINISTIC_KEY
+ENCRYPTION_DERIVATION_SALT
+
 Next, the email settings, for which we’ll use sendgrid and I guess we’ll need the smtp connection settings:
 SMTP_USERNAME
 SMTP_PASSWORD

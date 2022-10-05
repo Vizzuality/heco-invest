@@ -14,6 +14,8 @@ import { Hydrate } from 'react-query/hydration';
 
 import { getCookie, setCookie } from 'helpers/cookies';
 
+import Analytics from 'components/analytics';
+import PrivacyNotice from 'components/privacy-notice';
 import StaticPageLayout from 'layouts/static-page';
 import store from 'store';
 import { LayoutStaticProp } from 'types';
@@ -98,6 +100,8 @@ const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
             <SSRProvider>
               <I18nProvider locale={locale}>
                 <OverlayProvider>
+                  <Analytics />
+                  <PrivacyNotice />
                   <Layout {...layoutProps}>
                     <Component {...pageProps} />
                   </Layout>

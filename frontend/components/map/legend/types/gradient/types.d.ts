@@ -1,6 +1,6 @@
-import type { LegendTypeItem } from '../../types';
+import type { LegendItem } from '../../types';
 
 export interface LegendTypeGradientProps {
   className?: string;
-  items: Array<LegendTypeItem>;
+  items: LegendItem[];
 }

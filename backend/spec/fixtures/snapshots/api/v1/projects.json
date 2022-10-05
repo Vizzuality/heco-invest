@@ -92,7 +92,8 @@
         "latitude": 0.5,
         "longitude": 0.5,
         "favourite": null,
-        "verified": false
+        "verified": false,
+        "funded": null
       },
       "relationships": {
         "project_developer": {
@@ -223,7 +224,8 @@
         "latitude": 2.0,
         "longitude": 1.0,
         "favourite": null,
-        "verified": false
+        "verified": false,
+        "funded": null
       },
       "relationships": {
         "project_developer": {
@@ -337,7 +339,8 @@
         "latitude": 2.0,
         "longitude": 1.0,
         "favourite": null,
-        "verified": false
+        "verified": false,
+        "funded": null
       },
       "relationships": {
         "project_developer": {
@@ -451,7 +454,8 @@
         "latitude": 2.0,
         "longitude": 1.0,
         "favourite": null,
-        "verified": false
+        "verified": false,
+        "funded": null
       },
       "relationships": {
         "project_developer": {
@@ -565,7 +569,8 @@
         "latitude": 2.0,
         "longitude": 1.0,
         "favourite": null,
-        "verified": false
+        "verified": false,
+        "funded": null
       },
       "relationships": {
         "project_developer": {
@@ -679,7 +684,8 @@
         "latitude": 2.0,
         "longitude": 1.0,
         "favourite": null,
-        "verified": false
+        "verified": false,
+        "funded": null
       },
       "relationships": {
         "project_developer": {
@@ -793,7 +799,8 @@
         "latitude": 2.0,
         "longitude": 1.0,
         "favourite": null,
-        "verified": false
+        "verified": false,
+        "funded": null
       },
       "relationships": {
         "project_developer": {
@@ -907,7 +914,8 @@
         "latitude": 2.0,
         "longitude": 1.0,
         "favourite": null,
-        "verified": false
+        "verified": false,
+        "funded": null
       },
       "relationships": {
         "project_developer": {

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import { Story } from '@storybook/react/types-6-0';
 
@@ -16,25 +16,18 @@ export default {
 };
 
 const Template: Story<LegendProps> = (args) => {
-  const [sortArray, setSortArray] = useState([]);
-
-  // Sorted
-  const sortedItems = useMemo(() => {
-    const itms = ITEMS.sort((a, b) => sortArray.indexOf(a.id) - sortArray.indexOf(b.id));
-    return itms;
-  }, [sortArray]);
-
-  // Callbacks
-  const onChangeOrder = useCallback((ids) => {
-    setSortArray(ids);
-  }, []);
+  const [arrItems, setArrItems] = useState(ITEMS);
 
   return (
-    <Legend {...args} onChangeOrder={onChangeOrder}>
-      {sortedItems.map((i) => {
-        const { type, items } = i;
+    <Legend {...args}>
+      {arrItems.map((i) => {
+        const { type, items, id } = i;
         return (
-          <LegendItem key={i.id} {...i}>
+          <LegendItem
+            handleCloseLegend={() => setArrItems(arrItems.filter((item) => item.id !== id))}
+            key={i.id}
+            {...i}
+          >
             {type === 'basic' && (
               <LegendTypeBasic className="text-sm text-gray-300" items={items} />
             )}

@@ -106,6 +106,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     email: contact_email,
     phone: contact_phone,
     name,
+    picture: picture?.medium,
   };
 
   const logo = picture?.small || '/images/avatar.svg';
@@ -190,6 +191,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
               <SDGs
                 className="my-3"
                 sdgs={allSdgs.filter(({ id }) => sdgs?.includes(Number(id)))}
+                size="large"
               />
             </>
           )}

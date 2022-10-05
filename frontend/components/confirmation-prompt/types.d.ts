@@ -1,5 +1,6 @@
 import { IconProps } from 'components/icon';
 import { ModalProps } from 'components/modal';
+import { ButtonProps } from 'components/button';
 
 export interface ConfirmationPromptProps {
   /**
@@ -45,4 +46,6 @@ export interface ConfirmationPromptProps {
   onDismiss: ModalProps['onDismiss'];
   /** Text to show on the confirm button. Defaults to 'Delete' */
   onConfirmText?: string;
+  /** Theme of the confirm button */
+  confirmButtonTheme?: ButtonProps['theme'];
 }

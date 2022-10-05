@@ -193,7 +193,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
               src={projectDeveloperImage}
               alt={intl.formatMessage({ defaultMessage: 'Project developer photo', id: 'BZkcBV' })}
               layout="fill"
-              objectFit="cover"
+              objectFit="contain"
               onError={handleProjectDeveloperImageError}
             />
           </span>
@@ -217,7 +217,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
           <h2 id="sdgs" className="text-xl font-semibold">
             <FormattedMessage defaultMessage="SDGs" id="JQjEP9" />
           </h2>
-          <SDGs className="mt-3" size="smallest" sdgs={sdgs as Enum[]} />
+          <SDGs className="mt-3 lg:grid lg:grid-cols-4" size="large" sdgs={sdgs as Enum[]} />
         </div>
       </div>
       <FavoriteContact

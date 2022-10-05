@@ -530,4 +530,77 @@ RSpec.describe "API V1 Account Projects", type: :request do
       end
     end
   end
+
+  path "/api/v1/account/projects/{id}/funding" do
+    post "Mark Project as funded" do
+      tags "Projects"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :id, in: :path, type: :string, description: "Use project ID or slug"
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
+
+      let(:project) { create :project }
+      let!(:investor) { create :investor }
+      let(:user) { investor.owner }
+      let!(:favourite_project) { create :favourite_project, project: project, user: user }
+      let(:id) { project.id }
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with not found error", csrf: true, user: -> { user }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
+
+      response "200", :success do
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before { sign_in user }
+
+        run_test!
+
+        it "is marked as funded" do
+          expect(response_json["data"]["attributes"]["funded"]).to be_truthy
+          expect(investor.reload.funded_projects).to include(project)
+        end
+      end
+    end
+  end
+
+  path "/api/v1/account/projects/{id}/not_funding" do
+    post "Mark Project as not funded" do
+      tags "Projects"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: [], cookie_auth: []]
+      parameter name: :id, in: :path, type: :string, description: "Use project ID or slug"
+      parameter name: :empty, in: :body, schema: {type: :object}, required: false
+
+      let(:project) { create :project }
+      let!(:investor) { create :investor }
+      let(:user) { investor.owner }
+      let!(:favourite_project) { create :favourite_project, project: project, user: user }
+      let(:id) { project.id }
+
+      it_behaves_like "with not authorized error", csrf: true
+      it_behaves_like "with not found error", csrf: true, user: -> { user }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user) }
+      it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_investor) }
+
+      response "200", :success do
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        before do
+          investor.funded_projects << project
+          sign_in user
+        end
+
+        run_test!
+
+        it "is marked as not funded" do
+          expect(response_json["data"]["attributes"]["funded"]).to be_falsey
+          expect(investor.reload.funded_projects).not_to include(project)
+        end
+      end
+    end
+  end
 end

@@ -1,9 +1,8 @@
-import { FC, useRef, useState, useEffect } from 'react';
+import { FC, useRef, useState } from 'react';
 
 import { FocusScope } from 'react-aria';
 import { Layers as IconLayers } from 'react-feather';
 import { ChevronUp as ChevronUpIcon } from 'react-feather';
-import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
@@ -18,11 +17,12 @@ import Switch from 'components/forms/switch';
 
 import LayerTooltip from '../layer-tooltip';
 
-import type { MapLayersSelectorProps, MapLayersSelectorForm, SelectedLayerTooltip } from './types';
+import type { MapLayersSelectorProps, SelectedLayerTooltip } from './types';
 
 export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   className,
-  onActiveLayersChange,
+  register,
+  registerOptions,
 }: MapLayersSelectorProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedLayer, setSelectedlayer] = useState<SelectedLayerTooltip>();
@@ -31,14 +31,6 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   const { groupedLayers } = useLayers();
   const initialOpenLayerGroup = groupedLayers.map((group) => group.id);
   const [openLayerGroup, setOpenLayerGroup] = useState<string[]>(initialOpenLayerGroup);
-
-  const { register, watch } = useForm<MapLayersSelectorForm>({
-    defaultValues: {
-      activeLayers: [],
-    },
-  });
-
-  const activeLayers = watch('activeLayers');
 
   useKey(['Escape'], () => setIsOpen(false), {
     target: selectorRef,
@@ -50,10 +42,6 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
     setSelectedlayer(undefined);
     setOpenLayerGroup(initialOpenLayerGroup);
   });
-
-  useEffect(() => {
-    onActiveLayersChange(activeLayers);
-  }, [activeLayers, onActiveLayersChange]);
 
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
@@ -74,7 +62,7 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   return (
     <div className={className} ref={containerRef}>
       <button
-        className="flex items-center gap-2.5 shadow-sm h-full bg-white rounded border-xl px-2 py-1 outline-none focus-visible:ring-green-dark focus-visible:ring-2 hover:ring-green-dark hover:ring-1 w-fit"
+        className="flex items-center gap-2.5 shadow-sm h-full bg-white rounded border-xl px-2 py-1.5 outline-none hover:text-green-dark transition-all focus-visible:outline-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 w-fit"
         onClick={handleButtonClick}
       >
         <IconLayers className="w-4 h-4" />
@@ -99,11 +87,14 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                       title={
                         <Button
                           theme="naked"
-                          className="w-full px-0 py-0"
+                          className="flex items-center justify-start w-full gap-1 px-0 py-0 my-2"
                           onClick={() => handleChangeOpenLayerGroup(layerGroup.id)}
                         >
-                          <div className="flex items-center w-full my-2">
-                            <span className="flex flex-grow">{layerGroup.name}</span>
+                          <span>{layerGroup.name}</span>
+                          <span className="text-xs text-gray-600">
+                            (<FormattedMessage defaultMessage="max 1 layer" id="hRcpAt" />)
+                          </span>
+                          <span className="flex justify-end flex-grow">
                             <ChevronUpIcon
                               className={cx({
                                 'w-4 h-4 transition-all': true,
@@ -111,13 +102,21 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                                 'rotate-0': groupIsOpen,
                               })}
                             />
-                          </div>
+                          </span>
                         </Button>
                       }
                     >
                       <ol className="flex flex-col gap-3.5 text-xs text-black py-2">
                         {layerGroup.layers.map(
-                          ({ id, name, description, overview, dataSource, dataSourceUrl }) => (
+                          ({
+                            id,
+                            name,
+                            description,
+                            overview,
+                            dataSource,
+                            dataSourceUrl,
+                            group,
+                          }) => (
                             <li key={id} className="flex items-center gap-1.5">
                               <label
                                 key={id}
@@ -126,10 +125,11 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                               >
                                 <Switch
                                   id={id}
-                                  name="activeLayers"
+                                  name={group}
                                   switchSize="smallest"
                                   value={id}
                                   register={register}
+                                  registerOptions={registerOptions}
                                 />
                                 {name}
                               </label>

@@ -69,6 +69,7 @@ RSpec.describe "Backoffice: Users", type: :system do
           attach_file t("simple_form.labels.user.avatar"), Rails.root.join("spec/fixtures/files/picture.jpg")
           fill_in t("simple_form.labels.user.first_name"), with: "First Name"
           fill_in t("simple_form.labels.user.last_name"), with: "Last Name"
+          choose t("true"), name: "user[otp_required_for_login]"
           click_on t("backoffice.common.save")
 
           expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.user")))
@@ -77,6 +78,7 @@ RSpec.describe "Backoffice: Users", type: :system do
           expect(page).to have_css "form a img", count: 1
           expect(user.first_name).to eq("First Name")
           expect(user.last_name).to eq("Last Name")
+          expect(user.otp_required_for_login).to be_truthy
         end
       end
 

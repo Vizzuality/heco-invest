@@ -24,6 +24,7 @@ export const ImageUploader = <FormValues extends FieldValues>({
   maxSize = FILE_UPLOADER_MAX_SIZE,
   clearErrors,
   defaultImage,
+  theme = 'primary-green',
 }: ImageUploaderProps<FormValues>) => {
   const { formatMessage } = useIntl();
   const [imagePreview, setImagePreview] = useState<string>();
@@ -87,14 +88,22 @@ export const ImageUploader = <FormValues extends FieldValues>({
             src={imagePreview || defaultImage || '/images/avatar.svg'}
             alt={formatMessage({ defaultMessage: 'Preview', id: 'TJo5E6' })}
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
           />
         </div>
       )}
       {/* File input to upload the file */}
       <input
         id={id}
-        className="p-1 font-sans outline-none appearance-none file:transition-all file:mr-4 file:px-6 file:font-medium file:text-sm file file:py-2 file:rounded-full file:border-0 file:bg-green-dark file:text-white file:hover:text-green-light file:hover:disabled:text-white disabled:opacity-60 file:cursor-pointer file:disabled:pointer-events-none file:focus-visible:outline file:focus-visible:outline-2 file:focus-visible:outline-offset-2 file:focus-visible:outline-green-dark"
+        className={cx(
+          'p-1 font-sans outline-none appearance-none file:transition-all file:mr-4 file:px-6 file:font-medium file:text-sm file file:py-2 file:rounded-full disabled:opacity-60 file:cursor-pointer file:disabled:pointer-events-none file:focus-visible:outline file:focus-visible:outline-2 file:focus-visible:outline-offset-2 file:focus-visible:outline-green-dark',
+          {
+            'file:text-white file:hover:text-green-light file:bg-green-dark file:border-0 file:hover:disabled:text-white':
+              theme === 'primary-green',
+            'file:text-green-dark  file:bg-white file:border file:border-green-dark file:hover:bg-green-light file:hover:bg-opacity-20 file:hover:disabled:text-gray-600':
+              theme === 'secondary-green',
+          }
+        )}
         type="file"
         accept="image/png, image/jpeg"
         onChange={handleUploadImage}

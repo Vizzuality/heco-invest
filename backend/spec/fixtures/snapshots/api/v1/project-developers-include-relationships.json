@@ -221,7 +221,8 @@
         "status": "published",
         "account_language": "en",
         "impact_calculated": false,
-        "verified": false
+        "verified": false,
+        "funded": null
       },
       "relationships": {
         "project_developer": {
@@ -338,7 +339,8 @@
         "status": "published",
         "account_language": "en",
         "impact_calculated": false,
-        "verified": false
+        "verified": false,
+        "funded": null
       },
       "relationships": {
         "project_developer": {

@@ -20,13 +20,13 @@ export const AccountPicture: FC<AccountPictureProps> = ({
   }, [pictureSrc]);
 
   return (
-    <div className="w-20 h-20 overflow-hidden rounded-lg drop-shadow-xl">
+    <div className="w-20 h-20 overflow-hidden bg-white rounded-lg drop-shadow-xl">
       <Image
         className="rounded-lg"
         src={picture}
         alt={intl.formatMessage({ defaultMessage: '{name} picture', id: 'rLzWx9' }, { name: name })}
         layout="fill"
-        objectFit="cover"
+        objectFit="contain"
         onError={() => setPicture(placeholderPictureSrc)}
       />
     </div>

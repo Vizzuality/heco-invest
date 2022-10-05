@@ -4,7 +4,7 @@ module API
       class ProjectsController < BaseController
         include API::Pagination
 
-        before_action :fetch_project, only: [:update, :destroy]
+        before_action :fetch_project, only: [:update, :destroy, :funding, :not_funding]
         around_action(only: %i[create update]) { |_, action| set_locale(language: current_user&.account&.language, &action) }
         load_and_authorize_resource
 
@@ -41,6 +41,24 @@ module API
         def destroy
           ::Projects::Destroy.new(@project).call
           head :ok
+        end
+
+        def funding
+          @project.funded_investors << current_user.account.investor
+          render json: ProjectSerializer.new(
+            @project,
+            include: included_relationships,
+            params: {current_user: current_user, current_ability: current_ability}
+          ).serializable_hash
+        end
+
+        def not_funding
+          @project.funded_investors.delete current_user.account.investor
+          render json: ProjectSerializer.new(
+            @project,
+            include: included_relationships,
+            params: {current_user: current_user, current_ability: current_ability}
+          ).serializable_hash
         end
 
         def favourites

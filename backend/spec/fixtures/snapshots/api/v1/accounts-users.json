@@ -16,10 +16,12 @@
         "avatar": {
           "small": null,
           "medium": null,
-          "original": null
+          "original": null,
+          "analyzed": null
         },
         "ui_language": "en",
-        "account_language": "en"
+        "account_language": "en",
+        "otp_required_for_login": false
       }
     },
     {
@@ -38,10 +40,12 @@
         "avatar": {
           "small": null,
           "medium": null,
-          "original": null
+          "original": null,
+          "analyzed": null
         },
         "ui_language": "en",
-        "account_language": "en"
+        "account_language": "en",
+        "otp_required_for_login": false
       }
     },
     {
@@ -60,10 +64,12 @@
         "avatar": {
           "small": null,
           "medium": null,
-          "original": null
+          "original": null,
+          "analyzed": null
         },
         "ui_language": "en",
-        "account_language": null
+        "account_language": null,
+        "otp_required_for_login": false
       }
     }
   ]

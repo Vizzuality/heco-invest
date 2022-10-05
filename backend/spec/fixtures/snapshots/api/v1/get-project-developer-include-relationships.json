@@ -25,123 +25,6 @@
       "id": "cc873ec3-bf64-4b87-815b-4199a4fd28df",
       "type": "project",
       "attributes": {
-        "name": "Project 1",
-        "slug": "bartoletti-and-sons-project-1",
-        "description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "development_stage": "scaling-up",
-        "estimated_duration_in_months": 13,
-        "target_groups": [
-          "urban-populations",
-          "indigenous-peoples"
-        ],
-        "impact_areas": [
-          "pollutants-reduction",
-          "carbon-emission-reduction"
-        ],
-        "sdgs": [
-          1,
-          4,
-          5
-        ],
-        "involved_project_developer_not_listed": false,
-        "problem": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "solution": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "expected_impact": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "looking_for_funding": true,
-        "ticket_size": "scaling",
-        "instrument_types": [
-          "grant",
-          "loan"
-        ],
-        "sustainability": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "replicability": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "progress_impact_tracking": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "received_funding": true,
-        "received_funding_amount_usd": "3000.0",
-        "received_funding_investor": "Kutch-Spencer",
-        "relevant_links": null,
-        "language": "en",
-        "category": "forestry-and-agroforestry",
-        "favourite": null,
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            1.0,
-            2.0
-          ]
-        },
-        "latitude": 2.0,
-        "longitude": 1.0,
-        "funding_plan": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
-        "trusted": false,
-        "municipality_biodiversity_impact": null,
-        "municipality_climate_impact": null,
-        "municipality_water_impact": null,
-        "municipality_community_impact": null,
-        "municipality_total_impact": null,
-        "hydrobasin_biodiversity_impact": null,
-        "hydrobasin_climate_impact": null,
-        "hydrobasin_water_impact": null,
-        "hydrobasin_community_impact": null,
-        "hydrobasin_total_impact": null,
-        "priority_landscape_biodiversity_impact": null,
-        "priority_landscape_climate_impact": null,
-        "priority_landscape_water_impact": null,
-        "priority_landscape_community_impact": null,
-        "priority_landscape_total_impact": null,
-        "created_at": "2022-06-24T09:06:30.522Z",
-        "status": "published",
-        "account_language": "en",
-        "impact_calculated": false,
-        "verified": false
-      },
-      "relationships": {
-        "project_developer": {
-          "data": {
-            "id": "681ab814-6afd-45c7-bd6c-06be7c98b6c3",
-            "type": "project_developer"
-          }
-        },
-        "involved_project_developers": {
-          "data": [
-            {
-              "id": "2b4be194-0707-4bae-947a-0ceffd2687de",
-              "type": "project_developer"
-            }
-          ]
-        },
-        "project_images": {
-          "data": [
-
-          ]
-        },
-        "country": {
-          "data": {
-            "id": "bd3fc33b-28e0-44ca-90c7-501b06796251",
-            "type": "location"
-          }
-        },
-        "municipality": {
-          "data": {
-            "id": "7312e65c-de64-41b1-ac1d-a59ade3f9bff",
-            "type": "location"
-          }
-        },
-        "department": {
-          "data": {
-            "id": "9bb163fb-33cf-466e-bd05-8eb70c775055",
-            "type": "location"
-          }
-        },
-        "priority_landscape": {
-          "data": null
-        }
-      }
-    },
-    {
-      "id": "ca86f3ba-e61f-4a7c-90eb-013287d12deb",
-      "type": "project",
-      "attributes": {
         "name": "Project 2",
         "slug": "hane-lehner-and-goyette-project-2",
         "description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
@@ -206,11 +89,130 @@
         "priority_landscape_water_impact": null,
         "priority_landscape_community_impact": null,
         "priority_landscape_total_impact": null,
+        "created_at": "2022-06-24T09:06:30.522Z",
+        "status": "published",
+        "account_language": "en",
+        "impact_calculated": false,
+        "verified": false,
+        "funded": null
+      },
+      "relationships": {
+        "project_developer": {
+          "data": {
+            "id": "681ab814-6afd-45c7-bd6c-06be7c98b6c3",
+            "type": "project_developer"
+          }
+        },
+        "involved_project_developers": {
+          "data": [
+            {
+              "id": "2b4be194-0707-4bae-947a-0ceffd2687de",
+              "type": "project_developer"
+            }
+          ]
+        },
+        "project_images": {
+          "data": [
+
+          ]
+        },
+        "country": {
+          "data": {
+            "id": "bd3fc33b-28e0-44ca-90c7-501b06796251",
+            "type": "location"
+          }
+        },
+        "municipality": {
+          "data": {
+            "id": "7312e65c-de64-41b1-ac1d-a59ade3f9bff",
+            "type": "location"
+          }
+        },
+        "department": {
+          "data": {
+            "id": "9bb163fb-33cf-466e-bd05-8eb70c775055",
+            "type": "location"
+          }
+        },
+        "priority_landscape": {
+          "data": null
+        }
+      }
+    },
+    {
+      "id": "ca86f3ba-e61f-4a7c-90eb-013287d12deb",
+      "type": "project",
+      "attributes": {
+        "name": "Project 1",
+        "slug": "bartoletti-and-sons-project-1",
+        "description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "development_stage": "scaling-up",
+        "estimated_duration_in_months": 13,
+        "target_groups": [
+          "urban-populations",
+          "indigenous-peoples"
+        ],
+        "impact_areas": [
+          "pollutants-reduction",
+          "carbon-emission-reduction"
+        ],
+        "sdgs": [
+          1,
+          4,
+          5
+        ],
+        "involved_project_developer_not_listed": false,
+        "problem": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "solution": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "expected_impact": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "looking_for_funding": true,
+        "ticket_size": "scaling",
+        "instrument_types": [
+          "grant",
+          "loan"
+        ],
+        "sustainability": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "replicability": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "progress_impact_tracking": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "received_funding": true,
+        "received_funding_amount_usd": "3000.0",
+        "received_funding_investor": "Kutch-Spencer",
+        "relevant_links": null,
+        "language": "en",
+        "category": "forestry-and-agroforestry",
+        "favourite": null,
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.0,
+            2.0
+          ]
+        },
+        "latitude": 2.0,
+        "longitude": 1.0,
+        "funding_plan": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
+        "trusted": false,
+        "municipality_biodiversity_impact": null,
+        "municipality_climate_impact": null,
+        "municipality_water_impact": null,
+        "municipality_community_impact": null,
+        "municipality_total_impact": null,
+        "hydrobasin_biodiversity_impact": null,
+        "hydrobasin_climate_impact": null,
+        "hydrobasin_water_impact": null,
+        "hydrobasin_community_impact": null,
+        "hydrobasin_total_impact": null,
+        "priority_landscape_biodiversity_impact": null,
+        "priority_landscape_climate_impact": null,
+        "priority_landscape_water_impact": null,
+        "priority_landscape_community_impact": null,
+        "priority_landscape_total_impact": null,
         "created_at": "2022-06-24T09:06:30.643Z",
         "status": "published",
         "account_language": "en",
         "impact_calculated": false,
-        "verified": false
+        "verified": false,
+        "funded": null
       },
       "relationships": {
         "project_developer": {

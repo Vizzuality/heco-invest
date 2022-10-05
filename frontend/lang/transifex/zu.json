@@ -8,11 +8,11 @@
   "+8XJbK": {
     "string": "To be part of the HeCo Invest platform your organization, institution or business must create an account. An account is your organization profile and it contains all the basic information to describe it. There are two types of accounts HeCo Invest: one for organizations developing projects - Project Developers - and one for organizations investing in projects - Investors. Each account will have at least one contact: the account owner."
   },
+  "+HRDx3": {
+    "string": "Search a location on the map"
+  },
   "+Hbd1j": {
     "string": "Financial instrument"
-  },
-  "+JVDMC": {
-    "string": "Know more"
   },
   "+K9fF0": {
     "string": "Project Developers"
@@ -77,6 +77,9 @@
   "/apC0L": {
     "string": "SDG’s"
   },
+  "/cMb5f": {
+    "string": "Zoom out icon"
+  },
   "/oLNw7": {
     "string": "The impact score of this project is 0."
   },
@@ -136,6 +139,9 @@
   },
   "0lKwqs": {
     "string": "Close open call?"
+  },
+  "0tb6zN": {
+    "string": "The different controls will allow you too easily navigate on the map:"
   },
   "0u3Vzf": {
     "string": "All users associated with the account will be deleted."
@@ -197,9 +203,6 @@
   "2CtPQ/": {
     "string": "Contact phone"
   },
-  "2GBpne": {
-    "string": "Impact score"
-  },
   "2HumLB": {
     "string": "123.000 million"
   },
@@ -248,6 +251,9 @@
   "3WLO/M": {
     "string": "Tell the investor why your project should receive the funding."
   },
+  "3bnYBc": {
+    "string": "KML"
+  },
   "3ciGOS": {
     "string": "Grant"
   },
@@ -277,6 +283,9 @@
   },
   "44nONQ": {
     "string": "clear search"
+  },
+  "477I0g": {
+    "string": "Low"
   },
   "47FYwb": {
     "string": "Cancel"
@@ -349,6 +358,9 @@
   },
   "5c08Qp": {
     "string": "Project information"
+  },
+  "5eVTzC": {
+    "string": "Map help"
   },
   "5g0Cah": {
     "string": "For who is the open call for?"
@@ -518,20 +530,17 @@
   "8XJceA": {
     "string": "Have you previously invested in impact?"
   },
+  "8XtmJS": {
+    "string": "HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional. <mobile>You are seeing a mobile version of the platform which has limited functionality, please use the desktop version to see the complete version.</mobile>"
+  },
   "8dGhWP": {
     "string": "Browse or drag and drop"
   },
   "8gJV79": {
     "string": "What are HeCo priority landscapes?"
   },
-  "8gmRp0": {
-    "string": "This information will be displayed and <n>public</n> in the open call page."
-  },
   "8i6S4q": {
     "string": "Connecting investors, donors and philanthropists with carefully identified investment opportunities."
-  },
-  "8j91Nj": {
-    "string": "In the {area} the project has higher impact on <b>{impact}</b> and has an <b>impact score</b> of {score}."
   },
   "8mCCtS": {
     "string": "Ending soon"
@@ -608,11 +617,17 @@
   "A2bq3p": {
     "string": "Starting today, this open call will be available for <total></total> days."
   },
+  "A4FcXS": {
+    "string": "Map layers icon"
+  },
   "A4UTjl": {
     "string": "Portuguese"
   },
   "A775MJ": {
     "string": "You are currently the account owner. Please transfer the ownership before continuing."
+  },
+  "A8VNfu": {
+    "string": "Map Layers"
   },
   "A8lXv/": {
     "string": "Global estimate of human population density and distribution."
@@ -622,6 +637,9 @@
   },
   "ADBj6Y": {
     "string": "What type of financing are you looking for to implement your project or solution?"
+  },
+  "AMKznU": {
+    "string": "Project pin icon"
   },
   "ANTAp/": {
     "string": "Country, Municipality, State"
@@ -641,8 +659,14 @@
   "AoHRBG": {
     "string": "Custom search"
   },
+  "AxMhQr": {
+    "string": "High"
+  },
   "Ay+1nm": {
     "string": "Due to security reasons, we are not allowed to display more <b>detailed financial information</b>. Please contact the Project Developers directly in order to obtain detailed information."
+  },
+  "B4FwQp": {
+    "string": "Points will not be accepted and only the first area in the file will be considered."
   },
   "BAC0rl": {
     "string": "<span>Community:</span> income, sustainable projects;"
@@ -659,9 +683,6 @@
   "BTFkyB": {
     "string": "HeCo Priority landscapes"
   },
-  "BV91+1": {
-    "string": "Inter-American Natural Capital Lab"
-  },
   "BY6k/1": {
     "string": "Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average."
   },
@@ -673,6 +694,9 @@
   },
   "BeVl3b": {
     "string": "How long will the open call be available?"
+  },
+  "BfXxmC": {
+    "string": "The first name is required"
   },
   "BqrQ5O": {
     "string": "At the <b>Landscape level</b>, a composite index combining the set of indicators identified for each dimension is used to calculate <b>Context scores</b>, with values ranging from 0 to 1. <b>Demand</b> is then computed as 1 - <b>Context score</b>, representing the “quantity” missing to reach 1, where 1 assumes the best sustainability conditions. Because the demand can be considered at multiple scales (namely, municipality, hydrological basins, and HeCo Priority Landscapes), the demand score is computed using zonal statistics at a user-specified scale, with the municipality level being the default. Unlike municipalities and hydrographic basins, the HeCo Priority Landscapes don’t cover the entire country, and therefore <b>if the project area doesn't fall into any of the Priority Landscapes, the impact of that project will be zero at that particular scale</b>."
@@ -731,6 +755,9 @@
   "D5RCKi": {
     "string": "Project name"
   },
+  "D6WycV": {
+    "string": "Remove layer"
+  },
   "D7hbFB": {
     "string": "Back to Sign in"
   },
@@ -754,6 +781,9 @@
   },
   "DR+23P": {
     "string": "Contact email"
+  },
+  "DSzCPO": {
+    "string": "General information about your project. This information will be <n>public.</n>"
   },
   "DTQxlC": {
     "string": "Cooperative"
@@ -899,6 +929,9 @@
   "FvveL5": {
     "string": "Open call"
   },
+  "Fx6O7G": {
+    "string": "2 optional files: <b>.prj</b> (recommended) and <b>.cfg</b>"
+  },
   "Fxekek": {
     "string": "Invite again"
   },
@@ -944,6 +977,9 @@
   "GhrkT+": {
     "string": "confirm password"
   },
+  "Gpyrow": {
+    "string": "IDB Lab is the innovation laboratory of the Inter-American Development Back Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
+  },
   "GsO+rH": {
     "string": "Delete project?"
   },
@@ -983,15 +1019,15 @@
   "HtMY9H": {
     "string": "Type your message"
   },
-  "HvSsTa": {
-    "string": "HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional."
-  },
   "HyAD0J": {
     "string": "{numItems} of {totalItems} entries"
   },
   "HzKhBJ": {
     "developer_comment": "Description shown in search engines",
     "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
+  },
+  "I2JNTd": {
+    "string": "Upload area file"
   },
   "I2VJMv": {
     "string": "Complete your profile with relevant information to make your relationship with project developers as precise as possible. For example the very particular topics you are interested in or the activities and items you definitely do not finance or invest in."
@@ -1104,11 +1140,14 @@
   "KGREXT": {
     "string": "Total of projects"
   },
+  "KPVqej": {
+    "string": "Zoom in icon"
+  },
+  "KQ9L9d": {
+    "string": "Zoom In"
+  },
   "KYymTZ": {
     "string": "{quantity, plural, one {project} other {projects}}"
-  },
-  "Kg0xQM": {
-    "string": "Integration of project impact in each dimension (climate, biodiversity, water community) into a single score, ranging from 0 to 10."
   },
   "KkT/Fh": {
     "string": "Update password"
@@ -1239,6 +1278,9 @@
   "MxllAO": {
     "string": "What is an open call?"
   },
+  "N2IrpM": {
+    "string": "Confirm"
+  },
   "N9+9Fi": {
     "string": "select the project developer type"
   },
@@ -1262,6 +1304,9 @@
   },
   "NYErt1": {
     "string": "Go to previous page"
+  },
+  "NdyMBg": {
+    "string": "In the {area} the highest impact of the project is on <b>{impactDimension}</b> with a <b>score</b> of {score}."
   },
   "NjKSap": {
     "string": "Online presence"
@@ -1368,14 +1413,17 @@
   "PXAur5": {
     "string": "Withdraw"
   },
-  "PgGfZr": {
-    "string": "Upload shapefile / KML file"
+  "PexDlg": {
+    "string": "Show legend"
   },
   "PheCRL": {
     "string": "Estimated Impact"
   },
   "Py+eVV": {
     "string": "Basic info"
+  },
+  "Py189G": {
+    "string": "Security"
   },
   "Q1Q4rT": {
     "string": "Insert your name"
@@ -1461,6 +1509,9 @@
   "Rb/hb9": {
     "string": "LinkedIn"
   },
+  "RrcFtD": {
+    "string": "We use cookies for analytics, personalization, and marketing purposes. Only essential cookies are active by default to ensure you get the best experience. Please read our <a>Cookie Policy</a> to learn more."
+  },
   "RyOOZR": {
     "string": "Have access to all of the contacts of <n>Investors</n> and <n>Project Developers</n>. Easily reach and connect so you can find the best investment or partnership."
   },
@@ -1469,6 +1520,9 @@
   },
   "S2nxXm": {
     "string": "Thanks for using HeCo Invest"
+  },
+  "SENRqu": {
+    "string": "Help"
   },
   "SFCYg4": {
     "string": "Don’t have a project yet? Create a project now"
@@ -1560,11 +1614,14 @@
   "UD6OB+": {
     "string": "Are you sure you want to make <n>{userName}</n> the owner of <n>{accountName}</n> account? You cant undo this action."
   },
+  "UG5qoS": {
+    "string": "No data"
+  },
+  "UH7Vx0": {
+    "string": "Reject non-essential cookies"
+  },
   "UIQdVc": {
     "string": "Are you sure you want to delete “<strong>{projectName}</strong>”?"
-  },
-  "URLNhk": {
-    "string": "The Inter-American Development Bank (IDB) is the largest source of development financing for Latin America and the Caribbean. Established in 1959, the IDB supports Latin American and Caribbean economic development, social development and regional integration by lending to governments and government agencies, including State corporations."
   },
   "URdlN+": {
     "string": "Invest in small, medium or big project opportunities."
@@ -1620,6 +1677,9 @@
   "VVlH2M": {
     "string": "Hydrobasin"
   },
+  "VX1gpP": {
+    "string": "General information about your open call. This information will be <n>public</n>."
+  },
   "VaC9C0": {
     "string": "This description should succinctly explain your project. It should be a catching text since it's the first thing investors will read."
   },
@@ -1631,6 +1691,9 @@
   },
   "Vi/HrX": {
     "string": "Projects target investors. They are set up whenever a project developer is seeking visibility or needing investment. The project is intended to contribute to the environmental conservation of a specific region and benefit nature and people."
+  },
+  "VjcEkC": {
+    "string": "Medium to high"
   },
   "VkljLs": {
     "string": "Insert the phone number in case you would like to be contacted by phone."
@@ -1749,6 +1812,9 @@
   "XwmxKZ": {
     "string": "A project is an enterprise or initiative carefully planned and run by project developers in a given region with the objective of contributing to its environmental conservation. Projects are set up whenever a project developer is seeking visibility or needing investment."
   },
+  "XwwnKr": {
+    "string": "Project cluster icon"
+  },
   "Y2HapG": {
     "string": "The dataset represents a series of vectorized polygon layers that depict sub-basin boundaries at a global scale. An important characteristic of any sub-basin delineation is the sub-basin breakdown. At its highest level of sub-basin breakdown, each basin has been divided into two sub-basins at every location where two river branches meet which each have an individual upstream area of at least 100 km². A second critical feature of sub-basin delineations is the way the sub-basins are grouped or coded to allow for the creation of nested sub-basins at different scales, or to navigate within the sub-basin network from up- to downstream. To support these functionalities and topological concepts, the ‘Pfafstetter’ coding system has been implemented, offering 12 hierarchically nested sub-basin breakdowns globally."
   },
@@ -1764,6 +1830,9 @@
   "YB8bt5": {
     "string": "Expect to have impact on"
   },
+  "YC0Gf0": {
+    "string": "1 <b>.kml</b> file"
+  },
   "YDMrKK": {
     "string": "Users"
   },
@@ -1773,11 +1842,17 @@
   "YEYmEz": {
     "string": "Draw on the map or upload a file with the geographical area your project will have an impact on."
   },
+  "YM37l9": {
+    "string": "Keep your account extra secure with a second login step."
+  },
   "YQsqLq": {
     "string": "Total <span>{numUsers}</span> {numUsers, plural, one {user} other {users}}"
   },
   "YWQkk+": {
     "string": "Short description of the project"
+  },
+  "YXI1nH": {
+    "string": "<n>Priority layers:</n> Endangered species and critical habitats, Tree cover loss, Riverine flood risk, Indigenous Reserves."
   },
   "YYMUK5": {
     "string": "Expects to have impact on"
@@ -1794,11 +1869,17 @@
   "Yy/yDL": {
     "string": "Reset password"
   },
+  "Z2ADwQ": {
+    "string": "Two factor authentication"
+  },
   "Z6MFUA": {
     "string": "You can’t undo this action."
   },
   "ZATT08": {
     "string": "Pagination"
+  },
+  "ZERB8x": {
+    "string": "<n>Base layers:</n> Heco priority landscapes, Sub-basin boundaries, Protected areas;"
   },
   "ZKsAVY": {
     "string": "This project isn’t currently looking for funding."
@@ -1881,9 +1962,6 @@
   "apgkuO": {
     "string": "More about ARIES"
   },
-  "avVMND": {
-    "string": "This information will be visible in the project page when you launch it."
-  },
   "azx2BO": {
     "string": "Discover open calls"
   },
@@ -1892,6 +1970,12 @@
   },
   "b6bipu": {
     "string": "Choose one of your projects to apply to the open call."
+  },
+  "b8sVDI": {
+    "string": "Privacy notice"
+  },
+  "bALo1R": {
+    "string": "Account security"
   },
   "bNpbHr": {
     "string": "Find other people with similar interests. Join forces, secure more investment and create a greater impact."
@@ -1950,6 +2034,9 @@
   "cT6b2H": {
     "string": "WWF"
   },
+  "cTuDKQ": {
+    "string": "* Upload all the files at once"
+  },
   "caaGgO": {
     "string": "How can I invest/fund a project?"
   },
@@ -1958,9 +2045,6 @@
   },
   "cdeA3/": {
     "string": "Investor email"
-  },
-  "cqoaMq": {
-    "string": "Shapefile / KML"
   },
   "ctfKNN": {
     "string": "Set your priorities and HeCo Invest will connect you with the best opportunities."
@@ -2045,6 +2129,9 @@
   },
   "eSLLyC": {
     "string": "To complete you registration and make full use of the platform, please select which account you would like to create."
+  },
+  "eVWrC4": {
+    "string": "Upload a <b>square</b> image, <b>PNG</b> or <b>JPG</b>. Max size of <b>5MB</b>."
   },
   "eXDHt0": {
     "string": "Describe the project or solution and describe clearly why you consider it is innovative, different from others and how it can generate an important change and impact towards the target groups. Highlight the characteristics that may attract partners, clients, or investors."
@@ -2151,6 +2238,9 @@
   "gbWTGl": {
     "string": "General information about the project developer. This information will be <n>public</n> except the one marked as <n>private</n> which will only be visible for admins."
   },
+  "ghKJy+": {
+    "string": "The map allows you to quickly see the location of each project and understand the context of the different projects."
+  },
   "ghj0+t": {
     "string": "Geographies"
   },
@@ -2162,6 +2252,9 @@
   },
   "gwLlk9": {
     "string": "select one"
+  },
+  "hBliS7": {
+    "string": "KMZ"
   },
   "hDI+JM": {
     "string": "Sort by"
@@ -2177,6 +2270,12 @@
   },
   "hPsrc0": {
     "string": "insert your answer (max 600 characters)"
+  },
+  "hRcpAt": {
+    "string": "max 1 layer"
+  },
+  "hRsu1I": {
+    "string": "To help you understand the context of each project, we provide a range of contextual layers. These layers are divided in three different groups, and you can only activate one layer per group in order to keep the legibility of the map. The layers are:"
   },
   "hWhIuU": {
     "string": "Select the intrument type(s)"
@@ -2217,6 +2316,9 @@
   "i5gK2X": {
     "string": "Currently you don’t have any <b>Project developers</b> in your favorites."
   },
+  "i7V7mZ": {
+    "string": "Search icon"
+  },
   "i9cSUD": {
     "string": "Invests in"
   },
@@ -2240,9 +2342,6 @@
   },
   "iUt7so": {
     "string": "of the planet’s known biodiversity lives in the Amazon, the largest tropical rainforest on the planet."
-  },
-  "iZuO+L": {
-    "string": "Legend"
   },
   "iiVhlC": {
     "string": "insert phone number"
@@ -2319,6 +2418,9 @@
   "jvHO6d": {
     "string": "By accepting this invitation you will belong to the {accountName} account."
   },
+  "jvP3C2": {
+    "string": "Accept all cookies"
+  },
   "jvb6yi": {
     "string": "This is a global, wall-to-wall map of aboveground biomass (AGB) at approximately 30-meter resolution. This data product expands on the methodology presented in Baccini et al. (2012) to generate a global map of aboveground live woody biomass (AGB) density (megagrams biomass per ha) at 0.00025-degree (approximately 30-meter) resolution for the year 2000. Aboveground biomass was estimated using a multi-step process of calculating AGB at more than seven hundred thousand points with LiDAR with regional allometric equations, then using those to train a wall-to-wall model based on Landsat imagery. Pixels without tree canopy were assigned a biomass density of 0 Mg/ha."
   },
@@ -2330,6 +2432,9 @@
   },
   "k36uSw": {
     "string": "Project"
+  },
+  "k42KHN": {
+    "string": "Shapefile"
   },
   "k5DITM": {
     "string": "Users will receive an email to sign up into the platform and join <strong>{name}</strong> account."
@@ -2402,6 +2507,9 @@
   },
   "lda5xz": {
     "string": "My users"
+  },
+  "lewlDm": {
+    "string": "The last name is required"
   },
   "lfXAQ2": {
     "string": "Hydrometeorological risk reduction"
@@ -2550,6 +2658,9 @@
   "osBdnp": {
     "string": "IPLC organization"
   },
+  "owrtek": {
+    "string": "3 mandatory files: <b>.shp</b>, <b>.shx</b> and <b>.dbf</b>"
+  },
   "p+7s2E": {
     "string": "Note that all of this information will be visible in the Project Developer public profile page except question 1 and 6."
   },
@@ -2586,6 +2697,12 @@
   "psXhQO": {
     "string": "Funding & development"
   },
+  "pzu2Hd": {
+    "string": "Open location search"
+  },
+  "q/Z5g4": {
+    "string": "Open map help"
+  },
   "q0vlJx": {
     "string": "project or solution already in implementation that seeks to be strengthened and consolidated."
   },
@@ -2601,11 +2718,17 @@
   "q7I+Bg": {
     "string": "{quantity, plural, one {investor} other {investors}}"
   },
+  "q9Rhsk": {
+    "string": "Extremely high"
+  },
   "q9swhp": {
     "string": "Foundation"
   },
   "qCZWRp": {
     "string": "Which are the HeCo Program priority landscapes?"
+  },
+  "qFGn1F": {
+    "string": "Each project is represented by a marker that has a color defined by the project category."
   },
   "qFZuSl": {
     "string": "My projects"
@@ -2657,6 +2780,9 @@
   },
   "r333tD": {
     "string": "<b>Water</b>:"
+  },
+  "r3xohw": {
+    "string": "Map controls"
   },
   "rBC2yr": {
     "string": "This information will be <n>public</n>."
@@ -2799,6 +2925,9 @@
   "tH/CDj": {
     "string": "© Luis Barreto / WWF-UK"
   },
+  "tHHNHH": {
+    "string": "Please upload an area in one of the following formats:"
+  },
   "tKMlOc": {
     "string": "Menu"
   },
@@ -2862,6 +2991,9 @@
   "ui0dk9": {
     "string": "idea to be developed from scratch."
   },
+  "uln7eT": {
+    "string": "Zoom Out"
+  },
   "up42nX": {
     "string": "<b>Biodiversity</b>: areas of great ecosystem diversity as well as with a degree of threat or protection for flora and fauna, and where more investments in conservation, restoration, and scientific knowledge are needed."
   },
@@ -2871,8 +3003,14 @@
   "uyxTSu": {
     "string": "Select the impacts that you prioritize"
   },
+  "uzMeos": {
+    "string": "<n>Contextual layers:</n> Biodiversity intactness, Tree biomass density, Wetlands, Population density;"
+  },
   "v2wxEw": {
     "string": "Back to open calls"
+  },
+  "v5SfUh": {
+    "string": "Arid & low water use"
   },
   "v9GdgG": {
     "string": "File {fileName} is larger than {fileSize}MB"
@@ -2913,17 +3051,29 @@
   "viXE32": {
     "string": "Private"
   },
+  "vrCHpK": {
+    "string": "Powered by <a>Resource Watch</a>"
+  },
   "vygPIS": {
     "string": "Leave project creation form"
   },
   "w1Fanr": {
     "string": "Business"
   },
+  "w5UvPh": {
+    "string": "Update user information?"
+  },
   "w7tf2z": {
     "string": "Published"
   },
+  "w9SaaR": {
+    "string": "Low to medium"
+  },
   "wA8Ls7": {
     "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. The <b>Supply</b> score of each sustainability dimension is then computed by taking the mean value of the corresponding indicators. <b>However, if all the indicators of a given dimension are selected, then the supply score of that dimension goes automatically to 0</b>. This is to make sure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
+  },
+  "wCT28C": {
+    "string": "1 <b>.kmz</b> file"
   },
   "wEQDC6": {
     "string": "Edit"
@@ -2943,6 +3093,9 @@
   "we4Lby": {
     "string": "Info"
   },
+  "wghPR3": {
+    "string": "Group of projects"
+  },
   "whbx7G": {
     "string": "Geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystem services."
   },
@@ -2957,6 +3110,9 @@
   },
   "wvoA3H": {
     "string": "Picture"
+  },
+  "wvp0Qm": {
+    "string": "Project marker"
   },
   "wyxJrL": {
     "string": "Delete account"
@@ -2987,6 +3143,9 @@
   },
   "xUR9nd": {
     "string": "people live in the Amazon region."
+  },
+  "xXIT0v": {
+    "string": "<b>Note:</b> After submitting the form, images may take some time to be visible in your page."
   },
   "xXbJso": {
     "string": "Sign out"
@@ -3050,6 +3209,9 @@
   },
   "ygx9Jx": {
     "string": "Micro finance"
+  },
+  "yirvdu": {
+    "string": "Enable two factor authentication"
   },
   "yp8KtZ": {
     "string": "Publish project?"

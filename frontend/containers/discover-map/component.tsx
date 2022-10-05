@@ -1,4 +1,7 @@
-import { FC, useCallback, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useMemo, useState } from 'react';
+
+import { useForm } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 
 import omit from 'lodash-es/omit';
 
@@ -12,22 +15,25 @@ import { useLayers } from 'hooks/useLayers';
 
 import Map from 'components/map';
 import Controls from 'components/map/controls';
+import ZoomControl from 'components/map/controls/zoom';
 import ClusterLayer from 'components/map/layers/cluster';
-import ProjectLegend from 'components/map/project-legend';
+import { Legend, LegendType } from 'components/map/legend/types';
 import ProjectMapPin from 'components/project-map-pin';
 import { ProjectMapParams } from 'types/project';
 
 import { useProjectsMap } from 'services/projects/projectService';
 
+import LayerLegend from './layer-legend';
 import LocationSearcher from './location-searcher';
+import MapHelp from './map-help';
 import MapLayersSelector from './map-layers-selector';
+import { MapLayersSelectorForm } from './map-layers-selector/types';
 import MapPinCluster from './pin-cluster';
 import { DiscoverMapProps } from './types';
 
 const cartoProvider = new CartoProvider();
 
 export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
-  const [visibleLayers, setVisibleLayers] = useState<string[]>([]);
   const { layers } = useLayers();
   const { query } = useRouter();
 
@@ -42,12 +48,71 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
     options: { padding: 0 },
   });
 
-  const handleViewportChange = useCallback((vw) => {
-    setViewport(vw);
-  }, []);
+  const onZoomChange = useCallback(
+    (zoom) => {
+      setViewport({
+        ...viewport,
+        zoom,
+        transitionDuration: 300,
+      });
+    },
+    [viewport]
+  );
+
+  const { register, watch, resetField, setValue } = useForm<MapLayersSelectorForm>();
+
+  const layerInputs = watch();
+
+  /** An array with the values of the selected layers */
+  const visibleLayers: string[] = useMemo(
+    () =>
+      Object.values(layerInputs).reduce((prev, curr) => {
+        return !!curr && curr.length ? [...prev, curr[0]] : prev;
+      }, []),
+    [layerInputs]
+  );
+
+  const handleViewportChange = useCallback(
+    (vw) => {
+      setViewport({ ...viewport, ...vw });
+    },
+    [viewport]
+  );
 
   const handleLocationSelected = ({ bbox }) => {
     setBounds({ ...bounds, bbox });
+  };
+
+  /** An array with the selected layers legends */
+  const layerLegends: Legend[] = useMemo(
+    () =>
+      visibleLayers
+        .map((layer) => {
+          const {
+            legend: { items, type },
+            id,
+            name,
+            group,
+            isResourceWatch,
+          } = layers.find(({ id }) => layer === id);
+          return { items, type: type as LegendType, id, name, group, isResourceWatch };
+        })
+        .reverse(),
+    [layers, visibleLayers]
+  );
+
+  const displayResourceWatchCredits = useMemo(() => {
+    return layerLegends.some((layer) => layer.isResourceWatch);
+  }, [layerLegends]);
+
+  const handleChangeVisibleLayer = (e: ChangeEvent<HTMLInputElement>) => {
+    // The layer inputs are groups of checkboxes. To limit one value per group, the value is always updated to an array of one item with the last selected value. If the checkbox is already selected (the user unchecked the checkbox), the field is reseted.
+    const { name, value } = e.currentTarget;
+    if (visibleLayers.includes(value)) {
+      resetField(name as keyof MapLayersSelectorForm);
+    } else {
+      setValue(name as keyof MapLayersSelectorForm, [value]);
+    }
   };
 
   return (
@@ -89,16 +154,56 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
         >
           <MapLayersSelector
             className="pointer-events-auto"
-            onActiveLayersChange={setVisibleLayers}
-          />
-          <LocationSearcher
-            className="pointer-events-auto"
-            onLocationSelected={handleLocationSelected}
+            register={register}
+            registerOptions={{
+              onChange: handleChangeVisibleLayer,
+            }}
           />
         </div>
 
-        <Controls className="absolute bottom-10 xl:bottom-4 right-4">
-          <ProjectLegend />
+        <div className="absolute px-2 text-xs text-gray-900 bg-gray-200 rounded bottom-2 left-4 bg-opacity-30">
+          {displayResourceWatchCredits && (
+            <span>
+              <FormattedMessage
+                defaultMessage="Powered by <a>Resource Watch</a>"
+                id="vrCHpK"
+                values={{
+                  a: (chunk: string) => (
+                    <a
+                      className="hover:underline"
+                      href="https://resourcewatch.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {chunk}
+                    </a>
+                  ),
+                }}
+              />
+            </span>
+          )}
+        </div>
+
+        <Controls className="w-full h-full">
+          <div className="absolute flex flex-col items-end top-4 right-4 gap-y-2">
+            <LocationSearcher
+              className="absolute pointer-events-auto"
+              onLocationSelected={handleLocationSelected}
+            />
+            <ZoomControl
+              className="w-min "
+              viewport={{ ...viewport }}
+              onZoomChange={onZoomChange}
+            />
+            <MapHelp />
+          </div>
+          <div className="absolute h-fit max-h-[45%] bottom-4 right-4 overflow-y-auto">
+            <LayerLegend
+              className="bg-white"
+              onCloseLegend={(layerGroup) => resetField(layerGroup as keyof MapLayersSelectorForm)}
+              layersLegends={layerLegends}
+            />
+          </div>
         </Controls>
       </div>
     </>

@@ -14,6 +14,9 @@ services:
       - CLOUD_TASKS_TEST_QUEUE_NAME=test
       - FRONTEND_URL=http://localhost:4000
       - IS_JOBS_INSTANCE=true
+      - ENCRYPTION_PRIMARY_KEY=TEST
+      - ENCRYPTION_DETERMINISTIC_KEY=TEST
+      - ENCRYPTION_DERIVATION_SALT=TEST
     depends_on:
       - db
   db:

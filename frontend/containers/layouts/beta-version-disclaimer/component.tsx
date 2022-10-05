@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import { X as CloseIcon } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
@@ -7,7 +7,9 @@ import cx from 'classnames';
 
 import Button from 'components/button';
 
-const BetaVersionDisclaimer = () => {
+import { BetaVersionDisclaimerProps } from './types';
+
+const BetaVersionDisclaimer: FC<BetaVersionDisclaimerProps> = ({ className }) => {
   const [hidden, setHidden] = useState(true);
 
   useEffect(() => {
@@ -23,19 +25,20 @@ const BetaVersionDisclaimer = () => {
   return (
     <div
       className={cx(
-        'w-full z-50 flex bg-background-middle justify-center transform-all ease-in-out duration-300 overflow-hidden text-black fixed bottom-0 sm:static sm:bottom-auto',
+        'w-full z-50 flex bg-background-middle justify-center transform-all ease-in-out duration-300 overflow-hidden text-black static',
         {
           'h-0': hidden,
           'h-auto p-3': !hidden,
+          [className]: !!className,
         }
       )}
     >
       <p className="mr-2 text-sm text-center">
         <FormattedMessage
-          defaultMessage="HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional."
-          id="HvSsTa"
+          defaultMessage="HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional. <mobile>You are seeing a mobile version of the platform which has limited functionality, please use the desktop version to see the complete version.</mobile>"
+          id="8XtmJS"
           values={{
-            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+            mobile: (chunk: string) => <span className="md:hidden">{chunk}</span>,
           }}
         />
       </p>

@@ -25,12 +25,13 @@ module "staging" {
   github_org             = var.github_org
   github_project         = var.github_project
   github_branch          = "develop"
-  google_analytics_key   = var.google_analytics_key
+  google_analytics_key   = ""
   google_maps_api_key    = var.google_maps_api_key
   project_name           = var.staging_project_name
   transifex_token        = var.transifex_token
   sendgrid_api_key       = var.sendgrid_api_key
   mapbox_api_key         = var.mapbox_api_key
+  hotjar_site_id         = ""
   redirect_domain        = var.redirect_domain
   dns_zone_name          = module.dns.dns_zone_name
   redirect_dns_zone_name = module.redirect_dns.dns_zone_name
@@ -54,6 +55,7 @@ module "production" {
   transifex_token        = var.transifex_token
   sendgrid_api_key       = var.sendgrid_api_key
   mapbox_api_key         = var.mapbox_api_key
+  hotjar_site_id         = var.hotjar_site_id
   frontend_min_scale     = 1
   backend_min_scale      = 1
   cors_origin            = "https://${var.domain}"

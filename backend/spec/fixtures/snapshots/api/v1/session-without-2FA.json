@@ -1,0 +1,26 @@
+{
+  "data": {
+    "id": "d8829eee-3d14-4775-a231-53a138070e12",
+    "type": "user",
+    "attributes": {
+      "first_name": "Dawna",
+      "last_name": "Block",
+      "email": "user@example.com",
+      "role": "light",
+      "created_at": "2022-09-15T12:58:18.099Z",
+      "ui_language": "en",
+      "account_language": null,
+      "otp_required_for_login": false,
+      "confirmed": true,
+      "approved": null,
+      "invitation": null,
+      "owner": false,
+      "avatar": {
+        "small": null,
+        "medium": null,
+        "original": null,
+        "analyzed": null
+      }
+    }
+  }
+}

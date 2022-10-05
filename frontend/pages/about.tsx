@@ -165,8 +165,8 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             </div>
             <p className="hidden mt-3 md:block sm:mt-6">
               <FormattedMessage
-                defaultMessage="The Inter-American Development Bank (IDB) is the largest source of development financing for Latin America and the Caribbean. Established in 1959, the IDB supports Latin American and Caribbean economic development, social development and regional integration by lending to governments and government agencies, including State corporations."
-                id="URLNhk"
+                defaultMessage="The Inter-American Development Bank (IDB) is the main source of multilateral financing and expertise for sustainable economic, social and institutional development in Latin America and the Caribbean. The IDB Natural Capital Lab works to drive innovation in natural capital finance by looking at nature as an asset."
+                id="WJcNiD"
               />
             </p>
           </div>
@@ -194,15 +194,15 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 width={348}
                 height={124}
                 alt={intl.formatMessage({
-                  defaultMessage: 'Inter-American Natural Capital Lab',
-                  id: 'BV91+1',
+                  defaultMessage: 'Inter-American Development Bank Lab',
+                  id: 'QDj3j7',
                 })}
               />
             </div>
             <p className="hidden mt-3 md:block sm:mt-6">
               <FormattedMessage
-                defaultMessage="The Inter-American Development Bank (IDB) is the main source of multilateral financing and expertise for sustainable economic, social and institutional development in Latin America and the Caribbean. The IDB Natural Capital Lab works to drive innovation in natural capital finance by looking at nature as an asset."
-                id="WJcNiD"
+                defaultMessage="IDB Lab is the innovation laboratory of the Inter-American Development Back Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
+                id="Gpyrow"
               />
             </p>
           </div>

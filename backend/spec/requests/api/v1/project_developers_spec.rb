@@ -154,6 +154,7 @@ RSpec.describe "API V1 Project Developers", type: :request do
           end
 
           it "contains picture" do
+            expect(response_json["data"]["attributes"]["picture"]["analyzed"]).to be_truthy
             expect(response_json["data"]["attributes"]["picture"]["original"]).not_to be_nil
           end
         end

@@ -91,7 +91,8 @@
       "latitude": 0.5,
       "longitude": 0.5,
       "favourite": null,
-      "verified": false
+      "verified": false,
+      "funded": null
     },
     "relationships": {
       "project_developer": {

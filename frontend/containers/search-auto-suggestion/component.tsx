@@ -20,6 +20,7 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
   searchText,
   filters,
   filtersData,
+  closeSuggestions,
 }) => {
   const selectedFilters = useMemo(() => Object.values(filters), [filters]);
   const doSearch = useSearch();
@@ -43,6 +44,7 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
 
   const handleSearchSuggestion = () => {
     doSearch(searchText, filters);
+    closeSuggestions();
   };
 
   const autoSuggestions = useMemo(() => {

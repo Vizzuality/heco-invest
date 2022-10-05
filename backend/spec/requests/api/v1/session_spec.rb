@@ -22,31 +22,56 @@ RSpec.describe "API V1 Session", type: :request do
         schema type: :object, properties: {
           data: {"$ref" => "#/components/schemas/user"}
         }
-        let(:user_params) do
-          {
-            email: "user@example.com",
-            password: "SuperSecret1234"
-          }
-        end
         let("X-CSRF-TOKEN") { get_csrf_token }
 
-        context "when non-invited user tries to login" do
-          run_test!
+        context "when user does not require 2FA OTP attempt" do
+          let(:user_params) do
+            {
+              email: "user@example.com",
+              password: "SuperSecret1234"
+            }
+          end
+          before { user.update! otp_required_for_login: false }
 
-          it "matches snapshot", generate_swagger_example: true do
-            expect(response.body).to match_snapshot("api/v1/session")
-            expect(session["warden.user.user.key"]).to be_present
+          context "when non-invited user tries to login" do
+            run_test!
+
+            it "matches snapshot", generate_swagger_example: true do
+              expect(response.body).to match_snapshot("api/v1/session-without-2FA")
+              expect(session["warden.user.user.key"]).to be_present
+            end
+          end
+
+          context "when invited user tries to login" do
+            before do
+              user.invite! create(:account).owner
+            end
+
+            run_test!
+
+            it "can still login" do
+              expect(session["warden.user.user.key"]).to be_present
+            end
           end
         end
 
-        context "when invited user tries to login" do
+        context "when user requires 2FA OTP attempt" do
+          let(:user_params) do
+            {
+              email: "user@example.com",
+              password: "SuperSecret1234",
+              otp_attempt: user.current_otp
+            }
+          end
+
           before do
-            user.invite! create(:account).owner
+            user.update! otp_required_for_login: true, otp_secret: User.generate_otp_secret(6)
           end
 
           run_test!
 
-          it "can still login" do
+          it "matches snapshot" do
+            expect(response.body).to match_snapshot("api/v1/session-with-2FA")
             expect(session["warden.user.user.key"]).to be_present
           end
         end
@@ -75,19 +100,41 @@ RSpec.describe "API V1 Session", type: :request do
         schema type: :object, properties: {
           data: {"$ref" => "#/components/schemas/user"}
         }
-
-        let(:user_params) do
-          {
-            email: "user2@example.com",
-            password: "SuperSecret1234"
-          }
-        end
         let("X-CSRF-TOKEN") { get_csrf_token }
 
-        run_test!
+        context "when credentials are invalid" do
+          let(:user_params) do
+            {
+              email: "user2@example.com",
+              password: "SuperSecret1234"
+            }
+          end
 
-        it "returns correct error", generate_swagger_example: true do
-          expect(response_json["errors"][0]["title"]).to eq("Invalid email or password.")
+          run_test!
+
+          it "returns correct error", generate_swagger_example: true do
+            expect(response_json["errors"][0]["title"]).to eq("Invalid email or password.")
+          end
+        end
+
+        context "when credentials are valid but 2FA is invalid" do
+          let(:user_params) do
+            {
+              email: "user@example.com",
+              password: "SuperSecret1234",
+              otp_attempt: "WRONG_CODE"
+            }
+          end
+
+          before do
+            user.update! otp_required_for_login: true, otp_secret: User.generate_otp_secret(6)
+          end
+
+          run_test!
+
+          it "returns correct error" do
+            expect(response_json["errors"][0]["title"]).to eq("Invalid email or password.")
+          end
         end
       end
     end
@@ -112,6 +159,78 @@ RSpec.describe "API V1 Session", type: :request do
         it "removes user from session" do
           expect(session["warden.user.user.key"]).to be_nil
           expect(user.reload.token).not_to eq(token)
+        end
+      end
+    end
+  end
+
+  path "/api/v1/session/two_factor_auth" do
+    post "Checks if User requires 2FA and send 2FA code" do
+      tags "Session"
+      consumes "application/json"
+      produces "application/json"
+      security [csrf: []]
+      parameter name: :user_params, in: :body, schema: {
+        type: :object,
+        properties: {
+          email: {type: :string},
+          password: {type: :string}
+        },
+        required: ["email", "password"]
+      }
+
+      response "200", :success do
+        schema type: :object, properties: {data: {type: :boolean}, required: ["data"]}
+        let("X-CSRF-TOKEN") { get_csrf_token }
+
+        context "when credentials are correct" do
+          let(:user_params) do
+            {
+              email: "user@example.com",
+              password: "SuperSecret1234"
+            }
+          end
+
+          context "when user has 2FA turned on" do
+            before { user.update! otp_required_for_login: true }
+
+            run_test!
+
+            it "sends email with OTP code", generate_swagger_example: true do |example|
+              expect {
+                submit_request example.metadata
+                expect(response_json["data"]).to be_truthy
+              }.to have_enqueued_mail(UserMailer, :send_otp_code).with(user)
+            end
+          end
+
+          context "when user have 2FA turned off" do
+            before { user.update! otp_required_for_login: false }
+
+            run_test!
+
+            it "does not send email with OTP code" do |example|
+              expect {
+                submit_request example.metadata
+                expect(response_json["data"]).to be_falsey
+              }.not_to have_enqueued_mail(UserMailer, :send_otp_code)
+            end
+          end
+        end
+
+        context "when credentials are wrong" do
+          let(:user_params) do
+            {
+              email: "user@example.com",
+              password: "WRONG_PASSWORD"
+            }
+          end
+
+          run_test!
+
+          it "is false" do
+            expect(response_json["data"]).to be_falsey
+          end
         end
       end
     end

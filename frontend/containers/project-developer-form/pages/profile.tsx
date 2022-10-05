@@ -62,16 +62,36 @@ export const Profile: FC<ProfileProps> = ({
             })}
           />
         </div>
-        <ImageUploader
-          setError={setError}
-          setValue={setValue}
-          name="picture"
-          id="picture"
-          control={control}
-          preview
-          clearErrors={clearErrors}
-          defaultImage={picture}
-        />
+        <div className="flex items-center gap-x-6">
+          <ImageUploader
+            setError={setError}
+            setValue={setValue}
+            name="picture"
+            id="picture"
+            control={control}
+            preview
+            clearErrors={clearErrors}
+            defaultImage={picture}
+          />
+          <p className="text-sm text-gray-700">
+            <FormattedMessage
+              defaultMessage="Upload a <b>square</b> image, <b>PNG</b> or <b>JPG</b>. Max size of <b>5MB</b>."
+              id="eVWrC4"
+              values={{
+                b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+              }}
+            />
+          </p>
+        </div>
+        <p className="mt-4 text-sm text-gray-600">
+          <FormattedMessage
+            defaultMessage="<b>Note:</b> After submitting the form, images may take some time to be visible in your page."
+            id="xXIT0v"
+            values={{
+              b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+            }}
+          />
+        </p>
         <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
       </div>
       <div className="md:flex gap-x-6 mb-6.5">

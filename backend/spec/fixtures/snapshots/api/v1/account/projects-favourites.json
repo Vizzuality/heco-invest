@@ -72,7 +72,8 @@
         "longitude": 1.0,
         "favourite": true,
         "impact_calculated": false,
-        "verified": false
+        "verified": false,
+        "funded": null
       },
       "relationships": {
         "project_developer": {

@@ -1,17 +1,13 @@
-import { FC, useCallback, useState } from 'react';
+import { FC } from 'react';
 
-import { ChevronDown as ChevronDownIcon } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
 import { useId } from '@react-aria/utils';
-import { motion } from 'framer-motion';
 
 import { CategoryTagDot } from 'containers/category-tag';
 
-import Button from 'components/button';
-import Icon from 'components/icon';
 import { CategoryType } from 'types/category';
 
 import { useEnums } from 'services/enums/enumService';
@@ -22,70 +18,23 @@ export const ProjectLegend: FC<ProjectLegendProps> = ({ className }: ProjectLege
   const { data, isLoading, isError } = useEnums();
   const id = useId();
 
-  const [active, setActive] = useState(true);
-
-  const onToggleActive = useCallback(() => {
-    setActive(!active);
-  }, [active]);
-
   if (isLoading || isError) {
     return null;
   }
 
-  const legendVariants = {
-    open: { opacity: 1, height: 'auto' },
-    closed: { opacity: 0, height: 0 },
-  };
-
   return (
-    <div
-      className={cx({
-        'flex flex-col items-end h-full gap-px': true,
-        [className]: !!className,
-      })}
-    >
-      <Button
-        theme="naked"
-        size="smallest"
-        aria-controls={id}
-        aria-expanded={active}
-        className="flex items-center justify-center w-8 h-8 bg-white rounded shadow-xl focus-visible:outline-green-dark"
-        onClick={onToggleActive}
-      >
-        <span className="sr-only">
-          <FormattedMessage defaultMessage="Legend" id="iZuO+L" />
-        </span>
-        <Icon
-          aria-hidden={true}
-          icon={ChevronDownIcon}
-          className={cx({
-            'w-4.5 h-4.5 text-gray-800 shrink-0 transition duration-500': true,
-            '-scale-y-100': !active,
-          })}
-        />
-      </Button>
-      <motion.div
-        id={id}
-        aria-hidden={!active}
-        animate={active ? 'open' : 'closed'}
-        transition={{ duration: 0.6 }}
-        variants={legendVariants}
-        className="w-56 z-10 bg-white rounded shadow-xl text-xs flex flex-col lg:min-w-[280px]"
-      >
-        <div className="px-2 py-2">
-          <div className="font-semibold text-black">
-            <FormattedMessage defaultMessage="Project categories" id="rginRA" />
-          </div>
-          <ol className="flex flex-col gap-2 mt-2 text-left">
-            {data.category.map((category) => (
-              <li key={category.id}>
-                <CategoryTagDot category={category.id as CategoryType} size="smallest" />
-                {category.name}
-              </li>
-            ))}
-          </ol>
-        </div>
-      </motion.div>
+    <div className={cx('px-2 py-2', { [className]: !!className })}>
+      <div className="font-semibold text-black">
+        <FormattedMessage defaultMessage="Project categories" id="rginRA" />
+      </div>
+      <ol className="flex flex-col gap-2 mt-2 text-left">
+        {data.category.map((category) => (
+          <li key={category.id}>
+            <CategoryTagDot category={category.id as CategoryType} size="smallest" />
+            {category.name}
+          </li>
+        ))}
+      </ol>
     </div>
   );
 };

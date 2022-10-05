@@ -75,8 +75,8 @@ export const OpenCallInformation: FC<OpenCallInformationProps> = ({
         </h1>
         <p className="text-gray-900">
           <FormattedMessage
-            defaultMessage="This information will be displayed and <n>public</n> in the open call page."
-            id="8gmRp0"
+            defaultMessage="General information about your open call. This information will be <n>public</n>."
+            id="VX1gpP"
             values={{
               n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
             }}
@@ -135,11 +135,19 @@ export const OpenCallInformation: FC<OpenCallInformationProps> = ({
               // https://react-dropzone.org/#section-accepting-specific-file-types
               fileTypes={{ 'image/*': ['.png', '.jpg', '.jpeg'] }}
               maxFiles={6}
-              maxSize={5 * 1024 * 1025}
               onUpload={handleUploadImages}
               aria-labelledby="picture-label"
             />
           )}
+          <p className="mt-4 text-sm text-gray-600">
+            <FormattedMessage
+              defaultMessage="<b>Note:</b> After submitting the form, images may take some time to be visible in your page."
+              id="xXIT0v"
+              values={{
+                b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+              }}
+            />
+          </p>
           <ErrorMessage id="picture-error" errorText={errors?.picture?.message} />
         </div>
         <div className="mt-7">

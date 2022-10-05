@@ -61,6 +61,12 @@ variable "mapbox_api_key" {
   description = "Mapbox API key"
 }
 
+variable "hotjar_site_id" {
+  type = string
+  description = "Hotjar site ID"
+  default = ""
+}
+
 variable "dns_zone_name" {
   type        = string
   description = "Name for the GCP DNS Zone"

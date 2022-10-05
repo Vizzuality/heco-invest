@@ -210,7 +210,7 @@ export const OpenCallDetailsPage: PageComponent<OpenCallDetailsPageProps, Dashbo
                           { name: projectDeveloper?.name }
                         )}
                         layout="fill"
-                        objectFit="cover"
+                        objectFit="contain"
                         onError={() => setProjectDeveloperPhoto(placeholderPicture)}
                       />
                     </span>

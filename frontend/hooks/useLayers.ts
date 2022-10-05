@@ -7,7 +7,7 @@ import { MapboxLayer } from '@deck.gl/mapbox';
 import GL from '@luma.gl/constants';
 import { DecodedLayer } from '@vizzuality/layer-manager-layers-deckgl';
 
-enum LAYER_GROUPS {
+export enum LAYER_GROUPS {
   BaseLayer = 'base-layer',
   ContextLayer = 'context-layer',
   PriorityLayer = 'priority-layer',
@@ -70,6 +70,10 @@ export const useLayers = () => {
           dataSource: 'Ministerio de Medio Ambiente y Desarrollo Sostenible de Colombia',
           dataSourceUrl:
             'https://www.arcgis.com/home/item.html?id=07bdb2d56b534039843a415995fc4447',
+          legend: {
+            type: 'monocolor',
+            items: [{ color: '#3d6c50' }],
+          },
           specification: {
             type: 'vector',
             source: {
@@ -154,6 +158,10 @@ export const useLayers = () => {
           }),
           dataSource: 'HydroSHEDS',
           dataSourceUrl: 'https://www.hydrosheds.org/products/hydrobasins#downloads',
+          legend: {
+            type: 'monocolor',
+            items: [{ color: '#2485bc' }],
+          },
           specification: {
             type: 'vector',
             source: {
@@ -193,6 +201,10 @@ export const useLayers = () => {
           }),
           dataSource: 'Parques Nacionales Naturales de Colombia',
           dataSourceUrl: 'https://runap.parquesnacionales.gov.co/cifras',
+          legend: {
+            type: 'monocolor',
+            items: [{ color: '#bafdd1', opacity: 0.7 }],
+          },
           specification: {
             type: 'vector',
             source: {
@@ -230,6 +242,19 @@ export const useLayers = () => {
           dataSource:
             'United Nations Environment World Conservation Monitoring Centre (UNEP-WCMC) and Natural History Museum',
           dataSourceUrl: 'https://data.nhm.ac.uk/',
+          legend: {
+            type: 'gradient',
+            items: [
+              { label: formatMessage({ defaultMessage: 'Low', id: '477I0g' }), color: '#F8EBFF' },
+              { label: '', color: '#ECCAFC' },
+              { label: '', color: '#DFA4FF' },
+              { label: '', color: '#C26DFE' },
+              { label: '', color: '#9D36F7' },
+              { label: '', color: '#6D00E1' },
+              { label: formatMessage({ defaultMessage: 'High', id: 'AxMhQr' }), color: '#3C00AB' },
+            ],
+          },
+          isResourceWatch: true,
           specification: {
             type: 'raster',
             source: {
@@ -256,6 +281,16 @@ export const useLayers = () => {
           dataSource: 'Global Forest Watch',
           dataSourceUrl:
             'https://data.globalforestwatch.org/datasets/aboveground-live-woody-biomass-density',
+          legend: {
+            type: 'gradient',
+            items: [
+              { color: '#895122', label: '0' },
+              { color: '#957F4F', label: '' },
+              { color: '#9DB38A', label: '' },
+              { color: '#39A401', label: '480 t Ha⁻¹' },
+            ],
+          },
+          isResourceWatch: true,
           specification: {
             type: 'deck',
             source: {
@@ -327,6 +362,10 @@ export const useLayers = () => {
           dataSource: 'Sistema de Información Ambiental de Colombia - SIAC',
           dataSourceUrl:
             'https://siac-datosabiertos-mads.hub.arcgis.com/datasets/a499da66b2814db48888343283b57cdb/about',
+          legend: {
+            type: 'monocolor',
+            items: [{ color: '#0d9dc9', opacity: 0.6 }],
+          },
           specification: {
             type: 'vector',
             source: {
@@ -354,6 +393,18 @@ export const useLayers = () => {
             defaultMessage: 'Global estimate of human population density and distribution.',
             id: 'A8lXv/',
           }),
+          legend: {
+            items: [
+              { color: '#32095D', label: '≤25' },
+              { color: '#781C6D', label: '≤100' },
+              { color: '#BA3655', label: '≤1k' },
+              { color: '#ED6825', label: '≤5k' },
+              { color: '#FBB318', label: '≤10k' },
+              { color: '#FCFEA4', label: '>10k' },
+            ],
+            type: 'choropleth',
+          },
+          isResourceWatch: true,
           overview: [
             formatMessage({
               defaultMessage:
@@ -405,6 +456,11 @@ export const useLayers = () => {
             }),
           ],
           dataSource: 'Alliance for Zero Extinctions (AZE)',
+          legend: {
+            type: 'monocolor',
+            items: [{ color: '#b2d26e' }],
+          },
+          isResourceWatch: true,
           dataSourceUrl: 'https://www.keybiodiversityareas.org/kba-data/request',
           specification: {
             type: 'vector',
@@ -473,6 +529,11 @@ export const useLayers = () => {
           ],
           dataSource: 'Hansen/UMD/Google/USGS/NASA',
           dataSourceUrl: 'https://glad.earthengine.app/view/global-forest-change',
+          legend: {
+            type: 'monocolor',
+            items: [{ color: '#dc6c9a' }],
+          },
+          isResourceWatch: true,
           specification: {
             type: 'deck',
             source: {
@@ -566,6 +627,34 @@ export const useLayers = () => {
             id: 'BY6k/1',
           }),
           dataSource: 'World Resources Institute',
+          legend: {
+            items: [
+              {
+                color: '#990000',
+                label: formatMessage({ defaultMessage: 'Extremely high', id: 'q9Rhsk' }),
+              },
+              { color: '#FF1900', label: formatMessage({ defaultMessage: 'High', id: 'AxMhQr' }) },
+              {
+                color: '#FF9900',
+                label: formatMessage({ defaultMessage: 'Medium to high', id: 'VjcEkC' }),
+              },
+              {
+                color: '#FFE600',
+                label: formatMessage({ defaultMessage: 'Low to medium', id: 'w9SaaR' }),
+              },
+              { color: '#FFFF99', label: formatMessage({ defaultMessage: 'Low', id: '477I0g' }) },
+              {
+                color: '#808080',
+                label: formatMessage({ defaultMessage: 'Arid & low water use', id: 'v5SfUh' }),
+              },
+              {
+                color: '#4E4E4E',
+                label: formatMessage({ defaultMessage: 'No data', id: 'UG5qoS' }),
+              },
+            ],
+            type: 'basic',
+          },
+          isResourceWatch: true,
           dataSourceUrl: 'https://www.wri.org/data/aqueduct-global-maps-30-data',
           specification: {
             type: 'vector',
@@ -634,6 +723,10 @@ export const useLayers = () => {
           dataSource: 'Agencia Nacional de Tierras',
           dataSourceUrl:
             'https://data-agenciadetierras.opendata.arcgis.com/datasets/agenciadetierras::resguardos-ind%C3%ADgenas-1/about',
+          legend: {
+            type: 'monocolor',
+            items: [{ color: '#ffb780', opacity: 0.7 }],
+          },
           specification: {
             type: 'vector',
             source: {

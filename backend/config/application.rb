@@ -23,6 +23,10 @@ module Backend
       protocol: backend_url.scheme
     }
 
+    config.active_record.encryption.primary_key = ENV["ENCRYPTION_PRIMARY_KEY"]
+    config.active_record.encryption.deterministic_key = ENV["ENCRYPTION_DETERMINISTIC_KEY"]
+    config.active_record.encryption.key_derivation_salt = ENV["ENCRYPTION_DERIVATION_SALT"]
+
     config.generators.test_framework = :rspec
 
     config.i18n.default_locale = :en

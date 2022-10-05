@@ -1,14 +1,18 @@
-import { string } from 'yup/lib/locale';
+import { RegisterOptions, UseFormRegister } from 'react-hook-form';
+
+import { LAYER_GROUPS } from 'hooks/useLayers';
 
 export type MapLayersSelectorProps = {
   /** Classes to apply to the container */
   className?: string;
-  /** Callback returning an array active layers */
-  onActiveLayersChange: (activeLayers: string[]) => void;
+  /** UseForm register function */
+  register: UseFormRegister<MapLayersSelectorForm>;
+  /** UseForm register options */
+  registerOptions: RegisterOptions<MapLayersSelectorForm>;
 };
 
 export type MapLayersSelectorForm = {
-  activeLayers: string[];
+  [key in LAYER_GROUPS]: [string];
 };
 
 export type SelectedLayerTooltip = {

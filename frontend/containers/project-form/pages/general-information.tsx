@@ -114,8 +114,11 @@ const GeneralInformation = ({
       </h1>
       <p className="mb-10 text-gray-900">
         <FormattedMessage
-          defaultMessage="This information will be visible in the project page when you launch it."
-          id="avVMND"
+          defaultMessage="General information about your project. This information will be <n>public.</n>"
+          id="DSzCPO"
+          values={{
+            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+          }}
         />
       </p>
       <form noValidate>
@@ -173,7 +176,6 @@ const GeneralInformation = ({
                 // https://react-dropzone.org/#section-accepting-specific-file-types
                 fileTypes={{ 'image/*': ['.png', '.jpg', '.jpeg'] }}
                 maxFiles={6}
-                maxSize={5 * 1024 * 1025}
                 onUpload={handleUploadImages}
               />
             </div>
@@ -190,6 +192,15 @@ const GeneralInformation = ({
               />
             </div>
           </div>
+          <p className="mt-4 text-sm text-gray-600">
+            <FormattedMessage
+              defaultMessage="<b>Note:</b> After submitting the form, images may take some time to be visible in your page."
+              id="xXIT0v"
+              values={{
+                b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+              }}
+            />
+          </p>
           <ErrorMessage
             id="project-images-attributes-error"
             errorText={
