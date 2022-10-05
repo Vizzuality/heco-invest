@@ -45,7 +45,6 @@ const Settings2FA: FC<Settings2FAProps> = () => {
           <Switch
             id="otp-required-for-login"
             name="otp_required_for_login"
-            value=""
             register={register}
             registerOptions={{
               onChange: () => {

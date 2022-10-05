@@ -1,5 +1,6 @@
-import { FC, PointerEvent, useState, useMemo } from 'react';
+import { FC, PointerEvent, useState, useMemo, useCallback, useEffect } from 'react';
 
+import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -15,8 +16,11 @@ import { projectImpact } from 'helpers/project';
 
 import ImpactChart from 'containers/impact-chart';
 
+import Label from 'components/forms/label';
+import Switch from 'components/forms/switch';
 import { Paths } from 'enums';
 
+import { useFundProject } from 'services/account';
 import { useEnums } from 'services/enums/enumService';
 
 import type { ProjectCardProps } from './types';
@@ -25,12 +29,21 @@ export const ProjectCard: FC<ProjectCardProps> = ({
   className,
   active = false,
   project,
+  canFund = false,
   onClick,
 }: ProjectCardProps) => {
   const thresholdToRegisterPress = 60;
 
   const intl = useIntl();
   const router = useRouter();
+
+  const fundProject = useFundProject(project.id);
+
+  const { register, setValue, handleSubmit } = useForm<{ financing_project: boolean }>();
+
+  useEffect(() => {
+    setValue('financing_project', !!project.funded);
+  }, [project, setValue]);
 
   const {
     data: {
@@ -63,14 +76,26 @@ export const ProjectCard: FC<ProjectCardProps> = ({
   const [pointerDownX, setPointerDownX] = useState<number>(0);
   const [pointerUpX, setPointerUpX] = useState<number>(0);
 
+  const onClickCard = useCallback(() => {
+    if (onClick) {
+      onClick(id);
+    } else {
+      router.push(link);
+    }
+  }, [id, link, onClick, router]);
+
+  const onToggleFinancing = useCallback(() => {
+    fundProject.mutate(!project.funded);
+  }, [project, fundProject]);
+
   const { pressProps } = usePress({
+    /**
+     * If the funding option is displayed, the container can't be a button. That's invalid in HTML.
+     **/
+    isDisabled: canFund,
     onPress: () => {
       if (Math.abs(pointerUpX - pointerDownX) >= thresholdToRegisterPress) return;
-      if (onClick) {
-        onClick(id);
-      } else {
-        router.push(link);
-      }
+      onClickCard();
     },
   });
 
@@ -108,7 +133,8 @@ export const ProjectCard: FC<ProjectCardProps> = ({
       role="group"
       className={cx({
         [className]: !!className,
-        'cursor-pointer transition rounded-2xl': true,
+        'cursor-pointer': !canFund,
+        'transition rounded-2xl': true,
         'hover:ring-1 hover:ring-green-dark': !active,
         'ring-2 ring-green-dark': isFocusWithin || active,
       })}
@@ -161,12 +187,22 @@ export const ProjectCard: FC<ProjectCardProps> = ({
                     name,
                   }
                 )}
+                onClick={() => {
+                  if (canFund) {
+                    onClickCard();
+                  }
+                }}
               >
                 {name}
               </button>
             ) : (
               <Link href={link}>
-                <a className="text-xl font-semibold leading-tight outline-none pointer-events-none">
+                <a
+                  className={cx({
+                    'text-xl font-semibold leading-tight outline-none': true,
+                    'pointer-events-none': !canFund,
+                  })}
+                >
                   {name}
                 </a>
               </Link>
@@ -206,6 +242,20 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               )}
             </div>
           </div>
+          {canFund && (
+            <Label htmlFor="financing-project" className="flex items-center gap-2 cursor-pointer">
+              <Switch
+                id="financing-project"
+                name="financing_project"
+                register={register}
+                registerOptions={{
+                  onChange: () => handleSubmit(onToggleFinancing)(),
+                }}
+                disabled={fundProject.isLoading}
+              />
+              <FormattedMessage defaultMessage="I’m financing this project" id="ijVzNu" />
+            </Label>
+          )}
         </div>
         <div>
           <div className="w-20 h-20 mx-auto aspect-square">

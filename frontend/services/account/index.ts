@@ -386,6 +386,28 @@ export function useAccountProjectsList(
   );
 }
 
+const fundProject = async (projectId: Project['id'], fund: boolean): Promise<Project> => {
+  const config: AxiosRequestConfig = {
+    url: `/api/v1/account/projects/${projectId}/${fund ? 'funding' : 'not_funding'}`,
+    method: 'POST',
+    data: {},
+  };
+
+  return await API.request(config).then((result) => result.data.data);
+};
+
+export const useFundProject = (projectId: Project['id']) => {
+  const queryClient = useQueryClient();
+
+  return useMutation((fund: boolean) => fundProject(projectId, fund), {
+    onSuccess: (dete) => {
+      queryClient.invalidateQueries(Queries.FavoriteProjectsList);
+      queryClient.invalidateQueries(Queries.Project);
+      queryClient.invalidateQueries(Queries.ProjectList);
+    },
+  });
+};
+
 /** Hook to use the the Users Invited to User Account */
 const getAccountUsers = async (params?: PagedRequest): Promise<PagedResponse<AccountUser>> => {
   const { search, includes, ...rest } = params || {};
@@ -441,7 +463,6 @@ export const transferOwnership = async (userId: string) => {
 /** Hook with mutation to delete an account */
 export const useDeleteAccount = (): UseMutationResult<AxiosResponse, AxiosError> => {
   const queryClient = useQueryClient();
-  const router = useRouter();
 
   const deleteAccount = async (): Promise<AxiosResponse> => {
     const config: AxiosRequestConfig = {

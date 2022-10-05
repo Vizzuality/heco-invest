@@ -65,7 +65,6 @@ export const FundingSwitch: FC<FundingSwitchProps> = ({
           name="funding"
           switchSize="smallest"
           register={register}
-          value={true}
           checked={funding}
           {...pressProps}
         />
