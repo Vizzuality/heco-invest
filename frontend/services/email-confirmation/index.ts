@@ -24,7 +24,7 @@ export const useSendEmailConfirmation = (): UseMutationResult<
   return useMutation(Queries.EmailConfirmation, sendEmailConfirmation);
 };
 
-const confirmEmail = async (confirmation_token: string) => {
+export const confirmEmail = async (confirmation_token: string) => {
   const result = await API.get<ResponseData<User>>('/api/v1/email_confirmation', {
     params: { confirmation_token },
   });
@@ -37,13 +37,15 @@ export const useConfirmEmail = (confirmation_token: string) => {
     () => confirmEmail(confirmation_token),
     {
       enabled: !!confirmation_token,
+      refetchOnWindowFocus: false,
+      retry: 1,
     }
   );
 
   return useMemo(
     () => ({
       ...rest,
-      user: data,
+      confirmedUser: data,
     }),
     [data, rest]
   );

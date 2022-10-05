@@ -1,5 +1,6 @@
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
@@ -9,12 +10,13 @@ import { loadI18nMessages } from 'helpers/i18n';
 import Button from 'components/button';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
-import { Paths, UserRoles } from 'enums';
+import { UserRoles } from 'enums';
 import ProtectedPage from 'layouts/protected-page';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 
 import { useSendEmailConfirmation } from 'services/email-confirmation';
+import Loading from 'components/loading';
 
 export const getServerSideProps = withLocalizedRequests(async ({ locale }) => ({
   props: {
@@ -46,6 +48,16 @@ const SignUpVerification: PageComponent<{}, StaticPageLayoutProps> = () => {
           className="flex items-center justify-center mt-24 md:mt-36 pb-[10%]"
         >
           <section className="flex flex-col items-center justify-center">
+            <div className="flex items-center w-44 h-44 justify-center pl-2.5 pt-10 pb-[1px] mb-6 rounded-full bg-background-middle">
+              <Image
+                src="/images/sign-up-code.png"
+                width={104}
+                height={133}
+                alt={intl.formatMessage({ defaultMessage: 'Mail box', id: 'KpDPYL' })}
+                objectFit="contain"
+                aria-hidden
+              />
+            </div>
             <div className="max-w-lg text-center">
               <h1 className="mb-6 font-serif text-3xl text-green-dark">
                 <FormattedMessage defaultMessage="Verification link sent" id="kY/+zt" />
@@ -60,7 +72,12 @@ const SignUpVerification: PageComponent<{}, StaticPageLayoutProps> = () => {
                 />
               </p>
             </div>
-            <Button className="mt-6" onClick={handleResendEmail}>
+            <Button
+              className="mt-6"
+              disabled={sendEmailConfirmation.isLoading}
+              onClick={handleResendEmail}
+            >
+              <Loading visible={sendEmailConfirmation.isLoading} className="block" />
               <FormattedMessage defaultMessage="Resend email" id="5q4xKF" />
             </Button>
           </section>
