@@ -75,6 +75,16 @@ export const ImpactChart: FC<ImpactChartProps> = ({
     }, []);
   }, [impactIds, allImpacts, impact]);
 
+  const data = useMemo(() => {
+    return impactIds.reduce(
+      (acc, impactId) => [
+        ...acc,
+        impactData[impactId]?.value ? Math.round(impactData[impactId]?.value * 10) / 10 : 0,
+      ],
+      []
+    );
+  }, [impactData, impactIds]);
+
   const chartData: ChartData<'radar'> = useMemo(
     () => ({
       labels: [
@@ -85,7 +95,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
       ],
       datasets: [
         {
-          data: impactIds.reduce((acc, impactId) => [...acc, impactData[impactId]?.value || 0], []),
+          data,
           backgroundColor: categoryColor,
           borderColor: categoryColor,
           borderJoinStyle: 'round',
