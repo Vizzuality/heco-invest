@@ -20,6 +20,9 @@
   "+USuwC": {
     "string": "Funding available per project"
   },
+  "+UvbBR": {
+    "string": "You need to confirm the password."
+  },
   "+hdaRx": {
     "string": "Financial information about your project and what are the needs. This information will be <n>public</n> except the one marked as <n>private</n> which will only be visible for admins."
   },
@@ -95,6 +98,9 @@
   "03HUos": {
     "string": "View public page"
   },
+  "05q+7T": {
+    "string": "Invalid email format."
+  },
   "06VF+w": {
     "string": "Share on Facebook"
   },
@@ -121,6 +127,9 @@
   },
   "0WuJfZ": {
     "string": "Enter the estimated implementation duration for the project."
+  },
+  "0ZgDo2": {
+    "string": "The message can have a maximum of 600 characters"
   },
   "0ZkvWW": {
     "string": "Amazonian Piedmont - Massif"
@@ -398,6 +407,9 @@
   "62pTkz": {
     "string": "Save your favorites"
   },
+  "64TO4B": {
+    "string": "You need to confirm the new password."
+  },
   "68i9X8": {
     "string": "Investor information"
   },
@@ -646,6 +658,9 @@
   },
   "APjPYs": {
     "string": "I want to write my content in"
+  },
+  "AXCPbS": {
+    "string": "You need to enter your current password."
   },
   "AdAi3x": {
     "string": "Emails"
@@ -1016,6 +1031,9 @@
   "HnG9/3": {
     "string": "Insert password"
   },
+  "HrWuWv": {
+    "string": "You need to enter a new password."
+  },
   "HtMY9H": {
     "string": "Type your message"
   },
@@ -1169,6 +1187,9 @@
   },
   "KxPY7j": {
     "string": "Date of creation"
+  },
+  "L/i942": {
+    "string": "You need to select a project."
   },
   "L2CvBU": {
     "string": "Expect to have impact"
@@ -1418,6 +1439,9 @@
   },
   "PheCRL": {
     "string": "Estimated Impact"
+  },
+  "Pl5xI4": {
+    "string": "You need to enter a name."
   },
   "Py+eVV": {
     "string": "Basic info"
@@ -1821,6 +1845,9 @@
   "Y2zB+b": {
     "string": "No project developers"
   },
+  "Y4hw30": {
+    "string": "The password must contain at least one uppercase letter, one lowercase letter and one number."
+  },
   "Y9+L0O": {
     "string": "Discover Open Calls"
   },
@@ -1946,6 +1973,9 @@
   },
   "aT5Ajq": {
     "string": "Start drawing"
+  },
+  "aVk9a9": {
+    "string": "The new password must contain at least 12 characters, with at least one uppercase letter, one lowercase letter and a number."
   },
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
@@ -2124,6 +2154,9 @@
   "eItis6": {
     "string": "Discover investors by budget/ticket size"
   },
+  "eKEHsg": {
+    "string": "The password must have at least 12 characters."
+  },
   "eM7TKf": {
     "string": "About the platform"
   },
@@ -2204,6 +2237,9 @@
   },
   "fnihsY": {
     "string": "Leave"
+  },
+  "fo1tCY": {
+    "string": "You need to enter your password."
   },
   "fqJtkV": {
     "string": "Others"
@@ -2318,6 +2354,9 @@
   },
   "i7V7mZ": {
     "string": "Search icon"
+  },
+  "i8NU3I": {
+    "string": "You need to enter a message."
   },
   "i9cSUD": {
     "string": "Invests in"
@@ -2793,6 +2832,9 @@
   "rE2fon": {
     "string": "Are you sure you want to withdraw from the “<strong>{openCallName}</strong>“ open call?"
   },
+  "rJnXTe": {
+    "string": "The password must contain at least 12 characters, with at least one uppercase letter, one lowercase letter and a number."
+  },
   "rLzWx9": {
     "string": "{name} picture"
   },
@@ -2919,6 +2961,9 @@
   "tAug9g": {
     "string": "Groups with disabilities"
   },
+  "tCfD2Y": {
+    "string": "You need to enter your email."
+  },
   "tDM2u5": {
     "string": "Can I add colleagues from my organization to the account?"
   },
@@ -2948,6 +2993,9 @@
   },
   "tjunxL": {
     "string": "Active filters"
+  },
+  "tkP6dd": {
+    "string": "You need to accept the Terms and Privacy Policy."
   },
   "twK/jv": {
     "string": "Project developer profile"
@@ -3096,6 +3144,9 @@
   "we4Lby": {
     "string": "Info"
   },
+  "weOT3A": {
+    "string": "The passwords don't match."
+  },
   "wghPR3": {
     "string": "Group of projects"
   },
@@ -3240,6 +3291,9 @@
   "zLCDho": {
     "string": "Farmers"
   },
+  "zPMPr9": {
+    "string": "You need to enter a last name."
+  },
   "zSOvI0": {
     "string": "Filters"
   },
@@ -3248,6 +3302,9 @@
   },
   "zdIaHp": {
     "string": "Investors"
+  },
+  "zeCjLr": {
+    "string": "You need to enter a password."
   },
   "zetZX8": {
     "string": "Content language"
