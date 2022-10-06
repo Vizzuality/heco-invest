@@ -44,7 +44,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
     formState: { errors },
   } = useForm<FilterForm>();
 
-  const { category, impact, ticket_size, instrument_type, priorityLandscapes, sdg } = groupBy<Enum>(
+  const { category, impact, ticket_size, instrument_type, priority_landscape, sdg } = groupBy<Enum>(
     filtersData,
     'type'
   );
@@ -70,7 +70,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
         }
       ),
       values:
-        priorityLandscapes?.map(({ id, name }) => ({
+        priority_landscape?.map(({ id, name }) => ({
           id,
           type: LocationsTypes.PriorityLandscapes,
           name,
