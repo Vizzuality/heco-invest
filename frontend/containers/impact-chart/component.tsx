@@ -79,9 +79,9 @@ export const ImpactChart: FC<ImpactChartProps> = ({
     () => ({
       labels: [
         formatMessage({ defaultMessage: 'Biodiversity', id: 'mbTJWV' }),
-        formatMessage({ defaultMessage: 'Water', id: 't7YvMF' }),
         formatMessage({ defaultMessage: 'Climate', id: 'MuOp0t' }),
         formatMessage({ defaultMessage: 'Community', id: '4CrCbD' }),
+        formatMessage({ defaultMessage: 'Water', id: 't7YvMF' }),
       ],
       datasets: [
         {
