@@ -106,7 +106,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
         },
       ],
     }),
-    [formatMessage, impactIds, categoryColor, impactData]
+    [formatMessage, data, categoryColor]
   );
 
   const chartOptions: ChartOptions<'radar'> = {
