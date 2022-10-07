@@ -353,6 +353,9 @@
   "5IVVec": {
     "string": "Sub-national"
   },
+  "5NPxff": {
+    "string": "It looks like the links is broken or the page has been removed."
+  },
   "5UMEjA": {
     "string": "Find the support and resources to grow your business or project"
   },
@@ -1452,6 +1455,9 @@
   "QI4yO9": {
     "string": "It is an area with a number of attributes related to heterogeneity that maintain the structure and ecological processes that characterize it as the Heart of the Amazon, it is also one of the most unique natural and cultural heritages in the national territory due to its exuberant cultural diversity."
   },
+  "QRccCM": {
+    "string": "Page not found"
+  },
   "QcPpQd": {
     "string": "For Project Developers"
   },
@@ -1760,6 +1766,9 @@
   },
   "X2YMUl": {
     "string": "Contact the project developers to know more about the project."
+  },
+  "XBoahx": {
+    "string": "Internal server error"
   },
   "XDC7Vp": {
     "string": "Select the intrument type(s) you provide"
@@ -2658,6 +2667,9 @@
   "orirkU": {
     "string": "What information do I need to create a Project Developer account?"
   },
+  "orvpWh": {
+    "string": "Go back"
+  },
   "osBdnp": {
     "string": "IPLC organization"
   },
@@ -2675,6 +2687,9 @@
   },
   "pNNQA+": {
     "string": "It is an ecoregion covered with savannahs of high floristic diversity and habitats representative of the evolutionary processes of the Guiana Shield. It includes both blackwater and whitewater rivers that feed the great Orinoco River, creating different types of seasonally flooded forests."
+  },
+  "pNT23f": {
+    "string": "Something went wrong. We are working on to fix the problem"
   },
   "pONqz8": {
     "string": "First name"
