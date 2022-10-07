@@ -77,10 +77,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
 
   const data = useMemo(() => {
     return impactIds.reduce(
-      (acc, impactId) => [
-        ...acc,
-        impactData[impactId]?.value ? Math.round(impactData[impactId]?.value * 10) / 10 : 0,
-      ],
+      (acc, impactId) => [...acc, impactData[impactId]?.value?.toFixed(1) ?? 0],
       []
     );
   }, [impactData, impactIds]);
