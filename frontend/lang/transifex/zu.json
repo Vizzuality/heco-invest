@@ -245,9 +245,6 @@
   "3BlzQw": {
     "string": "Select project to apply"
   },
-  "3T3umg": {
-    "string": "If you are the owner of the account, please transfer the ownership before continuing."
-  },
   "3WLO/M": {
     "string": "Tell the investor why your project should receive the funding."
   },
@@ -596,9 +593,6 @@
   "9dtx+L": {
     "string": "Something went wrong while sending an invitation to the email {email}."
   },
-  "9lOzos": {
-    "string": "To update any of this information, please contact the platform administrator. To delete the account, please contact the account owner."
-  },
   "9nYuln": {
     "string": "Base Layers"
   },
@@ -622,9 +616,6 @@
   },
   "A4UTjl": {
     "string": "Portuguese"
-  },
-  "A775MJ": {
-    "string": "You are currently the account owner. Please transfer the ownership before continuing."
   },
   "A8VNfu": {
     "string": "Map Layers"
@@ -1344,6 +1335,9 @@
   "OChccW": {
     "string": "Investor / Funder"
   },
+  "OEYYbj": {
+    "string": "You are the owner of the account <accountName></accountName>, please <a>transfer the ownership</a> before continuing."
+  },
   "OJfOvp": {
     "string": "The account owner can invite other colleagues to the account. These will receive an invitation by email to join the account. Each email can only be associated with one account. Once you are set as an account user, you can manage the account. However, adding or removing other account users can only be managed by account owners."
   },
@@ -1415,6 +1409,9 @@
   },
   "PexDlg": {
     "string": "Show legend"
+  },
+  "PfIj8p": {
+    "string": "By deleting your user, you will be removed from the account <accountName></accountName> and you no longer will have access to HeCo Invest Platform."
   },
   "PheCRL": {
     "string": "Estimated Impact"
@@ -2798,9 +2795,6 @@
   },
   "rPEEqE": {
     "string": "Afro-descendant peoples"
-  },
-  "rPwLb7": {
-    "string": "By deleting your user, you will be removed from the account <n>accountName</n> and you no longer will have access to HeCo Invest Platform."
   },
   "rPwaWt": {
     "string": "A great name is short, crisp, and easily understood."
