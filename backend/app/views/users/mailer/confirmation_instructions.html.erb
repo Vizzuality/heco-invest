@@ -2,4 +2,4 @@
 
 <p><%= t("devise.mailer.confirmation_instructions.instruction") %></p>
 
-<p><%= link_to t("devise.mailer.confirmation_instructions.action"), api_v1_email_confirmation_url(confirmation_token: @token) %></p>
+<p><%= link_to t("devise.mailer.confirmation_instructions.action"), "#{ENV["FRONTEND_URL"]}/sign-up?confirmation_token=#{@token}" %></p>
