@@ -10,13 +10,11 @@ import { loadI18nMessages } from 'helpers/i18n';
 import Button from 'components/button';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
-import { UserRoles } from 'enums';
-import ProtectedPage from 'layouts/protected-page';
+import Loading from 'components/loading';
 import { StaticPageLayoutProps } from 'layouts/static-page';
 import { PageComponent } from 'types';
 
 import { useSendEmailConfirmation } from 'services/email-confirmation';
-import Loading from 'components/loading';
 
 export const getServerSideProps = withLocalizedRequests(async ({ locale }) => ({
   props: {
@@ -34,7 +32,7 @@ const SignUpVerification: PageComponent<{}, StaticPageLayoutProps> = () => {
   };
 
   return (
-    <ProtectedPage allowUnapproved permissions={[UserRoles.Light]}>
+    <div>
       <Head
         title={intl.formatMessage({
           defaultMessage: 'Choose your account type',
@@ -83,7 +81,7 @@ const SignUpVerification: PageComponent<{}, StaticPageLayoutProps> = () => {
           </section>
         </LayoutContainer>
       </div>
-    </ProtectedPage>
+    </div>
   );
 };
 
