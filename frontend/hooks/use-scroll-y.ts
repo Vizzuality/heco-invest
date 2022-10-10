@@ -1,4 +1,4 @@
-import { useWindowScrollPosition } from 'rooks';
+import { useWindowScrollPosition, useOnWindowScroll } from 'rooks';
 
 export const useScrollY = () => {
   const { scrollY }: ReturnType<typeof useWindowScrollPosition> =

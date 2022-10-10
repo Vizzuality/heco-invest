@@ -11,6 +11,7 @@ import { cleanQueryParams, useQueryParams } from 'helpers/pages';
 import DiscoverSearch from 'containers/layouts/discover-search';
 
 import LayoutContainer from 'components/layout-container';
+import ScrollToTopButton from 'components/scroll-to-top-button';
 import SortingButtons, { SortingOrderType } from 'components/sorting-buttons';
 import { SortingOptionKey } from 'components/sorting-buttons/types';
 import { Paths, Queries } from 'enums';
@@ -142,6 +143,9 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
           </LayoutContainer>
         </main>
       </div>
+      <LayoutContainer className="flex justify-end">
+        <ScrollToTopButton />
+      </LayoutContainer>
     </div>
   );
 };
