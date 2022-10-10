@@ -70,8 +70,6 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
     isLoading: confirmedUserIsLoading,
   } = useConfirmEmail(query.confirmation_token as string);
 
-  console.log(confirmedUser);
-
   useEffect(() => {
     // Wait until user and invited user are loaded to be able to compare them
     if (!isUserLoading && !isInvitedUserLoading) {
