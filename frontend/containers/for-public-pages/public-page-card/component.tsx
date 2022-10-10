@@ -34,7 +34,7 @@ export const PublicPageCard: FC<PublicPageCardProps> = ({
       onMouseLeave={onMouseLeave}
     >
       <div className="flex justify-between mb-2">
-        <h3 className="font-serif text-xl font-bold xl:text-2xl max-w-[80%]">{name}</h3>
+        <h3 className="font-serif text-2xl font-bold xl:text-2xl max-w-[80%]">{name}</h3>
         {enumType === 'category' && <CategoryTagDot category={id as CategoryType} size="large" />}
       </div>
       <div>

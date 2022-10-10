@@ -75,17 +75,24 @@ export const ImpactChart: FC<ImpactChartProps> = ({
     }, []);
   }, [impactIds, allImpacts, impact]);
 
+  const data = useMemo(() => {
+    return impactIds.reduce(
+      (acc, impactId) => [...acc, impactData[impactId]?.value?.toFixed(1) ?? 0],
+      []
+    );
+  }, [impactData, impactIds]);
+
   const chartData: ChartData<'radar'> = useMemo(
     () => ({
       labels: [
         formatMessage({ defaultMessage: 'Biodiversity', id: 'mbTJWV' }),
-        formatMessage({ defaultMessage: 'Water', id: 't7YvMF' }),
         formatMessage({ defaultMessage: 'Climate', id: 'MuOp0t' }),
         formatMessage({ defaultMessage: 'Community', id: '4CrCbD' }),
+        formatMessage({ defaultMessage: 'Water', id: 't7YvMF' }),
       ],
       datasets: [
         {
-          data: impactIds.reduce((acc, impactId) => [...acc, impactData[impactId]?.value || 0], []),
+          data,
           backgroundColor: categoryColor,
           borderColor: categoryColor,
           borderJoinStyle: 'round',
@@ -96,7 +103,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
         },
       ],
     }),
-    [formatMessage, impactIds, categoryColor, impactData]
+    [formatMessage, data, categoryColor]
   );
 
   const chartOptions: ChartOptions<'radar'> = {
