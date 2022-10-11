@@ -24,6 +24,6 @@ module Translatable
       res << attr if public_send "saved_change_to_#{attr}_#{language}?"
     end
 
-    TranslateJob.perform_later self, changed_attrs: changed_attrs if changed_attrs.present?
+    TranslateJob.perform_later id, self.class.name, changed_attrs: changed_attrs if changed_attrs.present?
   end
 end
