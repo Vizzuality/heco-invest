@@ -47,8 +47,8 @@ const InternalError: PageComponent<InternalErrorProps, NakedLayoutProps> = () =>
           </h1>
           <p className="underline">
             <FormattedMessage
-              defaultMessage="Something went wrong. We are working on fixing the problem"
-              id="OeiKcw"
+              defaultMessage="Something went wrong. We are working on fixing the problem."
+              id="qeQuNf"
             />
           </p>
         </div>
