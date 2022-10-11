@@ -191,6 +191,9 @@
   "1E9nN4": {
     "string": "What information do I need to create an open call?"
   },
+  "1HohzV": {
+    "string": "Error 404"
+  },
   "1MTH/x": {
     "string": "option {optionName} {status}, {pagination}."
   },
@@ -1311,6 +1314,9 @@
   "MM4RqT": {
     "string": "This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}."
   },
+  "MQ7oCU": {
+    "string": "Error 500"
+  },
   "MQoSiG": {
     "string": "Community empowerment"
   },
@@ -1532,6 +1538,9 @@
   },
   "QI4yO9": {
     "string": "It is an area with a number of attributes related to heterogeneity that maintain the structure and ecological processes that characterize it as the Heart of the Amazon, it is also one of the most unique natural and cultural heritages in the national territory due to its exuberant cultural diversity."
+  },
+  "QRccCM": {
+    "string": "Page not found"
   },
   "QcPpQd": {
     "string": "For Project Developers"
@@ -1859,6 +1868,9 @@
   },
   "X9irAo": {
     "string": "You need to enter a profile name"
+  },
+  "XBoahx": {
+    "string": "Internal server error"
   },
   "XDC7Vp": {
     "string": "Select the intrument type(s) you provide"
@@ -2811,6 +2823,9 @@
   "oBB4L4": {
     "string": "Send invite"
   },
+  "oD3qdW": {
+    "string": "It looks like the link is broken or the page has been removed."
+  },
   "oG/A0q": {
     "string": "See full catalogue"
   },
@@ -2843,6 +2858,9 @@
   },
   "orirkU": {
     "string": "What information do I need to create a Project Developer account?"
+  },
+  "orvpWh": {
+    "string": "Go back"
   },
   "osBdnp": {
     "string": "IPLC organization"
@@ -2951,6 +2969,9 @@
   },
   "qe+BvO": {
     "string": "<b>Call on our community</b> of project developers to identify opportunities in your preferred sectors and geographies."
+  },
+  "qeQuNf": {
+    "string": "Something went wrong. We are working on fixing the problem."
   },
   "qoImFc": {
     "string": "Replicability of the project"
