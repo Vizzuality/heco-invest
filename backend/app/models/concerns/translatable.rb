@@ -4,7 +4,7 @@ module Translatable
   included do
     attr_accessor :skip_translation
 
-    after_save :translate_attributes, unless: :skip_translation
+    after_commit :translate_attributes, on: [:create, :update], unless: :skip_translation
   end
 
   class_methods do
