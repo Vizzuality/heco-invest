@@ -56,6 +56,7 @@ export const ScrollToTop: FC<ScrollToTopProps> = ({ containerRef, className }) =
       icon={() => <ArrowUp className="mr-0" />}
       onClick={scrollToTop}
       aria-label={formatMessage({ defaultMessage: 'Scroll to top', id: 'lIJKZh' })}
+      disabled={notScrolled}
     />
   );
 };
