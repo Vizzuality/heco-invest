@@ -226,6 +226,19 @@ export const getSocialMediaLinksRegex = () => {
   };
 };
 
+/**
+ * Yup transform that completes URLs with “https://” at the beginning
+ * @param url Incomplete Url starting with “www” or directly the domain name
+ * @returns URL starting with “https://”
+ */
+export const getPartialUrlTransform = (url: string) => {
+  if (url === null || url === undefined || url.length === 0) {
+    return url;
+  }
+
+  return /^https?:\/\//.test(url) ? url : `https://${url}`;
+};
+
 export const getPageErrors = (formPageInputs: string[], errors: FormState<any>['errors']) => {
   return formPageInputs.some((input) => errors.hasOwnProperty(input));
 };
