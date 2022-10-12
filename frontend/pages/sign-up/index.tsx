@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useQueryClient } from 'react-query';
 
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
@@ -303,8 +304,20 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
             />
             <span className="ml-2 font-sans text-sm text-gray-800 font-regular">
               <FormattedMessage
-                defaultMessage="I agree with the Terms and Privacy Policy."
-                id="X0E3iC"
+                defaultMessage="I agree with the <a>Terms and Privacy Policy</a>."
+                id="9EgeeX"
+                values={{
+                  a: (chunks) => (
+                    <Link href={Paths.TermsConditions}>
+                      <a
+                        className="underline focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2"
+                        target="_blank"
+                      >
+                        {chunks}
+                      </a>
+                    </Link>
+                  ),
+                }}
               />
             </span>
           </label>
