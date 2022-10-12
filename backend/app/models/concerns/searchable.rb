@@ -7,7 +7,8 @@ module Searchable
       {
         against: columns,
         query: query,
-        associated_against: associated_against
+        associated_against: associated_against,
+        using: {tsearch: {prefix: true}}
       }
     end
   end
