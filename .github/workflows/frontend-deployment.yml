@@ -73,7 +73,7 @@ jobs:
       # on production. On production and development, we should only pull translations.
       run: |
         echo 'Installing the Transifex CLI…'
-        curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
+        curl -o- https://raw.githubusercontent.com/transifex/cli/v1.3.1/install.sh | bash
         if [[ "${{ env.ENV }}" == "staging" ]]; then
           echo 'Pushing the source strings…'
           TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx push -s
