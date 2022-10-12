@@ -2082,6 +2082,9 @@
   "apgkuO": {
     "string": "More about ARIES"
   },
+  "arPp4e": {
+    "string": "Terms & Conditions"
+  },
   "azx2BO": {
     "string": "Discover open calls"
   },
@@ -2156,9 +2159,6 @@
   },
   "cKaiI0": {
     "string": "File {fileName} has an invalid format"
-  },
-  "cPwv2c": {
-    "string": "Privacy policy"
   },
   "cT6b2H": {
     "string": "WWF"
@@ -2243,9 +2243,6 @@
   },
   "e0c9xF": {
     "string": "insert the name of the investor/funder"
-  },
-  "e61Jf3": {
-    "string": "Coming soon"
   },
   "eCiudu": {
     "string": "Open call cover image"
