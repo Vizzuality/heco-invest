@@ -89,9 +89,6 @@
   "/i6bRr": {
     "string": "The received amount must be greater than 0"
   },
-  "/oLNw7": {
-    "string": "The impact score of this project is 0."
-  },
   "/plMvw": {
     "string": "Project category"
   },
@@ -1758,9 +1755,6 @@
   "VG3saq": {
     "string": "<span>Water:</span> water cycling, quality, and risk management."
   },
-  "VJPvoR": {
-    "string": "The impact of this project is 0."
-  },
   "VKb1MS": {
     "string": "Categories"
   },
@@ -3365,6 +3359,9 @@
   },
   "x/AykP": {
     "string": "Project ticket size"
+  },
+  "x3IdR3": {
+    "string": "In the {impactArea}, the impact of this project is 0."
   },
   "x6wKw3": {
     "string": "All selected options have been cleared."

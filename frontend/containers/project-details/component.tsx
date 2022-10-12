@@ -208,7 +208,6 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
             area={impactArea}
             impactCalculated={project.impact_calculated}
             impact={impact}
-            shortText
             linkToFAQ
           />
           <ImpactChart className="my-4" category={category.id} impact={impact} />

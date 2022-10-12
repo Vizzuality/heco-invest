@@ -18,7 +18,6 @@ export const ImpactText: FC<ImpactTextProps> = ({
   impact,
   impactCalculated,
   linkToFAQ = false,
-  shortText = false,
 }) => {
   const intl = useIntl();
 
@@ -78,11 +77,14 @@ export const ImpactText: FC<ImpactTextProps> = ({
     }
 
     if (highestImpactValue === 0) {
-      if (shortText) {
-        return <FormattedMessage defaultMessage="The impact of this project is 0." id="VJPvoR" />;
-      }
       return (
-        <FormattedMessage defaultMessage="The impact score of this project is 0." id="/oLNw7" />
+        <FormattedMessage
+          defaultMessage="In the {impactArea}, the impact of this project is 0."
+          id="x3IdR3"
+          values={{
+            impactArea: impactAreaStr.toLowerCase(),
+          }}
+        />
       );
     }
 
