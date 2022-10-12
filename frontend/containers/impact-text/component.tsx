@@ -108,6 +108,7 @@ export const ImpactText: FC<ImpactTextProps> = ({
         {getImpactText()}
         {linkToFAQ && (
           <>
+            {' '}
             <Link href={FaqPaths['how-is-the-impact-calculated']}>
               <a className="underline text-green-dark" target="_blank">
                 <FormattedMessage defaultMessage="Learn more" id="TdTXXf" />
