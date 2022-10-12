@@ -217,7 +217,11 @@ export const useQueryReturnPath = () => {
 };
 
 export const getSocialMediaLinksRegex = () => {
-  const getRegex = (media: string) => new RegExp(`^https?:\/\/(www.)?${media}.com\/.*$`);
+  const getRegex = (media: string) => {
+    const subdomain = media === 'linkedin' ? '([a-z]{2}\\.)?' : '';
+    return new RegExp(`^https?:\/\/${subdomain}(www.)?${media}.com\/.*$`);
+  };
+
   return {
     twitter: getRegex('twitter'),
     facebook: getRegex('facebook'),
