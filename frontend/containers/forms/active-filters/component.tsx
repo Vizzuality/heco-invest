@@ -5,7 +5,11 @@ import { FormattedMessage } from 'react-intl';
 
 import { omitBy } from 'lodash-es';
 
-import { transformFilterInputsToParams, useSearch } from 'helpers/pages';
+import {
+  transformFilterInputsToParams,
+  transformFilterParamsToInputs,
+  useSearch,
+} from 'helpers/pages';
 
 import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
@@ -18,10 +22,13 @@ export const ActiveFilters: FC<ActiveFilterProps> = ({ filters = {}, filtersData
 
   const activeFilters: Enum[] = useMemo(
     () =>
-      Object.entries(filters).reduce((prev, [key, value]) => {
-        const data = !!value && filtersData?.find((data) => data.id === value);
-        if (data) return [...prev, data];
-        return prev;
+      Object.entries(transformFilterParamsToInputs(filters)).reduce((prev, [key, value]) => {
+        const filters =
+          value?.length > 0
+            ? filtersData.filter((data) => data.type === key && value.includes(data.id))
+            : [];
+
+        return [...prev, ...filters];
       }, []),
     [filters, filtersData]
   );
