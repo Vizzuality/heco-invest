@@ -35,8 +35,8 @@ const SignUpVerification: PageComponent<{}, StaticPageLayoutProps> = () => {
     <div>
       <Head
         title={intl.formatMessage({
-          defaultMessage: 'Choose your account type',
-          id: 'oMC3r1',
+          defaultMessage: 'Verification link sent',
+          id: 'kY/+zt',
         })}
       />
 
@@ -51,7 +51,7 @@ const SignUpVerification: PageComponent<{}, StaticPageLayoutProps> = () => {
                 src="/images/sign-up-code.png"
                 width={104}
                 height={133}
-                alt={intl.formatMessage({ defaultMessage: 'Mail box', id: 'KpDPYL' })}
+                alt={intl.formatMessage({ defaultMessage: 'Mailbox', id: '2/NFiJ' })}
                 objectFit="contain"
                 aria-hidden
               />
