@@ -3,7 +3,12 @@ variable "project_id" {
   description = "GCP project id"
 }
 
-variable "service_account_email" {
+variable "backend_service_account_email" {
   type        = string
-  description = "Email address of the service account to grant cloud tasks access to"
+  description = "Email address of the backend service account to grant access to error reporting"
+}
+
+variable "jobs_service_account_email" {
+  type        = string
+  description = "Email address of the jobs service account to grant access to error reporting"
 }

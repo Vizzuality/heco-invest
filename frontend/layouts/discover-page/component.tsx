@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
 
 import { UseQueryResult } from 'react-query';
 
@@ -11,6 +11,7 @@ import { cleanQueryParams, useQueryParams } from 'helpers/pages';
 import DiscoverSearch from 'containers/layouts/discover-search';
 
 import LayoutContainer from 'components/layout-container';
+import ScrollToTopButton from 'components/scroll-to-top-button';
 import SortingButtons, { SortingOrderType } from 'components/sorting-buttons';
 import { SortingOptionKey } from 'components/sorting-buttons/types';
 import { Paths, Queries } from 'enums';
@@ -31,6 +32,8 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
   children,
 }: DiscoverPageLayoutProps) => {
   const { push, pathname } = useRouter();
+
+  const mainRef = useRef<HTMLDivElement>();
 
   const [sorting, setSorting] =
     useState<{ sortBy: SortingOptionKey; sortOrder: SortingOrderType }>(defaultSorting);
@@ -124,7 +127,7 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
             <DiscoverSearch className="w-full max-w-3xl pointer-events-auto -z-10" />
           </LayoutContainer>
         </div>
-        <main className="z-0 flex flex-col flex-grow h-screen overflow-y-auto">
+        <main ref={mainRef} className="z-0 flex flex-col flex-grow h-screen overflow-y-auto">
           <LayoutContainer className="">
             <div className="relative flex flex-col items-center gap-2 pb-2 mx-2 mt-4 mb-6 -ml-1 -mr-1 after:left-2 after:right-2 after:h-px after:bg-[#D3CDC4] after:bg-opacity-40 after:absolute after:-bottom-2 after:lg:bottom-2 lg:mb-1 lg:mt-2 lg:gap-6 lg:flex-row space-between lg:pb-0">
               <Navigation stats={stats} />
@@ -142,6 +145,9 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
           </LayoutContainer>
         </main>
       </div>
+      <LayoutContainer className="flex justify-end">
+        <ScrollToTopButton containerRef={mainRef} />
+      </LayoutContainer>
     </div>
   );
 };

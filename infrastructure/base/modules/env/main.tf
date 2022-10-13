@@ -232,7 +232,7 @@ module "backend_cloudrun" {
     },
     {
       name  = "CLOUD_TASKS_TEST_QUEUE_NAME"
-      value = "email-test"
+      value = "heco-default-queue"
     },
     {
       name  = "IS_JOBS_INSTANCE"
@@ -298,6 +298,15 @@ module "jobs_cloudrun" {
     }, {
       name        = "SMTP_PASSWORD"
       secret_name = module.sendgrid_api_key.secret_name
+    }, {
+      name        = "ENCRYPTION_PRIMARY_KEY"
+      secret_name = module.rails_encryption_primary_key.secret_name
+    }, {
+      name        = "ENCRYPTION_DETERMINISTIC_KEY"
+      secret_name = module.rails_encryption_deterministic_key.secret_name
+    }, {
+      name        = "ENCRYPTION_DERIVATION_SALT"
+      secret_name = module.rails_encryption_derivation_salt.secret_name
     }
   ]
   env_vars = [
@@ -343,7 +352,7 @@ module "jobs_cloudrun" {
     },
     {
       name  = "CLOUD_TASKS_TEST_QUEUE_NAME"
-      value = "email-test"
+      value = "heco-default-queue"
     },
     {
       name  = "IS_JOBS_INSTANCE"
@@ -413,13 +422,14 @@ module "bastion" {
   subnetwork_name = module.network.subnetwork_name
 }
 
-module "test_cloud_tasks" {
+module "cloud_tasks" {
   source                = "../cloud-tasks"
-  name                  = "email-test"
+  name                  = "heco-default-queue"
   prefix                = var.project_name
   project_id            = var.gcp_project_id
   region                = var.gcp_region
-  service_account_email = module.backend_cloudrun.service_account_email
+  backend_service_account_email = module.backend_cloudrun.service_account_email
+  jobs_service_account_email = module.jobs_cloudrun.service_account_email
 }
 
 module "purge_users_cron" {
@@ -477,5 +487,6 @@ module "translation" {
 module "error_reporting" {
   source                = "../error-reporting"
   project_id            = var.gcp_project_id
-  service_account_email = module.backend_cloudrun.service_account_email
+  backend_service_account_email = module.backend_cloudrun.service_account_email
+  jobs_service_account_email = module.jobs_cloudrun.service_account_email
 }

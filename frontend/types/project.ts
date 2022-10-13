@@ -59,6 +59,11 @@ export type ProjectBase = {
   status?: ProjectStatus;
   project_developer?: any; // Cannot use ProjectDeveloperType because linting will complain about circular references
   involved_project_developers?: any[]; // Cannot use ProjectDeveloperType because linting will complain about circular references
+  /**
+   * Whether the logged in investor has marked the project as funded. `null` if the user is not
+   * logged in or not an investor.
+   **/
+  funded?: boolean;
 };
 
 /** Project impact properties  */

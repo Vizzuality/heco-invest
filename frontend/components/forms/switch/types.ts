@@ -9,8 +9,6 @@ export type SwitchProps<FormValues> = {
   'aria-label'?: string;
   /** Name of the switch */
   name: Path<FormValues>;
-  /** Value of the switch */
-  value: any;
   /** React Hook Form's `register` function */
   register: UseFormRegister<FormValues>;
   /** Options for React Hook Form's `register` function */

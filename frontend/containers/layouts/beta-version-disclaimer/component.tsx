@@ -35,10 +35,10 @@ const BetaVersionDisclaimer: FC<BetaVersionDisclaimerProps> = ({ className }) =>
     >
       <p className="mr-2 text-sm text-center">
         <FormattedMessage
-          defaultMessage="HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional."
-          id="HvSsTa"
+          defaultMessage="HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional. <mobile>You are seeing a mobile version of the platform which has limited functionality, please use the desktop version to see the complete version.</mobile>"
+          id="8XtmJS"
           values={{
-            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+            mobile: (chunk: string) => <span className="md:hidden">{chunk}</span>,
           }}
         />
       </p>

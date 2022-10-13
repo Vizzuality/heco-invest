@@ -45,9 +45,10 @@ export enum Paths {
   Invitation = '/invitation',
   ForInvestors = '/for-investors',
   ForProjectDevelopers = '/for-project-developers',
-  PrivacyPolicy = '/privacy-policy',
+  TermsConditions = '/terms-conditions',
   UserInformation = '/settings/information',
-  UserPassword = '/settings/password',
+  UserSecurity = '/settings/security',
+  Verification = '/sign-up/verification',
   /** HIDDEN PAGES */
   HiddenPage = '/hidden-page',
   AccountDeleted = '/account-deleted',
@@ -117,6 +118,8 @@ export enum Queries {
   AccountOpenCallApplicationsList = 'account_open_call_applications',
   /** Priority Landscapes */
   PriorityLandscapes = 'priority_landscapes',
+  /** Account email verification */
+  EmailConfirmation = 'email_confirmation',
 }
 
 /** Location endpoint param location_type */

@@ -1,7 +1,8 @@
-import { getSocialMediaLinksRegex } from 'helpers/pages';
 import { useIntl } from 'react-intl';
 
 import { object, string, array, boolean } from 'yup';
+
+import { getPartialUrlTransform, getSocialMediaLinksRegex } from 'helpers/pages';
 
 export default (page: number) => {
   const { formatMessage } = useIntl();
@@ -81,27 +82,35 @@ export default (page: number) => {
           messages.contactPhone,
           (value) => !value || !!value.match(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
         ),
-      website: string().url(messages.website),
-      facebook: string().test(
-        'isSocialMediaLink',
-        messages.social_medias,
-        (value) => !value || !!value.match(facebook)
-      ),
-      linkedin: string().test(
-        'isSocialMediaLink',
-        messages.social_medias,
-        (value) => !value || !!value.match(linkedin)
-      ),
-      instagram: string().test(
-        'isSocialMediaLink',
-        messages.social_medias,
-        (value) => !value || !!value.match(instagram)
-      ),
-      twitter: string().test(
-        'isSocialMediaLink',
-        messages.social_medias,
-        (value) => !value || !!value.match(twitter)
-      ),
+      website: string().url(messages.website).transform(getPartialUrlTransform),
+      facebook: string()
+        .test(
+          'isSocialMediaLink',
+          messages.social_medias,
+          (value) => !value || !!value.match(facebook)
+        )
+        .transform(getPartialUrlTransform),
+      linkedin: string()
+        .test(
+          'isSocialMediaLink',
+          messages.social_medias,
+          (value) => !value || !!value.match(linkedin)
+        )
+        .transform(getPartialUrlTransform),
+      instagram: string()
+        .test(
+          'isSocialMediaLink',
+          messages.social_medias,
+          (value) => !value || !!value.match(instagram)
+        )
+        .transform(getPartialUrlTransform),
+      twitter: string()
+        .test(
+          'isSocialMediaLink',
+          messages.social_medias,
+          (value) => !value || !!value.match(twitter)
+        )
+        .transform(getPartialUrlTransform),
     }),
     object().shape({
       categories: array().of(string()).ensure(),
@@ -128,5 +137,20 @@ export default (page: number) => {
       other_information: string().max(600, maxTextLength).required(messages.other_information),
     }),
   ];
-  return schemas[page];
+
+  // We're concatenating all the schemas up to the one representing the current page so that we can
+  // apply all the eventual transforms on all the attributes of the current and previous pages
+  return schemas.reduce((res, schema, index) => {
+    const isSchemaForFuturePage = index > page;
+
+    // When editing, we're skipping the first page so we exclude the corresponding schema from the
+    // concatenation
+    const isFirstPageSchemaExcluded = page > 0 && index === 0;
+
+    if (isSchemaForFuturePage || isFirstPageSchemaExcluded) {
+      return res;
+    }
+
+    return res.concat(schema);
+  }, object());
 };

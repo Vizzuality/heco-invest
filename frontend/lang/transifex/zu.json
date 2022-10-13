@@ -20,8 +20,14 @@
   "+USuwC": {
     "string": "Funding available per project"
   },
+  "+UvbBR": {
+    "string": "You need to confirm the password."
+  },
   "+hdaRx": {
     "string": "Financial information about your project and what are the needs. This information will be <n>public</n> except the one marked as <n>private</n> which will only be visible for admins."
+  },
+  "+m/R6q": {
+    "string": "You need to select a municipality"
   },
   "+mzZak": {
     "string": "About {name}"
@@ -80,8 +86,8 @@
   "/cMb5f": {
     "string": "Zoom out icon"
   },
-  "/oLNw7": {
-    "string": "The impact score of this project is 0."
+  "/i6bRr": {
+    "string": "The received amount must be greater than 0"
   },
   "/plMvw": {
     "string": "Project category"
@@ -97,6 +103,9 @@
   },
   "03HUos": {
     "string": "View public page"
+  },
+  "05q+7T": {
+    "string": "Invalid email format."
   },
   "06VF+w": {
     "string": "Share on Facebook"
@@ -125,6 +134,9 @@
   "0WuJfZ": {
     "string": "Enter the estimated implementation duration for the project."
   },
+  "0ZgDo2": {
+    "string": "The message can have a maximum of 600 characters"
+  },
   "0ZkvWW": {
     "string": "Amazonian Piedmont - Massif"
   },
@@ -133,6 +145,9 @@
   },
   "0ch6f/": {
     "string": "Scaling - up"
+  },
+  "0dbfpr": {
+    "string": "You need to enter a text for the progress and impact tracking"
   },
   "0hzVw6": {
     "string": "How accounts work?"
@@ -164,6 +179,9 @@
   "0zLVGQ": {
     "string": "Instrument types"
   },
+  "1+wwRC": {
+    "string": "Upload a geometry or draw on the map"
+  },
   "11hyS6": {
     "string": "Add your legal registration number so we can verify your legal entity . This information will not be publicaly available."
   },
@@ -172,6 +190,9 @@
   },
   "1E9nN4": {
     "string": "What information do I need to create an open call?"
+  },
+  "1HohzV": {
+    "string": "Error 404"
   },
   "1MTH/x": {
     "string": "option {optionName} {status}, {pagination}."
@@ -190,6 +211,9 @@
   },
   "1t1fGY": {
     "string": "How will the money be used?"
+  },
+  "2/NFiJ": {
+    "string": "Mailbox"
   },
   "25WwxF": {
     "string": "Don't have an account?"
@@ -214,6 +238,9 @@
   },
   "2O2sfp": {
     "string": "Finish"
+  },
+  "2RaCKb": {
+    "string": "Select if there are other project developers involved on the project"
   },
   "2ffyX7": {
     "string": "This page is coming soon"
@@ -248,11 +275,11 @@
   "3BlzQw": {
     "string": "Select project to apply"
   },
-  "3T3umg": {
-    "string": "If you are the owner of the account, please transfer the ownership before continuing."
-  },
   "3WLO/M": {
     "string": "Tell the investor why your project should receive the funding."
+  },
+  "3bnYBc": {
+    "string": "KML"
   },
   "3ciGOS": {
     "string": "Grant"
@@ -301,6 +328,9 @@
   },
   "4EYbNW": {
     "string": "Create open calls"
+  },
+  "4EYr7Q": {
+    "string": "You need to select the closing date"
   },
   "4HIQfn": {
     "string": "Landscapes location"
@@ -383,6 +413,9 @@
   "5oTICT": {
     "string": "insert the open call name"
   },
+  "5q4xKF": {
+    "string": "Resend email"
+  },
   "5sg7KC": {
     "string": "Password"
   },
@@ -397,6 +430,9 @@
   },
   "62pTkz": {
     "string": "Save your favorites"
+  },
+  "64TO4B": {
+    "string": "You need to confirm the new password."
   },
   "68i9X8": {
     "string": "Investor information"
@@ -530,11 +566,11 @@
   "8XJceA": {
     "string": "Have you previously invested in impact?"
   },
+  "8XtmJS": {
+    "string": "HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional. <mobile>You are seeing a mobile version of the platform which has limited functionality, please use the desktop version to see the complete version.</mobile>"
+  },
   "8dGhWP": {
     "string": "Browse or drag and drop"
-  },
-  "8fVxjR": {
-    "string": "<n>Priority layers:</n> Biodiversity intactness, Tree biomass density, Wetlands, Population density;"
   },
   "8gJV79": {
     "string": "What are HeCo priority landscapes?"
@@ -563,11 +599,17 @@
   "9+Ddtu": {
     "string": "Next"
   },
+  "9+IpyL": {
+    "string": "You need to enter the estimated duration of the project"
+  },
   "94Fg25": {
     "string": "Select all"
   },
   "9CDBQg": {
     "string": "The solution proposed"
+  },
+  "9EgeeX": {
+    "string": "I agree with the <a>Terms and Privacy Policy</a>."
   },
   "9Er2U2": {
     "string": "Investments in HeCo will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
@@ -587,6 +629,9 @@
   "9WcWke": {
     "string": "{name} investor"
   },
+  "9a4/mT": {
+    "string": "You need to select a state"
+  },
   "9a9+ww": {
     "string": "Title"
   },
@@ -595,9 +640,6 @@
   },
   "9dtx+L": {
     "string": "Something went wrong while sending an invitation to the email {email}."
-  },
-  "9lOzos": {
-    "string": "To update any of this information, please contact the platform administrator. To delete the account, please contact the account owner."
   },
   "9nYuln": {
     "string": "Base Layers"
@@ -623,9 +665,6 @@
   "A4UTjl": {
     "string": "Portuguese"
   },
-  "A775MJ": {
-    "string": "You are currently the account owner. Please transfer the ownership before continuing."
-  },
   "A8VNfu": {
     "string": "Map Layers"
   },
@@ -647,6 +686,9 @@
   "APjPYs": {
     "string": "I want to write my content in"
   },
+  "AXCPbS": {
+    "string": "You need to enter your current password."
+  },
   "AdAi3x": {
     "string": "Emails"
   },
@@ -664,6 +706,9 @@
   },
   "Ay+1nm": {
     "string": "Due to security reasons, we are not allowed to display more <b>detailed financial information</b>. Please contact the Project Developers directly in order to obtain detailed information."
+  },
+  "B4FwQp": {
+    "string": "Points will not be accepted and only the first area in the file will be considered."
   },
   "BAC0rl": {
     "string": "<span>Community:</span> income, sustainable projects;"
@@ -734,6 +779,9 @@
   "CiYFzk": {
     "string": "SME and MSME"
   },
+  "Cise0r": {
+    "string": "You need to select a language"
+  },
   "CqohYm": {
     "string": "All content associated with the account will be deleted. If you have created Open Calls to which some Projects have applied, the owners of these Projects will be automatically notified that the Open Call no longer exists."
   },
@@ -797,11 +845,17 @@
   "DeOyLr": {
     "string": "Want to know more about this project?"
   },
+  "DffEkP": {
+    "string": "You need enter an \"about\" text"
+  },
   "DkjIbR": {
     "string": "insert email"
   },
   "Dm1lEK": {
     "string": "A score of expected impact along the four sustainability dimensions is assigned to every project. These scores are calculated using a combination of landscape-level variables (<b>Demand</b>) and self-reported project data (<b>Supply</b>)."
+  },
+  "Dm4fJl": {
+    "string": "Website must be a valid URL"
   },
   "DqD1yK": {
     "string": "Applications"
@@ -911,9 +965,6 @@
   "FN+0yY": {
     "string": "Unable to parse the file. Please try uploading a different format."
   },
-  "FPr3FX": {
-    "string": "You can activate a varity of data layers to help you to understand the context of each project. These layers may be of 3 types:"
-  },
   "FVcGqA": {
     "string": "The HeCo Invest platform connects governments, investors, donors, and philanthropists with selected investment opportunities and projects in high-priority areas for Herencia Colombia. If you find a project that matches your investment goals you can contact its project developer. The contact details will only be available for platform registered users. So if you want to reach out to a project developer, you first need to create an account or join an existing account. The beta version of the HeCo Invest platform does not include the actual attainment of the business deals. To fund a project, investors must carry out all business procedures outside the platform."
   },
@@ -928,6 +979,9 @@
   },
   "FvveL5": {
     "string": "Open call"
+  },
+  "Fx6O7G": {
+    "string": "2 optional files: <b>.prj</b> (recommended) and <b>.cfg</b>"
   },
   "Fxekek": {
     "string": "Invite again"
@@ -946,6 +1000,9 @@
   },
   "G9iCfx": {
     "string": "Reach them in"
+  },
+  "GC4Ve3": {
+    "string": "You need to enter a text with a short description of your project"
   },
   "GDPNty": {
     "string": "insert value"
@@ -973,6 +1030,9 @@
   },
   "GhrkT+": {
     "string": "confirm password"
+  },
+  "GkDTfx": {
+    "string": "You need to enter an email"
   },
   "Gpyrow": {
     "string": "IDB Lab is the innovation laboratory of the Inter-American Development Back Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
@@ -1007,17 +1067,20 @@
   "HcakU9": {
     "string": "What is the open call about?"
   },
+  "HhjmvS": {
+    "string": "Invalid phone number"
+  },
   "HlDhAh": {
     "string": "10%"
   },
   "HnG9/3": {
     "string": "Insert password"
   },
+  "HrWuWv": {
+    "string": "You need to enter a new password."
+  },
   "HtMY9H": {
     "string": "Type your message"
-  },
-  "HvSsTa": {
-    "string": "HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional."
   },
   "HyAD0J": {
     "string": "{numItems} of {totalItems} entries"
@@ -1025,6 +1088,9 @@
   "HzKhBJ": {
     "developer_comment": "Description shown in search engines",
     "string": "HeCo Invest is a digital collaborative platform aimed to support filling the conservation financing gap in the Amazon Basin by optimizing project financing channels in this region."
+  },
+  "I2JNTd": {
+    "string": "Upload area file"
   },
   "I2VJMv": {
     "string": "Complete your profile with relevant information to make your relationship with project developers as precise as possible. For example the very particular topics you are interested in or the activities and items you definitely do not finance or invest in."
@@ -1122,6 +1188,9 @@
   "JnwEP6": {
     "string": "Edit investor profile"
   },
+  "JpLZrZ": {
+    "string": "You need to select the development of the project"
+  },
   "Jwjqn/": {
     "string": "focused"
   },
@@ -1152,6 +1221,9 @@
   "KlHNih": {
     "string": "option {optionName} is disabled. Select another option."
   },
+  "Km6ekR": {
+    "string": "You need enter a description of the open call"
+  },
   "Knhvmr": {
     "string": "Who is financing this open call"
   },
@@ -1166,6 +1238,9 @@
   },
   "KxPY7j": {
     "string": "Date of creation"
+  },
+  "L/i942": {
+    "string": "You need to select a project."
   },
   "L2CvBU": {
     "string": "Expect to have impact"
@@ -1221,6 +1296,9 @@
   "LxYOKo": {
     "string": "With a known <b>Demand</b> and <b>Supply</b>, a <b>Net value</b> is generated as <b>Supply</b> - <b>Demand</b>. This value ranges from -1 to 1. The closest the net value to 0 the better because it means that supply meets demand and vice versa. The Net value is then transformed into an <b>impact score</b>, using the formula y = - (x^​2) + 1. The results range from 0 to 1, where 0 is the low positive impact and 1 is a high positive impact, in relation to the context demand. Finally, this value is multiplied by 10 to rescale it from 0 to 10."
   },
+  "M+H+u+": {
+    "string": "Select at least one project developer involved on the project"
+  },
   "M1xKEI": {
     "string": "Language: {language}"
   },
@@ -1244,6 +1322,9 @@
   },
   "MM4RqT": {
     "string": "This project has {numDevelopers} {numDevelopers, plural, one {project developer} other {project developers}}."
+  },
+  "MQ7oCU": {
+    "string": "Error 500"
   },
   "MQoSiG": {
     "string": "Community empowerment"
@@ -1305,6 +1386,9 @@
   "NdyMBg": {
     "string": "In the {area} the highest impact of the project is on <b>{impactDimension}</b> with a <b>score</b> of {score}."
   },
+  "NeZ5aL": {
+    "string": "You need to enter a text for the solution proposed"
+  },
   "NjKSap": {
     "string": "Online presence"
   },
@@ -1344,6 +1428,9 @@
   "OChccW": {
     "string": "Investor / Funder"
   },
+  "OEYYbj": {
+    "string": "You are the owner of the account <accountName></accountName>, please <a>transfer the ownership</a> before continuing."
+  },
   "OJfOvp": {
     "string": "The account owner can invite other colleagues to the account. These will receive an invitation by email to join the account. Each email can only be associated with one account. Once you are set as an account user, you can manage the account. However, adding or removing other account users can only be managed by account owners."
   },
@@ -1367,6 +1454,9 @@
   },
   "Oc8Fmg": {
     "string": "Estimated duration of the project"
+  },
+  "Oh6Jeq": {
+    "string": "Select at least one SDG"
   },
   "OkH5va": {
     "string": "Loan"
@@ -1416,14 +1506,23 @@
   "PexDlg": {
     "string": "Show legend"
   },
-  "PgGfZr": {
-    "string": "Upload shapefile / KML file"
+  "PfIj8p": {
+    "string": "By deleting your user, you will be removed from the account <accountName></accountName> and you no longer will have access to HeCo Invest Platform."
   },
   "PheCRL": {
     "string": "Estimated Impact"
   },
+  "Pl5xI4": {
+    "string": "You need to enter a name."
+  },
+  "PsOtRA": {
+    "string": "The max development durations is 36 months"
+  },
   "Py+eVV": {
     "string": "Basic info"
+  },
+  "Py189G": {
+    "string": "Security"
   },
   "Q1Q4rT": {
     "string": "Insert your name"
@@ -1451,6 +1550,9 @@
   },
   "QI4yO9": {
     "string": "It is an area with a number of attributes related to heterogeneity that maintain the structure and ecological processes that characterize it as the Heart of the Amazon, it is also one of the most unique natural and cultural heritages in the national territory due to its exuberant cultural diversity."
+  },
+  "QRccCM": {
+    "string": "Page not found"
   },
   "QcPpQd": {
     "string": "For Project Developers"
@@ -1569,11 +1671,20 @@
   "T7Ry38": {
     "string": "Message"
   },
+  "TCb/DD": {
+    "string": "You need to enter a text for the sustainability of the project"
+  },
   "TDaF6J": {
     "string": "Dismiss"
   },
+  "TJSbSS": {
+    "string": "You need enter the entity legal registration number"
+  },
   "TJo5E6": {
     "string": "Preview"
+  },
+  "TLmQPG": {
+    "string": "We emailed a confirmation link to <email></email>. Please confirm your email to sign in."
   },
   "TLn/wq": {
     "string": "Open image"
@@ -1589,6 +1700,9 @@
   },
   "TdTXXf": {
     "string": "Learn more"
+  },
+  "TfAnzZ": {
+    "string": "The pictures must have a maximum size of 5 MB"
   },
   "TfXhCr": {
     "string": "No projects"
@@ -1607,6 +1721,9 @@
   },
   "U1OBY8": {
     "string": "options {options}, selected."
+  },
+  "U6/vVg": {
+    "string": "Upload a maximum of six images"
   },
   "U98Mu/": {
     "string": "This layer shows the permanent and temporal wetlands of Colombia at a 1:100.000 reoslution"
@@ -1656,9 +1773,6 @@
   "VG3saq": {
     "string": "<span>Water:</span> water cycling, quality, and risk management."
   },
-  "VJPvoR": {
-    "string": "The impact of this project is 0."
-  },
   "VKb1MS": {
     "string": "Categories"
   },
@@ -1686,6 +1800,9 @@
   "VavuU5": {
     "string": "Project Developer type"
   },
+  "Vddg/J": {
+    "string": "You need to enter a text for the expected impact"
+  },
   "Vge+RX": {
     "string": "Footer"
   },
@@ -1697,9 +1814,6 @@
   },
   "VkljLs": {
     "string": "Insert the phone number in case you would like to be contacted by phone."
-  },
-  "Vp1beW": {
-    "string": "<n>Hopeful Layers:</n> Priority for conservation, Carbon sequestration potential, Flooding preventions."
   },
   "VsNoGp": {
     "string": "How much money did the project received or raised? (optional)"
@@ -1758,11 +1872,14 @@
   "X+46wB": {
     "string": "HeCo priority landscapes"
   },
-  "X0E3iC": {
-    "string": "I agree with the Terms and Privacy Policy."
-  },
   "X2YMUl": {
     "string": "Contact the project developers to know more about the project."
+  },
+  "X9irAo": {
+    "string": "You need to enter a profile name"
+  },
+  "XBoahx": {
+    "string": "Internal server error"
   },
   "XDC7Vp": {
     "string": "Select the intrument type(s) you provide"
@@ -1812,6 +1929,9 @@
   "Xms+aE": {
     "string": "Currently you don’t have any <b>Projects</b> in your favorites."
   },
+  "XvwE2r": {
+    "string": "You need to insert a name"
+  },
   "XwmxKZ": {
     "string": "A project is an enterprise or initiative carefully planned and run by project developers in a given region with the objective of contributing to its environmental conservation. Projects are set up whenever a project developer is seeking visibility or needing investment."
   },
@@ -1824,6 +1944,9 @@
   "Y2zB+b": {
     "string": "No project developers"
   },
+  "Y4hw30": {
+    "string": "The password must contain at least one uppercase letter, one lowercase letter and one number."
+  },
   "Y9+L0O": {
     "string": "Discover Open Calls"
   },
@@ -1832,6 +1955,9 @@
   },
   "YB8bt5": {
     "string": "Expect to have impact on"
+  },
+  "YC0Gf0": {
+    "string": "1 <b>.kml</b> file"
   },
   "YDMrKK": {
     "string": "Users"
@@ -1842,11 +1968,17 @@
   "YEYmEz": {
     "string": "Draw on the map or upload a file with the geographical area your project will have an impact on."
   },
+  "YM37l9": {
+    "string": "Keep your account extra secure with a second login step."
+  },
   "YQsqLq": {
     "string": "Total <span>{numUsers}</span> {numUsers, plural, one {user} other {users}}"
   },
   "YWQkk+": {
     "string": "Short description of the project"
+  },
+  "YXI1nH": {
+    "string": "<n>Priority layers:</n> Endangered species and critical habitats, Tree cover loss, Riverine flood risk, Indigenous Reserves."
   },
   "YYMUK5": {
     "string": "Expects to have impact on"
@@ -1863,11 +1995,17 @@
   "Yy/yDL": {
     "string": "Reset password"
   },
+  "Z2ADwQ": {
+    "string": "Two factor authentication"
+  },
   "Z6MFUA": {
     "string": "You can’t undo this action."
   },
   "ZATT08": {
     "string": "Pagination"
+  },
+  "ZERB8x": {
+    "string": "<n>Base layers:</n> Heco priority landscapes, Sub-basin boundaries, Protected areas;"
   },
   "ZKsAVY": {
     "string": "This project isn’t currently looking for funding."
@@ -1935,6 +2073,9 @@
   "aT5Ajq": {
     "string": "Start drawing"
   },
+  "aVk9a9": {
+    "string": "The new password must contain at least 12 characters, with at least one uppercase letter, one lowercase letter and a number."
+  },
   "adPUXO": {
     "string": "Until approval you can continue exploring our database."
   },
@@ -1950,6 +2091,9 @@
   "apgkuO": {
     "string": "More about ARIES"
   },
+  "arPp4e": {
+    "string": "Terms & Conditions"
+  },
   "azx2BO": {
     "string": "Discover open calls"
   },
@@ -1962,6 +2106,12 @@
   "b8sVDI": {
     "string": "Privacy notice"
   },
+  "bALo1R": {
+    "string": "Account security"
+  },
+  "bE1H34": {
+    "string": "You need to select one or more impact areas that you prioritixe"
+  },
   "bNpbHr": {
     "string": "Find other people with similar interests. Join forces, secure more investment and create a greater impact."
   },
@@ -1973,6 +2123,9 @@
   },
   "bhxvPM": {
     "string": "Setup project developer’s account"
+  },
+  "biZCxW": {
+    "string": "You need to select if you have previously invested in impact"
   },
   "bjubNC": {
     "string": "Add your logo or a picture that indentifies the account."
@@ -2007,29 +2160,32 @@
   "cE4Hfw": {
     "string": "Discover"
   },
+  "cFytiP": {
+    "string": "You need to select the types of financing are you can provide"
+  },
   "cIQfgu": {
     "string": "Restoration"
   },
   "cKaiI0": {
     "string": "File {fileName} has an invalid format"
   },
-  "cPwv2c": {
-    "string": "Privacy policy"
-  },
   "cT6b2H": {
     "string": "WWF"
   },
+  "cTuDKQ": {
+    "string": "* Upload all the files at once"
+  },
   "caaGgO": {
     "string": "How can I invest/fund a project?"
+  },
+  "cappSj": {
+    "string": "You need to select a country"
   },
   "ccXLVi": {
     "string": "Category"
   },
   "cdeA3/": {
     "string": "Investor email"
-  },
-  "cqoaMq": {
-    "string": "Shapefile / KML"
   },
   "ctfKNN": {
     "string": "Set your priorities and HeCo Invest will connect you with the best opportunities."
@@ -2046,9 +2202,6 @@
   "d1OgED": {
     "string": "(optional)"
   },
-  "d2h8L7": {
-    "string": "<n>Base layers:</n> Heco priority landscapes, Watersheds, Sub-basin boundaries, Protected areas;"
-  },
   "d3TPmn": {
     "string": "SDG's"
   },
@@ -2060,6 +2213,9 @@
   },
   "dKiARI": {
     "string": "To produce this population density and distribution data set, researchers mapped global built-up areas, which are defined as all above ground constructions intended for human or animal sheltering or to produce economic goods. The locations of these built up areas was established using Landsat imagery analysis. An additional source used to compile this data set was the Gridded Population of the World (GPW) data set assembled by the Center for International Earth Science Information Network (CIESIN). The GPW data set consists of census population data and bolstered the built-up areas data by enabling researchers to estimate residential population. To present this data as grid cells, GPW data was disaggregated from census or administrative units."
+  },
+  "dOO/qA": {
+    "string": "You need to enter a text for the funding plan"
   },
   "dPuc1g": {
     "string": "Slide {slideNumber}"
@@ -2097,9 +2253,6 @@
   "e0c9xF": {
     "string": "insert the name of the investor/funder"
   },
-  "e61Jf3": {
-    "string": "Coming soon"
-  },
   "eCiudu": {
     "string": "Open call cover image"
   },
@@ -2109,8 +2262,14 @@
   "eFJIPT": {
     "string": "{numInstrumentTypes, plural, one {Instrument type} other {Instrument types}}"
   },
+  "eG1BWC": {
+    "string": "You need to write other relevant information"
+  },
   "eItis6": {
     "string": "Discover investors by budget/ticket size"
+  },
+  "eKEHsg": {
+    "string": "The password must have at least 12 characters."
   },
   "eM7TKf": {
     "string": "About the platform"
@@ -2196,8 +2355,14 @@
   "fnihsY": {
     "string": "Leave"
   },
+  "fo1tCY": {
+    "string": "You need to enter your password."
+  },
   "fqJtkV": {
     "string": "Others"
+  },
+  "frm1UB": {
+    "string": "It must have a maximum of 600 characters"
   },
   "fvFVbs": {
     "string": "Shows above ground live woody biomass density."
@@ -2219,6 +2384,12 @@
   },
   "gF/kn9": {
     "string": "Contribute to protecting areas of greatest ecosystems diversity, conservation and restoration potential, degree of threat or protection for flora and fauna, landscape connectivity and degree of endemism."
+  },
+  "gFz7AV": {
+    "string": "Select at least one impact area"
+  },
+  "gLT/Md": {
+    "string": "You need to upload a profile picture"
   },
   "gQ16Mj": {
     "string": "Funding exclusions"
@@ -2244,6 +2415,9 @@
   "gwLlk9": {
     "string": "select one"
   },
+  "hBliS7": {
+    "string": "KMZ"
+  },
   "hDI+JM": {
     "string": "Sort by"
   },
@@ -2259,8 +2433,14 @@
   "hPsrc0": {
     "string": "insert your answer (max 600 characters)"
   },
+  "hRZo+X": {
+    "string": "You need to select the type of financing are you can provide"
+  },
   "hRcpAt": {
     "string": "max 1 layer"
+  },
+  "hRsu1I": {
+    "string": "To help you understand the context of each project, we provide a range of contextual layers. These layers are divided in three different groups, and you can only activate one layer per group in order to keep the legibility of the map. The layers are:"
   },
   "hWhIuU": {
     "string": "Select the intrument type(s)"
@@ -2304,6 +2484,9 @@
   "i7V7mZ": {
     "string": "Search icon"
   },
+  "i8NU3I": {
+    "string": "You need to enter a message."
+  },
   "i9cSUD": {
     "string": "Invests in"
   },
@@ -2325,11 +2508,17 @@
   "iSPvEQ": {
     "string": "To create an open call you will need the following information."
   },
+  "iTkO2x": {
+    "string": "You need to select the investor/funder type"
+  },
   "iUt7so": {
     "string": "of the planet’s known biodiversity lives in the Amazon, the largest tropical rainforest on the planet."
   },
   "iiVhlC": {
     "string": "insert phone number"
+  },
+  "ijVzNu": {
+    "string": "I’m financing this project"
   },
   "ikyoJL": {
     "string": "HeCo will support the improved management of ecosystems in the Amazon, Andes, Orinoco, Pacific, and Caribbean regions. This aims to ensure the <n>long-term sustainability</n> of natural capital, through creating and channeling new and additional financial flows from the public and private sectors into specific projects and initiatives."
@@ -2348,6 +2537,9 @@
   },
   "ipYSrV": {
     "string": "The email where you want to receive contacts from Investors or other Project Developers"
+  },
+  "ir/b1N": {
+    "string": "You need to enter impact that the project is expected to generate."
   },
   "itfsqC": {
     "string": "Currently you don’t have any <b>Projects</b>."
@@ -2418,8 +2610,14 @@
   "k36uSw": {
     "string": "Project"
   },
+  "k42KHN": {
+    "string": "Shapefile"
+  },
   "k5DITM": {
     "string": "Users will receive an email to sign up into the platform and join <strong>{name}</strong> account."
+  },
+  "k5J7dK": {
+    "string": "You need to enter the max funding value"
   },
   "k62/kN": {
     "string": "Fit bounds"
@@ -2429,6 +2627,9 @@
   },
   "kEXoaQ": {
     "string": "About your work"
+  },
+  "kGJlX6": {
+    "string": "You need to select the target groups"
   },
   "kHpaMt": {
     "string": "Edit Open Call"
@@ -2460,6 +2661,9 @@
   "kX7oGR": {
     "string": "Other information"
   },
+  "kY/+zt": {
+    "string": "Verification link sent"
+  },
   "kaAF7K": {
     "string": "An open call is a call for projects made by a given investor. Open calls give investors the possibility to open specific opportunities in their topics of interest. All registered project developers have the possibility to submit their projects to an open call, if they match the open call criteria, and therefore apply to this particular funding."
   },
@@ -2469,14 +2673,23 @@
   "keWpuD": {
     "string": "In this data set, “tree cover” is defined as all vegetation greater than 5 meters in height, and may take the form of natural forests or plantations across a range of canopy densities. Tree cover loss is defined as “stand replacement disturbance,” or the complete removal of tree cover canopy at the Landsat pixel scale. Tree cover loss may be the result of human activities, including forestry practices such as timber harvesting or deforestation (the conversion of natural forest to other land uses), as well as natural causes such as disease or storm damage. Fire is another widespread cause of tree cover loss, and can be either natural or human-induced."
   },
+  "khRkg/": {
+    "string": "You need to select the amount of money you can provide"
+  },
   "ku+mDU": {
     "string": "State"
   },
   "l+2DwB": {
     "string": "Reach out {title} on HeCo Invest through the link"
   },
+  "l2C1SN": {
+    "string": "You need to select a project developer type"
+  },
   "l2HvdU": {
     "string": "Estimated duration for project in months"
+  },
+  "lIJKZh": {
+    "string": "Scroll to top"
   },
   "lJfJXg": {
     "string": "About the project developer"
@@ -2486,6 +2699,9 @@
   },
   "lYS3vO": {
     "string": "Project developers provide the impact information during the project registration phase by selecting one or more indicators from each dimension."
+  },
+  "laO/jL": {
+    "string": "You need to enter a \"mission\" text"
   },
   "lda5xz": {
     "string": "My users"
@@ -2511,11 +2727,17 @@
   "lpyO42": {
     "string": "Impact of projects on ensuring and improving equal and inclusive physical, mental, economic, and spiritual health."
   },
+  "lr5x1P": {
+    "string": "You need to enter a text for the replicability of the project"
+  },
   "ltUH9L": {
     "string": "Note that all of this information will be visible in the open call public page."
   },
   "lviFjb": {
     "string": "The Herencia Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. The HeCo Invest platform centers its attention on areas directly connected to the Amazon. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition. More information about these regions <link>here</link>."
+  },
+  "lwv2DP": {
+    "string": "You need to select one or more expected impact"
   },
   "m1w8ew": {
     "string": "30 million"
@@ -2526,11 +2748,17 @@
   "m3Dnav": {
     "string": "Investment info"
   },
+  "m4AGCI": {
+    "string": "You need to select an option"
+  },
   "mEYG82": {
     "string": "Funding information"
   },
   "mMReor": {
     "string": "Go to project page"
+  },
+  "mOUwuv": {
+    "string": "It should be a valid account"
   },
   "mQk71L": {
     "string": "Why invest in the Amazon"
@@ -2564,6 +2792,9 @@
   },
   "nEvNJb": {
     "string": "Investor"
+  },
+  "nGC2oX": {
+    "string": "Invalid entity legal registration number format. It must be a 10 digit number."
   },
   "nIbokM": {
     "string": "Contact access"
@@ -2607,6 +2838,9 @@
   "oBB4L4": {
     "string": "Send invite"
   },
+  "oD3qdW": {
+    "string": "It looks like the link is broken or the page has been removed."
+  },
   "oG/A0q": {
     "string": "See full catalogue"
   },
@@ -2634,17 +2868,29 @@
   "ojuv8F": {
     "string": "Investor contacts"
   },
+  "ora/x9": {
+    "string": "You need to select one or more categories"
+  },
   "orirkU": {
     "string": "What information do I need to create a Project Developer account?"
   },
+  "orvpWh": {
+    "string": "Go back"
+  },
   "osBdnp": {
     "string": "IPLC organization"
+  },
+  "owrtek": {
+    "string": "3 mandatory files: <b>.shp</b>, <b>.shx</b> and <b>.dbf</b>"
   },
   "p+7s2E": {
     "string": "Note that all of this information will be visible in the Project Developer public profile page except question 1 and 6."
   },
   "p+Qmws": {
     "string": "Which of these topic/sector categories better describe your project?"
+  },
+  "p8jXrR": {
+    "string": "You need to enter the funding exclusions"
   },
   "pHaFj5": {
     "string": "To create an Investor account you will need the following information."
@@ -2654,6 +2900,9 @@
   },
   "pONqz8": {
     "string": "First name"
+  },
+  "pQMwQ7": {
+    "string": "The min development duration is 1 month"
   },
   "pWwsxm": {
     "string": "Delete image"
@@ -2736,6 +2985,9 @@
   "qe+BvO": {
     "string": "<b>Call on our community</b> of project developers to identify opportunities in your preferred sectors and geographies."
   },
+  "qeQuNf": {
+    "string": "Something went wrong. We are working on fixing the problem."
+  },
   "qoImFc": {
     "string": "Replicability of the project"
   },
@@ -2769,14 +3021,14 @@
   "rE2fon": {
     "string": "Are you sure you want to withdraw from the “<strong>{openCallName}</strong>“ open call?"
   },
+  "rJnXTe": {
+    "string": "The password must contain at least 12 characters, with at least one uppercase letter, one lowercase letter and a number."
+  },
   "rLzWx9": {
     "string": "{name} picture"
   },
   "rPEEqE": {
     "string": "Afro-descendant peoples"
-  },
-  "rPwLb7": {
-    "string": "By deleting your user, you will be removed from the account <n>accountName</n> and you no longer will have access to HeCo Invest Platform."
   },
   "rPwaWt": {
     "string": "A great name is short, crisp, and easily understood."
@@ -2802,8 +3054,14 @@
   "roJe5R": {
     "string": "Investor/ Funder type"
   },
+  "rsKPyl": {
+    "string": "You need to select the project category"
+  },
   "rsWAqe": {
     "string": "select multiple"
+  },
+  "rtG8sS": {
+    "string": "You need to select the amount of money you need for the project"
   },
   "rtcoCk": {
     "string": "Carbon emission reduction"
@@ -2895,6 +3153,9 @@
   "tAug9g": {
     "string": "Groups with disabilities"
   },
+  "tCfD2Y": {
+    "string": "You need to enter your email."
+  },
   "tDM2u5": {
     "string": "Can I add colleagues from my organization to the account?"
   },
@@ -2903,6 +3164,9 @@
   },
   "tH/CDj": {
     "string": "© Luis Barreto / WWF-UK"
+  },
+  "tHHNHH": {
+    "string": "Please upload an area in one of the following formats:"
   },
   "tKMlOc": {
     "string": "Menu"
@@ -2922,6 +3186,9 @@
   "tjunxL": {
     "string": "Active filters"
   },
+  "tkP6dd": {
+    "string": "You need to accept the Terms and Privacy Policy."
+  },
   "twK/jv": {
     "string": "Project developer profile"
   },
@@ -2933,6 +3200,9 @@
   },
   "tzMNF3": {
     "string": "Status"
+  },
+  "tzSubd": {
+    "string": "You need enter a \"about\" text"
   },
   "u+TnMw": {
     "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. However, if all the indicators of a given dimension are selected, then the <b>score goes automatically to 0</b>. This is to ensure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
@@ -2978,6 +3248,9 @@
   },
   "uyxTSu": {
     "string": "Select the impacts that you prioritize"
+  },
+  "uzMeos": {
+    "string": "<n>Contextual layers:</n> Biodiversity intactness, Tree biomass density, Wetlands, Population density;"
   },
   "v2wxEw": {
     "string": "Back to open calls"
@@ -3045,6 +3318,9 @@
   "wA8Ls7": {
     "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. The <b>Supply</b> score of each sustainability dimension is then computed by taking the mean value of the corresponding indicators. <b>However, if all the indicators of a given dimension are selected, then the supply score of that dimension goes automatically to 0</b>. This is to make sure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
   },
+  "wCT28C": {
+    "string": "1 <b>.kmz</b> file"
+  },
   "wEQDC6": {
     "string": "Edit"
   },
@@ -3057,11 +3333,20 @@
   "wSZR47": {
     "string": "Submit"
   },
+  "wasfcn": {
+    "string": "You need to enter a text for the problems you are solving"
+  },
   "wduJme": {
     "string": "Instrument"
   },
   "we4Lby": {
     "string": "Info"
+  },
+  "weOT3A": {
+    "string": "The passwords don't match."
+  },
+  "wf8svn": {
+    "string": "You need to enter the funding priorities"
   },
   "wghPR3": {
     "string": "Group of projects"
@@ -3093,6 +3378,9 @@
   "x/AykP": {
     "string": "Project ticket size"
   },
+  "x3IdR3": {
+    "string": "In the {impactArea}, the impact of this project is 0."
+  },
   "x6wKw3": {
     "string": "All selected options have been cleared."
   },
@@ -3113,6 +3401,9 @@
   },
   "xUR9nd": {
     "string": "people live in the Amazon region."
+  },
+  "xXIT0v": {
+    "string": "<b>Note:</b> After submitting the form, images may take some time to be visible in your page."
   },
   "xXbJso": {
     "string": "Sign out"
@@ -3177,6 +3468,9 @@
   "ygx9Jx": {
     "string": "Micro finance"
   },
+  "yirvdu": {
+    "string": "Enable two factor authentication"
+  },
   "yp8KtZ": {
     "string": "Publish project?"
   },
@@ -3188,6 +3482,9 @@
   },
   "z3yOZn": {
     "string": "This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues."
+  },
+  "zBO3fW": {
+    "string": "You need to select what type of financing are you looking for"
   },
   "zFegDD": {
     "string": "Contact"
@@ -3201,6 +3498,9 @@
   "zLCDho": {
     "string": "Farmers"
   },
+  "zPMPr9": {
+    "string": "You need to enter a last name."
+  },
   "zSOvI0": {
     "string": "Filters"
   },
@@ -3209,6 +3509,9 @@
   },
   "zdIaHp": {
     "string": "Investors"
+  },
+  "zeCjLr": {
+    "string": "You need to enter a password."
   },
   "zetZX8": {
     "string": "Content language"

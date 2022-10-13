@@ -217,13 +217,30 @@ export const useQueryReturnPath = () => {
 };
 
 export const getSocialMediaLinksRegex = () => {
-  const getRegex = (media: string) => new RegExp(`^https?:\/\/(www.)?${media}.com\/.*$`);
+  const getRegex = (media: string) => {
+    const subdomain = media === 'linkedin' ? '([a-z]{2}\\.)?' : '';
+    return new RegExp(`^https?:\/\/${subdomain}(www.)?${media}.com\/.*$`);
+  };
+
   return {
     twitter: getRegex('twitter'),
     facebook: getRegex('facebook'),
     linkedin: getRegex('linkedin'),
     instagram: getRegex('instagram'),
   };
+};
+
+/**
+ * Yup transform that completes URLs with “https://” at the beginning
+ * @param url Incomplete Url starting with “www” or directly the domain name
+ * @returns URL starting with “https://”
+ */
+export const getPartialUrlTransform = (url: string) => {
+  if (url === null || url === undefined || url.length === 0) {
+    return url;
+  }
+
+  return /^https?:\/\//.test(url) ? url : `https://${url}`;
 };
 
 export const getPageErrors = (formPageInputs: string[], errors: FormState<any>['errors']) => {

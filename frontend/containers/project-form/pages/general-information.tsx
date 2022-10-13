@@ -192,6 +192,15 @@ const GeneralInformation = ({
               />
             </div>
           </div>
+          <p className="mt-4 text-sm text-gray-600">
+            <FormattedMessage
+              defaultMessage="<b>Note:</b> After submitting the form, images may take some time to be visible in your page."
+              id="xXIT0v"
+              values={{
+                b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+              }}
+            />
+          </p>
           <ErrorMessage
             id="project-images-attributes-error"
             errorText={

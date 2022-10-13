@@ -37,7 +37,7 @@ export const MapHelp: FC<MapHelpProps> = () => {
             <FormattedMessage defaultMessage="Help" id="SENRqu" />
           </h1>
         </div>
-        <div className="relative h-full px-1 pt-6 pb-24 overflow-y-scroll top-12 sm:pb-44">
+        <div className="relative h-full px-1 pt-6 pb-24 overflow-y-auto top-12 sm:pb-44">
           <p>
             <FormattedMessage
               defaultMessage="The map allows you to quickly see the location of each project and understand the context of the different projects."
@@ -97,16 +97,15 @@ export const MapHelp: FC<MapHelpProps> = () => {
             </div>
             <p>
               <FormattedMessage
-                defaultMessage="You can activate a varity of data layers to help you to understand the context of each project. These layers may be of 3 types:"
-                id="FPr3FX"
+                defaultMessage="To help you understand the context of each project, we provide a range of contextual layers. These layers are divided in three different groups, and you can only activate one layer per group in order to keep the legibility of the map. The layers are:"
+                id="hRsu1I"
               />
             </p>
             <ul className="pl-5 mt-6 space-y-1 list-disc">
               <li>
                 <FormattedMessage
-                  defaultMessage="<n>Base layers:</n> Heco priority landscapes, Watersheds, Sub-basin boundaries, Protected
-                areas;"
-                  id="d2h8L7"
+                  defaultMessage="<n>Base layers:</n> Heco priority landscapes, Sub-basin boundaries, Protected areas;"
+                  id="ZERB8x"
                   values={{
                     n: (chunk: string) => <span className="my-2 font-medium">{chunk}</span>,
                   }}
@@ -114,9 +113,8 @@ export const MapHelp: FC<MapHelpProps> = () => {
               </li>
               <li>
                 <FormattedMessage
-                  defaultMessage="<n>Priority layers:</n> Biodiversity intactness, Tree biomass density, Wetlands, Population
-                density;"
-                  id="8fVxjR"
+                  defaultMessage="<n>Contextual layers:</n> Biodiversity intactness, Tree biomass density, Wetlands, Population density;"
+                  id="uzMeos"
                   values={{
                     n: (chunk: string) => <span className="my-2 font-medium">{chunk}</span>,
                   }}
@@ -124,9 +122,8 @@ export const MapHelp: FC<MapHelpProps> = () => {
               </li>
               <li>
                 <FormattedMessage
-                  defaultMessage="<n>Hopeful Layers:</n> Priority for conservation, Carbon sequestration potential, Flooding
-                preventions."
-                  id="Vp1beW"
+                  defaultMessage="<n>Priority layers:</n> Endangered species and critical habitats, Tree cover loss, Riverine flood risk, Indigenous Reserves."
+                  id="YXI1nH"
                   values={{
                     n: (chunk: string) => <span className="my-2 font-medium">{chunk}</span>,
                   }}

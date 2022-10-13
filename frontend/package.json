@@ -10,7 +10,7 @@
     "test": "yarn check-types && jest --ci --passWithNoTests",
     "storybook:dev": "start-storybook -p 6006 -c .storybook",
     "storybook:build": "build-storybook -c .storybook",
-    "i18n:extract": "formatjs extract \"{components,containers,helpers,hoc,hooks,layouts,lib,pages,services,store}/**/*.{js,jsx,ts,tsx}\" --ignore \"**/*.d.ts\" --out-file lang/transifex/zu.json --format transifex",
+    "i18n:extract": "formatjs extract \"{components,containers,helpers,hoc,hooks,layouts,lib,pages,services,store,validations,schemas}/**/*.{js,jsx,ts,tsx}\" --ignore \"**/*.d.ts\" --out-file lang/transifex/zu.json --format transifex",
     "i18n:compile": "formatjs compile-folder lang/transifex lang/compiled --format transifex"
   },
   "engines": {
