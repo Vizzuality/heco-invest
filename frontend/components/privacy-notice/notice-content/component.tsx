@@ -54,7 +54,7 @@ const NoticeContent: FC<NoticeContentProps> = ({}: NoticeContentProps) => {
                   id="RrcFtD"
                   values={{
                     a: (chunks) => (
-                      <Link href={Paths.PrivacyPolicy}>
+                      <Link href={Paths.TermsConditions}>
                         <a
                           className="underline focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2"
                           target="_blank"

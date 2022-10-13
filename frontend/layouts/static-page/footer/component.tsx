@@ -274,9 +274,9 @@ export const Footer: React.FC<FooterProps> = ({
                     </Link>
                   </li>
                   <li>
-                    <Link href={Paths.PrivacyPolicy} passHref>
+                    <Link href={Paths.TermsConditions} passHref>
                       <a className="hover:underline">
-                        <FormattedMessage defaultMessage="Privacy policy" id="cPwv2c" />
+                        <FormattedMessage defaultMessage="Terms & Conditions" id="arPp4e" />
                       </a>
                     </Link>
                   </li>

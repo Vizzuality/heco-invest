@@ -19,13 +19,13 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   };
 });
 
-type PrivacyPolicyProps = InferGetStaticPropsType<typeof getStaticProps>;
+type TermsConditionsProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const PrivacyPolicy: PageComponent<PrivacyPolicyProps, StaticPageLayoutProps> = () => {
+const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps> = () => {
   const { formatMessage } = useIntl();
   return (
     <div>
-      <Head title={formatMessage({ defaultMessage: 'Coming soon', id: 'e61Jf3' })} />
+      <Head title={formatMessage({ defaultMessage: 'Terms & Conditions', id: 'arPp4e' })} />
       <LayoutContainer className="bg-background-light">
         <div>
           <h1 className="mb-6 font-serif text-4xl text-center md:text-6xl text-green-dark sm:mb-0">
@@ -37,7 +37,7 @@ const PrivacyPolicy: PageComponent<PrivacyPolicyProps, StaticPageLayoutProps> = 
   );
 };
 
-PrivacyPolicy.layout = {
+TermsConditions.layout = {
   props: {
     footerProps: {
       className: 'mt-0 sm:absolute bottom-0 left-0 right-0',
@@ -45,4 +45,4 @@ PrivacyPolicy.layout = {
   },
 };
 
-export default PrivacyPolicy;
+export default TermsConditions;

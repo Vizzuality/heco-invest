@@ -602,6 +602,9 @@
   "9CDBQg": {
     "string": "The solution proposed"
   },
+  "9EgeeX": {
+    "string": "I agree with the <a>Terms and Privacy Policy</a>."
+  },
   "9Er2U2": {
     "string": "Investments in HeCo will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
   },
@@ -1860,9 +1863,6 @@
   "X+46wB": {
     "string": "HeCo priority landscapes"
   },
-  "X0E3iC": {
-    "string": "I agree with the Terms and Privacy Policy."
-  },
   "X2YMUl": {
     "string": "Contact the project developers to know more about the project."
   },
@@ -2082,6 +2082,9 @@
   "apgkuO": {
     "string": "More about ARIES"
   },
+  "arPp4e": {
+    "string": "Terms & Conditions"
+  },
   "azx2BO": {
     "string": "Discover open calls"
   },
@@ -2156,9 +2159,6 @@
   },
   "cKaiI0": {
     "string": "File {fileName} has an invalid format"
-  },
-  "cPwv2c": {
-    "string": "Privacy policy"
   },
   "cT6b2H": {
     "string": "WWF"
@@ -2243,9 +2243,6 @@
   },
   "e0c9xF": {
     "string": "insert the name of the investor/funder"
-  },
-  "e61Jf3": {
-    "string": "Coming soon"
   },
   "eCiudu": {
     "string": "Open call cover image"
