@@ -1,9 +1,6 @@
 import { FC } from 'react';
 
-import { ExternalLink as ExternalLinkIcon } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
-
-import Link from 'next/link';
 
 import Button from 'components/button';
 import Loading from 'components/loading';
@@ -16,33 +13,18 @@ import { AccountPublicProfileProps } from './types';
 export const AccountPublicProfile: FC<
   AccountPublicProfileProps
 > = ({}: AccountPublicProfileProps) => {
-  const { user, userAccount } = useAccount();
+  const { user } = useAccount();
 
   const isProjectDeveloper = user?.role === UserRoles.ProjectDeveloper;
-
-  const publicProfileLink = `${isProjectDeveloper ? Paths.ProjectDeveloper : Paths.Investor}/${
-    userAccount?.slug
-  }`;
 
   const editProfileLink = isProjectDeveloper ? Paths.EditProjectDeveloper : Paths.EditInvestor;
 
   return (
     <div className="p-6 bg-white rounded-lg">
-      <div className="flex text-sm">
-        <div className="flex-grow font-semibold">
+      <div className="text-sm">
+        <div className="font-semibold">
           <FormattedMessage defaultMessage="Public profile" id="G6hIMy" />
         </div>
-        {userAccount && (
-          <Link href={publicProfileLink}>
-            <a
-              className="flex gap-2 px-2 transition-all rounded-full text-green-light focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2"
-              target="_blank"
-            >
-              <ExternalLinkIcon className="w-4 h-4 translate-y-px" />
-              <FormattedMessage defaultMessage="View public profile" id="0PnfDn" />
-            </a>
-          </Link>
-        )}
       </div>
       {!user ? (
         <div className="flex items-center justify-center w-full h-10">
