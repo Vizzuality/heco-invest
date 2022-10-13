@@ -51,12 +51,12 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
 
   return (
     <div className={className}>
-      <div className="py-10 mx-4 bg-center bg-cover lg:mx-0 lg:px-4 lg:py-18 rounded-2xl bg-radial-green-dark bg-green-dark">
+      <div className="py-10 bg-center bg-cover sm:mx-4 sm:px-4 sm:py-18 sm:rounded-2xl bg-radial-green-dark bg-green-dark min-h-[425px] sm:min-h-fit">
         <LayoutContainer className="flex justify-between">
-          <div className="flex flex-col items-center w-full gap-6 lg:items-end lg:flex-row lg:w-6/12">
-            <div className="relative overflow-hidden bg-white w-52 h-52 rounded-2xl">
+          <div className="flex flex-col items-center w-full gap-4 sm:gap-6 sm:items-end sm:flex-row sm:w-6/12">
+            <div className="relative w-32 h-32 overflow-hidden bg-white sm:w-52 sm:h-52 rounded-2xl">
               <Image
-                className="mx-auto w-52 h-52"
+                className="w-full h-full mx-auto"
                 src={logo}
                 alt={intl.formatMessage(
                   { defaultMessage: '{organization} logo', id: 'in26xr' },
@@ -67,15 +67,15 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                 onError={() => setLogo('/images/placeholders/profile-logo.png')}
               />
             </div>
-            <div className="-mb-2 text-center lg:mb-4 lg:text-left">
+            <div className="-mb-2 text-center sm:mb-4 sm:text-left">
               <h1 className="font-serif text-3xl text-white">{title}</h1>
               <p className="mt-2 text-xl text-gray-400">{subtitle}</p>
             </div>
           </div>
         </LayoutContainer>
       </div>
-      <LayoutContainer className="flex flex-col justify-between mt-8 lg:flex-row">
-        <div className="w-full lg:w-6/12">
+      <LayoutContainer className="flex flex-col justify-between sm:mt-8 sm:flex-row">
+        <div className="order-2 w-full mt-20 sm:w-6/12 sm:order-1 sm:mt-0">
           {originalLanguage && (
             <span className="block mb-4 text-sm text-gray-400">
               <FormattedMessage
@@ -90,9 +90,9 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
           )}
           <p>{text}</p>
         </div>
-        <div className="flex flex-col justify-start lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0">
+        <div className="order-1 sm:order-2 flex flex-col justify-start sm:mr-4 pt-8 p-6 bg-white drop-shadow-xl sm:mb-[-70%] h-full sm:translate-y-[-70%] sm:max-w-4/12 rounded-2xl -mt-32 sm:mt-8">
           {typeof totalProjects === 'number' && typeof projectsWaitingFunding === 'number' && (
-            <>
+            <div className="mb-6">
               <div className="flex flex-col gap-8 md:flex-row">
                 <div className="flex flex-col items-center w-full gap-2 text-center md:min-w-1/2">
                   <span id="total-of-projects" className="text-2xl font-semibold">
@@ -113,14 +113,14 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
               </div>
 
               <hr className="mt-6 mb-8" />
-            </>
+            </div>
           )}
 
           {(!!website || !!social?.length) && (
-            <WebsiteSocial className="max-w-md mt-2 mb-10" website={website} social={social} />
+            <WebsiteSocial className="max-w-md mb-8 sm:mb-10" website={website} social={social} />
           )}
 
-          <div className="flex flex-col justify-between gap-4 lg:flex-row">
+          <div className="flex flex-wrap justify-between gap-4">
             <Button
               className="justify-center"
               theme="secondary-green"
@@ -135,7 +135,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </Button>
             <Button
-              className="w-full lg:max-w-[200px] justify-center"
+              className="flex-grow sm:max-w-[200px] justify-center"
               theme="primary-green"
               disabled={!contact?.phone && !contact?.email}
               onClick={() => setIsContactInfoModalOpen(true)}
