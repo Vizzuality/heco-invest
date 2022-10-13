@@ -7,7 +7,7 @@ import tailwindConfig from 'tailwind.config.js';
 
 const config = resolveConfig(tailwindConfig);
 
-export const useBreakpoint = () => {
+export const useBreakpoint = (useOuterWidth: boolean = false) => {
   const [currentBreakpoint, setCurrentBreakpoint] = useState<string | null>(null);
   const { screens } = config?.theme;
 
@@ -41,7 +41,9 @@ export const useBreakpoint = () => {
       // one, this will return `undefined`. That's why the default is set as the last one.
       const matchingBreakpoint = breakpointsObjArr.find((item) => {
         const [_key, value] = Object.entries(item)[0];
-        return window.innerWidth < value;
+
+        const width = useOuterWidth ? window.outerWidth : window.innerWidth;
+        return width < value;
       });
 
       // If we have a match we'll use it, if not the screen must be larger than the last breakpoint;
@@ -51,7 +53,7 @@ export const useBreakpoint = () => {
         : Object.keys(defaultBreakpoint)[0];
 
       setCurrentBreakpoint(breakpoint);
-    }, [breakpointsObjArr, defaultBreakpoint]),
+    }, [breakpointsObjArr, defaultBreakpoint, useOuterWidth]),
     250
   );
 
