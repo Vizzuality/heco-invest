@@ -49,8 +49,14 @@ COPY --chown=nextjs:nextjs . .
 
 RUN yarn install --immutable
 
+# Install Transifex CLI
+RUN mkdir tx-cli
+WORKDIR /tx-cli
 RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
-RUN ./tx pull -f
+WORKDIR /app
+
+# Pull translations from Transifex
+RUN /tx-cli/tx pull -f
 
 RUN yarn build
 

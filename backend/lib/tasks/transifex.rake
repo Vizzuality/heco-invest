@@ -2,7 +2,7 @@ namespace :transifex do
   desc "Pulling transifex translations and post processing"
   task :pull do
     puts "transifex_pull: Running TX client to pull translations"
-    IO.popen("tx pull -f -a") { |p| p.each { |line| puts line } }
+    IO.popen("/usr/tx-cli/tx pull -f -a") { |p| p.each { |line| puts line } }
     puts "transifex_pull: Post-processing"
     Dir[Rails.root.join("config/locales/{en,es,pt}.yml")].each do |file|
       puts "transifex_pull: Cleaning up #{file} from empty strings"

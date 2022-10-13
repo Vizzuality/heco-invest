@@ -64,6 +64,14 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: yarn install --immutable
 
+    - name: Install Transifex CLI
+      run: |
+        echo 'Installing the Transifex CLI…'
+        mkdir tx-cli
+        cd tx-cli
+        curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
+        cd ..
+
     - name: Push source strings to and pull translated strings from Transifex
       env:
         TRANSIFEX_TOKEN: ${{ secrets.transifex-token }}
@@ -72,14 +80,12 @@ jobs:
       # pushed on staging. This should give enough time for translators before the content appears
       # on production. On production and development, we should only pull translations.
       run: |
-        echo 'Installing the Transifex CLI…'
-        curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
         if [[ "${{ env.ENV }}" == "staging" ]]; then
           echo 'Pushing the source strings…'
-          TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx push -s
+          TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx-cli/tx push -s
         fi
         echo 'Pulling the translations…'
-        TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx pull -f
+        TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx-cli/tx pull -f
 
     - name: Run tests
       run: yarn test

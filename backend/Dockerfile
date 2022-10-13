@@ -40,7 +40,11 @@ RUN yarn install
 
 COPY . /usr/src/app
 
+# Install Transifex CLI
+WORKDIR /usr/tx-cli
 RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
+WORKDIR /usr/src/app
+
 ENV PATH "$PATH:/usr/src/app"
 
 EXPOSE 3000
