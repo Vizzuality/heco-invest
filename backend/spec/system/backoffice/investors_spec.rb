@@ -128,7 +128,7 @@ RSpec.describe "Backoffice: Investors", type: :system do
       end
     end
 
-    context "when searching" do
+    context "when searching by name" do
       it "shows only found investors" do
         expect(page).to have_text("Super Investor Enterprise")
         expect(page).to have_text("Unapproved Investor Enterprise")
@@ -136,6 +136,17 @@ RSpec.describe "Backoffice: Investors", type: :system do
         find("form.investor_search button").click
         expect(page).to have_text("Super Investor Enterprise")
         expect(page).not_to have_text("Unapproved Investor Enterprise")
+      end
+    end
+
+    context "when searching by partial name" do
+      it "shows only found investors" do
+        expect(page).to have_text("Super Investor Enterprise")
+        expect(page).to have_text("Unapproved Investor Enterprise")
+        fill_in :q_filter_full_text, with: "Enter"
+        find("form.investor_search button").click
+        expect(page).to have_text("Super Investor Enterprise")
+        expect(page).to have_text("Unapproved Investor Enterprise")
       end
     end
 
