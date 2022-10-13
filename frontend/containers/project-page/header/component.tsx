@@ -16,7 +16,6 @@ import ContactInformationModal from 'containers/social-contact/contact-informati
 import Button from 'components/button';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
-import Tag from 'components/tag';
 import { CategoryType } from 'types/category';
 
 import { useAccount } from 'services/account';
@@ -110,7 +109,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
               */}
               {category && (
                 <CategoryTag
-                  className="bg-white text-green-dark"
+                  className="text-sm bg-white text-green-dark"
                   category={category.id as CategoryType}
                 >
                   {category.name}
@@ -131,7 +130,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
         </LayoutContainer>
       </div>
       <LayoutContainer className="flex flex-col justify-between mt-8 lg:flex-row">
-        <div className="w-full lg:w-6/12">
+        <div className="w-full lg:w-6/12 min-h-[160px] pr-2">
           {project.language && (
             <span className="block mb-4 text-sm text-gray-400">
               <FormattedMessage
@@ -149,28 +148,21 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
         <div className="lg:mr-4 p-6 bg-white drop-shadow-xl mb-16 lg:pb-8 lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0 flex flex-col">
           {project.looking_for_funding ? (
             <div className="flex flex-col gap-8 md:flex-row">
-              <div className="flex flex-col items-start justify-end w-full gap-2 text-center md:min-w-1/2">
-                <span id="ticket-size" className="text-2xl font-semibold">
+              <div className="flex flex-col items-start justify-end w-full gap-2 text-center sm:text-left md:min-w-1/2">
+                <span id="ticket-size" className="text-xl font-semibold">
                   {ticketSizeStr}
                 </span>
-                <span aria-labelledby="ticket-size" className="text-gray-400">
+                <span aria-labelledby="ticket-size" className="leading-4 text-gray-400">
                   <FormattedMessage defaultMessage="Ticket size" id="lfx6Nc" />
                 </span>
               </div>
               <div className="flex flex-col items-start justify-end w-full gap-2 text-left md:min-w-1/2">
-                <span
-                  id="instrument-types"
-                  className={cx({
-                    'font-semibold': true,
-                    'text-2xl': project.instrument_types.length <= 1,
-                    'text-xl': project.instrument_types.length > 1,
-                  })}
-                >
+                <span id="instrument-types" className="text-xl font-semibold">
                   {instrumentTypesStr}
                 </span>
                 <span
                   aria-labelledby="instrument-types"
-                  className="text-gray-400 whitespace-nowrap"
+                  className="leading-4 text-gray-400 whitespace-nowrap"
                 >
                   <FormattedMessage defaultMessage="Instrument type" id="fDd10o" />
                 </span>
@@ -193,7 +185,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
             </div>
           )}
 
-          <div className="flex flex-col justify-between gap-4 mt-5 lg:flex-row">
+          <div className="flex flex-col justify-between mt-5 gap-x-2 gap-y-4 lg:flex-row">
             <Button
               className="justify-center"
               theme="secondary-green"

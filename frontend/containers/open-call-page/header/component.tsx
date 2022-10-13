@@ -73,28 +73,28 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
 
   return (
     <>
-      <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
+      <LayoutContainer className="-mt-10 md:mt-0 sm:-mt-16">
         <Breadcrumbs
-          className="sm:px-6 lg:px-8"
+          className="sm:px-6"
           substitutions={{
             id: { name },
           }}
         />
         <div className="mt-4">
           <div
-            className="flex items-end sm:mx-4 bg-center bg-cover lg:mx-0 rounded-2xl bg-radial-green-dark bg-green-dark min-h-[250px] lg:min-h-[372px]"
+            className="flex items-end bg-center bg-cover sm:mx-0 rounded-2xl bg-radial-green-dark bg-green-dark min-h-[250px] sm:min-h-[372px]"
             style={{
               ...(coverImage && { backgroundImage: `url(${coverImage})` }),
             }}
           >
             <LayoutContainer>
-              <div className="mb-8 text-center lg:w-1/2 lg:text-left">
-                <h1 className="font-serif text-2xl text-white lg:text-4xl">{name}</h1>
+              <div className="mb-8 text-center sm:w-1/2 sm:text-left">
+                <h1 className="font-serif text-2xl text-white sm:text-4xl">{name}</h1>
               </div>
             </LayoutContainer>
           </div>
-          <LayoutContainer className="flex flex-col justify-between mt-8 lg:flex-row">
-            <div className="w-full lg:w-6/12">
+          <LayoutContainer className="flex flex-col justify-between mt-8 sm:flex-row">
+            <div className="w-full sm:w-6/12 sm:pr-2">
               {originalLanguage && (
                 <span className="block mb-4 text-sm text-gray-400">
                   <FormattedMessage
@@ -109,14 +109,17 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
               )}
               <p>{openCall.description}</p>
             </div>
-            <div className="mb-10 flex flex-col justify-start lg:mr-4 p-6 bg-white drop-shadow-xl lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-1/3 rounded-2xl mt-8 lg:mt-0">
+            <div className="mb-10 flex flex-col justify-start sm:mr-4 p-6 bg-white drop-shadow-xl sm:mb-[-70%] h-full sm:w-[395px] sm:translate-y-[-70%] sm:max-w-1/3 rounded-2xl mt-8 sm:mt-0">
               <>
                 <div className="flex flex-col gap-8 pl-2 sm:gap-11 sm:flex-row sm:justify-between">
                   <div className="flex flex-col items-center justify-end gap-2 sm:items-start">
-                    <span aria-labelledby="open-call-value" className="text-2xl font-semibold">
+                    <span
+                      aria-labelledby="open-call-value"
+                      className="text-xl font-semibold leading-6"
+                    >
                       ${maximum_funding_per_project.toLocaleString(locale)}
                     </span>
-                    <span id="open-call-value" className="text-gray-400">
+                    <span id="open-call-value" className="leading-4 text-gray-400">
                       <FormattedMessage defaultMessage="Value" id="GufXy5" />
                     </span>
                   </div>
@@ -127,17 +130,14 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                           <p
                             aria-labelledby="block open-call-instrument-types"
                             key={type}
-                            className={cx('font-semibold whitespace-nowrap', {
-                              'text-2xl': instrument_types.length === 1,
-                              'text-xl': instrument_types.length > 1,
-                            })}
+                            className="text-xl font-semibold leading-6 whitespace-nowrap"
                           >
                             {type}
                           </p>
                         );
                       })}
                     </div>
-                    <span id="open-call-instrument-types" className="text-gray-400">
+                    <span id="open-call-instrument-types" className="leading-4 text-gray-400">
                       <FormattedMessage
                         defaultMessage="{numInstrumentTypes, plural, one {Instrument type} other {Instrument types}}"
                         id="eFJIPT"
@@ -151,10 +151,16 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                 <hr className="mt-6 mb-8" />
                 <div className="flex flex-col justify-between gap-8 pl-2 sm:flex-row sm:gap-11">
                   <div className="flex flex-col items-center justify-end gap-2 sm:items-start">
-                    <span id="total-of-projects" className="text-2xl font-semibold text-gray-700">
+                    <span
+                      id="total-of-projects"
+                      className={cx('text-xl font-semibold leading-6', {
+                        'text-black': status !== OpenCallStatus.Closed,
+                        'text-gray-600': status === OpenCallStatus.Closed,
+                      })}
+                    >
                       {openCallRange.deadline}
                     </span>
-                    <span aria-labelledby="total-of-projects" className="text-gray-400">
+                    <span aria-labelledby="total-of-projects" className="leading-4 text-gray-400">
                       <FormattedMessage defaultMessage="Deadline" id="8/Da7A" />
                     </span>
                   </div>
@@ -175,7 +181,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                 </div>
               </>
 
-              <div className="flex flex-col justify-between gap-4 lg:flex-row mt-7">
+              <div className="flex flex-col justify-center gap-4 sm:gap-2 sm:flex-row mt-7">
                 <Button
                   className="justify-center"
                   theme="secondary-green"
@@ -187,7 +193,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                   <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
                 </Button>
                 <Button
-                  className="w-full lg:max-w-[200px] justify-center"
+                  className="justify-center flex-grow"
                   disabled={
                     !userAccount ||
                     userAccount.type !== UserRoles.ProjectDeveloper ||

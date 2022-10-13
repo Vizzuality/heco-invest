@@ -82,8 +82,8 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
         <h2 className="pl-6 mb-6 font-serif text-2xl text-black lg:text-4xl lg:pl-16 lg:mb-16">
           <FormattedMessage defaultMessage="Funding & development" id="psXhQO" />
         </h2>
-        <div className="flex flex-col p-6 text-white lg:px-16 lg:py-12 lg:space-x-10 lg:flex-row bg-green-dark rounded-t-2xl">
-          <div className="flex flex-col pb-12 pr-10 space-y-8 border-b-2 border-white lg:pb-6 pb:10 lg:border-b-0 lg:w-1/3 lg:border-r-2">
+        <div className="flex flex-col p-6 text-white lg:px-12 lg:py-12 lg:space-x-10 lg:flex-row bg-green-dark rounded-t-2xl">
+          <div className="flex flex-col pb-12 pr-8 space-y-8 border-b border-white lg:pb-6 pb:10 lg:border-b-0 lg:w-2/5 lg:border-r">
             <h3 className="font-serif text-2xl lg:text-3xl">
               {project.looking_for_funding ? (
                 <FormattedMessage defaultMessage="Currently looking for" id="sV+3z0" />
@@ -108,7 +108,7 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
               </div>
             )}
           </div>
-          <div className="flex flex-col mt-12 space-y-4 lg:mt-0 lg:w-2/3">
+          <div className="flex flex-col mt-12 space-y-4 lg:mt-0 lg:w-3/5">
             {project.looking_for_funding ? (
               <>
                 <h3 className="font-serif text-2xl lg:text-3xl">
