@@ -2,7 +2,7 @@ import { useIntl } from 'react-intl';
 
 import { object, string, array, number } from 'yup';
 
-import { getSocialMediaLinksRegex } from 'helpers/pages';
+import { getPartialUrlTransform, getSocialMediaLinksRegex } from 'helpers/pages';
 
 export default (page: number) => {
   const { formatMessage } = useIntl();
@@ -87,26 +87,35 @@ export default (page: number) => {
         messages.contactPhone,
         (value) => !value || !!value.match(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
       ),
-    facebook: string().test(
-      'isSocialMediaLink',
-      messages.social_medias,
-      (value) => !value || !!value.match(facebook)
-    ),
-    linkedin: string().test(
-      'isSocialMediaLink',
-      messages.social_medias,
-      (value) => !value || !!value.match(linkedin)
-    ),
-    instagram: string().test(
-      'isSocialMediaLink',
-      messages.social_medias,
-      (value) => !value || !!value.match(instagram)
-    ),
-    twitter: string().test(
-      'isSocialMediaLink',
-      messages.social_medias,
-      (value) => !value || !!value.match(twitter)
-    ),
+    website: string().url(messages.website).transform(getPartialUrlTransform),
+    facebook: string()
+      .test(
+        'isSocialMediaLink',
+        messages.social_medias,
+        (value) => !value || !!value.match(facebook)
+      )
+      .transform(getPartialUrlTransform),
+    linkedin: string()
+      .test(
+        'isSocialMediaLink',
+        messages.social_medias,
+        (value) => !value || !!value.match(linkedin)
+      )
+      .transform(getPartialUrlTransform),
+    instagram: string()
+      .test(
+        'isSocialMediaLink',
+        messages.social_medias,
+        (value) => !value || !!value.match(instagram)
+      )
+      .transform(getPartialUrlTransform),
+    twitter: string()
+      .test(
+        'isSocialMediaLink',
+        messages.social_medias,
+        (value) => !value || !!value.match(twitter)
+      )
+      .transform(getPartialUrlTransform),
   });
 
   const thirdPageSchema = object().shape({
@@ -115,5 +124,19 @@ export default (page: number) => {
     priority_landscape_ids: array().of(string()),
   });
 
-  return [firstPageSchema, secondPageSchema, thirdPageSchema][page];
+  // We're concatenating all the schemas up to the one representing the current page so that we can
+  // apply all the eventual transforms on all the attributes of the current and previous pages
+  return [firstPageSchema, secondPageSchema, thirdPageSchema].reduce((res, schema, index) => {
+    const isSchemaForFuturePage = index > page;
+
+    // When editing, we're skipping the first page so we exclude the corresponding schema from the
+    // concatenation
+    const isFirstPageSchemaExcluded = page > 0 && index === 0;
+
+    if (isSchemaForFuturePage || isFirstPageSchemaExcluded) {
+      return res;
+    }
+
+    return res.concat(schema);
+  }, object());
 };
