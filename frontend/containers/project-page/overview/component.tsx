@@ -55,8 +55,8 @@ export const Overview: React.FC<OverviewProps> = ({
   return (
     <LayoutContainer className="mb-14 lg:mb-20 pt-18 space-y-36">
       <section className="p-4 font-serif text-white mt-28 sm:p-6 lg:mt-28 lg:p-16 bg-green-dark rounded-2xl">
-        <div className="relative grid w-full grid-cols-1 gap-12 lg:grid-cols-2">
-          <div className="relative z-10 -mb-32 border-8 border-white drop-shadow-xl h-96 -top-28 lg:-top-44 lg:overflow-hidden rounded-xl">
+        <div className="relative grid w-full grid-cols-1 gap-x-10 gap-y-20 lg:grid-cols-2">
+          <div className="relative z-10 -mb-32 border-8 border-white drop-shadow-xl h-96 -top-28 lg:-top-44 lg:-mb-44 lg:overflow-hidden rounded-xl">
             <Map
               onMapViewportChange={onViewportChange}
               viewport={viewport}

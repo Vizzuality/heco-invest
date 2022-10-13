@@ -145,7 +145,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
           )}
           <p>{project.description}</p>
         </div>
-        <div className="lg:mr-4 p-6 bg-white drop-shadow-xl mb-16 lg:pb-8 lg:mb-[-70%] h-full lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0 flex flex-col">
+        <div className="lg:mr-4 p-6 bg-white drop-shadow-xl mb-16 lg:pb-8 lg:mb-[-70%] h-full lg:w-[395px] lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0 flex flex-col">
           {project.looking_for_funding ? (
             <div className="flex flex-col gap-8 md:flex-row">
               <div className="flex flex-col items-start justify-end w-full gap-2 text-center sm:text-left md:min-w-1/2">
@@ -201,7 +201,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </Button>
             <Button
-              className="w-full lg:max-w-[200px] justify-center"
+              className="justify-center w-full"
               disabled={!contacts.length}
               theme="primary-green"
               onClick={() => setIsContactInfoModalOpen(true)}
