@@ -110,8 +110,8 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
               <p>{openCall.description}</p>
             </div>
             <div className="mb-10 flex flex-col justify-start sm:mr-4 p-6 bg-white drop-shadow-xl sm:mb-[-70%] h-full sm:w-[395px] sm:translate-y-[-70%] sm:max-w-1/3 rounded-2xl mt-8 sm:mt-0">
-              <>
-                <div className="flex flex-col gap-8 pl-2 sm:gap-11 sm:flex-row sm:justify-between">
+              <div className="px-2">
+                <div className="flex flex-col gap-8 sm:gap-11 sm:flex-row sm:justify-between">
                   <div className="flex flex-col items-center justify-end gap-2 sm:items-start">
                     <span
                       aria-labelledby="open-call-value"
@@ -148,9 +148,9 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                     </span>
                   </div>
                 </div>
-                <hr className="mt-6 mb-8" />
-                <div className="flex flex-col justify-between gap-8 pl-2 sm:flex-row sm:gap-11">
-                  <div className="flex flex-col items-center justify-end gap-2 sm:items-start">
+                <hr className="my-4" />
+                <div className="flex flex-col justify-between gap-8 sm:flex-row sm:gap-11">
+                  <div className="flex flex-col items-center justify-center gap-2 mb-6 sm:items-start">
                     <span
                       id="total-of-projects"
                       className={cx('text-xl font-semibold leading-6', {
@@ -165,7 +165,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                     </span>
                   </div>
                   {openCallRange.remaining <= 8 && (
-                    <div className="flex flex-col items-center justify-end gap-2 text-center">
+                    <div className="flex flex-col items-center justify-end gap-2 mb-4 text-center">
                       <div className="w-[82px] h-[82px] rounded-full flex justify-center items-center">
                         <OpenCallChart openCallRange={openCallRange} />
                         <p className="absolute max-w-[62px] text-xs font-semibold text-green-dark">
@@ -179,9 +179,9 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                     </div>
                   )}
                 </div>
-              </>
+              </div>
 
-              <div className="flex flex-col justify-center gap-4 sm:gap-2 sm:flex-row mt-7">
+              <div className="flex flex-col justify-center gap-4 sm:gap-2 sm:flex-row">
                 <Button
                   className="justify-center"
                   theme="secondary-green"

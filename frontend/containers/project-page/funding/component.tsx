@@ -83,7 +83,7 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
           <FormattedMessage defaultMessage="Funding & development" id="psXhQO" />
         </h2>
         <div className="flex flex-col p-6 text-white lg:px-12 lg:py-12 lg:space-x-10 lg:flex-row bg-green-dark rounded-t-2xl">
-          <div className="flex flex-col pb-12 pr-8 space-y-8 border-b border-white lg:pb-6 pb:10 lg:border-b-0 lg:w-2/5 lg:border-r">
+          <div className="flex flex-col pb-12 space-y-8 border-b border-white lg:pr-10 lg:pb-6 pb:10 lg:border-b-0 lg:w-2/5 lg:border-r">
             <h3 className="font-serif text-2xl lg:text-3xl">
               {project.looking_for_funding ? (
                 <FormattedMessage defaultMessage="Currently looking for" id="sV+3z0" />
@@ -92,7 +92,7 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
               )}
             </h3>
             {project.looking_for_funding && (
-              <div className="flex flex-col gap-4 font-sans 2xl:gap-02xl:space-x-20 2xl:flex-row">
+              <div className="flex flex-col gap-4 font-sans 2xl:gap-0 2xl:space-x-20 2xl:flex-row">
                 <div className="flex flex-col justify-end space-y-1">
                   <p className="text-xl font-semibold lg:text-2xl">{ticketSizeStr}</p>
                   <p className="text-base whitespace-nowrap">

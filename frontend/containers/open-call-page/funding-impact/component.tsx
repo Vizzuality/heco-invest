@@ -39,7 +39,7 @@ export const OpenCallFundingImpact: FC<OpenCallFundingImpactProps> = ({ openCall
         </LayoutContainer>
       </LayoutContainer>
 
-      <LayoutContainer className="my-18 sm:mt-28 sm:mb-24">
+      <LayoutContainer className="my-18 sm:mt-20 sm:mb-24">
         {!!openCallSdgs.length ? (
           <LayoutContainer>
             <h2 className="mb-4 font-serif text-4xl font-bold sm:mb-10">

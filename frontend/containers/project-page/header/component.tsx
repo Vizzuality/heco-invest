@@ -145,9 +145,9 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
           )}
           <p>{project.description}</p>
         </div>
-        <div className="lg:mr-4 p-6 bg-white drop-shadow-xl mb-16 lg:pb-8 lg:mb-[-70%] h-full lg:w-[395px] lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0 flex flex-col">
+        <div className="lg:mr-4 p-6 bg-white drop-shadow-xl mb-16 lg:mb-[-70%] h-full lg:w-[395px] lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0 flex flex-col">
           {project.looking_for_funding ? (
-            <div className="flex flex-col gap-8 md:flex-row">
+            <div className="flex flex-col gap-8 mb-8 md:flex-row">
               <div className="flex flex-col items-start justify-end w-full gap-2 text-center sm:text-left md:min-w-1/2">
                 <span id="ticket-size" className="text-xl font-semibold">
                   {ticketSizeStr}
@@ -169,7 +169,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
               </div>
             </div>
           ) : (
-            <div className="max-w-sm text-gray-800">
+            <div className="max-w-sm mb-4 text-gray-800">
               <p className="text-lg font-semibold">
                 <FormattedMessage
                   defaultMessage="This project isn’t currently looking for funding."
@@ -185,7 +185,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
             </div>
           )}
 
-          <div className="flex flex-col justify-between mt-5 gap-x-2 gap-y-4 lg:flex-row">
+          <div className="flex flex-col justify-between gap-x-2 gap-y-4 lg:flex-row">
             <Button
               className="justify-center"
               theme="secondary-green"
