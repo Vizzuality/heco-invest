@@ -9,6 +9,7 @@ import { useScrollToElement } from 'hooks/useScrollToElement';
 import Expando from 'components/expando';
 
 import type { FaqExpandoProps } from './types';
+import Button from 'components/button';
 
 export const FaqExpando: FC<FaqExpandoProps> = ({
   className,
@@ -39,15 +40,17 @@ export const FaqExpando: FC<FaqExpandoProps> = ({
         duration={0.4}
         onChange={setIsOpen}
         title={
-          <div className="flex items-center w-full px-6 py-5 text-left">
-            <span className="flex flex-grow text-lg font-semibold text-black">{question}</span>
-            <ChevronUpIcon
-              className={cx({
-                'w-6 h-6 transition-all duration-500': true,
-                'rotate-180': !isOpen,
-                'rotate-0': isOpen,
-              })}
-            />
+          <div className="flex items-center justify-between w-full px-6 py-5 text-left">
+            <span className="text-lg font-semibold text-black">{question}</span>
+            <Button theme="naked" size="smallest">
+              <ChevronUpIcon
+                className={cx({
+                  'w-6 h-6 transition-all duration-500': true,
+                  'rotate-180': !isOpen,
+                  'rotate-0': isOpen,
+                })}
+              />
+            </Button>
           </div>
         }
       >
