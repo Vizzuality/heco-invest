@@ -5,6 +5,8 @@ import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
+import { useBreakpoint } from 'hooks/use-breakpoint';
+
 import Button from 'components/button';
 
 import { BetaVersionDisclaimerProps } from './types';
@@ -22,6 +24,8 @@ const BetaVersionDisclaimer: FC<BetaVersionDisclaimerProps> = ({ className }) =>
     localStorage.setItem('beta-version-disclaimer-closed', 'true');
   };
 
+  const isMobile = !useBreakpoint(true)('md');
+
   return (
     <div
       className={cx(
@@ -38,7 +42,7 @@ const BetaVersionDisclaimer: FC<BetaVersionDisclaimerProps> = ({ className }) =>
           defaultMessage="HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional. <mobile>You are seeing a mobile version of the platform which has limited functionality, please use the desktop version to see the complete version.</mobile>"
           id="8XtmJS"
           values={{
-            mobile: (chunk: string) => <span className="md:hidden">{chunk}</span>,
+            mobile: (chunk: string) => isMobile && <span>{chunk}</span>,
           }}
         />
       </p>

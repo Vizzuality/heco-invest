@@ -7,8 +7,7 @@ import tailwindConfig from 'tailwind.config.js';
 
 const config = resolveConfig(tailwindConfig);
 
-export const useBreakpoint = () => {
-  const [currentBreakpoint, setCurrentBreakpoint] = useState<string | null>(null);
+export const useBreakpoint = (useOuterWidth: boolean = false) => {
   const { screens } = config?.theme;
 
   const breakpoints = Object.keys(screens);
@@ -29,29 +28,36 @@ export const useBreakpoint = () => {
   );
 
   // Use the last breakpoint (largest screen) as the default one.
-  const defaultBreakpoint = breakpointsObjArr[breakpointsObjArr.length - 1];
+  const defaultBreakpointKey = Object.keys(breakpointsObjArr[breakpointsObjArr.length - 1])[0];
+
+  const [currentBreakpoint, setCurrentBreakpoint] = useState<string>(defaultBreakpointKey);
 
   // Here we compute the current breakpoint based on the window width.
   const computeBreakpoint = debounce(
     useCallback(() => {
-      // If no window object we can't get the window width. Return the default breakpoint.
-      if (typeof window !== 'object') return defaultBreakpoint;
+      // If no window object we can't get the window width. Set the the default breakpoint as the current one.
+      if (typeof window === undefined) {
+        setCurrentBreakpoint(defaultBreakpointKey);
+        return;
+      }
 
       // We try to find the current matching endpoint. Note that if the window matches the largest
       // one, this will return `undefined`. That's why the default is set as the last one.
       const matchingBreakpoint = breakpointsObjArr.find((item) => {
         const [_key, value] = Object.entries(item)[0];
-        return window.innerWidth < value;
+
+        const width = useOuterWidth ? window.outerWidth : window.innerWidth;
+        return width < value;
       });
 
       // If we have a match we'll use it, if not the screen must be larger than the last breakpoint;
       // We set the default one then.
       const breakpoint = matchingBreakpoint
         ? Object.keys(matchingBreakpoint)[0]
-        : Object.keys(defaultBreakpoint)[0];
+        : defaultBreakpointKey;
 
       setCurrentBreakpoint(breakpoint);
-    }, [breakpointsObjArr, defaultBreakpoint]),
+    }, [breakpointsObjArr, defaultBreakpointKey, useOuterWidth]),
     250
   );
 
