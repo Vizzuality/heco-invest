@@ -58,6 +58,7 @@ const SignInCode: PageComponent<ProjectDeveloperProps, NakedLayoutProps> = () =>
     handleSubmit,
     setFocus,
     setValue,
+    clearErrors,
   } = useForm<SignInCodeForm>({
     shouldUseNativeValidation: true,
     reValidateMode: 'onChange',
@@ -111,11 +112,16 @@ const SignInCode: PageComponent<ProjectDeveloperProps, NakedLayoutProps> = () =>
   );
 
   const handlePasteCode = (ev: ClipboardEvent<HTMLInputElement>) => {
+    clearErrors();
     const text = ev.clipboardData.getData('text');
     text
       .split('')
       .slice(0, CODE_LENGTH)
-      .forEach((char, index) => setValue(`otp_attempt.${index}`, char));
+      .forEach((char, index) => {
+        setValue(`otp_attempt.${index}`, char, {
+          shouldValidate: true,
+        });
+      });
   };
 
   const onSubmit: SubmitHandler<SignInCodeForm> = (code) => {
