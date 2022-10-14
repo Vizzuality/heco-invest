@@ -7,6 +7,8 @@ import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
+import { GetServerSideProps } from 'next';
+
 import useMe from 'hooks/me';
 
 import { loadI18nMessages } from 'helpers/i18n';
@@ -24,9 +26,7 @@ import { SignIn, SignInCodeForm } from 'types/sign-in';
 import { useSignIn } from 'services/authentication/authService';
 import { useAcceptInvitation, useInvitedUser } from 'services/invitation/invitationService';
 
-export const getServerSideProps = withLocalizedRequests(async (context) => {
-  // Property 'query' does not exist on type 'GetStaticPropsContext<ParsedUrlQuery, PreviewData>'
-  /** @ts-ignore */
+export const getServerSideProps = withLocalizedRequests<GetServerSideProps>(async (context) => {
   const { locale, query } = context;
   //Redirect back to sign in if the required queries are missing
   if (!query.password || !query.email) {
