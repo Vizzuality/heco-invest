@@ -53,10 +53,10 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
     <div className={className}>
       <div className="py-10 bg-center bg-cover md:mx-4 md:px-4 md:py-18 md:rounded-2xl bg-radial-green-dark bg-green-dark min-h-[425px] md:min-h-fit">
         <LayoutContainer className="flex justify-between">
-          <div className="flex flex-col items-center w-full gap-4 md:gap-6 md:items-end md:flex-row md:w-6/12">
-            <div className="relative w-32 h-32 overflow-hidden bg-white md:w-52 md:h-52 rounded-2xl">
+          <div className="flex flex-col items-center w-full gap-4 md:gap-6 md:items-end lg:flex-row md:w-6/12">
+            <div className="relative w-32 h-32 overflow-hidden bg-white aspect-square md:w-52 md:h-52 rounded-2xl">
               <Image
-                className="w-full h-full mx-auto"
+                className="w-full h-full mx-auto aspect-square"
                 src={logo}
                 alt={intl.formatMessage(
                   { defaultMessage: '{organization} logo', id: 'in26xr' },
@@ -90,7 +90,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
           )}
           <p>{text}</p>
         </div>
-        <div className="order-1 md:order-2 flex flex-col justify-start md:mr-4 pt-8 p-6 bg-white drop-shadow-xl md:mb-[-70%] h-full md:translate-y-[-70%] md:max-w-4/12 rounded-2xl -mt-32 md:mt-8">
+        <div className="order-1 md:order-2 flex flex-col justify-start md:mr-4 pt-8 p-6 bg-white drop-shadow-xl md:mb-[-70%] h-full md:translate-y-[-70%] md:w-[395px] md:max-w-4/12 rounded-2xl -mt-32 md:mt-8">
           {typeof totalProjects === 'number' && typeof projectsWaitingFunding === 'number' && (
             <div className="mb-6">
               <div className="flex flex-col gap-8 md:flex-row">
@@ -135,7 +135,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </Button>
             <Button
-              className="flex-grow-[2] md:max-w-[200px] justify-center"
+              className="flex-grow-[3] md:flex-grow-[10] md:max-w-[200px] justify-center px-6"
               theme="primary-green"
               disabled={!contact?.phone && !contact?.email}
               onClick={() => setIsContactInfoModalOpen(true)}
