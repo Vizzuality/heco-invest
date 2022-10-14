@@ -3,9 +3,11 @@ import { FC, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { omitBy } from 'lodash-es';
-
-import { transformFilterInputsToParams, useSearch } from 'helpers/pages';
+import {
+  transformFilterInputsToParams,
+  transformFilterParamsToInputs,
+  useSearch,
+} from 'helpers/pages';
 
 import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
@@ -18,10 +20,13 @@ export const ActiveFilters: FC<ActiveFilterProps> = ({ filters = {}, filtersData
 
   const activeFilters: Enum[] = useMemo(
     () =>
-      Object.entries(filters).reduce((prev, [key, value]) => {
-        const data = !!value && filtersData?.find((data) => data.id === value);
-        if (data) return [...prev, data];
-        return prev;
+      Object.entries(transformFilterParamsToInputs(filters)).reduce((prev, [key, value]) => {
+        const filters =
+          value?.length > 0
+            ? filtersData.filter((data) => data.type === key && value.includes(data.id))
+            : [];
+
+        return [...prev, ...filters];
       }, []),
     [filters, filtersData]
   );
@@ -35,10 +40,12 @@ export const ActiveFilters: FC<ActiveFilterProps> = ({ filters = {}, filtersData
     defaultValues: { activeFilters: activeFilters.map(({ id }) => id) },
   });
 
-  const handleDeleteActiveFilter = (filterId: string) => {
-    const newFilters = omitBy(filters, (value, key) => value === filterId);
-    const newFilterParams = transformFilterInputsToParams(newFilters);
-    doSearch(undefined, newFilterParams);
+  const handleDeleteActiveFilter = (activeFilter: Enum) => {
+    const newFilters = transformFilterParamsToInputs(filters);
+    newFilters[activeFilter.type] = newFilters[activeFilter.type].filter(
+      (value) => value !== activeFilter.id
+    );
+    doSearch(undefined, transformFilterInputsToParams(newFilters));
   };
 
   return (
@@ -54,21 +61,21 @@ export const ActiveFilters: FC<ActiveFilterProps> = ({ filters = {}, filtersData
           errors={errors}
           thresholdToShowSelectAll={Infinity}
         >
-          {activeFilters?.map(({ name, id }) => (
+          {activeFilters?.map((filter) => (
             <Tag
+              key={`${filter.type}-${filter.id}`}
               type="checkbox"
-              name="appliedFilters"
-              id={id}
+              name="active-filters"
+              id={`${filter.type}-${filter.id}`}
               register={register}
               registerOptions={{
-                onChange: () => handleDeleteActiveFilter(id),
+                onChange: () => handleDeleteActiveFilter(filter),
               }}
-              key={id}
               isfilterTag
               checked
               showDeleteIcon
             >
-              {name}
+              {filter.name}
             </Tag>
           ))}
         </TagGroup>

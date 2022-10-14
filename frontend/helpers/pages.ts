@@ -169,7 +169,7 @@ export const transformFilterInputsToParams = (filterInputs: Partial<FilterForm>)
   Object.entries(filterInputs).forEach(([key, value]) => {
     // Just send the used filters
     if (value) {
-      filterParams[`filter[${key}]`] = `${value}`;
+      filterParams[`filter[${key}]`] = `${value.join(',')}`;
     }
   });
   return filterParams;
@@ -181,7 +181,7 @@ export const transformFilterParamsToInputs = (filters: Partial<FilterParams>) =>
     // Just send the used filters
     const inputKey = key.replace(/filter\[|\]/gi, '');
     if (value) {
-      filterInputs[inputKey] = `${value}`;
+      filterInputs[inputKey] = value.split(',').map((value) => `${value}`);
     }
   });
   return filterInputs;
