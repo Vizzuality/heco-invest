@@ -8,6 +8,15 @@ module Backoffice
           column(I18n.t("backoffice.open_calls.index.location")) { |r| [r.municipality&.name, r.department&.name, r.country&.name].compact.join(", ") }
           column(I18n.t("backoffice.open_calls.index.applications")) { |r| r.open_call_applications_count }
           column(I18n.t("backoffice.common.status")) { |r|
+            if r.launched?
+              I18n.t("enum.open_call_status.launched")
+            elsif r.closed?
+              I18n.t("enum.open_call_status.closed")
+            else
+              I18n.t("enum.open_call_status.draft")
+            end
+          }
+          column(I18n.t("backoffice.common.verification")) { |r|
             r.verified? ? I18n.t("backoffice.common.verified") : I18n.t("backoffice.common.unverified")
           }
         end

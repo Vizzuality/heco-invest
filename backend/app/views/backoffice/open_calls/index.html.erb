@@ -19,7 +19,10 @@
       <%= sort_link @q, :open_call_applications_count, t("backoffice.open_calls.index.applications") %>
     </th>
     <th class="min-w-[10rem]">
-      <%= sort_link @q, :verified, t("backoffice.common.status") %>
+      <%= sort_link @q, :status, t("backoffice.common.status") %>
+    </th>
+    <th class="min-w-[10rem]">
+      <%= sort_link @q, :verified, t("backoffice.common.verification") %>
     </th>
     <th>
     </th>
@@ -35,6 +38,12 @@
       <td><%= open_call.investor.name %></td>
       <td><%= [open_call.municipality&.name, open_call.department&.name, open_call.country&.name].compact.join(", ") %></td>
       <td><%= open_call.open_call_applications_count %></td>
+      <td>
+        <%= status_tag :launched, t('enum.open_call_status.launched') if open_call.launched? %>
+        <%= status_tag :closed, t('enum.open_call_status.closed') if open_call.closed? %>
+        <%= status_tag :draft, t('enum.open_call_status.draft') unless open_call.launched? || open_call.closed? %>
+      </td>
+      </td>
       <td>
         <%= status_tag :verified, t('backoffice.common.verified') if open_call.verified?  %>
         <%= status_tag :unverified, t('backoffice.common.unverified') unless open_call.verified?  %>
