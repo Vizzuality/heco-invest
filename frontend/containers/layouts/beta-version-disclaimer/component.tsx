@@ -24,7 +24,7 @@ const BetaVersionDisclaimer: FC<BetaVersionDisclaimerProps> = ({ className }) =>
     localStorage.setItem('beta-version-disclaimer-closed', 'true');
   };
 
-  const isNotMobile = useBreakpoint(true)('md');
+  const isMobile = !useBreakpoint(true)('md');
 
   return (
     <div
@@ -42,7 +42,7 @@ const BetaVersionDisclaimer: FC<BetaVersionDisclaimerProps> = ({ className }) =>
           defaultMessage="HeCo Invest is currently on Beta version. We are still testing and making improvements and for that reason some features may not be fully functional. <mobile>You are seeing a mobile version of the platform which has limited functionality, please use the desktop version to see the complete version.</mobile>"
           id="8XtmJS"
           values={{
-            mobile: (chunk: string) => !isNotMobile && <span>{chunk}</span>,
+            mobile: (chunk: string) => isMobile && <span>{chunk}</span>,
           }}
         />
       </p>
