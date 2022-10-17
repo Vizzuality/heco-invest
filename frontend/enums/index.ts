@@ -8,6 +8,7 @@ export enum Paths {
   Home = '/',
   SignUp = '/sign-up',
   SignIn = '/sign-in',
+  SignInCode = '/sign-in/code',
   SignOut = '/sign-out',
   AccountType = '/sign-up/account-type',
   ForgotPassword = '/sign-in/forgot-password',
@@ -63,6 +64,8 @@ export enum UserRoles {
 export enum Queries {
   /** Session user */
   User = 'user',
+  /** Whether the user has the 2 factors auth */
+  Session2FA = '2fa',
   /** List of project developers */
   ProjectDeveloperList = 'project_developers',
   /** List of favorited project evelopers */

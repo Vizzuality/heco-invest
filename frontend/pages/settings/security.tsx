@@ -6,7 +6,7 @@ import { InferGetStaticPropsType } from 'next';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
-// import Settings2FA from 'containers/settings-security/2fa';
+import Settings2FA from 'containers/settings-security/2fa';
 import SettingsChangePassword from 'containers/settings-security/change-password';
 
 import Head from 'components/head';
@@ -39,7 +39,7 @@ const Information: PageComponent<InformationPageProps, SettingsLayoutProps> = ()
           className="flex flex-col gap-4 mt-6  md:!max-w-2xl xl:!max-w-3xl"
         >
           <SettingsChangePassword />
-          {/* <Settings2FA /> */}
+          <Settings2FA />
         </LayoutContainer>
       </SettingsLayout>
     </ProtectedPage>

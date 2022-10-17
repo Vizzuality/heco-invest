@@ -92,6 +92,9 @@
   "/plMvw": {
     "string": "Project category"
   },
+  "/vHsVH": {
+    "string": "To help keep your account secure, we sent a security code to your email."
+  },
   "0+CmKm": {
     "string": "Find location"
   },
@@ -1389,6 +1392,9 @@
   "NjKSap": {
     "string": "Online presence"
   },
+  "Nn0ig7": {
+    "string": "Insert your code"
+  },
   "NpcyZ1": {
     "string": "Create an attractive project profile with well-defined attributes to intelligently connect with potential funders and investors."
   },
@@ -2303,6 +2309,9 @@
   },
   "ewx2b7": {
     "string": "Launch"
+  },
+  "f1XmxW": {
+    "string": "You need to enter the security code."
   },
   "f5UaDG": {
     "string": "This information will help us understand what you are interested in invest or funding. This information will be <n>public</n>."
