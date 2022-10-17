@@ -211,7 +211,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
               <span className="ml-3">({projects.length})</span>
             </h2>
 
-            <Carousel className="mt-12">
+            <Carousel className="mx-4 mt-12 sm:mx-0">
               {chunk(projects, 3).map((projectsChunk, index) => (
                 <Slide key={`slide-${index}`} className="flex flex-col gap-2">
                   {projectsChunk.map((project) => (
