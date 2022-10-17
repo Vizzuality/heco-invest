@@ -23,7 +23,7 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
       it_behaves_like "with forbidden error", csrf: true, user: -> { create(:user_project_developer) }
 
       let!(:status_open_call) { create :open_call, investor: user.account.investor, status: :draft }
-      let!(:name_open_call) { create :open_call, investor: user.account.investor, name: "Filtered Open Call Name" }
+      let!(:name_open_call) { create :open_call, investor: user.account.investor, name: "Yellow Banana" }
       let!(:country_name_open_call) { create :open_call, investor: user.account.investor, country: create(:country, name: "Filtered Country Name") }
       let!(:department_name_open_call) { create :open_call, investor: user.account.investor, department: create(:department, name: "Filtered Department Name") }
       let!(:municipality_name_open_call) { create :open_call, investor: user.account.investor, municipality: create(:municipality, name: "Filtered Municipality Name") }
@@ -74,8 +74,16 @@ RSpec.describe "API V1 Account Open Calls", type: :request do
           end
         end
 
-        context "when searched by name" do
-          let("filter[full_text]") { "Filtered Open Call Name" }
+        context "when searching by name" do
+          let("filter[full_text]") { "Yellow Banana" }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([name_open_call.id])
+          end
+        end
+
+        context "when searching by partial name" do
+          let("filter[full_text]") { "Ban" }
 
           it "contains only correct records" do
             expect(response_json["data"].pluck("id")).to eq([name_open_call.id])

@@ -4,10 +4,8 @@ RSpec.describe "API V1 Project Maps", type: :request do
   before_all do
     geometry = {type: "Polygon", coordinates: [[[0, 0], [1, 0], [1, 1], [0, 1]]]}
     create :location, :with_geometry, location_type: :priority_landscape, geometry: RGeo::GeoJSON.decode(geometry.to_json)
-    @project = create(:project, name: "yellow banana", category: "non-timber-forest-production", geometry: geometry)
-    create_list(:project, 6, category: "forestry-and-agroforestry") do |project, idx|
-      project.name = "red apple #{idx}"
-    end
+    @project = create(:project, name: "Yellow Banana", category: "non-timber-forest-production", geometry: geometry)
+    create_list(:project, 6, category: "forestry-and-agroforestry")
     @unapproved_project = create(:project, project_developer: create(:project_developer, account: create(:account, :unapproved, users: [create(:user)])))
   end
 
@@ -74,6 +72,10 @@ RSpec.describe "API V1 Project Maps", type: :request do
 
         context "when filtered by partial project name" do
           let("filter[full_text]") { @project.name[0..2] }
+
+          before(:each) do
+            allow(Project).to receive(:translatable_attributes).and_return([:name])
+          end
 
           it "contains only correct records" do
             expect(response_json["data"].pluck("id")).to eq([@project.id])

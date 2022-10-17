@@ -41,15 +41,13 @@ RSpec.describe API::Filterer do
       end
 
       context "when filtered by full_text param" do
-        let(:filters) { {full_text: "banana", language: :en} }
-        let!(:correct_project_en) { create :project, name_en: "yellow banana", language: :en }
-        let!(:correct_project_es) {
-          create :project, name_es: "plátano amarillo", name_en: "yellow banana", language: :es
-        }
-        let!(:incorrect_project) { create :project, name_en: "red apple", language: :en }
+        let(:filters) { {full_text: "TEST", language: :en} }
+        let!(:correct_project) { create :project, name_en: "TEST" }
+        let!(:different_language_project) { create :project, name_es: "TEST" }
+        let!(:different_text_project) { create :project, name_en: "DIFFERENT" }
 
         it "returns only records with correct text in correct language" do
-          expect(subject.call).to match_array([correct_project_en, correct_project_es])
+          expect(subject.call).to match_array([correct_project])
         end
       end
 
