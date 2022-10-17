@@ -19,7 +19,10 @@
         <%= sort_link @q, :priority_landscape_name, t("backoffice.projects.index.priority_landscape") %>
       </th>
       <th class="min-w-[10rem]">
-        <%= sort_link @q, :verified, t("backoffice.common.status") %>
+        <%= sort_link @q, :status, t("backoffice.common.status") %>
+      </th>
+      <th class="min-w-[10rem]">
+        <%= sort_link @q, :verified, t("backoffice.common.verification") %>
       </th>
       <th>
       </th>
@@ -36,8 +39,12 @@
         <td><%= Category.find(p.category).name %></td>
         <td><%= p.priority_landscape&.name %></td>
         <td>
-          <%= status_tag :verified, t('backoffice.common.verified') if p.verified?  %>
-          <%= status_tag :unverified, t('backoffice.common.unverified') unless p.verified?  %>
+          <%= status_tag :published, t('enum.project_status.published') if p.published? %>
+          <%= status_tag :draft, t('enum.project_status.draft') unless p.published? %>
+        </td>
+        <td>
+          <%= status_tag :verified, t('backoffice.common.verified') if p.verified? %>
+          <%= status_tag :unverified, t('backoffice.common.unverified') unless p.verified? %>
         </td>
         <td><%= link_to t("backoffice.common.edit"), edit_backoffice_project_path(p.id), class: "link-button" %></td>
         <td>
