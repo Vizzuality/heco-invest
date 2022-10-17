@@ -43,7 +43,7 @@ export const FaqExpando: FC<FaqExpandoProps> = ({
             <span className="flex flex-grow text-lg font-semibold text-black">{question}</span>
             <ChevronUpIcon
               className={cx({
-                'w-6 h-6 transition-all duration-500': true,
+                'w-6 h-6 transition-all duration-500 shrink-0 ml-2': true,
                 'rotate-180': !isOpen,
                 'rotate-0': isOpen,
               })}
