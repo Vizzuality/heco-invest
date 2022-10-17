@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  pg_search_scope :search, against: [:first_name, :last_name, :email]
+  pg_search_scope :search, against: [:first_name, :last_name, :email], using: {tsearch: {prefix: true}}
 
   devise :two_factor_authenticatable, :invitable, :database_authenticatable, :confirmable, :registerable,
     :recoverable, :rememberable, :validatable, :trackable

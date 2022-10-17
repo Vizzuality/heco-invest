@@ -3,7 +3,7 @@
     "id": "4dd8ee65-6c0d-40eb-9d1e-dcb88b5830ba",
     "type": "project",
     "attributes": {
-      "name": "Project 1"
+      "name": "Yellow Banana"
     },
     "relationships": {
       "project_developer": {
