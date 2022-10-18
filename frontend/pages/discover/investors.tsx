@@ -66,7 +66,7 @@ const InvestorsPage: PageComponent<InvestorsPageProps, DiscoverPageLayoutProps> 
                 <Loading visible={loading} iconClassName="w-10 h-10" />
               </span>
             )}
-            <div className="grid grid-cols-1 gap-6 p-1 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-2 p-1 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
               {investors.map(({ investor_type, name, about, slug, picture, impacts }) => (
                 <ProfileCard
                   profileType="investor"

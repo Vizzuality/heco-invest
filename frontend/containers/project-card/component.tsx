@@ -1,8 +1,9 @@
-import { FC, PointerEvent, useState, useMemo, useCallback, useEffect } from 'react';
+import { FC, PointerEvent, useState, useMemo, useCallback, useEffect, useRef } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
+// import '@tailwindcss/line-clamp';
 import cx from 'classnames';
 
 import Link from 'next/link';
@@ -36,6 +37,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
 
   const intl = useIntl();
   const router = useRouter();
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
 
   const fundProject = useFundProject(project.id);
 
@@ -53,7 +55,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
     },
   } = useEnums();
 
-  const { id, slug, name } = project;
+  const { id, slug, name, description } = project;
   const category = allCategories?.find(({ id }) => id === project.category);
   const impact = useMemo(() => projectImpact(project)['municipality'], [project]);
   const link = `${Paths.Project}/${slug}`;
@@ -131,7 +133,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
       id={id}
       aria-label={intl.formatMessage({ defaultMessage: '{name} project', id: 'JWYapR' }, { name })}
       role="group"
-      className={cx({
+      className={cx('p-4 bg-white border shadow rounded-2xl gap-y-2 sm:gap-x-4 overflow-hidden', {
         [className]: !!className,
         'cursor-pointer': !canFund,
         'transition rounded-2xl': true,
@@ -144,9 +146,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
     >
       <div
         className={cx({
-          'relative flex flex-col sm:flex-row p-4 bg-white border shadow rounded-2xl gap-y-2 sm:gap-x-4':
-            true,
-          'rounded-2xl overflow-hidden': true,
+          'relative flex gap-x-2': true,
         })}
       >
         <div className="flex flex-col flex-grow gap-2">
@@ -258,10 +258,18 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           )}
         </div>
         <div>
-          <div className="w-20 h-20 mx-auto aspect-square">
+          <div className="flex-shrink-0 w-20 h-20 mx-auto aspect-square">
             <ImpactChart compactMode={true} category={category?.id} impact={impact} />
           </div>
         </div>
+      </div>
+      <div>
+        <p
+          className="mt-2 text-gray-900 whitespace-normal sm:hidden line-clamp-4 max-h-24 overflow-ellipsis"
+          ref={descriptionRef}
+        >
+          {description}
+        </p>
       </div>
     </div>
   );

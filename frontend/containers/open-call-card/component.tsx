@@ -10,7 +10,6 @@ import { useRouter } from 'next/router';
 
 import { usePress, useFocusWithin } from '@react-aria/interactions';
 import dayjs from 'dayjs';
-import { truncate } from 'lodash-es';
 
 import Tag from 'components/tag';
 import { OpenCallStatus, Paths } from 'enums';
@@ -66,11 +65,6 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
 
   const deadlineStr = useMemo(() => dayjs(closingAt).format('D MMMM'), [closingAt]);
 
-  const truncatedDescription = useMemo(
-    () => truncate(description, { length: 300, omission: ' ...' }),
-    [description]
-  );
-
   const tags = allImpacts
     ?.filter((impact) => investor?.impacts?.includes(impact.id))
     .map(({ name }) => name);
@@ -119,38 +113,40 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
             </Link>
           </div>
         </div>
-        <div className="flex items-center h-5 text-sm text-gray-600 min-h-fit">
-          <div
-            aria-label={intl.formatMessage({
-              defaultMessage: 'Financial instruments available',
-              id: 'EFVd2S',
-            })}
-          >
-            {instrumentTypesStr}
+        <div className="flex flex-col text-sm text-gray-600 sm:items-center sm:h-5 sm:flex-row min-h-fit">
+          <div className="flex">
+            <div
+              aria-label={intl.formatMessage({
+                defaultMessage: 'Financial instruments available',
+                id: 'EFVd2S',
+              })}
+            >
+              {instrumentTypesStr}
+            </div>
+            <span className="mx-2" aria-hidden={true}>
+              &bull;
+            </span>
+            <div
+              aria-label={intl.formatMessage({
+                defaultMessage: 'Max funding',
+                id: 'q7AUEZ',
+              })}
+            >
+              {`< $${maxFunding?.toLocaleString(router.locale)}`}
+            </div>
+            <span className="hidden mx-2 sm:block" aria-hidden={true}>
+              &bull;
+            </span>
           </div>
-          <span className="mx-2" aria-hidden={true}>
-            &bull;
-          </span>
-          <div
-            aria-label={intl.formatMessage({
-              defaultMessage: 'Max funding',
-              id: 'q7AUEZ',
-            })}
-          >
-            {`< $${maxFunding?.toLocaleString(router.locale)}`}
-          </div>
-          <span className="mx-2" aria-hidden={true}>
-            &bull;
-          </span>
           <div>
             <FormattedMessage defaultMessage="Deadline" id="8/Da7A" />: {deadlineStr}
           </div>
         </div>
         <div
-          className="flex items-start flex-grow mt-4"
+          className="flex items-start flex-grow sm:mt-4 line-clamp-4"
           aria-label={intl.formatMessage({ defaultMessage: 'Description', id: 'Q8Qw5B' })}
         >
-          {truncatedDescription}
+          {description}
         </div>
         <div
           className="flex items-center justify-between gap-2 mt-2"
@@ -174,22 +170,24 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
               />
             </span>
           </span>
-          {tags && (
-            <span
-              className="flex flex-wrap items-center justify-end gap-2"
-              role="group"
-              aria-label={intl.formatMessage({
-                defaultMessage: 'Expects to have impact on',
-                id: 'YYMUK5',
-              })}
-            >
-              {tags.map((tag) => (
-                <Tag key={tag} className="text-sm text-green-dark" size="smallest">
-                  {tag}
-                </Tag>
-              ))}
-            </span>
-          )}
+          <div className="hidden sm:block">
+            {tags && (
+              <span
+                className="flex flex-wrap items-center justify-end gap-2"
+                role="group"
+                aria-label={intl.formatMessage({
+                  defaultMessage: 'Expects to have impact on',
+                  id: 'YYMUK5',
+                })}
+              >
+                {tags.map((tag) => (
+                  <Tag key={tag} className="text-sm text-green-dark" size="smallest">
+                    {tag}
+                  </Tag>
+                ))}
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </div>

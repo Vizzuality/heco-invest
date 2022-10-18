@@ -55,7 +55,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
   const projectsListContainerRef = useRef(null);
 
   const intl = useIntl();
-  const { query } = useRouter();
+  const { query, push } = useRouter();
   const { props: paginationProps } = usePagination(meta);
   const breakpoint = useBreakpoint();
 
@@ -78,6 +78,10 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
   }, [query]);
 
   const handleProjectCardClick = async (projectId: string) => {
+    // if (!breakpoint('sm')) {
+    //   push(`${Paths.Project}/${projectId}`);
+    //   return;
+    // }
     const selected = projects.find(({ id }) => id === projectId);
     if (!selected) {
       // if the selected project from the map is not in the filtered list, the project will be fetched
@@ -120,10 +124,9 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
                   <Loading visible={loading} iconClassName="w-10 h-10" />
                 </span>
               )}
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-2">
                 {projects.map((project) => (
                   <ProjectCard
-                    className="m-1"
                     key={project.id}
                     active={project.id === selectedProject?.id}
                     project={project}
@@ -174,6 +177,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
               })}
               open={!!selectedProject}
               onDismiss={handleProjectDetailsClose}
+              className="w-screen h-screen !max-h-screen rounded-none sm:rounded-lg left-0"
             >
               <ProjectDetails project={selectedProject} onClose={handleProjectDetailsClose} />
             </Modal>

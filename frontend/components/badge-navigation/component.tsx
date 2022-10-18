@@ -23,15 +23,20 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
     return (
       <span
         className={cx({
-          'flex items-center justify-center  text-sm font-semibold min-w-min': true,
-          'bg-green-dark text-white w-5 h-5': theme === 'default',
-          'w-6 h-6 px-1': theme === 'simple',
-          'rounded-sm': type === 'square',
-          'rounded-full border border-beige': type === 'pill',
+          'flex items-center justify-center text-xs sm:text-sm font-semibold min-w-min': true,
+          'w-5 h-5': theme === 'default',
+          'sm:bg-green-dark bg-white sm:text-white text-green-dark':
+            theme === 'default' && isActive,
           'bg-beige text-gray-700': !isActive && theme === 'default',
+
+          'w-6 h-6 px-1': theme === 'simple',
           border: theme === 'simple',
           'bg-white ': isActive && theme === 'simple',
           'text-black': theme === 'simple',
+
+          'sm:rounded-sm': type === 'square',
+          'rounded-full border border-beige': type === 'pill',
+
           'ml-2.5': badgePosition === 'right',
           'mr-2.5': badgePosition === 'left',
         })}
@@ -60,7 +65,7 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
                 key={link}
                 className={cx({
                   'relative transition-all': true,
-                  'after:inline after:bg-green-dark after:absolute after:left-0 after:bottom-0':
+                  'after:inline after:bg-white sm:after:bg-green-dark after:absolute after:left-0 after:bottom-0':
                     isActive && theme === 'default' && type === 'square',
                   'after:h-full after:w-0.5':
                     isActive && theme === 'default' && orientation === 'vertical',
@@ -85,9 +90,10 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
                         'border border-beige': type === 'pill' && theme !== 'simple',
                         'bg-white shadow-sm': isActive && type === 'pill' && theme === 'default',
                         'hover:text-green-dark': theme === 'default',
-                        'text-green-dark':
+                        'text-white sm:text-green-dark':
                           (isActive && theme === 'default') || (!isActive && theme === 'simple'),
-                        'text-gray-700': !isActive && theme === 'default',
+                        'text-gray-700 font-normal sm:font-semibold':
+                          !isActive && theme === 'default',
                         'hover:text-black': theme === 'simple',
                         'text-black': isActive && theme === 'simple',
                         'font-semibold': theme === 'default' || (isActive && theme === 'simple'),
