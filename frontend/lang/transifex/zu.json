@@ -17,9 +17,6 @@
   "+K9fF0": {
     "string": "Project Developers"
   },
-  "+USuwC": {
-    "string": "Funding available per project"
-  },
   "+UvbBR": {
     "string": "You need to confirm the password."
   },
@@ -91,9 +88,6 @@
   },
   "/plMvw": {
     "string": "Project category"
-  },
-  "/vHsVH": {
-    "string": "To help keep your account secure, we sent a security code to your email."
   },
   "0+CmKm": {
     "string": "Find location"
@@ -608,9 +602,6 @@
   "9CDBQg": {
     "string": "The solution proposed"
   },
-  "9EgeeX": {
-    "string": "I agree with the <a>Terms and Privacy Policy</a>."
-  },
   "9Er2U2": {
     "string": "Investments in HeCo will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
   },
@@ -835,6 +826,9 @@
   },
   "DWQSFT": {
     "string": "Use left and right to toggle between focused values, press backspace to remove the currently focused value"
+  },
+  "DY7X+2": {
+    "string": "To help keep your account secure, we sent a security code to your email."
   },
   "DYbC4X": {
     "string": "Total <span>{numOpenCallApplications}</span> {numOpenCallApplications, plural, one {application} other {applications}}"
@@ -1081,6 +1075,9 @@
   },
   "HtMY9H": {
     "string": "Type your message"
+  },
+  "HwlCeB": {
+    "string": "You need to enter the {number} digits security code."
   },
   "HyAD0J": {
     "string": "{numItems} of {totalItems} entries"
@@ -1872,6 +1869,9 @@
   "X+46wB": {
     "string": "HeCo priority landscapes"
   },
+  "X0E3iC": {
+    "string": "I agree with the Terms and Privacy Policy."
+  },
   "X2YMUl": {
     "string": "Contact the project developers to know more about the project."
   },
@@ -2310,9 +2310,6 @@
   "ewx2b7": {
     "string": "Launch"
   },
-  "f1XmxW": {
-    "string": "You need to enter the security code."
-  },
   "f5UaDG": {
     "string": "This information will help us understand what you are interested in invest or funding. This information will be <n>public</n>."
   },
@@ -2547,6 +2544,9 @@
   "iwpEth": {
     "string": "Map layers"
   },
+  "j+0U2g": {
+    "string": "Two factor authentication code, digit {digit}"
+  },
   "j4lBL7": {
     "string": "Note: Some filters not apply to all tabs"
   },
@@ -2753,6 +2753,9 @@
   },
   "mEYG82": {
     "string": "Funding information"
+  },
+  "mJ1J28": {
+    "string": "This input must be a number"
   },
   "mMReor": {
     "string": "Go to project page"
@@ -3113,9 +3116,6 @@
   },
   "sbodFR": {
     "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure <n>20 million hectares</n> of sustainable landscape over the next 20 years, through investments in <n>conservation and sustainable development</n>."
-  },
-  "sfFhiy": {
-    "string": "Maximum value"
   },
   "sh7TMQ": {
     "string": "Select the deadline for this open call. This information will be <n>public</n>."
