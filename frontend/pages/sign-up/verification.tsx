@@ -69,6 +69,12 @@ const SignUpVerification: PageComponent<{}, StaticPageLayoutProps> = () => {
                   id="TLmQPG"
                 />
               </p>
+              <p className="mt-4 text-sm">
+                <FormattedMessage
+                  defaultMessage="Use the ‘Resend email’ button below to resend the verification email in case you don’t receive it. Note that you must wait 30 seconds before resending."
+                  id="hwNIf9"
+                />
+              </p>
             </div>
             <Button
               className="mt-6"
