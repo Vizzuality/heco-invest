@@ -42,8 +42,8 @@ RSpec.describe User, type: :model do
         user.send_confirmation_instructions # first send
       }.to have_enqueued_mail(DeviseMailer, :confirmation_instructions)
       expect {
-        travel_to((limit_period - 3.minutes).from_now) { user.send_confirmation_instructions }
-        travel_to((limit_period - 2.minutes).from_now) { user.send_confirmation_instructions }
+        travel_to((limit_period - 30.seconds).from_now) { user.send_confirmation_instructions }
+        travel_to((limit_period - 20.seconds).from_now) { user.send_confirmation_instructions }
       }.not_to have_enqueued_mail(DeviseMailer, :confirmation_instructions)
     end
 
@@ -69,7 +69,7 @@ RSpec.describe User, type: :model do
         travel_to(third_send_time) { user.send_confirmation_instructions } # send
       }.to have_enqueued_mail(DeviseMailer, :confirmation_instructions)
       expect {
-        travel_to(third_send_time + 2.minutes) { user.send_confirmation_instructions } # do not send
+        travel_to(third_send_time + 20.seconds) { user.send_confirmation_instructions } # do not send
       }.not_to have_enqueued_mail(DeviseMailer, :confirmation_instructions)
     end
 
