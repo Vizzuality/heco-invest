@@ -33,7 +33,11 @@ export const TagsGrid: FC<TagsGridProps> = ({ className, rows }: TagsGridProps) 
 
         if (cellType === 'tags') {
           return (
-            <span key={key} aria-labelledby={id} className="flex flex-wrap gap-x-4 gap-y-2">
+            <span
+              key={key}
+              aria-labelledby={id}
+              className="flex flex-wrap gap-x-2 sm:gap-x-4 gap-y-2"
+            >
               {type === 'default' &&
                 tags.map((tag) => <Tag key={tag?.id || tag}>{tag?.name || tag}</Tag>)}
               {type === 'category' &&

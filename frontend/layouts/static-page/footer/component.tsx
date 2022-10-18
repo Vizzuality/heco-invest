@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({
     <footer
       aria-labelledby="footer-heading"
       className={cx({
-        'pt-20 pb-7 bg-gray-900 text-sm text-white': true,
+        'pt-8 sm:pt-20 pb-7 bg-gray-900 text-sm text-white': true,
         [props.className]: !!props.className,
       })}
     >
