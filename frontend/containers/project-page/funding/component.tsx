@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import cx from 'classnames';
+
 import { FundingProps } from 'containers/project-page/funding/types';
 
 import Icon from 'components/icon';
@@ -78,13 +80,13 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
 
   return (
     <section>
-      <LayoutContainer className="mb-20 mt-14 lg:mt-36">
-        <h2 className="pl-6 mb-6 font-serif text-2xl text-black lg:text-4xl lg:pl-16 lg:mb-16">
+      <LayoutContainer className="px-0 mb-10 sm:mb-20 mt-18 lg:mt-36">
+        <h2 className="pl-6 mb-4 font-serif text-4xl text-black sm:mb-6 lg:pl-16 lg:mb-16">
           <FormattedMessage defaultMessage="Funding & development" id="psXhQO" />
         </h2>
-        <div className="flex flex-col p-6 text-white lg:px-12 lg:py-12 lg:space-x-10 lg:flex-row bg-green-dark rounded-t-2xl">
-          <div className="flex flex-col pb-12 space-y-8 border-b border-white lg:pr-10 lg:pb-6 pb:10 lg:border-b-0 lg:w-2/5 lg:border-r">
-            <h3 className="font-serif text-2xl lg:text-3xl">
+        <div className="flex flex-col px-4 py-6 text-white sm:px-12 sm:py-12 lg:space-x-10 lg:flex-row bg-green-dark sm:rounded-t-2xl">
+          <div className="flex flex-col pb-8 space-y-8 border-white lg:pr-10 lg:pb-6 lg:w-2/5 lg:border-r">
+            <h3 className="font-serif text-3xl">
               {project.looking_for_funding ? (
                 <FormattedMessage defaultMessage="Currently looking for" id="sV+3z0" />
               ) : (
@@ -92,26 +94,26 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
               )}
             </h3>
             {project.looking_for_funding && (
-              <div className="flex flex-col gap-4 font-sans 2xl:gap-0 2xl:space-x-20 2xl:flex-row">
-                <div className="flex flex-col justify-end space-y-1">
-                  <p className="text-xl font-semibold lg:text-2xl">{ticketSizeStr}</p>
+              <div className="flex justify-between gap-6 font-sans lg:gap-x-8 xl:gap-x-20">
+                <div className="flex flex-col justify-end space-y-1 lex-g">
+                  <p className="text-2xl font-semibold">{ticketSizeStr}</p>
                   <p className="text-base whitespace-nowrap">
                     <FormattedMessage defaultMessage="Value" id="GufXy5" />
                   </p>
                 </div>
                 <div className="flex flex-col justify-end space-y-1">
-                  <p className="text-xl font-semibold lg:text-2xl">{instrumentTypesStr}</p>
-                  <p className="text-base whitespace-nowrap">
+                  <p className="text-2xl font-semibold">{instrumentTypesStr}</p>
+                  <p className="text-base">
                     <FormattedMessage defaultMessage="Instrument type" id="fDd10o" />
                   </p>
                 </div>
               </div>
             )}
           </div>
-          <div className="flex flex-col mt-12 space-y-4 lg:mt-0 lg:w-3/5">
+          <div className="flex flex-col space-y-4 lg:w-3/5">
             {project.looking_for_funding ? (
               <>
-                <h3 className="font-serif text-2xl lg:text-3xl">
+                <h3 className="font-serif text-3xl">
                   <FormattedMessage defaultMessage="How the money will be used" id="IkUX0b" />
                 </h3>
                 <p className="text-base">{project.funding_plan}</p>
@@ -145,51 +147,63 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
             />
           </span>
         </div>
-        <div className="flex flex-col my-12 space-y-16 lg:my-24 lg:mx-44">
-          <div className="flex flex-col items-center space-y-12 lg:space-y-0 lg:items-stretch lg:flex-row lg:space-x-24">
-            <div>
-              <Icon icon={CLOCK_SVG} className="w-16 h-16" />
-            </div>
-            <div className="flex w-full text-base">
-              <div className="flex flex-col w-1/2 space-y-3">
-                <p className="text-xl font-semibold">
-                  <FormattedMessage
-                    defaultMessage="{duration} months"
-                    values={{ duration: estimated_duration_in_months }}
-                    id="qcsPS9"
-                  />
-                </p>
-                <h4>
-                  <FormattedMessage defaultMessage="Duration of the project" id="5kZ+j+" />
-                </h4>
+        <LayoutContainer>
+          <div className="flex flex-col mt-12 gap-y-12 sm:gap-y-16 lg:my-24 lg:mx-44">
+            <div className="flex items-center gap-y-12 gap-x-4 sm:gap-y-0 sm:items-stretch sm:flex-row sm:space-x-24">
+              <div>
+                <Icon icon={CLOCK_SVG} className="w-16 h-16" />
               </div>
-              <div className="flex flex-col w-1/2 space-y-3">
-                <p className="text-xl font-semibold capitalize">{developmentStageStr}</p>
-                <h4>
-                  <FormattedMessage defaultMessage="Maturity / stage of development" id="Scnx6A" />
-                </h4>
+              <div className="flex flex-col w-full text-base gap-y-6 sm:flex-row">
+                <div className="flex flex-col space-y-3 sm:w-1/2">
+                  <p className="text-xl font-semibold">
+                    <FormattedMessage
+                      defaultMessage="{duration} months"
+                      values={{ duration: estimated_duration_in_months }}
+                      id="qcsPS9"
+                    />
+                  </p>
+                  <h4 className="text-gray-600">
+                    <FormattedMessage defaultMessage="Duration of the project" id="5kZ+j+" />
+                  </h4>
+                </div>
+                <div className="flex flex-col space-y-3 sm:w-1/2">
+                  <p className="text-xl font-semibold capitalize">{developmentStageStr}</p>
+                  <h4 className="text-gray-600">
+                    <FormattedMessage
+                      defaultMessage="Maturity / stage of development"
+                      id="Scnx6A"
+                    />
+                  </h4>
+                </div>
               </div>
             </div>
-          </div>
-          {FUNDING_CONTENT.map(({ id, title, description, icon }) => {
-            if (!description) return;
+            {FUNDING_CONTENT.map(({ id, title, description, icon }) => {
+              if (!description) return;
 
-            return (
-              <div
-                key={id}
-                className="flex flex-col items-center space-y-12 lg:space-y-0 lg:items-stretch lg:flex-row lg:space-x-24"
-              >
-                <div>
-                  <Icon icon={icon} className="w-16 h-16" />
+              return (
+                <div
+                  key={id}
+                  className="flex flex-col gap-y-6 sm:gap-y-0 sm:items-stretch sm:flex-row sm:space-x-24"
+                >
+                  <div className="flex gap-x-4">
+                    <Icon icon={icon} className="flex-shrink-0 w-16 h-16" />
+                    <h3 className="font-serif text-2xl sm:hidden sm:text-3xl">{title}</h3>
+                  </div>
+                  <div className="flex flex-col gap-y-4">
+                    <h3 className="hidden font-serif text-2xl sm:block sm:text-3xl">{title}</h3>
+                    <p
+                      className={cx('font-sans text-base text-gray-600', {
+                        'break-all': id === 'relevant_links',
+                      })}
+                    >
+                      {description}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex flex-col space-y-4">
-                  <h3 className="font-serif text-2xl lg:text-3xl">{title}</h3>
-                  <p className="font-sans text-base">{description}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </LayoutContainer>
       </LayoutContainer>
     </section>
   );

@@ -48,11 +48,11 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
 
   return (
     <section>
-      <LayoutContainer className="space-y-6 lg:mt-36">
-        <h2 className="pl-6 font-serif text-2xl text-black lg:text-4xl lg:pl-16 lg:mb-10">
+      <LayoutContainer className="px-0 space-y-4 sm:space-y-6 lg:mt-36">
+        <h2 className="pl-6 font-serif text-4xl font-bold text-black lg:pl-16 lg:mb-10">
           <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
         </h2>
-        <div className="flex-col p-6 space-y-8 font-sans lg:space-y-24 lg:p-16 lg:justify-between lg:flex bg-background-greenLight rounded-2xl">
+        <div className="flex-col p-6 space-y-10 font-sans lg:space-y-24 lg:p-16 lg:justify-between lg:flex bg-background-greenLight sm:rounded-2xl">
           <div className="flex flex-col justify-between space-y-6 lg:space-y-0 lg:space-x-32 lg:flex-row">
             <div className="flex flex-col space-y-6 lg:w-1/2">
               <div className="flex flex-col space-y-6">
@@ -121,7 +121,7 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
                 <button
                   onClick={() => setImpactModalOpen(true)}
                   type="button"
-                  className="underline hover:no-underline text-green-dark pointer"
+                  className="hidden underline sm:block hover:no-underline text-green-dark pointer"
                 >
                   <FormattedMessage defaultMessage="How is the impact calculated?" id="9cE0nR" />
                 </button>
@@ -155,6 +155,15 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
             </div>
             <div className="my-8 lg:mb-0 lg:w-1/2">
               <ImpactChart category={project.category} impact={impact} />
+            </div>
+            <div className="flex justify-center">
+              <button
+                onClick={() => setImpactModalOpen(true)}
+                type="button"
+                className="block underline sm:hidden hover:no-underline text-green-dark pointer"
+              >
+                <FormattedMessage defaultMessage="How is the impact calculated?" id="9cE0nR" />
+              </button>
             </div>
           </div>
         </div>

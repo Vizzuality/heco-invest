@@ -202,7 +202,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
             </Button>
             <Button
               className="justify-center w-full"
-              disabled={!contacts.length}
+              disabled={!contacts?.length}
               theme="primary-green"
               onClick={() => setIsContactInfoModalOpen(true)}
             >

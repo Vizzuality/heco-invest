@@ -112,7 +112,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
         >
           {truncatedDescription}
         </div>
-        {tags && (
+        {!!tags.length && (
           <div
             className="flex flex-wrap gap-2 mt-3"
             role="group"
