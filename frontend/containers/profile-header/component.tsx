@@ -120,7 +120,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
             <WebsiteSocial className="max-w-md mb-8 md:mb-10" website={website} social={social} />
           )}
 
-          <div className="flex flex-wrap justify-between gap-4">
+          <div className="flex flex-wrap justify-between gap-x-4 gap-y-2">
             <Button
               className="justify-center flex-grow-[1]"
               theme="secondary-green"
