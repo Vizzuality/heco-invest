@@ -49,12 +49,66 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
     setLogo(logoProp);
   }, [logoProp]);
 
+  const ContactCard = ({ className }) => (
+    <div
+      className={`flex flex-col justify-start lg:mr-4 pt-8 p-6 bg-white drop-shadow-xl h-full lg:w-[395px] lg:max-w-4/12 rounded-2xl lg:mt-8 ${className}`}
+    >
+      {typeof totalProjects === 'number' && typeof projectsWaitingFunding === 'number' && (
+        <div className="mb-6">
+          <div className="flex flex-col gap-8 lg:flex-row">
+            <div className="flex flex-col items-center w-full gap-2 text-center lg:min-w-1/2">
+              <span id="total-of-projects" className="text-2xl font-semibold">
+                {totalProjects}
+              </span>
+              <span aria-labelledby="total-of-projects" className="text-gray-400">
+                <FormattedMessage defaultMessage="Total of projects" id="KGREXT" />
+              </span>
+            </div>
+            <div className="flex flex-col items-center w-full gap-2 text-center lg:min-w-1/2">
+              <span id="num-projects-waiting-funding" className="text-2xl font-semibold">
+                {projectsWaitingFunding}
+              </span>
+              <span aria-labelledby="num-projects-waiting-funding" className="text-gray-400">
+                <FormattedMessage defaultMessage="Projects waiting funding" id="hxIQ/8" />
+              </span>
+            </div>
+          </div>
+          <hr className="mt-6 mb-8" />
+        </div>
+      )}
+      {(!!website || !!social?.length) && (
+        <WebsiteSocial className="max-w-lg mb-8 lg:mb-10" website={website} social={social} />
+      )}
+      <div className="flex flex-wrap justify-between gap-4">
+        <Button
+          className="justify-center flex-grow-[1]"
+          theme="secondary-green"
+          onClick={onFavoriteClick}
+          disabled={!user || favoriteLoading}
+          aria-pressed={isFavorite}
+        >
+          <Icon icon={HeartIcon} className={cx('w-4 mr-3', { 'fill-green-dark': isFavorite })} />
+          <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
+        </Button>
+        <Button
+          className="flex-grow-[3] lg:flex-grow-[10] lg:max-w-[200px] justify-center px-6"
+          theme="primary-green"
+          disabled={!contact?.phone && !contact?.email}
+          onClick={() => setIsContactInfoModalOpen(true)}
+        >
+          <FormattedMessage defaultMessage="Contact" id="zFegDD" />
+        </Button>
+      </div>
+      <ShareIcons title={title} />
+    </div>
+  );
+
   return (
     <div className={className}>
-      <div className="py-10 lg:mx-0 bg-center bg-cover md:mx-4 md:px-4 md:py-18 md:rounded-2xl bg-radial-green-dark bg-green-dark min-h-[425px] md:min-h-fit">
-        <LayoutContainer className="flex justify-between">
-          <div className="flex flex-col items-center w-full gap-4 md:gap-6 md:items-start lg:flex-row md:w-6/12">
-            <div className="relative w-32 h-32 overflow-hidden bg-white aspect-square md:w-52 md:h-52 rounded-2xl">
+      <div className="pt-10 mb-40 bg-center bg-cover lg:mb-0 lg:py-10 lg:mx-4 lg:px-4 lg:pt-18 sm:rounded-2xl bg-radial-green-dark bg-green-dark">
+        <LayoutContainer>
+          <div className="flex flex-col items-center w-full gap-4 lg:gap-6 lg:items-start lg:flex-row lg:w-6/12">
+            <div className="relative w-32 h-32 overflow-hidden bg-white aspect-square lg:w-52 lg:h-52 rounded-2xl">
               <Image
                 className="w-full h-full mx-auto aspect-square"
                 src={logo}
@@ -67,15 +121,18 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                 onError={() => setLogo('/images/placeholders/profile-logo.png')}
               />
             </div>
-            <div className="-mb-2 text-center md:mb-4 md:text-left">
+            <div className="-mb-2 text-center lg:text-left">
               <h1 className="font-serif text-3xl text-white">{title}</h1>
               <p className="mt-2 text-xl text-gray-400">{subtitle}</p>
             </div>
           </div>
+          <div className="lg:hidden">
+            <ContactCard className="-mt-12 translate-y-20" />
+          </div>
         </LayoutContainer>
       </div>
-      <LayoutContainer className="flex flex-col justify-between md:mt-8 md:flex-row">
-        <div className="order-2 w-full mt-20 md:w-6/12 md:order-1 md:mt-0">
+      <LayoutContainer className="justify-between lg:flex">
+        <div className="w-full lg:w-6/12 lg:mt-8">
           {originalLanguage && (
             <span className="block mb-4 text-sm text-gray-400">
               <FormattedMessage
@@ -90,60 +147,8 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
           )}
           <p>{text}</p>
         </div>
-        <div className="order-1 md:order-2 flex flex-col justify-start md:mr-4 pt-8 p-6 bg-white drop-shadow-xl md:mb-[-70%] h-full md:translate-y-[-70%] md:w-[395px] md:max-w-4/12 rounded-2xl -mt-32 md:mt-8">
-          {typeof totalProjects === 'number' && typeof projectsWaitingFunding === 'number' && (
-            <div className="mb-6">
-              <div className="flex flex-col gap-8 md:flex-row">
-                <div className="flex flex-col items-center w-full gap-2 text-center md:min-w-1/2">
-                  <span id="total-of-projects" className="text-2xl font-semibold">
-                    {totalProjects}
-                  </span>
-                  <span aria-labelledby="total-of-projects" className="text-gray-400">
-                    <FormattedMessage defaultMessage="Total of projects" id="KGREXT" />
-                  </span>
-                </div>
-                <div className="flex flex-col items-center w-full gap-2 text-center md:min-w-1/2">
-                  <span id="num-projects-waiting-funding" className="text-2xl font-semibold">
-                    {projectsWaitingFunding}
-                  </span>
-                  <span aria-labelledby="num-projects-waiting-funding" className="text-gray-400">
-                    <FormattedMessage defaultMessage="Projects waiting funding" id="hxIQ/8" />
-                  </span>
-                </div>
-              </div>
-
-              <hr className="mt-6 mb-8" />
-            </div>
-          )}
-
-          {(!!website || !!social?.length) && (
-            <WebsiteSocial className="max-w-md mb-8 md:mb-10" website={website} social={social} />
-          )}
-
-          <div className="flex flex-wrap justify-between gap-4">
-            <Button
-              className="justify-center flex-grow-[1]"
-              theme="secondary-green"
-              onClick={onFavoriteClick}
-              disabled={!user || favoriteLoading}
-              aria-pressed={isFavorite}
-            >
-              <Icon
-                icon={HeartIcon}
-                className={cx('w-4 mr-3', { 'fill-green-dark': isFavorite })}
-              />
-              <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
-            </Button>
-            <Button
-              className="flex-grow-[3] md:flex-grow-[10] md:max-w-[200px] justify-center px-6"
-              theme="primary-green"
-              disabled={!contact?.phone && !contact?.email}
-              onClick={() => setIsContactInfoModalOpen(true)}
-            >
-              <FormattedMessage defaultMessage="Contact" id="zFegDD" />
-            </Button>
-          </div>
-          <ShareIcons title={title} />
+        <div className="hidden lg:block">
+          <ContactCard className="order-1 lg:order-2 lg:my-[calc(-30%-32px)] translate-y-[calc(-30%-32px)]" />
         </div>
       </LayoutContainer>
       <ContactInformationModal

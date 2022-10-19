@@ -173,52 +173,57 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
         />
       </LayoutContainer>
 
-      <LayoutContainer layout="narrow" className="mb-10 sm:mb-20 mt-18 sm:mt-24 md:mt-40">
-        <section aria-labelledby="profile-investment-info">
-          <h2
-            id="profile-investment-info"
-            className="font-serif text-3xl font-semibold text-green-dark"
-          >
-            <FormattedMessage defaultMessage="Investment info" id="m3Dnav" />
-          </h2>
+      <LayoutContainer>
+        <LayoutContainer
+          layout="narrow"
+          className="px-0 !max-w-4xl mb-10 sm:mb-20 mt-18 sm:mt-24 md:mt-40"
+        >
+          <section aria-labelledby="profile-investment-info">
+            <h2
+              id="profile-investment-info"
+              className="font-serif text-3xl font-semibold text-green-dark"
+            >
+              <FormattedMessage defaultMessage="Investment info" id="m3Dnav" />
+            </h2>
 
-          <TagsGrid className="mt-8 sm:mt-10 md:mt-14" rows={tagsGridRows} />
+            <TagsGrid className="mt-8 sm:mt-10 md:mt-14" rows={tagsGridRows} />
 
-          {!!sdgs && (
-            <>
-              <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
-                <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
-              </h3>
-              <SDGs
-                className="my-3"
-                sdgs={allSdgs.filter(({ id }) => sdgs?.includes(Number(id)))}
-                size="large"
-              />
-            </>
-          )}
+            {!!sdgs && (
+              <>
+                <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
+                  <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
+                </h3>
+                <SDGs
+                  className="my-3"
+                  sdgs={allSdgs.filter(({ id }) => sdgs?.includes(Number(id)))}
+                  size="large"
+                />
+              </>
+            )}
 
-          {!!mission && (
-            <>
-              <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
-                <FormattedMessage defaultMessage="Mission" id="RXoqkD" />
-              </h3>
-              <p className="my-3">{mission}</p>
-            </>
-          )}
+            {!!mission && (
+              <>
+                <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
+                  <FormattedMessage defaultMessage="Mission" id="RXoqkD" />
+                </h3>
+                <p className="my-3">{mission}</p>
+              </>
+            )}
 
-          {!!prioritized_projects_description && (
-            <>
-              <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
-                <FormattedMessage defaultMessage="Type of prioritized projects" id="5y6ZTQ" />
-              </h3>
-              <p className="my-3">{prioritized_projects_description}</p>
-            </>
-          )}
-          <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
-            <FormattedMessage defaultMessage="Other information" id="kX7oGR" />
-          </h3>
-          <p className="my-3">{other_information}</p>
-        </section>
+            {!!prioritized_projects_description && (
+              <>
+                <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
+                  <FormattedMessage defaultMessage="Type of prioritized projects" id="5y6ZTQ" />
+                </h3>
+                <p className="my-3">{prioritized_projects_description}</p>
+              </>
+            )}
+            <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
+              <FormattedMessage defaultMessage="Other information" id="kX7oGR" />
+            </h3>
+            <p className="my-3">{other_information}</p>
+          </section>
+        </LayoutContainer>
       </LayoutContainer>
     </>
   );
