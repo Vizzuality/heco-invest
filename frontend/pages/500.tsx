@@ -45,7 +45,7 @@ const InternalError: PageComponent<InternalErrorProps, NakedLayoutProps> = () =>
           <h1 className="mt-10 mb-4 font-serif text-3xl text-green-dark">
             <FormattedMessage defaultMessage="Internal server error" id="XBoahx" />
           </h1>
-          <p className="underline">
+          <p>
             <FormattedMessage
               defaultMessage="Something went wrong. We are working on fixing the problem."
               id="qeQuNf"

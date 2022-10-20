@@ -45,7 +45,7 @@ const InternalError: PageComponent<InternalErrorProps, NakedLayoutProps> = () =>
           <h1 className="mt-10 mb-4 font-serif text-3xl text-green-dark">
             <FormattedMessage defaultMessage="Page not found" id="QRccCM" />
           </h1>
-          <p className="underline">
+          <p>
             <FormattedMessage
               defaultMessage="It looks like the link is broken or the page has been removed."
               id="oD3qdW"
