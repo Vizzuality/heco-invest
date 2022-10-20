@@ -38,14 +38,12 @@ export const WebsiteSocial: FC<WebsiteSocialProps> = ({
   return (
     <div
       className={cx({
-        'grid gap-y-0 sm:gap-y-3 gap-x-4 md:gap-x-12 break-word grid-cols-1 sm:grid-cols-1fr-auto md:grid-cols-auto-1fr':
-          true,
         [className]: !!className,
       })}
     >
       {website && (
-        <>
-          <span className="mt-4 text-gray-800 sm:mt-0">
+        <div className="flex flex-wrap justify-between gap-2">
+          <span className="text-gray-800">
             <FormattedMessage defaultMessage="Website" id="JkLHGw" />
           </span>
           <span className="break-all md:break-normal">
@@ -59,15 +57,15 @@ export const WebsiteSocial: FC<WebsiteSocialProps> = ({
               </a>
             </Link>
           </span>
-        </>
+        </div>
       )}
 
       {sortedSocialLinks.length > 0 && (
-        <>
-          <span className="mt-4 text-gray-800 sm:mt-0">
+        <div className="flex flex-wrap justify-between gap-2 mt-3">
+          <span className="text-gray-800">
             <FormattedMessage defaultMessage="Reach them in" id="G9iCfx" />
           </span>
-          <span className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
             {sortedSocialLinks.map(({ id, url, icon, title }) => (
               <Link key={id} href={url}>
                 <a
@@ -92,8 +90,8 @@ export const WebsiteSocial: FC<WebsiteSocialProps> = ({
                 </a>
               </Link>
             ))}
-          </span>
-        </>
+          </div>
+        </div>
       )}
     </div>
   );
