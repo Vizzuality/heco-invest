@@ -94,7 +94,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
       end
     end
 
-    context "when searching" do
+    context "when searching by name" do
       it "shows only found project developers" do
         expect(page).to have_text("Super PD Enterprise")
         expect(page).to have_text("Unapproved PD Enterprise")
@@ -102,6 +102,17 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
         find("form.project_developer_search button").click
         expect(page).to have_text("Super PD Enterprise")
         expect(page).not_to have_text("Unapproved PD Enterprise")
+      end
+    end
+
+    context "when searching by partial name" do
+      it "shows only found project developers" do
+        expect(page).to have_text("Super PD Enterprise")
+        expect(page).to have_text("Unapproved PD Enterprise")
+        fill_in :q_filter_full_text, with: "Enter"
+        find("form.project_developer_search button").click
+        expect(page).to have_text("Super PD Enterprise")
+        expect(page).to have_text("Unapproved PD Enterprise")
       end
     end
 

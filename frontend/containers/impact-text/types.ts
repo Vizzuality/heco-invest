@@ -11,6 +11,4 @@ export type ImpactTextProps = {
   impact: Record<Impacts | 'total', number>;
   /** Whether to display a link to the FAQ. Defaults to `false`. */
   linkToFAQ?: boolean;
-  /** Whether to display a shorter version of the text. Defaults to `false`. */
-  shortText?: boolean;
 };

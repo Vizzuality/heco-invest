@@ -46,8 +46,39 @@ RSpec.describe API::Filterer do
         let!(:different_language_project) { create :project, name_es: "TEST" }
         let!(:different_text_project) { create :project, name_en: "DIFFERENT" }
 
-        it "returns only records with correct text at correct language" do
-          expect(subject.call).to eq([correct_project])
+        it "returns only records with correct text in correct language" do
+          expect(subject.call).to match_array([correct_project])
+        end
+      end
+
+      context "when filtered by partial prefix full_text param" do
+        before(:each) do
+          allow(Project).to receive(:translatable_attributes).and_return([:name])
+        end
+        let(:filters) { {full_text: "ba", language: :en} }
+        let!(:correct_project_en) { create :project, name_en: "yellow banana", language: :en }
+        let!(:correct_project_es) {
+          create :project, name_es: "plátano amarillo", name_en: "yellow banana", language: :es
+        }
+        let!(:incorrect_project) { create :project, name_en: "red apple", language: :en }
+
+        it "returns only records with correct text in correct language" do
+          expect(subject.call).to match_array([correct_project_en, correct_project_es])
+        end
+      end
+
+      context "when filtered by partial non-prefix full_text param" do
+        before(:each) do
+          allow(Project).to receive(:translatable_attributes).and_return([:name])
+        end
+        let(:filters) { {full_text: "na", language: :en} }
+        let!(:in_correct_project_en) { create :project, name_en: "yellow banana", language: :en }
+        let!(:in_correct_project_es) {
+          create :project, name_es: "plátano amarillo", name_en: "yellow banana", language: :es
+        }
+
+        it "returns only records with correct text in correct language" do
+          expect(subject.call).to match_array([])
         end
       end
 

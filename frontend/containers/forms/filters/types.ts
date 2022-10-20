@@ -19,10 +19,10 @@ export type FilterParams = {
 };
 
 export type FilterForm = {
-  category: string;
-  instrument_type: string;
-  ticket_size: string;
+  category: string[];
+  instrument_type: string[];
+  ticket_size: string[];
   // only_verified: boolean; VERIFICATION FILTERS: HIDDEN
-  sdg: string;
-  impact: string;
+  sdg: string[];
+  impact: string[];
 };

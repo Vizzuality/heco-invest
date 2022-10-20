@@ -2,8 +2,12 @@ require "system_helper"
 
 RSpec.describe "Backoffice: Users", type: :system do
   let!(:admin) { create(:admin, email: "admin@example.com", password: "SuperSecret6", first_name: "Admin", last_name: "Example") }
-  let!(:owner) { create(:project_developer).owner }
-  let!(:user) { create :user, account: create(:account, language: "pt") }
+  let!(:owner) do
+    user = create :user, email: "yellow@banana.com", first_name: "Yellow", last_name: "Banana"
+    create(:project_developer, account: create(:account, owner: user))
+    user
+  end
+  let!(:user) { create :user, email: "red@apple.com", first_name: "Red", last_name: "Apple", account: create(:account, language: "pt") }
 
   before { sign_in admin }
 
@@ -31,11 +35,22 @@ RSpec.describe "Backoffice: Users", type: :system do
       end
     end
 
-    context "when searching" do
+    context "when searching by full name" do
       it "shows only found users" do
         expect(page).to have_text(owner.full_name)
         expect(page).to have_text(user.full_name)
         fill_in :q_filter_full_text, with: owner.full_name
+        find("form.user_search button").click
+        expect(page).to have_text(owner.full_name)
+        expect(page).not_to have_text(user.full_name)
+      end
+    end
+
+    context "when searching by partial name" do
+      it "shows only found users" do
+        expect(page).to have_text(owner.full_name)
+        expect(page).to have_text(user.full_name)
+        fill_in :q_filter_full_text, with: owner.full_name[0..2]
         find("form.user_search button").click
         expect(page).to have_text(owner.full_name)
         expect(page).not_to have_text(user.full_name)

@@ -3,6 +3,8 @@ import { FormattedMessage } from 'react-intl';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
+import useMe from 'hooks/me';
+
 import { loadI18nMessages } from 'helpers/i18n';
 
 import CardHoverToDelete from 'containers/dashboard/favorites/card-hover-to-delete';
@@ -10,7 +12,7 @@ import ProjectCard from 'containers/project-card';
 
 import Button from 'components/button';
 import Icon from 'components/icon';
-import { Paths } from 'enums';
+import { Paths, UserRoles } from 'enums';
 import DashboardFavoritesLayout, {
   DashboardFavoritesLayoutProps,
 } from 'layouts/dashboard-favorites';
@@ -39,6 +41,7 @@ export const FavoritesProjectsPage: PageComponent<
   const hasProjects = projects?.length > 0;
 
   const favoriteProject = useFavoriteProject();
+  const { user } = useMe();
 
   const handleRemoveClick = (slug: string) => {
     favoriteProject.mutate({ id: slug, isFavourite: true });
@@ -58,7 +61,7 @@ export const FavoritesProjectsPage: PageComponent<
           <>
             {projects.map((project) => (
               <CardHoverToDelete key={project.id} onClick={() => handleRemoveClick(project.id)}>
-                <ProjectCard className="" project={project} />
+                <ProjectCard project={project} canFund={user?.role === UserRoles.Investor} />
               </CardHoverToDelete>
             ))}
           </>

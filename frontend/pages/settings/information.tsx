@@ -5,6 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useQueryClient } from 'react-query';
 
 // import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
@@ -58,21 +59,12 @@ const Information: PageComponent<InformationPageProps, SettingsLayoutProps> = ()
   const deleteUser = useDeleteUser();
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 
-  const {
-    control,
-    clearErrors,
-    setError,
-    setValue,
-    register,
-    reset,
-    handleSubmit,
-    formState,
-    watch,
-  } = useForm<UpdateUserDto>({
-    shouldUseNativeValidation: true,
-    shouldFocusError: true,
-    reValidateMode: 'onChange',
-  });
+  const { setError, setValue, register, reset, handleSubmit, formState, watch } =
+    useForm<UpdateUserDto>({
+      shouldUseNativeValidation: true,
+      shouldFocusError: true,
+      reValidateMode: 'onChange',
+    });
 
   const userInfo = watch();
 
@@ -269,23 +261,39 @@ const Information: PageComponent<InformationPageProps, SettingsLayoutProps> = ()
               <div className="p-4 mt-6 rounded-lg bg-red-50">
                 <p>
                   <FormattedMessage
-                    defaultMessage="By deleting your user, you will be removed from the account <n>accountName</n> and you no longer will have access to HeCo Invest Platform."
-                    id="rPwLb7"
+                    defaultMessage="By deleting your user, you will be removed from the account <accountName></accountName> and you no longer will have access to HeCo Invest Platform."
+                    id="PfIj8p"
                     values={{
-                      n: () => <span className="font-semibold">{userAccount?.name}</span>,
+                      accountName: () => <span className="font-semibold">{userAccount?.name}</span>,
                     }}
                   />
                 </p>
-                <p className="mt-4 font-semibold">
-                  <FormattedMessage
-                    defaultMessage="If you are the owner of the account, please transfer the ownership before continuing."
-                    id="3T3umg"
-                  />
-                </p>
+                {user?.owner && (
+                  <p className="mt-4 font-semibold">
+                    <FormattedMessage
+                      defaultMessage="You are the owner of the account <accountName></accountName>, please <a>transfer the ownership</a> before continuing."
+                      id="OEYYbj"
+                      values={{
+                        accountName: () => (
+                          <span className="font-semibold">{userAccount?.name}</span>
+                        ),
+                        a: (chunk: string) => (
+                          <Link href={Paths.DashboardUsers} passHref>
+                            <a className="underline">{chunk}</a>
+                          </Link>
+                        ),
+                      }}
+                    />
+                  </p>
+                )}
               </div>
               <div className="flex justify-end mt-6">
-                <Button theme="primary-red" onClick={() => setShowConfirmDelete(true)}>
-                  <FormattedMessage defaultMessage="Delete" id="K3r6DQ" />
+                <Button
+                  disabled={user?.owner}
+                  theme="primary-red"
+                  onClick={() => setShowConfirmDelete(true)}
+                >
+                  <FormattedMessage defaultMessage="Delete my user" id="fZpvTQ" />
                 </Button>
               </div>
             </div>
@@ -298,19 +306,11 @@ const Information: PageComponent<InformationPageProps, SettingsLayoutProps> = ()
           open={showConfirmDelete}
           onConfirmDisabled={!user || user.owner}
           title={formatMessage({ defaultMessage: 'Delete my user', id: 'fZpvTQ' })}
-          description={
-            user?.owner
-              ? formatMessage({
-                  defaultMessage:
-                    'You are currently the account owner. Please transfer the ownership before continuing.',
-                  id: 'A775MJ',
-                })
-              : formatMessage({
-                  defaultMessage:
-                    "Are you sure you want to delete your user? You can't undo this action and you will lose your access to the platform.",
-                  id: 's63oNj',
-                })
-          }
+          description={formatMessage({
+            defaultMessage:
+              "Are you sure you want to delete your user? You can't undo this action and you will lose your access to the platform.",
+            id: 's63oNj',
+          })}
         />
       </SettingsLayout>
     </ProtectedPage>

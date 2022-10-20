@@ -39,11 +39,22 @@ RSpec.describe "Backoffice: Open Calls", type: :system do
     end
 
     context "when searching by ransack filter" do
-      context "when using full text" do
+      context "when searching by name" do
         it "shows only found open calls" do
           expect(page).to have_text(open_call.name)
           open_calls.each { |o| expect(page).to have_text(o.name) }
           fill_in :q_name_or_investor_account_name_or_country_name_or_department_name_or_municipality_name_i_cont, with: open_call.name
+          find("form.open_call_search button").click
+          expect(page).to have_text(open_call.name)
+          open_calls.each { |o| expect(page).not_to have_text(o.name) }
+        end
+      end
+
+      context "when searching by partial name" do
+        it "shows only found open calls" do
+          expect(page).to have_text(open_call.name[0..2])
+          open_calls.each { |o| expect(page).to have_text(o.name) }
+          fill_in :q_name_or_investor_account_name_or_country_name_or_department_name_or_municipality_name_i_cont, with: "Ultr"
           find("form.open_call_search button").click
           expect(page).to have_text(open_call.name)
           open_calls.each { |o| expect(page).not_to have_text(o.name) }

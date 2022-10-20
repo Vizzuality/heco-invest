@@ -126,8 +126,8 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                                 <Switch
                                   id={id}
                                   name={group}
+                                  defaultValue={id}
                                   switchSize="smallest"
-                                  value={id}
                                   register={register}
                                   registerOptions={registerOptions}
                                 />

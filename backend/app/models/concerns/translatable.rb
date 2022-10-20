@@ -4,7 +4,7 @@ module Translatable
   included do
     attr_accessor :skip_translation
 
-    after_save :translate_attributes, unless: :skip_translation
+    after_commit :translate_attributes, on: [:create, :update], unless: :skip_translation
   end
 
   class_methods do
@@ -24,6 +24,6 @@ module Translatable
       res << attr if public_send "saved_change_to_#{attr}_#{language}?"
     end
 
-    TranslateJob.perform_later self, changed_attrs: changed_attrs if changed_attrs.present?
+    TranslateJob.perform_later id, self.class.name, changed_attrs: changed_attrs if changed_attrs.present?
   end
 end

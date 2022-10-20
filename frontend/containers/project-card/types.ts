@@ -7,6 +7,8 @@ export type ProjectCardProps = {
   active?: boolean;
   /** Projects list */
   project: ProjectType;
+  /** Whether the card should have a “funding” option. Default to `false`. */
+  canFund?: boolean;
   /** onClick callback */
   onClick?: (projectId: string) => void;
 };

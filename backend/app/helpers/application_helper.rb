@@ -7,7 +7,11 @@ module ApplicationHelper
     "approved" => "text-green-dark bg-green-light/20",
     "rejected" => "text-red-dark bg-red-dark/20",
     "unverified" => "text-gray-800 bg-gray-800/20",
-    "verified" => "text-green-dark bg-green-light/20"
+    "verified" => "text-green-dark bg-green-light/20",
+    "draft" => "text-gray-800 bg-gray-800/20",
+    "published" => "text-green-dark bg-green-light/20",
+    "launched" => "text-green-dark bg-green-light/20",
+    "closed" => "text-red-dark bg-red-dark/20"
   }
 
   FLASH_CLASSES = {

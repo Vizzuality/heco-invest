@@ -2,13 +2,30 @@ import { useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 
+import { withLocalizedRequests } from 'hoc/locale';
+
+import { InferGetStaticPropsType } from 'next';
+
+import { loadI18nMessages } from 'helpers/i18n';
+
 import { Paths, ReviewStatus, UserRoles } from 'enums';
 import DashboardLayout from 'layouts/dashboard';
-import NakedLayout from 'layouts/naked';
+import NakedLayout, { NakedLayoutProps } from 'layouts/naked';
+import { PageComponent } from 'types';
 
 import { useAccount } from 'services/account';
 
-export const DashboardPage = () => {
+export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
+  return {
+    props: {
+      intlMessages: await loadI18nMessages({ locale }),
+    },
+  };
+});
+
+type ProjectsPageProps = InferGetStaticPropsType<typeof getStaticProps>;
+
+const DashboardPage: PageComponent<ProjectsPageProps, NakedLayoutProps> = () => {
   const router = useRouter();
   const { user, userIsLoading, userAccount, userAccountLoading } = useAccount();
 

@@ -1,8 +1,8 @@
 require "system_helper"
 
 RSpec.describe "Backoffice: Admins", type: :system do
-  let!(:admin) { create(:admin, email: "admin@example.com", password: "SuperSecret6", first_name: "Admin", last_name: "Example") }
-  let!(:extra_admin) { create(:admin) }
+  let!(:admin) { create(:admin, email: "yellow@banana.com", password: "SuperSecret6", first_name: "Yellow", last_name: "Banana") }
+  let!(:extra_admin) { create(:admin, email: "red@apple.com", first_name: "Red", last_name: "Apple") }
 
   before { sign_in admin }
 
@@ -31,11 +31,22 @@ RSpec.describe "Backoffice: Admins", type: :system do
       end
     end
 
-    context "when searching" do
+    context "when searching by full name" do
       it "shows only found admins" do
         expect(page).to have_text(admin.full_name)
         expect(page).to have_text(extra_admin.full_name)
         fill_in :q_filter_full_text, with: admin.full_name
+        find("form.admin_search button").click
+        expect(page).to have_text(admin.full_name)
+        expect(page).not_to have_text(extra_admin.full_name)
+      end
+    end
+
+    context "when searching by partial name" do
+      it "shows only found admins" do
+        expect(page).to have_text(admin.full_name)
+        expect(page).to have_text(extra_admin.full_name)
+        fill_in :q_filter_full_text, with: admin.full_name[0..2]
         find("form.admin_search button").click
         expect(page).to have_text(admin.full_name)
         expect(page).not_to have_text(extra_admin.full_name)

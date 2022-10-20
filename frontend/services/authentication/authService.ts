@@ -8,7 +8,7 @@ import { Queries } from 'enums';
 import { SignIn } from 'types/sign-in';
 import { User } from 'types/user';
 
-import API from '../api';
+import API, { RawApi } from '../api';
 
 export function useSignOut(): UseMutationResult<AxiosResponse, AxiosError> {
   const signOut = async () =>
@@ -35,3 +35,15 @@ export function useSignIn(): UseMutationResult<AxiosResponse<User>, AxiosError, 
   };
   return useMutation(signIn);
 }
+
+const getRequire2FA = async (dto: SignIn) => {
+  const resp = await RawApi.post<AxiosResponse<{ data: boolean }>>(
+    '/api/v1/session/two_factor_auth',
+    dto
+  );
+  return resp.data.data;
+};
+
+export const useRequire2FA = () => {
+  return useMutation([Queries.Session2FA], getRequire2FA);
+};

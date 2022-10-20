@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 
 import { ChevronDown, ChevronUp, X as CloseIcon } from 'react-feather';
 import { useForm } from 'react-hook-form';
@@ -15,7 +15,6 @@ import {
 } from 'helpers/pages';
 
 import Button from 'components/button';
-import Checkbox from 'components/forms/checkbox';
 import FieldInfo from 'components/forms/field-info';
 import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
@@ -30,7 +29,6 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
   const { formatMessage } = useIntl();
   const { pathname } = useRouter();
 
-  const [filtersInputValue, setFiltersInputValue] = useState<Partial<FilterForm>>({});
   const doSearch = useSearch();
 
   const [showMoreFilters, setShowMoreFilters] = useState(false);
@@ -40,11 +38,20 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
     reset,
     handleSubmit,
     setValue,
+    getValues,
     clearErrors,
     formState: { errors },
-  } = useForm<FilterForm>();
+  } = useForm<FilterForm>({
+    defaultValues: {
+      category: [],
+      impact: [],
+      instrument_type: [],
+      sdg: [],
+      ticket_size: [],
+    },
+  });
 
-  const { category, impact, ticket_size, instrument_type, priorityLandscapes, sdg } = groupBy<Enum>(
+  const { category, impact, ticket_size, instrument_type, priority_landscape, sdg } = groupBy<Enum>(
     filtersData,
     'type'
   );
@@ -70,7 +77,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
         }
       ),
       values:
-        priorityLandscapes?.map(({ id, name }) => ({
+        priority_landscape?.map(({ id, name }) => ({
           id,
           type: LocationsTypes.PriorityLandscapes,
           name,
@@ -78,41 +85,20 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
     },
   ];
 
-  const handleClear = () => {
+  const onClearFilters = useCallback(() => {
     if (!isEmpty(filters)) {
       // Perform new search to remove filters only if are filters applied
       doSearch(undefined, {});
     }
     reset();
     closeFilters();
-  };
+  }, [closeFilters, doSearch, filters, reset]);
 
-  useEffect(() => {
-    const filterInputs = transformFilterParamsToInputs(filters);
-    Object.entries(filterInputs).forEach(([key, value]) => {
-      setValue(key as keyof FilterForm, value);
-    });
-    setFiltersInputValue(filterInputs);
-  }, [filters, setValue]);
-
-  const onChange = (ev: any) => {
-    const { value, name } = ev.target;
-    // Remove check when clicking on a checked tag
-    if (filtersInputValue[name] === value) {
-      setValue(name, undefined);
-      setFiltersInputValue({ ...filtersInputValue, [name]: undefined });
-      return;
-    }
-
-    setValue(name, value);
-    setFiltersInputValue({ ...filtersInputValue, [name]: value });
-  };
-
-  const onSubmitFilters = () => {
-    const newFilterParams = transformFilterInputsToParams(filtersInputValue);
+  const onSubmitFilters = useCallback(() => {
+    const newFilterParams = transformFilterInputsToParams(getValues());
     doSearch(undefined, newFilterParams);
     closeFilters();
-  };
+  }, [closeFilters, doSearch, getValues]);
 
   /* VERIFICATION FILTERS: HIDDEN
   const onCheckboxChange = (ev: any) => {
@@ -121,6 +107,13 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
     setFiltersInputValue({ ...filtersInputValue, [name]: checked });
   };
   */
+
+  useEffect(() => {
+    const filterInputs = transformFilterParamsToInputs(filters);
+    Object.entries(filterInputs).forEach(([key, value]) => {
+      setValue(key as keyof FilterForm, value);
+    });
+  }, [filters, setValue]);
 
   return (
     <div
@@ -189,7 +182,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
                       {!!filter.values?.length && (
                         <TagGroup
                           name={filter.values?.[0].type}
-                          type="radio"
+                          type="checkbox"
                           clearErrors={clearErrors}
                           setValue={setValue}
                           errors={errors}
@@ -206,11 +199,9 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
                               register={register}
                               registerOptions={{
                                 disabled: false,
-                                onChange,
                               }}
                               type="radio"
                               isfilterTag
-                              onClick={onChange}
                             >
                               <span className="block">
                                 {type === EnumTypes.TicketSize ? description : name}
@@ -256,7 +247,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
                   <div className="flex flex-wrap gap-4">
                     <TagGroup
                       name="sdg"
-                      type="radio"
+                      type="checkbox"
                       clearErrors={clearErrors}
                       setValue={setValue}
                       errors={errors}
@@ -272,11 +263,9 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
                           register={register}
                           registerOptions={{
                             disabled: false,
-                            onChange,
                           }}
                           type="radio"
                           isfilterTag
-                          onClick={onChange}
                         >
                           <span className="block">{name}</span>
                         </Tag>
@@ -300,7 +289,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
                 <Button
                   theme="secondary-green"
                   className="justify-center sm:justify-between"
-                  onClick={handleClear}
+                  onClick={onClearFilters}
                 >
                   <FormattedMessage defaultMessage="Clear filters" id="F4gyn3" />
                 </Button>

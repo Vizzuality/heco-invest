@@ -9,6 +9,7 @@ import Button from 'components/button';
 import Icon from 'components/icon';
 import Toast from 'components/toast';
 import Tooltip from 'components/tooltip';
+import { theme } from 'tailwind.config';
 
 import { ShareIconsProps } from '.';
 
@@ -59,6 +60,8 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
     });
   };
 
+  const iconFillColor = theme.colors.green.dark;
+
   return (
     <div className="absolute self-center translate-y-full -bottom-4">
       <div className="flex items-center gap-2">
@@ -76,13 +79,13 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
             to={shareLinks.twitter}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-8 h-8 px-0 py-0 transition-all rounded-full bg-beige text-beige hover:opacity-60 hover:text-beige focus-visible:outline-green-dark "
+            className="flex items-center justify-center w-8 h-8 px-2 py-2 transition-all rounded-full bg-beige text-beige hover:opacity-60 hover:text-beige focus-visible:outline-green-dark "
             theme="naked"
           >
             <span className="sr-only">
               <FormattedMessage defaultMessage="Share on Twitter" id="80Vefc" />
             </span>
-            <Icon fill="white" icon={Twitter} />
+            <Icon className="fill-green-dark" icon={Twitter} />
           </Button>
         </Tooltip>
         <Tooltip
@@ -96,13 +99,13 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
             to={shareLinks.facebook}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-8 h-8 px-0 py-0 text-transparent transition-all rounded-full bg-beige hover:opacity-60 hover:text-transparent focus-visible:outline-green-dark"
+            className="flex items-center justify-center w-8 h-8 px-2 py-2 text-transparent transition-all rounded-full bg-beige hover:opacity-60 hover:text-transparent focus-visible:outline-green-dark"
             theme="naked"
           >
             <span className="sr-only">
               <FormattedMessage defaultMessage="Share on Facebook" id="06VF+w" />
             </span>
-            <Icon fill="white" icon={Facebook} />
+            <Icon className="fill-green-dark" icon={Facebook} />
           </Button>
         </Tooltip>
         <Tooltip
@@ -114,25 +117,25 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
         >
           <Button
             to={shareLinks.email}
-            className="flex items-center justify-center w-8 h-8 px-0 py-0 transition-all rounded-full bg-beige text-beige hover:opacity-60 hover:text-beige focus-visible:outline-green-dark"
+            className="flex items-center justify-center w-8 h-8 px-2 py-2 transition-all rounded-full bg-beige text-beige fill-green-dark hover:opacity-60 focus-visible:outline-green-dark"
             theme="naked"
           >
             <span className="sr-only">
               <FormattedMessage defaultMessage="Share by email" id="O29TSs" />
             </span>
-            <Icon icon={Mail} fill="white" />
+            <Icon icon={Mail} className="fill-green-dark text-beige" />
           </Button>
         </Tooltip>
         <Tooltip
           content={
             <div className="max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
-              <FormattedMessage defaultMessage="Copy link to clipboard" id="EsZlwZ" />{' '}
+              <FormattedMessage defaultMessage="Copy link to clipboard" id="EsZlwZ" />
             </div>
           }
         >
           <Button
             onClick={copyToClipboard}
-            className="flex items-center justify-center w-8 h-8 px-0 py-0 text-white transition-all rounded-full bg-beige hover:opacity-60 hover:text-white focus-visible:outline-green-dark"
+            className="flex items-center justify-center w-8 h-8 px-2 py-2 transition-all rounded-full text-green-dark bg-beige hover:opacity-60 focus-visible:outline-green-dark"
             theme="naked"
           >
             <span className="sr-only">

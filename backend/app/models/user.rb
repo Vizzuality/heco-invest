@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include PgSearch::Model
 
-  EMAIL_CONFIRMATION_LIMIT_PERIOD = 10.minutes
+  EMAIL_CONFIRMATION_LIMIT_PERIOD = 30.seconds
 
   belongs_to :account, optional: true, counter_cache: true
 
@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  pg_search_scope :search, against: [:first_name, :last_name, :email]
+  pg_search_scope :search, against: [:first_name, :last_name, :email], using: {tsearch: {prefix: true}}
 
   devise :two_factor_authenticatable, :invitable, :database_authenticatable, :confirmable, :registerable,
     :recoverable, :rememberable, :validatable, :trackable
