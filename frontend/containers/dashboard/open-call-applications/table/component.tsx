@@ -52,7 +52,7 @@ export const OpenCallApplicationsTable: FC<OpenCallApplicationsTableProps> = () 
       {
         Header: intl.formatMessage({ defaultMessage: 'Application date', id: 'kUEzKa' }),
         accessor: 'applicationDate',
-        Cell: ({ cell: { value } }) => dayjs(value).format('DD MMM YYYY'),
+        Cell: ({ cell: { value } }) => dayjs(value).locale(locale).format('DD MMM YYYY'),
       },
       {
         Header: intl.formatMessage({ defaultMessage: 'Max. Funding', id: 'CIeYUa' }),
