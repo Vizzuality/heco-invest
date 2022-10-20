@@ -54,9 +54,8 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
       <div className="py-10 lg:mx-0 bg-center bg-cover lg:px-4 md:py-18 sm:rounded-2xl bg-radial-green-dark bg-green-dark min-h-[425px] md:min-h-fit">
         <LayoutContainer className="flex justify-between">
           <div className="flex flex-col items-center w-full gap-4 md:gap-6 md:items-start lg:items-end lg:flex-row md:w-6/12">
-            <div className="relative w-32 h-32 overflow-hidden bg-white aspect-square md:w-52 md:h-52 rounded-2xl">
+            <div className="relative flex-shrink-0 w-32 h-32 overflow-hidden bg-white aspect-square md:w-52 md:h-52 rounded-2xl">
               <Image
-                className="w-full h-full mx-auto aspect-square"
                 src={logo}
                 alt={intl.formatMessage(
                   { defaultMessage: '{organization} logo', id: 'in26xr' },
