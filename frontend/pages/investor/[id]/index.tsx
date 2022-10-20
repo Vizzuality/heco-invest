@@ -121,7 +121,9 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     {
       id: 'ticket-size',
       title: intl.formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
-      tags: allTicketSizes.filter(({ id }) => ticket_sizes?.includes(id)),
+      tags: allTicketSizes
+        .filter(({ id }) => ticket_sizes?.includes(id))
+        .map((ticket) => ({ ...ticket, name: ticket.description })),
     },
     {
       id: 'instrument-size',
