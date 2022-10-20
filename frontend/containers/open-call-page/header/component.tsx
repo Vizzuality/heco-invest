@@ -56,7 +56,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
   const openCallRange = useMemo(() => {
     const openDate = dayjs(created_at);
     const closingDate = dayjs(closing_at);
-    const deadline = closingDate.format('DD MMM YYYY');
+    const deadline = closingDate.locale(locale).format('DD MMM YYYY');
     // total duration of the open call in days
     const duration = closingDate.diff(openDate, 'day');
     // remaining days of the open call. Difference between today and the open call ending date in days + 1.
@@ -64,7 +64,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
     // consumed days of the open call
     const consumed = duration - remaining - 1;
     return { consumed, remaining, deadline };
-  }, [closing_at, created_at]);
+  }, [closing_at, created_at, locale]);
 
   const handleFavoriteClick = () => {
     // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.

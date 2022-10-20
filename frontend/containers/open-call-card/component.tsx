@@ -64,7 +64,10 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
     [allInstrumentTypes, instrument_types]
   );
 
-  const deadlineStr = useMemo(() => dayjs(closingAt).format('D MMMM'), [closingAt]);
+  const deadlineStr = useMemo(
+    () => dayjs(closingAt).locale(router.locale).format('D MMMM'),
+    [closingAt, router.locale]
+  );
 
   const truncatedDescription = useMemo(
     () => truncate(description, { length: 300, omission: ' ...' }),

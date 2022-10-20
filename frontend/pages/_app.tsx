@@ -22,6 +22,9 @@ import { LayoutStaticProp } from 'types';
 
 import 'styles/globals.css';
 
+require('dayjs/locale/es');
+require('dayjs/locale/pt');
+
 // Polyfills
 import 'url-search-params-polyfill';
 
