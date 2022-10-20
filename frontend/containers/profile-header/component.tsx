@@ -51,9 +51,9 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
 
   return (
     <div className={className}>
-      <div className="py-10 lg:mx-0 bg-center bg-cover lg:px-4 md:py-18 sm:rounded-2xl bg-radial-green-dark bg-green-dark min-h-[425px] md:min-h-fit">
+      <div className="py-10 pb-24 bg-center bg-cover lg:mx-0 lg:px-4 md:pt-18 md:pb-36 lg:pb-18 sm:rounded-2xl bg-radial-green-dark bg-green-dark">
         <LayoutContainer className="flex justify-between">
-          <div className="flex flex-col items-center w-full gap-4 md:gap-6 md:items-start lg:items-end lg:flex-row md:w-6/12">
+          <div className="flex flex-col items-center w-full gap-4 md:gap-6 md:items-end md:flex-row md:w-3/4 lg:w-1/2">
             <div className="relative flex-shrink-0 w-32 h-32 overflow-hidden bg-white aspect-square md:w-52 md:h-52 rounded-2xl">
               <Image
                 src={logo}
@@ -89,7 +89,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
           )}
           <p>{text}</p>
         </div>
-        <div className="order-1 md:order-2 flex flex-col justify-start md:mr-4 pt-8 p-6 bg-white drop-shadow-xl md:mb-[-70%] h-full md:translate-y-[-70%] md:w-[395px] md:max-w-4/12 rounded-2xl -mt-32 md:mt-8">
+        <div className="order-1 md:order-2 flex flex-col justify-start md:mr-4 pt-8 p-6 bg-white drop-shadow-xl md:mb-[-70%] h-full md:translate-y-[-40%] md:w-[395px] md:max-w-4/12 rounded-2xl -mt-12">
           {typeof totalProjects === 'number' && typeof projectsWaitingFunding === 'number' && (
             <div className="mb-6">
               <div className="flex flex-col gap-8 md:flex-row">
