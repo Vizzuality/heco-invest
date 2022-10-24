@@ -73,31 +73,29 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
 
   return (
     <>
-      <LayoutContainer className="px-0 -mt-10 lg:-mt-16">
+      <LayoutContainer className="px-0 -mt-10 md:-mt-8">
         <Breadcrumbs
-          className="lg:px-6"
+          className="px-6"
           substitutions={{
             id: { name },
           }}
         />
         <div className="mt-4">
           <div
-            className="flex pt-10 lg:pt-0 lg:items-end bg-center bg-cover lg:mx-0 sm:rounded-2xl bg-radial-green-dark bg-green-dark min-h-[250px] lg:min-h-[372px]"
+            className="flex pt-10 md:pt-0 md:items-center lg:items-end bg-center bg-cover sm:rounded-2xl bg-radial-green-dark bg-green-dark min-h-[250px] md:min-h-[372px]"
             style={{
               ...(coverImage && { backgroundImage: `url(${coverImage})` }),
             }}
           >
             <LayoutContainer>
-              <div className="text-center lg:mb-8 lg:w-1/2 lg:text-left">
-                <h1 className="font-serif text-3xl text-white lg:text-4xl">
-                  This is the open call title(engaging and descriptive)
-                </h1>
+              <div className="md:mb-8 lg:w-1/2">
+                <h1 className="font-serif text-3xl text-white md:text-4xl">{name}</h1>
               </div>
-              <div className="h-32 lg:hidden"></div>
+              <div className="h-32 md:hidden"></div>
             </LayoutContainer>
           </div>
-          <LayoutContainer className="flex flex-col justify-between mt-8 lg:flex-row">
-            <div className="order-2 w-full lg:order-1 lg:w-6/12 lg:pr-2">
+          <LayoutContainer className="flex flex-col justify-between w-full mt-8 md:flex-row">
+            <div className="order-2 w-full md:order-1 md:w-6/12 md:pr-2">
               {originalLanguage && (
                 <span className="block mb-4 text-sm text-gray-400">
                   <FormattedMessage
@@ -112,10 +110,10 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
               )}
               <p>{openCall.description}</p>
             </div>
-            <div className="order-1 lg:order-2 flex flex-col justify-start lg:mr-4 p-6 bg-white drop-shadow-xl -mb-12 h-full lg:w-[395px] -translate-y-32 lg:max-w-1/3 rounded-2xl">
+            <div className="order-1 md:order-2 w-full flex flex-col justify-start md:mr-4 p-6 bg-white drop-shadow-xl -mb-12 h-full md:w-[395px] -translate-y-32 md:max-w-2/3 rounded-2xl">
               <div className="px-2">
-                <div className="flex flex-wrap justify-center gap-8 lg:gap-11 lg:justify-between">
-                  <div className="flex flex-col items-center justify-end gap-2 lg:items-start">
+                <div className="flex flex-wrap justify-between gap-8 md:gap-11">
+                  <div className="flex flex-col justify-end gap-2 md:items-start">
                     <span
                       aria-labelledby="open-call-value"
                       className="text-xl font-semibold leading-6"
@@ -126,8 +124,8 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                       <FormattedMessage defaultMessage="Value" id="GufXy5" />
                     </span>
                   </div>
-                  <div className="flex flex-col items-center justify-end gap-2 lg:items-start">
-                    <div className="max-w-full text-center lg:text-left">
+                  <div className="flex flex-col justify-end gap-2 md:items-start">
+                    <div className="max-w-full">
                       {instrumentTypes?.map((type) => {
                         return (
                           <p
@@ -153,12 +151,12 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                 </div>
                 <hr className="my-4" />
                 <div
-                  className={cx('flex gap-8 lg:gap-11', {
-                    'justify-center lg:justify-between': openCallRange.remaining > 8,
-                    'justify-between': openCallRange.remaining <= 8,
+                  className={cx('flex flex-wrap gap-x-8 md:gap-11 justify-between', {
+                    'justify-center md:justify-between': openCallRange.remaining > 8,
+                    '': openCallRange.remaining <= 8,
                   })}
                 >
-                  <div className="flex flex-col items-center justify-center gap-2 mb-6 lg:items-start">
+                  <div className="flex flex-col justify-center gap-2 mb-6 md:items-start">
                     <span
                       id="total-of-projects"
                       className={cx('text-xl font-semibold leading-6', {
@@ -173,7 +171,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                     </span>
                   </div>
                   {openCallRange.remaining <= 8 && (
-                    <div className="flex flex-col items-center gap-2 mb-4 text-center lg:justify-end">
+                    <div className="flex flex-col items-center gap-2 mb-4 text-center md:justify-end">
                       <div className="w-[82px] h-[82px] rounded-full flex justify-center items-center">
                         <OpenCallChart openCallRange={openCallRange} />
                         <p className="absolute max-w-[62px] text-xs font-semibold text-green-dark">
@@ -189,9 +187,9 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                 </div>
               </div>
 
-              <div className="flex justify-center gap-4 lg:gap-2 ">
+              <div className="flex justify-center gap-2">
                 <Button
-                  className="justify-center"
+                  className="justify-center flex-grow-[1]"
                   theme="secondary-green"
                   onClick={handleFavoriteClick}
                   disabled={!userAccount}
@@ -201,7 +199,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                   <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
                 </Button>
                 <Button
-                  className="justify-center flex-grow"
+                  className="flex-grow-[3] md:flex-grow-[10] md:max-w-[200px] justify-center px-6"
                   disabled={
                     !userAccount ||
                     userAccount.type !== UserRoles.ProjectDeveloper ||
