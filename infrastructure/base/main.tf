@@ -32,6 +32,10 @@ module "staging" {
   sendgrid_api_key       = var.sendgrid_api_key
   mapbox_api_key         = var.mapbox_api_key
   hotjar_site_id         = ""
+  frontend_min_scale     = 0
+  backend_min_scale      = 0
+  frontend_max_scale     = 1
+  backend_max_scale      = 1
   redirect_domain        = var.redirect_domain
   dns_zone_name          = module.dns.dns_zone_name
   redirect_dns_zone_name = module.redirect_dns.dns_zone_name
@@ -39,6 +43,7 @@ module "staging" {
   uptime_alert_email     = var.uptime_alert_email
   from_email_address     = var.from_email_address
   instance_role          = "staging"
+  tag                    = "staging"
 }
 
 module "production" {
@@ -65,6 +70,7 @@ module "production" {
   uptime_alert_email     = var.uptime_alert_email
   from_email_address     = var.from_email_address
   instance_role          = "production"
+  tag                    = "production"
 }
 
 module "dns" {

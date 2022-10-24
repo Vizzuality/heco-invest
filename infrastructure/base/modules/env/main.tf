@@ -33,25 +33,25 @@ module "rails_secret_key_base" {
 }
 
 module "rails_encryption_primary_key" {
-  source           = "../secret_value"
-  region           = var.gcp_region
-  key              = "${var.project_name}-rails_encryption_primary_key"
+  source              = "../secret_value"
+  region              = var.gcp_region
+  key                 = "${var.project_name}-rails_encryption_primary_key"
   random_value_length = 32
   use_random_value    = true
 }
 
 module "rails_encryption_deterministic_key" {
-  source           = "../secret_value"
-  region           = var.gcp_region
-  key              = "${var.project_name}-rails_encryption_deterministic_key"
+  source              = "../secret_value"
+  region              = var.gcp_region
+  key                 = "${var.project_name}-rails_encryption_deterministic_key"
   random_value_length = 32
   use_random_value    = true
 }
 
 module "rails_encryption_derivation_salt" {
-  source           = "../secret_value"
-  region           = var.gcp_region
-  key              = "${var.project_name}-rails_encryption_derivation_salt"
+  source              = "../secret_value"
+  region              = var.gcp_region
+  key                 = "${var.project_name}-rails_encryption_derivation_salt"
   random_value_length = 32
   use_random_value    = true
 }
@@ -110,6 +110,7 @@ module "frontend_build" {
   docker_build_args      = local.frontend_docker_build_args
   cloud_run_service_name = "${var.project_name}-frontend"
   test_container_name    = "frontend"
+  tag                    = var.tag
 }
 
 module "backend_build" {
@@ -127,12 +128,13 @@ module "backend_build" {
   docker_build_args      = local.backend_docker_build_args
   cloud_run_service_name = "${var.project_name}-backend"
   test_container_name    = "backend"
+  tag                    = var.tag
   additional_steps       = [
     {
       name       = "gcr.io/google.com/cloudsdktool/cloud-sdk"
       entrypoint = "gcloud"
       args       = [
-        "run", "deploy", "${var.project_name}-jobs", "--image", "gcr.io/${var.gcp_project_id}/backend:latest",
+        "run", "deploy", "${var.project_name}-jobs", "--image", "gcr.io/${var.gcp_project_id}/backend:${var.tag}",
         "--region", var.gcp_region
       ]
     }
@@ -151,6 +153,7 @@ module "frontend_cloudrun" {
   database           = module.database.database
   min_scale          = var.frontend_min_scale
   max_scale          = var.frontend_max_scale
+  tag                = var.tag
 }
 
 module "backend_cloudrun" {
@@ -165,6 +168,7 @@ module "backend_cloudrun" {
   database           = module.database.database
   min_scale          = var.backend_min_scale
   max_scale          = var.backend_max_scale
+  tag                = var.tag
   secrets            = [
     {
       name        = "SECRET_KEY_BASE"
@@ -285,6 +289,7 @@ module "jobs_cloudrun" {
   database           = module.database.database
   min_scale          = var.backend_min_scale
   max_scale          = var.backend_max_scale
+  tag                = var.tag
   secrets            = [
     {
       name        = "SECRET_KEY_BASE"
@@ -423,13 +428,13 @@ module "bastion" {
 }
 
 module "cloud_tasks" {
-  source                = "../cloud-tasks"
-  name                  = "heco-default-queue"
-  prefix                = var.project_name
-  project_id            = var.gcp_project_id
-  region                = var.gcp_region
+  source                        = "../cloud-tasks"
+  name                          = "heco-default-queue"
+  prefix                        = var.project_name
+  project_id                    = var.gcp_project_id
+  region                        = var.gcp_region
   backend_service_account_email = module.backend_cloudrun.service_account_email
-  jobs_service_account_email = module.jobs_cloudrun.service_account_email
+  jobs_service_account_email    = module.jobs_cloudrun.service_account_email
 }
 
 module "purge_users_cron" {
@@ -485,8 +490,8 @@ module "translation" {
 }
 
 module "error_reporting" {
-  source                = "../error-reporting"
-  project_id            = var.gcp_project_id
+  source                        = "../error-reporting"
+  project_id                    = var.gcp_project_id
   backend_service_account_email = module.backend_cloudrun.service_account_email
-  jobs_service_account_email = module.jobs_cloudrun.service_account_email
+  jobs_service_account_email    = module.jobs_cloudrun.service_account_email
 }

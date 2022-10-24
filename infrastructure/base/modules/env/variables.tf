@@ -138,3 +138,8 @@ variable "instance_role" {
   default = "production"
   description = "staging|production, NOT the same as RAILS_ENV as that is 'production' in staging as well"
 }
+
+variable "tag" {
+  type = string
+  description = "Tag name to use for docker image tagging and deployment"
+}
