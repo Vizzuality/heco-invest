@@ -73,31 +73,31 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
 
   return (
     <>
-      <LayoutContainer className="px-0 -mt-10 md:mt-0 sm:-mt-16">
+      <LayoutContainer className="px-0 -mt-10 lg:-mt-16">
         <Breadcrumbs
-          className="sm:px-6"
+          className="lg:px-6"
           substitutions={{
             id: { name },
           }}
         />
         <div className="mt-4">
           <div
-            className="flex pt-10 sm:pt-0 sm:items-end bg-center bg-cover sm:mx-0 sm:rounded-2xl bg-radial-green-dark bg-green-dark min-h-[250px] sm:min-h-[372px]"
+            className="flex pt-10 lg:pt-0 lg:items-end bg-center bg-cover lg:mx-0 sm:rounded-2xl bg-radial-green-dark bg-green-dark min-h-[250px] lg:min-h-[372px]"
             style={{
               ...(coverImage && { backgroundImage: `url(${coverImage})` }),
             }}
           >
             <LayoutContainer>
-              <div className="text-center sm:mb-8 sm:w-1/2 sm:text-left">
-                <h1 className="font-serif text-3xl text-white sm:text-4xl">
+              <div className="text-center lg:mb-8 lg:w-1/2 lg:text-left">
+                <h1 className="font-serif text-3xl text-white lg:text-4xl">
                   This is the open call title(engaging and descriptive)
                 </h1>
               </div>
-              <div className="h-32 sm:hidden"></div>
+              <div className="h-32 lg:hidden"></div>
             </LayoutContainer>
           </div>
-          <LayoutContainer className="flex flex-col justify-between mt-8 sm:flex-row">
-            <div className="order-2 w-full sm:order-1 sm:w-6/12 sm:pr-2">
+          <LayoutContainer className="flex flex-col justify-between mt-8 lg:flex-row">
+            <div className="order-2 w-full lg:order-1 lg:w-6/12 lg:pr-2">
               {originalLanguage && (
                 <span className="block mb-4 text-sm text-gray-400">
                   <FormattedMessage
@@ -112,10 +112,10 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
               )}
               <p>{openCall.description}</p>
             </div>
-            <div className="order-1 sm:order-2 flex flex-col justify-start sm:mr-4 p-6 bg-white drop-shadow-xl -mb-12 h-full sm:w-[395px] -translate-y-32 sm:max-w-1/3 rounded-2xl">
+            <div className="order-1 lg:order-2 flex flex-col justify-start lg:mr-4 p-6 bg-white drop-shadow-xl -mb-12 h-full lg:w-[395px] -translate-y-32 lg:max-w-1/3 rounded-2xl">
               <div className="px-2">
-                <div className="flex flex-wrap justify-center gap-8 sm:gap-11 sm:justify-between">
-                  <div className="flex flex-col items-center justify-end gap-2 sm:items-start">
+                <div className="flex flex-wrap justify-center gap-8 lg:gap-11 lg:justify-between">
+                  <div className="flex flex-col items-center justify-end gap-2 lg:items-start">
                     <span
                       aria-labelledby="open-call-value"
                       className="text-xl font-semibold leading-6"
@@ -126,8 +126,8 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                       <FormattedMessage defaultMessage="Value" id="GufXy5" />
                     </span>
                   </div>
-                  <div className="flex flex-col items-center justify-end gap-2 sm:items-start">
-                    <div className="max-w-full text-center sm:text-left">
+                  <div className="flex flex-col items-center justify-end gap-2 lg:items-start">
+                    <div className="max-w-full text-center lg:text-left">
                       {instrumentTypes?.map((type) => {
                         return (
                           <p
@@ -153,12 +153,12 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                 </div>
                 <hr className="my-4" />
                 <div
-                  className={cx('flex gap-8 sm:gap-11', {
-                    'justify-center sm:justify-between': openCallRange.remaining > 8,
+                  className={cx('flex gap-8 lg:gap-11', {
+                    'justify-center lg:justify-between': openCallRange.remaining > 8,
                     'justify-between': openCallRange.remaining <= 8,
                   })}
                 >
-                  <div className="flex flex-col items-center justify-center gap-2 mb-6 sm:items-start">
+                  <div className="flex flex-col items-center justify-center gap-2 mb-6 lg:items-start">
                     <span
                       id="total-of-projects"
                       className={cx('text-xl font-semibold leading-6', {
@@ -173,7 +173,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                     </span>
                   </div>
                   {openCallRange.remaining <= 8 && (
-                    <div className="flex flex-col items-center gap-2 mb-4 text-center sm:justify-end">
+                    <div className="flex flex-col items-center gap-2 mb-4 text-center lg:justify-end">
                       <div className="w-[82px] h-[82px] rounded-full flex justify-center items-center">
                         <OpenCallChart openCallRange={openCallRange} />
                         <p className="absolute max-w-[62px] text-xs font-semibold text-green-dark">
@@ -189,7 +189,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                 </div>
               </div>
 
-              <div className="flex justify-center gap-4 sm:gap-2 ">
+              <div className="flex justify-center gap-4 lg:gap-2 ">
                 <Button
                   className="justify-center"
                   theme="secondary-green"
