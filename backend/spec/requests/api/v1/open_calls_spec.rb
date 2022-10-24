@@ -2,7 +2,7 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Open Calls", type: :request do
   before_all do
-    @open_call = create(:open_call, instrument_types: ["grant"])
+    @open_call = create(:open_call, name: "Yellow Banana", instrument_types: ["grant"])
     create_list(:open_call, 6, instrument_types: ["loan"])
     @unapproved_open_call = create(:open_call, investor: create(:investor, account: create(:account, :unapproved, users: [create(:user)])))
     @approved_account = create(:account, review_status: :approved, users: [create(:user)])
@@ -79,8 +79,20 @@ RSpec.describe "API V1 Open Calls", type: :request do
           end
         end
 
-        context "when filtered by searched text" do
+        context "when filtered by open call name" do
           let("filter[full_text]") { @open_call.name }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([@open_call.id])
+          end
+        end
+
+        context "when filtered by partial open call name" do
+          let("filter[full_text]") { @open_call.name[0..2] }
+
+          before(:each) do
+            allow(OpenCall).to receive(:translatable_attributes).and_return([:name])
+          end
 
           it "contains only correct records" do
             expect(response_json["data"].pluck("id")).to eq([@open_call.id])

@@ -11,6 +11,7 @@ import {
 
 import Tag from 'components/forms/tag';
 import TagGroup from 'components/forms/tag-group';
+import { EnumTypes } from 'enums';
 import { Enum } from 'types/enums';
 
 import { ActiveFilterProps } from '.';
@@ -75,7 +76,7 @@ export const ActiveFilters: FC<ActiveFilterProps> = ({ filters = {}, filtersData
               checked
               showDeleteIcon
             >
-              {filter.name}
+              {filter.type === EnumTypes.TicketSize ? filter.description : filter.name}
             </Tag>
           ))}
         </TagGroup>

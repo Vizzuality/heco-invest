@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Backoffice::CSV::ProjectExporter do
   subject { described_class.new(query) }
 
-  let(:query) { create_list :project, 4, verified: true }
+  let(:query) { create_list :project, 4, verified: true, status: :published }
   let(:parsed_csv) { CSV.parse(subject.call) }
 
   describe "#call" do
@@ -13,7 +13,8 @@ RSpec.describe Backoffice::CSV::ProjectExporter do
         I18n.t("backoffice.common.project_developer"),
         I18n.t("backoffice.common.category"),
         I18n.t("backoffice.projects.index.priority_landscape"),
-        I18n.t("backoffice.common.status")
+        I18n.t("backoffice.common.status"),
+        I18n.t("backoffice.common.verification")
       ])
     end
 
@@ -24,6 +25,7 @@ RSpec.describe Backoffice::CSV::ProjectExporter do
         query.first.project_developer.name,
         Category.find(query.first.category).name,
         query.first.priority_landscape&.name,
+        I18n.t("enum.project_status.published"),
         I18n.t("backoffice.common.verified")
       ])
     end

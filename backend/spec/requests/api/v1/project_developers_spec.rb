@@ -2,7 +2,7 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Project Developers", type: :request do
   before_all do
-    @project_developer = create(:project_developer, :with_involved_projects, number_of_projects: 2, categories: ["tourism-and-recreation"])
+    @project_developer = create(:project_developer, :with_involved_projects, mission: "Yellow Banana", number_of_projects: 2, categories: ["tourism-and-recreation"])
     @draft_project = create(:project, :draft, project_developer: @project_developer)
     create_list(:project_developer, 6, categories: %w[forestry-and-agroforestry non-timber-forest-production])
     @unapproved_project_developer = create(:project_developer, account: create(:account, review_status: :unapproved, users: [create(:user)]))
@@ -79,8 +79,20 @@ RSpec.describe "API V1 Project Developers", type: :request do
           end
         end
 
-        context "when filtered by searched text" do
+        context "when filtered by PD mission" do
           let("filter[full_text]") { @project_developer.mission }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([@project_developer.id])
+          end
+        end
+
+        context "when filtered by partial PD mission" do
+          let("filter[full_text]") { @project_developer.mission[0..2] }
+
+          before(:each) do
+            allow(ProjectDeveloper).to receive(:translatable_attributes).and_return([:mission])
+          end
 
           it "contains only correct records" do
             expect(response_json["data"].pluck("id")).to eq([@project_developer.id])

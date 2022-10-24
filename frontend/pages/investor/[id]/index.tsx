@@ -121,7 +121,9 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     {
       id: 'ticket-size',
       title: intl.formatMessage({ defaultMessage: 'Ticket size', id: 'lfx6Nc' }),
-      tags: allTicketSizes.filter(({ id }) => ticket_sizes?.includes(id)),
+      tags: allTicketSizes
+        .filter(({ id }) => ticket_sizes?.includes(id))
+        .map((ticket) => ({ ...ticket, name: ticket.description })),
     },
     {
       id: 'instrument-size',
@@ -148,16 +150,17 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     <>
       <Head title={name} description={about} />
 
-      <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
-        <Breadcrumbs
-          className="sm:px-6 lg:px-8"
-          substitutions={{
-            id: { name },
-          }}
-        />
+      <LayoutContainer className="px-0 -mt-10 md:mt-0 lg:-mt-16">
+        <LayoutContainer>
+          <Breadcrumbs
+            substitutions={{
+              id: { name },
+            }}
+          />
+        </LayoutContainer>
 
         <ProfileHeader
-          className="mt-6"
+          className="mt-3 sm:mt-6"
           logo={logo}
           title={name}
           subtitle={investorTypeName}
@@ -172,16 +175,16 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
         />
       </LayoutContainer>
 
-      <LayoutContainer layout="narrow" className="mt-24 mb-20 md:mt-40">
+      <LayoutContainer layout="narrow" className="mb-10 sm:mb-20 mt-18 sm:mt-24 lg:mt-40">
         <section aria-labelledby="profile-investment-info">
           <h2
             id="profile-investment-info"
-            className="mt-12 font-serif text-2xl font-semibold md:mt-20 sm:text-3xl text-green-dark"
+            className="font-serif text-3xl font-semibold text-green-dark"
           >
             <FormattedMessage defaultMessage="Investment info" id="m3Dnav" />
           </h2>
 
-          <TagsGrid className="mt-10 md:mt-14" rows={tagsGridRows} />
+          <TagsGrid className="mt-8 sm:mt-10 md:mt-14" rows={tagsGridRows} />
 
           {!!sdgs && (
             <>

@@ -159,6 +159,7 @@ zu:
       language: Language
       name: Name
       status: Status
+      verification: Verification
       approve: Approve
       reject: Reject
       email: Email
