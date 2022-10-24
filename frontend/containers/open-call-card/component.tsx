@@ -65,7 +65,8 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
   );
 
   const deadlineStr = useMemo(
-    () => dayjs(closingAt).locale(router.locale).format('D MMMM'),
+    () => dayjs(closingAt).format('D MMMM'),
+    // locale must be in dependency array to change translation when locale changes
     [closingAt, router.locale]
   );
 

@@ -58,7 +58,7 @@ export const OpenCallDetailsTable: FC<OpenCallDetailsTableProps> = () => {
       {
         Header: intl.formatMessage({ defaultMessage: 'Application date', id: 'kUEzKa' }),
         accessor: 'applicationDate',
-        Cell: ({ cell: { value } }) => dayjs(value).locale(router.locale).format('DD MMM YYYY'),
+        Cell: ({ cell: { value } }) => dayjs(value).format('DD MMM YYYY'),
       },
       {
         Header: intl.formatMessage({ defaultMessage: 'Status', id: 'tzMNF3' }),
