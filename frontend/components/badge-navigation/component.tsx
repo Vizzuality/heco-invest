@@ -76,8 +76,11 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
                 <Link href={link}>
                   <a
                     className={cx({
-                      'relative inline-flex focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2':
+                      'relative inline-flex focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2':
                         true,
+                      'focus-visible:outline-white sm:focus-visible:outline-green-dark':
+                        theme === 'default',
+                      'focus-visible:outline-green-dark': theme === 'simple',
                       'rounded-sm': type === 'square',
                       'rounded-full': type === 'pill',
                     })}
@@ -89,7 +92,7 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
                         'text-sm': true,
                         'border border-beige': type === 'pill' && theme !== 'simple',
                         'bg-white shadow-sm': isActive && type === 'pill' && theme === 'default',
-                        'hover:text-green-dark': theme === 'default',
+                        'hover:text-white sm:hover:text-green-dark': theme === 'default',
                         'text-white sm:text-green-dark':
                           (isActive && theme === 'default') || (!isActive && theme === 'simple'),
                         'text-gray-700 font-normal sm:font-semibold':

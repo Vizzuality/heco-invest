@@ -113,7 +113,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
             </Link>
           </div>
         </div>
-        <div className="flex flex-col text-sm text-gray-600 sm:items-center sm:h-5 sm:flex-row min-h-fit">
+        <div className="flex flex-col text-sm text-gray-700 sm:items-center sm:h-5 sm:flex-row min-h-fit">
           <div className="flex">
             <div
               aria-label={intl.formatMessage({

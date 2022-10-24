@@ -97,7 +97,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
                 </a>
               </Link>
             </div>
-            {subtitle && <div className="text-gray-600 text-md">{subtitle}</div>}
+            {subtitle && <div className="text-gray-700 text-md">{subtitle}</div>}
           </div>
         </div>
         <div

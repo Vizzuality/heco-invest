@@ -3,7 +3,6 @@ import { FC, PointerEvent, useState, useMemo, useCallback, useEffect, useRef } f
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-// import '@tailwindcss/line-clamp';
 import cx from 'classnames';
 
 import Link from 'next/link';
@@ -149,7 +148,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           'relative flex gap-x-2': true,
         })}
       >
-        <div className="flex flex-col flex-grow gap-2">
+        <div className="flex flex-col flex-grow gap-1 sm:gap-2">
           <div className="flex text-sm">
             {/* VERIFICATION PROJECTS: HIDDEN
             {trusted && (
@@ -177,7 +176,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           <div>
             {onClick ? (
               <button
-                className="text-xl font-semibold leading-tight text-left outline-none"
+                className="text-lg font-semibold leading-tight text-left outline-none"
                 aria-label={intl.formatMessage(
                   {
                     defaultMessage: 'View {name} project details',
@@ -199,7 +198,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               <Link href={link}>
                 <a
                   className={cx({
-                    'text-xl font-semibold leading-tight outline-none': true,
+                    'text-lg font-semibold leading-tight outline-none': true,
                     'pointer-events-none': !canFund,
                   })}
                 >
@@ -208,10 +207,10 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               </Link>
             )}
             {!onClick && !link && (
-              <span className="text-xl font-semibold leading-tight outline-none">{name}</span>
+              <span className="text-lg font-semibold leading-tight outline-none">{name}</span>
             )}
           </div>
-          <div className="flex flex-wrap items-center text-sm text-gray-600 min-h-fit">
+          <div className="flex flex-wrap items-center text-sm text-gray-700 min-h-fit">
             {instrumentTypesStr && (
               <div
                 title={intl.formatMessage({
