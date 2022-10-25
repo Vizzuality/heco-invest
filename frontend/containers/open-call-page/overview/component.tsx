@@ -10,8 +10,8 @@ export const Overview: FC<OpenCallOverviewTypes> = ({ openCall }) => {
   const { country, department } = openCall;
 
   return (
-    <LayoutContainer id="overview" className="mt-8">
-      <LayoutContainer>
+    <LayoutContainer id="overview" className="mt-6 sm:mt-8">
+      <LayoutContainer className="px-0">
         <div className="flex flex-col sm:flex-row gap-x-8 gap-y-2">
           <div className="flex gap-2 font-sans text-base">
             <h3 className="font-semibold">
