@@ -176,7 +176,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           <div>
             {onClick ? (
               <button
-                className="text-lg font-semibold leading-tight text-left outline-none"
+                className="text-lg font-semibold leading-tight text-left outline-none sm:text-xl"
                 aria-label={intl.formatMessage(
                   {
                     defaultMessage: 'View {name} project details',
@@ -198,7 +198,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               <Link href={link}>
                 <a
                   className={cx({
-                    'text-lg font-semibold leading-tight outline-none': true,
+                    'text-lg sm:text-xl font-semibold leading-tight outline-none': true,
                     'pointer-events-none': !canFund,
                   })}
                 >
@@ -207,7 +207,9 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               </Link>
             )}
             {!onClick && !link && (
-              <span className="text-lg font-semibold leading-tight outline-none">{name}</span>
+              <span className="text-lg font-semibold leading-tight outline-none sm:text-xl">
+                {name}
+              </span>
             )}
           </div>
           <div className="flex flex-wrap items-center text-sm text-gray-700 min-h-fit">

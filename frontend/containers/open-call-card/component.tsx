@@ -105,9 +105,9 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
           </span>
         )}
         <div className="flex items-start gap-4">
-          <div className="text-xl font-semibold text-gray-900">
+          <div>
             <Link href={link}>
-              <a className="text-xl font-semibold leading-tight outline-none pointer-events-none">
+              <a className="text-lg font-semibold leading-tight text-gray-900 outline-none pointer-events-none sm:text-xl">
                 {name}
               </a>
             </Link>
