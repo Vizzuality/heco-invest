@@ -199,7 +199,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           </h3>
           <p className="my-3">{projectDeveloper.mission}</p>
 
-          <TagsGrid className="mt-10 md:mt-14" rows={tagsRows} />
+          <TagsGrid className="mt-6 md:mt-14" rows={tagsRows} />
         </section>
 
         {projects?.length > 0 && (
