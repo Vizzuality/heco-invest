@@ -132,9 +132,9 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
           className="z-0 flex flex-col flex-grow h-[calc(100%-180px)] sm:h-screen sm:overflow-y-auto"
         >
           <LayoutContainer className="">
-            <div className="relative flex flex-col sm:items-center gap-2 pb-2 mt-1 sm:mt-4 mb-2 sm:mb-6 sm:-ml-1 sm:-mr-1 after:left-2 after:right-2 sm:after:h-px after:bg-[#D3CDC4] after:bg-opacity-40 after:absolute after:-bottom-2 after:md:bottom-2 md:mb-1 md:mt-2 md:gap-6 md:flex-row space-between md:pb-0">
+            <div className="relative flex flex-wrap justify-between gap-2 pb-2 mt-1 mb-2 sm:items-center sm:mt-4 sm:mb-6 sm:-ml-1 sm:-mr-1 md:mb-1 md:mt-2 lg:gap-6 md:pb-0">
               <Navigation stats={stats} />
-              <SortingButtons {...sortingButtonsProps} className="ml-4 sm:ml-0" />
+              <SortingButtons {...sortingButtonsProps} className="ml-4" />
             </div>
           </LayoutContainer>
           <LayoutContainer
