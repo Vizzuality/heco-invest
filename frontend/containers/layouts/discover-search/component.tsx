@@ -1,6 +1,11 @@
 import { FC, SyntheticEvent, useEffect, useMemo, useState } from 'react';
 
-import { Search as SearchIcon, X as CloseIcon } from 'react-feather';
+import {
+  ArrowLeft,
+  Search as SearchIcon,
+  X as CloseIcon,
+  XCircle as CloseCircleIcon,
+} from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -8,6 +13,8 @@ import cx from 'classnames';
 import { useRouter } from 'next/router';
 
 import { values } from 'lodash-es';
+
+import { useBreakpoint } from 'hooks/use-breakpoint';
 
 import { useFiltersEnums, useQueryParams, useSearch } from 'helpers/pages';
 
@@ -29,6 +36,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
   const { search, sorting, page, ...filters } = useQueryParams();
   const doSearch = useSearch();
   const filtersData = useFiltersEnums();
+  const isMobile = !useBreakpoint()('sm');
 
   const [openFilters, setOpenFilters] = useState(false);
   const [showSuggestion, setShowSuggestions] = useState(false);
@@ -77,18 +85,31 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
   };
 
   const handleClickInput = () => {
-    setOpenFilters(true);
+    if (!isMobile) {
+      setOpenFilters(true);
+      setShowSuggestions(false);
+    }
+  };
+
+  const handleClickClose = () => {
+    setOpenFilters(false);
     setShowSuggestions(false);
+    setSearchInputValue('');
   };
 
   return (
-    <div className={className}>
+    <div
+      className={cx('z-50', {
+        [className]: !!className,
+      })}
+    >
       <div
         className={cx(
-          'relative z-10 sm:w-full sm:overflow-visible text-black bg-white drop-shadow-xl rounded-full',
+          'sm:relative sm:z-10 sm:w-full sm:overflow-visible text-black bg-white drop-shadow-xl',
           {
+            'rounded-full': !openFilters || !showSuggestion,
             'sm:rounded-3xl': showActiveFilters,
-            'sm:rounded-t-3xl sm:rounded-b-none rounded-t-3xl rounded-b-none mb-0 h-14 sm:h-16':
+            'sm:rounded-t-3xl sm:rounded-b-none mb-0 h-14 sm:h-16 fixed left-0 top-0 w-screen rounded-none':
               showSuggestion || openFilters,
           }
         )}
@@ -111,8 +132,24 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                 onClick={handleClickInput}
                 aria-label={formatMessage({ defaultMessage: 'open filters', id: 'Lkxlab' })}
               >
-                <Icon icon={SearchIcon} className="w-6 h-6 sm:w-7 sm:h-7 text-green-dark" />
+                <Icon icon={SearchIcon} className="w-7 h-7 text-green-dark" />
               </Button>
+              {(openFilters || searchInputValue) && (
+                <Button
+                  theme="naked"
+                  size="smallest"
+                  className="text-gray-900 sm:hidden focus-visible:outline-green-dark"
+                  onClick={handleClickClose}
+                  aria-label={
+                    openFilters
+                      ? formatMessage({ defaultMessage: 'Close filters', id: '78vrMq' })
+                      : formatMessage({ defaultMessage: 'Close search', id: 'NjD8y3' })
+                  }
+                >
+                  <Icon icon={ArrowLeft} className="w-6 h-6 text-green-dark mr-2.5" />
+                  {openFilters && <FormattedMessage defaultMessage="Filters" id="zSOvI0" />}
+                </Button>
+              )}
               <label htmlFor="header-search" className="sr-only">
                 <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
               </label>
@@ -120,7 +157,12 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                 id="header-search"
                 type="search"
                 value={searchInputValue}
-                className="w-full h-full overflow-hidden text-lg outline-none autofill:bg-transparent placeholder:text-sm sm:placeholder:text-base placeholder:text-ellipsis"
+                className={cx(
+                  'w-full h-full placeholder:overflow-hidden overflow-hidden text-ellipsis text-lg outline-none autofill:bg-transparent whitespace-nowrap placeholder:whitespace-nowrap placeholder:text-sm sm:placeholder:text-base placeholder:text-ellipsis',
+                  {
+                    'hidden sm:block': openFilters,
+                  }
+                )}
                 onChange={handleChangeSearchInput}
                 placeholder={formatMessage({
                   defaultMessage: 'Search for projects, investors, open calls...',
@@ -136,9 +178,14 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                   theme="naked"
                   size="smallest"
                   onClick={clearInput}
-                  className="focus-visible:outline-green-dark"
+                  className={cx('focus-visible:outline-green-dark', {
+                    'hidden sm:inline-block': openFilters,
+                  })}
                 >
-                  <Icon icon={CloseIcon} />
+                  <Icon
+                    className="text-white sm:text-black fill-gray-600 sm:fill-transparent"
+                    icon={isMobile ? CloseCircleIcon : CloseIcon}
+                  />
                 </Button>
               </div>
             )}
@@ -200,6 +247,9 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
           <ActiveFilters filtersData={filtersData} filters={filters} />
         )}
       </div>
+      {/* <Modal open={mobileSearchOpen} title={formatMessage({})} >
+
+      </Modal> */}
     </div>
   );
 };
