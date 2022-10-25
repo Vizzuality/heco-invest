@@ -75,7 +75,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
     <>
       <LayoutContainer className="px-0 -mt-10 md:-mt-8">
         <Breadcrumbs
-          className="px-6"
+          className="px-4 sm:px-6 lg:px-8"
           substitutions={{
             id: { name },
           }}
