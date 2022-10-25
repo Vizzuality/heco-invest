@@ -109,7 +109,8 @@
         "longitude": 1.0,
         "favourite": false,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:31:15.507Z"
       },
       "relationships": {
         "project_developer": {

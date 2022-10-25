@@ -73,7 +73,8 @@
         "longitude": 1.0,
         "favourite": null,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:32:18.646Z"
       },
       "relationships": {
         "project_developer": {
@@ -188,7 +189,8 @@
         "longitude": 1.0,
         "favourite": null,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:32:18.781Z"
       },
       "relationships": {
         "project_developer": {
@@ -303,7 +305,8 @@
         "longitude": 1.0,
         "favourite": null,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:32:18.900Z"
       },
       "relationships": {
         "project_developer": {
@@ -418,7 +421,8 @@
         "longitude": 1.0,
         "favourite": null,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:32:19.009Z"
       },
       "relationships": {
         "project_developer": {
@@ -533,7 +537,8 @@
         "longitude": 1.0,
         "favourite": null,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:32:19.111Z"
       },
       "relationships": {
         "project_developer": {
@@ -648,7 +653,8 @@
         "longitude": 1.0,
         "favourite": null,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:32:19.227Z"
       },
       "relationships": {
         "project_developer": {
@@ -763,7 +769,8 @@
         "longitude": 1.0,
         "favourite": null,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:32:19.712Z"
       },
       "relationships": {
         "project_developer": {
@@ -898,7 +905,8 @@
         "longitude": 0.5,
         "favourite": null,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:32:18.480Z"
       },
       "relationships": {
         "project_developer": {
