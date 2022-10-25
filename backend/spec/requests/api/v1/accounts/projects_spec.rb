@@ -118,8 +118,16 @@ RSpec.describe "API V1 Account Projects", type: :request do
           end
         end
 
-        context "when filtered by searched text" do
+        context "when searching by name" do
           let("filter[full_text]") { @project.name }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([@project.id])
+          end
+        end
+
+        context "when searching by partial name" do
+          let("filter[full_text]") { "Awe" }
 
           it "contains only correct records" do
             expect(response_json["data"].pluck("id")).to eq([@project.id])

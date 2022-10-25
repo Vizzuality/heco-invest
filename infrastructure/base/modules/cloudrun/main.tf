@@ -30,7 +30,7 @@ resource "google_cloud_run_service" "cloud_run" {
       service_account_name = google_service_account.service_account.email
 
       containers {
-        image = "gcr.io/${var.project_id}/${var.image_name}:latest"
+        image = "gcr.io/${var.project_id}/${var.image_name}:${var.tag}"
         args  = [var.start_command]
         ports {
           container_port = var.container_port
@@ -44,7 +44,6 @@ resource "google_cloud_run_service" "cloud_run" {
               for_each = lookup(env.value, "secret_name", null) != null ? [1] : []
               content {
                 secret_key_ref {
-
                   key  = "latest"
                   name = env.value["secret_name"]
                 }
@@ -65,7 +64,7 @@ resource "google_cloud_run_service" "cloud_run" {
         # Use the VPC Connector
         "run.googleapis.com/vpc-access-connector" = var.vpc_connector_name
         # all egress from the service should go through the VPC Connector
-        "run.googleapis.com/vpc-access-egress"    = "all"
+        "run.googleapis.com/vpc-access-egress"    = "all-traffic"
       }
     }
   }

@@ -8,6 +8,9 @@ module Backoffice
           column(I18n.t("backoffice.common.category")) { |r| Category.find(r.category).name }
           column(I18n.t("backoffice.projects.index.priority_landscape")) { |r| r.priority_landscape&.name }
           column(I18n.t("backoffice.common.status")) { |r|
+            r.published? ? I18n.t("enum.project_status.published") : I18n.t("enum.project_status.draft")
+          }
+          column(I18n.t("backoffice.common.verification")) { |r|
             r.verified? ? I18n.t("backoffice.common.verified") : I18n.t("backoffice.common.unverified")
           }
         end

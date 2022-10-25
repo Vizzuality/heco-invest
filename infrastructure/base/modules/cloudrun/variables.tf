@@ -65,3 +65,8 @@ variable "max_scale" {
   description = "Maximum number of app instances to deploy"
   default = 5
 }
+
+variable "tag" {
+  type = string
+  description = "Tag name to use for docker image tagging and deployment"
+}

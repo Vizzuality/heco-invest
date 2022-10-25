@@ -21,6 +21,9 @@ ENV NEXT_PUBLIC_GOOGLE_ANALYTICS $NEXT_PUBLIC_GOOGLE_ANALYTICS
 ARG NEXT_PUBLIC_HOTJAR_SITE_ID
 ENV NEXT_PUBLIC_HOTJAR_SITE_ID $NEXT_PUBLIC_HOTJAR_SITE_ID
 
+ARG NEXT_PUBLIC_USER_TESTING_FORM_URL
+ENV NEXT_PUBLIC_USER_TESTING_FORM_URL $NEXT_PUBLIC_USER_TESTING_FORM_URL
+
 ARG NEXT_PUBLIC_PROXY_BACKEND
 ENV NEXT_PUBLIC_PROXY_BACKEND $NEXT_PUBLIC_PROXY_BACKEND
 
@@ -46,7 +49,7 @@ COPY --chown=nextjs:nextjs . .
 
 RUN yarn install --immutable
 
-RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.3.1/install.sh | bash
+RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
 RUN ./tx pull -f
 
 RUN yarn build

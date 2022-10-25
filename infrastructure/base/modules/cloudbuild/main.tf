@@ -52,7 +52,7 @@ locals {
           "build",
           "-f", var.dockerfile_path,
           "-t", "gcr.io/${var.project_id}/${var.image_name}",
-          "-t", "gcr.io/${var.project_id}/${var.image_name}:latest",
+          "-t", "gcr.io/${var.project_id}/${var.image_name}:${var.tag}",
         ],
         [for key, value in var.docker_build_args : "--build-arg=${key}=$_${key}"],
         [
@@ -61,12 +61,12 @@ locals {
       )
     }, {
       name = "gcr.io/cloud-builders/docker"
-      args = ["push", "gcr.io/${var.project_id}/${var.image_name}:latest"]
+      args = ["push", "gcr.io/${var.project_id}/${var.image_name}:${var.tag}"]
     }, {
       name       = "gcr.io/google.com/cloudsdktool/cloud-sdk"
       entrypoint = "gcloud"
       args       = [
-        "run", "deploy", var.cloud_run_service_name, "--image", "gcr.io/${var.project_id}/${var.image_name}:latest",
+        "run", "deploy", var.cloud_run_service_name, "--image", "gcr.io/${var.project_id}/${var.image_name}:${var.tag}",
         "--region", var.region
       ]
     }
@@ -99,7 +99,7 @@ resource "google_cloudbuild_trigger" "build_trigger" {
       }
     }
 
-    images = ["gcr.io/${var.project_id}/${var.image_name}", "gcr.io/${var.project_id}/${var.image_name}:latest"]
+    images = ["gcr.io/${var.project_id}/${var.image_name}", "gcr.io/${var.project_id}/${var.image_name}:${var.tag}"]
 
     options {
       machine_type = "E2_HIGHCPU_8"

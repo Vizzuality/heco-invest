@@ -64,7 +64,8 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
     // consumed days of the open call
     const consumed = duration - remaining - 1;
     return { consumed, remaining, deadline };
-  }, [closing_at, created_at]);
+    // locale must be in dependency array to change translation when locale changes
+  }, [closing_at, created_at, locale]);
 
   const handleFavoriteClick = () => {
     // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.

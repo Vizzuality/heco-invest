@@ -66,3 +66,8 @@ variable "test_container_name" {
   description = "The name of the test container to run"
   type = string
 }
+
+variable "tag" {
+  type = string
+  description = "Tag name to use for docker image tagging and deployment"
+}
