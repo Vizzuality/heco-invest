@@ -160,9 +160,9 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
         description={projectDeveloper.about}
       />
 
-      <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
+      <LayoutContainer className="px-0 -mt-10 md:mt-0 lg:-mt-16">
         <Breadcrumbs
-          className="sm:px-6 lg:px-8"
+          className="px-6 lg:px-8"
           substitutions={{
             id: { name: projectDeveloper.name },
           }}
@@ -185,7 +185,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
         />
       </LayoutContainer>
 
-      <LayoutContainer layout="narrow" className="mt-24 mb-20 md:mt-40">
+      <LayoutContainer layout="narrow" className="md:!max-w-4xl mt-24 mb-20 md:mt-40 md:px-12">
         <section aria-labelledby="project-developer-overview">
           <h2
             id="project-developer-overview"

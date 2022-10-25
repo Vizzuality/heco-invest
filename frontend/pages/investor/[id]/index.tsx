@@ -175,7 +175,10 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
         />
       </LayoutContainer>
 
-      <LayoutContainer layout="narrow" className="mb-10 sm:mb-20 mt-18 sm:mt-24 lg:mt-40">
+      <LayoutContainer
+        layout="narrow"
+        className="mb-10 sm:mb-20 mt-18 sm:mt-24 lg:mt-40 md:!max-w-4xl md:mt-40 md:px-12"
+      >
         <section aria-labelledby="profile-investment-info">
           <h2
             id="profile-investment-info"
