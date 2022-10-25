@@ -124,7 +124,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
                   <Loading visible={loading} iconClassName="w-10 h-10" />
                 </span>
               )}
-              <div className="flex flex-col gap-2 py-0.5 md:pl-0.5">
+              <div className="flex flex-col gap-2 p-0.5">
                 {projects.map((project) => (
                   <ProjectCard
                     key={project.id}
