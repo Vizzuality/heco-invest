@@ -161,14 +161,15 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
       />
 
       <LayoutContainer className="px-0 -mt-10 md:mt-0 lg:-mt-16">
-        <Breadcrumbs
-          className="px-6 lg:px-8"
-          substitutions={{
-            id: { name: projectDeveloper.name },
-          }}
-        />
+        <LayoutContainer>
+          <Breadcrumbs
+            substitutions={{
+              id: { name: projectDeveloper.name },
+            }}
+          />
+        </LayoutContainer>
         <ProfileHeader
-          className="mt-6"
+          className="mt-3 sm:mt-6"
           logo={projectDeveloper.picture?.medium}
           title={projectDeveloper.name}
           subtitle={projectDeveloperTypeName}
