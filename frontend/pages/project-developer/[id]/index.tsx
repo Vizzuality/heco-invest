@@ -186,7 +186,10 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
         />
       </LayoutContainer>
 
-      <LayoutContainer layout="narrow" className="md:!max-w-4xl mt-18 sm:mt-24 lg:mt-40 md:mt-40 mb-20 md:px-12">
+      <LayoutContainer
+        layout="narrow"
+        className="md:!max-w-4xl mt-18 sm:mt-24 lg:mt-40 md:mt-40 mb-20 md:px-12"
+      >
         <section aria-labelledby="project-developer-overview">
           <h2
             id="project-developer-overview"
