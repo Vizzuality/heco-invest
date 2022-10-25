@@ -138,7 +138,9 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
                 )}
               </div>
             </div>
-            {hasProjects && <Pagination className="w-full pt-2 mb-4" {...paginationProps} />}
+            {hasProjects && (
+              <Pagination className="w-full pt-2 mb-4 md:mb-0" {...paginationProps} />
+            )}
           </div>
           {breakpoint('md') ? (
             <AnimatePresence>
