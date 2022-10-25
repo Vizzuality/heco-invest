@@ -150,12 +150,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                   </div>
                 </div>
                 <hr className="my-4" />
-                <div
-                  className={cx('flex flex-wrap gap-x-8 md:gap-11 justify-between', {
-                    'justify-center md:justify-between': openCallRange.remaining > 8,
-                    '': openCallRange.remaining <= 8,
-                  })}
-                >
+                <div className="flex flex-wrap justify-between gap-x-8 md:gap-11">
                   <div className="flex flex-col justify-center gap-2 mb-6 md:items-start">
                     <span
                       id="total-of-projects"
