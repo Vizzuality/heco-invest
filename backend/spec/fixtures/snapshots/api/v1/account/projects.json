@@ -73,7 +73,8 @@
         "account_language": "es",
         "impact_calculated": false,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:31:59.625Z"
       },
       "relationships": {
         "project_developer": {
@@ -188,7 +189,8 @@
         "account_language": "es",
         "impact_calculated": false,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:31:59.447Z"
       },
       "relationships": {
         "project_developer": {
@@ -303,7 +305,8 @@
         "account_language": "es",
         "impact_calculated": false,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:31:59.403Z"
       },
       "relationships": {
         "project_developer": {

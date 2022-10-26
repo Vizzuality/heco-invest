@@ -71,7 +71,8 @@
       "account_language": "en",
       "impact_calculated": false,
       "verified": false,
-      "funded": null
+      "funded": null,
+      "updated_at": "2022-10-25T13:31:44.355Z"
     },
     "relationships": {
       "project_developer": {

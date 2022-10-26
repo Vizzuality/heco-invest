@@ -31,6 +31,7 @@ module API
         :geometry,
         :verified,
         :created_at,
+        :updated_at,
         :municipality_biodiversity_impact,
         :municipality_climate_impact,
         :municipality_water_impact,
