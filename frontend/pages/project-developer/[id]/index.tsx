@@ -193,7 +193,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
         <section aria-labelledby="project-developer-overview">
           <h2
             id="project-developer-overview"
-            className="mt-12 font-serif text-2xl font-semibold md:mt-20 sm:text-3xl text-green-dark"
+            className="font-serif text-2xl font-semibold md:mt-20 sm:text-3xl text-green-dark"
           >
             <FormattedMessage defaultMessage="Overview" id="9uOFF3" />
           </h2>
