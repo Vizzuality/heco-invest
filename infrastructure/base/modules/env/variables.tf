@@ -67,6 +67,16 @@ variable "hotjar_site_id" {
   default = ""
 }
 
+variable "http_auth_username" {
+  type = string
+  description = "Http auth username (for staging)"
+}
+
+variable "http_auth_password" {
+  type = string
+  description = "Http auth password (for staging)"
+}
+
 variable "dns_zone_name" {
   type        = string
   description = "Name for the GCP DNS Zone"

@@ -79,6 +79,14 @@ module "sendgrid_api_key" {
   use_random_value = false
 }
 
+module "http_auth_password" {
+  source           = "../secret_value"
+  region           = var.gcp_region
+  key              = "${var.project_name}_http_auth_password"
+  value            = var.http_auth_password
+  use_random_value = false
+}
+
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN                 = var.transifex_token
@@ -89,6 +97,8 @@ locals {
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY = var.google_maps_api_key
     NEXT_PUBLIC_MAPBOX_API_TOKEN    = var.mapbox_api_key
     NEXT_PUBLIC_HOTJAR_SITE_ID      = var.hotjar_site_id
+    NEXT_PUBLIC_HTTP_AUTH_USERNAME  = var.http_auth_username
+    NEXT_PUBLIC_HTTP_AUTH_PASSWORD  = var.http_auth_password
   }
   backend_docker_build_args = {
     RAILS_RELATIVE_URL_ROOT = "/backend"
@@ -191,6 +201,9 @@ module "backend_cloudrun" {
     }, {
       name        = "ENCRYPTION_DERIVATION_SALT"
       secret_name = module.rails_encryption_derivation_salt.secret_name
+    }, {
+      name        = "HTTP_AUTH_PASSWORD"
+      secret_name = module.http_auth_password.secret_name
     }
   ]
   env_vars = [
@@ -273,6 +286,10 @@ module "backend_cloudrun" {
     {
       name  = "INSTANCE_ROLE"
       value = var.instance_role
+    },
+    {
+      name  = "HTTP_AUTH_USERNAME"
+      value = var.http_auth_username
     }
   ]
 }

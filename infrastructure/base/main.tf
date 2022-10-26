@@ -44,6 +44,8 @@ module "staging" {
   from_email_address     = var.from_email_address
   instance_role          = "staging"
   tag                    = "staging"
+  http_auth_username     = var.staging_http_auth_username
+  http_auth_password     = var.staging_http_auth_password
 }
 
 module "production" {
@@ -71,6 +73,8 @@ module "production" {
   from_email_address     = var.from_email_address
   instance_role          = "production"
   tag                    = "production"
+  http_auth_username     = ""
+  http_auth_password     = ""
 }
 
 module "dns" {
