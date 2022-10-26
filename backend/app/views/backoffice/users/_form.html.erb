@@ -6,7 +6,7 @@
     <%= t(".information") %>
   </h2>
 
-  <%= render "image_with_thumbnail", f: f, blob: :avatar %>
+  <%= render "image_with_thumbnail", f: f, blob: :avatar, required: false %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
   <%= f.input :otp_required_for_login, collection: [[t("true"), true], [t("false"), false]], as: :radio_buttons %>

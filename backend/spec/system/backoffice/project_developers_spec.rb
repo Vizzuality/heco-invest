@@ -79,6 +79,19 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
           expect(page).to have_text(ReviewStatus.find("approved").name)
         end
       end
+
+      context "when validation errors" do
+        before { unapproved_pd.account.update_attribute(:picture, nil) }
+
+        it "doesn't change the status to approved" do
+          within_row("Unapproved PD Enterprise") do
+            expect(page).to have_text(ReviewStatus.find("unapproved").name)
+            click_on t("backoffice.common.approve")
+            expect(page).not_to have_text(ReviewStatus.find("approved").name)
+          end
+          expect(page).to have_text("Picture can't be blank")
+        end
+      end
     end
 
     context "when rejecting project developer" do
@@ -90,6 +103,18 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
             click_on t("backoffice.common.reject")
           }.to have_enqueued_mail(UserMailer, :rejected).with(approved_pd_owner).once
           expect(page).to have_text(ReviewStatus.find("rejected").name)
+        end
+      end
+
+      context "when validation errors" do
+        before { approved_pd.account.update_attribute(:picture, nil) }
+
+        it "still flips the status to rejected" do
+          within_row(approved_pd.name) do
+            expect(page).to have_text(ReviewStatus.find("approved").name)
+            click_on t("backoffice.common.reject")
+            expect(page).to have_text(ReviewStatus.find("rejected").name)
+          end
         end
       end
     end
@@ -175,6 +200,30 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
         click_on t("backoffice.common.save")
         expect(page).to have_text(t("backoffice.messages.success_update", model: t("backoffice.common.project_developer")))
         expect(approved_pd.account.reload.review_status).to eq("unapproved")
+      end
+
+      context "when validation errors" do
+        before(:each) do
+          approved_pd.account.unapproved!
+          approved_pd.account.update_attribute(:picture, nil)
+        end
+
+        it "doesn't change the status to approved" do
+          expect(page).to have_text(ReviewStatus.find("unapproved").name)
+          select "Approved", from: t("simple_form.labels.account.review_status")
+          click_on t("backoffice.common.save")
+          expect(page).to have_text(t("simple_form.error_notification.default_message"))
+          expect(page).to have_text("Account picture can't be blank")
+          expect(approved_pd.account.reload.review_status).to eq("unapproved")
+        end
+
+        it "still flips the status to rejected" do
+          expect(page).to have_text(ReviewStatus.find("unapproved").name)
+          select "Rejected", from: t("simple_form.labels.account.review_status")
+          click_on t("backoffice.common.save")
+          expect(page).not_to have_text(t("simple_form.error_notification.default_message"))
+          expect(approved_pd.account.reload.review_status).to eq("rejected")
+        end
       end
     end
 
