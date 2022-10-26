@@ -1,4 +1,4 @@
-FROM node:16.14-alpine3.15
+FROM node:16.14-bullseye
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
@@ -36,8 +36,7 @@ ENV NEXT_PUBLIC_MAPBOX_API_TOKEN $NEXT_PUBLIC_MAPBOX_API_TOKEN
 RUN addgroup --system --gid 1001 nextjs
 RUN adduser --system --uid 1001 nextjs
 
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat curl bash
+RUN apt-get install -y curl bash
 
 RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.4.1/install.sh | bash
 
