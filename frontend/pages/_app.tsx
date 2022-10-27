@@ -87,7 +87,7 @@ const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
     <IntlProvider
       locale={locale}
       defaultLocale={defaultLocale}
-      messages={pageProps.intlMessages}
+      messages={pageProps['intlMessages']}
       onError={(error) => {
         // By default, FormatJS will display an error each time a translation is missing.
         // Nevertheless, the translations aren't pulled until the application is deployed in
@@ -102,7 +102,7 @@ const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
     >
       <ReduxProvider store={store}>
         <QueryClientProvider client={queryClient}>
-          <Hydrate state={pageProps.dehydratedState}>
+          <Hydrate state={pageProps['dehydratedState']}>
             <SSRProvider>
               <I18nProvider locale={locale}>
                 <OverlayProvider>

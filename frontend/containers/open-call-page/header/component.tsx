@@ -65,6 +65,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
     const consumed = duration - remaining - 1;
     return { consumed, remaining, deadline };
     // locale must be in dependency array to change translation when locale changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [closing_at, created_at, locale]);
 
   const handleFavoriteClick = () => {
