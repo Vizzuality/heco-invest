@@ -35,6 +35,8 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
   children,
   autoNavigation = true,
   footerElements,
+  createdAt,
+  updatedAt,
   onPreviousClick = noop,
   onNextClick = noop,
   onPageClick = noop,
@@ -114,6 +116,8 @@ export const MultiPageLayout: FC<MultiPageLayoutProps> = ({
         locale={locale}
         siteHeader={siteHeader}
         leaveButtonText={leaveButtonText}
+        createdAt={createdAt}
+        updatedAt={updatedAt}
         onCloseClick={onCloseClick}
       />
       <LayoutContainer layout={layout}>

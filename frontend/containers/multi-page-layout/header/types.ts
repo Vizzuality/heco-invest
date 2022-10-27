@@ -11,6 +11,10 @@ export interface MultiPageLayoutHeaderProps {
   locale?: LanguageType;
   /** Text to display on top right "Leave" button. Defaults to +Leave` */
   leaveButtonText?: string;
+  /** Date at which the entity was created */
+  createdAt?: string;
+  /** Date of last modification of the entity */
+  updatedAt?: string;
   /** Callback when the close button is pressed */
   onCloseClick?: () => void;
 }
