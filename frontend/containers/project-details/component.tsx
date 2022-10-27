@@ -6,6 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import dayjs from 'dayjs';
 import { noop } from 'lodash-es';
 
 import { projectImpact } from 'helpers/project';
@@ -183,6 +184,17 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
         >
           {project.description}
         </div>
+        <p className="mt-2 text-xs text-gray-700">
+          <FormattedMessage
+            defaultMessage="Created on <b>{createdDate}</b> and updated on <b>{updatedDate}</b>"
+            id="hwBx6v"
+            values={{
+              b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+              createdDate: dayjs(project.created_at).format('MMM DD, YYYY'),
+              updatedDate: dayjs(project.updated_at).format('MMM DD, YYYY'),
+            }}
+          />
+        </p>
         <div
           className="flex items-center mt-4 text-sm text-gray-900"
           aria-label={intl.formatMessage({ defaultMessage: 'Project developer', id: 'yF82he' })}

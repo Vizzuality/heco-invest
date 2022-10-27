@@ -2472,6 +2472,9 @@
   "huqKGl": {
     "string": "Create account"
   },
+  "hwBx6v": {
+    "string": "Created on <b>{createdDate}</b> and updated on <b>{updatedDate}</b>"
+  },
   "hwNIf9": {
     "string": "Use the ‘Resend email’ button below to resend the verification email in case you don’t receive it. Note that you must wait 30 seconds before resending."
   },
