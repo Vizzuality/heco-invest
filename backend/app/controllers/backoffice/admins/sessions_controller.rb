@@ -1,4 +1,5 @@
 class Backoffice::Admins::SessionsController < Devise::SessionsController
+  include Backoffice::HttpAuth
   include Backoffice::Localization
 
   # GET
