@@ -116,7 +116,11 @@ export const ProfileCard: FC<ProfileCardProps> = ({
             })}
           >
             {tags.map((tag) => (
-              <Tag key={tag} className="text-sm text-green-dark" size="smallest">
+              <Tag
+                key={tag}
+                className="text-sm border text-green-dark border-green-dark lead"
+                size="smallest"
+              >
                 {tag}
               </Tag>
             ))}
