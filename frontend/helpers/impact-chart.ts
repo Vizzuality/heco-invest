@@ -22,8 +22,8 @@ const createGradient = (
     const x = area.right / 2 - adjustmentValueX;
     const y = area.bottom / 2 - adjustmentValueY;
     const innerRadius = 0;
-    const CENTER_CIRCLE = 0.8;
-    const radius = area.right * CENTER_CIRCLE;
+    const whiteCircleRadiusPercent = 0.8;
+    const radius = area.right * whiteCircleRadiusPercent;
 
     const gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, radius);
 
