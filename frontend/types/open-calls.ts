@@ -22,6 +22,7 @@ export type OpenCall = {
   account_language: Languages;
   trusted: boolean;
   created_at: string;
+  updated_at: string;
   picture: Picture;
   investor: Investor;
   country: Locations;

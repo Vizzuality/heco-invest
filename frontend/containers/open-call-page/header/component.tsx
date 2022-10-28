@@ -112,6 +112,17 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
               <p>{openCall.description}</p>
             </div>
             <div className="order-1 md:order-2 w-full flex flex-col justify-start md:mr-4 p-6 bg-white drop-shadow-xl -mb-12 h-full md:w-[395px] -translate-y-32 md:max-w-2/3 rounded-2xl">
+              <p className="mb-4 text-xs text-gray-700">
+                <FormattedMessage
+                  defaultMessage="Created on <b>{createdDate}</b> and updated on <b>{updatedDate}</b>"
+                  id="hwBx6v"
+                  values={{
+                    b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+                    createdDate: dayjs(openCall.created_at).format('MMM DD, YYYY'),
+                    updatedDate: dayjs(openCall.updated_at).format('MMM DD, YYYY'),
+                  }}
+                />
+              </p>
               <div className="px-2">
                 <div className="flex flex-wrap justify-between gap-8 md:gap-11">
                   <div className="flex flex-col justify-end gap-2 md:items-start">
