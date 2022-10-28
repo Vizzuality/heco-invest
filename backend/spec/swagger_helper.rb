@@ -143,6 +143,7 @@ RSpec.configure do |config|
                   closing_at: {type: :string},
                   language: {type: :string},
                   created_at: {type: :string},
+                  updated_at: {type: :string},
                   trusted: {type: :boolean},
                   verified: {type: :boolean}
                 }
@@ -197,6 +198,7 @@ RSpec.configure do |config|
                   trusted: {type: :boolean},
                   verified: {type: :boolean},
                   created_at: {type: :string},
+                  updated_at: {type: :string},
                   target_groups: {type: :array, items: {type: :string}},
                   impact_areas: {type: :array, items: {type: :string}},
                   instrument_types: {type: :array, items: {type: :string}},

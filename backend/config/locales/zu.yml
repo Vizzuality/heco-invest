@@ -194,6 +194,8 @@ zu:
         prev: "←"
         next: "→"
         gap: "..."
+      created: Created
+      updated: Updated
     account:
       account_language: Account language
       account_language_description: This is the default language in which all the content is created by the account users.

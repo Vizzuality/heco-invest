@@ -63,7 +63,11 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
     [allInstrumentTypes, instrument_types]
   );
 
-  const deadlineStr = useMemo(() => dayjs(closingAt).format('D MMMM'), [closingAt]);
+  const deadlineStr = useMemo(
+    () => dayjs(closingAt).format('D MMMM'),
+    // locale must be in dependency array to change translation when locale changes
+    [closingAt, router.locale]
+  );
 
   const tags = allImpacts
     ?.filter((impact) => investor?.impacts?.includes(impact.id))

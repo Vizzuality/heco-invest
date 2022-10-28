@@ -73,7 +73,8 @@
         "favourite": true,
         "impact_calculated": false,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:32:04.602Z"
       },
       "relationships": {
         "project_developer": {

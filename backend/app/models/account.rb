@@ -20,17 +20,20 @@ class Account < ApplicationRecord
   ransacker :review_status, formatter: proc { |v| review_statuses[v] }
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
-  validates :about, presence: true
-  validates :website, url: true
-  validates :linkedin, url: true
-  validates :twitter, url: true
-  validates :facebook, url: true
-  validates :instagram, url: true
   validates :language, inclusion: {in: Language::TYPES, allow_blank: true}, presence: true
-  validates :picture, attached: true, content_type: /\Aimage\/.*\z/
-  validates :contact_email, presence: true
-  validates :contact_email, format: {with: Devise.email_regexp}, unless: -> { contact_email.blank? }
-  validate :owner_is_part_of_account, if: :owner_id_changed?
+
+  with_options(unless: :rejected?) do |account|
+    account.validates :about, presence: true
+    account.validates :website, url: true
+    account.validates :linkedin, url: true
+    account.validates :twitter, url: true
+    account.validates :facebook, url: true
+    account.validates :instagram, url: true
+    account.validates :picture, attached: true, content_type: /\Aimage\/.*\z/
+    account.validates :contact_email, presence: true
+    account.validates :contact_email, format: {with: Devise.email_regexp}, unless: -> { contact_email.blank? }
+    account.validate :owner_is_part_of_account, if: :owner_id_changed?
+  end
 
   before_update :set_reviewed_at, if: :review_status_changed?
   before_update :change_invitations_ownership, if: :owner_id_changed?

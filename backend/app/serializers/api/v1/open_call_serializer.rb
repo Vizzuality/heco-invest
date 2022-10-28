@@ -18,6 +18,7 @@ module API
         :account_language,
         :verified,
         :created_at,
+        :updated_at,
         :open_call_applications_count
       attribute :trusted, &:verified
 

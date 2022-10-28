@@ -1,4 +1,4 @@
-FROM ruby:3.1.0-alpine3.15
+FROM ruby:3.1.0-bullseye
 
 ENV BUNDLER_VERSION 2.3.3
 ENV RAILS_ENV production
@@ -7,18 +7,18 @@ ENV RAILS_SERVE_STATIC_FILES true
 ARG RAILS_RELATIVE_URL_ROOT
 ENV RAILS_RELATIVE_URL_ROOT $RAILS_RELATIVE_URL_ROOT
 
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
 # Install dependencies
-RUN apk update && \
-    apk upgrade && \
-    apk add --update --no-cache \
+RUN apt-get update -y && \
+    apt-get upgrade -y && \
+    apt-get install -y \
       curl bash \
-      build-base \
-      bash \
-      git \
-      tzdata \
-      postgresql-dev \
+      git tzdata \
+      postgresql-client \
       imagemagick \
-      geos-dev \
+      libgeos-dev \
       yarn \
     && rm -rf /var/cache/apk/*
 
@@ -40,7 +40,7 @@ RUN yarn install
 
 COPY . /usr/src/app
 
-RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
+RUN curl -o- https://raw.githubusercontent.com/transifex/cli/v1.4.1/install.sh | bash
 ENV PATH "$PATH:/usr/src/app"
 
 EXPOSE 3000

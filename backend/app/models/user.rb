@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include PgSearch::Model
 
-  EMAIL_CONFIRMATION_LIMIT_PERIOD = 10.minutes
+  EMAIL_CONFIRMATION_LIMIT_PERIOD = 30.seconds
 
   belongs_to :account, optional: true, counter_cache: true
 
