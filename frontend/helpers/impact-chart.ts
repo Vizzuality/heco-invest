@@ -8,23 +8,28 @@ const hex2rgba = (hex: string, alpha: number) => {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 };
 
-const CENTER_CIRCLE = 0.8;
-
-export const createBgGradient = (chart: Chart<'polarArea'>, categoryColor: string) => {
+const createGradient = (
+  chart: Chart<'polarArea'>,
+  categoryColor: string,
+  gradientValues: { stop: number; color: string }[]
+) => {
   const ctx = chart?.ctx;
   const area = chart?.chartArea;
   if (ctx && area && categoryColor) {
-    console.log(area);
-    const x = area.right / 2;
-    const y = area.bottom / 2;
+    // The adjustment values correct the y and x center position
+    const adjustmentValueX = area.right < 100 ? 0.78 : area.right < 400 ? 0.25 : 0;
+    const adjustmentValueY = area.bottom < 100 ? 0.9 : area.right < 400 ? 0.75 : 0.5;
+    const x = area.right / 2 - adjustmentValueX;
+    const y = area.bottom / 2 - adjustmentValueY;
     const innerRadius = 0;
+    const CENTER_CIRCLE = 0.8;
     const radius = area.right * CENTER_CIRCLE;
 
     const gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, radius);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.05, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.05, hex2rgba(categoryColor, 0.4));
-    gradient.addColorStop(1, categoryColor);
+
+    gradientValues.forEach(({ color, stop }) => {
+      gradient.addColorStop(stop, color);
+    });
 
     ctx.fillStyle = gradient;
     ctx.fill();
@@ -33,22 +38,24 @@ export const createBgGradient = (chart: Chart<'polarArea'>, categoryColor: strin
   }
 };
 
-export const createBorderGradient = (chart: Chart<'polarArea'>, categoryColor: string) => {
-  const ctx = chart?.ctx;
-  const area = chart?.chartArea;
-  if (ctx && area && categoryColor) {
-    const x = area.right / 2;
-    const y = area.bottom / 2;
-    const innerRadius = 0;
-    const radius = area.right * CENTER_CIRCLE;
-    const gradient = ctx.createRadialGradient(x, y, innerRadius, x, y, radius);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.05, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.05, 'rgba(255, 255, 255, 0)');
-    gradient.addColorStop(0.95, 'rgba(255, 255, 255, 0)');
-    ctx.fillStyle = gradient;
-    ctx.fill();
+export const createBgGradient = (chart: Chart<'polarArea'>, categoryColor: string) => {
+  const gradient = [
+    { stop: 0, color: 'rgba(255, 255, 255, 1)' },
+    { stop: 0.05, color: 'rgba(255, 255, 255, 1)' },
+    { stop: 0.05, color: hex2rgba(categoryColor, 0.4) },
+    { stop: 1, color: categoryColor },
+  ];
 
-    return gradient;
-  }
+  return createGradient(chart, categoryColor, gradient);
+};
+
+export const createBorderGradient = (chart: Chart<'polarArea'>, categoryColor: string) => {
+  const gradient = [
+    { stop: 0, color: 'rgba(255, 255, 255, 1)' },
+    { stop: 0.05, color: 'rgba(255, 255, 255, 1)' },
+    { stop: 0.05, color: 'rgba(255, 255, 255, 0)' },
+    { stop: 1, color: 'rgba(255, 255, 255, 0)' },
+  ];
+
+  return createGradient(chart, categoryColor, gradient);
 };

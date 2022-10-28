@@ -119,22 +119,33 @@ export const ImpactChart: FC<ImpactChartProps> = ({
         },
         grid: {
           circular: true,
-          color: 'rgba(227, 222, 214, 1)',
+          color: compactMode
+            ? 'rgba(227, 222, 214, 1)'
+            : // color values to make the 0 grid line transparent
+              [
+                'rgba(227, 222, 214, 0)',
+                'rgba(227, 222, 214, 1)',
+                'rgba(227, 222, 214, 1)',
+                'rgba(227, 222, 214, 1)',
+                'rgba(227, 222, 214, 1)',
+              ],
           borderDash: [2, 2],
           drawTicks: true,
         },
-        beginAtZero: true,
+        beginAtZero: false,
         ticks: {
           count: compactMode ? 3 : undefined,
           color: 'rgba(153, 153, 153, 1)',
           font: { family: 'Work Sans', size: 12, weight: '400' },
           backdropColor: 'transparent',
           display: !compactMode,
+          // Precision and step-size ensure the desired tick values
           precision: 5,
           stepSize: 2.5,
+          z: 10,
         },
         max: 10,
-        min: -1,
+        min: compactMode ? -1.5 : -1,
       },
     },
   };
@@ -235,7 +246,12 @@ export const ImpactChart: FC<ImpactChartProps> = ({
         </div>
         <div className="w-full px-12">
           <div className="flex aspect-square max-w-[445px]">
-            <PolarArea ref={chartRef} className="z-10" data={chartData} options={chartOptions} />
+            <PolarArea
+              ref={chartRef}
+              className="z-10 flex-shrink-0 aspect-square"
+              data={chartData}
+              options={chartOptions}
+            />
           </div>
         </div>
         <div className="z-50 flex justify-between w-full -translate-y-5">
