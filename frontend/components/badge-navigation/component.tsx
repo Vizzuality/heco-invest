@@ -95,7 +95,7 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
                         'hover:text-white sm:hover:text-green-dark': theme === 'default',
                         'text-white sm:text-green-dark':
                           (isActive && theme === 'default') || (!isActive && theme === 'simple'),
-                        'text-gray-700 font-normal sm:font-semibold':
+                        'text-gray-400 sm:text-gray-700 font-normal sm:font-semibold':
                           !isActive && theme === 'default',
                         'hover:text-black': theme === 'simple',
                         'text-black': isActive && theme === 'simple',
