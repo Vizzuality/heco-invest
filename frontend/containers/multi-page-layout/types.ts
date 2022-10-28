@@ -33,7 +33,10 @@ export type MultiPageLayoutProps = PropsWithChildren<
     /** Returns the total number of pages */
     getTotalPages?: (totalPages: number) => void;
   } & Pick<LayoutContainerProps, 'layout'> &
-    Pick<MultiPageLayoutHeaderProps, 'title' | 'onCloseClick' | 'leaveButtonText'> &
+    Pick<
+      MultiPageLayoutHeaderProps,
+      'title' | 'onCloseClick' | 'leaveButtonText' | 'createdAt' | 'updatedAt'
+    > &
     Pick<
       MultiPageLayoutFooterProps,
       | 'footerElements'
