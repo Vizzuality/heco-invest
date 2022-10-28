@@ -87,7 +87,7 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
           </div>
 
           <div className="flex flex-col justify-between h-full lg:flex-row">
-            <div className="flex flex-col justify-between">
+            <div className="flex flex-col justify-between lg:w-1/2">
               <div className="flex flex-col items-start space-y-6 lg:w-3/4 md:pr-24">
                 <h3 className="text-xl font-semibold">
                   <FormattedMessage defaultMessage="Estimated Impact" id="PheCRL" />

@@ -223,11 +223,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
             linkToFAQ
           />
           <div className="flex justify-center">
-            <ImpactChart
-              className="max-w-[300px] max-h-[300px] my-4"
-              category={category.id}
-              impact={impact}
-            />
+            <ImpactChart className="my-4 max-w-[424px]" category={category.id} impact={impact} />
           </div>
         </div>
         <div className="mt-4 text-gray-900" aria-describedby="sdgs">
@@ -238,7 +234,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
         </div>
       </div>
       <FavoriteContact
-        className="sticky bottom-0 w-full px-4 py-4 bg-white shadow-lg sm:px-8 drop-shadow"
+        className="sticky bottom-0 z-50 w-full px-4 py-4 bg-white shadow-lg sm:px-8 drop-shadow"
         project={project}
         onFavoriteClick={handleFavoriteClick}
       />
