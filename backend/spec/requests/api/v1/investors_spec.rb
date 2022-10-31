@@ -2,7 +2,7 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Investors", type: :request do
   before_all do
-    @investor = create(:investor, sdgs: [3, 4])
+    @investor = create(:investor, mission: "Yellow Banana", sdgs: [3, 4])
     @draft_open_call = create(:open_call, status: :draft, investor: @investor)
     create_list(:investor, 6, sdgs: [1, 5])
     @unapproved_investor = create(:investor, account: create(:account, review_status: :unapproved, users: [create(:user)]))
@@ -81,8 +81,20 @@ RSpec.describe "API V1 Investors", type: :request do
           end
         end
 
-        context "when filtered by searched text" do
-          let("filter[full_text]") { @investor.name }
+        context "when filtered by investor mission" do
+          let("filter[full_text]") { @investor.mission }
+
+          it "contains only correct records" do
+            expect(response_json["data"].pluck("id")).to eq([@investor.id])
+          end
+        end
+
+        context "when filtered by partial PD mission" do
+          let("filter[full_text]") { @investor.mission[0..2] }
+
+          before(:each) do
+            allow(Investor).to receive(:translatable_attributes).and_return([:mission])
+          end
 
           it "contains only correct records" do
             expect(response_json["data"].pluck("id")).to eq([@investor.id])

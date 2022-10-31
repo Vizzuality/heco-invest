@@ -160,15 +160,16 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
         description={projectDeveloper.about}
       />
 
-      <LayoutContainer className="-mt-10 md:mt-0 lg:-mt-16">
-        <Breadcrumbs
-          className="sm:px-6 lg:px-8"
-          substitutions={{
-            id: { name: projectDeveloper.name },
-          }}
-        />
+      <LayoutContainer className="px-0 -mt-10 md:mt-0 lg:-mt-16">
+        <LayoutContainer>
+          <Breadcrumbs
+            substitutions={{
+              id: { name: projectDeveloper.name },
+            }}
+          />
+        </LayoutContainer>
         <ProfileHeader
-          className="mt-6"
+          className="mt-3 sm:mt-6"
           logo={projectDeveloper.picture?.medium}
           title={projectDeveloper.name}
           subtitle={projectDeveloperTypeName}
@@ -185,11 +186,14 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
         />
       </LayoutContainer>
 
-      <LayoutContainer layout="narrow" className="mt-24 mb-20 md:mt-40">
+      <LayoutContainer
+        layout="narrow"
+        className="md:!max-w-4xl mt-18 sm:mt-24 lg:mt-40 md:mt-40 mb-20 md:px-12"
+      >
         <section aria-labelledby="project-developer-overview">
           <h2
             id="project-developer-overview"
-            className="mt-12 font-serif text-2xl font-semibold md:mt-20 sm:text-3xl text-green-dark"
+            className="font-serif text-2xl font-semibold md:mt-20 sm:text-3xl text-green-dark"
           >
             <FormattedMessage defaultMessage="Overview" id="9uOFF3" />
           </h2>
@@ -199,7 +203,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
           </h3>
           <p className="my-3">{projectDeveloper.mission}</p>
 
-          <TagsGrid className="mt-10 md:mt-14" rows={tagsRows} />
+          <TagsGrid className="mt-6 md:mt-14" rows={tagsRows} />
         </section>
 
         {projects?.length > 0 && (
@@ -211,7 +215,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
               <span className="ml-3">({projects.length})</span>
             </h2>
 
-            <Carousel className="mt-12">
+            <Carousel className="mx-4 mt-12 sm:mx-0">
               {chunk(projects, 3).map((projectsChunk, index) => (
                 <Slide key={`slide-${index}`} className="flex flex-col gap-2">
                   {projectsChunk.map((project) => (

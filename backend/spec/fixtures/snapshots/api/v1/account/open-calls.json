@@ -33,7 +33,8 @@
         },
         "favourite": false,
         "open_call_applications_count": 0,
-        "verified": false
+        "verified": false,
+        "updated_at": "2022-10-25T13:33:08.978Z"
       },
       "relationships": {
         "investor": {
@@ -95,7 +96,8 @@
         },
         "favourite": false,
         "open_call_applications_count": 0,
-        "verified": false
+        "verified": false,
+        "updated_at": "2022-10-25T13:33:08.927Z"
       },
       "relationships": {
         "investor": {
@@ -157,7 +159,8 @@
         },
         "favourite": false,
         "open_call_applications_count": 0,
-        "verified": false
+        "verified": false,
+        "updated_at": "2022-10-25T13:33:08.890Z"
       },
       "relationships": {
         "investor": {
@@ -219,7 +222,8 @@
         },
         "favourite": false,
         "open_call_applications_count": 0,
-        "verified": false
+        "verified": false,
+        "updated_at": "2022-10-25T13:33:08.843Z"
       },
       "relationships": {
         "investor": {
@@ -252,8 +256,8 @@
       "id": "a23a0daa-bf7f-47ef-9eff-9317113ae4d0",
       "type": "open_call",
       "attributes": {
-        "name": "Filtered Open Call Name",
-        "slug": "kutch-spencer-filtered-open-call-name",
+        "name": "Yellow Banana",
+        "slug": "kutch-spencer-yellow-banana",
         "description": "Placeat commodi libero. Quo recusandae repellat. Sunt commodi tempore. Voluptatem et corrupti.",
         "instrument_types": [
           "loan"
@@ -281,7 +285,8 @@
         },
         "favourite": false,
         "open_call_applications_count": 0,
-        "verified": false
+        "verified": false,
+        "updated_at": "2022-10-25T13:33:08.798Z"
       },
       "relationships": {
         "investor": {
@@ -343,7 +348,8 @@
         },
         "favourite": false,
         "open_call_applications_count": 0,
-        "verified": false
+        "verified": false,
+        "updated_at": "2022-10-25T13:33:08.746Z"
       },
       "relationships": {
         "investor": {

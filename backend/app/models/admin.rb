@@ -1,7 +1,7 @@
 class Admin < ApplicationRecord
   include PgSearch::Model
 
-  pg_search_scope :search, against: [:first_name, :last_name, :email]
+  pg_search_scope :search, against: [:first_name, :last_name, :email], using: {tsearch: {prefix: true}}
 
   devise :database_authenticatable, :recoverable, :rememberable, :validatable, :trackable
 

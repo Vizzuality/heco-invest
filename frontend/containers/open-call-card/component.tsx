@@ -64,7 +64,11 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
     [allInstrumentTypes, instrument_types]
   );
 
-  const deadlineStr = useMemo(() => dayjs(closingAt).format('D MMMM'), [closingAt]);
+  const deadlineStr = useMemo(
+    () => dayjs(closingAt).format('D MMMM'),
+    // locale must be in dependency array to change translation when locale changes
+    [closingAt, router.locale]
+  );
 
   const truncatedDescription = useMemo(
     () => truncate(description, { length: 300, omission: ' ...' }),
@@ -147,11 +151,22 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
           </div>
         </div>
         <div
-          className="flex items-start flex-grow mt-4"
+          className="flex items-start mt-4"
           aria-label={intl.formatMessage({ defaultMessage: 'Description', id: 'Q8Qw5B' })}
         >
           {truncatedDescription}
         </div>
+        <p className="flex-grow text-xs text-gray-700">
+          <FormattedMessage
+            defaultMessage="Created on <b>{createdDate}</b> and updated on <b>{updatedDate}</b>"
+            id="hwBx6v"
+            values={{
+              b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+              createdDate: dayjs(openCall.created_at).format('MMM DD, YYYY'),
+              updatedDate: dayjs(openCall.updated_at).format('MMM DD, YYYY'),
+            }}
+          />
+        </p>
         <div
           className="flex items-center justify-between gap-2 mt-2"
           aria-label={intl.formatMessage({

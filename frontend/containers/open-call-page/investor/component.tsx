@@ -32,9 +32,9 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({ openCall 
 
   return (
     <>
-      <div className="w-full pt-20 bg-background-middle">
-        <LayoutContainer>
-          <LayoutContainer className="flex flex-col justify-between pb-20 gap-y-12 md:flex-row">
+      <div className="w-full pt-10 sm:pt-20 bg-background-middle">
+        <LayoutContainer className="px-0">
+          <LayoutContainer className="flex flex-col justify-between pb-10 sm:pb-20 gap-y-8 sm:gap-y-12 md:flex-row">
             <div className="w-full">
               <h2 className="mb-4 font-serif text-4xl font-bold">
                 <FormattedMessage defaultMessage="Investor" id="nEvNJb" />
@@ -56,7 +56,7 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({ openCall 
             </div>
           </LayoutContainer>
         </LayoutContainer>
-        <div className="py-8 text-center sm:py-20 bg-green-dark">
+        <div className="text-center py-14 sm:py-20 bg-green-dark">
           <LayoutContainer>
             <h2 className="max-w-2xl mx-auto font-serif text-3xl font-semibold text-white lg:text-4xl">
               <FormattedMessage
@@ -67,6 +67,7 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({ openCall 
             <div className="flex flex-col items-center justify-center gap-4 mt-8 sm:flex-row sm:mt-14">
               <Button
                 theme="primary-white"
+                className="flex justify-center w-full sm:w-auto"
                 disabled={
                   !userAccount ||
                   userAccount.type !== UserRoles.ProjectDeveloper ||
@@ -81,7 +82,12 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({ openCall 
               <span className="text-xl text-white">
                 <FormattedMessage defaultMessage="or" id="Ntjkqd" />
               </span>
-              <Button disabled={!userAccount} theme="secondary-white" onClick={handleFavoriteClick}>
+              <Button
+                className="flex justify-center w-full sm:w-auto"
+                disabled={!userAccount}
+                theme="secondary-white"
+                onClick={handleFavoriteClick}
+              >
                 <Icon
                   icon={Heart}
                   className={cx('w-4 mr-3', {

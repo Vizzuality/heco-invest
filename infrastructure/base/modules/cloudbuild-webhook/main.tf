@@ -79,7 +79,7 @@ resource "google_cloudbuild_trigger" "build_trigger" {
       name = "gcr.io/cloud-builders/docker"
       args = [
         "build", "-t", "gcr.io/${var.project_id}/${var.github_project}", "-t",
-        "gcr.io/${var.project_id}/${var.image_name}:latest", "."
+        "gcr.io/${var.project_id}/${var.image_name}:${var.tag}", "."
       ]
     }
   }

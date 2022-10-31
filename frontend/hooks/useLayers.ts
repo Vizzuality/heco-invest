@@ -165,21 +165,15 @@ export const useLayers = () => {
           specification: {
             type: 'vector',
             source: {
-              url: 'mapbox://leticiaheco.7r96572i',
+              url: 'mapbox://leticiaheco.77lko5p2',
             },
             render: {
               layers: [
                 {
                   paint: {
                     'line-color': 'hsl(202, 68%, 44%)',
-                    'line-width': ['interpolate', ['linear'], ['zoom'], 4, 0.5, 8, 1],
                   },
-                  layout: {
-                    'line-cap': 'round',
-                    'line-join': 'round',
-                    'line-round-limit': 1,
-                  },
-                  'source-layer': 'Zonificacion_Hidrografica_201-4s7eff',
+                  'source-layer': 'Basins',
                   type: 'line',
                 },
               ],

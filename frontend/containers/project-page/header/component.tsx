@@ -5,6 +5,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
+import dayjs from 'dayjs';
+
 import { translatedLanguageNameForLocale } from 'helpers/intl';
 import { useProjectContacts } from 'helpers/project';
 
@@ -146,6 +148,17 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
           <p>{project.description}</p>
         </div>
         <div className="lg:mr-4 p-6 bg-white drop-shadow-xl mb-16 lg:mb-[-70%] h-full lg:w-[395px] lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0 flex flex-col">
+          <p className="mb-4 text-xs text-gray-700">
+            <FormattedMessage
+              defaultMessage="Created on <b>{createdDate}</b> and updated on <b>{updatedDate}</b>"
+              id="hwBx6v"
+              values={{
+                b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+                createdDate: dayjs(project.created_at).format('MMM DD, YYYY'),
+                updatedDate: dayjs(project.updated_at).format('MMM DD, YYYY'),
+              }}
+            />
+          </p>
           {project.looking_for_funding ? (
             <div className="flex flex-col gap-8 mb-8 md:flex-row">
               <div className="flex flex-col items-start justify-end w-full gap-2 text-center sm:text-left md:min-w-1/2">

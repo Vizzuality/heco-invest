@@ -24,6 +24,6 @@ jobs:
           ENV: ${{ inputs.env }}
         run: |
           echo 'Installing the Transifex CLI…'
-          curl -o- https://raw.githubusercontent.com/transifex/cli/v1.0.3/install.sh | bash
+          curl -o- https://raw.githubusercontent.com/transifex/cli/v1.4.1/install.sh | bash
           echo 'Pushing the source strings…'
           TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx push -s

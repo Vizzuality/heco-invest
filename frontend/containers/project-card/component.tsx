@@ -144,7 +144,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
     >
       <div
         className={cx({
-          'relative flex flex-col sm:flex-row p-4 bg-white border shadow rounded-2xl gap-y-2 sm:gap-x-4':
+          'relative flex sm:flex-row p-4 bg-white border shadow rounded-2xl gap-y-2 sm:gap-x-4':
             true,
           'rounded-2xl overflow-hidden': true,
         })}

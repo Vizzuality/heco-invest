@@ -3,8 +3,8 @@
     "id": "bc1d4f55-5c32-42ce-8bd8-5bdef7513790",
     "type": "open_call",
     "attributes": {
-      "name": "Open call 1",
-      "slug": "kutch-spencer-open-call-1",
+      "name": "Yellow Banana",
+      "slug": "kutch-spencer-yellow-banana",
       "description": "Enim repellat pariatur. Earum modi eos. Libero tempora exercitationem. Qui dolorem quo.",
       "instrument_types": [
         "grant"
@@ -32,7 +32,8 @@
       "status": "launched",
       "favourite": null,
       "open_call_applications_count": 0,
-      "verified": false
+      "verified": false,
+      "updated_at": "2022-10-25T13:31:30.957Z"
     },
     "relationships": {
       "investor": {

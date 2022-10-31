@@ -8,7 +8,7 @@
   </h2>
 
   <%= localized_input f, :name, content_language, as: :string %>
-  <%= render "image_with_thumbnail", f: f, blob: :picture %>
+  <%= render "image_with_thumbnail", f: f, blob: :picture, required: false %>
   <div class="grid grid-cols-3 gap-4">
     <%= f.input :country_id, collection: Location.country.order(["name", content_language].join("_")), include_blank: false %>
     <%= f.input :department_id, collection: Location.department.order(["name", content_language].join("_")) %>

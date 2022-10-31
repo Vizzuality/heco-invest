@@ -17,9 +17,6 @@
   "+K9fF0": {
     "string": "Project Developers"
   },
-  "+USuwC": {
-    "string": "Funding available per project"
-  },
   "+UvbBR": {
     "string": "You need to confirm the password."
   },
@@ -92,9 +89,6 @@
   "/plMvw": {
     "string": "Project category"
   },
-  "/vHsVH": {
-    "string": "To help keep your account secure, we sent a security code to your email."
-  },
   "0+CmKm": {
     "string": "Find location"
   },
@@ -139,6 +133,9 @@
   },
   "0ZkvWW": {
     "string": "Amazonian Piedmont - Massif"
+  },
+  "0b0kmZ": {
+    "string": "created on {createdDate} updated on {updatedDate}"
   },
   "0cWjQP": {
     "string": "{title} - page {currentPage} out of {numPages}"
@@ -185,9 +182,6 @@
   "11hyS6": {
     "string": "Add your legal registration number so we can verify your legal entity . This information will not be publicaly available."
   },
-  "1B1DeU": {
-    "string": "HeCo Invest relies on the <span>ARIES Artificial Intelligence</span> model to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four dimensions of interest based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10 as shown in the chart of impact."
-  },
   "1E9nN4": {
     "string": "What information do I need to create an open call?"
   },
@@ -223,6 +217,9 @@
   },
   "2AZiFU": {
     "string": "Instrument size"
+  },
+  "2B3k2/": {
+    "string": "<span>Climate:</span> carbon sequestration, wood and soil biomass, application of sustainable forest measures;"
   },
   "2Cbk6h": {
     "string": "Add your logo or a picture that identifies the account."
@@ -473,6 +470,9 @@
   "6xBvFx": {
     "string": "Describe the problem or market need that your project or solution seeks to address. It should be a very specific problem, not a macro global issue like \"climate change\" or \"poverty\". Make sure that your showing that the problem is addressing a specific demand (is real) and it affects the poor and vulnerable population and/or the environment. We recommend using numbers to give a dimension of the problem."
   },
+  "76//dj": {
+    "string": "HeCo Invest relies on the ARIES Artificial Intelligence platform to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four “sustainability dimensions”, based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10, as shown in the chart of impact, considering a combination of landscape-level variables and self-reported project data."
+  },
   "770IIS": {
     "string": "Investment information"
   },
@@ -608,9 +608,6 @@
   "9CDBQg": {
     "string": "The solution proposed"
   },
-  "9EgeeX": {
-    "string": "I agree with the <a>Terms and Privacy Policy</a>."
-  },
   "9Er2U2": {
     "string": "Investments in HeCo will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
   },
@@ -709,9 +706,6 @@
   },
   "B4FwQp": {
     "string": "Points will not be accepted and only the first area in the file will be considered."
-  },
-  "BAC0rl": {
-    "string": "<span>Community:</span> income, sustainable projects;"
   },
   "BHJZyR": {
     "string": "Investor/Funder profile"
@@ -835,6 +829,9 @@
   },
   "DWQSFT": {
     "string": "Use left and right to toggle between focused values, press backspace to remove the currently focused value"
+  },
+  "DY7X+2": {
+    "string": "To help keep your account secure, we sent a security code to your email."
   },
   "DYbC4X": {
     "string": "Total <span>{numOpenCallApplications}</span> {numOpenCallApplications, plural, one {application} other {applications}}"
@@ -1058,6 +1055,9 @@
   "HK3ph8": {
     "string": "How it works"
   },
+  "HQuME/": {
+    "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. The <b>Supply</b> score of each sustainability dimension is then computed by taking the mean value of the corresponding indicators. <b>However, if all the indicators of a given dimension are selected, then the supply score of that dimension goes automatically to 0</b>. This is to make sure that the project developers only report the direct impacts of their projects and do not overstretch the project’s scope."
+  },
   "HVQtvr": {
     "string": "BC3's mission is to generate valuable knowledge for policy and decision making, integrating the environmental, socio-economic and ethical dimensions of climate change. Through the production of collaborative and open-source tools such as ARIES, which can track and forecast progress towards sustainable environmental and economic goals, BC3 plays a key role in enhancing regional, national and international economic development."
   },
@@ -1081,6 +1081,9 @@
   },
   "HtMY9H": {
     "string": "Type your message"
+  },
+  "HwlCeB": {
+    "string": "You need to enter the {number} digits security code."
   },
   "HyAD0J": {
     "string": "{numItems} of {totalItems} entries"
@@ -1443,6 +1446,9 @@
   "OSAxiC": {
     "string": "The solution or opportunity proposed"
   },
+  "OTytPB": {
+    "string": "<span>Community:</span> income generation, empowerment, sustainable projects;"
+  },
   "OWnChd": {
     "string": "If you are not looking for funding and just want to publish your project, select No."
   },
@@ -1656,6 +1662,9 @@
   "SZBXIx": {
     "string": "How can I apply for an open call?"
   },
+  "ScQ9Mo": {
+    "string": "HeCo Invest relies on the <span>ARIES Artificial Intelligence</span> platform to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four dimensions of interest based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10 as shown in the chart of impact, considering a combination of landscape-level variables and self-reported project data."
+  },
   "Scnx6A": {
     "string": "Maturity / stage of development"
   },
@@ -1770,9 +1779,6 @@
   "VCODFJ": {
     "string": "Why use this platform"
   },
-  "VG3saq": {
-    "string": "<span>Water:</span> water cycling, quality, and risk management."
-  },
   "VKb1MS": {
     "string": "Categories"
   },
@@ -1871,6 +1877,9 @@
   },
   "X+46wB": {
     "string": "HeCo priority landscapes"
+  },
+  "X0E3iC": {
+    "string": "I agree with the Terms and Privacy Policy."
   },
   "X2YMUl": {
     "string": "Contact the project developers to know more about the project."
@@ -2064,9 +2073,6 @@
   "aNY6/x": {
     "string": "Yes / No"
   },
-  "aRIIAG": {
-    "string": "<span>Climate:</span> wood and soil biomass, application of sustainable forest measures;"
-  },
   "aRoGjo": {
     "string": "Why are these regions important?"
   },
@@ -2147,9 +2153,6 @@
   },
   "c6KUQu": {
     "string": "Your account was successfully created, but you still need to be approved by our platform administrators."
-  },
-  "c82kx9": {
-    "string": "HeCo Invest relies on the ARIES Artificial Intelligence model to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four “sustainability dimensions”, based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10, as shown in the chart of impact."
   },
   "c8BbZZ": {
     "string": "Trade or business association"
@@ -2265,6 +2268,9 @@
   "eG1BWC": {
     "string": "You need to write other relevant information"
   },
+  "eHgiRK": {
+    "string": "To estimate the project’s impact, these scores are then combined with landscape-level knowledge, provided by ARIES, which identifies the contextual needs."
+  },
   "eItis6": {
     "string": "Discover investors by budget/ticket size"
   },
@@ -2309,9 +2315,6 @@
   },
   "ewx2b7": {
     "string": "Launch"
-  },
-  "f1XmxW": {
-    "string": "You need to enter the security code."
   },
   "f5UaDG": {
     "string": "This information will help us understand what you are interested in invest or funding. This information will be <n>public</n>."
@@ -2415,6 +2418,9 @@
   "gwLlk9": {
     "string": "select one"
   },
+  "h+MPP2": {
+    "string": "<span>Water:</span> water cycle regulation, water quality, and risk management."
+  },
   "hBliS7": {
     "string": "KMZ"
   },
@@ -2468,6 +2474,12 @@
   },
   "huqKGl": {
     "string": "Create account"
+  },
+  "hwBx6v": {
+    "string": "Created on <b>{createdDate}</b> and updated on <b>{updatedDate}</b>"
+  },
+  "hwNIf9": {
+    "string": "Use the ‘Resend email’ button below to resend the verification email in case you don’t receive it. Note that you must wait 30 seconds before resending."
   },
   "hxIQ/8": {
     "string": "Projects waiting funding"
@@ -2546,6 +2558,9 @@
   },
   "iwpEth": {
     "string": "Map layers"
+  },
+  "j+0U2g": {
+    "string": "Two factor authentication code, digit {digit}"
   },
   "j4lBL7": {
     "string": "Note: Some filters not apply to all tabs"
@@ -2697,9 +2712,6 @@
   "lMjl92": {
     "string": "{openCallName} applications"
   },
-  "lYS3vO": {
-    "string": "Project developers provide the impact information during the project registration phase by selecting one or more indicators from each dimension."
-  },
   "laO/jL": {
     "string": "You need to enter a \"mission\" text"
   },
@@ -2753,6 +2765,9 @@
   },
   "mEYG82": {
     "string": "Funding information"
+  },
+  "mJ1J28": {
+    "string": "This input must be a number"
   },
   "mMReor": {
     "string": "Go to project page"
@@ -2882,6 +2897,9 @@
   },
   "owrtek": {
     "string": "3 mandatory files: <b>.shp</b>, <b>.shx</b> and <b>.dbf</b>"
+  },
+  "p++eM/": {
+    "string": "Project developers provide their perceived impact from a pre-defined checklist during the project registration phase, by selecting one or more indicators for each dimension."
   },
   "p+7s2E": {
     "string": "Note that all of this information will be visible in the Project Developer public profile page except question 1 and 6."
@@ -3114,9 +3132,6 @@
   "sbodFR": {
     "string": "<a>Heritage Colombia (HeCo)</a> is a national initiative led by the Colombian Ministry of Environment. The initiative is to secure <n>20 million hectares</n> of sustainable landscape over the next 20 years, through investments in <n>conservation and sustainable development</n>."
   },
-  "sfFhiy": {
-    "string": "Maximum value"
-  },
   "sh7TMQ": {
     "string": "Select the deadline for this open call. This information will be <n>public</n>."
   },
@@ -3203,9 +3218,6 @@
   },
   "tzSubd": {
     "string": "You need enter a \"about\" text"
-  },
-  "u+TnMw": {
-    "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. However, if all the indicators of a given dimension are selected, then the <b>score goes automatically to 0</b>. This is to ensure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
   },
   "u/E7xG": {
     "string": "Are you currently looking for funding?"
@@ -3314,9 +3326,6 @@
   },
   "w9SaaR": {
     "string": "Low to medium"
-  },
-  "wA8Ls7": {
-    "string": "To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. The <b>Supply</b> score of each sustainability dimension is then computed by taking the mean value of the corresponding indicators. <b>However, if all the indicators of a given dimension are selected, then the supply score of that dimension goes automatically to 0</b>. This is to make sure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
   },
   "wCT28C": {
     "string": "1 <b>.kmz</b> file"
@@ -3500,6 +3509,9 @@
   },
   "zPMPr9": {
     "string": "You need to enter a last name."
+  },
+  "zQaj4V": {
+    "string": "Values of 0 (non-selected) and 1 (selected) are assigned for each indicator. However, if all the indicators of a given dimension are selected, then the <b>score goes automatically to 0</b>. This is to ensure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
   },
   "zSOvI0": {
     "string": "Filters"

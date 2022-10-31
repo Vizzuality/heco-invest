@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import { I18nProvider } from '@react-aria/i18n';
 import { OverlayProvider } from '@react-aria/overlays';
 import { SSRProvider } from '@react-aria/ssr';
+import dayjs from 'dayjs';
 import { Hydrate } from 'react-query/hydration';
 
 import { getCookie, setCookie } from 'helpers/cookies';
@@ -17,10 +18,14 @@ import { getCookie, setCookie } from 'helpers/cookies';
 import Analytics from 'components/analytics';
 import PrivacyNotice from 'components/privacy-notice';
 import StaticPageLayout from 'layouts/static-page';
+import localesConfig from 'locales.config.json';
 import store from 'store';
 import { LayoutStaticProp } from 'types';
 
 import 'styles/globals.css';
+
+// Enable dayjs to display translated dates in all the application's locales
+localesConfig.locales.forEach(({ locale }) => require(`dayjs/locale/${locale}.js`));
 
 // Polyfills
 import 'url-search-params-polyfill';
@@ -33,6 +38,7 @@ type Props = AppProps & {
 
 const HeCoApp: React.FC<AppProps> = ({ Component, pageProps }: Props) => {
   const { locale, defaultLocale } = useRouter();
+  dayjs.locale(locale);
 
   const [queryClient] = useState(() => new QueryClient());
 

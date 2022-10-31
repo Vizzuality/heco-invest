@@ -6,8 +6,8 @@ export const ProjectImpact: FC = () => (
   <>
     <p>
       <FormattedMessage
-        defaultMessage="HeCo Invest relies on the ARIES Artificial Intelligence model to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four “sustainability dimensions”, based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10, as shown in the chart of impact."
-        id="c82kx9"
+        defaultMessage="HeCo Invest relies on the ARIES Artificial Intelligence platform to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four “sustainability dimensions”, based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10, as shown in the chart of impact, considering a combination of landscape-level variables and self-reported project data."
+        id="76//dj"
       />
     </p>
     <ol className="mt-4 ml-6 list-disc">
@@ -169,8 +169,8 @@ export const ProjectImpact: FC = () => (
     </ol>
     <p className="mt-4">
       <FormattedMessage
-        defaultMessage="To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. The <b>Supply</b> score of each sustainability dimension is then computed by taking the mean value of the corresponding indicators. <b>However, if all the indicators of a given dimension are selected, then the supply score of that dimension goes automatically to 0</b>. This is to make sure that the project developers only report the direct impacts of their projects and avoid exaggerating the project’s scope."
-        id="wA8Ls7"
+        defaultMessage="To estimate the project’s impact, 0 (non-selected) and 1 (selected) are assigned for each indicator. The <b>Supply</b> score of each sustainability dimension is then computed by taking the mean value of the corresponding indicators. <b>However, if all the indicators of a given dimension are selected, then the supply score of that dimension goes automatically to 0</b>. This is to make sure that the project developers only report the direct impacts of their projects and do not overstretch the project’s scope."
+        id="HQuME/"
         values={{
           b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
         }}
