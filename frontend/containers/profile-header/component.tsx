@@ -91,8 +91,8 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
         </div>
         <div className="order-1 md:order-2 flex flex-col justify-start md:mr-4 pt-8 p-6 bg-white drop-shadow-xl md:mb-[-70%] h-full md:translate-y-[-40%] md:w-[395px] md:max-w-4/12 rounded-2xl -mt-12">
           {typeof totalProjects === 'number' && typeof projectsWaitingFunding === 'number' && (
-            <div className="mb-6">
-              <div className="flex flex-col gap-8 md:flex-row">
+            <div className="mb-8">
+              <div className="flex gap-8">
                 <div className="flex flex-col items-center w-full gap-2 text-center md:min-w-1/2">
                   <span id="total-of-projects" className="text-2xl font-semibold">
                     {totalProjects}
@@ -111,7 +111,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                 </div>
               </div>
 
-              <hr className="mt-6 mb-8" />
+              {!!social.length && <hr className="mt-6" />}
             </div>
           )}
 
@@ -119,7 +119,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
             <WebsiteSocial className="max-w-md mb-8 md:mb-10" website={website} social={social} />
           )}
 
-          <div className="flex flex-wrap justify-between gap-x-4 gap-y-2">
+          <div className="flex flex-wrap justify-between gap-2">
             <Button
               className="justify-center flex-grow-[1]"
               theme="secondary-green"

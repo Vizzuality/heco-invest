@@ -68,7 +68,7 @@ const ProjectDevelopersPage: PageComponent<ProjectDevelopersPageProps, DiscoverP
                 <Loading visible={loading} iconClassName="w-10 h-10" />
               </span>
             )}
-            <div className="grid grid-cols-1 gap-6 p-1 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-2 p-0.5 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
               {projectDevelopers.map(
                 ({ project_developer_type, name, about, slug, picture, impacts }) => (
                   <ProfileCard

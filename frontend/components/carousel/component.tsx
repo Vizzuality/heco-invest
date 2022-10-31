@@ -124,7 +124,7 @@ export const Carousel: FC<CarouselProps> = ({
             }}
           >
             <Arrows
-              className="absolute flex items-center m-8 left-4 right-4 -bottom-11 md:top-0 md:bottom-auto md:left-0 md:right-0 md:h-full md:m-0"
+              className="absolute flex items-center m-8 left-4 right-4 -bottom-15 md:top-0 md:bottom-auto md:left-0 md:right-0 md:h-full md:m-0"
               currentSlide={currentSlide}
               numSlides={numSlides}
               onPreviousSlideClick={previousSlide}
@@ -159,7 +159,7 @@ export const Carousel: FC<CarouselProps> = ({
         </div>
       </div>
       <Paging
-        className="flex items-center justify-center gap-1.5 mt-6"
+        className="flex items-center justify-center gap-1.5 mt-10 md:mt-6"
         currentSlide={currentSlide}
         numSlides={numSlides}
         onClick={setCurrentSlide}

@@ -20,6 +20,10 @@
     <% end %>
   </aside>
   <div class="w-full h-full bg-white rounded-xl p-6">
+    <div class="mb-3 flex justify-end gap-3 text-s text-gray-600">
+      <span><%= t("backoffice.common.created") %>: <%= I18n.l @open_call.created_at.to_date %></span>
+      <span><%= t("backoffice.common.updated") %>: <%= I18n.l @open_call.updated_at.to_date %></span>
+    </div>
     <%= render section_partial %>
   </div>
 </div>

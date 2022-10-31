@@ -6,6 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import dayjs from 'dayjs';
 import { noop } from 'lodash-es';
 
 import { projectImpact } from 'helpers/project';
@@ -113,7 +114,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
           </span>
         )}
       </div>
-      <div className="relative p-10">
+      <div className="relative p-4 sm:p-10">
         <div className="flex gap-2 text-sm">
           {/* VERIFICATION PROJECTS: HIDDEN
           {project.trusted && (
@@ -183,6 +184,17 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
         >
           {project.description}
         </div>
+        <p className="mt-2 text-xs text-gray-700">
+          <FormattedMessage
+            defaultMessage="Created on <b>{createdDate}</b> and updated on <b>{updatedDate}</b>"
+            id="hwBx6v"
+            values={{
+              b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+              createdDate: dayjs(project.created_at).format('MMM DD, YYYY'),
+              updatedDate: dayjs(project.updated_at).format('MMM DD, YYYY'),
+            }}
+          />
+        </p>
         <div
           className="flex items-center mt-4 text-sm text-gray-900"
           aria-label={intl.formatMessage({ defaultMessage: 'Project developer', id: 'yF82he' })}
@@ -210,7 +222,13 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
             impact={impact}
             linkToFAQ
           />
-          <ImpactChart className="my-4" category={category.id} impact={impact} />
+          <div className="flex justify-center">
+            <ImpactChart
+              className="max-w-[300px] max-h-[300px] my-4"
+              category={category.id}
+              impact={impact}
+            />
+          </div>
         </div>
         <div className="mt-4 text-gray-900" aria-describedby="sdgs">
           <h2 id="sdgs" className="text-xl font-semibold">
@@ -220,7 +238,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
         </div>
       </div>
       <FavoriteContact
-        className="sticky bottom-0 w-full px-8 py-4 bg-white shadow-lg drop-shadow"
+        className="sticky bottom-0 w-full px-4 py-4 bg-white shadow-lg sm:px-8 drop-shadow"
         project={project}
         onFavoriteClick={handleFavoriteClick}
       />

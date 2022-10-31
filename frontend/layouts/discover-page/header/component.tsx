@@ -13,10 +13,10 @@ import { HeaderProps } from './types';
 export const Header: FC<HeaderProps> = () => {
   return (
     <>
-      <header className="top-0 z-20 w-full text-white border-b bg-green-dark backdrop-blur-sm">
+      <header className="top-0 z-20 w-full text-white sm:border-b sm:bg-green-dark sm:backdrop-blur-sm">
         <BetaVersionDisclaimer />
         <LayoutContainer>
-          <div className="flex items-center justify-between h-18">
+          <div className="flex items-center justify-between h-14 sm:h-18">
             <span className="justify-start flex-1">
               <Logo />
             </span>

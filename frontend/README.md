@@ -50,6 +50,8 @@ Below is a description of each of the keys.
 | NEXT_PUBLIC_GOOGLE_MAPS_API_KEY   | Key for Google Maps - Places API                                                                                                         |
 | NEXT_PUBLIC_MAPBOX_API_TOKEN      | Mapbox's account API access token                                                                                                        |
 | NEXT_PUBLIC_USER_TESTING_FORM_URL | Optional − URL of an external form to recruit for user testing                                                                           |
+| HTTP_AUTH_USERNAME                | If set with a non-empty value, enables HTTP Basic Auth                                                                                   |
+| HTTP_AUTH_PASSWORD                | If set with a non-empty value, enables HTTP Basic Auth                                                                                   |
 
 ## CI/CD
 

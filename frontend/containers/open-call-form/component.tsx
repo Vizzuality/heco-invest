@@ -150,6 +150,8 @@ export const OpenCallForm = <MutationType extends BasicMutationType>({
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
+        createdAt={openCall?.created_at}
+        updatedAt={openCall?.updated_at}
         onCloseClick={() => setShowLeave(true)}
         onSubmitClick={handleSubmitPublish}
         isLoading={isLoading}

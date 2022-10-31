@@ -116,7 +116,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
       >
         <div
           className={cx(
-            'flex h-full min-h-[56px] sm:min-h-[64px] items-center justify-between px-4 sm:px-6 py-2 sm:gap-4'
+            'flex h-full min-h-[56px] sm:min-h-[64px] items-center justify-between pl-4 pr-2 sm:px-6 py-2 sm:gap-4'
           )}
         >
           <form
@@ -178,15 +178,16 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                   theme="naked"
                   size="smallest"
                   onClick={clearInput}
-                  className={cx('focus-visible:outline-green-dark', {
+                  className={cx('focus-visible:outline-green-dark p', {
                     'hidden sm:inline-block': openFilters,
                   })}
-                >
-                  <Icon
-                    className="text-white sm:text-black fill-gray-600 sm:fill-transparent"
-                    icon={isMobile ? CloseCircleIcon : CloseIcon}
-                  />
-                </Button>
+                  icon={() => (
+                    <Icon
+                      className="text-white sm:text-black fill-gray-600 sm:fill-transparent"
+                      icon={isMobile ? CloseCircleIcon : CloseIcon}
+                    />
+                  )}
+                />
               </div>
             )}
             {pathname === Paths.Home && !showSuggestion && (
@@ -206,17 +207,17 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                     onClick={handleClickFilters}
                     aria-expanded={openFilters}
                     aria-controls="filters"
-                    className="px-2 sm:px-6"
+                    className="!px-2.5 !py-2.5 sm:!px-6 sm:!py-2"
                   >
                     <span className="sm:hidden">
-                      <Icon icon={FilterIcon} className="w-4 h-4 text-white" />
+                      <Icon icon={FilterIcon} className="text-white" />
                     </span>
                     {!!activeFiltersLength && (
                       <span className="ml-2.5 w-[22px] h-[22px] text-sm rounded-full sm:hidden bg-green-light text-green-dark">
                         {activeFiltersLength}
                       </span>
                     )}
-                    <span className="sr-only sm:not-sr-only">
+                    <span className="text-sm leading-[22px] sr-only sm:not-sr-only">
                       <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
                     </span>
                   </Button>

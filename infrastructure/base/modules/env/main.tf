@@ -79,6 +79,16 @@ module "sendgrid_api_key" {
   use_random_value = false
 }
 
+module "http_auth_password" {
+  count            = length(var.http_auth_password) > 0 ? 1 : 0
+
+  source           = "../secret_value"
+  region           = var.gcp_region
+  key              = "${var.project_name}_http_auth_password"
+  value            = var.http_auth_password
+  use_random_value = false
+}
+
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN                 = var.transifex_token
@@ -154,6 +164,18 @@ module "frontend_cloudrun" {
   min_scale          = var.frontend_min_scale
   max_scale          = var.frontend_max_scale
   tag                = var.tag
+  secrets            = flatten([
+    length(module.http_auth_password) > 0 ? [{
+      name        = "HTTP_AUTH_PASSWORD"
+      secret_name = module.http_auth_password[0].secret_name
+    }] : []
+  ])
+  env_vars = [
+    {
+      name  = "HTTP_AUTH_USERNAME"
+      value = var.http_auth_username
+    }
+  ]
 }
 
 module "backend_cloudrun" {
@@ -169,7 +191,7 @@ module "backend_cloudrun" {
   min_scale          = var.backend_min_scale
   max_scale          = var.backend_max_scale
   tag                = var.tag
-  secrets            = [
+  secrets            = flatten([
     {
       name        = "SECRET_KEY_BASE"
       secret_name = module.rails_secret_key_base.secret_name
@@ -191,8 +213,11 @@ module "backend_cloudrun" {
     }, {
       name        = "ENCRYPTION_DERIVATION_SALT"
       secret_name = module.rails_encryption_derivation_salt.secret_name
-    }
-  ]
+    }, length(module.http_auth_password) > 0 ? [{
+      name        = "HTTP_AUTH_PASSWORD"
+      secret_name = module.http_auth_password[0].secret_name
+    }] : []
+  ])
   env_vars = [
     {
       name  = "DATABASE_NAME"
@@ -273,6 +298,10 @@ module "backend_cloudrun" {
     {
       name  = "INSTANCE_ROLE"
       value = var.instance_role
+    },
+    {
+      name  = "HTTP_AUTH_USERNAME"
+      value = var.http_auth_username
     }
   ]
 }

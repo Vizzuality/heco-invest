@@ -98,6 +98,8 @@ export type Project = ProjectBase &
     trusted?: boolean;
     type: 'project';
     priority_landscape: Locations;
+    created_at: string;
+    updated_at: string;
   };
 
 /** Project Form inputs */

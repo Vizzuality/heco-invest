@@ -106,5 +106,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Use the overflow-elispis with more lines
+    require('@tailwindcss/line-clamp'),
+  ],
 };

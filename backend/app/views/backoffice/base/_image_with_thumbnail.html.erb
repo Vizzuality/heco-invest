@@ -5,4 +5,4 @@
     <%= image_tag blob_object.variant(resize: "200x200"), class: "inline" %>
   <% end %>
 <% end %>
-<%= f.input blob, as: :file, input_html: { accept: "image/*" } %>
+<%= f.input blob, as: :file, input_html: { accept: "image/*" }, required: required %>

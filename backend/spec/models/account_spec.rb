@@ -81,6 +81,51 @@ RSpec.describe Account, type: :model do
     end
   end
 
+  describe "approve!" do
+    subject { create(:account, :unapproved) }
+    context "when no validation errors" do
+      it "should change status to approved" do
+        subject.approved!
+        expect(subject.review_status).to eq("approved")
+      end
+    end
+
+    context "when validation errors" do
+      before(:each) do
+        subject.assign_attributes about_en: nil, about_es: nil, about_pt: nil
+        subject.save(validate: false)
+      end
+
+      it "should not change status to approved" do
+        expect {
+          subject.approved!
+        }.to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
+  end
+
+  describe "reject!" do
+    subject { create(:account, :unapproved) }
+    context "when no validation errors" do
+      it "should change status to rejected" do
+        subject.rejected!
+        expect(subject.review_status).to eq("rejected")
+      end
+    end
+
+    context "when validation errors" do
+      before(:each) do
+        subject.assign_attributes about_en: nil, about_es: nil, about_pt: nil
+        subject.save(validate: false)
+      end
+
+      it "should change status to rejected" do
+        subject.rejected!
+        expect(subject.review_status).to eq("rejected")
+      end
+    end
+  end
+
   context "when changing ownership" do
     subject { create(:account) }
 
