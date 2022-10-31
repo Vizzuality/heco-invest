@@ -52,7 +52,7 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
         <h2 className="pl-6 font-serif text-4xl font-bold text-black lg:pl-16 lg:mb-10">
           <FormattedMessage defaultMessage="Impact" id="W2JBdp" />
         </h2>
-        <div className="flex-col p-6 space-y-10 font-sans lg:space-y-24 lg:p-16 lg:justify-between lg:flex bg-background-greenLight sm:rounded-2xl">
+        <div className="flex-col p-6 pb-10 space-y-10 font-sans lg:space-y-24 lg:p-16 lg:justify-between lg:flex bg-background-greenLight sm:rounded-2xl">
           <div className="flex flex-col justify-between space-y-6 lg:space-y-0 lg:space-x-32 lg:flex-row">
             <div className="flex flex-col space-y-6 lg:w-1/2">
               <div className="flex flex-col space-y-6">

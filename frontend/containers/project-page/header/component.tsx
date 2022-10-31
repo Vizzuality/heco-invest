@@ -67,7 +67,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
     () =>
       allInstrumentTypes
         ?.filter(({ id }) => project.instrument_types?.includes(id))
-        .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase()))
+        .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase().trim()))
         .join(', '),
     [allInstrumentTypes, project.instrument_types]
   );
@@ -82,25 +82,19 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
   return (
     <div className={className}>
       <div
-        className={cx({
-          'relative py-6 mx-4 bg-center bg-cover lg:mx-0 lg:px-4 rounded-2xl': true,
-          'bg-radial-green-dark bg-green-dark': !coverImage,
-        })}
+        className="flex pt-6.5 sm:rounded-2xl bg-radial-green-dark bg-green-dark min-h-[250px] md:min-h-[372px]"
+        style={{
+          ...(coverImage && {
+            background: `linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(${coverImage})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+          }),
+        }}
       >
-        {coverImage && (
-          <span
-            className="absolute top-0 bottom-0 left-0 right-0 overflow-hidden bg-center bg-cover pointer-events-none rounded-2xl -z-10"
-            style={{
-              ...(coverImage && { backgroundImage: `url(${coverImage})` }),
-            }}
-          >
-            <span className="absolute top-0 bottom-0 left-0 right-0 bg-gray-900 opacity-40" />
-          </span>
-        )}
-
-        <LayoutContainer className="flex flex-col justify-between lg:min-h-[18rem]">
-          <div className="flex flex-col justify-center gap-2 mb-4 sm:flex-row sm:justify-between">
-            <div className="flex justify-center order-last gap-2 mb-4 lg:justify-start sm:order-first">
+        <LayoutContainer className="flex flex-col justify-between lg:min-h-[18rem] gap-y-12">
+          <div className="flex flex-wrap justify-between gap-2">
+            <div className="flex justify-center gap-2 lg:justify-start">
               {/* VERIFICATION PROJECTS: HIDDEN
               {project.trusted && (
                 <Tag className="bg-white text-green-dark">
@@ -111,7 +105,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
               */}
               {category && (
                 <CategoryTag
-                  className="text-sm bg-white text-green-dark"
+                  className="text-xs bg-white sm:text-sm text-green-dark h-7 sm:h-9"
                   category={category.id as CategoryType}
                 >
                   {category.name}
@@ -119,20 +113,21 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
               )}
             </div>
             {!!project.project_images?.length && (
-              <div className="self-end order-first sm:self-start sm:order-last">
+              <div>
                 <ImageGallery images={project.project_images} />
               </div>
             )}
           </div>
-          <div className="text-center lg:mb-4 lg:text-left">
-            <div className="lg:w-6/12">
-              <h1 className="font-serif text-2xl text-white lg:text-4xl">{project.name}</h1>
+          <LayoutContainer className="px-0">
+            <div className="md:mb-8 lg:w-1/2">
+              <h1 className="font-serif text-3xl text-white md:text-4xl">{project.name}</h1>
             </div>
-          </div>
+            <div className="h-32 lg:hidden"></div>
+          </LayoutContainer>
         </LayoutContainer>
       </div>
-      <LayoutContainer className="flex flex-col justify-between mt-8 lg:flex-row">
-        <div className="w-full lg:w-6/12 min-h-[160px] pr-2">
+      <LayoutContainer className="flex flex-col justify-between w-full mt-8 md:flex-row">
+        <div className="order-2 w-full md:order-1 md:w-6/12 md:pr-2">
           {project.language && (
             <span className="block mb-4 text-sm text-gray-400">
               <FormattedMessage
@@ -147,7 +142,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
           )}
           <p>{project.description}</p>
         </div>
-        <div className="lg:mr-4 p-6 bg-white drop-shadow-xl mb-16 lg:mb-[-70%] h-full lg:w-[395px] lg:translate-y-[-70%] lg:max-w-4/12 rounded-2xl mt-8 lg:mt-0 flex flex-col">
+        <div className="order-1 md:order-2 w-full flex flex-col justify-start md:mr-4 p-6 bg-white drop-shadow-xl -mb-12 h-full md:w-[395px] -translate-y-32 md:max-w-2/3 rounded-2xl">
           <p className="mb-4 text-xs text-gray-700">
             <FormattedMessage
               defaultMessage="Created on <b>{createdDate}</b> and updated on <b>{updatedDate}</b>"
@@ -160,23 +155,20 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
             />
           </p>
           {project.looking_for_funding ? (
-            <div className="flex flex-col gap-8 mb-8 md:flex-row">
-              <div className="flex flex-col items-start justify-end w-full gap-2 text-center sm:text-left md:min-w-1/2">
-                <span id="ticket-size" className="text-xl font-semibold">
+            <div className="flex justify-between gap-8 mb-6 md:gap-11">
+              <div className="flex flex-col justify-end gap-2 md:items-start">
+                <span id="ticket-size" className="text-xl font-semibold leading-6">
                   {ticketSizeStr}
                 </span>
                 <span aria-labelledby="ticket-size" className="leading-4 text-gray-400">
                   <FormattedMessage defaultMessage="Ticket size" id="lfx6Nc" />
                 </span>
               </div>
-              <div className="flex flex-col items-start justify-end w-full gap-2 text-left md:min-w-1/2">
-                <span id="instrument-types" className="text-xl font-semibold">
+              <div className="flex flex-col justify-end gap-2 md:items-start">
+                <span id="instrument-types" className="text-xl font-semibold leading-6">
                   {instrumentTypesStr}
                 </span>
-                <span
-                  aria-labelledby="instrument-types"
-                  className="leading-4 text-gray-400 whitespace-nowrap"
-                >
+                <span aria-labelledby="instrument-types" className="leading-4 text-gray-400">
                   <FormattedMessage defaultMessage="Instrument type" id="fDd10o" />
                 </span>
               </div>
@@ -198,9 +190,9 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
             </div>
           )}
 
-          <div className="flex flex-col justify-between gap-x-2 gap-y-4 lg:flex-row">
+          <div className="flex justify-center gap-2">
             <Button
-              className="justify-center"
+              className="justify-center flex-grow-[1]"
               theme="secondary-green"
               onClick={handleFavoriteClick}
               disabled={!user}
@@ -214,7 +206,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
               <FormattedMessage defaultMessage="Favorite" id="5Hzwqs" />
             </Button>
             <Button
-              className="justify-center w-full"
+              className="flex-grow-[3] md:flex-grow-[10] md:max-w-[200px] justify-center px-6"
               disabled={!contacts?.length}
               theme="primary-green"
               onClick={() => setIsContactInfoModalOpen(true)}

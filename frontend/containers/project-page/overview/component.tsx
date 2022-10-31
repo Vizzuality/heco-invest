@@ -53,7 +53,7 @@ export const Overview: React.FC<OverviewProps> = ({
   );
 
   return (
-    <LayoutContainer className="px-0 mb-12 lg:mb-20 pt-18 space-y-36">
+    <LayoutContainer className="px-0 mb-12 lg:mb-20 pt-17 space-y-36">
       <section className="p-4 font-serif text-white mt-28 sm:p-6 lg:mt-28 lg:p-16 bg-green-dark sm:rounded-2xl">
         <div className="relative grid w-full grid-cols-1 gap-x-10 gap-y-8 sm:gap-y-20 lg:grid-cols-2">
           <div className="relative z-10 -mb-32 border-8 border-white drop-shadow-xl h-60 sm:h-96 -top-32 lg:-top-44 lg:-mb-44 lg:overflow-hidden rounded-xl">

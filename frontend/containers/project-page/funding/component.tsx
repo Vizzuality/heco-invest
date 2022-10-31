@@ -34,7 +34,7 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
     () =>
       enums.instrument_type
         ?.filter(({ id }) => project.instrument_types?.includes(id))
-        .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase()))
+        .map(({ name }, idx) => (idx === 0 ? name : name.toLowerCase().trim()))
         .join(', '),
     [enums, project]
   );
@@ -94,14 +94,14 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
               )}
             </h3>
             {project.looking_for_funding && (
-              <div className="flex justify-between gap-6 font-sans lg:gap-x-8 xl:gap-x-20">
-                <div className="flex flex-col justify-end space-y-1 lex-g">
+              <div className="flex flex-wrap justify-between gap-6 font-sans sm:flex-nowrap lg:flex-wrap 2xl:flex-nowrap lg:gap-x-8 xl:gap-x-20">
+                <div className="flex flex-col justify-end space-y-1 w-fit">
                   <p className="text-2xl font-semibold">{ticketSizeStr}</p>
                   <p className="text-base whitespace-nowrap">
                     <FormattedMessage defaultMessage="Value" id="GufXy5" />
                   </p>
                 </div>
-                <div className="flex flex-col justify-end space-y-1">
+                <div className="flex flex-col justify-end space-y-1 w-fit">
                   <p className="text-2xl font-semibold">{instrumentTypesStr}</p>
                   <p className="text-base">
                     <FormattedMessage defaultMessage="Instrument type" id="fDd10o" />

@@ -20,8 +20,8 @@ export const Contact: React.FC<ContactProps> = ({ project }: ContactProps) => {
   return (
     <section className="text-white bg-green-dark py-14 sm:py-18">
       <LayoutContainer className="flex flex-col items-center">
-        <div className="flex flex-col items-center space-y-6 mb-14">
-          <h2 className="font-serif text-4xl text-center md:mx-20 lg:mx-44 2xl:mx-96 xl:mx-64">
+        <div className="flex flex-col items-center mb-8 space-y-6 sm:mb-14">
+          <h2 className="font-serif text-3xl text-center sm:text-[3.5rem] md:mx-20 lg:mx-44 2xl:mx-96 xl:mx-64">
             <FormattedMessage defaultMessage="Want to know more about this project?" id="DeOyLr" />
           </h2>
           <h4 className="font-sans text-lg">
