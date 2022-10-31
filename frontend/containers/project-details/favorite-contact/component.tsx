@@ -33,8 +33,8 @@ export const FavoriteContact: FC<FavoriteContactProps> = ({
 
   return (
     <div className={className}>
-      <div className="flex flex-col items-start justify-between gap-4 md:items-center md:flex-row">
-        <div className="flex justify-center gap-4 sm:justify-start">
+      <div className="flex items-center justify-between gap-2 sm:items-start sm:gap-4 md:items-center">
+        <div className="flex justify-center gap-2 sm:gap-4 sm:justify-start">
           <Button
             disabled={!user || !contacts.length}
             className="px-4 py-2 text-sm sm:px-6 sm:py-2"

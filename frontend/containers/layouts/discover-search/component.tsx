@@ -95,7 +95,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
       >
         <div
           className={cx(
-            'flex h-full min-h-[56px] sm:min-h-[64px] items-center justify-between px-4 sm:px-6 py-2 sm:gap-4'
+            'flex h-full min-h-[56px] sm:min-h-[64px] items-center justify-between pl-4 pr-2 sm:px-6 py-2 sm:gap-4'
           )}
         >
           <form
@@ -120,7 +120,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                 id="header-search"
                 type="search"
                 value={searchInputValue}
-                className="w-full h-full overflow-hidden text-lg outline-none autofill:bg-transparent placeholder:text-sm sm:placeholder:text-base placeholder:text-ellipsis"
+                className="w-full h-full overflow-hidden text-lg outline-none autofill:bg-transparent placeholder:text-sm sm:placeholder:text-base placeholder:text-ellipsis placeholder:text-gray-800"
                 onChange={handleChangeSearchInput}
                 placeholder={formatMessage({
                   defaultMessage: 'Search for projects, investors, open calls...',
@@ -159,7 +159,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                     onClick={handleClickFilters}
                     aria-expanded={openFilters}
                     aria-controls="filters"
-                    className="px-2 sm:px-6"
+                    className="!px-3 !py-3 sm:!px-6 sm:!py-2"
                   >
                     <span className="sm:hidden">
                       <Icon icon={FilterIcon} className="w-4 h-4 text-white" />

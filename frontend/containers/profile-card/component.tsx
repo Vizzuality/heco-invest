@@ -9,7 +9,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { usePress, useFocusWithin } from '@react-aria/interactions';
-import { truncate } from 'lodash-es';
 
 import Tag from 'components/tag';
 
@@ -58,11 +57,6 @@ export const ProfileCard: FC<ProfileCardProps> = ({
       ? allProjectDeveloperTypes?.find(({ id }) => id === type)?.name
       : allInvestorTypes?.find(({ id }) => id === type)?.name;
 
-  const truncatedDescription = useMemo(
-    () => truncate(description, { length: 300, omission: ' ...' }),
-    [description]
-  );
-
   const tags = allImpacts?.filter((impact) => impacts?.includes(impact.id)).map(({ name }) => name);
 
   const cardAriaLabel =
@@ -83,7 +77,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
       {...pressProps}
       {...focusWithinProps}
     >
-      <div className="relative flex flex-col h-full p-5 bg-white border shadow rounded-2xl gap-y-2 sm:gap-x-4">
+      <div className="relative flex flex-col h-full p-5 bg-white border shadow rounded-2xl gap-y-4 sm:gap-x-4">
         <div className="flex items-start gap-4">
           <div className="relative flex-shrink-0 overflow-hidden rounded-full w-18 aspect-square">
             <Image
@@ -96,25 +90,25 @@ export const ProfileCard: FC<ProfileCardProps> = ({
             />
           </div>
           <div className="pt-2">
-            <div className="text-xl font-semibold text-gray-900">
+            <div>
               <Link href={link}>
-                <a className="text-xl font-semibold leading-tight outline-none pointer-events-none">
+                <a className="text-lg font-semibold leading-tight text-gray-900 outline-none pointer-events-none sm:text-xl">
                   {name}
                 </a>
               </Link>
             </div>
-            {subtitle && <div className="text-gray-600 text-md">{subtitle}</div>}
+            {subtitle && <div className="text-gray-700 text-md">{subtitle}</div>}
           </div>
         </div>
         <div
-          className="flex items-start flex-grow mt-4"
+          className="flex items-start flex-grow mt-2 sm:mt-4 line-clamp-4"
           aria-label={intl.formatMessage({ defaultMessage: 'Description', id: 'Q8Qw5B' })}
         >
-          {truncatedDescription}
+          {description}
         </div>
         {tags && (
           <div
-            className="flex flex-wrap gap-2 mt-3"
+            className="flex flex-wrap gap-2 sm:mt-3"
             role="group"
             aria-label={intl.formatMessage({
               defaultMessage: 'Expects to have impact on',
@@ -122,7 +116,11 @@ export const ProfileCard: FC<ProfileCardProps> = ({
             })}
           >
             {tags.map((tag) => (
-              <Tag key={tag} className="text-sm text-green-dark" size="smallest">
+              <Tag
+                key={tag}
+                className="text-sm border text-green-dark border-green-dark lead"
+                size="smallest"
+              >
                 {tag}
               </Tag>
             ))}

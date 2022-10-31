@@ -55,7 +55,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
   const projectsListContainerRef = useRef(null);
 
   const intl = useIntl();
-  const { query } = useRouter();
+  const { query, push } = useRouter();
   const { props: paginationProps } = usePagination(meta);
   const breakpoint = useBreakpoint();
 
@@ -78,6 +78,10 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
   }, [query]);
 
   const handleProjectCardClick = async (projectId: string) => {
+    // if (!breakpoint('sm')) {
+    //   push(`${Paths.Project}/${projectId}`);
+    //   return;
+    // }
     const selected = projects.find(({ id }) => id === projectId);
     if (!selected) {
       // if the selected project from the map is not in the filtered list, the project will be fetched
@@ -101,18 +105,18 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
   return (
     <>
       <Head title={intl.formatMessage({ defaultMessage: 'Discover Projects', id: 'Qt/+mk' })} />
-      <div className="relative flex flex-col w-full h-full lg:gap-0 lg:overflow-hidden lg:flex-row">
+      <div className="relative flex flex-col w-full h-full md:gap-0 md:overflow-hidden md:flex-row">
         <div
           ref={projectsListAndDetailsContainerRef}
-          className="flex flex-col lg:top-1 lg:bottom-1 lg:absolute lg:w-full"
+          className="flex flex-col md:top-1 md:bottom-1 md:absolute md:w-full"
         >
-          <div className="relative flex flex-col lg:overflow-hidden lg:w-5/12">
+          <div className="relative flex flex-col md:overflow-hidden md:w-5/12">
             <div
               ref={projectsListContainerRef}
               className={cx({
-                'relative flex-grow lg:pr-2.5': true,
-                'lg:overflow-y-auto': !loading,
-                'lg:pointer-events-none lg:overflow-hidden': loading,
+                'relative flex-grow md:pr-2.5': true,
+                'md:overflow-y-auto': !loading,
+                'md:pointer-events-none md:overflow-hidden': loading,
               })}
             >
               {loading && (
@@ -120,10 +124,9 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
                   <Loading visible={loading} iconClassName="w-10 h-10" />
                 </span>
               )}
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-2 p-0.5">
                 {projects.map((project) => (
                   <ProjectCard
-                    className="m-1"
                     key={project.id}
                     active={project.id === selectedProject?.id}
                     project={project}
@@ -135,9 +138,11 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
                 )}
               </div>
             </div>
-            {hasProjects && <Pagination className="w-full pt-2 -mb-2" {...paginationProps} />}
+            {hasProjects && (
+              <Pagination className="w-full pt-2 mb-4 md:mb-0" {...paginationProps} />
+            )}
           </div>
-          {breakpoint('lg') ? (
+          {breakpoint('md') ? (
             <AnimatePresence>
               {selectedProject && (
                 <FocusScope
@@ -174,12 +179,13 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
               })}
               open={!!selectedProject}
               onDismiss={handleProjectDetailsClose}
+              className="w-screen h-screen !max-h-screen rounded-none sm:rounded-lg left-0"
             >
               <ProjectDetails project={selectedProject} onClose={handleProjectDetailsClose} />
             </Modal>
           )}
         </div>
-        <aside className="flex-grow hidden min-h-full m-1 overflow-hidden bg-white sm:block rounded-2xl lg:min-h-0 lg:absolute lg:right-0 lg:w-7/12 lg:bottom-1 lg:top-1">
+        <aside className="flex-grow hidden min-h-full m-1 overflow-hidden bg-white sm:block rounded-2xl md:min-h-0 md:absolute md:right-0 md:w-7/12 md:bottom-1 md:top-1">
           <DiscoverMap onSelectProjectPin={handleProjectCardClick} />
         </aside>
       </div>
