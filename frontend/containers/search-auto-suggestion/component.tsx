@@ -1,18 +1,21 @@
-import { FC, useMemo } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
-import { omitBy } from 'lodash-es';
+import {
+  transformFilterInputsToParams,
+  transformFilterParamsToInputs,
+  useSearch,
+} from 'helpers/pages';
 
-import { useSearch } from 'helpers/pages';
+import { FilterForm } from 'containers/forms/filters/types';
 
 import Button from 'components/button';
 import Tag from 'components/forms/tag';
-import TagGroup from 'components/forms/tag-group';
-import { Enum } from 'types/enums';
+import { EnumTypes } from 'enums';
 
 import { SeachAutoSuggestionProps } from './types';
 
@@ -25,21 +28,17 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
   const selectedFilters = useMemo(() => Object.values(filters), [filters]);
   const doSearch = useSearch();
 
-  const {
-    register,
-    clearErrors,
-    setValue,
-    formState: { errors },
-  } = useForm<{ sugestedFilters: Enum[] }>();
+  const { register, setValue, getValues } = useForm<Partial<FilterForm>>({});
 
-  const handleFilterSuggestion = (filter: Enum) => {
-    const filterKey = `filter[${filter.type}]`;
-    if (selectedFilters.includes(filter.id)) {
-      const newFilters = omitBy(filters, (value, key) => value === filter.id);
-      doSearch(undefined, newFilters);
-    } else {
-      doSearch(undefined, { ...filters, [filterKey]: filter.id });
-    }
+  useEffect(() => {
+    Object.entries(transformFilterParamsToInputs(filters)).forEach(([key, value]) => {
+      setValue(key as keyof FilterForm, value);
+    });
+  }, [filters, setValue]);
+
+  const handleFilterSuggestion = () => {
+    const newFilterParams = transformFilterInputsToParams(getValues());
+    doSearch(undefined, newFilterParams);
   };
 
   const handleSearchSuggestion = () => {
@@ -68,13 +67,13 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
       id="filters"
       role="region"
       aria-labelledby="filters-button"
-      className={cx('w-full bg-white border-t-2 border-t-gray-200', {
+      className={cx('w-full bg-white border-t-2 border-t-gray-200 h-[calc(100vh-56px)] sm:h-auto', {
         'rounded-b-3xl': !selectedFilters?.length,
-        'rounded-b-3xl sm:rounded-b-none': !!selectedFilters?.length,
+        'sm:rounded-b-none': !!selectedFilters?.length,
       })}
     >
       {searchText?.length >= 1 && (
-        <div className="px-4 py-2 sm:py-5 sm:px-9">
+        <div className="h-full px-4 py-2 sm:py-5 sm:px-9">
           <div>
             <Button
               key="custom"
@@ -89,43 +88,35 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
             </Button>
           </div>
           <div
-            className={cx({
+            className={cx('h-full', {
               hidden: !autoSuggestions?.length,
               block: !!autoSuggestions?.length,
             })}
           >
-            <fieldset>
+            <fieldset className="h-full">
               <legend className="py-2 text-sm text-gray-800">
                 <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
               </legend>
-              <div>
-                <TagGroup
-                  className="inline"
-                  isFilterTag
-                  clearErrors={clearErrors}
-                  setValue={setValue}
-                  errors={errors}
-                  thresholdToShowSelectAll={Infinity}
-                >
-                  {autoSuggestions?.map((filter) => {
-                    const isSelected = selectedFilters.includes(filter.id);
-                    return (
-                      <Tag
-                        type="checkbox"
-                        name="sugestedFilters"
-                        id={filter.id}
-                        key={filter.id}
-                        register={register}
-                        onClick={() => handleFilterSuggestion(filter)}
-                        isfilterTag
-                        className="inline"
-                        checked={isSelected}
-                      >
-                        {filter.name}
-                      </Tag>
-                    );
-                  })}
-                </TagGroup>
+              <div className="flex flex-wrap gap-2 overflow-y-auto">
+                {autoSuggestions?.map((filter) => {
+                  return (
+                    <Tag
+                      type="checkbox"
+                      name={filter.type}
+                      id={filter.id}
+                      key={filter.id}
+                      register={register}
+                      registerOptions={{
+                        onChange: handleFilterSuggestion,
+                      }}
+                      isfilterTag
+                      className="inline"
+                      value={filter.id}
+                    >
+                      {filter.type === EnumTypes.TicketSize ? filter.description : filter.name}
+                    </Tag>
+                  );
+                })}
               </div>
             </fieldset>
           </div>

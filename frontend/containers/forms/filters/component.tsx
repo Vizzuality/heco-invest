@@ -4,6 +4,8 @@ import { ChevronDown, ChevronUp, X as CloseIcon } from 'react-feather';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import cx from 'classnames';
+
 import { useRouter } from 'next/router';
 
 import { groupBy, isEmpty } from 'lodash-es';
@@ -120,16 +122,19 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
       id="filters"
       role="region"
       aria-labelledby="filters-button"
-      className="w-full bg-white border-t-2 border-t-gray-200 rounded-b-3xl"
+      className="w-full bg-white border-t-2 border-t-gray-200 sm:rounded-b-3xl h-[calc(100vh-56px)] sm:h-auto"
     >
       {!filters ? (
         <Loading />
       ) : (
-        <form className="relative flex flex-col p-6" onSubmit={handleSubmit(onSubmitFilters)}>
+        <form
+          className="relative flex flex-col justify-between h-full p-6"
+          onSubmit={handleSubmit(onSubmitFilters)}
+        >
           <Button
             theme="naked"
             size="smallest"
-            className="absolute sm:block top-6 right-6"
+            className="absolute hidden sm:block top-6 right-6"
             onClick={closeFilters}
           >
             <span className="sr-only">
@@ -275,15 +280,21 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
                 </fieldset>
               </div>
             )}
-          </div>
-          <div className="items-center flex-shrink-0 gap-4 pt-2 sm:justify-between sm:pt-4 sm:flex">
-            <p className="text-sm text-gray-600 sm:mb-0">
+            <p className="mb-4 text-sm text-gray-600 sm:hidden sm:mb-0">
               <FormattedMessage
                 defaultMessage="Note: Some filters not apply to all tabs"
                 id="j4lBL7"
               />
             </p>
-            <div className="flex justify-between w-full gap-2 mt-4 bg-white sm:mt-0 sm:gap-4 sm:px-0 sm:py-0 sm:w-auto">
+          </div>
+          <div className="flex-shrink-0 w-screen p-4 -mb-6 -ml-6 bg-white sm:items-center sm:justify-between sm:flex sm:gap-2 sm:mb-0 sm:ml-0 sm:w-auto shadow-lg-top sm:shadow-none sm: sm:p-0 sm:relative sm:pt-4">
+            <p className="hidden mb-4 text-sm text-gray-600 sm:block sm:mb-0">
+              <FormattedMessage
+                defaultMessage="Note: Some filters not apply to all tabs"
+                id="j4lBL7"
+              />
+            </p>
+            <div className="flex justify-between w-full gap-2 sm:mt-0 sm:gap-4 sm:px-0 sm:py-0 sm:w-auto">
               {/* Don't show this button on home page, because there will never have filters applied */}
               {pathname !== Paths.Home && (
                 <Button
