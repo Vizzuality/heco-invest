@@ -205,7 +205,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
                     }
                     reference={chartDivRef}
                   >
-                    <div ref={chartDivRef}>
+                    <div ref={chartDivRef} className="rounded-full bg-background-middle">
                       <PolarArea ref={chartRef} data={chartData} options={chartOptions} />
                     </div>
                   </Tooltip>
