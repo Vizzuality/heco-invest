@@ -248,9 +248,6 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
           <ActiveFilters filtersData={filtersData} filters={filters} />
         )}
       </div>
-      {/* <Modal open={mobileSearchOpen} title={formatMessage({})} >
-
-      </Modal> */}
     </div>
   );
 };

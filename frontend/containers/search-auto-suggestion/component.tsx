@@ -5,8 +5,6 @@ import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
-import { omitBy } from 'lodash-es';
-
 import {
   transformFilterInputsToParams,
   transformFilterParamsToInputs,
@@ -17,10 +15,9 @@ import { FilterForm } from 'containers/forms/filters/types';
 
 import Button from 'components/button';
 import Tag from 'components/forms/tag';
-import { Enum } from 'types/enums';
+import { EnumTypes } from 'enums';
 
 import { SeachAutoSuggestionProps } from './types';
-import { EnumTypes } from 'enums';
 
 export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
   searchText,
@@ -31,18 +28,7 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
   const selectedFilters = useMemo(() => Object.values(filters), [filters]);
   const doSearch = useSearch();
 
-  // console.log(selectedFilters);
-
-  const {
-    register,
-    clearErrors,
-    setValue,
-    formState: { errors },
-    watch,
-    getValues,
-  } = useForm<Partial<FilterForm>>({
-    // defaultValues: transformFilterParamsToInputs(filters),
-  });
+  const { register, setValue, getValues } = useForm<Partial<FilterForm>>({});
 
   useEffect(() => {
     Object.entries(transformFilterParamsToInputs(filters)).forEach(([key, value]) => {
