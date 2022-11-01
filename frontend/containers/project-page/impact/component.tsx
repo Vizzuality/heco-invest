@@ -153,7 +153,7 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
                 </div>
               </div>
             </div>
-            <div className="my-8 lg:mb-0 lg:w-1/2">
+            <div className="my-8 md:mx-auto md:max-w-xl lg:mb-0 lg:mx-0 lg:w-1/2">
               <ImpactChart category={project.category} impact={impact} />
             </div>
             <div className="flex justify-center">
