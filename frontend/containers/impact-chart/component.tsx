@@ -223,7 +223,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
         <div className="z-0 flex flex-col w-full h-full gap-2">
           {allImpacts && (
             <span className="flex items-center justify-center w-full">
-              <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
+              <span className="mr-2 text-sm font-semibold text-gray-800  sm:flex">
                 {impactData[ImpactsEnum.Biodiversity].name}
               </span>
               <FieldInfo content={impactData[ImpactsEnum.Biodiversity].description} />
@@ -232,7 +232,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
           <span className="flex w-full">
             {allImpacts && (
               <span className="flex items-center justify-end mr-2">
-                <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
+                <span className="mr-2 text-sm font-semibold text-gray-800  sm:flex">
                   {impactData[ImpactsEnum.Water].name}
                 </span>
                 <FieldInfo content={impactData[ImpactsEnum.Water].description} />
@@ -245,7 +245,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
             </span>
             {allImpacts && (
               <span className="flex items-center justify-start ml-2">
-                <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
+                <span className="mr-2 text-sm font-semibold text-gray-800  sm:flex">
                   {impactData[ImpactsEnum.Climate].name}
                 </span>
                 <FieldInfo content={impactData[ImpactsEnum.Climate].description} />
@@ -254,7 +254,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
           </span>
           {allImpacts && (
             <span className="flex items-center justify-center w-full">
-              <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
+              <span className="mr-2 text-sm font-semibold text-gray-800  sm:flex">
                 {impactData[ImpactsEnum.Community].name}
               </span>
               <FieldInfo content={impactData[ImpactsEnum.Community].description} />

@@ -106,7 +106,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
         >
           {description}
         </div>
-        {tags && (
+        {!!tags?.length && (
           <div
             className="flex flex-wrap gap-2 sm:mt-3"
             role="group"
