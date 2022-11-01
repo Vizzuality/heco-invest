@@ -86,7 +86,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
 
   useEffect(() => {
     const chart = chartRef.current;
-    if (!chart) {
+    if (!chart || !categoryColor) {
       return;
     }
 

@@ -103,7 +103,7 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
                 </Tag>
               )}
               */}
-              {category && (
+              {!!category && (
                 <CategoryTag
                   className="text-xs bg-white sm:text-sm text-green-dark h-7 sm:h-9"
                   category={category.id as CategoryType}

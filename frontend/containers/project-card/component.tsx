@@ -213,7 +213,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
             )}
           </div>
           <div className="flex flex-wrap items-center text-sm text-gray-700 min-h-fit">
-            {instrumentTypesStr && (
+            {!!instrumentTypesStr && (
               <div
                 title={intl.formatMessage({
                   defaultMessage: 'Project financial instrument',
@@ -225,12 +225,12 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               </div>
             )}
             <div>
-              {instrumentTypesStr && ticketSizeStr && (
+              {!!instrumentTypesStr && !!ticketSizeStr && (
                 <span className="mr-2" aria-hidden={true}>
                   &bull;
                 </span>
               )}
-              {ticketSizeStr && (
+              {!!ticketSizeStr && (
                 <div
                   title={intl.formatMessage({
                     defaultMessage: 'Project ticket size',
@@ -260,7 +260,9 @@ export const ProjectCard: FC<ProjectCardProps> = ({
         </div>
         <div>
           <div className="flex-shrink-0 w-20 h-20 mx-auto aspect-square">
-            <ImpactChart compactMode={true} category={category?.id} impact={impact} />
+            {!!category && (
+              <ImpactChart compactMode={true} category={category.id} impact={impact} />
+            )}
           </div>
         </div>
       </div>

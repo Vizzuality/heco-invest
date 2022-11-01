@@ -76,7 +76,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
   const projectDeveloper = project?.project_developer;
   const category = allCategories?.find(({ id }) => id === project.category);
   const link = `${Paths.Project}/${project.slug}`;
-  const sdgs = allSdgs.filter(({ id }) => project.sdgs.includes(parseInt(id)));
+  const sdgs = allSdgs?.filter(({ id }) => project.sdgs.includes(parseInt(id)));
   const impact = useMemo(() => projectImpact(project), [project])[impactArea];
 
   const favoriteProject = useFavoriteProject();
@@ -134,7 +134,7 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
             </>
           )}
           */}
-          {category && (
+          {!!category && (
             <div title={intl.formatMessage({ defaultMessage: 'Project category', id: '/plMvw' })}>
               <CategoryTag size="smallest" category={category.id as CategoryType}>
                 {category.name}
@@ -149,9 +149,9 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
             </a>
           </Link>
         </h1>
-        {instrumentTypesStr && ticketSizeStr && (
+        {!!instrumentTypesStr && !!ticketSizeStr && (
           <div className="flex items-center h-5 my-2 text-gray-800 text-md min-h-fit">
-            {instrumentTypesStr && (
+            {!!instrumentTypesStr && (
               <div
                 title={intl.formatMessage({
                   defaultMessage: 'Project financial instrument',
@@ -161,12 +161,12 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
                 {instrumentTypesStr}
               </div>
             )}
-            {instrumentTypesStr && ticketSizeStr && (
+            {!!instrumentTypesStr && !!ticketSizeStr && (
               <span className="mx-2" aria-hidden={true}>
                 &bull;
               </span>
             )}
-            {ticketSizeStr && (
+            {!!ticketSizeStr && (
               <div
                 title={intl.formatMessage({
                   defaultMessage: 'Project ticket size',
@@ -223,14 +223,18 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
             linkToFAQ
           />
           <div className="flex justify-center">
-            <ImpactChart className="my-4 max-w-[424px]" category={category.id} impact={impact} />
+            {!!category && (
+              <ImpactChart className="my-4 max-w-[424px]" category={category.id} impact={impact} />
+            )}
           </div>
         </div>
         <div className="mt-4 text-gray-900" aria-describedby="sdgs">
           <h2 id="sdgs" className="text-xl font-semibold">
             <FormattedMessage defaultMessage="SDGs" id="JQjEP9" />
           </h2>
-          <SDGs className="mt-3 lg:grid lg:grid-cols-4" size="large" sdgs={sdgs as Enum[]} />
+          {!!sdgs?.length && (
+            <SDGs className="mt-3 lg:grid lg:grid-cols-4" size="large" sdgs={sdgs as Enum[]} />
+          )}
         </div>
       </div>
       <FavoriteContact
