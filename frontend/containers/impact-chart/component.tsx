@@ -165,9 +165,18 @@ export const ImpactChart: FC<ImpactChartProps> = ({
         ) : (
           <div>
             <Tooltip
-              placement="top"
+              popperOptions={{
+                modifiers: [
+                  {
+                    name: 'flip',
+                    enabled: false,
+                  },
+                ],
+              }}
+              placement="right-start"
+              offset={[5, 10]}
               arrow
-              arrowClassName="border border-transparent border-b-beige border-r-beige"
+              arrowClassName="border border-transparent border-b-beige border-r-beige -translate-y-2"
               content={
                 <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
                   {impactData[ImpactsEnum.Biodiversity].name}
@@ -176,9 +185,18 @@ export const ImpactChart: FC<ImpactChartProps> = ({
               reference={chartDivRef}
             >
               <Tooltip
-                placement="left"
+                popperOptions={{
+                  modifiers: [
+                    {
+                      name: 'flip',
+                      enabled: false,
+                    },
+                  ],
+                }}
+                placement="left-start"
+                offset={[5, 10]}
                 arrow
-                arrowClassName="border border-transparent border-b-beige border-r-beige"
+                arrowClassName="border border-transparent border-b-beige border-r-beige -translate-y-2"
                 content={
                   <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
                     {impactData[ImpactsEnum.Water].name}
@@ -187,9 +205,18 @@ export const ImpactChart: FC<ImpactChartProps> = ({
                 reference={chartDivRef}
               >
                 <Tooltip
-                  placement="right"
+                  popperOptions={{
+                    modifiers: [
+                      {
+                        name: 'flip',
+                        enabled: false,
+                      },
+                    ],
+                  }}
+                  placement="right-end"
+                  offset={[-5, 10]}
                   arrow
-                  arrowClassName="border border-transparent border-b-beige border-r-beige"
+                  arrowClassName="border border-transparent border-b-beige border-r-beige translate-y-2"
                   content={
                     <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
                       {impactData[ImpactsEnum.Climate].name}
@@ -198,9 +225,18 @@ export const ImpactChart: FC<ImpactChartProps> = ({
                   reference={chartDivRef}
                 >
                   <Tooltip
-                    placement="bottom"
+                    popperOptions={{
+                      modifiers: [
+                        {
+                          name: 'flip',
+                          enabled: false,
+                        },
+                      ],
+                    }}
+                    placement="left-end"
+                    offset={[-5, 10]}
                     arrow
-                    arrowClassName="border border-transparent border-b-beige border-r-beige"
+                    arrowClassName="border border-transparent border-b-beige border-r-beige translate-y-2"
                     content={
                       <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
                         {impactData[ImpactsEnum.Community].name}
