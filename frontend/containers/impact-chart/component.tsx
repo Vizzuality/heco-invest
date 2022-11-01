@@ -1,6 +1,6 @@
-import React, { FC, useMemo, useRef } from 'react';
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
 
-import { Radar } from 'react-chartjs-2';
+import { PolarArea } from 'react-chartjs-2';
 import { useIntl } from 'react-intl';
 
 import classNames from 'classnames';
@@ -8,13 +8,14 @@ import classNames from 'classnames';
 import {
   Chart as ChartJS,
   RadialLinearScale,
-  PointElement,
   LineElement,
   Filler,
-  Tooltip as ChartTooltip,
   ChartData,
   ChartOptions,
+  ArcElement,
 } from 'chart.js';
+
+import { createBgGradient, createBorderGradient } from 'helpers/impact-chart';
 
 import FieldInfo from 'components/forms/field-info';
 import Tooltip from 'components/tooltip';
@@ -24,7 +25,7 @@ import { useEnums } from 'services/enums/enumService';
 
 import { ImpactChartProps } from './types';
 
-ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, ChartTooltip);
+ChartJS.register(RadialLinearScale, LineElement, Filler, ArcElement);
 
 export const ImpactChart: FC<ImpactChartProps> = ({
   className,
@@ -34,13 +35,14 @@ export const ImpactChart: FC<ImpactChartProps> = ({
 }) => {
   const { formatMessage } = useIntl();
   const chartDivRef = useRef();
+  const chartRef = useRef<ChartJS<'polarArea', number[], unknown>>(null);
+  const [chartData, setChartData] = useState<ChartData<'polarArea'>>({ datasets: [], labels: [] });
 
   const {
     data: { impact: allImpacts, category: allCategories },
   } = useEnums();
-  // The object may contain Impacts ids, but we need to make sure we have all the values
-  // (biodiversity, climate, community, water) in order to display the chart. We also need
-  // the impacts data coming from the enums in order to display labels and descriptions
+
+  // The object may contain Impacts ids, but we need to make sure we have all the values (biodiversity, climate, community, water) in order to display the chart. We also need the impacts data coming from the enums in order to display labels and descriptions
   const isPlaceholder =
     !impact ||
     !allImpacts ||
@@ -82,8 +84,13 @@ export const ImpactChart: FC<ImpactChartProps> = ({
     );
   }, [impactData, impactIds]);
 
-  const chartData: ChartData<'radar'> = useMemo(
-    () => ({
+  useEffect(() => {
+    const chart = chartRef.current;
+    if (!chart || !categoryColor) {
+      return;
+    }
+
+    setChartData({
       labels: [
         formatMessage({ defaultMessage: 'Biodiversity', id: 'mbTJWV' }),
         formatMessage({ defaultMessage: 'Climate', id: 'MuOp0t' }),
@@ -93,58 +100,55 @@ export const ImpactChart: FC<ImpactChartProps> = ({
       datasets: [
         {
           data,
-          backgroundColor: categoryColor,
-          borderColor: categoryColor,
-          borderJoinStyle: 'round',
-          borderWidth: 1,
-          tension: 0.25,
-          pointBackgroundColor: 'rgba(255, 159, 64, 0)',
-          pointBorderColor: 'rgba(255, 159, 64, 0)',
+          offset: compactMode ? 2 : 5,
+          borderColor: () => createBorderGradient(chart, categoryColor),
+          backgroundColor: () => createBgGradient(chart, categoryColor),
         },
       ],
-    }),
-    [formatMessage, data, categoryColor]
-  );
+    });
+  }, [categoryColor, compactMode, formatMessage, data]);
 
-  const chartOptions: ChartOptions<'radar'> = {
+  const chartOptions: ChartOptions<'polarArea'> = {
+    hover: { mode: null },
     scales: {
       r: {
-        angleLines: {
-          color: 'rgba(227, 222, 214, 0.5)',
-          display: !isPlaceholder,
-        },
         pointLabels: {
           display: false,
         },
         grid: {
           circular: true,
           color: 'rgba(227, 222, 214, 1)',
-          borderDash: (context: { index: number }) => {
-            return isPlaceholder || context.index === 0 ? [2, 2] : [];
+          borderDash: [2, 2],
+          drawTicks: true,
+          lineWidth: ({ index }) => {
+            if (compactMode) {
+              return index === 1 ? 0 : 1;
+            }
+
+            return index === 0 ? 0 : 1;
           },
         },
-        beginAtZero: true,
+        beginAtZero: false,
         ticks: {
-          count: 3,
-          color: isPlaceholder ? 'rgba(88, 88, 88, 0.5)' : 'rgba(88, 88, 88, 1)',
-          font: { family: 'Work Sans', size: 14, weight: '600' },
+          color: 'rgba(153, 153, 153, 1)',
+          font: { family: 'Work Sans', size: 12, weight: '400' },
           backdropColor: 'transparent',
           display: !compactMode,
+          stepSize: compactMode ? 5 : 2.5,
+          z: 10,
+          callback: (tickValue, index, ticks) => {
+            if (!compactMode && index === ticks.length - 1) {
+              // This tick would show “10.1” otherwise becaue of the `max` value below
+              return '10';
+            }
+
+            return tickValue;
+          },
         },
-        max: 10,
-        min: 0,
-      },
-    },
-    plugins: {
-      tooltip: {
-        backgroundColor: 'white',
-        bodyColor: 'rgba(88, 88, 88, 1)',
-        titleColor: 'rgba(88, 88, 88, 1)',
-        titleFont: { weight: '400', size: 10 },
-        mode: 'nearest',
-        borderColor: 'rgba(88, 88, 88, 1)',
-        displayColors: false,
-        enabled: !compactMode,
+        // There's a .5 gap on the chart in compact mode and .1 otherwise so that we can display the
+        // “0” tick and have an offset between the arcs (defined in the call to `setChartData`)
+        max: compactMode ? 10.5 : 10.1,
+        min: compactMode ? -1.5 : -1.1,
       },
     },
   };
@@ -161,9 +165,18 @@ export const ImpactChart: FC<ImpactChartProps> = ({
         ) : (
           <div>
             <Tooltip
-              placement="top"
+              popperOptions={{
+                modifiers: [
+                  {
+                    name: 'flip',
+                    enabled: false,
+                  },
+                ],
+              }}
+              placement="right-start"
+              offset={[5, 10]}
               arrow
-              arrowClassName="border border-transparent border-b-beige border-r-beige"
+              arrowClassName="border border-transparent border-b-beige border-r-beige -translate-y-2"
               content={
                 <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
                   {impactData[ImpactsEnum.Biodiversity].name}
@@ -172,9 +185,18 @@ export const ImpactChart: FC<ImpactChartProps> = ({
               reference={chartDivRef}
             >
               <Tooltip
-                placement="left"
+                popperOptions={{
+                  modifiers: [
+                    {
+                      name: 'flip',
+                      enabled: false,
+                    },
+                  ],
+                }}
+                placement="left-start"
+                offset={[5, 10]}
                 arrow
-                arrowClassName="border border-transparent border-b-beige border-r-beige"
+                arrowClassName="border border-transparent border-b-beige border-r-beige -translate-y-2"
                 content={
                   <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
                     {impactData[ImpactsEnum.Water].name}
@@ -183,9 +205,18 @@ export const ImpactChart: FC<ImpactChartProps> = ({
                 reference={chartDivRef}
               >
                 <Tooltip
-                  placement="right"
+                  popperOptions={{
+                    modifiers: [
+                      {
+                        name: 'flip',
+                        enabled: false,
+                      },
+                    ],
+                  }}
+                  placement="right-end"
+                  offset={[-5, 10]}
                   arrow
-                  arrowClassName="border border-transparent border-b-beige border-r-beige"
+                  arrowClassName="border border-transparent border-b-beige border-r-beige translate-y-2"
                   content={
                     <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
                       {impactData[ImpactsEnum.Climate].name}
@@ -194,9 +225,18 @@ export const ImpactChart: FC<ImpactChartProps> = ({
                   reference={chartDivRef}
                 >
                   <Tooltip
-                    placement="bottom"
+                    popperOptions={{
+                      modifiers: [
+                        {
+                          name: 'flip',
+                          enabled: false,
+                        },
+                      ],
+                    }}
+                    placement="left-end"
+                    offset={[-5, 10]}
                     arrow
-                    arrowClassName="border border-transparent border-b-beige border-r-beige"
+                    arrowClassName="border border-transparent border-b-beige border-r-beige translate-y-2"
                     content={
                       <div className="font-semibold text-center text-gray-400 text-2xs px-2 py-1.5 bg-white border rounded border-beige">
                         {impactData[ImpactsEnum.Community].name}
@@ -204,8 +244,8 @@ export const ImpactChart: FC<ImpactChartProps> = ({
                     }
                     reference={chartDivRef}
                   >
-                    <div ref={chartDivRef}>
-                      <Radar data={chartData} options={chartOptions} />
+                    <div ref={chartDivRef} className="rounded-full bg-background-middle">
+                      <PolarArea ref={chartRef} data={chartData} options={chartOptions} />
                     </div>
                   </Tooltip>
                 </Tooltip>
@@ -217,49 +257,45 @@ export const ImpactChart: FC<ImpactChartProps> = ({
     );
   }
 
+  const Label = ({ impactType }: { impactType: ImpactsEnum }) => {
+    if (!impactData || !allImpacts?.length) {
+      return null;
+    }
+    return (
+      <div>
+        <div className="flex items-center w-full">
+          <span className="flex mr-2 text-sm font-semibold text-gray-800">
+            {impactData[impactType].name}
+          </span>
+          <FieldInfo content={impactData[impactType].description} />
+        </div>
+        <span className="text-lg leading-tight text-gray-600">
+          {impactData[impactType].value.toFixed(1)}
+        </span>
+      </div>
+    );
+  };
+
   return (
     <div className={className}>
-      <div className="flex justify-between w-full">
-        <div className="z-0 flex flex-col w-full h-full gap-2">
-          {allImpacts && (
-            <span className="flex items-center justify-center w-full">
-              <span className="mr-2 text-sm font-semibold text-gray-800  sm:flex">
-                {impactData[ImpactsEnum.Biodiversity].name}
-              </span>
-              <FieldInfo content={impactData[ImpactsEnum.Biodiversity].description} />
-            </span>
-          )}
-          <span className="flex w-full">
-            {allImpacts && (
-              <span className="flex items-center justify-end mr-2">
-                <span className="mr-2 text-sm font-semibold text-gray-800  sm:flex">
-                  {impactData[ImpactsEnum.Water].name}
-                </span>
-                <FieldInfo content={impactData[ImpactsEnum.Water].description} />
-              </span>
-            )}
-            <span className="relative flex items-center w-full overflow-x-hidden aspect-square">
-              <span className="absolute bg-white rounded-full opacity-50 top-2 right-2 bottom-2 left-2" />
-              <span className="absolute scale-50 bg-white rounded-full top-2 right-2 bottom-2 left-2 opacity-60" />
-              <Radar className="z-10" data={chartData} options={chartOptions} />
-            </span>
-            {allImpacts && (
-              <span className="flex items-center justify-start ml-2">
-                <span className="mr-2 text-sm font-semibold text-gray-800  sm:flex">
-                  {impactData[ImpactsEnum.Climate].name}
-                </span>
-                <FieldInfo content={impactData[ImpactsEnum.Climate].description} />
-              </span>
-            )}
-          </span>
-          {allImpacts && (
-            <span className="flex items-center justify-center w-full">
-              <span className="mr-2 text-sm font-semibold text-gray-800  sm:flex">
-                {impactData[ImpactsEnum.Community].name}
-              </span>
-              <FieldInfo content={impactData[ImpactsEnum.Community].description} />
-            </span>
-          )}
+      <div className="z-0 flex flex-col items-center w-full h-full">
+        <div className="z-50 flex justify-between w-full sm:translate-y-6">
+          <Label impactType={ImpactsEnum.Water} />
+          <Label impactType={ImpactsEnum.Biodiversity} />
+        </div>
+        <div className="sm:px-12">
+          <div className="flex aspect-square max-w-[445px]">
+            <PolarArea
+              ref={chartRef}
+              className="z-10 flex-shrink-0 aspect-square"
+              data={chartData}
+              options={chartOptions}
+            />
+          </div>
+        </div>
+        <div className="z-50 flex justify-between w-full sm:-translate-y-5">
+          <Label impactType={ImpactsEnum.Community} />
+          <Label impactType={ImpactsEnum.Climate} />
         </div>
       </div>
     </div>

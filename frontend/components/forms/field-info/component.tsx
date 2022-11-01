@@ -15,7 +15,7 @@ export const FieldInfo = ({ content }: FieldInfoProps) => {
       arrow
       arrowClassName="bg-black"
       content={
-        <div className="max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
+        <div className="z-40 max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
           {content}
         </div>
       }

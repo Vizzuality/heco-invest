@@ -43,9 +43,9 @@ export const ImpactModal: React.FC<ImpactModalProps> = ({
         </div>
         <div className="max-w-md mx-auto">
           <Image
-            src="/images/about/about-impact-chart.svg"
-            width={308}
-            height={252}
+            src="/images/about/about-impact-chart.png"
+            width={450}
+            height={450}
             layout="intrinsic"
             alt=""
           />

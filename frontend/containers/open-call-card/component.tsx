@@ -36,7 +36,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
   const intl = useIntl();
   const router = useRouter();
   const {
-    data: { instrument_type: allInstrumentTypes, ticket_size: allTicketSizes, impact: allImpacts },
+    data: { instrument_type: allInstrumentTypes, impact: allImpacts },
   } = useEnums();
 
   const [picture, setPicture] = useState<string>(investor.picture?.small || placeholderPicture);
@@ -187,7 +187,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
             </span>
           </span>
           <div className="hidden sm:block">
-            {tags && (
+            {!!tags?.length && (
               <span
                 className="flex flex-wrap items-center justify-end gap-2"
                 role="group"

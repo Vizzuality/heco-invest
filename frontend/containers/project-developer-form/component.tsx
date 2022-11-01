@@ -49,9 +49,9 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
   const { priorityLandscapes } = usePriorityLandscapes();
 
   const {
-    category: categoryEnums,
-    impact: impactEnums,
-    project_developer_type: projectDeveloperTypeEnums,
+    category: categoryEnums = [],
+    impact: impactEnums = [],
+    project_developer_type: projectDeveloperTypeEnums = [],
   } = enums?.data;
   const interests = useInterests({ categoryEnums, impactEnums, priorityLandscapes });
   const {
