@@ -283,7 +283,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
           <Label impactType={ImpactsEnum.Water} />
           <Label impactType={ImpactsEnum.Biodiversity} />
         </div>
-        <div className="w-full sm:px-12">
+        <div className="sm:px-12">
           <div className="flex aspect-square max-w-[445px]">
             <PolarArea
               ref={chartRef}
