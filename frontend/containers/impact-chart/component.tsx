@@ -99,8 +99,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
       datasets: [
         {
           data,
-          offset: compactMode ? 2 : 10,
-          borderWidth: compactMode ? 1 : 4,
+          offset: compactMode ? 2 : 5,
           borderColor: () => createBorderGradient(chart, categoryColor),
           backgroundColor: () => createBgGradient(chart, categoryColor),
         },
@@ -119,40 +118,38 @@ export const ImpactChart: FC<ImpactChartProps> = ({
         },
         grid: {
           circular: true,
-          color: compactMode
-            ? 'rgba(227, 222, 214, 1)'
-            : // color values to make the 0 grid line transparent
-              [
-                'rgba(227, 222, 214, 0)',
-                'rgba(227, 222, 214, 1)',
-                'rgba(227, 222, 214, 1)',
-                'rgba(227, 222, 214, 1)',
-                'rgba(227, 222, 214, 1)',
-              ],
+          color: 'rgba(227, 222, 214, 1)',
           borderDash: [2, 2],
           drawTicks: true,
           lineWidth: ({ index }) => {
-            if (compactMode && index === 1) {
-              return 0;
+            if (compactMode) {
+              return index === 1 ? 0 : 1;
             }
 
-            return 1;
+            return index === 0 ? 0 : 1;
           },
         },
         beginAtZero: false,
         ticks: {
-          count: compactMode ? 3 : undefined,
           color: 'rgba(153, 153, 153, 1)',
           font: { family: 'Work Sans', size: 12, weight: '400' },
           backdropColor: 'transparent',
           display: !compactMode,
-          // Precision and step-size ensure the desired tick values
-          precision: 5,
-          stepSize: 2.5,
+          stepSize: compactMode ? 5 : 2.5,
           z: 10,
+          callback: (tickValue, index, ticks) => {
+            if (!compactMode && index === ticks.length - 1) {
+              // This tick would show “10.1” otherwise becaue of the `max` value below
+              return '10';
+            }
+
+            return tickValue;
+          },
         },
-        max: 10,
-        min: compactMode ? -1.5 : -1,
+        // There's a .5 gap on the chart in compact mode and .1 otherwise so that we can display the
+        // “0” tick and have an offset between the arcs (defined in the call to `setChartData`)
+        max: compactMode ? 10.5 : 10.1,
+        min: compactMode ? -1.5 : -1.1,
       },
     },
   };
