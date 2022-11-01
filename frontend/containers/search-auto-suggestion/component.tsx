@@ -97,7 +97,7 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
               <legend className="py-2 text-sm text-gray-800">
                 <FormattedMessage defaultMessage="Filters" id="zSOvI0" />
               </legend>
-              <div className="flex flex-wrap h-full gap-2 overflow-y-auto">
+              <div className="flex flex-wrap gap-2 overflow-y-auto">
                 {autoSuggestions?.map((filter) => {
                   return (
                     <Tag
