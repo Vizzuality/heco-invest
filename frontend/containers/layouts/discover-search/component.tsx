@@ -1,7 +1,7 @@
 import { FC, SyntheticEvent, useEffect, useMemo, useState } from 'react';
 
 import {
-  ArrowLeft,
+  ArrowLeft as ArrowLeftIcon,
   Search as SearchIcon,
   X as CloseIcon,
   XCircle as CloseCircleIcon,
@@ -146,7 +146,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
                       : formatMessage({ defaultMessage: 'Close search', id: 'NjD8y3' })
                   }
                 >
-                  <Icon icon={ArrowLeft} className="w-6 h-6 text-green-dark mr-2.5" />
+                  <Icon icon={ArrowLeftIcon} className="w-6 h-6 text-green-dark mr-2.5" />
                   {openFilters && <FormattedMessage defaultMessage="Filters" id="zSOvI0" />}
                 </Button>
               )}
