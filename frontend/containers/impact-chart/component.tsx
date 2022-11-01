@@ -131,6 +131,13 @@ export const ImpactChart: FC<ImpactChartProps> = ({
               ],
           borderDash: [2, 2],
           drawTicks: true,
+          lineWidth: ({ index }) => {
+            if (compactMode && index === 1) {
+              return 0;
+            }
+
+            return 1;
+          },
         },
         beginAtZero: false,
         ticks: {
