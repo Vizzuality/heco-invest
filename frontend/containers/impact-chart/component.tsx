@@ -228,7 +228,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
     return (
       <div>
         <div className="flex items-center w-full">
-          <span className="hidden mr-2 text-sm font-semibold text-gray-800 sm:flex">
+          <span className="flex mr-2 text-sm font-semibold text-gray-800">
             {impactData[impactType].name}
           </span>
           <FieldInfo content={impactData[impactType].description} />
@@ -243,11 +243,11 @@ export const ImpactChart: FC<ImpactChartProps> = ({
   return (
     <div className={className}>
       <div className="z-0 flex flex-col items-center w-full h-full">
-        <div className="z-50 flex justify-between w-full translate-y-6">
+        <div className="z-50 flex justify-between w-full sm:translate-y-6">
           <Label impactType={ImpactsEnum.Water} />
           <Label impactType={ImpactsEnum.Biodiversity} />
         </div>
-        <div className="w-full px-12">
+        <div className="w-full sm:px-12">
           <div className="flex aspect-square max-w-[445px]">
             <PolarArea
               ref={chartRef}
@@ -257,7 +257,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
             />
           </div>
         </div>
-        <div className="z-50 flex justify-between w-full -translate-y-5">
+        <div className="z-50 flex justify-between w-full sm:-translate-y-5">
           <Label impactType={ImpactsEnum.Community} />
           <Label impactType={ImpactsEnum.Climate} />
         </div>
