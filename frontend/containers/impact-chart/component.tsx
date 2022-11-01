@@ -41,6 +41,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
   const {
     data: { impact: allImpacts, category: allCategories },
   } = useEnums();
+
   // The object may contain Impacts ids, but we need to make sure we have all the values (biodiversity, climate, community, water) in order to display the chart. We also need the impacts data coming from the enums in order to display labels and descriptions
   const isPlaceholder =
     !impact ||
@@ -105,9 +106,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
         },
       ],
     });
-    // The 'data' const isn't in the dependency array to avoid maximum update depth exceeded error
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categoryColor, compactMode, formatMessage]);
+  }, [categoryColor, compactMode, formatMessage, data]);
 
   const chartOptions: ChartOptions<'polarArea'> = {
     hover: { mode: null },
