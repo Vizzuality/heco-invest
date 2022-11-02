@@ -2,9 +2,9 @@
   "name": "heco-invest-frontend",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "yarn i18n:compile && next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "check-types": "tsc --noemit -p tsconfig.json",
     "lint": "next lint",
     "test": "yarn check-types && jest --ci --passWithNoTests",
