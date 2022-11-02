@@ -104,7 +104,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
     >
       <ol
         className={cx({
-          'text-sm ': true,
+          'text-sm flex': true,
           'text-gray-400': theme === 'dark',
           'text-white': theme === 'light',
         })}
@@ -113,11 +113,14 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
           const isLastBreadcrumb = index === breadcrumbs.length - 1;
 
           return (
-            <li key={name} className="inline ml-3 first-of-type:ml-0">
+            <li
+              key={name}
+              className="ml-3 first-of-type:ml-0 last-of-type:flex-shrink last-of-type:overflow-hidden last-of-type:text-ellipsis"
+            >
               <Link key={link} href={link}>
                 <a
                   className={cx({
-                    'transition-all rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark':
+                    'transition-all rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark whitespace-nowrap':
                       true,
                     'cursor-pointer': isLastBreadcrumb,
                     'text-black': isLastBreadcrumb && theme === 'dark',
