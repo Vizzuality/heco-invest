@@ -36,4 +36,4 @@ A project scope will need to be connected to one of these five different sectors
 
 ## Future development
 
-The HeCo Invest platform is now in its first version. This pilot will be tested and improved throufghout time to better respond to the target users needs. To know more about this project, please contact info@hecoinvest.org. 
+The HeCo Invest platform is now in its first version. This pilot will be tested and improved throughout time to better respond to the target users needs. To know more about this project, please contact info@hecoinvest.org. 
