@@ -60,6 +60,7 @@ module.exports = {
       sm: '0 1px 2px 0 rgb(233 233 233 / 0.25), 0 0 15px 0 rgb(223 215 206 / 0.3)',
       DEFAULT: '0 4px 15px 0 rgb(220 220 220 / 0.5)',
       lg: '0 4px 15px 0 rgb(176 176 176 / 0.25)',
+      'lg-top': '0 -4px 15px 0 rgb(176 176 176 / 0.25)',
       xl: '0 8px 16px rgb(0 0 0 / 0.07)',
       '2xl': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05)',
       // Useful for animations
@@ -105,5 +106,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Use the overflow-elispis with more lines
+    require('@tailwindcss/line-clamp'),
+  ],
 };

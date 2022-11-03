@@ -32,7 +32,8 @@
       "status": "launched",
       "favourite": null,
       "open_call_applications_count": 0,
-      "verified": false
+      "verified": false,
+      "updated_at": "2022-10-25T13:31:30.957Z"
     },
     "relationships": {
       "investor": {

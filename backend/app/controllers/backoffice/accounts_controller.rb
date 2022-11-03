@@ -3,9 +3,12 @@ module Backoffice
     before_action :fetch_account, only: [:approve, :reject]
 
     def approve
-      @account.approved!
-      UserMailer.approved(@account.owner).deliver_later
-      redirect_back(fallback_location: admin_root_path)
+      if @account.update(review_status: :approved)
+        UserMailer.approved(@account.owner).deliver_later
+        redirect_back(fallback_location: admin_root_path)
+      else
+        redirect_back(fallback_location: admin_root_path, alert: @account.errors.first.full_message)
+      end
     end
 
     def reject

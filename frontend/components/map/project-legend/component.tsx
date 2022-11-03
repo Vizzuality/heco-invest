@@ -28,7 +28,7 @@ export const ProjectLegend: FC<ProjectLegendProps> = ({ className }: ProjectLege
         <FormattedMessage defaultMessage="Project categories" id="rginRA" />
       </div>
       <ol className="flex flex-col gap-2 mt-2 text-left">
-        {data.category.map((category) => (
+        {data.category?.map((category) => (
           <li key={category.id}>
             <CategoryTagDot category={category.id as CategoryType} size="smallest" />
             {category.name}

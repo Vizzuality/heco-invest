@@ -53,10 +53,10 @@ export const Overview: React.FC<OverviewProps> = ({
   );
 
   return (
-    <LayoutContainer className="mb-14 lg:mb-20 pt-18 space-y-36">
-      <section className="p-4 font-serif text-white mt-28 sm:p-6 lg:mt-28 lg:p-16 bg-green-dark rounded-2xl">
-        <div className="relative grid w-full grid-cols-1 gap-x-10 gap-y-20 lg:grid-cols-2">
-          <div className="relative z-10 -mb-32 border-8 border-white drop-shadow-xl h-96 -top-28 lg:-top-44 lg:-mb-44 lg:overflow-hidden rounded-xl">
+    <LayoutContainer className="px-0 mb-12 lg:mb-20 pt-17 space-y-36">
+      <section className="p-4 font-serif text-white mt-28 sm:p-6 lg:mt-28 lg:p-16 bg-green-dark sm:rounded-2xl">
+        <div className="relative grid w-full grid-cols-1 gap-x-10 gap-y-8 sm:gap-y-20 lg:grid-cols-2">
+          <div className="relative z-10 -mb-32 border-8 border-white drop-shadow-xl h-60 sm:h-96 -top-32 lg:-top-44 lg:-mb-44 lg:overflow-hidden rounded-xl">
             <Map
               onMapViewportChange={onViewportChange}
               viewport={viewport}
@@ -88,7 +88,7 @@ export const Overview: React.FC<OverviewProps> = ({
             </Controls>
           </div>
           <div className="flex flex-col space-y-4 lg:col-start-2">
-            <h2 className="text-2xl lg:text-3xl">
+            <h2 className="text-3xl">
               <FormattedMessage defaultMessage="Location" id="rvirM2" />
             </h2>
             <div className="flex flex-col space-y-1">
@@ -116,13 +116,13 @@ export const Overview: React.FC<OverviewProps> = ({
             </div>
           </div>
           <div className="flex flex-col space-y-4">
-            <h2 className="text-2xl lg:text-3xl">
+            <h2 className="text-3xl">
               <FormattedMessage defaultMessage="The problem we are solving" id="MXykbb" />
             </h2>
             <p className="font-sans text-base">{problem}</p>
           </div>
           <div className="flex flex-col space-y-4">
-            <h2 className="text-2xl lg:text-3xl">
+            <h2 className="text-3xl">
               <FormattedMessage defaultMessage="The solution proposed" id="9CDBQg" />
             </h2>
             <p className="font-sans text-base">{solution}</p>

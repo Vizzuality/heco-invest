@@ -244,6 +244,8 @@ export const ProjectForm: FC<ProjectFormProps> = ({
         onNextClick={handleNextClick}
         onPreviousClick={() => setCurrentPage(currentPage - 1)}
         showProgressBar
+        createdAt={project?.created_at}
+        updatedAt={project?.updated_at}
         onSubmitClick={handleSubmitPublish}
         isLoading={isLoading}
         footerElements={

@@ -67,6 +67,16 @@ variable "hotjar_site_id" {
   default = ""
 }
 
+variable "http_auth_username" {
+  type = string
+  description = "Http auth username (for staging)"
+}
+
+variable "http_auth_password" {
+  type = string
+  description = "Http auth password (for staging)"
+}
+
 variable "dns_zone_name" {
   type        = string
   description = "Name for the GCP DNS Zone"
@@ -137,4 +147,9 @@ variable "instance_role" {
   type = string
   default = "production"
   description = "staging|production, NOT the same as RAILS_ENV as that is 'production' in staging as well"
+}
+
+variable "tag" {
+  type = string
+  description = "Tag name to use for docker image tagging and deployment"
 }

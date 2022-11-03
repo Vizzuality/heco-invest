@@ -1,4 +1,4 @@
-import { FC, PointerEvent, useState, useMemo, useCallback, useEffect } from 'react';
+import { FC, PointerEvent, useState, useMemo, useCallback, useEffect, useRef } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -36,6 +36,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
 
   const intl = useIntl();
   const router = useRouter();
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
 
   const fundProject = useFundProject(project.id);
 
@@ -53,7 +54,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
     },
   } = useEnums();
 
-  const { id, slug, name } = project;
+  const { id, slug, name, description } = project;
   const category = allCategories?.find(({ id }) => id === project.category);
   const impact = useMemo(() => projectImpact(project)['municipality'], [project]);
   const link = `${Paths.Project}/${slug}`;
@@ -131,7 +132,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
       id={id}
       aria-label={intl.formatMessage({ defaultMessage: '{name} project', id: 'JWYapR' }, { name })}
       role="group"
-      className={cx({
+      className={cx('p-4 bg-white border shadow rounded-2xl gap-y-2 sm:gap-x-4 overflow-hidden', {
         [className]: !!className,
         'cursor-pointer': !canFund,
         'transition rounded-2xl': true,
@@ -144,12 +145,10 @@ export const ProjectCard: FC<ProjectCardProps> = ({
     >
       <div
         className={cx({
-          'relative flex flex-col sm:flex-row p-4 bg-white border shadow rounded-2xl gap-y-2 sm:gap-x-4':
-            true,
-          'rounded-2xl overflow-hidden': true,
+          'relative flex gap-x-2': true,
         })}
       >
-        <div className="flex flex-col flex-grow gap-2">
+        <div className="flex flex-col flex-grow gap-1 sm:gap-2">
           <div className="flex text-sm">
             {/* VERIFICATION PROJECTS: HIDDEN
             {trusted && (
@@ -177,7 +176,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           <div>
             {onClick ? (
               <button
-                className="text-xl font-semibold leading-tight text-left outline-none"
+                className="text-lg font-semibold leading-tight text-left outline-none sm:text-xl"
                 aria-label={intl.formatMessage(
                   {
                     defaultMessage: 'View {name} project details',
@@ -199,7 +198,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               <Link href={link}>
                 <a
                   className={cx({
-                    'text-xl font-semibold leading-tight outline-none': true,
+                    'text-lg sm:text-xl font-semibold leading-tight outline-none': true,
                     'pointer-events-none': !canFund,
                   })}
                 >
@@ -208,11 +207,13 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               </Link>
             )}
             {!onClick && !link && (
-              <span className="text-xl font-semibold leading-tight outline-none">{name}</span>
+              <span className="text-lg font-semibold leading-tight outline-none sm:text-xl">
+                {name}
+              </span>
             )}
           </div>
-          <div className="flex flex-wrap items-center text-sm text-gray-600 min-h-fit">
-            {instrumentTypesStr && (
+          <div className="flex flex-wrap items-center text-sm text-gray-700 min-h-fit">
+            {!!instrumentTypesStr && (
               <div
                 title={intl.formatMessage({
                   defaultMessage: 'Project financial instrument',
@@ -224,12 +225,12 @@ export const ProjectCard: FC<ProjectCardProps> = ({
               </div>
             )}
             <div>
-              {instrumentTypesStr && ticketSizeStr && (
+              {!!instrumentTypesStr && !!ticketSizeStr && (
                 <span className="mr-2" aria-hidden={true}>
                   &bull;
                 </span>
               )}
-              {ticketSizeStr && (
+              {!!ticketSizeStr && (
                 <div
                   title={intl.formatMessage({
                     defaultMessage: 'Project ticket size',
@@ -258,10 +259,20 @@ export const ProjectCard: FC<ProjectCardProps> = ({
           )}
         </div>
         <div>
-          <div className="w-20 h-20 mx-auto aspect-square">
-            <ImpactChart compactMode={true} category={category?.id} impact={impact} />
+          <div className="flex-shrink-0 w-20 h-20 mx-auto aspect-square">
+            {!!category && (
+              <ImpactChart compactMode={true} category={category.id} impact={impact} />
+            )}
           </div>
         </div>
+      </div>
+      <div>
+        <p
+          className="mt-2 text-gray-900 whitespace-normal sm:hidden line-clamp-4 max-h-24 overflow-ellipsis"
+          ref={descriptionRef}
+        >
+          {description}
+        </p>
       </div>
     </div>
   );

@@ -94,7 +94,8 @@
         "account_language": "en",
         "impact_calculated": false,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:21:51.149Z"
       },
       "relationships": {
         "project_developer": {
@@ -212,7 +213,8 @@
         "account_language": "en",
         "impact_calculated": false,
         "verified": false,
-        "funded": null
+        "funded": null,
+        "updated_at": "2022-10-25T13:21:51.306Z"
       },
       "relationships": {
         "project_developer": {

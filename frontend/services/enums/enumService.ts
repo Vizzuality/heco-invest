@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-
 import { UseQueryOptions } from 'react-query';
 
 import { groupBy } from 'lodash-es';
@@ -18,20 +16,19 @@ export const getEnums = async (): Promise<Enum[]> => {
   return enums.data.data;
 };
 
-export const useEnums = (options?: UseQueryOptions<Enum[], ErrorResponse>) => {
-  const query = useLocalizedQuery<Enum[], ErrorResponse>(Queries.EnumList, getEnums, {
-    ...staticDataQueryOptions,
-    ...options,
-  });
-
-  return useMemo(() => {
-    /** Enums grouped by type property */
-    const enumsGroupedByTypes = groupBy(query?.data, 'type') as {
-      [key in EnumTypes]: Enum[];
-    };
-    return {
-      ...query,
-      data: enumsGroupedByTypes,
-    };
-  }, [query]);
+export const useEnums = (
+  options?: UseQueryOptions<Enum[], ErrorResponse, Record<EnumTypes, Enum[]>>
+) => {
+  return useLocalizedQuery<Enum[], ErrorResponse, Record<EnumTypes, Enum[]>>(
+    Queries.EnumList,
+    getEnums,
+    {
+      ...staticDataQueryOptions,
+      ...options,
+      placeholderData: [],
+      select: (data) => {
+        return groupBy(data, 'type') as Record<EnumTypes, Enum[]>;
+      },
+    }
+  );
 };

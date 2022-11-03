@@ -5,6 +5,7 @@ import { useIntl, FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
+import dayjs from 'dayjs';
 import { noop } from 'lodash-es';
 
 import Button from 'components/button';
@@ -19,6 +20,8 @@ export const MultiPageLayoutHeader: React.FC<MultiPageLayoutHeaderProps> = ({
   siteHeader = false,
   locale,
   leaveButtonText,
+  createdAt,
+  updatedAt,
   onCloseClick = noop,
 }: MultiPageLayoutHeaderProps) => {
   const intl = useIntl();
@@ -33,15 +36,29 @@ export const MultiPageLayoutHeader: React.FC<MultiPageLayoutHeaderProps> = ({
       })}
     >
       <LayoutContainer>
-        <div className="flex items-center justify-between h-20 gap-x-8 md:gap-x-16">
-          <div className="flex justify-start flex-1">
+        <div className="flex items-center justify-between h-20 gap-x-8 xl:gap-x-16">
+          <div className="flex justify-start flex-shrink-0">
             <span className="font-semibold">HeCo Invest</span>
           </div>
           <LayoutContainer
             layout="narrow"
-            className="flex flex-col items-center justify-between lg:flex-row"
+            className="flex flex-row items-center justify-between gap-x-4"
           >
-            <span>{title}</span>
+            <div className="flex flex-wrap gap-x-4">
+              <span>{title}</span>
+              {!!createdAt && !!updatedAt && (
+                <span className="flex-grow text-gray-700">
+                  <FormattedMessage
+                    defaultMessage="created on {createdDate} updated on {updatedDate}"
+                    id="0b0kmZ"
+                    values={{
+                      createdDate: dayjs(createdAt).format('MMM DD, YYYY'),
+                      updatedDate: dayjs(updatedAt).format('MMM DD, YYYY'),
+                    }}
+                  />
+                </span>
+              )}
+            </div>
             {locale && (
               <span className="px-2 py-1 text-sm text-black rounded-lg lg:py-2 bg-background-dark">
                 <FormattedMessage defaultMessage="Content language" id="zetZX8" />

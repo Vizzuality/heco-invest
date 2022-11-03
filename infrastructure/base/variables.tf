@@ -85,3 +85,15 @@ variable "from_email_address" {
   type = string
   description = "Email address from which to send emails"
 }
+
+variable "staging_http_auth_username" {
+  type = string
+  description = "Http auth username (for staging)"
+  default = ""
+}
+
+variable "staging_http_auth_password" {
+  type = string
+  description = "Http auth password (for staging)"
+  default = ""
+}
