@@ -51,18 +51,25 @@ const InvestorsPage: PageComponent<InvestorsPageProps, DiscoverPageLayoutProps> 
   return (
     <>
       <Head title={intl.formatMessage({ defaultMessage: 'Discover Investors', id: 'nWf75J' })} />
-      <div className="flex flex-col w-full h-full pb-2 lg:p-1 lg:-m-1 lg:gap-0 lg:overflow-hidden lg:flex-row">
-        <div className="relative flex flex-col w-full lg:overflow-hidden ">
+      <div className="flex h-full">
+        <div className="relative flex flex-col w-full lg:overflow-hidden">
           <div
             ref={investorsContainerRef}
             className={cx({
-              'relative flex-grow lg:pr-2.5': true,
+              'relative flex-grow': true,
               'lg:overflow-y-auto': !loading,
               'lg:pointer-events-none lg:overflow-hidden': loading,
             })}
           >
             {loading && (
-              <span className="absolute bottom-0 z-20 flex items-center justify-center bg-gray-600 bg-opacity-20 top-1 left-1 right-3 rounded-2xl">
+              <span
+                className={cx({
+                  'flex items-center justify-center bg-gray-600 bg-opacity-20': true,
+                  'absolute bottom-0.5 md:bottom-0 z-20 top-0.5 left-0.5 right-0.5 border':
+                    hasInvestors,
+                  'my-40': !hasInvestors,
+                })}
+              >
                 <Loading visible={loading} iconClassName="w-10 h-10" />
               </span>
             )}
