@@ -122,13 +122,13 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
       id="filters"
       role="region"
       aria-labelledby="filters-button"
-      className="w-full bg-white border-t-2 border-t-gray-200 sm:rounded-b-3xl h-[calc(100vh-56px)] sm:h-auto"
+      className="flex-grow w-full overflow-hidden bg-white border-t-2 sm:absolute border-t-gray-200 sm:rounded-b-3xl"
     >
       {!filters ? (
         <Loading />
       ) : (
         <form
-          className="relative flex flex-col justify-between h-full p-6"
+          className="relative flex flex-col justify-between h-full overflow-hidden"
           onSubmit={handleSubmit(onSubmitFilters)}
         >
           <Button
@@ -142,7 +142,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
             </span>
             <CloseIcon className="w-4 h-4 transition-transform rotate-0 hover:rotate-180" />
           </Button>
-          <div className="overflow-y-auto">
+          <div className="p-6 pb-0 overflow-y-auto">
             {/* VERIFICATION FILTERS: HIDDEN
             <div className="flex justify-between">
               <div className="flex items-center mb-4">
@@ -287,7 +287,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
               />
             </p>
           </div>
-          <div className="flex-shrink-0 w-screen p-4 -mb-6 -ml-6 bg-white sm:items-center sm:justify-between sm:flex sm:gap-2 sm:mb-0 sm:ml-0 sm:w-auto shadow-lg-top sm:shadow-none sm: sm:p-0 sm:relative sm:pt-4">
+          <div className="flex-shrink-0 p-4 sm:items-center sm:justify-between sm:flex sm:gap-2 sm:mb-0 sm:ml-0 sm:w-auto shadow-lg-top sm:shadow-none sm: sm:p-6 sm:relative sm:pt-4">
             <p className="hidden mb-4 text-sm text-gray-600 sm:block sm:mb-0">
               <FormattedMessage
                 defaultMessage="Note: Some filters not apply to all tabs"
