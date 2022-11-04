@@ -26,10 +26,7 @@ app.prepare().then(() => {
         return valid;
       };
 
-      const basicAuthEnabled =
-        process.env.NODE_ENV === 'production' &&
-        !!process.env.HTTP_AUTH_USERNAME &&
-        !!process.env.HTTP_AUTH_PASSWORD;
+      const basicAuthEnabled = !!process.env.HTTP_AUTH_USERNAME && !!process.env.HTTP_AUTH_PASSWORD;
 
       const credentials = auth(req);
       const validCredentials =
