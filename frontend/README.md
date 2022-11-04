@@ -55,11 +55,11 @@ Below is a description of each of the keys.
 
 ## CI/CD
 
-When a pull request (PR) is created, a GitHub action runs the tests (`yarn test`) and then deploys the application to a development environment on Vercel. A comment will be automatically added to the PR with the link to the environment.
+When a pull request (PR) is created, a GitHub action runs the tests (`yarn test`).
 
-When the PR is merged or commits are directly pushed to the `develop` branch (not recommended), the tests are also run, translations are downloaded (more on that below), and the application is deployed to the staging environment: https://heco-invest-frontend.vercel.app/.
+When the PR is merged or commits are directly pushed to the `develop` branch (not recommended), the tests are also run, translations are downloaded (more on that below), and the application is deployed to the staging environment: https://staging.hecoinvest.org/.
 
-When a PR is merged to the `main` branch, the same process is also executed and the application is deployed to the production environment: TBD.
+When a PR is merged to the `main` branch, the same process is also executed and the application is deployed to the production environment: https://hecoinvest.org/.
 
 It is recommended to mention the Jira task ID either in commits or the branch names so that the deployment information can be directly available in Jira.
 
