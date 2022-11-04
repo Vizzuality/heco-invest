@@ -40,18 +40,20 @@ The application (and API) is configured via environment variables stored in a `.
 
 Below is a description of each of the keys.
 
-| Variable                          | Description                                                                                                                              |
-|-----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| NEXT_PUBLIC_FRONTEND_URL          | Complete URL from which the front-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com) |
-| NEXT_PUBLIC_BACKEND_URL           | Complete URL from which the back-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com)  |
-| NEXT_PUBLIC_PROXY_BACKEND         | Indicates whether the back-end application is proxied through the front-end application                                                  |
-| NEXT_PUBLIC_GOOGLE_MAPS_API_KEY   | Key for Google Maps - Places API                                                                                                         |
-| NEXT_PUBLIC_MAPBOX_API_TOKEN      | Mapbox's account API access token                                                                                                        |
-| NEXT_PUBLIC_GOOGLE_ANALYTICS      | Optional − Google Analytics' measurement ID (Google Tag Manager)                                                                         |
-| NEXT_PUBLIC_HOTJAR_SITE_ID        | Optional − Hotjar's site ID                                                                                                              |
-| NEXT_PUBLIC_USER_TESTING_FORM_URL | Optional − URL of an external form to recruit for user testing                                                                           |
-| HTTP_AUTH_USERNAME                | Optional − HTTP Basic Authentication username (HTTP_AUTH_PASSWORD required)                                                              |
-| HTTP_AUTH_PASSWORD                | Optional − HTTP Basic Authentication password (HTTP_AUTH_USERNAME required)                                                              |
+| Variable                          | Description                                                                                                                                  |
+|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| NEXT_PUBLIC_FRONTEND_URL          | Complete URL from which the front-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com)     |
+| NEXT_PUBLIC_BACKEND_URL           | Complete URL from which the back-end application is served (including https) and without a trailing slash (e.g. https://vizzuality.com)      |
+| NEXT_PUBLIC_PROXY_BACKEND         | Indicates whether the back-end application is proxied through the front-end application                                                      |
+| NEXT_PUBLIC_GOOGLE_MAPS_API_KEY   | Key for Google Maps - Places API                                                                                                             |
+| NEXT_PUBLIC_MAPBOX_API_TOKEN      | Mapbox's account API access token                                                                                                            |
+| NEXT_PUBLIC_GOOGLE_ANALYTICS      | Optional − Google Analytics' measurement ID (Google Tag Manager)                                                                             |
+| NEXT_PUBLIC_HOTJAR_SITE_ID        | Optional − Hotjar's site ID                                                                                                                  |
+| NEXT_PUBLIC_USER_TESTING_FORM_URL | Optional − URL of an external form to recruit for user testing                                                                               |
+| HTTP_AUTH_USERNAME                | Optional − Platform access restriction − Username (HTTP_AUTH_PASSWORD, NEXTAUTH_SECRET and NEXTAUTH_URL required)                            |
+| HTTP_AUTH_PASSWORD                | Optional − Platform access restriction − Password (HTTP_AUTH_USERNAME, NEXTAUTH_SECRET and NEXTAUTH_URL required)                            |
+| NEXTAUTH_SECRET                   | Optional − Platform access restriction − Key to encrypt the JWT (HTTP_AUTH_USERNAME, HTTP_AUTH_PASSWORD and NEXTAUTH_URL required)           |
+| NEXTAUTH_URL                      | Optional − Platform access restriction − Same as NEXT_PUBLIC_FRONTEND_URL (HTTP_AUTH_USERNAME, HTTP_AUTH_PASSWORD and NEXTAUTH_URL required) |
 
 ## CI/CD
 
