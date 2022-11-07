@@ -1,5 +1,6 @@
 module Backoffice
   class BaseController < ApplicationController
+    include Backoffice::HttpAuth
     include Pagy::Backend
     include Breadcrumbs
     include Localization
