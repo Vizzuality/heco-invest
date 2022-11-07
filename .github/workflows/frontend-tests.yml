@@ -1,0 +1,42 @@
+name: Run front-end tests
+
+on:
+  pull_request:
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/frontend-*'
+
+defaults:
+  run:
+    working-directory: frontend
+
+jobs:
+  tests:
+    name: Run front-end tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Read .nvmrc
+      id: nvm
+      run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+
+    - name: Use Node.js (.nvmrc)
+      uses: actions/setup-node@v2
+      with:
+        node-version: "${{ steps.nvm.outputs.NVMRC }}"
+
+    - name: Cache node-modules
+      id: cache-node-modules
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: node-modules-${{ hashFiles('yarn.lock') }}
+
+    - name: Install Node.js dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: yarn install --immutable
+
+    - name: Run tests
+      run: yarn test

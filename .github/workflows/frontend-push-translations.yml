@@ -1,0 +1,34 @@
+name: Push front-end translations to Transifex
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/frontend-*'
+
+defaults:
+  run:
+    working-directory: frontend
+
+jobs:
+  push-translations:
+    name: Push front-end translations to Transifex
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Push source strings to Transifex
+      env:
+        TRANSIFEX_TOKEN: ${{ secrets.TRANSIFEX_TOKEN }}
+        ENV: ${{ inputs.env }}
+      # IMPORTANT: To avoid conflicts between production and staging, the source strings should only
+      # pushed on staging. This should give enough time for translators before the content appears
+      # on production. On production and development, we should only pull translations.
+      run: |
+        echo 'Installing the Transifex CLI…'
+        curl -o- https://raw.githubusercontent.com/transifex/cli/v1.4.1/install.sh | bash
+        echo 'Pushing the source strings…'
+        TX_TOKEN=${{ env.TRANSIFEX_TOKEN }} ./tx push -s
