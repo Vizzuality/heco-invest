@@ -79,6 +79,7 @@ module "sendgrid_api_key" {
   use_random_value = false
 }
 
+# checking for presence of http_auth_password to know if basic auth required
 module "http_auth_password" {
   count            = length(var.http_auth_password) > 0 ? 1 : 0
 
@@ -87,6 +88,17 @@ module "http_auth_password" {
   key              = "${var.project_name}_http_auth_password"
   value            = var.http_auth_password
   use_random_value = false
+}
+
+# checking for presence of http_auth_password to know if basic auth required
+module "nextauth_secret" {
+  count            = length(var.http_auth_password) > 0 ? 1 : 0
+
+  source              = "../secret_value"
+  region              = var.gcp_region
+  key                 = "${var.project_name}-nextauth_secret"
+  random_value_length = 32
+  use_random_value    = true
 }
 
 locals {
@@ -168,14 +180,22 @@ module "frontend_cloudrun" {
     length(module.http_auth_password) > 0 ? [{
       name        = "HTTP_AUTH_PASSWORD"
       secret_name = module.http_auth_password[0].secret_name
+    }] : [],
+    length(module.http_auth_password) > 0 ? [{
+      name        = "NEXTAUTH_SECRET"
+      secret_name = module.nextauth_secret[0].secret_name
     }] : []
   ])
-  env_vars = [
+  env_vars = flatten([
     {
       name  = "HTTP_AUTH_USERNAME"
       value = var.http_auth_username
-    }
-  ]
+    },
+    length(module.http_auth_password) > 0 ? [{
+      name  = "NEXTAUTH_URL"
+      value = "https://${local.domain}"
+    }] : []
+  ])
 }
 
 module "backend_cloudrun" {

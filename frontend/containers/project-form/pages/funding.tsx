@@ -10,9 +10,9 @@ import FieldInfo from 'components/forms/field-info';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import Tag from 'components/forms/tag';
-import TextTag from 'components/tag';
 import TagGroup from 'components/forms/tag-group';
 import Textarea from 'components/forms/textarea';
+import TextTag from 'components/tag';
 
 import { FundingProps } from '../types';
 

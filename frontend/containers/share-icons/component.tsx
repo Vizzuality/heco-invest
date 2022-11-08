@@ -9,10 +9,9 @@ import Button from 'components/button';
 import Icon from 'components/icon';
 import Toast from 'components/toast';
 import Tooltip from 'components/tooltip';
+import { theme } from 'tailwind.config';
 
 import { ShareIconsProps } from '.';
-
-import { theme } from 'tailwind.config';
 
 export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
   const [copied, setCopied] = useState(false);
