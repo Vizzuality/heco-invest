@@ -18,11 +18,17 @@ export type FilterParams = {
   'filter[impact]': string;
 };
 
+// These filters are represented by checkboxes. React Hook Form sends their values as follows:
+// - `T` if there's only one checkbox with a specific `name` and it is checkcked
+// - `false` if there's only one checkbox with a specific `name` and it is not checked
+// - `T[]` if there are multiple checkboxes with the same `name` (checked or not)
+type FilterFormValue<T> = T | T[] | false;
+
 export type FilterForm = {
-  category: string[];
-  instrument_type: string[];
-  ticket_size: string[];
+  category: FilterFormValue<string>;
+  instrument_type: FilterFormValue<string>;
+  ticket_size: FilterFormValue<string>;
   // only_verified: boolean; VERIFICATION FILTERS: HIDDEN
-  sdg: string[];
-  impact: string[];
+  sdg: FilterFormValue<string>;
+  impact: FilterFormValue<string>;
 };

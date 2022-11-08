@@ -23,7 +23,7 @@ export const ActiveFilters: FC<ActiveFilterProps> = ({ filters = {}, filtersData
     () =>
       Object.entries(transformFilterParamsToInputs(filters)).reduce((prev, [key, value]) => {
         const filters =
-          value?.length > 0
+          (Array.isArray(value) && value?.length > 0) || (!Array.isArray(value) && !!value)
             ? filtersData.filter((data) => data.type === key && value.includes(data.id))
             : [];
 

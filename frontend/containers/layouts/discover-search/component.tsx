@@ -232,6 +232,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
             filters={filters}
             searchText={searchInputValue}
             closeSuggestions={() => {
+              setSearchInputValue('');
               setShowSuggestions(false);
             }}
           />

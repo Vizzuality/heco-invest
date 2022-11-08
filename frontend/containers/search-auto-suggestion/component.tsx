@@ -39,6 +39,7 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
   const handleFilterSuggestion = () => {
     const newFilterParams = transformFilterInputsToParams(getValues());
     doSearch(undefined, newFilterParams);
+    closeSuggestions();
   };
 
   const handleSearchSuggestion = () => {

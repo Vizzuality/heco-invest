@@ -121,13 +121,13 @@ export const useFiltersEnums = () => {
     if (isLoading) {
       return [];
     }
+
     const { category, ticket_size, instrument_type, impact, sdg } = data;
+
     return [
-      category,
-      ticket_size,
-      instrument_type,
-      impact,
-      sdg,
+      ...[category, ticket_size, instrument_type, impact, sdg].map((item) =>
+        Array.isArray(item) ? item : []
+      ),
       priorityLandscapes?.map(({ id, name }) => ({
         id,
         // A bit hacky but the priority landscapes are not enums. It was assumed that filters
@@ -169,7 +169,7 @@ export const transformFilterInputsToParams = (filterInputs: Partial<FilterForm>)
   Object.entries(filterInputs).forEach(([key, value]) => {
     // Just send the used filters
     if (value) {
-      filterParams[`filter[${key}]`] = `${value.join(',')}`;
+      filterParams[`filter[${key}]`] = Array.isArray(value) ? `${value.join(',')}` : value;
     }
   });
   return filterParams;
