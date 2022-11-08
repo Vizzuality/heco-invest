@@ -169,7 +169,7 @@ export const transformFilterInputsToParams = (filterInputs: Partial<FilterForm>)
   Object.entries(filterInputs).forEach(([key, value]) => {
     // Just send the used filters
     if (value) {
-      filterParams[`filter[${key}]`] = `${value.join(',')}`;
+      filterParams[`filter[${key}]`] = Array.isArray(value) ? `${value.join(',')}` : value;
     }
   });
   return filterParams;
