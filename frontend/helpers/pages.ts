@@ -121,13 +121,13 @@ export const useFiltersEnums = () => {
     if (isLoading) {
       return [];
     }
+
     const { category, ticket_size, instrument_type, impact, sdg } = data;
+
     return [
-      category,
-      ticket_size,
-      instrument_type,
-      impact,
-      sdg,
+      ...[category, ticket_size, instrument_type, impact, sdg].map((item) =>
+        Array.isArray(item) ? item : []
+      ),
       priorityLandscapes?.map(({ id, name }) => ({
         id,
         // A bit hacky but the priority landscapes are not enums. It was assumed that filters
