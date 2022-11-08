@@ -126,9 +126,8 @@ export const ProjectInfo: FC = () => {
             id: 'i2AgQl',
           })}
           description={formatMessage({
-            defaultMessage:
-              'Select the stage of development of the project or solution at the time of submitting this pitch',
-            id: '3hV8r4',
+            defaultMessage: 'Select the main sector or activity for your project scope.',
+            id: 'IWVPM3',
           })}
         >
           <ProjectCategoriesList />
