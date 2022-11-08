@@ -123,7 +123,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
                 <span
                   className={cx({
                     ' flex items-center justify-center bg-gray-600 bg-opacity-20': true,
-                    'absolute bottom-0.5 md:bottom-0 z-20 top-0.5 left-0.5 right-0.5 md:right-3 border':
+                    'absolute bottom-0.5 md:bottom-0 z-20 top-0.5 left-0.5 right-0.5 border':
                       hasProjects,
                     'my-40': !hasProjects,
                   })}
