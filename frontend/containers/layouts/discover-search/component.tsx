@@ -105,19 +105,21 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
     >
       <div
         className={cx(
-          'sm:relative sm:z-10 sm:w-full sm:overflow-visible text-black bg-white drop-shadow-xl',
+          'sm:relative sm:z-10 sm:w-full sm:overflow-visible text-black drop-shadow-xl',
           {
-            'rounded-full': !openFilters || !showSuggestion,
-            'sm:rounded-3xl': showActiveFilters,
-            'sm:rounded-t-3xl sm:rounded-b-none mb-0 h-14 sm:h-16 fixed left-0 top-0 w-screen rounded-none':
+            'mb-0 fixed left-0 top-0 w-screen h-full sm:h-auto flex flex-col sm:block':
               showSuggestion || openFilters,
           }
         )}
       >
         <div
-          className={cx(
-            'flex h-full min-h-[56px] sm:min-h-[64px] items-center justify-between pl-4 pr-2 sm:px-6 py-2 sm:gap-4'
-          )}
+          className={cx({
+            'flex-shrink-0 flex h-14 sm:h-16 items-center justify-between pl-4 pr-2 sm:px-6 py-2 sm:gap-4 bg-white':
+              true,
+            'rounded-full': !openFilters && !showSuggestion,
+            'sm:rounded-t-3xl sm:rounded-b-none':
+              showSuggestion || openFilters || showActiveFilters,
+          })}
         >
           <form
             role="search"
