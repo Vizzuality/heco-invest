@@ -144,7 +144,6 @@ RSpec.configure do |config|
                   language: {type: :string},
                   created_at: {type: :string},
                   updated_at: {type: :string},
-                  trusted: {type: :boolean},
                   verified: {type: :boolean}
                 }
               },
@@ -195,7 +194,6 @@ RSpec.configure do |config|
                   latitude: {type: :number},
                   longitude: {type: :number},
                   category: {type: :string},
-                  trusted: {type: :boolean},
                   verified: {type: :boolean},
                   created_at: {type: :string},
                   updated_at: {type: :string},

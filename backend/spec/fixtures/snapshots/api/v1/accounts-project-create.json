@@ -80,7 +80,6 @@
       "latitude": 1.1581373021971106,
       "longitude": -77.16867902747148,
       "funding_plan": "Funding plan description",
-      "trusted": false,
       "municipality_biodiversity_impact": null,
       "municipality_climate_impact": null,
       "municipality_water_impact": null,

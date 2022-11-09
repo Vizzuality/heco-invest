@@ -198,7 +198,6 @@
             2.0
           ]
         },
-        "trusted": false,
         "municipality_biodiversity_impact": null,
         "municipality_climate_impact": null,
         "municipality_water_impact": null,
@@ -317,7 +316,6 @@
             2.0
           ]
         },
-        "trusted": false,
         "municipality_biodiversity_impact": null,
         "municipality_climate_impact": null,
         "municipality_water_impact": null,
