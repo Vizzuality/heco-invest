@@ -26,8 +26,8 @@ export const Priority: FC<PriorityProps> = ({ register, errors }) => {
             className="block !text-base font-normal text-gray-900 mb-9"
           >
             <FormattedMessage
-              defaultMessage="Tell us what you value in the projects you invest in / what will make you invest in projects This information will be <n>public</n>."
-              id="9R4Msc"
+              defaultMessage="Tell us what you value in the projects you invest in / what will make you invest in projects. This information will be <n>public</n>."
+              id="HpY+ek"
               values={{
                 n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
               }}

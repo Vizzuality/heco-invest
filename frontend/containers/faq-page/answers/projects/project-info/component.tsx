@@ -325,8 +325,8 @@ export const ProjectInfo: FC = () => {
         />
         <ListItem
           title={formatMessage({
-            defaultMessage: 'How much money did the project received or raised?',
-            id: 'Nqe54a',
+            defaultMessage: 'How much money did the project received or raised? (US$)',
+            id: '1eETJy',
           })}
         />
         <ListItem
@@ -349,8 +349,8 @@ export const ProjectInfo: FC = () => {
           title={formatMessage({ defaultMessage: 'Sustainability of the project', id: '8MAKwj' })}
           description={formatMessage({
             defaultMessage:
-              'Explain how the impact of the solution or project will be maintained after funding.  Try to be specific and not too vague. Is the solution or project will be financially viable? How? What are the key elements to ensure sustainability (business model, partners, partnerships with governments, etc.)?',
-            id: 'oN8abW',
+              'Explain how the impact of the solution or project will be maintained after funding. Try to be specific and not too vague. Is the solution or project financially viable? How? What are the key elements to ensure sustainability (business model, partners, partnerships with governments, etc.)?',
+            id: 'Fn67Jj',
           })}
         />
         <ListItem

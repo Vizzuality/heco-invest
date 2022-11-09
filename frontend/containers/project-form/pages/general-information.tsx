@@ -157,8 +157,8 @@ const GeneralInformation = ({
             <FieldInfo
               content={formatMessage({
                 defaultMessage:
-                  'The project gallery will be the first thing other users will see on you page, it will help you to showcase you project.',
-                id: 'c1m3Q7',
+                  'The project gallery will be the first thing other users will see on your page, it will help you to showcase your project.',
+                id: '6cU2pG',
               })}
             />
           </Label>

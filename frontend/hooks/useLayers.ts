@@ -60,12 +60,12 @@ export const useLayers = () => {
           group: LAYER_GROUPS.BaseLayer,
           name: formatMessage({ defaultMessage: 'HeCo priority landscapes', id: 'X+46wB' }),
           description: formatMessage({
-            defaultMessage: 'Herencia Colombia priority landscapes',
-            id: 'YjuFXX',
+            defaultMessage: 'Heritage Colombia priority landscapes',
+            id: '5N2nPU',
           }),
           overview: formatMessage({
-            defaultMessage: 'Displays the areas prioritized for Goal 3 of Herencia Colombia',
-            id: 'Id5CnU',
+            defaultMessage: 'Displays the areas prioritized for Goal 3 of Heritage Colombia',
+            id: '9Lv5em',
           }),
           dataSource: 'Ministerio de Medio Ambiente y Desarrollo Sostenible de Colombia',
           dataSourceUrl:
@@ -230,8 +230,8 @@ export const useLayers = () => {
           }),
           overview: formatMessage({
             defaultMessage:
-              'This layer quantifies the impact humans have had on the intactness of species communities. Anthropogenic pressures such as land use conversion have caused dramatic changes to the composition of species communities and this layer illustrates these changes by focusing on the impact of forest change on biodiversity intactness. The maximum value indicates no human impact, while lower values indicate that intactness has been reduced. The Projecting Responses of Ecological Diversity in Changing Terrestrial Systems (PREDICTS) database comprises over 3 million records of geographically and taxonomically representative data of land use impacts to local biodiversity (Hudson et al. 2017). A subset of the PREDICTS database, including data pertaining to forested biomes only, is employed to model the impacts of land use change and human population density on the intactness of local species communities. To produce the land use map, all forested biomes are selected and each 30 x 30 m pixel within the biome is assigned a land use category based upon inputs from the GFW forest change database and a downscaled land use map (Hoskins et al 2016). The modelled results of biodiversity intactness derived from the PREDICTS database are projected onto the land use and human population density maps, and the final product is aggregated to match the resolution of the downscaled land use map (Hoskins et al 2016). The final output models the impacts of forest change on local biodiversity intactness within forested biomes.',
-            id: 'vQmgLw',
+              'This layer quantifies the impact humans have had on the intactness of species communities. Anthropogenic pressures such as land use conversion have caused dramatic changes to the composition of species communities and this layer illustrates these changes by focusing on the impact of forest change on biodiversity intactness. The maximum value indicates no human impact, while lower values indicate that intactness has been reduced. The Projecting Responses of Ecological Diversity in Changing Terrestrial Systems (PREDICTS) database comprises over 3 million records of geographically and taxonomically representative data of land use impacts to local biodiversity (Hudson et al. 2017). A subset of the PREDICTS database, including data pertaining to forested biomes only, is employed to model the impacts of land use change and human population density on the intactness of local species communities. To produce the land use map, all forested biomes are selected and each 30 x 30 m pixel within the biome is assigned a land use category based upon inputs from the Global Forest Watch forest change database and a downscaled land use map (Hoskins et al 2016). The modelled results of biodiversity intactness derived from the PREDICTS database are projected onto the land use and human population density maps, and the final product is aggregated to match the resolution of the downscaled land use map (Hoskins et al 2016). The final output models the impacts of forest change on local biodiversity intactness within forested biomes.',
+            id: 'TKNxLV',
           }),
           dataSource:
             'United Nations Environment World Conservation Monitoring Centre (UNEP-WCMC) and Natural History Museum',
@@ -350,8 +350,8 @@ export const useLayers = () => {
           }),
           overview: formatMessage({
             defaultMessage:
-              'This layer shows the permanent and temporal wetlands of Colombia at a 1:100.000 reoslution',
-            id: 'U98Mu/',
+              'This layer shows the permanent and temporal wetlands of Colombia at a 1:100.000 resolution',
+            id: 'LxeDPc',
           }),
           dataSource: 'Sistema de Información Ambiental de Colombia - SIAC',
           dataSourceUrl:
@@ -402,8 +402,8 @@ export const useLayers = () => {
           overview: [
             formatMessage({
               defaultMessage:
-                'The Global Human Settlement Layer (GHSL) Population Grid depicts the distribution and density of population, expressed as the number of people per cell, for 2015. While GFW uses only 2015 data, the GHSL is a multi-temporal population data set that employs new spatial data mining technologies. These methods enable the automatic processing and extraction of analytics and knowledge from different data sets: global, fine-scale satellite image data streams, census data, and crowd sources or volunteered geographic information sources.',
-              id: 'VzuazJ',
+                'The Global Human Settlement Layer (GHSL) Population Grid depicts the distribution and density of population, expressed as the number of people per cell, for 2015. While we show only 2015 data, the GHSL is a multi-temporal population data set that employs new spatial data mining technologies. These methods enable the automatic processing and extraction of analytics and knowledge from different data sets: global, fine-scale satellite image data streams, census data, and crowd sources or volunteered geographic information sources.',
+              id: 'CK3jus',
             }),
             formatMessage({
               defaultMessage:
@@ -617,8 +617,8 @@ export const useLayers = () => {
           }),
           overview: formatMessage({
             defaultMessage:
-              'Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability.16 The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average.',
-            id: 'BY6k/1',
+              'Riverine flood risk measures the percentage of population expected to be affected by Riverine flooding in an average year, accounting for existing flood-protection standards. Flood risk is assessed using hazard (inundation caused by river overflow), exposure (population in flood zone), and vulnerability. The existing level of flood protection is also incorporated into the risk calculation. It is important to note that this indicator represents flood risk not in terms of maximum possible impact but rather as average annual impact. The impacts from infrequent, extreme flood years are averaged with more common, less newsworthy flood years to produce the “expected annual affected population.” Higher values indicate that a greater proportion of the population is expected to be impacted by Riverine floods on average.',
+            id: 'ItUshV',
           }),
           dataSource: 'World Resources Institute',
           legend: {

@@ -60,8 +60,8 @@ export const ProjectGrow = ({ register, errors }: ProjectFormPagesProps<ProjectF
             <FieldInfo
               content={formatMessage({
                 defaultMessage:
-                  'Explain how the impact of the solution or project will be maintained after funding.  Try to be specific and not too vague. Is the solution or project will be financially viable? How? What are the key elements to ensure sustainability (business model, partners, partnerships with governments, etc.)?',
-                id: 'oN8abW',
+                  'Explain how the impact of the solution or project will be maintained after funding. Try to be specific and not too vague. Is the solution or project financially viable? How? What are the key elements to ensure sustainability (business model, partners, partnerships with governments, etc.)?',
+                id: 'Fn67Jj',
               })}
             />
           </Label>

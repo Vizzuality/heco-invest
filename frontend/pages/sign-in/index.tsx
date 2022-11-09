@@ -206,7 +206,7 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
                     id="password-description"
                     className="font-sans text-sm font-normal cursor-pointer text-green-dark"
                   >
-                    <FormattedMessage defaultMessage="Forgot password?" id="V/JHlm" />
+                    <FormattedMessage defaultMessage="Forgot your password?" id="cyRU1N" />
                   </a>
                 </Link>
               </div>

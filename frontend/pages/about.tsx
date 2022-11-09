@@ -56,20 +56,20 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
           <div className="row-start-3 mt-8 lg:mt-0 lg:row-start-2">
             <p className="mb-6">
               <FormattedMessage
-                defaultMessage="HeCo Invest supports the Herencia Colombia program in its efforts to stimulate and channel funding for high impact projects in the Amazon region of Colombia."
-                id="4+4OY6"
+                defaultMessage="HeCo Invest supports the Heritage Colombia program in its efforts to stimulate and channel funding for high-impact projects in the Amazon region of Colombia."
+                id="n6CdYH"
               />
             </p>
             <p className="mb-6">
               <FormattedMessage
-                defaultMessage="The platform will use the most advanced technologies and Artificial Intelligence applications to provide in one place data and tools to connect investors, donors and philanthropists with carefully selected projects in high priority locations defined by Heremcia Colombia."
-                id="ff0+bt"
+                defaultMessage="The platform will use the most advanced technologies and Artificial Intelligence applications to provide in one place data and tools to connect investors, donors and philanthropists with carefully selected projects in high priority locations defined by Herencia Colombia."
+                id="6GK2pY"
               />
             </p>
             <p>
               <FormattedMessage
-                defaultMessage="The <n>IDB Lab</n>, the <n>Paulson Institute</n>, the <n>World Wildlife Fund</n>, the <n>Spanish Cooperation Fund</n>, the <n>Basque Center for Climate Change</n> and <n>Google</n> are joining forces to launch this platform which can later be deployed across all Amazonian countries."
-                id="jnYkhy"
+                defaultMessage="The <n>IDB Lab</n>, the <n>Paulson Institute</n>, the <n>World Wildlife Fund</n>, the <n>Spanish Cooperation Fund</n>, the <n>Basque Center for Climate Change</n> and <n>Google Cloud</n> are joining forces to launch this platform which can later be deployed across all Amazonian countries."
+                id="frQ5VJ"
                 values={{
                   n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
                 }}
@@ -281,8 +281,8 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
           </div>
           <p className="mt-4 md:mt-0">
             <FormattedMessage
-              defaultMessage="Artificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
-              id="nBHzO6"
+              defaultMessage="ARtificial Intelligence for Environment & Sustainability (ARIES) is an international research project intending to make the first Artificial Intelligence (AI)-powered 'Knowledge Commons' to integrate citizens and scientists' multidisciplinary knowledge and achieve climate adaptation and mitigation faster."
+              id="4v9Q37"
             />
             <br />
             <br />
@@ -333,8 +333,8 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             <br />
             <br />
             <FormattedMessage
-              defaultMessage="Investments in HeCo will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
-              id="9Er2U2"
+              defaultMessage="Investments in HeCo Invest will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
+              id="RqplOy"
             />
           </p>
         </div>
@@ -363,8 +363,8 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                   </h3>
                   <p>
                     <FormattedMessage
-                      defaultMessage="endemism, conservation/ restoration potential, landscape connectivity;"
-                      id="gEdnC6"
+                      defaultMessage="endemism, conservation restoration potential, landscape connectivity"
+                      id="dXDORY"
                     />
                   </p>
                 </div>
@@ -388,8 +388,8 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                   </h3>
                   <p>
                     <FormattedMessage
-                      defaultMessage="wood and soil biomass, application of sustainable forest measures;"
-                      id="6IKs4G"
+                      defaultMessage="wood and soil biomass, application of sustainable forest measures"
+                      id="tx5s63"
                     />
                   </p>
                 </div>
@@ -412,7 +412,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                     <FormattedMessage defaultMessage="Community" id="4CrCbD" />
                   </h3>
                   <p>
-                    <FormattedMessage defaultMessage="income, sustainable projects;" id="K/CKP5" />
+                    <FormattedMessage defaultMessage="income, sustainable projects" id="T6AbTI" />
                   </p>
                 </div>
                 <div className="w-full h-full -z-10 bg-green-dark">

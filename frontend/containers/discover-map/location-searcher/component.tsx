@@ -133,8 +133,8 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
                   <input
                     {...getInputProps({
                       placeholder: intl.formatMessage({
-                        defaultMessage: 'Find location',
-                        id: '0+CmKm',
+                        defaultMessage: 'Search location',
+                        id: '5b8My7',
                       }),
                       onClick: () => setIsFocused(true),
                       onFocus: () => setIsFocused(true),
@@ -148,8 +148,8 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
                       }
                     )}
                     aria-label={intl.formatMessage({
-                      defaultMessage: 'Find location',
-                      id: '0+CmKm',
+                      defaultMessage: 'Search location',
+                      id: '5b8My7',
                     })}
                     disabled={!isOpen}
                     ref={inputRef}

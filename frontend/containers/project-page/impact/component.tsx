@@ -80,7 +80,7 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
             </div>
             <div className="flex flex-col space-y-6 lg:w-1/2">
               <h3 className="text-xl font-semibold">
-                <FormattedMessage defaultMessage="SDG'S" id="vTJ8GJ" />
+                <FormattedMessage defaultMessage="SDGs" id="JQjEP9" />
               </h3>
               <SDGs sdgs={sdgs} size="large" />
             </div>
@@ -134,8 +134,8 @@ export const Impact: React.FC<ImpactProps> = ({ project, enums }: ImpactProps) =
                 >
                   <p>
                     <FormattedMessage
-                      defaultMessage="<n>HeCo priority landscapes</n> are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystems"
-                      id="0WEEzi"
+                      defaultMessage="<n>HeCo priority landscapes</n> are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Heritage Colombia to ensure the provisioning of quality ecosystems"
+                      id="h/NhZl"
                       values={{
                         n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
                       }}

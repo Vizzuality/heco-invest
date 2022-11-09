@@ -76,8 +76,8 @@ export const OpenCallInfo: FC = () => {
             id: 'P1f6hp',
           })}
           description={formatMessage({
-            defaultMessage: 'What type of projects the funding is covering.',
-            id: 'b3Iz6I',
+            defaultMessage: 'What type of projects the funding is covering?',
+            id: 'BVUSKd',
           })}
         />
         <ListItem
@@ -88,8 +88,8 @@ export const OpenCallInfo: FC = () => {
             id: 'gQ16Mj',
           })}
           description={formatMessage({
-            defaultMessage: 'What type of projects the funding is not covering.',
-            id: 'ydCOwz',
+            defaultMessage: 'What type of projects the funding is not covering?',
+            id: '6z2cQS',
           })}
         />
         <ListItem

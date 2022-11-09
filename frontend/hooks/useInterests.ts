@@ -53,8 +53,8 @@ const useInterests = ({
         items: priorityLandscapes,
         infoText: formatMessage({
           defaultMessage:
-            'Geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure the provisioning of quality ecosystem services.',
-          id: 'whbx7G',
+            'Geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Heritage Colombia to ensure the provisioning of quality ecosystem services.',
+          id: '19fAm7',
         }),
         required: false,
       },

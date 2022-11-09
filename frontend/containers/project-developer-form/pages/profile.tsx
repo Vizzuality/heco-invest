@@ -156,8 +156,8 @@ export const Profile: FC<ProfileProps> = ({
             <FieldInfo
               content={formatMessage({
                 defaultMessage:
-                  'Add your legal registration number so we can verify your legal entity . This information will not be publicaly available.',
-                id: '11hyS6',
+                  'Add your legal registration number so we can verify your legal entity. This information will not be publicly available.',
+                id: '02KfzX',
               })}
             />
           </span>

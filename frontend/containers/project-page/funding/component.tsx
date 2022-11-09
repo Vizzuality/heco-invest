@@ -122,8 +122,8 @@ export const Funding: React.FC<FundingProps> = ({ project, enums }: FundingProps
               <>
                 <p className="text-base">
                   <FormattedMessage
-                    defaultMessage="This project isn’t currently looking for funding at this moment."
-                    id="8xsdU1"
+                    defaultMessage="This project isn’t currently looking for funding."
+                    id="ZKsAVY"
                   />
                 </p>
                 <p className="text-base">

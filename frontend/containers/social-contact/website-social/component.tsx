@@ -63,7 +63,7 @@ export const WebsiteSocial: FC<WebsiteSocialProps> = ({
       {sortedSocialLinks.length > 0 && (
         <div className="flex flex-wrap justify-between gap-2 mt-3">
           <span className="text-gray-800">
-            <FormattedMessage defaultMessage="Reach them in" id="G9iCfx" />
+            <FormattedMessage defaultMessage="Reach them on" id="mPXzie" />
           </span>
           <div className="flex items-center gap-2">
             {sortedSocialLinks.map(({ id, url, icon, title }) => (

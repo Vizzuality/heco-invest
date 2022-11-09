@@ -55,7 +55,7 @@ const NewInvestorPage: PageComponent<NewInvestorServerSideProps, FormPageLayoutP
   return (
     <ProtectedPage allowUnapproved permissions={[UserRoles.Light]}>
       <InvestorForm
-        title={formatMessage({ defaultMessage: 'Setup investor profile', id: '7Rh11y' })}
+        title={formatMessage({ defaultMessage: 'Set up investor profile', id: 'jODX5S' })}
         leaveMessage={formatMessage({
           defaultMessage: 'Leave investor creation form',
           id: 'QqpgJo',

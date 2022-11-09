@@ -137,8 +137,8 @@ export const MapHelp: FC<MapHelpProps> = () => {
             </h2>
             <p>
               <FormattedMessage
-                defaultMessage="The different controls will allow you too easily navigate on the map:"
-                id="0tb6zN"
+                defaultMessage="The different controls will allow you to easily navigate on the map:"
+                id="ouGuIn"
               />
             </p>
             <div className="flex items-center mt-3 gap-x-12">

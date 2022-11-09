@@ -30,7 +30,7 @@ export default (page: number) => {
         id: 'TJSbSS',
       }),
     },
-    about: formatMessage({ defaultMessage: 'You need enter a "about" text', id: 'tzSubd' }),
+    about: formatMessage({ defaultMessage: 'You need to enter an "about" text', id: 'Tymdwj' }),
     mission: formatMessage({ defaultMessage: 'You need to enter a "mission" text', id: 'laO/jL' }),
     contactEmail: {
       required: formatMessage({
