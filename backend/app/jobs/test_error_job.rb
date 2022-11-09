@@ -5,6 +5,6 @@ class TestErrorJob < ApplicationJob
     logger.error("Queued job logs error BOOOMMM with message #{message}!")
     logger.info("Queued job logs info BOOOMMM with message #{message}!")
     logger.debug("Queued job logs debug BOOOMMM with message #{message}!")
-    fail "Queued job goes BOOOMMM with message #{message}!"
+    raise "Queued job goes BOOOMMM with message #{message}!"
   end
 end
