@@ -6,5 +6,7 @@ class TestErrorJob < ApplicationJob
     logger.info("Queued job logs info BOOOMMM with message #{message}!")
     logger.debug("Queued job logs debug BOOOMMM with message #{message}!")
     raise "Queued job goes BOOOMMM with message #{message}!"
+  rescue => exception
+    Google::Cloud::ErrorReporting.report exception
   end
 end
