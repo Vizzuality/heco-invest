@@ -42,7 +42,7 @@ zu:
         type: Type
         owner_id: Owner
       project_developer:
-        impacts: Expect to have impact on
+        impacts: Expects to have impact on
         project_developer_type: Project developer type
         entity_legal_registration_number: Entity legal registration number (NIT or RUT)
       investor:
@@ -71,13 +71,13 @@ zu:
         expected_impact: Expected impact
         target_groups: Target group
         impact_areas: Select which areas your project will have an impact on
-        sdgs: Select in which SDG's your project will have impact
+        sdgs: Select in which SDGs your project will have impact
         looking_for_funding: Are you currently looking for funding?
         ticket_size: Select the amount of money that you need
         instrument_types: Select the instrument type(s)
         funding_plan: How will the money be used?
         received_funding: Has this project been funded before?
-        received_funding_amount_usd: How much money did the project received or raised?
+        received_funding_amount_usd: How much money did the project received or raised? (US$)
         received_funding_investor: From which investor or funder?
         replicability: Replicability of the project
         sustainability: Sustainability of the project
@@ -318,7 +318,7 @@ zu:
       not_geojson: is not geojson
       unsupported_geometry: shape is not supported
       missing_geometry: inside geojson is empty
-      owner_not_part_of_account: is not part of account
+      owner_not_part_of_account: is not part of the account
       not_future: must be in the future
       user:
         multiple_accounts: User already have account!
@@ -327,41 +327,41 @@ zu:
         is_owner: User is owner of account and cannot be deleted now!
   user_mailer:
     greetings: Dear %{full_name},
-    farewell_html: Best Regards,<br />Your HeCo Team
+    farewell_html: Best Regards,<br />Your HeCo Invest Team
     approved:
       subject: Your account was approved!
-      content: We are happy to inform you that your account at HeCo platform was approved.
+      content: We are happy to inform you that your account at HeCo Invest platform was approved.
     rejected:
       subject: Your account was rejected!
-      content_html: We would like to inform you that your account at HeCo platform was rejected. One of our platform administrators should reach you shortly, but feel free to contact us at %{contact_url}.
+      content_html: We regret to inform you that your account at HeCo Invest platform was rejected. Feel free to contact us at %{contact_url}.
     ownership_transferred:
       subject: Account ownership changed
       content: Congratulations! You are now owner of account %{name}.
     destroyed:
       subject: Your user has been removed!
-      content: We would like to inform you that your user at HeCo platform was removed.
+      content: We would like to inform you that your user at HeCo Invest platform was removed.
     send_otp_code:
       subject: Your 2FAuthentication Code
       body_html: "To finalize your login to HeCo Invest Platform, please enter the following validation code: <strong>%{code}</strong>."
   admin_mailer:
     greetings: Dear %{full_name},
-    farewell_html: Best Regards,<br />Your HeCo Team
+    farewell_html: Best Regards,<br />Your HeCo Invest Team
     first_time_login_instructions:
-      subject: Your HeCo Admin account was created!
+      subject: Your HeCo Invest Admin account was created!
       content_html: "To login for first time, please %{reset_password_link}."
       reset_password_link: setup your new password
   project_developer_mailer:
     greetings: Dear %{full_name},
-    farewell_html: Best Regards,<br />Your HeCo Team
+    farewell_html: Best Regards,<br />Your HeCo Invest Team
     added_to_project:
       subject: You have been added as new collaborator.
-      content: We would like to inform you that you have been added as new collaborator to project %{project_name}.
+      content: We would like to inform you that you have been added as new collaborator to the project %{project_name}.
     removed_from_project:
       subject: Your collaboration has ended.
-      content: We would like to inform you that your collaboration with project %{project_name} has ended.
+      content: We would like to inform you that your collaboration with the project %{project_name} has ended.
     project_destroyed:
       subject: Project has been removed.
-      content: Project %{project_name} which you have been collaborator of have been removed.
+      content: Project %{project_name} which you have been a collaborator of has been removed.
     open_call_destroyed:
       subject: Open Call has been removed.
       content: Open Call with name %{open_call_name} which you have applied for with project %{project_name} has been removed.
@@ -403,10 +403,10 @@ zu:
         name: Forestry and Agroforestry
         description: Sustainable timber extraction and forest management practices, including reforestation and restoration.
       non-timber-forest-production:
-        name: Non Timber Forest Production
+        name: Non-Timber Forest Production
         description: Production of health, wellness, and cosmetic products; art, clothing, and handcrafted products; production of food and drinks.
       human-capital-and-inclusion:
-        name: Human capital and inclusion
+        name: Human Capital and Inclusion
         description: Adequate access to quality education, appropriate health services, and formal employment opportunities that respond to diverse skill profiles and are adapted to regional cultural diversity.
     project_developer_type:
       academic:
@@ -418,7 +418,7 @@ zu:
       business-sme-and-msme:
         name: Business - SME and MSME
       business-start-up-entrepreneur:
-        name: Business - Start-up entrepreneur
+        name: Business - Startup entrepreneur
       business-trade-or-business-association:
         name: Business - Trade or business association
       government-national:
@@ -430,7 +430,7 @@ zu:
       ngo:
         name: NGO
       iplc-organization:
-        name: IPLC organization
+        name: Indigenous Peoples and Local Communities organization
     investor_type:
       investor:
         name: Investor
@@ -449,7 +449,7 @@ zu:
       micro-finance:
         name: Micro Finance
       non-VC-investment-vehicle:
-        name: Non VC Investment Vehicle
+        name: Non-VC Investment Vehicle
       venture-capital-private-equity:
         name: Venture Capital Private Equity
       carbon-fund:
@@ -518,22 +518,22 @@ zu:
         name: Incipient
         description: idea to be developed from scratch
       consolidaton:
-        name: Consolidaton
+        name: Consolidation
         description: project or solution already in implementation that seeks to be strengthened and consolidated
       scaling-up:
         name: Scaling up
         description: consolidated, demonstrated project or solution that seeks to be scaled or replicated in other contexts and/or geographies
     project_target_group:
       entrepreneurs-and-innovators-startups:
-        name: Enterpreneurs and innovators - startups
+        name: Entrepreneurs and innovators - startups
       small-and-medium-businesses:
         name: Small and medium businesses
       urban-populations:
         name: Urban populations
       indigenous-peoples:
-        name: Indigenous peoples
+        name: Indigenous people
       afro-desendant-peoples:
-        name: Afro-desendant peoples
+        name: Afro-descendant people
       peasants-and-traditional-inhabitants:
         name: Peasants and traditional inhabitants
       migrants-and-displaced-groups:
@@ -562,7 +562,7 @@ zu:
       water-capacity-or-efficiency:
         name: Water capacity or efficiency
       hydrometerological-risk-reduction:
-        name: Hydrometerological risk reduction
+        name: Hydrometereological risk reduction
       sustainable-food:
         name: Sustainable food
       gender-equality-jobs:
