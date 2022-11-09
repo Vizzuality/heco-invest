@@ -105,22 +105,29 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
   return (
     <>
       <Head title={intl.formatMessage({ defaultMessage: 'Discover Projects', id: 'Qt/+mk' })} />
-      <div className="relative flex flex-col w-full h-full md:gap-0 md:overflow-hidden md:flex-row">
+      <div className="relative flex flex-col w-full h-full md:gap-4 md:overflow-hidden md:flex-row">
         <div
           ref={projectsListAndDetailsContainerRef}
-          className="flex flex-col md:top-1 md:bottom-1 md:absolute md:w-full"
+          className="relative flex flex-col flex-shrink-0 md:w-5/12"
         >
-          <div className="relative flex flex-col md:overflow-hidden md:w-5/12">
+          <div className="relative flex flex-col md:overflow-hidden">
             <div
               ref={projectsListContainerRef}
               className={cx({
-                'relative flex-grow md:pr-2.5': true,
+                'relative flex-grow': true,
                 'md:overflow-y-auto': !loading,
                 'md:pointer-events-none md:overflow-hidden': loading,
               })}
             >
               {loading && (
-                <span className="absolute bottom-0 z-20 flex items-center justify-center bg-gray-600 bg-opacity-20 top-1 left-1 right-3 rounded-2xl">
+                <span
+                  className={cx({
+                    ' flex items-center justify-center bg-gray-600 bg-opacity-20': true,
+                    'absolute bottom-0.5 md:bottom-0 z-20 top-0.5 left-0.5 right-0.5 border':
+                      hasProjects,
+                    'my-40': !hasProjects,
+                  })}
+                >
                   <Loading visible={loading} iconClassName="w-10 h-10" />
                 </span>
               )}
@@ -152,19 +159,17 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
                   autoFocus
                 >
                   <motion.div
-                    className="z-20"
+                    className="z-20 absolute top-0.5 left-full w-[53vw] lg:w-[45vw] xl:w-full bottom-3 "
                     transition={{ duration: 0.15 }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0 }}
                   >
-                    <aside className="absolute top-0 z-10 w-7/12 xl:w-5/12 mt-1 mb-0 -ml-2.5 left-5/12 bottom-1 rounded-2xl">
-                      <div className="max-h-full overflow-y-auto bg-white border rounded-2xl">
-                        <ProjectDetails
-                          project={selectedProject}
-                          onClose={handleProjectDetailsClose}
-                        />
-                      </div>
+                    <aside className="max-h-full overflow-y-auto translate-x-1 bg-white border rounded-2xl">
+                      <ProjectDetails
+                        project={selectedProject}
+                        onClose={handleProjectDetailsClose}
+                      />
                     </aside>
                   </motion.div>
                 </FocusScope>
@@ -185,7 +190,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
             </Modal>
           )}
         </div>
-        <aside className="flex-grow hidden min-h-full m-1 overflow-hidden bg-white sm:block rounded-2xl md:min-h-0 md:absolute md:right-0 md:w-7/12 md:bottom-1 md:top-1">
+        <aside className="flex-grow hidden overflow-hidden bg-white sm:block rounded-2xl md:mt-0.5 md:mb-3">
           <DiscoverMap onSelectProjectPin={handleProjectCardClick} />
         </aside>
       </div>
