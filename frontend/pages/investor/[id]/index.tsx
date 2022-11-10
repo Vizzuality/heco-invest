@@ -127,12 +127,12 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     },
     {
       id: 'instrument-size',
-      title: intl.formatMessage({ defaultMessage: 'Instrument size', id: '2AZiFU' }),
+      title: intl.formatMessage({ defaultMessage: 'Instrument type', id: 'fDd10o' }),
       tags: allInstrumentTypes.filter(({ id }) => instrument_types?.includes(id)),
     },
     {
       id: 'impact',
-      title: intl.formatMessage({ defaultMessage: 'Impact they invest on', id: '4y9VoH' }),
+      title: intl.formatMessage({ defaultMessage: 'Impacts they invest on', id: '3r5BXz' }),
       tags: allImpacts.filter(({ id }) => impacts?.includes(id)),
     },
   ];
@@ -184,7 +184,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
             id="profile-investment-info"
             className="font-serif text-3xl font-semibold text-green-dark"
           >
-            <FormattedMessage defaultMessage="Investment info" id="m3Dnav" />
+            <FormattedMessage defaultMessage="Investment information" id="770IIS" />
           </h2>
 
           <TagsGrid className="mt-8 sm:mt-10 md:mt-14" rows={tagsGridRows} />
@@ -192,7 +192,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
           {!!sdgs && (
             <>
               <h3 className="mt-10 mb-3 text-xl font-semibold md:mt-14">
-                <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
+                <FormattedMessage defaultMessage="SDGs" id="JQjEP9" />
               </h3>
               <SDGs
                 className="my-3"

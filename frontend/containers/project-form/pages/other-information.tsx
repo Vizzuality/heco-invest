@@ -35,8 +35,8 @@ const OtherInformation = ({ register, errors }: ProjectFormPagesProps<ProjectFor
             <FieldInfo
               content={formatMessage({
                 defaultMessage:
-                  "This description should succently explain your project. It should be a catching text since it's the first thing investors will read.",
-                id: '5mkG4O',
+                  "This description should succinctly explain your project. It should be a catching text since it's the first thing investors will read.",
+                id: 'VaC9C0',
               })}
             />
           </Label>

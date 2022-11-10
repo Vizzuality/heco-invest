@@ -20,8 +20,8 @@ export const ProjectDeveloperInfo: FC = () => {
       </p>
       <p>
         <FormattedMessage
-          defaultMessage="Note that all of this information will be visible in the Project Developer public profile page except question 1 and 6."
-          id="p+7s2E"
+          defaultMessage="Note that all of this information will be visible in the Project Developer public profile page except questions 1 and 6."
+          id="svQkqv"
         />
       </p>
       <FaqList level="one">
@@ -43,7 +43,7 @@ export const ProjectDeveloperInfo: FC = () => {
         />
         <ListItem
           mandatory={true}
-          title={formatMessage({ defaultMessage: 'Profile name', id: 's+n2ku' })}
+          title={formatMessage({ defaultMessage: 'Account name', id: 'Gcv7QB' })}
           description={formatMessage({
             defaultMessage: 'The name that will identify the account across the platform.',
             id: 'nlIkQG',
@@ -84,7 +84,7 @@ export const ProjectDeveloperInfo: FC = () => {
                 />
                 <ListItem title={formatMessage({ defaultMessage: 'Corporation', id: 'psPbog' })} />
                 <ListItem title={formatMessage({ defaultMessage: 'SME and MSME', id: 'CiYFzk' })} />
-                <ListItem title={formatMessage({ defaultMessage: 'Start-up', id: 'R7Y3LS' })} />
+                <ListItem title={formatMessage({ defaultMessage: 'Startup', id: 'NxjUBO' })} />
                 <ListItem title={formatMessage({ defaultMessage: 'Entrepreneur', id: 'XGd7Tu' })} />
                 <ListItem
                   title={formatMessage({

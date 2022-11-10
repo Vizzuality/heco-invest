@@ -107,8 +107,8 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
     ),
     'priority-landscape-amazon-heart': (
       <FormattedMessage
-        defaultMessage="It is an area with a number of attributes related to heterogeneity that maintain the structure and ecological processes that characterize it as the Heart of the Amazon, it is also one of the most unique natural and cultural heritages in the national territory due to its exuberant cultural diversity."
-        id="QI4yO9"
+        defaultMessage="It is an area with a number of attributes related to heterogeneity that maintain the structure and ecological processes that characterize it as the Heart of the Amazon. It is also one of the most unique natural and cultural heritages in the colombian territory due to its exuberant cultural diversity."
+        id="RAf4Za"
       />
     ),
   };
@@ -165,16 +165,16 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         descriptions={[
           <FormattedMessage
             key="desc-1"
-            defaultMessage="HeCo Invest manages a <n>wide range of investment and financing opportunities</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n>."
-            id="NG6Ull"
+            defaultMessage="HeCo Invest manages a <n>wide range of investment and financing opportunities</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n> defined by the HeCo program."
+            id="WfWObC"
             values={{
               n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
             }}
           />,
           <FormattedMessage
             key="desc-2"
-            defaultMessage="Thanks to our integration with <n>ARIES</n>, an Artificial Intelligence tool that integrates <n>expert knowledge, Semantics</n> and <n>Machine Reasoning</n> technology, we can <n>estimate a projects’ impact</n> along our four dimensions of interest: <n>Climate, Biodiversity, Water, Community</n> to guide and track your investment decisions."
-            id="LmyoPR"
+            defaultMessage="Thanks to our integration with <n>ARIES</n>, an ARtificial Intelligence tool that integrates <n>expert knowledge, Semantics</n> and <n>Machine Reasoning</n> technology, we can <n>estimate a projects’ impact</n> along our four dimensions of interest: <n>Climate, Biodiversity, Water, Community</n> to guide and track your investment decisions."
+            id="0IYK8L"
             values={{
               n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
             }}
@@ -284,8 +284,8 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         </h2>
         <p className="max-w-[800px] mb-8">
           <FormattedMessage
-            defaultMessage="The HeCo priority landscapes or conservation mosaics are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure quality ecosystem services. <a>Read more</a>"
-            id="a6W2Pq"
+            defaultMessage="The HeCo priority landscapes or conservation mosaics are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Heritage Colombia to ensure quality ecosystem services. <a>Read more</a>"
+            id="TNwO58"
             values={{
               a: (chunks: string) => (
                 <Link href={FaqPaths['what-are-heco-priority-landscapes']}>

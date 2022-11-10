@@ -18,8 +18,8 @@ import SDGs from 'containers/sdgs';
 
 import Button from 'components/button';
 import Tag from 'components/tag';
-import { ImpactAreas } from 'enums';
 import { Paths } from 'enums';
+import { ImpactAreas } from 'enums';
 import { CategoryType } from 'types/category';
 import { Enum } from 'types/enums';
 

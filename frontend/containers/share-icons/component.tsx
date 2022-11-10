@@ -32,12 +32,12 @@ export const ShareIcons: FC<ShareIconsProps> = ({ title }) => {
     email: `mailto:?subject=${
       isProjectPage
         ? formatMessage({
-            defaultMessage: 'Someone has shared a HeCo invest project with you',
-            id: 'iAtu/T',
+            defaultMessage: 'Someone has shared a HeCo Invest project with you',
+            id: 'rmaQT+',
           })
         : formatMessage({
-            defaultMessage: 'Someone has shared a HeCo invest contact with you',
-            id: '6GktxW',
+            defaultMessage: 'Someone has shared a HeCo Invest contact with you',
+            id: 'XURmN1',
           })
     }&body=${formatMessage(
       {

@@ -246,7 +246,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
               >
                 <fieldset>
                   <legend className="inline mb-3 font-sans text-base font-medium text-black sm:mb-2">
-                    <FormattedMessage defaultMessage="SDG's" id="d3TPmn" />
+                    <FormattedMessage defaultMessage="SDGs" id="JQjEP9" />
                   </legend>
 
                   <div className="flex flex-wrap gap-4">
@@ -282,16 +282,16 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
             )}
             <p className="mb-4 text-sm text-gray-600 sm:hidden sm:mb-0">
               <FormattedMessage
-                defaultMessage="Note: Some filters not apply to all tabs"
-                id="j4lBL7"
+                defaultMessage="Note: Some filters don't apply to all tabs"
+                id="mzDeDO"
               />
             </p>
           </div>
           <div className="flex-shrink-0 p-4 sm:items-center sm:justify-between sm:flex sm:gap-2 sm:mb-0 sm:ml-0 sm:w-auto shadow-lg-top sm:shadow-none sm: sm:p-6 sm:relative sm:pt-4">
             <p className="hidden mb-4 text-sm text-gray-600 sm:block sm:mb-0">
               <FormattedMessage
-                defaultMessage="Note: Some filters not apply to all tabs"
-                id="j4lBL7"
+                defaultMessage="Note: Some filters don't apply to all tabs"
+                id="mzDeDO"
               />
             </p>
             <div className="flex justify-between w-full gap-2 sm:mt-0 sm:gap-4 sm:px-0 sm:py-0 sm:w-auto">

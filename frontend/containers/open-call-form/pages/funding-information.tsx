@@ -42,8 +42,8 @@ export const OpenCallFundingInformation: FC<OpenCallFundingInformationProps> = (
           <div className="mb-2.5">
             <Label htmlFor="max_funding" className="mr-2">
               <FormattedMessage
-                defaultMessage="How much funding do you have available for this open call? ($)"
-                id="agJGNx"
+                defaultMessage="How much funding do you have available for this open call? (US$)"
+                id="VaDfA7"
               />
             </Label>
           </div>
@@ -126,8 +126,8 @@ export const OpenCallFundingInformation: FC<OpenCallFundingInformationProps> = (
             </Label>
             <FieldInfo
               content={formatMessage({
-                defaultMessage: 'What type of projects the funding is covering.',
-                id: 'b3Iz6I',
+                defaultMessage: 'What type of projects the funding is covering?',
+                id: 'BVUSKd',
               })}
             />
           </div>
@@ -155,8 +155,8 @@ export const OpenCallFundingInformation: FC<OpenCallFundingInformationProps> = (
             </Label>
             <FieldInfo
               content={formatMessage({
-                defaultMessage: 'What type of projects the funding is not covering.',
-                id: 'ydCOwz',
+                defaultMessage: 'What type of projects the funding is not covering?',
+                id: '6z2cQS',
               })}
             />
           </div>

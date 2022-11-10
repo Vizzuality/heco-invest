@@ -50,8 +50,8 @@ export default (page: number) => {
         id: 'pQMwQ7',
       }),
       max: formatMessage({
-        defaultMessage: 'The max development durations is 36 months',
-        id: 'PsOtRA',
+        defaultMessage: 'The max development duration is 36 months',
+        id: 'KjV4yK',
       }),
       required: formatMessage({
         defaultMessage: 'You need to enter the estimated duration of the project',

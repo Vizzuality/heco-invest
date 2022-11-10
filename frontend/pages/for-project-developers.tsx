@@ -95,11 +95,8 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
       title: <FormattedMessage defaultMessage="Have a public profile page" id="xupvNr" />,
       description: (
         <FormattedMessage
-          defaultMessage="With an HeCo account you can have a public profile page, making it easier for Investors and other Project Developers to find and reach you."
-          id="WSvHHP"
-          values={{
-            n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
-          }}
+          defaultMessage="With an HeCo Invest account you can have a public profile page, making it easier for Investors and other Project Developers to find and reach you."
+          id="skQcRA"
         />
       ),
     },
@@ -189,8 +186,8 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
             ),
             description: (
               <FormattedMessage
-                defaultMessage="When you create your project profile, the platform's artificial intelligence engine will define the type of impact it will have for its geographical location and connect with suitable sources of support."
-                id="+pH0Po"
+                defaultMessage="When you create your project profile, the platform's artificial intelligence engine will define the type of impact it will have for its geographical location to help you connect with suitable sources of support."
+                id="s5aNAm"
               />
             ),
           },

@@ -101,8 +101,8 @@ const ResetPasswordPage: PageComponent<ResetPasswordPageProps, AuthPageLayoutPro
             name="password"
             id="password"
             placeholder={intl.formatMessage({
-              defaultMessage: 'insert new passowrd',
-              id: 'n4Y/RH',
+              defaultMessage: 'insert new password',
+              id: '0z5mo1',
             })}
             aria-describedby="email-error"
             register={register}

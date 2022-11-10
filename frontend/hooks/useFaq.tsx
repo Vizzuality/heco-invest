@@ -195,8 +195,8 @@ export const useFaq = () => {
             }),
             answer: formatMessage({
               defaultMessage:
-                'The HeCo Invest platform connects governments, investors, donors, and philanthropists with selected investment opportunities and projects in high-priority areas for Herencia Colombia. If you find a project that matches your investment goals you can contact its project developer. The contact details will only be available for platform registered users. So if you want to reach out to a project developer, you first need to create an account or join an existing account. The beta version of the HeCo Invest platform does not include the actual attainment of the business deals. To fund a project, investors must carry out all business procedures outside the platform.',
-              id: 'FVcGqA',
+                'The HeCo Invest platform connects governments, investors, donors, and philanthropists with selected investment opportunities and projects in high-priority areas for Heritage Colombia (HeCo). If you find a project that matches your investment goals you can contact its project developer. The contact details will only be available for platform registered users. So if you want to reach out to a project developer, you first need to create an account or join an existing account. The beta version of the HeCo Invest platform does not include the actual attainment of the business deals. To fund a project, investors must carry out all business procedures outside the platform.',
+              id: 'SbrC0G',
             }),
           },
           {
@@ -226,8 +226,8 @@ export const useFaq = () => {
             question: formatMessage({ defaultMessage: 'What is an open call?', id: 'MxllAO' }),
             answer: formatMessage({
               defaultMessage:
-                'An open call is a call for projects made by a given investor. Open calls give investors the possibility to open specific opportunities in their topics of interest. All registered project developers have the possibility to submit their projects to an open call, if they match the open call criteria, and therefore apply to this particular funding.',
-              id: 'kaAF7K',
+                'An open call is a call for projects made by a given investor. Open calls give investors the possibility to open specific opportunities in their topics of interest. All registered and approved project developers have the possibility to submit their projects to an open call, if they match the open call criteria, and therefore apply to this particular funding.',
+              id: 'igBQ/M',
             }),
           },
           {
@@ -250,8 +250,8 @@ export const useFaq = () => {
             }),
             answer: formatMessage({
               defaultMessage:
-                'The HeCo Invest platform connects governments, investors, donors, and philanthropists with selected investment opportunities and projects in high-priority areas for Herencia Colombia. If you find an open call that matches your goals and needs, you can create a project tailored specifically to that open call criteria. Project creation is only available for registered project developer account users. Once your project is created, you can apply to the open call, using the “Apply now” button on the open call page. You can also contact the investor, if needed. The contact details will only be available for platform registered users. So if you want to reach out to an investor, you first need to create an account or join an existing account.',
-              id: 'JSrP/U',
+                'The HeCo Invest platform connects governments, investors, donors, and philanthropists with selected investment opportunities and projects in high-priority areas for Heritage Colombia. If you find an open call that matches your goals and needs, you can create a project tailored specifically to that open call criteria. Project creation is only available for registered users of approved project developer accounts. Once your project is created, you can apply to the open call, using the “Apply now” button on the open call page. You can also contact the investor, if needed. The contact details will only be available for platform registered users. So if you want to reach out to an investor, you first need to create an account or join an existing account.',
+              id: 'tCdp4T',
             }),
           },
           {
@@ -320,8 +320,8 @@ export const useFaq = () => {
             answer: formatMessage(
               {
                 defaultMessage:
-                  'The HeCo priority landscapes or conservation mosaics are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure quality ecosystem services. The HeCo priority landscapes result from modeling and technical prioritization where the common interest prevailed in favor of the conservation and sustainable use of biodiversity and vital ecosystem services for national development. More information about these regions <link>here</link>.',
-                id: 'EpzS3H',
+                  'The HeCo priority landscapes or conservation mosaics are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Heritage Colombia to ensure quality ecosystem services. The HeCo priority landscapes result from modeling and technical prioritization where the common interest prevailed in favor of the conservation and sustainable use of biodiversity and vital ecosystem services for national development. More information about these regions <link>here</link>.',
+                id: 'Iuk//m',
               },
               {
                 link: (chunks: string) => (
@@ -346,8 +346,8 @@ export const useFaq = () => {
             answer: formatMessage(
               {
                 defaultMessage:
-                  "These prioritized regions are spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure quality ecosystem services. Many of these regions belong to the municipalities prioritized for the post-conflict process. These areas centralize Herencia Colombia's efforts to preserve and sustainably use biodiversity, land use planning, improve the quality of life of local communities, reduce deforestation, mitigate and adapt to climate change, and generate livelihoods, among others. This will ultimately contribute directly to building peace in the most affected areas. More information about these regions <link>here</link>.",
-                id: 'Qmq3hW',
+                  "These prioritized regions are spaces of unique biodiversity conditions with sustainability and management plans developed by Heritage Colombia to ensure quality ecosystem services. Many of these regions belong to the municipalities prioritized for the post-conflict process. These areas centralize Heritage Colombia's efforts to preserve and sustainably use biodiversity, land use planning, improve the quality of life of local communities, reduce deforestation, mitigate and adapt to climate change, and generate livelihoods, among others. This will ultimately contribute directly to building peace in the most affected areas. More information about these regions <link>here</link>.",
+                id: 'l6BsEQ',
               },
               {
                 link: (chunks: string) => (
@@ -372,8 +372,8 @@ export const useFaq = () => {
             answer: formatMessage(
               {
                 defaultMessage:
-                  'The Herencia Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. The HeCo Invest platform centers its attention on areas directly connected to the Amazon. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition. More information about these regions <link>here</link>.',
-                id: 'lviFjb',
+                  'The Heritage Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. The HeCo Invest platform centers its attention on areas directly connected to the Amazon. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition. More information about these regions <link>here</link>.',
+                id: 'B/n4gt',
               },
               {
                 link: (chunks: string) => (

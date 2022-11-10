@@ -58,7 +58,7 @@ export const Carousel = () => {
               size="small"
               to={`${BASE_SEARCH_URL}biodiversity`}
             >
-              <FormattedMessage defaultMessage="Search biodiversity" id="PIZ1dD" />
+              <FormattedMessage defaultMessage="Search Biodiversity" id="7Ny6cZ" />
             </Button>
           </div>
         </div>
@@ -104,7 +104,7 @@ export const Carousel = () => {
               size="small"
               to={`${BASE_SEARCH_URL}climate`}
             >
-              <FormattedMessage defaultMessage="Search climate" id="kUPAU5" />
+              <FormattedMessage defaultMessage="Search Climate" id="iQ2gwl" />
             </Button>
           </div>
         </div>
@@ -150,7 +150,7 @@ export const Carousel = () => {
               size="small"
               to={`${BASE_SEARCH_URL}community`}
             >
-              <FormattedMessage defaultMessage="Search community" id="8R8Or7" />
+              <FormattedMessage defaultMessage="Search Community" id="sCxMbB" />
             </Button>
           </div>
         </div>
@@ -195,7 +195,7 @@ export const Carousel = () => {
                 size="small"
                 to={`${BASE_SEARCH_URL}water`}
               >
-                <FormattedMessage defaultMessage="Search water" id="XJqnLu" />
+                <FormattedMessage defaultMessage="Search Water" id="IgX/Wc" />
               </Button>
             </div>
           </div>

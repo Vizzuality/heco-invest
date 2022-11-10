@@ -22,7 +22,7 @@ export default (page: number) => {
       defaultMessage: 'You need to select the investor/funder type',
       id: 'iTkO2x',
     }),
-    about: formatMessage({ defaultMessage: 'You need enter an "about" text', id: 'DffEkP' }),
+    about: formatMessage({ defaultMessage: 'You need to enter an "about" text', id: 'Tymdwj' }),
     mission: formatMessage({ defaultMessage: 'You need to enter a "mission" text', id: 'laO/jL' }),
     contactEmail: {
       required: formatMessage({
@@ -50,8 +50,8 @@ export default (page: number) => {
       id: 'biZCxW',
     }),
     impacts: formatMessage({
-      defaultMessage: 'You need to select one or more impact areas that you prioritixe',
-      id: 'bE1H34',
+      defaultMessage: 'You need to select one or more impact areas that you prioritize',
+      id: 'LAmop5',
     }),
     other_information: formatMessage({
       defaultMessage: 'You need to write other relevant information',

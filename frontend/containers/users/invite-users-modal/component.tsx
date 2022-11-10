@@ -57,8 +57,8 @@ export const InviteUsersModal: FC<InviteUsersModalProps> = ({
         case 409:
           return formatMessage(
             {
-              defaultMessage: 'User with email {email} already has an account in HeCo.',
-              id: 'sK7G1d',
+              defaultMessage: 'User with email {email} already has an account in HeCo Invest.',
+              id: '5hYgjx',
             },
             {
               email,

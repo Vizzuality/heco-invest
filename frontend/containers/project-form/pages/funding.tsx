@@ -230,8 +230,8 @@ const Funding = ({
                 <FieldInfo
                   content={formatMessage({
                     defaultMessage:
-                      'Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components',
-                    id: 'Ec0M9T',
+                      'Please briefly describe the main groups of activities or components for the implementation of the project. It is not necessary to be very detailed, just a logical sequence of the general lines of action. These groups of activities should be used to define the estimated budget below. No more than three groups of activities or components.',
+                    id: 'gyZiAj',
                   })}
                 />
               </Label>
@@ -339,8 +339,8 @@ const Funding = ({
             <div className="sm:w-full">
               <Label htmlFor="received-funding-amount">
                 <FormattedMessage
-                  defaultMessage="How much money did the project received or raised? (optional)"
-                  id="VsNoGp"
+                  defaultMessage="How much money did the project received or raised? (US$) (optional)"
+                  id="pI9yXx"
                 />
               </Label>
               <Input

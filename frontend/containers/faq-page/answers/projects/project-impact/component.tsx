@@ -6,8 +6,8 @@ export const ProjectImpact: FC = () => (
   <>
     <p>
       <FormattedMessage
-        defaultMessage="HeCo Invest relies on the ARIES Artificial Intelligence platform to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four “sustainability dimensions”, based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10, as shown in the chart of impact, considering a combination of landscape-level variables and self-reported project data."
-        id="76//dj"
+        defaultMessage="HeCo Invest relies on the ARIES ARtificial Intelligence platform to estimate − in a scientifically-informed and accurate manner − the impact of each project in each one of our four “sustainability dimensions”, based on existing knowledge and data. These impacts are calculated on a scale from 0 to 10, as shown in the chart of impact, considering a combination of landscape-level variables and self-reported project data."
+        id="BMrTK1"
       />
     </p>
     <ol className="mt-4 ml-6 list-disc">

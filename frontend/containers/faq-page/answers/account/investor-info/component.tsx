@@ -22,8 +22,8 @@ export const InvestorInfo: FC = () => {
       </p>
       <p>
         <FormattedMessage
-          defaultMessage="Note that all of this information will be visible in the Investor public profile page except questions."
-          id="0v43t3"
+          defaultMessage="Note that all of this information will be visible in the Investor public profile page except question 12."
+          id="yQftu3"
         />
       </p>
       <FaqList level="one">
@@ -45,7 +45,7 @@ export const InvestorInfo: FC = () => {
         />
         <ListItem
           mandatory={true}
-          title={formatMessage({ defaultMessage: 'Profile name', id: 's+n2ku' })}
+          title={formatMessage({ defaultMessage: 'Account name', id: 'Gcv7QB' })}
           description={formatMessage({
             defaultMessage: 'The name that will identify the account across the platform.',
             id: 'nlIkQG',
@@ -91,14 +91,14 @@ export const InvestorInfo: FC = () => {
                 id: 'E/uR6M',
               })}
             />
-            <ListItem title={formatMessage({ defaultMessage: 'Micro finance', id: 'ygx9Jx' })} />
+            <ListItem title={formatMessage({ defaultMessage: 'Microfinance', id: 'dfidDR' })} />
             <ListItem
               title={formatMessage({ defaultMessage: 'Non-VC Investment vehicle', id: 'VNrnq9' })}
             />
             <ListItem
               title={formatMessage({
-                defaultMessage: 'Venture capital / private equity',
-                id: 'tjj29g',
+                defaultMessage: 'Venture Capital / Private Equity',
+                id: 'u9oZsf',
               })}
             />
             <ListItem title={formatMessage({ defaultMessage: 'Carbon fund', id: 'MmBQFd' })} />
@@ -150,8 +150,8 @@ export const InvestorInfo: FC = () => {
         <ListItem
           validationType={ItemValidationTypes.SelectMultiple}
           title={formatMessage({
-            defaultMessage: '"Select the instrument type(s) you provide',
-            id: 'QGF3ow',
+            defaultMessage: 'Select the instrument type(s) you provide',
+            id: 'CBfDLD',
           })}
         >
           <FinancialInstrumentsList />

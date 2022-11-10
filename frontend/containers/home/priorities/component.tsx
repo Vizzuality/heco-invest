@@ -59,8 +59,8 @@ export const Priorities = () => (
       </h2>
       <p className="max-w-md mx-auto mt-6 text-base sm:text-center md:mt-8 sm:max-w-xl md:max-w-5xl sm:text-lg md:text-xl">
         <FormattedMessage
-          defaultMessage="Through accessing <a>ARIES (Artificial Intelligence for Environmental Sustainability)</a> and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
-          id="af90UN"
+          defaultMessage="Through accessing <a>ARIES (ARtificial Intelligence for Environmental Sustainability)</a> and using Machine Reasoning modelling algorithms, this platform accesses the most relevant information to inform you on project and investment potential impact along four key dimensions: <span>Biodiversity</span>, <span>Climate</span>, <span>Community</span> and <span>Water</span>."
+          id="9LvWm/"
           values={{
             a: (chunks) => (
               <Link href={`${Paths.About}#aries`}>

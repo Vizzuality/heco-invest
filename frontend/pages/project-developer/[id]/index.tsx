@@ -136,7 +136,7 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
     },
     {
       id: 'impact',
-      title: intl.formatMessage({ defaultMessage: 'Expect to have impact', id: 'L2CvBU' }),
+      title: intl.formatMessage({ defaultMessage: 'Expect to have impact on', id: 'YB8bt5' }),
       tags: enums[EnumTypes.Impact].filter(({ id }) => projectDeveloper.impacts?.includes(id)),
     },
   ];
