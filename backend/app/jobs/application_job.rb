@@ -13,6 +13,7 @@ class ApplicationJob < ActiveJob::Base
     yield
   rescue Exception => e # rubocop:disable Lint/RescueException
     upsert_event self, status: :crashed, message: e.backtrace
+    Google::Cloud::ErrorReporting.report e
     raise e
   end
 
