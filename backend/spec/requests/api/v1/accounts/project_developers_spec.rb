@@ -111,17 +111,23 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
 
         before(:each) { sign_in user }
 
-        run_test!
-
-        it "matches snapshot", generate_swagger_example: true do
+        it "matches snapshot", generate_swagger_example: true do |example|
+          submit_request example.metadata
           expect(response.body).to match_snapshot("api/v1/accounts-project-developer-create")
         end
 
-        it "saves data to correct language" do
+        it "saves data to correct language" do |example|
+          submit_request example.metadata
           project_developer = ProjectDeveloper.find response_json["data"]["id"]
           ProjectDeveloper.translatable_attributes.each do |attr|
             expect(project_developer.public_send("#{attr}_#{project_developer_params[:language]}")).to eq(project_developer_params[attr])
           end
+        end
+
+        it "queues translation job" do |example|
+          expect {
+            submit_request example.metadata
+          }.to have_enqueued_job(TranslateJob).at_least(:once)
         end
       end
 
