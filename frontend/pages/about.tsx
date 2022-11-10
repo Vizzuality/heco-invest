@@ -62,8 +62,8 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             </p>
             <p className="mb-6">
               <FormattedMessage
-                defaultMessage="The platform will use the most advanced technologies and Artificial Intelligence applications to provide in one place data and tools to connect investors, donors and philanthropists with carefully selected projects in high priority locations defined by Herencia Colombia."
-                id="6GK2pY"
+                defaultMessage="The platform will use the most advanced technologies and Artificial Intelligence applications to provide in one place data and tools to connect investors, donors and philanthropists with carefully selected projects in high priority locations defined by Heritage Colombia."
+                id="f/pQG4"
               />
             </p>
             <p>

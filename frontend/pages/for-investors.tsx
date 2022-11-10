@@ -284,8 +284,8 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         </h2>
         <p className="max-w-[800px] mb-8">
           <FormattedMessage
-            defaultMessage="The HeCo priority landscapes or conservation mosaics are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Herencia Colombia to ensure quality ecosystem services. <a>Read more</a>"
-            id="a6W2Pq"
+            defaultMessage="The HeCo priority landscapes or conservation mosaics are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Heritage Colombia to ensure quality ecosystem services. <a>Read more</a>"
+            id="TNwO58"
             values={{
               a: (chunks: string) => (
                 <Link href={FaqPaths['what-are-heco-priority-landscapes']}>
