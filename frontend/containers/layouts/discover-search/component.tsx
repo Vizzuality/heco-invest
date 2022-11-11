@@ -99,7 +99,8 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
 
   return (
     <div
-      className={cx('z-50', {
+      className={cx({
+        'z-50 sm:z-auto': showSuggestion || openFilters,
         [className]: !!className,
       })}
     >

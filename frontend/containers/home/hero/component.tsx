@@ -21,13 +21,11 @@ export const Hero = () => {
           />
         </p>
       </div>
-      <LayoutContainer className="sm:mt-5 md:mt-9">
-        <div className="relative z-10 sm:mx-auto sm:max-w-2xl md:max-w-4xl h-[4.5rem] translate-y-1/2 flex justify-center items-center w-full">
-          <DiscoverSearch
-            className="w-full"
-            searchButtonText={<FormattedMessage id="oG/A0q" defaultMessage="See full catalogue" />}
-          />
-        </div>
+      <LayoutContainer className="flex items-center justify-center h-0 sm:mt-5 md:mt-9 xl:relative sm:mx-auto pt-14">
+        <DiscoverSearch
+          className="w-full sm:max-w-2xl md:max-w-4xl"
+          searchButtonText={<FormattedMessage id="oG/A0q" defaultMessage="See full catalogue" />}
+        />
       </LayoutContainer>
     </div>
   );
