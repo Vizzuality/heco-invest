@@ -68,10 +68,7 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
       id="filters"
       role="region"
       aria-labelledby="filters-button"
-      className={cx('w-full bg-white border-t-2 border-t-gray-200 h-[calc(100vh-56px)] sm:h-auto', {
-        'rounded-b-3xl': !selectedFilters?.length,
-        'sm:rounded-b-none': !!selectedFilters?.length,
-      })}
+      className="w-full bg-white border-t-2 border-t-gray-200 h-[calc(100vh-56px)] sm:h-auto sm:absolute sm:rounded-b-3xl"
     >
       {searchText?.length >= 1 && (
         <div className="h-full px-4 py-2 sm:py-5 sm:px-9">
