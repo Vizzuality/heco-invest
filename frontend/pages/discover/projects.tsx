@@ -184,7 +184,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
               })}
               open={!!selectedProject}
               onDismiss={handleProjectDetailsClose}
-              className="w-screen h-screen !max-h-screen rounded-none sm:rounded-lg left-0"
+              className="w-screen h-screen !max-h-full rounded-none sm:rounded-lg left-0"
             >
               <ProjectDetails project={selectedProject} onClose={handleProjectDetailsClose} />
             </Modal>
