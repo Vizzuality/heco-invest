@@ -143,8 +143,8 @@ export const useFiltersEnums = () => {
 
 /** Hook to change the page's query */
 export const useSearch = () => {
-  const { push } = useRouter();
-  const pathname = useDiscoverPath();
+  const { pathname, push } = useRouter();
+  const discoverPathname = useDiscoverPath();
   const { page, sorting, search, ...filters } = useQueryParams();
 
   return (newSearch?: string, newFilters?: Partial<FilterParams>) =>
@@ -156,10 +156,10 @@ export const useSearch = () => {
           sorting: sorting || null,
           ...(newFilters || filters),
         }),
-        pathname,
+        pathname: discoverPathname,
       },
       undefined,
-      { shallow: true }
+      { shallow: pathname === discoverPathname }
     );
 };
 
