@@ -123,8 +123,8 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
       <div className="flex flex-col h-screen sm:overflow-auto bg-gradient-to-t from-background-green-dark to-background-green-dark bg-[length:100%_164px] bg-no-repeat sm:bg-none">
         <div className="z-10 h-min">
           <Header />
-          <LayoutContainer className="z-10 flex justify-center mt-1 pointer-events-none sm:pt-1 sm:mb-2 xl:pb-0 xl:mb-0 xl:-mt-10 xl:left-0 xl:right-0 xl:relative">
-            <DiscoverSearch className="w-full max-w-3xl pointer-events-auto" />
+          <LayoutContainer className="z-10 flex justify-center mt-1 sm:pt-1 sm:mb-2 xl:pb-0 xl:mb-0 xl:-mt-10 xl:left-0 xl:right-0 xl:relative">
+            <DiscoverSearch className="w-full max-w-3xl" />
           </LayoutContainer>
         </div>
         <main
