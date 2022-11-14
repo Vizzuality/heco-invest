@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors');
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   content: ['./**/*.ts', './**/*.tsx'],
@@ -109,5 +110,18 @@ module.exports = {
   plugins: [
     // Use the overflow-elispis with more lines
     require('@tailwindcss/line-clamp'),
+    // Borrowed from https://github.com/tailwindlabs/tailwindcss/pull/5732
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-auto': { 'scrollbar-width': 'auto' },
+        '.scrollbar-thin': { 'scrollbar-width': 'thin' },
+        '.scrollbar-none': {
+          'scrollbar-width': 'none',
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+        },
+      });
+    }),
   ],
 };

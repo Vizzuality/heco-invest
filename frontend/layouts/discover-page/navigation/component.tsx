@@ -57,8 +57,18 @@ export const Navigation: FC<NavigationProps> = ({ stats }: NavigationProps) => {
   const activeId = navigationItems.find(({ path }) => asPath.startsWith(path))?.id;
 
   return (
-    <div className="flex overflow-x-auto">
-      <BadgeNavigation activeId={activeId} items={navigationItems} />
+    <div
+      // The `relative`, `-mx-4` and `sm:mx-0` classes are used by the before and after
+      // pseudo-elements of the `<BadgeNavigation />` component below
+      className="relative flex -mx-4 overflow-x-auto sm:mx-0"
+    >
+      <BadgeNavigation
+        activeId={activeId}
+        items={navigationItems}
+        // The `before:*` and `after:*` classes are used to fade out the navigation items on the
+        // sides on mobile
+        className="px-4 sm:px-0 before:absolute before:left-0 before:top-0 before:w-4 before:h-[calc(100%_-_theme(spacing.2))] before:bg-gradient-to-r before:via-background-green-dark/70 before:from-background-green-dark before:to-transparent before:z-10 after:absolute after:right-0 after:top-0 after:w-4 after:h-[calc(100%_-_theme(spacing.2))] after:bg-gradient-to-l after:via-background-green-dark/70 after:from-background-green-dark after:to-transparent after:z-10 sm:before:hidden sm:after:hidden"
+      />
     </div>
   );
 };
