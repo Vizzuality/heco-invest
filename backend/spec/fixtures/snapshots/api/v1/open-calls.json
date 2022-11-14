@@ -22,7 +22,6 @@
         "closing_at": "2023-06-08T13:32:34.457Z",
         "language": "en",
         "account_language": "en",
-        "trusted": false,
         "created_at": "2022-08-08T13:32:34.472Z",
         "picture": {
           "small": null,
@@ -85,7 +84,6 @@
         "closing_at": "2023-06-08T13:32:34.603Z",
         "language": "en",
         "account_language": "en",
-        "trusted": false,
         "created_at": "2022-08-08T13:32:34.609Z",
         "picture": {
           "small": null,
@@ -148,7 +146,6 @@
         "closing_at": "2023-06-08T13:32:34.750Z",
         "language": "en",
         "account_language": "en",
-        "trusted": false,
         "created_at": "2022-08-08T13:32:34.755Z",
         "picture": {
           "small": null,
@@ -211,7 +208,6 @@
         "closing_at": "2023-06-08T13:32:34.916Z",
         "language": "en",
         "account_language": "en",
-        "trusted": false,
         "created_at": "2022-08-08T13:32:34.921Z",
         "picture": {
           "small": null,
@@ -274,7 +270,6 @@
         "closing_at": "2023-06-08T13:32:35.070Z",
         "language": "en",
         "account_language": "en",
-        "trusted": false,
         "created_at": "2022-08-08T13:32:35.075Z",
         "picture": {
           "small": null,
@@ -337,7 +332,6 @@
         "closing_at": "2023-06-08T13:32:35.219Z",
         "language": "en",
         "account_language": "en",
-        "trusted": false,
         "created_at": "2022-08-08T13:32:35.226Z",
         "picture": {
           "small": null,
@@ -400,7 +394,6 @@
         "closing_at": "2023-06-08T13:32:35.353Z",
         "language": "en",
         "account_language": "pt",
-        "trusted": false,
         "created_at": "2022-08-08T13:32:35.361Z",
         "picture": {
           "small": null,
@@ -463,7 +456,6 @@
         "closing_at": "2023-06-08T13:32:35.744Z",
         "language": "en",
         "account_language": "en",
-        "trusted": false,
         "created_at": "2022-08-08T13:32:35.748Z",
         "picture": {
           "small": null,

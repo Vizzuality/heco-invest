@@ -51,7 +51,6 @@
             2.0
           ]
         },
-        "trusted": false,
         "created_at": "2022-08-19T13:20:43.214Z",
         "municipality_biodiversity_impact": null,
         "municipality_climate_impact": null,
@@ -167,7 +166,6 @@
             2.0
           ]
         },
-        "trusted": false,
         "created_at": "2022-08-19T13:20:43.647Z",
         "municipality_biodiversity_impact": null,
         "municipality_climate_impact": null,
@@ -283,7 +281,6 @@
             2.0
           ]
         },
-        "trusted": false,
         "created_at": "2022-08-19T13:20:43.865Z",
         "municipality_biodiversity_impact": null,
         "municipality_climate_impact": null,
@@ -399,7 +396,6 @@
             2.0
           ]
         },
-        "trusted": false,
         "created_at": "2022-08-19T13:20:44.073Z",
         "municipality_biodiversity_impact": null,
         "municipality_climate_impact": null,
@@ -515,7 +511,6 @@
             2.0
           ]
         },
-        "trusted": false,
         "created_at": "2022-08-19T13:20:44.254Z",
         "municipality_biodiversity_impact": null,
         "municipality_climate_impact": null,
@@ -631,7 +626,6 @@
             2.0
           ]
         },
-        "trusted": false,
         "created_at": "2022-08-19T13:20:44.445Z",
         "municipality_biodiversity_impact": null,
         "municipality_climate_impact": null,
@@ -747,7 +741,6 @@
             2.0
           ]
         },
-        "trusted": false,
         "created_at": "2022-08-19T13:20:45.218Z",
         "municipality_biodiversity_impact": null,
         "municipality_climate_impact": null,
@@ -883,7 +876,6 @@
             ]
           ]
         },
-        "trusted": false,
         "created_at": "2022-08-19T13:20:42.795Z",
         "municipality_biodiversity_impact": null,
         "municipality_climate_impact": null,

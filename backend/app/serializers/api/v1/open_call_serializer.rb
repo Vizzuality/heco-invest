@@ -20,7 +20,6 @@ module API
         :created_at,
         :updated_at,
         :open_call_applications_count
-      attribute :trusted, &:verified
 
       belongs_to :investor
       belongs_to :country, serializer: LocationSerializer
