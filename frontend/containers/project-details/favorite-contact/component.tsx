@@ -18,6 +18,7 @@ import ContactInformationModal from 'containers/social-contact/contact-informati
 import Button from 'components/button';
 import Icon from 'components/icon';
 import { Paths } from 'enums';
+import { logEvent } from 'lib/analytics/ga';
 
 import { FavoriteContactProps } from './types';
 
@@ -39,7 +40,10 @@ export const FavoriteContact: FC<FavoriteContactProps> = ({
             disabled={!user || !contacts.length}
             className="px-4 py-2 text-sm sm:px-6 sm:py-2"
             theme="primary-green"
-            onClick={() => setIsContactInfoModalOpen(true)}
+            onClick={() => {
+              logEvent('click_contact', { category_name: 'project', slug: project.slug });
+              setIsContactInfoModalOpen(true);
+            }}
           >
             <FormattedMessage defaultMessage="Contact" id="zFegDD" />
           </Button>

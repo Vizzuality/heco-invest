@@ -179,6 +179,8 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
         </LayoutContainer>
         <ProfileHeader
           className="mt-3 sm:mt-6"
+          type="project-developer"
+          slug={projectDeveloper.slug}
           logo={projectDeveloper.picture?.medium}
           title={projectDeveloper.name}
           subtitle={projectDeveloperTypeName}

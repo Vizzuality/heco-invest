@@ -62,6 +62,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
   const { data: investor } = useInvestor(router.query.id as string, investorProp);
 
   const {
+    slug,
     name,
     twitter,
     facebook,
@@ -167,6 +168,8 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
 
         <ProfileHeader
           className="mt-3 sm:mt-6"
+          type="investor"
+          slug={slug}
           logo={logo}
           title={name}
           subtitle={investorTypeName}

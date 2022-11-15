@@ -9,6 +9,7 @@ import ContactInformationModal from 'containers/social-contact/contact-informati
 
 import Button from 'components/button';
 import LayoutContainer from 'components/layout-container';
+import { logEvent } from 'lib/analytics/ga';
 
 export const Contact: React.FC<ContactProps> = ({ project }: ContactProps) => {
   const [isContactInfoModalOpen, setIsContactInfoModalOpen] = useState<boolean>(false);
@@ -35,7 +36,10 @@ export const Contact: React.FC<ContactProps> = ({ project }: ContactProps) => {
           theme="primary-white"
           size="base"
           className="flex justify-center w-full py-3 sm:w-auto"
-          onClick={() => setIsContactInfoModalOpen(true)}
+          onClick={() => {
+            logEvent('click_contact', { category_name: 'project', slug: project.slug });
+            setIsContactInfoModalOpen(true);
+          }}
         >
           <FormattedMessage defaultMessage="Contact" id="zFegDD" />
         </Button>

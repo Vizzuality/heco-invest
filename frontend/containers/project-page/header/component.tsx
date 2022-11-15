@@ -215,7 +215,10 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
               className="flex-grow-[3] md:flex-grow-[10] md:max-w-[200px] justify-center px-6"
               disabled={!contacts?.length}
               theme="primary-green"
-              onClick={() => setIsContactInfoModalOpen(true)}
+              onClick={() => {
+                logEvent('click_contact', { category_name: 'project', slug: project.slug });
+                setIsContactInfoModalOpen(true);
+              }}
             >
               <FormattedMessage defaultMessage="Contact" id="zFegDD" />
             </Button>
