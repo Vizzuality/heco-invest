@@ -18,6 +18,7 @@ import ContactInformationModal from 'containers/social-contact/contact-informati
 import Button from 'components/button';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
+import { logEvent } from 'lib/analytics/ga';
 import { CategoryType } from 'types/category';
 
 import { useAccount } from 'services/account';
@@ -75,7 +76,12 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
   const contacts = useProjectContacts(project);
 
   const handleFavoriteClick = () => {
-    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    if (!project.favourite) {
+      logEvent('click_favorite', { category_name: 'project', slug: project.slug });
+    }
+
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when
+    // is false.
     favoriteProject.mutate({ id: project.id, isFavourite: project.favourite });
   };
 
