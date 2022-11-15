@@ -23,6 +23,7 @@ import ImpactModal from 'containers/modals/impact';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
+import { logEvent } from 'lib/analytics/ga';
 import { PageComponent } from 'types';
 import { Enum } from 'types/enums';
 import { Investor } from 'types/investor';
@@ -234,6 +235,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
                   filterName="ticket_size"
                   enumType="ticket_size"
                   cardType="investors"
+                  onClick={() => logEvent('for_PD_card', { card_name: id })}
                 />
               </div>
             );
@@ -283,6 +285,7 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
                   cardType="investors"
                   filterName="category"
                   enumType="category"
+                  onClick={() => logEvent('for_PD_card', { card_name: id })}
                 />
               </div>
             );
