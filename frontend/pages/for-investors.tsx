@@ -23,6 +23,7 @@ import ImpactModal from 'containers/modals/impact';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
+import { logEvent } from 'lib/analytics/ga';
 import { PageComponent } from 'types';
 import { Enum } from 'types/enums';
 import { Locations } from 'types/locations';
@@ -256,6 +257,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                   cardType="projects"
                   enumType="category"
                   filterName="category"
+                  onClick={() => logEvent('for_investors_card', { card_name: id })}
                 />
               </div>
             );
@@ -331,6 +333,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
                   filterName="priority_landscape"
                   onMouseEnter={() => setHoveredPriorityLandscapeCode(code)}
                   onMouseLeave={() => setHoveredPriorityLandscapeCode(null)}
+                  onClick={() => logEvent('for_investors_card', { card_name: code })}
                 />
               );
             })}

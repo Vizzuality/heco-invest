@@ -25,6 +25,7 @@ export const PublicPageCard: FC<PublicPageCardProps> = ({
   filterName,
   onMouseEnter,
   onMouseLeave,
+  onClick,
 }) => {
   return (
     <div
@@ -60,9 +61,18 @@ export const PublicPageCard: FC<PublicPageCardProps> = ({
           )}
         </p>
         {!!filterName && (
-          <Button theme="naked" to={`${Paths.Discover}/${cardType}/?filter[${filterName}]=${id}`}>
+          <Button
+            theme="naked"
+            to={`${Paths.Discover}/${cardType}/?filter[${filterName}]=${id}`}
+            onClick={onClick}
+          >
             <span className="sr-only">
-              <FormattedMessage defaultMessage="See projects" id="q6rG+e" />
+              {cardType === 'projects' && (
+                <FormattedMessage defaultMessage="See projects" id="q6rG+e" />
+              )}
+              {cardType === 'investors' && (
+                <FormattedMessage defaultMessage="See investors" id="ctc1sP" />
+              )}
             </span>
             <Icon
               icon={ArrowIcon}
