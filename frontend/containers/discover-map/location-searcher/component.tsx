@@ -12,6 +12,7 @@ import { useOutsideClick } from 'rooks';
 import Button from 'components/button';
 import Icon from 'components/icon';
 import Loading from 'components/loading';
+import { logEvent } from 'lib/analytics/ga';
 
 import SearchIcon from 'svgs/search.svg';
 import CloseIcon from 'svgs/ui/close.svg';
@@ -49,12 +50,22 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
   };
 
   const handleSelectAddress = (newAddress: string) => {
+    console.log('address', address);
+    console.log('newAddress', newAddress);
     setIsFocused(false);
     setAddress(newAddress);
     setAddressSetted(true);
 
     geocodeByAddress(newAddress)
       .then((results) => {
+        logEvent('map_search', {
+          // `user_input` is either what the user has typed (if they pressed the enter key to
+          // trigger the search) or the suggestion they selected (if they used the arrow keys or
+          // clicked a suggestion)
+          user_input: newAddress,
+          final_location: results[0].formatted_address,
+        });
+
         getLatLng(results[0]);
         const { bounds } = results[0].geometry;
         const NELat = bounds.getNorthEast().lat();
