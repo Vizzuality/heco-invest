@@ -18,6 +18,7 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
   badgePosition = 'right',
   activeId,
   items,
+  onClick,
 }: BadgeNavigationProps) => {
   const isMobile = !useBreakpoint()('sm');
 
@@ -105,6 +106,7 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
                 })}
               >
                 <Link href={link}>
+                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
                   <a
                     className={cx({
                       'relative inline-flex focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2':
@@ -116,6 +118,7 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
                       'rounded-full': type === 'pill',
                     })}
                     aria-current={isActive ? 'location' : false}
+                    onClick={() => onClick(id)}
                   >
                     <Tag
                       border={false}
