@@ -1,8 +1,10 @@
-import { FC } from 'react';
+import { FC, useRef, useEffect, useState, createRef } from 'react';
 
 import cx from 'classnames';
 
 import Link from 'next/link';
+
+import { useBreakpoint } from 'hooks/use-breakpoint';
 
 import Tag from 'components/tag';
 
@@ -17,6 +19,11 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
   activeId,
   items,
 }: BadgeNavigationProps) => {
+  const isMobile = !useBreakpoint()('sm');
+
+  const [itemsRefs, setItemsRefs] = useState(items.map(() => createRef<HTMLLIElement>()));
+
+  const containerRef = useRef<HTMLDivElement>(null);
   const badgeElement = (number: number, isActive: boolean) => {
     if (Number.isNaN(number)) return null;
 
@@ -46,8 +53,31 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
     );
   };
 
+  // Each time the list of `items` changes, we recreate the refs to them
+  useEffect(() => {
+    setItemsRefs(items.map(() => createRef<HTMLLIElement>()));
+  }, [items, setItemsRefs]);
+
+  // On mobile, if the active element changes, the navigation bar is scrolled to show the active
+  // element on the left of the screen (if possible)
+  useEffect(() => {
+    if (!isMobile) {
+      return;
+    }
+
+    const itemIndex = items.findIndex(({ id }) => id === activeId);
+    if (itemIndex > 0) {
+      const item = itemsRefs[itemIndex].current;
+      const scrollPosition = item.offsetLeft;
+      containerRef.current.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+    }
+  }, [items, activeId, isMobile, containerRef, itemsRefs]);
+
   return (
-    <div className={className}>
+    <div
+      ref={containerRef}
+      className={cx('flex overflow-auto scrollbar-none sm:scrollbar-auto', className)}
+    >
       <nav className="relative mx-2">
         <ol
           className={cx({
@@ -57,12 +87,13 @@ export const BadgeNavigation: FC<BadgeNavigationProps> = ({
             'flex-col': orientation === 'vertical',
           })}
         >
-          {items.map(({ id, name, link, number }) => {
+          {items.map(({ id, name, link, number }, index) => {
             const isActive = id === activeId;
 
             return (
               <li
                 key={link}
+                ref={itemsRefs[index]}
                 className={cx({
                   'relative transition-all': true,
                   'after:inline after:bg-white sm:after:bg-green-dark after:absolute after:left-0 after:bottom-0':
