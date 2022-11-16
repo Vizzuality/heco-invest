@@ -15,7 +15,7 @@ import { NavigationProps } from './types';
 
 export const Navigation: FC<NavigationProps> = ({ stats }: NavigationProps) => {
   const intl = useIntl();
-  const { asPath } = useRouter();
+  const { pathname } = useRouter();
 
   // Pick the the query params we want to preserve in the navigation links (search, filters). The page and sorting will always change to default when changing tabs.
   const queryString = useQueryString({
@@ -54,7 +54,7 @@ export const Navigation: FC<NavigationProps> = ({ stats }: NavigationProps) => {
     },
   ];
 
-  const activeId = navigationItems.find(({ path }) => asPath.startsWith(path))?.id;
+  const activeId = navigationItems.find(({ path }) => pathname.startsWith(path))?.id;
 
   return (
     <div className="flex overflow-x-auto">
