@@ -1,20 +1,15 @@
 import { DirectUpload } from '@rails/activestorage';
 
+import { getCookie } from 'helpers/cookies';
+
 import { DirectUploadBlob } from 'types/direct-upload';
 
 import API from 'services/api';
 
-const csrfToken = () => {
-  const matched = document.cookie.match(/csrf_token.*(;|$)/);
-  if (matched[0]) {
-    return matched[0].replace('csrf_token=', '');
-  }
-  return '';
-};
-
 /** Upload file using the rails activestorage.DirectUpload library. Returns the singed_id used to identify the file */
 export const directUpload = async (file: File): Promise<DirectUploadBlob> => {
-  const token = csrfToken();
+  const token = getCookie('csrf_token');
+
   if (token) {
     const upload = new DirectUpload(
       file,
