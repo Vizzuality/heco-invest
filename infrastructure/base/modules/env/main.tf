@@ -157,9 +157,17 @@ module "backend_build" {
       entrypoint = "gcloud"
       args       = [
         "run", "deploy", "${var.project_name}-jobs", "--image", "gcr.io/${var.gcp_project_id}/backend:${var.tag}",
-        "--region", var.gcp_region
+        "--region", var.gcp_region, "--max-instances", "1", "--no-traffic"
       ]
-    }
+    },
+    {
+      name       = "gcr.io/google.com/cloudsdktool/cloud-sdk"
+      entrypoint = "gcloud"
+      args       = [
+        "run", "deploy", "${var.project_name}-jobs", "--image", "gcr.io/${var.gcp_project_id}/backend:${var.tag}",
+        "--region", var.gcp_region, "--max-instances", var.backend_max_scale
+      ]
+    },
   ]
 }
 
