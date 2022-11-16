@@ -5,6 +5,8 @@ import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
+import { useRouter } from 'next/router';
+
 import {
   transformFilterInputsToParams,
   transformFilterParamsToInputs,
@@ -15,7 +17,8 @@ import { FilterForm } from 'containers/forms/filters/types';
 
 import Button from 'components/button';
 import Tag from 'components/forms/tag';
-import { EnumTypes } from 'enums';
+import { EnumTypes, Paths } from 'enums';
+import { logEvent } from 'lib/analytics/ga';
 
 import { SeachAutoSuggestionProps } from './types';
 
@@ -25,6 +28,8 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
   filtersData,
   closeSuggestions,
 }) => {
+  const { pathname } = useRouter();
+
   const selectedFilters = useMemo(() => Object.values(filters), [filters]);
   const doSearch = useSearch();
 
@@ -43,6 +48,10 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
   };
 
   const handleSearchSuggestion = () => {
+    logEvent(pathname !== Paths.Home ? 'discover_type_search' : 'homepage_type_search', {
+      search_term: searchText,
+    });
+
     doSearch(searchText, filters);
     closeSuggestions();
   };
