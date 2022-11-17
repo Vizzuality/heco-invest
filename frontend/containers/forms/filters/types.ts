@@ -22,6 +22,7 @@ export type FilterParams = {
 // - `T` if there's only one checkbox with a specific `name` and it is checkcked
 // - `false` if there's only one checkbox with a specific `name` and it is not checked
 // - `T[]` if there are multiple checkboxes with the same `name` (checked or not)
+// The filter suggestions list may render only one checkbox
 type FilterFormValue<T> = T | T[] | false;
 
 export type FilterForm = {
@@ -31,4 +32,5 @@ export type FilterForm = {
   // only_verified: boolean; VERIFICATION FILTERS: HIDDEN
   sdg: FilterFormValue<string>;
   impact: FilterFormValue<string>;
+  priority_landscape: FilterFormValue<string>;
 };

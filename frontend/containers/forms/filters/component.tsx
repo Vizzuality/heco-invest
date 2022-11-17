@@ -4,8 +4,6 @@ import { ChevronDown, ChevronUp, X as CloseIcon } from 'react-feather';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import cx from 'classnames';
-
 import { useRouter } from 'next/router';
 
 import { groupBy, isEmpty } from 'lodash-es';
@@ -23,7 +21,10 @@ import TagGroup from 'components/forms/tag-group';
 import Icon from 'components/icon';
 import Loading from 'components/loading';
 import { EnumTypes, LocationsTypes, Paths } from 'enums';
+import { logEvent } from 'lib/analytics/ga';
 import { Enum } from 'types/enums';
+
+import { usePriorityLandscapes } from 'services/locations/locations';
 
 import { FiltersProps, FilterForm } from './types';
 
@@ -50,6 +51,7 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
       instrument_type: [],
       sdg: [],
       ticket_size: [],
+      priority_landscape: [],
     },
   });
 
@@ -57,6 +59,8 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
     filtersData,
     'type'
   );
+
+  const { priorityLandscapes } = usePriorityLandscapes();
 
   const filterTexts = [
     { title: formatMessage({ defaultMessage: 'Category', id: 'ccXLVi' }), values: category },
@@ -101,6 +105,37 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
     doSearch(undefined, newFilterParams);
     closeFilters();
   }, [closeFilters, doSearch, getValues]);
+
+  const onClickFilter = useCallback(
+    (filterId: string, filterType: keyof FilterForm) => {
+      const filterFormValue = getValues(filterType);
+
+      // Whether the filter was just toggled on (but still not applied)
+      const toggledOn = Array.isArray(filterFormValue)
+        ? !!filterFormValue.find((v) => v === filterId)
+        : filterFormValue === filterId;
+
+      if (!toggledOn) {
+        // We're just sending the analytics event if the user is toggling on a new filter
+        return;
+      }
+
+      let filterName = filterId;
+
+      if (filterType === 'priority_landscape' && !!priorityLandscapes?.length) {
+        filterName =
+          priorityLandscapes.find((priorityLandscape) => priorityLandscape.id === filterName)
+            ?.code ?? filterName;
+      } else if (filterType === 'sdg') {
+        filterName = `sdg-${filterName}`;
+      }
+
+      logEvent(pathname !== Paths.Home ? 'discover_filter_selected' : 'homepage_filter_selected', {
+        filter_name: filterName,
+      });
+    },
+    [pathname, priorityLandscapes, getValues]
+  );
 
   /* VERIFICATION FILTERS: HIDDEN
   const onCheckboxChange = (ev: any) => {
@@ -204,8 +239,9 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
                               register={register}
                               registerOptions={{
                                 disabled: false,
+                                onChange: () => onClickFilter(id, type),
                               }}
-                              type="radio"
+                              type="checkbox"
                               isfilterTag
                             >
                               <span className="block">
@@ -268,8 +304,9 @@ export const Filters: FC<FiltersProps> = ({ closeFilters, filtersData, filters }
                           register={register}
                           registerOptions={{
                             disabled: false,
+                            onChange: () => onClickFilter(id, type as keyof FilterForm),
                           }}
-                          type="radio"
+                          type="checkbox"
                           isfilterTag
                         >
                           <span className="block">{name}</span>
