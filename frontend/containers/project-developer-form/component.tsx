@@ -19,6 +19,7 @@ import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
 
 import Head from 'components/head';
 import { LocationsTypes } from 'enums';
+import { logEvent } from 'lib/analytics/ga';
 import { ProjectDeveloperSetupForm } from 'types/projectDeveloper';
 import useProjectDeveloperValidation, { formPageInputs } from 'validations/project-developer';
 
@@ -95,7 +96,12 @@ export const ProjectDeveloperForm: FC<ProjectDeveloperFormProps> = ({
       mutation.mutate(values, {
         onError: handleServiceErrors,
         onSuccess: () => {
-          !isCreateForm ? onComplete() : setCurrentPage(currentPage + 1);
+          if (!isCreateForm) {
+            onComplete();
+          } else {
+            logEvent('account_creation', { account_type: 'project-developer' });
+            setCurrentPage(currentPage + 1);
+          }
         },
       });
     } else {

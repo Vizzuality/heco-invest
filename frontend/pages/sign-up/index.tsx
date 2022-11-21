@@ -23,6 +23,7 @@ import Input from 'components/forms/input';
 import Loading from 'components/loading';
 import { Paths, Queries, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
+import { logEvent } from 'lib/analytics/ga';
 import { PageComponent } from 'types';
 import { SignupDto, SignupFormI } from 'types/user';
 import { useSignupResolver } from 'validations/signup';
@@ -68,7 +69,14 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
     isError: confirmedUserIsError,
     error: confirmedUserError,
     isLoading: confirmedUserIsLoading,
+    isSuccess: confirmedUserIsSuccess,
   } = useConfirmEmail(query.confirmation_token as string);
+
+  useEffect(() => {
+    if (confirmedUserIsSuccess) {
+      logEvent('sign_up', { method: 'credentials' });
+    }
+  }, [confirmedUserIsSuccess]);
 
   useEffect(() => {
     // Wait until user and invited user are loaded to be able to compare them

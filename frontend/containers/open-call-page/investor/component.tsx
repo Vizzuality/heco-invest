@@ -12,6 +12,7 @@ import Button from 'components/button';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import { OpenCallStatus, Paths, UserRoles } from 'enums';
+import { logEvent } from 'lib/analytics/ga';
 
 import { useAccount } from 'services/account';
 import { useFavoriteOpenCall } from 'services/open-call/open-call-service';
@@ -26,7 +27,12 @@ export const OpenCallInvestorAndFooter: FC<OpenCallInvestorProps> = ({ openCall 
   const { investor } = openCall;
 
   const handleFavoriteClick = () => {
-    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    if (!openCall.favourite) {
+      logEvent('click_favorite', { category_name: 'open-call', slug: openCall.slug });
+    }
+
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when
+    // is false.
     favoriteOpenCall.mutate({ id: openCall.id, isFavourite: openCall.favourite });
   };
 

@@ -20,6 +20,7 @@ import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { EnumTypes } from 'enums';
 import { StaticPageLayoutProps } from 'layouts/static-page';
+import { logEvent } from 'lib/analytics/ga';
 import { PageComponent } from 'types';
 import { CategoryType } from 'types/category';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
@@ -146,7 +147,15 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
   const favoriteProjectDeveloper = useFavoriteProjectDeveloper();
 
   const handleFavoriteClick = () => {
-    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    if (!projectDeveloper.favourite) {
+      logEvent('click_favorite', {
+        category_name: 'project-developer',
+        slug: projectDeveloper.slug,
+      });
+    }
+
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when
+    // is false.
     favoriteProjectDeveloper.mutate({
       id: projectDeveloper.id,
       isFavourite: projectDeveloper.favourite,
@@ -170,6 +179,8 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
         </LayoutContainer>
         <ProfileHeader
           className="mt-3 sm:mt-6"
+          type="project-developer"
+          slug={projectDeveloper.slug}
           logo={projectDeveloper.picture?.medium}
           title={projectDeveloper.name}
           subtitle={projectDeveloperTypeName}

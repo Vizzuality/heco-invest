@@ -18,6 +18,7 @@ import WebsiteSocial from 'containers/social-contact/website-social';
 import Button from 'components/button';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
+import { logEvent } from 'lib/analytics/ga';
 
 import { useAccount } from 'services/account';
 
@@ -25,6 +26,8 @@ import type { ProfileHeaderProps } from './types';
 
 export const ProfileHeader: FC<ProfileHeaderProps> = ({
   className,
+  type,
+  slug,
   logo: logoProp,
   title,
   subtitle,
@@ -137,7 +140,10 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
               className="flex-grow-[3] md:flex-grow-[10] md:max-w-[200px] justify-center px-6"
               theme="primary-green"
               disabled={!contact?.phone && !contact?.email}
-              onClick={() => setIsContactInfoModalOpen(true)}
+              onClick={() => {
+                logEvent('click_contact', { category_name: type, slug });
+                setIsContactInfoModalOpen(true);
+              }}
             >
               <FormattedMessage defaultMessage="Contact" id="zFegDD" />
             </Button>

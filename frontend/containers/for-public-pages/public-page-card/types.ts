@@ -17,4 +17,6 @@ export type PublicPageCardProps = {
   onMouseEnter?: () => void;
   /** Callback executed when the cursor leaves the card */
   onMouseLeave?: () => void;
+  /** Callback executed when the user clicks on the card's button */
+  onClick?: () => void;
 };

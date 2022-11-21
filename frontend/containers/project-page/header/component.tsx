@@ -18,6 +18,7 @@ import ContactInformationModal from 'containers/social-contact/contact-informati
 import Button from 'components/button';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
+import { logEvent } from 'lib/analytics/ga';
 import { CategoryType } from 'types/category';
 
 import { useAccount } from 'services/account';
@@ -75,7 +76,12 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
   const contacts = useProjectContacts(project);
 
   const handleFavoriteClick = () => {
-    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    if (!project.favourite) {
+      logEvent('click_favorite', { category_name: 'project', slug: project.slug });
+    }
+
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when
+    // is false.
     favoriteProject.mutate({ id: project.id, isFavourite: project.favourite });
   };
 
@@ -209,7 +215,10 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
               className="flex-grow-[3] md:flex-grow-[10] md:max-w-[200px] justify-center px-6"
               disabled={!contacts?.length}
               theme="primary-green"
-              onClick={() => setIsContactInfoModalOpen(true)}
+              onClick={() => {
+                logEvent('click_contact', { category_name: 'project', slug: project.slug });
+                setIsContactInfoModalOpen(true);
+              }}
             >
               <FormattedMessage defaultMessage="Contact" id="zFegDD" />
             </Button>

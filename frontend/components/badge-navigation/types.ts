@@ -20,4 +20,6 @@ export type BadgeNavigationProps = {
   activeId?: string;
   /** Navigation items array */
   items: BadgeNavigationType[];
+  /** Callback executed when the user clicks on an item */
+  onClick?: (id: BadgeNavigationType['id']) => void;
 };

@@ -20,6 +20,7 @@ import Button from 'components/button';
 import Tag from 'components/tag';
 import { Paths } from 'enums';
 import { ImpactAreas } from 'enums';
+import { logEvent } from 'lib/analytics/ga';
 import { CategoryType } from 'types/category';
 import { Enum } from 'types/enums';
 
@@ -82,7 +83,12 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
   const favoriteProject = useFavoriteProject();
 
   const handleFavoriteClick = () => {
-    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    if (!project.favourite) {
+      logEvent('click_favorite', { category_name: 'project', slug: project.slug });
+    }
+
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when
+    // is false.
     favoriteProject.mutate(
       { id: project.id, isFavourite: project.favourite },
       {

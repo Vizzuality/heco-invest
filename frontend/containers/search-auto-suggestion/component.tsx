@@ -1,9 +1,11 @@
-import { FC, useEffect, useMemo } from 'react';
+import { FC, MouseEvent, useCallback, useEffect, useMemo } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
+
+import { useRouter } from 'next/router';
 
 import {
   transformFilterInputsToParams,
@@ -15,7 +17,10 @@ import { FilterForm } from 'containers/forms/filters/types';
 
 import Button from 'components/button';
 import Tag from 'components/forms/tag';
-import { EnumTypes } from 'enums';
+import { EnumTypes, Paths } from 'enums';
+import { logEvent } from 'lib/analytics/ga';
+
+import { usePriorityLandscapes } from 'services/locations/locations';
 
 import { SeachAutoSuggestionProps } from './types';
 
@@ -25,8 +30,12 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
   filtersData,
   closeSuggestions,
 }) => {
+  const { pathname } = useRouter();
+
   const selectedFilters = useMemo(() => Object.values(filters), [filters]);
   const doSearch = useSearch();
+
+  const { priorityLandscapes } = usePriorityLandscapes();
 
   const { register, setValue, getValues } = useForm<Partial<FilterForm>>({});
 
@@ -36,13 +45,35 @@ export const SearchAutoSuggestion: FC<SeachAutoSuggestionProps> = ({
     });
   }, [filters, setValue]);
 
-  const handleFilterSuggestion = () => {
-    const newFilterParams = transformFilterInputsToParams(getValues());
-    doSearch(undefined, newFilterParams);
-    closeSuggestions();
-  };
+  const handleFilterSuggestion = useCallback(
+    (e: MouseEvent<HTMLInputElement>) => {
+      let filterName = e.currentTarget.value;
+      const filterType = e.currentTarget.name;
+
+      if (filterType === 'priority_landscape' && !!priorityLandscapes?.length) {
+        filterName =
+          priorityLandscapes.find((priorityLandscape) => priorityLandscape.id === filterName)
+            ?.code ?? filterName;
+      } else if (filterType === 'sdg') {
+        filterName = `sdg-${filterName}`;
+      }
+
+      logEvent(pathname !== Paths.Home ? 'discover_filter_selected' : 'homepage_filter_selected', {
+        filter_name: filterName,
+      });
+
+      const newFilterParams = transformFilterInputsToParams(getValues());
+      doSearch(undefined, newFilterParams);
+      closeSuggestions();
+    },
+    [closeSuggestions, doSearch, getValues, pathname, priorityLandscapes]
+  );
 
   const handleSearchSuggestion = () => {
+    logEvent(pathname !== Paths.Home ? 'discover_type_search' : 'homepage_type_search', {
+      search_term: searchText,
+    });
+
     doSearch(searchText, filters);
     closeSuggestions();
   };

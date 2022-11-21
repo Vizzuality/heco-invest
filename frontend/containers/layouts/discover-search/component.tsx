@@ -25,6 +25,7 @@ import SearchAutoSuggestion from 'containers/search-auto-suggestion';
 import Button from 'components/button';
 import Icon from 'components/icon';
 import { Paths } from 'enums';
+import { logEvent } from 'lib/analytics/ga';
 
 import FilterIcon from 'svgs/discover/filters.svg';
 
@@ -56,6 +57,11 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
 
   const handleSubmitSearch = (e: SyntheticEvent) => {
     e.preventDefault();
+
+    logEvent(pathname !== Paths.Home ? 'discover_type_search' : 'homepage_type_search', {
+      search_term: searchInputValue,
+    });
+
     doSearch(searchInputValue, filters);
     setShowSuggestions(false);
     setOpenFilters(false);

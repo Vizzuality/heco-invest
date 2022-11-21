@@ -18,6 +18,7 @@ import TagsGrid, { TagsGridRowType } from 'containers/tags-grid';
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
 import { StaticPageLayoutProps } from 'layouts/static-page';
+import { logEvent } from 'lib/analytics/ga';
 import { PageComponent } from 'types';
 import { GroupedEnums } from 'types/enums';
 import { Investor } from 'types/investor';
@@ -61,6 +62,7 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
   const { data: investor } = useInvestor(router.query.id as string, investorProp);
 
   const {
+    slug,
     name,
     twitter,
     facebook,
@@ -142,7 +144,12 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
   const favoriteInvestor = useFavoriteInvestor();
 
   const handleFavoriteClick = () => {
-    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    if (!investor.favourite) {
+      logEvent('click_favorite', { category_name: 'investor', slug: investor.slug });
+    }
+
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when
+    // is false.
     favoriteInvestor.mutate({ id: investor.id, isFavourite: investor.favourite });
   };
 
@@ -161,6 +168,8 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
 
         <ProfileHeader
           className="mt-3 sm:mt-6"
+          type="investor"
+          slug={slug}
           logo={logo}
           title={name}
           subtitle={investorTypeName}

@@ -6,6 +6,10 @@ import { LanguageType } from 'types';
 export type ProfileHeaderProps = {
   /** Classnames to apply to the container */
   className?: string;
+  /** Type of profile */
+  type: 'project-developer' | 'investor';
+  /** Slug of the project developer/investor */
+  slug: string;
   /** Logo to display */
   logo?: string;
   /** Title to display */
@@ -22,7 +26,7 @@ export type ProfileHeaderProps = {
   projectsWaitingFunding?: number;
   /** Number of projects */
   totalProjects?: number;
-  /** Contact information for the project developer */
+  /** Contact information for the project developer/investor */
   contact?: ContactItemType;
   /** Callback for when the favorite button is clicked */
   onFavoriteClick?: () => void;

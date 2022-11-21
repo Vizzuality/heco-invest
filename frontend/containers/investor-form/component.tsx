@@ -22,6 +22,7 @@ import LeaveFormModal from 'containers/leave-form-modal';
 import MultiPageLayout, { Page, OutroPage } from 'containers/multi-page-layout';
 
 import Head from 'components/head';
+import { logEvent } from 'lib/analytics/ga';
 import { InvestorForm as InvestorFormType } from 'types/investor';
 import useValidation, { formPageInputs } from 'validations/investor';
 
@@ -84,7 +85,12 @@ const InvestorForm: FC<InvestorFormProps> = ({
       mutation.mutate(values, {
         onError: handleServiceErrors,
         onSuccess: () => {
-          !isCreateForm ? onComplete() : setCurrentPage(currentPage + 1);
+          if (!isCreateForm) {
+            onComplete();
+          } else {
+            logEvent('account_creation', { account_type: 'investor' });
+            setCurrentPage(currentPage + 1);
+          }
         },
       });
     } else {

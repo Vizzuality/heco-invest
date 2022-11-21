@@ -23,6 +23,7 @@ import Label from 'components/forms/label';
 import Loading from 'components/loading';
 import { Paths, UserRoles } from 'enums';
 import AuthPageLayout, { AuthPageLayoutProps } from 'layouts/auth-page';
+import { logEvent } from 'lib/analytics/ga';
 import { PageComponent } from 'types';
 import { SignIn } from 'types/sign-in';
 import { useSignInResolver } from 'validations/sign-in';
@@ -105,6 +106,8 @@ const SignIn: PageComponent<ProjectDeveloperProps, AuthPageLayoutProps> = () => 
           } else {
             signIn.mutate(data, {
               onSuccess: () => {
+                logEvent('login', { method: 'credentials' });
+
                 if (!!invitedUser) {
                   acceptInvitation.mutate(query.invitation_token as string, {
                     onSuccess: () => replace(Paths.Dashboard),

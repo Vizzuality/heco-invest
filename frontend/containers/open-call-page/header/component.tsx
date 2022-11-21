@@ -19,6 +19,7 @@ import Button from 'components/button';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import { Languages, OpenCallStatus, UserRoles } from 'enums';
+import { logEvent } from 'lib/analytics/ga';
 import languages from 'locales.config.json';
 
 import { useAccount } from 'services/account';
@@ -38,6 +39,7 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
 
   const {
     id,
+    slug,
     name,
     instrument_types,
     maximum_funding_per_project,
@@ -69,7 +71,12 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
   }, [closing_at, created_at, locale]);
 
   const handleFavoriteClick = () => {
-    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when is false.
+    if (!favourite) {
+      logEvent('click_favorite', { category_name: 'open-call', slug: slug });
+    }
+
+    // This mutation uses a 'DELETE' request when the isFavorite is true, and a 'POST' request when
+    // is false.
     favoriteOpenCall.mutate({ id, isFavourite: favourite });
   };
 

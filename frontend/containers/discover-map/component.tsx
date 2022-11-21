@@ -19,6 +19,7 @@ import ZoomControl from 'components/map/controls/zoom';
 import ClusterLayer from 'components/map/layers/cluster';
 import { Legend, LegendType } from 'components/map/legend/types';
 import ProjectMapPin from 'components/project-map-pin';
+import { logEvent } from 'lib/analytics/ga';
 import { ProjectMapParams } from 'types/project';
 
 import { useProjectsMap } from 'services/projects/projectService';
@@ -106,11 +107,14 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
   }, [layerLegends]);
 
   const handleChangeVisibleLayer = (e: ChangeEvent<HTMLInputElement>) => {
-    // The layer inputs are groups of checkboxes. To limit one value per group, the value is always updated to an array of one item with the last selected value. If the checkbox is already selected (the user unchecked the checkbox), the field is reseted.
+    // The layer inputs are groups of checkboxes. To limit one value per group, the value is always
+    // updated to an array of one item with the last selected value. If the checkbox is already
+    // selected (the user unchecked the checkbox), the field is reseted.
     const { name, value } = e.currentTarget;
     if (visibleLayers.includes(value)) {
       resetField(name as keyof MapLayersSelectorForm);
     } else {
+      logEvent('layer_toggled', { layer_name: value });
       setValue(name as keyof MapLayersSelectorForm, [value]);
     }
   };

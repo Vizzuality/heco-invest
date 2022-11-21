@@ -20,6 +20,7 @@ import Input from 'components/forms/input';
 import Loading from 'components/loading';
 import { Paths, UserRoles } from 'enums';
 import NakedLayout, { NakedLayoutProps } from 'layouts/naked';
+import { logEvent } from 'lib/analytics/ga';
 import { PageComponent } from 'types';
 import { SignIn, SignInCodeForm } from 'types/sign-in';
 
@@ -98,6 +99,8 @@ const SignInCode: PageComponent<ProjectDeveloperProps, NakedLayoutProps> = () =>
     (data: SignIn) => {
       signIn.mutate(data, {
         onSuccess: () => {
+          logEvent('login', { method: 'credentials' });
+
           if (!!invitedUser) {
             acceptInvitation.mutate(query.invitation_token as string, {
               onSuccess: () => replace(Paths.Dashboard),
