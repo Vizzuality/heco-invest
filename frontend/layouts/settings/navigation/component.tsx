@@ -13,7 +13,7 @@ import { NavigationProps } from './types';
 
 export const Navigation: FC<NavigationProps> = ({ className, userRole }: NavigationProps) => {
   const intl = useIntl();
-  const { asPath } = useRouter();
+  const { pathname } = useRouter();
 
   const links = useMemo(
     () => [
@@ -32,8 +32,8 @@ export const Navigation: FC<NavigationProps> = ({ className, userRole }: Navigat
   );
 
   const activeLinkId = useMemo(
-    () => links.find(({ id }) => asPath.startsWith(id))?.id,
-    [asPath, links]
+    () => links.find(({ id }) => pathname.startsWith(id))?.id,
+    [pathname, links]
   );
 
   return (
