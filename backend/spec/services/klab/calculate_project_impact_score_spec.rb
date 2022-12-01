@@ -1,6 +1,9 @@
 require "rails_helper"
 
 RSpec.describe Klab::CalculateProjectImpactScore do
+  before { VCR.turn_on! }
+  after { VCR.turn_off! }
+
   describe :call do
     before(:each) do
       allow(Klab::PollTicket).to receive(:sleep_interval).and_return(0)

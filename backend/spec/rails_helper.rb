@@ -48,6 +48,10 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
+  config.before(:suite) do
+    VCR.turn_off! # VCR only used in klab specs
+  end
+
   config.after do
     # Clear ActiveJob jobs
     if defined?(ActiveJob) && ActiveJob::QueueAdapters::TestAdapter == ActiveJob::Base.queue_adapter
