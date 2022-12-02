@@ -153,3 +153,18 @@ variable "tag" {
   type = string
   description = "Tag name to use for docker image tagging and deployment"
 }
+
+variable "klab_api_host" {
+  type = string
+  description = "Klab engine API host"
+}
+
+variable "klab_api_username" {
+  type = string
+  description = "Klab engine API username"
+}
+
+variable "klab_api_password" {
+  type = string
+  description = "Klab engine API password"
+}

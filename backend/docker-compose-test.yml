@@ -17,6 +17,9 @@ services:
       - ENCRYPTION_PRIMARY_KEY=TEST
       - ENCRYPTION_DETERMINISTIC_KEY=TEST
       - ENCRYPTION_DERIVATION_SALT=TEST
+      - KLAB_API_HOST=https://developers.integratedmodelling.org
+      - KLAB_API_USERNAME=TEST
+      - KLAB_API_PASSWORD=TEST
     depends_on:
       - db
   db:

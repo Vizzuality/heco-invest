@@ -19,6 +19,16 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
+require "vcr"
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.default_cassette_options = {serialize_with: :json}
+  config.filter_sensitive_data("<KLAB_API_USERNAME>") { ENV.fetch("KLAB_API_USERNAME") }
+  config.filter_sensitive_data("<KLAB_API_PASSWORD>") { ENV.fetch("KLAB_API_PASSWORD") }
+end
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.request_snapshots_dir = "spec/fixtures/snapshots"
@@ -37,6 +47,10 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+
+  config.before(:suite) do
+    VCR.turn_off! # VCR only used in klab specs
+  end
 
   config.after do
     # Clear ActiveJob jobs

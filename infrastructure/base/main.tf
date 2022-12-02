@@ -46,6 +46,9 @@ module "staging" {
   tag                    = "staging"
   http_auth_username     = var.staging_http_auth_username
   http_auth_password     = var.staging_http_auth_password
+  klab_api_host           = var.klab_api_host
+  klab_api_username       = var.klab_api_username
+  klab_api_password       = var.klab_api_password
 }
 
 module "production" {
@@ -75,6 +78,9 @@ module "production" {
   tag                    = "production"
   http_auth_username     = ""
   http_auth_password     = ""
+  klab_api_host           = var.klab_api_host
+  klab_api_username       = var.klab_api_username
+  klab_api_password       = var.klab_api_password
 }
 
 module "dns" {
