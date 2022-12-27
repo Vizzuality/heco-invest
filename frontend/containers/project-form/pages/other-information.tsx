@@ -19,8 +19,8 @@ const OtherInformation = ({ register, errors }: ProjectFormPagesProps<ProjectFor
       </h1>
       <p className="mb-10 text-gray-900">
         <FormattedMessage
-          defaultMessage="This description should sumarize your project in a few words. This information will be <n>public</n>."
-          id="8SBW1H"
+          defaultMessage="This description should sumarize your project in a few words. This might include relevant financial information that you want potential investors to know about. This information will be <n>public</n>."
+          id="aXPVkO"
           values={{
             n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
           }}
@@ -60,8 +60,8 @@ const OtherInformation = ({ register, errors }: ProjectFormPagesProps<ProjectFor
             <FieldInfo
               content={formatMessage({
                 defaultMessage:
-                  'Use this space to share links to documents, videos and websites that support your pitch.',
-                id: 'efZTBX',
+                  'Use this space to share links to documents, videos and websites that support your pitch. This might include relevant financial information that you want potential investors to know about.',
+                id: 'DsldZ2',
               })}
             />
           </Label>
