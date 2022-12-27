@@ -212,7 +212,10 @@ const GeneralInformation = ({
         </div>
         <div className="mb-8">
           <h2 className="mb-2.5 text-gray-600">
-            <FormattedMessage defaultMessage="Location" id="rvirM2" />
+            <FormattedMessage
+              defaultMessage="Specify the administrative division your project is located at"
+              id="wsffCL"
+            />
           </h2>
           <LocationSelectors
             control={control}
@@ -229,15 +232,18 @@ const GeneralInformation = ({
         <div className="mb-6.5">
           <Label htmlFor="geometry">
             <span className="mr-2.5">
-              <FormattedMessage defaultMessage="Draw or upload your location" id="MHwpc4" />
+              <FormattedMessage
+                defaultMessage="Draw or upload the area of the region your project will have an impact on"
+                id="pnBOKb"
+              />
             </span>
             <FieldInfo
               content={
                 <>
                   <p>
                     <FormattedMessage
-                      defaultMessage="Draw on the map or upload a file with the geographical area your project will have an impact on."
-                      id="YEYmEz"
+                      defaultMessage="Draw or upload the area of the region your project will have an impact on (i.e. your production zone and/or the location of your target audiences)"
+                      id="4wNuFe"
                     />
                   </p>
                   <p className="mt-2">
