@@ -84,7 +84,7 @@ FactoryBot.define do
     trait :published do
       status { "published" }
     end
-    
+
     trait :with_impacts do
       impact_calculated { true }
       municipality_biodiversity_impact { 0.1 }
