@@ -6,8 +6,13 @@ RSpec.describe API::Sorter do
   describe "#call" do
     describe "used with Project query" do
       let(:query) { Project.all }
-      let!(:project_1) { create :project, name: "AAAAA", municipality_total_impact: 0.1, created_at: 10.days.from_now }
-      let!(:project_2) { create :project, name: "BBBBB", municipality_total_impact: 0.2, created_at: 1.days.from_now }
+      let!(:project_1) { create :project, name: "AAAAA", created_at: 10.days.from_now }
+      let!(:project_2) { create :project, name: "BBBBB", created_at: 1.days.from_now }
+
+      before do
+        project_1.update! municipality_total_impact: 0.1
+        project_2.update! municipality_total_impact: 0.2
+      end
 
       context "when sorted by name" do
         let(:sort_param) { "name desc" }
