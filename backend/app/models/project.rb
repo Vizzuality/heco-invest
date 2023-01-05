@@ -73,7 +73,7 @@ class Project < ApplicationRecord
   before_validation :clear_funding_fields, unless: -> { looking_for_funding? }
   before_validation :clear_received_funding_fields, unless: -> { received_funding? }
   before_save :assign_priority_landscape, if: :centroid_changed?
-  after_save :calculate_impacts, if: -> { saved_change_to_geometry? || saved_change_to_impact_areas? }
+  after_save :recalculate_impacts, if: -> { saved_change_to_geometry? || saved_change_to_impact_areas? }
   after_save :notify_project_developers, if: -> { saved_change_to_status? && published? }
 
   accepts_nested_attributes_for :project_images, reject_if: :all_blank, allow_destroy: true
@@ -117,9 +117,19 @@ class Project < ApplicationRecord
     self.priority_landscape = centroid.blank? ? nil : LocationGeometry.of_type(:priority_landscape).intersection_with(centroid).first&.location
   end
 
-  def calculate_impacts
-    update_columns impact_calculated: false
+  def recalculate_impacts
+    reset_impacts
     ImpactCalculationJob.perform_later self
+  end
+
+  def reset_impacts
+    impact_columns = {impact_calculated: false}
+    %w[municipality hydrobasin priority_landscape].each do |impact_type|
+      %w[biodiversity climate water community total].each do |impact_area|
+        impact_columns["#{impact_type}_#{impact_area}_impact"] = nil
+      end
+    end
+    update_columns impact_columns
   end
 
   def notify_project_developers
