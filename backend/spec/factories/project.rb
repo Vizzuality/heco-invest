@@ -84,5 +84,24 @@ FactoryBot.define do
     trait :published do
       status { "published" }
     end
+
+    trait :with_impacts do
+      impact_calculated { true }
+      municipality_biodiversity_impact { 0.1 }
+      municipality_climate_impact { 0.1 }
+      municipality_water_impact { 0.1 }
+      municipality_community_impact { 0.1 }
+      municipality_total_impact { 0.1 }
+      hydrobasin_biodiversity_impact { 0.1 }
+      hydrobasin_climate_impact { 0.1 }
+      hydrobasin_water_impact { 0.1 }
+      hydrobasin_community_impact { 0.1 }
+      hydrobasin_total_impact { 0.1 }
+      priority_landscape_biodiversity_impact { 0.1 }
+      priority_landscape_climate_impact { 0.1 }
+      priority_landscape_water_impact { 0.1 }
+      priority_landscape_community_impact { 0.1 }
+      priority_landscape_total_impact { 0.1 }
+    end
   end
 end
