@@ -211,33 +211,51 @@ const GeneralInformation = ({
           />
         </div>
         <div className="mb-8">
-          <h2 className="mb-2.5 text-gray-600">
+          <h2 className="mb-4.5 text-gray-600">
             <FormattedMessage defaultMessage="Location" id="rvirM2" />
           </h2>
-          <LocationSelectors
-            control={control}
-            resetField={resetField}
-            getValues={getValues}
-            errors={errors}
-            fields={{
-              country: { fieldName: 'country_id', required: true },
-              state: { fieldName: 'department_id', required: true },
-              municipality: { fieldName: 'municipality_id', required: true },
-            }}
-          />
+          <fieldset>
+            <legend>
+              <span className="mr-2.5 font-sans font-semibold text-sm text-gray-800 mb-4.5">
+                <FormattedMessage defaultMessage="Administrative division" id="2owSZn" />
+              </span>
+              <FieldInfo
+                content={
+                  <FormattedMessage
+                    defaultMessage="Specify the administrative division your project is located at."
+                    id="VQsDFV"
+                  />
+                }
+              />
+            </legend>
+            <LocationSelectors
+              control={control}
+              resetField={resetField}
+              getValues={getValues}
+              errors={errors}
+              fields={{
+                country: { fieldName: 'country_id', required: true },
+                state: { fieldName: 'department_id', required: true },
+                municipality: { fieldName: 'municipality_id', required: true },
+              }}
+            />
+          </fieldset>
         </div>
         <div className="mb-6.5">
           <Label htmlFor="geometry">
             <span className="mr-2.5">
-              <FormattedMessage defaultMessage="Draw or upload your location" id="MHwpc4" />
+              <FormattedMessage
+                defaultMessage="Draw or upload the area of the region your project will have an impact on"
+                id="pnBOKb"
+              />
             </span>
             <FieldInfo
               content={
                 <>
                   <p>
                     <FormattedMessage
-                      defaultMessage="Draw on the map or upload a file with the geographical area your project will have an impact on."
-                      id="YEYmEz"
+                      defaultMessage="Draw or upload the area of the region your project will have an impact on (i.e. your production zone and/or the location of your target audiences)"
+                      id="4wNuFe"
                     />
                   </p>
                   <p className="mt-2">
