@@ -42,10 +42,11 @@ export const Footer: React.FC<FooterProps> = ({
             <Link href={Paths.Home} passHref>
               <a className="flex items-center text-base font-semibold">
                 <Image
-                  width={100}
-                  height={50}
-                  objectFit="cover"
-                  src="/images/logos/logo-heco-invest-white.png"
+                  width={120}
+                  height={25}
+                  objectFit="contain"
+                  objectPosition="left"
+                  src="/images/logos/heco_logo_white.png"
                   alt="Heco invest"
                 />
                 <span className="text-green-dark bg-white rounded-sm py-0.5 px-1 text-xs">

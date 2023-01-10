@@ -8,46 +8,32 @@ import { useScrollY } from 'hooks/use-scroll-y';
 
 import { Paths } from 'enums';
 
-const blackLogoPaths: string[] = [
-  Paths.ForProjectDevelopers,
-  Paths.ForInvestors,
-  Paths.About,
-  Paths.FAQ,
-  Paths.TermsConditions,
-];
+const whiteLogoPaths: string[] = [Paths.Dashboard, Paths.Discover, Paths.Settings];
 
 const Logo = () => {
   const { isScrolledY } = useScrollY();
   const { pathname } = useRouter();
-  const showBlackLogo = blackLogoPaths.includes(pathname);
+  const imagePath = isScrolledY
+    ? '/images/logos/heco_logo_color.png'
+    : pathname === Paths.Home || whiteLogoPaths.some((path) => pathname.startsWith(path))
+    ? '/images/logos/heco_logo_white.png'
+    : '/images/logos/heco_logo_green.png';
 
   return (
     <Link href={Paths.Home} passHref>
       <a className="flex items-center text-sm font-semibold xl:text-base">
-        {isScrolledY ? (
+        <span className="w-32 sm:w-40">
           <Image
-            width={150}
-            height={50}
-            objectFit="cover"
-            objectPosition="center"
-            src="/images/logos/logo-heco-invest-colors.png"
+            width={160}
+            height={37}
+            objectFit="contain"
+            objectPosition="left"
+            layout="responsive"
+            src={imagePath}
+            priority
             alt="Heco invest"
-            className=""
           />
-        ) : (
-          <Image
-            width={150}
-            height={50}
-            objectFit="cover"
-            src={
-              showBlackLogo
-                ? '/images/logos/logo-heco-invest-black.png'
-                : '/images/logos/logo-heco-invest-white.png'
-            }
-            alt="Heco invest"
-            className="inline"
-          />
-        )}
+        </span>
         <span
           className={cx('text-sm ml-1 px-1 py-0.5 rounded-[4px]', {
             'bg-white text-green-dark': !isScrolledY,
