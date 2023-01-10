@@ -40,8 +40,15 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="xl:col-span-1">
             <Link href={Paths.Home} passHref>
-              <a className="text-base font-semibold">
-                HeCo Invest{' '}
+              <a className="flex items-center text-base font-semibold">
+                <Image
+                  width={120}
+                  height={25}
+                  objectFit="contain"
+                  objectPosition="left"
+                  src="/images/logos/heco_logo_white.png"
+                  alt="Heco invest"
+                />
                 <span className="text-green-dark bg-white rounded-sm py-0.5 px-1 text-xs">
                   βeta
                 </span>
