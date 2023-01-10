@@ -19,7 +19,11 @@ import CloseIcon from 'svgs/ui/close.svg';
 
 import { LocationSearcherProps } from './types';
 
-export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocationSelected }) => {
+export const LocationSearcher: FC<LocationSearcherProps> = ({
+  className,
+  onLocationSelected,
+  isAlwaysOpen = false,
+}) => {
   const intl = useIntl();
   const placesRef = useRef();
   const containerRef = useRef();
@@ -27,7 +31,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
 
   const [address, setAddress] = useState('');
   const [addressSetted, setAddressSetted] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(isAlwaysOpen);
   const [isFocused, setIsFocused] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -38,7 +42,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
   };
 
   useOutsideClick(containerRef, () => {
-    if (!isOpen || addressSetted) return;
+    if (isAlwaysOpen || !isOpen || addressSetted) return;
     setIsOpen(false);
     handleClearSearch();
   });
@@ -50,8 +54,6 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
   };
 
   const handleSelectAddress = (newAddress: string) => {
-    console.log('address', address);
-    console.log('newAddress', newAddress);
     setIsFocused(false);
     setAddress(newAddress);
     setAddressSetted(true);
@@ -125,7 +127,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({ className, onLocat
                   })}
                   onMouseEnter={() => setIsOpen(true)}
                   onMouseLeave={() => {
-                    if (!isFocused && !addressSetted) {
+                    if (!isAlwaysOpen && !isFocused && !addressSetted) {
                       setIsOpen(false);
                     }
                   }}

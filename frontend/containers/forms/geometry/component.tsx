@@ -319,7 +319,7 @@ export const GeometryInput = <FormValues extends FieldValues>({
               )}
             </Map>
             <div className="absolute flex gap-2 top-3.5 left-3.5 text-gray-800 text-sm">
-              <LocationSearcher onLocationSelected={handleLocationSelected} />
+              <LocationSearcher onLocationSelected={handleLocationSelected} isAlwaysOpen />
             </div>
             <Controls className="absolute bottom-2 left-2">
               <ZoomControl viewport={{ ...viewport }} onZoomChange={onZoomChange} />
