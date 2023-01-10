@@ -270,7 +270,7 @@ export const ImpactChart: FC<ImpactChartProps> = ({
           <FieldInfo content={impactData[impactType].description} />
         </div>
         <span className="text-lg leading-tight text-gray-600">
-          {impactData[impactType].value.toFixed(1)}
+          {impactData[impactType].value?.toFixed(1)}
         </span>
       </div>
     );
