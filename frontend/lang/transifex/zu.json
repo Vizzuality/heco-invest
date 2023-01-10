@@ -233,6 +233,9 @@
   "2inebt": {
     "string": "The opportunities are located in geographies that are are unique due to of their biodiversity, cultural heritages, and regulation of water systems. As such, these projects will have the greatest impact for people and nature."
   },
+  "2owSZn": {
+    "string": "Administrative division"
+  },
   "2qzivP": {
     "string": "Discover Project Developers"
   },
@@ -343,6 +346,9 @@
   },
   "4vn+6A": {
     "string": "{inputName} is focused, type to refine list, press down to open the menu, press left to focus selected values"
+  },
+  "4wNuFe": {
+    "string": "Draw or upload the area of the region your project will have an impact on (i.e. your production zone and/or the location of your target audiences)"
   },
   "4zK41e": {
     "string": "Investing in the Amazon means contributing to improving the quality of life of more than 30 million people. It is also contributing to the development and conservation of a vital region for South America and the world."
@@ -1314,9 +1320,6 @@
   "MH3koz": {
     "string": "Previous slide"
   },
-  "MHwpc4": {
-    "string": "Draw or upload your location"
-  },
   "MJuP2l": {
     "string": "Displays the impacts of forest change on local biodiversity intactness."
   },
@@ -1778,6 +1781,9 @@
   },
   "VNrnq9": {
     "string": "Non-VC Investment vehicle"
+  },
+  "VQsDFV": {
+    "string": "Specify the administrative division your project is located at."
   },
   "VR21hO": {
     "string": "The climate crisis is where short-term thinking and long-term consequences collide. How to think long-term in a short-term world?"
@@ -2906,6 +2912,9 @@
   },
   "pkBu4q": {
     "string": "insert number (max 36)"
+  },
+  "pnBOKb": {
+    "string": "Draw or upload the area of the region your project will have an impact on"
   },
   "psPbog": {
     "string": "Corporation"
