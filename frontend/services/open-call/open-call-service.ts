@@ -52,7 +52,7 @@ export function useOpenCallsList(
   params?: PagedRequest,
   options?: UseQueryOptions<PagedResponse<OpenCall>>
 ): UseQueryResult<PagedResponse<OpenCall>> & { openCalls: OpenCall[] } {
-  const query = useLocalizedQuery([Queries.ProjectList, params], () => getOpenCalls(params), {
+  const query = useLocalizedQuery([Queries.OpenCallList, params], () => getOpenCalls(params), {
     ...staticDataQueryOptions,
     ...options,
   });

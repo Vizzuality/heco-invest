@@ -32,7 +32,7 @@ import { Project as ProjectType } from 'types/project';
 
 import { getProject } from 'services/projects/projectService';
 
-export const getServerSideProps = withLocalizedRequests(async ({ locale }) => {
+export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
     props: {
       intlMessages: await loadI18nMessages({ locale }),

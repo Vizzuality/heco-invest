@@ -118,6 +118,9 @@ export const useProjectsMap = (
     placeholderData: {
       data: [],
     },
+    keepPreviousData: true,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   });
 
   return useMemo(() => {

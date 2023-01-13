@@ -3,15 +3,13 @@ import { ChangeEvent, FC, useCallback, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import omit from 'lodash-es/omit';
-
-import { useRouter } from 'next/router';
-
 import MapboxGLPlugin from '@vizzuality/layer-manager-plugin-mapboxgl';
 import CartoProvider from '@vizzuality/layer-manager-provider-carto';
 import { LayerManager, Layer } from '@vizzuality/layer-manager-react';
 
 import { useLayers } from 'hooks/useLayers';
+
+import { useQueryParams } from 'helpers/pages';
 
 import Map from 'components/map';
 import Controls from 'components/map/controls';
@@ -36,11 +34,11 @@ const cartoProvider = new CartoProvider();
 
 export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
   const { layers } = useLayers();
-  const { query } = useRouter();
+  const { page, sorting, search, ...filters } = useQueryParams();
 
   const { projectsMap } = useProjectsMap({
-    ...(omit(query, 'search') as ProjectMapParams),
-    'filter[full_text]': query.search as string,
+    ...filters,
+    'filter[full_text]': search as string,
   });
 
   const [viewport, setViewport] = useState({});
@@ -122,7 +120,12 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
   return (
     <>
       <div className="relative w-full h-full">
-        <Map bounds={bounds} viewport={viewport} onMapViewportChange={handleViewportChange}>
+        <Map
+          bounds={bounds}
+          viewport={viewport}
+          onMapViewportChange={handleViewportChange}
+          reuseMaps
+        >
           {(map) => (
             <>
               <LayerManager
