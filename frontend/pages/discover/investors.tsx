@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
@@ -11,6 +11,7 @@ import { usePagination } from 'hooks/usePagination';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import DiscoverNoResults from 'containers/discover-no-results';
 import ProfileCard from 'containers/profile-card';
 
 import Head from 'components/head';
@@ -53,6 +54,7 @@ const InvestorsPage: PageComponent<InvestorsPageProps, DiscoverPageLayoutProps> 
       <Head title={intl.formatMessage({ defaultMessage: 'Discover Investors', id: 'nWf75J' })} />
       <div className="flex h-full">
         <div className="relative flex flex-col w-full lg:overflow-hidden">
+          {!loading && !hasInvestors && <DiscoverNoResults />}
           <div
             ref={investorsContainerRef}
             className={cx({
@@ -86,9 +88,6 @@ const InvestorsPage: PageComponent<InvestorsPageProps, DiscoverPageLayoutProps> 
                   impacts={impacts}
                 />
               ))}
-              {!loading && !hasInvestors && (
-                <FormattedMessage defaultMessage="No investors" id="jX0V8C" />
-              )}
             </div>
           </div>
           {hasInvestors && <Pagination className="w-full pt-2 -mb-2" {...paginationProps} />}
