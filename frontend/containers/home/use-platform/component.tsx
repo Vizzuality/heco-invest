@@ -109,12 +109,15 @@ export const UsePlatform = () => {
               </div>
               <div>
                 <dt className="text-base font-semibold sm:text-lg md:text-xl">
-                  <FormattedMessage defaultMessage="Projects of all sizes" id="dkNQOz" />
+                  <FormattedMessage defaultMessage="Find projects" id="GkLH7r" />
                 </dt>
                 <dd className="mt-1 text-black/70">
                   <FormattedMessage
-                    defaultMessage="Invest in small, medium or big project opportunities."
-                    id="URdlN+"
+                    defaultMessage="Find investment opportunities for <b>loan</b>, <b>equity</b> or <b>grant</b> funding."
+                    values={{
+                      b: (chunks: string) => <span className="font-semibold">{chunks}</span>,
+                    }}
+                    id="waFysl"
                   />
                 </dd>
               </div>

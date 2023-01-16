@@ -166,8 +166,8 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         descriptions={[
           <FormattedMessage
             key="desc-1"
-            defaultMessage="HeCo Invest manages a <n>wide range of investment and financing opportunities</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n> defined by the HeCo program."
-            id="WfWObC"
+            defaultMessage="HeCo Invest manages a <n>wide range of investment and financing opportunities (investment opportunities for loan, equity or grant funding)</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n>."
+            id="g69fjK"
             values={{
               n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
             }}
