@@ -13,11 +13,11 @@ const whiteLogoPaths: string[] = [Paths.Dashboard, Paths.Discover, Paths.Setting
 const Logo = () => {
   const { isScrolledY } = useScrollY();
   const { pathname } = useRouter();
-  const imagePath = isScrolledY
-    ? '/images/logos/heco_logo_color.png'
-    : pathname === Paths.Home || whiteLogoPaths.some((path) => pathname.startsWith(path))
-    ? '/images/logos/heco_logo_white.png'
-    : '/images/logos/heco_logo_green.png';
+  const imagePath =
+    !isScrolledY &&
+    (pathname === Paths.Home || whiteLogoPaths.some((path) => pathname.startsWith(path)))
+      ? '/images/logos/heco_logo_white.png'
+      : '/images/logos/heco_logo_color.png';
 
   return (
     <Link href={Paths.Home} passHref>
