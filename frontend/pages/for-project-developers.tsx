@@ -145,8 +145,8 @@ const ForProjectDevelopers: PageComponent<ForProjectDevelopersProps, StaticPageL
         descriptions={[
           <FormattedMessage
             key="desc-1"
-            defaultMessage="HeCo Invest provides you with a range of resources <n>to help you grow</n> and have the greatest <n>impact in the Colombian Amazon</n>."
-            id="XUD4o/"
+            defaultMessage="In the context of HeCo Invest, a ‘project’ is an investment opportunity for loan, equity or grant funding. HeCo Invest provides you with a range of resources <n>to help you grow</n> and have the greatest <n>impact in the Colombian Amazon</n>."
+            id="8r6Vdr"
             values={{
               n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
             }}

@@ -542,9 +542,6 @@
   "8Qmt9j": {
     "string": "My open calls"
   },
-  "8SBW1H": {
-    "string": "This description should sumarize your project in a few words. This information will be <n>public</n>."
-  },
   "8SayhS": {
     "string": "{placeholder}"
   },
@@ -571,6 +568,9 @@
   },
   "8mCCtS": {
     "string": "Ending soon"
+  },
+  "8r6Vdr": {
+    "string": "In the context of HeCo Invest, a ‘project’ is an investment opportunity for loan, equity or grant funding. HeCo Invest provides you with a range of resources <n>to help you grow</n> and have the greatest <n>impact in the Colombian Amazon</n>."
   },
   "8rAlFa": {
     "string": "Not listed"
@@ -860,6 +860,9 @@
   "DrtKvj": {
     "string": "Impact of projects on biodiversity conservation, calculated from indicators of endemism, land conservation/restoration, connectivity, and development of sustainable social projects."
   },
+  "DsldZ2": {
+    "string": "Use this space to share links to documents, videos and websites that support your pitch. This might include relevant financial information that you want potential investors to know about."
+  },
   "DsukuX": {
     "string": "Delete open call?"
   },
@@ -1024,6 +1027,9 @@
   },
   "GkDTfx": {
     "string": "You need to enter an email"
+  },
+  "GkLH7r": {
+    "string": "Find projects"
   },
   "Gpyrow": {
     "string": "IDB Lab is the innovation laboratory of the Inter-American Development Back Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
@@ -1749,9 +1755,6 @@
   "UIQdVc": {
     "string": "Are you sure you want to delete “<strong>{projectName}</strong>”?"
   },
-  "URdlN+": {
-    "string": "Invest in small, medium or big project opportunities."
-  },
   "Ub+AGc": {
     "string": "Sign In"
   },
@@ -1857,9 +1860,6 @@
   "WU9L8h": {
     "string": "Account language"
   },
-  "WfWObC": {
-    "string": "HeCo Invest manages a <n>wide range of investment and financing opportunities</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n> defined by the HeCo program."
-  },
   "WkrNSk": {
     "string": "English"
   },
@@ -1904,9 +1904,6 @@
   },
   "XQuzr9": {
     "string": "Identified priorities by the HeCo program"
-  },
-  "XUD4o/": {
-    "string": "HeCo Invest provides you with a range of resources <n>to help you grow</n> and have the greatest <n>impact in the Colombian Amazon</n>."
   },
   "XURmN1": {
     "string": "Someone has shared a HeCo Invest contact with you"
@@ -2100,6 +2097,9 @@
   "bWygLM": {
     "string": "insert the amount of money"
   },
+  "bc6tGh": {
+    "string": "This description should summarize your project in a few words. This might include relevant financial information that you want potential investors to know about. This information will be <n>public</n>."
+  },
   "bh4rlK": {
     "string": "Government"
   },
@@ -2219,9 +2219,6 @@
   },
   "dfidDR": {
     "string": "Microfinance"
-  },
-  "dkNQOz": {
-    "string": "Projects of all sizes"
   },
   "du2+Gq": {
     "string": "<b>Biodiversity</b>:"
@@ -2357,6 +2354,9 @@
   },
   "g5pX+a": {
     "string": "About"
+  },
+  "g69fjK": {
+    "string": "HeCo Invest manages a <n>wide range of investment and financing opportunities (investment opportunities for loan, equity or grant funding)</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n>."
   },
   "g8xSgQ": {
     "string": "Commercial bank"
@@ -3326,6 +3326,9 @@
   },
   "wSZR47": {
     "string": "Submit"
+  },
+  "waFysl": {
+    "string": "Find investment opportunities for <b>loan</b>, <b>equity</b> or <b>grant</b> funding."
   },
   "wasfcn": {
     "string": "You need to enter a text for the problems you are solving"
