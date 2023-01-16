@@ -11,6 +11,7 @@ import { usePagination } from 'hooks/usePagination';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import DiscoverNoResults from 'containers/discover-no-results';
 import DiscoverNotice from 'containers/discover-notice';
 import OpenCallCard from 'containers/open-call-card';
 
@@ -70,6 +71,7 @@ const OpenCallsPage: PageComponent<OpenCallsPageProps, DiscoverPageLayoutProps> 
               id="Cf2YAW"
             />
           </DiscoverNotice>
+          {!loading && !hasOpenCalls && <DiscoverNoResults />}
           <div
             ref={openCallsContainerRef}
             className={cx({
@@ -94,9 +96,6 @@ const OpenCallsPage: PageComponent<OpenCallsPageProps, DiscoverPageLayoutProps> 
               {openCalls.map((openCall) => (
                 <OpenCallCard key={openCall.id} openCall={openCall} />
               ))}
-              {!loading && !hasOpenCalls && (
-                <FormattedMessage defaultMessage="No open calls" id="O3WloJ" />
-              )}
             </div>
           </div>
           {hasOpenCalls && <Pagination className="w-full pt-2 -mb-2" {...paginationProps} />}

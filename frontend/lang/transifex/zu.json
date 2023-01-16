@@ -521,6 +521,9 @@
   "80Vefc": {
     "string": "Share on Twitter"
   },
+  "8Fez6i": {
+    "string": "investor"
+  },
   "8Gp8gS": {
     "string": "Open call name"
   },
@@ -1425,9 +1428,6 @@
   "O29TSs": {
     "string": "Share by email"
   },
-  "O3WloJ": {
-    "string": "No open calls"
-  },
   "O95R3Z": {
     "string": "Phone"
   },
@@ -1608,6 +1608,9 @@
   "Rb/hb9": {
     "string": "LinkedIn"
   },
+  "RbFAl7": {
+    "string": "project"
+  },
   "RqplOy": {
     "string": "Investments in HeCo Invest will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
   },
@@ -1625,6 +1628,9 @@
   },
   "SENRqu": {
     "string": "Help"
+  },
+  "SEnqhq": {
+    "string": "project developer"
   },
   "SFCYg4": {
     "string": "Don’t have a project yet? Create a project now"
@@ -1718,9 +1724,6 @@
   },
   "TfAnzZ": {
     "string": "The pictures must have a maximum size of 5 MB"
-  },
-  "TfXhCr": {
-    "string": "No projects"
   },
   "TkWozN": {
     "string": "an equity investment consists of the acquisition, by an entity specialized in private equity, of a package of shares of a company or enterprise. The private equity firm thus becomes one of the owners of the company."
@@ -1944,9 +1947,6 @@
   "Y2HapG": {
     "string": "The dataset represents a series of vectorized polygon layers that depict sub-basin boundaries at a global scale. An important characteristic of any sub-basin delineation is the sub-basin breakdown. At its highest level of sub-basin breakdown, each basin has been divided into two sub-basins at every location where two river branches meet which each have an individual upstream area of at least 100 km². A second critical feature of sub-basin delineations is the way the sub-basins are grouped or coded to allow for the creation of nested sub-basins at different scales, or to navigate within the sub-basin network from up- to downstream. To support these functionalities and topological concepts, the ‘Pfafstetter’ coding system has been implemented, offering 12 hierarchically nested sub-basin breakdowns globally."
   },
-  "Y2zB+b": {
-    "string": "No project developers"
-  },
   "Y4hw30": {
     "string": "The password must contain at least one uppercase letter, one lowercase letter and one number."
   },
@@ -2111,6 +2111,9 @@
   },
   "btdgGc": {
     "string": "<a>Browse the open calls</a> posted by our investor community to identify new areas for project development."
+  },
+  "bz4Mm+": {
+    "string": "Nothing found"
   },
   "c+PoWZ": {
     "string": "This will help us measure the impact of your project. Try to be as precise and realistic as possible, choosing only your main direct impacts. <a>Learn more</a>"
@@ -2508,6 +2511,9 @@
   "iUt7so": {
     "string": "of the planet’s known biodiversity lives in the Amazon, the largest tropical rainforest on the planet."
   },
+  "iWUk4N": {
+    "string": "No {tab} match the keywords you’ve entered. Please <n>try another term</n> or <n>select a filter</n>."
+  },
   "igBQ/M": {
     "string": "An open call is a call for projects made by a given investor. Open calls give investors the possibility to open specific opportunities in their topics of interest. All registered and approved project developers have the possibility to submit their projects to an open call, if they match the open call criteria, and therefore apply to this particular funding."
   },
@@ -2573,9 +2579,6 @@
   },
   "jUgR7w": {
     "string": "Stage of development or maturity of the project"
-  },
-  "jX0V8C": {
-    "string": "No investors"
   },
   "jXqlWP": {
     "string": "{name} project developer"
