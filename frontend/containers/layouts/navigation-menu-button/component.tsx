@@ -79,7 +79,7 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
           <MenuSection>
             {!isSearchPage && (
               <MenuItem key={Paths.Projects}>
-                <FormattedMessage defaultMessage="Search" id="xmcVZ0" />
+                <FormattedMessage defaultMessage="Catalog" id="GOdq5V" />
               </MenuItem>
             )}
             <MenuItem key={Paths.ForInvestors}>
