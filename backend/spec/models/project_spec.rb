@@ -241,13 +241,30 @@ RSpec.describe Project, type: :model do
   end
 
   describe "#recalculate_impacts" do
-    let!(:project) { create :project, :with_impacts }
+    let(:project) { create :project, :with_impacts, :with_demands }
 
     context "when geometry changes" do
-      it "enqueues impact calculation job" do
-        assert_enqueued_with job: ImpactCalculationJob, args: [project] do
-          project.geometry = {type: "Polygon", coordinates: [[[0.3, 0.3], [1.3, 0.3], [1.3, 1.3], [0.3, 1.3]]]}
-          project.save!
+      context "when Klab is disabled" do
+        before { stub_const("ENV", ENV.to_hash.merge("KLAB_ENABLED" => "false")) }
+
+        it "enqueues impact calculation job" do
+          assert_enqueued_with job: ImpactCalculationJob, args: [project] do
+            project.geometry = {type: "Polygon", coordinates: [[[0.3, 0.3], [1.3, 0.3], [1.3, 1.3], [0.3, 1.3]]]}
+            project.save!
+          end
+        end
+      end
+
+      context "when Klab is enabled" do
+        before { stub_const("ENV", ENV.to_hash.merge("KLAB_ENABLED" => "true")) }
+
+        it "enqueues klab impact jobs" do
+          assert_enqueued_with job: Klab::SubmitContextsJob, args: [project.id] do
+            assert_enqueued_with job: Klab::CalculateImpactsJob, args: [project.id] do
+              project.geometry = {type: "Polygon", coordinates: [[[0.3, 0.3], [1.3, 0.3], [1.3, 1.3], [0.3, 1.3]]]}
+              project.save!
+            end
+          end
         end
       end
 
@@ -256,30 +273,54 @@ RSpec.describe Project, type: :model do
         expect(project.reload.impact_calculated).to be_falsey
       end
 
-      it "resets all impacts attributes" do
+      it "resets all impacts and demand attributes" do
         project.update! geometry: {type: "Polygon", coordinates: [[[0.3, 0.3], [1.3, 0.3], [1.3, 1.3], [0.3, 1.3]]]}
-        %w[municipality hydrobasin priority_landscape].each do |impact_type|
-          %w[biodiversity climate water community total].each do |impact_area|
-            expect(project.public_send("#{impact_type}_#{impact_area}_impact")).to be_nil
+        Project::IMPACT_LEVELS.each do |impact_level|
+          Project::IMPACT_DIMENSIONS.each do |impact_dimension|
+            expect(project.public_send("#{impact_level}_#{impact_dimension}_impact")).to be_nil
+            expect(project.public_send("#{impact_level}_#{impact_dimension}_demand")).to be_nil unless impact_dimension == "total"
           end
         end
       end
     end
 
     context "when impact areas" do
-      it "enqueues impact calculation job" do
-        assert_enqueued_with job: ImpactCalculationJob, args: [project] do
-          project.impact_areas = ["hydrometerological-risk-reduction"]
-          project.save!
+      context "when Klab is disabled" do
+        before { stub_const("ENV", ENV.to_hash.merge("KLAB_ENABLED" => "false")) }
+
+        it "enqueues impact calculation job" do
+          assert_enqueued_with job: ImpactCalculationJob, args: [project] do
+            project.impact_areas = ["hydrometerological-risk-reduction"]
+            project.save!
+          end
+        end
+      end
+
+      context "when Klab is enabled" do
+        before { stub_const("ENV", ENV.to_hash.merge("KLAB_ENABLED" => "true")) }
+
+        it "enqueues klab impact jobs" do
+          assert_enqueued_with job: Klab::SubmitContextsJob, args: [project.id] do
+            assert_enqueued_with job: Klab::CalculateImpactsJob, args: [project.id] do
+              project.impact_areas = ["hydrometerological-risk-reduction"]
+              project.save!
+            end
+          end
         end
       end
     end
 
     context "when any other attribute changes" do
+      let!(:project) { create :project, :with_impacts, :with_demands }
+
       it "does not enqueue impact calculation job" do
         assert_no_enqueued_jobs only: ImpactCalculationJob do
-          project.name = "NEW NAME"
-          project.save!
+          assert_no_enqueued_jobs only: Klab::SubmitContextsJob do
+            assert_no_enqueued_jobs only: Klab::CalculateImpactsJob do
+              project.name = "NEW NAME"
+              project.save!
+            end
+          end
         end
       end
     end

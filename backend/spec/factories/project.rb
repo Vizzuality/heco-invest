@@ -87,6 +87,11 @@ FactoryBot.define do
 
     trait :with_impacts do
       impact_calculated { true }
+      project_biodiversity_impact { 0.1 }
+      project_climate_impact { 0.1 }
+      project_water_impact { 0.1 }
+      project_community_impact { 0.1 }
+      project_total_impact { 0.1 }
       municipality_biodiversity_impact { 0.1 }
       municipality_climate_impact { 0.1 }
       municipality_water_impact { 0.1 }
@@ -102,6 +107,25 @@ FactoryBot.define do
       priority_landscape_water_impact { 0.1 }
       priority_landscape_community_impact { 0.1 }
       priority_landscape_total_impact { 0.1 }
+    end
+
+    trait :with_demands do
+      project_biodiversity_demand { 0.1 }
+      project_climate_demand { 0.1 }
+      project_water_demand { 0.1 }
+      project_community_demand { 0.1 }
+      municipality_biodiversity_demand { 0.1 }
+      municipality_climate_demand { 0.1 }
+      municipality_water_demand { 0.1 }
+      municipality_community_demand { 0.1 }
+      hydrobasin_biodiversity_demand { 0.1 }
+      hydrobasin_climate_demand { 0.1 }
+      hydrobasin_water_demand { 0.1 }
+      hydrobasin_community_demand { 0.1 }
+      priority_landscape_biodiversity_demand { 0.1 }
+      priority_landscape_climate_demand { 0.1 }
+      priority_landscape_water_demand { 0.1 }
+      priority_landscape_community_demand { 0.1 }
     end
   end
 end

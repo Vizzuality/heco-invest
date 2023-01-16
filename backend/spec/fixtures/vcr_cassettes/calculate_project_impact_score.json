@@ -1,0 +1,1688 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "post",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/users/log-in",
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"username\":\"<KLAB_API_USERNAME>\",\"password\":\"<KLAB_API_PASSWORD>\"}"
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v1.10.0"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 202,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:02 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\"redirect\":\"/modeler/ui/viewer?session=s3d4tb2sl2s\",\"session\":\"s3d4tb2sl2s\",\"publicApps\":[{\"name\":\"aries.seea\",\"description\":\"#ARIES_FOR_SEEA_EXPLORER_DESCRIPTION\",\"actions\":[],\"color\":null,\"projectId\":\"un.seea.aries\",\"logo\":\"static/images/seea_logo_transparent.png\",\"label\":\"ARIES for SEEA Explorer\",\"platform\":\"WEB\",\"localizations\":[{\"isoCode\":\"en\",\"languageDescription\":\"English\",\"localizedDescription\":\"The SEEA Ecosystem Accounting standard on the ARIES platform. A collaboration between UNSD, UNEP and BC3. Powered by k.LAB semantic web technology.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"ru\",\"languageDescription\":\"русский\",\"localizedDescription\":\"Стандарт экосистемного учета СЭЭУ на платформе ARIES. Сотрудничество между СОООН, ЮНЕП и Баскским центром по изменению климата. На базе семантической веб-технологии k.LAB.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"fr\",\"languageDescription\":\"français\",\"localizedDescription\":\"Le cadre statistique de la comptabilité des écosystèmes du SCEE sur la plateforme ARIES. Une collaboration entre UNSD, PNUE et BC3. Alimenté par la technologie du web sémantique k.LAB.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"es\",\"languageDescription\":\"español\",\"localizedDescription\":\"Contabilidad de Ecosistemas de SEEA para el capital natural en la plataforma de ARIES. Una colaboración entre UNSD, PNUMA y BC3 que utiliza la tecnología semántica de k.LAB.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"zh\",\"languageDescription\":\"中文\",\"localizedDescription\":\"基于ARIES平台的综合环境与经济核算系统的生态系统核算标准。由联合国统计司环境统计科（UNSD）、联合国环境规划署（UNEP）和巴斯克气候变化中心（BC3）共同合作。k.LAB语义网络技术提供支持。\",\"localizedLabel\":\"ARIES for SEEA Explorer\"}]}],\"authorization\":\"fa20637b-2a8b-4db3-82ae-2e69d90a0ca0\"}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:28 GMT"
+    },
+    {
+      "request": {
+        "method": "post",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/submit/context",
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"urn\":\"aries.heco.locations.colombia_continental\",\"observables\":[\"im:Indicator (value of ecology:Biodiversity)\",\"im:Indicator (value of ecology:Ecosystem for es:ClimateRegulation)\",\"im:Indicator (es.nca:Condition of demography:Human demography:Community)\",\"im:Indicator (es.nca:Condition of earth:Aquatic ecology:Ecosystem)\"],\"scenarios\":[],\"estimate\":false,\"estimatedCost\":-1}"
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v1.10.0"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:02 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:29 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:03 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:29 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:03 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:30 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:04 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:30 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:05 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:31 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:05 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:31 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:06 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:32 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:06 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:32 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:06 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:33 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:07 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:33 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:07 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:34 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:08 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:34 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:08 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:35 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:09 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:35 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:43:09 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"context\":\"o3d7czhc58d\",\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:43:36 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/3d7cyk25oe",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:44:40 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"3d7cyk25oe\",\"postDate\":1673865809282,\"resolutionDate\":0,\"status\":\"RESOLVED\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"charge\":\"0.0\",\"context\":\"o3d7czhc58d\",\"actualcost\":\"0\",\"geometry\":null,\"feasible\":\"true\",\"currency\":\"KLB\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\",\"artifacts\":\"o3d7d3waa0d,o3d7gcmsovf,o3d7jjnschn,o3d7mmnrks2\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:45:06 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/export/structure/o3d7d3waa0d",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:44:40 GMT"
+          ],
+          "Content-Length": [
+            "2230"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"shapeType\":\"EMPTY\",\"encodedShape\":null,\"spatialProjection\":null,\"id\":\"o3d7d3waa0d\",\"rootContextId\":\"o3d7czhc58d\",\"label\":\"Indicator value of biodiversity\",\"observable\":\"im:Indicator (value of ecology:Biodiversity)\",\"exportLabel\":\"indicator_value_of_biodiversity\",\"valueType\":\"NUMBER\",\"observationType\":\"STATE\",\"semantics\":[\"OBSERVABLE\",\"VALUE\",\"QUALITY\",\"QUANTIFIABLE\"],\"geometryTypes\":[\"COLORMAP\",\"RASTER\"],\"literalValue\":null,\"overallValue\":null,\"traits\":[],\"metadata\":{\"Grid size\":\"2469948 (1338 x 1846) cells\",\"Cell size\":\"1,010.124 x 1,002.374 m\",\"Temporal transitions\":\"Wed Jan 01 00:00:00 GMT 2020\",\"Total area\":\"1,139,588.849 km2\"},\"taskId\":null,\"contextId\":\"o3d7czhc58d\",\"empty\":false,\"style\":null,\"primary\":true,\"dataSummary\":{\"nodataProportion\":0.0,\"minValue\":0.013635151088237762,\"maxValue\":0.9975030422210693,\"mean\":0.5545237701289529,\"categorized\":false,\"histogram\":[17014,43186,169982,172209,139547,125704,434804,27576,234,1],\"categories\":[\"0.014 to 0.112\",\"0.112 to 0.21\",\"0.21 to 0.309\",\"0.309 to 0.407\",\"0.407 to 0.506\",\"0.506 to 0.604\",\"0.604 to 0.702\",\"0.702 to 0.801\",\"0.801 to 0.899\",\"0.899 to 0.998\"]},\"exportFormats\":[{\"label\":\"GeoTIFF raster archive\",\"value\":\"tiff\",\"adapter\":\"raster\",\"extension\":\"zip\"},{\"label\":\"PNG image\",\"value\":\"png\",\"adapter\":\"raster\",\"extension\":\"png\"}],\"originalGroupId\":null,\"alive\":false,\"main\":false,\"dynamic\":false,\"timeEvents\":null,\"histogram\":{\"bins\":[17014,43186,169982,172209,139547,125704,434804,27576,234,1],\"boundaries\":[0.013635151088237762,0.9975030422210693],\"degenerate\":false},\"colormap\":null,\"childIds\":{},\"scaleReference\":null,\"childrenCount\":0,\"roles\":[],\"observableType\":null,\"parentId\":\"o3d7czhc58d\",\"parentArtifactId\":\"o3d7czhc58d\",\"children\":[],\"actions\":[{\"actionLabel\":null,\"actionId\":null,\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":true,\"submenu\":[]},{\"actionLabel\":\"Add to cache\",\"actionId\":\"AddToCache\",\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":false,\"submenu\":[]}],\"structure\":[],\"contextTime\":-1,\"creationTime\":1673865813586,\"urn\":\"local:observation:s3d4tb2sl2s:o3d7d3waa0d\",\"valueCount\":2469948,\"previouslyNotified\":false,\"contextualized\":true,\"lastUpdate\":1577836800000,\"key\":null}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:45:06 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/export/structure/o3d7gcmsovf",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:44:40 GMT"
+          ],
+          "Content-Length": [
+            "2192"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"shapeType\":\"EMPTY\",\"encodedShape\":null,\"spatialProjection\":null,\"id\":\"o3d7gcmsovf\",\"rootContextId\":\"o3d7czhc58d\",\"label\":\"Indicator value of ecosystem for climate regulation\",\"observable\":\"im:Indicator ((value of ecology:Ecosystem) for es:ClimateRegulation)\",\"exportLabel\":\"indicator_value_of_ecosystem_for_climate_regulation\",\"valueType\":\"NUMBER\",\"observationType\":\"STATE\",\"semantics\":[\"OBSERVABLE\",\"VALUE\",\"QUALITY\",\"QUANTIFIABLE\"],\"geometryTypes\":[\"COLORMAP\",\"RASTER\"],\"literalValue\":null,\"overallValue\":null,\"traits\":[],\"metadata\":{\"Grid size\":\"2469948 (1338 x 1846) cells\",\"Cell size\":\"1,010.124 x 1,002.374 m\",\"Temporal transitions\":\"Wed Jan 01 00:00:00 GMT 2020\",\"Total area\":\"1,139,588.849 km2\"},\"taskId\":null,\"contextId\":\"o3d7czhc58d\",\"empty\":false,\"style\":null,\"primary\":true,\"dataSummary\":{\"nodataProportion\":0.0,\"minValue\":0.0,\"maxValue\":1.0,\"mean\":0.7728172553609381,\"categorized\":false,\"histogram\":[4128,3674,12493,55189,136435,191684,143552,64395,515865,2842],\"categories\":[\"0 to 0.1\",\"0.1 to 0.2\",\"0.2 to 0.3\",\"0.3 to 0.4\",\"0.4 to 0.5\",\"0.5 to 0.6\",\"0.6 to 0.7\",\"0.7 to 0.8\",\"0.8 to 0.9\",\"0.9 to 1\"]},\"exportFormats\":[{\"label\":\"GeoTIFF raster archive\",\"value\":\"tiff\",\"adapter\":\"raster\",\"extension\":\"zip\"},{\"label\":\"PNG image\",\"value\":\"png\",\"adapter\":\"raster\",\"extension\":\"png\"}],\"originalGroupId\":null,\"alive\":false,\"main\":false,\"dynamic\":false,\"timeEvents\":null,\"histogram\":{\"bins\":[4128,3674,12493,55189,136435,191684,143552,64395,515865,2842],\"boundaries\":[0.0,1.0],\"degenerate\":false},\"colormap\":null,\"childIds\":{},\"scaleReference\":null,\"childrenCount\":0,\"roles\":[],\"observableType\":null,\"parentId\":\"o3d7czhc58d\",\"parentArtifactId\":\"o3d7czhc58d\",\"children\":[],\"actions\":[{\"actionLabel\":null,\"actionId\":null,\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":true,\"submenu\":[]},{\"actionLabel\":\"Add to cache\",\"actionId\":\"AddToCache\",\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":false,\"submenu\":[]}],\"structure\":[],\"contextTime\":-1,\"creationTime\":1673865820477,\"urn\":\"local:observation:s3d4tb2sl2s:o3d7gcmsovf\",\"valueCount\":2469948,\"previouslyNotified\":false,\"contextualized\":true,\"lastUpdate\":1577836800000,\"key\":null}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:45:07 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/export/structure/o3d7jjnschn",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:44:41 GMT"
+          ],
+          "Content-Length": [
+            "2181"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"shapeType\":\"EMPTY\",\"encodedShape\":null,\"spatialProjection\":null,\"id\":\"o3d7jjnschn\",\"rootContextId\":\"o3d7czhc58d\",\"label\":\"Indicator condition ofgbif2436436 community\",\"observable\":\"im:Indicator (es.nca:Condition of (demography:Human demography:Community))\",\"exportLabel\":\"indicator_condition_ofgbif2436436_community\",\"valueType\":\"NUMBER\",\"observationType\":\"STATE\",\"semantics\":[\"OBSERVABLE\",\"QUALITY\",\"QUANTIFIABLE\",\"PRIORITY\"],\"geometryTypes\":[\"COLORMAP\",\"RASTER\"],\"literalValue\":null,\"overallValue\":null,\"traits\":[],\"metadata\":{\"Grid size\":\"2469948 (1338 x 1846) cells\",\"Cell size\":\"1,010.124 x 1,002.374 m\",\"Temporal transitions\":\"Wed Jan 01 00:00:00 GMT 2020\",\"Total area\":\"1,139,588.849 km2\"},\"taskId\":null,\"contextId\":\"o3d7czhc58d\",\"empty\":false,\"style\":null,\"primary\":true,\"dataSummary\":{\"nodataProportion\":0.0,\"minValue\":0.0,\"maxValue\":1.0,\"mean\":0.5096142276290361,\"categorized\":false,\"histogram\":[90178,79822,82003,88491,205629,304539,256030,20801,2751,13],\"categories\":[\"0 to 0.1\",\"0.1 to 0.2\",\"0.2 to 0.3\",\"0.3 to 0.4\",\"0.4 to 0.5\",\"0.5 to 0.6\",\"0.6 to 0.7\",\"0.7 to 0.8\",\"0.8 to 0.9\",\"0.9 to 1\"]},\"exportFormats\":[{\"label\":\"GeoTIFF raster archive\",\"value\":\"tiff\",\"adapter\":\"raster\",\"extension\":\"zip\"},{\"label\":\"PNG image\",\"value\":\"png\",\"adapter\":\"raster\",\"extension\":\"png\"}],\"originalGroupId\":null,\"alive\":false,\"main\":false,\"dynamic\":false,\"timeEvents\":null,\"histogram\":{\"bins\":[90178,79822,82003,88491,205629,304539,256030,20801,2751,13],\"boundaries\":[0.0,1.0],\"degenerate\":false},\"colormap\":null,\"childIds\":{},\"scaleReference\":null,\"childrenCount\":0,\"roles\":[],\"observableType\":null,\"parentId\":\"o3d7czhc58d\",\"parentArtifactId\":\"o3d7czhc58d\",\"children\":[],\"actions\":[{\"actionLabel\":null,\"actionId\":null,\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":true,\"submenu\":[]},{\"actionLabel\":\"Add to cache\",\"actionId\":\"AddToCache\",\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":false,\"submenu\":[]}],\"structure\":[],\"contextTime\":-1,\"creationTime\":1673865827389,\"urn\":\"local:observation:s3d4tb2sl2s:o3d7jjnschn\",\"valueCount\":2469948,\"previouslyNotified\":false,\"contextualized\":true,\"lastUpdate\":1577836800000,\"key\":null}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:45:07 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/export/structure/o3d7mmnrks2",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s3d4tb2sl2s"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Mon, 16 Jan 2023 10:44:41 GMT"
+          ],
+          "Content-Length": [
+            "2228"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=957d35b914b6bcac; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"shapeType\":\"EMPTY\",\"encodedShape\":null,\"spatialProjection\":null,\"id\":\"o3d7mmnrks2\",\"rootContextId\":\"o3d7czhc58d\",\"label\":\"Indicator condition of aquatic ecosystem\",\"observable\":\"im:Indicator (es.nca:Condition of (earth:Aquatic ecology:Ecosystem))\",\"exportLabel\":\"indicator_condition_of_aquatic_ecosystem\",\"valueType\":\"NUMBER\",\"observationType\":\"STATE\",\"semantics\":[\"OBSERVABLE\",\"QUALITY\",\"QUANTIFIABLE\",\"PRIORITY\"],\"geometryTypes\":[\"COLORMAP\",\"RASTER\"],\"literalValue\":null,\"overallValue\":null,\"traits\":[],\"metadata\":{\"Grid size\":\"2469948 (1338 x 1846) cells\",\"Cell size\":\"1,010.124 x 1,002.374 m\",\"Temporal transitions\":\"Wed Jan 01 00:00:00 GMT 2020\",\"Total area\":\"1,139,588.849 km2\"},\"taskId\":null,\"contextId\":\"o3d7czhc58d\",\"empty\":false,\"style\":null,\"primary\":true,\"dataSummary\":{\"nodataProportion\":0.0,\"minValue\":0.130690798163414,\"maxValue\":1.0,\"mean\":0.830439023752767,\"categorized\":false,\"histogram\":[1617,27,636,2860,16615,118697,254780,642624,89933,2468],\"categories\":[\"0.131 to 0.218\",\"0.218 to 0.305\",\"0.305 to 0.391\",\"0.391 to 0.478\",\"0.478 to 0.565\",\"0.565 to 0.652\",\"0.652 to 0.739\",\"0.739 to 0.826\",\"0.826 to 0.913\",\"0.913 to 1\"]},\"exportFormats\":[{\"label\":\"GeoTIFF raster archive\",\"value\":\"tiff\",\"adapter\":\"raster\",\"extension\":\"zip\"},{\"label\":\"PNG image\",\"value\":\"png\",\"adapter\":\"raster\",\"extension\":\"png\"}],\"originalGroupId\":null,\"alive\":false,\"main\":false,\"dynamic\":false,\"timeEvents\":null,\"histogram\":{\"bins\":[1617,27,636,2860,16615,118697,254780,642624,89933,2468],\"boundaries\":[0.130690798163414,1.0],\"degenerate\":false},\"colormap\":null,\"childIds\":{},\"scaleReference\":null,\"childrenCount\":0,\"roles\":[],\"observableType\":null,\"parentId\":\"o3d7czhc58d\",\"parentArtifactId\":\"o3d7czhc58d\",\"children\":[],\"actions\":[{\"actionLabel\":null,\"actionId\":null,\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":true,\"submenu\":[]},{\"actionLabel\":\"Add to cache\",\"actionId\":\"AddToCache\",\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":false,\"submenu\":[]}],\"structure\":[],\"contextTime\":-1,\"creationTime\":1673865833803,\"urn\":\"local:observation:s3d4tb2sl2s:o3d7mmnrks2\",\"valueCount\":2469948,\"previouslyNotified\":false,\"contextualized\":true,\"lastUpdate\":1577836800000,\"key\":null}"
+        }
+      },
+      "recorded_at": "Mon, 16 Jan 2023 10:45:08 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.1.0"
+}
