@@ -59,40 +59,6 @@ export const useSortingByOptions = (target?: SortingByTargetType): SortingOption
   ]) as SortingOptionType[];
 };
 
-const pathFilters = {
-  [Paths.Projects]: [
-    'filter[category]',
-    'filter[sdg]',
-    'filter[instrument_type]',
-    'filter[ticket_size]',
-    'filter[impact]',
-    'filter[only_verified]',
-    'filter[full_text]',
-    'filter[priority_landscape]',
-  ],
-  [Paths.ProjectDevelopers]: [
-    'filter[category]',
-    'filter[impact]',
-    'filter[full_text]',
-    'filter[priority_landscape]',
-  ],
-  [Paths.Investors]: [
-    'filter[category]',
-    'filter[sdg]',
-    'filter[instrument_type]',
-    'filter[ticket_size]',
-    'filter[impact]',
-    'filter[full_text]',
-  ],
-  [Paths.OpenCalls]: [
-    'filter[sdg]',
-    'filter[instrument_type]',
-    'filter[ticket_size]',
-    'filter[only_verified]',
-    'filter[full_text]',
-  ],
-};
-
 const getPathParams = (
   path: string,
   pathname: string,
@@ -100,17 +66,13 @@ const getPathParams = (
 ) => {
   const { page, sorting, search, ...filters } = queryParams;
 
-  // Get only applicable filters for each path to avoid unnecessary fetches
-  const pathFilter = pickBy(filters, (_, key) => pathFilters[path].includes(key));
-
-  const params: { [key: string]: string | string[] } = { page, search, ...pathFilter };
+  const params: { [key: string]: string | string[] } = { page, search, ...filters };
 
   if (pathname !== path) {
     return {
       ...params,
       fields: ['name'],
       perPage: 1,
-      'page[size]': 1,
     };
   }
 
@@ -131,7 +93,7 @@ const getPathParams = (
     return { ...params, perPage: 9 };
   }
   if (pathname === Paths.OpenCalls) {
-    return { ...params, includes: ['investor'] };
+    return { ...params, includes: ['investor'], 'fields[investor]': 'picture,name,impacts' };
   }
 };
 
