@@ -59,9 +59,6 @@
   "/L6T3E": {
     "string": "Get connected"
   },
-  "/Lbk/f": {
-    "string": "Enter the estimated implementation duration for the project. MAX 36 months."
-  },
   "/PlWea": {
     "string": "Use up and down to choose options, press escape to exit the menu, press tab to select the option and exit the menu."
   },
@@ -139,6 +136,9 @@
   },
   "0dbfpr": {
     "string": "You need to enter a text for the progress and impact tracking"
+  },
+  "0h5kbM": {
+    "string": "Full catalogue"
   },
   "0hzVw6": {
     "string": "How accounts work?"
@@ -1006,6 +1006,9 @@
   },
   "GM/hd6": {
     "string": "Invitation"
+  },
+  "GOdq5V": {
+    "string": "Catalog"
   },
   "GOg6XJ": {
     "string": "Be part of the biggest change in the colombian Amazon"
@@ -1938,9 +1941,6 @@
   "XvwE2r": {
     "string": "You need to insert a name"
   },
-  "XwmxKZ": {
-    "string": "A project is an enterprise or initiative carefully planned and run by project developers in a given region with the objective of contributing to its environmental conservation. Projects are set up whenever a project developer is seeking visibility or needing investment."
-  },
   "XwwnKr": {
     "string": "Project cluster icon"
   },
@@ -2040,6 +2040,9 @@
   "ZocjEJ": {
     "string": "What happens when I delete my Project Developer account?"
   },
+  "ZtM1JY": {
+    "string": "Enter the estimated duration for the activities described in the project for which you request funding. Please note that funding will not be provided for more than 36 consecutive months."
+  },
   "a+vAPa": {
     "string": "Invitation mail"
   },
@@ -2132,9 +2135,6 @@
   },
   "cDSTwv": {
     "string": "Total <span>{numOpenCalls}</span> {numOpenCalls, plural, one {openCall} other {openCalls}}"
-  },
-  "cE4Hfw": {
-    "string": "Discover"
   },
   "cFytiP": {
     "string": "You need to select the types of financing are you can provide"
@@ -2657,6 +2657,9 @@
   },
   "kX7oGR": {
     "string": "Other information"
+  },
+  "kXFIq1": {
+    "string": "A project is an enterprise or initiative carefully planned and run by project developers in a given region with the objective of contributing to its environmental conservation. Projects are set up whenever a project developer seeks visibility or needs investment. Hence, in the context of HeCo Invest, a ‘project’ is an investment opportunity for loan, equity or grant funding."
   },
   "kY/+zt": {
     "string": "Verification link sent"
