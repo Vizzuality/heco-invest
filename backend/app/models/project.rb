@@ -4,7 +4,7 @@ class Project < ApplicationRecord
   include Searchable
   include ExtraRansackers
 
-  IMPACT_LEVELS = %w[municipality hydrobasin priority_landscape]
+  IMPACT_LEVELS = %w[project municipality hydrobasin priority_landscape]
   IMPACT_DIMENSIONS = %w[biodiversity climate water community total]
 
   friendly_id :project_developer_prefixed_name, use: :slugged
