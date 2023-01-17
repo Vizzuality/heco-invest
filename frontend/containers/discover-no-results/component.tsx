@@ -26,8 +26,8 @@ const DiscoverNoResults = () => {
       </h1>
       <p>
         <FormattedMessage
-          defaultMessage="No {tab} match the keywords you’ve entered. Please <n>try another term</n> or <n>select a filter</n>."
-          id="iWUk4N"
+          defaultMessage="No {tab} matches the keywords you’ve entered. Please <n>try another term</n> or <n>select a filter</n>."
+          id="h2D2Rm"
           values={{
             tab: tabs[pathname],
             n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
