@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_22_150756) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_16_095307) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -394,6 +394,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_22_150756) do
     t.decimal "priority_landscape_total_impact", precision: 25, scale: 20
     t.uuid "priority_landscape_id"
     t.boolean "impact_calculated", default: false
+    t.decimal "project_biodiversity_demand", precision: 25, scale: 20
+    t.decimal "project_climate_demand", precision: 25, scale: 20
+    t.decimal "project_community_demand", precision: 25, scale: 20
+    t.decimal "project_water_demand", precision: 25, scale: 20
+    t.decimal "municipality_biodiversity_demand", precision: 25, scale: 20
+    t.decimal "municipality_climate_demand", precision: 25, scale: 20
+    t.decimal "municipality_community_demand", precision: 25, scale: 20
+    t.decimal "municipality_water_demand", precision: 25, scale: 20
+    t.decimal "hydrobasin_biodiversity_demand", precision: 25, scale: 20
+    t.decimal "hydrobasin_climate_demand", precision: 25, scale: 20
+    t.decimal "hydrobasin_community_demand", precision: 25, scale: 20
+    t.decimal "hydrobasin_water_demand", precision: 25, scale: 20
+    t.decimal "priority_landscape_biodiversity_demand", precision: 25, scale: 20
+    t.decimal "priority_landscape_climate_demand", precision: 25, scale: 20
+    t.decimal "priority_landscape_community_demand", precision: 25, scale: 20
+    t.decimal "priority_landscape_water_demand", precision: 25, scale: 20
+    t.decimal "project_biodiversity_impact", precision: 25, scale: 20
+    t.decimal "project_climate_impact", precision: 25, scale: 20
+    t.decimal "project_water_impact", precision: 25, scale: 20
+    t.decimal "project_community_impact", precision: 25, scale: 20
+    t.decimal "project_total_impact", precision: 25, scale: 20
     t.index ["country_id"], name: "index_projects_on_country_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
     t.index ["municipality_id"], name: "index_projects_on_municipality_id"

@@ -222,7 +222,12 @@
         "impact_calculated": false,
         "verified": false,
         "funded": null,
-        "updated_at": "2022-10-25T13:21:51.149Z"
+        "updated_at": "2022-10-25T13:21:51.149Z",
+        "project_biodiversity_impact": null,
+        "project_climate_impact": null,
+        "project_water_impact": null,
+        "project_community_impact": null,
+        "project_total_impact": null
       },
       "relationships": {
         "project_developer": {
@@ -340,7 +345,12 @@
         "impact_calculated": false,
         "verified": false,
         "funded": null,
-        "updated_at": "2022-10-25T13:21:51.306Z"
+        "updated_at": "2022-10-25T13:21:51.306Z",
+        "project_biodiversity_impact": null,
+        "project_climate_impact": null,
+        "project_water_impact": null,
+        "project_community_impact": null,
+        "project_total_impact": null
       },
       "relationships": {
         "project_developer": {

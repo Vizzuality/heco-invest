@@ -4,6 +4,9 @@ class Project < ApplicationRecord
   include Searchable
   include ExtraRansackers
 
+  IMPACT_LEVELS = %w[municipality hydrobasin priority_landscape]
+  IMPACT_DIMENSIONS = %w[biodiversity climate water community total]
+
   friendly_id :project_developer_prefixed_name, use: :slugged
 
   belongs_to :project_developer, counter_cache: true
@@ -119,14 +122,18 @@ class Project < ApplicationRecord
 
   def recalculate_impacts
     reset_impacts
-    ImpactCalculationJob.perform_later self
+    return ImpactCalculationJob.perform_later self unless ENV["KLAB_ENABLED"].to_s == "true"
+
+    Klab::SubmitContextsJob.perform_later id
+    Klab::CalculateImpactsJob.perform_later id
   end
 
   def reset_impacts
     impact_columns = {impact_calculated: false}
-    %w[municipality hydrobasin priority_landscape].each do |impact_type|
-      %w[biodiversity climate water community total].each do |impact_area|
-        impact_columns["#{impact_type}_#{impact_area}_impact"] = nil
+    IMPACT_LEVELS.each do |impact_level|
+      IMPACT_DIMENSIONS.each do |impact_dimension|
+        impact_columns["#{impact_level}_#{impact_dimension}_impact"] = nil
+        impact_columns["#{impact_level}_#{impact_dimension}_demand"] = nil unless impact_dimension == "total"
       end
     end
     update_columns impact_columns
