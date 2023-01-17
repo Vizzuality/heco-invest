@@ -171,8 +171,8 @@ export const useFaq = () => {
             question: formatMessage({ defaultMessage: 'What is a project?', id: 'yP7Lrl' }),
             answer: formatMessage({
               defaultMessage:
-                'A project is an enterprise or initiative carefully planned and run by project developers in a given region with the objective of contributing to its environmental conservation. Projects are set up whenever a project developer is seeking visibility or needing investment.',
-              id: 'XwmxKZ',
+                'A project is an enterprise or initiative carefully planned and run by project developers in a given region with the objective of contributing to its environmental conservation. Projects are set up whenever a project developer seeks visibility or needs investment. Hence, in the context of HeCo Invest, a ‘project’ is an investment opportunity for loan, equity or grant funding.',
+              id: 'kXFIq1',
             }),
           },
           {
