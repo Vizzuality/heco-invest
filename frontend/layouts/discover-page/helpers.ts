@@ -76,10 +76,7 @@ const getPathParams = (
     };
   }
 
-  // Use sorting value only when applies to path to avoid unnecessary fetches
-  if (path === Paths.Projects || sorting?.includes('name') || sorting?.includes('created_at')) {
-    params.sorting = sorting;
-  }
+  params.sorting = sorting;
 
   if (pathname === Paths.Projects) {
     return {
