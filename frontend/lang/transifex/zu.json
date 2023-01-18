@@ -137,9 +137,6 @@
   "0dbfpr": {
     "string": "You need to enter a text for the progress and impact tracking"
   },
-  "0h5kbM": {
-    "string": "Full catalogue"
-  },
   "0hzVw6": {
     "string": "How accounts work?"
   },
@@ -244,6 +241,9 @@
   },
   "2yCGR2": {
     "string": "Link copied to clipboard"
+  },
+  "2yqUYR": {
+    "string": "See full catalog"
   },
   "35YoEI": {
     "string": "Description of the project"
@@ -1012,9 +1012,6 @@
   },
   "GOg6XJ": {
     "string": "Be part of the biggest change in the colombian Amazon"
-  },
-  "GYTHj0": {
-    "string": "Until approval you can continue exploring our catalogue."
   },
   "GYkIYE": {
     "string": "Insert your last name"
@@ -1859,6 +1856,9 @@
   },
   "WLDgff": {
     "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
+  },
+  "WMuw/P": {
+    "string": "Full catalog"
   },
   "WTuVeL": {
     "string": "Something went wrong while submitting your form. Please correct the errors before submitting again."
@@ -2838,9 +2838,6 @@
   "oD3qdW": {
     "string": "It looks like the link is broken or the page has been removed."
   },
-  "oG/A0q": {
-    "string": "See full catalogue"
-  },
   "oMC3r1": {
     "string": "Choose your account type"
   },
@@ -3035,6 +3032,9 @@
   },
   "rPwaWt": {
     "string": "A great name is short, crisp, and easily understood."
+  },
+  "rVtR6m": {
+    "string": "Until approval you can continue exploring our catalog."
   },
   "rb3Hsm": {
     "string": "<b>Climate</b>:"

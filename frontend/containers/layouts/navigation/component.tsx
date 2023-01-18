@@ -14,7 +14,7 @@ export const Navigation: FC<NavigationProps> = ({ className }: NavigationProps) 
     <div className={className}>
       <nav className="flex space-x-8 text-sm xl:text-base">
         <ActiveLink href={Paths.Discover} activeClassName="font-semibold">
-          <a title={intl.formatMessage({ defaultMessage: 'Full catalogue', id: '0h5kbM' })}>
+          <a title={intl.formatMessage({ defaultMessage: 'Full catalog', id: 'WMuw/P' })}>
             <FormattedMessage defaultMessage="Catalog" id="GOdq5V" />
           </a>
         </ActiveLink>

@@ -202,7 +202,7 @@ export const DiscoverSearch: FC<DiscoverSearchProps> = ({ className }) => {
             {pathname === Paths.Home && !showSuggestion && (
               <div className="hidden md:block">
                 <Button className="text-green-dark" theme="naked" to={Paths.Discover}>
-                  <FormattedMessage defaultMessage="See full catalogue" id="oG/A0q" />
+                  <FormattedMessage defaultMessage="See full catalog" id="2yqUYR" />
                 </Button>
               </div>
             )}
