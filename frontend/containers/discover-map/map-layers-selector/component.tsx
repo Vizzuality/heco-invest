@@ -7,13 +7,15 @@ import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
-import { useKey, useOutsideClick } from 'rooks';
+import { useKey } from 'rooks';
 
 import { useLayers } from 'hooks/useLayers';
 
 import Button from 'components/button';
 import Expando from 'components/expando';
 import Switch from 'components/forms/switch';
+import Modal from 'components/modal';
+import Tooltip from 'components/tooltip';
 
 import LayerTooltip from '../layer-tooltip';
 
@@ -23,6 +25,7 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   className,
   register,
   registerOptions,
+  visibleLayers,
 }: MapLayersSelectorProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedLayer, setSelectedlayer] = useState<SelectedLayerTooltip>();
@@ -34,13 +37,6 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
 
   useKey(['Escape'], () => setIsOpen(false), {
     target: selectorRef,
-  });
-
-  useOutsideClick(containerRef, () => {
-    if (!isOpen) return;
-    setIsOpen(false);
-    setSelectedlayer(undefined);
-    setOpenLayerGroup(initialOpenLayerGroup);
   });
 
   const handleButtonClick = () => {
@@ -60,21 +56,46 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   };
 
   return (
-    <div className={className} ref={containerRef}>
+    <div
+      className={cx({
+        [className]: !!className,
+        'w-full h-full bg-white bg-opacity-70': isOpen,
+      })}
+      ref={containerRef}
+    >
       <button
-        className="flex items-center gap-2.5 shadow-sm h-full bg-white rounded border-xl px-2 py-1.5 outline-none hover:text-green-dark transition-all focus-visible:outline-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 w-fit"
+        className={cx(
+          'flex items-center gap-2.5 shadow-sm  rounded border-xl px-2 py-1.5 outline-none transition-all focus-visible:outline-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 w-fit',
+          {
+            'bg-white text-gray-800 hover:text-green-dark': !isOpen,
+            'bg-green-dark text-white': isOpen,
+          }
+        )}
         onClick={handleButtonClick}
       >
         <IconLayers className="w-4 h-4" />
         <FormattedMessage defaultMessage="Map layers" id="iwpEth" />
+        {!!visibleLayers && (
+          <div
+            className={cx(
+              'flex items-center justify-center w-4 h-4 rounded-full text-xs font-sans font-semibold transition-colors',
+              {
+                'bg-white text-gray-800 hover:text-green-dark': isOpen,
+                'bg-green-dark text-white': !isOpen,
+              }
+            )}
+          >
+            {visibleLayers}
+          </div>
+        )}
       </button>
       {isOpen && (
         <FocusScope contain restoreFocus>
           <div
-            className="absolute top-8 z-20 flex flex-col md:flex-row md:items-stretch mx-0.5 bg-white rounded-2xl shadow-sm max-h-full"
+            className="mt-1.5 absolute top-8 z-20 flex flex-col md:flex-row md:items-stretch mx-0.5 bg-white rounded shadow drop-shadow max-h-full max-w-[255px]"
             ref={selectorRef}
           >
-            <div className="flex flex-shrink-0 p-3 overflow-y-auto whitespace-nowrap">
+            <div className="flex flex-shrink-0 max-w-full p-3 overflow-y-auto">
               <form>
                 {groupedLayers.map((layerGroup) => {
                   if (!layerGroup.layers.length) return null;
@@ -90,7 +111,9 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                           className="flex items-center justify-start w-full gap-1 px-0 py-0 my-2"
                           onClick={() => handleChangeOpenLayerGroup(layerGroup.id)}
                         >
-                          <span>{layerGroup.name}</span>
+                          <span className="text-sm font-semibold text-gray-900">
+                            {layerGroup.name}
+                          </span>
                           <span className="text-xs text-gray-600">
                             (<FormattedMessage defaultMessage="max 1 layer" id="hRcpAt" />)
                           </span>
@@ -118,11 +141,7 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                             group,
                           }) => (
                             <li key={id} className="flex items-center gap-1.5">
-                              <label
-                                key={id}
-                                htmlFor={id}
-                                className="flex items-center gap-2 cursor-pointer"
-                              >
+                              <div>
                                 <Switch
                                   id={id}
                                   name={group}
@@ -131,31 +150,40 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                                   register={register}
                                   registerOptions={registerOptions}
                                 />
+                              </div>
+                              <label key={id} htmlFor={id} className="cursor-pointer">
                                 {name}
                               </label>
-
-                              <Button
-                                theme="naked"
-                                size="smallest"
-                                className="flex items-center justify-center w-4 h-4 text-gray-800 scale-90 border border-gray-800 rounded-full pointer focus-visible:outline-green-dark focus-visible:outline-2"
-                                onClick={() =>
-                                  handleShowTooltip({
-                                    id,
-                                    name,
-                                    description,
-                                    overview,
-                                    dataSource,
-                                    dataSourceUrl,
-                                  })
+                              <Tooltip
+                                content={
+                                  <div className="z-40 flex-shrink-0 max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm sm:max-w-md">
+                                    {description}
+                                  </div>
                                 }
                               >
-                                <span className="sr-only">
-                                  <FormattedMessage defaultMessage="Information" id="E80WrK" />
-                                </span>
-                                <span className="pt-0.5 text-xs" aria-hidden>
-                                  i
-                                </span>
-                              </Button>
+                                <Button
+                                  theme="naked"
+                                  size="smallest"
+                                  className="flex items-center justify-center flex-shrink-0 w-4 h-4 text-gray-800 scale-90 border border-gray-800 rounded-full pointer focus-visible:outline-green-dark focus-visible:outline-2"
+                                  onClick={() =>
+                                    handleShowTooltip({
+                                      id,
+                                      name,
+                                      description,
+                                      overview,
+                                      dataSource,
+                                      dataSourceUrl,
+                                    })
+                                  }
+                                >
+                                  <span className="sr-only">
+                                    <FormattedMessage defaultMessage="Information" id="E80WrK" />
+                                  </span>
+                                  <span className="pt-0.5 text-xs" aria-hidden>
+                                    i
+                                  </span>
+                                </Button>
+                              </Tooltip>
                             </li>
                           )
                         )}
@@ -165,10 +193,13 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                 })}
               </form>
             </div>
-            <LayerTooltip
-              selectedLayer={selectedLayer}
-              closeTooltip={() => setSelectedlayer(undefined)}
-            />
+            <Modal
+              open={!!selectedLayer}
+              onDismiss={() => setSelectedlayer(undefined)}
+              title={selectedLayer?.name}
+            >
+              <LayerTooltip selectedLayer={selectedLayer} />
+            </Modal>
           </div>
         </FocusScope>
       )}

@@ -9,6 +9,8 @@ export type MapLayersSelectorProps = {
   register: UseFormRegister<MapLayersSelectorForm>;
   /** UseForm register options */
   registerOptions: RegisterOptions<MapLayersSelectorForm>;
+  /** Number of visible layers on map */
+  visibleLayers?: number;
 };
 
 export type MapLayersSelectorForm = {
