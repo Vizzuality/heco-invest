@@ -18,22 +18,27 @@ module Klab
     private
 
     def submit_contexts!
-      # TODO
+      Project::IMPACT_LEVELS.map do |impact_level|
+        context_string = Klab::BuildContextString.new(project, impact_level).call
+        response = Klab::SubmitContext.new(client).call context_string
+        {id: response.ticket_id, impact_level: impact_level}
+      end
     end
 
     def enqueue_poll_demands_jobs_for(tickets)
       tickets.each do |ticket|
-        Klab::PollImpactDemandsJob.perform_later project.id, ticket[:impact_level], ticket[:id]
+        Klab::PollImpactDemandsJob.perform_later project.id, ticket[:id], ticket[:impact_level]
       end
     end
 
     def log_failure_and_repeat_for(error)
-      if rest_of_attempts.zero?
-        Google::Cloud::ErrorReporting.report error
-        raise error
-      else
-        self.class.set(wait: delay_between_attempts.second).perform_later project.id, rest_of_attempts: rest_of_attempts - 1
-      end
+      raise error if rest_of_attempts.zero?
+
+      self.class.set(wait: delay_between_attempts.second).perform_later project.id, rest_of_attempts: rest_of_attempts - 1
+    end
+
+    def client
+      @client ||= Klab::APIClient.new
     end
   end
 end
