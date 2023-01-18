@@ -28,8 +28,8 @@ export const AccountPendingApproval = () => {
       </p>
       <p>
         <FormattedMessage
-          defaultMessage="Until approval you can continue exploring our catalogue."
-          id="GYTHj0"
+          defaultMessage="Until approval you can continue exploring our catalog."
+          id="rVtR6m"
         />
       </p>
       <Button className="mt-6 mb-12" to="/discover">
