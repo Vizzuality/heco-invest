@@ -14,6 +14,7 @@ export type LegendType = 'basic' | 'choropleth' | 'gradient' | 'monocolor';
 
 export type Legend = {
   id: string;
+  description: string;
   name: string;
   items: LegendItem[];
   type: LegendType;
