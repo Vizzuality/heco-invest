@@ -95,8 +95,9 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
             name,
             group,
             isResourceWatch,
+            description,
           } = layers.find(({ id }) => layer === id);
-          return { items, type: type as LegendType, id, name, group, isResourceWatch };
+          return { items, type: type as LegendType, id, name, group, isResourceWatch, description };
         })
         .reverse(),
     [layers, visibleLayers]

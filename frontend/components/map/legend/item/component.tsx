@@ -4,6 +4,7 @@ import { X } from 'react-feather';
 import { useIntl } from 'react-intl';
 
 import Button from 'components/button';
+import FieldInfo from 'components/forms/field-info';
 import Icon from 'components/icon';
 
 import type { LegendItemProps } from './types';
@@ -11,7 +12,7 @@ import type { LegendItemProps } from './types';
 export const LegendItem: FC<LegendItemProps> = ({
   id,
   name,
-  // description,
+  description,
   icon,
   children,
   handleCloseLegend,
@@ -27,19 +28,22 @@ export const LegendItem: FC<LegendItemProps> = ({
             <span className="text-xs font-medium leading-[14px]">{name}</span>
           </div>
         </div>
-        <Button
-          type="button"
-          className="z-50 flex items-center w-3 h-3 right-2"
-          onClick={handleCloseLegend}
-          theme="naked"
-          size="smallest"
-          aria-label={formatMessage({ defaultMessage: 'Remove layer', id: 'D6WycV' })}
-        >
-          <Icon
-            icon={X}
-            className="w-4 h-4 stroke-[3px] text-gray-800 transition-transform hover:rotate-180"
-          />
-        </Button>
+        <div className="flex gap-2">
+          <FieldInfo content={description} />
+          <Button
+            type="button"
+            className="z-50 flex items-center w-3 h-3 right-2"
+            onClick={handleCloseLegend}
+            theme="naked"
+            size="smallest"
+            aria-label={formatMessage({ defaultMessage: 'Remove layer', id: 'D6WycV' })}
+          >
+            <Icon
+              icon={X}
+              className="w-4 h-4 stroke-[3px] text-gray-800 transition-transform hover:rotate-180"
+            />
+          </Button>
+        </div>
       </div>
       {children && <div>{children}</div>}
     </div>
