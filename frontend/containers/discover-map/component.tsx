@@ -162,6 +162,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
             registerOptions={{
               onChange: handleChangeVisibleLayer,
             }}
+            visibleLayers={visibleLayers?.length}
           />
         </div>
 
