@@ -16,7 +16,7 @@ import LayoutContainer from 'components/layout-container';
 import { HeaderProps } from './types';
 
 export const Header: React.FC<HeaderProps> = ({
-  props: { transparent, className } = {},
+  props: { transparent, whiteLogo = false, className } = {},
 }: HeaderProps) => {
   const { isScrolledY } = useScrollY();
 
@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <LayoutContainer>
             <div className="flex items-center justify-between pt-3 pb-3 md:pt-6 md:pb-4 lg:space-x-10">
-              <Logo />
+              <Logo defaultWĥite={whiteLogo} />
               <div className="flex">
                 <Navigation className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end lg:mr-4" />
                 <div className="flex items-center gap-2 lg:gap-4">

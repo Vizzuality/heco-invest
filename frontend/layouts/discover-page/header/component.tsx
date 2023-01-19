@@ -18,7 +18,7 @@ export const Header: FC<HeaderProps> = () => {
         <LayoutContainer>
           <div className="flex items-center justify-between h-14 sm:h-18">
             <span className="justify-start flex-1">
-              <Logo />
+              <Logo defaultWĥite />
             </span>
             <div className="flex items-center justify-end flex-1 gap-2">
               <LanguageSelector />

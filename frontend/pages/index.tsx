@@ -43,6 +43,7 @@ Home.layout = {
   props: {
     headerProps: {
       transparent: true,
+      whiteLogo: true,
     },
   },
 };
