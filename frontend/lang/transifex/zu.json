@@ -2673,6 +2673,9 @@
   "khRkg/": {
     "string": "You need to select the amount of money you can provide"
   },
+  "kk1RMl": {
+    "string": "Go to homepage"
+  },
   "ku+mDU": {
     "string": "State"
   },
@@ -2864,9 +2867,6 @@
   },
   "orirkU": {
     "string": "What information do I need to create a Project Developer account?"
-  },
-  "orvpWh": {
-    "string": "Go back"
   },
   "osBdnp": {
     "string": "IPLC organization"
