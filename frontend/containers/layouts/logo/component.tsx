@@ -9,7 +9,7 @@ import { Paths } from 'enums';
 
 import { LogoProps } from './types';
 
-const Logo: React.FC<LogoProps> = ({ defaultWĥite = false }: LogoProps) => {
+const Logo: React.FC<LogoProps> = ({ defaultWhite = false }: LogoProps) => {
   const { isScrolledY } = useScrollY();
   const imagePath =
     !isScrolledY && defaultWĥite
