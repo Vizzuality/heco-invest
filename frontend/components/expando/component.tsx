@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 
 import { motion } from 'framer-motion';
 import { noop } from 'lodash-es';
@@ -15,16 +15,17 @@ export const Expando: FC<ExpandoProps> = ({
 }: ExpandoProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(defaultOpen);
 
-  useEffect(() => {
-    onChange(isOpen);
-  }, [isOpen, onChange]);
+  const handleChangeIsOpen = () => {
+    onChange(!isOpen);
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div className={className}>
       <button
         className="w-full rounded focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2"
         type="button"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleChangeIsOpen}
       >
         <div className="flex items-center justify-center w-full">{title}</div>
       </button>

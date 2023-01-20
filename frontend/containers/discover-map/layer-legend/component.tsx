@@ -50,7 +50,7 @@ export const LayerLegend: FC<LayerLegendProps> = ({
         size="smallest"
         aria-controls={id}
         aria-expanded={active}
-        className="fixed flex items-center justify-center w-8 h-8 bg-white rounded -translate-y-[34px] button focus-visible:outline-green-dark shadow"
+        className="flex items-center justify-center w-8 h-8 mt-1 bg-white rounded shadow pointer-events-auto button focus-visible:outline-green-dark"
         onClick={onToggleActive}
       >
         <span className="sr-only">
@@ -71,18 +71,19 @@ export const LayerLegend: FC<LayerLegendProps> = ({
         animate={active ? 'open' : 'closed'}
         transition={{ duration: 0.6 }}
         variants={legendVariants}
-        className="w-56 z-10 bg-transparent shadow-xl text-xs flex flex-col lg:min-w-[280px] h-full overflow-hidden"
+        className="w-56 z-10 bg-transparent shadow-xl text-xs flex flex-col lg:min-w-[280px] h-full overflow-hidden pointer-events-auto mt-0.5"
         style={{ maxHeight }}
       >
         <Legend>
           {layersLegends.map((i) => {
-            const { type, items, id, name, group, description } = i;
+            const {
+              group,
+              legend: { items, type },
+            } = i;
             return (
               <LegendItem
                 key={i.id}
-                name={name}
-                id={id}
-                description={description}
+                legend={i}
                 handleCloseLegend={() => onCloseLegend(group)}
                 icon={
                   type === 'monocolor' && (

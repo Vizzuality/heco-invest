@@ -1,3 +1,5 @@
+import { LAYER_GROUPS } from 'hooks/useLayers';
+
 export interface LegendProps {
   className?: string;
   children: React.ReactNode;
@@ -16,8 +18,14 @@ export type Legend = {
   id: string;
   description: string;
   name: string;
-  items: LegendItem[];
-  type: LegendType;
+  legend: {
+    items: LegendItem[];
+    type: LegendType;
+  };
   group: LAYER_GROUPS;
   isResourceWatch: boolean;
+  dataSource: string;
+  dataSourceUrl: string;
+  overview: string;
+  specification: string;
 };

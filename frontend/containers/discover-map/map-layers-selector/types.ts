@@ -11,17 +11,12 @@ export type MapLayersSelectorProps = {
   registerOptions: RegisterOptions<MapLayersSelectorForm>;
   /** Number of visible layers on map */
   visibleLayers?: number;
+  /** Whether the layer selector is open */
+  layerSelectorOpen: boolean;
+  /** Function to change if the layer selector is open */
+  setLayerSelectorOpen: (isOpen: boolean) => void;
 };
 
 export type MapLayersSelectorForm = {
   [key in LAYER_GROUPS]: [string];
-};
-
-export type SelectedLayerTooltip = {
-  id: string;
-  name: string;
-  description: string;
-  overview?: string | string[];
-  dataSource: string;
-  dataSourceUrl: string;
 };
