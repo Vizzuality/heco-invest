@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
@@ -18,6 +20,7 @@ import Head from 'components/head';
 import Loading from 'components/loading';
 import { Paths } from 'enums';
 import { StaticPageLayoutProps } from 'layouts/static-page';
+import { logEvent } from 'lib/analytics/ga';
 import { PageComponent } from 'types';
 import { GroupedEnums } from 'types/enums';
 import { OpenCall } from 'types/open-calls';
@@ -76,6 +79,12 @@ const OpenCallPage: PageComponent<OpenCallPageProps, StaticPageLayoutProps> = ({
     OPEN_CALL_QUERY_PARAMS,
     openCallProp
   );
+
+  useEffect(() => {
+    logEvent('profile_visit', {
+      page_location: router.asPath,
+    });
+  }, [router.asPath]);
 
   if (!openCall) {
     if (!isFetchingOpenCall) router.push(Paths.Dashboard);

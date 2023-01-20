@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
@@ -152,6 +154,12 @@ const InvestorPage: PageComponent<InvestorPageProps, StaticPageLayoutProps> = ({
     // is false.
     favoriteInvestor.mutate({ id: investor.id, isFavourite: investor.favourite });
   };
+
+  useEffect(() => {
+    logEvent('profile_visit', {
+      page_location: router.asPath,
+    });
+  }, [router.asPath]);
 
   return (
     <>
