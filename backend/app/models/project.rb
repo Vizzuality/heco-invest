@@ -76,8 +76,8 @@ class Project < ApplicationRecord
   before_validation :clear_funding_fields, unless: -> { looking_for_funding? }
   before_validation :clear_received_funding_fields, unless: -> { received_funding? }
   before_save :assign_priority_landscape, if: :centroid_changed?
-  after_save :recalculate_impacts, if: -> { saved_change_to_geometry? || saved_change_to_impact_areas? }
-  after_save :notify_project_developers, if: -> { saved_change_to_status? && published? }
+  after_commit :recalculate_impacts, if: -> { saved_change_to_geometry? || saved_change_to_impact_areas? }, on: %i[create update]
+  after_commit :notify_project_developers, if: -> { saved_change_to_status? && published? }, on: %i[create update]
 
   accepts_nested_attributes_for :project_images, reject_if: :all_blank, allow_destroy: true
 
@@ -122,7 +122,7 @@ class Project < ApplicationRecord
 
   def recalculate_impacts
     reset_impacts
-    return ImpactCalculationJob.perform_later self unless ENV["KLAB_ENABLED"].to_s == "true"
+    return ImpactCalculationJob.perform_later id unless ENV["KLAB_ENABLED"].to_s == "true"
 
     Klab::SubmitContextsJob.perform_later id
     Klab::CalculateImpactsJob.perform_later id
@@ -131,6 +131,7 @@ class Project < ApplicationRecord
   def reset_impacts
     impact_columns = {impact_calculated: false}
     IMPACT_LEVELS.each do |impact_level|
+      impact_columns["#{impact_level}_demands_calculated"] = false
       IMPACT_DIMENSIONS.each do |impact_dimension|
         impact_columns["#{impact_level}_#{impact_dimension}_impact"] = nil
         impact_columns["#{impact_level}_#{impact_dimension}_demand"] = nil unless impact_dimension == "total"

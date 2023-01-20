@@ -9,6 +9,7 @@ module Klab
 
     def call
       # TODO: construct correct string based on project geometry and required impact level
+      # returns nil if there is no usable geometry which can be send to k.LAB (for example there is no intersection between project centroid and raster of appropriate location type)
       "aries.heco.locations.colombia_continental"
     end
   end
