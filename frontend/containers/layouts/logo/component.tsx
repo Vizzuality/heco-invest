@@ -2,20 +2,17 @@ import cx from 'classnames';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 import { useScrollY } from 'hooks/use-scroll-y';
 
 import { Paths } from 'enums';
 
-const whiteLogoPaths: string[] = [Paths.Dashboard, Paths.Discover, Paths.Settings];
+import { LogoProps } from './types';
 
-const Logo = () => {
+const Logo: React.FC<LogoProps> = ({ defaultWhite = false }: LogoProps) => {
   const { isScrolledY } = useScrollY();
-  const { pathname } = useRouter();
   const imagePath =
-    !isScrolledY &&
-    (pathname === Paths.Home || whiteLogoPaths.some((path) => pathname.startsWith(path)))
+    !isScrolledY && defaultWhite
       ? '/images/logos/heco_logo_white.png'
       : '/images/logos/heco_logo_color.png';
 
