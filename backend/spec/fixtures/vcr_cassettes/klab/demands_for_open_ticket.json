@@ -1,0 +1,161 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "post",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/users/log-in",
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"username\":\"<KLAB_API_USERNAME>\",\"password\":\"<KLAB_API_PASSWORD>\"}"
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v1.10.0"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 202,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Thu, 19 Jan 2023 09:56:00 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=169fd63d75f268df; path=/"
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\"redirect\":\"/modeler/ui/viewer?session=s5vwuqhcsj7\",\"session\":\"s5vwuqhcsj7\",\"publicApps\":[{\"name\":\"aries.seea\",\"description\":\"#ARIES_FOR_SEEA_EXPLORER_DESCRIPTION\",\"actions\":[],\"color\":null,\"projectId\":\"un.seea.aries\",\"logo\":\"static/images/seea_logo_transparent.png\",\"label\":\"ARIES for SEEA Explorer\",\"platform\":\"WEB\",\"localizations\":[{\"isoCode\":\"en\",\"languageDescription\":\"English\",\"localizedDescription\":\"The SEEA Ecosystem Accounting standard on the ARIES platform. A collaboration between UNSD, UNEP and BC3. Powered by k.LAB semantic web technology.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"ru\",\"languageDescription\":\"русский\",\"localizedDescription\":\"Стандарт экосистемного учета СЭЭУ на платформе ARIES. Сотрудничество между СОООН, ЮНЕП и Баскским центром по изменению климата. На базе семантической веб-технологии k.LAB.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"fr\",\"languageDescription\":\"français\",\"localizedDescription\":\"Le cadre statistique de la comptabilité des écosystèmes du SCEE sur la plateforme ARIES. Une collaboration entre UNSD, PNUE et BC3. Alimenté par la technologie du web sémantique k.LAB.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"es\",\"languageDescription\":\"español\",\"localizedDescription\":\"Contabilidad de Ecosistemas de SEEA para el capital natural en la plataforma de ARIES. Una colaboración entre UNSD, PNUMA y BC3 que utiliza la tecnología semántica de k.LAB.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"zh\",\"languageDescription\":\"中文\",\"localizedDescription\":\"基于ARIES平台的综合环境与经济核算系统的生态系统核算标准。由联合国统计司环境统计科（UNSD）、联合国环境规划署（UNEP）和巴斯克气候变化中心（BC3）共同合作。k.LAB语义网络技术提供支持。\",\"localizedLabel\":\"ARIES for SEEA Explorer\"}]}],\"authorization\":\"24f1fa6f-01f0-497a-9c78-0732bb1adaf1\"}"
+        }
+      },
+      "recorded_at": "Thu, 19 Jan 2023 09:56:30 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/5w2lovxl8d",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s5vwuqhcsj7"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Thu, 19 Jan 2023 09:56:01 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=169fd63d75f268df; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"5w2lovxl8d\",\"postDate\":1674122157469,\"resolutionDate\":0,\"status\":\"OPEN\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"geometry\":null,\"feasible\":\"true\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Thu, 19 Jan 2023 09:56:30 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.1.0"
+}

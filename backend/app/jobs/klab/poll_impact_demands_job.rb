@@ -13,36 +13,40 @@ module Klab
       @rest_of_attempts = rest_of_attempts
       @delay_between_attempts = delay_between_attempts
 
-      response = poll_ticket!
-      save_impact_demand_from! response
-    rescue Faraday::ServerError, OutOfPollingAttempts => error
+      response = Klab::PollTicket.new(client).call ticket_id
+      response.resolved? ? save_impact_demand_from!(response) : repeat_job
+    rescue Faraday::ServerError => error
       log_failure_and_repeat_for error
     end
 
     private
 
-    def poll_ticket!
-      # TODO
-    end
-
     def save_impact_demand_from!(response)
-      # TODO
+      Array.wrap(response.artifacts_ids).each.with_index do |artifact_id, idx|
+        artifact_response = Klab::ExportArtifact.new(client).call artifact_id
+        artifact_code = Klab::SubmitContext::Request::INDICATORS.keys[idx]
+        project.public_send "#{impact_level}_#{artifact_code}_demand=", artifact_response.summary["mean"]
+      end
+      project.save!
     end
 
     def log_failure_and_repeat_for(error)
-      if rest_of_attempts.zero?
-        Google::Cloud::ErrorReporting.report error
-        raise error
-      else
-        repeat_job
-      end
+      raise error if rest_of_attempts.zero?
+
+      repeat_job
     end
 
     def repeat_job
+      raise OutOfPollingAttempts if rest_of_attempts.zero?
+
       self.class.set(wait: delay_between_attempts.second).perform_later project.id,
         ticket_id,
         impact_level,
         rest_of_attempts: rest_of_attempts - 1
+    end
+
+    def client
+      @client ||= Klab::APIClient.new
     end
   end
 end
