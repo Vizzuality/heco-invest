@@ -22,6 +22,7 @@ RSpec.describe Klab::PollImpactDemandsJob, type: :job do
             described_class.perform_now project.id, "5vxh899mfu", "project"
 
             project.reload
+            expect(project.project_demands_calculated).to be_truthy
             expect(project.project_biodiversity_demand).to eq(0.5545623521804952e0)
             expect(project.project_climate_demand).to eq(0.7727616029821257)
             expect(project.project_water_demand).to eq(0.8304636946009439)
@@ -36,6 +37,7 @@ RSpec.describe Klab::PollImpactDemandsJob, type: :job do
             described_class.perform_now project.id, "5w2lovxl8d", "project"
 
             project.reload
+            expect(project.project_demands_calculated).to be_falsey
             expect(project.project_biodiversity_demand).to be_nil
             expect(project.project_climate_demand).to be_nil
             expect(project.project_water_demand).to be_nil
@@ -73,6 +75,7 @@ RSpec.describe Klab::PollImpactDemandsJob, type: :job do
         described_class.perform_now project.id, "5w2lovxl8d", "project"
 
         project.reload
+        expect(project.project_demands_calculated).to be_falsey
         expect(project.project_biodiversity_demand).to be_nil
         expect(project.project_climate_demand).to be_nil
         expect(project.project_water_demand).to be_nil
