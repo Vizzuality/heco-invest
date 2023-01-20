@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useRouter } from 'next/router';
@@ -161,6 +163,12 @@ const ProjectDeveloperPage: PageComponent<ProjectDeveloperPageProps, StaticPageL
       isFavourite: projectDeveloper.favourite,
     });
   };
+
+  useEffect(() => {
+    logEvent('profile_visit', {
+      page_location: router.asPath,
+    });
+  }, [router.asPath]);
 
   return (
     <>
