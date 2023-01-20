@@ -20,7 +20,6 @@ import ClusterLayer from 'components/map/layers/cluster';
 import { Legend } from 'components/map/legend/types';
 import ProjectMapPin from 'components/project-map-pin';
 import { logEvent } from 'lib/analytics/ga';
-import { ProjectMapParams } from 'types/project';
 
 import { useProjectsMap } from 'services/projects/projectService';
 
@@ -123,38 +122,34 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
   return (
     <>
       <div className="relative w-full h-full">
-        <Map
-          bounds={bounds}
-          viewport={viewport}
-          onMapViewportChange={handleViewportChange}
-          reuseMaps
-        >
-          {(map) => (
-            <>
-              <LayerManager
-                map={map}
-                plugin={MapboxGLPlugin}
-                providers={{
-                  [cartoProvider.name]: cartoProvider.handleData,
-                }}
-              >
-                {layers.map(({ specification: layerSpec }) => {
-                  if (!layerSpec || !visibleLayers.includes(layerSpec.id)) return null;
-                  return <Layer key={layerSpec.id} {...layerSpec} />;
-                })}
-              </LayerManager>
+        <div className={cx('w-full h-full', blur)}>
+          <Map bounds={bounds} viewport={viewport} onMapViewportChange={handleViewportChange}>
+            {(map) => (
+              <>
+                <LayerManager
+                  map={map}
+                  plugin={MapboxGLPlugin}
+                  providers={{
+                    [cartoProvider.name]: cartoProvider.handleData,
+                  }}
+                >
+                  {layers.map(({ specification: layerSpec }) => {
+                    if (!layerSpec || !visibleLayers.includes(layerSpec.id)) return null;
+                    return <Layer key={layerSpec.id} {...layerSpec} />;
+                  })}
+                </LayerManager>
 
-              <ClusterLayer
-                data={projectsMap}
-                map={map}
-                MarkerComponent={ProjectMapPin}
-                ClusterComponent={MapPinCluster}
-                onSelectProjectPin={onSelectProjectPin}
-              />
-            </>
-          )}
-        </Map>
-
+                <ClusterLayer
+                  data={projectsMap}
+                  map={map}
+                  MarkerComponent={ProjectMapPin}
+                  ClusterComponent={MapPinCluster}
+                  onSelectProjectPin={onSelectProjectPin}
+                />
+              </>
+            )}
+          </Map>
+        </div>
         <div
           // `bottom-12` ensures the layers menu doesn't overflow the map
           // `pointer-events-none` because this div covers the map, this class is necessary to ensure the user can
