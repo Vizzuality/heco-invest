@@ -12,7 +12,7 @@ import { LogoProps } from './types';
 const Logo: React.FC<LogoProps> = ({ defaultWhite = false }: LogoProps) => {
   const { isScrolledY } = useScrollY();
   const imagePath =
-    !isScrolledY && defaultWĥite
+    !isScrolledY && defaultWhite
       ? '/images/logos/heco_logo_white.png'
       : '/images/logos/heco_logo_color.png';
 
