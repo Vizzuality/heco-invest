@@ -1,7 +1,9 @@
-import { ChangeEvent, FC, useCallback, useMemo, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
+
+import cx from 'classnames';
 
 import omit from 'lodash-es/omit';
 
@@ -11,13 +13,13 @@ import MapboxGLPlugin from '@vizzuality/layer-manager-plugin-mapboxgl';
 import CartoProvider from '@vizzuality/layer-manager-provider-carto';
 import { LayerManager, Layer } from '@vizzuality/layer-manager-react';
 
-import { useLayers } from 'hooks/useLayers';
+import { LAYERS, LAYER_GROUPS, useLayers } from 'hooks/useLayers';
 
 import Map from 'components/map';
 import Controls from 'components/map/controls';
 import ZoomControl from 'components/map/controls/zoom';
 import ClusterLayer from 'components/map/layers/cluster';
-import { Legend, LegendType } from 'components/map/legend/types';
+import { Legend } from 'components/map/legend/types';
 import ProjectMapPin from 'components/project-map-pin';
 import { logEvent } from 'lib/analytics/ga';
 import { ProjectMapParams } from 'types/project';
@@ -48,6 +50,11 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
     bbox: [-81.99, -4.35, -65.69, 12.54],
     options: { padding: 0 },
   });
+
+  const [layerSelectorOpen, setLayerSelectorOpen] = useState(false);
+
+  // blur map and controllers when layer selector is open
+  const blur = { 'blur-[2px]': layerSelectorOpen };
 
   const onZoomChange = useCallback(
     (zoom) => {
@@ -88,17 +95,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
   const layerLegends: Legend[] = useMemo(
     () =>
       visibleLayers
-        .map((layer) => {
-          const {
-            legend: { items, type },
-            id,
-            name,
-            group,
-            isResourceWatch,
-            description,
-          } = layers.find(({ id }) => layer === id);
-          return { items, type: type as LegendType, id, name, group, isResourceWatch, description };
-        })
+        .map((layer) => (layers as unknown as Legend[]).find(({ id }) => layer === id))
         .reverse(),
     [layers, visibleLayers]
   );
@@ -120,36 +117,42 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
     }
   };
 
+  useEffect(() => {
+    // Set priority landscapes layer visible by default
+    setValue(LAYER_GROUPS.BaseLayer, [LAYERS.HeCoMosaics]);
+  }, []);
+
   return (
     <>
       <div className="relative w-full h-full">
-        <Map bounds={bounds} viewport={viewport} onMapViewportChange={handleViewportChange}>
-          {(map) => (
-            <>
-              <LayerManager
-                map={map}
-                plugin={MapboxGLPlugin}
-                providers={{
-                  [cartoProvider.name]: cartoProvider.handleData,
-                }}
-              >
-                {layers.map(({ specification: layerSpec }) => {
-                  if (!layerSpec || !visibleLayers.includes(layerSpec.id)) return null;
-                  return <Layer key={layerSpec.id} {...layerSpec} />;
-                })}
-              </LayerManager>
+        <div className={cx('w-full h-full', blur)}>
+          <Map bounds={bounds} viewport={viewport} onMapViewportChange={handleViewportChange}>
+            {(map) => (
+              <>
+                <LayerManager
+                  map={map}
+                  plugin={MapboxGLPlugin}
+                  providers={{
+                    [cartoProvider.name]: cartoProvider.handleData,
+                  }}
+                >
+                  {layers.map(({ specification: layerSpec }) => {
+                    if (!layerSpec || !visibleLayers.includes(layerSpec.id)) return null;
+                    return <Layer key={layerSpec.id} {...layerSpec} />;
+                  })}
+                </LayerManager>
 
-              <ClusterLayer
-                data={projectsMap}
-                map={map}
-                MarkerComponent={ProjectMapPin}
-                ClusterComponent={MapPinCluster}
-                onSelectProjectPin={onSelectProjectPin}
-              />
-            </>
-          )}
-        </Map>
-
+                <ClusterLayer
+                  data={projectsMap}
+                  map={map}
+                  MarkerComponent={ProjectMapPin}
+                  ClusterComponent={MapPinCluster}
+                  onSelectProjectPin={onSelectProjectPin}
+                />
+              </>
+            )}
+          </Map>
+        </div>
         <div
           // `bottom-12` ensures the layers menu doesn't overflow the map
           // `pointer-events-none` because this div covers the map, this class is necessary to ensure the user can
@@ -164,6 +167,8 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
               onChange: handleChangeVisibleLayer,
             }}
             visibleLayers={visibleLayers?.length}
+            layerSelectorOpen={layerSelectorOpen}
+            setLayerSelectorOpen={setLayerSelectorOpen}
           />
         </div>
 
@@ -191,7 +196,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
         </div>
 
         <Controls className="w-full h-full">
-          <div className="absolute flex flex-col items-end top-4 right-4 gap-y-2">
+          <div className={cx('absolute flex flex-col items-end top-4 right-4 gap-y-2', blur)}>
             <LocationSearcher
               className="absolute pointer-events-auto"
               onLocationSelected={handleLocationSelected}
@@ -203,9 +208,9 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
             />
             <MapHelp />
           </div>
-          <div className="absolute h-fit max-h-[45%] bottom-4 right-4 overflow-y-auto">
+          <div className="absolute overflow-y-auto pointer-events-none h-fit bottom-4 right-4">
             <LayerLegend
-              className="bg-white"
+              className={cx(blur)}
               onCloseLegend={(layerGroup) => resetField(layerGroup as keyof MapLayersSelectorForm)}
               layersLegends={layerLegends}
             />
