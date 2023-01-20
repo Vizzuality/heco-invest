@@ -31,7 +31,7 @@ export const Header: FC<HeaderProps> = ({}: HeaderProps) => {
         <LayoutContainer>
           <div className="flex items-center justify-between h-18">
             <span className="justify-start">
-              <Logo defaultWĥite />
+              <Logo defaultWhite />
             </span>
             <span className="flex items-center justify-end flex-grow gap-2">
               <Navigation className="hidden lg:flex-1 lg:flex lg:items-center lg:justify-end lg:mr-4" />
