@@ -27,6 +27,7 @@ module Klab
         artifact_code = Klab::SubmitContext::Request::INDICATORS.keys[idx]
         project.public_send "#{impact_level}_#{artifact_code}_demand=", artifact_response.summary["mean"]
       end
+      project.assign_attributes "#{impact_level}_demands_calculated": true
       project.save!
     end
 

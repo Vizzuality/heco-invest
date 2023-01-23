@@ -110,6 +110,10 @@ FactoryBot.define do
     end
 
     trait :with_demands do
+      project_demands_calculated { true }
+      municipality_demands_calculated { true }
+      hydrobasin_demands_calculated { true }
+      priority_landscape_demands_calculated { true }
       project_biodiversity_demand { 0.1 }
       project_climate_demand { 0.1 }
       project_water_demand { 0.1 }

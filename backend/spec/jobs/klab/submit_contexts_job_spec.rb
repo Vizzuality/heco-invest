@@ -28,6 +28,31 @@ RSpec.describe Klab::SubmitContextsJob, type: :job do
       end
     end
 
+    context "when there is no context string to be send to klab" do
+      let(:build_context_string_service) { instance_double Klab::BuildContextString }
+
+      before do
+        allow(Klab::BuildContextString).to receive(:new).and_return(build_context_string_service)
+        allow(build_context_string_service).to receive(:call).and_return nil
+      end
+
+      it "does not enqueue klab polling jobs for such impact levels" do
+        expect {
+          described_class.perform_now project.id
+        }.not_to have_enqueued_job(Klab::PollImpactDemandsJob)
+      end
+
+      it "marks demand calculation as done at project" do
+        described_class.perform_now project.id
+
+        project.reload
+        expect(project.project_demands_calculated).to be_truthy
+        expect(project.municipality_demands_calculated).to be_truthy
+        expect(project.hydrobasin_demands_calculated).to be_truthy
+        expect(project.priority_landscape_demands_calculated).to be_truthy
+      end
+    end
+
     context "when context submitting fails" do
       before do
         stub_request(:any, Regexp.new(ENV["KLAB_API_HOST"])).to_return status: 503
