@@ -18,10 +18,12 @@ module Klab
     private
 
     def submit_contexts!
-      Project::IMPACT_LEVELS.map do |impact_level|
+      Project::IMPACT_LEVELS.each_with_object([]) do |impact_level, result|
         context_string = Klab::BuildContextString.new(project, impact_level).call
+        next skip! impact_level if context_string.blank?
+
         response = Klab::SubmitContext.new(client).call context_string
-        {id: response.ticket_id, impact_level: impact_level}
+        result << {id: response.ticket_id, impact_level: impact_level}
       end
     end
 
@@ -29,6 +31,10 @@ module Klab
       tickets.each do |ticket|
         Klab::PollImpactDemandsJob.perform_later project.id, ticket[:id], ticket[:impact_level]
       end
+    end
+
+    def skip!(impact_level)
+      project.update! "#{impact_level}_demands_calculated": true
     end
 
     def log_failure_and_repeat_for(error)

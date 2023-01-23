@@ -248,7 +248,7 @@ RSpec.describe Project, type: :model do
         before { stub_const("ENV", ENV.to_hash.merge("KLAB_ENABLED" => "false")) }
 
         it "enqueues impact calculation job" do
-          assert_enqueued_with job: ImpactCalculationJob, args: [project] do
+          assert_enqueued_with job: ImpactCalculationJob, args: [project.id] do
             project.geometry = {type: "Polygon", coordinates: [[[0.3, 0.3], [1.3, 0.3], [1.3, 1.3], [0.3, 1.3]]]}
             project.save!
           end
@@ -273,6 +273,13 @@ RSpec.describe Project, type: :model do
         expect(project.reload.impact_calculated).to be_falsey
       end
 
+      it "resets all calculated demands attributes" do
+        project.update! geometry: {type: "Polygon", coordinates: [[[0.3, 0.3], [1.3, 0.3], [1.3, 1.3], [0.3, 1.3]]]}
+        Project::IMPACT_LEVELS.each do |impact_level|
+          expect(project.public_send("#{impact_level}_demands_calculated")).to be_falsey
+        end
+      end
+
       it "resets all impacts and demand attributes" do
         project.update! geometry: {type: "Polygon", coordinates: [[[0.3, 0.3], [1.3, 0.3], [1.3, 1.3], [0.3, 1.3]]]}
         Project::IMPACT_LEVELS.each do |impact_level|
@@ -289,7 +296,7 @@ RSpec.describe Project, type: :model do
         before { stub_const("ENV", ENV.to_hash.merge("KLAB_ENABLED" => "false")) }
 
         it "enqueues impact calculation job" do
-          assert_enqueued_with job: ImpactCalculationJob, args: [project] do
+          assert_enqueued_with job: ImpactCalculationJob, args: [project.id] do
             project.impact_areas = ["hydrometerological-risk-reduction"]
             project.save!
           end

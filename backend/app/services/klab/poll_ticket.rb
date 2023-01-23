@@ -49,25 +49,22 @@ module Klab
       @token = client.token
     end
 
-    def call(ticket_id)
+    def call(ticket_id, async: true)
       request = Request.new(@token, ticket_id)
       response = Response.new(request.call)
-      cnt = 1
-      Rails.logger.debug "Checking if context response resolved (#{cnt})"
-      Rails.logger.debug response
-      # this part can take a few minutes - ticket gets resolved when observations for all indicators completed
-      until response.resolved?
-        cnt += 1
-        Rails.logger.debug "Checking if context response resolved (#{cnt})"
-        Rails.logger.debug response
-        response = Response.new(request.call)
-        sleep(self.class.sleep_interval)
-      end
+      response = wait_till_ticket_gets_resolved response, request unless async
       @artifacts_ids = response.artifacts_ids
       response
-    rescue Faraday::ServerError => e
-      Google::Cloud::ErrorReporting.report e
-      raise e
+    end
+
+    def wait_till_ticket_gets_resolved(response, request, count = 1)
+      Rails.logger.debug "Checking if context response resolved (#{count})"
+      Rails.logger.debug response
+      return response if response.resolved?
+
+      response = Response.new request.call
+      sleep self.class.sleep_interval
+      wait_till_ticket_gets_resolved response, request, count + 1
     end
 
     # number of seconds to wait between calls

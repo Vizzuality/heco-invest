@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_16_095307) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_20_094013) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -415,6 +415,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_16_095307) do
     t.decimal "project_water_impact", precision: 25, scale: 20
     t.decimal "project_community_impact", precision: 25, scale: 20
     t.decimal "project_total_impact", precision: 25, scale: 20
+    t.boolean "project_demands_calculated", default: false
+    t.boolean "municipality_demands_calculated", default: false
+    t.boolean "hydrobasin_demands_calculated", default: false
+    t.boolean "priority_landscape_demands_calculated", default: false
     t.index ["country_id"], name: "index_projects_on_country_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
     t.index ["municipality_id"], name: "index_projects_on_municipality_id"

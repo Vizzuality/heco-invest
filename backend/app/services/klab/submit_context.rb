@@ -1,6 +1,13 @@
 module Klab
   class SubmitContext
     class Request
+      INDICATORS = {
+        biodiversity: "im:Indicator (value of ecology:Biodiversity)",
+        climate: "im:Indicator (value of ecology:Ecosystem for es:ClimateRegulation)",
+        community: "im:Indicator (es.nca:Condition of demography:Human demography:Community)",
+        water: "im:Indicator (es.nca:Condition of earth:Aquatic ecology:Ecosystem)"
+      }.freeze
+
       def initialize(token)
         @connection = APIConnection.new
         @token = token
@@ -13,7 +20,7 @@ module Klab
           req.headers["Content-Type"] = "application/json"
           req.body = {
             urn: geometry,
-            observables: Klab::CalculateProjectImpactScore.observable_names,
+            observables: INDICATORS.values,
             scenarios: [],
             estimate: false,
             estimatedCost: -1

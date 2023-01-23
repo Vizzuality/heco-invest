@@ -33,8 +33,6 @@ module Klab
       end
     end
 
-    # attr_reader :artifacts_ids
-
     def initialize(client)
       @token = client.token
     end
@@ -42,9 +40,6 @@ module Klab
     def call(artifact_id)
       request = Request.new(@token, artifact_id)
       Response.new(request.call)
-    rescue Faraday::ServerError => e
-      Google::Cloud::ErrorReporting.report e
-      raise e
     end
   end
 end
