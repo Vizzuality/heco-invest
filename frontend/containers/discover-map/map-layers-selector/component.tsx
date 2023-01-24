@@ -75,7 +75,7 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
           </div>
         )}
       </button>
-      <FocusScope contain restoreFocus>
+      <FocusScope contain={layerSelectorOpen} restoreFocus>
         <div
           className={cx(
             'mt-1.5 overflow-hidden mx-0.5 absolute bg-white top-8 z-20 transition-all duration-500',
