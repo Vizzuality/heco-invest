@@ -64,10 +64,7 @@ export const Tag = <FormValues extends FieldValues>({
       >
         {children}
         {showDeleteIcon && (
-          <Icon
-            className="w-3 h-3 ml-2 text-gray-900 sm:w-4 sm:h-4 min-w-min min-h-min"
-            icon={CloseIcon}
-          />
+          <Icon className="w-3 h-3 ml-2 text-gray-900 sm:w-4 sm:h-4" icon={CloseIcon} />
         )}
       </label>
     </div>
