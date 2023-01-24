@@ -18,7 +18,6 @@ import ClusterLayer from 'components/map/layers/cluster';
 import { Legend, LegendType } from 'components/map/legend/types';
 import ProjectMapPin from 'components/project-map-pin';
 import { logEvent } from 'lib/analytics/ga';
-import { ProjectMapParams } from 'types/project';
 
 import { useProjectsMap } from 'services/projects/projectService';
 
@@ -159,6 +158,11 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           // interactable
           className="absolute flex items-start gap-2 inset-3.5 bottom-12 text-gray-800 text-sm pointer-events-none"
         >
+          <LocationSearcher
+            className="absolute pointer-events-auto"
+            onLocationSelected={handleLocationSelected}
+            isAlwaysOpen
+          />
           <MapLayersSelector
             className="pointer-events-auto"
             register={register}
@@ -193,10 +197,6 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
 
         <Controls className="w-full h-full">
           <div className="absolute flex flex-col items-end top-4 right-4 gap-y-2">
-            <LocationSearcher
-              className="absolute pointer-events-auto"
-              onLocationSelected={handleLocationSelected}
-            />
             <ZoomControl
               className="w-min "
               viewport={{ ...viewport }}
