@@ -38,8 +38,8 @@ module Klab
     end
 
     def current_time_period
-      time_start = ((Time.now - 1.year).beginning_of_year + 1.hour).to_datetime.strftime "%Q"
-      time_end = (Time.now.beginning_of_year + 1.hour).to_datetime.strftime "%Q"
+      time_start = ((Time.current.utc - 1.year).beginning_of_year + 1.hour).to_datetime.strftime "%Q"
+      time_end = (Time.current.utc.beginning_of_year + 1.hour).to_datetime.strftime "%Q"
       "[#{time_start} #{time_end}]"
     end
 
