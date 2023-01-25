@@ -22,7 +22,7 @@ module Klab
         context_string = Klab::BuildContextString.new(project, impact_level).call
         next skip! impact_level if context_string.blank?
 
-        response = Klab::SubmitContext.new(client).call context_string
+        response = Klab::SubmitContext.new(client).call geometry: context_string
         result << {id: response.ticket_id, impact_level: impact_level}
       end
     end
