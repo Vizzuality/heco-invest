@@ -1,6 +1,6 @@
 import { FC, useMemo, useState } from 'react';
 
-import { Heart as HeartIcon, CheckCircle as CheckCircleIcon } from 'react-feather';
+import { Heart as HeartIcon } from 'react-feather';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import cx from 'classnames';
@@ -16,6 +16,7 @@ import ShareIcons from 'containers/share-icons';
 import ContactInformationModal from 'containers/social-contact/contact-information-modal';
 
 import Button from 'components/button';
+import FieldInfo from 'components/forms/field-info';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import { logEvent } from 'lib/analytics/ga';
@@ -166,9 +167,18 @@ export const Header: FC<HeaderProps> = ({ className, project }: HeaderProps) => 
                 <span id="ticket-size" className="text-xl font-semibold leading-6">
                   {ticketSizeStr}
                 </span>
-                <span aria-labelledby="ticket-size" className="leading-4 text-gray-400">
+                <div aria-labelledby="ticket-size" className="leading-4 text-gray-400">
                   <FormattedMessage defaultMessage="Ticket size" id="lfx6Nc" />
-                </span>
+                  <div className="inline-block ml-2">
+                    <FieldInfo
+                      content={intl.formatMessage({
+                        defaultMessage:
+                          'The HeCo Invest platform uses the US dollar as the reference currency, taking into account that the platform is primarily aimed at international investors.  These investors usually use the US dollar as a reference currency which facilitates their understanding of the proposals presented on the platform.',
+                        id: 'KdWzZW',
+                      })}
+                    />
+                  </div>
+                </div>
               </div>
               <div className="flex flex-col justify-end gap-2 md:items-start">
                 <span id="instrument-types" className="text-xl font-semibold leading-6">
