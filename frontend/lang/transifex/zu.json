@@ -1227,6 +1227,9 @@
   "KYymTZ": {
     "string": "{quantity, plural, one {project} other {projects}}"
   },
+  "KdWzZW": {
+    "string": "The HeCo Invest platform uses the US dollar as the reference currency, taking into account that the platform is primarily aimed at international investors. These investors usually use the US dollar as a reference currency which facilitates their understanding of the proposals presented on the platform."
+  },
   "KjV4yK": {
     "string": "The max development duration is 36 months"
   },

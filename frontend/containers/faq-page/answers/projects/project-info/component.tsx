@@ -328,6 +328,11 @@ export const ProjectInfo: FC = () => {
             defaultMessage: 'How much money did the project received or raised? (US$)',
             id: '1eETJy',
           })}
+          description={formatMessage({
+            defaultMessage:
+              'The HeCo Invest platform uses the US dollar as the reference currency, taking into account that the platform is primarily aimed at international investors.  These investors usually use the US dollar as a reference currency which facilitates their understanding of the proposals presented on the platform.',
+            id: 'KdWzZW',
+          })}
         />
         <ListItem
           title={formatMessage({
