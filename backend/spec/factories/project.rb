@@ -66,7 +66,7 @@ FactoryBot.define do
     end
 
     language { "en" }
-    geometry { {type: "Point", coordinates: [1, 2]} }
+    geometry { {type: "Polygon", coordinates: [[[-7.256596802202454, 39.42149705239956], [-5.510236906689473, 40.02677860935444], [-4.408874148363334, 39.419930008870296], [-5.205992932301829, 38.67169482742881], [-6.402685625872827, 38.39721372248553], [-7.059852379049463, 38.94985978831832], [-7.256596802202454, 39.42149705239956]]]} }
 
     trait :with_involved_project_developers do
       involved_project_developers { create_list(:project_developer, 2) }
