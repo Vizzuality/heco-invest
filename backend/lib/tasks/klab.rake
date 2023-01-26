@@ -1,8 +1,8 @@
 namespace :klab do
-  desc "Seeding database with geojson data for Colombia country"
+  desc "Recalculate impacts of all projects with demands obtained from k.LAB"
   task recalculate_impacts: :environment do
     Project.all.each_with_index do |project, i|
-      puts "Reset of demand values of #{project.name} project"
+      puts "Reset demand values of #{project.name} project"
       impact_columns = {}
       Project::IMPACT_LEVELS.each do |impact_level|
         impact_columns["#{impact_level}_demands_calculated"] = false
