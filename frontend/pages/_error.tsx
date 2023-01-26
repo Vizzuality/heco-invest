@@ -53,7 +53,7 @@ const InternalError: PageComponent<InternalErrorProps, NakedLayoutProps> = () =>
           </p>
         </div>
         <Button to={Paths.Home}>
-          <FormattedMessage defaultMessage="Go back" id="orvpWh" />
+          <FormattedMessage defaultMessage="Go to homepage" id="kk1RMl" />
         </Button>
       </LayoutContainer>
     </div>

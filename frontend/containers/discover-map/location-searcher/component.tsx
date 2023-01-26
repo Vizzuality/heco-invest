@@ -42,6 +42,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({
   };
 
   useOutsideClick(containerRef, () => {
+    setIsError(false);
     if (isAlwaysOpen || !isOpen || addressSetted) return;
     setIsOpen(false);
     handleClearSearch();
@@ -157,7 +158,7 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({
                       'transition-all duration-500 ease-in-out outline-none placeholder-gray-800 text-sm overflow-ellipsis overflow-hidden whitespace-nowrap',
                       {
                         'w-0 opacity-0': !isOpen,
-                        'w-52 pr-6 opacity-100': isOpen || addressSetted,
+                        'w-40 pr-6 opacity-100': isOpen || addressSetted,
                       }
                     )}
                     aria-label={intl.formatMessage({
@@ -196,44 +197,40 @@ export const LocationSearcher: FC<LocationSearcherProps> = ({
                 </div>
 
                 <div
-                  className={cx(
-                    'absolute w-60 rounded h-0 opacity-0 px-3 py-0 mt-0 shadow-none bg-white transition-all',
-                    {
-                      'h-auto py-2 mt-1 shadow-2xl opacity-100': isOpen && !!suggestions.length,
-                    }
-                  )}
-                >
-                  {suggestions.map((suggestion) => {
-                    const className = cx({
-                      'bg-white cursor-pointer text-sm px-1.5 py-2 flex flex-col': true,
-                      'text-gray-800': suggestion.active,
-                      'text-gray-600': !suggestion.active,
-                    });
-                    return (
-                      <div
-                        key={suggestion.placeId}
-                        {...getSuggestionItemProps(suggestion, {
-                          className,
-                        })}
-                      >
-                        <p className="py-0 text-black">{suggestion.formattedSuggestion.mainText}</p>
-                        <p className="text-gray-800">
-                          {suggestion.formattedSuggestion.secondaryText}
-                        </p>
-                      </div>
-                    );
+                  className={cx('absolute w-48 rounded bg-white transition-all', {
+                    'h-auto py-2 mt-1 shadow-2xl opacity-100 px-3': isOpen,
+                    'h-0 py-0 mt-0 opacity-0 shadow-none':
+                      !isOpen || (!suggestions.length && !isError),
                   })}
-                </div>
-                <div
-                  className={cx(
-                    'absolute w-60 rounded h-0 opacity-0 shadow-none bg-white text-sm text-center text-gray-800 transition-all',
-                    {
-                      'h-auto p-4 mt-1 shadow-2xl opacity-100':
-                        isOpen && isError && !suggestions.length,
-                    }
-                  )}
                 >
-                  <FormattedMessage defaultMessage="No results found" id="hX5PAb" />
+                  {isError && !suggestions.length ? (
+                    <p className="py-2 text-center text-gray-800">
+                      <FormattedMessage defaultMessage="No results found" id="hX5PAb" />
+                    </p>
+                  ) : (
+                    suggestions.map((suggestion) => {
+                      const className = cx({
+                        'bg-white cursor-pointer text-sm px-1.5 py-2 flex flex-col': true,
+                        'text-gray-800': suggestion.active,
+                        'text-gray-600': !suggestion.active,
+                      });
+                      return (
+                        <div
+                          key={suggestion.placeId}
+                          {...getSuggestionItemProps(suggestion, {
+                            className,
+                          })}
+                        >
+                          <p className="py-0 text-black">
+                            {suggestion.formattedSuggestion.mainText}
+                          </p>
+                          <p className="text-gray-800">
+                            {suggestion.formattedSuggestion.secondaryText}
+                          </p>
+                        </div>
+                      );
+                    })
+                  )}
                 </div>
               </div>
             );
