@@ -9,7 +9,7 @@ RSpec.describe Klab::CalculateProjectImpactScore do
       allow(Klab::PollTicket).to receive(:sleep_interval).and_return(0)
     end
 
-    let(:service) { Klab::CalculateProjectImpactScore.new("aries.heco.locations.colombia_continental") }
+    let(:service) { Klab::CalculateProjectImpactScore.new(urn: "aries.heco.locations.colombia_continental") }
 
     subject { service.call }
 

@@ -13,7 +13,13 @@ RSpec.describe Klab::SubmitContextsJob, type: :job do
 
   describe ".perform_now" do
     context "when context submitting is successful" do
-      before { VCR.turn_on! }
+      let(:build_context_string_service) { instance_double Klab::BuildContextString }
+
+      before do
+        allow(Klab::BuildContextString).to receive(:new).and_return(build_context_string_service)
+        allow(build_context_string_service).to receive(:call).and_return "aries.heco.locations.colombia_continental"
+        VCR.turn_on!
+      end
       after { VCR.turn_off! }
 
       it "enqueues klab poll demand jobs" do

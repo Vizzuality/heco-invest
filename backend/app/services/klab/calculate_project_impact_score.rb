@@ -3,8 +3,9 @@ module Klab
     ImpactScoreStruct = Struct.new(:biodiversity, :climate, :community, :water)
 
     # @param geometry [String] geometry in format recognised by ARIES
-    def initialize(geometry)
+    def initialize(geometry: nil, urn: nil)
       @geometry = geometry
+      @urn = urn
       @client = Klab::APIClient.new
     end
 
@@ -19,7 +20,7 @@ module Klab
     private
 
     def get_result_from_api
-      context_resp = Klab::SubmitContext.new(@client).call(@geometry)
+      context_resp = Klab::SubmitContext.new(@client).call(geometry: @geometry, urn: @urn)
       ticket_resp = Klab::PollTicket.new(@client).call(context_resp.ticket_id, async: false)
       result = ImpactScoreStruct.new
       ticket_resp.artifacts_ids.each.with_index do |artifact_id, idx|
