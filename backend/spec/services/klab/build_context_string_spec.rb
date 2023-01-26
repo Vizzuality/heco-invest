@@ -32,6 +32,14 @@ RSpec.describe Klab::BuildContextString do
             .to eq("τ0(1){ttype=LOGICAL,period=[1640995200000 1672531200000],tscope=1.0,tunit=YEAR}S2(256,256){bbox=[0.3 1.3 0.3 1.3],shape=000000000300000001000000053FD33333333333333FD33333333333333FF4CCCCCCCCCCCD3FD33333333333333FF4CCCCCCCCCCCD3FF4CCCCCCCCCCCD3FD33333333333333FF4CCCCCCCCCCCD3FD33333333333333FD3333333333333,proj=EPSG:4326}")
         end
       end
+
+      context "when there is no intersection between project geometry and location" do
+        let(:project) { create :project, geometry: {type: "Polygon", coordinates: [[[100, 100], [101, 100], [101, 101], [100, 101]]]} }
+
+        it "returns nil" do
+          expect(subject.call).to be_nil
+        end
+      end
     end
 
     context "when impact level is hydrobasin" do
