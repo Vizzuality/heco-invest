@@ -16,6 +16,7 @@ import OpenCallApplicationModal from 'containers/open-call-application-modal';
 import ShareIcons from 'containers/share-icons';
 
 import Button from 'components/button';
+import FieldInfo from 'components/forms/field-info';
 import Icon from 'components/icon';
 import LayoutContainer from 'components/layout-container';
 import { Languages, OpenCallStatus, UserRoles } from 'enums';
@@ -140,9 +141,18 @@ export const OpenCallHeader: FC<OpenCallHeaderProps> = ({ openCall, instrumentTy
                     >
                       ${maximum_funding_per_project.toLocaleString(locale)}
                     </span>
-                    <span id="open-call-value" className="leading-4 text-gray-400">
+                    <div id="open-call-value" className="leading-4 text-gray-400">
                       <FormattedMessage defaultMessage="Value" id="GufXy5" />
-                    </span>
+                      <div className="inline-block ml-2">
+                        <FieldInfo
+                          content={intl.formatMessage({
+                            defaultMessage:
+                              'The HeCo Invest platform uses the US dollar as the reference currency, taking into account that the platform is primarily aimed at international investors.  These investors usually use the US dollar as a reference currency which facilitates their understanding of the proposals presented on the platform.',
+                            id: 'KdWzZW',
+                          })}
+                        />
+                      </div>
+                    </div>
                   </div>
                   <div className="flex flex-col justify-end gap-2 md:items-start">
                     <div className="max-w-full">
