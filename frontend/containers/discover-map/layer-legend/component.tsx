@@ -24,6 +24,7 @@ export const LayerLegend: FC<LayerLegendProps> = ({
   className = '',
   maxHeight,
   onCloseLegend,
+  setSelectedLayerInfo,
 }) => {
   const id = useId();
 
@@ -34,14 +35,14 @@ export const LayerLegend: FC<LayerLegendProps> = ({
   }, [active]);
 
   const legendVariants = {
-    open: { opacity: 1, height: 'auto' },
-    closed: { opacity: 0, height: 0 },
+    open: { opacity: 1, height: 'fit-content', marginTop: '4px' },
+    closed: { opacity: 0, height: 0, marginTop: 0 },
   };
 
   return (
     <div
       className={cx({
-        'flex flex-col items-end h-full gap-px bg-transparent pl-4': true,
+        'flex flex-col items-end h-full bg-transparent overflow-visible pb-4 px-4': true,
         [className]: !!className,
       })}
     >
@@ -50,7 +51,7 @@ export const LayerLegend: FC<LayerLegendProps> = ({
         size="smallest"
         aria-controls={id}
         aria-expanded={active}
-        className="flex items-center justify-center w-8 h-8 mt-1 bg-white rounded shadow pointer-events-auto button focus-visible:outline-green-dark"
+        className="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-white rounded shadow pointer-events-auto button focus-visible:outline-green-dark"
         onClick={onToggleActive}
       >
         <span className="sr-only">
@@ -71,7 +72,7 @@ export const LayerLegend: FC<LayerLegendProps> = ({
         animate={active ? 'open' : 'closed'}
         transition={{ duration: 0.6 }}
         variants={legendVariants}
-        className="w-56 z-10 bg-transparent shadow-xl text-xs flex flex-col lg:min-w-[280px] h-full overflow-hidden pointer-events-auto mt-0.5"
+        className="w-56 z-10 bg-transparent text-xs flex flex-col lg:min-w-[280px] h-full overflow-y-auto pointer-events-auto max-h-full shadow"
         style={{ maxHeight }}
       >
         <Legend>
@@ -85,6 +86,7 @@ export const LayerLegend: FC<LayerLegendProps> = ({
                 key={i.id}
                 legend={i}
                 handleCloseLegend={() => onCloseLegend(group)}
+                openInfoModal={() => setSelectedLayerInfo(i)}
                 icon={
                   type === 'monocolor' && (
                     <span

@@ -23,13 +23,14 @@ import { logEvent } from 'lib/analytics/ga';
 
 import { useProjectsMap } from 'services/projects/projectService';
 
+import LayerInfoModal from './layer-info-modal';
 import LayerLegend from './layer-legend';
 import LocationSearcher from './location-searcher';
 import MapHelp from './map-help';
 import MapLayersSelector from './map-layers-selector';
 import { MapLayersSelectorForm } from './map-layers-selector/types';
 import MapPinCluster from './pin-cluster';
-import { DiscoverMapProps } from './types';
+import { DiscoverMapProps, SelectLayerInfoType } from './types';
 
 const cartoProvider = new CartoProvider();
 
@@ -49,6 +50,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
   });
 
   const [layerSelectorOpen, setLayerSelectorOpen] = useState(false);
+  const [selectedLayerInfo, setSelectedLayerInfo] = useState<SelectLayerInfoType>();
 
   // blur map and controllers when layer selector is open
   const blur = { 'blur-[2px]': layerSelectorOpen };
@@ -158,7 +160,7 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           className="absolute flex items-start gap-2 inset-3.5 bottom-12 text-gray-800 text-sm pointer-events-none"
         >
           <LocationSearcher
-            className="absolute pointer-events-auto"
+            className={cx('absolute pointer-events-auto', blur)}
             onLocationSelected={handleLocationSelected}
             isAlwaysOpen
           />
@@ -171,6 +173,8 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
             visibleLayers={visibleLayers?.length}
             layerSelectorOpen={layerSelectorOpen}
             setLayerSelectorOpen={setLayerSelectorOpen}
+            selectedLayerInfo={selectedLayerInfo}
+            setSelectedLayerInfo={setSelectedLayerInfo}
           />
         </div>
 
@@ -197,24 +201,34 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
           )}
         </div>
 
-        <Controls className="w-full h-full">
-          <div className="absolute flex flex-col items-end top-4 right-4 gap-y-2">
+        <Controls
+          className={cx(
+            'absolute top-0 right-0 flex flex-col items-end justify-between w-full h-full pointer-events-none gap-y-2',
+            blur
+          )}
+        >
+          <div className="flex flex-col items-end p-4 gap-y-2">
             <ZoomControl
-              className="w-min "
+              className="pointer-events-auto w-min"
               viewport={{ ...viewport }}
               onZoomChange={onZoomChange}
             />
             <MapHelp />
           </div>
-          <div className="absolute overflow-y-auto pointer-events-none h-fit bottom-4 right-4">
+          <div className="max-h-[45%] flex-col flex justify-end h-auto">
             <LayerLegend
-              className={cx(blur)}
+              className="flex flex-col justify-end h-full max-h-full overflow-y-auto"
               onCloseLegend={(layerGroup) => resetField(layerGroup as keyof MapLayersSelectorForm)}
               layersLegends={layerLegends}
+              setSelectedLayerInfo={setSelectedLayerInfo}
             />
           </div>
         </Controls>
       </div>
+      <LayerInfoModal
+        layer={selectedLayerInfo}
+        closeLayerInfoModal={() => setSelectedLayerInfo(undefined)}
+      />
     </>
   );
 };

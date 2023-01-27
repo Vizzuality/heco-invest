@@ -35,8 +35,8 @@ export const Expando: FC<ExpandoProps> = ({
         animate={isOpen ? 'open' : 'closed'}
         transition={{ bounce: 0, duration }}
         variants={{
-          open: { height: 'auto' },
-          closed: { height: 0 },
+          open: { height: 'auto', visibility: 'visible' },
+          closed: { height: 0, visibility: 'hidden' },
         }}
       >
         {children}

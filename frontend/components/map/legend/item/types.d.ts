@@ -9,4 +9,5 @@ export interface LegendItemProps {
   icon?: ReactNode;
   children?: ReactNode;
   handleCloseLegend: () => void;
+  openInfoModal: () => void;
 }

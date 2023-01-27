@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 
 import cx from 'classnames';
 
-import { useKey } from 'rooks';
+import { useKey, useOutsideClick } from 'rooks';
 
 import { useLayers } from 'hooks/useLayers';
 
@@ -25,6 +25,8 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
   visibleLayers,
   layerSelectorOpen,
   setLayerSelectorOpen,
+  setSelectedLayerInfo,
+  selectedLayerInfo,
 }: MapLayersSelectorProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const selectorRef = useRef<HTMLDivElement>(null);
@@ -34,6 +36,12 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
 
   useKey(['Escape'], () => setLayerSelectorOpen(false), {
     target: selectorRef,
+  });
+
+  useOutsideClick(containerRef, () => {
+    if (!selectedLayerInfo?.id) {
+      setLayerSelectorOpen(false);
+    }
   });
 
   const handleButtonClick = () => {
@@ -120,7 +128,7 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                   >
                     <ol className="flex flex-col gap-3.5 text-xs text-black py-2">
                       {layerGroup.layers.map((layer) => {
-                        const { id, name, group } = layer;
+                        const { id, name, group, description } = layer;
                         return (
                           <li key={id} className="flex items-center gap-1.5">
                             <div>
@@ -136,7 +144,10 @@ export const MapLayersSelector: FC<MapLayersSelectorProps> = ({
                             <label htmlFor={id} className="cursor-pointer">
                               {name}
                             </label>
-                            <LayerInfo layer={layer} />
+                            <LayerInfo
+                              description={description}
+                              openInfoModal={() => setSelectedLayerInfo(layer)}
+                            />
                           </li>
                         );
                       })}
