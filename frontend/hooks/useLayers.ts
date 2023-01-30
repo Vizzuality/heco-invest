@@ -13,7 +13,7 @@ export enum LAYER_GROUPS {
   PriorityLayer = 'priority-layer',
 }
 
-enum LAYERS {
+export enum LAYERS {
   // BASE LAYERS
   HeCoMosaics = 'heco-mosaics',
   SubBasinBoundaries = 'sub-basin-boundaries',

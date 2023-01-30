@@ -2085,6 +2085,9 @@
   "arPp4e": {
     "string": "Terms & Conditions"
   },
+  "avLYLg": {
+    "string": "Map data"
+  },
   "azx2BO": {
     "string": "Discover open calls"
   },
@@ -2549,9 +2552,6 @@
   },
   "itfsqC": {
     "string": "Currently you don’t have any <b>Projects</b>."
-  },
-  "iwpEth": {
-    "string": "Map layers"
   },
   "j+0U2g": {
     "string": "Two factor authentication code, digit {digit}"

@@ -17,7 +17,7 @@ export const MapHelp: FC<MapHelpProps> = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="">
+    <div className="pointer-events-auto">
       <Button
         className="flex items-center justify-center w-8 h-8 px-2 py-1 text-gray-800 transition-all bg-white rounded shadow focus-visible:outline-green-dark hover:text-green-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:text-opacity-60 disabled:pointer-events-none"
         theme="naked"
