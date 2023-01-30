@@ -125,7 +125,12 @@ export const DiscoverMap: FC<DiscoverMapProps> = ({ onSelectProjectPin }) => {
     <>
       <div className="relative w-full h-full">
         <div className={cx('w-full h-full', blur)}>
-          <Map bounds={bounds} viewport={viewport} onMapViewportChange={handleViewportChange}>
+          <Map
+            bounds={bounds}
+            viewport={viewport}
+            onMapViewportChange={handleViewportChange}
+            reuseMaps
+          >
             {(map) => (
               <>
                 <LayerManager
