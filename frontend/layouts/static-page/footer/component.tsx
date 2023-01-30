@@ -205,7 +205,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <h3 className="text-gray-600">
-                  <FormattedMessage defaultMessage="Discover" id="cE4Hfw" />
+                  <FormattedMessage defaultMessage="Catalog" id="GOdq5V" />
                 </h3>
                 <ul className="mt-2 space-y-2">
                   <li>

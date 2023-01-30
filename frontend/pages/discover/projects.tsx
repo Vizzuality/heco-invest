@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
@@ -19,6 +19,7 @@ import { usePagination } from 'hooks/usePagination';
 import { loadI18nMessages } from 'helpers/i18n';
 
 import DiscoverMap from 'containers/discover-map';
+import DiscoverNoResults from 'containers/discover-no-results';
 import ProjectCard from 'containers/project-card';
 import ProjectDetails from 'containers/project-details';
 
@@ -108,8 +109,9 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
       <div className="relative flex flex-col w-full h-full md:gap-4 md:overflow-hidden md:flex-row">
         <div
           ref={projectsListAndDetailsContainerRef}
-          className="relative flex flex-col flex-shrink-0 md:w-5/12"
+          className="relative flex flex-col flex-shrink-0 h-full md:w-5/12"
         >
+          {!loading && !hasProjects && <DiscoverNoResults />}
           <div className="relative flex flex-col md:overflow-hidden">
             <div
               ref={projectsListContainerRef}
@@ -140,9 +142,6 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
                     onClick={handleProjectCardClick}
                   />
                 ))}
-                {!loading && !hasProjects && (
-                  <FormattedMessage defaultMessage="No projects" id="TfXhCr" />
-                )}
               </div>
             </div>
             {hasProjects && (
@@ -190,6 +189,7 @@ const ProjectsPage: PageComponent<ProjectsPageProps, DiscoverPageLayoutProps> = 
             </Modal>
           )}
         </div>
+
         <aside className="flex-grow hidden overflow-hidden bg-white sm:block rounded-2xl md:mt-0.5 md:mb-3">
           <DiscoverMap onSelectProjectPin={handleProjectCardClick} />
         </aside>

@@ -59,9 +59,6 @@
   "/L6T3E": {
     "string": "Get connected"
   },
-  "/Lbk/f": {
-    "string": "Enter the estimated implementation duration for the project. MAX 36 months."
-  },
   "/PlWea": {
     "string": "Use up and down to choose options, press escape to exit the menu, press tab to select the option and exit the menu."
   },
@@ -244,6 +241,9 @@
   },
   "2yCGR2": {
     "string": "Link copied to clipboard"
+  },
+  "2yqUYR": {
+    "string": "See full catalog"
   },
   "35YoEI": {
     "string": "Description of the project"
@@ -520,6 +520,9 @@
   },
   "80Vefc": {
     "string": "Share on Twitter"
+  },
+  "8Fez6i": {
+    "string": "investor"
   },
   "8Gp8gS": {
     "string": "Open call name"
@@ -1004,11 +1007,11 @@
   "GM/hd6": {
     "string": "Invitation"
   },
+  "GOdq5V": {
+    "string": "Catalog"
+  },
   "GOg6XJ": {
     "string": "Be part of the biggest change in the colombian Amazon"
-  },
-  "GYTHj0": {
-    "string": "Until approval you can continue exploring our catalogue."
   },
   "GYkIYE": {
     "string": "Insert your last name"
@@ -1224,6 +1227,9 @@
   "KYymTZ": {
     "string": "{quantity, plural, one {project} other {projects}}"
   },
+  "KdWzZW": {
+    "string": "The HeCo Invest platform uses the US dollar as the reference currency, taking into account that the platform is primarily aimed at international investors. These investors usually use the US dollar as a reference currency which facilitates their understanding of the proposals presented on the platform."
+  },
   "KjV4yK": {
     "string": "The max development duration is 36 months"
   },
@@ -1425,9 +1431,6 @@
   "O29TSs": {
     "string": "Share by email"
   },
-  "O3WloJ": {
-    "string": "No open calls"
-  },
   "O95R3Z": {
     "string": "Phone"
   },
@@ -1608,6 +1611,9 @@
   "Rb/hb9": {
     "string": "LinkedIn"
   },
+  "RbFAl7": {
+    "string": "project"
+  },
   "RqplOy": {
     "string": "Investments in HeCo Invest will contribute to climate change mitigation and adaptation. Investments will conserve the natural capital and associated environmental services of some of the most biodiverse landscapes on the planet."
   },
@@ -1625,6 +1631,9 @@
   },
   "SENRqu": {
     "string": "Help"
+  },
+  "SEnqhq": {
+    "string": "project developer"
   },
   "SFCYg4": {
     "string": "Don’t have a project yet? Create a project now"
@@ -1718,9 +1727,6 @@
   },
   "TfAnzZ": {
     "string": "The pictures must have a maximum size of 5 MB"
-  },
-  "TfXhCr": {
-    "string": "No projects"
   },
   "TkWozN": {
     "string": "an equity investment consists of the acquisition, by an entity specialized in private equity, of a package of shares of a company or enterprise. The private equity firm thus becomes one of the owners of the company."
@@ -1854,6 +1860,9 @@
   "WLDgff": {
     "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
   },
+  "WMuw/P": {
+    "string": "Full catalog"
+  },
   "WTuVeL": {
     "string": "Something went wrong while submitting your form. Please correct the errors before submitting again."
   },
@@ -1935,17 +1944,11 @@
   "XvwE2r": {
     "string": "You need to insert a name"
   },
-  "XwmxKZ": {
-    "string": "A project is an enterprise or initiative carefully planned and run by project developers in a given region with the objective of contributing to its environmental conservation. Projects are set up whenever a project developer is seeking visibility or needing investment."
-  },
   "XwwnKr": {
     "string": "Project cluster icon"
   },
   "Y2HapG": {
     "string": "The dataset represents a series of vectorized polygon layers that depict sub-basin boundaries at a global scale. An important characteristic of any sub-basin delineation is the sub-basin breakdown. At its highest level of sub-basin breakdown, each basin has been divided into two sub-basins at every location where two river branches meet which each have an individual upstream area of at least 100 km². A second critical feature of sub-basin delineations is the way the sub-basins are grouped or coded to allow for the creation of nested sub-basins at different scales, or to navigate within the sub-basin network from up- to downstream. To support these functionalities and topological concepts, the ‘Pfafstetter’ coding system has been implemented, offering 12 hierarchically nested sub-basin breakdowns globally."
-  },
-  "Y2zB+b": {
-    "string": "No project developers"
   },
   "Y4hw30": {
     "string": "The password must contain at least one uppercase letter, one lowercase letter and one number."
@@ -2040,6 +2043,9 @@
   "ZocjEJ": {
     "string": "What happens when I delete my Project Developer account?"
   },
+  "ZtM1JY": {
+    "string": "Enter the estimated duration for the activities described in the project for which you request funding. Please note that funding will not be provided for more than 36 consecutive months."
+  },
   "a+vAPa": {
     "string": "Invitation mail"
   },
@@ -2079,6 +2085,9 @@
   "arPp4e": {
     "string": "Terms & Conditions"
   },
+  "avLYLg": {
+    "string": "Map data"
+  },
   "azx2BO": {
     "string": "Discover open calls"
   },
@@ -2112,6 +2121,9 @@
   "btdgGc": {
     "string": "<a>Browse the open calls</a> posted by our investor community to identify new areas for project development."
   },
+  "bz4Mm+": {
+    "string": "Nothing found"
+  },
   "c+PoWZ": {
     "string": "This will help us measure the impact of your project. Try to be as precise and realistic as possible, choosing only your main direct impacts. <a>Learn more</a>"
   },
@@ -2129,9 +2141,6 @@
   },
   "cDSTwv": {
     "string": "Total <span>{numOpenCalls}</span> {numOpenCalls, plural, one {openCall} other {openCalls}}"
-  },
-  "cE4Hfw": {
-    "string": "Discover"
   },
   "cFytiP": {
     "string": "You need to select the types of financing are you can provide"
@@ -2403,6 +2412,9 @@
   "h/NhZl": {
     "string": "<n>HeCo priority landscapes</n> are geographic spaces of unique biodiversity conditions with sustainability and management plans developed by Heritage Colombia to ensure the provisioning of quality ecosystems"
   },
+  "h2D2Rm": {
+    "string": "No {tab} matches the keywords you’ve entered. Please <n>try another term</n> or <n>select a filter</n>."
+  },
   "hBliS7": {
     "string": "KMZ"
   },
@@ -2541,9 +2553,6 @@
   "itfsqC": {
     "string": "Currently you don’t have any <b>Projects</b>."
   },
-  "iwpEth": {
-    "string": "Map layers"
-  },
   "j+0U2g": {
     "string": "Two factor authentication code, digit {digit}"
   },
@@ -2573,9 +2582,6 @@
   },
   "jUgR7w": {
     "string": "Stage of development or maturity of the project"
-  },
-  "jX0V8C": {
-    "string": "No investors"
   },
   "jXqlWP": {
     "string": "{name} project developer"
@@ -2655,6 +2661,9 @@
   "kX7oGR": {
     "string": "Other information"
   },
+  "kXFIq1": {
+    "string": "A project is an enterprise or initiative carefully planned and run by project developers in a given region with the objective of contributing to its environmental conservation. Projects are set up whenever a project developer seeks visibility or needs investment. Hence, in the context of HeCo Invest, a ‘project’ is an investment opportunity for loan, equity or grant funding."
+  },
   "kY/+zt": {
     "string": "Verification link sent"
   },
@@ -2666,6 +2675,9 @@
   },
   "khRkg/": {
     "string": "You need to select the amount of money you can provide"
+  },
+  "kk1RMl": {
+    "string": "Go to homepage"
   },
   "ku+mDU": {
     "string": "State"
@@ -2832,9 +2844,6 @@
   "oD3qdW": {
     "string": "It looks like the link is broken or the page has been removed."
   },
-  "oG/A0q": {
-    "string": "See full catalogue"
-  },
   "oMC3r1": {
     "string": "Choose your account type"
   },
@@ -2861,9 +2870,6 @@
   },
   "orirkU": {
     "string": "What information do I need to create a Project Developer account?"
-  },
-  "orvpWh": {
-    "string": "Go back"
   },
   "osBdnp": {
     "string": "IPLC organization"
@@ -3029,6 +3035,9 @@
   },
   "rPwaWt": {
     "string": "A great name is short, crisp, and easily understood."
+  },
+  "rVtR6m": {
+    "string": "Until approval you can continue exploring our catalog."
   },
   "rb3Hsm": {
     "string": "<b>Climate</b>:"

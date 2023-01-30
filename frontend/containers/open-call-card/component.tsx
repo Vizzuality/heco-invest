@@ -39,7 +39,7 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
     data: { instrument_type: allInstrumentTypes, impact: allImpacts },
   } = useEnums();
 
-  const [picture, setPicture] = useState<string>(investor.picture?.small || placeholderPicture);
+  const [picture, setPicture] = useState<string>(investor?.picture?.small || placeholderPicture);
   const [isFocusWithin, setIsFocusWithin] = useState<boolean>(false);
 
   const link = `${Paths.OpenCall}/${slug}`;
@@ -172,13 +172,13 @@ export const OpenCallCard: FC<OpenCallCardProps> = ({ className, openCall }: Ope
           })}
         >
           <span className="flex flex-row-reverse items-center gap-2">
-            <span className="text-sm">{investor.name}</span>
+            <span className="text-sm">{investor?.name}</span>
             <span className="relative flex-shrink-0 w-8 overflow-hidden rounded-full aspect-square">
               <Image
                 src={picture}
                 alt={intl.formatMessage(
                   { defaultMessage: '{name} picture', id: 'rLzWx9' },
-                  { name: investor.name }
+                  { name: investor?.name }
                 )}
                 layout="fill"
                 objectFit="contain"

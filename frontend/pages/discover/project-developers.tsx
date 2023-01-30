@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import cx from 'classnames';
 
@@ -11,6 +11,7 @@ import { usePagination } from 'hooks/usePagination';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import DiscoverNoResults from 'containers/discover-no-results';
 import ProfileCard from 'containers/profile-card';
 
 import Head from 'components/head';
@@ -55,6 +56,7 @@ const ProjectDevelopersPage: PageComponent<ProjectDevelopersPageProps, DiscoverP
       />
       <div className="flex h-full">
         <div className="relative flex flex-col w-full lg:overflow-hidden ">
+          {!loading && !hasProjectDevelopers && <DiscoverNoResults />}
           <div
             ref={projectDevelopersContainerRef}
             className={cx({
@@ -89,9 +91,6 @@ const ProjectDevelopersPage: PageComponent<ProjectDevelopersPageProps, DiscoverP
                     impacts={impacts}
                   />
                 )
-              )}
-              {!loading && !hasProjectDevelopers && (
-                <FormattedMessage defaultMessage="No project developers" id="Y2zB+b" />
               )}
             </div>
           </div>

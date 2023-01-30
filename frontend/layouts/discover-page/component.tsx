@@ -1,7 +1,5 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
 
-import { UseQueryResult } from 'react-query';
-
 import cx from 'classnames';
 
 import { useRouter } from 'next/router';
@@ -16,14 +14,13 @@ import SortingButtons, { SortingOrderType } from 'components/sorting-buttons';
 import { SortingOptionKey } from 'components/sorting-buttons/types';
 import { Paths, Queries } from 'enums';
 
-import { useInvestorsList } from 'services/investors/investorsService';
-import { useOpenCallsList } from 'services/open-call/open-call-service';
-import { useProjectDevelopersList } from 'services/project-developers/projectDevelopersService';
-import { useProjectsList } from 'services/projects/projectService';
-import { PagedResponse } from 'services/types';
-
 import Header from './header';
-import { useSortingByOptions, SortingByTargetType, defaultSorting } from './helpers';
+import {
+  useSortingByOptions,
+  SortingByTargetType,
+  defaultSorting,
+  useDiscoverData,
+} from './helpers';
 import Navigation from './navigation';
 import { DiscoverPageLayoutProps } from './types';
 
@@ -44,41 +41,6 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
 
   const sortingOptions = useSortingByOptions(sortingOptionsTarget);
   const queryParams = useQueryParams();
-
-  const queryOptions = { keepPreviousData: true };
-
-  const projects = useProjectsList(
-    { ...queryParams, includes: ['project_developer', 'involved_project_developers'] },
-    queryOptions
-  );
-  const projectDevelopers = useProjectDevelopersList({ ...queryParams, perPage: 9 }, queryOptions);
-  const investors = useInvestorsList({ ...queryParams, perPage: 9 }, queryOptions);
-  const openCalls = useOpenCallsList({ ...queryParams, includes: ['investor'] }, queryOptions);
-
-  const stats = useMemo(
-    () => ({
-      projects: projects?.data?.meta?.total,
-      projectDevelopers: projectDevelopers?.data?.meta?.total,
-      investors: investors?.data?.meta?.total,
-      openCalls: openCalls?.data?.meta?.total,
-    }),
-    [projects, investors, projectDevelopers, openCalls]
-  );
-
-  const getCurrentData = (data: UseQueryResult<PagedResponse<any>>) => {
-    return {
-      data: data.data?.data,
-      meta: data.data?.meta,
-      loading: data.isLoading || data?.isFetching || data?.isRefetching,
-    };
-  };
-
-  const searchResult = useMemo(() => {
-    if (pathname.startsWith(Paths.Projects)) return getCurrentData(projects);
-    if (pathname.startsWith(Paths.ProjectDevelopers)) return getCurrentData(projectDevelopers);
-    if (pathname.startsWith(Paths.Investors)) return getCurrentData(investors);
-    if (pathname.startsWith(Paths.OpenCalls)) return getCurrentData(openCalls);
-  }, [pathname, projects, projectDevelopers, investors, openCalls]) || { data: [], meta: [] };
 
   useEffect(() => {
     const [sortBy, sortOrder]: [SortingOptionKey, SortingOrderType] = queryParams?.sorting?.split(
@@ -110,9 +72,11 @@ export const DiscoverPageLayout: FC<DiscoverPageLayoutProps> = ({
     onChange: handleSorting,
   };
 
+  const { data, stats } = useDiscoverData();
+
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      return React.cloneElement(child, searchResult);
+      return React.cloneElement(child, data);
     }
 
     return child;

@@ -20,10 +20,11 @@ const Template: Story<LegendProps> = (args) => {
 
   return (
     <Legend {...args}>
-      {arrItems.map((i) => {
+      {arrItems.map((i: any) => {
         const { type, items, id } = i;
         return (
           <LegendItem
+            legend={i}
             handleCloseLegend={() => setArrItems(arrItems.filter((item) => item.id !== id))}
             key={i.id}
             {...i}

@@ -24,7 +24,7 @@ export const Hero = () => {
       <LayoutContainer className="flex items-center justify-center h-0 sm:mt-5 md:mt-9 xl:relative sm:mx-auto pt-14">
         <DiscoverSearch
           className="w-full sm:max-w-2xl md:max-w-4xl"
-          searchButtonText={<FormattedMessage id="oG/A0q" defaultMessage="See full catalogue" />}
+          searchButtonText={<FormattedMessage id="2yqUYR" defaultMessage="See full catalog" />}
         />
       </LayoutContainer>
     </div>

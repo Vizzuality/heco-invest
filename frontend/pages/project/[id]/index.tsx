@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { useRouter } from 'next/router';
 
 import { withLocalizedRequests } from 'hoc/locale';
@@ -19,6 +21,7 @@ import LayoutContainer from 'components/layout-container';
 import Loading from 'components/loading';
 import { Paths } from 'enums';
 import { StaticPageLayoutProps } from 'layouts/static-page';
+import { logEvent } from 'lib/analytics/ga';
 import { PageComponent } from 'types';
 import { GroupedEnums as GroupedEnumsType } from 'types/enums';
 import { Project as ProjectType } from 'types/project';
@@ -90,6 +93,12 @@ const ProjectPage: PageComponent<ProjectPageProps, StaticPageLayoutProps> = ({
     data: { data: project },
     isFetching: isFetchingProject,
   } = useProject(router.query.id as string, PROJECT_QUERY_PARAMS, projectProp);
+
+  useEffect(() => {
+    logEvent('profile_visit', {
+      page_location: router.asPath,
+    });
+  }, [router.asPath]);
 
   if (!project) {
     if (!isFetchingProject) router.push(Paths.Dashboard);

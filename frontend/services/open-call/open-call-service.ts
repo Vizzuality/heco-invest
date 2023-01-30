@@ -28,7 +28,7 @@ import { ErrorResponse, PagedRequest, PagedResponse, ResponseData } from 'servic
 
 /** Get a paged list of openCalls */
 export const getOpenCalls = async (params?: PagedRequest): Promise<PagedResponse<OpenCall>> => {
-  const { search, page, includes, fields, ...rest } = params || {};
+  const { search, page, includes, fields, perPage, ...rest } = params || {};
 
   const config: AxiosRequestConfig = {
     url: '/api/v1/open_calls',
@@ -39,6 +39,7 @@ export const getOpenCalls = async (params?: PagedRequest): Promise<PagedResponse
       'filter[full_text]': search,
       'page[number]': page,
       'fields[open_call]': fields?.join(','),
+      'page[size]': perPage,
     },
   };
 
@@ -52,7 +53,7 @@ export function useOpenCallsList(
   params?: PagedRequest,
   options?: UseQueryOptions<PagedResponse<OpenCall>>
 ): UseQueryResult<PagedResponse<OpenCall>> & { openCalls: OpenCall[] } {
-  const query = useLocalizedQuery([Queries.ProjectList, params], () => getOpenCalls(params), {
+  const query = useLocalizedQuery([Queries.OpenCallList, params], () => getOpenCalls(params), {
     ...staticDataQueryOptions,
     ...options,
   });

@@ -96,8 +96,8 @@ const ProjectDescription = ({
                 <FieldInfo
                   content={formatMessage({
                     defaultMessage:
-                      'Enter the estimated implementation duration for the project. MAX 36 months.',
-                    id: '/Lbk/f',
+                      'Enter the estimated duration for the activities described in the project for which you request funding. Please note that funding will not be provided for more than 36 consecutive months.',
+                    id: 'ZtM1JY',
                   })}
                 />
               </Label>
