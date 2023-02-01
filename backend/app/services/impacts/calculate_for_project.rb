@@ -60,10 +60,8 @@ module Impacts
     def assign_impacts_from_project_demands(project, impact_level:)
       values = CALCULATION_SETUP.map do |impact_dimension, impact_areas|
         demand = project.public_send "#{impact_level}_#{impact_dimension}_demand"
-        next if demand.nil?
-
         impact_value_for(impact_areas, demand).tap { |value| impacts["#{impact_level}_#{impact_dimension}_impact"] = value }
-      end.compact
+      end
       impacts["#{impact_level}_total_impact"] = values.sum / values.size if values.present?
     end
 

@@ -170,13 +170,13 @@ RSpec.describe Impacts::CalculateForProject do
         expect(project.priority_landscape_total_impact.round(10)).to eq(0.2222222222)
       end
 
-      it "sets project impacts to nil because demands are nil" do
+      it "sets project impacts to zero because demands are nil" do
         project.reload
-        expect(project.project_biodiversity_impact).to be_nil
-        expect(project.project_climate_impact).to be_nil
-        expect(project.project_water_impact).to be_nil
-        expect(project.project_community_impact).to be_nil
-        expect(project.project_total_impact).to be_nil
+        expect(project.project_biodiversity_impact).to eq(0)
+        expect(project.project_climate_impact).to eq(0)
+        expect(project.project_water_impact).to eq(0)
+        expect(project.project_community_impact).to eq(0)
+        expect(project.project_total_impact).to eq(0)
       end
     end
   end

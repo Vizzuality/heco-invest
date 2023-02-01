@@ -1,0 +1,161 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "post",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/users/log-in",
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"username\":\"<KLAB_API_USERNAME>\",\"password\":\"<KLAB_API_PASSWORD>\"}"
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v1.10.0"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 202,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Wed, 01 Feb 2023 19:49:54 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=8a4eb34d7d35eb23; path=/"
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\"redirect\":\"/modeler/ui/viewer?session=s6c9vejbckc\",\"session\":\"s6c9vejbckc\",\"publicApps\":[{\"name\":\"aries.seea\",\"description\":\"#ARIES_FOR_SEEA_EXPLORER_DESCRIPTION\",\"actions\":[],\"color\":null,\"projectId\":\"un.seea.aries\",\"logo\":\"static/images/seea_logo_transparent.png\",\"label\":\"ARIES for SEEA Explorer\",\"platform\":\"WEB\",\"localizations\":[{\"isoCode\":\"en\",\"languageDescription\":\"English\",\"localizedDescription\":\"The SEEA Ecosystem Accounting standard on the ARIES platform. A collaboration between UNSD, UNEP and BC3. Powered by k.LAB semantic web technology.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"ru\",\"languageDescription\":\"русский\",\"localizedDescription\":\"Стандарт экосистемного учета СЭЭУ на платформе ARIES. Сотрудничество между СОООН, ЮНЕП и Баскским центром по изменению климата. На базе семантической веб-технологии k.LAB.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"fr\",\"languageDescription\":\"français\",\"localizedDescription\":\"Le cadre statistique de la comptabilité des écosystèmes du SCEE sur la plateforme ARIES. Une collaboration entre UNSD, PNUE et BC3. Alimenté par la technologie du web sémantique k.LAB.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"es\",\"languageDescription\":\"español\",\"localizedDescription\":\"Contabilidad de Ecosistemas de SEEA para el capital natural en la plataforma de ARIES. Una colaboración entre UNSD, PNUMA y BC3 que utiliza la tecnología semántica de k.LAB.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"zh\",\"languageDescription\":\"中文\",\"localizedDescription\":\"基于ARIES平台的综合环境与经济核算系统的生态系统核算标准。由联合国统计司环境统计科（UNSD）、联合国环境规划署（UNEP）和巴斯克气候变化中心（BC3）共同合作。k.LAB语义网络技术提供支持。\",\"localizedLabel\":\"ARIES for SEEA Explorer\"}]}],\"authorization\":\"10e98f1d-d3e2-4ca3-b00e-9a0d8cf76075\"}"
+        }
+      },
+      "recorded_at": "Wed, 01 Feb 2023 19:50:39 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/6ceblv03cr",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s6c9vejbckc"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Wed, 01 Feb 2023 19:49:55 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=8a4eb34d7d35eb23; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\"id\":\"6ceblv03cr\",\"postDate\":1675280940342,\"resolutionDate\":0,\"status\":\"RESOLVED\",\"type\":\"ContextObservation\",\"data\":{\"urn\":\"earth:Region\",\"charge\":\"0.0\",\"context\":\"o6cebmx0yho\",\"actualcost\":\"0\",\"geometry\":\"τ0(1){ttype=LOGICAL,period=[1640995200000 1672531200000],tscope=1.0,tunit=YEAR}S2(520,297){bbox=[-7.256596802202454 -4.408874148363334 38.39721372248553 40.02677860935444],shape=00000000030000000100000007C01D06C14FE6DEF24043B5F39D8BB550C0160A7B8B2DC6224044036D7B41B470C011A2AFE79D99FB4043B5C0443B5A7CC014D2EFCFADC624404355FA189A597CC0199C599EE6C5B8404332D7E635CC84C01C3D49F12A6BC440437995016B4E6CC01D06C14FE6DEF24043B5F39D8BB550,proj=EPSG:4326}\",\"feasible\":\"true\",\"currency\":\"KLB\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\",\"artifacts\":\"o6cebns3shf,o6cebns3shf,o6cebqff82k,o6cec08r4bn\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Wed, 01 Feb 2023 19:50:40 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.1.0"
+}

@@ -38,9 +38,12 @@ module Klab
     end
 
     def log_failure_and_repeat_for(error)
-      raise error if rest_of_attempts.zero?
-
-      self.class.set(wait: delay_between_attempts.second).perform_later project.id, rest_of_attempts: rest_of_attempts - 1
+      if rest_of_attempts.zero?
+        Project::IMPACT_LEVELS.each { |impact_level| skip! impact_level }
+        raise error
+      else
+        self.class.set(wait: delay_between_attempts.second).perform_later project.id, rest_of_attempts: rest_of_attempts - 1
+      end
     end
 
     def client

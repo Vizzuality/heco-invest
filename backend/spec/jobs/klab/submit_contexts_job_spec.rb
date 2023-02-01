@@ -83,6 +83,18 @@ RSpec.describe Klab::SubmitContextsJob, type: :job do
             described_class.perform_now project.id, rest_of_attempts: 0
           }.to raise_error(Faraday::ServerError)
         end
+
+        it "sets demand calculation to true" do
+          expect {
+            described_class.perform_now project.id, rest_of_attempts: 0
+
+            project.reload
+            expect(project.project_demands_calculated).to be_truthy
+            expect(project.municipality_demands_calculated).to be_truthy
+            expect(project.hydrobasin_demands_calculated).to be_truthy
+            expect(project.priority_landscape_demands_calculated).to be_truthy
+          }.to raise_error(Faraday::ServerError)
+        end
       end
     end
   end
