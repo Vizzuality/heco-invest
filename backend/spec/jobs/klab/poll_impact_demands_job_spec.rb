@@ -31,6 +31,21 @@ RSpec.describe Klab::PollImpactDemandsJob, type: :job do
         end
       end
 
+      context "when some observations are missing" do
+        it "marks demand as calculated but skips export of artifacts" do
+          VCR.use_cassette("klab/duplicity_artifacts_resolved_ticket") do
+            described_class.perform_now project.id, "6ceblv03cr", "project"
+
+            project.reload
+            expect(project.project_demands_calculated).to be_truthy
+            expect(project.project_biodiversity_demand).to be_nil
+            expect(project.project_climate_demand).to be_nil
+            expect(project.project_water_demand).to be_nil
+            expect(project.project_community_demand).to be_nil
+          end
+        end
+      end
+
       context "when ticket is still not resolved" do
         it "does not update project attributes" do
           VCR.use_cassette("klab/demands_for_open_ticket") do
@@ -93,6 +108,15 @@ RSpec.describe Klab::PollImpactDemandsJob, type: :job do
           expect(Google::Cloud::ErrorReporting).to receive(:report)
           expect {
             described_class.perform_now project.id, "5w2lovxl8d", "project", rest_of_attempts: 0
+          }.to raise_error(Faraday::ServerError)
+        end
+
+        it "sets demand calculation to true" do
+          expect {
+            described_class.perform_now project.id, "5w2lovxl8d", "project", rest_of_attempts: 0
+
+            project.reload
+            expect(project.project_demands_calculated).to be_truthy
           }.to raise_error(Faraday::ServerError)
         end
       end

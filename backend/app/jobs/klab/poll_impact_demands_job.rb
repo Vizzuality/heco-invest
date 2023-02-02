@@ -22,6 +22,8 @@ module Klab
     private
 
     def save_impact_demand_from!(response)
+      return skip! unless observations_exists_at? response
+
       Array.wrap(response.artifacts_ids).each.with_index do |artifact_id, idx|
         artifact_response = Klab::ExportArtifact.new(client).call artifact_id
         artifact_code = Klab::SubmitContext::Request::INDICATORS.keys[idx]
@@ -31,10 +33,19 @@ module Klab
       project.save!
     end
 
-    def log_failure_and_repeat_for(error)
-      raise error if rest_of_attempts.zero?
+    def skip!
+      project.update! "#{impact_level}_demands_calculated": true
+    end
 
-      repeat_job
+    def observations_exists_at?(response)
+      Array.wrap(response.artifacts_ids).uniq.length >= Klab::SubmitContext::Request::INDICATORS.keys.length
+    end
+
+    def log_failure_and_repeat_for(error)
+      return repeat_job unless rest_of_attempts.zero?
+
+      skip!
+      raise error
     end
 
     def repeat_job
