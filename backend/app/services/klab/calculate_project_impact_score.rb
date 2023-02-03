@@ -27,7 +27,7 @@ module Klab
         Rails.logger.debug "Exporting observable #{artifact_id}"
         export_resp = ExportArtifact.new(@client).call(artifact_id)
         artifact_code = Klab::SubmitContext::Request::INDICATORS.keys[idx]
-        result.send("#{artifact_code}=", export_resp.summary["mean"]) if artifact_code.present?
+        result.send("#{artifact_code}=", export_resp.demand) if artifact_code.present?
       end
       result
     rescue Faraday::ServerError => e

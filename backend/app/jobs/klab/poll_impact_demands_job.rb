@@ -27,7 +27,7 @@ module Klab
       Array.wrap(response.artifacts_ids).each.with_index do |artifact_id, idx|
         artifact_response = Klab::ExportArtifact.new(client).call artifact_id
         artifact_code = Klab::SubmitContext::Request::INDICATORS.keys[idx]
-        project.public_send "#{impact_level}_#{artifact_code}_demand=", artifact_response.summary["mean"]
+        project.public_send "#{impact_level}_#{artifact_code}_demand=", artifact_response.demand
       end
       project.assign_attributes "#{impact_level}_demands_calculated": true
       project.save!

@@ -31,6 +31,10 @@ module Klab
         @observable = body["observable"]
         @summary = body["dataSummary"]
       end
+
+      def demand
+        1 - summary["mean"].to_f
+      end
     end
 
     def initialize(client)

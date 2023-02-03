@@ -23,10 +23,10 @@ RSpec.describe Klab::PollImpactDemandsJob, type: :job do
 
             project.reload
             expect(project.project_demands_calculated).to be_truthy
-            expect(project.project_biodiversity_demand).to eq(0.5545623521804952e0)
-            expect(project.project_climate_demand).to eq(0.7727616029821257)
-            expect(project.project_water_demand).to eq(0.8304636946009439)
-            expect(project.project_community_demand).to eq(0.5095993956721737)
+            expect(project.project_biodiversity_demand).to eq(0.4454376478195048)
+            expect(project.project_climate_demand).to eq(0.2272383970178743)
+            expect(project.project_water_demand).to eq(0.1695363053990561e0)
+            expect(project.project_community_demand).to eq(0.4904006043278263)
           end
         end
       end
