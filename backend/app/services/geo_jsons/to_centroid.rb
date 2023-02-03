@@ -13,17 +13,10 @@ module GeoJsons
     def call
       return if geo_json.blank?
 
-      compute_centroid_for unwrap_features_of(geo_json)
+      compute_centroid_for GeoJsons::ToGeometry.new(geo_json).call
     end
 
     private
-
-    def unwrap_features_of(geo_json)
-      return unwrap_features_of(geo_json.first) if geo_json.is_a? RGeo::GeoJSON::FeatureCollection # take first feature
-      return geo_json.geometry if geo_json.is_a? RGeo::GeoJSON::Feature
-
-      geo_json
-    end
 
     def compute_centroid_for(geometry)
       raise NoGeometry if geometry.blank?
