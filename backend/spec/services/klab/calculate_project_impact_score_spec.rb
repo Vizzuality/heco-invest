@@ -15,10 +15,10 @@ RSpec.describe Klab::CalculateProjectImpactScore do
 
     it "returns biodiversity score for precalculated geometry" do
       VCR.use_cassette("klab/calculate_project_impact_score") do
-        expect(subject.biodiversity).to eq(0.5545237701289529)
-        expect(subject.climate).to eq(0.7728172553609381)
-        expect(subject.community).to eq(0.5096142276290361)
-        expect(subject.water).to eq(0.830439023752767)
+        expect(subject.biodiversity).to eq(0.44547622987104707)
+        expect(subject.climate).to eq(0.22718274463906185)
+        expect(subject.community).to eq(0.4903857723709639)
+        expect(subject.water).to eq(0.169560976247233)
       end
     end
   end
