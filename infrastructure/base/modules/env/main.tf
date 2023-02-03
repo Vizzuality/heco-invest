@@ -342,6 +342,10 @@ module "backend_cloudrun" {
     {
       name  = "KLAB_API_PASSWORD"
       value = var.klab_api_password
+    },
+    {
+      name  = "KLAB_ENABLED"
+      value = var.klab_enabled
     }
   ]
 }

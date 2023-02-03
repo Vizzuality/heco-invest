@@ -168,3 +168,9 @@ variable "klab_api_password" {
   type = string
   description = "Klab engine API password"
 }
+
+variable "klab_enabled" {
+  type = string
+  default = "false"
+  description = "Switches impact calculation to use Klab demand values"
+}
