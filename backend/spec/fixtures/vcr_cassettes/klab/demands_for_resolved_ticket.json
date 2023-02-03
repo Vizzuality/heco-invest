@@ -1,0 +1,473 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "post",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/users/log-in",
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"username\":\"<KLAB_API_USERNAME>\",\"password\":\"<KLAB_API_PASSWORD>\"}"
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v1.10.0"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 202,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Thu, 19 Jan 2023 09:52:19 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=169fd63d75f268df; path=/"
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\"redirect\":\"/modeler/ui/viewer?session=s5vwuqhcsj7\",\"session\":\"s5vwuqhcsj7\",\"publicApps\":[{\"name\":\"aries.seea\",\"description\":\"#ARIES_FOR_SEEA_EXPLORER_DESCRIPTION\",\"actions\":[],\"color\":null,\"projectId\":\"un.seea.aries\",\"logo\":\"static/images/seea_logo_transparent.png\",\"label\":\"ARIES for SEEA Explorer\",\"platform\":\"WEB\",\"localizations\":[{\"isoCode\":\"en\",\"languageDescription\":\"English\",\"localizedDescription\":\"The SEEA Ecosystem Accounting standard on the ARIES platform. A collaboration between UNSD, UNEP and BC3. Powered by k.LAB semantic web technology.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"ru\",\"languageDescription\":\"русский\",\"localizedDescription\":\"Стандарт экосистемного учета СЭЭУ на платформе ARIES. Сотрудничество между СОООН, ЮНЕП и Баскским центром по изменению климата. На базе семантической веб-технологии k.LAB.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"fr\",\"languageDescription\":\"français\",\"localizedDescription\":\"Le cadre statistique de la comptabilité des écosystèmes du SCEE sur la plateforme ARIES. Une collaboration entre UNSD, PNUE et BC3. Alimenté par la technologie du web sémantique k.LAB.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"es\",\"languageDescription\":\"español\",\"localizedDescription\":\"Contabilidad de Ecosistemas de SEEA para el capital natural en la plataforma de ARIES. Una colaboración entre UNSD, PNUMA y BC3 que utiliza la tecnología semántica de k.LAB.\",\"localizedLabel\":\"ARIES for SEEA Explorer\"},{\"isoCode\":\"zh\",\"languageDescription\":\"中文\",\"localizedDescription\":\"基于ARIES平台的综合环境与经济核算系统的生态系统核算标准。由联合国统计司环境统计科（UNSD）、联合国环境规划署（UNEP）和巴斯克气候变化中心（BC3）共同合作。k.LAB语义网络技术提供支持。\",\"localizedLabel\":\"ARIES for SEEA Explorer\"}]}],\"authorization\":\"2b79d7d2-a437-4627-9353-bff6d63bf05b\"}"
+        }
+      },
+      "recorded_at": "Thu, 19 Jan 2023 09:52:49 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/ticket/info/5vxh899mfu",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s5vwuqhcsj7"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Thu, 19 Jan 2023 09:52:20 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=169fd63d75f268df; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"id\":\"5vxh899mfu\",\"postDate\":1674121755935,\"resolutionDate\":0,\"status\":\"RESOLVED\",\"type\":\"ContextObservation\",\"data\":{\"urn\":null,\"charge\":\"0.0\",\"context\":\"o5vxhba3oaf\",\"actualcost\":\"0\",\"geometry\":null,\"feasible\":\"true\",\"currency\":\"KLB\",\"user\":\"<KLAB_API_USERNAME>\",\"url\":\"/api/v2/public/submit/context\",\"email\":\"martintomas.it@gmail.com\",\"artifacts\":\"o5vxhlch6p2,o5vxkt6v65v,o5vxnwrfg1f,o5vxqzt0wqy\"},\"statusMessage\":null,\"seen\":false}"
+        }
+      },
+      "recorded_at": "Thu, 19 Jan 2023 09:52:50 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/export/structure/o5vxhlch6p2",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s5vwuqhcsj7"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Thu, 19 Jan 2023 09:52:20 GMT"
+          ],
+          "Content-Length": [
+            "2230"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=169fd63d75f268df; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"shapeType\":\"EMPTY\",\"encodedShape\":null,\"spatialProjection\":null,\"id\":\"o5vxhlch6p2\",\"rootContextId\":\"o5vxhba3oaf\",\"label\":\"Indicator value of biodiversity\",\"observable\":\"im:Indicator (value of ecology:Biodiversity)\",\"exportLabel\":\"indicator_value_of_biodiversity\",\"valueType\":\"NUMBER\",\"observationType\":\"STATE\",\"semantics\":[\"VALUE\",\"QUALITY\",\"OBSERVABLE\",\"QUANTIFIABLE\"],\"geometryTypes\":[\"RASTER\",\"COLORMAP\"],\"literalValue\":null,\"overallValue\":null,\"traits\":[],\"metadata\":{\"Grid size\":\"2469948 (1338 x 1846) cells\",\"Cell size\":\"1,010.124 x 1,002.374 m\",\"Temporal transitions\":\"Wed Jan 01 00:00:00 GMT 2020\",\"Total area\":\"1,139,588.849 km2\"},\"taskId\":null,\"contextId\":\"o5vxhba3oaf\",\"empty\":false,\"style\":null,\"primary\":true,\"dataSummary\":{\"nodataProportion\":0.0,\"minValue\":0.013635151088237762,\"maxValue\":0.9975030422210693,\"mean\":0.5545623521804952,\"categorized\":false,\"histogram\":[21845,43186,169985,172226,139571,125729,434892,27663,251,1],\"categories\":[\"0.014 to 0.112\",\"0.112 to 0.21\",\"0.21 to 0.309\",\"0.309 to 0.407\",\"0.407 to 0.506\",\"0.506 to 0.604\",\"0.604 to 0.702\",\"0.702 to 0.801\",\"0.801 to 0.899\",\"0.899 to 0.998\"]},\"exportFormats\":[{\"label\":\"GeoTIFF raster archive\",\"value\":\"tiff\",\"adapter\":\"raster\",\"extension\":\"zip\"},{\"label\":\"PNG image\",\"value\":\"png\",\"adapter\":\"raster\",\"extension\":\"png\"}],\"originalGroupId\":null,\"alive\":false,\"main\":false,\"dynamic\":false,\"timeEvents\":null,\"histogram\":{\"bins\":[21845,43186,169985,172226,139571,125729,434892,27663,251,1],\"boundaries\":[0.013635151088237762,0.9975030422210693],\"degenerate\":false},\"colormap\":null,\"childIds\":{},\"scaleReference\":null,\"childrenCount\":0,\"roles\":[],\"observableType\":null,\"parentId\":\"o5vxhba3oaf\",\"parentArtifactId\":\"o5vxhba3oaf\",\"children\":[],\"actions\":[{\"actionLabel\":null,\"actionId\":null,\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":true,\"submenu\":[]},{\"actionLabel\":\"Add to cache\",\"actionId\":\"AddToCache\",\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":false,\"submenu\":[]}],\"structure\":[],\"contextTime\":-1,\"creationTime\":1674121760579,\"urn\":\"local:observation:s5vwuqhcsj7:o5vxhlch6p2\",\"valueCount\":2469948,\"previouslyNotified\":false,\"contextualized\":true,\"lastUpdate\":1577836800000,\"key\":null}"
+        }
+      },
+      "recorded_at": "Thu, 19 Jan 2023 09:52:50 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/export/structure/o5vxkt6v65v",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s5vwuqhcsj7"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Thu, 19 Jan 2023 09:52:20 GMT"
+          ],
+          "Content-Length": [
+            "2192"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=169fd63d75f268df; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"shapeType\":\"EMPTY\",\"encodedShape\":null,\"spatialProjection\":null,\"id\":\"o5vxkt6v65v\",\"rootContextId\":\"o5vxhba3oaf\",\"label\":\"Indicator value of ecosystem for climate regulation\",\"observable\":\"im:Indicator ((value of ecology:Ecosystem) for es:ClimateRegulation)\",\"exportLabel\":\"indicator_value_of_ecosystem_for_climate_regulation\",\"valueType\":\"NUMBER\",\"observationType\":\"STATE\",\"semantics\":[\"VALUE\",\"QUALITY\",\"OBSERVABLE\",\"QUANTIFIABLE\"],\"geometryTypes\":[\"RASTER\",\"COLORMAP\"],\"literalValue\":null,\"overallValue\":null,\"traits\":[],\"metadata\":{\"Grid size\":\"2469948 (1338 x 1846) cells\",\"Cell size\":\"1,010.124 x 1,002.374 m\",\"Temporal transitions\":\"Wed Jan 01 00:00:00 GMT 2020\",\"Total area\":\"1,139,588.849 km2\"},\"taskId\":null,\"contextId\":\"o5vxhba3oaf\",\"empty\":false,\"style\":null,\"primary\":true,\"dataSummary\":{\"nodataProportion\":0.0,\"minValue\":0.0,\"maxValue\":1.0,\"mean\":0.7727616029821257,\"categorized\":false,\"histogram\":[8409,3689,12507,55235,136500,191923,143705,64427,516110,2844],\"categories\":[\"0 to 0.1\",\"0.1 to 0.2\",\"0.2 to 0.3\",\"0.3 to 0.4\",\"0.4 to 0.5\",\"0.5 to 0.6\",\"0.6 to 0.7\",\"0.7 to 0.8\",\"0.8 to 0.9\",\"0.9 to 1\"]},\"exportFormats\":[{\"label\":\"GeoTIFF raster archive\",\"value\":\"tiff\",\"adapter\":\"raster\",\"extension\":\"zip\"},{\"label\":\"PNG image\",\"value\":\"png\",\"adapter\":\"raster\",\"extension\":\"png\"}],\"originalGroupId\":null,\"alive\":false,\"main\":false,\"dynamic\":false,\"timeEvents\":null,\"histogram\":{\"bins\":[8409,3689,12507,55235,136500,191923,143705,64427,516110,2844],\"boundaries\":[0.0,1.0],\"degenerate\":false},\"colormap\":null,\"childIds\":{},\"scaleReference\":null,\"childrenCount\":0,\"roles\":[],\"observableType\":null,\"parentId\":\"o5vxhba3oaf\",\"parentArtifactId\":\"o5vxhba3oaf\",\"children\":[],\"actions\":[{\"actionLabel\":null,\"actionId\":null,\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":true,\"submenu\":[]},{\"actionLabel\":\"Add to cache\",\"actionId\":\"AddToCache\",\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":false,\"submenu\":[]}],\"structure\":[],\"contextTime\":-1,\"creationTime\":1674121767333,\"urn\":\"local:observation:s5vwuqhcsj7:o5vxkt6v65v\",\"valueCount\":2469948,\"previouslyNotified\":false,\"contextualized\":true,\"lastUpdate\":1577836800000,\"key\":null}"
+        }
+      },
+      "recorded_at": "Thu, 19 Jan 2023 09:52:50 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/export/structure/o5vxnwrfg1f",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s5vwuqhcsj7"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Thu, 19 Jan 2023 09:52:21 GMT"
+          ],
+          "Content-Length": [
+            "2181"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=169fd63d75f268df; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"shapeType\":\"EMPTY\",\"encodedShape\":null,\"spatialProjection\":null,\"id\":\"o5vxnwrfg1f\",\"rootContextId\":\"o5vxhba3oaf\",\"label\":\"Indicator condition ofgbif2436436 community\",\"observable\":\"im:Indicator (es.nca:Condition of (demography:Human demography:Community))\",\"exportLabel\":\"indicator_condition_ofgbif2436436_community\",\"valueType\":\"NUMBER\",\"observationType\":\"STATE\",\"semantics\":[\"QUALITY\",\"PRIORITY\",\"OBSERVABLE\",\"QUANTIFIABLE\"],\"geometryTypes\":[\"RASTER\",\"COLORMAP\"],\"literalValue\":null,\"overallValue\":null,\"traits\":[],\"metadata\":{\"Grid size\":\"2469948 (1338 x 1846) cells\",\"Cell size\":\"1,010.124 x 1,002.374 m\",\"Temporal transitions\":\"Wed Jan 01 00:00:00 GMT 2020\",\"Total area\":\"1,139,588.849 km2\"},\"taskId\":null,\"contextId\":\"o5vxhba3oaf\",\"empty\":false,\"style\":null,\"primary\":true,\"dataSummary\":{\"nodataProportion\":0.0,\"minValue\":0.0,\"maxValue\":1.0,\"mean\":0.5095993956721737,\"categorized\":false,\"histogram\":[94152,79865,82116,88596,205700,305255,256100,20801,2751,13],\"categories\":[\"0 to 0.1\",\"0.1 to 0.2\",\"0.2 to 0.3\",\"0.3 to 0.4\",\"0.4 to 0.5\",\"0.5 to 0.6\",\"0.6 to 0.7\",\"0.7 to 0.8\",\"0.8 to 0.9\",\"0.9 to 1\"]},\"exportFormats\":[{\"label\":\"GeoTIFF raster archive\",\"value\":\"tiff\",\"adapter\":\"raster\",\"extension\":\"zip\"},{\"label\":\"PNG image\",\"value\":\"png\",\"adapter\":\"raster\",\"extension\":\"png\"}],\"originalGroupId\":null,\"alive\":false,\"main\":false,\"dynamic\":false,\"timeEvents\":null,\"histogram\":{\"bins\":[94152,79865,82116,88596,205700,305255,256100,20801,2751,13],\"boundaries\":[0.0,1.0],\"degenerate\":false},\"colormap\":null,\"childIds\":{},\"scaleReference\":null,\"childrenCount\":0,\"roles\":[],\"observableType\":null,\"parentId\":\"o5vxhba3oaf\",\"parentArtifactId\":\"o5vxhba3oaf\",\"children\":[],\"actions\":[{\"actionLabel\":null,\"actionId\":null,\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":true,\"submenu\":[]},{\"actionLabel\":\"Add to cache\",\"actionId\":\"AddToCache\",\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":false,\"submenu\":[]}],\"structure\":[],\"contextTime\":-1,\"creationTime\":1674121774070,\"urn\":\"local:observation:s5vwuqhcsj7:o5vxnwrfg1f\",\"valueCount\":2469948,\"previouslyNotified\":false,\"contextualized\":true,\"lastUpdate\":1577836800000,\"key\":null}"
+        }
+      },
+      "recorded_at": "Thu, 19 Jan 2023 09:52:51 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://developers.integratedmodelling.org/modeler/api/v2/public/export/structure/o5vxqzt0wqy",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "User-Agent: k.LAB/0.11.0 (client:klab-api)"
+          ],
+          "Authorization": [
+            "s5vwuqhcsj7"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Accept": [
+            "application/json"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": ""
+        },
+        "headers": {
+          "Server": [
+            "nginx/1.12.0"
+          ],
+          "Date": [
+            "Thu, 19 Jan 2023 09:52:21 GMT"
+          ],
+          "Content-Length": [
+            "2229"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Access-Control-Request-Headers",
+            "Access-Control-Request-Method",
+            "Origin"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, max-age=0, must-revalidate"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Expires": [
+            "0"
+          ],
+          "Set-Cookie": [
+            "SRVID=169fd63d75f268df; path=/"
+          ],
+          "Front-End-Https": [
+            "on"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"shapeType\":\"EMPTY\",\"encodedShape\":null,\"spatialProjection\":null,\"id\":\"o5vxqzt0wqy\",\"rootContextId\":\"o5vxhba3oaf\",\"label\":\"Indicator condition of aquatic ecosystem\",\"observable\":\"im:Indicator (es.nca:Condition of (earth:Aquatic ecology:Ecosystem))\",\"exportLabel\":\"indicator_condition_of_aquatic_ecosystem\",\"valueType\":\"NUMBER\",\"observationType\":\"STATE\",\"semantics\":[\"QUALITY\",\"PRIORITY\",\"OBSERVABLE\",\"QUANTIFIABLE\"],\"geometryTypes\":[\"RASTER\",\"COLORMAP\"],\"literalValue\":null,\"overallValue\":null,\"traits\":[],\"metadata\":{\"Grid size\":\"2469948 (1338 x 1846) cells\",\"Cell size\":\"1,010.124 x 1,002.374 m\",\"Temporal transitions\":\"Wed Jan 01 00:00:00 GMT 2020\",\"Total area\":\"1,139,588.849 km2\"},\"taskId\":null,\"contextId\":\"o5vxhba3oaf\",\"empty\":false,\"style\":null,\"primary\":true,\"dataSummary\":{\"nodataProportion\":0.0,\"minValue\":0.130690798163414,\"maxValue\":1.0,\"mean\":0.8304636946009439,\"categorized\":false,\"histogram\":[5485,27,638,2865,16630,118764,255031,643341,90063,2505],\"categories\":[\"0.131 to 0.218\",\"0.218 to 0.305\",\"0.305 to 0.391\",\"0.391 to 0.478\",\"0.478 to 0.565\",\"0.565 to 0.652\",\"0.652 to 0.739\",\"0.739 to 0.826\",\"0.826 to 0.913\",\"0.913 to 1\"]},\"exportFormats\":[{\"label\":\"GeoTIFF raster archive\",\"value\":\"tiff\",\"adapter\":\"raster\",\"extension\":\"zip\"},{\"label\":\"PNG image\",\"value\":\"png\",\"adapter\":\"raster\",\"extension\":\"png\"}],\"originalGroupId\":null,\"alive\":false,\"main\":false,\"dynamic\":false,\"timeEvents\":null,\"histogram\":{\"bins\":[5485,27,638,2865,16630,118764,255031,643341,90063,2505],\"boundaries\":[0.130690798163414,1.0],\"degenerate\":false},\"colormap\":null,\"childIds\":{},\"scaleReference\":null,\"childrenCount\":0,\"roles\":[],\"observableType\":null,\"parentId\":\"o5vxhba3oaf\",\"parentArtifactId\":\"o5vxhba3oaf\",\"children\":[],\"actions\":[{\"actionLabel\":null,\"actionId\":null,\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":true,\"submenu\":[]},{\"actionLabel\":\"Add to cache\",\"actionId\":\"AddToCache\",\"downloadUrl\":null,\"downloadFileExtension\":null,\"enabled\":true,\"separator\":false,\"submenu\":[]}],\"structure\":[],\"contextTime\":-1,\"creationTime\":1674121781221,\"urn\":\"local:observation:s5vwuqhcsj7:o5vxqzt0wqy\",\"valueCount\":2469948,\"previouslyNotified\":false,\"contextualized\":true,\"lastUpdate\":1577836800000,\"key\":null}"
+        }
+      },
+      "recorded_at": "Thu, 19 Jan 2023 09:52:51 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.1.0"
+}

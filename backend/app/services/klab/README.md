@@ -38,11 +38,24 @@ The response is rather long, what you need from it is the token which is under "
 }
 ```
 
+# K.LAB context string
+
+Geometry send to the k.LAB needs to be described by following string:
+```
+τ0(1){ttype=LOGICAL,period=[{TIME_PERIOD}],tscope=1.0,tunit=YEAR}S2({GRID_RESOLUTION_XY}){bbox=[{BOUNDING_BOX}],shape={WKB_SHAPE},proj=EPSG:4326}
+
+# example
+τ0(1){ttype=LOGICAL,period=[1640995200000 1672531200000],tscope=1.0,tunit=YEAR}S2(520,297){bbox=[-7.256596802202454 -4.408874148363334 38.39721372248553 40.02677860935444],shape=00000000030000000100000007C01D06C14FE6DEF24043B5F39D8BB550C0160A7B8B2DC6224044036D7B41B470C011A2AFE79D99FB4043B5C0443B5A7CC014D2EFCFADC624404355FA189A597CC0199C599EE6C5B8404332D7E635CC84C01C3D49F12A6BC440437995016B4E6CC01D06C14FE6DEF24043B5F39D8BB550,proj=EPSG:4326}
+```
+This string contains several interesting blocks:
+ - TIME_PERIOD: time period in milliseconds
+ - GRID_RESOLUTION_XY: resolution of grid inside bounding box which should respect its ratio
+ - BOUNDING_BOX: based on shape/geometry
+ - WKB_SHAPE: geometry at WKB format
+
 # Submitting a context and observations separately
 
-This example uses a predefined geometry of entire Colombia.
-
-TODO: figure out about passing geometries.
+There are two options when submitting a context. Either external resources (predefined geometry) can be used by setting up `urn` parameter or geometry can be defined by context string and passed to API by using `geometry` parameter. In second case, `contextType` parameter has to be set up as well.
 
 ```
 curl --location --request POST 'https://developers.integratedmodelling.org/modeler/api/v2/public/submit/context' \
@@ -50,6 +63,8 @@ curl --location --request POST 'https://developers.integratedmodelling.org/model
 --header 'Content-Type: application/json' \
 --data-raw '{
     "urn":"aries.heco.locations.colombia_continental",
+    "geometry": null,
+    "contextType": null,
     "estimate":"false"
 }'
 ```
@@ -357,14 +372,18 @@ curl --location --request POST 'https://developers.integratedmodelling.org/model
 --header 'Authorization: s7xvepxx8c6u' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "urn":"aries.heco.locations.colombia_continental",
+    "geometry":"τ0(1){ttype=LOGICAL,period=[1640995200000 1672531200000],tscope=1.0,tunit=YEAR}S2(520,297){bbox=[-7.256596802202454 -4.408874148363334 38.39721372248553 40.02677860935444],shape=00000000030000000100000007C01D06C14FE6DEF24043B5F39D8BB550C0160A7B8B2DC6224044036D7B41B470C011A2AFE79D99FB4043B5C0443B5A7CC014D2EFCFADC624404355FA189A597CC0199C599EE6C5B8404332D7E635CC84C01C3D49F12A6BC440437995016B4E6CC01D06C14FE6DEF24043B5F39D8BB550,proj=EPSG:4326}",
+    "urn": null,
+    "contextType": "earth:Region",
     "observables": [
-      "im:Indicator value of ecology:Biodiversity",
-      "im:Indicator value of ecology:Ecosystem for es:ClimateRegulation",
-      "im:Indicator es.nca:Condition of demography:SocialStructure",
-      "im:Indicator es.nca:Condition of earth:Aquatic ecology:Ecosystem"
+      "im:Indicator (value of ecology:Biodiversity)",
+      "im:Indicator (value of ecology:Ecosystem for es:ClimateRegulation)",
+      "im:Indicator (es.nca:Condition of demography:Human demography:Community)",
+      "im:Indicator (es.nca:Condition of earth:Aquatic ecology:Ecosystem)"
     ],
-    "estimate":"false"
+    "estimate":"false",
+    "scenarios": [],
+    "estimatedCost": -1
 }'
 ```
 

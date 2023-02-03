@@ -4,6 +4,9 @@ class Project < ApplicationRecord
   include Searchable
   include ExtraRansackers
 
+  IMPACT_LEVELS = %w[project municipality hydrobasin priority_landscape]
+  IMPACT_DIMENSIONS = %w[biodiversity climate water community total]
+
   friendly_id :project_developer_prefixed_name, use: :slugged
 
   belongs_to :project_developer, counter_cache: true
@@ -73,8 +76,8 @@ class Project < ApplicationRecord
   before_validation :clear_funding_fields, unless: -> { looking_for_funding? }
   before_validation :clear_received_funding_fields, unless: -> { received_funding? }
   before_save :assign_priority_landscape, if: :centroid_changed?
-  after_save :recalculate_impacts, if: -> { saved_change_to_geometry? || saved_change_to_impact_areas? }
-  after_save :notify_project_developers, if: -> { saved_change_to_status? && published? }
+  after_commit :recalculate_impacts, if: -> { saved_change_to_geometry? || saved_change_to_impact_areas? }, on: %i[create update]
+  after_commit :notify_project_developers, if: -> { saved_change_to_status? && published? }, on: %i[create update]
 
   accepts_nested_attributes_for :project_images, reject_if: :all_blank, allow_destroy: true
 
@@ -119,14 +122,19 @@ class Project < ApplicationRecord
 
   def recalculate_impacts
     reset_impacts
-    ImpactCalculationJob.perform_later self
+    return ImpactCalculationJob.perform_later id unless ENV["KLAB_ENABLED"].to_s == "true"
+
+    Klab::SubmitContextsJob.perform_later id
+    Klab::CalculateImpactsJob.perform_later id
   end
 
   def reset_impacts
     impact_columns = {impact_calculated: false}
-    %w[municipality hydrobasin priority_landscape].each do |impact_type|
-      %w[biodiversity climate water community total].each do |impact_area|
-        impact_columns["#{impact_type}_#{impact_area}_impact"] = nil
+    IMPACT_LEVELS.each do |impact_level|
+      impact_columns["#{impact_level}_demands_calculated"] = false
+      IMPACT_DIMENSIONS.each do |impact_dimension|
+        impact_columns["#{impact_level}_#{impact_dimension}_impact"] = nil
+        impact_columns["#{impact_level}_#{impact_dimension}_demand"] = nil unless impact_dimension == "total"
       end
     end
     update_columns impact_columns

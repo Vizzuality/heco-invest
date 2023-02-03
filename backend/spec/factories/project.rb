@@ -66,7 +66,7 @@ FactoryBot.define do
     end
 
     language { "en" }
-    geometry { {type: "Point", coordinates: [1, 2]} }
+    geometry { {type: "Polygon", coordinates: [[[-7.256596802202454, 39.42149705239956], [-5.510236906689473, 40.02677860935444], [-4.408874148363334, 39.419930008870296], [-5.205992932301829, 38.67169482742881], [-6.402685625872827, 38.39721372248553], [-7.059852379049463, 38.94985978831832], [-7.256596802202454, 39.42149705239956]]]} }
 
     trait :with_involved_project_developers do
       involved_project_developers { create_list(:project_developer, 2) }
@@ -87,6 +87,11 @@ FactoryBot.define do
 
     trait :with_impacts do
       impact_calculated { true }
+      project_biodiversity_impact { 0.1 }
+      project_climate_impact { 0.1 }
+      project_water_impact { 0.1 }
+      project_community_impact { 0.1 }
+      project_total_impact { 0.1 }
       municipality_biodiversity_impact { 0.1 }
       municipality_climate_impact { 0.1 }
       municipality_water_impact { 0.1 }
@@ -102,6 +107,29 @@ FactoryBot.define do
       priority_landscape_water_impact { 0.1 }
       priority_landscape_community_impact { 0.1 }
       priority_landscape_total_impact { 0.1 }
+    end
+
+    trait :with_demands do
+      project_demands_calculated { true }
+      municipality_demands_calculated { true }
+      hydrobasin_demands_calculated { true }
+      priority_landscape_demands_calculated { true }
+      project_biodiversity_demand { 0.1 }
+      project_climate_demand { 0.1 }
+      project_water_demand { 0.1 }
+      project_community_demand { 0.1 }
+      municipality_biodiversity_demand { 0.1 }
+      municipality_climate_demand { 0.1 }
+      municipality_water_demand { 0.1 }
+      municipality_community_demand { 0.1 }
+      hydrobasin_biodiversity_demand { 0.1 }
+      hydrobasin_climate_demand { 0.1 }
+      hydrobasin_water_demand { 0.1 }
+      hydrobasin_community_demand { 0.1 }
+      priority_landscape_biodiversity_demand { 0.1 }
+      priority_landscape_climate_demand { 0.1 }
+      priority_landscape_water_demand { 0.1 }
+      priority_landscape_community_demand { 0.1 }
     end
   end
 end

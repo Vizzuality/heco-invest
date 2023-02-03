@@ -9,22 +9,16 @@ RSpec.describe Klab::CalculateProjectImpactScore do
       allow(Klab::PollTicket).to receive(:sleep_interval).and_return(0)
     end
 
-    let(:service) { Klab::CalculateProjectImpactScore.new("aries.heco.locations.colombia_continental") }
+    let(:service) { Klab::CalculateProjectImpactScore.new(urn: "aries.heco.locations.colombia_continental") }
 
     subject { service.call }
 
     it "returns biodiversity score for precalculated geometry" do
-      VCR.use_cassette("log_in") do
-        VCR.use_cassette("submit_context") do
-          VCR.use_cassette("ticket_info") do
-            VCR.use_cassette("export") do
-              expect(subject.biodiversity).to eq(0.554573141969294)
-              expect(subject.climate).to eq(0.7727075228876347)
-              expect(subject.community).to eq(0.5096478754474401)
-              expect(subject.water).to eq(0.8304742998320133)
-            end
-          end
-        end
+      VCR.use_cassette("klab/calculate_project_impact_score") do
+        expect(subject.biodiversity).to eq(0.5545237701289529)
+        expect(subject.climate).to eq(0.7728172553609381)
+        expect(subject.community).to eq(0.5096142276290361)
+        expect(subject.water).to eq(0.830439023752767)
       end
     end
   end

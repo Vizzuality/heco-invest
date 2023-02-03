@@ -1,6 +1,6 @@
 module Impacts
   class CalculateForProject
-    attr_accessor :project, :impacts
+    attr_accessor :project, :demands_source, :impacts
 
     CALCULATION_SETUP = {
       "biodiversity" => {
@@ -26,8 +26,9 @@ module Impacts
       }
     }
 
-    def initialize(project)
+    def initialize(project, demands_source: Location)
       @project = project
+      @demands_source = demands_source
       @impacts = {}
     end
 
@@ -41,9 +42,13 @@ module Impacts
     private
 
     def calculate_impacts
-      assign_impacts_for location_intersection_for(:municipality), impact_type: :municipality
-      assign_impacts_for location_intersection_for(:basin), impact_type: :hydrobasin
-      assign_impacts_for location_intersection_for(:priority_landscape), impact_type: :priority_landscape
+      if demands_source == Location
+        assign_impacts_from_location_demands location_intersection_for(:municipality), impact_level: :municipality
+        assign_impacts_from_location_demands location_intersection_for(:basin), impact_level: :hydrobasin
+        assign_impacts_from_location_demands location_intersection_for(:priority_landscape), impact_level: :priority_landscape
+      else
+        Project::IMPACT_LEVELS.each { |impact_level| assign_impacts_from_project_demands project, impact_level: impact_level }
+      end
     end
 
     def store_impacts!
@@ -52,14 +57,22 @@ module Impacts
       project.save!
     end
 
-    def assign_impacts_for(location, impact_type:)
+    def assign_impacts_from_project_demands(project, impact_level:)
+      values = CALCULATION_SETUP.map do |impact_dimension, impact_areas|
+        demand = project.public_send "#{impact_level}_#{impact_dimension}_demand"
+        impact_value_for(impact_areas, demand).tap { |value| impacts["#{impact_level}_#{impact_dimension}_impact"] = value }
+      end
+      impacts["#{impact_level}_total_impact"] = values.sum / values.size if values.present?
+    end
+
+    def assign_impacts_from_location_demands(location, impact_level:)
       return if location.blank?
 
-      values = CALCULATION_SETUP.map do |impact, impact_areas|
-        demand = location.public_send "#{impact}_demand"
-        impact_value_for(impact_areas, demand).tap { |value| impacts["#{impact_type}_#{impact}_impact"] = value }
+      values = CALCULATION_SETUP.map do |impact_dimension, impact_areas|
+        demand = location.public_send "#{impact_dimension}_demand"
+        impact_value_for(impact_areas, demand).tap { |value| impacts["#{impact_level}_#{impact_dimension}_impact"] = value }
       end
-      impacts["#{impact_type}_total_impact"] = values.sum / values.size
+      impacts["#{impact_level}_total_impact"] = values.sum / values.size
     end
 
     def impact_value_for(impact_areas, demand)

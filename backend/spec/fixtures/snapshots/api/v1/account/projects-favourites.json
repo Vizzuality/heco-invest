@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "id": "a15a8d1d-e1c3-4ea4-b3e8-48913678cbc8",
+      "id": "16dec361-38e0-4efa-a386-44de3817ea3c",
       "type": "project",
       "attributes": {
         "name": "Project 1",
@@ -45,13 +45,48 @@
         "language": "en",
         "account_language": "en",
         "geometry": {
-          "type": "Point",
+          "type": "Polygon",
           "coordinates": [
-            1.0,
-            2.0
+            [
+              [
+                -7.256596802202454,
+                39.42149705239956
+              ],
+              [
+                -5.510236906689473,
+                40.02677860935444
+              ],
+              [
+                -4.408874148363334,
+                39.419930008870296
+              ],
+              [
+                -5.205992932301829,
+                38.67169482742881
+              ],
+              [
+                -6.402685625872827,
+                38.39721372248553
+              ],
+              [
+                -7.059852379049463,
+                38.94985978831832
+              ],
+              [
+                -7.256596802202454,
+                39.42149705239956
+              ]
+            ]
           ]
         },
-        "created_at": "2022-07-27T07:56:04.885Z",
+        "verified": false,
+        "created_at": "2023-01-26T09:48:29.719Z",
+        "updated_at": "2023-01-26T09:48:29.719Z",
+        "project_biodiversity_impact": null,
+        "project_climate_impact": null,
+        "project_water_impact": null,
+        "project_community_impact": null,
+        "project_total_impact": null,
         "municipality_biodiversity_impact": null,
         "municipality_climate_impact": null,
         "municipality_water_impact": null,
@@ -67,36 +102,34 @@
         "priority_landscape_water_impact": null,
         "priority_landscape_community_impact": null,
         "priority_landscape_total_impact": null,
-        "latitude": 2.0,
-        "longitude": 1.0,
-        "favourite": true,
         "impact_calculated": false,
-        "verified": false,
-        "funded": null,
-        "updated_at": "2022-10-25T13:32:04.602Z"
+        "latitude": 39.21309022641362,
+        "longitude": -5.87810037515931,
+        "favourite": true,
+        "funded": null
       },
       "relationships": {
         "project_developer": {
           "data": {
-            "id": "d7d6216e-9f22-4442-ae95-900dad692018",
+            "id": "b78b6ca6-9d5e-4725-98e7-fe98b5e3ec03",
             "type": "project_developer"
           }
         },
         "country": {
           "data": {
-            "id": "68fc2f6b-6ba3-42a2-9f6c-905cd8ac69a0",
+            "id": "0a33aadb-9be0-4e0c-a49c-95d81878033b",
             "type": "location"
           }
         },
         "municipality": {
           "data": {
-            "id": "399e76c8-5008-4555-be6f-d76dfa74da75",
+            "id": "1b0d099a-d45c-4c70-8ac6-2e9441d4b230",
             "type": "location"
           }
         },
         "department": {
           "data": {
-            "id": "dac3fce5-eeaf-48da-a6ee-28df56e251cf",
+            "id": "05758676-9e87-4387-8ac6-a7b2f02e5dfa",
             "type": "location"
           }
         },

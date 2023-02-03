@@ -1,19 +1,28 @@
 module Klab
   class SubmitContext
     class Request
+      INDICATORS = {
+        biodiversity: "im:Indicator (value of ecology:Biodiversity)",
+        climate: "im:Indicator (value of ecology:Ecosystem for es:ClimateRegulation)",
+        community: "im:Indicator (es.nca:Condition of demography:Human demography:Community)",
+        water: "im:Indicator (es.nca:Condition of earth:Aquatic ecology:Ecosystem)"
+      }.freeze
+
       def initialize(token)
         @connection = APIConnection.new
         @token = token
       end
 
-      def call(geometry)
+      def call(geometry: nil, urn: nil)
         @connection.post do |req|
           req.url url
           req.headers["Authorization"] = @token
           req.headers["Content-Type"] = "application/json"
           req.body = {
-            urn: geometry,
-            observables: Klab::CalculateProjectImpactScore.observable_names,
+            urn: urn,
+            geometry: geometry,
+            contextType: geometry.present? ? "earth:Region" : nil,
+            observables: INDICATORS.values,
             scenarios: [],
             estimate: false,
             estimatedCost: -1
@@ -41,10 +50,10 @@ module Klab
       @token = client.token
     end
 
-    def call(geometry)
+    def call(geometry: nil, urn: nil)
       Rails.logger.debug "Requesting context with observables"
       request = Request.new(@token)
-      response = Response.new(request.call(geometry))
+      response = Response.new(request.call(geometry: geometry, urn: urn))
       @ticket_id = response.ticket_id
       response
     end
