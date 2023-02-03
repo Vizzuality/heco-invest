@@ -46,7 +46,7 @@ module Klab
     def find_geometry
       case impact_level
       when "project"
-        RGeo::GeoJSON.decode project.geometry
+        GeoJsons::ToGeometry.new(RGeo::GeoJSON.decode(project.geometry)).call
       when "municipality"
         LocationGeometry.of_type(:municipality).intersection_with(project.centroid).first&.geometry
       when "hydrobasin"
