@@ -49,6 +49,7 @@ module "staging" {
   klab_api_host           = var.klab_api_host
   klab_api_username       = var.klab_api_username
   klab_api_password       = var.klab_api_password
+  klab_enabled            = "true"
 }
 
 module "production" {
@@ -81,6 +82,7 @@ module "production" {
   klab_api_host           = var.klab_api_host
   klab_api_username       = var.klab_api_username
   klab_api_password       = var.klab_api_password
+  klab_enabled            = "false"
 }
 
 module "dns" {
