@@ -46,6 +46,7 @@
 /db/seeds/files/basins.geojson
 /db/seeds/files/mosaics.geojson
 /db/seeds/files/municipalities.geojson
+/db/seeds/files/mosaics_corrected.geojson
 
 # Downloadable locales
 /config/locales/en.yml

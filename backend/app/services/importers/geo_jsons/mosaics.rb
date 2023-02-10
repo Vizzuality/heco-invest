@@ -1,14 +1,36 @@
 module Importers
   module GeoJsons
     class Mosaics < Base
+      PRIORITY_LANDSCAPE_TRANSLATIONS = {
+        "Corazón Amazonía" => {name_en: "Amazon Heart", name_es: "Corazón Amazonía", name_pt: "Coração da Amazônia"},
+        "Piedemonte Amazónico - Macizo" => {name_en: "Amazonian Piedmont Massif", name_es: "Piedemonte Amazónico - Macizo", name_pt: "Maciço Piedemonte Amazônico"},
+        "Transición Orinoquía" => {name_en: "Orinoquía Transition", name_es: "Transición Orinoquía", name_pt: "Transição Orinoquía"},
+        "Orinoquía" => {name_en: "Orinoquía", name_es: "Orinoquía", name_pt: "Orinoquía"}
+      }
+      PRIORITY_LANDSCAPE_CODES = {
+        "Corazón Amazonía" => "priority-landscape-amazon-heart",
+        "Piedemonte Amazónico - Macizo" => "priority-landscape-amazonian-piedmont-massif",
+        "Transición Orinoquía" => "priority-landscape-orinoquia-transition",
+        "Orinoquía" => "priority-landscape-orinoquia",
+        "Cordillera Oriental" => "priority-landscape-cordillera-oriental",
+        "Cordillera Central" => "priority-landscape-cordillera-central",
+        "Pacífico - Marino Costero" => "priority-landscape-pacifico-marino-costero",
+        "Caribe" => "priority-landscape-caribe",
+        "Transición Pacífico - Caribe" => "priority-landscape-transicion-pacifico-caribe"
+      }
+
       private
 
       def attributes_of_record_for(feature)
         {
-          name_en: feature.properties["mosaico"],
+          name_en: PRIORITY_LANDSCAPE_TRANSLATIONS.dig(feature.properties["mosaico"], :name_en).presence || feature.properties["mosaico"],
+          name_es: feature.properties["mosaico"],
+          name_pt: PRIORITY_LANDSCAPE_TRANSLATIONS.dig(feature.properties["mosaico"], :name_pt),
           location_type: "priority_landscape",
           parent_id: country.id,
           geometry: feature.geometry,
+          visible: PRIORITY_LANDSCAPE_TRANSLATIONS.key?(feature.properties["mosaico"]),
+          code: PRIORITY_LANDSCAPE_CODES[feature.properties["mosaico"]],
           biodiversity: feature.properties["biodiversity"],
           biodiversity_demand: feature.properties["biodiversity_demand"],
           climate: feature.properties["climate"],
