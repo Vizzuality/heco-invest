@@ -24,13 +24,27 @@ RSpec.describe Importers::GeoJsons::Mosaics do
 
       it "creates correct priority_landscapes" do
         expect(priority_landscapes.count).to eq(2)
-        expect(priority_landscapes.pluck(:name_en)).to include("Cordillera Oriental")
-        expect(priority_landscapes.pluck(:name_en)).to include("Piedemonte Amazónico - Macizo")
+        expect(priority_landscapes.pluck(:name_es)).to include("Cordillera Oriental")
+        expect(priority_landscapes.pluck(:name_es)).to include("Piedemonte Amazónico - Macizo")
+      end
+
+      it "assigns correct attributes to first priority landscape" do
+        location = priority_landscapes.find_by name_es: "Cordillera Oriental"
+        expect(location.name_en).to eq("Cordillera Oriental")
+        expect(location.visible).to be_falsey
+        expect(location.code).to eq(Importers::GeoJsons::Mosaics::PRIORITY_LANDSCAPE_CODES["Cordillera Oriental"])
+      end
+
+      it "assigns correct attributes to second priority landscape" do
+        location = priority_landscapes.find_by name_es: "Piedemonte Amazónico - Macizo"
+        expect(location.name_en).to eq("Amazonian Piedmont Massif")
+        expect(location.visible).to be_truthy
+        expect(location.code).to eq(Importers::GeoJsons::Mosaics::PRIORITY_LANDSCAPE_CODES["Piedemonte Amazónico - Macizo"])
       end
 
       it "creates geometries records" do
         expect(LocationGeometry.count).to eq(priority_landscapes.count)
-        expect(priority_landscapes.find_by(name_en: "Piedemonte Amazónico - Macizo").location_geometry.geometry)
+        expect(priority_landscapes.find_by(name_es: "Piedemonte Amazónico - Macizo").location_geometry.geometry)
           .to eq(RGeo::GeoJSON.decode({type: "Polygon", coordinates: [[[105.0, 0.0], [106.0, 0.0], [106.0, 1.0], [105.0, 1.0], [105.0, 0.0]]]}.to_json))
       end
 
