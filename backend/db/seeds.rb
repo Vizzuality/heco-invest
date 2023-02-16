@@ -27,7 +27,6 @@ if Rails.env.development?
       mission: Faker::Lorem.paragraph(sentence_count: 4),
       prioritized_projects_description: Faker::Lorem.paragraph(sentence_count: 4),
       other_information: Faker::Lorem.paragraph(sentence_count: 4),
-      language: investor_account.language
     )
     (0..5).to_a.sample.times do
       municipality = Location.where(location_type: :municipality).order("RANDOM()").first ||
@@ -49,7 +48,6 @@ if Rails.env.development?
       categories: Category::TYPES.shuffle.take((1..2).to_a.sample),
       impacts: Impact::TYPES.shuffle.take((1..2).to_a.sample),
       mission: Faker::Lorem.paragraph(sentence_count: 4),
-      language: investor_account.language,
       entity_legal_registration_number: "564823570"
     )
 
