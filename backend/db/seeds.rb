@@ -26,7 +26,7 @@ if Rails.env.development?
       previously_invested: true,
       mission: Faker::Lorem.paragraph(sentence_count: 4),
       prioritized_projects_description: Faker::Lorem.paragraph(sentence_count: 4),
-      other_information: Faker::Lorem.paragraph(sentence_count: 4),
+      other_information: Faker::Lorem.paragraph(sentence_count: 4)
     )
     (0..5).to_a.sample.times do
       municipality = Location.where(location_type: :municipality).order("RANDOM()").first ||
