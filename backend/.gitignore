@@ -39,8 +39,6 @@
 
 /coverage
 
-/config/credentials/production.key
-
 # Location GeoJSON
 /db/seeds/files/colombia.geojson
 /db/seeds/files/basins.geojson
