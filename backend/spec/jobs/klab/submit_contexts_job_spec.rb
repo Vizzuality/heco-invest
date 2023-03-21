@@ -16,6 +16,7 @@ RSpec.describe Klab::SubmitContextsJob, type: :job do
       let(:build_context_string_service) { instance_double Klab::BuildContextString }
 
       before do
+        stub_const "ENV", ENV.to_hash.merge("KLAB_API_HOST" => "https://developers.integratedmodelling.org")
         allow(Klab::BuildContextString).to receive(:new).and_return(build_context_string_service)
         allow(build_context_string_service).to receive(:call).and_return "aries.heco.locations.colombia_continental"
         VCR.turn_on!

@@ -24,9 +24,9 @@ module Klab
     def save_impact_demand_from!(response)
       return skip! unless observations_exists_at? response
 
-      Array.wrap(response.artifacts_ids).each.with_index do |artifact_id, idx|
+      Array.wrap(response.artifacts_ids).each do |artifact_id|
         artifact_response = Klab::ExportArtifact.new(client).call artifact_id
-        artifact_code = Klab::SubmitContext::Request::INDICATORS.keys[idx]
+        artifact_code = Klab::SubmitContext::Request::INDICATORS.invert[artifact_response.observable]
         project.public_send "#{impact_level}_#{artifact_code}_demand=", artifact_response.demand
       end
       project.assign_attributes "#{impact_level}_demands_calculated": true

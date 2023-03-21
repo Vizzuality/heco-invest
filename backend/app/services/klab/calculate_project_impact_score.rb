@@ -23,10 +23,10 @@ module Klab
       context_resp = Klab::SubmitContext.new(@client).call(geometry: @geometry, urn: @urn)
       ticket_resp = Klab::PollTicket.new(@client).call(context_resp.ticket_id, async: false)
       result = ImpactScoreStruct.new
-      ticket_resp.artifacts_ids.each.with_index do |artifact_id, idx|
+      ticket_resp.artifacts_ids.each do |artifact_id|
         Rails.logger.debug "Exporting observable #{artifact_id}"
         export_resp = ExportArtifact.new(@client).call(artifact_id)
-        artifact_code = Klab::SubmitContext::Request::INDICATORS.keys[idx]
+        artifact_code = Klab::SubmitContext::Request::INDICATORS.invert[export_resp.observable]
         result.send("#{artifact_code}=", export_resp.demand) if artifact_code.present?
       end
       result
