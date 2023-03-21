@@ -3,9 +3,9 @@ module Klab
     class Request
       INDICATORS = {
         biodiversity: "im:Indicator (value of ecology:Biodiversity)",
-        climate: "im:Indicator (value of ecology:Ecosystem for es:ClimateRegulation)",
-        community: "im:Indicator (es.nca:Condition of demography:Human demography:Community)",
-        water: "im:Indicator (es.nca:Condition of earth:Aquatic ecology:Ecosystem)"
+        climate: "im:Indicator ((value of ecology:Ecosystem) for es:ClimateRegulation)",
+        community: "im:Indicator (es.nca:Condition of (demography:Human demography:Community))",
+        water: "im:Indicator (es.nca:Condition of (earth:Aquatic ecology:Ecosystem))"
       }.freeze
 
       def initialize(token)

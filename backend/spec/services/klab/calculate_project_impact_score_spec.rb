@@ -6,6 +6,7 @@ RSpec.describe Klab::CalculateProjectImpactScore do
 
   describe :call do
     before(:each) do
+      stub_const "ENV", ENV.to_hash.merge("KLAB_API_HOST" => "https://developers.integratedmodelling.org")
       allow(Klab::PollTicket).to receive(:sleep_interval).and_return(0)
     end
 

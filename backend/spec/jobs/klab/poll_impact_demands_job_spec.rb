@@ -13,7 +13,10 @@ RSpec.describe Klab::PollImpactDemandsJob, type: :job do
 
   describe ".perform_now" do
     context "when polling is successful" do
-      before { VCR.turn_on! }
+      before do
+        stub_const "ENV", ENV.to_hash.merge("KLAB_API_HOST" => "https://developers.integratedmodelling.org")
+        VCR.turn_on!
+      end
       after { VCR.turn_off! }
 
       context "when ticket is already resolved" do
