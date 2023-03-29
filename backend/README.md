@@ -82,3 +82,11 @@ We use Transifex to provide the best UX for translators. The system is set up to
 Static content that needs to be translated has to be added only to `config/locales/zu.yml` file. To push new translations to Transifex use `tx push -s`.
 
 To download already translated content `bin/rails transifex:pull`
+
+### Automatic content translation
+
+We use the Google translate API to provide user-generated content in the languages of the platform. This runs as a background job. As with any external service this may sometimes be unavailable. In case of missing translations, the first place to look are the logs on the jobs instance and the error reporting service.
+
+### Automatic project impact scores calculation
+
+We use ARIES to fetch project demand scores for a given geometry and use those to calculate impact scores. This runs as a background job. As with any external service, this may sometimes be unavailable, and so there are a limited number of retries. In case of missing impact scores, the first place to look are the logs on the jobs instance and the error reporting service. More information about the integration can be found [here](app/services/klab/README.md).
