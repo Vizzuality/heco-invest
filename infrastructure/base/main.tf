@@ -82,7 +82,7 @@ module "production" {
   klab_api_host           = var.klab_api_host
   klab_api_username       = var.klab_api_username
   klab_api_password       = var.klab_api_password
-  klab_enabled            = "false"
+  klab_enabled            = "true"
 }
 
 module "dns" {
