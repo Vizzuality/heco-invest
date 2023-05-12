@@ -77,8 +77,8 @@ module "production" {
   from_email_address     = var.from_email_address
   instance_role          = "production"
   tag                    = "production"
-  http_auth_username     = var.staging_http_auth_username
-  http_auth_password     = var.staging_http_auth_password
+  http_auth_username     = var.production_http_auth_username
+  http_auth_password     = var.production_http_auth_password
   klab_api_host           = var.klab_api_host
   klab_api_username       = var.klab_api_username
   klab_api_password       = var.klab_api_password
