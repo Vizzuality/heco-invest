@@ -98,6 +98,18 @@ variable "staging_http_auth_password" {
   default = ""
 }
 
+variable "production_http_auth_username" {
+  type = string
+  description = "Http auth username (for production)"
+  default = ""
+}
+
+variable "production_http_auth_password" {
+  type = string
+  description = "Http auth password (for production)"
+  default = ""
+}
+
 variable "klab_api_host" {
   type = string
   description = "Klab engine API host"
