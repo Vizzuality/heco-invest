@@ -11,4 +11,6 @@ resource "google_artifact_registry_repository" "repository" {
   repository_id = var.name
   description = "Docker image repository for ${var.name}"
   format = "DOCKER"
+
+  cleanup_policy_dry_run = true
 }
