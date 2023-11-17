@@ -36,9 +36,7 @@ module "staging" {
   backend_min_scale      = 0
   frontend_max_scale     = 1
   backend_max_scale      = 1
-  redirect_domain        = var.redirect_domain
   dns_zone_name          = module.dns.dns_zone_name
-  redirect_dns_zone_name = module.redirect_dns.dns_zone_name
   subdomain              = "staging"
   uptime_alert_email     = var.uptime_alert_email
   from_email_address     = var.from_email_address
@@ -70,9 +68,7 @@ module "production" {
   frontend_min_scale     = 1
   backend_min_scale      = 1
   cors_origin            = "https://${var.domain}"
-  redirect_domain        = var.redirect_domain
   dns_zone_name          = module.dns.dns_zone_name
-  redirect_dns_zone_name = module.redirect_dns.dns_zone_name
   uptime_alert_email     = var.uptime_alert_email
   from_email_address     = var.from_email_address
   instance_role          = "production"
@@ -89,12 +85,6 @@ module "dns" {
   source = "./modules/dns"
   domain = var.domain
   name   = "hecoinvest"
-}
-
-module "redirect_dns" {
-  source = "./modules/dns"
-  domain = var.redirect_domain
-  name   = "heco-redirect"
 }
 
 module "sendgrid_dns_entries" {
