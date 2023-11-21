@@ -84,6 +84,10 @@ zu:
         progress_impact_tracking: Progress and impact tracking
         description: Short description of the project
         relevant_links: Relevant links (optional)
+        positive_financial_returns: If your current business model generates positive financial returns, please explain what they consist of
+        last_year_sales_revenue: What was the sales revenue in the last fiscal year-end?
+        climate_change_risks_identified: Has the project identified the risks of climate change to which the business is exposed and potential mitigation strategies?
+        climate_change_risks_details: If yes, please, discribe these risks
       open_call:
         name: Open call name
         picture: Picture

@@ -35,7 +35,10 @@ class Project < ApplicationRecord
     :replicability,
     :funding_plan,
     :progress_impact_tracking,
-    :relevant_links
+    :relevant_links,
+    :positive_financial_returns,
+    :last_year_sales_revenue,
+    :climate_change_risks_details
 
   enum status: ProjectStatus::TYPES_WITH_CODE, _default: :published
   ransacker :status, formatter: proc { |v| statuses[v] }

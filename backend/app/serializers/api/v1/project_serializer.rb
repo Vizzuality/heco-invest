@@ -52,7 +52,11 @@ module API
         :priority_landscape_water_impact,
         :priority_landscape_community_impact,
         :priority_landscape_total_impact,
-        :impact_calculated
+        :impact_calculated,
+        :positive_financial_returns,
+        :last_year_sales_revenue,
+        :climate_change_risks_details,
+        :climate_change_risks_identified
 
       belongs_to :project_developer
       belongs_to :country, serializer: LocationSerializer
