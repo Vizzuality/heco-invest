@@ -61,7 +61,7 @@ FactoryBot.define do
 
     climate_change_risks_identified { true }
 
-    sequence(:limate_change_risks_details) do |n|
+    sequence(:climate_change_risks_details) do |n|
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 2)
     end

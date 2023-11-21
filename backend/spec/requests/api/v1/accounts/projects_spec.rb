@@ -29,6 +29,10 @@ RSpec.describe "API V1 Account Projects", type: :request do
       received_funding: {type: :boolean},
       received_funding_amount_usd: {type: :number},
       received_funding_investor: {type: :string},
+      positive_financial_returns: {type: :string},
+      last_year_sales_revenue: {type: :string},
+      climate_change_risks_details: {type: :string},
+      climate_change_risks_identified: {type: :boolean},
       replicability: {type: :string},
       sustainability: {type: :string},
       progress_impact_tracking: {type: :string},
@@ -297,7 +301,11 @@ RSpec.describe "API V1 Account Projects", type: :request do
           impact_areas: %w[restoration pollutants-reduction],
           sdgs: [2, 4, 5],
           instrument_types: %w[grant],
-          locale: :en
+          locale: :en,
+          positive_financial_returns: "Updated financial returns data",
+          last_year_sales_revenue: "Updated year sales revenues",
+          climate_change_risks_details: "Updated climate risk details",
+          climate_change_risks_identified: true
         }
       end
 

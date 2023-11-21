@@ -106,7 +106,11 @@
       "project_climate_impact": null,
       "project_water_impact": null,
       "project_community_impact": null,
-      "project_total_impact": null
+      "project_total_impact": null,
+      "positive_financial_returns": null,
+      "last_year_sales_revenue": null,
+      "climate_change_risks_details": null,
+      "climate_change_risks_identified": false
     },
     "relationships": {
       "project_developer": {

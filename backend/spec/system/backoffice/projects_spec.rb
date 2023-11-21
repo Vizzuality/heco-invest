@@ -200,7 +200,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
           fill_in t("simple_form.labels.project.positive_financial_returns"), with: "Positive financial returns"
           fill_in t("simple_form.labels.project.last_year_sales_revenue"), with: "Last year sales revenue"
           choose "Yes", name: "project[climate_change_risks_identified]"
-          fill_in t("simple_form.labels.climate_change_risks_details"), with: "Climate change risks identified"
+          fill_in t("simple_form.labels.project.climate_change_risks_details"), with: "Climate change risks identified"
           fill_in t("simple_form.labels.project.replicability"), with: "New replicability"
           fill_in t("simple_form.labels.project.sustainability"), with: "New sustainability"
           fill_in t("simple_form.labels.project.progress_impact_tracking"), with: "New progress impact tracking"
