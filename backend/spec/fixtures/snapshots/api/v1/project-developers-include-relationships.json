@@ -257,7 +257,7 @@
         "favourite": null,
         "funded": null,
         "positive_financial_returns": "Enim repellat pariatur. Earum modi eos.",
-        "last_year_sales_revenue": "Enim repellat pariatur.",
+        "last_year_sales_revenue": "10000.0",
         "climate_change_risks_details": "Enim repellat pariatur. Earum modi eos.",
         "climate_change_risks_identified": true
       },
@@ -412,7 +412,7 @@
         "favourite": null,
         "funded": null,
         "positive_financial_returns": "Placeat commodi libero. Quo recusandae repellat.",
-        "last_year_sales_revenue": "Placeat commodi libero.",
+        "last_year_sales_revenue": "10000.0",
         "climate_change_risks_details": "Placeat commodi libero. Quo recusandae repellat.",
         "climate_change_risks_identified": true
       },

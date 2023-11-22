@@ -30,7 +30,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
       received_funding_amount_usd: {type: :number},
       received_funding_investor: {type: :string},
       positive_financial_returns: {type: :string},
-      last_year_sales_revenue: {type: :string},
+      last_year_sales_revenue: {type: :number},
       climate_change_risks_details: {type: :string},
       climate_change_risks_identified: {type: :boolean},
       replicability: {type: :string},
@@ -303,7 +303,7 @@ RSpec.describe "API V1 Account Projects", type: :request do
           instrument_types: %w[grant],
           locale: :en,
           positive_financial_returns: "Updated financial returns data",
-          last_year_sales_revenue: "Updated year sales revenues",
+          last_year_sales_revenue: 20000,
           climate_change_risks_details: "Updated climate risk details",
           climate_change_risks_identified: true
         }

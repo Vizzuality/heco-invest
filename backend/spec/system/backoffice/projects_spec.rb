@@ -198,7 +198,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
           fill_in t("simple_form.labels.project.received_funding_amount_usd"), with: 10000
           fill_in t("simple_form.labels.project.received_funding_investor"), with: "Investor"
           fill_in t("simple_form.labels.project.positive_financial_returns"), with: "Positive financial returns"
-          fill_in t("simple_form.labels.project.last_year_sales_revenue"), with: "Last year sales revenue"
+          fill_in t("simple_form.labels.project.last_year_sales_revenue"), with: 10000
           choose "Yes", name: "project[climate_change_risks_identified]"
           fill_in t("simple_form.labels.project.climate_change_risks_details"), with: "Climate change risks identified"
           fill_in t("simple_form.labels.project.replicability"), with: "New replicability"
@@ -238,7 +238,7 @@ RSpec.describe "Backoffice: Projects", type: :system do
           expect(project.received_funding_amount_usd).to eq(10000)
           expect(project.received_funding_investor).to eq("Investor")
           expect(project.positive_financial_returns).to eq("Positive financial returns")
-          expect(project.last_year_sales_revenue).to eq("Last year sales revenue")
+          expect(project.last_year_sales_revenue).to eq(10000)
           expect(project.climate_change_risks_identified).to be_truthy
           expect(project.climate_change_risks_details).to eq("Climate change risks identified")
           expect(project.replicability).to eq("New replicability")

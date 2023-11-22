@@ -37,7 +37,6 @@ class Project < ApplicationRecord
     :progress_impact_tracking,
     :relevant_links,
     :positive_financial_returns,
-    :last_year_sales_revenue,
     :climate_change_risks_details
 
   enum status: ProjectStatus::TYPES_WITH_CODE, _default: :published
