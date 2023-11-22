@@ -54,8 +54,8 @@ FactoryBot.define do
       Faker::Config.random = Random.new(n)
       Faker::Lorem.paragraph(sentence_count: 2)
     end
-    
-    last_year_sales_revenue { 10000}
+
+    last_year_sales_revenue { 10000 }
 
     climate_change_risks_identified { true }
 
