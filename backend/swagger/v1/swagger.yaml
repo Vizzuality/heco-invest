@@ -40,7 +40,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: bedb0157-527a-4b8d-97d9-50922796f0cf
+                  id: 7a83a8b0-3e7f-4e47-bf61-1f4d8fe9130f
                   type: investor
                   attributes:
                     name: Kutch-Spencer
@@ -79,7 +79,7 @@ paths:
                     language: en
                     account_language: en
                     review_status: approved
-                    created_at: '2022-10-26T08:13:32.338Z'
+                    created_at: '2023-11-22T14:47:47.663Z'
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
@@ -91,11 +91,11 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 6a82139f-959b-44a5-9b1f-322e502e4967
+                        id: 9741c01b-a2a8-4a80-8497-33317d066540
                         type: user
                     open_calls:
                       data:
-                      - id: ba96977b-13c5-47c0-b405-9b6f5a4259a3
+                      - id: 27577316-164b-41ea-a392-d0ddc5f08e82
                         type: open_call
               schema:
                 type: object
@@ -125,7 +125,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: eb2d9ef1-0f38-4d2a-8529-9a1fc1279482
+                  id: 8a72952d-ae32-4d12-9721-b6bb132c551d
                   type: investor
                   attributes:
                     name: Name
@@ -159,7 +159,7 @@ paths:
                     language: es
                     account_language: es
                     review_status: unapproved
-                    created_at: '2022-10-26T08:13:32.976Z'
+                    created_at: '2023-11-22T14:47:47.916Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -171,7 +171,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: ca6a820e-6a0e-4d0b-9c5c-cafae22fe929
+                        id: 0a90c8e9-6b7e-417e-b66d-892121a7a25c
                         type: user
                     open_calls:
                       data: []
@@ -343,7 +343,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 17319147-51dd-43ab-8080-cbf7783515a2
+                  id: 4259f18a-db68-494d-9e1b-761f9b76c996
                   type: investor
                   attributes:
                     name: Name
@@ -377,7 +377,7 @@ paths:
                     language: es
                     account_language: es
                     review_status: approved
-                    created_at: '2022-10-26T08:13:33.628Z'
+                    created_at: '2023-11-22T14:47:48.160Z'
                     contact_email: contact@example.com
                     contact_phone: '123456789'
                     picture:
@@ -389,7 +389,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 93ec8d58-b61a-4805-b551-73f95fedb00d
+                        id: 858e1b58-2f47-44ea-a425-e2eb627272e7
                         type: user
                     open_calls:
                       data: []
@@ -566,7 +566,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 20aec058-193c-4b2b-8e6c-cefecbf793c1
+                - id: 56326cb5-e573-403f-ac35-131acb73011d
                   type: investor
                   attributes:
                     name: Bartoletti and Sons
@@ -605,7 +605,7 @@ paths:
                     language: en
                     account_language: en
                     review_status: approved
-                    created_at: '2022-10-26T08:13:34.528Z'
+                    created_at: '2023-11-22T14:47:48.530Z'
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
@@ -617,7 +617,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: cd0dff81-b0ac-4fec-9d87-3bb2fbb25194
+                        id: cf49b25e-4ed5-402e-b4da-c792fd0bb6c5
                         type: user
                     open_calls:
                       data: []
@@ -705,55 +705,55 @@ paths:
             application/json:
               example:
                 data:
-                - id: 38f18773-bf22-4815-831d-0e5a33fbfb68
+                - id: 85f7ae8b-601b-4f3a-adb0-eeb71599073d
                   type: open_call_application
                   attributes:
                     message: Dolores fugiat nesciunt. Ut laborum dolores. Sit neque
                       eos. Expedita molestiae quia.
                     funded: false
-                    created_at: '2022-10-26T08:14:03.506Z'
-                    updated_at: '2022-10-26T08:14:03.506Z'
+                    created_at: '2023-11-22T14:47:57.064Z'
+                    updated_at: '2023-11-22T14:47:57.064Z'
                   relationships:
                     open_call:
                       data:
-                        id: 9f622aa0-6a21-4a7e-a16e-0d439ce50060
+                        id: ce058875-a400-4a72-a1e7-33a983af91d7
                         type: open_call
                     project:
                       data:
-                        id: 5cdaccd7-e2c9-4ef9-892e-b883ea4b25cb
+                        id: 4bd25cdb-46ed-4170-81d6-e97246d23734
                         type: project
                     project_developer:
                       data:
-                        id: 7e42045f-3577-4829-8a17-ff8500ba8636
+                        id: c62d84ae-9ace-48a8-b004-40c4669f9a49
                         type: project_developer
                     investor:
                       data:
-                        id: 82e516fe-973f-44d4-bf4b-91de98f837c2
+                        id: b7b25ba4-cf9c-4266-a331-b7cca9a2ef17
                         type: investor
-                - id: 82014fdd-a8fa-4ee3-aefe-0267974fe625
+                - id: 79459a06-00ef-4744-baf7-108c88e046fb
                   type: open_call_application
                   attributes:
                     message: Et quaerat omnis. Harum voluptas atque. Quo nesciunt
                       voluptas. Suscipit ex cum.
                     funded: false
-                    created_at: '2022-10-26T08:14:03.365Z'
-                    updated_at: '2022-10-26T08:14:03.365Z'
+                    created_at: '2023-11-22T14:47:56.988Z'
+                    updated_at: '2023-11-22T14:47:56.988Z'
                   relationships:
                     open_call:
                       data:
-                        id: 11310917-0692-4fb8-ace3-bd46819bc9ff
+                        id: 7c2ae55f-888d-41e0-8291-9767cf732150
                         type: open_call
                     project:
                       data:
-                        id: ac0f0446-ce98-4d1c-b969-aae7bb8026ba
+                        id: 57d21bd0-3020-4a4b-8cf0-a68f8c84f562
                         type: project
                     project_developer:
                       data:
-                        id: 456e4dd7-d472-46d7-bf24-61d26988188c
+                        id: 2b4951e8-3cd5-4cd2-a937-9e43cc93fb59
                         type: project_developer
                     investor:
                       data:
-                        id: 82e516fe-973f-44d4-bf4b-91de98f837c2
+                        id: b7b25ba4-cf9c-4266-a331-b7cca9a2ef17
                         type: investor
               schema:
                 type: object
@@ -794,32 +794,32 @@ paths:
             application/json:
               example:
                 data:
-                  id: f2a394ca-df15-48a6-8138-da3f80360d10
+                  id: 5c2a7d8d-ac71-4a18-b53b-02477722a440
                   type: open_call_application
                   attributes:
                     message: This is message
                     funded: false
-                    created_at: '2022-10-26T08:14:08.567Z'
-                    updated_at: '2022-10-26T08:14:08.567Z'
+                    created_at: '2023-11-22T14:47:59.336Z'
+                    updated_at: '2023-11-22T14:47:59.336Z'
                   relationships:
                     open_call:
                       data:
-                        id: 155a9b9b-d9cf-40ff-b0c1-a2b7c68c895f
+                        id: d265f381-22b4-4450-ae65-70468b39c455
                         type: open_call
                     project:
                       data:
-                        id: 49539b13-c953-4ea0-980a-365473d35c5b
+                        id: bc53cad2-592b-474e-9e52-79696b82d7f0
                         type: project
                     project_developer:
                       data:
-                        id: 1dce78ab-b409-423d-abc3-857ea2cfdd97
+                        id: 40db50db-2ee2-4973-856b-bc18445b62cc
                         type: project_developer
                     investor:
                       data:
-                        id: 1d9c90c5-8bb3-4f21-b395-cce302677c3c
+                        id: 7a35aefc-a071-4a7e-9a48-00867b1801bd
                         type: investor
                 included:
-                - id: 49539b13-c953-4ea0-980a-365473d35c5b
+                - id: bc53cad2-592b-474e-9e52-79696b82d7f0
                   type: project
                   attributes:
                     name: Project 1
@@ -867,13 +867,30 @@ paths:
                     language: en
                     account_language: es
                     geometry:
-                      type: Point
+                      type: Polygon
                       coordinates:
-                      - 1.0
-                      - 2.0
+                      - - - -7.256596802202454
+                          - 39.42149705239956
+                        - - -5.510236906689473
+                          - 40.02677860935444
+                        - - -4.408874148363334
+                          - 39.419930008870296
+                        - - -5.205992932301829
+                          - 38.67169482742881
+                        - - -6.402685625872827
+                          - 38.39721372248553
+                        - - -7.059852379049463
+                          - 38.94985978831832
+                        - - -7.256596802202454
+                          - 39.42149705239956
                     verified: false
-                    created_at: '2022-10-26T08:14:08.445Z'
-                    updated_at: '2022-10-26T08:14:08.445Z'
+                    created_at: '2023-11-22T14:47:59.276Z'
+                    updated_at: '2023-11-22T14:47:59.276Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -890,27 +907,26 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
                     favourite: false
                     funded:
                   relationships:
                     project_developer:
                       data:
-                        id: 1dce78ab-b409-423d-abc3-857ea2cfdd97
+                        id: 40db50db-2ee2-4973-856b-bc18445b62cc
                         type: project_developer
                     country:
                       data:
-                        id: 1f046000-33f9-415f-be90-26ed9104ca15
+                        id: 8e502d40-5036-438c-a537-cbd546651865
                         type: location
                     municipality:
                       data:
-                        id: eb72cf5c-47b0-4eb8-9327-e82bc4bdd7bd
+                        id: 7716f1cd-52fc-4e1f-9a34-5fea91a7a1cd
                         type: location
                     department:
                       data:
-                        id: 94b310f7-58c9-4ca2-85ce-65cc6c0445d1
+                        id: 0432f1b0-41dd-4635-8d4c-4fea86efceea
                         type: location
                     priority_landscape:
                       data:
@@ -918,7 +934,7 @@ paths:
                       data: []
                     project_images:
                       data: []
-                - id: 1dce78ab-b409-423d-abc3-857ea2cfdd97
+                - id: 40db50db-2ee2-4973-856b-bc18445b62cc
                   type: project_developer
                   attributes:
                     name: Kutch-Spencer
@@ -943,7 +959,7 @@ paths:
                     account_language: es
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:14:08.369Z'
+                    created_at: '2023-11-22T14:47:59.241Z'
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
@@ -955,19 +971,19 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 34b6f97b-1933-4b1e-b3b7-0f04fc41ba9c
+                        id: af9e9e5a-eb79-4ecc-bfd1-a072ed28410c
                         type: user
                     projects:
                       data:
-                      - id: 49539b13-c953-4ea0-980a-365473d35c5b
+                      - id: bc53cad2-592b-474e-9e52-79696b82d7f0
                         type: project
                     involved_projects:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: 549c6ee4-bfe2-4e24-b944-e71f25586123
+                      - id: 79b949b4-2ab2-4d8a-8649-6f150f080955
                         type: location
-                      - id: d0211e03-8493-46ec-870b-bc8a6cae0fde
+                      - id: 7bfa887c-fdb3-4b2f-85d4-853bf56497e9
                         type: location
               schema:
                 type: object
@@ -1055,30 +1071,30 @@ paths:
             application/json:
               example:
                 data:
-                  id: e40278c8-3005-4141-b2f3-e983208d281e
+                  id: 7eb09816-6bb0-478c-af0e-9ea34dc8f2f8
                   type: open_call_application
                   attributes:
                     message: Enim repellat pariatur. Earum modi eos. Libero tempora
                       exercitationem. Qui dolorem quo.
                     funded: false
-                    created_at: '2022-10-26T08:14:13.564Z'
-                    updated_at: '2022-10-26T08:14:13.564Z'
+                    created_at: '2023-11-22T14:48:01.456Z'
+                    updated_at: '2023-11-22T14:48:01.456Z'
                   relationships:
                     open_call:
                       data:
-                        id: 6d12a58a-c9a5-4961-bf3e-a574e7fea585
+                        id: 372833ad-5a7b-42e9-a7b1-c32b0f82f025
                         type: open_call
                     project:
                       data:
-                        id: b1ccdfab-eb7d-477b-9f4d-a7e686e64efc
+                        id: f88e13c6-1029-4176-82ba-c705f45f9610
                         type: project
                     project_developer:
                       data:
-                        id: 9b52b534-8569-4405-a3fa-fcd398c57ae5
+                        id: b0be0ab2-8938-45b0-800a-de93948e4457
                         type: project_developer
                     investor:
                       data:
-                        id: ea509861-de76-4682-8817-b7c300588b02
+                        id: 4479f1c6-b0cd-48e5-904a-6e4b816bd90e
                         type: investor
               schema:
                 type: object
@@ -1132,29 +1148,29 @@ paths:
             application/json:
               example:
                 data:
-                  id: 8a459fe9-dbf4-4a02-a014-5a3956f61451
+                  id: 5ecfb845-8683-4788-b533-62df562862c8
                   type: open_call_application
                   attributes:
                     message: This is updated text
                     funded: false
-                    created_at: '2022-10-26T08:14:15.568Z'
-                    updated_at: '2022-10-26T08:14:15.601Z'
+                    created_at: '2023-11-22T14:48:02.343Z'
+                    updated_at: '2023-11-22T14:48:02.357Z'
                   relationships:
                     open_call:
                       data:
-                        id: 738fa088-50b9-4e49-8f58-02d35f441690
+                        id: 40a87bd6-8924-46d5-b6b4-f82c1a13a626
                         type: open_call
                     project:
                       data:
-                        id: d347199f-84b3-4f30-9c68-1f6864e4d0c2
+                        id: 3b78d5ac-0c06-4b70-9635-1e58db830dc3
                         type: project
                     project_developer:
                       data:
-                        id: 27c064e6-9d84-46c0-bb5a-87caf88533bc
+                        id: 333421db-476d-44d7-a7de-c80dabdf282e
                         type: project_developer
                     investor:
                       data:
-                        id: 79adb21f-a504-4bc0-a5e9-a5175a76363d
+                        id: 8c53ed4c-8319-454f-9164-a58f4b7d7a68
                         type: investor
               schema:
                 type: object
@@ -1365,7 +1381,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: ae1b1b3d-6762-4778-9e61-720d37987911
+                - id: d9df0c55-4a9d-4ee8-baea-741d483844c0
                   type: open_call
                   attributes:
                     name: Open call 5
@@ -1385,15 +1401,14 @@ paths:
                     impact_description: Porro soluta beatae. Quia ratione facilis.
                       Eligendi sapiente voluptatem. Quas rerum officia.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:14:28.957Z'
+                    closing_at: '2024-09-22T14:48:06.516Z'
                     status: launched
                     language: en
                     account_language: es
                     verified: false
-                    created_at: '2022-10-26T08:14:28.962Z'
-                    updated_at: '2022-10-26T08:14:28.977Z'
+                    created_at: '2023-11-22T14:48:06.518Z'
+                    updated_at: '2023-11-22T14:48:06.524Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -1403,21 +1418,21 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: e4a41eec-98e6-4deb-bdd5-7978638a5fb7
+                        id: 241c6db0-eb6c-4764-beb2-cd4e4fc82872
                         type: investor
                     country:
                       data:
-                        id: 8c86d5aa-d349-4b14-8bfd-300f94c67eac
+                        id: 693b3326-e937-426a-91ef-5155c6ccf87c
                         type: location
                     municipality:
                       data:
-                        id: d84da1ed-dc7b-4dcf-9753-e7fb06331a2b
+                        id: efc2ea7d-e795-4c0f-b05a-b0e4e3221708
                         type: location
                     department:
                       data:
-                        id: 3f57ce89-5dda-468c-a1cc-c9f6e82a0d1e
+                        id: c5c3d035-5b09-406d-b026-e9c18536ed28
                         type: location
-                - id: 0fc6219e-939c-47ff-bf92-55f320333f7f
+                - id: 0aeb75f5-38a9-4b9d-8a00-de516591fccd
                   type: open_call
                   attributes:
                     name: Open call 4
@@ -1437,15 +1452,14 @@ paths:
                     impact_description: Autem et et. Voluptatem neque quibusdam. Repellat
                       recusandae eum. Eius ex est.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:14:28.903Z'
+                    closing_at: '2024-09-22T14:48:06.496Z'
                     status: launched
                     language: en
                     account_language: es
                     verified: false
-                    created_at: '2022-10-26T08:14:28.907Z'
-                    updated_at: '2022-10-26T08:14:28.919Z'
+                    created_at: '2023-11-22T14:48:06.498Z'
+                    updated_at: '2023-11-22T14:48:06.504Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -1455,21 +1469,21 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: e4a41eec-98e6-4deb-bdd5-7978638a5fb7
+                        id: 241c6db0-eb6c-4764-beb2-cd4e4fc82872
                         type: investor
                     country:
                       data:
-                        id: e436af37-e7aa-4794-abd9-c8fc5828f12a
+                        id: 5ac78a5c-1d32-4bbc-88d6-8f27e3819836
                         type: location
                     municipality:
                       data:
-                        id: 6836a023-0fc8-409f-8efe-4a3466c333ff
+                        id: 868ca61f-c570-4f91-a5be-40377a6aaf08
                         type: location
                     department:
                       data:
-                        id: 2d4928a1-bc59-4c41-a175-1ee279a8189a
+                        id: c660fbea-428f-4da7-922c-bd17ed54262f
                         type: location
-                - id: ed3917e2-1812-4714-afa3-9f53e105faae
+                - id: 93831121-7894-43c0-8414-e3723f12a811
                   type: open_call
                   attributes:
                     name: Open call 3
@@ -1489,15 +1503,14 @@ paths:
                     impact_description: Dolores fugiat nesciunt. Ut laborum dolores.
                       Sit neque eos. Expedita molestiae quia.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:14:28.844Z'
+                    closing_at: '2024-09-22T14:48:06.476Z'
                     status: launched
                     language: en
                     account_language: es
                     verified: false
-                    created_at: '2022-10-26T08:14:28.849Z'
-                    updated_at: '2022-10-26T08:14:28.864Z'
+                    created_at: '2023-11-22T14:48:06.478Z'
+                    updated_at: '2023-11-22T14:48:06.484Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -1507,21 +1520,21 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: e4a41eec-98e6-4deb-bdd5-7978638a5fb7
+                        id: 241c6db0-eb6c-4764-beb2-cd4e4fc82872
                         type: investor
                     country:
                       data:
-                        id: b45d2b05-250b-40ea-85ed-c4c24f5d5cc1
+                        id: 4f08b74f-d164-4ee0-ade8-72a6490494ae
                         type: location
                     municipality:
                       data:
-                        id: 68ea04c2-d633-4e30-a61b-5c47d8e58ff1
+                        id: 0da12f91-3d04-4d8d-b676-b995a83418ba
                         type: location
                     department:
                       data:
-                        id: 6132558c-6db0-4143-908d-af51844f7d30
+                        id: 6f992602-6939-4e71-ac0b-94d9a49b3b21
                         type: location
-                - id: d74c9c17-9ccd-4fe0-83da-83658721ccb0
+                - id: 79fe3040-83ba-41dd-a4f5-ded0ff4ac56e
                   type: open_call
                   attributes:
                     name: Open call 2
@@ -1541,15 +1554,14 @@ paths:
                     impact_description: Et quaerat omnis. Harum voluptas atque. Quo
                       nesciunt voluptas. Suscipit ex cum.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:14:28.789Z'
+                    closing_at: '2024-09-22T14:48:06.452Z'
                     status: launched
                     language: en
                     account_language: es
                     verified: false
-                    created_at: '2022-10-26T08:14:28.794Z'
-                    updated_at: '2022-10-26T08:14:28.805Z'
+                    created_at: '2023-11-22T14:48:06.454Z'
+                    updated_at: '2023-11-22T14:48:06.460Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -1559,21 +1571,21 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: e4a41eec-98e6-4deb-bdd5-7978638a5fb7
+                        id: 241c6db0-eb6c-4764-beb2-cd4e4fc82872
                         type: investor
                     country:
                       data:
-                        id: 01f4fd4a-86c0-4bee-9568-70abd14316ed
+                        id: 9072e677-9017-4088-8c00-c6d90e7a6b18
                         type: location
                     municipality:
                       data:
-                        id: f0a792df-9e3c-4a3f-9152-5f0cb58e1df6
+                        id: 1690d338-4926-47e6-8c71-ec2117a2467c
                         type: location
                     department:
                       data:
-                        id: bbe5bd88-ec41-467d-8973-ab39120ec1a0
+                        id: 19caa0da-51de-4d76-8a94-6db45bcaaec4
                         type: location
-                - id: 6cb28149-6d72-4e82-8256-7c26844648f1
+                - id: f341a066-d38a-4dff-af2d-5c666eaeaa6b
                   type: open_call
                   attributes:
                     name: Yellow Banana
@@ -1593,15 +1605,14 @@ paths:
                     impact_description: Placeat commodi libero. Quo recusandae repellat.
                       Sunt commodi tempore. Voluptatem et corrupti.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:14:28.730Z'
+                    closing_at: '2024-09-22T14:48:06.433Z'
                     status: launched
                     language: en
                     account_language: es
                     verified: false
-                    created_at: '2022-10-26T08:14:28.738Z'
-                    updated_at: '2022-10-26T08:14:28.753Z'
+                    created_at: '2023-11-22T14:48:06.435Z'
+                    updated_at: '2023-11-22T14:48:06.440Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -1611,21 +1622,21 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: e4a41eec-98e6-4deb-bdd5-7978638a5fb7
+                        id: 241c6db0-eb6c-4764-beb2-cd4e4fc82872
                         type: investor
                     country:
                       data:
-                        id: cc90d23a-40db-4233-8edb-023c8ab576ca
+                        id: 29df4bd6-a2d9-4620-921f-7d6ae3150995
                         type: location
                     municipality:
                       data:
-                        id: c4810fa1-3a5b-464a-8cee-65295a48efa8
+                        id: dc372cd9-067a-4fb4-b6b9-ce633f3f4e4a
                         type: location
                     department:
                       data:
-                        id: 27014eb0-cc03-49ae-96e0-f1d6fa5558ec
+                        id: f4d0e701-a08d-422b-a3dc-af11b095d8b0
                         type: location
-                - id: c3e139b0-7d6d-45cb-9002-99edbba0b167
+                - id: 1a74bead-5ecf-49a8-acb5-3fa68132d6ea
                   type: open_call
                   attributes:
                     name: Open call 1
@@ -1645,15 +1656,14 @@ paths:
                     impact_description: Enim repellat pariatur. Earum modi eos. Libero
                       tempora exercitationem. Qui dolorem quo.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:14:28.671Z'
+                    closing_at: '2024-09-22T14:48:06.414Z'
                     status: draft
                     language: en
                     account_language: es
                     verified: false
-                    created_at: '2022-10-26T08:14:28.675Z'
-                    updated_at: '2022-10-26T08:14:28.691Z'
+                    created_at: '2023-11-22T14:48:06.416Z'
+                    updated_at: '2023-11-22T14:48:06.422Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -1663,19 +1673,19 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: e4a41eec-98e6-4deb-bdd5-7978638a5fb7
+                        id: 241c6db0-eb6c-4764-beb2-cd4e4fc82872
                         type: investor
                     country:
                       data:
-                        id: 544e6660-7331-46d1-ba90-3d4ce204b2b8
+                        id: 0ca41717-4b95-4c5a-a7a1-4b2e555305da
                         type: location
                     municipality:
                       data:
-                        id: df962749-620d-4758-b5c7-1369d7b075b6
+                        id: 6377b2f5-83c7-49ca-8a36-ef7015276625
                         type: location
                     department:
                       data:
-                        id: a9e8ded7-ba0b-45f8-8a69-3bb300837a35
+                        id: d13f8761-05bb-4da4-97e1-6228570e77c3
                         type: location
               schema:
                 type: object
@@ -1716,7 +1726,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 4e8085ae-0585-45ca-b360-a4b515fee2a1
+                  id: 696af8b5-05e1-4f64-93da-5e8779fa8d01
                   type: open_call
                   attributes:
                     name: Open Call Name
@@ -1732,15 +1742,14 @@ paths:
                     funding_exclusions: Open Call Funding Exclusions
                     impact_description: Open Call Impact Description
                     maximum_funding_per_project: 100000
-                    closing_at: '2022-10-27T08:14:38.726Z'
+                    closing_at: '2023-11-23T14:48:08.896Z'
                     status: draft
                     language: es
                     account_language: es
                     verified: false
-                    created_at: '2022-10-26T08:14:38.760Z'
-                    updated_at: '2022-10-26T08:14:38.856Z'
+                    created_at: '2023-11-22T14:48:08.908Z'
+                    updated_at: '2023-11-22T14:48:08.913Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -1750,19 +1759,19 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: abcff04c-f59f-4e8d-aefc-6c36f614fa9a
+                        id: 0bd36e85-bb89-46b5-aed5-abd0ad92bba3
                         type: investor
                     country:
                       data:
-                        id: 7b88e8dc-3cc2-4d59-9eab-dd88c9e8bcef
+                        id: 1ac023b7-165b-446f-9d65-23512c38117e
                         type: location
                     municipality:
                       data:
-                        id: 8918c110-f7a4-4c8a-8222-9de05b308d26
+                        id: 131d0841-445b-4840-9c00-c286a679aab0
                         type: location
                     department:
                       data:
-                        id: 7a6bfa92-8233-4571-a42e-9dd1730087d9
+                        id: ded2d748-b996-481a-9e85-d0d844d98fcd
                         type: location
               schema:
                 type: object
@@ -1903,7 +1912,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 6eb15511-b4f2-4dd2-9990-855fd476503e
+                  id: 03f70874-7bd8-4f1a-8664-7ecacda3183c
                   type: open_call
                   attributes:
                     name: Updated Open Call Name
@@ -1918,15 +1927,14 @@ paths:
                     funding_exclusions: Updated Open Call Funding Exclusions
                     impact_description: Updated Open Call Impact Description
                     maximum_funding_per_project: 100000
-                    closing_at: '2022-11-05T08:14:42.254Z'
+                    closing_at: '2023-12-02T14:48:09.916Z'
                     status: launched
                     language: en
                     account_language: es
                     verified: false
-                    created_at: '2022-10-26T08:14:42.185Z'
-                    updated_at: '2022-10-26T08:14:42.323Z'
+                    created_at: '2023-11-22T14:48:09.893Z'
+                    updated_at: '2023-11-22T14:48:09.932Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -1936,19 +1944,19 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: a076fa21-3607-4d13-9b57-f19a636db7b4
+                        id: 2e8c3f51-c9b6-488f-a429-703f7e5afd45
                         type: investor
                     country:
                       data:
-                        id: c72d7e96-55b7-4d2d-9118-531e95a646a3
+                        id: 305c7a81-7a2b-4dc1-a31a-1d830a46c2fa
                         type: location
                     municipality:
                       data:
-                        id: 718af7f2-5f60-4b4e-ac0b-3c856b3f5022
+                        id: 807cd82c-d994-482a-b261-9a35e239f4a1
                         type: location
                     department:
                       data:
-                        id: 93485fb9-189b-4ad4-888a-9105d4bda13e
+                        id: 8901203b-3d26-49e6-bd5f-216ae754515b
                         type: location
               schema:
                 type: object
@@ -2133,7 +2141,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: c18e82e5-cf21-4719-938d-28659e17f886
+                - id: e4feb197-7f74-460a-8f3b-8f1e7dc6e9f8
                   type: open_call
                   attributes:
                     name: Open call 1
@@ -2153,15 +2161,14 @@ paths:
                     impact_description: Enim repellat pariatur. Earum modi eos. Libero
                       tempora exercitationem. Qui dolorem quo.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:14:50.413Z'
+                    closing_at: '2024-09-22T14:48:11.901Z'
                     status: launched
                     language: en
                     account_language: en
                     verified: false
-                    created_at: '2022-10-26T08:14:50.417Z'
-                    updated_at: '2022-10-26T08:14:50.427Z'
+                    created_at: '2023-11-22T14:48:11.903Z'
+                    updated_at: '2023-11-22T14:48:11.908Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -2171,19 +2178,19 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: 973b8bf0-2b7b-457b-851c-0c4803e5a91b
+                        id: d55ce0fc-f7f1-4cce-99a6-068ed6e5cfd2
                         type: investor
                     country:
                       data:
-                        id: 2233f565-664b-495b-ad85-f9db3b24382f
+                        id: d513a3e4-8050-4e93-9288-c8b05ba0f368
                         type: location
                     municipality:
                       data:
-                        id: 69abd8be-8205-46c6-a394-a8471b0046a3
+                        id: c5e0fdc6-947d-4261-8df6-3ee4a6c5b769
                         type: location
                     department:
                       data:
-                        id: fcd5a9e1-76d4-42e3-86ce-efe0377c0d0e
+                        id: 0aec29d2-cd65-42a2-bdad-41e08c65eb1f
                         type: location
                 meta:
                   page: 1
@@ -2243,7 +2250,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 6ff0b323-46ef-4d30-b8b5-c21479023f1f
+                  id: 89d8426e-2aec-4bea-b8a7-6c7c436feea4
                   type: project_developer
                   attributes:
                     name: Kutch-Spencer
@@ -2268,7 +2275,7 @@ paths:
                     account_language: en
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:14:54.124Z'
+                    created_at: '2023-11-22T14:48:13.460Z'
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
@@ -2280,23 +2287,23 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 46301dd4-a08b-4b7e-bb1c-378e5f9384ec
+                        id: 533c74e9-fb2f-4305-b2ad-a309fbc6166a
                         type: user
                     projects:
                       data:
-                      - id: d732c557-3e0f-4984-a5cd-1c81f8f5e4bd
+                      - id: 24386a45-a47c-4578-9756-988bbd2b3f36
                         type: project
                     involved_projects:
                       data:
-                      - id: f0413d80-33a2-4327-b5f5-ee9f9c3dd7b1
+                      - id: b074a253-3c85-44d8-8539-ba3d88bea961
                         type: project
-                      - id: 782a2a79-455a-45a5-bf4a-b3cc507588b5
+                      - id: fffb54c0-62b1-44ab-86bd-ea825bb9b8b4
                         type: project
                     priority_landscapes:
                       data:
-                      - id: 0553fbfa-de5a-400e-ba2e-87902fb8f49c
+                      - id: 3d8c899b-a84e-4c03-9d50-5b28b9de1bf2
                         type: location
-                      - id: ec14a633-6f6f-42c6-af13-8a5e561722bb
+                      - id: 7bf48b68-d09e-40f4-8e1e-cd16cd08599f
                         type: location
               schema:
                 type: object
@@ -2326,7 +2333,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 6e632424-7234-4233-bdf9-d96ab740af79
+                  id: c7a4421e-d7c1-40d1-953f-3254ef358543
                   type: project_developer
                   attributes:
                     name: Name
@@ -2349,7 +2356,7 @@ paths:
                     account_language: es
                     entity_legal_registration_number: '564823570'
                     review_status: unapproved
-                    created_at: '2022-10-26T08:14:55.390Z'
+                    created_at: '2023-11-22T14:48:13.915Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -2361,7 +2368,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 2c052f5b-7e5a-4000-be38-e4269737942f
+                        id: f95b0f67-9ab0-4d29-bf4f-39437b9fa6b9
                         type: user
                     projects:
                       data: []
@@ -2369,7 +2376,7 @@ paths:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: 8e9231fa-0c4d-4dca-b4a9-66ab601d155f
+                      - id: a19ee830-d9e0-4566-ba3b-0f4b9064463f
                         type: location
               schema:
                 type: object
@@ -2495,7 +2502,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 9a1db754-4edf-4fcf-9e91-8d09d7109be5
+                  id: dbb11986-af11-4e04-bc54-ff596a7d09f1
                   type: project_developer
                   attributes:
                     name: Name
@@ -2518,7 +2525,7 @@ paths:
                     account_language: es
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:14:56.056Z'
+                    created_at: '2023-11-22T14:48:14.221Z'
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
@@ -2530,7 +2537,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 724cf793-3de9-49eb-bffd-7a5269dc6f19
+                        id: 59c623de-9666-410f-a329-2971e2edd5c9
                         type: user
                     projects:
                       data: []
@@ -2538,7 +2545,7 @@ paths:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: c8614376-439a-4eeb-99d1-1b1ce7604ff1
+                      - id: c701da02-f66b-4328-8831-ffe3aae9cb84
                         type: location
               schema:
                 type: object
@@ -2669,7 +2676,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 594e36e2-480a-4a90-96ef-ba10685fb7f3
+                - id: d19ad41d-1a0c-4536-9178-8584f105e1ed
                   type: project_developer
                   attributes:
                     name: Bartoletti and Sons
@@ -2694,7 +2701,7 @@ paths:
                     account_language: en
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:14:58.309Z'
+                    created_at: '2023-11-22T14:48:14.675Z'
                     contact_email: contact@example.com
                     contact_phone: "+57-1-xxx-xx-xx"
                     picture:
@@ -2706,7 +2713,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 4fec684b-3a36-4bb4-8744-c715e323b52b
+                        id: 7611ec76-9e0b-404f-8453-adbbae7cae9f
                         type: user
                     projects:
                       data: []
@@ -2714,9 +2721,9 @@ paths:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: 5767844e-909e-47a9-8098-b0669286399e
+                      - id: 181e6b8e-1b50-4cfb-bcd1-b2b2b663c49d
                         type: location
-                      - id: ca1275ef-000f-4e6f-bdf4-f1e5af59a713
+                      - id: df0d0c8b-e579-480e-b3a8-42bfe82efc96
                         type: location
                 meta:
                   page: 1
@@ -2791,7 +2798,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 976433ba-9a91-47a0-b599-041d1aef15bf
+                - id: 7d957f70-d90a-43f7-a55a-3ba0e7e1c0ed
                   type: project
                   attributes:
                     name: Draft project
@@ -2839,13 +2846,30 @@ paths:
                     language: en
                     account_language: es
                     geometry:
-                      type: Point
+                      type: Polygon
                       coordinates:
-                      - 1.0
-                      - 2.0
+                      - - - -7.256596802202454
+                          - 39.42149705239956
+                        - - -5.510236906689473
+                          - 40.02677860935444
+                        - - -4.408874148363334
+                          - 39.419930008870296
+                        - - -5.205992932301829
+                          - 38.67169482742881
+                        - - -6.402685625872827
+                          - 38.39721372248553
+                        - - -7.059852379049463
+                          - 38.94985978831832
+                        - - -7.256596802202454
+                          - 39.42149705239956
                     verified: false
-                    created_at: '2022-10-26T08:15:00.829Z'
-                    updated_at: '2022-10-26T08:15:00.829Z'
+                    created_at: '2023-11-22T14:48:15.460Z'
+                    updated_at: '2023-11-22T14:48:15.460Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -2862,27 +2886,26 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
                     favourite: false
                     funded:
                   relationships:
                     project_developer:
                       data:
-                        id: 8512e5dc-f88f-4386-8426-69670bb73b8a
+                        id: ad0c02bb-7baa-4045-bae2-a978a3a2e8fb
                         type: project_developer
                     country:
                       data:
-                        id: f3d2a110-883a-4113-a3f9-9e1402c825ed
+                        id: 3c4cdb98-0279-40e0-8291-0fc67830f164
                         type: location
                     municipality:
                       data:
-                        id: 60bd94b2-9a3b-47e6-b549-957fb8ed712d
+                        id: e7e3019e-e726-4fc4-ac19-bcf6d701d125
                         type: location
                     department:
                       data:
-                        id: dd172512-d0a4-441c-8fe3-806d596cc087
+                        id: '02521920-abb2-44c9-b956-48f8eface8d7'
                         type: location
                     priority_landscape:
                       data:
@@ -2890,7 +2913,7 @@ paths:
                       data: []
                     project_images:
                       data: []
-                - id: e69b563d-289d-4f65-92d3-eb15dd872415
+                - id: c1f7b9b3-2d5a-46c0-b563-55725e21b2c8
                   type: project
                   attributes:
                     name: This PDs Project Amazing
@@ -2938,13 +2961,30 @@ paths:
                     language: en
                     account_language: es
                     geometry:
-                      type: Point
+                      type: Polygon
                       coordinates:
-                      - 1.0
-                      - 2.0
+                      - - - -7.256596802202454
+                          - 39.42149705239956
+                        - - -5.510236906689473
+                          - 40.02677860935444
+                        - - -4.408874148363334
+                          - 39.419930008870296
+                        - - -5.205992932301829
+                          - 38.67169482742881
+                        - - -6.402685625872827
+                          - 38.39721372248553
+                        - - -7.059852379049463
+                          - 38.94985978831832
+                        - - -7.256596802202454
+                          - 39.42149705239956
                     verified: false
-                    created_at: '2022-10-26T08:15:00.663Z'
-                    updated_at: '2022-10-26T08:15:00.663Z'
+                    created_at: '2023-11-22T14:48:15.383Z'
+                    updated_at: '2023-11-22T14:48:15.383Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -2961,27 +3001,26 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
                     favourite: false
                     funded:
                   relationships:
                     project_developer:
                       data:
-                        id: 8512e5dc-f88f-4386-8426-69670bb73b8a
+                        id: ad0c02bb-7baa-4045-bae2-a978a3a2e8fb
                         type: project_developer
                     country:
                       data:
-                        id: 769d07ab-6dd0-4763-ae07-b39d6fdca326
+                        id: 81251e63-5b68-45ef-9002-bdb416a3b4ad
                         type: location
                     municipality:
                       data:
-                        id: b9cf8c85-d531-4afc-a749-8b7e2dd707a4
+                        id: aa01ddac-e095-4344-9169-3df1f65a9403
                         type: location
                     department:
                       data:
-                        id: 538bec24-0433-432c-ab07-8f6d75eefd1b
+                        id: 282a90ea-51ab-4d4b-85a0-05e4a9b37b83
                         type: location
                     priority_landscape:
                       data:
@@ -2989,7 +3028,7 @@ paths:
                       data: []
                     project_images:
                       data: []
-                - id: f55ce354-1fdf-4312-bbc0-294be052a082
+                - id: b4945069-bcba-45f2-a707-45a945dc32b8
                   type: project
                   attributes:
                     name: This PDs Project Awesome
@@ -3037,13 +3076,30 @@ paths:
                     language: en
                     account_language: es
                     geometry:
-                      type: Point
+                      type: Polygon
                       coordinates:
-                      - 1.0
-                      - 2.0
+                      - - - -7.256596802202454
+                          - 39.42149705239956
+                        - - -5.510236906689473
+                          - 40.02677860935444
+                        - - -4.408874148363334
+                          - 39.419930008870296
+                        - - -5.205992932301829
+                          - 38.67169482742881
+                        - - -6.402685625872827
+                          - 38.39721372248553
+                        - - -7.059852379049463
+                          - 38.94985978831832
+                        - - -7.256596802202454
+                          - 39.42149705239956
                     verified: false
-                    created_at: '2022-10-26T08:15:00.623Z'
-                    updated_at: '2022-10-26T08:15:00.623Z'
+                    created_at: '2023-11-22T14:48:15.357Z'
+                    updated_at: '2023-11-22T14:48:15.357Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -3060,27 +3116,26 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
                     favourite: false
                     funded:
                   relationships:
                     project_developer:
                       data:
-                        id: 8512e5dc-f88f-4386-8426-69670bb73b8a
+                        id: ad0c02bb-7baa-4045-bae2-a978a3a2e8fb
                         type: project_developer
                     country:
                       data:
-                        id: fad0b9a8-187a-4ce5-81b8-50288a032a05
+                        id: 7aaf0419-26a5-4d93-8a2f-6b9ac6ccc84e
                         type: location
                     municipality:
                       data:
-                        id: 6d4e0d8d-7da3-4bc4-a92a-fe00e7012b14
+                        id: 97b8369b-9f2a-4baf-aac2-4d28c77c31de
                         type: location
                     department:
                       data:
-                        id: dc3494bb-ebba-4a21-b0be-723d162751b3
+                        id: 6291f1a1-7e4a-4232-9457-68ab2796cf89
                         type: location
                     priority_landscape:
                       data:
@@ -3127,7 +3182,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: c1a5b2c7-5b33-48df-b950-febb5bd4a88b
+                  id: 27679c0d-db64-4d25-a359-23eb340fc6fd
                   type: project
                   attributes:
                     name: Project Name
@@ -3184,8 +3239,13 @@ paths:
                               - 1.5274297752414188
                         properties: {}
                     verified: false
-                    created_at: '2022-10-26T08:15:04.899Z'
-                    updated_at: '2022-10-26T08:15:04.899Z'
+                    created_at: '2023-11-22T14:48:17.013Z'
+                    updated_at: '2023-11-22T14:48:17.013Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -3202,7 +3262,6 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
                     latitude: 1.1581373021971106
                     longitude: -77.16867902747148
                     favourite: false
@@ -3210,50 +3269,50 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: ecb45cc0-f2f6-48d9-9ac3-f817474f904e
+                        id: b718b494-3b00-4023-a4f4-d3868798b91c
                         type: project_developer
                     country:
                       data:
-                        id: 275af870-a6b3-4135-a910-3feec3c7853a
+                        id: 9405ad31-d2e4-4c36-9255-e13cb1a3267f
                         type: location
                     municipality:
                       data:
-                        id: c8ed62f6-f574-4083-aeef-7e14c9647242
+                        id: 52db25c8-0ed3-430f-9add-c5bb271d2e4b
                         type: location
                     department:
                       data:
-                        id: c4adb8a4-7334-4d92-98c1-ba47c49601c3
+                        id: 1bcd29cf-7698-440e-b407-0859881491ab
                         type: location
                     priority_landscape:
                       data:
                     involved_project_developers:
                       data:
-                      - id: 54a3ad57-5706-4a68-939b-85d2829337bf
+                      - id: 81ef409a-a32a-4a88-8a57-5cefd10e8507
                         type: project_developer
-                      - id: 533535c4-9bae-49f8-bea9-deb5a69eb39a
+                      - id: 1bfa869b-b011-4701-8665-88ae9508d314
                         type: project_developer
                     project_images:
                       data:
-                      - id: 0bde1632-6ba9-4d21-8deb-d100c0c086fe
+                      - id: 65b6798f-933f-461d-ae09-382a429870c0
                         type: project_image
-                      - id: beab4a35-d4d9-45dd-8e61-954cd9c1321e
+                      - id: 84f2ea4a-7fc4-4e27-acc8-58f03e9eca2e
                         type: project_image
                 included:
-                - id: 0bde1632-6ba9-4d21-8deb-d100c0c086fe
+                - id: 65b6798f-933f-461d-ae09-382a429870c0
                   type: project_image
                   attributes:
                     cover: true
-                    created_at: '2022-10-26T08:15:04.906Z'
+                    created_at: '2023-11-22T14:48:17.017Z'
                     file:
                       analyzed: false
                       small:
                       medium:
                       original:
-                - id: beab4a35-d4d9-45dd-8e61-954cd9c1321e
+                - id: 84f2ea4a-7fc4-4e27-acc8-58f03e9eca2e
                   type: project_image
                   attributes:
                     cover: false
-                    created_at: '2022-10-26T08:15:04.914Z'
+                    created_at: '2023-11-22T14:48:17.021Z'
                     file:
                       analyzed: false
                       small:
@@ -3500,7 +3559,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 4f78cb95-92d3-4472-9ca8-adb2789d0622
+                  id: d8d94fdd-38e8-4b6f-8b54-41fca9397924
                   type: project
                   attributes:
                     name: Updated Project Name
@@ -3541,11 +3600,16 @@ paths:
                     geometry:
                       type: Point
                       coordinates:
-                      - 1
-                      - 2
+                      - 1.0
+                      - 2.0
                     verified: false
-                    created_at: '2022-10-26T08:15:12.444Z'
-                    updated_at: '2022-10-26T08:15:13.328Z'
+                    created_at: '2023-11-22T14:48:19.751Z'
+                    updated_at: '2023-11-22T14:48:19.899Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -3562,7 +3626,6 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
                     latitude: 2.0
                     longitude: 1.0
                     favourite: false
@@ -3570,31 +3633,31 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 63225b43-786f-4d62-beb8-d56a2d506d4c
+                        id: 2eb9508a-5240-46c7-a664-193890c93ea8
                         type: project_developer
                     country:
                       data:
-                        id: e9900538-7aea-4177-8c46-ec1914bc03c5
+                        id: a9f59756-ca62-41fa-8999-0cea2e97766b
                         type: location
                     municipality:
                       data:
-                        id: 800ee0ae-7d0a-44e4-a7e1-9d43e9e31dea
+                        id: a9b4d2bb-d7d8-405c-aad2-20bdeb81290b
                         type: location
                     department:
                       data:
-                        id: 2d3644d2-7b00-450d-befb-f386f6b6291d
+                        id: b1545415-9a6a-4ce9-bd1e-0ee8847be0e5
                         type: location
                     priority_landscape:
                       data:
                     involved_project_developers:
                       data:
-                      - id: ff254158-3833-4b55-9cd3-468310845b70
+                      - id: bfbb3e01-d5bf-4928-98f1-6772c5b72704
                         type: project_developer
-                      - id: 1b40b2e2-c8b4-4d99-8ad7-3646dd167a32
+                      - id: 9248434b-955d-4ef1-93d8-615bd7ffe6a2
                         type: project_developer
                     project_images:
                       data:
-                      - id: b9b4f0a6-b6c5-4242-b68d-2ed7d7e818ba
+                      - id: 4ac5d174-bb3c-4c04-a959-3a0e1f7ad8da
                         type: project_image
               schema:
                 type: object
@@ -3891,7 +3954,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 6bb24a74-b3e4-43a9-b10a-a29d2a867c1f
+                - id: 29bc9117-4a87-487e-aff2-520867d08967
                   type: project
                   attributes:
                     name: Project 1
@@ -3939,13 +4002,30 @@ paths:
                     language: en
                     account_language: en
                     geometry:
-                      type: Point
+                      type: Polygon
                       coordinates:
-                      - 1.0
-                      - 2.0
+                      - - - -7.256596802202454
+                          - 39.42149705239956
+                        - - -5.510236906689473
+                          - 40.02677860935444
+                        - - -4.408874148363334
+                          - 39.419930008870296
+                        - - -5.205992932301829
+                          - 38.67169482742881
+                        - - -6.402685625872827
+                          - 38.39721372248553
+                        - - -7.059852379049463
+                          - 38.94985978831832
+                        - - -7.256596802202454
+                          - 39.42149705239956
                     verified: false
-                    created_at: '2022-10-26T08:15:31.312Z'
-                    updated_at: '2022-10-26T08:15:31.312Z'
+                    created_at: '2023-11-22T14:48:25.877Z'
+                    updated_at: '2023-11-22T14:48:25.877Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -3962,27 +4042,26 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
                     favourite: true
                     funded:
                   relationships:
                     project_developer:
                       data:
-                        id: f40ef998-e2c6-4a25-9b34-9183e8dc7352
+                        id: 8c4858a1-6ae9-44b7-af67-f5364c66cda3
                         type: project_developer
                     country:
                       data:
-                        id: faec6159-9eb0-488d-8d10-449f1177407c
+                        id: c00322d5-b62e-45d0-b245-75e5bb7f917e
                         type: location
                     municipality:
                       data:
-                        id: 94798a0e-9e47-478f-ac94-4c018f9243df
+                        id: c07b106d-9215-4338-9f99-97e848072a02
                         type: location
                     department:
                       data:
-                        id: 62cf77ff-6ca3-42b0-8284-d2eddd5ffb19
+                        id: 16515023-5ece-4344-9f30-10fb338a9c09
                         type: location
                     priority_landscape:
                       data:
@@ -4140,14 +4219,14 @@ paths:
             application/json:
               example:
                 data:
-                - id: b28f09b0-42d7-4b0a-8593-8d6278627146
+                - id: 28f94c82-50a4-479d-851f-1dba64981db1
                   type: user
                   attributes:
                     first_name: Dawna
                     last_name: Block
                     email: dawna.block@example.org
                     role: light
-                    created_at: '2022-10-26T08:15:37.010Z'
+                    created_at: '2023-11-22T14:48:27.908Z'
                     ui_language: en
                     account_language: en
                     otp_required_for_login: false
@@ -4160,14 +4239,14 @@ paths:
                       small:
                       medium:
                       original:
-                - id: 694cdf63-ec02-4a1b-9994-4dafac345920
+                - id: 04e01f5d-4e9a-4096-a200-7f7a69a9cd96
                   type: user
                   attributes:
                     first_name: Desmond
                     last_name: Herzog
                     email: desmond_herzog@example.org
                     role: light
-                    created_at: '2022-10-26T08:15:37.068Z'
+                    created_at: '2023-11-22T14:48:27.922Z'
                     ui_language: en
                     account_language: en
                     otp_required_for_login: false
@@ -4180,14 +4259,14 @@ paths:
                       small:
                       medium:
                       original:
-                - id: 3ebca23f-33c0-4b85-90db-cc63e1fa1d78
+                - id: 8dc5134a-2156-4647-b944-ce5acdd6dd75
                   type: user
                   attributes:
                     first_name: Raymon
                     last_name: Runte
                     email: runte_raymon@example.org
                     role: light
-                    created_at: '2022-10-26T08:15:37.080Z'
+                    created_at: '2023-11-22T14:48:27.926Z'
                     ui_language: en
                     account_language:
                     otp_required_for_login: false
@@ -4282,14 +4361,14 @@ paths:
             application/json:
               example:
                 data:
-                  id: a966a93f-1af6-41f8-b8af-132c885e8259
+                  id: 30870028-953f-42c4-bb89-facca94a4e5c
                   type: user
                   attributes:
                     first_name: Desmond
                     last_name: Herzog
                     email: desmond_herzog@example.org
                     role: light
-                    created_at: '2022-10-26T08:15:39.743Z'
+                    created_at: '2023-11-22T14:48:28.779Z'
                     ui_language: en
                     account_language: en
                     otp_required_for_login: false
@@ -4313,7 +4392,7 @@ paths:
             application/json:
               example:
                 errors:
-                - title: Couldn't find User with 'id'=51166fd4-fc94-4afb-b239-5f447c562a7b
+                - title: Couldn't find User with 'id'=1d054564-af6e-4b38-aa4c-3077f108de3a
                     [WHERE "users"."account_id" = $1]
               schema:
                 "$ref": "#/components/schemas/errors"
@@ -4439,7 +4518,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 594ded62-d6f1-474b-b897-0543f1bace15
+                - id: 49f3d20d-cc8b-4670-b972-ed2b59512d58
                   type: background_job_event
                   attributes:
                     status: enqueued
@@ -4449,9 +4528,9 @@ paths:
                     priority:
                     executions: 1
                     message:
-                    created_at: '2022-10-16T08:15:45.923Z'
-                    updated_at: '2022-10-26T08:15:45.926Z'
-                - id: cf21cf12-3659-4fbd-9847-c4ed39d13eee
+                    created_at: '2023-11-12T14:48:30.479Z'
+                    updated_at: '2023-11-22T14:48:30.479Z'
+                - id: 638d020a-d765-45ae-a80c-023f4dd5c5bf
                   type: background_job_event
                   attributes:
                     status: crashed
@@ -4461,8 +4540,8 @@ paths:
                     priority:
                     executions: 1
                     message:
-                    created_at: '2022-10-26T08:15:45.885Z'
-                    updated_at: '2022-10-26T08:15:45.885Z'
+                    created_at: '2023-11-22T14:48:30.478Z'
+                    updated_at: '2023-11-22T14:48:30.478Z'
                 meta:
                   page: 1
                   per_page: 10
@@ -4523,14 +4602,14 @@ paths:
             application/json:
               example:
                 data:
-                  id: 45259544-15f0-4b44-a1d7-83343864c17d
+                  id: 56024d9c-0188-4464-97ae-78307068de09
                   type: user
                   attributes:
                     first_name: Dawna
                     last_name: Block
                     email: user@example.com
                     role: light
-                    created_at: '2022-10-26T08:15:48.091Z'
+                    created_at: '2023-11-22T14:48:30.608Z'
                     ui_language: en
                     account_language:
                     otp_required_for_login: false
@@ -4591,7 +4670,7 @@ paths:
                 - id: non-timber-forest-production
                   type: category
                   attributes:
-                    name: Non Timber Forest Production
+                    name: Non-Timber Forest Production
                     color: "#404B9A"
                     description: Production of health, wellness, and cosmetic products;
                       art, clothing, and handcrafted products; production of food
@@ -4599,7 +4678,7 @@ paths:
                 - id: human-capital-and-inclusion
                   type: category
                   attributes:
-                    name: Human capital and inclusion
+                    name: Human Capital and Inclusion
                     color: "#A0616A"
                     description: Adequate access to quality education, appropriate
                       health services, and formal employment opportunities that respond
@@ -4674,7 +4753,7 @@ paths:
                 - id: hydrometerological-risk-reduction
                   type: impact_area
                   attributes:
-                    name: Hydrometerological risk reduction
+                    name: Hydrometereological risk reduction
                     impact: water
                 - id: sustainable-food
                   type: impact_area
@@ -4757,7 +4836,7 @@ paths:
                 - id: non-VC-investment-vehicle
                   type: investor_type
                   attributes:
-                    name: Non VC Investment Vehicle
+                    name: Non-VC Investment Vehicle
                 - id: venture-capital-private-equity
                   type: investor_type
                   attributes:
@@ -4829,7 +4908,7 @@ paths:
                 - id: business-start-up-entrepreneur
                   type: project_developer_type
                   attributes:
-                    name: Business - Start-up entrepreneur
+                    name: Business - Startup entrepreneur
                 - id: business-trade-or-business-association
                   type: project_developer_type
                   attributes:
@@ -4853,7 +4932,7 @@ paths:
                 - id: iplc-organization
                   type: project_developer_type
                   attributes:
-                    name: IPLC organization
+                    name: Indigenous Peoples and Local Communities organization
                 - id: incipient
                   type: project_development_stage
                   attributes:
@@ -4862,7 +4941,7 @@ paths:
                 - id: consolidaton
                   type: project_development_stage
                   attributes:
-                    name: Consolidaton
+                    name: Consolidation
                     description: project or solution already in implementation that
                       seeks to be strengthened and consolidated
                 - id: scaling-up
@@ -4882,7 +4961,7 @@ paths:
                 - id: entrepreneurs-and-innovators-startups
                   type: project_target_group
                   attributes:
-                    name: Enterpreneurs and innovators - startups
+                    name: Entrepreneurs and innovators - startups
                 - id: small-and-medium-businesses
                   type: project_target_group
                   attributes:
@@ -4894,11 +4973,11 @@ paths:
                 - id: indigenous-peoples
                   type: project_target_group
                   attributes:
-                    name: Indigenous peoples
+                    name: Indigenous people
                 - id: afro-desendant-peoples
                   type: project_target_group
                   attributes:
-                    name: Afro-desendant peoples
+                    name: Afro-descendant people
                 - id: peasants-and-traditional-inhabitants
                   type: project_target_group
                   attributes:
@@ -5465,7 +5544,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: 51a3976d-919d-48ec-8c1d-58c990485677
+                - id: 6e54aa72-fcb8-4ba2-9596-f840f6a69518
                   type: investor
                   attributes:
                     name: Bartoletti and Sons
@@ -5503,7 +5582,7 @@ paths:
                     language: en
                     account_language: en
                     review_status: approved
-                    created_at: '2022-10-26T08:15:58.447Z'
+                    created_at: '2023-11-22T14:48:33.590Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -5515,11 +5594,11 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 31ffe67c-684f-484f-a9c3-a78c04a37159
+                        id: b839c541-00e5-4fc9-bfa9-2762f427401a
                         type: user
                     open_calls:
                       data: []
-                - id: 024ab604-8a53-4929-b035-46ee3ae6ad55
+                - id: 9c372064-6c2e-4200-a4e7-535aab121935
                   type: investor
                   attributes:
                     name: Becker LLC
@@ -5557,7 +5636,7 @@ paths:
                     language: en
                     account_language: en
                     review_status: approved
-                    created_at: '2022-10-26T08:15:58.785Z'
+                    created_at: '2023-11-22T14:48:33.726Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -5569,11 +5648,11 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: d58f744c-9a3b-47de-88b9-01d1f6e0169a
+                        id: b76c8483-77d0-469a-b8b5-da9371be0e82
                         type: user
                     open_calls:
                       data: []
-                - id: 26ea0289-5863-439c-aa87-1e918879338e
+                - id: ef7ae989-b6d2-4545-b73d-91b8097ae70c
                   type: investor
                   attributes:
                     name: Gleichner-Bartoletti
@@ -5610,7 +5689,7 @@ paths:
                     language: pt
                     account_language: pt
                     review_status: approved
-                    created_at: '2022-10-26T08:15:59.020Z'
+                    created_at: '2023-11-22T14:48:33.803Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -5622,11 +5701,11 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: ecab0020-2ec3-423b-ae1e-9e643d492519
+                        id: 99f7ad87-9818-4725-911d-0c9e4085ace6
                         type: user
                     open_calls:
                       data: []
-                - id: 667f632a-d5ea-40d4-ba2b-bb3af3588092
+                - id: 90696f22-e252-45ef-a7dc-a552b1700a2b
                   type: investor
                   attributes:
                     name: Hane, Lehner and Goyette
@@ -5664,7 +5743,7 @@ paths:
                     language: en
                     account_language: en
                     review_status: approved
-                    created_at: '2022-10-26T08:15:58.510Z'
+                    created_at: '2023-11-22T14:48:33.606Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -5676,11 +5755,11 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 053a3fe6-0822-44af-9388-6c704ac27978
+                        id: 9b1e0d4f-9668-4939-8bdf-30617888306e
                         type: user
                     open_calls:
                       data: []
-                - id: ab258936-d538-473a-a5a9-83714eab4bdb
+                - id: 28de751e-c176-4cf5-b4f7-d7b79a7d3b8c
                   type: investor
                   attributes:
                     name: Hilpert, Waters and Johnston
@@ -5718,7 +5797,7 @@ paths:
                     language: en
                     account_language: en
                     review_status: approved
-                    created_at: '2022-10-26T08:15:58.579Z'
+                    created_at: '2023-11-22T14:48:33.620Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -5730,11 +5809,11 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 751c6689-1526-4a09-9df8-51b143ac0eef
+                        id: ab21545d-052e-46a2-9a57-227c100fdf16
                         type: user
                     open_calls:
                       data: []
-                - id: d314b295-27ae-4d9d-8953-e95c5aefb477
+                - id: f569b4e8-b6d1-4a4a-a0e2-ac1fb5fb0f68
                   type: investor
                   attributes:
                     name: Jacobson, Fritsch and Stanton
@@ -5772,7 +5851,7 @@ paths:
                     language: en
                     account_language: en
                     review_status: approved
-                    created_at: '2022-10-26T08:15:58.644Z'
+                    created_at: '2023-11-22T14:48:33.635Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -5784,11 +5863,11 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 74ad001d-9b26-4bee-9977-29515e07e384
+                        id: 4313f1a1-8f32-40fc-8964-fe305ff6e257
                         type: user
                     open_calls:
                       data: []
-                - id: d31cedb2-47f1-4fd5-b5df-e8e704fff8cc
+                - id: ce5e1001-0804-4354-b16a-ad67377c1a65
                   type: investor
                   attributes:
                     name: Keebler, Kub and Zemlak
@@ -5826,7 +5905,7 @@ paths:
                     language: en
                     account_language: en
                     review_status: approved
-                    created_at: '2022-10-26T08:15:58.713Z'
+                    created_at: '2023-11-22T14:48:33.653Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -5838,11 +5917,11 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 66c58dc4-6b1c-48e3-93c0-67adfb6fd062
+                        id: 13ca7ef1-4615-47d1-8c72-38a1dd4a4789
                         type: user
                     open_calls:
                       data: []
-                - id: 2a2900a4-1d95-46ec-8a37-23832959e5c3
+                - id: ae1424d6-a3a3-40e6-8a62-75442d027437
                   type: investor
                   attributes:
                     name: Kutch-Spencer
@@ -5879,7 +5958,7 @@ paths:
                     language: en
                     account_language: en
                     review_status: approved
-                    created_at: '2022-10-26T08:15:58.306Z'
+                    created_at: '2023-11-22T14:48:33.559Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -5891,7 +5970,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 9df1b94a-6546-405c-9e14-6de662a0b608
+                        id: 586ef12f-b0c4-48d8-8550-307324d2e4d4
                         type: user
                     open_calls:
                       data: []
@@ -5957,7 +6036,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 2a2900a4-1d95-46ec-8a37-23832959e5c3
+                  id: ae1424d6-a3a3-40e6-8a62-75442d027437
                   type: investor
                   attributes:
                     name: Kutch-Spencer
@@ -5994,7 +6073,7 @@ paths:
                     language: en
                     account_language: en
                     review_status: approved
-                    created_at: '2022-10-26T08:15:58.306Z'
+                    created_at: '2023-11-22T14:48:33.559Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -6006,7 +6085,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 9df1b94a-6546-405c-9e14-6de662a0b608
+                        id: 586ef12f-b0c4-48d8-8550-307324d2e4d4
                         type: user
                     open_calls:
                       data: []
@@ -6140,14 +6219,14 @@ paths:
             application/json:
               example:
                 data:
-                  id: 24e086f6-5961-49ce-a551-daab9fac7f88
+                  id: 7caa338b-88ed-47a7-8e2e-aa57c53a84cb
                   type: user
                   attributes:
                     first_name: Dawna
                     last_name: Block
                     email: dawna.block@example.org
                     role: light
-                    created_at: '2022-10-26T08:16:01.419Z'
+                    created_at: '2023-11-22T14:48:34.721Z'
                     ui_language: es
                     account_language: pt
                     otp_required_for_login: false
@@ -6233,63 +6312,63 @@ paths:
             application/json:
               example:
                 data:
-                - id: a957d3a8-29ec-4c0c-b394-541893e0c36f
+                - id: 4218118d-54c9-4498-9633-753a3742e9b2
                   type: location
                   attributes:
                     name: Canada
                     location_type: country
                     code:
-                    created_at: '2022-10-26T08:16:01.939Z'
+                    created_at: '2023-11-22T14:48:34.921Z'
                   relationships:
                     parent:
                       data:
-                - id: 305ceef3-4f47-4ee0-9b3f-a291a7def815
+                - id: af0de59f-291c-4919-aa2e-2aa72706924f
                   type: location
                   attributes:
                     name: Papua New Guinea
                     location_type: department
                     code:
-                    created_at: '2022-10-26T08:16:01.945Z'
+                    created_at: '2023-11-22T14:48:34.923Z'
                   relationships:
                     parent:
                       data:
-                        id: a957d3a8-29ec-4c0c-b394-541893e0c36f
+                        id: 4218118d-54c9-4498-9633-753a3742e9b2
                         type: location
-                - id: f26a4bca-2916-49aa-b5d7-b3a9d3fa177e
+                - id: b0810578-fc36-4400-863f-a8ee09136b8d
                   type: location
                   attributes:
                     name: Jamaica
                     location_type: municipality
                     code:
-                    created_at: '2022-10-26T08:16:01.949Z'
+                    created_at: '2023-11-22T14:48:34.925Z'
                   relationships:
                     parent:
                       data:
-                        id: 305ceef3-4f47-4ee0-9b3f-a291a7def815
+                        id: af0de59f-291c-4919-aa2e-2aa72706924f
                         type: location
-                - id: 0fcaeb99-3b8b-4da1-b78d-f3df627c936c
+                - id: bef44dc5-0598-4da2-9b47-b0cb40c07e89
                   type: location
                   attributes:
                     name: Libyan Arab Jamahiriya
                     location_type: municipality
                     code:
-                    created_at: '2022-10-26T08:16:01.958Z'
+                    created_at: '2023-11-22T14:48:34.927Z'
                   relationships:
                     parent:
                       data:
-                        id: 305ceef3-4f47-4ee0-9b3f-a291a7def815
+                        id: af0de59f-291c-4919-aa2e-2aa72706924f
                         type: location
-                - id: 4e5231f2-d75f-4dfc-a588-3c661efffa68
+                - id: eb9c350f-4633-4b42-86e4-a756934ca259
                   type: location
                   attributes:
                     name: India
                     location_type: municipality
                     code:
-                    created_at: '2022-10-26T08:16:01.968Z'
+                    created_at: '2023-11-22T14:48:34.928Z'
                   relationships:
                     parent:
                       data:
-                        id: 305ceef3-4f47-4ee0-9b3f-a291a7def815
+                        id: af0de59f-291c-4919-aa2e-2aa72706924f
                         type: location
               schema:
                 type: object
@@ -6338,17 +6417,17 @@ paths:
             application/json:
               example:
                 data:
-                  id: f26a4bca-2916-49aa-b5d7-b3a9d3fa177e
+                  id: b0810578-fc36-4400-863f-a8ee09136b8d
                   type: location
                   attributes:
                     name: Jamaica
                     location_type: municipality
                     code:
-                    created_at: '2022-10-26T08:16:01.949Z'
+                    created_at: '2023-11-22T14:48:34.925Z'
                   relationships:
                     parent:
                       data:
-                        id: 305ceef3-4f47-4ee0-9b3f-a291a7def815
+                        id: af0de59f-291c-4919-aa2e-2aa72706924f
                         type: location
               schema:
                 type: object
@@ -6433,7 +6512,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: e0b1439e-d9ab-42b4-a449-24f95c215b89
+                - id: 3bdf5a22-953b-4efc-a1e5-610efee6d3cb
                   type: open_call
                   attributes:
                     name: Open call 1
@@ -6453,15 +6532,14 @@ paths:
                     impact_description: Placeat commodi libero. Quo recusandae repellat.
                       Sunt commodi tempore. Voluptatem et corrupti.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:16:02.791Z'
+                    closing_at: '2024-09-22T14:48:35.062Z'
                     status: launched
                     language: en
                     account_language: en
                     verified: false
-                    created_at: '2022-10-26T08:16:02.796Z'
-                    updated_at: '2022-10-26T08:16:02.812Z'
+                    created_at: '2023-11-22T14:48:35.064Z'
+                    updated_at: '2023-11-22T14:48:35.069Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -6471,21 +6549,21 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: b1bd03b8-76c0-4503-a9e0-31d4fbfe1d9b
+                        id: e1153a10-dc66-4803-b4f9-e87d566010a1
                         type: investor
                     country:
                       data:
-                        id: 85063222-6404-4ff4-a433-88a85ebb6e2f
+                        id: 214a14cf-8d73-485f-a1fb-98da56df66a6
                         type: location
                     municipality:
                       data:
-                        id: 8d380a70-0558-4d5f-af0d-6b441a6ae9bc
+                        id: 8b5fd2c4-3bab-4013-8653-7043a4f7ba68
                         type: location
                     department:
                       data:
-                        id: ee235455-9220-45fd-a773-3ef07474f704
+                        id: ebb910ca-f288-4744-8168-58cf11bcc7c4
                         type: location
-                - id: 1ef9a0c5-9818-47a0-88bc-1b0accd0749d
+                - id: c5caf478-44f4-4b28-a743-74f3282a891d
                   type: open_call
                   attributes:
                     name: Open call 2
@@ -6505,15 +6583,14 @@ paths:
                     impact_description: Et quaerat omnis. Harum voluptas atque. Quo
                       nesciunt voluptas. Suscipit ex cum.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:16:02.923Z'
+                    closing_at: '2024-09-22T14:48:35.098Z'
                     status: launched
                     language: en
                     account_language: en
                     verified: false
-                    created_at: '2022-10-26T08:16:02.929Z'
-                    updated_at: '2022-10-26T08:16:02.939Z'
+                    created_at: '2023-11-22T14:48:35.100Z'
+                    updated_at: '2023-11-22T14:48:35.106Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -6523,21 +6600,21 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: f427e787-91c2-4982-922d-94556bf53173
+                        id: 554cb5d8-d80d-4a5a-8562-2a53c0edf7c9
                         type: investor
                     country:
                       data:
-                        id: 5ca98efc-f2ce-4d32-9ade-05d81fabd489
+                        id: 7301ff4c-1974-47d1-8f25-79e1879ac15e
                         type: location
                     municipality:
                       data:
-                        id: fcafa70d-63e3-4214-863a-d90a78664765
+                        id: 63c24390-79bd-4413-b765-6cd9b9937a10
                         type: location
                     department:
                       data:
-                        id: 021f4185-5eaa-444e-b1db-555d63954da8
+                        id: 463823ac-34f2-4c80-8c3a-e682efe5df66
                         type: location
-                - id: 497ccc77-479e-4e25-b21e-a09f794b6f0a
+                - id: 70cba31c-1300-4fa7-96d2-66294e525e74
                   type: open_call
                   attributes:
                     name: Open call 3
@@ -6557,15 +6634,14 @@ paths:
                     impact_description: Dolores fugiat nesciunt. Ut laborum dolores.
                       Sit neque eos. Expedita molestiae quia.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:16:03.025Z'
+                    closing_at: '2024-09-22T14:48:35.136Z'
                     status: launched
                     language: en
                     account_language: en
                     verified: false
-                    created_at: '2022-10-26T08:16:03.031Z'
-                    updated_at: '2022-10-26T08:16:03.043Z'
+                    created_at: '2023-11-22T14:48:35.138Z'
+                    updated_at: '2023-11-22T14:48:35.144Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -6575,21 +6651,21 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: d5b1bc8b-2d71-450f-8a31-b14393a30d2d
+                        id: f8f3022b-5f61-4c82-aec6-214bfdc33c35
                         type: investor
                     country:
                       data:
-                        id: d3be241b-4e7f-46ea-bce1-a82231203be6
+                        id: df059055-547d-42ca-ad45-24cb5f775c2e
                         type: location
                     municipality:
                       data:
-                        id: cfcd9f74-3e9a-4672-adcb-9395a2fb85fb
+                        id: 28c5bbe5-6297-402e-97c2-5e9adc55b285
                         type: location
                     department:
                       data:
-                        id: e46e8820-3738-4785-be95-159dde27498c
+                        id: 741575e2-7eb5-4947-8fec-5971b0479d0e
                         type: location
-                - id: 3fa71e36-1764-41ce-8174-97acba7136d2
+                - id: 8fdda509-884b-4e85-9782-9a459db32de6
                   type: open_call
                   attributes:
                     name: Open call 4
@@ -6609,15 +6685,14 @@ paths:
                     impact_description: Autem et et. Voluptatem neque quibusdam. Repellat
                       recusandae eum. Eius ex est.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:16:03.122Z'
+                    closing_at: '2024-09-22T14:48:35.175Z'
                     status: launched
                     language: en
                     account_language: en
                     verified: false
-                    created_at: '2022-10-26T08:16:03.126Z'
-                    updated_at: '2022-10-26T08:16:03.139Z'
+                    created_at: '2023-11-22T14:48:35.177Z'
+                    updated_at: '2023-11-22T14:48:35.182Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -6627,21 +6702,21 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: e2ea7787-f631-4f8d-ac0b-5672c037a8c6
+                        id: 89da67f7-d62b-45bf-894c-e917b1bc3335
                         type: investor
                     country:
                       data:
-                        id: 9eebd963-a3b4-44b7-9f6d-758ed167a680
+                        id: f1d45607-9932-49c4-b92e-b86f5b1e26ff
                         type: location
                     municipality:
                       data:
-                        id: f94b770e-ca58-45b9-adb3-a98255a3f412
+                        id: fb2eed2d-2c92-4b7d-b488-32376a53c042
                         type: location
                     department:
                       data:
-                        id: 4a008e3b-f54f-4a30-9f95-87be8e74dcea
+                        id: 8ec38132-4b81-435b-ace4-83049755b480
                         type: location
-                - id: 4362ce13-f4db-4cc6-90fe-dabfbd8cb7d9
+                - id: 0cbe936b-5c56-4868-9c62-6fdd86d37d59
                   type: open_call
                   attributes:
                     name: Open call 5
@@ -6661,15 +6736,14 @@ paths:
                     impact_description: Porro soluta beatae. Quia ratione facilis.
                       Eligendi sapiente voluptatem. Quas rerum officia.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:16:03.220Z'
+                    closing_at: '2024-09-22T14:48:35.212Z'
                     status: launched
                     language: en
                     account_language: en
                     verified: false
-                    created_at: '2022-10-26T08:16:03.225Z'
-                    updated_at: '2022-10-26T08:16:03.236Z'
+                    created_at: '2023-11-22T14:48:35.214Z'
+                    updated_at: '2023-11-22T14:48:35.220Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -6679,21 +6753,21 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: 39910c8f-9e65-4be4-8ed9-a562f398c634
+                        id: 6b133134-3867-475e-aeb6-10e24157a5b9
                         type: investor
                     country:
                       data:
-                        id: 21e37a9e-d08f-47fa-b89a-f6d1d21be62d
+                        id: 05327263-7369-4c15-bbef-4e2eb5efba77
                         type: location
                     municipality:
                       data:
-                        id: 9e4b799c-7149-4a3c-9202-da1fc80b70e3
+                        id: d29d13a6-cec9-4623-9cda-07b8992f9726
                         type: location
                     department:
                       data:
-                        id: bff73c2f-05e5-429b-b797-760a8ab88d13
+                        id: 2c2a2418-ce1a-420f-9d37-61374c1dd569
                         type: location
-                - id: 8f8d2d47-4d36-4fb0-bccd-50e7dfa9b0c6
+                - id: 6a936e65-8cfb-41cd-a012-b9f3b35617ce
                   type: open_call
                   attributes:
                     name: Open call 6
@@ -6713,15 +6787,14 @@ paths:
                     impact_description: Mollitia aut vel. Qui illum accusantium. Et
                       laudantium et. Sed recusandae aut.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:16:03.331Z'
+                    closing_at: '2024-09-22T14:48:35.257Z'
                     status: launched
                     language: en
                     account_language: en
                     verified: false
-                    created_at: '2022-10-26T08:16:03.334Z'
-                    updated_at: '2022-10-26T08:16:03.344Z'
+                    created_at: '2023-11-22T14:48:35.259Z'
+                    updated_at: '2023-11-22T14:48:35.265Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -6731,21 +6804,21 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: 03c0907d-3968-4d76-a2ff-279e67faa0be
+                        id: 558efbcb-8055-4e02-ab6f-d094e04cc484
                         type: investor
                     country:
                       data:
-                        id: f398bc05-7256-4715-95fe-cf3b679eff99
+                        id: 2e809227-cfb0-4059-bae6-73f047b9448c
                         type: location
                     municipality:
                       data:
-                        id: b4bbad84-1616-4b7f-959a-989fcad96ea2
+                        id: 15313c69-a9a3-4d25-91e4-2bb5203f40a7
                         type: location
                     department:
                       data:
-                        id: e64f3ad8-35f1-427b-8624-fa9d7cee7ae5
+                        id: c079638f-08b0-4a43-9d58-f7e82f64b92e
                         type: location
-                - id: a829e6a2-315a-49e8-bfa2-d3f8bcec715f
+                - id: 12633d0a-ec3e-4bec-a1ef-092911c93733
                   type: open_call
                   attributes:
                     name: Open call 8
@@ -6764,15 +6837,14 @@ paths:
                     impact_description: Impedit animi eveniet. Quia illum aut. Dolore
                       quia officiis. Non aut sit.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:16:03.637Z'
+                    closing_at: '2024-09-22T14:48:35.367Z'
                     status: launched
                     language: en
                     account_language: pt
                     verified: false
-                    created_at: '2022-10-26T08:16:03.640Z'
-                    updated_at: '2022-10-26T08:16:03.649Z'
+                    created_at: '2023-11-22T14:48:35.369Z'
+                    updated_at: '2023-11-22T14:48:35.375Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -6782,21 +6854,21 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: 6b7bd673-cc07-4c3c-9f10-286c11b6636e
+                        id: 93eb23ef-a324-4725-9baa-96c028c5539e
                         type: investor
                     country:
                       data:
-                        id: d6ce83f5-fb33-4768-88d7-238df589afa1
+                        id: 3aa6fb06-fc1e-404a-afe7-e9d2c084ff5a
                         type: location
                     municipality:
                       data:
-                        id: 1be45768-5797-436c-8dbc-f5467dbca376
+                        id: a539e55d-cb35-4e49-87ca-12e2595632b1
                         type: location
                     department:
                       data:
-                        id: 2617c579-2d01-41e6-b218-376919226543
+                        id: e2052c63-4636-49e5-944e-74317551a8b9
                         type: location
-                - id: f9428b68-c274-4413-b5b0-22c6a86273a8
+                - id: 11c424e0-728e-4681-9db1-6a4f226686c7
                   type: open_call
                   attributes:
                     name: Yellow Banana
@@ -6816,15 +6888,14 @@ paths:
                     impact_description: Enim repellat pariatur. Earum modi eos. Libero
                       tempora exercitationem. Qui dolorem quo.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:16:02.678Z'
+                    closing_at: '2024-09-22T14:48:35.025Z'
                     status: launched
                     language: en
                     account_language: en
                     verified: false
-                    created_at: '2022-10-26T08:16:02.684Z'
-                    updated_at: '2022-10-26T08:16:02.700Z'
+                    created_at: '2023-11-22T14:48:35.027Z'
+                    updated_at: '2023-11-22T14:48:35.032Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -6834,19 +6905,19 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: da1af5f4-3356-465b-9101-07bf0726bb98
+                        id: 48acc730-49dc-4596-b289-71f580b51699
                         type: investor
                     country:
                       data:
-                        id: f9d274d3-e217-4902-92a4-a546247c887d
+                        id: b57b3ef0-7dd6-4954-9554-ad738e10b87d
                         type: location
                     municipality:
                       data:
-                        id: 64572957-2be0-42d5-a92d-d90c4783b509
+                        id: 0cc2f662-a3ca-4af0-995c-182bb237def8
                         type: location
                     department:
                       data:
-                        id: d36c82b8-cdc2-479d-aad1-0b2c8af8c253
+                        id: 2c380721-1653-4dae-8d88-88ed28fc85b2
                         type: location
                 meta:
                   page: 1
@@ -6916,7 +6987,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: f9428b68-c274-4413-b5b0-22c6a86273a8
+                  id: 11c424e0-728e-4681-9db1-6a4f226686c7
                   type: open_call
                   attributes:
                     name: Yellow Banana
@@ -6936,15 +7007,14 @@ paths:
                     impact_description: Enim repellat pariatur. Earum modi eos. Libero
                       tempora exercitationem. Qui dolorem quo.
                     maximum_funding_per_project: 100000
-                    closing_at: '2023-08-26T08:16:02.678Z'
+                    closing_at: '2024-09-22T14:48:35.025Z'
                     status: launched
                     language: en
                     account_language: en
                     verified: false
-                    created_at: '2022-10-26T08:16:02.684Z'
-                    updated_at: '2022-10-26T08:16:02.700Z'
+                    created_at: '2023-11-22T14:48:35.027Z'
+                    updated_at: '2023-11-22T14:48:35.032Z'
                     open_call_applications_count: 0
-                    trusted: false
                     picture:
                       analyzed: false
                       small:
@@ -6954,19 +7024,19 @@ paths:
                   relationships:
                     investor:
                       data:
-                        id: da1af5f4-3356-465b-9101-07bf0726bb98
+                        id: 48acc730-49dc-4596-b289-71f580b51699
                         type: investor
                     country:
                       data:
-                        id: f9d274d3-e217-4902-92a4-a546247c887d
+                        id: b57b3ef0-7dd6-4954-9554-ad738e10b87d
                         type: location
                     municipality:
                       data:
-                        id: 64572957-2be0-42d5-a92d-d90c4783b509
+                        id: 0cc2f662-a3ca-4af0-995c-182bb237def8
                         type: location
                     department:
                       data:
-                        id: d36c82b8-cdc2-479d-aad1-0b2c8af8c253
+                        id: 2c380721-1653-4dae-8d88-88ed28fc85b2
                         type: location
               schema:
                 type: object
@@ -7057,7 +7127,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: dfd0a958-6313-4369-87b5-49e55f882a85
+                - id: f7a995b5-0543-4e6e-ae2e-0e17320e0126
                   type: project_developer
                   attributes:
                     name: Bartoletti and Sons
@@ -7082,7 +7152,7 @@ paths:
                     account_language: en
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:16:04.777Z'
+                    created_at: '2023-11-22T14:48:35.763Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -7094,21 +7164,21 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 7421c352-4063-4e7f-a8ee-4c80f1f6c14b
+                        id: 0b43f1e1-4ed7-4104-906c-de1fff6a16ad
                         type: user
                     projects:
                       data:
-                      - id: d4645129-6be3-4779-96a9-611fb1978997
+                      - id: 455cc01f-6544-4a76-8f0a-b3ba0ee56a5e
                         type: project
                     involved_projects:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: efa4619e-297e-4b2d-8589-6065e4f439ec
+                      - id: 720aba31-7652-4ef7-ad6c-2d853f4c8ee8
                         type: location
-                      - id: f34794d7-baee-4bad-8e14-8992dc893a4d
+                      - id: 8e670327-2a36-4e1e-8519-39133b709c40
                         type: location
-                - id: 226839f8-3e19-4c27-9bd7-5377e3f821b1
+                - id: 1f51f4d4-0be2-4ad3-8f1f-bc8bbc68d335
                   type: project_developer
                   attributes:
                     name: Becker LLC
@@ -7133,7 +7203,7 @@ paths:
                     account_language: en
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:16:05.381Z'
+                    created_at: '2023-11-22T14:48:36.039Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -7145,7 +7215,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: c0ea3bdd-4036-45dc-ad8c-6868c11db8e4
+                        id: 6cab7db4-3efd-4bab-bef6-59599458be3d
                         type: user
                     projects:
                       data: []
@@ -7153,11 +7223,11 @@ paths:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: 34d67a2e-30a7-4357-830b-eee6dc6419c9
+                      - id: 3937393c-92d1-4a4e-b727-fc24f76bcdd0
                         type: location
-                      - id: 3f453ec4-900b-4e05-8eba-d0474fe7d2fe
+                      - id: 70cb9382-64c6-46d2-b2c6-d93bfd4b6f7f
                         type: location
-                - id: 7c3a86df-6d83-4a10-a1f0-580965b30b51
+                - id: 4b18d586-3667-4d3c-8edd-e1d589177c79
                   type: project_developer
                   attributes:
                     name: Hane, Lehner and Goyette
@@ -7182,7 +7252,7 @@ paths:
                     account_language: en
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:16:04.892Z'
+                    created_at: '2023-11-22T14:48:35.813Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -7194,21 +7264,21 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: fbbf25dd-1371-4b57-a8a2-126ed9fa7807
+                        id: ff302468-47f7-4163-88b0-00be2b7df976
                         type: user
                     projects:
                       data:
-                      - id: ea719096-af70-4826-8a1a-376013a4aab2
+                      - id: 830004ec-8756-4af0-ba68-56863a3d930d
                         type: project
                     involved_projects:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: 18f87a70-f474-4c2a-abed-d2f5bd1c3553
+                      - id: 58ac822d-c106-4c0a-b03d-997cf43d3fea
                         type: location
-                      - id: dd019e01-88b3-4836-be5b-14aa03fea453
+                      - id: 74fd5380-253e-4571-aabc-0dc052140514
                         type: location
-                - id: 384a9827-3fe7-43d8-b09c-e6dee1f1cf40
+                - id: 7ab1a62c-3da9-4720-9584-7271408b3c37
                   type: project_developer
                   attributes:
                     name: Hilpert, Waters and Johnston
@@ -7233,7 +7303,7 @@ paths:
                     account_language: en
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:16:05.144Z'
+                    created_at: '2023-11-22T14:48:35.903Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -7245,7 +7315,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: c9ec4bd5-26ca-49c1-974d-d939f3765e89
+                        id: ca9844be-5b56-4d6a-97f0-b63649544705
                         type: user
                     projects:
                       data: []
@@ -7253,11 +7323,11 @@ paths:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: a05eb4dd-8dac-4fe6-9f5e-f5bac842a918
+                      - id: 3165aa2d-ea61-4020-88ea-a60fbd63d9a8
                         type: location
-                      - id: ec766c47-5600-44ec-97cd-4379448a879c
+                      - id: 51b2695c-fa42-4e51-9970-1c0ed481a484
                         type: location
-                - id: 7e1dad93-8140-454b-90e5-9335cee2ed2a
+                - id: 52072fcd-7cb5-48a7-a663-44951ef118d4
                   type: project_developer
                   attributes:
                     name: Jacobson, Fritsch and Stanton
@@ -7282,7 +7352,7 @@ paths:
                     account_language: en
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:16:05.218Z'
+                    created_at: '2023-11-22T14:48:35.929Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -7294,7 +7364,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: c2e0b5af-7c1d-4867-ad1a-9842cae6c759
+                        id: 37c70ac8-19b0-4454-911c-9ad65bb895db
                         type: user
                     projects:
                       data: []
@@ -7302,11 +7372,11 @@ paths:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: 973fb8cc-42fa-484f-bd65-3d0c8cd4cd8d
+                      - id: 92343f4c-e740-475b-ab66-7e48545b17f6
                         type: location
-                      - id: 14eb1470-d45e-4e78-a9ff-6c4021cd5c29
+                      - id: adfe2436-5423-4baa-917d-737b9cb6ed6b
                         type: location
-                - id: b1148e66-c2fb-4cf9-ac76-d9caa9a1552a
+                - id: 5395859f-b143-449b-ac51-fce4711eb2a6
                   type: project_developer
                   attributes:
                     name: Keebler, Kub and Zemlak
@@ -7331,7 +7401,7 @@ paths:
                     account_language: en
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:16:05.296Z'
+                    created_at: '2023-11-22T14:48:35.977Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -7343,7 +7413,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 0b60d938-efa5-4db6-bb39-2f9ffec6785e
+                        id: 53d07651-c403-4f4f-9813-af8ea2385a58
                         type: user
                     projects:
                       data: []
@@ -7351,11 +7421,11 @@ paths:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: d6b3d54e-1263-4b03-871f-b423d2c94b5b
+                      - id: 30dd8abf-b32c-4652-b173-fd09bf1a6aba
                         type: location
-                      - id: 743805a2-bfe8-4dc8-87b4-f5b2a855e277
+                      - id: b1645f4e-b099-46b0-ab85-9b799bf8389d
                         type: location
-                - id: 064a6f97-07e3-4754-a3bf-c2703c408e89
+                - id: 4d4a957c-7a7f-4288-8629-63da441fbe08
                   type: project_developer
                   attributes:
                     name: Kutch-Spencer
@@ -7378,7 +7448,7 @@ paths:
                     account_language: en
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:16:04.967Z'
+                    created_at: '2023-11-22T14:48:35.848Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -7390,23 +7460,23 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 2cd8a84c-fd52-4ed8-9534-2ef951c9d684
+                        id: 38d78cfa-5645-404d-8e5b-488d345da5ce
                         type: user
                     projects:
                       data: []
                     involved_projects:
                       data:
-                      - id: d4645129-6be3-4779-96a9-611fb1978997
+                      - id: 455cc01f-6544-4a76-8f0a-b3ba0ee56a5e
                         type: project
-                      - id: ea719096-af70-4826-8a1a-376013a4aab2
+                      - id: 830004ec-8756-4af0-ba68-56863a3d930d
                         type: project
                     priority_landscapes:
                       data:
-                      - id: 52dcb73e-a7b0-4d20-b28c-986a7a7a0b46
+                      - id: 67a0ac6b-518c-452f-adcd-9e1cf6df7f68
                         type: location
-                      - id: 7c128812-95dd-4509-8fac-0ea9732bf72a
+                      - id: 6d12efd4-23f2-486d-a929-abf790a34592
                         type: location
-                - id: 7862b7d7-4805-422e-8504-864d9e22bd9b
+                - id: 1207d483-a0b2-4c08-b406-c415abc3d883
                   type: project_developer
                   attributes:
                     name: Lind, Langworth and Gottlieb
@@ -7430,7 +7500,7 @@ paths:
                     account_language: pt
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:16:05.693Z'
+                    created_at: '2023-11-22T14:48:36.206Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -7442,7 +7512,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: f5fef855-6611-480c-adb5-8e0713cbd42f
+                        id: 738057d8-710d-478b-a912-6490a2789f4c
                         type: user
                     projects:
                       data: []
@@ -7450,11 +7520,11 @@ paths:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: a6b3dd8d-fa16-4f84-996e-b04862b513b6
+                      - id: 589a0130-da79-4ee7-9972-c054d43f540b
                         type: location
-                      - id: 1f355aa1-9621-43f8-9331-ba6e2573dcdc
+                      - id: be31edf9-d24e-4207-adf3-b7eacaba17a0
                         type: location
-                - id: 8c711780-6f2f-4224-9e51-7e05ed1bcda7
+                - id: 3b6c75a1-2cb1-4bd9-9627-2a366cb933c1
                   type: project_developer
                   attributes:
                     name: Ritchie, Glover and Ward
@@ -7479,7 +7549,7 @@ paths:
                     account_language: en
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:16:05.513Z'
+                    created_at: '2023-11-22T14:48:36.128Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -7491,7 +7561,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 79a84e5f-820b-436f-8acc-068d07d02ab2
+                        id: 101c071f-18ee-4176-9a36-3ff453c2347b
                         type: user
                     projects:
                       data: []
@@ -7499,11 +7569,11 @@ paths:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: 9b14057c-487c-4911-8090-35f6628f0389
+                      - id: 3008eaff-f26d-44fe-8c7c-6ba742d32922
                         type: location
-                      - id: ba1e478e-f06b-4b0e-a597-ff9e3a3048b0
+                      - id: bff2177e-02e4-4fbc-b290-c0b3964d74c8
                         type: location
-                - id: dfd9065e-c215-4604-b791-b91eba79a4db
+                - id: a55e766b-4770-4773-b2ad-7ec0c7706817
                   type: project_developer
                   attributes:
                     name: Runolfsson and Sons
@@ -7528,7 +7598,7 @@ paths:
                     account_language: en
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:16:05.446Z'
+                    created_at: '2023-11-22T14:48:36.103Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -7540,7 +7610,7 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 5f7bfc2c-8d76-43ce-8e5a-43935dacade0
+                        id: 8bfeed09-23f4-4c1d-a54f-f69be09a4b55
                         type: user
                     projects:
                       data: []
@@ -7548,9 +7618,9 @@ paths:
                       data: []
                     priority_landscapes:
                       data:
-                      - id: 7134b3bb-6122-4306-9bbf-7c808ec0cf5d
+                      - id: ae582228-52a9-48f4-8a4b-ade742e5ad43
                         type: location
-                      - id: 1e0c2e65-8e1d-4cfa-ba03-4eb813908089
+                      - id: ba82eda1-7362-4f6f-b4e6-f8f34ad39742
                         type: location
                 meta:
                   page: 1
@@ -7620,7 +7690,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: 064a6f97-07e3-4754-a3bf-c2703c408e89
+                  id: 4d4a957c-7a7f-4288-8629-63da441fbe08
                   type: project_developer
                   attributes:
                     name: Kutch-Spencer
@@ -7643,7 +7713,7 @@ paths:
                     account_language: en
                     entity_legal_registration_number: '564823570'
                     review_status: approved
-                    created_at: '2022-10-26T08:16:04.967Z'
+                    created_at: '2023-11-22T14:48:35.848Z'
                     contact_email:
                     contact_phone:
                     picture:
@@ -7655,21 +7725,21 @@ paths:
                   relationships:
                     owner:
                       data:
-                        id: 2cd8a84c-fd52-4ed8-9534-2ef951c9d684
+                        id: 38d78cfa-5645-404d-8e5b-488d345da5ce
                         type: user
                     projects:
                       data: []
                     involved_projects:
                       data:
-                      - id: d4645129-6be3-4779-96a9-611fb1978997
+                      - id: 455cc01f-6544-4a76-8f0a-b3ba0ee56a5e
                         type: project
-                      - id: ea719096-af70-4826-8a1a-376013a4aab2
+                      - id: 830004ec-8756-4af0-ba68-56863a3d930d
                         type: project
                     priority_landscapes:
                       data:
-                      - id: 52dcb73e-a7b0-4d20-b28c-986a7a7a0b46
+                      - id: 67a0ac6b-518c-452f-adcd-9e1cf6df7f68
                         type: location
-                      - id: 7c128812-95dd-4509-8fac-0ea9732bf72a
+                      - id: 6d12efd4-23f2-486d-a929-abf790a34592
                         type: location
               schema:
                 type: object
@@ -7743,60 +7813,53 @@ paths:
             application/json:
               example:
                 data:
-                - id: e962af7d-7968-441b-8b0b-b430b601638d
+                - id: 7c64b93f-5135-4b9a-ba75-1dd5f388ff94
                   type: project_map
                   attributes:
                     verified: false
                     category: forestry-and-agroforestry
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
-                - id: 1b044f12-beed-40a8-828d-52f165546b63
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
+                - id: 30cec179-d6c4-46b2-877b-934471619c09
                   type: project_map
                   attributes:
                     verified: false
                     category: forestry-and-agroforestry
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
-                - id: 5993d03d-3eb3-4624-9d8b-7f71dbd9543a
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
+                - id: d434c2df-ad80-4b8e-b004-26192655da21
                   type: project_map
                   attributes:
                     verified: false
                     category: forestry-and-agroforestry
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
-                - id: 2b8559a2-8562-446f-81f2-c6999f276f01
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
+                - id: fec65b45-e08d-42c6-b2dd-366eff508843
                   type: project_map
                   attributes:
                     verified: false
                     category: forestry-and-agroforestry
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
-                - id: 20b7f590-7524-4419-9834-242620a8105d
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
+                - id: 72105ed8-f327-48ba-9c23-2677de34f828
                   type: project_map
                   attributes:
                     verified: false
                     category: forestry-and-agroforestry
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
-                - id: '071690ad-b99f-4847-857c-cb9962f70de3'
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
+                - id: 8456f838-c028-41a4-a892-5ae5f103939c
                   type: project_map
                   attributes:
                     verified: false
                     category: forestry-and-agroforestry
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
-                - id: 6bc1ba48-d14c-43df-98e9-9fc97f25baac
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
+                - id: c57d2015-b685-4605-87bc-4bd7ab9d1a0a
                   type: project_map
                   attributes:
                     verified: false
                     category: non-timber-forest-production
-                    trusted: false
                     latitude: 0.5
                     longitude: 0.5
               schema:
@@ -7815,8 +7878,6 @@ paths:
                           type: object
                           properties:
                             verified:
-                              type: boolean
-                            trusted:
                               type: boolean
                             latitude:
                               type: number
@@ -7938,7 +7999,7 @@ paths:
             application/json:
               example:
                 data:
-                - id: a85fb027-a70b-47ed-b3c5-b5f9ee05f625
+                - id: a0873224-4b19-4e94-97b6-0c466e4138fd
                   type: project
                   attributes:
                     name: Project 1
@@ -7986,13 +8047,30 @@ paths:
                     language: en
                     account_language: en
                     geometry:
-                      type: Point
+                      type: Polygon
                       coordinates:
-                      - 1.0
-                      - 2.0
+                      - - - -7.256596802202454
+                          - 39.42149705239956
+                        - - -5.510236906689473
+                          - 40.02677860935444
+                        - - -4.408874148363334
+                          - 39.419930008870296
+                        - - -5.205992932301829
+                          - 38.67169482742881
+                        - - -6.402685625872827
+                          - 38.39721372248553
+                        - - -7.059852379049463
+                          - 38.94985978831832
+                        - - -7.256596802202454
+                          - 39.42149705239956
                     verified: false
-                    created_at: '2022-10-26T08:16:09.447Z'
-                    updated_at: '2022-10-26T08:16:09.447Z'
+                    created_at: '2023-11-22T14:48:37.775Z'
+                    updated_at: '2023-11-22T14:48:37.775Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -8009,27 +8087,26 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
                     favourite:
                     funded:
                   relationships:
                     project_developer:
                       data:
-                        id: 00caac8c-66ad-4ec3-9e50-4b5a0d2dc499
+                        id: 7f312ab4-5b77-4572-8be8-847b77df86a0
                         type: project_developer
                     country:
                       data:
-                        id: a992eb03-c6ce-487a-b3cb-b25e936bde56
+                        id: f95527d0-a45c-4ea9-9459-0eb3f986bfec
                         type: location
                     municipality:
                       data:
-                        id: bed30107-6ef3-4a23-80bd-364df693e85c
+                        id: 7c533752-c7ef-46c7-bdaa-6f58fc981949
                         type: location
                     department:
                       data:
-                        id: ec989081-2b2b-4cfc-923e-b90cee14180e
+                        id: '07019d8d-4971-41d8-81fa-12e5b576a792'
                         type: location
                     priority_landscape:
                       data:
@@ -8037,7 +8114,7 @@ paths:
                       data: []
                     project_images:
                       data: []
-                - id: 886ed1fe-58ad-4191-a55f-565f9014d16d
+                - id: 97a466e6-8b3b-45ef-931a-132a9518c9b2
                   type: project
                   attributes:
                     name: Project 2
@@ -8085,13 +8162,30 @@ paths:
                     language: en
                     account_language: en
                     geometry:
-                      type: Point
+                      type: Polygon
                       coordinates:
-                      - 1.0
-                      - 2.0
+                      - - - -7.256596802202454
+                          - 39.42149705239956
+                        - - -5.510236906689473
+                          - 40.02677860935444
+                        - - -4.408874148363334
+                          - 39.419930008870296
+                        - - -5.205992932301829
+                          - 38.67169482742881
+                        - - -6.402685625872827
+                          - 38.39721372248553
+                        - - -7.059852379049463
+                          - 38.94985978831832
+                        - - -7.256596802202454
+                          - 39.42149705239956
                     verified: false
-                    created_at: '2022-10-26T08:16:09.566Z'
-                    updated_at: '2022-10-26T08:16:09.566Z'
+                    created_at: '2023-11-22T14:48:37.829Z'
+                    updated_at: '2023-11-22T14:48:37.829Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -8108,27 +8202,26 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
                     favourite:
                     funded:
                   relationships:
                     project_developer:
                       data:
-                        id: ac5e9b25-aeb6-4155-a305-ae943049653a
+                        id: 70b27ea2-7072-4a78-8d1d-fd0c5de91370
                         type: project_developer
                     country:
                       data:
-                        id: 13517c08-0043-48ca-b4e3-63d6f6521583
+                        id: ef157691-ca85-4431-bdd1-f695a92e0065
                         type: location
                     municipality:
                       data:
-                        id: d29c92d7-ed32-438b-b26a-2798d9166d5d
+                        id: 9e7de6c5-08f0-4652-a407-bd4307dd5415
                         type: location
                     department:
                       data:
-                        id: c2c7964a-0c84-462d-ad8b-009c19e0362f
+                        id: 41328c86-51d2-4613-b840-0e7185d41023
                         type: location
                     priority_landscape:
                       data:
@@ -8136,7 +8229,7 @@ paths:
                       data: []
                     project_images:
                       data: []
-                - id: 314fb266-41eb-4bf9-a950-f4d8a4885812
+                - id: ab3e27c8-1f22-47bb-a570-8de006c247f5
                   type: project
                   attributes:
                     name: Project 3
@@ -8184,13 +8277,30 @@ paths:
                     language: en
                     account_language: en
                     geometry:
-                      type: Point
+                      type: Polygon
                       coordinates:
-                      - 1.0
-                      - 2.0
+                      - - - -7.256596802202454
+                          - 39.42149705239956
+                        - - -5.510236906689473
+                          - 40.02677860935444
+                        - - -4.408874148363334
+                          - 39.419930008870296
+                        - - -5.205992932301829
+                          - 38.67169482742881
+                        - - -6.402685625872827
+                          - 38.39721372248553
+                        - - -7.059852379049463
+                          - 38.94985978831832
+                        - - -7.256596802202454
+                          - 39.42149705239956
                     verified: false
-                    created_at: '2022-10-26T08:16:09.691Z'
-                    updated_at: '2022-10-26T08:16:09.691Z'
+                    created_at: '2023-11-22T14:48:37.884Z'
+                    updated_at: '2023-11-22T14:48:37.884Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -8207,27 +8317,26 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
                     favourite:
                     funded:
                   relationships:
                     project_developer:
                       data:
-                        id: 1140c237-9aa7-4523-9d0f-6ace0a22476d
+                        id: f9584e3f-39a3-42bc-a3d0-0826e66e1cc4
                         type: project_developer
                     country:
                       data:
-                        id: b0f5615b-c897-4984-b50a-3aaf03005b34
+                        id: e90f7737-1348-4576-9d65-6a9bdaf4bfb5
                         type: location
                     municipality:
                       data:
-                        id: 350f9b85-94ac-47ee-8618-dbfa8520b9be
+                        id: eeb842e8-c2ac-49c2-908a-18a613b7014b
                         type: location
                     department:
                       data:
-                        id: 499c837c-7078-41b7-9ab3-8197e38bd3b3
+                        id: 9f086130-b0f0-4173-b2ea-27808906c8e8
                         type: location
                     priority_landscape:
                       data:
@@ -8235,7 +8344,7 @@ paths:
                       data: []
                     project_images:
                       data: []
-                - id: '09fdee73-05df-4f93-997d-baf47743f340'
+                - id: '0123970b-2960-4e80-a327-da2d9e3ec7a9'
                   type: project
                   attributes:
                     name: Project 4
@@ -8283,13 +8392,30 @@ paths:
                     language: en
                     account_language: en
                     geometry:
-                      type: Point
+                      type: Polygon
                       coordinates:
-                      - 1.0
-                      - 2.0
+                      - - - -7.256596802202454
+                          - 39.42149705239956
+                        - - -5.510236906689473
+                          - 40.02677860935444
+                        - - -4.408874148363334
+                          - 39.419930008870296
+                        - - -5.205992932301829
+                          - 38.67169482742881
+                        - - -6.402685625872827
+                          - 38.39721372248553
+                        - - -7.059852379049463
+                          - 38.94985978831832
+                        - - -7.256596802202454
+                          - 39.42149705239956
                     verified: false
-                    created_at: '2022-10-26T08:16:09.794Z'
-                    updated_at: '2022-10-26T08:16:09.794Z'
+                    created_at: '2023-11-22T14:48:37.940Z'
+                    updated_at: '2023-11-22T14:48:37.940Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -8306,27 +8432,26 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
                     favourite:
                     funded:
                   relationships:
                     project_developer:
                       data:
-                        id: 707784d2-95e9-43dc-89ff-821e825a11cb
+                        id: 5971ca6a-bb72-4504-8023-14a72daad9d3
                         type: project_developer
                     country:
                       data:
-                        id: 6d9fade3-242c-4247-bbd4-6896b89b26db
+                        id: 44fc0315-d2f6-48d1-a51c-5bba2a64cf63
                         type: location
                     municipality:
                       data:
-                        id: 070c53ef-ab48-4b71-adca-ffb0db1e9e7e
+                        id: f36e0bf9-a0cc-4733-b2eb-f0a791233c61
                         type: location
                     department:
                       data:
-                        id: 3b6f7943-4aca-4149-96ca-4bc29368e4ea
+                        id: f966bc0f-4a34-4525-8b08-d155665d2e98
                         type: location
                     priority_landscape:
                       data:
@@ -8334,7 +8459,7 @@ paths:
                       data: []
                     project_images:
                       data: []
-                - id: d74c5bb7-d86b-42b7-b85d-2769172bb2e7
+                - id: 1308d3d0-436f-4861-81ae-f883b1b01801
                   type: project
                   attributes:
                     name: Project 5
@@ -8382,13 +8507,30 @@ paths:
                     language: en
                     account_language: en
                     geometry:
-                      type: Point
+                      type: Polygon
                       coordinates:
-                      - 1.0
-                      - 2.0
+                      - - - -7.256596802202454
+                          - 39.42149705239956
+                        - - -5.510236906689473
+                          - 40.02677860935444
+                        - - -4.408874148363334
+                          - 39.419930008870296
+                        - - -5.205992932301829
+                          - 38.67169482742881
+                        - - -6.402685625872827
+                          - 38.39721372248553
+                        - - -7.059852379049463
+                          - 38.94985978831832
+                        - - -7.256596802202454
+                          - 39.42149705239956
                     verified: false
-                    created_at: '2022-10-26T08:16:09.909Z'
-                    updated_at: '2022-10-26T08:16:09.909Z'
+                    created_at: '2023-11-22T14:48:37.995Z'
+                    updated_at: '2023-11-22T14:48:37.995Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -8405,27 +8547,26 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
                     favourite:
                     funded:
                   relationships:
                     project_developer:
                       data:
-                        id: 2d89fcaa-3464-4aef-b943-1db851d49f41
+                        id: b63b068e-deab-426e-a7e0-fb115abb2cb1
                         type: project_developer
                     country:
                       data:
-                        id: 5a6dced4-1569-49b7-a4ff-0eee884a5b79
+                        id: a558e739-2483-4862-89a0-03b46db6d4fd
                         type: location
                     municipality:
                       data:
-                        id: ca7ac57a-b0bf-46c6-bdc2-46a76141e8e4
+                        id: 8ad05ae4-8491-48cc-a607-bad268db6c44
                         type: location
                     department:
                       data:
-                        id: c16bb2e8-507d-4b90-8453-d7b6c1cd8eff
+                        id: e0327c28-6b6f-4883-a889-2bef9646f331
                         type: location
                     priority_landscape:
                       data:
@@ -8433,7 +8574,7 @@ paths:
                       data: []
                     project_images:
                       data: []
-                - id: 9e8dc2e0-ccfa-415a-ad58-c2a3857d65c0
+                - id: eb887efd-3e44-4d51-b5d7-dbd772628f96
                   type: project
                   attributes:
                     name: Project 6
@@ -8481,13 +8622,30 @@ paths:
                     language: en
                     account_language: en
                     geometry:
-                      type: Point
+                      type: Polygon
                       coordinates:
-                      - 1.0
-                      - 2.0
+                      - - - -7.256596802202454
+                          - 39.42149705239956
+                        - - -5.510236906689473
+                          - 40.02677860935444
+                        - - -4.408874148363334
+                          - 39.419930008870296
+                        - - -5.205992932301829
+                          - 38.67169482742881
+                        - - -6.402685625872827
+                          - 38.39721372248553
+                        - - -7.059852379049463
+                          - 38.94985978831832
+                        - - -7.256596802202454
+                          - 39.42149705239956
                     verified: false
-                    created_at: '2022-10-26T08:16:10.016Z'
-                    updated_at: '2022-10-26T08:16:10.016Z'
+                    created_at: '2023-11-22T14:48:38.051Z'
+                    updated_at: '2023-11-22T14:48:38.051Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -8504,27 +8662,26 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
                     favourite:
                     funded:
                   relationships:
                     project_developer:
                       data:
-                        id: ab1ecf44-233d-40c2-b00f-65ceb74337d3
+                        id: 427d8aac-e9ec-4bfd-a08b-5b6298bb9044
                         type: project_developer
                     country:
                       data:
-                        id: a2019ca6-afa7-401f-ab29-10c4e941a261
+                        id: 6b2afb85-0149-4f1d-8782-4a9529426577
                         type: location
                     municipality:
                       data:
-                        id: 31498cc6-5800-4fe9-970e-8d7775120fc4
+                        id: 92f2400c-a70c-420c-9b1d-b0cf5497c385
                         type: location
                     department:
                       data:
-                        id: 82adfdce-6e69-4568-a729-a6bf1848e6a4
+                        id: e86efe4c-6251-4168-92b3-f01bbdc06f9a
                         type: location
                     priority_landscape:
                       data:
@@ -8532,7 +8689,7 @@ paths:
                       data: []
                     project_images:
                       data: []
-                - id: ca5f0f65-21dd-44cf-a9f6-73eb1c922665
+                - id: cf15b0b5-1d8a-4128-8dca-693c407ba277
                   type: project
                   attributes:
                     name: Project 9
@@ -8579,13 +8736,30 @@ paths:
                     language: en
                     account_language: pt
                     geometry:
-                      type: Point
+                      type: Polygon
                       coordinates:
-                      - 1.0
-                      - 2.0
+                      - - - -7.256596802202454
+                          - 39.42149705239956
+                        - - -5.510236906689473
+                          - 40.02677860935444
+                        - - -4.408874148363334
+                          - 39.419930008870296
+                        - - -5.205992932301829
+                          - 38.67169482742881
+                        - - -6.402685625872827
+                          - 38.39721372248553
+                        - - -7.059852379049463
+                          - 38.94985978831832
+                        - - -7.256596802202454
+                          - 39.42149705239956
                     verified: false
-                    created_at: '2022-10-26T08:16:10.547Z'
-                    updated_at: '2022-10-26T08:16:10.547Z'
+                    created_at: '2023-11-22T14:48:38.251Z'
+                    updated_at: '2023-11-22T14:48:38.251Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -8602,27 +8776,26 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
-                    latitude: 2.0
-                    longitude: 1.0
+                    latitude: 39.21309022641362
+                    longitude: -5.87810037515931
                     favourite:
                     funded:
                   relationships:
                     project_developer:
                       data:
-                        id: 5b84dd1c-7e6f-4ed0-a658-5547f56f83c5
+                        id: 1093b39f-dfaf-4861-910e-9d6136dd859f
                         type: project_developer
                     country:
                       data:
-                        id: 2b5fc2e8-71ca-4c6e-924d-e3342f646473
+                        id: 452509b8-15d8-402e-9319-51ba6ba1f63b
                         type: location
                     municipality:
                       data:
-                        id: b910e52a-427e-4c4b-a675-98ad5e576893
+                        id: 28c1084d-fa57-4d99-860d-5ce2a9a2cb62
                         type: location
                     department:
                       data:
-                        id: 4e46067e-fe3c-4f4c-a6cb-86cd85342fdd
+                        id: b77dd0e1-5e7c-4e3c-a0be-64def62747ce
                         type: location
                     priority_landscape:
                       data:
@@ -8630,7 +8803,7 @@ paths:
                       data: []
                     project_images:
                       data: []
-                - id: ea54e608-d5bb-48a9-8f9a-a3ee9a3542b1
+                - id: 7a61fa47-0a12-49c2-9b3e-7a0d582a68fc
                   type: project
                   attributes:
                     name: Yellow Banana
@@ -8691,8 +8864,13 @@ paths:
                         - - 0.0
                           - 0.0
                     verified: false
-                    created_at: '2022-10-26T08:16:09.280Z'
-                    updated_at: '2022-10-26T08:16:09.280Z'
+                    created_at: '2023-11-22T14:48:37.709Z'
+                    updated_at: '2023-11-22T14:48:37.709Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -8709,7 +8887,6 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
                     latitude: 0.5
                     longitude: 0.5
                     favourite:
@@ -8717,35 +8894,35 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 6bbf8ef2-acf1-4056-97bf-9a62cb438525
+                        id: 8d4a6f9e-4267-4951-86a3-17b694076399
                         type: project_developer
                     country:
                       data:
-                        id: c0ee0650-6f18-4a55-84f2-dffb8d89c1b3
+                        id: 35f83ff1-1abd-466f-8664-81979f8e316e
                         type: location
                     municipality:
                       data:
-                        id: 51e2d32e-cdcf-4d94-8850-4c768478a3bc
+                        id: 8a1707f6-ec33-468a-bc08-fa0ec105942d
                         type: location
                     department:
                       data:
-                        id: c534c394-35dd-44be-bf72-f6791ffe3de4
+                        id: 69d2adce-5d1c-4b1c-8ff4-4ffc322a59d5
                         type: location
                     priority_landscape:
                       data:
-                        id: 123f92fb-a6e9-4c86-99cf-9ba25866bc5f
+                        id: bf49429a-f929-46cf-81bd-65a87bbffe92
                         type: location
                     involved_project_developers:
                       data:
-                      - id: 1a61738f-1eb5-46bc-afbd-30260620f9c6
+                      - id: 71e6f4c0-0e89-4494-a666-15ca639d86a0
                         type: project_developer
-                      - id: 0c9a5250-0eb8-4315-b600-87768a7248bd
+                      - id: 43b63380-7475-4422-847d-3dbee61a209a
                         type: project_developer
                     project_images:
                       data:
-                      - id: a1d1d114-0138-461c-83ce-190699fda73a
+                      - id: da560236-1d43-4f7e-a356-1474a7d5c7c8
                         type: project_image
-                      - id: 204305ac-6058-4f36-b81a-75f44e5f7609
+                      - id: 9e548909-887e-40fb-b3cc-77b062723d36
                         type: project_image
                 meta:
                   page: 1
@@ -8815,7 +8992,7 @@ paths:
             application/json:
               example:
                 data:
-                  id: ea54e608-d5bb-48a9-8f9a-a3ee9a3542b1
+                  id: 7a61fa47-0a12-49c2-9b3e-7a0d582a68fc
                   type: project
                   attributes:
                     name: Yellow Banana
@@ -8876,8 +9053,13 @@ paths:
                         - - 0.0
                           - 0.0
                     verified: false
-                    created_at: '2022-10-26T08:16:09.280Z'
-                    updated_at: '2022-10-26T08:16:09.280Z'
+                    created_at: '2023-11-22T14:48:37.709Z'
+                    updated_at: '2023-11-22T14:48:37.709Z'
+                    project_biodiversity_impact:
+                    project_climate_impact:
+                    project_water_impact:
+                    project_community_impact:
+                    project_total_impact:
                     municipality_biodiversity_impact:
                     municipality_climate_impact:
                     municipality_water_impact:
@@ -8894,7 +9076,6 @@ paths:
                     priority_landscape_community_impact:
                     priority_landscape_total_impact:
                     impact_calculated: false
-                    trusted: false
                     latitude: 0.5
                     longitude: 0.5
                     favourite:
@@ -8902,35 +9083,35 @@ paths:
                   relationships:
                     project_developer:
                       data:
-                        id: 6bbf8ef2-acf1-4056-97bf-9a62cb438525
+                        id: 8d4a6f9e-4267-4951-86a3-17b694076399
                         type: project_developer
                     country:
                       data:
-                        id: c0ee0650-6f18-4a55-84f2-dffb8d89c1b3
+                        id: 35f83ff1-1abd-466f-8664-81979f8e316e
                         type: location
                     municipality:
                       data:
-                        id: 51e2d32e-cdcf-4d94-8850-4c768478a3bc
+                        id: 8a1707f6-ec33-468a-bc08-fa0ec105942d
                         type: location
                     department:
                       data:
-                        id: c534c394-35dd-44be-bf72-f6791ffe3de4
+                        id: 69d2adce-5d1c-4b1c-8ff4-4ffc322a59d5
                         type: location
                     priority_landscape:
                       data:
-                        id: 123f92fb-a6e9-4c86-99cf-9ba25866bc5f
+                        id: bf49429a-f929-46cf-81bd-65a87bbffe92
                         type: location
                     involved_project_developers:
                       data:
-                      - id: 1a61738f-1eb5-46bc-afbd-30260620f9c6
+                      - id: 71e6f4c0-0e89-4494-a666-15ca639d86a0
                         type: project_developer
-                      - id: 0c9a5250-0eb8-4315-b600-87768a7248bd
+                      - id: 43b63380-7475-4422-847d-3dbee61a209a
                         type: project_developer
                     project_images:
                       data:
-                      - id: a1d1d114-0138-461c-83ce-190699fda73a
+                      - id: da560236-1d43-4f7e-a356-1474a7d5c7c8
                         type: project_image
-                      - id: 204305ac-6058-4f36-b81a-75f44e5f7609
+                      - id: 9e548909-887e-40fb-b3cc-77b062723d36
                         type: project_image
               schema:
                 type: object
@@ -8978,14 +9159,14 @@ paths:
             application/json:
               example:
                 data:
-                  id: e2faa8ea-3388-4a87-b30a-821349c2c4f8
+                  id: e6d716d9-1fe7-47b2-89b3-f948175fa5bb
                   type: user
                   attributes:
                     first_name: Dawna
                     last_name: Block
                     email: user@example.com
                     role: light
-                    created_at: '2022-10-26T08:16:12.302Z'
+                    created_at: '2023-11-22T14:48:38.945Z'
                     ui_language: en
                     account_language:
                     otp_required_for_login: false
@@ -9041,14 +9222,14 @@ paths:
             application/json:
               example:
                 data:
-                  id: 1a5ddbf4-a549-48b4-8dc1-1f8c2f155918
+                  id: b24b614d-c0a1-4f8b-ba44-c1504d04f0ac
                   type: user
                   attributes:
                     first_name: Dawna
                     last_name: Block
                     email: user@example.com
                     role: light
-                    created_at: '2022-10-26T08:16:12.540Z'
+                    created_at: '2023-11-22T14:48:39.039Z'
                     ui_language: en
                     account_language:
                     otp_required_for_login: false
@@ -9158,48 +9339,6 @@ paths:
               required:
               - email
               - password
-  "/api/v1/test_jobs/test_sync":
-    post:
-      summary: Tests sync processing
-      tags:
-      - Test Jobs
-      security:
-      - csrf: []
-      parameters: []
-      responses:
-        '200':
-          description: success
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-              required:
-              - email
-  "/api/v1/test_jobs/test_async":
-    post:
-      summary: Tests async processing
-      tags:
-      - Test Jobs
-      security:
-      - csrf: []
-      parameters: []
-      responses:
-        '200':
-          description: success
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-              required:
-              - email
   "/api/v1/user":
     post:
       summary: Creates/Registers user
@@ -9215,14 +9354,14 @@ paths:
             application/json:
               example:
                 data:
-                  id: b131af8c-a50b-4004-aa2a-95cd8c789071
+                  id: 0e3c50e0-ce8e-4a03-a29c-67b4fb6a7015
                   type: user
                   attributes:
                     first_name: Jan
                     last_name: Kowalski
                     email: jankowalski@example.com
                     role: light
-                    created_at: '2022-10-26T08:16:13.507Z'
+                    created_at: '2023-11-22T14:48:39.356Z'
                     ui_language: en
                     account_language:
                     otp_required_for_login: false
@@ -9311,14 +9450,14 @@ paths:
             application/json:
               example:
                 data:
-                  id: f980134d-a0ec-4f42-a692-0cba38bac0ae
+                  id: b3c5e3c3-3f60-4cd5-bdfd-daf3e5ebb257
                   type: user
                   attributes:
                     first_name: New First Name
                     last_name: New Last Name
                     email: user@example.com
                     role: light
-                    created_at: '2022-10-26T08:16:13.372Z'
+                    created_at: '2023-11-22T14:48:39.311Z'
                     ui_language: en
                     account_language:
                     otp_required_for_login: true
@@ -9381,14 +9520,14 @@ paths:
             application/json:
               example:
                 data:
-                  id: f980134d-a0ec-4f42-a692-0cba38bac0ae
+                  id: b3c5e3c3-3f60-4cd5-bdfd-daf3e5ebb257
                   type: user
                   attributes:
                     first_name: Dawna
                     last_name: Block
                     email: user@example.com
                     role: light
-                    created_at: '2022-10-26T08:16:13.372Z'
+                    created_at: '2023-11-22T14:48:39.311Z'
                     ui_language: en
                     account_language:
                     otp_required_for_login: false
@@ -9472,19 +9611,19 @@ paths:
           content:
             application/json:
               example:
-                id: 84c61e76-bc4c-44b0-a1cb-da6b9c0bbe77
-                key: ooeu43dsr6mkil2pie6bzsftvo3e
+                id: 1069f4b9-74f1-47d4-ba5d-4fb3ee2bfd4f
+                key: c4i33jfzxpnodvl4ehakk4hj8h62
                 filename: test.jpg
                 content_type: image/jpeg
                 metadata: {}
                 service_name: test
                 byte_size: 32326
                 checksum: QYeLAwqIj9HrwITqtTYaEw==
-                created_at: '2022-10-26T08:16:14.227Z'
-                signed_id: eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWs0TkdNMk1XVTNOaTFpWXpSakxUUTBZakF0WVRGallpMWtZVFppT1dNd1ltSmxOemNHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--246d3aa2c63136e58eb921ccf61cdcad42c13c89
-                attachable_sgid: BAh7CEkiCGdpZAY6BkVUSSJWZ2lkOi8vYmFja2VuZC9BY3RpdmVTdG9yYWdlOjpCbG9iLzg0YzYxZTc2LWJjNGMtNDRiMC1hMWNiLWRhNmI5YzBiYmU3Nz9leHBpcmVzX2luBjsAVEkiDHB1cnBvc2UGOwBUSSIPYXR0YWNoYWJsZQY7AFRJIg9leHBpcmVzX2F0BjsAVDA=--de0722eb055e949e0ceebf1ee04c4c57ca42f3d5
+                created_at: '2023-11-22T14:48:39.702Z'
+                signed_id: eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaWt4TURZNVpqUmlPUzAzTkdZeExUUTNaRFF0WW1FMVpDMDBabUl6WldVeVltWmtOR1lHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6ImJsb2JfaWQifX0=--589127e75791fcfae51a9b35438ca6755cf35f78
+                attachable_sgid: BAh7CEkiCGdpZAY6BkVUSSJWZ2lkOi8vYmFja2VuZC9BY3RpdmVTdG9yYWdlOjpCbG9iLzEwNjlmNGI5LTc0ZjEtNDdkNC1iYTVkLTRmYjNlZTJiZmQ0Zj9leHBpcmVzX2luBjsAVEkiDHB1cnBvc2UGOwBUSSIPYXR0YWNoYWJsZQY7AFRJIg9leHBpcmVzX2F0BjsAVDA=--509159a71a621b996d10db2d66ca0a3af5384b49
                 direct_upload:
-                  url: http://www.example.com/backend/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDam9JYTJWNVNTSWhiMjlsZFRRelpITnlObTFyYVd3eWNHbGxObUo2YzJaMGRtOHpaUVk2QmtWVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9UWTI5dWRHVnVkRjlzWlc1bmRHaHBBa1orT2cxamFHVmphM04xYlVraUhWRlpaVXhCZDNGSmFqbEljbmRKVkhGMFZGbGhSWGM5UFFZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvSmRHVnpkQT09IiwiZXhwIjoiMjAyMi0xMC0yNlQwODoyMToxNC4yMjlaIiwicHVyIjoiYmxvYl90b2tlbiJ9fQ==--b2a9b030e0802240b6343db2123fd082c19e86a2
+                  url: http://www.example.com/backend/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDam9JYTJWNVNTSWhZelJwTXpOcVpucDRjRzV2Wkhac05HVm9ZV3RyTkdocU9HZzJNZ1k2QmtWVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWRG9UWTI5dWRHVnVkRjlzWlc1bmRHaHBBa1orT2cxamFHVmphM04xYlVraUhWRlpaVXhCZDNGSmFqbEljbmRKVkhGMFZGbGhSWGM5UFFZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvSmRHVnpkQT09IiwiZXhwIjoiMjAyMy0xMS0yMlQxNDo1MzozOS43MDNaIiwicHVyIjoiYmxvYl90b2tlbiJ9fQ==--aacdccad53f8d7ca43b447903b49345543dae705
                   headers:
                     Content-Type: image/jpeg
               schema:
@@ -9746,8 +9885,6 @@ components:
               type: string
             updated_at:
               type: string
-            trusted:
-              type: boolean
             verified:
               type: boolean
         relationships:
@@ -9844,8 +9981,6 @@ components:
               type: number
             category:
               type: string
-            trusted:
-              type: boolean
             verified:
               type: boolean
             created_at:
@@ -9872,6 +10007,21 @@ components:
               type: string
             favourite:
               type: boolean
+              nullable: true
+            project_biodiversity_impact:
+              type: number
+              nullable: true
+            project_climate_impact:
+              type: number
+              nullable: true
+            project_water_impact:
+              type: number
+              nullable: true
+            project_community_impact:
+              type: number
+              nullable: true
+            project_total_impact:
+              type: number
               nullable: true
             municipality_biodiversity_impact:
               type: number
@@ -10261,6 +10411,7 @@ components:
       required:
       - errors
 servers:
+- url: "/"
 - url: "/backend"
 - url: "{scheme}://{host}"
   variables:
