@@ -9,11 +9,11 @@ module Backoffice
           column(I18n.t("backoffice.open_calls.index.applications")) { |r| r.open_call_applications_count }
           column(I18n.t("backoffice.common.status")) { |r|
             if r.launched?
-              I18n.t("enum.open_call_status.launched")
+              I18n.t("enums.open_call_status.launched.name")
             elsif r.closed?
-              I18n.t("enum.open_call_status.closed")
+              I18n.t("enums.open_call_status.closed.name")
             else
-              I18n.t("enum.open_call_status.draft")
+              I18n.t("enums.open_call_status.draft.name")
             end
           }
           column(I18n.t("backoffice.common.verification")) { |r|

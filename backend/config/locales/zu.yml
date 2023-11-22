@@ -275,6 +275,12 @@ zu:
           not_valid_kml: This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues.
           not_supported: This file is not supported. Please try uploading a different format.
           unable_to_parse: Unable to parse the file. Please try uploading a different format.
+      export:
+        impact_areas: Impact areas
+        sdgs: SDGs
+        looking_for_funding: Project currently looking for funding?
+        ticket_size: Amount of money that project needs
+        instrument_types: Instrument types
     open_calls:
       information: Information
       status: Verification status
