@@ -8,6 +8,11 @@ if Rails.env.development?
   Location.delete_all
   Admin.delete_all
 
+  Investor.reset_column_information
+  ProjectDeveloper.reset_column_information
+  OpenCall.reset_column_information
+  Project.reset_column_information
+
   Admin.create!(first_name: "Admin", last_name: "Example", password: "SuperSecret1234", email: "admin@example.com", ui_language: "en")
 
   Rake::Task["import_geojsons:colombia"].invoke
