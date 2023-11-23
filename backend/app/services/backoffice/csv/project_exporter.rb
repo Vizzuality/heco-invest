@@ -26,19 +26,21 @@ module Backoffice
           column(I18n.t("simple_form.labels.project.problem")) { |r| r.problem }
           column(I18n.t("simple_form.labels.project.solution")) { |r| r.solution }
           column(I18n.t("simple_form.labels.project.target_groups")) do |r|
-            r.target_groups.map { |tg| ProjectTargetGroup.find(tg).name }.join(", ")
+            r.target_groups.to_a.map { |tg| ProjectTargetGroup.find(tg).name }.join(", ")
           end
           column(I18n.t("simple_form.labels.project.expected_impact")) { |r| r.expected_impact }
           column(I18n.t("backoffice.projects.export.impact_areas")) do |r|
-            r.impact_areas.map { |ia| ImpactArea.find(ia).name }.join(", ")
+            r.impact_areas.to_a.map { |ia| ImpactArea.find(ia).name }.join(", ")
           end
           column(I18n.t("backoffice.projects.export.sdgs")) do |r|
             r.sdgs.map { |sdg| Sdg.find(sdg).name }.join(", ")
           end
           column(I18n.t("backoffice.projects.export.looking_for_funding")) { |r| I18n.t(r.looking_for_funding.to_s) }
-          column(I18n.t("backoffice.projects.export.ticket_size")) { |r| TicketSize.find(r.ticket_size).name }
+          column(I18n.t("backoffice.projects.export.ticket_size")) do |r|
+            r.ticket_size.present? ? TicketSize.find(r.ticket_size).name : ""
+          end
           column(I18n.t("backoffice.projects.export.instrument_types")) do |r|
-            r.instrument_types.map { |it| InstrumentType.find(it).name }.join(", ")
+            r.instrument_types.to_a.map { |it| InstrumentType.find(it).name }.join(", ")
           end
           column(I18n.t("simple_form.labels.project.funding_plan")) { |r| r.funding_plan }
           column(I18n.t("simple_form.labels.project.received_funding")) { |r| I18n.t(r.received_funding) }
