@@ -44,6 +44,12 @@ module Backoffice
           column(I18n.t("simple_form.labels.project.received_funding")) { |r| I18n.t(r.received_funding) }
           column(I18n.t("simple_form.labels.project.received_funding_amount_usd")) { |r| r.received_funding_amount_usd }
           column(I18n.t("simple_form.labels.project.received_funding_investor")) { |r| r.received_funding_investor }
+          column(I18n.t("simple_form.labels.project.positive_financial_returns")) { |r| r.positive_financial_returns }
+          column(I18n.t("simple_form.labels.project.last_year_sales_revenue")) { |r| r.last_year_sales_revenue }
+          column(I18n.t("simple_form.labels.project.climate_change_risks_identified")) do |r|
+            I18n.t(r.climate_change_risks_identified)
+          end
+          column(I18n.t("simple_form.labels.project.climate_change_risks_details")) { |r| r.climate_change_risks_details }
           column(I18n.t("simple_form.labels.project.replicability")) { |r| r.replicability }
           column(I18n.t("simple_form.labels.project.sustainability")) { |r| r.sustainability }
           column(I18n.t("simple_form.labels.project.progress_impact_tracking")) { |r| r.progress_impact_tracking }
