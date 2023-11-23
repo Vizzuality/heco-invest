@@ -243,7 +243,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
           fill_in "Instagram", with: "https://instagram.com/new-profile"
           fill_in "Facebook", with: "https://facebook.com/new-profile"
           fill_in "Twitter", with: "https://twitter.com/new-profile"
-          check t("enums.category.tourism-and-recreation.name")
+          check t("enums.category.sustainable-tourism.name")
           uncheck t("enums.category.forestry-and-agroforestry.name")
           check t("enums.impact.community.name")
           uncheck t("enums.impact.water.name")
@@ -267,7 +267,7 @@ RSpec.describe "Backoffice: Project Developers", type: :system do
           expect(approved_pd.account.instagram).to eq("https://instagram.com/new-profile")
           expect(approved_pd.account.facebook).to eq("https://facebook.com/new-profile")
           expect(approved_pd.account.twitter).to eq("https://twitter.com/new-profile")
-          expect(approved_pd.categories.sort).to eq(%w[non-timber-forest-production tourism-and-recreation])
+          expect(approved_pd.categories.sort).to eq(%w[non-timber-forest-production sustainable-tourism])
           expect(approved_pd.impacts).to eq(%w[community])
           expect(approved_pd.priority_landscape_ids.sort).to eq([priority_landscape.id])
         end
