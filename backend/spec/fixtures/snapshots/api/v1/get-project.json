@@ -97,7 +97,11 @@
       "project_climate_impact": null,
       "project_water_impact": null,
       "project_community_impact": null,
-      "project_total_impact": null
+      "project_total_impact": null,
+      "positive_financial_returns": "Enim repellat pariatur. Earum modi eos.",
+      "last_year_sales_revenue": "10000.0",
+      "climate_change_risks_details": "Enim repellat pariatur. Earum modi eos.",
+      "climate_change_risks_identified": true
     },
     "relationships": {
       "project_developer": {
