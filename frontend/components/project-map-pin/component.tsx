@@ -39,7 +39,7 @@ export const ProjectMapPin: FC<ProjectMapPinProps> = ({ category, interactive = 
         // icon={trusted ? TrustedMapPinIcon : MapPinIcon}
         icon={MapPinIcon}
         className={cx({
-          'fill-category-tourism text-category-tourism': category === 'tourism-and-recreation',
+          'fill-category-tourism text-category-tourism': category === 'sustainable-tourism',
           'fill-category-production text-category-production':
             category === 'non-timber-forest-production',
           'fill-category-agrosystems text-category-agrosystems':

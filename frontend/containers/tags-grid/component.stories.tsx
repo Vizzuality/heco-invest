@@ -18,7 +18,7 @@ Default.args = {
       title: 'Invests in',
       type: 'category',
       tags: [
-        { id: 'tourism-and-recreation', name: 'Tourism & Recreation' },
+        { id: 'sustainable-tourism', name: 'Sustainable Tourism' },
         { id: 'non-timber-forest-production', name: 'Non-timber forest production' },
         { id: 'sustainable-agrosystems', name: 'Sustainable agrosystems' },
         { id: 'forestry-and-agroforestry', name: 'Forestry & agroforestry' },
