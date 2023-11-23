@@ -50,6 +50,20 @@ FactoryBot.define do
       Faker::Lorem.paragraph(sentence_count: 4)
     end
 
+    sequence(:positive_financial_returns) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 2)
+    end
+
+    last_year_sales_revenue { 10000 }
+
+    climate_change_risks_identified { true }
+
+    sequence(:climate_change_risks_details) do |n|
+      Faker::Config.random = Random.new(n)
+      Faker::Lorem.paragraph(sentence_count: 2)
+    end
+
     looking_for_funding { true }
     instrument_types { %w[grant loan] }
     ticket_size { "scaling" }
