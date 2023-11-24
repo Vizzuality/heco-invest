@@ -14,6 +14,6 @@ const Template: Story<CategoryTagProps> = ({ children, ...rest }: CategoryTagPro
 
 export const Default: Story<CategoryTagProps> = Template.bind({});
 Default.args = {
-  category: 'tourism-and-recreation',
-  children: 'Tourism & Recreation',
+  category: 'sustainable-tourism',
+  children: 'Sustainable Tourism',
 };

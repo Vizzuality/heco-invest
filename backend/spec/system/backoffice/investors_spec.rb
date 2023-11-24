@@ -276,7 +276,7 @@ RSpec.describe "Backoffice: Investors", type: :system do
           fill_in "Instagram", with: "https://instagram.com/new-profile"
           fill_in "Facebook", with: "https://facebook.com/new-profile"
           fill_in "Twitter", with: "https://twitter.com/new-profile"
-          check t("enums.category.tourism-and-recreation.name")
+          check t("enums.category.sustainable-tourism.name")
           uncheck t("enums.category.forestry-and-agroforestry.name")
           uncheck t("enums.ticket_size.validation.name")
           check t("enums.ticket_size.small-grants.name")
@@ -306,7 +306,7 @@ RSpec.describe "Backoffice: Investors", type: :system do
           expect(approved_investor.account.facebook).to eq("https://facebook.com/new-profile")
           expect(approved_investor.account.twitter).to eq("https://twitter.com/new-profile")
           expect(approved_investor.previously_invested).to eq(false)
-          expect(approved_investor.categories.sort).to eq(%w[non-timber-forest-production tourism-and-recreation])
+          expect(approved_investor.categories.sort).to eq(%w[non-timber-forest-production sustainable-tourism])
           expect(approved_investor.ticket_sizes.sort).to eq(%w[scaling small-grants])
           expect(approved_investor.instrument_types).to eq(%w[loan])
           expect(approved_investor.sdgs.sort).to eq([1, 2, 3])

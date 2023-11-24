@@ -361,7 +361,7 @@ RSpec.describe Project, type: :model do
     describe "#category_index" do
       before do
         create(:project, category: "sustainable-agrosystems")
-        create(:project, category: "tourism-and-recreation")
+        create(:project, category: "sustainable-tourism")
         create(:project, category: "forestry-and-agroforestry")
       end
 
@@ -369,13 +369,13 @@ RSpec.describe Project, type: :model do
         it "correctly by category name asc" do
           q = Project.ransack
           q.sorts = "category_localized asc"
-          expect(q.result.pluck(:category)).to eq(["forestry-and-agroforestry", "sustainable-agrosystems", "tourism-and-recreation"])
+          expect(q.result.pluck(:category)).to eq(["forestry-and-agroforestry", "sustainable-agrosystems", "sustainable-tourism"])
         end
 
         it "correctly by category name desc" do
           q = Project.ransack
           q.sorts = "category_localized desc"
-          expect(q.result.pluck(:category)).to eq(["tourism-and-recreation", "sustainable-agrosystems", "forestry-and-agroforestry"])
+          expect(q.result.pluck(:category)).to eq(["sustainable-tourism", "sustainable-agrosystems", "forestry-and-agroforestry"])
         end
       end
     end

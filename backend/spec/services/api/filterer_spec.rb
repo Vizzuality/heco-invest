@@ -20,7 +20,7 @@ RSpec.describe API::Filterer do
         let!(:correct_project) do
           create :project, category: "sustainable-agrosystems", sdgs: [1, 2], instrument_types: ["loan"], ticket_size: "scaling"
         end
-        let!(:different_category_project) { create :project, category: "tourism-and-recreation" }
+        let!(:different_category_project) { create :project, category: "sustainable-tourism" }
         let!(:different_sdgs_project) { create :project, sdgs: [4, 5] }
         let!(:different_instrument_type_project) { create :project, instrument_types: ["grant"] }
         let!(:different_ticket_size_project) { create :project, ticket_size: "prototyping" }
@@ -134,7 +134,7 @@ RSpec.describe API::Filterer do
         let!(:correct_project_developer) do
           create :project_developer, categories: ["sustainable-agrosystems"], impacts: ["climate"]
         end
-        let!(:different_category_project_developer) { create :project_developer, categories: ["tourism-and-recreation"] }
+        let!(:different_category_project_developer) { create :project_developer, categories: ["sustainable-tourism"] }
         let!(:different_impact_project_developer) { create :project_developer, impacts: ["water"] }
 
         it "returns only correct project developers" do
@@ -245,7 +245,7 @@ RSpec.describe API::Filterer do
           create :investor, categories: ["sustainable-agrosystems"], sdgs: [1, 2], instrument_types: ["loan"],
             ticket_sizes: ["scaling"], impacts: ["climate"]
         end
-        let!(:different_category_investor) { create :investor, categories: ["tourism-and-recreation"] }
+        let!(:different_category_investor) { create :investor, categories: ["sustainable-tourism"] }
         let!(:different_sdgs_investor) { create :investor, sdgs: [4, 5] }
         let!(:different_instrument_type_investor) { create :investor, instrument_types: ["grant"] }
         let!(:different_ticket_size_investor) { create :investor, ticket_sizes: ["prototyping"] }

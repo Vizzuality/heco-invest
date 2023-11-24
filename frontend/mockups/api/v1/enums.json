@@ -10,10 +10,10 @@
       }
     },
     {
-      "id": "tourism-and-recreation",
+      "id": "sustainable-tourism",
       "type": "category",
       "attributes": {
-        "name": "Tourism and Recreation",
+        "name": "Sustainable Tourism",
         "color": "#4492E5",
         "description": "Accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects."
       }

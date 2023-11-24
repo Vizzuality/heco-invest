@@ -29,23 +29,23 @@ const CompactTemplate: Story<ImpactChartProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   impact: projectImpact(projectMock as unknown as ProjectType)[ImpactAreas.Municipality],
-  category: 'tourism-and-recreation',
+  category: 'sustainable-tourism',
 };
 
 export const Placeholder = Template.bind({});
 Placeholder.args = {
-  category: 'tourism-and-recreation',
+  category: 'sustainable-tourism',
 };
 
 export const Compact = CompactTemplate.bind({});
 Compact.args = {
   compactMode: true,
   impact: projectImpact(projectMock as unknown as ProjectType)[ImpactAreas.Municipality],
-  category: 'tourism-and-recreation',
+  category: 'sustainable-tourism',
 };
 
 export const CompactPlaceholder = CompactTemplate.bind({});
 CompactPlaceholder.args = {
   compactMode: true,
-  category: 'tourism-and-recreation',
+  category: 'sustainable-tourism',
 };
