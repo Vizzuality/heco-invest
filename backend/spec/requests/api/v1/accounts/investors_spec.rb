@@ -131,6 +131,13 @@ RSpec.describe "API V1 Account Investors", type: :request do
             expect(investor.public_send("#{attr}_#{investor_params[:language]}")).to eq(investor_params[attr])
           end
         end
+
+        it "queues email notification" do |example|
+          investor = Investor.find response_json["data"]["id"]
+          Admin.all.each do |admin|
+            expect(AdminMailer).to have_enqueued_mail(:investor_created).with(admin, investor)
+          end
+        end
       end
 
       response "422", "User already have account" do

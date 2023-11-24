@@ -129,6 +129,14 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
             submit_request example.metadata
           }.to have_enqueued_job(TranslateJob).at_least(:once)
         end
+
+        it "queues email notification" do |example|
+          submit_request example.metadata
+          project_developer = ProjectDeveloper.find response_json["data"]["id"]
+          Admin.all.each do |admin|
+            expect(AdminMailer).to have_enqueued_mail(:project_developer_created).with(admin, project_developer)
+          end
+        end
       end
 
       response "422", "User already have account" do

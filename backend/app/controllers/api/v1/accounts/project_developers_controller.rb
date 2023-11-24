@@ -17,6 +17,7 @@ module API
             account = Account.create! account_params.merge(owner: current_user, users: [current_user])
             current_user.update! role: :project_developer
             project_developer = ProjectDeveloper.create! project_developer_params.merge(account: account)
+            Admin.all.each { |admin| AdminMailer.project_developer_created(admin, project_developer).deliver_later }
             render json: ProjectDeveloperSerializer.new(
               project_developer,
               params: {current_user: current_user, current_ability: current_ability}
