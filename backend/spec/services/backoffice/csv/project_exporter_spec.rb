@@ -68,7 +68,7 @@ RSpec.describe Backoffice::CSV::ProjectExporter do
         query.first.impact_areas.map { |ia| ImpactArea.find(ia).name }.join(", "),
         query.first.sdgs.map { |sdg| Sdg.find(sdg).name }.join(", "),
         I18n.t(query.first.looking_for_funding.to_s),
-        TicketSize.find(query.first.ticket_size).name,
+        "#{TicketSize.find(query.first.ticket_size).description} (#{TicketSize.find(query.first.ticket_size).name})",
         query.first.instrument_types.map { |it| InstrumentType.find(it).name }.join(", "),
         query.first.funding_plan,
         I18n.t(query.first.received_funding),

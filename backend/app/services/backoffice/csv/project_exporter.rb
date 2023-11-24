@@ -37,7 +37,7 @@ module Backoffice
           end
           column(I18n.t("backoffice.projects.export.looking_for_funding")) { |r| I18n.t(r.looking_for_funding.to_s) }
           column(I18n.t("backoffice.projects.export.ticket_size")) do |r|
-            r.ticket_size.present? ? TicketSize.find(r.ticket_size).name : ""
+            r.ticket_size.present? ? "#{TicketSize.find(r.ticket_size).description} (#{TicketSize.find(r.ticket_size).name})" : ""
           end
           column(I18n.t("backoffice.projects.export.instrument_types")) do |r|
             r.instrument_types.to_a.map { |it| InstrumentType.find(it).name }.join(", ")
