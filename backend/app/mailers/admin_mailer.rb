@@ -8,6 +8,24 @@ class AdminMailer < ApplicationMailer
     end
   end
 
+  def project_developer_created(admin, project_developer)
+    @admin = admin
+    @project_developer = project_developer
+
+    I18n.with_locale admin.locale do
+      mail to: admin.email
+    end
+  end
+
+  def investor_created(admin, investor)
+    @admin = admin
+    @investor = investor
+
+    I18n.with_locale admin.locale do
+      mail to: admin.email
+    end
+  end
+
   private
 
   def set_reset_password_token(admin)
