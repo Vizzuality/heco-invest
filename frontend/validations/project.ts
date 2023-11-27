@@ -37,5 +37,12 @@ export const formPageInputs: (keyof ProjectForm)[][] = [
     'received_funding_investor',
   ],
   ['replicability', 'sustainability', 'progress_impact_tracking'],
-  ['description', 'relevant_links'],
+  [
+    'description',
+    'relevant_links',
+    'positive_financial_returns',
+    'last_year_sales_revenue',
+    'climate_change_risks_identified',
+    'climate_change_risks_details',
+  ],
 ];

@@ -206,7 +206,11 @@ export default (page: number) => {
     }),
     object().shape({
       description: string().max(600, maxTextLength).required(messages.description),
-      relevant_links: string().nullable(),
+      relevant_links: string().max(600, maxTextLength).nullable(),
+      positive_financial_returns: string().nullable(),
+      last_year_sales_revenue: number().min(2).max(9).nullable(),
+      climate_change_risks_identified: boolean().typeError(booleanField).required(booleanField),
+      climate_change_risks_details: string().max(600, maxTextLength),
     }),
   ];
   return schemas[page];

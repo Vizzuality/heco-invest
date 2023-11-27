@@ -44,6 +44,10 @@ export type ProjectBase = {
   received_funding_amount_usd?: number;
   received_funding_investor?: string;
   relevant_links?: string;
+  climate_change_risks_identified: boolean;
+  climate_change_risks_details?: string;
+  positive_financial_returns?: string;
+  last_year_sales_revenue?: number;
   replicability: string;
   sdgs: number[];
   solution: string;
