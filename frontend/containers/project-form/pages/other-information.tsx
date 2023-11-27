@@ -127,8 +127,8 @@ const OtherInformation = ({
             type="number"
             id="last_year_sales_revenue"
             name="last_year_sales_revenue"
-            step={1}
             register={register}
+            step="any"
             aria-describedby="last_year_sales_revenue-error"
           />
           <ErrorMessage
