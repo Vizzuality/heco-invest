@@ -121,12 +121,13 @@ const OtherInformation = ({
           </Label>
           <Input
             placeholder={formatMessage({
-              defaultMessage: 'insert a value between 2 and 9 digits',
-              id: 'z+apzl',
+              defaultMessage: 'insert value',
+              id: 'GDPNty',
             })}
             type="number"
             id="last_year_sales_revenue"
             name="last_year_sales_revenue"
+            step={1}
             register={register}
             aria-describedby="last_year_sales_revenue-error"
           />

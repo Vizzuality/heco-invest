@@ -69,6 +69,8 @@ export const ProjectForm: FC<ProjectFormProps> = ({
   const languageNames = useLanguageNames();
   const isLastPage = currentPage === totalPages - 1;
 
+  console.log({ defaultValues });
+
   const {
     register,
     handleSubmit,
