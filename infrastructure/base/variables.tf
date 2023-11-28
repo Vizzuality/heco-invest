@@ -76,11 +76,6 @@ variable "uptime_alert_email" {
   description = "Email address to which uptime alerts should be sent"
 }
 
-variable "redirect_domain" {
-  type = string
-  description = "Legacy domain to redirect"
-}
-
 variable "from_email_address" {
   type = string
   description = "Email address from which to send emails"

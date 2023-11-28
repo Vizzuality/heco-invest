@@ -1,6 +1,5 @@
 locals {
   domain          = var.subdomain == "" ? var.domain : "${var.subdomain}.${var.domain}"
-  redirect_domain = var.subdomain == "" ? var.redirect_domain : "${var.subdomain}.${var.redirect_domain}"
 }
 
 module "network" {
@@ -567,8 +566,6 @@ module "load_balancer" {
   frontend_cloud_run_name               = module.frontend_cloudrun.name
   domain                                = var.domain
   dns_managed_zone_name                 = var.dns_zone_name
-  redirect_domain                       = var.redirect_domain
-  redirect_domain_dns_managed_zone_name = var.redirect_dns_zone_name
   subdomain                             = var.subdomain
 }
 

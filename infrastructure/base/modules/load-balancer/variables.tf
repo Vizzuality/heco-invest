@@ -39,12 +39,3 @@ variable "subdomain" {
   description = "If set, it will be prepended to the domain to form a subdomain."
 }
 
-variable "redirect_domain" {
-  type = string
-  description = "Legacy domain to redirect"
-}
-
-variable "redirect_domain_dns_managed_zone_name" {
-  type = string
-  description = "Name of the DNS Zone"
-}
