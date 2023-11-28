@@ -223,7 +223,9 @@ export default (page: number) => {
         )
         .min(0)
         .max(999999999.99)
-        .nullable(true),
+        .nullable(true)
+        .transform((_, val) => (val !== '' ? Number(val) : null)),
+
       climate_change_risks_identified: boolean().typeError(booleanField).required(booleanField),
       climate_change_risks_details: string().max(600, maxTextLength),
     }),
