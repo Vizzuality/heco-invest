@@ -117,6 +117,8 @@ export default (page: number) => {
     }),
   };
 
+  let patternTwoDigisAfterComma = /^\d+(\.\d{0,2})?$/;
+
   const schemas = [
     object().shape({
       name: string().required(messages.name),
@@ -206,7 +208,26 @@ export default (page: number) => {
     }),
     object().shape({
       description: string().max(600, maxTextLength).required(messages.description),
-      relevant_links: string().nullable(),
+      relevant_links: string().max(600, maxTextLength).nullable(),
+      positive_financial_returns: string().max(600, maxTextLength).nullable(),
+      last_year_sales_revenue: number()
+        .test(
+          'is-decimal',
+          'The amount should be a decimal with maximum two digits after comma',
+          (val: any) => {
+            if (val != undefined) {
+              return patternTwoDigisAfterComma.test(val);
+            }
+            return true;
+          }
+        )
+        .min(0)
+        .max(999999999.99)
+        .nullable(true)
+        .transform((_, val) => (val !== '' ? Number(val) : null)),
+
+      climate_change_risks_identified: boolean().typeError(booleanField).required(booleanField),
+      climate_change_risks_details: string().max(600, maxTextLength),
     }),
   ];
   return schemas[page];
