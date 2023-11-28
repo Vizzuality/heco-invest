@@ -30,8 +30,8 @@ RSpec.describe Importers::GeoJsons::Mosaics do
 
       it "assigns correct attributes to first priority landscape" do
         location = priority_landscapes.find_by name_es: "Cordillera Oriental"
-        expect(location.name_en).to eq("Cordillera Oriental")
-        expect(location.visible).to be_falsey
+        expect(location.name_en).to eq("Eastern Mountain")
+        expect(location.visible).to be_truthy
         expect(location.code).to eq(Importers::GeoJsons::Mosaics::PRIORITY_LANDSCAPE_CODES["Cordillera Oriental"])
       end
 
