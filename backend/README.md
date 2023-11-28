@@ -39,6 +39,8 @@ You can use `docker-compose.yml` to run postgres service.
 If you want to debug the Rails app, running it through foreman could be not the best idea. In that case you can run css and js bundling
 using foreman `bin/watch` and the server in the standard way `bin/rails server` in a separate terminal tab.
 
+To get rid of basic auth, remove the username / password env vars from `.env`.
+
 See the generated api docs (described below) for available API endpoints. The backoffice is accessed at `/backoffice`. All route paths are prefixed with the value of the `RAILS_RELATIVE_URL_ROOT` env var. For example, if `RAILS_RELATIVE_URL_ROOT=backend`, then all the API endpoints and backoffice urls will be prefixed e.g. `/backend/backoffice`.
 
 ### Run background jobs
