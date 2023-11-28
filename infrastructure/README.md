@@ -25,7 +25,7 @@ will skip over the basics, and assume you are conformable using all of them.
 ## Structure
 
 This project has 2 main sections, each of which with a folder named after it. Each of these sections has a
-Terraform project, that logically depends on their predecessors. There is a 4th component to this architecture,
+Terraform project, that logically depends on their predecessors. There is a 3rd component to this architecture,
 which is handled by Github Actions
 
 #### Remote state
