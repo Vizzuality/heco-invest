@@ -23,12 +23,16 @@ const OtherInformation = ({
   const { formatMessage } = useIntl();
   const [defaultRisksIdentified, setDefaultRisksIdentified] = useState<boolean>();
 
+  const risksIdentified = getValues('climate_change_risks_identified');
   useEffect(() => {
-    const risksIdentified = getValues('climate_change_risks_identified');
     if (typeof risksIdentified !== 'number') {
       setDefaultRisksIdentified(risksIdentified);
     }
-  }, [getValues]);
+
+    if (!risksIdentified) {
+      setValue('climate_change_risks_details', '');
+    }
+  }, [getValues, setValue, risksIdentified]);
 
   const handleChangeRisksIdentified = (e: ChangeEvent<HTMLInputElement>) => {
     setDefaultRisksIdentified(!!Number(e.target.value));

@@ -211,7 +211,6 @@ export default (page: number) => {
       relevant_links: string().max(600, maxTextLength).nullable(),
       positive_financial_returns: string().max(600, maxTextLength).nullable(),
       last_year_sales_revenue: number()
-        .positive()
         .test(
           'is-decimal',
           'The amount should be a decimal with maximum two digits after comma',
@@ -224,7 +223,7 @@ export default (page: number) => {
         )
         .min(0)
         .max(999999999.99)
-        .nullable(),
+        .nullable(true),
       climate_change_risks_identified: boolean().typeError(booleanField).required(booleanField),
       climate_change_risks_details: string().max(600, maxTextLength),
     }),
