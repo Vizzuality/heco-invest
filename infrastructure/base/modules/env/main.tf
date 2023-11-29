@@ -100,6 +100,14 @@ module "nextauth_secret" {
   use_random_value    = true
 }
 
+module "klab_api_password" {
+  source           = "../secret_value"
+  region           = var.gcp_region
+  key              = "${var.project_name}_klab_api_password"
+  value            = var.klab_api_password
+  use_random_value = false
+}
+
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN                 = var.transifex_token
@@ -252,7 +260,10 @@ module "backend_cloudrun" {
     }, length(module.http_auth_password) > 0 ? [{
       name        = "HTTP_AUTH_PASSWORD"
       secret_name = module.http_auth_password[0].secret_name
-    }] : []
+    }] : [], {
+      name        = "KLAB_API_PASSWORD"
+      secret_name = module.klab_api_password.secret_name
+    }
   ])
   env_vars = [
     {
@@ -348,10 +359,6 @@ module "backend_cloudrun" {
       value = var.klab_api_username
     },
     {
-      name  = "KLAB_API_PASSWORD"
-      value = var.klab_api_password
-    },
-    {
       name  = "KLAB_ENABLED"
       value = var.klab_enabled
     }
@@ -393,6 +400,9 @@ module "jobs_cloudrun" {
     }, {
       name        = "ENCRYPTION_DERIVATION_SALT"
       secret_name = module.rails_encryption_derivation_salt.secret_name
+    }, {
+      name        = "KLAB_API_PASSWORD"
+      secret_name = module.klab_api_password.secret_name
     }
   ]
   env_vars = [
@@ -483,10 +493,6 @@ module "jobs_cloudrun" {
     {
       name  = "KLAB_API_USERNAME"
       value = var.klab_api_username
-    },
-    {
-      name  = "KLAB_API_PASSWORD"
-      value = var.klab_api_password
     },
     {
       name  = "KLAB_ENABLED"
