@@ -9,6 +9,7 @@ import ErrorMessage from 'components/forms/error-message';
 import Input from 'components/forms/input';
 import Label from 'components/forms/label';
 import Textarea from 'components/forms/textarea';
+import TextTag from 'components/tag';
 import { ProjectForm } from 'types/project';
 
 import { ProjectFormPagesProps } from '..';
@@ -46,8 +47,8 @@ const OtherInformation = ({
       </h1>
       <p className="mb-10 text-gray-900">
         <FormattedMessage
-          defaultMessage="This description should summarize your project in a few words. This might include relevant financial information that you want potential investors to know about. This information will be public except the one marked as <n>private</n> which will only be visible for admins."
-          id="l2Jd2p"
+          defaultMessage="This description should summarize your project in a few words. This might include relevant financial information that you want potential investors to know about. This information will be <n>public</n> except the one marked as <n>private</n> which will only be visible for admins."
+          id="q63Bcb"
           values={{
             n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
           }}
@@ -98,6 +99,12 @@ const OtherInformation = ({
                 id="TnP0xP"
               />
             </span>
+            <TextTag
+              size="smallest"
+              className="ml-2 border-beige font-medium leading-[14px] text-sm text-gray-800 bg-beige"
+            >
+              <FormattedMessage defaultMessage="Private" id="viXE32" />
+            </TextTag>
           </Label>
           <Textarea
             placeholder={formatMessage({
@@ -122,6 +129,12 @@ const OtherInformation = ({
                 id="cmhwn3"
               />
             </span>
+            <TextTag
+              size="smallest"
+              className="ml-2 border-beige font-medium leading-[14px] text-sm text-gray-800 bg-beige"
+            >
+              <FormattedMessage defaultMessage="Private" id="viXE32" />
+            </TextTag>
           </Label>
           <Input
             placeholder={formatMessage({
@@ -197,6 +210,12 @@ const OtherInformation = ({
 
                 <FormattedMessage defaultMessage="No" id="oUWADl" />
               </Label>
+              <TextTag
+                size="smallest"
+                className="ml-4 border-beige font-medium leading-[14px] text-sm text-gray-800 bg-beige"
+              >
+                <FormattedMessage defaultMessage="Private" id="viXE32" />
+              </TextTag>
             </div>
           </fieldset>
         </div>
