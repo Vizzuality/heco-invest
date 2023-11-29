@@ -6,7 +6,7 @@ module Importers
         "Piedemonte Amazónico - Macizo" => {name_en: "Amazonian Piedmont Massif", name_es: "Piedemonte Amazónico - Macizo", name_pt: "Maciço Piedemonte Amazônico"},
         "Transición Orinoquía" => {name_en: "Orinoquía Transition", name_es: "Transición Orinoquía", name_pt: "Transição Orinoquía"},
         "Orinoquía" => {name_en: "Orinoquía", name_es: "Orinoquía", name_pt: "Orinoquía"},
-        "Cordillera Oriental" => {name_en: "Eastern Mountain", name_es: "Cordillera Oriental", name_pt: "Cordilheira Oriental"},
+        "Cordillera Oriental" => {name_en: "Eastern Mountain Range", name_es: "Cordillera Oriental", name_pt: "Cordilheira Oriental"},
         "Cordillera Central" => {name_en: "Central Mountain Range", name_es: "Cordillera Central", name_pt: "Cordilheira Central"},
         "Pacífico - Marino Costero" => {name_en: "Pacific - Coastal Marine", name_es: "Pacífico - Marino Costero", name_pt: "Pacífico - Marinho Costeiro"},
         "Caribe" => {name_en: "Caribbean", name_es: "Caribe", name_pt: "Caribe"},
