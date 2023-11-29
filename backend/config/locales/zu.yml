@@ -363,10 +363,10 @@ zu:
       reset_password_link: setup your new password
     investor_created:
       subject: New Investor account created!
-      content_html: "A new Investor account has been created and needs your inspection for approval. Please, review the account: %{new_investor_url} "
+      content_html: "A new Investor account has been created and needs your inspection for approval. Please, review the account: %{new_investor_url}"
     project_developer_created:
       subject: New Project developer account created!
-      content_html: "A new Project developer account has been created and needs your inspection for approval. Please, review the account: %{new_pd_url} "
+      content_html: "A new Project developer account has been created and needs your inspection for approval. Please, review the account: %{new_pd_url}"
   project_developer_mailer:
     greetings: Dear %{full_name},
     farewell_html: Best Regards,<br />Your HeCo Invest Team
