@@ -33,7 +33,7 @@ RSpec.describe AdminMailer, type: :mailer do
 
     it "renders the body" do
       expect(mail.body.encoded).to match(I18n.t("admin_mailer.greetings", full_name: admin.full_name))
-      expect(mail.body.encoded).to match(I18n.t("admin_mailer.project_developer_created.content_html", new_pd_url: link_to("New Project Developer", backoffice_project_developer_url(project_developer))))
+      expect(mail.body.encoded).to match(I18n.t("admin_mailer.project_developer_created.content_html", new_pd_url: link_to("New Project Developer", edit_backoffice_project_developer_url(project_developer))))
       expect(mail.body.encoded).to match(I18n.t("admin_mailer.farewell_html"))
     end
   end
@@ -48,7 +48,7 @@ RSpec.describe AdminMailer, type: :mailer do
 
     it "renders the body" do
       expect(mail.body.encoded).to match(I18n.t("admin_mailer.greetings", full_name: admin.full_name))
-      expect(mail.body.encoded).to match(I18n.t("admin_mailer.investor_created.content_html", new_investor_url: link_to("New Investor", backoffice_investor_url(investor))))
+      expect(mail.body.encoded).to match(I18n.t("admin_mailer.investor_created.content_html", new_investor_url: link_to("New Investor", edit_backoffice_investor_url(investor))))
       expect(mail.body.encoded).to match(I18n.t("admin_mailer.farewell_html"))
     end
   end
