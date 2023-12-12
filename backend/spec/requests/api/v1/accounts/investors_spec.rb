@@ -100,7 +100,7 @@ RSpec.describe "API V1 Account Investors", type: :request do
           previously_invested: true,
           contact_email: "contact@example.com",
           contact_phone: "123456789",
-          categories: ["sustainable-agrosystems", "tourism-and-recreation"],
+          categories: ["sustainable-agrosystems", "sustainable-tourism"],
           impacts: ["biodiversity", "climate"],
           ticket_sizes: ["small-grants"],
           instrument_types: ["grant"],
@@ -129,6 +129,13 @@ RSpec.describe "API V1 Account Investors", type: :request do
           investor = Investor.find response_json["data"]["id"]
           Investor.translatable_attributes.each do |attr|
             expect(investor.public_send("#{attr}_#{investor_params[:language]}")).to eq(investor_params[attr])
+          end
+        end
+
+        it "queues email notification" do |example|
+          investor = Investor.find response_json["data"]["id"]
+          Admin.all.each do |admin|
+            expect(AdminMailer).to have_enqueued_mail(:investor_created).with(admin, investor)
           end
         end
       end
@@ -202,7 +209,7 @@ RSpec.describe "API V1 Account Investors", type: :request do
           previously_invested: true,
           contact_email: "contact@example.com",
           contact_phone: "123456789",
-          categories: ["sustainable-agrosystems", "tourism-and-recreation"],
+          categories: ["sustainable-agrosystems", "sustainable-tourism"],
           impacts: ["biodiversity", "climate"],
           ticket_sizes: ["small-grants"],
           instrument_types: ["grant"],

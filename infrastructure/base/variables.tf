@@ -76,11 +76,6 @@ variable "uptime_alert_email" {
   description = "Email address to which uptime alerts should be sent"
 }
 
-variable "redirect_domain" {
-  type = string
-  description = "Legacy domain to redirect"
-}
-
 variable "from_email_address" {
   type = string
   description = "Email address from which to send emails"
@@ -95,6 +90,18 @@ variable "staging_http_auth_username" {
 variable "staging_http_auth_password" {
   type = string
   description = "Http auth password (for staging)"
+  default = ""
+}
+
+variable "production_http_auth_username" {
+  type = string
+  description = "Http auth username (for production)"
+  default = ""
+}
+
+variable "production_http_auth_password" {
+  type = string
+  description = "Http auth password (for production)"
   default = ""
 }
 

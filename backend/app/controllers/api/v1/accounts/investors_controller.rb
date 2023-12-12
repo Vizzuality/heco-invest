@@ -17,6 +17,7 @@ module API
             account = Account.create! account_params.merge(owner: current_user, users: [current_user])
             current_user.update! role: :investor
             investor = Investor.create! investor_params.merge(account: account)
+            Admin.all.each { |admin| AdminMailer.investor_created(admin, investor).deliver_later }
             render json: InvestorSerializer.new(
               investor,
               params: {current_user: current_user, current_ability: current_ability}

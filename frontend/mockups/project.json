@@ -90,7 +90,7 @@
     "twitter": "",
     "mission": "Lorem ipsum sit amet woof",
     "project_developer_type": "academic",
-    "categories": ["sustainable-agrosystems", "tourism-and-recreation"],
+    "categories": ["sustainable-agrosystems", "sustainable-tourism"],
     "impacts": ["biodiversity", "community"],
     "language": "en",
     "entity_legal_registration_number": "212432423423",
@@ -139,7 +139,7 @@
         "project_developer_type": "academic",
         "categories": [
             "sustainable-agrosystems",
-            "tourism-and-recreation"
+            "sustainable-tourism"
         ],
         "impacts": [
             "biodiversity",

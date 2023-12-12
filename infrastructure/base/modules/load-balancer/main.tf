@@ -7,7 +7,6 @@ resource "google_compute_global_address" "ip_address" {
 
 locals {
   domain = var.subdomain == "" ? var.domain : "${var.subdomain}.${var.domain}"
-  redirect_domain = var.subdomain == "" ? var.redirect_domain : "${var.subdomain}.${var.redirect_domain}"
 }
 
 # ------------------------------------------------------------------------------
@@ -33,7 +32,7 @@ resource "google_compute_managed_ssl_certificate" "load-balancer-certificate" {
   name = "${var.name}-lb-cert"
 
   managed {
-    domains = [local.domain, local.redirect_domain]
+    domains = [local.domain]
   }
 }
 
@@ -80,20 +79,6 @@ resource "google_compute_url_map" "load-balancer-url-map" {
     path_rule {
       paths   = ["/backend/*"]
       service = google_compute_backend_service.backend_service.id
-    }
-  }
-
-  host_rule {
-    hosts        = [local.redirect_domain]
-    path_matcher = "redirect"
-  }
-
-  path_matcher {
-    name            = "redirect"
-    default_url_redirect {
-      strip_query = false
-      host_redirect = local.domain
-      https_redirect = true
     }
   }
 }
@@ -148,12 +133,3 @@ resource "google_dns_record_set" "frontend-dns-record-set" {
   rrdatas      = [google_compute_global_address.ip_address.address]
 }
 
-# DNS record
-resource "google_dns_record_set" "redirect-dns-record-set" {
-  project      = var.project
-  name         = "${local.redirect_domain}."
-  type         = "A"
-  ttl          = 3600
-  managed_zone = var.redirect_domain_dns_managed_zone_name
-  rrdatas      = [google_compute_global_address.ip_address.address]
-}

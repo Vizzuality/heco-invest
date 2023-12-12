@@ -25,7 +25,7 @@ RSpec.describe Backoffice::CSV::OpenCallExporter do
         query.first.investor.name,
         [query.first.municipality&.name, query.first.department&.name, query.first.country&.name].compact.join(", "),
         query.first.open_call_applications_count.to_s,
-        I18n.t("enum.open_call_status.launched"),
+        I18n.t("enums.open_call_status.launched.name"),
         I18n.t("backoffice.common.verified")
       ])
     end

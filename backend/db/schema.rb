@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_03_122726) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_28_121022) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -419,6 +419,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_03_122726) do
     t.boolean "municipality_demands_calculated", default: false
     t.boolean "hydrobasin_demands_calculated", default: false
     t.boolean "priority_landscape_demands_calculated", default: false
+    t.text "positive_financial_returns_en"
+    t.text "positive_financial_returns_es"
+    t.text "positive_financial_returns_pt"
+    t.decimal "last_year_sales_revenue"
+    t.text "climate_change_risks_details_en"
+    t.text "climate_change_risks_details_es"
+    t.text "climate_change_risks_details_pt"
+    t.boolean "climate_change_risks_identified", default: false
     t.index ["country_id"], name: "index_projects_on_country_id"
     t.index ["department_id"], name: "index_projects_on_department_id"
     t.index ["municipality_id"], name: "index_projects_on_municipality_id"

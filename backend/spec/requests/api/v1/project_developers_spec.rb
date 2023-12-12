@@ -2,7 +2,7 @@ require "swagger_helper"
 
 RSpec.describe "API V1 Project Developers", type: :request do
   before_all do
-    @project_developer = create(:project_developer, :with_involved_projects, mission: "Yellow Banana", number_of_projects: 2, categories: ["tourism-and-recreation"])
+    @project_developer = create(:project_developer, :with_involved_projects, mission: "Yellow Banana", number_of_projects: 2, categories: ["sustainable-tourism"])
     @draft_project = create(:project, :draft, project_developer: @project_developer)
     create_list(:project_developer, 6, categories: %w[forestry-and-agroforestry non-timber-forest-production])
     @unapproved_project_developer = create(:project_developer, account: create(:account, review_status: :unapproved, users: [create(:user)]))

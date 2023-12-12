@@ -5,7 +5,12 @@ module Importers
         "Corazón Amazonía" => {name_en: "Amazon Heart", name_es: "Corazón Amazonía", name_pt: "Coração da Amazônia"},
         "Piedemonte Amazónico - Macizo" => {name_en: "Amazonian Piedmont Massif", name_es: "Piedemonte Amazónico - Macizo", name_pt: "Maciço Piedemonte Amazônico"},
         "Transición Orinoquía" => {name_en: "Orinoquía Transition", name_es: "Transición Orinoquía", name_pt: "Transição Orinoquía"},
-        "Orinoquía" => {name_en: "Orinoquía", name_es: "Orinoquía", name_pt: "Orinoquía"}
+        "Orinoquía" => {name_en: "Orinoquía", name_es: "Orinoquía", name_pt: "Orinoquía"},
+        "Cordillera Oriental" => {name_en: "Eastern Mountain Range", name_es: "Cordillera Oriental", name_pt: "Cordilheira Oriental"},
+        "Cordillera Central" => {name_en: "Central Mountain Range", name_es: "Cordillera Central", name_pt: "Cordilheira Central"},
+        "Pacífico - Marino Costero" => {name_en: "Pacific - Coastal Marine", name_es: "Pacífico - Marino Costero", name_pt: "Pacífico - Marinho Costeiro"},
+        "Caribe" => {name_en: "Caribbean", name_es: "Caribe", name_pt: "Caribe"},
+        "Transición Pacífico - Caribe" => {name_en: "Pacific - Caribbean Transition", name_es: "Transición Pacífico - Caribe", name_pt: "Transição Pacífico - Caribe"}
       }
       PRIORITY_LANDSCAPE_CODES = {
         "Corazón Amazonía" => "priority-landscape-amazon-heart",

@@ -1,6 +1,5 @@
 locals {
   domain          = var.subdomain == "" ? var.domain : "${var.subdomain}.${var.domain}"
-  redirect_domain = var.subdomain == "" ? var.redirect_domain : "${var.subdomain}.${var.redirect_domain}"
 }
 
 module "network" {
@@ -101,6 +100,14 @@ module "nextauth_secret" {
   use_random_value    = true
 }
 
+module "klab_api_password" {
+  source           = "../secret_value"
+  region           = var.gcp_region
+  key              = "${var.project_name}_klab_api_password"
+  value            = var.klab_api_password
+  use_random_value = false
+}
+
 locals {
   frontend_docker_build_args = {
     TRANSIFEX_TOKEN                 = var.transifex_token
@@ -168,6 +175,15 @@ module "backend_build" {
         "--region", var.gcp_region, "--max-instances", var.backend_max_scale
       ]
     },
+    {
+      name       = "gcr.io/google.com/cloudsdktool/cloud-sdk"
+      entrypoint = "gcloud"
+      args       = [
+        "run", "services", "update-traffic", "${var.project_name}-jobs",
+        "--region", var.gcp_region,
+        "--to-latest"
+      ]
+    }
   ]
 }
 
@@ -244,7 +260,10 @@ module "backend_cloudrun" {
     }, length(module.http_auth_password) > 0 ? [{
       name        = "HTTP_AUTH_PASSWORD"
       secret_name = module.http_auth_password[0].secret_name
-    }] : []
+    }] : [], {
+      name        = "KLAB_API_PASSWORD"
+      secret_name = module.klab_api_password.secret_name
+    }
   ])
   env_vars = [
     {
@@ -340,10 +359,6 @@ module "backend_cloudrun" {
       value = var.klab_api_username
     },
     {
-      name  = "KLAB_API_PASSWORD"
-      value = var.klab_api_password
-    },
-    {
       name  = "KLAB_ENABLED"
       value = var.klab_enabled
     }
@@ -385,6 +400,9 @@ module "jobs_cloudrun" {
     }, {
       name        = "ENCRYPTION_DERIVATION_SALT"
       secret_name = module.rails_encryption_derivation_salt.secret_name
+    }, {
+      name        = "KLAB_API_PASSWORD"
+      secret_name = module.klab_api_password.secret_name
     }
   ]
   env_vars = [
@@ -477,10 +495,6 @@ module "jobs_cloudrun" {
       value = var.klab_api_username
     },
     {
-      name  = "KLAB_API_PASSWORD"
-      value = var.klab_api_password
-    },
-    {
       name  = "KLAB_ENABLED"
       value = var.klab_enabled
     }
@@ -567,8 +581,6 @@ module "load_balancer" {
   frontend_cloud_run_name               = module.frontend_cloudrun.name
   domain                                = var.domain
   dns_managed_zone_name                 = var.dns_zone_name
-  redirect_domain                       = var.redirect_domain
-  redirect_domain_dns_managed_zone_name = var.redirect_dns_zone_name
   subdomain                             = var.subdomain
 }
 

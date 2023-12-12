@@ -94,7 +94,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           entity_legal_registration_number: "564823570",
           mission: "Mission",
           contact_email: "contact@example.com",
-          categories: ["sustainable-agrosystems", "tourism-and-recreation"],
+          categories: ["sustainable-agrosystems", "sustainable-tourism"],
           impacts: ["biodiversity", "climate"],
           priority_landscape_ids: [priority_landscape.id],
           locale: :en
@@ -128,6 +128,14 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           expect {
             submit_request example.metadata
           }.to have_enqueued_job(TranslateJob).at_least(:once)
+        end
+
+        it "queues email notification" do |example|
+          submit_request example.metadata
+          project_developer = ProjectDeveloper.find response_json["data"]["id"]
+          Admin.all.each do |admin|
+            expect(AdminMailer).to have_enqueued_mail(:project_developer_created).with(admin, project_developer)
+          end
         end
       end
 
@@ -192,7 +200,7 @@ RSpec.describe "API V1 Account Project Developers", type: :request do
           project_developer_type: "ngo",
           entity_legal_registration_number: "564823570",
           mission: "Mission",
-          categories: ["sustainable-agrosystems", "tourism-and-recreation"],
+          categories: ["sustainable-agrosystems", "sustainable-tourism"],
           impacts: ["biodiversity", "climate"],
           priority_landscape_ids: [priority_landscape.id],
           locale: :en

@@ -39,8 +39,8 @@
         <td><%= Category.find(p.category).name %></td>
         <td><%= p.priority_landscape&.name %></td>
         <td>
-          <%= status_tag :published, t('enum.project_status.published') if p.published? %>
-          <%= status_tag :draft, t('enum.project_status.draft') unless p.published? %>
+          <%= status_tag :published, t('enums.project_status.published.name') if p.published? %>
+          <%= status_tag :draft, t('enums.project_status.draft.name') unless p.published? %>
         </td>
         <td>
           <%= status_tag :verified, t('backoffice.common.verified') if p.verified? %>

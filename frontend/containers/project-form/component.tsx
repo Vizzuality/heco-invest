@@ -338,6 +338,8 @@ export const ProjectForm: FC<ProjectFormProps> = ({
           <OtherInformation
             register={register}
             control={control}
+            getValues={getValues}
+            setValue={setValue}
             controlOptions={{ disabled: false }}
             errors={errors}
           />

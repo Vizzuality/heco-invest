@@ -1,6 +1,6 @@
 export type CategoryType =
   | 'sustainable-agrosystems'
-  | 'tourism-and-recreation'
+  | 'sustainable-tourism'
   | 'forestry-and-agroforestry'
   | 'non-timber-forest-production'
   | 'human-capital-and-inclusion';

@@ -84,6 +84,10 @@ zu:
         progress_impact_tracking: Progress and impact tracking
         description: Short description of the project
         relevant_links: Relevant links (optional)
+        positive_financial_returns: If your current business model generates positive financial returns, please explain what they consist of
+        last_year_sales_revenue: What was the sales revenue in the last fiscal year-end?
+        climate_change_risks_identified: Has the project identified the risks of climate change to which the business is exposed and potential mitigation strategies?
+        climate_change_risks_details: If yes, please, describe the risks of climate change
       open_call:
         name: Open call name
         picture: Picture
@@ -267,6 +271,7 @@ zu:
         description: Description of the project
         impact: Impact
         funding_information: Funding information
+        other_information: Other information
         how_will_project_grow: How the project will grow
         shapefile_upload: Upload Shapefile/KML
         shapefile_uploading: Uploading...
@@ -275,6 +280,12 @@ zu:
           not_valid_kml: This .kml/.kmz file does not have a valid XML syntax. Please try to validate it and resolve the issues.
           not_supported: This file is not supported. Please try uploading a different format.
           unable_to_parse: Unable to parse the file. Please try uploading a different format.
+      export:
+        impact_areas: Impact areas
+        sdgs: SDGs
+        looking_for_funding: Project currently looking for funding?
+        ticket_size: Amount of money that project needs
+        instrument_types: Instrument types
     open_calls:
       information: Information
       status: Verification status
@@ -350,6 +361,12 @@ zu:
       subject: Your HeCo Invest Admin account was created!
       content_html: "To login for first time, please %{reset_password_link}."
       reset_password_link: setup your new password
+    investor_created:
+      subject: New Investor account created!
+      content_html: "A new Investor account has been created and needs your inspection for approval. Please, review the account: %{new_investor_url}"
+    project_developer_created:
+      subject: New Project developer account created!
+      content_html: "A new Project developer account has been created and needs your inspection for approval. Please, review the account: %{new_pd_url}"
   project_developer_mailer:
     greetings: Dear %{full_name},
     farewell_html: Best Regards,<br />Your HeCo Invest Team
@@ -396,8 +413,8 @@ zu:
       sustainable-agrosystems:
         name: Sustainable Agrosystems
         description: Sustainable and regenerative agriculture, fishing, and aquaculture as well as manufacturing of derived subproducts.
-      tourism-and-recreation:
-        name: Tourism and Recreation
+      sustainable-tourism:
+        name: Sustainable Tourism
         description: Accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects.
       forestry-and-agroforestry:
         name: Forestry and Agroforestry
