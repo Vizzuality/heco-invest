@@ -186,8 +186,11 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             id: 'population',
             title: (
               <FormattedMessage
-                defaultMessage="10% of the world's biodiversity is located in Colombia"
-                id="FryxnD"
+                defaultMessage="<n>10%</n> of the world's biodiversity is located in Colombia"
+                id="TlSP7S"
+                values={{
+                  n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+                }}
               />
             ),
             description: (
@@ -202,7 +205,13 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
           {
             id: 'carbon',
             title: (
-              <FormattedMessage defaultMessage="Colombia has 1,494 protected areas" id="YFLJ3Y" />
+              <FormattedMessage
+                defaultMessage="Colombia has <n>1,494</n> protected areas"
+                id="bbUwNS"
+                values={{
+                  n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+                }}
+              />
             ),
             description: (
               <>
