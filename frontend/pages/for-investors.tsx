@@ -7,8 +7,14 @@ import Link from 'next/link';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
+import { StaticPageLayoutProps } from 'layouts/static-page';
+import { logEvent } from 'lib/analytics/ga';
 import { groupBy } from 'lodash-es';
 import { InferGetServerSidePropsType } from 'next';
+import { PageComponent } from 'types';
+import { Enum } from 'types/enums';
+import { Locations } from 'types/locations';
+import { Project } from 'types/project';
 
 import { useBreakpoint } from 'hooks/use-breakpoint';
 import { FaqPaths } from 'hooks/useFaq';
@@ -22,12 +28,6 @@ import ImpactModal from 'containers/modals/impact';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
-import { StaticPageLayoutProps } from 'layouts/static-page';
-import { logEvent } from 'lib/analytics/ga';
-import { PageComponent } from 'types';
-import { Enum } from 'types/enums';
-import { Locations } from 'types/locations';
-import { Project } from 'types/project';
 
 import { getEnums } from 'services/enums/enumService';
 import { getPriorityLandscapes } from 'services/locations/locations';
@@ -166,8 +166,8 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         descriptions={[
           <FormattedMessage
             key="desc-1"
-            defaultMessage="HeCo Invest manages <n>a wide range of investment and financing opportunities (investment opportunities for loan, equity or grant funding)</n> in various sector categories and priority landscapes for the conservation and <n>development of Colombia</n>, primarily focusing on the Amazon region."
-            id="FFqTal"
+            defaultMessage="HeCo Invest manages a <n>wide range of investment and financing opportunities (investment opportunities for loan, equity or grant funding)</n> in various sector categories and priority landscapes for the conservation and development of <n>Colombia, primarily focusing on the Amazon region</n>."
+            id="tqi4i6"
             values={{
               n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
             }}
