@@ -319,8 +319,8 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             }}
           />
         </p>
-        <div className="grid grid-flow-row gap-6 lg:grid-flow-col lg:grid-cols-2 xl:gap-8">
-          <figure className="block max-w-md mx-auto rounded-lg lg:max-w-none lg:col-start-2">
+        <div className="grid grid-flow-row gap-6 lg:grid-flow-col lg:grid-cols-2 xl:gap-8 lg:max-h-[2000px]">
+          <figure className="lg:h-[744px] lg:sticky lg:top-20 lg:self-strech max-w-md mx-auto rounded-lg lg:max-w-none lg:col-start-2">
             <Image
               src={
                 !hoveredPriorityLandscapeCode
