@@ -20,7 +20,7 @@ export const ProjectCategoriesList: FC = () => {
       />
       <ListItem
         inlineDescription={true}
-        title={formatMessage({ defaultMessage: 'Tourism and recreation', id: 'hOp4Ue' })}
+        title={formatMessage({ defaultMessage: 'Sustainable tourism', id: 'h6nP4+' })}
         description={formatMessage({
           defaultMessage:
             'accommodation, travel, transportation, hospitality, visitor experiences and eco-tourism projects.',

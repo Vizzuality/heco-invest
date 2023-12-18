@@ -2421,6 +2421,9 @@
   "h2D2Rm": {
     "string": "No {tab} matches the keywords you’ve entered. Please <n>try another term</n> or <n>select a filter</n>."
   },
+  "h6nP4+": {
+    "string": "Sustainable tourism"
+  },
   "hBliS7": {
     "string": "KMZ"
   },
@@ -2432,9 +2435,6 @@
   },
   "hLG9bm": {
     "string": "Project financial instrument"
-  },
-  "hOp4Ue": {
-    "string": "Tourism and recreation"
   },
   "hPsrc0": {
     "string": "insert your answer (max 600 characters)"
