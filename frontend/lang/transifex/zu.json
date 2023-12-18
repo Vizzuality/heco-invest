@@ -503,6 +503,9 @@
   "7sVapx": {
     "string": "View open call page"
   },
+  "7wW5B+": {
+    "string": "The Heritage Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. More information about these regions <link>here</link>."
+  },
   "7xC2j0": {
     "string": "Create Open Call"
   },
@@ -688,9 +691,6 @@
   },
   "Ay+1nm": {
     "string": "Due to security reasons, we are not allowed to display more <b>detailed financial information</b>. Please contact the Project Developers directly in order to obtain detailed information."
-  },
-  "B/n4gt": {
-    "string": "The Heritage Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. The HeCo Invest platform centers its attention on areas directly connected to the Amazon. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition. More information about these regions <link>here</link>."
   },
   "B4FwQp": {
     "string": "Points will not be accepted and only the first area in the file will be considered."
@@ -950,9 +950,6 @@
   "FFbWHO": {
     "string": "Discover investors"
   },
-  "FFqTal": {
-    "string": "HeCo Invest manages <n>a wide range of investment and financing opportunities (investment opportunities for loan, equity or grant funding)</n> in various sector categories and priority landscapes for the conservation and <n>development of Colombia</n>, primarily focusing on the Amazon region."
-  },
   "FJfVJJ": {
     "string": "Access user-friendly tools that help turn a good idea into a proposal ready to be reviewed by an investor or funder."
   },
@@ -1178,6 +1175,9 @@
   },
   "JWYapR": {
     "string": "{name} project"
+  },
+  "JY/Ysq": {
+    "string": "Central Mountain Range"
   },
   "JcS7oJ": {
     "string": "By priority landscapes"
@@ -1860,6 +1860,9 @@
   "WLDgff": {
     "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
   },
+  "WMIv8o": {
+    "string": "Caribbean"
+  },
   "WMuw/P": {
     "string": "Full catalog"
   },
@@ -1886,6 +1889,9 @@
   },
   "X0E3iC": {
     "string": "I agree with the Terms and Privacy Policy."
+  },
+  "X1N5qH": {
+    "string": "Eastern Mountain range"
   },
   "X2YMUl": {
     "string": "Contact the project developers to know more about the project."
@@ -2334,6 +2340,9 @@
   "fZpvTQ": {
     "string": "Delete my user"
   },
+  "fhLBuu": {
+    "string": "Pacific - Caribbean Transition"
+  },
   "fmTQay": {
     "string": "open call"
   },
@@ -2600,6 +2609,9 @@
   },
   "jwimQJ": {
     "string": "Ok"
+  },
+  "jwiyhI": {
+    "string": "Pacific - Coastal Marine"
   },
   "k0xbVH": {
     "string": "You can't undo this action."
@@ -3197,6 +3209,9 @@
   },
   "tkP6dd": {
     "string": "You need to accept the Terms and Privacy Policy."
+  },
+  "tqi4i6": {
+    "string": "HeCo Invest manages a <n>wide range of investment and financing opportunities (investment opportunities for loan, equity or grant funding)</n> in various sector categories and priority landscapes for the conservation and development of <n>Colombia, primarily focusing on the Amazon region</n>."
   },
   "twK/jv": {
     "string": "Project developer profile"
