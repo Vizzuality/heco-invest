@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
 
+import { Paths } from 'enums';
+
 import InvestorAccountDeletion from 'containers/faq-page/answers/account/investor-account-deletion';
 import InvestorInfo from 'containers/faq-page/answers/account/investor-info';
 import ProjectDeveloperAccountDeletion from 'containers/faq-page/answers/account/project-developer-account-deletion';
@@ -9,8 +11,6 @@ import ProjectDeveloperInfo from 'containers/faq-page/answers/account/project-de
 import OpenCallInfo from 'containers/faq-page/answers/open-calls/open-call-info';
 import ProjectImpact from 'containers/faq-page/answers/projects/project-impact';
 import ProjectInfo from 'containers/faq-page/answers/projects/project-info';
-
-import { Paths } from 'enums';
 
 /** FAQ Sections */
 export enum FaqSections {
@@ -87,7 +87,7 @@ export const FaqPaths = {
 export const useFaq = () => {
   const { formatMessage } = useIntl();
 
-  const patrimonioNaturalHref = 'https://www.patrimonionatural.org.co/redes-y-plataformas/heco/';
+  const patrimonioNaturalHref = 'https://www.minambiente.gov.co/herencia-colombia/';
 
   const faq = useMemo(
     () => [
@@ -372,8 +372,8 @@ export const useFaq = () => {
             answer: formatMessage(
               {
                 defaultMessage:
-                  'The Heritage Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. The HeCo Invest platform centers its attention on areas directly connected to the Amazon. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition. More information about these regions <link>here</link>.',
-                id: 'B/n4gt',
+                  'The Heritage Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. More information about these regions <link>here</link>.',
+                id: '7wW5B+',
               },
               {
                 link: (chunks: string) => (

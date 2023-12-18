@@ -68,8 +68,7 @@ export const useLayers = () => {
             id: '9Lv5em',
           }),
           dataSource: 'Ministerio de Medio Ambiente y Desarrollo Sostenible de Colombia',
-          dataSourceUrl:
-            'https://www.arcgis.com/home/item.html?id=07bdb2d56b534039843a415995fc4447',
+          dataSourceUrl: 'https://www.minambiente.gov.co/herencia-colombia/',
           legend: {
             type: 'monocolor',
             items: [{ color: '#3d6c50' }],

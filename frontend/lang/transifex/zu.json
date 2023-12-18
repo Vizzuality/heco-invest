@@ -137,6 +137,9 @@
   "0dbfpr": {
     "string": "You need to enter a text for the progress and impact tracking"
   },
+  "0drR8b": {
+    "string": "Colombia’s protected areas cover an area of about 49 million hectares. This represents 17% of the country's land area and 30% of the marine area."
+  },
   "0hzVw6": {
     "string": "How accounts work?"
   },
@@ -211,9 +214,6 @@
   },
   "2CtPQ/": {
     "string": "Contact phone"
-  },
-  "2HumLB": {
-    "string": "123.000 million"
   },
   "2JJSDv": {
     "string": "Edit project developer’s account"
@@ -349,9 +349,6 @@
   },
   "4wNuFe": {
     "string": "Draw or upload the area of the region your project will have an impact on (i.e. your production zone and/or the location of your target audiences)"
-  },
-  "4zK41e": {
-    "string": "Investing in the Amazon means contributing to improving the quality of life of more than 30 million people. It is also contributing to the development and conservation of a vital region for South America and the world."
   },
   "4zUbhC": {
     "string": "What’s the open call about"
@@ -497,9 +494,6 @@
   "7iO/ih": {
     "string": "Discover project developers"
   },
-  "7mgGgs": {
-    "string": "It is one of the most important terrestrial carbon sink on Earth, helping to mitigate climate change."
-  },
   "7qB5i4": {
     "string": "As an Investor or Funder"
   },
@@ -508,6 +502,9 @@
   },
   "7sVapx": {
     "string": "View open call page"
+  },
+  "7wW5B+": {
+    "string": "The Heritage Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. More information about these regions <link>here</link>."
   },
   "7xC2j0": {
     "string": "Create Open Call"
@@ -695,9 +692,6 @@
   "Ay+1nm": {
     "string": "Due to security reasons, we are not allowed to display more <b>detailed financial information</b>. Please contact the Project Developers directly in order to obtain detailed information."
   },
-  "B/n4gt": {
-    "string": "The Heritage Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. The HeCo Invest platform centers its attention on areas directly connected to the Amazon. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition. More information about these regions <link>here</link>."
-  },
   "B4FwQp": {
     "string": "Points will not be accepted and only the first area in the file will be considered."
   },
@@ -754,6 +748,9 @@
   },
   "CBfDLD": {
     "string": "Select the instrument type(s) you provide"
+  },
+  "CCGdq4": {
+    "string": "Investing in the Amazon means contributing to improving the quality of life for more than 30 million people. Additionally, it contributes to the development and conservation of one of the most diverse regions with extensive coverage of protected areas in Colombia. It is also a vital region for South America and the world."
   },
   "CEQo2w": {
     "string": "My preferences"
@@ -908,9 +905,6 @@
   "EgOO+m": {
     "string": "Launch open call?"
   },
-  "Ejc7dP": {
-    "string": "tons of carbon are stored in the Amazon."
-  },
   "EmE3wV": {
     "string": "Sub-basin boundaries of Colombia."
   },
@@ -1016,9 +1010,6 @@
   "GOdq5V": {
     "string": "Catalog"
   },
-  "GOg6XJ": {
-    "string": "Be part of the biggest change in the colombian Amazon"
-  },
   "GYkIYE": {
     "string": "Insert your last name"
   },
@@ -1078,9 +1069,6 @@
   },
   "HhjmvS": {
     "string": "Invalid phone number"
-  },
-  "HlDhAh": {
-    "string": "10%"
   },
   "HnG9/3": {
     "string": "Insert password"
@@ -1193,6 +1181,9 @@
   },
   "JWYapR": {
     "string": "{name} project"
+  },
+  "JY/Ysq": {
+    "string": "Central Mountain Range"
   },
   "JcS7oJ": {
     "string": "By priority landscapes"
@@ -1382,6 +1373,9 @@
   },
   "N2IrpM": {
     "string": "Confirm"
+  },
+  "N2KahC": {
+    "string": "Colombia’s natural wealth places the country in the 2nd position in the world biodiversity ranking."
   },
   "N9+9Fi": {
     "string": "select the project developer type"
@@ -1683,9 +1677,6 @@
   "Scnx6A": {
     "string": "Maturity / stage of development"
   },
-  "Sg5j0W": {
-    "string": "1.5 million indigenous people and more than 5 million Afro-descendants."
-  },
   "Si0U4V": {
     "string": "Relevant links"
   },
@@ -1739,6 +1730,9 @@
   },
   "TkWozN": {
     "string": "an equity investment consists of the acquisition, by an entity specialized in private equity, of a package of shares of a company or enterprise. The private equity firm thus becomes one of the owners of the company."
+  },
+  "TlSP7S": {
+    "string": "<n>10%</n> of the world's biodiversity is located in Colombia"
   },
   "TnP0xP": {
     "string": "If your current business model generates positive financial returns, please explain what they consist of (optional)"
@@ -1875,6 +1869,9 @@
   "WLDgff": {
     "string": "Create a free account to start using all the benefits that HeCo Invest can offer to you and your team."
   },
+  "WMIv8o": {
+    "string": "Caribbean"
+  },
   "WMuw/P": {
     "string": "Full catalog"
   },
@@ -1901,6 +1898,9 @@
   },
   "X0E3iC": {
     "string": "I agree with the Terms and Privacy Policy."
+  },
+  "X1N5qH": {
+    "string": "Eastern Mountain range"
   },
   "X2YMUl": {
     "string": "Contact the project developers to know more about the project."
@@ -2046,9 +2046,6 @@
   "Zht65f": {
     "string": "Identify the target group(s) of this solution. Try to be very specific and do not cover an unrealistic range of beneficiaries or clients."
   },
-  "ZiErTG": {
-    "string": "Be part of the biggest change in the Colombian Amazon"
-  },
   "ZikI+j": {
     "string": "Select the topics/sector categories that interests you"
   },
@@ -2120,6 +2117,9 @@
   },
   "bWygLM": {
     "string": "insert the amount of money"
+  },
+  "bbUwNS": {
+    "string": "Colombia has <n>1,494</n> protected areas"
   },
   "bh4rlK": {
     "string": "Government"
@@ -2349,6 +2349,9 @@
   "fZpvTQ": {
     "string": "Delete my user"
   },
+  "fhLBuu": {
+    "string": "Pacific - Caribbean Transition"
+  },
   "fmTQay": {
     "string": "open call"
   },
@@ -2378,9 +2381,6 @@
   },
   "g5pX+a": {
     "string": "About"
-  },
-  "g69fjK": {
-    "string": "HeCo Invest manages a <n>wide range of investment and financing opportunities (investment opportunities for loan, equity or grant funding)</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n>."
   },
   "g8xSgQ": {
     "string": "Commercial bank"
@@ -2429,6 +2429,9 @@
   },
   "h2D2Rm": {
     "string": "No {tab} matches the keywords you’ve entered. Please <n>try another term</n> or <n>select a filter</n>."
+  },
+  "h6nP4+": {
+    "string": "Sustainable tourism"
   },
   "hBliS7": {
     "string": "KMZ"
@@ -2532,9 +2535,6 @@
   "iTkO2x": {
     "string": "You need to select the investor/funder type"
   },
-  "iUt7so": {
-    "string": "of the planet’s known biodiversity lives in the Amazon, the largest tropical rainforest on the planet."
-  },
   "igBQ/M": {
     "string": "An open call is a call for projects made by a given investor. Open calls give investors the possibility to open specific opportunities in their topics of interest. All registered and approved project developers have the possibility to submit their projects to an open call, if they match the open call criteria, and therefore apply to this particular funding."
   },
@@ -2621,6 +2621,9 @@
   },
   "jwimQJ": {
     "string": "Ok"
+  },
+  "jwiyhI": {
+    "string": "Pacific - Coastal Marine"
   },
   "k0xbVH": {
     "string": "You can't undo this action."
@@ -2753,9 +2756,6 @@
   },
   "lwv2DP": {
     "string": "You need to select one or more expected impact"
-  },
-  "m1w8ew": {
-    "string": "30 million"
   },
   "m38DjH": {
     "string": "Financial instrument available"
@@ -3174,6 +3174,9 @@
   "t39CQq": {
     "string": "What’s your mission?"
   },
+  "t6aHUj": {
+    "string": "Be part of the biggest change in Colombia"
+  },
   "t7YvMF": {
     "string": "Water"
   },
@@ -3218,6 +3221,9 @@
   },
   "tkP6dd": {
     "string": "You need to accept the Terms and Privacy Policy."
+  },
+  "tqi4i6": {
+    "string": "HeCo Invest manages a <n>wide range of investment and financing opportunities (investment opportunities for loan, equity or grant funding)</n> in various sector categories and priority landscapes for the conservation and development of <n>Colombia, primarily focusing on the Amazon region</n>."
   },
   "twK/jv": {
     "string": "Project developer profile"
@@ -3419,9 +3425,6 @@
   },
   "xQArDr": {
     "string": "<b>Community</b>:"
-  },
-  "xUR9nd": {
-    "string": "people live in the Amazon region."
   },
   "xXIT0v": {
     "string": "<b>Note:</b> After submitting the form, images may take some time to be visible in your page."

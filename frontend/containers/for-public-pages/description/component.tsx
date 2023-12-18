@@ -32,13 +32,11 @@ export const Description: FC<DescriptionProps> = ({
       </LayoutContainer>
 
       <LayoutContainer className="mt-5 md:mt-32">
-        <div className="flex flex-col mdpy-14 md:grid md:grid-cols-2">
-          <div className="flex flex-col justify-center order-2 p-6 pb-10 overflow-hidden text-white md:py-10 md:order-1 md:-mt-28 rounded-b-2xl md:rounded-3xl md:rounded-br-none bg-green-dark md:px-14">
+        <div className="flex flex-col md:grid md:grid-cols-2">
+          <div className="flex flex-col justify-center order-2 p-6 pb-10 overflow-hidden text-white md:order-1 md:-mt-20 rounded-b-2xl md:rounded-3xl md:rounded-br-none bg-green-dark md:px-14">
             {leftTexts.map((text) => (
               <Fragment key={text.id}>
-                <div className="font-serif text-3xl font-semibold lg:text-4xl xl:text-5xl">
-                  {text.title}
-                </div>
+                <div className="font-serif text-2xl lg:text-3xl xl:text-4xl">{text.title}</div>
                 <p className="mt-4 mb-6">{text.description}</p>
               </Fragment>
             ))}
@@ -46,7 +44,7 @@ export const Description: FC<DescriptionProps> = ({
           <div className="order-1 overflow-hidden md:order-2 rounded-t-2xl md:rounded-3xl md:rounded-l-none">
             <div
               className={cx(
-                'flex items-center justify-center w-full h-full bg-cover  bg-blend-overlay bg-black bg-opacity-25',
+                'flex items-center justify-center w-full h-full bg-cover bg-blend-overlay bg-black bg-opacity-25',
                 {
                   "bg-[url('/images/for-investor/for-investors-why-to-invest.jpg')]":
                     page === 'for-investors',
@@ -55,10 +53,8 @@ export const Description: FC<DescriptionProps> = ({
                 }
               )}
             >
-              <div className="max-w-lg p-6 pt-10 text-white md:p-10 md:max-w-md">
-                <h2 className="mb-6 font-serif text-3xl font-bold lg:text-4xl">
-                  {rightText.title}
-                </h2>
+              <div className="max-w-lg py-24 pl-6 text-white md:max-w-md flex flex-col space-y-6">
+                <h2 className="font-serif text-3xl lg:text-4xl">{rightText.title}</h2>
                 <p className="text-lg">{rightText.description}</p>
               </div>
             </div>

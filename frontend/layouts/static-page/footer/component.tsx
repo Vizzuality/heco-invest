@@ -56,8 +56,8 @@ export const Footer: React.FC<FooterProps> = ({
             </Link>
             <p className="max-w-xs mt-2 font-serif text-xl font-semibold leading-7">
               <FormattedMessage
-                defaultMessage="Be part of the biggest change in the colombian Amazon"
-                id="GOg6XJ"
+                defaultMessage="Be part of the biggest change in Colombia"
+                id="t6aHUj"
               />
             </p>
             <p className="mt-5 text-xs font-medium">
