@@ -51,7 +51,7 @@ export const PublicPageCard: FC<PublicPageCardProps> = ({
         }
       >
         <div
-          className="w-[75vw] sm:w-[60vw] md:w-auto flex flex-col justify-between p-4 transition-all duration-500 bg-white rounded-lg shadow-sm group drop-shadow-none hover:drop-shadow-lg ease h-full min-h-[290px] cursor-pointer"
+          className="w-[75vw] sm:w-[60vw] md:w-auto flex flex-col p-4 transition-all duration-500 bg-white rounded-lg shadow-sm group drop-shadow-none hover:drop-shadow-lg ease h-full min-h-[290px] cursor-pointer"
           key={id}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
@@ -63,11 +63,12 @@ export const PublicPageCard: FC<PublicPageCardProps> = ({
             )}
           </div>
           <div>
-            <p className="mb-4 text-sm text-gray-800 transition-all duration-500 md:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 ease">
+            <p className="h-full mb-4 text-sm text-gray-800 transition-all duration-500 md:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 ease">
               {description}
             </p>
           </div>
-          <div className="flex items-center justify-between">
+
+          <div className="flex items-center justify-between mt-auto">
             <p className="text-base text-gray-600">
               <span className="font-bold text-black">{quantity} </span>
               {cardType === 'projects' ? (
