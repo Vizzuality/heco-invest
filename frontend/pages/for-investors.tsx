@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -176,6 +176,14 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
     '/images/for-investor/for-investor-can-do-2.jpeg',
   ];
 
+  const priorityLandscapeImage = useMemo(
+    () =>
+      !hoveredPriorityLandscapeCode
+        ? '/images/for-investor/for-investor-priority-landscapes.png'
+        : `/images/for-investor/for-investor-${hoveredPriorityLandscapeCode}.png`,
+    [hoveredPriorityLandscapeCode]
+  );
+
   return (
     <>
       <Head title={formatMessage({ defaultMessage: 'For investors', id: 'MfCYKW' })} />
@@ -321,11 +329,7 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         <div className="grid grid-flow-row gap-6 lg:grid-flow-col lg:grid-cols-2 xl:gap-8 lg:max-h-[2000px]">
           <figure className="lg:h-[715px] lg:sticky lg:top-20 lg:self-strech max-w-md mx-auto rounded-lg lg:max-w-none lg:col-start-2">
             <Image
-              src={
-                !hoveredPriorityLandscapeCode
-                  ? '/images/for-investor/for-investor-priority-landscapes.png'
-                  : `/images/for-investor/for-investor-${hoveredPriorityLandscapeCode}.png`
-              }
+              src={priorityLandscapeImage}
               alt={formatMessage({ defaultMessage: 'HeCo priority landscapes', id: 'X+46wB' })}
               width={640}
               height={744}
