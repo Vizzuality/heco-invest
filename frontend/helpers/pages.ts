@@ -321,4 +321,9 @@ export const PRIORITY_LANDSCAPES_CODES = [
   'priority-landscape-amazon-heart',
   'priority-landscape-amazonian-piedmont-massif',
   'priority-landscape-orinoquia-transition',
+  'priority-landscape-cordillera-central',
+  'priority-landscape-cordillera-oriental',
+  'priority-landscape-caribe',
+  'priority-landscape-transicion-pacifico-caribe',
+  'priority-landscape-pacifico-marino-costero',
 ];

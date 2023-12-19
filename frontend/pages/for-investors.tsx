@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -112,6 +112,26 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         id="RAf4Za"
       />
     ),
+    'priority-landscape-cordillera-central': (
+      <FormattedMessage
+        defaultMessage="It encompasses high mountain ecosystems: moors, Andean forests, wetlands, glaciers, and volcanic complexes. It has the highest proportion of glaciers in Colombia, with four of the remaining six snowy peaks. Additionally, it houses seven moor complexes, 20% of the national total. It plays a crucial role in water capture and regulation."
+        id="F1bd4u"
+      />
+    ),
+    // 'priority-landscape-cordillera-oriental': <FormattedMessage defaultMessage="" id="F1bd4u" />,
+    'priority-landscape-caribe': (
+      <FormattedMessage
+        defaultMessage="A region of great diversity, it encompasses a complex system that includes one of the world's largest coastal mountain ranges, Colombia's largest coastal lagoon, mangroves, wetlands, moors, glaciers, dry ecosystems, and Andean ecosystems. Ethnic, rural, and fishing communities are found there."
+        id="Vj8/7g"
+      />
+    ),
+    // 'priority-landscape-transicion-pacifico-caribe': <FormattedMessage defaultMessage="" id="F1bd4u" />,
+    'priority-landscape-pacifico-marino-costero': (
+      <FormattedMessage
+        defaultMessage="It hosts strategic ecosystems: beaches, mangroves, cliffs, and coral reefs, providing crucial benefits to communities such as water supply, nitrogen and carbon fixation, hydrological cycle control, and habitat for species. Inhabited mainly by ethnic communities, it plays a fundamental role in sustainability and human well-being."
+        id="CFiYxa"
+      />
+    ),
   };
 
   const whatHecoCanDoTexts = [
@@ -155,6 +175,14 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
     '/images/for-investor/for-investor-can-do-1.jpeg',
     '/images/for-investor/for-investor-can-do-2.jpeg',
   ];
+
+  const priorityLandscapeImage = useMemo(
+    () =>
+      !hoveredPriorityLandscapeCode
+        ? '/images/for-investor/for-investor-priority-landscapes.png'
+        : `/images/for-investor/for-investor-${hoveredPriorityLandscapeCode}.png`,
+    [hoveredPriorityLandscapeCode]
+  );
 
   return (
     <>
@@ -298,14 +326,10 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             }}
           />
         </p>
-        <div className="grid grid-flow-row gap-6 lg:grid-flow-col lg:grid-cols-2 xl:gap-8">
-          <figure className="block max-w-md mx-auto rounded-lg lg:max-w-none lg:col-start-2">
+        <div className="grid grid-flow-row gap-6 lg:grid-flow-col lg:grid-cols-2 xl:gap-8 lg:max-h-[2000px]">
+          <figure className="lg:h-[715px] lg:sticky lg:top-20 lg:self-strech max-w-md mx-auto rounded-lg lg:max-w-none lg:col-start-2">
             <Image
-              src={
-                !hoveredPriorityLandscapeCode
-                  ? '/images/for-investor/for-investor-priority-landscapes.png'
-                  : `/images/for-investor/for-investor-${hoveredPriorityLandscapeCode}.png`
-              }
+              src={priorityLandscapeImage}
               alt={formatMessage({ defaultMessage: 'HeCo priority landscapes', id: 'X+46wB' })}
               width={640}
               height={744}
