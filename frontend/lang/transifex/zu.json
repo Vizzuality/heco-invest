@@ -504,7 +504,7 @@
     "string": "View open call page"
   },
   "7wW5B+": {
-    "string": "The Heritage Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. More information about these regions <link>here</link>."
+    "string": "The Heritage Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain Range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. More information about these regions <link>here</link>."
   },
   "7xC2j0": {
     "string": "Create Open Call"
@@ -1902,9 +1902,6 @@
   "X0E3iC": {
     "string": "I agree with the Terms and Privacy Policy."
   },
-  "X1N5qH": {
-    "string": "Eastern Mountain range"
-  },
   "X2YMUl": {
     "string": "Contact the project developers to know more about the project."
   },
@@ -3182,6 +3179,9 @@
   },
   "t7lNU8": {
     "string": "Start making an impact now"
+  },
+  "tARYkI": {
+    "string": "Eastern Mountain Range"
   },
   "tAug9g": {
     "string": "Groups with disabilities"
