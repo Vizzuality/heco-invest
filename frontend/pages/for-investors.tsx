@@ -7,14 +7,8 @@ import Link from 'next/link';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
-import { StaticPageLayoutProps } from 'layouts/static-page';
-import { logEvent } from 'lib/analytics/ga';
 import { groupBy } from 'lodash-es';
 import { InferGetServerSidePropsType } from 'next';
-import { PageComponent } from 'types';
-import { Enum } from 'types/enums';
-import { Locations } from 'types/locations';
-import { Project } from 'types/project';
 
 import { useBreakpoint } from 'hooks/use-breakpoint';
 import { FaqPaths } from 'hooks/useFaq';
@@ -28,6 +22,12 @@ import ImpactModal from 'containers/modals/impact';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
+import { StaticPageLayoutProps } from 'layouts/static-page';
+import { logEvent } from 'lib/analytics/ga';
+import { PageComponent } from 'types';
+import { Enum } from 'types/enums';
+import { Locations } from 'types/locations';
+import { Project } from 'types/project';
 
 import { getEnums } from 'services/enums/enumService';
 import { getPriorityLandscapes } from 'services/locations/locations';
@@ -118,14 +118,18 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         id="F1bd4u"
       />
     ),
-    // 'priority-landscape-cordillera-oriental': <FormattedMessage defaultMessage="" id="F1bd4u" />,
+    'priority-landscape-cordillera-oriental': (
+      <FormattedMessage defaultMessage="Description under construction" id="TIibbe" />
+    ),
     'priority-landscape-caribe': (
       <FormattedMessage
         defaultMessage="A region of great diversity, it encompasses a complex system that includes one of the world's largest coastal mountain ranges, Colombia's largest coastal lagoon, mangroves, wetlands, moors, glaciers, dry ecosystems, and Andean ecosystems. Ethnic, rural, and fishing communities are found there."
         id="Vj8/7g"
       />
     ),
-    // 'priority-landscape-transicion-pacifico-caribe': <FormattedMessage defaultMessage="" id="F1bd4u" />,
+    'priority-landscape-transicion-pacifico-caribe': (
+      <FormattedMessage defaultMessage="Description under construction" id="TIibbe" />
+    ),
     'priority-landscape-pacifico-marino-costero': (
       <FormattedMessage
         defaultMessage="It hosts strategic ecosystems: beaches, mangroves, cliffs, and coral reefs, providing crucial benefits to communities such as water supply, nitrogen and carbon fixation, hydrological cycle control, and habitat for species. Inhabited mainly by ethnic communities, it plays a fundamental role in sustainability and human well-being."
