@@ -372,7 +372,7 @@ export const useFaq = () => {
             answer: formatMessage(
               {
                 defaultMessage:
-                  'The Heritage Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. More information about these regions <link>here</link>.',
+                  'The Heritage Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain Range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. More information about these regions <link>here</link>.',
                 id: '7wW5B+',
               },
               {

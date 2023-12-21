@@ -178,7 +178,7 @@ export const ProjectDeveloperInfo: FC = () => {
               title={formatMessage({ defaultMessage: 'Central Mountain Range', id: 'JY/Ysq' })}
             />
             <ListItem
-              title={formatMessage({ defaultMessage: 'Eastern Mountain range', id: 'X1N5qH' })}
+              title={formatMessage({ defaultMessage: 'Eastern Mountain Range', id: 'tARYkI' })}
             />
             <ListItem title={formatMessage({ defaultMessage: 'Orinoquía', id: 'JHlWWV' })} />
             <ListItem
