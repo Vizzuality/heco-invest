@@ -2,8 +2,6 @@ import { useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
 
-import { Paths } from 'enums';
-
 import InvestorAccountDeletion from 'containers/faq-page/answers/account/investor-account-deletion';
 import InvestorInfo from 'containers/faq-page/answers/account/investor-info';
 import ProjectDeveloperAccountDeletion from 'containers/faq-page/answers/account/project-developer-account-deletion';
@@ -11,6 +9,8 @@ import ProjectDeveloperInfo from 'containers/faq-page/answers/account/project-de
 import OpenCallInfo from 'containers/faq-page/answers/open-calls/open-call-info';
 import ProjectImpact from 'containers/faq-page/answers/projects/project-impact';
 import ProjectInfo from 'containers/faq-page/answers/projects/project-info';
+
+import { Paths } from 'enums';
 
 /** FAQ Sections */
 export enum FaqSections {
@@ -373,7 +373,7 @@ export const useFaq = () => {
               {
                 defaultMessage:
                   'The Heritage Colombia program contains 9 priority landscapes or conservation mosaics. These are: Amazon Heart, Amazonian Piedmont - Massif, Orinoquía, Orinoquía Transition, Central Mountain Range, Eastern Mountain Range, Caribbean, Pacific - Caribbean Transition, Pacific - Coastal Marine. More information about these regions <link>here</link>.',
-                id: '7wW5B+',
+                id: 'qileSN',
               },
               {
                 link: (chunks: string) => (
