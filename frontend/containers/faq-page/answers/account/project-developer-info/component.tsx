@@ -173,9 +173,25 @@ export const ProjectDeveloperInfo: FC = () => {
             <ListItem
               title={formatMessage({ defaultMessage: 'Amazonian Piedmont - Massif', id: '0ZkvWW' })}
             />
+            <ListItem title={formatMessage({ defaultMessage: 'Caribbean', id: 'WMIv8o' })} />
+            <ListItem
+              title={formatMessage({ defaultMessage: 'Central Mountain Range', id: 'JY/Ysq' })}
+            />
+            <ListItem
+              title={formatMessage({ defaultMessage: 'Eastern Mountain Range', id: 'tARYkI' })}
+            />
             <ListItem title={formatMessage({ defaultMessage: 'Orinoquía', id: 'JHlWWV' })} />
             <ListItem
               title={formatMessage({ defaultMessage: 'Orinoquía Transition', id: 'ybZSf7' })}
+            />
+            <ListItem
+              title={formatMessage({
+                defaultMessage: 'Pacific - Caribbean Transition',
+                id: 'fhLBuu',
+              })}
+            />
+            <ListItem
+              title={formatMessage({ defaultMessage: 'Pacific - Coastal Marine', id: 'jwiyhI' })}
             />
           </FaqList>
         </ListItem>

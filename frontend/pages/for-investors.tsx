@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -112,6 +112,30 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         id="RAf4Za"
       />
     ),
+    'priority-landscape-cordillera-central': (
+      <FormattedMessage
+        defaultMessage="It encompasses high mountain ecosystems: moors, Andean forests, wetlands, glaciers, and volcanic complexes. It has the highest proportion of glaciers in Colombia, with four of the remaining six snowy peaks. Additionally, it houses seven moor complexes, 20% of the national total. It plays a crucial role in water capture and regulation."
+        id="F1bd4u"
+      />
+    ),
+    'priority-landscape-cordillera-oriental': (
+      <FormattedMessage defaultMessage="Description under construction" id="TIibbe" />
+    ),
+    'priority-landscape-caribe': (
+      <FormattedMessage
+        defaultMessage="A region of great diversity, it encompasses a complex system that includes one of the world's largest coastal mountain ranges, Colombia's largest coastal lagoon, mangroves, wetlands, moors, glaciers, dry ecosystems, and Andean ecosystems. Ethnic, rural, and fishing communities are found there."
+        id="Vj8/7g"
+      />
+    ),
+    'priority-landscape-transicion-pacifico-caribe': (
+      <FormattedMessage defaultMessage="Description under construction" id="TIibbe" />
+    ),
+    'priority-landscape-pacifico-marino-costero': (
+      <FormattedMessage
+        defaultMessage="It hosts strategic ecosystems: beaches, mangroves, cliffs, and coral reefs, providing crucial benefits to communities such as water supply, nitrogen and carbon fixation, hydrological cycle control, and habitat for species. Inhabited mainly by ethnic communities, it plays a fundamental role in sustainability and human well-being."
+        id="CFiYxa"
+      />
+    ),
   };
 
   const whatHecoCanDoTexts = [
@@ -156,6 +180,14 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
     '/images/for-investor/for-investor-can-do-2.jpeg',
   ];
 
+  const priorityLandscapeImage = useMemo(
+    () =>
+      !hoveredPriorityLandscapeCode
+        ? '/images/for-investor/for-investor-priority-landscapes.png'
+        : `/images/for-investor/for-investor-${hoveredPriorityLandscapeCode}.png`,
+    [hoveredPriorityLandscapeCode]
+  );
+
   return (
     <>
       <Head title={formatMessage({ defaultMessage: 'For investors', id: 'MfCYKW' })} />
@@ -166,8 +198,8 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         descriptions={[
           <FormattedMessage
             key="desc-1"
-            defaultMessage="HeCo Invest manages a <n>wide range of investment and financing opportunities (investment opportunities for loan, equity or grant funding)</n> in various sector categories and priority landscapes for the conservation and development of the <n>Colombian Amazon region</n>."
-            id="g69fjK"
+            defaultMessage="HeCo Invest manages a <n>wide range of investment and financing opportunities (investment opportunities for loan, equity or grant funding)</n> in various sector categories and priority landscapes for the conservation and development of <n>Colombia, primarily focusing on the Amazon region</n>."
+            id="tqi4i6"
             values={{
               n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
             }}
@@ -184,43 +216,42 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
         leftTexts={[
           {
             id: 'population',
-            title: <FormattedMessage defaultMessage="30 million" id="m1w8ew" />,
+            title: (
+              <FormattedMessage
+                defaultMessage="<n>10%</n> of the world's biodiversity is located in Colombia"
+                id="TlSP7S"
+                values={{
+                  n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+                }}
+              />
+            ),
             description: (
               <>
-                <FormattedMessage defaultMessage="people live in the Amazon region." id="xUR9nd" />
-                <br />
                 <FormattedMessage
-                  defaultMessage="1.5 million indigenous people and more than 5 million Afro-descendants."
-                  id="Sg5j0W"
+                  defaultMessage="Colombia’s natural wealth places the country in the 2nd position in the world biodiversity ranking."
+                  id="N2KahC"
                 />
               </>
             ),
           },
           {
             id: 'carbon',
-            title: <FormattedMessage defaultMessage="123.000 million" id="2HumLB" />,
+            title: (
+              <FormattedMessage
+                defaultMessage="Colombia has <n>1,494</n> protected areas"
+                id="bbUwNS"
+                values={{
+                  n: (chunk: string) => <span className="font-semibold">{chunk}</span>,
+                }}
+              />
+            ),
             description: (
               <>
                 <FormattedMessage
-                  defaultMessage="tons of carbon are stored in the Amazon."
-                  id="Ejc7dP"
-                />
-                <br />
-                <FormattedMessage
-                  defaultMessage="It is one of the most important terrestrial carbon sink on Earth, helping to mitigate climate change."
-                  id="7mgGgs"
+                  defaultMessage="Colombia’s protected areas cover an area of about 49 million hectares. This represents 17% of the country's land area and 30% of the marine area."
+                  id="0drR8b"
                 />
               </>
-            ),
-          },
-          {
-            id: 'biodiversity',
-            title: <FormattedMessage defaultMessage="10%" id="HlDhAh" />,
-            description: (
-              <FormattedMessage
-                defaultMessage="of the planet’s known biodiversity lives in the Amazon, the largest tropical rainforest on the planet."
-                id="iUt7so"
-              />
             ),
           },
         ]}
@@ -228,8 +259,8 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
           title: <FormattedMessage defaultMessage="Why invest in the Amazon" id="mQk71L" />,
           description: (
             <FormattedMessage
-              defaultMessage="Investing in the Amazon means contributing to improving the quality of life of more than 30 million people. It is also contributing to the development and conservation of a vital region for South America and the world."
-              id="4zK41e"
+              defaultMessage="Investing in the Amazon means contributing to improving the quality of life for more than 30 million people. Additionally, it contributes to the development and conservation of one of the most diverse regions with extensive coverage of protected areas in Colombia. It is also a vital region for South America and the world."
+              id="CCGdq4"
             />
           ),
         }}
@@ -299,14 +330,10 @@ const ForInvestorsPage: PageComponent<ForInvestorsPageProps, StaticPageLayoutPro
             }}
           />
         </p>
-        <div className="grid grid-flow-row gap-6 lg:grid-flow-col lg:grid-cols-2 xl:gap-8">
-          <figure className="block max-w-md mx-auto rounded-lg lg:max-w-none lg:col-start-2">
+        <div className="grid grid-flow-row gap-6 lg:grid-flow-col lg:grid-cols-2 xl:gap-8 lg:max-h-[2000px]">
+          <figure className="lg:h-[715px] lg:sticky lg:top-20 lg:self-strech max-w-md mx-auto rounded-lg lg:max-w-none lg:col-start-2">
             <Image
-              src={
-                !hoveredPriorityLandscapeCode
-                  ? '/images/for-investor/for-investor-priority-landscapes.png'
-                  : `/images/for-investor/for-investor-${hoveredPriorityLandscapeCode}.png`
-              }
+              src={priorityLandscapeImage}
               alt={formatMessage({ defaultMessage: 'HeCo priority landscapes', id: 'X+46wB' })}
               width={640}
               height={744}
