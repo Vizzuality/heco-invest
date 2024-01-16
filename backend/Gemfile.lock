@@ -117,7 +117,7 @@ GEM
       jwt
       redis
       retriable
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     connection_pool (2.2.5)
     crack (0.4.5)
       rexml
@@ -342,7 +342,7 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.5)
-    minitest (5.20.0)
+    minitest (5.21.1)
     msgpack (1.5.1)
     multi_json (1.15.0)
     multipart-post (2.1.1)
@@ -366,8 +366,7 @@ GEM
     optimist (3.0.1)
     orm_adapter (0.5.0)
     os (1.1.4)
-    pagy (5.10.1)
-      activesupport
+    pagy (6.4.1)
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
