@@ -260,6 +260,25 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               />
             </p>
           </div>
+          <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
+            <div className="text-center">
+              <Image
+                src="/images/logos/about-fao-azul.png"
+                width={348}
+                height={124}
+                alt={intl.formatMessage({
+                  defaultMessage: 'Food and Agriculture Organization of the United Nations - FAO',
+                  id: 'shhSYM',
+                })}
+              />
+            </div>
+            <p className="hidden mt-3 md:block sm:mt-6">
+              <FormattedMessage
+                defaultMessage="The FAO representation in Colombia seeks to improve agriculture and food through technical cooperation with the Government. It collaborates with governmental institutions, cooperation agencies, civil society, academia, and the private sector in areas such as food, agriculture, livestock, fishing, aquaculture, forestry management, and sustainable natural resource management. Additionally, the FAO supports the implementation of Point 1 of the Peace Agreement: Comprehensive Rural Reform. Its support to the national government aims to promote social and territorial cohesion in areas affected by the conflict."
+                id="kmtD3U"
+              />
+            </p>
+          </div>
         </div>
       </LayoutContainer>
 
