@@ -279,6 +279,42 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
               />
             </p>
           </div>
+          <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
+            <div className="text-center">
+              <Image
+                src="/images/logos/about-ue.png"
+                width={348}
+                height={124}
+                alt={intl.formatMessage({
+                  defaultMessage: 'Delegation of the European Union to Colombia',
+                  id: 'zuK4F3',
+                })}
+              />
+            </div>
+            <p className="hidden mt-3 md:block sm:mt-6">
+              <FormattedMessage
+                defaultMessage="The entry into force of the Lisbon Treaty on December 1, 2009, marked the beginning of the European External Action Service. In 2011, the Delegation of the European Commission became the Delegation of the European Union in Colombia, with the status of a diplomatic embassy. Its Ambassador officially represents the European Union in Colombia. Adapting to contemporary challenges includes the defense of human rights, the preservation of peace, international security, and the prevention of internal conflicts—fundamental objectives of the EU's foreign policy."
+                id="mILEhu"
+              />
+            </p>
+          </div>
+          <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
+            <div className="text-center">
+              <Image
+                src="/images/logos/about-maetd.png"
+                width={348}
+                height={124}
+                alt={intl.formatMessage({
+                  defaultMessage: 'Gobierno de España',
+                  id: 'C+2Px4',
+                })}
+              />
+            </div>
+            <p className="hidden mt-3 md:block sm:mt-6">
+              {/* TODO: Add missing description (not yet available) */}
+              {/* <FormattedMessage defaultMessage="" id="JH1fXz" /> */}
+            </p>
+          </div>
         </div>
       </LayoutContainer>
 
