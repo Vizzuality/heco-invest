@@ -305,8 +305,8 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
                 width={348}
                 height={124}
                 alt={intl.formatMessage({
-                  defaultMessage: 'Gobierno de España',
-                  id: 'C+2Px4',
+                  defaultMessage: 'Government of Spain',
+                  id: 'AS8i3c',
                 })}
               />
             </div>
