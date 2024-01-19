@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 import Image from 'next/image';
 
-import { useAlliesLogos, useSupportedByLogos } from './helpers';
+import { useAlliesLogos, useSupportedByLogos } from './data';
 
 export const OurAllies = () => {
   const alliesLogos = useAlliesLogos();
