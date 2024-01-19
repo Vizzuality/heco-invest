@@ -10,7 +10,7 @@ export const OurPartnersCard: FC<OurPartnersCardProps> = ({ logo, children }) =>
       <div className="text-center">
         <Image src={logo.src} width={logo.width} height={logo.height} alt={logo.alt} />
       </div>
-      <p className="hidden mt-3 md:block sm:mt-6">{children}</p>
+      {children && <p className="hidden mt-3 md:block sm:mt-6">{children}</p>}
     </div>
   );
 };
