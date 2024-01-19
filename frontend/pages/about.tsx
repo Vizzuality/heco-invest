@@ -148,7 +148,7 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
       </LayoutContainer>
 
       <LayoutContainer className="mt-20 sm:mt-24 lg:mt-40">
-        <h2 className="font-serif text-3xl font-bold md:text-4xl">
+        <h2 className="font-serif text-3xl font-bold md:text-4xl text-center">
           <FormattedMessage defaultMessage="About the partners" id="0CAqpl" />
         </h2>
         <div className="mt-8 space-y-6 md:mt-16 lg:space-y-0 lg:grid lg:grid-cols-2 xl:grid-cols-3 md:gap-6">
