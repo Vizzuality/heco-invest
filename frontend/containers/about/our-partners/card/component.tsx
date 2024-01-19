@@ -37,7 +37,7 @@ export const OurPartnersCard: FC<OurPartnersCardProps> = ({
             closed: { height: 0, visibility: 'hidden' },
           }}
         >
-          <p className="hidden mt-3 md:block sm:mt-6">{children}</p>
+          <p className="mt-3 sm:mt-6">{children}</p>
         </motion.div>
       )}
     </button>
