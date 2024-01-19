@@ -14,6 +14,7 @@ import { useBreakpoint } from 'hooks/use-breakpoint';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import OurAllies from 'containers/about/our-allies';
 import ImpactModal from 'containers/modals/impact';
 
 import Button from 'components/button';
@@ -316,6 +317,10 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
             </p>
           </div>
         </div>
+      </LayoutContainer>
+
+      <LayoutContainer className="mt-20 sm:mt-24 lg:mt-40">
+        <OurAllies />
       </LayoutContainer>
 
       <div id="aries" className="scroll-mt-24 bg-green-dark">
