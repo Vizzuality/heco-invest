@@ -27,7 +27,7 @@ export const usePartners = () => {
         logo: {
           src: '/images/logos/wwf.png',
           width: 100,
-          height: 110,
+          height: 124,
           alt: formatMessage({
             defaultMessage: 'WWF',
             id: 'cT6b2H',
