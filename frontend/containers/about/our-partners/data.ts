@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+
 import { useIntl } from 'react-intl';
 
 export const usePartners = () => {
@@ -25,8 +26,8 @@ export const usePartners = () => {
       {
         logo: {
           src: '/images/logos/wwf.png',
-          width: 348,
-          height: 124,
+          width: 100,
+          height: 110,
           alt: formatMessage({
             defaultMessage: 'WWF',
             id: 'cT6b2H',
