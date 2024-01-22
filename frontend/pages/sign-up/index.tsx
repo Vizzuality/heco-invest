@@ -346,8 +346,8 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
               />
               <span className="ml-2 font-sans text-sm text-gray-800 font-regular">
                 <FormattedMessage
-                  defaultMessage="I agree with the Terms and Privacy Policy."
-                  id="X0E3iC"
+                  defaultMessage="I agree with the Terms & Conditions and Privacy Policy."
+                  id="AnCRrS"
                 />
               </span>
             </label>
