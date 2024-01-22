@@ -346,8 +346,20 @@ const SignUp: PageComponent<SignUpPageProps, AuthPageLayoutProps> = () => {
               />
               <span className="ml-2 font-sans text-sm text-gray-800 font-regular">
                 <FormattedMessage
-                  defaultMessage="I agree with the Terms & Conditions and Privacy Policy."
-                  id="AnCRrS"
+                  defaultMessage="I agree with the <a>Terms & Conditions and Privacy Policy.</a>"
+                  id="JiU7oK"
+                  values={{
+                    a: (chunks) => (
+                      <Link href={Paths.TermsConditions}>
+                        <a
+                          className="underline focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2"
+                          target="_blank"
+                        >
+                          {chunks}
+                        </a>
+                      </Link>
+                    ),
+                  }}
                 />
               </span>
             </label>
