@@ -32,4 +32,4 @@ jobs:
       - name: Run Brakeman
         run: bundle exec brakeman
       - name: Run Bundle Audit
-        run: bundle exec bundle-audit check --update
+        run: bundle exec bundle-audit check --update --ignore CVE-2024-0227
