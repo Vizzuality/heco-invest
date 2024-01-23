@@ -14,6 +14,8 @@ import { useBreakpoint } from 'hooks/use-breakpoint';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
+import OurAllies from 'containers/about/our-allies';
+import OurPartners from 'containers/about/our-partners';
 import ImpactModal from 'containers/modals/impact';
 
 import Button from 'components/button';
@@ -147,120 +149,11 @@ const AboutPage: PageComponent<AboutPageProps, StaticPageLayoutProps> = () => {
       </LayoutContainer>
 
       <LayoutContainer className="mt-20 sm:mt-24 lg:mt-40">
-        <h2 className="font-serif text-3xl font-bold md:text-4xl">
-          <FormattedMessage defaultMessage="About the partners" id="0CAqpl" />
-        </h2>
-        <div className="mt-8 space-y-6 md:mt-16 lg:space-y-0 lg:grid lg:grid-cols-2 xl:grid-cols-3 md:gap-6">
-          <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
-            <div className="text-center">
-              <Image
-                src="/images/logos/idb.png"
-                width={348}
-                height={124}
-                alt={intl.formatMessage({
-                  defaultMessage: 'Inter-American Development Bank',
-                  id: 'AC6emZ',
-                })}
-              />
-            </div>
-            <p className="hidden mt-3 md:block sm:mt-6">
-              <FormattedMessage
-                defaultMessage="The Inter-American Development Bank (IDB) is the main source of multilateral financing and expertise for sustainable economic, social and institutional development in Latin America and the Caribbean. The IDB Natural Capital Lab works to drive innovation in natural capital finance by looking at nature as an asset."
-                id="WJcNiD"
-              />
-            </p>
-          </div>
-          <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
-            <div className="text-center">
-              <Image
-                src="/images/logos/wwf.png"
-                width={348}
-                height={124}
-                objectFit="contain"
-                alt={intl.formatMessage({ defaultMessage: 'WWF', id: 'cT6b2H' })}
-              />
-            </div>
-            <p className="hidden mt-3 md:block sm:mt-6">
-              <FormattedMessage
-                defaultMessage="World Wildlife Fund (WWF) is the largest international conservation organization in the world, with more than 50 offices implementing conservation projects across more than 100 countries and has a membership of almost five million people. WWF has extensive experience working in the Amazon region, with offices in all seven signatory countries of the Leticia Pact. In Colombia, WWF has been working in partnership with the government and a consortium of civil society organizations on Heritage Colombia since 2015."
-                id="zkonnO"
-              />
-            </p>
-          </div>
-          <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
-            <div className="text-center">
-              <Image
-                src="/images/logos/idb-lab.png"
-                width={348}
-                height={124}
-                alt={intl.formatMessage({
-                  defaultMessage: 'Inter-American Development Bank Lab',
-                  id: 'QDj3j7',
-                })}
-              />
-            </div>
-            <p className="hidden mt-3 md:block sm:mt-6">
-              <FormattedMessage
-                defaultMessage="IDB Lab is the innovation laboratory of the Inter-American Development Back Group, the leading source of financing for improving lives in Latin America and the Caribbean. The IDB Lab promotes development through the private sector by identifying, supporting, testing, and piloting new solutions to development challenges. It seeks to create opportunities for poor and vulnerable populations affected by economic, social, or environmental factors in Latin America and the Caribbean."
-                id="Gpyrow"
-              />
-            </p>
-          </div>
-          <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
-            <div className="text-center">
-              <Image
-                src="/images/logos/paulson-institute.png"
-                width={348}
-                height={124}
-                alt={intl.formatMessage({ defaultMessage: 'Paulson Institute', id: 'JRfERD' })}
-              />
-            </div>
-            <p className="hidden mt-3 md:block sm:mt-6">
-              <FormattedMessage
-                defaultMessage="Paulson Institute: The Paulson Institute (PI) is a non-partisan, independent “think and do tank” delivering solutions that contribute to a more resilient and sustainable world. PI operates at the intersection of economics, financial markets, and environmental protection by promoting market-based solutions to ensure green economic growth. Under their Financing Nature initiative, they are working to identify and implement innovative mechanisms that can rapidly mobilize substantial amounts of funding for nature conservation."
-                id="qPKAOa"
-              />
-            </p>
-          </div>
-          <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
-            <div className="text-center">
-              <Image
-                src="/images/logos/bc3.png"
-                width={348}
-                height={124}
-                alt={intl.formatMessage({
-                  defaultMessage: 'Basque Centre for Climate Change',
-                  id: '6ukMW9',
-                })}
-              />
-            </div>
-            <p className="hidden mt-3 md:block sm:mt-6">
-              <FormattedMessage
-                defaultMessage="BC3's mission is to generate valuable knowledge for policy and decision making, integrating the environmental, socio-economic and ethical dimensions of climate change. Through the production of collaborative and open-source tools such as ARIES, which can track and forecast progress towards sustainable environmental and economic goals, BC3 plays a key role in enhancing regional, national and international economic development."
-                id="HVQtvr"
-              />
-            </p>
-          </div>
-          <div className="p-4 sm:p-6 xl:p-10 bg-background-middle rounded-2xl">
-            <div className="text-center">
-              <Image
-                src="/images/logos/about-google.png"
-                width={348}
-                height={124}
-                alt={intl.formatMessage({
-                  defaultMessage: 'Google Cloud',
-                  id: 'QlBsxM',
-                })}
-              />
-            </div>
-            <p className="hidden mt-3 md:block sm:mt-6">
-              <FormattedMessage
-                defaultMessage="Google Cloud accelerates every organization’s ability to digitally transform its business. We deliver enterprise-grade solutions that leverage Google’s cutting-edge technology – all on the cleanest cloud in the industry. Customers in more than 200 countries and territories turn to Google Cloud as their trusted partner to enable growth and solve their most critical business problems."
-                id="Ob7+Ly"
-              />
-            </p>
-          </div>
-        </div>
+        <OurPartners />
+      </LayoutContainer>
+
+      <LayoutContainer className="mt-20 sm:mt-24 lg:mt-40">
+        <OurAllies />
       </LayoutContainer>
 
       <div id="aries" className="scroll-mt-24 bg-green-dark">
