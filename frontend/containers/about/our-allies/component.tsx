@@ -5,6 +5,7 @@ import cx from 'classnames';
 import Image from 'next/image';
 
 import { useAlliesLogos, useSupportedByLogos } from './data';
+import Logo from './logo/component';
 
 export const OurAllies = () => {
   const alliesLogos = useAlliesLogos();
@@ -27,16 +28,7 @@ export const OurAllies = () => {
                 })}
               >
                 {row.map((logo) => {
-                  return (
-                    <span key={logo.src}>
-                      <Image
-                        src={logo.src}
-                        width={logo.width}
-                        height={logo.height}
-                        alt={logo.alt}
-                      />
-                    </span>
-                  );
+                  return <Logo key={logo.src} logo={logo} />;
                 })}
               </div>
             );
@@ -50,11 +42,7 @@ export const OurAllies = () => {
         <div className="flex flex-col mt-8">
           <div className="flex flex-wrap items-center justify-center gap-6">
             {supportedByLogos.map((logo) => {
-              return (
-                <span key={logo.src}>
-                  <Image src={logo.src} width={logo.width} height={logo.height} alt={logo.alt} />
-                </span>
-              );
+              return <Logo key={logo.src} logo={logo} />;
             })}
           </div>
         </div>
