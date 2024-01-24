@@ -22,7 +22,7 @@ import localesConfig from 'locales.config.json';
 import store from 'store';
 import { LayoutStaticProp } from 'types';
 
-import 'styles/globals.css';
+import 'styles/globals.scss';
 
 // Enable dayjs to display translated dates in all the application's locales
 localesConfig.locales.forEach(({ locale }) => require(`dayjs/locale/${locale}.js`));

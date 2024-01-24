@@ -75,7 +75,7 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
               }
             )}
           </div>
-          <ol className="my-8 space-y-12">
+          <ol className="my-8 space-y-12 offset-target-anchor">
             <li className="list-decimal">
               <a href="#definitions">
                 <h2 id="definitions" className="font-semibold underline">
