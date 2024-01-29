@@ -33,8 +33,8 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
         <div className="h-auto">
           <h1 className="font-serif text-2xl text-center font-semibold md:text-3xl text-green-dark mb-10">
             <FormattedMessage
-              defaultMessage="TERMS AND CONDITIONS OF THE HeCo Invest PLATFORM"
-              id="6HVIBd"
+              defaultMessage='TERMS AND CONDITIONS OF THE "HeCo Invest" PLATFORM'
+              id="C5g7Dz"
             />
           </h1>
           <div className="my-4 mb-12 space-y-4">
