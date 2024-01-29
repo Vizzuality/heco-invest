@@ -68,8 +68,8 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
               }
             )}
           </div>
-          <ol className="my-8 space-y-12 offset-target-anchor">
-            <li className="list-decimal">
+          <ol className="ml-6 my-8 space-y-12 offset-target-anchor [counter-reset:section]">
+            <li className="[counter-increment:section] marker:[content:counters(section,'.')'.\00a0']">
               <a href="#definitions">
                 <h2 id="definitions" className="font-semibold underline">
                   <FormattedMessage defaultMessage="DEFINITIONS" id="VIxyu8" />
@@ -81,7 +81,7 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                   id="so6v6Q"
                 />
               </p>
-              <ol className="list-lower-roman">
+              <ol className="[counter-reset:subsection]">
                 {formatMessage(
                   {
                     defaultMessage: `
@@ -111,7 +111,11 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                   {
                     n: (...chunks) => <span className="font-semibold">{chunks}</span>,
                     p: (...chunks) => <p className="">{chunks}</p>,
-                    li: (...chunks) => <li className="ml-8 mt-4">{chunks}</li>,
+                    li: (...chunks) => (
+                      <li className="ml-14 [counter-increment:subsection] marker:[content:'1.'counters(subsection,'.')'.\00a0']">
+                        {chunks}
+                      </li>
+                    ),
                   }
                 )}
               </ol>
@@ -221,7 +225,7 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                   },
                   {
                     ul: (...chunks) => <ul className="space-y-4 mt-4">{chunks}</ul>,
-                    li: (...chunks) => <li className="list-lower-latin ml-4">{chunks}</li>,
+                    li: (...chunks) => <li className="list-lower-latin ml-9">{chunks}</li>,
                     lis: (...chunks) => <li className="list-disc ml-8">{chunks}</li>,
                     a: (...chunks) => (
                       <a
@@ -299,7 +303,7 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                   id="9A26z6"
                 />
               </p>
-              <ol className="space-y-4 ml-4 list-lower-roman">
+              <ol className="space-y-4 ml-4 [counter-reset:subsection] [counter-set:'subsection 8']">
                 {formatMessage(
                   {
                     defaultMessage: `
@@ -317,7 +321,11 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                     id: 'HC+nYF',
                   },
                   {
-                    li: (...chunks) => <li className="">{chunks}</li>,
+                    li: (...chunks) => (
+                      <li className="ml-9 [counter-increment:subsection] marker:[content:'8.'counters(subsection,'.')'.\00a0']">
+                        {chunks}
+                      </li>
+                    ),
                   }
                 )}
               </ol>
