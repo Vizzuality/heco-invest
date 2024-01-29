@@ -31,7 +31,7 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
       <Head title={formatMessage({ defaultMessage: 'Terms & Conditions', id: 'arPp4e' })} />
       <LayoutContainer className="bg-background-light overflow-hidden">
         <div className="h-auto">
-          <h1 className="mb-6 font-serif text-xl text-center text-green-dark">
+          <h1 className="font-serif text-2xl text-center font-semibold md:text-3xl text-green-dark mb-10">
             <FormattedMessage
               defaultMessage="TERMS AND CONDITIONS OF THE HeCo Invest PLATFORM"
               id="6HVIBd"
