@@ -33,8 +33,8 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
         <div className="h-auto">
           <h1 className="font-serif text-2xl text-center font-semibold md:text-3xl text-green-dark mb-10">
             <FormattedMessage
-              defaultMessage="TERMS AND CONDITIONS OF THE HeCo Invest PLATFORM"
-              id="6HVIBd"
+              defaultMessage='TERMS AND CONDITIONS OF THE "HeCo Invest" PLATFORM'
+              id="mDGfCm"
             />
           </h1>
           <div className="my-4 mb-12 space-y-4">
@@ -109,7 +109,7 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                     id: 'VADZzs',
                   },
                   {
-                    n: (...chunks) => <span className="font-semibold">{chunks}</span>,
+                    n: (...chunks) => <span className="font-semibold underline">{chunks}</span>,
                     p: (...chunks) => <p className="">{chunks}</p>,
                     li: (...chunks) => (
                       <li className="ml-14 [counter-increment:subsection] marker:[content:'1.'counters(subsection,'.')'.\00a0']">
