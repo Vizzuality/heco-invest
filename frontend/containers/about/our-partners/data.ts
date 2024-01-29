@@ -145,7 +145,10 @@ export const usePartners = () => {
             id: 'AS8i3c',
           }),
         },
-        text: '',
+        text: formatMessage({
+          defaultMessage: 'Gobierno de España partner card description text',
+          id: 'IlZRZq',
+        }),
       },
     ],
     [formatMessage]
