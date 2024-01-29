@@ -29,7 +29,7 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
   return (
     <div>
       <Head title={formatMessage({ defaultMessage: 'Terms & Conditions', id: 'arPp4e' })} />
-      <LayoutContainer className="bg-background-light">
+      <LayoutContainer className="bg-background-light overflow-hidden">
         <div className="h-auto">
           <h1 className="mb-6 font-serif text-xl text-center text-green-dark">
             <FormattedMessage
