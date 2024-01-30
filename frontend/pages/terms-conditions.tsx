@@ -2,14 +2,14 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
+import { StaticPageLayoutProps } from 'layouts/static-page';
 import { InferGetStaticPropsType } from 'next';
+import { PageComponent } from 'types';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
-import { StaticPageLayoutProps } from 'layouts/static-page';
-import { PageComponent } from 'types';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
@@ -123,7 +123,7 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
             <li className="list-decimal">
               <a href="#platform_administrator">
                 <h2 id="platform_administrator" className="font-semibold underline my-4">
-                  PLATFORM ADMINISTRATOR
+                  <FormattedMessage defaultMessage="PLATFORM ADMINISTRATOR" id="6e0pcn" />
                 </h2>
               </a>
               <p>
