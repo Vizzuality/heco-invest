@@ -21,7 +21,10 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
 
 type TermsConditionsProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-// CONTENT FROM: https://docs.google.com/document/d/1c-AEEilczfLNjzBZy11h0JGfft0elL-0/edit
+// CONTENT FROM:
+// EN: https://docs.google.com/document/d/1c-AEEilczfLNjzBZy11h0JGfft0elL-0/edit
+// ES: https://docs.google.com/document/d/1HhMpS5OqEkBlYgmk3nOdWRH7toL82MaY/edit
+// PT: https://docs.google.com/document/d/1hJGC7jH7snTLPn0zmNNgo3r5C6HvoDwd/edit
 
 const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps> = () => {
   const { formatMessage } = useIntl();
