@@ -2,14 +2,14 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { withLocalizedRequests } from 'hoc/locale';
 
+import { StaticPageLayoutProps } from 'layouts/static-page';
 import { InferGetStaticPropsType } from 'next';
+import { PageComponent } from 'types';
 
 import { loadI18nMessages } from 'helpers/i18n';
 
 import Head from 'components/head';
 import LayoutContainer from 'components/layout-container';
-import { StaticPageLayoutProps } from 'layouts/static-page';
-import { PageComponent } from 'types';
 
 export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
   return {
@@ -21,7 +21,10 @@ export const getStaticProps = withLocalizedRequests(async ({ locale }) => {
 
 type TermsConditionsProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-// CONTENT FROM https://docs.google.com/document/d/1qjwDVRMddIA5PnGuT76Ce9PBgt51P_E5/edit
+// CONTENT FROM:
+// EN: https://docs.google.com/document/d/1c-AEEilczfLNjzBZy11h0JGfft0elL-0/edit
+// ES: https://docs.google.com/document/d/1HhMpS5OqEkBlYgmk3nOdWRH7toL82MaY/edit
+// PT: https://docs.google.com/document/d/1hJGC7jH7snTLPn0zmNNgo3r5C6HvoDwd/edit
 
 const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps> = () => {
   const { formatMessage } = useIntl();
@@ -29,35 +32,28 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
   return (
     <div>
       <Head title={formatMessage({ defaultMessage: 'Terms & Conditions', id: 'arPp4e' })} />
-      <LayoutContainer className="bg-background-light">
+      <LayoutContainer className="bg-background-light overflow-hidden">
         <div className="h-auto">
-          <h1 className="mb-6 font-serif text-xl text-center text-green-dark">
+          <h1 className="font-serif text-2xl text-center font-semibold md:text-3xl text-green-dark mb-10">
             <FormattedMessage
-              defaultMessage="TERMS AND CONDITIONS OF THE HeCo Invest PLATFORM"
-              id="6HVIBd"
+              defaultMessage='TERMS AND CONDITIONS OF THE "HeCo Invest" PLATFORM'
+              id="mDGfCm"
             />
           </h1>
           <div className="my-4 mb-12 space-y-4">
             {formatMessage(
               {
                 defaultMessage: `
-                <p>Please read these Terms and Conditions carefully. This is a legal, binding contract between you and the Fondo Mundial para la Naturaleza Colombia ("<n>WWF Colombia</n>"), as manager of the HeCo Invest Platform. These Terms of Service apply to your access to and use of the Platform as a registered user and to the capabilities and information made available to you by using it. By clicking the "I AGREE" button, you confirm that you understand these Terms and Conditions and expressly agree to be bound by them in their entirety. If you are requesting to use the Platform on behalf of a third party, whether an organization or other legal entity, you also declare that you have the authority to bind the legal entity and that the legal entity is duly incorporated, valid and aware of its obligations. You further agree that the legal entity shall be bound by and liable for any breach of these Terms and Conditions. If you do not agree with these Terms and Conditions, you must immediately discontinue use of the Platform and click on the "I REFUSE" button at the bottom of this page.</p>
-
+                <p>Please read these Terms and Conditions carefully. This is a legal, binding contract between you and the Fondo Mundial para la Naturaleza Colombia (“<n>WWF Colombia</n>”), as manager of the HeCo Invest Platform. These Terms of Service apply to your access to and use of the Platform as a registered user and to the capabilities and information made available to you by using it. By clicking the "I AGREE" button, you confirm that you understand these Terms and Conditions and expressly agree to be bound by them in their entirety. If you are requesting to use the Platform on behalf of a third party, whether an organization or other legal entity, you also declare that you have the authority to bind the legal entity and that the legal entity is duly incorporated, valid and aware of its obligations. You further agree that the legal entity shall be bound by and liable for any breach of these Terms and Conditions.</p>
                 <p>This Platform and its functionalities are provided for professional use only. By registering as a User, you acknowledge that the Platform and any content may not be used for personal, family or household purposes.</p>
-
                 <p>The Platform is provided by WWF Colombia free of charge and solely as a space for exchanging information. WWF Colombia reserves the right to suspend or terminate any registered account and its associated User I.D. at any time, at its sole discretion, and for any or no reason.</p>
-
-                <p>Any person who intends to use the "HeCo Invest" Platform declares to have read, understood, and fully accepted these Terms and Conditions, as well as any document attached to them and other conditions referred to in other binding documents, such as the Privacy Policy of WWF Colombia, which can be accessed at the following link: <a>https://wwf.panda.org/es/privacidad/</a>. If you do not accept any one of the provisions included in these Terms and Conditions, you may not register to use the Platform and should abstain from using it. However, you can obtain and / or exchange information about the Projects through channels other than the Platform.</p>
-
+                <p>Any person who intends to use the "HeCo Invest" Platform declares to have read, understood, and fully accepted these Terms and Conditions, as well as any document attached to them and other conditions referred to in other binding documents, such as the Privacy Policy of WWF Colombia, which can be accessed at the following link: https://wwf. panda.org/en/privacy/. If you do not accept any one of the provisions included in these Terms and Conditions, you may not register to use the Platform and should abstain from using it. However, you can obtain and / or exchange information about the Projects through channels other than the Platform.</p>
                 <p>These terms and conditions shall describe the relationship between (i) WWF Colombia, as authorized administrator of the Platform, (ii) the bidders or implementers of the Projects; and (iii) the potential donors or investors of the Projects, as defined below. These terms and conditions include the rights, duties and limitations of the Participating Agents (as defined below) interacting on the Platform, as well as the rules under which the relationship will be maintained.</p>
-
                 <p>By registering for and entering the Platform, requesting the Projects’ monitoring and progress status, applying for Projects, or any other unequivocal expression to use the Platform and/or the express electronic acceptance of these Terms and Conditions, the Participating Agent states their consent and acceptance of them. All of the above materializes when you click and / or double-click on the links the Platform's website has available for such purposes, as well as when entering and accessing the Platform's information.</p>
-
                 <p>Moreover, by performing any of the aforementioned actions, the Participating Agents declare and guarantee that they have the legal capacity and necessary powers to be bound, in accordance with these Terms and Conditions and the particular conditions that may come about between the different Participating Agents as a consequence of using the Platform.</p>
-
-                 <p>The Participating Agents declare that they have carefully read and fully accepted these Terms and Conditions, our Privacy Policy (<a>https://wwf.panda.org/es/privacidad/</a>), and any other documents referenced in these Terms and Conditions.</p>
+                <p>The Participating Agents declare that they have carefully read and fully accepted these Terms and Conditions, our Privacy Policy (<a>https://wwf.panda.org/es/privacidad/</a>), and any other documents referenced in these Terms and Conditions.</p>
                 `,
-                id: '8yNBDY',
+                id: 'ekD+NP',
               },
               {
                 n: (...chunks) => <span className="font-semibold">{chunks}</span>,
@@ -75,8 +71,8 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
               }
             )}
           </div>
-          <ol className="my-8 space-y-12">
-            <li className="list-decimal">
+          <ol className="ml-6 my-8 space-y-12 offset-target-anchor [counter-reset:section]">
+            <li className="[counter-increment:section] marker:[content:counters(section,'.')'.\00a0']">
               <a href="#definitions">
                 <h2 id="definitions" className="font-semibold underline">
                   <FormattedMessage defaultMessage="DEFINITIONS" id="VIxyu8" />
@@ -88,37 +84,41 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                   id="so6v6Q"
                 />
               </p>
-              <ol className="list-lower-roman">
+              <ol className="[counter-reset:subsection]">
                 {formatMessage(
                   {
                     defaultMessage: `
                 <li>
-                  <p><n>Manager:</n>  The administrator of the Platform is WWF Colombia, or the entity that acts in its stead in this function. They may define the projects and respective information for publication within the Platform.</p>
+                  <p><n>Manager:</n> The administrator of the Platform is WWF Colombia, or the entity that acts in its stead in this function. They may define the projects and respective information for publication within the Platform.</p>
                 </li>
                 <li>
-                  <p><n>Donor Agent or Investor:</n>  Any person who is a registered user of the Platform and intends to directly contribute resources to a Project, by means of a Donation or investment, for its implementation and / or execution.</p>
+                  <p><n>Donor Agent or Investor:</n> Any person who is a registered user of the Platform and intends to directly contribute resources to a Project, by means of a Donation or investment, for its implementation and / or execution.</p>
                 </li>
                 <li>
-                  <p> <n>Participating Agent:</n>  The Donor Agents, Investors and Bidders or Implementers of the Projects, jointly, who are registered users of the Platform.</p>
+                  <p><n>Participating Agent:</n> The Donor Agents, Investors and Bidders or Implementers of the Projects, jointly, who are registered users of the Platform.</p>
                 </li>
                 <li>
-                  <p><n>Donation:</n>  An action by which a Donor Agent freely, gratuitously and irrevocably transfers a portion of its assets to the Bidders or Implementers of a Project to make the Project financially feasible and stable.</p>
+                  <p><n>Donation:</n> An action by which a Donor Agent freely, gratuitously and irrevocably transfers a portion of its assets to the Bidders or Implementers of a Project to make the Project financially feasible and stable.</p>
                 </li>
                 <li>
-                  <p><n>Project Bidders or Implementers:</n>  These are the people responsible for developing and / or managing the projects and their implementation, and those who will publish relevant information about their Projects through the Platform with the objective of attracting and mobilizing Donor Agents or Investors.</p>
+                  <p><n>Project Bidders or Implementers:</n> These are the people responsible for developing and / or managing the projects and their implementation, and those who will publish relevant information about their Projects through the Platform with the objective of attracting and mobilizing Donor Agents or Investors.</p>
                 </li>
                 <li>
-                  <p><n>Platform:</n>  The digital platform designed to promote interaction between Participating Agents to encourage and facilitate financing Projects. The Platform will allow visualizing the Projects, for Donor Agents or Investors to be able to have the relevant information about them.</p>
+                  <p><n>Platform:</n> The digital platform designed to promote interaction between Participating Agents to encourage and facilitate financing Projects. The Platform will allow visualizing the Projects, for Donor Agents or Investors to be able to have the relevant information about them.</p>
                 </li>
                 <li>
-                  <p><n>Project:</n>  These are conservation and sustainable development projects within the territory of the Republic of Colombia, to be implemented and/or executed by the Project Owners or administrators.</p>
+                  <p><n>Project:</n> These are conservation and sustainable development projects within the territory of the Republic of Colombia, to be implemented and/or executed by the Project Owners or administrators.</p>
                 </li>`,
-                    id: '+u5yoY',
+                    id: 'VADZzs',
                   },
                   {
-                    n: (...chunks) => <span className="font-semibold">{chunks}</span>,
+                    n: (...chunks) => <span className="font-semibold underline">{chunks}</span>,
                     p: (...chunks) => <p className="">{chunks}</p>,
-                    li: (...chunks) => <li className="ml-8 mt-4">{chunks}</li>,
+                    li: (...chunks) => (
+                      <li className="ml-14 [counter-increment:subsection] marker:[content:'1.'counters(subsection,'.')'.\00a0']">
+                        {chunks}
+                      </li>
+                    ),
                   }
                 )}
               </ol>
@@ -126,19 +126,15 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
             <li className="list-decimal">
               <a href="#platform_administrator">
                 <h2 id="platform_administrator" className="font-semibold underline my-4">
-                  PLATFORM ADMINISTRATOR
+                  <FormattedMessage defaultMessage="PLATFORM ADMINISTRATOR" id="6e0pcn" />
                 </h2>
               </a>
               <p>
-                <FormattedMessage
-                  defaultMessage="The “HeCo Invest” is administered by World Wildlife Fund Colombia (WWF), a non-profit entity identified with TIN No. 901.285.046-1 and with its registered office in the city of Bogotá D.C. (hereinafter 'WWF Colombia' or simply the 'Administrator')."
-                  id="qCbmE+"
-                />
                 {formatMessage(
                   {
                     defaultMessage:
-                      'The “HeCo Invest” is administered by World Wildlife Fund Colombia (WWF), a non-profit entity identified with TIN No. 901.285.046-1 and with its registered office in the city of Bogotá D.C. (hereinafter <n>"WWF Colombia"</n> or simply the <n>"Administrator"</n>).',
-                    id: 'H4ifak',
+                      'The “HeCo Invest” is administered by World Wildlife Fund Colombia (WWF), a non-profit entity identified with TIN No. 901.285.046-1 and with its registered office in the city of Bogotá D.C. (hereinafter "<n>WWF Colombia</n>" or simply the "<n>Administrator</n>").',
+                    id: 'iq+ywW',
                   },
                   {
                     n: (...chunks) => <span className="font-semibold">{chunks}</span>,
@@ -157,15 +153,11 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                   {
                     defaultMessage: `
                   <p>The Platform is designed to generate an online space and ecosystem that encourages the dissemination of projects with a socio-environmental impact in the Colombian Amazon and other areas within the Republic of Colombia. It allows Donor Agents or Investors to learn about the different Projects that are designed and presented by their respective Bidders or Implementers.</p>
-
                   <p>It is expressly established that neither the Platform nor WWF Colombia are or will be responsible for the design, preparation, status, development, execution, feasibility, financial stability, solvency, performance, or completion of the Projects. Nor shall they be responsible for or interfere in any way in receiving or transferring Donations, which shall be made and agreed upon directly between the Donor Agents or Investors and the Project Bidders or Implementers, through means and/or channels outside the Platform.</p>
-
                   <p>The Platform will use technology and algorithms to provide smart data and tools in a single place, seeking to connect governments, donors, investors and philanthropists with carefully identified investments, projects and stakeholders in high-priority locations. The Platform will have a baseline impact measurement tool, which will provide information to potential investors on the Project's compliance with social and environmental aspects.</p>
-
                   <p>The Donor Agents or investors understand and declare under oath that the Platform is not designed to satisfy consumption needs and, therefore, Project financing and the result of the investments will be destined towards fulfilling the needs inherent to their corporate purposes and corresponding economic activities. Consequently, any relationship that arises with effects or from using the Platform shall be regulated in accordance with the contractual, commercial and regulatory terms that apply to the very nature of the agreement entered into between the respective Participating Agents (without any interference or intervention by WWF Colombia). It also explicitly excludes the application of Law 1480 of 2011 and its regulatory decrees.</p>
-
                   <p>Notwithstanding the above, in the event the Donor Agent or Investor makes contributions to a Project without the purpose of obtaining returns and for mere liberality or philanthropy, they also acknowledge that the Platform and WWF Colombia, its controlling company, controlled companies and / or agents do NOT participate in the contractual or commercial relationship that may arise with the Project Bidders or Implementers.</p>`,
-                    id: 'MO8GrX',
+                    id: 'Wikb8J',
                   },
                   {
                     p: (...chunks) => <p className="">{chunks}</p>,
@@ -214,9 +206,9 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                     <lis>Publishing projects that meet the parameters and criteria established by WWF Colombia (including environmental and social safeguards) and that WWF Colombia will make available to registered users within the Platform.</lis>
                     <lis>Providing the minimum information on the Project, which includes, but is not limited to, the following information: (i) the person in charge of the Project; (ii) the geographic location of the Project; (iii) a description of the socio-environmental benefits of the Project; (iv) the estimated amount for the Project’s execution and sustainability; (v) the estimated date of the Project’s start-up of operations, if it is not yet operational; and (vi) contact information.</lis>
                     <lis>Having a virtual, telephone or face-to-face contact site through which interested Donor Agents or Investors can contact the Project Bidder or Implementer and make a Donation.</lis>
-                    <lis>By accepting these Terms and Conditions, and in accordance with the provisions set forth in section 6 below, a free license is expressly authorized and granted in favor of the Administrator, as well as its controlling entities, controlled entities and / or agents appointed by the latter, for them to use and reproduce the trademarks, trade names, images, videos, recordings, information, materials, and any other intellectual work provided by the Project Bidders and Implementers, to be used on the Platform and because of it. </lis>
+                    <lis>By accepting these Terms and Conditions, and in accordance with the provisions set forth in section 6 below, a free license is expressly authorized and granted in favor of the Administrator, as well as its controlling entities, controlled entities and / or agents appointed by the latter, for them to use and reproduce the trademarks, trade names, images, videos, recordings, information, materials, and any other intellectual work provided by the Project Bidders and Implementers, to be used on the Platform and because of it.</lis>
                     <lis>By accepting these Terms and Conditions, they expressly authorize Processing their Personal Data or that of their shareholders, contributors, agents or any person appointed to communicate with the Administrator, its controlling company and controlled companies and / or agents appointed by the latter.</lis>
-                    <lis>They declare that they have read and fully accepted the Platform's Personal Data Processing Policy, available at  <a>https://www.wwf.org.co/politica_de_tratamiento_de_datos/</a>. </lis>
+                    <lis>They declare that they have read and fully accepted the Platform's Personal Data Processing Policy, available at <a>https://www.wwf.org.co/politica_de_tratamiento_de_datos/</a>.</lis>
                     <lis>Abstaining from using the Platform for illegal purposes, going against good faith. Furthermore, they must abstain from using tools designed for copying algorithms, source codes or any Platform functionality.</lis>
                     <lis>Ensuring the veracity and timeliness of the information on the Projects, immediately informing the Administrator of any inconsistencies or errors in the information about the Projects and cooperating in the information’s timely correction.</lis>
                     </ul>
@@ -224,7 +216,7 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                   <li>
                     The Donor Agents or Investors:
                     <ul>
-                    <lis>They declare that they have read and fully accepted the Platform's Personal Data Processing Policy, available at <a>https://www.wwf.org.co/politica_de_tratamiento_de_datos/</a> </lis>
+                    <lis>They declare that they have read and fully accepted the Platform's Personal Data Processing Policy, available at <a>https://www.wwf.org.co/politica_de_tratamiento_de_datos/</a></lis>
                     <lis>By accepting these Terms and Conditions, they expressly authorize Processing their Personal Data or that of their shareholders, contributors, agents or any person appointed to communicate with the Administrator, its controlling company and controlled companies and / or agents appointed by the latter.</lis>
                     <lis>Contacting the Project Bidder or Implementer to make a Donation under the terms to be agreed upon directly (and outside the Platform) between the Donor Agent or investor and the Project Bidder or Implementer.</lis>
                     <lis>Abstaining from using the Platform for illegal purposes, going against good faith. Furthermore, they must abstain from using tools designed for copying algorithms, source codes or any Platform functionality.</lis>
@@ -232,11 +224,11 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                     </ul>
                   </li>
                   `,
-                    id: 'ZbZ1Xq',
+                    id: 'qHFOUd',
                   },
                   {
                     ul: (...chunks) => <ul className="space-y-4 mt-4">{chunks}</ul>,
-                    li: (...chunks) => <li className="list-lower-latin ml-4">{chunks}</li>,
+                    li: (...chunks) => <li className="list-lower-latin ml-9">{chunks}</li>,
                     lis: (...chunks) => <li className="list-disc ml-8">{chunks}</li>,
                     a: (...chunks) => (
                       <a
@@ -288,13 +280,13 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                 {formatMessage(
                   {
                     defaultMessage: `
-                      <p>In order to register and activate the users' accounts, the Administrator reserves the right to require uploading or sending the necessary documentation to verify (i) the capacity in which the Participating Agent would act; (ii) the corporate purpose and / or economic activities of the Participating Agent, if applicable; (iii) in the case of the Project Bidders or Implementers, additional information on their characteristics, suitability, experience, equipment and relevant information on the Project; and (iv) any other matter or information the Administrator deems necessary to verify.
-                      Failure to comply with any of the requirements listed above in these Terms and Conditions shall entitle the Administrator to deny or revoke permission to use the Platform.</p>
+                      <p>In order to register and activate the users' accounts, the Administrator reserves the right to require uploading or sending the necessary documentation to verify (i) the capacity in which the Participating Agent would act; (ii) the corporate purpose and / or economic activities of the Participating Agent, if applicable; (iii) in the case of the Project Bidders or Implementers, additional information on their characteristics, suitability, experience, equipment and relevant information on the Project; and (iv) any other matter or information the Administrator deems necessary to verify.</p>
+                      <p>Failure to comply with any of the requirements listed above in these Terms and Conditions shall entitle the Administrator to deny or revoke permission to use the Platform.</p>
                       <p>Notwithstanding the above, in order to fully exercise their responsibilities, the Administrator reserves the right to review any information and / or materials provided by Participating Agents, to define the content published on the Platform, to use or not to use any information and / or materials provided by Participating Agents, to remove any information and / or materials uploaded from the Platform, and to suspend and close user accounts, at its sole discretion and without liability.</p>
                       <p>The Participating Agents declare that the Administrator is not and shall not be responsible for receiving or administering any resources or funds from the donations or investments the Donor Agents or Investors decide to make at their own risk in the Projects. Neither shall they be responsible for issuing donation certificates or any other document that certifies a donation or investment, nor for the existence of a relationship between the Donor Agents or Investors and the Project Bidders or Implementers.</p>
                       <p>WWF Colombia and its affiliates are not responsible for and do not guarantee, recommend or endorse, as the case may be: (i) the accuracy, quality or effectiveness of any Shared Information of any User, (ii) the suitability of the translation, if the original information and / or content is translated, (iii) the contents accessible through links to other sites, (iv) the success of any project or collaboration with another User or third party that may result from Shared Information. The Platform and WWF Colombia shall not be a party to or responsible in any way for overseeing any transaction between you and any other user or third party.</p>
                     `,
-                    id: 'PYa8/Q',
+                    id: '42anRz',
                   },
                   {
                     p: (...chunks) => <p className="">{chunks}</p>,
@@ -314,25 +306,29 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                   id="9A26z6"
                 />
               </p>
-              <ol className="space-y-4 ml-4 list-lower-roman">
+              <ol className="space-y-4 ml-4 [counter-reset:subsection] [counter-set:'subsection 8']">
                 {formatMessage(
                   {
                     defaultMessage: `
                   <li>Use the Platform according to the purposes and functionalities described in these Terms and Conditions.</li>
                   <li>Fulfill the promises of value that have been set forth in the Platform.</li>
-                  <li>In the case of the Project Bidders or Implementers, to immediately inform any change in the financial, planning or execution status, or any other circumstance that may alter the Donor Agents or Investors’ decision to make their Donations. </li>
-                  <li>Immediately inform the Administrator of any deviation or inconsistency between the information expressed in the Platform and that which was provided by the Project Owner or administrator at the time of direct negotiation between them. </li>
+                  <li>In the case of the Project Bidders or Implementers, to immediately inform any change in the financial, planning or execution status, or any other circumstance that may alter the Donor Agents or Investors’ decision to make their Donations.</li>
+                  <li>Immediately inform the Administrator of any deviation or inconsistency between the information expressed in the Platform and that which was provided by the Project Owner or administrator at the time of direct negotiation between them.</li>
                   <li>Protect and maintain the confidential and reserved nature of their login credentials to the Platform (username, password, etc.), and instruct their designated agents on using these credentials and the possible consequences of publishing, circulating or using them improperly or without authorization for the Participating Agent. Each Participating Agent shall immediately notify WWF Colombia of any unauthorized use of its account or any other breach of security or account integrity.</li>
-                  <li>Act in good faith, in accordance with the purposes and functionalities of the Platform, always displaying a transparent behavior through which, under no circumstances, false information or content is presented.  </li>
+                  <li>Act in good faith, in accordance with the purposes and functionalities of the Platform, always displaying a transparent behavior through which, under no circumstances, false information or content is presented.</li>
                   <li>The Participating Agents, and particularly the Project Bidders or Implementers, shall guarantee and be solely responsible, in all cases, for the truthfulness, accuracy, validity and authenticity of the information each one of them presents and provides on the Platform.</li>
                   <li>The Participating Agents shall hold the Administrator harmless and indemnify them for any error, falsehood and/or inaccuracy in the information of the Projects they share or make available on the Platform.</li>
                   <li>Participating Agents agree and acknowledge that the Administrator will use the e-mail address registered in the account as the primary method of communication.</li>
-                  <li>The Administrator may suspend or cancel an existing account or terminate a Project for any reason, at its sole discretion, including in the event the Administrator considers there has been a breach of these Terms and Conditions, the Privacy and Personal Data Processing Policy, Colombian law or good faith, or by committing acts (or omissions) that may damage or compromise the Administrator in any way. </li>
+                  <li>The Administrator may suspend or cancel an existing account or terminate a Project for any reason, at its sole discretion, including in the event the Administrator considers there has been a breach of these Terms and Conditions, the Privacy and Personal Data Processing Policy, Colombian law or good faith, or by committing acts (or omissions) that may damage or compromise the Administrator in any way.</li>
                   `,
-                    id: 'uhPYu9',
+                    id: 'HC+nYF',
                   },
                   {
-                    li: (...chunks) => <li className="">{chunks}</li>,
+                    li: (...chunks) => (
+                      <li className="ml-9 [counter-increment:subsection] marker:[content:'8.'counters(subsection,'.')'.\00a0']">
+                        {chunks}
+                      </li>
+                    ),
                   }
                 )}
               </ol>
@@ -377,9 +373,9 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                     defaultMessage: `
                       <p>The Platform, trademarks and other distinctive signs included therein, as well as the rights over the intellectual creations and related rights, including the source codes used to properly operate the Platform, are protected by intellectual property laws and international treaties on the matter. The name, logos, and names associated with the Platform are registered trademarks of, and / or licensed by, WWF Colombia, and under no circumstances shall it be understood that any right or license is granted or conferred with respect to them.</p>
                       <p>Unless the Administrator has granted prior, express and written authorization, the Participating Agents may not copy, modify, distribute, sell, rent or exploit the trademarks, distinctive signs, or the information or content of the Platform in any other way. Moreover, the Participating Agents may not carry out reverse engineering operations or any other operation aimed at obtaining any source code contained in the Platform.</p>
-                      <p>The trademarks, distinctive signs and other protected or potentially protectable works of the Project Bidders or Implementers that are displayed on the Platform will remain their property, authorizing the Administrator to use and reproduce them for the purposes of the Platform. The Participating Agents must abstain from carrying out any act or omission that may affect the rights of the Project Bidders or Implementers. </p>
+                      <p>The trademarks, distinctive signs and other protected or potentially protectable works of the Project Bidders or Implementers that are displayed on the Platform will remain their property, authorizing the Administrator to use and reproduce them for the purposes of the Platform. The Participating Agents must abstain from carrying out any act or omission that may affect the rights of the Project Bidders or Implementers.</p>
                     `,
-                    id: 'SsxeMm',
+                    id: 'q23our',
                   },
                   {
                     p: (...chunks) => <p className="">{chunks}</p>,
@@ -397,11 +393,11 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                 {formatMessage(
                   {
                     defaultMessage: `
-                      <p>When the Participating Agent of the Platform, if an individual, finishes their registration for the Platform and accepts these Terms and Conditions, authorizes and provides consent to the following previously, freely, expressly and informedly, to <n>WWF Colombia</n>, a non-profit entity identified with NIT No. 901.285.046-1 and corporate address at Carrera 10ª No. 69ª-44 of the city of Bogotá D.C., telephone number +6014431550 and e-mail address <mail>info@wwf.org.co</mail>: to collect, store, circulate, transmit, transfer, delete, and generally process their personal data to manage their registration in the Platform, act as the initial point of contact between the Project Bidder or Implementer and the Donor Agent or Investor, as well as for the other purposes described in WWF Colombia’s Personal Data Processing Policy, which is available at the following link:  <a>https://www.wwf.org.co/politica_de_tratamiento_de_datos/</a>.</p>
-                      <p>The Participating Agent declares to have read and fully understood the aforementioned Personal Data Processing Policy, including the sections on their rights to know, update, correct and delete their data, be informed of how it has been used, file complaints before the Superintendence of Industry and Commerce, revoke their consent and the mechanisms to make their rights effective. In the event the Participating Agent does not grant or subsequently revokes its consent to processing personal data in accordance with this section, it may be limited or prevented from accessing its account and / or the Platform, as well as from navigating or using certain functionalities of the Platform. </p>
+                      <p>When the Participating Agent of the Platform, if an individual, finishes their registration for the Platform and accepts these Terms and Conditions, authorizes and provides consent to the following previously, freely, expressly and informedly, to <n>WWF Colombia</n>, a non-profit entity identified with NIT No. 901.285.046-1 and corporate address at Carrera 10ª No. 69ª-44 of the city of Bogotá D.C., telephone number +6014431550 and e-mail address <mail>info@wwf.org.co</mail>: to collect, store, circulate, transmit, transfer, delete, and generally process their personal data to manage their registration in the Platform, act as the initial point of contact between the Project Bidder or Implementer and the Donor Agent or Investor, as well as for the other purposes described in WWF Colombia’s Personal Data Processing Policy, which is available at the following link: <a>https://www.wwf.org.co/politica_de_tratamiento_de_datos/</a>.</p>
+                      <p>The Participating Agent declares to have read and fully understood the aforementioned Personal Data Processing Policy, including the sections on their rights to know, update, correct and delete their data, be informed of how it has been used, file complaints before the Superintendence of Industry and Commerce, revoke their consent and the mechanisms to make their rights effective. In the event the Participating Agent does not grant or subsequently revokes its consent to processing personal data in accordance with this section, it may be limited or prevented from accessing its account and / or the Platform, as well as from navigating or using certain functionalities of the Platform.</p>
                       <p>You acknowledge, consent and agree that WWF Colombia may access, preserve and disclose your registration and any other provided information if required to do so by law or if its preservation or disclosure is reasonably necessary to: (i) comply with legal proceedings, including, but not limited to, civil and criminal subpoenas, court orders or other compulsory disclosures; (ii) enforce these Terms and Conditions; (iii) respond to claims of a violation of the rights of third parties, whether or not the third party is a User, individual or government agency; (iv) respond to customer service inquiries; or (v) protect the rights, property or personal safety of WWF Colombia and its affiliates, other Users or the public.</p>
                     `,
-                    id: 'u0T+bU',
+                    id: 'MWocTK',
                   },
                   {
                     p: (...chunks) => <p className="">{chunks}</p>,
@@ -438,11 +434,10 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                 {formatMessage(
                   {
                     defaultMessage: `
-                      <p>The Administrator may update, modify, expand or reduce the functionalities, structure and/or presentation of the Platform without prior notice to the Participating Agents. </p>
-                      <p>Unless the Administrator has granted prior, express and written authorization, the Participating Agents may not copy, modify, distribute, sell, rent or exploit the trademarks, distinctive signs, or the information or content of the Platform in any other way. Moreover, the Participating Agents may not carry out reverse engineering operations or any other operation aimed at obtaining any source code contained in the Platform.</p>
+                      <p>The Administrator may update, modify, expand or reduce the functionalities, structure and/or presentation of the Platform without prior notice to the Participating Agents.</p>
                       <p>Additionally, WWF Colombia reserves the right to modify these Terms and Conditions under which the Platform is offered. Said modification shall enter into force at the moment WWF Colombia publishes it on the Platform. Your continued use of the Platform after WWF Colombia publishes any modification or update to these Terms and Conditions demonstrates your irrevocable acceptance of the new revised Terms and Conditions. Therefore, you should review these Terms and Conditions regularly to be aware of your rights and obligations.</p>
                     `,
-                    id: '8Xbg2M',
+                    id: 'TyyUdt',
                   },
                   {
                     p: (...chunks) => <p className="">{chunks}</p>,
@@ -460,11 +455,11 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                 {formatMessage(
                   {
                     defaultMessage: `
-                      <p>In consideration of the characteristics and scope of the Platform and those related to its nature, the Administrator does not guarantee that the operation will be uninterrupted or free of defects (for example: bugs, incompatibility with certain software or hardware, etc.). More specifically, the Administrator cannot be held liable for any reason whatsoever due to technical problems or errors relating to: telephone networks or lines; computer systems, including on-line and / or on the cloud, server and / or provider; computer equipment; software; e-mail programs not working; plug-in use; technical problems; traffic congestion on the Internet or power failures. </p>
+                      <p>In consideration of the characteristics and scope of the Platform and those related to its nature, the Administrator does not guarantee that the operation will be uninterrupted or free of defects (for example: bugs, incompatibility with certain software or hardware, etc.). More specifically, the Administrator cannot be held liable for any reason whatsoever due to technical problems or errors relating to: telephone networks or lines; computer systems, including on-line and / or on the cloud, server and / or provider; computer equipment; software; e-mail programs not working; plug-in use; technical problems; traffic congestion on the Internet or power failures.</p>
                       <p>The Administrator reserves the right to modify, suspend or interrupt the Platform’s operation, completely or partially, at any time, without notice and without having to justify the reasons for the limitation.</p>
                       <p>Therefore, the Participating Agents may not hold the Administrator liable, in any way, for a malfunction of the Platform, even if this malfunction may cause errors and / or delays related to negotiations between the Participating Agents that have arisen under the Platform.</p>
                     `,
-                    id: 'BjZUG5',
+                    id: 'hcfVKr',
                   },
                   {
                     p: (...chunks) => <p className="">{chunks}</p>,
@@ -482,11 +477,11 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
                 {formatMessage(
                   {
                     defaultMessage: `
-                      <p>The Administrator is not responsible for any damage, harm or loss caused due to failures in the Platform derived from the server or Internet. Neither shall the Administrator be liable for any viruses that may infect your computer as a result of your access to or use of the Platform or as a result of any transfer of data, files, images, text, or audio therein. The Participating Agent shall not be held liable for any loss of profit, nor shall it be entitled to demand payment for loss of profit due to damages resulting from technical difficulties or internet failures. The Administrator does not guarantee continuous or uninterrupted access to or use of its Platform. </p>
-                      <p>The Platform may eventually be unavailable due to technical difficulties or internet failures, or due to any other circumstance beyond the Administrator's control. In these cases, efforts will be made to restore it as quickly as possible, without the Administrator being held liable in any way. </p>
+                      <p>The Administrator is not responsible for any damage, harm or loss caused due to failures in the Platform derived from the server or Internet. Neither shall the Administrator be liable for any viruses that may infect your computer as a result of your access to or use of the Platform or as a result of any transfer of data, files, images, text, or audio therein. The Participating Agent shall not be held liable for any loss of profit, nor shall it be entitled to demand payment for loss of profit due to damages resulting from technical difficulties or internet failures. The Administrator does not guarantee continuous or uninterrupted access to or use of its Platform.</p>
+                      <p>The Platform may eventually be unavailable due to technical difficulties or internet failures, or due to any other circumstance beyond the Administrator's control. In these cases, efforts will be made to restore it as quickly as possible, without the Administrator being held liable in any way.</p>
                       <p>The Administrator shall not be liable for any errors or omissions by the Participating Agent within the Platform.</p>
                     `,
-                    id: '9YvfXz',
+                    id: 'T9Kfvd',
                   },
                   {
                     p: (...chunks) => <p className="">{chunks}</p>,
@@ -502,8 +497,8 @@ const TermsConditions: PageComponent<TermsConditionsProps, StaticPageLayoutProps
               </a>
               <p className="mt-4">
                 <FormattedMessage
-                  defaultMessage="The Participating Agent agrees that these Terms and Conditions shall be governed by Colombian law. In this document’s analysis, the documents herein shall be interpreted in the following order: (i) these Terms and Conditions; (ii) the Privacy and Personal Data Processing Policies; and (iii) any other written document signed by the Participating Agent and the Administrator to be part of the binding documents."
-                  id="fSoTl7"
+                  defaultMessage="The Participating Agent agrees that these Terms and Conditions shall be governed by Colombian law. In this document’s analysis, the documents herein shall be interpreted in the following order: (i) these Terms and Conditions; (ii) the Privacy and Personal Data Processing Policies; and (iii) any other written document signed by the Participating Agent and the Administrator to be part of the binding documents.s"
+                  id="CzqYh8"
                 />
               </p>
             </li>

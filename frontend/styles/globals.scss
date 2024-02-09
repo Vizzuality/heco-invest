@@ -205,3 +205,27 @@
     @apply cursor-default opacity-40;
   }
 }
+
+/**
+ * Because of the fixed/sticky header and the possible "BETA" version banner, target links in places such as
+ * the ToS will be hidden behind the fixed/sticky bars. These classes, when applied to a parent container, will
+ * make it so that the native scrolling to an anchor can still be used, but is offset thanks to
+ * https: //developer.mozilla.org/en-US/docs/Web/CSS/:target
+ *
+ *   Header:      sm:64px | md:80px
+ *   Beta banner: sm: 0px | md:44px
+ *   Offset:      sm: 4px | md:4px
+ */
+.offset-target-anchor {
+  *:target:before {
+    content: "";
+    display: block;
+    height: 70px;
+    margin: -70px 0 0;
+
+    @screen md {
+      height: 130px;
+      margin: -130px 0 0;
+    }
+  }
+}

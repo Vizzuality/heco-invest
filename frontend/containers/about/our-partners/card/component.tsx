@@ -20,7 +20,7 @@ export const OurPartnersCard: FC<OurPartnersCardProps> = ({
   return (
     <button
       type="button"
-      className="py-6 px-4 bg-background-middle rounded-2xl focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2"
+      className="py-6 px-4 bg-background-middle rounded-2xl focus-visible:outline focus-visible:outline-green-dark focus-visible:outline-2 focus-visible:outline-offset-2 hover:shadow border border-transparent transition-all duration-500 hover:border-green-light"
       onClick={handleCardClick}
     >
       <div className="text-center">

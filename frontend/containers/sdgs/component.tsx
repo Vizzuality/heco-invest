@@ -23,7 +23,7 @@ export const SDGs: FC<SDGsProps> = ({ className, size = 'small', sdgs = [] }: SD
             arrowClassName="bg-black"
             content={
               <div className="max-w-xs p-2 font-sans text-sm font-normal text-white bg-black rounded-sm">
-                {sdg.name}
+                haha
               </div>
             }
           >
