@@ -95,6 +95,15 @@ of [this guide](https://medium.com/google-cloud/cloud-sql-with-private-ip-only-t
   database
 - The remote Postgres database is now reachable on `localhost:3306`
 
+### Changing values of environment variables or secrets
+
+Environment variables and secrets are set via the terraform scripts. Many of them are populated automatically from values derived from the infrastructure resources (e.g. database connection details). Some of them need to be set to known values (e.g. third party API keys). The list of these known values is kept in LastPass. When running `terraform apply`, it is best to have them saved in a local file outside of version control:
+
+1. Create a file in `infrastructure/base/vars/terraform-local.tfvars` with contents from LastPass
+2. In `infrastructure/base`, run `terraform apply -var-file=vars/terraform-local.tfvars`
+
+A special consideration for the environment variables with http authentication credentials. These are used by both the back-end and front-end applications to control whether or not to enforce http authentication based on their presence. When the credentials exist in the environment of the application, http authentication will be required. The credentials are passed from the `vars/terraform-local.tfvars` to the provisioned environments through the terraform input variables of the `env` module, called `http_auth_username` and `http_auth_username` (see `infrastructure/base/main.tf` for how these are passed into `production` / `staging` modules). It is therefore easy to disable http authentication per environment by setting these variables to empty strings.
+
 ## Backups
 
 There are two main permanent data storage mechanisms in the HeCo application that need backup.
