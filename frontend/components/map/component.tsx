@@ -58,10 +58,10 @@ export const Map: FC<MapProps> = ({
 
   const handleViewportChange = useCallback(
     (v) => {
-      setViewport(v);
-      debouncedOnMapViewportChange(v);
+      setViewport({ ...v, ...(!dragRotate ? { pitch: 0, bearing: 0 } : {}) });
+      debouncedOnMapViewportChange({ ...v, ...(!dragRotate ? { pitch: 0, bearing: 0 } : {}) });
     },
-    [debouncedOnMapViewportChange]
+    [debouncedOnMapViewportChange, dragRotate]
   );
 
   const handleResize = useCallback(
