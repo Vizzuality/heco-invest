@@ -20,10 +20,10 @@ export const Map: FC<MapProps> = ({
   onMapLoad,
   onMapViewportChange,
   dragPan,
-  dragRotate,
+  dragRotate = false,
   scrollZoom,
   touchZoom,
-  touchRotate,
+  touchRotate = false,
   doubleClickZoom,
   width = '100%',
   height = '100%',
@@ -58,10 +58,10 @@ export const Map: FC<MapProps> = ({
 
   const handleViewportChange = useCallback(
     (v) => {
-      setViewport(v);
-      debouncedOnMapViewportChange(v);
+      setViewport({ ...v, ...(!dragRotate ? { pitch: 0, bearing: 0 } : {}) });
+      debouncedOnMapViewportChange({ ...v, ...(!dragRotate ? { pitch: 0, bearing: 0 } : {}) });
     },
-    [debouncedOnMapViewportChange]
+    [debouncedOnMapViewportChange, dragRotate]
   );
 
   const handleResize = useCallback(

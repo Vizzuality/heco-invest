@@ -101,19 +101,19 @@ export const ProjectDetails: FC<ProjectDetailsProps> = ({
 
   return (
     <div className={className}>
+      <Button
+        size="smallest"
+        theme="naked"
+        className="sticky z-20 ml-auto mr-4 text-gray-400 pointer-events-auto top-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
+        aria-label={intl.formatMessage({
+          defaultMessage: 'Close project details card',
+          id: 'hmK5Jb',
+        })}
+        onClick={onClose}
+      >
+        <XIcon className="w-6 h-6" aria-hidden={true} />
+      </Button>
       <div className="absolute top-0 right-0 z-20 w-full h-full overflow-hidden pointer-events-none">
-        <Button
-          size="smallest"
-          theme="naked"
-          className="absolute text-gray-400 pointer-events-auto right-4 top-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-dark"
-          aria-label={intl.formatMessage({
-            defaultMessage: 'Close project details card',
-            id: 'hmK5Jb',
-          })}
-          onClick={onClose}
-        >
-          <XIcon className="w-6 h-6" aria-hidden={true} />
-        </Button>
         {project.looking_for_funding && (
           <span className="absolute px-10 py-2 text-xs text-center origin-top-left rotate-45 w-60 -top-10 -right-28 bg-green-dark text-green-light">
             <FormattedMessage defaultMessage="Looking for funding" id="Czc5vB" />
