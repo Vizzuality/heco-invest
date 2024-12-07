@@ -88,7 +88,7 @@
     "lodash-es": "^4.17.21",
     "maplibre-gl": "^1.15.2",
     "next": "^12.3.1",
-    "next-auth": "^4.15.1",
+    "next-auth": "^4.24.5",
     "popmotion": "^9.3.6",
     "postcss": "^8.4.5",
     "query-string": "^7.1.1",
